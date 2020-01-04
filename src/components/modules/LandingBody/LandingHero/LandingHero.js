@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import style from "./LandingHero.module.css";
 
-import Button from "../../components/common/Button";
+import Button from "../components/common/Button";
 
 export default class LandingHero extends React.Component {
   constructor() {
