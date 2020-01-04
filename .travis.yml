@@ -5,6 +5,7 @@ cache:
   directories:
   - node_modules
 script:
+  - npm cache clean
   #- npm test
   - npm run build
 
@@ -18,3 +19,6 @@ deploy:
 
 after_failure:
   - cat /home/travis/.npm/_logs/*-debug.log
+
+  before_install:
+    - "npm install -g react-scripts@3.0.1"
