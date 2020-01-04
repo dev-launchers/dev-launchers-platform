@@ -1,0 +1,13 @@
+.partnerList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.partnerEntry {
+  font-size: 3rem;
+  margin: 5%;
+}

@@ -1,0 +1,54 @@
+.footer {
+  position: relative;
+  background-color: #1c1c1c;
+  color: #d9d9d9;
+  width: 100%;
+  height: 100vh;
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  z-index: 3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.quoteArea {
+  text-align: center;
+  width: 60%;
+}
+
+.footerLogo {
+  height: 50vh;
+}
+
+.footerNav {
+  min-width: 450px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.navEntry {
+  cursor: pointer;
+  font-size: 1.75rem;
+}
+
+.orgInfoArea {
+  width: 90%;
+  text-align: right;
+  margin: 5%;
+  font-size: 0.85rem;
+  display: flex;
+}
+
+a {
+  color: #d9d9d9;
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(255, 217, 0);
+}

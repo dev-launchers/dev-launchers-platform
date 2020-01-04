@@ -1,0 +1,13 @@
+.button {
+  font-family: "Holtwood One SC", serif;
+  background-color: #ff7f0e;
+  color: black;
+  border: 0px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  padding: 1.5%;
+}
+.button:hover {
+  background-color: rgb(255, 217, 0);
+  color: rgb(58, 58, 58);
+}
