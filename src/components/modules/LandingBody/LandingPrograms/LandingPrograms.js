@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import style from "./LandingPrograms.module.css";
 
-import Button from "../../../../common/Button";
+import Button from "../../../common/Button";
 
 export default class LandingPrograms extends React.Component {
   constructor() {
