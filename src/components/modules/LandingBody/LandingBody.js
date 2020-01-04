@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 import style from "./LandingBody.module.css";
 
-import PageBody from "/src/components/common/PageBody";
+import PageBody from "../components/common/PageBody";
 
 import LandingHero from "./LandingHero";
 import LandingHeroOverlay from "./LandingHeroOverlay";
