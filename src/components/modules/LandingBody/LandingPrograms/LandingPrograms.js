@@ -16,9 +16,9 @@ export default class LandingPrograms extends React.Component {
         <h1>
           Our Programs <span style={{ fontSize: "1rem" }}>(for teens)</span>
         </h1>
-        <div class="spark-program-area" style={{ display: "flex" }}>
+        <div className="spark-program-area" style={{ display: "flex" }}>
           <div
-            class="program-image"
+            className="program-image"
             style={{
               width: "40%",
               height: "20%",
@@ -63,11 +63,11 @@ export default class LandingPrograms extends React.Component {
           </div>
         </div>
         <div
-          class="ignition-program-area"
+          className="ignition-program-area"
           style={{ display: "flex", marginTop: "5%" }}
         >
           <div
-            class="program-image"
+            className="program-image"
             style={{
               width: "40%",
               height: "20%",
