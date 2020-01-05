@@ -27,9 +27,9 @@ export default class CreateRoute extends React.Component {
           <div className="games-area">
             <h2>Game Templates</h2>
             <div className="collection collection--small-cards">
-              {projectTemplates.games.map(entry => {
+              {projectTemplates.games.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"
@@ -56,9 +56,9 @@ export default class CreateRoute extends React.Component {
           <div className="apps-area">
             <h2>App Templates</h2>
             <div className="collection collection--small-cards">
-              {projectTemplates.apps.map(entry => {
+              {projectTemplates.apps.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"

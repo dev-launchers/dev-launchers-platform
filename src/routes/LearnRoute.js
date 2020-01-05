@@ -27,9 +27,9 @@ export default class LearnRoute extends React.Component {
           <div className="collection novice-area">
             <h2>Novice Activities</h2>
             <div className="collection collection--small-cards">
-              {activities.novice.map(entry => {
+              {activities.novice.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"
@@ -58,9 +58,9 @@ export default class LearnRoute extends React.Component {
           <div className="collection intermediate-area">
             <h2>Intermediate Activities</h2>
             <div className="collection collection--small-cards">
-              {activities.intermediate.map(entry => {
+              {activities.intermediate.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"
@@ -89,9 +89,9 @@ export default class LearnRoute extends React.Component {
           <div className="collection advanced-area">
             <h2>Advanced Activities</h2>
             <div className="collection collection--small-cards">
-              {activities.advanced.map(entry => {
+              {activities.advanced.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"

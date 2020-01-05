@@ -72,9 +72,9 @@ export default class PlayRoute extends React.Component {
           <div className="projects-area">
             <h2>Projects</h2>
             <div className="collection collection--large-cards">
-              {this.state.projects.map(entry => {
+              {this.state.projects.map((entry, i) => {
                 return (
-                  <div className="entry">
+                  <div className="entry" key={i}>
                     <div className="entry-heading">
                       <a
                         className="entry-title"

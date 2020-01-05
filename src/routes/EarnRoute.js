@@ -37,7 +37,7 @@ export default class EarnRoute extends React.Component {
           >
             <tbody>
               <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-                For Everyone
+                <td>For Everyone</td>
               </tr>
               <tr style={{ fontSize: ".9rem" }}>
                 <td>Perserverence</td>
