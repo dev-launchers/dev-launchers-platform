@@ -1,12 +1,12 @@
 language: node_js
 node_js:
-  - "12"
+  - "node"
 cache:
   directories:
   - node_modules
 script:
   #- npm test
-  - npm run build || true
+  - npm run build
 
 deploy:
   provider: pages
