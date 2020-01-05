@@ -6,7 +6,7 @@ heroImageContainer {
 }
 .heroImage {
   background-color: black;
-  background-image: url("/images/hero-render.png");
+  background-image: url("../../../../images/hero-render.png");
   position: fixed;
   z-index: -1;
   background-position: center center;
