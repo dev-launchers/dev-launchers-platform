@@ -1,23 +1,15 @@
 language: node_js
 node_js:
-  - "node"
-#cache:
-#  directories:
-#  - node_modules
+  - "stable"
+cache:
+  directories:
+  - node_modules
 script:
-  #- npm test
   - npm run build
-
 deploy:
   provider: pages
-  skip_cleanup: false
-  github_token: $GITHUB_TOKEN
+  skip_cleanup: true
+  github_token: $github_token
   local_dir: build
   on:
     branch: master
-
-after_failure:
-  - cat /home/travis/.npm/_logs/*-debug.log
-
-#before_install:
-#  - "npm install -g react-scripts@3.0.1"
