@@ -63,21 +63,21 @@ export default class PlayRoute extends React.Component {
         <PageBody>
           <br />
           <h1 id="title">Check It Out</h1>
-          <div class="page-description">
+          <div className="page-description">
             These games are all made by our students! Open up the development
             links to see their latest changes, or the production links for more
             stable versions of the games
           </div>
           <hr />
-          <div class="projects-area">
+          <div className="projects-area">
             <h2>Projects</h2>
-            <div class="collection collection--large-cards">
+            <div className="collection collection--large-cards">
               {this.state.projects.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.devUrl}
                         target="_blank"
                       >
@@ -96,13 +96,15 @@ export default class PlayRoute extends React.Component {
                         GitHub Repo
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <div src={entry.imageSrc} class="entry-image" />
+                          <div src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );
@@ -174,10 +176,10 @@ function populateProjects() {
       const projectRepoElement = document.createElement("div");
       projectRepoElement.setAttribute("class", "entry");
       projectRepoElement.innerHTML = `
-        <div class="entry-title">
+        <div className="entry-title">
             ${repoFullName.substring("project__".length, repoFullName.length)}
         </div>
-        <div class="entry-description">
+        <div className="entry-description">
             ${devData[key].description}
         </div>
         `;
@@ -186,8 +188,8 @@ function populateProjects() {
       if (key in devData) {
         let devGameURLFull = DEV_GAME_URL_PREFIX + repoFullName;
         projectRepoElement.innerHTML += `
-            <a class="entry-sandbox-url" href="${devGameURLFull}" target="_blank">
-            <div class="entry-button">
+            <a className="entry-sandbox-url" href="${devGameURLFull}" target="_blank">
+            <div className="entry-button">
                 Open Dev
             </div>
             </a>
@@ -197,8 +199,8 @@ function populateProjects() {
       if (key in prodData) {
         let prodGameURLFull = PROD_GAME_URL_PREFIX + repoFullName;
         projectRepoElement.innerHTML += `
-            <a class="entry-sandbox-url" href="${prodGameURLFull}" target="_blank">
-            <div class="entry-button">
+            <a className="entry-sandbox-url" href="${prodGameURLFull}" target="_blank">
+            <div className="entry-button">
                 Open Prod
             </div>
             </a>
@@ -207,8 +209,8 @@ function populateProjects() {
 
       // Add github link
       projectRepoElement.innerHTML += `
-        <a class="entry-github-url" href="https://github.com/dev-launchers-sandbox/${repoFullName}" target="_blank">
-          <div class="entry-button entry-github-repo-button">
+        <a className="entry-github-url" href="https://github.com/dev-launchers-sandbox/${repoFullName}" target="_blank">
+          <div className="entry-button entry-github-repo-button">
               Github Repo
           </div>
         </a>
@@ -216,8 +218,8 @@ function populateProjects() {
 
       // Add codesandbox link
       projectRepoElement.innerHTML += `
-        <a class="entry-sandbox-url" href="https://codesandbox.io/dashboard/sandboxes" target="_blank">
-          <div class="entry-button entry-sandbox-repo-button">
+        <a className="entry-sandbox-url" href="https://codesandbox.io/dashboard/sandboxes" target="_blank">
+          <div className="entry-button entry-sandbox-repo-button">
               Online IDE
           </div>
         </a>

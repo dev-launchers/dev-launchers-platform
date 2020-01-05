@@ -35,94 +35,115 @@ export default class EarnRoute extends React.Component {
               marginRight: "auto"
             }}
           >
-            <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-              For Everyone
-            </tr>
-            <hr />
-            <tr style={{ fontSize: ".9rem" }}>Perserverence</tr>
-            <tr>
-              <td>&#8195;Attend a lab session</td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +5 points
-              </td>
-            </tr>
-            <tr>
-              <td>
-                &#8195;&#8195;&#8195; + Fill out session sign up form at least
-                24 hours before session
-              </td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +10 points
-              </td>
-            </tr>
-            <tr>
-              <td>&#8195;Attend 3 sessions in a row</td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +20 points
-              </td>
-            </tr>
-            <hr />
-            <tr style={{ fontSize: ".9rem" }}>Communication</tr>
-            <tr>
-              <td>
-                &#8195;Send a (meaningful) message on Slack at least once during
-                the week
-              </td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +1 points
-              </td>
-            </tr>
-            <tr>
-              <td>
-                &#8195;Send at least 10 (meaningful) Slack messages during the
-                week
-              </td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +15 points
-              </td>
-            </tr>
-            <tr>
-              <td>
-                &#8195;Help another member during a lab session(record this on
-                Slack!)
-              </td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +2 points
-              </td>
-            </tr>
-            <hr />
-            <tr style={{ fontSize: ".9rem" }}>Goal Oriented</tr>
-            <tr>
-              <td>&#8195;Create a project board</td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +10 points
-              </td>
-            </tr>
-            <tr>
-              <td>&#8195;Finish your MVP</td>
-              <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>
-                +100 points
-              </td>
-            </tr>
-            <hr />
-            <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-              For Coders
-            </tr>
-            <hr />
-            <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-              For Digital Designers
-            </tr>
-            <tr />
-            <tr
-              style={{
-                textAlign: "left",
-                color: "red",
-                fontSize: "1rem",
-                fontWeight: "bold"
-              }}
-            >
-              <td>* Points are calculated on Saturdays before lab sessions</td>
-            </tr>
+            <tbody>
+              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
+                For Everyone
+              </tr>
+              <tr style={{ fontSize: ".9rem" }}>
+                <td>Perserverence</td>
+              </tr>
+              <tr>
+                <td>&#8195;Attend a lab session</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +5 points
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  &#8195;&#8195;&#8195; + Fill out session sign up form at least
+                  24 hours before session
+                </td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +10 points
+                </td>
+              </tr>
+              <tr>
+                <td>&#8195;Attend 3 sessions in a row</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +20 points
+                </td>
+              </tr>
+              <tr style={{ fontSize: ".9rem" }}>
+                <td>Communication</td>
+              </tr>
+              <tr>
+                <td>
+                  &#8195;Send a (meaningful) message on Slack at least once
+                  during the week
+                </td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +1 points
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  &#8195;Send at least 10 (meaningful) Slack messages during the
+                  week
+                </td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +15 points
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  &#8195;Help another member during a lab session(record this on
+                  Slack!)
+                </td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +2 points
+                </td>
+              </tr>
+              <tr style={{ fontSize: ".9rem" }}>
+                <td>Goal Oriented</td>
+              </tr>
+              <tr>
+                <td>&#8195;Create a project board</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +10 points
+                </td>
+              </tr>
+              <tr>
+                <td>&#8195;Finish your MVP</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +100 points
+                </td>
+              </tr>
+              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
+                For Coders
+              </tr>
+              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
+                <td>For Digital Designers</td>
+              </tr>
+              <tr />
+              <tr
+                style={{
+                  textAlign: "left",
+                  color: "red",
+                  fontSize: "1rem",
+                  fontWeight: "bold"
+                }}
+              >
+                <td>
+                  * Points are calculated on Saturdays before lab sessions
+                </td>
+              </tr>
+            </tbody>
           </table>
           <div
             style={{

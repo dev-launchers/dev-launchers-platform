@@ -18,34 +18,34 @@ export default class CreateRoute extends React.Component {
         <PageBody>
           <br />
           <h1 id="title">Create Games and Apps</h1>
-          <div class="page-description">
+          <div className="page-description">
             These templates are where projects begin. They provide the generic
             structure and base logic, so you can focus on what makes your app
             special!
           </div>
           <hr />
-          <div class="games-area">
+          <div className="games-area">
             <h2>Game Templates</h2>
-            <div class="collection collection--small-cards">
+            <div className="collection collection--small-cards">
               {projectTemplates.games.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.sandboxUrl}
                         target="_blank"
                       >
                         {entry.title}
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <img src={entry.imageSrc} class="entry-image" />
+                          <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">{entry.description}</div>
                     </div>
                   </div>
                 );
@@ -53,28 +53,28 @@ export default class CreateRoute extends React.Component {
             </div>
           </div>
           <hr />
-          <div class="apps-area">
+          <div className="apps-area">
             <h2>App Templates</h2>
-            <div class="collection collection--small-cards">
+            <div className="collection collection--small-cards">
               {projectTemplates.apps.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.sandboxUrl}
                         target="_blank"
                       >
                         {entry.title}
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <img src={entry.imageSrc} class="entry-image" />
+                          <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">{entry.description}</div>
                     </div>
                   </div>
                 );

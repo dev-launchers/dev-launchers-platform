@@ -18,34 +18,36 @@ export default class LearnRoute extends React.Component {
         <PageBody>
           <br />
           <h1 id="title">Learn Code and Design</h1>
-          <div class="page-description">
+          <div className="page-description">
             These activities are meant to familiarize students with the concepts
             and tools needed to begin creating games with Dev Launchers.
           </div>
           <hr />
 
-          <div class="collection novice-area">
+          <div className="collection novice-area">
             <h2>Novice Activities</h2>
-            <div class="collection collection--small-cards">
+            <div className="collection collection--small-cards">
               {activities.novice.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.sandboxUrl}
                         target="_blank"
                       >
                         {entry.title}
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <img src={entry.imageSrc} class="entry-image" />
+                          <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );
@@ -53,28 +55,30 @@ export default class LearnRoute extends React.Component {
             </div>
           </div>
 
-          <div class="collection intermediate-area">
+          <div className="collection intermediate-area">
             <h2>Intermediate Activities</h2>
-            <div class="collection collection--small-cards">
+            <div className="collection collection--small-cards">
               {activities.intermediate.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.sandboxUrl}
                         target="_blank"
                       >
                         {entry.title}
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <img src={entry.imageSrc} class="entry-image" />
+                          <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );
@@ -82,28 +86,30 @@ export default class LearnRoute extends React.Component {
             </div>
           </div>
 
-          <div class="collection advanced-area">
+          <div className="collection advanced-area">
             <h2>Advanced Activities</h2>
-            <div class="collection collection--small-cards">
+            <div className="collection collection--small-cards">
               {activities.advanced.map(entry => {
                 return (
-                  <div class="entry">
-                    <div class="entry-heading">
+                  <div className="entry">
+                    <div className="entry-heading">
                       <a
-                        class="entry-title"
+                        className="entry-title"
                         href={entry.sandboxUrl}
                         target="_blank"
                       >
                         {entry.title}
                       </a>
                     </div>
-                    <div class="entry-content">
-                      <div class="entry-image-holder">
+                    <div className="entry-content">
+                      <div className="entry-image-holder">
                         <a href={entry.sandboxUrl} target="_blank">
-                          <img src={entry.imageSrc} class="entry-image" />
+                          <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div class="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );
