@@ -2,6 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //import style from "./LandingRoute.module.css";
+import lootBoxesVariablesIntoImage from "../images/thumbnails/learn/loot-boxes__variables-intro.png"
+import virtualPetIntegerFeedingImage from "../images/thumbnails/learn/virtual-pet__integer-feeding.png"
+import lootBoxesMultipleVariablesImage from "../images/thumbnails/learn/loot-boxes__multiple-variables.png"
+import titleScreenSunPositionImage from "../images/thumbnails/learn/title-screen__sun-position.png"
+import tileScreenCustomizeItImage from "../images/thumbnails/learn/title-screen__customize-it.png"
+import stageMakerArrayIntroImage from "../images/thumbnails/learn/stage-maker__array-intro.png"
+import stageMakerMultiDimensionalImage from "../images/thumbnails/learn/stage-maker__multi-dimensional.png"
+import stageMakerCustomizeItImage from "../images/thumbnails/learn/stage-maker__customize-it.png"
+import blockBotsPlayerVsMachineImage from "../images/thumbnails/learn/block-bots__player-vs-machine.png"
+import blockBotsPlayerVsPlayerImage from "../images/thumbnails/learn/block-bots__player-vs-player.png"
+import staircaseArraySortImage from "../images/thumbnails/learn/staircase__array-sort.png"
 
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
@@ -134,7 +145,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activityloot-boxesvariables-intro-kecbj?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/loot-boxes__variables-intro.png"
+      imageSrc: lootBoxesVariablesIntoImage
     },
     {
       title: "Virtual Pet - Integer Feeding",
@@ -142,7 +153,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activityvirtual-petinteger-feeding-6cvo0?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/virtual-pet__integer-feeding.png"
+      imageSrc: virtualPetIntegerFeedingImage
     },
     {
       title: "Loot Boxes - Multiple Variables",
@@ -150,7 +161,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activityloot-boxesmultiple-variables-r4lbx?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/loot-boxes__multiple-variables.png"
+      imageSrc: lootBoxesMultipleVariablesImage
     },
     {
       title: "Title Screen - Sun Position",
@@ -159,7 +170,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitytitle-screensun-position-bvt7z?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/title-screen__sun-position.png"
+      imageSrc: titleScreenSunPositionImage
     },
     {
       title: "Title Screen - Customize It",
@@ -167,7 +178,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitytitle-screencustomize-it-zs9xp?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/title-screen__customize-it.png"
+      imageSrc: tileScreenCustomizeItImage
     },
     {
       title: "Stage Maker - Array Intro",
@@ -175,7 +186,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitystage-makerarray-intro-hye31?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/stage-maker__array-intro.png"
+      imageSrc: stageMakerArrayIntroImage
     },
     {
       title: "Stage Maker - Multi Dimensional",
@@ -184,7 +195,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitystage-makermulti-dimensional-3e4z0?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/stage-maker__multi-dimensional.png"
+      imageSrc: stageMakerMultiDimensionalImage
     },
     {
       title: "Stage Maker - Customize It",
@@ -192,7 +203,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitystage-makercustomize-it-stvqt?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/stage-maker__customize-it.png"
+      imageSrc: stageMakerCustomizeItImage
     }
   ],
   intermediate: [
@@ -203,7 +214,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activityblock-botsplayer-vs-machine-jzdh4?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/block-bots__player-vs-machine.png"
+      imageSrc: blockBotsPlayerVsMachineImage
     },
     {
       title: "Block Bots - Player vs Player",
@@ -211,7 +222,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activityblock-botsplayer-vs-player-xhc1k?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/block-bots__player-vs-player.png"
+      imageSrc: blockBotsPlayerVsPlayerImage
     }
   ],
   advanced: [
@@ -221,7 +232,7 @@ const activities = {
       sandboxUrl:
         "https://codesandbox.io/s/activitystaircasearray-sort-rjurf?fontsize=14&module=%2FREADME.md",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/learn/staircase__array-sort.png"
+      imageSrc: staircaseArraySortImage
     }
   ]
 };

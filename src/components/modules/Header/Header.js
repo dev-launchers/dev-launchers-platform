@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 import style from "./Header.module.css";
+import logoFullImage from "../../../images/logo-full.png";
 
 export default class Header extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ export default class Header extends React.Component {
           <div className={style.logo}>
             <Link to={"/"} className="nav-link">
               <img
-                src="/images/logo-full.png"
+                src={logoFullImage}
                 style={{ width: "100%", marginTop: "2.5%" }}
               />
             </Link>

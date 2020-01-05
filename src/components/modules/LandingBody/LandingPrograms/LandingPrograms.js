@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import style from "./LandingPrograms.module.css";
+import sparkSymbolImage from '../../../../images/spark-symbol.png'
+import ignitionSymbolImage from '../../../../images/ignition-symbol.png'
 
 import Button from "../../../common/Button";
 
@@ -39,7 +41,7 @@ export default class LandingPrograms extends React.Component {
               }}
             >
               <img
-                src="/images/spark-symbol.png"
+                src={sparkSymbolImage}
                 style={{ width: "80%", padding: "5%" }}
               />
               <Button label="Join Spark!" fontSize="2rem" />
@@ -88,7 +90,7 @@ export default class LandingPrograms extends React.Component {
               }}
             >
               <img
-                src="/images/launch-symbol.png"
+                src={ignitionSymbolImage}
                 style={{ width: "80%", padding: "5%" }}
               />
               <Button label="Join Ignition!" fontSize="2rem" />

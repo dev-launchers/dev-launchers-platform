@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 import style from "./Footer.module.css";
+import logoMonogramImage from "../../../images/logo-monogram.png";
 
 export default class Footer extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ export default class Footer extends React.Component {
         <div className={style.quoteArea}>{this.getRandomQuote()}</div>
         <img
           className={style.footerLogo}
-          src="/images/logo-monogram.png"
+          src={logoMonogramImage}
         />{" "}
         <div className={style.footerNav}>
           <Link to={"/create"} className="nav-link">

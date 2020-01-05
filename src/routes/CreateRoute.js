@@ -2,6 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //import style from "./LandingRoute.module.css";
+import basicAppImage from "../images/thumbnails/create/basic-app.png"
+import virtualPetImage from "../images/thumbnails/create/virtual-pet.png"
+import spaceArcadeImage from "../images/thumbnails/create/space-arcade.png"
+import pongImage from "../images/thumbnails/create/pong.png"
+import platformerImage from "../images/thumbnails/create/platformer.png"
+import simplePhysicsSkeletonImage from "../images/thumbnails/create/simple-physics-skeleton.png"
 
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
@@ -97,7 +103,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-templatesbasic-app-xfkij?fontsize=14&hidenavigation=1&theme=dark",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/basic-app.png"
+      imageSrc: basicAppImage
     }
   ],
   games: [
@@ -108,7 +114,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-template-virtual-pet-1oyty?fontsize=14&module=%2F.DO_NOT_TOUCH%2Fmain.js",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/virtual-pet.png"
+      imageSrc: virtualPetImage
     },
     {
       title: "Space Arcade",
@@ -116,7 +122,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-templatespace-arcade-k84gf?fontsize=14&hidenavigation=1&module=%2Findex.js&theme=dark",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/space-arcade.png"
+      imageSrc: spaceArcadeImage
     },
     {
       title: "Pong",
@@ -125,7 +131,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-template-pong-opot8?fontsize=14&module=%2Findex.js",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/pong.png"
+      imageSrc: pongImage
     },
     {
       title: "Platformer",
@@ -134,7 +140,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-template-platformer-ky2et?fontsize=14&module=%2Findex.js",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/platformer.png"
+      imageSrc: platformerImage
     },
     {
       title: "Simple Physics Skeleton",
@@ -143,7 +149,7 @@ const projectTemplates = {
       sandboxUrl:
         "https://codesandbox.io/s/project-templateone-way-joint-constraints-vdily?fontsize=14",
       githubUrl: "",
-      imageSrc: "/images/thumbnails/create/simple-physics-skeleton.png"
+      imageSrc: simplePhysicsSkeletonImage
     }
   ]
 };
