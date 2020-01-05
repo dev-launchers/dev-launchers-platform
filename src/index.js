@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 //import EarnRoute from "./routes/EarnRoute.js";
 //import SupportUsRoute from "./routes/SupportUsRoute.js";
 
-import "./styles.css";
+//import "./styles.css";
 
 class App extends React.Component {
   constructor() {
