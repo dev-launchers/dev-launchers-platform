@@ -26,14 +26,14 @@ class App extends React.Component {
           toastClassName="toast"
           progressClassName="toast-progress"
         />
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route exact path="/" component={LandingRoute} />
-            <Route path="/create" component={CreateRoute} />
-            <Route path="/learn" component={LearnRoute} />
-            <Route path="/play" component={PlayRoute} />
-            <Route path="/earn" component={EarnRoute} />
-            <Route path="/support-us" component={SupportUsRoute} />
+            <Route exact path="/create" component={CreateRoute} />
+            <Route exact path="/learn" component={LearnRoute} />
+            <Route exact path="/play" component={PlayRoute} />
+            <Route exact path="/earn" component={EarnRoute} />
+            <Route exact path="/support-us" component={SupportUsRoute} />
           </Switch>
         </Router>
       </div>

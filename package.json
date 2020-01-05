@@ -4,7 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
-  "homepage": "https://dev-launchers-sandbox.github.io/dev-launchers__website/",
+  "homepage": "http://dev-launchers-sandbox.github.io/dev-launchers__website/",
   "dependencies": {
     "react": "16.12.0",
     "react-dom": "16.12.0",
