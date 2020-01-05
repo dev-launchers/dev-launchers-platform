@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ReactModal from "react-modal";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -42,12 +41,6 @@ class App extends React.Component {
           toastClassName="toast"
           progressClassName="toast-progress"
         />
-        <ReactModal
-          isOpen={this.state.showModal}
-          contentLabel="Minimal Modal Example"
-        >
-          <button onClick={this.handleCloseModal}>Close Modal</button>
-        </ReactModal>
 
         <Router>
           <Switch>
