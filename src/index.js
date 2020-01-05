@@ -17,22 +17,7 @@ import "./styles.css";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      showModal: false
-    };
-
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
-
-  handleOpenModal() {
-    this.setState({ showModal: true });
-  }
-
-  handleCloseModal() {
-    this.setState({ showModal: false });
-  }
-
   render() {
     return (
       <div className="App">
