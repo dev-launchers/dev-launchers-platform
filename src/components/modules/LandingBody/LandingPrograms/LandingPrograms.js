@@ -10,44 +10,25 @@ import Button from "../../../common/Button";
 export default class LandingPrograms extends React.Component {
   constructor() {
     super();
-    this.state = { color: "red" };
   }
   render() {
     return (
-      <div className={style.landingBody}>
+      <div className={style.LandingBody}>
         <h1>
           Our Programs <span style={{ fontSize: "1rem" }}>(for teens)</span>
         </h1>
-        <div className="spark-program-area" style={{ display: "flex" }}>
-          <div
-            className="program-image"
-            style={{
-              width: "40%",
-              height: "20%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <div
-              style={{
-                width: "80%",
-                backgroundColor: "#1c1c1c",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+        <div className={style.ProgramArea}>
+          <div className={style.ProgramImageArea}>
+
+            <div className={style.ProgramImageContainer}>
               <img
+                className={style.ProgramImage}
                 src={sparkSymbolImage}
-                style={{ width: "80%", padding: "5%" }}
               />
               <Button label="Join Spark!" fontSize="2rem" />
             </div>
           </div>
-          <div style={{ width: "60%" }}>
+          <div className={style.ProgramDescriptionArea}>
             <h2>Spark</h2>
             The Spark Program introduces teen students to the skills needed to
             develop their own games and apps! Come hang out with Dev Launchers
@@ -64,39 +45,17 @@ export default class LandingPrograms extends React.Component {
             </ul>
           </div>
         </div>
-        <div
-          className="ignition-program-area"
-          style={{ display: "flex", marginTop: "5%" }}
-        >
-          <div
-            className="program-image"
-            style={{
-              width: "40%",
-              height: "20%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <div
-              style={{
-                width: "80%",
-                backgroundColor: "#1c1c1c",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
+        <div className={style.ProgramArea}>
+          <div className={style.ProgramImageArea}>
+            <div className={style.ProgramImageContainer}>
               <img
+                class={style.ProgramImage}
                 src={ignitionSymbolImage}
-                style={{ width: "80%", padding: "5%" }}
               />
               <Button label="Join Ignition!" fontSize="2rem" />
             </div>
           </div>
-          <div style={{ width: "60%" }}>
+          <div className={style.ProgramDescriptionArea}>
             <h2>Ignition</h2>
             Our Ignition Program offers an in-depth, rigorous development
             experience for students looking to take a deeper dive into the realm

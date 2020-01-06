@@ -1,4 +1,4 @@
-.header {
+.HeaderBlock {
   background-color: #1c1c1c;
   color: #d9d9d9;
   min-height: 7.5vh;
@@ -14,12 +14,12 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.logo {
+.Logo {
   display: inline;
   width: 10%;
 }
 
-.headerNav {
+.HeaderNav {
   display: inline;
   font-size: 1rem;
   width: 40%;
@@ -30,6 +30,12 @@
   justify-content: space-between;
 }
 
-.navEntry {
+.NavEntry {
   cursor: pointer;
+}
+
+@media (orientation: portrait) {
+  .Logo {
+    width:20%;
+  }
 }

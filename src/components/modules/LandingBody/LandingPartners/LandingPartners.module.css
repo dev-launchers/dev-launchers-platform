@@ -1,4 +1,4 @@
-.partnerList {
+.PartnerList {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7,7 +7,11 @@
   width: 100%;
 }
 
-.partnerEntry {
+.PartnerEntry {
   font-size: 3rem;
   margin: 5%;
+}
+
+@media (orientation: portrait) {
+
 }

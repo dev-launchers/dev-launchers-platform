@@ -4,13 +4,12 @@ import ReactDOM from "react-dom";
 import style from "./LandingIntro.module.css";
 
 export default class LandingIntro extends React.Component {
-  constructor() {
-    super();
-    this.state = { color: "red" };
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
-      <div className={style.landingBody}>
+      <div className={style.LandingIntro}>
         <h1>Create your own apps and games!</h1>
         No matter who you are, or where you are in your tech career, Dev
         Launchers will propel you to the next level!

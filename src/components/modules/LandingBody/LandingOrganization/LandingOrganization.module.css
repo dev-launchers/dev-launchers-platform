@@ -1,0 +1,35 @@
+
+.LandingOrganization {
+
+}
+
+.CtaSection {
+
+}
+
+.CtaSection_Title {
+
+}
+
+
+.CtaSection_Content {
+  display: flex;
+}
+
+.CtaSection_Description {
+  width: 50%;
+}
+
+.CtaSection_ButtonArea {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.CtaSection_Button {
+
+}
+
+@media (orientation: portrait) {
+
+}

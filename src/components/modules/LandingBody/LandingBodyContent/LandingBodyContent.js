@@ -9,13 +9,12 @@ import LandingOrganization from "../LandingOrganization";
 import LandingPartners from "../LandingPartners";
 
 export default class LandingBodyContent extends React.Component {
-  constructor() {
-    super();
-    this.state = { color: "red" };
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
-      <div className={style.contentArea}>
+      <div className={style.LandingBodyContent}>
         <LandingIntro />
         <hr />
         <LandingPrograms />

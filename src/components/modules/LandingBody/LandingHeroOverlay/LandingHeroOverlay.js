@@ -5,32 +5,17 @@ import style from "./LandingHeroOverlay.module.css";
 
 import Button from "../../../common/Button";
 
-export default class LandingHero extends React.Component {
-  constructor() {
-    super();
-    this.state = { color: "red" };
+export default class LandingHeroOverlay extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
-      <div className={style.heroOverlay}>
-        <div
-          style={{
-            position: "absolute",
-            left: "10%",
-            bottom: "10%",
-            width: "50%",
-            fontWeight: "bold",
-            fontSize: "5vw",
-            color: "white",
-            fontFamily: "'Holtwood One SC', serif",
-            lineHeight: "1.1em"
-          }}
-        >
-          <span style={{ textShadow: "4px 4px 1px black" }}>
-            Join the journey
-          </span>
+      <div className={style.LandingHeroOverlay}>
+        <div className={style.Tagline}>
+          Join the journey
           <br />
-          <Button label="BECOME A DEVELOPER!" />
+          <Button className={style.HeroButton} label="BECOME A DEVELOPER!" />
         </div>
       </div>
     );

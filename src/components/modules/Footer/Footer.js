@@ -6,40 +6,39 @@ import style from "./Footer.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 
 export default class Footer extends React.Component {
-  constructor() {
-    super();
-    this.state = { color: "red" };
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
-      <div className={style.footer}>
-        <div className={style.quoteArea}>{this.getRandomQuote()}</div>
+      <footer className={style.FooterBlock}>
+        <div className={style.QuoteArea}>{this.getRandomQuote()}</div>
           <Link to={"/"} className="nav-link">
         <img
-          className={style.footerLogo}
+          className={style.FooterLogo}
           src={logoMonogramImage}
         /></Link>
-        <div className={style.footerNav}>
+        <div className={style.FooterNav}>
           <Link to={"/create"} className="nav-link">
-            <div className={style.navEntry}>CREATE</div>
+            <div className={style.NavEntry}>CREATE</div>
           </Link>
           <Link to={"/learn"} className="nav-link">
-            <div className={style.navEntry}>LEARN</div>
+            <div className={style.NavEntry}>LEARN</div>
           </Link>
           <Link to={"/play"} className="nav-link">
-            <div className={style.navEntry}>PLAY</div>
+            <div className={style.NavEntry}>PLAY</div>
           </Link>
           <Link to={"/earn"} className="nav-link">
-            <div className={style.navEntry}>EARN</div>
+            <div className={style.NavEntry}>EARN</div>
           </Link>
           <Link to={"/support-us"} className="nav-link">
-            <div className={style.navEntry}>SUPPORT US</div>
+            <div className={style.NavEntry}>SUPPORT US</div>
           </Link>
         </div>
-        <div className={style.orgInfoArea}>
+        <div className={style.OrgInfoArea}>
           Terms of Service | Privacy Policy | ©Dev Launchers, 2020.
         </div>
-      </div>
+      </footer>
     );
   }
 

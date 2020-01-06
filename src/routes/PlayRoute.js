@@ -62,11 +62,11 @@ export default class PlayRoute extends React.Component {
         <Header />
         <PageBody>
           <br />
-          <h1 id="title">Check It Out</h1>
+          <h1 id="title">We Build Things</h1>
           <div className="page-description">
-            These games are all made by our students! Open up the development
+            These apps are all created by our students! Open up the development
             links to see their latest changes, or the production links for more
-            stable versions of the games
+            stable versions.
           </div>
           <hr />
           <div className="projects-area">

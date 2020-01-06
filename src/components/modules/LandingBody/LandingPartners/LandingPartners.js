@@ -10,15 +10,15 @@ export default class LandingPartners extends React.Component {
   }
   render() {
     return (
-      <div className={style.landingBody}>
+      <div className={style.LandingPartners}>
         <h1>Our Partners</h1>
         We partner with organizations doing outreach to bring in a diverse range
         of students, and for-profit partners so Dev Launchers can grow and
         continue to do what we love!
-        <div className={style.partnerList}>
-          <div className={style.partnerEntry}>Austin Public Library</div>
-          <div className={style.partnerEntry}>CodeSandbox</div>
-          <div className={style.partnerEntry}>Phaser 3</div>
+        <div className={style.PartnerList}>
+          <div className={style.PartnerEntry}>Austin Public Library</div>
+          <div className={style.PartnerEntry}>CodeSandbox</div>
+          <div className={style.PartnerEntry}>Phaser 3</div>
         </div>
         <div />
         <div />

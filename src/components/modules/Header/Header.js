@@ -6,15 +6,15 @@ import style from "./Header.module.css";
 import logoFullImage from "../../../images/logo-full.png";
 
 export default class Header extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { color: "red" };
   }
   render() {
     return (
       <div>
-        <div className={style.header}>
-          <div className={style.logo}>
+        <div className={style.HeaderBlock}>
+          <div className={style.Logo}>
             <Link to={"/"} className="nav-link">
               <img
                 src={logoFullImage}
@@ -22,21 +22,21 @@ export default class Header extends React.Component {
               />
             </Link>
           </div>
-          <div className={style.headerNav}>
+          <div className={style.HeaderNav}>
             <Link to={"/create"} className="nav-link">
-              <div className={style.navEntry}>CREATE</div>
+              <div className={style.NavEntry}>CREATE</div>
             </Link>
             <Link to={"/learn"} className="nav-link">
-              <div className={style.navEntry}>LEARN</div>
+              <div className={style.NavEntry}>LEARN</div>
             </Link>
             <Link to={"/play"} className="nav-link">
-              <div className={style.navEntry}>PLAY</div>
+              <div className={style.NavEntry}>PLAY</div>
             </Link>
             <Link to={"/earn"} className="nav-link">
-              <div className={style.navEntry}>EARN</div>
+              <div className={style.NavEntry}>EARN</div>
             </Link>
             <Link to={"/support-us"} className="nav-link">
-              <div className={style.navEntry}>SUPPORT US</div>
+              <div className={style.NavEntry}>SUPPORT US</div>
             </Link>
           </div>
           <div />

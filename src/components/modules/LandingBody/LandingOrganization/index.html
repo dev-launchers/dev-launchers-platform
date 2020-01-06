@@ -1,0 +1,100 @@
+<html>
+<head>
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>Functional Test</title>
+  <meta name="mobile-web-app-capable" content="yes">
+  <script type="text/javascript" src="library/component-system.js"></script>
+  <script type="text/javascript">
+
+
+  </script>
+</head>
+<body style="width:100%;height:100%;left:0;top:0;margin:0;background-color:black;color:rgb(0,255,0);font-weight:bold;">
+  <script type="text/javascript">
+
+    const pipe = (...fns) => fns.reduce((a, b) => (arg) => b(a(arg)))
+    const compose = (...fns) => x => fns.reduceRight((y, f) => f(y), x);
+    const trace = label => value => {
+      console.log(label, value);
+      return value;
+    };
+    const filter = (func) => (arr) => arr.filter(func);
+    const map = (func) => (arr) => arr.map(func);
+    const reduce = (func) => (arr) => arr.reduce(func);
+    const set = key => val => obj => {obj[key]=val;return obj;}
+
+
+    const vehicles = [
+      { make: 'Honda', model: 'CR-V', type: 'suv', price: 24045 },
+      { make: 'Honda', model: 'Accord', type: 'sedan', price: 22455 },
+      { make: 'Mazda', model: 'Mazda 6', type: 'sedan', price: 24195 },
+      { make: 'Mazda', model: 'CX-9', type: 'suv', price: 31520 },
+      { make: 'Toyota', model: '4Runner', type: 'suv', price: 34210 },
+      { make: 'Toyota', model: 'Sequoia', type: 'suv', price: 45560 },
+      { make: 'Toyota', model: 'Tacoma', type: 'truck', price: 24320 },
+      { make: 'Ford', model: 'F-150', type: 'truck', price: 27110 },
+      { make: 'Ford', model: 'Fusion', type: 'sedan', price: 22120 },
+      { make: 'Ford', model: 'Explorer', type: 'suv', price: 31660 }
+    ];
+
+    const appendString = toAppend => toAppendTo => toAppendTo+toAppend
+
+    const appendStringToMake = str => vehicle => vehicle.make+str
+    const appendSmile = appendStringToMake(' :)')
+
+    const filterByPrice = min => max => pipe(
+      filter(obj => obj.price < max && obj.price > min)
+    )
+    const toView = (vehicle) => `${vehicle.make} ${vehicle.model} for $${vehicle.price}.00`
+
+
+    const toLowPriceView = pipe(
+      map(toView),
+      map(appendString(' - LOW LOW PRICE!'))
+    )
+    const toMidPriceView = pipe(
+      map(toView),
+      map(appendString('!')),
+    )
+    const toHighPriceView = pipe(
+      map(toView),
+      map(appendString(' - Price Negotiable')),
+    )
+
+    const lowPricedCarViews = pipe(
+      filterByPrice(0)(22500),
+      toLowPriceView
+    )(vehicles)
+    const midPricedCarViews = pipe(
+      filterByPrice(22500)(30000),
+      toMidPriceView
+    )(vehicles)
+    const highPricedCarViews = pipe(
+      filterByPrice(30000)(9999999999),
+      toHighPriceView
+    )(vehicles)
+
+    document.write('low', '<br>', lowPricedCarViews.join('<br>'), '<br>');
+    document.write('mid', '<br>', midPricedCarViews.join('<br>'), '<br>');
+    document.write('high', '<br>', highPricedCarViews.join('<br>'), '<br>');
+    document.write('<br>', '<br>', '<br>');
+
+
+
+    // Let's try a game //////////////////////////////////////////////////
+
+
+    const spaces = [0,0,0,0,0]
+    const setAtIndex = i => val => arr => arr.map((e, j) => i==j ? val : e)
+
+
+    let newSpaces = pipe(
+      setAtIndex(2)(1),
+      setAtIndex(4)(1)
+    )(spaces)
+
+    document.write(newSpaces);
+
+  </script>
+</body>
+</html>

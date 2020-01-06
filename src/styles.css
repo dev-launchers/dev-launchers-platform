@@ -116,3 +116,22 @@ h2 {
   padding-right: 15vw;
   background-color: lightgray;
 }
+
+
+
+@media (orientation: portrait) {
+  h1 {
+    font-size:1.7rem;
+  }
+
+  h2 {
+    font-size:1.2rem;
+  }
+
+  .collection--small-cards > .entry  {
+    width:100%;
+  }
+  .entry-image {
+    height:20vw;;
+  }
+}
