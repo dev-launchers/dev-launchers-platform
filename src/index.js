@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import ScrollToTop from "./utils/ScrollToTop.js"
 import LandingRoute from "./routes/LandingRoute.js";
 import CreateRoute from "./routes/CreateRoute.js";
 import LearnRoute from "./routes/LearnRoute.js";
@@ -27,14 +28,15 @@ class App extends React.Component {
           progressClassName="toast-progress"
         />
         <Router basename={process.env.PUBLIC_URL}>
-          <Switch>
-            <Route exact path="/" component={LandingRoute} />
-            <Route exact path="/create" component={CreateRoute} />
-            <Route exact path="/learn" component={LearnRoute} />
-            <Route exact path="/play" component={PlayRoute} />
-            <Route exact path="/earn" component={EarnRoute} />
-            <Route exact path="/support-us" component={SupportUsRoute} />
-          </Switch>
+            <ScrollToTop />
+            <Switch>
+              <Route exact path="/" component={LandingRoute} />
+              <Route exact path="/create" component={CreateRoute} />
+              <Route exact path="/learn" component={LearnRoute} />
+              <Route exact path="/play" component={PlayRoute} />
+              <Route exact path="/earn" component={EarnRoute} />
+              <Route exact path="/support-us" component={SupportUsRoute} />
+            </Switch>
         </Router>
       </div>
     );

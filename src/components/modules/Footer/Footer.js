@@ -14,10 +14,11 @@ export default class Footer extends React.Component {
     return (
       <div className={style.footer}>
         <div className={style.quoteArea}>{this.getRandomQuote()}</div>
+          <Link to={"/"} className="nav-link">
         <img
           className={style.footerLogo}
           src={logoMonogramImage}
-        />{" "}
+        /></Link>
         <div className={style.footerNav}>
           <Link to={"/create"} className="nav-link">
             <div className={style.navEntry}>CREATE</div>
