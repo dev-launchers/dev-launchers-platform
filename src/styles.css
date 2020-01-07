@@ -120,6 +120,14 @@ h2 {
 
 
 @media (orientation: portrait) {
+  html {
+    /* Scale all font down */
+    font-size:75%;
+  }
+
+  .App {
+  }
+
   h1 {
     font-size:1.7rem;
   }
