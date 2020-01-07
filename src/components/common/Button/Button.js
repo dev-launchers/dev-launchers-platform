@@ -15,8 +15,8 @@ export default class Button extends React.Component {
   }
   render() {
     return (
-      <button className={style.button} onClick={this.clickHandler}>
-        {this.props.label}
+      <button className={style.Button} onClick={this.clickHandler}>
+        {this.props.children}
       </button>
     );
   }

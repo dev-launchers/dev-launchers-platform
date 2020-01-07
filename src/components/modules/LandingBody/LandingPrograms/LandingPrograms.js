@@ -25,7 +25,9 @@ export default class LandingPrograms extends React.Component {
                 className={style.ProgramImage}
                 src={sparkSymbolImage}
               />
-              <Button label="Join Spark!" fontSize="2rem" />
+              <Button fontSize="2rem">
+                Join Spark!
+              </Button>
             </div>
           </div>
           <div className={style.ProgramDescriptionArea}>
@@ -52,7 +54,9 @@ export default class LandingPrograms extends React.Component {
                 class={style.ProgramImage}
                 src={ignitionSymbolImage}
               />
-              <Button label="Join Ignition!" fontSize="2rem" />
+              <Button fontSize="2rem">
+                Join Ignition!
+              </Button>
             </div>
           </div>
           <div className={style.ProgramDescriptionArea}>

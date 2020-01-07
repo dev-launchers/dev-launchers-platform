@@ -27,7 +27,9 @@ export default class LandingOrganization extends React.Component {
             </div>
             <div
               className={style.CtaSection_ButtonArea}>
-              <Button className={style.CtaSection_Button} label="Become a Mentor" />
+              <Button className={style.CtaSection_Button}>
+                Become a Mentor
+              </Button>
             </div>
           </div>
         </div>
@@ -41,7 +43,9 @@ export default class LandingOrganization extends React.Component {
             </div>
             <div
               className={style.CtaSection_ButtonArea}>
-              <Button className={style.CtaSection_Button} label="Nominate a Student" />
+              <Button className={style.CtaSection_Button}>
+                Nominate a Student
+              </Button>
             </div>
           </div>
         </div>
@@ -56,7 +60,9 @@ export default class LandingOrganization extends React.Component {
             </div>
             <div
               className={style.CtaSection_ButtonArea}>
-              <Button className={style.CtaSection_Button} label="Find us on GitHub" />
+              <Button className={style.CtaSection_Button}>
+                Find us on GitHub
+              </Button>
             </div>
           </div>
         </div>

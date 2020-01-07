@@ -15,7 +15,7 @@
   color: white;
   font-family: 'Holtwood One SC', serif;
   line-height: 1.1em;
-  textShadow: "4px 4px 1px black";
+  text-shadow: 4px 4px 1px black;
 }
 
 .HeroButton {
@@ -23,5 +23,7 @@
 }
 
 @media (orientation: portrait) {
-
+  .LandingHeroOverlay {
+    height: 80vw;
+  }
 }
