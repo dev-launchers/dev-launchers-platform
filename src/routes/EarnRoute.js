@@ -24,6 +24,27 @@ export default class EarnRoute extends React.Component {
             <li>Help other members, receive bonus points</li>
             <li>Become a developer, get paid</li>
           </ul>
+          <span style={{color:"red", fontWeight:"bold", fontSize:".9rem"}}>
+            * This page is under construction, and the point values and rewards listed are NOT final!
+            Point to reward ratios will be adjusted, and new ways to earn points are being added
+          </span>
+
+          <hr />
+          <h2>Spend points</h2>
+          Tell me, <b>what do you want?</b>
+          <br />
+          <ul>
+            <li>50 Points: A custom domain of your choosing linked to your own web app or portfolio</li>
+            <li>200 points: $100 Giftcard From:</li>
+            <ul>
+              <li>Best Buy</li>
+              <li>Apple Store</li>
+              <li>Google Play</li>
+              <li>PlayStation Network</li>
+              <li>XBox</li>
+            </ul>
+          </ul>
+          <br />
           <hr />
           <h2>Earn points</h2>
           <table
@@ -69,6 +90,7 @@ export default class EarnRoute extends React.Component {
                   +20 points
                 </td>
               </tr>
+
               <tr style={{ fontSize: ".9rem" }}>
                 <td>Communication</td>
               </tr>
@@ -105,6 +127,7 @@ export default class EarnRoute extends React.Component {
                   +2 points
                 </td>
               </tr>
+
               <tr style={{ fontSize: ".9rem" }}>
                 <td>Goal Oriented</td>
               </tr>
@@ -124,6 +147,27 @@ export default class EarnRoute extends React.Component {
                   +100 points
                 </td>
               </tr>
+
+              <tr style={{ fontSize: ".9rem" }}>
+                <td>Marketing</td>
+              </tr>
+              <tr>
+                <td>&#8195;Create a social media post about your project, and tag Dev Launchers!</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +10 points
+                </td>
+              </tr>
+              <tr>
+                <td>&#8195;Refer someone to the Ignition Program!</td>
+                <td
+                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
+                >
+                  +50 points
+                </td>
+              </tr>
+
               <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
                 For Coders
               </tr>
@@ -153,15 +197,8 @@ export default class EarnRoute extends React.Component {
               fontWeight: "bold"
             }}
           />
-          <hr />
-          <h2>Spend points</h2>
-          Tell me, <b>what do you want?</b>
-          <br />
-          <br />
-          Points == $?
-          <br />
-          <br />
-          <br />
+        <br />
+        <br />
         </PageBody>
         <Footer />
       </div>
