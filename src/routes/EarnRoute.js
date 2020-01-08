@@ -18,7 +18,7 @@ export default class EarnRoute extends React.Component {
         <PageBody>
           <br />
           <h1>Work Hard, Play Hard</h1>
-          <h3>For students who join the Dev Launchers Ignition Program:</h3>
+          <h3>For students who join the Dev Launchers <b>Ignition Program</b>:</h3>
           <ul>
             <li>Create games and apps, earn rewards</li>
             <li>Help other members, receive bonus points</li>
@@ -34,7 +34,7 @@ export default class EarnRoute extends React.Component {
           Tell me, <b>what do you want?</b>
           <br />
           <ul>
-            <li><b>50 Points</b>: A custom domain of your choosing linked to your own web app or portfolio</li>
+            <li><b>50 Points</b>: A custom domain of your choosing linked to your own web app, game, or portfolio</li>
             <li><b>200 Points</b>: $100 Giftcard From:</li>
             <ul>
               <li>Best Buy</li>
