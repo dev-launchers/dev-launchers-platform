@@ -31,7 +31,7 @@ export default class EarnRoute extends React.Component {
 
           <hr />
           <h2>Spend points</h2>
-          Tell me, <b>what do you want?</b>
+          Progress through our Ignition Program and earn points you can put toward prizes
           <br />
           <ul>
             <li><b>50 Points</b>: A custom domain of your choosing linked to your own web app, game, or portfolio</li>
@@ -140,11 +140,11 @@ export default class EarnRoute extends React.Component {
                 </td>
               </tr>
               <tr>
-                <td>&#8195;Finish your MVP</td>
+                <td>&#8195;Complete a task from your project board</td>
                 <td
                   style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
                 >
-                  +100 points
+                  +1, 2, 4, 8, 16, etc. (based on story points)
                 </td>
               </tr>
 

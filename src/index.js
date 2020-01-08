@@ -4,6 +4,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Tabletop from 'tabletop';
 
 import ScrollToTop from "./utils/ScrollToTop.js"
 import LandingRoute from "./routes/LandingRoute.js";
@@ -19,6 +20,19 @@ class App extends React.Component {
   constructor() {
     super();
   }
+
+  componentDidMount() {
+    Tabletop.init({
+      // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
+      // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
+      key: '1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0',
+      callback: googleData => {
+        console.log('google sheet data --->', googleData)
+      },
+      simpleSheet: false
+    })
+  }
+
   render() {
     return (
       <div className="App">
