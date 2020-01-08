@@ -34,14 +34,14 @@ export default class EarnRoute extends React.Component {
           Tell me, <b>what do you want?</b>
           <br />
           <ul>
-            <li>50 Points: A custom domain of your choosing linked to your own web app or portfolio</li>
-            <li>200 points: $100 Giftcard From:</li>
+            <li><b>50 Points</b>: A custom domain of your choosing linked to your own web app or portfolio</li>
+            <li><b>200 Points</b>: $100 Giftcard From:</li>
             <ul>
               <li>Best Buy</li>
               <li>Apple Store</li>
               <li>Google Play</li>
               <li>PlayStation Network</li>
-              <li>XBox</li>
+              <li>Xbox</li>
             </ul>
           </ul>
           <br />
