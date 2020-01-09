@@ -2,16 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //import style from "./LandingRoute.module.css";
-import basicAppImage from "../images/thumbnails/create/basic-app.png"
-import virtualPetImage from "../images/thumbnails/create/virtual-pet.png"
-import spaceArcadeImage from "../images/thumbnails/create/space-arcade.png"
-import pongImage from "../images/thumbnails/create/pong.png"
-import platformerImage from "../images/thumbnails/create/platformer.png"
-import simplePhysicsSkeletonImage from "../images/thumbnails/create/simple-physics-skeleton.png"
 
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
+
+// Get content data
+let projectTemplates = require('../content/collections/projectTemplates.json').data;
 
 export default class CreateRoute extends React.Component {
   constructor() {
@@ -93,63 +90,3 @@ export default class CreateRoute extends React.Component {
     );
   }
 }
-
-const projectTemplates = {
-  apps: [
-    {
-      title: "Basic App",
-      description:
-        "A basic React app, ready to add your own custom designs and features to!",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-templatesbasic-app-xfkij?fontsize=14&hidenavigation=1&theme=dark",
-      githubUrl: "",
-      imageSrc: basicAppImage
-    }
-  ],
-  games: [
-    {
-      title: "Virtual Pet",
-      description:
-        "A simple virtual pet base project. An animal moves back and forth within the screen space, interacts with a ball, and eats food.",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-template-virtual-pet-1oyty?fontsize=14&module=%2F.DO_NOT_TOUCH%2Fmain.js",
-      githubUrl: "",
-      imageSrc: virtualPetImage
-    },
-    {
-      title: "Space Arcade",
-      description: "A twist on the classic space shooter genre!",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-templatespace-arcade-k84gf?fontsize=14&hidenavigation=1&module=%2Findex.js&theme=dark",
-      githubUrl: "",
-      imageSrc: spaceArcadeImage
-    },
-    {
-      title: "Pong",
-      description:
-        "A simple recreation of the physics involved with the classic Pong game.",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-template-pong-opot8?fontsize=14&module=%2Findex.js",
-      githubUrl: "",
-      imageSrc: pongImage
-    },
-    {
-      title: "Platformer",
-      description:
-        "A simple recreation of the physics involved with a basic platformer game.",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-template-platformer-ky2et?fontsize=14&module=%2Findex.js",
-      githubUrl: "",
-      imageSrc: platformerImage
-    },
-    {
-      title: "Simple Physics Skeleton",
-      description:
-        "An incredibly simple example of joint constraints, limited to joints affecting each other in one direction.",
-      sandboxUrl:
-        "https://codesandbox.io/s/project-templateone-way-joint-constraints-vdily?fontsize=14",
-      githubUrl: "",
-      imageSrc: simplePhysicsSkeletonImage
-    }
-  ]
-};
