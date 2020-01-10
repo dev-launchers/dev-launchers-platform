@@ -1,7 +1,7 @@
 
 # This folder contains data fed into our content layer
 
-This layer has been created with the intent of moving towards a tool like 'Contentful' in the future. It allows us to manage all of the content displayed on the site in one location.
+This layer has been created with the intent of moving towards a CMS tool like 'Contentful' in the future, or serving up that data from our backend. It allows us to manage all of the content displayed on the site in one location.
 
 ## File Naming Conventions
 

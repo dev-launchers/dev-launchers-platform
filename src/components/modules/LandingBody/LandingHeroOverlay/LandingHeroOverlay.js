@@ -15,7 +15,7 @@ export default class LandingHeroOverlay extends React.Component {
         <div className={style.Tagline}>
           Join the journey
           <br />
-          <Button className={style.HeroButton}>
+          <Button className={style.HeroButton} href="https://forms.gle/ktNmippzfYUTnwgb8">
             BECOME A DEVELOPER!
           </Button>
         </div>

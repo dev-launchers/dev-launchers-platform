@@ -7,6 +7,9 @@ import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
 
+// Get content data
+let rewards = require('../content/collections/rewards.json').data;
+
 export default class EarnRoute extends React.Component {
   constructor() {
     super();
@@ -34,19 +37,58 @@ export default class EarnRoute extends React.Component {
           Progress through our Ignition Program and earn points you can put toward prizes
           <br />
           <ul>
-            <li><b>50 Points</b>: A custom domain of your choosing linked to your own web app, game, or portfolio</li>
-            <li><b>200 Points</b>: $100 Giftcard From:</li>
-            <ul>
-              <li>Best Buy</li>
-              <li>Apple Store</li>
-              <li>Google Play</li>
-              <li>PlayStation Network</li>
-              <li>Xbox</li>
-            </ul>
+            {rewards.prizes.map((entry, i) => {
+              return (<li><b>{entry.cost} Points:</b> {entry.description}</li>)
+            })}
           </ul>
           <br />
           <hr />
           <h2>Earn points</h2>
+          {/*
+          <table
+            style={{
+              width: "90%",
+              boxShadow:
+                "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)",
+              marginLeft: "auto",
+              marginRight: "auto",
+              borderCollapse: "collapse"
+            }}
+          >
+            <tbody>
+              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
+                <td>For Everyone</td>
+              </tr>
+              {
+                // Group items into categories based on their 'category' attribute
+                //let categories = rewards.tasks.reduce((categoryMemo, entry) => {
+                  //let category = entry.category;
+                  //if (!categoryMemo[category]) categoryMemo[category] = [];
+                  //categoryMemo[category].push({description, value});
+                  //return categoryMemo;
+                //}, {});
+                rewards.tasks.reduce((memo, val) => {});
+                console.log('cats', categories)
+
+
+
+                rewards.tasks.map((entry, i) => {
+                return (
+                  <tr style={{ borderTop: "1px solid lightgrey"}}>
+                    <td>{entry.description}</td>
+                    <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>+{entry.value} Points</td>
+                  </tr>)
+                })
+
+              }
+
+            </tbody>
+
+          </table>
+          */}
+
+
+          {
           <table
             style={{
               width: "90%",
@@ -189,14 +231,7 @@ export default class EarnRoute extends React.Component {
               </tr>
             </tbody>
           </table>
-          <div
-            style={{
-              textAlign: "left",
-              color: "red",
-              fontSize: "1rem",
-              fontWeight: "bold"
-            }}
-          />
+          }
         <br />
         <br />
         </PageBody>
