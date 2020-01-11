@@ -14,38 +14,59 @@
         "cost": 50
       },
       {
-        "title": "Gift Card",
+        "title": "$30 Gift Card",
+        "description": "$30 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, Xbox",
+        "cost": 150
+      },
+      {
+        "title": "$100 Gift Card",
         "description": "$100 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, Xbox",
-        "cost": 200
+        "cost": 250
       }
     ],
     "tasks": [
       {
         "description": "Attend a lab session",
-        "value": 5,
+        "value": "+5",
         "category": "Perserverence"
       },
       {
-        "description": "+ Fill out session sign up form at least 24 hours before session",
-        "value": 10,
+        "description": "Fill out session sign up form at least 24 hours before session",
+        "value": "+10",
         "category": "Perserverence"
       },
       {
         "description": "Attend 3 sessions in a row",
-        "value": 20,
+        "value": "+20",
         "category": "Perserverence"
       },
 
       {
         "description": "Send a message on Slack at least once during the week",
-        "value": 1,
+        "value": "+1",
         "category": "Communication"
       },
       {
         "description": "Send at least 10 Slack messages during the week",
-        "value": 15,
+        "value": "+14",
         "category": "Communication"
       },
+
+      {
+        "description": "Create a social media post about your project, and tag Dev Launchers!",
+        "value": "+10",
+        "category": "Marketing"
+      },
+      {
+        "description": "Refer someone to the Ignition Program!",
+        "value": "+50",
+        "category": "Marketing"
+      }
+
+    ]
+  },
+
+  "archive": [
 
       {
         "description": "Create a project board",
@@ -56,19 +77,6 @@
         "description": "Complete a task from your project board",
         "value": "1,2,4,8,16, etc. (Based on story points)",
         "category": "Goal Oriented"
-      },
-
-      {
-        "description": "Create a social media post about your project, and tag Dev Launchers!",
-        "value": 10,
-        "category": "Marketing"
-      },
-      {
-        "description": "Refer someone to the Ignition Program!",
-        "value": 50,
-        "category": "Marketing"
       }
-
-    ]
-  }
+  ]
 }

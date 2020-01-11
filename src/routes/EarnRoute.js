@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import Tabletop from 'tabletop';
+
 //import style from "./LandingRoute.module.css";
 
 import Header from "../components/modules/Header";
@@ -13,7 +15,24 @@ let rewards = require('../content/collections/rewards.json').data;
 export default class EarnRoute extends React.Component {
   constructor() {
     super();
+    this.state = {
+      students: []
+    }
   }
+
+  componentDidMount() {
+    Tabletop.init({
+      // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
+      // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
+      key: '1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0',
+      callback: googleData => {
+        console.log('google sheet data --->', googleData)
+        this.setState({students:googleData.students.elements})
+      },
+      simpleSheet: false
+    })
+  }
+
   render() {
     return (
       <div>
@@ -34,17 +53,32 @@ export default class EarnRoute extends React.Component {
 
           <hr />
           <h2>Spend points</h2>
-          Progress through our Ignition Program and earn points you can put toward prizes
+          Progress through our Ignition Program and earn points you can spend on prizes!
           <br />
-          <ul>
-            {rewards.prizes.map((entry, i) => {
-              return (<li><b>{entry.cost} Points:</b> {entry.description}</li>)
+          <br />
+          <div className="collection collection--small-cards">
+            {
+              // rendering our prizes
+              rewards.prizes.map((entry, i) => {
+              //return (<li><b>{entry.cost} Points:</b> {entry.description}</li>)
+              return (<div className="entry" style={{paddingTop:"1%", backgroundColor:"#dcec56"}}>
+                        <div className="entry-title" style={{fontSize:"1.8rem"}}>
+                          <b style={{fontSize:"2rem"}}>{entry.title}</b>
+                        </div>
+                        <div className="entry-content" style={{padding:"3%"}}>
+                          {entry.description}
+                          <br />
+                          <br />
+                          <b style={{fontFamily: "Holtwood One SC", color:"#6c8000"}}>{entry.cost} <span style={{}}>Points</span></b>
+                        </div>
+                      </div>)
             })}
-          </ul>
+          </div>
           <br />
           <hr />
           <h2>Earn points</h2>
-          {/*
+          {
+            // rendering our task table
           <table
             style={{
               width: "90%",
@@ -60,180 +94,80 @@ export default class EarnRoute extends React.Component {
                 <td>For Everyone</td>
               </tr>
               {
-                // Group items into categories based on their 'category' attribute
-                //let categories = rewards.tasks.reduce((categoryMemo, entry) => {
-                  //let category = entry.category;
-                  //if (!categoryMemo[category]) categoryMemo[category] = [];
-                  //categoryMemo[category].push({description, value});
-                  //return categoryMemo;
-                //}, {});
-                rewards.tasks.reduce((memo, val) => {});
-                console.log('cats', categories)
+                function() {
+                  // Group our entries by category first, then output
+                  let categories = rewards.tasks.reduce((categoryMemo, entry) => {
+                    let category = entry.category;
+                    if (!categoryMemo[category]) categoryMemo[category] = [];
+                    categoryMemo[category].push({
+                      "description": entry.description,
+                      "value": entry.value
+                    });
+                    return categoryMemo;
+                  }, {});
+                  console.log('categories', categories);
 
-
-
-                rewards.tasks.map((entry, i) => {
-                return (
-                  <tr style={{ borderTop: "1px solid lightgrey"}}>
-                    <td>{entry.description}</td>
-                    <td style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}>+{entry.value} Points</td>
-                  </tr>)
-                })
-
+                  // Array full of JSX to render
+                  let toRender = [];
+                  for (let category in categories) {
+                    let tasks = categories[category];
+                    toRender.push(<tr style={{ fontSize: ".9rem", borderTop:"2px solid gray" }}>{category}</tr>);
+                    toRender.push(tasks.map((task) => {
+                      console.log(task)
+                      return (<tr style={{borderTop:"1px solid lightgray"}}>
+                                <td style={{ paddingLeft: "5%", paddingBottom:"1%" }}>{task.description}</td>
+                                <td style={{ width:"15%", paddingBottom:"1%", fontFamily: "Holtwood One SC", fontSize: ".8rem", textAlign:"center" }}>
+                                  {task.value}
+                                </td>
+                              </tr>)
+                    }))
+                  }
+                  return toRender;
+                }()
               }
 
             </tbody>
 
           </table>
-          */}
-
-
-          {
-          <table
-            style={{
-              width: "90%",
-              boxShadow:
-                "0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)",
-              marginLeft: "auto",
-              marginRight: "auto"
-            }}
-          >
-            <tbody>
-              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-                <td>For Everyone</td>
-              </tr>
-              <tr style={{ fontSize: ".9rem" }}>
-                <td>Perserverence</td>
-              </tr>
-              <tr>
-                <td>&#8195;Attend a lab session</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +5 points
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  &#8195;&#8195;&#8195; + Fill out session sign up form at least
-                  24 hours before session
-                </td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +10 points
-                </td>
-              </tr>
-              <tr>
-                <td>&#8195;Attend 3 sessions in a row</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +20 points
-                </td>
-              </tr>
-
-              <tr style={{ fontSize: ".9rem" }}>
-                <td>Communication</td>
-              </tr>
-              <tr>
-                <td>
-                  &#8195;Send a (meaningful) message on Slack at least once
-                  during the week
-                </td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +1 points
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  &#8195;Send at least 10 (meaningful) Slack messages during the
-                  week
-                </td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +15 points
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  &#8195;Help another member during a lab session(record this on
-                  Slack!)
-                </td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +2 points
-                </td>
-              </tr>
-
-              <tr style={{ fontSize: ".9rem" }}>
-                <td>Goal Oriented</td>
-              </tr>
-              <tr>
-                <td>&#8195;Create a project board</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +10 points
-                </td>
-              </tr>
-              <tr>
-                <td>&#8195;Complete a task from your project board</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +1, 2, 4, 8, 16, etc. (based on story points)
-                </td>
-              </tr>
-
-              <tr style={{ fontSize: ".9rem" }}>
-                <td>Marketing</td>
-              </tr>
-              <tr>
-                <td>&#8195;Create a social media post about your project, and tag Dev Launchers!</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +10 points
-                </td>
-              </tr>
-              <tr>
-                <td>&#8195;Refer someone to the Ignition Program!</td>
-                <td
-                  style={{ fontFamily: "Holtwood One SC", fontSize: ".8rem" }}
-                >
-                  +50 points
-                </td>
-              </tr>
-
-              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-                For Coders
-              </tr>
-              <tr style={{ fontWeight: "bold", fontFamily: "Holtwood One SC" }}>
-                <td>For Digital Designers</td>
-              </tr>
-              <tr />
-              <tr
-                style={{
-                  textAlign: "left",
-                  color: "red",
-                  fontSize: "1rem",
-                  fontWeight: "bold"
-                }}
-              >
-                <td>
-                  * Points are calculated on Saturdays before lab sessions
-                </td>
-              </tr>
-            </tbody>
-          </table>
           }
         <br />
         <br />
+        <hr />
+        <h2>Current Points</h2>
+
+        <table style={{margin:"5%", width:"75%", textAlign:"center"}}>
+          <tbody>
+            <tr style={{fontWeight:"bold"}}>
+              <td style={{}}>Name</td>
+              <td>Points</td>
+              <td>XP</td>
+            </tr>
+            {
+              this.state.students
+              .filter((entry) => {
+                if (entry.isActive == 1) return true;
+                return false;
+              })
+              .map((entry) => {
+                return (<tr>
+                          <td style={{}}>
+                            {entry.name}
+                          </td>
+                          <td style={{}}>
+                            {entry.points}
+                          </td>
+                          <td style={{}}>
+                            {entry.xp}
+                          </td>
+                        </tr>
+                )
+              })
+            }
+          </tbody>
+        </table>
+        <br />
+        <br />
+
         </PageBody>
         <Footer />
       </div>
