@@ -64,6 +64,14 @@
 			}
 		],
 		"intermediate": [
+
+			{
+				"title": "Assembly Line - Function Intro",
+				"description": "Tricky functions!",
+				"sandboxUrl": "https://codesandbox.io/s/activityassembly-linefunction-intro-8kebc",
+				"githubUrl": "",
+				"imageSrc": "images/thumbnails/learn/block-bots__player-vs-machine.png"
+			},
 			{
 				"title": "Block Bots - Player vs Machine",
 				"description": "Pit your programmable bot against a series of bots with increasing difficulty",
