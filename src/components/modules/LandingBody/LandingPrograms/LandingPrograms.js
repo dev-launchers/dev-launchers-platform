@@ -54,7 +54,7 @@ export default class LandingPrograms extends React.Component {
                 class={style.ProgramImage}
                 src={ignitionSymbolImage}
               />
-              <Button fontSize="2rem" href="https://forms.gle/ktNmippzfYUTnwgb8">
+              <Button fontSize="2rem" toast="Ignition signups aren't open yet, but join the Spark Program to begin working with us until enrollment begins!">
                 Join Ignition!
               </Button>
             </div>
