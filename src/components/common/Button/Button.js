@@ -15,13 +15,21 @@ export default class Button extends React.Component {
   clickHandler() {
     if (this.props.href)
       window.open(this.props.href, "_blank")
+    else if (this.props.toast)
+      toast(this.props.toast);
     else
       toast("This site is currently under development, check back soon!");
   }
 
   render() {
+    var inlineStyles = {};
+    if (this.props.fontSize) inlineStyles = {fontSize:this.props.fontSize};
     return (
-      <button className={style.Button} onClick={this.clickHandler}>
+      <button
+        className={style.Button}
+        style={inlineStyles}
+        onClick={this.props.onClick ? this.props.onClick : this.clickHandler}
+      >
         {this.props.children}
       </button>
     );
