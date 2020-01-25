@@ -61,7 +61,7 @@ export default class EarnRoute extends React.Component {
               // rendering our prizes
               rewards.prizes.map((entry, i) => {
               //return (<li><b>{entry.cost} Points:</b> {entry.description}</li>)
-              return (<div className="entry" style={{paddingTop:"1%", backgroundColor:"#dcec56"}}>
+              return (<div className="entry" style={{paddingTop:"1%", backgroundColor:"#ecda56"}}>
                         <div className="entry-title" style={{fontSize:"1.8rem"}}>
                           <b style={{fontSize:"2rem"}}>{entry.title}</b>
                         </div>
@@ -69,7 +69,7 @@ export default class EarnRoute extends React.Component {
                           {entry.description}
                           <br />
                           <br />
-                          <b style={{fontFamily: "Holtwood One SC", color:"#6c8000"}}>{entry.cost} <span style={{}}>Points</span></b>
+                          <b style={{fontFamily: "Holtwood One SC", color:"#806400"}}>{entry.cost} <span style={{}}>Points</span></b>
                         </div>
                       </div>)
             })}
