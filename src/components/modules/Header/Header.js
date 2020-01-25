@@ -3,23 +3,32 @@ import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 import style from "./Header.module.css";
-import logoFullImage from "../../../images/logo-full.png";
+import logoMonogramImage from "../../../images/logo-monogram.png";
+
+import Button from "../../common/Button";
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { color: "red" };
   }
   render() {
+    const {
+      user,
+      signOut,
+      signInWithGithub,
+    } = this.props;
     return (
       <div>
         <div className={style.HeaderBlock}>
           <div className={style.Logo}>
             <Link to={"/"} className="nav-link">
-              <img
-                src={logoFullImage}
-                style={{ width: "100%", marginTop: "2.5%" }}
-              />
+              <div className={style.LogoImageHolder}>
+                <img
+                  src={logoMonogramImage}
+                  className={style.LogoImage}
+                />
+              </div>
+              <div className={style.LogoWords}>Dev Launchers</div>
             </Link>
           </div>
           <div className={style.HeaderNav}>
@@ -40,7 +49,12 @@ export default class Header extends React.Component {
             </Link>
           </div>
           <div />
-          <div />
+          <div style={{width:"10%",textAlign:"center"}}>
+          {
+            user
+              ? <p>Hello, {user.displayName}</p>
+              : <Button fontSize="1.2rem" onClick={signInWithGithub}>Sign In</Button>
+          }</div>
         </div>
         <div
           className="header-pusher"

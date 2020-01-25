@@ -15,8 +15,27 @@
 }
 
 .Logo {
-  display: inline;
-  width: 10%;
+  width: 30%;
+}
+.Logo a {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.LogoImageHolder {
+  width:4.25rem;
+  margin: 2%;
+  margin-bottom:0;
+}
+.LogoImage {
+  display:inline-block;
+  width: 100%;
+}
+.LogoWords {
+  width: 40%;
+  font-family: "Holtwood One SC", serif;
+  font-size:1.25rem;
 }
 
 .HeaderNav {
@@ -36,6 +55,18 @@
 
 @media (orientation: portrait) {
   .Logo {
-    width:20%;
+  }
+  .Logo a {
+  }
+  .LogoImageHolder {
+    height:auto;
+    width:4rem;
+  }
+  .LogoImage {
+    //width:auto;
+    //height:100%;
+  }
+  .LogoWords {
+    display:none;
   }
 }
