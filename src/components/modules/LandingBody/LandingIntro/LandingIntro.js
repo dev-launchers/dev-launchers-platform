@@ -19,10 +19,6 @@ export default class LandingIntro extends React.Component {
             experts
           </li>
           <li>
-            Adults seeking experience are given opportunities to work alongside
-            tech mentors
-          </li>
-          <li>
             Tech professionals gain skills managing teams, leading projects, and
             contributing to a powerful platform built to solve a{" "}
             <b>serious problem</b>

@@ -42,9 +42,8 @@ export default class EarnRoute extends React.Component {
           <h1>Work Hard, Play Hard</h1>
           <h3>For students who join the Dev Launchers <b>Ignition Program</b>:</h3>
           <ul>
-            <li>Create games and apps, earn rewards</li>
-            <li>Help other members, receive bonus points</li>
-            <li>Become a developer, get paid</li>
+            <li>Create games and apps: earn rewards!</li>
+            <li>Become a developer: get paid!</li>
           </ul>
           <span style={{color:"red", fontWeight:"bold", fontSize:".9rem"}}>
             * This page is under construction, and the point values and rewards listed are NOT final!
