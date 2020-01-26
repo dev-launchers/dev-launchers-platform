@@ -23,7 +23,7 @@ export default class LearnRoute extends React.Component {
           <h1 id="title">Learn Code and Design</h1>
           <div className="page-description">
             These activities are meant to familiarize students with the concepts
-            and tools needed to begin creating games with Dev Launchers.
+            and tools needed to begin creating apps and games with Dev Launchers.
           </div>
           <hr />
 
