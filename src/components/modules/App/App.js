@@ -17,6 +17,7 @@ import LearnRoute from "../../../routes/LearnRoute.js";
 import PlayRoute from "../../../routes/PlayRoute.js";
 import EarnRoute from "../../../routes/EarnRoute.js";
 import SupportUsRoute from "../../../routes/SupportUsRoute.js";
+import EventsRoute from "../../../routes/EventsRoute";
 
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -52,15 +53,16 @@ class App extends React.Component {
           progressClassName="toast-progress"
         />
         <Router basename={process.env.PUBLIC_URL}>
-            <ScrollToTop />
-            <Switch>
-              <Route exact path="/" component={HomeRoute} />
-              <Route exact path="/create" component={CreateRoute} />
-              <Route exact path="/learn" component={LearnRoute} />
-              <Route exact path="/play" component={PlayRoute} />
-              <Route exact path="/earn" component={EarnRoute} />
-              <Route exact path="/support-us" component={SupportUsRoute} />
-            </Switch>
+          <ScrollToTop />
+          <Switch>
+            <Route exact path="/" component={HomeRoute} />
+            <Route exact path="/create" component={CreateRoute} />
+            <Route exact path="/learn" component={LearnRoute} />
+            <Route exact path="/play" component={PlayRoute} />
+            <Route exact path="/earn" component={EarnRoute} />
+            <Route exact path="/events" component={EventsRoute} />
+            <Route exact path="/support-us" component={SupportUsRoute} />
+          </Switch>
         </Router>
       </div>
     );
