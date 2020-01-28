@@ -24,7 +24,6 @@ export default class Home extends React.Component {
         <PageBody>
           <div className={style.HomePageBody}>
             <Intro />
-            asdfjsdiofjosijdfi
             <hr />
             <Programs />
             <hr />
