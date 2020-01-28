@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 //import style from "./HomeRoute.module.css";
 
 import Header from "../components/modules/Header";
-import HomeBody from "../components/modules/HomeBody";
+import Home from "../components/modules/Home";
 import Footer from "../components/modules/Footer";
 
 export default class HomeRoute extends React.Component {
@@ -16,7 +16,7 @@ export default class HomeRoute extends React.Component {
     return (
       <div>
         <Header />
-        <HomeBody />
+        <Home />
         <Footer />
       </div>
     );

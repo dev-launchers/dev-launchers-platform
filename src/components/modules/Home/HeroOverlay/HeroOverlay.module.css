@@ -1,4 +1,4 @@
-.HomeHeroOverlay {
+.HeroOverlay {
   position: relative;
   background-color: transparent;
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 @media (orientation: portrait) {
-  .HomeHeroOverlay {
+  .HeroOverlay {
     height: 80vw;
   }
 }
