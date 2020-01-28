@@ -11,7 +11,7 @@ import 'firebase/auth';
 import firebaseConfig from '../../../utils/firebaseConfig.js';
 
 import ScrollToTop from "../../../utils/ScrollToTop.js"
-import LandingRoute from "../../../routes/LandingRoute.js";
+import HomeRoute from "../../../routes/HomeRoute.js";
 import CreateRoute from "../../../routes/CreateRoute.js";
 import LearnRoute from "../../../routes/LearnRoute.js";
 import PlayRoute from "../../../routes/PlayRoute.js";
@@ -54,7 +54,7 @@ class App extends React.Component {
         <Router basename={process.env.PUBLIC_URL}>
             <ScrollToTop />
             <Switch>
-              <Route exact path="/" component={LandingRoute} />
+              <Route exact path="/" component={HomeRoute} />
               <Route exact path="/create" component={CreateRoute} />
               <Route exact path="/learn" component={LearnRoute} />
               <Route exact path="/play" component={PlayRoute} />

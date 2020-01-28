@@ -1,0 +1,17 @@
+.PartnerList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.PartnerEntry {
+  font-size: 3rem;
+  margin: 5%;
+}
+
+@media (orientation: portrait) {
+
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-//import style from "./LandingRoute.module.css";
+//import style from "./HomeRoute.module.css";
 
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
