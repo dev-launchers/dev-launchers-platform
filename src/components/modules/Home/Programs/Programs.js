@@ -1,19 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import style from "./HomePrograms.module.css";
+import style from "./Programs.module.css";
 import sparkSymbolImage from '../../../../images/spark-symbol.png'
 import ignitionSymbolImage from '../../../../images/ignition-symbol.png'
 
 import Button from "../../../common/Button";
 
-export default class HomePrograms extends React.Component {
+export default class Programs extends React.Component {
   constructor() {
     super();
   }
   render() {
     return (
-      <div className={style.HomeBody}>
+      <div className={style.Body}>
         <h1>
           Our Programs <span style={{ fontSize: "1rem" }}>(for teens)</span>
         </h1>

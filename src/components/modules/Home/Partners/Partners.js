@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import style from "./HomePartners.module.css";
+import style from "./Partners.module.css";
 
-export default class HomePartners extends React.Component {
+export default class Partners extends React.Component {
   constructor() {
     super();
     this.state = { color: "red" };
   }
   render() {
     return (
-      <div className={style.HomePartners}>
+      <div className={style.Partners}>
         <h1>Our Partners</h1>
         We partner with organizations doing outreach to bring in a diverse range
         of students, and for-profit partners so Dev Launchers can grow and

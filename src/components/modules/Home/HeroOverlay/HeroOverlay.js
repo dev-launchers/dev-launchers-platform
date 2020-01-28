@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import style from "./HomeHeroOverlay.module.css";
+import style from "./HeroOverlay.module.css";
 
 import Button from "../../../common/Button";
 
-export default class HomeHeroOverlay extends React.Component {
+export default class HeroOverlay extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <div className={style.HomeHeroOverlay}>
+      <div className={style.HeroOverlay}>
         <div className={style.Tagline}>
           Join the journey
           <br />

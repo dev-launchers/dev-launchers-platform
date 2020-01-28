@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import style from "./HomeIntro.module.css";
+import style from "./Intro.module.css";
 
-export default class HomeIntro extends React.Component {
+export default class Intro extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-      <div className={style.HomeIntro}>
+      <div className={style.Intro}>
         <h1>Create your own apps and games!</h1>
         No matter who you are, or where you are in your tech career, Dev
         Launchers will propel you to the next level!

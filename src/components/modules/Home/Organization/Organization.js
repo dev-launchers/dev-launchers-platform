@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import style from "./HomeOrganization.module.css";
+import style from "./Organization.module.css";
 
 import Button from "../../../common/Button";
 
-export default class HomeOrganization extends React.Component {
+export default class Organization extends React.Component {
   constructor() {
     super();
   }
   render() {
     return (
-      <div className={style.HomeOrganization}>
+      <div className={style.Organization}>
         <h1>
           Our Organization
           <span style={{ fontSize: "1rem" }}> (for everyone)</span>
