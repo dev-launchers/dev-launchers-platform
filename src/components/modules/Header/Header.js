@@ -44,17 +44,20 @@ export default class Header extends React.Component {
             <Link to={"/earn"} className="nav-link">
               <div className={style.NavEntry}>EARN</div>
             </Link>
+            <Link to={"/events"} className="nav-link">
+              <div className={style.NavEntry}>EVENTS</div>
+            </Link>
             <Link to={"/support-us"} className="nav-link">
               <div className={style.NavEntry}>SUPPORT US</div>
             </Link>
           </div>
           <div />
-          <div style={{width:"10%",textAlign:"center"}}>
-          {
-            user
-              ? <p>Hello, {user.displayName}</p>
-              : <Button fontSize="1.2rem" onClick={signInWithGithub}>Sign In</Button>
-          }</div>
+          <div style={{ width: "10%", textAlign: "center" }}>
+            {
+              user
+                ? <p>Hello, {user.displayName}</p>
+                : <Button fontSize="1.2rem" onClick={signInWithGithub}>Sign In</Button>
+            }</div>
         </div>
         <div
           className="header-pusher"
