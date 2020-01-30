@@ -1,16 +1,11 @@
-
 .Organization {
-
 }
 
 .CtaSection {
-
 }
 
 .CtaSection_Title {
-
 }
-
 
 .CtaSection_Content {
   display: flex;
@@ -27,9 +22,7 @@
 }
 
 .CtaSection_Button {
-
 }
 
 @media (orientation: portrait) {
-
 }

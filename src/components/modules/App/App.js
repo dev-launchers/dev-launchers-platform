@@ -1,16 +1,16 @@
-import React from 'react';
+import React from "react";
 import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Tabletop from 'tabletop';
+import Tabletop from "tabletop";
 
-import withFirebaseAuth from 'react-with-firebase-auth'
-import * as firebase from 'firebase/app';
-import 'firebase/auth';
-import firebaseConfig from '../../../utils/firebaseConfig.js';
+import withFirebaseAuth from "react-with-firebase-auth";
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from "../../../utils/firebaseConfig.js";
 
-import ScrollToTop from "../../../utils/ScrollToTop.js"
+import ScrollToTop from "../../../utils/ScrollToTop.js";
 import HomeRoute from "../../../routes/HomeRoute.js";
 import CreateRoute from "../../../routes/CreateRoute.js";
 import LearnRoute from "../../../routes/LearnRoute.js";
@@ -18,7 +18,6 @@ import PlayRoute from "../../../routes/PlayRoute.js";
 import EarnRoute from "../../../routes/EarnRoute.js";
 import SupportUsRoute from "../../../routes/SupportUsRoute.js";
 import EventsRoute from "../../../routes/EventsRoute";
-
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
@@ -31,20 +30,16 @@ class App extends React.Component {
     Tabletop.init({
       // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
       // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
-      key: '1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0',
+      key: "1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0",
       callback: googleData => {
-        console.log('google sheet data --->', googleData)
+        console.log("google sheet data --->", googleData);
       },
       simpleSheet: false
-    })
+    });
   }
 
   render() {
-    const {
-      user,
-      signOut,
-      signInWithGithub,
-    } = this.props;
+    const { user, signOut, signInWithGithub } = this.props;
     return (
       <div className="App">
         <ToastContainer
@@ -78,5 +73,5 @@ const providers = {
 
 export default withFirebaseAuth({
   providers,
-  firebaseAppAuth,
+  firebaseAppAuth
 })(App);

@@ -8,7 +8,8 @@ import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
 
 // Get content data
-let projectTemplates = require('../content/collections/projectTemplates.json').data;
+let projectTemplates = require("../content/collections/projectTemplates.json")
+  .data;
 
 export default class CreateRoute extends React.Component {
   constructor() {
@@ -48,7 +49,9 @@ export default class CreateRoute extends React.Component {
                           <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div className="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );
@@ -77,7 +80,9 @@ export default class CreateRoute extends React.Component {
                           <img src={entry.imageSrc} className="entry-image" />
                         </a>
                       </div>
-                      <div className="entry-description">{entry.description}</div>
+                      <div className="entry-description">
+                        {entry.description}
+                      </div>
                     </div>
                   </div>
                 );

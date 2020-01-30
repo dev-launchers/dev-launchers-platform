@@ -19,14 +19,15 @@ export default class Organization extends React.Component {
         Dev Launchers is a nonprofit intent on empowering young people from
         diverse communities
         <div className={style.CtaSection}>
-          <h2 className={style.CtaSection_Title}>We love what we do. You should too!</h2>
+          <h2 className={style.CtaSection_Title}>
+            We love what we do. You should too!
+          </h2>
           <div className={style.CtaSection_Content}>
             <div className={style.CtaSection_Description}>
               Your time is valuable, do something you love. Dev Launchers is
               built for people just like you, take a look around and join us!
             </div>
-            <div
-              className={style.CtaSection_ButtonArea}>
+            <div className={style.CtaSection_ButtonArea}>
               <Button className={style.CtaSection_Button}>
                 Become a Mentor
               </Button>
@@ -34,15 +35,16 @@ export default class Organization extends React.Component {
           </div>
         </div>
         <div className={style.CtaSection}>
-          <h2 className={style.CtaSection_Title}>Technology should be accessible</h2>
+          <h2 className={style.CtaSection_Title}>
+            Technology should be accessible
+          </h2>
           <div className={style.CtaSection_Content}>
             <div className={style.CtaSection_Description}>
               We seek out individuals from diverse, underserved communities and
               empower them to create. Know a young person who's excited about
               technology? Send them our way!
             </div>
-            <div
-              className={style.CtaSection_ButtonArea}>
+            <div className={style.CtaSection_ButtonArea}>
               <Button className={style.CtaSection_Button}>
                 Nominate a Student
               </Button>
@@ -58,8 +60,7 @@ export default class Organization extends React.Component {
               contributors to grow our platform and continue serving our
               students!
             </div>
-            <div
-              className={style.CtaSection_ButtonArea}>
+            <div className={style.CtaSection_ButtonArea}>
               <Button className={style.CtaSection_Button}>
                 Find us on GitHub
               </Button>
