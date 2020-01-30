@@ -13,13 +13,12 @@
   font-weight: bold;
   font-size: 5vw;
   color: white;
-  font-family: 'Holtwood One SC', serif;
+  font-family: "Holtwood One SC", serif;
   line-height: 1.1em;
   text-shadow: 4px 4px 1px black;
 }
 
 .HeroButton {
-
 }
 
 @media (orientation: portrait) {

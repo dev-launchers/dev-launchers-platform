@@ -14,10 +14,8 @@ export default class Footer extends React.Component {
       <footer className={style.FooterBlock}>
         <div className={style.QuoteArea}>{this.getRandomQuote()}</div>
         <Link to={"/"} className="nav-link">
-          <img
-            className={style.FooterLogo}
-            src={logoMonogramImage}
-          /></Link>
+          <img className={style.FooterLogo} src={logoMonogramImage} />
+        </Link>
         <div className={style.FooterNav}>
           <Link to={"/create"} className="nav-link">
             <div className={style.NavEntry}>CREATE</div>

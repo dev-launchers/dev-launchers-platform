@@ -4,6 +4,4 @@ The 'modules' directory contains specialty components grouped by feature or doma
 
 The 'common' directory contains components shared across routes, used in multiple areas of the app.
 
-
-
 We're using folder structures and conventions very similar to those described here: https://hackernoon.com/structuring-projects-and-naming-components-in-react-1261b6e18d76
