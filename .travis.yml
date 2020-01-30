@@ -13,7 +13,7 @@ deploy:
     github_token: $GITHUB_TOKEN
     local_dir: build
     keep_history: true
-    repo: dev-launchers/website
+    repo: dev-launchers/private__website
     target_branch: master
     on:
       branch: release
