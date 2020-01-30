@@ -5,6 +5,11 @@
   "keywords": [],
   "main": "src/index.js",
   "homepage": "http://devlaunchers.com/",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "firebase": "^7.6.2",
     "react": "16.12.0",
@@ -20,18 +25,25 @@
   },
   "devDependencies": {
     "@types/node-sass": "3.10.32",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
+    "prettier": "^1.19.1",
     "typescript": "3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "lint-staged": {
+    "*.{json,js,jsx,ts,tsx,html,scss,css,md}": "prettier --write"
+  }
 }
