@@ -8,7 +8,7 @@ import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
 
 // Get content data
-let activities = require('../content/collections/activities.json').data;
+let activities = require("../content/collections/activities.json").data;
 
 export default class LearnRoute extends React.Component {
   constructor() {

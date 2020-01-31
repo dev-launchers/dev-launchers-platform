@@ -12,21 +12,14 @@ export default class Header extends React.Component {
     super(props);
   }
   render() {
-    const {
-      user,
-      signOut,
-      signInWithGithub,
-    } = this.props;
+    const { user, signOut, signInWithGithub } = this.props;
     return (
       <div>
         <div className={style.HeaderBlock}>
           <div className={style.Logo}>
             <Link to={"/"} className="nav-link">
               <div className={style.LogoImageHolder}>
-                <img
-                  src={logoMonogramImage}
-                  className={style.LogoImage}
-                />
+                <img src={logoMonogramImage} className={style.LogoImage} />
               </div>
               <div className={style.LogoWords}>Dev Launchers</div>
             </Link>
@@ -44,17 +37,23 @@ export default class Header extends React.Component {
             <Link to={"/earn"} className="nav-link">
               <div className={style.NavEntry}>EARN</div>
             </Link>
+            <Link to={"/events"} className="nav-link">
+              <div className={style.NavEntry}>EVENTS</div>
+            </Link>
             <Link to={"/support-us"} className="nav-link">
               <div className={style.NavEntry}>SUPPORT US</div>
             </Link>
           </div>
           <div />
-          <div style={{width:"10%",textAlign:"center"}}>
-          {
-            user
-              ? <p>Hello, {user.displayName}</p>
-              : <Button fontSize="1.2rem" onClick={signInWithGithub}>Sign In</Button>
-          }</div>
+          <div style={{ width: "10%", textAlign: "center" }}>
+            {user ? (
+              <p>Hello, {user.displayName}</p>
+            ) : (
+              <Button fontSize="1.2rem" onClick={signInWithGithub}>
+                Sign In
+              </Button>
+            )}
+          </div>
         </div>
         <div
           className="header-pusher"

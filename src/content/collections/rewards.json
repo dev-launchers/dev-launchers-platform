@@ -1,10 +1,7 @@
-
 {
   "_comment": "",
 
-  "_model": {
-
-  },
+  "_model": {},
 
   "data": {
     "prizes": [
@@ -62,21 +59,19 @@
         "value": "+50",
         "category": "Marketing"
       }
-
     ]
   },
 
   "archive": [
-
-      {
-        "description": "Create a project board",
-        "value": 10,
-        "category": "Goal Oriented"
-      },
-      {
-        "description": "Complete a task from your project board",
-        "value": "1,2,4,8,16, etc. (Based on story points)",
-        "category": "Goal Oriented"
-      }
+    {
+      "description": "Create a project board",
+      "value": 10,
+      "category": "Goal Oriented"
+    },
+    {
+      "description": "Complete a task from your project board",
+      "value": "1,2,4,8,16, etc. (Based on story points)",
+      "category": "Goal Oriented"
+    }
   ]
 }

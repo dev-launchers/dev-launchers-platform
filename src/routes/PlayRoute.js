@@ -31,7 +31,6 @@ export default class PlayRoute extends React.Component {
         let repoEntry = devData[devKey];
         // search look for substring and return its position of its first occurance
         if (repoEntry.name.search("project__") == 0) {
-
           projectsData.push({
             name: repoEntry.name,
             description: repoEntry.description,
@@ -44,7 +43,10 @@ export default class PlayRoute extends React.Component {
       prodKeys.forEach(prodKey => {
         let repoEntry = prodData[prodKey];
         // search look for substring and return its position of its first occurance
-        if (repoEntry.name.search("project__") == 0 && !repoEntry.name.includes(prodKey)) {
+        if (
+          repoEntry.name.search("project__") == 0 &&
+          !repoEntry.name.includes(prodKey)
+        ) {
           projectsData.push({
             name: repoEntry.name,
             description: repoEntry.description,

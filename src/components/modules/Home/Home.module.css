@@ -1,6 +1,6 @@
 .HomePageBody {
   /*margin-top: 45vw;*/
-  width:95%;
+  width: 95%;
   background-color: white;
   color: black;
   padding: 2.5%;
@@ -9,7 +9,7 @@
 
 @media (orientation: portrait) {
   .HomePageBody {
-    width:100%;
+    width: 100%;
     padding: 0%;
   }
 }

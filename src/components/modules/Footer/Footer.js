@@ -13,11 +13,9 @@ export default class Footer extends React.Component {
     return (
       <footer className={style.FooterBlock}>
         <div className={style.QuoteArea}>{this.getRandomQuote()}</div>
-          <Link to={"/"} className="nav-link">
-        <img
-          className={style.FooterLogo}
-          src={logoMonogramImage}
-        /></Link>
+        <Link to={"/"} className="nav-link">
+          <img className={style.FooterLogo} src={logoMonogramImage} />
+        </Link>
         <div className={style.FooterNav}>
           <Link to={"/create"} className="nav-link">
             <div className={style.NavEntry}>CREATE</div>
@@ -30,6 +28,9 @@ export default class Footer extends React.Component {
           </Link>
           <Link to={"/earn"} className="nav-link">
             <div className={style.NavEntry}>EARN</div>
+          </Link>
+          <Link to={"/events"} className="nav-link">
+            <div className={style.NavEntry}>EVENTS</div>
           </Link>
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>

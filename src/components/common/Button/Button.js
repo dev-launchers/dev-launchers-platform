@@ -13,17 +13,14 @@ export default class Button extends React.Component {
   }
 
   clickHandler() {
-    if (this.props.href)
-      window.open(this.props.href, "_blank")
-    else if (this.props.toast)
-      toast(this.props.toast);
-    else
-      toast("This site is currently under development, check back soon!");
+    if (this.props.href) window.open(this.props.href, "_blank");
+    else if (this.props.toast) toast(this.props.toast);
+    else toast("This site is currently under development, check back soon!");
   }
 
   render() {
     var inlineStyles = {};
-    if (this.props.fontSize) inlineStyles = {fontSize:this.props.fontSize};
+    if (this.props.fontSize) inlineStyles = { fontSize: this.props.fontSize };
     return (
       <button
         className={style.Button}

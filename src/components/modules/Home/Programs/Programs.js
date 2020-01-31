@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import style from "./Programs.module.css";
-import sparkSymbolImage from '../../../../images/spark-symbol.png'
-import ignitionSymbolImage from '../../../../images/ignition-symbol.png'
+import sparkSymbolImage from "../../../../images/spark-symbol.png";
+import ignitionSymbolImage from "../../../../images/ignition-symbol.png";
 
 import Button from "../../../common/Button";
 
@@ -19,13 +19,12 @@ export default class Programs extends React.Component {
         </h1>
         <div className={style.ProgramArea}>
           <div className={style.ProgramImageArea}>
-
             <div className={style.ProgramImageContainer}>
-              <img
-                className={style.ProgramImage}
-                src={sparkSymbolImage}
-              />
-              <Button fontSize="2rem" href="https://forms.gle/ktNmippzfYUTnwgb8">
+              <img className={style.ProgramImage} src={sparkSymbolImage} />
+              <Button
+                fontSize="2rem"
+                href="https://forms.gle/ktNmippzfYUTnwgb8"
+              >
                 Join Spark!
               </Button>
             </div>
@@ -50,11 +49,11 @@ export default class Programs extends React.Component {
         <div className={style.ProgramArea}>
           <div className={style.ProgramImageArea}>
             <div className={style.ProgramImageContainer}>
-              <img
-                class={style.ProgramImage}
-                src={ignitionSymbolImage}
-              />
-              <Button fontSize="2rem" toast="Ignition signups aren't open yet, but join the Spark Program to begin working with us until enrollment begins!">
+              <img class={style.ProgramImage} src={ignitionSymbolImage} />
+              <Button
+                fontSize="2rem"
+                toast="Ignition signups aren't open yet, but join the Spark Program to begin working with us until enrollment begins!"
+              >
                 Join Ignition!
               </Button>
             </div>
