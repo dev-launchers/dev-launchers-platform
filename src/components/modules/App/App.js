@@ -21,47 +21,30 @@ import EventsRoute from "../../../routes/EventsRoute";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-class App extends React.Component {
-  constructor() {
-    super();
-  }
+function App(props) {
+  const { user, signOut, signInWithGithub } = props;
 
-  componentDidMount() {
-    Tabletop.init({
-      // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
-      // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
-      key: "1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0",
-      callback: googleData => {
-        console.log("google sheet data --->", googleData);
-      },
-      simpleSheet: false
-    });
-  }
-
-  render() {
-    const { user, signOut, signInWithGithub } = this.props;
-    return (
-      <div className="App">
-        <ToastContainer
-          className="toast-container"
-          toastClassName="toast"
-          progressClassName="toast-progress"
-        />
-        <Router basename={process.env.PUBLIC_URL}>
-          <ScrollToTop />
-          <Switch>
-            <Route exact path="/" component={HomeRoute} />
-            <Route exact path="/create" component={CreateRoute} />
-            <Route exact path="/learn" component={LearnRoute} />
-            <Route exact path="/play" component={PlayRoute} />
-            <Route exact path="/earn" component={EarnRoute} />
-            <Route exact path="/events" component={EventsRoute} />
-            <Route exact path="/support-us" component={SupportUsRoute} />
-          </Switch>
-        </Router>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <ToastContainer
+        className="toast-container"
+        toastClassName="toast"
+        progressClassName="toast-progress"
+      />
+      <Router basename={process.env.PUBLIC_URL}>
+        <ScrollToTop />
+        <Switch>
+          <Route exact path="/" component={HomeRoute} />
+          <Route exact path="/create" component={CreateRoute} />
+          <Route exact path="/learn" component={LearnRoute} />
+          <Route exact path="/play" component={PlayRoute} />
+          <Route exact path="/earn" component={EarnRoute} />
+          <Route exact path="/events" component={EventsRoute} />
+          <Route exact path="/support-us" component={SupportUsRoute} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 const firebaseAppAuth = firebaseApp.auth();

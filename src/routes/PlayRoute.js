@@ -7,16 +7,14 @@ import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
 
-export default class PlayRoute extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      projects: [] // will be filled with entries in the form of:{name: <string>, description: <string>}
-    };
-    this.populateProjects();
-  }
+export default function PlayRoute() {
+  const [projects, setProjects] = React.useState([]);
 
-  populateProjects() {
+  React.useEffect(() => {
+    populateProjects();
+  }, []);
+
+  const populateProjects = () => {
     getAllData().then(allData => {
       let devData = allData.devData;
       let prodData = allData.prodData;
@@ -55,70 +53,66 @@ export default class PlayRoute extends React.Component {
         }
       });
 
-      this.setState({ projects: projectsData });
+      setProjects(projectsData);
     });
-  }
+  };
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <PageBody>
-          <br />
-          <h1 id="title">We Build Things</h1>
-          <div className="page-description">
-            These apps are all created by our students! Open up the development
-            links to see their latest changes, or the production links for more
-            stable versions.
-          </div>
-          <hr />
-          <div className="projects-area">
-            <h2>Projects</h2>
-            <div className="collection collection--large-cards">
-              {this.state.projects.map((entry, i) => {
-                return (
-                  <div className="entry" key={i}>
-                    <div className="entry-heading">
-                      <a
-                        className="entry-title"
-                        href={entry.devUrl}
-                        target="_blank"
-                      >
-                        {entry.name}
-                      </a>
-                      <a
-                        style={{
-                          display: "block",
-                          float: "right",
-                          fontSize: ".85rem",
-                          marginRight: "1%"
-                        }}
-                        href={entry.repoUrl}
-                        target="_blank"
-                      >
-                        GitHub Repo
-                      </a>
-                    </div>
-                    <div className="entry-content">
-                      <div className="entry-image-holder">
-                        <a href={entry.sandboxUrl} target="_blank">
-                          <div src={entry.imageSrc} className="entry-image" />
-                        </a>
-                      </div>
-                      <div className="entry-description">
-                        {entry.description}
-                      </div>
-                    </div>
+  return (
+    <div>
+      <Header />
+      <PageBody>
+        <br />
+        <h1 id="title">We Build Things</h1>
+        <div className="page-description">
+          These apps are all created by our students! Open up the development
+          links to see their latest changes, or the production links for more
+          stable versions.
+        </div>
+        <hr />
+        <div className="projects-area">
+          <h2>Projects</h2>
+          <div className="collection collection--large-cards">
+            {projects.map((entry, i) => {
+              return (
+                <div className="entry" key={i}>
+                  <div className="entry-heading">
+                    <a
+                      className="entry-title"
+                      href={entry.devUrl}
+                      target="_blank"
+                    >
+                      {entry.name}
+                    </a>
+                    <a
+                      style={{
+                        display: "block",
+                        float: "right",
+                        fontSize: ".85rem",
+                        marginRight: "1%"
+                      }}
+                      href={entry.repoUrl}
+                      target="_blank"
+                    >
+                      GitHub Repo
+                    </a>
                   </div>
-                );
-              })}
-            </div>
+                  <div className="entry-content">
+                    <div className="entry-image-holder">
+                      <a href={entry.sandboxUrl} target="_blank">
+                        <div src={entry.imageSrc} className="entry-image" />
+                      </a>
+                    </div>
+                    <div className="entry-description">{entry.description}</div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        </PageBody>
-        <Footer />
-      </div>
-    );
-  }
+        </div>
+      </PageBody>
+      <Footer />
+    </div>
+  );
 }
 
 const GITHUB_API_URL_DEV =
@@ -161,76 +155,4 @@ function getProjectKeys(devDataKeys, prodDataKeys) {
   });
 
   return allKeys;
-}
-
-function populateProjects() {
-  getAllData().then(allData => {
-    let devData = allData.devData;
-    let prodData = allData.prodData;
-    let allPorjectKeys = getProjectKeys(
-      Object.keys(devData),
-      Object.keys(prodData)
-    );
-    allPorjectKeys.forEach(key => {
-      var repoFullName = Object.keys(prodData).includes(key)
-        ? prodData[key].name
-        : devData[key].name;
-
-      const projectRepoElement = document.createElement("div");
-      projectRepoElement.setAttribute("class", "entry");
-      projectRepoElement.innerHTML = `
-        <div className="entry-title">
-            ${repoFullName.substring("project__".length, repoFullName.length)}
-        </div>
-        <div className="entry-description">
-            ${devData[key].description}
-        </div>
-        `;
-
-      // for robustness, we check where the key is from. There could be cases where keys are from dev or prod
-      if (key in devData) {
-        let devGameURLFull = DEV_GAME_URL_PREFIX + repoFullName;
-        projectRepoElement.innerHTML += `
-            <a className="entry-sandbox-url" href="${devGameURLFull}" target="_blank">
-            <div className="entry-button">
-                Open Dev
-            </div>
-            </a>
-            `;
-      }
-
-      if (key in prodData) {
-        let prodGameURLFull = PROD_GAME_URL_PREFIX + repoFullName;
-        projectRepoElement.innerHTML += `
-            <a className="entry-sandbox-url" href="${prodGameURLFull}" target="_blank">
-            <div className="entry-button">
-                Open Prod
-            </div>
-            </a>
-            `;
-      }
-
-      // Add github link
-      projectRepoElement.innerHTML += `
-        <a className="entry-github-url" href="https://github.com/dev-launchers-sandbox/${repoFullName}" target="_blank">
-          <div className="entry-button entry-github-repo-button">
-              Github Repo
-          </div>
-        </a>
-        `;
-
-      // Add codesandbox link
-      projectRepoElement.innerHTML += `
-        <a className="entry-sandbox-url" href="https://codesandbox.io/dashboard/sandboxes" target="_blank">
-          <div className="entry-button entry-sandbox-repo-button">
-              Online IDE
-          </div>
-        </a>
-      `;
-
-      const activityAreaElement = document.getElementById("activity-area");
-
-      activityAreaElement.appendChild(projectRepoElement);
-    });
-  });
 }

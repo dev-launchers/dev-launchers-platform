@@ -6,29 +6,22 @@ import { toast } from "react-toastify";
 
 import style from "./Button.module.css";
 
-export default class Button extends React.Component {
-  constructor() {
-    super();
-    this.clickHandler = this.clickHandler.bind(this);
-  }
-
-  clickHandler() {
-    if (this.props.href) window.open(this.props.href, "_blank");
-    else if (this.props.toast) toast(this.props.toast);
+export default function Button(props) {
+  const clickHandler = () => {
+    if (props.href) window.open(props.href, "_blank");
+    else if (props.toast) toast(props.toast);
     else toast("This site is currently under development, check back soon!");
-  }
+  };
 
-  render() {
-    var inlineStyles = {};
-    if (this.props.fontSize) inlineStyles = { fontSize: this.props.fontSize };
-    return (
-      <button
-        className={style.Button}
-        style={inlineStyles}
-        onClick={this.props.onClick ? this.props.onClick : this.clickHandler}
-      >
-        {this.props.children}
-      </button>
-    );
-  }
+  let inlineStyles = {};
+  if (props.fontSize) inlineStyles = { fontSize: props.fontSize };
+  return (
+    <button
+      className={style.Button}
+      style={inlineStyles}
+      onClick={props.onClick ? props.onClick : clickHandler}
+    >
+      {props.children}
+    </button>
+  );
 }
