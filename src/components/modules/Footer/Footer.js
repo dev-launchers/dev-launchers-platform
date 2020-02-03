@@ -10,6 +10,8 @@ export default class Footer extends React.Component {
     super(props);
   }
   render() {
+    const date = new Date();
+    const year = date.getFullYear();
     return (
       <footer className={style.FooterBlock}>
         <div className={style.QuoteArea}>{this.getRandomQuote()}</div>
@@ -37,7 +39,7 @@ export default class Footer extends React.Component {
           </Link>
         </div>
         <div className={style.OrgInfoArea}>
-          Terms of Service | Privacy Policy | ©Dev Launchers, 2020.
+          Terms of Service | Privacy Policy | ©Dev Launchers, {year}.
         </div>
       </footer>
     );
