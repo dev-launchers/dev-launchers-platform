@@ -13,12 +13,10 @@ export default function Button(props) {
     else toast("This site is currently under development, check back soon!");
   };
 
-  let inlineStyles = {};
-  if (props.fontSize) inlineStyles = { fontSize: props.fontSize };
   return (
     <button
       className={style.Button}
-      style={inlineStyles}
+      style={{ fontSize: props.fontSize }}
       onClick={props.onClick ? props.onClick : clickHandler}
     >
       {props.children}
