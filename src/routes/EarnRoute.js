@@ -55,7 +55,6 @@ export default function EarnRoute() {
         <div className="collection collection--small-cards">
           {// rendering our prizes
           rewards.prizes.map((entry, i) => {
-            //return (<li><b>{entry.cost} Points:</b> {entry.description}</li>)
             return (
               <div
                 className="entry"
