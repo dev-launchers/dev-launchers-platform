@@ -11,10 +11,10 @@ export default function PlayRoute() {
   const [projects, setProjects] = React.useState([]);
 
   React.useEffect(() => {
-    populateProjects();
-  }, []);
-
-  const populateProjects = () => {
+    /*
+     * When component mounts, fetch repos owned by dev-launchers-sandbox
+     * using the GitHub API. Then display specific projects to the user
+     */
     getAllData().then(allData => {
       let devData = allData.devData;
       let prodData = allData.prodData;
@@ -55,7 +55,7 @@ export default function PlayRoute() {
 
       setProjects(projectsData);
     });
-  };
+  }, []);
 
   return (
     <div>
