@@ -34,7 +34,7 @@ export default function LearnRoute() {
     });
   }, []);
 
-  const renderActivitySection = activityCollection => {
+  const renderInternalActivities = activityCollection => {
     return (
       <div className="collection collection--small-cards">
         {activityCollection.map((entry, i) => {
@@ -64,6 +64,41 @@ export default function LearnRoute() {
     );
   };
 
+  const renderExternalActivities = activityData => {
+    /*
+    Schema: {
+      "isActive":"<boolean>",
+      "category":"<string>",
+      "title":"<string>",
+      "resourceUrl":"<string>",
+      "difficulty":"<string>",
+      "format":"<string>",
+      "description":"<string>",
+      "extraTagsCSV":"<string>",
+      "imageUrl":"<string>",
+      "notes":"<string>",
+    }
+    */
+    return (
+      <div className="collection collection--small-cards">
+        {activityData.map((entry, i) => {
+          return (
+            <div className="entry" key={i}>
+              <div className="entry-heading">{entry.title}</div>
+              <div>{entry.category}</div>
+              <div>{entry.resourceUrl}</div>
+              <div>{entry.description}</div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  const filterActivitiesOnDifficulty = (activities, difficulty) => {
+    return activities.filter(entry => entry.difficulty == difficulty);
+  };
+
   return (
     <div>
       <Header />
@@ -78,17 +113,38 @@ export default function LearnRoute() {
 
         <div className="collection novice-area">
           <h2>Novice Activities</h2>
-          {renderActivitySection(activities.novice)}
+          {renderInternalActivities(activities.novice)}
+          <div style={{ width: "100%" }}>
+            <h3>Third party activities:</h3>
+            {renderExternalActivities(
+              filterActivitiesOnDifficulty(externalCodeActivities, "NOVICE")
+            )}
+          </div>
         </div>
 
         <div className="collection intermediate-area">
           <h2>Intermediate Activities</h2>
-          {renderActivitySection(activities.intermediate)}
+          {renderInternalActivities(activities.intermediate)}
+          <div style={{ width: "100%" }}>
+            <h3>Third party activities:</h3>
+            {renderExternalActivities(
+              filterActivitiesOnDifficulty(
+                externalCodeActivities,
+                "INTERMEDIATE"
+              )
+            )}
+          </div>
         </div>
 
         <div className="collection advanced-area">
           <h2>Advanced Activities</h2>
-          {renderActivitySection(activities.advanced)}
+          {renderInternalActivities(activities.advanced)}
+          <div style={{ width: "100%" }}>
+            <h3>Third party activities:</h3>
+            {renderExternalActivities(
+              filterActivitiesOnDifficulty(externalCodeActivities, "ADVANCED")
+            )}
+          </div>
         </div>
       </PageBody>
       <Footer />
