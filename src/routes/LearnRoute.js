@@ -27,8 +27,8 @@ export default function LearnRoute() {
       key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
       callback: googleData => {
         console.log("google sheet data --->", googleData);
-        setExternalCodeActivities(googleData.codeActivities.elements);
-        setExternalDesignActivities(googleData.designActivities.elements);
+        setExternalCodeActivities(googleData.exampleActivities.elements);
+        setExternalDesignActivities(googleData.exampleActivities.elements);
       },
       simpleSheet: false
     });
