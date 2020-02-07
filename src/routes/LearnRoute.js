@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Tabletop from "tabletop";
+import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css"; // import react-tabs styles
 
 //import style from "./HomeRoute.module.css";
 
@@ -27,8 +29,8 @@ export default function LearnRoute() {
       key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
       callback: googleData => {
         console.log("google sheet data --->", googleData);
-        setExternalCodeActivities(googleData.exampleActivities.elements);
-        setExternalDesignActivities(googleData.exampleActivities.elements);
+        setExternalCodeActivities(googleData.codeActivities.elements);
+        setExternalDesignActivities(googleData.designActivities.elements);
       },
       simpleSheet: false
     });
@@ -120,42 +122,98 @@ export default function LearnRoute() {
           and tools needed to begin creating their own apps and games
         </div>
         <hr />
+        <br />
 
-        <div className="collection novice-area">
-          <h2>Novice Activities</h2>
-          {renderInternalActivities(activities.novice)}
-          <div style={{ width: "100%" }}>
-            <h3>Third party activities:</h3>
-            {renderExternalActivities(
-              filterActivitiesOnDifficulty(externalCodeActivities, "NOVICE")
-            )}
-          </div>
-        </div>
+        <Tabs>
+          <TabList style={{ fontSize: "2rem", fontWeight: "bold" }}>
+            <Tab>Code</Tab>
+            <Tab>Design</Tab>
+          </TabList>
 
-        <div className="collection intermediate-area">
-          <h2>Intermediate Activities</h2>
-          {renderInternalActivities(activities.intermediate)}
-          <div style={{ width: "100%" }}>
-            <h3>Third party activities:</h3>
-            {renderExternalActivities(
-              filterActivitiesOnDifficulty(
-                externalCodeActivities,
-                "INTERMEDIATE"
-              )
-            )}
-          </div>
-        </div>
+          {/* Code Activities */}
+          <TabPanel>
+            <div className="collection novice-area">
+              <h2>Novice Activities</h2>
+              {renderInternalActivities(activities.novice)}
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(externalCodeActivities, "NOVICE")
+                )}
+              </div>
+            </div>
 
-        <div className="collection advanced-area">
-          <h2>Advanced Activities</h2>
-          {renderInternalActivities(activities.advanced)}
-          <div style={{ width: "100%" }}>
-            <h3>Third party activities:</h3>
-            {renderExternalActivities(
-              filterActivitiesOnDifficulty(externalCodeActivities, "ADVANCED")
-            )}
-          </div>
-        </div>
+            <div className="collection intermediate-area">
+              <h2>Intermediate Activities</h2>
+              {renderInternalActivities(activities.intermediate)}
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(
+                    externalCodeActivities,
+                    "INTERMEDIATE"
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="collection advanced-area">
+              <h2>Advanced Activities</h2>
+              {renderInternalActivities(activities.advanced)}
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(
+                    externalCodeActivities,
+                    "ADVANCED"
+                  )
+                )}
+              </div>
+            </div>
+          </TabPanel>
+
+          {/* Design Activities */}
+          <TabPanel>
+            <div className="collection novice-area">
+              <h2>Novice Activities</h2>
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(
+                    externalDesignActivities,
+                    "NOVICE"
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="collection intermediate-area">
+              <h2>Intermediate Activities</h2>
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(
+                    externalDesignActivities,
+                    "INTERMEDIATE"
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="collection advanced-area">
+              <h2>Advanced Activities</h2>
+              <div style={{ width: "100%" }}>
+                <h3>Third party activities:</h3>
+                {renderExternalActivities(
+                  filterActivitiesOnDifficulty(
+                    externalDesignActivities,
+                    "ADVANCED"
+                  )
+                )}
+              </div>
+            </div>
+          </TabPanel>
+        </Tabs>
       </PageBody>
       <Footer />
     </div>
