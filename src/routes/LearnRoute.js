@@ -34,6 +34,36 @@ export default function LearnRoute() {
     });
   }, []);
 
+  const renderActivitySection = activityCollection => {
+    return (
+      <div className="collection collection--small-cards">
+        {activityCollection.map((entry, i) => {
+          return (
+            <div className="entry" key={i}>
+              <div className="entry-heading">
+                <a
+                  className="entry-title"
+                  href={entry.sandboxUrl}
+                  target="_blank"
+                >
+                  {entry.title}
+                </a>
+              </div>
+              <div className="entry-content">
+                <div className="entry-image-holder">
+                  <a href={entry.sandboxUrl} target="_blank">
+                    <img src={entry.imageSrc} className="entry-image" />
+                  </a>
+                </div>
+                <div className="entry-description">{entry.description}</div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
   return (
     <div>
       <Header />
@@ -48,89 +78,17 @@ export default function LearnRoute() {
 
         <div className="collection novice-area">
           <h2>Novice Activities</h2>
-          <div className="collection collection--small-cards">
-            {activities.novice.map((entry, i) => {
-              return (
-                <div className="entry" key={i}>
-                  <div className="entry-heading">
-                    <a
-                      className="entry-title"
-                      href={entry.sandboxUrl}
-                      target="_blank"
-                    >
-                      {entry.title}
-                    </a>
-                  </div>
-                  <div className="entry-content">
-                    <div className="entry-image-holder">
-                      <a href={entry.sandboxUrl} target="_blank">
-                        <img src={entry.imageSrc} className="entry-image" />
-                      </a>
-                    </div>
-                    <div className="entry-description">{entry.description}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          {renderActivitySection(activities.novice)}
         </div>
 
         <div className="collection intermediate-area">
           <h2>Intermediate Activities</h2>
-          <div className="collection collection--small-cards">
-            {activities.intermediate.map((entry, i) => {
-              return (
-                <div className="entry" key={i}>
-                  <div className="entry-heading">
-                    <a
-                      className="entry-title"
-                      href={entry.sandboxUrl}
-                      target="_blank"
-                    >
-                      {entry.title}
-                    </a>
-                  </div>
-                  <div className="entry-content">
-                    <div className="entry-image-holder">
-                      <a href={entry.sandboxUrl} target="_blank">
-                        <img src={entry.imageSrc} className="entry-image" />
-                      </a>
-                    </div>
-                    <div className="entry-description">{entry.description}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          {renderActivitySection(activities.intermediate)}
         </div>
 
         <div className="collection advanced-area">
           <h2>Advanced Activities</h2>
-          <div className="collection collection--small-cards">
-            {activities.advanced.map((entry, i) => {
-              return (
-                <div className="entry" key={i}>
-                  <div className="entry-heading">
-                    <a
-                      className="entry-title"
-                      href={entry.sandboxUrl}
-                      target="_blank"
-                    >
-                      {entry.title}
-                    </a>
-                  </div>
-                  <div className="entry-content">
-                    <div className="entry-image-holder">
-                      <a href={entry.sandboxUrl} target="_blank">
-                        <img src={entry.imageSrc} className="entry-image" />
-                      </a>
-                    </div>
-                    <div className="entry-description">{entry.description}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          {renderActivitySection(activities.advanced)}
         </div>
       </PageBody>
       <Footer />
