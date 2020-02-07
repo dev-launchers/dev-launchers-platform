@@ -81,16 +81,26 @@ export default function LearnRoute() {
     */
     return (
       <div className="collection collection--small-cards">
-        {activityData.map((entry, i) => {
-          return (
-            <div className="entry" key={i}>
-              <div className="entry-heading">{entry.title}</div>
-              <div>{entry.category}</div>
-              <div>{entry.resourceUrl}</div>
-              <div>{entry.description}</div>
-            </div>
-          );
-        })}
+        <ul>
+          {activityData.map((entry, i) => {
+            return (
+              <li>
+                <span style={{ fontSize: ".9rem" }}>[{entry.category}] - </span>
+                <span>
+                  <a
+                    style={{ color: "blue" }}
+                    href={entry.resourceUrl}
+                    target="_blank"
+                  >
+                    {entry.title}
+                  </a>
+                  :{" "}
+                </span>
+                <span>{entry.description}</span>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   };
