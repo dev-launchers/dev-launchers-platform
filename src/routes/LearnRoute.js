@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Tabletop from "tabletop";
 
 //import style from "./HomeRoute.module.css";
 
@@ -11,6 +12,28 @@ import Footer from "../components/modules/Footer";
 let activities = require("../content/collections/activities.json").data;
 
 export default function LearnRoute() {
+  const [externalCodeActivities, setExternalCodeActivities] = React.useState(
+    []
+  );
+  const [
+    externalDesignActivities,
+    setExternalDesignActivities
+  ] = React.useState([]);
+
+  React.useEffect(() => {
+    Tabletop.init({
+      // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
+      // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
+      key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
+      callback: googleData => {
+        console.log("google sheet data --->", googleData);
+        setExternalCodeActivities(googleData.codeActivities.elements);
+        setExternalDesignActivities(googleData.designActivities.elements);
+      },
+      simpleSheet: false
+    });
+  }, []);
+
   return (
     <div>
       <Header />
