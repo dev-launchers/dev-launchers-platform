@@ -8,6 +8,7 @@ import Tabletop from "tabletop";
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
+import SmallCardCollection from "../components/modules/Earn/SmallCardCollection";
 
 // Get content data
 let rewards = require("../content/collections/rewards.json").data;
@@ -52,34 +53,7 @@ export default function EarnRoute() {
         prizes!
         <br />
         <br />
-        <div className="collection collection--small-cards">
-          {// rendering our prizes
-          rewards.prizes.map((entry, i) => {
-            return (
-              <div
-                className="entry"
-                style={{ paddingTop: "1%", backgroundColor: "#ecda56" }}
-              >
-                <div className="entry-title" style={{ fontSize: "1.8rem" }}>
-                  <b style={{ fontSize: "2rem" }}>{entry.title}</b>
-                </div>
-                <div className="entry-content" style={{ padding: "3%" }}>
-                  {entry.description}
-                  <br />
-                  <br />
-                  <b
-                    style={{
-                      fontFamily: "Holtwood One SC",
-                      color: "#806400"
-                    }}
-                  >
-                    {entry.cost} <span style={{}}>Points</span>
-                  </b>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <SmallCardCollection />
         <br />
         <hr />
         <h2>Earn points</h2>
