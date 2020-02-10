@@ -1,7 +1,7 @@
 import React from "react";
 import Tabletop from "tabletop";
 
-export default function PointsTable(props) {
+export default function PointsTable() {
   const [students, setStudents] = React.useState([]);
 
   React.useEffect(() => {

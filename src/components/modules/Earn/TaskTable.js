@@ -3,7 +3,7 @@ import React from "react";
 // Get content data
 let rewards = require("../../../content/collections/rewards.json").data;
 
-export default function TaskTable(props) {
+export default function TaskTable() {
   return (
     <table
       style={{
