@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SmallCard(props) {
+export default function SpendCard(props) {
   return (
     <div
       className="entry"

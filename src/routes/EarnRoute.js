@@ -8,7 +8,7 @@ import Tabletop from "tabletop";
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
-import SmallCardCollection from "../components/modules/Earn/SmallCardCollection";
+import SpendCardCollection from "../components/modules/Earn/SpendCardCollection";
 import TaskTable from "../components/modules/Earn/TaskTable";
 
 // Get content data
@@ -54,7 +54,7 @@ export default function EarnRoute() {
         prizes!
         <br />
         <br />
-        <SmallCardCollection />
+        <SpendCardCollection />
         <br />
         <hr />
         <h2>Earn points</h2>
