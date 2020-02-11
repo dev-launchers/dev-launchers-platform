@@ -1,5 +1,5 @@
 import React from "react";
-import SpendCard from ".SpendCard.js";
+import SpendCard from "./SpendCard.js";
 
 // Get content data
 let rewards = require("../../../content/collections/rewards.json").data;
