@@ -1,12 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 //import style from "./HomeRoute.module.css";
 
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
-import CreateCardCollection from "../components/modules/CreateCardCollection";
+import CreateGameCardCollection from "../components/modules/Create/CreateGameCardCollection";
+import CreateAppCardCollection from "../components/modules/Create/CreateAppCardCollection";
 
 // Get content data
 let projectTemplates = require("../content/collections/projectTemplates.json")
@@ -27,36 +27,12 @@ export default function CreateRoute() {
         <hr />
         <div className="games-area">
           <h2>Game Templates</h2>
-          <CreateCardCollection />
+          <CreateGameCardCollection />
         </div>
         <hr />
         <div className="apps-area">
           <h2>App Templates</h2>
-          <div className="collection collection--small-cards">
-            {projectTemplates.apps.map((entry, i) => {
-              return (
-                <div className="entry" key={i}>
-                  <div className="entry-heading">
-                    <a
-                      className="entry-title"
-                      href={entry.sandboxUrl}
-                      target="_blank"
-                    >
-                      {entry.title}
-                    </a>
-                  </div>
-                  <div className="entry-content">
-                    <div className="entry-image-holder">
-                      <a href={entry.sandboxUrl} target="_blank">
-                        <img src={entry.imageSrc} className="entry-image" />
-                      </a>
-                    </div>
-                    <div className="entry-description">{entry.description}</div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <CreateAppCardCollection />
         </div>
       </PageBody>
       <Footer />
