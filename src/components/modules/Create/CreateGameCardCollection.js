@@ -1,5 +1,5 @@
 import React from "react";
-import CreateCard from "./CreateCard.js";
+import CodeSandboxCard from "../../common/Card/CodeSandboxCard.js";
 import { isPropertySignature } from "typescript";
 
 // Get content data
@@ -10,7 +10,7 @@ export default function CreateGameCardCollection() {
   return (
     <div className="collection collection--small-cards">
       {projectTemplates.games.map((entry, i) => {
-        return <CreateCard entry={entry} key={i} />;
+        return <CodeSandboxCard entry={entry} key={i} />;
       })}
     </div>
   );
