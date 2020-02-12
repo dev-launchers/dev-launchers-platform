@@ -1,12 +1,9 @@
 import React from "react";
 
-//import style from "./HomeRoute.module.css";
-
 import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
-import CreateGameCardCollection from "../components/modules/Create/CreateGameCardCollection";
-import CreateAppCardCollection from "../components/modules/Create/CreateAppCardCollection";
+import EntryCardCollection from "../components/common/Card/EntryCardCollection";
 
 // Get content data
 let projectTemplates = require("../content/collections/projectTemplates.json")
@@ -27,12 +24,12 @@ export default function CreateRoute() {
         <hr />
         <div className="games-area">
           <h2>Game Templates</h2>
-          <CreateGameCardCollection />
+          <EntryCardCollection data={projectTemplates.games} />
         </div>
         <hr />
         <div className="apps-area">
           <h2>App Templates</h2>
-          <CreateAppCardCollection />
+          <EntryCardCollection data={projectTemplates.apps} />
         </div>
       </PageBody>
       <Footer />
