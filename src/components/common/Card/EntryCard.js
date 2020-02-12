@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CodeSandboxCard(props) {
+export default function EntryCard(props) {
   return (
     <div className="entry" key={props.i}>
       <div className="entry-heading">
