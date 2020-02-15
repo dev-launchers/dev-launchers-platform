@@ -24,6 +24,11 @@ h2 {
   font-family: "Holtwood One SC", serif;
 }
 
+h3 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
 .toast-container {
 }
 .toast {
