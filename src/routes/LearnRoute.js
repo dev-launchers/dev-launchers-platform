@@ -22,6 +22,8 @@ export default function LearnRoute() {
     setExternalDesignActivities
   ] = React.useState([]);
 
+  const [pageData, setPageData] = React.useState({});
+
   React.useEffect(() => {
     Tabletop.init({
       // https://docs.google.com/spreadsheets/d/e/2PACX-1vQfJccD-2qd8eVQ6BPIc3EbbBUcTcxIUAxNub31QrWalpfExtTccMBYORQoFqPcxt_HRDuWLT9KXwN0/pubhtml
@@ -31,10 +33,45 @@ export default function LearnRoute() {
         console.log("google sheet data --->", googleData);
         setExternalCodeActivities(googleData.codeActivities.elements);
         setExternalDesignActivities(googleData.designActivities.elements);
+
+        //setTimeout(() => {
+        setPageData(sheetsDataToPageJSON(googleData.learnPage.elements));
+        //}, 5000);
+
+        console.log(sheetsDataToPageJSON(googleData.learnPage.elements));
       },
       simpleSheet: false
     });
   }, []);
+
+  // Convert data from our google sheets format to our expected JSON format
+  const sheetsDataToPageJSON = sheetsElements => {
+    let pageData = {};
+    sheetsElements.forEach((element, i) => {
+      if (element.isActive == "TRUE") {
+        const tab = element.tab;
+        const section = element.section;
+        const group = element.group;
+        const activity = {
+          title: element.title,
+          description: element.description,
+          href: element.url,
+          imageSrc: element.imageSrc
+        };
+
+        // if tab doesn't exist yet, create it
+        if (!(tab in pageData)) pageData[tab] = {};
+        // if section in this tab doesn't exist yet, create it
+        if (!(section in pageData[tab])) pageData[tab][section] = {};
+        // if group in this section doesn't exist yet, create it
+        if (!(group in pageData[tab][section]))
+          pageData[tab][section][group] = [];
+
+        pageData[tab][section][group].push(activity);
+      }
+    });
+    return pageData;
+  };
 
   const renderInternalActivities = activityCollection => {
     return (
@@ -111,6 +148,34 @@ export default function LearnRoute() {
     return activities.filter(entry => entry.difficulty == difficulty);
   };
 
+  const renderSection = section => {
+    section.map((entry, i) => {
+      return <div></div>;
+    });
+  };
+
+  const renderGroup = group => {};
+
+  const renderEntry = entry => {
+    return (
+      <div className="entry" key={entry.title}>
+        <div className="entry-heading">
+          <a className="entry-title" href={entry.href} target="_blank">
+            {entry.title}
+          </a>
+        </div>
+        <div className="entry-content">
+          <div className="entry-image-holder">
+            <a href={entry.href} target="_blank">
+              <img src={entry.imageSrc} className="entry-image" />
+            </a>
+          </div>
+          <div className="entry-description">{entry.description}</div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div>
       <Header />
@@ -118,101 +183,68 @@ export default function LearnRoute() {
         <br />
         <h1 id="title">Learn Code and Design</h1>
         <div className="page-description">
-          These activities are meant to familiarize students with the concepts
-          and tools needed to begin creating their own apps and games
+          These resources familiarize students with the concepts and tools
+          needed to begin creating their own apps and games!
         </div>
         <hr />
         <br />
 
-        <Tabs>
+        <Tabs defaultFocus={true} defaultIndex="0">
           <TabList style={{ fontSize: "2rem", fontWeight: "bold" }}>
-            <Tab>Code</Tab>
-            <Tab>Design</Tab>
+            {// Have to do this hack for some reason (create empty tab if page not loaded)...
+            //otherwise tabs break
+            Object.entries(pageData).length === 0 ? <Tab></Tab> : ""}
+            {// Render tabs from our dynamically built pageData object
+            Object.keys(pageData).map(key => {
+              return <Tab key={"tab" + key}>{key}</Tab>;
+            })}
           </TabList>
-
-          {/* Code Activities */}
-          <TabPanel>
-            <div className="collection novice-area">
-              <h2>Novice Activities</h2>
-              {renderInternalActivities(activities.novice)}
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(externalCodeActivities, "NOVICE")
-                )}
-              </div>
-            </div>
-
-            <div className="collection intermediate-area">
-              <h2>Intermediate Activities</h2>
-              {renderInternalActivities(activities.intermediate)}
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(
-                    externalCodeActivities,
-                    "INTERMEDIATE"
-                  )
-                )}
-              </div>
-            </div>
-
-            <div className="collection advanced-area">
-              <h2>Advanced Activities</h2>
-              {renderInternalActivities(activities.advanced)}
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(
-                    externalCodeActivities,
-                    "ADVANCED"
-                  )
-                )}
-              </div>
-            </div>
-          </TabPanel>
-
-          {/* Design Activities */}
-          <TabPanel>
-            <div className="collection novice-area">
-              <h2>Novice Activities</h2>
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(
-                    externalDesignActivities,
-                    "NOVICE"
-                  )
-                )}
-              </div>
-            </div>
-
-            <div className="collection intermediate-area">
-              <h2>Intermediate Activities</h2>
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(
-                    externalDesignActivities,
-                    "INTERMEDIATE"
-                  )
-                )}
-              </div>
-            </div>
-
-            <div className="collection advanced-area">
-              <h2>Advanced Activities</h2>
-              <div style={{ width: "100%" }}>
-                <h3>Third party activities:</h3>
-                {renderExternalActivities(
-                  filterActivitiesOnDifficulty(
-                    externalDesignActivities,
-                    "ADVANCED"
-                  )
-                )}
-              </div>
-            </div>
-          </TabPanel>
+          {// Render sections and groups from our dynamically built pageData object
+          // Render tab panels from our dynamically built pageData object
+          Object.values(pageData).map((tab, i) => {
+            // render all sections for this tab
+            return (
+              <TabPanel key={i}>
+                {Object.keys(tab).map((sectionTitle, i) => {
+                  const section = tab[sectionTitle];
+                  return (
+                    <div
+                      style={{
+                        borderLeft: "1px solid black",
+                        marginBottom: "10%"
+                      }}
+                    >
+                      <h2 style={{ marginLeft: "2%", marginBottom: "0" }}>
+                        {sectionTitle}
+                      </h2>
+                      <div key={"collection" + i}>
+                        {Object.keys(section).map(groupTitle => {
+                          const group = section[groupTitle];
+                          return (
+                            <div
+                              style={{
+                                borderLeft: "1px solid black",
+                                marginLeft: "2%"
+                              }}
+                            >
+                              <h3 style={{ padding: "1%", marginBottom: "0" }}>
+                                {groupTitle}
+                              </h3>
+                              <div className="collection collection--small-card">
+                                {group.map(activity => {
+                                  return renderEntry(activity);
+                                })}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </TabPanel>
+            );
+          })}
         </Tabs>
       </PageBody>
       <Footer />
