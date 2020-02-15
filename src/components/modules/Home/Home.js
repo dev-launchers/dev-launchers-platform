@@ -12,27 +12,22 @@ import Programs from "./Programs";
 import Organization from "./Organization";
 import Partners from "./Partners";
 
-export default class Home extends React.Component {
-  constructor() {
-    super();
-  }
-  render() {
-    return (
-      <div className={style.Home}>
-        <HeroImage />
-        <HeroOverlay />
-        <PageBody>
-          <div className={style.HomePageBody}>
-            <Intro />
-            <hr />
-            <Programs />
-            <hr />
-            <Organization />
-            <hr />
-            <Partners />
-          </div>
-        </PageBody>
-      </div>
-    );
-  }
+export default function Home() {
+  return (
+    <div className={style.Home}>
+      <HeroImage />
+      <HeroOverlay />
+      <PageBody>
+        <div className={style.HomePageBody}>
+          <Intro />
+          <hr />
+          <Programs />
+          <hr />
+          <Organization />
+          <hr />
+          <Partners />
+        </div>
+      </PageBody>
+    </div>
+  );
 }

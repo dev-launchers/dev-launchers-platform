@@ -6,8 +6,8 @@
   cursor: pointer;
   font-size: 1.5rem;
   padding: 1.5%;
-  padding-left:3%;
-  padding-right:3%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 .Button:hover {
   background-color: rgb(255, 217, 0);

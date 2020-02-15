@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 
 import style from "./PageBody.module.css";
 
-export default class PageBody extends React.Component {
-  render() {
-    return <div className={style.PageBody}>{this.props.children}</div>;
-  }
+export default function PageBody({ children }) {
+  return <div className={style.PageBody}>{children}</div>;
 }

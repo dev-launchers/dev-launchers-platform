@@ -24,18 +24,18 @@
   align-items: center;
 }
 .LogoImageHolder {
-  width:4.25rem;
+  width: 4.25rem;
   margin: 2%;
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 .LogoImage {
-  display:inline-block;
+  display: inline-block;
   width: 100%;
 }
 .LogoWords {
   width: 40%;
   font-family: "Holtwood One SC", serif;
-  font-size:1.25rem;
+  font-size: 1.25rem;
 }
 
 .HeaderNav {
@@ -59,14 +59,14 @@
   .Logo a {
   }
   .LogoImageHolder {
-    height:auto;
-    width:4rem;
+    height: auto;
+    width: 4rem;
   }
   .LogoImage {
     //width:auto;
     //height:100%;
   }
   .LogoWords {
-    display:none;
+    display: none;
   }
 }
