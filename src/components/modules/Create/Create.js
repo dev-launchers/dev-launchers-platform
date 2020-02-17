@@ -18,15 +18,16 @@ export default function Create() {
         special!
       </div>
       <hr />
-      <div className="games-area">
-        <h2>Game Templates</h2>
-        <EntryCardCollection data={projectTemplates.games} />
-      </div>
+      <h2>Dev Launchers Create Templates</h2>
+      <EntryCardCollection
+        title={"Game Templates"}
+        data={projectTemplates.games}
+      />
       <hr />
-      <div className="apps-area">
-        <h2>App Templates</h2>
-        <EntryCardCollection data={projectTemplates.apps} />
-      </div>
+      <EntryCardCollection
+        title={"App Templates"}
+        data={projectTemplates.apps}
+      />
     </PageBody>
   );
 }

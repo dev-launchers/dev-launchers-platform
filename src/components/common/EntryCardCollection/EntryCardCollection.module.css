@@ -5,3 +5,8 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+
+.collectionTitle {
+  padding: 1%;
+  margin-bottom: 0;
+}
