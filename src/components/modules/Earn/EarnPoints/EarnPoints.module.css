@@ -1,0 +1,36 @@
+.tasks {
+  width: 90%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.tasks th {
+  font-weight: bold;
+  font-family: "Holtwood One SC";
+}
+
+.tasksRow {
+  border-top: 1px solid lightgrey;
+}
+
+.tasksCategory {
+  font-size: 0.9rem;
+  border-top: 2px solid grey;
+}
+
+.tasksDescription {
+  padding-left: 5%;
+  padding-bottom: 1%;
+}
+
+.tasksValue {
+  width: 15%;
+  padding-bottom: 1%;
+  font-family: "Holtwood One SC";
+  font-size: 0.8rem;
+  text-align: center;
+}
