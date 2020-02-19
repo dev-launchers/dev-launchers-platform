@@ -4,18 +4,9 @@ import "react-tabs/style/react-tabs.css"; // import react-tabs styles
 import PageBody from "../../../components/common/PageBody";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import Tabletop from "tabletop";
-import EntryCardCollection from "../../../components/common/EntryCardCollection";
 import Section from "../../../components/common/Section/Section";
 
 export default function Learn() {
-  const [externalCodeActivities, setExternalCodeActivities] = React.useState(
-    []
-  );
-  const [
-    externalDesignActivities,
-    setExternalDesignActivities
-  ] = React.useState([]);
-
   const [pageData, setPageData] = React.useState({});
 
   React.useEffect(() => {
@@ -25,8 +16,6 @@ export default function Learn() {
       key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
       callback: googleData => {
         console.log("google sheet data --->", googleData);
-        setExternalCodeActivities(googleData.codeActivities.elements);
-        setExternalDesignActivities(googleData.designActivities.elements);
 
         //setTimeout(() => {
         setPageData(sheetsDataToPageJSON(googleData.learnPage.elements));
