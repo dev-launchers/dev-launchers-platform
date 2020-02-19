@@ -5,6 +5,7 @@ import PageBody from "../../../components/common/PageBody";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import Tabletop from "tabletop";
 import EntryCardCollection from "../../../components/common/EntryCardCollection";
+import Section from "../../../components/common/Section/Section";
 
 export default function Learn() {
   const [externalCodeActivities, setExternalCodeActivities] = React.useState(
@@ -39,6 +40,23 @@ export default function Learn() {
 
   // Convert data from our google sheets format to our expected JSON format
   const sheetsDataToPageJSON = sheetsElements => {
+    /*
+      Converts data from a row based spreadsheet into a nested JSON object representing our page structure
+      JSON Format:
+        {
+          tabName: {
+            sectionName: {
+              groupName: [
+                entryObject1,
+                entryObject2,
+                ...
+              ]
+            },
+            ...
+          },
+          ...
+        }
+     */
     let pageData = {};
     sheetsElements.forEach((element, i) => {
       if (element.isActive == "TRUE") {
@@ -96,36 +114,7 @@ export default function Learn() {
               <TabPanel key={i}>
                 {Object.keys(tab).map((sectionTitle, i) => {
                   const section = tab[sectionTitle];
-                  return (
-                    <div
-                      style={{
-                        borderLeft: "1px solid black",
-                        marginBottom: "10%"
-                      }}
-                    >
-                      <h2 style={{ marginLeft: "2%", marginBottom: "0" }}>
-                        {sectionTitle}
-                      </h2>
-                      <div key={"collection" + i}>
-                        {Object.keys(section).map(groupTitle => {
-                          const group = section[groupTitle];
-                          return (
-                            <div
-                              style={{
-                                borderLeft: "1px solid black",
-                                marginLeft: "2%"
-                              }}
-                            >
-                              <EntryCardCollection
-                                data={group}
-                                title={groupTitle}
-                              />
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
+                  return <Section data={section} title={sectionTitle} />;
                 })}
               </TabPanel>
             );
