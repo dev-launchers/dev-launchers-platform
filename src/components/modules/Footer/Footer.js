@@ -28,11 +28,11 @@ export default function Footer(props) {
         <Link to={"/earn"} className="nav-link">
           <div className={style.NavEntry}>EARN</div>
         </Link>
-        <Link to={"/join"} className="nav-link">
-          <div className={style.NavEntry}>JOIN</div>
-        </Link>
         <Link to={"/support-us"} className="nav-link">
           <div className={style.NavEntry}>SUPPORT US</div>
+        </Link>
+        <Link to={"/join"} className="nav-link">
+          <div className={style.NavEntry}>JOIN</div>
         </Link>
       </div>
       <div className={style.OrgInfoArea}>
