@@ -1,0 +1,14 @@
+.section {
+  border-left: 1px solid black;
+  margin-bottom: 10%;
+}
+
+.section h2 {
+  margin-left: 2%;
+  margin-bottom: 0;
+}
+
+.group {
+  border-left: 1px solid black;
+  margin-left: 2%;
+}
