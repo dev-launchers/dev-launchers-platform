@@ -5,17 +5,13 @@ export default function EntryCard(props) {
   return (
     <div className={style.entry} key={props.i}>
       <div className={style.entryHeading}>
-        <a
-          className={style.entryTitle}
-          href={props.entry.sandboxUrl}
-          target="_blank"
-        >
+        <a className={style.entryTitle} href={props.entry.href} target="_blank">
           {props.entry.title}
         </a>
       </div>
       <div className={style.entryContent}>
         <div className={style.entryImageHolder}>
-          <a href={props.entry.sandboxUrl} target="_blank">
+          <a href={props.entry.href} target="_blank">
             <img src={props.entry.imageSrc} className={style.entryImage} />
           </a>
         </div>
