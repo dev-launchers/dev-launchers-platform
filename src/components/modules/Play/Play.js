@@ -1,6 +1,7 @@
 import React from "react";
 
 import PageBody from "../../common/PageBody";
+import ProjectCardGroup from "./ProjectCardGroup";
 
 export default function Play() {
   const [projects, setProjects] = React.useState([]);
@@ -62,46 +63,7 @@ export default function Play() {
         stable versions.
       </div>
       <hr />
-      <div className="projects-area">
-        <h2>Projects</h2>
-        <div className="collection collection--large-cards">
-          {projects.map((entry, i) => {
-            return (
-              <div className="entry" key={i}>
-                <div className="entry-heading">
-                  <a
-                    className="entry-title"
-                    href={entry.devUrl}
-                    target="_blank"
-                  >
-                    {entry.name}
-                  </a>
-                  <a
-                    style={{
-                      display: "block",
-                      float: "right",
-                      fontSize: ".85rem",
-                      marginRight: "1%"
-                    }}
-                    href={entry.repoUrl}
-                    target="_blank"
-                  >
-                    GitHub Repo
-                  </a>
-                </div>
-                <div className="entry-content">
-                  <div className="entry-image-holder">
-                    <a href={entry.sandboxUrl} target="_blank">
-                      <div src={entry.imageSrc} className="entry-image" />
-                    </a>
-                  </div>
-                  <div className="entry-description">{entry.description}</div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <ProjectCardGroup data={projects} title={"Projects"} />
     </PageBody>
   );
 }
