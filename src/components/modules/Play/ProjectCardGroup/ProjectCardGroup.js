@@ -1,4 +1,5 @@
 import React from "react";
+import ProjectCard from "../ProjectCard/ProjectCard";
 
 export default function ProjectCardGroup(props) {
   return (
@@ -6,35 +7,7 @@ export default function ProjectCardGroup(props) {
       <h2>{props.title}</h2>
       <div className="collection collection--large-cards">
         {props.data.map((entry, i) => {
-          return (
-            <div className="entry" key={i}>
-              <div className="entry-heading">
-                <a className="entry-title" href={entry.devUrl} target="_blank">
-                  {entry.name}
-                </a>
-                <a
-                  style={{
-                    display: "block",
-                    float: "right",
-                    fontSize: ".85rem",
-                    marginRight: "1%"
-                  }}
-                  href={entry.repoUrl}
-                  target="_blank"
-                >
-                  GitHub Repo
-                </a>
-              </div>
-              <div className="entry-content">
-                <div className="entry-image-holder">
-                  <a href={entry.sandboxUrl} target="_blank">
-                    <div src={entry.imageSrc} className="entry-image" />
-                  </a>
-                </div>
-                <div className="entry-description">{entry.description}</div>
-              </div>
-            </div>
-          );
+          return <ProjectCard entry={entry} key={i} />;
         })}
       </div>
     </div>
