@@ -33,11 +33,11 @@ export default function Header(props) {
           <Link to={"/earn"} className="nav-link">
             <div className={style.NavEntry}>EARN</div>
           </Link>
-          <Link to={"/events"} className="nav-link">
-            <div className={style.NavEntry}>EVENTS</div>
-          </Link>
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>
+          </Link>
+          <Link to={"/join"} className="nav-link">
+            <div className={style.NavEntry}>JOIN</div>
           </Link>
         </div>
         <div />

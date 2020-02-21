@@ -4,7 +4,7 @@ import Header from "../components/modules/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/modules/Footer";
 
-export default function EventsRoute() {
+export default function JoinRoute() {
   return (
     <div>
       <Header />
