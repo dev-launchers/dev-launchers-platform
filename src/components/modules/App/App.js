@@ -42,7 +42,7 @@ function App(props) {
             <Route exact path="/learn" component={LearnRoute} />
             <Route exact path="/play" component={PlayRoute} />
             <Route exact path="/earn" component={EarnRoute} />
-            <Route exact path="/events" component={EventsRoute} />
+            <Route exact path="/join" component={JoinRoute} />
             <Route exact path="/support-us" component={SupportUsRoute} />
           </Switch>
         </Router>
