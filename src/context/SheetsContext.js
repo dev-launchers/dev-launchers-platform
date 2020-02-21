@@ -22,8 +22,8 @@ function useSheets() {
     });
   }, []);
 
-  // Convert data from our google sheets format to our expected JSON format
-  // When data is returned, store it in this context's state
+  // sheetsDataToPageJSON() converts data from our google sheets format to our expected JSON format
+  //  - when data is returned, store it in this context's state
   const sheetsDataToPageJSON = sheetsElements => {
     /*
      *  Converts data from a row based spreadsheet into a nested JSON object representing our page structure
@@ -48,7 +48,7 @@ function useSheets() {
         const tab = element.tab;
         const section = element.section;
         const group = element.group;
-        const activity = {
+        const entryData = {
           title: element.title,
           description: element.description,
           href: element.url,
@@ -63,7 +63,7 @@ function useSheets() {
         if (!(group in pageData[tab][section]))
           pageData[tab][section][group] = [];
 
-        pageData[tab][section][group].push(activity);
+        pageData[tab][section][group].push(entryData);
       }
     });
     return pageData;
