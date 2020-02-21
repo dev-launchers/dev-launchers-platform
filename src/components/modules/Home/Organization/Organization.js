@@ -54,7 +54,10 @@ export default function Organization() {
             contributors to grow our platform and continue serving our students!
           </div>
           <div className={style.CtaSection_ButtonArea}>
-            <Button className={style.CtaSection_Button}>
+            <Button
+              className={style.CtaSection_Button}
+              href="https://github.com/dev-launchers"
+            >
               Find us on GitHub
             </Button>
           </div>

@@ -19,7 +19,7 @@ import LearnRoute from "../../../routes/LearnRoute.js";
 import PlayRoute from "../../../routes/PlayRoute.js";
 import EarnRoute from "../../../routes/EarnRoute.js";
 import SupportUsRoute from "../../../routes/SupportUsRoute.js";
-import EventsRoute from "../../../routes/EventsRoute";
+import JoinRoute from "../../../routes/JoinRoute";
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
