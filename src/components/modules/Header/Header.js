@@ -13,12 +13,14 @@ export default function Header(props) {
     <div>
       <div className={style.HeaderBlock}>
         <div className={style.Logo}>
-          <Link to={"/"} className="nav-link">
-            <div className={style.LogoImageHolder}>
-              <img src={logoMonogramImage} className={style.LogoImage} />
-            </div>
-            <div className={style.LogoWords}>Dev Launchers</div>
-          </Link>
+          <div className={style.LogoWrapper}>
+            <Link to={"/"} className="nav-link">
+              <div className={style.LogoImageHolder}>
+                <img src={logoMonogramImage} className={style.LogoImage} />
+              </div>
+              <div className={style.LogoWords}>Dev Launchers</div>
+            </Link>
+          </div>
         </div>
         <div className={style.HeaderNav}>
           <Link to={"/create"} className="nav-link">
