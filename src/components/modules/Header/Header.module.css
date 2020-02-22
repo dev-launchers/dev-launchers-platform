@@ -36,6 +36,8 @@
   width: 40%;
   font-family: "Holtwood One SC", serif;
   font-size: 1.25rem;
+  margin-left: 0.25rem;
+  line-height: 140%;
 }
 
 .HeaderNav {
