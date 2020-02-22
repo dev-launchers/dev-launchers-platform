@@ -13,12 +13,14 @@ export default function Header(props) {
     <div>
       <div className={style.HeaderBlock}>
         <div className={style.Logo}>
-          <Link to={"/"} className="nav-link">
-            <div className={style.LogoImageHolder}>
-              <img src={logoMonogramImage} className={style.LogoImage} />
-            </div>
-            <div className={style.LogoWords}>Dev Launchers</div>
-          </Link>
+          <div className={style.LogoWrapper}>
+            <Link to={"/"} className="nav-link">
+              <div className={style.LogoImageHolder}>
+                <img src={logoMonogramImage} className={style.LogoImage} />
+              </div>
+              <div className={style.LogoWords}>Dev Launchers</div>
+            </Link>
+          </div>
         </div>
         <div className={style.HeaderNav}>
           <Link to={"/create"} className="nav-link">
@@ -33,11 +35,11 @@ export default function Header(props) {
           <Link to={"/earn"} className="nav-link">
             <div className={style.NavEntry}>EARN</div>
           </Link>
-          <Link to={"/events"} className="nav-link">
-            <div className={style.NavEntry}>EVENTS</div>
-          </Link>
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>
+          </Link>
+          <Link to={"/join"} className="nav-link">
+            <div className={style.NavEntry}>JOIN</div>
           </Link>
         </div>
         <div />

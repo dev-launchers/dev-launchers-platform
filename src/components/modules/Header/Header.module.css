@@ -23,6 +23,14 @@
   flex-wrap: nowrap;
   align-items: center;
 }
+.LogoWrapper {
+  display: inline;
+  width: auto;
+}
+.LogoWrapper:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(6102%)
+    hue-rotate(358deg) brightness(101%) contrast(103%);
+}
 .LogoImageHolder {
   width: 4.25rem;
   margin: 2%;
@@ -36,6 +44,8 @@
   width: 40%;
   font-family: "Holtwood One SC", serif;
   font-size: 1.25rem;
+  margin-left: 0.25rem;
+  line-height: 140%;
 }
 
 .HeaderNav {
