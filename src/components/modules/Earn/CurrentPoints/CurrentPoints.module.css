@@ -2,4 +2,9 @@
   margin: 5%;
   width: 75%;
   text-align: center;
+  table-layout: fixed;
+}
+
+.tableColumnHeading {
+  font-weight: bold;
 }
