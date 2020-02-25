@@ -31,11 +31,11 @@ export default function Earn() {
       <SpendCardCollection />
       <br />
       <hr />
-      <EarnPoints />
+      <CurrentPoints />
       <br />
       <br />
       <hr />
-      <CurrentPoints />
+      <EarnPoints />
       <br />
       <br />
     </PageBody>

@@ -20,23 +20,36 @@ export default function CurrentPoints() {
 
   return (
     <div>
-      <h2>Current Points</h2>
+      <h2>
+        Leaderboard
+        <span style={{ fontSize: "1rem" }}>(Ranked by points!)</span>
+      </h2>
       <table className={styles.table}>
         <tbody>
           <tr>
-            <td>Name</td>
-            <td>Points</td>
-            <td>XP</td>
+            <td className={styles.tableColumnHeading}>Name</td>
+            <td className={styles.tableColumnHeading}>Points</td>
+            <td className={styles.tableColumnHeading}>XP</td>
           </tr>
           {students
             .filter(entry => {
               if (entry.isActive == 1) return true;
               return false;
             })
-            .map(entry => {
+            .map((entry, index) => {
               return (
                 <tr>
-                  <td>{entry.name}</td>
+                  <td>
+                    {/* Output leaderboard flair! */}
+                    {index === 0 ? "  🥇  " : ""}
+                    {index === 1 ? "  🥈  " : ""}
+                    {index === 2 ? "  🥉  " : ""}
+                    {entry.name}
+                    {index === 0 ? "  🥇  " : ""}
+                    {index === 1 ? "  🥈  " : ""}
+                    {index === 2 ? "  🥉  " : ""}
+                  </td>
+
                   <td>{entry.points}</td>
                   <td>{entry.xp}</td>
                 </tr>
