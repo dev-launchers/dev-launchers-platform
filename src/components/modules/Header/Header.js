@@ -38,6 +38,9 @@ export default function Header(props) {
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>
           </Link>
+          <Link to={"/stories"} className="nav-link">
+            <div className={style.NavEntry}>STORIES</div>
+          </Link>
           <Link to={"/join"} className="nav-link">
             <div className={style.NavEntry}>JOIN</div>
           </Link>
@@ -47,10 +50,10 @@ export default function Header(props) {
           {user ? (
             <p>Hello, {user.displayName}</p>
           ) : (
-            <Button fontSize="1.2rem" onClick={signInWithGithub}>
-              Sign In
+              <Button fontSize="1.2rem" onClick={signInWithGithub}>
+                Sign In
             </Button>
-          )}
+            )}
         </div>
       </div>
       <div
