@@ -2,7 +2,6 @@ import React from "react";
 
 import PageBody from "../../common/PageBody";
 import EntryCardCollection from "../../common/EntryCardCollection";
-import ProjectCardGroup from "./ProjectCardGroup";
 
 export default function Play() {
   const [projects, setProjects] = React.useState([]);
