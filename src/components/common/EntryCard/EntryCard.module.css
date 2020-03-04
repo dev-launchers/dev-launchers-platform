@@ -26,15 +26,8 @@
 }
 
 .entryImageHolder {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.entryImageHolder a {
-  width: 100%;
-  margin: 5%;
+  margin-top: 5%;
+  width: 30%;
   display: flex;
   justify-content: center;
   align-items: center;

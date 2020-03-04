@@ -1,6 +1,7 @@
 import React from "react";
 
 import PageBody from "../../common/PageBody";
+import EntryCardCollection from "../../common/EntryCardCollection";
 import ProjectCardGroup from "./ProjectCardGroup";
 
 export default function Play() {
@@ -26,9 +27,9 @@ export default function Play() {
         // search look for substring and return its position of its first occurance
         if (repoEntry.name.search("project__") == 0) {
           projectsData.push({
-            name: repoEntry.name,
+            title: repoEntry.name,
             description: repoEntry.description,
-            devUrl: "https://devlaunchers.com/dev/" + repoEntry.name,
+            href: "https://devlaunchers.com/dev/" + repoEntry.name,
             prodUrl: "https://devlaunchers.com/launch/" + repoEntry.name,
             repoUrl: repoEntry.html_url
           });
@@ -50,6 +51,7 @@ export default function Play() {
       });
 
       setProjects(projectsData);
+      console.log(projectsData);
     });
   }, []);
 
@@ -63,7 +65,7 @@ export default function Play() {
         stable versions.
       </div>
       <hr />
-      <ProjectCardGroup data={projects} title={"Projects"} />
+      <EntryCardCollection data={projects} title={"Projects"} size="large" />
     </PageBody>
   );
 }
