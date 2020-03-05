@@ -27,10 +27,10 @@ export default function Play() {
         if (repoEntry.name.search("project__") == 0) {
           projectsData.push({
             title: repoEntry.name,
-            description: repoEntry.description,
+            description: repoEntry.description + " | " + repoEntry.html_url,
             href: "https://devlaunchers.com/dev/" + repoEntry.name,
             prodUrl: "https://devlaunchers.com/launch/" + repoEntry.name,
-            repoUrl: repoEntry.html_url
+            imageSrc: "/images/DevlaunchersGitHubThumb.png"
           });
         }
       });

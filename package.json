@@ -11,6 +11,7 @@
     }
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "constate": "^2.0.0",
     "firebase": "^7.6.2",
     "react": "16.12.0",

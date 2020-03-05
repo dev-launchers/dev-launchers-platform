@@ -9,11 +9,7 @@ export default function EntryCardCollection(props) {
       <h3 className={style.collectionTitle}>{props.title}</h3>
       <div className={style.collection}>
         {props.data.map((entry, i) => {
-          if (props.size == "large") {
-            return <LargeEntryCard entry={entry} key={i} />;
-          } else {
-            return <EntryCard entry={entry} key={i} />;
-          }
+          return <EntryCard entry={entry} key={i} size={props.size} />;
         })}
       </div>
     </div>
