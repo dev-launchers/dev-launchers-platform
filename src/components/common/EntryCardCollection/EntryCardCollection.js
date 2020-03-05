@@ -1,6 +1,5 @@
 import React from "react";
 import EntryCard from "../EntryCard/EntryCard.js";
-import LargeEntryCard from "../LargeEntryCard/LargeEntryCard.js";
 import style from "./EntryCardCollection.module.css";
 
 export default function EntryCardCollection(props) {
