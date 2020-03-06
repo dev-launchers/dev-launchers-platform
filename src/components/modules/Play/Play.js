@@ -27,10 +27,11 @@ export default function Play() {
         if (repoEntry.name.search("project__") == 0) {
           projectsData.push({
             title: repoEntry.name,
-            description: repoEntry.description + " | " + repoEntry.html_url,
+            description: repoEntry.description,
             href: "https://devlaunchers.com/dev/" + repoEntry.name,
             prodUrl: "https://devlaunchers.com/launch/" + repoEntry.name,
-            imageSrc: "/images/DevlaunchersGitHubThumb.png"
+            imageSrc: "/images/DevlaunchersGitHubThumb.png",
+            repoUrl: repoEntry.html_url
           });
         }
       });
@@ -64,7 +65,12 @@ export default function Play() {
         stable versions.
       </div>
       <hr />
-      <CardGroup data={projects} title={"Projects"} size="large" />
+      <CardGroup
+        data={projects}
+        title={"Projects"}
+        size="large"
+        attachment={true}
+      />
     </PageBody>
   );
 }
