@@ -1,5 +1,5 @@
 import React from "react";
-import EntryCardCollection from "../EntryCardCollection";
+import CardGroup from "../CardGroup";
 import styles from "./Section.module.css";
 
 export default function Section(props) {
@@ -11,7 +11,7 @@ export default function Section(props) {
           const group = props.data[groupTitle];
           return (
             <div className={styles.group}>
-              <EntryCardCollection data={group} title={groupTitle} />
+              <CardGroup data={group} title={groupTitle} />
             </div>
           );
         })}

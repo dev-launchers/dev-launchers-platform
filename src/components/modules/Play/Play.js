@@ -1,7 +1,7 @@
 import React from "react";
 
 import PageBody from "../../common/PageBody";
-import EntryCardCollection from "../../common/EntryCardCollection";
+import CardGroup from "../../common/CardGroup";
 
 export default function Play() {
   const [projects, setProjects] = React.useState([]);
@@ -64,7 +64,7 @@ export default function Play() {
         stable versions.
       </div>
       <hr />
-      <EntryCardCollection data={projects} title={"Projects"} size="large" />
+      <CardGroup data={projects} title={"Projects"} size="large" />
     </PageBody>
   );
 }

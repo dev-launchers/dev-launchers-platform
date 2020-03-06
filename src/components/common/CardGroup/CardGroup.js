@@ -1,14 +1,14 @@
 import React from "react";
-import EntryCard from "../EntryCard/EntryCard.js";
-import style from "./EntryCardCollection.module.css";
+import Card from "../Card/Card";
+import style from "./CardGroup.module.css";
 
-export default function EntryCardCollection(props) {
+export default function CardGroup(props) {
   return (
     <div>
       <h3 className={style.collectionTitle}>{props.title}</h3>
       <div className={style.collection}>
         {props.data.map((items, i) => {
-          return <EntryCard data={items} key={i} size={props.size} />;
+          return <Card data={items} key={i} size={props.size} />;
         })}
       </div>
     </div>

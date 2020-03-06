@@ -1,8 +1,8 @@
 import React from "react";
-import style from "./EntryCard.module.css";
+import style from "./Card.module.css";
 import cx from "classnames";
 
-export default function EntryCard(props) {
+export default function Card(props) {
   return (
     <div
       className={cx(style.container, {
