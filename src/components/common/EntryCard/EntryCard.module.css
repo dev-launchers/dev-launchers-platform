@@ -1,30 +1,28 @@
-.entry {
+.container {
   margin: 1.5%;
-  /*border: 2px solid #1c1c1c;*/
   width: 30%;
-
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.entryHeading {
+.heading {
   width: 100%;
   font-size: 2rem;
   background-color: #1c1c1c;
 }
 
-.entryTitle {
+.title {
   margin-left: 4%;
 }
 
-.entryContent {
+.content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.entryImageHolder {
+.imageHolder {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   width: 30%;
@@ -33,7 +31,7 @@
   align-items: center;
 }
 
-.entryImage {
+.image {
   background-color: lightgray;
   height: 10vw;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -41,17 +39,17 @@
   vertical-align: top;
 }
 
-.entryDescription {
+.description {
   width: 90%;
 }
 
-.entryLarge {
-  composes: entry;
+.containerLarge {
+  composes: container;
   width: 90%;
 }
 
-.entryContentLarge {
-  composes: entryContent;
+.contentLarge {
+  composes: content;
   flex-direction: row;
   justify-content: space-between;
 }
