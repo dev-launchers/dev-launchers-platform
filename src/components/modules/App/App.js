@@ -15,6 +15,7 @@ import LearnRoute from "../../../routes/LearnRoute.js";
 import PlayRoute from "../../../routes/PlayRoute.js";
 import EarnRoute from "../../../routes/EarnRoute.js";
 import SupportUsRoute from "../../../routes/SupportUsRoute.js";
+import StoriesRoute from "../../../routes/StoriesRoute";
 import JoinRoute from "../../../routes/JoinRoute";
 
 function App(props) {
@@ -36,6 +37,7 @@ function App(props) {
               <Route exact path="/play" component={PlayRoute} />
               <Route exact path="/earn" component={EarnRoute} />
               <Route exact path="/join" component={JoinRoute} />
+              <Route exact path="/stories" component={StoriesRoute} />
               <Route exact path="/support-us" component={SupportUsRoute} />
             </Switch>
           </Router>
