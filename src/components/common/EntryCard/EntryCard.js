@@ -11,8 +11,8 @@ export default function EntryCard(props) {
       key={props.i}
     >
       <div className={style.heading}>
-        <a className={style.title} href={props.entry.href} target="_blank">
-          {props.entry.title}
+        <a className={style.title} href={props.data.href} target="_blank">
+          {props.data.title}
         </a>
       </div>
       <div
@@ -21,11 +21,11 @@ export default function EntryCard(props) {
         })}
       >
         <div className={style.imageHolder}>
-          <a href={props.entry.href} target="_blank">
-            <img src={props.entry.imageSrc} className={style.image} />
+          <a href={props.data.href} target="_blank">
+            <img src={props.data.imageSrc} className={style.image} />
           </a>
         </div>
-        <div className={style.description}>{props.entry.description}</div>
+        <div className={style.description}>{props.data.description}</div>
       </div>
     </div>
   );
