@@ -36,6 +36,10 @@ export default function SupportUs() {
                 Donate with PayPal!
               </Button>
             </div>
+            <div className={style.statusNote}>
+              Dev Launchers is a Texas nonprofit corporation in the process of
+              receiving 501(c)(3) status.
+            </div>
           </div>
         </div>
       </PageBody>
