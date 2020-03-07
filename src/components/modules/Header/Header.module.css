@@ -63,6 +63,19 @@
   cursor: pointer;
 }
 
+.SignInArea {
+  width: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.UserProfilePic {
+  max-height: 3rem;
+  min-height: 2rem;
+  height: 5vw;
+}
+
 @media (orientation: portrait) {
   .Logo {
   }

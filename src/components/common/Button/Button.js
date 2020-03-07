@@ -13,10 +13,13 @@ export default function Button(props) {
     else toast("This site is currently under development, check back soon!");
   };
 
+  let buttonStyle = props.style ? props.style : {};
+  buttonStyle.fontSize = props.fontSize ? props.fontSize : undefined;
+
   return (
     <button
       className={style.Button}
-      style={{ fontSize: props.fontSize }}
+      style={buttonStyle}
       onClick={props.onClick ? props.onClick : clickHandler}
     >
       {props.children}

@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 
+import { useAuthContext } from "../../../context/AuthContext";
+
 import Button from "../../common/Button";
 
 export default function Header(props) {
-  const { user, signOut, signInWithGithub } = props;
+  const { authUser, doAuthRequest } = useAuthContext();
+
   return (
     <div>
       <div className={style.HeaderBlock}>
@@ -38,19 +41,22 @@ export default function Header(props) {
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>
           </Link>
+          <Link to={"/stories"} className="nav-link">
+            <div className={style.NavEntry}>STORIES</div>
+          </Link>
           <Link to={"/join"} className="nav-link">
             <div className={style.NavEntry}>JOIN</div>
           </Link>
         </div>
         <div />
-        <div style={{ width: "10%", textAlign: "center" }}>
-          {user ? (
-            <p>Hello, {user.displayName}</p>
+        <div className={style.SignInArea}>
+          {authUser ? (
+            <img className={style.UserProfilePic} src={authUser.photoURL} />
           ) : (
-            <Button fontSize="1.2rem" onClick={signInWithGithub}>
+            <Button fontSize="1.2rem" onClick={doAuthRequest}>
               Sign In
             </Button>
-          )}
+            )}
         </div>
       </div>
       <div

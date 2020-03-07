@@ -85,15 +85,9 @@ h3 {
   justify-content: center;
   align-items: center;
 }
-.entry-image-holder a {
-  width: 100%;
-  margin: 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 .entry-image {
-  background-color: lightgray;
+  background-color: red;
   height: 10vw;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   /* padding-bottom: 42.5%; */
