@@ -19,30 +19,31 @@ export default function CurrentPoints() {
             <td className={styles.tableColumnHeading}>Points</td>
             <td className={styles.tableColumnHeading}>XP</td>
           </tr>
-          {leaderboard
-            .filter(entry => {
-              if (entry.isActive == 1) return true;
-              return false;
-            })
-            .map((entry, index) => {
-              return (
-                <tr>
-                  <td>
-                    {/* Output leaderboard flair! */}
-                    {index === 0 ? "  🥇  " : ""}
-                    {index === 1 ? "  🥈  " : ""}
-                    {index === 2 ? "  🥉  " : ""}
-                    {entry.name}
-                    {index === 0 ? "  🥇  " : ""}
-                    {index === 1 ? "  🥈  " : ""}
-                    {index === 2 ? "  🥉  " : ""}
-                  </td>
+          {Object.keys(leaderboard) != 0 &&
+            leaderboard
+              .filter(entry => {
+                if (entry.isActive == 1) return true;
+                return false;
+              })
+              .map((entry, index) => {
+                return (
+                  <tr>
+                    <td>
+                      {/* Output leaderboard flair! */}
+                      {index === 0 ? "  🥇  " : ""}
+                      {index === 1 ? "  🥈  " : ""}
+                      {index === 2 ? "  🥉  " : ""}
+                      {entry.name}
+                      {index === 0 ? "  🥇  " : ""}
+                      {index === 1 ? "  🥈  " : ""}
+                      {index === 2 ? "  🥉  " : ""}
+                    </td>
 
-                  <td>{entry.points}</td>
-                  <td>{entry.xp}</td>
-                </tr>
-              );
-            })}
+                    <td>{entry.points}</td>
+                    <td>{entry.xp}</td>
+                  </tr>
+                );
+              })}
         </tbody>
       </table>
     </div>
