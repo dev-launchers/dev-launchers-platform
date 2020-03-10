@@ -56,7 +56,7 @@ export default function Header(props) {
             <Button fontSize="1.2rem" onClick={doAuthRequest}>
               Sign In
             </Button>
-            )}
+          )}
         </div>
       </div>
       <div
