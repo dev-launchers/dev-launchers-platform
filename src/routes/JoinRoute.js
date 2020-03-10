@@ -1,8 +1,8 @@
 import React from "react";
 
-import Header from "../components/modules/Header";
+import Header from "../components/common/Header";
 import PageBody from "../components/common/PageBody";
-import Footer from "../components/modules/Footer";
+import Footer from "../components/common/Footer";
 
 export default function JoinRoute() {
   return (
