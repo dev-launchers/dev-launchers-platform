@@ -8,6 +8,7 @@ import Tabletop from "tabletop";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useSheetsContext } from "../../../context/SheetsContext";
 import { useRepoContext } from "../../../context/RepoContext";
+import { useLeaderboardContext } from "../../../context/LeaderboardContext";
 
 import ScrollToTop from "../../../utils/ScrollToTop.js";
 import HomeRoute from "../../../routes/HomeRoute.js";
@@ -24,26 +25,28 @@ function App(props) {
     <useAuthContext.Provider>
       <useSheetsContext.Provider>
         <useRepoContext.Provider>
-          <div className="App">
-            <ToastContainer
-              className="toast-container"
-              toastClassName="toast"
-              progressClassName="toast-progress"
-            />
-            <Router basename={process.env.PUBLIC_URL}>
-              <ScrollToTop />
-              <Switch>
-                <Route exact path="/" component={HomeRoute} />
-                <Route exact path="/create" component={CreateRoute} />
-                <Route exact path="/learn" component={LearnRoute} />
-                <Route exact path="/play" component={PlayRoute} />
-                <Route exact path="/earn" component={EarnRoute} />
-                <Route exact path="/join" component={JoinRoute} />
-                <Route exact path="/stories" component={StoriesRoute} />
-                <Route exact path="/support-us" component={SupportUsRoute} />
-              </Switch>
-            </Router>
-          </div>
+          <useLeaderboardContext.Provider>
+            <div className="App">
+              <ToastContainer
+                className="toast-container"
+                toastClassName="toast"
+                progressClassName="toast-progress"
+              />
+              <Router basename={process.env.PUBLIC_URL}>
+                <ScrollToTop />
+                <Switch>
+                  <Route exact path="/" component={HomeRoute} />
+                  <Route exact path="/create" component={CreateRoute} />
+                  <Route exact path="/learn" component={LearnRoute} />
+                  <Route exact path="/play" component={PlayRoute} />
+                  <Route exact path="/earn" component={EarnRoute} />
+                  <Route exact path="/join" component={JoinRoute} />
+                  <Route exact path="/stories" component={StoriesRoute} />
+                  <Route exact path="/support-us" component={SupportUsRoute} />
+                </Switch>
+              </Router>
+            </div>
+          </useLeaderboardContext.Provider>
         </useRepoContext.Provider>
       </useSheetsContext.Provider>
     </useAuthContext.Provider>
