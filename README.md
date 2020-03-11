@@ -35,4 +35,4 @@ We’re currently partnered with the Austin Public Library and run weekly labs f
  
 ## License
 
-The Dev Launchers platform is licensed under [GNU General Public License v2 (or later)](./LICENSE.md).
+The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).
