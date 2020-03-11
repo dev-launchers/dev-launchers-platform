@@ -3,7 +3,8 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Tabletop from "tabletop";
+
+import HamburgerMenu from "../../common/HamburgerMenu";
 
 import { useAuthContext } from "../../../context/AuthContext";
 import { useSheetsContext } from "../../../context/SheetsContext";
@@ -34,6 +35,7 @@ function App(props) {
               />
               <Router basename={process.env.PUBLIC_URL}>
                 <ScrollToTop />
+                <HamburgerMenu />
                 <Switch>
                   <Route exact path="/" component={HomeRoute} />
                   <Route exact path="/create" component={CreateRoute} />
