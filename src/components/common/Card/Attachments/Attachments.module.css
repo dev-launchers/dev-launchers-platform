@@ -1,0 +1,26 @@
+.attachmentLink {
+  color: lightslategray;
+  font-size: medium;
+}
+
+.attachmentLinkContainer {
+  margin-right: 1em;
+  margin-left: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.attachmentImg {
+  float: right;
+  width: 5vh;
+  height: 5vh;
+}
+
+.attachmentImgContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}

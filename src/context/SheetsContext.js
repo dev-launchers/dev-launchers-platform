@@ -52,7 +52,8 @@ function useSheets() {
           title: element.title,
           description: element.description,
           href: element.url,
-          imageSrc: element.imageSrc
+          imageSrc: element.imageSrc,
+          attachments: element.attachments
         };
 
         // if tab doesn't exist yet, create it

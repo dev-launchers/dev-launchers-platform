@@ -59,3 +59,9 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.attachmentImage {
+  float: right;
+  width: 10%;
+  height: 10%;
+}
