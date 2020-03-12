@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Card.module.css";
 import cx from "classnames";
+import Attachments from "./Attachments";
 
 export default function Card(props) {
   return (
@@ -39,6 +40,8 @@ export default function Card(props) {
         </div>
         <div className={style.description}>{props.data.description}</div>
       </div>
+
+      {props.data.attachments && <Attachments data={props.data.attachments} />}
     </div>
   );
 }
