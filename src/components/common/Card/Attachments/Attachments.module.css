@@ -6,6 +6,7 @@
 .attachmentLinkContainer {
   margin-right: 1em;
   margin-left: 1em;
+  margin-bottom: 0.5em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -17,6 +18,7 @@
   float: right;
   width: 5vh;
   height: 5vh;
+  cursor: pointer;
 }
 
 .attachmentImgContainer {
