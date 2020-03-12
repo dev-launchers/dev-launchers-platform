@@ -76,20 +76,32 @@
   height: 5vw;
 }
 
+/* Hamburger menu stuff */
+.hamburgerMenuButtonContainer {
+}
+.burgerMenuBars {
+  background: #ffffff;
+}
+
 @media (orientation: portrait) {
-  .Logo {
-  }
-  .Logo a {
-  }
   .LogoImageHolder {
     height: auto;
     width: 4rem;
+    margin-left: 1vw;
   }
   .LogoImage {
     //width:auto;
     //height:100%;
   }
   .LogoWords {
+    display: none;
+  }
+
+  /* Hide landscape navigation on mobile */
+  .HeaderNav {
+    display: none;
+  }
+  .SignInArea {
     display: none;
   }
 }
