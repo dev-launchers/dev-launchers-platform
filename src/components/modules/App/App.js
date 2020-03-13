@@ -45,14 +45,10 @@ function App(props) {
                   <Route exact path="/earn" component={EarnRoute} />
                   <Route exact path="/join" component={JoinRoute} />
                   <Route exact path="/stories" component={StoriesRoute} />
+                  <Route exact path="/support-us" component={SupportUsRoute} />
                   <Route
                     exact
-                    path="/support-us/:id"
-                    component={SupportUsRoute}
-                  />
-                  <Route
-                    exact
-                    path="/pixilart-wrapper/:imageIdentifier"
+                    path="/pixilart-wrapper"
                     component={PixilartWrapperRoute}
                   />
                 </Switch>
