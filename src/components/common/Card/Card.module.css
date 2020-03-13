@@ -3,6 +3,8 @@
   width: 30%;
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
@@ -60,8 +62,6 @@
   justify-content: space-between;
 }
 
-.attachmentImage {
-  float: right;
-  width: 10%;
-  height: 10%;
+.attachments {
+  margin-top: auto;
 }
