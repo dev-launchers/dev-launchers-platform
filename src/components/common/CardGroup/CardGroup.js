@@ -7,16 +7,17 @@ export default function CardGroup(props) {
     <div>
       <h3 className={style.collectionTitle}>{props.title}</h3>
       <div className={style.collection}>
-        {props.data.map((items, i) => {
-          return (
-            <Card
-              data={items}
-              key={i}
-              size={props.size}
-              attachment={props.attachment}
-            />
-          );
-        })}
+        {Object.keys(props.data).length != 0 &&
+          props.data.map((items, i) => {
+            return (
+              <Card
+                data={items}
+                key={i}
+                size={props.size}
+                attachment={props.attachment}
+              />
+            );
+          })}
       </div>
     </div>
   );
