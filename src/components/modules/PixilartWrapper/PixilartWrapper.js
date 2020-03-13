@@ -4,7 +4,7 @@ import style from "./PixilartWrapper.module.css";
 
 export default function PixilartWrapper(props) {
   // Get image name from url
-  const imageName = props.imageIdentifier
+  const imageName = props.pixilartId
     .split("-")
     .slice(0, -1)
     .join("-");
@@ -35,7 +35,7 @@ export default function PixilartWrapper(props) {
           height: "95vh",
           border: "0px solid transparent"
         }}
-        src={"https://pixilart.com/draw/" + props.imageIdentifier}
+        src={"https://pixilart.com/draw/" + props.pixilartId}
       />
     </div>
   );
