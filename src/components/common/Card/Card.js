@@ -40,8 +40,11 @@ export default function Card(props) {
         </div>
         <div className={style.description}>{props.data.description}</div>
       </div>
-
-      {props.data.attachments && <Attachments data={props.data.attachments} />}
+      <div className={style.attachments}>
+        {props.data.attachments && (
+          <Attachments data={props.data.attachments} />
+        )}
+      </div>
     </div>
   );
 }
