@@ -1,6 +1,7 @@
 .attachmentLink {
   color: lightslategray;
   font-size: medium;
+  margin: 0.2em;
 }
 
 .attachmentLinkContainer {
@@ -10,12 +11,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-evenly;
 }
 
 .attachmentImg {
-  float: right;
   width: 5vh;
   height: 5vh;
   cursor: pointer;
@@ -23,6 +21,6 @@
 
 .attachmentImgContainer {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: flex-end;
 }
