@@ -21,6 +21,7 @@ import SupportUsRoute from "../../../routes/SupportUsRoute.js";
 import StoriesRoute from "../../../routes/StoriesRoute";
 import JoinRoute from "../../../routes/JoinRoute";
 import PixilartWrapperRoute from "../../../routes/PixilartWrapperRoute";
+import HangoutRoute from "../../../routes/HangoutRoute";
 
 function App(props) {
   return (
@@ -51,6 +52,7 @@ function App(props) {
                     path="/pixilart-wrapper"
                     component={PixilartWrapperRoute}
                   />
+                  <Route exact path="/hangout" component={HangoutRoute} />
                 </Switch>
               </Router>
             </div>
