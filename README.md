@@ -25,11 +25,14 @@ We’re currently partnered with the Austin Public Library and run weekly labs f
 #### [Showing Impact - Let's Bring Life to the Site! (And Get Sponsorships)](https://github.com/dev-launchers/platform__website/milestone/7)
  - We want to showcase all the wonderful things Dev Launchers is accomplishing, and the wonderful people making it all happen! This milestone should result in donors and sponsors alike getting a clear idea of what Dev Launchers is all about, and why they should support our mission.
     
-#### [Student UX/Curriculum Creation and Curation (2)](https://github.com/dev-launchers/platform__website/milestone/9)
+#### [Student UX](https://github.com/dev-launchers/platform__website/milestone/9)
+ - Improve the general experience students have interacting with the site!
+ 
+#### [Curriculum Creation and Curation](https://github.com/dev-launchers/platform__website/milestone/9)
  - Our students need more content teaching them the fundamentals of JavaScript and Visual Design, and then preparing them to work on either React applications or Phaser 3 games.
 
 #### [General Site Improvements](https://github.com/dev-launchers/platform__website/milestone/8)
- - The site UI/UX needs some work, let's make it quite dandy-er
+ - Improve the general presentation and functionality of the site!
  
 ---
  
