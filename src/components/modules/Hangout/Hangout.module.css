@@ -56,6 +56,11 @@
   background-color: #ddd;
 }
 
+.activeRoom {
+  background-color: black;
+  color: white;
+}
+
 .colorMarker {
   width: 50%;
   height: 5px;
