@@ -4,7 +4,7 @@
 
 [![](https://dev-launchers.github.io/platform__website/images/dev-launchers__site-screenshot.jpg)](https://devlaunchers.com/)
 
-The site is built with React.js and many other wonderful libraries.
+The site is built with React.js and many other wonderful libraries. We're currently using Google Sheets as our backend, but will soon be moving to a dedicated server.
 
 ---
 
