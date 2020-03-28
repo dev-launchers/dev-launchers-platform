@@ -76,9 +76,9 @@ export default function Building() {
     },
 
     lounge: {
-      name: "Lounge (SOON)",
-      url: "",
-      color: "black",
+      name: "Lounge",
+      url: "https://hub.link/M7yXJ5T",
+      color: "brown",
       isActive: false
     }
   });
