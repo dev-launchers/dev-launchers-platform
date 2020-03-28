@@ -52,7 +52,11 @@ function App(props) {
                     path="/pixilart-wrapper"
                     component={PixilartWrapperRoute}
                   />
-                  <Route exact path="/hangout" component={HangoutRoute} />
+                  <Route
+                    exact
+                    path="/(hangout|hangouts)/"
+                    component={HangoutRoute}
+                  />
                 </Switch>
               </Router>
             </div>
