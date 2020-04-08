@@ -49,6 +49,7 @@ function useSheets() {
         const section = element.section;
         const group = element.group;
         const entryData = {
+          id: element.id,
           title: element.title,
           description: element.description,
           href: element.url,
