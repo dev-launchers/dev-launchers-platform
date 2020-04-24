@@ -17,6 +17,7 @@ import CreateRoute from "../../../routes/CreateRoute.js";
 import LearnRoute from "../../../routes/LearnRoute.js";
 import PlayRoute from "../../../routes/PlayRoute.js";
 import EarnRoute from "../../../routes/EarnRoute.js";
+import BlogRoute from "../../../routes/BlogRoute.js";
 import SupportUsRoute from "../../../routes/SupportUsRoute.js";
 import StoriesRoute from "../../../routes/StoriesRoute";
 import JoinRoute from "../../../routes/JoinRoute";
@@ -46,6 +47,10 @@ function App(props) {
                   <Route exact path="/earn" component={EarnRoute} />
                   <Route exact path="/join" component={JoinRoute} />
                   <Route exact path="/stories" component={StoriesRoute} />
+                  <Route
+                    path="/blog/:pathType/:authorId/:articleId"
+                    component={BlogRoute}
+                  />
                   <Route exact path="/support-us" component={SupportUsRoute} />
                   <Route
                     exact
