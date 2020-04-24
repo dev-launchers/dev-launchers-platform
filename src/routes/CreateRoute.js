@@ -6,6 +6,10 @@ import Create from "../components/modules/Create";
 import Footer from "../components/common/Footer";
 
 export default function CreateRoute(props) {
+  React.useEffect(() => {
+    document.title = "Create";
+  }, []);
+
   // Need to use GET params to get a specific variable
   let params = queryString.parse(props.location.search);
   return (

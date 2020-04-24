@@ -5,6 +5,10 @@ import Learn from "../components/modules/Learn/Learn";
 import Footer from "../components/common/Footer";
 
 export default function LearnRoute() {
+  React.useEffect(() => {
+    document.title = "Learn";
+  }, []);
+
   return (
     <div>
       <Header />

@@ -8,6 +8,10 @@ import Home from "../components/modules/Home";
 import Footer from "../components/common/Footer";
 
 export default function HomeRoute() {
+  React.useEffect(() => {
+    document.title = "Home";
+  }, []);
+
   return (
     <div>
       <Header />
