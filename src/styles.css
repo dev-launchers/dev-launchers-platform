@@ -15,6 +15,16 @@ a:hover {
   color: rgb(255, 217, 0);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 h1 {
   font-family: "Holtwood One SC", serif;
   line-height: 1em;
