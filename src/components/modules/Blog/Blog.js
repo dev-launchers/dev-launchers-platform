@@ -65,6 +65,15 @@ export default function Blog(props) {
     fetchArticles();
   }, [prismicRef]);
 
+  // When we've loaded our articles
+  React.useEffect(() => {
+    articles.map(article => {
+      if (article.uid == articleId) {
+        document.title = article.data.title[0].text;
+      }
+    });
+  }, [articles]);
+
   return (
     <PageBody>
       <br />

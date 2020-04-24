@@ -5,6 +5,10 @@ import PageBody from "../components/common/PageBody";
 import Footer from "../components/common/Footer";
 
 export default function JoinRoute() {
+  React.useEffect(() => {
+    document.title = "Join";
+  }, []);
+
   return (
     <div>
       <Header />

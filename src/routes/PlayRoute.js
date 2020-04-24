@@ -5,6 +5,10 @@ import Play from "../components/modules/Play";
 import Footer from "../components/common/Footer";
 
 export default function PlayRoute() {
+  React.useEffect(() => {
+    document.title = "Play";
+  }, []);
+
   return (
     <div>
       <Header />

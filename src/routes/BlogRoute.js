@@ -6,6 +6,10 @@ import Blog from "../components/modules/Blog";
 import Footer from "../components/common/Footer";
 
 export default function BlogRoute(props) {
+  React.useEffect(() => {
+    document.title = "Blog";
+  }, []);
+
   const params = props.match.params;
   const pathType = params.pathType;
   const authorId = params.authorId;

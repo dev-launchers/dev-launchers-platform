@@ -5,6 +5,10 @@ import Hangout from "../components/modules/Hangout/Hangout";
 import Footer from "../components/common/Footer";
 
 export default function StoriesRoute() {
+  React.useEffect(() => {
+    document.title = "Hangout";
+  }, []);
+
   return (
     <div>
       <Header />
