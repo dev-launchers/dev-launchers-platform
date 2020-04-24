@@ -1,0 +1,38 @@
+.articleInfoArea {
+  display: flex;
+  flex-direction: row;
+  alignitems: center;
+  justifycontent: center;
+  margin-bottom: 1rem;
+  margin-left: 10%;
+}
+
+.infoBlurb {
+  display: flex;
+  width: 50%;
+}
+
+.socialIconsArea {
+  width: 40%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.socialIconsArea button {
+  margin-left: 2%;
+}
+
+@media (orientation: portrait) {
+  .articleInfoArea {
+    flex-wrap: wrap;
+  }
+
+  .infoBlurb {
+    /* Causes wrapping */
+    width: 100%;
+  }
+  .socialIconsArea {
+    /* Causes wrapping */
+    width: 100%;
+  }
+}
