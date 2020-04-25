@@ -17,11 +17,6 @@ export default function Earn() {
         <li>Create games and apps: earn rewards!</li>
         <li>Become a developer: get paid!</li>
       </ul>
-      <span style={{ color: "red", fontWeight: "bold", fontSize: ".9rem" }}>
-        * This page is under construction, and the point values and rewards
-        listed are NOT final! Point to reward ratios will be adjusted, and new
-        ways to earn points are being added
-      </span>
       <hr />
       <h2>Spend points</h2>
       Progress through our Ignition Program and earn points you can spend on
