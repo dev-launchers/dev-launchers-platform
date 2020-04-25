@@ -1,26 +1,16 @@
 .container {
   margin: 1.5%;
-  width: 30%;
+  width: 22%;
   border-radius: 2px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
   display: flex;
   flex-direction: column;
-}
-
-.heading {
-  width: 100%;
-  font-size: 2rem;
-  background-color: #1c1c1c;
 }
 
 .attachment {
   float: right;
   margin-top: 0.15em;
   margin-right: 0.5em;
-}
-
-.title {
-  margin-left: 4%;
 }
 
 .content {
@@ -33,22 +23,34 @@
 .imageHolder {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  width: 30%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: lightgrey;
+  background-color: black;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+.imageHolder a {
+  display: flex;
 }
 
 .image {
   background-color: lightgray;
-  height: 10vw;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  max-width: 100%;
+  max-height: 25vh;
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
   cursor: pointer;
   vertical-align: top;
+  margin-left: auto;
+  margin-right: auto;
+  outline: 2px solid black;
 }
 
 .description {
-  width: 90%;
+  width: 100%;
+  font-size: 1.2rem;
 }
 
 .containerLarge {
@@ -64,4 +66,11 @@
 
 .attachments {
   margin-top: auto;
+}
+
+@media (orientation: portrait) {
+  .container {
+    width: 90%;
+    margin-bottom: 5%;
+  }
 }
