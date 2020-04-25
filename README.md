@@ -36,6 +36,16 @@ We’re currently partnered with the Austin Public Library and run weekly labs f
  
 ---
  
+## Get Started
+
+1. Clone the repo
+
+2. Install: `npm install`
+
+3. Run dev version: `npm run start`
+
+---
+ 
 ## License
 
 The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).

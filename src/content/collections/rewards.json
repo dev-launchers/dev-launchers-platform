@@ -6,18 +6,23 @@
   "data": {
     "prizes": [
       {
+        "title": "Aseprite Software Key",
+        "description": "A professional grade pixel art tool that lets you create 2D animations for videogames. It's awesome!",
+        "cost": 30
+      },
+      {
         "title": "Custom Domain",
-        "description": "A custom domain of your choosing linked to your own web app, game, or portfolio",
+        "description": "A custom domain of your choosing linked to your own web app, game, or portfolio!",
         "cost": 50
       },
       {
         "title": "$30 Gift Card",
-        "description": "$30 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, Xbox",
+        "description": "$30 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, or Xbox!",
         "cost": 150
       },
       {
         "title": "$100 Gift Card",
-        "description": "$100 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, Xbox",
+        "description": "$100 Giftcard from Best Buy, Apple Store, Google Play, PlayStation Network, or Xbox!",
         "cost": 250
       }
     ],
@@ -36,17 +41,6 @@
         "description": "Attend 3 sessions in a row",
         "value": "+20",
         "category": "Perserverence"
-      },
-
-      {
-        "description": "Send a message on Slack at least once during the week",
-        "value": "+1",
-        "category": "Communication"
-      },
-      {
-        "description": "Send at least 10 Slack messages during the week",
-        "value": "+14",
-        "category": "Communication"
       },
 
       {
