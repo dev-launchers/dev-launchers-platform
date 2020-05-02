@@ -38,6 +38,18 @@ export default function Footer(props) {
           <div className={style.NavEntry}>JOIN</div>
         </Link>
       </div>
+      <div className={style.SocialMediaLink}>
+        <a
+          href="https://www.instagram.com/devlaunchers/"
+          class="fab fa-instagram"
+        ></a>
+        <a
+          href=" https://www.linkedin.com/company/devlaunchers/"
+          class="fab fa-linkedin"
+        ></a>
+        <a href="https://www.twitch.tv/devlaunchers/" class="fab fa-twitch"></a>
+        <a href="https://discord.io/devlaunchers/" class="fab fa-discord"></a>
+      </div>
       <div className={style.OrgInfoArea}>
         Terms of Service | Privacy Policy | ©Dev Launchers, 2020.
       </div>
