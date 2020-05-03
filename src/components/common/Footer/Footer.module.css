@@ -28,11 +28,13 @@
 }
 
 .SocialMediaLink {
-  min-width: 450px;
-  width: 10%;
+  margin-top: 2.5%;
+  min-width: 10rem;
+  width: 40%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 5rem;
 }
 
 .NavEntry {
@@ -43,9 +45,10 @@
 .OrgInfoArea {
   width: 90%;
   text-align: right;
-  margin: 5%;
   font-size: 0.85rem;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 a {
@@ -71,8 +74,7 @@ a:hover {
   }
 
   .SocialMediaLink {
-    min-width: 450px;
-    width: 60%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
