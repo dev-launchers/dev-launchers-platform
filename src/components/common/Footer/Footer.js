@@ -45,7 +45,7 @@ export default function Footer(props) {
           target="_blank"
         ></a>
         <a
-          href=" https://www.linkedin.com/company/devlaunchers/"
+          href="https://www.linkedin.com/company/devlaunchers/"
           class="fab fa-linkedin"
           target="_blank"
         ></a>
