@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Link } from "react-router-dom";
 
 import style from "./Organization.module.css";
 
@@ -24,7 +25,11 @@ export default function Organization() {
             for people just like you, take a look around and join us!
           </div>
           <div className={style.CtaSection_ButtonArea}>
-            <Button className={style.CtaSection_Button}>Become a Mentor</Button>
+            <Link to={"/mentor-signup"}>
+              <Button className={style.CtaSection_Button} doNothing>
+                Become a Mentor
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
