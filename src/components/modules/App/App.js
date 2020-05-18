@@ -24,6 +24,8 @@ import JoinRoute from "../../../routes/JoinRoute";
 import PixilartWrapperRoute from "../../../routes/PixilartWrapperRoute";
 import HangoutRoute from "../../../routes/HangoutRoute";
 
+import MentorSignupRoute from "../../../routes/MentorSignupRoute";
+
 function App(props) {
   return (
     <useAuthContext.Provider>
@@ -61,6 +63,12 @@ function App(props) {
                     exact
                     path="/(hangout|hangouts)/"
                     component={HangoutRoute}
+                  />
+
+                  <Route
+                    exact
+                    path="/mentor-signup"
+                    component={MentorSignupRoute}
                   />
                 </Switch>
               </Router>

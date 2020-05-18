@@ -8,7 +8,8 @@ import style from "./Button.module.css";
 
 export default function Button(props) {
   const clickHandler = () => {
-    if (props.href) window.open(props.href, "_blank");
+    if (props.doNothing) return;
+    else if (props.href) window.open(props.href, "_blank");
     else if (props.toast) toast(props.toast);
     else toast("This site is currently under development, check back soon!");
   };
