@@ -15,7 +15,7 @@ export default function Button(props) {
   };
 
   let buttonStyle = props.style ? props.style : {};
-  buttonStyle.fontSize = props.fontSize ? props.fontSize : undefined;
+  buttonStyle.fontSize = props.fontSize || buttonStyle.fontSize;
 
   return (
     <button
