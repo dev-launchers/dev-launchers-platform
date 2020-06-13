@@ -1,0 +1,66 @@
+/**
+ *Borrowed from react-accessible-accordion demo
+ *link: https://github.com/springload/react-accessible-accordion
+**/
+.accordion {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.accordion__item + .accordion__item {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.accordion__button {
+  background-color: #d9d9d9;
+  cursor: pointer;
+  padding: 18px;
+  text-align: left;
+  border: none;
+}
+
+.accordion__button__lebel {
+  font-family: "Holtwood One SC", serif;
+}
+
+.accordion__button:hover {
+  background-color: rgb(255, 217, 0);
+}
+
+.accordion__button:before {
+  display: none; /* use inline-block to display arrow */
+  content: "";
+  height: 10px;
+  width: 10px;
+  margin-right: 12px;
+  border-bottom: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(-45deg);
+}
+
+.accordion__button[aria-expanded="true"]::before,
+.accordion__button[aria-selected="true"]::before {
+  transform: rotate(45deg);
+}
+
+.accordion__panel {
+  padding: 20px;
+  animation: fadein 0.35s ease-in;
+}
+
+/* -------------------------------------------------- */
+/* ---------------- Animation part ------------------ */
+/* -------------------------------------------------- */
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (orientation: portrait) {
+}
