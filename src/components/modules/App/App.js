@@ -1,5 +1,11 @@
 import React from "react";
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -27,6 +33,10 @@ import HangoutRoute from "../../../routes/HangoutRoute";
 
 import MentorSignupRoute from "../../../routes/MentorSignupRoute";
 import MentorshipTiersRoute from "../../../routes/MentorshipTiersRoute";
+
+const Wildcard = () => {
+  return <Redirect to="/" />;
+};
 
 function App(props) {
   return (
@@ -77,6 +87,7 @@ function App(props) {
                     path="/members"
                     component={MentorshipTiersRoute}
                   />
+                  <Route exact path="/*" component={Wildcard} />
                 </Switch>
               </Router>
             </div>
