@@ -23,10 +23,10 @@ export default function SupportUs() {
           </div>
           <div className={style.ctaWrapper}>
             <div className={style.ctaText}>
-              Dev Launchers is a nonprofit intent on empowering diverse young
-              creatives, innovators, and leaders. We're working on touching as
-              many lives as we possibly can, and need your help to make that
-              happen. Any amount helps!
+              Dev Launchers is a 501(c)(3) nonprofit intent on empowering
+              diverse young creatives, innovators, and leaders. We're working on
+              touching as many lives as we possibly can, and need your help to
+              make that happen. Any amount helps!
             </div>
             <div className={style.ctaButtonWrapper}>
               <Button
@@ -37,8 +37,7 @@ export default function SupportUs() {
               </Button>
             </div>
             <div className={style.statusNote}>
-              Dev Launchers is a Texas nonprofit corporation in the process of
-              receiving 501(c)(3) status.
+              Dev Launchers is a Texas 501(c)(3) nonprofit corporation.
             </div>
           </div>
         </div>
