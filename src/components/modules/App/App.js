@@ -61,7 +61,7 @@ function App(props) {
                   <Route exact path="/earn" component={EarnRoute} />
                   <Route exact path="/join" component={JoinRoute} />
                   <Route exact path="/calendar" component={CalendarRoute} />
-                  <Route exact path="/stories" component={StoriesRoute} />
+                  <Route exact path="/members" component={MentorshipTiersRoute} />
                   <Route
                     path="/blog/:pathType/:authorId/:articleId"
                     component={BlogRoute}
@@ -84,8 +84,8 @@ function App(props) {
                   />
                   <Route
                     exact
-                    path="/members"
-                    component={MentorshipTiersRoute}
+                    path="/stories"
+                    component={StoriesRoute}
                   />
                   <Route exact path="/*" component={Wildcard} />
                 </Switch>
