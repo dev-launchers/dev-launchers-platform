@@ -1,0 +1,50 @@
+@media (orientation: portrait) {
+}
+
+/* Flexbox */
+.flex__container {
+  /* We first create a flex layout context */
+  display: flex;
+  flex-flow: row wrap;
+
+  /* Then we define how is distributed the remaining space */
+  justify-content: space-around;
+
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.side {
+  flex: 45%;
+  padding: 20px;
+}
+
+/* Main column */
+.main {
+  flex: 45%;
+  padding: 20px;
+}
+
+/* Column container */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.link {
+  color: black;
+  text-decoration: underline;
+}
+.LogoImage {
+  display: inline-block;
+  width: 7%;
+}
+
+li {
+  margin-bottom: 5px;
+}

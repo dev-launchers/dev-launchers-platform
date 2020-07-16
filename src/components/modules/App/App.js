@@ -33,6 +33,7 @@ import HangoutRoute from "../../../routes/HangoutRoute";
 
 import MentorSignupRoute from "../../../routes/MentorSignupRoute";
 import MentorshipTiersRoute from "../../../routes/MentorshipTiersRoute";
+import SocialMediaRoute from "../../../routes/SocialMediaRoute";
 
 const Wildcard = () => {
   return <Redirect to="/" />;
@@ -87,6 +88,7 @@ function App(props) {
                     path="/members"
                     component={MentorshipTiersRoute}
                   />
+                  <Route exact path="/check-it" component={SocialMediaRoute} />
                   <Route exact path="/*" component={Wildcard} />
                 </Switch>
               </Router>
