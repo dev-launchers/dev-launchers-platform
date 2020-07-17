@@ -2,6 +2,7 @@ import React from "react";
 import PageBody from "../../common/PageBody";
 import { Link } from "react-router-dom";
 import logoMonogramImage from "../../../images/logo-monogram.png";
+import studentPhoto from "../../../images/support-us/people-inside-room-3184468.jpg";
 
 import style from "./SocialMedia.module.css";
 
@@ -13,6 +14,9 @@ export default function SocialMedia() {
         <div class={style.row}>
           <div class={style.side}>
             <h2>check it</h2>
+            <div className={style.studentImageWrapper}>
+              <img className={style.studentImage} src={studentPhoto} />
+            </div>
           </div>
           <div class={style.main}>
             <p>
@@ -43,8 +47,7 @@ export default function SocialMedia() {
             </ul>
             <br />
             <p>
-              <b>Collaborate</b> with fellow members in hangout on a variety of
-              projects.
+              <b>Collaborate</b> with fellow members on a variety of projects.
             </p>
             <ul class={style.list}>
               <li>

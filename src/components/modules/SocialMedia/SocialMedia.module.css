@@ -43,8 +43,27 @@
 .LogoImage {
   display: inline-block;
   width: 7%;
+  filter: brightness(0);
+}
+
+/* TODO: Minor issue where the logo will animate separately from the link */
+.LogoImage:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(6102%)
+    hue-rotate(358deg) brightness(101%) contrast(103%);
 }
 
 li {
   margin-bottom: 5px;
+}
+
+.studentImageWrapper {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+}
+
+.studentImage {
+  width: 90%;
 }
