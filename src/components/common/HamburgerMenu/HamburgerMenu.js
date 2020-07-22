@@ -11,7 +11,7 @@ function HamburgerMenu(props) {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
-  const isMenuOpen = function(state) {
+  const isMenuOpen = function (state) {
     setMenuOpen(state.isOpen);
   };
 
@@ -68,8 +68,8 @@ function HamburgerMenu(props) {
             <Link to={"/support-us"} className="nav-link">
               <div className={style.navEntry}>SUPPORT US</div>
             </Link>
-            <Link to={"/stories"} className="nav-link">
-              <div className={style.navEntry}>STORIES</div>
+            <Link to={"/members"} className="nav-link">
+              <div className={style.navEntry}>MEMBERS</div>
             </Link>
             <Link to={"/join"} className="nav-link">
               <div className={style.navEntry}>JOIN</div>
