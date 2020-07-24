@@ -31,8 +31,8 @@ export default function Footer(props) {
         <Link to={"/support-us"} className="nav-link">
           <div className={style.NavEntry}>SUPPORT US</div>
         </Link>
-        <Link to={"/stories"} className="nav-link">
-          <div className={style.NavEntry}>STORIES</div>
+        <Link to={"/members"} className="nav-link">
+          <div className={style.NavEntry}>MEMBERS</div>
         </Link>
         <Link to={"/join"} className="nav-link">
           <div className={style.NavEntry}>JOIN</div>
