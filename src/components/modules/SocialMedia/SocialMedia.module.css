@@ -56,14 +56,14 @@ li {
   margin-bottom: 5px;
 }
 
-.studentImageWrapper {
+.chessImageWrapper {
   width: 70%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 6rem;
 }
 
-.studentImage {
-  width: 90%;
+.chessImage {
+  width: 100%;
 }
