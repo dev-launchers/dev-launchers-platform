@@ -1,18 +1,18 @@
 import React from "react";
 
 import Header from "../components/common/Header";
-import Hangout from "../components/modules/Hangout/Hangout";
+import SocialMedia from "../components/modules/SocialMedia/SocialMedia";
 import Footer from "../components/common/Footer";
 
-export default function HangoutRoute() {
+export default function SocialMediaRoute() {
   React.useEffect(() => {
-    document.title = "Hangout";
+    document.title = "Check us out";
   }, []);
 
   return (
     <div>
       <Header />
-      <Hangout />
+      <SocialMedia />
       <Footer />
     </div>
   );

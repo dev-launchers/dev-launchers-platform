@@ -41,8 +41,8 @@ export default function Header(props) {
           <Link to={"/support-us"} className="nav-link">
             <div className={style.NavEntry}>SUPPORT US</div>
           </Link>
-          <Link to={"/stories"} className="nav-link">
-            <div className={style.NavEntry}>STORIES</div>
+          <Link to={"/members"} className="nav-link">
+            <div className={style.NavEntry}>MEMBERS</div>
           </Link>
           <Link to={"/join"} className="nav-link">
             <div className={style.NavEntry}>JOIN</div>
@@ -53,10 +53,10 @@ export default function Header(props) {
           {authUser ? (
             <img className={style.UserProfilePic} src={authUser.photoURL} />
           ) : (
-            <Button fontSize="1.2rem" onClick={doAuthRequest}>
-              Sign In
+              <Button fontSize="1.2rem" onClick={doAuthRequest}>
+                Sign In
             </Button>
-          )}
+            )}
         </div>
       </div>
       <div

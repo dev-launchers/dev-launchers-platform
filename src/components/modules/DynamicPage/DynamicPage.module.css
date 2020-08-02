@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=EB+Garamond&family=Roboto&family=Vollkorn&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Holtwood+One+SC&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Abel&display=swap");
+
+.pageContainer {
+    padding-left: 5%;
+    padding-right: 5%;
+    color: rgba(0, 0, 0, 0.84);
+}
+
+.titleArea {
+    font-family: "Holtwood One SC", serif;
+    text-align: left;
+}
+
+.pageBody {
+    /*font-family: "Vollkorn", serif;*/
+    font-family: sans-serif;
+    font-family: "Abel", sans-serif;
+}
+
+.pageHeading1 {
+    font-family: "Holtwood One SC", serif;
+    font-size: 3.25rem;
+}
+.pageHeading2 {
+    font-family: "Holtwood One SC", serif;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+.pageHeading3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+.pageHeading4 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+}
+
+.pageParagraph {
+    font-size: 1.5rem;
+    font-weight: light;
+    min-height: 1rem;
+    //text-indent: 3rem;
+}
+.pageIframe {
+    width: 105vw;
+    max-width: 105vw;
+    height: 95vh;
+    margin-left: -25vw;
+}
+
+.pageImage {
+    max-width: 100%;
+}
+
+.pageLink {
+    font-weight: bold;
+    text-decoration: underline;
+    /*color: rgba(0, 0, 0, 0.84);*/
+    color: #0000ee;
+}
+.pageLink:hover {
+    color: black;
+}
+
+@media (orientation: portrait) {
+    .pageContainer {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .pageIntroImage {
+        margin-left: -15vw;
+    }
+
+    .pageIframe {
+        height: 95vh;
+        margin-left: -15vw;
+    }
+}
