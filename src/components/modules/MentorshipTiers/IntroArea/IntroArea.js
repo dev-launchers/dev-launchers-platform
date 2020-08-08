@@ -3,7 +3,7 @@ import Button from "../../../common/Button";
 
 import style from "./IntroArea.module.css";
 
-export default function IntroArea() {
+export default function IntroArea(props) {
   return (
     <div style={{ width: "100%" }}>
       <div
@@ -29,7 +29,13 @@ export default function IntroArea() {
           <br />
           <br />
           We're here help you reach your goals.
-          <Button style={{ fontSize: ".75rem" }}>JOIN NOW</Button>
+          <br />
+          <Button
+            onClick={props.scrollToFormFunc}
+            style={{ fontSize: ".75rem", marginTop: "2%" }}
+          >
+            JOIN NOW
+          </Button>
           <br />
         </div>
       </div>
@@ -38,6 +44,7 @@ export default function IntroArea() {
         style={{
           padding: "5%",
           paddingTop: "1%",
+          paddingBottom: "1%",
           textAlign: "center"
         }}
       >

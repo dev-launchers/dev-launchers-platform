@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import PageBody from "../../common/PageBody";
 import Button from "../../common/Button";
 //import Card from "../../common/Card";
@@ -15,34 +15,26 @@ import {
 import style from "./MentorshipTiers.module.css";
 
 import IntroArea from "./IntroArea";
+import SignUpForm from "./SignUpForm";
 import progressionLevels from "./progressionLevels.js";
 
+// General scroll-to function
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+
 export default function MentorshipTiers() {
-  // Format progressionLevel data to fit work with CardGroup component
-  var cardGroupData = {
-    title: "Levels",
-    data: progressionLevels
-  };
+  const myRef = useRef(null);
+  const executeScroll = () => scrollToRef(myRef);
 
   return (
     <div>
-      <IntroArea />
+      <IntroArea scrollToFormFunc={executeScroll} />
       <PageBody>
         <div style={{ width: "100%" }}>
           <CardGroup title="Levels" data={progressionLevels} />
-          <Button
-            style={{
-              fontSize: "2rem",
-              margin: "2%",
-              marginLeft: "auto",
-              marginRight: "auto"
-            }}
-          >
-            JOIN NOW
-          </Button>
         </div>
-        <br />
       </PageBody>
+      <div className="scrollToDiv" ref={myRef} />
+      <SignUpForm />
     </div>
   );
 }
