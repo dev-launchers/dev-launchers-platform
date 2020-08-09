@@ -9,6 +9,7 @@ import style from "./MentorshipTiers.module.css";
 
 import IntroArea from "./IntroArea";
 import SignUpForm from "./SignUpForm";
+import MemberProfilesSlideshow from "./MemberProfilesSlideshow";
 import progressionLevels from "./progressionLevels.js";
 
 // General scroll-to function
@@ -25,18 +26,57 @@ export default function MentorshipTiers() {
       setModalContent(
         <div>
           <h3>{level.title}</h3>
-          <div>{level.description}</div>
-          <h4>Abilities</h4>
-          {level.abilities.map(entry => {
-            return <li>{entry}</li>;
-          })}
-          <h4>Expectations</h4>
-          {level.expectations.map(entry => {
-            return <li>{entry}</li>;
-          })}
-          <h4>Advancement Criteria</h4>
+          <div>
+            <b>{level.description}</b>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-around",
+              marginTop: "2%",
+              marginBottom: "2%"
+            }}
+          >
+            <div
+              className={style.infoCard}
+              style={{
+                width: "40%",
+                backgroundColor: "rgba(0,0,0,.75)",
+                color: "white",
+                padding: "2%",
+                paddingTop: "0%"
+              }}
+            >
+              <h4>Abilities</h4>
+              <ul>
+                {level.abilities.map(entry => {
+                  return <li>{entry}</li>;
+                })}
+              </ul>
+            </div>
+            <div
+              className={style.infoCard}
+              style={{
+                width: "40%",
+                backgroundColor: "rgba(0,0,0,.75)",
+                color: "white",
+                padding: "2%",
+                paddingTop: "0%"
+              }}
+            >
+              <h4>Expectations</h4>
+              <ul>
+                {level.expectations.map(entry => {
+                  return <li>{entry}</li>;
+                })}
+              </ul>
+            </div>
+          </div>
           {level.advancementCriteria.map(entry => {
-            return <li>{entry}</li>;
+            return (
+              <div style={{ width: "100%", textAlign: "center" }}>{entry}</div>
+            );
           })}
         </div>
       );
@@ -64,6 +104,7 @@ export default function MentorshipTiers() {
       ></Modal>
       <IntroArea scrollToFormFunc={executeScroll} />
       <PageBody>
+        <MemberProfilesSlideshow />
         <div style={{ width: "100%" }}>
           <CardGroup data={progressionLevels} />
         </div>
