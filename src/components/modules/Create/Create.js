@@ -18,8 +18,10 @@ const customModalStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
+    transform: "translate(-50%, -50%)",
+    zIndex: 1001
+  },
+  overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
 };
 Modal.setAppElement("#root");
 

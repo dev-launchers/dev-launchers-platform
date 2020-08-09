@@ -12,7 +12,7 @@ export default function IntroArea(props) {
           backgroundColor: "#333333",
           color: "white",
           marginTop: "0%",
-          padding: "5%"
+          padding: "3%"
         }}
       >
         <h1 id="title">The Community</h1>
@@ -34,7 +34,7 @@ export default function IntroArea(props) {
             onClick={props.scrollToFormFunc}
             style={{ fontSize: ".75rem", marginTop: "2%" }}
           >
-            JOIN NOW
+            APPLY NOW!
           </Button>
           <br />
         </div>
@@ -49,7 +49,6 @@ export default function IntroArea(props) {
         }}
       >
         <h3>A Space For Everyone</h3>
-        <br />
         Check below to see where you fit in at Dev Launchers!
       </div>
     </div>

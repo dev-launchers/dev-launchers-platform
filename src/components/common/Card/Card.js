@@ -12,6 +12,7 @@ export default function Card(props) {
         [style.containerLarge]: props.size == "large"
       })}
       key={props.i}
+      onClick={props.data.onClick}
     >
       <div
         className={cx(style.content, {
