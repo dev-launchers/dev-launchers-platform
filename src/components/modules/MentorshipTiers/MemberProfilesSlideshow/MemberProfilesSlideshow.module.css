@@ -1,59 +1,58 @@
 .carouselHolder {
-    width: 100%;
-    height: 20vh;
-    background-color: #ffffff;
-    color: black;
-    text-align: center;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
+  width: 100%;
+  height: 20vh;
+  background-color: #ffffff;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .carouselBlock {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    //border: 1px solid black;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //border: 1px solid black;
 }
 
 .carouselBlockHeader {
-    margin: 1%;
-    font-size: 1.5rem;
-    font-weight: bold;
+  margin: 1%;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .carouselArrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .inLabelDiv {
-    margin: 0;
-    font-size: 1rem;
+  margin: 0;
+  font-size: 0.75rem;
 }
 
 @media (orientation: portrait) {
-    .carouselHolder {
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        height: 50vh;
-        flex-direction: column;
-        align-items: center;
-        font-size: 2rem;
-    }
-
-    .carouselBlock {
-        width: 100%;
-        border-bottom: 2px solid black;
-    }
-
-    .carouselArrow {
-        display: none;
-    }
+  .carouselHolder {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 60vh;
+    flex-direction: column;
+    align-items: center;
+  }
+  .carouselBlock {
+    width: 90%;
+    margin: 2.5%;
+    padding: 2.5%;
+    border-bottom: 1px solid black;
+  }
+  .carouselArrow {
+    display: none;
+  }
 }
