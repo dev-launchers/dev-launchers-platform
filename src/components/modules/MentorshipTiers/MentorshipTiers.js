@@ -16,103 +16,92 @@ import progressionLevels from "./progressionLevels.js";
 const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
 
 export default function MentorshipTiers() {
-  // Scroll-to functions
-  const myRef = useRef(null);
-  const executeScroll = () => scrollToRef(myRef);
+    // Scroll-to functions
+    const myRef = useRef(null);
+    const executeScroll = () => scrollToRef(myRef);
 
-  // Add onClick functions to progressionLevels
-  progressionLevels.map(level => {
-    level.onClick = () => {
-      setModalContent(
-        <div>
-          <h3>{level.title}</h3>
-          <div>
-            <b>{level.description}</b>
-          </div>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-around",
-              marginTop: "2%",
-              marginBottom: "2%"
-            }}
-          >
-            <div
-              className={style.infoCard}
-              style={{
-                width: "40%",
-                backgroundColor: "rgba(0,0,0,.75)",
-                color: "white",
-                padding: "2%",
-                paddingTop: "0%"
-              }}
-            >
-              <h4>Abilities</h4>
-              <ul>
-                {level.abilities.map(entry => {
-                  return <li>{entry}</li>;
-                })}
-              </ul>
-            </div>
-            <div
-              className={style.infoCard}
-              style={{
-                width: "40%",
-                backgroundColor: "rgba(0,0,0,.75)",
-                color: "white",
-                padding: "2%",
-                paddingTop: "0%"
-              }}
-            >
-              <h4>Expectations</h4>
-              <ul>
-                {level.expectations.map(entry => {
-                  return <li>{entry}</li>;
-                })}
-              </ul>
-            </div>
-          </div>
-          {level.advancementCriteria.map(entry => {
-            return (
-              <div style={{ width: "100%", textAlign: "center" }}>{entry}</div>
+    // Add onClick functions to progressionLevels
+    progressionLevels.map(level => {
+        level.onClick = () => {
+            setModalContent(
+                <div>
+                    <h3>{level.title}</h3>
+                    <div>
+                        <b>{level.description}</b>
+                    </div>
+                    {level.prerequisiteSkills ? (
+                        <div className={style.prerequisiteSkillCard}>
+                            <h4>
+                                <u>Prerequisite Skills</u>
+                            </h4>
+                            {level.prerequisiteSkills.map(entry => {
+                                return <li>{entry}</li>;
+                            })}
+                        </div>
+                    ) : (
+                        ""
+                    )}
+
+                    <div className={style.modalBody}>
+                        <div className={style.modalInfoCard}>
+                            <h4>
+                                <u>Abilities</u>
+                            </h4>
+                            <ul>
+                                {level.abilities.map(entry => {
+                                    return <li className={style.listEntry}>{entry}</li>;
+                                })}
+                            </ul>
+                        </div>
+                        <div className={style.modalInfoCard}>
+                            <h4>
+                                <u>Expectations</u>
+                            </h4>
+                            <ul>
+                                {level.expectations.map(entry => {
+                                    return <li className={style.listEntry}>{entry}</li>;
+                                })}
+                            </ul>
+                        </div>
+                    </div>
+                    {level.advancementCriteria.map(entry => {
+                        return <div style={{ width: "100%", textAlign: "center" }}>{entry}</div>;
+                    })}
+                </div>
             );
-          })}
-        </div>
-      );
-      setModalIsOpen(true);
+            setModalIsOpen(true);
+        };
+    });
+
+    // Modal state management
+    const [modalContent, setModalContent] = React.useState("content");
+    const [modalIsOpen, setModalIsOpen] = React.useState(false);
+    const openModal = () => {
+        setModalIsOpen(true);
     };
-  });
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
 
-  // Modal state management
-  const [modalContent, setModalContent] = React.useState("content");
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-
-  return (
-    <div>
-      <Modal
-        modalContent={modalContent}
-        modalIsOpen={modalIsOpen}
-        openModal={openModal}
-        closeModal={closeModal}
-      ></Modal>
-      <IntroArea scrollToFormFunc={executeScroll} />
-      <PageBody>
-        <MemberProfilesSlideshow />
-        <div style={{ width: "100%" }}>
-          <CardGroup data={progressionLevels} />
+    return (
+        <div>
+            <Modal
+                modalContent={modalContent}
+                modalIsOpen={modalIsOpen}
+                openModal={openModal}
+                closeModal={closeModal}
+            ></Modal>
+            <IntroArea scrollToFormFunc={executeScroll} />
+            <PageBody>
+                <MemberProfilesSlideshow />
+                <div style={{ width: "100%" }}>
+                    <CardGroup data={progressionLevels} />
+                </div>
+            </PageBody>
+            <div className="scrollToDiv" ref={myRef} style={{ height: "5vh" }} />
+            <hr />
+            <div className="pusher" style={{ height: "5vh" }} />
+            <SignUpForm />
         </div>
-      </PageBody>
-      <div className="scrollToDiv" ref={myRef} style={{ height: "5vh" }} />
-      <hr />
-      <div className="pusher" style={{ height: "5vh" }} />
-      <SignUpForm />
-    </div>
-  );
+    );
 }
