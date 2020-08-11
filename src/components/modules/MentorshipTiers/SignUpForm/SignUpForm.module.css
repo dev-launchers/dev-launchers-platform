@@ -1,12 +1,21 @@
+.formContainer {
+    padding-top: 5%;
+    background-color: #4f4e4e;
+    background-image: url("/images/logo-monogram.png");
+    background-repeat: repeat;
+    background-size: 4rem;
+    background-blend-mode: color-burn;
+}
+
 .signUpIframe {
-  width: 100%;
-  height: 1950px;
-  margin-left: auto;
-  margin-right: auto;
+    width: 50%;
+    height: 2000px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (orientation: portrait) {
-  .signUpIframe {
-    height: 2300px;
-  }
+    .signUpIframe {
+        height: 2300px;
+    }
 }
