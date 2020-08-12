@@ -5,7 +5,11 @@ import style from "./CardGroup.module.css";
 export default function CardGroup(props) {
   return (
     <div>
-      <h3 className={style.collectionTitle}>{props.title}</h3>
+      {props.title ? (
+        <h3 className={style.collectionTitle}>{props.title}</h3>
+      ) : (
+        <span />
+      )}
       <div className={style.collection}>
         {Object.keys(props.data).length != 0 &&
           props.data.map((items, i) => {
