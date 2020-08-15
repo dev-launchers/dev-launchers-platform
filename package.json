@@ -1,60 +1,60 @@
 {
-    "name": "website-new",
-    "version": "1.0.0",
-    "description": "",
-    "keywords": [],
-    "main": "src/index.js",
-    "homepage": "http://devlaunchers.com/",
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "dependencies": {
-        "articles": "^0.2.2",
-        "classnames": "^2.2.6",
-        "constate": "^2.0.0",
-        "firebase": "^7.6.2",
-        "natural": "^2.1.5",
-        "prismic-reactjs": "^1.3.0",
-        "query-string": "6.11.1",
-        "react": "16.12.0",
-        "react-accessible-accordion": "^3.0.1",
-        "react-burger-menu": "^2.6.13",
-        "react-dom": "16.12.0",
-        "react-modal": "latest",
-        "react-redux": "^7.1.3",
-        "react-router-dom": "latest",
-        "react-scripts": "latest",
-        "react-share": "latest",
-        "react-social-icons": "latest",
-        "react-tabs": "^3.1.0",
-        "react-toastify": "latest",
-        "react-with-firebase-auth": "^1.3.0",
-        "redux": "^4.0.5",
-        "tabletop": "^1.6.2"
-    },
-    "devDependencies": {
-        "@types/node-sass": "3.10.32",
-        "husky": "^4.2.1",
-        "lint-staged": "^10.0.4",
-        "prettier": "^1.19.1",
-        "typescript": "3.3.3"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject",
-        "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
-    },
-    "browserslist": [
-        ">0.2%",
-        "not dead",
-        "not ie <= 11",
-        "not op_mini all"
-    ],
-    "lint-staged": {
-        "*.{json,js,jsx,ts,tsx,html,scss,css,md}": "prettier --write"
+  "name": "website-new",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "homepage": "http://devlaunchers.com/",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
     }
+  },
+  "dependencies": {
+    "articles": "^0.2.2",
+    "classnames": "^2.2.6",
+    "constate": "^2.0.0",
+    "firebase": "^7.6.2",
+    "natural": "^2.1.5",
+    "prismic-reactjs": "^1.3.0",
+    "query-string": "6.11.1",
+    "react": "16.12.0",
+    "react-accessible-accordion": "^3.0.1",
+    "react-burger-menu": "^2.6.13",
+    "react-dom": "16.12.0",
+    "react-modal": "latest",
+    "react-redux": "^7.1.3",
+    "react-router-dom": "latest",
+    "react-scripts": "latest",
+    "react-share": "latest",
+    "react-social-icons": "latest",
+    "react-tabs": "^3.1.0",
+    "react-toastify": "latest",
+    "react-with-firebase-auth": "^1.3.0",
+    "redux": "^4.0.5",
+    "tabletop": "^1.6.2"
+  },
+  "devDependencies": {
+    "@types/node-sass": "3.10.32",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
+    "prettier": "^1.19.1",
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "lint-staged": {
+    "*.{json,js,jsx,ts,tsx,html,scss,css,md}": "prettier --write"
+  }
 }

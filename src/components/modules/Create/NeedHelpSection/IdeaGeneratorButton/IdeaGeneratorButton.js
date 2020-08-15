@@ -2,9 +2,11 @@ import React from "react";
 import natural from "natural"; // Natural language processing package
 import articles from "articles"; // Article of speech package
 
-import Modal from "../../../../components/common/Modal";
+import Modal from "../../../../../components/common/Modal";
 
-export default function IdeaGenerator(props) {
+import style from "./IdeaGeneratorButton.module.css";
+
+export default function IdeaGeneratorButton(props) {
   // Modal state management
   const [modalContent, setModalContent] = React.useState("content");
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -39,34 +41,15 @@ export default function IdeaGenerator(props) {
   };
 
   return (
-    <div style={{ margin: "3%" }}>
+    <div className={style.ideaGeneratorButton}>
       <Modal
         modalContent={modalContent}
         modalIsOpen={modalIsOpen}
         openModal={openModal}
         closeModal={closeModal}
       ></Modal>
-      <div
-        style={{
-          width: "100%",
-          backgroundColor: "transparent",
-          textAlign: "left",
-          padding: "1%"
-        }}
-      >
-        <button
-          onClick={openIdeaModal}
-          style={{
-            fontSize: "2.5rem",
-            paddingLeft: "5%",
-            paddingRight: "5%",
-            cursor: "pointer",
-            border: "none",
-            backgroundColor: "rgb(230,230,255)"
-          }}
-        >
-          Generate A Game Idea! 💡
-        </button>
+      <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
+        💡 Generate A Game Concept!
       </div>
     </div>
   );
