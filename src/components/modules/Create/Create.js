@@ -8,6 +8,8 @@ import { useSheetsContext } from "../../../context/SheetsContext";
 import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section";
 
+import NeedHelpSection from "./NeedHelpSection";
+
 const customModalStyles = {
   content: {
     position: "absolute",
@@ -154,6 +156,7 @@ export default function Create(props) {
         These templates are where projects begin. They provide the generic
         structure and base logic, so you can focus on what makes your app
         special!
+        <NeedHelpSection />
       </div>
       <hr />
 
