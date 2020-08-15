@@ -1,66 +1,61 @@
-/**
- *Borrowed from react-accessible-accordion demo
- *link: https://github.com/springload/react-accessible-accordion
-**/
-.accordion {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+/* <MODAL> */
+.modalContainer {
+    width: 100%;
+    height: 100%;
+}
+.modalBody {
+    width: 100%;
+    min-height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.accordion__item + .accordion__item {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+.prerequisiteSkillCard {
+    background-color: #fde51f;
+    color: #8e4900;
+    font-size: 1rem;
+    width: 95%;
+    padding: 0.2rem;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.accordion__button {
-  background-color: #d9d9d9;
-  cursor: pointer;
-  padding: 18px;
-  text-align: left;
-  border: none;
+.prerequisiteSkillCard h4 {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.accordion__button__lebel {
-  font-family: "Holtwood One SC", serif;
+.modalInfoCard {
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 2%;
+    padding-top: 0%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 1.25rem;
 }
 
-.accordion__button:hover {
-  background-color: rgb(255, 217, 0);
+.listEntry {
+    margin-bottom: 4%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid white;
 }
-
-.accordion__button:before {
-  display: none; /* use inline-block to display arrow */
-  content: "";
-  height: 10px;
-  width: 10px;
-  margin-right: 12px;
-  border-bottom: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(-45deg);
-}
-
-.accordion__button[aria-expanded="true"]::before,
-.accordion__button[aria-selected="true"]::before {
-  transform: rotate(45deg);
-}
-
-.accordion__panel {
-  padding: 20px;
-  animation: fadein 0.35s ease-in;
-}
-
-/* -------------------------------------------------- */
-/* ---------------- Animation part ------------------ */
-/* -------------------------------------------------- */
-
-@keyframes fadein {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
+/* </MODAL> */
 
 @media (orientation: portrait) {
+    /* <MODAL> */
+    .modalBody {
+        flex-direction: column;
+    }
+    .modalInfoCard {
+        width: 90%;
+        min-height: auto;
+        margin: 5%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /* </MODAL> */
 }
