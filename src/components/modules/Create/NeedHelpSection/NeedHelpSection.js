@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./NeedHelpSection.module.css";
 
-import IdeaGeneratorButton from "./IdeaGeneratorButton";
+import GameIdeaGeneratorButton from "./IdeaGeneratorButton/GameIdeaGeneratorButton";
+import AppIdeaGeneratorButton from "./IdeaGeneratorButton/AppIdeaGeneratorButton";
 import JoinProgramButton from "./JoinProgramButton";
 
 export default function NeedHelpSection(props) {
@@ -20,7 +21,8 @@ export default function NeedHelpSection(props) {
         }}
       >
         <b>Need some help?</b>
-        <IdeaGeneratorButton />
+        <GameIdeaGeneratorButton />
+        <AppIdeaGeneratorButton />
         <JoinProgramButton />
       </div>
     </div>
