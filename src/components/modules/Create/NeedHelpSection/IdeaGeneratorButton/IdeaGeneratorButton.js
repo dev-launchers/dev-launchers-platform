@@ -1,3 +1,5 @@
+// TODO: make generic IdeaGenerator for both components to use (DRY issue)
+
 import React from "react";
 import natural from "natural"; // Natural language processing package
 import articles from "articles"; // Article of speech package
@@ -33,31 +35,66 @@ export default function IdeaGeneratorButton(props) {
           textAlign: "center"
         }}
       >
-        <div style={{ fontSize: "3rem" }}>{getRandomTheme()}</div>
-        {getRandomPhrase()}
+        {props.contentGenerator()}
+        {generateButton({ position: "absolute", bottom: "10%" })}
       </div>
     );
     openModal();
   };
 
-  return (
-    <div className={style.ideaGeneratorButton}>
-      <Modal
-        modalContent={modalContent}
-        modalIsOpen={modalIsOpen}
-        openModal={openModal}
-        closeModal={closeModal}
-      ></Modal>
-      <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
-        💡 Generate A Game Concept!
+  const generateButton = styleObject => {
+    return (
+      <div className={style.ideaGeneratorButton} style={styleObject}>
+        <Modal
+          modalContent={modalContent}
+          modalIsOpen={modalIsOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+        ></Modal>
+        <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
+          {props.children}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  return generateButton();
 }
 
 // idea generating functions
 
 const entityDictionary = {
+  app: [
+    "Uber",
+    "Tinder",
+    "Facebook",
+    "Instagram",
+    "Snapchat",
+    "WhatsApp",
+    "Discord",
+    "Slack",
+    "TikTok",
+    "Google Maps",
+    "Virtual Assistant",
+    "Venmo",
+    "Duolingo",
+    "Trello",
+    "Calendar",
+    "LeetCode",
+    "Email",
+    "Google Drive",
+    "YouTube",
+    "Twitch",
+    "Wix",
+    "CreditKarma",
+    "Twitter",
+    "Reddit",
+    "Google Docs",
+    "Spotify",
+    "Google Teams",
+    "Play Store"
+  ],
+
   theme: [
     "Happy",
     "Sad",
@@ -142,7 +179,18 @@ const entityDictionary = {
     "Car Salesman",
     "Baby Sitter",
     "Entrepreneur",
-    "Baby"
+    "Baby",
+    "Equestrian",
+    "Athlete"
+  ],
+  appAudience: [
+    "Foody",
+    "Animal Lover",
+    "Technology Enthusiast",
+    "Parent",
+    "Hobbyist",
+    "Job Seeker",
+    "Teenager"
   ],
   inLocation: [
     "Jungle",
@@ -211,43 +259,8 @@ var nounInflector = new natural.NounInflector(); // For making things plural
 var articlize = articles.articlize; // For adding articles to nouns (a or an)
 
 const phraseFormats = [
-  [randEntity("game"), " game for ", isPlural(randEntity("job"))],
-
-  // BLANK game PREPOSITION a LOCATION
-  [randEntity("game"), " game in ", hasArticle(randEntity("inLocation"))],
-  [randEntity("game"), " game on ", hasArticle(randEntity("onLocation"))],
-
-  // BLANK game for JOB PREPOSITION a LOCATION
-  [
-    randEntity("game"),
-    " game for ",
-    isPlural(randEntity("job")),
-    " in ",
-    hasArticle(randEntity("inLocation"))
-  ],
-  [
-    randEntity("game"),
-    " game for ",
-    isPlural(randEntity("job")),
-    " on ",
-    hasArticle(randEntity("onLocation"))
-  ],
-
-  // BLANK game for JOB PREPOSITION a LOCATION
-  [
-    randEntity("game"),
-    " game in ",
-    hasArticle(randEntity("inLocation")),
-    " with ",
-    isPlural(randEntity(["job", "animal", "food"]))
-  ],
-  [
-    randEntity("game"),
-    " game on ",
-    hasArticle(randEntity("onLocation")),
-    " with ",
-    isPlural(randEntity(["job", "animal", "food"]))
-  ]
+  [randEntity("app"), " for ", isPlural(randEntity("job"))],
+  [randEntity("app"), " for ", isPlural(randEntity("appAudience"))]
 ];
 
 function getRandomEntry(array) {
