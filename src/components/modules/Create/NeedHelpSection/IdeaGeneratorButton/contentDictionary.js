@@ -186,6 +186,7 @@ const contentDictionary = {
     "Chicken",
     "Pierogi"
   ],
+  agentPreposition: ["with", "for", "about"],
   verbs: ["Drink"],
   adjectives: ["Drunk"]
 };

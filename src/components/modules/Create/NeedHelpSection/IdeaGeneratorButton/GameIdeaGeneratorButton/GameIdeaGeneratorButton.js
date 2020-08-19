@@ -28,7 +28,13 @@ var nounInflector = new natural.NounInflector(); // For making things plural
 var articlize = articles.articlize; // For adding articles to nouns (a or an)
 
 const phraseFormats = [
-  [randEntity("game"), " game for ", isPlural(randEntity("job"))],
+  [
+    randEntity("game"),
+    " game ",
+    randEntity("agentPreposition"),
+    " ",
+    isPlural(randEntity("job"))
+  ],
 
   // BLANK game PREPOSITION a LOCATION
   [randEntity("game"), " game in ", hasArticle(randEntity("inLocation"))],
@@ -37,14 +43,18 @@ const phraseFormats = [
   // BLANK game for JOB PREPOSITION a LOCATION
   [
     randEntity("game"),
-    " game for ",
+    " game ",
+    randEntity("agentPreposition"),
+    " ",
     isPlural(randEntity("job")),
     " in ",
     hasArticle(randEntity("inLocation"))
   ],
   [
     randEntity("game"),
-    " game for ",
+    " game ",
+    randEntity("agentPreposition"),
+    " ",
     isPlural(randEntity("job")),
     " on ",
     hasArticle(randEntity("onLocation"))
@@ -55,14 +65,18 @@ const phraseFormats = [
     randEntity("game"),
     " game in ",
     hasArticle(randEntity("inLocation")),
-    " with ",
+    " ",
+    randEntity("agentPreposition"),
+    " ",
     isPlural(randEntity(["job", "animal", "food"]))
   ],
   [
     randEntity("game"),
     " game on ",
     hasArticle(randEntity("onLocation")),
-    " with ",
+    " ",
+    randEntity("agentPreposition"),
+    " ",
     isPlural(randEntity(["job", "animal", "food"]))
   ]
 ];
