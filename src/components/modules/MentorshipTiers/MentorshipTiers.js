@@ -9,7 +9,7 @@ import style from "./MentorshipTiers.module.css";
 
 import IntroArea from "./IntroArea";
 import SignUpForm from "./SignUpForm";
-import MemberProfilesSlideshow from "./MemberProfilesSlideshow";
+import PhotoHolder from "./PhotoHolder";
 import progressionLevels from "./progressionLevels.js";
 
 // General scroll-to function
@@ -40,6 +40,21 @@ export default function MentorshipTiers() {
               {level.title}
             </span>
             {level.description}
+            <Button
+              style={{
+                display: "block",
+                width: "95%",
+                marginTop: "2%",
+                marginLeft: "auto",
+                marginRight: "auto"
+              }}
+              onClick={() => {
+                closeModal();
+                executeScroll();
+              }}
+            >
+              Apply Now!
+            </Button>
           </div>
 
           <div className={style.modalBody}>
@@ -110,7 +125,6 @@ export default function MentorshipTiers() {
       ></Modal>
       <IntroArea scrollToFormFunc={executeScroll} />
       <PageBody>
-        <MemberProfilesSlideshow />
         <div style={{ width: "100%" }}>
           <CardGroup title="Beginner" data={progressionLevels.beginner} />
           <CardGroup
@@ -120,7 +134,8 @@ export default function MentorshipTiers() {
           <CardGroup title="Advanced" data={progressionLevels.advanced} />
         </div>
       </PageBody>
-      <div className="scrollToDiv" ref={myRef} style={{ height: "5vh" }} />
+      <PhotoHolder />
+      <div className="scrollToDiv" ref={myRef} style={{ height: "0" }} />
       <SignUpForm />
     </div>
   );
