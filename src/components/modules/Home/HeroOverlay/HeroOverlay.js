@@ -9,13 +9,14 @@ export default function HeroOverlay() {
   return (
     <div className={style.HeroOverlay}>
       <div className={style.Tagline}>
-        Join the journey
+        Launch your imagination!
         <br />
         <Button
           className={style.HeroButton}
-          href="https://forms.gle/ktNmippzfYUTnwgb8"
+          //href="https://forms.gle/ktNmippzfYUTnwgb8"
+          href="/#/members"
         >
-          BECOME A DEVELOPER!
+          BECOME A DEVELOPER
         </Button>
       </div>
     </div>

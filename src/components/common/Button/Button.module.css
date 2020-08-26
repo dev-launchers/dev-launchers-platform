@@ -1,8 +1,9 @@
 .Button {
   font-family: "Holtwood One SC", serif;
   background-color: #ff7f0e;
-  color: black;
+  color: #3c1f00;
   border: 0px;
+  border-bottom: 3px solid #994800;
   cursor: pointer;
   font-size: 1.5rem;
   padding: 1.5%;

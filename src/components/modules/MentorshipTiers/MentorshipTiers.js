@@ -40,6 +40,21 @@ export default function MentorshipTiers() {
               {level.title}
             </span>
             {level.description}
+            <Button
+              style={{
+                display: "block",
+                width: "95%",
+                marginTop: "2%",
+                marginLeft: "auto",
+                marginRight: "auto"
+              }}
+              onClick={() => {
+                closeModal();
+                executeScroll();
+              }}
+            >
+              Apply Now!
+            </Button>
           </div>
 
           <div className={style.modalBody}>
