@@ -1,14 +1,14 @@
 import sparkImage from "../../../images/spark-symbol.png";
 
-import level0Image from "../../../images/members/level-0.png";
-import level1Image from "../../../images/members/level-1.png";
-import level2Image from "../../../images/members/level-2.png";
-import level3Image from "../../../images/members/level-3.png";
-import level4Image from "../../../images/members/level-4.png";
-import level5Image from "../../../images/members/level-5.png";
-import level6Image from "../../../images/members/level-6.png";
-import level7Image from "../../../images/members/level-7.png";
-import level8Image from "../../../images/members/level-8.png";
+import level0Image from "../../../images/members/level-thumbnails/level-0.png";
+import level1Image from "../../../images/members/level-thumbnails/level-1.png";
+import level2Image from "../../../images/members/level-thumbnails/level-2.png";
+import level3Image from "../../../images/members/level-thumbnails/level-3.png";
+import level4Image from "../../../images/members/level-thumbnails/level-4.png";
+import level5Image from "../../../images/members/level-thumbnails/level-5.png";
+import level6Image from "../../../images/members/level-thumbnails/level-6.png";
+import level7Image from "../../../images/members/level-thumbnails/level-7.png";
+import level8Image from "../../../images/members/level-thumbnails/level-8.png";
 
 const progressionLevels = {
   beginner: [
