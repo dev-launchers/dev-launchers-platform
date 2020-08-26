@@ -18,9 +18,9 @@ const progressionLevels = {
       imageSrc: level0Image,
       abilities: ["🚪 Access to our group mentorship program"],
       expectations: [
-        "🏗️ Initial setup",
-        "👋 Attend at least one session per month",
-        "⚙️ Be able to explain what variables and functions are in programming"
+        "👋 Attend at least two sessions per month",
+        "🏗️ Initial setup"
+        //"⚙️ Be able to explain what variables and functions are in programming"
       ],
       advancementCriteria: [
         "A rank DL8 member decides when a DL0 member is ready to transition to the next level"
@@ -38,7 +38,9 @@ const progressionLevels = {
         "💯 Ability to earn attendance points"
       ],
       expectations: [
-        "📖 Be able to speak semi-fluently about all concepts contained in the Khan Academy programming intro course - (minus object oriented design)"
+        "👋 Attend at least two sessions per month",
+        //"📖 Be able to speak semi-fluently about all concepts contained in the Khan Academy programming intro course - (minus object oriented design)"
+        "📖 Learn the intro level basics of your chosen discipline, alongside other members!"
       ],
       advancementCriteria: [
         "A rank DL8 member decides when a DL1 member is ready to transition to the next level"
@@ -56,9 +58,10 @@ const progressionLevels = {
         "🔌 GitHub repo with continuous deployment pipeline, hosted by Dev Launchers"
       ],
       expectations: [
-        "💡 Start simple personal project, and create a prototype",
-        "🧩 Learn basic object oriented design",
-        "📮 Learn and be proficient in basic git"
+        "👋 Attend at least two sessions per month",
+        "💡 Start simple personal project, and create a prototype"
+        //"🧩 Learn basic object oriented design",
+        //"📮 Learn and be proficient in basic git"
       ],
       advancementCriteria: [
         "A rank DL8 member decides when a DL2 member is ready to transition to the next level"
@@ -75,6 +78,7 @@ const progressionLevels = {
       ],
       abilities: ["💱 Ability to cash in points"],
       expectations: [
+        "👋 Attend at least two sessions per month",
         "⏲️ Must spend at least one hour/week mentoring DL0-DL2 members",
         "👷 Plan out a new project (Or extend the project from DL2), either alone or with a team, and create a working MVP"
       ],
@@ -92,9 +96,10 @@ const progressionLevels = {
       ],
       abilities: [
         "💸 Able to take on paid apprenticeship projects through the Dev Launchers Solutions Program",
-        "🖊️ Internship help TODO: Flesh out more"
+        "🖊️ Internship help"
       ],
       expectations: [
+        "👋 Attend at least two sessions per month",
         "⏲️ Must spend at least one hour/week mentoring DL0-DL3 members",
         "🤝 Start simple group project, and create a prototype"
       ],
@@ -113,7 +118,8 @@ const progressionLevels = {
         "👩🏿‍💻 Development Experience"
       ],
       abilities: [
-        "⭐ Featured on some portion of the Dev Launchers site with a Star/Self Starter profile",
+        "👋 Attend at least two sessions per month",
+        "⭐ Featured on some portion of the Dev Launchers site with a Star profile",
         "✍️ Able to write featured blog posts on https://devlaunchers.com"
       ],
       expectations: [
@@ -130,6 +136,7 @@ const progressionLevels = {
         "Recommended For: University students, Bootcamp students, and dedicated hobbyists",
       imageSrc: level6Image,
       prerequisiteSkills: [
+        "👋 Attend at least two sessions per month",
         "📝 Proven project management ability",
         "💭 Proven ability to communicate thoughts and ideas clearly",
         "👩🏿‍💻 Development Experience"
@@ -152,6 +159,7 @@ const progressionLevels = {
         "Recommended For: University graduates, Bootcamp graduates, and advanced dedicated hobbyists",
       imageSrc: level7Image,
       prerequisiteSkills: [
+        "👋 Attend at least one session per month",
         "📝 Proven project management ability",
         "💭 Proven ability to communicate thoughts and ideas clearly",
         "👩🏿‍💻 Development Experience"
@@ -180,9 +188,10 @@ const progressionLevels = {
         "👥 Communication skills"
       ],
       abilities: [
-        "🗺️ Able to manage and guide a Dev Launchers Solutions projects"
+        "🗺️ Able to manage and guide Dev Launchers Solutions projects"
       ],
       expectations: [
+        "👋 Attend at least one session per month",
         "🦸 Be the dedicated mentor for one group of DL4-DL5 members/member or mentor DL0 - DL8 members for at least 1 hour per week",
         "👍 Help DL7 with career advice and interviews"
       ],
