@@ -26,7 +26,11 @@ export default function Organization() {
           </div>
           <div className={style.CtaSection_ButtonArea}>
             <Link to={"/mentor-signup"}>
-              <Button className={style.CtaSection_Button} doNothing>
+              <Button
+                className={style.CtaSection_Button}
+                style={{ fontSize: "2rem" }}
+                doNothing
+              >
                 Become a Mentor
               </Button>
             </Link>
@@ -44,7 +48,10 @@ export default function Organization() {
             technology? Send them our way!
           </div>
           <div className={style.CtaSection_ButtonArea}>
-            <Button className={style.CtaSection_Button}>
+            <Button
+              className={style.CtaSection_Button}
+              style={{ fontSize: "2rem" }}
+            >
               Nominate a Student
             </Button>
           </div>
@@ -61,6 +68,7 @@ export default function Organization() {
           <div className={style.CtaSection_ButtonArea}>
             <Button
               className={style.CtaSection_Button}
+              style={{ fontSize: "2rem" }}
               href="https://github.com/dev-launchers"
             >
               Find us on GitHub
