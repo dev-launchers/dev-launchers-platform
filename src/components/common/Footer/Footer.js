@@ -22,9 +22,11 @@ export default function Footer(props) {
         <Link to={"/learn"} className="nav-link">
           <div className={style.NavEntry}>LEARN</div>
         </Link>
+        {/*}
         <Link to={"/play"} className="nav-link">
           <div className={style.NavEntry}>PLAY</div>
         </Link>
+        {*/}
         <Link to={"/earn"} className="nav-link">
           <div className={style.NavEntry}>EARN</div>
         </Link>
@@ -32,9 +34,6 @@ export default function Footer(props) {
           <div className={style.NavEntry}>SUPPORT US</div>
         </Link>
         <Link to={"/members"} className="nav-link">
-          <div className={style.NavEntry}>MEMBERS</div>
-        </Link>
-        <Link to={"/join"} className="nav-link">
           <div className={style.NavEntry}>JOIN</div>
         </Link>
       </div>

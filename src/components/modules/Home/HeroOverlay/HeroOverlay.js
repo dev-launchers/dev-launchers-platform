@@ -14,9 +14,10 @@ export default function HeroOverlay() {
         <Button
           className={style.HeroButton}
           //href="https://forms.gle/ktNmippzfYUTnwgb8"
+          style={{ width: "80%", marginTop: "5%" }}
           href="/#/members"
         >
-          BECOME A DEVELOPER
+          BECOME A DEVELOPER!
         </Button>
       </div>
     </div>

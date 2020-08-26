@@ -11,7 +11,7 @@ export default function Earn() {
       <br />
       <h1>Work Hard, Play Hard</h1>
       <h3>
-        For students who join the Dev Launchers <b>Ignition Program</b>:
+        <b>For members of our programs</b>:
       </h3>
       <ul>
         <li>Create games and apps: earn rewards!</li>
@@ -19,20 +19,19 @@ export default function Earn() {
       </ul>
       <hr />
       <h2>Spend points</h2>
-      Progress through our Ignition Program and earn points you can spend on
-      prizes!
+      Progress through Dev Launchers and earn points you can spend on prizes!
       <br />
       <br />
       <SpendCardCollection />
       <br />
-      <hr />
+      {/*}<hr />
       <CurrentPoints />
       <br />
       <br />
       <hr />
       <EarnPoints />
       <br />
-      <br />
+      <br />{*/}
     </PageBody>
   );
 }

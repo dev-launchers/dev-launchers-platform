@@ -25,4 +25,8 @@
   .HeroOverlay {
     height: 80vw;
   }
+
+  .Tagline {
+    width: 80%;
+  }
 }

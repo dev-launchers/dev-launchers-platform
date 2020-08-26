@@ -22,7 +22,12 @@ export default function IntroArea(props) {
           <br />
           <Button
             onClick={props.scrollToFormFunc}
-            style={{ fontSize: ".75rem", marginTop: "2%" }}
+            style={{
+              fontSize: "2.5rem",
+              marginTop: "2%",
+              paddingLeft: "1.5rem",
+              paddingRight: "1.5rem"
+            }}
           >
             APPLY NOW!
           </Button>
