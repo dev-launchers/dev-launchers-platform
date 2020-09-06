@@ -67,12 +67,38 @@ export default function DynamicPage(props) {
             if (page.uid == pageId) {
               return (
                 <div className={style.pageContainer}>
-                  <div className={style.titleArea}>
-                    <RichText
-                      className={style.pageTitle}
-                      render={page.data.title}
-                      htmlSerializer={htmlSerializer}
+                  <div
+                    className={style.introArea}
+                    onClick={
+                      page.data.intro_image_hyperlink.url
+                        ? () => {
+                            window.location =
+                              page.data.intro_image_hyperlink.url;
+                          }
+                        : ""
+                    }
+                    style={{
+                      backgroundImage:
+                        'url("' + page.data.intro_image.url + ")",
+
+                      cursor: page.data.intro_image_hyperlink.url
+                        ? "pointer"
+                        : "default"
+                    }}
+                  >
+                    {/*}
+                    <img
+                      className={style.introImage}
+                      src={page.data.intro_image.url}
                     />
+                  {*/}
+                    <div className={style.titleArea}>
+                      <RichText
+                        className={style.pageTitle}
+                        render={page.data.title}
+                        htmlSerializer={htmlSerializer}
+                      />
+                    </div>
                   </div>
                   <div className={style.pageBody}>
                     <RichText
@@ -174,6 +200,12 @@ const htmlSerializer = function(type, element, content, children, key) {
         src: element.url,
         alt: element.alt || ""
       };
+      if (element.linkTo) {
+        props.onClick = () => {
+          window.location = element.linkTo.url;
+        };
+        props.style = { cursor: "pointer" };
+      }
       return React.createElement("img", propsWithUniqueKey(props, key));
 
     // Add a class to hyperlinks
