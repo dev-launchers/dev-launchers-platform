@@ -21,8 +21,10 @@ export default function Home() {
         <div className={style.HomePageBody}>
           <Intro />
           <hr />
+          {/*}
           <Programs />
           <hr />
+          {*/}
           <Organization />
           <hr />
           <Partners />
