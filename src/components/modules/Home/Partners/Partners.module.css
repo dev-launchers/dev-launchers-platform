@@ -1,3 +1,7 @@
+.Partners {
+  padding-top: 5%;
+}
+
 .PartnerList {
   display: flex;
   flex-direction: row;

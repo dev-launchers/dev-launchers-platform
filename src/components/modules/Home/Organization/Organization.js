@@ -13,8 +13,8 @@ export default function Organization() {
         Our Organization
         <span style={{ fontSize: "1rem" }}> (for everyone)</span>
       </h1>
-      Dev Launchers is a nonprofit intent on empowering young people from
-      diverse communities
+      Dev Launchers is a nonprofit intent on empowering people from diverse
+      communities
       <div className={style.CtaSection}>
         <h2 className={style.CtaSection_Title}>
           We love what we do. You should too!
@@ -25,18 +25,19 @@ export default function Organization() {
             for people just like you, take a look around and join us!
           </div>
           <div className={style.CtaSection_ButtonArea}>
-            <Link to={"/mentor-signup"}>
+            <Link to={"/members"}>
               <Button
                 className={style.CtaSection_Button}
                 style={{ fontSize: "2rem" }}
                 doNothing
               >
-                Become a Mentor
+                Join Our Programs
               </Button>
             </Link>
           </div>
         </div>
       </div>
+      {/*}
       <div className={style.CtaSection}>
         <h2 className={style.CtaSection_Title}>
           Technology should be accessible
@@ -57,6 +58,7 @@ export default function Organization() {
           </div>
         </div>
       </div>
+      {*/}
       <div className={style.CtaSection}>
         <h2 className={style.CtaSection_Title}>We believe in Open Source</h2>
         <div className={style.CtaSection_Content}>

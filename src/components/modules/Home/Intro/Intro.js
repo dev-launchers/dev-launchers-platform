@@ -11,7 +11,7 @@ export default function Intro() {
       will propel you to the next level!
       <ul>
         <li>
-          Students new to technology learn with hands on instruction from tech
+          People new to technology learn with hands on instruction from tech
           experts
         </li>
         <li>
