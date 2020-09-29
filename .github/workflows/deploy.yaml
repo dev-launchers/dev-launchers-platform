@@ -1,0 +1,26 @@
+name: staging
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build and deploy to staging hostname
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: npm install @cloudflare/wrangler
+      - run: npm run build
+      - run: deploy.sh
+        env:
+          WORKER_NAME: staging-website
+          ACCOUNT_ID: ${{secrets.ACCOUNT_ID}}
+          ROUTE: ${{secrets.STAGING_ROUTE}}
+          ZONE_ID: ${{secrets.ZONE_ID}}
+          CF_API_KEY: ${{secrets.CF_API_KEY}}
+          CF_EMAIL: ${{secrets.CF_EMAIL}}
+
