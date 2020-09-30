@@ -16,6 +16,8 @@ jobs:
       - run: npm install @cloudflare/wrangler
       - run: npm run build
       - run: deploy.sh
+        # Runs if previous step succeed/failed, but not when it's cancelled
+        if: succeeded() || failed()
         env:
           WORKER_NAME: staging-website
           ACCOUNT_ID: ${{secrets.ACCOUNT_ID}}
@@ -23,4 +25,3 @@ jobs:
           ZONE_ID: ${{secrets.ZONE_ID}}
           CF_API_KEY: ${{secrets.CF_API_KEY}}
           CF_EMAIL: ${{secrets.CF_EMAIL}}
-
