@@ -18,8 +18,7 @@ jobs:
         env:
           CI: false
       - run: deploy.sh
-        # Runs if previous step succeed/failed, but not when it's cancelled
-        continue-on-error: true
+        shell: bash
         env:
           WORKER_NAME: staging-website
           ACCOUNT_ID: ${{secrets.ACCOUNT_ID}}
