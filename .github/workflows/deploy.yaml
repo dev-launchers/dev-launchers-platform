@@ -15,6 +15,8 @@ jobs:
       - run: npm install
       - run: npm install @cloudflare/wrangler
       - run: npm run build
+        env:
+          CI: false
       - run: deploy.sh
         # Runs if previous step succeed/failed, but not when it's cancelled
         continue-on-error: true
