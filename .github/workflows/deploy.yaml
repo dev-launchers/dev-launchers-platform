@@ -21,3 +21,6 @@ jobs:
         with:
           apiToken: ${{secrets.CF_API_TOKEN}}
           environment: staging
+        env:
+          # https://github.com/cloudflare/wrangler-action/issues/12
+          USER: root
