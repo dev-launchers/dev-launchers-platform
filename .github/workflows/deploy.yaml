@@ -13,26 +13,15 @@ jobs:
         with:
           node-version: '12.x'
       - run: npm install
-      - run: npm install @cloudflare/wrangler
       - run: npm run build
         env:
           CI: false
-      - name: deploy to cloudflare
-        run: |
-          ls
-          sed -e "s~WORKER_NAME~$WORKER_NAME~" \
-          -e "s~ACCOUNT_ID~$ACCOUNT_ID~" \
-          -e "s~ROUTE~$ROUTE~" \
-          -e "s~ZONE_ID~$ZONE_ID~" \
-          wrangler.toml > templated_wrangler.toml
-          mv templated_wrangler.toml wrangler.toml
-          CF_API_KEY=$CF_API_KEY CF_EMAIL=$CF_EMAIL wrangler publish
-          CF_API_KEY=$CF_API_KEY CF_EMAIL=$CF_EMAIL wrangler publish
-          rm wrangler.toml
-        env:
-          WORKER_NAME: staging-website
-          ACCOUNT_ID: ${{secrets.ACCOUNT_ID}}
-          ROUTE: ${{secrets.STAGING_ROUTE}}
-          ZONE_ID: ${{secrets.ZONE_ID}}
-          CF_API_KEY: ${{secrets.CF_API_KEY}}
-          CF_EMAIL: ${{secrets.CF_EMAIL}}
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy
+    steps:
+      - names: Publish
+        uses: cloudflare/wrangler-action@1.3.0
+        with:
+          apiToken: ${{secrets.CF_API_TOKEN}}
+          environment: staging
