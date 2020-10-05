@@ -4,22 +4,18 @@ on:
     branches:
       - master
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+    name: Deploy
     steps:
       - uses: actions/checkout@v2
-      - name: Build and deploy to staging hostname
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
       - run: npm install
       - run: npm run build
         env:
           CI: false
-  deploy:
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
       - name: Publish
         uses: cloudflare/wrangler-action@1.3.0
         with:
