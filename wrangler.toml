@@ -1,0 +1,15 @@
+type = "webpack"
+account_id = "b0eb1f5510cb71344976cb9cac51e2af"
+zone_id = "976b2978bfb8a506026238d437fe0555"
+
+[env.staging]
+name = "website-staging"
+route = "staging.devlaunchers.com/*"
+
+[env.production]
+name = "website"
+route = "devlaunchers.com/*"
+
+[site]
+bucket = "./build"
+entry-point = "workers-site"
