@@ -17,8 +17,9 @@ jobs:
       - run: npm run build
         env:
           CI: false
-      - run: deploy.sh
-        shell: bash
+      - name: deploy to cloudflare
+        with:
+          script: deploy.sh
         env:
           WORKER_NAME: staging-website
           ACCOUNT_ID: ${{secrets.ACCOUNT_ID}}
