@@ -13,56 +13,56 @@ export default function Building() {
     room1: {
       name: "Room 1",
       url:
-        "https://hangouts.google.com/u/4/call/b9pYkOzJs0Oe6QXSld2rAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/b9pYkOzJs0Oe6QXSld2rAEEE?no_rd",
       color: "yellow",
       isActive: false
     },
     room2: {
       name: "Room 2",
       url:
-        "https://hangouts.google.com/u/4/call/2tpdbynE1MiwDbbZyb3tAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/2tpdbynE1MiwDbbZyb3tAEEE?no_rd",
       color: "pink",
       isActive: false
     },
     room3: {
       name: "Room 3",
       url:
-        "https://hangouts.google.com/u/4/call/AkYvoAvy-jqdrcnvH264AEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/AkYvoAvy-jqdrcnvH264AEEE?no_rd",
       color: "green",
       isActive: false
     },
     room4: {
       name: "Room 4",
       url:
-        "https://hangouts.google.com/u/4/call/tL3MMp5PweV6o1NAPupeAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/tL3MMp5PweV6o1NAPupeAEEE?no_rd",
       color: "red",
       isActive: false
     },
     room5: {
       name: "Room 5",
       url:
-        "https://hangouts.google.com/u/4/call/CscVhFU_KUyuIF9pD1ozAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/CscVhFU_KUyuIF9pD1ozAEEE?no_rd",
       color: "grey",
       isActive: false
     },
     room6: {
       name: "Room 6",
       url:
-        "https://hangouts.google.com/u/4/call/pU2BN1zpASm-cjODGLzUAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/pU2BN1zpASm-cjODGLzUAEEE?no_rd",
       color: "orange",
       isActive: false
     },
     room7: {
       name: "Room 7",
       url:
-        "https://hangouts.google.com/u/4/call/p1wD4UVgNLuwDn6PT9HQAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/p1wD4UVgNLuwDn6PT9HQAEEE?no_rd",
       color: "purple",
       isActive: false
     },
     room8: {
       name: "Room 8",
       url:
-        "https://hangouts.google.com/u/4/call/1fY-jRQoz6nnchju63OFAEEE?no_rd",
+        "https://hangouts.google.com/u/0/call/1fY-jRQoz6nnchju63OFAEEE?no_rd",
       color: "blue",
       isActive: false
     },
