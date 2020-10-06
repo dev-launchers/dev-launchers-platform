@@ -34,8 +34,8 @@ export default function Hangout() {
       <Building />
       <div className="infoArea">
         <h3>Session Checklist</h3>
-        For students participating in virtual sessions, you'll need to have a
-        few different tabs open:
+        For members participating in virtual sessions, you'll need to have a few
+        different tabs open:
         <ul>
           <li>
             <b>This Page</b>

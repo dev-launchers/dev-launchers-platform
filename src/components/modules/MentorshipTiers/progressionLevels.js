@@ -23,7 +23,7 @@ const progressionLevels = {
         //"⚙️ Be able to explain what variables and functions are in programming"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL0 member is ready to transition to the next level"
+        "A member of level DL3 or higher decides when a DL0 member is ready to transition to the next level"
       ]
     },
 
@@ -43,7 +43,7 @@ const progressionLevels = {
         "📖 Learn the intro level basics of your chosen discipline, alongside other members!"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL1 member is ready to transition to the next level"
+        "A member of level DL3 or higher decides when a DL1 member is ready to transition to the next level"
       ]
     },
 
@@ -64,7 +64,7 @@ const progressionLevels = {
         //"📮 Learn and be proficient in basic git"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL2 member is ready to transition to the next level"
+        "A member of level DL4 or higher decides when a DL2 member is ready to transition to the next level"
       ]
     }
   ],
@@ -83,7 +83,7 @@ const progressionLevels = {
         "👷 Plan out a new project (Or extend the project from DL2), either alone or with a team, and create a working MVP"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL3 member is ready to transition to the next level"
+        "A member of level DL5 or higher decides when a DL3 member is ready to transition to the next level"
       ]
     },
 
@@ -104,7 +104,7 @@ const progressionLevels = {
         "🤝 Start simple group project, and create a prototype"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL4 member is ready to transition to the next level"
+        "A member of level DL6 or higher decides when a DL4 member is ready to transition to the next level"
       ]
     },
 
@@ -127,7 +127,7 @@ const progressionLevels = {
         "🔧 Plan out a new project with a group (or extend the project from DL4) and create a working MVP"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL5 member is ready to transition to the next level"
+        "A member of level DL7 or higher decides when a DL5 member is ready to transition to the next level"
       ]
     },
     {
@@ -148,7 +148,7 @@ const progressionLevels = {
         "🦸 Be the dedicated mentor for one group of DL2 members/member or mentor DL0 - DL5 members for at least 1 hour per week"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL6 member is ready to transition to the next level"
+        "A member of level DL8 or higher decides when a DL6 member is ready to transition to the next level"
       ]
     }
   ],
@@ -173,7 +173,7 @@ const progressionLevels = {
         "🦸 Be the dedicated mentor for one group of DL2-DL3 members/member or mentor DL0 - DL6 members for at least 1 hour per week"
       ],
       advancementCriteria: [
-        "A rank DL8 member decides when a DL7 member is ready to transition to the next level"
+        "A panel of DL8 members decides when a DL7 member is ready to transition to the next level"
       ]
     },
 
@@ -195,7 +195,9 @@ const progressionLevels = {
         "🦸 Be the dedicated mentor for one group of DL4-DL5 members/member or mentor DL0 - DL8 members for at least 1 hour per week",
         "👍 Help DL7 with career advice and interviews"
       ],
-      advancementCriteria: []
+      advancementCriteria: [
+        "At this level, members are exclusively collecting badges in specialized areas"
+      ]
     }
   ]
 };

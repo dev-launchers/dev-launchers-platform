@@ -6,64 +6,55 @@ export default function Building() {
   const [buildingData, setBuildingData] = React.useState({
     messHall: {
       name: "Common Area",
-      url:
-        "https://hangouts.google.com/u/4/call/TfM6_-fimy6ymBD11ENLAEEE?no_rd",
+      url: "https://meet.google.com/phz-ckei-aij",
       color: "#fff",
       isActive: false
     },
     room1: {
       name: "Room 1",
-      url:
-        "https://hangouts.google.com/u/4/call/b9pYkOzJs0Oe6QXSld2rAEEE?no_rd",
+      url: "https://meet.google.com/sso-zeye-esu",
       color: "yellow",
       isActive: false
     },
     room2: {
       name: "Room 2",
-      url:
-        "https://hangouts.google.com/u/4/call/2tpdbynE1MiwDbbZyb3tAEEE?no_rd",
+      url: "https://meet.google.com/fhe-ettc-ebw",
       color: "pink",
       isActive: false
     },
     room3: {
       name: "Room 3",
-      url:
-        "https://hangouts.google.com/u/4/call/AkYvoAvy-jqdrcnvH264AEEE?no_rd",
+      url: "https://meet.google.com/hyz-usfr-zhj",
       color: "green",
       isActive: false
     },
     room4: {
       name: "Room 4",
-      url:
-        "https://hangouts.google.com/u/4/call/tL3MMp5PweV6o1NAPupeAEEE?no_rd",
+      url: "https://meet.google.com/pgu-ujeo-pvk",
       color: "red",
       isActive: false
     },
     room5: {
       name: "Room 5",
-      url:
-        "https://hangouts.google.com/u/4/call/CscVhFU_KUyuIF9pD1ozAEEE?no_rd",
+      url: "https://meet.google.com/djw-fhxk-zhs",
       color: "grey",
       isActive: false
     },
     room6: {
       name: "Room 6",
-      url:
-        "https://hangouts.google.com/u/4/call/pU2BN1zpASm-cjODGLzUAEEE?no_rd",
+      url: "https://meet.google.com/rtf-dqsq-odj",
       color: "orange",
       isActive: false
     },
     room7: {
       name: "Room 7",
-      url:
-        "https://hangouts.google.com/u/4/call/p1wD4UVgNLuwDn6PT9HQAEEE?no_rd",
+      url: "https://meet.google.com/fbx-cdod-udm",
       color: "purple",
       isActive: false
     },
     room8: {
       name: "Room 8",
-      url:
-        "https://hangouts.google.com/u/4/call/1fY-jRQoz6nnchju63OFAEEE?no_rd",
+      url: "https://meet.google.com/taf-qcnk-hwq",
       color: "blue",
       isActive: false
     },
