@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link,
@@ -43,10 +43,11 @@ const Wildcard = () => {
 
 function App(props) {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
+  /*
   if (window.location.hash.startsWith("#/")) {
     window.location = window.location.hash.replace("#", "");
   }
-
+  */
   return (
     <useAuthContext.Provider>
       <useSheetsContext.Provider>
