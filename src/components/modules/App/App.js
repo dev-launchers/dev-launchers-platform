@@ -1,10 +1,11 @@
 import React from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
-  Redirect
+  Redirect,
+  useHistory
 } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -41,6 +42,11 @@ const Wildcard = () => {
 };
 
 function App(props) {
+  // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
+  if (window.location.hash.startsWith("#/")) {
+    window.location = window.location.hash.replace("#", "");
+  }
+
   return (
     <useAuthContext.Provider>
       <useSheetsContext.Provider>
