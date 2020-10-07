@@ -60,7 +60,9 @@ export default function Footer(props) {
         ></a>
       </div>
       <div className={style.OrgInfoArea}>
-        Terms of Service | Privacy Policy | ©Dev Launchers, 2020.
+        -<a href="/#/page/terms-and-conditions">Terms of Service </a> {"- | -"}
+        <a href="/#/page/privacy-policy">Privacy Policy </a> {"- | "} ©Dev
+        Launchers, 2020.
       </div>
     </footer>
   );
