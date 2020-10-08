@@ -20,7 +20,7 @@ import { useLeaderboardContext } from "../../../context/LeaderboardContext";
 
 import ScrollToTop from "../../../utils/ScrollToTop.js";
 
-import HomeRoute from "../../../pages/home.js";
+import HomeRoute from "../../../pages/index.js";
 import CreateRoute from "../../../pages/create.js";
 import LearnRoute from "../../../pages/learn.js";
 import PlayRoute from "../../../pages/play.js";
