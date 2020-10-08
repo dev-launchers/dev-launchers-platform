@@ -8,15 +8,15 @@ import "firebase/auth";
 
 // Firebase config data (apparently it's ok to have the key publicly accessible...)
 // (If we find out otherwise, let us know know and we'll generate another one ASAP!)
-const firebaseConfig = {
-  apiKey: "AIzaSyCK48yyyfcpGM79oYP3v9S-EcvCvGbSWHA",
-  authDomain: "dev-launchers.firebaseapp.com",
-  databaseURL: "https://dev-launchers.firebaseio.com",
-  projectId: "dev-launchers",
-  storageBucket: "dev-launchers.appspot.com",
-  messagingSenderId: "522846071272",
-  appId: "1:522846071272:web:c7c50dbe55a2ffdf115c5d",
-  measurementId: "G-H25GMXJSXB"
+var firebaseConfig = {
+  apiKey: "AIzaSyCiIVREMGu0ha7V-cyU23dZ6CclIWDOSJM",
+  authDomain: "dev-launchers-bb76e.firebaseapp.com",
+  databaseURL: "https://dev-launchers-bb76e.firebaseio.com",
+  projectId: "dev-launchers-bb76e",
+  storageBucket: "dev-launchers-bb76e.appspot.com",
+  messagingSenderId: "944982944616",
+  appId: "1:944982944616:web:6896d2d3afafe0312484dd",
+  measurementId: "G-R71JK0Z250"
 };
 
 firebase.initializeApp(firebaseConfig);
