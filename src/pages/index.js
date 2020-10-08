@@ -7,7 +7,7 @@ import Header from "../components/common/Header";
 import Home from "../components/modules/Home";
 import Footer from "../components/common/Footer";
 
-export default function HomeRoute() {
+export default function Index() {
   React.useEffect(() => {
     document.title = "Home";
   }, []);
