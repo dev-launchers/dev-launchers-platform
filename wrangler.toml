@@ -11,5 +11,5 @@ name = "website"
 route = "devlaunchers.com/*"
 
 [site]
-bucket = "./build"
+bucket = "./out"
 entry-point = "workers-site"
