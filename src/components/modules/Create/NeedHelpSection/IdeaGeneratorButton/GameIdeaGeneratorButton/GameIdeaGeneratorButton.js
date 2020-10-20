@@ -6,11 +6,17 @@ import style from "./GameIdeaGeneratorButton.module.css";
 import IdeaGeneratorButton from "../IdeaGeneratorButton";
 import contentDictionary from "../contentDictionary.js";
 
-import { randEntity, isPlural, hasArticle } from "../nlpUtils.js";
+import {
+  getRandomPhrase,
+  getRandomTheme,
+  randEntity,
+  isPlural,
+  hasArticle
+} from "../nlpUtils.js";
 
 export default function GameIdeaGeneratorButton(props) {
   return (
-    <IdeaGeneratorButton phraseFormats={phraseFormats}>
+    <IdeaGeneratorButton contentGenerator={appPhraseGenerator}>
       💡 Generate A Game Concept!
     </IdeaGeneratorButton>
   );
@@ -69,3 +75,12 @@ const phraseFormats = [
     isPlural(randEntity(["job", "animal", "food"]))
   ]
 ];
+
+const appPhraseGenerator = () => {
+  return (
+    <div>
+      <div style={{ fontSize: "3rem" }}>{getRandomTheme()}</div>
+      {getRandomPhrase(phraseFormats)}
+    </div>
+  );
+};

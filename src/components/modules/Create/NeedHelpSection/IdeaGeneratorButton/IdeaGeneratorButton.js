@@ -45,8 +45,7 @@ export default function IdeaGeneratorButton(props) {
           textAlign: "center"
         }}
       >
-        {/*props.contentGenerator()*/}
-        {getRandomPhrase(props.phraseFormats)}
+        {props.contentGenerator()}
         {generateButton({ position: "absolute", bottom: "10%" })}
       </div>
     );
