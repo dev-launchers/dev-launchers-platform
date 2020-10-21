@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - flux-patch.yaml
 jobs:
   docker-build:
     runs-on: ubuntu-latest
