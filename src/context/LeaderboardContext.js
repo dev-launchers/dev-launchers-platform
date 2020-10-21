@@ -14,7 +14,6 @@ function useLeaderboard() {
       // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
       key: "1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0",
       callback: googleData => {
-        console.log("google sheet data --->", googleData);
         setLeaderboard(googleData.students.elements);
       },
       simpleSheet: false

@@ -15,7 +15,6 @@ function useRepo() {
     getAllData().then(allData => {
       let devData = allData.devData;
       let prodData = allData.prodData;
-      console.log(devData);
 
       let projectsData = []; // Adding newly found projects here, then updating state
 
@@ -51,7 +50,6 @@ function useRepo() {
         }
       });
       setRepoData(projectsData);
-      console.log(projectsData);
     });
   }, []);
 
