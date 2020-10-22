@@ -13,10 +13,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 import HamburgerMenu from "../../common/HamburgerMenu";
 
-import { useAuthContext } from "../../../context/AuthContext";
-import { useSheetsContext } from "../../../context/SheetsContext";
-import { useRepoContext } from "../../../context/RepoContext";
-import { useLeaderboardContext } from "../../../context/LeaderboardContext";
+import { AuthProvider } from "../../../context/AuthContext";
+import { SheetsProvider } from "../../../context/SheetsContext";
+import { RepoProvider } from "../../../context/RepoContext";
+import { LeaderboardProvider } from "../../../context/LeaderboardContext";
 
 import ScrollToTop from "../../../utils/ScrollToTop.js";
 
@@ -49,10 +49,10 @@ function App(props) {
   }
 
   return (
-    <useAuthContext.Provider>
-      <useSheetsContext.Provider>
-        <useRepoContext.Provider>
-          <useLeaderboardContext.Provider>
+    <AuthProvider>
+      <SheetsProvider>
+        <RepoProvider>
+          <LeaderboardProvider>
             <div className="App">
               <ToastContainer
                 className="toast-container"
@@ -102,10 +102,10 @@ function App(props) {
                 </Switch>
               </Router>
             </div>
-          </useLeaderboardContext.Provider>
-        </useRepoContext.Provider>
-      </useSheetsContext.Provider>
-    </useAuthContext.Provider>
+          </LeaderboardProvider>
+        </RepoProvider>
+      </SheetsProvider>
+    </AuthProvider>
   );
 }
 

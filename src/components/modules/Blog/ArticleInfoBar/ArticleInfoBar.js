@@ -11,9 +11,6 @@ import {
   TwitterIcon
 } from "react-share";
 
-import Prismic from "prismic-reactjs";
-import { Image, Date, RichText, Elements } from "prismic-reactjs";
-
 import style from "./ArticleInfoBar.module.css";
 
 export default function ArticleInfoBar(props) {

@@ -1,5 +1,5 @@
 import React from "react";
-import createUseContext from "constate"; // State Context Object Creator
+import constate from "constate";
 
 import Tabletop from "tabletop";
 
@@ -51,4 +51,5 @@ function useAuth() {
 }
 
 // Step 2: Declare your context state object to share the state with other components
-export const useAuthContext = createUseContext(useAuth);
+const [AuthProvider, useAuthContext] = constate(useAuth);
+export { AuthProvider, useAuthContext };

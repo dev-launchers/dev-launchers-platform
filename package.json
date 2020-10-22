@@ -14,7 +14,7 @@
     "@cloudflare/wrangler": "^1.11.0",
     "articles": "^0.2.2",
     "classnames": "^2.2.6",
-    "constate": "^2.0.0",
+    "constate": "^3.0.1",
     "firebase": "^7.6.2",
     "flareact": "^0.6.0",
     "natural": "^2.1.5",

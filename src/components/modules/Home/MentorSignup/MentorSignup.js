@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDom from "react-dom";
 
 import style from "./MentorSignup.module.css";
 import buttonStyle from "../../../../components/common/Button/Button.module.css";

@@ -26,7 +26,7 @@ export default function MentorshipTiers() {
     ...progressionLevels.intermediate,
     ...progressionLevels.advanced
   ].map(level => {
-    level.onClick = () => {
+    return (level.onClick = () => {
       setModalContent(
         <div className={style.modalContainer}>
           <div>
@@ -66,8 +66,12 @@ export default function MentorshipTiers() {
                 <u>Abilities</u>
               </h4>
               <ul>
-                {level.abilities.map(entry => {
-                  return <li className={style.listEntry}>{entry}</li>;
+                {level.abilities.map((entry, i) => {
+                  return (
+                    <li className={style.listEntry} key={i}>
+                      {entry}
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -79,8 +83,12 @@ export default function MentorshipTiers() {
                 <u>Expectations</u>
               </h4>
               <ul>
-                {level.expectations.map(entry => {
-                  return <li className={style.listEntry}>{entry}</li>;
+                {level.expectations.map((entry, i) => {
+                  return (
+                    <li className={style.listEntry} key={i}>
+                      {entry}
+                    </li>
+                  );
                 })}
               </ul>
             </div>
@@ -91,8 +99,8 @@ export default function MentorshipTiers() {
                 <u>Prerequisite Skills</u>
               </h4>
               <ul>
-                {level.prerequisiteSkills.map(entry => {
-                  return <li>{entry}</li>;
+                {level.prerequisiteSkills.map((entry, i) => {
+                  return <li key={i}>{entry}</li>;
                 })}
               </ul>
             </div>
@@ -102,7 +110,7 @@ export default function MentorshipTiers() {
         </div>
       );
       setModalIsOpen(true);
-    };
+    });
   });
 
   // Modal state management

@@ -19,10 +19,10 @@ export default function CurrentPoints() {
             <td className={styles.tableColumnHeading}>Points</td>
             <td className={styles.tableColumnHeading}>XP</td>
           </tr>
-          {Object.keys(leaderboard) != 0 &&
+          {Object.keys(leaderboard) !== 0 &&
             leaderboard
               .filter(entry => {
-                if (entry.isActive == 1) return true;
+                if (entry.isActive === 1) return true;
                 return false;
               })
               .map((entry, index) => {

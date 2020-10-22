@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import ReactModal from "react-modal";
 
 import style from "./Modal.module.css";
@@ -22,7 +22,7 @@ const customModalStyles = {
 ReactModal.setAppElement("#root");
 
 export default function Modal(props) {
-  const [modalContent, setModalContent] = React.useState(props.modalContent);
+  const [modalContent] = React.useState(props.modalContent);
 
   // Modal functions
   const [modalIsOpen, setModalIsOpen] = React.useState(props.modalIsOpen);
@@ -38,6 +38,7 @@ export default function Modal(props) {
   return (
     <ReactModal
       isOpen={props.modalIsOpen ? props.modalIsOpen : modalIsOpen}
+      onRequestOpen={props.openModal ? props.openModal : openModal}
       onRequestClose={props.closeModal ? props.closeModal : closeModal}
       style={customModalStyles}
       onAfterOpen={afterOpenModal}

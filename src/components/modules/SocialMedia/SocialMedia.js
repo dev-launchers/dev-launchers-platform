@@ -15,7 +15,11 @@ export default function SocialMedia() {
           <div class={style.side}>
             <h2>check it</h2>
             <div className={style.chessImageWrapper}>
-              <img className={style.chessImage} src={chessPiece} />
+              <img
+                className={style.chessImage}
+                src={chessPiece}
+                alt="chess-piece"
+              />
             </div>
           </div>
           <div class={style.main}>

@@ -11,7 +11,7 @@ export default function CardGroup(props) {
         <span />
       )}
       <div className={style.collection}>
-        {Object.keys(props.data).length != 0 &&
+        {Object.keys(props.data).length !== 0 &&
           props.data.map((items, i) => {
             return (
               <Card

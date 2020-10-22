@@ -1,5 +1,5 @@
 import React from "react";
-import createUseContext from "constate"; // State Context Object Creator
+import constate from "constate"; // State Context Object Creator
 
 import Tabletop from "tabletop";
 
@@ -75,4 +75,5 @@ function useSheets() {
 }
 
 // Step 2: Declare your context state object to share the state with other components
-export const useSheetsContext = createUseContext(useSheets);
+const [SheetsProvider, useSheetsContext] = constate(useSheets);
+export { SheetsProvider, useSheetsContext };
