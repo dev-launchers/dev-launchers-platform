@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 import style from "./Footer.module.css";
@@ -13,7 +12,7 @@ export default function Footer(props) {
     <footer className={style.FooterBlock}>
       <RandomQuote />
       <Link to={"/"} className="nav-link">
-        <img className={style.FooterLogo} src={logoMonogramImage} />
+        <img className={style.FooterLogo} src={logoMonogramImage} alt="logo" />
       </Link>
       <div className={style.FooterNav}>
         <Link to={"/create"} className="nav-link">
@@ -40,22 +39,22 @@ export default function Footer(props) {
       <div className={style.SocialMediaLink}>
         <a
           href="https://www.instagram.com/devlaunchers/"
-          class="fab fa-instagram"
+          className="fab fa-instagram"
           target="_blank"
         ></a>
         <a
           href="https://www.linkedin.com/company/devlaunchers/"
-          class="fab fa-linkedin"
+          className="fab fa-linkedin"
           target="_blank"
         ></a>
         <a
           href="https://www.twitch.tv/devlaunchers/"
-          class="fab fa-twitch"
+          className="fab fa-twitch"
           target="_blank"
         ></a>
         <a
           href="https://discord.io/devlaunchers/"
-          class="fab fa-discord"
+          className="fab fa-discord"
           target="_blank"
         ></a>
       </div>

@@ -13,6 +13,7 @@ export default function Attachments(props) {
           src={"images/Attachment.png"}
           onClick={() => imageClick()}
           className={style.attachmentImg}
+          alt="attachment-icon"
         ></img>
       </div>
 
@@ -24,6 +25,8 @@ export default function Attachments(props) {
                 href={item.href}
                 className={style.attachmentLink}
                 target="_blank"
+                rel="noopener noreferrer"
+                key={i}
               >
                 {item.name}
               </a>

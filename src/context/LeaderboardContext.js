@@ -1,6 +1,6 @@
 import React from "react";
 import Tabletop from "tabletop";
-import createUseContext from "constate"; // State Context Object Creator
+import constate from "constate"; // State Context Object Creator
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
@@ -14,7 +14,6 @@ function useLeaderboard() {
       // https://docs.google.com/spreadsheets/d/1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0/edit?usp=sharing
       key: "1ukOl5lCKF8eXiVgjLgFqDzmdudjik5H_rnws8jPFyJ0",
       callback: googleData => {
-        console.log("google sheet data --->", googleData);
         setLeaderboard(googleData.students.elements);
       },
       simpleSheet: false
@@ -25,4 +24,5 @@ function useLeaderboard() {
 }
 
 // Step 2: Declare your context state object to share the state with other components
-export const useLeaderboardContext = createUseContext(useLeaderboard);
+const [LeaderboardProvider, useLeaderboardContext] = constate(useLeaderboard);
+export { LeaderboardProvider, useLeaderboardContext };

@@ -1,4 +1,4 @@
-import sparkImage from "../../../images/spark-symbol.png";
+//import sparkImage from "../../../images/spark-symbol.png";
 
 import level0Image from "../../../images/members/level-thumbnails/level-0.png";
 import level1Image from "../../../images/members/level-thumbnails/level-1.png";

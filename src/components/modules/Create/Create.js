@@ -178,7 +178,7 @@ export default function Create(props) {
             <TabPanel key={i}>
               {Object.keys(tab).map((sectionTitle, i) => {
                 const section = tab[sectionTitle];
-                return <Section data={section} title={sectionTitle} />;
+                return <Section data={section} title={sectionTitle} key={i} />;
               })}
             </TabPanel>
           );

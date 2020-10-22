@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 
 import style from "./Header.module.css";
@@ -19,7 +18,11 @@ export default function Header(props) {
           <div className={style.LogoWrapper}>
             <Link to={"/"} className="nav-link">
               <div className={style.LogoImageHolder}>
-                <img src={logoMonogramImage} className={style.LogoImage} />
+                <img
+                  src={logoMonogramImage}
+                  className={style.LogoImage}
+                  alt="logo"
+                />
               </div>
               <div className={style.LogoWords}>Dev Launchers</div>
             </Link>
@@ -50,7 +53,11 @@ export default function Header(props) {
         <div />
         <div className={style.SignInArea}>
           {authUser ? (
-            <img className={style.UserProfilePic} src={authUser.photoURL} />
+            <img
+              className={style.UserProfilePic}
+              src={authUser.photoURL}
+              alt="profile-pic"
+            />
           ) : (
             <Button fontSize="1.2rem" onClick={doAuthRequest}>
               Sign In

@@ -1,6 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 import { toast } from "react-toastify";
 

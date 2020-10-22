@@ -1,5 +1,5 @@
 import React from "react";
-import createUseContext from "constate"; // State Context Object Creator
+import constate from "constate"; // State Context Object Creator
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
@@ -15,7 +15,6 @@ function useRepo() {
     getAllData().then(allData => {
       let devData = allData.devData;
       let prodData = allData.prodData;
-      console.log(devData);
 
       let projectsData = []; // Adding newly found projects here, then updating state
 
@@ -25,7 +24,7 @@ function useRepo() {
       devKeys.forEach(devKey => {
         let repoEntry = devData[devKey];
         // search look for substring and return its position of its first occurance
-        if (repoEntry.name.search("project__") == 0) {
+        if (repoEntry.name.search("project__") === 0) {
           projectsData.push({
             title: repoEntry.name,
             description: repoEntry.description,
@@ -40,7 +39,7 @@ function useRepo() {
         let repoEntry = prodData[prodKey];
         // search look for substring and return its position of its first occurance
         if (
-          repoEntry.name.search("project__") == 0 &&
+          repoEntry.name.search("project__") === 0 &&
           !repoEntry.name.includes(prodKey)
         ) {
           projectsData.push({
@@ -51,7 +50,6 @@ function useRepo() {
         }
       });
       setRepoData(projectsData);
-      console.log(projectsData);
     });
   }, []);
 
@@ -61,7 +59,7 @@ function useRepo() {
 const GITHUB_API_URL_DEV =
   "https://api.github.com/users/dev-launchers-sandbox/repos";
 const GITHUB_API_URL_PROD = "https://api.github.com/users/dev-launchers/repos";
-const DEV_GAME_URL_PREFIX = "http://devlaunchers.com/dev/";
+//const DEV_GAME_URL_PREFIX = "http://devlaunchers.com/dev/";
 const PROD_GAME_URL_PREFIX = "http://devlaunchers.com/launch/";
 
 async function getGithubData(apiUrl) {
@@ -81,7 +79,7 @@ async function getAllData() {
 
   return { devData, prodData };
 }
-
+/*
 function getProjectKeys(devDataKeys, prodDataKeys) {
   let allKeys = [];
   devDataKeys.forEach(devKey => {
@@ -99,6 +97,7 @@ function getProjectKeys(devDataKeys, prodDataKeys) {
 
   return allKeys;
 }
-
+*/
 // Step 2: Declare your context state object to share the state with other components
-export const useRepoContext = createUseContext(useRepo);
+const [RepoProvider, useRepoContext] = constate(useRepo);
+export { RepoProvider, useRepoContext };

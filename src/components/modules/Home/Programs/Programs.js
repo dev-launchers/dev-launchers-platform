@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import style from "./Programs.module.css";
 import sparkSymbolImage from "../../../../images/spark-symbol.png";

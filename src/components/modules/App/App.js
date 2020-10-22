@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -13,29 +13,30 @@ import "react-toastify/dist/ReactToastify.css";
 
 import HamburgerMenu from "../../common/HamburgerMenu";
 
-import { useAuthContext } from "../../../context/AuthContext";
-import { useSheetsContext } from "../../../context/SheetsContext";
-import { useRepoContext } from "../../../context/RepoContext";
-import { useLeaderboardContext } from "../../../context/LeaderboardContext";
+import { AuthProvider } from "../../../context/AuthContext";
+import { SheetsProvider } from "../../../context/SheetsContext";
+import { RepoProvider } from "../../../context/RepoContext";
+import { LeaderboardProvider } from "../../../context/LeaderboardContext";
 
 import ScrollToTop from "../../../utils/ScrollToTop.js";
-import HomeRoute from "../../../routes/HomeRoute.js";
-import CreateRoute from "../../../routes/CreateRoute.js";
-import LearnRoute from "../../../routes/LearnRoute.js";
-import PlayRoute from "../../../routes/PlayRoute.js";
-import EarnRoute from "../../../routes/EarnRoute.js";
-import DynamicPageRoute from "../../../routes/DynamicPageRoute.js";
-import BlogRoute from "../../../routes/BlogRoute.js";
-import SupportUsRoute from "../../../routes/SupportUsRoute.js";
-import StoriesRoute from "../../../routes/StoriesRoute";
-import JoinRoute from "../../../routes/JoinRoute";
-import CalendarRoute from "../../../routes/CalendarRoute";
-import PixilartWrapperRoute from "../../../routes/PixilartWrapperRoute";
-import HangoutRoute from "../../../routes/HangoutRoute";
 
-import MentorSignupRoute from "../../../routes/MentorSignupRoute";
-import MentorshipTiersRoute from "../../../routes/MentorshipTiersRoute";
-import SocialMediaRoute from "../../../routes/SocialMediaRoute";
+import HomeRoute from "../../../pages/index.js";
+import CreateRoute from "../../../pages/create.js";
+import LearnRoute from "../../../pages/learn.js";
+import PlayRoute from "../../../pages/play.js";
+import EarnRoute from "../../../pages/earn.js";
+import DynamicPageRoute from "../../../pages/DynamicPageRoute.js";
+import BlogRoute from "../../../pages/blog.js";
+import SupportUsRoute from "../../../pages/support-us.js";
+import StoriesRoute from "../../../pages/stories.js";
+import JoinRoute from "../../../pages/members.js";
+import CalendarRoute from "../../../pages/members.js";
+import PixilartWrapperRoute from "../../../pages/PixilartWrapperRoute";
+import HangoutRoute from "../../../pages/hangout.js";
+
+import MentorSignupRoute from "../../../pages/mentor-signup.js";
+import MentorshipTiersRoute from "../../../pages/members.js";
+import SocialMediaRoute from "../../../pages/check-it.js";
 
 const Wildcard = () => {
   return <Redirect to="/" />;
@@ -43,16 +44,15 @@ const Wildcard = () => {
 
 function App(props) {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
-  /*
   if (window.location.hash.startsWith("#/")) {
     window.location = window.location.hash.replace("#", "");
   }
-  */
+
   return (
-    <useAuthContext.Provider>
-      <useSheetsContext.Provider>
-        <useRepoContext.Provider>
-          <useLeaderboardContext.Provider>
+    <AuthProvider>
+      <SheetsProvider>
+        <RepoProvider>
+          <LeaderboardProvider>
             <div className="App">
               <ToastContainer
                 className="toast-container"
@@ -102,10 +102,10 @@ function App(props) {
                 </Switch>
               </Router>
             </div>
-          </useLeaderboardContext.Provider>
-        </useRepoContext.Provider>
-      </useSheetsContext.Provider>
-    </useAuthContext.Provider>
+          </LeaderboardProvider>
+        </RepoProvider>
+      </SheetsProvider>
+    </AuthProvider>
   );
 }
 
