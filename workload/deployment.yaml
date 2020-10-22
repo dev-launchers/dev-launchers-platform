@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: platform-website
+  name:  platform-website
+  annotations:
+    fluxcd.io/automated: "true"
+  labels:
+    app: platform-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-website
+  template:
+    metadata:
+      labels:
+        app: platform-website
+    spec:
+      containers:
+      - name: platform-website
+        image: devlaunchers/platform-website:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 50m
+            memory: 64Mi
+          requests:
+            cpu: 25m
+            memory: 32Mi
