@@ -1,5 +1,4 @@
 import React from "react";
-import natural from "natural"; // Natural language processing package
 import articles from "articles"; // Article of speech package
 
 import style from "./AppIdeaGeneratorButton.module.css";
