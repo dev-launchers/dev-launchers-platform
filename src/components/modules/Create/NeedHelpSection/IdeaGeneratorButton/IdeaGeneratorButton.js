@@ -1,7 +1,6 @@
 // TODO: make generic IdeaGenerator for both components to use (DRY issue)
 
 import React from "react";
-import natural from "natural"; // Natural language processing package
 import articles from "articles"; // Article of speech package
 
 import Modal from "../../../../../components/common/Modal";
