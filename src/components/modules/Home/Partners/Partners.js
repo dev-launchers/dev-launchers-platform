@@ -2,6 +2,9 @@ import React from "react";
 
 import style from "./Partners.module.css";
 
+import aespriteImage from "../../../../images/home-page/aseprite.png";
+import kraftiesImage from "../../../../images/home-page/krafties.png";
+
 export default function Partners() {
   return (
     <div className={style.Partners}>
@@ -15,8 +18,17 @@ export default function Partners() {
       </div>
       <h3>Sponsors</h3>
       <div className={style.PartnerList}>
-        <div className={style.PartnerEntry}>Aesprite</div>
-        <div className={style.PartnerEntry}>Krafties</div>
+        <div className={style.PartnerEntryImage}>
+          <a href="https://www.aseprite.org/">
+            <img className={style.PartnerEntryImage} src={aespriteImage} />
+          </a>
+        </div>
+        {/* Leaving a slash after a tag/component means that you don't need a corresponding closing tag*/}
+        <div className={style.PartnerEntryImage}>
+          <a href="http://krafties.com/">
+            <img className={style.PartnerEntryImage} src={kraftiesImage} />
+          </a>
+        </div>
       </div>
       <h3>Products and Tools</h3>
       <div className={style.PartnerList}>

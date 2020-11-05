@@ -16,5 +16,11 @@
   margin: 5%;
 }
 
+.PartnerEntryImage {
+  margin: 5%;
+  width: 40%;
+  display: inline;
+}
+
 @media (orientation: portrait) {
 }

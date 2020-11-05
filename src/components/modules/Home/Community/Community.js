@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import style from "./Organization.module.css";
+import style from "./Community.module.css";
 
 import Button from "../../../common/Button";
 
@@ -9,11 +9,28 @@ export default function Organization() {
   return (
     <div className={style.Organization}>
       <h1>
-        Our Organization
+        Our Community
         <span style={{ fontSize: "1rem" }}> (for everyone)</span>
       </h1>
       Dev Launchers is a nonprofit intent on empowering people from diverse
       communities
+      <div className={style.CtaSection}>
+        <h3 className={style.CtaSection_Title}>Our Community</h3>
+        <div className={style.CtaSection_Content}>
+          <div className={style.CtaSection_Description}>
+            Participate in our Discord channel and Twitch streams!
+          </div>
+          <div className={style.CtaSection_ButtonArea}>
+            <Button
+              className={style.CtaSection_Button}
+              style={{ fontSize: "2rem" }}
+              href="https://discord.io/devlaunchers"
+            >
+              Discord
+            </Button>
+          </div>
+        </div>
+      </div>
       <div className={style.CtaSection}>
         <h2 className={style.CtaSection_Title}>
           We love what we do. You should too!
