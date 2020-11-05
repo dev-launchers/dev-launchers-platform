@@ -2,8 +2,15 @@ import React from "react";
 
 import style from "./Partners.module.css";
 
+import LogoImage from "./LogoImage/LogoImage.js";
+
 import aespriteImage from "../../../../images/home-page/aseprite.png";
 import kraftiesImage from "../../../../images/home-page/krafties.png";
+import austinLibraryImage from "../../../../images/home-page/austin-public-library.png";
+import codesandboxImage from "../../../../images/home-page/codesandbox.png";
+import phaser3Image from "../../../../images/home-page/phaser-3.png";
+import pixilArtImage from "../../../../images/home-page/pixilart-logo.png";
+import reactImage from "../../../../images/home-page/react-logo.png";
 
 export default function Partners() {
   return (
@@ -14,28 +21,43 @@ export default function Partners() {
       continue to do what we love!
       <h3>Partners</h3>
       <div className={style.PartnerList}>
-        <div className={style.PartnerEntry}>Austin Public Library</div>
+        <LogoImage
+          href="https://library.austintexas.gov/"
+          src={austinLibraryImage}
+          width="75%"
+        />
       </div>
       <h3>Sponsors</h3>
       <div className={style.PartnerList}>
-        <div className={style.PartnerEntryImage}>
-          <a href="https://www.aseprite.org/">
-            <img className={style.PartnerEntryImage} src={aespriteImage} />
-          </a>
-        </div>
-        {/* Leaving a slash after a tag/component means that you don't need a corresponding closing tag*/}
-        <div className={style.PartnerEntryImage}>
-          <a href="http://krafties.com/">
-            <img className={style.PartnerEntryImage} src={kraftiesImage} />
-          </a>
-        </div>
+        <LogoImage
+          href="https://www.aseprite.org/"
+          src={aespriteImage}
+          width="58%"
+        />
+        <LogoImage
+          href="http://krafties.com/"
+          src={kraftiesImage}
+          width="60%"
+        />
       </div>
       <h3>Products and Tools</h3>
       <div className={style.PartnerList}>
-        <div className={style.PartnerEntry}>CodeSandbox</div>
-        <div className={style.PartnerEntry}>PixilArt</div>
-        <div className={style.PartnerEntry}>Phaser 3</div>
-        <div className={style.PartnerEntry}>React</div>
+        <LogoImage
+          href="https://codesandbox.io/"
+          src={codesandboxImage}
+          width="40%"
+        />
+        <LogoImage
+          href="https://www.pixilart.com/"
+          src={pixilArtImage}
+          width="80%"
+        />
+        <LogoImage
+          href="https://phaser.io/phaser3"
+          src={phaser3Image}
+          width="60%"
+        />
+        <LogoImage href="https://reactjs.org/" src={reactImage} width="40%" />
       </div>
       <div />
       <div />

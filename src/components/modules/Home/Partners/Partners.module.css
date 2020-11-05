@@ -12,8 +12,9 @@
 }
 
 .PartnerEntry {
-  font-size: 3rem;
   margin: 5%;
+  width: 40%;
+  display: inline;
 }
 
 .PartnerEntryImage {
