@@ -1,0 +1,78 @@
+.FooterBlock {
+  position: relative;
+  background-color: #1c1c1c;
+  color: #d9d9d9;
+  width: 100%;
+  height: 100vh;
+  min-height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  z-index: 3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.FooterLogo {
+  height: 50vh;
+}
+
+.FooterNav {
+  min-width: 450px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.SocialMediaLink {
+  margin-top: 2.5%;
+  min-width: 10rem;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 5rem;
+}
+
+.NavEntry {
+  cursor: pointer;
+  font-size: 1.75rem;
+}
+
+.OrgInfoArea {
+  width: 90%;
+  text-align: right;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+@media (orientation: portrait) {
+  .FooterLogo {
+    height: auto;
+    width: 50vw;
+  }
+
+  .FooterNav {
+    min-width: 200px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .SocialMediaLink {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .NavEntry {
+    font-size: 1.2rem;
+  }
+}
