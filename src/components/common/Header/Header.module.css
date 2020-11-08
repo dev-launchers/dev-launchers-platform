@@ -1,0 +1,107 @@
+.HeaderBlock {
+  background-color: #1c1c1c;
+  color: #d9d9d9;
+  min-height: 7.5vh;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.Logo {
+  width: 30%;
+}
+.Logo a {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.LogoWrapper {
+  display: inline;
+  width: auto;
+}
+.LogoWrapper:hover {
+  filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(6102%)
+    hue-rotate(358deg) brightness(101%) contrast(103%);
+}
+.LogoImageHolder {
+  width: 4.25rem;
+  margin: 2%;
+  margin-bottom: 0;
+}
+.LogoImage {
+  display: inline-block;
+  width: 100%;
+}
+.LogoWords {
+  width: 40%;
+  font-family: "Holtwood One SC", serif;
+  font-size: 1.25rem;
+  margin-left: 0.25rem;
+  line-height: 140%;
+}
+
+.HeaderNav {
+  display: inline;
+  font-size: 1rem;
+  width: 40%;
+  min-width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.NavEntry {
+  cursor: pointer;
+}
+
+.SignInArea {
+  width: 10%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.UserProfilePic {
+  max-height: 3rem;
+  min-height: 2rem;
+  height: 5vw;
+}
+
+/* Hamburger menu stuff */
+.hamburgerMenuButtonContainer {
+}
+.burgerMenuBars {
+  background: #ffffff;
+}
+
+@media (orientation: portrait) {
+  .LogoImageHolder {
+    height: auto;
+    width: 4rem;
+    margin-left: 1vw;
+  }
+  .LogoImage {
+    //width:auto;
+    //height:100%;
+  }
+  .LogoWords {
+    display: none;
+  }
+
+  /* Hide landscape navigation on mobile */
+  .HeaderNav {
+    display: none;
+  }
+  .SignInArea {
+    display: none;
+  }
+}
