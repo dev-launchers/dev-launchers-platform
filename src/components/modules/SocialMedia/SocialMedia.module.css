@@ -52,10 +52,6 @@
     hue-rotate(358deg) brightness(101%) contrast(103%);
 }
 
-li {
-  margin-bottom: 5px;
-}
-
 .chessImageWrapper {
   width: 70%;
   display: flex;

@@ -19,7 +19,9 @@ var firebaseConfig = {
   measurementId: "G-R71JK0Z250"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 const providers = {
   googleProvider: new firebase.auth.GoogleAuthProvider(),
   githubProvider: new firebase.auth.GithubAuthProvider()

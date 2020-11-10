@@ -1,6 +1,6 @@
 import React from "react";
 import PageBody from "../../common/PageBody";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 import chessPiece from "../../../images/check-it/chess_display_large.jpg";
 
@@ -55,19 +55,29 @@ export default function SocialMedia() {
             </p>
             <ul class={style.list}>
               <li>
-                <Link to={"/hangout"} className={style.link}>
-                  <div className={style.LogoImageHolder}>
-                    <img src={logoMonogramImage} className={style.LogoImage} />
-                    &nbsp;Hangout Link
-                  </div>
+                <Link href={"/hangout"} className={style.link}>
+                  <a>
+                    <div className={style.LogoImageHolder}>
+                      <img
+                        src={logoMonogramImage}
+                        className={style.LogoImage}
+                      />
+                      &nbsp;Hangout Link
+                    </div>
+                  </a>
                 </Link>
               </li>
               <li>
-                <Link to={"/play"} className={style.link}>
-                  <div className={style.LogoImageHolder}>
-                    <img src={logoMonogramImage} className={style.LogoImage} />
-                    &nbsp;Project Showcase
-                  </div>
+                <Link href={"/play"} className={style.link}>
+                  <a>
+                    <div className={style.LogoImageHolder}>
+                      <img
+                        src={logoMonogramImage}
+                        className={style.LogoImage}
+                      />
+                      &nbsp;Project Showcase
+                    </div>
+                  </a>
                 </Link>
               </li>
             </ul>
