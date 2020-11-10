@@ -3,6 +3,7 @@ import React from "react";
 import style from "./Partners.module.css";
 
 import LogoImage from "./LogoImage/LogoImage.js";
+import Card from "../../../common/Card/Card.js";
 
 import aespriteImage from "../../../../images/home-page/aseprite.png";
 import kraftiesImage from "../../../../images/home-page/krafties.png";
@@ -57,7 +58,7 @@ export default function Partners() {
           src={phaser3Image}
           width="60%"
         />
-        <LogoImage href="https://reactjs.org/" src={reactImage} width="40%" />
+        <LogoImage href="https://reactjs.org/" src={reactImage} width="60%" />
       </div>
       <div />
       <div />

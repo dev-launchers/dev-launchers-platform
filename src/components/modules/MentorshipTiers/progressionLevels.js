@@ -10,6 +10,7 @@ import level6Image from "../../../images/members/level-thumbnails/level-6.png";
 import level7Image from "../../../images/members/level-thumbnails/level-7.png";
 import level8Image from "../../../images/members/level-thumbnails/level-8.png";
 
+const ALIGN = "center";
 const progressionLevels = {
   beginner: [
     {
@@ -24,7 +25,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL3 or higher decides when a DL0 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
 
     {
@@ -44,7 +46,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL3 or higher decides when a DL1 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
 
     {
@@ -65,7 +68,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL4 or higher decides when a DL2 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     }
   ],
   intermediate: [
@@ -84,7 +88,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL5 or higher decides when a DL3 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
 
     {
@@ -105,7 +110,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL6 or higher decides when a DL4 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
 
     {
@@ -128,7 +134,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL7 or higher decides when a DL5 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
     {
       title: "DL6",
@@ -149,7 +156,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A member of level DL8 or higher decides when a DL6 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     }
   ],
   advanced: [
@@ -174,7 +182,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "A panel of DL8 members decides when a DL7 member is ready to transition to the next level"
-      ]
+      ],
+      alignment: ALIGN
     },
 
     {
@@ -197,7 +206,8 @@ const progressionLevels = {
       ],
       advancementCriteria: [
         "At this level, members are exclusively collecting badges in specialized areas"
-      ]
+      ],
+      alignment: ALIGN
     }
   ]
 };

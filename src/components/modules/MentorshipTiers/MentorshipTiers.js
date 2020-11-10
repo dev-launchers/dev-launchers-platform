@@ -123,6 +123,8 @@ export default function MentorshipTiers() {
     setModalIsOpen(false);
   };
 
+  const ALIGNMENT = "left";
+
   return (
     <div>
       <Modal
@@ -134,12 +136,24 @@ export default function MentorshipTiers() {
       <IntroArea scrollToFormFunc={executeScroll} />
       <PageBody>
         <div style={{ width: "100%" }}>
-          <CardGroup title="Beginner" data={progressionLevels.beginner} />
+          <CardGroup
+            title="Beginner"
+            data={progressionLevels.beginner}
+            titleAlignment={ALIGNMENT}
+            cardAlignment={ALIGNMENT}
+          />
           <CardGroup
             title="Intermediate"
             data={progressionLevels.intermediate}
+            titleAlignment={ALIGNMENT}
+            cardAlignment={ALIGNMENT}
           />
-          <CardGroup title="Advanced" data={progressionLevels.advanced} />
+          <CardGroup
+            title="Advanced"
+            data={progressionLevels.advanced}
+            titleAlignment={ALIGNMENT}
+            cardAlignment={ALIGNMENT}
+          />
         </div>
       </PageBody>
       <PhotoHolder />

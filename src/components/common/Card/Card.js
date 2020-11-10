@@ -6,6 +6,7 @@ import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
 
 export default function Card(props) {
+  const align = props.data.alignment ? props.data.alignment : "left";
   return (
     <div
       className={cx(style.container, {
@@ -18,6 +19,7 @@ export default function Card(props) {
         className={cx(style.content, {
           [style.contentLarge]: props.size === "large"
         })}
+        style={{ textAlign: align }}
       >
         <div className={style.imageHolder}>
           <a href={props.data.href} target="_blank" rel="noopener noreferrer">
