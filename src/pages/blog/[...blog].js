@@ -16,9 +16,8 @@ export default function BlogRoute(props) {
     // Sample path blog/users/kris-gano/retro-scratch-contest-8-24-2020
     // path is an array of path after blog
     // blog: ["users", "kris-gano", "retro-scratch-contest-8-24-2020"]
-    console.log("blog", blog[0]);
-    const authorId = "kris-gano" //blog[1];
-    const articleId = "retro-scratch-contest-8-24-2020" //blog[2];
+    const authorId = blog[1];
+    const articleId = blog[2];
     return (
         <div>
             <Header />
