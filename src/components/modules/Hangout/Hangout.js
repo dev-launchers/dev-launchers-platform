@@ -17,7 +17,7 @@ export default function Hangout() {
         We hold virtual sessions <b>every Saturday from 12-3pm CDT.</b> Wanna
         join?? Sign up{" "}
         <a
-          href="/#/members"
+          href="/members"
           target="_blank"
           style={{ color: "blue", fontWeight: "bold" }}
         >
@@ -66,7 +66,7 @@ export default function Hangout() {
           <li>
             The Dev Launchers{" "}
             <a
-              href="https://devlaunchers.com/#/create"
+              href="https://devlaunchers.com/create"
               target="_blank"
               style={{ color: "blue" }}
             >
@@ -74,7 +74,7 @@ export default function Hangout() {
             </a>{" "}
             or{"  "}
             <a
-              href="https://devlaunchers.com/#/learn"
+              href="https://devlaunchers.com/learn"
               target="_blank"
               style={{ color: "blue" }}
             >

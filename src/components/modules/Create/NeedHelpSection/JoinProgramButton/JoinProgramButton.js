@@ -7,7 +7,7 @@ export default function JoinProgramButton(props) {
       <div
         style={{ width: "100%", height: "100%" }}
         onClick={() => {
-          window.location = "/#/members";
+          window.location = "/members";
         }}
       >
         ❤️ Join Our Program!
