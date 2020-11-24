@@ -1,9 +1,11 @@
 import "../styles/globals.css";
 import React from "react";
 
-import { useRouter } from "next/router";
+import { Router, useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import { initGA, logPageView } from "../utils/GoogleAnalytics.js";
 
 import { AuthProvider } from "../context/AuthContext";
 import { SheetsProvider } from "../context/SheetsContext";
@@ -47,6 +49,15 @@ const injectErrorInterceptor = () => {
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   hashRedirect(router);
+
+  // Google analytics
+  React.useEffect(() => {
+    initGA();
+    logPageView();
+    Router.events.on("routeChangeComplete", () => {
+      logPageView();
+    });
+  }, []);
 
   /* <Code added to debug iphone issue using alerts> */
   if (router.query.debug === "true") {
