@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import React from "react";
 
 import { Router, useRouter } from "next/router";
+import Head from "next/head";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -50,13 +51,22 @@ function MyApp({ Component, pageProps }) {
   const router = useRouter();
   hashRedirect(router);
 
-  // Google analytics
+  // Google analytics/Google adwords
   React.useEffect(() => {
+    // Google Analytics
     initGA();
     logPageView();
     Router.events.on("routeChangeComplete", () => {
       logPageView();
     });
+
+    // Google AdSense
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "AW-599284852");
   }, []);
 
   /* <Code added to debug iphone issue using alerts> */
@@ -66,22 +76,30 @@ function MyApp({ Component, pageProps }) {
   /* </Code added to debug iphone issue using alerts> */
 
   return (
-    <AuthProvider>
-      <SheetsProvider>
-        <RepoProvider>
-          <LeaderboardProvider>
-            <div className="App">
-              <ToastContainer
-                className="toast-container"
-                toastClassName="toast"
-                progressClassName="toast-progress"
-              />
-            </div>
-            <Component {...pageProps} />
-          </LeaderboardProvider>
-        </RepoProvider>
-      </SheetsProvider>
-    </AuthProvider>
+    <div>
+      <Head>
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+        ></script>
+      </Head>
+      <AuthProvider>
+        <SheetsProvider>
+          <RepoProvider>
+            <LeaderboardProvider>
+              <div className="App">
+                <ToastContainer
+                  className="toast-container"
+                  toastClassName="toast"
+                  progressClassName="toast-progress"
+                />
+              </div>
+              <Component {...pageProps} />
+            </LeaderboardProvider>
+          </RepoProvider>
+        </SheetsProvider>
+      </AuthProvider>
+    </div>
   );
 }
 
