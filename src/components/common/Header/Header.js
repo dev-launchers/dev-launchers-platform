@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import style from "./Header.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
@@ -16,38 +16,50 @@ export default function Header(props) {
       <div className={style.HeaderBlock}>
         <div className={style.Logo}>
           <div className={style.LogoWrapper}>
-            <Link to={"/"} className="nav-link">
-              <div className={style.LogoImageHolder}>
-                <img
-                  src={logoMonogramImage}
-                  className={style.LogoImage}
-                  alt="logo"
-                />
-              </div>
-              <div className={style.LogoWords}>Dev Launchers</div>
+            <Link href="/">
+              <a>
+                <div className={style.LogoImageHolder}>
+                  <img
+                    src={logoMonogramImage}
+                    className={style.LogoImage}
+                    alt="logo"
+                  />
+                </div>
+                <div className={style.LogoWords}>Dev Launchers</div>
+              </a>
             </Link>
           </div>
         </div>
         <div className={style.HeaderNav}>
-          <Link to={"/create"} className="nav-link">
-            <div className={style.NavEntry}>CREATE</div>
+          <Link href="/create">
+            <a>
+              <div className={style.NavEntry}>CREATE</div>
+            </a>
           </Link>
-          <Link to={"/learn"} className="nav-link">
-            <div className={style.NavEntry}>LEARN</div>
+          <Link href="/learn">
+            <a>
+              <div className={style.NavEntry}>LEARN</div>
+            </a>
           </Link>
           {/*}
-          <Link to={"/play"} className="nav-link">
+          <Link href={"/play"} className="nav-link">
             <div className={style.NavEntry}>PLAY</div>
           </Link>
           {*/}
-          <Link to={"/earn"} className="nav-link">
-            <div className={style.NavEntry}>EARN</div>
+          <Link href="/earn">
+            <a>
+              <div className={style.NavEntry}>EARN</div>
+            </a>
           </Link>
-          <Link to={"/support-us"} className="nav-link">
-            <div className={style.NavEntry}>SUPPORT US</div>
+          <Link href="/support-us">
+            <a>
+              <div className={style.NavEntry}>SUPPORT US</div>
+            </a>
           </Link>
-          <Link to={"/members"} className="nav-link">
-            <div className={style.NavEntry}>JOIN</div>
+          <Link href="/members">
+            <a>
+              <div className={style.NavEntry}>JOIN</div>
+            </a>
           </Link>
         </div>
         <div />

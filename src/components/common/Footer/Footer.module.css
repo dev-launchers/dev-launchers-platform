@@ -51,16 +51,6 @@
   justify-content: flex-end;
 }
 
-a {
-  width: auto;
-  display: inline;
-  color: #d9d9d9;
-  text-decoration: none;
-}
-a:hover {
-  color: rgb(255, 217, 0);
-}
-
 @media (orientation: portrait) {
   .FooterLogo {
     height: auto;

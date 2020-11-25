@@ -9,7 +9,6 @@ import Section from "../../../components/common/Section/Section";
 
 export default function Learn() {
   const { learnPageData } = useSheetsContext();
-
   return (
     <div>
       <PageBody>

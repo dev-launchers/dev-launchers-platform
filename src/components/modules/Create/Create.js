@@ -25,7 +25,7 @@ const customModalStyles = {
   },
   overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
 };
-Modal.setAppElement("#root");
+Modal.setAppElement("#__next");
 
 export default function Create(props) {
   const { createPageData } = useSheetsContext();

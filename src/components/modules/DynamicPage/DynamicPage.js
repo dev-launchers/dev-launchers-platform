@@ -7,7 +7,35 @@ import PageBody from "../../../components/common/PageBody";
 
 import style from "./DynamicPage.module.css";
 
+/* Event snippet for Discord Outbound click conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */
+// Google AdSense
+function gtag() {
+  dataLayer.push(arguments);
+}
+function gtag_report_conversion(conversionId, url) {
+  var callback = function() {
+    if (typeof url != "undefined") {
+      window.location = url;
+    }
+  };
+  gtag("event", "conversion", {
+    //'send_to': 'AW-599284852/8hqbCLaChesBEPS44Z0C',
+    send_to: conversionId,
+    event_callback: callback
+  });
+  return false;
+}
+
 export default function DynamicPage(props) {
+  // Google analytics/Google adwords
+  React.useEffect(() => {
+    // Google AdSense
+    window.dataLayer = window.dataLayer || [];
+    gtag("js", new Date());
+    gtag("config", "AW-599284852");
+  }, []);
+
   const pageId = props.pageId;
 
   const [prismicRef, setPrismicRef] = React.useState(null);
@@ -72,8 +100,10 @@ export default function DynamicPage(props) {
                     onClick={
                       page.data.intro_image_hyperlink.url
                         ? () => {
-                            window.location =
+                            let conversionId = page.data.intro_image.alt;
+                            let destination =
                               page.data.intro_image_hyperlink.url;
+                            gtag_report_conversion(conversionId, destination);
                           }
                         : ""
                     }
@@ -202,7 +232,9 @@ const htmlSerializer = function(type, element, content, children, key) {
       };
       if (element.linkTo) {
         props.onClick = () => {
-          window.location = element.linkTo.url;
+          let conversionId = element.alt;
+          let destination = element.linkTo.url;
+          gtag_report_conversion(conversionId, destination);
         };
         props.style = { cursor: "pointer" };
       }

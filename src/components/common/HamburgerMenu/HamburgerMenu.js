@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
@@ -43,7 +43,7 @@ function HamburgerMenu(props) {
       >
         <div className={style.Logo} onClick={handleNavClick}>
           <div className={style.LogoWrapper}>
-            <Link to={"/"} className="nav-link">
+            <Link href={"/"} className="nav-link">
               <div className={style.LogoImageHolder}>
                 <img src={logoMonogramImage} className={style.LogoImage} />
               </div>
@@ -52,25 +52,35 @@ function HamburgerMenu(props) {
         </div>
         <div>
           <div className={style.HeaderNav} onClick={handleNavClick}>
-            <Link to={"/create"} className="nav-link">
-              <div className={style.navEntry}>CREATE</div>
+            <Link href={"/create"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>CREATE</div>
+              </a>
             </Link>
-            <Link to={"/learn"} className="nav-link">
-              <div className={style.navEntry}>LEARN</div>
+            <Link href={"/learn"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>LEARN</div>
+              </a>
             </Link>
             {/*}
-            <Link to={"/play"} className="nav-link">
+            <Link href={"/play"} className="nav-link">
               <div className={style.navEntry}>PLAY</div>
             </Link>
             {*/}
-            <Link to={"/earn"} className="nav-link">
-              <div className={style.navEntry}>EARN</div>
+            <Link href={"/earn"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>EARN</div>
+              </a>
             </Link>
-            <Link to={"/support-us"} className="nav-link">
-              <div className={style.navEntry}>SUPPORT US</div>
+            <Link href={"/support-us"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>SUPPORT US</div>
+              </a>
             </Link>
-            <Link to={"/members"} className="nav-link">
-              <div className={style.navEntry}>JOIN</div>
+            <Link href={"/members"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>JOIN</div>
+              </a>
             </Link>
           </div>
           {/* }

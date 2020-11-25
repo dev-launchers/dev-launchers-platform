@@ -19,7 +19,7 @@ const customModalStyles = {
   },
   overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
 };
-ReactModal.setAppElement("#root");
+ReactModal.setAppElement("#__next");
 
 export default function Modal(props) {
   const [modalContent] = React.useState(props.modalContent);

@@ -1,21 +1,10 @@
 // TODO: make generic IdeaGenerator for both components to use (DRY issue)
 
 import React from "react";
-import articles from "articles"; // Article of speech package
 
 import Modal from "../../../../../components/common/Modal";
 
 import style from "./IdeaGeneratorButton.module.css";
-
-import {
-  getRandomEntry,
-  isPlural,
-  hasArticle,
-  randEntity,
-  getRandomEntity,
-  getRandomPhrase,
-  getRandomTheme
-} from "./nlpUtils.js";
 
 export default function IdeaGeneratorButton(props) {
   // Modal state management

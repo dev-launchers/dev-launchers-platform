@@ -1,9 +1,6 @@
 import React from "react";
-import articles from "articles"; // Article of speech package
 
-import style from "./GameIdeaGeneratorButton.module.css";
 import IdeaGeneratorButton from "../IdeaGeneratorButton";
-import contentDictionary from "../contentDictionary.js";
 
 import {
   getRandomPhrase,

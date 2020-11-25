@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 import style from "./Footer.module.css";
 
@@ -11,29 +11,45 @@ export default function Footer(props) {
   return (
     <footer className={style.FooterBlock}>
       <RandomQuote />
-      <Link to={"/"} className="nav-link">
-        <img className={style.FooterLogo} src={logoMonogramImage} alt="logo" />
+      <Link href={"/"} className="nav-link">
+        <a>
+          <img
+            className={style.FooterLogo}
+            src={logoMonogramImage}
+            alt="logo"
+          />
+        </a>
       </Link>
       <div className={style.FooterNav}>
-        <Link to={"/create"} className="nav-link">
-          <div className={style.NavEntry}>CREATE</div>
+        <Link href={"/create"} className="nav-link">
+          <a>
+            <div className={style.NavEntry}>CREATE</div>
+          </a>
         </Link>
-        <Link to={"/learn"} className="nav-link">
-          <div className={style.NavEntry}>LEARN</div>
+        <Link href={"/learn"} className="nav-link">
+          <a>
+            <div className={style.NavEntry}>LEARN</div>
+          </a>
         </Link>
         {/*}
-        <Link to={"/play"} className="nav-link">
+        <Link href={"/play"} className="nav-link">
           <div className={style.NavEntry}>PLAY</div>
         </Link>
         {*/}
-        <Link to={"/earn"} className="nav-link">
-          <div className={style.NavEntry}>EARN</div>
+        <Link href={"/earn"} className="nav-link">
+          <a>
+            <div className={style.NavEntry}>EARN</div>
+          </a>
         </Link>
-        <Link to={"/support-us"} className="nav-link">
-          <div className={style.NavEntry}>SUPPORT US</div>
+        <Link href={"/support-us"} className="nav-link">
+          <a>
+            <div className={style.NavEntry}>SUPPORT US</div>
+          </a>
         </Link>
-        <Link to={"/members"} className="nav-link">
-          <div className={style.NavEntry}>JOIN</div>
+        <Link href={"/members"} className="nav-link">
+          <a>
+            <div className={style.NavEntry}>JOIN</div>
+          </a>
         </Link>
       </div>
       <div className={style.SocialMediaLink}>
@@ -59,8 +75,8 @@ export default function Footer(props) {
         ></a>
       </div>
       <div className={style.OrgInfoArea}>
-        -<a href="/#/page/terms-and-conditions">Terms of Service </a> {"- | -"}
-        <a href="/#/page/privacy-policy">Privacy Policy </a> {"- | "} ©Dev
+        -<a href="/page/terms-and-conditions">Terms of Service </a> {"- | -"}
+        <a href="/page/privacy-policy">Privacy Policy </a> {"- | "} ©Dev
         Launchers, 2020.
       </div>
     </footer>
