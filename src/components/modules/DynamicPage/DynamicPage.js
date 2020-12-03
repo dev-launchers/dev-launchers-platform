@@ -14,6 +14,12 @@ function gtag() {
   dataLayer.push(arguments);
 }
 function gtag_report_conversion(conversionId, url) {
+  // if there is no conversionID provided, we're just redirecting
+  if (!conversionId) {
+    window.location = url;
+    return;
+  }
+
   var callback = function() {
     if (typeof url != "undefined") {
       window.location = url;
