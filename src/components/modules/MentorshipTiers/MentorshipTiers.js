@@ -123,7 +123,8 @@ export default function MentorshipTiers() {
     setModalIsOpen(false);
   };
 
-  const ALIGNMENT = "left";
+  const TITLE_ALIGNMENT = "center";
+  const GROUP_FLEX_DIRECTION = "center";
 
   return (
     <div>
@@ -139,20 +140,20 @@ export default function MentorshipTiers() {
           <CardGroup
             title="Beginner"
             data={progressionLevels.beginner}
-            titleAlignment={ALIGNMENT}
-            cardAlignment={ALIGNMENT}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
           <CardGroup
             title="Intermediate"
             data={progressionLevels.intermediate}
-            titleAlignment={ALIGNMENT}
-            cardAlignment={ALIGNMENT}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
           <CardGroup
             title="Advanced"
             data={progressionLevels.advanced}
-            titleAlignment={ALIGNMENT}
-            cardAlignment={ALIGNMENT}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
         </div>
       </PageBody>

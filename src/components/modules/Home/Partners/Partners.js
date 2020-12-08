@@ -16,10 +16,12 @@ import reactImage from "../../../../images/home-page/react-logo.png";
 export default function Partners() {
   return (
     <div className={style.Partners}>
-      <h1>Extended Family</h1>
-      We partner with organizations doing outreach to bring in a diverse range
-      of students, and for-profit partners so Dev Launchers can grow and
-      continue to do what we love!
+      <h1>CHECK OUT OUR EXTENDED FAMILY</h1>
+      <p>
+        We partner with organizations doing outreach to bring in a diverse range
+        of students, and for-profit partners so Dev Launchers can grow and
+        continue to do what we love! Click an image to learn more.
+      </p>
       <h3>Partners</h3>
       <div className={style.PartnerList}>
         <LogoImage
