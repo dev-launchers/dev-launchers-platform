@@ -36,28 +36,6 @@ export default function Organization() {
           </div>
         </div>
       </div>
-      {/*}
-      <div className={style.CtaSection}>
-        <h2 className={style.CtaSection_Title}>
-          Technology should be accessible
-        </h2>
-        <div className={style.CtaSection_Content}>
-          <div className={style.CtaSection_Description}>
-            We seek out individuals from diverse, underserved communities and
-            empower them to create. Know a young person who's excited about
-            technology? Send them our way!
-          </div>
-          <div className={style.CtaSection_ButtonArea}>
-            <Button
-              className={style.CtaSection_Button}
-              style={{ fontSize: "2rem" }}
-            >
-              Nominate a Student
-            </Button>
-          </div>
-        </div>
-      </div>
-      {*/}
       <div className={style.CtaSection}>
         <h2 className={style.CtaSection_Title}>We believe in Open Source</h2>
         <div className={style.CtaSection_Content}>

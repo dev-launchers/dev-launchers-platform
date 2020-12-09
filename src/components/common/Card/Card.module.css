@@ -27,13 +27,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgrey;
   background-color: black;
   padding-top: 2px;
   padding-bottom: 2px;
 }
 .imageHolder a {
   display: flex;
+}
+
+.imageHolderLarge {
+  composes: imageHolder;
+  width: 50%;
+}
+
+.dataHolder {
+}
+
+.dataHolderLarge {
+  width: 70%;
+  padding: 6.75%;
 }
 
 .image {

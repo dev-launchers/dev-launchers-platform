@@ -1,6 +1,7 @@
 .Intro {
   padding-top: 5%;
   padding-bottom: 5%;
+  text-align: center;
 }
 
 @media (orientation: portrait) {
