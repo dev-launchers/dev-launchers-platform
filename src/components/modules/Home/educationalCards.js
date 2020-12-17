@@ -9,7 +9,7 @@ const educationalCards = [
     title: "LEARN",
     description:
       "If you are new to game and app developement, learn with hands on instruction from tech experts",
-    href: "https://devlaunchers.com/learn",
+    href: "/learn",
     imageSrc: learnImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
@@ -19,7 +19,7 @@ const educationalCards = [
     title: "CREATE",
     description:
       "Your mind is exploding with ideas, so take them by the reigns and make them a reality",
-    href: "https://devlaunchers.com/create",
+    href: "/create",
     imageSrc: createImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
@@ -29,7 +29,7 @@ const educationalCards = [
     title: "TEACH",
     description:
       "Gain skills leading projects, and contributing to a powerful platform built to solve a serious problem",
-    href: "https://devlaunchers.com/members",
+    href: "/members",
     imageSrc: teachImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
