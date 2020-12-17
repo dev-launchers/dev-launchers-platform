@@ -33,11 +33,11 @@ export default function CardGroup(props) {
         className={style.collection}
         style={{ justifyContent: cardGroupFlexDirection }}
       >
-        {Object.keys(props.data).length !== 0 &&
-          props.data.map((items, i) => {
+        {Object.keys(props.cards).length !== 0 &&
+          props.cards.map((items, i) => {
             return (
               <Card
-                data={items}
+                cardData={items}
                 key={i}
                 size={props.size}
                 attachment={props.attachment}

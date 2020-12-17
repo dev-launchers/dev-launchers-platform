@@ -27,14 +27,14 @@ export default function Home() {
         <div className={style.HomePageBody}>
           <Intro />
           <CardGroup
-            data={communityCards}
+            cards={communityCards}
             titleAlignment="center"
             cardGroupFlexDirection="space-around"
           />
           <hr />
           <CardGroup
             size="large"
-            data={organizationCards}
+            cards={organizationCards}
             titleAlignment="center"
             cardGroupFlexDirection="center"
           />
@@ -45,7 +45,7 @@ export default function Home() {
           {*/}
           {/*<Organization />*/}
           <CardGroup
-            data={educationalCards}
+            cards={educationalCards}
             titleAlignment="center"
             cardGroupFlexDirection="space-around"
           />

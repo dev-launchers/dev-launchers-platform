@@ -139,19 +139,19 @@ export default function MentorshipTiers() {
         <div style={{ width: "100%" }}>
           <CardGroup
             title="Beginner"
-            data={progressionLevels.beginner}
+            cards={progressionLevels.beginner}
             titleAlignment={TITLE_ALIGNMENT}
             cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
           <CardGroup
             title="Intermediate"
-            data={progressionLevels.intermediate}
+            cards={progressionLevels.intermediate}
             titleAlignment={TITLE_ALIGNMENT}
             cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
           <CardGroup
             title="Advanced"
-            data={progressionLevels.advanced}
+            cards={progressionLevels.advanced}
             titleAlignment={TITLE_ALIGNMENT}
             cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />

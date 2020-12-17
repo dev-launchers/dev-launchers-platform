@@ -18,18 +18,18 @@ import Attachments from "./Attachments";
  *  - imageHolderBackgroundColor
  */
 export default function Card(props) {
-  const imageHolderBackgroundColor = props.data.imageHolderBackgroundColor
-    ? props.data.imageHolderBackgroundColor
+  const imageHolderBackgroundColor = props.cardData.imageHolderBackgroundColor
+    ? props.cardData.imageHolderBackgroundColor
     : "black";
-  const textAlignment = props.data.textAlignment
-    ? props.data.textAlignment
+  const textAlignment = props.cardData.textAlignment
+    ? props.cardData.textAlignment
     : "left";
-  const cardFlexDirection = props.data.flexDirection
-    ? props.data.flexDirection
+  const cardFlexDirection = props.cardData.flexDirection
+    ? props.cardData.flexDirection
     : "";
 
   React.useEffect(() => {
-    console.log(props.data.flexDirection);
+    console.log(props.cardData.flexDirection);
   }, []);
 
   return (
@@ -38,7 +38,7 @@ export default function Card(props) {
         [style.containerLarge]: props.size === "large"
       })}
       key={props.i}
-      onClick={props.data.onClick}
+      onClick={props.cardData.onClick}
     >
       <div
         className={cx(style.content, {
@@ -52,9 +52,13 @@ export default function Card(props) {
           })}
           style={{ backgroundColor: imageHolderBackgroundColor }}
         >
-          <a href={props.data.href} target="_blank" rel="noopener noreferrer">
+          <a
+            href={props.cardData.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img
-              src={props.data.imageSrc}
+              src={props.cardData.imageSrc}
               className={style.image}
               alt="content"
             />
@@ -65,13 +69,13 @@ export default function Card(props) {
             [style.dataHolderLarge]: props.size === "large"
           })}
         >
-          <CardTitle data={props.data} />
-          <div className={style.description}>{props.data.description}</div>
+          <CardTitle data={props.cardData} />
+          <div className={style.description}>{props.cardData.description}</div>
         </div>
       </div>
       <div className={style.attachments}>
-        {props.data.attachments && (
-          <Attachments data={props.data.attachments} />
+        {props.cardData.attachments && (
+          <Attachments data={props.cardData.attachments} />
         )}
       </div>
     </div>
