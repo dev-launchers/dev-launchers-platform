@@ -19,7 +19,7 @@ export default function Play() {
       </div>
       <hr />
       <CardGroup
-        data={repoData}
+        cards={repoData}
         title={"Projects"}
         size="large"
         attachment={true}

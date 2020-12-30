@@ -11,7 +11,7 @@ export default function Section(props) {
           const group = props.data[groupTitle];
           return (
             <div className={styles.group} key={i}>
-              <CardGroup data={group} title={groupTitle} />
+              <CardGroup cards={group} title={groupTitle} />
             </div>
           );
         })}
