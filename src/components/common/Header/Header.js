@@ -7,12 +7,13 @@ import logoMonogramImage from "../../../images/logo-monogram.png";
 import { useAuthContext } from "../../../context/AuthContext";
 
 import Button from "../../common/Button";
-
+import HamburgerMenu from "../../common/HamburgerMenu/";
 export default function Header(props) {
   const { authUser, doAuthRequest } = useAuthContext();
 
   return (
     <div>
+      <HamburgerMenu />
       <div className={style.HeaderBlock}>
         <div className={style.Logo}>
           <div className={style.LogoWrapper}>
