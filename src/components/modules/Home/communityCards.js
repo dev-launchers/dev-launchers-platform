@@ -7,7 +7,7 @@ const communityCards = [
   {
     title: "DISCORD",
     description:
-      "If you want to be an integral part of an international platform with over 850 members to learn project management and app development on the go, join our Discord server",
+      "If you want to be an integral part of an international platform with a large amount of members to learn project management and app development on the go, join our Discord server",
     href: "https://discord.io/devlaunchers/",
     imageSrc: discordImage,
     textAlignment: TEXT_ALIGN,

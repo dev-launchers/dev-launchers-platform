@@ -15,7 +15,7 @@ const organizationCards = [
   },
 
   {
-    title: "OUR MISSION",
+    title: "WHAT WE'RE ABOUT",
     description:
       "Dev Launchers is a 501(c)(3) nonprofit intent on empowering diverse young creatives, innovators, and leaders. We're working on touching as many lives as we possibly can, and need your help to make that happen. Any amount helps!",
     href: "/support-us",
