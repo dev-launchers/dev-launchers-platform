@@ -1,6 +1,7 @@
 import React from "react";
-import style from "./Card.module.css";
-import cx from "classnames";
+import { Wrapper, Content, ImageHolder, DataHolder } from "./StyledCard";
+import style from "./Card.module.css"; // got replaced by styled components library
+import cx from "classnames"; // got replaced by styled components library
 
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
@@ -18,66 +19,39 @@ import Attachments from "./Attachments";
  *  - imageHolderBackgroundColor
  */
 export default function Card(props) {
-  const imageHolderBackgroundColor = props.cardData.imageHolderBackgroundColor
-    ? props.cardData.imageHolderBackgroundColor
-    : "black";
-  const textAlignment = props.cardData.textAlignment
-    ? props.cardData.textAlignment
-    : "left";
-  const cardFlexDirection = props.cardData.flexDirection
-    ? props.cardData.flexDirection
-    : "";
-
   React.useEffect(() => {
-    console.log(props.cardData.flexDirection);
+    console.log(props.cardData);
   }, []);
 
   return (
-    <div
-      className={cx(style.container, {
-        [style.containerLarge]: props.size === "large"
-      })}
-      key={props.i}
-      onClick={props.cardData.onClick}
-    >
-      <div
-        className={cx(style.content, {
-          [style.contentLarge]: props.size === "large"
-        })}
-        style={{ textAlign: textAlignment, flexDirection: cardFlexDirection }}
+    <Wrapper size={props.size} key={props.i} onClick={props.cardData.onClick}>
+      <Content
+        size={props.size}
+        textAlign={props.cardData.textAlignment}
+        cardFlexDirection={props.cardData.flexDirection}
       >
-        <div
-          className={cx(style.imageHolder, {
-            [style.imageHolderLarge]: props.size === "large"
-          })}
-          style={{ backgroundColor: imageHolderBackgroundColor }}
+        <ImageHolder
+          size={props.size}
+          bgColor={props.cardData.imageHolderBackgroundColor}
         >
           <a
             href={props.cardData.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={props.cardData.imageSrc}
-              className={style.image}
-              alt="content"
-            />
+            <img src={props.cardData.imageSrc} alt="content" />
           </a>
-        </div>
-        <div
-          className={cx(style.dataHolder, {
-            [style.dataHolderLarge]: props.size === "large"
-          })}
-        >
+        </ImageHolder>
+        <DataHolder>
           <CardTitle data={props.cardData} />
-          <div className={style.description}>{props.cardData.description}</div>
-        </div>
-      </div>
-      <div className={style.attachments}>
+          <div className="description">{props.cardData.description}</div>
+        </DataHolder>
+      </Content>
+      <div className="attachments">
         {props.cardData.attachments && (
           <Attachments data={props.cardData.attachments} />
         )}
       </div>
-    </div>
+    </Wrapper>
   );
 }
