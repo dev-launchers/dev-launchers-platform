@@ -1,7 +1,5 @@
 import React from "react";
 import { Wrapper, Content, ImageHolder, DataHolder } from "./StyledCard";
-import style from "./Card.module.css"; // got replaced by styled components library
-import cx from "classnames"; // got replaced by styled components library
 
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
