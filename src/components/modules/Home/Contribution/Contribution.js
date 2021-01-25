@@ -14,7 +14,7 @@ export default function Contribution() {
           <div className={style.CtaSection_Description}>
             Everything, from our platform to our curriculum to the projects we
             develop, is released to the open source community. We rely on
-            contributors to grow our platform and continue serving our students!
+            contributors to grow our platform and continue serving our members!
           </div>
           <div className={style.CtaSection_ButtonArea}>
             <Button
