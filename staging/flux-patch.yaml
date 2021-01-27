@@ -10,5 +10,5 @@ spec:
       $setElementOrder/containers:
       - name: platform-website
       containers:
-      - image: devlaunchers/platform-website:sha-0a515b5
+      - image: devlaunchers/platform-website:sha-ac449bb
         name: platform-website
