@@ -11,7 +11,12 @@ const organizationCards = [
     href: "/members",
     imageSrc: developmentLabImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: "left"
+    /*titleUnderlineColor:,
+    titleUnderlineThickness:,
+    titleAlignment:*/
   },
 
   {
@@ -22,7 +27,9 @@ const organizationCards = [
     imageSrc: ourMissionImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    flexDirection: "row-reverse"
+    flexDirection: "row-reverse",
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: "right"
   }
 ];
 

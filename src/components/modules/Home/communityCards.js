@@ -7,21 +7,23 @@ const communityCards = [
   {
     title: "DISCORD",
     description:
-      "If you want to be an integral part of an international platform with a large amount of members to learn project management and app development on the go, join our Discord server",
+      "Become part of our large community full of members just like you. Learn game and app development, join open source projects, participate in fun events, and make new friends!",
     href: "https://discord.io/devlaunchers/",
     imageSrc: discordImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: "center"
   },
 
   {
     title: "TWITCH",
     description:
-      "Join our weekly streams where we create open source games and apps together",
+      "Join our weekly streams where we create open source games and apps together!",
     href: "https://www.twitch.tv/devlaunchers/",
     imageSrc: twitchImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: "center"
   }
 ];
 

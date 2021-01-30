@@ -12,7 +12,8 @@ const educationalCards = [
     href: "/learn",
     imageSrc: learnImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: TEXT_ALIGN
   },
 
   {
@@ -22,7 +23,8 @@ const educationalCards = [
     href: "/create",
     imageSrc: createImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: TEXT_ALIGN
   },
 
   {
@@ -32,7 +34,8 @@ const educationalCards = [
     href: "/members",
     imageSrc: teachImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: TEXT_ALIGN
   }
 ];
 

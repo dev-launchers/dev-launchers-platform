@@ -31,6 +31,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
 }
+
 .imageHolder a {
   display: flex;
 }
@@ -63,6 +64,7 @@
 .description {
   width: 100%;
   font-size: 1.2rem;
+  padding-top: 1%;
 }
 
 .containerLarge {
@@ -78,15 +80,6 @@
 
 .attachments {
   margin-top: auto;
-}
-
-.CenteredTitleUnderline {
-  width: 80%;
-  margin: 1%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 2%;
-  border-bottom: 0.25rem solid #ff7f0e;
 }
 
 @media (orientation: portrait) {

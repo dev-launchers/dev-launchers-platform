@@ -5,24 +5,20 @@ import style from "./CardGroup.module.css";
 export default function CardGroup(props) {
   // Converts font alignment to flexbox alignment
   let cardGroupFlexDirection = props.cardGroupFlexDirection;
-  let titleAlignment = props.titleAlignment;
+  let groupTitleAlignment = props.titleAlignment;
   let imageHolderBackgroundColor = props.imageHolderBackgroundColor;
 
   cardGroupFlexDirection = cardGroupFlexDirection
     ? cardGroupFlexDirection
     : "flex-start"; // Is cardGroupFlexDirection undefined?
-  cardGroupFlexDirection =
-    cardGroupFlexDirection == "right" ? "flex-end" : cardGroupFlexDirection; // Is cardGroupFlexDirection right?
-  cardGroupFlexDirection =
-    cardGroupFlexDirection == "left" ? "flex-start" : cardGroupFlexDirection; // Is cardGroupFlexDirection left?
 
-  titleAlignment = props.titleAlignment ? props.titleAlignment : "left";
+  groupTitleAlignment = props.titleAlignment ? props.titleAlignment : "left";
   return (
     <div>
       {props.title ? (
         <h3
           className={style.collectionTitle}
-          style={{ textAlign: titleAlignment }}
+          style={{ textAlign: groupTitleAlignment }}
         >
           {props.title}
         </h3>
