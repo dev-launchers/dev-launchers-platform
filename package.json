@@ -25,6 +25,7 @@
     "react-accessible-accordion": "^3.0.1",
     "react-burger-menu": "^2.6.13",
     "react-dom": "16.12.0",
+    "react-form": "4.0.0-alpha.6",
     "react-ga": "3.3.0",
     "react-modal": "latest",
     "react-redux": "^7.1.3",
