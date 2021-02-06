@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import GlobalStyle from "../styles/globals";
 import React from "react";
 
 import { Router, useRouter } from "next/router";
@@ -76,30 +76,38 @@ function MyApp({ Component, pageProps }) {
   /* </Code added to debug iphone issue using alerts> */
 
   return (
-    <div>
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-        ></script>
-      </Head>
-      <AuthProvider>
-        <SheetsProvider>
-          <RepoProvider>
-            <LeaderboardProvider>
-              <div className="App">
-                <ToastContainer
-                  className="toast-container"
-                  toastClassName="toast"
-                  progressClassName="toast-progress"
-                />
-              </div>
-              <Component {...pageProps} />
-            </LeaderboardProvider>
-          </RepoProvider>
-        </SheetsProvider>
-      </AuthProvider>
-    </div>
+    <>
+      <GlobalStyle />
+      <div>
+        <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+          ></script>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
+        <AuthProvider>
+          <SheetsProvider>
+            <RepoProvider>
+              <LeaderboardProvider>
+                <div className="App">
+                  <ToastContainer
+                    className="toast-container"
+                    toastClassName="toast"
+                    progressClassName="toast-progress"
+                  />
+                </div>
+                <Component {...pageProps} />
+              </LeaderboardProvider>
+            </RepoProvider>
+          </SheetsProvider>
+        </AuthProvider>
+      </div>
+    </>
   );
 }
 
