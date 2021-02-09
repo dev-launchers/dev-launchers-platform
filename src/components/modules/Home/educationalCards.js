@@ -4,6 +4,9 @@ import teachImage from "../../../images/home-page/teach-card-image.png";
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
+const UNDERLINE_COLOR = "#ff7f0e";
+const UNDERLINE_THICKNESS = "0.15rem";
+const UNDERLINE_TYPE = "dotted";
 const educationalCards = [
   {
     title: "LEARN",
@@ -13,7 +16,11 @@ const educationalCards = [
     imageSrc: learnImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    titleStyling: TEXT_ALIGN
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: TEXT_ALIGN,
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -24,7 +31,11 @@ const educationalCards = [
     imageSrc: createImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    titleStyling: TEXT_ALIGN
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: TEXT_ALIGN,
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -35,7 +46,11 @@ const educationalCards = [
     imageSrc: teachImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    titleStyling: TEXT_ALIGN
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: TEXT_ALIGN,
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   }
 ];
 

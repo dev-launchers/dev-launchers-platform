@@ -3,6 +3,9 @@ import developmentLabImage from "../../../images/members/photos/startup-table.jp
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
+const UNDERLINE_COLOR = "#ff7f0e";
+const UNDERLINE_THICKNESS = "0.15rem";
+const UNDERLINE_TYPE = "dotted";
 const organizationCards = [
   {
     title: "DEVELOPMENT LABS",
@@ -13,10 +16,10 @@ const organizationCards = [
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
     titleStyling: TEXT_ALIGN,
-    titleAlignment: "left"
-    /*titleUnderlineColor:,
-    titleUnderlineThickness:,
-    titleAlignment:*/
+    titleAlignment: "right",
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -29,7 +32,10 @@ const organizationCards = [
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
     flexDirection: "row-reverse",
     titleStyling: TEXT_ALIGN,
-    titleAlignment: "right"
+    titleAlignment: "left",
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   }
 ];
 

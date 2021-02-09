@@ -3,6 +3,9 @@ import discordImage from "../../../images/home-page/discord-card-image.png";
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
+const UNDERLINE_COLOR = "#ff7f0e";
+const UNDERLINE_THICKNESS = "0.15rem";
+const UNDERLINE_TYPE = "dotted";
 const communityCards = [
   {
     title: "DISCORD",
@@ -12,7 +15,11 @@ const communityCards = [
     imageSrc: discordImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    titleStyling: "center"
+    titleStyling: "center",
+    titleAlignment: TEXT_ALIGN,
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -23,7 +30,11 @@ const communityCards = [
     imageSrc: twitchImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    titleStyling: "center"
+    titleStyling: "center",
+    titleAlignment: TEXT_ALIGN,
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   }
 ];
 
