@@ -8,12 +8,3 @@
   color: black;
   font-weight: bold;
 }
-
-.CenteredTitleUnderline {
-  composes: title;
-  width: 80%;
-  margin: 0.75%;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 0.15rem solid #ff7f0e;
-}
