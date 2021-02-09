@@ -6,7 +6,6 @@ export default function CardGroup(props) {
   // Converts font alignment to flexbox alignment
   let cardGroupFlexDirection = props.cardGroupFlexDirection;
   let groupTitleAlignment = props.titleAlignment;
-  let imageHolderBackgroundColor = props.imageHolderBackgroundColor;
 
   cardGroupFlexDirection = cardGroupFlexDirection
     ? cardGroupFlexDirection
