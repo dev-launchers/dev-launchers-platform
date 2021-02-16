@@ -1,27 +1,61 @@
-import React from "react";
+import styled, { css } from "styled-components";
 
-import { toast } from "react-toastify";
+const Button = styled.a`
+  /*font-family: "Holtwood One SC", serif;*/
+  font-family: "Abel", sans-serif;
+  background-color: #ff7f0e;
+  color: white;
+  width: ${({ width }) => (width ? width : "")};
+  border: 0px;
+  border-bottom: 3px solid #994800;
+  cursor: pointer;
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.5rem")};
+  margin-top: ${({ marginTop }) => (marginTop ? marginTop : "")};
+  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: ${({ borderRadius }) =>
+    borderRadius ? borderRadius : "100px"};
+  font-weight: bolder;
 
-import style from "./Button.module.css";
-
-export default function Button(props) {
-  const clickHandler = () => {
-    if (props.doNothing) return;
-    else if (props.href) window.open(props.href, "_blank");
-    else if (props.toast) toast(props.toast);
-    else toast("This site is currently under development, check back soon!");
-  };
-
-  let buttonStyle = props.style ? props.style : {};
-  buttonStyle.fontSize = props.fontSize || buttonStyle.fontSize;
-
-  return (
-    <button
-      className={style.Button}
-      style={buttonStyle}
-      onClick={props.onClick ? props.onClick : clickHandler}
-    >
-      {props.children}
-    </button>
-  );
-}
+  ${({ hero }) =>
+    hero &&
+    css`
+      width: 80%;
+      margin: 0;
+      margin-top: 5%;
+      text-shadow: none;
+      line-height: 1.15;
+      display: inline-block;
+      text-align: center;
+      box-sizing: border-box;
+      font-stretch: normal;
+      font-variant-east-asian: normal;
+      font-variant-numeric: normal;
+      font-variant-caps: normal;
+      font-variant-ligatures: normal;
+      font-style: normal;
+    `}
+  ${({ modal }) =>
+    modal &&
+    css`
+      display: block;
+      width: 95%;
+      margin-top: 2%;
+      margin-left: auto;
+      margin-right: auto;
+    `}
+  ${({ intro }) =>
+    intro &&
+    css`
+      font-size: 2.5rem;
+      margin-top: 2%;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    `}
+  &:hover {
+    background-color: rgb(255, 217, 0);
+    color: rgb(58, 58, 58);
+  }
+`;
+export default Button;
