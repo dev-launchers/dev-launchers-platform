@@ -123,6 +123,9 @@ export default function MentorshipTiers() {
     setModalIsOpen(false);
   };
 
+  const TITLE_ALIGNMENT = "center";
+  const GROUP_FLEX_DIRECTION = "center";
+
   return (
     <div>
       <Modal
@@ -134,12 +137,24 @@ export default function MentorshipTiers() {
       <IntroArea scrollToFormFunc={executeScroll} />
       <PageBody>
         <div style={{ width: "100%" }}>
-          <CardGroup title="Beginner" data={progressionLevels.beginner} />
+          <CardGroup
+            title="Beginner"
+            cards={progressionLevels.beginner}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
+          />
           <CardGroup
             title="Intermediate"
-            data={progressionLevels.intermediate}
+            cards={progressionLevels.intermediate}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
           />
-          <CardGroup title="Advanced" data={progressionLevels.advanced} />
+          <CardGroup
+            title="Advanced"
+            cards={progressionLevels.advanced}
+            titleAlignment={TITLE_ALIGNMENT}
+            cardGroupFlexDirection={GROUP_FLEX_DIRECTION}
+          />
         </div>
       </PageBody>
       <PhotoHolder />

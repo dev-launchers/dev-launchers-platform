@@ -12,6 +12,7 @@
   "dependencies": {
     "@cloudflare/wrangler": "^1.11.0",
     "articles": "^0.2.2",
+    "axios": "0.21.1",
     "classnames": "^2.2.6",
     "constate": "^3.0.1",
     "firebase": "^7.6.2",
@@ -35,12 +36,13 @@
     "react-toastify": "latest",
     "react-with-firebase-auth": "^1.3.0",
     "redux": "^4.0.5",
+    "styled-components": "^5.2.1",
     "tabletop": "^1.6.2",
-    "wrangler": "0.0.2",
-    "axios": "0.21.0"
+    "wrangler": "0.0.2"
   },
   "devDependencies": {
     "@types/node-sass": "3.10.32",
+    "babel-plugin-styled-components": "^1.12.0",
     "husky": "^4.2.1",
     "lint-staged": "^10.0.4",
     "prettier": "^1.19.1",
@@ -62,5 +64,8 @@
   ],
   "lint-staged": {
     "*.{json,js,jsx,ts,tsx,html,scss,css,md}": "prettier --write"
+  },
+  "resolutions": {
+    "styled-components": "^5"
   }
 }
