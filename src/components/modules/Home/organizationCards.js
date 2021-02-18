@@ -3,6 +3,9 @@ import developmentLabImage from "../../../images/members/photos/startup-table.jp
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
+const UNDERLINE_COLOR = "#ff7f0e";
+const UNDERLINE_THICKNESS = "0.15rem";
+const UNDERLINE_TYPE = "dotted";
 const organizationCards = [
   {
     title: "DEVELOPMENT LABS",
@@ -11,18 +14,28 @@ const organizationCards = [
     href: "/members",
     imageSrc: developmentLabImage,
     textAlignment: TEXT_ALIGN,
-    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR
+    imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: "right",
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
-    title: "OUR MISSION",
+    title: "WHAT WE'RE ABOUT",
     description:
       "Dev Launchers is a 501(c)(3) nonprofit intent on empowering diverse young creatives, innovators, and leaders. We're working on touching as many lives as we possibly can, and need your help to make that happen. Any amount helps!",
     href: "/support-us",
     imageSrc: ourMissionImage,
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
-    flexDirection: "row-reverse"
+    flexDirection: "row-reverse",
+    titleStyling: TEXT_ALIGN,
+    titleAlignment: "left",
+    titleUnderlineColor: UNDERLINE_COLOR,
+    titleUnderlineThickness: UNDERLINE_THICKNESS,
+    titleUnderlineType: UNDERLINE_TYPE
   }
 ];
 
