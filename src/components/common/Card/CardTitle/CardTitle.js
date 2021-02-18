@@ -3,7 +3,6 @@ import React from "react";
 import style from "./CardTitle.module.css";
 
 import cx from "classnames";
-import { SymbolDisplayPartKind } from "typescript";
 
 export default function Card(props) {
   let cardTitleAlignment = props.data.titleAlignment;
