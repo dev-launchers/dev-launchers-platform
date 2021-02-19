@@ -12,7 +12,7 @@
   "dependencies": {
     "@cloudflare/wrangler": "^1.11.0",
     "articles": "^0.2.2",
-    "axios": "^0.21.1",
+    "axios": "0.21.1",
     "classnames": "^2.2.6",
     "constate": "^3.0.1",
     "firebase": "^8.2.6",
