@@ -4,6 +4,8 @@ kind: Deployment
 metadata:
   name: platform-website
   namespace: platform-website
+  annotations:
+    fluxcd.io/tag.platform-website: regex:^sha-*
 spec:
   template:
     spec:
