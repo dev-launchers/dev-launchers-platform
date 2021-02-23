@@ -17,11 +17,7 @@ export default function Contribution() {
             contributors to grow our platform and continue serving our members!
           </div>
           <div className={style.CtaSection_ButtonArea}>
-            <Button
-              className={style.CtaSection_Button}
-              style={{ fontSize: "2rem" }}
-              href="https://github.com/dev-launchers"
-            >
+            <Button fontSize="2rem" href="https://github.com/dev-launchers">
               Find us on GitHub
             </Button>
           </div>

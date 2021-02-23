@@ -72,7 +72,10 @@ export default function Header(props) {
               alt="profile-pic"
             />
           ) : (
-            <Button fontSize="1.2rem" onClick={doAuthRequest}>
+            <Button
+              fontSize="1.2rem"
+              href="https://api-staging.devlaunchers.com/auth/google"
+            >
               Sign In
             </Button>
           )}
