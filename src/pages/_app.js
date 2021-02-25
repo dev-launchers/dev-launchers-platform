@@ -89,6 +89,10 @@ function MyApp({ Component, pageProps }) {
             href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet"
+          />
         </Head>
         <AuthProvider>
           <SheetsProvider>
