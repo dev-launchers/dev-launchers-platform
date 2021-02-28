@@ -1,4 +1,5 @@
 import React from "react";
+import { InlineWidget } from "react-calendly";
 import "react-tabs/style/react-tabs.css"; // import react-tabs styles
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 
@@ -13,8 +14,11 @@ export default function UserProfile() {
     <div>
       <PageBody>
         <div>Profile Image</div>
-        <div>Profile Image</div>
-        <div>Profile Image</div>
+        <div>WeeklyCalendly</div>
+        <div className="App">
+          <InlineWidget url="https://calendly.com/devlaunchers" />
+        </div>
+        <div>Bio</div>
       </PageBody>
     </div>
   );

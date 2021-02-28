@@ -1,16 +1,15 @@
-import React from "react"
+import React from "react";
 
-import Header from "../components/common/Header"
-import UserProfile from "../components/modules/UserProfile"
-import Footer from "../components/common/Footer"
+import Header from "../components/common/Header";
+import UserProfile from "../components/modules/UserProfile";
+import Footer from "../components/common/Footer";
 
-export default function UserProfile(){
-
-  return(
+export default function UserProfilePage() {
+  return (
     <div>
-    <Header />
-    <UserProfile />
-    <Footer />
+      <Header />
+      <UserProfile />
+      <Footer />
     </div>
-  )
+  );
 }
