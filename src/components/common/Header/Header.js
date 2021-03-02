@@ -23,7 +23,7 @@ export default function Header(props) {
   const { authUser, doAuthRequest } = useAuthContext();
 
   return (
-    <div>
+    <div style={{ height: "100.5px" }}>
       <HamburgerMenu />
       <HeaderBlock>
         <Logo>
