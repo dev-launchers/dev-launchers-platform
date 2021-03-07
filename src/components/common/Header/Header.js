@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 import style from "./Header.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
@@ -72,7 +73,7 @@ export default function Header(props) {
               alt="profile-pic"
             />
           ) : (
-            <Button fontSize="1.2rem" onClick={doAuthRequest}>
+            <Button fontSize="1.2rem" onClick={() => toast("the website is under development, please check this feature later")}>
               Sign In
             </Button>
           )}
