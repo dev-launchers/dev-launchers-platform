@@ -41,7 +41,12 @@ export default function SignUpForm() {
       return false;
     },
     onSubmit: async (values, instance) => {
+      // Google form action:
+      //  - https://docs.google.com/forms/u/3/d/e/1FAIpQLSeHOcc3_-CKxkGIlCRZ7myiAe3lBbQnAim5Zv5gZqvsuH-90w/formResponse
+
       await new Promise(resolve => setTimeout(resolve, 1000));
+
+      axios;
       console.log(values);
     },
     debugForm: false
