@@ -7,7 +7,18 @@ import constate from "constate"; // State Context Object Creator
 function useUserData() {
   const [userData, setUserData] = React.useState({});
 
-  setUserData({});
+  React.useEffect(() => {
+    setUserData({
+      id: "shsdfij389weafgs0wh4tuhawefg6a",
+      email: "email@email.com",
+      bio: "THIS IS A BIO SERVED FROM CONTEXT",
+      profilePictureUrl: "SOME URL HERE FEEL FREE TO POINT TO AN IMAGE",
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0
+    });
+  }, []);
 
   return { userData };
 }
