@@ -45,6 +45,15 @@ We’re currently partnered with the Austin Public Library and run weekly labs f
 3. Run dev version: `npm run start`
 
 ---
+
+## Release
+
+We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
+to format the commit messages.
+
+Once you are ready to create a new release, create a PR to merge main branch to release branch.
+
+---
  
 ## License
 

@@ -1,22 +1,25 @@
 name: release-publish
 on:
-  # Only trigger if the pull request is closed.
-  pull_request:
-    types: [ closed ]
+  release:
+    types: [published]
 jobs:
   build:
-    # A pull request can be closed without merging. This check makes sure it's merged
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          # GITHUB_REF is tag of the release https://docs.github.com/en/actions/reference/events-that-trigger-workflows#release
+          ref: ${{ github.ref }}
+          # Number of commits to fetch. 0 indicates all history for all branches and tags.
+          fetch-depth: 0
       - name: Docker meta
         id: docker_meta
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: devlaunchers/platform-website # list of Docker images to use as base name for tags
-          tag-sha: true # add git short SHA as Docker tag
+          tag-semver: |
+            {{version}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
