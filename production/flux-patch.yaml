@@ -5,7 +5,7 @@ metadata:
   name: platform-website
   namespace: platform-website
   annotations:
-    fluxcd.io/tag.platform-website: regex:^release-sha-*
+    fluxcd.io/tag.platform-website: semver:*
 spec:
   template:
     spec:
