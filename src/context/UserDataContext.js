@@ -12,7 +12,8 @@ function useUserData() {
       id: "shsdfij389weafgs0wh4tuhawefg6a",
       email: "email@email.com",
       bio: "THIS IS A BIO SERVED FROM CONTEXT",
-      profilePictureUrl: "SOME URL HERE FEEL FREE TO POINT TO AN IMAGE",
+      profilePictureUrl:
+        "https://avatars.githubusercontent.com/u/46331884?s=400&u=bc9e2a005ab671082f0c57c85ecd863101eccb03&v=4",
       socialMediaLinks: [],
       totalPoints: 0,
       totalSeasonPoints: 0,
