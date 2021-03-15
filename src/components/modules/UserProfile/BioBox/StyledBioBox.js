@@ -1,7 +1,10 @@
 import Styled from "styled-components";
 
-const Bio = Styled.textarea`
+export const Bio = Styled.textarea`
 
 resize: none;
 `;
-export default Bio;
+
+export const Save = Styled.button`
+  
+`;

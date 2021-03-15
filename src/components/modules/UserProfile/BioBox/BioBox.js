@@ -1,5 +1,5 @@
 import React from "react";
-import Bio from "./StyledBioBox";
+import { Bio, Save } from "./StyledBioBox";
 
 export default function BioBox() {
   return (
@@ -12,6 +12,8 @@ export default function BioBox() {
         placeholder="write ur bio here"
         maxlength="144"
       ></Bio>
+      <br />
+      <Save onclick="changeContent()">Edit</Save>
     </div>
   );
 }
