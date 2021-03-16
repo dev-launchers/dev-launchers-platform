@@ -9,17 +9,25 @@ import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section/Section";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
-
+import Points from "../../common/Points";
+import { UserSection } from "./StyledUserProfile";
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
     <div>
       <PageBody>
-        <ProfileCard
-          img={userData.profilePictureUrl}
-          name="Mohammed Maqbol"
-          userName="Enjoy2Live"
-        />
+        <UserSection>
+          <ProfileCard
+            img={userData.profilePictureUrl}
+            name="Mohammed Maqbol"
+            userName="Enjoy2Live"
+          />
+          <Points
+            availablePoints={userData.availablePoints}
+            seasonPoints={userData.totalSeasonPoints}
+            volunteerHours={userData.volunteerHours}
+          />
+        </UserSection>
         <div>{userData.bio}</div>
         <div>WeeklyCalendly</div>
         <div className="App">
