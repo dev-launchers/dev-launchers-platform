@@ -31,10 +31,7 @@ export default function UserProfile() {
           />
         </UserSection>
         <div>{userData.bio}</div>
-        <div>WeeklyCalendly</div>
-        <div className="App">
-          <InlineWidget url="https://calendly.com/devlaunchers" />
-        </div>
+        <CalendlyWidget />
       </PageBody>
     </div>
   );
