@@ -1,21 +1,21 @@
 import React from "react";
 import CardGroup from "../CardGroup";
-import styles from "./Section.module.css";
+import { Group, Wrapper } from "./StyledSection";
 
 export default function Section(props) {
   return (
-    <div className={styles.section}>
+    <Wrapper>
       <h2>{props.title}</h2>
       <div key={"collection" + props.title}>
         {Object.keys(props.data).map((groupTitle, i) => {
           const group = props.data[groupTitle];
           return (
-            <div className={styles.group} key={i}>
+            <Group key={i}>
               <CardGroup cards={group} title={groupTitle} />
-            </div>
+            </Group>
           );
         })}
       </div>
-    </div>
+    </Wrapper>
   );
 }
