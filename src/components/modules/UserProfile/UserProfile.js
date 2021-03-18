@@ -11,18 +11,26 @@ import BioBox from "./BioBox";
 import CalendlyWidget from "./CalendlyWidget";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
-
+import Points from "../../common/Points";
+import { UserSection } from "./StyledUserProfile";
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
     <div>
       <PageBody>
-        <ProfileCard
-          img={userData.profilePictureUrl}
-          name="Mohammed Maqbol"
-          userName="Enjoy2Live"
-        />
-        <BioBox />
+        <UserSection>
+          <ProfileCard
+            img={userData.profilePictureUrl}
+            name="Mohammed Maqbol"
+            userName="Enjoy2Live"
+          />
+          <Points
+            availablePoints={userData.availablePoints}
+            seasonPoints={userData.totalSeasonPoints}
+            volunteerHours={userData.volunteerHours}
+          />
+        </UserSection>
+        <div>{userData.bio}</div>
         <CalendlyWidget />
       </PageBody>
     </div>
