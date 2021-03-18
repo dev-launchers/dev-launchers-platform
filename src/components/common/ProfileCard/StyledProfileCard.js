@@ -6,17 +6,13 @@ export const Wrapper = styled.div`
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   padding: 50px 0;
-  margin: 20px;
   border: 1px solid black;
   & > div {
     margin-top: 10px;
-  }
-
-  @media (orientation: portrait) {
-    width: 60%;
-    margin: 10px auto 10px auto;
   }
 `;
 export const ProfilePicture = styled.img`
@@ -27,10 +23,7 @@ export const ProfilePicture = styled.img`
     width: 50%;
   }
 `;
-export const Name = styled.div`
-  text-align: center;
-`;
+export const Name = styled.div``;
 export const UserName = styled.div`
-  text-align: center;
   color: #9d9d9d;
 `;
