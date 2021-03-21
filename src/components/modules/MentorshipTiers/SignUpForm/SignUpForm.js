@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, useField, splitFormProps } from "react-form";
+import axios from "axios";
 
 import style from "./SignUpForm.module.css";
 
@@ -44,10 +45,76 @@ export default function SignUpForm() {
       // Google form action:
       //  - https://docs.google.com/forms/u/3/d/e/1FAIpQLSeHOcc3_-CKxkGIlCRZ7myiAe3lBbQnAim5Zv5gZqvsuH-90w/formResponse
 
+      //  - https://docs.google.com/forms/u/3/d/e/1FAIpQLSeHOcc3_-CKxkGIlCRZ7myiAe3lBbQnAim5Zv5gZqvsuH-90w/formResponse?embedded=true
+
+      /*
+      entry.2092238618: TEST
+      entry.1556369182: TEST@TEST.COM
+      entry.1969570350: 888888
+      entry.1407315512: 888
+      entry.328445161: TEST
+      entry.611361280: TEST
+      entry.62337433: Coding
+      entry.479301265: Beginner (No  development experience)
+      entry.1184743384: One lab per month - only available for advanced members (DL7-DL8)
+      entry.1598607920: I accept
+      entry.62337433_sentinel:
+      entry.479301265_sentinel:
+      entry.1184743384_sentinel:
+      entry.1598607920_sentinel:
+      fvv: 1
+      draftResponse: [null,null,"-9082394103680749387"]
+      pageHistory: 0
+      fbzx: -9082394103680749387
+      */
+      /*
+      let formValueMap = {
+        name: "entry.2092238618",
+        email: "entry.1556369182",
+        zip: "entry.1969570350",
+        age: "entry.1407315512",
+        skills: "entry.62337433",
+        level: "entry.479301265",
+        experience: "entry.328445161",
+        reason: "entry.611361280",
+        commitment: "entry.1184743384",
+        accepted: "entry.1598607920"
+      };
+
+      let dataToSend = {
+        "entry.62337433_sentinel": "",
+        "entry.479301265_sentinel": "",
+        "entry.1184743384_sentinel": "",
+        "entry.1598607920_sentinel": "",
+        fvv: 1,
+        draftResponse: [null, null, "-9082394103680749387"],
+        pageHistory: 0,
+        fbzx: -9082394103680749387
+      };
+      for (let key in formValueMap) {
+        dataToSend[formValueMap[key]] = values[key];
+      }
+*/
+      const axiosInstance = axios.create({
+        baseURL:
+          "https://script.google.com/macros/s/AKfycby9cNYNtLoRg68F8KhibzBam0sonk0Q-h_qQke9qeep5vOw2zICKbBtxOcCCQSyNznHhA",
+        timeout: 10000,
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+      axiosInstance
+        .get("/exec", { params: values })
+        .then(function(response) {
+          //handle success
+          console.log(response);
+        })
+        .catch(function(response) {
+          //handle error
+          console.log(response);
+        });
+
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      axios;
-      console.log(values);
+      console.log(JSON.stringify(values));
     },
     debugForm: false
   });
@@ -139,8 +206,8 @@ export default function SignUpForm() {
           description="Which of the following skillsets are you passionate about?"
         >
           <SelectField
-            field="favoriteColor"
-            options={["Red", "Blue", "Green", "Yellow"]}
+            field="skills"
+            options={["Coding"]}
             validate={value => (!value ? "This is required!" : false)}
           />
         </FormEntry>
@@ -149,8 +216,8 @@ export default function SignUpForm() {
           description="What is your level of experience?"
         >
           <SelectField
-            field="favoriteColor"
-            options={["Red", "Blue", "Green", "Yellow"]}
+            field="level"
+            options={["Beginner (No  development experience)"]}
             validate={value => (!value ? "This is required!" : false)}
           />
         </FormEntry>
@@ -172,7 +239,9 @@ export default function SignUpForm() {
         >
           <SelectField
             field="commitment"
-            options={["Red", "Blue", "Green", "Yellow"]}
+            options={[
+              "One lab per month - only available for advanced members (DL7-DL8)"
+            ]}
             validate={value => (!value ? "This is required!" : false)}
           />
         </FormEntry>
@@ -182,7 +251,7 @@ export default function SignUpForm() {
         >
           <SelectField
             field="accepted"
-            options={["Red", "Blue", "Green", "Yellow"]}
+            options={["I accept"]}
             validate={value => (!value ? "This is required!" : false)}
           />
         </FormEntry>
