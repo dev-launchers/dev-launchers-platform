@@ -1,0 +1,10 @@
+.barBackground {
+  width: 100%;
+  height: 2rem;
+  background-color: black;
+}
+
+.barForeground {
+  height: 100%;
+  background-color: green;
+}

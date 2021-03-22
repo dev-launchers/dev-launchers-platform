@@ -4,15 +4,17 @@ import axios from "axios";
 
 import style from "./SignUpForm.module.css";
 
+import Button from "../../../common/Button";
+
+import ProgressBar from "./ProgressBar";
 import FormEntry from "./FormEntry";
+import InputField from "./InputField";
+import SelectField from "./SelectField";
+import TextAreaField from "./TextAreaField";
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
-}
-
-function FormPage() {
-  return <div></div>;
 }
 
 const formEntries = [
@@ -22,6 +24,7 @@ const formEntries = [
       validate={value => (!value ? "Required" : false)}
     />
   </FormEntry>,
+
   <FormEntry label="Email">
     <InputField
       field="email"
@@ -45,9 +48,11 @@ const formEntries = [
       }}
     />
   </FormEntry>,
+
   <FormEntry label="Zip Code">
     <InputField field="zip" type="number" />
   </FormEntry>,
+
   <FormEntry
     label="Age"
     description="We are actively seeking members 16+, but exceptions are made for exceptional young people"
@@ -61,6 +66,7 @@ const formEntries = [
       min="1"
     />
   </FormEntry>,
+
   <FormEntry
     label="Skills"
     description="Which of the following skillsets are you passionate about?"
@@ -78,17 +84,19 @@ const formEntries = [
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>,
+
   <FormEntry
     label="Experience"
     description="Briefly describe any relevant experience you have [optional]"
   >
-    <InputField field="experience" type="textarea" />
+    <TextAreaField field="experience" type="textarea" />
   </FormEntry>,
+
   <FormEntry
     label="Reason"
     description="Why do you want to join the Dev Launchers Incubator and Development Lab? (Hint: Are you looking to learn? Help others learn? Gain experience? Build something epic?) [optional]"
   >
-    <InputField field="reason" type="textarea" />
+    <TextAreaField field="reason" type="textarea" />
   </FormEntry>,
 
   <FormEntry
@@ -117,6 +125,9 @@ const formEntries = [
 ];
 
 export default function SignUpForm() {
+  const [formPage, setFormPage] = React.useState(0);
+  const [progressPercent, setProgressPercent] = React.useState(0);
+
   const defaultValues = React.useMemo(
     () => ({
       name: "",
@@ -171,92 +182,54 @@ export default function SignUpForm() {
     debugForm: false
   });
 
-  return (
-    <div
-      className={style.formContainer}
-      style={{ width: "100%", textAlign: "center" }}
-    >
-      <Form className={style.signUpForm}>
-        {isSubmitted ? <em>Thanks for submitting!</em> : null}
-
-        {error ? <strong>{error}</strong> : null}
-
-        {isSubmitting ? (
-          "Submitting..."
-        ) : (
-          <div>
-            <button type="submit" disable={!canSubmit}>
-              Submit
-            </button>
-          </div>
-        )}
-      </Form>
-    </div>
-  );
-}
-
-const InputField = React.forwardRef((props, ref) => {
-  // Let's use splitFormProps to get form-specific props
-  const [field, fieldOptions, rest] = splitFormProps(props);
-
-  // Use the useField hook with a field and field options
-  // to access field state
-  const {
-    meta: { error, isTouched, isValidating, message },
-    getInputProps
-  } = useField(field, fieldOptions);
-
-  // Make this input inherit the font size if its parent
-  const styleProp = props.style
-    ? { ...props.style, fontSize: "inherit" }
-    : { fontSize: "inherit" };
-
-  // Build the field
-  return (
-    <>
-      <input {...getInputProps({ ref, ...rest })} style={styleProp} />
-      <div style={{ "font-size": "1rem" }}>
-        {/*
-          Let's inline some validation and error information
-          for our field
-        */}
-
-        {isValidating ? (
-          <em>Validating...</em>
-        ) : isTouched && error ? (
-          <strong>{error}</strong>
-        ) : message ? (
-          <small>{message}</small>
-        ) : null}
-      </div>
-    </>
-  );
-});
-
-function SelectField(props) {
-  const [field, fieldOptions, { options, ...rest }] = splitFormProps(props);
-
-  const {
-    value = "",
-    setValue,
-    meta: { error, isTouched }
-  } = useField(field, fieldOptions);
-
-  const handleSelectChange = e => {
-    setValue(e.target.value);
+  const incrementFormPage = () => {
+    setFormPage(formPage + 1);
+  };
+  const decrementFormPage = () => {
+    setFormPage(formPage - 1);
   };
 
+  // Update progressPercent when formPage changes
+  React.useEffect(() => {
+    setProgressPercent(((formPage * 1.0) / (formEntries.length - 1)) * 100);
+  }, [formPage]);
+
   return (
-    <>
-      <select {...rest} value={value} onChange={handleSelectChange}>
-        <option disabled value="" />
-        {options.map(option => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>{" "}
-      {isTouched && error ? <em>{error}</em> : null}
-    </>
+    <div
+      className={style.formOuter}
+      style={{ width: "100%", textAlign: "center" }}
+    >
+      <div className={style.formContainer}>
+        <div style={{ width: "90%", textAlign: "left" }}>
+          {formPage > 0 ? (
+            <Button onClick={decrementFormPage}>Back</Button>
+          ) : (
+            ""
+          )}
+        </div>
+        <Form className={style.signUpForm}>
+          {formEntries[formPage]}
+          {isSubmitted ? <em>Thanks for submitting!</em> : null}
+          {error ? <strong>{error}</strong> : null}
+          {isSubmitting ? (
+            "Submitting..."
+          ) : formPage == formEntries.length - 1 ? (
+            <div>
+              <button type="submit" disable={!canSubmit}>
+                Submit
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
+        </Form>
+        {formPage < formEntries.length - 1 ? (
+          <Button onClick={incrementFormPage}>OK</Button>
+        ) : (
+          ""
+        )}
+        <ProgressBar progressPercent={progressPercent} />
+      </div>
+    </div>
   );
 }
