@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../../common/Button";
+import Button from "../../../common/Button";
 
 import style from "./MemberProfilesSlideshow.module.css";
 
@@ -49,26 +49,33 @@ export default function MemberProfilesSlideshow(props) {
   }, [careerIndex]);
 
   return (
-    <div className={style.carouselHolder}>
-      <div className={style.carouselBlock}>
-        <div className={style.inLabelDiv}>I'm a</div>
-        <div className={style.carouselBlockHeader}>Total Beginner</div>
-        <div className={style.inLabelDiv}>in</div>
-        <div>{careerColumn1}</div>
-      </div>
-      <div className={style.carouselArrow}></div>
-      <div className={style.carouselBlock}>
-        <div className={style.inLabelDiv}>I'm a</div>
-        <div className={style.carouselBlockHeader}>Student</div>
-        <div className={style.inLabelDiv}>in</div>
-        <div>{careerColumn2}</div>
-      </div>
-      <div className={style.carouselArrow}></div>
-      <div className={style.carouselBlock}>
-        <div className={style.inLabelDiv}>I'm a</div>
-        <div className={style.carouselBlockHeader}>Professional</div>
-        <div className={style.inLabelDiv}>in</div>
-        <div>{careerColumn3}</div>
+    <div style={{ width: "100%" }}>
+      <div className={style.carouselHolder}>
+        <h3>A Space For Everyone</h3>
+        <b>Check below to see where you fit in at Dev Launchers!</b>
+
+        <hr />
+
+        <div className={style.carouselBlock}>
+          <div className={style.inLabelDiv}>I'm a</div>
+          <div className={style.carouselBlockHeader}>Total Beginner</div>
+          <div className={style.inLabelDiv}>in</div>
+          <div>{careerColumn1}</div>
+        </div>
+        <div className={style.carouselArrow}></div>
+        <div className={style.carouselBlock}>
+          <div className={style.inLabelDiv}>I'm a</div>
+          <div className={style.carouselBlockHeader}>Student</div>
+          <div className={style.inLabelDiv}>in</div>
+          <div>{careerColumn2}</div>
+        </div>
+        <div className={style.carouselArrow}></div>
+        <div className={style.carouselBlock}>
+          <div className={style.inLabelDiv}>I'm a</div>
+          <div className={style.carouselBlockHeader}>Professional</div>
+          <div className={style.inLabelDiv}>in</div>
+          <div>{careerColumn3}</div>
+        </div>
       </div>
     </div>
   );
