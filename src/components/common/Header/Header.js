@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 
 import {
   HeaderBlock,
@@ -75,10 +76,7 @@ export default function Header(props) {
           {authUser ? (
             <UserProfilePic src={authUser.photoURL} />
           ) : (
-            <Button
-              fontSize="1.2rem"
-              href="https://api-staging.devlaunchers.com/auth/google"
-            >
+            <Button fontSize="1.2rem" onClick={() => toast("the website is under development, please check this feature later")}>
               Sign In
             </Button>
           )}
