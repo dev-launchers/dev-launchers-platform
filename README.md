@@ -42,7 +42,7 @@ We’re currently partnered with the Austin Public Library and run weekly labs f
 
 2. Install: `npm install`
 
-3. Run dev version: `npm run start`
+3. Run dev version: `npm run dev`
 
 ---
 
