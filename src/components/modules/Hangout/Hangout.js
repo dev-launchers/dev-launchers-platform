@@ -4,7 +4,7 @@ import PageBody from "../../../components/common/PageBody";
 import style from "./Hangout.module.css";
 
 import Building from "./Building";
-
+//
 export default function Hangout() {
   return (
     <PageBody>
