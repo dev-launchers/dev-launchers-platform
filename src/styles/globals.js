@@ -1,6 +1,8 @@
-@import url("https://fonts.googleapis.com/css?family=Holtwood+One+SC&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Abel&display=swap");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
+import { createGlobalStyle } from "styled-components";
+import { normalize } from "styled-normalize";
+
+const GlobalStyle = createGlobalStyle`
+    ${normalize}
 
 html,
 body {
@@ -42,11 +44,10 @@ a {
   display: inline;
   color: #d9d9d9;
   text-decoration: none;
+  &:hover {
+    color: rgb(255, 217, 0);
+  }
 }
-a:hover {
-  color: rgb(255, 217, 0);
-}
-
 h1,
 h2,
 h3,
@@ -193,3 +194,5 @@ h3 {
 li {
   margin-bottom: 5px;
 }
+`;
+export default GlobalStyle;

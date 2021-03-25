@@ -25,11 +25,7 @@ export default function Organization() {
           </div>
           <div className={style.CtaSection_ButtonArea}>
             <Link href={"/members"}>
-              <Button
-                className={style.CtaSection_Button}
-                style={{ fontSize: "2rem" }}
-                doNothing
-              >
+              <Button className={style.CtaSection_Button} fontSize="2rem">
                 Join Our Programs
               </Button>
             </Link>
@@ -47,7 +43,7 @@ export default function Organization() {
           <div className={style.CtaSection_ButtonArea}>
             <Button
               className={style.CtaSection_Button}
-              style={{ fontSize: "2rem" }}
+              fontSize="2rem"
               href="https://github.com/dev-launchers"
             >
               Find us on GitHub

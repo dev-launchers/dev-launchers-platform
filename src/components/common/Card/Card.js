@@ -1,5 +1,13 @@
 import React from "react";
-import style from "./Card.module.css";
+import {
+  Container,
+  Content,
+  ImageHolder,
+  DataHolder,
+  Image,
+  Description,
+  AttachmentsContainer
+} from "./StyledCard";
 import cx from "classnames";
 
 import CardTitle from "./CardTitle";
@@ -14,70 +22,44 @@ import Attachments from "./Attachments";
  *  - href:
  *  - onClick:
  *  - attachments:
- *  - textAlignment:
- *  - imageHolderBackgroundColor
+ *  - textAlignment: changes text-alignment if passed otherwise it defaults to left text-alignment
+ *  - imageHolderBackgroundColor: changes bgColor if passed otherwise it defaults to black bgColor
+ *  - cardFlexDirection: changes flex-direction if existed otherwise delete flex-direction
  */
 export default function Card(props) {
-  const imageHolderBackgroundColor = props.cardData.imageHolderBackgroundColor
-    ? props.cardData.imageHolderBackgroundColor
-    : "black";
-  const textAlignment = props.cardData.textAlignment
-    ? props.cardData.textAlignment
-    : "left";
-  const cardFlexDirection = props.cardData.flexDirection
-    ? props.cardData.flexDirection
-    : "";
-
   React.useEffect(() => {
     console.log(props.cardData.flexDirection);
   }, []);
 
   return (
-    <div
-      className={cx(style.container, {
-        [style.containerLarge]: props.size === "large"
-      })}
-      key={props.i}
-      onClick={props.cardData.onClick}
-    >
-      <div
-        className={cx(style.content, {
-          [style.contentLarge]: props.size === "large"
-        })}
-        style={{ textAlign: textAlignment, flexDirection: cardFlexDirection }}
+    <Container size={props.size} key={props.i} onClick={props.cardData.onClick}>
+      <Content
+        size={props.size}
+        textAlignment={props.cardData.textAlignment}
+        flexDirection={props.cardData.flexDirection}
       >
-        <div
-          className={cx(style.imageHolder, {
-            [style.imageHolderLarge]: props.size === "large"
-          })}
-          style={{ backgroundColor: imageHolderBackgroundColor }}
+        <ImageHolder
+          size={props.size}
+          bgColor={props.cardData.imageHolderBackgroundColor}
         >
           <a
             href={props.cardData.href}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
-              src={props.cardData.imageSrc}
-              className={style.image}
-              alt="content"
-            />
+            <Image src={props.cardData.imageSrc} alt="content" />
           </a>
-        </div>
-        <div
-          className={cx(style.dataHolder, {
-            [style.dataHolderLarge]: props.size === "large"
-          })}
-        >
+        </ImageHolder>
+        <DataHolder size={props.size}>
           <CardTitle data={props.cardData} />
-          <div className={style.description}>{props.cardData.description}</div>
-        </div>
-      </div>
-      <div className={style.attachments}>
+          <Description>{props.cardData.description}</Description>
+        </DataHolder>
+      </Content>
+      <AttachmentsContainer>
         {props.cardData.attachments && (
           <Attachments data={props.cardData.attachments} />
         )}
-      </div>
-    </div>
+      </AttachmentsContainer>
+    </Container>
   );
 }

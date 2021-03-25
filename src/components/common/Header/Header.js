@@ -2,8 +2,19 @@ import React from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
 
-import style from "./Header.module.css";
-import logoMonogramImage from "../../../images/logo-monogram.png";
+import {
+  HeaderBlock,
+  Logo,
+  LogoWrapper,
+  LogoImageHolder,
+  LogoImage,
+  LogoWords,
+  HeaderNav,
+  NavEntry,
+  SignInArea,
+  UserProfilePic,
+  HeaderPusher
+} from "./StyledHeader";
 
 import { useAuthContext } from "../../../context/AuthContext";
 
@@ -13,82 +24,65 @@ export default function Header(props) {
   const { authUser, doAuthRequest } = useAuthContext();
 
   return (
-    <div>
+    <div style={{ height: "7.5vh" }}>
       <HamburgerMenu />
-      <div className={style.HeaderBlock}>
-        <div className={style.Logo}>
-          <div className={style.LogoWrapper}>
+      <HeaderBlock>
+        <Logo>
+          <LogoWrapper>
             <Link href="/">
               <a>
-                <div className={style.LogoImageHolder}>
-                  <img
-                    src={logoMonogramImage}
-                    className={style.LogoImage}
-                    alt="logo"
-                  />
-                </div>
-                <div className={style.LogoWords}>Dev Launchers</div>
+                <LogoImageHolder>
+                  <LogoImage />
+                </LogoImageHolder>
+                <LogoWords>Dev Launchers</LogoWords>
               </a>
             </Link>
-          </div>
-        </div>
-        <div className={style.HeaderNav}>
+          </LogoWrapper>
+        </Logo>
+        <HeaderNav>
           <Link href="/create">
             <a>
-              <div className={style.NavEntry}>CREATE</div>
+              <NavEntry>CREATE</NavEntry>
             </a>
           </Link>
           <Link href="/learn">
             <a>
-              <div className={style.NavEntry}>LEARN</div>
+              <NavEntry>LEARN</NavEntry>
             </a>
           </Link>
           {/*}
           <Link href={"/play"} className="nav-link">
-            <div className={style.NavEntry}>PLAY</div>
+            <NavEntry>PLAY</NavEntry>
           </Link>
           {*/}
           <Link href="/earn">
             <a>
-              <div className={style.NavEntry}>EARN</div>
+              <NavEntry>EARN</NavEntry>
             </a>
           </Link>
           <Link href="/support-us">
             <a>
-              <div className={style.NavEntry}>SUPPORT US</div>
+              <NavEntry>SUPPORT US</NavEntry>
             </a>
           </Link>
           <Link href="/members">
             <a>
-              <div className={style.NavEntry}>JOIN</div>
+              <NavEntry>JOIN</NavEntry>
             </a>
           </Link>
-        </div>
+        </HeaderNav>
         <div />
-        <div className={style.SignInArea}>
+        <SignInArea>
           {authUser ? (
-            <img
-              className={style.UserProfilePic}
-              src={authUser.photoURL}
-              alt="profile-pic"
-            />
+            <UserProfilePic src={authUser.photoURL} />
           ) : (
             <Button fontSize="1.2rem" onClick={() => toast("the website is under development, please check this feature later")}>
               Sign In
             </Button>
           )}
-        </div>
-      </div>
-      <div
-        className="header-pusher"
-        style={{
-          position: "relative",
-          width: "100%",
-          minHeight: "7.5vh"
-        }}
-      >
-        x
-      </div>
+        </SignInArea>
+      </HeaderBlock>
+      <HeaderPusher>x</HeaderPusher>
     </div>
   );
 }
