@@ -30,7 +30,7 @@ export default function UserProfile() {
             volunteerHours={userData.volunteerHours}
           />
         </UserSection>
-        <div>{userData.bio}</div>
+        <BioBox />
         <CalendlyWidget />
       </PageBody>
     </div>
