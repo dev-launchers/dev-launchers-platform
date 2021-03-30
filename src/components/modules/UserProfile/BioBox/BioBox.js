@@ -1,11 +1,10 @@
 import React from "react";
-import { Bio, Save } from "./StyledBioBox";
+import { Wrapper, Bio, Save } from "./StyledBioBox";
 
 export default function BioBox() {
   return (
-    <div>
+    <Wrapper>
       <br />
-      <h4>Tell us about yourself!</h4>
       <Bio
         rows="4"
         cols="50"
@@ -14,6 +13,6 @@ export default function BioBox() {
       ></Bio>
       <br />
       <Save onclick="changeContent()">Edit</Save>
-    </div>
+    </Wrapper>
   );
 }

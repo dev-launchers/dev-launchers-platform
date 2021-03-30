@@ -12,7 +12,8 @@ import CalendlyWidget from "./CalendlyWidget";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 import Points from "../../common/Points";
-import { UserSection } from "./StyledUserProfile";
+import { UserSection, UserInfo } from "./StyledUserProfile";
+import LabCampus from "../../common/LabCampus";
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
@@ -24,13 +25,16 @@ export default function UserProfile() {
             name="Mohammed Maqbol"
             userName="Enjoy2Live"
           />
-          <Points
-            availablePoints={userData.availablePoints}
-            seasonPoints={userData.totalSeasonPoints}
-            volunteerHours={userData.volunteerHours}
-          />
+          <UserInfo>
+            <Points
+              availablePoints={userData.availablePoints}
+              seasonPoints={userData.totalSeasonPoints}
+              volunteerHours={userData.volunteerHours}
+            />
+            <BioBox>{userData.bio}</BioBox>
+          </UserInfo>
         </UserSection>
-        <div>{userData.bio}</div>
+        <LabCampus />
         <CalendlyWidget />
       </PageBody>
     </div>

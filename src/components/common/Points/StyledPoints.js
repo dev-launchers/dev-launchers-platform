@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
-  margin-top: 10px;
-  height: 20%;
+  height: max-content;
   text-align: center;
   font-family: "Alfa Slab One";
   & > * {
