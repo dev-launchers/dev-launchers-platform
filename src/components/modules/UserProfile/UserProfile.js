@@ -9,7 +9,7 @@ import { useSheetsContext } from "../../../context/SheetsContext";
 import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section/Section";
 import BioBox from "./BioBox";
-
+import WeeksGlance from "./WeeksGlance";
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 
 export default function UserProfile() {
@@ -18,6 +18,7 @@ export default function UserProfile() {
     <div>
       <BioBox />
       <PageBody>
+        <WeeksGlance />
         <div>Profile Image</div>
         <div className="App">
           <InlineWidget url="https://calendly.com/devlaunchers" />
