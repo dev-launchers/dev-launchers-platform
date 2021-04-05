@@ -26,26 +26,25 @@ const formEntries = [
   </FormEntry>,
 
   <FormEntry label="Email">
-    <InputField
-      field="email"
-      validate={async value => {
-        if (!value) {
-          return "Email is required";
-        }
+    field="email" validate=
+    {async value => {
+      if (!value) {
+        return "Email is required";
+      }
 
-        if (!validateEmail(value)) {
-          return "Please enter a valid email addresss";
-        }
+      if (!validateEmail(value)) {
+        return "Please enter a valid email addresss";
+      }
 
-        console.log(`Checking email: ${value}...`);
+      console.log(`Checking email: ${value}...`);
 
-        // We're going to mock that for now
-        await new Promise(resolve => setTimeout(resolve, 2000));
+      // We're going to mock that for now
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-        return value === "tanner@gmail.com"
-          ? "Email is already being used"
-          : false;
-      }}
+      return value === "tanner@gmail.com"
+        ? "Email is already being used"
+        : false;
+    }}
     />
   </FormEntry>,
 
@@ -200,12 +199,21 @@ export default function SignUpForm() {
       style={{ width: "100%", textAlign: "center" }}
     >
       <div className={style.formContainer}>
-        <div style={{ width: "90%", textAlign: "left" }}>
+        <div
+          style={{
+            width: "90%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "flex",
+            justifyContent: "space-between"
+          }}
+        >
           {formPage > 0 ? (
             <Button onClick={decrementFormPage}>Back</Button>
           ) : (
             ""
           )}
+          <div>Join our development labs!</div>
         </div>
         <Form className={style.signUpForm}>
           {formEntries[formPage]}
