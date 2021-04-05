@@ -18,6 +18,15 @@ function validateEmail(email) {
 }
 
 const formEntries = [
+  <div style={{ width: "100%", textAlign: "center", marginTop: "5%" }}>
+    <div>Applications now open!</div>
+    <div style={{ fontSize: "1.5rem", marginBottom: "5%" }}>
+      Apply for our development incubator for access to exclusive content,
+      mentorship, and the ability to help others grow within the Dev Launchers
+      community.
+    </div>
+  </div>,
+
   <FormEntry label="Name">
     <InputField
       field="name"
@@ -26,25 +35,26 @@ const formEntries = [
   </FormEntry>,
 
   <FormEntry label="Email">
-    field="email" validate=
-    {async value => {
-      if (!value) {
-        return "Email is required";
-      }
+    <InputField
+      field="email"
+      validate={async value => {
+        if (!value) {
+          return "Email is required";
+        }
 
-      if (!validateEmail(value)) {
-        return "Please enter a valid email addresss";
-      }
+        if (!validateEmail(value)) {
+          return "Please enter a valid email addresss";
+        }
 
-      console.log(`Checking email: ${value}...`);
+        console.log(`Checking email: ${value}...`);
 
-      // We're going to mock that for now
-      await new Promise(resolve => setTimeout(resolve, 2000));
+        // We're going to mock that for now
+        await new Promise(resolve => setTimeout(resolve, 2000));
 
-      return value === "tanner@gmail.com"
-        ? "Email is already being used"
-        : false;
-    }}
+        return value === "tanner@gmail.com"
+          ? "Email is already being used"
+          : false;
+      }}
     />
   </FormEntry>,
 
@@ -151,12 +161,20 @@ export default function SignUpForm() {
   } = useForm({
     defaultValues,
     validate: values => {
-      if (values.name === "tanner" && values.age !== "29") {
-        return "This is not tanner's correct age";
-      }
       return false;
     },
     onSubmit: async (values, instance) => {
+      console.log(instance);
+      // Check if all fields have been filled
+      let isValidated = true;
+      Object.keys(values).forEach(key => {
+        if (values[key] == "") {
+          incrementFormPage();
+          isValidated = false;
+        }
+      });
+      if (!isValidated) return;
+
       const axiosInstance = axios.create({
         baseURL:
           "https://script.google.com/macros/s/AKfycby9cNYNtLoRg68F8KhibzBam0sonk0Q-h_qQke9qeep5vOw2zICKbBtxOcCCQSyNznHhA",
@@ -168,15 +186,12 @@ export default function SignUpForm() {
         .then(function(response) {
           //handle success
           console.log(response);
+          setFormSubmitted(true);
         })
         .catch(function(response) {
           //handle error
           console.log(response);
         });
-
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      console.log(JSON.stringify(values));
     },
     debugForm: false
   });
@@ -189,55 +204,81 @@ export default function SignUpForm() {
   };
 
   // Update progressPercent when formPage changes
-  React.useEffect(() => {
-    setProgressPercent(((formPage * 1.0) / (formEntries.length - 1)) * 100);
-  }, [formPage]);
+  React.useEffect(
+    () => {
+      setProgressPercent(((formPage * 1.0) / (formEntries.length - 1)) * 100);
+    },
+    [formPage]
+  );
+
+  const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   return (
     <div
       className={style.formOuter}
       style={{ width: "100%", textAlign: "center" }}
     >
-      <div className={style.formContainer}>
-        <div
-          style={{
-            width: "90%",
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "flex",
-            justifyContent: "space-between"
-          }}
-        >
-          {formPage > 0 ? (
-            <Button onClick={decrementFormPage}>Back</Button>
-          ) : (
-            ""
-          )}
-          <div>Join our development labs!</div>
+      {formSubmitted ? (
+        <div style={{ fontSize: "3rem", color: "white", margin: "10%" }}>
+          Thanks for submitting your application!
         </div>
-        <Form className={style.signUpForm}>
-          {formEntries[formPage]}
-          {isSubmitted ? <em>Thanks for submitting!</em> : null}
-          {error ? <strong>{error}</strong> : null}
-          {isSubmitting ? (
-            "Submitting..."
-          ) : formPage == formEntries.length - 1 ? (
-            <div>
-              <button type="submit" disable={!canSubmit}>
-                Submit
-              </button>
-            </div>
+      ) : (
+        <div className={style.formContainer}>
+          <div
+            style={{
+              width: "90%",
+              marginLeft: "auto",
+              marginRight: "auto",
+              display: "flex",
+              justifyContent: "space-between",
+              color: "white"
+            }}
+          >
+            {formPage > 0 ? (
+              <Button onClick={decrementFormPage}>Back</Button>
+            ) : (
+              "Join today"
+            )}
+            <div>Apply to our development labs!</div>
+          </div>
+          <Form className={style.signUpForm}>
+            {formEntries[formPage]}
+
+            {formPage == formEntries.length - 1 ? (
+              <div>
+                <Button type="submit" onClick={() => {}} disable={!canSubmit}>
+                  Submit
+                </Button>
+              </div>
+            ) : (
+              ""
+            )}
+          </Form>
+          )
+          {formPage < formEntries.length - 1 ? (
+            <Button
+              onClick={incrementFormPage}
+              style={{
+                fontSize: "3rem",
+                paddingLeft: "5rem",
+                paddingRight: "5rem"
+              }}
+            >
+              {formPage == 0 ? "Start" : "Next"}
+            </Button>
           ) : (
             ""
           )}
-        </Form>
-        {formPage < formEntries.length - 1 ? (
-          <Button onClick={incrementFormPage}>OK</Button>
-        ) : (
-          ""
-        )}
-        <ProgressBar progressPercent={progressPercent} />
-      </div>
+          {formPage > 0 ? (
+            <ProgressBar
+              progressPercent={progressPercent}
+              style={{ marginTop: "5%" }}
+            />
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </div>
   );
 }
