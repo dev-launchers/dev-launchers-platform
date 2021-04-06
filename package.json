@@ -36,6 +36,7 @@
     "react-toastify": "latest",
     "react-with-firebase-auth": "^1.3.0",
     "redux": "^4.0.5",
+    "semantic-release": "^17.4.2",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "tabletop": "^1.6.2",
@@ -68,5 +69,21 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "release": {
+    "branches": [
+      "release"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github"
+    ]
   }
 }
