@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  grid-template-areas:
+    "UserSection"
+    "LabCampus"
+    "CalendlyWidget";
+`;
+
 export const UserSection = styled.div`
+  grid-area: UserSection;
   margin-top: 10px;
   display: grid;
   gap: 15px;

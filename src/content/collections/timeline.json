@@ -1,0 +1,36 @@
+[
+  {
+    "title": "Platform Sync Up",
+    "startWeekDay": 2,
+    "startHour": 15,
+    "startMinute": 45,
+    "endWeekDay": 2,
+    "endHour": 18,
+    "endMinute": 0,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Beginner Workshop",
+    "startHour": 8,
+    "startMinute": 0,
+    "endHour": 9,
+    "endMinute": 0,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Web/App Dev",
+    "startHour": 17,
+    "startMinute": 0,
+    "endHour": 19,
+    "endMinute": 0,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Game Dev",
+    "startHour": 19,
+    "startMinute": 0,
+    "endHour": 20,
+    "endMinute": 0,
+    "location": "Game Dev"
+  }
+]
