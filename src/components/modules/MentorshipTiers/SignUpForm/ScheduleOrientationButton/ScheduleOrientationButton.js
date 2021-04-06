@@ -25,10 +25,8 @@ export default function ScheduleOrientationButton(props) {
           <br />
           <br /> Please sign up for an orientation with us to begin yor journey.
           If none of these times work for you, feel free to reach out to{" "}
-          <a href="mailto:support@devlaunchers.com">
-            support@devlaunchers.com
-          </a>{" "}
-          to schedule a different time.
+          <a href="mailto:support@devlaunchers.com">labs@devlaunchers.com</a> to
+          schedule a different time.
         </div>
         <Button
           style={{ margin: "5%" }}
