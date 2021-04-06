@@ -18,8 +18,13 @@ export default function SelectField(props) {
   };
 
   return (
-    <>
-      <select {...rest} value={value} onChange={handleSelectChange}>
+    <div>
+      <select
+        {...rest}
+        value="Select..."
+        onChange={handleSelectChange}
+        style={{ fontSize: "1.5rem" }}
+      >
         <option disabled value="" />
         {options.map(option => (
           <option key={option} value={option}>
@@ -28,6 +33,6 @@ export default function SelectField(props) {
         ))}
       </select>{" "}
       {isTouched && error ? <em>{error}</em> : null}
-    </>
+    </div>
   );
 }

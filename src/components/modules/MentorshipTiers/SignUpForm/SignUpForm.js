@@ -11,6 +11,7 @@ import FormEntry from "./FormEntry";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import TextAreaField from "./TextAreaField";
+import ScheduleOrientationButton from "./ScheduleOrientationButton";
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,14 +28,17 @@ const formEntries = [
     </div>
   </div>,
 
-  <FormEntry label="Name">
+  <FormEntry
+    label="Name"
+    description="What should we call you? Please enter your full name!"
+  >
     <InputField
       field="name"
       validate={value => (!value ? "Required" : false)}
     />
   </FormEntry>,
 
-  <FormEntry label="Email">
+  <FormEntry label="Email" description="How should we contact you?">
     <InputField
       field="email"
       validate={async value => {
@@ -58,7 +62,7 @@ const formEntries = [
     />
   </FormEntry>,
 
-  <FormEntry label="Zip Code">
+  <FormEntry label="Zip Code" description="Where are you?">
     <InputField field="zip" type="number" />
   </FormEntry>,
 
@@ -82,14 +86,18 @@ const formEntries = [
   >
     <SelectField
       field="skills"
-      options={["Coding"]}
+      options={["Coding", "Art/Visual Design", "UX/Game Design"]}
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>,
   <FormEntry label="Level" description="What is your level of experience?">
     <SelectField
       field="level"
-      options={["Beginner (No  development experience)"]}
+      options={[
+        "Beginner (No  development experience)",
+        "Intermediate (Some development experience, but no large projects)",
+        "Advanced (Have completed large projects, worked in a team, etc.)"
+      ]}
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>,
@@ -115,6 +123,9 @@ const formEntries = [
     <SelectField
       field="commitment"
       options={[
+        "I will try to attend every lab session, if I'm able to make it!",
+        "Two labs per month",
+        "Three labs per month",
         "One lab per month - only available for advanced members (DL7-DL8)"
       ]}
       validate={value => (!value ? "This is required!" : false)}
@@ -127,7 +138,7 @@ const formEntries = [
   >
     <SelectField
       field="accepted"
-      options={["I accept"]}
+      options={["I accept", "I Do Not Accept"]}
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>
@@ -169,7 +180,7 @@ export default function SignUpForm() {
       let isValidated = true;
       Object.keys(values).forEach(key => {
         if (values[key] == "") {
-          incrementFormPage();
+          if (formPage < formEntries.length - 1) incrementFormPage();
           isValidated = false;
         }
       });
@@ -187,6 +198,7 @@ export default function SignUpForm() {
           //handle success
           console.log(response);
           setFormSubmitted(true);
+          openOrientationIntroModal();
         })
         .catch(function(response) {
           //handle error
@@ -221,6 +233,8 @@ export default function SignUpForm() {
       {formSubmitted ? (
         <div style={{ fontSize: "3rem", color: "white", margin: "10%" }}>
           Thanks for submitting your application!
+          <br />
+          <ScheduleOrientationButton />
         </div>
       ) : (
         <div className={style.formContainer}>
