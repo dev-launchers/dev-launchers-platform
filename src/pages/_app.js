@@ -12,6 +12,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { SheetsProvider } from "../context/SheetsContext";
 import { RepoProvider } from "../context/RepoContext";
 import { LeaderboardProvider } from "../context/LeaderboardContext";
+import { UserDataProvider } from "../context/UserDataContext";
 
 const hashRedirect = router => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -86,7 +87,7 @@ function MyApp({ Component, pageProps }) {
           ></script>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Alfa+Slab+One&display=swap"
             rel="stylesheet"
           />
           <link
@@ -98,14 +99,16 @@ function MyApp({ Component, pageProps }) {
           <SheetsProvider>
             <RepoProvider>
               <LeaderboardProvider>
-                <div className="App">
-                  <ToastContainer
-                    className="toast-container"
-                    toastClassName="toast"
-                    progressClassName="toast-progress"
-                  />
-                </div>
-                <Component {...pageProps} />
+                <UserDataProvider>
+                  <div className="App">
+                    <ToastContainer
+                      className="toast-container"
+                      toastClassName="toast"
+                      progressClassName="toast-progress"
+                    />
+                  </div>
+                  <Component {...pageProps} />
+                </UserDataProvider>
               </LeaderboardProvider>
             </RepoProvider>
           </SheetsProvider>
