@@ -9,10 +9,12 @@ import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section/Section";
 import BioBox from "./BioBox";
 import CalendlyWidget from "./CalendlyWidget";
+import LabMember from "./LabMember";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 import Points from "../../common/Points";
 import { UserSection } from "./StyledUserProfile";
+
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
@@ -32,6 +34,7 @@ export default function UserProfile() {
         </UserSection>
         <BioBox />
         <CalendlyWidget />
+        <LabMember />
       </PageBody>
     </div>
   );
