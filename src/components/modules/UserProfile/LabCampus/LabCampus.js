@@ -14,27 +14,34 @@ let events = require("../../../../content/collections/timeline");
 import { ConvertCentralTime } from "../../../../utils/TimeZoneConverter";
 import { DateTime, Interval } from "luxon";
 const LabCampus = props => {
+  const [currentTime, setCurrentTime] = useState(DateTime.now());
   const handleProgression = eventInterval => {
-    let currentTime = DateTime.now().minute;
+    let remainingLabMintues =
+      Interval.fromDateTimes(currentTime, eventInterval.end).count("minute") -
+      1;
     setInterval(() => {
-      console.log(
-        "updating mintues to ",
-        currentTime,
-        eventInterval.count("minute")
-      );
-      currentTime = DateTime.now().minute;
-    }, 10000);
+      setCurrentTime(DateTime.now());
+      remainingLabMintues =
+        Interval.fromDateTimes(currentTime, eventInterval.end).count("minute") -
+        1;
+    }, 60000);
     return (
       <Progress
         max="100"
-        value={currentTime / (eventInterval.count("minute") - 1) / 100}
+        value={
+          -1 *
+          Math.ceil(
+            remainingLabMintues / (eventInterval.count("minute") - 1) / 0.01 -
+              100
+          )
+        }
       />
     );
   };
 
   return (
     <Wrapper>
-      <strong>all times are based off {DateTime.now().zoneName}</strong>
+      <strong>all times are based off {currentTime.zoneName}</strong>
       <TimeLineContainer>
         {events.map(
           (
@@ -107,10 +114,10 @@ const LabCampus = props => {
                     eventEnd
                   );
                   const isLabActive =
-                    !eventInterval.isAfter(DateTime.now().setZone("local")) &&
-                    !eventInterval.isBefore(DateTime.now().setZone("local"));
-                  console.log("does run", labTitle);
-                  console.log(DateTime.now());
+                    !eventInterval.isAfter(currentTime) &&
+                    !eventInterval.isBefore(currentTime);
+                  // console.log(isLabActive);
+                  // console.log(eventStart);
                   return (
                     <React.Fragment key={i}>
                       <Time>{eventStart.toFormat("t")}</Time>
