@@ -9,29 +9,39 @@ import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section/Section";
 import BioBox from "./BioBox";
 import CalendlyWidget from "./CalendlyWidget";
+import LabMember from "./LabMember";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 import Points from "../../common/Points";
-import { UserSection } from "./StyledUserProfile";
+
+import { Wrapper, UserSection, UserInfo } from "./StyledUserProfile";
+import LabCampus from "./LabCampus";
+
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
     <div>
       <PageBody>
-        <UserSection>
-          <ProfileCard
-            img={userData.profilePictureUrl}
-            name="Mohammed Maqbol"
-            userName="Enjoy2Live"
-          />
-          <Points
-            availablePoints={userData.availablePoints}
-            seasonPoints={userData.totalSeasonPoints}
-            volunteerHours={userData.volunteerHours}
-          />
-        </UserSection>
-        <BioBox />
-        <CalendlyWidget />
+        <Wrapper>
+          <UserSection>
+            <ProfileCard
+              img={userData.profilePictureUrl}
+              name={userData.name}
+              userName={userData.userName}
+            />
+            <UserInfo>
+              <Points
+                availablePoints={userData.availablePoints}
+                seasonPoints={userData.totalSeasonPoints}
+                volunteerHours={userData.volunteerHours}
+              />
+              <BioBox>{userData.bio}</BioBox>
+            </UserInfo>
+          </UserSection>
+          <LabCampus />
+          <CalendlyWidget />
+          <LabMember />
+        </Wrapper>
       </PageBody>
     </div>
   );

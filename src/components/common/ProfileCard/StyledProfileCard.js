@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  grid-area: ProfileCard;
+
   background-color: #f0f0f0;
   width: 400px;
 
@@ -13,6 +15,9 @@ export const Wrapper = styled.div`
   border: 1px solid black;
   & > div {
     margin-top: 10px;
+  }
+  @media (orientation: portrait) {
+    width: 90%;
   }
 `;
 export const ProfilePicture = styled.img`

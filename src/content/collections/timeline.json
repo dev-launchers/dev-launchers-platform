@@ -1,0 +1,352 @@
+[
+  {
+    "title": "Monday 1",
+    "startWeekDay": 1,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 1,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Monday 2",
+    "startWeekDay": 1,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 1,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Monday 3",
+    "startWeekDay": 1,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 1,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Monday 4",
+    "startWeekDay": 1,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 1,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Monday 5",
+    "startWeekDay": 1,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 1,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Tuesday 1",
+    "startWeekDay": 2,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 2,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Tuesday 2",
+    "startWeekDay": 2,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 2,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Tuesday 3",
+    "startWeekDay": 2,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 2,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Tuesday 4",
+    "startWeekDay": 2,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 2,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Tuesday 5",
+    "startWeekDay": 2,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 2,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Wednesday 1",
+    "startWeekDay": 3,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 3,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Wednesday 2",
+    "startWeekDay": 3,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 3,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Wednesday 3",
+    "startWeekDay": 3,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 3,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Wednesday 4",
+    "startWeekDay": 3,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 3,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Wednesday 5",
+    "startWeekDay": 3,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 3,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Thursday 1",
+    "startWeekDay": 4,
+    "startHour": 0,
+    "startMinute": 18,
+    "endWeekDay": 4,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Thursday 2",
+    "startWeekDay": 4,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 4,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Thursday 3",
+    "startWeekDay": 4,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 4,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Thursday 4",
+    "startWeekDay": 4,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 4,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Thursday 5",
+    "startWeekDay": 4,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 4,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Friday 1",
+    "startWeekDay": 5,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 5,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Friday 2",
+    "startWeekDay": 5,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 5,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Friday 3",
+    "startWeekDay": 5,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 5,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Friday 4",
+    "startWeekDay": 5,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 5,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Friday 5",
+    "startWeekDay": 5,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 5,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Saturday 1",
+    "startWeekDay": 6,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 6,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Saturday 2",
+    "startWeekDay": 6,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 6,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Saturday 3",
+    "startWeekDay": 6,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 6,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Saturday 4",
+    "startWeekDay": 6,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 6,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Saturday 5",
+    "startWeekDay": 6,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 6,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  },
+  {
+    "title": "Sunday 1",
+    "startWeekDay": 7,
+    "startHour": 1,
+    "startMinute": 18,
+    "endWeekDay": 7,
+    "endHour": 1,
+    "endMinute": 20,
+    "location": "General Coworking"
+  },
+  {
+    "title": "Sunday 2",
+    "startWeekDay": 7,
+    "startHour": 2,
+    "startMinute": 18,
+    "endWeekDay": 7,
+    "endHour": 2,
+    "endMinute": 20,
+    "location": "In-House Projects"
+  },
+  {
+    "title": "Sunday 3",
+    "startWeekDay": 7,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 7,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Sunday 4",
+    "startWeekDay": 7,
+    "startHour": 4,
+    "startMinute": 18,
+    "endWeekDay": 7,
+    "endHour": 4,
+    "endMinute": 20,
+    "location": "Game Dev"
+  },
+  {
+    "title": "Sunday 5",
+    "startWeekDay": 7,
+    "startHour": 3,
+    "startMinute": 18,
+    "endWeekDay": 7,
+    "endHour": 3,
+    "endMinute": 20,
+    "location": "Landing Zone"
+  }
+]
