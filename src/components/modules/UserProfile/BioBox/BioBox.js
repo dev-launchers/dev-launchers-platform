@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Wrapper, Bio, Save } from "./StyledBioBox";
 
 export default function BioBox() {

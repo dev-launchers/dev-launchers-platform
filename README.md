@@ -21,7 +21,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 *We're using GitHub's milestones to keep better track of our issues. These will change as we progress and move further along with our roadmap. The current milestone's we're tackling are:*
     
 #### [Showing Impact - Let's Bring Life to the Site! (And Get Sponsorships)](https://github.com/dev-launchers/platform__website/milestone/7)
- - We want to showcase all the wonderful things Dev Launchers is accomplishing, and the wonderful people making it all happen! This milestone should result in donors and sponsors alike getting a clear idea of what Dev Launchers is all about, and why they should support our mission.
+ - We want to showcase all the wonderful things Dev Launchers is accomplishing, and the wonderful people making it all happen! This milestone should result in donors and sponsors alike getting a clear idea of what Dev Launchers is all about and why they should support our mission.
     
 #### [Member UX](https://github.com/dev-launchers/platform__website/milestone/9)
  - Improve the general experience members have interacting with the site!

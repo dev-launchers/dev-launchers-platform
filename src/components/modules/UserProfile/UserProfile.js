@@ -17,12 +17,15 @@ import Points from "../../common/Points";
 import { Wrapper, UserSection, UserInfo } from "./StyledUserProfile";
 import LabCampus from "./LabCampus";
 
+
+import { useUserDataContext } from "../../../context/UserDataContext.js";
+import Points from "../../common/Points";
+import { UserSection } from "./StyledUserProfile";
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
     <div>
       <PageBody>
-
         <Wrapper>
           <UserSection>
             <ProfileCard
