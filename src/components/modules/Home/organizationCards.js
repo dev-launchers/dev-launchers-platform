@@ -16,6 +16,7 @@ const organizationCards = [
     textAlignment: TEXT_ALIGN,
     imageHolderBackgroundColor: IMAGE_HOLDER_BACKGROUND_COLOR,
     titleStyling: TEXT_ALIGN,
+    flexDirection: "row",
     titleAlignment: "right",
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,

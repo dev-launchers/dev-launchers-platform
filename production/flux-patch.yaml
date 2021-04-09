@@ -4,11 +4,13 @@ kind: Deployment
 metadata:
   name: platform-website
   namespace: platform-website
+  annotations:
+    fluxcd.io/tag.platform-website: semver:*
 spec:
   template:
     spec:
       $setElementOrder/containers:
       - name: platform-website
       containers:
-      - image: devlaunchers/platform-website:sha-86eded3
+      - image: devlaunchers/platform-website:master
         name: platform-website

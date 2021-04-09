@@ -1,16 +1,35 @@
 import styled from "styled-components";
 
-export const UserSection = styled.div`
-  display: flex;
+export const Wrapper = styled.div`
+  display: grid;
+  gap: 20px;
   justify-content: center;
+  grid-template-areas:
+    "UserSection"
+    "LabCampus"
+    "CalendlyWidget";
+`;
 
-  & > * {
-    margin: 10px 5px 5px 5px;
-  }
+export const UserSection = styled.div`
+  grid-area: UserSection;
+  margin-top: 10px;
+  display: grid;
+  gap: 15px;
+  justify-content: center;
+  justify-items: center;
+  grid-template-areas: "ProfileCard UserInfo";
 
   @media (orientation: portrait) {
-    & > * {
-      margin: 10px 0;
-    }
+    grid-template-areas:
+      "ProfileCard"
+      "UserInfo";
+  }
+`;
+
+export const UserInfo = styled.div`
+  grid-area: UserInfo;
+
+  @media (orientation: portrait) {
+    width: 91%;
   }
 `;

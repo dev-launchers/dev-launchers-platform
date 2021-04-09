@@ -2,6 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    fluxcd.io/tag.platform-website: regex:^sha-*
   name: platform-website
   namespace: platform-website
 spec:
@@ -10,5 +12,5 @@ spec:
       $setElementOrder/containers:
       - name: platform-website
       containers:
-      - image: devlaunchers/platform-website:master
+      - image: devlaunchers/platform-website:sha-19dff15
         name: platform-website
