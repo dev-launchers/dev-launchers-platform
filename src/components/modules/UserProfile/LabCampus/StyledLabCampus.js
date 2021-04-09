@@ -53,10 +53,3 @@ export const Title = styled.span`
   grid-row: 2;
   align-self: end;
 `;
-
-export const Progress = styled.progress`
-  grid-row: 4;
-  width: 100%;
-  align-self: end;
-  height: 10px;
-`;

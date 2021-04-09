@@ -7,11 +7,11 @@ import {
   Lab,
   AlignedDropdown,
   Time,
-  Title,
-  Progress
+  Title
 } from "./StyledLabCampus";
 let events = require("../../../../content/collections/timeline");
 import { ConvertCentralTime } from "../../../../utils/TimeZoneConverter";
+import ProgressBar from "@ramonak/react-progress-bar";
 import { DateTime, Interval } from "luxon";
 const LabCampus = props => {
   const [currentTime, setCurrentTime] = useState(DateTime.now());
@@ -36,7 +36,17 @@ const LabCampus = props => {
 
     if (percentage == 100) clearInterval(timeUpdater);
 
-    return <Progress max="100" value={percentage} />;
+    return (
+      <div style={{ alignSelf: "end" }}>
+        <ProgressBar
+          completed={percentage}
+          bgColor="#52FF00"
+          borderRadius="0"
+          baseBgColor="#000000"
+          labelColor="#e809090"
+        />
+      </div>
+    );
   };
 
   return (
