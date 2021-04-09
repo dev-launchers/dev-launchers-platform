@@ -9,16 +9,20 @@ import PageBody from "../../../components/common/PageBody";
 import Section from "../../../components/common/Section/Section";
 import BioBox from "./BioBox";
 import CalendlyWidget from "./CalendlyWidget";
+import LabMember from "./LabMember";
 
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 import Points from "../../common/Points";
+
 import { Wrapper, UserSection, UserInfo } from "./StyledUserProfile";
 import LabCampus from "./LabCampus";
+
 export default function UserProfile() {
   const { userData } = useUserDataContext();
   return (
     <div>
       <PageBody>
+
         <Wrapper>
           <UserSection>
             <ProfileCard
@@ -37,6 +41,7 @@ export default function UserProfile() {
           </UserSection>
           <LabCampus />
           <CalendlyWidget />
+          <LabMember />
         </Wrapper>
       </PageBody>
     </div>
