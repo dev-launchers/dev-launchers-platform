@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@cloudflare/wrangler": "^1.11.0",
+    "@ramonak/react-progress-bar": "^3.1.0",
     "articles": "^0.2.2",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "constate": "^3.0.1",
     "firebase": "^8.2.6",
+    "luxon": "^1.26.0",
     "natural": "0.6.3",
     "next": "^10.0.1",
     "next-images": "^1.6.2",
