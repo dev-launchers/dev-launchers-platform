@@ -6,5 +6,5 @@ export const ConvertCentralTime = (weekday = 6, hour, minute = 0) => {
     hour,
     minute,
     zone: "UTC-5"
-  }).toLocal();
+  }).setZone("local");
 };
