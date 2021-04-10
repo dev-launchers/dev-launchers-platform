@@ -76,7 +76,10 @@ export default function Header(props) {
           {authUser ? (
             <UserProfilePic src={authUser.photoURL} />
           ) : (
-            <Button fontSize="1.2rem" onClick={() => toast("the website is under development, please check this feature later")}>
+            <Button
+              fontSize="1.2rem"
+              href="https://api-staging.devlaunchers.com/auth/google"
+            >
               Sign In
             </Button>
           )}
