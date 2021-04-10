@@ -13,29 +13,19 @@ function useUserData() {
       withCredentials: true
     })
       .then(({ data: currentUser }) => {
-        Promise.all([
-          axios(
-            `https://api-staging.devlaunchers.com/users/${currentUser.id}/profile`,
-            { withCredentials: true }
-          ),
-          axios(
-            `https://api-staging.devlaunchers.com/users/${currentUser.id}/point`,
-            { withCredentials: true }
-          )
-        ]).then(([profileResponse, pointsResponse]) => {
-          setUserData({
-            id: profileResponse.data.id,
-            name: profileResponse.data.displayName,
-            username: currentUser.username,
-            email: profileResponse.data.email,
-            bio: profileResponse.data.bio,
-            profilePictureUrl: profileResponse.data.profilePictureUrl,
-            socialMediaLinks: profileResponse.data.socialMediaLinks,
-            totalPoints: pointsResponse.data.totalPoints,
-            totalSeasonPoints: pointsResponse.data.totalSeasonPoints,
-            availablePoints: pointsResponse.data.availablePoints,
-            volunteerHours: 0
-          });
+        console.log(currentUser);
+        setUserData({
+          id: currentUser.id,
+          name: currentUser.displayName,
+          username: currentUser.username,
+          email: currentUser.email,
+          bio: currentUser.bio,
+          profilePictureUrl: currentUser.profilePictureUrl,
+          socialMediaLinks: currentUser.socialMediaLinks,
+          totalPoints: currentUser.totalPoints,
+          totalSeasonPoints: currentUser.totalSeasonPoints,
+          availablePoints: currentUser.availablePoints,
+          volunteerHours: currentUser.volunteerHours
         });
       })
       .catch(err => console.error(err));

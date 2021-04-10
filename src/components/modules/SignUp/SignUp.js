@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageBody from "../../common/PageBody";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import axios from "axios";
 import DiscordImage from "../../../images/signup/discord.png";
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
 
 export default function SignUp() {
+  const router = useRouter();
   const [username, setUsername] = useState("");
+
   const handleUsernameChange = e => {
     setUsername(e.target.value);
   };
+
+  useEffect(() => {
+    // Prefetch the user profile page
+    router.prefetch("/user-profile");
+  }, []);
+
   const updateUser = async e => {
     e.preventDefault();
     try {
@@ -26,10 +34,12 @@ export default function SignUp() {
           withCredentials: true
         }
       );
+      if (currentUser.status == 200) router.replace("/user-profile");
     } catch (err) {
       console.error(err);
     }
   };
+
   return (
     <div>
       <PageBody>
