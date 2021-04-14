@@ -55,16 +55,24 @@ export default function UserProfile() {
           </Misc>
         </Wrapper>
       ) : (
-        <>
-          <p>please sign up to get access to this page!</p>
-          <Button
-            fontSize="1.2rem"
-            href="https://api-staging.devlaunchers.com/auth/google"
-          >
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            minHeight: "60vh",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <p style={{ fontSize: "2rem" }}>
+            Please sign in to access this page!
+          </p>
+          <Button fontSize="2rem" href={process.env.GOOGLE_AUTH_URL}>
             Sign In
           </Button>
           <br />
-        </>
+        </div>
       )}
       <br />
     </PageBody>
