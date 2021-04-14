@@ -59,7 +59,7 @@ export default function SignUp() {
         </FormWrapper>
         <DiscordAuthWrapper>
           <p>Auth with Discord! (optional)</p>
-          <a href="#">
+          <a href={process.env.DISCORD_AUTH_URL}>
             <img src={DiscordImage} alt="discord"></img>
           </a>
         </DiscordAuthWrapper>
