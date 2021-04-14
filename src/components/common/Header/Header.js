@@ -76,10 +76,7 @@ export default function Header(props) {
           {authUser ? (
             <UserProfilePic src={authUser.photoURL} />
           ) : (
-            <Button
-              fontSize="1.2rem"
-              href="https://api-staging.devlaunchers.com/auth/google"
-            >
+            <Button fontSize="1.2rem" href={process.env.GOOGLE_AUTH_URL}>
               Sign In
             </Button>
           )}
