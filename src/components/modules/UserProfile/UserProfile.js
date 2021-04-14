@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import PageBody from "../../../components/common/PageBody";
+import Button from "../../common/Button";
 import ProfileCard from "../../common/ProfileCard";
 import Points from "../../common/Points";
 import BioBox from "./BioBox";
@@ -18,16 +19,25 @@ import {
 } from "./StyledUserProfile";
 
 export default function UserProfile() {
+  const [loading, setLoading] = useState(true);
   const { userData } = useUserDataContext();
+
+  useEffect(() => {
+    setLoading(Object.entries(userData).length == 0);
+  }, [userData]);
+
+  if (loading) {
+    return <strong>Loading.....</strong>;
+  }
   return (
-    <div>
-      <PageBody>
+    <PageBody>
+      {userData.username && !loading ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
               img={userData.profilePictureUrl}
               name={userData.name}
-              userName={userData.username}
+              username={userData.username}
             />
             <UserInfo>
               <Points
@@ -44,7 +54,19 @@ export default function UserProfile() {
             <DiscordPlaceHolder />
           </Misc>
         </Wrapper>
-      </PageBody>
-    </div>
+      ) : (
+        <>
+          <p>please sign up to get access to this page!</p>
+          <Button
+            fontSize="1.2rem"
+            href="https://api-staging.devlaunchers.com/auth/google"
+          >
+            Sign In
+          </Button>
+          <br />
+        </>
+      )}
+      <br />
+    </PageBody>
   );
 }
