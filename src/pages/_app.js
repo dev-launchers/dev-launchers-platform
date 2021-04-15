@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { initGA, logPageView } from "../utils/GoogleAnalytics.js";
 
+import { EnvironmentVariablesProvider } from "../context/EnvironmentVariablesContext";
 import { AuthProvider } from "../context/AuthContext";
 import { SheetsProvider } from "../context/SheetsContext";
 import { RepoProvider } from "../context/RepoContext";
@@ -95,24 +96,26 @@ function MyApp({ Component, pageProps }) {
             rel="stylesheet"
           />
         </Head>
-        <AuthProvider>
-          <SheetsProvider>
-            <RepoProvider>
-              <LeaderboardProvider>
-                <UserDataProvider>
-                  <div className="App">
-                    <ToastContainer
-                      className="toast-container"
-                      toastClassName="toast"
-                      progressClassName="toast-progress"
-                    />
-                  </div>
-                  <Component {...pageProps} />
-                </UserDataProvider>
-              </LeaderboardProvider>
-            </RepoProvider>
-          </SheetsProvider>
-        </AuthProvider>
+        <EnvironmentVariablesProvider>
+          <AuthProvider>
+            <SheetsProvider>
+              <RepoProvider>
+                <LeaderboardProvider>
+                  <UserDataProvider>
+                    <div className="App">
+                      <ToastContainer
+                        className="toast-container"
+                        toastClassName="toast"
+                        progressClassName="toast-progress"
+                      />
+                    </div>
+                    <Component {...pageProps} />
+                  </UserDataProvider>
+                </LeaderboardProvider>
+              </RepoProvider>
+            </SheetsProvider>
+          </AuthProvider>
+        </EnvironmentVariablesProvider>
       </div>
     </>
   );

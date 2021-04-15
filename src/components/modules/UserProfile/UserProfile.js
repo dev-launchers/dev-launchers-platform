@@ -1,5 +1,3 @@
-import env from "../../../utils/EnvironmentVariables.js";
-
 import React, { useState, useEffect } from "react";
 
 import PageBody from "../../../components/common/PageBody";
@@ -10,6 +8,7 @@ import BioBox from "./BioBox";
 import LabCampus from "./LabCampus";
 import LabMember from "./LabMember";
 
+import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
 import { useUserDataContext } from "../../../context/UserDataContext.js";
 
 import {
@@ -21,8 +20,9 @@ import {
 } from "./StyledUserProfile";
 
 export default function UserProfile() {
-  const [loading, setLoading] = useState(true);
+  const { envData } = useEnvironmentVariablesContext();
   const { userData } = useUserDataContext();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(Object.entries(userData).length == 0);
@@ -70,7 +70,7 @@ export default function UserProfile() {
           <p style={{ fontSize: "2rem" }}>
             Please sign in to access this page!
           </p>
-          <Button fontSize="2rem" href={env.GOOGLE_AUTH_URL}>
+          <Button fontSize="2rem" href={envData.GOOGLE_AUTH_URL}>
             Sign In
           </Button>
           <br />

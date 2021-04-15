@@ -1,13 +1,14 @@
-import env from "../../../utils/EnvironmentVariables.js";
-
 import React, { useState, useEffect } from "react";
 import PageBody from "../../common/PageBody";
 import { useRouter } from "next/router";
 import axios from "axios";
 import DiscordImage from "../../../images/signup/discord.png";
+
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
+import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
 
 export default function SignUp() {
+  const { envData } = useEnvironmentVariablesContext();
   const router = useRouter();
   const [username, setUsername] = useState("");
 
@@ -61,7 +62,7 @@ export default function SignUp() {
         </FormWrapper>
         <DiscordAuthWrapper>
           <p>Auth with Discord! (optional)</p>
-          <a href={env.DISCORD_AUTH_URL}>
+          <a href={envData.DISCORD_AUTH_URL}>
             <img src={DiscordImage} alt="discord"></img>
           </a>
         </DiscordAuthWrapper>
