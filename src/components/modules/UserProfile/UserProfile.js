@@ -1,3 +1,5 @@
+import env from "../../../utils/EnvironmentVariables.js";
+
 import React, { useState, useEffect } from "react";
 
 import PageBody from "../../../components/common/PageBody";
@@ -68,7 +70,7 @@ export default function UserProfile() {
           <p style={{ fontSize: "2rem" }}>
             Please sign in to access this page!
           </p>
-          <Button fontSize="2rem" href={process.env.GOOGLE_AUTH_URL}>
+          <Button fontSize="2rem" href={env.GOOGLE_AUTH_URL}>
             Sign In
           </Button>
           <br />

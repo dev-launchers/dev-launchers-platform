@@ -1,3 +1,5 @@
+import env from "../../../utils/EnvironmentVariables.js";
+
 import React, { useState, useEffect } from "react";
 import PageBody from "../../common/PageBody";
 import { useRouter } from "next/router";
@@ -59,7 +61,7 @@ export default function SignUp() {
         </FormWrapper>
         <DiscordAuthWrapper>
           <p>Auth with Discord! (optional)</p>
-          <a href={process.env.DISCORD_AUTH_URL}>
+          <a href={env.DISCORD_AUTH_URL}>
             <img src={DiscordImage} alt="discord"></img>
           </a>
         </DiscordAuthWrapper>
