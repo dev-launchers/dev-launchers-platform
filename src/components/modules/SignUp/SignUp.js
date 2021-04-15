@@ -7,10 +7,9 @@ import DiscordImage from "../../../images/signup/discord.png";
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
+import { env } from "../../../utils/EnvironmentVariables.js";
 
 export default function SignUp() {
-  const { envData } = useEnvironmentVariablesContext();
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const { userData } = useUserDataContext();
@@ -29,11 +28,11 @@ export default function SignUp() {
   const updateUser = async e => {
     e.preventDefault();
     try {
-      const currentUser = await axios(envData.API_URL + "/users/current", {
+      const currentUser = await axios(env().API_URL + "/users/current", {
         withCredentials: true
       });
       await axios.put(
-        envData.API_URL + `/users/${currentUser.data.id}`,
+        env().API_URL + `/users/${currentUser.data.id}`,
         { username: username },
         {
           withCredentials: true
@@ -74,7 +73,7 @@ export default function SignUp() {
               <p style={{ fontSize: "1.25rem" }}>
                 Connect your Discord account! <i>(optional)</i>
               </p>
-              <a href={envData.DISCORD_AUTH_URL}>
+              <a href={env().DISCORD_AUTH_URL}>
                 <img
                   src={DiscordImage}
                   alt="discord"

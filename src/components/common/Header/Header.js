@@ -16,13 +16,13 @@ import {
   HeaderPusher
 } from "./StyledHeader";
 
-import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
 import { useUserDataContext } from "../../../context/UserDataContext";
+
+import { env } from "../../../utils/EnvironmentVariables.js";
 
 import Button from "../../common/Button";
 import HamburgerMenu from "../../common/HamburgerMenu/";
 export default function Header(props) {
-  const { envData } = useEnvironmentVariablesContext();
   const { userData } = useUserDataContext();
 
   return (
@@ -80,7 +80,7 @@ export default function Header(props) {
               <UserProfilePic src={userData.profilePictureUrl} />
             </a>
           ) : (
-            <Button fontSize="1.2rem" href={envData.GOOGLE_AUTH_URL}>
+            <Button fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
               Sign In
             </Button>
           )}

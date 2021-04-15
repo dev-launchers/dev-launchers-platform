@@ -2,7 +2,7 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
-import { useEnvironmentVariablesContext } from "./EnvironmentVariablesContext";
+import { env } from "../utils/EnvironmentVariables.js";
 
 const DEFAULT_USER = {
   id: 0,
@@ -23,35 +23,32 @@ const DEFAULT_USER = {
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
-  const { envData } = useEnvironmentVariablesContext();
   const [userData, setUserData] = React.useState({ id: -1 });
 
   React.useEffect(() => {
     // Setting timeout because of environment variable hack
-    setTimeout(() => {
-      axios(envData.API_URL + "/users/current", {
-        withCredentials: true
-      })
-        .then(({ data: currentUser }) => {
-          setUserData({
-            id: currentUser.id,
-            name: currentUser.displayName,
-            username: currentUser.username,
-            email: currentUser.email,
-            bio: currentUser.bio,
-            profilePictureUrl: currentUser.profilePictureUrl,
-            socialMediaLinks: currentUser.socialMediaLinks,
-            totalPoints: currentUser.totalPoints,
-            totalSeasonPoints: currentUser.totalSeasonPoints,
-            availablePoints: currentUser.availablePoints,
-            volunteerHours: currentUser.volunteerHours,
-            discord: currentUser.discord
-          });
-        })
-        .catch(err => {
-          setUserData({ id: "invalid" });
+    axios(env().API_URL + "/users/current", {
+      withCredentials: true
+    })
+      .then(({ data: currentUser }) => {
+        setUserData({
+          id: currentUser.id,
+          name: currentUser.displayName,
+          username: currentUser.username,
+          email: currentUser.email,
+          bio: currentUser.bio,
+          profilePictureUrl: currentUser.profilePictureUrl,
+          socialMediaLinks: currentUser.socialMediaLinks,
+          totalPoints: currentUser.totalPoints,
+          totalSeasonPoints: currentUser.totalSeasonPoints,
+          availablePoints: currentUser.availablePoints,
+          volunteerHours: currentUser.volunteerHours,
+          discord: currentUser.discord
         });
-    }, 500);
+      })
+      .catch(err => {
+        setUserData({ id: "invalid" });
+      });
   }, []);
 
   return { userData };
