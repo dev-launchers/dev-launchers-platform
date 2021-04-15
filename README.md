@@ -48,6 +48,8 @@ to format the commit messages.
 
 Once you are ready to create a new release, create a PR to merge main branch to release branch.
 
+.
+
 ---
  
 ## License
