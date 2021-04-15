@@ -152,9 +152,16 @@ const LabCampus = props => {
                 const isLabActive =
                   !eventInterval.isAfter(currentTime) &&
                   !eventInterval.isBefore(currentTime);
+                const hasEnded = !eventInterval.isAfter(currentTime);
                 return (
                   <Lab key={i} style={{ gridArea }}>
-                    <Time>{eventStart.toFormat("t")}</Time>
+                    <Time>
+                      {isLabActive
+                        ? "Happening now!"
+                        : hasEnded
+                        ? "All sessions has ended"
+                        : eventStart.toFormat("t")}
+                    </Time>
                     <Title>{labTitle}</Title>
                     <AlignedDropdown
                       toggleBtnText="Join"
