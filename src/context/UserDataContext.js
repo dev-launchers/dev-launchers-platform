@@ -27,7 +27,8 @@ function useUserData() {
           totalPoints: currentUser.totalPoints,
           totalSeasonPoints: currentUser.totalSeasonPoints,
           availablePoints: currentUser.availablePoints,
-          volunteerHours: currentUser.volunteerHours
+          volunteerHours: currentUser.volunteerHours,
+          discord: currentUser.discord
         });
       })
       .catch(err => {

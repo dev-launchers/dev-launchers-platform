@@ -5,21 +5,26 @@ import axios from "axios";
 import DiscordImage from "../../../images/signup/discord.png";
 
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
+
+import { useUserDataContext } from "../../../context/UserDataContext";
 import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
 
 export default function SignUp() {
   const { envData } = useEnvironmentVariablesContext();
-  const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
+  const { userData } = useUserDataContext();
+  const router = useRouter();
 
   const handleUsernameChange = e => {
     setUsername(e.target.value);
   };
 
   useEffect(() => {
+    setLoading(Object.entries(userData).length == 0);
     // Prefetch the user profile page
     router.prefetch("/user-profile");
-  }, []);
+  }, [userData]);
 
   const updateUser = async e => {
     e.preventDefault();
@@ -61,10 +66,19 @@ export default function SignUp() {
           </form>
         </FormWrapper>
         <DiscordAuthWrapper>
-          <p>Auth with Discord! (optional)</p>
-          <a href={envData.DISCORD_AUTH_URL}>
-            <img src={DiscordImage} alt="discord"></img>
-          </a>
+          {!loading && userData.discord ? (
+            <p>
+              You're authenticated with discord as{" "}
+              {userData.discord.username + "#" + userData.discord.discriminator}
+            </p>
+          ) : (
+            <>
+              <p>Auth with Discord! (optional)</p>
+              <a href={process.env.DISCORD_AUTH_URL}>
+                <img src={DiscordImage} alt="discord"></img>
+              </a>
+            </>
+          )}
         </DiscordAuthWrapper>
         <br />
       </PageBody>
