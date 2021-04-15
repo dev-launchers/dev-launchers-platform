@@ -159,7 +159,7 @@ const LabCampus = props => {
                       {isLabActive
                         ? "Happening now!"
                         : hasEnded
-                        ? "All sessions has ended"
+                        ? "All sessions have ended"
                         : eventStart.toFormat("t")}
                     </Time>
                     <Title>{labTitle}</Title>
