@@ -18,6 +18,7 @@ import {
   Misc,
   DiscordPlaceHolder
 } from "./StyledUserProfile";
+import DiscordSection from "./DiscordSection/DiscordSection.js";
 
 export default function UserProfile() {
   const { envData } = useEnvironmentVariablesContext();
@@ -25,6 +26,7 @@ export default function UserProfile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log(userData);
     setLoading(Object.entries(userData).length == 0);
   }, [userData]);
 
@@ -53,7 +55,12 @@ export default function UserProfile() {
           <LabCampus />
           <Misc>
             <LabMember />
-            <DiscordPlaceHolder />
+            <DiscordSection
+              discordId={userData.discord.id}
+              avatarKey={userData.discord.avatar}
+              discordUsername={userData.discord.username}
+              discordDiscriminator={userData.discord.discriminator}
+            />
           </Misc>
         </Wrapper>
       ) : (
