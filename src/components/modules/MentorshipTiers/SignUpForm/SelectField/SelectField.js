@@ -21,11 +21,13 @@ export default function SelectField(props) {
     <div>
       <select
         {...rest}
-        value="Select..."
         onChange={handleSelectChange}
         style={{ fontSize: "1.5rem" }}
       >
-        <option disabled value="" />
+        {" "}
+        <option value="none" selected disabled hidden>
+          Select an Option
+        </option>
         {options.map(option => (
           <option key={option} value={option}>
             {option}
