@@ -36,7 +36,7 @@
 }
 
 .descriptionTimeslotArea {
-  width: 70%;
+  width: 90%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -45,7 +45,7 @@
 }
 
 .descriptionTimeslotBox {
-  width: 45%;
+  width: 27.5%;
   border: 5px solid black;
   padding: 1%;
 }

@@ -14,9 +14,9 @@ export default function ProgramDescriptionArea(props) {
           through Dev Launchers.
           <div className={style.descriptionTimeslotArea}>
             <div className={style.descriptionTimeslotBox}>
-              <b>Beginner Lab</b>
+              <b>Beginner Dev Sessions</b>
               <br />
-              <i>Saturdays, 1:30-3:00pm CDT</i>
+              <i>Saturdays, 12:00-3:00pm CDT</i>
               <br />
               <br />
               If you're <b>learning coding fundamentals</b>, have recently
@@ -24,13 +24,23 @@ export default function ProgramDescriptionArea(props) {
               this is for you!
             </div>
             <div className={style.descriptionTimeslotBox}>
-              <b>Advanced Lab</b>
+              <b>Web and App Dev Sessions</b>
               <br />
-              <i>Saturdays, 12:00-1:30pm CDT</i>
+              <i>Saturdays, 1:00-2:00pm CDT</i>
               <br />
               <br />
-              If you're working on an <b>intermediate to advanced project</b>,
-              or are looking to provide guidance for one, this is for you!
+              Have a <b>web or app development project</b> you're working on?
+              Come give and get input, feedback, and help here!
+            </div>
+            <div className={style.descriptionTimeslotBox}>
+              <b>Game Dev Sessions</b>
+              <br />
+              <i>Saturdays, 2:00-3:00pm CDT</i>
+              <br />
+              <br />
+              Are you a <b>game dev</b>, or interested in becoming one? Join in
+              here to work on game related projects and make games alongside
+              cool people.
             </div>
           </div>
         </div>
