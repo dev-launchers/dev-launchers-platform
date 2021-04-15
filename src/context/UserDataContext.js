@@ -27,28 +27,31 @@ function useUserData() {
   const [userData, setUserData] = React.useState({ id: -1 });
 
   React.useEffect(() => {
-    axios(envData.API_URL + "/users/current", {
-      withCredentials: true
-    })
-      .then(({ data: currentUser }) => {
-        setUserData({
-          id: currentUser.id,
-          name: currentUser.displayName,
-          username: currentUser.username,
-          email: currentUser.email,
-          bio: currentUser.bio,
-          profilePictureUrl: currentUser.profilePictureUrl,
-          socialMediaLinks: currentUser.socialMediaLinks,
-          totalPoints: currentUser.totalPoints,
-          totalSeasonPoints: currentUser.totalSeasonPoints,
-          availablePoints: currentUser.availablePoints,
-          volunteerHours: currentUser.volunteerHours,
-          discord: currentUser.discord
-        });
+    // Setting timeout because of environment variable hack
+    setTimeout(() => {
+      axios(envData.API_URL + "/users/current", {
+        withCredentials: true
       })
-      .catch(err => {
-        setUserData({ id: "invalid" });
-      });
+        .then(({ data: currentUser }) => {
+          setUserData({
+            id: currentUser.id,
+            name: currentUser.displayName,
+            username: currentUser.username,
+            email: currentUser.email,
+            bio: currentUser.bio,
+            profilePictureUrl: currentUser.profilePictureUrl,
+            socialMediaLinks: currentUser.socialMediaLinks,
+            totalPoints: currentUser.totalPoints,
+            totalSeasonPoints: currentUser.totalSeasonPoints,
+            availablePoints: currentUser.availablePoints,
+            volunteerHours: currentUser.volunteerHours,
+            discord: currentUser.discord
+          });
+        })
+        .catch(err => {
+          setUserData({ id: "invalid" });
+        });
+    }, 500);
   }, []);
 
   return { userData };
