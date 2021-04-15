@@ -1,17 +1,14 @@
 .connectDiscord {
-  height: fit-content;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background-color: #f0f0f0;
   border: 1px solid black;
 }
 
 .discordLogo {
-  display: flex;
-  justify-content: center;
-}
-
-.discordLogo img {
-  width: 80%;
+  width: 10vw;
+  margin: 10%;
 }

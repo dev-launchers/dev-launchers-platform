@@ -10,9 +10,7 @@ export default function ConnectDiscord() {
     <div className={style.connectDiscord}>
       <p> Your Discord Account is not connected! </p>
       <Button href={DISCORD_AUTH}>Connect</Button>
-      <div className={style.discordLogo}>
-        <img src={DiscordLogo} alt="Discord Logo" />
-      </div>
+      <img className={style.discordLogo} src={DiscordLogo} alt="Discord Logo" />
     </div>
   );
 }
