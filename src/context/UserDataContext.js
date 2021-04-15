@@ -4,12 +4,27 @@ import axios from "axios";
 
 import { useEnvironmentVariablesContext } from "./EnvironmentVariablesContext";
 
+const DEFAULT_USER = {
+  id: 0,
+  name: "",
+  username: "",
+  email: "",
+  bio: "",
+  profilePictureUrl: "",
+  socialMediaLinks: [],
+  totalPoints: 0,
+  totalSeasonPoints: 0,
+  availablePoints: 0,
+  volunteerHours: 0,
+  discord: {}
+};
+
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
   const { envData } = useEnvironmentVariablesContext();
-  const [userData, setUserData] = React.useState({});
+  const [userData, setUserData] = React.useState({ id: -1 });
 
   React.useEffect(() => {
     axios(envData.API_URL + "/users/current", {

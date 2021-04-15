@@ -33,7 +33,7 @@ export default function UserProfile() {
   }
   return (
     <PageBody>
-      {userData.id && !loading ? (
+      {userData.id && userData.id != "invalid" && !loading ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
