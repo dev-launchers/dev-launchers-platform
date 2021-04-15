@@ -2,18 +2,20 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
+import { useEnvironmentVariablesContext } from "./EnvironmentVariablesContext";
+
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
+  const { envData } = useEnvironmentVariablesContext();
   const [userData, setUserData] = React.useState({});
 
   React.useEffect(() => {
-    axios("https://api-staging.devlaunchers.com/users/current", {
+    axios(envData.API_URL + "/users/current", {
       withCredentials: true
     })
       .then(({ data: currentUser }) => {
-        console.log(currentUser);
         setUserData({
           id: currentUser.id,
           name: currentUser.displayName,
@@ -29,7 +31,9 @@ function useUserData() {
           discord: currentUser.discord
         });
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        setUserData({ id: "invalid" });
+      });
   }, []);
 
   return { userData };

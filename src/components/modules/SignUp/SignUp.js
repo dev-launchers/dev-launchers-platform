@@ -3,10 +3,14 @@ import PageBody from "../../common/PageBody";
 import { useRouter } from "next/router";
 import axios from "axios";
 import DiscordImage from "../../../images/signup/discord.png";
+
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
+
 import { useUserDataContext } from "../../../context/UserDataContext";
+import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
 
 export default function SignUp() {
+  const { envData } = useEnvironmentVariablesContext();
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const { userData } = useUserDataContext();
@@ -64,7 +68,7 @@ export default function SignUp() {
         <DiscordAuthWrapper>
           {!loading && userData.discord ? (
             <p>
-              you're authenticated with discord as{" "}
+              You're authenticated with discord as{" "}
               {userData.discord.username + "#" + userData.discord.discriminator}
             </p>
           ) : (
