@@ -16,12 +16,14 @@ import {
   HeaderPusher
 } from "./StyledHeader";
 
-import { useAuthContext } from "../../../context/AuthContext";
+import { useUserDataContext } from "../../../context/UserDataContext";
+
+import { env } from "../../../utils/EnvironmentVariables.js";
 
 import Button from "../../common/Button";
 import HamburgerMenu from "../../common/HamburgerMenu/";
 export default function Header(props) {
-  const { authUser, doAuthRequest } = useAuthContext();
+  const { userData } = useUserDataContext();
 
   return (
     <div style={{ height: "7.5vh" }}>
@@ -73,10 +75,12 @@ export default function Header(props) {
         </HeaderNav>
         <div />
         <SignInArea>
-          {authUser ? (
-            <UserProfilePic src={authUser.photoURL} />
+          {userData.profilePictureUrl ? (
+            <a href="/user-profile">
+              <UserProfilePic src={userData.profilePictureUrl} />
+            </a>
           ) : (
-            <Button fontSize="1.2rem" onClick={() => toast("the website is under development, please check this feature later")}>
+            <Button fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
               Sign In
             </Button>
           )}

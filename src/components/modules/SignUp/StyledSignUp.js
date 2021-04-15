@@ -4,6 +4,7 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
 
   form {
     display: flex;
@@ -28,6 +29,7 @@ export const FormWrapper = styled.div`
   }
 `;
 export const DiscordAuthWrapper = styled.div`
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;

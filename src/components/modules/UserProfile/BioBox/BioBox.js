@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Wrapper, Bio, Save } from "./StyledBioBox";
 
 export default function BioBox() {
@@ -8,7 +9,7 @@ export default function BioBox() {
       <Bio
         rows="4"
         cols="50"
-        placeholder="write ur bio here"
+        placeholder="Write your bio here! (Coming soon)"
         maxlength="144"
       ></Bio>
       <br />
