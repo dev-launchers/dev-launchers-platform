@@ -99,6 +99,7 @@ export const UserProfilePic = styled.img.attrs(() => ({
   max-height: 3rem;
   min-height: 2rem;
   height: 5vw;
+  cursor: pointer;
 `;
 export const HeaderPusher = styled.div`
   position: "relative";

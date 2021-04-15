@@ -17,13 +17,13 @@ import {
 } from "./StyledHeader";
 
 import { useEnvironmentVariablesContext } from "../../../context/EnvironmentVariablesContext";
-import { useAuthContext } from "../../../context/AuthContext";
+import { useUserDataContext } from "../../../context/UserDataContext";
 
 import Button from "../../common/Button";
 import HamburgerMenu from "../../common/HamburgerMenu/";
 export default function Header(props) {
   const { envData } = useEnvironmentVariablesContext();
-  const { authUser, doAuthRequest } = useAuthContext();
+  const { userData } = useUserDataContext();
 
   return (
     <div style={{ height: "7.5vh" }}>
@@ -75,8 +75,10 @@ export default function Header(props) {
         </HeaderNav>
         <div />
         <SignInArea>
-          {authUser ? (
-            <UserProfilePic src={authUser.photoURL} />
+          {userData.profilePictureUrl ? (
+            <a href="/user-profile">
+              <UserProfilePic src={userData.profilePictureUrl} />
+            </a>
           ) : (
             <Button fontSize="1.2rem" href={envData.GOOGLE_AUTH_URL}>
               Sign In

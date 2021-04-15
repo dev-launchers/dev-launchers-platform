@@ -21,7 +21,10 @@ function useEnvironmentVariables() {
     setTimeout(() => {
       if (typeof window !== "undefined") {
         const currentUrl = window.location.href;
-        if (currentUrl.indexOf("staging") != -1) {
+        if (
+          currentUrl.indexOf("staging") != -1 ||
+          currentUrl.indexOf("localhost") != -1
+        ) {
           // In staging
           let env = {
             envType: "STAGING",

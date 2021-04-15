@@ -22,11 +22,11 @@ export const LabsContainer = styled.div`
   display: grid;
   gap: 15px;
   grid-template-areas:
-    "General In-House Web Game"
+    "General Beginner Web Game"
     "General Landing Landing Landing";
   @media (orientation: portrait) {
     grid-template-areas:
-      "General In-House"
+      "General Beginner"
       "Web Game"
       "Landing Landing";
   }

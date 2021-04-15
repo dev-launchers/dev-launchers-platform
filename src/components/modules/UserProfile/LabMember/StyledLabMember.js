@@ -8,7 +8,6 @@ export const Portal = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-family: "Alfa Slab One";
   & > * {
     padding: 5px;
   }
@@ -24,4 +23,6 @@ export const Title = styled.div`
 export const SignUpButton = styled.button`
   margin-bottom: 50px;
   width: 70%;
+  cursor: pointer;
+  font-weight: bold;
 `;

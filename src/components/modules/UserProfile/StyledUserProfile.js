@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const UserSection = styled.div`
   grid-area: UserSection;
-  margin-top: 1rem;
+  margin-top: 3rem;
   display: grid;
   gap: 15px;
   justify-content: center;

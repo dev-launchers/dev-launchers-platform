@@ -51,7 +51,7 @@ const LabCampus = props => {
 
   return (
     <Wrapper>
-      <strong>all times are based off {currentTime.zoneName}</strong>
+      <strong>All times are based off {currentTime.zoneName}</strong>
       <TimeLineContainer>
         {events
           .filter(
@@ -98,7 +98,7 @@ const LabCampus = props => {
       <LabsContainer>
         {[
           "General Coworking",
-          "In-House Projects",
+          "Beginner Dev",
           "Web / App Dev",
           "Game Dev",
           "Landing Zone"
@@ -112,7 +112,7 @@ const LabCampus = props => {
 
           return currentEvent.length == 0 ? (
             <Lab key={i} style={{ gridArea }}>
-              <Time>nothing for today!</Time>
+              <Time>No sessions today</Time>
               <Title>{labTitle}</Title>
               <AlignedDropdown
                 toggleBtnText="Join"
