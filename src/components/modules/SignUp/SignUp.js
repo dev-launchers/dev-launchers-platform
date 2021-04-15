@@ -29,14 +29,11 @@ export default function SignUp() {
   const updateUser = async e => {
     e.preventDefault();
     try {
-      const currentUser = await axios(
-        "https://api-staging.devlaunchers.com/users/current",
-        {
-          withCredentials: true
-        }
-      );
+      const currentUser = await axios(envData.API_URL + "/users/current", {
+        withCredentials: true
+      });
       await axios.put(
-        `https://api-staging.devlaunchers.com/users/${currentUser.data.id}`,
+        envData.API_URL + `/users/${currentUser.data.id}`,
         { username: username },
         {
           withCredentials: true
@@ -50,9 +47,9 @@ export default function SignUp() {
 
   return (
     <div>
-      <PageBody>
+      <PageBody style={{ minHeight: "70vh" }}>
         <br />
-        <h1>Sign up</h1>
+        <h3 style={{ textAlign: "center" }}>Sign Up</h3>
         <FormWrapper>
           <form onSubmit={updateUser}>
             <br />
@@ -62,9 +59,10 @@ export default function SignUp() {
               value={username}
               type="text"
             />
-            <input type="submit" value="Sign up" />
+            <input type="submit" value="Sign up" style={{ color: "white" }} />
           </form>
         </FormWrapper>
+        <hr />
         <DiscordAuthWrapper>
           {!loading && userData.discord ? (
             <p>
@@ -73,9 +71,15 @@ export default function SignUp() {
             </p>
           ) : (
             <>
-              <p>Auth with Discord! (optional)</p>
-              <a href={process.env.DISCORD_AUTH_URL}>
-                <img src={DiscordImage} alt="discord"></img>
+              <p style={{ fontSize: "1.25rem" }}>
+                Connect your Discord account! <i>(optional)</i>
+              </p>
+              <a href={envData.DISCORD_AUTH_URL}>
+                <img
+                  src={DiscordImage}
+                  alt="discord"
+                  style={{ width: "8rem" }}
+                ></img>
               </a>
             </>
           )}
