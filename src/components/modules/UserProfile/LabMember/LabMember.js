@@ -13,14 +13,17 @@ export default function LabMember() {
     <Portal>
       <Title>Lab - Members</Title>
       <br />
-      <SignUpButton onClick={() => openModal("saturday-lab-2")}>
-        Sign - up for Beginner/Intermediate Labs
+      <SignUpButton onClick={() => openModal("saturday-lab-beginner-devs")}>
+        Sign Up for a Beginner Dev Lab Session
       </SignUpButton>
-      <SignUpButton onClick={() => openModal("saturday-lab-1")}>
-        Sign - up for Advanced/Intermediate Labs
+      <SignUpButton onClick={() => openModal("saturday-lab-web-app-dev")}>
+        Sign Up for a Web and App Dev Lab Session
+      </SignUpButton>
+      <SignUpButton onClick={() => openModal("saturday-lab-game-devs")}>
+        Sign Up for a Game Dev Lab Session
       </SignUpButton>
       <SignUpButton onClick={() => openModal("60min")}>
-        Sign - Up for One-on-One's
+        Sign Up for a One-on-One
       </SignUpButton>
     </Portal>
   );

@@ -1,3 +1,5 @@
+import env from "../../../utils/EnvironmentVariables.js";
+
 import React from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
@@ -76,7 +78,7 @@ export default function Header(props) {
           {authUser ? (
             <UserProfilePic src={authUser.photoURL} />
           ) : (
-            <Button fontSize="1.2rem" href={process.env.GOOGLE_AUTH_URL}>
+            <Button fontSize="1.2rem" href={env.GOOGLE_AUTH_URL}>
               Sign In
             </Button>
           )}
