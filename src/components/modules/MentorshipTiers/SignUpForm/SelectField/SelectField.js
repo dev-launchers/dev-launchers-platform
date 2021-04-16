@@ -8,8 +8,9 @@ export default function SelectField(props) {
   const [field, fieldOptions, { options, ...rest }] = splitFormProps(props);
 
   const {
-    value = "",
+    value = props.value,
     setValue,
+    form,
     meta: { error, isTouched }
   } = useField(field, fieldOptions);
 
@@ -17,16 +18,22 @@ export default function SelectField(props) {
     setValue(e.target.value);
   };
 
+  const currentValue =
+    form.values[field] === "" || form.values[field].length == 0
+      ? "none"
+      : form.values[field];
+
   return (
     <div>
       <select
         {...rest}
         onChange={handleSelectChange}
         style={{ fontSize: "1.5rem" }}
+        value={currentValue}
       >
         {" "}
         <option value="none" selected disabled hidden>
-          Select an Option
+          Select an option...
         </option>
         {options.map(option => (
           <option key={option} value={option}>

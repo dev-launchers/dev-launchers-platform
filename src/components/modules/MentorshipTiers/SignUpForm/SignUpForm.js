@@ -180,6 +180,8 @@ export default function SignUpForm() {
     openModal();
   };
 
+  const [submittingForm, setSubmittingForm] = React.useState(false);
+  const [isFormValidated, setIsFormValidated] = React.useState(false);
   const [formPage, setFormPage] = React.useState(0);
   const [progressPercent, setProgressPercent] = React.useState(0);
 
@@ -207,19 +209,24 @@ export default function SignUpForm() {
   } = useForm({
     defaultValues,
     validate: values => {
-      return false;
-    },
-    onSubmit: async (values, instance) => {
-      console.log(instance);
       // Check if all fields have been filled
       let isValidated = true;
       Object.keys(values).forEach(key => {
         if (values[key] == "") {
-          if (formPage < formEntries.length - 1) incrementFormPage();
           isValidated = false;
         }
       });
-      if (!isValidated) return;
+      setIsFormValidated(isValidated);
+      return false;
+    },
+    onSubmit: async (values, instance) => {
+      console.log(instance);
+      if (!isFormValidated) {
+        if (formPage < formEntries.length - 1) incrementFormPage();
+        return;
+      }
+
+      setSubmittingForm(true);
 
       const axiosInstance = axios.create({
         baseURL:
@@ -232,6 +239,7 @@ export default function SignUpForm() {
         .then(function(response) {
           //handle success
           console.log(response);
+          setSubmittingForm(false);
           setFormSubmitted(true);
           openOrientationIntroModal();
         })
@@ -251,12 +259,9 @@ export default function SignUpForm() {
   };
 
   // Update progressPercent when formPage changes
-  React.useEffect(
-    () => {
-      setProgressPercent(((formPage * 1.0) / (formEntries.length - 1)) * 100);
-    },
-    [formPage]
-  );
+  React.useEffect(() => {
+    setProgressPercent(((formPage * 1.0) / (formEntries.length - 1)) * 100);
+  }, [formPage]);
 
   const [formSubmitted, setFormSubmitted] = React.useState(false);
 
@@ -302,19 +307,28 @@ export default function SignUpForm() {
             <div>Apply to our development labs!</div>
           </div>
           <Form className={style.signUpForm}>
+            {formEntries.map(formEntry => {})}
             {formEntries[formPage]}
 
-            {formPage == formEntries.length - 1 ? (
-              <div>
-                <Button type="submit" onClick={() => {}} disable={!canSubmit}>
-                  Submit
-                </Button>
-              </div>
+            {submittingForm ? (
+              "Submitting your information..."
+            ) : formPage == formEntries.length - 1 ? (
+              !isFormValidated ? (
+                <span style={{ color: "red", fontSize: "1.5rem" }}>
+                  It appears some form elements have not been filled out!
+                </span>
+              ) : (
+                <div>
+                  <Button type="submit" onClick={() => {}} disable={!canSubmit}>
+                    Submit
+                  </Button>
+                </div>
+              )
             ) : (
               ""
             )}
           </Form>
-          )
+
           {formPage < formEntries.length - 1 ? (
             <Button
               onClick={incrementFormPage}
