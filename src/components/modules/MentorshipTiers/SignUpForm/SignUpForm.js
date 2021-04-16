@@ -182,8 +182,14 @@ export default function SignUpForm() {
 
   const [submittingForm, setSubmittingForm] = React.useState(false);
   const [isFormValidated, setIsFormValidated] = React.useState(false);
+  const [applicationApproved, setApplicationApproved] = React.useState(false);
   const [formPage, setFormPage] = React.useState(0);
   const [progressPercent, setProgressPercent] = React.useState(0);
+
+  const checkAutoApproval = values => {
+    if (values.age > 16) return true;
+    return false;
+  };
 
   const defaultValues = React.useMemo(
     () => ({
@@ -191,7 +197,7 @@ export default function SignUpForm() {
       email: "",
       zip: "",
       age: "",
-      skills: [],
+      skills: "",
       level: "",
       experience: "",
       reason: "",
@@ -220,7 +226,6 @@ export default function SignUpForm() {
       return false;
     },
     onSubmit: async (values, instance) => {
-      console.log(instance);
       if (!isFormValidated) {
         if (formPage < formEntries.length - 1) incrementFormPage();
         return;
@@ -238,10 +243,12 @@ export default function SignUpForm() {
         .get("/exec", { params: values })
         .then(function(response) {
           //handle success
-          console.log(response);
           setSubmittingForm(false);
           setFormSubmitted(true);
-          openOrientationIntroModal();
+          if (checkAutoApproval(values)) {
+            setApplicationApproved(true);
+            openOrientationIntroModal();
+          }
         })
         .catch(function(response) {
           //handle error
@@ -280,12 +287,16 @@ export default function SignUpForm() {
         <div style={{ fontSize: "3rem", color: "white", margin: "10%" }}>
           Thanks for submitting your application!
           <br />
-          <ScheduleOrientationButton
-            style={{ margin: "5%" }}
-            onClick={() => {
-              closeModal();
-            }}
-          />
+          {applicationApproved ? (
+            <ScheduleOrientationButton
+              style={{ margin: "5%" }}
+              onClick={() => {
+                closeModal();
+              }}
+            />
+          ) : (
+            ""
+          )}
         </div>
       ) : (
         <div className={style.formContainer}>
