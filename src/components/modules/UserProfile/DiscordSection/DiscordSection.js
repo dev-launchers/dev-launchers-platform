@@ -17,7 +17,7 @@ export default function DiscordSection({
 }) {
   return (
     <>
-      {discordId || true ? (
+      {discordId ? (
         <DiscordProfile
           discordDiscriminator={discordDiscriminator}
           discordUsername={discordUsername}
