@@ -1,0 +1,14 @@
+.wrapper {
+  padding: 1em 3em;
+  background-color: #f0f0f0;
+  display: grid;
+  gap: 1em;
+  justify-content: center;
+  justify-items: center;
+  border: 1px solid black;
+}
+@media (orientation: portrait) {
+  .wrapper {
+    margin: auto;
+  }
+}

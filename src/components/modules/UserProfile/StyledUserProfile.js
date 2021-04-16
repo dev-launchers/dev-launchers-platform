@@ -41,6 +41,11 @@ export const Misc = styled.div`
   grid-area: Misc;
   display: grid;
   gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  grid-template-columns: auto auto;
   margin-bottom: 50px;
+
+  @media (orientation: portrait) {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+  }
 `;
