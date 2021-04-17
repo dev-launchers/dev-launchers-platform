@@ -1,0 +1,22 @@
+import React from "react";
+import { openPopupWidget } from "react-calendly";
+
+import Button from "../../../../common/Button";
+
+import style from "./ScheduleOrientationButton.module.css";
+
+export default function ScheduleOrientationButton(props) {
+  return (
+    <Button
+      style={props.style}
+      onClick={() => {
+        if (props.onClick) props.onClick();
+        openPopupWidget({
+          url: "https://calendly.com/devlaunchers/new-member-orientation"
+        });
+      }}
+    >
+      Schedule Orientation
+    </Button>
+  );
+}
