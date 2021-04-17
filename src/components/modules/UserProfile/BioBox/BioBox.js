@@ -40,11 +40,8 @@ export default function BioBox({ data }) {
         readOnly={isReadOnly}
       ></Bio>
       <br />
-      {isReadOnly ? (
-        <button onClick={e => setIsReadOnly(false)}>Edit</button>
-      ) : (
-        <button onClick={sendText}>Save</button>
-      )}
+      <button onClick={e => setIsReadOnly(false)}>Edit</button>
+      <button onClick={sendText}>Save</button>
     </Wrapper>
   );
 }
