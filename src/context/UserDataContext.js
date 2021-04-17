@@ -5,7 +5,7 @@ import axios from "axios";
 import { env } from "../utils/EnvironmentVariables.js";
 
 const DEFAULT_USER = {
-  id: -1,
+  id: 0,
   name: "",
   username: "",
   email: "",
@@ -17,7 +17,7 @@ const DEFAULT_USER = {
   availablePoints: 0,
   volunteerHours: 0,
   discord: {
-    id: -1,
+    id: 0,
     avatar: "",
     username: "",
     discriminator: ""
@@ -52,7 +52,7 @@ function useUserData() {
         });
       })
       .catch(err => {
-        setUserData({ id: "invalid" });
+        //setUserData({ id: "invalid" });
       });
   }, []);
 
