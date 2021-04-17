@@ -193,7 +193,6 @@ export default function SignUpForm() {
   };
 
   const onSubmit = async (values, instance) => {
-    alert("send");
     if (!isFormValidated) {
       if (formPage < formEntries.length - 1) incrementFormPage();
       return;
