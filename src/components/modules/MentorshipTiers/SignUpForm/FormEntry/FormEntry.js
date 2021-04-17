@@ -6,9 +6,9 @@ import style from "./FormEntry.module.css";
 
 export default function FormEntry(props) {
   return (
-    <div class={style.formEntryHolder} style={props.style}>
+    <div className={style.formEntryHolder} style={props.style}>
       <label>
-        <div class={style.formEntryTitle}>
+        <div className={style.formEntryTitle}>
           <u>
             <b>{props.label}</b>
           </u>

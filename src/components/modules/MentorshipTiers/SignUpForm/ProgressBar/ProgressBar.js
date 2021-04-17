@@ -4,9 +4,9 @@ import style from "./ProgressBar.module.css";
 
 export default function ProgressBar(props) {
   return (
-    <div class={style.barBackground} style={props.style}>
+    <div className={style.barBackground} style={props.style}>
       <div
-        class={style.barForeground}
+        className={style.barForeground}
         style={{ width: props.progressPercent + "%" }}
       />
     </div>

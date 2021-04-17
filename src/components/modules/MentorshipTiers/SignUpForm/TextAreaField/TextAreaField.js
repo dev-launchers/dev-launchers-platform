@@ -20,9 +20,9 @@ export default React.forwardRef((props, ref) => {
     <>
       <textarea
         {...getInputProps({ ref, ...rest })}
-        class={style.formTextArea}
+        className={style.formTextArea}
       />
-      <div style={{ "font-size": "1rem" }}>
+      <div style={{ fontSize: "1rem" }}>
         {/*
           Let's inline some validation and error information
           for our field

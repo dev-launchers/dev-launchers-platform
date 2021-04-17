@@ -171,7 +171,7 @@ export default function SignUpForm() {
           to schedule a different time.
         </div>
         <ScheduleOrientationButton
-          style={{ margin: "5%" }}
+          style={{ margin: "10%" }}
           onClick={() => {
             closeModal();
           }}
@@ -190,6 +190,38 @@ export default function SignUpForm() {
   const checkAutoApproval = values => {
     if (values.age > 16) return true;
     return false;
+  };
+
+  const onSubmit = async (values, instance) => {
+    alert("send");
+    if (!isFormValidated) {
+      if (formPage < formEntries.length - 1) incrementFormPage();
+      return;
+    }
+
+    setSubmittingForm(true);
+
+    const axiosInstance = axios.create({
+      baseURL:
+        "https://script.google.com/macros/s/AKfycby9cNYNtLoRg68F8KhibzBam0sonk0Q-h_qQke9qeep5vOw2zICKbBtxOcCCQSyNznHhA",
+      timeout: 10000,
+      headers: { "Content-Type": "multipart/form-data" }
+    });
+    axiosInstance
+      .get("/exec", { params: values })
+      .then(function(response) {
+        //handle success
+        setSubmittingForm(false);
+        setFormSubmitted(true);
+        if (checkAutoApproval(values)) {
+          setApplicationApproved(true);
+          openOrientationIntroModal();
+        }
+      })
+      .catch(function(response) {
+        //handle error
+        console.log(response);
+      });
   };
 
   const defaultValues = React.useMemo(
@@ -226,36 +258,7 @@ export default function SignUpForm() {
       setIsFormValidated(isValidated);
       return false;
     },
-    onSubmit: async (values, instance) => {
-      if (!isFormValidated) {
-        if (formPage < formEntries.length - 1) incrementFormPage();
-        return;
-      }
-
-      setSubmittingForm(true);
-
-      const axiosInstance = axios.create({
-        baseURL:
-          "https://script.google.com/macros/s/AKfycby9cNYNtLoRg68F8KhibzBam0sonk0Q-h_qQke9qeep5vOw2zICKbBtxOcCCQSyNznHhA",
-        timeout: 10000,
-        headers: { "Content-Type": "multipart/form-data" }
-      });
-      axiosInstance
-        .get("/exec", { params: values })
-        .then(function(response) {
-          //handle success
-          setSubmittingForm(false);
-          setFormSubmitted(true);
-          if (checkAutoApproval(values)) {
-            setApplicationApproved(true);
-            openOrientationIntroModal();
-          }
-        })
-        .catch(function(response) {
-          //handle error
-          console.log(response);
-        });
-    },
+    onSubmit: onSubmit,
     debugForm: false
   });
 
@@ -319,7 +322,6 @@ export default function SignUpForm() {
             <div>Apply to our development labs!</div>
           </div>
           <Form className={style.signUpForm}>
-            {formEntries.map(formEntry => {})}
             {formEntries[formPage]}
 
             {submittingForm ? (
@@ -331,7 +333,12 @@ export default function SignUpForm() {
                 </span>
               ) : (
                 <div>
-                  <Button type="submit" onClick={() => {}} disable={!canSubmit}>
+                  <Button
+                    as="button"
+                    type="submit"
+                    onClick={() => {}}
+                    disable={!canSubmit}
+                  >
                     Submit
                   </Button>
                 </div>

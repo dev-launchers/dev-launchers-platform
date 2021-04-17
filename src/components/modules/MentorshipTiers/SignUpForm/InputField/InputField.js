@@ -18,8 +18,8 @@ export default React.forwardRef((props, ref) => {
   // Build the field
   return (
     <>
-      <input {...getInputProps({ ref, ...rest })} class={style.formInput} />
-      <div style={{ "font-size": "1rem" }}>
+      <input {...getInputProps({ ref, ...rest })} className={style.formInput} />
+      <div style={{ fontSize: "1rem" }}>
         {/*
           Let's inline some validation and error information
           for our field
