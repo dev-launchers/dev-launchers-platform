@@ -32,7 +32,9 @@ const Dropdown = ({ toggleBtnText, dropdownItems, className }) => {
       >
         {toggleBtnText}
       </Toggle>
-      <Rooms isOpen={menuOpen}>{dropdownItems}</Rooms>
+      <Rooms isOpen={menuOpen}>
+        <>{dropdownItems}</>
+      </Rooms>
     </Wrapper>
   );
 };

@@ -19,21 +19,25 @@ import {
   Misc,
   DiscordPlaceHolder
 } from "./StyledUserProfile";
+import DiscordSection from "./DiscordSection/DiscordSection.js";
 
 export default function UserProfile() {
   const { userData } = useUserDataContext();
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(Object.entries(userData).length == 0);
+    console.log(userData);
+    setLoading(userData.id == -1);
   }, [userData]);
 
   if (loading) {
     return <strong>Loading.....</strong>;
   }
+
   return (
     <PageBody>
-      {userData.id != 0 && userData.id != "invalid" && !loading ? (
+      {userData.id && !loading ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
@@ -47,13 +51,18 @@ export default function UserProfile() {
                 seasonPoints={userData.totalSeasonPoints}
                 volunteerHours={userData.volunteerHours}
               />
-              <BioBox>{userData.bio}</BioBox>
+              <BioBox data={userData}>{userData.bio}</BioBox>
             </UserInfo>
           </UserSection>
           <LabCampus />
           <Misc>
             <LabMember />
-            <DiscordPlaceHolder />
+            <DiscordSection
+              discordId={userData.discord.id}
+              avatarKey={userData.discord.avatar}
+              discordUsername={userData.discord.username}
+              discordDiscriminator={userData.discord.discriminator}
+            />
           </Misc>
         </Wrapper>
       ) : (
