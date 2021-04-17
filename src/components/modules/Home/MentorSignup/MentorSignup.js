@@ -1,10 +1,8 @@
 import React from "react";
 
 import style from "./MentorSignup.module.css";
-import buttonStyle from "../../../../components/common/Button/Button.module.css";
 
 import PageBody from "../../../../components/common/PageBody";
-import Button from "../../../../components/common/Button";
 
 export default function MentorSignup() {
   return (

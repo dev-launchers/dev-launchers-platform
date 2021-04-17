@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Beginner Lab",
+    "startWeekDay": 6,
+    "startHour": 12,
+    "startMinute": 0,
+    "endWeekDay": 6,
+    "endHour": 13,
+    "endMinute": 0,
+    "location": "Beginner Dev"
+  },
+  {
+    "title": "Web and App Dev Lab",
+    "startWeekDay": 6,
+    "startHour": 13,
+    "startMinute": 0,
+    "endWeekDay": 6,
+    "endHour": 14,
+    "endMinute": 0,
+    "location": "Web / App Dev"
+  },
+  {
+    "title": "Game Dev Lab",
+    "startWeekDay": 6,
+    "startHour": 14,
+    "startMinute": 0,
+    "endWeekDay": 6,
+    "endHour": 15,
+    "endMinute": 0,
+    "location": "Game Dev"
+  }
+]

@@ -30,7 +30,7 @@ export default function SupportUs() {
             </div>
             <div className={style.ctaButtonWrapper}>
               <Button
-                style={{ borderRadius: "20px" }}
+                borderRadius="20px"
                 href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E6TSNXLFG3UTY&source=url"
               >
                 Donate with PayPal!

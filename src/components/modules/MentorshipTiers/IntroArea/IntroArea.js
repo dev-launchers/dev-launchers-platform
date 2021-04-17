@@ -18,15 +18,7 @@ export default function IntroArea(props) {
           <br />
           We're here help you reach your goals.
           <br />
-          <Button
-            onClick={props.scrollToFormFunc}
-            style={{
-              fontSize: "2.5rem",
-              marginTop: "2%",
-              paddingLeft: "1.5rem",
-              paddingRight: "1.5rem"
-            }}
-          >
+          <Button onClick={props.scrollToFormFunc} as="button" intro>
             APPLY NOW!
           </Button>
           <br />

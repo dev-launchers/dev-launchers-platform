@@ -8,6 +8,8 @@ import style from "./LevelDescriptionArea.module.css";
 import progressionLevels from "./../progressionLevels.js";
 
 export default function LevelDescriptionArea(props) {
+  const scrollToFormFunc = props.scrollToFormFunc;
+
   // Add onClick functions to progressionLevels
   [
     ...progressionLevels.beginner,
@@ -38,7 +40,7 @@ export default function LevelDescriptionArea(props) {
               }}
               onClick={() => {
                 closeModal();
-                executeScroll();
+                scrollToFormFunc();
               }}
             >
               Apply Now!

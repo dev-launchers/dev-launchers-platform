@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import GlobalStyle from "../styles/globals";
 import React from "react";
 
 import { Router, useRouter } from "next/router";
@@ -12,6 +12,7 @@ import { AuthProvider } from "../context/AuthContext";
 import { SheetsProvider } from "../context/SheetsContext";
 import { RepoProvider } from "../context/RepoContext";
 import { LeaderboardProvider } from "../context/LeaderboardContext";
+import { UserDataProvider } from "../context/UserDataContext";
 
 const hashRedirect = router => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -76,30 +77,44 @@ function MyApp({ Component, pageProps }) {
   /* </Code added to debug iphone issue using alerts> */
 
   return (
-    <div>
-      <Head>
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-        ></script>
-      </Head>
-      <AuthProvider>
-        <SheetsProvider>
-          <RepoProvider>
-            <LeaderboardProvider>
-              <div className="App">
-                <ToastContainer
-                  className="toast-container"
-                  toastClassName="toast"
-                  progressClassName="toast-progress"
-                />
-              </div>
-              <Component {...pageProps} />
-            </LeaderboardProvider>
-          </RepoProvider>
-        </SheetsProvider>
-      </AuthProvider>
-    </div>
+    <>
+      <GlobalStyle />
+      <div>
+        <Head>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+          ></script>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Alfa+Slab+One&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet"
+          />
+        </Head>
+        <AuthProvider>
+          <SheetsProvider>
+            <RepoProvider>
+              <LeaderboardProvider>
+                <UserDataProvider>
+                  <div className="App">
+                    <ToastContainer
+                      className="toast-container"
+                      toastClassName="toast"
+                      progressClassName="toast-progress"
+                    />
+                  </div>
+                  <Component {...pageProps} />
+                </UserDataProvider>
+              </LeaderboardProvider>
+            </RepoProvider>
+          </SheetsProvider>
+        </AuthProvider>
+      </div>
+    </>
   );
 }
 

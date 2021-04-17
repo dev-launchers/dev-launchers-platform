@@ -27,7 +27,7 @@ export default function MentorshipTiers() {
       <div className="scrollToDiv" ref={myRef} style={{ height: "0" }} />
       <SignUpForm />
       <MemberProfilesSlideshow />
-      <LevelDescriptionArea />
+      <LevelDescriptionArea scrollToFormFunc={executeScroll} />
       <PhotoHolder />
     </div>
   );
