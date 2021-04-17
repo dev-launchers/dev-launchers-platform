@@ -6,7 +6,3 @@ export const Bio = Styled.textarea`
 resize: none;
 width: 99%;
 `;
-
-export const Save = Styled.button`
-  
-`;
