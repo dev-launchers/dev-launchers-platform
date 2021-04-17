@@ -20,7 +20,7 @@ export default function SignUp() {
   };
 
   useEffect(() => {
-    setLoading(Object.entries(userData).length == 0);
+    setLoading(userData.id == -1);
     // Prefetch the user profile page
     router.prefetch("/user-profile");
   }, [userData]);
@@ -63,7 +63,7 @@ export default function SignUp() {
         </FormWrapper>
         <hr />
         <DiscordAuthWrapper>
-          {!loading && userData.discord ? (
+          {!loading && userData.discord.id ? (
             <p>
               You're authenticated with discord as{" "}
               {userData.discord.username + "#" + userData.discord.discriminator}

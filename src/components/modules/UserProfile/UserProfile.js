@@ -27,7 +27,7 @@ export default function UserProfile() {
 
   useEffect(() => {
     console.log(userData);
-    setLoading(Object.entries(userData).length == 0);
+    setLoading(userData.id == -1);
   }, [userData]);
 
   if (loading) {
@@ -35,7 +35,7 @@ export default function UserProfile() {
   }
   return (
     <PageBody>
-      {userData.id != 0 && userData.id != "invalid" && !loading ? (
+      {userData.id != "invalid" && !loading ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
