@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 import { Wrapper, Bio } from "./StyledBioBox";
 
+import { env } from "../../../../utils/EnvironmentVariables.js";
+
 export default function BioBox({ data }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
@@ -13,7 +15,7 @@ export default function BioBox({ data }) {
   const sendText = () => {
     axios
       .put(
-        `https://api-staging.devlaunchers.com/users/${data.id}/profile`,
+        env().API_URL + `/users/${data.id}/profile`,
         { bio: bioText },
         { withCredentials: true }
       )
