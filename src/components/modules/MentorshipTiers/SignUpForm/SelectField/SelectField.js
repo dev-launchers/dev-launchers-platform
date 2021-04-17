@@ -32,7 +32,7 @@ export default function SelectField(props) {
         value={currentValue}
       >
         {" "}
-        <option value="none" selected disabled hidden>
+        <option value="none" disabled hidden>
           Select an option...
         </option>
         {options.map(option => (

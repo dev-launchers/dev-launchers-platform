@@ -8,6 +8,7 @@ import style from "./ScheduleOrientationButton.module.css";
 export default function ScheduleOrientationButton(props) {
   return (
     <Button
+      as="button"
       style={props.style}
       onClick={() => {
         if (props.onClick) props.onClick();
