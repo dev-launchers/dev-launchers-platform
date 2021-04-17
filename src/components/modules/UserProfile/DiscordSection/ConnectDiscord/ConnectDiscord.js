@@ -1,9 +1,9 @@
 import style from "./ConnectDiscord.module.css";
 import DiscordLogo from "./../../../../../../public/images/discord-logo.png";
 import Button from "./../../../../common/Button";
+import { env } from "../../../../../utils/EnvironmentVariables";
 
-const DISCORD_AUTH =
-  "https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify";
+const DISCORD_AUTH = env().DISCORD_AUTH_URL;
 
 export default function ConnectDiscord() {
   return (
