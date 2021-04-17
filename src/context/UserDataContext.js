@@ -5,7 +5,7 @@ import axios from "axios";
 import { env } from "../utils/EnvironmentVariables.js";
 
 const DEFAULT_USER = {
-  id: 0,
+  id: -1,
   name: "",
   username: "",
   email: "",
@@ -16,14 +16,19 @@ const DEFAULT_USER = {
   totalSeasonPoints: 0,
   availablePoints: 0,
   volunteerHours: 0,
-  discord: {}
+  discord: {
+    id: -1,
+    avatar: "",
+    username: "",
+    discriminator: ""
+  }
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
-  const [userData, setUserData] = React.useState({ id: -1 });
+  const [userData, setUserData] = React.useState(DEFAULT_USER);
 
   React.useEffect(() => {
     // Setting timeout because of environment variable hack

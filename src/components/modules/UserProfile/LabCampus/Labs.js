@@ -19,33 +19,29 @@ const LABS_DATA = [
     labTitle: "Beginner Dev",
     links: [
       "https://meet.google.com/onr-jgky-jgy",
-      "https://meet.google.com/dok-kztw-nno",
-      "https://meet.google.com/rnf-rqxi-ozn"
+      "https://hangouts.google.com/u/0/call/5jWCbQt8g7Xa1XSRwZOtACEE?no_rd",
+      "https://hangouts.google.com/u/0/call/INt1cvczpj_M1JOp4S-UACEE?no_rd"
     ]
   },
   {
     labTitle: "Web / App Dev",
     links: [
       "https://meet.google.com/nth-nsji-vzs",
-      "https://meet.google.com/bbb-uesh-yjd",
-      "https://meet.google.com/bay-ejjy-zwt"
+      "https://hangouts.google.com/u/0/call/kGulty4BgioZSHem7BpMACEE?no_rd",
+      "https://hangouts.google.com/u/0/call/ClUyq03QhnyxDo85MVOlACEE?no_rd"
     ]
   },
   {
     labTitle: "Game Dev",
     links: [
       "https://meet.google.com/svu-habv-kjt",
-      "https://meet.google.com/iow-dxjc-fmn",
-      "https://meet.google.com/tyr-ztzh-jkd"
+      "https://hangouts.google.com/u/0/call/KT1Vug-uDXKTRXB0scjPACEE?no_rd",
+      "https://hangouts.google.com/u/0/call/fvdGa25c1CllnmHVk_iDACEE?no_rd"
     ]
   },
   {
     labTitle: "Landing Zone",
-    links: [
-      "https://meet.google.com/xbc-qbvj-zap",
-      "https://meet.google.com/bdp-bpvu-zbf",
-      "https://meet.google.com/soy-ghft-yoc"
-    ]
+    links: ["https://meet.google.com/xbc-qbvj-zap"]
   }
 ];
 const Labs = ({ events, currentTime, currentTimeSetter }) => {
@@ -100,11 +96,11 @@ const Labs = ({ events, currentTime, currentTimeSetter }) => {
               toggleBtnText="Join"
               dropdownItems={links.map((link, i) =>
                 i == 0 ? (
-                  <a key={i} href={link}>
+                  <a key={i} href={link} target="_blank">
                     Primary
                   </a>
                 ) : (
-                  <a key={i} href={link}>
+                  <a key={i} href={link} target="_blank">
                     Room {i}
                   </a>
                 )
@@ -153,11 +149,11 @@ const Labs = ({ events, currentTime, currentTimeSetter }) => {
                     toggleBtnText="Join"
                     dropdownItems={links.map((link, i) =>
                       i == 0 ? (
-                        <a key={i} href={link}>
+                        <a key={i} href={link} target="_blank">
                           Primary
                         </a>
                       ) : (
-                        <a key={i} href={link}>
+                        <a key={i} href={link} target="_blank">
                           Room {i}
                         </a>
                       )
