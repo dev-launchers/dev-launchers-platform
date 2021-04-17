@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, useField, splitFormProps } from "react-form";
+import regeneratorRuntime from "regenerator-runtime";
 import axios from "axios";
 
 import style from "./SignUpForm.module.css";
