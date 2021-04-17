@@ -23,6 +23,7 @@ import DiscordSection from "./DiscordSection/DiscordSection.js";
 
 export default function UserProfile() {
   const { userData } = useUserDataContext();
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ export default function UserProfile() {
   if (loading) {
     return <strong>Loading.....</strong>;
   }
+
   return (
     <PageBody>
       {userData.id != "invalid" && !loading ? (
@@ -49,7 +51,7 @@ export default function UserProfile() {
                 seasonPoints={userData.totalSeasonPoints}
                 volunteerHours={userData.volunteerHours}
               />
-              <BioBox>{userData.bio}</BioBox>
+              <BioBox data={userData}>{userData.bio}</BioBox>
             </UserInfo>
           </UserSection>
           <LabCampus />
