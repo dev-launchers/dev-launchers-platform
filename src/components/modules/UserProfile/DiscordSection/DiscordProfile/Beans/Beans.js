@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./Beans.module.css";
+import { env } from "../../../../../../utils/EnvironmentVariables.js";
 
 const DISCORD_API = "http://localhost:8000";
 export default function Beans({ discordId }) {
@@ -10,12 +11,12 @@ export default function Beans({ discordId }) {
   useEffect(() => {
     if (!discordId) return;
     //prettier-ignore
-    axios.get(`https://api-staging.devlaunchers.com/discord/users/${discordId}/dev-beans`).then(({ data }) => {
+    axios.get(env().API_URL + `/discord/users/${discordId}/dev-beans`).then(({ data }) => {
       setDevBeans(data);
     });
 
     //prettier-ignore
-    axios.get(`https://api-staging.devlaunchers.com/discord/users/${discordId}/golden-beans`).then(({ data }) => {
+    axios.get(env().API_URL + `/discord/users/${discordId}/golden-beans`).then(({ data }) => {
       setGoldenBeans(data)
     });
   }, [discordId]);
