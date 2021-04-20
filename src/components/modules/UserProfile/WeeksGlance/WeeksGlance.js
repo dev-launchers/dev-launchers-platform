@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Wrapper, CalendarContainer, WeekCalendar } from "./StyledWeeksGlance";
 import axios from "axios";
 
 export default function WeeksGlance() {
@@ -33,11 +34,11 @@ export default function WeeksGlance() {
   };
   React.useEffect(componentDidMount, []);
   return (
-    <div>
+    <WeekCalendar>
       {eventList.map((entry, index) => {
         return entry;
       })}
       ;
-    </div>
+    </WeekCalendar>
   );
 }
