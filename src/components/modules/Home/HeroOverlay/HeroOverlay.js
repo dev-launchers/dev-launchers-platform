@@ -16,7 +16,7 @@ export default function HeroOverlay() {
             //href="https://forms.gle/ktNmippzfYUTnwgb8"
             hero
           >
-            BECOME A DEVELOPER!
+            hello Jeandre
           </Button>
         </Link>
       </div>
