@@ -24,21 +24,48 @@ export default function WeeksGlance() {
         });
         setEventList(tempEventList);
         response.data.collection.forEach(function(entry) {
-          tempEventTimes.push(entry.name);
+          tempEventTimes.push(entry.start_time);
         });
-        tempEventTimes.push(entry.name);
+        setEntryTimes(tempEventTimes);
       })
       .catch(err => {
         console.error(err);
       });
   };
   React.useEffect(componentDidMount, []);
+  let monday = ["Monday"];
+  let tuesday = ["Tuesday"];
+  let wednesday = ["Wednesday"];
+  let thursday = ["Thursday"];
+  let friday = ["Friday"];
+  let saturday = ["Saturday"];
+  let sunday = ["Sunday"];
+
+  let weekday = [];
+  weekday[0] = sunday;
+  weekday[1] = monday;
+  weekday[2] = tuesday;
+  weekday[3] = wednesday;
+  weekday[4] = thursday;
+  weekday[5] = friday;
+  weekday[6] = saturday;
   return (
-    <WeekCalendar>
+    <Wrapper>
       {eventList.map((entry, index) => {
         return entry;
       })}
-      ;
-    </WeekCalendar>
+      {entryTimes.map((entry, index) => {
+        var n = weekday[new Date(entry).getUTCDay()];
+        n.append(entry);
+        return entry;
+      })}
+      ;<CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+      <CalendarContainer></CalendarContainer>
+    </Wrapper>
   );
 }

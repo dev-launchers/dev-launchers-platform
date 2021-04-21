@@ -23,7 +23,7 @@ export const WeekCalendar = Styled.div`
     "Friday"
     "Saturday";
 `;
-export const Title = styled.span`
+export const Title = Styled.span`
   grid-row: 1;
   align-self: end;
 `;
