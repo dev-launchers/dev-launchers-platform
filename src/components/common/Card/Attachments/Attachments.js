@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import style from "./Attachments.module.css";
+import {
+  AttachmentLink,
+  AttachmentLinkContainer,
+  AttachmentImg,
+  AttachmentImgContainer
+} from "./StyledAttachments.js";
 
 export default function Attachments(props) {
   const [showAttachment, setShowAttachment] = useState(true);
@@ -8,31 +13,20 @@ export default function Attachments(props) {
 
   return (
     <div>
-      <div className={style.attachmentImgContainer}>
-        <img
-          src={"images/Attachment.png"}
-          onClick={() => imageClick()}
-          className={style.attachmentImg}
-          alt="attachment-icon"
-        ></img>
-      </div>
+      <AttachmentImgContainer>
+        <AttachmentImg onClick={() => imageClick()} />
+      </AttachmentImgContainer>
 
       {showAttachment && (
-        <div className={style.attachmentLinkContainer}>
+        <AttachmentLinkContainer>
           {JSON.parse(props.data).map((item, i) => {
             return (
-              <a
-                href={item.href}
-                className={style.attachmentLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={i}
-              >
+              <AttachmentLink href={item.href} key={i}>
                 {item.name}
-              </a>
+              </AttachmentLink>
             );
           })}
-        </div>
+        </AttachmentLinkContainer>
       )}
     </div>
   );
