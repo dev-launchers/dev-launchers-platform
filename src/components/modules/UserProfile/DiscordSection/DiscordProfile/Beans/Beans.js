@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import style from "./Beans.module.css";
 import { env } from "../../../../../../utils/EnvironmentVariables.js";
 
-const DISCORD_API = "http://localhost:8000";
 export default function Beans({ discordId }) {
   const [devBeans, setDevBeans] = useState(0);
   const [goldenBeans, setGoldenBeans] = useState(0);
