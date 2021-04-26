@@ -1,4 +1,6 @@
-.photoHolder {
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -24,10 +26,10 @@
   background-size: cover;
   background-position: top;
   background-blend-mode: overlay;
-}
 
-@media (orientation: portrait) {
-  .photoHolder > h2 {
-    font-size: 3.5rem;
+  @media (orientation: portrait) {
+    & > h2 {
+      font-size: 3.5rem;
+    }
   }
-}
+`;

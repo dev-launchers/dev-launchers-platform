@@ -1,20 +1,6 @@
-.headerDark {
-  background-color: #333333;
-  background-color: #3a424f;
-  color: white;
-  margin-top: 0%;
-  padding: 3%;
+import styled from "styled-components";
 
-  /*background-color: rgb(220, 220, 220);*/
-  /*margin-top: 2%;*/
-  background-image: url("../../../../images/members/photos/adults-coding.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-  background-blend-mode: overlay;
-}
-
-.headerLight {
+export const HeaderLight = styled.div`
   padding: 5%;
   padding-top: 1%;
   padding-bottom: 1%;
@@ -28,35 +14,34 @@
   background-size: cover;
   background-position: top;
   background-blend-mode: overlay;
-}
+`;
 
-.descriptionArea {
+export const DescriptionArea = styled.div`
   margin-top: 5%;
   margin-bottom: 7.5%;
-}
+`;
 
-.descriptionTimeslotArea {
+export const DescriptionTimeslotArea = styled.div`
   width: 90%;
   display: flex;
   margin-left: auto;
   margin-right: auto;
   margin-top: 2%;
   justify-content: space-around;
-}
 
-.descriptionTimeslotBox {
-  width: 27.5%;
-  border: 5px solid black;
-  padding: 1%;
-}
-
-@media (orientation: portrait) {
-  .descriptionTimeslotArea {
+  @media (orientation: portrait) {
     width: 100%;
     flex-direction: column;
   }
-  .descriptionTimeslotBox {
+`;
+
+export const DescriptionTimeslotBox = styled.div`
+  width: 27.5%;
+  border: 5px solid black;
+  padding: 1%;
+
+  @media (orientation: portrait) {
     width: 90%;
     margin: 5%;
   }
-}
+`;

@@ -1,10 +1,5 @@
 import React, { useRef } from "react";
 
-import PageBody from "../../common/PageBody";
-import Button from "../../common/Button";
-
-import style from "./MentorshipTiers.module.css";
-
 import IntroArea from "./IntroArea";
 import ProgramDescriptionArea from "./ProgramDescriptionArea";
 import LevelDescriptionArea from "./LevelDescriptionArea";
