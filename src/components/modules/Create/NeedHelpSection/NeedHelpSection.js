@@ -1,5 +1,4 @@
 import React from "react";
-import style from "./NeedHelpSection.module.css";
 
 import GameIdeaGeneratorButton from "./IdeaGeneratorButton/GameIdeaGeneratorButton";
 import AppIdeaGeneratorButton from "./IdeaGeneratorButton/AppIdeaGeneratorButton";
