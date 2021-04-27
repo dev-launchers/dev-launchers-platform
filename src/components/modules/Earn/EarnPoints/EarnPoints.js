@@ -1,5 +1,11 @@
 import React from "react";
-import styles from "./EarnPoints.module.css";
+import {
+  Tasks,
+  TasksRow,
+  TasksCategory,
+  TasksDescription,
+  TasksValue
+} from "./StyledEarnPoints";
 
 // Get content data
 let rewards = require("../../../../content/collections/rewards.json").data;
@@ -8,7 +14,7 @@ export default function EarnPoints() {
   return (
     <div>
       <h2>Earn points</h2>
-      <table className={styles.tasks}>
+      <Tasks>
         <tbody>
           <th>
             <td>For Everyone</td>
@@ -30,19 +36,15 @@ export default function EarnPoints() {
             let toRender = [];
             for (let category in categories) {
               let tasks = categories[category];
-              toRender.push(
-                <tr className={styles.tasksCategory}>{category}</tr>
-              );
+              toRender.push(<TasksCategory>{category}</TasksCategory>);
               toRender.push(
                 tasks.map(task => {
                   console.log(task);
                   return (
-                    <tr className={styles.tasksRow}>
-                      <td className={styles.tasksDescription}>
-                        {task.description}
-                      </td>
-                      <td className={styles.tasksValue}>{task.value}</td>
-                    </tr>
+                    <TasksRow>
+                      <TasksDescription>{task.description}</TasksDescription>
+                      <TasksValue>{task.value}</TasksValue>
+                    </TasksRow>
                   );
                 })
               );
@@ -50,7 +52,7 @@ export default function EarnPoints() {
             return toRender;
           })()}
         </tbody>
-      </table>
+      </Tasks>
     </div>
   );
 }

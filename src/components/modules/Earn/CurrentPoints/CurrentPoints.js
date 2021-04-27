@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./CurrentPoints.module.css";
 
 import { useLeaderboardContext } from "../../../../context/LeaderboardContext.js";
+import { Table, TableColumnHeading } from "./StyledCurrentPoints";
 
 export default function CurrentPoints() {
   const { leaderboard } = useLeaderboardContext();
@@ -12,12 +12,12 @@ export default function CurrentPoints() {
         Leaderboard
         <span style={{ fontSize: "1rem" }}>(Ranked by points!)</span>
       </h2>
-      <table className={styles.table}>
+      <Table>
         <tbody>
           <tr>
-            <td className={styles.tableColumnHeading}>Name</td>
-            <td className={styles.tableColumnHeading}>Points</td>
-            <td className={styles.tableColumnHeading}>XP</td>
+            <TableColumnHeading>Name</TableColumnHeading>
+            <TableColumnHeading>Points</TableColumnHeading>
+            <TableColumnHeading>XP</TableColumnHeading>
           </tr>
           {Object.keys(leaderboard) !== 0 &&
             leaderboard
@@ -45,7 +45,7 @@ export default function CurrentPoints() {
                 );
               })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }

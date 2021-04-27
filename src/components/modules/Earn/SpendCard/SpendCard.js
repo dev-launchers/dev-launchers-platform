@@ -1,18 +1,18 @@
 import React from "react";
-import styles from "./SpendCard.module.css";
+import { Entry, EntryCost, EntryTitle, EntryContent } from "./StyledSpendCard";
 
 export default function SpendCard(props) {
   return (
-    <div className={styles.entry}>
-      <div className={styles.entryTitle}>{props.entry.title}</div>
-      <div className={styles.entryContent}>
+    <Entry>
+      <EntryTitle>{props.entry.title}</EntryTitle>
+      <EntryContent>
         {props.entry.description}
         <br />
         <br />
-        <b className={styles.entryCost}>
+        <EntryCost>
           {props.entry.cost} <span>Points</span>
-        </b>
-      </div>
-    </div>
+        </EntryCost>
+      </EntryContent>
+    </Entry>
   );
 }
