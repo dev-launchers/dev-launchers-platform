@@ -1,37 +1,45 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=EB+Garamond&family=Roboto&family=Vollkorn&display=swap");
+import styled from "styled-components";
 
-.articleHeading1 {
+export const ArticleHeading1 = styled.h1`
   font-family: "Roboto", sans-serif;
   font-size: 3rem;
-}
-.articleHeading2 {
+`;
+
+export const ArticleHeading2 = styled.h2`
   font-family: "Roboto", sans-serif;
   font-size: 2.5rem;
   margin-top: 2rem;
-}
-.articleHeading3 {
+`;
+
+export const ArticleHeading3 = styled.h3`
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   margin-top: 2rem;
-}
-.articleHeading4 {
+`;
+
+export const ArticleHeading4 = styled.h4`
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   margin-top: 2rem;
-}
+`;
 
-.articleContainer {
+export const ArticleContainer = styled.div`
   padding-left: 20%;
   padding-right: 20%;
   color: rgba(0, 0, 0, 0.84);
-}
 
-.titleArea {
+  @media (orientation: portrait) {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+`;
+
+export const TitleArea = styled.div`
   font-family: "Vollkorn", serif;
   text-align: center;
-}
+`;
 
-.subTitleArea {
+export const SubTitleArea = styled.div`
   width: 80%;
   text-align: right;
   margin-left: auto;
@@ -40,56 +48,51 @@
   margin-bottom: 0;
   font-size: 4rem;
   color: #555555;
-}
+`;
 
-.articleIntroImage {
+export const ArticleIntroImage = styled.img`
   width: 105vw;
   max-width: 105vw;
   margin-left: -25vw;
-}
 
-.articleBody {
+  @media (orientation: portrait) {
+    margin-left: -15vw;
+  }
+`;
+
+export const ArticleBody = styled.div`
   font-family: "Vollkorn", serif;
-}
+`;
 
-.articleParagraph {
+export const ArticleParagraph = styled.p`
   font-size: 1.3rem;
   font-weight: light;
   min-height: 1rem;
   text-indent: 3rem;
-}
-.articleIframe {
+`;
+
+export const ArticleIframe = styled.div`
   width: 105vw;
   max-width: 105vw;
   height: 95vh;
   margin-left: -25vw;
-}
 
-.articleImage {
-  max-width: 100%;
-}
-
-.articleLink {
-  font-weight: bold;
-  text-decoration: underline;
-  color: rgba(0, 0, 0, 0.84);
-}
-.articleLink:hover {
-  color: black;
-}
-
-@media (orientation: portrait) {
-  .articleContainer {
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-
-  .articleIntroImage {
-    margin-left: -15vw;
-  }
-
-  .articleIframe {
+  @media (orientation: portrait) {
     height: 95vh;
     margin-left: -15vw;
   }
-}
+`;
+
+export const ArticleImage = styled.img`
+  max-width: 100%;
+`;
+
+export const ArticleLink = styled.a`
+  font-weight: bold;
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.84);
+
+  :hover {
+    color: black;
+  }
+`;

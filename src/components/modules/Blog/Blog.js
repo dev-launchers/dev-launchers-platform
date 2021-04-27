@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 
 import {
   FacebookShareButton,
@@ -18,7 +18,21 @@ import { Image, Date, RichText, Elements } from "prismic-reactjs";
 import PageBody from "../../../components/common/PageBody";
 import ArticleInfoBar from "./ArticleInfoBar";
 
-import style from "./Blog.module.css";
+import {
+  ArticleHeading1,
+  ArticleHeading2,
+  ArticleHeading3,
+  ArticleHeading4,
+  ArticleContainer,
+  TitleArea,
+  SubTitleArea,
+  ArticleIntroImage,
+  ArticleBody,
+  ArticleParagraph,
+  ArticleIframe,
+  ArticleImage,
+  ArticleLink
+} from "./StyledBlog.js";
 
 export default function Blog(props) {
   const authorId = props.authorId;
@@ -82,37 +96,30 @@ export default function Blog(props) {
         ? articles.map(article => {
             if (article.uid == articleId) {
               return (
-                <div className={style.articleContainer}>
-                  <div className={style.titleArea}>
+                <ArticleContainer>
+                  <TitleArea>
                     <RichText
-                      className={style.articleTitle}
                       render={article.data.title}
                       htmlSerializer={htmlSerializer}
                     />
-                  </div>
-                  <div className={style.subTitleArea}>
-                    <RichText
-                      className={style.articleSubTitle}
-                      render={article.data.sub_title}
-                    />
-                  </div>
+                  </TitleArea>
+                  <SubTitleArea>
+                    <RichText render={article.data.sub_title} />
+                  </SubTitleArea>
                   <ArticleInfoBar article={article} />
-                  <img
-                    className={style.articleIntroImage}
-                    src={article.data.intro_image.url}
-                  />
-                  <div className={style.articleBody}>
+                  <ArticleIntroImage src={article.data.intro_image.url} />
+                  <ArticleBody>
                     <RichText
                       render={article.data.body}
                       htmlSerializer={htmlSerializer}
                     />
-                  </div>
+                  </ArticleBody>
                   <br />
                   <hr />
                   <br />
                   <ArticleInfoBar article={article} />
                   <br />
-                </div>
+                </ArticleContainer>
               );
               //return <div dangerouslySetInnerHTML={{ __html: article.text }} />;
             }
@@ -135,42 +142,42 @@ const htmlSerializer = function(type, element, content, children, key) {
   switch (type) {
     // Add a class to paragraph elements
     case Elements.heading1:
-      props = { className: style.articleHeading1 };
-      return React.createElement(
-        "h1",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <ArticleHeading1 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </ArticleHeading1>
       );
     case Elements.heading2:
-      props = { className: style.articleHeading2 };
-      return React.createElement(
-        "h2",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <ArticleHeading2 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </ArticleHeading2>
       );
     case Elements.heading3:
-      props = { className: style.articleHeading3 };
-      return React.createElement(
-        "h3",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <ArticleHeading3 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </ArticleHeading3>
       );
     case Elements.heading4:
-      props = { className: style.articleHeading4 };
-      return React.createElement(
-        "h4",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <ArticleHeading4 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </ArticleHeading4>
       );
     case Elements.heading5:
-      props = { className: style.articleHeading5 };
+      props = {};
       return React.createElement(
         "h5",
         propsWithUniqueKey(props, key),
         children
       );
     case Elements.heading6:
-      props = { className: style.articleHeading6 };
+      props = {};
       return React.createElement(
         "h6",
         propsWithUniqueKey(props, key),
@@ -183,31 +190,28 @@ const htmlSerializer = function(type, element, content, children, key) {
       // Check if this might be an iframe....
       if (element.text.indexOf("<iframe") == 0) {
         props = {
-          className: style.articleIframe,
           dangerouslySetInnerHTML: { __html: element.text }
         };
-        let iframeHolder = React.createElement(
-          "div",
-          propsWithUniqueKey(props, key)
+        let iframeHolder = (
+          <ArticleIframe {...propsWithUniqueKey(props, key)} />
         );
         return iframeHolder;
       } else {
-        props = { className: style.articleParagraph };
-        return React.createElement(
-          "p",
-          propsWithUniqueKey(props, key),
-          children
+        props = {};
+        return (
+          <ArticleParagraph {...propsWithUniqueKey(props, key)}>
+            {children}
+          </ArticleParagraph>
         );
       }
 
     // Don't wrap images in a <p> tag
     case Elements.image:
       props = {
-        className: style.articleImage,
         src: element.url,
         alt: element.alt || ""
       };
-      return React.createElement("img", propsWithUniqueKey(props, key));
+      return <ArticleImage {...propsWithUniqueKey(props, key)} />;
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
@@ -217,13 +221,16 @@ const htmlSerializer = function(type, element, content, children, key) {
       const relAttr = element.data.target ? { rel: "noopener" } : {};
       props = Object.assign(
         {
-          className: style.articleLink,
           href: element.data.url //|| linkResolver(element.data)
         },
         targetAttr,
         relAttr
       );
-      return React.createElement("a", propsWithUniqueKey(props, key), children);
+      return (
+        <ArticleLink {...propsWithUniqueKey(props, key)}>
+          {Children}
+        </ArticleLink>
+      );
 
     // Return null to stick with the default behavior
     default:

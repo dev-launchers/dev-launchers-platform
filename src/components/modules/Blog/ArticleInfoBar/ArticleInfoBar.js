@@ -11,14 +11,18 @@ import {
   TwitterIcon
 } from "react-share";
 
-import style from "./ArticleInfoBar.module.css";
+import {
+  ArticleInfoArea,
+  InfoBlurb,
+  SocialIconsArea
+} from "./StyledArticleInfoBar.js";
 
 export default function ArticleInfoBar(props) {
   const article = props.article;
 
   return (
-    <div className={style.articleInfoArea}>
-      <div className={style.infoBlurb}>
+    <ArticleInfoArea>
+      <InfoBlurb>
         <div
           style={{
             position: "relative",
@@ -43,8 +47,8 @@ export default function ArticleInfoBar(props) {
           <br />
           {article.data.date}
         </div>
-      </div>
-      <div className={style.socialIconsArea}>
+      </InfoBlurb>
+      <SocialIconsArea>
         <TwitterShareButton url={window.location}>
           <TwitterIcon round={true} />
         </TwitterShareButton>
@@ -57,7 +61,7 @@ export default function ArticleInfoBar(props) {
         <RedditShareButton url={window.location}>
           <RedditIcon round={true} />
         </RedditShareButton>
-      </div>
-    </div>
+      </SocialIconsArea>
+    </ArticleInfoArea>
   );
 }
