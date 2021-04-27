@@ -1,7 +1,8 @@
 import Styled from "styled-components";
 
-export const Bio = Styled.textarea`
-
-resize: none;
+export const Wrapper = Styled.div`
 `;
-export const Edit = Styled.button``;
+export const Bio = Styled.textarea`
+resize: none;
+width: 99%;
+`;

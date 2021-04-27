@@ -1,7 +1,6 @@
 import React from "react";
+import Wrapper from "./StyledPageBody";
 
-import style from "./PageBody.module.css";
-
-export default function PageBody({ children }) {
-  return <div className={style.PageBody}>{children}</div>;
+export default function PageBody(props) {
+  return <Wrapper style={props.style}>{props.children}</Wrapper>;
 }

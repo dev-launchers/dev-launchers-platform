@@ -1,5 +1,6 @@
 import React from "react";
 //import style from "./HomeRoute.module.css";
+import Head from "next/head";
 
 import Header from "../components/common/Header";
 import Home from "../components/modules/Home";
@@ -12,6 +13,14 @@ export default function Index() {
 
   return (
     <div>
+      <Head>
+        <meta property="og:title" content="Dev Launchers" key="title" />
+        <meta
+          property="og:description"
+          content="Launching your imagination, to heights unimaginable"
+          key="title"
+        />
+      </Head>
       <Header />
       <Home />
       <Footer />

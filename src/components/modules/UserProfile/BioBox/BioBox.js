@@ -1,22 +1,50 @@
-import React from "react";
-import { Bio, Edit } from "./StyledBioBox";
+import axios from "axios";
+import React, { useState } from "react";
 
-export default function BioBox() {
+import { Wrapper, Bio } from "./StyledBioBox";
+
+import { env } from "../../../../utils/EnvironmentVariables.js";
+
+export default function BioBox({ data }) {
+  const [bioText, setBioText] = useState(data.bio);
+  const [isReadOnly, setIsReadOnly] = useState(true);
+  const handleTextChange = e => {
+    setBioText(e.target.value);
+  };
+
+  const sendText = () => {
+    axios
+      .put(
+        env().API_URL + `/users/${data.id}/profile`,
+        { bio: bioText },
+        { withCredentials: true }
+      )
+      .then(res => {
+        console.log(res);
+        setIsReadOnly(true);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
   return (
-    <div>
+    <Wrapper>
       <br />
-      <h4>Tell us about yourself!</h4>
       <Bio
         rows="4"
         cols="50"
-        placeholder="write ur bio here"
+        placeholder="Write your bio here!"
         maxlength="144"
+        value={bioText}
+        onChange={handleTextChange}
+        readOnly={isReadOnly}
       ></Bio>
-
       <br />
-      <Edit onclick="changeContent()">Edit</Edit>
-      {/*make this so that when they click Edit, it turns into a
-      Save button */}
-    </div>
+      {isReadOnly ? (
+        <button onClick={e => setIsReadOnly(false)}>Edit</button>
+      ) : (
+        <button onClick={sendText}>Save</button>
+      )}
+    </Wrapper>
   );
 }

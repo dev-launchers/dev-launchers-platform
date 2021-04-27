@@ -2,6 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  annotations:
+    fluxcd.io/tag.platform-website: semver:*
   name: platform-website
   namespace: platform-website
 spec:
@@ -10,5 +12,15 @@ spec:
       $setElementOrder/containers:
       - name: platform-website
       containers:
-      - image: devlaunchers/platform-website:sha-86eded3
+      - $setElementOrder/env:
+        - name: GOOGLE_AUTH_URL
+        - name: DISCORD_AUTH_URL
+        - name: BROWSER
+        - name: CI
+        env:
+        - name: GOOGLE_AUTH_URL
+          value: https://api.devlaunchers.com/auth/google
+        - name: DISCORD_AUTH_URL
+          value: https://discord.com/api/oauth2/authorize?client_id=709889509864636496&redirect_uri=https%3A%2F%2Fapi.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify
+        image: devlaunchers/platform-website:1.1.2
         name: platform-website
