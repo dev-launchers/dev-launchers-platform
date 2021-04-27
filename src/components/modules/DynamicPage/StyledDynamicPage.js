@@ -1,14 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=EB+Garamond&family=Roboto&family=Vollkorn&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Holtwood+One+SC&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Abel&display=swap");
+import styled from "styled-components";
 
-.pageContainer {
+export const PageContainer = styled.div`
   padding-left: 5%;
   padding-right: 5%;
   color: rgba(0, 0, 0, 0.84);
-}
 
-.introArea {
+  @media (orientation: portrait) {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+`;
+
+export const IntroArea = styled.div`
   position: relative;
   width: 100vw;
   max-width: 100vw;
@@ -19,14 +22,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+`;
 
-.introImage {
+export const IntroImage = styled.img`
   width: 100vw;
   max-width: 100vw;
-}
+`;
 
-.titleArea {
+export const TitleArea = styled.div`
   position: absolute;
   bottom: 10vh;
   left: 5vw;
@@ -35,80 +38,66 @@
   text-align: left;
   color: white;
   text-shadow: 0.5vw 0.5vw black;
-}
+`;
 
-.pageBody {
+export const BodyContent = styled.div`
   /*font-family: "Vollkorn", serif;*/
   font-family: sans-serif;
   font-family: "Abel", sans-serif;
-}
+`;
 
-.pageHeading1 {
+export const PageHeading1 = styled.h1`
   font-family: "Holtwood One SC", serif;
   font-size: 5rem;
-}
-.pageHeading2 {
+
+  @media (orientation: portrait) {
+    font-size: 3rem;
+  }
+`;
+export const PageHeading2 = styled.h2`
   font-family: "Holtwood One SC", serif;
   font-size: 2.5rem;
   margin-top: 2rem;
-}
-.pageHeading3 {
+`;
+export const PageHeading3 = styled.h3`
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
   margin-top: 2rem;
-}
-.pageHeading4 {
+`;
+export const PageHeading4 = styled.h4`
   font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   margin-top: 2rem;
-}
+`;
 
-.pageParagraph {
+export const PageParagraph = styled.p`
   font-size: 1.5rem;
   font-weight: light;
   min-height: 1rem;
   //text-indent: 3rem;
-}
-.pageIframe {
+`;
+export const PageIframe = styled.div`
   width: 100%;
   max-width: 100%;
   /*height: 95vh;*/
   /*margin-left: 0vw;*/
-}
-.pageIframe iframe {
-  width: 100%;
-}
 
-.pageImage {
+  iframe {
+    width: 100%;
+  }
+`;
+
+export const PageImage = styled.img`
   max-width: 100%;
-}
+`;
 
-.pageLink {
+export const PageLink = styled.a`
   font-weight: bold;
   text-decoration: underline;
   /*color: rgba(0, 0, 0, 0.84);*/
   color: #0000ee;
-}
-.pageLink:hover {
-  color: black;
-}
 
-@media (orientation: portrait) {
-  .pageContainer {
-    padding-left: 5%;
-    padding-right: 5%;
+  :hover {
+    color: black;
   }
-
-  .pageIntroImage {
-    margin-left: -15vw;
-  }
-
-  .pageHeading1 {
-    font-size: 3rem;
-  }
-
-  .pageIframe {
-    /*height: 95vh;*/
-    /*margin-left: 0vw;*/
-  }
-}
+`;
