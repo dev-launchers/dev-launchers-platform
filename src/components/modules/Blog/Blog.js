@@ -228,7 +228,7 @@ const htmlSerializer = function(type, element, content, children, key) {
       );
       return (
         <ArticleLink {...propsWithUniqueKey(props, key)}>
-          {Children}
+          {children}
         </ArticleLink>
       );
 
