@@ -3,7 +3,8 @@ import { Wrapper, CalendarContainer, WeekCalendar } from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
 
-export default function WeeksGlance() {
+export default function WeeksGlance(props) {
+  console.log(props);
   const [eventList, setEventList] = useState([]);
   const [eventTimes, setEventTimes] = useState([]);
 
@@ -39,27 +40,10 @@ export default function WeeksGlance() {
   };
   React.useEffect(componentDidMount, []);
 
-  //each array should hold a list of events
-  let monday = ["Monday"];
-  let tuesday = ["Tuesday"];
-  let wednesday = ["Wednesday"];
-  let thursday = ["Thursday"];
-  let friday = ["Friday"];
-  let saturday = ["Saturday"];
-  let sunday = ["Sunday"];
-
-  //each index
-  let weekday = [];
-  weekday[0] = sunday;
-  weekday[1] = monday;
-  weekday[2] = tuesday;
-  weekday[3] = wednesday;
-  weekday[4] = thursday;
-  weekday[5] = friday;
-  weekday[6] = saturday;
-
   return (
     <Wrapper>
+    for each object in the event objects array
+    {
       {eventList.map((entry, index) => {
         return entry;
       })}
