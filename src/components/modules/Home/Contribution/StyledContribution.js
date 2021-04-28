@@ -1,37 +1,26 @@
-.Contribution {
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
   padding-top: 5%;
   padding-bottom: 5%;
-}
+`;
 
-.CtaSection {
-}
-
-.CtaSection_Title {
-  text-align: center;
-}
-
-.CtaSection_Content {
+export const CtaSectionContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
+`;
 
-.CtaSection_Description {
+export const CtaSectionDescription = styled.div`
   text-align: center;
   width: 50%;
-}
+`;
 
-.CtaSection_ButtonArea {
+export const CtaSectionButtonArea = styled.div`
   margin-top: 4%;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.CtaSection_Button {
-}
-
-@media (orientation: portrait) {
-}
+`;

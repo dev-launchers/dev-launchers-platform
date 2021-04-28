@@ -1,17 +1,13 @@
 import React from "react";
-import style from "./LogoImage.module.css";
+import { PartnerEntry, PartnerEntryImage } from "./StyledLogoImage";
 
 function LogoImage(props) {
   return (
-    <div className={style.PartnerEntry}>
+    <PartnerEntry>
       <a href={props.href} target="_blank">
-        <img
-          className={style.PartnerEntryImage}
-          width={props.width}
-          src={props.src}
-        />
+        <PartnerEntryImage width={props.width} src={props.src} />
       </a>
-    </div>
+    </PartnerEntry>
   );
 }
 

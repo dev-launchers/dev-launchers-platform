@@ -1,8 +1,14 @@
 import React from "react";
 
-import style from "./MentorSignup.module.css";
-
 import PageBody from "../../../../components/common/PageBody";
+import {
+  ContentArea,
+  CtaWrapper,
+  EmailInput,
+  ExperienceText,
+  NameInput,
+  Submit
+} from "./StyledMentorSignup";
 
 export default function MentorSignup() {
   return (
@@ -17,46 +23,35 @@ export default function MentorSignup() {
             take a look around and join us!
           </p>
         </div>
-        <div className={style.contentArea}>
-          <div className={style.ctaWrapper}>
-            <div className={style.ctaForm}>
+        <ContentArea>
+          <CtaWrapper>
+            <div>
               <form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSdO4dFZwe-WXm88v4yzVusFeY6m1OkVN9lpcVs4p-nt2Z9zLA/formResponse">
                 <label className="name">
                   Your name (First and Last)
-                  <input
-                    className={style.nameInput}
-                    name="entry.740968070"
-                    type="text"
-                    required
-                  />
+                  <NameInput name="entry.740968070" type="text" required />
                 </label>
 
                 <label>
                   What is your email?
-                  <input
-                    className={style.emailInput}
-                    name="entry.888140061"
-                    type="email"
-                    required
-                  />
+                  <EmailInput name="entry.888140061" type="email" required />
                 </label>
 
                 <label for="mentorForm">
                   Briefly describe your experience.
                 </label>
-                <textarea
+                <ExperienceText
                   id="mentorForm"
                   rows="5"
-                  className={style.experienceText}
                   name="entry.1084968775"
                   required
                 />
                 <br />
-                <input className={style.submit} type="submit" value="Submit" />
+                <Submit />
               </form>
             </div>
-          </div>
-        </div>
+          </CtaWrapper>
+        </ContentArea>
       </PageBody>
     </div>
   );

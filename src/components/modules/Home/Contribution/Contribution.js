@@ -1,28 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-import style from "./Contribution.module.css";
+import {
+  Wrapper,
+  CtaSectionContent,
+  CtaSectionDescription,
+  CtaSectionButtonArea
+} from "./StyledContribution.js";
 
 import Button from "../../../common/Button";
 
 export default function Contribution() {
   return (
-    <div className={style.Contribution}>
+    <Wrapper>
       <h1 style={{ textAlign: "center" }}>CONTRIBUTE TO OUR PROJECTS</h1>
-      <div className={style.CtaSection}>
-        <div className={style.CtaSection_Content}>
-          <div className={style.CtaSection_Description}>
+      <div>
+        <CtaSectionContent>
+          <CtaSectionDescription>
             Everything, from our platform to our curriculum to the projects we
             develop, is released to the open source community. We rely on
             contributors to grow our platform and continue serving our members!
-          </div>
-          <div className={style.CtaSection_ButtonArea}>
+          </CtaSectionDescription>
+          <CtaSectionButtonArea>
             <Button fontSize="2rem" href="https://github.com/dev-launchers">
               Find us on GitHub
             </Button>
-          </div>
-        </div>
+          </CtaSectionButtonArea>
+        </CtaSectionContent>
       </div>
-    </div>
+    </Wrapper>
   );
 }

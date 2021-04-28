@@ -1,7 +1,5 @@
 import React from "react";
 
-import style from "./Partners.module.css";
-
 import LogoImage from "./LogoImage/LogoImage.js";
 import Card from "../../../common/Card/Card.js";
 
@@ -12,10 +10,11 @@ import codesandboxImage from "../../../../images/home-page/codesandbox.png";
 import phaser3Image from "../../../../images/home-page/phaser-3.png";
 import pixilArtImage from "../../../../images/home-page/pixilart-logo.png";
 import reactImage from "../../../../images/home-page/react-logo.png";
+import { PartnerList, Wrapper } from "./StyledPartners";
 
 export default function Partners() {
   return (
-    <div className={style.Partners}>
+    <Wrapper>
       <h1>CHECK OUT OUR EXTENDED FAMILY</h1>
       <p>
         We partner with organizations doing outreach to bring in a diverse range
@@ -23,15 +22,15 @@ export default function Partners() {
         continue to do what we love! Click an image to learn more.
       </p>
       <h3>Partners</h3>
-      <div className={style.PartnerList}>
+      <PartnerList>
         <LogoImage
           href="https://library.austintexas.gov/"
           src={austinLibraryImage}
           width="75%"
         />
-      </div>
+      </PartnerList>
       <h3>Sponsors</h3>
-      <div className={style.PartnerList}>
+      <PartnerList>
         <LogoImage
           href="https://www.aseprite.org/"
           src={aespriteImage}
@@ -42,9 +41,9 @@ export default function Partners() {
           src={kraftiesImage}
           width="60%"
         />
-      </div>
+      </PartnerList>
       <h3>Products and Tools</h3>
-      <div className={style.PartnerList}>
+      <PartnerList>
         <LogoImage
           href="https://codesandbox.io/"
           src={codesandboxImage}
@@ -61,9 +60,9 @@ export default function Partners() {
           width="60%"
         />
         <LogoImage href="https://reactjs.org/" src={reactImage} width="60%" />
-      </div>
+      </PartnerList>
       <div />
       <div />
-    </div>
+    </Wrapper>
   );
 }
