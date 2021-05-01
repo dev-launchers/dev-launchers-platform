@@ -90,7 +90,7 @@ const Labs = ({ events, currentTime, currentTimeSetter }) => {
 
         return currentEvent.length == 0 ? (
           <Lab key={i} style={{ gridArea }}>
-            <Time>No sessions today</Time>
+            <Time style={{ color: "#333333" }}>No sessions today</Time>
             <Title>{labTitle}</Title>
             <AlignedDropdown
               toggleBtnText="Join"
