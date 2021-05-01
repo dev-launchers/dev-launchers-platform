@@ -6,7 +6,6 @@ import { DateTime } from "luxon";
 export default function WeeksGlance(props) {
   console.log(props);
   const [eventList, setEventList] = useState([]);
-  const [eventTimes, setEventTimes] = useState([]);
 
   const todaysDate = DateTime.now().setZone("UTC-5");
   const oneWeekFromNow = todaysDate.plus({ days: 7 });
@@ -24,15 +23,17 @@ export default function WeeksGlance(props) {
       .then(response => {
         console.log(response);
         let tempEventList = [];
-        let tempEventTimes = [];
         response.data.collection.forEach(function(entry) {
-          tempEventList.push(entry.name);
+          tempEventList.push({
+            name: entry.name,
+            time: ` ${DateTime.fromJSDate(new Date(entry.start_time)).toFormat(
+              "t"
+            )}`,
+            id: ` ${DateTime.fromJSDate(new Date(entry.start_time)).weekday}`
+          });
         });
+        console.log(tempEventList);
         setEventList(tempEventList);
-        response.data.collection.forEach(function(entry) {
-          tempEventTimes.push(entry.start_time);
-        });
-        setEventTimes(tempEventTimes);
       })
       .catch(err => {
         console.error(err);
@@ -42,18 +43,11 @@ export default function WeeksGlance(props) {
 
   return (
     <Wrapper>
-    for each object in the event objects array
-    {
       {eventList.map((entry, index) => {
-        return entry;
-      })}
-      {eventTimes.map((entry, index) => {
         return (
-          " " +
-          `Day ${DateTime.fromJSDate(new Date(entry)).toFormat(
-            "cccc"
-          )} ${DateTime.fromJSDate(new Date(entry)).toFormat("t")}` +
-          ", "
+          <p key={`${entry.name}_${entry.time}`}>
+            {entry.name} - {entry.time}
+          </p>
         );
       })}
     </Wrapper>

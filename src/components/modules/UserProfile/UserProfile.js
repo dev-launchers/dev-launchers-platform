@@ -52,6 +52,7 @@ export default function UserProfile() {
                 volunteerHours={userData.volunteerHours}
               />
               <BioBox data={userData}>{userData.bio}</BioBox>
+              <WeeksGlance />
             </UserInfo>
           </UserSection>
           <LabCampus />
