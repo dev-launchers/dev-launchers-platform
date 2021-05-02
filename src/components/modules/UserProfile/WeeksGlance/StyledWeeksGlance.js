@@ -11,8 +11,7 @@ export const Day = Styled.div`
   display: flex;
   flex-wrap: wrap;
   background: bisque;
-  background-color: #ffab00;
-  margin: auto;
+  background-color: #ff7f0e;
   width: 50%;
 
 ;`;
@@ -20,7 +19,8 @@ export const Day = Styled.div`
 export const Week = Styled.div`
     display: flex;
     color:white;
-flex-direction: column;
+    padding: 2%;
+    flex-direction: column;
     font-size: 20px;
     background-color: #3a7ca5;
 `;
