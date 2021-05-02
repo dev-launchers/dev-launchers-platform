@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Wrapper, CalendarContainer, WeekCalendar } from "./StyledWeeksGlance";
+import { Wrapper, Day, WeekCalendar, Week } from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
 
-export default function WeeksGlance(props) {
-  console.log(props);
+export default function WeeksGlance() {
   const [eventList, setEventList] = useState([]);
 
   const todaysDate = DateTime.now().setZone("UTC-5");
@@ -26,10 +25,8 @@ export default function WeeksGlance(props) {
         response.data.collection.forEach(function(entry) {
           tempEventList.push({
             name: entry.name,
-            time: ` ${DateTime.fromJSDate(new Date(entry.start_time)).toFormat(
-              "t"
-            )}`,
-            id: ` ${DateTime.fromJSDate(new Date(entry.start_time)).weekday}`
+            time: DateTime.fromJSDate(new Date(entry.start_time)).toFormat("t"),
+            weekday: DateTime.fromJSDate(new Date(entry.start_time)).weekday
           });
         });
         console.log(tempEventList);
@@ -41,13 +38,33 @@ export default function WeeksGlance(props) {
   };
   React.useEffect(componentDidMount, []);
 
+  let weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wedensday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  console.log(eventList);
   return (
     <Wrapper>
-      {eventList.map((entry, index) => {
+      {weekdays.map((day, i) => {
         return (
-          <p key={`${entry.name}_${entry.time}`}>
-            {entry.name} - {entry.time}
-          </p>
+          <Week key={i}>
+            {day}
+            {eventList.map(({ name, time, weekday }) => {
+              if (weekday == i + 1) {
+                return (
+                  <Day key={`${name}_${time}`}>
+                    {name} - <br />
+                    {time}
+                  </Day>
+                );
+              }
+            })}
+          </Week>
         );
       })}
     </Wrapper>

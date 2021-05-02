@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   grid-template-areas:
     "UserSection"
+    "WeeksGlance"
     "LabCampus"
     "Misc";
 `;

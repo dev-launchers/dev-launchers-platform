@@ -1,29 +1,26 @@
 import Styled from "styled-components";
-
 export const Wrapper = Styled.div`
-  grid-area: WeekCalendar;
-  text-align: center;
-`;
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: WeeksGlance;
+  flex-direction: column;
+  justify-content:
+;`;
 
-export const CalendarContainer = Styled.div`
+export const Day = Styled.div`
   display: flex;
   flex-wrap: wrap;
   background: bisque;
-`;
+  background-color: #ffab00;
+  margin: auto;
+  width: 50%;
 
-export const WeekCalendar = Styled.div`
-  display: grid;
-  gap: 15px;
-  grid-template-areas:
-    "Sunday"
-    "Monday"
-    "Tuesday"
-    "Wednesday"
-    "Thursday"
-    "Friday"
-    "Saturday";
-`;
-export const Title = Styled.span`
-  grid-row: 1;
-  align-self: end;
+;`;
+
+export const Week = Styled.div`
+    display: flex;
+    color:white;
+flex-direction: column;
+    font-size: 20px;
+    background-color: #3a7ca5;
 `;
