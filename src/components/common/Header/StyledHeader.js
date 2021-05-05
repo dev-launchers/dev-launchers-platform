@@ -66,14 +66,21 @@ export const LogoWords = styled.div`
 `;
 
 export const HeaderNav = styled.div`
-  display: inline;
-  font-size: 1rem;
-  width: 40%;
-  min-width: 300px;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-size: 1rem;
+  width: 40%;
+  min-width: 300px;
+  height: 7.5vh;
+  align-items: center;
+
+  & > a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
   @media (orientation: portrait) {
     display: none;
   }
