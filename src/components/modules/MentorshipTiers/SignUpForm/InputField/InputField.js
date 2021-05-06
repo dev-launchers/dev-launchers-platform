@@ -2,7 +2,7 @@ import React from "react";
 
 import { useForm, useField, splitFormProps } from "react-form";
 
-import style from "./InputField.module.css";
+import { FormInput } from "./StyledInputField";
 
 export default React.forwardRef((props, ref) => {
   // Let's use splitFormProps to get form-specific props
@@ -18,7 +18,7 @@ export default React.forwardRef((props, ref) => {
   // Build the field
   return (
     <>
-      <input {...getInputProps({ ref, ...rest })} className={style.formInput} />
+      <FormInput {...getInputProps({ ref, ...rest })} />
       <div style={{ fontSize: "1rem" }}>
         {/*
           Let's inline some validation and error information

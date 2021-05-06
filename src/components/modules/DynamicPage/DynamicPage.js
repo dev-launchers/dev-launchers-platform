@@ -5,7 +5,21 @@ import { Image, Date, RichText, Elements } from "prismic-reactjs";
 
 import PageBody from "../../../components/common/PageBody";
 
-import style from "./DynamicPage.module.css";
+import {
+  IntroArea,
+  PageContainer,
+  TitleArea,
+  IntroImage,
+  BodyContent,
+  PageHeading1,
+  PageHeading2,
+  PageHeading3,
+  PageHeading4,
+  PageIframe,
+  PageParagraph,
+  PageImage,
+  PageLink
+} from "./StyledDynamicPage";
 
 /* Event snippet for Discord Outbound click conversion page
 In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. */
@@ -100,9 +114,8 @@ export default function DynamicPage(props) {
         ? pages.map(page => {
             if (page.uid == pageId) {
               return (
-                <div className={style.pageContainer}>
-                  <div
-                    className={style.introArea}
+                <PageContainer>
+                  <IntroArea
                     onClick={
                       page.data.intro_image_hyperlink.url
                         ? () => {
@@ -123,26 +136,24 @@ export default function DynamicPage(props) {
                     }}
                   >
                     {/*}
-                    <img
-                      className={style.introImage}
+                    <IntroImage
                       src={page.data.intro_image.url}
                     />
                   {*/}
-                    <div className={style.titleArea}>
+                    <TitleArea>
                       <RichText
-                        className={style.pageTitle}
                         render={page.data.title}
                         htmlSerializer={htmlSerializer}
                       />
-                    </div>
-                  </div>
-                  <div className={style.pageBody}>
+                    </TitleArea>
+                  </IntroArea>
+                  <BodyContent>
                     <RichText
                       render={page.data.body}
                       htmlSerializer={htmlSerializer}
                     />
-                  </div>
-                </div>
+                  </BodyContent>
+                </PageContainer>
               );
             }
           })
@@ -164,42 +175,42 @@ const htmlSerializer = function(type, element, content, children, key) {
   switch (type) {
     // Add a class to paragraph elements
     case Elements.heading1:
-      props = { className: style.pageHeading1 };
-      return React.createElement(
-        "h1",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <PageHeading1 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </PageHeading1>
       );
     case Elements.heading2:
-      props = { className: style.pageHeading2 };
-      return React.createElement(
-        "h2",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <PageHeading2 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </PageHeading2>
       );
     case Elements.heading3:
-      props = { className: style.pageHeading3 };
-      return React.createElement(
-        "h3",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <PageHeading3 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </PageHeading3>
       );
     case Elements.heading4:
-      props = { className: style.pageHeading4 };
-      return React.createElement(
-        "h4",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <PageHeading4 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </PageHeading4>
       );
     case Elements.heading5:
-      props = { className: style.pageHeading5 };
-      return React.createElement(
-        "h5",
-        propsWithUniqueKey(props, key),
-        children
+      props = {};
+      return (
+        <pageHeading5 {...propsWithUniqueKey(props, key)}>
+          {children}
+        </pageHeading5>
       );
     case Elements.heading6:
-      props = { className: style.pageHeading6 };
+      props = {};
       return React.createElement(
         "h6",
         propsWithUniqueKey(props, key),
@@ -212,27 +223,22 @@ const htmlSerializer = function(type, element, content, children, key) {
       // Check if this might be an iframe....
       if (element.text.indexOf("<iframe") == 0) {
         props = {
-          className: style.pageIframe,
           dangerouslySetInnerHTML: { __html: element.text }
         };
-        let iframeHolder = React.createElement(
-          "div",
-          propsWithUniqueKey(props, key)
-        );
+        let iframeHolder = <PageIframe {...propsWithUniqueKey(props, key)} />;
         return iframeHolder;
       } else {
-        props = { className: style.pageParagraph };
-        return React.createElement(
-          "p",
-          propsWithUniqueKey(props, key),
-          children
+        props = {};
+        return (
+          <PageParagraph {...propsWithUniqueKey(props, key)}>
+            {children}
+          </PageParagraph>
         );
       }
 
     // Don't wrap images in a <p> tag
     case Elements.image:
       props = {
-        className: style.pageImage,
         src: element.url,
         alt: element.alt || ""
       };
@@ -244,7 +250,7 @@ const htmlSerializer = function(type, element, content, children, key) {
         };
         props.style = { cursor: "pointer" };
       }
-      return React.createElement("img", propsWithUniqueKey(props, key));
+      return <PageImage {...propsWithUniqueKey(props, key)} />;
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
@@ -254,13 +260,14 @@ const htmlSerializer = function(type, element, content, children, key) {
       const relAttr = element.data.target ? { rel: "noopener" } : {};
       props = Object.assign(
         {
-          className: style.pageLink,
           href: element.data.url //|| linkResolver(element.data)
         },
         targetAttr,
         relAttr
       );
-      return React.createElement("a", propsWithUniqueKey(props, key), children);
+      return (
+        <PageLink {...propsWithUniqueKey(props, key)}>{children}</PageLink>
+      );
 
     // Return null to stick with the default behavior
     default:

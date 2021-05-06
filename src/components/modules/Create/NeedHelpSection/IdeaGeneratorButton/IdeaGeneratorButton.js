@@ -4,7 +4,7 @@ import React from "react";
 
 import Modal from "../../../../../components/common/Modal";
 
-import style from "./IdeaGeneratorButton.module.css";
+import { Wrapper } from "./StyledIdeaGeneratorButton.js";
 
 export default function IdeaGeneratorButton(props) {
   // Modal state management
@@ -42,7 +42,7 @@ export default function IdeaGeneratorButton(props) {
 
   const generateButton = styleObject => {
     return (
-      <div className={style.ideaGeneratorButton} style={styleObject}>
+      <Wrapper style={styleObject}>
         <Modal
           modalContent={modalContent}
           modalIsOpen={modalIsOpen}
@@ -52,7 +52,7 @@ export default function IdeaGeneratorButton(props) {
         <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
           {props.children}
         </div>
-      </div>
+      </Wrapper>
     );
   };
 

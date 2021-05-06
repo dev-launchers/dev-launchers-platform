@@ -3,7 +3,7 @@ import { useForm, useField, splitFormProps } from "react-form";
 import regeneratorRuntime from "regenerator-runtime";
 import axios from "axios";
 
-import style from "./SignUpForm.module.css";
+import { FormOuter, FormContainer, StyledForm } from "./StyledSignUpForm.js";
 
 import Button from "../../../common/Button";
 import Modal from "../../../common/Modal";
@@ -238,6 +238,7 @@ export default function SignUpForm() {
     }),
     []
   );
+
   const {
     Form,
     values,
@@ -276,10 +277,7 @@ export default function SignUpForm() {
   const [formSubmitted, setFormSubmitted] = React.useState(false);
 
   return (
-    <div
-      className={style.formOuter}
-      style={{ width: "100%", textAlign: "center" }}
-    >
+    <FormOuter style={{ width: "100%", textAlign: "center" }}>
       <Modal
         modalContent={modalContent}
         modalIsOpen={modalIsOpen}
@@ -302,7 +300,7 @@ export default function SignUpForm() {
           )}
         </div>
       ) : (
-        <div className={style.formContainer}>
+        <FormContainer>
           <div
             style={{
               width: "90%",
@@ -320,7 +318,7 @@ export default function SignUpForm() {
             )}
             <div>Apply to our development labs!</div>
           </div>
-          <Form className={style.signUpForm}>
+          <StyledForm as={Form}>
             {formEntries[formPage]}
 
             {submittingForm ? (
@@ -345,7 +343,7 @@ export default function SignUpForm() {
             ) : (
               ""
             )}
-          </Form>
+          </StyledForm>
 
           {formPage < formEntries.length - 1 ? (
             <Button
@@ -369,8 +367,8 @@ export default function SignUpForm() {
           ) : (
             ""
           )}
-        </div>
+        </FormContainer>
       )}
-    </div>
+    </FormOuter>
   );
 }

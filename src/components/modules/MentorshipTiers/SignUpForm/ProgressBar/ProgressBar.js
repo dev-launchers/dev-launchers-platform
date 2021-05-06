@@ -1,14 +1,11 @@
 import React from "react";
 
-import style from "./ProgressBar.module.css";
+import { BarBackground, BarForeground } from "./StyledProgressBar";
 
 export default function ProgressBar(props) {
   return (
-    <div className={style.barBackground} style={props.style}>
-      <div
-        className={style.barForeground}
-        style={{ width: props.progressPercent + "%" }}
-      />
-    </div>
+    <BarBackground style={props.style}>
+      <BarForeground style={{ width: props.progressPercent + "%" }} />
+    </BarBackground>
   );
 }

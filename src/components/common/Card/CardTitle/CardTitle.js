@@ -1,64 +1,24 @@
 import React from "react";
 
-import style from "./CardTitle.module.css";
+import { Heading, Title } from "./StyledCardTitle.js";
 
-import cx from "classnames";
-
-export default function Card(props) {
-  let cardTitleAlignment = props.data.titleAlignment;
-  cardTitleAlignment = props.data.titleAlignment
-    ? props.data.titleAlignment
-    : "left";
-
-  let cardTitleSize = props.data.titleSize;
-  cardTitleSize = props.data.titleSize ? props.data.titleSize : "1.4rem";
-
-  let cardTitleUnderlineColor = props.data.titleUnderlineColor;
-  cardTitleUnderlineColor = props.data.titleUnderlineColor
-    ? props.data.titleUnderlineColor
-    : "#00000000";
-
-  let cardTitleUnderlineThickness = props.data.titleUnderlineThickness;
-  cardTitleUnderlineThickness = props.data.titleUnderlineThickness
-    ? props.data.titleUnderlineThickness
-    : "0.15rem";
-
-  let cardTitleUnderlineType = props.data.titleUnderlineType;
-  cardTitleUnderlineType = props.data.titleUnderlineType
-    ? props.data.titleUnderlineType
-    : "solid";
-
-  let cardTitleUnderline =
-    cardTitleUnderlineThickness +
-    " " +
-    cardTitleUnderlineType +
-    " " +
-    cardTitleUnderlineColor;
-
+export default function CardTitle({ data, attachment }) {
   return (
-    <div
-      className={style.heading}
-      style={{
-        textAlign: cardTitleAlignment,
-        fontSize: cardTitleSize,
-        borderBottom: cardTitleUnderline
+    <Heading
+      cardTitleAlignment={data.titleAlignment}
+      cardTitleSize={data.titleSize}
+      cardTitleUnderline={{
+        color: data.titleUnderlineColor,
+        thickness: data.titleUnderlineThickness,
+        type: data.titleUnderlineType
       }}
     >
-      <a className={style.title} href={props.data.href} target="_blank">
-        {props.data.title}
-      </a>
-      {props.attachment && (
-        <a
-          className={style.attachment}
-          href={props.data.repoUrl}
-          target="_blank"
-        >
-          <img
-            className={style.attachmentImage}
-            src={"images/GitHub-Mark-Light-32px.png"}
-          />
+      <Title href={data.href}>{data.title}</Title>
+      {attachment && (
+        <a href={data.repoUrl} target="_blank">
+          <img src={"images/GitHub-Mark-Light-32px.png"} />
         </a>
       )}
-    </div>
+    </Heading>
   );
 }

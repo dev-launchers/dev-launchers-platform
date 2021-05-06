@@ -2,8 +2,6 @@ import React from "react";
 
 import { useForm, useField, splitFormProps } from "react-form";
 
-import style from "./SelectField.module.css";
-
 export default function SelectField(props) {
   const [field, fieldOptions, { options, ...rest }] = splitFormProps(props);
 

@@ -1,33 +1,18 @@
 import React from "react";
 import Card from "../Card/Card";
-import style from "./CardGroup.module.css";
+import { Collection, CollectionTitle } from "./StyledCardGroup";
 
 export default function CardGroup(props) {
-  // Converts font alignment to flexbox alignment
-  let cardGroupFlexDirection = props.cardGroupFlexDirection;
-  let groupTitleAlignment = props.titleAlignment;
-
-  cardGroupFlexDirection = cardGroupFlexDirection
-    ? cardGroupFlexDirection
-    : "flex-start"; // Is cardGroupFlexDirection undefined?
-
-  groupTitleAlignment = props.titleAlignment ? props.titleAlignment : "left";
   return (
     <div>
       {props.title ? (
-        <h3
-          className={style.collectionTitle}
-          style={{ textAlign: groupTitleAlignment }}
-        >
+        <CollectionTitle groupTitleAlignment={props.titleAlignment}>
           {props.title}
-        </h3>
+        </CollectionTitle>
       ) : (
         <span />
       )}
-      <div
-        className={style.collection}
-        style={{ justifyContent: cardGroupFlexDirection }}
-      >
+      <Collection cardGroupFlexDirection={props.cardGroupFlexDirection}>
         {Object.keys(props.cards).length !== 0 &&
           props.cards.map((items, i) => {
             return (
@@ -39,7 +24,7 @@ export default function CardGroup(props) {
               />
             );
           })}
-      </div>
+      </Collection>
     </div>
   );
 }

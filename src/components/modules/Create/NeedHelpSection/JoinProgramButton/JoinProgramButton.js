@@ -1,9 +1,9 @@
 import React from "react";
-import style from "./JoinProgramButton.module.css";
+import { Wrapper } from "./StyledJoinProgramButton";
 
 export default function JoinProgramButton(props) {
   return (
-    <div className={style.joinProgramButton}>
+    <Wrapper>
       <div
         style={{ width: "100%", height: "100%" }}
         onClick={() => {
@@ -12,6 +12,6 @@ export default function JoinProgramButton(props) {
       >
         ❤️ Join Our Program!
       </div>
-    </div>
+    </Wrapper>
   );
 }

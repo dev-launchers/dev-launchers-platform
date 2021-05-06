@@ -3,8 +3,6 @@ import { openPopupWidget } from "react-calendly";
 
 import Button from "../../../../common/Button";
 
-import style from "./ScheduleOrientationButton.module.css";
-
 export default function ScheduleOrientationButton(props) {
   return (
     <Button
