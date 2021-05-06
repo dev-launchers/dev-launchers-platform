@@ -5,12 +5,21 @@ import { CenteredTitleUnderline, Wrapper } from "./StyledIntro";
 export default function Intro() {
   return (
     <Wrapper>
-      <CenteredTitleUnderline>A Nonprofit Tech Company</CenteredTitleUnderline>
-      Dev Launchers members become an integral part of our community full of
-      developers and creators. Our programs, which provide content and
-      experience on par with programs and classes that could otherwise cost
-      hundreds to thousands of dollars, are offered for FREE by leveraging the
-      expertise of our members!
+      <CenteredTitleUnderline>
+        Keeping tech{" "}
+        <span
+          style={{
+            backgroundColor: "#1c1c1c",
+            color: "#f0edee",
+            fontSize: "5rem",
+            paddingLeft: ".3rem",
+            paddingRight: ".3rem"
+          }}
+        >
+          human
+        </span>
+      </CenteredTitleUnderline>
+      Find out how you can join us on our journey!
     </Wrapper>
   );
 }

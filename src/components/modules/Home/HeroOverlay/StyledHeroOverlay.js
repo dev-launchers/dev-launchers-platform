@@ -43,11 +43,19 @@ export const MessageArea = styled.div`
 `;
 
 export const ImageArea = styled.div`
+  position: relative;
   width: 30%;
-  height: 80%;
-  background-color: ${theme.colors.NEUTRAL_2};
+  height: 100%;
+  left: -5rem;
+  background-color: transparent;
 
   display: flex;
   justify-content: center;
   align-items: flex-end;
+`;
+
+export const Image = styled.div`
+  width: 100%;
+  height: 90%;
+  background-color: lightgray;
 `;
