@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import startupTableImage from "../../../../images/members/photos/startup-table.jpg";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ export const Wrapper = styled.div`
 
   /*background-color: rgb(80, 80, 80);*/
   margin-top: 2%;
-  background-image: url("../../../../images/members/photos/startup-table.jpg");
+  background-image: url(${startupTableImage});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
