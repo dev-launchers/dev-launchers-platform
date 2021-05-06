@@ -14,7 +14,7 @@ export const HeaderBlock = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
 `;
 export const Logo = styled.div`
   width: 30%;
@@ -38,7 +38,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const LogoImageHolder = styled.div`
-  width: 4.25rem;
+  width: 3rem;
   margin: 2%;
   margin-bottom: 0;
   @media (orientation: portrait) {
@@ -55,9 +55,9 @@ export const LogoImage = styled.img.attrs(() => ({
   width: 100%;
 `;
 export const LogoWords = styled.div`
-  width: 40%;
-  font-family: "Holtwood One SC", serif;
-  font-size: 1.25rem;
+  width: 15rem;
+  font-family: "Abel", sans-serif;
+  font-size: 1.75rem;
   margin-left: 0.25rem;
   line-height: 140%;
   @media (orientation: portrait) {
@@ -80,6 +80,7 @@ export const HeaderNav = styled.div`
 `;
 
 export const NavEntry = styled.div`
+  font-family: "Abel", sans-serif;
   cursor: pointer;
 `;
 

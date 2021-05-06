@@ -8,15 +8,15 @@ export const Wrapper = styled.div`
   height: auto;
 `;
 export const ImageContainer = styled.div`
-  background-color: black;
-  background-image: url(${heroRender});
+  background-color: #1c1c1c;
+  /* background-image: url(${heroRender}); */
   position: fixed;
   z-index: -1;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 60vw;
   width: 100%;
-  height: 50vw;
+  height: 30vw;
   top: 0%;
   left: 0;
 

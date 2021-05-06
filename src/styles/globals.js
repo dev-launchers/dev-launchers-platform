@@ -11,7 +11,9 @@ body {
   /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
   font-family: sans-serif;
-  font-family: "Abel", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  color: ##1c1c1c;
+  background-color: #f0edee;
 }
 
 html {
@@ -35,7 +37,7 @@ body {
 
 .App {
   font-family: sans-serif;
-  font-family: "Abel", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   text-align: left;
 }
 
@@ -59,14 +61,14 @@ h6 {
 }
 
 h1 {
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", sans-serif;
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
 }
 
 h2 {
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", sans-serif;
 }
 
 h3 {

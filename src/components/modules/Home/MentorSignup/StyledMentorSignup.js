@@ -32,7 +32,7 @@ export const Submit = styled.input.attrs(() => ({
   type: "submit",
   value: "Submit"
 }))`
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", sans-serif;
   background-color: #ff7f0e;
   color: black;
   border: 0px;

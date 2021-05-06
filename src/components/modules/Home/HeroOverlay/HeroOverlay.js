@@ -2,13 +2,18 @@ import React from "react";
 
 import Button from "../../../common/Button";
 import Link from "next/link";
-import { Tagline, Wrapper } from "./StyledHeroOverlay";
+import { Tagline, Wrapper, MessageArea, ImageArea } from "./StyledHeroOverlay";
 
 export default function HeroOverlay() {
   return (
     <Wrapper>
-      <Tagline>
-        Launch your imagination!
+      <MessageArea>
+        <Tagline>
+          We build world changing software while preparing people to thrive in
+          technical careers█
+        </Tagline>
+      </MessageArea>
+      <ImageArea>
         <br />
         <Link href="/members" passHref>
           <Button
@@ -18,7 +23,7 @@ export default function HeroOverlay() {
             BECOME A DEVELOPER!
           </Button>
         </Link>
-      </Tagline>
+      </ImageArea>
     </Wrapper>
   );
 }
