@@ -15,7 +15,7 @@ export const HomePageBody = styled.div`
 
 export const ColoredCtaWrapper = styled.div`
   width: 100%;
-  height: 50vh;
+  height: 65vh;
 
   display: flex;
   flex-direction: row;

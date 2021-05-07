@@ -40,7 +40,7 @@ export default function Home() {
               <ColoredCtaEntryImage />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_2}>
-              <ColoredCtaEntryTitle>MENTOR</ColoredCtaEntryTitle>
+              <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
               <ColoredCtaEntryImage />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_4}>
