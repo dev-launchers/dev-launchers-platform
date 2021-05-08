@@ -54,8 +54,6 @@ export const ImageArea = styled.div`
   align-items: flex-end;
 `;
 
-export const Image = styled.div`
-  width: 100%;
-  height: 90%;
-  background-color: lightgray;
+export const Image = styled.img`
+  height: 100%;
 `;

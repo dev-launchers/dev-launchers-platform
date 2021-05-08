@@ -19,10 +19,9 @@ export const ImageAreaWrapper = styled.div`
   align-items: flex-end;
 `;
 
-export const ImageArea = styled.div`
-  width: 80%;
-  height: 90%;
-  background-color: lightgrey;
+export const CtaImage = styled.img`
+  height: 100%;
+  filter: grayscale(100%);
 `;
 
 export const DescriptionAreaWrapper = styled.div`

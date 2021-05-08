@@ -25,6 +25,11 @@ import CtaDescriptionArea from "./CtaDescriptionArea";
 
 import theme from "../../../styles/theme.js";
 
+import girlProfileImage from "../../../images/people-cutouts/girl-profile.png";
+import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
+import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
+import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
+
 export default function Home() {
   console.log(communityCards);
   return (
@@ -37,19 +42,19 @@ export default function Home() {
           <ColoredCtaWrapper>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_1}>
               <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage />
+              <ColoredCtaEntryImage src={girlProfileImage} />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_2}>
               <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage />
+              <ColoredCtaEntryImage src={manGlassesImage} />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_4}>
               <ColoredCtaEntryTitle>CREATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage />
+              <ColoredCtaEntryImage src={girlSmilingImage} />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_3}>
               <ColoredCtaEntryTitle>DONATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage />
+              <ColoredCtaEntryImage src={boyFrontImage} />
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
 
@@ -59,6 +64,7 @@ export default function Home() {
             descriptionHeadline="This is a headline about learning!"
             descriptionContent="Some content about learning. Some content about learning. Some content about learning. Some content about learning. Some content about learning. "
             titleUnderlineColor={theme.colors.ACCENT_1}
+            imageSrc={girlProfileImage}
           ></CtaDescriptionArea>
           <CtaDescriptionArea
             flexDirection="row-reverse"
@@ -66,6 +72,7 @@ export default function Home() {
             descriptionHeadline="This is a headline about leading!"
             descriptionContent="Some content about leading. Some content about leading. Some content about leading. Some content about leading. Some content about leading. "
             titleUnderlineColor={theme.colors.ACCENT_2}
+            imageSrc={manGlassesImage}
           ></CtaDescriptionArea>
           <CtaDescriptionArea
             flexDirection="row"
@@ -73,6 +80,7 @@ export default function Home() {
             descriptionHeadline="This is a headline about creating!"
             descriptionContent="Some content about creating. Some content about creating. Some content about creating. Some content about creating. Some content about creating. "
             titleUnderlineColor={theme.colors.ACCENT_4}
+            imageSrc={girlSmilingImage}
           ></CtaDescriptionArea>
           <CtaDescriptionArea
             flexDirection="row-reverse"
@@ -80,6 +88,7 @@ export default function Home() {
             descriptionHeadline="This is a headline about donating!"
             descriptionContent="Some content about donating. Some content about donating. Some content about donating. Some content about donating. Some content about donating. "
             titleUnderlineColor={theme.colors.ACCENT_1}
+            imageSrc={boyFrontImage}
           ></CtaDescriptionArea>
 
           {/*}

@@ -1,9 +1,10 @@
 import React from "react";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
 
 import {
   Wrapper,
   ImageAreaWrapper,
-  ImageArea,
+  CtaImage,
   DescriptionAreaWrapper,
   TitleArea,
   DescriptionArea,
@@ -13,17 +14,23 @@ import {
 
 export default function CtaDescriptionArea(props) {
   return (
-    <Wrapper flexDirection={props.flexDirection}>
-      <ImageAreaWrapper flexDirection={props.flexDirection}>
-        <ImageArea></ImageArea>
-      </ImageAreaWrapper>
-      <DescriptionAreaWrapper>
-        <TitleArea flexDirection={props.flexDirection}>{props.title}</TitleArea>
-        <DescriptionArea borderTopColor={props.titleUnderlineColor}>
-          <DescriptionHeadline>{props.descriptionHeadline}</DescriptionHeadline>
-          <DescriptionContent>{props.descriptionContent}</DescriptionContent>
-        </DescriptionArea>
-      </DescriptionAreaWrapper>
-    </Wrapper>
+    <FlexPageSection>
+      <Wrapper flexDirection={props.flexDirection}>
+        <ImageAreaWrapper flexDirection={props.flexDirection}>
+          <CtaImage src={props.imageSrc} />
+        </ImageAreaWrapper>
+        <DescriptionAreaWrapper>
+          <TitleArea flexDirection={props.flexDirection}>
+            {props.title}
+          </TitleArea>
+          <DescriptionArea borderTopColor={props.titleUnderlineColor}>
+            <DescriptionHeadline>
+              {props.descriptionHeadline}
+            </DescriptionHeadline>
+            <DescriptionContent>{props.descriptionContent}</DescriptionContent>
+          </DescriptionArea>
+        </DescriptionAreaWrapper>
+      </Wrapper>
+    </FlexPageSection>
   );
 }

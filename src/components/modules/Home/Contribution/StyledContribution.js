@@ -14,12 +14,10 @@ export const CtaSectionContent = styled.div`
 
 export const CtaSectionDescription = styled.div`
   text-align: center;
-  width: 50%;
 `;
 
 export const CtaSectionButtonArea = styled.div`
   margin-top: 4%;
-  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;

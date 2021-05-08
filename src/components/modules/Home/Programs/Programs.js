@@ -1,4 +1,5 @@
 import React from "react";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
 
 import sparkSymbolImage from "../../../../images/spark-symbol.png";
 import ignitionSymbolImage from "../../../../images/ignition-symbol.png";
@@ -14,7 +15,7 @@ import {
 
 export default function Programs() {
   return (
-    <div className={style.Body}>
+    <FlexPageSection>
       <h1>
         Our Programs <span style={{ fontSize: "1rem" }}>(for teens)</span>
       </h1>
@@ -79,6 +80,6 @@ export default function Programs() {
           </ul>
         </ProgramDescriptionArea>
       </ProgramArea>
-    </div>
+    </FlexPageSection>
   );
 }

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
+
 import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`

@@ -33,11 +33,11 @@ export const ColoredCtaEntry = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 `;
-export const ColoredCtaEntryImage = styled.div`
-  width: 80%;
-  height: 70%;
-  background-color: lightgray;
+export const ColoredCtaEntryImage = styled.img`
+  height: 100%;
+  filter: grayscale(100%);
 `;
 export const ColoredCtaEntryTitle = styled.div`
   text-align: center;
