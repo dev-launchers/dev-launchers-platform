@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
-import Project from "../../components/modules/Project";
+import Project from "../../components/modules/Projects/Project";
 
 export const getStaticPaths = async () => {
   const res = await axios("https://jsonplaceholder.typicode.com/users");
