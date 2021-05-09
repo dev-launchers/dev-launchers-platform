@@ -34,13 +34,10 @@ export const ColoredCtaEntry = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-`;
-export const ColoredCtaEntryImage = styled.img`
-  height: 100%;
-  filter: grayscale(100%);
 
+  color: ${theme.colors.NEUTRAL_2};
   &:hover {
-    transform: scale(1.1);
+    color: ${props => props.backgroundColor};
   }
 `;
 export const ColoredCtaEntryTitle = styled.div`
@@ -49,9 +46,16 @@ export const ColoredCtaEntryTitle = styled.div`
   width: 100%;
   height: 4rem;
   background-color: ${theme.colors.NEUTRAL_1};
-  color: ${theme.colors.NEUTRAL_2};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+`;
+export const ColoredCtaEntryImage = styled.img`
+  height: 100%;
+  filter: grayscale(100%);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
