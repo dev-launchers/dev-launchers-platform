@@ -38,6 +38,10 @@ export const ColoredCtaEntry = styled.div`
 export const ColoredCtaEntryImage = styled.img`
   height: 100%;
   filter: grayscale(100%);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 export const ColoredCtaEntryTitle = styled.div`
   text-align: center;

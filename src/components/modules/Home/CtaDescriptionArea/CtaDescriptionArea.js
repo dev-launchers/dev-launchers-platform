@@ -15,15 +15,25 @@ import {
 export default function CtaDescriptionArea(props) {
   return (
     <FlexPageSection>
-      <Wrapper flexDirection={props.flexDirection}>
+      <Wrapper
+        flexDirection={props.flexDirection}
+        backgroundColor={props.mainBackgroundColor}
+      >
         <ImageAreaWrapper flexDirection={props.flexDirection}>
           <CtaImage src={props.imageSrc} />
         </ImageAreaWrapper>
         <DescriptionAreaWrapper>
-          <TitleArea flexDirection={props.flexDirection}>
+          <TitleArea
+            fontColor={props.titleFontColor}
+            flexDirection={props.flexDirection}
+          >
             {props.title}
           </TitleArea>
-          <DescriptionArea borderTopColor={props.titleUnderlineColor}>
+          <DescriptionArea
+            borderTopColor={props.titleUnderlineColor}
+            fontColor={props.descriptionFontColor}
+            backgroundColor={props.descriptionBackgroundColor}
+          >
             <DescriptionHeadline>
               {props.descriptionHeadline}
             </DescriptionHeadline>

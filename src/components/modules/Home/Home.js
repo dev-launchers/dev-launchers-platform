@@ -89,6 +89,10 @@ export default function Home() {
             descriptionContent="Some content about donating. Some content about donating. Some content about donating. Some content about donating. Some content about donating. "
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={boyFrontImage}
+            mainBackgroundColor={theme.colors.NEUTRAL_1}
+            titleFontColor={theme.colors.NEUTRAL_2}
+            descriptionBackgroundColor={theme.colors.NEUTRAL_1}
+            descriptionFontColor={theme.colors.NEUTRAL_2}
           ></CtaDescriptionArea>
 
           {/*}

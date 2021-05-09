@@ -17,7 +17,7 @@ import {
 export default function SupportUs() {
   return (
     <div>
-      <PageBody>
+      <PageBody width="85%">
         <br />
         <h1>
           SUPPORT US<span style={{ fontSize: "1rem" }}> (we love you)</span>

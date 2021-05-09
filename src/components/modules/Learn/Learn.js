@@ -11,7 +11,7 @@ export default function Learn() {
   const { learnPageData } = useSheetsContext();
   return (
     <div>
-      <PageBody>
+      <PageBody width="85%">
         <br />
         <h1 id="title">Learn Code and Design</h1>
         <div className="page-description">
