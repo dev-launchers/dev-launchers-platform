@@ -25,6 +25,7 @@ export default function HeroOverlay() {
         </MessageArea>
         <ImageArea>
           <Image src={manGlassesImage} />
+          {/*}
           <Link href="/members" passHref>
             <Button
               //href="https://forms.gle/ktNmippzfYUTnwgb8"
@@ -34,6 +35,7 @@ export default function HeroOverlay() {
               BECOME A DEVELOPER!
             </Button>
           </Link>
+          {*/}
         </ImageArea>
       </Wrapper>
     </FlexPageSection>

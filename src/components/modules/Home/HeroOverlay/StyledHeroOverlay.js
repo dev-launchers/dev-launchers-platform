@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.NEUTRAL_2};
   width: 100%;
   height: 30vw;
-  border-top: 0.5rem solid ${theme.colors.NEUTRAL_2};
+  border-top: 0.5rem solid ${theme.colors.ACCENT_3};
   border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
 
   display: flex;
@@ -48,6 +48,7 @@ export const ImageArea = styled.div`
   height: 100%;
   left: -5rem;
   background-color: transparent;
+  overflow: hidden;
 
   display: flex;
   justify-content: center;
@@ -56,4 +57,7 @@ export const ImageArea = styled.div`
 
 export const Image = styled.img`
   height: 100%;
+  filter: drop-shadow(-0.2rem 0rem 0 ${theme.colors.ACCENT_2})
+    drop-shadow(0rem -0.2rem 0 ${theme.colors.ACCENT_2})
+    drop-shadow(0.3rem 0rem 0 ${theme.colors.ACCENT_2});
 `;

@@ -4,7 +4,7 @@ import heroRender from "../../../../images/hero-render.png";
 
 export const Wrapper = styled.div`
   width: 100%;
-  min-height: 75vh;
+  height: 85vh;
   border-bottom: 2rem solid ${theme.colors.NEUTRAL_1};
   background-color: ${props =>
     props.backgroundColor ? props.backgroundColor : theme.colors.NEUTRAL_2};

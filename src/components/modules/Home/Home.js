@@ -65,7 +65,7 @@ export default function Home() {
             descriptionContent="Some content about learning. Some content about learning. Some content about learning. Some content about learning. Some content about learning. "
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={girlProfileImage}
-          ></CtaDescriptionArea>
+          />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="LEAD"
@@ -73,7 +73,7 @@ export default function Home() {
             descriptionContent="Some content about leading. Some content about leading. Some content about leading. Some content about leading. Some content about leading. "
             titleUnderlineColor={theme.colors.ACCENT_2}
             imageSrc={manGlassesImage}
-          ></CtaDescriptionArea>
+          />
           <CtaDescriptionArea
             flexDirection="row"
             title="CREATE"
@@ -81,11 +81,11 @@ export default function Home() {
             descriptionContent="Some content about creating. Some content about creating. Some content about creating. Some content about creating. Some content about creating. "
             titleUnderlineColor={theme.colors.ACCENT_4}
             imageSrc={girlSmilingImage}
-          ></CtaDescriptionArea>
+          />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="DONATE"
-            descriptionHeadline="This is a headline about donating!"
+            descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
             descriptionContent="Some content about donating. Some content about donating. Some content about donating. Some content about donating. Some content about donating. "
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={boyFrontImage}
@@ -93,7 +93,7 @@ export default function Home() {
             titleFontColor={theme.colors.NEUTRAL_2}
             descriptionBackgroundColor={theme.colors.NEUTRAL_1}
             descriptionFontColor={theme.colors.NEUTRAL_2}
-          ></CtaDescriptionArea>
+          />
 
           {/*}
           <CardGroup
