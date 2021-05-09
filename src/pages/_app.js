@@ -15,7 +15,7 @@ import { LeaderboardProvider } from "../context/LeaderboardContext";
 import { UserDataProvider } from "../context/UserDataContext";
 import { ThemeProvider } from "styled-components";
 
-const hashRedirect = router => {
+const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
   if (router.asPath.startsWith("/#")) {
     router.push(router.asPath.replace("/#", ""));
@@ -88,7 +88,7 @@ function MyApp({ Component, pageProps }) {
           ></script>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&family=Nunito+Sans&display=swap"
             rel="stylesheet"
           />
           <link
