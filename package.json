@@ -43,7 +43,7 @@
     "semantic-release": "^17.4.2",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
-    "tabletop": "^1.6.2",
+    "tabletop": "1.6.3",
     "webpack": "^4.46.0",
     "wrangler": "0.0.2"
   },
