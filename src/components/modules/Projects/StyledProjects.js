@@ -35,12 +35,12 @@ export const Title = styled.h2`
   :after {
     background: linear-gradient(
       to right,
-      #ff7f0e 25%,
-      #ffab00 25%,
-      #ffab00 50%,
-      #81c3d7 50%,
-      #81c3d7 75%,
-      #3a7ca5 75%
+      ${({theme}) => theme.colors.ACCENT_1} 25%,
+      ${({theme}) => theme.colors.ACCENT_2} 25%,
+      ${({theme}) => theme.colors.ACCENT_2} 50%,
+      ${({theme}) => theme.colors.ACCENT_4} 50%,
+      ${({theme}) => theme.colors.ACCENT_4} 75%,
+      ${({theme}) => theme.colors.ACCENT_3} 75%
     );
     content: "";
     height: 0.19rem;
