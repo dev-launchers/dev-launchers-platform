@@ -85,7 +85,7 @@ const Labs = ({ events, currentTime, currentTimeSetter }) => {
         let currentEvent = events.filter(
           event =>
             event.location == labTitle &&
-            event.startWeekDay == currentTime.setZone("UTC-5").weekday
+            ConvertCentralTime(event.startWeekDay) == currentTime.weekday
         );
 
         return currentEvent.length == 0 ? (
