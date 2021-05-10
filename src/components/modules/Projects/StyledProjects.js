@@ -20,6 +20,11 @@ export const ProjectContainer = styled.div`
   width: 60%;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
+  @media (orientation: portrait) {
+    &[style] {
+      justify-self: center !important;
+    }
+  }
 `;
 
 export const ProjectInfo = styled.div`
