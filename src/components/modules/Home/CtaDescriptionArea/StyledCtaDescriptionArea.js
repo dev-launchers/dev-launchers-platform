@@ -72,7 +72,9 @@ export const DescriptionArea = styled.div`
 `;
 
 export const DescriptionHeadline = styled.div`
+  font-size: 2.5rem;
   font-family: ${theme.fonts.headline};
+  text-align: center;
 `;
 
 export const DescriptionContent = styled.div``;

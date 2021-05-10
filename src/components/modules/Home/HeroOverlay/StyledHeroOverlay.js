@@ -57,7 +57,7 @@ export const ImageArea = styled.div`
 
 export const Image = styled.img`
   height: 100%;
-  filter: drop-shadow(-0.2rem 0rem 0 ${theme.colors.ACCENT_2})
-    drop-shadow(0rem -0.2rem 0 ${theme.colors.ACCENT_2})
-    drop-shadow(0.3rem 0rem 0 ${theme.colors.ACCENT_2});
+  filter: drop-shadow(-0.2rem 0rem 0 ${theme.colors.NEUTRAL_2})
+    drop-shadow(0rem -0.2rem 0 ${theme.colors.NEUTRAL_2})
+    drop-shadow(0.3rem 0rem 0 ${theme.colors.NEUTRAL_2});
 `;

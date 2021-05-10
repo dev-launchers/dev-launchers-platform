@@ -22,7 +22,7 @@ export default function CtaDescriptionArea(props) {
         <ImageAreaWrapper flexDirection={props.flexDirection}>
           <CtaImage
             src={props.imageSrc}
-            outlineColor={props.titleUnderlineColor}
+            outlineColor={props.imageOutlineColor}
           />
         </ImageAreaWrapper>
         <DescriptionAreaWrapper>

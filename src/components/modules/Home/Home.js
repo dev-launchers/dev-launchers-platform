@@ -61,18 +61,20 @@ export default function Home() {
           <CtaDescriptionArea
             flexDirection="row"
             title="LEARN"
-            descriptionHeadline="This is a headline about learning!"
+            descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
             descriptionContent="Some content about learning. Some content about learning. Some content about learning. Some content about learning. Some content about learning. "
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={girlProfileImage}
+            imageOutlineColor={theme.colors.NEUTRAL_1}
           />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="LEAD"
-            descriptionHeadline="This is a headline about leading!"
+            descriptionHeadline="Evolve your career in the direction you want to go"
             descriptionContent="Some content about leading. Some content about leading. Some content about leading. Some content about leading. Some content about leading. "
             titleUnderlineColor={theme.colors.ACCENT_2}
             imageSrc={manGlassesImage}
+            imageOutlineColor={theme.colors.NEUTRAL_1}
           />
           <CtaDescriptionArea
             flexDirection="row"
@@ -81,14 +83,16 @@ export default function Home() {
             descriptionContent="Some content about creating. Some content about creating. Some content about creating. Some content about creating. Some content about creating. "
             titleUnderlineColor={theme.colors.ACCENT_4}
             imageSrc={girlSmilingImage}
+            imageOutlineColor={theme.colors.NEUTRAL_1}
           />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="DONATE"
-            descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
-            descriptionContent="Some content about donating. Some content about donating. Some content about donating. Some content about donating. Some content about donating. "
+            descriptionHeadline="Your donation will create an opportunity for a young learner, preparing them to face the technical challenges of the future head on."
+            descriptionContent="Dev Launchers is a registered 501c3 not-for-profit organization. We can’t keep changing lives without your support!"
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={boyFrontImage}
+            imageOutlineColor={theme.colors.NEUTRAL_2}
             mainBackgroundColor={theme.colors.NEUTRAL_1}
             titleFontColor={theme.colors.NEUTRAL_2}
             descriptionBackgroundColor={theme.colors.NEUTRAL_1}
