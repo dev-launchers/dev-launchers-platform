@@ -11,8 +11,10 @@ import {
 const Projects = ({ projects }) => {
   return (
     <Layout>
-      {projects.map((project) => (
-        <ProjectContainer>
+      {projects.map((project, i) => (
+        <ProjectContainer
+          style={{ justifySelf: (i + 1) % 2 == 0 ? "start" : "end" }}
+        >
           <ProjectInfo>
             <Title>{project.name}</Title>
             <Description>

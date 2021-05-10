@@ -4,7 +4,7 @@ export const Layout = styled.div`
   display: grid;
   grid-template-columns: auto auto;
   place-items: center;
-  row-gap: 20px;
+  gap: 30px;
   margin: 2em 0;
 
   @media (orientation: portrait) {
