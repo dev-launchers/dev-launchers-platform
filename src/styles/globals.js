@@ -59,14 +59,14 @@ h6 {
 }
 
 h1 {
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", serif;
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
 }
 
 h2 {
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", serif;
 }
 
 h3 {
