@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import style from "./Beans.module.css";
 import { env } from "../../../../../../utils/EnvironmentVariables.js";
 
 export default function Beans({ discordId }) {
