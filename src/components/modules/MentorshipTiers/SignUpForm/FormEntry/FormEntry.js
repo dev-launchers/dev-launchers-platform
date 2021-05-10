@@ -2,21 +2,21 @@ import React from "react";
 
 import { useForm, useField, splitFormProps } from "react-form";
 
-import style from "./FormEntry.module.css";
+import { FormEntryHolder, FormEntryTitle } from "./StyledFormEntry";
 
 export default function FormEntry(props) {
   return (
-    <div className={style.formEntryHolder} style={props.style}>
+    <FormEntryHolder style={props.style}>
       <label>
-        <div className={style.formEntryTitle}>
+        <FormEntryTitle>
           <u>
             <b>{props.label}</b>
           </u>
-        </div>
+        </FormEntryTitle>
         <br />
         <div style={{ fontSize: "1rem" }}>{props.description}</div>
         {props.children}
       </label>
-    </div>
+    </FormEntryHolder>
   );
 }

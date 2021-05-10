@@ -1,24 +1,8 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-import style from "./Modal.module.css";
+import { ModalContent, customModalStyles } from "./StyledModal.js";
 
-// Modal set up
-const customModalStyles = {
-  content: {
-    position: "absolute",
-    width: "70%",
-    height: "80%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: 1001
-  },
-  overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
-};
 ReactModal.setAppElement("#__next");
 
 export default function Modal(props) {
@@ -44,9 +28,9 @@ export default function Modal(props) {
       onAfterOpen={afterOpenModal}
       contentLabel="Template Modal"
     >
-      <div className={style.modalContent}>
+      <ModalContent>
         {props.modalContent ? props.modalContent : modalContent}
-      </div>
+      </ModalContent>
     </ReactModal>
   );
 }

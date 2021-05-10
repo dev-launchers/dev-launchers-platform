@@ -1,10 +1,10 @@
 import React from "react";
 
-import style from "./PhotoHolder.module.css";
+import { Wrapper } from "./StyledPhotoHolder";
 
 export default function PhotoHolder() {
   return (
-    <div className={style.photoHolder}>
+    <Wrapper>
       <h2
         style={{
           width: "100%",
@@ -21,6 +21,6 @@ export default function PhotoHolder() {
         This is a lot of text. This is a lot of text. This is a lot of text.
       </div>
       {/*}<div style={{ width: "100%", height: "30%" }}></div>{*/}
-    </div>
+    </Wrapper>
   );
 }

@@ -1,7 +1,5 @@
 import React from "react";
 
-import style from "./Home.module.css";
-
 import PageBody from "../../../components/common/PageBody";
 import CardGroup from "../../../components/common/CardGroup";
 
@@ -16,15 +14,16 @@ import Partners from "./Partners";
 import communityCards from "./communityCards.js";
 import educationalCards from "./educationalCards.js";
 import organizationCards from "./organizationCards.js";
+import { HomePageBody } from "./StyledHome";
 
 export default function Home() {
   console.log(communityCards);
   return (
-    <div className={style.Home}>
+    <div>
       <HeroImage />
       <HeroOverlay />
       <PageBody>
-        <div className={style.HomePageBody}>
+        <HomePageBody>
           <Intro />
           <CardGroup
             cards={communityCards}
@@ -53,7 +52,7 @@ export default function Home() {
           <Contribution />
           <hr />
           <Partners />
-        </div>
+        </HomePageBody>
       </PageBody>
     </div>
   );

@@ -6,26 +6,18 @@ export const FormWrapper = styled.div`
   align-items: center;
   margin-bottom: 2rem;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & > * {
-      margin: 5px;
-    }
-  }
-
   input[type="submit"] {
     font-family: "Holtwood One SC", serif;
     background-color: #ff7f0e;
-    color: black;
     border: 0px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 1.5rem;
-    padding: 2.5%;
-    padding-left: 6%;
-    padding-right: 6%;
+    padding: 0.5em;
+  }
+
+  & > * {
+    margin: 5px;
   }
 `;
 export const DiscordAuthWrapper = styled.div`

@@ -3,8 +3,6 @@ import Button from "../../../common/Button";
 import Modal from "../../../common/Modal";
 import CardGroup from "../../../common/CardGroup";
 
-import style from "./LevelDescriptionArea.module.css";
-
 import progressionLevels from "./../progressionLevels.js";
 
 export default function LevelDescriptionArea(props) {
@@ -18,7 +16,7 @@ export default function LevelDescriptionArea(props) {
   ].map(level => {
     return (level.onClick = () => {
       setModalContent(
-        <div className={style.modalContainer}>
+        <div>
           <div>
             <span
               style={{
@@ -47,9 +45,8 @@ export default function LevelDescriptionArea(props) {
             </Button>
           </div>
 
-          <div className={style.modalBody}>
+          <div>
             <div
-              className={style.modalInfoCard}
               style={{ textDecorationColor: "10px solid rgba(72, 125, 90, 0)" }}
             >
               <h4>
@@ -57,16 +54,11 @@ export default function LevelDescriptionArea(props) {
               </h4>
               <ul>
                 {level.abilities.map((entry, i) => {
-                  return (
-                    <li className={style.listEntry} key={i}>
-                      {entry}
-                    </li>
-                  );
+                  return <li key={i}>{entry}</li>;
                 })}
               </ul>
             </div>
             <div
-              className={style.modalInfoCard}
               style={{ textDecorationColor: "10px solid rgba(65, 87, 98, 0)" }}
             >
               <h4>
@@ -74,17 +66,13 @@ export default function LevelDescriptionArea(props) {
               </h4>
               <ul>
                 {level.expectations.map((entry, i) => {
-                  return (
-                    <li className={style.listEntry} key={i}>
-                      {entry}
-                    </li>
-                  );
+                  return <li key={i}>{entry}</li>;
                 })}
               </ul>
             </div>
           </div>
           {level.prerequisiteSkills ? (
-            <div className={style.prerequisiteSkillCard}>
+            <div>
               <h4>
                 <u>Prerequisite Skills</u>
               </h4>

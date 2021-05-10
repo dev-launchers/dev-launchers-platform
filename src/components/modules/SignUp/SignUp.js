@@ -50,16 +50,15 @@ export default function SignUp() {
         <br />
         <h3 style={{ textAlign: "center" }}>Sign Up</h3>
         <FormWrapper>
-          <form onSubmit={updateUser}>
-            <br />
-            <label>Username</label>
-            <input
-              onChange={handleUsernameChange}
-              value={username}
-              type="text"
-            />
-            <input type="submit" value="Sign up" style={{ color: "white" }} />
-          </form>
+          <br />
+          <label>Username</label>
+          <input onChange={handleUsernameChange} value={username} type="text" />
+          <input
+            onClick={updateUser}
+            type="submit"
+            value="Sign up"
+            style={{ color: "white" }}
+          />
         </FormWrapper>
         <hr />
         <DiscordAuthWrapper>
