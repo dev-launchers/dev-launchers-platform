@@ -24,7 +24,10 @@ export const ImageAreaWrapper = styled.div`
 
 export const CtaImage = styled.img`
   height: 100%;
-  filter: grayscale(100%);
+  filter: grayscale(100%)
+    drop-shadow(-0.2rem 0rem 0 ${props => props.outlineColor})
+    drop-shadow(0rem -0.2rem 0 ${props => props.outlineColor})
+    drop-shadow(0.3rem 0rem 0 ${props => props.outlineColor});
 `;
 
 export const DescriptionAreaWrapper = styled.div`
