@@ -15,10 +15,10 @@ export const Wrapper = styled.div`
 `;
 
 export const CenteredTitleUnderline = styled.h1`
-  width: 60%;
+  width: 50%;
   margin: 1%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 2%;
-  border-bottom: 0.5rem solid ${theme.colors.ACCENT_4};
+  border-bottom: 0.4rem solid ${theme.colors.ACCENT_1};
 `;
