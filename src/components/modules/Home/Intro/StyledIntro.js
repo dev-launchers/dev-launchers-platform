@@ -7,6 +7,11 @@ export const Wrapper = styled.div`
   padding-top: 7.5%;
   padding-bottom: 7.5%;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CenteredTitleUnderline = styled.h1`

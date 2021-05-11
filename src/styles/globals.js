@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
+import theme from "./theme.js";
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -11,7 +12,8 @@ body {
   /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
   font-family: sans-serif;
-  font-family: "Nunito Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: lighter;
   color: ##1c1c1c;
   background-color: #f0edee;
 }
