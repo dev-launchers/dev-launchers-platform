@@ -24,7 +24,10 @@ export default function WeeksGlance() {
         let tempEventList = [];
         response.data.collection.forEach(function(entry) {
           tempEventList.push({
-            name: entry.name,
+            name: entry.name
+              .split("]")
+              .pop()
+              .split(" -"),
             time: DateTime.fromJSDate(new Date(entry.start_time)).toFormat("t"),
             weekday: DateTime.fromJSDate(new Date(entry.start_time)).weekday
           });
@@ -41,7 +44,7 @@ export default function WeeksGlance() {
   let weekdays = [
     "Monday",
     "Tuesday",
-    "Wedensday",
+    "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
