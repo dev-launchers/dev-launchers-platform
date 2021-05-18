@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Wrapper, Day, WeekCalendar, Week } from "./StyledWeeksGlance";
+import {
+  Wrapper,
+  Event,
+  WeekCalendar,
+  Day,
+  WeekdayTitle
+} from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
 
@@ -24,10 +30,7 @@ export default function WeeksGlance() {
         let tempEventList = [];
         response.data.collection.forEach(function(entry) {
           tempEventList.push({
-            name: entry.name
-              .split("]")
-              .pop()
-              .split(" -"),
+            name: entry.name.split("]").pop(),
             time: DateTime.fromJSDate(new Date(entry.start_time)).toFormat("t"),
             weekday: DateTime.fromJSDate(new Date(entry.start_time)).weekday
           });
@@ -42,32 +45,33 @@ export default function WeeksGlance() {
   React.useEffect(componentDidMount, []);
 
   let weekdays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
+    "MONDAY",
+    "TUESDAY",
+    "WEDNESDAY",
+    "THURSDAY",
+    "FRIDAY",
+    "SATURDAY",
+    "SUNDAY"
   ];
   console.log(eventList);
   return (
     <Wrapper>
       {weekdays.map((day, i) => {
         return (
-          <Week key={i}>
-            {day}
+          <Day key={i}>
+            <WeekdayTitle>{day}</WeekdayTitle>
             {eventList.map(({ name, time, weekday }) => {
               if (weekday == i + 1) {
                 return (
-                  <Day key={`${name}_${time}`}>
-                    {name} - <br />
+                  <Event key={`${name}_${time}`}>
+                    {name}
+                    <br />
                     {time}
-                  </Day>
+                  </Event>
                 );
               }
             })}
-          </Week>
+          </Day>
         );
       })}
     </Wrapper>
