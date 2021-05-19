@@ -92,7 +92,7 @@ export default function Create(props) {
   const afterOpenModal = () => {};
 
   return (
-    <PageBody width="85%">
+    <PageBody width="95%">
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

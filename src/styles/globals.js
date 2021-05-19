@@ -67,6 +67,11 @@ h1 {
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
+
+  width: fit-content;
+  padding: 1rem;
+  background-color:${theme.colors.NEUTRAL_1};
+  color:${theme.colors.NEUTRAL_2};
 }
 
 h2 {
