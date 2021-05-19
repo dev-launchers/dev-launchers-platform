@@ -1,7 +1,8 @@
 import React from "react";
 import FlexPageSection from "../../../../components/common/FlexPageSection";
+import RainbowBar from "../../../../components/common/RainbowBar";
 
-import { CenteredTitleUnderline, Wrapper } from "./StyledIntro";
+import { CenteredTitle, Wrapper } from "./StyledIntro";
 
 import theme from "../../../../styles/theme.js";
 
@@ -9,7 +10,7 @@ export default function Intro() {
   return (
     <FlexPageSection>
       <Wrapper>
-        <CenteredTitleUnderline>
+        <CenteredTitle>
           Keeping tech{" "}
           <span
             style={{
@@ -22,10 +23,11 @@ export default function Intro() {
           >
             human
           </span>
-        </CenteredTitleUnderline>
+        </CenteredTitle>
+        <RainbowBar width="60%" />
         <div
           style={{
-            marginTop: "1rem",
+            marginTop: "2rem",
             width: "80%",
             display: "flex",
             flexDirection: "row",

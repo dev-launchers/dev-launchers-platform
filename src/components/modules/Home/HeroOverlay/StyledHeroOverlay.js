@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.NEUTRAL_2};
   width: 100%;
   height: 30vw;
-  border-top: 0.5rem solid ${theme.colors.ACCENT_3};
   border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
 
   display: flex;

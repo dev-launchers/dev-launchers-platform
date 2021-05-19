@@ -2,6 +2,7 @@ import React from "react";
 
 import PageBody from "../../../components/common/PageBody";
 import CardGroup from "../../../components/common/CardGroup";
+import RainbowBar from "../../../components/common/RainbowBar";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
@@ -34,11 +35,11 @@ export default function Home() {
   console.log(communityCards);
   return (
     <div>
+      <RainbowBar />
       <HeroImage />
       <HeroOverlay />
       <PageBody>
         <HomePageBody>
-          <Intro />
           <ColoredCtaWrapper>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_1}>
               <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
@@ -57,6 +58,7 @@ export default function Home() {
               <ColoredCtaEntryImage src={boyFrontImage} />
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
+          <Intro />
 
           <CtaDescriptionArea
             flexDirection="row"

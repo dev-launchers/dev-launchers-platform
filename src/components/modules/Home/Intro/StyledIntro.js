@@ -12,13 +12,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  border-bottom: 2rem solid ${theme.colors.NEUTRAL_1};
 `;
 
-export const CenteredTitleUnderline = styled.h1`
+export const CenteredTitle = styled.div`
+  font-family: "Abel", sans-serif;
+  font-size: 3rem;
   width: 50%;
   margin: 1%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 2%;
-  border-bottom: 0.4rem solid ${theme.colors.ACCENT_1};
 `;
