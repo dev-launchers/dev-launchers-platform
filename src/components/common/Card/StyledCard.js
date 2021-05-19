@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  margin: 1.5%;
-  width: ${({ size }) => (size == "large" ? "90%" : "22%")};
-  border-radius: 2px;
+  margin: 0.5%;
+  width: ${({ size }) => (size == "large" ? "90%" : "24%")};
+  background-color: white;
   /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
   display: flex;
   flex-direction: column;
@@ -34,40 +34,42 @@ export const Content = styled.div`
 `;
 
 export const ImageHolder = styled.div`
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  width: ${({ size }) => (size == "large" ? "50%" : "100%")};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : "black")};
-  padding-top: 2px;
-  padding-bottom: 2px;
+  position: relative;
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
 
   a {
     display: flex;
   }
 `;
 
+export const Image = styled.div`
+  background-color: lightgray;
+  width: 100%;
+  height: 100%;
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+  cursor: pointer;
+  vertical-align: top;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-image: url(${props => props.imageSrc});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* outline: 2px solid black; */
+`;
+
 export const DataHolder = styled.div`
+  margin-top: 0.5em;
+  padding: 0.5rem;
   ${({ size }) =>
     size == "large" &&
     css`
       width: 70%;
       padding: 6.75%;
     `}
-`;
-
-export const Image = styled.img`
-  background-color: lightgray;
-  max-width: 100%;
-  max-height: 25vh;
-  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-  cursor: pointer;
-  vertical-align: top;
-  margin-left: auto;
-  margin-right: auto;
-  outline: 2px solid black;
 `;
 
 export const Description = styled.div`
