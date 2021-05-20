@@ -17,7 +17,7 @@ export const IntroArea = styled.div`
   width: 100vw;
   max-width: 100vw;
   min-height: 50vh;
-  margin-left: -10vw;
+  margin-left: -5vw;
 
   background-color: rgb(50, 50, 50);
   background-position: center;
