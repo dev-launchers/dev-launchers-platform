@@ -4,7 +4,7 @@ import { Wrapper, BarSection } from "./StyledRainbowBar";
 
 import theme from "../../../styles/theme.js";
 
-export default function RainbowBar({ width = "100%", height = "1rem" }) {
+export default function RainbowBar({ width = "100%", height = ".5rem" }) {
   return (
     <Wrapper width={width} height={height}>
       <BarSection color={theme.colors.ACCENT_1} />
