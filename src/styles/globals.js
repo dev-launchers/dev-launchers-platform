@@ -63,15 +63,17 @@ h6 {
 }
 
 h1 {
-  font-family: "Abel", sans-serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
 
   width: fit-content;
   padding: 1rem;
-  background-color:${theme.colors.NEUTRAL_1};
-  color:${theme.colors.NEUTRAL_2};
+  // background-color:${theme.colors.NEUTRAL_1};
+  // color:${theme.colors.NEUTRAL_2};
+
+  border-bottom: .3rem solid ${theme.colors.NEUTRAL_1};
 }
 
 h2 {
@@ -202,6 +204,39 @@ h3 {
 
 li {
   margin-bottom: 5px;
+}
+
+/* React tabs */
+// css
+.react-tabs__tab-list {
+  border-bottom: none;
+}
+
+.react-tabs__tab {
+ // your custom style goes here
+ font-family: ${theme.fonts.headline};
+ border-radius:0;
+ font-size:3rem;
+ border:.3rem solid ${theme.colors.NEUTRAL_1};
+ background-color: ${theme.colors.NEUTRAL_1};
+ color: ${theme.colors.NEUTRAL_2};
+ margin-right:.5rem;
+}
+
+.react-tabs__tab--selected {
+  // your custom style goes here
+  border-color:${theme.colors.NEUTRAL_1};
+  color:${theme.colors.NEUTRAL_1};
+  background-color:transparent;
+  border-bottom:none;
+}
+
+.react-tabs__tab:focus {
+  // your custom style goes here
+}
+
+.react-tabs__tab:focus:after {
+  // your custom style goes here
 }
 `;
 export default GlobalStyle;
