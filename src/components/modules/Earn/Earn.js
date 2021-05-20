@@ -7,7 +7,7 @@ import CurrentPoints from "./CurrentPoints";
 
 export default function Earn() {
   return (
-    <PageBody width="85%">
+    <PageBody width="95%">
       <br />
       <h1>Work Hard, Play Hard</h1>
       <h3>

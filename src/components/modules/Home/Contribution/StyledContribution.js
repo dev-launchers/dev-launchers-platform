@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  padding-top: 5%;
-  padding-bottom: 5%;
-`;
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
 
 export const CtaSectionContent = styled.div`
   display: flex;

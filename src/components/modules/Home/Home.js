@@ -130,7 +130,6 @@ export default function Home() {
           <hr />
           {*/}
           <Contribution />
-          <hr />
           <Partners />
         </HomePageBody>
       </PageBody>

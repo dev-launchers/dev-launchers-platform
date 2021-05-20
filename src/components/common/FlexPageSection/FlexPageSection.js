@@ -8,19 +8,36 @@ export default function FlexPageSection({
   width,
   height,
   contentWidth = "100%",
-  contentHeight = "100%"
+  contentHeight = "100%",
+  flexDirection = "row",
+  justifyContent = "center",
+  alignItems = "center",
+  backgroundImage
 }) {
   style.width = width ? width : style.width;
   style.height = height ? height : style.height;
   style.display = style.display ? style.display : "flex";
-  style.flexDirection = style.flexDirection ? style.flexDirection : "center";
-  style.justifyContent = style.justifyContent ? style.justifyContent : "center";
-  style.alignItems = style.alignItems ? style.alignItems : "center";
+  style.flexDirection = style.flexDirection
+    ? style.flexDirection
+    : flexDirection;
+  style.justifyContent = style.justifyContent
+    ? style.justifyContent
+    : justifyContent;
+  style.alignItems = style.alignItems ? style.alignItems : alignItems;
+  style.backgroundImage = backgroundImage ? `url(${backgroundImage})` : "";
+
+  let contentStyle = {
+    width: contentWidth,
+    height: contentHeight,
+    display: style.display,
+    flexDirection: style.flexDirection,
+    justifyContent: style.justifyContent,
+    alignItems: style.alignItems
+  };
+
   return (
     <Wrapper style={style}>
-      <div style={{ width: contentWidth, height: contentHeight }}>
-        {children}
-      </div>
+      <div style={contentStyle}>{children}</div>
     </Wrapper>
   );
 }

@@ -1,20 +1,33 @@
 import React from "react";
 import FlexPageSection from "../../../../components/common/FlexPageSection";
 
+import CenteredHeadline from "../../../common/CenteredHeadline";
+
 import {
-  Wrapper,
   CtaSectionContent,
   CtaSectionDescription,
   CtaSectionButtonArea
 } from "./StyledContribution.js";
 
 import Button from "../../../common/Button";
+import ShadowCard from "../../../common/ShadowCard";
+
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
 
 export default function Contribution() {
   return (
-    <FlexPageSection width="100%" contentWidth="70%" justifyContent="center">
-      <Wrapper>
-        <h1 style={{ textAlign: "center" }}>CONTRIBUTE TO OUR PROJECTS</h1>
+    <FlexPageSection
+      width="100%"
+      height="80vh"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      backgroundImage={codeSnapshotImage}
+    >
+      <ShadowCard width="70%" height="60%">
+        <CenteredHeadline style={{ backgroundColor: "white", color: "black" }}>
+          CONTRIBUTE TO OUR PROJECTS
+        </CenteredHeadline>
         <div>
           <CtaSectionContent>
             <CtaSectionDescription>
@@ -30,7 +43,7 @@ export default function Contribution() {
             </CtaSectionButtonArea>
           </CtaSectionContent>
         </div>
-      </Wrapper>
+      </ShadowCard>
     </FlexPageSection>
   );
 }

@@ -3,6 +3,7 @@ import FlexPageSection from "../../../../components/common/FlexPageSection";
 
 import LogoImage from "./LogoImage/LogoImage.js";
 import Card from "../../../common/Card/Card.js";
+import CenteredHeadline from "../../../common/CenteredHeadline";
 
 import aespriteImage from "../../../../images/home-page/aseprite.png";
 import kraftiesImage from "../../../../images/home-page/krafties.png";
@@ -17,7 +18,7 @@ export default function Partners() {
   return (
     <FlexPageSection width="100%" contentWidth="70%" justifyContent="center">
       <Wrapper>
-        <h1>CHECK OUT OUR EXTENDED FAMILY</h1>
+        <CenteredHeadline>CHECK OUT OUR EXTENDED FAMILY</CenteredHeadline>
         <p>
           We partner with organizations doing outreach to bring in a diverse
           range of students, and for-profit partners so Dev Launchers can grow
