@@ -7,7 +7,7 @@ import {
 } from "./StyledAttachments.js";
 
 export default function Attachments(props) {
-  const [showAttachment, setShowAttachment] = useState(true);
+  const [showAttachment, setShowAttachment] = useState(false);
 
   const imageClick = () => setShowAttachment(!showAttachment);
 

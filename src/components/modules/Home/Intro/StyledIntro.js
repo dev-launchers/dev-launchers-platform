@@ -1,16 +1,27 @@
 import styled from "styled-components";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
+
+import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 7.5%;
+  padding-bottom: 7.5%;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 2rem solid ${theme.colors.NEUTRAL_1};
 `;
 
-export const CenteredTitleUnderline = styled.h1`
-  width: 80%;
+export const CenteredTitle = styled.div`
+  font-family: "Abel", sans-serif;
+  font-size: 3rem;
+  width: 50%;
   margin: 1%;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 2%;
-  border-bottom: 0.25rem solid #ff7f0e;
 `;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme.js";
 
 export const PageContainer = styled.div`
   padding-left: 5%;
@@ -34,20 +35,20 @@ export const TitleArea = styled.div`
   bottom: 10vh;
   left: 5vw;
 
-  font-family: "Holtwood One SC", serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   text-align: left;
   color: white;
-  text-shadow: 0.5vw 0.5vw black;
+  /* text-shadow: 0.5vw 0.5vw black; */
 `;
 
 export const BodyContent = styled.div`
   /*font-family: "Vollkorn", serif;*/
   font-family: sans-serif;
-  font-family: "Abel", sans-serif;
+  font-family: ${theme.fonts.normal}, sans-serif;
 `;
 
 export const PageHeading1 = styled.h1`
-  font-family: "Holtwood One SC", serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   font-size: 5rem;
 
   @media (orientation: portrait) {
@@ -55,17 +56,17 @@ export const PageHeading1 = styled.h1`
   }
 `;
 export const PageHeading2 = styled.h2`
-  font-family: "Holtwood One SC", serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   font-size: 2.5rem;
   margin-top: 2rem;
 `;
 export const PageHeading3 = styled.h3`
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   font-size: 2rem;
   margin-top: 2rem;
 `;
 export const PageHeading4 = styled.h4`
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   font-size: 1.4rem;
   margin-top: 2rem;
 `;

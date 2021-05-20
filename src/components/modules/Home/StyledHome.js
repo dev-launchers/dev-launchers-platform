@@ -1,15 +1,61 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme.js";
 
 export const HomePageBody = styled.div`
   /*margin-top: 45vw;*/
-  width: 95%;
-  background-color: white;
+  width: 100%;
   color: black;
-  padding: 2.5%;
   min-height: 40vh;
 
   @media (orientation: portrait) {
     width: 100%;
     padding: 0%;
+  }
+`;
+
+export const ColoredCtaWrapper = styled.div`
+  width: 100%;
+  height: 65vh;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  border-bottom: 1rem solid ${theme.colors.NEUTRAL_1};
+`;
+export const ColoredCtaEntry = styled.div`
+  width: 33.3%;
+  height: 100%;
+  background-color: ${props => props.backgroundColor};
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+
+  color: ${theme.colors.NEUTRAL_2};
+  &:hover {
+    color: ${props => props.backgroundColor};
+  }
+`;
+export const ColoredCtaEntryTitle = styled.div`
+  text-align: center;
+  font-size: 2.5rem;
+  width: 100%;
+  height: 4rem;
+  background-color: ${theme.colors.NEUTRAL_1};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+export const ColoredCtaEntryImage = styled.img`
+  height: 100%;
+  filter: grayscale(100%);
+
+  &:hover {
+    transform: scale(1.1);
   }
 `;

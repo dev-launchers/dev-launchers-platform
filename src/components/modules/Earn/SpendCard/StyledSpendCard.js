@@ -26,7 +26,7 @@ export const EntryContent = styled.div`
 `;
 
 export const EntryCost = styled.b`
-  font-family: "Holtwood One SC";
+  font-family: "Abel", sans-serif;
   color: #806400;
   font-weight: 900;
 `;

@@ -1,9 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  padding-top: 5%;
-  padding-bottom: 5%;
-`;
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
 
 export const CtaSectionContent = styled.div`
   display: flex;
@@ -14,12 +11,10 @@ export const CtaSectionContent = styled.div`
 
 export const CtaSectionDescription = styled.div`
   text-align: center;
-  width: 50%;
 `;
 
 export const CtaSectionButtonArea = styled.div`
   margin-top: 4%;
-  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
