@@ -64,6 +64,7 @@ export const Image = styled.div`
 export const DataHolder = styled.div`
   margin-top: 0.5em;
   padding: 0.5rem;
+  width: 95%;
   ${({ size }) =>
     size == "large" &&
     css`
