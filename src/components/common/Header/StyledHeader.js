@@ -6,8 +6,8 @@ export const HeaderBlock = styled.div`
   color: #d9d9d9;
   min-height: 7.5vh;
   width: 100%;
-  position: fixed;
-  top: 0%;
+  position: sticky;
+  top: 0;
   z-index: 2;
 
   display: flex;

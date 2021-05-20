@@ -10,6 +10,8 @@ import {
 } from "./StyledCard";
 import cx from "classnames";
 
+import RainbowBar from "../RainbowBar";
+
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
 
@@ -46,10 +48,12 @@ export default function Card(props) {
             href={props.cardData.href}
             target="_blank"
             rel="noopener noreferrer"
+            style={{ width: "100%", height: "100%" }}
           >
-            <Image src={props.cardData.imageSrc} alt="content" />
+            <Image imageSrc={props.cardData.imageSrc} />
           </a>
         </ImageHolder>
+        <RainbowBar height=".3rem" />
         <DataHolder size={props.size}>
           <CardTitle data={props.cardData} />
           <Description>{props.cardData.description}</Description>
