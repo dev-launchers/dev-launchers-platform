@@ -39,10 +39,10 @@ export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
   alt: "logo"
 }))`
-  height: 20vh;
+  height: 10vh;
   @media (orientation: portrait) {
     height: auto;
-    width: 50vw;
+    width: 15vw;
   }
 `;
 

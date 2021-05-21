@@ -25,3 +25,41 @@ export const CenteredTitle = styled.div`
   margin-right: auto;
   padding-bottom: 2%;
 `;
+
+export const IntroDescriptionWrapper = styled.div`
+  margin-top: 2rem;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  @media (orientation: portrait) {
+    flex-direction: column;
+  }
+`;
+
+export const IntroSummaryBox = styled.div`
+  font-family: "Abel";
+  width: 20%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: ${theme.colors.NEUTRAL_1};
+  color: ${theme.colors.NEUTRAL_2};
+  padding-right: 1rem;
+  font-size: 1rem;
+
+  @media (orientation: portrait) {
+    width: 100%;
+  }
+`;
+
+export const IntroDescription = styled.div`
+  width: 65%;
+  text-align: left;
+
+  @media (orientation: portrait) {
+    width: 100%;
+  }
+`;

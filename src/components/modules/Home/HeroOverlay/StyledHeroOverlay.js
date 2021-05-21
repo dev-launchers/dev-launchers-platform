@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 30vw;
   border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
+  overflow: hidden;
 
   display: flex;
   flex-direction: row;
@@ -47,11 +48,15 @@ export const ImageArea = styled.div`
   height: 100%;
   left: -5rem;
   background-color: transparent;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  @media (orientation: portrait) {
+    left: 0;
+  }
 `;
 
 export const Image = styled.img`

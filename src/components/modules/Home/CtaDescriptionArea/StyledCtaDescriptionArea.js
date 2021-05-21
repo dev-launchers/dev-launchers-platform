@@ -3,6 +3,7 @@ import theme from "../../../../styles/theme.js";
 import heroRender from "../../../../images/hero-render.png";
 
 export const Wrapper = styled.div`
+  position: relative;
   width: 100%;
   height: 85vh;
   border-bottom: 2rem solid ${theme.colors.NEUTRAL_1};
@@ -11,6 +12,10 @@ export const Wrapper = styled.div`
 
   display: flex;
   flex-direction: ${props => props.flexDirection};
+  overflow: hidden;
+  @media (orientation: portrait) {
+    justify-content: center;
+  }
 `;
 
 export const ImageAreaWrapper = styled.div`
@@ -20,6 +25,18 @@ export const ImageAreaWrapper = styled.div`
   flex-direction: ${props => props.flexDirection};
   justify-content: flex-end;
   align-items: flex-end;
+
+  @media (orientation: portrait) {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 0;
+    height: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+    /* z-index: 0; */
+  }
 `;
 
 export const CtaImage = styled.img`
@@ -28,6 +45,10 @@ export const CtaImage = styled.img`
     drop-shadow(-0.2rem 0rem 0 ${props => props.outlineColor})
     drop-shadow(0rem -0.2rem 0 ${props => props.outlineColor})
     drop-shadow(0.3rem 0rem 0 ${props => props.outlineColor});
+
+  @media (orientation: portrait) {
+    height: 40%;
+  }
 `;
 
 export const DescriptionAreaWrapper = styled.div`
@@ -36,6 +57,11 @@ export const DescriptionAreaWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (orientation: portrait) {
+    width: 80%;
+    height: 100%;
+  }
 `;
 
 export const TitleArea = styled.div`
@@ -51,6 +77,12 @@ export const TitleArea = styled.div`
 
   display: flex;
   flex-direction: ${props => props.flexDirection};
+
+  @media (orientation: portrait) {
+    width: 110%;
+    z-index: 1;
+    opacity: 0.9;
+  }
 `;
 
 export const DescriptionArea = styled.div`
@@ -69,12 +101,22 @@ export const DescriptionArea = styled.div`
   align-items: center;
 
   padding: 5%;
+
+  @media (orientation: portrait) {
+    width: 100%;
+    height: 80%;
+
+    justify-content: flex-start;
+    /* z-index: 1; */
+    /* opacity: 0.9; */
+  }
 `;
 
 export const DescriptionHeadline = styled.div`
   font-size: 2.5rem;
   font-family: ${theme.fonts.headline};
   text-align: center;
+  margin: 2rem;
 `;
 
 export const DescriptionContent = styled.div``;

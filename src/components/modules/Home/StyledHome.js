@@ -22,6 +22,10 @@ export const ColoredCtaWrapper = styled.div`
   flex-wrap: nowrap;
 
   border-bottom: 1rem solid ${theme.colors.NEUTRAL_1};
+
+  @media (orientation: portrait) {
+    height: 30vh;
+  }
 `;
 export const ColoredCtaEntry = styled.div`
   width: 33.3%;
