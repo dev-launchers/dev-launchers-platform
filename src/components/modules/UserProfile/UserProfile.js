@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-import PageBody from "../../../components/common/PageBody";
+import PageBody from "../../common/PageBody";
 import Button from "../../common/Button";
-import ProfileCard from "../../common/ProfileCard";
-import Points from "../../common/Points";
+
+import ProfileCard from "./ProfileCard";
+import Points from "./Points";
 import BioBox from "./BioBox";
 import LabCampus from "./LabCampus";
 import LabMember from "./LabMember";
