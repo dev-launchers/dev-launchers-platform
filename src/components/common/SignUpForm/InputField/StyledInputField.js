@@ -7,4 +7,8 @@ export const FormInput = styled.input`
   outline: none;
   border: none;
   border-bottom: 2px solid white;
+
+  @media (orientation: portrait) {
+    font-size: 2rem;
+  }
 `;

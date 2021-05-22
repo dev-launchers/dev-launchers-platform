@@ -14,7 +14,9 @@ export const Wrapper = styled.div`
   flex-direction: ${props => props.flexDirection};
   overflow: hidden;
   @media (orientation: portrait) {
+    height: auto;
     justify-content: center;
+    padding-bottom: 15vw;
   }
 `;
 
@@ -28,7 +30,7 @@ export const ImageAreaWrapper = styled.div`
 
   @media (orientation: portrait) {
     position: absolute;
-    left: 50%;
+    left: ${props => (props.flexDirection == "row" ? "20%" : "80%")};
     top: 0;
     width: 0;
     height: 100%;
@@ -104,7 +106,8 @@ export const DescriptionArea = styled.div`
 
   @media (orientation: portrait) {
     width: 100%;
-    height: 80%;
+    min-height: auto;
+    padding-bottom: 20vh;
 
     justify-content: flex-start;
     /* z-index: 1; */

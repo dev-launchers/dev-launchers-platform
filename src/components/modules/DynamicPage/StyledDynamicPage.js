@@ -38,6 +38,15 @@ export const TitleArea = styled.div`
   font-family: ${theme.fonts.headline}, sans-serif;
   text-align: left;
   color: white;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  h1 {
+    border-bottom: 0;
+  }
   /* text-shadow: 0.5vw 0.5vw black; */
 `;
 

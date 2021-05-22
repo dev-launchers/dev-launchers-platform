@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  border-bottom: 2rem solid ${theme.colors.NEUTRAL_1};
+  /* border-bottom: 2rem solid ${theme.colors.NEUTRAL_1}; */
 `;
 
 export const CenteredTitle = styled.div`
@@ -47,10 +47,11 @@ export const IntroSummaryBox = styled.div`
   justify-content: center;
   background-color: ${theme.colors.NEUTRAL_1};
   color: ${theme.colors.NEUTRAL_2};
-  padding-right: 1rem;
   font-size: 1rem;
+  padding: 1rem;
 
   @media (orientation: portrait) {
+    text-align: center;
     width: 100%;
   }
 `;
@@ -58,6 +59,10 @@ export const IntroSummaryBox = styled.div`
 export const IntroDescription = styled.div`
   width: 65%;
   text-align: left;
+
+  li {
+    margin-top: 2rem;
+  }
 
   @media (orientation: portrait) {
     width: 100%;

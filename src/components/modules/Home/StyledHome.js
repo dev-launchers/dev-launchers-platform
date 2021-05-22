@@ -47,13 +47,18 @@ export const ColoredCtaEntry = styled.div`
 export const ColoredCtaEntryTitle = styled.div`
   text-align: center;
   font-size: 2.5rem;
+  font-family: ${theme.fonts.headline};
   width: 100%;
-  height: 4rem;
+  /* height: 4rem; */
   background-color: ${theme.colors.NEUTRAL_1};
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (orientation: portrait) {
+    font-size: 2rem;
+  }
 `;
 export const ColoredCtaEntryImage = styled.img`
   height: 100%;

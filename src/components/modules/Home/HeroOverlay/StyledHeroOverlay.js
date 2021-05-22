@@ -28,6 +28,7 @@ export const Tagline = styled.div`
   line-height: 1.1em;
 
   @media (orientation: portrait) {
+    font-size: 7vw;
     width: 80%;
   }
 `;
@@ -40,6 +41,10 @@ export const MessageArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (orientation: portrait) {
+    width: 85%;
+  }
 `;
 
 export const ImageArea = styled.div`
@@ -55,6 +60,7 @@ export const ImageArea = styled.div`
   align-items: flex-end;
 
   @media (orientation: portrait) {
+    width: 15%;
     left: 0;
   }
 `;
@@ -64,4 +70,8 @@ export const Image = styled.img`
   filter: drop-shadow(-0.2rem 0rem 0 ${theme.colors.NEUTRAL_2})
     drop-shadow(0rem -0.2rem 0 ${theme.colors.NEUTRAL_2})
     drop-shadow(0.3rem 0rem 0 ${theme.colors.NEUTRAL_2});
+
+  @media (orientation: portrait) {
+    height: 70%;
+  }
 `;

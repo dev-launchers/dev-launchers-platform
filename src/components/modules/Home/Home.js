@@ -3,6 +3,7 @@ import React from "react";
 import PageBody from "../../../components/common/PageBody";
 import CardGroup from "../../../components/common/CardGroup";
 import RainbowBar from "../../../components/common/RainbowBar";
+import SignUpForm from "../../../components/common/SignUpForm";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
@@ -26,7 +27,7 @@ import CtaDescriptionArea from "./CtaDescriptionArea";
 
 import theme from "../../../styles/theme.js";
 
-import girlProfileImage from "../../../images/people-cutouts/girl-profile.png";
+import womanComputerImage from "../../../images/people-cutouts/woman-computer.png";
 import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
 import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
 import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
@@ -43,7 +44,7 @@ export default function Home() {
           <ColoredCtaWrapper>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_1}>
               <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={girlProfileImage} />
+              <ColoredCtaEntryImage src={womanComputerImage} />
             </ColoredCtaEntry>
             <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_2}>
               <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
@@ -59,6 +60,7 @@ export default function Home() {
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
           <Intro />
+          <SignUpForm />
 
           <CtaDescriptionArea
             flexDirection="row"
@@ -66,7 +68,7 @@ export default function Home() {
             descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
             descriptionContent="Some content about learning. Some content about learning. Some content about learning. Some content about learning. Some content about learning. "
             titleUnderlineColor={theme.colors.ACCENT_1}
-            imageSrc={girlProfileImage}
+            imageSrc={womanComputerImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
           <CtaDescriptionArea

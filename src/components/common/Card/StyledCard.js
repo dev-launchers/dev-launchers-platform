@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   @media (orientation: portrait) {
-    width: 90%;
+    width: 100%;
     margin-bottom: 5%;
   }
 `;
