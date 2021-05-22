@@ -9,7 +9,8 @@ const TimeLine = ({ events, currentTime }) => {
     <TimeLineContainer>
       {events
         .filter(
-          events => events.startWeekDay == currentTime.setZone("UTC-5").weekday
+          events =>
+            ConvertCentralTime(events.startWeekDay) == currentTime.weekday
         )
         .map(
           (
