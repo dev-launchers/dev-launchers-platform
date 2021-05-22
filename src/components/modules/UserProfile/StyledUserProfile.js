@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   grid-template-areas:
     "UserSection"
     "LabCampus"
+    "WeeksGlance"
     "Misc";
 `;
 

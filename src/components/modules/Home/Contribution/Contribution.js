@@ -1,28 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
 
-import style from "./Contribution.module.css";
+import CenteredHeadline from "../../../common/CenteredHeadline";
+
+import {
+  CtaSectionContent,
+  CtaSectionDescription,
+  CtaSectionButtonArea
+} from "./StyledContribution.js";
 
 import Button from "../../../common/Button";
+import ShadowCard from "../../../common/ShadowCard";
+
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
 
 export default function Contribution() {
   return (
-    <div className={style.Contribution}>
-      <h1 style={{ textAlign: "center" }}>CONTRIBUTE TO OUR PROJECTS</h1>
-      <div className={style.CtaSection}>
-        <div className={style.CtaSection_Content}>
-          <div className={style.CtaSection_Description}>
-            Everything, from our platform to our curriculum to the projects we
-            develop, is released to the open source community. We rely on
-            contributors to grow our platform and continue serving our members!
-          </div>
-          <div className={style.CtaSection_ButtonArea}>
-            <Button fontSize="2rem" href="https://github.com/dev-launchers">
-              Find us on GitHub
-            </Button>
-          </div>
+    <FlexPageSection
+      width="100%"
+      height="80vh"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      backgroundImage={codeSnapshotImage}
+    >
+      <ShadowCard width="70%" height="60%">
+        <CenteredHeadline style={{ backgroundColor: "white", color: "black" }}>
+          CONTRIBUTE TO OUR PROJECTS
+        </CenteredHeadline>
+        <div>
+          <CtaSectionContent>
+            <CtaSectionDescription>
+              Everything, from our platform to our curriculum to the projects we
+              develop, is released to the open source community. We rely on
+              contributors to grow our platform and continue serving our
+              members!
+            </CtaSectionDescription>
+            <CtaSectionButtonArea>
+              <Button fontSize="2rem" href="https://github.com/dev-launchers">
+                Find us on GitHub
+              </Button>
+            </CtaSectionButtonArea>
+          </CtaSectionContent>
         </div>
-      </div>
-    </div>
+      </ShadowCard>
+    </FlexPageSection>
   );
 }

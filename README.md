@@ -56,6 +56,6 @@ Once you are ready to create a new release, create a PR to merge main branch to 
 
 ---
 
-## License
+## LicenseS
 
-The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).
+The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md)

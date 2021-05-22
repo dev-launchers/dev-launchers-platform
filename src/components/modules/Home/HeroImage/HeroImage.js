@@ -1,13 +1,14 @@
 import React from "react";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
 
-import style from "./HeroImage.module.css";
-
-import Button from "../../../../components/common/Button";
+import { ImageContainer, Wrapper } from "./StyledHeroImage";
 
 export default function HeroImage() {
   return (
-    <div className={style.HeroImage}>
-      <div className={style.ImageContainer} />
-    </div>
+    <FlexPageSection>
+      <Wrapper>
+        <ImageContainer />
+      </Wrapper>
+    </FlexPageSection>
   );
 }

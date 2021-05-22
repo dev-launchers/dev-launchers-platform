@@ -1,12 +1,16 @@
 import React from "react";
 import { ConvertCentralTime } from "../../../../utils/TimeZoneConverter";
 import { TimeLineContainer, TimeStamp } from "./StyledLabCampus";
+
+import theme from "../../../../styles/theme.js";
+
 const TimeLine = ({ events, currentTime }) => {
   return (
     <TimeLineContainer>
       {events
         .filter(
-          events => events.startWeekDay == currentTime.setZone("UTC-5").weekday
+          events =>
+            ConvertCentralTime(events.startWeekDay) == currentTime.weekday
         )
         .map(
           (
@@ -30,11 +34,33 @@ const TimeLine = ({ events, currentTime }) => {
             const eventEnd = ConvertCentralTime(endWeekDay, endHour, endMinute);
             return (
               <TimeStamp key={i}>
-                {title} <br />
-                {eventStart.toFormat("t")}
-                {" - "}
-                {eventEnd.toFormat("t")} <br />
-                {location} Room
+                <div
+                  style={{
+                    fontWeight: "bold",
+                    fontFamily: theme.fonts.headline,
+                    borderBottom: `.2rem solid ${theme.colors.ACCENT_2}`,
+                    paddingBottom: ".2rem",
+                    marginBottom: ".4rem"
+                  }}
+                >
+                  {title}
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.25rem"
+                  }}
+                >
+                  [{eventStart.toFormat("t")}
+                  {" - "}
+                  {eventEnd.toFormat("t")}]
+                </div>
+                <div
+                  style={{
+                    fontSize: "1.1rem"
+                  }}
+                >
+                  {location} Room
+                </div>
               </TimeStamp>
             );
           }

@@ -1,7 +1,13 @@
 import React from "react";
-import Button from "../../../common/Button";
 
-import style from "./MemberProfilesSlideshow.module.css";
+import {
+  Wrapper,
+  CarouselHolder,
+  CarouselBlock,
+  CarouselBlockHeader,
+  CarouselArrow,
+  InLabelDiv
+} from "./StyledMemberProfilesSlideshow.js";
 
 const careerCategories = [
   "🎮 Game Design",
@@ -23,9 +29,11 @@ export default function MemberProfilesSlideshow(props) {
   const [careerColumn3, setCareerColumn3] = React.useState(careerCategories[2]);
 
   React.useEffect(() => {
-    setInterval(() => {
+    const carrerChangeInterval = setInterval(() => {
       setCareerIndex(prevIndex => prevIndex + 1);
     }, 2000);
+
+    return () => clearInterval(carrerChangeInterval);
   }, []);
 
   const wrapIndex = (index, array) => {
@@ -50,32 +58,32 @@ export default function MemberProfilesSlideshow(props) {
 
   return (
     <div style={{ width: "100%" }}>
-      <div className={style.wrapper}>
+      <Wrapper>
         <h3>A Space For Everyone</h3>
         <b>Check below to see where you fit in at Dev Launchers!</b>
-        <div className={style.carouselHolder}>
-          <div className={style.carouselBlock}>
-            <div className={style.inLabelDiv}>I'm a</div>
-            <div className={style.carouselBlockHeader}>Total Beginner</div>
-            <div className={style.inLabelDiv}>in</div>
+        <CarouselHolder>
+          <CarouselBlock>
+            <InLabelDiv>I'm a</InLabelDiv>
+            <CarouselBlockHeader>Total Beginner</CarouselBlockHeader>
+            <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn1}</div>
-          </div>
-          <div className={style.carouselArrow}></div>
-          <div className={style.carouselBlock}>
-            <div className={style.inLabelDiv}>I'm a</div>
-            <div className={style.carouselBlockHeader}>Student</div>
-            <div className={style.inLabelDiv}>in</div>
+          </CarouselBlock>
+          <CarouselArrow></CarouselArrow>
+          <CarouselBlock>
+            <InLabelDiv>I'm a</InLabelDiv>
+            <CarouselBlockHeader>Student</CarouselBlockHeader>
+            <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn2}</div>
-          </div>
-          <div className={style.carouselArrow}></div>
-          <div className={style.carouselBlock}>
-            <div className={style.inLabelDiv}>I'm a</div>
-            <div className={style.carouselBlockHeader}>Professional</div>
-            <div className={style.inLabelDiv}>in</div>
+          </CarouselBlock>
+          <CarouselArrow></CarouselArrow>
+          <CarouselBlock>
+            <InLabelDiv>I'm a</InLabelDiv>
+            <CarouselBlockHeader>Professional</CarouselBlockHeader>
+            <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn3}</div>
-          </div>
-        </div>
-      </div>
+          </CarouselBlock>
+        </CarouselHolder>
+      </Wrapper>
       <hr />
     </div>
   );

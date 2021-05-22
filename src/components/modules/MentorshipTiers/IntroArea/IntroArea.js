@@ -1,14 +1,14 @@
 import React from "react";
 import Button from "../../../common/Button";
 
-import style from "./IntroArea.module.css";
+import { HeaderDark } from "./StyledIntroArea.js";
 
 export default function IntroArea(props) {
   return (
     <div style={{ width: "100%" }}>
-      <div className={style.headerDark}>
-        <h1 id="title">Development Labs</h1>
-        <div className={style.pageDescription}>
+      <HeaderDark>
+        <h1>Development Labs</h1>
+        <div>
           Dev Launchers members become an integral part of our community full of
           developers and creators. Our programs, which provide content and
           experience on par with programs and classes that could otherwise cost{" "}
@@ -23,7 +23,7 @@ export default function IntroArea(props) {
           </Button>
           <br />
         </div>
-      </div>
+      </HeaderDark>
     </div>
   );
 }

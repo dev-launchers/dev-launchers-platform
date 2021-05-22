@@ -1,15 +1,11 @@
 import React, { useRef } from "react";
 
-import PageBody from "../../common/PageBody";
-import Button from "../../common/Button";
-
-import style from "./MentorshipTiers.module.css";
+import SignUpForm from "../../common/SignUpForm";
 
 import IntroArea from "./IntroArea";
 import ProgramDescriptionArea from "./ProgramDescriptionArea";
 import LevelDescriptionArea from "./LevelDescriptionArea";
 import MemberProfilesSlideshow from "./MemberProfilesSlideshow";
-import SignUpForm from "./SignUpForm";
 import PhotoHolder from "./PhotoHolder";
 
 // General scroll-to function

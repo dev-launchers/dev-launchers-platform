@@ -1,27 +1,34 @@
 import React from "react";
+import FlexPageSection from "../../../../components/common/FlexPageSection";
 
-import style from "./Programs.module.css";
 import sparkSymbolImage from "../../../../images/spark-symbol.png";
 import ignitionSymbolImage from "../../../../images/ignition-symbol.png";
 
 import Button from "../../../common/Button";
+import {
+  ProgramArea,
+  ProgramDescriptionArea,
+  ProgramImage,
+  ProgramImageArea,
+  ProgramImageContainer
+} from "./StyledPrograms";
 
 export default function Programs() {
   return (
-    <div className={style.Body}>
+    <FlexPageSection>
       <h1>
         Our Programs <span style={{ fontSize: "1rem" }}>(for teens)</span>
       </h1>
-      <div className={style.ProgramArea}>
-        <div className={style.ProgramImageArea}>
-          <div className={style.ProgramImageContainer}>
-            <img className={style.ProgramImage} src={sparkSymbolImage} />
+      <ProgramArea>
+        <ProgramImageArea>
+          <ProgramImageContainer>
+            <ProgramImage src={sparkSymbolImage} />
             <Button fontSize="2rem" href="https://forms.gle/ktNmippzfYUTnwgb8">
               Join Spark!
             </Button>
-          </div>
-        </div>
-        <div className={style.ProgramDescriptionArea}>
+          </ProgramImageContainer>
+        </ProgramImageArea>
+        <ProgramDescriptionArea>
           <h2>Spark</h2>
           The Spark Program introduces teen students to the skills needed to
           develop their own games and apps! Come hang out with Dev Launchers and
@@ -35,21 +42,21 @@ export default function Programs() {
             <li>Eat free snacks!</li>
             <li>Earn levels and prizes!</li>
           </ul>
-        </div>
-      </div>
-      <div className={style.ProgramArea}>
-        <div className={style.ProgramImageArea}>
-          <div className={style.ProgramImageContainer}>
-            <img class={style.ProgramImage} src={ignitionSymbolImage} />
+        </ProgramDescriptionArea>
+      </ProgramArea>
+      <ProgramArea>
+        <ProgramImageArea>
+          <ProgramImageContainer>
+            <ProgramImage src={ignitionSymbolImage} />
             <Button
               fontSize="2rem"
               toast="Ignition signups aren't open yet, but join the Spark Program to begin working with us until enrollment begins!"
             >
               Join Ignition!
             </Button>
-          </div>
-        </div>
-        <div className={style.ProgramDescriptionArea}>
+          </ProgramImageContainer>
+        </ProgramImageArea>
+        <ProgramDescriptionArea>
           <h2>Ignition</h2>
           Our Ignition Program offers an in-depth, rigorous development
           experience for students looking to take a deeper dive into the realm
@@ -71,8 +78,8 @@ export default function Programs() {
             <li>Free transportation to sessions</li>
             <li>Free take-home laptop rentals!</li>
           </ul>
-        </div>
-      </div>
-    </div>
+        </ProgramDescriptionArea>
+      </ProgramArea>
+    </FlexPageSection>
   );
 }

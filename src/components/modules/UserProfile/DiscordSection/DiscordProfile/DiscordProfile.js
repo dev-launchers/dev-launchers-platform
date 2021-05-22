@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import style from "./DiscordProfile.module.css";
 import DiscordAvatar from "./../../../../common/DiscordAvatar";
 import Beans from "./Beans";
+import { Wrapper, DiscordInfo } from "./StyledDiscordProfile";
 
 export default function DiscordProfile({
   discordId,
@@ -10,12 +10,12 @@ export default function DiscordProfile({
   discordDiscriminator
 }) {
   return (
-    <div className={style.wrapper}>
+    <Wrapper>
       <DiscordAvatar discordId={discordId} avatarKey={avatarKey} />
-      <p style={{ alignSelf: "start", color: "#464f49", margin: 0 }}>
+      <DiscordInfo>
         {discordUsername}#{discordDiscriminator}
-      </p>
+      </DiscordInfo>
       <Beans discordId={discordId} />
-    </div>
+    </Wrapper>
   );
 }

@@ -22,5 +22,5 @@ spec:
           value: https://api-staging.devlaunchers.com/auth/google
         - name: DISCORD_AUTH_URL
           value: https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify
-        image: devlaunchers/platform-website:sha-fc83f73
+        image: devlaunchers/platform-website:sha-58e48d3
         name: platform-website

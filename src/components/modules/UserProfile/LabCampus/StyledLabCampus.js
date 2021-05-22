@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import BaseDropdown from "../../../common/Dropdown";
 
+import theme from "../../../../styles/theme.js";
+
 export const Wrapper = styled.div`
   grid-area: LabCampus;
   text-align: center;
@@ -9,7 +11,8 @@ export const Wrapper = styled.div`
 export const TimeLineContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background: bisque;
+  background-color: ${theme.colors.NEUTRAL_2};
+  margin-bottom: 1rem;
 `;
 export const TimeStamp = styled.span`
   display: flex;
@@ -22,12 +25,12 @@ export const LabsContainer = styled.div`
   display: grid;
   gap: 15px;
   grid-template-areas:
-    "General Beginner Web Game"
+    "General Beginner Dev Personal"
     "General Landing Landing Landing";
   @media (orientation: portrait) {
     grid-template-areas:
       "General Beginner"
-      "Web Game"
+      "Dev Personal"
       "Landing Landing";
   }
 `;

@@ -10,23 +10,23 @@
     "location": "Beginner Dev"
   },
   {
-    "title": "Web and App Dev Lab",
+    "title": "Dev Launchers Projects Lab",
     "startWeekDay": 6,
     "startHour": 13,
     "startMinute": 0,
     "endWeekDay": 6,
     "endHour": 14,
     "endMinute": 0,
-    "location": "Web / App Dev"
+    "location": "Dev Launchers Projects"
   },
   {
-    "title": "Game Dev Lab",
+    "title": "Personal Projects Lab",
     "startWeekDay": 6,
     "startHour": 14,
     "startMinute": 0,
     "endWeekDay": 6,
     "endHour": 15,
     "endMinute": 0,
-    "location": "Game Dev"
+    "location": "Personal Projects"
   }
 ]
