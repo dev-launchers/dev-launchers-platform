@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import PageBody from "../../../components/common/PageBody";
 import CardGroup from "../../../components/common/CardGroup";
@@ -32,8 +32,15 @@ import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
 import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
 import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
 
+// General scroll-to function
+const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+
 export default function Home() {
-  console.log(communityCards);
+  // Scroll-to functions
+  const learnRef = useRef(null);
+  const leadRef = useRef(null);
+  const createRef = useRef(null);
+  const donateRef = useRef(null);
   return (
     <div>
       <RainbowBar />
@@ -42,19 +49,39 @@ export default function Home() {
       <PageBody>
         <HomePageBody>
           <ColoredCtaWrapper>
-            <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_1}>
+            <ColoredCtaEntry
+              onClick={() => {
+                scrollToRef(learnRef);
+              }}
+              backgroundColor={theme.colors.ACCENT_1}
+            >
               <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
               <ColoredCtaEntryImage src={womanComputerImage} />
             </ColoredCtaEntry>
-            <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_2}>
+            <ColoredCtaEntry
+              onClick={() => {
+                scrollToRef(leadRef);
+              }}
+              backgroundColor={theme.colors.ACCENT_2}
+            >
               <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
               <ColoredCtaEntryImage src={manGlassesImage} />
             </ColoredCtaEntry>
-            <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_4}>
+            <ColoredCtaEntry
+              onClick={() => {
+                scrollToRef(createRef);
+              }}
+              backgroundColor={theme.colors.ACCENT_4}
+            >
               <ColoredCtaEntryTitle>CREATE</ColoredCtaEntryTitle>
               <ColoredCtaEntryImage src={girlSmilingImage} />
             </ColoredCtaEntry>
-            <ColoredCtaEntry backgroundColor={theme.colors.ACCENT_3}>
+            <ColoredCtaEntry
+              onClick={() => {
+                scrollToRef(donateRef);
+              }}
+              backgroundColor={theme.colors.ACCENT_3}
+            >
               <ColoredCtaEntryTitle>DONATE</ColoredCtaEntryTitle>
               <ColoredCtaEntryImage src={boyFrontImage} />
             </ColoredCtaEntry>
@@ -62,6 +89,7 @@ export default function Home() {
           <Intro />
           <SignUpForm />
 
+          <div className="scrollToDiv" ref={learnRef} style={{ height: "0" }} />
           <CtaDescriptionArea
             flexDirection="row"
             title="LEARN"
@@ -71,6 +99,8 @@ export default function Home() {
             imageSrc={womanComputerImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
+
+          <div className="scrollToDiv" ref={leadRef} style={{ height: "0" }} />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="LEAD"
@@ -80,6 +110,12 @@ export default function Home() {
             imageSrc={manGlassesImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
+
+          <div
+            className="scrollToDiv"
+            ref={createRef}
+            style={{ height: "0" }}
+          />
           <CtaDescriptionArea
             flexDirection="row"
             title="CREATE"
@@ -88,6 +124,12 @@ export default function Home() {
             titleUnderlineColor={theme.colors.ACCENT_4}
             imageSrc={girlSmilingImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
+          />
+
+          <div
+            className="scrollToDiv"
+            ref={donateRef}
+            style={{ height: "0" }}
           />
           <CtaDescriptionArea
             flexDirection="row-reverse"
