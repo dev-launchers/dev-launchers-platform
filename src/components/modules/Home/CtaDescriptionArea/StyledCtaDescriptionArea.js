@@ -119,7 +119,7 @@ export const DescriptionHeadline = styled.div`
   font-size: 2.5rem;
   font-family: ${theme.fonts.headline};
   text-align: center;
-  margin: 2rem;
+  margin-bottom: 2rem;
 `;
 
 export const DescriptionContent = styled.div``;

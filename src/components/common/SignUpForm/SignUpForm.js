@@ -35,7 +35,7 @@ const formEntries = [
         fontSize: "1.5rem",
         marginTop: "5%",
         marginBottom: "5%",
-        textAlign: "justify"
+        textAlign: "left"
       }}
     >
       <p>

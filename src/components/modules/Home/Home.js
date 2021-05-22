@@ -94,7 +94,22 @@ export default function Home() {
             flexDirection="row"
             title="LEARN"
             descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
-            descriptionContent="Some content about learning. Some content about learning. Some content about learning. Some content about learning. Some content about learning. "
+            descriptionContent=<div>
+              Learn at a pace tailored completely to you! You'll have hands on
+              help, starting from{" "}
+              <span
+                style={{
+                  backgroundColor: theme.colors.NEUTRAL_2,
+                  color: theme.colors.NEUTRAL_1
+                }}
+              >
+                square one
+              </span>{" "}
+              all the way through building complex projects working on real
+              teams. Whether you're looking to build clean, professional apps
+              and sites, or create fun and engaging videogames, Dev Launchers
+              has been crafted for <u>YOU</u>.
+            </div>
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={womanComputerImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
@@ -105,7 +120,20 @@ export default function Home() {
             flexDirection="row-reverse"
             title="LEAD"
             descriptionHeadline="Evolve your career in the direction you want to go"
-            descriptionContent="Some content about leading. Some content about leading. Some content about leading. Some content about leading. Some content about leading. "
+            descriptionContent=<div>
+              <p>
+                Change your life while changing the world! Lead ambitious
+                projects designed to engage new learners and solve real
+                problems, all with guidance and support from people who have
+                walked the same path.
+              </p>
+              <p>
+                You'll gain the soft skills needed to land more senior roles in
+                your career while managing projects and making lifelong friends.
+                Join a growing network of software professionals working to
+                build something great, together.
+              </p>
+            </div>
             titleUnderlineColor={theme.colors.ACCENT_2}
             imageSrc={manGlassesImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
@@ -119,8 +147,25 @@ export default function Home() {
           <CtaDescriptionArea
             flexDirection="row"
             title="CREATE"
-            descriptionHeadline="This is a headline about creating!"
-            descriptionContent="Some content about creating. Some content about creating. Some content about creating. Some content about creating. Some content about creating. "
+            descriptionHeadline="Build epic products, tools, and games used by real people!"
+            descriptionContent=<div>
+              <p>
+                We build <u>awesome</u> things, and you can join us!
+              </p>{" "}
+              <p>The Dev Launchers Project Ethos:</p>
+              <ul>
+                <li>Keep it exciting, always</li>
+                <li>
+                  Encourage people at all levels and from all backgrounds to
+                  learn technical skills
+                </li>
+                <li>
+                  When given the chance, experiment with groundbreaking
+                  technology.
+                </li>
+                <li>Make the world better</li>
+              </ul>
+            </div>
             titleUnderlineColor={theme.colors.ACCENT_4}
             imageSrc={girlSmilingImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
@@ -135,7 +180,10 @@ export default function Home() {
             flexDirection="row-reverse"
             title="DONATE"
             descriptionHeadline="Your donation will create an opportunity for a young learner, preparing them to face the technical challenges of the future head on."
-            descriptionContent="Dev Launchers is a registered 501c3 not-for-profit organization. We can’t keep changing lives without your support!"
+            descriptionContent=<div>
+              Dev Launchers is a registered 501c3 not-for-profit organization.
+              We can’t keep changing lives without your support!"
+            </div>
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={boyFrontImage}
             imageOutlineColor={theme.colors.NEUTRAL_2}
