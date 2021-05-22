@@ -7,7 +7,16 @@ import CardGroup from "../../../components/common/CardGroup";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
+import Carousel from "../../../components/common/Carousel";
+/*import placeholder1 from "../../../images/HeroImages/placeholder1.jpg";
+import placeholder2 from "../../../images/HeroImages/placeholder2.jpg";
+import placeholder3 from "../../../images/HeroImages/placeholder3.png";*/
+import placeholder4 from "../../../images/HeroImages/laptopman.png";
+import placeholder5 from "../../../images/HeroImages/laptopman2.png";
+import placeholder6 from "../../../images/HeroImages/rocket.png";
+
 import Intro from "./Intro";
+1;
 //import Programs from "./Programs";
 import Organization from "./Organization";
 import Contribution from "./Contribution";
@@ -21,8 +30,23 @@ export default function Home() {
   console.log(communityCards);
   return (
     <div className={style.Home}>
-      <HeroImage />
-      <HeroOverlay />
+      <Carousel
+        interval={3000}
+        callsToAction={[
+          /*placeholder1,
+          placeholder2,
+          placeholder3*/
+
+          <div>
+            hewwow<button>click here</button>
+          </div>,
+          { buttonText: "free bitcoin click here", text: "hello world1" },
+          { buttonText: "free dogecoin click here", text: "hello world2" },
+          { buttonText: "free etherium click here", text: "hello world3" }
+        ]}
+        images={[placeholder4, placeholder5, placeholder6]}
+      />
+
       <PageBody>
         <div className={style.HomePageBody}>
           <Intro />

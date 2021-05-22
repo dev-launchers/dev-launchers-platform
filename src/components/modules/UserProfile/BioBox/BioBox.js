@@ -38,6 +38,7 @@ export default function BioBox({ data }) {
         value={bioText}
         onChange={handleTextChange}
         readOnly={isReadOnly}
+        onClick={e => setIsReadOnly(false)}
       ></Bio>
       <br />
       <button onClick={e => setIsReadOnly(false)}>Edit</button>
