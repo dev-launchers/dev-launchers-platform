@@ -7,7 +7,7 @@ export const FormWrapper = styled.div`
   margin-bottom: 2rem;
 
   input[type="submit"] {
-    font-family: "Holtwood One SC", serif;
+    font-family: "Abel", sans-serif;
     background-color: #ff7f0e;
     border: 0px;
     border-radius: 20px;

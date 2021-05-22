@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
+import theme from "../../../styles/theme.js";
 
 const Button = styled.a`
-  /*font-family: "Holtwood One SC", serif;*/
-  font-family: "Abel", sans-serif;
-  background-color: #ff7f0e;
-  color: white;
+  font-family: ${theme.fonts.headline}, sans-serif;
+  background-color: ${theme.colors.ACCENT_1};
+  color: ${theme.colors.NEUTRAL_2};
   width: ${({ width }) => (width ? width : "")};
   border: 0px;
   border-bottom: 3px solid #994800;
@@ -14,8 +14,8 @@ const Button = styled.a`
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  border-radius: ${({ borderRadius }) =>
-    borderRadius ? borderRadius : "100px"};
+  /* border-radius: ${({ borderRadius }) =>
+    borderRadius ? borderRadius : "100px"}; */
   font-weight: bolder;
 
   ${({ hero }) =>
@@ -54,8 +54,8 @@ const Button = styled.a`
       padding-right: 1.5rem;
     `}
   &:hover {
-    background-color: rgb(255, 217, 0);
-    color: rgb(58, 58, 58);
+    background-color: ${theme.colors.ACCENT_2};
+    color: ${theme.colors.ACCENT_1};
   }
 `;
 export default Button;

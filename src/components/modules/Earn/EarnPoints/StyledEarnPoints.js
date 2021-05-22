@@ -11,7 +11,7 @@ export const Tasks = styled.table`
 
   th {
     font-weight: bold;
-    font-family: "Holtwood One SC";
+    font-family: "Abel", sans-serif;
   }
 `;
 
@@ -32,7 +32,7 @@ export const TasksDescription = styled.td`
 export const TasksValue = styled.td`
   width: 15%;
   padding-bottom: 1%;
-  font-family: "Holtwood One SC";
+  font-family: "Abel", sans-serif;
   font-size: 0.8rem;
   text-align: center;
 `;

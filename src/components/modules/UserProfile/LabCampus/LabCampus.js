@@ -10,7 +10,9 @@ const LabCampus = props => {
 
   return (
     <Wrapper>
-      <strong>All times are based off {currentTime.zoneName}</strong>
+      <div style={{ marginTop: ".5rem", textAlign: "right", fontSize: "1rem" }}>
+        All times are based off {currentTime.zoneName}*
+      </div>
       <TimeLine events={events} currentTime={currentTime} />
       <Labs
         events={events}

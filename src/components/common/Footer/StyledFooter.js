@@ -1,12 +1,29 @@
 import styled from "styled-components";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 
+import theme from "../../../styles/theme.js";
+
+function getRandomThemeColor() {
+  const colors = [
+    theme.colors.ACCENT_1,
+    theme.colors.ACCENT_2,
+    theme.colors.ACCENT_3,
+    theme.colors.ACCENT_4
+  ];
+  let colorTrack = -1;
+
+  return function() {
+    colorTrack = colorTrack >= colors.length - 1 ? 0 : colorTrack + 1;
+    return colors[colorTrack];
+  };
+}
+
 export const Wrapper = styled.div`
   position: relative;
   background-color: #1c1c1c;
   color: #d9d9d9;
   width: 100%;
-  height: 100vh;
+  height: 50vh;
   min-height: 100px;
 
   display: flex;
@@ -22,10 +39,10 @@ export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
   alt: "logo"
 }))`
-  height: 50vh;
+  height: 10vh;
   @media (orientation: portrait) {
     height: auto;
-    width: 50vw;
+    width: 15vw;
   }
 `;
 
@@ -85,6 +102,16 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
 export const NavEntry = styled.div`
   cursor: pointer;
   font-size: 1.75rem;
+  border-bottom: 0.4rem solid transparent;
+  padding-top: 0.3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  &:hover {
+    border-bottom: 0.4rem solid ${getRandomThemeColor()};
+    color: ${theme.colors.NEUTRAL_2};
+  }
+
   @media (orientation: portrait) {
     font-size: 1.2rem;
   }

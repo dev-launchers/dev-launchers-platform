@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
+import theme from "./theme.js";
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -11,7 +12,10 @@ body {
   /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
   font-family: sans-serif;
-  font-family: "Abel", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-weight: lighter;
+  color: ##1c1c1c;
+  background-color: #f0edee;
 }
 
 html {
@@ -35,7 +39,7 @@ body {
 
 .App {
   font-family: sans-serif;
-  font-family: "Abel", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   text-align: left;
 }
 
@@ -59,14 +63,21 @@ h6 {
 }
 
 h1 {
-  font-family: "Holtwood One SC", serif;
+  font-family: ${theme.fonts.headline}, sans-serif;
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
+
+  width: fit-content;
+  padding: 1rem;
+  // background-color:${theme.colors.NEUTRAL_1};
+  // color:${theme.colors.NEUTRAL_2};
+
+  border-bottom: .3rem solid ${theme.colors.NEUTRAL_1};
 }
 
 h2 {
-  font-family: "Holtwood One SC", serif;
+  font-family: "Abel", sans-serif;
 }
 
 h3 {
@@ -166,6 +177,45 @@ h3 {
   background-color: lightgray;
 }
 
+
+li {
+  margin-bottom: 5px;
+}
+
+/* React tabs */
+// css
+.react-tabs__tab-list {
+  border-bottom: none;
+}
+
+.react-tabs__tab {
+ // your custom style goes here
+ font-family: ${theme.fonts.headline};
+ border-radius:0;
+ font-size:3rem;
+ border:.3rem solid ${theme.colors.NEUTRAL_1};
+ background-color: ${theme.colors.NEUTRAL_1};
+ color: ${theme.colors.NEUTRAL_2};
+ margin-right:.5rem;
+}
+
+.react-tabs__tab--selected {
+  // your custom style goes here
+  border-color:${theme.colors.NEUTRAL_1};
+  color:${theme.colors.NEUTRAL_1};
+  background-color:transparent;
+  border-bottom:none;
+}
+
+.react-tabs__tab:focus {
+  // your custom style goes here
+}
+
+.react-tabs__tab:focus:after {
+  // your custom style goes here
+}
+
+
 @media (orientation: portrait) {
   html {
     /* Scale all font down */
@@ -189,10 +239,11 @@ h3 {
   .entry-image {
     height: 20vw;
   }
+
+  .react-tabs__tab {
+   font-size:2rem;
+  }
 }
 
-li {
-  margin-bottom: 5px;
-}
 `;
 export default GlobalStyle;

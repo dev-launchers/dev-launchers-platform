@@ -88,7 +88,7 @@ function MyApp({ Component, pageProps }) {
           ></script>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Abel&family=Nunito&family=Nunito+Sans&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&display=swap"
             rel="stylesheet"
           />
           <link

@@ -20,6 +20,7 @@ export const Heading = styled.div`
 export const Title = styled.a.attrs(() => ({
   target: "_blank"
 }))`
+  font-family: "Abel", sans-serif;
   color: black;
   font-weight: bold;
 `;

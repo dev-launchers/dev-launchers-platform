@@ -24,7 +24,7 @@ const LABS_DATA = [
     ]
   },
   {
-    labTitle: "Web / App Dev",
+    labTitle: "Dev Launchers Projects",
     links: [
       "https://meet.google.com/nth-nsji-vzs",
       "https://hangouts.google.com/u/0/call/kGulty4BgioZSHem7BpMACEE?no_rd",
@@ -32,7 +32,7 @@ const LABS_DATA = [
     ]
   },
   {
-    labTitle: "Game Dev",
+    labTitle: "Personal Projects",
     links: [
       "https://meet.google.com/svu-habv-kjt",
       "https://hangouts.google.com/u/0/call/KT1Vug-uDXKTRXB0scjPACEE?no_rd",
