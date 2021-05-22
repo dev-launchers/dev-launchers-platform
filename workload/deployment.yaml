@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: platform-website
-  name:  platform-website
+  name: platform-website
   annotations:
     fluxcd.io/automated: "true"
   labels:
@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: platform-website
-        image: devlaunchers/platform-website:latest # {"$imagepolicy": "platform-website:platform-website"}
+        image: devlaunchers/platform-website:2734af6-202105222019 # {"$imagepolicy": "platform-website:platform-website"}
         ports:
         - containerPort: 3000
         env:
