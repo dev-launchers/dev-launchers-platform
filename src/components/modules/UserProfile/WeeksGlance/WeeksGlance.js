@@ -71,6 +71,13 @@ export default function WeeksGlance() {
                 );
               }
             })}
+            {eventList.filter(({ name, time, weekday }) => {
+              return weekday == i + 1;
+            }).length == 0 ? (
+              <div style={{ fontSize: "1rem" }}>No events</div>
+            ) : (
+              ""
+            )}
           </Day>
         );
       })}

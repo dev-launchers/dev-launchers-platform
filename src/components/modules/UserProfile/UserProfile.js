@@ -55,8 +55,8 @@ export default function UserProfile() {
               <BioBox data={userData}>{userData.bio}</BioBox>
             </UserInfo>
           </UserSection>
-          <WeeksGlance />
           <LabCampus />
+          <WeeksGlance />
 
           <Misc>
             <LabMember />
