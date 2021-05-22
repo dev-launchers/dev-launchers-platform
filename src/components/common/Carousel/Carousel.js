@@ -18,14 +18,12 @@ export default function Carousel({
   const [thumbnails2, setThumbnails2] = useState([]);
   const [leftSlide, setLeftSlide] = useState(0);
   const [rightSlideStyle, setRightSlideStyle] = useState({});
-  const [leftSlideStyle, setLeftSlideStyle] = useState({});
+  const [leftSlideContent, setLeftSlideContent] = useState();
 
   useEffect(() => {
     setThumbnails(callsToAction);
     setThumbnails2(images);
-    setLeftSlideStyle({
-      backgroundImage: "url('" + callsToAction[leftSlide] + "')"
-    });
+    setLeftSlideContent(callsToAction[leftSlide]);
 
     if (leftSlide === callsToAction.length - 1) {
       setRightSlideStyle({
@@ -71,11 +69,7 @@ export default function Carousel({
 
           <LeftSlide>
             {/* need to add the style={leftSlideStyle} to this thumbnail*/}
-            <SlideThumbnail style={leftSlideStyle}></SlideThumbnail>
-
-            {/* {callsToAction.map((callToAction, i)=>{
-              return <button>{callToAction.buttonText}</button> 
-            })} */}
+            <SlideThumbnail>{leftSlideContent}</SlideThumbnail>
           </LeftSlide>
           <RightSlide>
             {/* need to add the style={rightSlideStyle}*/}
