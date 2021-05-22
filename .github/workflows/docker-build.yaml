@@ -8,6 +8,7 @@ on:
       - 'src/**'
       - '.github/workflows/docker-build.yaml'
       - 'package*.json'
+      - 'npm-shrinkwrap.json'
 jobs:
   build:
     runs-on: ubuntu-latest
