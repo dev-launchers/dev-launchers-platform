@@ -23,6 +23,10 @@ export const Container = styled.div`
   flex-direction: column;
   color: ${theme.colors.NEUTRAL_1};
   padding: 0;
+  @media (orientation: portrait) {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
 `;
 export const Title = styled.div`
   width: 100%;
