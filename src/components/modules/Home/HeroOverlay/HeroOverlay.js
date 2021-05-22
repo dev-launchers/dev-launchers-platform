@@ -13,14 +13,27 @@ import {
 
 import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png";
 
+function TypewriterEffect(props) {
+  const [initialText, setInitialText] = React.useState(props.children);
+  const [text, setText] = React.useState(initialText);
+
+  setTimeout(() => {
+    setText(Math.random());
+  }, 1000);
+
+  return <>{text}</>;
+}
+
 export default function HeroOverlay() {
   return (
     <FlexPageSection>
       <Wrapper>
         <MessageArea>
           <Tagline>
-            >We build world changing software while preparing people to thrive
-            in technical careers█
+            <TypewriterEffect>
+              >We build world changing software while preparing people to thrive
+              in technical careers█
+            </TypewriterEffect>
           </Tagline>
         </MessageArea>
         <ImageArea>
