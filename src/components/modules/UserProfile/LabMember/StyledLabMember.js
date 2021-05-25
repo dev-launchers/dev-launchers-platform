@@ -40,3 +40,5 @@ export const SignUpButton = styled.button`
     border-color: ${theme.colors.ACCENT_2};
   }
 `;
+
+//Hi, this is a comment from Gautham
