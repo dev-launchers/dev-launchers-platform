@@ -33,6 +33,20 @@ body {
   font-size: 1.5rem;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  background-clip: content-box; 
+}
+
 #root {
   overflow-x: hidden;
 }

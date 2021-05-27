@@ -6,7 +6,6 @@ export const HomePageBody = styled.div`
   width: 100%;
   color: black;
   min-height: 40vh;
-
   @media (orientation: portrait) {
     width: 100%;
     padding: 0%;
@@ -63,6 +62,7 @@ export const ColoredCtaEntryTitle = styled.div`
 export const ColoredCtaEntryImage = styled.img`
   height: 100%;
   filter: grayscale(100%);
+  transition: 0.5s;
 
   &:hover {
     transform: scale(1.1);
