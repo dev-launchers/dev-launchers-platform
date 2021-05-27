@@ -2,9 +2,9 @@ import React from "react";
 import CardGroup from "../CardGroup";
 import { Wrapper, BarSection } from "./StyledRainbowBar";
 
-import theme from "../../../styles/theme.js";
+import { withTheme } from "styled-components";
 
-export default function RainbowBar({ width = "100%", height = ".5rem" }) {
+function RainbowBar({ width = "100%", height = ".5rem", theme }) {
   return (
     <Wrapper width={width} height={height}>
       <BarSection color={theme.colors.ACCENT_1} />
@@ -14,3 +14,5 @@ export default function RainbowBar({ width = "100%", height = ".5rem" }) {
     </Wrapper>
   );
 }
+
+export default withTheme(RainbowBar);
