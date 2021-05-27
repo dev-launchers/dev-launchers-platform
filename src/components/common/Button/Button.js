@@ -1,13 +1,28 @@
 import styled, { css } from "styled-components";
-import theme from "../../../styles/theme.js";
 
+const colorUnderButtons = (hexColor) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+  return result
+    ? `rgba(${parseInt(result[1], 16) - 102},${parseInt(result[2], 16) -
+        55},${parseInt(result[3], 16) - 14},1)`
+    : null;
+};
+
+const onHoverBackgroundColor = (hexColor) => {
+  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+  return result
+    ? `rgb(${parseInt(result[1], 16) + 44},${parseInt(result[2], 16) +
+        44},${parseInt(result[3], 16) + 44})`
+    : null;
+};
 const Button = styled.a`
-  font-family: ${theme.fonts.headline}, sans-serif;
-  background-color: ${theme.colors.ACCENT_1};
-  color: ${theme.colors.NEUTRAL_2};
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
+  background-color: ${({ theme, bgColor }) => bgColor || theme.colors.ACCENT_1};
+  color: ${({ theme, textColor }) => textColor || theme.colors.NEUTRAL_2};
   width: ${({ width }) => (width ? width : "")};
   border: 0px;
-  border-bottom: 3px solid #994800;
+  border-bottom: 3px solid ${({ theme, bgColor }) =>
+    colorUnderButtons(bgColor || theme.colors.ACCENT_1)};
   cursor: pointer;
   font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.5rem")};
   margin-top: ${({ marginTop }) => (marginTop ? marginTop : "")};
@@ -54,8 +69,9 @@ const Button = styled.a`
       padding-right: 1.5rem;
     `}
   &:hover {
-    background-color: ${theme.colors.ACCENT_2};
-    color: ${theme.colors.ACCENT_1};
+    background-color: ${({ theme, bgColor }) =>
+      onHoverBackgroundColor(bgColor || theme.colors.ACCENT_2)};
+    color: ${({ theme }) => theme.colors.ACCENT_3};
   }
 `;
 export default Button;
