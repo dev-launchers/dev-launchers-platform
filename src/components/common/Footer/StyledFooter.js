@@ -106,6 +106,7 @@ export const NavEntry = styled.div`
   padding-top: 0.3rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  transition: 0.5s;
 
   &:hover {
     border-bottom: 0.4rem solid ${getRandomThemeColor()};
