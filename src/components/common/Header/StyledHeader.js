@@ -3,7 +3,6 @@ import logoMonogramImage from "../../../images/logo-monogram.png";
 
 export const HeaderBlock = styled.div`
   background-color: #1c1c1c;
-  color: #d9d9d9;
   min-height: 7.5vh;
   width: 100%;
   position: sticky;
@@ -15,6 +14,10 @@ export const HeaderBlock = styled.div`
   align-items: center;
 
   /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+
+  a {
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  }
 `;
 export const Logo = styled.div`
   width: 30%;
@@ -49,7 +52,7 @@ export const LogoImageHolder = styled.div`
 `;
 export const LogoImage = styled.img.attrs(() => ({
   src: logoMonogramImage,
-  alt: "logo"
+  alt: "logo",
 }))`
   display: inline-block;
   width: 100%;
@@ -102,7 +105,7 @@ export const SignInArea = styled.div`
   }
 `;
 export const UserProfilePic = styled.img.attrs(() => ({
-  alt: "profile-pic"
+  alt: "profile-pic",
 }))`
   max-height: 3rem;
   min-height: 2rem;
