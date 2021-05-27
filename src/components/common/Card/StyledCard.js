@@ -41,6 +41,8 @@ export const ImageHolder = styled.div`
 
   a {
     display: flex;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -54,7 +56,7 @@ export const Image = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  background-image: url(${props => props.imageSrc});
+  background-image: url(${(props) => props.imageSrc});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -72,7 +74,12 @@ export const DataHolder = styled.div`
       padding: 6.75%;
     `}
 `;
+export const SecondaryText = styled.div`
+  margin: 1% 0 2% 0;
+  font-size: 1rem;
 
+
+`
 export const Description = styled.div`
   width: 100%;
   font-size: 1.2rem;
@@ -81,4 +88,13 @@ export const Description = styled.div`
 
 export const AttachmentsContainer = styled.div`
   margin-top: auto;
+`;
+export const ActionsContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  place-content: start;
+  gap: 2rem;
+  font-size: 1em;
+  font-family: ${({ theme }) => theme.fonts.headline};
+  margin: 1rem 0 1rem 1rem;
 `;
