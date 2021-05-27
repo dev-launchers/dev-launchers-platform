@@ -1,4 +1,6 @@
 import React from "react";
+import { useRouter } from "next/router";
+
 import {
   Container,
   Content,
@@ -6,7 +8,9 @@ import {
   DataHolder,
   Image,
   Description,
-  AttachmentsContainer
+  SecondaryText,
+  AttachmentsContainer,
+  ActionsContainer,
 } from "./StyledCard";
 import cx from "classnames";
 
@@ -14,6 +18,7 @@ import RainbowBar from "../RainbowBar";
 
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
+import Link from "next/link";
 
 /**
  * Props:
@@ -29,12 +34,19 @@ import Attachments from "./Attachments";
  *  - cardFlexDirection: changes flex-direction if existed otherwise delete flex-direction
  */
 export default function Card(props) {
+  const router = useRouter();
+
   React.useEffect(() => {
     console.log(props.cardData.flexDirection);
   }, []);
 
   return (
-    <Container size={props.size} key={props.i} onClick={props.cardData.onClick}>
+    <Container
+      style={props.style}
+      size={props.size}
+      key={props.i}
+      onClick={props.cardData.onClick}
+    >
       <Content
         size={props.size}
         textAlignment={props.cardData.textAlignment}
@@ -44,26 +56,43 @@ export default function Card(props) {
           size={props.size}
           bgColor={props.cardData.imageHolderBackgroundColor}
         >
-          <a
-            href={props.cardData.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ width: "100%", height: "100%" }}
-          >
-            <Image imageSrc={props.cardData.imageSrc} />
-          </a>
+          {props.isLinkingInside ? (
+            <Link href={router.pathname + "/" + props.cardData.href} passHref>
+              <a rel="noopener noreferrer">
+                <Image imageSrc={props.cardData.imageSrc} />
+              </a>
+            </Link>
+          ) : (
+            <a
+              href={props.cardData.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image imageSrc={props.cardData.imageSrc} />
+            </a>
+          )}
         </ImageHolder>
         <RainbowBar height=".3rem" />
         <DataHolder size={props.size}>
-          <CardTitle data={props.cardData} />
+          <CardTitle
+            data={props.cardData}
+            isLinkingInside={props.isLinkingInside}
+            pathname={router.pathname}
+          />
+          {props.cardData.secondaryText && (
+            <SecondaryText>{props.cardData.secondaryText}</SecondaryText>
+          )}
           <Description>{props.cardData.description}</Description>
         </DataHolder>
       </Content>
-      <AttachmentsContainer>
-        {props.cardData.attachments && (
+      {props.cardData.attachments && (
+        <AttachmentsContainer>
           <Attachments data={props.cardData.attachments} />
-        )}
-      </AttachmentsContainer>
+        </AttachmentsContainer>
+      )}
+      {props.cardData.actions && (
+        <ActionsContainer>{props.cardData.actions}</ActionsContainer>
+      )}
     </Container>
   );
 }
