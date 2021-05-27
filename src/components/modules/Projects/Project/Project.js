@@ -1,133 +1,133 @@
 import React from "react";
 import {
-  InfoContainer,
+  HeroSection,
+  CategoryTitle,
+  CategoryContainer,
   ProjectHero,
+  Section,
+  ProjectDescription,
   ProjectTitle,
-  Wrapper,
+  MembersContainer,
+  Actions,
+  InfoBar,
 } from "./StyledProject";
+import Button from "../../../common/Button";
+import Tag from "../../../common/Tag";
+import { withTheme } from "styled-components";
+import Link from "next/link";
 
 const Project = (props) => {
-  const [fontSize, setFontSize] = React.useState("2rem");
-  const [height, setHeight] = React.useState("11rem");
-
-  React.useEffect(() => {
-    const changeHeroOnScroll = (e) => {
-      if (
-        document.body.scrollTop > 50 ||
-        document.documentElement.scrollTop > 50
-      ) {
-        setFontSize("1.4rem");
-        setHeight("6rem");
-      } else {
-        setFontSize("2rem");
-        setHeight("11rem");
-      }
-    };
-    document.addEventListener("scroll", changeHeroOnScroll);
-    return () => document.removeEventListener("scroll", changeHeroOnScroll);
-  }, []);
+  console.log(props);
   return (
-    <Wrapper>
-      <ProjectHero style={{ height }}>
-        <ProjectTitle style={{ fontSize }}>
-          <span>Project</span>
-          Platform Website
-        </ProjectTitle>
+    <div>
+      <ProjectHero imageURL={props.imageURL}>
+        <HeroSection>
+          <ProjectTitle>
+            <span>Project</span>
+            {props.title}
+          </ProjectTitle>
+          <ProjectDescription>{props.description}</ProjectDescription>
+          <Actions>
+            <Button
+              rel="noopener noreferrer"
+              target="_blank"
+              href={props.signupFormURL}
+            >
+              JOIN NOW
+            </Button>
+            <Link
+              href={{
+                pathname: "/support-us",
+              }}
+              passHref
+            >
+              <Button bgColor={props.theme.colors.ACCENT_3}>DONATE</Button>
+            </Link>
+          </Actions>
+        </HeroSection>
+        <InfoBar>
+          <Section position="start" size="1rem">
+            <Tag text={eval(props.keywords)[0]} />
+            <Tag text={eval(props.keywords)[1]} />
+          </Section>
+          <Section position="end" size="3rem">
+            <i className="fab fa-github"></i>
+            <i className="fas fa-globe"></i>
+          </Section>
+        </InfoBar>
       </ProjectHero>
       <br />
-      <InfoContainer style={{ marginTop: "10rem" }}>
-        <h4>Project Goal:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Current Objectives:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Meeting Schedule:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Leader(s)/Project Owner(s):</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Team Members:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Skills:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Attachments:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Commitment Level (metrics):</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>Open Roles (Commitment levels):</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
-      <InfoContainer>
-        <h4>GitHub repo/urls:</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio
-          perferendis expedita sit magni neque! Magnam tempora facilis aliquam
-          itaque ratione nobis cupiditate laudantium nam ex tenetur quidem,
-          voluptas rerum quos?
-        </p>
-      </InfoContainer>
+      <CategoryTitle /*style={{ marginTop: "clamp(25rem, 25%,35rem)" }}*/>
+        Project
+      </CategoryTitle>
+      <CategoryContainer>
+        <h4>Project Vision:</h4>
+        <p>{props.vision}</p>
+        <h4>Project Description:</h4>
+        <p>{props.description}</p>
+        <h4>Project Refernces:</h4>
+        <ul>
+          {eval(props.projectReferenceURLs).map((element, i) => (
+            <li key={i}>
+              <a href={element.url} rel="noopener noreferrer" target="_blank">
+                {element.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <h4>Open Positions</h4>
+        <ul>
+          {eval(props.openPositions).map((element, i) => (
+            <li key={i}>
+              {element.title}: {element.description}
+            </li>
+          ))}
+        </ul>
+      </CategoryContainer>
+      <CategoryTitle>Commitment/Meetings</CategoryTitle>
+      <CategoryContainer>
+        <h4>Commitment Level:</h4>
+        <p>{props.commitmentLevel}</p>
+
+        <h4>Meeting Times:</h4>
+        <p>{props.meetingTimes}</p>
+        <h4>Meeting Links:</h4>
+        <ul>
+          {eval(props.meetingLinkURLs).map((url, i) => (
+            <li key={i}>
+              <a href={url} rel="noopener noreferrer" target="_blank">
+                link {++i}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </CategoryContainer>
+      <CategoryTitle>Team</CategoryTitle>
+      <CategoryContainer>
+        <h4>Leader/s:</h4>
+        <MembersContainer>
+          {eval(props.leaders).map((leader) => (
+            <li>
+              <p>{leader.name}</p>
+              <p>{leader.role}</p>
+              <a href={`mailto:${leader.email}`}>Send Email</a>
+            </li>
+          ))}
+        </MembersContainer>
+
+        <h4>Members:</h4>
+        <MembersContainer>
+          {eval(props.members).map((member) => (
+            <li>
+              <p>{member.name}</p>
+              <p>{member.role}</p>
+            </li>
+          ))}
+        </MembersContainer>
+      </CategoryContainer>
       <br />
-    </Wrapper>
+    </div>
   );
 };
 
-export default Project;
+export default withTheme(Project);
