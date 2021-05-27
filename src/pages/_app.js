@@ -79,24 +79,24 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyle />
-      <div>
-        <Head>
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-          ></script>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&family=Nunito+Sans&display=swap"
-            rel="stylesheet"
-          />
-          <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-            rel="stylesheet"
-          />
-        </Head>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <div>
+          <Head>
+            <script
+              async
+              src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+            ></script>
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link
+              href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&family=Nunito+Sans&display=swap"
+              rel="stylesheet"
+            />
+            <link
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+              rel="stylesheet"
+            />
+          </Head>
           <AuthProvider>
             <SheetsProvider>
               <RepoProvider>
@@ -115,8 +115,8 @@ function MyApp({ Component, pageProps }) {
               </RepoProvider>
             </SheetsProvider>
           </AuthProvider>
-        </ThemeProvider>
-      </div>
+        </div>
+      </ThemeProvider>
     </>
   );
 }

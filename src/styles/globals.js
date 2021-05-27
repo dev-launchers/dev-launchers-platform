@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 import { normalize } from "styled-normalize";
-import theme from "./theme.js";
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -14,7 +13,7 @@ body {
   font-family: sans-serif;
   font-family: "Nunito", sans-serif;
   font-weight: lighter;
-  color: ##1c1c1c;
+  color: ${({ theme }) => theme.colors.NEUTRAL_1};
   background-color: #f0edee;
 }
 
@@ -46,10 +45,10 @@ body {
 a {
   width: auto;
   display: inline;
-  color: #d9d9d9;
+  color: ${({ theme }) => theme.colors.ACCENT_3};
   text-decoration: none;
   &:hover {
-    color: rgb(255, 217, 0);
+    color: ${({ theme }) => theme.colors.ACCENT_4};
   }
 }
 h1,
@@ -63,17 +62,17 @@ h6 {
 }
 
 h1 {
-  font-family: ${theme.fonts.headline}, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1em;
   margin-top: 4%;
   margin-bottom: 4%;
 
   width: fit-content;
   padding: 1rem;
-  // background-color:${theme.colors.NEUTRAL_1};
-  // color:${theme.colors.NEUTRAL_2};
+  // background-color:${({ theme }) => theme.colors.NEUTRAL_1};
+  // color:${({ theme }) => theme.colors.NEUTRAL_2};
 
-  border-bottom: .3rem solid ${theme.colors.NEUTRAL_1};
+  border-bottom: .3rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
 }
 
 h2 {
@@ -214,19 +213,19 @@ li {
 
 .react-tabs__tab {
  // your custom style goes here
- font-family: ${theme.fonts.headline};
+ font-family: ${({ theme }) => theme.fonts.headline};
  border-radius:0;
  font-size:3rem;
- border:.3rem solid ${theme.colors.NEUTRAL_1};
- background-color: ${theme.colors.NEUTRAL_1};
- color: ${theme.colors.NEUTRAL_2};
+ border:.3rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
+ background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+ color: ${({ theme }) => theme.colors.NEUTRAL_2};
  margin-right:.5rem;
 }
 
 .react-tabs__tab--selected {
   // your custom style goes here
-  border-color:${theme.colors.NEUTRAL_1};
-  color:${theme.colors.NEUTRAL_1};
+  border-color:${({ theme }) => theme.colors.NEUTRAL_1};
+  color:${({ theme }) => theme.colors.NEUTRAL_1};
   background-color:transparent;
   border-bottom:none;
 }
