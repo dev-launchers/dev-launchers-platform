@@ -5,6 +5,7 @@ const theme = {
     ACCENT_2: "#ffab00", // yellow
     ACCENT_3: "#3a7ca5", // dark-blue
     ACCENT_4: "#81c3d7", // loght-blue
+    ACCENT_5: "#ffc30f", // orange-yellow
     NEUTRAL_2: "#f0edee" // light
   },
   fonts: {

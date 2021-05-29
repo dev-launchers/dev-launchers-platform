@@ -30,18 +30,6 @@ const LABS_DATA = [
       "https://hangouts.google.com/u/0/call/kGulty4BgioZSHem7BpMACEE?no_rd",
       "https://hangouts.google.com/u/0/call/ClUyq03QhnyxDo85MVOlACEE?no_rd"
     ]
-  },
-  {
-    labTitle: "Personal Projects",
-    links: [
-      "https://meet.google.com/svu-habv-kjt",
-      "https://hangouts.google.com/u/0/call/KT1Vug-uDXKTRXB0scjPACEE?no_rd",
-      "https://hangouts.google.com/u/0/call/fvdGa25c1CllnmHVk_iDACEE?no_rd"
-    ]
-  },
-  {
-    labTitle: "Landing Zone",
-    links: ["https://meet.google.com/xbc-qbvj-zap"]
   }
 ];
 const Labs = ({ events, currentTime, currentTimeSetter }) => {

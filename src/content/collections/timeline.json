@@ -1,5 +1,15 @@
 [
   {
+    "title": "General Coworking",
+    "startWeekDay": 6,
+    "startHour": 12,
+    "startMinute": 0,
+    "endWeekDay": 6,
+    "endHour": 15,
+    "endMinute": 0,
+    "location": "General Coworking"
+  },
+  {
     "title": "Beginner Lab",
     "startWeekDay": 6,
     "startHour": 12,
@@ -15,18 +25,8 @@
     "startHour": 13,
     "startMinute": 0,
     "endWeekDay": 6,
-    "endHour": 14,
-    "endMinute": 0,
-    "location": "Dev Launchers Projects"
-  },
-  {
-    "title": "Personal Projects Lab",
-    "startWeekDay": 6,
-    "startHour": 14,
-    "startMinute": 0,
-    "endWeekDay": 6,
     "endHour": 15,
     "endMinute": 0,
-    "location": "Personal Projects"
+    "location": "Dev Launchers Projects"
   }
 ]

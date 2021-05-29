@@ -25,14 +25,14 @@ export const LabsContainer = styled.div`
   display: grid;
   gap: 15px;
   grid-template-areas:
-    "General Beginner Dev Personal"
-    "General Landing Landing Landing";
-  @media (orientation: portrait) {
+    "Beginner Dev Dev"
+    "General General General";
+  /* @media (orientation: portrait) {
     grid-template-areas:
       "General Beginner"
       "Dev Personal"
       "Landing Landing";
-  }
+  } */
 `;
 export const AlignedDropdown = styled(BaseDropdown)``;
 export const Lab = styled.div`

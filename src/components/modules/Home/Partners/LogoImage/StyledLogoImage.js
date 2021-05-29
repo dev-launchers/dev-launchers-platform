@@ -9,4 +9,9 @@ export const PartnerEntry = styled.div`
   margin: 5%;
   width: 40%;
   display: inline;
+  transition: 0.5s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;

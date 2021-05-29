@@ -10,7 +10,8 @@ const TimeLine = ({ events, currentTime }) => {
       {events
         .filter(
           events =>
-            ConvertCentralTime(events.startWeekDay) == currentTime.weekday
+            ConvertCentralTime(events.startWeekDay).weekday ==
+            currentTime.weekday
         )
         .map(
           (
