@@ -12,9 +12,6 @@ import { DateTime } from "luxon";
 export default function WeeksGlance() {
   const [eventList, setEventList] = useState([]);
 
-  const todaysDate = DateTime.now().setZone("UTC-5");
-  const oneWeekFromNow = todaysDate.plus({ days: 7 });
-
   let componentDidMount = () => {
     axios
       .get(
@@ -25,13 +22,13 @@ export default function WeeksGlance() {
         let tempEventList = [];
         response.data.items.forEach(function(entry) {
           console.log(entry.summary);
-
+          let time = DateTime.fromISO(entry.start.dateTime, {
+            zone: entry.start.timeZone
+          }).setZone();
           tempEventList.push({
             name: entry.summary,
-            time: DateTime.fromISO(entry.start.dateTime, {
-              zone: entry.start.timeZone
-            }).toFormat("t"),
-            weekday: DateTime.fromJSDate(new Date(entry.start.dateTime)).weekday
+            time: time.toFormat("t"),
+            weekday: time.weekday
           });
         });
         console.log(tempEventList);
@@ -41,6 +38,7 @@ export default function WeeksGlance() {
         console.error(err);
       });
   };
+
   React.useEffect(componentDidMount, []);
 
   let weekdays = [
