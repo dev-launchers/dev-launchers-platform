@@ -164,7 +164,7 @@ const formEntries = [
   >
     <SelectField
       field="accepted"
-      options={["I accept", "I Do Not Accept"]}
+      options={["I accept"]}
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>
@@ -212,7 +212,14 @@ export default function SignUpForm() {
   const [progressPercent, setProgressPercent] = React.useState(0);
 
   const checkAutoApproval = values => {
-    if (values.age > 16) return true;
+    if (
+      values.age >= 16 &&
+      (values.experience.length >= 30 || values.reason.length >= 30) &&
+      values.commitment !=
+        "One lab per month - only available for advanced members (DL7-DL8)"
+    ) {
+      return true;
+    }
     return false;
   };
 
