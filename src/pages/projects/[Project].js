@@ -38,7 +38,7 @@ export const getStaticProps = async (context) => {
     props: {
       data: data.filter((element) => element.slug == projectSlug),
     },
-    revalidate: 1,
+    revalidate: 20,
   };
 };
 
