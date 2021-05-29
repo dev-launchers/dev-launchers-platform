@@ -6,15 +6,21 @@ const Points = ({ availablePoints, seasonPoints, volunteerHours }) => {
     <Wrapper>
       <Container>
         <Title>Available Points</Title>
-        <PointsNumber>{availablePoints}</PointsNumber>
+        <PointsNumber>
+          <span style={{ fontSize: "1rem" }}>Coming Soon</span>
+        </PointsNumber>
       </Container>
       <Container>
         <Title>Season Points</Title>
-        <PointsNumber>{seasonPoints}</PointsNumber>
+        <PointsNumber>
+          <span style={{ fontSize: "1rem" }}>Coming Soon</span>
+        </PointsNumber>
       </Container>
       <Container>
         <Title>Volunteer Hours</Title>
-        <PointsNumber>{volunteerHours}</PointsNumber>
+        <PointsNumber>
+          <span style={{ fontSize: "1rem" }}>Coming Soon</span>
+        </PointsNumber>
       </Container>
     </Wrapper>
   );

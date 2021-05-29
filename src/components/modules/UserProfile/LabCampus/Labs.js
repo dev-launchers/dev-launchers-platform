@@ -13,7 +13,11 @@ import { ConvertCentralTime } from "../../../../utils/TimeZoneConverter";
 const LABS_DATA = [
   {
     labTitle: "General Coworking",
-    links: ["https://meet.google.com/itr-mnvo-uvn"]
+    links: [
+      "https://meet.google.com/itr-mnvo-uvn",
+      "https://hangouts.google.com/u/0/call/5jWCbQt8g7Xa1XSRwZOtACEE?no_rd",
+      "https://hangouts.google.com/u/0/call/INt1cvczpj_M1JOp4S-UACEE?no_rd"
+    ]
   },
   {
     labTitle: "Beginner Dev",
@@ -73,7 +77,8 @@ const Labs = ({ events, currentTime, currentTimeSetter }) => {
         let currentEvent = events.filter(
           event =>
             event.location == labTitle &&
-            ConvertCentralTime(event.startWeekDay) == currentTime.weekday
+            ConvertCentralTime(event.startWeekDay).weekday ==
+              currentTime.weekday
         );
 
         return currentEvent.length == 0 ? (
