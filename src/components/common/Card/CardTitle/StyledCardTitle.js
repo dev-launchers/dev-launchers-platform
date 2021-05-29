@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Heading = styled.div`
-  text-align: left;
+  display: flex;
+  align-items: flex-start;
   width: 100%;
   font-size: 1.4rem;
   text-align: ${({ cardTitleAlignment }) =>
@@ -17,9 +18,7 @@ export const Heading = styled.div`
   }}
 `;
 
-export const Title = styled.a.attrs(() => ({
-  target: "_blank"
-}))`
+export const Title = styled.a`
   font-family: "Abel", sans-serif;
   color: black;
   font-weight: bold;
