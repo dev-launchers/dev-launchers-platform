@@ -1,5 +1,15 @@
 [
   {
+    "title": "General Coworking",
+    "startWeekDay": 6,
+    "startHour": 12,
+    "startMinute": 0,
+    "endWeekDay": 6,
+    "endHour": 15,
+    "endMinute": 0,
+    "location": "General Coworking"
+  },
+  {
     "title": "Beginner Lab",
     "startWeekDay": 6,
     "startHour": 12,
@@ -10,23 +20,13 @@
     "location": "Beginner Dev"
   },
   {
-    "title": "Web and App Dev Lab",
+    "title": "Dev Launchers Projects Lab",
     "startWeekDay": 6,
     "startHour": 13,
     "startMinute": 0,
     "endWeekDay": 6,
-    "endHour": 14,
-    "endMinute": 0,
-    "location": "Web / App Dev"
-  },
-  {
-    "title": "Game Dev Lab",
-    "startWeekDay": 6,
-    "startHour": 14,
-    "startMinute": 0,
-    "endWeekDay": 6,
     "endHour": 15,
     "endMinute": 0,
-    "location": "Game Dev"
+    "location": "Dev Launchers Projects"
   }
 ]

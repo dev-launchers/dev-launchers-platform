@@ -39,10 +39,10 @@ export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
   alt: "logo"
 }))`
-  height: 20vh;
+  height: 10vh;
   @media (orientation: portrait) {
     height: auto;
-    width: 50vw;
+    width: 15vw;
   }
 `;
 
@@ -106,6 +106,7 @@ export const NavEntry = styled.div`
   padding-top: 0.3rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+  transition: 0.5s;
 
   &:hover {
     border-bottom: 0.4rem solid ${getRandomThemeColor()};

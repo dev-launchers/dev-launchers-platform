@@ -1,19 +1,19 @@
 import React from "react";
-import { Wrapper, Container, PointsNumber } from "./StyledPoints";
+import { Wrapper, Container, Title, PointsNumber } from "./StyledPoints";
 
 const Points = ({ availablePoints, seasonPoints, volunteerHours }) => {
   return (
     <Wrapper>
       <Container>
-        Available Points
+        <Title>Available Points</Title>
         <PointsNumber>{availablePoints}</PointsNumber>
       </Container>
       <Container>
-        Season Points
+        <Title>Season Points</Title>
         <PointsNumber>{seasonPoints}</PointsNumber>
       </Container>
       <Container>
-        Volunteer Hours
+        <Title>Volunteer Hours</Title>
         <PointsNumber>{volunteerHours}</PointsNumber>
       </Container>
     </Wrapper>

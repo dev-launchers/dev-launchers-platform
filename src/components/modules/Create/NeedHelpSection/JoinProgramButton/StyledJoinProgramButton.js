@@ -19,6 +19,7 @@ export const Wrapper = styled.div`
   }
 
   @media (orientation: portrait) {
-    width: 100%;
+    font-size: 5vw;
+    width: 90%;
   }
 `;

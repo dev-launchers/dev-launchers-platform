@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: platform-website
 bases:
   - ../workload
+  - wordpress.yaml

@@ -24,24 +24,12 @@ const LABS_DATA = [
     ]
   },
   {
-    labTitle: "Web / App Dev",
+    labTitle: "Dev Launchers Projects",
     links: [
       "https://meet.google.com/nth-nsji-vzs",
       "https://hangouts.google.com/u/0/call/kGulty4BgioZSHem7BpMACEE?no_rd",
       "https://hangouts.google.com/u/0/call/ClUyq03QhnyxDo85MVOlACEE?no_rd"
     ]
-  },
-  {
-    labTitle: "Game Dev",
-    links: [
-      "https://meet.google.com/svu-habv-kjt",
-      "https://hangouts.google.com/u/0/call/KT1Vug-uDXKTRXB0scjPACEE?no_rd",
-      "https://hangouts.google.com/u/0/call/fvdGa25c1CllnmHVk_iDACEE?no_rd"
-    ]
-  },
-  {
-    labTitle: "Landing Zone",
-    links: ["https://meet.google.com/xbc-qbvj-zap"]
   }
 ];
 const Labs = ({ events, currentTime, currentTimeSetter }) => {
