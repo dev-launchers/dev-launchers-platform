@@ -68,7 +68,8 @@ export const getStaticProps = async () => {
   let arrayWithData = await getData();
 
   return {
-    props: { projects: arrayWithData, revalidate: 10 },
+    props: { projects: arrayWithData },
+    revalidate: 1,
   };
 };
 const ProjectsList = ({ projects }) => {
