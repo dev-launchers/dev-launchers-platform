@@ -19,8 +19,8 @@ export default function HeroOverlay() {
       <Wrapper>
         <MessageArea>
           <Tagline>
-            We build world changing software while preparing people to thrive in
-            technical careers█
+            >We build world changing software while preparing people to thrive
+            in technical careers█
           </Tagline>
         </MessageArea>
         <ImageArea>

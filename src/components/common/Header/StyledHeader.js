@@ -33,6 +33,7 @@ export const Logo = styled.div`
 export const LogoWrapper = styled.div`
   display: inline;
   width: auto;
+  transition: 1s;
 
   &:hover {
     filter: brightness(0) saturate(100%) invert(88%) sepia(10%) saturate(6102%)
@@ -77,6 +78,7 @@ export const HeaderNav = styled.div`
   min-width: 300px;
   height: 7.5vh;
   align-items: center;
+  transition: 0.5s;
 
   & > a {
     display: flex;

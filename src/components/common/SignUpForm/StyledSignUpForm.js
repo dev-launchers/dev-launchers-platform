@@ -1,14 +1,16 @@
 import styled from "styled-components";
 
+import spaceBackgroundImage from "../../../images/form/space-background.jpg";
+
 export const FormOuter = styled.div`
   width: 100%;
   padding-top: 2%;
   padding-bottom: 2%;
   background-color: #4f4e4e;
-  background-image: url("/images/logo-monogram.png");
-  background-repeat: repeat;
-  background-size: 4rem;
-  background-blend-mode: color-burn;
+  background-image: url(${spaceBackgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 `;
 
 export const FormContainer = styled.div`
@@ -17,7 +19,15 @@ export const FormContainer = styled.div`
   padding: 2%;
   margin-left: auto;
   margin-right: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.75);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media (orientation: portrait) {
+    width: 90%;
+  }
 `;
 
 export const StyledForm = styled.div`

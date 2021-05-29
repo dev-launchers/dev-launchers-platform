@@ -32,6 +32,20 @@ body {
   font-size: 1.5rem;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+  border-top: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  background-clip: content-box; 
+}
+
 #root {
   overflow-x: hidden;
 }
@@ -176,30 +190,6 @@ h3 {
   background-color: lightgray;
 }
 
-@media (orientation: portrait) {
-  html {
-    /* Scale all font down */
-    font-size: 75%;
-  }
-
-  .App {
-  }
-
-  h1 {
-    font-size: 1.7rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  .collection--small-cards > .entry {
-    width: 100%;
-  }
-  .entry-image {
-    height: 20vw;
-  }
-}
 
 li {
   margin-bottom: 5px;
@@ -237,5 +227,36 @@ li {
 .react-tabs__tab:focus:after {
   // your custom style goes here
 }
+
+
+@media (orientation: portrait) {
+  html {
+    /* Scale all font down */
+    font-size: 75%;
+  }
+
+  .App {
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .collection--small-cards > .entry {
+    width: 100%;
+  }
+  .entry-image {
+    height: 20vw;
+  }
+
+  .react-tabs__tab {
+   font-size:2rem;
+  }
+}
+
 `;
 export default GlobalStyle;

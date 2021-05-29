@@ -2,7 +2,13 @@ import React from "react";
 import FlexPageSection from "../../../../components/common/FlexPageSection";
 import RainbowBar from "../../../../components/common/RainbowBar";
 
-import { CenteredTitle, Wrapper } from "./StyledIntro";
+import {
+  CenteredTitle,
+  Wrapper,
+  IntroDescriptionWrapper,
+  IntroSummaryBox,
+  IntroDescription
+} from "./StyledIntro";
 
 import theme from "../../../../styles/theme.js";
 
@@ -25,29 +31,8 @@ export default function Intro() {
           </span>
         </CenteredTitle>
         <RainbowBar width="60%" />
-        <div
-          style={{
-            marginTop: "2rem",
-            width: "80%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around"
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "Abel",
-              width: "20%",
-              textAlign: "right",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              backgroundColor: theme.colors.NEUTRAL_1,
-              color: theme.colors.NEUTRAL_2,
-              paddingRight: "1rem",
-              fontSize: "1rem"
-            }}
-          >
+        <IntroDescriptionWrapper>
+          <IntroSummaryBox>
             <div>The Dev Launchers formula:</div>
             <div
               style={{
@@ -76,8 +61,8 @@ export default function Intro() {
                 +Leaders
               </div>
             </div>
-          </div>
-          <div style={{ width: "65%", textAlign: "left" }}>
+          </IntroSummaryBox>
+          <IntroDescription>
             <ol
               style={{
                 height: "100%",
@@ -129,8 +114,8 @@ export default function Intro() {
                 their projects
               </li>
             </ol>
-          </div>
-        </div>
+          </IntroDescription>
+        </IntroDescriptionWrapper>
       </Wrapper>
     </FlexPageSection>
   );

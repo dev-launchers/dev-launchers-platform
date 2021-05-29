@@ -5,8 +5,8 @@ import axios from "axios";
 
 import { FormOuter, FormContainer, StyledForm } from "./StyledSignUpForm.js";
 
-import Button from "../../../common/Button";
-import Modal from "../../../common/Modal";
+import Button from "../../common/Button";
+import Modal from "../../common/Modal";
 
 import ProgressBar from "./ProgressBar";
 import FormEntry from "./FormEntry";
@@ -15,6 +15,8 @@ import SelectField from "./SelectField";
 import TextAreaField from "./TextAreaField";
 import ScheduleOrientationButton from "./ScheduleOrientationButton";
 
+import theme from "../../../styles/theme.js";
+
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
@@ -22,11 +24,33 @@ function validateEmail(email) {
 
 const formEntries = [
   <div style={{ width: "100%", textAlign: "center", marginTop: "5%" }}>
-    <div>Applications now open!</div>
-    <div style={{ fontSize: "1.5rem", marginBottom: "5%" }}>
-      Apply for our development incubator for access to exclusive content,
-      mentorship, and the ability to help others grow within the Dev Launchers
-      community.
+    <div style={{ fontFamily: theme.fonts.headline }}>
+      Applications now open!
+    </div>
+    <div
+      style={{
+        width: "75%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        fontSize: "1.5rem",
+        marginTop: "5%",
+        marginBottom: "5%",
+        textAlign: "left"
+      }}
+    >
+      <p>
+        Are you a complete beginner? Or looking to upskill with hands on
+        projects and exposure to working on real teams? Dev Launchers brings
+        dedicated, passionate individuals together in order to build and learn
+        with guidance from professionals.
+      </p>
+      <p>
+        We welcome everyone with open arms, no matter your skill level, your
+        background, or anything else other than your desire to learn and grow.
+        Apply today to take the first step toward landing your dream job, or
+        being able to build that one game, website, or app you just can't stop
+        thinking about!
+      </p>
     </div>
   </div>,
 
@@ -140,7 +164,7 @@ const formEntries = [
   >
     <SelectField
       field="accepted"
-      options={["I accept", "I Do Not Accept"]}
+      options={["I accept"]}
       validate={value => (!value ? "This is required!" : false)}
     />
   </FormEntry>
@@ -188,7 +212,14 @@ export default function SignUpForm() {
   const [progressPercent, setProgressPercent] = React.useState(0);
 
   const checkAutoApproval = values => {
-    if (values.age > 16) return true;
+    if (
+      values.age >= 16 &&
+      (values.experience.length >= 30 || values.reason.length >= 30) &&
+      values.commitment !=
+        "One lab per month - only available for advanced members (DL7-DL8)"
+    ) {
+      return true;
+    }
     return false;
   };
 
@@ -314,9 +345,9 @@ export default function SignUpForm() {
             {formPage > 0 ? (
               <Button onClick={decrementFormPage}>Back</Button>
             ) : (
-              "Join today"
+              "Join today!"
             )}
-            <div>Apply to our development labs!</div>
+            <div>Apply to our developer program</div>
           </div>
           <StyledForm as={Form}>
             {formEntries[formPage]}

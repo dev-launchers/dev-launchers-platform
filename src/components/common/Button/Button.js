@@ -19,6 +19,7 @@ const Button = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   background-color: ${({ theme, bgColor }) => bgColor || theme.colors.ACCENT_1};
   color: ${({ theme, textColor }) => textColor || theme.colors.NEUTRAL_2};
+
   width: ${({ width }) => (width ? width : "")};
   border: 0px;
   border-bottom: 3px solid ${({ theme, bgColor }) =>
@@ -29,6 +30,7 @@ const Button = styled.a`
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  border-radius: 16px;
   /* border-radius: ${({ borderRadius }) =>
     borderRadius ? borderRadius : "100px"}; */
   font-weight: bolder;

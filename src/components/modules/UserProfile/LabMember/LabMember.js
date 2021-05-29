@@ -17,10 +17,10 @@ export default function LabMember() {
         Sign Up for a Beginner Dev Lab Session
       </SignUpButton>
       <SignUpButton onClick={() => openModal("saturday-lab-web-app-dev")}>
-        Sign Up for a Web and App Dev Lab Session
+        Sign Up for a Dev Launchers Projects Lab Session
       </SignUpButton>
-      <SignUpButton onClick={() => openModal("saturday-lab-game-devs")}>
-        Sign Up for a Game Dev Lab Session
+      <SignUpButton onClick={() => openModal("saturday-lab-general-coworking")}>
+        Sign Up for a Coworking Personal Projects Lab Session
       </SignUpButton>
       <SignUpButton onClick={() => openModal("60min")}>
         Sign Up for a One-on-One
