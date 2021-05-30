@@ -12,27 +12,23 @@ import { DateTime } from "luxon";
 export default function WeeksGlance() {
   const [eventList, setEventList] = useState([]);
 
-  const todaysDate = DateTime.now().setZone("UTC-5");
-  const oneWeekFromNow = todaysDate.plus({ days: 7 });
-
   let componentDidMount = () => {
     axios
       .get(
-        `https://api.calendly.com/scheduled_events?user=https%3A%2F%2Fapi.calendly.com%2Fusers%2FHFHGJK4NNLTU5PXT&status=active&sort=start_time%3Aasc&min_start_time=${todaysDate.toISO()}&max_start_time=${oneWeekFromNow.toISO()}`,
-        {
-          headers: {
-            authorization: `Bearer RD_DszQ_ThsIrK2JD6pCKkl0KcoKBbdrwTYM8iYxN3c`
-          }
-        }
+        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4@group.calendar.google.com/events?key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
       )
       .then(response => {
         console.log(response);
         let tempEventList = [];
-        response.data.collection.forEach(function(entry) {
+        response.data.items.forEach(function(entry) {
+          console.log(entry.summary);
+          let time = DateTime.fromISO(entry.start.dateTime, {
+            zone: entry.start.timeZone
+          }).setZone();
           tempEventList.push({
-            name: entry.name.split("]").pop(),
-            time: DateTime.fromJSDate(new Date(entry.start_time)).toFormat("t"),
-            weekday: DateTime.fromJSDate(new Date(entry.start_time)).weekday
+            name: entry.summary,
+            time: time.toFormat("t"),
+            weekday: time.weekday
           });
         });
         console.log(tempEventList);
@@ -42,6 +38,7 @@ export default function WeeksGlance() {
         console.error(err);
       });
   };
+
   React.useEffect(componentDidMount, []);
 
   let weekdays = [
