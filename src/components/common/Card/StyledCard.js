@@ -14,8 +14,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: ${({ flexDirection }) =>
     flexDirection ? flexDirection : "column"};
   ${({ size }) =>
@@ -77,9 +77,7 @@ export const DataHolder = styled.div`
 export const SecondaryText = styled.div`
   margin: 1% 0 2% 0;
   font-size: 1rem;
-
-
-`
+`;
 export const Description = styled.div`
   width: 100%;
   font-size: 1.2rem;
