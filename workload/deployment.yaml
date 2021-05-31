@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: platform-website
-        image: devlaunchers/platform-website:0b68ad3-202105301241 # {"$imagepolicy": "platform-website:platform-website"}
+        image: devlaunchers/platform-website:d0d8327-202105311801 # {"$imagepolicy": "platform-website:platform-website"}
         ports:
         - containerPort: 3000
         env:
