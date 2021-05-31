@@ -45,7 +45,13 @@ export const ImageHolder = styled.div`
     height: 100%;
   }
 `;
-
+export const TagsContainer = styled.div`
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  display: grid;
+  gap: 0.5rem;
+`
 export const Image = styled.div`
   background-color: lightgray;
   width: 100%;
