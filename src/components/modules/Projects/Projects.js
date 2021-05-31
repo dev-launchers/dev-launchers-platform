@@ -13,7 +13,7 @@ const Projects = ({ projects }) => {
           >
             <Card
               isLinkingInside
-              style={{ margin: 0, width: "100%" }}
+              style={{ margin: 0, width: "100%", height: "100%" }}
               cardData={{
                 id: project.slug,
                 title: project.title,

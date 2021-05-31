@@ -16,6 +16,11 @@ import Tag from "../../../common/Tag";
 import { withTheme } from "styled-components";
 import Link from "next/link";
 
+const truncateText = (text, truncateAt, replaceWith) => {
+  if (text.length <= truncateAt) return text;
+  return text.slice(0, truncateAt) + replaceWith;
+};
+
 const Project = (props) => {
   console.log(props);
   return (
@@ -26,7 +31,9 @@ const Project = (props) => {
             <span>Project</span>
             {props.title}
           </ProjectTitle>
-          <ProjectDescription>{props.description}</ProjectDescription>
+          <ProjectDescription>
+            {truncateText(props.description, 100, "...")}
+          </ProjectDescription>
           <Actions>
             <Button
               rel="noopener noreferrer"
@@ -51,8 +58,30 @@ const Project = (props) => {
             <Tag text={eval(props.keywords)[1]} />
           </Section>
           <Section position="end" size="3rem">
-            <i className="fab fa-github"></i>
-            <i className="fas fa-globe"></i>
+            {eval(props.projectReferenceURLs).map(({ title, url }) => {
+              if (title == "Github Repo")
+                return (
+                  <a
+                    style={{ color: props.theme.colors.NEUTRAL_2 }}
+                    href={url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <i className="fab fa-github"></i>
+                  </a>
+                );
+              else if (title == "Website")
+                return (
+                  <a
+                    style={{ color: props.theme.NEUTRAL_2 }}
+                    href={url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <i className="fab fa-globe"></i>
+                  </a>
+                );
+            })}
           </Section>
         </InfoBar>
       </ProjectHero>

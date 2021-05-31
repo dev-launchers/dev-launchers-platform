@@ -22,4 +22,5 @@ export const Title = styled.a`
   font-family: "Abel", sans-serif;
   color: black;
   font-weight: bold;
+  flex: 1;
 `;

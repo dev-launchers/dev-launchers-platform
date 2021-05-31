@@ -36,7 +36,7 @@ export const getStaticProps = async (context) => {
   const data = await getData();
   return {
     props: {
-      data: data.filter((element) => element.slug == projectSlug),
+      data: data.filter((element) => element.slug == projectSlug)[0],
     },
     revalidate: 20,
   };
@@ -46,7 +46,7 @@ const ProjectRoute = ({ data }) => {
   return (
     <div>
       <Header />
-      <Project {...data[0]} />
+      <Project {...data} />
       <Footer />
     </div>
   );
