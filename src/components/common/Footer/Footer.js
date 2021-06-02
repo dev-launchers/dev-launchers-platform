@@ -37,11 +37,6 @@ export default function Footer(props) {
           <NavEntry>PLAY</NavEntry>
         </Link>
         {*/}
-        <Link href={"/earn"} passHref className="nav-link">
-          <a>
-            <NavEntry>EARN</NavEntry>
-          </a>
-        </Link>
         <Link href={"/support-us"} passHref className="nav-link">
           <a>
             <NavEntry>SUPPORT US</NavEntry>
