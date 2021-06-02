@@ -7,6 +7,8 @@ import SignUpForm from "../../../components/common/SignUpForm";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
+import Carousel from "../../../components/common/Carousel";
+
 import Intro from "./Intro";
 //import Programs from "./Programs";
 import Organization from "./Organization";
@@ -46,6 +48,21 @@ export default function Home() {
       <RainbowBar />
       <HeroImage />
       <HeroOverlay />
+      <Carousel
+        interval={3000}
+        callsToAction={[
+          <div>
+            click the button<button>hello</button>
+          </div>,
+          <div>
+            please<button>hello</button>
+          </div>,
+          <div>
+            hello?<button>hello</button>
+          </div>
+        ]}
+        images={[womanComputerImage, manGlassesImage, boyFrontImage]}
+      />
       <PageBody>
         <HomePageBody>
           <ColoredCtaWrapper>
