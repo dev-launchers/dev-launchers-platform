@@ -50,6 +50,7 @@ function useUserData() {
           volunteerHours: currentUser.volunteerHours,
           discord: currentUser.discord
         });
+        console.log(userData);
       })
       .catch(err => {
         //setUserData({ id: "invalid" });

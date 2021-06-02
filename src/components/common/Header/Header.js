@@ -73,7 +73,7 @@ export default function Header(props) {
         </Link>
       </HeaderNav>
       <div />
-      <AccountDropdown />
+      <AccountDropdown userData={userData} />
       <HamburgerMenu />
     </HeaderBlock>
   );
