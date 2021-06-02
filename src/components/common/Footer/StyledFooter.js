@@ -98,7 +98,10 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
       break;
   }
   return { href, className };
-})``;
+})`
+  color: ${theme.colors.NEUTRAL_2};
+`;
+
 export const NavEntry = styled.div`
   cursor: pointer;
   font-size: 1.75rem;
@@ -108,9 +111,12 @@ export const NavEntry = styled.div`
   padding-right: 0.5rem;
   transition: 0.5s;
 
+  color: ${theme.colors.NEUTRAL_2};
+
   &:hover {
+    //border-bottom: 0.4rem solid ${getRandomThemeColor()};
+    color: ${theme.colors.ACCENT_4};
     border-bottom: 0.4rem solid ${getRandomThemeColor()};
-    color: ${theme.colors.NEUTRAL_2};
   }
 
   @media (orientation: portrait) {
