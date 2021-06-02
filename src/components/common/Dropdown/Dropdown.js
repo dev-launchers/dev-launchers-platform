@@ -30,7 +30,7 @@ const Dropdown = ({ toggleBtnText, dropdownItems, className }) => {
         as="button"
         fontSize="1.2rem"
       >
-        {toggleBtnText}
+        <>{toggleBtnText}</>
       </Toggle>
       <Rooms isOpen={menuOpen}>
         <>{dropdownItems}</>
