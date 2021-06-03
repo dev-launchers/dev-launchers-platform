@@ -5,6 +5,6 @@ bases:
 - ../workload
 - wordpress.yaml
 images:
-- name: devlaunchers/platform-website:d0d8327-202105311801 # {"$imagepolicy": "platform-website:platform-website"}
+- name: devlaunchers/platform-website:b678cb0-202106031424 # {"$imagepolicy": "platform-website:platform-website"}
   newName: devlaunchers/platform-website
   newTag: d0d8327-202105311801
