@@ -3,3 +3,7 @@ kind: Kustomization
 namespace: platform-website
 bases:
   - ../workload
+images:
+- name: devlaunchers/platform-website # {"$imagepolicy": "platform-website:platform-website"}
+  newName: devlaunchers/platform-website
+  newTag: 1.4.0

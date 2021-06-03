@@ -4,3 +4,7 @@ namespace: platform-website
 bases:
   - ../workload
   - wordpress.yaml
+images:
+- name: devlaunchers/platform-website # {"$imagepolicy": "platform-website:platform-website"}
+  newName: devlaunchers/platform-website
+  newTag: d0d8327-202105311801
