@@ -4,6 +4,6 @@ namespace: platform-website
 bases:
 - ../workload
 images:
-- name: devlaunchers/platform-website:1.4.0 # {"$imagepolicy": "platform-website:platform-website"}
+- name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: 1.4.0
+  newTag: 1.4.0 # {"$imagepolicy": "platform-website:platform-website:tag"}
