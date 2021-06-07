@@ -4,13 +4,14 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import DropdownButton from "../AccountDropdown/StyledAccountDropdown";
 import { env } from "../../../../utils/EnvironmentVariables";
+import Link from "next/link";
 
 export default function AccountDropdown(props) {
   const router = useRouter();
   const logout = () => {
     axios
       .get(`${env().API_URL}/auth/logout`, { withCredentials: true })
-      .then(response => {
+      .then((response) => {
         console.log(response);
         router.replace("/");
       });
@@ -25,7 +26,9 @@ export default function AccountDropdown(props) {
             <>
               {" "}
               <DropdownButton>
-                <a href="/user-profile">Visit Account Page</a>
+                <Link href="/user-profile" passHref>
+                  <a>Visit Account Page</a>
+                </Link>
               </DropdownButton>
               <DropdownButton onClick={logout}>Logout </DropdownButton>
             </>
