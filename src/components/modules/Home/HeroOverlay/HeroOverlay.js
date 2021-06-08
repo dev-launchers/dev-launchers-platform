@@ -33,7 +33,7 @@ function TypewriterEffect(props) {
     }, 1000);
   }, []);
 
-  return <>>{text}█</>;
+  return <>> {text} █</>;
 }
 
 export default function HeroOverlay() {
