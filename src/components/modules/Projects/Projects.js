@@ -9,7 +9,7 @@ const Projects = ({ projects }) => {
         .filter((project) => project.isActive == "TRUE")
         .map((project, i) => (
           <ProjectContainer
-            style={{ justifySelf: (i + 1) % 2 == 0 ? "start" : "end" }}
+          //style={{ justifySelf: (i + 1) % 2 == 0 ? "start" : "end" }}
           >
             <Card
               isLinkingInside
