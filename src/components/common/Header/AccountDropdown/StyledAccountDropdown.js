@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Dropdown from "../../Dropdown";
 
-export const DropdownButton = styled(Dropdown)`
+export const AccountMenuDropdownButton = styled(Dropdown)`
   @media (orientation: portrait) {
     display: none;
   }
 `;
 
-export const DropdownItem = styled.a`
+export const AccountMenuDropdownItem = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   background-color: #1c1c1c;
   color: #f0edee;
