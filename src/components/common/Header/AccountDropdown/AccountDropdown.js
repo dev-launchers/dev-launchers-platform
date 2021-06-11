@@ -3,6 +3,7 @@ import { Logout } from "../AccountDropdown/Logout";
 import { env } from "../../../../utils/EnvironmentVariables";
 import { DropdownItem } from "../AccountDropdown/StyledAccountDropdown";
 import { DropdownButton } from "../AccountDropdown/StyledAccountDropdown";
+import Link from "next/link";
 
 export default function AccountDropdown(props) {
   return (
@@ -14,7 +15,9 @@ export default function AccountDropdown(props) {
             <>
               {" "}
               <DropdownItem>
-                <a href="/user-profile">Visit Account Page</a>
+                <Link href="/user-profile" passHref>
+                  <a>Visit Account Page</a>
+                </Link>
               </DropdownItem>
               <DropdownItem onClick={Logout}>Logout </DropdownItem>
             </>
