@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import Dropdown from "../../Dropdown";
 
-const DropdownButton = styled.a`
+export const DropdownButton = styled(Dropdown)`
+  @media (orientation: portrait) {
+    display: none;
+  }
+`;
+
+export const DropdownItem = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   background-color: #1c1c1c;
   color: #f0edee;
@@ -17,4 +24,3 @@ const DropdownButton = styled.a`
   padding-right: 1rem;
   font-weight: bolder;
 `;
-export default DropdownButton;

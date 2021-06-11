@@ -1,41 +1,30 @@
 import React from "react";
-import Dropdown from "../../Dropdown";
-import axios from "axios";
-import { useRouter } from "next/router";
-import DropdownButton from "../AccountDropdown/StyledAccountDropdown";
+import { Logout } from "../AccountDropdown/Logout";
 import { env } from "../../../../utils/EnvironmentVariables";
+import { DropdownItem } from "../AccountDropdown/StyledAccountDropdown";
+import { DropdownButton } from "../AccountDropdown/StyledAccountDropdown";
 
 export default function AccountDropdown(props) {
-  const router = useRouter();
-  const logout = () => {
-    axios
-      .get(`${env().API_URL}/auth/logout`, { withCredentials: true })
-      .then(response => {
-        console.log(response);
-        router.replace("/");
-      });
-  };
-
   return (
-    <Dropdown
+    <DropdownButton
       toggleBtnText="Menu"
       dropdownItems={
         <>
           {props.userData.id ? (
             <>
               {" "}
-              <DropdownButton>
+              <DropdownItem>
                 <a href="/user-profile">Visit Account Page</a>
-              </DropdownButton>
-              <DropdownButton onClick={logout}>Logout </DropdownButton>
+              </DropdownItem>
+              <DropdownItem onClick={Logout}>Logout </DropdownItem>
             </>
           ) : (
-            <DropdownButton fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
+            <DropdownItem fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
               Sign In/Sign Up{" "}
-            </DropdownButton>
+            </DropdownItem>
           )}
         </>
       }
-    ></Dropdown>
+    ></DropdownButton>
   );
 }

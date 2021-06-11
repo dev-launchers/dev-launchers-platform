@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
-
+import { logout } from "../../common/Header/AccountDropdown";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
-
+import { Logout } from "../Header/AccountDropdown/Logout";
 import { slide as SlideHamburgerMenu } from "react-burger-menu";
+import { env } from "../../../utils/EnvironmentVariables";
 
 function HamburgerMenu(props) {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -60,6 +61,22 @@ function HamburgerMenu(props) {
             <Link href={"/learn"} className="nav-link">
               <a>
                 <div className={style.navEntry}>LEARN</div>
+              </a>
+            </Link>
+            *****
+            <Link href={"/user-profile"} className="nav-link">
+              <a>
+                <div className={style.navEntry}>Visit Account Page</div>
+              </a>
+            </Link>
+            <Link href={""} onClick={Logout} className="nav-link">
+              <a>
+                <div className={style.navEntry}>Log Out</div>
+              </a>
+            </Link>
+            <Link href={env().GOOGLE_AUTH_URL} className="nav-link">
+              <a>
+                <div className={style.navEntry}>Sign In/Sign Up </div>
               </a>
             </Link>
             {/*}
