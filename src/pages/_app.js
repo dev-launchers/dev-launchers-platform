@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 import theme from "../styles/theme";
 import { initGA, logPageView } from "../utils/GoogleAnalytics.js";
 
-import { AuthProvider } from "../context/AuthContext";
 import { SheetsProvider } from "../context/SheetsContext";
 import { RepoProvider } from "../context/RepoContext";
 import { LeaderboardProvider } from "../context/LeaderboardContext";
@@ -97,24 +96,22 @@ function MyApp({ Component, pageProps }) {
               rel="stylesheet"
             />
           </Head>
-          <AuthProvider>
-            <SheetsProvider>
-              <RepoProvider>
-                <LeaderboardProvider>
-                  <UserDataProvider>
-                    <div className="App">
-                      <ToastContainer
-                        className="toast-container"
-                        toastClassName="toast"
-                        progressClassName="toast-progress"
-                      />
-                    </div>
-                    <Component {...pageProps} />
-                  </UserDataProvider>
-                </LeaderboardProvider>
-              </RepoProvider>
-            </SheetsProvider>
-          </AuthProvider>
+          <SheetsProvider>
+            <RepoProvider>
+              <LeaderboardProvider>
+                <UserDataProvider>
+                  <div className="App">
+                    <ToastContainer
+                      className="toast-container"
+                      toastClassName="toast"
+                      progressClassName="toast-progress"
+                    />
+                  </div>
+                  <Component {...pageProps} />
+                </UserDataProvider>
+              </LeaderboardProvider>
+            </RepoProvider>
+          </SheetsProvider>
         </div>
       </ThemeProvider>
     </>
