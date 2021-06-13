@@ -21,8 +21,8 @@ export default function HeroOverlay() {
           <RainbowBar />
           <MessageArea>
             <Tagline>
-              We are equipping people with the skills needed to thrive in
-              technical careers, but we need{" "}
+              We equip people with the skills needed to thrive in technical
+              careers, but we need{" "}
               <span
                 style={{
                   backgroundColor: "#81c3d7",
@@ -35,7 +35,7 @@ export default function HeroOverlay() {
               >
                 YOUR
               </span>{" "}
-              help.
+              help!
             </Tagline>
           </MessageArea>
         </RainbowedMessageArea>

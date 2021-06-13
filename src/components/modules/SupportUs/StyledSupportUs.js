@@ -36,9 +36,10 @@ export const StudentImage = styled.img`
 
 export const CtaWrapper = styled.div`
   width: 50%;
+  min-height: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: auto;
   border: 0.5rem solid ${theme.colors.ACCENT_1};

@@ -3,7 +3,7 @@ import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`
   position: relative;
-  background-color: ${theme.colors.NEUTRAL_2};
+  background-color: ${theme.colors.NEUTRAL_1};
   width: 100%;
   height: 30vw;
   border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
