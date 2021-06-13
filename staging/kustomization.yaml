@@ -2,5 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: platform-website
 bases:
-  - ../workload
-  - wordpress.yaml
+- ../workload
+images:
+- name: devlaunchers/platform-website:b678cb0-202106031424 # {"$imagepolicy": "platform-website:platform-website"}
+  newName: devlaunchers/platform-website
+  newTag: d0d8327-202105311801
