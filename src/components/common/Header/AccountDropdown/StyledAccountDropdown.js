@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Dropdown from "../../Dropdown";
+import DropdownButton from "../../Dropdown";
 
-export const AccountMenuDropdownButton = styled(Dropdown)`
+export const AccountMenuDropdownButton = styled(DropdownButton)`
   @media (orientation: portrait) {
     display: none;
   }
@@ -10,14 +10,12 @@ export const AccountMenuDropdownButton = styled(Dropdown)`
 export const AccountMenuDropdownItem = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   background-color: #1c1c1c;
-  color: #f0edee;
 
   width: ${({ width }) => (width ? width : "")};
   border: 0px;
-  border-bottom: 3px solid;
 
   cursor: pointer;
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.5rem")};
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.1rem")};
   margin-top: ${({ marginTop }) => (marginTop ? marginTop : "")};
   padding: 0.5rem;
   padding-left: 1rem;

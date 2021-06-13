@@ -3,7 +3,7 @@ import Link from "next/link";
 import { logout } from "../../common/Header/AccountDropdown";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
-import { Logout } from "../Header/AccountDropdown/Logout";
+import { Logout } from "../../../utils/Logout";
 import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import { env } from "../../../utils/EnvironmentVariables";
 

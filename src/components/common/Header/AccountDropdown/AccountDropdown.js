@@ -1,17 +1,18 @@
 import React from "react";
-import { Logout } from "../AccountDropdown/Logout";
+import { Logout } from "../../../../utils/Logout";
 import { env } from "../../../../utils/EnvironmentVariables";
 import { AccountMenuDropdownItem } from "../AccountDropdown/StyledAccountDropdown";
 import { AccountMenuDropdownButton } from "../AccountDropdown/StyledAccountDropdown";
 import Link from "next/link";
+import Button from "../../Button";
 
 export default function AccountDropdown(props) {
   return (
-    <AccountMenuDropdownButton
-      toggleBtnText="Menu"
-      dropdownItems={
-        <>
-          {props.userData.id ? (
+    <div>
+      {props.userData.id ? (
+        <AccountMenuDropdownButton
+          toggleBtnText="Menu"
+          dropdownItems={
             <>
               {" "}
               <AccountMenuDropdownItem>
@@ -23,16 +24,13 @@ export default function AccountDropdown(props) {
                 Logout{" "}
               </AccountMenuDropdownItem>
             </>
-          ) : (
-            <AccountMenuDropdownItem
-              fontSize="1.2rem"
-              href={env().GOOGLE_AUTH_URL}
-            >
-              Sign In/Sign Up{" "}
-            </AccountMenuDropdownItem>
-          )}
-        </>
-      }
-    ></AccountMenuDropdownButton>
+          }
+        ></AccountMenuDropdownButton>
+      ) : (
+        <Button fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
+          Sign In{" "}
+        </Button>
+      )}
+    </div>
   );
 }
