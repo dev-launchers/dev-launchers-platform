@@ -79,6 +79,7 @@ export const CategoriesContainer = styled.div`
 `;
 
 export const CategoryTitle = styled.h3`
+  font-family: Abel;
   margin: 0;
   padding: 0 0 0 0.5rem;
   text-decoration: underline;
