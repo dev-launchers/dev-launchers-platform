@@ -3,22 +3,9 @@ import { useRouter } from "next/router";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
-const Tabletop = require("tabletop");
-
-function getData() {
-  return new Promise((resolve) => {
-    Tabletop.init({
-      key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
-      callback: (data) => {
-        resolve(data.exampleProjects.elements);
-      },
-      simpleSheet: false,
-    });
-  });
-}
 
 export const getStaticPaths = async () => {
-  const data = await getData();
+  const { data } = await axios("https://cms-api-staging.devlaunchers.com/projects");
 
   const paths = data.map((project, i, array) => {
     return {
@@ -33,7 +20,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const projectSlug = context.params.Project;
-  const data = await getData();
+  const { data } = await axios("https://cms-api-staging.devlaunchers.com/projects");
   return {
     props: {
       data: data.filter((element) => element.slug == projectSlug)[0],

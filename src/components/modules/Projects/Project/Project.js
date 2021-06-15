@@ -26,14 +26,18 @@ const Project = (props) => {
   console.log(props);
   return (
     <div>
-      <ProjectHero imageURL={props.imageURL}>
+      <ProjectHero
+        imageURL={
+          "https://cms-api-staging.devlaunchers.com" + props.heroImage.url
+        }
+      >
         <HeroSection>
           <ProjectTitle>
             <span>Project</span>
             {props.title}
           </ProjectTitle>
           <ProjectDescription>
-            {truncateText(props.description, 100, "...")}
+            {truncateText(props.catchPhrase, 100, "...")}
           </ProjectDescription>
           <Actions>
             <Button
@@ -55,11 +59,12 @@ const Project = (props) => {
         </HeroSection>
         <InfoBar>
           <Section position="start" size="1rem">
-            <Tag text={eval(props.keywords)[0]} />
-            <Tag text={eval(props.keywords)[1]} />
+            {props.keywords.map(({ keyword, id }) => (
+              <Tag key={id} text={keyword}></Tag>
+            ))}
           </Section>
           <Section position="end" size="3rem">
-            {eval(props.projectReferenceURLs).map(({ title, url }) => {
+            {props.projectReferenceURLs.map(({ title, url }) => {
               if (title == "Github Repo")
                 return (
                   <a
@@ -99,7 +104,7 @@ const Project = (props) => {
             <p>{props.description}</p>
             <h4>Project Refernces:</h4>
             <ul>
-              {eval(props.projectReferenceURLs).map((element, i) => (
+              {props.projectReferenceURLs.map((element, i) => (
                 <li key={i}>
                   <a
                     href={element.url}
@@ -128,7 +133,11 @@ const Project = (props) => {
             <p>{props.commitmentLevel}</p>
 
             <h4>Meeting Times:</h4>
-            <p>{props.meetingTimes}</p>
+            {props.meetingTimes.map((meeting) => (
+              <p>
+                {meeting.title} {meeting.dateTime}
+              </p>
+            ))}
             <h4>Meeting Links:</h4>
             <ul>
               {eval(props.meetingLinkURLs).map((url, i) => (
@@ -146,8 +155,8 @@ const Project = (props) => {
           <CategoryContainer>
             <h4>Leader/s:</h4>
             <MembersContainer>
-              {eval(props.leaders).map((leader) => (
-                <li>
+              {props.team.leaders.map((leader) => (
+                <li key={leader.id}>
                   <p>{leader.name}</p>
                   <p>{leader.role}</p>
                   <a href={`mailto:${leader.email}`}>Send Email</a>
@@ -157,8 +166,8 @@ const Project = (props) => {
 
             <h4>Members:</h4>
             <MembersContainer>
-              {eval(props.members).map((member) => (
-                <li>
+              {props.team.members.map((member) => (
+                <li key={member.id}>
                   <p>{member.name}</p>
                   <p>{member.role}</p>
                 </li>
