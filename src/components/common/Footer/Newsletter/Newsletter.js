@@ -9,7 +9,9 @@ const NewsLetter = props => {
   const [check, setCheck] = useState(false);
 
   function EmailValidation() {
-    if (!validateEmail(email)) {
+    if (email == "password") {
+      window.location.href = "https://devlaunchers.com/hangout";
+    } else if (!validateEmail(email)) {
       setCheck(true);
     } else {
       setIsCorrect(true);
@@ -65,6 +67,7 @@ const NewsLetter = props => {
                 value={email}
                 type="email"
                 placeholder="Enter your email here!"
+                autocomplete="off"
               />
             </Col>
             <Col
