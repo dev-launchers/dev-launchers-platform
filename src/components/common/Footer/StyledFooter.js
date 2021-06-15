@@ -23,7 +23,24 @@ export const Wrapper = styled.div`
   background-color: #1c1c1c;
   color: #d9d9d9;
   width: 100%;
-  height: 50vh;
+  height: 700px;
+  min-height: 500px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  z-index: 3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+`;
+
+export const NewsletterForm = styled.div`
+  position: relative;
+  background-color: #ffffff;
+  color: #d9d9d9;
+  width: 100%;
+  height: 100px;
   min-height: 100px;
 
   display: flex;

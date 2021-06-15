@@ -8,9 +8,11 @@ import {
   NavEntry,
   SocialMediaContainer,
   SocialMediaLink,
-  OrgInfoArea
+  OrgInfoArea,
+  NewsletterForm
 } from "./StyledFooter";
 import RandomQuote from "./RandomQuote";
+import Newsletter from "./Newsletter";
 
 export default function Footer(props) {
   return (
@@ -21,6 +23,7 @@ export default function Footer(props) {
           <FooterLogo />
         </a>
       </Link>
+      <Newsletter />
       <FooterNav>
         <Link href={"/create"} passHref className="nav-link">
           <a>
