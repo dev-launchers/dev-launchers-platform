@@ -4,13 +4,19 @@ import Footer from "../../components/common/Footer";
 import axios from "axios";
 
 export const getStaticProps = async () => {
-  // let { data: projects } = await axios(
-  //   "https://cms-api-staging.devlaunchers.com/projects"
-  // );
-  const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
-  const data = await res.json();
+  let { data: projects } = await axios(
+    "https://cms-api-staging.devlaunchers.com/projects",
+    {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "User-Agent": "*",
+      },
+    }
+  );
+  // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
+  // const data = await res.json();
   return {
-    props: { projects: data },
+    props: { projects },
     revalidate: 20,
   };
 };
