@@ -4,11 +4,13 @@ import Footer from "../../components/common/Footer";
 import axios from "axios";
 
 export const getStaticProps = async () => {
-  let { data: projects } = await axios(
-    "https://cms-api-staging.devlaunchers.com/projects"
-  );
+  // let { data: projects } = await axios(
+  //   "https://cms-api-staging.devlaunchers.com/projects"
+  // );
+  const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
+  const data = await res.json();
   return {
-    props: { projects },
+    props: { projects: data },
     revalidate: 20,
   };
 };
