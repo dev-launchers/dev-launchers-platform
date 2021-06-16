@@ -4,7 +4,7 @@ import { env } from "../../../../utils/EnvironmentVariables";
 import { AccountMenuDropdownItem } from "../AccountDropdown/StyledAccountDropdown";
 import { AccountMenuDropdownButton } from "../AccountDropdown/StyledAccountDropdown";
 import Link from "next/link";
-import Button from "../../Button";
+import { MenuButton } from "../AccountDropdown/StyledAccountDropdown";
 
 export default function AccountDropdown(props) {
   return (
@@ -27,9 +27,9 @@ export default function AccountDropdown(props) {
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <Button fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
+        <MenuButton fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
           Sign In{" "}
-        </Button>
+        </MenuButton>
       )}
     </div>
   );

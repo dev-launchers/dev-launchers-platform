@@ -1,13 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import { logout } from "../../common/Header/AccountDropdown";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 import { Logout } from "../../../utils/Logout";
 import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import { env } from "../../../utils/EnvironmentVariables";
+import constate from "../../../context/UserDataContext";
+import { useUserDataContext } from "../../../context/UserDataContext";
 
 function HamburgerMenu(props) {
+  const { userData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -64,21 +66,29 @@ function HamburgerMenu(props) {
               </a>
             </Link>
 
-            <Link href={"/user-profile"} className="nav-link">
-              <a>
-                <div className={style.navEntry}>Visit Account Page</div>
-              </a>
-            </Link>
-            <Link href={""} onClick={Logout} className="nav-link">
-              <a>
-                <div className={style.navEntry}>Log Out</div>
-              </a>
-            </Link>
-            <Link href={env().GOOGLE_AUTH_URL} className="nav-link">
-              <a>
-                <div className={style.navEntry}>Sign In/Sign Up </div>
-              </a>
-            </Link>
+            <div>
+              {userData.id ? (
+                <>
+                  <Link href={"/user-profile"} className="nav-link">
+                    <a>
+                      <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
+                    </a>
+                  </Link>
+                  <div onClick={Logout} className="nav-link">
+                    <a>
+                      <div className={style.navEntry}>LOG OUT </div>
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <Link href={env().GOOGLE_AUTH_URL} className="nav-link">
+                  <a>
+                    <div className={style.navEntry}>SIGN IN </div>
+                  </a>
+                </Link>
+              )}
+            </div>
+
             {/*}
             <Link href={"/play"} className="nav-link">
               <div className={style.navEntry}>PLAY</div>
@@ -112,7 +122,7 @@ function HamburgerMenu(props) {
           </div>
           {*/}
         </div>
-        <div className={style.LogoWords}>Dev Launchers</div>
+        {/*} <div className={style.LogoWords}>Dev Launchers</div> */}
       </div>
     </SlideHamburgerMenu>
   );

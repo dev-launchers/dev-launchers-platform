@@ -1,7 +1,14 @@
 import styled from "styled-components";
 import DropdownButton from "../../Dropdown";
+import Button from "../../Button";
 
 export const AccountMenuDropdownButton = styled(DropdownButton)`
+  @media (orientation: portrait) {
+    display: none;
+  }
+`;
+
+export const MenuButton = styled(Button)`
   @media (orientation: portrait) {
     display: none;
   }
