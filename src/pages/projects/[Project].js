@@ -18,7 +18,7 @@ export const getStaticPaths = async () => {
   // const data = await res.json();
   const paths = data.map((project, i, array) => {
     return {
-      params: { Project: project.slug },
+      params: { Project: project.id.toString() },
     };
   });
   return {
@@ -28,9 +28,9 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const projectSlug = context.params.Project;
+  const id = context.params.Project;
   const { data } = await axios.get(
-    "https://cms-api-staging.devlaunchers.com/projects",
+    `https://cms-api-staging.devlaunchers.com/projects/${id.toString()}`,
     {
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -38,12 +38,10 @@ export const getStaticProps = async (context) => {
       },
     }
   );
-  // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects")
-  // const data = await res.json()
 
   return {
     props: {
-      data: data.filter((element) => element.slug == projectSlug)[0],
+      data,
     },
     revalidate: 20,
   };

@@ -11,12 +11,12 @@ const Projects = ({ projects }) => {
             isLinkingInside
             style={{ margin: 0, width: "100%", height: "100%" }}
             cardData={{
-              id: project.slug,
+              id: project.id,
               title: project.title,
               secondaryText: "Commitment level: " + project.commitmentLevel,
               tags: project.keywords.map(({ keyword }) => keyword),
               description: project.catchPhrase,
-              href: project.slug,
+              href: project.id,
               imageSrc:
                 "https://cms-api-staging.devlaunchers.com" + project.heroImage.url,
               actions: (
