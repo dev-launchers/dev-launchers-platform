@@ -8,8 +8,7 @@ import {
   NavEntry,
   SocialMediaContainer,
   SocialMediaLink,
-  OrgInfoArea,
-  NewsletterForm
+  OrgInfoArea
 } from "./StyledFooter";
 import RandomQuote from "./RandomQuote";
 import Newsletter from "./Newsletter";
@@ -17,12 +16,6 @@ import Newsletter from "./Newsletter";
 export default function Footer(props) {
   return (
     <Wrapper>
-      <RandomQuote />
-      <Link href={"/"} passHref className="nav-link">
-        <a>
-          <FooterLogo />
-        </a>
-      </Link>
       <Newsletter />
       <FooterNav>
         <Link href={"/create"} passHref className="nav-link">
@@ -59,9 +52,15 @@ export default function Footer(props) {
       <SocialMediaContainer>
         <SocialMediaLink Type="Instagram" />
         <SocialMediaLink Type="Linkedin" />
+        <Link href={"/"} passHref className="nav-link">
+          <a>
+            <FooterLogo />
+          </a>
+        </Link>
         <SocialMediaLink Type="Twitch" />
         <SocialMediaLink Type="Discord" />
       </SocialMediaContainer>
+      <RandomQuote />
       <OrgInfoArea>
         -<a href="/page/terms-and-conditions">Terms of Service </a> {"- | -"}
         <a href="/page/privacy-policy">Privacy Policy </a> {"- | "} ©Dev

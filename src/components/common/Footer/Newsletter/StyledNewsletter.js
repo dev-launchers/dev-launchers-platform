@@ -11,8 +11,6 @@ const fadeIn = keyframes`
 
 export const Row = styled.div`
   display: flex;
-  margin-top: -5px;
-  margin-bottom: 5px;
 `;
 
 export const Col = styled.div`
@@ -25,6 +23,7 @@ export const Col = styled.div`
   margin: 0 auto;
   padding: 10px;
   text-align: center;
+  margin-bottom: 30px;
 
   #userEmail {
     border: 0;
@@ -94,8 +93,7 @@ export const Col = styled.div`
 
 export const ThankYouMessage = styled.div`
   font-family: "Nunito Sans";
-  margin-top: -10px;
-  margin-bottom: -10px;
+  margin-top: 30px;
   text-align: center;
   animation: float 3s infinite;
 
@@ -127,18 +125,10 @@ export const ThankYouMessage = styled.div`
   }
 
   #message {
-    margin-top: 15px;
+    margin-top: -20px;
     font-size: 1.75rem;
     font-weight: bolder;
-    background: linear-gradient(
-      to right,
-      hsl(28, 100%, 53%),
-      hsl(45, 100%, 53%),
-      hsl(194, 52%, 67%),
-      hsl(203, 48%, 44%)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: ${props => props.theme.colors.NEUTRAL_2};
   }
 `;
 
@@ -147,7 +137,20 @@ export const ErrorMessage = styled.p`
   font-family: "Nunito Sans";
   font-weight: bolder;
   font-size: 1.25rem;
-  margin-top: 10px;
-  margin-bottom: -10px;
+  margin-top: -20px;
+  margin-bottom: 20px;
   animation: ${fadeIn} 0.5s linear;
+`;
+
+export const Secret = styled.a`
+  font-size: 7rem;
+  text-align: center;
+
+  :hover span {
+    display: none;
+  }
+
+  :hover:before {
+    content: "🤫";
+  }
 `;

@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Row, Col, ThankYouMessage, ErrorMessage } from "./StyledNewsletter";
+import {
+  Row,
+  Col,
+  ThankYouMessage,
+  ErrorMessage,
+  Secret
+} from "./StyledNewsletter";
 import validateEmail from "../../../../utils/ValidateEmail";
 import { withTheme } from "styled-components";
 
@@ -7,10 +13,11 @@ const NewsLetter = props => {
   const [email, setEmail] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
   const [check, setCheck] = useState(false);
+  const [secret, setSecret] = useState(false);
 
   function EmailValidation() {
     if (email == "password") {
-      window.location.href = "https://devlaunchers.com/hangout";
+      setSecret(true);
     } else if (!validateEmail(email)) {
       setCheck(true);
     } else {
@@ -18,7 +25,25 @@ const NewsLetter = props => {
     }
   }
 
-  if (isCorrect) {
+  if (secret) {
+    return (
+      <div>
+        <p
+          style={{
+            fontSize: "7rem",
+            marginTop: "10px",
+            marginBottom: "20px"
+          }}
+        >
+          →{" "}
+          <Secret href="https://devlaunchers.com/hangout">
+            <span>😄</span>
+          </Secret>{" "}
+          ←
+        </p>
+      </div>
+    );
+  } else if (isCorrect) {
     return (
       <div>
         <ThankYouMessage>
@@ -36,7 +61,7 @@ const NewsLetter = props => {
           <h2
             style={{
               fontSize: "3rem",
-              marginTop: "-12px",
+              marginTop: "0px",
               marginBottom: "12px"
             }}
           >
@@ -67,7 +92,6 @@ const NewsLetter = props => {
                 value={email}
                 type="email"
                 placeholder="Enter your email here!"
-                autocomplete="off"
               />
             </Col>
             <Col
@@ -91,7 +115,7 @@ const NewsLetter = props => {
           <h2
             style={{
               fontSize: "3rem",
-              marginTop: "-12px",
+              marginTop: "0px",
               marginBottom: "12px"
             }}
           >
@@ -119,7 +143,6 @@ const NewsLetter = props => {
                 value={email}
                 type="email"
                 placeholder="Enter your email here!"
-                required="required"
               />
             </Col>
             <Col
