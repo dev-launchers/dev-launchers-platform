@@ -16,13 +16,13 @@ function useProjectsData() {
     axios("https://cms-api-staging.devlaunchers.com/projects", {
       headers: {
         Accept: "application/json, text/plain, */*",
-        "User-Agent": "*"
-      }
+        "User-Agent": "*",
+      },
     })
       .then(({ data }) => {
         setProjectsData(data);
       })
-      .catch(err => {
+      .catch((err) => {
         //setUserData({ id: "invalid" });
       });
   }, []);

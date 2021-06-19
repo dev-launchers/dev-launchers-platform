@@ -20,7 +20,7 @@ const Projects = () => {
               secondaryText: "Commitment level: " + project.commitmentLevel,
               tags: project.keywords.map(({ keyword }) => keyword),
               description: project.catchPhrase,
-              href: project.id,
+              href: project.slug,
               imageSrc:
                 "https://cms-api-staging.devlaunchers.com" +
                 project.heroImage.url,
