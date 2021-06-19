@@ -1,3 +1,4 @@
 {
-  "extends": ["next", "prettier"]
+  "extends": ["airbnb-base", "next", "prettier"],
+  "env": { "browser": true, "node": true, "es2021": true }
 }
