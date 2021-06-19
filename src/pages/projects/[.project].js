@@ -10,40 +10,40 @@ export const getStaticPaths = async () => {
     {
       headers: {
         Accept: "application/json, text/plain, */*",
-        "User-Agent": "*",
-      },
+        "User-Agent": "*"
+      }
     }
   );
   // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
   // const data = await res.json();
   const paths = data.map((project, i, array) => {
     return {
-      params: { Project: project.id.toString() },
+      params: { project: project.id.toString() }
     };
   });
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 };
 
-export const getStaticProps = async (context) => {
-  const id = context.params.Project;
+export const getStaticProps = async context => {
+  const id = context.params.project;
   const { data } = await axios.get(
     `https://cms-api-staging.devlaunchers.com/projects/${id.toString()}`,
     {
       headers: {
         Accept: "application/json, text/plain, */*",
-        "User-Agent": "*",
-      },
+        "User-Agent": "*"
+      }
     }
   );
 
   return {
     props: {
-      data,
+      data
     },
-    revalidate: 20,
+    revalidate: 20
   };
 };
 
