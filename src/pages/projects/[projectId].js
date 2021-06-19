@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
-
+import { ProjectsDataProvider } from "../../context/ProjectsContext";
 // export const getStaticPaths = async () => {
 //   const { data } = await axios(
 //     "https://cms-api-staging.devlaunchers.com/projects",
@@ -54,7 +54,9 @@ const ProjectRoute = ({ data }) => {
   return (
     <div>
       <Header />
-      <Project projectId={projectId} />
+      <ProjectsDataProvider>
+        <Project projectId={projectId} />
+      </ProjectsDataProvider>
       <Footer />
     </div>
   );

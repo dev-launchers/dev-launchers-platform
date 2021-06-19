@@ -15,9 +15,8 @@ import { LeaderboardProvider } from "../context/LeaderboardContext";
 import { UserDataProvider } from "../context/UserDataContext";
 import { ThemeProvider } from "styled-components";
 
-import { ProjectsDataProvider } from "../context/ProjectsContext";
 
-const hashRedirect = router => {
+const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
   if (router.asPath.startsWith("/#")) {
     router.push(router.asPath.replace("/#", ""));
@@ -104,16 +103,14 @@ function MyApp({ Component, pageProps }) {
               <RepoProvider>
                 <LeaderboardProvider>
                   <UserDataProvider>
-                    <ProjectsDataProvider>
-                      <div className="App">
-                        <ToastContainer
-                          className="toast-container"
-                          toastClassName="toast"
-                          progressClassName="toast-progress"
-                        />
-                      </div>
-                      <Component {...pageProps} />
-                    </ProjectsDataProvider>
+                    <div className="App">
+                      <ToastContainer
+                        className="toast-container"
+                        toastClassName="toast"
+                        progressClassName="toast-progress"
+                      />
+                    </div>
+                    <Component {...pageProps} />
                   </UserDataProvider>
                 </LeaderboardProvider>
               </RepoProvider>
