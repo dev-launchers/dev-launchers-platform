@@ -25,6 +25,8 @@ function HamburgerMenu(props) {
   return (
     <SlideHamburgerMenu
       right
+      className={style.menuBody}
+      overlayClassName={style.overlay}
       isOpen={menuOpen}
       burgerButtonClassName={style.burgerButton}
       burgerBarClassName={style.burgerBar}
@@ -41,27 +43,29 @@ function HamburgerMenu(props) {
           color: "#d9d9d9",
           display: "flex",
           alignItems: "center",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <div className={style.Logo} onClick={handleNavClick}>
           <div className={style.LogoWrapper}>
-            <Link href={"/"} className="nav-link">
-              <div className={style.LogoImageHolder}>
-                <img src={logoMonogramImage} className={style.LogoImage} />
-              </div>
+            <Link href={"/"} passHref>
+              <a className="nav-link">
+                <div className={style.LogoImageHolder}>
+                  <img src={logoMonogramImage} className={style.LogoImage} />
+                </div>
+              </a>
             </Link>
           </div>
         </div>
         <div>
           <div className={style.HeaderNav} onClick={handleNavClick}>
-            <Link href={"/create"} className="nav-link">
-              <a>
+            <Link href={"/create"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>CREATE</div>
               </a>
             </Link>
-            <Link href={"/learn"} className="nav-link">
-              <a>
+            <Link href={"/learn"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>LEARN</div>
               </a>
             </Link>
@@ -69,23 +73,19 @@ function HamburgerMenu(props) {
             <div>
               {userData.id ? (
                 <>
-                  <Link href={"/user-profile"} className="nav-link">
-                    <a>
+                  <Link href={"/user-profile"} passHref>
+                    <a className="nav-link">
                       <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
                     </a>
                   </Link>
-                  <div onClick={Logout} className="nav-link">
-                    <a>
-                      <div className={style.navEntry}>LOG OUT </div>
-                    </a>
-                  </div>
+                  <a onClick={Logout} className="nav-link">
+                    <div className={style.navEntry}>LOG OUT </div>
+                  </a>
                 </>
               ) : (
-                <Link href={env().GOOGLE_AUTH_URL} className="nav-link">
-                  <a>
-                    <div className={style.navEntry}>SIGN IN </div>
-                  </a>
-                </Link>
+                <a href={env().GOOGLE_AUTH_URL} className="nav-link">
+                  <div className={style.navEntry}>SIGN IN </div>
+                </a>
               )}
             </div>
 
@@ -94,18 +94,18 @@ function HamburgerMenu(props) {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             {*/}
-            <Link href={"/earn"} className="nav-link">
-              <a>
+            <Link href={"/earn"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>EARN</div>
               </a>
             </Link>
-            <Link href={"/support-us"} className="nav-link">
-              <a>
+            <Link href={"/support-us"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>SUPPORT US</div>
               </a>
             </Link>
-            <Link href={"/members"} className="nav-link">
-              <a>
+            <Link href={"/members"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>JOIN</div>
               </a>
             </Link>
