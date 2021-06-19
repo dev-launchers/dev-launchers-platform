@@ -3,28 +3,29 @@ import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
 import axios from "axios";
 
-export const getStaticProps = async () => {
-  let { data: projects } = await axios(
-    "https://cms-api-staging.devlaunchers.com/projects",
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent": "*",
-      },
-    }
-  );
-  // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
-  // const data = await res.json();
-  return {
-    props: { projects },
-    revalidate: 20,
-  };
-};
+// export const getStaticProps = async () => {
+//   let { data: projects } = await axios(
+//     "https://cms-api-staging.devlaunchers.com/projects",
+//     {
+//       headers: {
+//         Accept: "application/json, text/plain, */*",
+//         "User-Agent": "*"
+//       }
+//     }
+//   );
+//   // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
+//   // const data = await res.json();
+//   return {
+//     props: { projects },
+//     revalidate: 20
+//   };
+// };
+
 const ProjectsList = ({ projects }) => {
   return (
     <div>
       <Header />
-      <Projects projects={projects} />
+      <Projects />
       <Footer />
     </div>
   );

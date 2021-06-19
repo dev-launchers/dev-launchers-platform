@@ -10,46 +10,68 @@ import {
   ProjectTitle,
   MembersContainer,
   Actions,
-  InfoBar,
+  InfoBar
 } from "./StyledProject";
 import Button from "../../../common/Button";
 import Tag from "../../../common/Tag";
 import { withTheme } from "styled-components";
 import Link from "next/link";
 
+import { useProjectsDataContext } from "../../../../context/ProjectsContext";
+
 const truncateText = (text, truncateAt, replaceWith) => {
   if (text.length <= truncateAt) return text;
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = (props) => {
-  console.log(props);
+const Project = props => {
+  const projectsData = useProjectsDataContext([]);
+  const [projectData, setProjectData] = React.useState({
+    heroImage: "",
+    catchPhrase: "",
+    keywords: [],
+    projectReferenceURLs: [],
+    openPositions: [],
+    meetingTimes: [],
+    meetingLinkURLs: [],
+    team: { members: [], leaders: [] }
+  });
+
+  React.useEffect(() => {
+    if (!projectsData.length) return;
+    setProjectData(
+      projectsData.filter(entry => {
+        return entry.id == props.projectId;
+      })[0]
+    );
+  }, [projectsData]);
+
   return (
     <div>
       <ProjectHero
         imageURL={
-          "https://cms-api-staging.devlaunchers.com" + props.heroImage.url
+          "https://cms-api-staging.devlaunchers.com" + projectData.heroImage.url
         }
       >
         <HeroSection>
           <ProjectTitle>
             <span>Project</span>
-            {props.title}
+            {projectData.title}
           </ProjectTitle>
           <ProjectDescription>
-            {truncateText(props.catchPhrase, 100, "...")}
+            {truncateText(projectData.catchPhrase, 100, "...")}
           </ProjectDescription>
           <Actions>
             <Button
               rel="noopener noreferrer"
               target="_blank"
-              href={props.signupFormURL}
+              href={projectData.signupFormURL}
             >
               JOIN NOW
             </Button>
             <Link
               href={{
-                pathname: "/support-us",
+                pathname: "/support-us"
               }}
               passHref
             >
@@ -59,12 +81,12 @@ const Project = (props) => {
         </HeroSection>
         <InfoBar>
           <Section position="start" size="1rem">
-            {props.keywords.map(({ keyword, id }) => (
+            {projectData.keywords.map(({ keyword, id }) => (
               <Tag key={id} text={keyword}></Tag>
             ))}
           </Section>
           <Section position="end" size="3rem">
-            {props.projectReferenceURLs.map(({ title, url }) => {
+            {projectData.projectReferenceURLs.map(({ title, url }) => {
               if (title == "Github Repo")
                 return (
                   <a
@@ -99,12 +121,12 @@ const Project = (props) => {
           </CategoryTitle>
           <CategoryContainer>
             <h4>Project Vision:</h4>
-            <p>{props.vision}</p>
+            <p>{projectData.vision}</p>
             <h4>Project Description:</h4>
-            <p>{props.description}</p>
+            <p>{projectData.description}</p>
             <h4>Project Refernces:</h4>
             <ul>
-              {props.projectReferenceURLs.map((element, i) => (
+              {projectData.projectReferenceURLs.map((element, i) => (
                 <li key={i}>
                   <a
                     href={element.url}
@@ -118,7 +140,7 @@ const Project = (props) => {
             </ul>
             <h4>Open Positions</h4>
             <ul>
-              {eval(props.openPositions).map((element, i) => (
+              {eval(projectData.openPositions).map((element, i) => (
                 <li key={i}>
                   {element.title}: {element.description}
                 </li>
@@ -130,17 +152,17 @@ const Project = (props) => {
           <CategoryTitle>Commitment/Meetings</CategoryTitle>
           <CategoryContainer>
             <h4>Commitment Level:</h4>
-            <p>{props.commitmentLevel}</p>
+            <p>{projectData.commitmentLevel}</p>
 
             <h4>Meeting Times:</h4>
-            {props.meetingTimes.map((meeting) => (
+            {projectData.meetingTimes.map(meeting => (
               <p>
                 {meeting.title} {meeting.dateTime}
               </p>
             ))}
             <h4>Meeting Links:</h4>
             <ul>
-              {eval(props.meetingLinkURLs).map((url, i) => (
+              {eval(projectData.meetingLinkURLs).map((url, i) => (
                 <li key={i}>
                   <a href={url} rel="noopener noreferrer" target="_blank">
                     link {++i}
@@ -155,7 +177,7 @@ const Project = (props) => {
           <CategoryContainer>
             <h4>Leader/s:</h4>
             <MembersContainer>
-              {props.team.leaders.map((leader) => (
+              {projectData.team.leaders.map(leader => (
                 <li key={leader.id}>
                   <p>{leader.name}</p>
                   <p>{leader.role}</p>
@@ -166,7 +188,7 @@ const Project = (props) => {
 
             <h4>Members:</h4>
             <MembersContainer>
-              {props.team.members.map((member) => (
+              {projectData.team.members.map(member => (
                 <li key={member.id}>
                   <p>{member.name}</p>
                   <p>{member.role}</p>

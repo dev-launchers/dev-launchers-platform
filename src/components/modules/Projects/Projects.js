@@ -2,7 +2,11 @@ import Link from "next/link";
 import Card from "../../common/Card";
 import { Layout, ProjectContainer } from "./StyledProjects";
 
-const Projects = ({ projects }) => {
+import { useProjectsDataContext } from "../../../context/ProjectsContext";
+
+const Projects = () => {
+  const projects = useProjectsDataContext();
+
   return (
     <Layout>
       {projects.map((project, i) => (
@@ -18,7 +22,8 @@ const Projects = ({ projects }) => {
               description: project.catchPhrase,
               href: project.id,
               imageSrc:
-                "https://cms-api-staging.devlaunchers.com" + project.heroImage.url,
+                "https://cms-api-staging.devlaunchers.com" +
+                project.heroImage.url,
               actions: (
                 <>
                   <Link href={`projects/${project.slug}` || ""} passHref>
@@ -28,7 +33,7 @@ const Projects = ({ projects }) => {
                     <a>DONATE</a>
                   </Link>
                 </>
-              ),
+              )
             }}
           />
         </ProjectContainer>
