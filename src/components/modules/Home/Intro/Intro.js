@@ -4,6 +4,7 @@ import RainbowBar from "../../../../components/common/RainbowBar";
 
 import {
   CenteredTitle,
+  CenteredIntro,
   Wrapper,
   IntroDescriptionWrapper,
   IntroSummaryBox,
@@ -30,6 +31,21 @@ export default function Intro() {
             human
           </span>
         </CenteredTitle>
+        <CenteredIntro>
+          Build your foundation with us, a{" "}
+          <span
+            style={{
+              fontWeight: 900,
+              fontSize: "1.8rem"
+            }}
+          >
+            nonprofit organization aimed at bridging opportunity gaps in the
+            technology industry.
+          </span>{" "}
+          Every great building begins with a solid foundation. We've dedicated
+          ourselves to building great people.
+          <CenteredIntro />
+        </CenteredIntro>
         <RainbowBar width="60%" />
         <IntroDescriptionWrapper>
           <IntroSummaryBox>

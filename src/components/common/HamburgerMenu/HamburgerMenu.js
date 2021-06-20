@@ -67,11 +67,6 @@ function HamburgerMenu(props) {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             {*/}
-            <Link href={"/earn"} className="nav-link">
-              <a>
-                <div className={style.navEntry}>EARN</div>
-              </a>
-            </Link>
             <Link href={"/support-us"} className="nav-link">
               <a>
                 <div className={style.navEntry}>SUPPORT US</div>

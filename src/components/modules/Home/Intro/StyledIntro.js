@@ -23,7 +23,20 @@ export const CenteredTitle = styled.div`
   margin: 1%;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 2%;
+  //padding-bottom: 0.3%;
+`;
+
+export const CenteredIntro = styled.div`
+  font-family: "Abel", sans-serif;
+  font-size: 1.8rem;
+  font-weight: -100;
+  line-height: 1.4;
+  width: 70%;
+  margin: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.3%;
+  //padding-bottom: 0.1%;
 `;
 
 export const IntroDescriptionWrapper = styled.div`
