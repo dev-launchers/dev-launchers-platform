@@ -60,9 +60,6 @@ export const FooterNav = styled.div`
   @media (orientation: portrait) {
     min-width: 200px;
     width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
   }
 `;
 export const SocialMediaContainer = styled.div`
@@ -76,10 +73,7 @@ export const SocialMediaContainer = styled.div`
   align-items: center;
   font-size: 5rem;
   @media (orientation: portrait) {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    width: 100%;
   }
 `;
 
