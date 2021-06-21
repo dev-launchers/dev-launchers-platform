@@ -186,6 +186,16 @@ const Project = props => {
           JOIN NOW
         </Button>
       </div>
+      <div
+        style={{
+          width: "90%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginBottom: "2rem"
+        }}
+      >
+        <a href="/projects">{"<<"} Back to Projects</a>
+      </div>
     </Wrapper>
   );
 };
