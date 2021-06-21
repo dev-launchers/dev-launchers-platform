@@ -4,12 +4,12 @@ import {
   Col,
   ThankYouMessage,
   ErrorMessage,
-  Secret
+  Secret,
 } from "./StyledNewsletter";
 import validateEmail from "../../../../utils/ValidateEmail";
 import { withTheme } from "styled-components";
 
-const NewsLetter = props => {
+const NewsLetter = (props) => {
   const [email, setEmail] = useState("");
   const [isCorrect, setIsCorrect] = useState(false);
   const [check, setCheck] = useState(false);
@@ -32,7 +32,8 @@ const NewsLetter = props => {
           style={{
             fontSize: "7rem",
             marginTop: "10px",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            textAlign: "center"
           }}
         >
           →{" "}
@@ -57,17 +58,18 @@ const NewsLetter = props => {
   } else {
     if (check) {
       return (
-        <div class="form">
+        <div className="form">
           <h2
             style={{
               fontSize: "3rem",
               marginTop: "0px",
-              marginBottom: "12px"
+              marginBottom: "12px",
+              textAlign: "center"
             }}
           >
             <span
               style={{
-                fontSize: "3.25rem"
+                fontSize: "3.25rem",
               }}
             >
               ✉
@@ -82,13 +84,13 @@ const NewsLetter = props => {
                 borderBottomLeftRadius: "25px",
                 marginLeft: "-5px",
                 marginRight: "5px",
-                outline: "3px solid red"
+                outline: "3px solid red",
               }}
               size={3}
             >
               <input
                 id="userEmail"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="email"
                 placeholder="Enter your email here!"
@@ -98,7 +100,7 @@ const NewsLetter = props => {
               style={{
                 fontWeight: "bold",
                 borderBottomRightRadius: "25px",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
               size={1}
               onClick={EmailValidation}
@@ -116,12 +118,13 @@ const NewsLetter = props => {
             style={{
               fontSize: "3rem",
               marginTop: "0px",
-              marginBottom: "12px"
+              marginBottom: "12px",
+              textAlign: "center"
             }}
           >
             <span
               style={{
-                fontSize: "3.25rem"
+                fontSize: "3.25rem",
               }}
             >
               ✉
@@ -133,13 +136,13 @@ const NewsLetter = props => {
               style={{
                 backgroundColor: props.theme.colors.ACCENT_2,
                 fontWeight: "bold",
-                borderBottomLeftRadius: "25px"
+                borderBottomLeftRadius: "25px",
               }}
               size={3}
             >
               <input
                 id="userEmail"
-                onChange={e => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 type="email"
                 placeholder="Enter your email here!"
@@ -149,7 +152,7 @@ const NewsLetter = props => {
               style={{
                 fontWeight: "bold",
                 borderBottomRightRadius: "25px",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
               size={1}
               onClick={EmailValidation}
