@@ -23,7 +23,7 @@ const Projects = () => {
         Create, discover, and join open-source software projects! We help
         members to contribute meaningfully and gain industry-ready experience
         along the way. Build epic products, tools, and games used by real people
-        while building valuable skills and meeting awesome people!
+        while learning valuable skills and meeting awesome people!
       </div>
       <Layout>
         {projects.map((project, i) => (
