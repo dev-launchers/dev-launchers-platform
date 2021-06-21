@@ -44,7 +44,7 @@ body {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-bottom: 5px solid transparent;
-  background-clip: content-box; 
+  background-clip: content-box;
 }
 
 #root {
@@ -95,8 +95,13 @@ h2 {
 }
 
 h3 {
+  font-family: "Abel", sans-serif;
   font-size: 2.5rem;
   font-weight: bold;
+}
+
+h4 {
+  font-family: "Abel", sans-serif;
 }
 
 /*

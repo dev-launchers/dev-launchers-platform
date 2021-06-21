@@ -13,16 +13,16 @@ function useProjectsData() {
   const [projectsData, setProjectsData] = React.useState(DEFAULT_PROJECTS);
 
   React.useEffect(() => {
-    axios("https://cms-api-staging.devlaunchers.com/projects", {
+    axios(env().STRAPI_URL + "/projects", {
       headers: {
         Accept: "application/json, text/plain, */*",
-        "User-Agent": "*",
-      },
+        "User-Agent": "*"
+      }
     })
       .then(({ data }) => {
         setProjectsData(data);
       })
-      .catch((err) => {
+      .catch(err => {
         //setUserData({ id: "invalid" });
       });
   }, []);

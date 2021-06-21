@@ -1,21 +1,17 @@
 import React from "react";
+import Button from "../../../common/Button";
+import { withTheme } from "styled-components";
+
 import {
-  HeroSection,
-  CategoryTitle,
+  Wrapper,
   CategoriesContainer,
   CategoryContainer,
-  ProjectHero,
-  Section,
-  ProjectDescription,
-  ProjectTitle,
   MembersContainer,
-  Actions,
-  InfoBar,
+  TeamContentContainer
 } from "./StyledProject";
-import Button from "../../../common/Button";
-import Tag from "../../../common/Tag";
-import { withTheme } from "styled-components";
-import Link from "next/link";
+import ProjectHero from "./ProjectHero";
+
+
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 
@@ -24,7 +20,7 @@ const truncateText = (text, truncateAt, replaceWith) => {
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = (props) => {
+const Project = props => {
   const projectsData = useProjectsDataContext([]);
   const [projectData, setProjectData] = React.useState({
     heroImage: "",
@@ -34,100 +30,57 @@ const Project = (props) => {
     openPositions: [],
     meetingTimes: [],
     meetingLinkURLs: [],
-    team: { members: [], leaders: [] },
+    team: { members: [], leaders: [] }
   });
 
   React.useEffect(() => {
     if (!projectsData.length) return;
     setProjectData(
-      projectsData.filter((entry) => {
+      projectsData.filter(entry => {
         return entry.slug == props.projectId;
       })[0]
     );
   }, [projectsData]);
 
   return (
-    <div>
-      <ProjectHero
-        imageURL={
-          "https://cms-api-staging.devlaunchers.com" + projectData?.heroImage?.url
-        }
+    <Wrapper>
+      <ProjectHero projectData={projectData} />
+      <div
+        style={{
+          width: "90%",
+          marginLeft: "auto",
+          marginRight: "auto"
+        }}
       >
-        <HeroSection>
-          <ProjectTitle>
-            <span>Project</span>
-            {projectData?.title}
-          </ProjectTitle>
-          <ProjectDescription>
-            {projectData?.catchPhrase}
-          </ProjectDescription>
-          <Actions>
-            <Button
-              rel="noopener noreferrer"
-              target="_blank"
-              href={projectData?.signupFormURL}
-            >
-              JOIN NOW
-            </Button>
-            <Link
-              href={{
-                pathname: "/support-us",
-              }}
-              passHref
-            >
-              <Button bgColor={props.theme.colors.ACCENT_3}>DONATE</Button>
-            </Link>
-          </Actions>
-        </HeroSection>
-        <InfoBar>
-          <Section position="start" size="1rem">
-            {projectData?.keywords.map(({ keyword, id }) => (
-              <Tag key={id} text={keyword}></Tag>
-            ))}
-          </Section>
-          <Section position="end" size="3rem">
-            {projectData?.projectReferenceURLs.map(({ title, url }) => {
-              if (title == "Github Repo")
-                return (
-                  <a
-                    style={{ color: props.theme.colors.NEUTRAL_2 }}
-                    href={url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <i className="fab fa-github"></i>
-                  </a>
-                );
-              else if (title == "Website")
-                return (
-                  <a
-                    style={{ color: props.theme.NEUTRAL_2 }}
-                    href={url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    <i className="fab fa-globe"></i>
-                  </a>
-                );
-            })}
-          </Section>
-        </InfoBar>
-      </ProjectHero>
-      <br />
-      <CategoriesContainer>
-        <div>
-          <CategoryTitle /*style={{ marginTop: "clamp(25rem, 25%,35rem)" }}*/>
-            Project
-          </CategoryTitle>
-          <CategoryContainer>
-            <h4>Project Vision:</h4>
-            <p>{projectData?.vision}</p>
-            <h4>Project Description:</h4>
-            <p>{projectData?.description}</p>
-            <h4>Project Refernces:</h4>
-            <ul>
+        <div
+          style={{
+            fontFamily: props.theme.fonts.headline,
+            marginTop: "4rem",
+            marginBottom: "4rem",
+            padding: "1rem",
+            fontSize: "2.5rem",
+            border: "1px solid black"
+          }}
+        >
+          {projectData?.vision}
+        </div>
+        <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
+          <h3 style={{ display: "inline" }}>Description:</h3>{" "}
+          {projectData?.description?.split("\n").map((text, i) => (
+            <p key={i}> {text} </p>
+          ))}
+        </div>
+        <CategoriesContainer>
+          <div>
+            {/*}
+            <CategoryTitle>
+              Project
+            </CategoryTitle>
+            {*/}
+            <CategoryContainer>
+              <h4>Project References</h4>
               {projectData?.projectReferenceURLs.map((element, i) => (
-                <li key={i}>
+                <p key={i}>
                   <a
                     href={element.url}
                     rel="noopener noreferrer"
@@ -135,71 +88,105 @@ const Project = (props) => {
                   >
                     {element.title}
                   </a>
-                </li>
+                </p>
               ))}
-            </ul>
-            <h4>Open Positions</h4>
-            <ul>
+              <h4>Open Positions</h4>
               {projectData?.openPositions.map((element, i) => (
-                <li key={i}>
-                  {element.title}: {element.description}
-                </li>
+                <p key={i}>
+                  <div>{element.title}</div>
+                  <p>{element.description}</p>
+                </p>
               ))}
-            </ul>
-          </CategoryContainer>
-        </div>
-        <div>
-          <CategoryTitle>Commitment/Meetings</CategoryTitle>
-          <CategoryContainer>
-            <h4>Commitment Level:</h4>
-            <p>{projectData?.commitmentLevel}</p>
+            </CategoryContainer>
+          </div>
+          <div>
+            {/*}
+            <CategoryTitle>Commitment/Meetings</CategoryTitle>
+            {*/}
+            <CategoryContainer>
+              <h4>Commitment Level</h4>
+              <p>{projectData?.commitmentLevel}</p>
 
-            <h4>Meeting Times:</h4>
-            {projectData?.meetingTimes.map((meeting) => (
-              <p>
-                {meeting.title} {meeting.dateTime}
-              </p>
-            ))}
-            <h4>Meeting Links:</h4>
-            <ul>
-              {projectData?.meetingLinkURLs.map((url, i) => (
-                <li key={i}>
-                  <a href={url} rel="noopener noreferrer" target="_blank">
-                    link {++i}
-                  </a>
-                </li>
+              <h4>Meeting Times</h4>
+              {projectData?.meetingTimes.map((meeting, i) => (
+                <p key={i}>
+                  {meeting.title} {meeting.dateTime}
+                </p>
               ))}
-            </ul>
-          </CategoryContainer>
-        </div>
-        <div>
-          <CategoryTitle>Team</CategoryTitle>
-          <CategoryContainer>
-            <h4>Leader/s:</h4>
+              <h4>Meeting Links</h4>
+              {projectData?.meetingLinkURLs.map((url, i) => (
+                <p key={url.id}>
+                  <a href={url.url} rel="noopener noreferrer" target="_blank">
+                    {url.roomName}
+                  </a>
+                </p>
+              ))}
+            </CategoryContainer>
+          </div>
+        </CategoriesContainer>
+        <br />
+      </div>
+      <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
+        <TeamContentContainer>
+          <p style={{ width: "50%" }}>
+            <h4>Leader(s)</h4>
             <MembersContainer>
-              {projectData?.team.leaders.map((leader) => (
-                <li key={leader.id}>
+              {projectData?.team.leaders.map(leader => (
+                <p key={leader.id}>
                   <p>{leader.name}</p>
                   <p>{leader.role}</p>
-                  <a href={`mailto:${leader.email}`}>Send Email</a>
-                </li>
+                  <p>
+                    <a href={`mailto:${leader.email}`}>Send Email</a>
+                  </p>
+                </p>
               ))}
             </MembersContainer>
+          </p>
 
-            <h4>Members:</h4>
+          <p style={{ width: "50%" }}>
+            <h4>Members</h4>
             <MembersContainer>
-              {projectData?.team.members.map((member) => (
-                <li key={member.id}>
+              {projectData?.team.members.map(member => (
+                <p key={member.id}>
                   <p>{member.name}</p>
                   <p>{member.role}</p>
-                </li>
+                </p>
               ))}
             </MembersContainer>
-          </CategoryContainer>
-        </div>
-      </CategoriesContainer>
-      <br />
-    </div>
+          </p>
+        </TeamContentContainer>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          padding: "2rem",
+          color: "white"
+        }}
+      ></div>
+
+      <div
+        style={{
+          width: "100%",
+          marginBottom: "2rem",
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <Button
+          rel="noopener noreferrer"
+          target="_blank"
+          href={projectData?.signupFormUrl}
+          style={{
+            fontSize: "3rem",
+            paddingLeft: "20vw",
+            paddingRight: "20vw"
+          }}
+        >
+          JOIN NOW
+        </Button>
+      </div>
+    </Wrapper>
   );
 };
 
