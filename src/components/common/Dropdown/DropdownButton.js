@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Wrapper, Toggle, Rooms } from "./StyledDropdown";
+import { Wrapper, Toggle, Rooms } from "./StyledDropdownButton";
 
-const Dropdown = ({ toggleBtnText, dropdownItems, className }) => {
+const DropdownButton = ({ toggleBtnText, dropdownItems, className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const node = useRef();
 
@@ -39,4 +39,4 @@ const Dropdown = ({ toggleBtnText, dropdownItems, className }) => {
   );
 };
 
-export default Dropdown;
+export default DropdownButton;

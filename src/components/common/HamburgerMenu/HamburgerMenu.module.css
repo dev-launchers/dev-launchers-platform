@@ -8,6 +8,13 @@
   display: none; /* Only display on mobile */
 }
 
+.menuBody {
+  top: 0;
+}
+.overlay {
+  top: 0px;
+  right: 0px;
+}
 .burgerBar {
   background: #d9d9d9;
 }
