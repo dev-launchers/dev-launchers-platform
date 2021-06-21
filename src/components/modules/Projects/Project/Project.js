@@ -1,12 +1,9 @@
 import React from "react";
 import Button from "../../../common/Button";
-import Tag from "../../../common/Tag";
 import { withTheme } from "styled-components";
-import Link from "next/link";
 
 import {
   Wrapper,
-  CategoryTitle,
   CategoriesContainer,
   CategoryContainer,
   MembersContainer,
@@ -14,7 +11,7 @@ import {
 } from "./StyledProject";
 import ProjectHero from "./ProjectHero";
 
-import { env } from "../../../../utils/EnvironmentVariables.js";
+
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 
@@ -69,8 +66,8 @@ const Project = props => {
         </div>
         <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
           <h3 style={{ display: "inline" }}>Description:</h3>{" "}
-          {projectData?.description?.split("\n").map(text => (
-            <p> {text} </p>
+          {projectData?.description?.split("\n").map((text, i) => (
+            <p key={i}> {text} </p>
           ))}
         </div>
         <CategoriesContainer>
@@ -111,16 +108,16 @@ const Project = props => {
               <p>{projectData?.commitmentLevel}</p>
 
               <h4>Meeting Times</h4>
-              {projectData?.meetingTimes.map(meeting => (
-                <p>
+              {projectData?.meetingTimes.map((meeting, i) => (
+                <p key={i}>
                   {meeting.title} {meeting.dateTime}
                 </p>
               ))}
               <h4>Meeting Links</h4>
               {projectData?.meetingLinkURLs.map((url, i) => (
-                <p key={i}>
-                  <a href={url} rel="noopener noreferrer" target="_blank">
-                    link {++i}
+                <p key={url.id}>
+                  <a href={url.url} rel="noopener noreferrer" target="_blank">
+                    {url.roomName}
                   </a>
                 </p>
               ))}
