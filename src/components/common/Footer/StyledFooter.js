@@ -21,8 +21,8 @@ export const Wrapper = styled.div`
   background-color: #1c1c1c;
   color: #d9d9d9;
   width: 100%;
-  height: 50vh;
-  min-height: 100px;
+  height: 600px;
+  min-height: 500px;
 
   display: flex;
   flex-direction: column;
@@ -37,10 +37,15 @@ export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
   alt: "logo"
 }))`
-  height: 10vh;
-  @media (orientation: portrait) {
-    height: auto;
-    width: 15vw;
+  width: 7rem;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  transition: 0.3s;
+
+  :hover {
+    transform: rotate(-60deg);
   }
 `;
 
@@ -49,28 +54,26 @@ export const FooterNav = styled.div`
   width: 50%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -50px;
   @media (orientation: portrait) {
     min-width: 200px;
     width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 `;
 export const SocialMediaContainer = styled.div`
-  margin-top: 2.5%;
+  margin-top: -3%;
+  margin-bottom: -1.5%;
   min-width: 10rem;
   width: 40%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   font-size: 5rem;
   @media (orientation: portrait) {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    width: 100%;
   }
 `;
 
@@ -97,7 +100,14 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
   }
   return { href, className };
 })`
-  color: ${({theme}) => theme.colors.NEUTRAL_2};
+  font-size: 5rem;
+  color: ${({ theme }) => theme.colors.ACCENT_4};
+
+  transition: 0.3s;
+  :hover {
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+    transform: scale(1.25);
+  }
 `;
 
 export const NavEntry = styled.div`
