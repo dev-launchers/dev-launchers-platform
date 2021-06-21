@@ -38,7 +38,7 @@ export const Event = Styled.div`
   width: 95%;
   background-color: transparent;
   margin-top: .1rem;
-  font-size: 1.1rem;
+  font-size: .9rem;
   border-style:solid;
   border-color: #ff7f0e;
   border-width: .12rem;

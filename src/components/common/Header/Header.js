@@ -18,11 +18,10 @@ import {
 } from "./StyledHeader";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-
 import { env } from "../../../utils/EnvironmentVariables.js";
-
 import Button from "../../common/Button";
 import HamburgerMenu from "../../common/HamburgerMenu/";
+
 export default function Header(props) {
   const { userData } = useUserDataContext();
 
