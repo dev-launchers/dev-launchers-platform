@@ -41,6 +41,7 @@ export default function Home() {
   const leadRef = useRef(null);
   const createRef = useRef(null);
   const donateRef = useRef(null);
+  console.log(learnRef);
   return (
     <div>
       <RainbowBar />
@@ -88,8 +89,11 @@ export default function Home() {
           </ColoredCtaWrapper>
           <Intro />
           <SignUpForm />
-
-          <div className="scrollToDiv" ref={learnRef} style={{ height: "0" }} />
+          <div
+            className="scrollToDiv"
+            ref={learnRef}
+            style={{ height: "0", paddingTop: "5rem" }}
+          />
           <CtaDescriptionArea
             flexDirection="row"
             title="LEARN"
@@ -114,8 +118,11 @@ export default function Home() {
             imageSrc={womanComputerImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
-
-          <div className="scrollToDiv" ref={leadRef} style={{ height: "0" }} />
+          <div
+            className="scrollToDiv"
+            ref={leadRef}
+            style={{ height: "0", paddingTop: "5rem" }}
+          />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="LEAD"
@@ -138,11 +145,10 @@ export default function Home() {
             imageSrc={manGlassesImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
-
           <div
             className="scrollToDiv"
             ref={createRef}
-            style={{ height: "0" }}
+            style={{ height: "0", paddingTop: "5rem" }}
           />
           <CtaDescriptionArea
             flexDirection="row"
@@ -170,20 +176,25 @@ export default function Home() {
             imageSrc={girlSmilingImage}
             imageOutlineColor={theme.colors.NEUTRAL_1}
           />
-
           <div
             className="scrollToDiv"
             ref={donateRef}
-            style={{ height: "0" }}
+            style={{
+              height: "0",
+              paddingTop: "5rem",
+              backgroundColor: theme.colors.NEUTRAL_1
+            }}
           />
           <CtaDescriptionArea
             flexDirection="row-reverse"
             title="DONATE"
             descriptionHeadline="Your donation will create an opportunity for a young learner, preparing them to face the technical challenges of the future head on."
-            descriptionContent=<div>
-              Dev Launchers is a registered 501c3 not-for-profit organization.
-              We can’t keep changing lives without your support!"
-            </div>
+            descriptionContent={
+              <div>
+                Dev Launchers is a registered 501(c)(3) not-for-profit
+                organization. We can’t keep changing lives without your support!
+              </div>
+            }
             titleUnderlineColor={theme.colors.ACCENT_1}
             imageSrc={boyFrontImage}
             imageOutlineColor={theme.colors.NEUTRAL_2}
@@ -192,7 +203,6 @@ export default function Home() {
             descriptionBackgroundColor={theme.colors.NEUTRAL_1}
             descriptionFontColor={theme.colors.NEUTRAL_2}
           />
-
           {/*}
           <CardGroup
             cards={communityCards}

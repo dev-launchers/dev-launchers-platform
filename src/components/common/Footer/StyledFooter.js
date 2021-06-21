@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 
-import theme from "../../../styles/theme.js";
-
-function getRandomThemeColor() {
+function getRandomThemeColor(theme) {
   const colors = [
     theme.colors.ACCENT_1,
     theme.colors.ACCENT_2,
@@ -62,9 +60,6 @@ export const FooterNav = styled.div`
   @media (orientation: portrait) {
     min-width: 200px;
     width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
   }
 `;
 export const SocialMediaContainer = styled.div`
@@ -78,10 +73,7 @@ export const SocialMediaContainer = styled.div`
   align-items: center;
   font-size: 5rem;
   @media (orientation: portrait) {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    width: 100%;
   }
 `;
 
@@ -117,6 +109,7 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
     transform: scale(1.25);
   }
 `;
+
 export const NavEntry = styled.div`
   cursor: pointer;
   font-size: 1.75rem;
@@ -126,9 +119,11 @@ export const NavEntry = styled.div`
   padding-right: 0.5rem;
   transition: 0.5s;
 
+  color: ${({theme}) => theme.colors.NEUTRAL_2};
+
   &:hover {
-    border-bottom: 0.4rem solid ${getRandomThemeColor()};
-    color: ${theme.colors.NEUTRAL_2};
+    color: ${({theme}) => theme.colors.ACCENT_4};
+    border-bottom: 0.4rem solid ${({theme}) => getRandomThemeColor(theme)};
   }
 
   @media (orientation: portrait) {
