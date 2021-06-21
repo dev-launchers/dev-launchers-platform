@@ -16,8 +16,11 @@ import Newsletter from "./Newsletter";
 export default function Footer(props) {
   return (
     <Wrapper>
-      <Newsletter />
-      <FooterNav>
+      {/*}<Newsletter />
+        Uncomment this after email newsletter component is fully working
+        Also remove the style in the FooterNav below
+      {*/}
+      <FooterNav style={{ paddingTop: "100px" }}>
         <Link href={"/create"} passHref className="nav-link">
           <a>
             <NavEntry>CREATE</NavEntry>
