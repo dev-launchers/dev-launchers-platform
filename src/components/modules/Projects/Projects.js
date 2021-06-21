@@ -4,6 +4,8 @@ import { Layout, ProjectContainer } from "./StyledProjects";
 
 import { useProjectsDataContext } from "../../../context/ProjectsContext";
 
+import { env } from "../../../utils/EnvironmentVariables.js";
+
 const Projects = () => {
   const projects = useProjectsDataContext();
 
@@ -21,9 +23,7 @@ const Projects = () => {
               tags: project.keywords.map(({ keyword }) => keyword),
               description: project.catchPhrase,
               href: project.slug,
-              imageSrc:
-                "https://cms-api-staging.devlaunchers.com" +
-                project.heroImage.url,
+              imageSrc: env().STRAPI_URL + project.heroImage.url,
               actions: (
                 <>
                   <Link href={`projects/${project.slug}` || ""} passHref>
