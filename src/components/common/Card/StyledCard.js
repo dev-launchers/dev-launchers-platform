@@ -46,12 +46,13 @@ export const ImageHolder = styled.div`
   }
 `;
 export const TagsContainer = styled.div`
+  text-align: center;
   position: absolute;
-  top: 1%;
+  top: 3%;
   right: 1%;
   display: grid;
   gap: 0.5rem;
-`
+`;
 export const Image = styled.div`
   background-color: lightgray;
   width: 100%;
@@ -62,7 +63,7 @@ export const Image = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  background-image: url(${(props) => props.imageSrc});
+  background-image: url(${props => props.imageSrc});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

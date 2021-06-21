@@ -14,7 +14,7 @@ import { LeaderboardProvider } from "../context/LeaderboardContext";
 import { UserDataProvider } from "../context/UserDataContext";
 import { ThemeProvider } from "styled-components";
 
-const hashRedirect = (router) => {
+const hashRedirect = router => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
   if (router.asPath.startsWith("/#")) {
     router.push(router.asPath.replace("/#", ""));

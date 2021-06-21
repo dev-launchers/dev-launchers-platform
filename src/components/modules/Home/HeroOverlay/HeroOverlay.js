@@ -13,14 +13,39 @@ import {
 
 import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png";
 
+function TypewriterEffect(props) {
+  const [initialText, setInitialText] = React.useState(props.children);
+  const [text, setText] = React.useState("");
+
+  React.useEffect(() => {
+    let characterIndex = -1;
+    // Delay typing by 1 second
+    setTimeout(() => {
+      // Begin typing
+      let interval = setInterval(() => {
+        if (characterIndex < initialText.length) {
+          characterIndex++;
+          setText(initialText.substring(0, characterIndex));
+        } else {
+          clearInterval(interval);
+        }
+      }, 50);
+    }, 1000);
+  }, []);
+
+  return <>> {text} █</>;
+}
+
 export default function HeroOverlay() {
   return (
     <FlexPageSection>
       <Wrapper>
         <MessageArea>
           <Tagline>
-            >We build world changing software while preparing people to thrive
-            in technical careers█
+            <TypewriterEffect>
+              We build world changing software while preparing people to thrive
+              in technical careers
+            </TypewriterEffect>
           </Tagline>
         </MessageArea>
         <ImageArea>
