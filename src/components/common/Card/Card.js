@@ -59,8 +59,9 @@ export default function Card(props) {
         >
           {props.cardData.tags && (
             <TagsContainer>
-              <Tag filled text={eval(props.cardData.tags)[0]} />
-              <Tag filled text={eval(props.cardData.tags)[1]} />
+              {props.cardData.tags.map((tag, i) => (
+                <Tag filled text={tag} key={i} />
+              ))}
             </TagsContainer>
           )}
           {props.isLinkingInside ? (

@@ -56,11 +56,6 @@ export default function Header(props) {
             <NavEntry>PLAY</NavEntry>
           </Link>
           {*/}
-        <Link href="/earn">
-          <a>
-            <NavEntry>EARN</NavEntry>
-          </a>
-        </Link>
         <Link href="/support-us">
           <a>
             <NavEntry>SUPPORT US</NavEntry>

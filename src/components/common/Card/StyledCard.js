@@ -46,6 +46,7 @@ export const ImageHolder = styled.div`
   }
 `;
 export const TagsContainer = styled.div`
+  text-align: center;
   position: absolute;
   top: 1%;
   right: 1%;

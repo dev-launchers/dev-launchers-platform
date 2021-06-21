@@ -21,7 +21,7 @@ export const ProjectHero = styled.div`
 export const HeroSection = styled.div`
   width: 70vw;
   justify-self: center;
-  background-color: ${({ theme }) => hexToRGBA(theme.colors.NEUTRAL_1, 0.7)};
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 2rem 3rem;
 `;
 export const ProjectTitle = styled.h2`
@@ -69,7 +69,17 @@ export const Section = styled.div`
   font-family: sans-serif;
   font-size: ${({ size }) => size};
 `;
+export const CategoriesContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 export const CategoryTitle = styled.h3`
+  font-family: Abel;
   margin: 0;
   padding: 0 0 0 0.5rem;
   text-decoration: underline;
