@@ -14,8 +14,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: ${({ flexDirection }) =>
     flexDirection ? flexDirection : "column"};
   ${({ size }) =>
@@ -45,7 +45,14 @@ export const ImageHolder = styled.div`
     height: 100%;
   }
 `;
-
+export const TagsContainer = styled.div`
+  text-align: center;
+  position: absolute;
+  top: 3%;
+  right: 1%;
+  display: grid;
+  gap: 0.5rem;
+`;
 export const Image = styled.div`
   background-color: lightgray;
   width: 100%;
@@ -56,7 +63,7 @@ export const Image = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  background-image: url(${(props) => props.imageSrc});
+  background-image: url(${props => props.imageSrc});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -77,9 +84,7 @@ export const DataHolder = styled.div`
 export const SecondaryText = styled.div`
   margin: 1% 0 2% 0;
   font-size: 1rem;
-
-
-`
+`;
 export const Description = styled.div`
   width: 100%;
   font-size: 1.2rem;

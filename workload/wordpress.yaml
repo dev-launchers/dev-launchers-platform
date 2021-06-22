@@ -72,6 +72,14 @@ spec:
           ports:
             - containerPort: 80
               name: wordpress
+          livenessProbe:
+            httpGet:
+              path: /
+              port: wordpress
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 10
+            failureThreshold: 5
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /var/www/html

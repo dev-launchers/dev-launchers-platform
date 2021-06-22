@@ -1,10 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import Tag from "../../Tag";
 
 import { Heading, Title } from "./StyledCardTitle.js";
 
-export default function CardTitle({ data, attachment, isLinkingInside, pathname }) {
+export default function CardTitle({
+  data,
+  attachment,
+  isLinkingInside,
+  pathname,
+}) {
   return (
     <Heading
       cardTitleAlignment={data.titleAlignment}
@@ -29,12 +33,6 @@ export default function CardTitle({ data, attachment, isLinkingInside, pathname 
         <a href={data.repoUrl} target="_blank">
           <img src={"images/GitHub-Mark-Light-32px.png"} />
         </a>
-      )}
-      {data.tags && (
-        <>
-          <Tag filled text={eval(data.tags)[0]} />
-          <Tag filled text={eval(data.tags)[1]} />
-        </>
       )}
     </Heading>
   );

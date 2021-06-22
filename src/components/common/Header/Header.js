@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { toast } from "react-toastify";
+import AccountDropdown from "./AccountDropdown";
 
 import {
   HeaderBlock,
@@ -55,11 +56,6 @@ export default function Header(props) {
             <NavEntry>PLAY</NavEntry>
           </Link>
           {*/}
-        <Link href="/earn">
-          <a>
-            <NavEntry>EARN</NavEntry>
-          </a>
-        </Link>
         <Link href="/support-us">
           <a>
             <NavEntry>SUPPORT US</NavEntry>
@@ -72,18 +68,7 @@ export default function Header(props) {
         </Link>
       </HeaderNav>
       <div />
-      <SignInArea>
-        {userData.profilePictureUrl ? (
-          <a href="/user-profile">
-            <UserProfilePic src={userData.profilePictureUrl} />
-          </a>
-        ) : (
-          <Button fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
-            Sign In
-          </Button>
-        )}
-      </SignInArea>
-
+      <AccountDropdown userData={userData} />
       <HamburgerMenu />
     </HeaderBlock>
   );

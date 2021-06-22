@@ -11,8 +11,9 @@ import {
   SecondaryText,
   AttachmentsContainer,
   ActionsContainer,
+  TagsContainer,
 } from "./StyledCard";
-import cx from "classnames";
+import Tag from "../Tag";
 
 import RainbowBar from "../RainbowBar";
 
@@ -56,6 +57,13 @@ export default function Card(props) {
           size={props.size}
           bgColor={props.cardData.imageHolderBackgroundColor}
         >
+          {props.cardData.tags && (
+            <TagsContainer>
+              {props.cardData.tags.map((tag, i) => (
+                <Tag filled text={tag} key={i} />
+              ))}
+            </TagsContainer>
+          )}
           {props.isLinkingInside ? (
             <Link href={router.pathname + "/" + props.cardData.href} passHref>
               <a rel="noopener noreferrer">

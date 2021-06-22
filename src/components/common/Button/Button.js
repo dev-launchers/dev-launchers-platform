@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const colorUnderButtons = (hexColor) => {
+const colorUnderButtons = hexColor => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
   return result
     ? `rgba(${parseInt(result[1], 16) - 102},${parseInt(result[2], 16) -
@@ -8,7 +8,7 @@ const colorUnderButtons = (hexColor) => {
     : null;
 };
 
-const onHoverBackgroundColor = (hexColor) => {
+const onHoverBackgroundColor = hexColor => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
   return result
     ? `rgb(${parseInt(result[1], 16) + 44},${parseInt(result[2], 16) +
@@ -19,6 +19,7 @@ const Button = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   background-color: ${({ theme, bgColor }) => bgColor || theme.colors.ACCENT_1};
   color: ${({ theme, textColor }) => textColor || theme.colors.NEUTRAL_2};
+  transition: background-color .5s;
 
   width: ${({ width }) => (width ? width : "")};
   border: 0px;
