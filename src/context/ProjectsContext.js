@@ -13,12 +13,7 @@ function useProjectsData() {
   const [projectsData, setProjectsData] = React.useState(DEFAULT_PROJECTS);
 
   React.useEffect(() => {
-    axios(env().STRAPI_URL + "/projects", {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent": "*"
-      }
-    })
+    axios(env().STRAPI_URL + "/projects")
       .then(({ data }) => {
         setProjectsData(data);
       })
