@@ -3,17 +3,19 @@ import React from "react";
 import Header from "../components/common/Header";
 import SignUp from "../components/modules/SignUp/SignUp";
 import Footer from "../components/common/Footer";
+import Head from "next/head";
 
 export default function SignUpRoute() {
-  React.useEffect(() => {
-    document.title = "Sign up";
-  }, []);
-
   return (
-    <div>
-      <Header />
-      <SignUp />
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>Sign Up</title>
+      </Head>
+      <div>
+        <Header />
+        <SignUp />
+        <Footer />
+      </div>
+    </>
   );
 }
