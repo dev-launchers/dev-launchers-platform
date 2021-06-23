@@ -7,13 +7,10 @@ import Home from "../components/modules/Home";
 import Footer from "../components/common/Footer";
 
 export default function Index() {
-  React.useEffect(() => {
-    document.title = "Home";
-  }, []);
-
   return (
     <div>
       <Head>
+        <title>Home</title>
         <meta property="og:title" content="Dev Launchers" key="title" />
         <meta
           property="og:description"
