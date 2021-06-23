@@ -1,14 +1,5 @@
 const withImages = require("next-images");
 module.exports = withImages({
-  webpack(config, { isServer }) {
-    // Fixes npm packages that depend on `fs` module
-    if (!isServer) {
-      config.node = {
-        fs: "empty"
-      };
-    }
-    return config;
-  },
   async redirects() {
     return [
       {
@@ -17,5 +8,15 @@ module.exports = withImages({
         permanent: true
       }
     ];
-  }
+  },
+  images: {
+    /*
+  next-images plugin is conflicting with Next.js 11 static import feature.
+  see the discussion here:
+  https://github.com/twopluszero/next-images/issues/73
+  */
+    disableStaticImages: true
+  },
+  webpack5: true,
+  reactStrictMode: true // It helps you avoid legacy code, and deprecated APIs.
 });
