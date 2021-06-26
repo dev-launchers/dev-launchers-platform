@@ -10,7 +10,7 @@ const PROD = {
 const STAGING = {
   envType: "STAGING",
   API_URL: "https://api-staging.devlaunchers.com",
-  STRAPI_URL: "https://cms-api.devlaunchers.com",
+  STRAPI_URL: "https://cms-api-staging.devlaunchers.com",
   GOOGLE_AUTH_URL: "https://api-staging.devlaunchers.com/auth/google",
   DISCORD_AUTH_URL:
     "https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify"
