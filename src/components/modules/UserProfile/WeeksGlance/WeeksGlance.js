@@ -12,11 +12,14 @@ import { Calendar } from "../../../common/Calendar/Calendar";
 
 export default function WeeksGlance() {
   const [eventList, setEventList] = useState([]);
+  let current = DateTime.now().minus({ days: 1 });
+  let max = DateTime.now().plus({ days: 1 });
+  console.log(current.toISO());
 
   let componentDidMount = () => {
     axios
       .get(
-        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4@group.calendar.google.com/events?key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
+        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?timeMax=2021-06-27T10%3A00%3A00-07%3A00&timeMin=2021-06-26T10%3A00%3A00-07%3A00&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
       )
       .then(response => {
         console.log(response);
@@ -26,9 +29,11 @@ export default function WeeksGlance() {
           let time = DateTime.fromISO(entry.start.dateTime, {
             zone: entry.start.timeZone
           }).setZone();
+
           tempEventList.push({
             name: entry.summary,
             time: time.toFormat("t"),
+            date: time.toLocaleString(),
             weekday: time.weekday
           });
         });
@@ -58,13 +63,15 @@ export default function WeeksGlance() {
         return (
           <Day key={i}>
             <WeekdayTitle>{day}</WeekdayTitle>
-            {eventList.map(({ name, time, weekday }) => {
+            {eventList.map(({ name, time, date, weekday }) => {
               if (weekday == i + 1) {
                 return (
-                  <Event key={`${name}_${time}`}>
+                  <Event key={`${name}_${time}_${date}`}>
                     {name}
                     <br />
                     {time}
+                    <br />
+                    {date}
                   </Event>
                 );
               }

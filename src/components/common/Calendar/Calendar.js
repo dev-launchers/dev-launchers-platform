@@ -26,6 +26,7 @@ const Calendar = ({ URL, numWeeks }) => {
           tempEventList.push({
             name: entry.summary,
             time: time.toFormat("t"),
+            date: time.toLocaleString(),
             weekday: time.weekday
           });
         });
@@ -54,8 +55,10 @@ const Calendar = ({ URL, numWeeks }) => {
       {weekdays.map((day, i) => {
         return (
           <Day key={i}>
-            <WeekdayTitle>{day}</WeekdayTitle>
-            {eventList.map(({ name, time, weekday }) => {
+            <WeekdayTitle>
+              {day}_{date}
+            </WeekdayTitle>
+            {eventList.map(({ name, time, date, weekday }) => {
               if (weekday == i + 1) {
                 return (
                   <Event key={`${name}_${time}`}>
