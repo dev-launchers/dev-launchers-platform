@@ -54,6 +54,7 @@ export const Actions = styled.div`
   }
 `;
 export const InfoBar = styled.div`
+  max-width: 100%;
   padding: 0.5rem;
   background-color: ${({ theme }) => hexToRGBA(theme.colors.NEUTRAL_1, 0.7)};
   display: flex;
@@ -62,11 +63,12 @@ export const InfoBar = styled.div`
 `;
 
 export const Section = styled.div`
-  display: inline-grid;
+  display: flex;
   grid-auto-flow: column;
   justify-content: ${({ position }) => position};
   align-items: center;
   gap: 0.5rem;
   font-family: sans-serif;
   font-size: ${({ size }) => size};
+  flex-wrap: wrap;
 `;
