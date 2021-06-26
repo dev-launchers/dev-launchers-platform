@@ -5,19 +5,16 @@ import {
   WeekCalendar,
   Day,
   WeekdayTitle
-} from "./StyledWeeksGlance";
+} from "./StyledCalendar";
 import axios from "axios";
 import { DateTime } from "luxon";
-import { Calendar } from "../../../common/Calendar/Calendar";
 
-export default function WeeksGlance() {
+const Calendar = ({ URL, numWeeks }) => {
   const [eventList, setEventList] = useState([]);
 
   let componentDidMount = () => {
     axios
-      .get(
-        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4@group.calendar.google.com/events?key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
-      )
+      .get({ URL })
       .then(response => {
         console.log(response);
         let tempEventList = [];
@@ -81,4 +78,6 @@ export default function WeeksGlance() {
       })}
     </Wrapper>
   );
-}
+};
+
+export default Calendar;
