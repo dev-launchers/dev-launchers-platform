@@ -8,40 +8,26 @@ import {
 } from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
-import { Calendar } from "../../../common/Calendar/Calendar";
 
-function parseGoogleDate(d) {
-  let googleDate = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})\.(\d{3})([+-]\d{2}):(\d{2})$/;
-  let m = googleDate.exec(d);
-  let year = +m[1];
-  let month = +m[2];
-  let day = +m[3];
-  let hour = +m[4];
-  let minute = +m[5];
-  let second = +m[6];
-  let msec = +m[7];
-  let tzHour = +m[8];
-  let tzMin = +m[9];
-  let tzOffset = tzHour * 60 + tzMin;
-
-  return Date.UTC(year, month - 1, day, hour, minute - tzOffset, second, msec);
-}
+let makeDateCompatible = (isoDate) => {
+  let arrStr = isoDate.split(".");
+  return `${arrStr[0]}${arrStr[1].replace("+", "-").substr(3)}`;
+};
 
 export default function WeeksGlance() {
   const [eventList, setEventList] = useState([]);
-  let current = DateTime.now().minus({ days: 1 });
-  let max = DateTime.now().plus({ days: 1 });
-  console.log(
-    `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?singleEvents=true&timeMax=2021-08-1T10:00:00-07:00&timeMin=${current.toISO(
-      { format: "basic", includeOffset: false }
-    )}&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
-  );
-  console.log(current.toISO());
 
+  let current = DateTime.now();
+  let max = current.plus({ days: 7 });
+  
   let componentDidMount = () => {
     axios
       .get(
-        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?timeMax=2021-08-1T10:00:00-07:00&timeMin=2021-06-26T10:00:00-07:00&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
+        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?timeMax=${makeDateCompatible(
+          max.toISO()
+        )}&timeMin=${makeDateCompatible(
+          current.toISO()
+        )}&singleEvents=true&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
       )
       .then((response) => {
         console.log(response);
