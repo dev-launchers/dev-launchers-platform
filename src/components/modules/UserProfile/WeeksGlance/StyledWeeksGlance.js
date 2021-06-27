@@ -29,6 +29,7 @@ export const Day = Styled.div`
 `;
 
 export const Event = Styled.div`
+
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -45,6 +46,7 @@ export const Event = Styled.div`
 `;
 
 export const WeekdayTitle = Styled.div`
+text-align: center;
   font-family: ${theme.fonts.headline};
   background-color: ${theme.colors.NEUTRAL_1};
   color: ${theme.colors.NEUTRAL_2};

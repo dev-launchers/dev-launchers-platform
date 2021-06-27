@@ -4,12 +4,12 @@ import {
   Event,
   WeekCalendar,
   Day,
-  WeekdayTitle,
+  WeekdayTitle
 } from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
 
-let makeDateCompatible = (isoDate) => {
+let makeDateCompatible = isoDate => {
   let arrStr = isoDate.split(".");
   return `${arrStr[0]}${arrStr[1].replace("+", "-").substr(3)}`;
 };
@@ -19,7 +19,7 @@ export default function WeeksGlance() {
 
   let current = DateTime.now();
   let max = current.plus({ days: 7 });
-  
+
   let componentDidMount = () => {
     axios
       .get(
@@ -29,57 +29,68 @@ export default function WeeksGlance() {
           current.toISO()
         )}&singleEvents=true&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
       )
-      .then((response) => {
+      .then(response => {
         console.log(response);
         let tempEventList = [];
         response.data.items.forEach(function(entry) {
           console.log(entry.summary);
           let time = DateTime.fromISO(entry.start.dateTime, {
-            zone: entry.start.timeZone,
+            zone: entry.start.timeZone
           }).setZone();
 
           tempEventList.push({
             name: entry.summary,
             time: time.toFormat("t"),
-            date: time.toLocaleString(),
-            weekday: time.weekday,
+            weekday: time.weekday
           });
         });
-        console.log(tempEventList);
+
         setEventList(tempEventList);
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
       });
   };
 
   React.useEffect(componentDidMount, []);
 
-  let weekdays = [
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
-    "SUNDAY",
-  ];
-  console.log(eventList);
+  let weekdays = ["MON", "TUES", "WED", "THURS", "FRI", "SAT", "SUN"];
+  let dates = [];
+  const createDate = () => {
+    let todayInt = current.weekday;
+    console.log(todayInt);
+
+    for (let i = 1; i < todayInt; i++) {
+      dates.push(current.minus({ days: todayInt - i }).day);
+    }
+
+    dates.push(current.day);
+
+    for (let i = todayInt + 1; i < 8; i++) {
+      dates.push(current.plus({ days: 1 }).day);
+    }
+    return dates;
+  };
+  let dateslist = createDate();
+
   return (
     <Wrapper>
       {weekdays.map((day, i) => {
+        let date = dateslist[i];
         return (
           <Day key={i}>
-            <WeekdayTitle>{day}</WeekdayTitle>
-            {eventList.map(({ name, time, date, weekday }) => {
+            <WeekdayTitle>
+              {day}
+              <br />
+              {date}
+            </WeekdayTitle>
+            {eventList.map(({ name, time, weekday }) => {
               if (weekday == i + 1) {
                 return (
-                  <Event key={`${name}_${time}_${date}`}>
+                  <Event key={`${name}_${time}`}>
                     {name}
                     <br />
                     {time}
-                    <br />
-                    {date}
                   </Event>
                 );
               }
@@ -87,7 +98,9 @@ export default function WeeksGlance() {
             {eventList.filter(({ name, time, weekday }) => {
               return weekday == i + 1;
             }).length == 0 ? (
-              <div style={{ fontSize: "1rem" }}>No events</div>
+              <div style={{ fontSize: "1rem", textAlign: "center" }}>
+                No events
+              </div>
             ) : (
               ""
             )}
