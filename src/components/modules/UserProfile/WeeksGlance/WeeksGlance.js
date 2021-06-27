@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Wrapper,
-  Event,
-  WeekCalendar,
-  Day,
-  WeekdayTitle
-} from "./StyledWeeksGlance";
+import { Wrapper, Event, Day, WeekdayTitle } from "./StyledWeeksGlance";
 import axios from "axios";
 import { DateTime } from "luxon";
 
@@ -20,7 +14,7 @@ export default function WeeksGlance() {
   let current = DateTime.now();
   let max = current.plus({ days: 7 });
 
-  let componentDidMount = () => {
+  let makeRequest = () => {
     axios
       .get(
         `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?timeMax=${makeDateCompatible(
@@ -52,7 +46,7 @@ export default function WeeksGlance() {
       });
   };
 
-  React.useEffect(componentDidMount, []);
+  React.useEffect(makeRequest, []);
 
   let weekdays = ["MON", "TUES", "WED", "THURS", "FRI", "SAT", "SUN"];
   let dates = [];
@@ -82,7 +76,7 @@ export default function WeeksGlance() {
             <WeekdayTitle>
               {day}
               <br />
-              {date}
+              <div style={{ fontSize: "1.3rem" }}>{date}</div>
             </WeekdayTitle>
             {eventList.map(({ name, time, weekday }) => {
               if (weekday == i + 1) {

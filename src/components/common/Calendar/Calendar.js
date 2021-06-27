@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import {
-  Wrapper,
-  Event,
-  WeekCalendar,
-  Day,
-  WeekdayTitle
-} from "./StyledCalendar";
+import { Wrapper, Event, Day, WeekdayTitle } from "./StyledCalendar";
 import axios from "axios";
 import { DateTime } from "luxon";
 
 const Calendar = ({ URL, numWeeks }) => {
   const [eventList, setEventList] = useState([]);
 
-  let componentDidMount = () => {
+  let makeRequest = () => {
     axios
       .get({ URL })
       .then(response => {
@@ -38,7 +32,7 @@ const Calendar = ({ URL, numWeeks }) => {
       });
   };
 
-  React.useEffect(componentDidMount, []);
+  React.useEffect(makeRequest, []);
 
   let weekdays = [
     "MONDAY",

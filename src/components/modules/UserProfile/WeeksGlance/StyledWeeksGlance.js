@@ -50,6 +50,7 @@ text-align: center;
   font-family: ${theme.fonts.headline};
   background-color: ${theme.colors.NEUTRAL_1};
   color: ${theme.colors.NEUTRAL_2};
-  font-weight: 600;
+  font-weight: 500;
   padding-left: .5rem;
+  font-size: .9rem;
 `;
