@@ -1,11 +1,12 @@
 // Natural Language Processing Utilities
-import natural from "natural"; // Natural language processing package
+import pluralize from "pluralize";
+//import natural from "natural"; // Natural@0.6.3 language processing package
 import articles from "articles"; // Article of speech package
 
 import contentDictionary from "./contentDictionary.js";
 
 // idea generating functions
-var nounInflector = new natural.NounInflector(); // For making things plural
+//var nounInflector = new natural.NounInflector(); // For making things plural
 var articlize = articles.articlize; // For adding articles to nouns (a or an)
 
 export function getRandomEntry(array) {
@@ -16,7 +17,7 @@ export function isPlural(func) {
   return () => {
     let result = func();
     console.log(result);
-    return nounInflector.pluralize(result);
+    return pluralize(result);
   };
 }
 
