@@ -6,7 +6,7 @@ export default function Building() {
   const [buildingData, setBuildingData] = React.useState({
     messHall: {
       name: "Common Area",
-      url: "https://meet.google.com/oaw-fkza-ebr",
+      url: "https://meet.google.com/xoc-wvyh-xof",
       color: "#fff",
       isActive: false
     },
