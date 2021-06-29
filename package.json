@@ -53,7 +53,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next build && next start",
+    "start": "next start",
     "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
   },
   "browserslist": [
