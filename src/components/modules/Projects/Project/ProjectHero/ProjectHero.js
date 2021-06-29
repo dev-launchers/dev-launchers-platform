@@ -19,7 +19,7 @@ const ProjectHero = props => {
   const projectData = props.projectData;
 
   return (
-    <Wrapper imageURL={env().STRAPI_URL + projectData?.heroImage?.url}>
+    <Wrapper imageURL={projectData?.heroImage?.url}>
       <HeroSection>
         <ProjectTitle>
           <span>Project</span>
