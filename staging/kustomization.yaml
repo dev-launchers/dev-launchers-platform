@@ -6,4 +6,4 @@ bases:
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: 3872294-202106291819 # {"$imagepolicy": "platform-website:platform-website:tag"}
+  newTag: b1b2a63-202106292235 # {"$imagepolicy": "platform-website:platform-website:tag"}
