@@ -1,6 +1,7 @@
-const withImages = require("next-images");
+const withPlugins = require("next-compose-plugins");
+const imagesPlugin = require("next-optimized-images");
 
-module.exports = withImages({
+const nextConfig = {
   async redirects() {
     return [
       {
@@ -12,10 +13,10 @@ module.exports = withImages({
   },
   images: {
     /*
-  next-images plugin is conflicting with Next.js 11 static import feature.
-  see the discussion here:
-  https://github.com/twopluszero/next-images/issues/73
-  */
+next-images and next-optimized-images plugin is conflicting with Next.js 11 static import feature.
+see the discussion here:
+https://github.com/twopluszero/next-images/issues/73
+*/
     disableStaticImages: true,
   },
   webpack5: true,
@@ -26,4 +27,5 @@ module.exports = withImages({
     // we have too many errors if you run npm run lint ,but after bug fixes we could enforce this.
     ignoreDuringBuilds: true,
   },
-});
+};
+module.exports = withPlugins([[imagesPlugin], nextConfig]);
