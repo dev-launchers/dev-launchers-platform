@@ -6,13 +6,13 @@ import CenteredHeadline from "../../../common/CenteredHeadline";
 import {
   CtaSectionContent,
   CtaSectionDescription,
-  CtaSectionButtonArea
+  CtaSectionButtonArea,
 } from "./StyledContribution.js";
 
 import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";
 
-import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg?webp";
 
 export default function Contribution() {
   return (

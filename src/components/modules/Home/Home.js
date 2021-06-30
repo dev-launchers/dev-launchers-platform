@@ -21,19 +21,19 @@ import {
   ColoredCtaWrapper,
   ColoredCtaEntry,
   ColoredCtaEntryImage,
-  ColoredCtaEntryTitle
+  ColoredCtaEntryTitle,
 } from "./StyledHome";
 import CtaDescriptionArea from "./CtaDescriptionArea";
 
 import theme from "../../../styles/theme.js";
 
-import womanComputerImage from "../../../images/people-cutouts/woman-computer.png";
-import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
-import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
-import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
+import womanComputerImage from "../../../images/people-cutouts/woman-computer.png?webp";
+import manGlassesImage from "../../../images/people-cutouts/man-glasses.png?webp";
+import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png?webp";
+import boyFrontImage from "../../../images/people-cutouts/boy-front.png?webp";
 
 // General scroll-to function
-const scrollToRef = ref => window.scrollTo(0, ref.current.offsetTop);
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
 
 export default function Home() {
   // Scroll-to functions
@@ -104,7 +104,7 @@ export default function Home() {
               <span
                 style={{
                   backgroundColor: theme.colors.NEUTRAL_2,
-                  color: theme.colors.NEUTRAL_1
+                  color: theme.colors.NEUTRAL_1,
                 }}
               >
                 square one
@@ -182,7 +182,7 @@ export default function Home() {
             style={{
               height: "0",
               paddingTop: "5rem",
-              backgroundColor: theme.colors.NEUTRAL_1
+              backgroundColor: theme.colors.NEUTRAL_1,
             }}
           />
           <CtaDescriptionArea

@@ -8,10 +8,10 @@ import {
   Wrapper,
   MessageArea,
   ImageArea,
-  Image
+  Image,
 } from "./StyledHeroOverlay";
 
-import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png";
+import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png?webp";
 
 function TypewriterEffect(props) {
   const [initialText, setInitialText] = React.useState(props.children);

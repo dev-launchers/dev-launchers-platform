@@ -20,7 +20,7 @@ export default function CardTitle({
       }}
     >
       {isLinkingInside ? (
-        <Link href={pathname + "/" + data.href} passHref>
+        <Link href={`${pathname}/${data.href}`} passHref>
           <Title>{data.title}</Title>
         </Link>
       ) : (
@@ -30,8 +30,8 @@ export default function CardTitle({
       )}
 
       {attachment && (
-        <a href={data.repoUrl} target="_blank">
-          <img src={"images/GitHub-Mark-Light-32px.png"} />
+        <a href={data.repoUrl} target="_blank" rel="noreferrer">
+          <img src={"images/GitHub-Mark-Light-32px.png?webp"} />
         </a>
       )}
     </Heading>

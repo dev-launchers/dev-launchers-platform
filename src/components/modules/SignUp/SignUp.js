@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PageBody from "../../common/PageBody";
 import { useRouter } from "next/router";
 import axios from "axios";
-import DiscordImage from "../../../images/signup/discord.png";
+import DiscordImage from "../../../images/signup/discord.png?webp";
 
 import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
 
@@ -15,7 +15,7 @@ export default function SignUp() {
   const { userData } = useUserDataContext();
   const router = useRouter();
 
-  const handleUsernameChange = e => {
+  const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
 
@@ -25,17 +25,17 @@ export default function SignUp() {
     router.prefetch("/user-profile");
   }, [userData]);
 
-  const updateUser = async e => {
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
       const currentUser = await axios(env().API_URL + "/users/current", {
-        withCredentials: true
+        withCredentials: true,
       });
       await axios.put(
         env().API_URL + `/users/${currentUser.data.id}`,
         { username: username },
         {
-          withCredentials: true
+          withCredentials: true,
         }
       );
       if (currentUser.status == 200) router.replace("/user-profile");

@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import logoMonogramImage from "../../../images/logo-monogram.png";
+import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 
 function getRandomThemeColor(theme) {
   const colors = [
     theme.colors.ACCENT_1,
     theme.colors.ACCENT_2,
     theme.colors.ACCENT_3,
-    theme.colors.ACCENT_4
+    theme.colors.ACCENT_4,
   ];
   let colorTrack = -1;
 
-  return function() {
+  return function () {
     colorTrack = colorTrack >= colors.length - 1 ? 0 : colorTrack + 1;
     return colors[colorTrack];
   };
@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 
 export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
-  alt: "logo"
+  alt: "logo",
 }))`
   width: 7rem;
   margin-right: 10px;
@@ -119,11 +119,11 @@ export const NavEntry = styled.div`
   padding-right: 0.5rem;
   transition: 0.5s;
 
-  color: ${({theme}) => theme.colors.NEUTRAL_2};
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
 
   &:hover {
-    color: ${({theme}) => theme.colors.ACCENT_4};
-    border-bottom: 0.4rem solid ${({theme}) => getRandomThemeColor(theme)};
+    color: ${({ theme }) => theme.colors.ACCENT_4};
+    border-bottom: 0.4rem solid ${({ theme }) => getRandomThemeColor(theme)};
   }
 
   @media (orientation: portrait) {

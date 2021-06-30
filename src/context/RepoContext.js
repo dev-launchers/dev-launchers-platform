@@ -12,7 +12,7 @@ function useRepo() {
      * When component mounts, fetch repos owned by dev-launchers-sandbox
      * using the GitHub API. Then display specific projects to the user
      */
-    getAllData().then(allData => {
+    getAllData().then((allData) => {
       let devData = allData.devData;
       let prodData = allData.prodData;
 
@@ -21,7 +21,7 @@ function useRepo() {
       let devKeys = Object.keys(devData);
       let prodKeys = Object.keys(prodData);
 
-      devKeys.forEach(devKey => {
+      devKeys.forEach((devKey) => {
         let repoEntry = devData[devKey];
         // search look for substring and return its position of its first occurance
         if (repoEntry.name.search("project__") === 0) {
@@ -30,12 +30,12 @@ function useRepo() {
             description: repoEntry.description,
             href: "https://devlaunchers.com/dev/" + repoEntry.name,
             prodUrl: "https://devlaunchers.com/launch/" + repoEntry.name,
-            imageSrc: "/images/DevlaunchersGitHubThumb.png",
-            repoUrl: repoEntry.html_url
+            imageSrc: "/images/DevlaunchersGitHubThumb.png?webp",
+            repoUrl: repoEntry.html_url,
           });
         }
       });
-      prodKeys.forEach(prodKey => {
+      prodKeys.forEach((prodKey) => {
         let repoEntry = prodData[prodKey];
         // search look for substring and return its position of its first occurance
         if (
@@ -45,7 +45,7 @@ function useRepo() {
           projectsData.push({
             name: repoEntry.name,
             description: repoEntry.description,
-            devUrl: "https://devlaunchers.com/dev/" + repoEntry.name
+            devUrl: "https://devlaunchers.com/dev/" + repoEntry.name,
           });
         }
       });
