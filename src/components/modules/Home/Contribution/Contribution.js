@@ -1,13 +1,13 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
 
 import {
   CtaSectionContent,
   CtaSectionDescription,
-  CtaSectionButtonArea
-} from "./StyledContribution.js";
+  CtaSectionButtonArea,
+} from "./StyledContribution";
 
 import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";

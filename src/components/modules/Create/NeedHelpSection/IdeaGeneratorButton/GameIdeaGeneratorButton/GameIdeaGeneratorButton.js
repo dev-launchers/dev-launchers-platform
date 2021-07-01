@@ -7,16 +7,8 @@ import {
   getRandomTheme,
   randEntity,
   isPlural,
-  hasArticle
-} from "../nlpUtils.js";
-
-export default function GameIdeaGeneratorButton(props) {
-  return (
-    <IdeaGeneratorButton contentGenerator={appPhraseGenerator}>
-      💡 Generate A Game Concept!
-    </IdeaGeneratorButton>
-  );
-}
+  hasArticle,
+} from "../nlpUtils";
 
 const phraseFormats = [
   [
@@ -24,7 +16,7 @@ const phraseFormats = [
     " game ",
     randEntity("agentPreposition"),
     " ",
-    isPlural(randEntity("job"))
+    isPlural(randEntity("job")),
   ],
 
   // BLANK game PREPOSITION a LOCATION
@@ -39,7 +31,7 @@ const phraseFormats = [
     " ",
     isPlural(randEntity("job")),
     " in ",
-    hasArticle(randEntity("inLocation"))
+    hasArticle(randEntity("inLocation")),
   ],
   [
     randEntity("game"),
@@ -48,7 +40,7 @@ const phraseFormats = [
     " ",
     isPlural(randEntity("job")),
     " on ",
-    hasArticle(randEntity("onLocation"))
+    hasArticle(randEntity("onLocation")),
   ],
 
   // BLANK game for JOB PREPOSITION a LOCATION
@@ -59,7 +51,7 @@ const phraseFormats = [
     " ",
     randEntity("agentPreposition"),
     " ",
-    isPlural(randEntity(["job", "animal", "food"]))
+    isPlural(randEntity(["job", "animal", "food"])),
   ],
   [
     randEntity("game"),
@@ -68,15 +60,20 @@ const phraseFormats = [
     " ",
     randEntity("agentPreposition"),
     " ",
-    isPlural(randEntity(["job", "animal", "food"]))
-  ]
+    isPlural(randEntity(["job", "animal", "food"])),
+  ],
 ];
+const appPhraseGenerator = () => (
+  <div>
+    <div style={{ fontSize: "3rem" }}>{getRandomTheme()}</div>
+    {getRandomPhrase(phraseFormats)}
+  </div>
+);
 
-const appPhraseGenerator = () => {
+export default function GameIdeaGeneratorButton() {
   return (
-    <div>
-      <div style={{ fontSize: "3rem" }}>{getRandomTheme()}</div>
-      {getRandomPhrase(phraseFormats)}
-    </div>
+    <IdeaGeneratorButton contentGenerator={appPhraseGenerator}>
+      💡 Generate A Game Concept!
+    </IdeaGeneratorButton>
   );
-};
+}

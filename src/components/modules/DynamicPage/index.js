@@ -1,1 +1,1 @@
-export { default } from "./DynamicPage.js";
+export { default } from "./DynamicPage";

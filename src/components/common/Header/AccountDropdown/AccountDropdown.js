@@ -1,10 +1,12 @@
 import React from "react";
-import { Logout } from "../../../../utils/Logout";
-import { env } from "../../../../utils/EnvironmentVariables";
-import { AccountMenuDropdownItem } from "../AccountDropdown/StyledAccountDropdown";
-import { AccountMenuDropdownButton } from "../AccountDropdown/StyledAccountDropdown";
 import Link from "next/link";
-import { MenuButton } from "../AccountDropdown/StyledAccountDropdown";
+import Logout from "../../../../utils/Logout";
+import { env } from "../../../../utils/EnvironmentVariables";
+import {
+  AccountMenuDropdownItem,
+  AccountMenuDropdownButton,
+  MenuButton,
+} from "./StyledAccountDropdown";
 
 export default function AccountDropdown(props) {
   return (

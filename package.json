@@ -4,11 +4,6 @@
   "description": "",
   "keywords": [],
   "homepage": "http://devlaunchers.com/",
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
-  },
   "dependencies": {
     "@cloudflare/wrangler": "^1.16.1",
     "@ramonak/react-progress-bar": "^3.1.0",
@@ -46,8 +41,8 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.3.0",
-    "husky": "^4.2.1",
-    "lint-staged": "^10.0.4",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
     "prettier": "^2.3.1"
   },
   "scripts": {
@@ -55,7 +50,9 @@
     "build": "next build",
     "start": "next build && next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
-    "lint": "next lint"
+    "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "browserslist": [
     ">0.2%",
@@ -64,7 +61,8 @@
     "not op_mini all"
   ],
   "lint-staged": {
-    "*.{json,js,jsx,ts,tsx,html,scss,css,md}": "prettier --write"
+    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
+    "*.{js,css,md}": "prettier --write"
   },
   "resolutions": {
     "styled-components": "^5"

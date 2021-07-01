@@ -16,6 +16,7 @@ module.exports = withImages({
   see the discussion here:
   https://github.com/twopluszero/next-images/issues/73
   */
+    domains: ["images.prismic.io"],
     disableStaticImages: true,
   },
   webpack5: true,

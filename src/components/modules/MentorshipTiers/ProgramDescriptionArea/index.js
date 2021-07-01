@@ -1,1 +1,1 @@
-export { default } from "./ProgramDescriptionArea.js";
+export { default } from "./ProgramDescriptionArea";

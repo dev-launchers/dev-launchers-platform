@@ -1,4 +1,4 @@
-import axios from "axios";
+// import axios from "axios";
 import { useRouter } from "next/router";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
@@ -47,7 +47,7 @@ import { ProjectsDataProvider } from "../../context/ProjectsContext";
 //   };
 // };
 
-const ProjectRoute = ({ data }) => {
+const ProjectRoute = () => {
   const router = useRouter();
   const { projectId } = router.query;
 

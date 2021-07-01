@@ -2,7 +2,7 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
-import { env } from "../utils/EnvironmentVariables.js";
+import { env } from "../utils/EnvironmentVariables";
 
 const DEFAULT_USER = {
   id: 0,
@@ -20,8 +20,8 @@ const DEFAULT_USER = {
     id: 0,
     avatar: "",
     username: "",
-    discriminator: ""
-  }
+    discriminator: "",
+  },
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
@@ -32,8 +32,8 @@ function useUserData() {
 
   React.useEffect(() => {
     // Setting timeout because of environment variable hack
-    axios(env().API_URL + "/users/current", {
-      withCredentials: true
+    axios(`${env().API_URL}/users/current`, {
+      withCredentials: true,
     })
       .then(({ data: currentUser }) => {
         setUserData({
@@ -48,11 +48,11 @@ function useUserData() {
           totalSeasonPoints: currentUser.totalSeasonPoints,
           availablePoints: currentUser.availablePoints,
           volunteerHours: currentUser.volunteerHours,
-          discord: currentUser.discord
+          discord: currentUser.discord,
         });
       })
-      .catch(err => {
-        //setUserData({ id: "invalid" });
+      .catch(() => {
+        // setUserData({ id: "invalid" });
       });
   }, []);
 

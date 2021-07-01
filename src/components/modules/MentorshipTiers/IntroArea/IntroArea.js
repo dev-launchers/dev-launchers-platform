@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../../common/Button";
 
-import { HeaderDark } from "./StyledIntroArea.js";
+import { HeaderDark } from "./StyledIntroArea";
 
 export default function IntroArea(props) {
   return (
@@ -16,7 +16,7 @@ export default function IntroArea(props) {
           by leveraging the expertise of our members!
           <br />
           <br />
-          We're here help you reach your goals.
+          We&apos;re here help you reach your goals.
           <br />
           <Button onClick={props.scrollToFormFunc} as="button" intro>
             APPLY NOW!

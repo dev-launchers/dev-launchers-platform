@@ -3,28 +3,28 @@ import React, { useState } from "react";
 
 import { Wrapper, Bio } from "./StyledBioBox";
 
-import { env } from "../../../../utils/EnvironmentVariables.js";
+import { env } from "../../../../utils/EnvironmentVariables";
 
 export default function BioBox({ data }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
-  const handleTextChange = e => {
+  const handleTextChange = (e) => {
     setBioText(e.target.value);
   };
 
   const sendText = () => {
     axios
       .put(
-        env().API_URL + `/users/${data.id}/profile`,
+        `${env().API_URL}/users/${data.id}/profile`,
         { bio: bioText },
         { withCredentials: true }
       )
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        // TODO give user feedback that it worked
         setIsReadOnly(true);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
+        // TODO handle errors
       });
   };
   return (
@@ -41,7 +41,7 @@ export default function BioBox({ data }) {
       ></Bio>
       <br />
       {isReadOnly ? (
-        <button onClick={e => setIsReadOnly(false)}>Edit</button>
+        <button onClick={() => setIsReadOnly(false)}>Edit</button>
       ) : (
         <button onClick={sendText}>Save</button>
       )}

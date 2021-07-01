@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { env } from "../../../../../../utils/EnvironmentVariables.js";
+import { env } from "../../../../../../utils/EnvironmentVariables";
 
 export default function Beans({ discordId }) {
   const [devBeans, setDevBeans] = useState(0);
@@ -8,13 +8,13 @@ export default function Beans({ discordId }) {
 
   useEffect(() => {
     if (!discordId) return;
-    //prettier-ignore
-    axios.get(env().API_URL + `/discord/users/${discordId}/dev-beans`).then(({ data }) => {
+    // prettier-ignore
+    axios.get(`${env().API_URL  }/discord/users/${discordId}/dev-beans`).then(({ data }) => {
       setDevBeans(data);
     });
 
-    //prettier-ignore
-    axios.get(env().API_URL + `/discord/users/${discordId}/golden-beans`).then(({ data }) => {
+    // prettier-ignore
+    axios.get(`${env().API_URL  }/discord/users/${discordId}/golden-beans`).then(({ data }) => {
       setGoldenBeans(data)
     });
   }, [discordId]);

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import DiscordAvatar from "./../../../../common/DiscordAvatar";
+import React from "react";
+import DiscordAvatar from "../../../../common/DiscordAvatar";
 import Beans from "./Beans";
 import { Wrapper, DiscordInfo } from "./StyledDiscordProfile";
 
@@ -7,7 +7,7 @@ export default function DiscordProfile({
   discordId,
   avatarKey,
   discordUsername,
-  discordDiscriminator
+  discordDiscriminator,
 }) {
   return (
     <Wrapper>

@@ -1,4 +1,10 @@
 {
   "extends": ["airbnb-base", "next", "prettier"],
+  "rules": {
+    "array-callback-return": "off",
+    "no-plusplus": "off",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off"
+  },
   "env": { "browser": true, "node": true, "es2021": true }
 }

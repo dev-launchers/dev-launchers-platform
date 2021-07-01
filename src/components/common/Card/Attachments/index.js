@@ -1,1 +1,1 @@
-export { default } from "./Attachments.js";
+export { default } from "./Attachments";

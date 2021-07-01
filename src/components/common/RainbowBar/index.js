@@ -1,1 +1,1 @@
-export { default } from "./RainbowBar.js";
+export { default } from "./RainbowBar";

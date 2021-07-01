@@ -1,6 +1,6 @@
 import React from "react";
-import PageBody from "../../common/PageBody";
 import Link from "next/link";
+import PageBody from "../../common/PageBody";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 import chessPiece from "../../../images/check-it/chess_display_large.jpg";
 
@@ -12,8 +12,8 @@ import {
   NewTabLink,
   LogoImage,
   ChessImageWrapper,
-  ChessImage
-} from "./StyledSocialMedia.js";
+  ChessImage,
+} from "./StyledSocialMedia";
 
 export default function SocialMedia() {
   return (
@@ -35,13 +35,13 @@ export default function SocialMedia() {
             <List>
               <li>
                 <NewTabLink href="https://discord.io/devlaunchers/">
-                  <i class="fab fa-discord fa-2x" />
+                  <i className="fab fa-discord fa-2x" />
                   &nbsp;Discord
                 </NewTabLink>
               </li>
               <li>
                 <NewTabLink href="https://www.twitch.tv/devlaunchers">
-                  <i class="fab fa-twitch fa-2x" />
+                  <i className="fab fa-twitch fa-2x" />
                   &nbsp;Twitch
                 </NewTabLink>
               </li>
@@ -80,13 +80,13 @@ export default function SocialMedia() {
             <List>
               <li>
                 <NewTabLink href="https://www.instagram.com/devlaunchers/">
-                  <i class="fab fa-instagram fa-2x" />
+                  <i className="fab fa-instagram fa-2x" />
                   &nbsp;Instagram
                 </NewTabLink>
               </li>
               <li>
                 <NewTabLink href="https://www.linkedin.com/company/devlaunchers/">
-                  <i class="fab fa-linkedin fa-2x" />
+                  <i className="fab fa-linkedin fa-2x" />
                   &nbsp;LinkedIn
                 </NewTabLink>
               </li>

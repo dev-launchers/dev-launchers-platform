@@ -1,7 +1,7 @@
 import React from "react";
 import { openPopupWidget } from "react-calendly";
 
-import Button from "../../../common/Button";
+import Button from "../../Button";
 
 export default function ScheduleOrientationButton(props) {
   return (
@@ -11,7 +11,7 @@ export default function ScheduleOrientationButton(props) {
       onClick={() => {
         if (props.onClick) props.onClick();
         openPopupWidget({
-          url: "https://calendly.com/devlaunchers/new-member-orientation"
+          url: "https://calendly.com/devlaunchers/new-member-orientation",
         });
       }}
     >

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../../../styles/theme.js";
 
 export const ContentArea = styled.div`
   display: flex;
@@ -7,14 +6,14 @@ export const ContentArea = styled.div`
   flex-wrap: nowrap;
   justify-content: space-between;
   height: 50vw;
-  border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
+  border-bottom: 0.5rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
 `;
 
 export const StudentImageWrapper = styled.div`
   position: relative;
   width: 30%;
   height: 100%;
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -42,11 +41,11 @@ export const CtaWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  border: 0.5rem solid ${theme.colors.ACCENT_1};
+  border: 0.5rem solid ${({ theme }) => theme.colors.ACCENT_1};
 `;
 
 export const CtaHeaderArea = styled.div`
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   width: 100%;
   height: 30%;
   display: flex;
@@ -58,7 +57,7 @@ export const CtaHeaderMessage = styled.div`
   /* font-weight: bold; */
   font-size: 3rem;
   color: white;
-  font-family: ${theme.fonts.headline}, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1.1em;
   margin: 0.5rem;
 

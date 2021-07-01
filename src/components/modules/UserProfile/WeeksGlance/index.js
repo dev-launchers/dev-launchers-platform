@@ -1,1 +1,1 @@
-export { default } from "./WeeksGlance.js";
+export { default } from "./WeeksGlance";

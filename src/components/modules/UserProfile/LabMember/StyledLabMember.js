@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import theme from "../../../../styles/theme.js";
-
 export const Portal = styled.div`
   background-color: #f0f0f0;
 
@@ -27,16 +25,16 @@ export const SignUpButton = styled.button`
   width: 70%;
   cursor: pointer;
   font-weight: bold;
-  font-family: ${theme.fonts.headline};
-  color: ${theme.colors.NEUTRAL_1};
-  /* background-color: ${theme.colors.ACCENT_4}; */
+  font-family: ${({ theme }) => theme.fonts.headline};
+  color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  /* background-color: ${({ theme }) => theme.colors.ACCENT_4}; */
   border: none;
-  border: 0.2rem solid ${theme.colors.NEUTRAL_1};
+  border: 0.2rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
   min-height: 5rem;
   font-size: 1.5rem;
 
   &:hover {
-    color: ${theme.colors.NEUTRAL_1};
-    border-color: ${theme.colors.ACCENT_2};
+    color: ${({ theme }) => theme.colors.NEUTRAL_1};
+    border-color: ${({ theme }) => theme.colors.ACCENT_2};
   }
 `;
