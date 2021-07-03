@@ -9,12 +9,11 @@ const Calendar = ({ URL }) => {
   let current = DateTime.now();
   let max = current.plus({ days: 7 });
 
-  {
-    /* gets the JSON data from google calendar and makes a new array with only the properties we need */
-  }
+  /* gets the JSON data from google calendar and makes a new array with only the properties we need */
+
   let makeRequest = () => {
     axios
-      .get({ URL })
+      .get(URL)
       .then(response => {
         console.log(response);
         let tempEventList = [];
@@ -23,7 +22,7 @@ const Calendar = ({ URL }) => {
           let time = DateTime.fromISO(entry.start.dateTime, {
             zone: entry.start.timeZone
           }).setZone();
-
+          console.log(URL);
           tempEventList.push({
             name: entry.summary,
             time: time.toFormat("t"),
@@ -48,16 +47,15 @@ const Calendar = ({ URL }) => {
   const createDate = () => {
     let todayInt = current.weekday;
     console.log(todayInt);
-
     for (let i = 1; i < todayInt; i++) {
-      dates.push(current.minus({ days: todayInt - i }).day);
+      dates.push(max.minus({ days: todayInt - i }).day);
     }
-
     dates.push(current.day);
 
     for (let i = todayInt + 1; i < 8; i++) {
       dates.push(current.plus({ days: i - todayInt }).day);
     }
+
     return dates;
   };
   console.log(dates);
