@@ -38,7 +38,7 @@ const Projects = () => {
                 tags: project.keywords.map(({ keyword }) => keyword),
                 description: project.catchPhrase,
                 href: project.slug,
-                imageSrc: env().STRAPI_URL + project.heroImage.url,
+                imageSrc: project.heroImage.url,
                 actions: (
                   <>
                     <Link href={`projects/${project.slug}` || ""} passHref>
