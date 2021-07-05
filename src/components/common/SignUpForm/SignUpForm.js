@@ -2,6 +2,8 @@
 import React from "react";
 import { useForm } from "react-form";
 import axios from "axios";
+// eslint-disable-next-line no-unused-vars
+import regeneratorRuntime from "regenerator-runtime";
 
 import { FormOuter, FormContainer, StyledForm } from "./StyledSignUpForm";
 

@@ -33,7 +33,8 @@
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
-    "wrangler": "^0.0.2"
+    "wrangler": "^0.0.2",
+    "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0",

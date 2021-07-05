@@ -59,7 +59,9 @@ export default function Footer() {
       <OrgInfoArea>
         -
         <Link href="/page/terms-and-conditions" passHref>
-          <a>Terms of Service </a> {"- | -"}
+          <>
+            <a>Terms of Service </a> {"- | -"}
+          </>
         </Link>
         <Link href="/page/privacy-policy" passHref>
           <a>Privacy Policy </a>
