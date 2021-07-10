@@ -28,11 +28,11 @@ export default function SignUp() {
   const updateUser = async e => {
     e.preventDefault();
     try {
-      const currentUser = await axios(env().API_URL + "/users/current", {
+      const currentUser = await axios(env().STRAPI_URL + "/users/me", {
         withCredentials: true
       });
       await axios.put(
-        env().API_URL + `/users/${currentUser.data.id}`,
+        env().STRAPI_URL + `/users/${currentUser.data.id}`,
         { username: username },
         {
           withCredentials: true
