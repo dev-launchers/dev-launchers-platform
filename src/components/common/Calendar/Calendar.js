@@ -68,9 +68,11 @@ const Calendar = ({ URL }) => {
         return (
           <Day key={i}>
             <WeekdayTitle>
-              {day}
-              <br />
-              <div style={{ fontSize: "1.3rem" }}>{date}</div>
+              <div style={{ fontSize: "1rem", textAlign: "center" }}>{day}</div>
+
+              <div style={{ fontSize: "1.3rem", textAlign: "center" }}>
+                {date}
+              </div>
             </WeekdayTitle>
             {eventList.map(({ name, time, weekday }) => {
               if (weekday == i + 1) {

@@ -6,7 +6,8 @@ export const Wrapper = Styled.div`
   display: flex;
   grid-area: WeeksGlance;
   flex-direction: row;
-
+  width: 100%;
+background-color: #DAD8D9;
 
   @media (orientation: portrait) {
     flex-direction: column;
@@ -34,20 +35,23 @@ export const Event = Styled.div`
   overflow: hidden;
   white-space: nowrap;
   background: bisque;
-  border-radius: 8px;
-  width: 95%;
-  background-color: transparent;
-  margin-top: .1rem;
+ color: #f0edee;
+  width: 98%;
+  background-color: #ff7f0e;
+  margin-top: 1rem;
   font-size: .9rem;
-  border-style:solid;
-  border-color: #ff7f0e;
-  border-width: .12rem;
+ justify-content: center;
+ text-align: center;
+ padding-top: .3rem;
+ padding-bottom: .3rem;
+ font-family: roboto;
 `;
 
 export const WeekdayTitle = Styled.div`
   font-family: ${theme.fonts.headline};
-  background-color: ${theme.colors.NEUTRAL_1};
-  color: ${theme.colors.NEUTRAL_2};
-  font-weight: 600;
+  background-color: #f0edee;
+  color: #1c1c1c;
+  font-weight: 500;
   padding-left: .5rem;
+  
 `;
