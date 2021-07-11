@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const Logout = () => {
   axios
-    .get(`${env().API_URL}/auth/logout`, { withCredentials: true })
+    .get(`${env().STRAPI_URL}/auth/logout`, { withCredentials: true })
     .then(response => {
       console.log(response);
 
