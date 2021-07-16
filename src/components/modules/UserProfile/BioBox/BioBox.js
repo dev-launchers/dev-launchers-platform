@@ -31,11 +31,12 @@ export default function BioBox({ data }) {
     <Wrapper>
       <br />
       <Bio
-        rows="4"
+        rows="2"
         cols="50"
         placeholder="Write your bio here!"
         maxlength="144"
         value={bioText}
+        onDoubleClick={e => setIsReadOnly(false)}
         onChange={handleTextChange}
         readOnly={isReadOnly}
       ></Bio>
@@ -43,7 +44,7 @@ export default function BioBox({ data }) {
       {isReadOnly ? (
         <button onClick={e => setIsReadOnly(false)}>Edit</button>
       ) : (
-        <button onClick={sendText}>Save</button>
+        <button onClick={(e => setIsReadOnly(true), sendText)}>Save</button>
       )}
     </Wrapper>
   );
