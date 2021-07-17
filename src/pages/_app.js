@@ -13,6 +13,7 @@ import { RepoProvider } from "../context/RepoContext";
 import { LeaderboardProvider } from "../context/LeaderboardContext";
 import { UserDataProvider } from "../context/UserDataContext";
 import { ThemeProvider } from "styled-components";
+import { ProjectsDataProvider } from "../context/ProjectsContext";
 
 const hashRedirect = router => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -100,14 +101,16 @@ function MyApp({ Component, pageProps }) {
             <RepoProvider>
               <LeaderboardProvider>
                 <UserDataProvider>
-                  <div className="App">
-                    <ToastContainer
-                      className="toast-container"
-                      toastClassName="toast"
-                      progressClassName="toast-progress"
-                    />
-                  </div>
-                  <Component {...pageProps} />
+                  <ProjectsDataProvider>
+                    <div className="App">
+                      <ToastContainer
+                        className="toast-container"
+                        toastClassName="toast"
+                        progressClassName="toast-progress"
+                      />
+                    </div>
+                    <Component {...pageProps} />
+                  </ProjectsDataProvider>
                 </UserDataProvider>
               </LeaderboardProvider>
             </RepoProvider>

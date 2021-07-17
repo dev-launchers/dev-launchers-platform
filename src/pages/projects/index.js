@@ -2,7 +2,7 @@ import Header from "../../components/common/Header";
 import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
 import axios from "axios";
-import { ProjectsDataProvider } from "../../context/ProjectsContext";
+
 // export const getStaticProps = async () => {
 //   let { data: projects } = await axios(
 //     "https://cms-api-staging.devlaunchers.com/projects",
@@ -25,9 +25,7 @@ const ProjectsList = ({ projects }) => {
   return (
     <div>
       <Header />
-      <ProjectsDataProvider>
-        <Projects />
-      </ProjectsDataProvider>
+      <Projects />
       <Footer />
     </div>
   );

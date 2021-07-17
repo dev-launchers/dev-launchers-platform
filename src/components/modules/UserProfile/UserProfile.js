@@ -21,6 +21,7 @@ import {
   DiscordPlaceHolder
 } from "./StyledUserProfile";
 import DiscordSection from "./DiscordSection/DiscordSection.js";
+import FeaturedProjects from "../../common/FeaturedProjects/FeaturedProjects";
 
 export default function UserProfile() {
   const { userData } = useUserDataContext();
@@ -57,7 +58,7 @@ export default function UserProfile() {
           </UserSection>
           <LabCampus />
           <WeeksGlance />
-
+          <FeaturedProjects />
           <Misc>
             <LabMember />
             <DiscordSection

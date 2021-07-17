@@ -11,7 +11,7 @@ import {
   SecondaryText,
   AttachmentsContainer,
   ActionsContainer,
-  TagsContainer,
+  TagsContainer
 } from "./StyledCard";
 import Tag from "../Tag";
 
@@ -37,46 +37,43 @@ import Link from "next/link";
 export default function Card(props) {
   const router = useRouter();
 
-  React.useEffect(() => {
-    console.log(props.cardData.flexDirection);
-  }, []);
-
   return (
     <Container
+      className={props.className}
       style={props.style}
       size={props.size}
       key={props.i}
-      onClick={props.cardData.onClick}
+      onClick={props.cardData?.onClick}
     >
       <Content
         size={props.size}
-        textAlignment={props.cardData.textAlignment}
-        flexDirection={props.cardData.flexDirection}
+        textAlignment={props.cardData?.textAlignment}
+        flexDirection={props.cardData?.flexDirection}
       >
         <ImageHolder
           size={props.size}
-          bgColor={props.cardData.imageHolderBackgroundColor}
+          bgColor={props.cardData?.imageHolderBackgroundColor}
         >
-          {props.cardData.tags && (
+          {props.cardData?.tags && (
             <TagsContainer>
-              {props.cardData.tags.map((tag, i) => (
+              {props.cardData?.tags.map((tag, i) => (
                 <Tag filled text={tag} key={i} />
               ))}
             </TagsContainer>
           )}
           {props.isLinkingInside ? (
-            <Link href={router.pathname + "/" + props.cardData.href} passHref>
+            <Link href={router.pathname + "/" + props.cardData?.href} passHref>
               <a rel="noopener noreferrer">
-                <Image imageSrc={props.cardData.imageSrc} />
+                <Image imageSrc={props.cardData?.imageSrc} />
               </a>
             </Link>
           ) : (
             <a
-              href={props.cardData.href}
+              href={props.cardData?.href}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image imageSrc={props.cardData.imageSrc} />
+              <Image imageSrc={props.cardData?.imageSrc} />
             </a>
           )}
         </ImageHolder>
@@ -87,19 +84,19 @@ export default function Card(props) {
             isLinkingInside={props.isLinkingInside}
             pathname={router.pathname}
           />
-          {props.cardData.secondaryText && (
-            <SecondaryText>{props.cardData.secondaryText}</SecondaryText>
+          {props.cardData?.secondaryText && (
+            <SecondaryText>{props.cardData?.secondaryText}</SecondaryText>
           )}
-          <Description>{props.cardData.description}</Description>
+          <Description>{props.cardData?.description}</Description>
         </DataHolder>
       </Content>
-      {props.cardData.attachments && (
+      {props.cardData?.attachments && (
         <AttachmentsContainer>
-          <Attachments data={props.cardData.attachments} />
+          <Attachments data={props.cardData?.attachments} />
         </AttachmentsContainer>
       )}
-      {props.cardData.actions && (
-        <ActionsContainer>{props.cardData.actions}</ActionsContainer>
+      {props.cardData?.actions && (
+        <ActionsContainer>{props.cardData?.actions}</ActionsContainer>
       )}
     </Container>
   );

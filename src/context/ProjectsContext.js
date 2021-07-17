@@ -16,6 +16,7 @@ function useProjectsData() {
     axios(env().STRAPI_URL + "/projects")
       .then(({ data }) => {
         setProjectsData(data);
+        console.log(data);
       })
       .catch(err => {
         //setUserData({ id: "invalid" });
