@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { withTheme } from "styled-components";
 import { useProjectsDataContext } from "../../../context/ProjectsContext";
@@ -6,45 +6,36 @@ import {
   FeaturedBar,
   ColorBlock,
   ProjectArea,
-  ProjectCard
+  ProjectCard,
 } from "./StyledFeaturedProjects";
 import Card from "../../common/Card";
 import { env } from "../../../utils/EnvironmentVariables";
 
-const FeaturedProjects = props => {
+const FeaturedProjects = (props) => {
   const projects = useProjectsDataContext();
+  console.log(projects);
 
-  function randomize(arr, numOfItems = 2) {
-    const res = [];
-    for (let i = 0; i < numOfItems; ) {
-      const random = Math.floor(Math.random() * arr.length);
-      if (res.indexOf(arr[random]) !== -1) {
-        continue;
-      }
-      res.push(arr[random]);
-      i++;
-    }
-    return res;
-  }
-
-  const arr = randomize(projects, 2);
-
+  let arr = projects.sort(() => 0.5 - Math.random()).slice(0, 2);
+  console.log(arr);
+  React.useEffect(() => {
+    // arr = getRandom(projects, 2);
+  }, [projects]);
   return (
     <div>
       <FeaturedBar>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_1
+            backgroundColor: props.theme.colors.ACCENT_1,
           }}
         ></ColorBlock>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_2
+            backgroundColor: props.theme.colors.ACCENT_2,
           }}
         ></ColorBlock>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_4
+            backgroundColor: props.theme.colors.ACCENT_4,
           }}
         ></ColorBlock>
         <ColorBlock
@@ -55,7 +46,7 @@ const FeaturedProjects = props => {
             color: "white",
             fontSize: "2.5rem",
             fontWeight: "bold",
-            fontFamily: "'Abel',sans-serif"
+            fontFamily: "'Abel',sans-serif",
           }}
         >
           Featured Projects
@@ -66,52 +57,53 @@ const FeaturedProjects = props => {
           backgroundColor: props.theme.colors.NEUTRAL_1
         }}
       >
-        <Card
-          isLinkingInside
-          style={{ flex: "1", margin: "2%" }}
-          cardData={{
-            id: arr[0]?.id,
-            title: arr[0]?.title,
-            secondaryText: "Commitment level: " + arr[0]?.commitmentLevel,
-            tags: arr[0]?.keywords.map(({ keyword }) => keyword),
-            description: arr[0]?.catchPhrase,
-            href: arr[0]?.slug,
-            imageSrc: env().STRAPI_URL + arr[0]?.heroImage.url,
-            actions: (
-              <>
-                <Link href={`projects/${arr[0]?.slug}` || ""} passHref>
-                  <a>LEARN MORE</a>
-                </Link>
-                <Link href="support-us" passHref>
-                  <a>DONATE</a>
-                </Link>
-              </>
-            )
-          }}
-        />
-        <Card
-          isLinkingInside
-          style={{ flex: "1", margin: "2%" }}
-          cardData={{
-            id: arr[1]?.id,
-            title: arr[1]?.title,
-            secondaryText: "Commitment level: " + arr[1]?.commitmentLevel,
-            tags: [{ keyword: "hi" }].map(({ keyword }) => keyword),
-            description: arr[1]?.catchPhrase,
-            href: arr[1]?.slug,
-            imageSrc: env().STRAPI_URL + arr[1]?.heroImage.url,
-            actions: (
-              <>
-                <Link href={`projects/${arr[1]?.slug}` || ""} passHref>
-                  <a>LEARN MORE</a>
-                </Link>
-                <Link href="support-us" passHref>
-                  <a>DONATE</a>
-                </Link>
-              </>
-            )
-          }}
-        />
+        {arr.map((project, i) => {
+          return (
+            <Card
+              key={i}
+              isLinkingInside
+              style={{ flex: "1" }}
+              cardData={{
+                id: arr[0]?.id,
+                title: arr[0]?.title,
+                secondaryText: "Commitment level: " + arr[0]?.commitmentLevel,
+                tags: arr[0]?.keywords.map(({ keyword }) => keyword),
+                description: arr[0]?.catchPhrase,
+                href: arr[0]?.slug,
+                imageSrc: env().STRAPI_URL + arr[0]?.heroImage.url,
+                actions: (
+                  <>
+                    <Link href={`projects/${arr[0]?.slug}` || ""} passHref>
+                      <a>LEARN MORE</a>
+                    </Link>
+                    <Link href="support-us" passHref>
+                      <a>DONATE</a>
+                    </Link>
+                  </>
+                ),
+              }}
+              cardData={{
+                id: project?.id,
+                title: project?.title,
+                secondaryText: "Commitment level: " + project?.commitmentLevel,
+                tags: project?.keywords.map(({ keyword }) => keyword),
+                description: project?.catchPhrase,
+                href: project?.slug,
+                imageSrc: env().STRAPI_URL + project?.heroImage.url,
+                actions: (
+                  <>
+                    <Link href={`projects/${project?.slug}` || ""} passHref>
+                      <a>LEARN MORE</a>
+                    </Link>
+                    <Link href="support-us" passHref>
+                      <a>DONATE</a>
+                    </Link>
+                  </>
+                ),
+              }}
+            />
+          );
+        })}
       </ProjectArea>
     </div>
   );

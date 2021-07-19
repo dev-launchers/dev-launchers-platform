@@ -20,4 +20,15 @@ export const ProjectArea = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   flex-basis: auto;
+  justify-content: center;
+  & > * {
+    margin: 2%;
+  }
+  @media (orientation: portrait) {
+    flex-direction: column;
+    & > * {
+      margin: 2% 0;
+      width: 100%;
+    }
+  }
 `;
