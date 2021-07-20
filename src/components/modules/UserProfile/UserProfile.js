@@ -61,12 +61,13 @@ export default function UserProfile() {
           <FeaturedProjects />
           <Misc>
             <LabMember />
-            <DiscordSection
-              discordId={userData.discord.id}
-              avatarKey={userData.discord.avatar}
-              discordUsername={userData.discord.username}
-              discordDiscriminator={userData.discord.discriminator}
-            />
+            {/*
+              <DiscordSection
+                discordId={userData.discord.id}
+                avatarKey={userData.discord.avatar}
+                discordUsername={userData.discord.username}
+                discordDiscriminator={userData.discord.discriminator}
+              />*/}
           </Misc>
         </Wrapper>
       ) : (
