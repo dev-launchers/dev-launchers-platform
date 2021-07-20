@@ -6,12 +6,12 @@ import {
   FeaturedBar,
   ColorBlock,
   ProjectArea,
-  ProjectCard,
+  ProjectCard
 } from "./StyledFeaturedProjects";
 import Card from "../../common/Card";
 import { env } from "../../../utils/EnvironmentVariables";
 
-const FeaturedProjects = (props) => {
+const FeaturedProjects = props => {
   const projects = useProjectsDataContext();
   console.log(projects);
 
@@ -25,17 +25,17 @@ const FeaturedProjects = (props) => {
       <FeaturedBar>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_1,
+            backgroundColor: props.theme.colors.ACCENT_1
           }}
         ></ColorBlock>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_2,
+            backgroundColor: props.theme.colors.ACCENT_2
           }}
         ></ColorBlock>
         <ColorBlock
           style={{
-            backgroundColor: props.theme.colors.ACCENT_4,
+            backgroundColor: props.theme.colors.ACCENT_4
           }}
         ></ColorBlock>
         <ColorBlock
@@ -46,7 +46,7 @@ const FeaturedProjects = (props) => {
             color: "white",
             fontSize: "2.5rem",
             fontWeight: "bold",
-            fontFamily: "'Abel',sans-serif",
+            fontFamily: "'Abel',sans-serif"
           }}
         >
           Featured Projects
@@ -80,7 +80,7 @@ const FeaturedProjects = (props) => {
                       <a>DONATE</a>
                     </Link>
                   </>
-                ),
+                )
               }}
               cardData={{
                 id: project?.id,
@@ -99,7 +99,7 @@ const FeaturedProjects = (props) => {
                       <a>DONATE</a>
                     </Link>
                   </>
-                ),
+                )
               }}
             />
           );
