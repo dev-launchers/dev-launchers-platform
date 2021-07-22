@@ -30,12 +30,12 @@ export default function SignUp() {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      const currentUser = await axios(`${env().API_URL}/users/current`, {
-        withCredentials: true,
+      const currentUser = await axios(env().STRAPI_URL + "/users/me", {
+        withCredentials: true
       });
       await axios.put(
-        `${env().API_URL}/users/${currentUser.data.id}`,
-        { username },
+        env().STRAPI_URL + `/users/${currentUser.data.id}`,
+        { username: username },
         {
           withCredentials: true,
         }
@@ -65,27 +65,28 @@ export default function SignUp() {
           />
         </FormWrapper>
         <hr />
-        <DiscordAuthWrapper>
-          {!loading && userData.discord.id ? (
-            <p>
-              You&apos;re authenticated with discord as{" "}
-              {`${userData.discord.username}#${userData.discord.discriminator}`}
-            </p>
-          ) : (
-            <>
-              <p style={{ fontSize: "1.25rem" }}>
-                Connect your Discord account! <i>(optional)</i>
+        {/*
+          <DiscordAuthWrapper>
+            {!loading && userData.discord.id ? (
+              <p>
+                You're authenticated with discord as{" "}
+                {userData.discord.username + "#" + userData.discord.discriminator}
               </p>
-              <a href={env().DISCORD_AUTH_URL}>
-                <Image
-                  src={DiscordImage}
-                  alt="discord"
-                  style={{ width: "8rem" }}
-                />
-              </a>
-            </>
-          )}
-        </DiscordAuthWrapper>
+            ) : (
+              <>
+                <p style={{ fontSize: "1.25rem" }}>
+                  Connect your Discord account! <i>(optional)</i>
+                </p>
+                <a href={env().DISCORD_AUTH_URL}>
+                  <img
+                    src={DiscordImage}
+                    alt="discord"
+                    style={{ width: "8rem" }}
+                  ></img>
+                </a>
+              </>
+            )}
+          </DiscordAuthWrapper>*/}
         <br />
       </PageBody>
     </div>

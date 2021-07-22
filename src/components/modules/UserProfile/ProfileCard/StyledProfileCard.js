@@ -4,15 +4,15 @@ export const Wrapper = styled.div`
   grid-area: ProfileCard;
 
   background-color: #f0f0f0;
-  width: 400px;
+  width: 300px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 40px;
   padding: 50px 0;
-  border: 1px solid black;
   & > div {
     margin-top: 10px;
   }
@@ -22,7 +22,6 @@ export const Wrapper = styled.div`
 `;
 export const ProfilePicture = styled.img`
   height: auto;
-  border-radius: 50%;
 
   @media (orientation: portrait) {
     width: 50%;
