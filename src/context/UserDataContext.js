@@ -2,7 +2,7 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
-import { env } from "../utils/EnvironmentVariables.js";
+import { env } from "../utils/EnvironmentVariables";
 
 const DEFAULT_USER = {
   id: 0,
@@ -20,8 +20,8 @@ const DEFAULT_USER = {
     id: 0,
     avatar: "",
     username: "",
-    discriminator: ""
-  }
+    discriminator: "",
+  },
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
@@ -50,8 +50,8 @@ function useUserData() {
           volunteerHours: currentUser.point.volunteerHours
         });
       })
-      .catch(err => {
-        //setUserData({ id: "invalid" });
+      .catch(() => {
+        // setUserData({ id: "invalid" });
       });
   }, []);
 

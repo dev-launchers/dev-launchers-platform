@@ -1,1 +1,1 @@
-export { default } from "./SpendCardCollection.js";
+export { default } from "./SpendCardCollection";

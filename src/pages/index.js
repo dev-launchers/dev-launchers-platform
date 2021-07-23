@@ -1,5 +1,5 @@
 import React from "react";
-//import style from "./HomeRoute.module.css";
+// import style from "./HomeRoute.module.css";
 import Head from "next/head";
 
 import Header from "../components/common/Header";

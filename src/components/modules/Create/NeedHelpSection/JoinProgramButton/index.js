@@ -1,1 +1,1 @@
-export { default } from "./JoinProgramButton.js";
+export { default } from "./JoinProgramButton";

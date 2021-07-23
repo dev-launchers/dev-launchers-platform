@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { toast } from "react-toastify";
 import AccountDropdown from "./AccountDropdown";
 
 import {
@@ -12,18 +11,13 @@ import {
   LogoWords,
   HeaderNav,
   NavEntry,
-  SignInArea,
-  UserProfilePic,
-  HeaderPusher
 } from "./StyledHeader";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
 
-import { env } from "../../../utils/EnvironmentVariables.js";
+import HamburgerMenu from "../HamburgerMenu";
 
-import Button from "../../common/Button";
-import HamburgerMenu from "../../common/HamburgerMenu/";
-export default function Header(props) {
+export default function Header() {
   const { userData } = useUserDataContext();
 
   return (
@@ -51,11 +45,11 @@ export default function Header(props) {
             <NavEntry>LEARN</NavEntry>
           </a>
         </Link>
-        {/*}
+        {/* }
           <Link href={"/play"} className="nav-link">
             <NavEntry>PLAY</NavEntry>
           </Link>
-          {*/}
+          { */}
         <Link href="/support-us">
           <a>
             <NavEntry>SUPPORT US</NavEntry>

@@ -4,7 +4,7 @@ import GameIdeaGeneratorButton from "./IdeaGeneratorButton/GameIdeaGeneratorButt
 import AppIdeaGeneratorButton from "./IdeaGeneratorButton/AppIdeaGeneratorButton";
 import JoinProgramButton from "./JoinProgramButton";
 
-export default function NeedHelpSection(props) {
+export default function NeedHelpSection() {
   return (
     <div style={{ margin: "2%" }}>
       <div
@@ -12,11 +12,11 @@ export default function NeedHelpSection(props) {
           width: "100%",
           backgroundColor: "transparent",
           textAlign: "left",
-          //padding: "1%"
+          // padding: "1%"
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <b>Need some help?</b>

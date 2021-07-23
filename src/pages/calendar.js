@@ -1,9 +1,9 @@
 import React from "react";
 
+import Head from "next/head";
 import Header from "../components/common/Header";
 import PageBody from "../components/common/PageBody";
 import Footer from "../components/common/Footer";
-import Head from "next/head";
 //
 export default function CalendarRoute() {
   return (
@@ -31,7 +31,7 @@ export default function CalendarRoute() {
             style={{ borderWidth: 0, marginBottom: "5%" }}
             width="800"
             height="600"
-            frameborder="0"
+            frameBorder="0"
             scrolling="no"
           />
         </PageBody>

@@ -1,1 +1,1 @@
-export { default } from "./GameIdeaGeneratorButton.js";
+export { default } from "./GameIdeaGeneratorButton";

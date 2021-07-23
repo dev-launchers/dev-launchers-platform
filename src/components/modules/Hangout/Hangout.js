@@ -1,7 +1,5 @@
 import React from "react";
-import PageBody from "../../../components/common/PageBody";
-
-import style from "./Hangout.module.css";
+import PageBody from "../../common/PageBody";
 
 import Building from "./Building";
 //
@@ -16,28 +14,5 @@ export default function Hangout() {
       </div>
       <Building />
     </PageBody>
-  );
-}
-
-function Room({ className, roomData, roomKey, setRoomActive }) {
-  const openHangout = url => {
-    // Do open
-    setRoomActive(roomKey, true);
-    window.open(url, "_blank");
-  };
-
-  return (
-    <div
-      className={[className, roomData.isActive ? style.activeRoom : ""].join(
-        " "
-      )}
-      onClick={() => openHangout(roomData.url)}
-    >
-      {roomData.name}
-      <div
-        className={style.colorMarker}
-        style={{ backgroundColor: roomData.color }}
-      />
-    </div>
   );
 }

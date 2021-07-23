@@ -1,1 +1,1 @@
-export { default } from "./Contribution.js";
+export { default } from "./Contribution";

@@ -1,1 +1,1 @@
-export { default } from "./DiscordSection.js";
+export { default } from "./DiscordSection";

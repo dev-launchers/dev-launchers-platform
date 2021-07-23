@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useLeaderboardContext } from "../../../../context/LeaderboardContext.js";
+import { useLeaderboardContext } from "../../../../context/LeaderboardContext";
 import { Table, TableColumnHeading } from "./StyledCurrentPoints";
 
 export default function CurrentPoints() {
@@ -21,29 +21,27 @@ export default function CurrentPoints() {
           </tr>
           {Object.keys(leaderboard) !== 0 &&
             leaderboard
-              .filter(entry => {
+              .filter((entry) => {
                 if (entry.isActive === 1) return true;
                 return false;
               })
-              .map((entry, index) => {
-                return (
-                  <tr>
-                    <td>
-                      {/* Output leaderboard flair! */}
-                      {index === 0 ? "  🥇  " : ""}
-                      {index === 1 ? "  🥈  " : ""}
-                      {index === 2 ? "  🥉  " : ""}
-                      {entry.name}
-                      {index === 0 ? "  🥇  " : ""}
-                      {index === 1 ? "  🥈  " : ""}
-                      {index === 2 ? "  🥉  " : ""}
-                    </td>
+              .map((entry, index) => (
+                <tr key={index}>
+                  <td>
+                    {/* Output leaderboard flair! */}
+                    {index === 0 ? "  🥇  " : ""}
+                    {index === 1 ? "  🥈  " : ""}
+                    {index === 2 ? "  🥉  " : ""}
+                    {entry.name}
+                    {index === 0 ? "  🥇  " : ""}
+                    {index === 1 ? "  🥈  " : ""}
+                    {index === 2 ? "  🥉  " : ""}
+                  </td>
 
-                    <td>{entry.points}</td>
-                    <td>{entry.xp}</td>
-                  </tr>
-                );
-              })}
+                  <td>{entry.points}</td>
+                  <td>{entry.xp}</td>
+                </tr>
+              ))}
         </tbody>
       </Table>
     </div>

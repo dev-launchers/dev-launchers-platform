@@ -23,16 +23,18 @@ const shadeColor = (color, percent) => {
 const colorUnderButtons = hexColor => {
   let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
   return result
-    ? `rgba(${parseInt(result[1], 16) - 102},${parseInt(result[2], 16) -
-        55},${parseInt(result[3], 16) - 14},1)`
+    ? `rgba(${parseInt(result[1], 16) - 102},${parseInt(result[2], 16) - 55},${
+        parseInt(result[3], 16) - 14
+      },1)`
     : null;
 };
 
-const onHoverBackgroundColor = hexColor => {
-  let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
+const onHoverBackgroundColor = (hexColor) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor);
   return result
-    ? `rgb(${parseInt(result[1], 16) + 44},${parseInt(result[2], 16) +
-        44},${parseInt(result[3], 16) + 44})`
+    ? `rgb(${parseInt(result[1], 16) + 44},${parseInt(result[2], 16) + 44},${
+        parseInt(result[3], 16) + 44
+      })`
     : null;
 };
 const Button = styled.a`
@@ -41,19 +43,19 @@ const Button = styled.a`
   color: ${({ theme, textColor }) => textColor || theme.colors.NEUTRAL_2};
   transition: background-color .5s, color .5s;
 
-  width: ${({ width }) => (width ? width : "")};
+  width: ${({ width }) => width || ""};
   border: 0px;
-  border-bottom: 3px solid ${({ theme, bgColor }) =>
-    colorUnderButtons(bgColor || theme.colors.ACCENT_1)};
+  border-bottom: 3px solid
+    ${({ theme, bgColor }) =>
+      colorUnderButtons(bgColor || theme.colors.ACCENT_1)};
   cursor: pointer;
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : "1.5rem")};
-  margin-top: ${({ marginTop }) => (marginTop ? marginTop : "")};
+  font-size: ${({ fontSize }) => fontSize || "1.5rem"};
+  margin-top: ${({ marginTop }) => marginTop || ""};
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 16px;
-  /* border-radius: ${({ borderRadius }) =>
-    borderRadius ? borderRadius : "100px"}; */
+  /* border-radius: ${({ borderRadius }) => borderRadius || "100px"}; */
   font-weight: bolder;
 
   ${({ hero }) =>
