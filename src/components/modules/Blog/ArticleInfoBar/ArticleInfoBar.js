@@ -1,5 +1,5 @@
 import React from "react";
-
+import Image from "next/image";
 import {
   FacebookShareButton,
   LinkedinShareButton,
@@ -8,17 +8,17 @@ import {
   FacebookIcon,
   LinkedinIcon,
   RedditIcon,
-  TwitterIcon
+  TwitterIcon,
 } from "react-share";
 
 import {
   ArticleInfoArea,
   InfoBlurb,
-  SocialIconsArea
-} from "./StyledArticleInfoBar.js";
+  SocialIconsArea,
+} from "./StyledArticleInfoBar";
 
 export default function ArticleInfoBar(props) {
-  const article = props.article;
+  const { article } = props;
 
   return (
     <ArticleInfoArea>
@@ -29,16 +29,18 @@ export default function ArticleInfoBar(props) {
             width: "10vh",
             height: "10vh",
             borderRadius: "50%",
-            overflow: "hidden"
+            overflow: "hidden",
           }}
         >
-          <img
+          <Image
             src={article.data.author_image.url}
+            alt=""
+            layout="fill"
             style={{
               display: "inline",
               margin: "0 auto",
               height: "100%",
-              width: "auto"
+              width: "auto",
             }}
           />
         </div>

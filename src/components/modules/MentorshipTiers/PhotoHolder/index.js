@@ -1,1 +1,1 @@
-export { default } from "./PhotoHolder.js";
+export { default } from "./PhotoHolder";

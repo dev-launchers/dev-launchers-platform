@@ -1,5 +1,5 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import sparkSymbolImage from "../../../../images/spark-symbol.png";
 import ignitionSymbolImage from "../../../../images/ignition-symbol.png";
@@ -10,7 +10,7 @@ import {
   ProgramDescriptionArea,
   ProgramImage,
   ProgramImageArea,
-  ProgramImageContainer
+  ProgramImageContainer,
 } from "./StyledPrograms";
 
 export default function Programs() {
@@ -60,9 +60,9 @@ export default function Programs() {
           <h2>Ignition</h2>
           Our Ignition Program offers an in-depth, rigorous development
           experience for students looking to take a deeper dive into the realm
-          of technology and digital creation. We'll work with you to create your
-          own unique game or app while preparing you for a highly paid career
-          doing something you love!
+          of technology and digital creation. We&apos;ll work with you to create
+          your own unique game or app while preparing you for a highly paid
+          career doing something you love!
           <ul>
             <li>Create your own app!</li>
             <li>Eat free snacks!</li>

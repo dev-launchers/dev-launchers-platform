@@ -1,13 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 
 import style from "./PixilartWrapper.module.css";
 
 export default function PixilartWrapper(props) {
   // Get image name from url
-  const imageName = props.pixilartId
-    .split("-")
-    .slice(0, -1)
-    .join("-");
+  const imageName = props.pixilartId.split("-").slice(0, -1).join("-");
 
   return (
     <div style={{ height: "100vh" }}>
@@ -18,7 +16,7 @@ export default function PixilartWrapper(props) {
           width: "100vw",
           height: "5vh",
           backgroundColor: "#333",
-          color: "yellow"
+          color: "yellow",
         }}
       >
         <div style={{ marginLeft: "18%" }}>
@@ -33,9 +31,9 @@ export default function PixilartWrapper(props) {
         style={{
           width: "100vw",
           height: "95vh",
-          border: "0px solid transparent"
+          border: "0px solid transparent",
         }}
-        src={"https://pixilart.com/draw/" + props.pixilartId}
+        src={`https://pixilart.com/draw/${props.pixilartId}`}
       />
     </div>
   );

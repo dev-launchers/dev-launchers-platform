@@ -4,10 +4,10 @@ import {
   HeaderLight,
   DescriptionArea,
   DescriptionTimeslotArea,
-  DescriptionTimeslotBox
+  DescriptionTimeslotBox,
 } from "./StyledProgramDescriptionArea";
 
-export default function ProgramDescriptionArea(props) {
+export default function ProgramDescriptionArea() {
   return (
     <div style={{ width: "100%" }}>
       <HeaderLight>
@@ -24,7 +24,7 @@ export default function ProgramDescriptionArea(props) {
               <i>Saturdays, 12:00-3:00pm CDT</i>
               <br />
               <br />
-              If you're <b>learning coding fundamentals</b>, have recently
+              If you&apos;re <b>learning coding fundamentals</b>, have recently
               started your first project, or are looking to help those who are,
               this is for you!
             </DescriptionTimeslotBox>
@@ -34,8 +34,8 @@ export default function ProgramDescriptionArea(props) {
               <i>Saturdays, 1:00-2:00pm CDT</i>
               <br />
               <br />
-              Have a <b>web or app development project</b> you're working on?
-              Come give and get input, feedback, and help here!
+              Have a <b>web or app development project</b> you&apos;re working
+              on? Come give and get input, feedback, and help here!
             </DescriptionTimeslotBox>
             <DescriptionTimeslotBox>
               <b>Game Dev Sessions</b>

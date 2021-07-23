@@ -4,11 +4,11 @@ import {
   TasksRow,
   TasksCategory,
   TasksDescription,
-  TasksValue
+  TasksValue,
 } from "./StyledEarnPoints";
 
 // Get content data
-let rewards = require("../../../../content/collections/rewards.json").data;
+const rewards = require("../../../../content/collections/rewards.json").data;
 
 export default function EarnPoints() {
   return (
@@ -19,36 +19,34 @@ export default function EarnPoints() {
           <th>
             <td>For Everyone</td>
           </th>
-          {(function() {
+          {(() => {
             // Group our entries by category first, then output
-            let categories = rewards.tasks.reduce((categoryMemo, entry) => {
-              let category = entry.category;
-              if (!categoryMemo[category]) categoryMemo[category] = [];
-              categoryMemo[category].push({
+            const categories = rewards.tasks.reduce((categoryMemo, entry) => {
+              const { category } = entry;
+              const currentCategoryMemo = categoryMemo;
+              if (!categoryMemo[category]) currentCategoryMemo[category] = [];
+              currentCategoryMemo[category].push({
                 description: entry.description,
-                value: entry.value
+                value: entry.value,
               });
-              return categoryMemo;
+              return currentCategoryMemo;
             }, {});
-            console.log("categories", categories);
 
             // Array full of JSX to render
-            let toRender = [];
-            for (let category in categories) {
-              let tasks = categories[category];
+            const toRender = [];
+            categories.forEach((category) => {
+              const tasks = categories[category];
               toRender.push(<TasksCategory>{category}</TasksCategory>);
               toRender.push(
-                tasks.map(task => {
-                  console.log(task);
-                  return (
-                    <TasksRow>
-                      <TasksDescription>{task.description}</TasksDescription>
-                      <TasksValue>{task.value}</TasksValue>
-                    </TasksRow>
-                  );
-                })
+                tasks.map((task, i) => (
+                  <TasksRow key={i}>
+                    <TasksDescription>{task.description}</TasksDescription>
+                    <TasksValue>{task.value}</TasksValue>
+                  </TasksRow>
+                ))
               );
-            }
+            });
+
             return toRender;
           })()}
         </tbody>

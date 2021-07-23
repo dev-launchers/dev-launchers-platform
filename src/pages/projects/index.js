@@ -1,7 +1,7 @@
+// import axios from "axios";
 import Header from "../../components/common/Header";
 import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
-import axios from "axios";
 
 // export const getStaticProps = async () => {
 //   let { data: projects } = await axios(
@@ -21,7 +21,8 @@ import axios from "axios";
 //   };
 // };
 
-const ProjectsList = ({ projects }) => {
+
+const ProjectsList = (/* { projects } */) => {
   return (
     <div>
       <Header />
@@ -30,5 +31,6 @@ const ProjectsList = ({ projects }) => {
     </div>
   );
 };
+
 
 export default ProjectsList;

@@ -1,10 +1,10 @@
 import React from "react";
 
-import { useForm, useField, splitFormProps } from "react-form";
+import { useField, splitFormProps } from "react-form";
 
 import { FormInput } from "./StyledInputField";
 
-export default React.forwardRef((props, ref) => {
+const InputField = React.forwardRef((props, ref) => {
   // Let's use splitFormProps to get form-specific props
   const [field, fieldOptions, rest] = splitFormProps(props);
 
@@ -12,9 +12,21 @@ export default React.forwardRef((props, ref) => {
   // to access field state
   const {
     meta: { error, isTouched, isValidating, message },
-    getInputProps
+    getInputProps,
   } = useField(field, fieldOptions);
 
+  const Validate = () => {
+    if (isValidating) {
+      return <em>Validating...</em>;
+    }
+    if (isTouched && error) {
+      return <strong>{error}</strong>;
+    }
+    if (message) {
+      return <small>{message}</small>;
+    }
+    return null;
+  };
   // Build the field
   return (
     <>
@@ -25,14 +37,11 @@ export default React.forwardRef((props, ref) => {
           for our field
         */}
 
-        {isValidating ? (
-          <em>Validating...</em>
-        ) : isTouched && error ? (
-          <strong>{error}</strong>
-        ) : message ? (
-          <small>{message}</small>
-        ) : null}
+        {Validate()}
       </div>
     </>
   );
 });
+
+InputField.displayName = "InputField";
+export default InputField;

@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 import { Wrapper, Bio } from "./StyledBioBox";
 
-import { env } from "../../../../utils/EnvironmentVariables.js";
+import { env } from "../../../../utils/EnvironmentVariables";
 
 export default function BioBox({ data }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
-  const handleTextChange = e => {
+  const handleTextChange = (e) => {
     setBioText(e.target.value);
   };
 
@@ -19,31 +19,32 @@ export default function BioBox({ data }) {
         { bio: bioText },
         { withCredentials: true }
       )
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        // TODO give user feedback that it worked
         setIsReadOnly(true);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(() => {
+        // TODO handle errors
       });
   };
   return (
     <Wrapper>
       <br />
       <Bio
-        rows="4"
+        rows="2"
         cols="50"
         placeholder="Write your bio here!"
         maxlength="144"
         value={bioText}
+        onDoubleClick={e => setIsReadOnly(false)}
         onChange={handleTextChange}
         readOnly={isReadOnly}
       ></Bio>
       <br />
       {isReadOnly ? (
-        <button onClick={e => setIsReadOnly(false)}>Edit</button>
+        <button onClick={() => setIsReadOnly(false)}>Edit</button>
       ) : (
-        <button onClick={sendText}>Save</button>
+        <button onClick={(e => setIsReadOnly(true), sendText)}>Save</button>
       )}
     </Wrapper>
   );

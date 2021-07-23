@@ -1,1 +1,1 @@
-export { default } from "./HeroImage.js";
+export { default } from "./HeroImage";

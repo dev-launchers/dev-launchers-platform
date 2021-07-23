@@ -1,50 +1,45 @@
 // Natural Language Processing Utilities
-import natural from "natural"; // Natural language processing package
+import pluralize from "pluralize";
+// import natural from "natural"; // Natural@0.6.3 language processing package
 import articles from "articles"; // Article of speech package
 
-import contentDictionary from "./contentDictionary.js";
+import contentDictionary from "./contentDictionary";
 
 // idea generating functions
-var nounInflector = new natural.NounInflector(); // For making things plural
-var articlize = articles.articlize; // For adding articles to nouns (a or an)
+// var nounInflector = new natural.NounInflector(); // For making things plural
+const { articlize } = articles; // For adding articles to nouns (a or an)
 
 export function getRandomEntry(array) {
-  return array[Math.floor(parseInt(Math.random() * array.length))];
+  return array[Math.floor(parseInt(Math.random() * array.length, 10))];
 }
 
 export function isPlural(func) {
   return () => {
-    let result = func();
-    console.log(result);
-    return nounInflector.pluralize(result);
+    const result = func();
+    return pluralize(result);
   };
 }
 
 export function hasArticle(func) {
-  return () => {
-    return articlize(func());
-  };
-}
-
-export function randEntity(entityType) {
-  return () => {
-    let entity =
-      typeof entityType === "object" ? getRandomEntry(entityType) : entityType;
-    return getRandomEntity(entity);
-  };
+  return () => articlize(func());
 }
 
 export function getRandomEntity(entityType) {
   return getRandomEntry(contentDictionary[entityType]);
 }
 
+export function randEntity(entityType) {
+  return () => {
+    const entity =
+      typeof entityType === "object" ? getRandomEntry(entityType) : entityType;
+    return getRandomEntity(entity);
+  };
+}
+
 export function getRandomPhrase(phraseFormats) {
-  let phraseEntry = getRandomEntry(phraseFormats);
-  console.log(phraseEntry);
+  const phraseEntry = getRandomEntry(phraseFormats);
   return phraseEntry
-    .map(entity => {
-      return typeof entity === "function" ? entity() : entity;
-    })
+    .map((entity) => (typeof entity === "function" ? entity() : entity))
     .join("");
 }
 

@@ -1,1 +1,1 @@
-export { default } from "./BioBox.js";
+export { default } from "./BioBox";

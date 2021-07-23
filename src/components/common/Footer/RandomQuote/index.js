@@ -1,1 +1,1 @@
-export { default } from "./RandomQuote.js";
+export { default } from "./RandomQuote";

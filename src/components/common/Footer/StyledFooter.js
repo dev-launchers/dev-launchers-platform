@@ -6,11 +6,11 @@ function getRandomThemeColor(theme) {
     theme.colors.ACCENT_1,
     theme.colors.ACCENT_2,
     theme.colors.ACCENT_3,
-    theme.colors.ACCENT_4
+    theme.colors.ACCENT_4,
   ];
   let colorTrack = -1;
 
-  return function() {
+  return () => {
     colorTrack = colorTrack >= colors.length - 1 ? 0 : colorTrack + 1;
     return colors[colorTrack];
   };
@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
 
 export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
-  alt: "logo"
+  alt: "logo",
 }))`
   width: 7rem;
   margin-right: 10px;
@@ -97,6 +97,10 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
       href = "https://www.discord.io/devlaunchers/";
       className = "fab fa-discord";
       break;
+    default:
+      href = null;
+      className = null;
+      break;
   }
   return { href, className };
 })`
@@ -119,11 +123,11 @@ export const NavEntry = styled.div`
   padding-right: 0.5rem;
   transition: 0.5s;
 
-  color: ${({theme}) => theme.colors.NEUTRAL_2};
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
 
   &:hover {
-    color: ${({theme}) => theme.colors.ACCENT_4};
-    border-bottom: 0.4rem solid ${({theme}) => getRandomThemeColor(theme)};
+    color: ${({ theme }) => theme.colors.ACCENT_4};
+    border-bottom: 0.4rem solid ${({ theme }) => getRandomThemeColor(theme)};
   }
 
   @media (orientation: portrait) {

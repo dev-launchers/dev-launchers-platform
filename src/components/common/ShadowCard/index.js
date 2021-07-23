@@ -1,1 +1,1 @@
-export { default } from "./ShadowCard.js";
+export { default } from "./ShadowCard";

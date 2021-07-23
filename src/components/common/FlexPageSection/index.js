@@ -1,1 +1,1 @@
-export { default } from "./FlexPageSection.js";
+export { default } from "./FlexPageSection";

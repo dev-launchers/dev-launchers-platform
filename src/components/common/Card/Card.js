@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+import Link from "next/link";
 import {
   Container,
   Content,
@@ -19,7 +20,6 @@ import RainbowBar from "../RainbowBar";
 
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
-import Link from "next/link";
 
 /**
  * Props:
@@ -62,9 +62,9 @@ export default function Card(props) {
             </TagsContainer>
           )}
           {props.isLinkingInside ? (
-            <Link href={router.pathname + "/" + props.cardData?.href} passHref>
+            <Link href={`${router.pathname}/${props.cardData?.href}`} passHref>
               <a rel="noopener noreferrer">
-                <Image imageSrc={props.cardData?.imageSrc} />
+                <Image alt="" imageSrc={props.cardData?.imageSrc} />
               </a>
             </Link>
           ) : (
@@ -73,7 +73,7 @@ export default function Card(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image imageSrc={props.cardData?.imageSrc} />
+              <Image alt="" imageSrc={props.cardData?.imageSrc} />
             </a>
           )}
         </ImageHolder>

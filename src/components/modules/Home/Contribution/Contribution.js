@@ -1,20 +1,21 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
 
 import {
   CtaSectionContent,
   CtaSectionDescription,
-  CtaSectionButtonArea
-} from "./StyledContribution.js";
+  CtaSectionButtonArea,
+} from "./StyledContribution";
 
 import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";
 
 import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
+import { withTheme } from "styled-components";
 
-export default function Contribution() {
+function Contribution(props) {
   return (
     <FlexPageSection
       width="100%"
@@ -40,6 +41,16 @@ export default function Contribution() {
               <Button fontSize="2rem" href="https://github.com/dev-launchers">
                 Find us on GitHub
               </Button>
+              <Button
+                fontSize="2rem"
+                href="https://devlaunchers.com/projects"
+                bgColor={props.theme.colors.ACCENT_3}
+                style={{
+                  marginLeft: "1rem"
+                }}
+              >
+                View our projects
+              </Button>
             </CtaSectionButtonArea>
           </CtaSectionContent>
         </div>
@@ -47,3 +58,5 @@ export default function Contribution() {
     </FlexPageSection>
   );
 }
+
+export default withTheme(Contribution);

@@ -3,8 +3,8 @@ import {
   AttachmentLink,
   AttachmentLinkContainer,
   AttachmentImg,
-  AttachmentImgContainer
-} from "./StyledAttachments.js";
+  AttachmentImgContainer,
+} from "./StyledAttachments";
 
 export default function Attachments(props) {
   const [showAttachment, setShowAttachment] = useState(false);
@@ -19,13 +19,11 @@ export default function Attachments(props) {
 
       {showAttachment && (
         <AttachmentLinkContainer>
-          {JSON.parse(props.data).map((item, i) => {
-            return (
-              <AttachmentLink href={item.href} key={i}>
-                {item.name}
-              </AttachmentLink>
-            );
-          })}
+          {JSON.parse(props.data).map((item, i) => (
+            <AttachmentLink href={item.href} key={i}>
+              {item.name}
+            </AttachmentLink>
+          ))}
         </AttachmentLinkContainer>
       )}
     </div>

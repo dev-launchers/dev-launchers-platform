@@ -1,7 +1,7 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-import { ModalContent, customModalStyles } from "./StyledModal.js";
+import { ModalContent, customModalStyles } from "./StyledModal";
 
 ReactModal.setAppElement("#__next");
 
@@ -11,7 +11,6 @@ export default function Modal(props) {
   // Modal functions
   const [modalIsOpen, setModalIsOpen] = React.useState(props.modalIsOpen);
   const openModal = () => {
-    console.log("opening");
     setModalIsOpen(true);
   };
   const closeModal = () => {
