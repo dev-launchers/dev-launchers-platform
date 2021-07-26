@@ -1,13 +1,12 @@
 import React from "react";
-import Button from "../../../common/Button";
+import Link from "next/link";
 import { withTheme } from "styled-components";
+import Button from "../../../common/Button";
 
 import {
   Wrapper,
   CategoriesContainer,
   CategoryContainer,
-  MembersContainer,
-  TeamContentContainer
 } from "./StyledProject";
 import ProjectHero from "./ProjectHero";
 import OpenPositions from "./OpenPositions";
@@ -15,12 +14,13 @@ import Team from "./Team";
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 
+// eslint-disable-next-line no-unused-vars
 const truncateText = (text, truncateAt, replaceWith) => {
   if (text.length <= truncateAt) return text;
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = props => {
+const Project = (props) => {
   const projectsData = useProjectsDataContext([]);
   const [projectData, setProjectData] = React.useState({
     heroImage: "",
@@ -30,17 +30,15 @@ const Project = props => {
     openPositions: [],
     meetingTimes: [],
     meetingLinkURLs: [],
-    team: { members: [], leaders: [] }
+    team: { members: [], leaders: [] },
   });
 
   React.useEffect(() => {
     if (!projectsData.length) return;
     setProjectData(
-      projectsData.filter(entry => {
-        return entry.slug == props.projectId;
-      })[0]
+      projectsData.filter((entry) => entry.slug === props.projectId)[0]
     );
-  }, [projectsData]);
+  }, [projectsData, props.projectId]);
 
   return (
     <Wrapper>
@@ -49,7 +47,7 @@ const Project = props => {
         style={{
           width: "90%",
           marginLeft: "auto",
-          marginRight: "auto"
+          marginRight: "auto",
         }}
       >
         <div
@@ -59,7 +57,7 @@ const Project = props => {
             marginBottom: "4rem",
             padding: "1rem",
             fontSize: "2.5rem",
-            border: "1px solid black"
+            border: "1px solid black",
           }}
         >
           {projectData?.vision}
@@ -72,11 +70,11 @@ const Project = props => {
         </div>
         <CategoriesContainer>
           <div>
-            {/*}
+            {/* }
             <CategoryTitle>
               Project
             </CategoryTitle>
-            {*/}
+            { */}
             <CategoryContainer>
               <h4>Commitment Level</h4>
               <p>{projectData?.commitmentLevel}</p>
@@ -96,9 +94,9 @@ const Project = props => {
             </CategoryContainer>
           </div>
           <div>
-            {/*}
+            {/* }
             <CategoryTitle>Commitment/Meetings</CategoryTitle>
-            {*/}
+            { */}
             <CategoryContainer>
               <h4>Meeting Times</h4>
               {projectData?.meetingTimes.map((meeting, i) => (
@@ -107,7 +105,7 @@ const Project = props => {
                 </p>
               ))}
               <h4>Meeting Links</h4>
-              {projectData?.meetingLinkURLs.map((url, i) => (
+              {projectData?.meetingLinkURLs.map((url) => (
                 <p key={url.id}>
                   <a href={url.url} rel="noopener noreferrer" target="_blank">
                     {url.roomName}
@@ -138,7 +136,7 @@ const Project = props => {
           display: "flex",
           justifyContent: "center",
           padding: "2rem",
-          color: "white"
+          color: "white",
         }}
       ></div>
       <div
@@ -146,7 +144,7 @@ const Project = props => {
           width: "100%",
           marginBottom: "2rem",
           display: "flex",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <Button
@@ -156,7 +154,7 @@ const Project = props => {
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
-            paddingRight: "20vw"
+            paddingRight: "20vw",
           }}
         >
           JOIN NOW
@@ -167,10 +165,12 @@ const Project = props => {
           width: "90%",
           marginLeft: "auto",
           marginRight: "auto",
-          marginBottom: "2rem"
+          marginBottom: "2rem",
         }}
       >
-        <a href="/projects">{"<<"} Back to Projects</a>
+        <Link href="/projects" passHref>
+          <a>{"<<"} Back to Projects</a>
+        </Link>
       </div>
     </Wrapper>
   );

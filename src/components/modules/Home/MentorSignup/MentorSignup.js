@@ -1,5 +1,5 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import {
   ContentArea,
@@ -7,7 +7,7 @@ import {
   EmailInput,
   ExperienceText,
   NameInput,
-  Submit
+  Submit,
 } from "./StyledMentorSignup";
 
 export default function MentorSignup() {
@@ -36,7 +36,9 @@ export default function MentorSignup() {
                 <EmailInput name="entry.888140061" type="email" required />
               </label>
 
-              <label for="mentorForm">Briefly describe your experience.</label>
+              <label htmlFor="mentorForm">
+                Briefly describe your experience.
+              </label>
               <ExperienceText
                 id="mentorForm"
                 rows="5"

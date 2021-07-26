@@ -1,5 +1,4 @@
-import styled, { css } from "styled-components";
-import theme from "../../../styles/theme.js";
+import styled from "styled-components";
 
 export const CenteredHeadline = styled.h1`
   text-align: center;

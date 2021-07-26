@@ -1,45 +1,48 @@
 import React, { useState, useEffect } from "react";
-import PageBody from "../../common/PageBody";
 import { useRouter } from "next/router";
 import axios from "axios";
-import DiscordImage from "../../../images/signup/discord.png";
+import PageBody from "../../common/PageBody";
+// import DiscordImage from "../../../images/signup/discord.png";
 
-import { FormWrapper, DiscordAuthWrapper } from "./StyledSignUp";
+import { FormWrapper } from "./StyledSignUp";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-import { env } from "../../../utils/EnvironmentVariables.js";
+import { env } from "../../../utils/EnvironmentVariables";
 
 export default function SignUp() {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const { userData } = useUserDataContext();
   const router = useRouter();
 
-  const handleUsernameChange = e => {
+  const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
 
   useEffect(() => {
-    setLoading(userData.id == -1);
+    // setLoading(userData.id === -1);
     // Prefetch the user profile page
     router.prefetch("/user-profile");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
-  const updateUser = async e => {
+  const updateUser = async (e) => {
     e.preventDefault();
     try {
-      const currentUser = await axios(env().STRAPI_URL + "/users/me", {
-        withCredentials: true
+      const currentUser = await axios(`${env().STRAPI_URL}/users/me`, {
+        withCredentials: true,
       });
       await axios.put(
-        env().STRAPI_URL + `/users/${currentUser.data.id}`,
-        { username: username },
+        `${env().STRAPI_URL}/users/${currentUser.data.id}`,
+        { username },
         {
-          withCredentials: true
+          withCredentials: true,
         }
       );
-      if (currentUser.status == 200) router.replace("/user-profile");
+      if (currentUser.status === 200) router.replace("/user-profile");
     } catch (err) {
+      // TODO give feedback onError
+      // eslint-disable-next-line no-console
       console.error(err);
     }
   };
@@ -82,8 +85,7 @@ export default function SignUp() {
                 </a>
               </>
             )}
-          </DiscordAuthWrapper>*/}
-
+          </DiscordAuthWrapper> */}
         <br />
       </PageBody>
     </div>

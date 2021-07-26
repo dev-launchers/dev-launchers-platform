@@ -1,1 +1,1 @@
-export { default } from "./NeedHelpSection.js";
+export { default } from "./NeedHelpSection";

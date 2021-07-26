@@ -1,1 +1,1 @@
-export { default } from "./CardGroup.js";
+export { default } from "./CardGroup";

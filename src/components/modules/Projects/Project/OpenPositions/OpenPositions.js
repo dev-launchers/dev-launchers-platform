@@ -3,12 +3,11 @@ import { withTheme } from "styled-components";
 import {
   Wrapper,
   OpenRolesContainer,
-  OpenRoleListing
+  OpenRoleListing,
 } from "./StyledOpenPositions";
-import { env } from "../../../../../utils/EnvironmentVariables.js";
 
-const OpenPositions = props => {
-  const projectData = props.projectData;
+const OpenPositions = (props) => {
+  const { projectData } = props;
 
   return (
     <Wrapper>

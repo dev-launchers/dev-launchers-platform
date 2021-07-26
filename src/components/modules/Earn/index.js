@@ -1,1 +1,1 @@
-export { default } from "./Earn.js";
+export { default } from "./Earn";

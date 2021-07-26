@@ -1,1 +1,1 @@
-export { default } from "./CenteredHeadline.js";
+export { default } from "./CenteredHeadline";

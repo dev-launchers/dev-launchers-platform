@@ -1,10 +1,10 @@
 import React from "react";
 import { withTheme } from "styled-components";
 import { Wrapper, TeamContentContainer, MembersContainer } from "./StyledTeam";
-import { env } from "../../../../../utils/EnvironmentVariables.js";
+// import { env } from "../../../../../utils/EnvironmentVariables";
 
-const Team = props => {
-  const projectData = props.projectData;
+const Team = (props) => {
+  const { projectData } = props;
 
   return (
     <Wrapper>
@@ -15,7 +15,7 @@ const Team = props => {
         <p style={{ width: "50%" }}>
           <h4>Leader(s)</h4>
           <MembersContainer>
-            {projectData?.team.leaders.map(leader => (
+            {projectData?.team.leaders.map((leader) => (
               <p key={leader.id}>
                 <p>{leader.name}</p>
                 <p>{leader.role}</p>
@@ -30,7 +30,7 @@ const Team = props => {
         <p style={{ width: "50%" }}>
           <h4>Members</h4>
           <MembersContainer>
-            {projectData?.team.members.map(member => (
+            {projectData?.team.members.map((member) => (
               <p key={member.id}>
                 <p>{member.name}</p>
                 <p>{member.role}</p>

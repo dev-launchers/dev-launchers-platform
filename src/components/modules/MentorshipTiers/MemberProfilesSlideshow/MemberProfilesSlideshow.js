@@ -6,8 +6,8 @@ import {
   CarouselBlock,
   CarouselBlockHeader,
   CarouselArrow,
-  InLabelDiv
-} from "./StyledMemberProfilesSlideshow.js";
+  InLabelDiv,
+} from "./StyledMemberProfilesSlideshow";
 
 const careerCategories = [
   "🎮 Game Design",
@@ -19,10 +19,10 @@ const careerCategories = [
   "🟧 Graphic Design",
   "👔 Entrepreneurship",
   "🔒 Cybersecurity",
-  "🤖 Machine Learning"
+  "🤖 Machine Learning",
 ];
 
-export default function MemberProfilesSlideshow(props) {
+export default function MemberProfilesSlideshow() {
   const [careerIndex, setCareerIndex] = React.useState(2);
   const [careerColumn1, setCareerColumn1] = React.useState(careerCategories[0]);
   const [careerColumn2, setCareerColumn2] = React.useState(careerCategories[1]);
@@ -30,15 +30,19 @@ export default function MemberProfilesSlideshow(props) {
 
   React.useEffect(() => {
     const carrerChangeInterval = setInterval(() => {
-      setCareerIndex(prevIndex => prevIndex + 1);
+      setCareerIndex((prevIndex) => prevIndex + 1);
     }, 2000);
 
     return () => clearInterval(carrerChangeInterval);
   }, []);
 
   const wrapIndex = (index, array) => {
-    index = index > array.length - 1 ? index - array.length : index;
-    index = index < 0 ? array.length - index - 3 : index;
+    if (index > array.length - 1) {
+      return index - array.length;
+    }
+    if (index < 0) {
+      return array.length - index - 3;
+    }
     return index;
   };
   React.useEffect(() => {
@@ -63,21 +67,21 @@ export default function MemberProfilesSlideshow(props) {
         <b>Check below to see where you fit in at Dev Launchers!</b>
         <CarouselHolder>
           <CarouselBlock>
-            <InLabelDiv>I'm a</InLabelDiv>
+            <InLabelDiv>I&apos;m a</InLabelDiv>
             <CarouselBlockHeader>Total Beginner</CarouselBlockHeader>
             <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn1}</div>
           </CarouselBlock>
           <CarouselArrow></CarouselArrow>
           <CarouselBlock>
-            <InLabelDiv>I'm a</InLabelDiv>
+            <InLabelDiv>I&apos;m a</InLabelDiv>
             <CarouselBlockHeader>Student</CarouselBlockHeader>
             <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn2}</div>
           </CarouselBlock>
           <CarouselArrow></CarouselArrow>
           <CarouselBlock>
-            <InLabelDiv>I'm a</InLabelDiv>
+            <InLabelDiv>I&apos;m a</InLabelDiv>
             <CarouselBlockHeader>Professional</CarouselBlockHeader>
             <InLabelDiv>in</InLabelDiv>
             <div>{careerColumn3}</div>

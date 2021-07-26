@@ -4,7 +4,7 @@ import { Layout, ProjectContainer } from "./StyledProjects";
 
 import { useProjectsDataContext } from "../../../context/ProjectsContext";
 
-import { env } from "../../../utils/EnvironmentVariables.js";
+// import { env } from "../../../utils/EnvironmentVariables";
 
 const Projects = () => {
   const projects = useProjectsDataContext();
@@ -15,7 +15,7 @@ const Projects = () => {
         width: "90%",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "3rem"
+        marginTop: "3rem",
       }}
     >
       <h1>Projects you can join!</h1>
@@ -27,14 +27,14 @@ const Projects = () => {
       </div>
       <Layout>
         {projects.map((project, i) => (
-          <ProjectContainer>
+          <ProjectContainer key={i}>
             <Card
               isLinkingInside
               style={{ margin: 0, width: "100%", height: "100%" }}
               cardData={{
                 id: project.id,
                 title: project.title,
-                secondaryText: "Commitment level: " + project.commitmentLevel,
+                secondaryText: `Commitment level: ${project.commitmentLevel}`,
                 tags: project.keywords.map(({ keyword }) => keyword),
                 description: project.catchPhrase,
                 href: project.slug,
@@ -48,7 +48,7 @@ const Projects = () => {
                       <a>DONATE</a>
                     </Link>
                   </>
-                )
+                ),
               }}
             />
           </ProjectContainer>

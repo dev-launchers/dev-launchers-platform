@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "../../../styles/theme.js";
 
 export const HomePageBody = styled.div`
   /*margin-top: 45vw;*/
@@ -20,7 +19,7 @@ export const ColoredCtaWrapper = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
 
-  border-bottom: 1rem solid ${theme.colors.NEUTRAL_1};
+  border-bottom: 1rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
 
   @media (orientation: portrait) {
     height: 30vh;
@@ -29,7 +28,7 @@ export const ColoredCtaWrapper = styled.div`
 export const ColoredCtaEntry = styled.div`
   width: 33.3%;
   height: 100%;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
   cursor: pointer;
 
   display: flex;
@@ -38,18 +37,18 @@ export const ColoredCtaEntry = styled.div`
   align-items: center;
   overflow: hidden;
 
-  color: ${theme.colors.NEUTRAL_2};
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
   &:hover {
-    color: ${props => props.backgroundColor};
+    color: ${(props) => props.backgroundColor};
   }
 `;
 export const ColoredCtaEntryTitle = styled.div`
   text-align: center;
   font-size: 2.5rem;
-  font-family: ${theme.fonts.headline};
+  font-family: ${({ theme }) => theme.fonts.headline};
   width: 100%;
   /* height: 4rem; */
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
 
   display: flex;
   flex-direction: column;

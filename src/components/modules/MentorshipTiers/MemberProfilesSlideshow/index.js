@@ -1,1 +1,1 @@
-export { default } from "./MemberProfilesSlideshow.js";
+export { default } from "./MemberProfilesSlideshow";

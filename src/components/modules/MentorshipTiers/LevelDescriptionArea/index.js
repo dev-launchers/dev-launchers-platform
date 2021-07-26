@@ -1,1 +1,1 @@
-export { default } from "./LevelDescriptionArea.js";
+export { default } from "./LevelDescriptionArea";

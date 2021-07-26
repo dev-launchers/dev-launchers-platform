@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./StyledJoinProgramButton";
 
-export default function JoinProgramButton(props) {
+export default function JoinProgramButton() {
   return (
     <Wrapper>
       <div

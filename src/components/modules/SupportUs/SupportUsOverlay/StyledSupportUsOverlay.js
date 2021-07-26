@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`
   position: relative;
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   width: 100%;
   height: 30vw;
-  border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
+  border-bottom: 0.5rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
 
   display: flex;
   flex-direction: row;
@@ -21,13 +20,13 @@ export const Wrapper = styled.div`
 export const RainbowedMessageArea = styled.div`
   width: 70%;
   height: 50%;
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   flex-direction: column;
   margin-top: 7.25%;
 `;
 
 export const MessageArea = styled.div`
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   height: 50%;
   display: flex;
   justify-content: center;
@@ -40,7 +39,7 @@ export const Tagline = styled.div`
   /* font-weight: bold; */
   font-size: 3rem;
   color: white;
-  font-family: ${theme.fonts.headline}, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1.1em;
 
   @media (orientation: portrait) {
@@ -52,7 +51,7 @@ export const ImageArea = styled.div`
   position: relative;
   width: 30%;
   height: 100%;
-  background-color: ${theme.colors.ACCENT_3};
+  background-color: ${({ theme }) => theme.colors.ACCENT_3};
   overflow: hidden;
 
   display: flex;
@@ -62,9 +61,10 @@ export const ImageArea = styled.div`
 
 export const Image = styled.img`
   height: 100%;
-  filter: drop-shadow(-0.075rem 0rem 0 ${theme.colors.NEUTRAL_2})
-    drop-shadow(0rem -0.075rem 0 ${theme.colors.NEUTRAL_2})
-    drop-shadow(0.15rem 0rem 0 ${theme.colors.NEUTRAL_2}) grayscale(100%);
+  filter: drop-shadow(-0.075rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
+    drop-shadow(0rem -0.075rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
+    drop-shadow(0.15rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
+    grayscale(100%);
   transform: scale(2.25);
   position: relative;
   top: 20%;

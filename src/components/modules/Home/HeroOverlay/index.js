@@ -1,1 +1,1 @@
-export { default } from "./HeroOverlay.js";
+export { default } from "./HeroOverlay";
