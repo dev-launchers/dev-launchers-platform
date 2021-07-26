@@ -15,6 +15,7 @@ import OpenPositions from "./OpenPositions";
 import Team from "./Team";
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
+import Milestones from "../../UserProfile/Milestones";
 
 // eslint-disable-next-line no-unused-vars
 const truncateText = (text, truncateAt, replaceWith) => {
@@ -64,6 +65,7 @@ const Project = (props) => {
         >
           {projectData?.vision}
         </div>
+        <Milestones />
         <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
           <h3 style={{ display: "inline" }}>Description:</h3>{" "}
           {projectData?.description?.split("\n").map((text, i) => (
