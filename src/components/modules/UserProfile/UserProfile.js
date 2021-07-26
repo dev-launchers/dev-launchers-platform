@@ -14,7 +14,7 @@ import { useUserDataContext } from "../../../context/UserDataContext";
 import { env } from "../../../utils/EnvironmentVariables";
 
 import { Wrapper, UserSection, UserInfo, Misc } from "./StyledUserProfile";
-import DiscordSection from "./DiscordSection/DiscordSection";
+// import DiscordSection from "./DiscordSection/DiscordSection";
 
 export default function UserProfile() {
   const { userData } = useUserDataContext();
@@ -58,7 +58,7 @@ export default function UserProfile() {
                 avatarKey={userData.discord.avatar}
                 discordUsername={userData.discord.username}
                 discordDiscriminator={userData.discord.discriminator}
-              />*/}
+              /> */}
           </Misc>
         </Wrapper>
       ) : (
