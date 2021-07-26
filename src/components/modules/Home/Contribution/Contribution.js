@@ -1,4 +1,5 @@
 import React from "react";
+import { withTheme } from "styled-components";
 import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
@@ -13,7 +14,6 @@ import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";
 
 import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
-import { withTheme } from "styled-components";
 
 function Contribution(props) {
   return (
@@ -46,7 +46,7 @@ function Contribution(props) {
                 href="https://devlaunchers.com/projects"
                 bgColor={props.theme.colors.ACCENT_3}
                 style={{
-                  marginLeft: "1rem"
+                  marginLeft: "1rem",
                 }}
               >
                 View our projects

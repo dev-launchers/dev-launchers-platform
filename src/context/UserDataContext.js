@@ -32,8 +32,8 @@ function useUserData() {
 
   React.useEffect(() => {
     // Setting timeout because of environment variable hack
-    axios(env().STRAPI_URL + "/users/me", {
-      withCredentials: true
+    axios(`${env().STRAPI_URL}/users/me`, {
+      withCredentials: true,
     })
       .then(({ data: currentUser }) => {
         setUserData({
@@ -47,7 +47,7 @@ function useUserData() {
           totalPoints: currentUser.point.totalPoints,
           totalSeasonPoints: currentUser.point.totalSeasonPoints,
           availablePoints: currentUser.point.availablePoints,
-          volunteerHours: currentUser.point.volunteerHours
+          volunteerHours: currentUser.point.volunteerHours,
         });
       })
       .catch(() => {
