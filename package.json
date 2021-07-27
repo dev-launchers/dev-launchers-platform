@@ -29,12 +29,12 @@
     "react-social-icons": "latest",
     "react-tabs": "^3.1.0",
     "react-toastify": "latest",
+    "regenerator-runtime": "^0.13.7",
     "semantic-release": "^17.4.2",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
-    "wrangler": "^0.0.2",
-    "regenerator-runtime": "^0.13.7"
+    "wrangler": "^0.0.2"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.12.0",
@@ -44,6 +44,7 @@
     "eslint-config-prettier": "^8.3.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
+    "postcss": "^8.2.13",
     "prettier": "^2.3.1"
   },
   "scripts": {
