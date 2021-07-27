@@ -19,7 +19,7 @@ const ProjectsList = ({ projects }) => (
   <div>
     <Header />
     <ProjectsDataProvider>
-      <Projects projects={projects} />
+      <Projects projects={projects || ""} />
     </ProjectsDataProvider>
     <Footer />
   </div>
