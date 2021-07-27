@@ -159,7 +159,7 @@ const Project = (props) => {
     //   </div>
     // </Wrapper>
 
-    <div>{props.phone}</div>
+    <div>props.phone</div>
   );
 };
 

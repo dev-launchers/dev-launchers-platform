@@ -33,7 +33,7 @@ export const getStaticProps = async (context) => {
 const ProjectRoute = ({ project }) => (
   <div>
     <Header />
-    <Project {...project} />
+    <Project project={project} />
     <Footer />
   </div>
 );

@@ -47,7 +47,7 @@ const Projects = ({ projects }) => (
           />
         </ProjectContainer>
       ))} */}
-      <div>{projects.map((project) => project.email)}</div>
+      <div>projects.map</div>
     </Layout>
   </div>
 );
