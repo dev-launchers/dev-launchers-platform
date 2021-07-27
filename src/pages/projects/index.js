@@ -6,12 +6,7 @@ import { env } from "../../utils/EnvironmentVariables";
 import { ProjectsDataProvider } from "../../context/ProjectsContext";
 
 export const getStaticProps = async () => {
-  const { data: projects } = await axios(`${env().STRAPI_URL}/projects`, {
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "User-Agent": "*",
-    },
-  });
+  const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
   // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
   // const data = await res.json();
   return {
