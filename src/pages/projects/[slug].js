@@ -16,7 +16,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context) => {
-  const slug = context.params.Project;
+  const { slug } = context.params;
   const { data: project } = await axios.get(
     `https://cms-api-staging.devlaunchers.com/projects/${slug}`
   );
