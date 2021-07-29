@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const Wrapper = styled.div`
   p {
     padding-left: 1rem;
@@ -35,26 +36,5 @@ export const CategoryContainer = styled.div`
   ul {
     margin: 0.5rem;
     padding: 0 0 0 1rem;
-  }
-`;
-export const TeamContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  h4 {
-    margin-top: 0;
-  }
-  p {
-    margin: 0;
-  }
-`;
-
-export const MembersContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-
-  & > li {
-    margin-right: 5rem;
-    margin-bottom: 1rem;
   }
 `;

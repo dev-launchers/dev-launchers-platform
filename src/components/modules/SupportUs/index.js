@@ -1,1 +1,1 @@
-export { default } from "./SupportUs.js";
+export { default } from "./SupportUs";

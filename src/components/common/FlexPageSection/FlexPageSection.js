@@ -4,7 +4,6 @@ import Wrapper from "./StyledFlexPageSection";
 export default function FlexPageSection({
   children,
   style = {},
-  align,
   width,
   height,
   contentWidth = "100%",
@@ -12,31 +11,31 @@ export default function FlexPageSection({
   flexDirection = "row",
   justifyContent = "center",
   alignItems = "center",
-  backgroundImage
+  backgroundImage,
 }) {
-  style.width = width ? width : style.width;
-  style.height = height ? height : style.height;
-  style.display = style.display ? style.display : "flex";
-  style.flexDirection = style.flexDirection
-    ? style.flexDirection
-    : flexDirection;
-  style.justifyContent = style.justifyContent
-    ? style.justifyContent
-    : justifyContent;
-  style.alignItems = style.alignItems ? style.alignItems : alignItems;
-  style.backgroundImage = backgroundImage ? `url(${backgroundImage})` : "";
-
-  let contentStyle = {
+  const styles = {
+    ...style,
+    width: width || style.width,
+    height: height || style.height,
+    display: style.display ? style.display : "flex",
+    flexDirection: style.flexDirection ? style.flexDirection : flexDirection,
+    justifyContent: style.justifyContent
+      ? style.justifyContent
+      : justifyContent,
+    alignItems: style.alignItems ? style.alignItems : alignItems,
+    backgroundImage: backgroundImage ? `url(${backgroundImage})` : "",
+  };
+  const contentStyle = {
     width: contentWidth,
     height: contentHeight,
     display: style.display,
     flexDirection: style.flexDirection,
     justifyContent: style.justifyContent,
-    alignItems: style.alignItems
+    alignItems: style.alignItems,
   };
 
   return (
-    <Wrapper style={style}>
+    <Wrapper style={styles}>
       <div style={contentStyle}>{children}</div>
     </Wrapper>
   );

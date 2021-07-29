@@ -1,1 +1,1 @@
-export { default } from "./ArticleInfoBar.js";
+export { default } from "./ArticleInfoBar";

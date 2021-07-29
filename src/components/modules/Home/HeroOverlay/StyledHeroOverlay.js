@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`
   position: relative;
-  background-color: ${theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
   width: 100%;
   height: 30vw;
-  border-bottom: 0.5rem solid ${theme.colors.NEUTRAL_1};
+  border-bottom: 0.5rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
   overflow: hidden;
 
   display: flex;
@@ -24,7 +23,7 @@ export const Tagline = styled.div`
   /* font-weight: bold; */
   font-size: 3rem;
   color: white;
-  font-family: ${theme.fonts.headline}, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1.1em;
 
   @media (orientation: portrait) {
@@ -36,7 +35,7 @@ export const Tagline = styled.div`
 export const MessageArea = styled.div`
   width: 70%;
   height: 100%;
-  background-color: ${theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
 
   display: flex;
   justify-content: center;
@@ -67,9 +66,9 @@ export const ImageArea = styled.div`
 
 export const Image = styled.img`
   height: 100%;
-  filter: drop-shadow(-0.2rem 0rem 0 ${theme.colors.NEUTRAL_2})
-    drop-shadow(0rem -0.2rem 0 ${theme.colors.NEUTRAL_2})
-    drop-shadow(0.3rem 0rem 0 ${theme.colors.NEUTRAL_2});
+  filter: drop-shadow(-0.2rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
+    drop-shadow(0rem -0.2rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
+    drop-shadow(0.3rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2});
 
   @media (orientation: portrait) {
     height: 70%;

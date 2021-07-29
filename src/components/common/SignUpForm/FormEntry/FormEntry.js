@@ -1,7 +1,5 @@
 import React from "react";
 
-import { useForm, useField, splitFormProps } from "react-form";
-
 import { FormEntryHolder, FormEntryTitle } from "./StyledFormEntry";
 
 export default function FormEntry(props) {

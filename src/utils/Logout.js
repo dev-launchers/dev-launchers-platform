@@ -1,13 +1,14 @@
 import Router from "next/router";
-import { env } from "./EnvironmentVariables";
 import axios from "axios";
+import { env } from "./EnvironmentVariables";
 
-export const Logout = () => {
+const Logout = () => {
   axios
-    .get(`${env().API_URL}/auth/logout`, { withCredentials: true })
+    .get(`${env().STRAPI_URL}/auth/logout`, { withCredentials: true })
     .then(response => {
       console.log(response);
-
       Router.reload(window.location.pathname);
     });
 };
+
+export default Logout;

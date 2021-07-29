@@ -2,7 +2,7 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
-import { env } from "../utils/EnvironmentVariables.js";
+import { env } from "../utils/EnvironmentVariables";
 
 const DEFAULT_PROJECTS = [];
 
@@ -13,12 +13,12 @@ function useProjectsData() {
   const [projectsData, setProjectsData] = React.useState(DEFAULT_PROJECTS);
 
   React.useEffect(() => {
-    axios(env().STRAPI_URL + "/projects")
+    axios(`${env().STRAPI_URL}/projects`)
       .then(({ data }) => {
         setProjectsData(data);
       })
-      .catch(err => {
-        //setUserData({ id: "invalid" });
+      .catch(() => {
+        // setUserData({ id: "invalid" });
       });
   }, []);
 
@@ -26,7 +26,6 @@ function useProjectsData() {
 }
 
 // Step 2: Declare your context state object to share the state with other components
-const [ProjectsDataProvider, useProjectsDataContext] = constate(
-  useProjectsData
-);
+const [ProjectsDataProvider, useProjectsDataContext] =
+  constate(useProjectsData);
 export { ProjectsDataProvider, useProjectsDataContext };

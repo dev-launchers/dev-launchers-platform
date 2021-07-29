@@ -1,1 +1,1 @@
-export { default } from "./CurrentPoints.js";
+export { default } from "./CurrentPoints";

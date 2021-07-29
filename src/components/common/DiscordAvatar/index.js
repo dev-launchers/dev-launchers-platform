@@ -1,1 +1,1 @@
-export { default } from "./DiscordAvatar.js";
+export { default } from "./DiscordAvatar";
