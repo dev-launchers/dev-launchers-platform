@@ -50,11 +50,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next build && next start",
-    "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
-    "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
-    "lint": "next lint",
-    "prepare": "husky install"
+    "start": "next start",
+    "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
   },
   "browserslist": [
     ">0.2%",
