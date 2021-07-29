@@ -6,80 +6,72 @@ export default function Building() {
   const [buildingData, setBuildingData] = React.useState({
     messHall: {
       name: "Common Area",
-      url: "https://meet.google.com/phz-ckei-aij",
+      url: "https://meet.google.com/xoc-wvyh-xof",
       color: "#fff",
-      isActive: false
+      isActive: false,
     },
     room1: {
       name: "Room 1",
-      url:
-        "https://hangouts.google.com/u/0/call/b9pYkOzJs0Oe6QXSld2rAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/b9pYkOzJs0Oe6QXSld2rAEEE?no_rd",
       color: "yellow",
-      isActive: false
+      isActive: false,
     },
     room2: {
       name: "Room 2",
-      url:
-        "https://hangouts.google.com/u/0/call/2tpdbynE1MiwDbbZyb3tAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/2tpdbynE1MiwDbbZyb3tAEEE?no_rd",
       color: "pink",
-      isActive: false
+      isActive: false,
     },
     room3: {
       name: "Room 3",
-      url:
-        "https://hangouts.google.com/u/0/call/AkYvoAvy-jqdrcnvH264AEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/AkYvoAvy-jqdrcnvH264AEEE?no_rd",
       color: "green",
-      isActive: false
+      isActive: false,
     },
     room4: {
       name: "Room 4",
-      url:
-        "https://hangouts.google.com/u/0/call/tL3MMp5PweV6o1NAPupeAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/tL3MMp5PweV6o1NAPupeAEEE?no_rd",
       color: "red",
-      isActive: false
+      isActive: false,
     },
     room5: {
       name: "Room 5",
-      url:
-        "https://hangouts.google.com/u/0/call/CscVhFU_KUyuIF9pD1ozAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/CscVhFU_KUyuIF9pD1ozAEEE?no_rd",
       color: "grey",
-      isActive: false
+      isActive: false,
     },
     room6: {
       name: "Room 6",
-      url:
-        "https://hangouts.google.com/u/0/call/pU2BN1zpASm-cjODGLzUAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/pU2BN1zpASm-cjODGLzUAEEE?no_rd",
       color: "orange",
-      isActive: false
+      isActive: false,
     },
     room7: {
       name: "Room 7",
-      url:
-        "https://hangouts.google.com/u/0/call/p1wD4UVgNLuwDn6PT9HQAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/p1wD4UVgNLuwDn6PT9HQAEEE?no_rd",
       color: "purple",
-      isActive: false
+      isActive: false,
     },
     room8: {
       name: "Room 8",
-      url:
-        "https://hangouts.google.com/u/0/call/1fY-jRQoz6nnchju63OFAEEE?no_rd",
+      url: "https://hangouts.google.com/u/0/call/1fY-jRQoz6nnchju63OFAEEE?no_rd",
       color: "blue",
-      isActive: false
+      isActive: false,
     },
 
     recRoom: {
       name: "Rec Room (SOON)",
       url: "",
       color: "black",
-      isActive: false
+      isActive: false,
     },
 
     lounge: {
       name: "Lounge",
       url: "https://hub.link/M7yXJ5T",
       color: "brown",
-      isActive: false
-    }
+      isActive: false,
+    },
   });
 
   const [activeRoomKey, setActiveRoomKey] = React.useState("");
@@ -87,7 +79,7 @@ export default function Building() {
     setBuildingData({
       ...buildingData,
       [activeRoomKey]: { ...buildingData[activeRoomKey], isActive: false },
-      [roomKey]: { ...buildingData[roomKey], isActive: isActive }
+      [roomKey]: { ...buildingData[roomKey], isActive },
     });
 
     setActiveRoomKey(roomKey);
@@ -175,7 +167,7 @@ export default function Building() {
 }
 
 function Room({ className, roomData, roomKey, setRoomActive }) {
-  const openHangout = url => {
+  const openHangout = (url) => {
     // Do open
     setRoomActive(roomKey, true);
     window.open(url, "_blank");

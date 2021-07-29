@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import logoMonogramImage from "../../../images/logo-monogram.png";
 
-import theme from "../../../styles/theme.js";
-
-function getRandomThemeColor() {
+function getRandomThemeColor(theme) {
   const colors = [
     theme.colors.ACCENT_1,
     theme.colors.ACCENT_2,
     theme.colors.ACCENT_3,
-    theme.colors.ACCENT_4
+    theme.colors.ACCENT_4,
   ];
   let colorTrack = -1;
 
-  return function() {
+  return () => {
     colorTrack = colorTrack >= colors.length - 1 ? 0 : colorTrack + 1;
     return colors[colorTrack];
   };
@@ -23,8 +21,8 @@ export const Wrapper = styled.div`
   background-color: #1c1c1c;
   color: #d9d9d9;
   width: 100%;
-  height: 50vh;
-  min-height: 100px;
+  height: 600px;
+  min-height: 500px;
 
   display: flex;
   flex-direction: column;
@@ -37,12 +35,17 @@ export const Wrapper = styled.div`
 
 export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
-  alt: "logo"
+  alt: "logo",
 }))`
-  height: 10vh;
-  @media (orientation: portrait) {
-    height: auto;
-    width: 15vw;
+  width: 7rem;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  transition: 0.3s;
+
+  :hover {
+    transform: rotate(-60deg);
   }
 `;
 
@@ -51,28 +54,26 @@ export const FooterNav = styled.div`
   width: 50%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: -50px;
   @media (orientation: portrait) {
     min-width: 200px;
     width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 `;
 export const SocialMediaContainer = styled.div`
-  margin-top: 2.5%;
+  margin-top: -3%;
+  margin-bottom: -1.5%;
   min-width: 10rem;
   width: 40%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
   font-size: 5rem;
   @media (orientation: portrait) {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    width: 100%;
   }
 `;
 
@@ -96,9 +97,23 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
       href = "https://www.discord.io/devlaunchers/";
       className = "fab fa-discord";
       break;
+    default:
+      href = null;
+      className = null;
+      break;
   }
   return { href, className };
-})``;
+})`
+  font-size: 5rem;
+  color: ${({ theme }) => theme.colors.ACCENT_4};
+
+  transition: 0.3s;
+  :hover {
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+    transform: scale(1.25);
+  }
+`;
+
 export const NavEntry = styled.div`
   cursor: pointer;
   font-size: 1.75rem;
@@ -108,9 +123,11 @@ export const NavEntry = styled.div`
   padding-right: 0.5rem;
   transition: 0.5s;
 
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+
   &:hover {
-    border-bottom: 0.4rem solid ${getRandomThemeColor()};
-    color: ${theme.colors.NEUTRAL_2};
+    color: ${({ theme }) => theme.colors.ACCENT_4};
+    border-bottom: 0.4rem solid ${({ theme }) => getRandomThemeColor(theme)};
   }
 
   @media (orientation: portrait) {

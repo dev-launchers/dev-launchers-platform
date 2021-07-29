@@ -1,1 +1,1 @@
-export { default } from "./Beans.js";
+export { default } from "./Beans";

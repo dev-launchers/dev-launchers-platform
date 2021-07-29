@@ -1,6 +1,6 @@
 import React from "react";
 import "react-tabs/style/react-tabs.css"; // import react-tabs styles
-import PageBody from "../../../components/common/PageBody";
+import PageBody from "../../common/PageBody";
 
 const STORIES_CONTENT_URL = "https://dev-launchers.github.io/stories/";
 
@@ -8,8 +8,8 @@ export default function Stories() {
   const [storiesPageData, setStoriesState] = React.useState({});
   React.useEffect(() => {
     fetch(STORIES_CONTENT_URL)
-      .then(response => response.text())
-      .then(data => {
+      .then((response) => response.text())
+      .then((data) => {
         setStoriesState(data);
       });
   }, []);

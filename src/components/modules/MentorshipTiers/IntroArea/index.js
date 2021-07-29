@@ -1,1 +1,1 @@
-export { default } from "./IntroArea.js";
+export { default } from "./IntroArea";

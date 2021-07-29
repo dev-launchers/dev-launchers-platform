@@ -1,1 +1,1 @@
-export { default } from "./MentorshipTiers.js";
+export { default } from "./MentorshipTiers";

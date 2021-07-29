@@ -1,1 +1,1 @@
-export { default } from "./PixilartWrapper.js";
+export { default } from "./PixilartWrapper";

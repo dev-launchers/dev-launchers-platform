@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   margin: 0.5%;
-  width: ${({ size }) => (size == "large" ? "90%" : "24%")};
+  width: ${({ size }) => (size === "large" ? "90%" : "24%")};
   background-color: white;
   /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
   display: flex;
@@ -16,21 +16,18 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex: 1;
-  flex-direction: ${({ flexDirection }) =>
-    flexDirection ? flexDirection : "column"};
+  flex-direction: ${({ flexDirection }) => flexDirection || "column"};
   ${({ size }) =>
-    size == "large" &&
+    size === "large" &&
     css`
       flex-direction: row;
       justify-content: space-between;
     `}
   && {
-    flex-direction: ${({ flexDirection }) =>
-      flexDirection ? flexDirection : "column"};
+    flex-direction: ${({ flexDirection }) => flexDirection || "column"};
   }
   align-items: center;
-  text-align: ${({ textAlignment }) =>
-    textAlignment ? textAlignment : "left"};
+  text-align: ${({ textAlignment }) => textAlignment || "left"};
 `;
 
 export const ImageHolder = styled.div`
@@ -46,12 +43,13 @@ export const ImageHolder = styled.div`
   }
 `;
 export const TagsContainer = styled.div`
+  text-align: center;
   position: absolute;
-  top: 1%;
+  top: 3%;
   right: 1%;
   display: grid;
   gap: 0.5rem;
-`
+`;
 export const Image = styled.div`
   background-color: lightgray;
   width: 100%;
@@ -74,7 +72,7 @@ export const DataHolder = styled.div`
   padding: 0.5rem;
   width: 95%;
   ${({ size }) =>
-    size == "large" &&
+    size === "large" &&
     css`
       width: 70%;
       padding: 6.75%;

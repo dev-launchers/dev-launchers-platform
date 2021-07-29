@@ -1,1 +1,1 @@
-export { default } from "./TextAreaField.js";
+export { default } from "./TextAreaField";

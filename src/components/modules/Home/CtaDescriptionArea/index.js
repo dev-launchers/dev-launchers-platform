@@ -1,1 +1,1 @@
-export { default } from "./CtaDescriptionArea.js";
+export { default } from "./CtaDescriptionArea";

@@ -1,10 +1,11 @@
+/* eslint-disable no-use-before-define */
 // TODO: make generic IdeaGenerator for both components to use (DRY issue)
 
 import React from "react";
 
-import Modal from "../../../../../components/common/Modal";
+import Modal from "../../../../common/Modal";
 
-import { Wrapper } from "./StyledIdeaGeneratorButton.js";
+import { Wrapper } from "./StyledIdeaGeneratorButton";
 
 export default function IdeaGeneratorButton(props) {
   // Modal state management
@@ -30,7 +31,7 @@ export default function IdeaGeneratorButton(props) {
           fontSize: "5rem",
           backgroundColor: "rgb(255,255,255)",
           fontWeight: "bold",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         {props.contentGenerator()}
@@ -40,21 +41,19 @@ export default function IdeaGeneratorButton(props) {
     openModal();
   };
 
-  const generateButton = styleObject => {
-    return (
-      <Wrapper style={styleObject}>
-        <Modal
-          modalContent={modalContent}
-          modalIsOpen={modalIsOpen}
-          openModal={openModal}
-          closeModal={closeModal}
-        ></Modal>
-        <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
-          {props.children}
-        </div>
-      </Wrapper>
-    );
-  };
+  const generateButton = (styleObject) => (
+    <Wrapper style={styleObject}>
+      <Modal
+        modalContent={modalContent}
+        modalIsOpen={modalIsOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+      ></Modal>
+      <div style={{ width: "100%", height: "100%" }} onClick={openIdeaModal}>
+        {props.children}
+      </div>
+    </Wrapper>
+  );
 
   return generateButton();
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "react-tabs/style/react-tabs.css"; // import react-tabs styles
-import PageBody from "../../../components/common/PageBody";
+import PageBody from "../../../common/PageBody";
 
 export default function Article() {
   return (
@@ -13,7 +13,7 @@ export default function Article() {
         </div>
         <div
           className="content"
-          dangerouslySetInnerHTML={{ __html: storiesPageData }}
+          /* dangerouslySetInnerHTML={{ __html: storiesPageData }} */
         ></div>
       </PageBody>
     </div>

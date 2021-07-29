@@ -14,16 +14,14 @@ export default function CardGroup(props) {
       )}
       <Collection cardGroupFlexDirection={props.cardGroupFlexDirection}>
         {Object.keys(props.cards).length !== 0 &&
-          props.cards.map((items, i) => {
-            return (
-              <Card
-                cardData={items}
-                key={i}
-                size={props.size}
-                attachment={props.attachment}
-              />
-            );
-          })}
+          props.cards.map((items, i) => (
+            <Card
+              cardData={items}
+              key={i}
+              size={props.size}
+              attachment={props.attachment}
+            />
+          ))}
       </Collection>
     </div>
   );

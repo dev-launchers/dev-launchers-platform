@@ -1,8 +1,7 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
-import LogoImage from "./LogoImage/LogoImage.js";
-import Card from "../../../common/Card/Card.js";
+import LogoImage from "./LogoImage/LogoImage";
 import CenteredHeadline from "../../../common/CenteredHeadline";
 
 import aespriteImage from "../../../../images/home-page/aseprite.png";

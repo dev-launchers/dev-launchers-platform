@@ -1,37 +1,41 @@
 import React from "react";
 
-import PageBody from "../../../components/common/PageBody";
-import Button from "../../../components/common/Button";
+import PageBody from "../../common/PageBody";
+import Button from "../../common/Button";
 
-import studentPhoto from "../../../images/support-us/people-inside-room-3184468.jpg";
+import SupportUsOverlay from "./SupportUsOverlay";
+
+import studentPhoto from "../../../images/support-us/bw-girl-profile.png";
 import {
   ContentArea,
   StudentImageWrapper,
   StudentImage,
   CtaWrapper,
   CtaText,
+  CtaHeaderArea,
+  CtaHeaderMessage,
   CtaButtonWrapper,
-  StatusNote
+  StatusNote,
 } from "./StyledSupportUs";
 
 export default function SupportUs() {
   return (
     <div>
-      <PageBody width="95%">
-        <br />
-        <h1>
-          SUPPORT US<span style={{ fontSize: "1rem" }}> (we love you)</span>
-        </h1>
+      <SupportUsOverlay />
+      <PageBody>
         <ContentArea>
           <StudentImageWrapper>
             <StudentImage src={studentPhoto} />
           </StudentImageWrapper>
           <CtaWrapper>
+            <CtaHeaderArea>
+              <CtaHeaderMessage>Support Us</CtaHeaderMessage>
+            </CtaHeaderArea>
             <CtaText>
               Dev Launchers is a 501(c)(3) nonprofit intent on empowering
-              diverse young creatives, innovators, and leaders. We're working on
-              touching as many lives as we possibly can, and need your help to
-              make that happen. Any amount helps!
+              diverse young creatives, innovators, and leaders. We&apos;re
+              working on touching as many lives as we possibly can, and need
+              your help to make that happen. Any amount helps!
             </CtaText>
             <CtaButtonWrapper>
               <Button

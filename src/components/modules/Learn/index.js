@@ -1,1 +1,1 @@
-export { default } from "./Learn.js";
+export { default } from "./Learn";

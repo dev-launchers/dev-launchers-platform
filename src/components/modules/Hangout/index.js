@@ -1,1 +1,1 @@
-export { default } from "./Hangout.js";
+export { default } from "./Hangout";
