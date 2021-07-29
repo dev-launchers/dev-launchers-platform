@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
-
-import theme from "../../../../styles/theme.js";
 
 export const Wrapper = styled.div`
   padding-top: 7.5%;
@@ -13,17 +10,30 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  /* border-bottom: 2rem solid ${theme.colors.NEUTRAL_1}; */
+  /* border-bottom: 2rem solid ${({ theme }) => theme.colors.NEUTRAL_1}; */
 `;
 
 export const CenteredTitle = styled.div`
-  font-family: "Abel", sans-serif;
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   font-size: 3rem;
   width: 50%;
   margin: 1%;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 2%;
+  //padding-bottom: 0.3%;
+`;
+
+export const CenteredIntro = styled.div`
+  font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
+  font-size: 1.8rem;
+  font-weight: -100;
+  line-height: 1.4;
+  width: 70%;
+  margin: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0.3%;
+  //padding-bottom: 0.1%;
 `;
 
 export const IntroDescriptionWrapper = styled.div`
@@ -39,14 +49,14 @@ export const IntroDescriptionWrapper = styled.div`
 `;
 
 export const IntroSummaryBox = styled.div`
-  font-family: "Abel";
+  font-family: ${({ theme }) => theme.fonts.headline};
   width: 20%;
   text-align: right;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: ${theme.colors.NEUTRAL_1};
-  color: ${theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
   font-size: 1rem;
   padding: 1rem;
 

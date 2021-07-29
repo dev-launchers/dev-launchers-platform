@@ -1,16 +1,19 @@
 import React from "react";
 import Link from "next/link";
-
+import Image from "next/image";
+import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png";
+import Logout from "../../../utils/Logout";
+import { env } from "../../../utils/EnvironmentVariables";
+import { useUserDataContext } from "../../../context/UserDataContext";
 
-import { slide as SlideHamburgerMenu } from "react-burger-menu";
-
-function HamburgerMenu(props) {
+function HamburgerMenu() {
+  const { userData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
-  const isMenuOpen = function(state) {
+  const isMenuOpen = (state) => {
     setMenuOpen(state.isOpen);
   };
 
@@ -22,6 +25,8 @@ function HamburgerMenu(props) {
   return (
     <SlideHamburgerMenu
       right
+      className={style.menuBody}
+      overlayClassName={style.overlay}
       isOpen={menuOpen}
       burgerButtonClassName={style.burgerButton}
       burgerBarClassName={style.burgerBar}
@@ -38,47 +43,75 @@ function HamburgerMenu(props) {
           color: "#d9d9d9",
           display: "flex",
           alignItems: "center",
-          flexDirection: "column"
+          flexDirection: "column",
         }}
       >
         <div className={style.Logo} onClick={handleNavClick}>
           <div className={style.LogoWrapper}>
-            <Link href={"/"} className="nav-link">
-              <div className={style.LogoImageHolder}>
-                <img src={logoMonogramImage} className={style.LogoImage} />
-              </div>
+            <Link href={"/"} passHref>
+              <a className="nav-link">
+                <div className={style.LogoImageHolder}>
+                  <Image
+                    alt="Logo"
+                    src={logoMonogramImage}
+                    className={style.LogoImage}
+                    width="144"
+                    height="144"
+                  />
+                </div>
+              </a>
             </Link>
           </div>
         </div>
         <div>
           <div className={style.HeaderNav} onClick={handleNavClick}>
-            <Link href={"/create"} className="nav-link">
-              <a>
+            <Link href={"/create"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>CREATE</div>
               </a>
             </Link>
-            <Link href={"/learn"} className="nav-link">
-              <a>
+            <Link href={"/learn"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>LEARN</div>
               </a>
             </Link>
-            {/*}
+
+            <div>
+              {userData.id ? (
+                <>
+                  <Link href={"/user-profile"} passHref>
+                    <a className="nav-link">
+                      <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
+                    </a>
+                  </Link>
+                  <a onClick={Logout} className="nav-link">
+                    <div className={style.navEntry}>LOG OUT </div>
+                  </a>
+                </>
+              ) : (
+                <a href={env().GOOGLE_AUTH_URL} className="nav-link">
+                  <div className={style.navEntry}>SIGN IN </div>
+                </a>
+              )}
+            </div>
+
+            {/* }
             <Link href={"/play"} className="nav-link">
               <div className={style.navEntry}>PLAY</div>
             </Link>
-            {*/}
-            <Link href={"/earn"} className="nav-link">
-              <a>
+            { */}
+            <Link href={"/earn"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>EARN</div>
               </a>
             </Link>
-            <Link href={"/support-us"} className="nav-link">
-              <a>
+            <Link href={"/support-us"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>SUPPORT US</div>
               </a>
             </Link>
-            <Link href={"/members"} className="nav-link">
-              <a>
+            <Link href={"/members"} passHref>
+              <a className="nav-link">
                 <div className={style.navEntry}>JOIN</div>
               </a>
             </Link>
@@ -93,9 +126,9 @@ function HamburgerMenu(props) {
               </Button>
             )}
           </div>
-          {*/}
+          { */}
         </div>
-        <div className={style.LogoWords}>Dev Launchers</div>
+        {/* } <div className={style.LogoWords}>Dev Launchers</div> */}
       </div>
     </SlideHamburgerMenu>
   );

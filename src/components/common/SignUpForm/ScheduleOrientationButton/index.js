@@ -1,1 +1,1 @@
-export { default } from "./ScheduleOrientationButton.js";
+export { default } from "./ScheduleOrientationButton";

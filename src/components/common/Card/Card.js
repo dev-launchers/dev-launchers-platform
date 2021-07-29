@@ -1,6 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
 
+import Link from "next/link";
 import {
   Container,
   Content,
@@ -19,7 +20,6 @@ import RainbowBar from "../RainbowBar";
 
 import CardTitle from "./CardTitle";
 import Attachments from "./Attachments";
-import Link from "next/link";
 
 /**
  * Props:
@@ -36,10 +36,6 @@ import Link from "next/link";
  */
 export default function Card(props) {
   const router = useRouter();
-
-  React.useEffect(() => {
-    console.log(props.cardData.flexDirection);
-  }, []);
 
   return (
     <Container
@@ -59,14 +55,15 @@ export default function Card(props) {
         >
           {props.cardData.tags && (
             <TagsContainer>
-              <Tag filled text={eval(props.cardData.tags)[0]} />
-              <Tag filled text={eval(props.cardData.tags)[1]} />
+              {props.cardData.tags.map((tag, i) => (
+                <Tag filled text={tag} key={i} />
+              ))}
             </TagsContainer>
           )}
           {props.isLinkingInside ? (
-            <Link href={router.pathname + "/" + props.cardData.href} passHref>
+            <Link href={`${router.pathname}/${props.cardData.href}`} passHref>
               <a rel="noopener noreferrer">
-                <Image imageSrc={props.cardData.imageSrc} />
+                <Image alt="" imageSrc={props.cardData.imageSrc} />
               </a>
             </Link>
           ) : (
@@ -75,7 +72,7 @@ export default function Card(props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Image imageSrc={props.cardData.imageSrc} />
+              <Image alt="" imageSrc={props.cardData.imageSrc} />
             </a>
           )}
         </ImageHolder>

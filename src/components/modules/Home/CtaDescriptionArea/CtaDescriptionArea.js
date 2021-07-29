@@ -1,5 +1,5 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import {
   Wrapper,
@@ -9,7 +9,7 @@ import {
   TitleArea,
   DescriptionArea,
   DescriptionHeadline,
-  DescriptionContent
+  DescriptionContent,
 } from "./StyledCtaDescriptionArea";
 
 export default function CtaDescriptionArea(props) {

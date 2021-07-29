@@ -1,14 +1,13 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
-
 import Link from "next/link";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import Button from "../../../common/Button";
 import {
   CtaSectionButtonArea,
   CtaSectionContent,
   CtaSectionDescription,
-  Wrapper
+  Wrapper,
 } from "./StyledOrganization";
 
 export default function Organization() {
@@ -29,7 +28,7 @@ export default function Organization() {
               built for people just like you, take a look around and join us!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Link href={"/members"}>
+              <Link href={"/members"} passHref>
                 <Button fontSize="2rem">Join Our Programs</Button>
               </Link>
             </CtaSectionButtonArea>

@@ -1,5 +1,5 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import { ImageContainer, Wrapper } from "./StyledHeroImage";
 

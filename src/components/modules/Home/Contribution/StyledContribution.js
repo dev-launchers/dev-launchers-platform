@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
-
 export const CtaSectionContent = styled.div`
   display: flex;
   flex-direction: column;

@@ -1,1 +1,1 @@
-export { default } from "./Programs.js";
+export { default } from "./Programs";

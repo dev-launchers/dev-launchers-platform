@@ -9,27 +9,19 @@ import BioBox from "./BioBox";
 import LabCampus from "./LabCampus";
 import LabMember from "./LabMember";
 import WeeksGlance from "./WeeksGlance";
-import { useUserDataContext } from "../../../context/UserDataContext.js";
+import { useUserDataContext } from "../../../context/UserDataContext";
 
-import { env } from "../../../utils/EnvironmentVariables.js";
+import { env } from "../../../utils/EnvironmentVariables";
 
-import {
-  Wrapper,
-  UserSection,
-  UserInfo,
-  Misc,
-  DiscordPlaceHolder
-} from "./StyledUserProfile";
-import DiscordSection from "./DiscordSection/DiscordSection.js";
+import { Wrapper, UserSection, UserInfo, Misc } from "./StyledUserProfile";
+// import DiscordSection from "./DiscordSection/DiscordSection";
 
 export default function UserProfile() {
   const { userData } = useUserDataContext();
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(userData);
-    setLoading(userData.id == -1);
+    setLoading(userData.id === -1);
   }, [userData]);
 
   if (loading) {
@@ -60,12 +52,13 @@ export default function UserProfile() {
 
           <Misc>
             <LabMember />
-            <DiscordSection
-              discordId={userData.discord.id}
-              avatarKey={userData.discord.avatar}
-              discordUsername={userData.discord.username}
-              discordDiscriminator={userData.discord.discriminator}
-            />
+            {/*
+              <DiscordSection
+                discordId={userData.discord.id}
+                avatarKey={userData.discord.avatar}
+                discordUsername={userData.discord.username}
+                discordDiscriminator={userData.discord.discriminator}
+              /> */}
           </Misc>
         </Wrapper>
       ) : (
@@ -76,7 +69,7 @@ export default function UserProfile() {
             flexDirection: "column",
             minHeight: "60vh",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
           }}
         >
           <p style={{ fontSize: "2rem" }}>

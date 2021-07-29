@@ -1,12 +1,14 @@
+/* eslint-disable no-restricted-syntax */
 import React from "react";
 import "react-tabs/style/react-tabs.css"; // import react-tabs styles
+import Image from "next/image";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import Modal from "react-modal";
 
 import { useSheetsContext } from "../../../context/SheetsContext";
 
-import PageBody from "../../../components/common/PageBody";
-import Section from "../../../components/common/Section";
+import PageBody from "../../common/PageBody";
+import Section from "../../common/Section";
 
 import NeedHelpSection from "./NeedHelpSection";
 
@@ -21,36 +23,43 @@ const customModalStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    zIndex: 1001
+    zIndex: 1001,
   },
-  overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
+  overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" },
 };
 Modal.setAppElement("#__next");
 
 export default function Create(props) {
   const { createPageData } = useSheetsContext();
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [templateTitle, setTemplateTitle] = React.useState("TEMP TITLE");
-  const [templateDescription, setTemplateDescription] = React.useState(
-    "TEMP DESCRIPTION"
-  );
+  const [templateDescription, setTemplateDescription] =
+    React.useState("TEMP DESCRIPTION");
   const [templateImage, setTemplateImage] = React.useState("TEMP IMAGE");
   const [templateUrl, setTemplateUrl] = React.useState("TEMP URL");
   const [templateAttachments, setTemplateAttachments] = React.useState([]);
 
-  const getCardById = id => {
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const afterOpenModal = () => {};
+  const getCardById = (id) => {
     const tabs = Object.keys(createPageData);
-    for (let tabKey of tabs) {
+    for (const tabKey of tabs) {
       const sections = Object.keys(createPageData[tabKey]);
-      for (let sectionKey of sections) {
+      for (const sectionKey of sections) {
         const groups = Object.keys(createPageData[tabKey][sectionKey]);
-        for (let groupKey of groups) {
+        for (const groupKey of groups) {
           const cards = Object.keys(
             createPageData[tabKey][sectionKey][groupKey]
           );
-          for (let cardKey of cards) {
+          for (const cardKey of cards) {
             const thisCard =
               createPageData[tabKey][sectionKey][groupKey][cardKey];
-            if (thisCard.id == id) return thisCard;
+            if (thisCard.id === id) return thisCard;
           }
         }
       }
@@ -64,32 +73,20 @@ export default function Create(props) {
     // Is there a templateId set, this page should auto open a tempate modal
     if (props.templateId) {
       const cardData = getCardById(props.templateId);
-      if (cardData == -1) return;
-      console.log(cardData);
+      if (cardData === -1) return;
       setTemplateTitle(cardData.title);
       setTemplateUrl(cardData.href);
       setTemplateDescription(cardData.description);
       setTemplateImage(cardData.imageSrc);
       setTemplateAttachments(JSON.parse(cardData.attachments));
 
-      console.log("templateAttachments", templateAttachments);
-
       openModal();
     }
 
     // Loop through all tab, group, and cards to find appropriate data
     // This should be made way better in the future...
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [createPageData]);
-
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  const openModal = () => {
-    console.log("opening");
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-  const afterOpenModal = () => {};
 
   return (
     <PageBody width="95%">
@@ -105,7 +102,7 @@ export default function Create(props) {
         </h2>
         <div
           style={{
-            display: "flex"
+            display: "flex",
           }}
         >
           <div
@@ -114,17 +111,18 @@ export default function Create(props) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              flexDirection: "column"
+              flexDirection: "column",
             }}
           >
-            <a href={templateUrl} target="_blank">
-              <img
+            <a href={templateUrl} target="_blank" rel="noreferrer">
+              <Image
                 src={templateImage}
                 style={{
                   width: "80%",
                   border: "2px solid black",
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
+                alt={templateTitle}
               />
             </a>
             <div style={{ width: "80%", marginTop: "2%" }}>
@@ -133,19 +131,18 @@ export default function Create(props) {
           </div>
           <div style={{ width: "40%" }}>
             <div>
-              {templateAttachments.map(attachment => {
-                return (
-                  <div>
-                    <a
-                      href={attachment.href}
-                      style={{ cursor: "pointer", color: "blue" }}
-                      target="_blank"
-                    >
-                      {attachment.name}
-                    </a>
-                  </div>
-                );
-              })}
+              {templateAttachments.map((attachment, i) => (
+                <div key={i}>
+                  <a
+                    href={attachment.href}
+                    style={{ cursor: "pointer", color: "blue" }}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {attachment.name}
+                  </a>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -162,27 +159,31 @@ export default function Create(props) {
 
       <Tabs defaultFocus={true} defaultIndex="0">
         <TabList style={{ fontSize: "2rem", fontWeight: "bold" }}>
-          {// Have to do this hack for some reason (create empty tab if page not loaded)...
-          //otherwise tabs break
-          Object.entries(createPageData).length === 0 ? <Tab></Tab> : ""}
-          {// Render tabs from our dynamically built pageData object
-          Object.keys(createPageData).map(key => {
-            return <Tab key={"tab" + key}>{key}</Tab>;
-          })}
+          {
+            // Have to do this hack for some reason (create empty tab if page not loaded)...
+            // otherwise tabs break
+            Object.entries(createPageData).length === 0 ? <Tab></Tab> : ""
+          }
+          {
+            // Render tabs from our dynamically built pageData object
+            Object.keys(createPageData).map((key) => (
+              <Tab key={`tab${key}`}>{key}</Tab>
+            ))
+          }
         </TabList>
-        {// Render sections and groups from our dynamically built pageData object
-        // Render tab panels from our dynamically built pageData object
-        Object.values(createPageData).map((tab, i) => {
-          // render all sections for this tab
-          return (
+        {
+          // Render sections and groups from our dynamically built pageData object
+          // Render tab panels from our dynamically built pageData object
+          Object.values(createPageData).map((tab, i) => (
+            // render all sections for this tab
             <TabPanel key={i}>
-              {Object.keys(tab).map((sectionTitle, i) => {
+              {Object.keys(tab).map((sectionTitle) => {
                 const section = tab[sectionTitle];
                 return <Section data={section} title={sectionTitle} key={i} />;
               })}
             </TabPanel>
-          );
-        })}
+          ))
+        }
       </Tabs>
     </PageBody>
   );
