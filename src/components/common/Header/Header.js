@@ -14,10 +14,8 @@ import {
 } from "./StyledHeader";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-
-import HamburgerMenu from "../HamburgerMenu";
-
-export default function Header() {
+import HamburgerMenu from "../../common/HamburgerMenu/";
+export default function Header(props) {
   const { userData } = useUserDataContext();
 
   return (

@@ -1,69 +1,33 @@
 import React, { useState } from "react";
-import axios from "axios";
+import {
+  Wrapper,
+  Day,
+  Event,
+  WeekdayTitle
+} from "../../../common/Calendar/StyledCalendar";
 import { DateTime } from "luxon";
-import { Wrapper, Event, Day, WeekdayTitle } from "./StyledWeeksGlance";
+import Calendar from "../../../common/Calendar/Calendar";
 
-export default function WeeksGlance() {
+let makeDateCompatible = isoDate => {
+  let arrStr = isoDate.split(".");
+  return `${arrStr[0]}${arrStr[1].replace("+", "-").substr(3)}`;
+};
+
+export default function WeeksGlance(props) {
   const [eventList, setEventList] = useState([]);
 
-  const componentDidMount = () => {
-    axios
-      .get(
-        `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4@group.calendar.google.com/events?key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`
-      )
-      .then((response) => {
-        const tempEventList = [];
-        response.data.items.forEach((entry) => {
-          const time = DateTime.fromISO(entry.start.dateTime, {
-            zone: entry.start.timeZone,
-          }).setZone();
-          tempEventList.push({
-            name: entry.summary,
-            time: time.toFormat("t"),
-            weekday: time.weekday,
-          });
-        });
-        setEventList(tempEventList);
-      })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error(err);
-      });
-  };
+  let current = DateTime.now().plus({ hours: 1 });
+  let max = current.plus({ days: 7 });
 
-  React.useEffect(componentDidMount, []);
+  let calendarDataURL = `https://www.googleapis.com/calendar/v3/calendars/c_pu1dj74902v1ablvm1i0s22hi4%40group.calendar.google.com/events?timeMax=${makeDateCompatible(
+    max.toISO()
+  )}&timeMin=${makeDateCompatible(
+    current.toISO()
+  )}&singleEvents=true&key=AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI`;
 
-  const weekdays = [
-    "MONDAY",
-    "TUESDAY",
-    "WEDNESDAY",
-    "THURSDAY",
-    "FRIDAY",
-    "SATURDAY",
-    "SUNDAY",
-  ];
   return (
     <Wrapper>
-      {weekdays.map((day, i) => (
-        <Day key={i}>
-          <WeekdayTitle>{day}</WeekdayTitle>
-          {eventList.map(
-            ({ name, time, weekday }) =>
-              weekday === i + 1 && (
-                <Event key={`${name}_${time}`}>
-                  {name}
-                  <br />
-                  {time}
-                </Event>
-              )
-          )}
-          {eventList.filter(({ weekday }) => weekday === i + 1).length === 0 ? (
-            <div style={{ fontSize: "1rem" }}>No events</div>
-          ) : (
-            ""
-          )}
-        </Day>
-      ))}
+      <Calendar URL={calendarDataURL}></Calendar>
     </Wrapper>
   );
 }
