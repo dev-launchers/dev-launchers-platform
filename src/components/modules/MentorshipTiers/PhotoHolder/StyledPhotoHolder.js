@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import startupTableImage from "../../../../images/members/photos/startup-table.jpg";
+import startupTableImage from "../../../../images/members/photos/startup-table.jpg?webp";
 
 export const Wrapper = styled.div`
   display: flex;

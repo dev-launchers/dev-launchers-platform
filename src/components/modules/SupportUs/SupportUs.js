@@ -5,7 +5,7 @@ import Button from "../../common/Button";
 
 import SupportUsOverlay from "./SupportUsOverlay";
 
-import studentPhoto from "../../../images/support-us/bw-girl-profile.png";
+import studentPhoto from "../../../images/support-us/bw-girl-profile.png?webp";
 import {
   ContentArea,
   StudentImageWrapper,

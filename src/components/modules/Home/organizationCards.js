@@ -1,5 +1,5 @@
-import ourMissionImage from "../../../images/support-us/people-inside-room-3184468.jpg";
-import developmentLabImage from "../../../images/members/photos/startup-table.jpg";
+import ourMissionImage from "../../../images/support-us/people-inside-room-3184468.jpg?webp";
+import developmentLabImage from "../../../images/members/photos/startup-table.jpg?webp";
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
@@ -20,7 +20,7 @@ const organizationCards = [
     titleAlignment: "right",
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE
+    titleUnderlineType: UNDERLINE_TYPE,
   },
 
   {
@@ -36,8 +36,8 @@ const organizationCards = [
     titleAlignment: "left",
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE
-  }
+    titleUnderlineType: UNDERLINE_TYPE,
+  },
 ];
 
 export default organizationCards;
