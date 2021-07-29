@@ -5,8 +5,7 @@ import { env } from "./EnvironmentVariables";
 const Logout = () => {
   axios
     .get(`${env().STRAPI_URL}/auth/logout`, { withCredentials: true })
-    .then(response => {
-      console.log(response);
+    .then(() => {
       Router.reload(window.location.pathname);
     });
 };

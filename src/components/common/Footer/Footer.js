@@ -38,7 +38,7 @@ export default function Footer() {
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href={"/members"} passHref className="nav-link">
+        <Link href={"/projects"} passHref className="nav-link">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>
