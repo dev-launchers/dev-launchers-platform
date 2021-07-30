@@ -36,7 +36,7 @@ export default function CardTitle({
             alt="github"
             height="32"
             width="32"
-            src={"images/GitHub-Mark-Light-32px.png"}
+            src={"images/GitHub-Mark-Light-32px.png?webp"}
           />
         </a>
       )}

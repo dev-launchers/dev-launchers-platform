@@ -1,8 +1,8 @@
 import React from "react";
 import FlexPageSection from "../../../common/FlexPageSection";
 
-import sparkSymbolImage from "../../../../images/spark-symbol.png";
-import ignitionSymbolImage from "../../../../images/ignition-symbol.png";
+import sparkSymbolImage from "../../../../images/spark-symbol.png?webp";
+import ignitionSymbolImage from "../../../../images/ignition-symbol.png?webp";
 
 import Button from "../../../common/Button";
 import {
