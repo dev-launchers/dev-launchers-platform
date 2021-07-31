@@ -23,10 +23,10 @@ import {
 } from "./StyledHome";
 import CtaDescriptionArea from "./CtaDescriptionArea";
 
-import womanComputerImage from "../../../images/people-cutouts/woman-computer.png";
-import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
-import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
-import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
+import womanComputerImage from "../../../images/people-cutouts/woman-computer.png?webp";
+import manGlassesImage from "../../../images/people-cutouts/man-glasses.png?webp";
+import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png?webp";
+import boyFrontImage from "../../../images/people-cutouts/boy-front.png?webp";
 
 // General scroll-to function
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);

@@ -1,1 +1,1 @@
-export { default } from "./Team.js";
+export { default } from "./Team";

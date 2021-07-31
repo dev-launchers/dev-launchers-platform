@@ -4,7 +4,7 @@ import { Layout, ProjectContainer } from "./StyledProjects";
 
 import { useProjectsDataContext } from "../../../context/ProjectsContext";
 
-import { env } from "../../../utils/EnvironmentVariables";
+// import { env } from "../../../utils/EnvironmentVariables";
 
 const Projects = () => {
   const projects = useProjectsDataContext();

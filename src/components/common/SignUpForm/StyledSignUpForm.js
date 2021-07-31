@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import spaceBackgroundImage from "../../../images/form/space-background.jpg";
+import spaceBackgroundImage from "../../../images/form/space-background.jpg?webp";
 
 export const FormOuter = styled.div`
   width: 100%;

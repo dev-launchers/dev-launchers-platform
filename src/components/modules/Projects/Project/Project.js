@@ -7,8 +7,6 @@ import {
   Wrapper,
   CategoriesContainer,
   CategoryContainer,
-  MembersContainer,
-  TeamContentContainer,
 } from "./StyledProject";
 import ProjectHero from "./ProjectHero";
 import OpenPositions from "./OpenPositions";

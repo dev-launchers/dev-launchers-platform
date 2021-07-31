@@ -13,7 +13,7 @@ import {
 import Button from "../../../../common/Button";
 import Tag from "../../../../common/Tag";
 
-import { env } from "../../../../../utils/EnvironmentVariables";
+// import { env } from "../../../../../utils/EnvironmentVariables";
 
 const ProjectHero = (props) => {
   const { projectData } = props;

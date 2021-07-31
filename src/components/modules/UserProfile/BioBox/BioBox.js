@@ -15,7 +15,7 @@ export default function BioBox({ data }) {
   const sendText = () => {
     axios
       .put(
-        env().STRAPI_URL + `/users/${data.id}/profiles`,
+        `${env().STRAPI_URL}/users/${data.id}/profiles`,
         { bio: bioText },
         { withCredentials: true }
       )
@@ -36,7 +36,7 @@ export default function BioBox({ data }) {
         placeholder="Write your bio here!"
         maxlength="144"
         value={bioText}
-        onDoubleClick={e => setIsReadOnly(false)}
+        onDoubleClick={() => setIsReadOnly(false)}
         onChange={handleTextChange}
         readOnly={isReadOnly}
       ></Bio>
@@ -44,7 +44,7 @@ export default function BioBox({ data }) {
       {isReadOnly ? (
         <button onClick={() => setIsReadOnly(false)}>Edit</button>
       ) : (
-        <button onClick={(e => setIsReadOnly(true), sendText)}>Save</button>
+        <button onClick={(() => setIsReadOnly(true), sendText)}>Save</button>
       )}
     </Wrapper>
   );

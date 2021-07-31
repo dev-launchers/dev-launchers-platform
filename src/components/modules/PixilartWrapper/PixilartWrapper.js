@@ -23,7 +23,7 @@ export default function PixilartWrapper(props) {
           ↓{" "}
           <span style={{ fontSize: "1rem" }}>
             (After making your changes DOWNLOAD the image, and then RENAME it to
-            "<b>{imageName}.png</b>")
+            "<b>{imageName}.png?webp</b>")
           </span>
         </div>
       </div>
