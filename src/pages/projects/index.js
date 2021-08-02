@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// import axios from "axios";
+import axios from "axios";
 import Header from "../../components/common/Header";
 // import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
@@ -8,13 +8,12 @@ import { env } from "../../utils/EnvironmentVariables";
 
 export const getStaticProps = async () => {
   // const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
-  const res = await fetch(`${env().STRAPI_URL}/projects`, {
+  const { data: projects } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
       Accept: "application/json, text/plain, */*",
       "User-Agent": "*",
     },
   });
-  const projects = await res.json();
   console.log(projects);
   return {
     props: { projects },
