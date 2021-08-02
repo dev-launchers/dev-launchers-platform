@@ -6,7 +6,7 @@ import Footer from "../../components/common/Footer";
 import { env } from "../../utils/EnvironmentVariables";
 // import { ProjectsDataProvider } from "../../context/ProjectsContext";
 
-export const getStaticProps = async () => {
+export async function getStaticProps() {
   // const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
   const { data: projects } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
     props: { projects },
     revalidate: 20,
   };
-};
+}
 
 const ProjectsList = ({ projects }) => (
   <div>

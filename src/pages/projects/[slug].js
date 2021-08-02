@@ -6,7 +6,7 @@ import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
 import { env } from "../../utils/EnvironmentVariables";
 // import { ProjectsDataProvider } from "../../context/ProjectsContext";
-export const getStaticPaths = async () => {
+export async function getStaticPaths() {
   const { data } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -21,9 +21,9 @@ export const getStaticPaths = async () => {
     paths,
     fallback: true,
   };
-};
+}
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const { slug } = context.params;
   const { data: project } = await axios.get(
     `${env().STRAPI_URL}/projects/${slug}`
@@ -35,7 +35,7 @@ export const getStaticProps = async (context) => {
     },
     revalidate: 20,
   };
-};
+}
 
 const ProjectRoute = ({ project }) => (
   <div>
