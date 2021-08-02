@@ -6,7 +6,9 @@ import Project from "../../components/modules/Projects/Project";
 import { env } from "../../utils/EnvironmentVariables";
 // import { ProjectsDataProvider } from "../../context/ProjectsContext";
 export const getStaticPaths = async () => {
-  const { data } = await axios(`${env().STRAPI_URL}/projects`);
+  const { data } = await axios(`${env().STRAPI_URL}/projects`, {
+    withCredentials: true,
+  });
   const paths = data.map((project) => ({
     params: { slug: project.slug },
   }));
