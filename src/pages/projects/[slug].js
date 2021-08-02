@@ -6,10 +6,13 @@ import Project from "../../components/modules/Projects/Project";
 import { env } from "../../utils/EnvironmentVariables";
 // import { ProjectsDataProvider } from "../../context/ProjectsContext";
 export const getStaticPaths = async () => {
-  const { data } = await axios(`https://jsonplaceholder.typicode.com/users`);
+  const res = await fetch(`${env().STRAPI_URL}/projects`);
+  const data = await res.json();
+
   const paths = data.map((project) => ({
-    params: { slug: project.id.toString() },
+    params: { slug: project.slug },
   }));
+
   return {
     paths,
     fallback: true,
@@ -19,7 +22,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const { data: project } = await axios.get(
-    `https://jsonplaceholder.typicode.com/users/${slug}`
+    `${env().STRAPI_URL}/projects/${slug}`
   );
 
   return {
@@ -33,7 +36,8 @@ export const getStaticProps = async (context) => {
 const ProjectRoute = ({ project }) => (
   <div>
     <Header />
-    <Project project={project || ""} />
+    {/* <Project project={project || ""} /> */}
+    {project?.title}
     <Footer />
   </div>
 );

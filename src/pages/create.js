@@ -19,7 +19,6 @@ export default function CreateRoute() {
       </Head>
       <div>
         <Header />
-        <div>underneath</div>
         <Create templateId={params.template} />
         <Footer />
       </div>

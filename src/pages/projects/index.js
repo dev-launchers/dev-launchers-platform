@@ -1,14 +1,14 @@
-import axios from "axios";
+// import axios from "axios";
 import Header from "../../components/common/Header";
-import Projects from "../../components/modules/Projects";
+// import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
 import { env } from "../../utils/EnvironmentVariables";
-import { ProjectsDataProvider } from "../../context/ProjectsContext";
+// import { ProjectsDataProvider } from "../../context/ProjectsContext";
 
 export const getStaticProps = async () => {
-  const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
-  // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
-  // const data = await res.json();
+  // const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
+  const res = await fetch(`${env().STRAPI_URL}/projects`);
+  const projects = await res.json();
   return {
     props: { projects },
     revalidate: 20,
@@ -18,9 +18,10 @@ export const getStaticProps = async () => {
 const ProjectsList = ({ projects }) => (
   <div>
     <Header />
-    <ProjectsDataProvider>
-      <Projects projects={projects || ""} />
-    </ProjectsDataProvider>
+
+    {projects.map((project) => {
+      <div>{project?.title}</div>;
+    })}
     <Footer />
   </div>
 );
