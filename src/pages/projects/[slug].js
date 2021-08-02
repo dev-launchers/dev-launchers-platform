@@ -13,13 +13,14 @@ export async function getStaticPaths() {
       "User-Agent": "*",
     },
   });
+
   const paths = data.map((project) => ({
     params: { slug: project.slug },
   }));
   console.log(data);
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 
@@ -28,6 +29,13 @@ export async function getStaticProps(context) {
   const { data: project } = await axios.get(
     `${env().STRAPI_URL}/projects/${slug}`
   );
+
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
+
   console.log(project);
   return {
     props: {

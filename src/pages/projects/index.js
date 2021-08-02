@@ -14,6 +14,11 @@ export async function getStaticProps() {
       "User-Agent": "*",
     },
   });
+  if (!projects) {
+    return {
+      notFound: true,
+    };
+  }
   console.log(projects);
   return {
     props: { projects },
@@ -24,7 +29,6 @@ export async function getStaticProps() {
 const ProjectsList = ({ projects }) => (
   <div>
     <Header />
-
     {projects.map((project) => {
       <div>{project?.title}</div>;
     })}
