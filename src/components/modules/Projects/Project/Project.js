@@ -11,6 +11,7 @@ import {
 import ProjectHero from "./ProjectHero";
 import OpenPositions from "./OpenPositions";
 import Team from "./Team";
+import SignUpButton from "./SignUpButton";
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 
@@ -147,10 +148,8 @@ const Project = (props) => {
           justifyContent: "center",
         }}
       >
-        <Button
-          rel="noopener noreferrer"
-          target="_blank"
-          href={projectData?.signupFormUrl}
+        <SignUpButton
+          projectName={projectData?.title}
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
@@ -158,7 +157,7 @@ const Project = (props) => {
           }}
         >
           JOIN NOW
-        </Button>
+        </SignUpButton>
       </div>
       <div
         style={{

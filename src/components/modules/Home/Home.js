@@ -4,7 +4,6 @@ import { withTheme } from "styled-components";
 import PageBody from "../../common/PageBody";
 
 import RainbowBar from "../../common/RainbowBar";
-import SignUpForm from "../../common/SignUpForm";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
@@ -83,7 +82,6 @@ function Home({ theme }) {
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
           <Intro />
-          <SignUpForm />
           <div
             className="scrollToDiv"
             ref={learnRef}
