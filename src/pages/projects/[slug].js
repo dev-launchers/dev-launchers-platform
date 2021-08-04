@@ -25,14 +25,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const { data: project } = await axios.get(
-    `${env().STRAPI_URL}/projects/${slug}`,
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-      },
-    }
+    `${env().STRAPI_URL}/projects/${slug}`
   );
 
   return {
