@@ -35,6 +35,12 @@ export const getStaticProps = async (context) => {
     }
   );
 
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       project,
