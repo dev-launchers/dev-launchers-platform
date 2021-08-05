@@ -12,8 +12,13 @@ export const getStaticProps = async () => {
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
     },
   });
-  // const res = await fetch("https://cms-api-staging.devlaunchers.com/projects");
-  // const data = await res.json();
+
+  if (!projects) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: { projects },
     revalidate: 20,
