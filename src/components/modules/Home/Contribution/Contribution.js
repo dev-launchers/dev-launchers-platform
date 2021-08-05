@@ -13,7 +13,7 @@ import {
 import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";
 
-import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg?webp";
 
 function Contribution(props) {
   return (
