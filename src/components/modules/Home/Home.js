@@ -82,6 +82,7 @@ function Home({ theme }) {
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
           <Intro />
+          <Contribution />
           <div
             className="scrollToDiv"
             ref={learnRef}
@@ -202,7 +203,6 @@ function Home({ theme }) {
             descriptionBackgroundColor={theme.colors.NEUTRAL_1}
             descriptionFontColor={theme.colors.NEUTRAL_2}
           />
-          <Contribution />
           <Partners />
         </HomePageBody>
       </PageBody>

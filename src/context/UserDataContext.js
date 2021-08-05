@@ -5,7 +5,7 @@ import axios from "axios";
 import { env } from "../utils/EnvironmentVariables";
 
 const DEFAULT_USER = {
-  id: 0,
+  id: 3489,
   name: "",
   username: "",
   email: "",
