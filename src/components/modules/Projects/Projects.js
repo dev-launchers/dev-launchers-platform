@@ -20,7 +20,7 @@ const Projects = ({ projects }) => (
       learning valuable skills and meeting awesome people!
     </div>
     <Layout>
-      {/* {projects.map((project, i) => (
+      {projects.map((project, i) => (
         <ProjectContainer key={i}>
           <Card
             isLinkingInside
@@ -46,8 +46,7 @@ const Projects = ({ projects }) => (
             }}
           />
         </ProjectContainer>
-      ))} */}
-      <div>projects.map</div>
+      ))}
     </Layout>
   </div>
 );

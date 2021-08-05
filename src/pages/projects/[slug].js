@@ -3,10 +3,10 @@ import axios from "axios";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
-// import { env } from "../../utils/EnvironmentVariables";
+import { env } from "../../utils/EnvironmentVariables";
 // import { ProjectsDataProvider } from "../../context/ProjectsContext";
 export const getStaticPaths = async () => {
-  const { data } = await axios(`https://cms-api.devlaunchers.com/projects`, {
+  const { data } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
       Accept: "application/json, text/plain, */*",
       "User-Agent":
@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const { data: project } = await axios.get(
-    `https://cms-api.devlaunchers.com/projects/${slug}`,
+    `${env().STRAPI_URL}/projects/${slug}`,
     {
       headers: {
         Accept: "application/json, text/plain, */*",
