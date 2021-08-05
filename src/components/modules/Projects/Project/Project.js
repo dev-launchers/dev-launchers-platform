@@ -20,14 +20,15 @@ const truncateText = (text, truncateAt, replaceWith) => {
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = (props) => {
+const Project = ({ project, theme }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
+
   return (
     <Wrapper>
-      <ProjectHero projectData={props} />
+      <ProjectHero projectData={project} />
       <div
         style={{
           width: "90%",
@@ -37,7 +38,7 @@ const Project = (props) => {
       >
         <div
           style={{
-            fontFamily: props.theme.fonts.headline,
+            fontFamily: theme.fonts.headline,
             marginTop: "4rem",
             marginBottom: "4rem",
             padding: "1rem",
@@ -45,11 +46,11 @@ const Project = (props) => {
             border: "1px solid black",
           }}
         >
-          {props?.vision}
+          {project?.vision}
         </div>
         <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
           <h3 style={{ display: "inline" }}>Description:</h3>{" "}
-          {props?.description?.split("\n")?.map((text, i) => (
+          {project?.description?.split("\n")?.map((text, i) => (
             <p key={i}> {text} </p>
           ))}
         </div>
@@ -62,10 +63,10 @@ const Project = (props) => {
             { */}
             <CategoryContainer>
               <h4>Commitment Level</h4>
-              <p>{props?.commitmentLevel}</p>
+              <p>{project?.commitmentLevel}</p>
 
               <h4>Project References</h4>
-              {props?.projectReferenceURLs?.map((element, i) => (
+              {project?.projectReferenceURLs?.map((element, i) => (
                 <p key={i}>
                   <a
                     href={element.url}
@@ -84,13 +85,13 @@ const Project = (props) => {
             { */}
             <CategoryContainer>
               <h4>Meeting Times</h4>
-              {props?.meetingTimes?.map((meeting, i) => (
+              {project?.meetingTimes?.map((meeting, i) => (
                 <p key={i}>
                   {meeting.title} {meeting.dateTime}
                 </p>
               ))}
               <h4>Meeting Links</h4>
-              {props?.meetingLinkURLs?.map((url) => (
+              {project?.meetingLinkURLs?.map((url) => (
                 <p key={url.id}>
                   <a href={url.url} rel="noopener noreferrer" target="_blank">
                     {url.roomName}
@@ -102,16 +103,16 @@ const Project = (props) => {
         </CategoriesContainer>
         <br />
       </div>
-      {props.openPositions.length ? (
+      {project.openPositions.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-          <OpenPositions projectData={props} />
+          <OpenPositions projectData={project} />
         </div>
       ) : (
         ""
       )}
-      {props.team.leaders.length || props.team.members.length ? (
+      {project.team.leaders.length || project.team.members.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-          <Team projectData={props} />
+          <Team projectData={project} />
         </div>
       ) : (
         ""
@@ -135,7 +136,7 @@ const Project = (props) => {
         <Button
           rel="noopener noreferrer"
           target="_blank"
-          href={props?.signupFormUrl}
+          href={project?.signupFormUrl}
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
