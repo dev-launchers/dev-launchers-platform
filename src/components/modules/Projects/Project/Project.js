@@ -49,7 +49,7 @@ const Project = (props) => {
         </div>
         <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
           <h3 style={{ display: "inline" }}>Description:</h3>{" "}
-          {props?.description?.split("\n").map((text, i) => (
+          {props?.description?.split("\n")?.map((text, i) => (
             <p key={i}> {text} </p>
           ))}
         </div>
@@ -65,7 +65,7 @@ const Project = (props) => {
               <p>{props?.commitmentLevel}</p>
 
               <h4>Project References</h4>
-              {props?.projectReferenceURLs.map((element, i) => (
+              {props?.projectReferenceURLs?.map((element, i) => (
                 <p key={i}>
                   <a
                     href={element.url}
@@ -84,13 +84,13 @@ const Project = (props) => {
             { */}
             <CategoryContainer>
               <h4>Meeting Times</h4>
-              {props?.meetingTimes.map((meeting, i) => (
+              {props?.meetingTimes?.map((meeting, i) => (
                 <p key={i}>
                   {meeting.title} {meeting.dateTime}
                 </p>
               ))}
               <h4>Meeting Links</h4>
-              {props?.meetingLinkURLs.map((url) => (
+              {props?.meetingLinkURLs?.map((url) => (
                 <p key={url.id}>
                   <a href={url.url} rel="noopener noreferrer" target="_blank">
                     {url.roomName}
