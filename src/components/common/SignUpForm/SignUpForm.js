@@ -8,6 +8,7 @@ import regeneratorRuntime from "regenerator-runtime";
 import { FormOuter, FormContainer, StyledForm } from "./StyledSignUpForm";
 
 import Button from "../Button";
+import Modal from "../Modal";
 
 import ProgressBar from "./ProgressBar";
 import FormEntry from "./FormEntry";
@@ -19,40 +20,50 @@ import ScheduleOrientationButton from "./ScheduleOrientationButton";
 import theme from "../../../styles/theme";
 
 function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
 const formEntries = [
-  <FormEntry
-    key={0}
-    label="Project"
-    description="You are applying to the project:"
-  >
-    <InputField
-      field="project"
-      validate={(value) => (!value ? "Required" : false)}
-    />
-  </FormEntry>,
+  <div key={1} style={{ width: "100%", textAlign: "center", marginTop: "5%" }}>
+    <div style={{ fontFamily: theme.fonts.headline }}>
+      Applications now open!
+    </div>
+    <div
+      style={{
+        width: "75%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        fontSize: "1.5rem",
+        marginTop: "5%",
+        marginBottom: "5%",
+        textAlign: "left",
+      }}
+    >
+      <p>
+        Are you a complete beginner? Or looking to upskill with hands on
+        projects and exposure to working on real teams? Dev Launchers brings
+        dedicated, passionate individuals together in order to build and learn
+        with guidance from professionals.
+      </p>
+      <p>
+        We welcome everyone with open arms, no matter your skill level, your
+        background, or anything else other than your desire to learn and grow.
+        Apply today to take the first step toward landing your dream job, or
+        being able to build that one game, website, or app you just can&apos;t
+        stop thinking about!
+      </p>
+    </div>
+  </div>,
 
   <FormEntry
-    key={1}
+    key={2}
     label="Name"
     description="What should we call you? Please enter your full name!"
   >
     <InputField
       field="name"
-      validate={(value) => (!value ? "Required" : false)}
-    />
-  </FormEntry>,
-
-  <FormEntry
-    key={2}
-    label="Role"
-    description="Which role are you applying for?"
-  >
-    <InputField
-      field="role"
       validate={(value) => (!value ? "Required" : false)}
     />
   </FormEntry>,
@@ -79,6 +90,10 @@ const formEntries = [
     />
   </FormEntry>,
 
+  <FormEntry key={4} label="Zip Code" description="Where are you?">
+    <InputField field="zip" type="number" />
+  </FormEntry>,
+
   <FormEntry
     key={5}
     label="Age"
@@ -94,6 +109,17 @@ const formEntries = [
     />
   </FormEntry>,
 
+  <FormEntry
+    key={6}
+    label="Skills"
+    description="Which of the following skillsets are you passionate about?"
+  >
+    <SelectField
+      field="skills"
+      options={["Coding", "Art/Visual Design", "UX/Game Design"]}
+      validate={(value) => (!value ? "This is required!" : false)}
+    />
+  </FormEntry>,
   <FormEntry
     key={7}
     label="Level"
@@ -121,9 +147,26 @@ const formEntries = [
   <FormEntry
     key={9}
     label="Reason"
-    description="Why do you want to join this project? (Hint: Are you looking to learn? Help others learn? Gain experience? Build something epic?) [optional]"
+    description="Why do you want to join the Dev Launchers Incubator and Development Lab? (Hint: Are you looking to learn? Help others learn? Gain experience? Build something epic?) [optional]"
   >
     <TextAreaField field="reason" type="textarea" />
+  </FormEntry>,
+
+  <FormEntry
+    key={10}
+    label="Commitment"
+    description="How much time are you able to commit to the program? (Labs are held on Saturdays from 12pm-3pm CST)"
+  >
+    <SelectField
+      field="commitment"
+      options={[
+        "I will try to attend every lab session, if I'm able to make it!",
+        "Two labs per month",
+        "Three labs per month",
+        "One lab per month - only available for advanced members (DL7-DL8)",
+      ]}
+      validate={(value) => (!value ? "This is required!" : false)}
+    />
   </FormEntry>,
 
   <FormEntry
@@ -139,18 +182,63 @@ const formEntries = [
   </FormEntry>,
 ];
 
-export default function SignUpForm(props) {
+export default function SignUpForm() {
+  // Modal state management
+  const [modalContent, setModalContent] = React.useState("content");
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [submittingForm, setSubmittingForm] = React.useState(false);
   const [isFormValidated, setIsFormValidated] = React.useState(false);
+  const [applicationApproved, setApplicationApproved] = React.useState(false);
   const [formPage, setFormPage] = React.useState(0);
+  const [progressPercent, setProgressPercent] = React.useState(0);
+  const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
   const incrementFormPage = () => {
     setFormPage(formPage + 1);
   };
   const decrementFormPage = () => {
     setFormPage(formPage - 1);
   };
-  const [progressPercent, setProgressPercent] = React.useState(0);
-  const [formSubmitted, setFormSubmitted] = React.useState(false);
+  const openOrientationIntroModal = () => {
+    setModalContent(
+      <div style={{ height: "70%", textAlign: "center", padding: "10%" }}>
+        <div>
+          <b>Your application has been automatically approved!</b>
+          <br />
+          <br /> Please sign up for an orientation with us to begin yor journey.
+          If none of these times work for you, feel free to reach out to{" "}
+          <a href="mailto:support@devlaunchers.com">
+            support@devlaunchers.com
+          </a>{" "}
+          to schedule a different time.
+        </div>
+        <ScheduleOrientationButton
+          style={{ margin: "10%" }}
+          onClick={() => {
+            closeModal();
+          }}
+        />
+      </div>
+    );
+    openModal();
+  };
+
+  const checkAutoApproval = (values) => {
+    if (
+      values.age >= 16 &&
+      (values.experience.length >= 30 || values.reason.length >= 30) &&
+      values.commitment !==
+        "One lab per month - only available for advanced members (DL7-DL8)"
+    ) {
+      return true;
+    }
+    return false;
+  };
 
   const onSubmit = async (values) => {
     if (!isFormValidated) {
@@ -172,6 +260,10 @@ export default function SignUpForm(props) {
         // handle success
         setSubmittingForm(false);
         setFormSubmitted(true);
+        if (checkAutoApproval(values)) {
+          setApplicationApproved(true);
+          openOrientationIntroModal();
+        }
       })
       .catch(() => {
         // handle error
@@ -181,14 +273,15 @@ export default function SignUpForm(props) {
 
   const defaultValues = React.useMemo(
     () => ({
-      project: props.projectName,
       name: "",
-      role: props.roleName,
       email: "",
+      zip: "",
       age: "",
+      skills: "",
       level: "",
       experience: "",
       reason: "",
+      commitment: "",
       accepted: "",
     }),
     []
@@ -221,10 +314,26 @@ export default function SignUpForm(props) {
 
   return (
     <FormOuter style={{ width: "100%", textAlign: "center" }}>
+      <Modal
+        modalContent={modalContent}
+        modalIsOpen={modalIsOpen}
+        openModal={openModal}
+        closeModal={closeModal}
+      />
       {formSubmitted ? (
-        <div style={{ fontSize: "3rem", color: "black", margin: "10%" }}>
+        <div style={{ fontSize: "3rem", color: "white", margin: "10%" }}>
           Thanks for submitting your application!
           <br />
+          {applicationApproved ? (
+            <ScheduleOrientationButton
+              style={{ margin: "5%" }}
+              onClick={() => {
+                closeModal();
+              }}
+            />
+          ) : (
+            ""
+          )}
         </div>
       ) : (
         <FormContainer>
@@ -241,9 +350,9 @@ export default function SignUpForm(props) {
             {formPage > 0 ? (
               <Button onClick={decrementFormPage}>Back</Button>
             ) : (
-              ""
+              "Join today!"
             )}
-            <div>Join project!</div>
+            <div>Apply to our developer program</div>
           </div>
           <StyledForm as={Form}>
             {formEntries[formPage]}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const AttachmentLink = styled.a.attrs(() => ({
   target: "_blank",
-  rel: "noopener noreferrer",
+  rel: "noopener noreferrer"
 }))`
   color: lightslategray;
   font-size: medium;
@@ -23,8 +23,8 @@ export const AttachmentLinkContainer = styled.div`
 `;
 
 export const AttachmentImg = styled.img.attrs(() => ({
-  src: "images/Attachment.png?webp",
-  alt: "attachment-icon",
+  src: "images/Attachment.png",
+  alt: "attachment-icon"
 }))`
   width: 5vh;
   height: 5vh;

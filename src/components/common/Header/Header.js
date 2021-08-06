@@ -14,8 +14,10 @@ import {
 } from "./StyledHeader";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-import HamburgerMenu from "../../common/HamburgerMenu/";
-export default function Header(props) {
+
+import HamburgerMenu from "../HamburgerMenu";
+
+export default function Header() {
   const { userData } = useUserDataContext();
 
   return (
@@ -53,7 +55,7 @@ export default function Header(props) {
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href="/projects">
+        <Link href="/members">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>

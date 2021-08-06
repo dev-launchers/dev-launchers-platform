@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import heroRender from "../../../../images/hero-render.png?webp";
+import heroRender from "../../../../images/hero-render.png";
 
 export const Wrapper = styled.div`
   position: relative;

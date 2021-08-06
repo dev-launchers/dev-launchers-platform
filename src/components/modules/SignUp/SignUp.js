@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import PageBody from "../../common/PageBody";
-// import DiscordImage from "../../../images/signup/discord.png?webp";
+// import DiscordImage from "../../../images/signup/discord.png";
 
 import { FormWrapper } from "./StyledSignUp";
 

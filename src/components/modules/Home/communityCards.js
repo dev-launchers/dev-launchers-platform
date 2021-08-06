@@ -1,5 +1,5 @@
-import twitchImage from "../../../images/home-page/twitch-card-image.png?webp";
-import discordImage from "../../../images/home-page/discord-card-image.png?webp";
+import twitchImage from "../../../images/home-page/twitch-card-image.png";
+import discordImage from "../../../images/home-page/discord-card-image.png";
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
@@ -19,7 +19,7 @@ const communityCards = [
     titleAlignment: TEXT_ALIGN,
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -34,8 +34,8 @@ const communityCards = [
     titleAlignment: TEXT_ALIGN,
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE,
-  },
+    titleUnderlineType: UNDERLINE_TYPE
+  }
 ];
 
 export default communityCards;

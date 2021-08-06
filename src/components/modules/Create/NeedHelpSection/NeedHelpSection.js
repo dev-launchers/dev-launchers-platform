@@ -2,7 +2,7 @@ import React from "react";
 
 import GameIdeaGeneratorButton from "./IdeaGeneratorButton/GameIdeaGeneratorButton";
 import AppIdeaGeneratorButton from "./IdeaGeneratorButton/AppIdeaGeneratorButton";
-import JoinProjectTeamButton from "./JoinProjectTeamButton";
+import JoinProgramButton from "./JoinProgramButton";
 
 export default function NeedHelpSection() {
   return (
@@ -22,7 +22,7 @@ export default function NeedHelpSection() {
         <b>Need some help?</b>
         <GameIdeaGeneratorButton />
         <AppIdeaGeneratorButton />
-        <JoinProjectTeamButton />
+        <JoinProgramButton />
       </div>
     </div>
   );

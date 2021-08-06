@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoMonogramImage from "../../../images/logo-monogram.png?webp";
+import logoMonogramImage from "../../../images/logo-monogram.png";
 
 function getRandomThemeColor(theme) {
   const colors = [

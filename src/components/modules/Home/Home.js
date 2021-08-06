@@ -4,6 +4,7 @@ import { withTheme } from "styled-components";
 import PageBody from "../../common/PageBody";
 
 import RainbowBar from "../../common/RainbowBar";
+import SignUpForm from "../../common/SignUpForm";
 
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
@@ -22,10 +23,10 @@ import {
 } from "./StyledHome";
 import CtaDescriptionArea from "./CtaDescriptionArea";
 
-import womanComputerImage from "../../../images/people-cutouts/woman-computer.png?webp";
-import manGlassesImage from "../../../images/people-cutouts/man-glasses.png?webp";
-import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png?webp";
-import boyFrontImage from "../../../images/people-cutouts/boy-front.png?webp";
+import womanComputerImage from "../../../images/people-cutouts/woman-computer.png";
+import manGlassesImage from "../../../images/people-cutouts/man-glasses.png";
+import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png";
+import boyFrontImage from "../../../images/people-cutouts/boy-front.png";
 
 // General scroll-to function
 const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
@@ -82,7 +83,7 @@ function Home({ theme }) {
             </ColoredCtaEntry>
           </ColoredCtaWrapper>
           <Intro />
-          <Contribution />
+          <SignUpForm />
           <div
             className="scrollToDiv"
             ref={learnRef}
@@ -203,6 +204,7 @@ function Home({ theme }) {
             descriptionBackgroundColor={theme.colors.NEUTRAL_1}
             descriptionFontColor={theme.colors.NEUTRAL_2}
           />
+          <Contribution />
           <Partners />
         </HomePageBody>
       </PageBody>

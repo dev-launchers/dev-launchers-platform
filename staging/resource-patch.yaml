@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: platform-website
+  name: platform-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-website
+  template:
+    metadata:
+      labels:
+        app: platform-website
+    spec:
+      containers:
+      - name: platform-website
+        resources:
+          limits:
+            cpu: 64m
+            memory: 64Mi
+          requests:
+            cpu: 64m
+            memory: 64Mi

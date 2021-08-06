@@ -1,5 +1,5 @@
 import { Wrapper, DiscordLogo } from "./StyledConnectDiscord";
-import DiscordImg from "../../../../../../public/images/discord-logo.png?webp";
+import DiscordImg from "../../../../../../public/images/discord-logo.png";
 import Button from "../../../../common/Button";
 import { env } from "../../../../../utils/EnvironmentVariables";
 

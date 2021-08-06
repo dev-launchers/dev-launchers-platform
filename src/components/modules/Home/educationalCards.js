@@ -1,6 +1,6 @@
-import createImage from "../../../images/home-page/create-card-image.png?webp";
-import learnImage from "../../../images/home-page/learn-card-image.png?webp";
-import teachImage from "../../../images/home-page/teach-card-image.png?webp";
+import createImage from "../../../images/home-page/create-card-image.png";
+import learnImage from "../../../images/home-page/learn-card-image.png";
+import teachImage from "../../../images/home-page/teach-card-image.png";
 
 const TEXT_ALIGN = "center";
 const IMAGE_HOLDER_BACKGROUND_COLOR = "white";
@@ -20,7 +20,7 @@ const educationalCards = [
     titleAlignment: TEXT_ALIGN,
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -35,7 +35,7 @@ const educationalCards = [
     titleAlignment: TEXT_ALIGN,
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE,
+    titleUnderlineType: UNDERLINE_TYPE
   },
 
   {
@@ -50,8 +50,8 @@ const educationalCards = [
     titleAlignment: TEXT_ALIGN,
     titleUnderlineColor: UNDERLINE_COLOR,
     titleUnderlineThickness: UNDERLINE_THICKNESS,
-    titleUnderlineType: UNDERLINE_TYPE,
-  },
+    titleUnderlineType: UNDERLINE_TYPE
+  }
 ];
 
 export default educationalCards;
