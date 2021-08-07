@@ -38,12 +38,12 @@ function Contribution(props) {
               members!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Button fontSize="2rem" href="https://github.com/dev-launchers">
+              <Button fontSize="2rem" href="https://devlaunchers.com/projects">
                 View Our Projects
               </Button>
               <Button
                 fontSize="2rem"
-                href="https://devlaunchers.com/projects"
+                href="https://github.com/dev-launchers"
                 bgColor={props.theme.colors.ACCENT_3}
               >
                 Find Us On GitHub
