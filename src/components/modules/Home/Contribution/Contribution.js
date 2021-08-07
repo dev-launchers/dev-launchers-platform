@@ -1,5 +1,6 @@
 import React from "react";
 import { withTheme } from "styled-components";
+import Link from "next/link";
 import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
@@ -25,7 +26,7 @@ function Contribution(props) {
       alignItems="center"
       backgroundImage={codeSnapshotImage}
     >
-      <ShadowCard width="70%" height="60%">
+      <ShadowCard>
         <CenteredHeadline style={{ backgroundColor: "white", color: "black" }}>
           CONTRIBUTE TO OUR PROJECTS
         </CenteredHeadline>
@@ -38,18 +39,16 @@ function Contribution(props) {
               members!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Button fontSize="2rem" href="https://github.com/dev-launchers">
-                Find us on GitHub
-              </Button>
+              <Link href="/projects" passHref>
+                <Button fontSize="2rem">View Our Projects</Button>
+              </Link>
               <Button
                 fontSize="2rem"
-                href="https://devlaunchers.com/projects"
+                href="https://github.com/dev-launchers"
+                target="_blank"
                 bgColor={props.theme.colors.ACCENT_3}
-                style={{
-                  marginLeft: "1rem",
-                }}
               >
-                View our projects
+                Find Us On GitHub
               </Button>
             </CtaSectionButtonArea>
           </CtaSectionContent>
