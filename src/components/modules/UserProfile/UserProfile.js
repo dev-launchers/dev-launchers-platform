@@ -6,8 +6,6 @@ import Button from "../../common/Button";
 import ProfileCard from "./ProfileCard";
 import Points from "./Points";
 import BioBox from "./BioBox";
-import LabCampus from "./LabCampus";
-import LabMember from "./LabMember";
 import WeeksGlance from "./WeeksGlance";
 import { useUserDataContext } from "../../../context/UserDataContext";
 
@@ -47,11 +45,15 @@ export default function UserProfile() {
               <BioBox data={userData}>{userData.bio}</BioBox>
             </UserInfo>
           </UserSection>
+          {/*
           <LabCampus />
+          */}
           <WeeksGlance />
 
           <Misc>
+            {/*
             <LabMember />
+            */}
             {/*
               <DiscordSection
                 discordId={userData.discord.id}

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoMonogramImage from "../../../images/logo-monogram.png";
+import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 
 export const HeaderBlock = styled.div`
   background-color: #1c1c1c;
