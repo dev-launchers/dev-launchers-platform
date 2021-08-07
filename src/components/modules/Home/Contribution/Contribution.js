@@ -39,14 +39,14 @@ function Contribution(props) {
             </CtaSectionDescription>
             <CtaSectionButtonArea>
               <Button fontSize="2rem" href="https://github.com/dev-launchers">
-                Find us on GitHub
+                View Our Projects
               </Button>
               <Button
                 fontSize="2rem"
                 href="https://devlaunchers.com/projects"
                 bgColor={props.theme.colors.ACCENT_3}
               >
-                View our projects
+                Find Us On GitHub
               </Button>
             </CtaSectionButtonArea>
           </CtaSectionContent>
