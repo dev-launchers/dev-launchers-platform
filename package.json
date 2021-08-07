@@ -13,7 +13,8 @@
     "constate": "^3.0.1",
     "luxon": "^1.26.0",
     "next": "^11.0.1",
-    "next-images": "^1.8.1",
+    "next-compose-plugins": "^2.2.1",
+    "next-optimized-images": "^3.0.0-canary.10",
     "pluralize": "^8.0.0",
     "prismic-reactjs": "^1.3.0",
     "query-string": "6.11.1",
@@ -50,8 +51,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "prettier": "prettier --write '**/*.{json,js,jsx,ts,tsx,html,css,scss,md}'"
+    "start": "next build && next start",
+    "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "browserslist": [
     ">0.2%",

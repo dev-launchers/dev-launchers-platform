@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
-import spaceBackgroundImage from "../../../images/form/space-background.jpg";
-
 export const FormOuter = styled.div`
   width: 100%;
   padding-top: 2%;
   padding-bottom: 2%;
-  background-color: #4f4e4e;
-  background-image: url(${spaceBackgroundImage});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -7,7 +7,7 @@ export default function FlexPageSection({
   width,
   height,
   contentWidth = "100%",
-  contentHeight = "100%",
+  // contentHeight = "100%",
   flexDirection = "row",
   justifyContent = "center",
   alignItems = "center",
@@ -27,7 +27,7 @@ export default function FlexPageSection({
   };
   const contentStyle = {
     width: contentWidth,
-    height: contentHeight,
+    // height: contentHeight,
     display: style.display,
     flexDirection: style.flexDirection,
     justifyContent: style.justifyContent,

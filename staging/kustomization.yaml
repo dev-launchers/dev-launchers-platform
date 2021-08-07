@@ -6,6 +6,4 @@ bases:
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: 8014220-202107292016 # {"$imagepolicy": "platform-website:platform-website:tag"}
-patchesStrategicMerge:
-- resource-patch.yaml
+  newTag: ebd26a7-202107270025 # {"$imagepolicy": "platform-website:platform-website:tag"}
