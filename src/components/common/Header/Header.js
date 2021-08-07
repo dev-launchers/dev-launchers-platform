@@ -14,7 +14,6 @@ import {
 } from "./StyledHeader";
 
 import { useUserDataContext } from "../../../context/UserDataContext";
-
 import HamburgerMenu from "../HamburgerMenu";
 
 export default function Header() {
@@ -55,7 +54,7 @@ export default function Header() {
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href="/members">
+        <Link href="/projects">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>

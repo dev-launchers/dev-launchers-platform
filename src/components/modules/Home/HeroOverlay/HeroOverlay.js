@@ -9,7 +9,7 @@ import {
   Image,
 } from "./StyledHeroOverlay";
 
-import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png";
+import manGlassesImage from "../../../../images/people-cutouts/man-glasses.png?webp";
 
 function TypewriterEffect(props) {
   // eslint-disable-next-line no-unused-vars

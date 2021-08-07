@@ -4,13 +4,13 @@ import FlexPageSection from "../../../common/FlexPageSection";
 import LogoImage from "./LogoImage/LogoImage";
 import CenteredHeadline from "../../../common/CenteredHeadline";
 
-import aespriteImage from "../../../../images/home-page/aseprite.png";
-import kraftiesImage from "../../../../images/home-page/krafties.png";
-import austinLibraryImage from "../../../../images/home-page/austin-public-library.png";
-import codesandboxImage from "../../../../images/home-page/codesandbox.png";
-import phaser3Image from "../../../../images/home-page/phaser-3.png";
-import pixilArtImage from "../../../../images/home-page/pixilart-logo.png";
-import reactImage from "../../../../images/home-page/react-logo.png";
+import aespriteImage from "../../../../images/home-page/aseprite.png?webp";
+import kraftiesImage from "../../../../images/home-page/krafties.png?webp";
+import austinLibraryImage from "../../../../images/home-page/austin-public-library.png?webp";
+import codesandboxImage from "../../../../images/home-page/codesandbox.png?webp";
+import phaser3Image from "../../../../images/home-page/phaser-3.png?webp";
+import pixilArtImage from "../../../../images/home-page/pixilart-logo.png?webp";
+import reactImage from "../../../../images/home-page/react-logo.png?webp";
 import { PartnerList, Wrapper } from "./StyledPartners";
 
 export default function Partners() {

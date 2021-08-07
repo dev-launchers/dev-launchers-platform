@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import adultsCoding from "../../../../images/members/photos/adults-coding.jpg";
+import adultsCoding from "../../../../images/members/photos/adults-coding.jpg?webp";
 
 export const HeaderDark = styled.div`
   background-color: #333333;

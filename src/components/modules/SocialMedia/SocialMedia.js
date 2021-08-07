@@ -1,8 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import PageBody from "../../common/PageBody";
-import logoMonogramImage from "../../../images/logo-monogram.png";
-import chessPiece from "../../../images/check-it/chess_display_large.jpg";
+import logoMonogramImage from "../../../images/logo-monogram.png?webp";
+import chessPiece from "../../../images/check-it/chess_display_large.jpg?webp";
 
 import {
   Side,

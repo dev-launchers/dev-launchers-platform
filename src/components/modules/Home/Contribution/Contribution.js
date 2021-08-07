@@ -25,7 +25,7 @@ function Contribution(props) {
       alignItems="center"
       backgroundImage={codeSnapshotImage}
     >
-      <ShadowCard>
+      <ShadowCard width="70%" height="60%">
         <CenteredHeadline style={{ backgroundColor: "white", color: "black" }}>
           CONTRIBUTE TO OUR PROJECTS
         </CenteredHeadline>
@@ -39,14 +39,17 @@ function Contribution(props) {
             </CtaSectionDescription>
             <CtaSectionButtonArea>
               <Button fontSize="2rem" href="https://github.com/dev-launchers">
-                View Our Projects
+                Find us on GitHub
               </Button>
               <Button
                 fontSize="2rem"
                 href="https://devlaunchers.com/projects"
                 bgColor={props.theme.colors.ACCENT_3}
+                style={{
+                  marginLeft: "1rem",
+                }}
               >
-                Find Us On GitHub
+                View our projects
               </Button>
             </CtaSectionButtonArea>
           </CtaSectionContent>
