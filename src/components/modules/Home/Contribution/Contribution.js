@@ -1,5 +1,6 @@
 import React from "react";
 import { withTheme } from "styled-components";
+import Link from "next/link";
 import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
@@ -38,12 +39,13 @@ function Contribution(props) {
               members!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Button fontSize="2rem" href="https://devlaunchers.com/projects">
-                View Our Projects
-              </Button>
+              <Link href="/projects" passHref>
+                <Button fontSize="2rem">View Our Projects</Button>
+              </Link>
               <Button
                 fontSize="2rem"
                 href="https://github.com/dev-launchers"
+                target="_blank"
                 bgColor={props.theme.colors.ACCENT_3}
               >
                 Find Us On GitHub
