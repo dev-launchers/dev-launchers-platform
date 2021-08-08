@@ -1,11 +1,11 @@
 import React from "react";
 
-import PageBody from "../../../components/common/PageBody";
-import Button from "../../../components/common/Button";
+import PageBody from "../../common/PageBody";
+import Button from "../../common/Button";
 
 import SupportUsOverlay from "./SupportUsOverlay";
 
-import studentPhoto from "../../../images/support-us/bw-girl-profile.png";
+import studentPhoto from "../../../images/support-us/bw-girl-profile.png?webp";
 import {
   ContentArea,
   StudentImageWrapper,
@@ -15,7 +15,7 @@ import {
   CtaHeaderArea,
   CtaHeaderMessage,
   CtaButtonWrapper,
-  StatusNote
+  StatusNote,
 } from "./StyledSupportUs";
 
 export default function SupportUs() {
@@ -33,9 +33,9 @@ export default function SupportUs() {
             </CtaHeaderArea>
             <CtaText>
               Dev Launchers is a 501(c)(3) nonprofit intent on empowering
-              diverse young creatives, innovators, and leaders. We're working on
-              touching as many lives as we possibly can, and need your help to
-              make that happen. Any amount helps!
+              diverse young creatives, innovators, and leaders. We&apos;re
+              working on touching as many lives as we possibly can, and need
+              your help to make that happen. Any amount helps!
             </CtaText>
             <CtaButtonWrapper>
               <Button

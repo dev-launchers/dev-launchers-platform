@@ -1,6 +1,5 @@
 import styled from "styled-components";
-
-import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
+import Button from "../../../common/Button";
 
 export const CtaSectionContent = styled.div`
   display: flex;
@@ -14,8 +13,12 @@ export const CtaSectionDescription = styled.div`
 `;
 
 export const CtaSectionButtonArea = styled.div`
-  margin-top: 4%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+
+  ${Button} {
+    margin: 1rem 1rem 0 1rem;
+  }
 `;

@@ -1,19 +1,19 @@
 import React from "react";
 import Link from "next/link";
-import style from "./HamburgerMenu.module.css";
-import logoMonogramImage from "../../../images/logo-monogram.png";
-import { Logout } from "../../../utils/Logout";
+import Image from "next/image";
 import { slide as SlideHamburgerMenu } from "react-burger-menu";
+import style from "./HamburgerMenu.module.css";
+import logoMonogramImage from "../../../images/logo-monogram.png?webp";
+import Logout from "../../../utils/Logout";
 import { env } from "../../../utils/EnvironmentVariables";
-import constate from "../../../context/UserDataContext";
 import { useUserDataContext } from "../../../context/UserDataContext";
 
-function HamburgerMenu(props) {
+function HamburgerMenu() {
   const { userData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
-  const isMenuOpen = function(state) {
+  const isMenuOpen = (state) => {
     setMenuOpen(state.isOpen);
   };
 
@@ -51,7 +51,13 @@ function HamburgerMenu(props) {
             <Link href={"/"} passHref>
               <a className="nav-link">
                 <div className={style.LogoImageHolder}>
-                  <img src={logoMonogramImage} className={style.LogoImage} />
+                  <Image
+                    alt="Logo"
+                    src={logoMonogramImage}
+                    className={style.LogoImage}
+                    width="144"
+                    height="144"
+                  />
                 </div>
               </a>
             </Link>
@@ -89,11 +95,11 @@ function HamburgerMenu(props) {
               )}
             </div>
 
-            {/*}
+            {/* }
             <Link href={"/play"} className="nav-link">
               <div className={style.navEntry}>PLAY</div>
             </Link>
-            {*/}
+            { */}
             <Link href={"/earn"} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>EARN</div>
@@ -120,9 +126,9 @@ function HamburgerMenu(props) {
               </Button>
             )}
           </div>
-          {*/}
+          { */}
         </div>
-        {/*} <div className={style.LogoWords}>Dev Launchers</div> */}
+        {/* } <div className={style.LogoWords}>Dev Launchers</div> */}
       </div>
     </SlideHamburgerMenu>
   );

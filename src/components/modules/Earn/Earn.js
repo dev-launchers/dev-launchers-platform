@@ -1,9 +1,7 @@
 import React from "react";
-import PageBody from "../../../components/common/PageBody";
+import PageBody from "../../common/PageBody";
 
 import SpendCardCollection from "./SpendCardCollection";
-import EarnPoints from "./EarnPoints";
-import CurrentPoints from "./CurrentPoints";
 
 export default function Earn() {
   return (
@@ -24,14 +22,14 @@ export default function Earn() {
       <br />
       <SpendCardCollection />
       <br />
-      {/*}<hr />
+      {/* }<hr />
       <CurrentPoints />
       <br />
       <br />
       <hr />
       <EarnPoints />
       <br />
-      <br />{*/}
+      <br />{ */}
     </PageBody>
   );
 }

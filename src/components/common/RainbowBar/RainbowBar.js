@@ -1,8 +1,6 @@
 import React from "react";
-import CardGroup from "../CardGroup";
-import { Wrapper, BarSection } from "./StyledRainbowBar";
-
 import { withTheme } from "styled-components";
+import { Wrapper, BarSection } from "./StyledRainbowBar";
 
 function RainbowBar({ width = "100%", height = ".5rem", theme }) {
   return (

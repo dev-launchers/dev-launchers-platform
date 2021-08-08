@@ -1,4 +1,6 @@
 import React from "react";
+import { withTheme } from "styled-components";
+import Link from "next/link";
 import {
   Wrapper,
   HeroSection,
@@ -6,17 +8,16 @@ import {
   ProjectTitle,
   Actions,
   InfoBar,
-  Section
+  Section,
 } from "./StyledProjectHero";
 import Button from "../../../../common/Button";
 import Tag from "../../../../common/Tag";
-import { withTheme } from "styled-components";
-import Link from "next/link";
+import SignUpButton from "../SignUpButton";
 
-import { env } from "../../../../../utils/EnvironmentVariables.js";
+// import { env } from "../../../../../utils/EnvironmentVariables";
 
-const ProjectHero = props => {
-  const projectData = props.projectData;
+const ProjectHero = (props) => {
+  const { projectData } = props;
 
   return (
     <Wrapper imageURL={projectData?.heroImage?.url}>
@@ -27,16 +28,10 @@ const ProjectHero = props => {
         </ProjectTitle>
         <ProjectDescription>{projectData?.catchPhrase}</ProjectDescription>
         <Actions>
-          <Button
-            rel="noopener noreferrer"
-            target="_blank"
-            href={projectData?.signupFormUrl}
-          >
-            JOIN NOW
-          </Button>
+          <SignUpButton projectName={projectData?.title}>JOIN NOW</SignUpButton>
           <Link
             href={{
-              pathname: "/support-us"
+              pathname: "/support-us",
             }}
             passHref
           >
@@ -52,7 +47,7 @@ const ProjectHero = props => {
         </Section>
         <Section position="end" size="3rem">
           {projectData?.projectReferenceURLs.map(({ title, url }) => {
-            if (title == "Github Repo")
+            if (title === "Github Repo")
               return (
                 <a
                   style={{ color: props.theme.colors.NEUTRAL_2 }}
@@ -63,10 +58,10 @@ const ProjectHero = props => {
                   <i className="fab fa-github"></i>
                 </a>
               );
-            else if (title == "Website")
+            if (title === "Website")
               return (
                 <a
-                  style={{ color: props.theme.NEUTRAL_2 }}
+                  style={{ color: props.theme.colors.NEUTRAL_2 }}
                   href={url}
                   rel="noopener noreferrer"
                   target="_blank"
@@ -74,6 +69,7 @@ const ProjectHero = props => {
                   <i className="fab fa-globe"></i>
                 </a>
               );
+            return false;
           })}
         </Section>
       </InfoBar>

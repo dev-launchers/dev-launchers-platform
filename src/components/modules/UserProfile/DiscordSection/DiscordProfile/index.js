@@ -1,1 +1,1 @@
-export { default } from "./DiscordProfile.js";
+export { default } from "./DiscordProfile";

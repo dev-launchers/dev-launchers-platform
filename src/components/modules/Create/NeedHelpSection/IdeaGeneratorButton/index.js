@@ -1,1 +1,1 @@
-export { default } from "./IdeaGeneratorButton.js";
+export { default } from "./IdeaGeneratorButton";

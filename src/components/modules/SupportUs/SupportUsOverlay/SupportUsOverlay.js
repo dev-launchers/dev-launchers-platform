@@ -1,5 +1,5 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import {
   Wrapper,
@@ -7,11 +7,11 @@ import {
   MessageArea,
   Tagline,
   ImageArea,
-  Image
+  Image,
 } from "./StyledSupportUsOverlay";
-import RainbowBar from "../../../../components/common/RainbowBar";
+import RainbowBar from "../../../common/RainbowBar";
 
-import boyFrontImage from "../../../../images/people-cutouts/boy-front.png";
+import boyFrontImage from "../../../../images/people-cutouts/boy-front.png?webp";
 
 export default function HeroOverlay() {
   return (
@@ -30,7 +30,7 @@ export default function HeroOverlay() {
                   fontSize: "3rem",
                   fontWeight: "bold",
                   paddingLeft: ".3rem",
-                  paddingRight: ".3rem"
+                  paddingRight: ".3rem",
                 }}
               >
                 YOUR
@@ -40,7 +40,7 @@ export default function HeroOverlay() {
           </MessageArea>
         </RainbowedMessageArea>
         <ImageArea>
-          <Image src={boyFrontImage} />
+          <Image src={boyFrontImage} alt="" />
         </ImageArea>
       </Wrapper>
     </FlexPageSection>

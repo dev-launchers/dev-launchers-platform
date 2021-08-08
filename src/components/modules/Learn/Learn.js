@@ -4,8 +4,8 @@ import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 
 import { useSheetsContext } from "../../../context/SheetsContext";
 
-import PageBody from "../../../components/common/PageBody";
-import Section from "../../../components/common/Section/Section";
+import PageBody from "../../common/PageBody";
+import Section from "../../common/Section/Section";
 
 export default function Learn() {
   const { learnPageData } = useSheetsContext();
@@ -23,27 +23,33 @@ export default function Learn() {
 
         <Tabs defaultFocus={true} defaultIndex="0">
           <TabList style={{ fontSize: "2rem", fontWeight: "bold" }}>
-            {// Have to do this hack for some reason (create empty tab if page not loaded)...
-            //otherwise tabs break
-            Object.entries(learnPageData).length === 0 ? <Tab></Tab> : ""}
-            {// Render tabs from our dynamically built learnPageData object
-            Object.keys(learnPageData).map(key => {
-              return <Tab key={"tab" + key}>{key}</Tab>;
-            })}
+            {
+              // Have to do this hack for some reason (create empty tab if page not loaded)...
+              // otherwise tabs break
+              Object.entries(learnPageData).length === 0 ? <Tab></Tab> : ""
+            }
+            {
+              // Render tabs from our dynamically built learnPageData object
+              Object.keys(learnPageData).map((key) => (
+                <Tab key={`tab${key}`}>{key}</Tab>
+              ))
+            }
           </TabList>
-          {// Render sections and groups from our dynamically built learnPageData object
-          // Render tab panels from our dynamically built learnPageData object
-          Object.values(learnPageData).map((tab, i) => {
-            // render all sections for this tab
-            return (
+          {
+            // Render sections and groups from our dynamically built learnPageData object
+            // Render tab panels from our dynamically built learnPageData object
+            Object.values(learnPageData).map((tab, i) => (
+              // render all sections for this tab
               <TabPanel key={i}>
-                {Object.keys(tab).map((sectionTitle, i) => {
+                {Object.keys(tab).map((sectionTitle) => {
                   const section = tab[sectionTitle];
-                  return <Section data={section} title={sectionTitle} />;
+                  return (
+                    <Section key={i} data={section} title={sectionTitle} />
+                  );
                 })}
               </TabPanel>
-            );
-          })}
+            ))
+          }
         </Tabs>
       </PageBody>
     </div>

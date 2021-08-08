@@ -8,12 +8,12 @@ import {
   NavEntry,
   SocialMediaContainer,
   SocialMediaLink,
-  OrgInfoArea
+  OrgInfoArea,
 } from "./StyledFooter";
 import RandomQuote from "./RandomQuote";
 import Newsletter from "./Newsletter";
 
-export default function Footer(props) {
+export default function Footer() {
   return (
     <Wrapper>
       <Newsletter />
@@ -28,17 +28,17 @@ export default function Footer(props) {
             <NavEntry>LEARN</NavEntry>
           </a>
         </Link>
-        {/*}
+        {/* }
         <Link href={"/play"} passHref className="nav-link">
           <NavEntry>PLAY</NavEntry>
         </Link>
-        {*/}
+        { */}
         <Link href={"/support-us"} passHref className="nav-link">
           <a>
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href={"/members"} passHref className="nav-link">
+        <Link href={"/projects"} passHref className="nav-link">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>
@@ -57,9 +57,16 @@ export default function Footer(props) {
       </SocialMediaContainer>
       <RandomQuote />
       <OrgInfoArea>
-        -<a href="/page/terms-and-conditions">Terms of Service </a> {"- | -"}
-        <a href="/page/privacy-policy">Privacy Policy </a> {"- | "} ©Dev
-        Launchers, 2020.
+        -
+        <Link href="/page/terms-and-conditions" passHref>
+          <>
+            <a>Terms of Service </a> {"- | -"}
+          </>
+        </Link>
+        <Link href="/page/privacy-policy" passHref>
+          <a>Privacy Policy </a>
+        </Link>{" "}
+        {"- | "} ©Dev Launchers, 2020.
       </OrgInfoArea>
     </Wrapper>
   );

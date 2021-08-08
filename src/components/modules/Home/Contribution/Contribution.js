@@ -1,20 +1,22 @@
 import React from "react";
-import FlexPageSection from "../../../../components/common/FlexPageSection";
+import { withTheme } from "styled-components";
+import Link from "next/link";
+import FlexPageSection from "../../../common/FlexPageSection";
 
 import CenteredHeadline from "../../../common/CenteredHeadline";
 
 import {
   CtaSectionContent,
   CtaSectionDescription,
-  CtaSectionButtonArea
-} from "./StyledContribution.js";
+  CtaSectionButtonArea,
+} from "./StyledContribution";
 
 import Button from "../../../common/Button";
 import ShadowCard from "../../../common/ShadowCard";
 
-import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg";
+import codeSnapshotImage from "../../../../images/home-page/code-snapshot--white-background.jpg?webp";
 
-export default function Contribution() {
+function Contribution(props) {
   return (
     <FlexPageSection
       width="100%"
@@ -24,7 +26,7 @@ export default function Contribution() {
       alignItems="center"
       backgroundImage={codeSnapshotImage}
     >
-      <ShadowCard width="70%" height="60%">
+      <ShadowCard>
         <CenteredHeadline style={{ backgroundColor: "white", color: "black" }}>
           CONTRIBUTE TO OUR PROJECTS
         </CenteredHeadline>
@@ -37,8 +39,16 @@ export default function Contribution() {
               members!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Button fontSize="2rem" href="https://github.com/dev-launchers">
-                Find us on GitHub
+              <Link href="/projects" passHref>
+                <Button fontSize="2rem">View Our Projects</Button>
+              </Link>
+              <Button
+                fontSize="2rem"
+                href="https://github.com/dev-launchers"
+                target="_blank"
+                bgColor={props.theme.colors.ACCENT_3}
+              >
+                Find Us On GitHub
               </Button>
             </CtaSectionButtonArea>
           </CtaSectionContent>
@@ -47,3 +57,5 @@ export default function Contribution() {
     </FlexPageSection>
   );
 }
+
+export default withTheme(Contribution);

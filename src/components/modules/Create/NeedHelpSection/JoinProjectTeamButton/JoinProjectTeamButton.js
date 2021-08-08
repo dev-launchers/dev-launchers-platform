@@ -1,16 +1,16 @@
 import React from "react";
-import { Wrapper } from "./StyledJoinProgramButton";
+import { Wrapper } from "./StyledJoinProjectTeamButton";
 
-export default function JoinProgramButton(props) {
+export default function JoinProjectTeamButton() {
   return (
     <Wrapper>
       <div
         style={{ width: "100%", height: "100%" }}
         onClick={() => {
-          window.location = "/members";
+          window.location = "/projects";
         }}
       >
-        ❤️ Join Our Program!
+        ❤️ Join A Project Team!
       </div>
     </Wrapper>
   );

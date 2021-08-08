@@ -6,37 +6,59 @@ import constate from "constate"; // State Context Object Creator
 // Step 1: Create a custom hook that contains your state and actions
 function useRepo() {
   const [repoData, setRepoData] = React.useState({});
+  const GITHUB_API_URL_DEV =
+    "https://api.github.com/users/dev-launchers-sandbox/repos";
+  const GITHUB_API_URL_PROD =
+    "https://api.github.com/users/dev-launchers/repos";
+  // const DEV_GAME_URL_PREFIX = "http://devlaunchers.com/dev/";
+  // const PROD_GAME_URL_PREFIX = "http://devlaunchers.com/launch/";
 
+  async function getGithubData(apiUrl) {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    const returnData = {};
+
+    for (let i = 0; i < data.length; i++) {
+      returnData[data[i].name] = data[i];
+    }
+    return returnData;
+  }
   React.useEffect(() => {
     /*
      * When component mounts, fetch repos owned by dev-launchers-sandbox
      * using the GitHub API. Then display specific projects to the user
      */
-    getAllData().then(allData => {
-      let devData = allData.devData;
-      let prodData = allData.prodData;
+    async function getAllData() {
+      const devData = await getGithubData(GITHUB_API_URL_DEV);
+      const prodData = await getGithubData(GITHUB_API_URL_PROD);
 
-      let projectsData = []; // Adding newly found projects here, then updating state
+      return { devData, prodData };
+    }
+    getAllData().then((allData) => {
+      const { devData } = allData;
+      const { prodData } = allData;
 
-      let devKeys = Object.keys(devData);
-      let prodKeys = Object.keys(prodData);
+      const projectsData = []; // Adding newly found projects here, then updating state
 
-      devKeys.forEach(devKey => {
-        let repoEntry = devData[devKey];
+      const devKeys = Object.keys(devData);
+      const prodKeys = Object.keys(prodData);
+
+      devKeys.forEach((devKey) => {
+        const repoEntry = devData[devKey];
         // search look for substring and return its position of its first occurance
         if (repoEntry.name.search("project__") === 0) {
           projectsData.push({
             title: repoEntry.name,
             description: repoEntry.description,
-            href: "https://devlaunchers.com/dev/" + repoEntry.name,
-            prodUrl: "https://devlaunchers.com/launch/" + repoEntry.name,
+            href: `https://devlaunchers.com/dev/${repoEntry.name}`,
+            prodUrl: `https://devlaunchers.com/launch/${repoEntry.name}`,
             imageSrc: "/images/DevlaunchersGitHubThumb.png",
-            repoUrl: repoEntry.html_url
+            repoUrl: repoEntry.html_url,
           });
         }
       });
-      prodKeys.forEach(prodKey => {
-        let repoEntry = prodData[prodKey];
+      prodKeys.forEach((prodKey) => {
+        const repoEntry = prodData[prodKey];
         // search look for substring and return its position of its first occurance
         if (
           repoEntry.name.search("project__") === 0 &&
@@ -45,7 +67,7 @@ function useRepo() {
           projectsData.push({
             name: repoEntry.name,
             description: repoEntry.description,
-            devUrl: "https://devlaunchers.com/dev/" + repoEntry.name
+            devUrl: `https://devlaunchers.com/dev/${repoEntry.name}`,
           });
         }
       });
@@ -56,29 +78,6 @@ function useRepo() {
   return { repoData };
 }
 
-const GITHUB_API_URL_DEV =
-  "https://api.github.com/users/dev-launchers-sandbox/repos";
-const GITHUB_API_URL_PROD = "https://api.github.com/users/dev-launchers/repos";
-//const DEV_GAME_URL_PREFIX = "http://devlaunchers.com/dev/";
-const PROD_GAME_URL_PREFIX = "http://devlaunchers.com/launch/";
-
-async function getGithubData(apiUrl) {
-  let response = await fetch(apiUrl);
-  let data = await response.json();
-  var returnData = {};
-
-  for (let i = 0; i < data.length; i++) {
-    returnData[data[i].name] = data[i];
-  }
-  return returnData;
-}
-
-async function getAllData() {
-  let devData = await getGithubData(GITHUB_API_URL_DEV);
-  let prodData = await getGithubData(GITHUB_API_URL_PROD);
-
-  return { devData, prodData };
-}
 /*
 function getProjectKeys(devDataKeys, prodDataKeys) {
   let allKeys = [];

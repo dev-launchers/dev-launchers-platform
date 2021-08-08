@@ -5,7 +5,7 @@ const DropdownButton = ({ toggleBtnText, dropdownItems, className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const node = useRef();
 
-  const handleClickOutside = e => {
+  const handleClickOutside = (e) => {
     if (node.current.contains(e.target)) return;
     // outside click
     setMenuOpen(false);
@@ -26,7 +26,7 @@ const DropdownButton = ({ toggleBtnText, dropdownItems, className }) => {
   return (
     <Wrapper ref={node} className={className}>
       <Toggle
-        onClick={e => setMenuOpen(!menuOpen)}
+        onClick={() => setMenuOpen(!menuOpen)}
         as="button"
         fontSize="1.2rem"
       >

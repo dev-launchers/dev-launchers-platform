@@ -1,46 +1,49 @@
 import React from "react";
-
+import { ConvertCentralTimeString } from "../../../../utils/TimeZoneConverter";
 import {
   HeaderLight,
   DescriptionArea,
   DescriptionTimeslotArea,
-  DescriptionTimeslotBox
+  DescriptionTimeslotBox,
 } from "./StyledProgramDescriptionArea";
 
-export default function ProgramDescriptionArea(props) {
+export default function ProgramDescriptionArea() {
   return (
     <div style={{ width: "100%" }}>
       <HeaderLight>
         <DescriptionArea>
           <h3>How It Works</h3>
-          <b>Our Labs happen on Saturdays</b>, and give participants access to
-          valuable help from members with more development experience. This is{" "}
-          <b>100% FREE</b>, and all we ask is that you spend time helping others
-          through Dev Launchers.
+          <b style={{ fontWeight: "bold" }}>
+            Our labs are hosted every Saturday
+          </b>
+          . These labs give participants access to valuable help from members
+          with more development experience. This is{" "}
+          <b style={{ fontWeight: "bold" }}>100% FREE</b>, and all we ask is
+          that you spend time helping others through Dev Launchers.
           <DescriptionTimeslotArea>
             <DescriptionTimeslotBox>
-              <b>Beginner Dev Sessions</b>
+              <b style={{ fontWeight: "bold" }}>Beginner Dev Sessions</b>
               <br />
-              <i>Saturdays, 12:00-3:00pm CDT</i>
+              <i>{ConvertCentralTimeString(6, 12, 0)}</i>
               <br />
               <br />
-              If you're <b>learning coding fundamentals</b>, have recently
+              If you&apos;re <b>learning coding fundamentals</b>, have recently
               started your first project, or are looking to help those who are,
               this is for you!
             </DescriptionTimeslotBox>
             <DescriptionTimeslotBox>
-              <b>Web and App Dev Sessions</b>
+              <b style={{ fontWeight: "bold" }}>Web and App Dev Sessions</b>
               <br />
-              <i>Saturdays, 1:00-2:00pm CDT</i>
+              <i>{ConvertCentralTimeString(6, 13, 0)}</i>
               <br />
               <br />
-              Have a <b>web or app development project</b> you're working on?
-              Come give and get input, feedback, and help here!
+              Have a <b>web or app development project</b> you&apos;re working
+              on? Come give and get input, feedback, and help here!
             </DescriptionTimeslotBox>
             <DescriptionTimeslotBox>
-              <b>Game Dev Sessions</b>
+              <b style={{ fontWeight: "bold" }}>Game Dev Sessions</b>
               <br />
-              <i>Saturdays, 2:00-3:00pm CDT</i>
+              <i>{ConvertCentralTimeString(6, 14, 0)}</i>
               <br />
               <br />
               Are you a <b>game dev</b>, or interested in becoming one? Join in

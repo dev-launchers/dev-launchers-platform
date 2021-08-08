@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
-import { Heading, Title } from "./StyledCardTitle.js";
+import { Heading, Title } from "./StyledCardTitle";
 
 export default function CardTitle({
   data,
@@ -20,7 +21,7 @@ export default function CardTitle({
       }}
     >
       {isLinkingInside ? (
-        <Link href={pathname + "/" + data.href} passHref>
+        <Link href={`${pathname}/${data.href}`} passHref>
           <Title>{data.title}</Title>
         </Link>
       ) : (
@@ -30,8 +31,13 @@ export default function CardTitle({
       )}
 
       {attachment && (
-        <a href={data.repoUrl} target="_blank">
-          <img src={"images/GitHub-Mark-Light-32px.png"} />
+        <a href={data.repoUrl} target="_blank" rel="noreferrer">
+          <Image
+            alt="github"
+            height="32"
+            width="32"
+            src={"images/GitHub-Mark-Light-32px.png?webp"}
+          />
         </a>
       )}
     </Heading>

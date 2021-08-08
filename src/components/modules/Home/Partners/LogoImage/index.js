@@ -1,1 +1,1 @@
-export { default } from "./LogoImage.js";
+export { default } from "./LogoImage";

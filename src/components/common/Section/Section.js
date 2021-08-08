@@ -6,7 +6,7 @@ export default function Section(props) {
   return (
     <Wrapper>
       <h2>{props.title}</h2>
-      <div key={"collection" + props.title}>
+      <div key={`collection${props.title}`}>
         {Object.keys(props.data).map((groupTitle, i) => {
           const group = props.data[groupTitle];
           return (

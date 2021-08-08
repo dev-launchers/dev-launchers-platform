@@ -8,12 +8,11 @@ export const Collection = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: ${({ cardGroupFlexDirection }) =>
-    cardGroupFlexDirection ? cardGroupFlexDirection : "flex-start"};
+    cardGroupFlexDirection || "flex-start"};
 `;
 
 export const CollectionTitle = styled.h3`
-  text-align: ${({ groupTitleAlignment }) =>
-    groupTitleAlignment ? groupTitleAlignment : "left"};
+  text-align: ${({ groupTitleAlignment }) => groupTitleAlignment || "left"};
   padding: 1%;
   margin-bottom: 0;
 `;

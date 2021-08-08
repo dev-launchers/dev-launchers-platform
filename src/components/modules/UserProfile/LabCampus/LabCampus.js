@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Wrapper } from "./StyledLabCampus";
-let events = require("../../../../content/collections/timeline");
 import { DateTime } from "luxon";
+import { Wrapper } from "./StyledLabCampus";
 import TimeLine from "./TimeLine";
 import Labs from "./Labs";
 
-const LabCampus = props => {
+const events = require("../../../../content/collections/timeline.json");
+
+const LabCampus = () => {
   const [currentTime, setCurrentTime] = useState(DateTime.now());
 
   return (

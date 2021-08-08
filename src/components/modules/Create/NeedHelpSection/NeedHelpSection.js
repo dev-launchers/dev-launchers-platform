@@ -2,9 +2,9 @@ import React from "react";
 
 import GameIdeaGeneratorButton from "./IdeaGeneratorButton/GameIdeaGeneratorButton";
 import AppIdeaGeneratorButton from "./IdeaGeneratorButton/AppIdeaGeneratorButton";
-import JoinProgramButton from "./JoinProgramButton";
+import JoinProjectTeamButton from "./JoinProjectTeamButton";
 
-export default function NeedHelpSection(props) {
+export default function NeedHelpSection() {
   return (
     <div style={{ margin: "2%" }}>
       <div
@@ -12,17 +12,17 @@ export default function NeedHelpSection(props) {
           width: "100%",
           backgroundColor: "transparent",
           textAlign: "left",
-          //padding: "1%"
+          // padding: "1%"
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
         }}
       >
         <b>Need some help?</b>
         <GameIdeaGeneratorButton />
         <AppIdeaGeneratorButton />
-        <JoinProgramButton />
+        <JoinProjectTeamButton />
       </div>
     </div>
   );
