@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import axios from "axios";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
 import { env } from "../../utils/EnvironmentVariables";
-// import { ProjectsDataProvider } from "../../context/ProjectsContext";
+
 export const getStaticPaths = async () => {
   const { data } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
@@ -13,16 +12,18 @@ export const getStaticPaths = async () => {
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
     },
   });
+  
   const paths = data.map((project) => ({
     params: { slug: project.slug },
   }));
+
   return {
     paths,
     fallback: false,
   };
-};
+}
 
-export const getStaticProps = async (context) => {
+export async function getStaticProps(context) {
   const { slug } = context.params;
   const { data: project } = await axios.get(
     `${env().STRAPI_URL}/projects/${slug}`,
@@ -47,7 +48,7 @@ export const getStaticProps = async (context) => {
     },
     revalidate: 20,
   };
-};
+}
 
 const ProjectRoute = ({ project }) => (
   <div>
