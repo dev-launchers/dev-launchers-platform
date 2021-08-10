@@ -103,14 +103,14 @@ const Project = ({ project, theme }) => {
         </CategoriesContainer>
         <br />
       </div>
-      {project.openPositions.length ? (
+      {project?.openPositions.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
           <OpenPositions projectData={project} />
         </div>
       ) : (
         ""
       )}
-      {project.team.leaders.length || project.team.members.length ? (
+      {project?.team.leaders.length || project?.team.members.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
           <Team projectData={project} />
         </div>
