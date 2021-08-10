@@ -1,25 +1,25 @@
-/* eslint-disable no-console */
 import axios from "axios";
 import Header from "../../components/common/Header";
 // import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
 import { env } from "../../utils/EnvironmentVariables";
-// import { ProjectsDataProvider } from "../../context/ProjectsContext";
 
-export async function getStaticProps() {
-  // const { data: projects } = await axios(`${env().STRAPI_URL}/projects`);
+export const getStaticProps = async () => {
   const { data: projects } = await axios(`${env().STRAPI_URL}/projects`, {
     headers: {
       Accept: "application/json, text/plain, */*",
-      "User-Agent": "*",
+      "User-Agent":
+        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
     },
   });
+
+
   if (!projects) {
     return {
       notFound: true,
     };
   }
-  console.log(projects);
+
   return {
     props: { projects },
     revalidate: 20,
@@ -29,9 +29,7 @@ export async function getStaticProps() {
 const ProjectsList = ({ projects }) => (
   <div>
     <Header />
-    {projects.map((project) => {
-      <div>{project?.title}</div>;
-    })}
+    <Projects projects={projects || ""} />
     <Footer />
   </div>
 );
