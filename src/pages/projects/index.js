@@ -1,6 +1,6 @@
 import axios from "axios";
 import Header from "../../components/common/Header";
-import Projects from "../../components/modules/Projects";
+// import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
 import { env } from "../../utils/EnvironmentVariables";
 
@@ -13,6 +13,7 @@ export const getStaticProps = async () => {
     },
   });
 
+
   if (!projects) {
     return {
       notFound: true,
@@ -23,7 +24,7 @@ export const getStaticProps = async () => {
     props: { projects },
     revalidate: 20,
   };
-};
+}
 
 const ProjectsList = ({ projects }) => (
   <div>
