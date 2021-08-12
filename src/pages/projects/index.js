@@ -33,19 +33,19 @@ const ProjectsList = ({ projects }) => (
       <meta name="title" content="Our Projects"></meta>
       <meta
         name="description"
-        content="Our ultimate goal is to provide the best environment for our projects in terms of discoverability, engagement and funding."
+        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
       ></meta>
 
       <meta property="og:type" content="website"></meta>
       <meta property="og:url" content="https://devlaunchers.com/"></meta>
+      <meta
+        property="og:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
       <meta property="og:title" content="Our Projects"></meta>
       <meta
         property="og:description"
         content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
-      ></meta>
-      <meta
-        property="og:image"
-        content="/images/DevlaunchersGitHubThumb.png"
       ></meta>
 
       <meta property="twitter:card" content="summary_large_image"></meta>
