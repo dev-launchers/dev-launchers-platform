@@ -135,7 +135,7 @@ const Project = ({ project, theme }) => {
         }}
       >
         <SignUpButton
-          projectName={projectData?.title}
+          projectName={project?.title}
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
