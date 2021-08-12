@@ -13,6 +13,7 @@ import {
 import ProjectHero from "./ProjectHero";
 import OpenPositions from "./OpenPositions";
 import Team from "./Team";
+import SignUpButton from "./SignUpButton";
 
 // eslint-disable-next-line no-unused-vars
 const truncateText = (text, truncateAt, replaceWith) => {
@@ -133,10 +134,8 @@ const Project = ({ project, theme }) => {
           justifyContent: "center",
         }}
       >
-        <Button
-          rel="noopener noreferrer"
-          target="_blank"
-          href={project?.signupFormUrl}
+        <SignUpButton
+          projectName={projectData?.title}
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
@@ -144,7 +143,7 @@ const Project = ({ project, theme }) => {
           }}
         >
           JOIN NOW
-        </Button>
+        </SignUpButton>
       </div>
       <div
         style={{

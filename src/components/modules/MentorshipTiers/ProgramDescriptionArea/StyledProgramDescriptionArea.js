@@ -9,7 +9,7 @@ export const HeaderLight = styled.div`
   background-color: rgb(255, 255, 255);
   /*background-color: rgb(220, 220, 220);*/
   /*margin-top: 2%;*/
-  /*background-image: url("../../../../images/members/photos/adults-coding.jpg");*/
+  /*background-image: url("../../../../images/members/photos/adults-coding.jpg?webp");*/
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;

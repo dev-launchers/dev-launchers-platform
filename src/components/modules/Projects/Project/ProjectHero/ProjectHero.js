@@ -12,6 +12,7 @@ import {
 } from "./StyledProjectHero";
 import Button from "../../../../common/Button";
 import Tag from "../../../../common/Tag";
+import SignUpButton from "../SignUpButton";
 
 // import { env } from "../../../../../utils/EnvironmentVariables";
 
@@ -27,13 +28,7 @@ const ProjectHero = (props) => {
         </ProjectTitle>
         <ProjectDescription>{projectData?.catchPhrase}</ProjectDescription>
         <Actions>
-          <Button
-            rel="noopener noreferrer"
-            target="_blank"
-            href={projectData?.signupFormUrl}
-          >
-            JOIN NOW
-          </Button>
+          <SignUpButton projectName={projectData?.title}>JOIN NOW</SignUpButton>
           <Link
             href={{
               pathname: "/support-us",

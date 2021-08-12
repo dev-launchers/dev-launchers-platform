@@ -11,7 +11,7 @@ import {
 } from "./StyledSupportUsOverlay";
 import RainbowBar from "../../../common/RainbowBar";
 
-import boyFrontImage from "../../../../images/people-cutouts/boy-front.png";
+import boyFrontImage from "../../../../images/people-cutouts/boy-front.png?webp";
 
 export default function HeroOverlay() {
   return (

@@ -9,7 +9,7 @@ const PROD = {
 
 const STAGING = {
   envType: "STAGING",
-  API_URL: "https://api.devlaunchers.com",
+  API_URL: "https://api-staging.devlaunchers.com",
   STRAPI_URL: "https://cms-api-staging.devlaunchers.com",
   GOOGLE_AUTH_URL: "https://cms-api-staging.devlaunchers.com/connect/google",
   DISCORD_AUTH_URL:
