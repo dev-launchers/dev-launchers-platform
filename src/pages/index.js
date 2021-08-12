@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import DevlaunchersGitHubThumbnail from "../../public/images/DevlaunchersGitHubThumb.png";
 
 import Header from "../components/common/Header";
 import Home from "../components/modules/Home";
@@ -24,7 +23,10 @@ export default function Index() {
           property="og:description"
           content="We build world changing software while preparing people to thrive in technical careers"
         ></meta>
-        <meta property="og:image" content={DevlaunchersGitHubThumbnail}></meta>
+        <meta
+          property="og:image"
+          content="/images/DevlaunchersGitHubThumb.png"
+        ></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta property="twitter:url" content="https://devlaunchers.com/"></meta>
@@ -35,7 +37,7 @@ export default function Index() {
         ></meta>
         <meta
           property="twitter:image"
-          content={DevlaunchersGitHubThumbnail}
+          content="/images/DevlaunchersGitHubThumb.png"
         ></meta>
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>

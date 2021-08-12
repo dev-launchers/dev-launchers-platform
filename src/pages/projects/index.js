@@ -1,6 +1,5 @@
 import axios from "axios";
 import Head from "next/head";
-import DevlaunchersGitHubThumbnail from "../../../public/images/DevlaunchersGitHubThumb.png";
 import Header from "../../components/common/Header";
 import Projects from "../../components/modules/Projects";
 import Footer from "../../components/common/Footer";
@@ -44,7 +43,10 @@ const ProjectsList = ({ projects }) => (
         property="og:description"
         content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
       ></meta>
-      <meta property="og:image" content={DevlaunchersGitHubThumbnail}></meta>
+      <meta
+        property="og:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
 
       <meta property="twitter:card" content="summary_large_image"></meta>
       <meta property="twitter:url" content="https://devlaunchers.com/"></meta>
@@ -55,7 +57,7 @@ const ProjectsList = ({ projects }) => (
       ></meta>
       <meta
         property="twitter:image"
-        content={DevlaunchersGitHubThumbnail}
+        content="/images/DevlaunchersGitHubThumb.png"
       ></meta>
       <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
     </Head>
