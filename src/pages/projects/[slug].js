@@ -51,47 +51,46 @@ export async function getStaticProps(context) {
   };
 }
 
-const ProjectRoute = ({ project }) => (
-  <>
-    <Head>
-      <title>{project?.title}</title>
-      <meta name="title" content={project?.title}></meta>
-      <meta name="description" content={project?.description}></meta>
+const ProjectRoute = ({ project }) => {
+  const heroImageFormats = project?.heroImage?.formats;
+  const heroImage =
+    heroImageFormats.large || heroImageFormats.medium || heroImageFormats.small;
+  return (
+    <>
+      <Head>
+        <title>{project?.title}</title>
+        <meta name="title" content={project?.title}></meta>
+        <meta name="description" content={project?.description}></meta>
 
-      <meta property="og:type" content="website"></meta>
-      <meta
-        property="og:url"
-        content={`https://devlaunchers.com/projects/${project?.slug}`}
-      ></meta>
-      <meta
-        property="og:image"
-        content={project.heroImage.formats.large.url}
-      ></meta>
-      <meta property="og:title" content={project?.title}></meta>
-      <meta property="og:description" content={project?.description}></meta>
+        <meta property="og:type" content="website"></meta>
+        <meta
+          property="og:url"
+          content={`https://devlaunchers.com/projects/${project?.slug}`}
+        ></meta>
+        <meta property="og:image" content={heroImage?.url}></meta>
+        <meta property="og:title" content={project?.title}></meta>
+        <meta property="og:description" content={project?.description}></meta>
 
-      <meta property="twitter:card" content="summary_large_image"></meta>
-      <meta
-        property="twitter:url"
-        content={`https://devlaunchers.com/projects/${project?.slug}`}
-      ></meta>
-      <meta property="twitter:title" content={project?.title}></meta>
-      <meta
-        property="twitter:description"
-        content={project?.description}
-      ></meta>
-      <meta
-        property="twitter:image"
-        content={project?.heroImage?.formats?.large?.url}
-      ></meta>
-      <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
-    </Head>
-    <div>
-      <Header />
-      <Project project={project || ""} />
-      <Footer />
-    </div>
-  </>
-);
-
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta
+          property="twitter:url"
+          content={`https://devlaunchers.com/projects/${project?.slug}`}
+        ></meta>
+        <meta property="twitter:title" content={project?.title}></meta>
+        <meta
+          property="twitter:description"
+          content={project?.description}
+        ></meta>
+        <meta property="twitter:image" content={heroImage?.url}></meta>
+        <meta property="twitter:image:src" content={heroImage?.url}></meta>
+        <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
+      </Head>
+      <div>
+        <Header />
+        <Project project={project || ""} />
+        <Footer />
+      </div>
+    </>
+  );
+};
 export default ProjectRoute;
