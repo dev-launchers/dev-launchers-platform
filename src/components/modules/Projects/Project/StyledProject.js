@@ -1,30 +1,32 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  p {
-    padding-left: 1rem;
+  position: relative;
+  z-index: 1;
+
+  #background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 22rem;
+    background-color: #3c3b3c;
+    z-index: -1;
   }
 
-  h4 {
-    margin-top: 5rem;
+  & > *:not(#background) {
+    max-width: 71.3rem;
+    margin: 0 auto;
+  }
+  h2 {
+    margin: 0;
+  }
+  h3 {
+    margin-top: 0;
   }
 `;
 
-export const CategoriesContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  @media (orientation: portrait) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-export const CategoryTitle = styled.h3`
-  font-family: Abel;
-  margin: 0;
-  padding: 0 0 0 0.5rem;
-  text-decoration: underline;
-`;
+export const CategoryTitle = styled.h3``;
 export const CategoryContainer = styled.div`
   padding: 1rem 1rem 1rem 1rem;
   h4 {
