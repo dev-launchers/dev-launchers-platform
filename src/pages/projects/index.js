@@ -37,7 +37,10 @@ const ProjectsList = ({ projects }) => (
       ></meta>
 
       <meta property="og:type" content="website"></meta>
-      <meta property="og:url" content="https://devlaunchers.com/"></meta>
+      <meta
+        property="og:url"
+        content="https://devlaunchers.com/projects"
+      ></meta>
       <meta
         property="og:image"
         content="/images/DevlaunchersGitHubThumb.png"
@@ -49,7 +52,10 @@ const ProjectsList = ({ projects }) => (
       ></meta>
 
       <meta property="twitter:card" content="summary_large_image"></meta>
-      <meta property="twitter:url" content="https://devlaunchers.com/"></meta>
+      <meta
+        property="twitter:url"
+        content="https://devlaunchers.com/projects"
+      ></meta>
       <meta property="twitter:title" content="Our Projects"></meta>
       <meta
         property="twitter:description"

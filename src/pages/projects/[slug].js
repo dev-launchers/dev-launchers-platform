@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
 import Project from "../../components/modules/Projects/Project";
@@ -12,7 +13,7 @@ export const getStaticPaths = async () => {
         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
     },
   });
-  
+
   const paths = data.map((project) => ({
     params: { slug: project.slug },
   }));
@@ -21,7 +22,7 @@ export const getStaticPaths = async () => {
     paths,
     fallback: false,
   };
-}
+};
 
 export async function getStaticProps(context) {
   const { slug } = context.params;
@@ -51,11 +52,46 @@ export async function getStaticProps(context) {
 }
 
 const ProjectRoute = ({ project }) => (
-  <div>
-    <Header />
-    <Project project={project || ""} />
-    <Footer />
-  </div>
+  <>
+    <Head>
+      <title>{project?.title}</title>
+      <meta name="title" content={project?.title}></meta>
+      <meta name="description" content={project?.description}></meta>
+
+      <meta property="og:type" content="website"></meta>
+      <meta
+        property="og:url"
+        content={`https://devlaunchers.com/projects/${project?.slug}`}
+      ></meta>
+      <meta
+        property="og:image"
+        content={project.heroImage.formats.large.url}
+      ></meta>
+      <meta property="og:title" content={project?.title}></meta>
+      <meta property="og:description" content={project?.description}></meta>
+
+      <meta property="twitter:card" content="summary_large_image"></meta>
+      <meta
+        property="twitter:url"
+        content={`https://devlaunchers.com/projects/${project?.slug}`}
+      ></meta>
+      <meta property="twitter:title" content={project?.title}></meta>
+      <meta
+        property="twitter:description"
+        content={project?.description}
+      ></meta>
+      <meta
+        property="twitter:image"
+        content={project?.heroImage?.formats?.large?.url}
+      ></meta>
+      <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
+    </Head>
+    <div>
+      <Header />
+      <Project project={project || ""} />
+      <Footer />
+    </div>
+  </>
 );
 
 export default ProjectRoute;
