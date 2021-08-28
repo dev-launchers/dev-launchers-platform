@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   overflow: hidden;
   height: 2rem;
   font-size: 1.3rem;
-  @media (max-width: 819px) {
+  @media (max-width: 45em) {
     height: 5rem;
   }
 `;
@@ -24,7 +24,7 @@ export const Tag = styled.div`
   height: 2rem;
   padding: 0 1rem 0 1rem;
   border-radius: 20px;
-  @media (max-width: 819px) {
+  @media (max-width: 45em) {
     flex: 0;
   }
 `;

@@ -17,7 +17,7 @@ const Vision = ({ Color, theme }) => (
         </p>
         <ButtonsContainer>
           <Button>
-            <i className="fas fa-info"></i> Join-Now
+            <i className="fas fa-info"></i> Join Now
           </Button>
           <Button bgColor={theme.colors.ACCENT_2}>
             <i className="fas fa-coins"></i> Donate

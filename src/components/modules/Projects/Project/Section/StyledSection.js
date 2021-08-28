@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
 export const Headline = styled.h3`
   font-size: 2rem;
-  padding: 2rem;
+  padding: 2rem 0 1rem 2rem;
 `;
 
 export const ContentContainer = styled.div`
