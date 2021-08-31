@@ -1,13 +1,13 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Card from "../../common/Card";
 import { Layout, ProjectContainer } from "./StyledProjects";
 
-import { useProjectsDataContext } from "../../../context/ProjectsContext";
-
-// import { env } from "../../../utils/EnvironmentVariables";
-
-const Projects = () => {
-  const projects = useProjectsDataContext();
+const Projects = ({ projects }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div
@@ -57,5 +57,4 @@ const Projects = () => {
     </div>
   );
 };
-
 export default Projects;

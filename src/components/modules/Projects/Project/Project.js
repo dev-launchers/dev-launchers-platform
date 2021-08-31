@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Link from "next/link";
 import { withTheme } from "styled-components";
+import { useRouter } from "next/router";
+import Button from "../../../common/Button";
 
 import {
   Wrapper,
@@ -12,37 +15,21 @@ import OpenPositions from "./OpenPositions";
 import Team from "./Team";
 import SignUpButton from "./SignUpButton";
 
-import { useProjectsDataContext } from "../../../../context/ProjectsContext";
-
 // eslint-disable-next-line no-unused-vars
 const truncateText = (text, truncateAt, replaceWith) => {
   if (text.length <= truncateAt) return text;
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = (props) => {
-  const projectsData = useProjectsDataContext([]);
-  const [projectData, setProjectData] = React.useState({
-    heroImage: "",
-    catchPhrase: "",
-    keywords: [],
-    projectReferenceURLs: [],
-    openPositions: [],
-    meetingTimes: [],
-    meetingLinkURLs: [],
-    team: { members: [], leaders: [] },
-  });
-
-  React.useEffect(() => {
-    if (!projectsData.length) return;
-    setProjectData(
-      projectsData.filter((entry) => entry.slug === props.projectId)[0]
-    );
-  }, [projectsData, props.projectId]);
+const Project = ({ project, theme }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Wrapper>
-      <ProjectHero projectData={projectData} />
+      <ProjectHero projectData={project} />
       <div
         style={{
           width: "90%",
@@ -52,7 +39,7 @@ const Project = (props) => {
       >
         <div
           style={{
-            fontFamily: props.theme.fonts.headline,
+            fontFamily: theme.fonts.headline,
             marginTop: "4rem",
             marginBottom: "4rem",
             padding: "1rem",
@@ -60,11 +47,11 @@ const Project = (props) => {
             border: "1px solid black",
           }}
         >
-          {projectData?.vision}
+          {project?.vision}
         </div>
         <div style={{ marginTop: "4rem", marginBottom: "4rem" }}>
           <h3 style={{ display: "inline" }}>Description:</h3>{" "}
-          {projectData?.description?.split("\n").map((text, i) => (
+          {project?.description?.split("\n")?.map((text, i) => (
             <p key={i}> {text} </p>
           ))}
         </div>
@@ -77,10 +64,10 @@ const Project = (props) => {
             { */}
             <CategoryContainer>
               <h4>Commitment Level</h4>
-              <p>{projectData?.commitmentLevel}</p>
+              <p>{project?.commitmentLevel}</p>
 
               <h4>Project References</h4>
-              {projectData?.projectReferenceURLs.map((element, i) => (
+              {project?.projectReferenceURLs?.map((element, i) => (
                 <p key={i}>
                   <a
                     href={element.url}
@@ -99,13 +86,13 @@ const Project = (props) => {
             { */}
             <CategoryContainer>
               <h4>Meeting Times</h4>
-              {projectData?.meetingTimes.map((meeting, i) => (
+              {project?.meetingTimes?.map((meeting, i) => (
                 <p key={i}>
                   {meeting.title} {meeting.dateTime}
                 </p>
               ))}
               <h4>Meeting Links</h4>
-              {projectData?.meetingLinkURLs.map((url) => (
+              {project?.meetingLinkURLs?.map((url) => (
                 <p key={url.id}>
                   <a href={url.url} rel="noopener noreferrer" target="_blank">
                     {url.roomName}
@@ -117,16 +104,16 @@ const Project = (props) => {
         </CategoriesContainer>
         <br />
       </div>
-      {projectData.openPositions.length ? (
+      {project?.openPositions.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-          <OpenPositions projectData={projectData} />
+          <OpenPositions projectData={project} />
         </div>
       ) : (
         ""
       )}
-      {projectData.team.leaders.length || projectData.team.members.length ? (
+      {project?.team.leaders.length || project?.team.members.length ? (
         <div style={{ width: "90%", marginLeft: "auto", marginRight: "auto" }}>
-          <Team projectData={projectData} />
+          <Team projectData={project} />
         </div>
       ) : (
         ""
@@ -148,7 +135,7 @@ const Project = (props) => {
         }}
       >
         <SignUpButton
-          projectName={projectData?.title}
+          projectName={project?.title}
           style={{
             fontSize: "3rem",
             paddingLeft: "20vw",
