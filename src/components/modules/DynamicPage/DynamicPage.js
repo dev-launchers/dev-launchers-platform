@@ -198,6 +198,7 @@ export default function DynamicPage(props) {
   // When we've loaded our pages
   React.useEffect(() => {
     pages.map((page) => {
+      // eslint-disable-next-line eqeqeq
       if (page.uid == pageId) {
         document.title = page.data.title[0].text;
       }
@@ -208,6 +209,7 @@ export default function DynamicPage(props) {
     <PageBody>
       {pageId
         ? pages.map((page) => {
+            // eslint-disable-next-line eqeqeq
             if (page.uid == pageId) {
               return (
                 <PageContainer>
