@@ -10,6 +10,6 @@ export const CardButton = styled.button`
   text-align: center;
   border: ${({ border }) => (border ? "1px solid #F0EDEE" : "none")};
   font-size: 18px;
-  color: ${({ color }) => color && "#F0EDEE"};
+  color: ${({ fontColor }) => fontColor && "#F0EDEE"};
   background-color: ${({ bgColor }) => bgColor && "#3C3B3C"};
 `;

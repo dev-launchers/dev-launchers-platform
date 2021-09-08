@@ -11,8 +11,9 @@ export const Cards = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  grid-auto-flow: row;
   row-gap: 62px;
   column-gap: 41px;
   margin: 0;
