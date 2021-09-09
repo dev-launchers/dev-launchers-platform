@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import {
   Wrapper,
   ModalStrip,
+  ModalHeader,
   Description,
   Container,
   CloseModal,
@@ -17,14 +18,14 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "520px",
-    height: "373px",
+    maxWidth: "32.5rem",
+    width: "80%",
     color: "#FCFCFC",
     backgroundColor: "#3C3B3C",
     padding: "0",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
   },
   overlay: {
     zIndex: "5",
@@ -42,18 +43,23 @@ const RoleModal = ({ role, isOpen, onRequestClose }) => {
         onRequestClose={onRequestClose}
       >
         <Container>
-          <CloseModal onClick={onRequestClose}>X</CloseModal>
-          <Title>{title}</Title>
+          <ModalHeader>
+            <CloseModal onClick={onRequestClose}>X</CloseModal>
+            <Title>{title}</Title>
+          </ModalHeader>
+
           <Description>{description}</Description>
         </Container>
         <ModalStrip>
-          <FlexBox style={{ fontSize: "18px" }}>
-            <p style={{ marginLeft: "auto" }}>Is this role right for you?</p>
-            <CardButton
-              style={{ fontFamily: "Abel", margin: "auto auto auto 148px" }}
-            >
-              Apply Now
-            </CardButton>
+          <FlexBox
+            style={{
+              fontSize: "1.125rem",
+              alignItems: "center",
+              justifyContent: "space-around",
+            }}
+          >
+            <p>Is this role right for you?</p>
+            <CardButton style={{ fontFamily: "Abel" }}>Apply Now</CardButton>
           </FlexBox>
         </ModalStrip>
       </Modal>

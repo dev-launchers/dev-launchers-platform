@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  max-width: 520px;
+  /* max-width: 520px;
   min-height: 302px;
-  height: 100%;
+  height: 100%; */
 `;
 
 export const ModalStrip = styled.div`
@@ -11,15 +11,19 @@ export const ModalStrip = styled.div`
   background-color: #3a7ca5;
 `;
 
+export const ModalHeader = styled.div`
+  padding: 1rem;
+`;
+
 export const Description = styled.p`
-  font-size: 18px;
-  line-height: 25.63px;
+  font-size: 1.125rem;
+  line-height: 1.601875rem;
+  padding: 0 1rem 1rem 1rem;
   margin: 0;
 `;
 
 export const Container = styled.div`
   max-width: 457px;
-  min-height: 256px;
   margin: auto;
   position: relative;
 `;
@@ -27,10 +31,10 @@ export const Container = styled.div`
 export const CloseModal = styled.button`
   cursor: pointer;
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 34px;
-  height: 34px;
+  right: 2%;
+  top: 2%;
+  width: 2.125rem;
+  height: 2.125rem;
   background-color: #3c3b3c;
   border: 1px solid #f0edee;
   box-sizing: border-box;
@@ -38,8 +42,8 @@ export const CloseModal = styled.button`
   font-family: Nunito Sans;
   font-style: normal;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 1.125rem;
+  line-height: 1.5625rem;
   text-align: center;
   color: #f0edee;
 `;

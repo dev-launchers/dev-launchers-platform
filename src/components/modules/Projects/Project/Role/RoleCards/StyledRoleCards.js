@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Cards = styled.div`
-  width: 321px;
-  height: 292px;
+  width: 20.0625rem;
   border-radius: 5px;
   background-color: #3c3b3c;
   position: relative;
@@ -12,34 +11,35 @@ export const Cards = styled.div`
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  justify-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(17.8125rem, 1fr));
   grid-auto-flow: row;
-  row-gap: 62px;
-  column-gap: 41px;
+  row-gap: 3.875rem;
+  column-gap: 2.5625rem;
   margin: 0;
 `;
 
 export const Container = styled.div`
-  width: 267px;
-  height: 264px;
-  margin: 15px auto;
+  width: 16.6875rem;
+  margin: 0.9375rem auto;
 `;
+
 export const Title = styled.h4`
-  height: 46px;
-  font-size: 24px;
-  line-height: 25.31px;
+  font-size: 1.5rem;
+  line-height: 1.5818rem;
   margin: 0;
 `;
 
 export const Subtitle = styled.p`
-  height: 26px;
-  font-size: 18px;
-  line-height: 25.63px;
+  height: 1.625rem;
+  font-size: 1.125rem;
+  line-height: 1.601875rem;
   margin: 0;
 `;
 
 export const FlexBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
 `;
