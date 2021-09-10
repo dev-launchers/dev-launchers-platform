@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const SectionTitle = styled.h3`
+export const SectionTitle = styled.h2`
   font-size: 32px;
   line-height: 33.74px;
   margin-bottom: 34px;

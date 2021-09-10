@@ -12,7 +12,8 @@ import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 import HeroSection from "./HeroSection";
 import Tags from "./Tags";
 import Vision from "./Vision";
-import Role from "./Role";
+import Role from "./Role/Role";
+import Description from "./Description/Description";
 
 // eslint-disable-next-line no-unused-vars
 const truncateText = (text, truncateAt, replaceWith) => {
@@ -46,6 +47,7 @@ const Project = (props) => {
       <HeroSection />
       <Tags />
       <Vision Color="#3A7CA5" />
+      <Description />
       <Role />
     </Wrapper>
   );
