@@ -24,7 +24,7 @@ export const MembersContainer = styled.ul`
   }
   & li {
     margin-top: 0.5rem;
-    max-width: 300px;
+    max-width: 350px;
     :nth-child(2) {
       font-weight: bold;
       font-size: 16px;

@@ -6,7 +6,7 @@ import {
   MembersContainer,
   MemberImage,
 } from "./StyledTeam";
-import boyFrontImage from "../../../../../images/people-cutouts/boy-front.png?webp";
+// import boyFrontImage from "../../../../../images/people-cutouts/boy-front.png?webp";
 
 const Team = (props) => {
   const { projectData } = props;
@@ -24,7 +24,8 @@ const Team = (props) => {
                 <li>
                   <a href="#">
                     <MemberImage
-                      src={boyFrontImage}
+                      // src={boyFrontImage}
+                      src={leader.image}
                       alt="Image of Team member"
                     ></MemberImage>
                   </a>
@@ -46,7 +47,8 @@ const Team = (props) => {
                 <li>
                   <a href="#">
                     <MemberImage
-                      src={boyFrontImage}
+                      //  src={boyFrontImage}
+                      src={member.image}
                       alt="Image of Team member"
                     ></MemberImage>
                   </a>
