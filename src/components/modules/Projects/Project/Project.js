@@ -5,7 +5,7 @@ import { withTheme } from "styled-components";
 
 import { Wrapper } from "./StyledProject";
 // import OpenPositions from "./OpenPositions";
-// import Team from "./Team";
+import Team from "./Team";
 // import SignUpButton from "./SignUpButton";
 
 import { useProjectsDataContext } from "../../../../context/ProjectsContext";
@@ -45,6 +45,7 @@ const Project = (props) => {
       <HeroSection />
       <Tags />
       <Vision Color="#3A7CA5" />
+      <Team />
     </Wrapper>
   );
 };
