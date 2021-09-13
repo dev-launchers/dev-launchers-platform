@@ -17,7 +17,10 @@ const nextConfig = {
       see the discussion here:
       https://github.com/twopluszero/next-images/issues/73
     */
-    domains: ["images.prismic.io"],
+    domains: [
+      "images.prismic.io",
+      "devlaunchersproduction.blob.core.windows.net",
+    ],
     disableStaticImages: true,
   },
   webpack5: true,
