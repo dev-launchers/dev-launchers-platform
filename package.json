@@ -32,7 +32,7 @@
     "react-toastify": "latest",
     "regenerator-runtime": "^0.13.7",
     "semantic-release": "^17.4.2",
-    "styled-components": "^5.2.1",
+    "styled-components": "^5.3.1",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
     "wrangler": "^0.0.2"
@@ -50,8 +50,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next build && next start",
+    "build": "next build --debug",
+    "start": "next build --debug && next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
     "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
     "lint": "next lint",

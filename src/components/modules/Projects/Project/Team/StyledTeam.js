@@ -1,25 +1,26 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
-export const TeamContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
+export const TeamContentBlock = styled.div`
+  width: 100%;
   h4 {
-    margin-top: 0;
-  }
-  p {
-    margin: 0;
+    margin: 1rem;
   }
 `;
-
-export const MembersContainer = styled.ul`
+export const MembersContainer = styled.div`
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
   flex-wrap: wrap;
-
-  & > li {
-    margin-right: 5rem;
-    margin-bottom: 1rem;
+  column-gap: 5rem;
+  row-gap: 2rem;
+  margin-left: 1rem;
+  list-style-type: none;
+  font-size: 1rem;
+`;
+export const MemberImage = styled.img`
+  flex-shrink: 0;
+  &:hover {
+    opacity: 0.5;
   }
 `;

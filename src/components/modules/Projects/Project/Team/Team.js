@@ -1,45 +1,122 @@
 import React from "react";
 import { withTheme } from "styled-components";
-import { Wrapper, TeamContentContainer, MembersContainer } from "./StyledTeam";
-// import { env } from "../../../../../utils/EnvironmentVariables";
+import { TeamContentBlock, MembersContainer, MemberImage } from "./StyledTeam";
+import Section from "../Section";
+// import boyFrontImage from "../../../../../images/people-cutouts/boy-front.png?webp";
 
-const Team = (props) => {
-  const { projectData } = props;
-
+const Team = () => {
+  const team = {
+    leaders: [
+      {
+        id: 1,
+        name: "mohammed maqbol",
+        role: "React Developer",
+        email: "email@email.com",
+      },
+    ],
+    members: [
+      {
+        id: 1,
+        name: "mohammed maqbol",
+        role: "React Developer",
+        email: "email@email.com",
+      },
+      {
+        id: 1,
+        name: "maqbol mohammed ",
+        role: "React Developer",
+        email: "email@email.com",
+      },
+    ],
+  };
   return (
-    <Wrapper>
-      <h4>
-        <u>Team</u>
-      </h4>
-      <TeamContentContainer>
-        <p style={{ width: "50%" }}>
-          <h4>Leader(s)</h4>
-          <MembersContainer>
-            {projectData?.team.leaders.map((leader) => (
-              <p key={leader.id}>
-                <p>{leader.name}</p>
-                <p>{leader.role}</p>
-                <p>
-                  <a href={`mailto:${leader.email}`}>Send Email</a>
-                </p>
-              </p>
-            ))}
-          </MembersContainer>
-        </p>
-
-        <p style={{ width: "50%" }}>
-          <h4>Members</h4>
-          <MembersContainer>
-            {projectData?.team.members.map((member) => (
-              <p key={member.id}>
-                <p>{member.name}</p>
-                <p>{member.role}</p>
-              </p>
-            ))}
-          </MembersContainer>
-        </p>
-      </TeamContentContainer>
-    </Wrapper>
+    <Section
+      Color="#494949"
+      Title="Team"
+      Content={
+        <TeamContentBlock>
+          <div>
+            <h4>Leaders</h4>
+            <MembersContainer>
+              {team.leaders.map((leader) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                  key={leader.id}
+                >
+                  <span>
+                    <a href="#">
+                      <MemberImage
+                        // src={boyFrontImage}
+                        // src={leader.image}
+                        src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
+                        width="140"
+                        height="140"
+                        alt="Image of Team member"
+                      ></MemberImage>
+                    </a>
+                  </span>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>{leader.name}</span>
+                    <span>{leader.role}</span>
+                    <span>
+                      <a href={`mailto:${leader.email}`}>Send Email</a>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </MembersContainer>
+          </div>
+          <div>
+            <h4>Members</h4>
+            <MembersContainer>
+              {team.members.map((member) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                  key={member.id}
+                >
+                  <span>
+                    <a href="#">
+                      <MemberImage
+                        //  src={boyFrontImage}
+                        // src={member.image}
+                        src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
+                        width="140"
+                        height="140"
+                        alt="Image of Team member"
+                      ></MemberImage>
+                    </a>
+                  </span>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>{member.name}</span>
+                    <span>{member.role}</span>
+                  </div>
+                </div>
+              ))}
+            </MembersContainer>
+          </div>
+        </TeamContentBlock>
+      }
+    />
   );
 };
 

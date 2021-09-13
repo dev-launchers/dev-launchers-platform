@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 // import Link from "next/link";
 // import Image from "next/image";
 import { withTheme } from "styled-components";
+import { useRouter } from "next/router";
+import Button from "../../../common/Button";
 
 import { Wrapper } from "./StyledProject";
 // import OpenPositions from "./OpenPositions";
-// import Team from "./Team";
+import Team from "./Team";
 // import SignUpButton from "./SignUpButton";
 
-import { useProjectsDataContext } from "../../../../context/ProjectsContext";
 import HeroSection from "./HeroSection";
 import Tags from "./Tags";
 import Vision from "./Vision";
@@ -21,26 +23,11 @@ const truncateText = (text, truncateAt, replaceWith) => {
   return text.slice(0, truncateAt) + replaceWith;
 };
 
-const Project = (props) => {
-  const projectsData = useProjectsDataContext([]);
-  const [, setProjectData] = React.useState({
-    heroImage: "",
-    catchPhrase: "",
-    keywords: [],
-    projectReferenceURLs: [],
-    openPositions: [],
-    meetingTimes: [],
-    meetingLinkURLs: [],
-    team: { members: [], leaders: [] },
-  });
-
-  React.useEffect(() => {
-    if (!projectsData.length) return;
-    setProjectData(
-      projectsData.filter((entry) => entry.slug === props.projectId)[0]
-    );
-  }, [projectsData, props.projectId]);
-
+const Project = ({ project, theme }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <Wrapper>
       <div id="background" />
@@ -49,6 +36,7 @@ const Project = (props) => {
       <Vision Color="#3A7CA5" />
       <Description />
       <Role />
+      <Team />
     </Wrapper>
   );
 };
