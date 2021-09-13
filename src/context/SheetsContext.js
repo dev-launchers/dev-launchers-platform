@@ -1,7 +1,8 @@
 import React from "react";
 import constate from "constate"; // State Context Object Creator
 
-import Tabletop from "tabletop";
+import createData from "../content/collections/createData.json";
+import learnData from "../content/collections/learnData.json";
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
@@ -60,6 +61,7 @@ function useSheets() {
   };
   // Fetch sheets data using Tabletop when hook is initialized
   React.useEffect(() => {
+    /*
     Tabletop.init({
       key: "1QV419fM2DHZM59mFK6eYYbYiq6bs4sBUpTwVZ_dZJNg",
       callback: (googleData) => {
@@ -68,6 +70,10 @@ function useSheets() {
       },
       simpleSheet: false,
     });
+    */
+
+    setLearnPageData(sheetsDataToPageJSON(learnData));
+    setCreatePageData(sheetsDataToPageJSON(createData));
   }, []);
 
   return { learnPageData, createPageData };

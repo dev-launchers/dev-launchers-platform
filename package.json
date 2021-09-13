@@ -50,8 +50,8 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next build && next start",
+    "build": "next build --debug",
+    "start": "next build --debug && next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
     "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
     "lint": "next lint",
