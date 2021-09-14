@@ -7,14 +7,10 @@ export const Paragrapgh = styled.p`
 `;
 
 export const GridSection = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
-  grid-auto-flow: row;
-  column-gap: 2.25rem;
-  row-gap: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.25rem;
   justify-content: center;
-  align-items: center;
-  justify-items: center;
 `;
 
 export const ImageHolder = styled.image`

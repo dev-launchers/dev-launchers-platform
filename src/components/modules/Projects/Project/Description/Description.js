@@ -3,10 +3,11 @@ import DescriptionContent from "./DescriptionContent/DescriptionContent";
 
 const Description = () => (
   <Section
-    Color="#3C3B3C"
+    bgColor="#3C3B3C"
     Title="Description"
     Content={<DescriptionContent />}
-  ></Section>
+    contentStyle={{ paddingBottom: 0 }}
+  />
 );
 
 export default Description;

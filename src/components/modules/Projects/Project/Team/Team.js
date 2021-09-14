@@ -31,7 +31,7 @@ const Team = () => {
   };
   return (
     <Section
-      Color="#494949"
+      bgColor="#494949"
       Title="Team"
       Content={
         <TeamContentBlock>
@@ -53,8 +53,6 @@ const Team = () => {
                         // src={boyFrontImage}
                         // src={leader.image}
                         src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
-                        width="140"
-                        height="140"
                         alt="Image of Team member"
                       ></MemberImage>
                     </a>
@@ -94,8 +92,6 @@ const Team = () => {
                         //  src={boyFrontImage}
                         // src={member.image}
                         src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
-                        width="140"
-                        height="140"
                         alt="Image of Team member"
                       ></MemberImage>
                     </a>

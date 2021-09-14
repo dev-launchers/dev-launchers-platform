@@ -31,7 +31,6 @@ export const Title = styled.h4`
 `;
 
 export const Subtitle = styled.p`
-  height: 1.625rem;
   font-size: 1.125rem;
   line-height: 1.601875rem;
   margin: 0;

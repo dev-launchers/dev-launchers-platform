@@ -3,9 +3,9 @@ import { withTheme } from "styled-components";
 import Section from "../Section";
 import { Wrapper, ButtonsContainer, Button } from "./StyledVision";
 
-const Vision = ({ Color, theme }) => (
+const Vision = ({ theme }) => (
   <Section
-    Color={Color}
+    bgColor="#3A7CA5"
     Title="Vision"
     Content={
       <Wrapper>

@@ -7,7 +7,7 @@ import {
   Container,
   FlexBox,
 } from "./StyledRoleCards";
-import RoleContent from "../RoleContent/RoleContent";
+// import RoleContent from "../RoleContent/RoleContent";
 import { CardButton } from "../Button/StyledButton";
 import RoleModal from "../RoleModal /RoleModal";
 
@@ -61,7 +61,10 @@ const ROLES = [
       "Help bring the game to life through Vector Art! Design and create visually diverse collectible components, intuitive UI, and even promotional materials. You will be working directly with the art team and our exciting, inviting visual style meant for all audiences. Create in-game assets, icons, or menus based on the concept art from our talented team, and your imagination! Some experience with Vector Art (Adobe Illustrator, Inkscape, etc.) required, but we'll try to meet you where you are!",
   },
 ];
-
+const truncateText = (text, truncateAt, replaceWith) => {
+  if (text.length <= truncateAt) return text;
+  return text.slice(0, truncateAt) + replaceWith;
+};
 const RoleCards = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState({});
@@ -79,10 +82,12 @@ const RoleCards = () => {
         <Cards key={roleIndex}>
           <Container>
             <Title>{role.title}</Title>
-            <Subtitle>Expectations</Subtitle>
-            <RoleContent roleContent={role.expectations} />
+            <Subtitle style={{ padding: ".5rem 0" }}>
+              {truncateText(role.description, 255, "...")}
+            </Subtitle>
+            {/* <RoleContent roleContent={role.expectations} />
             <Subtitle>Prerequisite skills</Subtitle>
-            <RoleContent roleContent={role.skills} />
+            <RoleContent roleContent={role.skills} /> */}
             <FlexBox>
               <CardButton>Apply Now</CardButton>
               <CardButton

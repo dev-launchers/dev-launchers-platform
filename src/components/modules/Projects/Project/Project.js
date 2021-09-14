@@ -16,12 +16,7 @@ import Tags from "./Tags";
 import Vision from "./Vision";
 import Role from "./Role/Role";
 import Description from "./Description/Description";
-
-// eslint-disable-next-line no-unused-vars
-const truncateText = (text, truncateAt, replaceWith) => {
-  if (text.length <= truncateAt) return text;
-  return text.slice(0, truncateAt) + replaceWith;
-};
+import Milestones from "./Milestones";
 
 const Project = ({ project, theme }) => {
   const router = useRouter();
@@ -33,9 +28,10 @@ const Project = ({ project, theme }) => {
       <div id="background" />
       <HeroSection />
       <Tags />
-      <Vision Color="#3A7CA5" />
+      <Vision />
       <Description />
       <Role />
+      <Milestones data={project?.board?.ProjectMilestone} />
       <Team />
     </Wrapper>
   );

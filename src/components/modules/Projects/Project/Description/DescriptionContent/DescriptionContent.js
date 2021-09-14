@@ -18,16 +18,6 @@ const DescriptionContent = () => (
       development.
     </Paragrapgh>
 
-    <Strip>
-      <Conatiner>
-        <GridSection>
-          <ImageHolder />
-          <ImageHolder />
-          <ImageHolder />
-        </GridSection>
-      </Conatiner>
-    </Strip>
-
     <Paragrapgh style={{ margin: " 3.375rem 0 3.125rem 0" }}>
       This project is currently split into two sub-teams: the front end and the
       back end. We do weekly sync-ups where the entire group gets together to be
@@ -41,6 +31,16 @@ const DescriptionContent = () => (
       back end. We do weekly sync-ups where the entire group gets together to be
       briefed on the overall status of the project ...
     </Paragrapgh>
+
+    <Strip>
+      <Conatiner>
+        <GridSection>
+          <ImageHolder />
+          <ImageHolder />
+          <ImageHolder />
+        </GridSection>
+      </Conatiner>
+    </Strip>
   </>
 );
 
