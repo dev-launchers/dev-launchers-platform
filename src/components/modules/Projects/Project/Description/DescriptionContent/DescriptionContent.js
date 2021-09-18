@@ -6,12 +6,12 @@ import {
   Strip,
 } from "./StyledDescriptionContent";
 
-const DescriptionContent = () => (
+const DescriptionContent = ({ descriptionData, images }) => (
   <>
     <Paragrapgh style={{ marginBottom: "1.5625rem" }}>
-      Play a role in building the site you are currently on!
+      {descriptionData}
     </Paragrapgh>
-    <Paragrapgh style={{ marginBottom: "3.125rem" }}>
+    {/* <Paragrapgh style={{ marginBottom: "3.125rem" }}>
       By joining this project you will become part of a large, technically
       advanced team working toward huge impact. Our team works with modern web
       technologies and uses widely accepted standard practices in agile software
@@ -30,14 +30,11 @@ const DescriptionContent = () => (
       This project is currently split into two sub-teams: the front end and the
       back end. We do weekly sync-ups where the entire group gets together to be
       briefed on the overall status of the project ...
-    </Paragrapgh>
-
+    </Paragrapgh> */}
     <Strip>
       <Conatiner>
         <GridSection>
-          <ImageHolder />
-          <ImageHolder />
-          <ImageHolder />
+          {images.map((image) => <ImageHolder key={image.id} src={image.image[0].url} />)}
         </GridSection>
       </Conatiner>
     </Strip>

@@ -13,13 +13,12 @@ export const GridSection = styled.div`
   justify-content: center;
 `;
 
-export const ImageHolder = styled.image`
+export const ImageHolder = styled.img`
   max-width: 100%;
   height: auto;
   width: 14rem;
   height: 11.25rem;
   border-radius: 10px;
-  background-image: url("https://devlaunchersproduction.blob.core.windows.net/strapi/assets/photo_1487014679447_9f8336841d58_c912a4c559.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

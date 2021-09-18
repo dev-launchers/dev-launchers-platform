@@ -2,6 +2,22 @@ const withPlugins = require("next-compose-plugins");
 const imagesPlugin = require("next-optimized-images");
 
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: `/:path*`,
+      },
+      {
+        source: "/projects",
+        destination: "https://projects.devlaunchers.org/",
+      },
+      {
+        source: "/projects/:path*",
+        destination: `https://projects.devlaunchers.com/projects/:path*`,
+      },
+    ];
+  },
   async redirects() {
     return [
       {

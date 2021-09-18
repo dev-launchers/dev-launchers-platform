@@ -1,13 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   align-self: center;
   padding-top: 2rem;
   color: ${({ theme }) => theme.colors.NEUTRAL_2};
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  background: #3C3B3C;
-  
-
+  background: #3c3b3c;
 
   display: flex;
   flex-direction: row;
@@ -17,9 +15,9 @@ export const Wrapper = styled.div`
   max-width: 1025px;
 
   padding-top: 57px;
-  padding-right: 0px; 
-  padding-bottom: 56px; 
-  padding-left: 30px; 
+  padding-right: 0px;
+  padding-bottom: 56px;
+  padding-left: 30px;
 
   box-sizing: border-box;
   @media (orientation: portrait) {
@@ -28,28 +26,19 @@ export const Wrapper = styled.div`
       padding-left: 10px;
     }
   }
-`
+`;
 export const FlexBoxTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0px;
-  row-gap: 20px;
-`
+`;
 export const FlexBoxVerticalWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   flex-wrap: wrap;
-  row-gap: 55px;
-  margin: 0px;
-  position: relative;
-  top: -10px;
-  justify-self: right;
-`
+  gap: 3.4375rem;
+`;
 export const Descript = styled.div`
   /* Times week */
-
-  max-width: 312px;
-
   font-family: Abel;
   font-style: normal;
   font-weight: normal;
@@ -60,9 +49,9 @@ export const Descript = styled.div`
   display: flex;
   align-items: center;
 
-  color: #FCFCFC;
+  color: #fcfcfc;
   margin: 0;
-`
+`;
 
 export const Title = styled.div`
   max-width: 312;
@@ -77,7 +66,6 @@ export const Title = styled.div`
   display: flex;
   align-items: center;
 
-  color: #FCFCFC;
+  color: #fcfcfc;
   margin: 0;
-
-`
+`;
