@@ -2,6 +2,22 @@ const withPlugins = require("next-compose-plugins");
 const imagesPlugin = require("next-optimized-images");
 
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/:path*",
+        destination: `/:path*`,
+      },
+      {
+        source: "/projects",
+        destination: "https://projects.devlaunchers.org/",
+      },
+      {
+        source: "/projects/:path*",
+        destination: `https://projects.devlaunchers.com/projects/:path*`,
+      },
+    ];
+  },
   async redirects() {
     return [
       {
@@ -17,7 +33,10 @@ const nextConfig = {
       see the discussion here:
       https://github.com/twopluszero/next-images/issues/73
     */
-    domains: ["images.prismic.io"],
+    domains: [
+      "images.prismic.io",
+      "devlaunchersproduction.blob.core.windows.net",
+    ],
     disableStaticImages: true,
   },
   webpack5: true,
