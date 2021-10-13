@@ -3,20 +3,20 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import { Wrapper, Event, Day, WeekdayTitle } from "./StyledCalendar";
 
-const Calendar = ({ URL }) => {
+const Calendar = ({ URL }) => {                                 //URL prop passed in from WeeksGlance component
   const [eventList, setEventList] = useState([]);
 
   const current = DateTime.now();
-  const max = current.plus({ days: 7 });
+  const max = current.plus({ days: 7 });                      //max is 7 days from today
 
-  /* gets the JSON data from google calendar and makes a new array with only the properties we need */
+  /* sends a get request to Google Calendar API and parses the returned JSON to populate a new array with only the properties we need to display*/
 
   const makeRequest = () => {
     axios
-      .get(URL)
+      .get(URL)                                           
       .then((response) => {
         const tempEventList = [];
-        response.data.items.forEach((entry) => {
+        response.data.items.forEach((entry) => {                          //get the name, time, and weekday of each event and push them in to an array of Event objects.
           const time = DateTime.fromISO(entry.start.dateTime, {
             zone: entry.start.timeZone,
           }).setZone();
@@ -37,7 +37,7 @@ const Calendar = ({ URL }) => {
   const weekdays = ["MON", "TUES", "WED", "THURS", "FRI", "SAT", "SUN"];
   const dates = [];
 
-  /* stores the dates of the previous weekdays in the Array, then today, then the remaining days in this week */
+  /* first stores the dates of the previous weekdays in the Array, followed by today, followed by the remaining days in this week */
   const createDate = () => {
     const todayInt = current.weekday;
     for (let i = 1; i < todayInt; i++) {
@@ -55,7 +55,7 @@ const Calendar = ({ URL }) => {
 
   return (
     <Wrapper>
-      {weekdays.map((day, i) => {
+      {weekdays.map((day, i) => {                     //map through each day in the weekday array, and for each day, map through that day's list of events
         const date = dateslist[i];
         return (
           <Day key={i}>
@@ -66,7 +66,7 @@ const Calendar = ({ URL }) => {
                 {date}
               </div>
             </WeekdayTitle>
-            {eventList.map(({ name, time, weekday }) => {
+            {eventList.map(({ name, time, weekday }) => {                 //destructuring each object in eventList to render just the name and time of the event
               if (weekday === i + 1) {
                 return (
                   <Event key={`${name}_${time}`}>
@@ -78,7 +78,7 @@ const Calendar = ({ URL }) => {
               }
               return null;
             })}
-            {eventList.filter(({ weekday }) => weekday === i + 1).length ===
+            {eventList.filter(({ weekday }) => weekday === i + 1).length ===               //if there are no events on that day, display "No events"
             0 ? (
               <div style={{ fontSize: "1rem", textAlign: "center" }}>
                 No events
