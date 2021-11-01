@@ -3,7 +3,8 @@ kind: Kustomization
 namespace: platform-website
 bases:
 - ../workload
+- wordpress.yaml
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: 1.8.2 # {"$imagepolicy": "platform-website:platform-website:tag"}
+  newTag: 1.8.3 # {"$imagepolicy": "platform-website:platform-website:tag"}

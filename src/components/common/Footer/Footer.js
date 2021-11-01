@@ -65,7 +65,7 @@ export default function Footer() {
         <Link href="/page/privacy-policy" passHref>
           <a>Privacy Policy </a>
         </Link>{" "}
-        {"- | "} ©Dev Launchers, 2020.
+        {"- | "} ©Dev Launchers, 2021.
       </OrgInfoArea>
     </Wrapper>
   );
