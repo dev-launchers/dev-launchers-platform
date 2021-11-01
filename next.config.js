@@ -14,7 +14,7 @@ const nextConfig = {
       },
       {
         source: "/projects/:path*",
-        destination: `https://projects.devlaunchers.com/projects/:path*`,
+        destination: `https://projects.devlaunchers.org/projects/:path*`,
       },
     ];
   },
