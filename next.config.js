@@ -10,11 +10,11 @@ const nextConfig = {
       },
       {
         source: "/projects",
-        destination: "https://projects.devlaunchers.org/",
+        destination: "https://projects-staging.devlaunchers.org/projects",
       },
       {
         source: "/projects/:path*",
-        destination: `https://projects.devlaunchers.org/projects/:path*`,
+        destination: `https://projects-staging.devlaunchers.org/projects/:path*`,
       },
     ];
   },
