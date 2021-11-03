@@ -7,4 +7,4 @@ bases:
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: 1.9.0 # {"$imagepolicy": "platform-website:platform-website:tag"}
+  newTag: 1.9.1 # {"$imagepolicy": "platform-website:platform-website:tag"}
