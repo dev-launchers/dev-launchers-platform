@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         source: "/projects",
-        destination: "https://projects.devlaunchers.org/",
+        destination: "https://projects.devlaunchers.org/projects",
       },
       {
         source: "/projects/:path*",
