@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Wrapper, Bio } from "./StyledBioBox";
 
 import { env } from "../../../../utils/EnvironmentVariables";
 
-export default function BioBox({ data }) {
+export default function BioBox({ data, canEdit }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
+  const bioRef = useRef(null);
+
   const handleTextChange = (e) => {
     setBioText(e.target.value);
   };
@@ -31,28 +33,39 @@ export default function BioBox({ data }) {
     <Wrapper>
       <br />
       <Bio
-        rows="2"
+        rows="7"
         cols="50"
-        placeholder="Write your bio here!"
+        placeholder={
+          canEdit ? "Write your bio here!" : `${data.displayName} has no bio!`
+        }
         maxlength="144"
         value={bioText}
-        onDoubleClick={() => setIsReadOnly(false)}
+        onDoubleClick={() => canEdit && setIsReadOnly(false)}
         onChange={handleTextChange}
         readOnly={isReadOnly}
+        ref={bioRef}
       ></Bio>
       <br />
-      {isReadOnly ? (
-        <button onClick={() => setIsReadOnly(false)}>Edit</button>
-      ) : (
-        <button
-          onClick={() => {
-            setIsReadOnly(true);
-            sendText();
-          }}
-        >
-          Save
-        </button>
-      )}
+      {canEdit &&
+        (isReadOnly ? (
+          <button
+            onClick={() => {
+              setIsReadOnly(false);
+              bioRef.current.focus();
+            }}
+          >
+            Edit
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setIsReadOnly(true);
+              sendText();
+            }}
+          >
+            Save
+          </button>
+        ))}
     </Wrapper>
   );
 }
