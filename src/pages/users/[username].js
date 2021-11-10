@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { username } = context.params;
   const { data: user } = await axios(
-    `${env().STRAPI_URL}/users?username_eq=${username}`
+    `${env().STRAPI_URL}/users?username_eq=${encodeURI(username)}`
   );
 
   if (!user) {
