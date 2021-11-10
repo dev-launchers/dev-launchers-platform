@@ -14,13 +14,13 @@ import { env } from "../../../utils/EnvironmentVariables";
 import { Wrapper, UserSection, UserInfo, Misc } from "./StyledUserProfile";
 // import DiscordSection from "./DiscordSection/DiscordSection";
 
-export default function UserProfile() {
+export default function UserProfile({ otherUser }) {
   const { userData } = useUserDataContext();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(userData.id === -1);
-  }, [userData]);
+    setLoading(userData?.id === -1 || otherUser?.id === -1);
+  }, [otherUser, userData]);
 
   if (loading) {
     return <strong>Loading.....</strong>;
@@ -28,21 +28,34 @@ export default function UserProfile() {
 
   return (
     <PageBody>
-      {userData.id && !loading ? (
+      {userData?.id || (otherUser?.id && !loading) ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
-              img={userData.profilePictureUrl}
-              name={userData.name}
-              username={userData.username}
+              img={
+                otherUser.profile.profilePictureUrl ||
+                userData.profilePictureUrl
+              }
+              name={otherUser.profile.displayName || userData.name}
+              username={otherUser.username || userData.username}
             />
             <UserInfo>
               <Points
-                availablePoints={userData.availablePoints}
-                seasonPoints={userData.totalSeasonPoints}
-                volunteerHours={userData.volunteerHours}
+                availablePoints={
+                  otherUser.point.availablePoints || userData.availablePoints
+                }
+                seasonPoints={
+                  otherUser.point.totalSeasonPoints ||
+                  userData.totalSeasonPoints
+                }
+                volunteerHours={
+                  otherUser.point.volunteerHours || userData.volunteerHours
+                }
               />
-              <BioBox data={userData}>{userData.bio}</BioBox>
+              <BioBox
+                data={otherUser.profile || userData}
+                canEdit={!otherUser}
+              />
             </UserInfo>
           </UserSection>
           {/*

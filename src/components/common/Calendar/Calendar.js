@@ -3,20 +3,22 @@ import axios from "axios";
 import { DateTime } from "luxon";
 import { Wrapper, Event, Day, WeekdayTitle } from "./StyledCalendar";
 
-const Calendar = ({ URL }) => {                                 //URL prop passed in from WeeksGlance component
+const Calendar = ({ URL }) => {
+  // URL prop passed in from WeeksGlance component
   const [eventList, setEventList] = useState([]);
 
   const current = DateTime.now();
-  const max = current.plus({ days: 7 });                      //max is 7 days from today
+  const max = current.plus({ days: 7 }); // max is 7 days from today
 
-  /* sends a get request to Google Calendar API and parses the returned JSON to populate a new array with only the properties we need to display*/
+  /* sends a get request to Google Calendar API and parses the returned JSON to populate a new array with only the properties we need to display */
 
   const makeRequest = () => {
     axios
-      .get(URL)                                           
+      .get(URL)
       .then((response) => {
         const tempEventList = [];
-        response.data.items.forEach((entry) => {                          //get the name, time, and weekday of each event and push them in to an array of Event objects.
+        response.data.items.forEach((entry) => {
+          // get the name, time, and weekday of each event and push them in to an array of Event objects.
           const time = DateTime.fromISO(entry.start.dateTime, {
             zone: entry.start.timeZone,
           }).setZone();
@@ -55,7 +57,8 @@ const Calendar = ({ URL }) => {                                 //URL prop passe
 
   return (
     <Wrapper>
-      {weekdays.map((day, i) => {                     //map through each day in the weekday array, and for each day, map through that day's list of events
+      {weekdays.map((day, i) => {
+        // map through each day in the weekday array, and for each day, map through that day's list of events
         const date = dateslist[i];
         return (
           <Day key={i}>
@@ -66,7 +69,8 @@ const Calendar = ({ URL }) => {                                 //URL prop passe
                 {date}
               </div>
             </WeekdayTitle>
-            {eventList.map(({ name, time, weekday }) => {                 //destructuring each object in eventList to render just the name and time of the event
+            {eventList.map(({ name, time, weekday }) => {
+              // destructuring each object in eventList to render just the name and time of the event
               if (weekday === i + 1) {
                 return (
                   <Event key={`${name}_${time}`}>
@@ -78,7 +82,7 @@ const Calendar = ({ URL }) => {                                 //URL prop passe
               }
               return null;
             })}
-            {eventList.filter(({ weekday }) => weekday === i + 1).length ===               //if there are no events on that day, display "No events"
+            {eventList.filter(({ weekday }) => weekday === i + 1).length === // if there are no events on that day, display "No events"
             0 ? (
               <div style={{ fontSize: "1rem", textAlign: "center" }}>
                 No events
