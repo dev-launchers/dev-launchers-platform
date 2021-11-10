@@ -2,8 +2,8 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: platform-website
 bases:
-- ../workload
+  - ../workload
 images:
-- name: devlaunchers/platform-website
-  newName: devlaunchers/platform-website
-  newTag: 5ff6430-202111030126 # {"$imagepolicy": "platform-website:platform-website:tag"}
+  - name: devlaunchers/platform-website
+    newName: devlaunchers/platform-website
+    newTag: a560818-202111102216 # {"$imagepolicy": "platform-website:platform-website:tag"}
