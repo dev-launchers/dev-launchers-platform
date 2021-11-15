@@ -22,7 +22,7 @@ export default function SignUp() {
   useEffect(() => {
     // setLoading(userData.id === -1);
     // Prefetch the user profile page
-    router.prefetch("/user-profile");
+    router.prefetch("/users/me");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
 
@@ -39,7 +39,7 @@ export default function SignUp() {
           withCredentials: true,
         }
       );
-      if (currentUser.status === 200) router.replace("/user-profile");
+      if (currentUser.status === 200) router.replace("/users/me");
     } catch (err) {
       // TODO give feedback onError
       // eslint-disable-next-line no-console
@@ -55,7 +55,14 @@ export default function SignUp() {
         <FormWrapper>
           <br />
           <label>Username</label>
-          <input onChange={handleUsernameChange} value={username} type="text" />
+          <input
+            onChange={handleUsernameChange}
+            onKeyDown={(e) => {
+              if (e.key === " ") e.preventDefault();
+            }}
+            value={username}
+            type="text"
+          />
           <input
             onClick={updateUser}
             type="submit"
