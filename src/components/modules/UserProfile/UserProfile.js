@@ -33,27 +33,27 @@ export default function UserProfile({ otherUser }) {
           <UserSection>
             <ProfileCard
               img={
-                otherUser.profile.profilePictureUrl ||
+                otherUser?.profile?.profilePictureUrl ||
                 userData.profilePictureUrl
               }
-              name={otherUser.profile.displayName || userData.name}
-              username={otherUser.username || userData.username}
+              name={otherUser?.profile?.displayName || userData.name}
+              username={otherUser?.username || userData.username}
             />
             <UserInfo>
               <Points
                 availablePoints={
-                  otherUser.point.availablePoints || userData.availablePoints
+                  otherUser?.point?.availablePoints || userData.availablePoints
                 }
                 seasonPoints={
-                  otherUser.point.totalSeasonPoints ||
+                  otherUser?.point?.totalSeasonPoints ||
                   userData.totalSeasonPoints
                 }
                 volunteerHours={
-                  otherUser.point.volunteerHours || userData.volunteerHours
+                  otherUser?.point?.volunteerHours || userData.volunteerHours
                 }
               />
               <BioBox
-                data={otherUser.profile || userData}
+                data={otherUser?.profile || userData}
                 canEdit={!otherUser}
               />
             </UserInfo>

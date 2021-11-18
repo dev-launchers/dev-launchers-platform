@@ -11,26 +11,25 @@ import {
 export default function AccountDropdown(props) {
   return (
     <div>
-      {props.userData.id ? (
+      {props.userData.id && props.userData.username ? (
         <AccountMenuDropdownButton
           toggleBtnText="Menu"
           dropdownItems={
             <>
-              {" "}
               <AccountMenuDropdownItem>
-                <Link href="/user-profile" passHref>
+                <Link href="/users/me" passHref>
                   <a>Visit Account Page</a>
                 </Link>
               </AccountMenuDropdownItem>
               <AccountMenuDropdownItem onClick={Logout}>
-                Logout{" "}
+                Logout
               </AccountMenuDropdownItem>
             </>
           }
         ></AccountMenuDropdownButton>
       ) : (
         <MenuButton fontSize="1.2rem" href={env().GOOGLE_AUTH_URL}>
-          Sign In{" "}
+          Sign In
         </MenuButton>
       )}
     </div>

@@ -79,7 +79,7 @@ function HamburgerMenu() {
             <div>
               {userData.id ? (
                 <>
-                  <Link href={"/user-profile"} passHref>
+                  <Link href={"/users/me"} passHref>
                     <a className="nav-link">
                       <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
                     </a>
