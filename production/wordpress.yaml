@@ -87,6 +87,13 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 10
             failureThreshold: 5
+          nodeSelector:
+            type: virtual-kubelet
+          tolerations:
+          - key: virtual-kubelet.io/provider
+            operator: Exists
+          - key: azure.com/aci
+            effect: NoSchedule
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /var/www/html
