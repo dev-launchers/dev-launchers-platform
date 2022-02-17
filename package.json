@@ -12,7 +12,7 @@
     "axios": "^0.21.1",
     "constate": "^3.0.1",
     "luxon": "^1.26.0",
-    "next": "^11.0.1",
+    "next": "^12.1.0",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^3.0.0-canary.10",
     "pluralize": "^8.0.0",
