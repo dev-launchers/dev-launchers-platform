@@ -31,7 +31,7 @@
     "react-tabs": "^3.1.0",
     "react-toastify": "latest",
     "regenerator-runtime": "^0.13.7",
-    "semantic-release": "^17.4.2",
+    "semantic-release": "^19.0.3",
     "styled-components": "^5.3.1",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
