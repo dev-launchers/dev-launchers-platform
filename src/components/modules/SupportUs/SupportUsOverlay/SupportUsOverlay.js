@@ -9,7 +9,6 @@ import {
   ImageArea,
   Image,
 } from "./StyledSupportUsOverlay";
-import RainbowBar from "../../../common/RainbowBar";
 
 import boyFrontImage from "../../../../images/people-cutouts/boy-front.png?webp";
 
@@ -18,7 +17,6 @@ export default function HeroOverlay() {
     <FlexPageSection>
       <Wrapper>
         <RainbowedMessageArea>
-          <RainbowBar />
           <MessageArea>
             <Tagline>
               We equip people with the skills needed to thrive in technical
