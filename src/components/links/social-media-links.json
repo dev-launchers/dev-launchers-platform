@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_links_social_media_links",
+  "info": {
+    "name": "socialMediaLinks",
+    "icon": "ad",
+    "displayName": "SocialMediaLinks",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "socialMediaLink": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_links_meeting_link_ur_ls",
+  "info": {
+    "name": "meetingLinkURLs",
+    "icon": "comment-dots",
+    "displayName": "MeetingLinkURLs",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "roomName": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

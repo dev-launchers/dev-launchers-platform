@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_skills_skills",
+  "info": {
+    "name": "skills",
+    "icon": "adjust",
+    "displayName": "skills",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "skill": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interests",
+  "info": {
+    "singularName": "interest",
+    "pluralName": "interests",
+    "displayName": "Interest"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "interest": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "interests"
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::project.project",
+      "mappedBy": "interests"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "interests"
+    }
+  }
+}

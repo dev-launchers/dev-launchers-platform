@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "points",
+  "info": {
+    "singularName": "point",
+    "pluralName": "points",
+    "displayName": "point",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "totalPoints": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "totalSeasonPoints": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "availablePoints": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "volunteerHours": {
+      "type": "float",
+      "required": true,
+      "default": 0
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "point"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "catchPhase": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "vision": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "commitmentLevel": {
+      "type": "string",
+      "required": true
+    },
+    "signupFormUrl": {
+      "type": "string",
+      "required": true
+    },
+    "openPositions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "positions.open-positions"
+    },
+    "team": {
+      "type": "component",
+      "repeatable": false,
+      "component": "people.people"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "projects"
+    },
+    "interests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::interest.interest",
+      "inversedBy": "projects"
+    },
+    "calendarId": {
+      "type": "string"
+    },
+    "board": {
+      "type": "component",
+      "repeatable": false,
+      "component": "project.project-board"
+    },
+    "isListed": {
+      "type": "boolean",
+      "required": true
+    },
+    "SubProjects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "parentProject"
+    },
+    "parentProject": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::project.project",
+      "inversedBy": "SubProjects"
+    },
+    "google_meet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::google-meet.google-meet",
+      "inversedBy": "project"
+    },
+    "newMeetingTimes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "dates.new-meeting-times"
+    }
+  }
+}

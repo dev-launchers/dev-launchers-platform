@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "idea_cards",
+  "info": {
+    "singularName": "idea-card",
+    "pluralName": "idea-cards",
+    "displayName": "IdeaCard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ideaName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tagline": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "targetAudience": {
+      "type": "text",
+      "required": true
+    },
+    "hourCommitmentMin": {
+      "type": "integer",
+      "required": true
+    },
+    "hourCommitmentMax": {
+      "type": "integer",
+      "required": true
+    },
+    "skills": {
+      "type": "component",
+      "repeatable": true,
+      "component": "skills.skills"
+    },
+    "openPositions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "positions.open-positions"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "idea_cards"
+    },
+    "difficultyLevel": {
+      "type": "enumeration",
+      "enum": [
+        "Beginner",
+        "Intermediate",
+        "Advanced"
+      ],
+      "required": true
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "idea_card"
+    },
+    "discord": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "calendly": {
+      "type": "string"
+    },
+    "features": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_people_members",
+  "info": {
+    "name": "members",
+    "icon": "address-card",
+    "description": "",
+    "displayName": "Members"
+  },
+  "options": {},
+  "attributes": {
+    "member": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
