@@ -51,7 +51,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --debug",
-    "start": "next build --debug && next start",
+    "start": "next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
     "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
     "lint": "next lint",
