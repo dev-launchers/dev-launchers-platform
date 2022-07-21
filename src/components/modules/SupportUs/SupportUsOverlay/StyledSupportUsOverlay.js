@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 
   @media (orientation: portrait) {
-    height: 80vw;
+    height: auto;
   }
 `;
 
@@ -57,10 +57,14 @@ export const ImageArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+
+  @media (orientation: portrait) {
+    height: inherit;
+  }
 `;
 
 export const Image = styled.img`
-  height: 100%;
+  height: 70%;
   filter: drop-shadow(-0.075rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
     drop-shadow(0rem -0.075rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
     drop-shadow(0.15rem 0rem 0 ${({ theme }) => theme.colors.NEUTRAL_2})
@@ -68,4 +72,9 @@ export const Image = styled.img`
   transform: scale(2.25);
   position: relative;
   top: 20%;
+
+  @media (orientation: portrait) {
+    height: 50%;
+    left: 25%;
+  }
 `;

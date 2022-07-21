@@ -17,10 +17,12 @@ import {
   CtaButtonWrapper,
   StatusNote,
 } from "./StyledSupportUs";
+import RainbowBar from "../../common/RainbowBar";
 
 export default function SupportUs() {
   return (
     <div>
+      <RainbowBar />
       <SupportUsOverlay />
       <PageBody>
         <ContentArea>

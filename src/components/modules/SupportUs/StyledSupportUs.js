@@ -5,7 +5,7 @@ export const ContentArea = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  height: 50vw;
+  height: auto;
   border-bottom: 0.5rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
 `;
 
@@ -31,10 +31,14 @@ export const StudentImage = styled.img`
   position: relative;
 
   opacity: 0.75;
+
+  @media (orientation: portrait) {
+    left: -75%;
+  }
 `;
 
 export const CtaWrapper = styled.div`
-  width: 50%;
+  width: 60%;
   min-height: 50%;
   display: flex;
   flex-direction: column;
