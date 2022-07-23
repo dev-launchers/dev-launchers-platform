@@ -1,12 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  @media screen and (min-width: 1400px) {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
-  }
   p {
     font-family: "Nunito Sans", sans-serif;
     font-size: 1rem;
@@ -89,12 +83,14 @@ export const HeadlineContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
+  max-width: 71.3rem;
+  margin: auto;
+  padding: 1rem 4rem;
   .page-info {
-    padding: 2rem 4rem;
+    padding: 2rem 1rem;
   }
   .product-post {
     padding: 2rem;
-    margin-left: 4rem;
     background-color: white;
     border: 4px solid black;
     border-radius: 2rem;
@@ -138,17 +134,5 @@ export const ContentContainer = styled.div`
         }
       }
     }
-  }
-  @media screen and (min-width: 1400px) {
-    max-width: 60%;
-  }
-  @media screen and (min-width: 1200px) and (max-width: 1400px) {
-    margin: 2rem 8rem;
-  }
-  @media screen and (min-width: 670px) and (max-width: 991px) {
-    margin: 1rem 4rem;
-  }
-  @media screen and (min-width: 300px) and (max-width: 670px) {
-    margin: 1rem 2rem;
   }
 `;
