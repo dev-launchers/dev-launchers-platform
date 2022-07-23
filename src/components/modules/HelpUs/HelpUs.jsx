@@ -31,7 +31,7 @@ const HelpUs = () => (
           </strong>{" "}
           to{" "}
           <strong className="lighter-yellow-30">
-            participate in a useability testing
+            participate in a usability testing
           </strong>{" "}
           interview or survey.
         </h3>
@@ -45,7 +45,7 @@ const HelpUs = () => (
               browse projects they can join
             </strong>{" "}
             and as well as available opportunities. This product is currently
-            undergoing useability testing for the
+            undergoing usability testing for the
             <strong className="lighter-light-blue-30">
               {" "}
               MVP (Minimum Viable Product) iteration release
@@ -59,7 +59,7 @@ const HelpUs = () => (
             <li>
               <a href="https://calendly.com/christyfic/dev-launchers-recruitment-platform-usability-test?back=1&amp;month=2022-07">
                 <button className="button-one button-text" type="button">
-                  Useability interview <br /> (Desktop / Laptop) <br />
+                  Usability interview <br /> (Desktop / Laptop) <br />
                 </button>
               </a>
             </li>
@@ -73,7 +73,7 @@ const HelpUs = () => (
             <li>
               <a href="https://calendly.com/anna-isaacks/dl-recruitment-mvp-mobile-testing">
                 <button className="button-three button-text" type="button">
-                  Useability interview <br />
+                  Usability interview <br />
                   (Mobile Device) <br />{" "}
                 </button>
               </a>
@@ -92,9 +92,9 @@ const HelpUs = () => (
           . This means throughout product development we{" "}
           <strong className="lighter-light-blue-30">
             {" "}
-            conduct useability tests{" "}
+            conduct usability tests{" "}
           </strong>{" "}
-          to determine if the product intuitive and{" "}
+          to determine if the product is intuitive and{" "}
           <strong className="lighter-yellow-30">
             {" "}
             find areas for improvement{" "}
@@ -108,16 +108,17 @@ const HelpUs = () => (
         </p>
         <h3>About User Testing</h3>
         <p className="page-description">
-          During useability interviews, our UX Researchers will give you access
+          During usability interviews, our UX Researchers will give you access
           to{" "}
           <strong className="lighter-yellow-30">
             check out our latest products
           </strong>
           , <strong className="lighter-yellow-30">interact with them</strong>{" "}
           and <strong className="lighter-yellow-30">share your thoughts</strong>
-          .<strong className="lighter-orange-30">Survey forms</strong> typically
-          take about <strong className="lighter-orange-30">10 minutes</strong>{" "}
-          to fill out and our{" "}
+          . <strong className="lighter-orange-30">Survey forms</strong>{" "}
+          typically take about{" "}
+          <strong className="lighter-orange-30">10 minutes</strong> to fill out
+          and our{" "}
           <strong className="lighter-light-blue-30">
             one on one interviews
           </strong>{" "}
