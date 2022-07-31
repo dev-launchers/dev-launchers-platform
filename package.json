@@ -14,9 +14,10 @@
     "@strapi/plugin-sentry": "^4.1.9",
     "@strapi/plugin-users-permissions": "4.1.8",
     "@strapi/strapi": "4.1.8",
-    "better-sqlite3": "7.4.6",
+    "better-sqlite3": "^7.6.2",
     "nodemailer": "^6.7.4",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "sharp": "^0.30.7"
   },
   "author": {
     "name": "A Strapi developer"
