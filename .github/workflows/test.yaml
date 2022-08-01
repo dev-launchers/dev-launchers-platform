@@ -1,0 +1,31 @@
+name: test
+on:
+  pull_request:
+    workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+    - run: npm install
+    # TODO: Enable linter
+    # - run: npx eslint .
+    - run: npm run build
+      env:
+        CI: false
+    - name: Install newman
+      run: npm install -g newman
+    - name: Run postman tests
+      run: |
+        npm run develop &
+        sleep 30
+        newman run integration-test/collection.json
+      env:
+        NODE_ENV: test
+        OPEN_POSITIONS_DISCORD_WEBHOOK: "not_used"
+        JWT_SECRET: "NlpLY6zZ7JON8CHyNORWKw=="
+    
