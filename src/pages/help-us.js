@@ -13,7 +13,7 @@ export default function Index() {
         <meta name="title" content="Become a Product Tester"></meta>
         <meta
           name="description"
-          content="We build world changing software while preparing people to thrive in technical careers, Please help us test our new products!"
+          content="We build world-changing software while preparing people to thrive in technical careers, Please help us test our new products!"
         ></meta>
 
         <meta property="og:type" content="website"></meta>
@@ -25,7 +25,7 @@ export default function Index() {
         <meta property="og:title" content="Become a Product Tester"></meta>
         <meta
           property="og:description"
-          content="We build world changing software while preparing people to thrive in technical careers, Please help us test our new products!"
+          content="We build world-changing software while preparing people to thrive in technical careers, Please help us test our new products!"
         ></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
@@ -37,7 +37,7 @@ export default function Index() {
         <meta property="twitter:title" content="Become a Product Tester"></meta>
         <meta
           property="twitter:description"
-          content="We build world changing software while preparing people to thrive in technical careers, Please help us test our new products!"
+          content="We build world-changing software while preparing people to thrive in technical careers, Please help us test our new products!"
         ></meta>
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>

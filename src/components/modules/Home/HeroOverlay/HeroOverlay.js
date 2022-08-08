@@ -42,7 +42,7 @@ export default function HeroOverlay() {
         <MessageArea>
           <Tagline>
             <TypewriterEffect>
-              We build world changing software while preparing people to thrive
+              We build world-changing software while preparing people to thrive
               in technical careers
             </TypewriterEffect>
           </Tagline>
