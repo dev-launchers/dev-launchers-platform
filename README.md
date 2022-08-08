@@ -2,8 +2,6 @@
 
 ## We Build People (and software)
 
-[![](https://dev-launchers.github.io/platform__website/images/dev-launchers__site-screenshot.jpg)](https://devlaunchers.com/)
-
 The site is built with React.js/Next.js and many other wonderful libraries.
 
 ---
