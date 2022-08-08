@@ -7,6 +7,9 @@ import ProfileCard from "./ProfileCard";
 import Points from "./Points";
 import BioBox from "./BioBox";
 import WeeksGlance from "./WeeksGlance";
+import UserProjects from "./UserProjects";
+import Opportunities from "./Opportunities";
+import RecommendedIdeas from "./RecommendedIdeas";
 import { useUserDataContext } from "../../../context/UserDataContext";
 
 import { env } from "../../../utils/EnvironmentVariables";
@@ -39,7 +42,9 @@ export default function UserProfile({ otherUser }) {
               name={otherUser?.profile?.displayName || userData.name}
               username={otherUser?.username || userData.username}
             />
+            
             <UserInfo>
+              {/*}
               <Points
                 availablePoints={
                   otherUser?.point?.availablePoints || userData.availablePoints
@@ -52,6 +57,7 @@ export default function UserProfile({ otherUser }) {
                   otherUser?.point?.volunteerHours || userData.volunteerHours
                 }
               />
+              {*/}
               <BioBox
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
@@ -61,9 +67,14 @@ export default function UserProfile({ otherUser }) {
           {/*
           <LabCampus />
           */}
-          <WeeksGlance />
 
           <Misc>
+            <UserProjects />
+            <div className="spacer" style={{width:"100%", height:"10vh"}}></div>
+            <Opportunities />
+            <div className="spacer" style={{width:"100%", height:"10vh"}}></div>
+            <RecommendedIdeas />
+            {/*}<WeeksGlance />{*/}
             {/*
             <LabMember />
             */}

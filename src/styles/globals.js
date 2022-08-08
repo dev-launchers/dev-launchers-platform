@@ -96,7 +96,7 @@ h2 {
 
 h3 {
   font-family: "Abel", sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.9rem;
   font-weight: bold;
 }
 

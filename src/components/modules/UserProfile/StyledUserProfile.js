@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: grid;
   gap: 20px;
   justify-content: center;
+  justify-items: center;
   grid-template-areas:
     "UserSection"
     "LabCampus"
@@ -39,8 +40,9 @@ export const DiscordPlaceHolder = styled.div`
   background: grey;
 `;
 export const Misc = styled.div`
+  width:80%;
   grid-area: Misc;
-  display: grid;
+  /*display: grid;*/
   gap: 15px;
   grid-template-columns: auto auto;
   margin-bottom: 50px;
