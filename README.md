@@ -1,4 +1,4 @@
-# Dev Launchers (https://devlaunchers.com)
+# Dev Launchers (https://devlaunchers.org)
 
 ## We Build People (and software)
 
@@ -14,9 +14,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 
 ## Contributing
 
-### Our Issues are organized into different Milestones
-
-_We're using GitHub's milestones to keep better track of our issues. These will change as we progress and move further along with our roadmap._
+Visit https://devlaunchers.org/projects to join one of our teams!
 
 ---
 
