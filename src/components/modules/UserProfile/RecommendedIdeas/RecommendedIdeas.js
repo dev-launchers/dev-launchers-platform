@@ -36,7 +36,7 @@ const RecommendedIdeas = ({ img, name, username }) => {
   };
 
   return (
-    <RecommendedIdeasContainer>
+    <RecommendedIdeasContainer ideas={ideas}>
       {ideas?.length > 0 ? (
         <div>
           <h2>Recommended Ideas 💡</h2>

@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 
 export const RecommendedIdeasContainer = styled.div`
-    /*width: 100%;*/
-    background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-    padding: 2rem;
-    display: ${ props => props.myProjects?.length ? "inherit" : "none" };
+  /*width: 100%;*/
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  padding: 2rem;
+  display: ${(props) => (props.ideas?.length ? "block" : "none")};
 
-    h2 {
-        color: ${({ theme }) => theme.colors.NEUTRAL_2};
-    }
+  h2 {
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  }
 `;
 
 export const RecommendedIdeaCardContainer = styled.div`
