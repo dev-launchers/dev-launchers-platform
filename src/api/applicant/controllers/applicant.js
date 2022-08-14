@@ -11,7 +11,6 @@ const isNotEmpty = (team) => {
   }
   return false;
 };
-console.log('before sent mail 1');
 
 module.exports = createCoreController('api::applicant.applicant', ({ strapi }) => ({             
     lifecycles: {
@@ -86,7 +85,6 @@ module.exports = createCoreController('api::applicant.applicant', ({ strapi }) =
         console.log(application);
         // const entity = await strapi.service('api::applicant.applicant').create(application);  
 
-        // console.log('before sent mail 3');
         // console.log(entity);
         if (applicantProject){
           const team = applicantProject.team;
