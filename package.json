@@ -10,17 +10,19 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-i18n": "4.1.8",
-    "@strapi/plugin-sentry": "^4.1.9",
-    "@strapi/plugin-users-permissions": "4.1.8",
-    "@strapi/strapi": "4.1.8",
+    "@strapi/plugin-documentation": "^4.3.4",
+    "@strapi/plugin-i18n": "^4.3.4",
+    "@strapi/plugin-sentry": "^4.3.4",
+    "@strapi/plugin-users-permissions": "^4.3.4",
+    "@strapi/strapi": "^4.3.4",
     "better-sqlite3": "^7.6.2",
     "nodemailer": "^6.7.4",
     "pg": "^8.7.3",
-    "sharp": "^0.30.7"
+    "sharp": "^0.30.7",
+    "typescript": "^4.7.4"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Dev Launchers"
   },
   "strapi": {
     "uuid": "b68c80bc-4934-4717-97be-5806b8e89b05"
