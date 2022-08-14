@@ -19,6 +19,7 @@
     "nodemailer": "^6.7.4",
     "pg": "^8.7.3",
     "sharp": "^0.30.7",
+    "strapi-plugin-entity-relationship-chart": "^4.1.0",
     "typescript": "^4.7.4"
   },
   "author": {
