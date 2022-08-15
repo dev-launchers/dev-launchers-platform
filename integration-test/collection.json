@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "0fc9180f-2bf3-4b6f-87fb-96a24715582a",
-		"name": "strapi-integration-test",
+		"_postman_id": "a12ecd23-028e-4a23-bd1f-8ff9873aa853",
+		"name": "strapiv4-integration-test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -33,35 +33,54 @@
 			"response": []
 		},
 		{
-			"name": "get-applicant",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{base_url}}/applicants",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"applicants"
-					]
+			"name": "get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User is integration-test\", () => {\r",
+							"  const user = pm.response.json();\r",
+							"  pm.expect(user.username).to.eql(\"integration-test\");\r",
+							"  pm.expect(user.email).to.eql(\"integration-test@devlaunchers.org\");\r",
+							"  pm.expect(user.discordUsername).to.eql(\"integration-test\");\r",
+							"  pm.expect(user.discordId).to.eql(\"integration-test#3025\");\r",
+							"  pm.expect(user.googleId).to.eql(\"integration-test\");\r",
+							"  pm.expect(user.userId).to.eql(\"5169825f-5cbc-450a-9443-561b2a42059a\");\r",
+							"  pm.expect(user.birthday).to.eql(\"1996-08-15\");\r",
+							"  pm.expect(user.country).to.eql(\"U.S.\");\r",
+							"  pm.expect(user.zipCode).to.eql(77478);\r",
+							"\r",
+							"  pm.expect(user.projects.length).to.equal(1);\r",
+							"  const project = user.projects[0];\r",
+							"  pm.expect(project.slug).to.equal(\"Dev-Recruiting\");\r",
+							"\r",
+							"  pm.expect(user.interests.length).to.equal(1);\r",
+							"  const interest = user.interests[0];\r",
+							"  pm.expect(interest.interest).to.eql(\"Web Dev\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "logout",
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/auth/logout",
+					"raw": "{{base_url}}/users/me?populate=*",
 					"host": [
 						"{{base_url}}"
 					],
 					"path": [
-						"auth",
-						"logout"
+						"users",
+						"me"
+					],
+					"query": [
+						{
+							"key": "populate",
+							"value": "*"
+						}
 					]
 				}
 			},
@@ -83,7 +102,9 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.test(\"Status code is 200\", function () {",
+					"  pm.response.to.have.status(200);",
+					"});"
 				]
 			}
 		}
@@ -91,7 +112,7 @@
 	"variable": [
 		{
 			"key": "base_url",
-			"value": "http://localhost:1337",
+			"value": "http://localhost:1337/api",
 			"type": "default"
 		}
 	]

@@ -12,3 +12,7 @@ Once you are ready to create a new release, create a PR to merge main branch to 
 # Update Strapi Version
 Go to https://github.com/strapi/strapi/releases to find the latest version, then update all `@strapi` packages in
 `package.json` to this version and run `npm install`.
+
+# Integration Test
+To run the integration test envrionment, set `NODE_ENV=test` in `.env` file. The login email is `integration-test@devlaunchers.org`
+password is `wQ46^BEsVbf9VD&D3ddSPCUP`. Data is stored in `integration-test/data.db`.
