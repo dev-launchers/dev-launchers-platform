@@ -1,0 +1,107 @@
+{
+  "name": "@devlaunchers/site-projects",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/react-burger-menu": "2.8.3",
+    "axios": "^0.27.2",
+    "constate": "^3.3.2",
+    "fuse.js": "^6.6.2",
+    "luxon": "^3.0.1",
+    "next": "^12.2.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-optimized-images": "^3.0.0-canary.10",
+    "polished": "^4.2.2",
+    "react": "^17.0.2",
+    "react-burger-menu": "^3.0.8",
+    "react-calendly": "^4.0.1",
+    "react-dom": "^17.0.2",
+    "react-form": "^4.0.1",
+    "react-ga": "^3.3.1",
+    "react-hook-form": "^7.34.0",
+    "react-markdown": "^8.0.3",
+    "react-modal": "^3.15.1",
+    "react-slick": "^0.29.0",
+    "react-toastify": "^9.0.7",
+    "remark-gfm": "^3.0.1",
+    "slick-carousel": "^1.8.1",
+    "styled-normalize": "^8.0.7",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/storybook-deployer": "^2.8.12",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
+    "babel-loader": "^8.2.5",
+    "babel-plugin-styled-components": "^2.0.7",
+    "eslint": "8.21.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-next": "^12.2.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "semantic-release": "^19.0.3",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky install",
+    "storybook": "start-storybook -p 6006 -s ./public",
+    "build-storybook": "build-storybook -s public",
+    "deploy-storybook": "storybook-to-ghpages",
+    "clean": "rimraf --no-glob ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
+    "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "test": "run-s 'test:*'",
+    "test:unit": "echo \"No tests yet\"",
+    "fix:staged-files": "lint-staged --allow-empty"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "lint-staged": {
+    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "release": {
+    "branches": [
+      "release"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  }
+}

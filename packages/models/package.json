@@ -1,0 +1,14 @@
+{
+  "name": "@devlaunchers/models",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
+    "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix"
+  },
+  "devDependencies": {
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "eslint": "8.21.0"
+  }
+}

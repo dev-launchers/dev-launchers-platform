@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: platform-website
+  name: platform-website
+  annotations:
+    fluxcd.io/automated: "true"
+  labels:
+    app: platform-website
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platform-website
+  template:
+    metadata:
+      labels:
+        app: platform-website
+    spec:
+      containers:
+      - name: platform-website
+        image: devlaunchers/platform-website:d0d8327-202105311801 # {"$imagepolicy": "platform-website:platform-website"}
+        ports:
+        - containerPort: 3000
+        env:
+        - name: BROWSER
+          value: none
+        - name: CI
+          value: "true"
+        resources:
+          limits:
+            cpu: 384m
+            memory: 384Mi
+          requests:
+            cpu: 128m
+            memory: 128Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          timeoutSeconds: 10
+          failureThreshold: 5
