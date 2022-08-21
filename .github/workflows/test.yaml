@@ -28,4 +28,17 @@ jobs:
         NODE_ENV: test
         OPEN_POSITIONS_DISCORD_WEBHOOK: "not_used"
         JWT_SECRET: "NlpLY6zZ7JON8CHyNORWKw=="
-    
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Build Docker images
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        file: ./Dockerfile
+        # Don't push image
+        push: false
+        # Get cache from latest build on main branch
+        cache-from: type=gha
+        # Don't set cache-to which will export the cache
