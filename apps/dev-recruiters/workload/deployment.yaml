@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dev-recruiters
+  name: dev-recruiters
+  labels:
+    app: dev-recruiters
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-recruiters
+  template:
+    metadata:
+      labels:
+        app: dev-recruiters
+    spec:
+      containers:
+      - name: dev-recruiters
+        image: devlaunchers/dev-recruiters:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 20m
+            memory: 100Mi

@@ -1,0 +1,67 @@
+{
+  "folders": [
+    {
+      "name": "platform__website",
+      "path": "apps/platform__website"
+    },
+    {
+      "name": "ideas",
+      "path": "apps/ideas"
+    },
+    {
+      "name": "site-projects",
+      "path": "apps/site-projects"
+    },
+    {
+      "name": "dev-recruiters",
+      "path": "apps/dev-recruiters"
+    },
+    {
+      "name": "utility",
+      "path": "packages/utility"
+    },
+    {
+      "name": "UI",
+      "path": "packages/UI"
+    },
+    {
+      "name": "models",
+      "path": "packages/models"
+    },
+    {
+      "name": "eslint-config-bases",
+      "path": "packages/eslint-config-bases"
+    },
+    {
+      "name": "root",
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "KnisterPeter.vscode-commitizen"]
+  },
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    // Disable vscode formatting for js,jsx,ts,tsx files
+    // to allow dbaeumer.vscode-eslint to format them
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
+    "eslint.alwaysShowStatus": true,
+    // https://github.com/Microsoft/vscode-eslint#mono-repository-setup
+    "eslint.workingDirectories": [
+      "./apps/platform__website",
+      "./apps/ideas",
+      "./apps/site-projects",
+      "./apps/dev-recruiters",
+      "./packages/UI",
+      "./packages/utility",
+      "./packages/models",
+      "./packages/eslint-config-bases"
+    ]
+  }
+}

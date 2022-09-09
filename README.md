@@ -2,7 +2,7 @@
 
 ## We Build People (and software)
 
-The site is built with React.js/Next.js and many other wonderful libraries.
+This is the monorepo for all DevLaunchers internal products, we use React.js/Next.js and many other wonderful libraries.
 
 ---
 
@@ -22,9 +22,9 @@ Visit https://devlaunchers.org/projects to join one of our teams!
 
 1. Clone the repo
 
-2. Install: `npm install`
+2. Install: `yarn`
 
-3. Run dev version: `npm run dev`
+3. Run dev version: `yarn workspace @devlaunchers/platform_website dev`
 
 ---
 
@@ -33,7 +33,9 @@ Visit https://devlaunchers.org/projects to join one of our teams!
 We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
 to format the commit messages.
 
-Once you are ready to create a new release, create a PR to merge main branch to release branch.
+We've created a command to guide you create conventional commit message all you need to do is run `yarn commit`
+
+Once you are ready to create a new release, create a PR to merge master branch to release branch.
 
 .
 

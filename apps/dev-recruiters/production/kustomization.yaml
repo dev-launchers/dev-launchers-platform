@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: dev-recruiters
+bases:
+- ../workload
+images:
+- name: devlaunchers/dev-recruiters
+  newName: devlaunchers/dev-recruiters
+  newTag: 1.1.4 # {"$imagepolicy": "dev-recruiters:dev-recruiters:tag"}
+patchesStrategicMerge:
+- |-
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    namespace: dev-recruiters
+    name: dev-recruiters
+    labels:
+      app: dev-recruiters
+  spec:
+    template:
+      spec:
+        containers:
+        - name: dev-recruiters
+          resources:
+            limits:
+              cpu: 0.01
+              memory: 200Mi
+            requests:
+              cpu: 0.01
+              memory: 200Mi
+        nodeSelector:
+          type: virtual-kubelet
+        tolerations:
+        - key: virtual-kubelet.io/provider
+          operator: Exists
+        - key: azure.com/aci
+          effect: NoSchedule
