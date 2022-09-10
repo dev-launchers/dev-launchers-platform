@@ -8,9 +8,9 @@ import GlobalStyle from "../styles/globals";
 import "react-toastify/dist/ReactToastify.css";
 import theme from "../styles/theme";
 
-import { UserDataProvider } from "../context/UserDataContext";
-import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
+import Header from "../components/common/Header";
+import { UserDataProvider } from "../context/UserDataContext";
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -19,7 +19,7 @@ const hashRedirect = (router) => {
   }
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
 
@@ -51,7 +51,8 @@ function MyApp({ Component, pageProps }) {
             </div>
             <div>
               <Header />
-              <Component {...pageProps} />
+              {/* <Component {...pageProps} /> */}
+              {props.children}
               <Footer />
             </div>
           </UserDataProvider>

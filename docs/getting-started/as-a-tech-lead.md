@@ -4,7 +4,7 @@
 
 2. Install: `yarn`
 
-3. Run dev version: `yarn workspace @devlaunchers/platform_website dev`
+3. Run dev version: `yarn workspace @devlaunchers/app dev`
 
 # How to contribute to the DevLaunchers website
 
@@ -49,10 +49,10 @@ then navigate to its `package.json` file and change the attribute `name` from `"
 3. Add your app as a dependency to devlaunchers website app (with the same exact name you provided in step 2)
 
 ```
-yarn workspace @devlaunchers/platform_website add @devlaunchers/[name of app]@0.1.0
+yarn workspace @devlaunchers/app add @devlaunchers/[name of app]@0.1.0
 ```
 
-4. Let `@devlaunchers/platform_website` app transpile pages coming from your app by going to `next.config.js` inside apps/platform\_\_website folder (use the same exact name you provided in step 2)
+4. Let `@devlaunchers/app` app transpile pages coming from your app by going to `next.config.js` inside apps/platform\_\_website folder (use the same exact name you provided in step 2)
 
 ```
 const withTM = require("next-transpile-modules")([...,"@devlaunchers/[name of app]"]); // pass the modules you would like to see transpiled
@@ -70,7 +70,7 @@ export default function Sample() {
 }
 ```
 
-6. Wire the page you just created by replicating the same file hierarchy from YOUR app `pages` folder into the `pages` folder of @devlaunchers/platform_website app nested inside a folder serving as a base-path of your project example:
+6. Wire the page you just created by replicating the same file hierarchy from YOUR app `pages` folder into the `pages` folder of @devlaunchers/app app nested inside a folder serving as a base-path of your project example:
 
 <ins>**your app pages folder hierarchy**</ins>
 
@@ -80,7 +80,7 @@ export default function Sample() {
 └── sample.js
 ```
 
-<ins>**@devlaunchers/platform_website app pages folder hierarchy**</ins>
+<ins>**@devlaunchers/app app pages folder hierarchy**</ins>
 
 ```
 ./apps/platform__website/src/pages
@@ -105,7 +105,7 @@ Note: you can ignore getStaticProps and getStaticPaths if your page doesn't expo
 8. Now the platform website has access to your page and you can view it in dev server running the following command
 
 ```
-yarn workspace @devlaunchers/platform_website dev
+yarn workspace @devlaunchers/app dev
 ```
 
 then navigate to http://localhost:3000/[Your-preferred-base-path-from-step-6]/sample

@@ -1,0 +1,104 @@
+{
+  "name": "@devlaunchers/website",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "http://devlaunchers.org/",
+  "dependencies": {
+    "@cloudflare/wrangler": "^1.19.12",
+    "@devlaunchers/dev-recruiters": "workspace:^",
+    "@devlaunchers/ideas": "*",
+    "@devlaunchers/site-projects": "*",
+    "@ramonak/react-progress-bar": "^5.0.2",
+    "@types/styled-components": "5.1.25",
+    "articles": "^0.2.2",
+    "autosave": "^1.0.3",
+    "axios": "^0.27.2",
+    "constate": "^3.3.2",
+    "luxon": "^3.0.1",
+    "next": "^12.2.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-optimized-images": "^3.0.0-canary.10",
+    "next-transpile-modules": "^9.0.0",
+    "pluralize": "^8.0.0",
+    "prismic-reactjs": "^1.3.4",
+    "query-string": "7.1.1",
+    "react": "^17.0.2",
+    "react-accessible-accordion": "^5.0.0",
+    "react-burger-menu": "^3.0.8",
+    "react-calendly": "^4.0.1",
+    "react-dom": "^17.0.2",
+    "react-form": "4.0.1",
+    "react-ga": "3.3.1",
+    "react-modal": "^3.15.1",
+    "react-share": "latest",
+    "react-social-icons": "latest",
+    "react-tabs": "^3.1.0",
+    "react-toastify": "latest",
+    "regenerator-runtime": "^0.13.9",
+    "semantic-release": "^19.0.3",
+    "styled-components": "5.3.5",
+    "styled-normalize": "^8.0.7",
+    "tabletop": "1.6.3",
+    "wrangler": "^2.0.24"
+  },
+  "devDependencies": {
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@types/luxon": "3.0.0",
+    "@types/react": "^17.0.0",
+    "babel-plugin-styled-components": "^2.0.7",
+    "eslint": "^8.21.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-next": "^12.2.3",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --debug",
+    "start": "next start",
+    "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
+    "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
+    "prepare": "husky install",
+    "clean": "rimraf --no-glob ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
+    "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "test": "run-s 'test:*'",
+    "test:unit": "echo \"No tests yet\"",
+    "fix:staged-files": "lint-staged --allow-empty"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "lint-staged": {
+    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  },
+  "release": {
+    "branches": [
+      "release"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  }
+}

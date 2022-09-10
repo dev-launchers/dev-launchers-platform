@@ -1,0 +1,21 @@
+/* Blinking text */
+.blinking {
+  animation: blinkingText 1.5s infinite;
+}
+@keyframes blinkingText {
+  0% {
+    color: yellow;
+  }
+  49% {
+    color: yellow;
+  }
+  80% {
+    color: transparent;
+  }
+  99% {
+    color: transparent;
+  }
+  100% {
+    color: yellow;
+  }
+}

@@ -81,14 +81,14 @@ COPY . .
 COPY --from=deps /workspace-install ./
 
 # # Optional: if the app depends on global /static shared assets like images, locales...
-RUN yarn workspace @devlaunchers/platform_website build
+RUN yarn workspace @devlaunchers/app build
 
 # Does not play well with buildkit on CI
 # https://github.com/moby/buildkit/issues/1673
 RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
     SKIP_POSTINSTALL=1 \
     YARN_CACHE_FOLDER=/root/.yarn3-cache \
-    yarn workspaces focus @devlaunchers/platform_website --production
+    yarn workspaces focus @devlaunchers/app --production
 
 ###################################################################
 # Stage 3: Extract a minimal image from the build                 #
