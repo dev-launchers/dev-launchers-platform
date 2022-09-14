@@ -1,9 +1,7 @@
-import React from "react";
-import Head from "next/head";
+import React from 'react';
+import Head from 'next/head';
 
-import Header from "../components/common/Header";
-import Home from "../components/modules/Home";
-import Footer from "../components/common/Footer";
+import Home from '../components/modules/Home';
 
 export default function Index() {
   return (
@@ -42,9 +40,7 @@ export default function Index() {
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       <div>
-        <Header />
         <Home />
-        <Footer />
       </div>
     </>
   );

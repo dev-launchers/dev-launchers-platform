@@ -14,6 +14,8 @@ import { SheetsProvider } from "../context/SheetsContext";
 import { RepoProvider } from "../context/RepoContext";
 import { LeaderboardProvider } from "../context/LeaderboardContext";
 import { UserDataProvider } from "../context/UserDataContext";
+import Header from "@/components/common/Header";
+import Footer from "@/components/common/Footer";
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -65,7 +67,9 @@ function MyApp({ Component, pageProps }) {
                 progressClassName="toast-progress"
               />
             </div>
+            <Header />
             <Component {...pageProps} />
+            <Footer />
           </div>
         </ThemeProvider>
       </UserDataProvider>

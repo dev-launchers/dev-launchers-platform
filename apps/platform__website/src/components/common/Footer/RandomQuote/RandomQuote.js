@@ -1,15 +1,16 @@
-import React from "react";
-import Wrapper from "./StyledRandomQuote";
+import React, { useEffect, useState } from 'react';
+import Wrapper from './StyledRandomQuote';
 
 // Retrieve all quotes from our content layer
-const quotes = require("../../../../content/collections/quotes.json").data;
+const quotes = require('../../../../content/collections/quotes.json').data;
 
 export default function RandomQuote() {
-  // Select and display a random quote from our quotes collection
-  const randomQuote = quotes[parseInt(quotes.length * Math.random(), 10)];
-  return (
-    <Wrapper>
-      &quot;{randomQuote.body}&quot; - {randomQuote.author}
-    </Wrapper>
-  );
+  const [quote, setQuote] = useState('');
+
+  useEffect(() => {
+    const randomQuote = quotes[parseInt(quotes.length * Math.random(), 10)];
+    setQuote(randomQuote);
+  }, []);
+
+  return <Wrapper>{`"${quote.body}" - ${quote.author}`}</Wrapper>;
 }

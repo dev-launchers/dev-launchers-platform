@@ -1,17 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import axios from "axios";
-import Header from "../../components/common/Header";
-import UserProfile from "../../components/modules/UserProfile";
-import Footer from "../../components/common/Footer";
-import { env } from "../../utils/EnvironmentVariables";
+import axios from 'axios';
+import UserProfile from '../../components/modules/UserProfile';
+import { env } from '../../utils/EnvironmentVariables';
 
 export const getStaticPaths = async () => {
   const { data } = await axios(`${env().STRAPI_URL}/users`, {
     headers: {
-      Accept: "application/json, text/plain, */*",
-      "User-Agent":
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent':
+        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36',
     },
   });
 
@@ -23,7 +21,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
@@ -48,9 +46,7 @@ export const getStaticProps = async (context) => {
 export default function UserProfilePage({ user }) {
   return (
     <div>
-      <Header />
       <UserProfile otherUser={user} />
-      <Footer />
     </div>
   );
 }
