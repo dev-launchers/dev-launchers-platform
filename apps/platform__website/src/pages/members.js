@@ -1,9 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import Head from "next/head";
-import Header from "../components/common/Header";
-import MentorshipTiers from "../components/modules/MentorshipTiers/MentorshipTiers";
-import Footer from "../components/common/Footer";
+import Head from 'next/head';
+import MentorshipTiers from '../components/modules/MentorshipTiers/MentorshipTiers';
 
 export default function MentorshipTiersRoute() {
   return (
@@ -12,9 +10,7 @@ export default function MentorshipTiersRoute() {
         <title>Mentorship Tiers</title>
       </Head>
       <div>
-        <Header />
         <MentorshipTiers />
-        <Footer />
       </div>
     </>
   );

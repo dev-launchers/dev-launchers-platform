@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Opportunity } from "src/models/opportunity";
+import { Opportunity } from "@devlaunchers/models";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";

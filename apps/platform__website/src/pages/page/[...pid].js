@@ -1,8 +1,6 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import Header from "../../components/common/Header";
-import DynamicPage from "../../components/modules/DynamicPage";
-import Footer from "../../components/common/Footer";
+import DynamicPage from '../../components/modules/DynamicPage';
 
 export default function DynamicPageRoute() {
   const router = useRouter();
@@ -10,9 +8,7 @@ export default function DynamicPageRoute() {
 
   return (
     <div>
-      <Header />
       <DynamicPage pageId={pid} />
-      <Footer />
     </div>
   );
 }
