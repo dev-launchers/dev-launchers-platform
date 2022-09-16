@@ -45,13 +45,16 @@ export default function Footer() {
         </Link>
       </FooterNav>
       <SocialMediaContainer>
-        <SocialMediaLink Type='Instagram' />
-        <SocialMediaLink Type='Linkedin' />
         <Link href={'/'} passHref className='nav-link'>
-          <a>
+          <a css={`
+            grid-column: 1/3;
+            justify-self: center;
+          `}>
             <FooterLogo />
           </a>
         </Link>
+        <SocialMediaLink Type='Instagram' />
+        <SocialMediaLink Type='Linkedin' />
         <SocialMediaLink Type='Twitch' />
         <SocialMediaLink Type='Discord' />
       </SocialMediaContainer>

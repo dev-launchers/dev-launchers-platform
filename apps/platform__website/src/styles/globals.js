@@ -76,6 +76,11 @@ h6 {
   margin-bottom: 1rem;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1em;

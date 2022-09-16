@@ -37,13 +37,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?projects.slug=${params.slug}`
   );
 
-  const project: any = await projectsRes.json();
-  const opportunites: any = await opportuntiesRes.json();
+  const project: Project = await projectsRes.json();
+
+  const commitments = project.opportunities.map(
+    (opp) => opp.commitmentHoursPerWeek
+  );
+  const maxCommitment = Math.max(...commitments);
+  const minCommitment = Math.min(...commitments);
+  project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
+
+  const opportunites: Opportunity[] = await opportuntiesRes.json();
 
   return {
     props: {
       project: project,
       opportunites: opportunites,
+      maxCommitment,
+      minCommitment,
     },
     revalidate: 10,
   };
@@ -52,9 +62,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 export default function DetailedPage({
   project,
   opportunites,
+  maxCommitment,
+  minCommitment,
 }: {
   project: Project;
   opportunites: Opportunity[];
+  maxCommitment: number;
+  minCommitment: number;
 }) {
   return (
     <>
@@ -94,7 +108,12 @@ export default function DetailedPage({
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <ProjectDetails project={project} opportunites={opportunites} />
+      <ProjectDetails
+        maxCommitment={maxCommitment}
+        minCommitment={minCommitment}
+        project={project}
+        opportunites={opportunites}
+      />
     </>
   );
 }

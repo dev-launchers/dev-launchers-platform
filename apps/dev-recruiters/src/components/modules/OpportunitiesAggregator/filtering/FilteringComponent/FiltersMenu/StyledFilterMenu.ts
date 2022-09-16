@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const FilterMenu = styled.div<{ visible: boolean }>`
   font-family: ${({ theme }) => theme?.fonts?.normal};
   position: fixed;
-  top: 0;
+  top: 8%;
   left: 0;
   transform: translateX(${(props) => (props.visible ? '0' : '-100%')});
   width: 100%;
@@ -21,7 +21,7 @@ export const FilterMenu = styled.div<{ visible: boolean }>`
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
 `;

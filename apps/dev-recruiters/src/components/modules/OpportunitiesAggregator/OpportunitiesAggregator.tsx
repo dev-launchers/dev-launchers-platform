@@ -13,24 +13,24 @@ import FilteringComponent, {
   FilteringComponentProps,
 } from "./filtering/FilteringComponent";
 import BoxContainer from "../../common/BoxContainer";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useTheme } from "styled-components";
 interface Props extends FilteringComponentProps {}
 
 const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
-  const theme = useTheme()
-  const customSlider = React.useRef<Slider | null>(null);
+  const customSlider = React.useRef();
   const settings = {
     className: "cards",
     dots: true,
+    arrows: true,
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 3,
-    autoplay: true,
-    autoplaySpeed: 4000,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 1535,
@@ -61,7 +61,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
             <h2>Featured Products</h2>
           </FeaturedProducts>
           <Slider
-            ref={(slider) => customSlider.current = slider}
+            ref={(slider) => (customSlider.current = slider)}
             {...settings}
           >
             {projects.map((project) => (
