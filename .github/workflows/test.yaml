@@ -1,15 +1,33 @@
-name: test
+name: pr-build
 on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.x'
-    - run: npm install
-    - run: npm run build
-      env:
-        CI: false
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: devlaunchers/platform-website # list of Docker images to use as base name for tags
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker images
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: ./Dockerfile
+          # Don't push image
+          push: false
+          # Get cache from latest build on main branch
+          cache-from: type=gha
+          # Don't set cache-to which will export the cache

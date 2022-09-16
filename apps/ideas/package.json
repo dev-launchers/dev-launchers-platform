@@ -1,0 +1,25 @@
+{
+  "name": "@devlaunchers/ideas",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "clean": "rimraf --no-glob ./tsconfig.tsbuildinfo",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
+    "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit",
+    "test": "run-s 'test:*'",
+    "test:unit": "echo \"No tests yet\"",
+    "fix:staged-files": "lint-staged --allow-empty"
+  },
+  "dependencies": {
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@material-ui/core": "^4.12.4",
+    "eslint": "8.21.0",
+    "next": "^12.2.3",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}

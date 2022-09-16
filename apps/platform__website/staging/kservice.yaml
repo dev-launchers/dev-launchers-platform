@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  namespace: platform-website-staging
+  name: platform-website
+spec:
+  template:
+    spec:
+      containers:
+      - name: platform-website
+        image: devlaunchers/platform-website:d0d8327-202105311801
+        ports:
+        - containerPort: 3000
+        env:
+        - name: BROWSER
+          value: none
+        - name: CI
+          value: "true"

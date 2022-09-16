@@ -1,0 +1,17 @@
+{
+  "name": "@devlaunchers/utility",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
+    "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix"
+  },
+  "dependencies": {
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@devlaunchers/models": "workspace:^",
+    "axios": "^0.27.2",
+    "eslint": "8.21.0"
+  }
+}

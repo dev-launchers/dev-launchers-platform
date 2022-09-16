@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: recruiting-staging
+bases:
+- ./kservice.yaml
+images:
+- name: devlaunchers/dev-recruiters
+  newName: devlaunchers/dev-recruiters
+  newTag: "2aea9f7-202206290444" # {"$imagepolicy": "recruiting-staging:recruiting:tag"}

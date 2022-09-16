@@ -1,0 +1,1 @@
+export { default } from "@devlaunchers/dev-recruiters/src/pages/second";

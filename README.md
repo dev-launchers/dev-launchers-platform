@@ -1,10 +1,8 @@
-# Dev Launchers (https://devlaunchers.com)
+# Dev Launchers (https://devlaunchers.org)
 
 ## We Build People (and software)
 
-[![](https://dev-launchers.github.io/platform__website/images/dev-launchers__site-screenshot.jpg)](https://devlaunchers.com/)
-
-The site is built with React.js/Next.js and many other wonderful libraries.
+This is the monorepo for all DevLaunchers internal products, we use React.js/Next.js and many other wonderful libraries.
 
 ---
 
@@ -16,9 +14,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 
 ## Contributing
 
-### Our Issues are organized into different Milestones
-
-_We're using GitHub's milestones to keep better track of our issues. These will change as we progress and move further along with our roadmap._
+Visit https://devlaunchers.org/projects to join one of our teams!
 
 ---
 
@@ -26,9 +22,9 @@ _We're using GitHub's milestones to keep better track of our issues. These will 
 
 1. Clone the repo
 
-2. Install: `npm install`
+2. Install: `yarn`
 
-3. Run dev version: `npm run dev`
+3. Run dev version: `yarn workspace @devlaunchers/platform_website dev`
 
 ---
 
@@ -37,7 +33,9 @@ _We're using GitHub's milestones to keep better track of our issues. These will 
 We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
 to format the commit messages.
 
-Once you are ready to create a new release, create a PR to merge main branch to release branch.
+We've created a command to guide you create conventional commit message all you need to do is run `yarn commit`
+
+Once you are ready to create a new release, create a PR to merge master branch to release branch.
 
 .
 

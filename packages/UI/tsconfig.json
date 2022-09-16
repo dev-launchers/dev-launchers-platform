@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "noEmit": false,
+    "composite": false,
+    "incremental": true,
+    "paths": {
+      "@devlaunchers/core-lib/*": ["../../../packages/core-lib/src/*"],
+      "@devlaunchers/core-lib": ["../../../packages/core-lib/src/index"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/.*/", "dist"]
+}

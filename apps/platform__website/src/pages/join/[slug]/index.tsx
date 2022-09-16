@@ -1,0 +1,1 @@
+export { default, getStaticPaths, getStaticProps } from "@devlaunchers/dev-recruiters/src/pages/[slug]/index";
