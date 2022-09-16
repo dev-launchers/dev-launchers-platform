@@ -21,9 +21,16 @@ import {
 interface Props {
   project: Project;
   opportunites: Opportunity[];
+  maxCommitment: number;
+  minCommitment: number;
 }
 
-export default function ProjectDetails({ project, opportunites }: Props) {
+export default function ProjectDetails({
+  project,
+  opportunites,
+  maxCommitment,
+  minCommitment,
+}: Props) {
   const [expanded, setExpanded] = useState<string[]>([]);
 
   const IsExpanded = (id: string) => {
@@ -41,7 +48,7 @@ export default function ProjectDetails({ project, opportunites }: Props) {
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
-        <Link href={"/"} passHref>
+        <Link href={"/join"} passHref>
           <BackButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +74,8 @@ export default function ProjectDetails({ project, opportunites }: Props) {
           isPlatform={project.isPlatform}
           published_at={project.published_at}
           type="Product"
-          maxCommitmentHours={8}
-          minCommitmentHours={2}
+          maxCommitmentHours={maxCommitment}
+          minCommitmentHours={minCommitment}
           interests={project.interests}
           team={project.team}
         />

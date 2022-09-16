@@ -13,6 +13,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
       new URLSearchParams("_publicationState=live")
     );
     projects = result.filter((p: Project) => p.opportunities.length > 0);
+    projects.map((project) => {
+      const commitments = project.opportunities.map(opp => opp.commitmentHoursPerWeek)
+      // console.log(commitments);
+      const maxCommitment = Math.max(...commitments)
+      const minCommitment = Math.min(...commitments)
+      project.commitmentLevel = `${minCommitment} - ${maxCommitment}`
+      return project
+    })    
   } catch (error) {
     console.error("An error occurred while fetching Projects", error);
   }

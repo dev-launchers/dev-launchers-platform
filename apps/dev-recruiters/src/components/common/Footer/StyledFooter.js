@@ -20,16 +20,11 @@ export const Wrapper = styled.div`
   position: relative;
   background-color: #1c1c1c;
   color: #d9d9d9;
-  width: 100%;
-  height: 600px;
-  min-height: 500px;
-
+  padding: 2rem 0 1rem 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
-
-  z-index: 3;
+  gap: 2rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
@@ -50,31 +45,17 @@ export const FooterLogo = styled.img.attrs(() => ({
 `;
 
 export const FooterNav = styled.div`
-  min-width: 450px;
-  width: 50%;
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  width: 35%;
   justify-content: space-around;
-  align-items: center;
-  margin-top: -50px;
-  @media (orientation: portrait) {
-    min-width: 200px;
-    width: 90%;
-  }
+  row-gap: 1rem;
+  text-align: center;
 `;
 export const SocialMediaContainer = styled.div`
-  margin-top: -3%;
-  margin-bottom: -1.5%;
-  min-width: 10rem;
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 5rem;
-  @media (orientation: portrait) {
-    width: 100%;
-  }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 `;
 
 export const SocialMediaLink = styled.a.attrs(({ Type }) => {

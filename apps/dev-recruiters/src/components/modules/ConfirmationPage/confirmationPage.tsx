@@ -8,11 +8,9 @@ import {
 } from "./styledConfirmationPage";
 
 import Link from "next/link";
-import { useTheme } from "styled-components";
 export default function ConfirmationPage() {
-  
   return (
-    <Wrapper theme={useTheme()}>
+    <Wrapper>
       <Header>Apply with Dev Launchers!</Header>
       <MessageWrapper>
         <Message>Thank you for applying to Dev Launchers!</Message>
@@ -22,7 +20,7 @@ export default function ConfirmationPage() {
           review. After the product owner reviews your application they will
           reach out through the email address you have provided.
         </Message>
-        <Link href="/" passHref>
+        <Link href="/join" passHref>
           <Button as="a">Return to Recruiting Main Page</Button>
         </Link>
       </MessageWrapper>

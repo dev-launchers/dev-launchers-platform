@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.OuterSpace};
-  padding: 1rem;
+  background-color: ${({ theme }) => theme.colors.OuterSpace};
+  padding: 6rem;
+  @media (max-width: 1536px) {
+    padding: 2rem;
+  }
 `;
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.Argent};
@@ -106,25 +109,25 @@ export const CardButton = styled.button`
 `;
 
 export const BackButton = styled.a`
-font-family: ${({ theme }) => theme?.fonts?.normal};
-font-size: 1rem;
-padding: 5px 12px;
-display: inline-flex;
-align-items: center;
-border:none;
-background: ${({ theme }) => theme.colors.CoolGrey};
-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-color: ${({ theme }) => theme?.colors?.White};
-
-&:hover{
-  text-decoration: none;
+  font-family: ${({ theme }) => theme?.fonts?.normal};
+  font-size: 1rem;
+  padding: 5px 12px;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: ${({ theme }) => theme?.colors?.CoolGrey};
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   color: ${({ theme }) => theme?.colors?.White};
-}
 
-& svg{
-  margin-right: .5rem;
-  height: 20px;
-  width: 20px;
-}
+  &:hover {
+    text-decoration: none;
+    color: ${({ theme }) => theme?.colors?.White};
+  }
+
+  & svg {
+    margin-right: 0.5rem;
+    height: 20px;
+    width: 20px;
+  }
 `;

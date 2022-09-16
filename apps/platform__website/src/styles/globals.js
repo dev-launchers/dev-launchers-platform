@@ -76,6 +76,11 @@ h6 {
   margin-bottom: 1rem;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 h1 {
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
   line-height: 1em;
@@ -238,18 +243,18 @@ li {
 @media (orientation: portrait) {
   html {
     /* Scale all font down */
-    font-size: 75%;
+    /* font-size: 75%; */
   }
 
   .App {
   }
 
   h1 {
-    font-size: 1.7rem;
+    /* font-size: 1.7rem; */
   }
 
   h2 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 
   .collection--small-cards > .entry {
