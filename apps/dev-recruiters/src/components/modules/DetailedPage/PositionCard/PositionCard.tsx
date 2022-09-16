@@ -172,7 +172,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               {`${isExpanded ? "Collapse Description" : "Expand Description"}`}
             </Button>
             <Link
-              href={`/${projectSlug}/apply?position=${position.title}`}
+              href={`${projectSlug}/apply?position=${position.title}`}
               passHref
             >
               <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>

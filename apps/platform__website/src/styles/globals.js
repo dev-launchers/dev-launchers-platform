@@ -238,18 +238,18 @@ li {
 @media (orientation: portrait) {
   html {
     /* Scale all font down */
-    font-size: 75%;
+    /* font-size: 75%; */
   }
 
   .App {
   }
 
   h1 {
-    font-size: 1.7rem;
+    /* font-size: 1.7rem; */
   }
 
   h2 {
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
   }
 
   .collection--small-cards > .entry {

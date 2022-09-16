@@ -1,8 +1,8 @@
-import { Project } from "@devlaunchers/models/project";
-import { Theme } from "../../../../styles/theme";
-import Link from "next/link";
-import { Id } from "react-toastify";
-import { useTheme } from "styled-components";
+import { Project } from '@devlaunchers/models/project';
+import { Theme } from '../../../../styles/theme';
+import Link from 'next/link';
+import { Id } from 'react-toastify';
+import { useTheme } from 'styled-components';
 
 import {
   Container,
@@ -17,7 +17,7 @@ import {
   CategoryContainer,
   ButtonsContainer,
   CategoriesContainer,
-} from "./StyledShortCard";
+} from './StyledShortCard';
 
 const ShortCard = ({
   id,
@@ -29,13 +29,13 @@ const ShortCard = ({
   slug,
 }: Pick<
   Project,
-  | "id"
-  | "title"
-  | "isPlatform"
-  | "commitmentLevel"
-  | "opportunities"
-  | "catchPhrase"
-  | "slug"
+  | 'id'
+  | 'title'
+  | 'isPlatform'
+  | 'commitmentLevel'
+  | 'opportunities'
+  | 'catchPhrase'
+  | 'slug'
 >) => {
   const theme = useTheme() as Theme;
   const opp =
@@ -45,8 +45,10 @@ const ShortCard = ({
       <Container key={id}>
         <CardHeader>
           <Title>{title}</Title>
-          <Content style={{ color: theme?.colors?.LightGray, fontSize: "1rem" }}>
-            {isPlatform ? "Platform" : "Independent"} Product
+          <Content
+            style={{ color: theme?.colors?.LightGray, fontSize: '1rem' }}
+          >
+            {isPlatform ? 'Platform' : 'Independent'} Product
           </Content>
           <Description>{catchPhrase}</Description>
         </CardHeader>
@@ -68,7 +70,12 @@ const ShortCard = ({
             </CategoryContainer>
           </CategoriesContainer>
           <ButtonsContainer>
-            <Link href={slug} passHref>
+            <Link
+              href={{
+                pathname: `join/${slug}`
+              }}
+              passHref
+            >
               <Input>Project Details</Input>
             </Link>
           </ButtonsContainer>

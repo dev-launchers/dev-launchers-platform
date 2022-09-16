@@ -41,7 +41,7 @@ export default function ProjectDetails({ project, opportunites }: Props) {
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
-        <Link href={"/"} passHref>
+        <Link href={"/join"} passHref>
           <BackButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"
