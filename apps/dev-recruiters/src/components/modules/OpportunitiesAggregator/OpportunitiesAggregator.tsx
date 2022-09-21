@@ -28,8 +28,8 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
     dots: true,
     arrows: true,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: projects.length > 1 ? projects.length - 1 : projects.length,
+    slidesToScroll: 1,
     autoplay: false,
     responsive: [
       {
