@@ -2344,6 +2344,7 @@ __metadata:
     react-scripts: 5.0.1
     rimraf: 3.0.2
     shell-quote: 1.7.3
+    storybook-addon-designs: alpha
     storybook-addon-next-router: ^4.0.0
     storybook-react-context: ^0.6.0
     styled-components: ^5.2.1
@@ -2693,6 +2694,27 @@ __metadata:
     minimatch: ^3.1.2
     strip-json-comments: ^3.1.1
   checksum: a1e734ad31a8b5328dce9f479f185fd4fc83dd7f06c538e1fa457fd8226b89602a55cc6458cd52b29573b01cdfaf42331be8cfc1fec732570086b591f4ed6515
+  languageName: node
+  linkType: hard
+
+"@figspec/components@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "@figspec/components@npm:1.0.1"
+  dependencies:
+    lit: ^2.1.3
+  checksum: db33333ad2c3925cc8264e24b4a7b7d0e3a477eaaebbff9033f78c3e2f3273e6c7dbdfb453ee16af6d1ab21d49c2c704882aabcb1a693d2cf627b1fa2494849b
+  languageName: node
+  linkType: hard
+
+"@figspec/react@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "@figspec/react@npm:1.0.2"
+  dependencies:
+    "@figspec/components": ^1.0.0
+    "@lit-labs/react": ^1.0.2
+  peerDependencies:
+    react: ^16.14.0 || ^17.0.0 || ^18.0.0
+  checksum: b40ec22c1d465d85f28bbcd916ad1c66603555270401f8162b2c385252b40059c5bb15cc9081962521790decf910072240477a83c57ecb2d4580cf7e678e551e
   languageName: node
   linkType: hard
 
@@ -3140,6 +3162,20 @@ __metadata:
   version: 2.0.4
   resolution: "@leichtgewicht/ip-codec@npm:2.0.4"
   checksum: 468de1f04d33de6d300892683d7c8aecbf96d1e2c5fe084f95f816e50a054d45b7c1ebfb141a1447d844b86a948733f6eebd92234da8581c84a1ad4de2946a2d
+  languageName: node
+  linkType: hard
+
+"@lit-labs/react@npm:^1.0.2":
+  version: 1.0.8
+  resolution: "@lit-labs/react@npm:1.0.8"
+  checksum: 249f6d385c1f2b3e69941fc267f4928321334ea8e0e6ffda1e2a6ab3bad07b780c7cc2b19e7c9f36ae35376cba5ffa6162ccd92e9bea67411b6f59864924e9c0
+  languageName: node
+  linkType: hard
+
+"@lit/reactive-element@npm:^1.3.0, @lit/reactive-element@npm:^1.4.0":
+  version: 1.4.1
+  resolution: "@lit/reactive-element@npm:1.4.1"
+  checksum: 27cf706217e9148e140b467185fb813165b2e2aad732fc578c26e566115fa6de73b85bdcd34137d839e004b76d7ae508940abcbd661059b69bc07d7fb6dcb754
   languageName: node
   linkType: hard
 
@@ -17999,6 +18035,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lit-element@npm:^3.2.0":
+  version: 3.2.2
+  resolution: "lit-element@npm:3.2.2"
+  dependencies:
+    "@lit/reactive-element": ^1.3.0
+    lit-html: ^2.2.0
+  checksum: e1df57c02ad5ae4c42b49a5066b3b623bccf7fa6610bbc3f65bc22cbbe1546ecd6a7f717b1f01863929262f416c4b8b7a39ff166114215f93cc22f4e5b3825c3
+  languageName: node
+  linkType: hard
+
+"lit-html@npm:^2.2.0, lit-html@npm:^2.3.0":
+  version: 2.3.1
+  resolution: "lit-html@npm:2.3.1"
+  dependencies:
+    "@types/trusted-types": ^2.0.2
+  checksum: 6177f0854001b7e464a994adb6339a5ede4977c189587e49186b8bb10e49feaa57fe08ad14d13c06c2bce2a80671e1de3f08d8f2bdb25b2f265b21e2dd091c5b
+  languageName: node
+  linkType: hard
+
+"lit@npm:^2.1.3":
+  version: 2.3.1
+  resolution: "lit@npm:2.3.1"
+  dependencies:
+    "@lit/reactive-element": ^1.4.0
+    lit-element: ^3.2.0
+    lit-html: ^2.3.0
+  checksum: 0af92e606ec35fc1931ef4a6fa6aaa9c186e6329cefcba8feb14507187653ae94e0d0cf554530d969c411ae7b9256b4e5c5d0bf373caf02f2147047aeeac946a
+  languageName: node
+  linkType: hard
+
 "load-json-file@npm:^1.0.0":
   version: 1.1.0
   resolution: "load-json-file@npm:1.1.0"
@@ -25704,6 +25770,28 @@ __metadata:
   version: 2.14.2
   resolution: "store2@npm:2.14.2"
   checksum: 6f270fc5bab99b63f45fcc7bd8b99c2714b4adf880f557ed7ffb5ed3987131251165bccde425a00928aaf044870aee79ddeef548576d093c68703ed2edec45d7
+  languageName: node
+  linkType: hard
+
+"storybook-addon-designs@npm:alpha":
+  version: 7.0.0-alpha.2
+  resolution: "storybook-addon-designs@npm:7.0.0-alpha.2"
+  dependencies:
+    "@figspec/react": ^1.0.0
+  peerDependencies:
+    "@storybook/addon-docs": ^6.4.0
+    "@storybook/addons": ^6.4.0
+    "@storybook/api": ^6.4.0
+    "@storybook/components": ^6.4.0
+    "@storybook/theming": ^6.4.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 010cc3d8b14e4ba281218ad1398a5c29878e053e7470d9bc6a4b6bbfc24ea6769e8a4c168a556965cd89d324106084fc30807ad915d563f7b17dc645797cff2f
   languageName: node
   linkType: hard
 

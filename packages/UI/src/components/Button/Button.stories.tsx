@@ -14,6 +14,13 @@ export const WithShortText: ComponentStory<typeof Button> = (args) => (
   </Button>
 );
 
+WithShortText.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/Dev-Launchers-Style-Guide?node-id=227%3A2044",
+  },
+};
+
 WithShortText.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
   canvas.queryByText('Button');

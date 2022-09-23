@@ -82,6 +82,7 @@
     "prettier": "^2.7.1",
     "rimraf": "3.0.2",
     "shell-quote": "1.7.3",
+    "storybook-addon-designs": "alpha",
     "ts-jest": "28.0.7",
     "typescript": "^4.7.4"
   }
