@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: strapi-config
+  namespace: strapiv4-staging
+data:
+  url: "https://apiv4-staging.devlaunchers.org"
+  frontend_url: "https://staging.devlaunchers.org"
+  node_env: "staging"
+  redirect_url: "https://apiv4-staging.devlaunchers.org/auth/discord/redirect"
+  domain: "devlaunchers.org"
