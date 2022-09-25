@@ -98,6 +98,33 @@
       "relation": "oneToMany",
       "target": "api::time-capsule.time-capsule",
       "mappedBy": "user"
+    },
+    "discordId": {
+      "type": "string"
+    },
+    "googleId": {
+      "type": "string"
+    },
+    "discordUsername": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "uid"
+    },
+    "birthday": {
+      "type": "date"
+    },
+    "country": {
+      "type": "string"
+    },
+    "zipCode": {
+      "type": "integer"
+    },
+    "hasAcceptedTermsOfService": {
+      "type": "boolean"
+    },
+    "hasSubscribedEmails": {
+      "type": "boolean"
     }
   }
 }
