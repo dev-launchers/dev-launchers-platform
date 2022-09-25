@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import AccountDropdown from "./AccountDropdown";
+import React from 'react';
+import Link from 'next/link';
+import AccountDropdown from './AccountDropdown';
 
 import {
   HeaderBlock,
@@ -11,10 +11,10 @@ import {
   LogoWords,
   HeaderNav,
   NavEntry,
-} from "./StyledHeader";
+} from './StyledHeader';
 
-import { useUserDataContext } from "../../../context/UserDataContext";
-import HamburgerMenu from "../HamburgerMenu";
+import { useUserDataContext } from '../../../context/UserDataContext';
+import HamburgerMenu from '../HamburgerMenu';
 
 export default function Header() {
   const { userData } = useUserDataContext();

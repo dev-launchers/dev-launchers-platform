@@ -1,12 +1,12 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { slide as SlideHamburgerMenu } from "react-burger-menu";
-import style from "./HamburgerMenu.module.css";
-import logoMonogramImage from "../../../images/logo-monogram.png?webp";
-import Logout from "../../../utils/Logout";
-import { env } from "../../../utils/EnvironmentVariables";
-import { useUserDataContext } from "../../../context/UserDataContext";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { slide as SlideHamburgerMenu } from 'react-burger-menu';
+import style from './HamburgerMenu.module.css';
+import logoMonogramImage from '../../../images/logo-monogram.png?webp';
+import Logout from '../../../utils/Logout';
+import { env } from '../../../utils/EnvironmentVariables';
+import { useUserDataContext } from '../../../context/UserDataContext';
 
 function HamburgerMenu() {
   const { userData } = useUserDataContext();
@@ -36,19 +36,19 @@ function HamburgerMenu() {
     >
       <div
         style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#1c1c1c",
-          color: "#d9d9d9",
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
+          position: 'relative',
+          width: '100%',
+          height: '100%',
+          backgroundColor: '#1c1c1c',
+          color: '#d9d9d9',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
         <div className={style.Logo} onClick={handleNavClick}>
           <div className={style.LogoWrapper}>
-            <Link href={"/"} passHref>
+            <Link href={'/'} passHref>
               <a className="nav-link">
                 <div className={style.LogoImageHolder}>
                   <Image
@@ -65,12 +65,12 @@ function HamburgerMenu() {
         </div>
         <div>
           <div className={style.HeaderNav} onClick={handleNavClick}>
-            <Link href={"/create"} passHref>
+            <Link href={'/create'} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>CREATE</div>
               </a>
             </Link>
-            <Link href={"/learn"} passHref>
+            <Link href={'/learn'} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>LEARN</div>
               </a>
@@ -79,7 +79,7 @@ function HamburgerMenu() {
             <div>
               {userData?.id ? (
                 <>
-                  <Link href={"/users/me"} passHref>
+                  <Link href={'/users/me'} passHref>
                     <a className="nav-link">
                       <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
                     </a>
@@ -100,17 +100,17 @@ function HamburgerMenu() {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             { */}
-            <Link href={"/earn"} passHref>
+            <Link href={'/earn'} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>EARN</div>
               </a>
             </Link>
-            <Link href={"/support-us"} passHref>
+            <Link href={'/support-us'} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>SUPPORT US</div>
               </a>
             </Link>
-            <Link href={"/projects"} passHref>
+            <Link href={'/join'} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>JOIN</div>
               </a>
