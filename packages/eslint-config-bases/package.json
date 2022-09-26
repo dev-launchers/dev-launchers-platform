@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
-  "homepage": "https://github.com/dev-launchers/monorepo",
+  "homepage": "https://github.com/dev-launchers/dev-launchers-platform",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dev-launchers/monorepo",
+    "url": "https://github.com/dev-launchers/dev-launchers-platform",
     "directory": "packages/eslint-config-bases"
   },
   "author": {

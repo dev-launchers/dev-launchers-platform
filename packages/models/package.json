@@ -1,7 +1,7 @@
 {
   "name": "@devlaunchers/models",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "index.d.js",
   "license": "MIT",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",

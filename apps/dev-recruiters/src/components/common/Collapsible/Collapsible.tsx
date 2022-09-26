@@ -1,4 +1,4 @@
-import { Theme } from "../../../styles/theme";
+import { Theme } from "@styles/theme";
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Button, Container, Content } from "./StyledCollapsible";
@@ -19,7 +19,7 @@ export default function Collapsible({
   bgContent,
 }: Props) {
   const [collapsed, setCollapsed] = useState(true);
-  const ref = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const ref = useRef<HTMLDivElement>();
   const [elemHeight, setElemHeight] = useState(0);
 
   useEffect(() => {

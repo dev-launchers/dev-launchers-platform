@@ -54,7 +54,7 @@ export default function Header() {
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href="/projects">
+        <Link href="/join">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>

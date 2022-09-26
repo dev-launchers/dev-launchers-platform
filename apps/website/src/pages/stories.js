@@ -1,9 +1,5 @@
-import React from "react";
-
-import Head from "next/head";
-import Header from "../components/common/Header";
-import Stories from "../components/modules/Stories/Stories";
-import Footer from "../components/common/Footer";
+import Head from 'next/head';
+import Stories from '../components/modules/Stories/Stories';
 
 export default function StoriesRoute() {
   return (
@@ -12,9 +8,7 @@ export default function StoriesRoute() {
         <title>Stories</title>
       </Head>
       <div>
-        <Header />
         <Stories />
-        <Footer />
       </div>
     </>
   );

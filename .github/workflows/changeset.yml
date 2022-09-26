@@ -7,7 +7,7 @@ on:
 
 jobs:
   release:
-    if: github.repository == 'dev-launchers/monorepo'
+    if: github.repository == 'dev-launchers/dev-launchers-platform'
     name: Release and changelog
     runs-on: ubuntu-latest
     steps:

@@ -1,4 +1,4 @@
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 
 export const Header = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.large};
@@ -6,14 +6,14 @@ export const Header = styled.h1`
   font-family: ${({ theme }) => theme.fonts.headline};
   border-bottom: none;
 `;
-useTheme();
+
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: ${({ theme }) => useTheme().colors.OuterSpace};
+  background-color: ${({ theme }) => theme.colors.OuterSpace};
 `;
 export const MessageWrapper = styled.div`
   display: flex;

@@ -1,9 +1,5 @@
-import React from "react";
-
-import Head from "next/head";
-import Header from "../components/common/Header";
-import SocialMedia from "../components/modules/SocialMedia/SocialMedia";
-import Footer from "../components/common/Footer";
+import Head from 'next/head';
+import SocialMedia from '../components/modules/SocialMedia/SocialMedia';
 
 export default function SocialMediaRoute() {
   return (
@@ -12,9 +8,7 @@ export default function SocialMediaRoute() {
         <title>Check us out</title>
       </Head>
       <div>
-        <Header />
         <SocialMedia />
-        <Footer />
       </div>
     </>
   );

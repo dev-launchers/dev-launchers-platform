@@ -8,6 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
+// import Footer from '@devlaunchers/components/Footer';
+// import Header from '@devlaunchers/components/components/Header';
+
+
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter

@@ -1,28 +1,29 @@
-import * as React from "react";
-import Link from "next/link";
-import AccountDropdown from "./AccountDropdown";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import Link from 'next/link';
+import HamburgerMenu from '../HamburgerMenu';
+import AccountDropdown from './AccountDropdown';
 
 import {
   HeaderBlock,
-  Logo,
-  LogoWrapper,
-  LogoImageHolder,
-  LogoImage,
-  LogoWords,
   HeaderNav,
-  NavEntry,
-} from "./StyledHeader";
+  Logo,
+  LogoImage,
+  LogoImageHolder,
+  LogoWords,
+  LogoWrapper,
+  // eslint-disable-next-line prettier/prettier
+  NavEntry
+} from './StyledHeader';
 
-import HamburgerMenu from "../HamburgerMenu";
-import { User } from "../../models/common";
+export default function Header() {
+  const { userData } = useUserDataContext();
 
-
-const Header: React.FC<{userData: User}> = ({ userData }) => {
   return (
     <HeaderBlock>
       <Logo>
         <LogoWrapper>
-          <Link href="../" replace>
+          <Link href="/">
             <a>
               <LogoImageHolder>
                 <LogoImage />
@@ -33,12 +34,12 @@ const Header: React.FC<{userData: User}> = ({ userData }) => {
         </LogoWrapper>
       </Logo>
       <HeaderNav>
-        <Link href="../create" replace>
+        <Link href="/create">
           <a>
             <NavEntry>CREATE</NavEntry>
           </a>
         </Link>
-        <Link href="../learn" replace>
+        <Link href="/learn">
           <a>
             <NavEntry>LEARN</NavEntry>
           </a>
@@ -48,12 +49,12 @@ const Header: React.FC<{userData: User}> = ({ userData }) => {
             <NavEntry>PLAY</NavEntry>
           </Link>
           { */}
-        <Link href="../support-us" replace>
+        <Link href="/support-us">
           <a>
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href="/">
+        <Link href="/join">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>
@@ -61,9 +62,7 @@ const Header: React.FC<{userData: User}> = ({ userData }) => {
       </HeaderNav>
       <div />
       <AccountDropdown userData={userData} />
-      <HamburgerMenu userData={userData} />
+      <HamburgerMenu />
     </HeaderBlock>
   );
-};
-
-export default Header;
+}

@@ -2416,6 +2416,8 @@ __metadata:
   dependencies:
     "@babel/core": ^7.18.9
     "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/models": "workspace:^"
+    "@devlaunchers/utility": "workspace:^"
     "@types/lodash": ^4.14.182
     "@types/react": ^17.0.0
     "@types/react-burger-menu": ^2.8.3
@@ -2601,7 +2603,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/utility@workspace:packages/utility":
+"@devlaunchers/utility@workspace:^, @devlaunchers/utility@workspace:packages/utility":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/utility@workspace:packages/utility"
   dependencies:

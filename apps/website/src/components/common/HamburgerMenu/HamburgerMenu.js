@@ -110,7 +110,7 @@ function HamburgerMenu() {
                 <div className={style.navEntry}>SUPPORT US</div>
               </a>
             </Link>
-            <Link href={"/projects"} passHref>
+            <Link href={"/join"} passHref>
               <a className="nav-link">
                 <div className={style.navEntry}>JOIN</div>
               </a>

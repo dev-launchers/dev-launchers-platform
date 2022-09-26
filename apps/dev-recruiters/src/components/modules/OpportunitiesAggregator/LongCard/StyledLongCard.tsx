@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { CardButton } from "../../DetailedPage/styledProjectDetails";
+import styled from 'styled-components';
+import { CardButton } from '../../DetailedPage/styledProjectDetails';
 export const Container = styled.div`
   font-size: 1.2rem;
   border-bottom-right-radius: 40px;
   border-bottom-left-radius: 40px;
-  background-color: ${({ theme }) => theme?.colors?.White};
+  background-color: ${({ theme }) => theme.colors.White};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ export const HeaderCard = styled.div`
 
 export const FooterCard = styled.div`
   padding: 1rem 2.5rem;
-
+  
   /* & > li {
     margin-left: 3rem;
     list-style: disc !important;
@@ -55,8 +55,8 @@ export const Button = styled.button`
   padding: 0.5rem 1rem;
   border: 0;
   border-radius: 50px;
-  background-color: ${({ theme }) => theme?.colors?.DarkElectricBlue};
-  color: ${({ theme }) => theme?.colors?.White};
-  font-family: ${({ theme }) => theme?.fonts?.normal};
+  background-color: ${({ theme }) => theme.colors.DarkElectricBlue};
+  color: ${({ theme }) => theme.colors.White};
+  font-family: ${({ theme }) => theme.fonts.normal};
   font-size: 15px;
 `;

@@ -1,8 +1,8 @@
-import { Project } from "@devlaunchers/models/project";
-import { Theme } from "../../../../styles/theme";
-import Link from "next/link";
-import { Id } from "react-toastify";
-import { useTheme } from "styled-components";
+import { Project } from '@devlaunchers/models/project';
+import { Theme } from '../../../../styles/theme';
+import Link from 'next/link';
+import { Id } from 'react-toastify';
+import { useTheme } from 'styled-components';
 
 import {
   Container,
@@ -37,7 +37,7 @@ const ShortCard = ({
   | "catchPhrase"
   | "slug"
 >) => {
-  const theme = useTheme() as Theme;
+  const theme = useTheme();
   const opp =
     opportunities.length > 3 ? opportunities.slice(-3) : opportunities;
   return (
@@ -45,7 +45,7 @@ const ShortCard = ({
       <Container key={id}>
         <CardHeader>
           <Title>{title}</Title>
-          <Content style={{ color: theme?.colors?.LightGray, fontSize: "1rem" }}>
+          <Content style={{ color: theme.colors.LightGray, fontSize: "1rem" }}>
             {isPlatform ? "Platform" : "Independent"} Product
           </Content>
           <Description>{catchPhrase}</Description>
@@ -64,11 +64,11 @@ const ShortCard = ({
             </CategoryContainer>
             <CategoryContainer>
               <Category>Time Commitment</Category>
-              <Content>{commitmentLevel}</Content>
+              <Content>{commitmentLevel} hrs</Content>
             </CategoryContainer>
           </CategoriesContainer>
           <ButtonsContainer>
-            <Link href={slug} passHref>
+            <Link href={`join/${slug}`} passHref>
               <Input>Project Details</Input>
             </Link>
           </ButtonsContainer>

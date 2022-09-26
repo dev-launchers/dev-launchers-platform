@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import logoMonogramImage from "@images/logo-monogram.png?webp";
+import logoMonogramImage from '@devlaunchers/components/images/logo-monogram.png?webp';
+import styled from 'styled-components';
 
 function getRandomThemeColor(theme) {
   const colors = [
@@ -20,17 +20,22 @@ export const Wrapper = styled.div`
   position: relative;
   background-color: #1c1c1c;
   color: #d9d9d9;
-  padding: 2rem 0 1rem 0;
+  width: 100%;
+  height: 600px;
+  min-height: 500px;
+
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+
+  z-index: 3;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 export const FooterLogo = styled.img.attrs(() => ({
   src: logoMonogramImage,
-  alt: "logo",
+  alt: 'logo',
 }))`
   width: 7rem;
   margin-right: 10px;
@@ -45,38 +50,52 @@ export const FooterLogo = styled.img.attrs(() => ({
 `;
 
 export const FooterNav = styled.div`
+  min-width: 450px;
+  width: 50%;
   display: flex;
-  flex-wrap: wrap;
-  width: 35%;
+  flex-direction: row;
   justify-content: space-around;
-  row-gap: 1rem;
-  text-align: center;
+  align-items: center;
+  margin-top: -50px;
+  @media (orientation: portrait) {
+    min-width: 200px;
+    width: 90%;
+  }
 `;
 export const SocialMediaContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  margin-top: -3%;
+  margin-bottom: -1.5%;
+  min-width: 10rem;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 5rem;
+  @media (orientation: portrait) {
+    width: 100%;
+  }
 `;
 
 export const SocialMediaLink = styled.a.attrs(({ Type }) => {
   let href;
   let className;
   switch (Type) {
-    case "Instagram":
-      href = "https://www.instagram.com/devlaunchers/";
-      className = "fab fa-instagram";
+    case 'Instagram':
+      href = 'https://www.instagram.com/devlaunchers/';
+      className = 'fab fa-instagram';
       break;
-    case "Linkedin":
-      href = "https://www.linkedin.com/company/devlaunchers/";
-      className = "fab fa-linkedin";
+    case 'Linkedin':
+      href = 'https://www.linkedin.com/company/devlaunchers/';
+      className = 'fab fa-linkedin';
       break;
-    case "Twitch":
-      href = "https://www.twitch.com/devlaunchers/";
-      className = "fab fa-twitch";
+    case 'Twitch':
+      href = 'https://www.twitch.com/devlaunchers/';
+      className = 'fab fa-twitch';
       break;
-    case "Discord":
-      href = "https://www.discord.io/devlaunchers/";
-      className = "fab fa-discord";
+    case 'Discord':
+      href = 'https://www.discord.io/devlaunchers/';
+      className = 'fab fa-discord';
       break;
     default:
       href = null;

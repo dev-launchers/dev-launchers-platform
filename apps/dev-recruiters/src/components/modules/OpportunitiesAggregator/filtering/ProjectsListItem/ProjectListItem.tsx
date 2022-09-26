@@ -69,7 +69,7 @@ export default function ProjectListItem({ project }: Props) {
                 {expanded ? 'Collapse Positions' : 'More Available Positions'}
               </PositionsButton>
             )}
-            <Link href={`/${project.slug}`} passHref>
+            <Link href={`join/${project.slug}`} passHref>
               <DetailsButton>Project Details</DetailsButton>
             </Link>
           </ButtonsContainer>

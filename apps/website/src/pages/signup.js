@@ -1,9 +1,5 @@
-import React from "react";
-
-import Head from "next/head";
-import Header from "../components/common/Header";
-import SignUp from "../components/modules/SignUp/SignUp";
-import Footer from "../components/common/Footer";
+import Head from 'next/head';
+import SignUp from '../components/modules/SignUp/SignUp';
 
 export default function SignUpRoute() {
   return (
@@ -12,9 +8,7 @@ export default function SignUpRoute() {
         <title>Sign Up</title>
       </Head>
       <div>
-        <Header />
         <SignUp />
-        <Footer />
       </div>
     </>
   );

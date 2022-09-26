@@ -8,8 +8,6 @@ import GlobalStyle from "../styles/globals";
 import "react-toastify/dist/ReactToastify.css";
 import theme from "../styles/theme";
 
-import Footer from "../components/common/Footer";
-import Header from "../components/common/Header";
 import { UserDataProvider } from "../context/UserDataContext";
 
 const hashRedirect = (router) => {
@@ -50,10 +48,8 @@ function MyApp(props) {
               />
             </div>
             <div>
-              <Header />
               {/* <Component {...pageProps} /> */}
               {props.children}
-              <Footer />
             </div>
           </UserDataProvider>
         </div>

@@ -1,36 +1,31 @@
 import {
-  Wrapper,
-  Heading,
-  FeaturedProductsSection,
-  FeaturedProducts,
-  CardsContainer,
-  HeadingContainer,
+  FeaturedProducts, FeaturedProductsSection, Heading, HeadingContainer, Wrapper
 } from "../../modules/OpportunitiesAggregator/StyledOpportunitiesAggregator";
 
 import * as React from "react";
-import ShortCard from "./ShortCard";
-import FilteringComponent, {
-  FilteringComponentProps,
-} from "./filtering/FilteringComponent";
-import BoxContainer from "../../common/BoxContainer";
 import Slider from "react-slick";
-import { useTheme } from "styled-components";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import BoxContainer from "../../common/BoxContainer";
+import FilteringComponent, {
+  FilteringComponentProps
+} from "./filtering/FilteringComponent";
+import ShortCard from "./ShortCard";
 interface Props extends FilteringComponentProps {}
 
 const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
-  const theme = useTheme()
-  const customSlider = React.useRef<Slider | null>(null);
+  const customSlider = React.useRef<Slider>();
   const settings = {
     className: "cards",
     dots: true,
+    arrows: true,
     speed: 1000,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    autoplay: true,
-    autoplaySpeed: 4000,
+    slidesToShow: projects.length > 1 ? projects.length - 1 : projects.length,
+    slidesToScroll: 1,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 1535,
@@ -61,7 +56,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
             <h2>Featured Products</h2>
           </FeaturedProducts>
           <Slider
-            ref={(slider) => customSlider.current = slider}
+            ref={(slider) => (customSlider.current = slider)}
             {...settings}
           >
             {projects.map((project) => (

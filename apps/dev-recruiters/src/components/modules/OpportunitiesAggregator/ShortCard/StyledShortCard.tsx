@@ -12,13 +12,13 @@ export const Container = styled.div`
 `;
 
 export const CardHeader = styled.div`
-  font-family: ${({ theme }) => theme?.fonts?.normal};
+  font-family: ${({ theme }) => theme.fonts.normal};
   font-size: 27px;
   text-align: left;
   padding: 1rem 2.5625rem 1rem 2.5625rem;
   border-radius: 30px;
-  background-color: ${({ theme }) => theme?.colors?.Crayola};
-  color: ${({ theme }) => theme?.colors?.White};
+  background-color: ${({ theme }) => theme.colors.Crayola};
+  color: ${({ theme }) => theme.colors.White};
   /* font-weight: 400; */
 `;
 
@@ -28,7 +28,7 @@ export const CardBottom = styled.div`
   flex: 1;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.NEUTRAL_4};
-  color: ${({ theme }) => theme?.colors?.Black};
+  color: ${({ theme }) => theme.colors.Black};
   text-align: center;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
@@ -80,8 +80,8 @@ export const Input = styled.a`
   cursor: pointer;
   padding: 0.3rem 0.5rem;
   border-radius: 30px;
-  background-color: ${({ theme }) => theme?.colors?.DarkElectricBlue};
-  color: ${({ theme }) => theme?.colors?.White};
+  background-color: ${({ theme }) => theme.colors.DarkElectricBlue};
+  color: ${({ theme }) => theme.colors.White};
 `;
 
 export const ButtonsContainer = styled.div`

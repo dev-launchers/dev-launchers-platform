@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
-import { Opportunity } from "@devlaunchers/models/opportunity";
-import { Project } from "@devlaunchers/models/project";
-import { NewApplicant } from "@devlaunchers/models/newApplicant";
+import { Opportunity } from "@devlaunchers/models";
+import { Project } from "@devlaunchers/models";
+import { NewApplicant } from "@devlaunchers/models";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 

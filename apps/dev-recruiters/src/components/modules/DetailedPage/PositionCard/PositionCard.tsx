@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Opportunity } from "src/models/opportunity";
+import { Opportunity } from "@devlaunchers/models";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -60,7 +60,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
           </TitleSection>
           <PositionDetailsMobile>
             <p>{position.level}</p>
-            <p>{position.commitmentHoursPerWeek}</p>
+            <p>{position.commitmentHoursPerWeek} hrs/week</p>
           </PositionDetailsMobile>
           <ButtonsSection Mobile={true}>
             <Button
@@ -70,7 +70,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               {`${isExpanded ? "Collapse Details" : "Position details"}`}
             </Button>
             <Link
-              href={`/${projectSlug}/apply?position=${position.title}`}
+              href={`${projectSlug}/apply?position=${position.title}`}
               passHref
             >
               <Button as="a" color="DarkElectricBlue">
@@ -140,8 +140,8 @@ export default function PositionCard({ position, projectSlug }: Props) {
               <CommitmentSection>
                 <h4>Time Commitment</h4>
                 <div>
-                  <p>Min/Max</p>
-                  <p>{position.commitmentHoursPerWeek}</p>
+                  <p>Min</p>
+                  <p>{position.commitmentHoursPerWeek} hrs/week</p>
                 </div>
               </CommitmentSection>
               <ExpectationsSection Expanded={isExpanded}>
@@ -172,7 +172,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               {`${isExpanded ? "Collapse Description" : "Expand Description"}`}
             </Button>
             <Link
-              href={`/${projectSlug}/apply?position=${position.title}`}
+              href={`${projectSlug}/apply?position=${position.title}`}
               passHref
             >
               <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>

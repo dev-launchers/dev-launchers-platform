@@ -1,11 +1,8 @@
-import React from "react";
-import queryString from "query-string";
+import queryString from 'query-string';
 
-import { useRouter } from "next/router";
-import Head from "next/head";
-import Header from "../components/common/Header";
-import Create from "../components/modules/Create";
-import Footer from "../components/common/Footer";
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Create from '../components/modules/Create';
 
 export default function CreateRoute() {
   const router = useRouter();
@@ -18,9 +15,7 @@ export default function CreateRoute() {
         <title>Create</title>
       </Head>
       <div>
-        <Header />
         <Create templateId={params.template} />
-        <Footer />
       </div>
     </>
   );
