@@ -6,3 +6,5 @@
 
 // import { constructAppPage } from '../../utils/routingTools.js';
 // export default constructAppPage(IdeaApp, Page);
+
+export default <></>;
