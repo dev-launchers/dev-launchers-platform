@@ -5,6 +5,10 @@
       "path": "apps/app"
     },
     {
+      "name": "website",
+      "path": "apps/website"
+    },
+    {
       "name": "ideas",
       "path": "apps/ideas"
     },
@@ -55,6 +59,7 @@
     // https://github.com/Microsoft/vscode-eslint#mono-repository-setup
     "eslint.workingDirectories": [
       "./apps/app",
+      "./apps/website",
       "./apps/ideas",
       "./apps/site-projects",
       "./apps/dev-recruiters",
