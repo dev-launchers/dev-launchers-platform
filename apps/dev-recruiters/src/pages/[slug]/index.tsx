@@ -1,12 +1,12 @@
-import { GetStaticProps, GetStaticPaths } from "next";
-import Head from "next/head";
-import { Project } from "@devlaunchers/models/project";
-import ProjectDetails from "../../components/modules/DetailedPage";
 import { Opportunity } from "@devlaunchers/models/opportunity";
+import { Project } from "@devlaunchers/models/project";
+import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
+import ProjectDetails from "../../components/modules/DetailedPage";
 
 export const getProjectsSlugs = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}projects?_publicationState=live`
   );
 
   const result: Project[] = await res.json();
@@ -31,10 +31,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const projectsRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${params.slug}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}projects/${params.slug}`
   );
   const opportuntiesRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?projects.slug=${params.slug}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}opportunities?projects.slug=${params.slug}`
   );
 
   const project: Project = await projectsRes.json();
