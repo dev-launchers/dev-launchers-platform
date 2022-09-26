@@ -17,4 +17,4 @@ spec:
         - name: CI
           value: "true"
         - name: NEXTJS_APP_PORT
-          value: 3000
+          value: "3000"
