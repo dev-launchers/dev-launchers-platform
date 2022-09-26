@@ -2301,6 +2301,7 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/website": "*"
     "@devlaunchers/ideas": "*"
     "@devlaunchers/site-projects": "*"
     "@ramonak/react-progress-bar": ^5.0.2
