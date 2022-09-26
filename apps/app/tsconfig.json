@@ -13,6 +13,7 @@
       "@/pages/*": ["./pages/*"],
       "@/public/*": ["../public/*"],
       "@/themes/*": ["./themes/*"],
+      "@devlaunchers/website/*": ["../../../apps/website/src/pages/*"],
       "@devlaunchers/site-projects/*": ["../../../apps/site-projects/src/pages/*"],
       "@devlaunchers/dev-recruiters/*": ["../../../apps/dev-recruiters/src/pages/*"],
       "@devlaunchers/components/*": ["../../../packages/UI/src/*"],
