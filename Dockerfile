@@ -102,9 +102,12 @@ ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 
-COPY --from=builder /app/apps/platform__website/next.config.js \
-                    /app/apps/platform__website/package.json \
-                    ./apps/platform__website/
+COPY --from=builder /app/apps/app/next.config.js \
+                    /app/apps/app/package.json \
+                    ./apps/app/
+COPY --from=builder /app/apps/website/next.config.js \
+                    /app/apps/website/package.json \
+                    ./apps/website/
 COPY --from=builder /app/apps/ideas/next.config.js \
                     /app/apps/ideas/package.json \
                     ./apps/ideas/
@@ -114,8 +117,8 @@ COPY --from=builder /app/apps/site-projects/next.config.js \
 COPY --from=builder /app/apps/dev-recruiters/next.config.js \
                     /app/apps/dev-recruiters/package.json \
                     ./apps/dev-recruiters/
-COPY --from=builder /app/apps/platform__website/public ./apps/platform__website/public
-COPY --from=builder --chown=nextjs:nodejs /app/apps/platform__website/.next ./apps/platform__website/.next
+COPY --from=builder /app/apps/app/public ./apps/app/public
+COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.next ./apps/app/.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
@@ -126,4 +129,4 @@ EXPOSE ${NEXTJS_APP_PORT:-3000}
 ENV NEXT_TELEMETRY_DISABLED 1
 
 
-CMD ["./node_modules/.bin/next", "start", "apps/platform__website/", "-p", "${NEXTJS_APP_PORT:-3000}"]
+CMD ["./node_modules/.bin/next", "start", "apps/app/", "-p", "${NEXTJS_APP_PORT:-3000}"]
