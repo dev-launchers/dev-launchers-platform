@@ -83,7 +83,7 @@ export default function Sample() {
 <ins>**@devlaunchers/app app pages folder hierarchy**</ins>
 
 ```
-./apps/platform__website/src/pages
+./apps/app/src/pages
 ...
 ├── page-from-platform.js
 └── [Your preferred base-path]
@@ -92,7 +92,7 @@ export default function Sample() {
 ...
 ```
 
-7. Inside your new empty `./apps/platform__website/src/pages/[Your preferred base path]/sample.js` file add the three following lines (use the same exact name you provided in step 2)
+7. Inside your new empty `./apps/app/src/pages/[Your preferred base path]/sample.js` file add the three following lines (use the same exact name you provided in step 2)
 
 ```
 export { default } from "@devlaunchers/[name of app]/pages/sample"

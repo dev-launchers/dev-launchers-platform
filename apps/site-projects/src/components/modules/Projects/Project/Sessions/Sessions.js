@@ -1,20 +1,20 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { withTheme } from "styled-components";
-import { DateTime } from "luxon";
-import Section from "../Section";
-import PercentageBar from "./components/PercentageBar";
+import axios from 'axios';
+import { DateTime } from 'luxon';
+import React, { useState } from 'react';
+import { withTheme } from 'styled-components';
+import Section from '../Section';
+import PercentageBar from './components/PercentageBar';
 
-import { FlexBoxVerticalWrapper, Descript } from "./StyledSessions";
+import { Descript, FlexBoxVerticalWrapper } from './StyledSessions';
 
 /*
-https://github.com/dev-launchers/platform__website/blob/master/src/components/modules/UserProfile/WeeksGlance/WeeksGlance.js
+https://github.com/dev-launchers/app/blob/master/src/components/modules/UserProfile/WeeksGlance/WeeksGlance.js
 */
 
 // import { env } from "../../../../../utils/EnvironmentVariables";
 const Sessions = ({ calendarId }) => {
   const [events, setEvents] = useState([]);
-  const key = "AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI";
+  const key = 'AIzaSyCgXZRjXOwT6DilHJyjj5B3svz6cETj_MI';
   React.useEffect(() => {
     axios
       .get(
