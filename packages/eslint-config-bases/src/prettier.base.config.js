@@ -11,6 +11,6 @@ module.exports = {
   trailingComma: 'es5',
   bracketSameLine: false,
   useTabs: false,
-  endOfLine: 'lf',
+  endOfLine: 'auto',
   overrides: [],
 };

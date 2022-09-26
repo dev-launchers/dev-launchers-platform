@@ -2294,6 +2294,62 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@devlaunchers/app@workspace:apps/app":
+  version: 0.0.0-use.local
+  resolution: "@devlaunchers/app@workspace:apps/app"
+  dependencies:
+    "@cloudflare/wrangler": ^1.19.12
+    "@devlaunchers/dev-recruiters": "workspace:^"
+    "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/ideas": "*"
+    "@devlaunchers/site-projects": "*"
+    "@ramonak/react-progress-bar": ^5.0.2
+    "@types/luxon": 3.0.0
+    "@types/react": ^17.0.0
+    "@types/styled-components": 5.1.25
+    articles: ^0.2.2
+    autosave: ^1.0.3
+    axios: ^0.27.2
+    babel-plugin-styled-components: ^2.0.7
+    constate: ^3.3.2
+    eslint: ^8.21.0
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-config-next: ^12.2.3
+    eslint-config-prettier: ^8.5.0
+    husky: ^8.0.1
+    lint-staged: ^13.0.3
+    luxon: ^3.0.1
+    next: ^12.2.3
+    next-compose-plugins: ^2.2.1
+    next-optimized-images: ^3.0.0-canary.10
+    next-transpile-modules: ^9.0.0
+    pluralize: ^8.0.0
+    postcss: ^8.4.14
+    prettier: ^2.7.1
+    prismic-reactjs: ^1.3.4
+    query-string: 7.1.1
+    react: ^17.0.2
+    react-accessible-accordion: ^5.0.0
+    react-burger-menu: ^3.0.8
+    react-calendly: ^4.0.1
+    react-dom: ^17.0.2
+    react-form: 4.0.1
+    react-ga: 3.3.1
+    react-modal: ^3.15.1
+    react-share: latest
+    react-social-icons: latest
+    react-tabs: ^3.1.0
+    react-toastify: latest
+    regenerator-runtime: ^0.13.9
+    semantic-release: ^19.0.3
+    styled-components: 5.3.5
+    styled-normalize: ^8.0.7
+    tabletop: 1.6.3
+    typescript: ^4.7.4
+    wrangler: ^2.0.24
+  languageName: unknown
+  linkType: soft
+
 "@devlaunchers/components@workspace:packages/UI":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/components@workspace:packages/UI"
@@ -2487,62 +2543,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/platform_website@workspace:apps/platform__website":
-  version: 0.0.0-use.local
-  resolution: "@devlaunchers/platform_website@workspace:apps/platform__website"
-  dependencies:
-    "@cloudflare/wrangler": ^1.19.12
-    "@devlaunchers/dev-recruiters": "workspace:^"
-    "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
-    "@devlaunchers/site-projects": "*"
-    "@ramonak/react-progress-bar": ^5.0.2
-    "@types/luxon": 3.0.0
-    "@types/react": ^17.0.0
-    "@types/styled-components": 5.1.25
-    articles: ^0.2.2
-    autosave: ^1.0.3
-    axios: ^0.27.2
-    babel-plugin-styled-components: ^2.0.7
-    constate: ^3.3.2
-    eslint: ^8.21.0
-    eslint-config-airbnb-base: ^15.0.0
-    eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
-    husky: ^8.0.1
-    lint-staged: ^13.0.3
-    luxon: ^3.0.1
-    next: ^12.2.3
-    next-compose-plugins: ^2.2.1
-    next-optimized-images: ^3.0.0-canary.10
-    next-transpile-modules: ^9.0.0
-    pluralize: ^8.0.0
-    postcss: ^8.4.14
-    prettier: ^2.7.1
-    prismic-reactjs: ^1.3.4
-    query-string: 7.1.1
-    react: ^17.0.2
-    react-accessible-accordion: ^5.0.0
-    react-burger-menu: ^3.0.8
-    react-calendly: ^4.0.1
-    react-dom: ^17.0.2
-    react-form: 4.0.1
-    react-ga: 3.3.1
-    react-modal: ^3.15.1
-    react-share: latest
-    react-social-icons: latest
-    react-tabs: ^3.1.0
-    react-toastify: latest
-    regenerator-runtime: ^0.13.9
-    semantic-release: ^19.0.3
-    styled-components: 5.3.5
-    styled-normalize: ^8.0.7
-    tabletop: 1.6.3
-    typescript: ^4.7.4
-    wrangler: ^2.0.24
-  languageName: unknown
-  linkType: soft
-
 "@devlaunchers/site-projects@*, @devlaunchers/site-projects@workspace:apps/site-projects":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/site-projects@workspace:apps/site-projects"
@@ -2611,6 +2611,62 @@ __metadata:
     "@devlaunchers/models": "workspace:^"
     axios: ^0.27.2
     eslint: 8.21.0
+  languageName: unknown
+  linkType: soft
+
+"@devlaunchers/website@workspace:apps/website":
+  version: 0.0.0-use.local
+  resolution: "@devlaunchers/website@workspace:apps/website"
+  dependencies:
+    "@cloudflare/wrangler": ^1.19.12
+    "@devlaunchers/dev-recruiters": "workspace:^"
+    "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/ideas": "*"
+    "@devlaunchers/site-projects": "*"
+    "@ramonak/react-progress-bar": ^5.0.2
+    "@types/luxon": 3.0.0
+    "@types/react": ^17.0.0
+    "@types/styled-components": 5.1.25
+    articles: ^0.2.2
+    autosave: ^1.0.3
+    axios: ^0.27.2
+    babel-plugin-styled-components: ^2.0.7
+    constate: ^3.3.2
+    eslint: ^8.21.0
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-config-next: ^12.2.3
+    eslint-config-prettier: ^8.5.0
+    husky: ^8.0.1
+    lint-staged: ^13.0.3
+    luxon: ^3.0.1
+    next: ^12.2.3
+    next-compose-plugins: ^2.2.1
+    next-optimized-images: ^3.0.0-canary.10
+    next-transpile-modules: ^9.0.0
+    pluralize: ^8.0.0
+    postcss: ^8.4.14
+    prettier: ^2.7.1
+    prismic-reactjs: ^1.3.4
+    query-string: 7.1.1
+    react: ^17.0.2
+    react-accessible-accordion: ^5.0.0
+    react-burger-menu: ^3.0.8
+    react-calendly: ^4.0.1
+    react-dom: ^17.0.2
+    react-form: 4.0.1
+    react-ga: 3.3.1
+    react-modal: ^3.15.1
+    react-share: latest
+    react-social-icons: latest
+    react-tabs: ^3.1.0
+    react-toastify: latest
+    regenerator-runtime: ^0.13.9
+    semantic-release: ^19.0.3
+    styled-components: 5.3.5
+    styled-normalize: ^8.0.7
+    tabletop: 1.6.3
+    typescript: ^4.7.4
+    wrangler: ^2.0.24
   languageName: unknown
   linkType: soft
 
@@ -3315,182 +3371,192 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@miniflare/cache@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/cache@npm:2.6.0"
+"@miniflare/cache@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/cache@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
     http-cache-semantics: ^4.1.0
-    undici: 5.5.1
-  checksum: cedcbe8914ae6c14ad7b9e23de252871d983f6dded3fd2f060783ffc5cc39ff133e0454d1d7dc31995ad6771e2e5f920f48bd32bf5ad35c1d55be27c11c54717
+    undici: 5.9.1
+  checksum: f3a26a92bef51169950cf24f1be0a3e8e50c72dfb85cdf46c833da1fa6b43d6ae6e9f45031c6fd004f79948907941df4505c70b72794a02f851fba448e090355
   languageName: node
   linkType: hard
 
-"@miniflare/cli-parser@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/cli-parser@npm:2.6.0"
+"@miniflare/cli-parser@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/cli-parser@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
+    "@miniflare/shared": 2.8.2
     kleur: ^4.1.4
-  checksum: 76bd13416568984a33719ec1b4ea7636600a1c8fe6abd13f98b096b87dcbf9366d651c60afec134fff44bb4de9ca6530cdd08db297e3d8e81cc39e906774befa
+  checksum: 3dd649d460e082356c7bb7ab7cf8affb5ccd03225c0d2f11ea01e79bb691f66da91ae2fe827f982a650fe88fc8f593d3e6a36e377d9a72cf8b7d3b823c3b7a47
   languageName: node
   linkType: hard
 
-"@miniflare/core@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/core@npm:2.6.0"
+"@miniflare/core@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/core@npm:2.8.2"
   dependencies:
     "@iarna/toml": ^2.2.5
-    "@miniflare/shared": 2.6.0
-    "@miniflare/watcher": 2.6.0
+    "@miniflare/queues": 2.8.2
+    "@miniflare/shared": 2.8.2
+    "@miniflare/watcher": 2.8.2
     busboy: ^1.6.0
     dotenv: ^10.0.0
     kleur: ^4.1.4
     set-cookie-parser: ^2.4.8
-    undici: 5.5.1
+    undici: 5.9.1
     urlpattern-polyfill: ^4.0.3
-  checksum: 93897c681cfc0ad2c9f8a3b068deb4adba109a2b39528d694725c039e17fa004304fcaf9a09d2de0d3b1243098e001f49c55a522f2bf2aaa65530510df0c64fa
+  checksum: 2bd5de198486192e13af1eb3b07e4dd1796449a389c75928ecf0201295a08c54c7d75cce302d99f4912fe77a449e3ee4b724ad5863120837aa6a3517d4e0f42f
   languageName: node
   linkType: hard
 
-"@miniflare/durable-objects@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/durable-objects@npm:2.6.0"
+"@miniflare/durable-objects@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/durable-objects@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
-    "@miniflare/storage-memory": 2.6.0
-    undici: 5.5.1
-  checksum: 601dc4c0cdeb868d04f808607babbabf3ac80a09555ba7fc02dc690e4c1c360a22e33b7dc945dae3a695998e2bad4b7bb89b606594312d0c6cc864c181d39bfa
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
+    "@miniflare/storage-memory": 2.8.2
+    undici: 5.9.1
+  checksum: d563ce9dfa34f8fed449c13c8cd2e99d21cbc856854582881486bb40b3599ae6cdb6bb9fd7aad9c35434a2ae6472e81025c6ff1e632f4f66b346a8092b0a1712
   languageName: node
   linkType: hard
 
-"@miniflare/html-rewriter@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/html-rewriter@npm:2.6.0"
+"@miniflare/html-rewriter@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/html-rewriter@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
     html-rewriter-wasm: ^0.4.1
-    undici: 5.5.1
-  checksum: 813bfd5317827abc5cbb45033325ac1b2f747883ddd388f29294a50373edae534cf074eef230a3fcb69f5dd35bd65cafbd98a8084af9d9f4743f3687c587fefd
+    undici: 5.9.1
+  checksum: ede36c616f7240585c2008ca65596774a36995ee37ec29e2b05685bb1681f686504f7781fdf7edeea70d88f8218f795b9c78b54d5eda10743c677bc890757b6a
   languageName: node
   linkType: hard
 
-"@miniflare/http-server@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/http-server@npm:2.6.0"
+"@miniflare/http-server@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/http-server@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
-    "@miniflare/web-sockets": 2.6.0
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
+    "@miniflare/web-sockets": 2.8.2
     kleur: ^4.1.4
     selfsigned: ^2.0.0
-    undici: 5.5.1
+    undici: 5.9.1
     ws: ^8.2.2
     youch: ^2.2.2
-  checksum: 26fcc55a04d33c38537ce144c382ed63ea8228064978f981cd3f0ec5611d5ae1581906db37fff639a3012695f20fa6919c84ee38108630c8baf64ff2fee7501e
+  checksum: ec30d6ddca8908146828dcce2d7a684515f9de063cbdd075a2de201ea9b64de8118c5ae90bbf56521adba0c5cd6e76864aa19b9311c7a9771f10e4c3960ae349
   languageName: node
   linkType: hard
 
-"@miniflare/kv@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/kv@npm:2.6.0"
+"@miniflare/kv@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/kv@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-  checksum: 9814ab31e362b63bde08026387adfc9c962c9a602955f3cd3c2d6a3c1945c860d2187c02a6bf948fe424ddac08d3a6ef966631c00a3c9dc625cc29045febc2fb
+    "@miniflare/shared": 2.8.2
+  checksum: 4b1ff6215278cdbb3254908f7760aeb34a6a3f601918078d6e4761c1dcfec75b3d2171c68b60eca6f032fefd52afd966697fb642a8265014d0ed2bc8e13c4bd6
   languageName: node
   linkType: hard
 
-"@miniflare/r2@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/r2@npm:2.6.0"
+"@miniflare/queues@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/queues@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-    undici: 5.5.1
-  checksum: b119ad8325df94c5664766373fe9816f2b892d1cffb06e4dcde62d1971daa345751c9360e3203c99a1aeb7345c0c924c642df8a0266e4419a090b64ea0e5dcb7
+    "@miniflare/shared": 2.8.2
+  checksum: 3d307a8140698c8c6af3dbdbc63c199941d244cf34f65d3102bd1ebda908cc4ad9f27d0a75c6e03e85a057e570504ffa4b49ba3b4e627154f14bab14364ddbf0
   languageName: node
   linkType: hard
 
-"@miniflare/runner-vm@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/runner-vm@npm:2.6.0"
+"@miniflare/r2@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/r2@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-  checksum: ad504017fdcf2a0f01a7765d884a7b22d43fe234e882d355b3178c31d8e0559078d1ca0e9ca7915d6597db8e875456e885fda6710ddd2625fa2c0db7f8b71fd0
+    "@miniflare/shared": 2.8.2
+    undici: 5.9.1
+  checksum: c0a4eac975fd27ec0c91a6162dc88db372ec54f2a1a9e473c26ad5091c139f484c310373f5b56d54bf977d91b37d5eaf01bc0c86a4bce7c13bf744b84f2640ed
   languageName: node
   linkType: hard
 
-"@miniflare/scheduler@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/scheduler@npm:2.6.0"
+"@miniflare/runner-vm@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/runner-vm@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
+    "@miniflare/shared": 2.8.2
+  checksum: 6f18b015fe7597f8d97ce1ee7c31026364f207f243be56c9f30dc89ca54d6a746194b7a47bcf767089751922d37f75c8e03004bfca65c4737eb80404cc1ee121
+  languageName: node
+  linkType: hard
+
+"@miniflare/scheduler@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/scheduler@npm:2.8.2"
+  dependencies:
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
     cron-schedule: ^3.0.4
-  checksum: 284ca99e09260da331bedd03ea05dbfc7f16a2ce65e3ee6951fab9b877ce7720d70501f363ac5cd64f9147df9d5e629443177f1cbc9b3a57406ac173da26455c
+  checksum: ee63052a1cdeca9ecaed924598033785b9d43e44bbbcb74faf4b4a04455e96e8e42728bc6befa40af749d6150931299fe9eb83ee919bf19fb071a0e94386e5fd
   languageName: node
   linkType: hard
 
-"@miniflare/shared@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/shared@npm:2.6.0"
+"@miniflare/shared@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/shared@npm:2.8.2"
   dependencies:
-    ignore: ^5.1.8
     kleur: ^4.1.4
-  checksum: 2d19a24ee62570af17a8414a99dc270c4c76bcb5a6742d2b93a66898898d623a18220c54680b87274c5273ada1187d28a5527a4eaf25f96cb7b6d046daaa8ef5
+    picomatch: ^2.3.1
+  checksum: 7b85e9b184c6eb5baa7c2698ea7d11a83e8d7cb2044256afed29e8955473f79770434a3957628243d8ea5a42b6c59255364220a9d80c0ab188ae0a74f66d87e3
   languageName: node
   linkType: hard
 
-"@miniflare/sites@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/sites@npm:2.6.0"
+"@miniflare/sites@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/sites@npm:2.8.2"
   dependencies:
-    "@miniflare/kv": 2.6.0
-    "@miniflare/shared": 2.6.0
-    "@miniflare/storage-file": 2.6.0
-  checksum: 6decc9ac67c286da7314046c58e8e2dcf2835c5e5de5ac18f17abc17fc2066739b08604c571c4d1b8ebbf8d05b34c1c38ee5b58ab2249f5e81fc094b804a9909
+    "@miniflare/kv": 2.8.2
+    "@miniflare/shared": 2.8.2
+    "@miniflare/storage-file": 2.8.2
+  checksum: 172b17a1cb60312d0bbd0da4642c27aef6141c56ebb792f5be854ccdf4b2c25860c05176f8e081de3549267065c077282694ec6309196cfaf464f580d3a5b524
   languageName: node
   linkType: hard
 
-"@miniflare/storage-file@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/storage-file@npm:2.6.0"
+"@miniflare/storage-file@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/storage-file@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-    "@miniflare/storage-memory": 2.6.0
-  checksum: f125a0f3ee673da9e079b4d38b357aca8693389aab57534ba3a83bbb6595a345159b4a5bd09c3ad75d896c0767673f061c26dd934de8f0d69f00ccc31017eb52
+    "@miniflare/shared": 2.8.2
+    "@miniflare/storage-memory": 2.8.2
+  checksum: d7a49c1fe79b143cb8eb50b03db5375ca347b2798b9455ace39c3581aef8174dd9506311ba5e29f63d65973d0de81491b3316b4a60fb4ed67534502431774e4d
   languageName: node
   linkType: hard
 
-"@miniflare/storage-memory@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/storage-memory@npm:2.6.0"
+"@miniflare/storage-memory@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/storage-memory@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-  checksum: fd19c8bb800c459feabf77b57ed1d7ceac8ce6b2036bbffe0a3f3a9fed2a3524361cafa459aaae2334ce6fc1498a7749072cae0c81caa24fef2c0308454dcb26
+    "@miniflare/shared": 2.8.2
+  checksum: 9214b616204d4fc4e77d9e82b7d6f5b4f06aff95bba7c48231bf42aaf52e5487a426fbc45877629550570c9b9857d978ade4c95047613a5dbb2e45b7ebae075c
   languageName: node
   linkType: hard
 
-"@miniflare/watcher@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/watcher@npm:2.6.0"
+"@miniflare/watcher@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/watcher@npm:2.8.2"
   dependencies:
-    "@miniflare/shared": 2.6.0
-  checksum: ac0dbd88915512077557eb2ca7f17b4543965e682bc16edd9895a395484952e93e060d944b8180fd9e3726f58ff31f1e8de1bb7ab7c5392a6d665147ba8efff5
+    "@miniflare/shared": 2.8.2
+  checksum: 12b5a2e370c46d175207b57b8ce5f1a3da10d745be36f60e6423ff541fef4378c7c5ab96067a67880a9df5417c7b35855639efc219912b5995e5836482138394
   languageName: node
   linkType: hard
 
-"@miniflare/web-sockets@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@miniflare/web-sockets@npm:2.6.0"
+"@miniflare/web-sockets@npm:2.8.2":
+  version: 2.8.2
+  resolution: "@miniflare/web-sockets@npm:2.8.2"
   dependencies:
-    "@miniflare/core": 2.6.0
-    "@miniflare/shared": 2.6.0
-    undici: 5.5.1
+    "@miniflare/core": 2.8.2
+    "@miniflare/shared": 2.8.2
+    undici: 5.9.1
     ws: ^8.2.2
-  checksum: ef74a724627e71f68f7f3db62e5e21c011dea8485a65588ff679c04d165dd0196f46a207fa4639bc342c2cbcd7a2af8f4df6b4cd6b1c8c7787c309d92c80c7d0
+  checksum: 2e037f853c7462f12390dec0f37a28ad9812ef66d96e5ff569de841b60e2665b623d1b376d742d44f64dbc3a0feee1a7ffd477eb159a11ce30f4455fc124d578
   languageName: node
   linkType: hard
 
@@ -15485,7 +15551,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^5.1.8, ignore@npm:^5.2.0":
+"ignore@npm:^5.2.0":
   version: 5.2.0
   resolution: "ignore@npm:5.2.0"
   checksum: 6b1f926792d614f64c6c83da3a1f9c83f6196c2839aa41e1e32dd7b8d174cef2e329d75caabb62cb61ce9dc432f75e67d07d122a037312db7caa73166a1bdb77
@@ -19363,31 +19429,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"miniflare@npm:^2.6.0":
-  version: 2.6.0
-  resolution: "miniflare@npm:2.6.0"
+"miniflare@npm:^2.7.1":
+  version: 2.8.2
+  resolution: "miniflare@npm:2.8.2"
   dependencies:
-    "@miniflare/cache": 2.6.0
-    "@miniflare/cli-parser": 2.6.0
-    "@miniflare/core": 2.6.0
-    "@miniflare/durable-objects": 2.6.0
-    "@miniflare/html-rewriter": 2.6.0
-    "@miniflare/http-server": 2.6.0
-    "@miniflare/kv": 2.6.0
-    "@miniflare/r2": 2.6.0
-    "@miniflare/runner-vm": 2.6.0
-    "@miniflare/scheduler": 2.6.0
-    "@miniflare/shared": 2.6.0
-    "@miniflare/sites": 2.6.0
-    "@miniflare/storage-file": 2.6.0
-    "@miniflare/storage-memory": 2.6.0
-    "@miniflare/web-sockets": 2.6.0
+    "@miniflare/cache": 2.8.2
+    "@miniflare/cli-parser": 2.8.2
+    "@miniflare/core": 2.8.2
+    "@miniflare/durable-objects": 2.8.2
+    "@miniflare/html-rewriter": 2.8.2
+    "@miniflare/http-server": 2.8.2
+    "@miniflare/kv": 2.8.2
+    "@miniflare/queues": 2.8.2
+    "@miniflare/r2": 2.8.2
+    "@miniflare/runner-vm": 2.8.2
+    "@miniflare/scheduler": 2.8.2
+    "@miniflare/shared": 2.8.2
+    "@miniflare/sites": 2.8.2
+    "@miniflare/storage-file": 2.8.2
+    "@miniflare/storage-memory": 2.8.2
+    "@miniflare/web-sockets": 2.8.2
     kleur: ^4.1.4
     semiver: ^1.1.0
     source-map-support: ^0.5.20
-    undici: 5.5.1
+    undici: 5.9.1
   peerDependencies:
-    "@miniflare/storage-redis": 2.6.0
+    "@miniflare/storage-redis": 2.8.2
     cron-schedule: ^3.0.4
     ioredis: ^4.27.9
   peerDependenciesMeta:
@@ -19399,7 +19466,7 @@ __metadata:
       optional: true
   bin:
     miniflare: bootstrap.js
-  checksum: 81c2cd62efdc44471a7f60ce3bb94dc788f8d77a386ebdc7a0d7212daa19da2429aaf2df18a4a26c11e7aac7d84c0dd3b29852922bb5bbb49e8221af25b1dd03
+  checksum: e51b87cd2f9c1f0fde0c37796b4de43171b0e823921b1d7f2f3ab1a53d6989052c5b8ea2355e02ee7a9dcb0b07c921f93acb490c0d665a6a0832857d29d767d4
   languageName: node
   linkType: hard
 
@@ -24727,7 +24794,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selfsigned@npm:^2.0.0, selfsigned@npm:^2.0.1":
+"selfsigned@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "selfsigned@npm:2.1.1"
+  dependencies:
+    node-forge: ^1
+  checksum: aa9ce2150a54838978d5c0aee54d7ebe77649a32e4e690eb91775f71fdff773874a4fbafd0ac73d8ec3b702ff8a395c604df4f8e8868528f36fd6c15076fb43a
+  languageName: node
+  linkType: hard
+
+"selfsigned@npm:^2.0.1":
   version: 2.0.1
   resolution: "selfsigned@npm:2.0.1"
   dependencies:
@@ -27205,10 +27281,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:5.5.1":
-  version: 5.5.1
-  resolution: "undici@npm:5.5.1"
-  checksum: c041c9093df7ec683479a9555581206a7c7bebfc1ed6e8669920e55618461fc4ce08938e2fbf8ef7d692c2813c44392b5ed25c58396ee4a72ffd1f1f953712c9
+"undici@npm:5.9.1":
+  version: 5.9.1
+  resolution: "undici@npm:5.9.1"
+  checksum: 8acabbac8e18943ff822574f831d03d65e697e66ef486a679763f7778f37b28980caf7097ededf4017b58c099809e8efd8509a6688f60638360fb86ef47a59df
   languageName: node
   linkType: hard
 
@@ -28657,8 +28733,8 @@ __metadata:
   linkType: hard
 
 "wrangler@npm:^2.0.24":
-  version: 2.0.24
-  resolution: "wrangler@npm:2.0.24"
+  version: 2.0.29
+  resolution: "wrangler@npm:2.0.29"
   dependencies:
     "@cloudflare/kv-asset-handler": ^0.2.0
     "@esbuild-plugins/node-globals-polyfill": ^0.1.1
@@ -28667,7 +28743,7 @@ __metadata:
     chokidar: ^3.5.3
     esbuild: 0.14.51
     fsevents: ~2.3.2
-    miniflare: ^2.6.0
+    miniflare: ^2.7.1
     nanoid: ^3.3.3
     path-to-regexp: ^6.2.0
     selfsigned: ^2.0.1
@@ -28679,7 +28755,7 @@ __metadata:
   bin:
     wrangler: bin/wrangler.js
     wrangler2: bin/wrangler.js
-  checksum: 136409c159f0f2d54425b53c55c63dc0cd474c938df456bb7172835620de3aeb1c4c9ba5aabf41e48b0dc9667e0eb743fb0b167fc14df1a81146450e8203b94b
+  checksum: b21df32a13d06d37388d4ba0dd1837e412017bc9e16f3fce9b3c69d8092a2e12b4d9ec8c69d4007405a3410c39dc62ee29d2e3c6b55afc81aa5dd03db3576439
   languageName: node
   linkType: hard
 
