@@ -11,6 +11,7 @@ import theme from '../styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
 import { UserDataProvider } from '../context/UserDataContext';
+import { SheetsProvider } from '../context/SheetsContext';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -45,27 +46,29 @@ function MyApp(props) {
   return (
     <>
       <UserDataProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <div>
-            <Head>
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-              ></script>
-            </Head>
+        <SheetsProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <div>
+              <Head>
+                <script
+                  async
+                  src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+                ></script>
+              </Head>
 
-            <div className="App">
-              <ToastContainer
-                className="toast-container"
-                toastClassName="toast"
-                progressClassName="toast-progress"
-              />
+              <div className="App">
+                <ToastContainer
+                  className="toast-container"
+                  toastClassName="toast"
+                  progressClassName="toast-progress"
+                />
+              </div>
+              {/* <Component {...pageProps} /> */}
+              {props.children}
             </div>
-            {/* <Component {...pageProps} /> */}
-            {props.children}
-          </div>
-        </ThemeProvider>
+          </ThemeProvider>
+        </SheetsProvider>
       </UserDataProvider>
     </>
   );
