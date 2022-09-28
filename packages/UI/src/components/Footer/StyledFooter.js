@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import logoMonogramImage from '@devlaunchers/components/images/logo-monogram.png?webp';
 import styled from 'styled-components';
 
@@ -88,14 +89,6 @@ export const SocialMediaLink = styled.a.attrs(({ Type }) => {
     case 'Linkedin':
       href = 'https://www.linkedin.com/company/devlaunchers/';
       className = 'fab fa-linkedin';
-      break;
-    case 'Twitch':
-      href = 'https://www.twitch.com/devlaunchers/';
-      className = 'fab fa-twitch';
-      break;
-    case 'Discord':
-      href = 'https://www.discord.io/devlaunchers/';
-      className = 'fab fa-discord';
       break;
     default:
       href = null;
