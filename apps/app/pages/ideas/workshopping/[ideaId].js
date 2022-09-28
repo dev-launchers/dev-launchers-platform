@@ -5,5 +5,5 @@ export { getStaticPaths } from "@devlaunchers/ideas/src/pages/workshopping/[idea
 
 /////////////////////////////////////////
 
-import {constructAppPage} from "../AppPage";
+import { constructAppPage } from '../../../utils/routingTools.js';
 export default constructAppPage(IdeaApp, Page);
