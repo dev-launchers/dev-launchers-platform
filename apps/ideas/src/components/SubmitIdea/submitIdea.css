@@ -1,0 +1,61 @@
+.progress_bar {
+  background-color: white;
+  height: 7.35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.circule {
+  height: 50px ;
+  width: 50px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.circule p {
+  position: relative;
+  color: white;
+  bottom: -55px;
+  font-size: 10px;
+}
+
+form {
+  margin-top: 70px;
+}
+
+.idea_form {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+}
+
+.completed {
+  background-color: #322E2E;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  position: relative;
+  left: 5px;
+  top: 5px;
+  margin-bottom: -40px;
+}
+
+.text {
+  width: 60%;
+  text-align: left;
+  color: #ffffff;
+  margin: 20px 0 0 20px;
+  font-size:15px;
+  float: left;
+}
+
+.coming_soon {
+  color: #89969F;
+  font-size: 14px;
+  padding-top: 10px;
+}
