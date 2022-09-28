@@ -73,7 +73,7 @@ function SubmitIdeaForm() {
       experience: experience,
     };
 
-    const res = await axios.post(`${env().STRAPI_URL}/idea-cards/`, state);
+    const res = await axios.post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`, state);
 
     if (res.status === 200) {
       setIdeaId(res.data.id);

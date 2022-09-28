@@ -23,7 +23,7 @@ function CommentForm(props) {
 
     axios
       .post(
-        `https://api-staging.devlaunchers.org/idea-cards/${props.selectedCard.id}/comment`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}/comment`,
         data
       )
       .then((response) => {

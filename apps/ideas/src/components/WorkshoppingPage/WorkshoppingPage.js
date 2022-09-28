@@ -42,14 +42,16 @@ function WorkshoppingPage(props) {
 
 
   useEffect(() => {
-    axios.get(`${env().STRAPI_URL}/idea-cards/${ideaId}`)
-      .then(response => {
-        if (response.status === 200 ) {
-          setLoading(false)
-          setData(response.data)
-        }
-      })
-  }, [])
+    if (ideaId) {
+      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
+        .then(response => {
+          if (response.status === 200 ) {
+            setLoading(false)
+            setData(response.data)
+          }
+        })
+    }
+  }, [ideaId])
 
 
 

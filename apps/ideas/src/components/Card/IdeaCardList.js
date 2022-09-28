@@ -16,7 +16,7 @@ function IdeaCardList() {
 
 
   React.useEffect(() => {
-    axios.get(`${env().API_URL}/idea-cards`,  
+    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`,  
       {
         withCredentials: true,
       }
