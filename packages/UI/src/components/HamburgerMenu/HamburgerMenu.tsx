@@ -115,17 +115,12 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             { */}
-              <Link href={'/earn'} passHref>
-                <a className="nav-link">
-                  <NavEntry>EARN</NavEntry>
-                </a>
-              </Link>
               <Link href={'/support-us'} passHref>
                 <a className="nav-link">
                   <NavEntry>SUPPORT US</NavEntry>
                 </a>
               </Link>
-              <Link href={'/projects'} passHref>
+              <Link href={'/join'} passHref>
                 <a className="nav-link">
                   <NavEntry>JOIN</NavEntry>
                 </a>
