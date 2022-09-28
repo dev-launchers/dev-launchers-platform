@@ -33,7 +33,10 @@ function IdeaOverview(props) {
       </IdeaName>
       <Description>
         <h4>Description</h4>
-        <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.description?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
+        {props.selectedCard.description ? 
+          <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.description?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
+          : ""
+        }
       </Description>
     </Idea>
   )
