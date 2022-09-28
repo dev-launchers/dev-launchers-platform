@@ -89,7 +89,7 @@ function HamburgerMenu() {
                   </a>
                 </>
               ) : (
-                <a href={env().GOOGLE_AUTH_URL} className="nav-link">
+                <a href={env().GOOGLE_AUTH_URL+"?redirectURL="+window.location} className="nav-link">
                   <div className={style.navEntry}>SIGN IN </div>
                 </a>
               )}
