@@ -44,11 +44,7 @@ export default function Card(props) {
       key={props.i}
       onClick={props.cardData.onClick}
     >
-      <Content
-        size={props.size}
-        textAlignment={props.cardData.textAlignment}
-        flexDirection={props.cardData.flexDirection}
-      >
+      {props.noImage ? "" : 
         <ImageHolder
           size={props.size}
           bgColor={props.cardData.imageHolderBackgroundColor}
@@ -76,7 +72,16 @@ export default function Card(props) {
             </a>
           )}
         </ImageHolder>
-        <RainbowBar height=".3rem" />
+      }
+
+      {props.size === "large" ? "" : (<RainbowBar height=".3rem" />)}
+
+      <Content
+        size={props.size}
+        textAlignment={props.cardData.textAlignment}
+        flexDirection={props.cardData.flexDirection}
+      >
+        
         <DataHolder size={props.size}>
           <CardTitle
             data={props.cardData}
@@ -88,15 +93,15 @@ export default function Card(props) {
           )}
           <Description>{props.cardData.description}</Description>
         </DataHolder>
+        {props.cardData.attachments && (
+          <AttachmentsContainer>
+            <Attachments data={props.cardData.attachments} />
+          </AttachmentsContainer>
+        )}
+        {props.cardData.actions && (
+          <ActionsContainer>{props.cardData.actions}</ActionsContainer>
+        )}
       </Content>
-      {props.cardData.attachments && (
-        <AttachmentsContainer>
-          <Attachments data={props.cardData.attachments} />
-        </AttachmentsContainer>
-      )}
-      {props.cardData.actions && (
-        <ActionsContainer>{props.cardData.actions}</ActionsContainer>
-      )}
     </Container>
   );
 }

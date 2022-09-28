@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: white;
   /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({ size }) => (size === "large" ? "row" : "column")};
   @media (orientation: portrait) {
     width: 100%;
     margin-bottom: 5%;
@@ -16,7 +16,8 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex: 1;
-  flex-direction: ${({ flexDirection }) => flexDirection || "column"};
+  /*flex-direction: ${({ flexDirection }) => flexDirection || "column"};*/
+  flex-direction: ${({ size }) => (size === "large" ? "row" : "column")};
   ${({ size }) =>
     size === "large" &&
     css`
@@ -32,7 +33,8 @@ export const Content = styled.div`
 
 export const ImageHolder = styled.div`
   position: relative;
-  width: 100%;
+  width: ${({ size }) => (size === "large" ? "30%" : "100%")};
+  height: ${({ size }) => (size === "large" ? "auto" : "25vh")};
   height: 25vh;
   overflow: hidden;
 
@@ -75,7 +77,7 @@ export const DataHolder = styled.div`
     size === "large" &&
     css`
       width: 70%;
-      padding: 6.75%;
+      /*padding: 6.75%;*/
     `}
 `;
 export const SecondaryText = styled.div`

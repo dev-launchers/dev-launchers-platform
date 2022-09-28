@@ -7,9 +7,7 @@ import Footer from "../../components/common/Footer";
 export default function UserProfilePage() {
   return (
     <div>
-      <Header />
       <UserProfile />
-      <Footer />
     </div>
   );
 }

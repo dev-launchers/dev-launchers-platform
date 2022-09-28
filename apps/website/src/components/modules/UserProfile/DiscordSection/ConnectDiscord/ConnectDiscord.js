@@ -3,7 +3,7 @@ import DiscordImg from "../../../../../../public/images/discord-logo.png?webp";
 import Button from "../../../../common/Button";
 import { env } from "../../../../../utils/EnvironmentVariables";
 
-const DISCORD_AUTH = env().DISCORD_AUTH_URL;
+const DISCORD_AUTH = process.env.NEXT_PUBLIC_DISCORD_AUTH_URL;
 
 export default function ConnectDiscord() {
   return (

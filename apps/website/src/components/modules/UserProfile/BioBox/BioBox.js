@@ -17,7 +17,7 @@ export default function BioBox({ data, canEdit }) {
   const sendText = () => {
     axios
       .put(
-        `${env().STRAPI_URL}/users/${data.id}/profiles`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${data.id}/profiles`,
         { bio: bioText },
         { withCredentials: true }
       )

@@ -48,9 +48,7 @@ export const getStaticProps = async (context) => {
 export default function UserProfilePage({ user }) {
   return (
     <div>
-      <Header />
       <UserProfile otherUser={user} />
-      <Footer />
     </div>
   );
 }
