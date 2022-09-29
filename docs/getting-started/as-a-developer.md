@@ -4,4 +4,4 @@
 
 2. Install: `yarn`
 
-3. Run dev version: `yarn workspace @devlaunchers/platform_website dev`
+3. Run dev version: `yarn workspace @devlaunchers/app dev`

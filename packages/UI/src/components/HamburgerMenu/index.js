@@ -1,1 +1,1 @@
-export { default } from "./HamburgerMenu.tsx";
+export { default } from './HamburgerMenu.tsx';

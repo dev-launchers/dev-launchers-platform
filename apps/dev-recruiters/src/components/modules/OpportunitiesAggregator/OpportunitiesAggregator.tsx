@@ -1,28 +1,23 @@
 import {
-  Wrapper,
-  Heading,
-  FeaturedProductsSection,
-  FeaturedProducts,
-  CardsContainer,
-  HeadingContainer,
+  FeaturedProducts, FeaturedProductsSection, Heading, HeadingContainer, Wrapper
 } from "../../modules/OpportunitiesAggregator/StyledOpportunitiesAggregator";
 
 import * as React from "react";
-import ShortCard from "./ShortCard";
-import FilteringComponent, {
-  FilteringComponentProps,
-} from "./filtering/FilteringComponent";
-import BoxContainer from "../../common/BoxContainer";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import BoxContainer from "../../common/BoxContainer";
+import FilteringComponent, {
+  FilteringComponentProps
+} from "./filtering/FilteringComponent";
+import ShortCard from "./ShortCard";
 interface Props extends FilteringComponentProps {}
 
 const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
-  const customSlider = React.useRef();
+  const customSlider = React.useRef<Slider>();
   const settings = {
     className: "cards",
     dots: true,

@@ -1,17 +1,17 @@
-import Link from "next/link";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import Fuse from "fuse.js";
-import Card from "../../common/Card";
-import { Layout, ProjectContainer } from "./StyledProjects";
-import SearchBar from "./Project/SearchBar";
+import Fuse from 'fuse.js';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Card from '../../common/Card';
+import SearchBar from './Project/SearchBar';
+import { Layout, ProjectContainer } from './StyledProjects';
 
 const Projects = ({ projects }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const options = {
     includeScore: true,
-    keys: ["interests?.interest"],
+    keys: ['interests?.interest'],
     threshold: 0.3,
     ignoreFieldNorm: true,
   };
@@ -34,18 +34,18 @@ const Projects = ({ projects }) => {
   return (
     <div
       style={{
-        width: "90%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        marginTop: "3rem",
+        width: '90%',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginTop: '3rem',
       }}
     >
       <div
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <h1>Projects you can join!</h1>
@@ -63,7 +63,7 @@ const Projects = ({ projects }) => {
           <ProjectContainer key={i}>
             <Card
               isLinkingInside
-              style={{ margin: 0, width: "100%", height: "100%" }}
+              style={{ margin: 0, width: '100%', height: '100%' }}
               cardData={{
                 id: project.id,
                 title: project.title,

@@ -1,8 +1,12 @@
 {
   "folders": [
     {
-      "name": "platform__website",
-      "path": "apps/platform__website"
+      "name": "app",
+      "path": "apps/app"
+    },
+    {
+      "name": "website",
+      "path": "apps/website"
     },
     {
       "name": "ideas",
@@ -54,7 +58,8 @@
     "eslint.alwaysShowStatus": true,
     // https://github.com/Microsoft/vscode-eslint#mono-repository-setup
     "eslint.workingDirectories": [
-      "./apps/platform__website",
+      "./apps/app",
+      "./apps/website",
       "./apps/ideas",
       "./apps/site-projects",
       "./apps/dev-recruiters",
