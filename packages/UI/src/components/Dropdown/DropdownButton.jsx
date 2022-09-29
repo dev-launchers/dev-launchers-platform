@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Wrapper, Toggle, Rooms } from "./StyledDropdownButton";
+import React, { useEffect, useState, useRef } from 'react';
+import { Wrapper, Toggle, Rooms } from './StyledDropdownButton';
 
 const DropdownButton = ({ toggleBtnText, dropdownItems, className }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,13 +13,13 @@ const DropdownButton = ({ toggleBtnText, dropdownItems, className }) => {
 
   useEffect(() => {
     if (menuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener('mousedown', handleClickOutside);
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [menuOpen]);
 
