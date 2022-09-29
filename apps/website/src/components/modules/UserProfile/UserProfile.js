@@ -31,7 +31,7 @@ export default function UserProfile({ otherUser }) {
 
   return (
     <PageBody>
-      {userData?.id || (otherUser?.id && !loading) || true ? (
+      {userData?.id || (otherUser?.id && !loading) ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
