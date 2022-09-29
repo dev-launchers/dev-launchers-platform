@@ -14,10 +14,10 @@ export default function LoginPage() {
       <MessageWrapper>
         <Header>Dev Launchers Volunteer Application</Header>
         <ButtonWrapper>
-          <Button href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL="+window.location}>
+          <Button href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
             Create an account
           </Button>
-          <Button href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL="+window.location}>
+          <Button href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
             Sign in
           </Button>
         </ButtonWrapper>

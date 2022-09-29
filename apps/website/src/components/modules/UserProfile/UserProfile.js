@@ -101,7 +101,7 @@ export default function UserProfile({ otherUser }) {
           <p style={{ fontSize: "2rem" }}>
             Please sign in to access this page!
           </p>
-          <Button fontSize="2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL="+window.location}>
+          <Button fontSize="2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
             Sign In
           </Button>
           <br />

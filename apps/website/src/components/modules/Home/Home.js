@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-
+import { toast } from 'react-toastify';
 import { withTheme } from "styled-components";
 import PageBody from "../../common/PageBody";
 
@@ -36,6 +36,11 @@ function Home({ theme }) {
   const leadRef = useRef(null);
   const createRef = useRef(null);
   const donateRef = useRef(null);
+
+  React.useEffect(() => {
+    toast("We're currently looking for intermediate and advanced developers to take leadership positions in our product teams! Find out more here: LINK");
+  }, []);
+
   return (
     <div>
       <RainbowBar />

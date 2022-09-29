@@ -89,7 +89,7 @@ const HamburgerMenu: React.FC = () => {
                   </a>
                 </>
               ) : (
-                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL="+window.location} className="nav-link">
+                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"} className="nav-link">
                   <div className={style.navEntry}>SIGN IN </div>
                 </a>
               )}
