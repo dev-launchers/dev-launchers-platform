@@ -90,6 +90,11 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
                   <NavEntry>LEARN</NavEntry>
                 </a>
               </Link>
+              <Link href={'/ideas'} passHref>
+                <a className="nav-link">
+                  <NavEntry>DREAM</NavEntry>
+                </a>
+              </Link>
 
               <div>
                 {userData?.id ? (

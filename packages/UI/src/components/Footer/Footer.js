@@ -27,6 +27,11 @@ export default function Footer() {
             <NavEntry>LEARN</NavEntry>
           </a>
         </Link>
+        <Link href={'/ideas'} passHref className="nav-link">
+          <a>
+            <NavEntry>DREAM</NavEntry>
+          </a>
+        </Link>
         {/* }
         <Link href={"/play"} passHref className="nav-link">
           <NavEntry>PLAY</NavEntry>

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Link from 'next/link';
@@ -42,6 +43,11 @@ export default function Header() {
         <Link href="/learn">
           <a>
             <NavEntry>LEARN</NavEntry>
+          </a>
+        </Link>
+        <Link href="/ideas">
+          <a>
+            <NavEntry>DREAM</NavEntry>
           </a>
         </Link>
         {/* }
