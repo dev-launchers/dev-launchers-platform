@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Link from 'next/link';
+import { useUserDataContext } from '../../context/UserDataContext';
 import HamburgerMenu from '../HamburgerMenu';
 import AccountDropdown from './AccountDropdown';
 
