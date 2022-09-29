@@ -33,6 +33,30 @@ body {
   font-size: 1.5rem;
 }
 
+.toast-container {
+  width: 70vw;
+}
+.toast {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #1c1c1c;
+  margin: 0;
+  border: 0;
+}
+.toast-body {
+  width: 100%;
+  height: 100%;
+}
+.toast-progress {
+  background: black !important;
+}
+@media (orientation: portrait) {
+  .toast-container {
+    width: 90vw;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 20px;
 }
@@ -109,15 +133,7 @@ h4 {
   box-sizing: border-box;
 }
 *
-.toast-container {
-}
-.toast {
-  background-color: white;
-  color: #1c1c1c;
-}
-.toast-progress {
-  background: black !important;
-}
+
 
 /* collections default to small-cards for entry elements */
 .collection {

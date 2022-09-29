@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useRef } from "react";
 import { toast } from 'react-toastify';
 import { withTheme } from "styled-components";
@@ -38,7 +39,21 @@ function Home({ theme }) {
   const donateRef = useRef(null);
 
   React.useEffect(() => {
-    toast("We're currently looking for intermediate and advanced developers to take leadership positions in our product teams! Find out more here: LINK");
+    setTimeout(() => {
+      toast(
+        <>
+          Hey there! Are you a developer? Want management experience in a friendly, supportive environment? We're currently searching for intermediate and advanced devs to take on <span style={{fontSize:"2rem"}}><a href="https://devlaunchers.org/join">leadership positions</a></span> in our product teams!
+        </>,
+        {
+          bodyClassName: "toast-body",
+          position: "bottom-right",
+          autoClose: 25000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
+    }, 6000)
   }, []);
 
   return (

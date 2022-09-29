@@ -59,11 +59,6 @@ function MyApp({ Component, pageProps }) {
             </Head>
 
             <div className="App">
-              <ToastContainer
-                className="toast-container"
-                toastClassName="toast"
-                progressClassName="toast-progress"
-              />
             </div>
             <Header />
             <Component {...pageProps} />

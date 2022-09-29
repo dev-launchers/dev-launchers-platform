@@ -110,6 +110,7 @@ h4 {
 }
 *
 .toast-container {
+  width: 40vw;
 }
 .toast {
   background-color: white;

@@ -61,6 +61,7 @@ function MyApp(props) {
                 <ToastContainer
                   className="toast-container"
                   toastClassName="toast"
+                  bodyClassName="toast-body"
                   progressClassName="toast-progress"
                 />
               </div>
