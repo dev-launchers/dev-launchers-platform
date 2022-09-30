@@ -59,7 +59,7 @@ const RecommendedIdeas = ({ img, name, username }) => {
             }}
           >
             {ideas.map((idea) => (
-              <RecommendedIdeaCardContainer>
+              <RecommendedIdeaCardContainer key={Math.random()}>
                 <Card
                   size="small"
                   style={{ width: "90%", height: "17rem" }}
