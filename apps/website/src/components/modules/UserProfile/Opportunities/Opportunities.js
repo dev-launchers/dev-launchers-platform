@@ -63,7 +63,6 @@ const Opportunities = ({ img, name, username }) => {
           >
             {opportunities.map((opportunity) => (
               <div
-                key={Math.random()}
                 style={{
                   width: "90%",
                   marginTop: ".5rem",

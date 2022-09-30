@@ -50,7 +50,7 @@ const UserProjects = ({ img, name, username }) => {
       }}
     >
       <h3>
-        It looks like you&apos;re not currently part of any of our Product Teams...
+        It looks like you're not currently part of any of our Product Teams...
       </h3>
       <div
         style={{ color: "white", fontSize: "1.3rem", marginBottom: "2rem" }}
@@ -77,7 +77,6 @@ const UserProjects = ({ img, name, username }) => {
           >
             {myProjects.map((project) => (
               <Card
-                key={Math.random()}
                 size="large"
                 // isLinkingInside
                 // style={{ margin: 0, width: "100%", height: "100%" }}

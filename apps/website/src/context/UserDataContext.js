@@ -1,16 +1,16 @@
-import React from "react";
-import constate from "constate"; // State Context Object Creator
-import axios from "axios";
+import axios from 'axios';
+import constate from 'constate'; // State Context Object Creator
+import React from 'react';
 
-import { env } from "../utils/EnvironmentVariables";
+import { env } from '../utils/EnvironmentVariables';
 
 const DEFAULT_USER = {
   id: 0,
-  name: "",
-  username: "",
-  email: "",
-  bio: "",
-  profilePictureUrl: "",
+  name: '',
+  username: '',
+  email: '',
+  bio: '',
+  profilePictureUrl: '',
   socialMediaLinks: [],
   totalPoints: 0,
   totalSeasonPoints: 0,
@@ -18,10 +18,11 @@ const DEFAULT_USER = {
   volunteerHours: 0,
   discord: {
     id: 0,
-    avatar: "",
-    username: "",
-    discriminator: "",
+    avatar: '',
+    username: '',
+    discriminator: '',
   },
+  interests: [],
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
@@ -48,6 +49,7 @@ function useUserData() {
           totalSeasonPoints: currentUser.point.totalSeasonPoints,
           availablePoints: currentUser.point.availablePoints,
           volunteerHours: currentUser.point.volunteerHours,
+          interests: currentUser.interests,
         });
       })
       .catch(() => {
@@ -55,7 +57,7 @@ function useUserData() {
       });
   }, []);
 
-  return { userData };
+  return { userData, setUserData };
 }
 
 // Step 2: Declare your context state object to share the state with other components

@@ -7,7 +7,7 @@ import Footer from "../../components/common/Footer";
 import { env } from "../../utils/EnvironmentVariables";
 
 export const getStaticPaths = async () => {
-  const { data } = await axios(`${env().STRAPI_URL}/users`, {
+  const { data } = await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users`, {
     headers: {
       Accept: "application/json, text/plain, */*",
       "User-Agent":
@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { username } = context.params;
   const { data: user } = await axios(
-    `${env().STRAPI_URL}/users?username_eq=${encodeURI(username)}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/users?username_eq=${encodeURI(username)}`
   );
 
   if (!user) {
