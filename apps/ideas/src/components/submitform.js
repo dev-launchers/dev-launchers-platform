@@ -47,7 +47,7 @@ function SubmitForm() {
       difficultyLevel: difficultyLevel,
     }
 
-    axios.post(`https://api.devlaunchers.org/idea-cards`, state)
+    axios.post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, state)
       .then(response => {
 
       });
