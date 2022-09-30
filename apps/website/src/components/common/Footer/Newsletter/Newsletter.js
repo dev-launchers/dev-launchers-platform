@@ -25,7 +25,7 @@ const NewsLetter = (props) => {
       setCheck(true);
     } else {
       axios
-        .post(`${env().STRAPI_URL}/newsletters`, {
+        .post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/newsletters`, {
           email,
         })
         .then(() => {

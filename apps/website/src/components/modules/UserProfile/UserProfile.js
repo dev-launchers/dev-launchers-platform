@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from 'react';
 
-import PageBody from "../../common/PageBody";
-import Button from "../../common/Button";
+import Button from '../../common/Button';
+import PageBody from '../../common/PageBody';
 
-import ProfileCard from "./ProfileCard";
-import Points from "./Points";
-import BioBox from "./BioBox";
-import WeeksGlance from "./WeeksGlance";
-import UserProjects from "./UserProjects";
-import Opportunities from "./Opportunities";
-import RecommendedIdeas from "./RecommendedIdeas";
-import { useUserDataContext } from "../../../context/UserDataContext";
+import { useUserDataContext } from '../../../context/UserDataContext';
+import BioBox from './BioBox';
+import Opportunities from './Opportunities';
+import ProfileCard from './ProfileCard';
+import RecommendedIdeas from './RecommendedIdeas';
+import UserProjects from './UserProjects';
 
-import { env } from "../../../utils/EnvironmentVariables";
+import { env } from '../../../utils/EnvironmentVariables';
 
-import { Wrapper, UserSection, UserInfo, Misc } from "./StyledUserProfile";
+import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
+import UserInterests from './UserInterests';
 // import DiscordSection from "./DiscordSection/DiscordSection";
 
 export default function UserProfile({ otherUser }) {
@@ -42,9 +41,9 @@ export default function UserProfile({ otherUser }) {
               name={otherUser?.profile?.displayName || userData.name}
               username={otherUser?.username || userData.username}
             />
-            
+
             <UserInfo>
-              {/*}
+              {/* }
               <Points
                 availablePoints={
                   otherUser?.point?.availablePoints || userData.availablePoints
@@ -57,7 +56,7 @@ export default function UserProfile({ otherUser }) {
                   otherUser?.point?.volunteerHours || userData.volunteerHours
                 }
               />
-              {*/}
+              { */}
               <BioBox
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
@@ -69,12 +68,23 @@ export default function UserProfile({ otherUser }) {
           */}
 
           <Misc>
+            <UserInterests />
+            <div
+              className="spacer"
+              style={{ width: '100%', height: '10vh' }}
+            ></div>
             <UserProjects />
-            <div className="spacer" style={{width:"100%", height:"10vh"}}></div>
+            <div
+              className="spacer"
+              style={{ width: '100%', height: '10vh' }}
+            ></div>
             <Opportunities />
-            <div className="spacer" style={{width:"100%", height:"10vh"}}></div>
+            <div
+              className="spacer"
+              style={{ width: '100%', height: '10vh' }}
+            ></div>
             <RecommendedIdeas />
-            {/*}<WeeksGlance />{*/}
+            {/* }<WeeksGlance />{ */}
             {/*
             <LabMember />
             */}
@@ -90,18 +100,18 @@ export default function UserProfile({ otherUser }) {
       ) : (
         <div
           style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            minHeight: "60vh",
-            justifyContent: "center",
-            alignItems: "center",
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '60vh',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          <p style={{ fontSize: "2rem" }}>
+          <p style={{ fontSize: '2rem' }}>
             Please sign in to access this page!
           </p>
-          <Button fontSize="2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
+          <Button fontSize="2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}>
             Sign In
           </Button>
           <br />

@@ -13,7 +13,7 @@ function useProjectsData() {
   const [projectsData, setProjectsData] = React.useState(DEFAULT_PROJECTS);
 
   React.useEffect(() => {
-    axios(`${env().STRAPI_URL}/projects`)
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
       .then(({ data }) => {
         setProjectsData(data);
       })
