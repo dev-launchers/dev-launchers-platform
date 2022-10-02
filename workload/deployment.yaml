@@ -9,6 +9,11 @@ metadata:
     app: platform-website
 spec:
   replicas: 1
+  strategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1       # How many pods can be added at a time
+    maxUnavailable: 1 # How many pods can be unavailable at a given time
   selector:
     matchLabels:
       app: platform-website
