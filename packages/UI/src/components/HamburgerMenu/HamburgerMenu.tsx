@@ -99,7 +99,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
               <div>
                 {userData?.id ? (
                   <>
-                    <Link href={'/user-profile'} passHref>
+                    <Link href={'/users/me'} passHref>
                       <a className="nav-link">
                         <NavEntry>VISIT ACCOUNT PAGE</NavEntry>
                       </a>

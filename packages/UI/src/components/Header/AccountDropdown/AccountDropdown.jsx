@@ -19,7 +19,7 @@ export default function AccountDropdown(props) {
             <>
               {' '}
               <AccountMenuDropdownItem>
-                <Link href="/user-profile" passHref>
+                <Link href="/users/me" passHref>
                   <a>Visit Account Page</a>
                 </Link>
               </AccountMenuDropdownItem>
