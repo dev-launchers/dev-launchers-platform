@@ -40,7 +40,7 @@ export const DiscordPlaceHolder = styled.div`
   background: grey;
 `;
 export const Misc = styled.div`
-  width:80%;
+  // width:80%;
   grid-area: Misc;
   /*display: grid;*/
   gap: 15px;

@@ -12,36 +12,7 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 
 import { OpportunitiesContainer } from "./StyledOpportunities";
 
-const Opportunities = ({ img, name, username }) => {
-  const { userData } = useUserDataContext();
-  const [projects, setProjects] = React.useState([]);
-  const [opportunities, setOpportunities] = React.useState([]);
-
-  React.useEffect(async () => {
-    getProjectData();
-  }, []);
-
-  const getProjectData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
-      .then(({ data }) => {
-        if (data) {
-          setProjects(data);
-
-          const tempOpportunities = [];
-          data.map((project) => {
-            project.opportunities.map((opportunity) => {
-              opportunity.project = project;
-              tempOpportunities.push(opportunity);
-            });
-          });
-          setOpportunities(tempOpportunities);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch project data");
-      });
-  };
-
+const Opportunities = ({ opportunities }) => {
   return (
     <OpportunitiesContainer>
       {opportunities?.length > 0 ? (
@@ -74,7 +45,7 @@ const Opportunities = ({ img, name, username }) => {
                 }}
               >
                 <h3 style={{ marginBottom: 0 }}>
-                  <a style={{ cursor: "pointer" }}>{opportunity.title}</a>{" "}
+                  <a style={{ cursor: "pointer" }} href={`/join/${opportunity.project.slug}`}>{opportunity.title}</a>{" "}
                   <span style={{ fontSize: "1rem" }}>
                     ({opportunity.level} Opportunity)
                   </span>

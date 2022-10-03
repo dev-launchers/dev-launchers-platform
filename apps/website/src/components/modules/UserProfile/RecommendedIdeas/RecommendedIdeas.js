@@ -15,26 +15,7 @@ import {
   RecommendedIdeaCardContainer,
 } from "./StyledRecommendedIdeas";
 
-const RecommendedIdeas = ({ img, name, username }) => {
-  const { userData } = useUserDataContext();
-  const [ideas, setIdeas] = React.useState([]);
-
-  React.useEffect(async () => {
-    getIdeaData();
-  }, []);
-
-  const getIdeaData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-      .then(({ data }) => {
-        if (data) {
-          setIdeas(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch idea data");
-      });
-  };
-
+const RecommendedIdeas = ({ ideas }) => {
   return (
     <RecommendedIdeasContainer ideas={ideas}>
       {ideas?.length > 0 ? (
@@ -72,20 +53,7 @@ const RecommendedIdeas = ({ img, name, username }) => {
                     description:
                       idea.description.substring(0, 200) +
                       (idea.description.length > 200 ? "..." : ""),
-                    href: `https://idea.devlaunchers.org/workshopping/${idea.id}`,
-                    // imageSrc: project.heroImage?.url,
-                    /*
-                                        actions: (
-                                            <>
-                                            <Link href={`https://devlaunchers.org/projects/${project.slug}`} passHref>
-                                                <a>LEARN MORE</a>
-                                            </Link>
-                                            <Link href="support-us" passHref>
-                                                <a>DONATE</a>
-                                            </Link>
-                                            </>
-                                        ),
-                                        */
+                    href: `/ideas/workshopping/${idea.id}`,
                   }}
                 />
               </RecommendedIdeaCardContainer>

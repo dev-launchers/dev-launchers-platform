@@ -11,29 +11,13 @@ import {
   UserInterestsContainer,
 } from "./StyledUserInterests";
 
-const UserInterests = () => {
+const UserInterests = ({interests}) => {
   const { userData, setUserData } = useUserDataContext();
-  const [interests, setInterests] = React.useState([]);
+
   const [
     userInterestsUpdateRequestTimeout,
     setUserInterestsUpdateRequestTimeout,
   ] = React.useState();
-
-  const getInterests = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
-      .then(({ data }) => {
-        if (data) {
-          setInterests(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch interest data");
-      });
-  };
-
-  React.useEffect(() => {
-    getInterests();
-  }, []);
 
   // When a user changes their interests, send a request 3 seconds later (3 second buffer for quick back-to-back selection)
   const userInterestsChanged = () => {
