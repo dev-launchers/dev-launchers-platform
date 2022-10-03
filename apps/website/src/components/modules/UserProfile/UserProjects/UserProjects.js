@@ -12,35 +12,7 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 
 import { UserProjectsContainer } from "./StyledUserProjects";
 
-const UserProjects = ({ img, name, username }) => {
-  const { userData } = useUserDataContext();
-  const [projects, setProjects] = React.useState([]);
-  const [myProjects, setMyProjects] = React.useState([]);
-
-  React.useEffect(async () => {
-    getProjectData();
-  }, []);
-
-  const getProjectData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
-      .then(({ data }) => {
-        if (data) {
-          setProjects(data);
-
-          const myProjects = [];
-          data.map((project) => {
-            [...project.team.leaders, ...project.team.members].map((member) => {
-              if (member.id == userData.id) myProjects.push(project);
-            });
-          });
-          setMyProjects(myProjects);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch project data");
-      });
-  };
-
+const UserProjects = ({ myProjects }) => {  
   const noProjectsDisplay = (
     <div
       style={{
@@ -55,8 +27,8 @@ const UserProjects = ({ img, name, username }) => {
       <div
         style={{ color: "white", fontSize: "1.3rem", marginBottom: "2rem" }}
       ></div>
-      <Button style={{ marginLeft: "auto", marginRight: "auto" }}>
-        Browse Product Teams!
+      <Button style={{ marginLeft: "auto", marginRight: "auto" }} href="/join">
+        Explore Team Openings!
       </Button>
     </div>
   );
