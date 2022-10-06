@@ -6,4 +6,4 @@ resources:
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: "8d6aa41-202210062017" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
+  newTag: "06f5dcc-202210062022" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
