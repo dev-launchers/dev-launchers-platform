@@ -1,6 +1,6 @@
 # Name of our action
 name: 'Chromatic'
-The event that will trigger the action
+# The event that will trigger the action
 on:
   push:
     paths:
