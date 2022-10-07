@@ -236,7 +236,7 @@ function SubmitIdeaForm() {
                   onChange={(e) => setTargetAudience(e.target.value)}>
                 </textarea>
               </Question2>
-              <Question2>
+              <Question>
                 <p>What features would your idea have?</p>
                 {/* <input
                   type="text"
@@ -244,17 +244,13 @@ function SubmitIdeaForm() {
                   value={features}
                   onChange={(e) => setFeatures(e.target.value)}
                 /> */}
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`; 
-                  }}
-                  style={{width:"100%", overflow:"hidden"}}
+                <input
+                  type="text"
                   name="features"
                   value={features}
-                  onChange={(e) => setFeatures(e.target.value)}>
-                </textarea>
-              </Question2>
+                  onChange={(e) => setFeatures(e.target.value)}
+                />
+              </Question>
               <Question2>
                 <p>Do you have a catchy tagline for this idea submission?</p>
                 {/* <input

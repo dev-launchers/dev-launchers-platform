@@ -50,7 +50,7 @@ export default function SignUpForm() {
       name: "",
       email: "",
       age: 0,
-      level: "",
+      level: "Intermediate",
       accepted: false,
       commitment: 0,
       extraInfo: "",
@@ -83,7 +83,7 @@ export default function SignUpForm() {
       })
         .then((res) => {
           setSubmitting(false);
-          router.push("/confirmation");
+          router.push("/join/confirmation");
         })
         .catch((error) => {
           setSubmitting(false);
