@@ -4,10 +4,11 @@ export const Container = styled.div`
   font-size: 1.2rem;
   border-bottom-right-radius: 40px;
   border-bottom-left-radius: 40px;
-  background-color: ${({ theme }) => theme.colors.White};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   display: flex;
   flex-direction: column;
+  margin-top: 2rem;
 
   ul {
     margin-left: 2rem;
@@ -23,8 +24,10 @@ export const HeaderCard = styled.div`
   border-bottom-left-radius: 40px;
   font-weight: 500;
   font-size: 24px;
-  height: 102px;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_5};
+  //height: 102px;
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  border-radius:100rem;
   text-align: left;
   // @media (orientation: portrait) {
   // }
@@ -43,7 +46,7 @@ export const FooterCard = styled.div`
 `;
 
 export const TextBold = styled.div`
-  padding: 3rem;
+  padding: 1rem;
 `;
 export const ButtonSection = styled.div`
   display: flex;

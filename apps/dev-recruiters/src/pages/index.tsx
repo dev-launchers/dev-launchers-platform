@@ -4,7 +4,8 @@ import { Opportunity } from "@devlaunchers/models/opportunity";
 import { Project } from "@devlaunchers/models/project";
 import agent from "@devlaunchers/utility/agent";
 import OpportunitiesAggregator from "../components/modules/OpportunitiesAggregator/OpportunitiesAggregator";
-import OpportunitiesAggregatorWithRoles from "../components/modules/OpportunitiesAggregatorWithRoles/OpportunitiesAggregatorWithRoles";
+import OpportunitiesAggregatorWithRoles from "../components/modules/OpportunitiesAggregatorWithRoles/OpportunitiesAggregator";
+
 import { useRouter } from 'next/router'
 
 export const getStaticProps: GetStaticProps = async (context) => {

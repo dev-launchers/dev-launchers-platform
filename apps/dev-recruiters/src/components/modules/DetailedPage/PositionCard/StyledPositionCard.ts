@@ -4,7 +4,7 @@ export const Container = styled.div`
   position: relative;
   display: flex;
  
-  background: ${(props) => props.theme?.colors?.White};
+  background: ${(props) => props.theme?.colors?.NEUTRAL_2};
   border-radius: 1.8rem;
   overflow: hidden;
 
@@ -29,13 +29,13 @@ justify-content: flex-start; */
   padding: 1rem;
   background-color: ${(props) =>
     props.color === 'Dark'
-      ? props.theme?.colors?.Crayola
-      : props.theme?.colors?.White};
+      ? props.theme?.colors?.NEUTRAL_1
+      : props.theme?.colors?.NEUTRAL_2};
 
   color: ${(props) =>
     props.color === 'Light'
       ? props.theme?.colors?.OuterSpace
-      : props.theme?.colors?.White};
+      : props.theme?.colors?.NEUTRAL_2};
 
   @media (max-width: 760px) {
     display: ${({ Mobile, Expanded }) =>
@@ -166,7 +166,7 @@ export const TagsListItem = styled.li<{ color: sectionTheme }>`
  
   background-color: ${(props) =>
     props.color === 'Dark'
-      ? props.theme?.colors?.OuterSpace
+      ? props.theme?.colors?.NEUTRAL_1
       : props.theme?.colors?.White};
 
   color: ${(props) =>

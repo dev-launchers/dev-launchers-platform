@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_4};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
 `;
 
 export const CardHeader = styled.div`
@@ -17,8 +17,8 @@ export const CardHeader = styled.div`
   text-align: left;
   padding: 1rem 2.5625rem 1rem 2.5625rem;
   border-radius: 30px;
-  background-color: ${({ theme }) => theme.colors.Crayola};
-  color: ${({ theme }) => theme.colors.White};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  color: ${({ theme }) => theme.colors.Black};
   /* font-weight: 400; */
 `;
 
@@ -27,7 +27,7 @@ export const CardBottom = styled.div`
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_4};
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
   color: ${({ theme }) => theme.colors.Black};
   text-align: center;
   border-bottom-left-radius: 40px;

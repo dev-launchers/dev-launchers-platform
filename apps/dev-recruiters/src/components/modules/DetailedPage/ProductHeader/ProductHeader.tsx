@@ -47,14 +47,14 @@ export default function ProductHeader({
   return (
     <HeaderBlock>
       <Row>
-        <Column bgColor="#30363E" w="614px" style={{ flexGrow: 1 }}>
+        <Column w="614px" style={{ flexGrow: 1 }}>
           <ColumnTitle>{title}</ColumnTitle>
           <Type>
             {isPlatform ? "Platform" : "Independent"} {type}
           </Type>
           <Vision>{vision}</Vision>
         </Column>
-        <Column bgColor="#4f5154" w="384px" style={{ flexGrow: 1 }}>
+        <Column w="384px" style={{ flexGrow: 1 }}>
           <ColumnTitle>Tags</ColumnTitle>
           <Row>
             {interests.map((interest, id) => (
@@ -63,12 +63,13 @@ export default function ProductHeader({
           </Row>
         </Column>
         <Column
-          bgColor="#59687B"
+          bgColor="#ffffff"
+          color="#000000"
           w="384px"
           fa="flex-end"
           style={{ flexGrow: 1 }}
         >
-          <ColumnTitle style={{ width: "100%", textAlign: "left" }}>
+          <ColumnTitle style={{ width: "100%", textAlign: "left" }} color="#000000">
             {type} Lead
           </ColumnTitle>
           <Row

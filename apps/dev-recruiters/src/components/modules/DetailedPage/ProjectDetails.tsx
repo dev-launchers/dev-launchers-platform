@@ -67,7 +67,7 @@ export default function ProjectDetails({
           </BackButton>
         </Link>
       </BoxContainer>
-      <BoxContainer bgColor="OuterSpace" paddingVertical={10} marginTop={32}>
+      <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
         <ProductHeader
           title={project.title}
           vision={project.vision}
@@ -86,7 +86,7 @@ export default function ProjectDetails({
         ></LongCard>
       </BoxContainer>
 
-      <BoxContainer bgColor="OuterSpace" paddingVertical={32}>
+      <BoxContainer bgColor="White" paddingVertical={32}>
         <CardWrapper>
           {AboutCardsData.map(({ title, elements }, index) => (
             <Card key={index}>
@@ -131,7 +131,7 @@ export default function ProjectDetails({
           </Card> */}
         </CardWrapper>
       </BoxContainer>
-      <BoxContainer bgColor="OuterSpace" paddingVertical={32}>
+      <BoxContainer bgColor="White" paddingVertical={32}>
         {/* <h1 style={{ marginTop: '0' }}>hello from project details page</h1>
         testing postion Card */}
 

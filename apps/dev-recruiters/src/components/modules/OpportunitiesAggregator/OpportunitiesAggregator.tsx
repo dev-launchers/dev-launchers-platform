@@ -48,7 +48,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
       <div id="background" />
       <FeaturedProductsSection>
         <BoxContainer
-          bgColor="BlackCoral"
+          bgColor="NEUTRAL_1"
           paddingVertical={35}
           paddingHorizontal={16}
         >

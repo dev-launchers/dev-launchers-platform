@@ -26,10 +26,10 @@ export default function ProjectListItem({ project }: Props) {
   const [liked, setLiked] = useState(false);
   return (
     <ItemContainer>
-      <Section bgColor='Crayola' color='White'>
+      <Section bgColor='NEUTRAL_2' color='NEUTRAL_1'>
         <InfoSection>
           <h2>{project.title}</h2>
-          <h3>Product - {project.isPlatform ? 'Platform' : 'Independent'}</h3>
+          <span style={{fontSize:"1rem"}}>Product - {project.isPlatform ? 'Platform' : 'Independent'}</span>
           <p>{project.catchPhrase}</p>
         </InfoSection>
       </Section>

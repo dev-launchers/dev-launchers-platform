@@ -45,7 +45,7 @@ const ShortCard = ({
       <Container key={id}>
         <CardHeader>
           <Title>{title}</Title>
-          <Content style={{ color: theme.colors.LightGray, fontSize: "1rem" }}>
+          <Content style={{ color: theme.colors.Black, fontSize: "1rem" }}>
             {isPlatform ? "Platform" : "Independent"} Product
           </Content>
           <Description>{catchPhrase}</Description>
