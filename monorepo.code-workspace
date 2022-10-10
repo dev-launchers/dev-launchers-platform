@@ -67,6 +67,7 @@
       "./packages/utility",
       "./packages/models",
       "./packages/eslint-config-bases"
-    ]
+    ],
+    "liveServer.settings.multiRootWorkspaceName": "app"
   }
 }
