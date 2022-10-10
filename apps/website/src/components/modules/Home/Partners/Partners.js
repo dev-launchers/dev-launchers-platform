@@ -20,8 +20,8 @@ export default function Partners() {
         <CenteredHeadline>CHECK OUT OUR EXTENDED FAMILY</CenteredHeadline>
         <p>
           We partner with organizations doing outreach to bring in a diverse
-          range of students, and for-profit partners so Dev Launchers can grow
-          and continue to do what we love! Click an image to learn more.
+          range of members, and for-profit partners so Dev Launchers can grow
+          and continue to do what we love!
         </p>
         <h3>Partners</h3>
         <PartnerList>

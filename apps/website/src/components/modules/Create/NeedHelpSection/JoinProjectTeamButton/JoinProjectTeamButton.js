@@ -10,7 +10,7 @@ export default function JoinProjectTeamButton() {
           window.location = "/projects";
         }}
       >
-        ❤️ Join A Project Team!
+        ❤️ Join An Agile Team!
       </div>
     </Wrapper>
   );

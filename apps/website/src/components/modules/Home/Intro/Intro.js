@@ -30,7 +30,8 @@ function Intro({ theme }) {
             human
           </span>
         </CenteredTitle>
-        <CenteredIntro>
+        {/* <CenteredIntro>
+          
           Build your foundation with us, a{" "}
           <span
             style={{
@@ -44,7 +45,7 @@ function Intro({ theme }) {
           Every great building begins with a solid foundation. We&apos;ve
           dedicated ourselves to building great people.
           <CenteredIntro />
-        </CenteredIntro>
+        </CenteredIntro> */}
         <RainbowBar width="60%" />
         <IntroDescriptionWrapper>
           <IntroSummaryBox>
@@ -110,7 +111,7 @@ function Intro({ theme }) {
                     textUnderlineOffset: ".1rem",
                   }}
                 >
-                  New developers join project teams
+                  New developers join agile teams
                 </span>{" "}
                 to work and learn in a supportive environment
               </li>
@@ -126,7 +127,7 @@ function Intro({ theme }) {
                   Dev Launchers runs weekly workshops
                 </span>{" "}
                 to provide experience for leaders and learners while working on
-                their projects
+                impactful projects
               </li>
             </ol>
           </IntroDescription>
