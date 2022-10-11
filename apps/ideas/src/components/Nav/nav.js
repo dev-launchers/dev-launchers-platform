@@ -12,7 +12,7 @@ const Nav = function (props) {
     <div className="nav">
       <a style={{paddingLeft:"2rem", cursor:"pointer"}}>
         <Link href="/ideas">
-          <h4>💡Ideas</h4>
+          <h4>💡IdeaSpace (Beta)</h4>
         </Link>
       </a>
       <a style={{paddingLeft:"2rem", cursor:"pointer"}}>
