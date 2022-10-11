@@ -6,20 +6,7 @@ export const Wrapper = styled.div`
   align-items: center; */
   position: relative;
   z-index: 1;
-  background-color: ${({ theme }) => theme?.colors?.OuterSpace};
-
-  /* & > #background {
-    position: absolute;
-    right: 0;
-    top: 18%;
-    z-index: -1;
-    height: 368.23px;
-    width: 100%;
-    background-color: ${({ theme }) => theme?.colors?.BlackCoral};
-  }
-  & > :not(#background) {
-    max-width: 1440px;
-  } */
+  background-color: ${({ theme }) => theme?.colors?.White};
 `;
 
 export const HeadingContainer = styled.div`
@@ -27,7 +14,7 @@ export const HeadingContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme?.colors?.LightGray};
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
   text-align: center;
   margin: 0;
   row-gap: 1rem;

@@ -40,7 +40,7 @@ function apply() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <BoxContainer bgColor="OuterSpace">
+      <BoxContainer bgColor="White">
         <SignUpForm />
       </BoxContainer>
     </>

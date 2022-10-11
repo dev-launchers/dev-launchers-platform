@@ -1,6 +1,6 @@
 import {
   FeaturedProducts, FeaturedProductsSection, Heading, HeadingContainer, Wrapper
-} from "../OpportunitiesAggregator/StyledOpportunitiesAggregator";
+} from "../../modules/OpportunitiesAggregator/StyledOpportunitiesAggregator";
 
 import * as React from "react";
 import Slider from "react-slick";
@@ -13,7 +13,7 @@ import FilteringComponent, {
 import ShortCard from "./ShortCard";
 interface Props extends FilteringComponentProps {}
 
-const OpportunitiesAggregatorWithRoles: React.FunctionComponent<Props> = ({
+const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
@@ -39,28 +39,16 @@ const OpportunitiesAggregatorWithRoles: React.FunctionComponent<Props> = ({
   };
   return (
     <Wrapper>
-      <BoxContainer 
-        paddingVertical={32}
-        bgColor="BlackCoral"
-      >
+      <BoxContainer paddingVertical={32}>
         <HeadingContainer>
           <Heading>Join Us!</Heading>
           <span>Find a Project to Join!</span>
         </HeadingContainer>
       </BoxContainer>
       <div id="background" />
-
-      <BoxContainer 
-        paddingHorizontal={20} 
-        paddingVertical={32}
-        bgColor="OuterSpace"
-      >
-        <FilteringComponent projects={projects} opportunities={opportunities} />
-      </BoxContainer>
-
       <FeaturedProductsSection>
         <BoxContainer
-          bgColor="BlackCoral"
+          bgColor="NEUTRAL_1"
           paddingVertical={35}
           paddingHorizontal={16}
         >
@@ -86,9 +74,11 @@ const OpportunitiesAggregatorWithRoles: React.FunctionComponent<Props> = ({
           </Slider>
         </BoxContainer>
       </FeaturedProductsSection>
-      <div className="pusher" style={{height:"5rem"}}></div>
+      <BoxContainer paddingHorizontal={20} paddingVertical={32}>
+        <FilteringComponent projects={projects} opportunities={opportunities} />
+      </BoxContainer>
     </Wrapper>
   );
 };
 
-export default OpportunitiesAggregatorWithRoles;
+export default OpportunitiesAggregator;

@@ -12,7 +12,8 @@ export const Tags = styled.div`
 
 export const ColumnTitle = styled.div`
   font-family: ${({ theme }) => theme.fonts.headline};
-  color: ${({ theme }) => theme?.colors?.AntiFlashWhite};
+  color:${({ color, theme }) =>
+    color ? color : theme?.colors?.NEUTRAL_2};
   font-size: 3rem;
   font-weight: 400;
   padding: 0.375rem;
@@ -25,12 +26,14 @@ export const HeaderBlock = styled.div`
 
 export const Column = styled.div<{ bgColor?: string; w?: string; fa?: string }>`
   background-color: ${({ bgColor, theme }) =>
-    bgColor ? bgColor : theme?.colors?.Crayola};
+    bgColor ? bgColor : theme?.colors?.NEUTRAL_1};
+  color:${({ color, theme }) =>
+    color ? color : theme?.colors?.NEUTRAL_2};
   flex-basis: ${({ w }) => (w ? w : "50%")};
   align-items: ${({ fa }) => (fa ? fa : "flex-start")};
   display: flex;
   flex-direction: column;
-  border-radius: 25px 25px 0px 0px;
+  //border-radius: 25px 25px 0px 0px;
   padding: 1rem;
 `;
 
@@ -65,7 +68,7 @@ export const Vision = styled.div`
 `;
 
 export const Username = styled.div`
-  color: ${({ theme }) => theme.colors.SilverSand};
+  color: ${({ theme }) => theme.colors.Black};
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 2.1875rem;
@@ -75,13 +78,13 @@ export const UsernameAvatar = styled.img`
   height: 2.1875rem;
 `;
 export const CreationDate = styled.div`
-  color: ${({ theme }) => theme.colors.SilverSand};
+  color: ${({ theme }) => theme.colors.Black};
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 2.1875rem;
 `;
 export const Commitment = styled.div`
-  color: ${({ theme }) => theme.colors.SilverSand};
+  color: ${({ theme }) => theme.colors.Black};
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 2.1875rem;

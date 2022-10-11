@@ -272,7 +272,7 @@ function SubmitIdeaForm() {
               </Question2>
               <p className="text">
                 After submitting your idea will be reviewed and enter the
-                workshopping stage !
+                workshopping stage!
               </p>
               <Submit type="submit">
                 {" "}

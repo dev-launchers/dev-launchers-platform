@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Header = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes.large};
-  color: ${({ theme }) => theme?.colors?.LightGray};
+  color: ${({ theme }) => theme?.colors?.Black};
   font-family: ${({ theme }) => theme.fonts.headline};
   border-bottom: none;
 `;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  background-color: ${({ theme }) => theme.colors.OuterSpace};
+  background-color: ${({ theme }) => theme.colors.White};
 `;
 export const MessageWrapper = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ export const MessageWrapper = styled.div`
   align-items: center;
   padding: 30px;
   margin: 30px;
-  background-color: ${({ theme }) => theme?.colors?.Crayola};
+  background-color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
   border-radius: 30px;
   width: 80%;
   word-wrap: break-word;

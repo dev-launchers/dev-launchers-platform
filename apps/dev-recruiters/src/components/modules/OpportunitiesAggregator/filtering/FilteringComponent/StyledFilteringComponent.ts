@@ -12,7 +12,7 @@ export const FiltersWrapper = styled.div`
 export const SectionTitle = styled.p<{ Mobile?: boolean }>`
   font-family: ${({ theme }) => theme?.fonts?.normal}, sans-serif;
   font-size: 18px;
-  color: ${({ theme }) => theme?.colors?.White};
+  color: ${({ theme }) => theme?.colors?.Black};
   padding-bottom: 20.5px;
 
   margin: 0;

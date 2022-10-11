@@ -16,7 +16,7 @@ export default function Learn() {
         <h1 id="title">Learn Code and Design</h1>
         <div className="page-description">
           These resources familiarize students with the concepts and tools
-          needed to begin creating their own apps and games!
+          needed to begin creating their own apps!
         </div>
         <hr />
         <br />

@@ -17,7 +17,7 @@ export default function WelcomePage() {
 
         <div id="welcomeWrapper">
           <h1 style={{width:"100%",textAlign:"center"}}>
-            Dev Ideas
+            IdeaSpace (Beta)
           </h1>
           <SubmitIdea />
         </div>

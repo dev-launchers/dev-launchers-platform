@@ -5,7 +5,7 @@ export const ItemContainer = styled.div`
   width: 100%;
   height: auto;
   font-family: ${({ theme }) => theme?.fonts?.normal};
-  background: ${({ theme }) => theme?.colors?.White};
+  background: ${({ theme }) => theme?.colors?.NEUTRAL_2};
   display: flex;
   flex-direction: row;
   border-radius: 1.875rem;

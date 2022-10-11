@@ -20,8 +20,8 @@ export default function NeedHelpSection() {
         }}
       >
         <b>Need some help?</b>
-        <GameIdeaGeneratorButton />
         <AppIdeaGeneratorButton />
+        <GameIdeaGeneratorButton />
         <JoinProjectTeamButton />
       </div>
     </div>

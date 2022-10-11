@@ -42,7 +42,7 @@ export default function useProjects() {
           return {...project, opportunities:[opportunity]};
         })];
         return accumulator;
-      }, [])
+      }, []);
       setProjects(list);
       setFilteredProjects(list);
       setProjectsLoaded(true);

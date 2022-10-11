@@ -23,7 +23,7 @@ export default function LongCard({ description, details }: Props) {
     <>
       <Container>
         <HeaderCard>
-          <TextBold>Description</TextBold>
+          <h2 style={{padding: "1rem", margin: "0"}}>Description</h2>
         </HeaderCard>
         <FooterCard>
           {isExpanded ? (
