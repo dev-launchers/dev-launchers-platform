@@ -1,20 +1,47 @@
-import React from "react";
-import CircularIndeterminateLoader from "../Loader/CircularIndeterminateLoader";
-import IdeaCard from "./IdeaCard";
-import StyledIdeaCards from "./StyledIdeaCards/StyledIdeaCards";
-import { TextCardTitleBox } from "./StyledIdeaCard";
-import StyledCardsWrapper from "../CardsWrapper/StyledCardsWrapper";
-import axios from "axios";
-import { env } from "../../utils/EnvironmentVariables";
-import ProjectFilter from "./ProjectFilter/ProjectFilter";
-import Grid from "@mui/material/Grid";
+import React from 'react';
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
+import IdeaCard from './IdeaCard';
+import StyledIdeaCards from './StyledIdeaCards/StyledIdeaCards';
+import { TextCardTitleBox } from './StyledIdeaCard';
+import StyledCardsWrapper from '../CardsWrapper/StyledCardsWrapper';
+import axios from 'axios';
+import { env } from '../../utils/EnvironmentVariables';
+import ProjectFilter from './ProjectFilter/ProjectFilter';
+import Grid from '@mui/material/Grid';
 
 function IdeaCardList() {
   const [cards, setCards] = React.useState([]);
   const [selectedCard, setSelectedCard] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [lastUpdatedSortOrder, setLastUpdatedSortOrder] = React.useState("");
   const [sortedCards, setSortedCards] = React.useState([]);
+
+  const sortingConfigs = [
+    { value: 'default', label: '', isAscending: false },
+    {
+      value: 'updated_at',
+      label: 'Last Updated: Most Recent to Least Recent',
+      isAscending: false,
+    },
+    {
+      value: 'updated_at',
+      label: 'Last Updated: Least Recent to Most Recent',
+      isAscending: true,
+    },
+    {
+      value: 'hourCommitmentMin',
+      label: 'Minimum Time Commitment: Greatest to Least',
+      isAscending: false,
+    },
+    {
+      value: 'hourCommitmentMin',
+      label: 'Minimum Time Commitment: Least to Greatest',
+      isAscending: true,
+    },
+  ];
+
+  const handleSetSortedCards = (sortedCardList) => {
+    setSortedCards(sortedCardList);
+  };
 
   React.useEffect(() => {
     axios
@@ -32,58 +59,15 @@ function IdeaCardList() {
       });
   }, []);
 
-  const handleSetFilteredCards = (filteredCardList) => {
-    setSortedCards(filteredCardList);
-  };
-
-  const sortIdeaCards = (order, criteria) => {
-    console.log(`lastUpdatedSortOrder is ${criteria}`);
-    let ideaCardsClone = JSON.parse(JSON.stringify(cards));
-    if (order === "ascending") {
-      ideaCardsClone.sort((a, b) => {
-        return a[criteria] < b[criteria]
-          ? -1
-          : a[criteria] > b[criteria]
-          ? 1
-          : 0;
-      });
-    } else {
-      ideaCardsClone.sort((a, b) => {
-        return a[criteria] > b[criteria]
-          ? -1
-          : a[criteria] < b[criteria]
-          ? 1
-          : 0;
-      });
-    }
-    console.log(ideaCardsClone);
-    ideaCardsClone.forEach((element) => {
-      console.log(element);
-    });
-    handleSetFilteredCards(ideaCardsClone);
-  };
-
-  const handleSetLastUpdatedSortOrderChange = (e) => {
-    if (e.target.id === "clearSort") {
-      setLastUpdatedSortOrder("");
-      const emptyArray = [];
-      setSortedCards(emptyArray);
-      return;
-    }
-    setLastUpdatedSortOrder(e.target.value);
-    sortIdeaCards(e.target.value, "updated_at");
-  };
-
   return (
     <StyledIdeaCards>
       {loading === true ? (
-        ""
+        ''
       ) : (
         <ProjectFilter
-          handleSetLastUpdatedSortOrderChange={
-            handleSetLastUpdatedSortOrderChange
-          }
-          lastUpdatedSortOrder={lastUpdatedSortOrder}
+          sortingConfigs={sortingConfigs}
+          cards={cards}
+          handleSetSortedCards={handleSetSortedCards}
         />
       )}
       <StyledCardsWrapper>
@@ -109,7 +93,7 @@ function IdeaCardList() {
         {loading ? (
           <CircularIndeterminateLoader text="Loading..." color="black" />
         ) : (
-          ""
+          ''
         )}
       </StyledCardsWrapper>
     </StyledIdeaCards>
