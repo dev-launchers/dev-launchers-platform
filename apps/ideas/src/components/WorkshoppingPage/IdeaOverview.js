@@ -37,6 +37,30 @@ function IdeaOverview(props) {
           <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.description?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
           : ""
         }
+        <br />
+        {props.selectedCard.targetAudience ? 
+          <div>
+            <h4>Target Audience</h4>
+            <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.targetAudience?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
+          </div>
+          : ""
+        }
+        <br />
+        {props.selectedCard.features ? 
+          <div>
+            <h4>Features</h4>
+            <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.features?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
+          </div>
+          : ""
+        }
+        <br />
+        {props.selectedCard.experience ? 
+          <div>
+            <h4>Experience Requirements</h4>
+            <p><ReactMarkdown parserOptions={{commonmark:true}}>{props.selectedCard?.experience?.replaceAll('\n', '  \n')}</ReactMarkdown></p>
+          </div>
+          : ""
+        }
       </Description>
     </Idea>
   )
