@@ -2807,6 +2807,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devlaunchers/ideas@workspace:apps/ideas"
   dependencies:
+    "@babel/core": ^7.18.9
     "@babel/runtime": 7.13.8
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
@@ -2815,6 +2816,7 @@ __metadata:
     "@material-ui/core": ^4.12.4
     "@mui/material": ^5.8.4
     axios: ^0.21.1
+    babel-loader: ^8.2.5
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
     eslint: 8.21.0
