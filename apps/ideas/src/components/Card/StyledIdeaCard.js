@@ -59,6 +59,7 @@ export const TextCardTitleDescription = styled.p`
   color: #FFFFFF;
   @media screen and (max-width: 600px) {
     font-size: 1.0rem;
+  }
 `;
 
 
@@ -71,7 +72,7 @@ export const IdeaDetails = styled.div`
   flex-direction: row;
   align-items:top;
   justify-content:center;
-  padding: 10px
+  padding: 10px;
 `;
 
 
