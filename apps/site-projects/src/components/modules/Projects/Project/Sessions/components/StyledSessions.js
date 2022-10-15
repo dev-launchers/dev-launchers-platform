@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 1rem;
 `;
 export const TitleFlex = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ export const Title = styled.h3`
 export const SubHeading = styled.h5`
   font-family: Abel;
   font-weight: normal;
-  font-size: 22px;
+  font-size: 2rem;
   line-height: 142.4%;
   /* or 31px */
 

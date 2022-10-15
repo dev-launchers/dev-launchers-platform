@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./submitIdea.css";
 import { Link } from "react-router-dom";
+import { useRouter } from "next/router"
 
 import { env } from "../../utils/EnvironmentVariables";
 
@@ -17,6 +18,8 @@ import {
 } from "./styledSubmitIdea";
 
 function SubmitIdeaForm() {
+  const router = useRouter();
+
   const [selected, setSelected] = useState("form");
   const [sending, setSending] = useState(false);
 
@@ -76,6 +79,8 @@ function SubmitIdeaForm() {
     const res = await axios.post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`, state);
 
     if (res.status === 200) {
+      router.push(`workshopping/${res.data.id}`);
+      /*
       setIdeaId(res.data.id);
       setIdeaName("");
       setTargetAudience("");
@@ -88,6 +93,7 @@ function SubmitIdeaForm() {
       setFeatures("");
       setExperience("");
       setSending(false);
+      */
     } else {
       alert("Unable to register your idea.");
       setSending(false);
