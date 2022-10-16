@@ -5,7 +5,7 @@ const HeaderCard = styled.div`
   padding: 19px 21.46px 8px 29.85px;
   // height: 160px;
   width: 100%;
-  height: 10rem;
+  //height: 10rem;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
 `;

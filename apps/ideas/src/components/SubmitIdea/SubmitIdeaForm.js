@@ -242,21 +242,15 @@ function SubmitIdeaForm() {
                   onChange={(e) => setTargetAudience(e.target.value)}>
                 </textarea>
               </Question2>
-              <Question>
+              {/* <Question>
                 <p>What features would your idea have?</p>
-                {/* <input
-                  type="text"
-                  name="features"
-                  value={features}
-                  onChange={(e) => setFeatures(e.target.value)}
-                /> */}
                 <input
                   type="text"
                   name="features"
                   value={features}
                   onChange={(e) => setFeatures(e.target.value)}
                 />
-              </Question>
+              </Question> */}
               <Question2>
                 <p>Do you have a catchy tagline for this idea submission?</p>
                 {/* <input

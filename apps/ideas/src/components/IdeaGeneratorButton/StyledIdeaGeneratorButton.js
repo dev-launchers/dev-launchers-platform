@@ -8,14 +8,14 @@ export const ButtonWrapper = styled.div`
   margin: 0.5%;
   cursor: pointer;
   border: none;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 1);
   color: white;
   text-align: center;
   font-size: 2rem;
   border-radius:15px;
 
-  :hover {
-    background-color: rgba(0, 0, 0, 1);
+  &:hover {
+    background-color: rgba(0, 0, 0, .8);
     color: rgb(240, 240, 240);
   }
 

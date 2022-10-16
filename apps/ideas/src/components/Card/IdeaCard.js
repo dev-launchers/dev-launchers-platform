@@ -55,7 +55,7 @@ function IdeaCard({ cards, setSelectedCard }) {
       <HeaderCard>
         <HeaderContent>
           <HeaderTitle>{cards.ideaName}</HeaderTitle>
-          <HeaderDescription>{cards.description}</HeaderDescription>
+          <HeaderDescription>{cards.tagline}</HeaderDescription>
         </HeaderContent>
       </HeaderCard>
       <MainCard>
