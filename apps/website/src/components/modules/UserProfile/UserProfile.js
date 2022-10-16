@@ -42,14 +42,6 @@ export default function UserProfile({ otherUser }) {
         if (data) {
           setProjects(data);
 
-          const myProjects = [];
-          data.map((project) => {
-            [...project.team.leaders, ...project.team.members].map((member) => {
-              if (member.id == userData.id) myProjects.push(project);
-            });
-          });
-          setMyProjects(myProjects);
-
           const tempOpportunities = [];
           data.map((project) => {
             project.opportunities.map((opportunity) => {
@@ -64,6 +56,15 @@ export default function UserProfile({ otherUser }) {
         console.error("Could not fetch project data");
       });
   };
+  React.useEffect(() => {
+    const myProjects = [];
+    projects.map((project) => {
+      [...project.team.leaders, ...project.team.members].map((member) => {
+        if (member.id == userData.id) myProjects.push(project);
+      });
+    });
+    setMyProjects(myProjects);
+  }, [projects, userData]);
   // End Projects/Opportunities
 
 
@@ -221,19 +222,19 @@ export function UserProfileView({
                 <UserProjects myProjects={myProjects} />
               </TabPanel>
               
-              <TabPanel key={0}>
+              <TabPanel key={1}>
                 <People people={people} />
               </TabPanel>
               
-              <TabPanel key={1}>
+              <TabPanel key={2}>
                 <UserInterests interests={interests} />
               </TabPanel>
               
-              <TabPanel key={2}>
+              <TabPanel key={3}>
                 <RecommendedIdeas ideas={ideas}  />
               </TabPanel>
               
-              <TabPanel key={3}>
+              <TabPanel key={4}>
                 <Opportunities opportunities={opportunities} />
               </TabPanel>
 
