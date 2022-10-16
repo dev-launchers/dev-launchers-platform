@@ -16,26 +16,22 @@ function IdeaCardList() {
   const [sortedCards, setSortedCards] = React.useState([]);
 
   const sortingConfigs = [
-    { value: 'default', label: '', isAscending: false },
+    { value: 'default', label: '' },
     {
-      value: 'updated_at',
+      value: 'descending:updated_at',
       label: 'Last Updated: Most Recent to Least Recent',
-      isAscending: false,
     },
     {
-      value: 'updated_at',
+      value: 'ascending:updated_at',
       label: 'Last Updated: Least Recent to Most Recent',
-      isAscending: true,
     },
     {
-      value: 'hourCommitmentMin',
+      value: 'descending:hourCommitmentMin',
       label: 'Minimum Time Commitment: Greatest to Least',
-      isAscending: false,
     },
     {
-      value: 'hourCommitmentMin',
+      value: 'ascending:hourCommitmentMin',
       label: 'Minimum Time Commitment: Least to Greatest',
-      isAscending: true,
     },
   ];
 
