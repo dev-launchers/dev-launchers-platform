@@ -58,7 +58,7 @@ function CommentForm(props) {
               // In case you have a limitation
               // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
             }}
-            style={{width:"100%", overflow:"hidden", white-space: pre}} // "white-space: pre" is intended to preserve copy-pasted line breaks
+            style={{width:"100%", overflow:"hidden"}}
             name="text"
             placeholder="What are your thoughts? (max 250 characters)"
             value={props.handleTextChange}
