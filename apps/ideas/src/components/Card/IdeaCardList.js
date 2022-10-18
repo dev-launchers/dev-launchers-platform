@@ -18,20 +18,16 @@ function IdeaCardList() {
   const sortingConfigs = [
     { value: 'default', label: '' },
     {
+      value: 'descending:mostRecentCommentTime',
+      label: 'Recent Activity',
+    },
+    {
       value: 'descending:updated_at',
-      label: 'Last Updated: Most Recent to Least Recent',
-    },
-    {
-      value: 'ascending:updated_at',
-      label: 'Last Updated: Least Recent to Most Recent',
-    },
-    {
-      value: 'descending:hourCommitmentMin',
-      label: 'Minimum Time Commitment: Greatest to Least',
+      label: 'Recent Ideas',
     },
     {
       value: 'ascending:hourCommitmentMin',
-      label: 'Minimum Time Commitment: Least to Greatest',
+      label: 'Time Commitment',
     },
   ];
 
@@ -46,7 +42,12 @@ function IdeaCardList() {
       })
       .then((response) => {
         const getCards = response.data.map((item) => {
-          return item;
+          return {
+            ...item,
+            mostRecentCommentTime: new Date(
+              item.comments[0]?.updated_at
+            ).getTime(),
+          };
         });
 
         setLoading(false);

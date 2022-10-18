@@ -29,7 +29,7 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
       const ideaCardsClone = JSON.parse(JSON.stringify(cards));
       setSortedCards(ideaCardsClone);
     }
-  }, []);
+  }, [cards]);
 
   const sortIdeaCards = (selectedSortOrderAndCriteria) => {
     console.log(selectedSortOrderAndCriteria);
@@ -38,8 +38,9 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
       ? selectedSortOrderAndCriteria.substring(10)
       : selectedSortOrderAndCriteria.substring(11);
     console.log(`criteria is ${criteria}`);
+    console.log(`sortedCards is `, sortedCards);
     const sortedCardsClone = JSON.parse(JSON.stringify(sortedCards));
-    //console.log(`sortedCardsClone is ${sortedCardsClone}`);
+    console.log(`sortedCardsClone is `, sortedCardsClone);
     if (isAscending) {
       sortedCardsClone.sort((a, b) => {
         return a[criteria] < b[criteria]
