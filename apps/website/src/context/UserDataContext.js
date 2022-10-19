@@ -30,9 +30,9 @@ const DEFAULT_USER = {
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    // Setting timeout because of environment variable hack
     axios(`${env().STRAPI_URL}/users/me`, {
       withCredentials: true,
     })
@@ -51,13 +51,15 @@ function useUserData() {
           volunteerHours: currentUser.point.volunteerHours,
           interests: currentUser.interests,
         });
+        setIsAuthenticated(true);
       })
       .catch(() => {
         // setUserData({ id: "invalid" });
+        setIsAuthenticated(false);
       });
   }, []);
 
-  return { userData, setUserData };
+  return { userData, setUserData, isAuthenticated };
 }
 
 // Step 2: Declare your context state object to share the state with other components

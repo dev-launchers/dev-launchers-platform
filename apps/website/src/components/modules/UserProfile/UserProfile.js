@@ -19,11 +19,13 @@ import { env } from '../../../utils/EnvironmentVariables';
 
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
+import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
 
 // State management component
 export default function UserProfile({ otherUser }) {
-  const { userData } = useUserDataContext();
+
+  const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -31,6 +33,13 @@ export default function UserProfile({ otherUser }) {
   const [ideas, setIdeas] = React.useState([]);
   const [people, setPeople] = React.useState([]);
   const [interests, setInterests] = React.useState([]);
+  
+  // If user hasn't set a username, redirect them to the signup form
+  const router = useRouter();
+  React.useEffect(() => {
+    if (isAuthenticated && userData.name === '')
+      router.push("/signup");
+  }, [isAuthenticated]);
 
   // Start Projects/Opportunities
   React.useEffect(() => {
@@ -164,7 +173,7 @@ export function UserProfileView({
 
   return (
     <PageBody>
-      {userData?.id || (otherUser?.id && !loading) || true ? (
+      {userData?.id || (otherUser?.id && !loading) ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
