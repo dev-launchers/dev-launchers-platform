@@ -51,8 +51,8 @@ function CommentForm(props) {
             alt="user_image"
             src={`https://picsum.photos/70?random=${props.id}`}
           />
-          <!-- source: https://stackoverflow.com/a/12745387 -->
-          <input disabled  maxlength="3" size="3" value="250" id="counter"></input>  <!-- shows how many characters are left available in the comments form -->
+          {/* source: https://stackoverflow.com/a/12745387 */}
+          <input disabled  maxlength="3" size="3" value="250" id="counter"></input>  {/* shows how many characters are left available in the comments form */}
           <br></br>
           <textarea
             onKeyUp={(e) => {
@@ -69,7 +69,7 @@ function CommentForm(props) {
             onChange={handleTextChange}
             maxlength="250"></textarea>
           <script>
-            // returns how many characters you can add to the comments form
+            {/* returns how many characters you can add to the comments form */}
             function textCounter(field,field2,maxlimit)
             {
               var countfield = document.getElementById(field2);
