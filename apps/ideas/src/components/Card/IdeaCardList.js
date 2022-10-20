@@ -65,6 +65,8 @@ function IdeaCardList() {
           sortingConfigs={sortingConfigs}
           cards={cards}
           handleSetSortedCards={handleSetSortedCards}
+          showClearSortButton
+          clearSortButtonLabel={'Clear Sorting Criteria'}
         />
       )}
       <StyledCardsWrapper>

@@ -1,6 +1,5 @@
 import React from 'react';
-import { FilterDiv, ButtonDiv } from './StyledProjectFilter';
-import Button from '../../common/Button/Button';
+import { FilterDiv } from './StyledProjectFilter';
 
 const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
   const [sortOrderAndCriteria, setSortOrderAndCriteria] = React.useState('');
@@ -32,15 +31,17 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
   }, [cards]);
 
   const sortIdeaCards = (selectedSortOrderAndCriteria) => {
-    console.log(selectedSortOrderAndCriteria);
+    console.log(
+      `selectedSortOrderAndCriteria is ${selectedSortOrderAndCriteria}`
+    );
+    //Pass in drop down values as a string starting with ascending or descending
+    //Then add a : followed by the value to sort by
+    //Ex: ascending:updated_at
     let isAscending = selectedSortOrderAndCriteria.includes('ascending');
     let criteria = isAscending
       ? selectedSortOrderAndCriteria.substring(10)
       : selectedSortOrderAndCriteria.substring(11);
-    console.log(`criteria is ${criteria}`);
-    console.log(`sortedCards is `, sortedCards);
     const sortedCardsClone = JSON.parse(JSON.stringify(sortedCards));
-    console.log(`sortedCardsClone is `, sortedCardsClone);
     if (isAscending) {
       sortedCardsClone.sort((a, b) => {
         return a[criteria] < b[criteria]
@@ -58,20 +59,11 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
           : 0;
       });
     }
-    console.log(sortedCardsClone);
-    sortedCardsClone.forEach((element) => {
-      console.log(element);
-    });
     handleSetSortedCards(sortedCardsClone);
   };
 
   const handleSetSortOrderAndCriteriaChange = (e) => {
-    console.log(`e.target.value is ${e.target.value}`);
-    if (e.target.id === 'clearSort' || e.target.value === 'default') {
-      setSortOrderAndCriteria('');
-      const emptyArray = [];
-      setSortedCards(emptyArray);
-      handleSetSortedCards(sortedCards);
+    if (e.target.value === 'default' || !e.target.value) {
       return;
     }
     setSortOrderAndCriteria(e.target.value);
@@ -85,21 +77,10 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
         name="sortBy"
         id="sortBy"
         onChange={handleSetSortOrderAndCriteriaChange}
-        defaultValue={sortOrderAndCriteria}
         value={sortOrderAndCriteria}
       >
         {dropDownOptions}
       </select>
-      <Button
-        name="clearSort"
-        id="clearSort"
-        type="button"
-        style={{ marginTop: '10px' }}
-        value=""
-        onClick={handleSetSortOrderAndCriteriaChange}
-      >
-        Clear Sorting Criteria
-      </Button>
     </FilterDiv>
   );
 };
