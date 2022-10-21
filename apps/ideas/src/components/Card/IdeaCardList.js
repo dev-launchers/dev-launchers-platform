@@ -6,7 +6,7 @@ import { TextCardTitleBox } from './StyledIdeaCard';
 import StyledCardsWrapper from '../CardsWrapper/StyledCardsWrapper';
 import axios from 'axios';
 import { env } from '../../utils/EnvironmentVariables';
-import ProjectFilter from './ProjectFilter/ProjectFilter';
+import SortableDropdown from './SortableDropdown/SortableDropdown';
 import Grid from '@mui/material/Grid';
 
 function IdeaCardList() {
@@ -16,24 +16,27 @@ function IdeaCardList() {
   const [sortedCards, setSortedCards] = React.useState([]);
 
   const sortingConfigs = [
-    { value: 'default', label: '' },
+    { value: 'default', label: '', isAscending: false },
     {
-      value: 'descending:mostRecentCommentTime',
+      value: 'mostRecentCommentTime',
       label: 'Recent Activity',
+      isAscending: false,
     },
     {
-      value: 'descending:updated_at',
+      value: 'updated_at',
       label: 'Recent Ideas',
+      isAscending: false,
     },
     {
-      value: 'ascending:hourCommitmentMin',
+      value: 'hourCommitmentMin',
       label: 'Time Commitment',
+      isAscending: true,
     },
   ];
 
-  const handleSetSortedCards = (sortedCardList) => {
+  /*const handleSetSortedCards = (sortedCardList) => {
     setSortedCards(sortedCardList);
-  };
+  };*/
 
   React.useEffect(() => {
     axios
@@ -61,10 +64,10 @@ function IdeaCardList() {
       {loading === true ? (
         ''
       ) : (
-        <ProjectFilter
+        <SortableDropdown
           sortingConfigs={sortingConfigs}
-          cards={cards}
-          handleSetSortedCards={handleSetSortedCards}
+          elements={cards}
+          handleSetSortedElements={setSortedCards}
           showClearSortButton
           clearSortButtonLabel={'Clear Sorting Criteria'}
         />

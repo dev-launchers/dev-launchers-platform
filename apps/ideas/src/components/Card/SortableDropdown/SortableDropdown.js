@@ -1,10 +1,14 @@
 import React from 'react';
-import { FilterDiv } from './StyledProjectFilter';
+import { FilterDiv } from './StyledSortableDropdown';
 
-const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
+const SortableDropdown = ({
+  sortingConfigs,
+  elements,
+  handleSetSortedElements,
+}) => {
   const [sortOrderAndCriteria, setSortOrderAndCriteria] = React.useState('');
   const [dropDownOptions, setDropDownOptions] = React.useState([]);
-  const [sortedCards, setSortedCards] = React.useState([]);
+  const [sortedElements, setSortedElements] = React.useState([]);
 
   React.useEffect(() => {
     console.log(
@@ -15,7 +19,14 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
       sortingConfigs.map((option, index) => {
         console.log(`option in map function is `, option);
         return (
-          <option key={index} value={option.value}>
+          <option
+            key={index}
+            value={
+              option.isAscending
+                ? `ascending:${option.value}`
+                : `descending:${option.value}`
+            }
+          >
             {option.label}
           </option>
         );
@@ -24,26 +35,26 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
       `getDropDownOptions is ${JSON.stringify(getDropDownOptions, null, 2)}`
     );
     setDropDownOptions(getDropDownOptions);
-    if (cards && cards.length > 0) {
-      const ideaCardsClone = JSON.parse(JSON.stringify(cards));
-      setSortedCards(ideaCardsClone);
+    if (elements && elements.length > 0) {
+      const elementsClone = JSON.parse(JSON.stringify(elements));
+      setSortedElements(elementsClone);
     }
-  }, [cards]);
+  }, [elements]);
 
-  const sortIdeaCards = (selectedSortOrderAndCriteria) => {
+  const sortElements = (selectedSortOrderAndCriteria) => {
     console.log(
       `selectedSortOrderAndCriteria is ${selectedSortOrderAndCriteria}`
     );
-    //Pass in drop down values as a string starting with ascending or descending
-    //Then add a : followed by the value to sort by
-    //Ex: ascending:updated_at
+    //Checks for concatenated string resulting from isAscending sortingConfig and value sortingConfig
+    //Example: sortingConfig isAscending === true and sortingConfig value === 'hourCommitmentMin'
+    //Result: ascending:hourCommitmentMin
     let isAscending = selectedSortOrderAndCriteria.includes('ascending');
     let criteria = isAscending
       ? selectedSortOrderAndCriteria.substring(10)
       : selectedSortOrderAndCriteria.substring(11);
-    const sortedCardsClone = JSON.parse(JSON.stringify(sortedCards));
+    const sortedElementsClone = JSON.parse(JSON.stringify(sortedElements));
     if (isAscending) {
-      sortedCardsClone.sort((a, b) => {
+      sortedElementsClone.sort((a, b) => {
         return a[criteria] < b[criteria]
           ? -1
           : a[criteria] > b[criteria]
@@ -51,7 +62,7 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
           : 0;
       });
     } else {
-      sortedCardsClone.sort((a, b) => {
+      sortedElementsClone.sort((a, b) => {
         return a[criteria] > b[criteria]
           ? -1
           : a[criteria] < b[criteria]
@@ -59,7 +70,7 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
           : 0;
       });
     }
-    handleSetSortedCards(sortedCardsClone);
+    handleSetSortedElements(sortedElementsClone);
   };
 
   const handleSetSortOrderAndCriteriaChange = (e) => {
@@ -67,7 +78,7 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
       return;
     }
     setSortOrderAndCriteria(e.target.value);
-    sortIdeaCards(e.target.value);
+    sortElements(e.target.value);
   };
 
   return (
@@ -85,4 +96,4 @@ const ProjectFilter = ({ sortingConfigs, cards, handleSetSortedCards }) => {
   );
 };
 
-export default ProjectFilter;
+export default SortableDropdown;
