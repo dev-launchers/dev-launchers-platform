@@ -3,7 +3,7 @@ import { normalize } from "styled-normalize";
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
-
+    
 html,
 body {
   padding: 0;
@@ -31,6 +31,15 @@ body {
   width: 100%;
   height: 100%;
   font-size: 1.5rem;
+
+  padding: 0;
+  margin: 0;
+  /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: lighter;
+  /* color: ${({ theme }) => theme.colors.NEUTRAL_1}; */
+  background-color:#f0edee;
 }
 
 ::-webkit-scrollbar {
@@ -55,6 +64,13 @@ body {
   font-family: sans-serif;
   font-family: "Nunito Sans", sans-serif;
   text-align: left;
+}
+
+.IdeasApp {
+  /* font-family: sans-serif; */
+  text-align: center;
+  font-family: "Nunito Sans", sans-serif;
+  background-color:#f0edee;
 }
 
 a {
@@ -101,6 +117,10 @@ h3 {
 }
 
 h4 {
+  font-family: "Abel", sans-serif;
+}
+
+h1, h2 {
   font-family: "Abel", sans-serif;
 }
 

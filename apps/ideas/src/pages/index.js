@@ -1,5 +1,4 @@
-import "../styles.css";
-import WelcomePage from '../components/welcomepage.js';
+import WelcomePage from '../components/modules/WelcomePage/WelcomePage';
 import React, { useState } from 'react';
 
 import { GetStaticProps } from "next";
