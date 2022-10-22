@@ -41,6 +41,12 @@ const SortableDropdown = ({
     }
   }, [elements]);
 
+  React.useEffect(() => {
+    if (dropDownOptions.length) {
+      sortElements(dropDownOptions[0].props.value);
+    }
+  }, [dropDownOptions]);
+
   const sortElements = (selectedSortOrderAndCriteria) => {
     console.log(
       `selectedSortOrderAndCriteria is ${selectedSortOrderAndCriteria}`

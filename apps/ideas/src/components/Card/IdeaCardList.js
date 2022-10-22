@@ -16,7 +16,6 @@ function IdeaCardList() {
   const [sortedCards, setSortedCards] = React.useState([]);
 
   const sortingConfigs = [
-    { value: 'default', label: '', isAscending: false },
     {
       value: 'mostRecentCommentTime',
       label: 'Recent Activity',
