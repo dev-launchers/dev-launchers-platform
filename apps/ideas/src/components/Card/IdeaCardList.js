@@ -53,7 +53,6 @@ function IdeaCardList() {
         });
 
         setLoading(false);
-        console.log(JSON.stringify(getCards, null, 2));
         setCards(getCards);
       });
   }, []);

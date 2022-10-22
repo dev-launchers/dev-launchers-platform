@@ -11,13 +11,9 @@ const SortableDropdown = ({
   const [sortedElements, setSortedElements] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(
-      `sortingConfigs are ${JSON.stringify(sortingConfigs, null, 2)}`
-    );
     const getDropDownOptions =
       sortingConfigs.length > 0 &&
       sortingConfigs.map((option, index) => {
-        console.log(`option in map function is `, option);
         return (
           <option
             key={index}
@@ -31,9 +27,6 @@ const SortableDropdown = ({
           </option>
         );
       });
-    console.log(
-      `getDropDownOptions is ${JSON.stringify(getDropDownOptions, null, 2)}`
-    );
     setDropDownOptions(getDropDownOptions);
     if (elements && elements.length > 0) {
       const elementsClone = JSON.parse(JSON.stringify(elements));
@@ -48,9 +41,6 @@ const SortableDropdown = ({
   }, [dropDownOptions]);
 
   const sortElements = (selectedSortOrderAndCriteria) => {
-    console.log(
-      `selectedSortOrderAndCriteria is ${selectedSortOrderAndCriteria}`
-    );
     //Checks for concatenated string resulting from isAscending sortingConfig and value sortingConfig
     //Example: sortingConfig isAscending === true and sortingConfig value === 'hourCommitmentMin'
     //Result: ascending:hourCommitmentMin
