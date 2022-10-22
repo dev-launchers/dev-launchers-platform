@@ -62,7 +62,7 @@ const ProjectsList = ({ projects }) => (
       <meta name="title" content="Our Projects"></meta>
       <meta
         name="description"
-        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+        content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
       ></meta>
 
       <meta property="og:type" content="website"></meta>
@@ -77,7 +77,7 @@ const ProjectsList = ({ projects }) => (
       <meta property="og:title" content="Our Projects"></meta>
       <meta
         property="og:description"
-        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+        content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
       ></meta>
 
       <meta property="twitter:card" content="summary_large_image"></meta>
@@ -88,7 +88,7 @@ const ProjectsList = ({ projects }) => (
       <meta property="twitter:title" content="Our Projects"></meta>
       <meta
         property="twitter:description"
-        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+        content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
       ></meta>
       <meta
         property="twitter:image"

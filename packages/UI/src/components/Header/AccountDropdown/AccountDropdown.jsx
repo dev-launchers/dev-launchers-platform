@@ -19,7 +19,7 @@ export default function AccountDropdown(props) {
             <>
               {' '}
               <AccountMenuDropdownItem>
-                <Link href="/user-profile" passHref>
+                <Link href="/users/me" passHref>
                   <a>Visit Account Page</a>
                 </Link>
               </AccountMenuDropdownItem>
@@ -33,7 +33,7 @@ export default function AccountDropdown(props) {
         <MenuButton
           fontSize="1.2rem"
           href={
-            env().GOOGLE_AUTH_URL +
+            process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
             '?redirectURL=https://devlaunchers.org/users/me'
           }
         >

@@ -1775,15 +1775,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.13.8":
-  version: 7.13.8
-  resolution: "@babel/runtime@npm:7.13.8"
-  dependencies:
-    regenerator-runtime: ^0.13.4
-  checksum: ec53a6b25ee88bde97a7db3bb326eb37c37f92c7926a7d71cc52afa68a1463b46ea46a8a6631289dc603f98ec1ef622d9891ad21c873785e69412065c89872a9
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.10.4, @babel/runtime@npm:^7.10.5, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.17.8, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.18.9, @babel/runtime@npm:^7.19.0, @babel/runtime@npm:^7.3.1, @babel/runtime@npm:^7.4.4, @babel/runtime@npm:^7.5.0, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.7.6, @babel/runtime@npm:^7.8.3, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.19.0
   resolution: "@babel/runtime@npm:7.19.0"
@@ -2807,18 +2798,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devlaunchers/ideas@workspace:apps/ideas"
   dependencies:
-    "@babel/runtime": 7.13.8
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
     "@material-ui/core": ^4.12.4
     "@mui/material": ^5.8.4
+    "@types/luxon": 3.0.0
+    "@types/react": ^17.0.0
     axios: ^0.21.1
+    babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
-    eslint: 8.21.0
+    eslint: ^8.21.0
+    eslint-config-airbnb-base: ^15.0.0
+    eslint-config-next: ^12.2.3
+    eslint-config-prettier: ^8.5.0
+    husky: ^8.0.1
+    lint-staged: ^13.0.3
     next: ^12.1.6
     phosphor-react: ^1.4.1
+    postcss: ^8.4.14
+    prettier: ^2.7.1
     prop-types: ^15.7.2
     react: 17.0.2
     react-burger-menu: ^3.0.8
@@ -2835,7 +2835,7 @@ __metadata:
     styled-components: ^5.3.0
     styled-normalize: ^8.0.7
     tabletop: ^1.6.3
-    typescript: 4.1.3
+    typescript: ^4.7.4
   languageName: unknown
   linkType: soft
 
@@ -32262,16 +32262,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.1.3":
-  version: 4.1.3
-  resolution: "typescript@npm:4.1.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 0a25f7d7cebbc5ad23f41cb30918643460477be265bd3bcd400ffedb77d16e97d46f2b0c31393b2f990c5cf5b9f7a829ad6aff8636988b8f30abf81c656237c0
-  languageName: node
-  linkType: hard
-
 "typescript@npm:4.7.4":
   version: 4.7.4
   resolution: "typescript@npm:4.7.4"
@@ -32289,16 +32279,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 8286a5edcaf3d68e65c451aa1e7150ad1cf53ee0813c07ec35b7abdfdb10f355ecaa13c6a226a694ae7a67785fd7eeebf89f845da0b4f7e4a35561ddc459aba0
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@4.1.3#~builtin<compat/typescript>":
-  version: 4.1.3
-  resolution: "typescript@patch:typescript@npm%3A4.1.3#~builtin<compat/typescript>::version=4.1.3&hash=bda367"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: ed3df76d9b6efb448e5e73bca671698cda353a3807199ad95c78782a857e7685ccc94b799ac885423ced65ee21c87cbbeb823642c5dfd715efae5ebbc6137070
   languageName: node
   linkType: hard
 

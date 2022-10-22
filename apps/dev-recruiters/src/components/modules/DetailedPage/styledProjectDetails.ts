@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.OuterSpace};
+  background-color: ${({ theme }) => theme.colors.White};
   padding: 6rem;
   @media (max-width: 1536px) {
     padding: 2rem;
   }
 `;
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.Argent};
+  background-color: ${({ theme }) => theme.colors.White};
   border-radius: 30px;
   padding-bottom: 2rem;
 
   & > h2 {
     padding: 15px 32px;
     margin-top: 0;
-    background-color: ${({ theme }) => theme.colors.CoolGrey};
+    background-color: ${({ theme }) => theme.colors.White};
     border-radius: 30px;
     font-family: ${({ theme }) => theme?.fonts?.normal};
     font-style: normal;
@@ -51,13 +51,14 @@ export const Card = styled.div`
   position: relative;
   height: max-content;
   min-height: 234px;
-  background-color: ${({ theme }) => theme?.colors?.White};
+  background-color: ${({ theme }) => theme?.colors?.NEUTRAL_2};
   border-radius: 30px;
   flex: 1 1 600px;
   & > h2 {
     padding: 15px 32px;
     margin-top: 0;
-    background-color: ${({ theme }) => theme.colors.CoolGrey};
+    background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
     border-radius: 30px;
     font-family: ${({ theme }) => theme?.fonts?.normal};
     font-style: normal;

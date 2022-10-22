@@ -99,7 +99,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
               <div>
                 {userData?.id ? (
                   <>
-                    <Link href={'/user-profile'} passHref>
+                    <Link href={'/users/me'} passHref>
                       <a className="nav-link">
                         <NavEntry>VISIT ACCOUNT PAGE</NavEntry>
                       </a>
@@ -111,7 +111,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
                 ) : (
                   <a
                     href={
-                      env().GOOGLE_AUTH_URL +
+                      process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                       '?redirectURL=https://devlaunchers.org/users/me'
                     }
                     className="nav-link"

@@ -1,4 +1,3 @@
-import { env } from '@devlaunchers/components/utils/EnvironmentVariables';
 import validateEmail from '@devlaunchers/components/utils/ValidateEmail';
 import axios from 'axios';
 import { useState } from 'react';
@@ -25,7 +24,7 @@ const NewsLetter = (props) => {
       setCheck(true);
     } else {
       axios
-        .post(`${env().STRAPI_URL}/newsletters`, {
+        .post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/newsletters`, {
           email,
         })
         .then(() => {
@@ -38,7 +37,7 @@ const NewsLetter = (props) => {
   };
 
   const sendEmail = () => {
-    EmailValidation(email);
+    EmailValidation();
   };
 
   if (secret) {

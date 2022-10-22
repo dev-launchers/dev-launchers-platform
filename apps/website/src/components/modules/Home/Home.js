@@ -124,9 +124,9 @@ function Home({ theme }) {
                 >
                   square one
                 </span>{" "}
-                all the way through building complex projects working on real
+                all the way through building complex projects working in agile
                 teams. Whether you&apos;re looking to build clean, professional
-                apps and sites, or create fun and engaging videogames, Dev
+                apps and sites, or create scalable data-driven solutions, Dev
                 Launchers has been crafted for <u>YOU</u>.
               </div>
             }
@@ -147,7 +147,7 @@ function Home({ theme }) {
               <div>
                 <p>
                   Change your life while changing the world! Lead ambitious
-                  projects designed to engage new learners and solve real
+                  agile teams designed to engage new learners and solve real
                   problems, all with guidance and support from people who have
                   walked the same path.
                 </p>
@@ -171,7 +171,7 @@ function Home({ theme }) {
           <CtaDescriptionArea
             flexDirection="row"
             title="CREATE"
-            descriptionHeadline="Build epic products, tools, and games used by real people!"
+            descriptionHeadline="Build epic products, tools, and apps used by real people!"
             descriptionContent={
               <div>
                 <p>

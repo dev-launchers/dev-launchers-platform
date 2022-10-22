@@ -9,12 +9,12 @@ export default function Beans({ discordId }) {
   useEffect(() => {
     if (!discordId) return;
     // prettier-ignore
-    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/discord/users/${discordId}/dev-beans`).then(({ data }) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL  }/discord/users/${discordId}/dev-beans`).then(({ data }) => {
       setDevBeans(data);
     });
 
     // prettier-ignore
-    axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/discord/users/${discordId}/golden-beans`).then(({ data }) => {
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL  }/discord/users/${discordId}/golden-beans`).then(({ data }) => {
       setGoldenBeans(data)
     });
   }, [discordId]);

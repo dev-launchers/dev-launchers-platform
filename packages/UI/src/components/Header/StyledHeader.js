@@ -1,4 +1,4 @@
-import logoMonogramImage from '../../images/logo-monogram.png?webp';
+import logoMonogramImage from '../../images/logo-monogram.png';
 import styled from 'styled-components';
 
 export const HeaderBlock = styled.div`

@@ -16,17 +16,18 @@ import {
 } from "./StyledSessions";
 
 // import { env } from "../../../../../utils/EnvironmentVariables";
-const PercentageBar = ({ /* percentage , */ apointmentTime, link, title, date }) => (
+const PercentageBar = ({ /* percentage , */ apointmentTime, link, title, date, weekday }) => (
   <Wrapper>
-    <Title>{apointmentTime}</Title>
-    <Title>{date}</Title>
     <SubHeading>{title}</SubHeading>
-    <Button as="a" href={link} target="_blank" rel="noopener noreferrer">
+    <hr style={{width:"100%"}} />
+    <Title>{weekday+", "+date}</Title>
+    <Title>{apointmentTime}</Title>
+    {/* <Button as="a" href={link} target="_blank" rel="noopener noreferrer">
       <ButtonText>
         <Img />
         <p>Join</p>
       </ButtonText>
-    </Button>
+    </Button> */}
     {/* taking this out untill later implementation
     <PercentageProgress
       data-text={`${percentage}%`}

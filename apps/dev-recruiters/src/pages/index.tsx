@@ -4,6 +4,9 @@ import { Opportunity } from "@devlaunchers/models/opportunity";
 import { Project } from "@devlaunchers/models/project";
 import agent from "@devlaunchers/utility/agent";
 import OpportunitiesAggregator from "../components/modules/OpportunitiesAggregator/OpportunitiesAggregator";
+import OpportunitiesAggregatorWithRoles from "../components/modules/OpportunitiesAggregatorWithRoles/OpportunitiesAggregator";
+
+import { useRouter } from 'next/router'
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let projects: Project[] = [];
@@ -46,8 +49,11 @@ interface Props {
   opportunities: Opportunity[];
 }
 
-const IndexPage = ({ projects, opportunities }: Props) => (
-  <>
+const IndexPage = ({ projects, opportunities }: Props) => {
+  const router = useRouter();
+  const {format} = router.query;
+
+  return <>
     <Head>
       <title>Our Projects</title>
       <meta name="title" content="Our Projects"></meta>
@@ -87,11 +93,18 @@ const IndexPage = ({ projects, opportunities }: Props) => (
       />
       <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
     </Head>
-    <OpportunitiesAggregator
-      projects={projects}
-      opportunities={opportunities}
-    />
+    {format === "roles" ? 
+      <OpportunitiesAggregatorWithRoles
+        projects={projects}
+        opportunities={opportunities}
+      /> : 
+      <OpportunitiesAggregator
+        projects={projects}
+        opportunities={opportunities}
+      />
+    }
+
   </>
-);
+};
 
 export default IndexPage;

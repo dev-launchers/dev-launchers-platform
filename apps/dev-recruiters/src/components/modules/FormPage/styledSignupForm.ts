@@ -6,7 +6,7 @@ export const Form = styled.form`
 `;
 export const Label = styled.label`
   margin: 1rem;
-  color: ${({ theme }) => theme?.colors?.White};
+  color: ${({ theme }) => theme?.colors?.Black};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;
@@ -84,14 +84,14 @@ export const Slider = styled.input.attrs({ type: "range" })`
 
 export const FileUpload = styled.input.attrs({ type: "file" })`
   margin-top: 1.25rem;
-  color: ${({ theme }) => theme?.colors?.OuterSpace};
+  color: ${({ theme }) => theme?.colors?.Black};
   background-color: ${({ theme }) => theme.colors.SilverSand};
   border-radius: 30px;
   width: 40%;
 `;
 
 export const Statement = styled.p`
-  color: ${({ theme }) => theme?.colors?.White};
+  color: ${({ theme }) => theme?.colors?.Black};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: 0.9rem;
   width: 50%;
@@ -101,7 +101,7 @@ export const Statement = styled.p`
   }
 `;
 export const ErrorMsg = styled.div`
-  color: ${({ theme }) => theme.colors.SilverSand};
+  color: ${({ theme }) => theme.colors.Red};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: ${({ theme }) => theme.fontSizes.small};
   margin-left: 1rem;
@@ -119,7 +119,7 @@ export const SubmitButton = styled.button.attrs({ type: "submit" })`
   }
 `;
 export const Header = styled.h1`
-  color: ${({ theme }) => theme?.colors?.White};
+  color: ${({ theme }) => theme?.colors?.Black};
   line-height: 3.5rem;
   border-bottom: none;
   font-family: ${({ theme }) => theme.fonts.headline};
@@ -130,7 +130,7 @@ export const Header = styled.h1`
 `;
 
 export const Tooltip = styled.p`
-  color: ${({ theme }) => theme.colors.SilverSand};
+  color: ${({ theme }) => theme.colors.Black};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: 1rem;
   width: 50%;

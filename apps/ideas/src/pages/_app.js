@@ -7,7 +7,7 @@ import GlobalStyle from "../styles/globals";
 
 import Header from "../components/common/Header";
 import RainbowBar from "../components/common/RainbowBar";
-import Nav from '../components/Nav/nav';
+import Nav from '../components/modules/Nav/nav';
 
 
 import 'react-toastify/dist/ReactToastify.css';
