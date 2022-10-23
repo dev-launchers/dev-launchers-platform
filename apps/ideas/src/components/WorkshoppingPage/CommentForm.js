@@ -52,15 +52,15 @@ function CommentForm(props) {
             src={`https://picsum.photos/70?random=${props.id}`}
           />
           {/* source: https://stackoverflow.com/a/12745387 */}
-          <input disabled  maxlength="3" size="3" value="250" id="counter"></input>  {/* shows how many characters are left available in the comments form */}
-          <br></br>
+          {/* <input disabled  maxlength="3" size="3" value="250" id="counter"></input> */}  {/* shows how many characters are left available in the comments form */}
+          {/* <br></br> */}
           <textarea
             onKeyUp={(e) => {
               e.target.style.height = 'inherit';
               e.target.style.height = `${e.target.scrollHeight}px`; 
               // In case you have a limitation
               // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
-              textCounter(this,'counter',250);
+              //textCounter(this,'counter',250);
             }}
             style={{width:"100%", overflow:"hidden"}}
             name="text"
@@ -68,8 +68,20 @@ function CommentForm(props) {
             value={props.handleTextChange}
             onChange={handleTextChange}
             maxlength="250"></textarea>
-          <script>
-            {/* returns how many characters you can add to the comments form */}
+          {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
+          <div id="the-count">
+            <span id="chars-left">0</span>
+          </div>
+
+          $('textarea').keyup(function() {
+            let characterCount = $(this).val().length;
+            let charsLeft = $('#chars-left');
+            let theCount = $('#the-count');
+            
+            charsLeft.text(250 - characterCount);
+          });
+
+          {/* <script>
             function textCounter(field,field2,maxlimit)
             {
               var countfield = document.getElementById(field2);
@@ -80,7 +92,7 @@ function CommentForm(props) {
                 countfield.value = maxlimit - field.value.length;
               }
             }
-          </script>
+          </script> */}
         </UserComment>
         <button type="submit">Submit</button>
       </form>
