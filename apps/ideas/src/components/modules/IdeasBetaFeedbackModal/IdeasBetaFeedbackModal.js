@@ -35,7 +35,7 @@ const ModalCustomStyles = {
 const IdeasBetaFeedbackModal = () => {
   const [showIcon, setShowIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const MILLISECONDS_IN_DAY = 1000 * 10;
+  const MILLISECONDS_IN_DAY = 1000 * 3600 * 24;
 
   function refreshLastVisited(delay = 2) {
     localStorage.setItem('dl_Ideas_lastVisited', Date.now());
