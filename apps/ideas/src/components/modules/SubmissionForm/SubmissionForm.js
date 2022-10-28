@@ -46,6 +46,7 @@ function SubmissionForm() {
   const [calendly, setCalendly] = useState("");
   const [features, setFeatures] = useState("");
   const [experience, setExperience] = useState("");
+  const [toBeLeader, setToBeLeader] = useState("Yes, I want to be the idea leader");
   //const [timeStamp, setTimeStamp] = useState(new Date());
 
   const submitHandler = async (e) => {
@@ -72,6 +73,7 @@ function SubmissionForm() {
       calendly: calendly,
       features: features,
       experience: experience,
+      toBeLeader: toBeLeader,
     };
 
     const res = await axios.post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`, state);
@@ -266,6 +268,16 @@ function SubmissionForm() {
                   value={tagline}
                   onChange={(e) => setTagline(e.target.value)}>
                 </textarea>
+              </Question2>
+              <Question2>
+                <p>Do you want to be the team leader?</p>
+                <select
+                  style={{ width: "100%", overflow: "hidden" }}
+                  name="toBeLeader"
+                  value={toBeLeader} onChange={(e) => setToBeLeader(e.target.value)}>
+                  <option value="Yes, I want to be the idea leader">Yes, I want to be the idea leader</option>
+                  <option value="No, I just want to work on it">No, I just want to work on it</option>
+                </select>
               </Question2>
               <p className="text">
                 After submitting your idea will be reviewed and enter the
