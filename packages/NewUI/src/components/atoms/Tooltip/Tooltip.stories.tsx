@@ -4,7 +4,7 @@ import * as React from 'react';
 import Tooltip from './Tooltip';
 
 export default {
-  title: 'Common Components/Tooltip',
+  title: 'Atoms/Tooltip',
   component: Tooltip,
 } as ComponentMeta<typeof Tooltip>;
 
