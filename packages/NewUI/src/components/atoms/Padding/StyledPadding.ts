@@ -1,50 +1,32 @@
-import { css } from 'styled-components';
+const uniPad100 = `padding: 0.25rem;`;
 
-const uniPad100 = css`
-  padding: 0.25rem;
-`;
-const uniPad200 = css`
-  padding: 0.5rem;
-`;
-const uniPad300 = css`
-  padding: 1rem;
-`;
-const uniPad400 = css`
-  padding: 1.5rem;
-`;
-const uniPad500 = css`
-  padding: 2rem;
-`;
-const uniPad600 = css`
-  padding: 3rem;
-`;
-const uniPad700 = css`
-  padding: 4rem;
-`;
-const uniPad800 = css`
-  padding: 6rem;
-`;
-const uniPad900 = css`
-  padding: 8rem;
-`;
-const comPad100 = css`
-  padding: 0.5rem 1rem;
-`;
-const comPad200 = css`
-  padding: 0.75rem 1.5rem;
-`;
-const comPad300 = css`
-  padding: 1rem 2rem;
-`;
-const comPad400 = css`
-  padding: 1.5rem 3rem;
-`;
-const comPad500 = css`
-  padding: 3rem 6rem;
-`;
-const comPad600 = css`
-  padding: 4rem 8rem;
-`;
+const uniPad200 = `padding: 0.5rem;`;
+
+const uniPad300 = `padding: 1rem;`;
+
+const uniPad400 = `padding: 1.5rem;`;
+
+const uniPad500 = `padding: 2rem;`;
+
+const uniPad600 = `padding: 3rem;`;
+
+const uniPad700 = `padding: 4rem;`;
+
+const uniPad800 = `padding: 6rem;`;
+
+const uniPad900 = `padding: 8rem;`;
+
+const comPad100 = `padding: 0.5rem 1rem;`;
+
+const comPad200 = `padding: 0.75rem 1.5rem;`;
+
+const comPad300 = `padding: 1rem 2rem;`;
+
+const comPad400 = `padding: 1.5rem 3rem;`;
+
+const comPad500 = `padding: 3rem 6rem;`;
+
+const comPad600 = `padding: 4rem 8rem;`;
 
 export const paddingStyles = {
   uniPad100,
@@ -62,4 +44,4 @@ export const paddingStyles = {
   comPad400,
   comPad500,
   comPad600,
-};
+} as const;
