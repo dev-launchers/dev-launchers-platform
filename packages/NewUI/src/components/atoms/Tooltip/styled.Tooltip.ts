@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { typographyStyles } from '../Typography/Styled.Typography';
+import { typographyStyles } from '../Typography';
 
 export const ToolTip = styled.div`
   ${typographyStyles['placeHolder']};

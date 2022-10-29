@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { typographyStyles } from '../Typography/Styled.Typography';
+import { typographyStyles } from '../Typography';
 import type { Props } from './Tags';
 
 type StyledProps = Pick<Props, 'bgColor' | 'txtColor'>;

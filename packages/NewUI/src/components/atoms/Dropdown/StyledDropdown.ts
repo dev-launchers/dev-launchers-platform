@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { typographyStyles } from '../Typography/Styled.Typography';
+import { typographyStyles } from '../Typography';
 import Icon from './chevron-down.svg';
 import type { DropdownProps } from '.';
 

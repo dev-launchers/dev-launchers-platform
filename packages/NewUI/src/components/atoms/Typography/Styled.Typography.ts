@@ -132,7 +132,7 @@ export const typographyStyles = {
   placeHolder,
   button,
   label,
-};
+} as const;
 
 export const Text = styled.p<TypographyProps>`
   ${({ type }) => eval(type)};
