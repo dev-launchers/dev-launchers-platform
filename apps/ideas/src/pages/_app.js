@@ -9,6 +9,7 @@ import Header from "../components/common/Header";
 import RainbowBar from "../components/common/RainbowBar";
 import Nav from '../components/modules/Nav/nav';
 
+import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 
 import 'react-toastify/dist/ReactToastify.css';
 import theme from "../styles/theme";
@@ -38,9 +39,11 @@ function MyApp(props) {
   return (
     <div className="IdeasApp">
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <UserDataProvider>
+          <GlobalStyle />
           <Nav />
-          {props.children}          
+          {props.children}     
+        </UserDataProvider>     
       </ThemeProvider>
     </div >
   );
