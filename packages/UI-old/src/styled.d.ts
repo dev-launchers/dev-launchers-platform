@@ -1,5 +1,5 @@
 // import original module declarations
-import { ThemeType } from './styles/theme';
+import { ThemeType } from './shared/theme';
 import {} from 'styled-components/cssprop';
 import 'styled-components';
 

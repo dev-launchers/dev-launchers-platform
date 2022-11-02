@@ -1,9 +1,8 @@
 {
-  "name": "@devlaunchers/componentsNew",
+  "name": "@devlaunchers/componentsOld",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@devlaunchers/models": "workspace:*",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
