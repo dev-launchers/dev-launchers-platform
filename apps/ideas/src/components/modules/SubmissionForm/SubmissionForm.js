@@ -46,6 +46,7 @@ function SubmissionForm() {
   const [calendly, setCalendly] = useState("");
   const [features, setFeatures] = useState("");
   const [experience, setExperience] = useState("");
+  const [toBeLeader, setToBeLeader] = useState("Yes, I want to be the idea leader");
   //const [timeStamp, setTimeStamp] = useState(new Date());
 
   const submitHandler = async (e) => {
@@ -72,6 +73,7 @@ function SubmissionForm() {
       calendly: calendly,
       features: features,
       experience: experience,
+      toBeLeader: toBeLeader,
     };
 
     const res = await axios.post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`, state);
@@ -103,143 +105,143 @@ function SubmissionForm() {
   //   setSelected(n)
   // }
 
-    return (
-      <div>
-        <Headline>Dev Ideas</Headline>
-        <Description>
-          Have an idea for a development project?
-          <br />
-          Share your idea with us!
-          <br />
-        </Description>
-        <Wrapper>
-          <Container>
-            <form onSubmit={submitHandler}>
-              <div className="test">
-                <div className="progress_bar">
-                  <div className="circule">
-                    <div className="completed"></div>
-                    <p>Idea Form</p>
-                  </div>
-                  <div className="circule">
-                    <div className=""></div>
-                    <p>Review</p>
-                  </div>
-                  <div className="circule">
-                    <div className=""></div>
-                    <p>Workshopping</p>
-                  </div>
-                  <div className="circule">
-                    <div className=""></div>
-                    <p>Recruitment</p>
-                  </div>
-                  <div className="circule">
-                    <div className=""></div>
-                    <p>Project</p>
-                  </div>
+  return (
+    <div>
+      <Headline>Dev Ideas</Headline>
+      <Description>
+        Have an idea for a development project?
+        <br />
+        Share your idea with us!
+        <br />
+      </Description>
+      <Wrapper>
+        <Container>
+          <form onSubmit={submitHandler}>
+            <div className="test">
+              <div className="progress_bar">
+                <div className="circule">
+                  <div className="completed"></div>
+                  <p>Idea Form</p>
+                </div>
+                <div className="circule">
+                  <div className=""></div>
+                  <p>Review</p>
+                </div>
+                <div className="circule">
+                  <div className=""></div>
+                  <p>Workshopping</p>
+                </div>
+                <div className="circule">
+                  <div className=""></div>
+                  <p>Recruitment</p>
+                </div>
+                <div className="circule">
+                  <div className=""></div>
+                  <p>Project</p>
                 </div>
               </div>
-              <Question>
-                <p>Idea Name</p>
-                <input
-                  required
-                  type="text"
-                  name="ideaName"
-                  value={ideaName}
-                  onChange={(e) => setIdeaName(e.target.value)}
-                />
-              </Question>
-              <Question>
-                <p>Your Discord Name</p>
-                <input
-                  required
-                  type="text"
-                  name="discord"
-                  value={discord}
-                  onChange={(e) => setDiscord(e.target.value)}
-                />
-              </Question>
-              <Question>
-                <p>Your Email</p>
-                <input
-                  required
-                  type="text"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Question>
-              <Question>
-                <p>
-                  Do you have a Calendly? If so add a link here, if not it’s
-                  okay!
-                </p>
-                <input
-                  required
-                  type="text"
-                  name="calendly"
-                  value={calendly}
-                  onChange={(e) => setCalendly(e.target.value)}
-                />
-              </Question>
-              <Question2>
-                <p>What is your experience with development?</p>
-                {/* <input
+            </div>
+            <Question>
+              <p>Idea Name</p>
+              <input
+                required
+                type="text"
+                name="ideaName"
+                value={ideaName}
+                onChange={(e) => setIdeaName(e.target.value)}
+              />
+            </Question>
+            <Question>
+              <p>Your Discord Name</p>
+              <input
+                required
+                type="text"
+                name="discord"
+                value={discord}
+                onChange={(e) => setDiscord(e.target.value)}
+              />
+            </Question>
+            <Question>
+              <p>Your Email</p>
+              <input
+                required
+                type="text"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Question>
+            <Question>
+              <p>
+                Do you have a Calendly? If so add a link here, if not it’s
+                okay!
+              </p>
+              <input
+                required
+                type="text"
+                name="calendly"
+                value={calendly}
+                onChange={(e) => setCalendly(e.target.value)}
+              />
+            </Question>
+            <Question2>
+              <p>What is your experience with development?</p>
+              {/* <input
                   type="text"
                   name="experience"
                   value={experience}
                   onChange={(e) => setExperience(e.target.value)}
                 /> */}
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`; 
-                  }}
-                  style={{width:"100%", overflow:"hidden"}}
-                  name="experience"
-                  value={experience}
-                  onChange={(e) => setExperience(e.target.value)}>
-                </textarea>
-              </Question2>
-              <Question2>
-                <p>What is your idea?</p>
-                {/* <input
+              <textarea
+                onKeyUp={(e) => {
+                  e.target.style.height = 'inherit';
+                  e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
+                style={{ width: "100%", overflow: "hidden" }}
+                name="experience"
+                value={experience}
+                onChange={(e) => setExperience(e.target.value)}>
+              </textarea>
+            </Question2>
+            <Question2>
+              <p>What is your idea?</p>
+              {/* <input
                   type="text"
                   name="description"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 /> */}
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`; 
-                  }}
-                  style={{width:"100%", overflow:"hidden"}}
-                  name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}>
-                </textarea>
-              </Question2>
-              <Question2>
-                <p>Why do you think your idea is helpful or would be fun?</p>
-                {/* <input
+              <textarea
+                onKeyUp={(e) => {
+                  e.target.style.height = 'inherit';
+                  e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
+                style={{ width: "100%", overflow: "hidden" }}
+                name="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}>
+              </textarea>
+            </Question2>
+            <Question2>
+              <p>Why do you think your idea is helpful or would be fun?</p>
+              {/* <input
                   type="text"
                   name="targetAudience"
                   value={targetAudience}
                   onChange={(e) => setTargetAudience(e.target.value)}
                 /> */}
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`; 
-                  }}
-                  style={{width:"100%", overflow:"hidden"}}
-                  name="targetAudience"
-                  value={targetAudience}
-                  onChange={(e) => setTargetAudience(e.target.value)}>
-                </textarea>
-              </Question2>
-              {/* <Question>
+              <textarea
+                onKeyUp={(e) => {
+                  e.target.style.height = 'inherit';
+                  e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
+                style={{ width: "100%", overflow: "hidden" }}
+                name="targetAudience"
+                value={targetAudience}
+                onChange={(e) => setTargetAudience(e.target.value)}>
+              </textarea>
+            </Question2>
+            {/* <Question>
                 <p>What features would your idea have?</p>
                 <input
                   type="text"
@@ -248,39 +250,49 @@ function SubmissionForm() {
                   onChange={(e) => setFeatures(e.target.value)}
                 />
               </Question> */}
-              <Question2>
-                <p>Do you have a catchy tagline for this idea submission?</p>
-                {/* <input
+            <Question2>
+              <p>Do you have a catchy tagline for this idea submission?</p>
+              {/* <input
                   type="text"
                   name="tagline"
                   value={tagline}
                   onChange={(e) => setTagline(e.target.value)}
                 /> */}
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`; 
-                  }}
-                  style={{width:"100%", overflow:"hidden"}}
-                  name="tagline"
-                  value={tagline}
-                  onChange={(e) => setTagline(e.target.value)}>
-                </textarea>
-              </Question2>
-              <p className="text">
-                After submitting your idea will be reviewed and enter the
-                workshopping stage!
-              </p>
-              <Submit type="submit">
-                {" "}
-                {sending === true ? "Wait" : "Submit"}{" "}
-              </Submit>
-            </form>
-          </Container>
-        </Wrapper>
-        <br />
-      </div>
-    );
+              <textarea
+                onKeyUp={(e) => {
+                  e.target.style.height = 'inherit';
+                  e.target.style.height = `${e.target.scrollHeight}px`;
+                }}
+                style={{ width: "100%", overflow: "hidden" }}
+                name="tagline"
+                value={tagline}
+                onChange={(e) => setTagline(e.target.value)}>
+              </textarea>
+            </Question2>
+            <Question2>
+              <p>Do you want to be the team leader?</p>
+              <select
+                style={{ width: "100%", overflow: "hidden" }}
+                name="toBeLeader"
+                value={toBeLeader} onChange={(e) => setToBeLeader(e.target.value)}>
+                <option value="Yes, I want to be the idea leader">Yes, I want to be the idea leader</option>
+                <option value="No, I just want to work on it">No, I just want to work on it</option>
+              </select>
+            </Question2>
+            <p className="text">
+              After submitting your idea will be reviewed and enter the
+              workshopping stage!
+            </p>
+            <Submit type="submit">
+              {" "}
+              {sending === true ? "Wait" : "Submit"}{" "}
+            </Submit>
+          </form>
+        </Container>
+      </Wrapper>
+      <br />
+    </div>
+  );
 
   // if (selected === "submited") {
   //   return (

@@ -69,3 +69,4 @@ yarn-error.log*
 
 # Storybook
 storybook-static
+/.vs
