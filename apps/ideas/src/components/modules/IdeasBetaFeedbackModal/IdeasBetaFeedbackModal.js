@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
-import './FeedbackModal.css';
+import './IdeasBetaFeedbackModal.css';
 import messageIcon from './message-square.svg';
 
 const formLink =
