@@ -1,27 +1,30 @@
-import type { User } from '@devlaunchers/models';
+/* eslint-disable import/no-unresolved */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Link from 'next/link';
-import * as React from 'react';
+import { useUserDataContext } from '../../../context/UserDataContext';
 import HamburgerMenu from '../HamburgerMenu';
 import AccountDropdown from './AccountDropdown';
 
 import {
   HeaderBlock,
-  Logo,
-  LogoWrapper,
-  LogoImageHolder,
-  LogoImage,
-  LogoWords,
   HeaderNav,
-  NavEntry,
+  Logo,
+  LogoImage,
+  LogoImageHolder,
+  LogoWords,
+  LogoWrapper,
+  // eslint-disable-next-line prettier/prettier
+  NavEntry
 } from './StyledHeader';
 
-const Header: React.FC<{ userData: User }> = ({ userData }) => {
+export default function Header() {
+  const { userData } = useUserDataContext();
+
   return (
     <HeaderBlock>
       <Logo>
         <LogoWrapper>
-          <Link href="../" replace>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <Link href="/">
             <a>
               <LogoImageHolder>
                 <LogoImage />
@@ -32,16 +35,19 @@ const Header: React.FC<{ userData: User }> = ({ userData }) => {
         </LogoWrapper>
       </Logo>
       <HeaderNav>
-        <Link href="../create" replace>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <Link href="/create">
           <a>
             <NavEntry>CREATE</NavEntry>
           </a>
         </Link>
-        <Link href="../learn" replace>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <Link href="/learn">
           <a>
             <NavEntry>LEARN</NavEntry>
+          </a>
+        </Link>
+        <Link href="/ideas">
+          <a>
+            <NavEntry>DREAM</NavEntry>
           </a>
         </Link>
         {/* }
@@ -49,14 +55,12 @@ const Header: React.FC<{ userData: User }> = ({ userData }) => {
             <NavEntry>PLAY</NavEntry>
           </Link>
           { */}
-        <Link href="../support-us" replace>
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <Link href="/support-us">
           <a>
             <NavEntry>SUPPORT US</NavEntry>
           </a>
         </Link>
-        <Link href="/">
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <Link href="/join">
           <a>
             <NavEntry>JOIN</NavEntry>
           </a>
@@ -64,9 +68,7 @@ const Header: React.FC<{ userData: User }> = ({ userData }) => {
       </HeaderNav>
       <div />
       <AccountDropdown userData={userData} />
-      <HamburgerMenu userData={userData} />
+      <HamburgerMenu />
     </HeaderBlock>
   );
-};
-
-export default Header;
+}
