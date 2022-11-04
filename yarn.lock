@@ -2628,6 +2628,7 @@ __metadata:
   resolution: "@devlaunchers/components@workspace:packages/UI"
   dependencies:
     "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/models": "workspace:*"
     "@storybook/addon-a11y": 6.5.10
     "@storybook/addon-actions": ^6.5.10
     "@storybook/addon-essentials": ^6.5.10
@@ -2839,7 +2840,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/models@workspace:^, @devlaunchers/models@workspace:packages/models":
+"@devlaunchers/models@workspace:*, @devlaunchers/models@workspace:^, @devlaunchers/models@workspace:packages/models":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/models@workspace:packages/models"
   dependencies:
