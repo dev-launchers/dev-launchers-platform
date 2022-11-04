@@ -1,19 +1,4 @@
 .ReactModal__Content {
-  opacity: 0;
-  transition: 0.2s all cubic-bezier(0.17, 0.67, 0.83, 0.67);
-  transform: scale(0);
-  transform-origin: bottom right;
-}
-.ReactModal__Overlay--after-open .ReactModal__Content {
-  opacity: 1;
-  transform: scale(1);
-}
-.ReactModal__Overlay--before-close .ReactModal__Content {
-  opacity: 0;
-  transform: scale(0);
-}
-
-.ReactModal__Content {
   background-image: url(./modal-img.png) !important;
   background-repeat: no-repeat !important;
   background-position: bottom center !important;
