@@ -73,7 +73,7 @@ function SubmissionForm() {
       calendly: calendly,
       features: features,
       experience: experience,
-      toBeLeader: toBeLeader,
+      //toBeLeader: toBeLeader,
     };
 
     const res = await axios.post(
@@ -265,7 +265,9 @@ function SubmissionForm() {
                 <select
                   style={{ width: "100%", overflow: "hidden" }}
                   name="toBeLeader"
-                  value={toBeLeader} onChange={(e) => setToBeLeader(e.target.value)}>
+                  value={toBeLeader} 
+                  // onChange={(e) => setToBeLeader(e.target.value)}
+                >
                   <option value="Yes, I want to be the idea leader">Yes, I want to be the idea leader</option>
                   <option value="No, I just want to work on it">No, I just want to work on it</option>
                 </select>
