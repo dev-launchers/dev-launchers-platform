@@ -19,11 +19,13 @@ import { env } from '../../../utils/EnvironmentVariables';
 
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
+import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
 
 // State management component
 export default function UserProfile({ otherUser }) {
-  const { userData } = useUserDataContext();
+
+  const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -31,6 +33,13 @@ export default function UserProfile({ otherUser }) {
   const [ideas, setIdeas] = React.useState([]);
   const [people, setPeople] = React.useState([]);
   const [interests, setInterests] = React.useState([]);
+  
+  // If user hasn't set a username, redirect them to the signup form
+  const router = useRouter();
+  React.useEffect(() => {
+    if (isAuthenticated && userData.name === '')
+      router.push("/signup");
+  }, [isAuthenticated]);
 
   // Start Projects/Opportunities
   React.useEffect(() => {
@@ -41,14 +50,6 @@ export default function UserProfile({ otherUser }) {
       .then(({ data }) => {
         if (data) {
           setProjects(data);
-
-          const myProjects = [];
-          data.map((project) => {
-            [...project.team.leaders, ...project.team.members].map((member) => {
-              if (member.id == userData.id) myProjects.push(project);
-            });
-          });
-          setMyProjects(myProjects);
 
           const tempOpportunities = [];
           data.map((project) => {
@@ -64,6 +65,15 @@ export default function UserProfile({ otherUser }) {
         console.error("Could not fetch project data");
       });
   };
+  React.useEffect(() => {
+    const myProjects = [];
+    projects.map((project) => {
+      [...project.team.leaders, ...project.team.members].map((member) => {
+        if (member.id == userData.id) myProjects.push(project);
+      });
+    });
+    setMyProjects(myProjects);
+  }, [projects, userData]);
   // End Projects/Opportunities
 
 
@@ -163,7 +173,7 @@ export function UserProfileView({
 
   return (
     <PageBody>
-      {userData?.id || (otherUser?.id && !loading) || true ? (
+      {userData?.id || (otherUser?.id && !loading) ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
@@ -221,19 +231,19 @@ export function UserProfileView({
                 <UserProjects myProjects={myProjects} />
               </TabPanel>
               
-              <TabPanel key={0}>
+              <TabPanel key={1}>
                 <People people={people} />
               </TabPanel>
               
-              <TabPanel key={1}>
+              <TabPanel key={2}>
                 <UserInterests interests={interests} />
               </TabPanel>
               
-              <TabPanel key={2}>
+              <TabPanel key={3}>
                 <RecommendedIdeas ideas={ideas}  />
               </TabPanel>
               
-              <TabPanel key={3}>
+              <TabPanel key={4}>
                 <Opportunities opportunities={opportunities} />
               </TabPanel>
 
