@@ -2,6 +2,7 @@ import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
 import './IdeasBetaFeedbackModal.css';
 import messageIcon from './message-square.svg';
+import modalImage from './modal-img.png';
 
 const formLink =
   'https://docs.google.com/forms/d/e/1FAIpQLSdkipdKLxq4dGQf3dX5Sdfb_XNoPhhGsNxPXNcNNSMzhIrYxg/viewform';
@@ -96,6 +97,10 @@ const IdeasBetaFeedbackModal = () => {
         >
           <small>remind me later</small>
         </button>
+        <img
+          src={modalImage}
+          style={{ position: 'absolute', bottom: 0, left: 0, width: '100%' }}
+        />
       </Modal>
     </div>
   );
