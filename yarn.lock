@@ -2684,69 +2684,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/componentsOld@workspace:packages/UI-old":
-  version: 0.0.0-use.local
-  resolution: "@devlaunchers/componentsOld@workspace:packages/UI-old"
-  dependencies:
-    "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@storybook/addon-a11y": 6.5.10
-    "@storybook/addon-actions": ^6.5.10
-    "@storybook/addon-essentials": ^6.5.10
-    "@storybook/addon-links": ^6.5.10
-    "@storybook/jest": 0.0.10
-    "@storybook/node-logger": ^6.5.10
-    "@storybook/react": ^6.5.10
-    "@storybook/test-runner": 0.5.0
-    "@storybook/testing-library": 0.0.13
-    "@testing-library/jest-dom": 5.16.4
-    "@testing-library/react": 13.3.0
-    "@testing-library/react-hooks": 8.0.1
-    "@types/node": 18.6.3
-    "@types/react": ^17.0.0
-    "@types/react-dom": ^17.0.15
-    "@types/styled-components": 5.1.25
-    "@typescript-eslint/eslint-plugin": 5.32.0
-    "@typescript-eslint/parser": 5.32.0
-    axe-playwright: 1.1.11
-    axios: ^0.27.2
-    babel-loader: 8.2.5
-    camelcase: 7.0.0
-    chromatic: ^6.7.3
-    constate: ^3.3.2
-    eslint: 8.21.0
-    eslint-config-prettier: 8.5.0
-    eslint-plugin-import: 2.26.0
-    eslint-plugin-jest: 26.7.0
-    eslint-plugin-jest-formatting: 3.1.0
-    eslint-plugin-jsx-a11y: 6.6.1
-    eslint-plugin-prettier: 4.2.1
-    eslint-plugin-react: 7.30.1
-    eslint-plugin-react-hooks: 4.6.0
-    eslint-plugin-testing-library: 5.6.0
-    formik: 2.2.9
-    jest: ^27.0.6
-    next: ^12.2.3
-    npm-run-all: 4.1.5
-    polished: ^4.2.2
-    prettier: ^2.7.1
-    react: ^17.0.2
-    react-burger-menu: ^3.0.8
-    react-dom: ^17.0.2
-    react-scripts: 5.0.1
-    rimraf: 3.0.2
-    shell-quote: 1.7.3
-    storybook-addon-next-router: ^4.0.0
-    storybook-react-context: ^0.6.0
-    styled-components: ^5.2.1
-    styled-normalize: ^8.0.7
-    ts-jest: 28.0.7
-    typescript: ^4.7.4
-    web-vitals: ^2.1.4
-    zod: 3.19.1
-    zod-formik-adapter: 1.1.1
-  languageName: unknown
-  linkType: soft
-
 "@devlaunchers/dev-recruiters@workspace:^, @devlaunchers/dev-recruiters@workspace:apps/dev-recruiters":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/dev-recruiters@workspace:apps/dev-recruiters"
@@ -16498,7 +16435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:2.2.9, formik@npm:^2.2.9":
+"formik@npm:^2.2.9":
   version: 2.2.9
   resolution: "formik@npm:2.2.9"
   dependencies:
@@ -34609,24 +34546,6 @@ __metadata:
     property-expr: ^2.0.4
     toposort: ^2.0.2
   checksum: 43a16786b47cc910fed4891cebdd89df6d6e31702e9462e8f969c73eac88551ce750732608012201ea6b93802c8847cb0aa27b5d57370640f4ecf30f9f97d4b0
-  languageName: node
-  linkType: hard
-
-"zod-formik-adapter@npm:1.1.1":
-  version: 1.1.1
-  resolution: "zod-formik-adapter@npm:1.1.1"
-  peerDependencies:
-    formik: ^2.2.9
-    react: ^17.0.2
-    zod: ~3.14.4
-  checksum: 9ce05c537ebc6ae0088e9b61b3301d076b817ab6fdcb9e3ac088bb9dcdd0147b2ddbb7d069b4680e23ffedfa5bbe0039a9cf70c57bd07c1e85449c06bef471b3
-  languageName: node
-  linkType: hard
-
-"zod@npm:3.19.1":
-  version: 3.19.1
-  resolution: "zod@npm:3.19.1"
-  checksum: 56e420ea5845912324a8fc61833714a2aec84954e418b52660d76502183c6e62fef9447cbfa64349640c5ce190cf2c24267e006bb80f066183e2f3fa9fe11864
   languageName: node
   linkType: hard
 
