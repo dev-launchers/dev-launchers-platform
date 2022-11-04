@@ -14,6 +14,7 @@ const ModalCustomStyles = {
     right: 0,
     bottom: 0,
     backgroundColor: 'transparent',
+    zIndex: 11,
   },
   content: {
     fontFamily: 'Nunito Sans',
