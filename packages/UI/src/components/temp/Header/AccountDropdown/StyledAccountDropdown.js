@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import DropdownButton from '../../../atoms/Dropdown';
+import DropdownButton from './Dropdown';
 import Button from './Button';
 
 export const AccountMenuDropdownButton = styled(DropdownButton)`
