@@ -13,8 +13,9 @@
 }
 
 .form-link {
-  background: white;
-  padding: 0.5rem 1rem;
+  background: #3a7ca5;
+  color: white;
+  padding: 0.75rem 1rem;
   display: inline-block;
   font-size: 1rem;
   text-transform: uppercase;
