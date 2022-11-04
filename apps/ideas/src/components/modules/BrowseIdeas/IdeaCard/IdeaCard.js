@@ -38,8 +38,6 @@ function IdeaCard({ cards, setSelectedCard }) {
 //       });
 //   }, []);
 
-// console.log(getCards)
-
 
 
 

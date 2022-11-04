@@ -1,8 +1,8 @@
 import React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../src/shared/global";
-import theme from "../src/shared/theme";
+import GlobalStyle from "../src/styles/global";
+import theme from "../src/styles/theme";
 import * as NextImage from "next/image";
 const OriginalNextImage = NextImage.default;
 

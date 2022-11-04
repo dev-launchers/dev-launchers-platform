@@ -3,16 +3,17 @@ import { NextRouter, useRouter } from 'next/router';
 import Script from 'next/script';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from "../styles/globals";
+import GlobalStyle from '../styles/globals';
 
-import Header from "../components/common/Header";
-import RainbowBar from "../components/common/RainbowBar";
+import Header from '../components/common/Header';
+import RainbowBar from '../components/common/RainbowBar';
 import Nav from '../components/modules/Nav/nav';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
+import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from "../styles/theme";
+import theme from '../styles/theme';
 
 /*
 import { UserDataProvider } from "@contexts/UserDataContext";
@@ -42,12 +43,12 @@ function MyApp(props) {
         <UserDataProvider>
           <GlobalStyle />
           <Nav />
+          <IdeasBetaFeedbackModal />
           {props.children}     
-        </UserDataProvider>     
+        </UserDataProvider> 
       </ThemeProvider>
-    </div >
+    </div>
   );
 }
 
 export default MyApp;
-
