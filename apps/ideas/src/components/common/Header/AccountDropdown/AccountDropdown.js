@@ -7,6 +7,7 @@ import {
   AccountMenuDropdownButton,
   MenuButton,
 } from "./StyledAccountDropdown";
+import SignInButton from "../../SignInButton/SignInButton";
 
 export default function AccountDropdown(props) {
   return (
@@ -29,9 +30,7 @@ export default function AccountDropdown(props) {
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <MenuButton fontSize="1.2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
-          Sign In{" "}
-        </MenuButton>
+        <SignInButton />
       )}
     </div>
   );

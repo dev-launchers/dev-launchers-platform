@@ -164,9 +164,10 @@ export const UserComment = styled.div`
 `;
 
 
-export const UserImageOne = styled.div`
-  margin-left: 20px;
-  height: 60px;
+export const UserImageOne = styled.img`
+  margin: .2rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
 `;
 

@@ -8,6 +8,8 @@ import GlobalStyle from '../styles/globals';
 import Header from '../components/common/Header';
 import RainbowBar from '../components/common/RainbowBar';
 import Nav from '../components/modules/Nav/nav';
+
+import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,10 +40,12 @@ function MyApp(props) {
   return (
     <div className="IdeasApp">
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Nav />
-        <IdeasBetaFeedbackModal />
-        {props.children}
+        <UserDataProvider>
+          <GlobalStyle />
+          <Nav />
+          <IdeasBetaFeedbackModal />
+          {props.children}     
+        </UserDataProvider> 
       </ThemeProvider>
     </div>
   );
