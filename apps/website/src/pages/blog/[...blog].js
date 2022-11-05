@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 
-import Header from "../../components/common/Header";
 import Blog from "../../components/modules/Blog";
-import Footer from "../../components/common/Footer";
 
 export default function BlogRoute() {
   const router = useRouter();
@@ -20,9 +18,7 @@ export default function BlogRoute() {
   const articleId = blog[2];
   return (
     <div>
-      <Header />
       <Blog authorId={authorId} articleId={articleId} />
-      <Footer />
     </div>
   );
 }
