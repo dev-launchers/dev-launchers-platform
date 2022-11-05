@@ -115,9 +115,10 @@ export const Submit = styled.button`
 `;
 
 export const Container = styled.div`
-  width: 535px;
+  width: 70%;
+  max-width: 700px;
   margin: 0 auto;
-  padding-top: 30px;
+  padding: 2rem;
 `;
 
 export const SubmitWrapper = styled.div`

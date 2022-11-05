@@ -22,17 +22,18 @@ const DEFAULT_USER = {
     username: '',
     discriminator: '',
   },
+  interests: [],
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
-function useUserData(user) {
-  const [userData, setUserData] = React.useState(user || DEFAULT_USER);
+function useUserData() {
+  const [userData, setUserData] = React.useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    // Setting timeout because of environment variable hack
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+    axios(`${env().STRAPI_URL}/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
@@ -48,13 +49,17 @@ function useUserData(user) {
           totalSeasonPoints: currentUser.point.totalSeasonPoints,
           availablePoints: currentUser.point.availablePoints,
           volunteerHours: currentUser.point.volunteerHours,
+          interests: currentUser.interests,
         });
+        setIsAuthenticated(true);
       })
       .catch(() => {
         // setUserData({ id: "invalid" });
+        setIsAuthenticated(false);
       });
   }, []);
-  return { userData };
+
+  return { userData, setUserData, isAuthenticated };
 }
 
 // Step 2: Declare your context state object to share the state with other components
