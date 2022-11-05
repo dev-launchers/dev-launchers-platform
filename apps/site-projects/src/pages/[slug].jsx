@@ -71,7 +71,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={`https://devlaunchers.com/projects/${project?.slug}`}
+          content={`https://devlaunchers.org/projects/${project?.slug}`}
         ></meta>
         <meta property="og:image" content={heroImage?.url}></meta>
         <meta property="og:title" content={project?.title}></meta>
@@ -80,7 +80,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
-          content={`https://devlaunchers.com/projects/${project?.slug}`}
+          content={`https://devlaunchers.org/projects/${project?.slug}`}
         ></meta>
         <meta property="twitter:title" content={project?.title}></meta>
         <meta

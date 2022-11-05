@@ -53,7 +53,7 @@ const NewsLetter = (props) => {
           }}
         >
           →{" "}
-          <Secret href="https://devlaunchers.com/hangout">
+          <Secret href="https://devlaunchers.org/hangout">
             <span>😄</span>
           </Secret>{" "}
           ←

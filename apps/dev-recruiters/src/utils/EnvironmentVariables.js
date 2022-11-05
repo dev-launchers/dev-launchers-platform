@@ -4,7 +4,7 @@ const PROD = {
   STRAPI_URL: "http://localhost:1337",
   GOOGLE_AUTH_URL: "https://api.devlaunchers.org/connect/google",
   DISCORD_AUTH_URL:
-    "https://discord.com/api/oauth2/authorize?client_id=709889509864636496&redirect_uri=https%3A%2F%2Fapi.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify",
+    "https://discord.com/api/oauth2/authorize?client_id=709889509864636496&redirect_uri=https%3A%2F%2Fapi.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify",
 };
 
 const STAGING = {
@@ -13,7 +13,7 @@ const STAGING = {
   STRAPI_URL: "https://api-staging.devlaunchers.org",
   GOOGLE_AUTH_URL: "https://api-staging.devlaunchers.org/connect/google",
   DISCORD_AUTH_URL:
-    "https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.com%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify",
+    "https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify",
 };
 
 export const env = () => {

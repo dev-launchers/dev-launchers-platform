@@ -1,8 +1,8 @@
-# Dev Launchers (https://devlaunchers.com)
+# Dev Launchers (https://devlaunchers.org)
 
 ## We Build People (and software)
 
-[![](https://dev-launchers.github.io/app/images/dev-launchers__site-screenshot.jpg)](https://devlaunchers.com/)
+[![](https://dev-launchers.github.io/app/images/dev-launchers__site-screenshot.jpg)](https://devlaunchers.org/)
 
 The site is built with React.js/Next.js and many other wonderful libraries. We're currently using Google Sheets as our backend, but will soon be moving to a dedicated server.
 
