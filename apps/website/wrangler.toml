@@ -4,11 +4,11 @@ zone_id = "976b2978bfb8a506026238d437fe0555"
 
 [env.staging]
 name = "website-staging"
-route = "staging.devlaunchers.com/*"
+route = "staging.devlaunchers.org/*"
 
 [env.production]
 name = "website"
-route = "devlaunchers.com/*"
+route = "devlaunchers.org/*"
 
 [site]
 bucket = "./build"

@@ -131,7 +131,7 @@ const progressionLevels = {
       abilities: [
         "👋 Attend at least two sessions per month",
         "⭐ Featured on some portion of the Dev Launchers site with a Star profile",
-        "✍️ Able to write featured blog posts on https://devlaunchers.com",
+        "✍️ Able to write featured blog posts on https://devlaunchers.org",
       ],
       expectations: [
         "🦸 Be the dedicated mentor for one group of DL2 members/member or mentor DL0 - DL4 members for at least 1 hour per week",

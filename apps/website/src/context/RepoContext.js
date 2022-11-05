@@ -10,8 +10,8 @@ function useRepo() {
     "https://api.github.com/users/dev-launchers-sandbox/repos";
   const GITHUB_API_URL_PROD =
     "https://api.github.com/users/dev-launchers/repos";
-  // const DEV_GAME_URL_PREFIX = "http://devlaunchers.com/dev/";
-  // const PROD_GAME_URL_PREFIX = "http://devlaunchers.com/launch/";
+  // const DEV_GAME_URL_PREFIX = "http://devlaunchers.org/dev/";
+  // const PROD_GAME_URL_PREFIX = "http://devlaunchers.org/launch/";
 
   async function getGithubData(apiUrl) {
     const response = await fetch(apiUrl);
@@ -50,8 +50,8 @@ function useRepo() {
           projectsData.push({
             title: repoEntry.name,
             description: repoEntry.description,
-            href: `https://devlaunchers.com/dev/${repoEntry.name}`,
-            prodUrl: `https://devlaunchers.com/launch/${repoEntry.name}`,
+            href: `https://devlaunchers.org/dev/${repoEntry.name}`,
+            prodUrl: `https://devlaunchers.org/launch/${repoEntry.name}`,
             imageSrc: "/images/DevlaunchersGitHubThumb.png",
             repoUrl: repoEntry.html_url,
           });
@@ -67,7 +67,7 @@ function useRepo() {
           projectsData.push({
             name: repoEntry.name,
             description: repoEntry.description,
-            devUrl: `https://devlaunchers.com/dev/${repoEntry.name}`,
+            devUrl: `https://devlaunchers.org/dev/${repoEntry.name}`,
           });
         }
       });

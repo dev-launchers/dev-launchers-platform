@@ -7,7 +7,7 @@
     "react",
     "starter"
   ],
-  "homepage": "https://idea.devlaunchers.com/",
+  "homepage": "https://idea.devlaunchers.org/",
   "main": "src/index.js",
   "dependencies": {
     "@banana-dev/banana-dev": "^3.0.0",
