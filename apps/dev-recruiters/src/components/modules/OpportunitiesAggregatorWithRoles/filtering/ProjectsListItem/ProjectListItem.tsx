@@ -16,6 +16,7 @@ import {
   DetailsButton,
   PositionLevel,
 } from './StyleProjectListItem';
+import ReactGA from "@devlaunchers/components/utils/GoogleAnalytics";
 
 interface Props {
   project: ProjectLite;
@@ -70,7 +71,16 @@ export default function ProjectListItem({ project }: Props) {
               </PositionsButton>
             )}
             <Link href={`join/${project.slug}`} passHref>
-              <DetailsButton>Project Details</DetailsButton>
+              <DetailsButton onClick={() => {
+                ReactGA.event({
+                  category: 'Join Page Actions',
+                  action: 'Button Clicked [B]',
+                  testCategory: 'B',
+                  label: project.slug+` [B]`
+                });
+              }}>
+                Project Details
+              </DetailsButton>
             </Link>
           </ButtonsContainer>
         </DetailsSection>
