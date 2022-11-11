@@ -1,1 +1,1 @@
-export { default } from "@devlaunchers/ideas/pages/ideas";
+export { default } from '@devlaunchers/ideaspace/pages/ideaspace';

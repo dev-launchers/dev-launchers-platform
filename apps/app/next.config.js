@@ -1,7 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
-  '@devlaunchers/ideas',
+  '@devlaunchers/ideaspacepace',
   '@devlaunchers/site-projects',
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
@@ -34,7 +34,7 @@ const nextConfig = {
     domains: [
       'images.prismic.io',
       'devlaunchersproduction.blob.core.windows.net',
-      'lh3.googleusercontent.com'
+      'lh3.googleusercontent.com',
     ],
     disableStaticImages: true,
   },

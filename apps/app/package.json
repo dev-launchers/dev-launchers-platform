@@ -7,7 +7,7 @@
   "dependencies": {
     "@cloudflare/wrangler": "^1.19.12",
     "@devlaunchers/dev-recruiters": "workspace:^",
-    "@devlaunchers/ideas": "*",
+    "@devlaunchers/ideaspacepace": "*",
     "@devlaunchers/site-projects": "*",
     "@devlaunchers/website": "*",
     "@ramonak/react-progress-bar": "^5.0.2",

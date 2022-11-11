@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import CardWrapper from './CardWrapper/StyledCardWrapper';
 import Tab from './Tab/StyledTab';
-import TabText from './TabText/StyledTabText'
+import TabText from './TabText/StyledTabText';
 import StarIcon from './StarIcon/StyledStarIcon';
 import AddIconLight from './AddIconLight/StyledAddIconLight';
 import HeaderCard from './HeaderCard/StyledHeaderCard';
@@ -20,28 +20,21 @@ import CellText from './CellText/StyledCellText';
 import Link from 'next/link';
 
 function IdeaCard({ cards, setSelectedCard }) {
+  //   React.useEffect(() => {
+  //     //axios.get('http://localhost:1337/idea-cards/')
+  //     axios.get(`https://api.devlaunchers.org/idea-cards`,
+  //       {
+  //         withCredentials: true,
+  //       }
+  //     )
+  //       .then(response => {
+  //         const getCards = response.data.map((item) => {
+  //           return item;
+  //         });
 
-
-//   React.useEffect(() => {
-//     //axios.get('http://localhost:1337/idea-cards/')
-//     axios.get(`https://api.devlaunchers.org/idea-cards`,
-//       {
-//         withCredentials: true,
-//       }
-//     )
-//       .then(response => {
-//         const getCards = response.data.map((item) => {
-//           return item;
-//         });
-
-//         setCards(getCards);
-//       });
-//   }, []);
-
-
-
-
-
+  //         setCards(getCards);
+  //       });
+  //   }, []);
 
   return (
     <CardWrapper>
@@ -61,13 +54,12 @@ function IdeaCard({ cards, setSelectedCard }) {
           <MainCell>
             <CellTitle>Project Type</CellTitle>
             <CellText>
-              {
-                cards.skills.map((skill, index) => {
-                  if (index === cards.skills.length - 1) {
-                    return skill.skill;
-                  }
-                  return skill.skill + ' / ';
-                })}
+              {cards.skills.map((skill, index) => {
+                if (index === cards.skills.length - 1) {
+                  return skill.skill;
+                }
+                return skill.skill + ' / ';
+              })}
             </CellText>
           </MainCell>
           <MainCellBorders>
@@ -83,15 +75,26 @@ function IdeaCard({ cards, setSelectedCard }) {
           </MainCellBorders>
           <MainCell>
             <CellTitle>Time Commitment</CellTitle>
-            <CellText>{`${cards.hourCommitmentMin} - ${cards.hourCommitmentMax}`} hrs</CellText>
+            <CellText>
+              {`${cards.hourCommitmentMin} - ${cards.hourCommitmentMax}`} hrs
+            </CellText>
           </MainCell>
         </MainList>
       </MainCard>
       <FooterCard>
-        <FooterLink><Link onClick={() => { setSelectedCard(cards) }} href={`/ideas/workshop/${cards.id}`} >See More &#62;</Link></FooterLink>
+        <FooterLink>
+          <Link
+            onClick={() => {
+              setSelectedCard(cards);
+            }}
+            href={`/ideaspace/workshop/${cards.id}`}
+          >
+            See More &#62;
+          </Link>
+        </FooterLink>
       </FooterCard>
     </CardWrapper>
-  )
+  );
 }
 
-export default IdeaCard
+export default IdeaCard;
