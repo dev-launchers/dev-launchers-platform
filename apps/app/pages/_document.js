@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
           />
           {/* <!-- End Google Tag Manager --> */}
 
-          {/* <!-- Hotjar Tracking Code for https://devlaunchers.org/ideaspacepace --> */}
+          {/* <!-- Hotjar Tracking Code for https://devlaunchers.org/ideaspace --> */}
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(h,o,t,j,a,r){

@@ -1,6 +1,6 @@
-import Page from '@devlaunchers/ideaspacepace/src/pages/browse';
-import IdeaApp from '@devlaunchers/ideaspacepace/src/pages/_app';
-export { getStaticProps } from '@devlaunchers/ideaspacepace/src/pages/index';
+import Page from '@devlaunchers/ideaspace/src/pages/browse';
+import IdeaApp from '@devlaunchers/ideaspace/src/pages/_app';
+export { getStaticProps } from '@devlaunchers/ideaspace/src/pages/index';
 
 /////////////////////////////////////////
 

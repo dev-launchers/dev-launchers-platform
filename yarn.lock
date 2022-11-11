@@ -2798,9 +2798,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/ideaspace@*, @devlaunchers/ideaspace@workspace:apps/ideaspace":
+"@devlaunchers/ideaspace@*, @devlaunchers/ideaspace@workspace:apps/ideas":
   version: 0.0.0-use.local
-  resolution: "@devlaunchers/ideaspace@workspace:apps/ideaspace"
+  resolution: "@devlaunchers/ideaspace@workspace:apps/ideas"
   dependencies:
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
