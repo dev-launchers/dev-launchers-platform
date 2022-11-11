@@ -24,10 +24,10 @@ const ModalCustomStyles = {
     right: '2rem',
     bottom: '2rem',
     maxWidth: '320px',
-    paddingTop: '5rem',
+    paddingTop: '80px',
     paddingBottom: '0',
     textAlign: 'center',
-    height: '570px',
+    height: '550px',
     border: 'none',
     borderRadius: '16px',
     boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.1)',
@@ -69,10 +69,10 @@ const IdeasBetaFeedbackModal = () => {
         closeTimeoutMS={800}
         contentLabel="Feedback Modal"
       >
-        <h2 className="title">
+        <div className="title">
           What do you think of{' '}
           <strong style={{ color: '#ff7f0e' }}>IdeaSpace Beta</strong>?
-        </h2>
+        </div>
         <small>Take a quick survey to help us improve</small>
         <button className="close-button" onClick={closeModal}>
           ×
