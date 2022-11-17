@@ -3,7 +3,7 @@ import axios from "axios";
 import Grid from '@mui/material/Grid';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { useUserDataContext }from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from "../../common/SignInButton/SignInButton";
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
@@ -22,18 +22,21 @@ import {
   Description,
   Container,
   Wrapper
-} from './StyledDashboardPage'
+} from './StyledDashboardPage';
 
 
 function DashboardPage() {
   //const isAuthenticated = true;
-  const { userData, isAuthenticated } = useUserDataContext();
+  let { userData, setUserData, isAuthenticated } = useUserDataContext();
+  if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
 
   const [loading, setLoading] = React.useState(true);
+  const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
   const [sortedCards, setSortedCards] = React.useState([]);
 
-  const dropDownStyle = { width: "150px", borderRadius: "8px", padding: "6px 8px", fontSize: "17px", outline: "none" };
+
+  const dropDownStyle = { width: "10rem", borderRadius: "8px", padding: "6px 8px", fontSize: "17px", outline: "none" };
   const defaultOptions = [<option key='-1'>Sort By</option>];
   const sortingConfigs = [
     {
@@ -54,6 +57,8 @@ function DashboardPage() {
   ];
 
   React.useEffect(() => {
+    setUserData({...userData, id:1});
+
     {
       isAuthenticated ?
         axios
@@ -61,7 +66,7 @@ function DashboardPage() {
             withCredentials: true,
           })
           .then((response) => {
-            const getCards = response.data.map((item) => {
+            const cards = response.data.map((item) => {
               return {
                 ...item,
                 mostRecentCommentTime: new Date(
@@ -71,13 +76,17 @@ function DashboardPage() {
             });
 
             setLoading(false);
-            //setCards(getCards.filter((item) => item.id > 150));
-            setCards(getCards.filter((item) => item.author.id === userData.id));
+            setSourceCards(cards);
           })
       :
         ''
     }
   }, []);
+
+  React.useEffect(() => {
+    //setCards(sourceCards.filter((item) => true));
+    setCards(sourceCards.filter((item) => item.author.id == userData.id));
+  }, [sourceCards, userData]);
 
 
   return (

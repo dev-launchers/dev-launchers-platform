@@ -7,10 +7,14 @@ import {
   Button,
   IdeaInfo,
 } from './StyledIdeaCard';
+import { start } from '@banana-dev/banana-dev';
 
 function IdeaCard({ cards }) {
   return (
-    <ImageListItem key={cards.id} >
+    <ImageListItem key={cards.id} style={{
+      display: "flex",
+      flexDirection: "column"
+    }}>
 
       <Link href={`/ideas/workshop/${cards.id}`}>
         <Button>
