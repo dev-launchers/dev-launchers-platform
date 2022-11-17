@@ -17,3 +17,9 @@ export const CardsWrapper = styled.ul`
   align-items: center;
   gap: 10px;
 `;
+
+export const FilterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

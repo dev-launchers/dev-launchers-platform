@@ -253,7 +253,6 @@ export const LeaderInfo = styled.div`
   margin-left: 30px;
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   width: 100%;
-  height: 50%;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;

@@ -19,7 +19,7 @@ import CellText from './CellText/StyledCellText';
 
 import Link from 'next/link';
 
-function IdeaCard({ cards, setSelectedCard }) {
+function IdeaCard({ cards }) {
 
 
 //   React.useEffect(() => {
@@ -88,7 +88,7 @@ function IdeaCard({ cards, setSelectedCard }) {
         </MainList>
       </MainCard>
       <FooterCard>
-        <FooterLink><Link onClick={() => { setSelectedCard(cards) }} href={`/ideas/workshop/${cards.id}`} >See More &#62;</Link></FooterLink>
+        <FooterLink href={`/ideas/workshop/${cards.id}`}>See More &#62;</FooterLink>
       </FooterCard>
     </CardWrapper>
   )
