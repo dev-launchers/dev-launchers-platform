@@ -71,7 +71,7 @@ RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
 ###################################################################
 
 FROM node:14.19.3-bullseye AS builder
-ENV NODE_ENV=production
+ARG ENV production
 ENV NEXTJS_IGNORE_ESLINT=1
 ENV NEXTJS_IGNORE_TYPECHECK=0
 
@@ -79,6 +79,8 @@ WORKDIR /app
 
 COPY . .
 COPY --from=deps /workspace-install ./
+# Rename .env.staging to .env.production 
+RUN if [ $ENV = "staging" ]; then mv /app/apps/app/.env.staging /app/apps/app/.env.production; fi
 
 # # Optional: if the app depends on global /static shared assets like images, locales...
 RUN yarn workspace @devlaunchers/app build
@@ -98,8 +100,7 @@ FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS runner
 
 WORKDIR /app
 
-ARG NODE_ENV=production
-ENV NODE_ENV ${NODE_ENV}
+ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 
