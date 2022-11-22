@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
+
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Typography from '../../atoms/Typography';
@@ -7,7 +8,6 @@ import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 
 const MobileNavigation = ({ userInfo }) => {
-  const ListStyle = { listStyle: 'none' };
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -34,51 +34,71 @@ const MobileNavigation = ({ userInfo }) => {
       >
         <Box flexDirection="column">
           <MobileNav onClick={handleNavClick}>
-            <Box gap={'5px'} alignItems={'center'}>
-              <img width="36" height="33" src={logo} alt="logo" />
-              <Typography type="h3">Dev Launchers</Typography>
+            <Box
+              gap={'5px'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              paddingBlock="40px"
+            >
+              {userInfo.id ? (
+                <Box gap={'16px'} alignItems={'center'}>
+                  <img
+                    width="36"
+                    height="33"
+                    src={userInfo.profilePictureUrl}
+                    alt="logo"
+                  />
+                  <Typography type="h2">Hi {userInfo.name}</Typography>
+                </Box>
+              ) : (
+                <img width="139.26" height="114" src={logo} alt="logo" />
+              )}
             </Box>
             <ul>
-              <Box gap={'16px'}>
-                <li style={ListStyle}>
-                  <a href="#">Learn</a>
+              <Box gap={'40px'} flexDirection="column" alignItems="center">
+                <li>
+                  <Button as="a" buttonType="alternative" buttonSize="standard">
+                    Learn
+                  </Button>
                 </li>
-                <li style={ListStyle}>
-                  <a href="#">Join Use</a>
+                <li>
+                  <Button as="a" buttonType="alternative" buttonSize="standard">
+                    Join Use
+                  </Button>
                 </li>
-                <li style={ListStyle}>
-                  {' '}
-                  <a href="#">Create</a>
+                <li>
+                  <Button as="a" buttonType="alternative" buttonSize="standard">
+                    Create
+                  </Button>
                 </li>
-                <li style={ListStyle}>
-                  {' '}
-                  <a href="#">Support Us</a>
+                <li>
+                  <Button as="a" buttonType="alternative" buttonSize="standard">
+                    Support Us
+                  </Button>
                 </li>
               </Box>
             </ul>
-            {userInfo.id === 0 ? (
-              <Box gap={'16px'}>
-                <Button buttonType="primary" buttonSize="standard">
-                  Sign In
+            <Box
+              gap={'16px'}
+              flexDirection="column"
+              alignItems="center"
+              paddingBlock="40px"
+            >
+              {!userInfo.id ? (
+                <>
+                  <Button as="a" buttonType="primary" buttonSize="standard">
+                    Sign In
+                  </Button>
+                  <Button as="a" buttonType="secondary" buttonSize="standard">
+                    Create an Account
+                  </Button>
+                </>
+              ) : (
+                <Button as="a" buttonType="secondary" buttonSize="standard">
+                  Logout
                 </Button>
-                <Button buttonType="secondary" buttonSize="standard">
-                  Create an Account
-                </Button>
-              </Box>
-            ) : (
-              <Box gap={'16px'} alignItems={'center'}>
-                <img
-                  width="36"
-                  height="33"
-                  src={userInfo.profilePictureUrl}
-                  alt="logo"
-                />
-                <Typography type="p">Hi {userInfo.name}</Typography>
-                <Button buttonType="secondary" buttonSize="standard">
-                  Log out
-                </Button>
-              </Box>
-            )}
+              )}
+            </Box>
           </MobileNav>
         </Box>
       </SlideHamburgerMenu>

@@ -14,22 +14,42 @@ export const Nav = styled.div`
 
 export const MobileNav = styled.div`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  ${paddingStyles.comPad200};
 `;
 
 export const HamburgerWrapper = styled.div`
+  li > a {
+    color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  }
+  h3 {
+    color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  }
+  h2 {
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE};
+  }
+
   .burgerButton {
     position: fixed;
     min-height: 5vh;
     min-width: 5vh;
-    right: 1.5vh;
-    top: 1.5vh;
+    right: 4.5vh;
+    top: 3vh;
 
     display: none; /* Only display on mobile */
+    span {
+      &:nth-child(1) {
+        top: 10% !important;
+      }
+      &:nth-child(2){
+        top: 45% !important;
+      }
+    }
   }
 
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
     .burgerButton {
       display: block;
+      
     }
   }
   .menuBody {
@@ -43,6 +63,8 @@ export const HamburgerWrapper = styled.div`
 
   .burgerBar {
     background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+    height: 10% !important;
+    border-radius: 5px !important;
   }
 
   .crossClass {

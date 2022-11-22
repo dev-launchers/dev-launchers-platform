@@ -31,7 +31,7 @@ export default function Navigation({ user }) {
             <img width="36" height="33" src={logo} alt="logo" />
             <Typography type="h3">Dev Launchers</Typography>
           </Box>
-          <NavWrapper css={`display:none; `}>
+          <NavWrapper>
             <ul>
               <Box gap={'16px'}>
                 <li style={ListStyle}>
