@@ -65,7 +65,8 @@ export default function Navigation({ user }) {
                   width="36"
                   height="33"
                   src={userInfo.profilePictureUrl}
-                  alt="logo"
+                  alt="Profile avatar"
+                  style={{ borderRadius: '50%' }}
                 />
                 <Typography type="p">Hi {userInfo.name}</Typography>
                 <Button buttonType="secondary" buttonSize="standard">

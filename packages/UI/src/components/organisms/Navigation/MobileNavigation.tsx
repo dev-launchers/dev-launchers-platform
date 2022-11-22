@@ -1,3 +1,4 @@
+import { borderRadius } from 'polished';
 import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 
@@ -46,7 +47,8 @@ const MobileNavigation = ({ userInfo }) => {
                     width="36"
                     height="33"
                     src={userInfo.profilePictureUrl}
-                    alt="logo"
+                    alt="Profile avatar"
+                    style={{ borderRadius: '50%' }}
                   />
                   <Typography type="h2">Hi {userInfo.name}</Typography>
                 </Box>
