@@ -1,14 +1,13 @@
-import { borderRadius } from 'polished';
 import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
-
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Typography from '../../atoms/Typography';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
+import type { NavigationProps } from '.';
 
-const MobileNavigation = ({ userInfo }) => {
+const MobileNavigation = ({ user }: NavigationProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -41,16 +40,16 @@ const MobileNavigation = ({ userInfo }) => {
               justifyContent={'center'}
               paddingBlock="40px"
             >
-              {userInfo.id ? (
+              {user.id ? (
                 <Box gap={'16px'} alignItems={'center'}>
                   <img
                     width="36"
                     height="33"
-                    src={userInfo.profilePictureUrl}
+                    src={user.profilePictureUrl}
                     alt="Profile avatar"
                     style={{ borderRadius: '50%' }}
                   />
-                  <Typography type="h2">Hi {userInfo.name}</Typography>
+                  <Typography type="h2">Hi {user.name}</Typography>
                 </Box>
               ) : (
                 <img width="139.26" height="114" src={logo} alt="logo" />
@@ -86,7 +85,7 @@ const MobileNavigation = ({ userInfo }) => {
               alignItems="center"
               paddingBlock="40px"
             >
-              {!userInfo.id ? (
+              {!user.id ? (
                 <>
                   <Button as="a" buttonType="primary" buttonSize="standard">
                     Sign In

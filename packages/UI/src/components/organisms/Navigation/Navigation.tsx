@@ -6,6 +6,7 @@ import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
 import { Nav, RainbowBar, NavWrapper } from './Styled.Navigation';
+import type { NavigationProps } from '.';
 /*
 * The following Consumes data from any context:
 *  if (!user) {
@@ -16,7 +17,7 @@ import { Nav, RainbowBar, NavWrapper } from './Styled.Navigation';
 *
 * Either of these can be used
 */
-export default function Navigation({ user }) {
+export default function Navigation({ user }: NavigationProps) {
   const ListStyle = { listStyle: 'none' };
   let userInfo = user;
   if (!user) {
@@ -76,7 +77,7 @@ export default function Navigation({ user }) {
             )}
           </NavWrapper>
         </Box>
-        <MobileNavigation userInfo={userInfo} />
+        <MobileNavigation user={userInfo} />
       </Nav>
       <RainbowBar />
     </>

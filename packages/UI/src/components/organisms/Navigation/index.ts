@@ -1,7 +1,8 @@
+import type { DEFAULT_USER } from 'context/UserDataContext';
 export { default } from './Navigation';
-
-export interface RainbowBoxProps {
-  boxColor: 'orange' | 'blue' | 'lightBlue';
+type UserType = typeof DEFAULT_USER;
+export interface NavigationProps {
+  user: UserType;
 }
 
 export interface MobileNavProps {
