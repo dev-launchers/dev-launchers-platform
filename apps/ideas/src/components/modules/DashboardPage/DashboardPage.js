@@ -100,7 +100,7 @@ function DashboardPage() {
           <Wrapper>
             <div style={{ color: "white" }}>Please sign in to view your dashboard!</div>
             <br />
-            <div><SignInButton redirectUrl="https://devlaunchers.org/ideas/dashboard" /></div>
+            <div><SignInButton redirectUrl="https://devlaunchers.org/ideaspace/dashboard" /></div>
           </Wrapper>
           <br />
         </div>
@@ -153,7 +153,7 @@ function DashboardPage() {
                 }
                 <Grid item sm={6} md={4} lg={4}>
                   <ImageListItem key="submitButton">
-                    <Link href="/ideas/submit">
+                    <Link href="/ideaspace/submit">
                       <Button>
                         <img
                           alt="submit_image"
