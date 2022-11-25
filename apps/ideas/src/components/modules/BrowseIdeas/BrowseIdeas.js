@@ -3,9 +3,9 @@ import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import IdeaCard from './IdeaCard/IdeaCard'
 import axios from "axios";
 import Grid from '@mui/material/Grid';
-import SortableDropdown from './SortableDropdown/SortableDropdown';
+import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
 
-import {PageWrapper, CardsWrapper} from './StyledBrowseIdeas'
+import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas'
 
 
 function BrowseIdeas() {
@@ -13,7 +13,8 @@ function BrowseIdeas() {
   const [selectedCard, setSelectedCard] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [sortedCards, setSortedCards] = React.useState([]);
-
+  
+  const defaultOptions = [<option key='0'></option>];
   const sortingConfigs = [
     {
       value: 'mostRecentCommentTime',
@@ -59,42 +60,30 @@ function BrowseIdeas() {
   return (
     <PageWrapper>
       {loading === true ? (
-        ''
+        <CircularIndeterminateLoader text="Loading..." color="black" />
       ) : (
-        <SortableDropdown
-          sortingConfigs={sortingConfigs}
-          elements={cards}
-          handleSetSortedElements={setSortedCards}
-          showClearSortButton
-          clearSortButtonLabel={'Clear Sorting Criteria'}
-        />
-      )}
-      <CardsWrapper>
-        {sortedCards.length > 0
-          ? sortedCards.map((item) => {
+        <div>
+          <FilterDiv>
+            <label htmlFor="sortBy">Sort By</label>
+            <SortableDropdown
+                sortingConfigs={sortingConfigs}
+                elements={cards}
+                defaultOptions={defaultOptions}
+                handleSetSortedElements={setSortedCards}
+              />
+          </FilterDiv>
+          <CardsWrapper>
+            {sortedCards.map((item) => {
               return (
                 <IdeaCard
                   key={item.id}
                   cards={item}
-                  setSelectedCard={setSelectedCard}
-                />
-              );
-            })
-          : cards.map((item) => {
-              return (
-                <IdeaCard
-                  key={item.id}
-                  cards={item}
-                  setSelectedCard={setSelectedCard}
                 />
               );
             })}
-        {loading ? (
-          <CircularIndeterminateLoader text="Loading..." color="black" />
-        ) : (
-          ''
-        )}
-      </CardsWrapper>
+          </CardsWrapper>
+        </div>
+      )}
     </PageWrapper>
   );
 }

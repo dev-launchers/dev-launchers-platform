@@ -19,23 +19,8 @@ import CellText from './CellText/StyledCellText';
 
 import Link from 'next/link';
 
-function IdeaCard({ cards, setSelectedCard }) {
-  //   React.useEffect(() => {
-  //     //axios.get('http://localhost:1337/idea-cards/')
-  //     axios.get(`https://api.devlaunchers.org/idea-cards`,
-  //       {
-  //         withCredentials: true,
-  //       }
-  //     )
-  //       .then(response => {
-  //         const getCards = response.data.map((item) => {
-  //           return item;
-  //         });
 
-  //         setCards(getCards);
-  //       });
-  //   }, []);
-
+function IdeaCard({ cards }) {
   return (
     <CardWrapper>
       <AddIconLight />
@@ -82,16 +67,7 @@ function IdeaCard({ cards, setSelectedCard }) {
         </MainList>
       </MainCard>
       <FooterCard>
-        <FooterLink>
-          <Link
-            onClick={() => {
-              setSelectedCard(cards);
-            }}
-            href={`/ideaspace/workshop/${cards.id}`}
-          >
-            See More &#62;
-          </Link>
-        </FooterLink>
+        <FooterLink href={`/ideaspace/workshop/${cards.id}`}>See More &#62;</FooterLink>
       </FooterCard>
     </CardWrapper>
   );

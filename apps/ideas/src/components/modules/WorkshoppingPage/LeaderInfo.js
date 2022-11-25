@@ -21,7 +21,7 @@ function LeaderInfoComponent(props) {
             alt="user_image"
             src={`https://picsum.photos/70?random=${props.id}`}
           />
-          {props.selectedCard.discord}
+          {/*{props.selectedCard.author.username}*/}
         </LeaderName>
         <h6>
           <p>Submitted: {formatDate(props.selectedCard.created_at)}</p>

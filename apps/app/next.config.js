@@ -1,3 +1,5 @@
+
+const { loadEnvConfig } =  require('@next/env');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
@@ -6,6 +8,9 @@ const withTM = require('next-transpile-modules')([
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
 ]); // pass the modules you would like to see transpiled
+
+// Used as a workaround to make our .env.test environment variables function in staging
+loadEnvConfig(process.cwd());
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -48,6 +53,6 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     externalDir: true,
-  },
+  }
 };
 module.exports = withPlugins([[imagesPlugin], [withTM]], nextConfig);

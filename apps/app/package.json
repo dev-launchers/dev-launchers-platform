@@ -10,6 +10,7 @@
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
     "@devlaunchers/website": "*",
+    "@next/env": "^12.2.3",
     "@ramonak/react-progress-bar": "^5.0.2",
     "@types/styled-components": "5.1.25",
     "articles": "^0.2.2",

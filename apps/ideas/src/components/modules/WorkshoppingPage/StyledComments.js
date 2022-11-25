@@ -19,10 +19,9 @@ export const Comments = styled.div`
   overflow: auto;
   width: 100%;
   max-width: 700px;
-  min-width: 300px;
-  height: 300px;
   background-color: white;
   border-radius: 30px;
+
 
   h2 {
     font-weight: 300;
@@ -33,6 +32,7 @@ export const SingleComment = styled.div`
   padding: 10px 20px;
   margin-bottom: 10px;
   display: flex;
+
 `;
 
 export const SingleCommentContent = styled.div`
@@ -43,6 +43,7 @@ export const SingleCommentContent = styled.div`
   border-radius: 25px;
   padding: 20px;
   display: inline-flex;
+
 
   @media (orientation: portrait) {
     min-width: auto;
@@ -253,7 +254,6 @@ export const LeaderInfo = styled.div`
   margin-left: 30px;
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   width: 100%;
-  height: 50%;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   border-bottom-right-radius: 30px;

@@ -1,14 +1,16 @@
 import React from 'react';
-import { FilterDiv } from './StyledSortableDropdown';
 
 const SortableDropdown = ({
   sortingConfigs,
   elements,
+  defaultOptions,
   handleSetSortedElements,
+  style,
 }) => {
   const [sortOrderAndCriteria, setSortOrderAndCriteria] = React.useState('');
   const [dropDownOptions, setDropDownOptions] = React.useState([]);
   const [sortedElements, setSortedElements] = React.useState([]);
+  const [showOptions, setShowOptions] = React.useState([]);
 
   React.useEffect(() => {
     const getDropDownOptions =
@@ -27,7 +29,15 @@ const SortableDropdown = ({
           </option>
         );
       });
+
     setDropDownOptions(getDropDownOptions);
+
+    if (defaultOptions[0].key === "-1"){
+      setShowOptions(defaultOptions);
+    } else {
+      setShowOptions(getDropDownOptions);
+    }
+    
     if (elements && elements.length > 0) {
       const elementsClone = JSON.parse(JSON.stringify(elements));
       setSortedElements(elementsClone);
@@ -54,41 +64,48 @@ const SortableDropdown = ({
         return a[criteria] < b[criteria]
           ? -1
           : a[criteria] > b[criteria]
-          ? 1
-          : 0;
+            ? 1
+            : 0;
       });
     } else {
       sortedElementsClone.sort((a, b) => {
         return a[criteria] > b[criteria]
           ? -1
           : a[criteria] < b[criteria]
-          ? 1
-          : 0;
+            ? 1
+            : 0;
       });
     }
     handleSetSortedElements(sortedElementsClone);
   };
 
   const handleSetSortOrderAndCriteriaChange = (e) => {
-    if (e.target.value === 'default' || !e.target.value) {
+    if (!e.target.value) {
       return;
     }
     setSortOrderAndCriteria(e.target.value);
     sortElements(e.target.value);
+
+  };
+
+  const handleClick = (e) => {
+    if (defaultOptions[0].key === "-1") {
+      setShowOptions(dropDownOptions);
+      return;
+    }
   };
 
   return (
-    <FilterDiv>
-      <label for="sortBy">Sort By</label>
-      <select
-        name="sortBy"
-        id="sortBy"
-        onChange={handleSetSortOrderAndCriteriaChange}
-        value={sortOrderAndCriteria}
-      >
-        {dropDownOptions}
-      </select>
-    </FilterDiv>
+    <select
+      name="sortBy"
+      id="sortBy"
+      onClick={handleClick}
+      onChange={handleSetSortOrderAndCriteriaChange}
+      value={sortOrderAndCriteria}
+      style={style}
+    >
+      {showOptions}
+    </select>
   );
 };
 
