@@ -29,7 +29,7 @@ const hashRedirect = (router) => {
 };
 
 function MyApp(props) {
-  useMockDataInDevelopment();
+  //useMockDataInDevelopment();
 
   const router = useRouter();
   hashRedirect(router);

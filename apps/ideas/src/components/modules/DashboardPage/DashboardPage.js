@@ -85,7 +85,7 @@ function DashboardPage() {
 
   React.useEffect(() => {
     //setCards(sourceCards.filter((item) => true));
-    setCards(sourceCards.filter((item) => item.author.id == userData.id));
+    setCards(sourceCards.filter((item) => item?.author?.id == userData.id));
   }, [sourceCards, userData]);
 
 
