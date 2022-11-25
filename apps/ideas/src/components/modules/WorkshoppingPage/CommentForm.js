@@ -15,19 +15,24 @@ function CommentForm(props) {
   const { selectedCard, ...other } = props;
   const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
   const [charsCount, setCharsCount] = React.useState(MIN_COMMENT_CHARS);
+  const [borderColorName, setBorderColorName] = React.useState('');
+  const [borderColorComment, setBorderColorComment] = React.useState('');
 
   const handleChange = (e) => {
+    if (e.target.value.length > 0) {
+      setBorderColorName('');
+    }
     props.setHandleChange(e.target.value);
   };
 
   const handleTextChange = (e) => {
     const text = e.target.value;
     props.setHandleTextChange(text);
-
     let characterCount = text.length;
     setCharsLeft(MAX_COMMENT_CHARS - characterCount);
     if (characterCount >= 25) {
       setCharsCount(0);
+      setBorderColorComment('');
     } else {
       setCharsCount(MIN_COMMENT_CHARS - characterCount);
     }
@@ -40,19 +45,12 @@ function CommentForm(props) {
       props.handleTextChange.length < MIN_COMMENT_CHARS &&
       props.handleChange.length == 0
     ) {
-      window.alert('Please fill in a name and a comment to 25 characters!');
-      var message_color = document.getElementById('message');
-      message_color.style.borderColor = '#FF0000';
-      var name_col = document.getElementById('name');
-      name_col.style.borderColor = '#FF0000';
+      setBorderColorComment('red');
+      setBorderColorName('red');
     } else if (props.handleTextChange.length < MIN_COMMENT_CHARS) {
-      window.alert('Please fill in a comment to 25 characters!');
-      var message_color = document.getElementById('message');
-      message_color.style.borderColor = '#FF0000';
+      setBorderColorComment('red');
     } else if (props.handleChange.length == 0) {
-      window.alert('Please fill in a name!');
-      var name_col = document.getElementById('name');
-      name_col.style.borderColor = '#FF0000';
+      setBorderColorName('red');
     } else {
       axios
         .post(
@@ -65,14 +63,8 @@ function CommentForm(props) {
             props.setHandleTextChange('');
           }
         });
-      var message_color = document.getElementById('message');
-      var name_col = document.getElementById('name');
-      if (name_col.style.borderColor == '#FF0000') {
-        name_col.style.borderColor = 'grey';
-      }
-      if (message_color.style.borderColor == '#FF0000') {
-        message_color.style.borderColor = 'grey';
-      }
+        setBorderColorName('grey');
+        setBorderColorComment('grey');
       location.reload();
     }
   };
@@ -82,9 +74,9 @@ function CommentForm(props) {
     <div>
       <form onSubmit={handleSubmit}>
         <UserNameCommentBox>
-          <UserNameComment
-            className="input_color1"
-            id="name"
+          <UserNameComment    
+            className='input_color1'   
+            style={{borderColor: borderColorName}}
             aria-hidden="true"
             type="text"
             name="author"
@@ -101,8 +93,7 @@ function CommentForm(props) {
             src={`https://picsum.photos/70?random=${props.id}`}
           />
           <textarea
-            className="input_color2"
-            id="message"
+            className='input_color2'
             onKeyUp={(e) => {
               e.target.style.height = 'inherit';
               e.target.style.height = `${e.target.scrollHeight}px`;
@@ -110,7 +101,7 @@ function CommentForm(props) {
               // e.target.style.height = `${Math.min(e.target.scrollHeight, limit)}px`;
               //textCounter(this,'counter',250);
             }}
-            style={{ width: '100%', overflow: 'hidden' }}
+            style={{ width: '100%', overflow: 'hidden', borderColor: borderColorComment}}
             name="text"
             placeholder="What are your thoughts? (min 25 characters - max 250 characters)"
             value={props.handleTextChange}
