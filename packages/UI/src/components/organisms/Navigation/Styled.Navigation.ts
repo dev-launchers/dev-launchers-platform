@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import theme from 'styles/theme';
 import { paddingStyles } from '../../atoms/Padding';
+
 export const Nav = styled.div`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   width: 100%;
@@ -40,7 +40,7 @@ export const HamburgerWrapper = styled.div`
       &:nth-child(1) {
         top: 10% !important;
       }
-      &:nth-child(2){
+      &:nth-child(2) {
         top: 45% !important;
       }
     }
@@ -49,7 +49,6 @@ export const HamburgerWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
     .burgerButton {
       display: block;
-      
     }
   }
   .menuBody {
