@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
+import Layer from '../../atoms/Layer';
 import Typography from '../../atoms/Typography';
 import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
-import { Nav, RainbowBar, NavWrapper } from './Styled.Navigation';
+import { Nav, NavWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+
 /*
 * The following Consumes data from any context:
 *  if (!user) {
@@ -26,60 +28,61 @@ export default function Navigation({ user }: NavigationProps) {
   // const { userData } = useUserDataContext();
   return (
     <>
-      <Nav>
-        <Box justifyContent={'space-between'} alignItems={'center'}>
-          <Box gap={'5px'} alignItems={'center'}>
-            <img width="36" height="33" src={logo} alt="logo" />
-            <Typography type="h3">Dev Launchers</Typography>
+      <Layer hasRainbow type="black">
+        <Nav>
+          <Box justifyContent={'space-between'} alignItems={'center'}>
+            <Box gap={'5px'} alignItems={'center'}>
+              <img width="36" height="33" src={logo} alt="logo" />
+              <Typography type="h3">Dev Launchers</Typography>
+            </Box>
+            <NavWrapper>
+              <ul>
+                <Box gap={'16px'}>
+                  <li style={ListStyle}>
+                    <a href="#">Learn</a>
+                  </li>
+                  <li style={ListStyle}>
+                    <a href="#">Join Use</a>
+                  </li>
+                  <li style={ListStyle}>
+                    {' '}
+                    <a href="#">Create</a>
+                  </li>
+                  <li style={ListStyle}>
+                    {' '}
+                    <a href="#">Support Us</a>
+                  </li>
+                </Box>
+              </ul>
+              {userInfo.id === 0 ? (
+                <Box gap={'16px'}>
+                  <Button buttonType="primary" buttonSize="standard">
+                    Sign In
+                  </Button>
+                  <Button buttonType="secondary" buttonSize="standard">
+                    Create an Account
+                  </Button>
+                </Box>
+              ) : (
+                <Box gap={'16px'} alignItems={'center'}>
+                  <img
+                    width="36"
+                    height="33"
+                    src={userInfo.profilePictureUrl}
+                    alt="Profile avatar"
+                    style={{ borderRadius: '50%' }}
+                  />
+                  <Typography type="p">Hi {userInfo.name}</Typography>
+                  <Button buttonType="secondary" buttonSize="standard">
+                    Log out
+                  </Button>
+                </Box>
+              )}
+            </NavWrapper>
           </Box>
-          <NavWrapper>
-            <ul>
-              <Box gap={'16px'}>
-                <li style={ListStyle}>
-                  <a href="#">Learn</a>
-                </li>
-                <li style={ListStyle}>
-                  <a href="#">Join Use</a>
-                </li>
-                <li style={ListStyle}>
-                  {' '}
-                  <a href="#">Create</a>
-                </li>
-                <li style={ListStyle}>
-                  {' '}
-                  <a href="#">Support Us</a>
-                </li>
-              </Box>
-            </ul>
-            {userInfo.id === 0 ? (
-              <Box gap={'16px'}>
-                <Button buttonType="primary" buttonSize="standard">
-                  Sign In
-                </Button>
-                <Button buttonType="secondary" buttonSize="standard">
-                  Create an Account
-                </Button>
-              </Box>
-            ) : (
-              <Box gap={'16px'} alignItems={'center'}>
-                <img
-                  width="36"
-                  height="33"
-                  src={userInfo.profilePictureUrl}
-                  alt="Profile avatar"
-                  style={{ borderRadius: '50%' }}
-                />
-                <Typography type="p">Hi {userInfo.name}</Typography>
-                <Button buttonType="secondary" buttonSize="standard">
-                  Log out
-                </Button>
-              </Box>
-            )}
-          </NavWrapper>
-        </Box>
-        <MobileNavigation user={userInfo} />
-      </Nav>
-      <RainbowBar />
+          <MobileNavigation user={userInfo} />
+        </Nav>
+      </Layer>
     </>
   );
 }

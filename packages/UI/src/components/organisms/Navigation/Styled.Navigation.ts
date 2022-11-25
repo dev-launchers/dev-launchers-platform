@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
 
 export const Nav = styled.div`
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  //background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   width: 100%;
   ${paddingStyles.comPad300};
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
@@ -71,17 +71,6 @@ export const HamburgerWrapper = styled.div`
   }
 `;
 
-export const RainbowBar = styled.div`
-  width: 100%;
-  height: 8px;
-  background-image: linear-gradient(
-    to right,
-    ${({ theme }) => theme.colors.ORANGE},
-    ${({ theme }) => theme.colors.YELLOW},
-    ${({ theme }) => theme.colors.LIGHT_BLUE},
-    ${({ theme }) => theme.colors.BLUE}
-  );
-`;
 export const NavWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
     display: none;
