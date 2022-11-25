@@ -24,10 +24,10 @@ const ModalCustomStyles = {
     right: '2rem',
     bottom: '2rem',
     maxWidth: '320px',
-    paddingTop: '5rem',
+    paddingTop: '80px',
     paddingBottom: '0',
     textAlign: 'center',
-    height: '570px',
+    height: '550px',
     border: 'none',
     borderRadius: '16px',
     boxShadow: '0px 0px 20px rgba(0, 0, 0, 0.1)',
@@ -35,21 +35,15 @@ const ModalCustomStyles = {
 };
 
 const IdeasBetaFeedbackModal = () => {
-  const [showIcon, setShowIcon] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const MILLISECONDS_IN_DAY = 1000 * 3600 * 24;
 
-  function refreshLastVisited(delay = 2) {
-    localStorage.setItem('dl_Ideas_lastVisited', Date.now());
-    localStorage.setItem('dl_Ideas_delay', delay);
+  function refreshIsIdeaSpaceVisited() {
+    localStorage.setItem('dl_Ideas_isVisited', true);
   }
 
   useEffect(() => {
-    const lastVisited = localStorage.dl_Ideas_lastVisited || 0;
-    const delay = localStorage.dl_Ideas_delay;
-    const timePassed = (Date.now() - lastVisited) / MILLISECONDS_IN_DAY;
-    const canShowIcon = !lastVisited || timePassed > delay;
-    canShowIcon ? setShowIcon(true) : setShowIcon(false);
+    const isVisited = localStorage.dl_Ideas_isVisited || false;
+    if (!isVisited) openModal();
   });
 
   function openModal() {
@@ -58,18 +52,16 @@ const IdeasBetaFeedbackModal = () => {
 
   function closeModal() {
     setShowModal(false);
-    refreshLastVisited();
+    refreshIsIdeaSpaceVisited();
   }
 
   Modal.setAppElement('#__next');
 
   return (
     <div>
-      {showIcon && (
-        <button className="open-button" onClick={openModal}>
-          <img src={messageIcon} />
-        </button>
-      )}
+      <button className="open-button" onClick={openModal}>
+        <img src={messageIcon} />
+      </button>
       <Modal
         isOpen={showModal}
         onRequestClose={closeModal}
@@ -77,10 +69,10 @@ const IdeasBetaFeedbackModal = () => {
         closeTimeoutMS={800}
         contentLabel="Feedback Modal"
       >
-        <h2 className="title">
+        <div className="title">
           What do you think of{' '}
           <strong style={{ color: '#ff7f0e' }}>IdeaSpace Beta</strong>?
-        </h2>
+        </div>
         <small>Take a quick survey to help us improve</small>
         <button className="close-button" onClick={closeModal}>
           ×
@@ -88,13 +80,7 @@ const IdeasBetaFeedbackModal = () => {
         <a className="form-link" href={formLink} target="_blank">
           Provide Feedback
         </a>
-        <button
-          className="remind"
-          onClick={() => {
-            closeModal();
-            refreshLastVisited(1);
-          }}
-        >
+        <button className="remind" onClick={closeModal}>
           <small>remind me later</small>
         </button>
         <img
