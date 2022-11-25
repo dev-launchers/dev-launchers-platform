@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { paddingStyles } from '../../atoms/Padding';
 import { typographyStyles } from '../../atoms/Typography';
 import type { InputProps } from '.';
 
@@ -35,7 +36,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
   font-size: 0.875rem;
   font-weight: 300;
   width: ${({ width }) => width || '100%'};
-  padding: 1rem 1.5rem;
+  ${paddingStyles.comPad700};
   &::placeholder {
     ${typographyStyles['placeHolder']};
   }
@@ -101,7 +102,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
 `;
 
 export const StyledInlineErrorMessage = styled.div`
-  ${typographyStyles['pSmall']}
+  ${typographyStyles['pSmall']};
   color: #f03d3e;
   margin-left: 0.625rem;
   margin-top: 0.5rem;
