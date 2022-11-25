@@ -13,6 +13,8 @@ import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 
+import useMockDataInDevelopment from "../utils/useMockData";
+
 /*
 import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
@@ -27,6 +29,8 @@ const hashRedirect = (router) => {
 };
 
 function MyApp(props) {
+  useMockDataInDevelopment();
+
   const router = useRouter();
   hashRedirect(router);
 

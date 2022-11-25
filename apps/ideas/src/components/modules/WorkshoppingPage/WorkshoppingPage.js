@@ -22,10 +22,10 @@ import {
 function WorkshoppingPage(props) {
   const [data, setData] = useState(
     {
-      ideaName:'',
-      discord:'',
-      description:'',
-      email:'',
+      ideaName: '',
+      discord: '',
+      description: '',
+      email: '',
       created_at: '',
       comments: [''],
     }
@@ -45,7 +45,7 @@ function WorkshoppingPage(props) {
     if (ideaId) {
       axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
         .then(response => {
-          if (response.status === 200 ) {
+          if (response.status === 200) {
             setLoading(false)
             setData(response.data)
           }
@@ -56,36 +56,34 @@ function WorkshoppingPage(props) {
 
 
   return (
-      <Container>
-        <div >
+    <Container>
 
-        {loading === true ? 
-          <CircularIndeterminateLoader 
-            text="Loading..."
-            color="white"
-          />
-          : 
-          ""
-        }
-          <div>
-            <IdeaOverview selectedCard={data} />
-          </div>
+      {loading === true ?
+        <CircularIndeterminateLoader
+          text="Loading..."
+          color="white"
+        />
+        :
+        <div>
+          <IdeaOverview selectedCard={data} />
 
           <Form>
             <CommentForm setHandleChange={setHandleChange} data={data} setData={setData} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
           </Form>
 
           <Comments>
-            <CommentList data={data} selectedCard={data} />
+            <CommentList selectedCard={data} />
           </Comments>
         </div>
+      }
 
-        <div>
-          <div>
-            <LeaderInfo selectedCard={data} />
-          </div>
-        </div>
-      </Container>
+      {loading === true ?
+        " "
+        :
+        <LeaderInfo selectedCard={data} />
+      }
+
+    </Container>
   );
 }
 
