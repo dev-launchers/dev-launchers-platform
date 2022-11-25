@@ -1,27 +1,26 @@
 import * as React from 'react';
-import Bell from '../../../assets/icons/Bell';
-import Close from '../../../assets/icons/Close';
-import Error from '../../../assets/icons/Error';
-import Success from '../../../assets/icons/Success';
+import { Icons } from '../../../assets';
 import { Container, Text } from './StyledAlert';
 import type { AlertProps } from '.';
 
-const Alert: React.FC<AlertProps> = ({ signal, children, ...rest }) => {
-  console.log(close);
-
+const Alert: React.FC<AlertProps> = ({
+  signal = 'notify',
+  children,
+  ...rest
+}) => {
   return (
     <Container signal={signal} {...rest}>
       {signal === 'error' ? (
-        <Error />
+        <Icons.Error />
       ) : signal === 'success' ? (
-        <Success />
+        <Icons.Success />
       ) : signal === 'notify' ? (
-        <Bell />
+        <Icons.Bell />
       ) : (
         <></>
       )}
       <Text signal={signal}>{children}</Text>
-      <Close />
+      <Icons.Close />
     </Container>
   );
 };
