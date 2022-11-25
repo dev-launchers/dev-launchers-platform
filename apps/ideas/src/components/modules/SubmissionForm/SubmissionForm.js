@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 //import "./submitIdea.css";
-import { Link } from "react-router-dom";
-import { useRouter } from "next/router"
+import { Link } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import SignInButton from "../../common/SignInButton/SignInButton";
+import SignInButton from '../../common/SignInButton/SignInButton';
 
 import {
   Wrapper,
@@ -43,14 +43,16 @@ function SubmissionForm() {
     },
   ]);
 
-  const [author, setAuthor] = useState("1");
-  const [difficultyLevel, setDifficultyLevel] = useState("Beginner");
-  const [discord, setDiscord] = useState("");
-  const [email, setEmail] = useState("");
-  const [calendly, setCalendly] = useState("");
-  const [features, setFeatures] = useState("");
-  const [experience, setExperience] = useState("");
-  const [toBeLeader, setToBeLeader] = useState("Yes, I want to be the idea leader");
+  const [author, setAuthor] = useState('1');
+  const [difficultyLevel, setDifficultyLevel] = useState('Beginner');
+  const [discord, setDiscord] = useState('');
+  const [email, setEmail] = useState('');
+  const [calendly, setCalendly] = useState('');
+  const [features, setFeatures] = useState('');
+  const [experience, setExperience] = useState('');
+  const [toBeLeader, setToBeLeader] = useState(
+    'Yes, I want to be the idea leader'
+  );
   //const [timeStamp, setTimeStamp] = useState(new Date());
 
   const submitHandler = async (e) => {
@@ -120,17 +122,21 @@ function SubmissionForm() {
         <br />
       </Description>
       <Wrapper>
-        {!isAuthenticated ? 
+        {!isAuthenticated ? (
           <Container>
-            <div style={{
-              color: "white"
-            }}>
+            <div
+              style={{
+                color: 'white',
+              }}
+            >
               <div>Please sign in to submit your idea!</div>
               <br />
-              <div><SignInButton redirectUrl="https://devlaunchers.org/ideas/submit" /></div>
+              <div>
+                <SignInButton redirectUrl="https://devlaunchers.org/ideaspace/submit" />
+              </div>
             </div>
-          </Container> 
-          :
+          </Container>
+        ) : (
           <Container>
             <form onSubmit={submitHandler}>
               <div className="test">
@@ -179,7 +185,8 @@ function SubmissionForm() {
               </Question>
               <Question>
                 <p>
-                  Do you have a Calendly? If so add a link here, if not it’s okay!
+                  Do you have a Calendly? If so add a link here, if not it’s
+                  okay!
                 </p>
                 <input
                   required
@@ -263,44 +270,48 @@ function SubmissionForm() {
                     value={tagline}
                     onChange={(e) => setTagline(e.target.value)}
                   /> */}
-                  <textarea
-                    onKeyUp={(e) => {
-                      e.target.style.height = 'inherit';
-                      e.target.style.height = `${e.target.scrollHeight}px`; 
-                    }}
-                    style={{width:"100%", overflow:"hidden"}}
-                    name="tagline"
-                    value={tagline}
-                    onChange={(e) => setTagline(e.target.value)}>
-                  </textarea>
-                </Question2>
-                <Question2>
-                  <p>Do you want to be the team leader?</p>
-                  <select
-                    style={{ width: "100%", overflow: "hidden" }}
-                    name="toBeLeader"
-                    value={toBeLeader} 
-                    onChange={(e) => setToBeLeader(e.target.value)}
-                  >
-                    <option value="Yes, I want to be the idea leader">Yes, I want to be the idea leader</option>
-                    <option value="No, I just want to work on it">No, I just want to work on it</option>
-                  </select>
-                </Question2>
-                <p className="text">
-                  After submitting your idea will be reviewed and enter the
-                  workshopping stage!
-                </p>
-                <Submit type="submit">
-                  {" "}
-                  {sending === true ? "Wait" : "Submit"}{" "}
-                </Submit>
-              </form>
-            </Container>
-          }
-        </Wrapper>
-        <br />
-      </div>
-    );
+                <textarea
+                  onKeyUp={(e) => {
+                    e.target.style.height = 'inherit';
+                    e.target.style.height = `${e.target.scrollHeight}px`;
+                  }}
+                  style={{ width: '100%', overflow: 'hidden' }}
+                  name="tagline"
+                  value={tagline}
+                  onChange={(e) => setTagline(e.target.value)}
+                ></textarea>
+              </Question2>
+              <Question2>
+                <p>Do you want to be the team leader?</p>
+                <select
+                  style={{ width: '100%', overflow: 'hidden' }}
+                  name="toBeLeader"
+                  value={toBeLeader}
+                  onChange={(e) => setToBeLeader(e.target.value)}
+                >
+                  <option value="Yes, I want to be the idea leader">
+                    Yes, I want to be the idea leader
+                  </option>
+                  <option value="No, I just want to work on it">
+                    No, I just want to work on it
+                  </option>
+                </select>
+              </Question2>
+              <p className="text">
+                After submitting your idea will be reviewed and enter the
+                workshopping stage!
+              </p>
+              <Submit type="submit">
+                {' '}
+                {sending === true ? 'Wait' : 'Submit'}{' '}
+              </Submit>
+            </form>
+          </Container>
+        )}
+      </Wrapper>
+      <br />
+    </div>
+  );
 
   // if (selected === "submited") {
   //   return (

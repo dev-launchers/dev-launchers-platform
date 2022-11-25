@@ -2573,7 +2573,7 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@devlaunchers/website": "*"
     "@next/env": ^12.2.3
@@ -2799,9 +2799,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/ideas@*, @devlaunchers/ideas@workspace:apps/ideas":
+"@devlaunchers/ideaspace@*, @devlaunchers/ideaspace@workspace:apps/ideas":
   version: 0.0.0-use.local
-  resolution: "@devlaunchers/ideas@workspace:apps/ideas"
+  resolution: "@devlaunchers/ideaspace@workspace:apps/ideas"
   dependencies:
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
@@ -2932,7 +2932,7 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@ramonak/react-progress-bar": ^5.0.2
     "@types/luxon": 3.0.0
