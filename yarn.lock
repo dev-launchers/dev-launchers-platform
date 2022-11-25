@@ -2786,8 +2786,8 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     eslint: ^8.0.0
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
     typescript: ^4.5.2
   peerDependenciesMeta:
     react:
@@ -2825,9 +2825,9 @@ __metadata:
     postcss: ^8.4.14
     prettier: ^2.7.1
     prop-types: ^15.7.2
-    react: 17.0.2
+    react: ^17.0.2
     react-burger-menu: ^3.0.8
-    react-dom: 17.0.2
+    react-dom: ^17.0.2
     react-ga: ^3.3.1
     react-ga4: ^1.4.1
     react-markdown: ^8.0.3
@@ -27743,7 +27743,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2, react-dom@npm:^17.0.2":
+"react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -28233,7 +28233,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2, react@npm:^17.0.2":
+"react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:

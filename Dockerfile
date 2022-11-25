@@ -71,7 +71,7 @@ RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
 ###################################################################
 
 FROM node:14.19.3-bullseye AS builder
-ENV NODE_ENV=production
+ARG NODE_ENV=production
 ENV NEXTJS_IGNORE_ESLINT=1
 ENV NEXTJS_IGNORE_TYPECHECK=0
 
@@ -79,6 +79,9 @@ WORKDIR /app
 
 COPY . .
 COPY --from=deps /workspace-install ./
+
+# This will do the trick, use the corresponding env file for each environment.
+RUN if [ "${NODE_ENV}" = "staging" ]; then mv ./apps/app/.env.staging ./apps/app/.env.production ; fi
 
 # # Optional: if the app depends on global /static shared assets like images, locales...
 RUN yarn workspace @devlaunchers/app build
@@ -97,9 +100,6 @@ RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
 FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS runner
 
 WORKDIR /app
-
-ARG NODE_ENV=production
-ENV NODE_ENV ${NODE_ENV}
 
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
 
@@ -120,6 +120,7 @@ COPY --from=builder /app/apps/dev-recruiters/next.config.js \
                     ./apps/dev-recruiters/
 COPY --from=builder /app/apps/app/public ./apps/app/public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.next ./apps/app/.next
+COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.env.production ./apps/app/.env.production
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
