@@ -114,7 +114,7 @@ function SubmissionForm() {
 
   return (
     <div>
-      <Headline>Dev Ideas</Headline>
+      <Headline>IdeaSpace</Headline>
       <Description>
         Have an idea for a development project?
         <br />
