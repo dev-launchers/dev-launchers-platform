@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Icons } from '../../../assets';
-import { Container, Text } from './StyledAlert';
+import Typography from '../../atoms/Typography';
+import { Container } from './StyledAlert';
 import type { AlertProps } from '.';
 
 const Alert: React.FC<AlertProps> = ({
@@ -19,7 +20,7 @@ const Alert: React.FC<AlertProps> = ({
       ) : (
         <></>
       )}
-      <Text signal={signal}>{children}</Text>
+      <Typography style={{ flex: 1 }}>{children}</Typography>
       <Icons.Close />
     </Container>
   );
