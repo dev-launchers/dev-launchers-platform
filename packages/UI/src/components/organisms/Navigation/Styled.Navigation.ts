@@ -15,6 +15,7 @@ export const Nav = styled.div`
 export const MobileNav = styled.div`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   ${paddingStyles.comPad200};
+  width: 100%;
 `;
 
 export const HamburgerWrapper = styled.div`
@@ -33,8 +34,6 @@ export const HamburgerWrapper = styled.div`
     min-height: 5vh;
     min-width: 5vh;
     right: 4.5vh;
-    top: 3vh;
-
     display: none; /* Only display on mobile */
     span {
       &:nth-child(1) {
@@ -49,10 +48,18 @@ export const HamburgerWrapper = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
     .burgerButton {
       display: block;
+      top: 3vh;
     }
   }
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+    .burgerButton {
+      top: 6vh;
+    }
+  }
+
   .menuBody {
     top: 0;
+    width: 100% !important;
   }
 
   .overlay {
@@ -72,6 +79,9 @@ export const HamburgerWrapper = styled.div`
 `;
 
 export const NavWrapper = styled.div`
+  display: flex;
+  gap: 3rem;
+  align-items: center;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
     display: none;
   }

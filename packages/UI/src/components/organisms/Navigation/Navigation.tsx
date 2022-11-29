@@ -39,18 +39,18 @@ export default function Navigation({ user }: NavigationProps) {
               <ul>
                 <Box gap={'16px'}>
                   <li style={ListStyle}>
-                    <a href="#">Learn</a>
+                    <a href="#">LEARN</a>
                   </li>
                   <li style={ListStyle}>
-                    <a href="#">Join Use</a>
-                  </li>
-                  <li style={ListStyle}>
-                    {' '}
-                    <a href="#">Create</a>
+                    <a href="#">JOIN US</a>
                   </li>
                   <li style={ListStyle}>
                     {' '}
-                    <a href="#">Support Us</a>
+                    <a href="#">CREATE</a>
+                  </li>
+                  <li style={ListStyle}>
+                    {' '}
+                    <a href="#">SUPPORT US</a>
                   </li>
                 </Box>
               </ul>
