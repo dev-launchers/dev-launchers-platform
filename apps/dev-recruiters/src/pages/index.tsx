@@ -55,8 +55,8 @@ const IndexPage = ({ projects, opportunities }: Props) => {
 
   return <>
     <Head>
-      <title>Our Projects</title>
-      <meta name="title" content="Our Projects"></meta>
+      <title>Dev Discovery</title>
+      <meta name="title" content="Dev Discovery"></meta>
       <meta
         name="description"
         content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
@@ -71,7 +71,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         property="og:image"
         content="/images/DevlaunchersGitHubThumb.png"
       ></meta>
-      <meta property="og:title" content="Our Projects"></meta>
+      <meta property="og:title" content="Dev Discovery"></meta>
       <meta
         property="og:description"
         content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
@@ -82,7 +82,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         property="twitter:url"
         content="https://devlaunchers.org/projects"
       />
-      <meta property="twitter:title" content="Our Projects" />
+      <meta property="twitter:title" content="Dev Discovery" />
       <meta
         property="twitter:description"
         content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
