@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { ToastContainer } from 'react-toastify';
 
 import Footer from '@devlaunchers/components/components/Footer';
-import Header from '@devlaunchers/components/components/Header';
+import Navigation from '@devlaunchers/components/components/organisms/Navigation';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import {
   initGA,
@@ -12,8 +12,9 @@ import { Router, useRouter } from 'next/router';
 import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../styles/globals';
+import GlobalStyle from '@devlaunchers/components/styles/global';
 import theme from '../styles/theme';
+
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -60,7 +61,8 @@ function MyApp({ Component, pageProps }) {
 
             <div className="App">
             </div>
-            <Header />
+           <Navigation />
+         
             <Component {...pageProps} />
             {/* {props.children} */}
             <Footer />

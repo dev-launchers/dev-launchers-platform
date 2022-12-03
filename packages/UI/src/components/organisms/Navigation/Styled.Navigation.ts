@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
 
 export const Nav = styled.div`
-  //background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  font-size: 1rem;
   width: 100%;
   ${paddingStyles.comPad300};
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
@@ -31,10 +31,11 @@ export const HamburgerWrapper = styled.div`
 
   .burgerButton {
     position: fixed;
-    min-height: 5vh;
-    min-width: 5vh;
-    right: 4.5vh;
+    min-height: 44.8px;
+    min-width: 44.8px;
+    right: 40.32px;
     display: none; /* Only display on mobile */
+    top: 26.88px;
     span {
       &:nth-child(1) {
         top: 10% !important;
@@ -44,18 +45,16 @@ export const HamburgerWrapper = styled.div`
       }
     }
   }
-
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}px) {
     .burgerButton {
       display: block;
-      top: 3vh;
     }
   }
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
+  /* @media screen and (max-width: ${({ theme }) => theme.breakpoints.sm}px) {
     .burgerButton {
       top: 6vh;
     }
-  }
+  } */
 
   .menuBody {
     top: 0;
@@ -80,9 +79,11 @@ export const HamburgerWrapper = styled.div`
 
 export const NavWrapper = styled.div`
   display: flex;
-  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 3rem;
   align-items: center;
-  @media screen and (max-width: ${({ theme }) => theme.breakpoints.md}px) {
+  @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}px) {
     display: none;
   }
 `;
