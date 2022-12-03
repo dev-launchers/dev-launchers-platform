@@ -12,7 +12,7 @@ import { Router, useRouter } from 'next/router';
 import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '@devlaunchers/components/styles/global';
+import GlobalStyle from '../styles/globals';
 import theme from '../styles/theme';
 
 

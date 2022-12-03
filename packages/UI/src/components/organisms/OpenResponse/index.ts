@@ -1,6 +1,8 @@
-export { default } from './FormField';
+export { default } from './OpenResponse';
 
-export interface InputProps {
+export interface OpenResponseProps {
+  rows: number;
+  cols: number;
   label: string;
   placeholder: string;
   required?: boolean;

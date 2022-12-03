@@ -3,6 +3,7 @@ import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Typography from '../../atoms/Typography';
+import BackButton from '../../molecules/BackButton';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
@@ -31,6 +32,7 @@ const MobileNavigation = ({ user }: NavigationProps) => {
         crossButtonClassName="crossButton"
         crossClassName="crossClass"
         onStateChange={isMenuOpen}
+        customCrossIcon={<BackButton type="cancel" withLabel={false} />}
       >
         <Box flexDirection="column">
           <MobileNav onClick={handleNavClick}>

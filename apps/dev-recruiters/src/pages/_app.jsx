@@ -2,10 +2,10 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../styles/globals';
+import GlobalStyle from '@devlaunchers/components/src/styles/global';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from '../styles/theme';
+import theme from '@devlaunchers/components/src/styles/theme';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 // import Footer from '@devlaunchers/components/Footer';

@@ -2624,7 +2624,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/components@workspace:packages/UI":
+"@devlaunchers/components@workspace:*, @devlaunchers/components@workspace:packages/UI":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/components@workspace:packages/UI"
   dependencies:
@@ -2695,6 +2695,7 @@ __metadata:
   resolution: "@devlaunchers/dev-recruiters@workspace:apps/dev-recruiters"
   dependencies:
     "@babel/core": ^7.18.9
+    "@devlaunchers/components": "workspace:*"
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@devlaunchers/models": "workspace:^"
     "@devlaunchers/utility": "workspace:^"
