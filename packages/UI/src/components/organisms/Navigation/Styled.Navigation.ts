@@ -80,7 +80,6 @@ export const HamburgerWrapper = styled.div`
 export const NavWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem 3rem;
   align-items: center;
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}px) {
