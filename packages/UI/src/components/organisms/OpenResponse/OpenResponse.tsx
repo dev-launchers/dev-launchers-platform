@@ -10,6 +10,7 @@ function OpenResponse({
   rows,
   cols,
   label,
+  id,
   placeholder,
   required = false,
   disabled = false,
@@ -26,7 +27,7 @@ function OpenResponse({
             rows={rows}
             cols={cols}
             name={label}
-            id={label}
+            id={id}
             autoCorrect="off"
             autoComplete="off"
             valid={touched && !error}

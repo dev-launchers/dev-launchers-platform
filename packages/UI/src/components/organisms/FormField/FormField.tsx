@@ -12,6 +12,7 @@ import type { InputProps } from '.';
 
 function FormField({
   label,
+  id,
   placeholder,
   required = false,
   disabled = false,
@@ -27,7 +28,7 @@ function FormField({
           <Input
             type="text"
             name={label}
-            id={label}
+            id={id}
             autoCorrect="off"
             autoComplete="off"
             placeholder={placeholder}
