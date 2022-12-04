@@ -6,5 +6,6 @@ export interface InputProps {
   required?: boolean;
   disabled?: boolean;
   error?: string;
+  valid?: boolean;
   touched?: boolean;
 }
