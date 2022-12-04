@@ -22,7 +22,6 @@ function OpenResponse({
         {label} {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
-            component="textarea"
             placeholder={placeholder}
             rows={rows}
             cols={cols}
@@ -31,7 +30,7 @@ function OpenResponse({
             autoCorrect="off"
             autoComplete="off"
             valid={touched && !error}
-            error={touched && error}
+            error={error}
             disabled={disabled}
           />
         </InputWrapper>

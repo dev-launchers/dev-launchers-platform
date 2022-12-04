@@ -1,7 +1,6 @@
-import { Field } from 'formik';
 import styled, { css } from 'styled-components';
 import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
-
+import type { OpenResponseProps } from '.';
 export const Label = styled.label`
   ${typographyStyles['label']};
   margin-left: 1rem;
@@ -14,14 +13,20 @@ export const InputWrapper = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
   background-color: white;
   border: 1px solid black;
-  border-radius: 8px;
+  border-radius: 16px;
   font-size: 0.875rem;
   font-weight: 300;
   padding: 1rem 1.5rem;
   resize: none;
+  max-width: 576px;
+  width: 100%;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
+    border-radius: 8px;
+  }
 
   &::placeholder {
     ${typographyStyles['placeHolder']};
