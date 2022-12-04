@@ -1,6 +1,6 @@
-import { Field } from 'formik';
 import styled, { css } from 'styled-components';
 import { typographyStyles } from '../../atoms/Typography';
+import type { InputProps } from '.';
 
 export const Label = styled.label`
   ${typographyStyles['label']};
@@ -14,7 +14,7 @@ export const InputWrapper = styled.div`
   margin-top: 0.5rem;
 `;
 
-export const Input = styled(Field)`
+export const Input = styled.input<Omit<InputProps, 'label'>>`
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;

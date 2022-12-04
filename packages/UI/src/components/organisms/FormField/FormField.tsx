@@ -1,5 +1,6 @@
 import errorIcon from '../../../assets/icons/rawSvg/alert-triangle.svg';
 import successIcon from '../../../assets/icons/rawSvg/check-circle.svg';
+import Typography from '../../atoms/Typography';
 import {
   Label,
   Input,
@@ -20,7 +21,8 @@ function FormField({
   return (
     <>
       <Label htmlFor={label}>
-        {label} {required && <span style={{ color: 'red' }}>*</span>}
+        <Typography type="label">{label}</Typography>
+        {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
             type="text"
@@ -30,7 +32,7 @@ function FormField({
             autoComplete="off"
             placeholder={placeholder}
             valid={touched && !error}
-            error={touched && error}
+            error={error}
             disabled={disabled}
           />
           {required && touched && (

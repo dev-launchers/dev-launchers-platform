@@ -7,6 +7,7 @@ export interface OpenResponseProps {
   placeholder: string;
   required?: boolean;
   disabled?: boolean;
-  error?: string;
+  error: string;
+  valid?: boolean;
   touched?: boolean;
 }
