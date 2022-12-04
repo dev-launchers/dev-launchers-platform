@@ -106,17 +106,45 @@ export default function SignUpForm() {
 
   return (
     <form style={{ padding: "2rem" }} >
-      <atoms.Box>
+      <atoms.Box flexDirection="column" gap="32px">
         <organisms.FormField
-        label="Your Full legal Name"
+        label="Your Full Name"
         placeholder="John Smith"
+        id="name"
        />
         <organisms.FormField
         label="Your Email"
         placeholder="johnsmith@gmail.com"
+        id="email"
        />
-       
+        <organisms.FormField
+        label="Your Discord Username"
+        placeholder="johnsmith# 1234"
+        id="discordUsername"
+       />
+       <atoms.Box gap="32px">
+      
+        <organisms.FormField
+        label="What are your relevant skills?"
+        placeholder="Please separate skills with comma"
+        id="discordUsername"
+       />
+              <atoms.ToolTip tooltipText="Please Separate skills with a coma.">ℹ️ </atoms.ToolTip>
+       </atoms.Box>
       </atoms.Box>
+     
+      <atoms.Typography type="pSmall">HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?</atoms.Typography>
+   
+    <atoms.Slider min={0} max={10} onChange={(value) => Formik.setFieldValue("commitment", +value)} withLabels prefix=" hrs" />
+
+    <organisms.OpenResponse
+      cols={50}
+      error=""
+      label="LABEL"
+      placeholder="Placeholder"
+      rows={5}
+/>
+
     </form>
   );
 }
