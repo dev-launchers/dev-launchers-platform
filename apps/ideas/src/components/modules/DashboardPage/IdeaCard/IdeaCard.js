@@ -1,40 +1,44 @@
 import React from 'react'
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Link from 'next/link';
 import {
-  StyledLink,
+  CardWapper,
   Button,
   IdeaInfo,
+  IdeaName,
+  EditButton,
+  IdeaComments,
+  StatuBox,
 } from './StyledIdeaCard';
-import { start } from '@banana-dev/banana-dev';
 
 function IdeaCard({ cards }) {
   return (
-    <ImageListItem key={cards.id} style={{
-      display: "flex",
-      flexDirection: "column"
-    }}>
+    <CardWapper>
 
       <Link href={`/ideas/workshop/${cards.id}`}>
         <Button>
           <img
             alt="idea_image"
-            src={`https://picsum.photos/seed/${cards.id}/320/240?random=${cards.id}`}
-            style={{width:"100%", height:"100%"}}
+            src={`https://picsum.photos/seed/${cards.id}/360/270?random=${cards.id}`}
+            style={{ width: "100%", height: "100%" }}
           />
+          
+          {/*cards.statu == "published" ? (
+            <StatuBox style={{background: "#C0E1EB",}}>published</StatuBox>
+          ) : (
+            <StatuBox style={{background: "#FFD580",}}>pending</StatuBox>
+          )*/}
         </Button>
       </Link>
 
-      <ImageListItemBar
-        title={<IdeaInfo><div>{cards.ideaName}</div>
-              {cards.comments.length > 0 ? (
-                <div>Comments:&nbsp;{cards.comments.length}</div>
-              ) : ('')}</IdeaInfo>}
-        position="below"
-      />
-      
-    </ImageListItem>
+      <IdeaInfo>
+        <IdeaName>{cards.ideaName}</IdeaName>
+        {/*<Link href={`/ideas/workshop/${cards.id}`}><EditButton>EDIT IDEA</EditButton></Link>*/}
+      </IdeaInfo>
+      {cards.comments.length > 0 ? (
+        <IdeaComments>Comments:&nbsp;{cards.comments.length}</IdeaComments>
+      ) : ('')}
+
+    </CardWapper>
   )
 }
 

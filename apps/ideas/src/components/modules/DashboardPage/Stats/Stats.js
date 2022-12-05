@@ -1,6 +1,6 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import {
+    StatSection,
     StatsBox,
     StatsTitle,
     StatsCount,
@@ -19,20 +19,16 @@ const Stats = ({
     }, [totalData]);
 
     return (
-        <Grid container item sm={12} md={12} lg={12} columnSpacing={8}>
-            <Grid item sm={5} md={4} lg={3}>
-                <StatsBox>
-                    <StatsTitle>Ideas Created &nbsp; &nbsp;</StatsTitle>
-                    <StatsCount>{ideaStats}</StatsCount>
-                </StatsBox>
-            </Grid>
-            <Grid item sm={5} md={4} lg={3}>
-                <StatsBox>
-                    <StatsTitle>Total Comments</StatsTitle>
-                    <StatsCount>{commentStats}</StatsCount>
-                </StatsBox>
-            </Grid>
-        </Grid>
+        <StatSection>
+            <StatsBox>
+                <StatsTitle>Ideas Created</StatsTitle>
+                <StatsCount>{ideaStats}</StatsCount>
+            </StatsBox>
+            <StatsBox>
+                <StatsTitle>Total Comments</StatsTitle>
+                <StatsCount>{commentStats}</StatsCount>
+            </StatsBox>
+        </StatSection>
 
     );
 };
