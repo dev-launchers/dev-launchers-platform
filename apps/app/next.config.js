@@ -1,11 +1,16 @@
+
+const { loadEnvConfig } =  require('@next/env');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
-  '@devlaunchers/ideas',
+  '@devlaunchers/ideaspace',
   '@devlaunchers/site-projects',
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
 ]); // pass the modules you would like to see transpiled
+
+// Used as a workaround to make our .env.test environment variables function in staging
+loadEnvConfig(process.cwd());
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -34,7 +39,7 @@ const nextConfig = {
     domains: [
       'images.prismic.io',
       'devlaunchersproduction.blob.core.windows.net',
-      'lh3.googleusercontent.com'
+      'lh3.googleusercontent.com',
     ],
     disableStaticImages: true,
   },
@@ -48,6 +53,6 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     externalDir: true,
-  },
+  }
 };
 module.exports = withPlugins([[imagesPlugin], [withTM]], nextConfig);

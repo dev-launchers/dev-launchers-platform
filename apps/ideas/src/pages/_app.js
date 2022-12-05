@@ -5,8 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 
-import Header from '../components/common/Header';
-import RainbowBar from '../components/common/RainbowBar';
 import Nav from '../components/modules/Nav/nav';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
@@ -31,7 +29,7 @@ const hashRedirect = (router) => {
 };
 
 function MyApp(props) {
-  useMockDataInDevelopment();
+  //useMockDataInDevelopment();
 
   const router = useRouter();
   hashRedirect(router);

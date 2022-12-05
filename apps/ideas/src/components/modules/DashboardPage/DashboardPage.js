@@ -88,7 +88,7 @@ function DashboardPage() {
 
   React.useEffect(() => {
     //setCards(sourceCards.filter((item) => true));
-    setCards(sourceCards.filter((item) => item.author.id == userData.id));
+    setCards(sourceCards.filter((item) => item?.author?.id == userData.id));
   }, [sourceCards, userData]);
 
   return (
@@ -102,7 +102,7 @@ function DashboardPage() {
           <Wrapper>
             <div style={{ color: "white" }}>Please sign in to view your dashboard!</div>
             <br />
-            <div><SignInButton redirectUrl="https://devlaunchers.org/ideas/dashboard" /></div>
+            <div><SignInButton redirectUrl="https://devlaunchers.org/ideaspace/dashboard" /></div>
           </Wrapper>
           <br />
         </div>
@@ -160,7 +160,7 @@ function DashboardPage() {
                     }
 
                     <CardWapper key="submitButton">
-                      <Link href="/ideas/submit">
+                      <Link href="/ideaspace/submit">
                         <Button>
                           <img
                             alt="submit_image"

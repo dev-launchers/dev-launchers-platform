@@ -14,7 +14,7 @@ function IdeaCard({ cards }) {
   return (
     <CardWapper>
 
-      <Link href={`/ideas/workshop/${cards.id}`}>
+      <Link href={`/ideaspace/workshop/${cards.id}`}>
         <Button>
           <img
             alt="idea_image"

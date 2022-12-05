@@ -2573,9 +2573,10 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@devlaunchers/website": "*"
+    "@next/env": ^12.2.3
     "@ramonak/react-progress-bar": ^5.0.2
     "@types/luxon": 3.0.0
     "@types/react": ^17.0.0
@@ -2785,8 +2786,8 @@ __metadata:
     typescript: 4.7.4
   peerDependencies:
     eslint: ^8.0.0
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
     typescript: ^4.5.2
   peerDependenciesMeta:
     react:
@@ -2798,9 +2799,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/ideas@*, @devlaunchers/ideas@workspace:apps/ideas":
+"@devlaunchers/ideaspace@*, @devlaunchers/ideaspace@workspace:apps/ideas":
   version: 0.0.0-use.local
-  resolution: "@devlaunchers/ideas@workspace:apps/ideas"
+  resolution: "@devlaunchers/ideaspace@workspace:apps/ideas"
   dependencies:
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
@@ -2825,9 +2826,9 @@ __metadata:
     postcss: ^8.4.14
     prettier: ^2.7.1
     prop-types: ^15.7.2
-    react: 17.0.2
+    react: ^17.0.2
     react-burger-menu: ^3.0.8
-    react-dom: 17.0.2
+    react-dom: ^17.0.2
     react-ga: ^3.3.1
     react-ga4: ^1.4.1
     react-markdown: ^8.0.3
@@ -2931,7 +2932,7 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@ramonak/react-progress-bar": ^5.0.2
     "@types/luxon": 3.0.0
@@ -4491,6 +4492,13 @@ __metadata:
   version: 12.3.1
   resolution: "@next/env@npm:12.3.1"
   checksum: ea7f2ad9080bdec91dd9e7d84db063793717fb1e6c668ff99cdd9103b9a7f2dd0afd153f04882944d24124965f2f78cdf24dc71da3dcd5afad3a078816abc528
+  languageName: node
+  linkType: hard
+
+"@next/env@npm:^12.2.3":
+  version: 12.3.3
+  resolution: "@next/env@npm:12.3.3"
+  checksum: 80c50b1d63c8459ce5579c1dd46775c3e06d16b0d33b2ba6054df85f9280eddd0fd45e22ccfe0c3d6f4c286a955f2982da36461d54cdfb4f6f546398518d4dae
   languageName: node
   linkType: hard
 
@@ -27748,7 +27756,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.2, react-dom@npm:^17.0.2":
+"react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -28238,7 +28246,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2, react@npm:^17.0.2":
+"react@npm:^17.0.2":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:
