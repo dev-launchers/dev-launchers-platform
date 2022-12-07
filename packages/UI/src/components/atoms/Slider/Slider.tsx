@@ -12,7 +12,7 @@ import type { SliderProps } from '.';
 export default function Slider({
   min = 0,
   max = 100,
-  prefix,
+  postfix,
   initialValue = 0,
   onChange,
   withLabels = true,
@@ -34,7 +34,7 @@ export default function Slider({
         <Bubble newVal={getBubblePosition()}>
           <p>
             <span>{value}</span>
-            <span>{prefix}</span>
+            <span>{postfix}</span>
           </p>
         </Bubble>
       </BubbleContainer>
@@ -50,15 +50,15 @@ export default function Slider({
       {withLabels && (
         <LabelsContainer>
           <p>
-            {min} {prefix}
+            {min} {postfix}
           </p>
           {(max - min) % 2 === 0 && (
             <p>
-              {min + (max - min) / 2} {prefix}
+              {min + (max - min) / 2} {postfix}
             </p>
           )}
           <p>
-            {max} {prefix}
+            {max} {postfix}
           </p>
         </LabelsContainer>
       )}
