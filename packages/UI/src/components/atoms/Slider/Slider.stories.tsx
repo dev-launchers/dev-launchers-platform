@@ -10,10 +10,18 @@ const TemplateSlider: ComponentStory<typeof Slider> = (args) => (
   <Slider {...args}></Slider>
 );
 
-export const Default = TemplateSlider.bind({});
-Default.args = {
+export const WithLabels = TemplateSlider.bind({});
+WithLabels.args = {
   min: 0,
   max: 10,
-  prefix: 'HRS',
+  postfix: 'HRS',
+  withLabels: true,
+};
+
+export const WithoutLabels = TemplateSlider.bind({});
+WithoutLabels.args = {
+  min: 0,
+  max: 10,
+  postfix: 'HRS',
   withLabels: false,
 };
