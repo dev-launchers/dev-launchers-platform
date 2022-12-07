@@ -21,7 +21,7 @@ function FormField({
 }: InputProps) {
   return (
     <>
-      <Label htmlFor={label}>
+      <Label htmlFor={id}>
         <Typography type="label">{label}</Typography>
         {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>

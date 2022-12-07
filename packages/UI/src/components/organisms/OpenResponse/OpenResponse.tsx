@@ -19,7 +19,7 @@ function OpenResponse({
 }: OpenResponseProps) {
   return (
     <>
-      <Label htmlFor={label}>
+      <Label htmlFor={id}>
         {label} {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
