@@ -50,7 +50,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <UserDataProvider>
         <ThemeProvider theme={theme}>
-          <GlobalStyle />
           <div>
             <Head>
               <script
