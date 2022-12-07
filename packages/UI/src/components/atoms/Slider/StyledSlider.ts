@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  box-sizing: border-box;
   position: relative;
   font-family: ${({ theme }) => theme.fonts.normal};
   color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
@@ -10,15 +9,11 @@ export const Container = styled.div`
 `;
 
 export const SliderInputContainer = styled.div`
-  box-sizing: border-box;
   width: 100%;
   margin: 0;
-  @media (max-width: 760px) {
-    min-width: 0;
-  }
 `;
+
 export const SliderInput = styled.input.attrs({ type: 'range' })`
-  box-sizing: border-box;
   -webkit-appearance: none;
   overflow: hidden;
   width: 100%;
@@ -51,13 +46,7 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
 `;
 
 export const LabelsContainer = styled.div`
-  box-sizing: border-box;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0;
   & p {
     font-family: ${({ theme }) => theme.fonts.normal};
     font-weight: 400;
