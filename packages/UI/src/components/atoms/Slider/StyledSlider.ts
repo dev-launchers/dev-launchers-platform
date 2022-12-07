@@ -76,10 +76,11 @@ export const Bubble = styled.div<{ newVal: number }>`
   width: auto;
   padding: 4px;
   top: 0;
-  transform: translateX(-50%);
-  left: ${({ newVal }) => `calc(${newVal}% + (${8 - newVal * 0.15}px))`};
+  transform: translateX(${({ newVal }) => `-${newVal}%`});
+  left: ${({ newVal }) => `${newVal}%`};
 
   & p {
+    width: max-content;
     margin: 0;
     padding: 0;
     font-size: 14px;

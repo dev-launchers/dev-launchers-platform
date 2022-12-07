@@ -6,9 +6,9 @@ import {
 } from './styled.Tooltip';
 import type { ToolTipProps } from '.';
 
-const ToolTip = ({ children, tooltipText }: ToolTipProps) => {
+const ToolTip = ({ children, tooltipText, ...props }: ToolTipProps) => {
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <StyledTooltip>{tooltipText}</StyledTooltip>
       <ToolTipTrigger> {children}</ToolTipTrigger>
     </Wrapper>
