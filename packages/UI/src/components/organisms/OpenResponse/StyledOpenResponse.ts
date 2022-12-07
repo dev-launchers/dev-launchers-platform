@@ -3,7 +3,7 @@ import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
 import type { OpenResponseProps } from '.';
 export const Label = styled.label`
   ${typographyStyles['label']};
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
 `;
 
 export const InputWrapper = styled.div`
