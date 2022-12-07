@@ -13,4 +13,5 @@ export interface BoxProps {
   padding?:React.CSSProperties['padding'];
   paddingInline?: React.CSSProperties['paddingInline'];
   paddingBlock?: React.CSSProperties['paddingBlock'];
+  flexWrap?: React.CSSProperties['flexWrap'];
 }
