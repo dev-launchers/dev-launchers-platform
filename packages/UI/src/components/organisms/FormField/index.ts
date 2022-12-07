@@ -1,7 +1,7 @@
 export { default } from './FormField';
 
 export interface InputProps {
-  label: string;
+  label: string | JSX.Element;
   id: string;
   placeholder: string;
   required?: boolean;
