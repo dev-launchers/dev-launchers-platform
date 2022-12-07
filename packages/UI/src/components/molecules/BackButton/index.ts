@@ -1,6 +1,6 @@
 export { default } from './BackButton';
 
 export interface BackButtonProps {
-  withLabel: boolean;
+  withLabel?: boolean;
   type: 'small' | 'medium' | 'large' | 'cancel';
 }
