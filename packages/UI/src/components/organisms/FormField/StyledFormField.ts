@@ -1,7 +1,7 @@
 import { Field } from 'formik';
 import styled, { css } from 'styled-components';
-import { typographyStyles } from '../../atoms/Typography';
 import { paddingStyles } from '../../atoms/Padding';
+import { typographyStyles } from '../../atoms/Typography';
 
 export const Label = styled.label`
   ${typographyStyles['label']};
@@ -22,7 +22,7 @@ export const Input = styled(Field)`
   font-size: 0.875rem;
   font-weight: 300;
   width: 320px;
-  padding: 1rem 1.5rem;
+  ${paddingStyles.comPad700};
   &::placeholder {
     ${typographyStyles['placeHolder']};
   }
@@ -95,7 +95,7 @@ export const Icon = styled.img`
 `;
 
 export const StyledInlineErrorMessage = styled.div`
-  ${typographyStyles['pSmall']}
+  ${typographyStyles['pSmall']};
   color: #f03d3e;
   margin-left: 0.625rem;
   margin-top: 0.5rem;
