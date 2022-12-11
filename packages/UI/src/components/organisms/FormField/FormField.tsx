@@ -18,6 +18,7 @@ function FormField({
   disabled = false,
   error,
   touched,
+  onChange,
 }: InputProps) {
   return (
     <>
@@ -35,6 +36,7 @@ function FormField({
             valid={touched && !error}
             error={error}
             disabled={disabled}
+            onChange={onChange}
           />
           {required && touched && (
             <Icon src={error ? errorIcon : successIcon} />

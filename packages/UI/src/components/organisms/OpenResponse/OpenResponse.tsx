@@ -16,10 +16,11 @@ function OpenResponse({
   disabled = false,
   error,
   touched,
+  onChange,
 }: OpenResponseProps) {
   return (
     <>
-      <Label htmlFor={label}>
+      <Label htmlFor={id}>
         {label} {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
@@ -33,6 +34,7 @@ function OpenResponse({
             valid={touched && !error}
             error={error}
             disabled={disabled}
+            onChange={onChange}
           />
         </InputWrapper>
       </Label>

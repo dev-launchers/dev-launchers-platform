@@ -1,4 +1,5 @@
 export { default } from './OpenResponse';
+import type { ChangeEvent } from 'react';
 
 export interface OpenResponseProps {
   rows: number;
@@ -11,4 +12,5 @@ export interface OpenResponseProps {
   error: string;
   valid?: boolean;
   touched?: boolean;
+  onChange: (value: ChangeEvent) => void;
 }
