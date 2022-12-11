@@ -3,15 +3,28 @@ import { typographyStyles } from '../../atoms/Typography';
 import type { InputProps } from '.';
 
 export const Label = styled.label`
+  display: block;
   ${typographyStyles['label']};
-  margin-left: 1rem;
+  width: 100%;
+
+  label {
+    margin-left: 1rem;
+  }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   position: relative;
-  width: fit-content;
   margin-top: 0.5rem;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
 export const Input = styled.input<Omit<InputProps, 'label'>>`
@@ -20,7 +33,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 300;
-  width: 320px;
+  width: ${({ width }) => width || '100%'};
   padding: 1rem 1.5rem;
   &::placeholder {
     ${typographyStyles['placeHolder']};
@@ -84,13 +97,6 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
         outline: none;
       }
     `}
-`;
-
-export const Icon = styled.img`
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
 `;
 
 export const StyledInlineErrorMessage = styled.div`

@@ -11,6 +11,7 @@ import {
 import type { InputProps } from '.';
 
 function FormField({
+  width,
   label,
   id,
   placeholder,
@@ -27,6 +28,7 @@ function FormField({
         {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
+            width={width}
             type="text"
             name={label}
             id={id}
