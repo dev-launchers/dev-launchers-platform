@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Typography from '../Typography';
 import {
   Bubble,
   BubbleContainer,
@@ -32,10 +33,9 @@ export default function Slider({
     <Container>
       <BubbleContainer>
         <Bubble newVal={getBubblePosition()}>
-          <p>
-            <span>{value}</span>
-            <span>{postfix}</span>
-          </p>
+          <Typography type="labelSmall">
+            {value} {postfix}
+          </Typography>
         </Bubble>
       </BubbleContainer>
       <SliderInputContainer>
@@ -49,17 +49,17 @@ export default function Slider({
       </SliderInputContainer>
       {withLabels && (
         <LabelsContainer>
-          <p>
+          <Typography type="labelSmall">
             {min} {postfix}
-          </p>
+          </Typography>
           {(max - min) % 2 === 0 && (
-            <p>
+            <Typography type="labelSmall">
               {min + (max - min) / 2} {postfix}
-            </p>
+            </Typography>
           )}
-          <p>
+          <Typography type="labelSmall">
             {max} {postfix}
-          </p>
+          </Typography>
         </LabelsContainer>
       )}
     </Container>
