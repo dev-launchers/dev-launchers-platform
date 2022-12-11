@@ -17,7 +17,7 @@ function BackButtonComponent({ type, withLabel = true }: BackButtonProps) {
           style={{ transform: 'rotate(90deg)' }}
         />
       )}
-      {withLabel && 'Back'}
+      {withLabel && type === 'back' && 'Back'}
     </BackButton>
   );
 }

@@ -8,10 +8,8 @@ export const BackButton = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: none;
   border-radius: ${({ type }) => (type === 'cancel' ? '4px' : '8px')};
-  padding: ${({ type }) =>
-    type === 'large' ? '12px 16px' : type === 'cancel' ? '8px' : '8px 16px'};
+  padding: ${({ type }) => (type === 'cancel' ? '8px' : '8px 16px')};
   background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   ${({ type }) =>
     type === 'cancel'
@@ -19,4 +17,8 @@ export const BackButton = styled.a`
       : 'box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)'};
   color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   cursor: pointer;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
+    padding: ${({ type }) => (type === 'cancel' ? '8px' : '12px 16px')};
+  }
 `;
