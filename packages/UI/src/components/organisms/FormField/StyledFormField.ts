@@ -8,6 +8,7 @@ export const Label = styled.label`
   width: 100%;
 
   label {
+    display: inline-block;
     margin-left: 1rem;
   }
 `;
