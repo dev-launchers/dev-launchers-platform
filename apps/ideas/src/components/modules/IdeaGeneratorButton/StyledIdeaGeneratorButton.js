@@ -22,6 +22,7 @@ export const ButtonWrapper = styled.div`
   @media (orientation: portrait) {
     font-size: 5vw;
     width: 90%;
+    display:none;
   }
 `;
 

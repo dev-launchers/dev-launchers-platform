@@ -5,6 +5,7 @@
   display: flex;
   justify-content: left;
   align-items: center;
+  padding-left: 2rem;
 }
 
 .nav a {
@@ -13,5 +14,13 @@
   margin-left: 10px;
 }
 
+@media (orientation: portrait) {
+  .nav {
+    font-size:1rem;
+  }
+  .nav a {
+    padding-left: .5rem;
+  }
+}
 
 

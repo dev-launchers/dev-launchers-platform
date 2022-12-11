@@ -7,22 +7,22 @@ import AppIdeaGeneratorButton from '../IdeaGeneratorButton/AppIdeaGeneratorButto
 const Nav = function (props) {
   return (
     <div className="nav">
-      <a style={{ paddingLeft: '2rem', cursor: 'pointer' }}>
+      <a style={{ cursor: 'pointer' }}>
         <Link href="/ideaspace">
           <h4>💡IdeaSpace (Beta)</h4>
         </Link>
       </a>
-      <a style={{ paddingLeft: '2rem', cursor: 'pointer' }}>
+      <a style={{ cursor: 'pointer' }}>
         <Link href="/ideaspace/submit">
           <h4>Submit an Idea</h4>
         </Link>
       </a>
-      <a style={{ paddingLeft: '2rem', cursor: 'pointer' }}>
+      <a style={{ cursor: 'pointer' }}>
         <Link href="/ideaspace/browse">
           <h4>Browse Ideas</h4>
         </Link>
       </a>
-      <a style={{paddingLeft:"2rem", cursor:"pointer"}}>
+      <a style={{cursor:"pointer"}}>
         <Link href="/ideaspace/dashboard">
           <h4>Dashboard</h4>
         </Link>

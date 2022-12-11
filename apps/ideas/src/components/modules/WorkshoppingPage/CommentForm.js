@@ -78,7 +78,7 @@ function CommentForm(props) {
           <button type="submit">Submit</button>
         </form>
       ) : (
-        <div style={{ margin: '2rem', marginTop: '4rem' }}>
+        <div style={{ margin: '2rem', marginTop: '4rem'}}>
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={
