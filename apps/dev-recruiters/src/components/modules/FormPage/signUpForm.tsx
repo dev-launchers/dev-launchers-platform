@@ -117,12 +117,12 @@ export default function SignUpForm() {
         boxShadow: '0px 10px 18px 10px rgba(127, 126, 127, 0.25)',
         borderRadius: 32,
         maxWidth: '1536px',
-        margin: 'auto'
+        margin: 'auto',
       }}
     >
       <atoms.Box
         flexDirection="column"
-        css={{ maxWidth: '90%', margin: 'auto',  }}
+        css={{ maxWidth: '90%', margin: 'auto' }}
       >
         <atoms.Box flexDirection="column">
           <atoms.Layer hasRainbow>
@@ -152,7 +152,7 @@ export default function SignUpForm() {
             placeholder="johnsmith#1234"
             id="discordUsername"
           />
-          <atoms.Box gap="32px" flexDirection='column'>
+          <atoms.Box gap="32px" flexDirection="column">
             <organisms.FormField
               label={
                 <atoms.Box gap="1rem">
@@ -176,16 +176,39 @@ export default function SignUpForm() {
               max={10}
               onChange={(value) => Formik.setFieldValue('commitment', +value)}
               withLabels
-              prefix=" hrs"
+              postfix=" hrs"
             />
           </atoms.Box>
           <organisms.OpenResponse
             cols={50}
             error=""
-            label="LABEL"
-            placeholder="Placeholder"
+            label="Please breifly describe your experience in development or design"
+            placeholder="My experience with development / design is..."
+            required
             rows={5}
+            id="experience"
           />
+          <organisms.OpenResponse
+            cols={50}
+            error=""
+            label="Why would you like to be a Dev Launcher?"
+            placeholder="My experience with development / design is..."
+            rows={5}
+            id="reason"
+          />
+          <organisms.FormField
+            error=""
+            label="Portfolio Link"
+            placeholder="https://myportfolio.com"
+            id="portfolioLink"
+          />
+          <atoms.Button
+            buttonSize="standard"
+            buttonType="primary"
+            type="submit"
+          >
+            Submit
+          </atoms.Button>
         </atoms.Box>
       </atoms.Box>
     </form>
