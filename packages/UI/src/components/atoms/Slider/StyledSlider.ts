@@ -45,15 +45,6 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
   }
 `;
 
-export const LabelsContainer = styled.div`
-  width: 100%;
-  & p {
-    font-family: ${({ theme }) => theme.fonts.normal};
-    font-weight: 400;
-    font-size: 16px;
-  }
-`;
-
 export const BubbleContainer = styled.div`
   position: relative;
   width: 100%;
