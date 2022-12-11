@@ -1,11 +1,10 @@
-import errorIcon from '../../../assets/icons/rawSvg/alert-triangle.svg';
-import successIcon from '../../../assets/icons/rawSvg/check-circle.svg';
+import Error from '../../../assets/icons/Error';
+import Success from '../../../assets/icons/Success';
 import Typography from '../../atoms/Typography';
 import {
   Label,
   Input,
   StyledInlineErrorMessage,
-  Icon,
   InputWrapper,
 } from './StyledFormField';
 import type { InputProps } from '.';
@@ -40,9 +39,7 @@ function FormField({
             disabled={disabled}
             onChange={onChange}
           />
-          {required && touched && (
-            <Icon src={error ? errorIcon : successIcon} />
-          )}
+          {required && touched && (error ? <Error /> : <Success />)}
         </InputWrapper>
       </Label>
       {error && touched && (
