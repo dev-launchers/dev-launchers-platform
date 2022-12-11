@@ -1,8 +1,18 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.section`
-  background-color: #FFFFFF;
-  padding: 3vw 15vw 4vw 15vw;
+  background: #FFFFFF;
+  padding: 128px calc((100% - 1208px)/2) 128px calc((100% - 1208px)/2);
+
+  @media (max-width: 1278px) {
+    padding: 128px calc((100% - 1128px)/2) 128px calc((100% - 1128px)/2);
+  }
+  @media (max-width: 1192px) {
+    padding: 128px calc((100% - 746px)/2) 128px calc((100% - 746px)/2);
+  }
+  @media (max-width: 810px) {
+    padding: 64px 11px 72px 16px;
+  }
 `;
 
 export const Title = styled.div`
@@ -16,6 +26,31 @@ export const Title = styled.div`
   color: #1C1C1C;
 `;
 
+export const RainbowArea = styled.div`
+  align-items: center; 
+  display: flex; 
+  flex-direction: column; 
+`;
+
+export const StyledRanbow = styled.div`
+  margin-top: 46.84px;
+  width: 32rem;
+  @media (max-width: 560px) {
+    width: 20rem;
+  }
+`;
+
+export const Slogan = styled.div`
+  margin-top: 33.18px;
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 38px;
+  text-align: center;
+  color: #000000;
+`;
+
 export const SectionTitle = styled.div`
 text-align: left;
 font-family: 'Nunito Sans';
@@ -24,6 +59,21 @@ font-weight: 400;
 font-size: 28px;
 line-height: 38px;
 color: #000000;
+`;
+
+export const IdeaCardWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  column-gap: 64px;
+  row-gap: 32px;
+
+  @media (max-width: 1278px) {
+    column-gap: 24px;
+  }
+  @media (max-width: 360px) {
+    row-gap: 80px;
+  }
 `;
 
 export const SorterDiv = styled.div`
@@ -37,17 +87,22 @@ export const Button = styled.button`
 cursor: pointer;
 width: 100%;
 height: 100%;
-min-height: 16vw;
 position: relative;
 flex-direction: column;
 overflow: hidden;
 border: 0 none;
 padding: 0;
+background: #FFFFFF;
 
-  @media (orientation: portrait) {
-    font-size: 1.5rem;
-    flex-direction: column;
-  }
+@media (max-width: 424px) {
+  width: 92%;
+  height: 92%;
+}
+`;
+
+export const CardWapper = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 
