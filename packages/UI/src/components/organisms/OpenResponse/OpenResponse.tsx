@@ -1,3 +1,4 @@
+import Typography from '../../atoms/Typography';
 import {
   Label,
   Input,
@@ -7,6 +8,7 @@ import {
 import type { OpenResponseProps } from '.';
 
 function OpenResponse({
+  width,
   rows,
   cols,
   label,
@@ -21,9 +23,11 @@ function OpenResponse({
   return (
     <>
       <Label htmlFor={id}>
-        {label} {required && <span style={{ color: 'red' }}>*</span>}
+        <Typography type="label">{label}</Typography>
+        {required && <span style={{ color: 'red' }}>*</span>}
         <InputWrapper>
           <Input
+            width={width}
             placeholder={placeholder}
             rows={rows}
             cols={cols}
