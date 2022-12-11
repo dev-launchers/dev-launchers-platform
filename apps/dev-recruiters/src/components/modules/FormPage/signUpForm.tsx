@@ -3,10 +3,8 @@ import { FormikHelpers, useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '../../../contexts/UserDataContext';
-import Slider from '../../common/Slider';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { SkillLevel } from '@devlaunchers/models/level';
-import Collapsible from '../../common/Collapsible';
 import {
   atoms,
   organisms,

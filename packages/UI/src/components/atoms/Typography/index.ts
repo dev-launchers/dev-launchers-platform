@@ -11,5 +11,6 @@ export interface TypographyProps {
     | 'p'
     | 'pSmall'
     | 'button'
-    | 'label';
+    | 'label'
+    | 'labelSmall';
 }

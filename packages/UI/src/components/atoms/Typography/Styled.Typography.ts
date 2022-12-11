@@ -120,6 +120,14 @@ const label = `
     }
 `;
 
+const labelSmall = `
+    font-family: 'Nunito Sans';
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+`;
+
 export const typographyStyles = {
   h1,
   h2,
@@ -132,6 +140,7 @@ export const typographyStyles = {
   placeHolder,
   button,
   label,
+  labelSmall,
 } as const;
 
 export const Text = styled.p<TypographyProps>`
