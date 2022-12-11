@@ -6,4 +6,5 @@ export const Box = styled.div<BoxProps>`
   justify-content: ${({ justifyContent }) => justifyContent};
   align-items: ${({ alignItems }) => alignItems};
   gap: ${({ gap }) => gap};
+  width: ${({ width }) => width};
 `;

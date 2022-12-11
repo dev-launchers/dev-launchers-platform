@@ -5,4 +5,5 @@ export interface BoxProps {
   justifyContent?: React.CSSProperties['justifyContent'];
   alignItems?: React.CSSProperties['alignItems'];
   gap?: React.CSSProperties['gap'];
+  width?: React.CSSProperties['width'];
 }
