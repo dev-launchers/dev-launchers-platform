@@ -23,7 +23,7 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
   width: 100%;
   height: 14px;
   background: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
-  outline: 2px solid black;
+  outline: 2px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   ${radiusStyles['radius600']}
 
   &::-webkit-slider-thumb {
