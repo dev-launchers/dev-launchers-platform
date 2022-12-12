@@ -4,6 +4,7 @@ import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { typographyStyles } from '../../atoms/Typography';
 import type { InputProps } from '.';
 
+
 export const Label = styled.label`
   display: block;
   ${typographyStyles['label']};
@@ -36,6 +37,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
   ${radiusStyles['radius200']};
   ${typographyStyles['placeHolder']}
   width: ${({ width }) => width || '100%'};
+
   ${paddingStyles.comPad700};
   &::placeholder {
     ${typographyStyles['placeHolder']};
