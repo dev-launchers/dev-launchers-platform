@@ -1,10 +1,11 @@
 export { default } from './FormField';
+import type CSS from 'csstype'
 import type { ChangeEvent } from 'react';
 import type React from 'react';
 
 export interface InputProps {
-  width: React.CSSProperties['width'];
-  label: string;
+  label: string | JSX.Element;
+  width: CSS.Properties['width'];
   id: string;
   placeholder: string;
   required?: boolean;

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { shadowStyles } from '../../atoms/Shadow';
+import { typographyStyles } from '../../atoms/Typography';
 
 export const BackButton = styled.a`
-  font-family: ${({ theme }) => theme.fonts.normal};
-  font-size: 14px;
-  text-transform: uppercase;
+  ${typographyStyles['label']}
   display: inline-flex;
   align-items: center;
   gap: 8px;
