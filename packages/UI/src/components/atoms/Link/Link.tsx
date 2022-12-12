@@ -1,10 +1,9 @@
 import type { FC } from 'react';
-import { Link } from 'react-router-dom';
-import type { LinkProps } from './Link.types';
-import { Link as StyledLink } from './StyledLink';
+import type { LinkProps } from './index';
+import { Link } from './StyledLink';
 
-const Link: FC<LinkProps> = ({ linkTo, linkName }) => {
-  return <StyledLink to={linkTo}>{linkName}</StyledLink>;
+const Link: FC<LinkProps> = ({ linkTo, linkText }) => {
+  return <a href={linkTo}>{linkText}</a>;
 };
 
 export default Link;

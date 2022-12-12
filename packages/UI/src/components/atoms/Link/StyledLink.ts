@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Link = styled.link<LinkProps>`
+export const Link = styled.a`
   position: absolute;
   left: 0%;
   right: 0%;
@@ -14,13 +14,13 @@ export const Link = styled.link<LinkProps>`
   display: flex;
   align-items: center;
   text-decoration-line: underline;
-  color: ${({ theme }) => theme.fonts.ACCENT_4};
+  color: ${({ theme }) => theme.colors.LIGHT_BLUE};
 
   &:visited {
     width: 30px;
     height: 16px;
     font-weight: 400;
-    color: ${({ theme }) => theme.fonts.LightBlue500};
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE_500};
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -31,7 +31,7 @@ export const Link = styled.link<LinkProps>`
     height: 20px;
     font-weight: 600;
     line-height: 20px;
-    color: ${({ theme }) => theme.fonts.LightBlue200};
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -41,11 +41,11 @@ export const Link = styled.link<LinkProps>`
     width: 30px;
     height: 16px;
     font-weight: 400;
-    color: ${({ theme }) => theme.fonts.LightBlue200};
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
     flex: none;
     order: 0;
     flex-grow: 0;
-    border: solid 2px ${({ theme }) => theme.fonts.Blue600};
+    border: solid 2px ${({ theme }) => theme.colors.BLUE_600};
   }
 
   &:active {
@@ -53,7 +53,7 @@ export const Link = styled.link<LinkProps>`
     height: 20px;
     font-weight: 400;
     line-height: 20px;
-    color: ${({ theme }) => theme.fonts.Blue100};
+    color: ${({ theme }) => theme.colors.BLUE_100};
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -65,7 +65,7 @@ export const Link = styled.link<LinkProps>`
     font-style: italic;
     font-weight: 300;
     line-height: 20px;
-    color: ${({ theme }) => theme.fonts.GreyScale};
+    color: ${({ theme }) => theme.colors.GREYSCALE_GREY};
     flex: none;
     order: 0;
     flex-grow: 0;
