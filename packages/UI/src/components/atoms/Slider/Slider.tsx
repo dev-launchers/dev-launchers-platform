@@ -18,6 +18,7 @@ export default function Slider({
   initialValue = 0,
   onChange,
   withLabels = true,
+  maxWidth,
 }: SliderProps) {
   const [value, setValue] = useState(initialValue);
 
@@ -31,7 +32,7 @@ export default function Slider({
   };
 
   return (
-    <Container>
+    <Container maxWidth={maxWidth}>
       <BubbleContainer>
         <Bubble newVal={getBubblePosition()}>
           <p css={typographyStyles['labelSmall']}>

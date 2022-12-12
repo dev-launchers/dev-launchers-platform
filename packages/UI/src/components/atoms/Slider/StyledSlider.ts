@@ -1,10 +1,14 @@
 import styled from 'styled-components';
+import { paddingStyles } from '../Padding';
+import { radiusStyles } from '../Radius/StyledRadius';
+import { typographyStyles } from '../Typography';
+import type { SliderProps } from '.';
 
-export const Container = styled.div`
+export const Container = styled.div<Pick<SliderProps, 'maxWidth'>>`
   position: relative;
   font-family: ${({ theme }) => theme.fonts.normal};
   color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-  max-width: 360px;
+  max-width: ${({ maxWidth }) => maxWidth || '360px'};
   user-select: none;
 `;
 
@@ -20,7 +24,7 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
   height: 14px;
   background: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   outline: 2px solid black;
-  border-radius: 50px;
+  ${radiusStyles['radius600']}
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -54,7 +58,7 @@ export const BubbleContainer = styled.div`
 export const Bubble = styled.div<{ newVal: number }>`
   position: absolute;
   width: auto;
-  padding: 4px;
+  ${paddingStyles['uniPad100']}
   top: 0;
   transform: translateX(-50%);
   left: ${({ newVal }) => `calc(${newVal}% + (${8 - newVal * 0.15}px))`};
@@ -62,8 +66,7 @@ export const Bubble = styled.div<{ newVal: number }>`
   & p {
     margin: 0;
     padding: 0;
-    font-size: 14px;
-    font-family: ${({ theme }) => theme.fonts.normal};
+    ${typographyStyles['pSmall']}
     color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   }
 `;
