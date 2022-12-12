@@ -1,16 +1,16 @@
-import Error from '../../../assets/icons/Error';
-import Success from '../../../assets/icons/Success';
 import Typography from '../../atoms/Typography';
 import {
   Label,
   Input,
   StyledInlineErrorMessage,
   InputWrapper,
-} from './StyledFormField';
-import type { InputProps } from '.';
+} from './StyledOpenResponse';
+import type { OpenResponseProps } from '.';
 
-function FormField({
+function OpenResponse({
   width,
+  rows,
+  cols,
   label,
   id,
   placeholder,
@@ -19,7 +19,7 @@ function FormField({
   error,
   touched,
   onChange,
-}: InputProps) {
+}: OpenResponseProps) {
   return (
     <>
       <Label htmlFor={id}>
@@ -28,18 +28,18 @@ function FormField({
         <InputWrapper>
           <Input
             width={width}
-            type="text"
+            placeholder={placeholder}
+            rows={rows}
+            cols={cols}
             name={label}
             id={id}
             autoCorrect="off"
             autoComplete="off"
-            placeholder={placeholder}
             valid={touched && !error}
             error={error}
             disabled={disabled}
             onChange={onChange}
           />
-          {required && touched && (error ? <Error /> : <Success />)}
         </InputWrapper>
       </Label>
       {error && touched && (
@@ -49,4 +49,4 @@ function FormField({
   );
 }
 
-export default FormField;
+export default OpenResponse;
