@@ -1,17 +1,18 @@
-import React from 'react';
+import type CSS from 'csstype';
 
 export { Box as default } from './styled.Box';
-
 export interface BoxProps {
-  flexDirection?: React.CSSProperties['flexDirection'];
-  justifyContent?: React.CSSProperties['justifyContent'];
-  alignItems?: React.CSSProperties['alignItems'];
-  gap?: React.CSSProperties['gap'];
-  margin?: React.CSSProperties['margin'];
-  marginBlock?:React.CSSProperties['marginBlock'];
-  marginInline?: React.CSSProperties['marginInline'];
-  padding?:React.CSSProperties['padding'];
-  paddingInline?: React.CSSProperties['paddingInline'];
-  paddingBlock?: React.CSSProperties['paddingBlock'];
-  flexWrap?: React.CSSProperties['flexWrap'];
+  flexDirection?: CSS.Properties['flexDirection'];
+  justifyContent?: CSS.Properties['justifyContent'];
+  alignItems?: CSS.Properties['alignItems'];
+  gap?: CSS.Properties['gap'];
+  margin?: CSS.Properties['margin'];
+  marginBlock?: CSS.Properties['marginBlock'];
+  marginInline?: CSS.Properties['marginInline'];
+  padding?: CSS.Properties['padding'];
+  paddingInline?: CSS.Properties['paddingInline'];
+  paddingBlock?: CSS.Properties['paddingBlock'];
+  flexWrap?: CSS.Properties['flexWrap'];
+  maxWidth?: CSS.Properties['maxWidth'];
+  width?: CSS.Properties['width'];
 }

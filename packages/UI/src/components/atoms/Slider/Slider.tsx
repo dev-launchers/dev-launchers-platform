@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import Box from '../Box';
+import { typographyStyles } from '../Typography';
+
 import {
   Bubble,
   BubbleContainer,
   Container,
-  LabelsContainer,
   SliderInput,
   SliderInputContainer,
 } from './StyledSlider';
@@ -16,6 +18,7 @@ export default function Slider({
   initialValue = 0,
   onChange,
   withLabels = true,
+  maxWidth,
 }: SliderProps) {
   const [value, setValue] = useState(initialValue);
 
@@ -29,12 +32,11 @@ export default function Slider({
   };
 
   return (
-    <Container>
+    <Container maxWidth={maxWidth}>
       <BubbleContainer>
         <Bubble newVal={getBubblePosition()}>
-          <p>
-            <span>{value}</span>
-            <span>{postfix}</span>
+          <p css={typographyStyles['labelSmall']}>
+            {value} {postfix}
           </p>
         </Bubble>
       </BubbleContainer>
@@ -48,19 +50,19 @@ export default function Slider({
         />
       </SliderInputContainer>
       {withLabels && (
-        <LabelsContainer>
-          <p>
-            {min} {postfix}
+        <Box justifyContent="space-between">
+          <p css={typographyStyles['labelSmall']}>
+            {value} {postfix}
           </p>
           {(max - min) % 2 === 0 && (
-            <p>
+            <p css={typographyStyles['labelSmall']}>
               {min + (max - min) / 2} {postfix}
             </p>
           )}
-          <p>
+          <p css={typographyStyles['labelSmall']}>
             {max} {postfix}
           </p>
-        </LabelsContainer>
+        </Box>
       )}
     </Container>
   );

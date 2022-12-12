@@ -11,7 +11,7 @@ function BackButtonComponent({ type, withLabel = true }: BackButtonProps) {
       ) : (
         <Chevron />
       )}
-      {withLabel && 'Back'}
+      {withLabel && type === 'back' && 'Back'}
     </BackButton>
   );
 }

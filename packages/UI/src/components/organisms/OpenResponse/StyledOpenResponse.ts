@@ -2,14 +2,25 @@ import styled, { css } from 'styled-components';
 import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
 import type { OpenResponseProps } from '.';
 export const Label = styled.label`
+  display: block;
   ${typographyStyles['label']};
-  /* margin-left: 1rem; */
+  width: 100%;
+
+  label {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
+    label {
+      margin-left: 0;
+    }
+  }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   position: relative;
-  width: fit-content;
   margin-top: 0.5rem;
 `;
 
@@ -21,8 +32,7 @@ export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
   font-weight: 300;
   padding: 1rem 1.5rem;
   resize: none;
-  max-width: 576px;
-  width: 100%;
+  width: ${({ width }) => width || '100%'};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm + 'px'}) {
     border-radius: 8px;

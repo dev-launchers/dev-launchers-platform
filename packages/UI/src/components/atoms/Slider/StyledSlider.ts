@@ -1,10 +1,14 @@
 import styled from 'styled-components';
+import { paddingStyles } from '../Padding';
+import { radiusStyles } from '../Radius/StyledRadius';
+import { typographyStyles } from '../Typography';
+import type { SliderProps } from '.';
 
-export const Container = styled.div`
+export const Container = styled.div<Pick<SliderProps, 'maxWidth'>>`
   position: relative;
   font-family: ${({ theme }) => theme.fonts.normal};
   color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-  max-width: 360px;
+  max-width: ${({ maxWidth }) => maxWidth || '360px'};
   user-select: none;
 `;
 
@@ -19,8 +23,8 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
   width: 100%;
   height: 14px;
   background: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
-  outline: 2px solid black;
-  border-radius: 50px;
+  outline: 2px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  ${radiusStyles['radius600']}
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -45,15 +49,6 @@ export const SliderInput = styled.input.attrs({ type: 'range' })`
   }
 `;
 
-export const LabelsContainer = styled.div`
-  width: 100%;
-  & p {
-    font-family: ${({ theme }) => theme.fonts.normal};
-    font-weight: 400;
-    font-size: 16px;
-  }
-`;
-
 export const BubbleContainer = styled.div`
   position: relative;
   width: 100%;
@@ -63,7 +58,7 @@ export const BubbleContainer = styled.div`
 export const Bubble = styled.div<{ newVal: number }>`
   position: absolute;
   width: auto;
-  padding: 4px;
+  ${paddingStyles['uniPad100']}
   top: 0;
   transform: translateX(${({ newVal }) => `-${newVal}%`});
   left: ${({ newVal }) => `${newVal}%`};
@@ -72,8 +67,7 @@ export const Bubble = styled.div<{ newVal: number }>`
     width: max-content;
     margin: 0;
     padding: 0;
-    font-size: 14px;
-    font-family: ${({ theme }) => theme.fonts.normal};
+    ${typographyStyles['pSmall']}
     color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   }
 `;

@@ -1,7 +1,7 @@
 export { default } from './Typography';
 export { typographyStyles } from './Styled.Typography';
 export interface TypographyProps {
-  type:
+  type?:
     | 'h1'
     | 'h2'
     | 'h3'

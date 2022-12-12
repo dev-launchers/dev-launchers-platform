@@ -10,26 +10,14 @@ const TemplateBackButton: ComponentStory<typeof BackButton> = (args) => (
   <BackButton {...args}></BackButton>
 );
 
-export const Small = TemplateBackButton.bind({});
-Small.args = {
-  type: 'small',
-  withLabel: false,
-};
-
-export const Medium = TemplateBackButton.bind({});
-Medium.args = {
-  type: 'medium',
+export const Back = TemplateBackButton.bind({});
+Back.args = {
+  type: 'back',
   withLabel: true,
 };
 
-export const Large = TemplateBackButton.bind({});
-Large.args = {
-  type: 'large',
-  withLabel: true,
-};
-
-export const CancelButton = TemplateBackButton.bind({});
-CancelButton.args = {
+export const Cancel = TemplateBackButton.bind({});
+Cancel.args = {
   type: 'cancel',
   withLabel: false,
 };
