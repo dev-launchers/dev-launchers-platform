@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
+import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { typographyStyles } from '../../atoms/Typography';
 import type { InputProps } from '.';
 
@@ -30,11 +31,10 @@ export const InputWrapper = styled.div`
 `;
 
 export const Input = styled.input<Omit<InputProps, 'label'>>`
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 300;
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  ${radiusStyles['radius200']};
+  ${typographyStyles['placeHolder']}
   width: ${({ width }) => width || '100%'};
   ${paddingStyles.comPad700};
   &::placeholder {
@@ -42,60 +42,60 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
   }
   &:focus,
   &:active {
-    border: 1px solid #3959ff;
+    border: 1px solid ${({ theme }) => theme.colors.NOTIFICATION};
     outline: none;
   }
   /* Autocomplete styles in Chrome*/
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    background-color: white;
-    border: 1px solid black;
+    background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+    border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   }
   ${({ valid }) =>
     valid &&
     css`
-      border: 1px solid #5bb14d;
+      border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
       &:focus,
       &:active {
-        border: 1px solid #5bb14d;
+        border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
         outline: none;
       }
       /* Autocomplete styles in Chrome*/
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus {
-        background: white;
-        border: 1px solid #5bb14d;
+        background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+        border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
         outline: none;
       }
     `}
   ${({ error }) =>
     error &&
     css`
-      border: 1px solid #f03d3e;
+      border: 1px solid ${({ theme }) => theme.colors.ERROR};
       outline: none;
       &:focus,
       &:active {
-        border: 1px solid #f03d3e;
+        border: 1px solid ${({ theme }) => theme.colors.ERROR};
         outline: none;
       }
       /* Autocomplete styles in Chrome*/
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus {
-        border: 1px solid #f03d3e;
+        border: 1px solid ${({ theme }) => theme.colors.ERROR};
       }
     `}
     ${({ disabled }) =>
     disabled &&
     css`
-      background-color: #f0edee;
-      border: 1px solid #474747;
+      background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
+      border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
       cursor: not-allowed;
       &:focus,
       &:active {
-        border: 1px solid black;
+        border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
         outline: none;
       }
     `}
@@ -103,7 +103,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
 
 export const StyledInlineErrorMessage = styled.div`
   ${typographyStyles['pSmall']};
-  color: #f03d3e;
+  color: ${({ theme }) => theme.colors.ERROR};
   margin-left: 0.625rem;
   margin-top: 0.5rem;
 `;
