@@ -120,6 +120,7 @@ export default function SignUpForm() {
             id="name"
             required
             onChange={Formik.handleChange}
+            error={Formik.errors.name}
           />
           <organisms.FormField
             label="Your Email"
@@ -127,6 +128,7 @@ export default function SignUpForm() {
             id="email"
             required
             onChange={Formik.handleChange}
+            error={Formik.errors.email}
           />
           <organisms.FormField
             label="Your Discord Username"
@@ -168,13 +170,14 @@ export default function SignUpForm() {
           </atoms.Box>
           <organisms.OpenResponse
             cols={50}
-            error=""
+            error={Formik.errors.experience}
             label="Please breifly describe your experience in development or design"
             placeholder="My experience with development / design is..."
             required
             rows={5}
             id="experience"
             onChange={Formik.handleChange}
+           
           />
           <organisms.OpenResponse
             cols={50}
