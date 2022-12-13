@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import type { LinkProps } from './index';
-import { Link } from './StyledLink';
+import { StyledLink } from './StyledLink';
 
 const Link: FC<LinkProps> = ({ linkTo, linkText }) => {
-  return <a href={linkTo}>{linkText}</a>;
+  return <StyledLink href={linkTo}>{linkText}</StyledLink>;
 };
 
 export default Link;
