@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import type { BoxProps } from './index';
+
 export const Box = styled.div<BoxProps>`
   display: flex;
   flex-direction: ${({ flexDirection }) => flexDirection};
@@ -13,4 +14,6 @@ export const Box = styled.div<BoxProps>`
   padding-block: ${({ paddingBlock }) => paddingBlock};
   padding-inline: ${({ paddingInline }) => paddingInline};
   flex-wrap: ${({ flexWrap }) => flexWrap};
+  max-width: ${({ maxWidth }) => maxWidth};
+  width: ${({ width }) => width};
 `;

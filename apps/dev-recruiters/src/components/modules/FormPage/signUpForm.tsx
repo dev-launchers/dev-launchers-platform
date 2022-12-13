@@ -118,10 +118,7 @@ export default function SignUpForm() {
         margin: 'auto',
       }}
     >
-      <atoms.Box
-        flexDirection="column"
-        css={{ maxWidth: '90%', margin: 'auto' }}
-      >
+      <atoms.Box flexDirection="column" maxWidth="90%" margin="auto">
         <atoms.Box flexDirection="column">
           <atoms.Layer hasRainbow>
             <atoms.Typography type="h2" css={{ textAlign: 'center' }}>
@@ -153,9 +150,13 @@ export default function SignUpForm() {
           <atoms.Box gap="32px" flexDirection="column">
             <organisms.FormField
               label={
-                <atoms.Box gap="1rem">
+                <atoms.Box gap="1rem" alignItems="center">
                   What are your relevant skills?
-                  <atoms.ToolTip tooltipText="Please Separate skills with a coma.">
+                  <atoms.ToolTip
+                    content="Please Separate skills with a coma."
+                    direction="left"
+                    delay={100}
+                  >
                     ℹ️
                   </atoms.ToolTip>
                 </atoms.Box>
@@ -200,13 +201,15 @@ export default function SignUpForm() {
             placeholder="https://myportfolio.com"
             id="portfolioLink"
           />
-          <atoms.Button
-            buttonSize="standard"
-            buttonType="primary"
-            type="submit"
-          >
-            Submit
-          </atoms.Button>
+          <atoms.Box maxWidth="50%">
+            <atoms.Button
+              buttonSize="standard"
+              buttonType="primary"
+              type="submit"
+            >
+              Submit
+            </atoms.Button>
+          </atoms.Box>
         </atoms.Box>
       </atoms.Box>
     </form>
