@@ -8,26 +8,8 @@ import { SkillLevel } from '@devlaunchers/models/level';
 import {
   atoms,
   organisms,
-  molecules,
 } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
-import {
-  Label,
-  Column,
-  Checkbox,
-  Row,
-  RadioWrapper,
-  CheckboxLabel,
-  Statement,
-  SubmitButton,
-  Input,
-  Radio,
-  TextArea,
-  ErrorMsg,
-  Header,
-  Tooltip,
-} from './styledSignupForm';
-
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
 }
@@ -136,16 +118,21 @@ export default function SignUpForm() {
             label="Your Full Name"
             placeholder="John Smith"
             id="name"
+            required
+            onChange={Formik.handleChange}
           />
           <organisms.FormField
             label="Your Email"
             placeholder="johnsmith@gmail.com"
             id="email"
+            required
+            onChange={Formik.handleChange}
           />
           <organisms.FormField
             label="Your Discord Username"
             placeholder="johnsmith#1234"
             id="discordUsername"
+            onChange={Formik.handleChange}
           />
           <atoms.Box gap="32px" flexDirection="column">
             <organisms.FormField
@@ -163,6 +150,7 @@ export default function SignUpForm() {
               }
               placeholder="Please separate skills with comma"
               id="discordUsername"
+              onChange={Formik.handleChange}
             />
           </atoms.Box>
           <atoms.Box flexDirection="column">
@@ -175,7 +163,7 @@ export default function SignUpForm() {
               max={10}
               onChange={(value) => Formik.setFieldValue('commitment', +value)}
               withLabels
-              postfix=" hrs"
+              suffix=" hrs"
             />
           </atoms.Box>
           <organisms.OpenResponse
@@ -186,6 +174,7 @@ export default function SignUpForm() {
             required
             rows={5}
             id="experience"
+            onChange={Formik.handleChange}
           />
           <organisms.OpenResponse
             cols={50}
@@ -194,13 +183,30 @@ export default function SignUpForm() {
             placeholder="My experience with development / design is..."
             rows={5}
             id="reason"
+            onChange={Formik.handleChange}
           />
           <organisms.FormField
             error=""
             label="Portfolio Link"
             placeholder="https://myportfolio.com"
             id="portfolioLink"
+            onChange={Formik.handleChange}
           />
+           <atoms.Typography type="p">
+          We require users to be 18 years old or older. Please confirm below.
+          </atoms.Typography>
+          <atoms.Checkbox
+            label="I am 18 years old or older."
+            onChange={Formik.handleChange}
+            disabled={false}
+            required
+            />
+          <atoms.Checkbox
+            label="I have read and agree to the Terms and Conditions."
+            onChange={Formik.handleChange}
+            disabled={false}
+            required
+            />
           <atoms.Box maxWidth="50%">
             <atoms.Button
               buttonSize="standard"

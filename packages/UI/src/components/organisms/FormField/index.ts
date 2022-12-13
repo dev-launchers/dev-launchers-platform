@@ -4,7 +4,7 @@ import type { ChangeEvent } from 'react';
 
 export interface InputProps {
   label: string | JSX.Element;
-  width: CSS.Properties['width'];
+  width?: CSS.Properties['width'];
   id: string;
   placeholder: string;
   required?: boolean;
