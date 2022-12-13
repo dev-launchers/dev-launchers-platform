@@ -1,9 +1,9 @@
 export { default } from './OpenResponse';
+import type CSS from 'csstype';
 import type { ChangeEvent } from 'react';
-import type React from 'react';
 
 export interface OpenResponseProps {
-  width?: React.CSSProperties['width'];
+  width?: CSS.Properties['width'];
   rows: number;
   cols: number;
   label: string;
