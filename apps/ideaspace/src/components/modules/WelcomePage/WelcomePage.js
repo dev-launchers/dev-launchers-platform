@@ -32,7 +32,7 @@ function WelcomePage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <h1 style={{width:"100%",textAlign:"center"}}>
+        <h1 style={{width:"auto",textAlign:"center"}}>
           IdeaSpace (Beta)
         </h1>
         <Description>

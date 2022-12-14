@@ -1,6 +1,76 @@
 import styled from "styled-components";
 import Link from 'next/link';
 
+export const GoBack = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  float: left;
+  margin-top: -5.5rem;
+  margin-left: 8rem;
+
+  width: 82px;
+  height: 54px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  border: 0 none;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+
+  @media (max-width: 1024px) {
+    margin-left: 4rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 0rem;
+  }
+
+  @media (max-width: 529px) {
+    margin-top: -13rem;
+  }
+`;
+
+export const HeadWapper = styled.div`
+  background-color: #FFFFFF;
+  padding: 8rem 1rem 6rem 1rem;
+
+  @media (max-width: 1712px) {
+    padding: 6rem 1rem 4rem 1rem;
+  }
+
+  @media (max-width: 529px) {
+    padding: 8rem 1rem 6rem 1rem;
+  }
+`;
+
+export const Headline1 = styled.h3`
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  padding-top: 2rem;
+`;
+
+export const Headline = styled.h3`
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 68px;
+  letter-spacing: -0.02em;
+`;
+
+export const Description = styled.p`
+  color: black;
+  text-align: center;
+  font-size: 28px;
+  line-height: 38px;
+`;
+
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   border-radius: 40px;
@@ -12,146 +82,183 @@ export const Wrapper = styled.div`
   align-items: center;
   margin-bottom: 2rem;
   border: 0.3rem solid ${({ theme }) => theme.colors.ACCENT_2};
+  padding: 2rem;
 `;
 
-export const Headline = styled.h3`
+export const FormWrapper = styled.div`
+  width: 36rem;
+  margin: 0 auto;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  text-align: left;
+
+  @media (max-width: 667px) {
+    width: 48rem;
+  }
+
+  @media (max-width: 624px) {
+    width: calc(100% - 4rem);
+    padding: 3rem 2rem;
+  }
+`;
+
+export const SectionName = styled.div`
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  color: #000000;
+`;
+
+export const Line = styled.div`
+  margin-top: 1rem;
   width: 100%;
-  text-align: center;
-  font-size: 40px;
-  color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  padding-top: 2rem;
+  height: 0.2rem;
+  background: #000000;
 `;
 
-export const Description = styled.p`
-  /* color: #F1F4F5; */
-  color: black;
-  text-align: center;
-`;
-
-export const Question = styled.div`
-  margin-left: 10px;
-
+export const Form = styled.form`
   & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 15px;
-    text-align: left;
-    float: left;
-    width: 90%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
+    margin-top: 2rem;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px 0.5rem;
+    margin-bottom: 0.5rem;
+
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: #1C1C1C;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
   }
+
+  & span {
+    color: #F03D3E;
+  }
+
   & input {
-    display: inline-block;
-    float: left;
-    width: 70%;
-    height: 30px;
-    background-color: white;
-    border: none;
-    border-radius: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+    width: 20rem;
+    height: 3.5rem;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (max-width: 667px) {
+      height: 4.4rem;
+    }
+  }
+
+  & textarea {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1rem;
+    width: 100%;
+    height: 10rem;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 16px;
+    resize: none;
+    overflow: hidden;
+    
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 20px;
+
+    @media (max-width: 667px) {
+      height: 13.5rem;
+    }
   }
 `;
 
-export const Question2 = styled.div`
-  & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 15px;
-    text-align: left;
-    float: left;
-    width: 90%;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    margin-left: 20px;
-  }
-  & input {
-    display: inline-block;
-    float: left;
-    width: 90%;
-    height: 100px;
-    background-color: white;
-    border: none;
-    border-radius: 20px;
-    margin-left: 10px;
+export const Notice = styled.div`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #000000;
+  margin-top: 2rem;
+`;
+
+export const SubmitArea = styled.div`
+  margin-top: 2rem;
+
+  @media (min-width: 551px) {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
   }
 `;
 
-export const LastQuestion = styled.div`
-  clear: both;
+export const Checkbox = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-  & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 20px;
-    text-align: left;
-    float: right;
-  }
   & input {
-    display: inline-block;
-    float: left;
-    width: 235px;
-    height: 30px;
-    background-color: #c4c4c4;
-    border: none;
-    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: 1px solid #1C1C1C;
+    border-radius: 2.5px;
+  }
+
+  & input:checked {
+    accent-color: #1C1C1C;
+  }
+
+  & span {
+    margin-left: 16px;
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1C1C1C;
+  }
+
+  & a {
+    color: #3959FF;
+    cursor: pointer;
   }
 `;
 
 export const Submit = styled.button`
-  width: 130px;
-  background: ${({ theme }) => theme.colors.ACCENT_3};
-  color: white;
-  font-weight: bold;
+  width: 118px;
+  height: 42px;
+  background: #295774;
+  color: #FFFFFF;
   border: 0 none;
-  border-radius: 15px;
+  border-radius: 8px;
   cursor: pointer;
-  padding: 7px 5px;
-  margin-top: 80px;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  font-size: 20px;
-  float: right;
-`;
+  margin-left: 27px;
 
-export const Container = styled.div`
-  width: 70%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
-`;
-
-export const SubmitWrapper = styled.div`
-  background-color: #c9cacc;
-  height: auto;
-  border-radius: 30px;
-  width: 90%;
-  max-width: 500px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  align-items: center;
 
-  & p {
-    font-size: 2.2rem;
-    font-weight: bold;
-    padding: 0 15% 0 15%;
+  font-size: 16px;
+  line-height: 22px;
 
-    @media screen and (max-width: 600px) {
-      font-size: 1.6rem;
-    }
-  }
-  
-  & button {
-    width: 200px;
-    margin: 0 auto;
-    background: #89969f;
-    font-weight: bold;
-    color: #000000;
-    border: 0 none;
-    border-radius: 30px;
-    cursor: pointer;
-    padding: 10px 5px;
-    font-size: 20px;
+  @media (max-width: 551px) {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    float: right;
   }
 `;
