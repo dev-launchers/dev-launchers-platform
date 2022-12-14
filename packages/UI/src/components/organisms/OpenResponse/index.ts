@@ -1,16 +1,17 @@
-export { default } from './FormField';
-import type CSS from 'csstype'
+export { default } from './OpenResponse';
 import type { ChangeEvent } from 'react';
 import type React from 'react';
 
-export interface InputProps {
-  label: string | JSX.Element;
-  width: CSS.Properties['width'];
+export interface OpenResponseProps {
+  width?: React.CSSProperties['width'];
+  rows: number;
+  cols: number;
+  label: string;
   id: string;
   placeholder: string;
   required?: boolean;
   disabled?: boolean;
-  error?: string;
+  error: string;
   valid?: boolean;
   touched?: boolean;
   onChange: (value: ChangeEvent) => void;

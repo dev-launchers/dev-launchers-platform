@@ -1,17 +1,19 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import FormField from './FormField';
+import OpenResponse from './OpenResponse';
 export default {
-  title: 'Organisms/FormField',
-  component: FormField,
-} as ComponentMeta<typeof FormField>;
+  title: 'Organisms/OpenResponse',
+  component: OpenResponse,
+} as ComponentMeta<typeof OpenResponse>;
 
-const TemplateFormField: ComponentStory<typeof FormField> = (args) => (
-  <FormField {...args}></FormField>
+const TemplateOpenResponse: ComponentStory<typeof OpenResponse> = (args) => (
+  <OpenResponse {...args}></OpenResponse>
 );
 
-export const DesktopDefaultOptional = TemplateFormField.bind({});
+export const DesktopDefaultOptional = TemplateOpenResponse.bind({});
 DesktopDefaultOptional.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: false,
@@ -20,8 +22,10 @@ DesktopDefaultOptional.args = {
   touched: false,
 };
 
-export const DesktopSuccessOptional = TemplateFormField.bind({});
+export const DesktopSuccessOptional = TemplateOpenResponse.bind({});
 DesktopSuccessOptional.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: false,
@@ -30,8 +34,10 @@ DesktopSuccessOptional.args = {
   touched: true,
 };
 
-export const DesktopErrorOptional = TemplateFormField.bind({});
+export const DesktopErrorOptional = TemplateOpenResponse.bind({});
 DesktopErrorOptional.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: false,
@@ -40,8 +46,10 @@ DesktopErrorOptional.args = {
   touched: true,
 };
 
-export const DesktopDisabledOptional = TemplateFormField.bind({});
+export const DesktopDisabledOptional = TemplateOpenResponse.bind({});
 DesktopDisabledOptional.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: false,
@@ -50,8 +58,10 @@ DesktopDisabledOptional.args = {
   touched: false,
 };
 
-export const DesktopDefaultRequired = TemplateFormField.bind({});
+export const DesktopDefaultRequired = TemplateOpenResponse.bind({});
 DesktopDefaultRequired.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: true,
@@ -60,8 +70,10 @@ DesktopDefaultRequired.args = {
   touched: false,
 };
 
-export const DesktopSuccessRequired = TemplateFormField.bind({});
+export const DesktopSuccessRequired = TemplateOpenResponse.bind({});
 DesktopSuccessRequired.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: true,
@@ -70,8 +82,10 @@ DesktopSuccessRequired.args = {
   touched: true,
 };
 
-export const DesktopErrorRequired = TemplateFormField.bind({});
+export const DesktopErrorRequired = TemplateOpenResponse.bind({});
 DesktopErrorRequired.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: true,
@@ -80,8 +94,10 @@ DesktopErrorRequired.args = {
   touched: true,
 };
 
-export const DesktopDisabledRequired = TemplateFormField.bind({});
+export const DesktopDisabledRequired = TemplateOpenResponse.bind({});
 DesktopDisabledRequired.args = {
+  rows: 5,
+  cols: 50,
   label: 'LABEL',
   placeholder: 'Placeholder',
   required: true,
@@ -90,9 +106,11 @@ DesktopDisabledRequired.args = {
   touched: false,
 };
 
-export const MobileDefaultOptional = TemplateFormField.bind({});
+export const MobileDefaultOptional = TemplateOpenResponse.bind({});
 MobileDefaultOptional.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: false,
   disabled: false,
@@ -100,9 +118,11 @@ MobileDefaultOptional.args = {
   touched: false,
 };
 
-export const MobileSuccessOptional = TemplateFormField.bind({});
+export const MobileSuccessOptional = TemplateOpenResponse.bind({});
 MobileSuccessOptional.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: false,
   disabled: false,
@@ -110,9 +130,11 @@ MobileSuccessOptional.args = {
   touched: true,
 };
 
-export const MobileErrorOptional = TemplateFormField.bind({});
+export const MobileErrorOptional = TemplateOpenResponse.bind({});
 MobileErrorOptional.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: false,
   disabled: false,
@@ -120,9 +142,11 @@ MobileErrorOptional.args = {
   touched: true,
 };
 
-export const MobileDisabledOptional = TemplateFormField.bind({});
+export const MobileDisabledOptional = TemplateOpenResponse.bind({});
 MobileDisabledOptional.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: false,
   disabled: true,
@@ -130,9 +154,11 @@ MobileDisabledOptional.args = {
   touched: false,
 };
 
-export const MobileDefaultRequired = TemplateFormField.bind({});
+export const MobileDefaultRequired = TemplateOpenResponse.bind({});
 MobileDefaultRequired.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: true,
   disabled: false,
@@ -140,9 +166,11 @@ MobileDefaultRequired.args = {
   touched: false,
 };
 
-export const MobileSuccessRequired = TemplateFormField.bind({});
+export const MobileSuccessRequired = TemplateOpenResponse.bind({});
 MobileSuccessRequired.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: true,
   disabled: false,
@@ -150,9 +178,11 @@ MobileSuccessRequired.args = {
   touched: true,
 };
 
-export const MobileErrorRequired = TemplateFormField.bind({});
+export const MobileErrorRequired = TemplateOpenResponse.bind({});
 MobileErrorRequired.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: true,
   disabled: false,
@@ -160,9 +190,11 @@ MobileErrorRequired.args = {
   touched: true,
 };
 
-export const MobileDisabledRequired = TemplateFormField.bind({});
+export const MobileDisabledRequired = TemplateOpenResponse.bind({});
 MobileDisabledRequired.args = {
-  label: 'LABEL',
+  rows: 5,
+  cols: 50,
+  label: 'open response prompt goes here?',
   placeholder: 'Placeholder',
   required: true,
   disabled: true,
