@@ -1,7 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { within, userEvent, waitFor } from '@storybook/testing-library';
-import * as React from 'react';
-import Tooltip from './Tooltip';
+import Tooltip from '.';
 
 export default {
   title: 'Atoms/Tooltip',
@@ -14,6 +12,8 @@ const RegularToolTip: ComponentStory<typeof Tooltip> = (args) => (
 
 export const Black = RegularToolTip.bind({});
 Black.args = {
-  tooltipText: 'This is a tool tip',
+  content: 'This is a tool tip',
   children: '?',
+  direction: 'right',
+  delay: 500,
 };

@@ -4,7 +4,7 @@ import React from 'react';
 
 import { env } from '../utils/EnvironmentVariables';
 
-const DEFAULT_USER = {
+export const DEFAULT_USER = {
   id: 0,
   name: '',
   username: '',

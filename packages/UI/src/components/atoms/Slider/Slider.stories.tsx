@@ -14,7 +14,7 @@ export const WithLabels = TemplateSlider.bind({});
 WithLabels.args = {
   min: 0,
   max: 10,
-  postfix: 'HRS',
+  suffix: 'HRS',
   withLabels: true,
 };
 
@@ -22,6 +22,6 @@ export const WithoutLabels = TemplateSlider.bind({});
 WithoutLabels.args = {
   min: 0,
   max: 10,
-  postfix: 'HRS',
+  suffix: 'HRS',
   withLabels: false,
 };

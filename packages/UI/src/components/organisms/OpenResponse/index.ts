@@ -1,12 +1,13 @@
 export { default } from './OpenResponse';
+import type CSS from 'csstype';
 import type { ChangeEvent } from 'react';
-import type React from 'react';
 
 export interface OpenResponseProps {
-  width?: React.CSSProperties['width'];
+  width?: CSS.Properties['width'];
   rows: number;
   cols: number;
   label: string;
+  name?: string;
   id: string;
   placeholder: string;
   required?: boolean;
@@ -14,5 +15,5 @@ export interface OpenResponseProps {
   error: string;
   valid?: boolean;
   touched?: boolean;
-  onChange: (value: ChangeEvent) => void;
+  onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void;
 }
