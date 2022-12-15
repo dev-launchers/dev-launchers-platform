@@ -7,6 +7,7 @@ export interface OpenResponseProps {
   rows: number;
   cols: number;
   label: string;
+  name?: string;
   id: string;
   placeholder: string;
   required?: boolean;
@@ -14,5 +15,5 @@ export interface OpenResponseProps {
   error: string;
   valid?: boolean;
   touched?: boolean;
-  onChange: (value: ChangeEvent) => void;
+  onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void;
 }
