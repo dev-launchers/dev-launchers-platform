@@ -56,7 +56,7 @@ export const Input = styled.input`
       font-size: 1.2em;
       color: #fff;
       position: absolute;
-      left: 20px;
+      padding-left: 2px;
       border-radius: 8px;
     }
   }
