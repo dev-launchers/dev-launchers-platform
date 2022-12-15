@@ -57,7 +57,6 @@ export const Input = styled.input`
       color: #fff;
       position: absolute;
       left: 20px;
-      top: 10px;
       border-radius: 8px;
     }
   }
