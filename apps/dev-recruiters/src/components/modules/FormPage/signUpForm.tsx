@@ -98,7 +98,7 @@ export default function SignUpForm() {
             boxShadow: '0px 10px 18px 10px rgba(127, 126, 127, 0.25)',
             borderRadius: 32,
             maxWidth: '1536px',
-            margin: 'auto',
+            margin: '2rem auto',
           }}
         >
           <atoms.Box flexDirection="column" maxWidth="90%" margin="auto">
@@ -174,7 +174,7 @@ export default function SignUpForm() {
                   withLabels
                   suffix=" hrs"
                 />
-                <atoms.Typography type="pSmall" css={{color: 'red'}}>
+                <atoms.Typography type="pSmall" css={{ color: 'red' }}>
                   {errors.commitment}
                 </atoms.Typography>
               </atoms.Box>
