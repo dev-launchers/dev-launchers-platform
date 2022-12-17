@@ -19,6 +19,7 @@ function FormField({
   error,
   touched,
   onChange,
+  name,
 }: InputProps) {
   return (
     <>
@@ -29,7 +30,7 @@ function FormField({
           <Input
             width={width}
             type="text"
-            name={label}
+            name={name}
             id={id}
             autoCorrect="off"
             autoComplete="off"

@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
 import type { OpenResponseProps } from '.';
+
 export const Label = styled.label`
   display: block;
   ${typographyStyles['label']};
@@ -25,11 +27,10 @@ export const InputWrapper = styled.div`
 `;
 
 export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 16px;
-  font-size: 0.875rem;
-  font-weight: 300;
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  ${radiusStyles['radius300']};
+  ${typographyStyles['placeHolder']};
   padding: 1rem 1.5rem;
   resize: none;
   width: ${({ width }) => width || '100%'};
@@ -44,18 +45,18 @@ export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
 
   &:focus,
   &:active {
-    border: 1px solid #3959ff;
+    border: 1px solid ${({ theme }) => theme.colors.NOTIFICATION};
     outline: none;
   }
 
   ${({ valid }) =>
     valid &&
     css`
-      border: 1px solid #5bb14d;
+      border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
 
       &:focus,
       &:active {
-        border: 1px solid #5bb14d;
+        border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
         outline: none;
       }
     `}
@@ -63,12 +64,12 @@ export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
   ${({ error }) =>
     error &&
     css`
-      border: 1px solid #f03d3e;
+      border: 1px solid ${({ theme }) => theme.colors.ERROR};
       outline: none;
 
       &:focus,
       &:active {
-        border: 1px solid #f03d3e;
+        border: 1px solid ${({ theme }) => theme.colors.ERROR};
         outline: none;
       }
     `}
@@ -76,13 +77,13 @@ export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
     ${({ disabled }) =>
     disabled &&
     css`
-      background-color: #f0edee;
-      border: 1px solid #474747;
+      background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
+      border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
       cursor: not-allowed;
 
       &:focus,
       &:active {
-        border: 1px solid black;
+        border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
         outline: none;
       }
     `}
@@ -90,7 +91,7 @@ export const Input = styled.textarea<Omit<OpenResponseProps, 'label'>>`
 
 export const StyledInlineErrorMessage = styled.div`
   ${typographyStyles['pSmall']}
-  color: #f03d3e;
+  color: ${({ theme }) => theme.colors.ERROR};
   margin-left: 0.625rem;
   margin-top: 0.5rem;
 `;
