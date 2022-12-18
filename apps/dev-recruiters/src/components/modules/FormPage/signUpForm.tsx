@@ -17,10 +17,10 @@ export default function SignUpForm() {
     email: Yup.string()
       .email('Invalid email')
       .required('Email Field Entry is Required'),
-    portfolioLink: Yup.string().matches(
+    portfolioLink: Yup.string().nullable(true).default(undefined).matches(
       /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
       'Invalid url'
-    ),
+    ).transform((_, value) => value === '' ? null : value),
     commitment: Yup.number()
       .moreThan(0, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
@@ -49,7 +49,7 @@ export default function SignUpForm() {
         accepted: false,
         commitment: 0,
         extraInfo: '',
-        portfolioLink: '',
+        portfolioLink: null,
         experience: '',
         reason: '',
         zip: 0,
@@ -91,20 +91,22 @@ export default function SignUpForm() {
       }}
       validationSchema={SignupSchema}
     >
-      {({ errors, setFieldValue, touched }) => (
+      {({ errors, setFieldValue, touched, values }) => (
+        <atoms.Box paddingInline='0.5rem' justifyContent='center'>
         <Form
           css={{
+            flex: 1,
             padding: '2rem',
             boxShadow: '0px 10px 18px 10px rgba(127, 126, 127, 0.25)',
             borderRadius: 32,
             maxWidth: '1536px',
-            margin: 'auto',
+            margin: '2rem 0',
           }}
         >
           <atoms.Box flexDirection="column" maxWidth="90%" margin="auto">
             <atoms.Box flexDirection="column">
               <atoms.Layer hasRainbow>
-                <atoms.Typography type="h2" css={{ textAlign: 'center' }}>
+                <atoms.Typography type="h2" textAlign="center">
                   Volunteer Application
                 </atoms.Typography>
               </atoms.Layer>
@@ -113,7 +115,7 @@ export default function SignUpForm() {
               flexDirection="column"
               gap="32px"
               paddingBlock="2rem"
-              css={{ maxWidth: 'fit-content' }}
+              maxWidth="fit-content"
             >
               <Field
                 as={organisms.FormField}
@@ -123,6 +125,7 @@ export default function SignUpForm() {
                 name="name"
                 required
                 // onChange={handleChange}
+                touched={touched['name']}
                 error={errors.name}
               />
               <Field
@@ -174,7 +177,7 @@ export default function SignUpForm() {
                   withLabels
                   suffix=" hrs"
                 />
-                <atoms.Typography type="pSmall" css={{color: 'red'}}>
+                <atoms.Typography type="pSmall" css={{ color: 'red' }}>
                   {errors.commitment}
                 </atoms.Typography>
               </atoms.Box>
@@ -208,7 +211,7 @@ export default function SignUpForm() {
                 id="portfolioLink"
                 name="portfolioLink"
                 // onChange={handleChange}
-                touched={touched.portfolioLink}
+                touched={touched.portfolioLink && !!values['portfolioLink']}
                 error={errors.portfolioLink}
               />
               <atoms.Typography type="p">
@@ -237,6 +240,7 @@ export default function SignUpForm() {
             </atoms.Box>
           </atoms.Box>
         </Form>
+        </atoms.Box>
       )}
     </Formik>
   );

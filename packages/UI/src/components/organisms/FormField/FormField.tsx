@@ -24,8 +24,9 @@ function FormField({
   return (
     <>
       <Label htmlFor={id}>
-        <Typography type="label">{label}</Typography>
-        {required && <span style={{ color: 'red' }}>*</span>}
+        <Typography type="label">
+          {label} {required && <span css={{ color: 'red' }}>*</span>}
+        </Typography>
         <InputWrapper>
           <Input
             width={width}

@@ -1,6 +1,8 @@
-import Head from "next/head";
-import LoginPage from "../components/modules/LoginPage/loginPage";
-import BoxContainer from "../components/common/BoxContainer";
+import Head from 'next/head';
+import LoginPage from '../components/modules/LoginPage/loginPage';
+import BoxContainer from '../components/common/BoxContainer';
+import theme from '../styles/theme';
+import { ThemeProvider } from 'styled-components';
 function login() {
   return (
     <>
@@ -40,9 +42,12 @@ function login() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <BoxContainer bgColor="OuterSpace">
-        <LoginPage />
-      </BoxContainer>
+      {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+      <ThemeProvider theme={theme}>
+        <BoxContainer bgColor="OuterSpace">
+          <LoginPage />
+        </BoxContainer>
+      </ThemeProvider>
     </>
   );
 }
