@@ -160,7 +160,7 @@ export default function SignUpForm() {
                       </atoms.ToolTip>
                     </atoms.Box>
                   }
-                  placeholder="Please separate skills with comma"
+                  placeholder="javascript, react, backend"
                   id="skills"
                   name="skills"
                 />
@@ -176,6 +176,7 @@ export default function SignUpForm() {
                   onChange={(value) => setFieldValue('commitment', +value)}
                   withLabels
                   suffix=" hrs"
+                  maxWidth='430px'
                 />
                 <atoms.Typography type="pSmall" css={{ color: 'red' }}>
                   {errors.commitment}
@@ -205,8 +206,18 @@ export default function SignUpForm() {
                 // onChange={handleChange}
               />
               <Field
+                as={organisms.OpenResponse}
+                cols={50}
+                label="Anything else you would like to share with us?"
+                placeholder="I just want the Team Lead to know..."
+                rows={5}
+                id="extraInfo"
+                name="extraInfo"
+                // onChange={handleChange}
+              />
+              <Field
                 as={organisms.FormField}
-                label="Portfolio Link"
+                label="Portfolio/Resume Link"
                 placeholder="https://myportfolio.com"
                 id="portfolioLink"
                 name="portfolioLink"

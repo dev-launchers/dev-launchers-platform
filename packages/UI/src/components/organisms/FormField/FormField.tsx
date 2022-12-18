@@ -41,7 +41,9 @@ function FormField({
             disabled={disabled}
             onChange={onChange}
           />
-          {required && touched && (error ? <Error /> : <Success />)}
+          {/* The field doesn't have to be required for the Error Icon to show.
+           For Example: I want to validate if the url passed is correct but it's not required for them fill. */}
+          {/* required && */ touched && (error ? <Error /> : <Success />)}
         </InputWrapper>
       </Label>
       {error && touched && (
