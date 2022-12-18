@@ -1,5 +1,6 @@
 export { default } from './Typography';
 export { typographyStyles } from './Styled.Typography';
+import type CSS from 'csstype';
 export interface TypographyProps {
   type?:
     | 'h1'
@@ -13,4 +14,5 @@ export interface TypographyProps {
     | 'button'
     | 'label'
     | 'labelSmall';
+  textAlign?: CSS.Properties['textAlign'];
 }
