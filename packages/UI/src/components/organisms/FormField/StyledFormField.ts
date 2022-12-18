@@ -39,6 +39,7 @@ export const Input = styled.input<Omit<InputProps, 'label'>>`
   width: ${({ width }) => width || '100%'};
 
   ${paddingStyles.comPad700};
+  padding-right: ${({ valid }) => !valid && '1rem'};
   &::placeholder {
     ${typographyStyles['placeHolder']};
   }
