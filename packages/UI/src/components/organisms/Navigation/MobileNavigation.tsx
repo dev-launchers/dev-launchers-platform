@@ -33,8 +33,10 @@ const MobileNavigation = ({ user }: NavigationProps) => {
         crossClassName="crossClass"
         onStateChange={isMenuOpen}
         customCrossIcon={<BackButton type="cancel" withLabel={false} />}
+        pageWrapId={'page-wrap'}
+        outerContainerId={'outer-container'}
       >
-        <Box flexDirection="column">
+        <Box flexDirection="column" style={{ display: 'flex', height: '100%' }}>
           <MobileNav onClick={handleNavClick}>
             <Box
               gap={'5px'}
