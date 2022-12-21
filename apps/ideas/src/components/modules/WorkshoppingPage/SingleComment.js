@@ -7,7 +7,10 @@ import {
   SingleCommentButtons
 } from './StyledComments.js';
 
+import HeartButton from './like-button-test';
+
 const SingleCommentComponent = props => (
+  [
   <SingleComment>
     <UserImage alt="user_image" src={`https://picsum.photos/70?random=${props.id}`} />
     <div className="textContent">
@@ -18,7 +21,9 @@ const SingleCommentComponent = props => (
       <SingleCommentButtons>
       </SingleCommentButtons>
     </div>
-  </SingleComment>
+  </SingleComment>,
+  <HeartButton />
+  ]
 );
 
 export default SingleCommentComponent;

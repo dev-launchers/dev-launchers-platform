@@ -27826,6 +27826,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:4.7.1":
+  version: 4.7.1
+  resolution: "react-icons@npm:4.7.1"
+  peerDependencies:
+    react: "*"
+  checksum: ed3cbdc5fc0c4d7d2debf78fdc8c4c80aeacf85a506a9a3c11b1d5922de393ac0a6542012b7fb81761e9280c54d0f26827d50a92b54ec8f0c8e52364d89970b5
+  languageName: node
+  linkType: hard
+
 "react-inspector@npm:^5.1.0":
   version: 5.1.1
   resolution: "react-inspector@npm:5.1.1"
@@ -34501,6 +34510,7 @@ __metadata:
     lint-staged: 13.0.3
     npm-run-all: 4.1.5
     prettier: 2.7.1
+    react-icons: 4.7.1
     rimraf: 3.0.2
     shell-quote: 1.7.3
     typescript: 4.7.4
