@@ -5,10 +5,16 @@ export const StyledLink = styled.a`
   ${typographyStyles.p}
 
   color: ${({ theme }) => theme.colors.LIGHT_BLUE};
+  @media only screen and (min-width: 62.5rem) {
+    font-size: 1.25rem;
+  }
 
   &:visited {
     font-weight: 400;
     color: ${({ theme }) => theme.colors.LIGHT_BLUE_500};
+    @media only screen and (max-width: 62.5rem) {
+      font-size: 6rem;
+    }
   }
 
   &:hover {
