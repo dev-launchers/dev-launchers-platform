@@ -1,6 +1,8 @@
-import Head from "next/head";
-import LoginPage from "../components/modules/LoginPage/loginPage";
-import BoxContainer from "../components/common/BoxContainer";
+import Head from 'next/head';
+import LoginPage from '../components/modules/LoginPage/loginPage';
+import BoxContainer from '../components/common/BoxContainer';
+import theme from '../styles/theme';
+import { ThemeProvider } from 'styled-components';
 function login() {
   return (
     <>
@@ -18,7 +20,7 @@ function login() {
           property="og:image"
           content="/images/DevlaunchersGitHubThumb.png"
         />
-        <meta property="og:title" content="Our Projects" />
+        <meta property="og:title" content="Dev Discovery" />
         <meta
           property="og:description"
           content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
@@ -29,7 +31,7 @@ function login() {
           property="twitter:url"
           content="https://devlaunchers.org/projects"
         />
-        <meta property="twitter:title" content="Our Projects" />
+        <meta property="twitter:title" content="Dev Discovery" />
         <meta
           property="twitter:description"
           content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
@@ -40,9 +42,12 @@ function login() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <BoxContainer bgColor="OuterSpace">
-        <LoginPage />
-      </BoxContainer>
+      {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+      <ThemeProvider theme={theme}>
+        <BoxContainer bgColor="OuterSpace">
+          <LoginPage />
+        </BoxContainer>
+      </ThemeProvider>
     </>
   );
 }
