@@ -42,10 +42,10 @@ function MyApp(props) {
       <ThemeProvider theme={theme}>
         <UserDataProvider>
           <GlobalStyle />
-          <Nav />
+          <RainbowBar />
           <IdeasBetaFeedbackModal />
-          {props.children}     
-        </UserDataProvider> 
+          {props.children}
+        </UserDataProvider>
       </ThemeProvider>
     </div>
   );
