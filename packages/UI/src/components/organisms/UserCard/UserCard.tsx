@@ -2,45 +2,117 @@ import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import Discord from '../../../assets/icons/Discord';
 import Mail from '../../../assets/icons/Mail';
-import logo from '../../../assets/images/logo-monogram.png';
+import { useUserDataContext } from './../../../context/UserDataContext';
+import type { UserCardProps } from '.';
 
-export default function UserCard() {
+export default function UserCard({ user, isVertical }: UserCardProps) {
+  let userInfo = user;
+  if (!user) {
+    userInfo = useUserDataContext().userData;
+  }
+
+  // const { userData } = useUserDataContext();
   return (
-    <atoms.Layer
-      type="white"
-      style={{ borderRadius: '16px', maxWidth: '327px' }}
-    >
-      <atoms.Box
-        padding={'16px 8px'}
-        flexDirection={'row'}
-        justifyContent={'center'}
-      >
-        <atoms.Box flexDirection="column" gap={'10px'}>
-          <atoms.Typography type="h3">John James</atoms.Typography>
-          <atoms.Typography type="h5"> Product Lead</atoms.Typography>
-          <atoms.Box flexDirection="row" gap={'6px'} alignItems="center">
-            <Discord />
-            <atoms.Box flexDirection="column">
-              <atoms.Typography type="p">John James</atoms.Typography>
-              <atoms.Typography type="p">@discord_handle </atoms.Typography>
+    <>
+      {isVertical ? (
+        <atoms.Layer
+          type="white"
+          style={{ borderRadius: '16px', maxWidth: '327px' }}
+        >
+          <atoms.Box
+            padding={'16px 8px'}
+            flexDirection={'row'}
+            justifyContent={'center'}
+          >
+            <atoms.Box flexDirection="column" margin={'20px 10px 0 0'}>
+              <atoms.Typography type="h3">{userInfo.name}</atoms.Typography>
+              <atoms.Typography type="h5">Product Lead</atoms.Typography>
+              <atoms.Box
+                flexDirection="row"
+                alignItems="center"
+                margin={' 32px 0 10px 0'}
+              >
+                <Discord />
+                <atoms.Box flexDirection="column" margin={'0 0 0 10px'}>
+                  <atoms.Typography type="label">DISCORD</atoms.Typography>
+                  <atoms.Typography type="pSmall">
+                    {userInfo.discord.username}
+                  </atoms.Typography>
+                </atoms.Box>
+              </atoms.Box>
+              <atoms.Box flexDirection="row" alignItems="center">
+                <Mail />
+                <atoms.Box flexDirection="column" margin={'0 0 0 10px'}>
+                  <atoms.Typography type="label">Email</atoms.Typography>
+                  <atoms.Typography type="pSmall">
+                    {userInfo.email}
+                  </atoms.Typography>
+                </atoms.Box>
+              </atoms.Box>
             </atoms.Box>
+            <img
+              width="108"
+              height="108"
+              src={userInfo.profilePictureUrl}
+              alt="Profile avatar"
+              style={{ borderRadius: '50%' }}
+            />
           </atoms.Box>
-          <atoms.Box flexDirection="row" gap={'6px'} alignItems="center">
-            <Mail />
-            <atoms.Box flexDirection="column">
-              <atoms.Typography type="p">Email</atoms.Typography>
-              <atoms.Typography type="p">johnjames@email.com </atoms.Typography>
+        </atoms.Layer>
+      ) : (
+        <>
+          <atoms.Layer
+            type="white"
+            style={{ borderRadius: '16px', maxWidth: '368px' }}
+          >
+            <atoms.Box
+              padding={'16px 8px'}
+              flexDirection={'row'}
+              justifyContent={'center'}
+            >
+              <atoms.Box
+                flexDirection={'column'}
+                justifyContent={'center'}
+                margin={'0 10px 0 0'}
+              >
+                <img
+                  width="108"
+                  height="108"
+                  src={userInfo.profilePictureUrl}
+                  alt="Profile avatar"
+                  style={{ borderRadius: '50%' }}
+                />
+              </atoms.Box>
+              <atoms.Box flexDirection="column" margin={'20px 10px 0 0'}>
+                <atoms.Typography type="h3">{userInfo.name}</atoms.Typography>
+                <atoms.Typography type="h5">Product Lead</atoms.Typography>
+                <atoms.Box
+                  flexDirection="row"
+                  alignItems="center"
+                  margin={' 32px 0 10px 0'}
+                >
+                  <Discord />
+                  <atoms.Box flexDirection="column" margin={'0 0 0 10px'}>
+                    <atoms.Typography type="label">DISCORD</atoms.Typography>
+                    <atoms.Typography type="pSmall">
+                      {userInfo.discord.username}
+                    </atoms.Typography>
+                  </atoms.Box>
+                </atoms.Box>
+                <atoms.Box flexDirection="row" alignItems="center">
+                  <Mail />
+                  <atoms.Box flexDirection="column" margin={'0 0 0 10px'}>
+                    <atoms.Typography type="label">Email</atoms.Typography>
+                    <atoms.Typography type="pSmall">
+                      {userInfo.email}
+                    </atoms.Typography>
+                  </atoms.Box>
+                </atoms.Box>
+              </atoms.Box>
             </atoms.Box>
-          </atoms.Box>
-        </atoms.Box>
-        <img
-          width="108"
-          height="108"
-          src={logo}
-          alt="Profile avatar"
-          style={{ borderRadius: '50%' }}
-        />
-      </atoms.Box>
-    </atoms.Layer>
+          </atoms.Layer>
+        </>
+      )}
+    </>
   );
 }
