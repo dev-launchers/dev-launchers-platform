@@ -12,30 +12,42 @@ export const StyledLink = styled.a`
   &:visited {
     font-weight: 400;
     color: ${({ theme }) => theme.colors.LIGHT_BLUE_500};
-    @media only screen and (max-width: 62.5rem) {
-      font-size: 6rem;
+    @media only screen and (min-width: 62.5rem) {
+      font-size: 1.25rem;
     }
   }
 
   &:hover {
     font-weight: 600;
     color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
+    @media only screen and (min-width: 62.5rem) {
+      font-size: 1.25rem;
+    }
   }
 
   &:focus {
     font-weight: 400;
     color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
     border: solid 2px ${({ theme }) => theme.colors.BLUE_600};
+    @media only screen and (min-width: 62.5rem) {
+      font-size: 1.25rem;
+    }
   }
 
   &:active {
     font-weight: 400;
     color: ${({ theme }) => theme.colors.BLUE_100};
+    @media only screen and (min-width: 62.5rem) {
+      font-size: 1.25rem;
+    }
   }
 
   &:disabled {
     font-style: italic;
     font-weight: 300;
     color: ${({ theme }) => theme.colors.GREYSCALE_GREY};
+    @media only screen and (min-width: 62.5rem) {
+      font-size: 1.25rem;
+    }
   }
 `;
