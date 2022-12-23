@@ -43,8 +43,7 @@ function CommentForm(props) {
     var data = { author: props.handleChange, text: props.handleTextChange };
     if (
       props.handleTextChange.length < MIN_COMMENT_CHARS &&
-      props.handleChange.length == 0
-    ) {
+      props.handleChange.length == 0) {
       setBorderColorComment('red');
       setBorderColorName('red');
     } else if (props.handleTextChange.length < MIN_COMMENT_CHARS) {
@@ -84,7 +83,6 @@ function CommentForm(props) {
             value={props.handleChange}
             onChange={handleChange}
             minlength={0}
-            // required
           />
         </UserNameCommentBox>
         <UserComment>
@@ -108,13 +106,11 @@ function CommentForm(props) {
             onChange={handleTextChange}
             maxlength={MAX_COMMENT_CHARS}
             minlength={MIN_COMMENT_CHARS}
-            // required
           ></textarea>
           {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
           <div id="the-count">
-            <span id="chars-left">{charsLeft}</span>
-            <br />
-            <span id="chars-leftToMin">{charsCount}</span>
+            <p><span id="chars-left">{charsLeft}</span></p>
+            <p><span id="chars-leftToMin">{charsCount}</span></p>
           </div>
         </UserComment>
         <button type="submit">Submit</button>

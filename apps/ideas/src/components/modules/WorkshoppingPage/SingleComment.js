@@ -7,7 +7,7 @@ import {
   SingleCommentButtons
 } from './StyledComments.js';
 
-import HeartButton from './like-button-test';
+import HeartButton from './HeartButton';
 
 const SingleCommentComponent = props => (
   [

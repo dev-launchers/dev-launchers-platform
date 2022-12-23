@@ -161,6 +161,8 @@ export const UserComment = styled.div`
     width: 100%;
     height: 3rem;
   }
+
+  p { margin:0 }
 `;
 
 
