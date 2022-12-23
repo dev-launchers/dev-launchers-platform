@@ -9,11 +9,12 @@ export default {
 
 const LinkTemplate: Story<LinkProps> = (args) => <Link {...args} />;
 
-export const dark = LinkTemplate.bind({});
-dark.args = {
-  linkTo: '/anywhere',
-  linkText: 'link',
-};
+// export const dark = LinkTemplate.bind({});
+// dark.args = {
+//   linkTo: '/anywhere',
+//   linkText: 'link',
+//   mode: 'dark',
+// };
 
 export const light = LinkTemplate.bind({});
 light.args = {

@@ -1,56 +1,77 @@
 import styled from 'styled-components';
+import theme from '../../../styles/theme';
 import { typographyStyles } from '../Typography';
 
-export const StyledLink = styled.a`
-  ${typographyStyles.p}
+const lightColor = {
+  default: theme.colors.BLUE,
+  visited: theme.colors.BLUE_700,
+  hover: theme.colors.BLUE_600,
+  focus: theme.colors.BLUE_600,
+  focusBorder: theme.colors.LIGHT_BLUE_200,
+  active: theme.colors.BLUE_600,
+  disabled: theme.colors.GREYSCALE_CHARCOAL,
+};
 
-  color: ${({ theme }) => theme.colors.LIGHT_BLUE};
+const darkColor = {
+  default: theme.colors.LIGHT_BLUE,
+  visited: theme.colors.LIGHT_BLUE_500,
+  hover: theme.colors.LIGHT_BLUE_200,
+  focus: theme.colors.BLUE_600,
+  focusBorder: theme.colors.LIGHT_BLUE_200,
+  active: theme.colors.BLUE_100,
+  disabled: theme.colors.GREYSCALE_GREY,
+};
+
+export const StyledLink = styled.a`
+  ${typographyStyles.pSmall}
+
+  color: ${lightColor.default};
   @media only screen and (min-width: 62.5rem) {
-    font-size: 1.25rem;
+    ${typographyStyles.p}
   }
 
   &:visited {
     font-weight: 400;
-    color: ${({ theme }) => theme.colors.LIGHT_BLUE_500};
+    color: ${lightColor.visited};
     @media only screen and (min-width: 62.5rem) {
-      font-size: 1.25rem;
+      ${typographyStyles.p}
     }
   }
 
   &:hover {
     font-weight: 600;
-    color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
+    color: ${lightColor.hover};
     @media only screen and (min-width: 62.5rem) {
-      font-size: 1.25rem;
+      ${typographyStyles.p}
     }
   }
 
   &:focus {
     font-weight: 400;
-    color: ${({ theme }) => theme.colors.BLUE_600};
-    border: dotted 0.4px ${({ theme }) => theme.colors.LIGHT_BLUE_200};
+    color: ${lightColor.focus};
+    border: dotted 0.4px ${lightColor.focusBorder};
     outline: 1px dashed black;
     border-radius: 4px;
-    background-color: ${({ theme }) => theme.colors.LIGHT_BLUE_200};
+    background-color: ${lightColor.focusBorder};
     @media only screen and (min-width: 62.5rem) {
-      font-size: 1.25rem;
+      ${typographyStyles.p}
     }
   }
 
   &:active {
     font-weight: 400;
-    color: ${({ theme }) => theme.colors.BLUE_100};
+    color: ${lightColor.active};
     @media only screen and (min-width: 62.5rem) {
-      font-size: 1.25rem;
+      ${typographyStyles.p}
     }
   }
 
   &:disabled {
     font-style: italic;
     font-weight: 300;
-    color: ${({ theme }) => theme.colors.GREYSCALE_GREY};
+    color: ${lightColor.disabled};
     @media only screen and (min-width: 62.5rem) {
-      font-size: 1.25rem;
+      ${typographyStyles.p}
     }
   }
 `;
