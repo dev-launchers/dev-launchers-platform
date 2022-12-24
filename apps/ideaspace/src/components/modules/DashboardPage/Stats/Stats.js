@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-    StatSection,
-    StatsBox,
-    StatsTitle,
-    StatsCount,
-} from './StyledStats';
+import { atoms } from '@devlaunchers/components/src/components';
 
 const Stats = ({
     totalData,
@@ -19,17 +14,24 @@ const Stats = ({
     }, [totalData]);
 
     return (
-        <StatSection>
-            <StatsBox>
-                <StatsTitle>Ideas Created</StatsTitle>
-                <StatsCount>{ideaStats}</StatsCount>
-            </StatsBox>
-            <StatsBox>
-                <StatsTitle>Total Comments</StatsTitle>
-                <StatsCount>{commentStats}</StatsCount>
-            </StatsBox>
-        </StatSection>
-
+        <atoms.Box flexWrap='wrap' style={{rowGap: '1rem', columnGap: '4rem'}}>
+            <atoms.Layer type="white" style={{marginTop: '1rem'}}>
+                <atoms.Typography type='p' style={{fontSize: '1.4rem', margin: '1.5rem 1.9rem', textAlign: 'left'}}>
+                    Ideas Created
+                </atoms.Typography>
+                <atoms.Typography type='p' style={{fontSize: '4rem', fontWeight: '700', lineHeight: '4rem', textAlign: 'left', margin: '2rem 1.7rem'}}>
+                    {ideaStats}
+                </atoms.Typography>
+            </atoms.Layer>
+            <atoms.Layer type="white" style={{marginTop: '1rem'}}>
+                <atoms.Typography type='pLarge' style={{fontSize: '1.4rem', margin: '1.5rem 1.9rem', textAlign: 'left'}}>
+                    Total Comments
+                </atoms.Typography>
+                <atoms.Typography type='p' style={{fontSize: '4rem', fontWeight: '700', lineHeight: '4rem', textAlign: 'left', margin: '2rem 1.7rem'}}>
+                    {commentStats}
+                </atoms.Typography>
+            </atoms.Layer>
+        </atoms.Box>
     );
 };
 

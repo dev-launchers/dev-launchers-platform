@@ -1,92 +1,59 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../common/SignInButton/SignInButton';
 import Vector from '../../../images/Vector.svg';
-import RainbowBar from '../../../../../website/src/components/common/RainbowBar';
+
+import { Field, Form, Formik, FormikHelpers } from 'formik';
+import * as Yup from 'yup';
+import { atoms, organisms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
-  Headline,
-  Headline1,
-  Description,
-  Wrapper,
-  FormWrapper,
-  SectionName,
-  Line,
-  Form,
-  Notice,
-  SubmitArea,
-  Checkbox,
-  Submit,
+  SignInWrapper,
   GoBack,
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
-  //const { userData, isAuthenticated } = useUserDataContext();
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
+
   const router = useRouter();
-
-  const [selected, setSelected] = useState('form');
   const [sending, setSending] = useState(false);
-
-  const [hourCommitmentMin, setHourCommitmentMin] = useState(0);
-  const [hourCommitmentMax, setHourCommitmentMax] = useState(0);
-  const [skills, setSkills] = useState([
-    { skill: 'Web Developer' },
-    { skill: 'AI / ML' },
-  ]);
-  const [openPositions, setOpenPositions] = useState([
-    {
-      title: 'Developer, UX/UX',
-      description: 'Lots of programing',
-      isHidden: false,
-    },
-  ]);
-
-  const [difficultyLevel, setDifficultyLevel] = useState('Beginner');
-
-  const [ideaName, setIdeaName] = useState('');
-  const [tagline, setTagline] = useState('');
-  const [description, setDescription] = useState('');
-  const [targetAudience, setTargetAudience] = useState('');
-  const [features, setFeatures] = useState('');
-  const [experience, setExperience] = useState('');
-  const [anythingElse, setAnythingElse] = useState('');
 
   const goBack = () => {
     window.history.back(-1);
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    setSending(true);
-    // i don't think we need the date stuff?
-    // get request of test posts still have a date
-    // let currentTime =  new Date().toLocaleDateString('en-US');
-    // this.setState({timeStamp: currentTime});
+  const initialValues = {
+    ideaName: '',
+    tagline: '',
+    description: '',
+    targetAudience: '',
+    features: '',
+    experience: '',
+    extraInfo: '',
+    hourCommitmentMin: 0,
+    hourCommitmentMax: 0,
+    difficultyLevel: 'Beginner',
+  };
 
-    var state = {
-      ideaName: ideaName,
-      tagline: tagline,
-      description: description,
-      targetAudience: targetAudience,
-      hourCommitmentMin: hourCommitmentMin,
-      hourCommitmentMax: hourCommitmentMax,
-      skills: skills,
-      openPositions: openPositions,
-      difficultyLevel: difficultyLevel,
-      features: features,
-      experience: experience,
-      anythingElse: anythingElse,
-    };
+  const SignupSchema = Yup.object().shape({
+    ideaName: Yup.string().required('Idea Name is Required.'),
+    description: Yup.string().required('Idea Description is Required.'),
+    experience: Yup.string().required('Experience is Required.'),
+    features: Yup.string().required('Idea Feature is Required.'),
+  });
+
+  const submitHandler = async (values) => {
+    //e.preventDefault();
+    setSending(true);
 
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
-      state
+      values
     );
 
     if (res.status === 200) {
@@ -97,179 +64,184 @@ function SubmissionForm() {
     }
   };
 
-  // const handleClick = (e, n) => {
-  // setHourCommitmentMax(e);
-  //   setSelected(n)
-  // }
 
   return (
-    <div>
-
+    <>
+      <HeadWapper>
+        <atoms.Layer hasRainbow style={{ width: '17.7rem', margin: 'auto' }}>
+          <atoms.Typography type='h1' style={{ fontSize: '4rem', }}>
+            IdeaSpace
+          </atoms.Typography>
+        </atoms.Layer>
+        <GoBack onClick={goBack}>
+          <img alt='submit_image' src={Vector} />
+          Back
+        </GoBack>
+        <atoms.Typography type='h4' >
+          Have an idea for a development project?<br />
+          Share your idea with us!
+        </atoms.Typography>
+      </HeadWapper>
 
       {!isAuthenticated ? (
-        <div>
-          <Headline1>Dev Ideas</Headline1>
-          <p>
-            Have an idea for a development project?<br />
-            Share your idea with us!<br />
-          </p>
-          <Wrapper>
-            <div
-              style={{
-                color: 'white',
-              }}
+        <SignInWrapper>
+          <atoms.Box flexDirection='column'>Please sign in to submit your idea!</atoms.Box>
+          <br />
+          {/*<SignInButton redirectUrl='https://devlaunchers.org/ideaspace/submit' />*/}
+          <Link href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=https://devlaunchers.org/ideaspace/submit'}>
+            <atoms.Button
+              buttonSize='standard'
+              buttonType='primary'
             >
-              <div>Please sign in to submit your idea!</div>
-              <br />
-              <div>
-                <SignInButton redirectUrl="https://devlaunchers.org/ideaspace/submit" />
-              </div>
-            </div>
-          </Wrapper>
-        </div>
+              Sign in
+            </atoms.Button>
+          </Link>
+        </SignInWrapper>
       ) : (
-        <div>
-          <HeadWapper>
-            <Headline>IdeaSpace</Headline>
-            <GoBack onClick={goBack}>
-              <img alt="submit_image" src={Vector} />
-              Back
-            </GoBack>
-            <div style={{ marginLeft: "calc(50% - 7rem)" }}>
-              <RainbowBar height=".3rem" width="14rem" />
-            </div>
-            <Description>
-              Have an idea for a development project?<br />
-              Share your idea with us!<br />
-            </Description>
-          </HeadWapper>
+        <atoms.Box margin='1rem'>
+          <Formik
+            initialValues={initialValues}
+            validationSchema={SignupSchema}
+            onSubmit={submitHandler}
+          >
 
-          <FormWrapper>
-            <SectionName>Idea Info</SectionName>
-            <Line />
+            {({ errors, setFieldValue, touched }) => (
+              <Form
+                style={{
+                  maxWidth: '36rem',
+                  margin: '1.5rem auto 1.5rem',
+                  padding: '2rem',
+                  textAlign: 'left',
+                  borderRadius: 32,
+                  backgroundColor: 'white',
+                }}
+              >
+                <atoms.Typography type='h4' style={{
+                  maxWidth: '37rem',
+                  margin: '1rem auto 2.5rem',
+                  textAlign: 'left',
+                }}>
+                  Idea Submission
+                </atoms.Typography>
 
-            <Form onSubmit={submitHandler}>
-              <div>
-                <p>Idea Name<span>&nbsp;*</span></p>
-                <input
-                  required
-                  type="text"
-                  name="ideaName"
-                  value={ideaName}
-                  placeholder="Your Product Name"
-                  onChange={(e) => setIdeaName(e.target.value)}
-                />
-              </div>
+                <atoms.Box
+                  flexDirection='column'
+                  gap='2rem'
+                >
+                  <atoms.Box maxWidth='20rem' flexDirection='column'>
+                    <Field
+                      required
+                      as={organisms.FormField}
+                      label='Idea Name&nbsp;'
+                      placeholder='Your Product Name'
+                      id='ideaName'
+                      name='ideaName'
+                      touched={touched['ideaName']}
+                      error={errors.ideaName}
+                    />
+                  </atoms.Box>
+                  <atoms.Box flexDirection='column'>
+                    <Field
+                      required
+                      as={organisms.OpenResponse}
+                      label='What is your idea?&nbsp;'
+                      placeholder='What is your product idea? Would it be helpful or fun? Who would use it and why?'
+                      id='description'
+                      name='description'
+                      touched={touched['description']}
+                      error={errors.description}
+                      cols={50}
+                      rows={5}
+                    />
+                  </atoms.Box>
+                  <atoms.Box flexDirection='column'>
+                    <Field
+                      required
+                      as={organisms.OpenResponse}
+                      label='Do you have any relevant experience in Development or design?&nbsp;'
+                      placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Devlaunchers and won't be publicly shown in the workshopping page."
+                      id='experience'
+                      name='experience'
+                      touched={touched['experience']}
+                      error={errors.experience}
+                      cols={50}
+                      rows={5}
+                    />
+                  </atoms.Box>
+                  <atoms.Box flexDirection='column'>
+                    <Field
+                      as={organisms.OpenResponse}
+                      label='who do you think your idea is helpful to?'
+                      placeholder='Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc.'
+                      id='targetAudience'
+                      name='targetAudience'
+                      cols={50}
+                      rows={5}
+                    />
+                  </atoms.Box>
+                  <atoms.Box flexDirection='column'>
+                    <Field
+                      required
+                      as={organisms.OpenResponse}
+                      label='What Features would your Product have?&nbsp;'
+                      placeholder='A list of possible features your product could have.'
+                      id='features'
+                      name='features'
+                      touched={touched['features']}
+                      error={errors.features}
+                      cols={50}
+                      rows={5}
+                    />
+                  </atoms.Box>
+                  <Field
+                    as={organisms.OpenResponse}
+                    label='Anything else you would like to share with us?'
+                    placeholder='Want to share something else not listed above?'
+                    id='extraInfo'
+                    name='extraInfo'
+                    cols={50}
+                    rows={5}
+                  />
+                  <Field
+                    as={organisms.FormField}
+                    label='Do you have a catchy tagline for this idea submission?'
+                    placeholder='Your Tagline'
+                    id='tagline'
+                    name='tagline'
+                  />
 
-              <div>
-                <p>What is your idea?<span>&nbsp;*</span></p>
-                <textarea
-                  required
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                  }}
-                  name="description"
-                  value={description}
-                  placeholder="What is your product idea? Would it be helpful or fun? Who would use it and why?"
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
+                  <atoms.Typography type='p' style={{ marginTop: '0.5rem', }}>
+                    After submitting your idea will be reviewed and enter the workshopping stage!
+                  </atoms.Typography>
 
-              <div>
-                <p>Do you have any relevant experience in Development or design?<span>&nbsp;*</span></p>
-                <textarea
-                  required
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                  }}
-                  name="experience"
-                  value={experience}
-                  placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Devlaunchers and won't be publicly shown in the workshopping page."
-                  onChange={(e) => setExperience(e.target.value)}
-                />
-              </div>
+                  {/*
+                  <atoms.Box style={{ fontSize: '1rem', }}>
+                    <atoms.Checkbox
+                      label='I have read and agree to the <a>Terms and Conditions</a>.'
+                      disabled={false}
+                      required
+                    />
+                  </atoms.Box>*/}
 
-              <div>
-                <p>who do you think your idea is helpful to?</p>
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                  }}
-                  name="targetAudience"
-                  value={targetAudience}
-                  placeholder="Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc."
-                  onChange={(e) => setTargetAudience(e.target.value)}
-                />
-              </div>
+                  <atoms.Box style={{ justifyContent: 'flex-end' }}>
+                    <atoms.Button
+                      buttonSize='standard'
+                      buttonType='primary'
+                      type='submit'
+                    >
+                      {' '}
+                      {sending === true ? 'Wait' : 'Submit'}{' '}
+                    </atoms.Button>
+                  </atoms.Box>
 
-              <div>
-                <p>What Features would your Product have?<span>&nbsp;*</span></p>
-                <textarea
-                  required
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                  }}
-                  name="features"
-                  value={features}
-                  placeholder="A list of possible features your product could have."
-                  onChange={(e) => setFeatures(e.target.value)}
-                />
-              </div>
+                </atoms.Box>
 
-              <div>
-                <p>Anything else you would like to share with us?</p>
-                <textarea
-                  onKeyUp={(e) => {
-                    e.target.style.height = 'inherit';
-                    e.target.style.height = `${e.target.scrollHeight}px`;
-                  }}
-                  name="anythingElse"
-                  value={anythingElse}
-                  placeholder="Want to share something else not listed above?"
-                  onChange={(e) => setAnythingElse(e.target.value)}
-                />
-              </div>
-
-              <div>
-                <p>Do you have a catchy tagline for this idea submission?</p>
-                <input
-                  type="text"
-                  name="tagline"
-                  value={tagline}
-                  placeholder="Your Tagline"
-                  onChange={(e) => setTagline(e.target.value)}
-                />
-              </div>
-
-              <Notice>
-                After submitting your idea will be reviewed and enter the workshopping stage!
-              </Notice>
-
-              <SubmitArea>
-                {/*<Checkbox>
-                <input
-                  required
-                  type="checkbox"
-                  name="checkbox"
-                  value="checkbox" />
-                <span>I have read and agree to the <a href="browse">Terms and Conditions</a>.</span>
-              </Checkbox>*/}
-                <Submit type="submit">
-                  {' '}
-                  {sending === true ? 'Wait' : 'Submit Idea'}{' '}
-                </Submit>
-              </SubmitArea>
-
-            </Form>
-          </FormWrapper>
-        </div>
+              </Form>
+            )}
+          </Formik>
+        </atoms.Box>
       )}
-      <br />
-    </div>
+    </>
   );
 
 }

@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-export const CardWapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Button = styled.button`
+export const ImgButton = styled.button`
   cursor: pointer;
   border: 0 none;
   padding: 0;
@@ -13,35 +8,26 @@ export const Button = styled.button`
   width: 360px;
   height: 270px;
   @media (max-width: 424px) {
-    width: 92%;
-    height: 92%;
+    width: 100%;
+    height: 100%;
   }
 `;
 
-export const EditButton = styled.button`
-cursor: pointer;
-border: 0 none;
-
-width: 108px;
-height: 40px;
-background: #295774;
-border-radius: 8px;
-
-font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-text-align: center;
-text-transform: uppercase;
-color: #FFFFFF;
+export const IdeaInfo = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+align-content: center;
+justify-content: space-between;
+align-items: center;
+margin-top: 1.5rem;
 `;
 
 export const IdeaName = styled.div`
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 22px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -52,31 +38,6 @@ export const IdeaName = styled.div`
   @media (max-width: 424px) {
     width: calc(100% - 120px);
   }
-`;
-
-export const IdeaComments = styled.div`
-  font-family: 'Nunito Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
-  color: #1C1C1C;
-  text-align: left;
-  margin-top: 16px;
-`;
-
-export const IdeaInfo = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-content: center;
-justify-content: space-between;
-align-items: center;
-margin-top: 21px;
-
-@media (max-width: 424px) {
-  width: 92%;
-}
 `;
 
 export const StatuBox = styled.span`

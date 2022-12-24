@@ -10,22 +10,16 @@ import IdeaCard from './IdeaCard/IdeaCard'
 import submitImage from "../../../images/submitButton.svg";
 import Link from 'next/link';
 import RainbowBar from '../../../../../website/src/components/common/RainbowBar';
+import { atoms, organisms } from '@devlaunchers/components/src/components';
 
 import {
-  PageWrapper,
-  Title,
-  RainbowArea,
-  StyledRanbow,
-  Slogan,
-  SectionTitle,
-  IdeaCardWrapper,
-  SorterDiv,
-  Button,
-  CardWapper,
+  HeadWapper,
   Headline,
-  Description,
-  Container,
-  Wrapper
+  StyledRanbow,
+  SignInWrapper,
+  PageWrapper,
+  IdeaCardWrapper,
+  SubmitButton,
 } from './StyledDashboardPage';
 
 
@@ -33,7 +27,7 @@ function DashboardPage() {
 
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
   //console.log("dashpage", userData);
-  //if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
@@ -41,7 +35,7 @@ function DashboardPage() {
   const [sortedCards, setSortedCards] = React.useState([]);
 
 
-  const dropDownStyle = { width: "13rem", borderRadius: "8px", padding: "6px 8px", fontSize: "17px", outline: "none" };
+  const dropDownStyle = { width: "13rem", borderRadius: "8px", padding: "6px 8px", fontSize: "1rem", outline: "none", marginTop: '1rem' };
   const defaultOptions = [<option key='-1'>Sort By</option>];
   const sortingConfigs = [
     {
@@ -93,51 +87,49 @@ function DashboardPage() {
   }, [sourceCards, userData]);
 
   return (
-    <div>
-      {!isAuthenticated ?
-        <div>
-          <Headline>Dev Ideas</Headline>
-          <Description>
-            Everything about your ideas in one place.<br />
-          </Description>
-          <Wrapper>
-            <div style={{ color: "white" }}>Please sign in to view your dashboard!</div>
-            <br />
-            <div><SignInButton redirectUrl="https://devlaunchers.org/ideaspace/dashboard" /></div>
-          </Wrapper>
+    <>
+      <HeadWapper>
+        <Headline>IdeaSpace Dashboard</Headline>
+        <StyledRanbow>
+          <RainbowBar width="100%" height="5px" />
+        </StyledRanbow>
+        <atoms.Typography type='h4' >
+          Everything about your ideas in one place.
+        </atoms.Typography>
+      </HeadWapper>
+
+      {!isAuthenticated ? (
+        <SignInWrapper>
+          <atoms.Box flexDirection='column'>Please sign in to submit your idea!</atoms.Box>
           <br />
-        </div>
-        :
+          <Link href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=https://devlaunchers.org/ideaspace/submit'}>
+            <atoms.Button
+              buttonSize='standard'
+              buttonType='primary'
+            >
+              Sign in
+            </atoms.Button>
+          </Link>
+        </SignInWrapper>
+      ) : (
         <PageWrapper>
           {loading === true ? (
             <CircularIndeterminateLoader text="Loading..." color="black" />
           ) : (
-            <Grid container rowSpacing={{ xs: 8, sm: 16 }}>
-
-              <Grid item sm={12} md={12} lg={12}>
-                <Title>IdeaSpace Dashboard</Title>
-                <RainbowArea>
-                  <StyledRanbow>
-                    <RainbowBar width="100%" />
-                  </StyledRanbow>
-                </RainbowArea>
-                <Slogan>Everything about your ideas in one place.</Slogan>
-              </Grid>
-
-
-              <Grid item sm={12} md={12} lg={12}>
-                <SectionTitle>My Stats</SectionTitle>
+            <>
+              <atoms.Box flexDirection='column'>
+                <atoms.Typography type='h4' style={{ textAlign: 'left' }}>My Stats</atoms.Typography>
                 <Stats
                   totalData={cards}
                 />
-              </Grid>
+              </atoms.Box>
 
-              <Grid container item sm={12} md={12} lg={12} columnSpacing={6} rowSpacing={4}>
-                <Grid item sm={6} md={6} lg={4}>
-                  <SectionTitle>My Ideas</SectionTitle>
+              <Grid container style={{ marginTop: '2rem' }} rowSpacing={2}>
+                <Grid item xs={6} lg={4}>
+                  <atoms.Typography type='h4' style={{ textAlign: 'left' }}>My Ideas</atoms.Typography>
                 </Grid>
-                <Grid item sm={6} md={6} lg={8}>
-                  <SorterDiv>
+                <Grid item xs={6} lg={8}>
+                  <atoms.Box flexDirection='column' alignItems='flex-end' float='right'>
                     <SortableDropdown
                       sortingConfigs={sortingConfigs}
                       elements={cards}
@@ -145,7 +137,7 @@ function DashboardPage() {
                       handleSetSortedElements={setSortedCards}
                       style={dropDownStyle}
                     />
-                  </SorterDiv>
+                  </atoms.Box>
                 </Grid>
 
                 <Grid item sm={12} md={12} lg={12}>
@@ -160,27 +152,28 @@ function DashboardPage() {
                     })
                     }
 
-                    <CardWapper key="submitButton">
+                    <atoms.Box flexDirection='column'>
                       <Link href="/ideaspace/submit">
-                        <Button>
+                        <SubmitButton style={{ cursor: 'pointer' }}>
                           <img
                             alt="submit_image"
                             src={submitImage}
                             style={{ width: "100%", height: "100%" }}
                           />
-                        </Button>
+                        </SubmitButton>
                       </Link>
-                    </CardWapper>
+                    </atoms.Box>
                   </IdeaCardWrapper>
                 </Grid>
 
 
               </Grid>
-            </Grid>
+            </>
           )}
         </PageWrapper>
+      )
       }
-    </div>
+    </>
   );
 }
 

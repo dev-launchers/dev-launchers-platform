@@ -1,21 +1,19 @@
 import React from 'react'
 import Link from 'next/link';
+import { atoms, organisms } from '@devlaunchers/components/src/components';
 import {
-  CardWapper,
-  Button,
+  ImgButton,
   IdeaInfo,
   IdeaName,
-  EditButton,
-  IdeaComments,
   StatuBox,
 } from './StyledIdeaCard';
 
 function IdeaCard({ cards }) {
   return (
-    <CardWapper>
+    <atoms.Box flexDirection='column'>
 
       <Link href={`/ideaspace/workshop/${cards.id}`}>
-        <Button>
+        <ImgButton>
           <img
             alt="idea_image"
             src={`https://picsum.photos/seed/${cards.id}/360/270?random=${cards.id}`}
@@ -27,18 +25,30 @@ function IdeaCard({ cards }) {
           ) : (
             <StatuBox style={{background: "#FFD580",}}>pending</StatuBox>
           )*/}
-        </Button>
+        </ImgButton>
       </Link>
 
       <IdeaInfo>
         <IdeaName>{cards.ideaName}</IdeaName>
-        {/*<Link href={`/ideas/workshop/${cards.id}`}><EditButton>EDIT IDEA</EditButton></Link>*/}
+        {/* 
+        <Link href={`/ideaspace/workshop/${cards.id}`}>
+          <atoms.Button
+              buttonSize='standard'
+              buttonType='primary'
+            >
+              EDIT DATA
+            </atoms.Button>
+        </Link>
+        */}
       </IdeaInfo>
+
       {cards.comments.length > 0 ? (
-        <IdeaComments>Comments:&nbsp;{cards.comments.length}</IdeaComments>
+        <atoms.Typography type='h4' style={{fontSize: '18px', textAlign: 'left', margin: '0'}}>
+          Comments:&nbsp;{cards.comments.length}
+        </atoms.Typography>
       ) : ('')}
 
-    </CardWapper>
+    </atoms.Box>
   )
 }
 
