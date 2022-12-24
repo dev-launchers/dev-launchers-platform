@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import SignInButton from '../../common/SignInButton/SignInButton';
+import SignInSection from '../../common/SignInSection/SignInSection';
 import Vector from '../../../images/Vector.svg';
 
 import { Field, Form, Formik, FormikHelpers } from 'formik';
@@ -12,7 +11,6 @@ import { atoms, organisms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
-  SignInWrapper,
   GoBack,
 } from './StyledSubmissionForm';
 
@@ -84,19 +82,10 @@ function SubmissionForm() {
       </HeadWapper>
 
       {!isAuthenticated ? (
-        <SignInWrapper>
-          <atoms.Box flexDirection='column'>Please sign in to submit your idea!</atoms.Box>
-          <br />
-          {/*<SignInButton redirectUrl='https://devlaunchers.org/ideaspace/submit' />*/}
-          <Link href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=https://devlaunchers.org/ideaspace/submit'}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='primary'
-            >
-              Sign in
-            </atoms.Button>
-          </Link>
-        </SignInWrapper>
+        <SignInSection 
+          label='Please sign in to submit your idea!'
+          redirectURL='https://devlaunchers.org/ideaspace/submit'
+        />
       ) : (
         <atoms.Box margin='1rem'>
           <Formik

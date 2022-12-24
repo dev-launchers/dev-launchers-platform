@@ -2,7 +2,7 @@ import React from 'react'
 import axios from "axios";
 import Grid from '@mui/material/Grid';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import SignInButton from "../../common/SignInButton/SignInButton";
+import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
 import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
@@ -10,13 +10,12 @@ import IdeaCard from './IdeaCard/IdeaCard'
 import submitImage from "../../../images/submitButton.svg";
 import Link from 'next/link';
 import RainbowBar from '../../../../../website/src/components/common/RainbowBar';
-import { atoms, organisms } from '@devlaunchers/components/src/components';
+import { atoms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
   Headline,
   StyledRanbow,
-  SignInWrapper,
   PageWrapper,
   IdeaCardWrapper,
   SubmitButton,
@@ -33,7 +32,6 @@ function DashboardPage() {
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
   const [sortedCards, setSortedCards] = React.useState([]);
-
 
   const dropDownStyle = { width: "13rem", borderRadius: "8px", padding: "6px 8px", fontSize: "1rem", outline: "none", marginTop: '1rem' };
   const defaultOptions = [<option key='-1'>Sort By</option>];
@@ -99,18 +97,10 @@ function DashboardPage() {
       </HeadWapper>
 
       {!isAuthenticated ? (
-        <SignInWrapper>
-          <atoms.Box flexDirection='column'>Please sign in to submit your idea!</atoms.Box>
-          <br />
-          <Link href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=https://devlaunchers.org/ideaspace/submit'}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='primary'
-            >
-              Sign in
-            </atoms.Button>
-          </Link>
-        </SignInWrapper>
+        <SignInSection
+          label='Please sign in to view your dashboard!'
+          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+        />
       ) : (
         <PageWrapper>
           {loading === true ? (
