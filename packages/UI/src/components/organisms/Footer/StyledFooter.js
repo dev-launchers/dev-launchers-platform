@@ -54,6 +54,7 @@ export const FooterNav = styled.div`
   min-width: 450px;
   width: 50%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;

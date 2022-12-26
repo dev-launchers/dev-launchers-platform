@@ -52,8 +52,8 @@ export const Input = styled.input`
       border-radius: 16px;
       background: black;
       position: absolute;
-      left: 20px;
-      top: 12px;
+      margin-top: 2px;
+      margin-left: 2px;
     }
   }
 
