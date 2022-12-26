@@ -16,6 +16,7 @@ export const MobileNav = styled.div`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   ${paddingStyles.comPad200};
   width: 100%;
+  height: 100%;
 `;
 
 export const HamburgerWrapper = styled.div`
@@ -30,12 +31,12 @@ export const HamburgerWrapper = styled.div`
   }
 
   .burgerButton {
-    position: fixed;
     min-height: 44.8px;
     min-width: 44.8px;
-    right: 40.32px;
+    right: 4%;
     display: none; /* Only display on mobile */
-    top: 26.88px;
+    top: 1%;
+    position: absolute;
     span {
       &:nth-child(1) {
         top: 10% !important;
@@ -44,6 +45,11 @@ export const HamburgerWrapper = styled.div`
         top: 45% !important;
       }
     }
+  }
+  .crossButton {
+    right: 24px !important;
+    width: fit-content !important;
+    height: fit-content !important;
   }
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg}px) {
     .burgerButton {

@@ -1,6 +1,8 @@
-import Head from "next/head";
-import ConfirmationPage from "../components/modules/ConfirmationPage/confirmationPage";
-import BoxContainer from "../components/common/BoxContainer";
+import Head from 'next/head';
+import ConfirmationPage from '../components/modules/ConfirmationPage/confirmationPage';
+import BoxContainer from '../components/common/BoxContainer';
+import theme from '../styles/theme';
+import { ThemeProvider } from 'styled-components';
 function confirmation() {
   return (
     <>
@@ -43,9 +45,12 @@ function confirmation() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <BoxContainer bgColor="OuterSpace">
-        <ConfirmationPage />
-      </BoxContainer>
+      {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+      <ThemeProvider theme={theme}>
+        <BoxContainer bgColor="OuterSpace">
+          <ConfirmationPage />
+        </BoxContainer>
+      </ThemeProvider>
     </>
   );
 }

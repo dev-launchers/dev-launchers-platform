@@ -24,8 +24,9 @@ function FormField({
   return (
     <>
       <Label htmlFor={id}>
-        <Typography type="label">{label}</Typography>
-        {required && <span style={{ color: 'red' }}>*</span>}
+        <Typography type="label">
+          {label} {required && <span css={{ color: 'red' }}>*</span>}
+        </Typography>
         <InputWrapper>
           <Input
             width={width}
@@ -40,7 +41,9 @@ function FormField({
             disabled={disabled}
             onChange={onChange}
           />
-          {required && touched && (error ? <Error /> : <Success />)}
+          {/* The field doesn't have to be required for the Error Icon to show.
+           For Example: I want to validate if the url passed is correct but it's not required for them fill. */}
+          {/* required && */ touched && (error ? <Error /> : <Success />)}
         </InputWrapper>
       </Label>
       {error && touched && (

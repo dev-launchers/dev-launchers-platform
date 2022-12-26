@@ -144,5 +144,6 @@ export const typographyStyles = {
 } as const;
 
 export const Text = styled.p<TypographyProps>`
-  ${({ type }) => eval(type)};
+  ${({ type }) => eval(type || p)};
+  text-align: ${({ textAlign }) => textAlign};
 `;
