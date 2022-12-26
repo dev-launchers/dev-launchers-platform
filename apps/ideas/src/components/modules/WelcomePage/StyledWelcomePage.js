@@ -3,9 +3,10 @@ import Link from 'next/link';
 
 export const ButtonArea = styled.div`
   width: 100%;
-  height: 50vh;
+  min-height: 50vh;
+  height: 1px;
   max-width: 1700px;
-  max-height: 500px;
+  //max-height: 500px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -19,7 +20,7 @@ export const ButtonArea = styled.div`
     justify-content: space-around;
     align-items: center;
     width: 80%;
-    height: 60vh;
+    min-height: 60vh;
   }
 `;
 
@@ -37,6 +38,7 @@ export const Button = styled.button`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -65,3 +67,13 @@ export const Description = styled.p`
   color: black;
   text-align: center;
 `;
+
+
+export const WelcomeNavigationButtonImage = styled.img`
+  height: 70%;
+
+  @media (orientation: portrait) {
+    height: 30vw;
+  }
+`;
+
