@@ -109,8 +109,8 @@ function CommentForm(props) {
           ></textarea>
           {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
           <div id="the-count">
-            <p><span id="chars-left">{charsLeft}</span></p>
-            <p><span id="chars-leftToMin">{charsCount}</span></p>
+            <p id="chars-left">{charsLeft}</p>
+            <p id="chars-leftToMin">{charsCount}</p>
           </div>
         </UserComment>
         <button type="submit">Submit</button>
