@@ -109,7 +109,7 @@ function DashboardPage() {
           {loading === true ? (
             <CircularIndeterminateLoader text="Loading..." color="black" />
           ) : (
-            <Grid container rowSpacing={7}>
+            <Grid container rowSpacing={7} style={{margin:0}}> 
 
               <Grid item sm={12} md={12} lg={12}>
                 <Title>IdeaSpace Dashboard</Title>
