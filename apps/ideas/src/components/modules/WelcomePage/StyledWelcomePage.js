@@ -87,10 +87,11 @@ export const BackgroundImage = styled.img`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 100%;
+  width: 20%;
   height: 80%;
-  display: flex;
-  flex-direction: column;
+  max-height: 80%;
+  display: inline-grid;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   /* background: #C4C4C4; */

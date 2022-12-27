@@ -35,13 +35,34 @@ const phraseGenerator = async () => (
   <div>{await fetchIdea(modelParameters)}</div>
 );
 
-export default function AppIdeaGeneratorButton({
-  style,
-  buttonContent = 'Generate an Idea!',
-}) {
+const generateIdeaButtonContent = (
+  <div>
+    <div
+      style={{
+        color: 'white',
+        width: '100%',
+        border: 'solid',
+        borderTop: 0,
+        borderLeft: 0,
+        borderRight: 0,
+      }}
+    >
+      Generate an Idea
+    </div>
+    <div style={{ paddingTop: '9%' }}>
+      Want to generate Ideas for you? Use machine learning to generate an idea
+      to get you started!
+    </div>
+    <div style={{ textAlign: 'right', paddingTop: '1%' }}>
+      <p style={{ color: 'white' }}>CONTINUE &#8594;</p>
+    </div>
+  </div>
+);
+
+export default function AppIdeaGeneratorButton({ style, showExtendedContent }) {
   return (
     <IdeaGeneratorButton style={style} contentGenerator={phraseGenerator}>
-      {buttonContent}
+      {generateIdeaButtonContent}
     </IdeaGeneratorButton>
   );
 }

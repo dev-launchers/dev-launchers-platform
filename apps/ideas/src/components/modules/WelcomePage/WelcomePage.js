@@ -3,7 +3,7 @@ import './WelcomePage.css';
 //import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 
-import RainbowBar from '../../common/RainbowBar';
+import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
 import Image from 'next/image';
 
 import handWithLightbulbImage from '../../../images/submit-image.png';
@@ -24,21 +24,6 @@ import {
 import { flexbox } from '@mui/system';
 
 function WelcomePage() {
-  const generateIdeaButtonContent = (
-    <div>
-      <div>
-        <u>Generate an Idea</u>
-      </div>
-      <div style={{ paddingTop: '6%' }}>
-        Want to generate Ideas for you? Use machine learning to generate an idea
-        to get you started!
-      </div>
-      <div style={{ paddingTop: '26%', textAlign: 'right' }}>
-        CONTINUE &#8594;
-      </div>
-    </div>
-  );
-
   // return (
   //   <Grid container spacing={2}>
   //     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -110,6 +95,8 @@ function WelcomePage() {
               <div
                 style={{
                   height: '100%',
+                  minHeight: '300px',
+                  maxHeight: '300px',
                   display: 'inline',
                   background: `linear-gradient( rgba(255,127,14, 0.9), rgba(255,127,14, 0.9)), url(${bulletinBoardPostItImage})`,
                   backgroundSize: 'cover',
@@ -118,24 +105,28 @@ function WelcomePage() {
                   overflow: 'initial',
                 }}
               >
-                <u
+                <div
                   style={{
                     color: 'white',
                     width: '100%',
+                    border: 'solid',
+                    borderTop: 0,
+                    borderLeft: 0,
+                    borderRight: 0,
                   }}
                 >
                   Submit Your Idea
-                </u>
+                </div>
                 <p style={{ color: 'white' }}>
                   Have an idea for development? Turn your idea into a product
-                  through community.
+                  through the community.
                 </p>
                 <div
                   style={{
                     textAlign: 'right',
                     position: 'relative',
-                    paddingTop: '20%',
                     paddingRight: '2%',
+                    paddingTop: '1%',
                   }}
                 >
                   <p style={{ color: 'white' }}>CONTINUE &#8594;</p>
@@ -143,31 +134,36 @@ function WelcomePage() {
               </div>
             </StyledLink>
           </ButtonWrapper>
-
           <ButtonWrapper
             style={{
-              backgroundColor: '#3A7CA5',
+              backgroundColor: '#FFAB00',
             }}
           >
             <StyledLink href="/ideas/browse">
               <div
                 style={{
                   height: '100%',
+                  minHeight: '300px',
+                  maxHeight: '300px',
                   display: 'inline',
-                  background: `linear-gradient( rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${helpButtonImage})`,
+                  background: `linear-gradient( rgba(255,171,0, 0.9), rgba(255,171,0, 0.9)), url(${helpButtonImage})`,
                   backgroundSize: 'cover',
                   borderRadius: '30px',
                   alignContent: 'center',
                 }}
               >
-                <u
+                <div
                   style={{
                     color: 'white',
                     width: '100%',
+                    border: 'solid',
+                    borderTop: 0,
+                    borderLeft: 0,
+                    borderRight: 0,
                   }}
                 >
                   Help Existing Idea
-                </u>
+                </div>
                 <p style={{ color: 'white' }}>
                   Want to help developing an idea? Check out ideas submitted by
                   other Dev Launchers!
@@ -176,7 +172,6 @@ function WelcomePage() {
                   style={{
                     textAlign: 'right',
                     position: 'relative',
-                    paddingTop: '13%',
                     paddingRight: '2%',
                   }}
                 >
@@ -188,19 +183,23 @@ function WelcomePage() {
 
           <ButtonWrapper
             style={{
-              background: '#FFAB00',
+              background: '#3A7CA5',
+              display: 'inline-flex',
             }}
           >
             <AppIdeaGeneratorButton
               style={{
                 background: '#FFAB00',
+                height: '100%',
                 width: '100%',
-                background: `linear-gradient( rgba(255,171,0, 0.9), rgba(255,171,0, 0.9)), url(${handWithLightbulbImage})`,
+                minHeight: '300px',
+                maxHeight: '300px',
+                background: `linear-gradient( rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${handWithLightbulbImage})`,
                 backgroundSize: '100% 100%',
                 backgroundRepeat: 'no-repeat',
                 alignItems: 'center',
               }}
-              buttonContent={generateIdeaButtonContent}
+              showExtendedContent
             ></AppIdeaGeneratorButton>
           </ButtonWrapper>
         </ButtonArea>
