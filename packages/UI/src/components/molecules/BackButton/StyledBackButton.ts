@@ -6,14 +6,14 @@ import { typographyStyles } from '../../atoms/Typography';
 
 export const BackButton = styled.a`
   ${typographyStyles['label']}
+  ${shadowStyles.shadow500}
   ${({ type }) =>
     type === 'cancel'
-      ? `${shadowStyles.shadow500}
+      ? `
       ${radiusStyles['radius100']}
       ${paddingStyles['uniPad200']}`
-      : `box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      ${radiusStyles['radius200']}
-      ${paddingStyles['comPad100']}`}
+      : `${radiusStyles['radius200']}
+         ${paddingStyles['comPad100']}`}
   display: inline-flex;
   align-items: center;
   gap: 8px;
