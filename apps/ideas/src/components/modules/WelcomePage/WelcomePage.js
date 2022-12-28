@@ -4,13 +4,13 @@ import './WelcomePage.css';
 import Grid from '@mui/material/Grid';
 
 import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
-import Image from 'next/image';
 
 import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
 import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
 import AppIdeaGeneratorButton from '../IdeaGeneratorButton/AppIdeaGeneratorButton';
+import IdeaspaceNavCard from '../IdeaspaceNavCard';
 
 import {
   Button,
@@ -22,6 +22,14 @@ import {
   ButtonWrapper,
 } from './StyledWelcomePage';
 import { flexbox } from '@mui/system';
+
+const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9)`;
+const submitIdeaCardTitle = `Submit Your Idea`;
+const submitIdeaCardDescription = `Have an idea for development? Turn your idea into a product through community.`;
+
+const helpExistingIdeaCardBackgroundColor = `rgba(255,171,0, 0.9), rgba(255,171,0, 0.9))`;
+const helpExistingIdeaCardTitle = `Help Existing Idea`;
+const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check out ideas submitted by other Dev Launchers!`;
 
 function WelcomePage() {
   // return (
@@ -92,46 +100,12 @@ function WelcomePage() {
             }}
           >
             <StyledLink href="/ideas/submit">
-              <div
-                style={{
-                  height: '100%',
-                  minHeight: '300px',
-                  maxHeight: '300px',
-                  display: 'inline',
-                  background: `linear-gradient( rgba(255,127,14, 0.9), rgba(255,127,14, 0.9)), url(${bulletinBoardPostItImage})`,
-                  backgroundSize: 'cover',
-                  borderRadius: '30px',
-                  alignContent: 'center',
-                  overflow: 'initial',
-                }}
-              >
-                <div
-                  style={{
-                    color: 'white',
-                    width: '100%',
-                    border: 'solid',
-                    borderTop: 0,
-                    borderLeft: 0,
-                    borderRight: 0,
-                  }}
-                >
-                  Submit Your Idea
-                </div>
-                <p style={{ color: 'white' }}>
-                  Have an idea for development? Turn your idea into a product
-                  through the community.
-                </p>
-                <div
-                  style={{
-                    textAlign: 'right',
-                    position: 'relative',
-                    paddingRight: '2%',
-                    paddingTop: '1%',
-                  }}
-                >
-                  <p style={{ color: 'white' }}>CONTINUE &#8594;</p>
-                </div>
-              </div>
+              <IdeaspaceNavCard
+                cardBackgroundColor={submitIdeaCardBackgroundColor}
+                cardBackgroundImage={bulletinBoardPostItImage}
+                cardTitle={submitIdeaCardTitle}
+                cardDescription={submitIdeaCardDescription}
+              />
             </StyledLink>
           </ButtonWrapper>
           <ButtonWrapper
@@ -140,44 +114,12 @@ function WelcomePage() {
             }}
           >
             <StyledLink href="/ideas/browse">
-              <div
-                style={{
-                  height: '100%',
-                  minHeight: '300px',
-                  maxHeight: '300px',
-                  display: 'inline',
-                  background: `linear-gradient( rgba(255,171,0, 0.9), rgba(255,171,0, 0.9)), url(${helpButtonImage})`,
-                  backgroundSize: 'cover',
-                  borderRadius: '30px',
-                  alignContent: 'center',
-                }}
-              >
-                <div
-                  style={{
-                    color: 'white',
-                    width: '100%',
-                    border: 'solid',
-                    borderTop: 0,
-                    borderLeft: 0,
-                    borderRight: 0,
-                  }}
-                >
-                  Help Existing Idea
-                </div>
-                <p style={{ color: 'white' }}>
-                  Want to help developing an idea? Check out ideas submitted by
-                  other Dev Launchers!
-                </p>
-                <div
-                  style={{
-                    textAlign: 'right',
-                    position: 'relative',
-                    paddingRight: '2%',
-                  }}
-                >
-                  <p style={{ color: 'white' }}>CONTINUE &#8594;</p>
-                </div>
-              </div>
+              <IdeaspaceNavCard
+                cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
+                cardBackgroundImage={helpButtonImage}
+                cardTitle={helpExistingIdeaCardTitle}
+                cardDescription={helpExistingIdeaCardDescription}
+              />
             </StyledLink>
           </ButtonWrapper>
 

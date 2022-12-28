@@ -87,7 +87,7 @@ export const BackgroundImage = styled.img`
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 20%;
+  width: 23%;
   height: 80%;
   max-height: 80%;
   display: inline-grid;
