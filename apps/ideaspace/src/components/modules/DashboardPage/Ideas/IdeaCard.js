@@ -1,10 +1,8 @@
 import React from 'react'
 import Link from 'next/link';
-import { atoms, organisms } from '@devlaunchers/components/src/components';
+import { atoms } from '@devlaunchers/components/src/components';
 import {
   ImgButton,
-  IdeaInfo,
-  IdeaName,
   StatuBox,
 } from './StyledIdeaCard';
 
@@ -19,7 +17,7 @@ function IdeaCard({ cards }) {
             src={`https://picsum.photos/seed/${cards.id}/360/270?random=${cards.id}`}
             style={{ width: "100%", height: "100%" }}
           />
-          
+
           {/*cards.statu == "published" ? (
             <StatuBox style={{background: "#C0E1EB",}}>published</StatuBox>
           ) : (
@@ -28,25 +26,30 @@ function IdeaCard({ cards }) {
         </ImgButton>
       </Link>
 
-      <IdeaInfo>
-        <IdeaName>{cards.ideaName}</IdeaName>
-        {/* 
-        <Link href={`/ideaspace/workshop/${cards.id}`}>
+
+      <atoms.Box justifyContent='space-between' alignItems='center' margin='0.5rem 0 0'>
+        <atoms.Typography type='h5' style={{ fontSize: '1.3rem', textAlign: 'left', width: '15rem' }}>
+          {cards.ideaName}
+        </atoms.Typography>
+{/* 
+        <Link href={`/ideaspace/edit/${cards.id}`}>
           <atoms.Button
-              buttonSize='standard'
-              buttonType='primary'
-            >
-              EDIT DATA
-            </atoms.Button>
-        </Link>
-        */}
-      </IdeaInfo>
+            buttonSize='standard'
+            buttonType='primary'
+            style={{ width: '7.2rem' }}
+          >
+            EDIT&nbsp;DATA
+          </atoms.Button>
+        </Link>*/}
+      </atoms.Box>
 
       {cards.comments.length > 0 ? (
-        <atoms.Typography type='h4' style={{fontSize: '18px', textAlign: 'left', margin: '0'}}>
+        <atoms.Typography type='h4' style={{ fontSize: '1.2rem', textAlign: 'left', marginTop: '-1rem' }}>
           Comments:&nbsp;{cards.comments.length}
         </atoms.Typography>
-      ) : ('')}
+      ) : (
+        <br/>
+      )}
 
     </atoms.Box>
   )

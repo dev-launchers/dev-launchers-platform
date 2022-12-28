@@ -35,46 +35,16 @@ export const StyledRanbow = styled.div`
 
 export const PageWrapper = styled.section`
   background-color: #FFFFFF;
-  padding: 0rem calc((100% - 1208px)/2) 5rem calc((100% - 1208px)/2);
+  padding: 0rem calc((100% - 75.5rem)/2) 5rem calc((100% - 75.5rem)/2);
 
   @media (max-width: 1278px) {
-    padding: 0rem calc((100% - 1128px)/2) 5rem calc((100% - 1128px)/2);
+    padding: 0rem calc((100% - 70.5rem)/2) 5rem calc((100% - 70.5rem)/2);
   }
   @media (max-width: 1192px) {
-    padding: 0rem calc((100% - 746px)/2) 5rem calc((100% - 746px)/2);
+    padding: 0rem calc((100% - 46.5rem)/2) 5rem calc((100% - 46.5rem)/2);
   }
   @media (max-width: 810px) {
     padding: 0rem 2rem 5rem 2rem;
   }
 `;
 
-export const IdeaCardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap; 
-  column-gap: 64px;
-  row-gap: 32px;
-
-  @media (max-width: 1278px) {
-    column-gap: 24px;
-  }
-  @media (max-width: 360px) {
-    row-gap: 40px;
-  }
-`;
-
-export const SubmitButton = styled.button`
-width: 100%;
-height: 100%;
-position: relative;
-flex-direction: column;
-overflow: hidden;
-border: 0 none;
-padding: 0;
-background-color: #FFFFFF;
-
-@media (max-width: 424px) {
-  width: 92%;
-  height: 92%;
-}
-`;

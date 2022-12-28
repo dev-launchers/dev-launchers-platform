@@ -2,16 +2,16 @@ import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 
 const Stats = ({
-    totalData,
+    totalCard,
 }) => {
     const [ideaStats, setIdeaStats] = React.useState(0);
     const [commentStats, setCommentStats] = React.useState(0);
 
 
     React.useEffect(() => {
-        setIdeaStats(totalData.length);
-        setCommentStats((totalData.reduce((total, card) => total = total + card.comments.length, 0)));
-    }, [totalData]);
+        setIdeaStats(totalCard.length);
+        setCommentStats((totalCard.reduce((total, card) => total = total + card.comments.length, 0)));
+    }, [totalCard]);
 
     return (
         <atoms.Box flexWrap='wrap' style={{rowGap: '1rem', columnGap: '4rem'}}>
