@@ -27,7 +27,7 @@ function IdeaCard({ cards }) {
       </Link>
 
 
-      <atoms.Box justifyContent='space-between' alignItems='center' margin='0.5rem 0 0'>
+      <atoms.Box justifyContent='space-between' alignItems='center' margin='0.5rem 0 2rem'>
         <atoms.Typography type='h5' style={{ fontSize: '1.3rem', textAlign: 'left', width: '15rem' }}>
           {cards.ideaName}
         </atoms.Typography>
@@ -44,11 +44,11 @@ function IdeaCard({ cards }) {
       </atoms.Box>
 
       {cards.comments.length > 0 ? (
-        <atoms.Typography type='h4' style={{ fontSize: '1.2rem', textAlign: 'left', marginTop: '-1rem' }}>
+        <atoms.Typography type='h4' style={{ fontSize: '1.2rem', textAlign: 'left', marginTop: '-3rem' }}>
           Comments:&nbsp;{cards.comments.length}
         </atoms.Typography>
       ) : (
-        <br/>
+        null
       )}
 
     </atoms.Box>
