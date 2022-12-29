@@ -1,23 +1,18 @@
 import React from 'react';
+import './IdeaspaceNavCard.css';
 
 const IdeaspaceNavCard = ({
   cardBackgroundColor,
   cardBackgroundImage,
   cardTitle,
-  cardDescription,
+  cardDescription
 }) => {
+
   return (
-    <div
+    <div 
+      className="idea-nav-card"
       style={{
-        height: '100%',
-        minHeight: '300px',
-        maxHeight: '300px',
-        display: 'inline',
-        background: `linear-gradient( ${cardBackgroundColor}, url(${cardBackgroundImage})`,
-        backgroundSize: 'cover',
-        borderRadius: '30px',
-        alignContent: 'center',
-        overflow: 'initial',
+        background: `linear-gradient(${cardBackgroundColor}, url(${cardBackgroundImage})`,
       }}
     >
       <div

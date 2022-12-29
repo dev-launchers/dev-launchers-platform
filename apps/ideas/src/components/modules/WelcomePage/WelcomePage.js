@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WelcomePage.css';
-//import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 
 import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
@@ -13,17 +12,14 @@ import AppIdeaGeneratorButton from '../IdeaGeneratorButton/AppIdeaGeneratorButto
 import IdeaspaceNavCard from '../IdeaspaceNavCard';
 
 import {
-  Button,
   Description,
   ButtonArea,
   StyledLink,
   Header,
-  BackgroundImage,
   ButtonWrapper,
 } from './StyledWelcomePage';
-import { flexbox } from '@mui/system';
 
-const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9)`;
+const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
 const submitIdeaCardTitle = `Submit Your Idea`;
 const submitIdeaCardDescription = `Have an idea for development? Turn your idea into a product through community.`;
 
@@ -106,8 +102,10 @@ function WelcomePage() {
                 cardTitle={submitIdeaCardTitle}
                 cardDescription={submitIdeaCardDescription}
               />
+
             </StyledLink>
           </ButtonWrapper>
+
           <ButtonWrapper
             style={{
               backgroundColor: '#FFAB00',
@@ -119,6 +117,7 @@ function WelcomePage() {
                 cardBackgroundImage={helpButtonImage}
                 cardTitle={helpExistingIdeaCardTitle}
                 cardDescription={helpExistingIdeaCardDescription}
+                cssClass="help-nav-button"
               />
             </StyledLink>
           </ButtonWrapper>
@@ -136,7 +135,7 @@ function WelcomePage() {
                 width: '100%',
                 minHeight: '300px',
                 maxHeight: '300px',
-                background: `linear-gradient( rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${handWithLightbulbImage})`,
+                background: `linear-gradient(rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${handWithLightbulbImage})`,
                 backgroundSize: '100% 100%',
                 backgroundRepeat: 'no-repeat',
                 alignItems: 'center',
