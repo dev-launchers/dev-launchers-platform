@@ -18,6 +18,6 @@ const LinkTemplate: Story<LinkProps> = (args) => <Link {...args} />;
 
 export const light = LinkTemplate.bind({});
 light.args = {
-  linkTo: '/anywhere',
-  linkText: 'link',
+  href: '/anywhere',
+  text: 'link',
 };

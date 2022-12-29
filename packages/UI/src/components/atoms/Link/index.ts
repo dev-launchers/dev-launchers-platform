@@ -1,4 +1,4 @@
 export interface LinkProps {
-  linkTo?: string;
-  linkText?: string;
+  href?: string;
+  text?: string;
 }
