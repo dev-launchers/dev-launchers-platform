@@ -5,11 +5,10 @@ const IdeaspaceNavCard = ({
   cardBackgroundColor,
   cardBackgroundImage,
   cardTitle,
-  cardDescription
+  cardDescription,
 }) => {
-
   return (
-    <div 
+    <div
       className="idea-nav-card"
       style={{
         background: `linear-gradient(${cardBackgroundColor}, url(${cardBackgroundImage})`,

@@ -102,7 +102,6 @@ function WelcomePage() {
                 cardTitle={submitIdeaCardTitle}
                 cardDescription={submitIdeaCardDescription}
               />
-
             </StyledLink>
           </ButtonWrapper>
 
