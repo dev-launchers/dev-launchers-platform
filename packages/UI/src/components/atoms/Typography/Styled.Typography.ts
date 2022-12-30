@@ -128,6 +128,12 @@ const labelSmall = `
     text-transform: uppercase;
 `;
 
+const link = `
+    font-family: 'Nunito Sans';
+    font-size: 0.875rem;
+    font-weight: 400;
+`;
+
 export const typographyStyles = {
   h1,
   h2,
@@ -141,6 +147,7 @@ export const typographyStyles = {
   button,
   label,
   labelSmall,
+  link,
 } as const;
 
 export const Text = styled.p<TypographyProps>`

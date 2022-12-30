@@ -1,13 +1,12 @@
-import type { Story, Meta } from '@storybook/react';
+import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Link from './Link';
-import type { LinkProps } from './index';
 
 export default {
   title: 'Atoms/Link',
   component: Link,
-} as Meta<typeof Link>;
+} as ComponentMeta<typeof Link>;
 
-const LinkTemplate: Story<LinkProps> = (args) => <Link {...args} />;
+const LinkTemplate: ComponentStory<typeof Link> = (args) => <Link {...args} />;
 
 // export const dark = LinkTemplate.bind({});
 // dark.args = {
@@ -16,8 +15,8 @@ const LinkTemplate: Story<LinkProps> = (args) => <Link {...args} />;
 //   mode: 'dark',
 // };
 
-export const light = LinkTemplate.bind({});
-light.args = {
+export const Light = LinkTemplate.bind({});
+Light.args = {
   href: '/anywhere',
-  text: 'link',
+  text: 'Link',
 };
