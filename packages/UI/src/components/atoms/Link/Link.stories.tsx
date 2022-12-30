@@ -8,13 +8,6 @@ export default {
 
 const LinkTemplate: ComponentStory<typeof Link> = (args) => <Link {...args} />;
 
-// export const dark = LinkTemplate.bind({});
-// dark.args = {
-//   linkTo: '/anywhere',
-//   linkText: 'link',
-//   mode: 'dark',
-// };
-
 export const Light = LinkTemplate.bind({});
 Light.args = {
   href: '/anywhere',
