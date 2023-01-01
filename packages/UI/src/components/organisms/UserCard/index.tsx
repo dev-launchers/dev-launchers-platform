@@ -4,4 +4,5 @@ type UserType = typeof DEFAULT_USER;
 export interface UserCardProps {
   user: UserType;
   isVertical: boolean;
+  isAltered: boolean;
 }

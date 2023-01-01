@@ -5,7 +5,11 @@ import Mail from '../../../assets/icons/Mail';
 import { useUserDataContext } from './../../../context/UserDataContext';
 import type { UserCardProps } from '.';
 
-export default function UserCard({ user, isVertical }: UserCardProps) {
+export default function UserCard({
+  user,
+  isVertical,
+  isAltered,
+}: UserCardProps) {
   let userInfo = user;
   if (!user) {
     userInfo = useUserDataContext().userData;
@@ -17,13 +21,24 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
       {isVertical ? (
         <atoms.Layer
           type="white"
-          style={{ borderRadius: '16px', maxWidth: '327px' }}
+          style={{
+            borderRadius: isAltered ? '16px' : undefined,
+            maxWidth: '327px',
+          }}
         >
           <atoms.Box
             padding={'16px 8px'}
-            flexDirection={'row'}
+            flexDirection={isAltered ? 'column' : 'row'}
             justifyContent={'center'}
+            alignItems={'center'}
           >
+            <img
+              width="108"
+              height="108"
+              src={userInfo.profilePictureUrl}
+              alt="Profile avatar"
+              style={{ borderRadius: '50%' }}
+            />
             <atoms.Box flexDirection="column" margin={'20px 10px 0 0'}>
               <atoms.Typography type="h3">{userInfo.name}</atoms.Typography>
               <atoms.Typography type="h5">Product Lead</atoms.Typography>
@@ -50,20 +65,16 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
                 </atoms.Box>
               </atoms.Box>
             </atoms.Box>
-            <img
-              width="108"
-              height="108"
-              src={userInfo.profilePictureUrl}
-              alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
-            />
           </atoms.Box>
         </atoms.Layer>
       ) : (
         <>
           <atoms.Layer
             type="white"
-            style={{ borderRadius: '16px', maxWidth: '368px' }}
+            style={{
+              borderRadius: isAltered ? '16px' : undefined,
+              maxWidth: '368px',
+            }}
           >
             <atoms.Box
               padding={'16px 8px'}
