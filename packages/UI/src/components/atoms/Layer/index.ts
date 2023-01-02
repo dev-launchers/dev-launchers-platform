@@ -12,5 +12,5 @@ export interface LayersProps {
   /**
    * The layer's background color, ignore to have transparent background
    */
-  type?: 'white' | 'black';
+  type?: 'light' | 'dark';
 }

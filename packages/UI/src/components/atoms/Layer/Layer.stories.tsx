@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Layer from './Layer';
 
 export default {
-  title: 'Molecules/Layer',
+  title: 'Atoms/Layer',
   component: Layer,
   parameters: {
     docs: {
@@ -13,26 +13,26 @@ export default {
   },
 } as ComponentMeta<typeof Layer>;
 
-export const PrimaryWhite: ComponentStory<typeof Layer> = (args) => (
+export const PrimaryLight: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-PrimaryWhite.args = {
-  type: 'white',
+PrimaryLight.args = {
+  type: 'light',
   hasRainbow: false,
   interactive: false,
 };
 
-export const PrimaryBlack: ComponentStory<typeof Layer> = (args) => (
+export const PrimaryDark: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-PrimaryBlack.args = {
-  type: 'black',
+PrimaryDark.args = {
+  type: 'dark',
   hasRainbow: false,
   interactive: false,
 };

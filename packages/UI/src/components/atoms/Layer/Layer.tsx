@@ -22,7 +22,7 @@ function addRainbowToLayer(
 const Layer = styled.div<LayersProps>`
   ${({ type, interactive }) => {
     switch (type) {
-      case 'black':
+      case 'dark':
         return css`
           background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
           ${shadowStyles.highlight300};
@@ -31,7 +31,7 @@ const Layer = styled.div<LayersProps>`
               interactive && theme.colors.GREYSCALE_OFF_BLACK};
           }
         `;
-      case 'white':
+      case 'light':
         return css`
           background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
           ${shadowStyles.shadow500};
