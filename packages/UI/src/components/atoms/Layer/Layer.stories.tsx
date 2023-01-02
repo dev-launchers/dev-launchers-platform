@@ -46,3 +46,15 @@ export const Rainbow: ComponentStory<typeof Layer> = (args) => (
 Rainbow.args = {
   hasRainbow: true,
 };
+
+export const LightSingleBand: ComponentStory<typeof Layer> = (args) => (
+  <Layer {...args}>
+    <div style={{ width: '100%', height: '100px' }}></div>
+  </Layer>
+);
+
+LightSingleBand.args = {
+  type: 'light',
+  hasRainbow: true,
+  interactive: false,
+};
