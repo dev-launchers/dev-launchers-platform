@@ -1,6 +1,14 @@
 import React from 'react';
+import {
+  ButtonBackground,
+  ButtonTitleDiv,
+  ButtonText,
+  ButtonContinueDiv,
+  ButtonDescriptionDiv,
+} from './StyledAppIdeaGeneratorButton';
 
 import IdeaGeneratorButton from '../IdeaGeneratorButton';
+import { Button } from 'semantic-ui-react';
 //import banana from "@banana-dev/banana-dev";
 const banana = require('@banana-dev/banana-dev');
 
@@ -36,27 +44,16 @@ const phraseGenerator = async () => (
 );
 
 const generateIdeaButtonContent = (
-  <div>
-    <div
-      style={{
-        color: 'white',
-        width: '100%',
-        border: 'solid',
-        borderTop: 0,
-        borderLeft: 0,
-        borderRight: 0,
-      }}
-    >
-      Generate an Idea
-    </div>
-    <div style={{ paddingTop: '9%' }}>
+  <ButtonBackground>
+    <ButtonTitleDiv>Generate an Idea</ButtonTitleDiv>
+    <ButtonDescriptionDiv>
       Want to generate Ideas for you? Use machine learning to generate an idea
       to get you started!
-    </div>
-    <div style={{ textAlign: 'right', paddingTop: '1%' }}>
-      <p style={{ color: 'white' }}>CONTINUE &#8594;</p>
-    </div>
-  </div>
+    </ButtonDescriptionDiv>
+    <ButtonContinueDiv>
+      <ButtonText>CONTINUE &#8594;</ButtonText>
+    </ButtonContinueDiv>
+  </ButtonBackground>
 );
 
 export default function AppIdeaGeneratorButton({ style, showExtendedContent }) {
