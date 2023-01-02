@@ -21,7 +21,8 @@ export const PrimaryLight: ComponentStory<typeof Layer> = (args) => (
 
 PrimaryLight.args = {
   type: 'light',
-  hasRainbow: false,
+  hasRainbowBottom: false,
+  hasRainbowTop: false,
   interactive: false,
 };
 
@@ -33,7 +34,8 @@ export const PrimaryDark: ComponentStory<typeof Layer> = (args) => (
 
 PrimaryDark.args = {
   type: 'dark',
-  hasRainbow: false,
+  hasRainbowBottom: false,
+  hasRainbowTop: false,
   interactive: false,
 };
 
@@ -44,7 +46,8 @@ export const Rainbow: ComponentStory<typeof Layer> = (args) => (
 );
 
 Rainbow.args = {
-  hasRainbow: true,
+  hasRainbowBottom: true,
+  hasRainbowTop: false,
 };
 
 export const LightSingleBand: ComponentStory<typeof Layer> = (args) => (
@@ -55,6 +58,20 @@ export const LightSingleBand: ComponentStory<typeof Layer> = (args) => (
 
 LightSingleBand.args = {
   type: 'light',
-  hasRainbow: true,
+  hasRainbowBottom: true,
+  hasRainbowTop: false,
+  interactive: false,
+};
+
+export const LightDoubleBand: ComponentStory<typeof Layer> = (args) => (
+  <Layer {...args}>
+    <div style={{ width: '100%', height: '100px' }}></div>
+  </Layer>
+);
+
+LightDoubleBand.args = {
+  type: 'light',
+  hasRainbowBottom: true,
+  hasRainbowTop: true,
   interactive: false,
 };

@@ -4,7 +4,7 @@ export interface LayersProps {
   /**
    * Adds rainbow beneath the layer
    */
-  hasRainbow?: boolean;
+  numRainbows?: number;
   /**
    * If true adds hover interactivity!
    */
