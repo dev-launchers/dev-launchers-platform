@@ -1,5 +1,7 @@
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
+import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Typography from '../../atoms/Typography';
@@ -7,9 +9,11 @@ import BackButton from '../../molecules/BackButton';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
-import Link from 'next/link';
 
-const MobileNavigation = ({ user }: NavigationProps) => {
+const MobileNavigation = ({
+  user,
+  links,
+}: NavigationProps & { links: { [key: string]: string } }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -66,26 +70,19 @@ const MobileNavigation = ({ user }: NavigationProps) => {
             </Box>
             <ul>
               <Box gap={'40px'} flexDirection="column" alignItems="center">
-                <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Learn
-                  </Button>
-                </li>
-                <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Join Use
-                  </Button>
-                </li>
-                <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Create
-                  </Button>
-                </li>
-                <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Support Us
-                  </Button>
-                </li>
+                {Object.entries(links).map(([name, href], i) => (
+                  <li key={i}>
+                    <Link href={href} passHref>
+                      <Button
+                        as="a"
+                        buttonType="alternative"
+                        buttonSize="standard"
+                      >
+                        {name}
+                      </Button>
+                    </Link>
+                  </li>
+                ))}
               </Box>
             </ul>
             <Box
@@ -96,15 +93,35 @@ const MobileNavigation = ({ user }: NavigationProps) => {
             >
               {!user.id ? (
                 <>
-                  <Button as="a" buttonType="primary" buttonSize="standard">
+                  <Button
+                    as="a"
+                    href={
+                      process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                      '?redirectURL=https://devlaunchers.org/users/me'
+                    }
+                    buttonType="primary"
+                    buttonSize="standard"
+                  >
                     Sign In
                   </Button>
-                  <Button as="a" buttonType="secondary" buttonSize="standard">
+                  <Button
+                    as="a"
+                    href={
+                      process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                      '?redirectURL=https://devlaunchers.org/users/me'
+                    }
+                    buttonType="secondary"
+                    buttonSize="standard"
+                  >
                     Create an Account
                   </Button>
                 </>
               ) : (
-                <Button as="a" buttonType="secondary" buttonSize="standard">
+                <Button
+                  buttonType="secondary"
+                  buttonSize="standard"
+                  onClick={Logout}
+                >
                   Logout
                 </Button>
               )}
