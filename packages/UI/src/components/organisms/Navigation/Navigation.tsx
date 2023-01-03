@@ -8,6 +8,7 @@ import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
 import { Nav, NavWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+import Link from 'next/link';
 
 /*
 * The following Consumes data from any context:
@@ -31,10 +32,14 @@ export default function Navigation({ user }: NavigationProps) {
       <Layer hasRainbow type="black">
         <Nav>
           <Box justifyContent={'space-between'} alignItems={'center'}>
-            <Box gap={'5px'} alignItems={'center'}>
-              <img width="36" height="33" src={logo} alt="logo" />
-              <Typography type="h3">Dev Launchers</Typography>
-            </Box>
+            <Link href="/">
+              <a href="/">
+                <Box gap={'5px'} alignItems={'center'}>
+                  <img width="36" height="33" src={logo} alt="logo" />
+                  <Typography type="h3">Dev Launchers</Typography>
+                </Box>
+              </a>
+            </Link>
             <NavWrapper>
               <ul>
                 <Box gap={'16px'}>

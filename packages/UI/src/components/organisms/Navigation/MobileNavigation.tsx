@@ -7,6 +7,7 @@ import BackButton from '../../molecules/BackButton';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+import Link from 'next/link';
 
 const MobileNavigation = ({ user }: NavigationProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -56,7 +57,11 @@ const MobileNavigation = ({ user }: NavigationProps) => {
                   <Typography type="h2">Hi {user.name}</Typography>
                 </Box>
               ) : (
-                <img width="139.26" height="114" src={logo} alt="logo" />
+                <Link href="/">
+                  <a href="/">
+                    <img width="139.26" height="114" src={logo} alt="logo" />
+                  </a>
+                </Link>
               )}
             </Box>
             <ul>
