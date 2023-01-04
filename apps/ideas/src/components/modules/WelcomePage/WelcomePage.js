@@ -17,6 +17,10 @@ import {
   StyledLink,
   Header,
   ButtonWrapper,
+  WelcomeMessage,
+  Subheader,
+  GetStartedDiv,
+  RocketImage,
 } from './StyledWelcomePage';
 
 const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
@@ -63,30 +67,15 @@ function WelcomePage() {
         </Header>
 
         <Description>
-          <div style={{ fontFamily: 'Nunito Sans', marginBottom: '20px' }}>
-            WELCOME TO THE IDEA PLATFORM!
-          </div>
-          <div
-            style={{
-              fontFamily: 'Nunito Sans',
-              color: '#474747',
-              marginBottom: '20px',
-            }}
-          >
+          <WelcomeMessage>WELCOME TO THE IDEA PLATFORM!</WelcomeMessage>
+          <Subheader>
             Have an idea for a development project? Want to help develop an
             idea? Want to generate an idea?
-          </div>
-          <div style={{ fontFamily: 'Nunito Sans', marginBottom: '10px' }}>
+          </Subheader>
+          <GetStartedDiv>
             LET'S GET STARTED
-            <img
-              src={rocketImage}
-              style={{
-                width: '25px',
-                height: '25px',
-                paddingLeft: '5px',
-              }}
-            />
-          </div>
+            <RocketImage src={rocketImage} />
+          </GetStartedDiv>
         </Description>
 
         <ButtonArea>

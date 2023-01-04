@@ -112,3 +112,25 @@ export const ButtonWrapper = styled.div`
     opacity: 0.2;
   }
 `;
+
+export const WelcomeMessage = styled.div`
+  font-family: 'Nunito Sans';
+  margin-bottom: 20px;
+`;
+
+export const Subheader = styled.div`
+  font-family: 'Nunito Sans';
+  color: #474747;
+  margin-bottom: 20px;
+`;
+
+export const GetStartedDiv = styled.div`
+  font-family: 'Nunito Sans';
+  margin-bottom: 10px;
+`;
+
+export const RocketImage = styled.img`
+  width: 25px;
+  height: 25px;
+  padding-left: 5px;
+`;
