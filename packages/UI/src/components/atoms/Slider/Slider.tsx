@@ -14,7 +14,7 @@ import type { SliderProps } from '.';
 export default function Slider({
   min = 0,
   max = 100,
-  postfix,
+  suffix,
   initialValue = 0,
   onChange,
   withLabels = true,
@@ -28,7 +28,7 @@ export default function Slider({
   };
 
   const getBubblePosition = () => {
-    return value > 0 ? Number(((value - min) * 90) / (max - min)) : 0;
+    return value > 0 ? (value / max) * 100 : 0;
   };
 
   return (
@@ -36,7 +36,7 @@ export default function Slider({
       <BubbleContainer>
         <Bubble newVal={getBubblePosition()}>
           <p css={typographyStyles['labelSmall']}>
-            {value} {postfix}
+            {value} {suffix}
           </p>
         </Bubble>
       </BubbleContainer>
@@ -52,15 +52,15 @@ export default function Slider({
       {withLabels && (
         <Box justifyContent="space-between">
           <p css={typographyStyles['labelSmall']}>
-            {value} {postfix}
+            {value} {suffix}
           </p>
           {(max - min) % 2 === 0 && (
             <p css={typographyStyles['labelSmall']}>
-              {min + (max - min) / 2} {postfix}
+              {min + (max - min) / 2} {suffix}
             </p>
           )}
           <p css={typographyStyles['labelSmall']}>
-            {max} {postfix}
+            {max} {suffix}
           </p>
         </Box>
       )}

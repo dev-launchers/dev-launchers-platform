@@ -12,6 +12,7 @@ function OpenResponse({
   rows,
   cols,
   label,
+  name,
   id,
   placeholder,
   required = false,
@@ -23,15 +24,16 @@ function OpenResponse({
   return (
     <>
       <Label htmlFor={id}>
-        <Typography type="label">{label}</Typography>
-        {required && <span style={{ color: 'red' }}>*</span>}
+        <Typography type="label">
+          {label} {required && <span style={{ color: 'red' }}>*</span>}
+        </Typography>
         <InputWrapper>
           <Input
             width={width}
             placeholder={placeholder}
             rows={rows}
             cols={cols}
-            name={label}
+            name={name}
             id={id}
             autoCorrect="off"
             autoComplete="off"

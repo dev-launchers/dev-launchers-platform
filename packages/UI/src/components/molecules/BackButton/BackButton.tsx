@@ -9,13 +9,7 @@ function BackButtonComponent({ type, withLabel = true }: BackButtonProps) {
       {type === 'cancel' ? (
         <Close stroke="black" width="24px" height="24px" />
       ) : (
-        <Chevron
-          width="24px"
-          height="24px"
-          stroke="black"
-          strokeWidth="2"
-          style={{ transform: 'rotate(90deg)' }}
-        />
+        <Chevron />
       )}
       {withLabel && type === 'back' && 'Back'}
     </BackButton>

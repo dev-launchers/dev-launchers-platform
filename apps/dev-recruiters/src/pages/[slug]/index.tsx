@@ -1,8 +1,10 @@
-import { Opportunity } from "@devlaunchers/models/opportunity";
-import { Project } from "@devlaunchers/models/project";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
-import ProjectDetails from "../../components/modules/DetailedPage";
+import { Opportunity } from '@devlaunchers/models/opportunity';
+import { Project } from '@devlaunchers/models/project';
+import theme from '../../styles/theme';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
+import ProjectDetails from '../../components/modules/DetailedPage';
 
 export const getProjectsSlugs = async () => {
   const res = await fetch(
@@ -25,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getProjectsSlugs();
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
@@ -108,12 +110,15 @@ export default function DetailedPage({
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <ProjectDetails
-        maxCommitment={maxCommitment}
-        minCommitment={minCommitment}
-        project={project}
-        opportunites={opportunites}
-      />
+      {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+      <ThemeProvider theme={theme}>
+        <ProjectDetails
+          maxCommitment={maxCommitment}
+          minCommitment={minCommitment}
+          project={project}
+          opportunites={opportunites}
+        />
+      </ThemeProvider>
     </>
   );
 }
