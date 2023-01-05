@@ -1,10 +1,9 @@
 export { default } from './PositionCard';
 
 export interface PositionCardProps {
-  // interaction: boolean;
-  // status: boolean;
   interaction: 'all-h' | 'all-v' | 'save-only' | 'none';
-  style: 'default' | 'minimal' | 'mobile' | 'long';
+  minimal: boolean;
   buttonStyle: 'a' | 'b';
-  status: 'default' | 'open' | 'closed';
+  status: boolean;
+  content: any;
 }
