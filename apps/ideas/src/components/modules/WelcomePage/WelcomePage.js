@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import React, { useState } from 'react';
 import './WelcomePage.css'
 //import { Link } from 'react-router-dom'
@@ -34,11 +33,6 @@ function WelcomePage() {
   // )
 
   return (
-    <>
-    <Head>
-        <meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" />
-    </Head>
-
     <Grid container spacing={2}>
       <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
         <Description>
@@ -69,7 +63,6 @@ function WelcomePage() {
         </ButtonArea>
       </Grid>
     </Grid>
-    </>
   );
 }
 
