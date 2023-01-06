@@ -20,6 +20,7 @@ HorizontalUserAvatar.args = {
   user: {
     id: 0,
     name: 'John James',
+    bio: 'Product Lead',
     email: 'email@email.com',
     profilePictureUrl: logo,
     discord: {
@@ -36,6 +37,7 @@ VerticalUserAvatar.args = {
   user: {
     id: 0,
     name: 'John James',
+    bio: 'Product Lead',
     email: 'email@email.com',
     profilePictureUrl: logo,
     discord: {
