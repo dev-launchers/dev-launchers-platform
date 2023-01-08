@@ -7,7 +7,7 @@
   "dependencies": {
     "@cloudflare/wrangler": "^1.19.12",
     "@devlaunchers/dev-recruiters": "workspace:^",
-    "@devlaunchers/ideas": "*",
+    "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
     "@devlaunchers/website": "*",
     "@next/env": "^12.2.3",

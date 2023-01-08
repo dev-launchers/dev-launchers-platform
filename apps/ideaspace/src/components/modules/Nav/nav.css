@@ -1,0 +1,17 @@
+.nav {
+  background-color: #1c1c1c;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+}
+
+
+
