@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
+import RainbowBar from '../../../site-projects/src/components/common/RainbowBar';
 
 import Nav from '../components/modules/Nav/nav';
 
@@ -46,10 +47,10 @@ function MyApp(props) {
       <ThemeProvider theme={theme}>
         <UserDataProvider>
           <GlobalStyle />
-          <Nav />
+          <RainbowBar />
           <IdeasBetaFeedbackModal />
-          {props.children}     
-        </UserDataProvider> 
+          {props.children}
+        </UserDataProvider>
       </ThemeProvider>
     </div>
   );
