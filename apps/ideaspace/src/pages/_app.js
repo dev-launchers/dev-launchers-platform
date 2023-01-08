@@ -11,10 +11,12 @@ import { UserDataProvider } from '@devlaunchers/components/context/UserDataConte
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from '../styles/theme';
+import platformTheme from '@devlaunchers/components/styles/theme';
+import ideaspaceTheme from '../styles/theme';
 
 import useMockDataInDevelopment from "../utils/useMockData";
-
+let theme = {platformTheme, ...ideaspaceTheme};
+// ideaspace need both package theme for storybook component and ideaspace theme
 /*
 import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
