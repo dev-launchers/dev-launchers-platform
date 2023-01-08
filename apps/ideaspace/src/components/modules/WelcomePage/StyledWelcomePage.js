@@ -6,7 +6,6 @@ export const ButtonArea = styled.div`
   min-height: 50vh;
   height: 1px;
   max-width: 1700px;
-  //max-height: 500px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -43,8 +42,6 @@ export const Button = styled.button`
   justify-content: space-between;
   align-items: center;
 
-  /* background: #C4C4C4; */
-  /* font-weight: bold; */
   color: ${({ theme }) => theme.colors.NEUTRAL_2};
   border: 0 none;
   border-radius: 30px;
@@ -63,7 +60,6 @@ export const Button = styled.button`
 
 
 export const Description = styled.p`
-  /* color: #F1F4F5; */
   color: black;
   text-align: center;
 `;
