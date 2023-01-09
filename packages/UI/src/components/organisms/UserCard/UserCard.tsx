@@ -62,26 +62,28 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
             />
           </atoms.Box>
         )}
-        <atoms.Box
-          flexDirection="row"
-          alignItems="center"
-          margin={isVertical ? ' 1rem 0 1rem 0' : ' 0 0 1rem 0'}
-        >
-          <Discord width={'22px'} height={'16px'} />
-          <atoms.Box flexDirection="column" margin={'0 0 0 1rem'}>
-            <atoms.Typography type="label">DISCORD</atoms.Typography>
-            <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
-              {userInfo.discord.username}
-            </atoms.Typography>
+        <atoms.Box flexDirection="column" alignItems="flex-start">
+          <atoms.Box
+            flexDirection="row"
+            alignItems="center"
+            margin={isVertical ? ' 1rem 0 1rem 0' : ' 0 0 1rem 0'}
+          >
+            <Discord width={'22px'} height={'16px'} />
+            <atoms.Box flexDirection="column" margin={'0 0 0 1rem'}>
+              <atoms.Typography type="label">DISCORD</atoms.Typography>
+              <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
+                {userInfo.discord.username}
+              </atoms.Typography>
+            </atoms.Box>
           </atoms.Box>
-        </atoms.Box>
-        <atoms.Box flexDirection="row" alignItems="center">
-          <Mail width={'22px'} height={'16px'} />
-          <atoms.Box flexDirection="column" margin={'0 0 0 1rem'}>
-            <atoms.Typography type="label">Email</atoms.Typography>
-            <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
-              {userInfo.email}
-            </atoms.Typography>
+          <atoms.Box flexDirection="row" alignItems="center">
+            <Mail width={'22px'} height={'16px'} />
+            <atoms.Box flexDirection="column" margin={'0 0 0 1rem'}>
+              <atoms.Typography type="label">Email</atoms.Typography>
+              <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
+                {userInfo.email}
+              </atoms.Typography>
+            </atoms.Box>
           </atoms.Box>
         </atoms.Box>
       </atoms.Box>

@@ -38,7 +38,7 @@ VerticalUserAvatar.args = {
     id: 0,
     name: 'John James',
     bio: 'Product Lead',
-    email: 'email@email.com',
+    email: 'john_james@devlaunchers.com',
     profilePictureUrl: logo,
     discord: {
       id: 0,
