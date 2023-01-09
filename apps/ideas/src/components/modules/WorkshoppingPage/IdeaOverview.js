@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import React, { useState } from 'react';
 import {
   Idea,
   IdeaName,
@@ -7,16 +8,29 @@ import {
   WorkshopCircule,
   WorkshopCompleted,
   Description,
+  WorkshopSaveButton,
+  WorkshopSavedButton,
 } from './StyledComments.js';
+import saveImage from '../../../images/Vector1.svg';
+import savedImage from '../../../images/Vector39.svg';
 
 function IdeaOverview(props) {
   const { selectedCard, ...other } = props;
-
+  const [saved, setSaved] = useState(false);
+  const save = () => {
+    if(saved){
+      setSaved(false);
+    }else{
+      setSaved(true);
+    }
+  };
+  
   return (
     <Idea>
       <IdeaName>
         <h2>{props.selectedCard.ideaName}</h2>
         <p>{props.selectedCard.tagline}</p>
+        
         <IdeaProgress>
           <WorkshopProgressBar>
             <WorkshopCircule>
@@ -39,7 +53,7 @@ function IdeaOverview(props) {
               <WorkshopCompleted></WorkshopCompleted>
               <p>Project</p>
             </WorkshopCircule>
-          </WorkshopProgressBar>
+          </WorkshopProgressBar>     
         </IdeaProgress>
       </IdeaName>
       <Description>
@@ -94,7 +108,9 @@ function IdeaOverview(props) {
         )}
       </Description>
     </Idea>
+    
   );
+  
 }
 
 export default IdeaOverview;

@@ -233,6 +233,7 @@ export const Description = styled.div`
 export const Leader = styled.div`
   padding-top: 10px;
   margin-bottom: 5px;
+  
 `;
 
 
@@ -251,7 +252,7 @@ export const LeaderImage = styled.img`
 
 export const LeaderInfo = styled.div`
   margin-left: 30px;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  // background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   width: 100%;
   height: 50%;
   border-top-right-radius: 30px;
@@ -262,7 +263,8 @@ export const LeaderInfo = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
-  color: white;
+  // color: white;
+  background-color: white;
 `;
 
 export const WorkshopTest = styled.div`
@@ -313,4 +315,44 @@ export const WorkshopIncomplete = styled.div`
   left: 2px;
   top: 2px;
   margin-bottom: -40px;
+`;
+
+export const WorkshopSaveButton = styled.button`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+gap: 8px;
+
+width: 100px;
+height: 40px;
+left: 20px;
+top: 20px;
+
+background: #FFFFFF;
+
+box-shadow: 0px 10px 18px 10px rgba(127, 126, 127, 0.25);
+border-radius: 8px;
+`;
+
+
+export const WorkshopSavedButton = styled.button`
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+gap: 8px;
+
+position: absolute;
+width: 111px;
+height: 40px;
+left: 20px;
+top: 99px;
+
+background: #FFFFFF;
+
+box-shadow: 0px 10px 18px 10px rgba(127, 126, 127, 0.25);
+border-radius: 8px;
 `;

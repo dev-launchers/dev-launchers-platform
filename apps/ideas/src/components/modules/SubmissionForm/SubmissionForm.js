@@ -120,7 +120,7 @@ function SubmissionForm() {
         <br />
       </Description>
       <Wrapper>
-        {!isAuthenticated ? 
+        {isAuthenticated ? 
           <Container>
             <div style={{
               color: "white"

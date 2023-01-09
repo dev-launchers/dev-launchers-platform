@@ -17,17 +17,16 @@ function LeaderInfoComponent(props) {
     <Leader>
       <LeaderInfo>
         <LeaderName align="right">
+        <div>
+        <h2 align="left" style={{fontSize: 40, paddingRight:25}}> {props.selectedCard.discord}</h2>
+        <p align="left" style={{fontSize: 20, paddingRight:25}}>IDEA OWNER</p> 
+        </div>
           <LeaderImage
             alt="user_image"
             src={`https://picsum.photos/70?random=${props.id}`}
+            style={{ width: "34%", height: "34%"}}
           />
-          {props.selectedCard.discord}
         </LeaderName>
-        <h6>
-          <p>Submitted: {formatDate(props.selectedCard.created_at)}</p>
-          <p>Contact</p>
-          <p>email: {props.selectedCard.email}</p>
-        </h6>
       </LeaderInfo>
     </Leader>
   );

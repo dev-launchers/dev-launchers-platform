@@ -9,6 +9,7 @@ import {
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from "../../common/SignInButton/SignInButton";
 
+
 const MAX_COMMENT_CHARS = 250;
 
 function CommentForm(props) {
@@ -42,7 +43,7 @@ function CommentForm(props) {
   // move to WorkshoppingPage
   return (
     <div>
-      {isAuthenticated ? 
+      {!isAuthenticated ? 
         <form onSubmit={handleSubmit}>
           {/* <UserNameCommentBox>
             <UserNameComment
@@ -57,6 +58,7 @@ function CommentForm(props) {
             <UserImageOne
               alt="user_image"
               src={userData.profilePictureUrl}
+              
             />
             <textarea
               onKeyUp={(e) => {
