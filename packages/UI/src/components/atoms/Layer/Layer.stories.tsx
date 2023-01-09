@@ -50,26 +50,26 @@ Rainbow.args = {
   hasRainbowTop: false,
 };
 
-export const LightSingleBand: ComponentStory<typeof Layer> = (args) => (
+export const SingleBandLight: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-LightSingleBand.args = {
+SingleBandLight.args = {
   type: 'light',
   hasRainbowBottom: true,
   hasRainbowTop: false,
   interactive: false,
 };
 
-export const LightDoubleBand: ComponentStory<typeof Layer> = (args) => (
+export const DoubleBandLight: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-LightDoubleBand.args = {
+DoubleBandLight.args = {
   type: 'light',
   hasRainbowBottom: true,
   hasRainbowTop: true,
