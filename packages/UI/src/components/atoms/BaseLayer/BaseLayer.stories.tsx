@@ -41,7 +41,7 @@ export const BaseOffLight: ComponentStory<typeof BaseLayer> = (args) => (
   </BaseLayer>
 );
 
-BaseLight.args = {
+BaseOffLight.args = {
   type: 'light',
   color: 'offbase',
 };
