@@ -1,5 +1,4 @@
-
-const { loadEnvConfig } =  require('@next/env');
+const { loadEnvConfig } = require('@next/env');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
@@ -53,6 +52,7 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     externalDir: true,
-  }
+    nextScriptWorkers: true,
+  },
 };
 module.exports = withPlugins([[imagesPlugin], [withTM]], nextConfig);
