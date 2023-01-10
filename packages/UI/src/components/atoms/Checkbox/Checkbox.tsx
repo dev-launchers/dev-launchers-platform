@@ -1,7 +1,12 @@
 import { Option, Input } from './StyledCheckbox';
 import type { CheckboxProps } from '.';
 
-const Checkbox = ({ disabled = false, label, onChange }: CheckboxProps) => {
+const Checkbox = ({
+  disabled = false,
+  label,
+  onChange,
+  ...props
+}: CheckboxProps) => {
   return (
     <Option htmlFor={label}>
       <Input
@@ -9,7 +14,12 @@ const Checkbox = ({ disabled = false, label, onChange }: CheckboxProps) => {
         type="checkbox"
         id={label}
         name={label}
-        onChange={(e) => onChange(e, label as string)}
+        onChange={(e) => {
+          if (onChange) {
+            onChange(e, label as string);
+          }
+        }}
+        {...props}
       />
       {label && <p>{label}</p>}
     </Option>

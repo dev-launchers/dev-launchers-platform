@@ -1,70 +1,121 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WelcomePage.css';
-//import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid';
 
-import submitButtonImage from '../../../images/submit-image.png';
+import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
+
+import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
+import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
+import rocketImage from '../../../images/logo-monogram.png';
+import AppIdeaGeneratorButton from '../IdeaGeneratorButton/AppIdeaGeneratorButton';
+import IdeaspaceNavCard from '../IdeaspaceNavCard';
 
 import {
-  Button,
   Description,
   ButtonArea,
   StyledLink,
+  Header,
+  ButtonWrapper,
+  WelcomeMessage,
+  Subheader,
+  GetStartedDiv,
+  RocketImage,
 } from './StyledWelcomePage';
 
+const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
+const submitIdeaCardTitle = `Submit Your Idea`;
+const submitIdeaCardDescription = `Have an idea for development? Turn your idea into a product through community.`;
+
+const helpExistingIdeaCardBackgroundColor = `rgba(255,171,0, 0.9), rgba(255,171,0, 0.9))`;
+const helpExistingIdeaCardTitle = `Help Existing Idea`;
+const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check out ideas submitted by other Dev Launchers!`;
+
 function WelcomePage() {
-  // return (
-  //   <Grid container spacing={2}>
-  //     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-
-  //       <div id="welcomeWrapper">
-  //         <h1 style={{width:"100%",textAlign:"center"}}>
-  //           IdeaSpace (Beta)
-  //         </h1>
-  //         <SubmitIdea />
-  //       </div>
-
-  //     </Grid>
-  //   </Grid>
-  // )
-
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <h1 style={{width:"100%",textAlign:"center"}}>
-          IdeaSpace (Beta)
-        </h1>
+    <Grid container direction="row" alignItems="center" spacing={2}>
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={12}
+        lg={12}
+        xl={12}
+        style={{
+          background:
+            'linear-gradient(0deg, rgba(222,222,222,1) 50%, rgba(240,237,238,1) 50%)',
+        }}
+      >
+        <Header>
+          <h1>IdeaSpace (Beta)</h1>
+          <RainbowBar />
+        </Header>
+
         <Description>
-          Have an idea for a development project?
-          <br />
-          Want to help develop an idea?
-          <br />
-          Let’s get started!
+          <WelcomeMessage>WELCOME TO THE IDEA PLATFORM!</WelcomeMessage>
+          <Subheader>
+            Have an idea for a development project? Want to help develop an
+            idea? Want to generate an idea?
+          </Subheader>
+          <GetStartedDiv>
+            LET'S GET STARTED
+            <RocketImage src={rocketImage} />
+          </GetStartedDiv>
         </Description>
 
         <ButtonArea>
-          <StyledLink href="/ideaspace/submit">
-            <Button>
-              <div
-                style={{ height: '20%', display: 'flex', alignItems: 'center' }}
-              >
-                Submit Your Idea!
-              </div>
-              <img src={submitButtonImage} style={{ height: '70%' }} />
-            </Button>
-          </StyledLink>
+          <ButtonWrapper
+            style={{
+              backgroundColor: '#FF7F0E',
+            }}
+          >
+            <StyledLink href="/ideas/submit">
+              <IdeaspaceNavCard
+                cardBackgroundColor={submitIdeaCardBackgroundColor}
+                cardBackgroundImage={bulletinBoardPostItImage}
+                cardTitle={submitIdeaCardTitle}
+                cardDescription={submitIdeaCardDescription}
+              />
+            </StyledLink>
+          </ButtonWrapper>
 
-          <StyledLink href="/ideaspace/browse">
-            <Button>
-              <div
-                style={{ height: '20%', display: 'flex', alignItems: 'center' }}
-              >
-                Help Dev Launchers Members With Their Ideas!
-              </div>
-              <img src={helpButtonImage} style={{ height: '70%' }} />
-            </Button>
-          </StyledLink>
+          <ButtonWrapper
+            style={{
+              backgroundColor: '#FFAB00',
+            }}
+          >
+            <StyledLink href="/ideas/browse">
+              <IdeaspaceNavCard
+                cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
+                cardBackgroundImage={helpButtonImage}
+                cardTitle={helpExistingIdeaCardTitle}
+                cardDescription={helpExistingIdeaCardDescription}
+                cssClass="help-nav-button"
+              />
+            </StyledLink>
+          </ButtonWrapper>
+
+          <ButtonWrapper
+            style={{
+              background: '#3A7CA5',
+              display: 'inline-flex',
+            }}
+          >
+            <AppIdeaGeneratorButton
+              style={{
+                background: '#FFAB00',
+                height: '100%',
+                width: '100%',
+                minHeight: '300px',
+                maxHeight: '300px',
+                background: `linear-gradient(rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${handWithLightbulbImage})`,
+                backgroundSize: '100% 100%',
+                backgroundRepeat: 'no-repeat',
+                alignItems: 'center',
+              }}
+              showExtendedContent
+            ></AppIdeaGeneratorButton>
+          </ButtonWrapper>
         </ButtonArea>
       </Grid>
     </Grid>

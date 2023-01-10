@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
+import RainbowBar from '../../../site-projects/src/components/common/RainbowBar';
 
 import Nav from '../components/modules/Nav/nav';
 
@@ -11,10 +12,12 @@ import { UserDataProvider } from '@devlaunchers/components/context/UserDataConte
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from '../styles/theme';
+import platformTheme from '@devlaunchers/components/styles/theme';
+import ideaspaceTheme from '../styles/theme';
 
 import useMockDataInDevelopment from "../utils/useMockData";
-
+let theme = {platformTheme, ...ideaspaceTheme};
+// ideaspace need both package theme for storybook component and ideaspace theme
 /*
 import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
@@ -44,10 +47,10 @@ function MyApp(props) {
       <ThemeProvider theme={theme}>
         <UserDataProvider>
           <GlobalStyle />
-          <Nav />
+          <RainbowBar />
           <IdeasBetaFeedbackModal />
-          {props.children}     
-        </UserDataProvider> 
+          {props.children}
+        </UserDataProvider>
       </ThemeProvider>
     </div>
   );

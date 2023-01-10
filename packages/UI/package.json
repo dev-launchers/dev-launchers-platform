@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@devlaunchers/models": "workspace:*",
+    "@devlaunchers/utility": "workspace:*",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
@@ -69,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "5.32.0",
     "@typescript-eslint/parser": "5.32.0",
     "axe-playwright": "1.1.11",
+    "babel-plugin-styled-components": "2.0.7",
     "camelcase": "7.0.0",
     "chromatic": "^6.7.3",
     "eslint": "8.21.0",

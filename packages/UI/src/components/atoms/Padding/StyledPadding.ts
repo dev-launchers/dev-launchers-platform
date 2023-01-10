@@ -28,6 +28,9 @@ const comPad500 = `padding: 3rem 6rem;`;
 
 const comPad600 = `padding: 4rem 8rem;`;
 
+const comPad700 = `padding: 1rem 4rem 1rem 1.5rem;`;
+
+
 export const paddingStyles = {
   uniPad100,
   uniPad200,
@@ -44,4 +47,5 @@ export const paddingStyles = {
   comPad400,
   comPad500,
   comPad600,
+  comPad700,
 } as const;

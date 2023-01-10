@@ -1,102 +1,112 @@
-import { Field } from 'formik';
 import styled, { css } from 'styled-components';
-import { typographyStyles } from '../../atoms/Typography';
 import { paddingStyles } from '../../atoms/Padding';
+import { radiusStyles } from '../../atoms/Radius/StyledRadius';
+import { typographyStyles } from '../../atoms/Typography';
+import type { InputProps } from '.';
+
 
 export const Label = styled.label`
+  display: block;
   ${typographyStyles['label']};
-  margin-left: 1rem;
+  width: 100%;
+
+  label {
+    display: inline-block;
+    margin-left: 1rem;
+  }
 `;
 
 export const InputWrapper = styled.div`
   display: flex;
   position: relative;
-  width: fit-content;
   margin-top: 0.5rem;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
-export const Input = styled(Field)`
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 300;
-  width: 320px;
-  padding: 1rem 1.5rem;
+export const Input = styled.input<Omit<InputProps, 'label'>>`
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  ${radiusStyles['radius200']};
+  ${typographyStyles['placeHolder']}
+  width: ${({ width }) => width || '100%'};
+
+  ${paddingStyles.comPad700};
+  padding-right: ${({ valid }) => !valid && '1rem'};
   &::placeholder {
     ${typographyStyles['placeHolder']};
   }
   &:focus,
   &:active {
-    border: 1px solid #3959ff;
+    border: 1px solid ${({ theme }) => theme.colors.NOTIFICATION};
     outline: none;
   }
   /* Autocomplete styles in Chrome*/
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
-    background-color: white;
-    border: 1px solid black;
+    background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+    border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   }
   ${({ valid }) =>
     valid &&
     css`
-      border: 1px solid #5bb14d;
+      border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
       &:focus,
       &:active {
-        border: 1px solid #5bb14d;
+        border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
         outline: none;
       }
       /* Autocomplete styles in Chrome*/
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus {
-        background: white;
-        border: 1px solid #5bb14d;
+        background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+        border: 1px solid ${({ theme }) => theme.colors.SUCCESS};
         outline: none;
       }
     `}
   ${({ error }) =>
     error &&
     css`
-      border: 1px solid #f03d3e;
+      border: 1px solid ${({ theme }) => theme.colors.ERROR};
       outline: none;
       &:focus,
       &:active {
-        border: 1px solid #f03d3e;
+        border: 1px solid ${({ theme }) => theme.colors.ERROR};
         outline: none;
       }
       /* Autocomplete styles in Chrome*/
       &:-webkit-autofill,
       &:-webkit-autofill:hover,
       &:-webkit-autofill:focus {
-        border: 1px solid #f03d3e;
+        border: 1px solid ${({ theme }) => theme.colors.ERROR};
       }
     `}
     ${({ disabled }) =>
     disabled &&
     css`
-      background-color: #f0edee;
-      border: 1px solid #474747;
+      background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
+      border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
       cursor: not-allowed;
       &:focus,
       &:active {
-        border: 1px solid black;
+        border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
         outline: none;
       }
     `}
 `;
 
-export const Icon = styled.img`
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-`;
-
 export const StyledInlineErrorMessage = styled.div`
-  ${typographyStyles['pSmall']}
-  color: #f03d3e;
+  ${typographyStyles['pSmall']};
+  color: ${({ theme }) => theme.colors.ERROR};
   margin-left: 0.625rem;
   margin-top: 0.5rem;
 `;
