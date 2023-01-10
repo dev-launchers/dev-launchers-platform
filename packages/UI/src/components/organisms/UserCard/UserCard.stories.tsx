@@ -16,7 +16,6 @@ const TemplateUserCard: ComponentStory<typeof UserCard> = (args) => (
 
 export const HorizontalUserAvatar = TemplateUserCard.bind({});
 HorizontalUserAvatar.args = {
-  isAltered: true,
   user: {
     id: 0,
     name: 'John James',
@@ -33,7 +32,6 @@ HorizontalUserAvatar.args = {
 export const VerticalUserAvatar = TemplateUserCard.bind({});
 VerticalUserAvatar.args = {
   isVertical: true,
-  isAltered: true,
   user: {
     id: 0,
     name: 'John James',
