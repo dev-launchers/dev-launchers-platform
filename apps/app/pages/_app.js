@@ -15,7 +15,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 import theme from '../styles/theme';
 import Script from 'next/script';
-import iubendaScript from './cookie';
+import iubendaScript from './scripts/iubendaScript';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
