@@ -1,4 +1,4 @@
-import { NewApplicant, Opportunity, Project } from "@devlaunchers/models";
+import { NewApplicant, Opportunity, Project, User as UserType } from "@devlaunchers/models";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -120,10 +120,17 @@ const Opportunities = {
 
 const Ideas = {};
 
+const User = {
+  get: () => requests.get<UserType>("users"),
+};
+
 const agent = {
   Opportunities,
   Projects,
   Applicant,
+  User,
 };
+
+
 
 export default agent;

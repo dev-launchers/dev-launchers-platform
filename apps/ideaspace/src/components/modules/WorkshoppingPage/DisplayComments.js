@@ -8,7 +8,7 @@ function DisplayComments(props) {
 
   useEffect(() => {
     if (props.selectedCard.id != undefined) {
-      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}/`)
+      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
         .then(response => {
           setData((response.data.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
         })

@@ -1,157 +1,50 @@
 import styled from "styled-components";
 import Link from 'next/link';
 
-export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  border-radius: 40px;
-  width: 80%;
-  max-width: 800px;
-  margin: 0 auto;
+export const HeadWapper = styled.div`
+  background-color: #FFFFFF;
+  padding: 6rem 1rem 4rem 1rem;
+
+  @media (max-width: 1712px) {
+    padding: 3rem 1rem 2rem 1rem;
+  }
+
+  @media (max-width: 529px) {
+    padding: 5rem 1rem 1rem 1rem;
+  }
+`;
+
+export const GoBack = styled.button`
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
-  border: 0.3rem solid ${({ theme }) => theme.colors.ACCENT_2};
-`;
+  justify-content: space-evenly;
 
-export const Headline = styled.h3`
-  width: 100%;
-  text-align: center;
-  font-size: 40px;
-  color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  padding-top: 2rem;
-`;
+  float: left;
+  margin-top: -5.5rem;
+  margin-left: 8rem;
 
-export const Description = styled.p`
-  /* color: #F1F4F5; */
-  color: black;
-  text-align: center;
-`;
-
-export const Question = styled.div`
-  margin-left: 10px;
-
-  & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 15px;
-    text-align: left;
-    float: left;
-    width: 90%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 10px;
-  }
-  & input {
-    display: inline-block;
-    float: left;
-    width: 70%;
-    height: 30px;
-    background-color: white;
-    border: none;
-    border-radius: 20px;
-  }
-`;
-
-export const Question2 = styled.div`
-  & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 15px;
-    text-align: left;
-    float: left;
-    width: 90%;
-    margin-top: 30px;
-    margin-bottom: 5px;
-    margin-left: 20px;
-  }
-  & input {
-    display: inline-block;
-    float: left;
-    width: 90%;
-    height: 100px;
-    background-color: white;
-    border: none;
-    border-radius: 20px;
-    margin-left: 10px;
-  }
-`;
-
-export const LastQuestion = styled.div`
-  clear: both;
-
-  & p {
-    display: inline-block;
-    color: #ffffff;
-    font-size: 20px;
-    text-align: left;
-    float: right;
-  }
-  & input {
-    display: inline-block;
-    float: left;
-    width: 235px;
-    height: 30px;
-    background-color: #c4c4c4;
-    border: none;
-    border-radius: 20px;
-  }
-`;
-
-export const Submit = styled.button`
-  width: 130px;
-  background: ${({ theme }) => theme.colors.ACCENT_3};
-  color: white;
-  font-weight: bold;
+  width: 82px;
+  height: 40px;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   border: 0 none;
-  border-radius: 15px;
-  cursor: pointer;
-  padding: 7px 5px;
-  margin-top: 80px;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  font-size: 20px;
-  float: right;
-`;
 
-export const Container = styled.div`
-  width: 70%;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem;
-`;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
 
-export const SubmitWrapper = styled.div`
-  background-color: #c9cacc;
-  height: auto;
-  border-radius: 30px;
-  width: 90%;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10px;
-
-  & p {
-    font-size: 2.2rem;
-    font-weight: bold;
-    padding: 0 15% 0 15%;
-
-    @media screen and (max-width: 600px) {
-      font-size: 1.6rem;
-    }
+  @media (max-width: 1024px) {
+    margin-left: 4rem;
   }
-  
-  & button {
-    width: 200px;
-    margin: 0 auto;
-    background: #89969f;
-    font-weight: bold;
-    color: #000000;
-    border: 0 none;
-    border-radius: 30px;
-    cursor: pointer;
-    padding: 10px 5px;
-    font-size: 20px;
+
+  @media (max-width: 768px) {
+    margin-left: 0rem;
+  }
+
+  @media (max-width: 529px) {
+    margin-top: -10rem;
   }
 `;

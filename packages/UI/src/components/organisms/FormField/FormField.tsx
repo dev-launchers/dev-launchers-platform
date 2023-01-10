@@ -1,63 +1,55 @@
-import { Formik } from 'formik';
-import { toFormikValidationSchema } from 'zod-formik-adapter';
-import error from '../../../assets/icons/rawSvg/alert-triangle.svg';
-import success from '../../../assets/icons/rawSvg/check-circle.svg';
+import Error from '../../../assets/icons/Error';
+import Success from '../../../assets/icons/Success';
+import Typography from '../../atoms/Typography';
 import {
   Label,
   Input,
   StyledInlineErrorMessage,
-  Icon,
   InputWrapper,
 } from './StyledFormField';
 import type { InputProps } from '.';
 
 function FormField({
-  initialValue,
+  width,
   label,
+  id,
   placeholder,
-  required,
-  disabled,
-  schema,
+  required = false,
+  disabled = false,
+  error,
+  touched,
+  onChange,
+  name,
 }: InputProps) {
   return (
-    <Formik
-      initialValues={{ [label]: initialValue }}
-      validationSchema={toFormikValidationSchema(schema)}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
-    >
-      {({ errors, touched, handleSubmit }) => {
-        return (
-          <>
-            <Label htmlFor={label}>
-              {label} {required && <span style={{ color: 'red' }}>*</span>}
-              <InputWrapper>
-                <Input
-                  type="text"
-                  name={label}
-                  id={label}
-                  autoCorrect="off"
-                  autoComplete="off"
-                  placeholder={placeholder}
-                  valid={touched[label] && !errors[label]}
-                  error={touched[label] && errors[label]}
-                  disabled={disabled}
-                />
-                {required && touched[label] && (
-                  <Icon src={errors[label] ? error : success} />
-                )}
-              </InputWrapper>
-            </Label>
-            {errors[label] && touched[label] && (
-              <StyledInlineErrorMessage>
-                {errors[label]}
-              </StyledInlineErrorMessage>
-            )}
-          </>
-        );
-      }}
-    </Formik>
+    <>
+      <Label htmlFor={id}>
+        <Typography type="label">
+          {label} {required && <span css={{ color: 'red' }}>*</span>}
+        </Typography>
+        <InputWrapper>
+          <Input
+            width={width}
+            type="text"
+            name={name}
+            id={id}
+            autoCorrect="off"
+            autoComplete="off"
+            placeholder={placeholder}
+            valid={touched && !error}
+            error={error}
+            disabled={disabled}
+            onChange={onChange}
+          />
+          {/* The field doesn't have to be required for the Error Icon to show.
+           For Example: I want to validate if the url passed is correct but it's not required for them fill. */}
+          {/* required && */ touched && (error ? <Error /> : <Success />)}
+        </InputWrapper>
+      </Label>
+      {error && touched && (
+        <StyledInlineErrorMessage>{error}</StyledInlineErrorMessage>
+      )}
+    </>
   );
 }
 
