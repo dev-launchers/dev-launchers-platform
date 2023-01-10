@@ -18,19 +18,19 @@ function addRainbowToLayer(theme: ThemeType, hasRainbow?: boolean) {
 const Layer = styled.div<LayersProps>`
   ${({ type, interactive }) => {
     switch (type) {
-      case 'dark':
+      case 'light':
         return css`
-          background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-          ${shadowStyles.highlight300};
+          background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+          ${shadowStyles.shadow500};
           &:hover {
             background-color: ${({ theme }) =>
               interactive && theme.colors.GREYSCALE_OFF_BLACK};
           }
         `;
-      case 'light':
+      case 'dark':
         return css`
-          background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-          ${shadowStyles.shadow500};
+          background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+          ${shadowStyles.highlight300};
           &:hover {
             background-color: ${({ theme }) =>
               interactive && theme.colors.GREYSCALE_OFF_BLACK};
