@@ -1,8 +1,8 @@
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
-import Discord from '../../../assets/icons/Discord';
-import Mail from '../../../assets/icons/Mail';
-import { useUserDataContext } from './../../../context/UserDataContext';
+import Discord from '../../../../assets/icons/Discord';
+import Mail from '../../../../assets/icons/Mail';
+import { useUserDataContext } from '../../../../context/UserDataContext';
 import type { UserCardProps } from '.';
 
 export default function UserCard({ user, isVertical }: UserCardProps) {
