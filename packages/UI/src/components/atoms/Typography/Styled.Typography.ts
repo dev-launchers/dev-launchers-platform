@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../../styles/theme';
 import type { TypographyProps } from '.';
 
 const h1 = `
@@ -132,6 +133,10 @@ const link = `
     font-family: 'Nunito Sans';
     font-size: 0.875rem;
     font-weight: 400;
+
+    @media only screen and (min-width: ${theme.breakpoints.lg}px) {
+        font-size: 1rem;
+    }
 `;
 
 export const typographyStyles = {
