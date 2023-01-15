@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 import theme from '../styles/theme';
+import Script from 'next/script';
+import iubendaScript from './scripts/iubendaScript';
 
 
 const hashRedirect = (router) => {
@@ -51,6 +53,15 @@ function MyApp({ Component, pageProps }) {
       <UserDataProvider>
         <ThemeProvider theme={theme}>
           <div>
+            <script
+              type="text/partytown"
+              dangerouslySetInnerHTML={{ __html: iubendaScript }}
+            />
+            <Script
+              strategy="worker"
+              async
+              src="//cdn.iubenda.com/cs/iubenda_cs.js"
+            ></Script>
             <Head>
               <script
                 async

@@ -1880,6 +1880,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@builder.io/partytown@npm:0.7.4":
+  version: 0.7.4
+  resolution: "@builder.io/partytown@npm:0.7.4"
+  bin:
+    partytown: bin/partytown.cjs
+  checksum: b731f89a909343e7e12e9569f8d3ca24a6ac0ba266dadff2f8061d1a9e4b2a38c3fa6d28a870bffe04f7cc17a1e90d248437b967b9e3e35a8cb29b859f3c0161
+  languageName: node
+  linkType: hard
+
 "@changesets/apply-release-plan@npm:^6.0.3":
   version: 6.1.0
   resolution: "@changesets/apply-release-plan@npm:6.1.0"
@@ -2570,6 +2579,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devlaunchers/app@workspace:apps/app"
   dependencies:
+    "@builder.io/partytown": 0.7.4
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"

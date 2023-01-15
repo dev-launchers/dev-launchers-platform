@@ -5,6 +5,7 @@
   "keywords": [],
   "homepage": "http://devlaunchers.org/",
   "dependencies": {
+    "@builder.io/partytown": "0.7.4",
     "@cloudflare/wrangler": "^1.19.12",
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
