@@ -1,7 +1,4 @@
-import axios from 'axios';
-import AxiosMockAdapter from 'axios-mock-adapter';
-
-let mockIdeaData = [
+export let mockIdeaData = [
     {
         "id": 195,
         "ideaName": "mock data WORKED!",
@@ -304,7 +301,7 @@ let mockIdeaData = [
     },
     {
         "id": 189,
-        "ideaName": "Test Button Next4",
+        "ideaName": "Test Button Next2",
         "tagline": "o",
         "description": "o",
         "targetAudience": "o",
@@ -378,6 +375,7 @@ let mockIdeaData = [
         "targetAudience": "This is a multiline\nHELPFULNESS\nanswer",
         "hourCommitmentMin": 1,
         "hourCommitmentMax": 4,
+        "statu": "published",
         "author": {
             id: 2
         },
@@ -655,13 +653,3 @@ let mockIdeaData = [
         ]
     }
 ];
-
-export default function initMockIdeaCardData() {
-    let mock = new AxiosMockAdapter(axios, { delayResponse: 0 });
-
-    mock
-        .onGet(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-        .reply(() => {
-            return [200, mockIdeaData];
-        });
-}

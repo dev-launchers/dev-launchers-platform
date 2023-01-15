@@ -42,6 +42,10 @@ body {
   background-color:#f0edee;
 }
 
+p {
+  margin-block: 0rem; 
+}
+
 ::-webkit-scrollbar {
   width: 20px;
 }

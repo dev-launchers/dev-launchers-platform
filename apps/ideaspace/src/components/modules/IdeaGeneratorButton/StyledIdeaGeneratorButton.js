@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ButtonWrapper = styled.div`
   width: 50%;
@@ -12,10 +12,10 @@ export const ButtonWrapper = styled.div`
   color: white;
   text-align: center;
   font-size: 2rem;
-  border-radius:15px;
+  border-radius: 15px;
 
   &:hover {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 0.8);
     color: rgb(240, 240, 240);
   }
 
@@ -35,7 +35,7 @@ export const ModalWrapper = styled.div`
   align-items: center;
   font-size: 3rem;
   line-height: 3rem;
-  background-color: rgb(255,255,255);
+  background-color: rgb(255, 255, 255);
   font-weight: bold;
   text-align: center;
 
@@ -45,4 +45,3 @@ export const ModalWrapper = styled.div`
     width: 90%;
   }
 `;
-
