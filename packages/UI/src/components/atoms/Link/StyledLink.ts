@@ -5,9 +5,6 @@ import { typographyStyles } from '../Typography';
 export const StyledLink = styled.a`
   ${typographyStyles.link}
   color: ${({ theme }) => theme.colors.BLUE};
-  @media only screen and (min-width: ${({ theme }) => theme.breakpoints.lg}px) {
-    font-size: 1rem;
-  }
 
   &:visited {
     color: ${({ theme }) => theme.colors.BLUE_700};
