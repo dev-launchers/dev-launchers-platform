@@ -139,6 +139,13 @@ const link = `
     }
 `;
 
+const navLink = `
+    font-family: 'Abel';
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+`;
+
 export const typographyStyles = {
   h1,
   h2,
@@ -153,6 +160,7 @@ export const typographyStyles = {
   label,
   labelSmall,
   link,
+  navLink,
 } as const;
 
 export const Text = styled.p<TypographyProps>`
