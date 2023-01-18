@@ -63,7 +63,6 @@ function MyApp({ Component, pageProps }) {
               src="//cdn.iubenda.com/cs/iubenda_cs.js"
             ></Script>
             <Head>
-              <meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" />
               <script
                 async
                 src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
