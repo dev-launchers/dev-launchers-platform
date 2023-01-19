@@ -19,6 +19,7 @@ export const StyledNavLink = styled.a`
 
   &:active {
     color: ${({ theme }) => theme.colors.BLUE_100};
+    border-bottom: 4px solid ${({ theme }) => theme.colors.BLUE_200};
   }
 
   &:disabled {
