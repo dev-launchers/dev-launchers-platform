@@ -144,7 +144,6 @@ const navLink = `
     font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
-    text-decoration: none;
 `;
 
 export const typographyStyles = {
