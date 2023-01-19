@@ -15,9 +15,3 @@ Light.args = {
   href: '/anywhere',
   text: 'Learn',
 };
-
-export const SubLight = LinkTemplate.bind({});
-SubLight.args = {
-  href: '/anywhere',
-  text: 'Sub NavLink',
-};
