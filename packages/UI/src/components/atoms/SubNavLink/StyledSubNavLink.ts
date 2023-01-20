@@ -8,6 +8,10 @@ export const StyledSubNavLink = styled.a`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   border: 6px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   ${radiusStyles.radius100};
+  border-top: 5px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  border-bottom: 5px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  border-left: 7px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  border-right: 7px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
 
   &:visited {
     color: ${({ theme }) => theme.colors.BLUE};

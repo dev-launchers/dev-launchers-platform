@@ -20,7 +20,6 @@ export const StyledNavLink = styled.a`
   &:active {
     color: ${({ theme }) => theme.colors.BLUE_100};
     border-bottom: 3px solid ${({ theme }) => theme.colors.BLUE_200};
-    display: inline-block;
     text-align: center;
     width: 58px;
     padding-bottom: 6px;
