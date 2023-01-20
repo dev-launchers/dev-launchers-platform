@@ -27,6 +27,7 @@ export const StyledSubNavLink = styled.a`
 
   &:active {
     color: ${({ theme }) => theme.colors.BLUE_100};
+    padding-bottom: 2px;
     border-bottom: 2px solid ${({ theme }) => theme.colors.BLUE_200};
   }
 
