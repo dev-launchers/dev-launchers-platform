@@ -1,4 +1,5 @@
 import type { ComponentStory } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import Dropdown from './Dropdown';
 
 export default {
@@ -45,10 +46,21 @@ WithRadioOpen.args = {
   type: 'radio',
   title: 'skills',
   options,
-  isOpen: true,
+  // isOpen: true,
   recieveValue(value) {
     console.log(value);
   },
+};
+
+WithRadioOpen.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const dropdownToggler = await canvas.findByText('skills');
+  await userEvent.click(dropdownToggler);
+
+  const firstOption = (await canvas.findByText('option1'))
+    .parentElement as HTMLElement;
+  await userEvent.click(firstOption);
 };
 
 export const WithCheckbox = TemplateDropdown.bind({});

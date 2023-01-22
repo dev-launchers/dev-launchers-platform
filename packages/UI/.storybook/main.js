@@ -2,11 +2,15 @@
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../public'],
+  features: {
+    interactionsDebugger: true,
+  },
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     'storybook-addon-next-router',
+    '@storybook/addon-interactions',
   ],
   framework: '@storybook/react',
 };
