@@ -1,29 +1,31 @@
 import React from 'react';
 import { atoms, molecules } from '@devlaunchers/components/src/components';
 import testImage from '../../../../assets/images/test-image.png';
+import useResponsive from '../../../../hooks/useResponsive';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
 const ProductCardWide = ({ social, defaultButton }: ProductProps) => {
+  const { isMobile } = useResponsive();
   return (
     <atoms.Layer
       type="white"
-      style={{ maxWidth: '966px', borderRadius: '16px' }}
+      css={{ maxWidth: isMobile ? '640px' : '966px', borderRadius: '16px' }}
     >
       <atoms.Box flexDirection="column">
         <img src={testImage} alt="Banner" height="642px"></img>
 
-        <atoms.Box
-          flexDirection="column"
-          style={{ padding: '48px 64px 32px 64px' }}
-        >
+        <atoms.Box flexDirection="column" padding="48px 64px 32px 64px">
           <CardDescription
             title="Product Name"
             subtitle="Product Type"
             body="This is a tagline for a product"
           />
 
-          <atoms.Box justifyContent={social ? 'space-between' : 'flex-end'}>
-            {social ? (
+          <atoms.Box
+            justifyContent={social ? 'space-between' : 'flex-end'}
+            flexWrap="wrap"
+          >
+            {social && !isMobile ? (
               <atoms.Box gap="1rem">
                 <molecules.LikeButton text="Like " />
                 <molecules.ShareButton text="Share" />
