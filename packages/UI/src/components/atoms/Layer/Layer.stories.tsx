@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Layer from './Layer';
 
 export default {
-  title: 'Molecules/Layer',
+  title: 'Atoms/Layer',
   component: Layer,
   parameters: {
     docs: {
@@ -13,27 +13,29 @@ export default {
   },
 } as ComponentMeta<typeof Layer>;
 
-export const PrimaryWhite: ComponentStory<typeof Layer> = (args) => (
+export const PrimaryLight: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-PrimaryWhite.args = {
-  type: 'white',
-  hasRainbow: false,
+PrimaryLight.args = {
+  type: 'light',
+  hasRainbowBottom: false,
+  hasRainbowTop: false,
   interactive: false,
 };
 
-export const PrimaryBlack: ComponentStory<typeof Layer> = (args) => (
+export const PrimaryDark: ComponentStory<typeof Layer> = (args) => (
   <Layer {...args}>
     <div style={{ width: '100%', height: '100px' }}></div>
   </Layer>
 );
 
-PrimaryBlack.args = {
-  type: 'black',
-  hasRainbow: false,
+PrimaryDark.args = {
+  type: 'dark',
+  hasRainbowBottom: false,
+  hasRainbowTop: false,
   interactive: false,
 };
 
@@ -44,5 +46,32 @@ export const Rainbow: ComponentStory<typeof Layer> = (args) => (
 );
 
 Rainbow.args = {
-  hasRainbow: true,
+  hasRainbowBottom: true,
+  hasRainbowTop: false,
+};
+
+export const SingleBandLight: ComponentStory<typeof Layer> = (args) => (
+  <Layer {...args}>
+    <div style={{ width: '100%', height: '100px' }}></div>
+  </Layer>
+);
+
+SingleBandLight.args = {
+  type: 'light',
+  hasRainbowBottom: true,
+  hasRainbowTop: false,
+  interactive: false,
+};
+
+export const DoubleBandLight: ComponentStory<typeof Layer> = (args) => (
+  <Layer {...args}>
+    <div style={{ width: '100%', height: '100px' }}></div>
+  </Layer>
+);
+
+DoubleBandLight.args = {
+  type: 'light',
+  hasRainbowBottom: true,
+  hasRainbowTop: true,
+  interactive: false,
 };
