@@ -39,10 +39,10 @@ function SubmissionForm() {
   };
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().required('Idea Name is Required.'),
-    description: Yup.string().required('Idea Description is Required.'),
-    experience: Yup.string().required('Experience is Required.'),
-    features: Yup.string().required('Idea Feature is Required.'),
+    ideaName: Yup.string().min(15,'Too Short!').max(150, 'Too Long!').required('Idea Name is Required.'),
+    description: Yup.string().min(15,'Too Short!').max(150, 'Too Long!').required('Idea Description is Required.'),
+    experience: Yup.string().min(15,'Too Short!').max(150, 'Too Long!').required('Experience is Required.'),
+    features: Yup.string().min(15,'Too Short!').max(150, 'Too Long!').required('Idea Feature is Required.'),
   });
 
   const submitHandler = async (values) => {
