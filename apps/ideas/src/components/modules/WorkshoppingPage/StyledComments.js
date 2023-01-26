@@ -325,10 +325,9 @@ align-items: center;
 padding: 8px 16px;
 gap: 8px;
 
-width: 100px;
+width: 111px;
 height: 40px;
-left: 20px;
-top: 20px;
+
 
 background: #FFFFFF;
 
@@ -345,11 +344,9 @@ align-items: center;
 padding: 8px 16px;
 gap: 8px;
 
-position: absolute;
 width: 111px;
 height: 40px;
-left: 20px;
-top: 99px;
+
 
 background: #FFFFFF;
 

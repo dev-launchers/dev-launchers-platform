@@ -4,6 +4,7 @@ import {
   LeaderName,
   LeaderImage,
 } from './StyledComments.js';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 function formatDate(string) {
   var options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -12,7 +13,7 @@ function formatDate(string) {
 
 function LeaderInfoComponent(props) {
   const { selectedCard, ...other } = props;
-
+  const { userData } = useUserDataContext();
   return (
     <Leader>
       <LeaderInfo>
