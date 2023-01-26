@@ -1,3 +1,5 @@
+import { motion, LazyMotion, domAnimation } from 'framer-motion';
+import { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
 import Typography from '../../atoms/Typography';
@@ -53,5 +55,28 @@ export const CardDescription = ({
       <Typography type="h5">{subtitle}</Typography>
       <Typography type="p">{body}</Typography>
     </Box>
+  );
+};
+
+export const ExpandableBlurb = ({ children }) => {
+  const [height, setHeight] = useState(0);
+  const content = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!content.current) return;
+    const height = content.current.clientHeight;
+    setHeight(height);
+  });
+
+  return (
+    <LazyMotion features={domAnimation}>
+      <motion.div
+        animate={{ height }}
+        transition={{ duration: 0.4 }}
+        style={{ overflow: 'hidden' }}
+      >
+        <motion.div ref={content}>{children}</motion.div>
+      </motion.div>
+    </LazyMotion>
   );
 };
