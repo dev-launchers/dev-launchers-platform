@@ -23,8 +23,6 @@ export const InteractionButton = styled.button`
   &:disabled {
     cursor: not-allowed;
     background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
-    path:nth-of-type(1) {
-      fill: ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
-    }
+    color: ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
   }
 `;
