@@ -5,6 +5,7 @@ import {
   CardText,
   CardContinueDiv,
 } from './StyledIdeaSpaceNavCard';
+import LikeButton from '../../../../../../packages/UI/src/components/molecules/InteractionButtons/LikeButton/LikeButton';
 
 const IdeaspaceNavCard = ({
   cardBackgroundColor,
@@ -20,6 +21,7 @@ const IdeaspaceNavCard = ({
     >
       <CardTitleDiv>{cardTitle}</CardTitleDiv>
       <CardText>{cardDescription}</CardText>
+      <LikeButton></LikeButton>
       <CardContinueDiv>
         <CardText>CONTINUE &#8594;</CardText>
       </CardContinueDiv>

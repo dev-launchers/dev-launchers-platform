@@ -27,6 +27,7 @@ function WorkshoppingPage(props) {
       description: '',
       email: '',
       created_at: '',
+      likes: '',
       comments: [''],
     }
   );
