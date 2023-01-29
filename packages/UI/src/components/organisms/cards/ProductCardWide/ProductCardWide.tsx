@@ -4,7 +4,17 @@ import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
-const ProductCardWide = ({ social, defaultButton }: ProductProps) => {
+const ProductCardWide = ({
+  socialButton,
+  defaultButton,
+  image,
+  saveButton,
+  title,
+  subtitle,
+  body,
+  button1Text,
+  button2Text,
+}: ProductProps) => {
   const { isMobile } = useResponsive();
   return (
     <atoms.Layer
@@ -12,22 +22,25 @@ const ProductCardWide = ({ social, defaultButton }: ProductProps) => {
       css={{ maxWidth: isMobile ? '640px' : '966px', borderRadius: '16px' }}
     >
       <atoms.Box flexDirection="column">
-        <img src={testImage} alt="Banner" height="642px"></img>
-
+        {image ? (
+          <img src={testImage} alt="Banner" height="642px"></img>
+        ) : undefined}
+        {saveButton ? (
+          <atoms.Box justifyContent="flex-end">
+            <molecules.SaveButton text="Save" />
+          </atoms.Box>
+        ) : undefined}
         <atoms.Box flexDirection="column" padding="48px 64px 32px 64px">
-          <CardDescription
-            title="Product Name"
-            subtitle="Product Type"
-            body="This is a tagline for a product"
-          />
-
+          <atoms.Box gap="48px">
+            <CardDescription title={title} subtitle={subtitle} body={body} />
+          </atoms.Box>
           <atoms.Box
-            justifyContent={social ? 'space-between' : 'flex-end'}
+            justifyContent={socialButton ? 'space-between' : 'flex-end'}
             flexWrap="wrap"
           >
-            {social && !isMobile ? (
+            {socialButton && !isMobile ? (
               <atoms.Box gap="1rem">
-                <molecules.LikeButton text="Like " />
+                <molecules.LikeButton text="Like" />
                 <molecules.ShareButton text="Share" />
               </atoms.Box>
             ) : undefined}
@@ -36,13 +49,13 @@ const ProductCardWide = ({ social, defaultButton }: ProductProps) => {
                 buttonType={defaultButton ? 'secondary' : 'alternative'}
                 buttonSize="xl"
               >
-                Available Position
+                {button1Text}
               </atoms.Button>
               <atoms.Button
                 buttonType={defaultButton ? 'secondary' : 'alternative'}
                 buttonSize="xl"
               >
-                Donate
+                {button2Text}
               </atoms.Button>
             </atoms.Box>
           </atoms.Box>

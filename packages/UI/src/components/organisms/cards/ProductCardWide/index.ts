@@ -1,8 +1,13 @@
 export { default } from './ProductCardWide';
 
 export interface ProductProps {
-  long: boolean;
-  image: boolean;
-  interactive: boolean;
-  disabled: boolean;
+  socialButton?: boolean;
+  defaultButton?: boolean;
+  image?: boolean;
+  saveButton?: boolean;
+  button1Text?: string;
+  button2Text?: string;
+  title: string;
+  subtitle: string;
+  body: string;
 }
