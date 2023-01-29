@@ -14,7 +14,7 @@ import type { NavigationProps } from '.';
 const links = {
   CREATE: '/create',
   LEARN: '/learn',
-  DREAM: '/ideas',
+  DREAM: '/ideaspace',
   'SUPPORT US': '/support-us',
   JOIN: '/join',
 };
@@ -38,7 +38,7 @@ export default function Navigation({ user }: NavigationProps) {
   // const { userData } = useUserDataContext();
   return (
     <>
-      <Layer hasRainbow type="black">
+      <Layer hasRainbowBottom={true} type="dark">
         <Nav>
           <Box justifyContent={'space-between'} alignItems={'center'}>
             <Link href="/">
