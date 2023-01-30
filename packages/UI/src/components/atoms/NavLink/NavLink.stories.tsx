@@ -6,11 +6,11 @@ export default {
   component: NavLink,
 } as ComponentMeta<typeof NavLink>;
 
-const LinkTemplate: ComponentStory<typeof NavLink> = (args) => (
-  <NavLink {...args} />
+const NavLinkTemplate: ComponentStory<typeof NavLink> = (args) => (
+  <NavLink {...args}>Navigation Link</NavLink>
 );
 
-export const Light = LinkTemplate.bind({});
+export const Light = NavLinkTemplate.bind({});
 Light.args = {
   href: '/anywhere',
   text: 'Learn',

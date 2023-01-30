@@ -1,4 +1,1 @@
-export interface NavLinkProps {
-  href?: string;
-  text?: string;
-}
+export { default } from './NavLink';
