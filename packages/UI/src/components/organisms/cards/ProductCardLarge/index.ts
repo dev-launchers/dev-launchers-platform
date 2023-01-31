@@ -1,4 +1,4 @@
-export { default } from './ProductCardWide';
+export { default } from './ProductCardLarge';
 
 export interface ProductProps {
   socialButton?: boolean;

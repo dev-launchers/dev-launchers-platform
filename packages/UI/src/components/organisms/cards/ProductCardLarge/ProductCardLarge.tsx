@@ -4,7 +4,7 @@ import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
-const ProductCardWide = ({
+const ProductCardLarge = ({
   socialButton,
   defaultButton,
   image,
@@ -68,4 +68,4 @@ const ProductCardWide = ({
     </atoms.Layer>
   );
 };
-export default ProductCardWide;
+export default ProductCardLarge;
