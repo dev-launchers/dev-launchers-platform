@@ -19,7 +19,11 @@ const ProductCardWide = ({
   return (
     <atoms.Layer
       type="white"
-      css={{ maxWidth: isMobile ? '640px' : '966px', borderRadius: '16px' }}
+      css={{
+        maxWidth: isMobile ? '360px' : '966px',
+        borderRadius: '16px',
+        maxHeight: isMobile ? '575px' : undefined,
+      }}
     >
       <atoms.Box flexDirection="column">
         {image ? (
@@ -31,7 +35,7 @@ const ProductCardWide = ({
           </atoms.Box>
         ) : undefined}
         <atoms.Box flexDirection="column" padding="48px 64px 32px 64px">
-          <atoms.Box gap="48px">
+          <atoms.Box css={{ marginBottom: isMobile ? '16px' : '48px' }}>
             <CardDescription title={title} subtitle={subtitle} body={body} />
           </atoms.Box>
           <atoms.Box
@@ -44,7 +48,7 @@ const ProductCardWide = ({
                 <molecules.ShareButton text="Share" />
               </atoms.Box>
             ) : undefined}
-            <atoms.Box gap="1rem">
+            <atoms.Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
               <atoms.Button
                 buttonType={defaultButton ? 'secondary' : 'alternative'}
                 buttonSize="xl"
