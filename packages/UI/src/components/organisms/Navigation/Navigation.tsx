@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Layer from '../../atoms/Layer';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
@@ -39,18 +40,18 @@ export default function Navigation({ user }: NavigationProps) {
               <ul>
                 <Box gap={'16px'}>
                   <li style={ListStyle}>
-                    <a href="#">LEARN</a>
+                    <NavLink href="#">LEARN</NavLink>
                   </li>
                   <li style={ListStyle}>
-                    <a href="#">JOIN US</a>
-                  </li>
-                  <li style={ListStyle}>
-                    {' '}
-                    <a href="#">CREATE</a>
+                    <NavLink href="#">JOIN US</NavLink>
                   </li>
                   <li style={ListStyle}>
                     {' '}
-                    <a href="#">SUPPORT US</a>
+                    <NavLink href="#">CREATE</NavLink>
+                  </li>
+                  <li style={ListStyle}>
+                    {' '}
+                    <NavLink href="#">SUPPORT US</NavLink>
                   </li>
                 </Box>
               </ul>
