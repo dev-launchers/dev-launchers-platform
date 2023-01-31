@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import BackButton from '../../molecules/BackButton';
 import logo from './../../../assets/images/logo-monogram.png';
@@ -62,24 +63,16 @@ const MobileNavigation = ({ user }: NavigationProps) => {
             <ul>
               <Box gap={'40px'} flexDirection="column" alignItems="center">
                 <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Learn
-                  </Button>
+                  <NavLink href="#">LEARN</NavLink>
                 </li>
                 <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Join Use
-                  </Button>
+                  <NavLink href="#">JOIN US</NavLink>
                 </li>
                 <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Create
-                  </Button>
+                  <NavLink href="#">CREATE</NavLink>
                 </li>
                 <li>
-                  <Button as="a" buttonType="alternative" buttonSize="standard">
-                    Support Us
-                  </Button>
+                  <NavLink href="#">SUPPORT US</NavLink>
                 </li>
               </Box>
             </ul>
