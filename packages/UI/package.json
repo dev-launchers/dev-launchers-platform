@@ -5,6 +5,7 @@
   "dependencies": {
     "@devlaunchers/models": "workspace:*",
     "@devlaunchers/utility": "workspace:*",
+    "@storybook/addon-viewport": "6.5.16",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
@@ -16,6 +17,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.1",
     "storybook-addon-next-router": "^4.0.0",
+    "storybook-addon-responsive-views": "2.3.0",
     "storybook-react-context": "^0.6.0",
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",

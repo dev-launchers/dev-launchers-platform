@@ -4,6 +4,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../src/styles/global";
 import theme from "../src/styles/theme";
 import * as NextImage from "next/image";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 const OriginalNextImage = NextImage.default;
 
 Object.defineProperty(NextImage, "default", {
@@ -42,4 +43,7 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS
+  }
 };
