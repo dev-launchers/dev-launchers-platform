@@ -6,4 +6,6 @@ export interface PositionCardProps {
   buttonStyle: 'a' | 'b';
   status: boolean;
   content: any;
+  handleMoreDetails: () => void;
+  handleApply: () => void;
 }

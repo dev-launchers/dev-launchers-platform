@@ -14,6 +14,7 @@ const content = {
   title: 'Web Developer',
   level: 'junior',
   timeCommittment: '5 hrs per week',
+  imgUrl: 'https://picsum.photos/200/300',
   role: ' We are looking for a junior web developer who is willing and eagerto learn various web technologies mainly in the field of React while working within a team of ambitious developers! Our goal is to designa platform that brings people of from a diverse range of specialties together to collaboratively design the best possible software solutions. This project provides a space for people to establish and develop their ideas into working projects with input from others.',
   tags: ['unity', 'react', 'social', 'agile', 'digital media'],
   benefits: [
@@ -150,35 +151,20 @@ LongBNoneClosed.args = {
   content,
 };
 
-export const MinimalANoneOpen = TemplatePositionCard.bind({});
-MinimalANoneOpen.args = {
+export const MinimalANone = TemplatePositionCard.bind({});
+MinimalANone.args = {
   buttonStyle: 'a',
   interaction: 'none',
   status: true,
   minimal: true,
   content,
 };
-export const MinimalANoneClosed = TemplatePositionCard.bind({});
-MinimalANoneClosed.args = {
-  buttonStyle: 'a',
-  interaction: 'none',
-  status: false,
-  minimal: true,
-  content,
-};
-export const MinimalBNoneOpen = TemplatePositionCard.bind({});
-MinimalBNoneOpen.args = {
+
+export const MinimalBNone = TemplatePositionCard.bind({});
+MinimalBNone.args = {
   buttonStyle: 'b',
   interaction: 'none',
   status: true,
-  minimal: true,
-  content,
-};
-export const MinimalBNoneClosed = TemplatePositionCard.bind({});
-MinimalBNoneClosed.args = {
-  buttonStyle: 'b',
-  interaction: 'none',
-  status: false,
   minimal: true,
   content,
 };
