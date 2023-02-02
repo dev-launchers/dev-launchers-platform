@@ -6,6 +6,8 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 import RainbowBar from '../../../site-projects/src/components/common/RainbowBar';
 
+import Head from 'next/head'
+
 import Nav from '../components/modules/Nav/nav';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
