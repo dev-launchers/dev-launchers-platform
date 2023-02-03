@@ -29,7 +29,7 @@ __metadata:
     json-schema: ^0.4.0
     jsonpointer: ^5.0.0
     leven: ^3.1.0
-  peerDependencies:
+  peerDependencies:a
     ajv: ">=8"
   checksum: b70ec9aae3b30ba1ac06948e585cd96aabbfe7ef6a1c27dc51e56c425f01290a58e9beb19ed95ee64da9f32df3e9276cd1ea58e78792741d74a519cb56955491
   languageName: node
