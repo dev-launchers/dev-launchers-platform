@@ -20,6 +20,49 @@ import {
 } from './Styled.PositionCard';
 import type { PositionCardProps } from '.';
 
+const MinimalPositionCard = ({
+  content,
+  handleMoreDetails,
+  handleApply,
+  buttonStyle,
+}) => {
+  return (
+    <Container minimal>
+      <Thumbnail minimal>
+        <Box flexDirection="column" gap="8px" width="max-content">
+          <Typography type="h3">{content.title}</Typography>
+          <Typography type="h5">{content.level}</Typography>
+          <hr />
+        </Box>
+        <Box flexDirection="column" gap="8px" width="fit-content">
+          <Typography type="h5">time committment</Typography>
+          <Typography type="pSmall">{content.timeCommittment}</Typography>
+        </Box>
+      </Thumbnail>
+      <Actions>
+        <Box width="100%" padding="0px 24px" justifyContent="flex-end">
+          <Box gap="16px">
+            <Button
+              onClick={handleMoreDetails}
+              buttonSize="standard"
+              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+            >
+              more details
+            </Button>
+            <Button
+              onClick={handleApply}
+              buttonSize="standard"
+              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+            >
+              apply
+            </Button>
+          </Box>
+        </Box>
+      </Actions>
+    </Container>
+  );
+};
+
 const PositionCard = ({
   interaction,
   status,
@@ -33,46 +76,13 @@ const PositionCard = ({
 
   const isMobile = window.innerWidth < 640;
 
-  const MinimalPositionCard = () => {
-    return (
-      <Container minimal>
-        <Thumbnail minimal>
-          <Box flexDirection="column" gap="8px" width="max-content">
-            <Typography type="h3">{content.title}</Typography>
-            <Typography type="h5">{content.level}</Typography>
-            <hr />
-          </Box>
-          <Box flexDirection="column" gap="8px" width="fit-content">
-            <Typography type="h5">time committment</Typography>
-            <Typography type="pSmall">{content.timeCommittment}</Typography>
-          </Box>
-        </Thumbnail>
-        <Actions>
-          <Box width="100%" padding="0px 24px" justifyContent="flex-end">
-            <Box gap="16px">
-              <Button
-                onClick={handleMoreDetails}
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-              >
-                more details
-              </Button>
-              <Button
-                onClick={handleApply}
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-              >
-                apply
-              </Button>
-            </Box>
-          </Box>
-        </Actions>
-      </Container>
-    );
-  };
-
   return minimal ? (
-    <MinimalPositionCard />
+    <MinimalPositionCard
+      content={content}
+      handleMoreDetails={handleMoreDetails}
+      handleApply={handleApply}
+      buttonStyle={buttonStyle}
+    />
   ) : (
     <Container>
       <Header expanded={expanded}>
