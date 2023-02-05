@@ -5,8 +5,8 @@ export interface ProductProps {
   defaultButton?: boolean;
   image?: boolean;
   saveButton?: boolean;
-  button1Text?: string;
-  button2Text?: string;
+  button1?: { text: string; href?: string; onClick: () => void };
+  button2?: { text: string; href?: string; onClick: () => void };
   title: string;
   subtitle: string;
   body: string;

@@ -1,7 +1,8 @@
 import React from 'react';
-import { atoms, molecules } from '@devlaunchers/components/src/components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
+import { Box, Layer, Button, Link } from '../../../atoms';
+import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
 const ProductCardLarge = ({
@@ -12,60 +13,66 @@ const ProductCardLarge = ({
   title,
   subtitle,
   body,
-  button1Text,
-  button2Text,
+  button1,
+  button2,
 }: ProductProps) => {
   const { isMobile } = useResponsive();
   return (
-    <atoms.Layer
-      type="white"
+    <Layer
+      type="light"
       css={{
         maxWidth: isMobile ? '360px' : '966px',
         borderRadius: '16px',
         maxHeight: isMobile ? '575px' : undefined,
       }}
     >
-      <atoms.Box flexDirection="column">
+      <Box flexDirection="column">
         {image ? (
           <img src={testImage} alt="Banner" height="642px"></img>
         ) : undefined}
         {saveButton ? (
-          <atoms.Box justifyContent="flex-end">
-            <molecules.SaveButton text="Save" />
-          </atoms.Box>
+          <Box justifyContent="flex-end">
+            <SaveButton text="Save" />
+          </Box>
         ) : undefined}
-        <atoms.Box flexDirection="column" padding="48px 64px 32px 64px">
-          <atoms.Box css={{ marginBottom: isMobile ? '16px' : '48px' }}>
+        <Box flexDirection="column" padding="48px 64px 32px 64px">
+          <Box css={{ marginBottom: isMobile ? '16px' : '48px' }}>
             <CardDescription title={title} subtitle={subtitle} body={body} />
-          </atoms.Box>
-          <atoms.Box
+          </Box>
+          <Box
             justifyContent={socialButton ? 'space-between' : 'flex-end'}
             flexWrap="wrap"
           >
             {socialButton && !isMobile ? (
-              <atoms.Box gap="1rem">
-                <molecules.LikeButton text="Like" />
-                <molecules.ShareButton text="Share" />
-              </atoms.Box>
+              <Box gap="1rem">
+                <LikeButton text="Like" />
+                <ShareButton text="Share" />
+              </Box>
             ) : undefined}
-            <atoms.Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
-              <atoms.Button
-                buttonType={defaultButton ? 'secondary' : 'alternative'}
-                buttonSize="xl"
-              >
-                {button1Text}
-              </atoms.Button>
-              <atoms.Button
-                buttonType={defaultButton ? 'secondary' : 'alternative'}
-                buttonSize="xl"
-              >
-                {button2Text}
-              </atoms.Button>
-            </atoms.Box>
-          </atoms.Box>
-        </atoms.Box>
-      </atoms.Box>
-    </atoms.Layer>
+            <Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
+              {button1?.text && (
+                <Button
+                  buttonType={defaultButton ? 'secondary' : 'alternative'}
+                  buttonSize="xl"
+                  onClick={button1.onClick}
+                >
+                  <Link href={button1.href}>{button1?.text}</Link>
+                </Button>
+              )}
+              {button2?.text && (
+                <Button
+                  buttonType={defaultButton ? 'secondary' : 'alternative'}
+                  buttonSize="xl"
+                  onClick={button2.onClick}
+                >
+                  <Link href={button2.href}>{button2?.text}</Link>
+                </Button>
+              )}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Layer>
   );
 };
 export default ProductCardLarge;
