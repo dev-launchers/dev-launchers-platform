@@ -7,6 +7,8 @@ import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { SkillLevel } from '@devlaunchers/models/level';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
+import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
+
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
 }
@@ -37,7 +39,7 @@ export default function SignUpForm() {
   //     router.push("/login");
   //   }
   // }, [router, userData.id]);
-
+  
   return (
     <Formik
       initialValues={{
@@ -60,11 +62,9 @@ export default function SignUpForm() {
       }}
       onSubmit={(
         values: NewApplicant,
-        { setSubmitting }: FormikHelpers<NewApplicant>
+        { setSubmitting }: FormikHelpers<NewApplicant>,
       ) => {
         setSubmitting(true);
-        console.log(values);
-
         agent.Applicant.post({
           ...values,
           //@ts-ignore
@@ -250,6 +250,7 @@ export default function SignUpForm() {
               </atoms.Box>
             </atoms.Box>
           </atoms.Box>
+          <FormErrorScroller focusAfterScroll />
         </Form>
         </atoms.Box>
       )}
