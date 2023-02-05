@@ -10,6 +10,7 @@
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
     "formik": "2.2.9",
+    "framer-motion": "8.4.3",
     "next": "^12.2.3",
     "polished": "^4.2.2",
     "react": "^17.0.2",
