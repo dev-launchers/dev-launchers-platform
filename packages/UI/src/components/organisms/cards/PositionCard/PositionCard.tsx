@@ -25,7 +25,10 @@ const MinimalPositionCard = ({
   handleMoreDetails,
   handleApply,
   buttonStyle,
-}) => {
+}: Pick<
+  PositionCardProps,
+  'content' | 'handleApply' | 'buttonStyle' | 'handleMoreDetails'
+>) => {
   return (
     <Container minimal>
       <Thumbnail minimal>
@@ -85,7 +88,7 @@ const PositionCard = ({
     />
   ) : (
     <Container>
-      <Header expanded={expanded}>
+      <Header>
         <Thumbnail imgUrl={content.imgUrl}>
           <Box flexDirection="column" gap="8px" width="max-content">
             <Typography type="h3">{content.title}</Typography>
@@ -96,7 +99,7 @@ const PositionCard = ({
             <Typography type="h5">time committment</Typography>
             <Typography type="pSmall">{content.timeCommittment}</Typography>
           </Box>
-          {interaction !== 'none' && (
+          {interaction && (
             <Box
               width={interaction === 'all-h' ? '100%' : 'auto'}
               gap={interaction === 'all-h' ? 'unset' : '16px'}
@@ -137,8 +140,8 @@ const PositionCard = ({
           <Details>
             <Box flexDirection="column" gap="16px">
               <Typography type="h5">why should you join?</Typography>
-              <ul style={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el1: string, i1: string) => (
+              <ul css={{ listStylePosition: 'inside' }}>
+                {content.expectations.map((el1, i1) => (
                   <Typography type="p" key={i1}>
                     <li>{el1}</li>
                   </Typography>
@@ -147,8 +150,8 @@ const PositionCard = ({
             </Box>
             <Box flexDirection="column" gap="16px">
               <Typography type="h5">expectations</Typography>
-              <ul style={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el2: string, i2: string) => (
+              <ul css={{ listStylePosition: 'inside' }}>
+                {content.expectations.map((el2, i2) => (
                   <Typography type="p" key={i2}>
                     <li>{el2}</li>
                   </Typography>

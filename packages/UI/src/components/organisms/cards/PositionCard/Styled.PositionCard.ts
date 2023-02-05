@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { radiusStyles } from '../../../atoms/Radius/StyledRadius';
 import { shadowStyles } from '../../../atoms/Shadow';
+import type { PositionCardProps } from '.';
 
-export const Container = styled.div`
+export const Container = styled.div<Pick<PositionCardProps, 'minimal'>>`
   ${({ minimal }) => minimal && shadowStyles.shadow500};
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
@@ -45,7 +46,11 @@ export const Header = styled.div`
   }
 `;
 
-export const Thumbnail = styled.div`
+export const Thumbnail = styled.div<
+  Pick<PositionCardProps, 'minimal'> & {
+    imgUrl?: PositionCardProps['content']['imgUrl'];
+  }
+>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +75,7 @@ export const Thumbnail = styled.div`
       : `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${imgUrl})`};
 `;
 
-export const interactions = styled.div`
+export const interactions = styled.div<Pick<PositionCardProps, 'interaction'>>`
   width: ${({ interaction }) => (interaction === 'all-h' ? '100%' : 'auto')};
   gap: ${({ interaction }) => (interaction === 'all-h' ? 'unset' : '16px')};
   justify-content: space-between;
@@ -78,8 +83,6 @@ export const interactions = styled.div`
     interaction === 'all-v' ? 'column' : 'row'};
   height: ${({ interaction }) => (interaction === 'all-v' ? '100%' : 'auto')};
   position: absolute;
-  [interaction === 'all-h' ? 'left' : 'right']: 0;
-                [interaction !== 'all-h' ? 'top' : 'bottom']: 0;
 `;
 
 export const Actions = styled.div`
