@@ -4,7 +4,11 @@ export interface LayersProps {
   /**
    * Adds rainbow beneath the layer
    */
-  hasRainbow?: boolean;
+  hasRainbowBottom?: boolean;
+  /**
+   * Adds rainbow at the top of the layer
+   */
+  hasRainbowTop?: boolean;
   /**
    * If true adds hover interactivity!
    */
@@ -12,5 +16,5 @@ export interface LayersProps {
   /**
    * The layer's background color, ignore to have transparent background
    */
-  type?: 'white' | 'black';
+  type?: 'light' | 'dark';
 }
