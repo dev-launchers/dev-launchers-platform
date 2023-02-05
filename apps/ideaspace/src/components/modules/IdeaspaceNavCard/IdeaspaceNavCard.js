@@ -12,6 +12,7 @@ const IdeaspaceNavCard = ({
   cardBackgroundImage,
   cardTitle,
   cardDescription,
+  numberOfLikes,
 }) => {
   return (
     <CardBackground
@@ -21,7 +22,7 @@ const IdeaspaceNavCard = ({
     >
       <CardTitleDiv>{cardTitle}</CardTitleDiv>
       <CardText>{cardDescription}</CardText>
-      <LikeButton></LikeButton>
+      <LikeButton>{numberOfLikes}</LikeButton>
       <CardContinueDiv>
         <CardText>CONTINUE &#8594;</CardText>
       </CardContinueDiv>
