@@ -6,7 +6,9 @@ export default {
   component: Link,
 } as ComponentMeta<typeof Link>;
 
-const LinkTemplate: ComponentStory<typeof Link> = (args) => <Link {...args} />;
+const LinkTemplate: ComponentStory<typeof Link> = (args) => (
+  <Link {...args}>Link</Link>
+);
 
 export const Light = LinkTemplate.bind({});
 Light.args = {
