@@ -132,7 +132,7 @@ const PositionCard = ({
           />
         </div>
         <div>
-          <TagsContainer list={content.tags} />
+          <TagsContainer title="Position Tags" list={content.tags} />
         </div>
       </Header>
       <ExpandableBlurb>

@@ -10,12 +10,13 @@ import Typography from '../../atoms/Typography';
 
 interface TagsContainerProps {
   list: string[];
+  title?: string;
 }
 
-export const TagsContainer = ({ list }: TagsContainerProps) => {
+export const TagsContainer = ({ list, title }: TagsContainerProps) => {
   return (
     <Box flexDirection="column" gap="16px" maxWidth="282px">
-      <Typography type="h5">Position tags</Typography>
+      <Typography type="h5">{title}</Typography>
       <Box flexWrap="wrap" gap="8px">
         {list.map((tag: string) => (
           <Tags key={tag} bgColor="GREYSCALE_BLACK" txtColor="GREYSCALE_WHITE">
@@ -29,8 +30,8 @@ export const TagsContainer = ({ list }: TagsContainerProps) => {
 
 interface CardDescriptionProps {
   title?: string;
-  subtitle: string;
-  body: string;
+  subtitle?: string;
+  body?: string;
 }
 
 export const CardDescription = ({
