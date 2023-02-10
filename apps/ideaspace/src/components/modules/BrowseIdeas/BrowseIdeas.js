@@ -2,7 +2,6 @@ import React from 'react'
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import IdeaCard from './IdeaCard/IdeaCard'
 import axios from "axios";
-import Grid from '@mui/material/Grid';
 import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
 
 import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas'
@@ -10,7 +9,6 @@ import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas'
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [sortedCards, setSortedCards] = React.useState([]);
   
