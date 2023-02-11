@@ -67,10 +67,10 @@ function WelcomePage() {
         <ButtonArea>
           <ButtonWrapper
             style={{
-              backgroundColor: '#FF7F0E',
+              backgroundColor: '#FF7F0E'
             }}
           >
-            <StyledLink href="/ideas/submit">
+            <StyledLink href="/ideaspace/submit">
               <IdeaspaceNavCard
                 cardBackgroundColor={submitIdeaCardBackgroundColor}
                 cardBackgroundImage={bulletinBoardPostItImage}
@@ -85,7 +85,7 @@ function WelcomePage() {
               backgroundColor: '#FFAB00',
             }}
           >
-            <StyledLink href="/ideas/browse">
+            <StyledLink href="/ideaspace/browse">
               <IdeaspaceNavCard
                 cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
                 cardBackgroundImage={helpButtonImage}

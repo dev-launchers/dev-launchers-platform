@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Link from 'next/link';
 
 export const ButtonArea = styled.div`
   width: 100%;
@@ -22,8 +21,7 @@ export const ButtonArea = styled.div`
   }
 `;
 
-export const StyledLink = styled(Link)`
-  width: 40%;
+export const StyledLink = styled.a`
   height: 100%;
   color: 'white';
   @media (orientation: portrait) {
@@ -86,8 +84,6 @@ export const BackgroundImage = styled.img`
 
 export const ButtonWrapper = styled.div`
   width: 23%;
-  height: 80%;
-  max-height: 80%;
   display: inline-grid;
   flex-direction: row;
   justify-content: space-between;
