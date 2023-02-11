@@ -1,8 +1,8 @@
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
-import Discord from '../../../assets/icons/Discord';
-import Mail from '../../../assets/icons/Mail';
-import { useUserDataContext } from './../../../context/UserDataContext';
+import Discord from '../../../../assets/icons/Discord';
+import Mail from '../../../../assets/icons/Mail';
+import { useUserDataContext } from '../../../../context/UserDataContext';
 import type { UserCardProps } from '.';
 
 export default function UserCard({ user, isVertical }: UserCardProps) {
@@ -13,10 +13,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
 
   // const { userData } = useUserDataContext();
   return (
-    <atoms.Layer
-      type="white"
-      style={{ borderRadius: '16px', maxWidth: '360px' }}
-    >
+    <atoms.Layer type="white" css={{ borderRadius: '16px', maxWidth: '360px' }}>
       <atoms.Box
         padding="24px"
         flexDirection="column"
@@ -34,7 +31,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
               height="108"
               src={userInfo.profilePictureUrl}
               alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
+              css={{ borderRadius: '50%' }}
             />
 
             <atoms.Typography type="h3" style={{ marginTop: '1rem' }}>
@@ -52,7 +49,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
           >
             <atoms.Box flexDirection="column" alignItems="center">
               <atoms.Typography type="h3">{userInfo.name}</atoms.Typography>
-              <atoms.Typography type="h5" style={{ marginTop: '.5rem' }}>
+              <atoms.Typography type="h5" css={{ marginTop: '.5rem' }}>
                 {userInfo.bio}
               </atoms.Typography>
             </atoms.Box>
@@ -61,7 +58,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
               height="108"
               src={userInfo.profilePictureUrl}
               alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
+              css={{ borderRadius: '50%' }}
             />
           </atoms.Box>
         )}
@@ -75,7 +72,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
             <Discord width={'22px'} height={'16px'} />
             <atoms.Box flexDirection="column">
               <atoms.Typography type="label">DISCORD</atoms.Typography>
-              <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
+              <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
                 {userInfo.discord.username}
               </atoms.Typography>
             </atoms.Box>
@@ -89,7 +86,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
             <Mail width={'22px'} height={'16px'} />
             <atoms.Box flexDirection="column">
               <atoms.Typography type="label">Email</atoms.Typography>
-              <atoms.Typography type="pSmall" style={{ marginTop: '.5rem' }}>
+              <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
                 {userInfo.email}
               </atoms.Typography>
             </atoms.Box>
