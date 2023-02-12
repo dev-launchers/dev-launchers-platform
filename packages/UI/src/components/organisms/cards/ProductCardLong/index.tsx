@@ -18,6 +18,7 @@ export interface ProductProps {
   };
   title: string;
   subtitle: string;
+  description: string;
   body: string;
   tags: Array<string>;
 }

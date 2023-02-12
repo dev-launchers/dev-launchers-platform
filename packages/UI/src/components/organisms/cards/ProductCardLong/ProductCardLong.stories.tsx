@@ -7,7 +7,9 @@ export default {
 } as ComponentMeta<typeof ProductCardLong>;
 
 const defaultArgs = {
-  subtitle: 'Product Description',
+  subtitle: 'Product Type',
+  title: 'Product Title',
+  description: 'Product Description',
   body: 'Our goal is to design a platform that brings people of from a diverse range of specialties together to collaboratively design the best possible software solutions',
   button1: { text: 'Available Positions' },
   button2: { text: 'Donate' },
