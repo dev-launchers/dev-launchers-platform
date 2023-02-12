@@ -3,9 +3,9 @@ import { Box } from '../../../atoms';
 import { InteractionButton } from '../StyledCommonComponents';
 import type { SaveButtonProps } from '.';
 
-const SaveButton = ({ text, filled, disabled }: SaveButtonProps) => {
+const SaveButton = ({ text, filled, disabled, ...props }: SaveButtonProps) => {
   return (
-    <InteractionButton disabled={disabled}>
+    <InteractionButton disabled={disabled} {...props}>
       <Box gap="8px" justifyContent="center" alignItems="center">
         <Save fill={filled ? 'black' : ''} />
         {text}
