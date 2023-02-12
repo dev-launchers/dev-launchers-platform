@@ -1,5 +1,4 @@
 const path = require('path');
-const { loadEnvConfig } =  require('@next/env');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
