@@ -52,7 +52,7 @@ export default function Slider({
       {withLabels && (
         <Box justifyContent="space-between">
           <p css={typographyStyles['labelSmall']}>
-            {value} {suffix}
+            {min} {suffix}
           </p>
           {(max - min) % 2 === 0 && (
             <p css={typographyStyles['labelSmall']}>

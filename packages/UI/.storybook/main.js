@@ -7,6 +7,7 @@ module.exports = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     'storybook-addon-next-router',
+    '@storybook/addon-viewport',
   ],
   framework: '@storybook/react',
 };

@@ -3,7 +3,6 @@ import { paddingStyles } from '../../atoms/Padding';
 
 export const Nav = styled.div`
   font-size: 1rem;
-  width: 100%;
   ${paddingStyles.comPad300};
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   a {
