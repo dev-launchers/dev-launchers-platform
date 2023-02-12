@@ -1,5 +1,4 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import testImage from '../../../../assets/images/test-image.png';
 import ProductCardLong from './ProductCardLong';
 export default {
   title: 'Organisms/ProductCardLong',
