@@ -3,6 +3,7 @@ import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer, Button, Link, Typography } from '../../../atoms';
+import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription, TagsContainer } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
@@ -90,7 +91,14 @@ const ProductCardLong = ({
                 buttonSize="xl"
                 onClick={button1.onClick}
               >
-                <Link href={button1.href}>{button1.text}</Link>
+                <a
+                  href={button1.href}
+                  css={typographyStyles.button}
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  {button1.text}
+                </a>
+                {/* <Link href={button1.href} css={{textDecoration: 'none', color: 'black'}} text={button1.text}></Link> */}
               </Button>
 
               <Button
