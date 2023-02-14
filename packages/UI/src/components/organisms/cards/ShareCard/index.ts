@@ -1,5 +1,7 @@
 export { default } from './ShareCard';
 
 export interface ShareCardProps {
-  type: 'idea' | 'position' | 'product';
+  title: 'idea' | 'position' | 'product';
+  platforms: string;
+  link: string;
 }
