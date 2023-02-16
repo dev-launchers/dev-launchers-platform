@@ -21,4 +21,5 @@ export interface ProductProps {
   description: string;
   body: string;
   tags: Array<string>;
+  verticalSocialButtons?: boolean;
 }

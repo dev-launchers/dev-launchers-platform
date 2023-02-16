@@ -13,7 +13,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
 
   // const { userData } = useUserDataContext();
   return (
-    <atoms.Layer type="white" css={{ borderRadius: '16px', maxWidth: '360px' }}>
+    <atoms.Layer type="light" css={{ borderRadius: '16px', maxWidth: '360px' }}>
       <atoms.Box
         padding="24px"
         flexDirection="column"
