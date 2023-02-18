@@ -173,7 +173,8 @@ export function UserProfileView({
 
   return (
     <PageBody>
-      {userData?.id || (otherUser?.id && !loading) ? (
+      {/*}{userData?.id || (otherUser?.id && !loading) ? ( {*/}
+      {true ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
