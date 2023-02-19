@@ -1,19 +1,13 @@
 import styled from 'styled-components';
 
 export const CardBackground = styled.div`
-display: flex;
-background-size: cover;
-border-radius: 30px;
-align-content: center;
-overflow: initial;
-flex-direction: column;
-justify-content: space-between;
-height: 400px;
-
-
-@media (orientation: portrait) {
-  width: 100%;
-}
+  display: flex;
+  border-radius: 30px;
+  align-content: center;
+  overflow: initial;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
   width: 350px;
   flex-direction: column;
   justify-content: space-between;
@@ -29,6 +23,7 @@ height: 400px;
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   font-color: 'white';
   @media (orientation: portrait) {
+    width: 100%;
     font-size: 1.5rem;
     flex-direction: column;
     opacity: 0.2;

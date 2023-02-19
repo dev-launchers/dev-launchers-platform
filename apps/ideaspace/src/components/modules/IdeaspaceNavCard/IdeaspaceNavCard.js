@@ -16,6 +16,7 @@ const IdeaspaceNavCard = ({
     <CardBackground
       style={{
         background: `linear-gradient(${cardBackgroundColor}, url(${cardBackgroundImage})`,
+        backgroundSize: 'cover'
       }}
     >
       <div>

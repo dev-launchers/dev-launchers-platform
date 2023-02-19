@@ -1,19 +1,15 @@
 import styled from 'styled-components';
 
 export const ButtonArea = styled.aside`
-  max-width: 1700px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  width: 90%;
+  max-width: 1700px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10vh;
   @media (orientation: portrait) {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
     min-height: 60vh;
   }
 

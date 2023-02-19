@@ -97,7 +97,7 @@ export default function IdeaGeneratorButton(props) {
         openModal={openModal}
         closeModal={closeModal}
       ></Modal>
-      <div style={{ width: '100%', height: '100%' }} onClick={openIdeaModal}>
+      <div onClick={openIdeaModal}>
         {props.children}
       </div>
     </>
