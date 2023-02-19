@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
