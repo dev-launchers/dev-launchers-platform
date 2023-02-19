@@ -6,6 +6,7 @@ import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription, TagsContainer } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
+
 const ProductCardLong = ({
   socialButton,
   defaultButton,
