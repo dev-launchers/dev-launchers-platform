@@ -1,3 +1,3 @@
-import IndexPage from "../components/modules/WelcomePage/WelcomePage"
+import WelcomePage from "../components/modules/WelcomePage/WelcomePage"
 
-export default IndexPage;
+export default WelcomePage;

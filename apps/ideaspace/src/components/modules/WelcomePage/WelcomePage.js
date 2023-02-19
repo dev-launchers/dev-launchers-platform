@@ -1,5 +1,4 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import Link from 'next/link';
 
 import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
@@ -34,19 +33,7 @@ const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check
 
 function WelcomePage() {
   return (
-    <Grid container direction="row" alignItems="center" spacing={2}>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-        style={{
-          background:
-            'linear-gradient(0deg, rgba(222,222,222,1) 50%, rgba(240,237,238,1) 50%)'
-        }}
-      >
+    <>
         <Header>
           <h1>IdeaSpace (Beta)</h1>
           <RainbowBar />
@@ -96,8 +83,7 @@ function WelcomePage() {
                 to get you started!" />
             </IdeaGeneratorButton>
         </ButtonArea>
-      </Grid>
-    </Grid>
+      </>
   );
 }
 

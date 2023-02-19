@@ -21,7 +21,6 @@ export const CardBackground = styled.div`
   @media (orientation: portrait) {
     font-size: 1.5rem;
     flex-direction: column;
-    opacity: 0.2;
   }
 
   @media (max-width: 930px) {
