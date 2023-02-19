@@ -48,6 +48,7 @@ function MyApp(props) {
           <GlobalStyle />
           <RainbowBar />
           <IdeasBetaFeedbackModal />
+          <RainbowBar />
           {props.children}
         </UserDataProvider>
       </ThemeProvider>

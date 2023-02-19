@@ -1,8 +1,3 @@
-import WelcomePage from '../components/modules/WelcomePage/WelcomePage';
-import React from 'react';
-
-const IndexPage = (props) => (
-    <WelcomePage />
-);
+import IndexPage from "../components/modules/WelcomePage/WelcomePage"
 
 export default IndexPage;
