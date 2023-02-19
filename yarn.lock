@@ -2542,6 +2542,8 @@ __metadata:
     web-vitals: ^2.1.4
     zod: 3.19.1
     zod-formik-adapter: 1.1.1
+  peerDependencies:
+    styled-components: ">= 3"
   languageName: unknown
   linkType: soft
 
