@@ -1,14 +1,43 @@
 import styled from 'styled-components';
 
 export const CardBackground = styled.div`
-  height: 100%;
-  min-height: 300px;
-  max-height: 300px;
-  display: inline;
-  background-size: cover;
+display: flex;
+background-size: cover;
+border-radius: 30px;
+align-content: center;
+overflow: initial;
+flex-direction: column;
+justify-content: space-between;
+height: 400px;
+
+
+@media (orientation: portrait) {
+  width: 100%;
+}
+  width: 350px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  border: 0 none;
   border-radius: 30px;
-  align-content: center;
-  overflow: initial;
+  cursor: pointer;
+  padding: 2rem;
+  margin: 10px 5px;
+  font-size: 2rem;
+  font-family: 'Abel';
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  font-color: 'white';
+  @media (orientation: portrait) {
+    font-size: 1.5rem;
+    flex-direction: column;
+    opacity: 0.2;
+  }
+
+  @media (max-width: 575px) {
+    width: 75%;
+    align-items: start;
+  }
 `;
 
 export const CardTitleDiv = styled.div`
@@ -18,10 +47,13 @@ export const CardTitleDiv = styled.div`
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  text-align: start;
+  padding-bottom: 25px;
 `;
 
-export const CardText = styled.p`
-  color: white;
+export const CardText = styled.div`
+text-align: start;
+margin-top: 25px;
 `;
 
 export const CardContinueDiv = styled.div`
@@ -29,4 +61,5 @@ export const CardContinueDiv = styled.div`
   position: relative;
   padding-right: 2%;
   padding-top: 1%;
+  align-self: end;
 `;
