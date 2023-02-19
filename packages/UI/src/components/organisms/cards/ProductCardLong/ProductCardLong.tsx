@@ -87,7 +87,7 @@ const ProductCardLong = ({
                 css={{
                   borderRadius: verticalSocialButtons
                     ? ' 0.5rem 0 0 0.5rem'
-                    : ' 0 0.5rem 0.5rem 0',
+                    : ' 0 0.5rem 0.5rem 0.5rem',
                 }}
               />
             ) : undefined}
