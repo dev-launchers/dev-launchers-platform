@@ -1,5 +1,11 @@
  # Dev Launchers Strapi Service
 
+# Getting Started
+1. Copy the `.env.example` file into `.env`
+2. Run `npm install`
+3. Run `npm run develop`
+4. Go to http://localhost:1337/admin to create an account
+
 # Contributing
 Follow the [contributing guide](./CONTRIBUTING.md)
 
