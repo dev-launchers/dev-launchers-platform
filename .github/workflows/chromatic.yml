@@ -44,6 +44,12 @@ jobs:
           workingDir: packages/UI
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Discord Channel Notification
+        env:
+          DISCORD_WEBHOOK: 'https://discord.com/api/webhooks/1074402627569320068/yaBVf6frbr1NhNSksf7LAuqpDGDKFeCbQZKhbGe1_plMBkXeuKTpDt5MZ8iLCxokeB6F'
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} Test has started.'
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
