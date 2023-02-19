@@ -44,7 +44,7 @@ function WelcomePage() {
         xl={12}
         style={{
           background:
-            'linear-gradient(0deg, rgba(222,222,222,1) 50%, rgba(240,237,238,1) 50%)',
+            'linear-gradient(0deg, rgba(222,222,222,1) 50%, rgba(240,237,238,1) 50%)'
         }}
       >
         <Header>

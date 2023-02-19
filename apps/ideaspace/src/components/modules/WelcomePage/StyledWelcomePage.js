@@ -3,19 +3,22 @@ import styled from 'styled-components';
 export const ButtonArea = styled.aside`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 90%;
+  padding-left: 2.5%;
+  width: 100%;
   max-width: 1700px;
-  margin-left: auto;
-  margin-right: auto;
+
   margin-bottom: 10vh;
   @media (orientation: portrait) {
     min-height: 60vh;
   }
 
-  @media (max-width: 575px) {
+  @media(max-width: 1280px) {
+    padding-left: 1%;
+  }
+
+  @media (max-width: 930px) {
+    padding-left: 12.5%;
     flex-direction: column;
-    justify-content: space-between;
   }
 `;
 
