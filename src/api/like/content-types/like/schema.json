@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "likes",
+  "info": {
+    "singularName": "like",
+    "pluralName": "likes",
+    "displayName": "Like",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "objectId": {
+      "type": "string"
+    },
+    "objectType": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    }
+  }
+}
