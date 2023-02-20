@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
 
 import Footer from '@devlaunchers/components/components/Footer';
 import Navigation from '@devlaunchers/components/components/organisms/Navigation';
@@ -12,7 +11,6 @@ import { Router, useRouter } from 'next/router';
 import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../styles/globals';
 import theme from '../styles/theme';
 import Script from 'next/script';
 import iubendaScript from '../scripts/iubendaScript';
