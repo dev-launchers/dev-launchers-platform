@@ -15,7 +15,6 @@ const defaultArgs = {
   socialButton: true,
   defaultButton: true,
   saveButton: true,
-  image: true,
   tags: ['react', 'js', 'html', 'css', 'typescript'],
   verticalSocialButtons: false,
 };

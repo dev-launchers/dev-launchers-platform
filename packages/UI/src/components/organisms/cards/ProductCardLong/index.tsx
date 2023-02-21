@@ -3,7 +3,6 @@ export { default } from './ProductCardLong';
 export interface ProductProps {
   socialButton?: boolean;
   defaultButton?: boolean;
-  image?: boolean;
   imageSrc?: string;
   saveButton?: boolean;
   button1: {

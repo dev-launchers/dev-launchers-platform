@@ -10,7 +10,6 @@ import type { ProductProps } from '.';
 const ProductCardLong = ({
   socialButton,
   defaultButton,
-  image,
   saveButton,
   title,
   subtitle,
@@ -41,9 +40,7 @@ const ProductCardLong = ({
           justifyContent={verticalSocialButtons ? undefined : 'flex-end'}
           alignItems={verticalSocialButtons ? 'center' : undefined}
           css={{
-            backgroundImage: image
-              ? `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`
-              : undefined,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -53,25 +50,23 @@ const ProductCardLong = ({
           }}
         >
           <Box flexDirection="column" css={{ margin: '0 0 52px 32px' }}>
-            {isMobile ? undefined : (
-              <>
-                <Typography
-                  type="h1"
-                  css={{
-                    color: theme.colors.GREYSCALE_WHITE,
-                    margin: 0,
-                  }}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  type="h5"
-                  css={{ color: theme.colors.GREYSCALE_WHITE }}
-                >
-                  {subtitle}
-                </Typography>
-              </>
-            )}
+            <>
+              <Typography
+                type="h1"
+                css={{
+                  color: theme.colors.GREYSCALE_WHITE,
+                  margin: 0,
+                }}
+              >
+                {title}
+              </Typography>
+              <Typography
+                type="h5"
+                css={{ color: theme.colors.GREYSCALE_WHITE }}
+              >
+                {subtitle}
+              </Typography>
+            </>
           </Box>
           <Box
             flexDirection={verticalSocialButtons ? 'column' : 'row'}
@@ -109,33 +104,12 @@ const ProductCardLong = ({
             ) : undefined}
           </Box>
         </Box>
-
         <Box
           flexDirection={isMobile ? 'column' : 'row'}
           justifyContent="space-between"
           gap="32px"
           css={{ margin: isMobile ? '20px' : '0' }}
         >
-          {isMobile ? (
-            <>
-              <Typography
-                type="h1"
-                css={{
-                  color: theme.colors.GREYSCALE_BLACK,
-                  margin: 0,
-                }}
-              >
-                {title}
-              </Typography>
-              <Typography
-                type="h5"
-                css={{ color: theme.colors.GREYSCALE_BLACK }}
-              >
-                {subtitle}
-              </Typography>
-            </>
-          ) : undefined}
-
           <CardDescription
             subtitle={isMobile ? undefined : description}
             body={body}
