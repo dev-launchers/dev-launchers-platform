@@ -4,9 +4,16 @@ import Discord from '../../../../assets/icons/Discord';
 import Mail from '../../../../assets/icons/Mail';
 import Close from '../../../../assets/icons/Close';
 import Link from '../../../../assets/icons/Link';
+import Button from '../../../atoms/Button';
 import type { ShareCardProps } from '.';
+import { useState } from 'react';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
+
   return (
     <atoms.Layer
       type="light"
@@ -18,10 +25,16 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
       }}
     >
       <atoms.Box flexDirection="column" alignItems="end">
-        <Close width="22px" height="16px" />
+        <Button
+          onClick={handleClose}
+          buttonSize="standard"
+          buttonType="alternative"
+        >
+          <Close width="22px" height="16px" />
+        </Button>
       </atoms.Box>
       <atoms.Box flexDirection="column" alignItems="center">
-        <atoms.Typography type="h5">Test</atoms.Typography>
+        <atoms.Typography type="h5">{title}</atoms.Typography>
         <Discord width="22px" height="16px" />
       </atoms.Box>
       <atoms.Box flexDirection="column" alignItems="center">

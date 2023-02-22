@@ -4,4 +4,5 @@ export interface ShareCardProps {
   title: 'idea' | 'position' | 'product';
   platforms: string;
   link: string;
+  handleClose: () => void;
 }
