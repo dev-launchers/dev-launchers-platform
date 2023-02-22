@@ -43,6 +43,7 @@ jobs:
       - name: build storybook
         run: yarn build-storybook
   deploy:
+    needs: [build]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
