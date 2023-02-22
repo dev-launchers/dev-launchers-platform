@@ -26,9 +26,10 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  build: 
-    environment: 
+  deploy:
+    environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -37,24 +38,16 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-
       - name: install deps
         run: corepack enable && yarn workspaces focus
       - name: build storybook
         run: yarn build-storybook
-  deploy:
-    needs: [build]
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          # Upload entire repository
+          # Upload the static website of storybook
           path: './storybook-static'
       - name: Deploy to GitHub Pages
         id: deployment
