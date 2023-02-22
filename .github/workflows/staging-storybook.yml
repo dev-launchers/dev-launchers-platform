@@ -44,6 +44,8 @@ jobs:
         run: yarn build-storybook
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: print list of files
+        run: ls
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
