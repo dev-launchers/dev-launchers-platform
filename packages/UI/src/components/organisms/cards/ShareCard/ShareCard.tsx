@@ -29,16 +29,32 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
           onClick={handleClose}
           buttonSize="standard"
           buttonType="alternative"
+          css={{
+            position: 'relative',
+            width: '30px',
+            height: '30px',
+          }}
         >
-          <Close width="22px" height="16px" />
+          <Close
+            width="20px"
+            height="20px"
+            css={{
+              top: '50%',
+              left: '50%',
+              position: 'absolute',
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
         </Button>
       </atoms.Box>
       <atoms.Box flexDirection="column" alignItems="center">
-        <atoms.Typography type="h5">{title}</atoms.Typography>
+        <atoms.Typography type="h5" css={{ padding: '0px 0px 22px 0px' }}>
+          Share This {title}
+        </atoms.Typography>
         <Discord width="22px" height="16px" />
       </atoms.Box>
-      <atoms.Box flexDirection="column" alignItems="center">
-        <atoms.Typography type="label">Test</atoms.Typography>
+      <atoms.Box flexDirection="column" alignItems="left">
+        <atoms.Typography type="label">Share With A Link</atoms.Typography>
         <Link width="22px" height="16px" />
       </atoms.Box>
     </atoms.Layer>
