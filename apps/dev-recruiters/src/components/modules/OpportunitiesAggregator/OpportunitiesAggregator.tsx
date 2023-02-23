@@ -4,8 +4,7 @@ import {
 
 import * as React from "react";
 import Slider from "react-slick";
-// uncomment the below line at your own risk, it has broken /join page
-//import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css";
 import BoxContainer from "../../common/BoxContainer";
 import FilteringComponent, {
   FilteringComponentProps
