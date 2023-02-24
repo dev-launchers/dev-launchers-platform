@@ -10,6 +10,7 @@ export const ModalWrapper = styled.div`
   background-color: rgb(255, 255, 255);
   font-weight: bold;
   text-align: center;
+  height:100%;
 
   @media (orientation: portrait) {
     font-size: 1.75rem;

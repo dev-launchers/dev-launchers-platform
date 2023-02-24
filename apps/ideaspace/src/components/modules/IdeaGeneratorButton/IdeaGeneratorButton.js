@@ -51,39 +51,48 @@ export default function IdeaGeneratorButton(props) {
   };
 
   const openIdeaModal = async () => {
-    setModalContent(
-      <ModalWrapper>
-        <span style={{ fontSize: '1.25em' }}>Loading...</span>
-        <br />
-        <br />
-        We are querying a "Large Language Model" to generate a new idea using
-        AI. It may take up to 30 seconds!
-        <br />
-        <br />
-        <span style={{ fontSize: '.5em' }}>
-          Interested in how this works? This system combines the practice of
-          "Prompt Engineering" with a "GPT Model" called GPT-J to generate
-          pieces of text with specific areas of focus. Go check it out!
-        </span>
-      </ModalWrapper>
-    );
-    openModal();
+    // setModalContent(
+    //   <ModalWrapper>
+    //     <span style={{ fontSize: '1.25em' }}>Loading...</span>
+    //     <br />
+    //     <br />
+    //     We are querying a "Large Language Model" to generate a new idea using
+    //     AI. It may take up to 30 seconds!
+    //     <br />
+    //     <br />
+    //     <span style={{ fontSize: '.5em' }}>
+    //       Interested in how this works? This system combines the practice of
+    //       "Prompt Engineering" with a "GPT Model" called GPT-J to generate
+    //       pieces of text with specific areas of focus. Go check it out!
+    //     </span>
+    //   </ModalWrapper>
+    // );
+    // openModal();
 
-    setModalContent(
+    // setModalContent(
+    //   <ModalWrapper>
+    //     <span style={{ fontSize: '.6em' }}>
+    //       Your idea seed is ready! It will most likely need some tweaking and
+    //       workshopping...
+    //     </span>
+    //     <br />
+    //     {await phraseGenerator()}
+    //     <br />
+    //     <span style={{ fontSize: '.35em' }}>
+    //       NOTE: These ideas are generated using AI, and as such may contain
+    //       biases or output unpredictable results at times. Take them with a
+    //       large grain of salt!
+    //     </span>
+    //     <br />
+    //   </ModalWrapper>
+    // );
+    // openModal();
+
+      setModalContent(
       <ModalWrapper>
-        <span style={{ fontSize: '.6em' }}>
-          Your idea seed is ready! It will most likely need some tweaking and
-          workshopping...
-        </span>
-        <br />
-        {await phraseGenerator()}
-        <br />
-        <span style={{ fontSize: '.35em' }}>
-          NOTE: These ideas are generated using AI, and as such may contain
-          biases or output unpredictable results at times. Take them with a
-          large grain of salt!
-        </span>
-        <br />
+        <span style={{ fontSize: '1.25em' }}>This feature is currently offline</span>
+        <div style={{height:"2rem"}}></div>
+        <span style={{ fontSize: '.75em' }}>We apologize for the inconvenience, please check back soon!</span>
       </ModalWrapper>
     );
     openModal();
