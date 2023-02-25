@@ -12,14 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
     "objectId": {
-      "type": "string"
+      "type": "uid"
     },
     "objectType": {
-      "type": "string"
-    },
-    "userId": {
-      "type": "string"
+      "type": "enumeration",
+      "enum": [
+        "Comment",
+        "IdeaCard"
+      ]
     }
   }
 }
