@@ -5,7 +5,6 @@ import {
 import * as React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 import BoxContainer from "../../common/BoxContainer";
 import FilteringComponent, {
   FilteringComponentProps
@@ -23,7 +22,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
     dots: true,
     arrows: true,
     speed: 1000,
-    slidesToShow: projects.length > 1 ? projects.length - 1 : projects.length,
+    slidesToShow: projects.length > 1 ? 3 : projects.length,
     slidesToScroll: 1,
     autoplay: false,
     responsive: [

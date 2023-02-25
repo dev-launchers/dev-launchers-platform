@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../../styles/theme';
 import type { TypographyProps } from '.';
 
 const h1 = `
@@ -120,6 +121,24 @@ const label = `
     }
 `;
 
+const labelSmall = `
+    font-family: 'Nunito Sans';
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+`;
+
+const link = `
+    font-family: 'Nunito Sans';
+    font-size: 0.875rem;
+    font-weight: 400;
+
+    @media only screen and (min-width: ${theme.breakpoints.lg}px) {
+        font-size: 1rem;
+    }
+`;
+
 export const typographyStyles = {
   h1,
   h2,
@@ -132,8 +151,11 @@ export const typographyStyles = {
   placeHolder,
   button,
   label,
+  labelSmall,
+  link,
 } as const;
 
 export const Text = styled.p<TypographyProps>`
-  ${({ type }) => eval(type)};
+  ${({ type }) => eval(type || p)};
+  text-align: ${({ textAlign }) => textAlign};
 `;

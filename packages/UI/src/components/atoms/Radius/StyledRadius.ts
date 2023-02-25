@@ -1,27 +1,25 @@
-import { css } from 'styled-components';
-
-const radius100 = css`
+const radius100 = `
   border-radius: 0.25rem;
 `;
-const radius200 = css`
+const radius200 = `
   border-radius: 0.5rem;
 `;
-const radius300 = css`
+const radius300 = `
   border-radius: 1rem;
 `;
-const radius400 = css`
+const radius400 = `
   border-radius: 1.5rem;
 `;
-const radius500 = css`
+const radius500 = `
   border-radius: 2rem;
 `;
-const radius600 = css`
+const radius600 = `
   border-radius: 3rem;
 `;
-const radius700 = css`
+const radius700 = `
   border-radius: 4rem;
 `;
-const radius800 = css`
+const radius800 = `
   border-radius: 6rem;
 `;
 
@@ -34,4 +32,4 @@ export const radiusStyles = {
   radius600,
   radius700,
   radius800,
-};
+} as const;

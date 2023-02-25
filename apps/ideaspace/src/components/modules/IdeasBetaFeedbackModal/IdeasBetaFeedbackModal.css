@@ -1,0 +1,101 @@
+.ReactModal__Content {
+  transition: 0.4s all ease-in-out;
+  transform: translateX(200%);
+}
+.ReactModal__Overlay--after-open .ReactModal__Content {
+  transform: translateX(0);
+}
+.ReactModal__Overlay--before-close .ReactModal__Content {
+  transform: translateX(200%);
+}
+
+.form-link {
+  background: #3a7ca5;
+  color: white;
+  padding: 12px 16px;
+  display: block;
+  width: fit-content;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 32px auto 16px;
+  box-shadow: 0px 10px 10px rgba(127, 126, 127, 0.25);
+  border-radius: 8px;
+}
+
+.remind,
+.remind:hover,
+.remind:active {
+  border: none;
+  background-color: white;
+  text-decoration: underline;
+  color: #295774;
+  cursor: pointer;
+}
+
+.open-button {
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  border: none;
+  background: #ff7f0e;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 10;
+}
+
+.open-button::before {
+  content: '';
+  height: 64px;
+  width: 64px;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  position: absolute;
+  background: #ff7f0e;
+  transform-origin: center center;
+  animation: 5s linear infinite expand;
+  z-index: -1;
+}
+
+@keyframes expand {
+  75% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.close-button {
+  font-weight: 900;
+  background: #f5f5f5;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+small {
+  font-size: 15px !important;
+}

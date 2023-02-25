@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
 
 import Footer from '@devlaunchers/components/components/Footer';
-import Header from '@devlaunchers/components/components/Header';
+import Navigation from '@devlaunchers/components/components/organisms/Navigation';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import {
   initGA,
@@ -12,8 +11,10 @@ import { Router, useRouter } from 'next/router';
 import React from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
-import GlobalStyle from '../styles/globals';
 import theme from '../styles/theme';
+import Script from 'next/script';
+import iubendaScript from '../scripts/iubendaScript';
+
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -49,8 +50,16 @@ function MyApp({ Component, pageProps }) {
     <>
       <UserDataProvider>
         <ThemeProvider theme={theme}>
-          <GlobalStyle />
           <div>
+            <script
+              type="text/partytown"
+              dangerouslySetInnerHTML={{ __html: iubendaScript }}
+            />
+            <Script
+              strategy="worker"
+              async
+              src="//cdn.iubenda.com/cs/iubenda_cs.js"
+            ></Script>
             <Head>
               <script
                 async
@@ -60,7 +69,8 @@ function MyApp({ Component, pageProps }) {
 
             <div className="App">
             </div>
-            <Header />
+           <Navigation />
+         
             <Component {...pageProps} />
             {/* {props.children} */}
             <Footer />
