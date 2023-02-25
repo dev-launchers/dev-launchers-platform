@@ -6,6 +6,9 @@
 3. Run `npm run develop`
 4. Go to http://localhost:1337/admin to create an account
 
+# Running from Docker
+Alternatively, you can it with docker `./docker-run.sh`
+
 # Contributing
 Follow the [contributing guide](./CONTRIBUTING.md)
 
