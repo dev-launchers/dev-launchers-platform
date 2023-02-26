@@ -47,7 +47,7 @@ jobs:
       - name: Discord Channel Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "Storybook build for ${{ github.head_ref }}.${{ github.sha }} ","url":  ${{steps.chromatic.outputs.storybookUrl}}}]'
+          DISCORD_EMBEDS: '[{"title": "Storybook build for ${{ github.head_ref }}.${{ github.sha }} ","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
         uses: Ilshidur/action-discord@master
         with:
           args: 'New build for {{ EVENT_PAYLOAD.repository.full_name }} Finished.'
