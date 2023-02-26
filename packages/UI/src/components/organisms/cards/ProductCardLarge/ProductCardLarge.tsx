@@ -19,6 +19,7 @@ const ProductCardLarge = ({
 }: ProductProps) => {
   const { isMobile } = useResponsive();
   const theme = useTheme();
+  
   return (
     <Layer
       type="light"
