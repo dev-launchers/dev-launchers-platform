@@ -11,6 +11,7 @@ import {
 } from './StyledProductCardLongComponents';
 import type { ProductProps } from '.';
 
+
 const ProductCardLong = ({
   socialButton,
   defaultButton,
