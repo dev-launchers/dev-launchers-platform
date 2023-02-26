@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
-import { Box, Layer, Button, Link } from '../../../atoms';
+import { Box, Layer, Button } from '../../../atoms';
 import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription } from '../StyledCommonComponents';
