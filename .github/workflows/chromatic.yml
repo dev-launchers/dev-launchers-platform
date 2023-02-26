@@ -47,10 +47,10 @@ jobs:
       - name: Discord Channel Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "Storybook build for ${{ github.head_ref }}.${{ github.sha }} ","url":  "steps.chromatic.outputs.storybookUrl"}]'
+          DISCORD_EMBEDS: '[{"title": "Storybook build for ${{ github.head_ref }}.${{ github.sha }} ","url":  ${{steps.chromatic.outputs.storybookUrl}}}]'
         uses: Ilshidur/action-discord@master
         with:
-          args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} Test has started.'
+          args: 'New build for {{ EVENT_PAYLOAD.repository.full_name }} Finished.'
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
