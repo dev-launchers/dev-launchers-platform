@@ -19,7 +19,7 @@ import {
   LogoImageHolder,
   LogoWrapper,
   // eslint-disable-next-line prettier/prettier
-  NavEntry
+  NavEntry,
 } from './StyledHamburgerMenu';
 // import * as style from './HamburgerMenu.module.css';
 
@@ -90,7 +90,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
                   <NavEntry>LEARN</NavEntry>
                 </a>
               </Link>
-              <Link href={'/ideas'} passHref>
+              <Link href={'/ideaspace'} passHref>
                 <a className="nav-link">
                   <NavEntry>DREAM</NavEntry>
                 </a>
