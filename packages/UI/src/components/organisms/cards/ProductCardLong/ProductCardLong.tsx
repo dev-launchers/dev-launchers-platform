@@ -1,10 +1,14 @@
 import { useTheme } from 'styled-components';
-import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
-import { Box, Layer, Button, Typography } from '../../../atoms';
+import { Box, Button, Typography } from '../../../atoms';
 import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription, TagsContainer } from '../StyledCommonComponents';
+import {
+  CardLayer,
+  ImageContainer,
+  CardWrapper,
+} from './StyledProductCardLongComponents';
 import type { ProductProps } from '.';
 
 const ProductCardLong = ({
@@ -20,60 +24,44 @@ const ProductCardLong = ({
   tags,
   verticalSocialButtons,
 }: ProductProps) => {
-  const { isMobile } = useResponsive();
+  const { isMobile, isDesktop } = useResponsive();
   const theme = useTheme();
   return (
-    <Layer
-      type="light"
-      css={{
-        maxWidth: isMobile ? '360px' : '1216px',
-        borderRadius: '16px',
-      }}
-    >
-      <Box
-        flexDirection={isMobile ? 'column' : 'row'}
-        alignItems={isMobile ? undefined : 'center'}
-        gap="32px"
-      >
-        <Box
-          flexDirection={verticalSocialButtons ? 'row' : 'column'}
-          justifyContent={verticalSocialButtons ? undefined : 'flex-end'}
-          alignItems={verticalSocialButtons ? 'center' : undefined}
-          css={{
-            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            height: '294px',
-            width: '360px',
-            borderRadius: '16px 0 0 16px',
-          }}
-        >
-          <Box flexDirection="column" css={{ margin: '0 0 52px 32px' }}>
-            <>
-              <Typography
-                type="h1"
-                css={{
-                  color: theme.colors.GREYSCALE_WHITE,
-                  margin: 0,
-                }}
-              >
-                {title}
-              </Typography>
-              <Typography
-                type="h5"
-                css={{ color: theme.colors.GREYSCALE_WHITE }}
-              >
-                {subtitle}
-              </Typography>
-            </>
+    <CardLayer>
+      <CardWrapper>
+        <ImageContainer verticalSocialButtons={verticalSocialButtons}>
+          <Box
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            css={{
+              padding:
+                verticalSocialButtons && saveButton
+                  ? '0 0 0 32px'
+                  : '48px 32px 0',
+            }}
+          >
+            <Typography
+              type="h1"
+              css={{
+                color: theme.colors.GREYSCALE_WHITE,
+                margin: 0,
+              }}
+            >
+              {title}
+            </Typography>
+            <Typography type="h2" css={{ color: theme.colors.GREYSCALE_WHITE }}>
+              {subtitle}
+            </Typography>
           </Box>
+
           <Box
             flexDirection={verticalSocialButtons ? 'column' : 'row'}
-            gap={verticalSocialButtons ? '87px' : '19px'}
+            gap={verticalSocialButtons ? '87px' : isMobile ? '22px' : '19px'}
+            alignItems="flex-end"
             css={{
-              height: verticalSocialButtons && saveButton ? '294px' : undefined,
-              width: verticalSocialButtons && saveButton ? '114px' : undefined,
+              height: verticalSocialButtons && saveButton ? '294px' : '40px',
+              width: verticalSocialButtons && saveButton ? '114px' : '360px',
             }}
           >
             {saveButton ? (
@@ -103,26 +91,41 @@ const ProductCardLong = ({
               </>
             ) : undefined}
           </Box>
-        </Box>
+        </ImageContainer>
         <Box
-          flexDirection={isMobile ? 'column' : 'row'}
+          flexDirection="column"
           justifyContent="space-between"
-          gap="32px"
-          css={{ margin: isMobile ? '20px' : '0' }}
+          css={{ width: isMobile ? undefined : '856px' }}
         >
-          <CardDescription
-            subtitle={isMobile ? undefined : description}
-            body={body}
-          />
-
-          <Box flexDirection="column" justifyContent="space-between" gap="80px">
-            {isMobile ? undefined : (
+          <Box
+            flexDirection={isMobile ? 'column' : 'row'}
+            justifyContent="space-between"
+            gap="32px"
+            css={{
+              margin: isMobile ? '20px' : '0',
+              padding: isMobile ? 'undefined' : '48px 0 16px',
+              height: '222px',
+            }}
+          >
+            <CardDescription
+              subtitle={isMobile ? undefined : description}
+              body={body}
+            />
+            {isDesktop ? (
               <TagsContainer list={tags} title="Product Tags" />
-            )}
+            ) : undefined}
+          </Box>
+          <Box
+            flexDirection={isMobile ? 'column' : 'row'}
+            justifyContent="flex-end"
+            alignItems="center"
+            css={{ padding: '16px 24px', height: '72px' }}
+          >
             <Box
               gap="1rem"
               flexDirection={isMobile ? 'column' : 'row'}
               justifyContent="flex-end"
+              css={{ width: isMobile ? '312px' : undefined }}
             >
               <Button
                 buttonType={defaultButton ? 'secondary' : 'alternative'}
@@ -164,8 +167,8 @@ const ProductCardLong = ({
             </Box>
           </Box>
         </Box>
-      </Box>
-    </Layer>
+      </CardWrapper>
+    </CardLayer>
   );
 };
 export default ProductCardLong;

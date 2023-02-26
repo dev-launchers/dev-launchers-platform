@@ -1,7 +1,8 @@
-import React from 'react';
+import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer, Button, Link } from '../../../atoms';
+import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
@@ -17,6 +18,7 @@ const ProductCardLarge = ({
   button2,
 }: ProductProps) => {
   const { isMobile } = useResponsive();
+  const theme = useTheme();
   return (
     <Layer
       type="light"
@@ -50,24 +52,43 @@ const ProductCardLarge = ({
               </Box>
             ) : undefined}
             <Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
-              {button1?.text && (
-                <Button
-                  buttonType={defaultButton ? 'secondary' : 'alternative'}
-                  buttonSize="xl"
-                  onClick={button1.onClick}
+              <Button
+                buttonType={defaultButton ? 'secondary' : 'alternative'}
+                buttonSize="xl"
+                onClick={button1.onClick}
+              >
+                <a
+                  href={button1.href}
+                  css={typographyStyles.button}
+                  style={{
+                    color: defaultButton
+                      ? theme.colors.GREYSCALE_WHITE
+                      : theme.colors.GREYSCALE_BLACK,
+                    textDecoration: 'none',
+                  }}
                 >
-                  <Link href={button1.href}>{button1?.text}</Link>
-                </Button>
-              )}
-              {button2?.text && (
-                <Button
-                  buttonType={defaultButton ? 'secondary' : 'alternative'}
-                  buttonSize="xl"
-                  onClick={button2.onClick}
+                  {button1.text}
+                </a>
+              </Button>
+
+              <Button
+                buttonType={defaultButton ? 'primary' : 'alternative'}
+                buttonSize="xl"
+                onClick={button2.onClick}
+              >
+                <a
+                  href={button2.href}
+                  css={typographyStyles.button}
+                  style={{
+                    color: defaultButton
+                      ? theme.colors.GREYSCALE_WHITE
+                      : theme.colors.GREYSCALE_BLACK,
+                    textDecoration: 'none',
+                  }}
                 >
-                  <Link href={button2.href}>{button2?.text}</Link>
-                </Button>
-              )}
+                  {button2.text}
+                </a>
+              </Button>
             </Box>
           </Box>
         </Box>
