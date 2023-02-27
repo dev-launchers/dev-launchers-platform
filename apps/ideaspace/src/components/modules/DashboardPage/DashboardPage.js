@@ -6,7 +6,6 @@ import RainbowBar from '../../../../../website/src/components/common/RainbowBar'
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
-import Ideas from './Ideas/Ideas'
 
 import {
   HeadWapper,

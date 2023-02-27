@@ -1,6 +1,5 @@
 import React from 'react';
-import './WelcomePage.css';
-import Grid from '@mui/material/Grid';
+import Link from 'next/link';
 
 import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
 
@@ -8,21 +7,21 @@ import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
 import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
-import AppIdeaGeneratorButton from '../IdeaGeneratorButton/AppIdeaGeneratorButton';
 import IdeaspaceNavCard from '../IdeaspaceNavCard';
 
 import {
   Description,
   ButtonArea,
-  StyledLink,
-  WelcomeNavigationButtonImage,
   Header,
-  ButtonWrapper,
   WelcomeMessage,
   Subheader,
   GetStartedDiv,
   RocketImage,
 } from './StyledWelcomePage';
+
+import IdeaGeneratorButton from '../IdeaGeneratorButton';
+
+const appGeneratorCardBackgroundColor = `rgba(58,124,165, 0.9), rgba(58,124,165, 0.9))`;
 
 const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
 const submitIdeaCardTitle = `Submit Your Idea`;
@@ -34,19 +33,7 @@ const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check
 
 function WelcomePage() {
   return (
-    <Grid container direction="row" alignItems="center" spacing={2}>
-      <Grid
-        item
-        xs={12}
-        sm={12}
-        md={12}
-        lg={12}
-        xl={12}
-        style={{
-          background:
-            'linear-gradient(0deg, rgba(222,222,222,1) 50%, rgba(240,237,238,1) 50%)',
-        }}
-      >
+    <>
         <Header>
           <h1>IdeaSpace (Beta)</h1>
           <RainbowBar />
@@ -65,61 +52,38 @@ function WelcomePage() {
         </Description>
 
         <ButtonArea>
-          <ButtonWrapper
-            style={{
-              backgroundColor: '#FF7F0E'
-            }}
-          >
-            <StyledLink href="/ideaspace/submit">
+          <Link href="/ideaspace/submit">
+            <a>
               <IdeaspaceNavCard
-                cardBackgroundColor={submitIdeaCardBackgroundColor}
-                cardBackgroundImage={bulletinBoardPostItImage}
-                cardTitle={submitIdeaCardTitle}
-                cardDescription={submitIdeaCardDescription}
-              />
-            </StyledLink>
-          </ButtonWrapper>
+                    cardBackgroundColor={submitIdeaCardBackgroundColor}
+                    cardBackgroundImage={bulletinBoardPostItImage}
+                    cardTitle={submitIdeaCardTitle}
+                    cardDescription={submitIdeaCardDescription}
+                  />
+            </a>
+          </Link>
 
-          <ButtonWrapper
-            style={{
-              backgroundColor: '#FFAB00',
-            }}
-          >
-            <StyledLink href="/ideaspace/browse">
-              <IdeaspaceNavCard
-                cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
-                cardBackgroundImage={helpButtonImage}
-                cardTitle={helpExistingIdeaCardTitle}
-                cardDescription={helpExistingIdeaCardDescription}
-                cssClass="help-nav-button"
-              />
-            </StyledLink>
-          </ButtonWrapper>
+          <Link href="/ideaspace/browse">
+              <a>
+                <IdeaspaceNavCard
+                  cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
+                  cardBackgroundImage={helpButtonImage}
+                  cardTitle={helpExistingIdeaCardTitle}
+                  cardDescription={helpExistingIdeaCardDescription}
+                />
+              </a>
+          </Link>
 
-          <ButtonWrapper
-            style={{
-              background: '#3A7CA5',
-              display: 'inline-flex',
-            }}
-          >
-            <AppIdeaGeneratorButton
-              style={{
-                background: '#FFAB00',
-                height: '100%',
-                width: '100%',
-                minHeight: '300px',
-                maxHeight: '300px',
-                background: `linear-gradient(rgba(58,124,165, 0.9), rgba(58,124,165, 0.9)), url(${handWithLightbulbImage})`,
-                backgroundSize: '100% 100%',
-                backgroundRepeat: 'no-repeat',
-                alignItems: 'center',
-              }}
-              showExtendedContent
-            ></AppIdeaGeneratorButton>
-          </ButtonWrapper>
+            <IdeaGeneratorButton showExtendedContent>
+              <IdeaspaceNavCard 
+                cardBackgroundColor={appGeneratorCardBackgroundColor}
+                cardBackgroundImage={handWithLightbulbImage}
+                cardTitle="Generate an Idea"
+                cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
+                to get you started!" />
+            </IdeaGeneratorButton>
         </ButtonArea>
-      </Grid>
-    </Grid>
+      </>
   );
 }
 

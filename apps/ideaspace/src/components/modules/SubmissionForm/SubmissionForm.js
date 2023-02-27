@@ -5,7 +5,7 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SignInSection from '../../common/SignInSection/SignInSection';
 import Vector from '../../../images/Vector.svg';
 
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 
@@ -16,7 +16,7 @@ import {
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
+  //if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
 
   const router = useRouter();
   const [sending, setSending] = useState(false);

@@ -1,32 +1,24 @@
 import styled from 'styled-components';
 
-export const ButtonArea = styled.div`
-  width: 100%;
-  min-height: 50vh;
-  height: 1px;
-  max-width: 1700px;
+export const ButtonArea = styled.aside`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 2.5%;
+  width: 100%;
+  max-width: 1700px;
+
   margin-bottom: 10vh;
   @media (orientation: portrait) {
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 80%;
     min-height: 60vh;
   }
-`;
 
-export const StyledLink = styled.a`
-  height: 100%;
-  color: 'white';
-  @media (orientation: portrait) {
-    width: 100%;
-    height: 40%;
+  @media(max-width: 1280px) {
+    padding-left: 1%;
+  }
+
+  @media (max-width: 930px) {
+    padding-left: 12.5%;
+    flex-direction: column;
   }
 `;
 
@@ -80,31 +72,6 @@ export const Header = styled.div`
 export const BackgroundImage = styled.img`
   width: 100%;
   height: 50%;
-`;
-
-export const ButtonWrapper = styled.div`
-  width: 23%;
-  display: inline-grid;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  /* background: #C4C4C4; */
-  /* font-weight: bold; */
-  color: ${({ theme }) => theme.colors.NEUTRAL_2};
-  border: 0 none;
-  border-radius: 30px;
-  cursor: pointer;
-  padding: 2rem;
-  margin: 10px 5px;
-  font-size: 2rem;
-  font-family: 'Abel';
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  font-color: 'white';
-  @media (orientation: portrait) {
-    font-size: 1.5rem;
-    flex-direction: column;
-    opacity: 0.2;
-  }
 `;
 
 export const WelcomeMessage = styled.div`

@@ -19,7 +19,6 @@ import CellText from './CellText/StyledCellText';
 
 import Link from 'next/link';
 
-
 function IdeaCard({ cards }) {
   return (
     <CardWrapper>
@@ -67,7 +66,9 @@ function IdeaCard({ cards }) {
         </MainList>
       </MainCard>
       <FooterCard>
-        <FooterLink href={`/ideaspace/workshop/${cards.id}`}>See More &#62;</FooterLink>
+        <Link href={`/ideaspace/workshop/${cards.id}`}>
+          <FooterLink href={`/ideaspace/workshop/${cards.id}`}>See More &#62;</FooterLink>       
+        </Link>
       </FooterCard>
     </CardWrapper>
   );

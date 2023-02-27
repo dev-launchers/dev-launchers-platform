@@ -16,10 +16,13 @@ const IdeaspaceNavCard = ({
     <CardBackground
       style={{
         background: `linear-gradient(${cardBackgroundColor}, url(${cardBackgroundImage})`,
+        backgroundSize: 'cover'
       }}
     >
+      <div>
       <CardTitleDiv>{cardTitle}</CardTitleDiv>
       <CardText>{cardDescription}</CardText>
+      </div>
       <CardContinueDiv>
         <CardText>CONTINUE &#8594;</CardText>
       </CardContinueDiv>

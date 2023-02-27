@@ -1,14 +1,36 @@
 import styled from 'styled-components';
 
 export const CardBackground = styled.div`
-  height: 100%;
-  min-height: 300px;
-  max-height: 300px;
-  display: inline;
-  background-size: cover;
+  display: flex;
   border-radius: 30px;
-  align-content: center;
   overflow: initial;
+  flex-direction: column;
+  height: 400px;
+  width: 75%;
+  flex-direction: column;
+  justify-content: space-between;
+  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  border: 0 none;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 2rem;
+  font-size: 2rem;
+  font-family: 'Abel';
+  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  font-color: 'white';
+  @media (orientation: portrait) {
+    font-size: 1.5rem;
+    flex-direction: column;
+  }
+
+  @media (max-width: 930px) {
+    width: 60%;
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 575px) {
+    align-items: start;
+  }
 `;
 
 export const CardTitleDiv = styled.div`
@@ -18,10 +40,13 @@ export const CardTitleDiv = styled.div`
   border-top: 0;
   border-left: 0;
   border-right: 0;
+  text-align: start;
+  padding-bottom: 25px;
 `;
 
-export const CardText = styled.p`
-  color: white;
+export const CardText = styled.div`
+text-align: start;
+margin-top: 25px;
 `;
 
 export const CardContinueDiv = styled.div`
@@ -29,4 +54,5 @@ export const CardContinueDiv = styled.div`
   position: relative;
   padding-right: 2%;
   padding-top: 1%;
+  align-self: end;
 `;
