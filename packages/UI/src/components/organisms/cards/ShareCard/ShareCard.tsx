@@ -1,18 +1,31 @@
+import SocialIconButton from '../../../molecules/SocialIconButton';
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
-import Discord from '../../../../assets/icons/Discord';
-import Mail from '../../../../assets/icons/Mail';
 import Close from '../../../../assets/icons/Close';
 import Link from '../../../../assets/icons/Link';
 import Button from '../../../atoms/Button';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
+import { margin } from 'polished';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
   };
+
+  const ALL_SOCIAL_PLATFORMS = [
+    'twitter',
+    'facebook',
+    'instagram',
+    'linkedin',
+    'slack',
+    'github',
+    'discord',
+  ] as const;
+
+  type SocialPlatformsTuple = typeof ALL_SOCIAL_PLATFORMS;
+  type SocialPlatform = SocialPlatformsTuple[number];
 
   return (
     <atoms.Layer
@@ -51,7 +64,11 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <atoms.Typography type="h5" css={{ padding: '0px 0px 22px 0px' }}>
           Share This {title}
         </atoms.Typography>
-        <Discord width="22px" height="16px" />
+        <atoms.Box flexDirection="row">
+          {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
+            <SocialIconButton key={index} type={SocialPlatform} />
+          ))}
+        </atoms.Box>
       </atoms.Box>
       <atoms.Box flexDirection="column" alignItems="left">
         <atoms.Typography type="label">Share With A Link</atoms.Typography>
