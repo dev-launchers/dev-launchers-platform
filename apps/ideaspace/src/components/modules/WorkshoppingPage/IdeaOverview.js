@@ -8,6 +8,7 @@ import {
   WorkshopCompleted,
   Description,
 } from './StyledComments.js';
+import LikeButton from '../../../../../../packages/UI/src/components/molecules/InteractionButtons/LikeButton';
 
 function IdeaOverview(props) {
   const { selectedCard, ...other } = props;
@@ -92,6 +93,8 @@ function IdeaOverview(props) {
         ) : (
           ''
         )}
+        <br />
+        <LikeButton></LikeButton>
       </Description>
     </Idea>
   );

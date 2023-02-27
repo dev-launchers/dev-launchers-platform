@@ -1,4 +1,5 @@
 
+import LikeButton from '../../../../../../packages/UI/src/components/molecules/InteractionButtons/LikeButton';
 import {
   SingleComment,
   UserImage,
@@ -12,10 +13,11 @@ const SingleCommentComponent = props => (
     <UserImage alt="user_image" src={`https://picsum.photos/70?random=${props.id}`} />
     <div className="textContent">
       <SingleCommentContent>
-        <h3>{props.author} -  idea owner</h3> {/* TODO: replace "idea onwer" w/ a variable that contains the user's role pertaining to the idea */}
+        <h3>{props.author} -  idea owner</h3> {/* TODO: replace "idea owner" w/ a variable that contains the user's role pertaining to the idea */}
         <div source={props.children} ><p>{props.children}</p></div>
       </SingleCommentContent>
       <SingleCommentButtons>
+        <LikeButton></LikeButton>
       </SingleCommentButtons>
     </div>
   </SingleComment>
