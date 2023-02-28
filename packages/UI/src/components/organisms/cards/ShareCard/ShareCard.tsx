@@ -64,7 +64,14 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <atoms.Typography type="h5" css={{ padding: '0px 0px 22px 0px' }}>
           Share This {title}
         </atoms.Typography>
-        <atoms.Box flexDirection="row">
+        <atoms.Box
+          flexDirection="row"
+          css={{
+            display: 'flex',
+            columnGap: '5px',
+            padding: '0px 0px 22px 0px',
+          }}
+        >
           {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
             <SocialIconButton key={index} type={SocialPlatform} />
           ))}
