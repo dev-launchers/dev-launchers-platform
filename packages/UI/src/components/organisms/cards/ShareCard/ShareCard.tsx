@@ -2,11 +2,11 @@ import SocialIconButton from '../../../molecules/SocialIconButton';
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import Close from '../../../../assets/icons/Close';
-import Link from '../../../../assets/icons/Link';
+import Share from '../../../../assets/icons/Share';
 import Button from '../../../atoms/Button';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
-import { margin } from 'polished';
+import FormField from '../../../organisms/FormField';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
@@ -24,9 +24,6 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
     'discord',
   ] as const;
 
-  type SocialPlatformsTuple = typeof ALL_SOCIAL_PLATFORMS;
-  type SocialPlatform = SocialPlatformsTuple[number];
-
   return (
     <atoms.Layer
       type="light"
@@ -35,6 +32,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         maxWidth: '480px',
         maxHeight: '300px',
         padding: '12px',
+        display: 'inline-block',
       }}
     >
       <atoms.Box flexDirection="column" alignItems="end">
@@ -64,6 +62,12 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <atoms.Typography type="h5" css={{ padding: '0px 0px 22px 0px' }}>
           Share This {title}
         </atoms.Typography>
+      </atoms.Box>
+      <atoms.Box
+        flexDirection="column"
+        justifyContent="stretch"
+        css={{ display: 'inline-flex' }}
+      >
         <atoms.Box
           flexDirection="row"
           css={{
@@ -76,10 +80,18 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
             <SocialIconButton key={index} type={SocialPlatform} />
           ))}
         </atoms.Box>
-      </atoms.Box>
-      <atoms.Box flexDirection="column" alignItems="left">
-        <atoms.Typography type="label">Share With A Link</atoms.Typography>
-        <Link width="22px" height="16px" />
+        <atoms.Box flexDirection="row">
+          <FormField
+            label={'Share With A Link'}
+            id={''}
+            placeholder={''}
+            onChange={function (value: ChangeEvent<HTMLInputElement>): void {
+              throw new Error('Function not implemented.');
+            }}
+          >
+            <Share />
+          </FormField>
+        </atoms.Box>
       </atoms.Box>
     </atoms.Layer>
   );
