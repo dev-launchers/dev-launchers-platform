@@ -2,7 +2,7 @@ import SocialIconButton from '../../../molecules/SocialIconButton';
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import Close from '../../../../assets/icons/Close';
-import Share from '../../../../assets/icons/Share';
+import Link from '../../../../assets/icons/Link';
 import Button from '../../../atoms/Button';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
@@ -85,12 +85,12 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
             label={'Share With A Link'}
             id={''}
             placeholder={''}
+            disabled={true}
             onChange={function (value: ChangeEvent<HTMLInputElement>): void {
               throw new Error('Function not implemented.');
             }}
-          >
-            <Share />
-          </FormField>
+          />
+          <Link />
         </atoms.Box>
       </atoms.Box>
     </atoms.Layer>
