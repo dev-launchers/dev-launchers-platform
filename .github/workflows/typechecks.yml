@@ -1,5 +1,4 @@
 name: Typecheck Tests
-on: deployment_status
 
 on:
   push:
