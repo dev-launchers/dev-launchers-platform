@@ -90,7 +90,6 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
               throw new Error('Function not implemented.');
             }}
           />
-          <Link />
         </atoms.Box>
       </atoms.Box>
     </atoms.Layer>
