@@ -37,23 +37,26 @@ export const ImageContainer = ({
 }: {
   children: React.ReactNode;
   verticalSocialButtons: ProductProps['verticalSocialButtons'];
-}) => (
-  <Box
-    flexDirection={verticalSocialButtons ? 'row' : 'column'}
-    justifyContent="space-between"
-    alignItems="center"
-    gap="8px"
-    css={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      minHeight: '294px',
-      minWidth: '360px',
-      borderRadius: '16px 0 0 16px',
-      padding: 0,
-    }}
-  >
-    {children}
-  </Box>
-);
+}) => {
+  const { isMobile } = useResponsive();
+  return (
+    <Box
+      flexDirection={verticalSocialButtons ? 'row' : 'column'}
+      justifyContent="space-between"
+      alignItems="center"
+      gap="8px"
+      css={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        minHeight: '294px',
+        minWidth: '360px',
+        borderRadius: isMobile ? '16px 16px 0 16px' : '16px 0 0 16px',
+        padding: 0,
+      }}
+    >
+      {children}
+    </Box>
+  );
+};

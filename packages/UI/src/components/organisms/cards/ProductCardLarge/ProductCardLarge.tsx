@@ -30,7 +30,12 @@ const ProductCardLarge = ({
     >
       <Box flexDirection="column">
         {image ? (
-          <img src={testImage} alt="Banner" height="642px"></img>
+          <img
+            src={testImage}
+            alt="Banner"
+            height="642px"
+            css={{ borderRadius: '16px 16px 0 0' }}
+          ></img>
         ) : undefined}
         {saveButton ? (
           <Box justifyContent="flex-end">

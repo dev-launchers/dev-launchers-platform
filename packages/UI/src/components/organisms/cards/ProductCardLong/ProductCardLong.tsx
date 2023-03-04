@@ -32,7 +32,9 @@ const ProductCardLong = ({
         <ImageContainer verticalSocialButtons={verticalSocialButtons}>
           <Box
             flexDirection="column"
-            alignItems="center"
+            alignItems={
+              verticalSocialButtons && saveButton ? undefined : 'center'
+            }
             justifyContent="center"
             css={{
               height: '238px',
@@ -73,8 +75,8 @@ const ProductCardLong = ({
                 text="Save"
                 css={{
                   borderRadius: verticalSocialButtons
-                    ? ' 0.5rem 0 0 0.5rem'
-                    : ' 0 0.5rem 0.5rem 0.5rem',
+                    ? '0 0 0 0.5rem'
+                    : '0 0.5rem 0 0.5rem',
                 }}
               />
             ) : undefined}
@@ -85,12 +87,12 @@ const ProductCardLong = ({
                   css={{
                     borderRadius: verticalSocialButtons
                       ? ' 0.5rem 0 0 0.5rem'
-                      : undefined,
+                      : '.5rem .5rem 0 0',
                   }}
                 />
                 <ShareButton
                   text="Share"
-                  css={{ borderRadius: ' 0.5rem 0 0 0.5rem' }}
+                  css={{ borderRadius: '0.5rem 0 0 0' }}
                 />
               </>
             ) : undefined}
