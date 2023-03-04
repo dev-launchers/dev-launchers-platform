@@ -37,7 +37,6 @@ const ProductCardLarge = ({
             css={{ borderRadius: '16px 16px 0 0' }}
           ></img>
         ) : undefined}
-        
         {saveButton ? (
           <Box justifyContent="flex-end">
             <SaveButton text="Save" />
