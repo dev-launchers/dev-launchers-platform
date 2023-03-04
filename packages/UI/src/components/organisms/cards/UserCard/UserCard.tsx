@@ -37,7 +37,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
             <atoms.Typography type="h3" style={{ marginTop: '1rem' }}>
               {userInfo.name}
             </atoms.Typography>
-            <atoms.Typography type="h5" style={{ marginTop: '.5rem' }}>
+            <atoms.Typography type="subtitle" style={{ marginTop: '.5rem' }}>
               {userInfo.bio}
             </atoms.Typography>
           </atoms.Box>
@@ -49,7 +49,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
           >
             <atoms.Box flexDirection="column" alignItems="center">
               <atoms.Typography type="h3">{userInfo.name}</atoms.Typography>
-              <atoms.Typography type="h5" css={{ marginTop: '.5rem' }}>
+              <atoms.Typography type="subtitle" css={{ marginTop: '.5rem' }}>
                 {userInfo.bio}
               </atoms.Typography>
             </atoms.Box>

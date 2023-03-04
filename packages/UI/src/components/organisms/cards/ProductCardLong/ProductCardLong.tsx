@@ -35,6 +35,7 @@ const ProductCardLong = ({
             alignItems="center"
             justifyContent="center"
             css={{
+              height: '238px',
               padding:
                 verticalSocialButtons && saveButton
                   ? '0 0 0 32px'
@@ -50,7 +51,10 @@ const ProductCardLong = ({
             >
               {title}
             </Typography>
-            <Typography type="h2" css={{ color: theme.colors.GREYSCALE_WHITE }}>
+            <Typography
+              type="subtitle"
+              css={{ color: theme.colors.GREYSCALE_WHITE }}
+            >
               {subtitle}
             </Typography>
           </Box>

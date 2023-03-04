@@ -7,7 +7,7 @@ export interface TypographyProps {
     | 'h2'
     | 'h3'
     | 'h4'
-    | 'h5'
+    | 'subtitle'
     | 'pLarge'
     | 'p'
     | 'pSmall'
