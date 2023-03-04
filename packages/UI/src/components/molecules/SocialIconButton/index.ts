@@ -1,6 +1,6 @@
 export { default } from './SocialIconButton';
 
-export interface BackButtonProps {
+export interface SocialIconButtonProps {
   type:
     | 'twitter'
     | 'facebook'
@@ -9,4 +9,5 @@ export interface BackButtonProps {
     | 'slack'
     | 'github'
     | 'discord';
+  onClick: React.MouseEvent<HTMLButtonElement>;
 }

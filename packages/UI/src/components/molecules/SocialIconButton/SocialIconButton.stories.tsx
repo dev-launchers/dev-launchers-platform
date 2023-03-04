@@ -6,27 +6,27 @@ export default {
   component: SocialIconButton,
 } as ComponentMeta<typeof SocialIconButton>;
 
-const TemplateBackButton: ComponentStory<typeof SocialIconButton> = (args) => (
-  <SocialIconButton {...args}></SocialIconButton>
-);
+const SocialIconButtonTemplate: ComponentStory<typeof SocialIconButton> = (
+  args
+) => <SocialIconButton {...args}></SocialIconButton>;
 
-export const Twitter = TemplateBackButton.bind({});
+export const Twitter = SocialIconButtonTemplate.bind({});
 Twitter.args = { type: 'twitter' };
 
-export const Facebook = TemplateBackButton.bind({});
+export const Facebook = SocialIconButtonTemplate.bind({});
 Facebook.args = { type: 'facebook' };
 
-export const Instagram = TemplateBackButton.bind({});
+export const Instagram = SocialIconButtonTemplate.bind({});
 Instagram.args = { type: 'instagram' };
 
-export const Linkedin = TemplateBackButton.bind({});
+export const Linkedin = SocialIconButtonTemplate.bind({});
 Linkedin.args = { type: 'linkedin' };
 
-export const Slack = TemplateBackButton.bind({});
+export const Slack = SocialIconButtonTemplate.bind({});
 Slack.args = { type: 'slack' };
 
-export const Github = TemplateBackButton.bind({});
+export const Github = SocialIconButtonTemplate.bind({});
 Github.args = { type: 'github' };
 
-export const Discord = TemplateBackButton.bind({});
+export const Discord = SocialIconButtonTemplate.bind({});
 Discord.args = { type: 'discord' };

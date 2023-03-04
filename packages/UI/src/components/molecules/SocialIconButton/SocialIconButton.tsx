@@ -1,7 +1,7 @@
 import { Icons } from '../../../assets';
 import Box from '../../atoms/Box';
 import { Wrapper } from './StyledSocialIconButton';
-import type { BackButtonProps } from '.';
+import type { SocialIconButtonProps } from '.';
 
 const getIcon = (type: string) => {
   switch (type) {
@@ -22,9 +22,9 @@ const getIcon = (type: string) => {
   }
 };
 
-function SocialButton({ type }: BackButtonProps) {
+function SocialButton({ type, onClick }: SocialIconButtonProps) {
   return (
-    <Wrapper>
+    <Wrapper onClick={() => onClick}>
       <Box alignItems="center" justifyContent="center" padding="8px">
         {getIcon(type)}
       </Box>
