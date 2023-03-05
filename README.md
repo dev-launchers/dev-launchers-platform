@@ -79,6 +79,14 @@ Once you are ready to create a new release, create a PR to merge master branch t
 
 ---
 
+## UI/UX Testing
+
+> Available at: https://staging.devlaunchers.org
+> This runs the main development branch (`master`) and is automatically redeployed when that branch is updated
+
+---
+
+
 ## Licenses
 
 The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).
