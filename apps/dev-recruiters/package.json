@@ -11,7 +11,7 @@
     "luxon": "^3.0.1",
     "next": "12.2.3",
     "next-compose-plugins": "^2.2.1",
-    "next-optimized-images": "^3.0.0-canary.10",
+    "next-optimized-images": "^2.6.2",
     "polished": "^4.2.2",
     "react": "^17.0.2",
     "react-burger-menu": "^3.0.8",
