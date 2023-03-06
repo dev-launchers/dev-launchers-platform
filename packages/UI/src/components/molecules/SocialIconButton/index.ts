@@ -9,5 +9,5 @@ export interface SocialIconButtonProps {
     | 'slack'
     | 'github'
     | 'discord';
-  onClick: React.MouseEvent<HTMLButtonElement>;
+  onClick: React.MouseEventHandler;
 }

@@ -7,21 +7,20 @@ import Button from '../../../atoms/Button';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
 import FormField from '../../../organisms/FormField';
+import ShareIdea from './ShareUrl';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
   };
+  const currentLocation = window.location.href;
 
   const ALL_SOCIAL_PLATFORMS = [
     'twitter',
     'facebook',
     'instagram',
     'linkedin',
-    'slack',
-    'github',
-    'discord',
   ] as const;
 
   return (
@@ -77,7 +76,11 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
           }}
         >
           {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
-            <SocialIconButton key={index} type={SocialPlatform} />
+            <SocialIconButton
+              onClick={() => ShareIdea(SocialPlatform, currentLocation)}
+              key={index}
+              type={SocialPlatform}
+            />
           ))}
         </atoms.Box>
         <atoms.Box flexDirection="row">

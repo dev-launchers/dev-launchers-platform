@@ -24,7 +24,7 @@ const getIcon = (type: string) => {
 
 function SocialButton({ type, onClick }: SocialIconButtonProps) {
   return (
-    <Wrapper onClick={() => onClick}>
+    <Wrapper onClick={onClick}>
       <Box alignItems="center" justifyContent="center" padding="8px">
         {getIcon(type)}
       </Box>
