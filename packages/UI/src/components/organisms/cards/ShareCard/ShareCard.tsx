@@ -8,6 +8,7 @@ import type { ShareCardProps } from '.';
 import { useState } from 'react';
 import FormField from '../../../organisms/FormField';
 import ShareIdea from './ShareUrl';
+import { ShareLinkButton } from './StyledShareCard';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
@@ -84,15 +85,29 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
           ))}
         </atoms.Box>
         <atoms.Box flexDirection="row">
-          <FormField
-            label={'Share With A Link'}
-            id={''}
-            placeholder={''}
-            disabled={true}
-            onChange={function (value: ChangeEvent<HTMLInputElement>): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
+          <label style={{ position: 'relative' }}>
+            <atoms.Box flexDirection="row">
+              <atoms.Typography type="label">
+                Share With A Link
+              </atoms.Typography>
+            </atoms.Box>
+            <atoms.Box flexDirection="row">
+              <ShareLinkButton
+                css={{
+                  position: 'absolute',
+                  left: '20px',
+                  top: '25px',
+                }}
+              >
+                <Link width="29px" height="24px" />
+              </ShareLinkButton>
+              <input
+                type="text"
+                value={currentLocation}
+                style={{ paddingLeft: '55px', height: '40px' }}
+              />
+            </atoms.Box>
+          </label>
         </atoms.Box>
       </atoms.Box>
     </atoms.Layer>
