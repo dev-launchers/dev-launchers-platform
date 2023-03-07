@@ -20,7 +20,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const ALL_SOCIAL_PLATFORMS = [
     'twitter',
     'facebook',
-    'instagram',
+    'mail',
     'linkedin',
   ] as const;
 
