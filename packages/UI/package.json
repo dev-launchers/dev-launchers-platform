@@ -5,10 +5,12 @@
   "dependencies": {
     "@devlaunchers/models": "workspace:*",
     "@devlaunchers/utility": "workspace:*",
+    "@storybook/addon-viewport": "6.5.16",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
     "formik": "2.2.9",
+    "framer-motion": "8.4.3",
     "next": "^12.2.3",
     "polished": "^4.2.2",
     "react": "^17.0.2",
@@ -17,7 +19,6 @@
     "react-scripts": "5.0.1",
     "storybook-addon-next-router": "^4.0.0",
     "storybook-react-context": "^0.6.0",
-    "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "web-vitals": "^2.1.4",
     "zod": "3.19.1",
@@ -48,6 +49,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "peerDependencies": {
+    "styled-components": ">= 3"
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
@@ -88,6 +92,7 @@
     "prettier": "^2.7.1",
     "rimraf": "3.0.2",
     "shell-quote": "1.7.3",
+    "styled-components": "^5.2.1",
     "ts-jest": "28.0.7",
     "typescript": "^4.7.4"
   }

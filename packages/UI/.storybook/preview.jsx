@@ -16,6 +16,44 @@ Object.defineProperty(NextImage, "default", {
   ),
 });
 
+const customViewports = {
+  sm: {
+    name: 'sm',
+    styles: {
+      width: `${theme.breakpoints.sm}px`,
+      height: '100%',
+    },
+  },
+  md: {
+    name: 'md',
+    styles: {
+      width: `${theme.breakpoints.md}px`,
+      height: '100%',
+    },
+  },
+  lg: {
+    name: 'lg',
+    styles: {
+      width: `${theme.breakpoints.lg}px`,
+      height: '100%',
+    },
+  },
+  xl: {
+    name: 'xl',
+    styles: {
+      width: `${theme.breakpoints.xl}px`,
+      height: '100%',
+    },
+  },
+  xxl: {
+    name: 'xxl',
+    styles: {
+      width: `${theme.breakpoints.xxl}px`,
+      height: '100%',
+    },
+  },
+};
+ 
 /*
  * Global decorator to apply the styles to all stories
  * Read more about them at:
@@ -41,5 +79,8 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  viewport: {
+    viewports: customViewports,
   },
 };
