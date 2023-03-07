@@ -32,7 +32,7 @@ const Opportunities = ({ opportunities }) => {
               justifyContent: "space-around",
             }}
           >
-            {opportunities.map((opportunity) => (
+            {opportunities.slice(0, 4).map((opportunity) => (
               <div
                 key={Math.random()}
                 style={{
