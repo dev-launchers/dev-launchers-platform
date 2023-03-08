@@ -199,6 +199,7 @@ export let mockIdeaData = [
         "calendly": "",
         "features": "d",
         "experience": "a",
+        "extraInfo": "",
         "skills": [
             {
                 "id": 249,
@@ -375,7 +376,7 @@ export let mockIdeaData = [
         "targetAudience": "This is a multiline\nHELPFULNESS\nanswer",
         "hourCommitmentMin": 1,
         "hourCommitmentMax": 4,
-        "statu": "published",
+        "statu": "approved",
         "author": {
             id: 2
         },
@@ -388,6 +389,7 @@ export let mockIdeaData = [
         "calendly": "no",
         "features": "This is a multiline\nFEATURES\nanswer",
         "experience": "This is a multiline\nEXPERIENCE\nanswer",
+        "involveLevel": "four",
         "skills": [
             {
                 "id": 251,
