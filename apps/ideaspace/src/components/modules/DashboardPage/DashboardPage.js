@@ -6,7 +6,7 @@ import RainbowBar from '../../../../../website/src/components/common/RainbowBar'
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
-import Ideas from './Ideas/Ideas'
+import Ideas from './Ideas/Ideas';
 
 import {
   HeadWapper,
@@ -18,14 +18,19 @@ import {
 function DashboardPage() {
 
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  //if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+    isAuthenticated = true;
+
+    React.useEffect(() => {
+      setUserData({ ...userData, id: 2 });
+    }, []);
+  }
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    //setUserData({ ...userData, id: 2 });
     {
       isAuthenticated ?
         axios
