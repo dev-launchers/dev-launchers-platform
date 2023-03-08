@@ -88,14 +88,20 @@ export default function Navigation({ user }: NavigationProps) {
                 </Box>
               ) : (
                 <Box gap={'16px'} alignItems={'center'}>
-                  <img
-                    width="36"
-                    height="33"
-                    src={userInfo.profilePictureUrl}
-                    alt="Profile avatar"
-                    style={{ borderRadius: '50%' }}
-                  />
-                  <Typography type="p">Hi {userInfo.name}</Typography>
+                  <Link href="https://devlaunchers.org/users/me">
+                    <a>
+                      <Box gap={'16px'} alignItems={'center'}>
+                        <img
+                          width="36"
+                          height="33"
+                          src={userInfo.profilePictureUrl}
+                          alt="Profile avatar"
+                          style={{ borderRadius: '50%' }}
+                        />
+                        <Typography type="p">Hi {userInfo.name}</Typography>
+                      </Box>
+                    </a>
+                  </Link>
                   <Button
                     buttonType="secondary"
                     buttonSize="standard"
