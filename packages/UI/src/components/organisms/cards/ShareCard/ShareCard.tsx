@@ -8,7 +8,7 @@ import type { ShareCardProps } from '.';
 import { useState } from 'react';
 import FormField from '../../../organisms/FormField';
 import ShareIdea from './ShareUrl';
-import { ShareLinkButton } from './StyledShareCard';
+import { ShareLinkButton, ShareInput } from './StyledShareCard';
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
@@ -64,51 +64,35 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         </atoms.Typography>
       </atoms.Box>
       <atoms.Box
-        flexDirection="column"
-        justifyContent="stretch"
-        css={{ display: 'inline-flex' }}
+        flexDirection="row"
+        css={{
+          display: 'flex',
+          columnGap: '5px',
+          padding: '0px 0px 22px 0px',
+        }}
       >
-        <atoms.Box
-          flexDirection="row"
-          css={{
-            display: 'flex',
-            columnGap: '5px',
-            padding: '0px 0px 22px 0px',
-          }}
-        >
-          {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
-            <SocialIconButton
-              onClick={() => ShareIdea(SocialPlatform, currentLocation)}
-              key={index}
-              type={SocialPlatform}
-            />
-          ))}
-        </atoms.Box>
-        <atoms.Box flexDirection="row">
-          <label style={{ position: 'relative' }}>
-            <atoms.Box flexDirection="row">
-              <atoms.Typography type="label">
-                Share With A Link
-              </atoms.Typography>
-            </atoms.Box>
-            <atoms.Box flexDirection="row">
-              <ShareLinkButton
-                css={{
-                  position: 'absolute',
-                  left: '20px',
-                  top: '25px',
-                }}
-              >
-                <Link width="29px" height="24px" />
-              </ShareLinkButton>
-              <input
-                type="text"
-                value={currentLocation}
-                style={{ paddingLeft: '55px', height: '40px' }}
-              />
-            </atoms.Box>
-          </label>
-        </atoms.Box>
+        {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
+          <SocialIconButton
+            onClick={() => ShareIdea(SocialPlatform, currentLocation)}
+            key={index}
+            type={SocialPlatform}
+          />
+        ))}
+      </atoms.Box>
+      <atoms.Box flexDirection="row">
+        <atoms.Typography type="label" css={{ padding: '0px 0px 0px 15px' }}>
+          Share With A Link
+        </atoms.Typography>
+      </atoms.Box>
+      <atoms.Box flexDirection="row" css={{ position: 'relative' }}>
+        <ShareLinkButton>
+          <Link width="29px" height="24px" />
+        </ShareLinkButton>
+        <ShareInput
+          type="text"
+          value={currentLocation}
+          style={{ paddingLeft: '55px', height: '40px' }}
+        />
       </atoms.Box>
     </atoms.Layer>
   );
