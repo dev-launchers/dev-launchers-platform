@@ -4,12 +4,12 @@ export const IdeaCardWrapper = styled.div`
 display: flex;
 flex-direction: row;
 flex-wrap: wrap; 
-column-gap: 4rem;
-row-gap: 1rem;
+column-gap: 3.8rem;
+row-gap: 2rem;
 margin-top: 1.5rem;
 
 @media (max-width: 1278px) {
-  column-gap: 1.5rem;
+  column-gap: 1.2rem;
 }
 `;
 

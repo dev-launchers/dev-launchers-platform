@@ -7,28 +7,41 @@ import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
+import getNotice from '../../common/DialogBox/NoticeBox';
 import * as Yup from 'yup';
 import { atoms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
-} from './StyledSubmissionForm';
+} from '../SubmissionForm/StyledSubmissionForm';
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+    isAuthenticated = true;
+
+    React.useEffect(() => {
+      setUserData({ ...userData, id: 2 });
+    }, []);
+  }
 
   const router = useRouter();
-  const [sending, setSending] = useState(false);
+  const { ideaId } = router.query;
+  const [sending, setSending] = React.useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     'You have unsaved changes',
-    'Are you sure you want to discard the changes and leave',
-  )
+    'Are you sure you want to discard the changes and leave?',
+  );
   const [urrl, setUrrl] = useState('');
 
-  const initialValues = {
-    ideaName: '',
+  const [Notice, confirmNotice] = getNotice(
+    'Idea updated successfully',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  );
+
+  const [card, setCard] = React.useState({
+    ideaName: 'qq',
     tagline: '',
     description: '',
     targetAudience: '',
@@ -39,7 +52,25 @@ function SubmissionForm() {
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
-  };
+  });
+
+  React.useEffect(() => {
+    if (ideaId) {
+      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
+        .then(response => {
+          if (response.status === 200) {
+            if(userData.id !== 0){
+              if(response.data.author.id == userData.id){
+                setCard(response.data);
+              }else{
+                alert("This is not your idea. You can't edit it.");
+                window.history.back(-1);
+              }
+            }
+          }
+        })
+    }
+  }, [ideaId,userData.id]);
 
   const SignupSchema = Yup.object().shape({
     ideaName: Yup.string().required('Idea Name is Required.'),
@@ -50,40 +81,45 @@ function SubmissionForm() {
 
   const submitHandler = async (values) => {
     //e.preventDefault();
+    if (values == card) {
+      alert("nothing chage");
+      return;
+    }
     setSending(true);
 
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
+    const res = await axios.put(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`,
       values
     );
 
     if (res.status === 200) {
       setunsavedChanges(false);
-      router.push(`workshop/${res.data.id}`);
+      if (await confirmNotice()){
+        setUrrl(`/ideaspace/workshop/${res.data.id}`);
+      }
     } else {
-      alert('Unable to register your idea.');
+      alert('Unable to update your idea.');
       setSending(false);
       setunsavedChanges(true);
     }
   };
 
-
   const handleDialog = async (url) => {
     if (await confirmLeave()) {
       setUrrl(url);
+    } else {
+      setSending(false);
     }
   }
 
   React.useEffect(() => {
-    // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
-
-    // For changing route.
-    if (unsavedChanges && urrl == '') {
+    
+    if (unsavedChanges && urrl == '' ) {
       const routeChangeStart = (url) => {
         handleDialog(url);
         router.events.emit('routeChangeError');
@@ -115,7 +151,7 @@ function SubmissionForm() {
       <HeadWapper>
         <atoms.Layer hasRainbow style={{ width: '16.8rem', margin: 'auto' }}>
           <atoms.Typography type='h1' style={{ fontSize: '4rem', }}>
-            Dev Ideas
+          Dev Ideas
           </atoms.Typography>
         </atoms.Layer>
         <BackButton 
@@ -130,19 +166,21 @@ function SubmissionForm() {
 
       {!isAuthenticated ? (
         <SignInSection
-          label='Please sign in to submit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/submit'
+          label='Please sign in to edit your idea!'
+          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
         />
       ) : (
         <>
           <Dialog />
+          <Notice />
           <IdeaForm
-            initialValues={initialValues}
+            initialValues={card}
             SignupSchema={SignupSchema}
             submitHandler={submitHandler}
             unsavedHandler={setunsavedChanges}
-            formButton="submit"
+            formButton="save"
             sending={sending}
+            clickHandler={backHandler}
           />
         </>
       )}

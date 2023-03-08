@@ -6,6 +6,7 @@ import RainbowBar from '../../../../../website/src/components/common/RainbowBar'
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
+import Ideas from './Ideas/Ideas';
 
 import {
   HeadWapper,
@@ -17,14 +18,19 @@ import {
 function DashboardPage() {
 
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  //if (process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT") isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+    isAuthenticated = true;
+
+    React.useEffect(() => {
+      setUserData({ ...userData, id: 2 });
+    }, []);
+  }
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    //setUserData({ ...userData, id: 2 });
     {
       isAuthenticated ?
         axios
@@ -75,70 +81,15 @@ function DashboardPage() {
           {loading === true ? (
             <CircularIndeterminateLoader text="Loading..." color="black" />
           ) : (
-            <Grid container rowSpacing={{ xs: 8, sm: 16 }}>
-              <Grid item sm={12} md={12} lg={12}>
-                <Title>IdeaSpace Dashboard</Title>
-                <RainbowArea>
-                  <StyledRanbow>
-                    <RainbowBar width="100%" />
-                  </StyledRanbow>
-                </RainbowArea>
-                <Slogan>Everything about your ideas in one place.</Slogan>
-              </Grid>
-
-
-              <Grid item sm={12} md={12} lg={12}>
-                <SectionTitle>My Stats</SectionTitle>
-                <Stats
-                  totalData={cards}
-                />
-              </Grid>
-
-              <Grid container item sm={12} md={12} lg={12} columnSpacing={6} rowSpacing={4}>
-                <Grid item sm={6} md={6} lg={4}>
-                  <SectionTitle>My Ideas</SectionTitle>
-                </Grid>
-                <Grid item sm={6} md={6} lg={8}>
-                  <SorterDiv>
-                    <SortableDropdown
-                      sortingConfigs={sortingConfigs}
-                      elements={cards}
-                      defaultOptions={defaultOptions}
-                      handleSetSortedElements={setSortedCards}
-                      style={dropDownStyle}
-                    />
-                  </SorterDiv>
-                </Grid>
-
-                <Grid item sm={12} md={12} lg={12}>
-                  <IdeaCardWrapper>
-                    {sortedCards.map((item) => {
-                      return (
-                        <IdeaCard
-                          cards={item}
-                          key={item.id}
-                        />
-                      );
-                    })
-                    }
-
-                    <CardWapper key="submitButton">
-                      <Link href="/ideaspace/submit">
-                        <Button>
-                          <img
-                            alt="submit_image"
-                            src={submitImage}
-                            style={{ width: "100%", height: "100%" }}
-                          />
-                        </Button>
-                      </Link>
-                    </CardWapper>
-                  </IdeaCardWrapper>
-                </Grid>
-
-
-              </Grid>
-            </Grid>
+            <>
+              <Stats
+                totalCard={cards}
+              />
+              
+              <Ideas
+                totalCard={cards}
+              />
+            </>
           )}
         </PageWrapper>
       )
