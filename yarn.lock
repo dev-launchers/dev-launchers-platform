@@ -2483,6 +2483,7 @@ __metadata:
     styled-normalize: ^8.0.7
     tabletop: 1.6.3
     typescript: ^4.7.4
+    webp-loader: 0.6.0
     wrangler: ^2.0.24
   languageName: unknown
   linkType: soft
@@ -2614,6 +2615,7 @@ __metadata:
     slick-carousel: ^1.8.1
     styled-normalize: ^8.0.7
     typescript: ^4.7.4
+    webp-loader: 0.6.0
     webpack: ^5.74.0
     yup: ^0.32.11
   languageName: unknown
@@ -2712,6 +2714,7 @@ __metadata:
     styled-normalize: ^8.0.7
     tabletop: ^1.6.3
     typescript: ^4.7.4
+    webp-loader: 0.6.0
   languageName: unknown
   linkType: soft
 
@@ -2780,6 +2783,7 @@ __metadata:
     styled-normalize: ^8.0.7
     typescript: ^4.7.4
     uuid: ^8.3.2
+    webp-loader: 0.6.0
     webpack: ^5.74.0
   languageName: unknown
   linkType: soft
@@ -2847,6 +2851,7 @@ __metadata:
     styled-normalize: ^8.0.7
     tabletop: 1.6.3
     typescript: ^4.7.4
+    webp-loader: 0.6.0
     wrangler: ^2.0.24
   languageName: unknown
   linkType: soft
@@ -36390,7 +36395,6 @@ __metadata:
     rimraf: 3.0.2
     shell-quote: 1.7.3
     typescript: 4.7.4
-    webp-loader: 0.6.0
   languageName: unknown
   linkType: soft
 
