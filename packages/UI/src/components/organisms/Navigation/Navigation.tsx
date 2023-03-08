@@ -78,7 +78,9 @@ export default function Navigation({ user }: NavigationProps) {
                     as="a"
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      '?redirectURL=https://devlaunchers.org/users/me'
+                      '?redirectURL=' +
+                      process.env.NEXT_PUBLIC_BASE_SITE_URL +
+                      '/users/me'
                     }
                     buttonType="secondary"
                     buttonSize="standard"
@@ -88,7 +90,9 @@ export default function Navigation({ user }: NavigationProps) {
                 </Box>
               ) : (
                 <Box gap={'16px'} alignItems={'center'}>
-                  <Link href="https://devlaunchers.org/users/me">
+                  <Link
+                    href={process.env.NEXT_PUBLIC_BASE_SITE_URL + '/users/me'}
+                  >
                     <a>
                       <Box gap={'16px'} alignItems={'center'}>
                         <img
