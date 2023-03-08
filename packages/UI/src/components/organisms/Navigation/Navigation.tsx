@@ -90,9 +90,7 @@ export default function Navigation({ user }: NavigationProps) {
                 </Box>
               ) : (
                 <Box gap={'16px'} alignItems={'center'}>
-                  <Link
-                    href={process.env.NEXT_PUBLIC_BASE_SITE_URL + '/users/me'}
-                  >
+                  <Link href="/users/me">
                     <a>
                       <Box gap={'16px'} alignItems={'center'}>
                         <img
