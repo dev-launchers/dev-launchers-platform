@@ -72,6 +72,8 @@ function WorkshoppingPage(props) {
           </Form>
 
           <Comments>
+            {/* a count of the comments in the comment feed: */}
+            <h6>Comment Feed: {data.comments.length}</h6>
             <CommentList selectedCard={data} />
           </Comments>
         </div>

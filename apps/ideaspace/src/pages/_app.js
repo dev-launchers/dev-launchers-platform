@@ -1,11 +1,10 @@
 import React from 'react';
-import { NextRouter, useRouter } from 'next/router';
-import Script from 'next/script';
-import { ToastContainer } from 'react-toastify';
+import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
+import RainbowBar from '../../../site-projects/src/components/common/RainbowBar';
+import Head from 'next/head';
 
-import Nav from '../components/modules/Nav/nav';
 
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
@@ -44,12 +43,14 @@ function MyApp(props) {
   return (
     <div className="IdeasApp">
       <ThemeProvider theme={theme}>
+        <Head><meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" /></Head>
         <UserDataProvider>
           <GlobalStyle />
-          <Nav />
+          <RainbowBar />
           <IdeasBetaFeedbackModal />
-          {props.children}     
-        </UserDataProvider> 
+          <RainbowBar />
+          {props.children}
+        </UserDataProvider>
       </ThemeProvider>
     </div>
   );

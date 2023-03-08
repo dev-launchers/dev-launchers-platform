@@ -11,6 +11,8 @@ import codesandboxImage from "../../../../images/home-page/codesandbox.png?webp"
 import phaser3Image from "../../../../images/home-page/phaser-3.png?webp";
 import pixilArtImage from "../../../../images/home-page/pixilart-logo.png?webp";
 import reactImage from "../../../../images/home-page/react-logo.png?webp";
+import googleImage from "../../../../images/home-page/google.png?webp";
+import microsoftImage from "../../../../images/home-page/microsoft.png?webp";
 import { PartnerList, Wrapper } from "./StyledPartners";
 
 export default function Partners() {
@@ -19,20 +21,30 @@ export default function Partners() {
       <Wrapper>
         <CenteredHeadline>CHECK OUT OUR EXTENDED FAMILY</CenteredHeadline>
         <p>
-          We partner with organizations doing outreach to bring in a diverse
-          range of members, and for-profit partners so Dev Launchers can grow
-          and continue to do what we love!
+          Dev Launchers partners with for-profit partners so we can grow
+          and continue to do what we love, as well as organizations doing outreach to bring in a diverse
+          range of members.
         </p>
-        <h3>Partners</h3>
+        <h3>Powered By Grants From</h3>
+        <PartnerList>
+          <LogoImage
+            href="https://google.com/"
+            src={googleImage}
+            width="75%"
+          />
+          <LogoImage
+            href="https://microsoft.com/"
+            src={microsoftImage}
+            width="85%"
+          />
+        </PartnerList>
+        <h3>Partners and Sponsors</h3>
         <PartnerList>
           <LogoImage
             href="https://library.austintexas.gov/"
             src={austinLibraryImage}
             width="75%"
           />
-        </PartnerList>
-        <h3>Sponsors</h3>
-        <PartnerList>
           <LogoImage
             href="https://www.aseprite.org/"
             src={aespriteImage}
@@ -50,11 +62,6 @@ export default function Partners() {
             href="https://codesandbox.io/"
             src={codesandboxImage}
             width="40%"
-          />
-          <LogoImage
-            href="https://www.pixilart.com/"
-            src={pixilArtImage}
-            width="80%"
           />
           <LogoImage
             href="https://phaser.io/phaser3"

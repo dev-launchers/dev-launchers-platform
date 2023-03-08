@@ -65,7 +65,7 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts? (max 250 characters)"
+              placeholder="Add your comment"
               value={props.handleTextChange}
               onChange={handleTextChange}
               maxlength={MAX_COMMENT_CHARS}
@@ -78,7 +78,7 @@ function CommentForm(props) {
           <button type="submit">Submit</button>
         </form>
       ) : (
-        <div style={{ margin: '2rem', marginTop: '4rem' }}>
+        <div style={{ margin: '2rem', marginTop: '4rem'}}>
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={

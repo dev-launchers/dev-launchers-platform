@@ -1,5 +1,4 @@
-
-const { loadEnvConfig } =  require('@next/env');
+const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
@@ -8,9 +7,6 @@ const withTM = require('next-transpile-modules')([
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
 ]); // pass the modules you would like to see transpiled
-
-// Used as a workaround to make our .env.test environment variables function in staging
-loadEnvConfig(process.cwd());
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -43,6 +39,14 @@ const nextConfig = {
     ],
     disableStaticImages: true,
   },
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    // Important: return the modified config
+    config.resolve.alias['styled-components'] = path.resolve("./node_modules", "styled-components");
+    return config
+  },
   reactStrictMode: true, // It helps you avoid legacy code, and deprecated APIs.
   eslint: {
     // Warning: Dangerously allow production builds to successfully complete even if
@@ -53,6 +57,7 @@ const nextConfig = {
   output: 'standalone',
   experimental: {
     externalDir: true,
-  }
+    nextScriptWorkers: true,
+  },
 };
 module.exports = withPlugins([[imagesPlugin], [withTM]], nextConfig);
