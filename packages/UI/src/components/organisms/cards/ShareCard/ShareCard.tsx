@@ -4,7 +4,7 @@ import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
 import Link from '../../../../assets/icons/Link';
-import ShareIdea from './ShareUrl';
+import { ShareIdea, ShareLink } from './ShareUrl';
 import {
   Container,
   ShareLinkButton,
@@ -57,7 +57,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <ShareLinkText type="label">Share With A Link</ShareLinkText>
       </atoms.Box>
       <ShareLinkBox flexDirection="row">
-        <ShareLinkButton>
+        <ShareLinkButton onClick={() => ShareLink(currentLocation)}>
           <Link width="29px" height="24px" />
         </ShareLinkButton>
         <ShareInput type="text" value={currentLocation} />

@@ -28,4 +28,8 @@ const ShareIdea = (platform: string, ideaUrl: string) => {
   }
 };
 
-export default ShareIdea;
+const ShareLink = (ideaUrl: string) => {
+  navigator.clipboard.writeText(ideaUrl);
+};
+
+export { ShareIdea, ShareLink };
