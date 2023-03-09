@@ -32,9 +32,6 @@ const ProductCardLong = ({
         <ImageContainer verticalSocialButtons={verticalSocialButtons}>
           <Box
             flexDirection="column"
-            alignItems={
-              verticalSocialButtons && saveButton ? undefined : 'center'
-            }
             justifyContent="center"
             css={{
               height: '238px',
