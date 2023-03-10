@@ -8,9 +8,9 @@ export interface PositionCardProps {
   content: {
     imgUrl: string;
     expectations: string[];
-    timeCommittment: string;
-    role: string;
-    tags: string[];
+    commitmentHoursPerWeek: string;
+    description: string;
+    skills: string[];
     benifits: string[];
     level: string;
     title: string;

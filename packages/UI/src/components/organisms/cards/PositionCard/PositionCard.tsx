@@ -39,7 +39,9 @@ const MinimalPositionCard = ({
         </Box>
         <Box flexDirection="column" gap="8px" width="fit-content">
           <Typography type="h5">time committment</Typography>
-          <Typography type="pSmall">{content.timeCommittment}</Typography>
+          <Typography type="pSmall">
+            {content.commitmentHoursPerWeek}
+          </Typography>
         </Box>
       </Thumbnail>
       <Actions>
@@ -97,7 +99,9 @@ const PositionCard = ({
           </Box>
           <Box flexDirection="column" gap="8px" width="fit-content">
             <Typography type="h5">time committment</Typography>
-            <Typography type="pSmall">{content.timeCommittment}</Typography>
+            <Typography type="pSmall">
+              {content.commitmentHoursPerWeek}
+            </Typography>
           </Box>
           {interaction && (
             <Box
@@ -127,12 +131,14 @@ const PositionCard = ({
             title=""
             subtitle="about the role"
             body={
-              isMobile && !expanded ? content.role.slice(0, 250) : content.role
+              isMobile && !expanded
+                ? content.description.slice(0, 250)
+                : content.description
             }
           />
         </div>
         <div>
-          <TagsContainer list={content.tags} />
+          <TagsContainer list={content.skills} />
         </div>
       </Header>
       <ExpandableBlurb>
@@ -141,7 +147,7 @@ const PositionCard = ({
             <Box flexDirection="column" gap="16px">
               <Typography type="h5">why should you join?</Typography>
               <ul css={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el1, i1) => (
+                {content.expectations?.map((el1, i1) => (
                   <Typography type="p" key={i1}>
                     <li>{el1}</li>
                   </Typography>
@@ -151,7 +157,7 @@ const PositionCard = ({
             <Box flexDirection="column" gap="16px">
               <Typography type="h5">expectations</Typography>
               <ul css={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el2, i2) => (
+                {content.expectations?.map((el2, i2) => (
                   <Typography type="p" key={i2}>
                     <li>{el2}</li>
                   </Typography>

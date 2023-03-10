@@ -17044,6 +17044,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:10.1.0":
+  version: 10.1.0
+  resolution: "framer-motion@npm:10.1.0"
+  dependencies:
+    "@emotion/is-prop-valid": ^0.8.2
+    tslib: ^2.4.0
+  peerDependencies:
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  dependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+  checksum: adeb92f931798cb0b6146f41d9706bf4933b9769a651e9a6082be96a9bf6d947fea6e4bb63b996cb9fb35d3c43004b204d5d2753dae38243d450a99697b68a88
+  languageName: node
+  linkType: hard
+
 "framer-motion@npm:8.4.3":
   version: 8.4.3
   resolution: "framer-motion@npm:8.4.3"
@@ -35814,6 +35830,7 @@ __metadata:
     cross-env: 7.0.3
     cz-conventional-changelog: 3.3.0
     eslint: 8.21.0
+    framer-motion: 10.1.0
     husky: 8.0.1
     is-ci: 3.0.1
     lint-staged: 13.0.3

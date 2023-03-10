@@ -54,7 +54,8 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "cross-env": "7.0.3"
+    "cross-env": "7.0.3",
+    "framer-motion": "10.1.0"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.6",

@@ -2,7 +2,7 @@ import {
   motion,
   LazyMotion,
   domAnimation,
-} from 'framer-motion/dist/framer-motion';
+} from 'framer-motion'; // import from /dist/framer-motion is not working, import from framer-motion is working
 import { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';

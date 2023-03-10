@@ -3,6 +3,8 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+import { useEffect } from 'react'
+
 import Button from "../../../common/Button";
 import Card from "../../../common/Card";
 
@@ -12,7 +14,11 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 
 import { OpportunitiesContainer } from "./StyledOpportunities";
 
+import PositionCard from '@devlaunchers/components/components/organisms/cards/PositionCard';
+
+
 const Opportunities = ({ opportunities }) => {
+
   return (
     <OpportunitiesContainer>
       {opportunities?.length > 0 ? (
@@ -32,36 +38,41 @@ const Opportunities = ({ opportunities }) => {
               justifyContent: "space-around",
             }}
           >
-            {opportunities.map((opportunity) => (
-              <div
-                key={Math.random()}
-                style={{
-                  width: "90%",
-                  marginTop: ".5rem",
-                  backgroundColor: "white",
-                  paddingLeft: "1rem",
-                  paddingRight: "1rem",
-                  paddingBottom: "1rem",
-                }}
-              >
-                <h3 style={{ marginBottom: 0 }}>
-                  <a style={{ cursor: "pointer" }} href={`/join/${opportunity.project.slug}`}>{opportunity.title}</a>{" "}
-                  <span style={{ fontSize: "1rem" }}>
-                    ({opportunity.level} Opportunity)
-                  </span>
-                </h3>
-                <div>
-                  <span style={{ fontSize: "1rem" }}>Remote</span>
+            {opportunities.map((opportunity) => {
+              const { benifits, imgUrl, level, skills, description, title, commitmentHoursPerWeek, expectations } = opportunity;
+
+              return (
+                <div
+                  key={Math.random()}
+                  style={{
+                    width: "90%",
+                    marginTop: ".5rem",
+                    backgroundColor: "white",
+                    paddingLeft: "1rem",
+                    paddingRight: "1rem",
+                    paddingBottom: "1rem",
+                  }}
+                >
+
+                  <PositionCard
+                    buttonStyle="a"
+                    content={{
+                      // benefits: benefits && benefits.map(benefit => benefit.name),
+                      expectations: expectations && expectations.map(point => point.expectation),
+                      imgUrl: "https://picsum.photos/200/300",
+                      level: level,
+                      description: description.substring(0, 200) +
+                        (description.length > 200 ? "..." : "")
+                      ,
+                      skills: skills && skills.map(skill => skill.interest),
+                      commitmentHoursPerWeek: `${commitmentHoursPerWeek} hrs/week`,
+                      title: title
+                    }}
+                    interaction="save-only"
+                  />
                 </div>
-                <div>{opportunity.project.title} Project</div>
-                <div>
-                  <span style={{ fontSize: "1.1rem" }}>
-                    {opportunity.description.substring(0, 200) +
-                      (opportunity.description.length > 200 ? "..." : "")}
-                  </span>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       ) : (
