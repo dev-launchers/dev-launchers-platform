@@ -18,7 +18,7 @@ const createShareUrl = (platform: string, ideaUrl: string) => {
   }
 };
 
-const ShareIdea = (platform: string, ideaUrl: string) => {
+const shareIdea = (platform: string, ideaUrl: string) => {
   const shareUrl = createShareUrl(platform, ideaUrl);
 
   if (platform === 'mail') {
@@ -28,8 +28,8 @@ const ShareIdea = (platform: string, ideaUrl: string) => {
   }
 };
 
-const ShareLink = (ideaUrl: string) => {
+const shareLink = (ideaUrl: string) => {
   navigator.clipboard.writeText(ideaUrl);
 };
 
-export { ShareIdea, ShareLink };
+export { shareIdea, shareLink };

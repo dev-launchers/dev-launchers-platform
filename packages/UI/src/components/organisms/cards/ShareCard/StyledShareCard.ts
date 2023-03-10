@@ -37,6 +37,7 @@ export const Container = styled(Layer)`
 `;
 
 export const CloseButton = styled(Button)`
+  text-align: center;
   position: relative;
   width: 30px;
   height: 30px;
@@ -46,7 +47,6 @@ export const CloseIcon = styled(Close)`
   top: 50%;
   left: 50%;
   position: absolute;
-  transform: translate(-50%; -50%);
 `;
 
 export const ShareIdeaText = styled(Typography)`

@@ -4,7 +4,7 @@ import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
 import { useState } from 'react';
 import Link from '../../../../assets/icons/Link';
-import { ShareIdea, ShareLink } from './ShareUrl';
+import { shareIdea, shareLink } from './ShareUrl';
 import {
   Container,
   ShareLinkButton,
@@ -23,12 +23,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   };
   const currentLocation = window.location.href;
 
-  const ALL_SOCIAL_PLATFORMS = [
-    'twitter',
-    'facebook',
-    'mail',
-    'linkedin',
-  ] as const;
+  const socialPlatforms = ['twitter', 'facebook', 'mail', 'linkedin'] as const;
 
   return (
     <Container type="light">
@@ -45,11 +40,11 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <ShareIdeaText type="h5">Share This {title}</ShareIdeaText>
       </atoms.Box>
       <atoms.Box flexDirection="row" gap="5px" padding="0px 0px 22px 0px">
-        {ALL_SOCIAL_PLATFORMS.map((SocialPlatform, index) => (
+        {socialPlatforms.map((socialPlatform, index) => (
           <SocialIconButton
-            onClick={() => ShareIdea(SocialPlatform, currentLocation)}
+            onClick={() => shareIdea(socialPlatform, currentLocation)}
             key={index}
-            type={SocialPlatform}
+            type={socialPlatform}
           />
         ))}
       </atoms.Box>
@@ -57,7 +52,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
         <ShareLinkText type="label">Share With A Link</ShareLinkText>
       </atoms.Box>
       <ShareLinkBox flexDirection="row">
-        <ShareLinkButton onClick={() => ShareLink(currentLocation)}>
+        <ShareLinkButton onClick={() => shareLink(currentLocation)}>
           <Link width="29px" height="24px" />
         </ShareLinkButton>
         <ShareInput type="text" value={currentLocation} />
