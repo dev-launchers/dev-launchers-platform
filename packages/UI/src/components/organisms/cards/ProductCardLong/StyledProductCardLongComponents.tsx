@@ -46,7 +46,7 @@ export const ImageContainer = ({
       alignItems="center"
       gap="8px"
       css={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url(${testImage})`,
+        backgroundImage: `url(${testImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

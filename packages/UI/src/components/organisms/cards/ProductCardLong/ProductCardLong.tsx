@@ -131,41 +131,25 @@ const ProductCardLong = ({
               css={{ width: isMobile ? '312px' : undefined }}
             >
               <Button
+                as="a"
                 buttonType={defaultButton ? 'secondary' : 'alternative'}
                 buttonSize="xl"
                 onClick={button1.onClick}
+                href={button1.href}
+                css={{ textDecoration: 'none' }}
               >
-                <a
-                  href={button1.href}
-                  css={typographyStyles.button}
-                  style={{
-                    color: defaultButton
-                      ? theme.colors.GREYSCALE_WHITE
-                      : theme.colors.GREYSCALE_BLACK,
-                    textDecoration: 'none',
-                  }}
-                >
-                  {button1.text}
-                </a>
+                {button1.text}
               </Button>
 
               <Button
+                as="a"
                 buttonType={defaultButton ? 'primary' : 'alternative'}
                 buttonSize="xl"
                 onClick={button2.onClick}
+                href={button2.href}
+                css={{ textDecoration: 'none' }}
               >
-                <a
-                  href={button2.href}
-                  css={typographyStyles.button}
-                  style={{
-                    color: defaultButton
-                      ? theme.colors.GREYSCALE_WHITE
-                      : theme.colors.GREYSCALE_BLACK,
-                    textDecoration: 'none',
-                  }}
-                >
-                  {button2.text}
-                </a>
+                {button2.text}
               </Button>
             </Box>
           </Box>
