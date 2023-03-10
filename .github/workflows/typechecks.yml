@@ -14,7 +14,6 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -24,5 +23,3 @@ jobs:
         run: yarn
       - name: Run typecheck tests
         run: yarn typecheck
-        env:
-          TARGET_URL: '${{ github.event.deployment_status.target_url }}'
