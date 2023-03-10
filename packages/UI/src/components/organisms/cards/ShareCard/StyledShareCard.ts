@@ -44,8 +44,8 @@ export const CloseButton = styled(Button)`
 `;
 
 export const CloseIcon = styled(Close)`
-  top: 50%;
-  left: 50%;
+  top: 20%;
+  left: 20%;
   position: absolute;
 `;
 
