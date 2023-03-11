@@ -1,19 +1,19 @@
-import React from "react";
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import Button from "../../../common/Button";
-import Card from "../../../common/Card";
+import Button from '../../../common/Button';
+import Card from '../../../common/Card';
 
-import { env } from "../../../../utils/EnvironmentVariables";
+import { env } from '../../../../utils/EnvironmentVariables';
 
-import { useUserDataContext } from "../../../../context/UserDataContext";
+import { useUserDataContext } from '../../../../context/UserDataContext';
 
 import {
   RecommendedIdeasContainer,
   RecommendedIdeaCardContainer,
-} from "./StyledRecommendedIdeas";
+} from './StyledRecommendedIdeas';
 
 const RecommendedIdeas = ({ ideas }) => {
   return (
@@ -22,7 +22,7 @@ const RecommendedIdeas = ({ ideas }) => {
         <div>
           <h2>Recommended Ideas 💡</h2>
           <div
-            style={{ color: "white", fontSize: "1.3rem", marginBottom: "2rem" }}
+            style={{ color: 'white', fontSize: '1.3rem', marginBottom: '2rem' }}
           >
             Have any thoughts on these projects Dev Launchers members may be
             tackling in the near future? Help us make them the best they can be
@@ -31,19 +31,19 @@ const RecommendedIdeas = ({ ideas }) => {
 
           <div
             style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "stretch",
-              justifyContent: "space-around",
-              flexWrap: "wrap",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'stretch',
+              justifyContent: 'space-around',
+              flexWrap: 'wrap',
             }}
           >
             {ideas.map((idea) => (
               <RecommendedIdeaCardContainer key={Math.random()}>
                 <Card
                   size="small"
-                  style={{ width: "90%", height: "17rem" }}
+                  style={{ width: '90%', height: '17rem' }}
                   noImage
                   cardData={{
                     id: idea.id,
@@ -52,8 +52,8 @@ const RecommendedIdeas = ({ ideas }) => {
                     tags: idea.skills?.map(({ skill }) => skill),
                     description:
                       idea.description.substring(0, 200) +
-                      (idea.description.length > 200 ? "..." : ""),
-                    href: `/ideas/workshopping/${idea.id}`,
+                      (idea.description.length > 200 ? '...' : ''),
+                    href: `/ideaspace/workshopping/${idea.id}`,
                   }}
                 />
               </RecommendedIdeaCardContainer>
@@ -61,7 +61,7 @@ const RecommendedIdeas = ({ ideas }) => {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </RecommendedIdeasContainer>
   );

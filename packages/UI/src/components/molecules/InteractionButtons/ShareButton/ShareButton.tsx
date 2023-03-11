@@ -7,7 +7,7 @@ const ShareButton = ({ text, disabled }: ShareButtonProps) => {
   return (
     <InteractionButton disabled={disabled}>
       <Box gap="8px" justifyContent="center" alignItems="center">
-        <Share />
+        <Share fill={disabled ? '#474747' : 'black'} />
         {text}
       </Box>
     </InteractionButton>
