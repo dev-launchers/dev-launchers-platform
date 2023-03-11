@@ -1712,6 +1712,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@builder.io/partytown@npm:0.7.4":
+  version: 0.7.4
+  resolution: "@builder.io/partytown@npm:0.7.4"
+  bin:
+    partytown: bin/partytown.cjs
+  checksum: b731f89a909343e7e12e9569f8d3ca24a6ac0ba266dadff2f8061d1a9e4b2a38c3fa6d28a870bffe04f7cc17a1e90d248437b967b9e3e35a8cb29b859f3c0161
+  languageName: node
+  linkType: hard
+
 "@changesets/apply-release-plan@npm:^6.0.3":
   version: 6.1.3
   resolution: "@changesets/apply-release-plan@npm:6.1.3"
@@ -2423,10 +2432,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devlaunchers/app@workspace:apps/app"
   dependencies:
+    "@builder.io/partytown": 0.7.4
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@devlaunchers/website": "*"
     "@next/env": ^12.2.3
@@ -2659,9 +2669,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/ideas@*, @devlaunchers/ideas@workspace:apps/ideas":
+"@devlaunchers/ideaspace@*, @devlaunchers/ideaspace@workspace:apps/ideaspace":
   version: 0.0.0-use.local
-  resolution: "@devlaunchers/ideas@workspace:apps/ideas"
+  resolution: "@devlaunchers/ideaspace@workspace:apps/ideaspace"
   dependencies:
     "@banana-dev/banana-dev": ^3.0.0
     "@devlaunchers/eslint-config-bases": "workspace:^"
@@ -2672,6 +2682,7 @@ __metadata:
     "@types/luxon": 3.0.0
     "@types/react": ^17.0.0
     axios: ^0.21.1
+    axios-mock-adapter: ^1.21.2
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
     eslint: ^8.21.0
@@ -2791,7 +2802,7 @@ __metadata:
     "@cloudflare/wrangler": ^1.19.12
     "@devlaunchers/dev-recruiters": "workspace:^"
     "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/ideas": "*"
+    "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
     "@ramonak/react-progress-bar": ^5.0.2
     "@types/luxon": 3.0.0
@@ -10108,6 +10119,18 @@ __metadata:
   peerDependencies:
     playwright-core: ">1.0.0"
   checksum: 651deb9c2b1df94bb39472bdbbc449e56460ca58826b50c8fd654803d0823d9c09eae181daf24f2350fb822278f435c6cff1009fc077cfaf49af2252759b7478
+  languageName: node
+  linkType: hard
+
+"axios-mock-adapter@npm:^1.21.2":
+  version: 1.21.2
+  resolution: "axios-mock-adapter@npm:1.21.2"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    is-buffer: ^2.0.5
+  peerDependencies:
+    axios: ">= 0.17.0"
+  checksum: 0d334838a819597f49fd5bf807e2a46cd846397cbea734fd53dcb425dee914e2d3e57cff65eb36af70cdbba848416c48979b75223afbfc1ab49789fd12011618
   languageName: node
   linkType: hard
 
@@ -19297,7 +19320,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^2.0.0":
+"is-buffer@npm:^2.0.0, is-buffer@npm:^2.0.5":
   version: 2.0.5
   resolution: "is-buffer@npm:2.0.5"
   checksum: 764c9ad8b523a9f5a32af29bdf772b08eb48c04d2ad0a7240916ac2688c983bf5f8504bf25b35e66240edeb9d9085461f9b5dae1f3d2861c6b06a65fe983de42
