@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PageWrapper = styled.section`
   background-color: ${({ theme }) => theme.colors.NEUTRAL_2};

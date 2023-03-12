@@ -20,6 +20,7 @@ const Dropdown = ({
   isOpen = false,
   options = [],
   recieveValue,
+  callbackFn,
 }: DropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
 
@@ -43,6 +44,7 @@ const Dropdown = ({
         prev[text] = checked;
         return prev;
       });
+    callbackFn(text);
     recieveValue?.(checkedOptions);
   };
   // add typings here
