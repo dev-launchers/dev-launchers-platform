@@ -16,4 +16,5 @@ export interface OpenResponseProps {
   valid?: boolean;
   touched?: boolean;
   onChange: (value: ChangeEvent<HTMLTextAreaElement>) => void;
+  value?: string;
 }
