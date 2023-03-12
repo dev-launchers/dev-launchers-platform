@@ -136,7 +136,11 @@ const ProductCardLong = ({
                 buttonSize="xl"
                 onClick={button1.onClick}
                 href={button1.href}
-                css={{ textDecoration: 'none' }}
+                css={{
+                  textDecoration: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
               >
                 {button1.text}
               </Button>
@@ -147,7 +151,11 @@ const ProductCardLong = ({
                 buttonSize="xl"
                 onClick={button2.onClick}
                 href={button2.href}
-                css={{ textDecoration: 'none' }}
+                css={{
+                  textDecoration: 'none',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
               >
                 {button2.text}
               </Button>
