@@ -15,5 +15,5 @@ export interface TypographyProps {
     | 'label'
     | 'labelSmall';
   textAlign?: CSS.Properties['textAlign'];
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | string;
 }
