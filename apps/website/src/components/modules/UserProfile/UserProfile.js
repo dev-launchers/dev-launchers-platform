@@ -72,6 +72,7 @@ export default function UserProfile({ otherUser }) {
         if (member.id == userData.id) myProjects.push(project);
       });
     });
+    console.log("myProjects from UserProfiles", myProjects)
     setMyProjects(myProjects);
   }, [projects, userData]);
   // End Projects/Opportunities

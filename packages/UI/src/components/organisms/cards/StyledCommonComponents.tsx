@@ -2,7 +2,8 @@ import {
   motion,
   LazyMotion,
   domAnimation,
-} from 'framer-motion/dist/framer-motion';
+} from 'framer-motion';
+// This imprt is not working for me too change 'framer-motion/dist/framer-motion' to 'framer-motion';
 import { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';

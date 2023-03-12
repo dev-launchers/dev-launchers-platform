@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import Button from "../../../common/Button";
-import Card from "../../../common/Card";
+// import Card from "../../../common/Card";
 
 import { env } from "../../../../utils/EnvironmentVariables";
 
@@ -12,7 +12,10 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 
 import { UserProjectsContainer } from "./StyledUserProjects";
 
-const UserProjects = ({ myProjects }) => {  
+import ProductCardLarge from '@devlaunchers/components/components/organisms/cards/ProductCardLarge'
+
+
+const UserProjects = ({ myProjects }) => {
   const noProjectsDisplay = (
     <div
       style={{
@@ -34,6 +37,7 @@ const UserProjects = ({ myProjects }) => {
   );
 
   return (
+
     <UserProjectsContainer myProjects={myProjects}>
       {myProjects?.length > 0 ? (
         <div>
@@ -48,33 +52,42 @@ const UserProjects = ({ myProjects }) => {
             }}
           >
             {myProjects.map((project) => (
-              <Card
+              // console.log("project", project.title),
+              // console.log("project", project.catchPhrase),
+              // console.log("project", project.heroImage?.url),
+              <ProductCardLarge
                 key={Math.random()}
-                size="large"
-                // isLinkingInside
-                // style={{ margin: 0, width: "100%", height: "100%" }}
-                cardData={{
-                  id: project.id,
-                  title: project.title,
-                  secondaryText: `Commitment level: ${project.commitmentLevel}`,
-                  tags: project.keywords?.map(({ keyword }) => keyword),
-                  description: project.catchPhrase,
-                  href: `https://devlaunchers.org/projects/${project.slug}`,
-                  imageSrc: project.heroImage?.url,
-                  /*
-                                    actions: (
-                                        <>
-                                        <Link href={`https://devlaunchers.org/projects/${project.slug}`} passHref>
-                                            <a>LEARN MORE</a>
-                                        </Link>
-                                        <Link href="support-us" passHref>
-                                            <a>DONATE</a>
-                                        </Link>
-                                        </>
-                                    ),
-                                    */
-                }}
+                title={project.title}
+                subtitle={project.catchPhrase}
+                image={project.heroImage?.url}
               />
+              // <Card
+              //   key={Math.random()}
+              //   size="large"
+              //   // isLinkingInside
+              //   // style={{ margin: 0, width: "100%", height: "100%" }}
+              //   cardData={{
+              //     id: project.id,
+              //     title: project.title,
+              //     secondaryText: `Commitment level: ${project.commitmentLevel}`,
+              //     tags: project.keywords?.map(({ keyword }) => keyword),
+              //     description: project.catchPhrase,
+              //     href: `https://devlaunchers.org/projects/${project.slug}`,
+              //     imageSrc: project.heroImage?.url,
+              //     /*
+              //                       actions: (
+              //                           <>
+              //                           <Link href={`https://devlaunchers.org/projects/${project.slug}`} passHref>
+              //                               <a>LEARN MORE</a>
+              //                           </Link>
+              //                           <Link href="support-us" passHref>
+              //                               <a>DONATE</a>
+              //                           </Link>
+              //                           </>
+              //                       ),
+              //                       */
+              //   }}
+              // />
             ))}
           </div>
         </div>
