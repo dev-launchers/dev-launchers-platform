@@ -26,7 +26,7 @@ function FormField({
     <>
       <Label htmlFor={id}>
         <Typography type="label">
-          {label} {required && <span css={{ color: 'red' }}>*</span>}
+          {label} {required && <span style={{ color: 'red' }}>*</span>}
         </Typography>
         <InputWrapper>
           <Input
