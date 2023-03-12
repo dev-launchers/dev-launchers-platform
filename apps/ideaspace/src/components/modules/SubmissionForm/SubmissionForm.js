@@ -18,7 +18,13 @@ import {
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+    isAuthenticated = true;
+
+    React.useEffect(() => {
+      setUserData({ ...userData, id: 30 });
+    }, []);
+  }
 
   const router = useRouter();
   const [sending, setSending] = useState(false);
@@ -38,6 +44,7 @@ function SubmissionForm() {
     experience: '',
     extraInfo: '',
     involveLevel: '',
+    status: '',
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
@@ -51,7 +58,7 @@ function SubmissionForm() {
   });
 
   const submitHandler = async (values) => {
-    //e.preventDefault();
+    values['status'] = 'workshopping';
     setSending(true);
 
     const res = await axios.post(

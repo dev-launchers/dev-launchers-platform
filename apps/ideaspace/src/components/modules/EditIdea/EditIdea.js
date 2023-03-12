@@ -50,6 +50,7 @@ function SubmissionForm() {
     experience: '',
     extraInfo: '',
     involveLevel: '',
+    status: '',
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
