@@ -9,11 +9,13 @@ import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import getNotice from '../../common/DialogBox/NoticeBox';
 import * as Yup from 'yup';
-import { atoms } from '@devlaunchers/components/src/components';
+import { atoms,organisms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
-} from '../SubmissionForm/StyledSubmissionForm';
+  Headline,
+  StyledRanbow,
+} from './StyledEditIdea';
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
@@ -21,7 +23,7 @@ function SubmissionForm() {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
+      setUserData({ ...userData, id: 30 });
     }, []);
   }
 
@@ -37,18 +39,17 @@ function SubmissionForm() {
 
   const [Notice, confirmNotice] = getNotice(
     'Idea updated successfully',
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   );
 
   const [card, setCard] = React.useState({
-    ideaName: 'qq',
+    ideaName: '',
     tagline: '',
     description: '',
     targetAudience: '',
     features: '',
     experience: '',
     extraInfo: '',
-    involveLevel: 'zero',
+    involveLevel: '',
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
@@ -80,7 +81,6 @@ function SubmissionForm() {
   });
 
   const submitHandler = async (values) => {
-    //e.preventDefault();
     if (values == card) {
       alert("nothing chage");
       return;
@@ -148,12 +148,12 @@ function SubmissionForm() {
 
   return (
     <>
+
       <HeadWapper>
-        <atoms.Layer hasRainbow style={{ width: '16.8rem', margin: 'auto' }}>
-          <atoms.Typography type='h1' style={{ fontSize: '4rem', }}>
-          Dev Ideas
-          </atoms.Typography>
-        </atoms.Layer>
+        <Headline>Dev Ideas</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
         <BackButton 
           buttonType="confirm"
           clickHandler={backHandler}

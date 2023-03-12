@@ -31,6 +31,6 @@ export const GoBack = styled.button`
   }
 
   @media (max-width: 529px) {
-    margin-top: -10rem;
+    margin-top: -11rem;
   }
 `;

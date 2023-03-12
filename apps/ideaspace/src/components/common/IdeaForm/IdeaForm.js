@@ -4,6 +4,9 @@ import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import Popballoon from '../Popover/Popover';
+import popoverSvg from '../../../images/popover.svg';
+import SubmissionButton from './SubmissionButton';
+import EditionButton from './EditionButton';
 
 const IdeaForm = ({
 	initialValues,
@@ -14,10 +17,6 @@ const IdeaForm = ({
 	sending,
 	clickHandler
 }) => {
-
-	const goBack = () => {
-		clickHandler("back");
-	};
 
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
@@ -42,7 +41,7 @@ const IdeaForm = ({
 	};
 
 	return (
-		<atoms.Box margin='1rem'>
+		<div style={{ margin: '1rem' }}>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={SignupSchema}
@@ -55,10 +54,7 @@ const IdeaForm = ({
 						style={{
 							maxWidth: '36rem',
 							margin: '1.5rem auto 1.5rem',
-							padding: '2rem',
 							textAlign: 'left',
-							borderRadius: 32,
-							backgroundColor: 'white',
 						}}
 					>
 						<AutoSubmitToken />
@@ -66,8 +62,10 @@ const IdeaForm = ({
 							maxWidth: '37rem',
 							margin: '1rem auto 2.5rem',
 							textAlign: 'left',
+							fontSize: '1.5rem',
 						}}>
-							Idea Submission
+							Idea Info
+							<hr noshade="false" />
 						</atoms.Typography>
 
 						<atoms.Box
@@ -156,17 +154,26 @@ const IdeaForm = ({
 								name='tagline'
 							/>
 
-							<atoms.Box flexDirection='row' alignItems= 'flex-end' justifyContent= 'space-between'>
-								<Field as="select" name="involveLevel" style={{ fontSize: '1rem', padding: '0.5rem', width: '33rem' }}>
-									<option value="one">I don’t want to be involved after submitting</option>
-									<option value="two">I want to “own” this idea to help with workshopping and designing until it become a project</option>
-									<option value="three">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
-									<option value="four">I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project</option>
-								</Field>
+							<atoms.Box flexDirection='column'>
+								<atoms.Typography type='label' style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
+									what level of involvement do you want to have after submission?
+								</atoms.Typography>
+								<atoms.Box flexDirection='row' alignItems='flex-end' justifyContent='space-between'>
+									<Field as="select" name="involveLevel" style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}>
+										<option value="none">I don’t want to be involved after submitting</option>
+										<option value="minimum">I want to “own” this idea to help with workshopping and designing until it become a project</option>
+										<option value="medium">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
+										<option value="highly">I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project</option>
+									</Field>
 
-								<Popballoon
-									content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshipping page."
-								/>
+									<atoms.ToolTip
+										content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshipping page."
+										direction="top"
+										delay={100}
+									>
+										<img alt='submit_image' src={popoverSvg} />
+									</atoms.ToolTip>
+								</atoms.Box>
 							</atoms.Box>
 
 							<atoms.Typography type='p' style={{ marginTop: '0.5rem', }}>
@@ -174,9 +181,9 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 
-							<atoms.Box style={{ fontSize: '1rem', }}>
+							<atoms.Box style={{ fontSize: '1rem' }}>
 								<atoms.Checkbox
-									label='I have read and agree to the <a>Terms and Conditions</a>.'
+									label='I have read and agree to the Terms and Conditions.'
 									disabled={false}
 									required
 								/>
@@ -184,32 +191,14 @@ const IdeaForm = ({
 
 							<atoms.Box style={{ justifyContent: 'flex-end' }}>
 								{formButton == "submit" ? (
-									<atoms.Button
-										buttonSize='standard'
-										buttonType='primary'
-										type='submit'
-									>
-										{' '}{sending === true ? 'Wait' : 'Submit'}{' '}
-									</atoms.Button>
+									<SubmissionButton
+										sending={sending}
+									/>
 								) : (
-									<>
-										<atoms.Button
-											buttonSize='standard'
-											buttonType='alternative'
-											type='button'
-											onClick={goBack}
-										>
-											CANCEL
-										</atoms.Button>
-										<atoms.Button
-											buttonSize='standard'
-											buttonType='primary'
-											type='submit'
-											style={{ marginLeft: '1rem' }}
-										>
-											{' '}{sending === true ? 'Wait' : 'Save edits'}{' '}
-										</atoms.Button>
-									</>
+									<EditionButton
+										clickHandlerButton={clickHandler}
+										sending={sending}
+									/>
 								)}
 							</atoms.Box>
 
@@ -219,7 +208,7 @@ const IdeaForm = ({
 					</Form>
 				)}
 			</Formik>
-		</atoms.Box>
+		</div>
 	);
 };
 

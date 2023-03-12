@@ -47,7 +47,6 @@ const useConfirm = (title, message) => {
           position: 'absolute',
           right: '1rem',
           top: '0.8rem',
-          backgroundColor: 'grey',
           borderRadius: 0,
           height: '1.5rem',
           width: '1.5rem',

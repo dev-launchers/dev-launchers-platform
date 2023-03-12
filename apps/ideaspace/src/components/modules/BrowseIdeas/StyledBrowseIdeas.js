@@ -44,9 +44,6 @@ export const StyledRanbow = styled.div`
   margin: 1.3rem auto 0 auto;
   max-width: 21rem;
   height: 5px;
-  @media (max-width: 398px) {
-    width: 17rem;
-  }
 `;
 
 export const IdeaCardWrapper = styled.div`

@@ -12,6 +12,8 @@ import { atoms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
+  Headline,
+  StyledRanbow,
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
@@ -35,7 +37,7 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
-    involveLevel: 'zero',
+    involveLevel: '',
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
@@ -113,11 +115,10 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <atoms.Layer hasRainbow style={{ width: '16.8rem', margin: 'auto' }}>
-          <atoms.Typography type='h1' style={{ fontSize: '4rem', }}>
-            Dev Ideas
-          </atoms.Typography>
-        </atoms.Layer>
+        <Headline>Submit an idea</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
         <BackButton 
           buttonType="confirm"
           clickHandler={backHandler}
