@@ -39,7 +39,12 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
       <atoms.Box flexDirection="column" alignItems="center">
         <ShareIdeaText type="h5">Share This {title}</ShareIdeaText>
       </atoms.Box>
-      <atoms.Box flexDirection="row" gap="5px" padding="0px 0px 22px 0px">
+      <atoms.Box
+        justifyContent="center"
+        flexDirection="row"
+        gap="5px"
+        padding="0px 0px 22px 0px"
+      >
         {socialPlatforms.map((socialPlatform, index) => (
           <SocialIconButton
             onClick={() => shareIdea(socialPlatform, currentLocation)}
@@ -51,7 +56,7 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
       <atoms.Box flexDirection="row" gap="15px">
         <ShareLinkText type="label">Share With A Link</ShareLinkText>
       </atoms.Box>
-      <ShareLinkBox flexDirection="row">
+      <ShareLinkBox flexDirection="row" justifyContent="center">
         <ShareLinkButton onClick={() => shareLink(currentLocation)}>
           <Link width="29px" height="24px" />
         </ShareLinkButton>
