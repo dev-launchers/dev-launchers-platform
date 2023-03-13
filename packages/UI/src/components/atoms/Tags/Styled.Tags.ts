@@ -25,7 +25,7 @@ export const Tag = styled.div<StyledProps>`
   text-align: center;
   padding: 0.5rem 1rem;
 `;
-export const CloseButton = styled.button`
+export const CloseButton = styled.button<StyledProps>`
   ${typographyStyles['button']}
   background-color: ${({ theme, bgColor }) => {
     if (bgColor === 'GREYSCALE_CHARCOAL')
@@ -47,7 +47,7 @@ export const CloseButton = styled.button`
   cursor: pointer;
   padding-left: 0.5rem;
 `;
-export const CloseIcon = styled.svg`
+export const CloseIcon = styled.svg<radiusStyles>`
   background-color: ${({ theme, bgColor }) => {
     if (bgColor === 'GREYSCALE_CHARCOAL')
       return theme.colors.GREYSCALE_CHARCOAL;
