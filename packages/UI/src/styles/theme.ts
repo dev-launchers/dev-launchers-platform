@@ -1,10 +1,10 @@
 const theme = {
   breakpoints: {
-    sm: 640,
-    md: 768,
-    lg: 1024,
-    xl: 1280,
-    '2xl': 1536,
+    sm: 360,
+    md: 810,
+    lg: 1280,
+    xl: 1440,
+    xxl: 1600,
   },
   colors: {
     BLUE: '#3A7CA5',

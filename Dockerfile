@@ -109,9 +109,9 @@ COPY --from=builder /app/apps/app/next.config.js \
 COPY --from=builder /app/apps/website/next.config.js \
                     /app/apps/website/package.json \
                     ./apps/website/
-COPY --from=builder /app/apps/ideas/next.config.js \
-                    /app/apps/ideas/package.json \
-                    ./apps/ideas/
+COPY --from=builder /app/apps/ideaspace/next.config.js \
+                    /app/apps/ideaspace/package.json \
+                    ./apps/ideaspace/
 COPY --from=builder /app/apps/site-projects/next.config.js \
                     /app/apps/site-projects/package.json \
                     ./apps/site-projects/

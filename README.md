@@ -14,7 +14,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 
 ## Contributing
 
-Visit https://devlaunchers.org/projects to join one of our teams!
+Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of our teams!
 
 ---
 
@@ -81,4 +81,4 @@ Once you are ready to create a new release, create a PR to merge master branch t
 
 ## Licenses
 
-The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md)
+The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).
