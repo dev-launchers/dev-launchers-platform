@@ -15,8 +15,9 @@ export const ShareLinkButton = styled.button`
   cursor: pointer;
   ${radiusStyles.radius100};
   position: absolute;
-  left: 20px;
-  top: 5px;
+  margin-left: 15px;
+  ${shadowStyles['shadow300']};
+  padding: 1px;
 `;
 
 export const ShareInput = styled.input`
@@ -30,13 +31,12 @@ export const ShareInput = styled.input`
 
 export const Container = styled(Layer)`
   border-radius: 10px;
-  max-width: 480px;
-  max-height: 300px;
+  width: 275px;
+  height: 250px;
   padding: 12px;
   display: inline-block;
-
   @media only screen and (min-width: 640px) {
-    width: 950px;
+    width: 350px;
   }
 `;
 
@@ -58,13 +58,9 @@ export const ShareIdeaText = styled(Typography)`
 `;
 
 export const ShareLinkText = styled(Typography)`
-  padding: 0px 0px 0px 15px;
-  @media only screen and (min-width: 640px) {
-    left: 50%;
-  }
+  padding-left: 10px;
 `;
 
 export const ShareLinkBox = styled(Box)`
   position: relative;
-  top: 50%;
 `;

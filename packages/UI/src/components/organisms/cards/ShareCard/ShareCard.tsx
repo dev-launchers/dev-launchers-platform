@@ -53,15 +53,25 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
           />
         ))}
       </atoms.Box>
-      <atoms.Box flexDirection="row" gap="15px">
-        <ShareLinkText type="label">Share With A Link</ShareLinkText>
+      <atoms.Box justifyContent="center">
+        <atoms.Box flexDirection="column" gap="5px">
+          <ShareLinkText type="label">Share With A Link</ShareLinkText>
+          <ShareLinkBox flexDirection="row">
+            <atoms.Box>
+              <atoms.Box flexDirection="column" justifyContent="center">
+                <ShareLinkButton onClick={() => shareLink(currentLocation)}>
+                  <Link
+                    width="24px"
+                    height="24px"
+                    css={{ verticalAlign: 'middle' }}
+                  />
+                </ShareLinkButton>
+              </atoms.Box>
+              <ShareInput type="text" value={currentLocation} />
+            </atoms.Box>
+          </ShareLinkBox>
+        </atoms.Box>
       </atoms.Box>
-      <ShareLinkBox flexDirection="row" justifyContent="center">
-        <ShareLinkButton onClick={() => shareLink(currentLocation)}>
-          <Link width="29px" height="24px" />
-        </ShareLinkButton>
-        <ShareInput type="text" value={currentLocation} />
-      </ShareLinkBox>
     </Container>
   );
 };
