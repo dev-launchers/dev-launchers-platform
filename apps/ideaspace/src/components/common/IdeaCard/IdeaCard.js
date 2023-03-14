@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
+import theme from '@devlaunchers/components/styles/theme';
 import {
   ImgButton,
   StatuBox,
@@ -15,57 +16,64 @@ function IdeaCard({ cards, cardType }) {
   React.useEffect(() => {
     if (cards.statu == "submitted"){
       setTag("submitted");
-      setTagColor("#A7D5E3");
+      setTagColor(theme.colors.LIGHT_BLUE_100);
     } else if (cards.statu == "applying"){
       setTag("applying");
-      setTagColor("#FFC44C");
+      setTagColor(theme.colors.YELLOW_100);
     } else if (cards.statu == "approved"){
       setTag("approved");
-      setTagColor("#8CC882");
+      setTagColor(theme.colors.SUCCESS_100);
     } else if (cards.statu == "archived"){
       setTag("archived");
-      setTagColor("#75A3C0");
+      setTagColor(theme.colors.BLUE_100);
     } else {
       setTag("workshopping");
-      setTagColor("#FFA556");
+      setTagColor(theme.colors.ORANGE_100);
     }
 
-    const difftime = (new Date() - new Date(cards.updated_at)) / 1000;
+    const toBeOneSecond = 1000;
+    const secondsInDay = 86400;
+    const secondsInMonth = secondsInDay * 30;
+    const secondsInYear = secondsInMonth * 12;
+    const secondsInHour = 3600;
+    const secondsInMinute = 60;
 
-    if (difftime > (86400 * 30 * 12)) {
-      const years = parseInt(difftime / (86400 * 30 * 12));
+    const difftime = (new Date() - new Date(cards.updated_at)) / toBeOneSecond; 
+
+    if (difftime > secondsInYear) {
+      const years = parseInt(difftime / secondsInYear);
       if (years > 1) {
         setUpdated(years + ' years ago');
       } else {
         setUpdated(years + ' year ago');
       }
-    } else if (difftime > (86400 * 30)) {
-      const months = parseInt(difftime / (86400 * 30));
+    } else if (difftime > secondsInMonth) {
+      const months = parseInt(difftime / secondsInMonth);
       if (months > 1) {
         setUpdated(months + ' months ago');
       } else {
         setUpdated(months + ' month ago');
       }
-    } else if (difftime > 86400) {
-      const days = parseInt(difftime / 86400);
+    } else if (difftime > secondsInDay) {
+      const days = parseInt(difftime / secondsInDay);
       if (days > 1) {
         setUpdated(days + ' days ago');
       } else {
         setUpdated(days + ' day ago');
       }
-    } else if (difftime > 3600) {
-      const hours = parseInt(difftime / 3600);
+    } else if (difftime > secondsInHour) {
+      const hours = parseInt(difftime / secondsInHour);
       if (hours > 1) {
         setUpdated(hours + ' hours ago');
       } else {
         setUpdated(hours + ' hour ago');
       }
     } else {
-      const minutes = parseInt(difftime % 3600 / 60);
+      const minutes = parseInt(difftime % secondsInHour / secondsInMinute);
       if (minutes > 1) {
         setUpdated(minutes + ' minutes ago');
       } else {
-        setUpdated(1 + ' minute ago');
+        setUpdated('1 minute ago');
       }
     }
 

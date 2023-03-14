@@ -4,7 +4,6 @@ import axios from "axios";
 import { atoms } from '@devlaunchers/components/src/components';
 import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
-import RainbowBar from '../../../../../website/src/components/common/RainbowBar';
 import BackButton from '../../common/BackButton/BackButton';
 
 import {
@@ -66,7 +65,7 @@ function BrowseIdeas() {
       <HeadWapper>
         <Headline>Browse Ideas</Headline>
         <StyledRanbow>
-          <RainbowBar width="100%" height="5px" />
+          <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton />
         <atoms.Typography type='h4' >

@@ -26,6 +26,6 @@ export const Headline = styled.div`
 
 export const StyledRanbow = styled.div`
   margin: 1.3rem auto 0 auto;
-  max-width: 24.8rem;
+  max-width: 16.7rem;
   height: 5px;
 `;
