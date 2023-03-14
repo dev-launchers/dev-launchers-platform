@@ -6,6 +6,7 @@ import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Layer from '../../atoms/Layer';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
@@ -58,7 +59,7 @@ export default function Navigation({ user }: NavigationProps) {
                     {Object.entries(links).map(([name, href], i) => (
                       <li style={ListStyle} key={i}>
                         <Link href={href} passHref>
-                          <a>{name}</a>
+                          <NavLink>{name}</NavLink>
                         </Link>
                       </li>
                     ))}

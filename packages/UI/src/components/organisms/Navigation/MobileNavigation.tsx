@@ -4,6 +4,7 @@ import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import BackButton from '../../molecules/BackButton';
 import logo from './../../../assets/images/logo-monogram.png';
@@ -74,7 +75,7 @@ const MobileNavigation = ({
                   <li key={i}>
                     <Link href={href} passHref>
                       <Button
-                        as="a"
+                        as={NavLink}
                         buttonType="alternative"
                         buttonSize="standard"
                       >

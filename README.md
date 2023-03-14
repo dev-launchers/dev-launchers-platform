@@ -14,7 +14,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 
 ## Contributing
 
-Visit https://devlaunchers.org/projects to join one of our teams!
+Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of our teams!
 
 ---
 
