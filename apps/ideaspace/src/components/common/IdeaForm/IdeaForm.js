@@ -41,7 +41,8 @@ const IdeaForm = ({
 	};
 
 	return (
-		<div style={{ margin: '1rem' }}>
+		<atoms.Box margin='1rem 1.5rem 3rem 1.5rem'>
+			<atoms.Box maxWidth='36rem' margin='auto' style={{ textAlign: 'left' }}>
 			<Formik
 				initialValues={initialValues}
 				validationSchema={SignupSchema}
@@ -50,22 +51,11 @@ const IdeaForm = ({
 			>
 
 				{({ errors, setFieldValue, touched }) => (
-					<Form
-						style={{
-							maxWidth: '36rem',
-							margin: '1.5rem auto 1.5rem',
-							textAlign: 'left',
-						}}
-					>
+					<Form>
 						<AutoSubmitToken />
-						<atoms.Typography type='h4' style={{
-							maxWidth: '37rem',
-							margin: '1rem auto 2.5rem',
-							textAlign: 'left',
-							fontSize: '1.5rem',
-						}}>
+						<atoms.Typography type='h4'>
 							Idea Info
-							<hr noshade="false" />
+							<hr noshade="false" style={{margin: "0rem auto 2rem"}}/>
 						</atoms.Typography>
 
 						<atoms.Box
@@ -176,7 +166,7 @@ const IdeaForm = ({
 								</atoms.Box>
 							</atoms.Box>
 
-							<atoms.Typography type='p' style={{ marginTop: '0.5rem', }}>
+							<atoms.Typography type='p'>
 								After submitting your idea will be reviewed and enter the workshopping stage!
 							</atoms.Typography>
 
@@ -189,7 +179,7 @@ const IdeaForm = ({
 								/>
 							</atoms.Box>
 
-							<atoms.Box style={{ justifyContent: 'flex-end' }}>
+							<atoms.Box justifyContent='flex-end' gap="1rem">
 								{formButton == "submit" ? (
 									<SubmissionButton
 										sending={sending}
@@ -208,7 +198,8 @@ const IdeaForm = ({
 					</Form>
 				)}
 			</Formik>
-		</div>
+			</atoms.Box>
+		</atoms.Box>
 	);
 };
 
