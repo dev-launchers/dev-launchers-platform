@@ -7,7 +7,6 @@ import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
-import getNotice from '../../common/DialogBox/NoticeBox';
 import * as Yup from 'yup';
 import { atoms,organisms } from '@devlaunchers/components/src/components';
 
@@ -34,11 +33,14 @@ function SubmissionForm() {
   const [Dialog, confirmLeave] = useConfirm(
     'You have unsaved changes',
     'Are you sure you want to discard the changes and leave?',
+    ['alternative primary', 'CANCEL', 'LEAVE'],
   );
   const [urrl, setUrrl] = useState('');
 
-  const [Notice, confirmNotice] = getNotice(
+  const [Notice, confirmNotice] = useConfirm(
     'Idea updated successfully',
+    '',
+    ['primary', 'got it'],
   );
 
   const [card, setCard] = React.useState({
@@ -95,7 +97,7 @@ function SubmissionForm() {
 
     if (res.status === 200) {
       setunsavedChanges(false);
-      if (await confirmNotice()){
+      if (!(await confirmNotice())){
         setUrrl(`/ideaspace/workshop/${res.data.id}`);
       }
     } else {

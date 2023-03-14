@@ -32,6 +32,7 @@ function SubmissionForm() {
   const [Dialog, confirmLeave] = useConfirm(
     'You have unsaved changes',
     'Are you sure you want to discard the changes and leave',
+    ['alternative primary', 'CANCEL', 'LEAVE']
   )
   const [urrl, setUrrl] = useState('');
 

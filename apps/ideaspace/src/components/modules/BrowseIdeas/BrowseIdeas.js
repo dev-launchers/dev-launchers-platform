@@ -60,6 +60,16 @@ function BrowseIdeas() {
       });
   }, []);
 
+  const defaultShownCardNum = 8;
+  const [buttonDisplay, setButtonDisplay] = React.useState();
+  const [displayCardAmount, setDisplayCardAmount] = React.useState(defaultShownCardNum);
+  const loadMore = () => {
+    setDisplayCardAmount(displayCardAmount + defaultShownCardNum);
+    if ((displayCardAmount + defaultShownCardNum) >= sortedCards.length) {
+      setButtonDisplay({ display: 'none' });
+    }
+  }
+
   return (
     <>
       <HeadWapper>
@@ -91,7 +101,7 @@ function BrowseIdeas() {
             </atoms.Box>
 
             <IdeaCardWrapper>
-              {sortedCards.map((item) => {
+              {sortedCards.slice(0, displayCardAmount).map((item) => {
                 return (
                   <IdeaCard
                     key={item.id}
@@ -101,6 +111,15 @@ function BrowseIdeas() {
                 );
               })}
             </IdeaCardWrapper>
+
+            <atoms.Button
+              buttonSize='standard'
+              buttonType='primary'
+              onClick={loadMore}
+              style={buttonDisplay}
+            >
+              load
+            </atoms.Button>
           </div>
         )}
       </PageWrapper>
