@@ -20,7 +20,6 @@ const EditionButton = ({clickHandlerButton, sending}) => {
                 buttonSize='standard'
                 buttonType='primary'
                 type='submit'
-                style={{ marginLeft: '1rem' }}
             >
                 {' '}{sending === true ? 'Wait' : 'Save edits'}{' '}
             </atoms.Button>
