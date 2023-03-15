@@ -3,24 +3,19 @@ import { useRouter } from 'next/router';
 import CommentList from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
 import { IdeaOverview } from './IdeaOverview/IdeaOverview';
-import styled from 'styled-components';
+import theme from '../../../styles/theme';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
+import {
+  Form,
+  Comments
+} from './CommentsForm/StyledComments';
 
 import {
   Container,
-  Form,
-  Comments
-} from './CommentsForm/StyledComments.js';
-import { useFetchIdea } from './useFetchIdea';
+  Wrapper,
+} from './StyledComponents';
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
+import { useFetchIdea } from './useFetchIdea';
 
 function WorkshoppingPage() {
   const router = useRouter()
@@ -29,7 +24,7 @@ function WorkshoppingPage() {
   const [handleTextChange, setHandleTextChange] = useState('');
   const { data, loading } = useFetchIdea(ideaId)
   return (
-    <Container>
+    <Container theme={theme}>
       {loading === true ?
         <CircularIndeterminateLoader
           text="Loading..."
