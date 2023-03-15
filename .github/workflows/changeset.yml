@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+          cache: 'yarn'
 
       # Why not using setup-node 2.2+ cache option (yet) ?
       # see https://github.com/belgattitude/nextjs-monorepo-example/pull/369
