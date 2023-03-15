@@ -8,7 +8,7 @@ export const IdeaFeaturesCard = ({ ideaFeature }) => {
   return (
     <StyledCard>
       <Cardheading>
-        <h3>Idea features</h3>
+        Idea features
       </Cardheading>
       <IdeaFeatureList>
         {

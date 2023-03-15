@@ -12,10 +12,13 @@ export const StyledCard = styled(Card)`
   margin-top: 25px;
 `;
 
-export const Cardheading = styled.div`
+export const Cardheading = styled.h3`
   display: flex;
-  align-items: start;
-  justify-content: center;
+  align-items: center;
+  justify-content: start;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 20px;
 `;
 
 export const TargetAudienceList = styled.div`
@@ -24,4 +27,5 @@ export const TargetAudienceList = styled.div`
   align-items: start;
   justify-content: center;
   padding-bottom: 10px;
+  margin: 8px;
 `;

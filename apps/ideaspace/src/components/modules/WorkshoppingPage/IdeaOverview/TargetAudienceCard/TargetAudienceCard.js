@@ -8,7 +8,7 @@ export const TargetAudieneCard = ({ targetAudience }) => {
   return (
     <StyledCard>
       <Cardheading>
-        <h3>Target Audience</h3>
+        Target Audience
       </Cardheading>
       <TargetAudienceList>
         <h6>{targetAudience}</h6>

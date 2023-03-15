@@ -10,19 +10,21 @@ export const StyledCard = styled(Card)`
   margin-bottom: 25px;
 `;
 
-export const Cardheading = styled.div`
+export const Cardheading = styled.h3`
   display: flex;
   align-items: center;
   justify-content: start;
-  margin: 6px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 20px;
 `;
 
 export const DescriptionList = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 8px;
+  align-items: start;
+  justify-content: center;
   padding-bottom: 10px;
-  font-size: 16px;
-  text-align: start;
+  margin: 8px;
 `;
 

@@ -8,10 +8,10 @@ export const DescriptionCard = ({ description }) => {
   return (
     <StyledCard>
       <Cardheading>
-        <h3>Description</h3>
+        Description
       </Cardheading>
       <DescriptionList>
-        {description}
+        <h6>{description}</h6>
       </DescriptionList>
     </StyledCard>
   );
