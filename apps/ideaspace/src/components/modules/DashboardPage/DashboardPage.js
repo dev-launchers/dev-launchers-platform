@@ -2,7 +2,6 @@ import React from 'react';
 import axios from "axios";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
-import RainbowBar from '../../../../../website/src/components/common/RainbowBar';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
@@ -64,7 +63,7 @@ function DashboardPage() {
       <HeadWapper>
         <Headline>IdeaSpace Dashboard</Headline>
         <StyledRanbow>
-          <RainbowBar width="100%" height="5px" />
+          <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <atoms.Typography type='h4' >
           Everything about your ideas in one place.
@@ -85,7 +84,7 @@ function DashboardPage() {
               <Stats
                 totalCard={cards}
               />
-              
+
               <Ideas
                 totalCard={cards}
               />

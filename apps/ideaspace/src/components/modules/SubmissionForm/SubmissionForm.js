@@ -12,11 +12,19 @@ import { atoms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
+  Headline,
+  StyledRanbow,
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') isAuthenticated = true;
+  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+    isAuthenticated = true;
+
+    React.useEffect(() => {
+      setUserData({ ...userData, id: 30 });
+    }, []);
+  }
 
   const router = useRouter();
   const [sending, setSending] = useState(false);
@@ -35,7 +43,8 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
-    involveLevel: 'zero',
+    involveLevel: '',
+    status: '',
     hourCommitmentMin: 0,
     hourCommitmentMax: 0,
     difficultyLevel: 'Beginner',
@@ -49,7 +58,7 @@ function SubmissionForm() {
   });
 
   const submitHandler = async (values) => {
-    //e.preventDefault();
+    values['status'] = 'workshopping';
     setSending(true);
 
     const res = await axios.post(
@@ -113,11 +122,10 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <atoms.Layer hasRainbow style={{ width: '16.8rem', margin: 'auto' }}>
-          <atoms.Typography type='h1' style={{ fontSize: '4rem', }}>
-            Dev Ideas
-          </atoms.Typography>
-        </atoms.Layer>
+        <Headline>Submit an idea</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
         <BackButton 
           buttonType="confirm"
           clickHandler={backHandler}

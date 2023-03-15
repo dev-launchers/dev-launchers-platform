@@ -15,7 +15,7 @@ const Stats = ({
 
     return (
         <atoms.Box flexWrap='wrap' style={{rowGap: '1rem', columnGap: '4rem'}}>
-            <atoms.Layer type="white" style={{marginTop: '1rem'}}>
+            <atoms.Layer type="light" style={{marginTop: '1rem'}}>
                 <atoms.Typography type='p' style={{fontSize: '1.4rem', margin: '1.5rem 1.9rem', textAlign: 'left'}}>
                     Ideas Created
                 </atoms.Typography>
@@ -23,7 +23,7 @@ const Stats = ({
                     {ideaStats}
                 </atoms.Typography>
             </atoms.Layer>
-            <atoms.Layer type="white" style={{marginTop: '1rem'}}>
+            <atoms.Layer type="light" style={{marginTop: '1rem'}}>
                 <atoms.Typography type='pLarge' style={{fontSize: '1.4rem', margin: '1.5rem 1.9rem', textAlign: 'left'}}>
                     Total Comments
                 </atoms.Typography>
