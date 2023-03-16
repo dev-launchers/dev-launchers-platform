@@ -7,7 +7,7 @@ import {
   UserImageOne,
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import SignInButton from '../../common/SignInButton/SignInButton';
+import SignInButton from '../../../common/SignInButton/SignInButton';
 
 const MAX_COMMENT_CHARS = 250;
 
@@ -65,7 +65,7 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="Add your comment"
+              placeholder="What are your thoughts? (max 250 characters)"
               value={props.handleTextChange}
               onChange={handleTextChange}
               maxlength={MAX_COMMENT_CHARS}
