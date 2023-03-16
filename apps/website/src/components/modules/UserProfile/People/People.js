@@ -50,7 +50,7 @@ const People = ({ people }) => {
                       id: profile.id,
                       username: person.discordUsername ? discordUsername : profile?.displayName
                     },
-                    // email: email,
+                    email: email,
                     id: id,
                     name: profile?.displayName,
                     profilePictureUrl: profile?.profilePictureUrl
