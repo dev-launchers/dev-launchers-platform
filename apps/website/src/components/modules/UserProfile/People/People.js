@@ -57,20 +57,6 @@ const People = ({ people }) => {
                   }}
                   isVertical
                 />
-                {/* <Image
-                src={person?.profile?.profilePictureUrl}
-                alt=""
-                width="100%"
-                height="100%"
-              />
-              <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                margin: "1rem"
-              }}>
-                {person?.profile?.displayName}
-              </div> */}
               </div>
             )
           })}
