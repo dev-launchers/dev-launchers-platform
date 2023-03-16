@@ -3,6 +3,7 @@ import Image from "next/image";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import UserCard from '@devlaunchers/components/components/organisms/cards/UserCard';
 
 import Button from "../../../common/Button";
 import Card from "../../../common/Card";
@@ -16,47 +17,65 @@ import { PeopleContainer } from "./StyledPeople";
 const People = ({ people }) => {
   return (
     <PeopleContainer people={people}>
-        <div>
-          <h2>Interesting People</h2>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "space-between",
-              justifyContent: "space-around",
-              flexWrap:"wrap"
-            }}
-          >
-            {people.map((person) => (
-              <div 
-                key={Math.random} 
+      <div>
+        <h2>Interesting People</h2>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "space-between",
+            justifyContent: "space-around",
+            flexWrap: "wrap"
+          }}
+        >
+          {people.map((person) => {
+            const { email, profile, discordUsername, id } = person
+            console.log(person);
+            return (
+              <div
+                key={Math.random}
                 style={{
-                  width:"30%",
-                  background:"#dddddd",
-                  color:"black",
-                  display:"flex",
-                  margin:"1rem"
+                  width: "30%",
+                  background: "#dddddd",
+                  color: "black",
+                  display: "flex",
+                  margin: "1rem"
                 }}
               >
-                <Image 
-                  src={person?.profile?.profilePictureUrl} 
-                  alt=""
-                  width="100%"
-                  height="100%"
+                <UserCard
+                  user={{
+                    bio: 'Member',
+                    discord: {
+                      id: profile.id,
+                      username: person.discordUsername ? discordUsername : profile?.displayName
+                    },
+                    email: email,
+                    id: id,
+                    name: profile?.displayName,
+                    profilePictureUrl: profile?.profilePictureUrl
+                  }}
+                  isVertical
                 />
-                <div style={{
-                  display:"flex",
-                  justifyContent:"center",
-                  alignItems:"center",
-                  margin:"1rem"
-                }}>
-                  {person?.profile?.displayName}
-                </div>
+                {/* <Image
+                src={person?.profile?.profilePictureUrl}
+                alt=""
+                width="100%"
+                height="100%"
+              />
+              <div style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                margin: "1rem"
+              }}>
+                {person?.profile?.displayName}
+              </div> */}
               </div>
-            ))}
-          </div>
+            )
+          })}
         </div>
+      </div>
     </PeopleContainer>
   );
 };
