@@ -24,12 +24,12 @@ export default class MyDocument extends Document {
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','GTM-KMZNFSB');`
+              })(window,document,'script','dataLayer','GTM-KMZNFSB');`,
             }}
           />
           {/* <!-- End Google Tag Manager --> */}
 
-          {/* <!-- Hotjar Tracking Code for https://devlaunchers.org/ideas --> */}
+          {/* <!-- Hotjar Tracking Code for https://devlaunchers.org/ideaspace --> */}
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(h,o,t,j,a,r){
@@ -39,14 +39,20 @@ export default class MyDocument extends Document {
                 r=o.createElement('script');r.async=1;
                 r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
                 a.appendChild(r);
-                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
             }}
           />
         </Head>
         <body>
           {/* <!-- Google Tag Manager (noscript) --> */}
-          <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KMZNFSB"
-          height="0" width="0" style={{display:"none", visibility:"hidden"}}></iframe></noscript>
+          <noscript>
+            <iframe
+              src="https://www.googletagmanager.com/ns.html?id=GTM-KMZNFSB"
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            ></iframe>
+          </noscript>
           {/* <!-- End Google Tag Manager (noscript) --> */}
           <Main />
           <NextScript />

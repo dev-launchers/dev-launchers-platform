@@ -10,6 +10,8 @@ import { env } from "../../../../utils/EnvironmentVariables";
 
 import { useUserDataContext } from "../../../../context/UserDataContext";
 
+import PositionCard from '@devlaunchers/components/components/organisms/cards/PositionCard';
+
 import { OpportunitiesContainer } from "./StyledOpportunities";
 
 const Opportunities = ({ opportunities }) => {
@@ -32,36 +34,53 @@ const Opportunities = ({ opportunities }) => {
               justifyContent: "space-around",
             }}
           >
-            {opportunities.slice(0, 4).map((opportunity) => (
-              <div
-                key={Math.random()}
-                style={{
-                  width: "90%",
-                  marginTop: ".5rem",
-                  backgroundColor: "white",
-                  paddingLeft: "1rem",
-                  paddingRight: "1rem",
-                  paddingBottom: "1rem",
-                }}
-              >
-                <h3 style={{ marginBottom: 0 }}>
-                  <a style={{ cursor: "pointer" }} href={`/join/${opportunity.project.slug}`}>{opportunity.title}</a>{" "}
-                  <span style={{ fontSize: "1rem" }}>
-                    ({opportunity.level} Opportunity)
-                  </span>
-                </h3>
-                <div>
-                  <span style={{ fontSize: "1rem" }}>Remote</span>
+            {opportunities.slice(0, 4).map((opportunity) => {
+              const { level, description, title, skills, commitmentHoursPerWeek, project } = opportunity;
+
+              return (
+                <div
+                  key={Math.random()}
+                  style={{
+                    width: "90%",
+                    marginTop: ".5rem",
+                    backgroundColor: "white",
+                    paddingLeft: "1rem",
+                    paddingRight: "1rem",
+                    paddingBottom: "1rem",
+                  }}
+                >
+                  <PositionCard
+                    buttonStyle="a"
+                    content={{
+                      benefits: [
+                        'Be proficient in React.js and/or Next.js (strongly prefer both or at least Next)',
+                        'Experience with GitHub and version control using Git',
+                        'Backend experience preferred, especially using a CMS',
+                        'Be able tocommit at least 5 hours a week',
+                        'Self-sufficient learner',
+                        ' Communicate with us on a weekly basis to see the progress you\'ve been making'
+                      ],
+                      expectations: [
+                        'Be proficient in React.js and/or Next.js (strongly prefer both or at least Next)',
+                        'Experience with GitHub and version control using Git',
+                        'Backend experience preferred, especially using a CMS',
+                        'Be able tocommit at least 5 hours a week',
+                        'Self-sufficient learner',
+                        ' Communicate with us on a weekly basis to see the progress you\'ve been making'
+                      ],
+                      imgUrl: project.heroImage.url,
+                      level: level,
+                      role: description.substring(0, 200) +
+                        (opportunity.description.length > 200 ? "..." : ""),
+                      tags: skills.map(skill => skill.interest),
+                      timeCommittment: `${commitmentHoursPerWeek} hrs per week`,
+                      title: title
+                    }}
+                    interaction="save-only"
+                  />
                 </div>
-                <div>{opportunity.project.title} Project</div>
-                <div>
-                  <span style={{ fontSize: "1.1rem" }}>
-                    {opportunity.description.substring(0, 200) +
-                      (opportunity.description.length > 200 ? "..." : "")}
-                  </span>
-                </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       ) : (

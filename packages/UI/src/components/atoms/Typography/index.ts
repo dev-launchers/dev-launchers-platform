@@ -13,6 +13,8 @@ export interface TypographyProps {
     | 'pSmall'
     | 'button'
     | 'label'
-    | 'labelSmall';
+    | 'labelSmall'
+    | 'link'
+    | 'navlink';
   textAlign?: CSS.Properties['textAlign'];
 }

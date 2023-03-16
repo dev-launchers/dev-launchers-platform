@@ -33,6 +33,6 @@ Disabled.args = {
 export const DisabledHasLikes = TemplateLikeButton.bind({});
 DisabledHasLikes.args = {
   text: '479',
-  filled: false,
+  filled: true,
   disabled: true,
 };
