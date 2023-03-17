@@ -8,7 +8,7 @@
     "@cloudflare/wrangler": "^1.19.12",
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/website": "*",
-    "@devlaunchers/ideas": "*",
+    "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
     "@ramonak/react-progress-bar": "^5.0.2",
     "@types/styled-components": "5.1.25",
@@ -73,12 +73,7 @@
     "test:unit": "echo \"No tests yet\"",
     "fix:staged-files": "lint-staged --allow-empty"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
   "lint-staged": {
     "*.js": "eslint '*/**/*.{js,jsx}' --fix",
     "*.{js,css,md}": "prettier --write"
@@ -87,9 +82,7 @@
     "styled-components": "^5"
   },
   "release": {
-    "branches": [
-      "release"
-    ],
+    "branches": ["release"],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
