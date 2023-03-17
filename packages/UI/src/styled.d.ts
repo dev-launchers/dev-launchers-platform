@@ -1,9 +1,16 @@
 // import original module declarations
-import { ThemeType } from './styles/theme';
-import {} from 'styled-components/cssprop';
-import 'styled-components';
+import type { DOMAttributes } from 'react';
+import type { CSSProp } from 'styled-components';
+import type { ThemeType } from './styles/theme';
 
 // and extend them!
 declare module 'styled-components' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   export interface DefaultTheme extends ThemeType {}
+}
+
+declare module 'react' {
+  interface HTMLAttributes<T> extends DOMAttributes<T> {
+    css?: CSSProp<DefaultTheme>;
+  }
 }
