@@ -141,7 +141,7 @@ const PositionCard = ({
             <Box flexDirection="column" gap="16px">
               <Typography type="h5">why should you join?</Typography>
               <ul css={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el1, i1) => (
+                {content.benifits.map((el1, i1) => (
                   <Typography type="p" key={i1}>
                     <li>{el1}</li>
                   </Typography>

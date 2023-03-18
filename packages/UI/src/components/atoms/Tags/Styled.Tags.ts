@@ -47,7 +47,7 @@ export const CloseButton = styled.button<StyledProps>`
   cursor: pointer;
   padding-left: 0.5rem;
 `;
-export const CloseIcon = styled.svg<radiusStyles>`
+export const CloseIcon = styled.svg<StyledProps>`
   background-color: ${({ theme, bgColor }) => {
     if (bgColor === 'GREYSCALE_CHARCOAL')
       return theme.colors.GREYSCALE_CHARCOAL;
