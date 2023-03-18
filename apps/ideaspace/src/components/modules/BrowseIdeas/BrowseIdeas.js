@@ -2,18 +2,13 @@ import React from 'react';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import IdeaCard from './IdeaCard/IdeaCard';
 import axios from 'axios';
-import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas';
-import { Drop } from 'phosphor-react';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [sortedCards, setSortedCards] = React.useState([]);
 
-  //const defaultOptions = [<option key="0"></option>];
   const sortingConfigs = [
     {
       value: 'mostRecentCommentTime',
@@ -31,31 +26,11 @@ function BrowseIdeas() {
       isAscending: true,
     },
   ];
-  const options = [
-    {
-      text: 'Recent Activity',
-    },
-    {
-      text: 'Recent Ideas',
-    },
-    {
-      text: 'Time Commitment',
-    },
-  ];
 
-  const sortElements = (selectedSortCriterion) => {
-    console.log(`selected sort criterion is ${selectedSortCriterion}`);
+  const sortCards = (selectedSortCriterion) => {
     let selectedSortingConfig = sortingConfigs.filter(
       (configOption) => configOption.label === selectedSortCriterion
     );
-    console.log(
-      `selectedSortingConfig is ${JSON.stringify(
-        selectedSortingConfig,
-        null,
-        2
-      )}`
-    );
-    console.log(`sortingConfig value is ${selectedSortingConfig.value}`);
     const cardsClone = JSON.parse(JSON.stringify(cards));
     if (selectedSortingConfig[0].isAscending) {
       cardsClone.sort((a, b) => {
@@ -78,18 +53,8 @@ function BrowseIdeas() {
           : 0;
       });
     }
-    console.log(`cardsClone is ${JSON.stringify(cardsClone, null, 2)}`);
     setCards(cardsClone);
   };
-
-  const dummyFunction = (Text) => {
-    console.log(`Call back function: ${Text}`);
-    sortElements(Text);
-  };
-
-  /*const handleSetSortedCards = (sortedCardList) => {
-    setSortedCards(sortedCardList);
-  };*/
 
   React.useEffect(() => {
     axios
@@ -119,18 +84,13 @@ function BrowseIdeas() {
         <div>
           <FilterDiv>
             <Dropdown
-              options={options}
-              callbackFn={dummyFunction}
+              options={sortingConfigs.map((element) => {
+                return { text: element.label };
+              })}
+              callbackFn={sortCards}
               title="Sort By"
               width="lg"
             />
-            {/* <label htmlFor="sortBy">Sort By</label>
-            <SortableDropdown
-              sortingConfigs={sortingConfigs}
-              elements={cards}
-              defaultOptions={defaultOptions}
-              handleSetSortedElements={setSortedCards}
-            /> */}
           </FilterDiv>
           <CardsWrapper>
             {cards.map((item) => {
