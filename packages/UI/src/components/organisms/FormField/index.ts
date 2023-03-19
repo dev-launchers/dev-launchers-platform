@@ -1,5 +1,5 @@
 export { default } from './FormField';
-import type CSS from 'csstype'
+import type CSS from 'csstype';
 import type { ChangeEvent } from 'react';
 
 export interface InputProps {
@@ -14,4 +14,5 @@ export interface InputProps {
   valid?: boolean;
   touched?: boolean;
   onChange: (value: ChangeEvent<HTMLInputElement>) => void;
+  value?: string;
 }

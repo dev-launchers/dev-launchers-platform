@@ -3,9 +3,9 @@ import Box from '../../../atoms/Box';
 import { InteractionButton } from '../StyledCommonComponents';
 import type { LikeButtonProps } from '.';
 
-const LikeButton = ({ text, filled, disabled }: LikeButtonProps) => {
+const LikeButton = ({ text, filled, disabled, ...props }: LikeButtonProps) => {
   return (
-    <InteractionButton disabled={disabled}>
+    <InteractionButton disabled={disabled} {...props}>
       <Box gap="8px" justifyContent="center" alignItems="center">
         <Like
           fill={filled ? (disabled ? '#474747' : 'black') : ''}

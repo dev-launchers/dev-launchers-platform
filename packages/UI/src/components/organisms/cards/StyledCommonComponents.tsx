@@ -1,9 +1,4 @@
-import {
-  motion,
-  LazyMotion,
-  domAnimation,
-} from 'framer-motion'; // 'framer-motion/dist/framer-motion'
-
+import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
@@ -11,12 +6,13 @@ import Typography from '../../atoms/Typography';
 
 interface TagsContainerProps {
   list: string[];
+  title?: string;
 }
 
-export const TagsContainer = ({ list }: TagsContainerProps) => {
+export const TagsContainer = ({ list, title }: TagsContainerProps) => {
   return (
     <Box flexDirection="column" gap="16px" maxWidth="282px">
-      <Typography type="h5">Position tags</Typography>
+      <Typography type="subtitle">{title}</Typography>
       <Box flexWrap="wrap" gap="8px">
         {list.map((tag: string) => (
           <Tags key={tag} bgColor="GREYSCALE_BLACK" txtColor="GREYSCALE_WHITE">
@@ -30,8 +26,8 @@ export const TagsContainer = ({ list }: TagsContainerProps) => {
 
 interface CardDescriptionProps {
   title?: string;
-  subtitle: string;
-  body: string;
+  subtitle?: string;
+  body?: string;
 }
 
 export const CardDescription = ({
@@ -42,13 +38,17 @@ export const CardDescription = ({
   return (
     <Box flexDirection="column" gap="16px" maxWidth="450px">
       {title && <Typography type="h3">{title}</Typography>}
-      <Typography type="h5">{subtitle}</Typography>
+      <Typography type="subtitle">{subtitle}</Typography>
       <Typography type="p">{body}</Typography>
     </Box>
   );
 };
 
-export const ExpandableBlurb = ({ children }) => {
+export const ExpandableBlurb = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [height, setHeight] = useState(0);
   const content = useRef<HTMLDivElement>(null);
 

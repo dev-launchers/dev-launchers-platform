@@ -20,6 +20,7 @@ function OpenResponse({
   error,
   touched,
   onChange,
+  value,
 }: OpenResponseProps) {
   return (
     <>
@@ -41,6 +42,7 @@ function OpenResponse({
             error={error}
             disabled={disabled}
             onChange={onChange}
+            value={value}
           />
         </InputWrapper>
       </Label>
