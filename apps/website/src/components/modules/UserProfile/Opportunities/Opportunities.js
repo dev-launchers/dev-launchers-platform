@@ -52,22 +52,6 @@ const Opportunities = ({ opportunities }) => {
                   <PositionCard
                     buttonStyle="a"
                     content={{
-                      benefits: [
-                        'Be proficient in React.js and/or Next.js (strongly prefer both or at least Next)',
-                        'Experience with GitHub and version control using Git',
-                        'Backend experience preferred, especially using a CMS',
-                        'Be able tocommit at least 5 hours a week',
-                        'Self-sufficient learner',
-                        ' Communicate with us on a weekly basis to see the progress you\'ve been making'
-                      ],
-                      expectations: [
-                        'Be proficient in React.js and/or Next.js (strongly prefer both or at least Next)',
-                        'Experience with GitHub and version control using Git',
-                        'Backend experience preferred, especially using a CMS',
-                        'Be able tocommit at least 5 hours a week',
-                        'Self-sufficient learner',
-                        ' Communicate with us on a weekly basis to see the progress you\'ve been making'
-                      ],
                       imgUrl: project.heroImage.url,
                       level: level,
                       role: description.substring(0, 200) +
