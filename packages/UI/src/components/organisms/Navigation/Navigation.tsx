@@ -1,9 +1,12 @@
 import Link from 'next/link';
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import Layer from '../../atoms/Layer';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';

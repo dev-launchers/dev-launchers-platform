@@ -14,7 +14,7 @@ import {
   LogoWords,
   LogoWrapper,
   // eslint-disable-next-line prettier/prettier
-  NavEntry
+  NavEntry,
 } from './StyledHeader';
 
 export default function Header() {
@@ -45,7 +45,7 @@ export default function Header() {
             <NavEntry>LEARN</NavEntry>
           </a>
         </Link>
-        <Link href="/ideas">
+        <Link href="/ideaspace">
           <a>
             <NavEntry>DREAM</NavEntry>
           </a>
