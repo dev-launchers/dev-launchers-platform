@@ -17,5 +17,4 @@ export interface TypographyProps {
     | 'link'
     | 'navlink';
   textAlign?: CSS.Properties['textAlign'];
-  children?: JSX.Element | JSX.Element[] | string;
 }
