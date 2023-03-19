@@ -46,11 +46,11 @@ const People = ({ people }) => {
                 <UserCard
                   user={{
                     bio: 'Member',
-                    discord: {
-                      id: profile.id,
-                      username: person.discordUsername ? discordUsername : profile?.displayName
-                    },
-                    email: email,
+                    // discord: {
+                    //   id: profile.id,
+                    //   username: person.discordUsername ? discordUsername : profile?.displayName
+                    // },
+                    // email: email,
                     id: id,
                     name: profile?.displayName,
                     profilePictureUrl: profile?.profilePictureUrl
