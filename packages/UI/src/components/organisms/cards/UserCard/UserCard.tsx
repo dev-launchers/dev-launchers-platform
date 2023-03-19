@@ -13,7 +13,10 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
 
   // const { userData } = useUserDataContext();
   return (
-    <atoms.Layer type="white" css={{ borderRadius: '16px', maxWidth: '360px' }}>
+    <atoms.Layer
+      type="white"
+      css={{ borderRadius: '16px', width: '100%', maxWidth: '360px' }}
+    >
       <atoms.Box
         padding="24px"
         flexDirection="column"
@@ -34,7 +37,10 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
               css={{ borderRadius: '50%' }}
             />
 
-            <atoms.Typography type="h3" style={{ marginTop: '1rem' }}>
+            <atoms.Typography
+              type="h3"
+              style={{ marginTop: '1rem', color: 'inherit' }}
+            >
               {userInfo.name}
             </atoms.Typography>
             <atoms.Typography type="h5" style={{ marginTop: '.5rem' }}>
@@ -63,34 +69,42 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
           </atoms.Box>
         )}
         <atoms.Box flexDirection="column" alignItems="flex-start">
-          <atoms.Box
-            flexDirection="row"
-            alignItems="center"
-            margin={isVertical ? ' 1rem 0 1rem 1rem' : ' 0 0 1rem 0'}
-            gap="1rem"
-          >
-            <Discord width={'22px'} height={'16px'} />
-            <atoms.Box flexDirection="column">
-              <atoms.Typography type="label">DISCORD</atoms.Typography>
-              <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
-                {userInfo.discord.username}
-              </atoms.Typography>
+          {userInfo.discord ? (
+            <atoms.Box
+              flexDirection="row"
+              alignItems="center"
+              margin={isVertical ? ' 1rem 0 1rem 1rem' : ' 0 0 1rem 0'}
+              gap="1rem"
+            >
+              <Discord width={'22px'} height={'16px'} />
+              <atoms.Box flexDirection="column">
+                <atoms.Typography type="label">DISCORD</atoms.Typography>
+                <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                  {userInfo.discord.username}
+                </atoms.Typography>
+              </atoms.Box>
             </atoms.Box>
-          </atoms.Box>
-          <atoms.Box
-            flexDirection="row"
-            alignItems="center"
-            margin={isVertical ? ' 0 0 0 1rem' : undefined}
-            gap="1rem"
-          >
-            <Mail width={'22px'} height={'16px'} />
-            <atoms.Box flexDirection="column">
-              <atoms.Typography type="label">Email</atoms.Typography>
-              <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
-                {userInfo.email}
-              </atoms.Typography>
+          ) : (
+            ``
+          )}
+          {userInfo.email ? (
+            <atoms.Box
+              flexDirection="row"
+              alignItems="center"
+              margin={isVertical ? ' 0 0 0 1rem' : undefined}
+              gap="1rem"
+            >
+              <Mail width={'22px'} height={'16px'} />
+              <atoms.Box flexDirection="column">
+                <atoms.Typography type="label">Email</atoms.Typography>
+                <atoms.Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                  {userInfo.email}
+                </atoms.Typography>
+              </atoms.Box>
             </atoms.Box>
-          </atoms.Box>
+          ) : (
+            ``
+          )}
         </atoms.Box>
       </atoms.Box>
     </atoms.Layer>
