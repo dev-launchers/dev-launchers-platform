@@ -38,7 +38,7 @@ const MinimalPositionCard = ({
           <hr />
         </Box>
         <Box flexDirection="column" gap="8px" width="fit-content">
-          <Typography type="h5">time committment</Typography>
+          <Typography type="h5">time commitment</Typography>
           <Typography type="pSmall">{content.timeCommittment}</Typography>
         </Box>
       </Thumbnail>
@@ -104,7 +104,7 @@ const PositionCard = ({
             <hr />
           </Box>
           <Box flexDirection="column" gap="8px" width="fit-content">
-            <Typography type="h5">time committment</Typography>
+            <Typography type="h5">time commitment</Typography>
             <Typography type="pSmall">{content.timeCommittment}</Typography>
           </Box>
           {interaction && (
