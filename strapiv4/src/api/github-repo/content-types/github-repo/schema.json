@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "github_repos",
+  "info": {
+    "singularName": "github-repo",
+    "pluralName": "github-repos",
+    "displayName": "GithubRepo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "changes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "repo-changes.repo-changes"
+    },
+    "contributors": {
+      "type": "component",
+      "repeatable": true,
+      "component": "github-contributors.github-contributors"
+    }
+  }
+}

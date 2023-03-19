@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_repo_changes_repo_changes",
+  "info": {
+    "name": "RepoChanges",
+    "icon": "align-justify",
+    "displayName": "RepoChanges",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "datetime": {
+      "type": "datetime"
+    },
+    "addedLines": {
+      "type": "integer"
+    },
+    "removedLines": {
+      "type": "integer"
+    }
+  }
+}

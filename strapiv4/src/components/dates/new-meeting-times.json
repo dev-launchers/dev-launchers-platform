@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_dates_new_meeting_times",
+  "info": {
+    "name": "newMeetingTimes",
+    "icon": "calendar",
+    "description": "",
+    "displayName": "NewMeetingTimes"
+  },
+  "options": {},
+  "attributes": {
+    "recurringDate": {
+      "type": "enumeration",
+      "enum": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "IANA_timeZone": {
+      "type": "string",
+      "default": "eg. America/Los_Angeles",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

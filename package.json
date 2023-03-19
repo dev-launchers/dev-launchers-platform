@@ -4,7 +4,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "strapiv4"
   ],
   "scripts": {
     "g:clean": "yarn clean:global-cache && yarn workspaces foreach -ptv run clean",

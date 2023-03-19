@@ -1,0 +1,18 @@
+{
+  "collectionName": "MeetParticipant",
+  "info": {
+    "name": "MeetParticipant",
+    "icon": "chalkboard-teacher",
+    "displayName": "MeetParticipant",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "string"
+    },
+    "totalMinutes": {
+      "type": "integer"
+    }
+  }
+}

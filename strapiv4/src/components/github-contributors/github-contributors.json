@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_github_contributors_github_contributors",
+  "info": {
+    "name": "GithubContributors",
+    "icon": "address-book",
+    "displayName": "GithubContributors",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "githubURL": {
+      "type": "string"
+    },
+    "avatarURL": {
+      "type": "string"
+    },
+    "contributions": {
+      "type": "integer"
+    }
+  }
+}

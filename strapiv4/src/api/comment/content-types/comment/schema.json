@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "Comment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "idea_card": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::idea-card.idea-card",
+      "inversedBy": "comments"
+    },
+    "author": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/*
+
+.cache/*
+
+.env
+
+.tmp/*
+
+build/*
+
+.strapi-updater.json

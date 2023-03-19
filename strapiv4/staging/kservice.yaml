@@ -1,0 +1,156 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  namespace: strapiv4-staging
+  name: strapi
+spec:
+  template:
+    spec:
+      volumes:
+        - name: google-directory-key
+          secret:
+            secretName: auth
+            items:
+            - key: google-service-key.json
+              path: google-service-key.json
+        - name: license
+          secret:
+            secretName: license
+            items:
+            - key: license.txt
+              path: license.txt
+      containers:
+      - name: strapi
+        image: devlaunchers/strapi:a6182a7-202208221817
+        ports:
+        - containerPort: 1337
+        env:
+        - name: CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              name: auth
+              key: discord-client-id
+        - name: CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: auth
+              key: discord-client-secret
+        - name: REDIRECT_URL
+          valueFrom:
+            configMapKeyRef:
+              name: strapi-config
+              key: redirect_url
+        - name: DATABASE_CLIENT
+          value: postgres
+        - name: DATABASE_NAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres
+              key: name
+        - name: DATABASE_HOST
+          valueFrom:
+            secretKeyRef:
+              name: postgres
+              key: host
+        - name: DATABASE_PORT
+          valueFrom:
+            secretKeyRef:
+              name: postgres
+              key: port
+        - name: DATABASE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: postgres
+              key: user
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres
+              key: password
+        - name: URL
+          valueFrom:
+            configMapKeyRef:
+              name: strapi-config
+              key: url
+        - name: DEVLAUNCHERS_GOOGLE_DIRECTORY_JWT_SUBJECT
+          valueFrom:
+            secretKeyRef:
+              name: auth
+              key: google-jwt-subject
+        - name: DEVLAUNCHERS_GOOGLE_DIRECTORY_GROUP_ID
+          valueFrom:
+            secretKeyRef:
+              name: auth
+              key: google-group-id
+        - name: DEVLAUNCHERS_GOOGLE_DIRECTORY_KEY
+          value: "/etc/google-directory/google-service-key.json"
+        - name: STORAGE_ACCOUNT
+          valueFrom:
+            secretKeyRef:
+              name: storage
+              key: account
+        - name: STORAGE_ACCOUNT_KEY
+          valueFrom:
+            secretKeyRef:
+              name: storage
+              key: account-key
+        - name: STORAGE_URL
+          valueFrom:
+            secretKeyRef:
+              name: storage
+              key: url
+        - name: STORAGE_CONTAINER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: storage
+              key: container-name
+        - name: FRONTEND_URL
+          valueFrom:
+            configMapKeyRef:
+              name: strapi-config
+              key: frontend_url
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: auth
+              key: jwt-secret
+        - name: NODE_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: strapi-config
+              key: node_env
+        - name: DOMAIN
+          valueFrom:
+            configMapKeyRef:
+              name: strapi-config
+              key: domain
+        - name: STRAPI_LOG_LEVEL
+          value: info
+        - name: AUDIT_FREQ_MINUTES
+          value: "60"
+        - name: OPEN_POSITIONS_DISCORD_WEBHOOK
+          valueFrom:
+            secretKeyRef:
+              name: site-projects
+              key: discord-webhook
+        - name: V_MATCH_USER
+          valueFrom:
+            secretKeyRef:
+              name: v-match
+              key: user
+        - name: V_MATCH_ID
+          valueFrom:
+            secretKeyRef:
+              name: v-match
+              key: id
+        - name: V_MATCH_PREFERENCE
+          valueFrom:
+            secretKeyRef:
+              name: v-match
+              key: preferences
+        volumeMounts:
+        - name: google-directory-key
+          mountPath: "/etc/google-directory"
+        - name: license
+          mountPath: /srv/app/license.txt
+          subPath: license.txt
