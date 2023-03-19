@@ -29,6 +29,7 @@ export const GoBack = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   border: 0 none;
+  cursor: pointer;
 
   font-weight: 400;
   font-size: 1rem;
