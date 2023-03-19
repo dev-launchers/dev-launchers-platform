@@ -40,7 +40,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
             <Typography type="h3" css={{ marginTop: '1rem' }}>
               {userInfo.name}
             </Typography>
-            <Typography type="h5" css={{ marginTop: '.5rem' }}>
+            <Typography type="subtitle" css={{ marginTop: '.5rem' }}>
               {userInfo.bio}
             </Typography>
           </Box>
@@ -52,7 +52,7 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
           >
             <Box flexDirection="column" alignItems="center">
               <Typography type="h3">{userInfo.name}</Typography>
-              <Typography type="h5" css={{ marginTop: '.5rem' }}>
+              <Typography type="subtitle" css={{ marginTop: '.5rem' }}>
                 {userInfo.bio}
               </Typography>
             </Box>

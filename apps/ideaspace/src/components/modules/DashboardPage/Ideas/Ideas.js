@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import SortableDropdown from '../../../common/SortableDropdown/SortableDropdown';
-import IdeaCard from './IdeaCard'
+import IdeaCard from '../../../common/IdeaCard/IdeaCard';
 import submitImage from "../../../../images/submitButton.svg";
 
 import {
@@ -54,6 +54,7 @@ const Ideas = ({
                         <IdeaCard
                             cards={item}
                             key={item.id}
+                            cardType="mine"
                         />
                     );
                 })

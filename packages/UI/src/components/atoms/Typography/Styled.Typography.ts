@@ -48,7 +48,7 @@ const h4 = `
     }
 `;
 
-const h5 = `
+const subtitle = `
     font-family: 'Nunito Sans';
     font-size: 1rem;
     font-weight: 400;
@@ -153,7 +153,7 @@ export const typographyStyles = {
   h2,
   h3,
   h4,
-  h5,
+  subtitle,
   pLarge,
   p,
   pSmall,
