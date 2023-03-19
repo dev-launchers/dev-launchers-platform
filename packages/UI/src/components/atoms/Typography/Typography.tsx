@@ -1,10 +1,10 @@
 import { Text } from './Styled.Typography';
 import type { TypographyProps } from '.';
 
-const Typography: React.FC<TypographyProps> = ({
+const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
   type = 'p',
   children,
-  ...rest
+  ...props
 }) => {
   let tag: Extract<
     TypographyProps['type'],
@@ -22,7 +22,7 @@ const Typography: React.FC<TypographyProps> = ({
     tag = 'p';
   }
   return (
-    <Text type={type} as={tag} {...rest}>
+    <Text type={type} as={tag} {...props}>
       {children}
     </Text>
   );

@@ -30,14 +30,19 @@ export default function Tags({
   isFilter,
 }: Props) {
   const handleClose = () => {
-    onClose();
+    onClose?.();
   };
   return (
     <Tag {...onClose} bgColor={bgColor} txtColor={txtColor}>
       {children}
       {isFilter && (
-        <CloseButton bgColor={bgColor} onClick={handleClose}>
+        <CloseButton
+          bgColor={bgColor}
+          txtColor={txtColor}
+          onClick={handleClose}
+        >
           <CloseIcon
+            bgColor={bgColor}
             txtColor={txtColor}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

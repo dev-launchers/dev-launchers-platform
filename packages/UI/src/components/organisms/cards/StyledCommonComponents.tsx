@@ -1,8 +1,4 @@
-import {
-  motion,
-  LazyMotion,
-  domAnimation,
-} from 'framer-motion/dist/framer-motion';
+import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
@@ -48,7 +44,11 @@ export const CardDescription = ({
   );
 };
 
-export const ExpandableBlurb = ({ children }) => {
+export const ExpandableBlurb = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [height, setHeight] = useState(0);
   const content = useRef<HTMLDivElement>(null);
 
