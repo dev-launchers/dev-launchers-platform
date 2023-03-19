@@ -38,27 +38,35 @@ const MinimalPositionCard = ({
           <hr />
         </Box>
         <Box flexDirection="column" gap="8px" width="fit-content">
-          <Typography type="h5">time commitment</Typography>
+          <Typography type="h5">time committment</Typography>
           <Typography type="pSmall">{content.timeCommittment}</Typography>
         </Box>
       </Thumbnail>
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={handleMoreDetails}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              more details
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={handleMoreDetails}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                more details
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>
@@ -96,7 +104,7 @@ const PositionCard = ({
             <hr />
           </Box>
           <Box flexDirection="column" gap="8px" width="fit-content">
-            <Typography type="h5">time commitment</Typography>
+            <Typography type="h5">time committment</Typography>
             <Typography type="pSmall">{content.timeCommittment}</Typography>
           </Box>
           {interaction && (
@@ -164,22 +172,30 @@ const PositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={() =>
-                minimal ? handleMoreDetails() : setExpanded((open) => !open)
-              }
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              {expanded ? 'collapse details' : 'more details'}
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={() =>
+                  minimal ? handleMoreDetails() : setExpanded((open) => !open)
+                }
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                {expanded ? 'collapse details' : 'more details'}
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>
