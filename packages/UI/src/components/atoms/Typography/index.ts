@@ -7,7 +7,7 @@ export interface TypographyProps {
     | 'h2'
     | 'h3'
     | 'h4'
-    | 'h5'
+    | 'subtitle'
     | 'pLarge'
     | 'p'
     | 'pSmall'
@@ -17,4 +17,5 @@ export interface TypographyProps {
     | 'link'
     | 'navlink';
   textAlign?: CSS.Properties['textAlign'];
+  children?: JSX.Element | JSX.Element[] | string;
 }

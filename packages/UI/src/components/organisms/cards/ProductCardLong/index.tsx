@@ -1,9 +1,9 @@
-export { default } from './ProductCardLarge';
+export { default } from './ProductCardLong';
 
 export interface ProductProps {
   socialButton?: boolean;
   defaultButton?: boolean;
-  image?: boolean;
+  imageSrc?: string;
   saveButton?: boolean;
   button1: {
     text?: string;
@@ -17,5 +17,8 @@ export interface ProductProps {
   };
   title: string;
   subtitle: string;
+  description: string;
   body: string;
+  tags: Array<string>;
+  verticalSocialButtons?: boolean;
 }
