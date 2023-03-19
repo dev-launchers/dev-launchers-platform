@@ -6,4 +6,5 @@ export interface UserCardProps {
     discord: Pick<UserType['discord'], 'username' | 'discriminator'>;
   };
   isVertical: boolean;
+  style: object;
 }

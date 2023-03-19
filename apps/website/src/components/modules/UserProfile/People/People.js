@@ -44,6 +44,7 @@ const People = ({ people }) => {
                 }}
               >
                 <UserCard
+                  style={{width:"100%"}}
                   user={{
                     bio: 'Member',
                     // discord: {
