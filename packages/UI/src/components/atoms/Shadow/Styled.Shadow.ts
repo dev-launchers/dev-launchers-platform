@@ -23,6 +23,7 @@ export const shadowStyles = {
   shadow300,
   shadow400,
   shadow500,
+
   highlight100,
   highlight200,
   highlight300,
