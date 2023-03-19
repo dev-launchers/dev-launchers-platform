@@ -18,7 +18,6 @@ const defaultArgs = {
   tags: ['react', 'js', 'html', 'css', 'typescript'],
   verticalSocialButtons: false,
 };
-
 const TemplateProductCardLong: ComponentStory<typeof ProductCardLong> = (
   args
 ) => <ProductCardLong {...args}></ProductCardLong>;
