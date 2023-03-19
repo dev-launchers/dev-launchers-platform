@@ -3,7 +3,7 @@ import type { ThemeType } from '../../../styles/theme';
 import { Tag, CloseButton, CloseIcon } from './Styled.Tags';
 
 export interface Props {
-  onClose: () => void;
+  onClose?: () => void;
   bgColor: keyof Pick<
     ThemeType['colors'],
     | 'GREYSCALE_CHARCOAL'

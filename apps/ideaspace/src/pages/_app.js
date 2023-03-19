@@ -14,8 +14,6 @@ import platformTheme from '@devlaunchers/components/styles/theme';
 import ideaspaceTheme from '../styles/theme';
 
 import useMockDataInDevelopment from "../utils/useMockData";
-let theme = {platformTheme, ...ideaspaceTheme};
-// ideaspace need both package theme for storybook component and ideaspace theme
 /*
 import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
@@ -28,6 +26,19 @@ const hashRedirect = (router) => {
     router.push(router.asPath.replace('/#', ''));
   }
 };
+
+const theme = () =>{
+  // platformTheme and ideaspaceTheme both have color argument
+  // it need to concat instead of replacing each other
+  for(let a in platformTheme){
+    if(a in ideaspaceTheme){
+      ideaspaceTheme[a] = {...platformTheme[a], ...ideaspaceTheme[a]};
+    }else{
+      ideaspaceTheme[a] = platformTheme[a];
+    }
+  }
+  return ideaspaceTheme;
+}
 
 function MyApp(props) {
   //useMockDataInDevelopment();
