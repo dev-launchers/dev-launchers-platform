@@ -12,7 +12,7 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 
 import { UserProjectsContainer } from "./StyledUserProjects";
 
-const UserProjects = ({ myProjects }) => {  
+const UserProjects = ({ myProjects }) => {
   const noProjectsDisplay = (
     <div
       style={{
@@ -33,6 +33,39 @@ const UserProjects = ({ myProjects }) => {
     </div>
   );
 
+  const unique = [...new Map(myProjects.map((m) => [m.catchPhrase, m])).values()];
+
+  const unDuplicatedProject = unique.map(project => (
+    <Card
+      key={Math.random()}
+      size="large"
+      // isLinkingInside
+      // style={{ margin: 0, width: "100%", height: "100%" }}
+      cardData={{
+        id: project.id,
+        title: project.title,
+        secondaryText: `Commitment level: ${project.commitmentLevel}`,
+        tags: project.keywords?.map(({ keyword }) => keyword),
+        description: project.catchPhrase,
+        href: `https://devlaunchers.org/projects/${project.slug}`,
+        imageSrc: project.heroImage?.url,
+        /*
+                          actions: (
+                              <>
+                              <Link href={`https://devlaunchers.org/projects/${project.slug}`} passHref>
+                                  <a>LEARN MORE</a>
+                              </Link>
+                              <Link href="support-us" passHref>
+                                  <a>DONATE</a>
+                              </Link>
+                              </>
+                          ),
+                          */
+      }}
+    />
+  ))
+
+
   return (
     <UserProjectsContainer myProjects={myProjects}>
       {myProjects?.length > 0 ? (
@@ -47,35 +80,7 @@ const UserProjects = ({ myProjects }) => {
               justifyContent: "space-around",
             }}
           >
-            {myProjects.map((project) => (
-              <Card
-                key={Math.random()}
-                size="large"
-                // isLinkingInside
-                // style={{ margin: 0, width: "100%", height: "100%" }}
-                cardData={{
-                  id: project.id,
-                  title: project.title,
-                  secondaryText: `Commitment level: ${project.commitmentLevel}`,
-                  tags: project.keywords?.map(({ keyword }) => keyword),
-                  description: project.catchPhrase,
-                  href: `https://devlaunchers.org/projects/${project.slug}`,
-                  imageSrc: project.heroImage?.url,
-                  /*
-                                    actions: (
-                                        <>
-                                        <Link href={`https://devlaunchers.org/projects/${project.slug}`} passHref>
-                                            <a>LEARN MORE</a>
-                                        </Link>
-                                        <Link href="support-us" passHref>
-                                            <a>DONATE</a>
-                                        </Link>
-                                        </>
-                                    ),
-                                    */
-                }}
-              />
-            ))}
+            {unDuplicatedProject}
           </div>
         </div>
       ) : (
