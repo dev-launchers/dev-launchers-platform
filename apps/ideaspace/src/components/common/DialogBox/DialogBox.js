@@ -33,6 +33,7 @@ const useConfirm = (title, message, buttonInfo) => {
 
     <Dialog
       open={promise !== null}
+      onClose={handleCancel}
       fullWidth
       sx={{
         '& .MuiDialog-paper': {
