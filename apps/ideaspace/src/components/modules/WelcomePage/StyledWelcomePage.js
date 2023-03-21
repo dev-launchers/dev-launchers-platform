@@ -1,23 +1,22 @@
 import styled from 'styled-components';
 
+export const NavButtonArea = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
+
 export const ButtonArea = styled.aside`
   display: flex;
   flex-direction: row;
-  padding-left: 2.5%;
-  width: 100%;
-  max-width: 1700px;
-
+  column-gap: 3rem;
   margin-bottom: 10vh;
   @media (orientation: portrait) {
     min-height: 60vh;
   }
 
-  @media(max-width: 1280px) {
-    padding-left: 1%;
-  }
-
-  @media (max-width: 930px) {
-    padding-left: 12.5%;
+  @media (max-width: 1300px) {
+    row-gap: 2rem;
     flex-direction: column;
   }
 `;
@@ -53,7 +52,7 @@ export const Button = styled.button`
   }
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
   color: black;
   text-align: center;
   font-family: 'Nunito Sans';

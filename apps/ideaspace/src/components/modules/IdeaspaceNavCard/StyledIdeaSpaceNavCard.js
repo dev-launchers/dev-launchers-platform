@@ -5,8 +5,8 @@ export const CardBackground = styled.div`
   border-radius: 30px;
   overflow: initial;
   flex-direction: column;
-  height: 400px;
-  width: 75%;
+  height: 25rem;
+  width: 20rem;
   flex-direction: column;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.NEUTRAL_2};
@@ -18,19 +18,6 @@ export const CardBackground = styled.div`
   font-family: 'Abel';
   background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
   font-color: 'white';
-  @media (orientation: portrait) {
-    font-size: 1.5rem;
-    flex-direction: column;
-  }
-
-  @media (max-width: 930px) {
-    width: 60%;
-    margin-bottom: 15px;
-  }
-
-  @media (max-width: 575px) {
-    align-items: start;
-  }
 `;
 
 export const CardTitleDiv = styled.div`
