@@ -4,18 +4,19 @@ export const NavButtonArea = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding: 0 2rem;
 `;
 
 export const ButtonArea = styled.aside`
   display: flex;
   flex-direction: row;
-  column-gap: 3rem;
+  column-gap: 2rem;
   margin-bottom: 10vh;
   @media (orientation: portrait) {
     min-height: 60vh;
   }
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1000px) {
     row-gap: 2rem;
     flex-direction: column;
   }

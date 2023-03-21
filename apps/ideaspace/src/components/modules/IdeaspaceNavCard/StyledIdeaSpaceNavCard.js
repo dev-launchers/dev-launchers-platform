@@ -6,7 +6,7 @@ export const CardBackground = styled.div`
   overflow: initial;
   flex-direction: column;
   height: 25rem;
-  width: 20rem;
+  max-width: 23.5rem;
   flex-direction: column;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.NEUTRAL_2};
