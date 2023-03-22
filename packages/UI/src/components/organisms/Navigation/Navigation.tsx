@@ -19,6 +19,7 @@ const links = {
   CREATE: '/create',
   LEARN: '/learn',
   IDEATE: [
+    { text: 'Ideaspace', href: '/ideaspace' },
     { text: 'Submit an idea', href: '/ideaspace/submit' },
     { text: 'Generate an idea', href: '/ideaspace/generate' },
     { text: 'Help existing idea', href: '/ideaspace/browse' },
