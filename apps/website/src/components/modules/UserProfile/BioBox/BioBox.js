@@ -1,11 +1,13 @@
-import axios from "axios";
-import React, { useRef, useState } from "react";
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 
-import { Wrapper, Bio } from "./StyledBioBox";
+import { Wrapper, Bio } from './StyledBioBox';
 
-import { env } from "../../../../utils/EnvironmentVariables";
+import { env } from '../../../../utils/EnvironmentVariables';
 
-export default function BioBox({ data, canEdit }) {
+import { Name } from '../ProfileCard/StyledProfileCard';
+
+export default function BioBox({ data, canEdit, name }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const bioRef = useRef(null);
@@ -32,11 +34,13 @@ export default function BioBox({ data, canEdit }) {
   return (
     <Wrapper>
       <br />
+      <Name>{name}</Name>
+      <br />
       <Bio
         rows="7"
         cols="50"
         placeholder={
-          canEdit ? "Write your bio here!" : `${data.displayName} has no bio!`
+          canEdit ? 'Write your bio here!' : `${data.displayName} has no bio!`
         }
         maxlength="144"
         value={bioText}

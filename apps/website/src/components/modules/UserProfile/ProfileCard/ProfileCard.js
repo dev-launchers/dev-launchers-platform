@@ -1,5 +1,5 @@
-import React from "react";
-import { Wrapper, ProfilePicture, Name, UserName } from "./StyledProfileCard";
+import React from 'react';
+import { Wrapper, ProfilePicture, Name, UserName } from './StyledProfileCard';
 
 const UserProfileImage = ({ img, name, username }) => (
   <Wrapper>
