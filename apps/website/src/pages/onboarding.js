@@ -5,7 +5,7 @@ export default function UserOnboardingRoute() {
     return (
         <>
             <Head>
-                <title>Mentorship Tiers</title>
+                <title>User Onboarding</title>
             </Head>
             <div>
                 <UserOnboarding />
