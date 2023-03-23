@@ -20,5 +20,13 @@ export default function initMockIdeaCardData() {
             const result = mockIdeaData.filter((item) => item.id == cardId);
             return [200, result[0]];
           });
+
+    mock
+        .onPut(/\/idea-cards\/\d+/).replyOnce(500)
+        .onPut(/\/idea-cards\/\d+/).reply(200);
+
+    mock
+        .onPost(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`).replyOnce(500)
+        .onPost(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`).reply(200,{id:203});
           
 }
