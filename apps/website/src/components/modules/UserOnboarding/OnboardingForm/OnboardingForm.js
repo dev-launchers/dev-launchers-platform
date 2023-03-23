@@ -1,8 +1,15 @@
 import React from 'react'
+import PageBody from '../../../common/PageBody'
 
-const OnboardingForm = () => {
+const OnboardingForm = ({ children }) => {
     return (
-        <div>OnboardingForm</div>
+        <section>
+            <PageBody width='40%'>
+                <p>Let's Get to know each other</p>
+                {children}
+            </PageBody>
+        </section>
+
     )
 }
 
