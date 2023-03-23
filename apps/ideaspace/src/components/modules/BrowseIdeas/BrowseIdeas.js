@@ -84,12 +84,30 @@ function BrowseIdeas() {
         <div>
           <FilterDiv>
             <Dropdown
-              options={sortingConfigs.map((element) => {
-                return { text: element.label };
-              })}
-              callbackFn={sortCards}
+              isOpen
+              options={[
+                {
+                  disabled: false,
+                  text: 'Recent Activity',
+                },
+                {
+                  disabled: false,
+                  text: 'Recent Ideas',
+                },
+                {
+                  disabled: false,
+                  text: 'Time Commitment',
+                },
+              ]}
+              recieveValue={(value) => {
+                sortCards(
+                  Object.entries(value).filter(([key, value]) => {
+                    return value;
+                  })[0][0]
+                );
+              }}
               title="Sort By"
-              width="lg"
+              type="radio"
             />
           </FilterDiv>
           <CardsWrapper>
