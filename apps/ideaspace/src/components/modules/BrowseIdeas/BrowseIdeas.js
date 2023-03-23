@@ -84,6 +84,7 @@ function BrowseIdeas() {
         <div>
           <FilterDiv>
             <Dropdown
+              width="lg"
               isOpen
               options={[
                 {

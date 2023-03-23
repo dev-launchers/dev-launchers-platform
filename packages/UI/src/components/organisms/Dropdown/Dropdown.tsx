@@ -43,8 +43,6 @@ const Dropdown = ({
         prev[text] = checked;
         return prev;
       });
-    // callbackFn(text);
-    console.log(`checked options ${JSON.stringify(checkedOptions, null, 2)}`);
     recieveValue?.(checkedOptions);
   };
   // add typings here
