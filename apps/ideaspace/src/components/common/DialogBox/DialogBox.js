@@ -6,6 +6,7 @@ import {
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { atoms } from '@devlaunchers/components/src/components';
+import { Icons } from '@devlaunchers/components/src/assets';
 import DialogBoxButton from './DialogBoxButton';
 
 const useConfirm = (title, message, buttonInfo) => {
@@ -60,10 +61,13 @@ const useConfirm = (title, message, buttonInfo) => {
       <DialogTitle
         sx={{
           paddingTop: '2.2rem',
-          paddingBottom: '0.5rem'
+          paddingBottom: '0.5rem',
         }}
       >
-        {title}
+        <atoms.Box alignItems='center' style={{columnGap: '0.5rem', color: title[2]}}>
+          {title[1] == '' ? null : (title[1] == 'Success' ? <Icons.Success /> : <Icons.Error />)} 
+          {title[0]}
+        </atoms.Box>
       </DialogTitle>
 
       <DialogContent>

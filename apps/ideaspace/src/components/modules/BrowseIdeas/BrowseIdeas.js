@@ -16,7 +16,7 @@ import {
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState({});
+  const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [sortedCards, setSortedCards] = React.useState([]);
 
@@ -56,9 +56,13 @@ function BrowseIdeas() {
         });
 
         setLoading(false);
-        setCards(getCards);
+        setSourceCards(getCards);
       });
   }, []);
+
+  React.useEffect(() => {
+    setCards(sourceCards.filter((item) => item?.status !== "archived"));
+  }, [sourceCards]);
 
   const defaultShownCardNum = 8;
   const [buttonDisplay, setButtonDisplay] = React.useState();
@@ -118,7 +122,7 @@ function BrowseIdeas() {
               onClick={loadMore}
               style={buttonDisplay}
             >
-              load
+              load more
             </atoms.Button>
           </div>
         )}

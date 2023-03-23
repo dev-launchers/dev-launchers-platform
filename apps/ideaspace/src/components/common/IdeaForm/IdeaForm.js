@@ -17,7 +17,7 @@ const IdeaForm = ({
 	sending,
 	clickHandler
 }) => {
-
+	const [disabling, setDisabling] = React.useState(true);
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
@@ -33,8 +33,10 @@ const IdeaForm = ({
 		React.useEffect(() => {
 			if (compareValuesToInitial(values)) {
 				unsavedHandler(true);
+				setDisabling(false);
 			} else {
 				unsavedHandler(false);
+				setDisabling(true);
 			}
 		}, [values]);
 		return null;
@@ -188,6 +190,7 @@ const IdeaForm = ({
 									<EditionButton
 										clickHandlerButton={clickHandler}
 										sending={sending}
+										disabling={disabling}
 									/>
 								)}
 							</atoms.Box>

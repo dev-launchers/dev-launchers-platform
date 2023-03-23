@@ -30,11 +30,17 @@ function SubmissionForm() {
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
-    'You have unsaved changes',
+    ['You have unsaved changes','',''],
     'Are you sure you want to discard the changes and leave',
     ['alternative primary', 'CANCEL', 'LEAVE']
   )
   const [urrl, setUrrl] = useState('');
+
+  const [CreateFailure, confirmFailure] = useConfirm(
+    ['Unable to register your idea.','',''],
+    'Please try again.',
+    ['primary', 'close'],
+  );
 
   const initialValues = {
     ideaName: '',
@@ -62,18 +68,20 @@ function SubmissionForm() {
     values['status'] = 'workshopping';
     setSending(true);
 
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
-      values
-    );
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
+        values
+      );
 
-    if (res.status === 200) {
-      setunsavedChanges(false);
-      router.push(`workshop/${res.data.id}`);
-    } else {
-      alert('Unable to register your idea.');
+      if (res.status === 200) {
+        setunsavedChanges(false);
+        setUrrl(`workshop/${res.data.id}`);
+      }
+    } catch (error) {
       setSending(false);
       setunsavedChanges(true);
+      confirmFailure();
     }
   };
 
@@ -104,9 +112,9 @@ function SubmissionForm() {
         router.events.off('routeChangeStart', routeChangeStart);
       };
     } else if (urrl !== '') {
-      if (urrl == 'back'){
+      if (urrl == 'back') {
         window.history.back(-1);
-      }else{
+      } else {
         router.push(urrl);
       }
     }
@@ -127,7 +135,7 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton 
+        <BackButton
           buttonType="confirm"
           clickHandler={backHandler}
         />
@@ -145,6 +153,7 @@ function SubmissionForm() {
       ) : (
         <>
           <Dialog />
+          <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
