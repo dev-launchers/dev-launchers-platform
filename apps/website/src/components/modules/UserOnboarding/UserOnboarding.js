@@ -88,12 +88,12 @@ const UserOnboarding = () => {
                             <>I have read and agree to the</>
                             <br />
                             <Link
-                                href="/anywhere"
+                                href="https://devlaunchers.org/page/terms-and-conditions"
                                 text="Terms of Service"
                             />
                             &nbsp;<b>&</b>&nbsp;
                             <Link
-                                href="/anywhere"
+                                href="https://devlaunchers.org/page/privacy-policy"
                                 text="Privacy Policy"
                             />
                             . <b className='red'>*</b>
@@ -101,7 +101,10 @@ const UserOnboarding = () => {
                     </ConfirmationSection>
                 </FormFieldMargin>
 
+                <div className='separator'></div>
+
                 <Button
+                    className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
                 >
