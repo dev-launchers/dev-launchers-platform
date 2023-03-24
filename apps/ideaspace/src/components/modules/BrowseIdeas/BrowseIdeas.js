@@ -64,7 +64,7 @@ function BrowseIdeas() {
     setCards(sourceCards.filter((item) => item?.status !== "archived"));
   }, [sourceCards]);
 
-  const defaultShownCardNum = 8;
+  const defaultShownCardNum = 30;
   const [buttonDisplay, setButtonDisplay] = React.useState();
   const [displayCardAmount, setDisplayCardAmount] = React.useState(defaultShownCardNum);
   const loadMore = () => {

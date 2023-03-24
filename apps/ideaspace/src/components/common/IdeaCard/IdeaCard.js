@@ -38,7 +38,7 @@ function IdeaCard({ cards, cardType }) {
   }, [tagContent]);
 
   const reactivateIdea = async() => {
-    //cards["status"] = "workshopping";
+    cards["status"] = "workshopping";
     setButtonContent(`WAIT`);
 
     try {
@@ -48,8 +48,7 @@ function IdeaCard({ cards, cardType }) {
       );
 
       if (res.status === 200) {
-        //setTagContent(cards.status);
-        setTagContent("approved");
+        setTagContent("workshopping");
       }
     } catch (error) {
       confirmFailure();

@@ -28,5 +28,9 @@ export default function initMockIdeaCardData() {
     mock
         .onPost(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`).replyOnce(500)
         .onPost(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`).reply(200,{id:203});
+
+    mock
+        .onDelete(/\/idea-cards\/\d+/).replyOnce(500)
+        .onDelete(/\/idea-cards\/\d+/).reply(200);
           
 }

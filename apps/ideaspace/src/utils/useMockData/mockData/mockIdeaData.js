@@ -376,7 +376,8 @@ export let mockIdeaData = [
         "targetAudience": "This is a multiline\nHELPFULNESS\nanswer",
         "hourCommitmentMin": 1,
         "hourCommitmentMax": 4,
-        "status": "approved",
+        //"status": "approved",
+        "status": "archived",
         "author": {
             id: 2
         },
