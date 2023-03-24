@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 
   background-color: #f0f0f0;
   width: 300px;
-
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,8 +21,8 @@ export const Wrapper = styled.div`
   }
 `;
 export const ProfilePicture = styled.img`
-  height: auto;
-
+  clip-path: circle();
+  
   @media (orientation: portrait) {
     width: 50%;
   }

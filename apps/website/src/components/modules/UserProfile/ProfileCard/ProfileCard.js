@@ -3,7 +3,7 @@ import { Wrapper, ProfilePicture, Name, UserName } from "./StyledProfileCard";
 
 const UserProfileImage = ({ img, name, username }) => (
   <Wrapper>
-    <ProfilePicture width={250} height={250} src={img} />
+    <ProfilePicture width={128} height={128} src={img}/>
     <Name>{name}</Name>
     <UserName>{username}</UserName>
   </Wrapper>
