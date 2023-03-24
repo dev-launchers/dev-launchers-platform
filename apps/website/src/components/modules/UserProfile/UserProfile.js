@@ -204,6 +204,7 @@ export function UserProfileView({
               <BioBox
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
+                isPublic={false}
               />
             </UserInfo>
           </UserSection>

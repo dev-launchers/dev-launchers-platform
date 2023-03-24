@@ -5,9 +5,10 @@ import { Wrapper, Bio } from "./StyledBioBox";
 
 import { env } from "../../../../utils/EnvironmentVariables";
 
-export default function BioBox({ data, canEdit }) {
+export default function BioBox({ data, canEdit, isPublic }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
+  
   const bioRef = useRef(null);
 
   const handleTextChange = (e) => {
@@ -46,7 +47,7 @@ export default function BioBox({ data, canEdit }) {
         ref={bioRef}
       ></Bio>
       <br />
-      {canEdit &&
+      {isPublic && canEdit &&
         (isReadOnly ? (
           <button
             onClick={() => {
