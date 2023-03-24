@@ -249,6 +249,26 @@ export function UserProfileView({
               </TabPanel>
 
             </Tabs>
+		
+	    <div style={{width:"100%"}}>
+	    	My Availability
+	    	<br />
+	    	<div style={{width:"100%", display:"flex", justifyContent: "space-around", alignItems:"center"}}>
+	      		{["s", "m", "t", "w", "t", "f", "s"].map((weekday) => (
+				<div style={{display:"flex", flexDirection:"column"}}>
+					<b style={{fontSize:"1.5em"}}>{weekday}</b>
+					{[...Array(24).keys()].map((hourNum) => (
+						<div onClick={() => {
+							alert(`${weekday} - ${hourNum}`);
+						}}>{hourNum}</div>
+					))}
+				</div>
+			))}
+	    	</div>
+
+	    	<div style={{width:"100%", display:"flex", flexDirection: "column", justifyContent: "space-around", alignItems:"center"}}>	
+	      	</div>
+	    </div>
 
             {/* }<WeeksGlance />{ */}
             {/*
