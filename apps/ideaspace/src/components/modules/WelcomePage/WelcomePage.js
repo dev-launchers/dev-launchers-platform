@@ -17,6 +17,7 @@ import {
   Subheader,
   GetStartedDiv,
   RocketImage,
+  NavButtonArea,
 } from './StyledWelcomePage';
 
 import IdeaGeneratorButton from '../IdeaGeneratorButton';
@@ -34,56 +35,58 @@ const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check
 function WelcomePage() {
   return (
     <>
-        <Header>
-          <h1>IdeaSpace (Beta)</h1>
-          <RainbowBar />
-        </Header>
+      <Header>
+        <h1>IdeaSpace (Beta)</h1>
+        <RainbowBar />
+      </Header>
 
-        <Description>
-          <WelcomeMessage>WELCOME TO THE IDEA PLATFORM!</WelcomeMessage>
-          <Subheader>
-            Have an idea for a development project? Want to help develop an
-            idea? Want to generate an idea?
-          </Subheader>
-          <GetStartedDiv>
-            LET'S GET STARTED
-            <RocketImage src={rocketImage} />
-          </GetStartedDiv>
-        </Description>
+      <Description>
+        <WelcomeMessage>WELCOME TO THE IDEA PLATFORM!</WelcomeMessage>
+        <Subheader>
+          Have an idea for a development project? Want to help develop an
+          idea? Want to generate an idea?
+        </Subheader>
+        <GetStartedDiv>
+          LET'S GET STARTED
+          <RocketImage src={rocketImage} />
+        </GetStartedDiv>
+      </Description>
 
+      <NavButtonArea>
         <ButtonArea>
           <Link href="/ideaspace/submit">
             <a>
               <IdeaspaceNavCard
-                    cardBackgroundColor={submitIdeaCardBackgroundColor}
-                    cardBackgroundImage={bulletinBoardPostItImage}
-                    cardTitle={submitIdeaCardTitle}
-                    cardDescription={submitIdeaCardDescription}
-                  />
+                cardBackgroundColor={submitIdeaCardBackgroundColor}
+                cardBackgroundImage={bulletinBoardPostItImage}
+                cardTitle={submitIdeaCardTitle}
+                cardDescription={submitIdeaCardDescription}
+              />
             </a>
           </Link>
 
           <Link href="/ideaspace/browse">
-              <a>
-                <IdeaspaceNavCard
-                  cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
-                  cardBackgroundImage={helpButtonImage}
-                  cardTitle={helpExistingIdeaCardTitle}
-                  cardDescription={helpExistingIdeaCardDescription}
-                />
-              </a>
+            <a>
+              <IdeaspaceNavCard
+                cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
+                cardBackgroundImage={helpButtonImage}
+                cardTitle={helpExistingIdeaCardTitle}
+                cardDescription={helpExistingIdeaCardDescription}
+              />
+            </a>
           </Link>
 
-            <IdeaGeneratorButton showExtendedContent>
-              <IdeaspaceNavCard 
-                cardBackgroundColor={appGeneratorCardBackgroundColor}
-                cardBackgroundImage={handWithLightbulbImage}
-                cardTitle="Generate an Idea"
-                cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
+          <IdeaGeneratorButton showExtendedContent>
+            <IdeaspaceNavCard
+              cardBackgroundColor={appGeneratorCardBackgroundColor}
+              cardBackgroundImage={handWithLightbulbImage}
+              cardTitle="Generate an Idea"
+              cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
                 to get you started!" />
-            </IdeaGeneratorButton>
+          </IdeaGeneratorButton>
         </ButtonArea>
-      </>
+      </NavButtonArea>
+    </>
   );
 }
 
