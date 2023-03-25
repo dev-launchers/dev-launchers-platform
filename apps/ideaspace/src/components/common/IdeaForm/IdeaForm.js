@@ -57,7 +57,7 @@ const IdeaForm = ({
 						<AutoSubmitToken />
 						<atoms.Typography type='h4'>
 							Idea Info
-							<hr noshade="false" style={{margin: "0rem auto 2rem"}}/>
+							<hr noshade="false" style={{margin: "1rem auto 2rem"}}/>
 						</atoms.Typography>
 
 						<atoms.Box
