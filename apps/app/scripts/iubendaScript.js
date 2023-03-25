@@ -19,7 +19,6 @@ _iub.csConfiguration = {
       dataLayer.push({
         iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut(),
       });
-
       if (!preference) {
         dataLayer.push({
           event: 'iubenda_preference_not_needed',

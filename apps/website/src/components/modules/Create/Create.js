@@ -89,7 +89,7 @@ export default function Create(props) {
   }, [createPageData]);
 
   return (
-    <PageBody width="95%">
+    <PageBody width="95%" padding="0 2.5%">
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
