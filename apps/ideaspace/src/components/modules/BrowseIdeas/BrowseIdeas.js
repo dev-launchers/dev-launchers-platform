@@ -1,9 +1,19 @@
-import React from 'react';
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
-import IdeaCard from './IdeaCard/IdeaCard';
-import axios from 'axios';
+import React from 'react'
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
+import axios from "axios";
+import { atoms } from '@devlaunchers/components/src/components';
+import IdeaCard from '../../common/IdeaCard/IdeaCard';
+import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
-import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas';
+
+import {
+  PageWrapper,
+  HeadWapper,
+  Headline,
+  StyledRanbow,
+  IdeaCardWrapper,
+  FilterDiv
+} from './StyledBrowseIdeas';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
@@ -77,11 +87,24 @@ function BrowseIdeas() {
   }, []);
 
   return (
-    <PageWrapper>
-      {loading === true ? (
-        <CircularIndeterminateLoader text="Loading..." color="black" />
-      ) : (
-        <div>
+    <>
+      <HeadWapper>
+        <Headline>Browse Ideas</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
+        <BackButton />
+        <atoms.Typography type='h4' >
+          Want to help developing an idea?<br />
+          <atoms.Typography type='p' style={{ fontSize: '1.3rem' }}> Check out these ideas submitted by other Dev Launchers!</atoms.Typography>
+        </atoms.Typography>
+      </HeadWapper>
+
+      <PageWrapper>
+        {loading === true ? (
+          <CircularIndeterminateLoader text="Loading..." color="black" />
+        ) : (
+          <div>
           <FilterDiv>
             <Dropdown
               width="lg"
@@ -111,14 +134,22 @@ function BrowseIdeas() {
               type="radio"
             />
           </FilterDiv>
-          <CardsWrapper>
-            {cards.map((item) => {
-              return <IdeaCard key={item.id} cards={item} />;
-            })}
-          </CardsWrapper>
-        </div>
-      )}
-    </PageWrapper>
+
+            <IdeaCardWrapper>
+              {cards.map((item) => {
+                return (
+                  <IdeaCard
+                    key={item.id}
+                    cards={item}
+                    cardType="browse"
+                  />
+                );
+              })}
+            </IdeaCardWrapper>
+          </div>
+        )}
+      </PageWrapper>
+    </>
   );
 }
 
