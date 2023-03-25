@@ -61,16 +61,18 @@ function IdeaCard({ cards, cardType }) {
       style={{ border: "0.05rem solid rgba(240, 237, 238, 1)", borderRadius: "1rem" }}
     >
 
+      <atoms.Box>
+        <IdeaCardTag
+          status={tagContent}
+        />
+      </atoms.Box>
+        
       <IdeaCardImg
         cardId={cards.id}
       />
 
       <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-        margin='-1.5rem 2rem 1.5rem' style={{ maxWidth: '18.5rem' }}>
-
-        <IdeaCardTag
-          status={tagContent}
-        />
+        margin='0rem 2rem 1.5rem' style={{ maxWidth: '18.5rem' }}>
 
         <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
           {cards.ideaName}
