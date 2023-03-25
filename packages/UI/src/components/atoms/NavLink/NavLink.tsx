@@ -10,9 +10,6 @@ interface NavLinkProps {
 const NavLink = styled.a<NavLinkProps>`
   ${typographyStyles.navLink}
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  &:visited {
-    color: ${({ theme }) => theme.colors.BLUE};
-  }
   &:hover {
     color: ${({ theme }) => theme.colors.BLUE_200};
   }
