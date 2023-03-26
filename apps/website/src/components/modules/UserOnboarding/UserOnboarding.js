@@ -51,7 +51,6 @@ const UserOnboarding = () => {
                 </FormFieldMargin>
 
                 <FormFieldMargin>
-                    {/* LAST NAME */}
                     <FormField
                         error=""
                         name=''
@@ -111,11 +110,6 @@ const UserOnboarding = () => {
                     Continue
                 </Button>
             </form>
-            <p>
-                {person.firstName}{' '}
-                {person.lastName}{' '}
-                {person.bio}{' '}
-            </p>
         </OnboardingForm>
     )
 }
