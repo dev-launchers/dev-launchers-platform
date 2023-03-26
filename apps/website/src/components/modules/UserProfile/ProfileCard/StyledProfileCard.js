@@ -16,6 +16,9 @@ export const Wrapper = styled.div`
   & > div {
     margin-top: 10px;
   }
+  p {
+    font-size: 1.4rem;
+  }
   @media (orientation: portrait) {
     width: 90%;
   }
