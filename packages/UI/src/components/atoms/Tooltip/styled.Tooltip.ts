@@ -9,11 +9,10 @@ export const ToolTip = styled.div`
   ${paddingStyles['uniPad200']}
   color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   position: absolute;
-  left: 50%;
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-  line-height: 1;
-  z-index: 100;
+  z-index: 1020;
+  display: block;
   /* white-space: nowrap; */
 
   /* CSS border triangles */
@@ -30,7 +29,8 @@ export const ToolTip = styled.div`
   }
   /* Absolute positioning */
   &.top {
-    top: calc(1.875rem * -1);
+    bottom: 100%;
+    left: 50%;
   }
   /* CSS border triangles */
   &.top::before {
@@ -40,9 +40,9 @@ export const ToolTip = styled.div`
 
   /* Absolute positioning */
   &.right {
-    left: calc(100% + 1.875rem);
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
+    bottom: 50%;
+    left: calc(0.5rem + 100%);
+    transform: translateY(50%);
   }
   /* CSS border triangles */
   &.right::before {
@@ -54,7 +54,8 @@ export const ToolTip = styled.div`
 
   /* Absolute positioning */
   &.bottom {
-    bottom: calc(1.875rem * -1);
+    top: calc(0.5rem + 100%);
+    left: 50%;
   }
   /* CSS border triangles */
   &.bottom::before {
@@ -65,14 +66,14 @@ export const ToolTip = styled.div`
   /* Absolute positioning */
   &.left {
     left: auto;
-    right: calc(100% + 1.875rem);
-    top: 50%;
-    transform: translateX(0) translateY(-50%);
+    right: calc(1rem + 100%);
+    bottom: 50%;
+    transform: translateY(50%);
   }
   /* CSS border triangles */
   &.left::before {
     left: auto;
-    right: calc(6px * -2);
+    right: calc(6px * -3);
     top: 50%;
     transform: translateX(0) translateY(-50%);
     border-left-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
