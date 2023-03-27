@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper, ProfilePicture, Name, UserName } from "./StyledProfileCard";
 
-const UserProfileImage = ({ img, name, username, created_at }) => {
+const UserProfileImage = ({ img, created_at }) => {
   const date = new Date(created_at);
 
   const options = {
