@@ -4,18 +4,17 @@ import { Wrapper, ProfilePicture, Name, UserName } from "./StyledProfileCard";
 const UserProfileImage = ({ img, name, username, created_at }) => {
   const date = new Date(created_at);
 
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
+  const options = {
+    year: "numeric",
+    month: "long",
+  }
 
-  const month = monthNames[date.getMonth()]
-
-  const year = date.getFullYear();
+  const year = date.toLocaleString("en-US", options);
 
   return (
     <Wrapper>
       <ProfilePicture width={250} height={250} src={img} />
-      <p> {`Member Since ${month} ${year}`}</p>
+      <p> {`Member Since ${year}`}</p>
     </Wrapper>
   )
 };
