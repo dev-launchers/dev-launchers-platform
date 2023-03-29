@@ -2,8 +2,8 @@
 
 # Getting Started
 1. Copy the `.env.example` file into `.env`
-2. Run `npm install`
-3. Run `npm run develop`
+2. Run `yarn`
+3. Run `yarn workspace @devlaunchers/backend develop`
 4. Go to http://localhost:1337/admin to create an account
 
 # Running from Docker
