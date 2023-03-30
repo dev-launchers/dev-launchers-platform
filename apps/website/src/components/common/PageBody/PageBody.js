@@ -6,7 +6,8 @@ export default function PageBody({
   style = {},
   width = "100%",
   height = "auto",
+  padding,
 }) {
-  const styles = { ...style, width, height };
+  const styles = { ...style, width, height, padding };
   return <Wrapper style={styles}>{children}</Wrapper>;
 }

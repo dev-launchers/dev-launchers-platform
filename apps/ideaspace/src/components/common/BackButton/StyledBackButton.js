@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const GoBack = styled.button`
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
