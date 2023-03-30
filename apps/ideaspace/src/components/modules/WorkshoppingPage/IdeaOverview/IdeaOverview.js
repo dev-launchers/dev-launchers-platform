@@ -13,6 +13,8 @@ import {
 } from './StyledComponents';
 
 export const IdeaOverview = ({ selectedCard }) => {
+  if (selectedCard.ideaName === "") return null;
+
   return (
     <Wrapper>
       <LeftWrapper>
