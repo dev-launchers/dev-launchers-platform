@@ -13,9 +13,7 @@ import {
 } from './StyledComponents';
 
 export const IdeaOverview = ({ selectedCard }) => {
-  console.log('selectedCard', selectedCard);
-
-  if (selectedCard.ideaName == "") return null;
+  if (selectedCard.ideaName === "") return null;
 
   return (
     <Wrapper>
