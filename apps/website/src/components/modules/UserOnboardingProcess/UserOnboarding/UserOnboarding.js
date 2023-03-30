@@ -106,6 +106,7 @@ const UserOnboarding = () => {
                     className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
+                // onClick={(e) => e.preventDefault()}
                 >
                     Continue
                 </Button>
