@@ -1,15 +1,17 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import { ToolTip as StyledTooltip, Wrapper } from './styled.Tooltip';
-import type { ToolTipProps } from '.';
+import { css } from 'styled-components';
+import { StyledTooltip, Wrapper } from './StyledTooltip';
+import type { TooltipProps } from '.';
 
 const Tooltip = ({
   children,
   content,
   delay = 400,
-  direction = 'top',
+  direction,
+  type,
   ...props
-}: ToolTipProps) => {
+}: TooltipProps) => {
   let timeout: NodeJS.Timeout;
   const [active, setActive] = useState(false);
 
@@ -24,12 +26,30 @@ const Tooltip = ({
     setActive(false);
   };
 
-  return (
-    <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
-      {children}
-      {active && <StyledTooltip className={direction}>{content}</StyledTooltip>}
-    </Wrapper>
-  );
+  switch (type) {
+    case 'speech':
+      return (
+        <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
+          {children}
+          {active && (
+            <StyledTooltip className={direction} showPointer={true}>
+              {content}
+            </StyledTooltip>
+          )}
+        </Wrapper>
+      );
+    case 'bubble':
+      return (
+        <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
+          {children}
+          {active && (
+            <StyledTooltip className={direction} showPointer={false}>
+              {content}
+            </StyledTooltip>
+          )}
+        </Wrapper>
+      );
+  }
 };
 
 export default Tooltip;

@@ -1,5 +1,5 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import Tooltip from '.';
+import Tooltip from './Tooltip';
 
 export default {
   title: 'Atoms/Tooltip',
@@ -7,7 +7,9 @@ export default {
 } as ComponentMeta<typeof Tooltip>;
 
 const RegularToolTip: ComponentStory<typeof Tooltip> = (args) => (
-  <Tooltip {...args}></Tooltip>
+  <div style={{ padding: 80 }}>
+    <Tooltip content={''} {...args}></Tooltip>
+  </div>
 );
 
 export const Black = RegularToolTip.bind({});

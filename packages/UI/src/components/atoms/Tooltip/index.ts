@@ -1,6 +1,6 @@
 export { default } from './Tooltip';
 
-export interface ToolTipProps {
+export interface TooltipProps {
   /**
    * The content of the tooltip
    */
@@ -17,4 +17,8 @@ export interface ToolTipProps {
    * The direction of the tooltip arrow
    */
   direction?: 'top' | 'bottom' | 'right' | 'left';
+  /**
+   * Speech includes an arrow and bubble does not
+   */
+  type?: 'speech' | 'bubble';
 }

@@ -3,7 +3,7 @@ import { paddingStyles } from '../Padding';
 import { radiusStyles } from '../Radius/StyledRadius';
 import { typographyStyles } from '../Typography';
 
-export const ToolTip = styled.div`
+export const StyledTooltip = styled.div`
   ${typographyStyles['placeHolder']}
   ${radiusStyles['radius100']}
   ${paddingStyles['uniPad200']}
@@ -16,7 +16,9 @@ export const ToolTip = styled.div`
   /* white-space: nowrap; */
 
   /* CSS border triangles */
-  &::before {
+  ${(props) =>
+    props.showPointer
+      ? `&::before {
     content: ' ';
     left: 50%;
     border: solid transparent;
@@ -26,18 +28,22 @@ export const ToolTip = styled.div`
     pointer-events: none;
     border-width: 6px;
     margin-left: calc(6px * -1);
-  }
+    }`
+      : ''}
+
   /* Absolute positioning */
   &.top {
     bottom: 100%;
     left: 50%;
   }
   /* CSS border triangles */
-  &.top::before {
+  ${(props) =>
+    props.showPointer
+      ? `&.top::before {
     top: 100%;
-    border-top-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+    border-top-color: ${props.theme.colors.GREYSCALE_BLACK};}`
+      : ''}
   }
-
   /* Absolute positioning */
   &.right {
     bottom: 50%;
@@ -45,11 +51,14 @@ export const ToolTip = styled.div`
     transform: translateY(50%);
   }
   /* CSS border triangles */
-  &.right::before {
+  ${(props) =>
+    props.showPointer
+      ? `&.right::before {
     left: calc(6px * -1);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-right-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+    border-right-color: ${props.theme.colors.GREYSCALE_BLACK};}`
+      : ''}
   }
 
   /* Absolute positioning */
@@ -58,27 +67,34 @@ export const ToolTip = styled.div`
     left: 50%;
   }
   /* CSS border triangles */
-  &.bottom::before {
+  ${(props) =>
+    props.showPointer
+      ? `&.bottom::before {
     bottom: 100%;
-    border-bottom-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+    border-bottom-color: ${props.theme.colors.GREYSCALE_BLACK};}`
+      : ''}
   }
 
   /* Absolute positioning */
   &.left {
     left: auto;
-    right: calc(1rem + 100%);
-    bottom: 50%;
-    transform: translateY(50%);
+    right: calc(100% + 0.5rem);
+    top: 50%;
+    transform: translateX(0) translateY(-50%);
   }
   /* CSS border triangles */
-  &.left::before {
+  ${(props) =>
+    props.showPointer
+      ? `&.left::before {
     left: auto;
     right: calc(6px * -3);
     top: 50%;
     transform: translateX(0) translateY(-50%);
-    border-left-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+    border-left-color: ${props.theme.colors.GREYSCALE_BLACK};}`
+      : ''}
   }
 `;
+
 export const Wrapper = styled.div`
   display: inline-block;
   position: relative;
