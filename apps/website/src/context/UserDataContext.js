@@ -6,11 +6,11 @@ import { env } from '../utils/EnvironmentVariables';
 
 const DEFAULT_USER = {
   id: 0,
-  name: '',
+  name: 'Ethan Levin',
   username: '',
   email: '',
   bio: '',
-  profilePictureUrl: '',
+  profilePictureUrl: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
   socialMediaLinks: [],
   totalPoints: 0,
   totalSeasonPoints: 0,
@@ -33,7 +33,7 @@ function useUserData() {
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    axios(`https://api.devlaunchers.org/users/6`, {
+    axios(`https://api.devlaunchers.org/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
