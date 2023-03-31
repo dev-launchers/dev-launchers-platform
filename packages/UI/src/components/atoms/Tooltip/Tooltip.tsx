@@ -32,18 +32,19 @@ const Tooltip = ({
         <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
           {children}
           {active && (
-            <StyledTooltip className={direction} showPointer={true}>
+            <StyledTooltip className={direction} showPointer={active}>
               {content}
             </StyledTooltip>
           )}
         </Wrapper>
       );
+    // eslint-disable-next-line sonarjs/no-duplicated-branches
     case 'bubble':
       return (
         <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
           {children}
           {active && (
-            <StyledTooltip className={direction} showPointer={false}>
+            <StyledTooltip className={direction} showPointer={!active}>
               {content}
             </StyledTooltip>
           )}
