@@ -38,7 +38,6 @@ const Tooltip = ({
           )}
         </Wrapper>
       );
-    // eslint-disable-next-line sonarjs/no-duplicated-branches
     case 'bubble':
       return (
         <Wrapper onMouseEnter={showTip} onMouseLeave={hideTip} {...props}>
@@ -50,6 +49,8 @@ const Tooltip = ({
           )}
         </Wrapper>
       );
+    default:
+      return null;
   }
 };
 

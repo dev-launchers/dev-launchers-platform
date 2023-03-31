@@ -60,11 +60,13 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
             <atoms.Box>
               <atoms.Box flexDirection="column" justifyContent="center">
                 <ShareLinkButton onClick={() => shareLink(currentLocation)}>
-                  <Link
-                    width="24px"
-                    height="24px"
-                    css={{ verticalAlign: 'middle' }}
-                  />
+                  <atoms.ToolTip type="bubble" content="Click to Copy">
+                    <Link
+                      width="24px"
+                      height="24px"
+                      css={{ verticalAlign: 'middle' }}
+                    />
+                  </atoms.ToolTip>
                 </ShareLinkButton>
               </atoms.Box>
               <ShareInput type="text" value={currentLocation} />
