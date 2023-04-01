@@ -79,7 +79,7 @@ export default function UserProfile({ otherUser }) {
 
   // Start Ideas
   React.useEffect(() => {
-    getIdeaData();
+      getIdeaData();
   }, []);
   const getIdeaData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
@@ -114,7 +114,6 @@ export default function UserProfile({ otherUser }) {
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
 
-    console.log(usersData);
     setPeople(usersData);
   }
   // End People
@@ -203,6 +202,7 @@ export function UserProfileView({
               />
               { */}
               <BioBox
+                name={otherUser?.profile?.displayName || userData.name}
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
               />
