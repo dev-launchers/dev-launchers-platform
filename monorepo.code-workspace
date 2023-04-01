@@ -74,7 +74,8 @@
       "./packages/UI",
       "./packages/utility",
       "./packages/models",
-      "./packages/eslint-config-bases"
+      "./packages/eslint-config-bases",
+      "./strapiv4"
     ],
     "liveServer.settings.multiRootWorkspaceName": "app"
   }
