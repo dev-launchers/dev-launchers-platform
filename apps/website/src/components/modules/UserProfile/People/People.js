@@ -42,7 +42,7 @@ const People = ({ people }) => {
                   display: "flex",
                   margin: "1rem"
                 }}
-                onClick={() => {router.push(`/users/${id}`)}}
+                onClick={() => {router.push(`/users/public/${id}`)}}
               >
                 <UserCard
                   style={{width:"100%"}}
