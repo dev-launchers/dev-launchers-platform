@@ -37,6 +37,10 @@
       "path": "packages/eslint-config-bases"
     },
     {
+      "name": "strapiv4",
+      "path": "strapiv4"
+    },
+    {
       "name": "root",
       "path": "."
     }
