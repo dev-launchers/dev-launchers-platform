@@ -4,12 +4,14 @@ import React, { useRef, useState } from "react";
 import { Wrapper, Bio } from "./StyledBioBox";
 
 import { env } from "../../../../utils/EnvironmentVariables";
+import { Name } from "../ProfileCard/StyledProfileCard";
+import { Typography } from "@devlaunchers/components/components/atoms";
 
-export default function BioBox({ data, canEdit }) {
+export default function BioBox({ data, canEdit, name }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const bioRef = useRef(null);
-
+  
   const handleTextChange = (e) => {
     setBioText(e.target.value);
   };
@@ -31,6 +33,8 @@ export default function BioBox({ data, canEdit }) {
   };
   return (
     <Wrapper>
+      <br />
+      <Typography type="h4">{name}</Typography>
       <br />
       <Bio
         rows="7"
