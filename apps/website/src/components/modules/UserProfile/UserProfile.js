@@ -33,7 +33,7 @@ export default function UserProfile({ otherUser }) {
   const [ideas, setIdeas] = React.useState([]);
   const [people, setPeople] = React.useState([]);
   const [interests, setInterests] = React.useState([]);
-  
+
   // If user hasn't set a username, redirect them to the signup form
   const router = useRouter();
   React.useEffect(() => {
@@ -79,7 +79,7 @@ export default function UserProfile({ otherUser }) {
 
   // Start Ideas
   React.useEffect(() => {
-    getIdeaData();
+      getIdeaData();
   }, []);
   const getIdeaData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
@@ -102,19 +102,18 @@ export default function UserProfile({ otherUser }) {
   const getPeopleData = async () => {
     const userCount = (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/count`)).data;
     let randomUserIds = [
-      parseInt(Math.random()*userCount),
-      parseInt(Math.random()*userCount),
-      parseInt(Math.random()*userCount),
-      parseInt(Math.random()*userCount),
-      parseInt(Math.random()*userCount),
-      parseInt(Math.random()*userCount),
+      parseInt(Math.random() * userCount),
+      parseInt(Math.random() * userCount),
+      parseInt(Math.random() * userCount),
+      parseInt(Math.random() * userCount),
+      parseInt(Math.random() * userCount),
+      parseInt(Math.random() * userCount),
     ];
     console.log(randomUserIds);
-    let usersData = await Promise.all(randomUserIds.map(async (userId) => 
+    let usersData = await Promise.all(randomUserIds.map(async (userId) =>
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
 
-    console.log(usersData);
     setPeople(usersData);
   }
   // End People
@@ -141,7 +140,7 @@ export default function UserProfile({ otherUser }) {
     setLoading(userData?.id === -1 || otherUser?.id === -1);
   }, [otherUser, userData]);
 
-  return <UserProfileView 
+  return <UserProfileView
     otherUser={otherUser}
     userData={userData}
     loading={loading}
@@ -155,13 +154,13 @@ export default function UserProfile({ otherUser }) {
 }
 
 // View component
-export function UserProfileView({ 
-  otherUser, 
-  userData, 
-  loading, 
-  opportunities, 
-  myProjects, 
-  projects, 
+export function UserProfileView({
+  otherUser,
+  userData,
+  loading,
+  opportunities,
+  myProjects,
+  projects,
   ideas,
   people,
   interests
@@ -184,6 +183,7 @@ export function UserProfileView({
               }
               name={otherUser?.profile?.displayName || userData.name}
               username={otherUser?.username || userData.username}
+              created_at={userData?.created_at}
             />
 
             <UserInfo>
@@ -202,6 +202,7 @@ export function UserProfileView({
               />
               { */}
               <BioBox
+                name={otherUser?.profile?.displayName || userData.name}
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
               />
@@ -213,8 +214,8 @@ export function UserProfileView({
           */}
 
           <Misc>
-            <Tabs defaultFocus={true} defaultIndex="0" style={{width:"80vw", maxWidth:"1400px", minHeight:"30rem"}}>
-              <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display:"flex", justifyContent:"center" }}>
+            <Tabs defaultFocus={true} defaultIndex="0" style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
+              <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>
                 {
                   // Have to do this hack for some reason (create empty tab if page not loaded)...
                   // otherwise tabs break
@@ -222,28 +223,28 @@ export function UserProfileView({
                 }
                 {
                   // Render tabs from our dynamically built learnPageData object
-                ["Projects", "People", "Interests", "Ideas", "Opportunities"].map((key) => (
+                  ["Projects", "People", "Interests", "Ideas", "Opportunities"].map((key) => (
                     <Tab key={`tab${key}`}>{key}</Tab>
                   ))
                 }
               </TabList>
-              
+
               <TabPanel key={0}>
                 <UserProjects myProjects={myProjects} />
               </TabPanel>
-              
+
               <TabPanel key={1}>
                 <People people={people} />
               </TabPanel>
-              
+
               <TabPanel key={2}>
                 <UserInterests interests={interests} />
               </TabPanel>
-              
+
               <TabPanel key={3}>
-                <RecommendedIdeas ideas={ideas}  />
+                <RecommendedIdeas ideas={ideas} />
               </TabPanel>
-              
+
               <TabPanel key={4}>
                 <Opportunities opportunities={opportunities} />
               </TabPanel>
