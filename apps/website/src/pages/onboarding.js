@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import UserOnboarding from '../components/modules/UserOnboarding';
+import UserOnboarding from '../components/modules/UserOnboardingProcess/UserOnboarding';
 
 export default function UserOnboardingRoute() {
     return (

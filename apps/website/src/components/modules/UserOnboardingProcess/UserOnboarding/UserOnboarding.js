@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import FormField from '../../../../../../packages/UI/src/components/organisms/FormField'
-import OpenResponse from '../../../../../../packages/UI/src/components/organisms/OpenResponse'
+import FormField from '../../../../../../../packages/UI/src/components/organisms/FormField'
+import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
 import { Checkbox } from '@devlaunchers/components/components/atoms'
 import { Link } from '@devlaunchers/components/components/atoms'
 import OnboardingForm from './OnboardingForm'
-import Button from '../../../../../../packages/UI/src/components/atoms/Button'
+import Button from '@devlaunchers/components/components/atoms/Button'
 import FormFieldMargin, { ConfirmationSection, CheckboxSpacing } from './StyledUserOnboarding'
 
 const initialValue = {
@@ -106,6 +106,7 @@ const UserOnboarding = () => {
                     className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
+                // onClick={(e) => e.preventDefault()}
                 >
                     Continue
                 </Button>
