@@ -6,6 +6,7 @@ import { Link } from '@devlaunchers/components/components/atoms'
 import OnboardingForm from './OnboardingForm'
 import Button from '../../../../../../packages/UI/src/components/atoms/Button'
 import FormFieldMargin, { ConfirmationSection, CheckboxSpacing } from './StyledUserOnboarding'
+import { useOnboarding } from '../../../../../website/src/context/OnboardingContext'
 
 const initialValue = {
     firstName: '',
@@ -15,6 +16,7 @@ const initialValue = {
 
 const UserOnboarding = () => {
     const [person, setPerson] = useState(initialValue)
+    const { router } = useOnboarding()
 
     const handleFirstNameChange = (e) => {
         setPerson({
@@ -106,6 +108,11 @@ const UserOnboarding = () => {
                     className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
+                    onClick={() => {
+                        router.push({
+                            pathname: '/users/profiles'
+                        })
+                    }}
                 >
                     Continue
                 </Button>
