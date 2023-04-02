@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
-import FormField from '../../../../../../packages/UI/src/components/organisms/FormField'
+import FormField from '../../../../../../../packages/UI/src/components/organisms/FormField'
 import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
 import { Checkbox } from '@devlaunchers/components/components/atoms'
 import { Link } from '@devlaunchers/components/components/atoms'
 import OnboardingForm from './OnboardingForm'
 import Button from '@devlaunchers/components/components/atoms/Button'
 import FormFieldMargin, { ConfirmationSection, CheckboxSpacing } from './StyledUserOnboarding'
-import { useOnboarding } from '../../../../../website/src/context/OnboardingContext'
 
 const initialValue = {
     firstName: '',
@@ -16,7 +15,6 @@ const initialValue = {
 
 const UserOnboarding = () => {
     const [person, setPerson] = useState(initialValue)
-    const { router } = useOnboarding()
 
     const handleFirstNameChange = (e) => {
         setPerson({
@@ -36,12 +34,6 @@ const UserOnboarding = () => {
         setPerson({
             ...person,
             bio: e.target.value
-        })
-    }
-
-    const handleContinueClick = () => {
-        router.push({
-            pathname: '/users/profiles'
         })
     }
 
@@ -114,7 +106,7 @@ const UserOnboarding = () => {
                     className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
-                    onClick={handleContinueClick}
+                // onClick={(e) => e.preventDefault()}
                 >
                     Continue
                 </Button>
@@ -122,5 +114,3 @@ const UserOnboarding = () => {
         </OnboardingForm>
     )
 }
-
-export default UserOnboarding
