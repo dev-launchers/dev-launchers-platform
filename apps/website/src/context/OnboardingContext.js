@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 const OnboardingContext = createContext()
 
 export const OnboardingProvider = ({ children }) => {
-    const [route, setRoute] = useState()
     const router = useRouter()
 
     return (
