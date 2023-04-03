@@ -1,10 +1,9 @@
 import SocialIconButton from '../../../molecules/SocialIconButton';
-import React from 'react';
+import React, { useContext , useState } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
-import { useState } from 'react';
 import Link from '../../../../assets/icons/Link';
-import { shareIdea, shareLink } from './ShareUrl';
+import { shareIdea, shareLink, timeout } from './ShareUrl';
 import {
   Container,
   ShareLinkButton,
@@ -18,6 +17,12 @@ import {
 
 const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   const [show, setShow] = useState(false);
+  const [tooltipMessage, setTooltipMessage] = useState('Click to Copy');
+  const handleTooltipMessage = async () => {
+    setTooltipMessage('Link Copied!');
+    await timeout(3000);
+    setTooltipMessage('Click to Copy');
+  };
   const handleClose = () => {
     setShow(false);
   };
@@ -59,8 +64,17 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
           <ShareLinkBox flexDirection="row">
             <atoms.Box>
               <atoms.Box flexDirection="column" justifyContent="center">
-                <ShareLinkButton onClick={() => shareLink(currentLocation)}>
-                  <atoms.ToolTip type="bubble" content="Click to Copy">
+                <ShareLinkButton
+                  onClick={() => {
+                    shareLink(currentLocation);
+                    handleTooltipMessage();
+                  }}
+                >
+                  <atoms.ToolTip
+                    direction="top"
+                    type="bubble"
+                    content={tooltipMessage}
+                  >
                     <Link
                       width="24px"
                       height="24px"

@@ -13,6 +13,8 @@ export const StyledTooltip = styled.div`
   background-color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   z-index: 1020;
   display: block;
+  min-width: max-content;
+  word-wrap: break-word;
   /* white-space: nowrap; */
 
   /* CSS border triangles */

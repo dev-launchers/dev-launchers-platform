@@ -32,4 +32,8 @@ const shareLink = (ideaUrl: string) => {
   navigator.clipboard.writeText(ideaUrl);
 };
 
-export { shareIdea, shareLink };
+const timeout = (delay: number) => {
+  return new Promise((res) => setTimeout(res, delay));
+};
+
+export { shareIdea, shareLink, timeout };
