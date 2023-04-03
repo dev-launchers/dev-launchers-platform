@@ -18,4 +18,5 @@ Black.args = {
   children: '?',
   direction: 'right',
   delay: 500,
+  type: 'speech',
 };
