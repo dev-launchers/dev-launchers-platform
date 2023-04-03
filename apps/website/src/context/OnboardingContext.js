@@ -1,13 +1,11 @@
 import { createContext, useContext, useState } from "react";
-import { useRouter } from "next/router";
 
 const OnboardingContext = createContext()
 
 export const OnboardingProvider = ({ children }) => {
-    const router = useRouter()
 
     return (
-        <OnboardingContext.Provider value={{ router }}>
+        <OnboardingContext.Provider value={{}}>
             {children}
         </OnboardingContext.Provider>
     )
