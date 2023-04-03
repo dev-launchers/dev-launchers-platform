@@ -15,7 +15,9 @@ import type { NavigationProps } from '.';
 const MobileNavigation = ({
   user,
   links,
-}: NavigationProps & { links: { [key: string]: string } }) => {
+}: NavigationProps & {
+  links: { [key: string]: string | { text: string; href: string }[] };
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
