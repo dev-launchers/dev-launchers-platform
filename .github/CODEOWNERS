@@ -4,6 +4,9 @@ packages/ @dev-launchers/platform-enablement
 # Ideaspace code
 apps/ideaspace/ @dev-launchers/ideaspace-team
 
+# Recruitment code
+apps/dev-recruiters/ @dev-launchers/dev-recruit-team
+
 # Website code
 apps/website/ @Enjoy2Live @pyxld-kris
 
