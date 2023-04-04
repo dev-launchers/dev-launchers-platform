@@ -53,6 +53,7 @@ export default function BioBox({ data, canEdit }) {
               setIsReadOnly(false);
               bioRef.current.focus();
             }}
+            style = {{color:"black"}}
           >
             Edit
           </Button>
