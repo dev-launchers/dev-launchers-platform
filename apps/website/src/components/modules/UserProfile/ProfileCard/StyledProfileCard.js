@@ -24,10 +24,10 @@ export const Wrapper = styled.div`
   }
 `;
 export const ProfilePicture = styled.img`
-  height: auto;
-
+  border-radius: 50%;
   @media (orientation: portrait) {
-    width: 50%;
+    width: 128px;
+    height: 128px;
   }
 `;
 export const Name = styled.div``;

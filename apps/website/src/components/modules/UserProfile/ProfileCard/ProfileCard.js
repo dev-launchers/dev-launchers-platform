@@ -13,7 +13,7 @@ const UserProfileImage = ({ img, created_at }) => {
 
   return (
     <Wrapper>
-      <ProfilePicture width={250} height={250} src={img} />
+      <ProfilePicture width={266} height={266} src={img} />
       <p> {`Member Since ${year}`}</p>
     </Wrapper>
   )
