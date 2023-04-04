@@ -63,6 +63,7 @@ export default function BioBox({ data, canEdit }) {
               setIsReadOnly(true);
               sendText();
             }}
+            style = {{color:"black"}}
           >
             Save
           </Button>
