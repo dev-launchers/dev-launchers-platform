@@ -3,6 +3,7 @@ import React, { useContext , useState } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
 import Link from '../../../../assets/icons/Link';
+import Checkmark from '../../../../assets/icons/Checkmark';
 import { shareIdea, shareLink, timeout } from './ShareUrl';
 import {
   Container,
