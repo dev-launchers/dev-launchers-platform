@@ -47,12 +47,13 @@ jobs:
       - name: Discord Channel Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "UI changes for branch ${{ github.head_ref }} are ready for review","description": "${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.head_commit.message }}. Click [here](${{ steps.chromatic.outputs.buildUrl }}) to view the Chromatic review.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
+          DISCORD_EMBEDS: '[{"title": "UI changes for branch ${GITHUB_REF##*/} are ready for review","description": "${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.head_commit.message }}. 
+          Click [here](${{ steps.chromatic.outputs.buildUrl }}) to view the Chromatic review.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
 
 
         uses: Ilshidur/action-discord@master
         with:
-          args: 'New build for {{ EVENT_PAYLOAD.repository.full_name }} Finished.'
+          args: 'New build for ${GITHUB_REF##*/} Finished.'
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
