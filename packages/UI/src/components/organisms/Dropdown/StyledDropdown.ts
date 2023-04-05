@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Icon from '../../../assets/icons/rawSvg/chevron-down.svg';
+import { radiusStyles } from '../../atoms';
 import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
 import type { DropdownProps } from '.';
 
@@ -14,7 +15,7 @@ export const DropdownContainer = styled.div<DropdownProps>`
   font-family: ${({ theme }) => theme.fonts.normal};
   background-color: #fff;
   width: ${({ width }) => getWidth(width) + 'px'};
-  border-radius: 8px;
+  ${radiusStyles['radius200']};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,7 +24,7 @@ export const DropdownContainer = styled.div<DropdownProps>`
 
 export const Toggle = styled.div`
   padding: 1rem 2rem;
-  border-radius: 8px;
+  ${radiusStyles['radius200']};
   width: 100%;
   display: flex;
   align-items: center;
@@ -63,13 +64,13 @@ export const Option = styled.label`
   gap: 0.5rem;
   list-style: none;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  ${radiusStyles['radius200']};
   position: relative;
   overflow: hidden;
   z-index: 1;
 
   &:hover {
-    box-shadow: 1px 1px 4px #7f7e7f;
+    box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
   }
 `;
 
