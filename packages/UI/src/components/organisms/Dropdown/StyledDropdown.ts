@@ -20,6 +20,7 @@ export const DropdownContainer = styled.div<DropdownProps>`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 export const Toggle = styled.div`
@@ -40,6 +41,8 @@ export const OptionsContainer = styled.div<DropdownProps>`
   max-height: ${({ isOpen }) => (isOpen ? '1000px' : 0)};
   transition: 0.8s opacity, 0.4s max-height ease-out;
   width: 100%;
+  position: absolute;
+  top: 100%;
 `;
 
 export const Options = styled.form<DropdownProps>`
