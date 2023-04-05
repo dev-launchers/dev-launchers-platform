@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import UserOnboarding from '../components/modules/UserOnboardingProcess/UserOnboarding';
+import BasicInformationPage from '../components/modules/BasicInformationPage/UserOnboarding/BasicInformationPage';
 
 export default function UserOnboardingRoute() {
     return (
@@ -8,7 +8,7 @@ export default function UserOnboardingRoute() {
                 <title>User Onboarding</title>
             </Head>
             <div>
-                <UserOnboarding />
+                <BasicInformationPage />
             </div>
         </>
     );
