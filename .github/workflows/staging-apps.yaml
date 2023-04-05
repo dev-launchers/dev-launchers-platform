@@ -1,0 +1,54 @@
+name: staging-apps
+
+on:
+  push:
+    branches:
+      - 'staging/ideaspace'
+      - 'staging/ideaspace[1-2]'
+      - 'staging/recruitment'
+      - 'staging/recruitment[1-2]'
+      - 'staging/projects'
+      - 'staging/projects[1-2]'
+      - 'staging/website'
+      - 'staging/website[1-2]'
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >>$GITHUB_OUTPUT
+        id: extract_branch
+        
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/gallium
+          cache: 'yarn'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: yarn --frozen-lockfile --silent
+
+      - name: Run build
+        run: yarn workspace @devlaunchers/app build
+
+      - name: Export
+        run: yarn workspace @devlaunchers/app export
+
+      - name: Publish
+        uses: cloudflare/pages-action@1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ steps.extract_branch.outputs.branch }}
+          directory: ./apps/app/out
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
