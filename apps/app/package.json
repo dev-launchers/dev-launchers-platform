@@ -64,6 +64,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --debug",
+    "export": "next export",
     "start": "next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
     "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
