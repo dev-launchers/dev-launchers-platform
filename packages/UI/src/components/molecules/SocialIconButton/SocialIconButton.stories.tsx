@@ -30,3 +30,9 @@ Github.args = { type: 'github' };
 
 export const Discord = SocialIconButtonTemplate.bind({});
 Discord.args = { type: 'discord' };
+
+export const WhatsApp = SocialIconButtonTemplate.bind({});
+Discord.args = { type: 'whatsApp' };
+
+export const Reddit = SocialIconButtonTemplate.bind({});
+Discord.args = { type: 'reddit' };

@@ -8,6 +8,8 @@ export interface SocialIconButtonProps {
     | 'linkedin'
     | 'slack'
     | 'github'
-    | 'discord';
+    | 'discord'
+    | 'whatsApp'
+    | 'reddit';
   onClick: React.MouseEventHandler;
 }

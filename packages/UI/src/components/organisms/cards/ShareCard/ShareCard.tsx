@@ -29,7 +29,14 @@ const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
   };
   const currentLocation = window.location.href;
 
-  const socialPlatforms = ['twitter', 'facebook', 'mail', 'linkedin'] as const;
+  const socialPlatforms = [
+    'twitter',
+    'facebook',
+    'mail',
+    'linkedin',
+    'whatsApp',
+    'reddit',
+  ] as const;
 
   return (
     <Container type="light">

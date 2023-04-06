@@ -5,6 +5,8 @@ const createShareUrl = (platform: string, ideaUrl: string) => {
   const mailShareUrl = `mailto:?&subject=${pageTitle}&cc=&bcc=&body=`;
   const linkedinShareUrl =
     'https://www.linkedin.com/shareArticle?mini=true&url=';
+  const whatsAppShareUrl = 'https://web.whatsapp.com/send?text=';
+  const redditShareUrl = `https://www.reddit.com/submit?title=${pageTitle}&url=`;
 
   switch (platform) {
     case 'twitter':
@@ -15,6 +17,10 @@ const createShareUrl = (platform: string, ideaUrl: string) => {
       return `${mailShareUrl}${ideaUrl}`;
     case 'linkedin':
       return `${linkedinShareUrl}${ideaUrl}`;
+    case 'whatsApp':
+      return `${whatsAppShareUrl}${ideaUrl}`;
+    case 'reddit':
+      return `${redditShareUrl}${ideaUrl}`;
   }
 };
 

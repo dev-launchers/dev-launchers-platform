@@ -21,6 +21,10 @@ const getIcon = (type: string) => {
       return <Icons.Discord width="32px" height="24px" />;
     case 'mail':
       return <Icons.Mail width="26px" height="24px" />;
+    case 'whatsApp':
+      return <Icons.WhatsApp width="26px" height="24px" />;
+    case 'reddit':
+      return <Icons.Reddit width="26px" height="24px" />;
   }
 };
 
