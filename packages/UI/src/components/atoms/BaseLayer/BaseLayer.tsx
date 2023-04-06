@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import type { BaseLayersProps } from '.';
 
 const BaseLayer = styled.div<BaseLayersProps>`
-
   ${({ type, color }) => {
     switch (type) {
       case 'light':
