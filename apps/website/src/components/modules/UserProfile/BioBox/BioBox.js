@@ -11,7 +11,6 @@ export default function BioBox({ data, canEdit, name }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const bioRef = useRef(null);
-  
   const handleTextChange = (e) => {
     setBioText(e.target.value);
   };
@@ -50,7 +49,7 @@ export default function BioBox({ data, canEdit, name }) {
         ref={bioRef}
       ></Bio>
       <br />
-      {canEdit &&
+      { canEdit &&
         (isReadOnly ? (
           <button
             onClick={() => {

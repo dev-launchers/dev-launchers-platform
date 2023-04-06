@@ -7,7 +7,7 @@ import Footer from "../../components/common/Footer";
 export default function UserProfilePage() {
   return (
     <div>
-      <UserProfile />
+      <UserProfile isPublic={false}/>
     </div>
   );
 }
