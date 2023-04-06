@@ -56,7 +56,7 @@ jobs:
       - name: Discord Channel Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "Chromatic","description": View the Chromatic review.","url": "${{steps.chromatic.outputs.buildUrl}}"}, {"title": "Storybook","description": View the storybook for this change.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
+          DISCORD_EMBEDS: '[{"title": "Chromatic","description": "View the Chromatic review.","url": "${{steps.chromatic.outputs.buildUrl}}"}, {"title": "Storybook","description": "View the storybook for this change.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
 
 
         uses: Ilshidur/action-discord@master
