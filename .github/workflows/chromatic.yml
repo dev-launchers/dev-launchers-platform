@@ -45,6 +45,8 @@ jobs:
           workingDir: packages/UI
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          onlyChanged: true
+
       - name: Discord Channel Notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
