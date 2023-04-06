@@ -37,7 +37,11 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: yarn --frozen-lockfile --silent
-
+        
+      - name: disable Image optimization
+        shell: bash
+        run: "sed -ie 's$unoptimized: false$unoptimized: true$g' ./apps/app/next.config.js"
+        
       - name: Run build
         run: yarn workspace @devlaunchers/app build
 
