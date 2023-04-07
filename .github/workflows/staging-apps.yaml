@@ -26,7 +26,7 @@ jobs:
 
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >>$GITHUB_OUTPUT
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/staging\///')" >>$GITHUB_OUTPUT
         id: extract_branch
         
       - name: Setup node env 🏗

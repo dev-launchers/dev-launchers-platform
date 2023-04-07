@@ -5,7 +5,6 @@
   "keywords": [],
   "homepage": "http://devlaunchers.org/",
   "dependencies": {
-    "@cloudflare/wrangler": "1.21.0",
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
