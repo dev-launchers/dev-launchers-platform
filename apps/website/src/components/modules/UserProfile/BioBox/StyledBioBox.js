@@ -8,4 +8,5 @@ border: none;
 resize: none;
 width: 99%;
 background: #f0f0f0;
+outline: none; 
 `;

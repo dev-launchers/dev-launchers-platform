@@ -16,15 +16,18 @@ export const Wrapper = styled.div`
   & > div {
     margin-top: 10px;
   }
+  p {
+    font-size: 1.4rem;
+  }
   @media (orientation: portrait) {
     width: 90%;
   }
 `;
 export const ProfilePicture = styled.img`
-  height: auto;
-
+  border-radius: 50%;
   @media (orientation: portrait) {
-    width: 50%;
+    width: 128px;
+    height: 128px;
   }
 `;
 export const Name = styled.div``;

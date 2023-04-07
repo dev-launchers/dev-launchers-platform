@@ -15,6 +15,7 @@ import { useUserDataContext } from "../../../../context/UserDataContext";
 import { PeopleContainer } from "./StyledPeople";
 
 const People = ({ people }) => {
+  const router = useRouter();
   return (
     <PeopleContainer people={people}>
       <div>
@@ -31,7 +32,6 @@ const People = ({ people }) => {
         >
           {people.map((person) => {
             const { email, profile, discordUsername, id } = person
-            console.log(person);
             return (
               <div
                 key={Math.random}
@@ -42,6 +42,7 @@ const People = ({ people }) => {
                   display: "flex",
                   margin: "1rem"
                 }}
+                onClick={() => {router.push(`/users/${id}`)}}
               >
                 <UserCard
                   style={{width:"100%"}}
