@@ -11,8 +11,8 @@ Modal.setAppElement("#__next");
  * @description This is custom modal for the user onboarding. 
  */
 export default function UserOnboardingModal({isOpen}) {
-    const [modalIsOpen, setModalIsOpen] = useState(isOpen);
-    
+    const [modalIsOpen, setModalIsOpen] = useState(true);
+
     const openModal = () => {
         setModalIsOpen(true);
     }

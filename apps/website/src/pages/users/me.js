@@ -27,7 +27,7 @@ export default function UserProfilePage() {
         <title>User Profile</title>
       </Head>
       <div>
-        <UserOnboardingModal isOpen={() => openUserOnboardingModal()} />
+        {openUserOnboardingModal() && <UserOnboardingModal/>}
         <UserProfile />
       </div>
     </>
