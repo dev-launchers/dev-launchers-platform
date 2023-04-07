@@ -4,8 +4,10 @@ import React, { useRef, useState } from "react";
 import { Wrapper, Bio } from "./StyledBioBox";
 
 import { env } from "../../../../utils/EnvironmentVariables";
+
 import { Name } from "../ProfileCard/StyledProfileCard";
 import { Typography } from "@devlaunchers/components/components/atoms";
+import Button from '@devlaunchers/components/components/atoms/Button/Button';
 
 export default function BioBox({ data, canEdit, name }) {
   const [bioText, setBioText] = useState(data.bio);
@@ -51,23 +53,25 @@ export default function BioBox({ data, canEdit, name }) {
       <br />
       { canEdit &&
         (isReadOnly ? (
-          <button
+          <Button
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
             }}
+            style = {{color:"black"}}
           >
             Edit
-          </button>
+          </Button>
         ) : (
-          <button
+          <Button
             onClick={() => {
               setIsReadOnly(true);
               sendText();
             }}
+            style = {{color:"black"}}
           >
             Save
-          </button>
+          </Button>
         ))}
     </Wrapper>
   );
