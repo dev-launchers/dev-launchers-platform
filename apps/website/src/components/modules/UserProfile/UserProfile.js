@@ -23,7 +23,7 @@ import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
 
 // State management component
-export default function UserProfile({ otherUser }) {
+export default function UserProfile({ otherUser, isPublic }) {
 
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
@@ -142,6 +142,7 @@ export default function UserProfile({ otherUser }) {
 
   return <UserProfileView
     otherUser={otherUser}
+    isPublic={isPublic}
     userData={userData}
     loading={loading}
     opportunities={opportunities}
@@ -156,6 +157,7 @@ export default function UserProfile({ otherUser }) {
 // View component
 export function UserProfileView({
   otherUser,
+  isPublic,
   userData,
   loading,
   opportunities,
@@ -204,7 +206,7 @@ export function UserProfileView({
               <BioBox
                 name={otherUser?.profile?.displayName || userData.name}
                 data={otherUser?.profile || userData}
-                canEdit={!otherUser}
+                canEdit={!isPublic}
               />
             </UserInfo>
           </UserSection>

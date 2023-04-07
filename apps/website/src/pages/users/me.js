@@ -28,7 +28,7 @@ export default function UserProfilePage() {
       </Head>
       <div>
         {openUserOnboardingModal() && <UserOnboardingModal/>}
-        <UserProfile />
+        <UserProfile isPublic={false}/>
       </div>
     </>
   );
