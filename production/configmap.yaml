@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: strapi-config
+data:
+  url: "https://api.devlaunchers.org"
+  frontend_url: "https://devlaunchers.org"
+  node_env: "production"
+  redirect_url: "https://api.devlaunchers.org/auth/discord/redirect"
+  domain: "devlaunchers.org"
