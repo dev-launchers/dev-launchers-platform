@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: strapi-config
+  namespace: strapiv4
 data:
   url: "https://api.devlaunchers.org"
   frontend_url: "https://devlaunchers.org"
