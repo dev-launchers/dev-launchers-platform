@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import FormField from '../../../../../../../packages/UI/src/components/organisms/FormField'
+import FormField from '@devlaunchers/components/src/components/organisms/FormField'
 import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
 import { Checkbox } from '@devlaunchers/components/components/atoms'
 import { Link } from '@devlaunchers/components/components/atoms'
 import OnboardingForm from './OnboardingForm'
 import Button from '@devlaunchers/components/components/atoms/Button'
 import FormFieldMargin, { ConfirmationSection, CheckboxSpacing } from './StyledUserOnboarding'
+import { useRouter } from 'next/router'
 
 const initialValue = {
     firstName: '',
@@ -13,8 +14,9 @@ const initialValue = {
     bio: ''
 }
 
-const UserOnboarding = () => {
+export default function BasicInformationPage() {
     const [person, setPerson] = useState(initialValue)
+    const router = useRouter()
 
     const handleFirstNameChange = (e) => {
         setPerson({
@@ -35,6 +37,11 @@ const UserOnboarding = () => {
             ...person,
             bio: e.target.value
         })
+    }
+
+    const handleContinueClick = (e) => {
+        router.push('/users/profiles')
+        e.preventDefault()
     }
 
     return (
@@ -106,7 +113,7 @@ const UserOnboarding = () => {
                     className='continue-btn'
                     buttonSize="standard"
                     buttonType="primary"
-                // onClick={(e) => e.preventDefault()}
+                    onClick={handleContinueClick}
                 >
                     Continue
                 </Button>
