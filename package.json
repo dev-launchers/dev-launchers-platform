@@ -33,9 +33,24 @@
     "node": ">=12.x.x <=16.x.x",
     "npm": ">=6.0.0"
   },
+  "release": {
+    "branches": [
+      "release"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      "@semantic-release/github"
+    ]
+  },
   "license": "MIT",
   "devDependencies": {
     "babel-eslint": "^10.1.0"
   }
 }
-
