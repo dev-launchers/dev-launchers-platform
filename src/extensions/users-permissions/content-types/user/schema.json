@@ -126,10 +126,10 @@
     "hasSubscribedEmails": {
       "type": "boolean"
     },
-    "discordAvatar": {
+    "discord_avatar": {
       "type": "string"
     },
-    "discordDiscriminator": {
+    "discord_discriminator": {
       "type": "string"
     }
   }
