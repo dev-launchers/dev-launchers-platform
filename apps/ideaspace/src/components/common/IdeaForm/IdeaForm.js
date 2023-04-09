@@ -16,7 +16,8 @@ const IdeaForm = ({
 	formButton,
 	sending,
 	clickHandler
-}) => {
+},props) => {
+	const {	errors } = props;
 	const [disabling, setDisabling] = React.useState(true);
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
@@ -148,11 +149,17 @@ const IdeaForm = ({
 
 							<atoms.Box flexDirection='column'>
 								<atoms.Typography type='label' style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
-									what level of involvement do you want to have after submission?
+									what level of involvement do you want to have after submission?<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 								<atoms.Box flexDirection='row' alignItems='flex-end' justifyContent='space-between'>
-									<Field as="select" name="involveLevel" style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}>
-										<option value="none">I don’t want to be involved after submitting</option>
+									<Field
+										required 
+										as="select" 
+										id='involveLevel'
+										name="involveLevel" 
+										style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}
+									>
+										<option value="none">I don't want to be involved after submitting</option>
 										<option value="minimum">I want to “own” this idea to help with workshopping and designing until it become a project</option>
 										<option value="medium">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
 										<option value="highly">I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project</option>
@@ -166,19 +173,18 @@ const IdeaForm = ({
 										<img alt='submit_image' src={popoverSvg} />
 									</atoms.ToolTip>
 								</atoms.Box>
+								<atoms.Typography type='p'style={{ marginLeft: '1rem', marginTop: '0.5rem', color:'#F03D3E', fontSize:'0.875rem' }}> {errors.involveLevel}</atoms.Typography>
 							</atoms.Box>
 
 							<atoms.Typography type='p'>
 								After submitting your idea will be reviewed and enter the workshopping stage!
 							</atoms.Typography>
 
-
-							<atoms.Box style={{ fontSize: '1rem' }}>
-								<atoms.Checkbox
-									label='I have read and agree to the Terms and Conditions.'
-									disabled={false}
-									required
-								/>
+							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
+								<atoms.Checkbox disabled={false} required />
+								<atoms.Typography type='p'>
+									&nbsp;I have read and agree to the Terms and Conditions.
+								</atoms.Typography>
 							</atoms.Box>
 
 							<atoms.Box justifyContent='flex-end' gap="1rem">

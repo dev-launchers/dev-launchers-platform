@@ -7,19 +7,18 @@ const IdeaCardComment = ({
 }) => {
 
     return (
-        <>
+        <atoms.Box alignItems='center' style={{ marginTop: '-1.5rem' }} >
+            <img alt='commentSvg' src={commentSvg} />
             {commentLength > 0 ? (
-                <atoms.Box alignItems='center' style={{ marginTop: '-1.5rem' }} >
-                    <img alt='commentSvg' src={commentSvg} />
-                    <atoms.Typography type='p'>
-                        &nbsp;COMMENTS:&nbsp;{commentLength}
-                    </atoms.Typography>
-                </atoms.Box>
+                <atoms.Typography type='p'>
+                    &nbsp;COMMENTS:&nbsp;{commentLength}
+                </atoms.Typography>
             ) : (
-                null
-            )
-            }
-        </>
+                <atoms.Typography type='p'>
+                    &nbsp;NO COMMENT YET
+                </atoms.Typography>
+            )}
+        </atoms.Box>
     )
 };
 

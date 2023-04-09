@@ -54,7 +54,7 @@ row-gap: 2rem;
 margin: 1.5rem auto;
 
 @media (max-width: 1278px) {
-  column-gap: 1.5rem;
+  column-gap: 1.2rem;
 }
 `;
 

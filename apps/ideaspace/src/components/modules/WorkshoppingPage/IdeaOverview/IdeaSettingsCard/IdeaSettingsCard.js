@@ -11,12 +11,12 @@ const IdeaSettingsCard = ({ card }) => {
     let { userData, setUserData, isAuthenticated } = useUserDataContext();
     if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
         React.useEffect(() => {
-            setUserData({ ...userData, id: 2 });
+            setUserData({ ...userData, id: 30 });
         }, []);
     }
 
     const router = useRouter();
-    const cardStatus = card.status;
+    const [cardStatus, setCardStatus] = useState(card.status);
     const [disabling, setDisabling] = useState(false);
     const [archiveButtonText, setArchiveButtonText] = useState("ARCHIVE");
     const [reactiveButtonText, setReactiveButtonText] = useState("REACTIVE");
@@ -25,7 +25,6 @@ const IdeaSettingsCard = ({ card }) => {
     React.useEffect(() => {
         if (card.status == "archived") {
             setDisabling(true);
-            setArchiveButtonText("REACTIVATE");
         }
     }, []);
 
@@ -76,6 +75,7 @@ const IdeaSettingsCard = ({ card }) => {
     }
 
     const clickArchive = async () => {
+        setCardStatus(card["status"]);
         if (await confirmArchive()) {
             card["status"] = "archived";
             setArchiveButtonText(`WAIT`);
@@ -90,7 +90,7 @@ const IdeaSettingsCard = ({ card }) => {
                     setArchiveButtonText(`ARCHIVE`);
                     setDisabling(true);
                     if (await confirmArchiveSuccess()) {
-                        router.push(`/ideaspace/submit`);
+                        router.push(`/ideaspace/dashboard`);
                     } else {
                         router.push(`/ideaspace/browse`);
                     }
@@ -125,14 +125,16 @@ const IdeaSettingsCard = ({ card }) => {
     }
 
     const clickDelete = async () => {
+        setCardStatus(card["status"]);
         if (await confirmDelete()) {
+            card["status"] = "deleted";
             setDeleteButtonText(`WAIT`);
 
             try {
-                const res = await axios.delete(
-                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${card.id}`
+                const res = await axios.put(
+                    `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${card.id}`,
+                    card
                 );
-
                 if (res.status === 200) {
                     setDeleteButtonText(`DELETE`);
                     if (await confirmDeleteSuccess()) {
@@ -142,6 +144,7 @@ const IdeaSettingsCard = ({ card }) => {
                     }
                 }
             } catch (error) {
+                card["status"] = cardStatus;
                 confirmDeleteFailure();
                 setDeleteButtonText(`DELETE`);
             }

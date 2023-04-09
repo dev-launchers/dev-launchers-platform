@@ -71,9 +71,6 @@ function EditIdea() {
     extraInfo: '',
     involveLevel: '',
     status: '',
-    hourCommitmentMin: 0,
-    hourCommitmentMax: 0,
-    difficultyLevel: 'Beginner',
   });
 
   React.useEffect(() => {

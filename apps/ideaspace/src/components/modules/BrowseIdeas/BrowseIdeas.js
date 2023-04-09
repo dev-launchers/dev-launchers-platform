@@ -89,6 +89,11 @@ function BrowseIdeas() {
 
   React.useEffect(() => {
     setCards(sourceCards.filter((item) => item?.status !== "archived"));
+    if (defaultShownCardNum >= sourceCards.length) {
+      setButtonDisplay({ display: 'none' });
+    } else {
+      setButtonDisplay({ display: '' });
+    }
   }, [sourceCards]);
 
   const defaultShownCardNum = 30;
@@ -110,7 +115,7 @@ function BrowseIdeas() {
         </StyledRanbow>
         <BackButton />
         <atoms.Typography type='h4' >
-          Want to help developing an idea?<br />
+          Want to help develop an idea?<br />
           <atoms.Typography type='p' style={{ fontSize: '1.3rem' }}> Check out these ideas submitted by other Dev Launchers!</atoms.Typography>
         </atoms.Typography>
       </HeadWapper>

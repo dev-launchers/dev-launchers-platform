@@ -7,7 +7,7 @@ export const useFetchIdea = (ideaId) => {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     useEffect(() => {
-      setUserData({ ...userData, id: 2 });
+      setUserData({ ...userData, id: 30 });
     }, []);
   }
 

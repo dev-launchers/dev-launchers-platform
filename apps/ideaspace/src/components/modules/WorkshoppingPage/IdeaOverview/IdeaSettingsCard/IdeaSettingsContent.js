@@ -11,6 +11,18 @@ const IdeaSettingsContent = ({
     disabling,
     buttonColor
 }) => {
+    let [over,setOver]=React.useState(false);
+    let [bColor,setBColor]=React.useState(buttonColor);
+    
+    React.useEffect(() => {
+        if (buttonColor != undefined){
+            if (over) {
+                setBColor(theme.colors.ERROR_700);
+            } else {
+                setBColor(buttonColor);
+            }
+        } 
+    }, [over]);
 
     return (
         <atoms.Box justifyContent="space-between" alignItems="center">
@@ -24,8 +36,8 @@ const IdeaSettingsContent = ({
             </atoms.Box>
 
             <atoms.Button buttonSize='standard' buttonType="primary" 
-                disabled={disabling} style={{"backgroundColor":buttonColor}}
-                onClick={buttonFunction}
+                disabled={disabling} style={{"backgroundColor":bColor}}
+                onClick={buttonFunction} onMouseOver={()=>setOver(true)} onMouseOut={()=>setOver(false)}
             >
                 {buttonText}
             </atoms.Button>

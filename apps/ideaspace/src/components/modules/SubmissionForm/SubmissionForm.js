@@ -52,9 +52,6 @@ function SubmissionForm() {
     extraInfo: '',
     involveLevel: '',
     status: '',
-    hourCommitmentMin: 0,
-    hourCommitmentMax: 0,
-    difficultyLevel: 'Beginner',
   };
 
   const SignupSchema = Yup.object().shape({
@@ -62,6 +59,7 @@ function SubmissionForm() {
     description: Yup.string().required('Idea Description is Required.'),
     experience: Yup.string().required('Experience is Required.'),
     features: Yup.string().required('Idea Feature is Required.'),
+    involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
   const submitHandler = async (values) => {
