@@ -68,16 +68,22 @@ function BrowseIdeas() {
 
   React.useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
+      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/idea-cards`, {
         withCredentials: true,
       })
       .then((response) => {
-        const getCards = response.data.map((item) => {
+        const getCards = response?.data?.data?.map((item) => {
+          if (item?.attributes?.comments) {
+            return {
+              ...item,
+              mostRecentCommentTime: new Date(
+                item?.attributes?.comments[0]?.updated_at
+              )?.getTime(),
+            };
+          }
           return {
             ...item,
-            mostRecentCommentTime: new Date(
-              item.comments[0]?.updated_at
-            ).getTime(),
+            mostRecentCommentTime: new Date()?.getTime(),
           };
         });
 

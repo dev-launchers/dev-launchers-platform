@@ -104,7 +104,7 @@ function IdeaCard({ cards, cardType }) {
           {cards.ideaName}
         </atoms.Typography>
 
-        {cards.comments.length > 0 ? (
+        {cards?.comments?.length > 0 ? (
           <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
             <img alt='commentSvg' src={commentSvg} />
             <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }}>
