@@ -1,6 +1,5 @@
-import Page from '@devlaunchers/website/src/pages/userOnboardingPage.js';
-import App from '@devlaunchers/website/src/pages/_app';
-export { getStaticProps } from '@devlaunchers/website/src/pages/index';
+import Page from '@devlaunchers/user-profile/src/pages/userOnboardingPage.js';
+import App from '@devlaunchers/user-profile/src/pages/_app';
 
 /////////////////////////////////////////
 

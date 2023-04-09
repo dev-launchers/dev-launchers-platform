@@ -1,6 +1,5 @@
-import Page from '@devlaunchers/website/src/pages/users/me';
-import IdeaApp from '@devlaunchers/website/src/pages/_app';
-// export { getStaticProps, getStaticPaths } from '@devlaunchers/website/src/pages/users/me';
+import Page from '@devlaunchers/user-profile/src/pages/users/me';
+import IdeaApp from '@devlaunchers/user-profile/src/pages/_app';
 
 /////////////////////////////////////////
 
