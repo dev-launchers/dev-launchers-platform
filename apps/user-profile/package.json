@@ -37,7 +37,6 @@
     "react-toastify": "latest",
     "regenerator-runtime": "^0.13.9",
     "semantic-release": "^19.0.3",
-    "styled-components": "5.3.5",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
     "wrangler": "^2.0.24"
