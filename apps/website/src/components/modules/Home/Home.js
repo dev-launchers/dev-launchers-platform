@@ -4,8 +4,6 @@ import { toast } from 'react-toastify';
 import { withTheme } from "styled-components";
 import PageBody from "../../common/PageBody";
 
-import RainbowBar from "../../common/RainbowBar";
-
 import HeroImage from "./HeroImage";
 import HeroOverlay from "./HeroOverlay";
 import Intro from "./Intro";
@@ -58,7 +56,6 @@ function Home({ theme }) {
 
   return (
     <div>
-      <RainbowBar />
       <HeroImage />
       <HeroOverlay />
       <PageBody>

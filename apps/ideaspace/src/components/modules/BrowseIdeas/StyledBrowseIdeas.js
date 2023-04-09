@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Link from 'next/link';
 
 export const PageWrapper = styled.section`
   background-color: #FFFFFF;
@@ -57,4 +56,10 @@ margin-top: 1.5rem;
 @media (max-width: 1278px) {
   column-gap: 1.5rem;
 }
+`;
+
+export const FilterDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
