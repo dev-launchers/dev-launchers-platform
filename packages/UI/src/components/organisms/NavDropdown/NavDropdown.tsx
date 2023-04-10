@@ -18,7 +18,6 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
   const node = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (e: MouseEvent) => {
-    if (node.current?.contains(e.target as Node)) return;
     setMenuOpen(false);
   };
 
