@@ -48,7 +48,7 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
             return (
               <>
                 <SubNavLink text={text} href={href} key={i} />
-                {i === 0 && <hr />}
+                {i === 0 && <hr style={{ width: '100%' }} />}
               </>
             );
           })}
