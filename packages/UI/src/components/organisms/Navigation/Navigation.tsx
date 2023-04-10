@@ -18,7 +18,7 @@ import type { NavigationProps } from '.';
 const links = {
   CREATE: '/create',
   LEARN: '/learn',
-  IDEATE: [
+  DREAM: [
     { text: 'Ideaspace', href: '/ideaspace' },
     { text: 'Submit an idea', href: '/ideaspace/submit' },
     { text: 'Generate an idea', href: '#' },
