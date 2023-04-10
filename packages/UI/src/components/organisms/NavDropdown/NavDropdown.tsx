@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import IdeaGeneratorButton from '../../../../../../apps/ideaspace/src/components/modules/IdeaGeneratorButton';
 import SubNavLink from '../../atoms/SubNavLink';
@@ -49,12 +50,16 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
             if (text === 'Generate an idea')
               return (
                 <IdeaGeneratorButton>
-                  <SubNavLink text={text} href={href} key={i} />
+                  <Link href={href} passHref>
+                    <SubNavLink text={text} key={i} />
+                  </Link>
                 </IdeaGeneratorButton>
               );
             return (
               <>
-                <SubNavLink text={text} href={href} key={i} />
+                <Link href={href} passHref>
+                  <SubNavLink text={text} key={i} />
+                </Link>
                 {i === 0 && <hr style={{ width: '100%' }} />}
               </>
             );
