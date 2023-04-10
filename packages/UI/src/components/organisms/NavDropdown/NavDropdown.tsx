@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import IdeaGeneratorButton from '../../../../../../apps/ideaspace/src/components/modules/IdeaGeneratorButton';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
 import {
@@ -45,6 +46,12 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
       <OptionsContainer isOpen={menuOpen}>
         <Options>
           {links.map(({ text, href }, i) => {
+            if (text === 'Generate an idea')
+              return (
+                <IdeaGeneratorButton>
+                  <SubNavLink text={text} href={href} key={i} />
+                </IdeaGeneratorButton>
+              );
             return (
               <>
                 <SubNavLink text={text} href={href} key={i} />

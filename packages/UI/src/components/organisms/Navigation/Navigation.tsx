@@ -21,7 +21,7 @@ const links = {
   IDEATE: [
     { text: 'Ideaspace', href: '/ideaspace' },
     { text: 'Submit an idea', href: '/ideaspace/submit' },
-    { text: 'Generate an idea', href: '/ideaspace/generate' },
+    { text: 'Generate an idea', href: '#' },
     { text: 'Help existing idea', href: '/ideaspace/browse' },
   ],
   'SUPPORT US': '/support-us',
