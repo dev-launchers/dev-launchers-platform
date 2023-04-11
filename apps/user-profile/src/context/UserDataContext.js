@@ -7,7 +7,7 @@ import { env } from '../utils/EnvironmentVariables';
 const DEFAULT_USER = {
   id: 0,
   name: 'Ethan Levin',
-  username: '',
+  username: 'Ethan',
   email: '',
   bio: '',
   profilePictureUrl: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
