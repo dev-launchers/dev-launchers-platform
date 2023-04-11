@@ -68,7 +68,7 @@ function BrowseIdeas() {
 
   React.useEffect(() => {
     axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/idea-cards`, {
+      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
         withCredentials: true,
       })
       .then((response) => {
