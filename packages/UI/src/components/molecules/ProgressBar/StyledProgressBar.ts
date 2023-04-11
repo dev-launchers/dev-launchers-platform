@@ -26,8 +26,9 @@ export const Progress = styled.div<ProgressBarProps>`
   background-color: ${({ percentage, theme }) => getColor(percentage, theme)};
   ${radiusStyles['radius300']};
   height: 26px;
-  // top: 36px;
-  width: ${(props) => props.percentage}%;
+  width: ${(props) => (props.percentage < 5 ? '5%' : `${props.percentage}%`)};
+  // Set a minimum width of 5% when percentage is less than 5
+  min-width: 5%;
 `;
 export const PercentageWrapper = styled.div`
   display: flex;
