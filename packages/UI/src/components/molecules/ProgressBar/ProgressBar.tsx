@@ -10,14 +10,16 @@ import {
 import type { ProgressBarProps } from '.';
 
 const ProgressBar: React.FC<ProgressBarProps> = (props) => {
+  // Check if percentage is less than 0 or greater than 100, set it to 0 or 100 respectively
+  const percentage = Math.max(0, Math.min(100, props.percentage));
   return (
-    <Wrapper percentage={props.percentage}>
-      <Progress percentage={props.percentage} />
+    <Wrapper percentage={percentage}>
+      <Progress percentage={percentage} />
       <PercentageWrapper>
-        <Percentage percentage={props.percentage}>
-          {props.percentage}%
+        <Percentage percentage={percentage}>
+          {percentage}%
         </Percentage>
-        {props.percentage === 100 && <CheckIcon src={Icon} />}
+        {percentage === 100 && <CheckIcon src={Icon} />}
       </PercentageWrapper>
     </Wrapper>
   );
