@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import IdeaGeneratorButton from '../../../../../../apps/ideaspace/src/components/modules/IdeaGeneratorButton';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
 import {
@@ -17,7 +16,7 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
 
   const node = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = () => {
     setMenuOpen(false);
   };
 
@@ -46,14 +45,6 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
       <OptionsContainer isOpen={menuOpen}>
         <Options>
           {links.map(({ text, href }, i) => {
-            if (text === 'Generate an idea')
-              return (
-                <IdeaGeneratorButton>
-                  <Link href={href} passHref>
-                    <SubNavLink text={text} key={i} />
-                  </Link>
-                </IdeaGeneratorButton>
-              );
             return (
               <>
                 <Link href={href} passHref>
