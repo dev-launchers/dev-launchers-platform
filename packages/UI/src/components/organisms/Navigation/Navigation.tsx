@@ -18,10 +18,9 @@ import type { NavigationProps } from '.';
 const links = {
   CREATE: '/create',
   LEARN: '/learn',
-  IDEATE: [
+  DREAM: [
     { text: 'Ideaspace', href: '/ideaspace' },
     { text: 'Submit an idea', href: '/ideaspace/submit' },
-    { text: 'Generate an idea', href: '/ideaspace/generate' },
     { text: 'Help existing idea', href: '/ideaspace/browse' },
   ],
   'SUPPORT US': '/support-us',
@@ -61,7 +60,7 @@ export default function Navigation({ user }: NavigationProps) {
               </Link>
               <NavWrapper>
                 <ul>
-                  <Box gap={'16px'}>
+                  <Box gap={'16px'} alignItems="baseline">
                     {Object.entries(links).map(([name, href], i) => {
                       if (Array.isArray(href))
                         return <NavDropdown title={name} links={href} />;

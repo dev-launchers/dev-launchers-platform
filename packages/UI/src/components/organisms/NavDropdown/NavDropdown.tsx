@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
@@ -15,8 +16,7 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
 
   const node = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (e: MouseEvent) => {
-    if (node.current?.contains(e.target as Node)) return;
+  const handleClickOutside = () => {
     setMenuOpen(false);
   };
 
@@ -47,8 +47,10 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
           {links.map(({ text, href }, i) => {
             return (
               <>
-                <SubNavLink text={text} href={href} key={i} />
-                {i === 0 && <hr />}
+                <Link href={href} passHref>
+                  <SubNavLink text={text} key={i} />
+                </Link>
+                {i === 0 && <hr style={{ width: '100%' }} />}
               </>
             );
           })}

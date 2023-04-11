@@ -56,7 +56,7 @@ export const OptionsContainer = styled.div<Pick<NavDropdownProps, 'isOpen'>>`
 export const Options = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   padding: 1rem;
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg + 'px'}) {
