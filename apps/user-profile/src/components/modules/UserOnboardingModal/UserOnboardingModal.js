@@ -1,8 +1,11 @@
 import {useState, useEffect} from "react";
 import Modal from "react-modal";
-
+// import OnboardingCard from "/Users/jingwei/dev-launchers-platform/apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
+import OnboardingCard from "../../../../../../apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
+// import OnboardingCard from "apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
+
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
@@ -38,6 +41,22 @@ export default function UserOnboardingModal({isOpen}) {
                 <ModalBody>
                 <Typography type="p"> body</Typography>                    
                 {/* Onboarding Card Component */}
+                {/* passing a prop to decide show checked or unchecked 
+                    @iconImg: Login
+                             Onboarding
+                             Zenhub
+                             Discord
+                        type: string
+                    @title same with figma
+                    @subtitle same with figma
+                    checked: true or false based on the user
+                */}
+                <OnboardingCard 
+                    iconImg={"Onboarding"} 
+                    title={"xxxxxxxxxxxxxxxxxxxx"} 
+                    subtitle={"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} 
+                    checked={true}
+                />
                 </ModalBody>
             </ModalContainer>
         </Modal>
