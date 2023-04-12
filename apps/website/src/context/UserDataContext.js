@@ -7,8 +7,8 @@ import { env } from '../utils/EnvironmentVariables';
 const DEFAULT_USER = {
   id: 0,
   name: 'Ethan Levin',
-  username: 'ethan_levi',
-  email: 'ethanLevi@gmail.com',
+  username: '',
+  email: '',
   bio: '',
   profilePictureUrl: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
   socialMediaLinks: [],
@@ -33,12 +33,11 @@ function useUserData() {
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    axios(`https://api.devlaunchers.org/users/6`, {
+    axios(`https://api.devlaunchers.org/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
-        setUserData(
-          {
+        setUserData({
           ...currentUser,
           id: currentUser.id,
           name: currentUser.profile.displayName,
@@ -52,8 +51,7 @@ function useUserData() {
           availablePoints: currentUser.point.availablePoints,
           volunteerHours: currentUser.point.volunteerHours,
           interests: currentUser.interests,
-        }
-        );
+        });
         setIsAuthenticated(true);
       })
       .catch(() => {
