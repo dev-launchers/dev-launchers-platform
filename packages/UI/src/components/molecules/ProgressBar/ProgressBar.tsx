@@ -16,9 +16,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
     <Wrapper percentage={percentage}>
       <Progress percentage={percentage} />
       <PercentageWrapper>
-        <Percentage percentage={percentage}>
-          {percentage}%
-        </Percentage>
+        <Percentage percentage={percentage}>{percentage}%</Percentage>
         {percentage === 100 && <CheckIcon src={Icon} />}
       </PercentageWrapper>
     </Wrapper>
