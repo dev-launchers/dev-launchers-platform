@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import FormField from '@devlaunchers/components/src/components/organisms/FormField'
-import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
-import { Checkbox } from '@devlaunchers/components/components/atoms'
-import { Link } from '@devlaunchers/components/components/atoms'
-import OnboardingForm from './OnboardingForm'
-import Button from '@devlaunchers/components/components/atoms/Button'
-import FormFieldMargin, { ConfirmationSection, CheckboxSpacing } from './StyledUserOnboarding'
 import { useRouter } from 'next/router'
+
+import { Checkbox, Link } from '@devlaunchers/components/components/atoms'
+import Button from '@devlaunchers/components/components/atoms/Button'
+import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
+import FormField from '@devlaunchers/components/src/components/organisms/FormField'
+import OnboardingForm from './OnboardingForm'
+import FormFieldMargin, { CheckboxSpacing, ConfirmationSection } from './StyledUserOnboarding'
 
 const initialValue = {
     firstName: '',
@@ -14,7 +14,7 @@ const initialValue = {
     bio: ''
 }
 
-export default function BasicInformationPage() {
+export default function UserOnboarding() {
     const [person, setPerson] = useState(initialValue)
     const router = useRouter()
 
