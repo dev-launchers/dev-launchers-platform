@@ -1,0 +1,37 @@
+name: Discord Webhook
+on:
+  pull_request:
+    paths:
+      - 'packages/UI/.storybook/**'
+      - 'packages/UI/src/**'
+jobs:
+  discord:
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.chromatic.outputs.url }}
+      buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
+      storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
+      pr_number: ${{ steps.extract_pr_number.outputs.pr_number }}
+    steps:
+     - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/staging\///')" >>$GITHUB_OUTPUT
+        id: extract_branch
+     - name: Extract PR name
+        shell: bash
+        run: |
+          pr_number="${GITHUB_REF#refs/pull/}"
+          pr_number="${pr_number%/*}"
+           echo "pr_number=$pr_number" >> $GITHUB_OUTPUT
+        id: extract_pr_number
+      - name: Discord Channel Notification
+        env:
+          BRANCH: ${{steps.extract_branch.outputs.branch}}
+          URL:  ${{steps.deploy.outputs.url}}
+          DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
+          DISCORD_EMBEDS: '[{"title": "Chromatic","description": "View the Chromatic review.","url": " https://www.chromatic.com/pullrequest?appId=632ca21aeea1618b7fa0bf48&number=${{ steps.extract_pr_number.outputs.pr_number }}, {"title": "Storybook","description": "View the storybook for this change.","url": " https://${{steps.extract_branch.outputs.branch}}--632ca21aeea1618b7fa0bf48.chromatic.com/"}]'
+        
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'New build for ${{ BRANCH }} has Finished. ${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.head_commit.message }}'
