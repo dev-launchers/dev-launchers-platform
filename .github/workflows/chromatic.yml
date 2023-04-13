@@ -52,16 +52,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           onlyChanged: true
-
-      - name: Discord Channel Notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "Chromatic","description": "View the Chromatic review.","url": "${{steps.chromatic.outputs.buildUrl}}"}, {"title": "Storybook","description": "View the storybook for this change.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
-
-
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'New build for ${{ steps.extract_branch.outputs.branch }} has Finished. ${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.head_commit.message }}'
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
