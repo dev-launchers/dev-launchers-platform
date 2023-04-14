@@ -16,7 +16,7 @@ import {
   ShareLinkBox,
 } from './StyledShareCard';
 
-const ShareCard = ({ title, platforms, link }: ShareCardProps) => {
+const ShareCard = ({ title, platforms }: ShareCardProps) => {
   const [show, setShow] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState('Click to Copy');
   const handleTooltipMessage = async () => {

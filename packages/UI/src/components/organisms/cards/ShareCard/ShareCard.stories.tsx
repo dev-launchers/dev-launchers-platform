@@ -13,20 +13,14 @@ const TemplateShareCard: ComponentStory<typeof ShareCard> = (args) => (
 export const Idea = TemplateShareCard.bind({});
 Idea.args = {
   title: 'idea',
-  platforms: 'twitter',
-  link: '/sharelink',
 };
 
 export const Position = TemplateShareCard.bind({});
 Position.args = {
   title: 'position',
-  platforms: 'twitter',
-  link: '/sharelink',
 };
 
 export const Product = TemplateShareCard.bind({});
 Product.args = {
   title: 'product',
-  platforms: 'twitter',
-  link: '/sharelink',
 };
