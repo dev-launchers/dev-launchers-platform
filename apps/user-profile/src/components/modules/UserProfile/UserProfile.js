@@ -175,7 +175,6 @@ export function UserProfileView({
   if (loading) {
     return <strong>Loading.....</strong>;
   }
-
   return (
     <PageBody>
       {/* TODO: When pushing changes to prod, remove `true ? ` and replace with default condution */}
