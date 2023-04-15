@@ -37,7 +37,7 @@ function IdeaCard({ cards, cardType }) {
     }
   }, [tagContent]);
 
-  const reactivateIdea = async() => {
+  const reactivateIdea = async () => {
     cards["status"] = "workshopping";
     setButtonContent(`WAIT`);
 
@@ -66,49 +66,50 @@ function IdeaCard({ cards, cardType }) {
           status={tagContent}
         />
       </atoms.Box>
-        
+
       <IdeaCardImg
         cardId={cards.id}
       />
 
-      <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-        margin='0rem 2rem 1.5rem' style={{ maxWidth: '18.5rem' }}>
+      <Link href={{ pathname: urlPath }}>
+        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
+          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }}>
 
-        <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
-          {cards.ideaName}
-        </atoms.Typography>
+          <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
+            {cards.ideaName}
+          </atoms.Typography>
 
-        <IdeaCardComment
-          commentLength={cards.comments.length}
-        />
+          <IdeaCardComment
+            commentLength={cards.comments.length}
+          />
 
-        <IdeaCardUpdated
-          updatedAt={cards.updated_at}
-        />
+          <IdeaCardUpdated
+            updatedAt={cards.updated_at}
+          />
+        </atoms.Box>
+      </Link>
 
-        {tagContent == "archived" ? (
+      {tagContent == "archived" ? (
+        <atoms.Button
+          buttonSize='standard'
+          buttonType='alternative'
+          style={{ margin: '0rem 2rem 1.5rem' }}
+          onClick={reactivateIdea}
+        >
+          {buttonContent}
+        </atoms.Button>
+      ) : (
+        <Link href={{ pathname: urlPath }}>
           <atoms.Button
             buttonSize='standard'
             buttonType='alternative'
-            style={{ width: "100%", marginTop: "2rem" }}
-            onClick={reactivateIdea}
+            style={{ margin: '0rem 2rem 1.5rem' }}
           >
             {buttonContent}
           </atoms.Button>
-        ) : (
-          <Link href={{ pathname: urlPath }}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='alternative'
-              style={{ width: "100%", marginTop: "2rem" }}
-            >
-              {buttonContent}
-            </atoms.Button>
-          </Link>
-        )}
-        <UpdateFailure />
-
-      </atoms.Box>
+        </Link>
+      )}
+      <UpdateFailure />
 
     </atoms.Box>
   )
