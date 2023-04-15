@@ -179,7 +179,7 @@ export function UserProfileView({
     <PageBody>
       {/* TODO: When pushing changes to prod, remove `true ? ` and replace with default condution */}
       {/*}{userData?.id || (publicUserData?.id && !loading) ? ( {*/}
-      {isPublic && publicUserData?.id || !isPublic && userData?.id? (
+      {isPublic || !isPublic && userData?.id? (
         <Wrapper>
           <UserSection>
             <ProfileCard
