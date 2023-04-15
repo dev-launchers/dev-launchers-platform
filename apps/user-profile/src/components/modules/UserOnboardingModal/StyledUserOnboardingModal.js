@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import theme from "../../../styles/theme";
 
 export const ModalContainer = styled.div`
   width: 100%;
@@ -8,11 +9,35 @@ export const ModalContainer = styled.div`
 
 export const ModalHeader = styled.div`
   width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: ${theme.colors.Black};
+  color: #F0EDEE;
+  font-weight: 400;
+
+  img {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  /* GREYSCALE_OFF_WHITE */
   ${'' /* Enter styling */}
 `;
 
 export const ModalBody = styled.div`
-  padding: 0 120px;
+  padding: 0 115px;
+
+h2 {
+  font-family: ${theme.fonts.normal};
+  font-weight: 700;
+  color: #212429;
+
+}
+
+  p {
+    font-family: ${theme.fonts.headline};
+    color: #7B7B7B;
+    font-size: ${theme.fontSizes.small};
+  }
   ${'' /* Enter styling */}
 `;
 
