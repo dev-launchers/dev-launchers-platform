@@ -5,7 +5,7 @@ import UserProfile from "../../components/modules/UserProfile";
 
 export const getStaticPaths = async () => {
   return {
-    paths: [{ params: { userId: "/"}}],
+    paths: [],
     fallback: "blocking",
   };
 };
