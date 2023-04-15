@@ -46,7 +46,7 @@ export const getStaticProps = async (context) => {
 export default function UserProfilePage({ user }) {
   return (
     <div>
-      <UserProfile otherUser={user} isPublic={true}/>
+      <UserProfile publicUserData={user} isPublic={true}/>
     </div>
   );
 }
