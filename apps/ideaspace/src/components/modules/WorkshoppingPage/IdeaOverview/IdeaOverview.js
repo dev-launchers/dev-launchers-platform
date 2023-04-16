@@ -1,14 +1,12 @@
+import { atoms } from '@devlaunchers/components/src/components';
 import { IdeaCard } from "./IdeaCard/IdeaCard";
-import { DescriptionCard } from "./DescriptionCard/DescriptionCard";
 import { IdeaOwnerCard } from "./IdeaOwnerCard/IdeaOwnerCard";
 import { TagsCard } from "./TagsCard/TagsCard";
-import { IdeaFeaturesCard } from "./IdeaFeaturesCard/IdeaFeaturesCard";
-import { TargetAudieneCard } from "./TargetAudienceCard/TargetAudienceCard";
+import IdeaContentCard from "./IdeaContentCard/IdeaContentCard";
 import IdeaSettingsCard from "./IdeaSettingsCard/IdeaSettingsCard";
 import {
   Wrapper,
   TopView,
-  BottomView,
   RightWrapper,
   LeftWrapper,
 } from './StyledComponents';
@@ -23,9 +21,7 @@ export const IdeaOverview = ({ selectedCard }) => {
         <TopView>
           <IdeaCard ideaName={selectedCard.ideaName} ideaTagLine={selectedCard.tagline} />
         </TopView>
-        <BottomView>
-          <DescriptionCard description={selectedCard.description}/>
-        </BottomView> 
+        <IdeaContentCard title={"Description"} content={selectedCard.description}/>
       </LeftWrapper> 
 
       <RightWrapper>
@@ -33,10 +29,8 @@ export const IdeaOverview = ({ selectedCard }) => {
           <IdeaOwnerCard IdeaOwnerName={selectedCard.author.username} ideaOwnerImage={selectedCard.id}/>
           <TagsCard />
         </TopView>
-        <BottomView>
-          <IdeaFeaturesCard ideaFeature={selectedCard.features}/>
-          <TargetAudieneCard targetAudience={selectedCard.targetAudience}/>
-        </BottomView>
+        <IdeaContentCard title={"Idea features"} content={selectedCard.features}/>
+        <IdeaContentCard title={"Idea target Audience"} content={selectedCard.targetAudience}/>
         <IdeaSettingsCard card={selectedCard} />
       </RightWrapper>
     </Wrapper>
