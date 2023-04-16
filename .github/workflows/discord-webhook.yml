@@ -23,7 +23,7 @@ jobs:
     
       - name: Extract head branch name from GITHUB_REF
         shell: bash
-        run: echo "Head branch name: $GITHUB_REF#refs/pull/*/merge"
+        run: echo "Head branch name $GITHUB_REF#refs/pull/*/merge"
 
       - name: Extract PR number
         shell: bash
