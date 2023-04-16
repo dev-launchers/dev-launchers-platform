@@ -20,10 +20,6 @@ jobs:
         shell: bash
         run:  echo "branch=$(echo "${{ github.event.pull_request.head.ref }}" | tr / -)" >> $GITHUB_OUTPUT
         id: extract_branch
-    
-      - name: Extract head branch name from GITHUB_REF
-        shell: bash
-        run: echo "Head branch name ${{ github.event.pull_request.head.ref }}"
 
       - name: Extract PR number
         shell: bash
@@ -37,4 +33,4 @@ jobs:
           DISCORD_EMBEDS: '[{"title": "Chromatic","description": "View the Chromatic review.","url": "https://www.chromatic.com/pullrequest?appId=632ca21aeea1618b7fa0bf48&number=${{ steps.extract_pr_number.outputs.pr_number }}"}, {"title": "Storybook","description": "View the storybook for this change.","url": "https://${{ steps.extract_branch.outputs.branch }}--632ca21aeea1618b7fa0bf48.chromatic.com/"}]'
         uses: Ilshidur/action-discord@master
         with:
-          args: 'New build for ${{ steps.extract_branch.outputs.branch }} has finished. ${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.head_commit.message }}'
+          args: 'New build for ${{ steps.extract_branch.outputs.branch }} has finished. ${{ github.event.head_commit.author.name }} has made changes with the following commit message: ${{ github.event.pull_request.head_commit.message }}'
