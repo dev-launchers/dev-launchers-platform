@@ -14,9 +14,11 @@ jobs:
       branch: ${{ steps.extract_branch.outputs.branch }}
       pr_number: ${{ steps.extract_pr_number.outputs.pr_number }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/staging\///')" >> $GITHUB_OUTPUT
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | tr '/ -')" >> $GITHUB_OUTPUT
         id: extract_branch
       - name: Extract PR number
         shell: bash
