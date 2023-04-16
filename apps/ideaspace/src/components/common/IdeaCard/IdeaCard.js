@@ -38,7 +38,7 @@ function IdeaCard({ cards, cardType }) {
     const secondsInHour = 3600;
     const secondsInMinute = 60;
 
-    const difftime = (new Date() - new Date(cards.updated_at)) / toBeOneSecond; 
+    const difftime = (new Date() - new Date(cards.updatedAt)) / toBeOneSecond; 
 
     if (difftime > secondsInYear) {
       const years = parseInt(difftime / secondsInYear);

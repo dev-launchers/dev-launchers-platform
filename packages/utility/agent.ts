@@ -122,7 +122,9 @@ const Ideas = {
   get: async (params?: URLSearchParams) => 
     requests.get<Idea[]>("idea-cards", params),
   getIdea: async (id: string, params?: URLSearchParams) => 
-    requests.get<Idea>(`/idea-cards/${id}`, params)
+    requests.get<Idea>(`/idea-cards/${id}`, params),
+  post: async (url: string, body: {}) =>
+    requests.post<Idea>(url, body)
 };
 
 const User = {

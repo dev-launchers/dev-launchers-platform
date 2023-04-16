@@ -71,7 +71,7 @@ function BrowseIdeas() {
     const ideaCards = cleanDataList(await agent.Ideas.get(
       new URLSearchParams(`populate=*`)));
 
-    const getCards = ideaCards.map((item) => {      
+    const getCards = ideaCards.map((item) => {  
       if (item?.comments?.data) {
         item.comments = cleanDataList(item.comments.data);
         return {
