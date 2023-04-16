@@ -12,6 +12,7 @@ jobs:
       buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
       storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
       branch: ${{ steps.extract_branch.outputs.branch }}
+      BRANCH_NAME: ${{ github.base_ref ||  }}
       pr_number: ${{ steps.extract_pr_number.outputs.pr_number }}
     steps:
       - name: Checkout
