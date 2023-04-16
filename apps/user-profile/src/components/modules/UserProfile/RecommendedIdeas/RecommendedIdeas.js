@@ -39,25 +39,46 @@ const RecommendedIdeas = ({ ideas }) => {
               flexWrap: 'wrap',
             }}
           >
-            {ideas.map((idea) => (
-              <RecommendedIdeaCardContainer key={Math.random()}>
-                <Card
-                  size="small"
-                  style={{ width: '90%', height: '17rem' }}
-                  noImage
-                  cardData={{
-                    id: idea.id,
-                    title: idea.ideaName,
-                    secondaryText: idea.tagline,
-                    tags: idea.skills?.map(({ skill }) => skill),
-                    description:
-                      idea.description.substring(0, 200) +
-                      (idea.description.length > 200 ? '...' : ''),
-                    href: `/ideaspace/workshopping/${idea.id}`,
+            
+            {ideas.slice(0, 4).map((idea) => {
+              
+
+              return (
+                <div
+                  key={Math.random()}
+                  style={{
+                    width: "90%",
+                    marginTop: ".5rem",
+                    backgroundColor: "white",
+                    paddingLeft: "1rem",
+                    paddingRight: "1rem",
+                    paddingBottom: "1rem",
                   }}
-                />
-              </RecommendedIdeaCardContainer>
-            ))}
+                >
+                  <RecommendedIdeaCardContainer>
+                    <Card
+                    size="small"
+                    style={{ width: '90%', height: '17rem' }}
+                    noImage
+                    cardData={{
+                      id: idea.id,
+                      title: idea.ideaName,
+                      secondaryText: idea.tagline,
+                      tags: idea.skills?.map(({ skill }) => skill),
+                      description:
+                        idea.description.substring(0, 200) +
+                        (idea.description.length > 200 ? '...' : ''),
+                      href: `/ideaspace/workshopping/${idea.id}`,
+                    }}
+                  />
+                  </RecommendedIdeaCardContainer>
+                </div>
+              )
+            })}
+
+           
+            
+          
           </div>
         </div>
       ) : (
