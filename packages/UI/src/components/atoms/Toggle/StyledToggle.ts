@@ -36,7 +36,7 @@ export const Switch = styled.label`
 
   &:hover {
     &:before {
-      box-shadow: 1px 1px 4px #7f7e7f;
+      box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
     }
   }
   &::after {

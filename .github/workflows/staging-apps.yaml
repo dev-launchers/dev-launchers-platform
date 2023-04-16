@@ -1,0 +1,77 @@
+name: deploy-staging-apps
+
+on:
+  push:
+    branches:
+      - 'staging/ideaspace'
+      - 'staging/ideaspace[1-2]'
+      - 'staging/recruitment'
+      - 'staging/recruitment[1-2]'
+      - 'staging/projects'
+      - 'staging/projects[1-2]'
+      - 'staging/website'
+      - 'staging/website[1-2]'
+
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v3
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/staging\///')" >>$GITHUB_OUTPUT
+        id: extract_branch
+        
+      - name: Setup node env 🏗
+        uses: actions/setup-node@v3
+        with:
+          node-version: lts/gallium
+          cache: 'yarn'
+
+      - name: Install dependencies 👨🏻‍💻
+        run: yarn --frozen-lockfile --silent
+        
+      - name: disable Image optimization
+        shell: bash
+        run: "sed -ie 's$unoptimized: false$unoptimized: true$g' ./apps/app/next.config.js"
+        
+      - name: Run build
+        run: yarn workspace @devlaunchers/app build
+
+      - name: Export
+        run: yarn workspace @devlaunchers/app export
+
+      - name: Publish
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: "b0eb1f5510cb71344976cb9cac51e2af"
+          projectName: ${{ steps.extract_branch.outputs.branch }}
+          directory: ./apps/app/out
+          branch: main
+#I think this needs a bit of explanation.
+#I'm extracting the branch name and modifying it to only show what comes after staging/
+#for example: if this action was triggered on staging/ideaspace the modified string becomes 'ideaspace'.
+
+#I'm doing this because in cloudflare pages dashboard I created these projects
+
+#- 'ideaspace'
+#- 'ideaspace1'
+#- 'ideaspace2'
+#- 'recruitment'
+#- 'recruitment1'
+#- 'recruitment2'
+#- 'projects'
+#- 'projects1'
+#- 'projects2'
+#- 'website'
+#- 'website1'
+#- 'website2'
+#and on every commit that touches the branches of these teams I deploy to the app from the branch name extraction step:  Extract branch name

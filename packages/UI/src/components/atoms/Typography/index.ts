@@ -7,12 +7,14 @@ export interface TypographyProps {
     | 'h2'
     | 'h3'
     | 'h4'
-    | 'h5'
+    | 'subtitle'
     | 'pLarge'
     | 'p'
     | 'pSmall'
     | 'button'
     | 'label'
-    | 'labelSmall';
+    | 'labelSmall'
+    | 'link'
+    | 'navLink';
   textAlign?: CSS.Properties['textAlign'];
 }

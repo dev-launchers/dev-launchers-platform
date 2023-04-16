@@ -43,12 +43,12 @@ H4.args = {
   children: 'Welcome to Dev Launchers Platform',
 };
 
-export const H5: ComponentStory<typeof Typography> = (args) => (
+export const Subtitle: ComponentStory<typeof Typography> = (args) => (
   <Typography {...args}>{args.children}</Typography>
 );
 
-H5.args = {
-  type: 'h5',
+Subtitle.args = {
+  type: 'subtitle',
   children: 'Welcome to Dev Launchers Platform',
 };
 

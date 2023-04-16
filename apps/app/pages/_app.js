@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
-import Footer from '@devlaunchers/components/components/Footer';
-import Navigation from '@devlaunchers/components/components/organisms/Navigation';
+import { Footer, Navigation } from '@devlaunchers/components/components/organisms';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import {
   initGA,

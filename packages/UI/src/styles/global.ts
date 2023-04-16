@@ -28,21 +28,32 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 20px;
+  width: 8px;
+  border: 1px solid red;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+  border-radius: 100px;
+  /* 
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent; 
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  DOESN'T SEEM NECCESSARY REMOVE IF YOU REVIEW
+  */
+  background-clip: content-box;
+  border: 2px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
+}
+::-webkit-scrollbar-track {
+  border: 1px solid ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  border-radius: 100px;
 }
 ::placeholder {
   ${typographyStyles.placeHolder}
 }
-::-webkit-scrollbar-thumb {
-  background: gray;
-  border-radius: 10px;
-  border-top: 5px solid transparent;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  background-clip: content-box;
-}
-
 strong {
   font-weight: bold;
 }

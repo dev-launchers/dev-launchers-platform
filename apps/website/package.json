@@ -5,7 +5,6 @@
   "keywords": [],
   "homepage": "http://devlaunchers.org/",
   "dependencies": {
-    "@cloudflare/wrangler": "^1.19.12",
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
@@ -40,7 +39,7 @@
     "styled-components": "5.3.5",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
-    "wrangler": "^2.0.24"
+    "wrangler": "2.14.0"
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
