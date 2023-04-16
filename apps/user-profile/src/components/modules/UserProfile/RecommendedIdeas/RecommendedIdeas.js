@@ -41,7 +41,7 @@ const RecommendedIdeas = ({ ideas }) => {
           >
             
             {ideas.slice(0, 4).map((idea) => {
-              const { level, description, title, skills, commitmentHoursPerWeek, project } = idea;
+              //const { level, description, title, skills, commitmentHoursPerWeek, project } = idea;
 
               return (
                 <div
