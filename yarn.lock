@@ -2711,6 +2711,7 @@ __metadata:
     react: ^17.0.2
     react-burger-menu: ^3.0.8
     react-dom: ^17.0.2
+    react-easy-crop: 4.7.4
     react-ga: ^3.3.1
     react-ga4: ^1.4.1
     react-markdown: ^8.0.3
@@ -25252,6 +25253,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"normalize-wheel@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "normalize-wheel@npm:1.0.1"
+  checksum: 00b32efa040bad9438e732385a4ca27f8532fa2c8c06b54be43b9f75b2da6642bf41a0b4f81e542639dc8d682cde8b059b0a02ae0723fb8ebc3c8f036c8e51d8
+  languageName: node
+  linkType: hard
+
 "npm-audit-report@npm:^3.0.0":
   version: 3.0.0
   resolution: "npm-audit-report@npm:3.0.0"
@@ -29383,6 +29391,19 @@ __metadata:
   peerDependencies:
     react: 17.0.2
   checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+  languageName: node
+  linkType: hard
+
+"react-easy-crop@npm:4.7.4":
+  version: 4.7.4
+  resolution: "react-easy-crop@npm:4.7.4"
+  dependencies:
+    normalize-wheel: ^1.0.1
+    tslib: 2.0.1
+  peerDependencies:
+    react: ">=16.4.0"
+    react-dom: ">=16.4.0"
+  checksum: 1ed1bc7618c543f67a83a82c308e1bf3b0983b25ae796e80c49c9e71ca3456da98332be87c07795ad5369033aa2b3b1b1b5ca4dacafc864b9bc90001eed1f6e6
   languageName: node
   linkType: hard
 
@@ -33856,6 +33877,13 @@ __metadata:
     minimist: ^1.2.6
     strip-bom: ^3.0.0
   checksum: 8afa01c673ebb4782ba53d3a12df97fa837ce524f8ad38ee4e2b2fd57f5ac79abc21c574e9e9eb014d93efe7fe8214001b96233b5c6ea75bd1ea82afe17a4c6d
+  languageName: node
+  linkType: hard
+
+"tslib@npm:2.0.1":
+  version: 2.0.1
+  resolution: "tslib@npm:2.0.1"
+  checksum: 507f32fc24a614c5097d414b622373b6cbb99e305413517e7fd49bef1e63570c0dd15b417ae68152088c3496218e82a5d8c7cd6b48c7a32dcee1a3f7191fff74
   languageName: node
   linkType: hard
 
