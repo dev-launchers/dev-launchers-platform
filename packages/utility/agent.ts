@@ -120,7 +120,9 @@ const Opportunities = {
 
 const Ideas = {
   get: async (params?: URLSearchParams) => 
-    requests.get<Idea[]>("idea-cards", params).then(res => res)
+    requests.get<Idea[]>("idea-cards", params),
+  getIdea: async (id: string, params?: URLSearchParams) => 
+    requests.get<Idea>(`/idea-cards/${id}`, params)
 };
 
 const User = {

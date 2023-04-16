@@ -14,6 +14,7 @@ import {
   IdeaCardWrapper,
   FilterDiv
 } from './StyledBrowseIdeas';
+import { cleanDataList } from '../../../utils/StrapiHelper';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
@@ -67,22 +68,21 @@ function BrowseIdeas() {
   };
 
   React.useEffect(async () => {
-    const ideaCards = await agent.Ideas.get(
-      new URLSearchParams(`populate=*`));
+    const ideaCards = cleanDataList(await agent.Ideas.get(
+      new URLSearchParams(`populate=*`)));
 
-    const getCards = ideaCards.map((item) => {
-      const itemToUse = { id: item.id, ...item?.attributes };
-      
-      if (item?.attributes?.comments) {
+    const getCards = ideaCards.map((item) => {      
+      if (item?.comments?.data) {
+        item.comments = cleanDataList(item.comments.data);
         return {
-          ...itemToUse,
+          ...item,
           mostRecentCommentTime: new Date(
-            item?.attributes?.comments[0]?.updated_at
+            item.comments[0]?.updated_at
           )?.getTime(),
         };
       }
       return {
-        ...itemToUse,
+        ...item,
         mostRecentCommentTime: new Date()?.getTime(),
       };
     });
