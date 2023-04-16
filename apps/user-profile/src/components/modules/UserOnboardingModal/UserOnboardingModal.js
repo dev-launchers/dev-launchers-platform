@@ -53,9 +53,17 @@ export default function UserOnboardingModal({isOpen}) {
                 */}
                 <OnboardingCard 
                     iconImg={"Onboarding"} 
-                    title={"xxxxxxxxxxxxxxxxxxxx"} 
-                    subtitle={"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"} 
-                    checked={true}
+                    // Platform Onboarding
+                    // Dev Launchers Platform Tour
+                    // Create Devlanchers Login
+                    // All set. Now let’s get started with the rest!
+                    // Sign up on Zenhub and github
+                    // Connect your account on these platforms
+                    // Sign up on discord
+                    // Create an account to communicate with your team
+                    title={"Create Devlanchers Login"} 
+                    subtitle={"All set. Now let’s get started with the rest!"} 
+                    completed={true}
                 />
                 </ModalBody>
             </ModalContainer>

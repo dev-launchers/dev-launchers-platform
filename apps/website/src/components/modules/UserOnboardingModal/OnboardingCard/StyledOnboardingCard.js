@@ -1,36 +1,34 @@
 import Layer from "@devlaunchers/components/components/atoms/Layer/Layer";
 import styled from "styled-components";
 import React from 'react';
-export const OnboardingCardLayer = styled.div`
+export const OnboardingCardContainer = styled.div`
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-    radius: 10px;
-    width: 686px;
+    width: 100%;
     height: auto;
-    position: relative;
+    align-items: center;
+    align-content: center;
     border-radius: 10px;
-    border: 1px solid #000000;
-    background: ${props => props.checked ? '#F2F2F2' : 'white'};
+    background: ${props => props.completed ? '#E2E2E2' : 'white'};
+    box-shadow: ${props => props.completed ? '' : '0px 10px 18px 10px rgba(127, 126, 127, 0.25)'};
 
 `;
 
 export const PicWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 0 18px;
+    padding-left: 18px;
 `;
 
 export const TextWrapper = styled.div`
-    padding-left: 34px;
 `;
 export const CheckedWrapper = styled.div`
-    align-self: center;
-    padding-right: 34px;
+    padding-right: 30px;
 `;
 // export const  circle_checked
 
-export const CheckedSVG = ({ checked }) => (
-    checked ? (
+export const CheckedSVG = ({ completed }) => (
+    completed ? (
         <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.25 0.5C12.2833 0.5 9.38319 1.37973 6.91645 3.02796C4.44971 4.67618 2.52713 7.01886 1.39181 9.75975C0.256499 12.5006 -0.0405507 15.5166 0.538227 18.4264C1.11701 21.3361 2.54562 24.0088 4.6434 26.1066C6.74119 28.2044 9.41393 29.633 12.3236 30.2118C15.2334 30.7906 18.2494 30.4935 20.9903 29.3582C23.7311 28.2229 26.0738 26.3003 27.722 23.8335C29.3703 21.3668 30.25 18.4667 30.25 15.5C30.2458 11.523 28.6641 7.71017 25.852 4.89804C23.0398 2.0859 19.227 0.5042 15.25 0.5ZM21.8356 12.8548L13.7587 20.9317C13.6515 21.039 13.5242 21.1241 13.3842 21.1822C13.2441 21.2402 13.0939 21.2701 12.9423 21.2701C12.7907 21.2701 12.6405 21.2402 12.5005 21.1822C12.3604 21.1241 12.2331 21.039 12.126 20.9317L8.66443 17.4702C8.44792 17.2537 8.32629 16.96 8.32629 16.6538C8.32629 16.3477 8.44792 16.054 8.66443 15.8375C8.88094 15.621 9.17458 15.4994 9.48077 15.4994C9.78696 15.4994 10.0806 15.621 10.2971 15.8375L12.9423 18.4841L20.2029 11.2221C20.3101 11.1149 20.4374 11.0299 20.5774 10.9719C20.7175 10.9138 20.8676 10.884 21.0192 10.884C21.1708 10.884 21.321 10.9138 21.461 10.9719C21.6011 11.0299 21.7284 11.1149 21.8356 11.2221C21.9428 11.3293 22.0278 11.4566 22.0858 11.5967C22.1439 11.7367 22.1737 11.8868 22.1737 12.0385C22.1737 12.1901 22.1439 12.3402 22.0858 12.4803C22.0278 12.6203 21.9428 12.7476 21.8356 12.8548Z" fill="#3A7CA5" />
         </svg>
@@ -42,8 +40,6 @@ export const CheckedSVG = ({ checked }) => (
 )
 
 export const IconImg = ({iconImg}) => {
-    console.log("style");
-    console.log(iconImg);
     switch (iconImg) {
         case 'Login':
             return (<svg width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">

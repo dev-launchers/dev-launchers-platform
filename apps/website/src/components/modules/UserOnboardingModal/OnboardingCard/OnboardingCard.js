@@ -1,35 +1,26 @@
 import React from 'react'
 import { Typography } from '@devlaunchers/components/components/atoms'
-import { TextWrapper, PicWrapper, CheckedWrapper, OnboardingCardLayer, CheckedSVG, IconImg } from './StyledOnboardingCard'
+import { OnboardingCardContainer, PicWrapper, TextWrapper, CheckedWrapper, CheckedSVG, IconImg } from './StyledOnboardingCard'
 export default function OnboardingCard({
     iconImg,
     title,
     subtitle,
-    checked,
+    completed,
 }) {
-    console.log({ iconImg });
-    console.log({ title });
-    console.log({ checked });
     return (
-        <OnboardingCardLayer checked = {checked}>
-            {/* <img src={iconImg} alt="icon" /> */}
+        <OnboardingCardContainer completed = {completed}>
             <PicWrapper>
-            <TextWrapper>
-                <IconImg iconImg={iconImg} />
-            </TextWrapper>
-                <TextWrapper>
-                    <Typography variant="h4" color="white">{title}</Typography>
-                    <Typography variant="h6" color="white">{subtitle}</Typography>
-                </TextWrapper>
+                    <IconImg iconImg={iconImg} />
             </PicWrapper>
+            <TextWrapper>
+                    <Typography type="pLarge" color="white">{title}</Typography>
+                    <Typography type="pLarge" color="white">{subtitle}</Typography>
+            </TextWrapper>
 
-
-
-            <CheckedWrapper >
-                <CheckedSVG checked = {checked}/>
+            <CheckedWrapper>
+                <CheckedSVG completed = {completed}/>
             </CheckedWrapper>
 
-
-        </OnboardingCardLayer>
+        </OnboardingCardContainer>
     )
 }
