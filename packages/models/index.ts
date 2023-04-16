@@ -5,3 +5,4 @@ export { Opportunity } from "./opportunity";
 export { HeroImage, Project } from "./project";
 export { Skill } from "./skill";
 export { User } from "./user";
+export { Idea } from './idea';

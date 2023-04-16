@@ -1,10 +1,10 @@
 import React from 'react'
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
-import axios from "axios";
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import { agent } from '@devlaunchers/utility';
 
 import {
   PageWrapper,
@@ -66,30 +66,29 @@ function BrowseIdeas() {
     setCards(cardsClone);
   };
 
-  React.useEffect(() => {
-    axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        const getCards = response?.data?.data?.map((item) => {
-          if (item?.attributes?.comments) {
-            return {
-              ...item,
-              mostRecentCommentTime: new Date(
-                item?.attributes?.comments[0]?.updated_at
-              )?.getTime(),
-            };
-          }
-          return {
-            ...item,
-            mostRecentCommentTime: new Date()?.getTime(),
-          };
-        });
+  React.useEffect(async () => {
+    const ideaCards = await agent.Ideas.get(
+      new URLSearchParams(`populate=*`));
 
-        setLoading(false);
-        setCards(getCards);
-      });
+    const getCards = ideaCards.map((item) => {
+      const itemToUse = { id: item.id, ...item?.attributes };
+      
+      if (item?.attributes?.comments) {
+        return {
+          ...itemToUse,
+          mostRecentCommentTime: new Date(
+            item?.attributes?.comments[0]?.updated_at
+          )?.getTime(),
+        };
+      }
+      return {
+        ...itemToUse,
+        mostRecentCommentTime: new Date()?.getTime(),
+      };
+    });
+
+    setLoading(false);
+    setCards(getCards);
   }, []);
 
   return (

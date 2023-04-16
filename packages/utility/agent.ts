@@ -1,4 +1,4 @@
-import { NewApplicant, Opportunity, Project, User as UserType } from "@devlaunchers/models";
+import { NewApplicant, Opportunity, Project, User as UserType, Idea } from "@devlaunchers/models";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -76,7 +76,7 @@ function createFormData(item: any) {
   return formData;
 }
 
-const responseBody = (response: AxiosResponse) => response.data;
+const responseBody = (response: AxiosResponse) => response.data.data;
 
 //Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
@@ -118,7 +118,10 @@ const Opportunities = {
   list: () => requests.get<Opportunity[]>("opportunities"),
 };
 
-const Ideas = {};
+const Ideas = {
+  get: async (params?: URLSearchParams) => 
+    requests.get<Idea[]>("idea-cards", params).then(res => res)
+};
 
 const User = {
   get: () => requests.get<UserType>("users"),
@@ -129,6 +132,7 @@ const agent = {
   Projects,
   Applicant,
   User,
+  Ideas
 };
 
 
