@@ -175,12 +175,11 @@ export function UserProfileView({
   if (loading) {
     return <strong>Loading.....</strong>;
   }
-
   return (
     <PageBody>
       {/* TODO: When pushing changes to prod, remove `true ? ` and replace with default condution */}
       {/*}{userData?.id || (publicUserData?.id && !loading) ? ( {*/}
-      {isPublic && publicUserData?.id && !loading || !isPublic && userData?.id? (
+      {isPublic || !isPublic && userData?.id? (
         <Wrapper>
           <UserSection>
             <ProfileCard
