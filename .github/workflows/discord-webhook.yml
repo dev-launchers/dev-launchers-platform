@@ -22,7 +22,7 @@ jobs:
         id: extract_branch
       - name: Extract PR number
         shell: bash
-        run: echo "PULL_NUMBER=$(echo "$GITHUB_REF" | awk -F / '{print $3}')" >> $GITHUB_OUTPUT
+        run: echo "pr_number=$(echo "$GITHUB_REF" | awk -F / '{print $3}')" >> $GITHUB_OUTPUT
         id: extract_pr_number
       - name: Discord Channel Notification
         env:
