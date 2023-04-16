@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF##*/} | tr / -)" >> $GITHUB_OUTPUT
+        run:  echo "branch=$(echo ${GITHUB_REF}" | awk -F / '{print $2}')" >> $GITHUB_OUTPUT
         id: extract_branch
       - name: Extract PR number
         shell: bash
