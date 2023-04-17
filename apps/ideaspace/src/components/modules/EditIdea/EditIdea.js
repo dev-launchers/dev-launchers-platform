@@ -22,7 +22,7 @@ function EditIdea() {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
+      setUserData({ ...userData, id: 30 });
     }, []);
   }
 
@@ -108,13 +108,21 @@ function EditIdea() {
   }, [ideaId, userData.id]);
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().required('Idea Name is Required.'),
-    description: Yup.string().required('Idea Description is Required.'),
-    experience: Yup.string().required('Experience is Required.'),
-    features: Yup.string().required('Idea Feature is Required.'),
+    ideaName: Yup.string().trim().required('Idea Name is Required.'),
+    description: Yup.string().trim().required('Idea Description is Required.'),
+    experience: Yup.string().trim().required('Experience is Required.'),
+    features: Yup.string().trim().required('Idea Feature is Required.'),
+    involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
   const submitHandler = async (values) => {
+    values['ideaName'] = values['ideaName'].trim();
+    values['tagline'] = values['tagline'].trim();
+    values['description'] = values['description'].trim();
+    values['targetAudience'] = values['targetAudience'].trim();
+    values['features'] = values['features'].trim();
+    values['experience'] = values['experience'].trim();
+    values['extraInfo'] = values['extraInfo'].trim();
     setSending(true);
 
     try {
