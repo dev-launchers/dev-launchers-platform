@@ -9,20 +9,14 @@ import {
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
 
-const MAX_COMMENT_CHARS = 250;
-
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
-  const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
   const [disabled, setDisabled] = React.useState(true);
 
   const handleTextChange = (e) => {
     const text = e.target.value;
     props.setHandleTextChange(text);
-
-    let characterCount = text.length;
-    setCharsLeft(MAX_COMMENT_CHARS - characterCount);
 
     if (text.trim() == '') {
       setDisabled(true);
@@ -72,15 +66,11 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts? (max 250 characters)"
+              placeholder="What are your thoughts?"
               value={props.handleTextChange}
               onChange={handleTextChange}
-              maxLength={MAX_COMMENT_CHARS}
             ></textarea>
             {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-            <div id="the-count">
-              <span id="chars-left">{charsLeft}</span>
-            </div>
           </UserComment>
           <button type="submit" disabled={disabled}>Submit</button>
         </form>
