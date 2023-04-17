@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Error from "next/error";
 import { useRouter } from 'next/router';
 import CommentList from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
@@ -23,46 +24,50 @@ function WorkshoppingPage() {
   const { ideaId } = router.query;
   const [handleChange, setHandleChange] = useState('');
   const [handleTextChange, setHandleTextChange] = useState('');
-  const { data, loading, hidden } = useFetchIdea(ideaId)
+  const { data, loading, hidden, getError } = useFetchIdea(ideaId)
 
   const [ArchivedIdea, confirmArchived] = useConfirm(
     ["This Idea has been archived.", '', ''],
     "You can't workshop on it.",
     ['primary', 'got it', ''],
-);
+  );
 
-  React.useEffect(async()=>{
+  React.useEffect(async () => {
     if (hidden) {
       await confirmArchived();
       window.history.back(-1);
     }
-  },[hidden]);
-  
-  return (
-    <Container theme={theme}>
-      <ArchivedIdea />
-      {loading === true ?
-        <CircularIndeterminateLoader
-          text="Loading..."
-          color="white"
-        />
-        :
-        <Wrapper>
-          <IdeaOverview selectedCard={data} />
+  }, [hidden]);
 
-          <Form>
-            <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
-          </Form>
+  if (getError) {
+    return <Error statusCode={404} title="page Not Found" />;
+  } else {
+    return (
+      <Container theme={theme}>
+        <ArchivedIdea />
+        {loading === true ?
+          <CircularIndeterminateLoader
+            text="Loading..."
+            color="white"
+          />
+          :
+          <Wrapper>
+            <IdeaOverview selectedCard={data} />
 
-          <Comments>
-            {/* a count of the comments in the comment feed: */}
-            {/* <h6>Comment Feed: {data.comments.length}</h6> */}
-            <CommentList selectedCard={data} />
-          </Comments>
-        </Wrapper>
-      }
-    </Container>
-  );
+            <Form>
+              <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
+            </Form>
+
+            <Comments>
+              {/* a count of the comments in the comment feed: */}
+              {/* <h6>Comment Feed: {data.comments.length}</h6> */}
+              <CommentList selectedCard={data} />
+            </Comments>
+          </Wrapper>
+        }
+      </Container>
+    );
+  }
 }
 
 export default WorkshoppingPage;

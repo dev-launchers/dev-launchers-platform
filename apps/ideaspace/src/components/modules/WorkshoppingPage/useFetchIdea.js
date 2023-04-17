@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-
 export const useFetchIdea = (ideaId) => {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
@@ -12,6 +11,7 @@ export const useFetchIdea = (ideaId) => {
   }
 
   const [hidden, setHidden] = useState(false);
+  const [getError, setGetError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     ideaName: '',
@@ -32,21 +32,19 @@ export const useFetchIdea = (ideaId) => {
     author: {},
   });
 
-  useEffect(() => {
-    const fetchIdea = async (ideaId) => {
-      setLoading(true)
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`);
-      setLoading(false)
-      if (response.data) {
-        setSourceData(response.data);
-      }
-    } 
+  useEffect(async () => {
     try {
       if (ideaId) {
-        fetchIdea(ideaId)
+        setLoading(true)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`);
+        setLoading(false)
+        if (response.data) {
+          setSourceData(response.data);
+        }
       }
-    } catch(error) {
+    } catch (error) {
       console.log(error)
+      setGetError(true);
     }
   }, [ideaId, setLoading, setData]);
 
@@ -58,5 +56,5 @@ export const useFetchIdea = (ideaId) => {
     }
   }, [sourceData, userData]);
 
-  return { data, loading, hidden };
+  return { data, loading, hidden, getError };
 };

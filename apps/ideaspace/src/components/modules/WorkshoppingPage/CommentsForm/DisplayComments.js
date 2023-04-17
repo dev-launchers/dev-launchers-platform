@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Comment from './SingleComment';
-import axios from 'axios';
 
 function DisplayComments(props) {
 
@@ -8,13 +7,9 @@ function DisplayComments(props) {
 
   useEffect(() => {
     if (props.selectedCard.id != undefined) {
-      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
-        .then(response => {
-          setData((response.data.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
-        })
+      setData((props.selectedCard.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
     }
   }, [props.selectedCard])
-
 
   const commentNodes = data.map(comment => (
     <Comment author={comment.author} key={comment.id} id={comment.id}>
