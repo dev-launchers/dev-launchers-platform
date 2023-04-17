@@ -1,8 +1,13 @@
+import Head from 'next/head';
 import EditIdea from '../../components/modules/EditIdea/EditIdea';
-import React, { useState } from 'react';
 
 export default function App() {
   return (
-    <EditIdea />
+    <>
+      <Head>
+        <title>Edit an Idea - Dev Launchers</title>
+      </Head>
+      <EditIdea />
+    </>
   );
-}
+};
