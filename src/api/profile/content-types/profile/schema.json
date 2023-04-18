@@ -34,6 +34,16 @@
     },
     "displayName": {
       "type": "string"
+    },
+    "profilePicture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "config": {
+        "provider": "azure-storage"
+      }
     }
   }
 }
