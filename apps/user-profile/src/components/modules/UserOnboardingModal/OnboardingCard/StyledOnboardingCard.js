@@ -1,31 +1,7 @@
 import Layer from "@devlaunchers/components/components/atoms/Layer/Layer";
 import styled from "styled-components";
 import React from 'react';
-export const OnboardingCardContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    align-items: center;
-    align-content: center;
-    border-radius: 10px;
-    background: ${props => props.completed ? '#E2E2E2' : 'white'};
-    box-shadow: ${props => props.completed ? '' : '0px 10px 18px 10px rgba(127, 126, 127, 0.25)'};
-
-`;
-
-export const PicWrapper = styled.div`
-    padding-left: 18px;
-`;
-
-export const TextWrapper = styled.div`
-`;
-export const CheckedWrapper = styled.div`
-    padding-right: 30px;
-`;
-// export const  circle_checked
+import { Typography } from '@devlaunchers/components/components/atoms'
 
 export const CheckedSVG = ({ completed }) => (
     completed ? (
@@ -71,5 +47,53 @@ export const IconImg = ({iconImg}) => {
             )  
       }
 }
+
+
+export const OnboardingCardContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: unwrap;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    align-content: center;
+    border-radius: 10px;
+    background: ${props => props.completed ? '#E2E2E2' : 'white'};
+    box-shadow: ${props => props.completed ? '' : '0px 10px 18px 10px rgba(127, 126, 127, 0.25)'};
+
+`;
+
+export const Wrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  justify-items: center;
+  grid-template-areas:
+    "UserSection"
+    "LabCampus"
+    "WeeksGlance"
+    "Misc";
+`;
+
+
+export const PicWrapper = styled.div`
+    display: flex;
+    padding-left: 18px;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 40px;
+`;
+
+
+export const TextWrapper = styled.div`
+    margin-left: 20px;
+`;
+
+export const CheckedWrapper = styled.div`
+    padding-right: 30px;
+`;
+
+
 
 

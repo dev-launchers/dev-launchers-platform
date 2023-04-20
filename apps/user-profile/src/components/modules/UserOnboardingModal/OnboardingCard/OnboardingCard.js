@@ -11,10 +11,13 @@ export default function OnboardingCard({
         <OnboardingCardContainer completed = {completed}>
             <PicWrapper>
                     <IconImg iconImg={iconImg} />
+
+
             </PicWrapper>
+
             <TextWrapper>
-                    <Typography type="pLarge" color="white">{title}</Typography>
-                    <Typography type="pLarge" color="white">{subtitle}</Typography>
+                    <Typography type="p" color="white">{title}</Typography>
+                    <Typography type="p" color="white">{subtitle}</Typography>
             </TextWrapper>
 
             <CheckedWrapper>

@@ -1,8 +1,6 @@
 import {useState, useEffect} from "react";
 import Modal from "react-modal";
-// import OnboardingCard from "/Users/jingwei/dev-launchers-platform/apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
-import OnboardingCard from "../../../../../../apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
-// import OnboardingCard from "apps/website/src/components/modules/UserOnboardingModal/OnboardingCard/OnboardingCard.js";
+import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 
@@ -61,8 +59,8 @@ export default function UserOnboardingModal({isOpen}) {
                     // Connect your account on these platforms
                     // Sign up on discord
                     // Create an account to communicate with your team
-                    title={"Create Devlanchers Login"} 
-                    subtitle={"All set. Now let’s get started with the rest!"} 
+                    title={"Sign up on discord"} 
+                    subtitle={"Create an account to communicate with your team"} 
                     completed={true}
                 />
                 </ModalBody>
