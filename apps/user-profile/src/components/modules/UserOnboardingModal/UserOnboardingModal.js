@@ -5,7 +5,7 @@ import LogoMonogram from '../../../images/logo-monogram.png'
 
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
-import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody, ModalBodyGrid } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
 
@@ -41,8 +41,20 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h4">Dev Launchers</Typography>
                     </ModalHeader>
                     <ModalBody>
-                        <Typography type="h2">Get Started with Devlaunchers</Typography>
-                        <Typography type="p">Please complete the following onboarding tasks</Typography>
+                        <ModalBodyGrid>
+                            <div className="text">
+                                <Typography type="h2">Get Started with Devlaunchers</Typography>
+                                <Typography type="p">Please complete the following onboarding tasks</Typography>
+                            </div>
+
+                            <div className="completed">
+                                <Typography type="h2">1/4</Typography>
+                            </div>
+
+                            <div className="progress-bar">
+                                <div className="bar"></div>
+                            </div>
+                        </ModalBodyGrid>
                         {/* Onboarding Card Component */}
                     </ModalBody>
                 </ModalContainer>

@@ -34,6 +34,35 @@ h2 {
   ${'' /* Enter styling */}
 `;
 
+export const ModalBodyGrid = styled.div`
+display: grid;
+grid-template-areas:
+    "text text complete"
+    "progress  progress progress";
+  grid-template-rows: 1fr 1fr 0.75fr;
+
+.text { 
+  grid-area: text;
+ }
+.completed { 
+  grid-area: complete;
+ }
+.progress-bar { 
+  grid-area: progress;
+  background-color: #CBCBCB;
+  border-radius: 1rem;
+  height: 1rem;
+
+  .bar {
+  width: 50%;
+  background: linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%);
+  border-radius: 1rem;
+  height: 1rem;
+ }
+ }
+
+`
+
 // Modal set up
 export const userUnboardingModalStyle = {
   content: {
