@@ -5,7 +5,7 @@ import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import { agent } from '@devlaunchers/utility';
-
+import { cleanDataList } from '../../../utils/StrapiHelper';
 import {
   PageWrapper,
   HeadWapper,
@@ -14,7 +14,6 @@ import {
   IdeaCardWrapper,
   FilterDiv
 } from './StyledBrowseIdeas';
-import { cleanDataList } from '../../../utils/StrapiHelper';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);

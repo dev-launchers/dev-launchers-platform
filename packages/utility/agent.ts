@@ -78,13 +78,13 @@ function createFormData(item: any) {
 
 const responseBody = (response: AxiosResponse) => response.data.data;
 
-//Axios requests simplified
+// Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
     axios.get<T>(url, { params }).then(responseBody),
   post: <T>(url: string, body: {}) =>
-    axios.post<T>(url, body).then(responseBody),
+    axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
   patch: <T>(url: string, body: {}) =>
     axios.patch<T>(url, body).then(responseBody),
@@ -123,8 +123,9 @@ const Ideas = {
     requests.get<Idea[]>("idea-cards", params),
   getIdea: async (id: string, params?: URLSearchParams) => 
     requests.get<Idea>(`/idea-cards/${id}`, params),
-  post: async (url: string, body: {}) =>
-    requests.post<Idea>(url, body)
+  post: async (body: {}) =>
+    requests.post<Idea>('/idea-cards/', body),
+  put: async (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body)
 };
 
 const User = {
@@ -138,7 +139,5 @@ const agent = {
   User,
   Ideas
 };
-
-
 
 export default agent;

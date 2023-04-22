@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-
+import { agent } from '@devlaunchers/utility';
+import { atoms } from '@devlaunchers/components/src/components';
+import { cleanData } from '../../../utils/StrapiHelper';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import { atoms } from '@devlaunchers/components/src/components';
-
 import {
   HeadWapper,
   Headline,
@@ -61,14 +60,11 @@ function SubmissionForm() {
     values['status'] = 'workshopping';
     setSending(true);
 
-    const res = await axios.post(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
-      values
-    );
+    const data = cleanData(await agent.Ideas.post(values));
 
-    if (res.status === 200) {
+    if (data.ideaName) {
       setunsavedChanges(false);
-      router.push(`workshop/${res.data.id}`);
+      router.push(`workshop/${data.id}`);
     } else {
       alert('Unable to register your idea.');
       setSending(false);

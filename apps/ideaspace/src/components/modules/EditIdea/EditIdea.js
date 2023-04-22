@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-
+import { atoms } from '@devlaunchers/components/src/components';
+import { agent } from '@devlaunchers/utility';
+import { cleanData } from '../../../utils/StrapiHelper';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import getNotice from '../../common/DialogBox/NoticeBox';
 import * as Yup from 'yup';
-import { atoms,organisms } from '@devlaunchers/components/src/components';
-
 import {
   HeadWapper,
   Headline,
@@ -56,21 +55,18 @@ function SubmissionForm() {
     difficultyLevel: 'Beginner',
   });
 
-  React.useEffect(() => {
+  React.useEffect(async () => {
     if (ideaId) {
-      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
-        .then(response => {
-          if (response.status === 200) {
-            if(userData.id !== 0){
-              if(response.data.author.id == userData.id){
-                setCard(response.data);
-              }else{
-                alert("This is not your idea. You can't edit it.");
-                window.history.back(-1);
-              }
-            }
-          }
-        })
+      const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
+
+      if(userData.id !== 0){
+        if (idea.author.id === userData.id) {
+          setCard(idea);
+        } else {
+          alert("This is not your idea. You can't edit it.");
+          window.history.back(-1);
+        }
+      }
     }
   }, [ideaId,userData.id]);
 
@@ -88,15 +84,12 @@ function SubmissionForm() {
     }
     setSending(true);
 
-    const res = await axios.put(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`,
-      values
-    );
+    const data = cleanData(await agent.Ideas.put(ideaId, values));
 
-    if (res.status === 200) {
+    if (data.ideaName) {
       setunsavedChanges(false);
       if (await confirmNotice()){
-        setUrrl(`/ideaspace/workshop/${res.data.id}`);
+        setUrrl(`/ideaspace/workshop/${data.id}`);
       }
     } else {
       alert('Unable to update your idea.');
@@ -149,7 +142,6 @@ function SubmissionForm() {
 
   return (
     <>
-
       <HeadWapper>
         <Headline>Dev Ideas</Headline>
         <StyledRanbow>
@@ -187,7 +179,6 @@ function SubmissionForm() {
       )}
     </>
   );
-
 }
 
 export default SubmissionForm;

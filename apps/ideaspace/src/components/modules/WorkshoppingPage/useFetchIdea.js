@@ -20,6 +20,8 @@ export const useFetchIdea = (ideaId) => {
       const res = cleanData(await agent.Ideas.getIdea(ideaId, 
         new URLSearchParams(`populate=*`)));
 
+      console.log('res', res);
+
       setLoading(false)
       if (res) {
         setData(res)
