@@ -120,13 +120,13 @@ const Opportunities = {
 };
 
 const Ideas = {
-  get: async (params?: URLSearchParams) => 
+  get: (params?: URLSearchParams) => 
     requests.get<Idea[]>("idea-cards", params),
-  getIdea: async (id: string, params?: URLSearchParams) => 
+  getIdea: (id: string, params?: URLSearchParams) => 
     requests.get<Idea>(`/idea-cards/${id}`, params),
-  post: async (body: {}) =>
+  post: (body: {}) =>
     requests.post<Idea>('/idea-cards/', body),
-  put: async (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body)
+  put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body)
 };
 
 const User = {
