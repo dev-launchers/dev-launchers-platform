@@ -112,6 +112,9 @@ COPY --from=builder /app/apps/website/next.config.js \
 COPY --from=builder /app/apps/ideaspace/next.config.js \
                     /app/apps/ideaspace/package.json \
                     ./apps/ideaspace/
+COPY --from=builder /app/apps/user-profile/next.config.js \
+                    /app/apps/user-profile/package.json \
+                    ./apps/user-profile/
 COPY --from=builder /app/apps/site-projects/next.config.js \
                     /app/apps/site-projects/package.json \
                     ./apps/site-projects/

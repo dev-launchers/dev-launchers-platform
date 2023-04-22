@@ -9,6 +9,7 @@
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
+    "@devlaunchers/user-profile": "*",
     "@devlaunchers/website": "*",
     "@next/env": "^12.2.3",
     "@ramonak/react-progress-bar": "^5.0.2",

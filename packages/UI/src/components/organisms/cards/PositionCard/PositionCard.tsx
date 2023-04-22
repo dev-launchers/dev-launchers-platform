@@ -45,20 +45,28 @@ const MinimalPositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={handleMoreDetails}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              more details
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={handleMoreDetails}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                more details
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>
@@ -164,22 +172,30 @@ const PositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={() =>
-                minimal ? handleMoreDetails() : setExpanded((open) => !open)
-              }
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              {expanded ? 'collapse details' : 'more details'}
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={() =>
+                  minimal ? handleMoreDetails() : setExpanded((open) => !open)
+                }
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                {expanded ? 'collapse details' : 'more details'}
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>

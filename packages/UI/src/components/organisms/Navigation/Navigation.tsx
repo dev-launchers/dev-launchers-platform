@@ -80,7 +80,9 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL=https://devlaunchers.org/users/me'
+                        '?redirectURL=' +
+                        process.env.NEXT_PUBLIC_BASE_SITE_URL +
+                        '/users/me'
                       }
                       buttonType="primary"
                       buttonSize="standard"
@@ -91,7 +93,9 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL=https://devlaunchers.org/users/me'
+                        '?redirectURL=' +
+                        process.env.NEXT_PUBLIC_BASE_SITE_URL +
+                        '/users/me'
                       }
                       buttonType="secondary"
                       buttonSize="standard"
@@ -101,14 +105,22 @@ export default function Navigation({ user }: NavigationProps) {
                   </Box>
                 ) : (
                   <Box gap={'16px'} alignItems={'center'}>
-                    <img
-                      width="36"
-                      height="33"
-                      src={userInfo.profilePictureUrl}
-                      alt="Profile avatar"
-                      style={{ borderRadius: '50%' }}
-                    />
-                    <Typography type="p">Hi {userInfo.name}</Typography>
+                    <Link
+                      href={process.env.NEXT_PUBLIC_BASE_SITE_URL + '/users/me'}
+                    >
+                      <a>
+                        <Box gap={'16px'} alignItems={'center'}>
+                          <img
+                            width="36"
+                            height="33"
+                            src={userInfo.profilePictureUrl}
+                            alt="Profile avatar"
+                            style={{ borderRadius: '50%' }}
+                          />
+                          <Typography type="p">Hi {userInfo.name}</Typography>
+                        </Box>
+                      </a>
+                    </Link>
                     <Button
                       buttonType="secondary"
                       buttonSize="standard"
