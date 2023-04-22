@@ -15,8 +15,6 @@ import {
 export const IdeaOverview = ({ selectedCard }) => {
   if (selectedCard.ideaName === "") return null;
 
-  console.log('selected', selectedCard);
-
   return (
     <Wrapper>
       <LeftWrapper>
