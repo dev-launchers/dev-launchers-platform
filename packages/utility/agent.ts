@@ -1,4 +1,5 @@
 import { NewApplicant, Opportunity, Project, User as UserType, Idea } from "@devlaunchers/models";
+import { Comment } from "@devlaunchers/models/comment";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -132,11 +133,16 @@ const User = {
   get: () => requests.get<UserType>("users"),
 };
 
+const Comments = {
+  put: async (id: string, body: {}) => requests.put<Comment>(id, body),
+};
+
 const agent = {
   Opportunities,
   Projects,
   Applicant,
   User,
+  Comments,
   Ideas
 };
 

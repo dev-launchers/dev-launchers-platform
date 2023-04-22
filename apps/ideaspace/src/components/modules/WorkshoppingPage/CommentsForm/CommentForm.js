@@ -8,6 +8,7 @@ import {
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
+import { agent } from '@devlaunchers/utility';
 
 const MAX_COMMENT_CHARS = 250;
 
@@ -24,9 +25,13 @@ function CommentForm(props) {
     setCharsLeft(MAX_COMMENT_CHARS - characterCount);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     var data = { author: userData.username, text: props.handleTextChange };
+
+    const res = await agent.Comments.put(selectedCard.id, data);
+    console.log('res', res);
+    props.setHandleTextChange('');
 
     axios
       .post(

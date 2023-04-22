@@ -68,7 +68,7 @@ function BrowseIdeas() {
 
   React.useEffect(async () => {
     const ideaCards = cleanDataList(await agent.Ideas.get(
-      new URLSearchParams(`populate=*`)));
+      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
 
     const getCards = ideaCards.map((item) => {  
       if (item?.comments?.data) {
