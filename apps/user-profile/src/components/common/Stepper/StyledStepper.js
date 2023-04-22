@@ -22,9 +22,14 @@ export const ProgressBarContainer = styled.div`
     gap: 8px;
 `;
 
-export const ProgressBar = styled.div`
+export const Bar = styled.div`
     width: ${props => props.width};
-    background-color: ${props => props.color};
+    background-color: #234C73;
+`;
+
+export const EmptyBar = styled.div`
+    width: ${props => props.width};
+    background-color: #BDBDBD;
 `;
 
 export const StepperFooter = styled.div`

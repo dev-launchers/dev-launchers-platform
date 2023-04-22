@@ -18,7 +18,8 @@ export default function UserProfilePage() {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return true
+    // return true
+    return !(userData && userData.username)
   }
 
   return (
