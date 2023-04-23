@@ -6,3 +6,4 @@ export type { HeroImage, Project } from "./project";
 export type { Skill } from "./skill";
 export type { User } from "./user";
 export type { Idea } from './idea';
+export type { Like } from './like';
