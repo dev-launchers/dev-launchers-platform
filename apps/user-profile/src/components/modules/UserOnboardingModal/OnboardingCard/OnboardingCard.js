@@ -11,8 +11,6 @@ export default function OnboardingCard({
         <OnboardingCardContainer completed = {completed}>
             <PicWrapper>
                     <IconImg iconImg={iconImg} />
-
-
             </PicWrapper>
 
             <TextWrapper>
