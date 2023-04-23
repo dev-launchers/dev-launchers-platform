@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import LogoMonogram from '../../../images/logo-monogram.png'
-
-
+import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
+import LogoMonogram from '../../../images/logo-monogram.png'
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
@@ -44,6 +43,30 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h2">Get Started with Devlaunchers</Typography>
                         <Typography type="p">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
+                    <OnboardingCard 
+                    iconImg={"Login"} 
+                    title={"Create Devlanchers Login"} 
+                    subtitle={"All set. Now let’s get started with the rest!"} 
+                    completed={false}
+                />
+                   <OnboardingCard 
+                    iconImg={"Onboarding"} 
+                    title={"Platform Onboarding"} 
+                    subtitle={"Dev Launchers Platform Tour"} 
+                    completed={false}
+                />
+                  <OnboardingCard 
+                    iconImg={"Zenhub"} 
+                    title={"Sign up on Zenhub and github"} 
+                    subtitle={"Connect your account on these platforms"} 
+                    completed={false}
+                />
+                 <OnboardingCard 
+                    iconImg={"Discord"} 
+                    title={"Sign up on discord"} 
+                    subtitle={"Create an account to communicate with your team"} 
+                    completed={false}
+                />
                     </ModalBody>
                 </ModalContainer>
             </Modal>
