@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210"
+   height="162"
+   viewBox="0 0 95.249998 103.71667"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="uploadImage.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     width="360px"
+     showborder="true"
+     borderlayer="false"
+     inkscape:showpageshadow="true"
+     inkscape:zoom="1.4467452"
+     inkscape:cx="-1.7280168"
+     inkscape:cy="106.10023"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:#9cbed2;fill-opacity:0.198853;stroke:#000000;stroke-width:0;paint-order:stroke fill markers"
+       id="rect848"
+       width="134.44754"
+       height="103.71667"
+       x="-19.598768"
+       y="8.4332856e-07" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <text
+       xml:space="preserve"
+       style="font-size:43.7219px;line-height:1.25;font-family:Nunito-Sans;stroke-width:0.341578"
+       x="31.50947"
+       y="54.583134"
+       id="text1561"
+       transform="scale(0.99703939,1.0029694)"><tspan
+         sodipodi:role="line"
+         id="tspan1559"
+         style="font-size:43.7219px;fill:#3a7ca5;fill-opacity:1;stroke-width:0.341578"
+         x="31.50947"
+         y="54.583134">+</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:9.48819px;line-height:1.25;font-family:Nunito-Sans;stroke-width:0.474409"
+       x="19.229923"
+       y="75.169556"
+       id="text12761"><tspan
+         sodipodi:role="line"
+         id="tspan12759"
+         style="font-size:9.48819px;stroke-width:0.474409"
+         x="19.229923"
+         y="75.169556">upload image</tspan></text>
+  </g>
+</svg>

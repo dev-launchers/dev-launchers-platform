@@ -61,11 +61,11 @@ const Ideas = ({
                 }
 
                 <Link href="/ideaspace/submit">
-                    <SubmitButton style={{ cursor: 'pointer' }}>
+                    <SubmitButton>
                         <img
                             alt="submit_image"
                             src={submitImage}
-                            style={{ width: "100%" }}
+                            style={{ width: "100%", cursor: 'pointer' }}
                         />
                     </SubmitButton>
                 </Link>

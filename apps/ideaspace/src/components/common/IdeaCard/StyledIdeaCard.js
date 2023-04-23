@@ -5,6 +5,7 @@ export const ImgButton = styled.button`
   border: 0 none;
   padding: 0;
   width: 22.5rem;
+  background-color: #FFFFFF;
 `;
 
 export const StatuBox = styled.span`
