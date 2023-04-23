@@ -47,7 +47,7 @@ export const IconImg = ({iconImg}) => {
             )  
       }
 }
-
+// justify-content: space-between;
 
 export const OnboardingCardContainer = styled.div`
     display: flex;
@@ -61,7 +61,7 @@ export const OnboardingCardContainer = styled.div`
     border-radius: 10px;
     background: ${props => props.completed ? '#E2E2E2' : 'white'};
     box-shadow: ${props => props.completed ? '' : '0px 10px 18px 10px rgba(127, 126, 127, 0.25)'};
-
+    margin-bottom: 15px;
 `;
 
 export const Wrapper = styled.div`
@@ -88,6 +88,7 @@ export const PicWrapper = styled.div`
 
 export const TextWrapper = styled.div`
     margin-left: 20px;
+    width: 100%;
 `;
 
 export const CheckedWrapper = styled.div`
