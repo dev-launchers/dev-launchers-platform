@@ -1,5 +1,5 @@
 import React from 'react'
-import PageBody from '../../../../common/PageBody'
+import PageBody from '../../../common/PageBody'
 import OnboardingFormSection from './StyledOnboardingForm'
 import { Typography } from '@devlaunchers/components/components/atoms'
 

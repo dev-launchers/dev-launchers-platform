@@ -1,29 +1,35 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import "react-tabs/style/react-tabs.css"; // import react-tabs styles
+import "react-tabs/style/react-tabs.css";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 import Button from '../../common/Button';
 import PageBody from '../../common/PageBody';
 
-import { useUserDataContext } from '../../../context/UserDataContext';
 import BioBox from './BioBox';
 import Opportunities from './Opportunities';
 import ProfileCard from './ProfileCard';
 import RecommendedIdeas from './RecommendedIdeas';
 import UserProjects from './UserProjects';
 import People from './People';
-
-import { env } from '../../../utils/EnvironmentVariables';
+import UserInterests from './UserInterests';
 
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
-import UserInterests from './UserInterests';
-import { useRouter } from "next/router";
-// import DiscordSection from "./DiscordSection/DiscordSection";
+import { env } from '../../../utils/EnvironmentVariables';
+import { useUserDataContext } from '../../../context/UserDataContext';
 
 // State management component
-export default function UserProfile({ otherUser, isPublic }) {
+/**
+ * This component has been broken down into two, 
+ * 1. State management component (UserProfile) – initialising states, getting data from backeend. 
+ * 2. The view component (UserProfileView) – rendering the UI elements.
+ * @export 
+ * @param {*} { publicUserData, isPublic } 
+ * @return {*}  
+ */
+export default function UserProfile({ publicUserData, isPublic }) {
 
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
@@ -45,12 +51,12 @@ export default function UserProfile({ otherUser, isPublic }) {
   React.useEffect(() => {
     getProjectData();
   }, []);
+  
   const getProjectData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
       .then(({ data }) => {
         if (data) {
           setProjects(data);
-
           const tempOpportunities = [];
           data.map((project) => {
             project.opportunities.map((opportunity) => {
@@ -65,6 +71,7 @@ export default function UserProfile({ otherUser, isPublic }) {
         console.error("Could not fetch project data");
       });
   };
+
   React.useEffect(() => {
     const myProjects = [];
     projects.map((project) => {
@@ -109,7 +116,6 @@ export default function UserProfile({ otherUser, isPublic }) {
       parseInt(Math.random() * userCount),
       parseInt(Math.random() * userCount),
     ];
-    console.log(randomUserIds);
     let usersData = await Promise.all(randomUserIds.map(async (userId) =>
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
@@ -137,17 +143,16 @@ export default function UserProfile({ otherUser, isPublic }) {
 
 
   useEffect(() => {
-    setLoading(userData?.id === -1 || otherUser?.id === -1);
-  }, [otherUser, userData]);
+    setLoading(userData?.id === -1 || publicUserData?.id === -1);
+  }, [publicUserData, userData]);
 
   return <UserProfileView
-    otherUser={otherUser}
+    publicUserData={publicUserData}
     isPublic={isPublic}
     userData={userData}
     loading={loading}
     opportunities={opportunities}
     myProjects={myProjects}
-    projects={projects}
     ideas={ideas}
     people={people}
     interests={interests}
@@ -156,13 +161,12 @@ export default function UserProfile({ otherUser, isPublic }) {
 
 // View component
 export function UserProfileView({
-  otherUser,
+  publicUserData,
   isPublic,
   userData,
   loading,
   opportunities,
   myProjects,
-  projects,
   ideas,
   people,
   interests
@@ -171,52 +175,31 @@ export function UserProfileView({
   if (loading) {
     return <strong>Loading.....</strong>;
   }
-
   return (
     <PageBody>
-      {/*}{userData?.id || (otherUser?.id && !loading) ? ( {*/}
-      {true ? (
+      {/* TODO: When pushing changes to prod, remove `true ? ` and replace with default condution */}
+      {/*}{userData?.id || (publicUserData?.id && !loading) ? ( {*/}
+      {isPublic || !isPublic && userData?.id? (
         <Wrapper>
           <UserSection>
             <ProfileCard
-              img={
-                otherUser?.profile?.profilePictureUrl ||
-                userData.profilePictureUrl
-              }
-              name={otherUser?.profile?.displayName || userData.name}
-              username={otherUser?.username || userData.username}
-              created_at={userData?.created_at}
+              img={isPublic ? publicUserData?.profile?.profilePictureUrl : userData.profilePictureUrl}
+              name={isPublic ? publicUserData?.profile?.displayName : userData.name}
+              username={isPublic ? publicUserData?.username : userData.username}
+              created_at={isPublic ? publicUserData?.created_at : userData?.created_at}
             />
 
             <UserInfo>
-              {/* }
-              <Points
-                availablePoints={
-                  otherUser?.point?.availablePoints || userData.availablePoints
-                }
-                seasonPoints={
-                  otherUser?.point?.totalSeasonPoints ||
-                  userData.totalSeasonPoints
-                }
-                volunteerHours={
-                  otherUser?.point?.volunteerHours || userData.volunteerHours
-                }
-              />
-              { */}
               <BioBox
-                name={otherUser?.profile?.displayName || userData.name}
-                data={otherUser?.profile || userData}
+                name={isPublic ? publicUserData?.profile?.displayName : userData.name}
+                data={isPublic ? publicUserData?.profile : userData}
                 canEdit={!isPublic}
               />
             </UserInfo>
           </UserSection>
 
-          {/*
-          <LabCampus />
-          */}
-
           <Misc>
-            <Tabs defaultFocus={true} defaultIndex="0" style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
+            <Tabs defaultFocus={true} defaultIndex={0} style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
               <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>
                 {
                   // Have to do this hack for some reason (create empty tab if page not loaded)...
@@ -231,39 +214,27 @@ export function UserProfileView({
                 }
               </TabList>
 
-              <TabPanel key={0}>
+              <TabPanel>
                 <UserProjects myProjects={myProjects} />
               </TabPanel>
 
-              <TabPanel key={1}>
+              <TabPanel>
                 <People people={people} />
               </TabPanel>
 
-              <TabPanel key={2}>
+              <TabPanel>
                 <UserInterests interests={interests} />
               </TabPanel>
 
-              <TabPanel key={3}>
+              <TabPanel>
                 <RecommendedIdeas ideas={ideas} />
               </TabPanel>
 
-              <TabPanel key={4}>
+              <TabPanel>
                 <Opportunities opportunities={opportunities} />
               </TabPanel>
 
             </Tabs>
-
-            {/* }<WeeksGlance />{ */}
-            {/*
-            <LabMember />
-            */}
-            {/*
-              <DiscordSection
-                discordId={userData.discord.id}
-                avatarKey={userData.discord.avatar}
-                discordUsername={userData.discord.username}
-                discordDiscriminator={userData.discord.discriminator}
-              /> */}
           </Misc>
         </Wrapper>
       ) : (
