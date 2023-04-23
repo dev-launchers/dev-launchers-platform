@@ -92,10 +92,7 @@ export default function Stepper({ steps = stepsMockData }) {
   );
 
   const backOnClickHandler = () => {
-    if (
-      (buttonConfig.back.useDefaultOnClick === undefined) |
-      buttonConfig.back.useDefaultOnClick
-    ) {
+    if (buttonConfig?.back?.useDefaultOnClick) {
       if (index >= 1) {
         setIndex(index - 1);
       }
@@ -105,10 +102,7 @@ export default function Stepper({ steps = stepsMockData }) {
   };
 
   const nextOnClickHandler = () => {
-    if (
-      (buttonConfig.next.useDefaultOnClick === undefined) |
-      buttonConfig.next.useDefaultOnClick
-    ) {
+    if (buttonConfig?.next?.useDefaultOnClick) {
       if (index < steps.length - 1) {
         setIndex(index + 1);
       }
@@ -138,7 +132,7 @@ export default function Stepper({ steps = stepsMockData }) {
 
   const backButton =
     // This hides the button if index == 0
-    index == 0 ? (
+    index === 0 ? (
       <div></div>
     ) : (
       <Button onClick={backOnClickHandler}>
