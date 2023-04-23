@@ -5,6 +5,7 @@ import { InteractionButton } from '../StyledCommonComponents';
 import type { LikeButtonProps } from '.';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
+
 const LikeButton = ({ text, filled, disabled }: LikeButtonProps) => {
   const { userData, isAuthenticated } = useUserDataContext();
 
@@ -39,6 +40,14 @@ const LikeButton = ({ text, filled, disabled }: LikeButtonProps) => {
 
   return (
     <InteractionButton disabled={disabled} onClick={() => handleSubmit()}>
+
+
+{/* const LikeButton = ({ text, filled, disabled, onClick }: LikeButtonProps) => { // pass in a string, 2 booleans, and an onClick method
+  const { userData, isAuthenticated } = useUserDataContext();
+
+  return (
+    <InteractionButton disabled={disabled} onClick={onClick}> */}
+
       <Box gap="8px" justifyContent="center" alignItems="center">
         <Like
           fill={filled ? (disabled ? '#474747' : 'black') : ''}

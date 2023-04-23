@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Comment from './SingleComment';
 import axios from 'axios';
 
-function DisplayComments(props) {
+export default function DisplayComments(props) {
 
   const [data, setData] = useState([])
 
@@ -27,5 +27,3 @@ function DisplayComments(props) {
     </div>
   );
 };
-
-export default DisplayComments;
