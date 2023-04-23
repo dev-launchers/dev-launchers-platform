@@ -13,7 +13,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import Script from 'next/script';
 import iubendaScript from '../scripts/iubendaScript';
-import { OnboardingProvider } from '../../website/src/context/OnboardingContext'
 
 
 const hashRedirect = (router) => {
@@ -50,7 +49,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <UserDataProvider>
         <ThemeProvider theme={theme}>
-          <OnboardingProvider>
             <div>
               <script
                 type="text/partytown"
@@ -76,7 +74,6 @@ function MyApp({ Component, pageProps }) {
               {/* {props.children} */}
               <Footer />
             </div>
-          </OnboardingProvider>
         </ThemeProvider>
       </UserDataProvider>
     </>
