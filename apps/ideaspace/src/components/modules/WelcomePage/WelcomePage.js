@@ -7,7 +7,8 @@ import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
 import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
-import IdeaspaceNavCard from '../IdeaspaceNavCard';
+import IdeaspaceNavCard from './IdeaspaceNavCard';
+import IdeaGeneratorButton from './IdeaGeneratorButton';
 
 import {
   Description,
@@ -19,8 +20,6 @@ import {
   RocketImage,
   NavButtonArea,
 } from './StyledWelcomePage';
-
-import IdeaGeneratorButton from '../IdeaGeneratorButton';
 
 const appGeneratorCardBackgroundColor = `rgba(58,124,165, 0.9), rgba(58,124,165, 0.9))`;
 
