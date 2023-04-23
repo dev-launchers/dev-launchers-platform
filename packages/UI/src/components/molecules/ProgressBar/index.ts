@@ -1,4 +1,4 @@
 export interface ProgressBarProps {
-  percentage: number;
+  value: number;
 }
 export { default } from './ProgressBar';

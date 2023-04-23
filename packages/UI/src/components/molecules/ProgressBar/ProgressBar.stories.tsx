@@ -12,10 +12,10 @@ const TemplateProgressBar: ComponentStory<typeof ProgressBar> = (args) => (
 
 export const InProgress = TemplateProgressBar.bind({});
 InProgress.args = {
-  percentage: 50,
+  value: 50,
 };
 
 export const Finished = TemplateProgressBar.bind({});
 Finished.args = {
-  percentage: 100,
+  value: 100,
 };
