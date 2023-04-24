@@ -2,8 +2,6 @@ import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 
 const DialogBoxButton = ({ handleConfirmButton, handleCancelButton, buttonDetail }) => {
-  // when two buttons are same type, first onClick is Confirm, second is Cancel
-  // when only one button, onClick is Cancel.
   if (buttonDetail[0] == 'alternative primary') {
     return (
       <>
@@ -42,44 +40,6 @@ const DialogBoxButton = ({ handleConfirmButton, handleCancelButton, buttonDetail
         </atoms.Button>
       </>
     )
-  } else if (buttonDetail[0] == 'primary primary') {
-    return (
-      <>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='primary'
-          onClick={handleConfirmButton}
-        >
-          {buttonDetail[1]}
-        </atoms.Button>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='primary'
-          onClick={handleCancelButton}
-        >
-          {buttonDetail[2]}
-        </atoms.Button>
-      </>
-    )
-  } else if (buttonDetail[0] == 'alternative alternative') {
-    return (
-      <>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='alternative'
-          onClick={handleConfirmButton}
-        >
-          {buttonDetail[1]}
-        </atoms.Button>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='alternative'
-          onClick={handleCancelButton}
-        >
-          {buttonDetail[2]}
-        </atoms.Button>
-      </>
-    )
   } else if (buttonDetail[0] == 'primary') {
     return (
       <>
@@ -92,19 +52,7 @@ const DialogBoxButton = ({ handleConfirmButton, handleCancelButton, buttonDetail
         </atoms.Button>
       </>
     )
-  } else if (buttonDetail[0] == 'alternative') {
-    return (
-      <>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='alternative'
-          onClick={handleCancelButton}
-        >
-          {buttonDetail[1]}
-        </atoms.Button>
-      </>
-    )
-  }
+  } 
 }
 
 export default DialogBoxButton;
