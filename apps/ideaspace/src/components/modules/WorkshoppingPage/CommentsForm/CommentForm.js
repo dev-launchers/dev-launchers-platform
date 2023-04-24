@@ -27,7 +27,7 @@ function CommentForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    var data = { author: userData.username, text: props.handleTextChange };
+    var data = { author: userData.username, text: props.handleTextChange.trim() };
 
     axios
       .post(
@@ -72,7 +72,7 @@ function CommentForm(props) {
             ></textarea>
             {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
           </UserComment>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={disabled}>Submit</button>
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>
