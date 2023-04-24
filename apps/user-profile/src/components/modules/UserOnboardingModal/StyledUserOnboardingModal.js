@@ -22,6 +22,9 @@ export const ModalHeader = styled.div`
 
 export const ModalBody = styled.div`
   padding: 0 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
 h2 {
   color: #212429;
