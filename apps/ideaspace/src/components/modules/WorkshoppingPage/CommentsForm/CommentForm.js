@@ -15,6 +15,7 @@ function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
+  const [disabled, setDisabled] = React.useState(true);
 
   const handleTextChange = (e) => {
     const text = e.target.value;
@@ -22,11 +23,17 @@ function CommentForm(props) {
 
     let characterCount = text.length;
     setCharsLeft(MAX_COMMENT_CHARS - characterCount);
+
+    if (text.trim() == '') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    var data = { author: userData.username, text: props.handleTextChange };
+    var data = { author: userData.username, text: props.handleTextChange.trim() };
 
     axios
       .post(
@@ -68,14 +75,14 @@ function CommentForm(props) {
               placeholder="What are your thoughts? (max 250 characters)"
               value={props.handleTextChange}
               onChange={handleTextChange}
-              maxlength={MAX_COMMENT_CHARS}
+              maxLength={MAX_COMMENT_CHARS}
             ></textarea>
             {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
             <div id="the-count">
               <span id="chars-left">{charsLeft}</span>
             </div>
           </UserComment>
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={disabled}>Submit</button>
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>
