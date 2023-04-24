@@ -151,13 +151,13 @@ const IdeaSettingsCard = ({ card }) => {
         }
     }
 
-    if (card.author.id !== userData.id) {
+    if (card.author?.id !== userData.id) {
         return null;
     }
 
     return (
-        <atoms.Layer type="light" style={{ borderRadius: "1rem", margin: "3rem 0", padding: "1rem 2rem 2rem" }}>
-            <atoms.Box >
+        <atoms.Layer type="light" style={{ borderRadius: "1rem", marginBottom: "3rem", padding: "1rem 2rem 2rem" }}>
+            <atoms.Box>
                 <h3>Idea settings</h3>
             </atoms.Box>
 

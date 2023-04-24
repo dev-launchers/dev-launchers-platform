@@ -5,6 +5,7 @@ import { atoms } from '@devlaunchers/components/src/components';
 import {
   ImgButton,
   StatuBox,
+  IdeaCardButton,
 } from './StyledIdeaCard';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
@@ -37,7 +38,7 @@ function IdeaCard({ cards, cardType }) {
     }
   }, [tagContent]);
 
-  const reactivateIdea = async() => {
+  const reactivateIdea = async () => {
     cards["status"] = "workshopping";
     setButtonContent(`WAIT`);
 
@@ -66,7 +67,7 @@ function IdeaCard({ cards, cardType }) {
           status={tagContent}
         />
       </atoms.Box>
-        
+
       <IdeaCardImg
         cardId={cards.id}
       />
@@ -87,23 +88,16 @@ function IdeaCard({ cards, cardType }) {
         />
 
         {tagContent == "archived" ? (
-          <atoms.Button
-            buttonSize='standard'
-            buttonType='alternative'
-            style={{ width: "100%", marginTop: "2rem" }}
+          <IdeaCardButton
             onClick={reactivateIdea}
           >
             {buttonContent}
-          </atoms.Button>
+          </IdeaCardButton>
         ) : (
           <Link href={{ pathname: urlPath }}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='alternative'
-              style={{ width: "100%", marginTop: "2rem" }}
-            >
+            <IdeaCardButton>
               {buttonContent}
-            </atoms.Button>
+            </IdeaCardButton>
           </Link>
         )}
         <UpdateFailure />

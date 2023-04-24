@@ -1,4 +1,15 @@
 import styled from "styled-components";
+import { atoms } from '@devlaunchers/components/src/components';
+
+export const IdeaCardButton = styled((props)=>
+  <atoms.Button
+    buttonSize='standard'
+    buttonType='alternative'
+    {...props} 
+  />
+)`
+  margin: 0rem 2rem 1.5rem;
+`;
 
 export const ImgButton = styled.button`
   cursor: pointer;
