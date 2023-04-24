@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import RainbowBar from '../../../../../site-projects/src/components/common/RainbowBar';
+import { atoms } from '@devlaunchers/components/src/components';
 
 import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
@@ -10,14 +10,13 @@ import rocketImage from '../../../images/logo-monogram.png';
 import IdeaspaceNavCard from '../IdeaspaceNavCard';
 
 import {
-  Description,
-  ButtonArea,
-  Header,
-  WelcomeMessage,
+  HeadWapper,
+  Headline,
+  StyledRanbow,
   Subheader,
-  GetStartedDiv,
   RocketImage,
   NavButtonArea,
+  ButtonArea,
 } from './StyledWelcomePage';
 
 import IdeaGeneratorButton from '../IdeaGeneratorButton';
@@ -35,22 +34,21 @@ const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check
 function WelcomePage() {
   return (
     <>
-      <Header>
-        <h1>IdeaSpace (Beta)</h1>
-        <RainbowBar />
-      </Header>
+      <HeadWapper>
+        <Headline>IdeaSpace (Beta)</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
 
-      <Description>
-        <WelcomeMessage>WELCOME TO THE IDEA PLATFORM!</WelcomeMessage>
-        <Subheader>
-          Have an idea for a development project? Want to help develop an
-          idea? Want to generate an idea?
-        </Subheader>
-        <GetStartedDiv>
+        <atoms.Typography type='h4' >
+          WELCOME TO THE IDEA PLATFORM!
+          <Subheader>
+            Have an idea for a development project? Want to help develop an idea? Want to generate an idea?
+          </Subheader>
           LET'S GET STARTED
           <RocketImage src={rocketImage} />
-        </GetStartedDiv>
-      </Description>
+        </atoms.Typography>
+      </HeadWapper>
 
       <NavButtonArea>
         <ButtonArea>
