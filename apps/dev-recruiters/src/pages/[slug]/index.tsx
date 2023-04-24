@@ -5,11 +5,13 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import ProjectDetails from '../../components/modules/DetailedPage';
+import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
-  );
+  // const res = await fetch(
+  //   `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
+  // );
+  // const res = await agent.Projects.list();
 
   const result: Project[] = await res.json();
   const projects = result?.filter((p) => p.opportunities?.length > 0);
@@ -32,9 +34,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projectsRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${params.slug}`
-  );
+  // const projectsRes = await fetch(
+  //   `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${params.slug}`
+  // );
+  const projectsRes = await agent.Projects.get(params.slug as string);
+  
   const opportuntiesRes = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?projects.slug=${params.slug}`
   );
