@@ -38,7 +38,7 @@ function FormField({
             autoComplete="off"
             placeholder={placeholder}
             valid={touched && !error}
-            error={error}
+            error={touched ? error : ''}
             disabled={disabled}
             onChange={onChange}
             value={value}
