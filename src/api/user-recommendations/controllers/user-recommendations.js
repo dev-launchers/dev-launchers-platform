@@ -7,11 +7,13 @@ const NodeCache = require('node-cache');
  * to customize this controller
  */
 
-const myCache = new NodeCache({ stdTTL: 60 });
+const randomUsersCache = new NodeCache({ stdTTL: 60 });
 
 module.exports = {
   async recommend(ctx) {
-    let users = myCache.get('randomUsers');
+    const numRecommendations = 6;
+    
+    let users = randomUsersCache.get('randomUsers');
 
     // check if cache already has random users
     if (users == undefined) {
@@ -34,7 +36,7 @@ module.exports = {
         }
       );
 
-      myCache.set('randomUsers', users);
+      randomUsersCache.set('randomUsers', users);
     }
 
     const currentUser = await strapi.entityService.findOne(
@@ -68,7 +70,7 @@ module.exports = {
 
     // sort greatest to least based on similarity score
     users.sort((a, b) => userScores.get(b.id) - userScores.get(a.id));
-    users = users.slice(0, 6);
+    users = users.slice(0, numRecommendations);
 
     const topScores = [];
 
