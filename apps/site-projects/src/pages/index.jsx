@@ -2,21 +2,24 @@ import axios from "axios";
 import Head from "next/head";
 import Projects from "../components/modules/Projects";
 import { env } from "../utils/EnvironmentVariables";
-
+import agent from "@devlaunchers/utility/agent"
 // const projectsData = require("../components/modules/Projects/data.json");
 
 export const getStaticProps = async () => {
-  const { data: projects } = await axios(
-    `${env().STRAPI_URL}/projects?_publicationState=live`,
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-      },
-    }
-  );
+  // const { data: projects } = await axios(
+  //   `${env().STRAPI_URL}/projects?_publicationState=live`,
+  //   {
+  //     headers: {
+  //       Accept: "application/json, text/plain, */*",
+  //       "User-Agent":
+  //         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+  //     },
+  //   }
+  // );
+
   // const projects = projectsData;
+  const projects = await agent.Projects.list();
+
   if (!projects) {
     return {
       notFound: true,
