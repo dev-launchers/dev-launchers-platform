@@ -2,9 +2,9 @@ import React from 'react'
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import axios from "axios";
 import { atoms } from '@devlaunchers/components/src/components';
-import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
+import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 
 import {
   PageWrapper,
@@ -12,16 +12,13 @@ import {
   Headline,
   StyledRanbow,
   IdeaCardWrapper,
+  FilterDiv
 } from './StyledBrowseIdeas';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState({});
   const [loading, setLoading] = React.useState(true);
-  const [sortedCards, setSortedCards] = React.useState([]);
 
-  const dropDownStyle = { width: "13rem", borderRadius: "8px", padding: "6px 8px", fontSize: "1rem", outline: "none" };
-  const defaultOptions = [<option key='0'></option>];
   const sortingConfigs = [
     {
       value: 'mostRecentCommentTime',
@@ -39,6 +36,35 @@ function BrowseIdeas() {
       isAscending: true,
     },
   ];
+
+  const sortCards = (selectedSortCriterion) => {
+    let selectedSortingConfig = sortingConfigs.filter(
+      (configOption) => configOption.label === selectedSortCriterion
+    );
+    const cardsClone = JSON.parse(JSON.stringify(cards));
+    if (selectedSortingConfig[0].isAscending) {
+      cardsClone.sort((a, b) => {
+        return a[selectedSortingConfig[0].value] <
+          b[selectedSortingConfig[0].value]
+          ? -1
+          : a[selectedSortingConfig[0].value] >
+            b[selectedSortingConfig[0].value]
+          ? 1
+          : 0;
+      });
+    } else {
+      cardsClone.sort((a, b) => {
+        return a[selectedSortingConfig[0].value] >
+          b[selectedSortingConfig[0].value]
+          ? -1
+          : a[selectedSortingConfig[0].value] <
+            b[selectedSortingConfig[0].value]
+          ? 1
+          : 0;
+      });
+    }
+    setCards(cardsClone);
+  };
 
   React.useEffect(() => {
     axios
@@ -79,19 +105,38 @@ function BrowseIdeas() {
           <CircularIndeterminateLoader text="Loading..." color="black" />
         ) : (
           <div>
-            <atoms.Box alignItems='center' justifyContent='space-between' width='100%'>
-              <atoms.Typography type='h4' style={{ textAlign: 'left' }}>{sortedCards.length} Ideas</atoms.Typography>
-              <SortableDropdown
-                sortingConfigs={sortingConfigs}
-                elements={cards}
-                defaultOptions={defaultOptions}
-                handleSetSortedElements={setSortedCards}
-                style={dropDownStyle}
-              />
-            </atoms.Box>
+          <FilterDiv>
+            <Dropdown
+              width="lg"
+              isOpen
+              options={[
+                {
+                  disabled: false,
+                  text: 'Recent Activity',
+                },
+                {
+                  disabled: false,
+                  text: 'Recent Ideas',
+                },
+                {
+                  disabled: false,
+                  text: 'Time Commitment',
+                },
+              ]}
+              recieveValue={(value) => {
+                sortCards(
+                  Object.entries(value).filter(([key, value]) => {
+                    return value;
+                  })[0][0]
+                );
+              }}
+              title="Sort By"
+              type="radio"
+            />
+          </FilterDiv>
 
             <IdeaCardWrapper>
-              {sortedCards.map((item) => {
+              {cards.map((item) => {
                 return (
                   <IdeaCard
                     key={item.id}

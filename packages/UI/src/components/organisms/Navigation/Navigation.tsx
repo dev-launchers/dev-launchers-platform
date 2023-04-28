@@ -8,6 +8,7 @@ import Button from '../../atoms/Button';
 import Layer from '../../atoms/Layer';
 import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
+import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
@@ -17,7 +18,11 @@ import type { NavigationProps } from '.';
 const links = {
   CREATE: '/create',
   LEARN: '/learn',
-  DREAM: '/ideaspace',
+  DREAM: [
+    { text: 'Ideaspace', href: '/ideaspace' },
+    { text: 'Submit an idea', href: '/ideaspace/submit' },
+    { text: 'Help existing idea', href: '/ideaspace/browse' },
+  ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
 };
@@ -55,14 +60,18 @@ export default function Navigation({ user }: NavigationProps) {
               </Link>
               <NavWrapper>
                 <ul>
-                  <Box gap={'16px'}>
-                    {Object.entries(links).map(([name, href], i) => (
-                      <li style={ListStyle} key={i}>
-                        <Link href={href} passHref>
-                          <NavLink>{name}</NavLink>
-                        </Link>
-                      </li>
-                    ))}
+                  <Box gap={'16px'} alignItems="baseline">
+                    {Object.entries(links).map(([name, href], i) => {
+                      if (Array.isArray(href))
+                        return <NavDropdown title={name} links={href} />;
+                      return (
+                        <li style={ListStyle} key={i}>
+                          <Link href={href} passHref>
+                            <NavLink>{name}</NavLink>
+                          </Link>
+                        </li>
+                      );
+                    })}
                   </Box>
                 </ul>
                 {userInfo.id === 0 ? (

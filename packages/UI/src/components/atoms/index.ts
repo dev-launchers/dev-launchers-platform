@@ -11,3 +11,5 @@ export { default as NavLink } from './NavLink';
 export { default as Overlay } from './Overlay';
 export { default as Radio } from './Radio';
 export { default as Tooltip } from './Tooltip';
+export { radiusStyles } from './Radius';
+export { default as BaseLayer } from './BaseLayer';
