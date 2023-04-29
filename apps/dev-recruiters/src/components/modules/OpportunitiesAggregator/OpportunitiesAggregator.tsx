@@ -52,7 +52,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
           paddingHorizontal={16}
         >
           <FeaturedProducts>
-            <h2>Featured Products</h2>
+            <h2>Cool Things!</h2>
           </FeaturedProducts>
           <Slider
             ref={(slider) => (customSlider.current = slider)}
