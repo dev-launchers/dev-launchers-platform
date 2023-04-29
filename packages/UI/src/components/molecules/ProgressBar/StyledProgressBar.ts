@@ -39,7 +39,7 @@ export const PercentageWrapper = styled.div`
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  top: -26px;
+  bottom: 88%;
   width: 100%;
   gap: 12px;
 `;
