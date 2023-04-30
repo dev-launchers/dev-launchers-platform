@@ -55,13 +55,6 @@ grid-template-areas:
   background-color: #CBCBCB;
   border-radius: 1rem;
   height: 1rem;
-
-  .bar {
-  width: 50%;
-  background: linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%);
-  border-radius: 1rem;
-  height: 1rem;
- }
  }
 
 `

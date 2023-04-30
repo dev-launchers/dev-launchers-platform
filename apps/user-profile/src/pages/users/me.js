@@ -18,8 +18,8 @@ export default function UserProfilePage() {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    // return true
-    return !(userData && userData.username)
+    return true
+    // return !(userData && userData.username)
   }
 
   return (
@@ -28,8 +28,8 @@ export default function UserProfilePage() {
         <title>User Profile</title>
       </Head>
       <div>
-        {openUserOnboardingModal() && <UserOnboardingModal/>}
-        <UserProfile isPublic={false}/>
+        {openUserOnboardingModal() && <UserOnboardingModal />}
+        <UserProfile isPublic={false} />
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody, ModalBodyGrid } from "./StyledUserOnboardingModal";
 import LogoMonogram from '../../../images/logo-monogram.png'
+import OnboardingProgressBar from "../../common/ProgressBar/ProgressBar.js";
 
 Modal.setAppElement("#__next");
 
@@ -23,6 +24,7 @@ export default function UserOnboardingModal({ isOpen }) {
     const closeModal = () => {
         setModalIsOpen(false);
     }
+
     return (
         <>
             {/* "modalIsOpen ? true : false" set this way until we start adding typescript for 
@@ -47,11 +49,11 @@ export default function UserOnboardingModal({ isOpen }) {
                             </div>
 
                             <div className="completed">
-                                <Typography type="h2">1/4</Typography>
+                                <Typography type="h2">{progressComplete.length}/{progress.length}</Typography>
                             </div>
 
                             <div className="progress-bar">
-                                <div className="bar"></div>
+                                <OnboardingProgressBar />
                             </div>
                         </ModalBodyGrid>
                         {/* Onboarding Card Component */}
