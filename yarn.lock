@@ -2729,6 +2729,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.18.9
     "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/utility": "workspace:*"
     "@storybook/addon-actions": ^6.5.9
     "@storybook/addon-essentials": ^6.5.9
     "@storybook/addon-links": ^6.5.9

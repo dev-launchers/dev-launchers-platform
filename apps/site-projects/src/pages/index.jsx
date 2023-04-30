@@ -7,7 +7,7 @@ import agent from "@devlaunchers/utility/agent"
 
 export const getStaticProps = async () => {
   // const { data: projects } = await axios(
-  //   `${env().STRAPI_URL}/projects?_publicationState=live`,
+  //   `${process.env.NEXT_PUBLIC_API_URL}/projects?_publicationState=live`,
   //   {
   //     headers: {
   //       Accept: "application/json, text/plain, */*",
@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
 
   // const projects = projectsData;
   const projects = await agent.Projects.list();
-
+  // console.log(projects);
   if (!projects) {
     return {
       notFound: true,
@@ -28,13 +28,14 @@ export const getStaticProps = async () => {
 
   // HACKY WORKAROUND by Kris to make projects work
   // Need to request each project's individual endpoint to get missing data
-  const filteredProjects = projects.filter((project) => project.isListed);
+  const filteredProjects = projects.filter((project) => project.attributes.isListed);
   const returnProjects = filteredProjects.map(async (project) => {
-    if (!project.isListed) {
-      project.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
+    console.log(project);
+    if (!project.attributes.isListed) {
+      project.attributes.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
     } else {
       const { data: projectData } = await axios(
-        `${env().STRAPI_URL}/projects/${project.slug}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/projects/${project.id}?populate=*`,
         {
           headers: {
             Accept: "application/json, text/plain, */*",
@@ -44,11 +45,12 @@ export const getStaticProps = async () => {
         }
       );
 
-      project.heroImage = projectData.heroImage;
+      project.attributes.heroImage = projectData.attributes.heroImage.data.attributes;
     }
 
     return project;
   });
+  // console.log(returnProjects);
   const resolvedProjects = await Promise.all(returnProjects);
   // End hacky workaround
 

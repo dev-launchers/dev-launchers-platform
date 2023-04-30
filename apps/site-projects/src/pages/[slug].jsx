@@ -30,7 +30,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const { data: project } = await axios.get(
-    `${env().STRAPI_URL}/projects/${slug}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}`,
     {
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -48,7 +48,7 @@ export const getStaticProps = async (context) => {
 
   return {
     props: {
-      project,
+      project:project.data,
     },
     revalidate: 20,
   };
