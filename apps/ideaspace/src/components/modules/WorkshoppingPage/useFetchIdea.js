@@ -12,6 +12,8 @@ export const useFetchIdea = (ideaId) => {
     created_at: '',
     comments: [],
     author: {},
+    difficultyLevel: '',
+    ideaOwner: '',
   });
   useEffect(() => {
     const fetchIdea = async (ideaId) => {
