@@ -5,7 +5,8 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody, ModalBodyGrid } from "./StyledUserOnboardingModal";
 import LogoMonogram from '../../../images/logo-monogram.png'
-import OnboardingProgressBar from "../../common/ProgressBar/ProgressBar.js";
+import ProgressBar from "../../common/ProgressBar/ProgressBar.js";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext.js";
 
 Modal.setAppElement("#__next");
 
@@ -14,6 +15,7 @@ Modal.setAppElement("#__next");
  */
 export default function UserOnboardingModal({ isOpen }) {
     const [modalIsOpen, setModalIsOpen] = useState(true);
+    const { userData } = useUserDataContext;
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -49,12 +51,19 @@ export default function UserOnboardingModal({ isOpen }) {
                             </div>
 
                             <div className="completed">
-                                <Typography type="h2">{progressComplete.length}/{progress.length}</Typography>
+                                <Typography type="h2">1/4</Typography> {/* {progressComplete.length}/{progress.length} */}
                             </div>
 
-                            <div className="progress-bar">
-                                <OnboardingProgressBar />
-                            </div>
+                            <ProgressBar
+                                className="progress-bar"
+                                bgColor="#CBCBCB"
+                                barColor="linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%)"
+                                bgWidth="100%"
+                                barWidth="46%"
+                                borderRadius="1rem"
+                                height="1rem"
+                            />
+
                         </ModalBodyGrid>
                         {/* Onboarding Card Component */}
 

@@ -50,11 +50,9 @@ grid-template-areas:
 .completed { 
   grid-area: complete;
  }
-.progress-bar { 
+
+ .progress-bar { 
   grid-area: progress;
-  background-color: #CBCBCB;
-  border-radius: 1rem;
-  height: 1rem;
  }
 
 `
