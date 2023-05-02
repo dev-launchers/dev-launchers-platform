@@ -17,6 +17,12 @@ export default function UserOnboardingModal({ isOpen }) {
     const [modalIsOpen, setModalIsOpen] = useState(true);
     const { userData } = useUserDataContext;
 
+    let percentage = () => {
+        // hasDone(task) has not yet been created but the implementation will be as follow
+        const task = [userData.hasDonePlatformOnboarding, userData.hasDoneDiscordOnboarding, userData.hasDoneThirdPartyOnboarding];
+        return (taskDone / task.length) * 100
+    }
+
     const openModal = () => {
         setModalIsOpen(true);
     }
@@ -59,7 +65,8 @@ export default function UserOnboardingModal({ isOpen }) {
                                 bgColor="#CBCBCB"
                                 barColor="linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%)"
                                 bgWidth="100%"
-                                barWidth="46%"
+                                // The Percentage props can be tested with the string value "num%" -> "50%" 
+                                percentage={`${percentage}%`}
                                 borderRadius="1rem"
                                 height="1rem"
                             />
