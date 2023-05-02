@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import ProgressBarStyle from './StyledOnboardingProgressBar';
 
 
 const ProgressBar = ({
@@ -14,9 +15,10 @@ const ProgressBar = ({
 
     return (
         <>
-            <div style={{ backgroundColor: bgColor, width: bgWidth, height: height, borderRadius: borderRadius }} className={className}>
-                <div style={{ background: barColor, borderRadius: borderRadius, width: barWidth, height: height }}></div>
-            </div>
+            {/* style={{ background: barColor, borderRadius: borderRadius, width: barWidth, height: height }} */}
+            <ProgressBarStyle backgroundColor={bgColor} width={bgWidth} height={height} borderRadius={borderRadius} className={className}>
+                <ProgressBarStyle backgroundColor={barColor} width={barWidth} borderRadius={borderRadius} height={height}></ProgressBarStyle>
+            </ProgressBarStyle>
         </>
     )
 }
