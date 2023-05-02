@@ -15,7 +15,6 @@ const ProgressBar = ({
 
     return (
         <>
-            {/* style={{ background: barColor, borderRadius: borderRadius, width: percentage, height: height }} */}
             <ProgressBarStyle backgroundColor={bgColor} width={bgWidth} height={height} borderRadius={borderRadius} className={className}>
                 <ProgressBarStyle backgroundColor={barColor} width={percentage} borderRadius={borderRadius} height={height}></ProgressBarStyle>
             </ProgressBarStyle>
