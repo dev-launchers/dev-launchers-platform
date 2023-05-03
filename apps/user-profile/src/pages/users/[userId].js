@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const {userId} = context.params;
-
+  //
   // only numbers
   const numberRegex = /^\d+$/;
 
