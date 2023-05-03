@@ -51,6 +51,8 @@ export default function UserOnboardingModal({ isOpen }) {
                     title={"Create Devlanchers Login"} 
                     subtitle={"All set. Now let’s get started with the rest!"} 
                     completed={false}
+
+                    //
                 />
 
                     </ModalBody>

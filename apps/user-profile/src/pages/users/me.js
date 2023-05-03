@@ -12,7 +12,7 @@ import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
  */
 export default function UserProfilePage() {
   const { userData } = useUserDataContext();
-
+  //sd
   /**
    * @description Open modal when user has no username. 
    * More conditions will be applied when modal should be opened in the future.
