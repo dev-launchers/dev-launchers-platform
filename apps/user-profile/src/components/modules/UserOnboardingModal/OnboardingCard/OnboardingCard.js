@@ -19,8 +19,8 @@ export default function OnboardingCard({
             </PicWrapper>
 
             <TextWrapper>
-                    <Typography type="p" color="white">{title}</Typography>
-                    <Typography type="p" color="white">{subtitle}</Typography>
+                    <Typography type="label" color="white">{title}</Typography>
+                    <Typography type="pSmall" color="white">{subtitle}</Typography>
             </TextWrapper>
 
             <CheckedWrapper>

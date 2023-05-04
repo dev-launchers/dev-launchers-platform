@@ -78,16 +78,17 @@ export const Wrapper = styled.div`
 
 
 export const PicWrapper = styled.div`
-    display: flex;
+    ${'' /* display: flex; */}
     padding-left: 18px;
-    justify-content: center;
-    justify-items: center;
+    ${'' /* justify-content: center; */}
+    ${'' /* justify-items: center; */}
     column-gap: 40px;
 `;
 
 
 export const TextWrapper = styled.div`
-    margin-left: 20px;
+    ${'' /* margin-left: 20px; */}
+    padding: 10px 20px;
     width: 100%;
 `;
 
