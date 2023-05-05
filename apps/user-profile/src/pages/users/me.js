@@ -17,7 +17,7 @@ export default function UserProfilePage(props) {
 
 
   /**
-   * @description Open modal when user has no username. 
+   * @description Open modal when user is coming from the onbaording page. 
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
