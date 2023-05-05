@@ -41,7 +41,7 @@ export default function UserOnboardingModal({ isOpen }) {
                     </ModalHeader>
                     <ModalBody>
                         <Typography type="h2">Get Started with Devlaunchers</Typography>
-                        <Typography type="p">Please complete the following onboarding tasks</Typography>
+                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
                     
                     {/*<PlatformOnboarding/> (stepper) */}
@@ -49,10 +49,23 @@ export default function UserOnboardingModal({ isOpen }) {
                     <OnboardingCard 
                     iconImg={"Login"} 
                     title={"Create Devlanchers Login"} 
-                    subtitle={"All set. Now let’s get started with the rest!"} 
+                    subtitle={"All Set. Now Let’s Get Started With The Rest!"} 
+                    completed={true}
+                />
+                    <OnboardingCard 
+                    iconImg={"Onboarding"} 
+                    title={"Platform Onboarding"} 
+                    subtitle={"Devlaunchers Platform Tour"} 
                     completed={false}
                 />
-
+                
+                    <OnboardingCard 
+                    iconImg={"Zenhub"} 
+                    title={"Sign Up On Zenhub, Github, And Discord"} 
+                    subtitle={"Connect Your Account On These Platforms"} 
+                    completed={false}
+                />
+                    
                     </ModalBody>
                 </ModalContainer>
             </Modal>
