@@ -12,4 +12,5 @@ export interface SocialIconButtonProps {
     | 'whatsApp'
     | 'reddit';
   onClick: React.MouseEventHandler;
+  body: string;
 }

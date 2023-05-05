@@ -1,7 +1,7 @@
 const createShareUrl = (platform: string, ideaUrl: string) => {
   const pageTitle = document.title;
   const facebookShareUrl = 'https://www.facebook.com/sharer/sharer.php?u=';
-  const twitterShareUrl = 'https://twitter.com/intent/tweet?url=';
+  const twitterShareUrl = 'https://twitter.com/intent/tweet?text=';
   const mailShareUrl = `mailto:?&subject=${pageTitle}&cc=&bcc=&body=`;
   const linkedinShareUrl =
     'https://www.linkedin.com/shareArticle?mini=true&url=';
