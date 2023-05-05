@@ -93,19 +93,21 @@ export default function FilteringComponent({
             <Section>
               <SectionTitle>Filters</SectionTitle>
               <DropDownContainer>
-                <div id='projectType'>
+                {/*
+                  <div id="projectType">
                   <CheckboxDropdown
-                    title='Platform or Independent'
+                    title="Platform or Independent"
                     keyProperty={'name'}
                     items={EnumToArray(ProjectType)}
                     onChange={handlePlatformChange}
                     selectedItems={projectParams.projectType}
                   />
                 </div>
+                  */}
                 {opportunitiesLoaded && (
-                  <div id='positions'>
+                  <div id="positions">
                     <CheckboxDropdown
-                      title='Positions'
+                      title="Positions"
                       keyProperty={'title'}
                       items={opportunities}
                       onChange={handleOpportunityChange}
@@ -113,9 +115,9 @@ export default function FilteringComponent({
                     />
                   </div>
                 )}
-                <div id='level'>
+                <div id="level">
                   <CheckboxDropdown
-                    title='Level'
+                    title="Level"
                     keyProperty={'name'}
                     items={EnumToArray(SkillLevel)}
                     onChange={handleLevelChange}
@@ -141,29 +143,29 @@ export default function FilteringComponent({
 
           <CommitmentSection>
             <SectionTitle Mobile={true}>Time Commitment</SectionTitle>
-            <div id='sliderContainer'>
+            <div id="sliderContainer">
               <Slider
                 min={3}
                 max={10}
                 onChange={(value) =>
                   handleCommitmentChange({ min: 1, max: value })
                 }
-                prefix='hrs'
+                prefix="hrs"
                 initialValue={10}
               />
             </div>
           </CommitmentSection>
           <FilterMenuButton onClick={() => setVisible(true)}>
             <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill='none'
-              viewBox='0 0 24 24'
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
               strokeWidth={2}
             >
               <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4'
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
               />
             </svg>
             Filters
@@ -185,7 +187,7 @@ export default function FilteringComponent({
                 key={`position${index + 1}`}
               >
                 <p>{item}</p>
-                <button type='button'>x</button>
+                <button type="button">x</button>
               </ChipsListItem>
             ))}
           {projectParams.projectType &&
@@ -195,20 +197,20 @@ export default function FilteringComponent({
                 key={`platform${index + 1}`}
               >
                 <p>{item}</p>
-                <button type='button'>
+                <button type="button">
                   <svg
-                    xmlns='http://www.w3.org/2000/svg'
+                    xmlns="http://www.w3.org/2000/svg"
                     height={7}
                     width={7}
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                     strokeWidth={2}
                   >
                     <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M6 18L18 6M6 6l12 12'
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
                 </button>
@@ -221,7 +223,7 @@ export default function FilteringComponent({
                 key={`level${index + 1}`}
               >
                 <p>{item}</p>
-                <button type='button'>x</button>
+                <button type="button">x</button>
               </ChipsListItem>
             ))}
         </ChipsList>
