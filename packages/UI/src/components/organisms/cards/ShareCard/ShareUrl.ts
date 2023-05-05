@@ -1,4 +1,4 @@
-const createShareUrl = (platform: string, ideaUrl: string) => {
+const shareUrl = (platform: string, ideaUrl: string) => {
   const pageTitle = document.title;
   const facebookShareUrl = 'https://www.facebook.com/sharer/sharer.php?u=';
   const twitterShareUrl = 'https://twitter.com/intent/tweet?text=';
@@ -24,16 +24,6 @@ const createShareUrl = (platform: string, ideaUrl: string) => {
   }
 };
 
-const shareIdea = (platform: string, ideaUrl: string) => {
-  const shareUrl = createShareUrl(platform, ideaUrl);
-
-  if (platform === 'mail') {
-    window.location.assign(shareUrl!);
-  } else {
-    window.open(shareUrl, '', 'width=500,height=500');
-  }
-};
-
 const shareLink = (ideaUrl: string) => {
   navigator.clipboard.writeText(ideaUrl);
 };
@@ -42,4 +32,4 @@ const timeout = (delay: number) => {
   return new Promise((res) => setTimeout(res, delay));
 };
 
-export { shareIdea, shareLink, timeout };
+export { shareUrl, shareLink, timeout };

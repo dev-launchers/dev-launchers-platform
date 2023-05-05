@@ -4,7 +4,7 @@ import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
 import Link from '../../../../assets/icons/Link';
 import Checkmark from '../../../../assets/icons/Checkmark';
-import { shareIdea, shareLink, timeout } from './ShareUrl';
+import { shareUrl, shareLink, timeout } from './ShareUrl';
 import {
   Container,
   ShareLinkButton,
@@ -59,11 +59,14 @@ const ShareCard = ({ title }: ShareCardProps) => {
         padding="0px 0px 22px 0px"
       >
         {socialPlatforms.map((socialPlatform, index) => (
-          <SocialIconButton
-            onClick={() => shareIdea(socialPlatform, currentLocation)}
-            key={index}
-            type={socialPlatform}
-          />
+          // eslint-disable-next-line react/jsx-key
+          <a
+            href={shareUrl(socialPlatform, currentLocation)}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <SocialIconButton key={index} type={socialPlatform} />
+          </a>
         ))}
       </atoms.Box>
       <atoms.Box justifyContent="center">
