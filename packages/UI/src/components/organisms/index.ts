@@ -2,7 +2,6 @@ export { default as FormField } from './FormField';
 export { default as OpenResponse } from './OpenResponse';
 export { default as Footer } from './Footer';
 export { default as Navigation } from './Navigation';
-export { default as Header } from './Header';
 export { default as PositionCard } from './cards/PositionCard';
 export { default as ProductCardLarge } from './cards/ProductCardLarge';
 export { default as ProductCardLong } from './cards/ProductCardLong';
