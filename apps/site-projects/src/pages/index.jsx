@@ -32,20 +32,11 @@ export const getStaticProps = async () => {
   const returnProjects = filteredProjects.map(async (project) => {
     console.log(project);
     if (!project.attributes.isListed) {
-      project.attributes.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
+      project.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
     } else {
-      const { data: projectData } = await axios(
-        `${process.env.NEXT_PUBLIC_API_URL}/projects/${project.id}?populate=*`,
-        {
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "User-Agent":
-              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-          },
-        }
-      );
+      const projectsData = await agent.Projects.get(project.id)
 
-      project.attributes.heroImage = projectData.attributes.heroImage.data.attributes;
+      project.heroImage = projectsData.attributes.heroImage.data.attributes;
     }
 
     return project;
