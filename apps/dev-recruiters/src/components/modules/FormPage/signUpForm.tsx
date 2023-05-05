@@ -234,11 +234,6 @@ export default function SignUpForm() {
                 disabled={false}
                 required
               />
-              <atoms.Checkbox
-                label="I have read and agree to the Terms and Conditions."
-                disabled={false}
-                required
-              />
               <atoms.Box maxWidth="50%">
                 <atoms.Button
                   buttonSize="standard"
