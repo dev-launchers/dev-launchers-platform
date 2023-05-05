@@ -138,13 +138,6 @@ export default function SignUpForm() {
                 touched={touched['email']}
                 error={errors.email}
               />
-              <Field
-                as={organisms.FormField}
-                label="Your Discord Username"
-                placeholder="johnsmith#1234"
-                id="discordUsername"
-                name="discordUsername"
-              />
               <atoms.Box gap="32px" flexDirection="column">
                 <Field
                   as={organisms.FormField}
