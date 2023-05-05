@@ -40,7 +40,10 @@ export default function UserOnboarding() {
     }
 
     const handleContinueClick = (e) => {
-        router.push('/users/profiles')
+        router.push({
+            pathname:'/users/me',
+            query: { onboarding: true }
+        }, '/users/me');
         e.preventDefault()
     }
 
