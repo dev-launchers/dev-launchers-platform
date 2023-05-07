@@ -30,7 +30,6 @@ export const getStaticProps = async () => {
   // Need to request each project's individual endpoint to get missing data
   const filteredProjects = projects.filter((project) => project.attributes.isListed);
   const returnProjects = filteredProjects.map(async (project) => {
-    console.log(project);
     if (!project.attributes.isListed) {
       project.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
     } else {

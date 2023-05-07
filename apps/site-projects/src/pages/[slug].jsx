@@ -2,23 +2,16 @@ import axios from "axios";
 import Head from "next/head";
 import Project from "../components/modules/Projects/Project";
 import { env } from "../utils/EnvironmentVariables";
+import agent from "@devlaunchers/utility/agent"
 
 // const data = require("../components/modules/Projects/data.json");
 
 export const getStaticPaths = async () => {
-  const { data } = await axios(
-    `${env().STRAPI_URL}/projects?_publicationState=live`,
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-      },
-    }
-  );
+  
+  const data = await agent.Projects.list({populate: '*', _publicationState: 'live'});
 
   const paths = data.map((project) => ({
-    params: { slug: project.slug },
+    params: { slug: project.attributes.slug},
   }));
 
   return {
@@ -29,26 +22,18 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const { data: project } = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/projects/${slug}`,
-    {
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "User-Agent":
-          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-      },
-    }
-  );
+  console.log(slug);
+  const project = await agent.Projects.list({populate: '*', slug: slug})[0];
 
-  if (!project) {
-    return {
-      notFound: true,
-    };
-  }
+  // if (!project) {
+  //   return {
+  //     notFound: true,
+  //   };
+  // }
 
   return {
     props: {
-      project:project.data,
+      project:project,
     },
     revalidate: 20,
   };

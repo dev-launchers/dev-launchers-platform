@@ -30,7 +30,7 @@ const Projects = ({ projects }) => {
   }
 
   const items = searchValue ? searchResult : projects;
-
+console.log(items);
   return (
     <div
       style={{
@@ -56,22 +56,24 @@ const Projects = ({ projects }) => {
       Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!
       </div>
       <Layout>
-        {items.map((project, i) => (
+        {items.map((project, i) => {
+          const imageUrl = process.env.NODE_ENV == "development" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
+          return(
           <ProjectContainer key={i}>
             <Card
               isLinkingInside
               style={{ margin: 0, width: '100%', height: '100%' }}
               cardData={{
-                id: project.id,
-                title: project.title,
-                secondaryText: `Commitment level: ${project.commitmentLevel}`,
-                tags: project.interests?.map(({ interest }) => interest),
-                description: project.catchPhrase,
-                href: project.slug,
-                imageSrc: project?.heroImage?.url,
+                id: project.attributes.id,
+                title: project.attributes.title,
+                secondaryText: `Commitment level: ${project.attributes.commitmentLevel}`,
+                tags: project.attributes.interests?.map(({ interest }) => interest),
+                description: project.attributes.catchPhrase,
+                href: project.attributes.slug,
+                imageSrc: imageUrl,
                 actions: (
                   <>
-                    <Link href={`${router?.asPath}/${project.slug}`} passHref>
+                    <Link href={`${router?.asPath}/${project.attributes.slug}`} passHref>
                       <a>LEARN MORE</a>
                     </Link>
                     <Link href="support-us" passHref>
@@ -82,7 +84,8 @@ const Projects = ({ projects }) => {
               }}
             />
           </ProjectContainer>
-        ))}
+          )
+})}
       </Layout>
     </div>
   );
