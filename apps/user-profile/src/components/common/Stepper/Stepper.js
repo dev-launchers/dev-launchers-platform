@@ -93,7 +93,7 @@ export default function Stepper({ steps = stepsMockData }) {
 
   const [showButton, setShowButton] = useState(true);
 
-  const [isFill, setIsFill] = useState(false)
+  const [isFill, setIsFill] = useState(true)
 
   const buttonVisibilityHandler = (e) => {
     if (e.type == onanimationstart) {
