@@ -91,6 +91,23 @@ export default function Stepper({ steps = stepsMockData }) {
     stepsData[index].config.buttons
   );
 
+  const [showButton, setShowButton] = useState(true);
+
+  const [isFill, setIsFill] = useState(false)
+
+  const buttonVisibilityHandler = (e) => {
+    if (e.type == onanimationstart) {
+      setShowButton(false)
+    } else if (e.type == onanimationend) {
+      setShowButton(true);
+    }
+  };
+
+  // Given a data field is required when the data is not filled in then the next button will be disabled
+  const canClickNext = () => {
+    setIsFill(true)
+  }
+
   const backOnClickHandler = () => {
     if (buttonConfig?.back?.useDefaultOnClick) {
       if (index >= 1) {
@@ -135,7 +152,7 @@ export default function Stepper({ steps = stepsMockData }) {
     index === 0 ? (
       <div></div>
     ) : (
-      <Button onClick={backOnClickHandler}>
+      showButton && <Button onClick={backOnClickHandler} onAnimationStart={buttonVisibilityHandler}>
         {buttonConfig.back.label ? buttonConfig.back.label : 'Back'}
       </Button>
     );
@@ -153,9 +170,9 @@ export default function Stepper({ steps = stepsMockData }) {
 
       <StepperFooter>
         {backButton}
-        <Button onClick={nextOnClickHandler}>
+        {(showButton && isFill) && <Button onClick={nextOnClickHandler} onAnimationStart={buttonVisibilityHandler}>
           {buttonConfig.next.label ? buttonConfig.next.label : 'Next'}
-        </Button>
+        </Button>}
       </StepperFooter>
     </>
   );

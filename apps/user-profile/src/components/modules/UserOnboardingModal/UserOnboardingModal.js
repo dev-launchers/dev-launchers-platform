@@ -5,6 +5,9 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+// Remove afterward
+import Stepper from "../../common/Stepper/Stepper.js";
+// @/components/common/Stepper/Stepper.js
 
 Modal.setAppElement("#__next");
 
@@ -43,15 +46,16 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h2">Get Started with Devlaunchers</Typography>
                         <Typography type="p">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
-                    
-                    {/*<PlatformOnboarding/> (stepper) */}
-                    
-                    <OnboardingCard 
-                    iconImg={"Login"} 
-                    title={"Create Devlanchers Login"} 
-                    subtitle={"All set. Now let’s get started with the rest!"} 
-                    completed={false}
-                />
+
+                        {/*<PlatformOnboarding/> (stepper) */}
+                        <Stepper />
+
+                        <OnboardingCard
+                            iconImg={"Login"}
+                            title={"Create Devlanchers Login"}
+                            subtitle={"All set. Now let’s get started with the rest!"}
+                            completed={false}
+                        />
 
                     </ModalBody>
                 </ModalContainer>
