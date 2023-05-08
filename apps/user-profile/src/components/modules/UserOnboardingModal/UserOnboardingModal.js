@@ -16,11 +16,14 @@ Modal.setAppElement("#__next");
 export default function UserOnboardingModal({ isOpen }) {
     const [modalIsOpen, setModalIsOpen] = useState(true);
     const { userData } = useUserDataContext;
+    // The taskDone variable will contain every completed task in the task variable
+    const [taskDone, setTaskDone] = useState([])
+
+    const task = [userData?.hasDonePlatformOnboarding, userData?.hasDoneDiscordOnboarding, userData?.hasDoneThirdPartyOnboarding];
 
     let percentage = () => {
         // hasDone(task) has not yet been created but the implementation will be as follow
-        const task = [userData.hasDonePlatformOnboarding, userData.hasDoneDiscordOnboarding, userData.hasDoneThirdPartyOnboarding];
-        return (taskDone / task.length) * 100
+        return (taskDone.length / task.length) * 100
     }
 
     const openModal = () => {
@@ -57,7 +60,7 @@ export default function UserOnboardingModal({ isOpen }) {
                             </div>
 
                             <div className="completed">
-                                <Typography type="h2">1/4</Typography> {/* {progressComplete.length}/{progress.length} */}
+                                <Typography type="h2">{taskDone.length}/{task.length}</Typography> {/**/}
                             </div>
 
                             <div className="progress-bar-background">
