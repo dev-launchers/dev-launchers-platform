@@ -60,16 +60,13 @@ export default function UserOnboardingModal({ isOpen }) {
                                 <Typography type="h2">1/4</Typography> {/* {progressComplete.length}/{progress.length} */}
                             </div>
 
-                            <ProgressBar
-                                className="progress-bar"
-                                bgColor="#CBCBCB"
-                                barColor="linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%)"
-                                bgWidth="100%"
-                                // The Percentage props can be tested with the string value "num%" -> "50%" 
-                                percentage={`${percentage}%`}
-                                borderRadius="1rem"
-                                height="1rem"
-                            />
+                            <div className="progress-bar-background">
+                                <ProgressBar
+                                    className="progress-bar"
+                                    // The Percentage props can be tested with the string value "num%" -> "50%" 
+                                    percentage={`${percentage}%`}
+                                />
+                            </div>
 
                         </ModalBodyGrid>
                         {/* Onboarding Card Component */}

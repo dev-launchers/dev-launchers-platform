@@ -3,21 +3,11 @@ import { useState, useEffect } from "react";
 import ProgressBarStyle from './StyledOnboardingProgressBar';
 
 
-const ProgressBar = ({
-    bgColor,
-    className,
-    bgWidth,
-    percentage,
-    borderRadius,
-    height,
-    barColor,
-}) => {
+const ProgressBar = ({ percentage, className }) => {
 
     return (
         <>
-            <ProgressBarStyle backgroundColor={bgColor} width={bgWidth} height={height} borderRadius={borderRadius} className={className}>
-                <ProgressBarStyle backgroundColor={barColor} width={percentage} borderRadius={borderRadius} height={height}></ProgressBarStyle>
-            </ProgressBarStyle>
+            <ProgressBarStyle className={className} width={percentage}></ProgressBarStyle>
         </>
     )
 }

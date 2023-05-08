@@ -51,8 +51,16 @@ grid-template-areas:
   grid-area: complete;
  }
 
- .progress-bar { 
+ .progress-bar-background {
   grid-area: progress;
+  background-color: #CBCBCB;
+  border-radius: 1rem;
+  height: 1rem;
+}
+ .progress-bar { 
+  background: linear-gradient(90deg, #234C73 0%, rgba(192, 225, 235, 0.72) 135.29%);
+  border-radius: 1rem;
+  height: 1rem;
  }
 
 `
