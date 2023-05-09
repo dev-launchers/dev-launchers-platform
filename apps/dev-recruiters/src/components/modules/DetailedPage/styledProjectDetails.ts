@@ -49,8 +49,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: max-content;
-  min-height: 234px;
+  height: max-content;  
   background-color: ${({ theme }) => theme?.colors?.NEUTRAL_2};
   border-radius: 30px;
   flex: 1 1 600px;
