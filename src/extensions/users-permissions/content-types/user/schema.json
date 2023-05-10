@@ -140,6 +140,14 @@
         "other"
       ],
       "default": "other"
+    },
+    "experience": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid-level",
+        "senior"
+      ]
     }
   }
 }
