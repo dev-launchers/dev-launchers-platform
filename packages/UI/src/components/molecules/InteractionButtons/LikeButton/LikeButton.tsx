@@ -5,49 +5,9 @@ import { InteractionButton } from '../StyledCommonComponents';
 import type { LikeButtonProps } from '.';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-
-const LikeButton = ({ text, filled, disabled }: LikeButtonProps) => {
-  const { userData, isAuthenticated } = useUserDataContext();
-
-  const handleSubmit = (e) => {
-    console.log("making a request")
-    // console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/likes`)
-
-    // console.log("User data: " + userData)
-    // var data = { author: userData.username, text: props.handleTextChange };
-
-    // const submitResponse = axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/likes`, { withCredentials: true  }).then((response) => {
-    //   // we can process the response here... we'll need to filter using the id of the
-    //   // current object, and the type of the current object (e.g. Comment or Idea)
-    //   // response will be a list of like objects
-
-    //   // TODO: get the number of likes (length of response) and display that next to the filled-in heart icon on the button
-    //   // numLikes = len()
-      
-      
-    //   console.log(response)
-      
-    //   // const getLikes = response.data.map((item) => {
-    //   //   return {
-    //   //     ...item,
-    //   //     mostRecentCommentNumLikes: item[0],
-    //   //   };
-    //   // });
-
-
-    // }).catch((e) => console.log("ERROR" + e));
-  }
-
+const LikeButton = ({ text, filled, disabled, ...props }: LikeButtonProps) => {
   return (
-    <InteractionButton disabled={disabled} onClick={() => handleSubmit()}>
-
-
-{/* const LikeButton = ({ text, filled, disabled, onClick }: LikeButtonProps) => { // pass in a string, 2 booleans, and an onClick method
-  const { userData, isAuthenticated } = useUserDataContext();
-
-  return (
-    <InteractionButton disabled={disabled} onClick={onClick}> */}
-
+    <InteractionButton disabled={disabled} {...props}>
       <Box gap="8px" justifyContent="center" alignItems="center">
         <Like
           fill={filled ? (disabled ? '#474747' : 'black') : ''}

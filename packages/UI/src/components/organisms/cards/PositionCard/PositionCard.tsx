@@ -34,11 +34,11 @@ const MinimalPositionCard = ({
       <Thumbnail minimal>
         <Box flexDirection="column" gap="8px" width="max-content">
           <Typography type="h3">{content.title}</Typography>
-          <Typography type="h5">{content.level}</Typography>
+          <Typography type="subtitle">{content.level}</Typography>
           <hr />
         </Box>
         <Box flexDirection="column" gap="8px" width="fit-content">
-          <Typography type="h5">time committment</Typography>
+          <Typography type="subtitle">time committment</Typography>
           <Typography type="pSmall">{content.timeCommittment}</Typography>
         </Box>
       </Thumbnail>
@@ -92,11 +92,11 @@ const PositionCard = ({
         <Thumbnail imgUrl={content.imgUrl}>
           <Box flexDirection="column" gap="8px" width="max-content">
             <Typography type="h3">{content.title}</Typography>
-            <Typography type="h5">{content.level}</Typography>
+            <Typography type="subtitle">{content.level}</Typography>
             <hr />
           </Box>
           <Box flexDirection="column" gap="8px" width="fit-content">
-            <Typography type="h5">time committment</Typography>
+            <Typography type="subtitle">time committment</Typography>
             <Typography type="pSmall">{content.timeCommittment}</Typography>
           </Box>
           {interaction && (
@@ -132,16 +132,16 @@ const PositionCard = ({
           />
         </div>
         <div>
-          <TagsContainer list={content.tags} />
+          <TagsContainer title="Position Tags" list={content.tags} />
         </div>
       </Header>
       <ExpandableBlurb>
         {expanded ? (
           <Details>
             <Box flexDirection="column" gap="16px">
-              <Typography type="h5">why should you join?</Typography>
+              <Typography type="subtitle">why should you join?</Typography>
               <ul css={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el1, i1) => (
+                {content.benifits.map((el1, i1) => (
                   <Typography type="p" key={i1}>
                     <li>{el1}</li>
                   </Typography>
@@ -149,7 +149,7 @@ const PositionCard = ({
               </ul>
             </Box>
             <Box flexDirection="column" gap="16px">
-              <Typography type="h5">expectations</Typography>
+              <Typography type="subtitle">expectations</Typography>
               <ul css={{ listStylePosition: 'inside' }}>
                 {content.expectations.map((el2, i2) => (
                   <Typography type="p" key={i2}>

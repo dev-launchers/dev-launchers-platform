@@ -38,6 +38,7 @@ const nextConfig = {
       'lh3.googleusercontent.com',
     ],
     disableStaticImages: true,
+    unoptimized: false
   },
   webpack: (
     config,
