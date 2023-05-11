@@ -207,7 +207,7 @@ function EditIdea() {
             buttonType="confirm"
             clickHandler={backHandler}
           />
-          <atoms.Typography type='h4' >
+          <atoms.Typography type='h4'>
             Have an idea for a development project?<br />
             Share your idea with us!
           </atoms.Typography>

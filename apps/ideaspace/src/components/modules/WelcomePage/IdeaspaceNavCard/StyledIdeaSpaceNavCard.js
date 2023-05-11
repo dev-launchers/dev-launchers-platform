@@ -9,14 +9,14 @@ export const CardBackground = styled.div`
   max-width: 23.5rem;
   flex-direction: column;
   justify-content: space-between;
-  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   border: 0 none;
   border-radius: 30px;
   cursor: pointer;
   padding: 2rem;
   font-size: 2rem;
   font-family: 'Abel';
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   font-color: 'white';
 `;
 

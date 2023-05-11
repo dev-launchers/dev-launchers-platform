@@ -13,7 +13,7 @@ body {
   font-family: sans-serif;
   font-family: "Nunito", sans-serif;
   font-weight: lighter;
-  color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   background-color: #f0edee;
 }
 
@@ -38,7 +38,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
   font-family: "Nunito Sans", sans-serif;
   font-weight: lighter;
-  /* color: ${({ theme }) => theme.colors.NEUTRAL_1}; */
+  /* color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK}; */
   background-color:#f0edee;
 }
 
@@ -80,10 +80,10 @@ p {
 a {
   width: auto;
   display: inline;
-  color: ${({ theme }) => theme.colors.ACCENT_3};
+  color: ${({ theme }) => theme.colors.BLUE};
   text-decoration: none;
   &:hover {
-    color: ${({ theme }) => theme.colors.ACCENT_4};
+    color: ${({ theme }) => theme.colors.LIGHT_BLUE};
   }
 }
 h1,
@@ -104,10 +104,10 @@ h1 {
 
   width: fit-content;
   padding: 1rem;
-  // background-color:${({ theme }) => theme.colors.NEUTRAL_1};
-  // color:${({ theme }) => theme.colors.NEUTRAL_2};
+  // background-color:${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+  // color:${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
 
-  /* border-bottom: .3rem solid ${({ theme }) => theme.colors.NEUTRAL_1}; */
+  /* border-bottom: .3rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK}; */
 }
 
 h2 {
@@ -236,16 +236,16 @@ li {
  font-family: ${({ theme }) => theme.fonts.headline};
  border-radius:0;
  font-size:3rem;
- border:.3rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
- background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
- color: ${({ theme }) => theme.colors.NEUTRAL_2};
+ border:.3rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+ background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+ color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
  margin-right:.5rem;
 }
 
 .react-tabs__tab--selected {
   // your custom style goes here
-  border-color:${({ theme }) => theme.colors.NEUTRAL_1};
-  color:${({ theme }) => theme.colors.NEUTRAL_1};
+  border-color:${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+  color:${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   background-color:transparent;
   border-bottom:none;
 }
