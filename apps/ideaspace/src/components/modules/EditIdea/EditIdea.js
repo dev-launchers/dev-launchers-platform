@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Error from "next/error";
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
@@ -73,6 +74,7 @@ function EditIdea() {
     status: '',
   });
 
+  const [getError, setGetError] = React.useState(false);
   React.useEffect(() => {
     const rejectUser = async () => {
       if (!(await confirmNotAuthor())) {
@@ -103,6 +105,10 @@ function EditIdea() {
             }
 
           }
+        })
+        .catch(error => {
+          console.log(error);
+          setGetError(true);
         })
     }
   }, [ideaId, userData.id]);
@@ -186,47 +192,51 @@ function EditIdea() {
     }
   }
 
-  return (
-    <>
-      <HeadWapper>
-        <Headline>Dev Ideas</Headline>
-        <StyledRanbow>
-          <atoms.Layer hasRainbowBottom />
-        </StyledRanbow>
-        <BackButton
-          buttonType="confirm"
-          clickHandler={backHandler}
-        />
-        <atoms.Typography type='h4' >
-          Have an idea for a development project?<br />
-          Share your idea with us!
-        </atoms.Typography>
-      </HeadWapper>
+  if (getError) {
+    return <Error statusCode={404} title="page Not Found" />
+  } else {
 
-      {!isAuthenticated ? (
-        <SignInSection
-          label='Please sign in to edit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
-        />
-      ) : (
-        <>
-          <Dialog />
-          <UpdateSucceed /><UpdateFailure />
-          <NotAuthor /><ArchivedIdea />
-          <IdeaForm
-            initialValues={card}
-            SignupSchema={SignupSchema}
-            submitHandler={submitHandler}
-            unsavedHandler={setunsavedChanges}
-            formButton="save"
-            sending={sending}
+    return (
+      <>
+        <HeadWapper>
+          <Headline>Dev Ideas</Headline>
+          <StyledRanbow>
+            <atoms.Layer hasRainbowBottom />
+          </StyledRanbow>
+          <BackButton
+            buttonType="confirm"
             clickHandler={backHandler}
           />
-        </>
-      )}
-    </>
-  );
+          <atoms.Typography type='h4'>
+            Have an idea for a development project?<br />
+            Share your idea with us!
+          </atoms.Typography>
+        </HeadWapper>
 
+        {!isAuthenticated ? (
+          <SignInSection
+            label='Please sign in to edit your idea!'
+            redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+          />
+        ) : (
+          <>
+            <Dialog />
+            <UpdateSucceed /><UpdateFailure />
+            <NotAuthor /><ArchivedIdea />
+            <IdeaForm
+              initialValues={card}
+              SignupSchema={SignupSchema}
+              submitHandler={submitHandler}
+              unsavedHandler={setunsavedChanges}
+              formButton="save"
+              sending={sending}
+              clickHandler={backHandler}
+            />
+          </>
+        )}
+      </>
+    );
+  }
 }
 
 export default EditIdea;
