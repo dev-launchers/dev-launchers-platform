@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
 import { useRouter } from 'next/router';
 import CommentList from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
@@ -17,12 +18,15 @@ import {
 
 import { useFetchIdea } from './useFetchIdea';
 
-function WorkshoppingPage() {
-  const router = useRouter()
-  const { ideaId } = router.query;
-  const [handleChange, setHandleChange] = useState('');
-  const [handleTextChange, setHandleTextChange] = useState('');
+export default function WorkshoppingPage(props) {
+  const { ideaId } = props;
+  console.log(ideaId);
+  const [handleChange, setHandleChange] = React.useState(null);
+  const [handleTextChange, setHandleTextChange] = React.useState([]);
   const { data, loading } = useFetchIdea(ideaId);
+
+  console.log("number of comments =", data.comments);
+  console.log("data =", data);
 
   return (
     <Container theme={theme}>
@@ -41,7 +45,7 @@ function WorkshoppingPage() {
 
           <Comments>
             {/* a count of the comments in the comment feed: */}
-            {/* <h6>Comment Feed: {data.comments.length}</h6> */}
+            <h6>Comment Feed: {data.comments.length}</h6>
             <CommentList selectedCard={data} />
           </Comments>
         </Wrapper>
@@ -50,4 +54,4 @@ function WorkshoppingPage() {
   );
 }
 
-export default WorkshoppingPage;
+// export default WorkshoppingPage;
