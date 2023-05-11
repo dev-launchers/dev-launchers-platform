@@ -4,8 +4,10 @@ import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
+import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import BackButton from '../../molecules/BackButton';
+import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
@@ -13,7 +15,9 @@ import type { NavigationProps } from '.';
 const MobileNavigation = ({
   user,
   links,
-}: NavigationProps & { links: { [key: string]: string } }) => {
+}: NavigationProps & {
+  links: { [key: string]: string | { text: string; href: string }[] };
+}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -70,19 +74,23 @@ const MobileNavigation = ({
             </Box>
             <ul>
               <Box gap={'40px'} flexDirection="column" alignItems="center">
-                {Object.entries(links).map(([name, href], i) => (
-                  <li key={i}>
-                    <Link href={href} passHref>
-                      <Button
-                        as="a"
-                        buttonType="alternative"
-                        buttonSize="standard"
-                      >
-                        {name}
-                      </Button>
-                    </Link>
-                  </li>
-                ))}
+                {Object.entries(links).map(([name, href], i) => {
+                  if (Array.isArray(href))
+                    return <NavDropdown title={name} links={href} />;
+                  return (
+                    <li key={i}>
+                      <Link href={href} passHref>
+                        <Button
+                          as={NavLink}
+                          buttonType="alternative"
+                          buttonSize="standard"
+                        >
+                          {name}
+                        </Button>
+                      </Link>
+                    </li>
+                  );
+                })}
               </Box>
             </ul>
             <Box

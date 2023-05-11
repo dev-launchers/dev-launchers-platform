@@ -5,7 +5,6 @@ import { atoms } from '@devlaunchers/components/src/components';
 import {
   ImgButton,
   StatuBox,
-  IdeaCardButton,
 } from './StyledIdeaCard';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
@@ -70,39 +69,48 @@ function IdeaCard({ cards, cardType }) {
 
       <IdeaCardImg
         cardId={cards.id}
+        cardImg={cards.imgSrc}
       />
 
-      <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-        margin='0rem 2rem 1.5rem' style={{ maxWidth: '18.5rem' }}>
+      <Link href={{ pathname: urlPath }}>
+        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
+          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }}>
 
-        <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
-          {cards.ideaName}
-        </atoms.Typography>
+          <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
+            {cards.ideaName}
+          </atoms.Typography>
 
-        <IdeaCardComment
-          commentLength={cards.comments.length}
-        />
+          <IdeaCardComment
+            commentLength={cards.comments.length}
+          />
 
-        <IdeaCardUpdated
-          updatedAt={cards.updated_at}
-        />
+          <IdeaCardUpdated
+            updatedAt={cards.updated_at}
+          />
+        </atoms.Box>
+      </Link>
 
-        {tagContent == "archived" ? (
-          <IdeaCardButton
-            onClick={reactivateIdea}
+      {tagContent == "archived" ? (
+        <atoms.Button
+          buttonSize='standard'
+          buttonType='alternative'
+          style={{ margin: '0rem 2rem 1.5rem' }}
+          onClick={reactivateIdea}
+        >
+          {buttonContent}
+        </atoms.Button>
+      ) : (
+        <Link href={{ pathname: urlPath }}>
+          <atoms.Button
+            buttonSize='standard'
+            buttonType='alternative'
+            style={{ margin: '0rem 2rem 1.5rem' }}
           >
             {buttonContent}
-          </IdeaCardButton>
-        ) : (
-          <Link href={{ pathname: urlPath }}>
-            <IdeaCardButton>
-              {buttonContent}
-            </IdeaCardButton>
-          </Link>
-        )}
-        <UpdateFailure />
-
-      </atoms.Box>
+          </atoms.Button>
+        </Link>
+      )}
+      <UpdateFailure />
 
     </atoms.Box>
   )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import Error from "next/error";
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
@@ -22,7 +23,7 @@ function EditIdea() {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
+      setUserData({ ...userData, id: 30 });
     }, []);
   }
 
@@ -73,6 +74,7 @@ function EditIdea() {
     status: '',
   });
 
+  const [getError, setGetError] = React.useState(false);
   React.useEffect(() => {
     const rejectUser = async () => {
       if (!(await confirmNotAuthor())) {
@@ -104,17 +106,29 @@ function EditIdea() {
 
           }
         })
+        .catch(error => {
+          console.log(error);
+          setGetError(true);
+        })
     }
   }, [ideaId, userData.id]);
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().required('Idea Name is Required.'),
-    description: Yup.string().required('Idea Description is Required.'),
-    experience: Yup.string().required('Experience is Required.'),
-    features: Yup.string().required('Idea Feature is Required.'),
+    ideaName: Yup.string().trim().required('Idea Name is Required.'),
+    description: Yup.string().trim().required('Idea Description is Required.'),
+    experience: Yup.string().trim().required('Experience is Required.'),
+    features: Yup.string().trim().required('Idea Feature is Required.'),
+    involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
   const submitHandler = async (values) => {
+    values['ideaName'] = values['ideaName'].trim();
+    values['tagline'] = values['tagline'].trim();
+    values['description'] = values['description'].trim();
+    values['targetAudience'] = values['targetAudience'].trim();
+    values['features'] = values['features'].trim();
+    values['experience'] = values['experience'].trim();
+    values['extraInfo'] = values['extraInfo'].trim();
     setSending(true);
 
     try {
@@ -178,47 +192,51 @@ function EditIdea() {
     }
   }
 
-  return (
-    <>
-      <HeadWapper>
-        <Headline>Dev Ideas</Headline>
-        <StyledRanbow>
-          <atoms.Layer hasRainbowBottom />
-        </StyledRanbow>
-        <BackButton
-          buttonType="confirm"
-          clickHandler={backHandler}
-        />
-        <atoms.Typography type='h4' >
-          Have an idea for a development project?<br />
-          Share your idea with us!
-        </atoms.Typography>
-      </HeadWapper>
+  if (getError) {
+    return <Error statusCode={404} title="page Not Found" />
+  } else {
 
-      {!isAuthenticated ? (
-        <SignInSection
-          label='Please sign in to edit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
-        />
-      ) : (
-        <>
-          <Dialog />
-          <UpdateSucceed /><UpdateFailure />
-          <NotAuthor /><ArchivedIdea />
-          <IdeaForm
-            initialValues={card}
-            SignupSchema={SignupSchema}
-            submitHandler={submitHandler}
-            unsavedHandler={setunsavedChanges}
-            formButton="save"
-            sending={sending}
+    return (
+      <>
+        <HeadWapper>
+          <Headline>Dev Ideas</Headline>
+          <StyledRanbow>
+            <atoms.Layer hasRainbowBottom />
+          </StyledRanbow>
+          <BackButton
+            buttonType="confirm"
             clickHandler={backHandler}
           />
-        </>
-      )}
-    </>
-  );
+          <atoms.Typography type='h4' >
+            Have an idea for a development project?<br />
+            Share your idea with us!
+          </atoms.Typography>
+        </HeadWapper>
 
+        {!isAuthenticated ? (
+          <SignInSection
+            label='Please sign in to edit your idea!'
+            redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+          />
+        ) : (
+          <>
+            <Dialog />
+            <UpdateSucceed /><UpdateFailure />
+            <NotAuthor /><ArchivedIdea />
+            <IdeaForm
+              initialValues={card}
+              SignupSchema={SignupSchema}
+              submitHandler={submitHandler}
+              unsavedHandler={setunsavedChanges}
+              formButton="save"
+              sending={sending}
+              clickHandler={backHandler}
+            />
+          </>
+        )}
+      </>
+    );
+  }
 }
 
 export default EditIdea;

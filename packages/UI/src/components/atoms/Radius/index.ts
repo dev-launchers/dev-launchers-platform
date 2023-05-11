@@ -1,4 +1,4 @@
-export { default } from './Radius';
+export { radiusStyles } from './StyledRadius';
 
 export interface RadiusProps {
   radius100: string;
