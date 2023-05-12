@@ -1,5 +1,5 @@
 import SocialIconButton from '../../../molecules/SocialIconButton';
-import React, { useContext , useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import type { ShareCardProps } from '.';
 import Link from '../../../../assets/icons/Link';
@@ -16,7 +16,7 @@ import {
   ShareLinkBox,
 } from './StyledShareCard';
 
-const ShareCard = ({ title }: ShareCardProps) => {
+const ShareCard = ({ title, body }: ShareCardProps) => {
   const [show, setShow] = useState(false);
   const [tooltipMessage, setTooltipMessage] = useState('Click to Copy');
   const handleTooltipMessage = async () => {
@@ -30,12 +30,12 @@ const ShareCard = ({ title }: ShareCardProps) => {
   const currentLocation = window.location.href;
 
   const socialPlatforms = [
-    'twitter',
-    'facebook',
-    'mail',
-    'linkedin',
-    'whatsApp',
-    'reddit',
+    { title: 'twitter', content: body },
+    { title: 'facebook', content: '' },
+    { title: 'mail', content: body },
+    { title: 'linkedin', content: '' },
+    { title: 'whatsApp', content: body },
+    { title: 'reddit', content: '' },
   ] as const;
 
   return (
@@ -58,16 +58,35 @@ const ShareCard = ({ title }: ShareCardProps) => {
         gap="5px"
         padding="0px 0px 22px 0px"
       >
-        {socialPlatforms.map((socialPlatform, index) => (
-          // eslint-disable-next-line react/jsx-key
-          <a
-            href={shareUrl(socialPlatform, currentLocation)}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <SocialIconButton key={index} type={socialPlatform} />
-          </a>
-        ))}
+        {socialPlatforms.map((socialPlatform, index) => {
+          if (socialPlatform?.content) {
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <a
+                href={shareUrl(
+                  socialPlatform.title,
+                  currentLocation,
+                  socialPlatform?.content
+                )}
+                target="_blank"
+                rel="noreferrer"
+                key={index}
+              >
+                <SocialIconButton key={index} type={socialPlatform.title} />
+              </a>
+            );
+          }
+          return (
+            <a
+              href={shareUrl(socialPlatform.title, currentLocation)}
+              target="_blank"
+              rel="noreferrer"
+              key={index}
+            >
+              <SocialIconButton key={index} type={socialPlatform.title} />
+            </a>
+          );
+        })}
       </atoms.Box>
       <atoms.Box justifyContent="center">
         <atoms.Box flexDirection="column" gap="5px">

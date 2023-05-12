@@ -1,4 +1,4 @@
-const shareUrl = (platform: string, ideaUrl: string) => {
+const shareUrl = (platform: string, ideaUrl: string, content?: string) => {
   const pageTitle = document.title;
   const facebookShareUrl = 'https://www.facebook.com/sharer/sharer.php?u=';
   const twitterShareUrl = 'https://twitter.com/intent/tweet?text=';
@@ -9,16 +9,16 @@ const shareUrl = (platform: string, ideaUrl: string) => {
   const redditShareUrl = `https://www.reddit.com/submit?title=${pageTitle}&url=`;
 
   switch (platform) {
-    case 'twitter':
-      return `${twitterShareUrl}${ideaUrl}`;
     case 'facebook':
       return `${facebookShareUrl}${ideaUrl}`;
+    case 'twitter':
+      return `${twitterShareUrl}${content} ${ideaUrl}`;
     case 'mail':
-      return `${mailShareUrl}${ideaUrl}`;
+      return `${mailShareUrl}${content} ${ideaUrl}`;
     case 'linkedin':
       return `${linkedinShareUrl}${ideaUrl}`;
     case 'whatsApp':
-      return `${whatsAppShareUrl}${ideaUrl}`;
+      return `${whatsAppShareUrl}${content} ${ideaUrl}`;
     case 'reddit':
       return `${redditShareUrl}${ideaUrl}`;
   }
