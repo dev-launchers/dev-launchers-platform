@@ -6,3 +6,6 @@ export { default as PositionCard } from './cards/PositionCard';
 export { default as ProductCardLarge } from './cards/ProductCardLarge';
 export { default as ProductCardLong } from './cards/ProductCardLong';
 export { default as UserCard } from './cards/UserCard';
+export { TagsContainer } from './cards/StyledCommonComponents';
+export { CardDescription } from './cards/StyledCommonComponents';
+export { ExpandableBlurb } from './cards/StyledCommonComponents';
