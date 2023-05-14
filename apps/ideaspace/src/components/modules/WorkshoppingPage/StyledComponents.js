@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   box-sizing: border-box;
   padding: 25px;
   min-height: 100%;
