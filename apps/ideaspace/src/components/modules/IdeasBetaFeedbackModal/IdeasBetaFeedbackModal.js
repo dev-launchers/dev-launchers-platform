@@ -41,10 +41,10 @@ const IdeasBetaFeedbackModal = () => {
     localStorage.setItem('dl_Ideas_isVisited', true);
   }
 
-  useEffect(() => {
+  /*useEffect(() => {
     const isVisited = localStorage.dl_Ideas_isVisited || false;
     if (!isVisited) openModal();
-  });
+  });*/
 
   function openModal() {
     setShowModal(true);
