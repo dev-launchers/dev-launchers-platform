@@ -38,7 +38,7 @@ export const Input = styled.input`
       top: 0;
       left: 0;
       border-radius: 8px;
-      box-shadow: 1px 1px 4px #7f7e7f;
+      box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
     }
   }
 

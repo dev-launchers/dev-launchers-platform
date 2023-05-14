@@ -4,6 +4,7 @@ import { IdeaOwnerCard } from "./IdeaOwnerCard/IdeaOwnerCard";
 import { TagsCard } from "./TagsCard/TagsCard";
 import { IdeaFeaturesCard } from "./IdeaFeaturesCard/IdeaFeaturesCard";
 import { TargetAudieneCard } from "./TargetAudienceCard/TargetAudienceCard";
+import IdeaSettingsCard from "./IdeaSettingsCard/IdeaSettingsCard";
 import {
   Wrapper,
   TopView,
@@ -13,6 +14,7 @@ import {
 } from './StyledComponents';
 
 export const IdeaOverview = ({ selectedCard }) => {
+
   if (selectedCard.ideaName === "") return null;
   
   return (
@@ -35,6 +37,7 @@ export const IdeaOverview = ({ selectedCard }) => {
           <IdeaFeaturesCard ideaFeature={selectedCard.features}/>
           <TargetAudieneCard targetAudience={selectedCard.targetAudience}/>
         </BottomView>
+        <IdeaSettingsCard card={selectedCard} />
       </RightWrapper>
     </Wrapper>
   );

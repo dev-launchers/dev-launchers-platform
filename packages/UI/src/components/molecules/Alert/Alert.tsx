@@ -4,7 +4,7 @@ import Typography from '../../atoms/Typography';
 import { Container } from './StyledAlert';
 import type { AlertProps } from '.';
 
-const Alert: React.FC<AlertProps> = ({
+const Alert: React.FC<React.PropsWithChildren<AlertProps>> = ({
   signal = 'notify',
   children,
   ...rest
@@ -20,7 +20,7 @@ const Alert: React.FC<AlertProps> = ({
       ) : (
         <></>
       )}
-      <Typography style={{ flex: 1 }}>{children}</Typography>
+      <Typography css={{ flex: 1 }}>{children}</Typography>
       <Icons.Close />
     </Container>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { ChangeEvent } from 'react';
+import { Layer, radiusStyles } from '../../atoms';
 import Checkbox from '../../atoms/Checkbox';
 import Radio from '../../atoms/Radio';
 import Typography from '../../atoms/Typography';
@@ -68,25 +69,27 @@ const Dropdown = ({
         <Chevron isOpen={menuOpen} />
       </Toggle>
       <OptionsContainer isOpen={menuOpen}>
-        <Options>
-          {options.map(({ text, disabled }, i) => {
-            return type === 'checkbox' ? (
-              <Checkbox
-                key={i}
-                label={text}
-                onChange={onChange}
-                disabled={disabled}
-              />
-            ) : (
-              <Radio
-                key={i}
-                label={text}
-                onChange={onChange}
-                disabled={disabled}
-              />
-            );
-          })}
-        </Options>
+        <Layer type="light" css={radiusStyles['radius200']}>
+          <Options>
+            {options.map(({ text, disabled }, i) => {
+              return type === 'checkbox' ? (
+                <Checkbox
+                  key={i}
+                  label={text}
+                  onChange={onChange}
+                  disabled={disabled}
+                />
+              ) : (
+                <Radio
+                  key={i}
+                  label={text}
+                  onChange={onChange}
+                  disabled={disabled}
+                />
+              );
+            })}
+          </Options>
+        </Layer>
       </OptionsContainer>
     </DropdownContainer>
   );
