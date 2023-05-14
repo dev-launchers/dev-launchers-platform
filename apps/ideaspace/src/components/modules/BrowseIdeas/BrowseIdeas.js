@@ -17,6 +17,7 @@ import {
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
+  const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
   const sortingConfigs = [
@@ -82,9 +83,28 @@ function BrowseIdeas() {
         });
 
         setLoading(false);
-        setCards(getCards);
+        setSourceCards(getCards);
       });
   }, []);
+
+  React.useEffect(() => {
+    setCards(sourceCards.filter((item) => item?.status !== "archived"));
+    if (defaultShownCardNum >= sourceCards.length) {
+      setButtonDisplay({ display: 'none' });
+    } else {
+      setButtonDisplay({ display: '' });
+    }
+  }, [sourceCards]);
+
+  const defaultShownCardNum = 30;
+  const [buttonDisplay, setButtonDisplay] = React.useState();
+  const [displayCardAmount, setDisplayCardAmount] = React.useState(defaultShownCardNum);
+  const loadMore = () => {
+    setDisplayCardAmount(displayCardAmount + defaultShownCardNum);
+    if ((displayCardAmount + defaultShownCardNum) >= cards.length) {
+      setButtonDisplay({ display: 'none' });
+    }
+  }
 
   return (
     <>
@@ -95,7 +115,7 @@ function BrowseIdeas() {
         </StyledRanbow>
         <BackButton />
         <atoms.Typography type='h4' >
-          Want to help developing an idea?<br />
+          Want to help develop an idea?<br />
           <atoms.Typography type='p' style={{ fontSize: '1.3rem' }}> Check out these ideas submitted by other Dev Launchers!</atoms.Typography>
         </atoms.Typography>
       </HeadWapper>
@@ -136,7 +156,7 @@ function BrowseIdeas() {
           </FilterDiv>
 
             <IdeaCardWrapper>
-              {cards.map((item) => {
+              {cards.slice(0, displayCardAmount).map((item) => {
                 return (
                   <IdeaCard
                     key={item.id}
@@ -146,6 +166,15 @@ function BrowseIdeas() {
                 );
               })}
             </IdeaCardWrapper>
+
+            <atoms.Button
+              buttonSize='standard'
+              buttonType='primary'
+              onClick={loadMore}
+              style={buttonDisplay}
+            >
+              load more
+            </atoms.Button>
           </div>
         )}
       </PageWrapper>

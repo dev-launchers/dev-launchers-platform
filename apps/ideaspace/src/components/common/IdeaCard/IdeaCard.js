@@ -69,6 +69,7 @@ function IdeaCard({ cards, cardType }) {
 
       <IdeaCardImg
         cardId={cards.id}
+        cardImg={cards.imgSrc}
       />
 
       <Link href={{ pathname: urlPath }}>
