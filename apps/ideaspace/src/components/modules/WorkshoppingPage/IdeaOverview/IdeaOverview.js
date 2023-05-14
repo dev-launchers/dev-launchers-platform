@@ -14,7 +14,7 @@ import {
 export const IdeaOverview = ({ selectedCard }) => {
 
   if (selectedCard.ideaName === "") return null;
-
+  
   return (
     <Wrapper>
       <LeftWrapper>
@@ -26,8 +26,8 @@ export const IdeaOverview = ({ selectedCard }) => {
 
       <RightWrapper>
         <TopView>
-          <IdeaOwnerCard IdeaOwnerName={selectedCard.author.username} ideaOwnerImage={selectedCard.id}/>
-          <TagsCard />
+          <IdeaOwnerCard IdeaOwnerName={selectedCard.ideaOwner} ideaOwnerImage={selectedCard.id}/>
+          <TagsCard status={selectedCard.difficultyLevel} />
         </TopView>
         <IdeaContentCard title={"Idea features"} content={selectedCard.features}/>
         <IdeaContentCard title={"Idea target Audience"} content={selectedCard.targetAudience}/>

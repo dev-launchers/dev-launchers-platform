@@ -21,6 +21,8 @@ export const useFetchIdea = (ideaId) => {
     created_at: '',
     comments: [],
     author: {},
+    difficultyLevel: '',
+    ideaOwner: '',
   });
   const [sourceData, setSourceData] = useState({
     ideaName: '',
