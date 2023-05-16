@@ -10,7 +10,7 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '16.x'
     - run: npm install
     # TODO: Enable linter
     # - run: npx eslint .
