@@ -14,7 +14,7 @@ export const getProjectsSlugs = async () => {
   // const res = await agent.Projects.list();
 
   const result: Project[] = await res.json();
-  let projects = result.data?.filter((p) => p.attributes.opportunities.data?.length > 0);
+  let projects = result?.data?.filter((p) => p.attributes.opportunities?.data?.length > 0);
   projects = projects.map(projects => projects.attributes);	// Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
@@ -51,11 +51,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   project = {
     ...project, 
     team: {
-      leaders: project.team ? project.team?.leaders?.map(leader => leader.leader.data.attributes) : ``,
-      members: project.team ? project.team?.members?.map(member => member.member.data.attributes) : ``
+      leaders: project.team ? project.team?.leaders?.map(leader => leader.leader?.data.attributes) : ``,
+      members: project.team ? project.team?.members?.map(member => member.member?.data.attributes) : ``
     },
-    interests: project.interests.data.map(interest => interest.attributes),
-    opportunities: project.opportunities.data.map(opportunity => opportunity.attributes)
+    interests: project.interests?.data.map(interest => interest.attributes),
+    opportunities: project.opportunities?.data.map(opportunity => opportunity.attributes)
     
   };
 
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
   let opportunities: Opportunity[] = await opportuntiesRes.json();
-  opportunities = opportunities.data;
+  opportunities = opportunities?.data;
   opportunities = opportunities.map(opportunity => opportunity.attributes);
 
   return {
