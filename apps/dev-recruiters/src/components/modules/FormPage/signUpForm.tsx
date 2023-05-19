@@ -187,7 +187,7 @@ export default function SignUpForm() {
                 cols={50}
                 touched={touched['experience']}
                 error={errors.experience}
-                label="Please breifly describe your experience in development or design"
+                label="Please briefly describe your experience in development or design"
                 placeholder="My experience with development / design is..."
                 required
                 rows={5}
