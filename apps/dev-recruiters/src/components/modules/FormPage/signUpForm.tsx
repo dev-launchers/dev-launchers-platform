@@ -107,8 +107,8 @@ export default function SignUpForm() {
             <atoms.Box flexDirection="column">
               <atoms.Layer hasRainbow>
                 <atoms.Typography type="h2" textAlign="center">
-                  Volunteer Application
-                </atoms.Typography>
+                Volunteer Application for <strong>{router.query.position}</strong>
+                </atoms.Typography><strong>Volunteer Application for</strong>
               </atoms.Layer>
             </atoms.Box>
             <atoms.Box
