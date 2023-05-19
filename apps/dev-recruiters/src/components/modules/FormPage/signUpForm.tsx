@@ -152,7 +152,7 @@ export default function SignUpForm() {
                     <atoms.Box gap="1rem" alignItems="center">
                       What are your relevant skills?
                       <atoms.ToolTip
-                        content="Please Separate skills with a coma."
+                        content="Please Separate skills with a comma."
                         direction="left"
                         delay={100}
                       >
