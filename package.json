@@ -10,11 +10,11 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-documentation": "^4.3.4",
-    "@strapi/plugin-i18n": "^4.3.4",
-    "@strapi/plugin-sentry": "^4.3.4",
-    "@strapi/plugin-users-permissions": "^4.3.4",
-    "@strapi/strapi": "^4.3.4",
+    "@strapi/plugin-documentation": "^4.10.5",
+    "@strapi/plugin-i18n": "^4.10.5",
+    "@strapi/plugin-sentry": "^4.10.5",
+    "@strapi/plugin-users-permissions": "^4.10.5",
+    "@strapi/strapi": "^4.10.5",
     "better-sqlite3": "^7.6.2",
     "nodemailer": "^6.7.4",
     "pg": "^8.7.3",
