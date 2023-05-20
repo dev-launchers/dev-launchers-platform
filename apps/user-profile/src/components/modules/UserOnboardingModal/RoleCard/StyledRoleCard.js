@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Typography } from '@devlaunchers/components/components/atoms'
 import React from 'react';
 
 
@@ -35,7 +34,7 @@ export const RoleCardContainer = styled.div`
     border-radius: 10px;
 `;
 
-export const PicWrapper = styled.div`
+export const IconWrapper = styled.div`
     width: 50%;
 `;
 
@@ -43,41 +42,23 @@ export const PicWrapper = styled.div`
 export const TextWrapper = styled.div`
     text-align: center;
     width: 100%;
+
+    .theme {
+        font-weight: 900;
+
+        &.theme1 {
+        color: #295774;
+        }
+
+        &.theme2 {
+            color: #3A7CA5;
+        }
+
+        &.theme3 {
+            color: #FF7F0E;
+        }
+    };
 `;
 
-export const TextContents = (props) => {
-    switch (props.theme) {
-        case 'theme1':
-            return (
-                <TextWrapper>
-                    <Typography type="pLarge" style={{color: "#295774"}}>{props.title}</Typography>
-                    <Typography type="pSmall">{props.subtitle}</Typography>
-                </TextWrapper>
-            )
 
-        case 'theme2':
-            return (
-                <TextWrapper>
-                    <Typography type="pLarge" style={{color: "#3A7CA5"}}>{props.title}</Typography>
-                    <Typography type="pSmall">{props.subtitle}</Typography>
-                </TextWrapper>
-            )
-        
-        case 'theme3':
-            return (
-                <TextWrapper>
-                    <Typography type="pLarge" style={{color: "#FF7F0E"}}>{props.title}</Typography>
-                    <Typography type="pSmall">{props.subtitle}</Typography>
-                </TextWrapper>
-            )
-
-        default:
-            return (
-                <TextWrapper>
-                    <Typography type="pLarge">{title}</Typography>
-                    <Typography type="pSmall">{subtitle}</Typography>
-                </TextWrapper>
-            )  
-      }
-}
 
