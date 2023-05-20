@@ -1,10 +1,11 @@
-import React from 'react'
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
-import axios from "axios";
+import React from 'react';
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
+import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 import {
   PageWrapper,
@@ -12,13 +13,14 @@ import {
   Headline,
   StyledRanbow,
   IdeaCardWrapper,
-  FilterDiv
+  FilterDiv,
 } from './StyledBrowseIdeas';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const { isMobile } = useResponsive();
 
   const sortingConfigs = [
     {
@@ -88,7 +90,7 @@ function BrowseIdeas() {
   }, []);
 
   React.useEffect(() => {
-    setCards(sourceCards.filter((item) => item?.status !== "archived"));
+    setCards(sourceCards.filter((item) => item?.status !== 'archived'));
     if (defaultShownCardNum >= sourceCards.length) {
       setButtonDisplay({ display: 'none' });
     } else {
@@ -98,13 +100,14 @@ function BrowseIdeas() {
 
   const defaultShownCardNum = 30;
   const [buttonDisplay, setButtonDisplay] = React.useState();
-  const [displayCardAmount, setDisplayCardAmount] = React.useState(defaultShownCardNum);
+  const [displayCardAmount, setDisplayCardAmount] =
+    React.useState(defaultShownCardNum);
   const loadMore = () => {
     setDisplayCardAmount(displayCardAmount + defaultShownCardNum);
-    if ((displayCardAmount + defaultShownCardNum) >= cards.length) {
+    if (displayCardAmount + defaultShownCardNum >= cards.length) {
       setButtonDisplay({ display: 'none' });
     }
-  }
+  };
 
   return (
     <>
@@ -114,9 +117,13 @@ function BrowseIdeas() {
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton />
-        <atoms.Typography type='h4' >
-          Want to help develop an idea?<br />
-          <atoms.Typography type='p' style={{ fontSize: '1.3rem' }}> Check out these ideas submitted by other Dev Launchers!</atoms.Typography>
+        <atoms.Typography type="h4">
+          Want to help develop an idea?
+          <br />
+          <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
+            {' '}
+            Check out these ideas submitted by other Dev Launchers!
+          </atoms.Typography>
         </atoms.Typography>
       </HeadWapper>
 
@@ -125,51 +132,47 @@ function BrowseIdeas() {
           <CircularIndeterminateLoader text="Loading..." color="black" />
         ) : (
           <div>
-          <FilterDiv>
-            <Dropdown
-              width="lg"
-              isOpen
-              options={[
-                {
-                  disabled: false,
-                  text: 'Recent Activity',
-                },
-                {
-                  disabled: false,
-                  text: 'Recent Ideas',
-                },
-                {
-                  disabled: false,
-                  text: 'Time Commitment',
-                },
-              ]}
-              recieveValue={(value) => {
-                sortCards(
-                  Object.entries(value).filter(([key, value]) => {
-                    return value;
-                  })[0][0]
-                );
-              }}
-              title="Sort By"
-              type="radio"
-            />
-          </FilterDiv>
+            <FilterDiv>
+              <Dropdown
+                width={isMobile ? 'sm' : 'lg'}
+                isOpen
+                options={[
+                  {
+                    disabled: false,
+                    text: 'Recent Activity',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Recent Ideas',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Time Commitment',
+                  },
+                ]}
+                recieveValue={(value) => {
+                  sortCards(
+                    Object.entries(value).filter(([key, value]) => {
+                      return value;
+                    })[0][0]
+                  );
+                }}
+                title="Sort By"
+                type="radio"
+              />
+            </FilterDiv>
 
             <IdeaCardWrapper>
               {cards.slice(0, displayCardAmount).map((item) => {
                 return (
-                  <IdeaCard
-                    key={item.id}
-                    cards={item}
-                    cardType="browse"
-                  />
+                  <IdeaCard key={item.id} cards={item} cardType="browse" />
                 );
               })}
             </IdeaCardWrapper>
 
             <atoms.Button
-              buttonSize='standard'
-              buttonType='primary'
+              buttonSize="standard"
+              buttonType="primary"
               onClick={loadMore}
               style={buttonDisplay}
             >
