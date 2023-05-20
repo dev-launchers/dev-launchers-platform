@@ -41,7 +41,8 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
       <BoxContainer paddingVertical={32}>
         <HeadingContainer>
           <Heading>Join Us!</Heading>
-          <span>Find a Project to Join!</span>
+          <span>We're an agile team bringing together people from around the world to learn and build world-changing tech.</span>
+          <span>We're excited that you're looking to join us in our mission.</span>
         </HeadingContainer>
       </BoxContainer>
       <div id="background" />
