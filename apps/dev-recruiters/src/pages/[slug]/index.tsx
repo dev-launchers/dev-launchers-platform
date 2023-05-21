@@ -10,8 +10,8 @@ import { agent } from '@devlaunchers/utility';
 export const getProjectsSlugs = async () => {
 
   const result: Project[] = await res.json();
-  const projects = result?.filter((p) => p.opportunities?.length > 0);
-
+  let projects = result?.data?.filter((p) => p.attributes.opportunities?.data?.length > 0);
+  projects = projects.map(projects => projects.attributes);	// Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
       slug: project.slug,
@@ -32,12 +32,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const projectsRes = await agent.Projects.get(params.slug as string);
-  
   const opportuntiesRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?projects.slug=${params.slug}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?populate=deep&filters[projects][slug][$eq]=${params.slug}`
   );
 
-  const project: Project = await projectsRes.json();
+  let project: Project = projectsRes[0].attributes;
+
+  // Restructure data returned from the API to flatten and make resemble data returned from old API
+  // Any relational data set up in Strapi should be flattened here
+  // We could `create a reusable function to handle this more elegantly
+  project = {
+    ...project, 
+    team: {
+      leaders: project.team ? project.team?.leaders?.map(leader => leader.leader?.data.attributes) : ``,
+      members: project.team ? project.team?.members?.map(member => member.member?.data.attributes) : ``
+    },
+    interests: project.interests?.data.map(interest => interest.attributes),
+    opportunities: project.opportunities?.data.map(opportunity => opportunity.attributes)
+    
+  };
 
   const commitments = project.opportunities.map(
     (opp) => opp.commitmentHoursPerWeek
@@ -46,12 +59,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const minCommitment = Math.min(...commitments);
   project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
-  const opportunites: Opportunity[] = await opportuntiesRes.json();
+  let opportunities: Opportunity[] = await opportuntiesRes.json();
+  opportunities = opportunities?.data;
+  opportunities = opportunities.map(opportunity => opportunity.attributes);
 
   return {
     props: {
       project: project,
-      opportunites: opportunites,
+      opportunites: opportunities,
       maxCommitment,
       minCommitment,
     },
