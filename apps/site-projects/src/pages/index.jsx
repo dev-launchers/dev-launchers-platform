@@ -6,28 +6,18 @@ import agent from "@devlaunchers/utility/agent"
 // const projectsData = require("../components/modules/Projects/data.json");
 
 export const getStaticProps = async () => {
-  // const { data: projects } = await axios(
-  //   `${process.env.NEXT_PUBLIC_API_URL}/projects?_publicationState=live`,
-  //   {
-  //     headers: {
-  //       Accept: "application/json, text/plain, */*",
-  //       "User-Agent":
-  //         "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-  //     },
-  //   }
-  // );
+
 
   // const projects = projectsData;
   const projects = await agent.Projects.list();
-  // console.log(projects);
   if (!projects) {
     return {
       notFound: true,
     };
   }
 
-  // HACKY WORKAROUND by Kris to make projects work
   // Need to request each project's individual endpoint to get missing data
+  
   const filteredProjects = projects.filter((project) => project.attributes.isListed);
   const returnProjects = filteredProjects.map(async (project) => {
     if (!project.attributes.isListed) {
@@ -40,9 +30,9 @@ export const getStaticProps = async () => {
 
     return project;
   });
-  // console.log(returnProjects);
+
   const resolvedProjects = await Promise.all(returnProjects);
-  // End hacky workaround
+
 
   return {
     props: { projects: resolvedProjects },

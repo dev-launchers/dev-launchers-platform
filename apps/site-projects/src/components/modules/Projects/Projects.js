@@ -30,7 +30,6 @@ const Projects = ({ projects }) => {
   }
 
   const items = searchValue ? searchResult : projects;
-console.log(items);
   return (
     <div
       style={{
@@ -58,18 +57,19 @@ console.log(items);
       <Layout>
         {items.map((project, i) => {
           const imageUrl = process.env.NODE_ENV == "development" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
+          const attributes = project?.attributes;
           return(
           <ProjectContainer key={i}>
             <Card
               isLinkingInside
               style={{ margin: 0, width: '100%', height: '100%' }}
               cardData={{
-                id: project.attributes.id,
-                title: project.attributes.title,
-                secondaryText: `Commitment level: ${project.attributes.commitmentLevel}`,
-                tags: project.attributes.interests?.map(({ interest }) => interest),
-                description: project.attributes.catchPhrase,
-                href: project.attributes.slug,
+                id: attributes.id,
+                title: attributes.title,
+                secondaryText: `Commitment level: ${attributes.commitmentLevel}`,
+                tags: attributes.interests?.map(({ interest }) => interest),
+                description: attributes.catchPhrase,
+                href: attributes.slug,
                 imageSrc: imageUrl,
                 actions: (
                   <>
