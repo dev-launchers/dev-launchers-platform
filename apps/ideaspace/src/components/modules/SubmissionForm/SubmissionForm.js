@@ -22,7 +22,6 @@ function SubmissionForm() {
 
     React.useEffect(() => {
       setUserData({ ...userData, id: 30 });
-      console.log('data', userData);
     }, []);
   }
 
@@ -62,7 +61,6 @@ function SubmissionForm() {
     values['author'] = userData;
     values['status'] = 'workshopping';
 
-    console.log('values', values);
     setSending(true);
 
     const data = cleanData(await agent.Ideas.post(values));
