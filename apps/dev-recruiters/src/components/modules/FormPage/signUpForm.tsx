@@ -152,7 +152,7 @@ export default function SignUpForm() {
                     <atoms.Box gap="1rem" alignItems="center">
                       What are your relevant skills?
                       <atoms.ToolTip
-                        content="Please Separate skills with a coma."
+                        content="Please Separate skills with a comma."
                         direction="left"
                         delay={100}
                       >
@@ -187,7 +187,7 @@ export default function SignUpForm() {
                 cols={50}
                 touched={touched['experience']}
                 error={errors.experience}
-                label="Please breifly describe your experience in development or design"
+                label="Please briefly describe your experience in development or design"
                 placeholder="My experience with development / design is..."
                 required
                 rows={5}
