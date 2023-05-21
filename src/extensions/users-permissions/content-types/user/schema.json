@@ -131,6 +131,23 @@
     },
     "discord_discriminator": {
       "type": "string"
+    },
+    "job": {
+      "type": "enumeration",
+      "enum": [
+        "developer",
+        "designer",
+        "other"
+      ],
+      "default": "other"
+    },
+    "experience": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid-level",
+        "senior"
+      ]
     }
   }
 }
