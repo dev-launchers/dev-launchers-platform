@@ -1,4 +1,4 @@
-import { NewApplicant, Opportunity, Project, User as UserType, Idea, Like } from "@devlaunchers/models";
+import { NewApplicant, Opportunity, Project, User as UserType, Idea, Like, Save } from "@devlaunchers/models";
 import { Comment } from "@devlaunchers/models/comment";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
@@ -142,6 +142,10 @@ const Likes = {
     requests.get<Like[]>('/likes/', params)
 };
 
+const Saves = {
+  post: (body: {}) => requests.post<Save>('/saves/', body)
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -149,7 +153,8 @@ const agent = {
   User,
   Comments,
   Ideas,
-  Likes
+  Likes,
+  Saves
 };
 
 export default agent;
