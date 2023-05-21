@@ -25,11 +25,6 @@ export const getStaticProps = async (context) => {
   console.log(slug);
   const project = await agent.Projects.list({populate: '*', slug: slug});
 
-  // if (!project) {
-  //   return {
-  //     notFound: true,
-  //   };
-  // }
 
   return {
     props: {
@@ -46,7 +41,6 @@ const ProjectRoute = ({ project }) => {
     heroImageFormats?.medium ||
     heroImageFormats?.small ||
     project?.attributes.heroImage?.attributes?.url;
-    console.log(project);
   return (
  
     <>
