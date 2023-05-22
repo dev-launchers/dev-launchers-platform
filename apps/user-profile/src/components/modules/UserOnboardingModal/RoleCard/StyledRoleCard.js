@@ -16,10 +16,10 @@ export const IconImg = ({iconImg}) => {
             </svg> 
             )  
       }
-}
+} ;
 
 export const RoleCardContainer = styled.div`
-    margin-top: 50px;
+    margin: 50px 10px 0px;
     /* Components */
     box-sizing: border-box;
     /* Auto layout */
