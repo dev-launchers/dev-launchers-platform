@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
+import RoleCard from "./RoleCard/RoleCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
@@ -43,29 +44,11 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h2">Get Started with Devlaunchers</Typography>
                         <Typography type="subtitle">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
-                    
-                    {/*<PlatformOnboarding/> (stepper) */}
-                    
-                    <OnboardingCard 
-                    iconImg={"Login"} 
-                    title={"Create Devlanchers Login"} 
-                    subtitle={"All Set. Now Let’s Get Started With The Rest!"} 
-                    completed={true}
-                />
-                    <OnboardingCard 
-                    iconImg={"Onboarding"} 
-                    title={"Platform Onboarding"} 
-                    subtitle={"Devlaunchers Platform Tour"} 
-                    completed={false}
-                />
-                
-                    <OnboardingCard 
-                    iconImg={"Zenhub"} 
-                    title={"Sign Up On Zenhub, Github, And Discord"} 
-                    subtitle={"Connect Your Account On These Platforms"} 
-                    completed={false}
-                />
-                    
+                        
+                        {/*<PlatformOnboarding/> (stepper) */}
+
+                        {/* Role Card Component */}
+                                       
                     </ModalBody>
                 </ModalContainer>
             </Modal>
