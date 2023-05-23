@@ -135,7 +135,7 @@ function BrowseIdeas() {
             <FilterDiv>
               <Dropdown
                 width={isMobile ? 'sm' : 'lg'}
-                isOpen
+                isOpen={false}
                 options={[
                   {
                     disabled: false,
