@@ -1,4 +1,3 @@
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import {
@@ -13,7 +12,7 @@ import {
   Button,
   StyledText,
 } from './StyledIdeaCard'
-
+import { Save } from './SaveIdeaCard/Save';
 export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
   return (
     <StyledCard>
@@ -37,10 +36,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
       </TopView>
 
       <BottomView>
-        <Button>
-          <BookmarkBorderOutlinedIcon />
-          <StyledText>Save</StyledText>
-        </Button>
+        <Save />
         <Button>
           <ShareOutlinedIcon />
           <StyledText>Share</StyledText>
