@@ -28,7 +28,7 @@ const EditorNotification = ({ project }) => {
 
   const user = useUserDataContext().userData;
 
-	if (hasEditingAccess(user, project)) {
+	if (!hasEditingAccess(user, project)) {
 		return (<></>);
 	}
 
