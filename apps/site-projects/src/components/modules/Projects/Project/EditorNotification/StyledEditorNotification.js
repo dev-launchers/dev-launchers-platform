@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   align-content: center;
   text-align: center;
   display: grid;
-  /* flex-wrap: wrap ; */
   row-gap: 1rem;
   margin: auto;
   padding-top: 1rem;
@@ -17,12 +16,11 @@ export const Wrapper = styled.div`
     text-align: center;
     margin: auto;
     font-size: 2rem;
-    }
- p {
+  }
+ 	p {
     align-content: center;
     text-align: center;
     margin: auto;
-    /* flex: 4; */
   }
   @media (max-width: 52em) {
     flex-direction: row;

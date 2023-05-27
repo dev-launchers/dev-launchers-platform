@@ -14,8 +14,6 @@ import Alert from '@devlaunchers/components/components/molecules/Alert';
 function isUserAProjectLeader(user, project) {
 	for (let i=0; i<project.team.leaders.length; i++) {
 		let leader = project.team.leaders[i];
-		console.log('leader', leader);
-		console.log('user', user);
 		if (leader.id === user.id) return true;
 	}
 	
@@ -30,7 +28,7 @@ const EditorNotification = ({ project }) => {
 
   const user = useUserDataContext().userData;
 
-	if (!hasEditingAccess(user, project)) {
+	if (hasEditingAccess(user, project)) {
 		return (<></>);
 	}
 
