@@ -52,6 +52,7 @@ module.exports = {
             leadingUnderscore: 'allow',
           },
         ],
+        'react/no-unknown-property': ['error', { ignore: ['css'] }],
       },
     },
   ],

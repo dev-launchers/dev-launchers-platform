@@ -1,4 +1,5 @@
-import { useLayoutEffect, useState } from 'react';
+import debounce from 'lodash/debounce';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 const useResponsive = () => {
@@ -11,7 +12,7 @@ const useResponsive = () => {
       setIsDesktop(window.innerWidth > theme.breakpoints.lg);
     };
     window.addEventListener('resize', updateSize);
-
+    window.dispatchEvent(new Event('resize'));
     return (): void => window.removeEventListener('resize', updateSize);
   }, []);
 

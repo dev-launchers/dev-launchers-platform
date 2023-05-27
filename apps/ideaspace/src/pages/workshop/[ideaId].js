@@ -1,8 +1,13 @@
-import WorkshoppingPage from '../../components/modules/WorkshoppingPage/WorkshoppingPage.js';
-import React, { useState } from 'react';
+import Head from 'next/head';
+import WorkshoppingPage from '../../components/modules/WorkshoppingPage/WorkshoppingPage';
 
 export default function App() {
   return (
-    <WorkshoppingPage />
+    <>
+      <Head>
+        <title>Idea Workshop - Dev Launchers</title>
+      </Head>
+      <WorkshoppingPage />
+    </>
   );
-}
+};

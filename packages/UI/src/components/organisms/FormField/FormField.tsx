@@ -20,6 +20,7 @@ function FormField({
   touched,
   onChange,
   name,
+  value,
 }: InputProps) {
   return (
     <>
@@ -37,9 +38,10 @@ function FormField({
             autoComplete="off"
             placeholder={placeholder}
             valid={touched && !error}
-            error={error}
+            error={touched ? error : ''}
             disabled={disabled}
             onChange={onChange}
+            value={value}
           />
           {/* The field doesn't have to be required for the Error Icon to show.
            For Example: I want to validate if the url passed is correct but it's not required for them fill. */}

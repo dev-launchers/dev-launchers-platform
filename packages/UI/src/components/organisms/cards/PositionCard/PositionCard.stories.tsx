@@ -14,10 +14,10 @@ const content = {
   title: 'Web Developer',
   level: 'junior',
   timeCommittment: '5 hrs per week',
-  imgUrl: 'https://picsum.photos/200/300',
+  imgUrl: 'https://images.unsplash.com/photo-1573335553610-a871dfd95bf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80',
   role: ' We are looking for a junior web developer who is willing and eagerto learn various web technologies mainly in the field of React while working within a team of ambitious developers! Our goal is to designa platform that brings people of from a diverse range of specialties together to collaboratively design the best possible software solutions. This project provides a space for people to establish and develop their ideas into working projects with input from others.',
   tags: ['unity', 'react', 'social', 'agile', 'digital media'],
-  benefits: [
+  benifits: [
     'Be proficient in React.js and/or Next.js (strongly prefer both or at least Next)',
     'Experience with GitHub and version control using Git',
     'Backend experience preferred, especially using a CMS',
@@ -125,28 +125,28 @@ LongBAllVClosed.args = {
 export const LongANoneOpen = TemplatePositionCard.bind({});
 LongANoneOpen.args = {
   buttonStyle: 'a',
-  interaction: 'none',
+  interaction: undefined,
   status: true,
   content,
 };
 export const LongANoneClosed = TemplatePositionCard.bind({});
 LongANoneClosed.args = {
   buttonStyle: 'a',
-  interaction: 'none',
+  interaction: undefined,
   status: false,
   content,
 };
 export const LongBNoneOpen = TemplatePositionCard.bind({});
 LongBNoneOpen.args = {
   buttonStyle: 'b',
-  interaction: 'none',
+  interaction: undefined,
   status: true,
   content,
 };
 export const LongBNoneClosed = TemplatePositionCard.bind({});
 LongBNoneClosed.args = {
   buttonStyle: 'b',
-  interaction: 'none',
+  interaction: undefined,
   status: false,
   content,
 };
@@ -154,7 +154,7 @@ LongBNoneClosed.args = {
 export const MinimalANone = TemplatePositionCard.bind({});
 MinimalANone.args = {
   buttonStyle: 'a',
-  interaction: 'none',
+  interaction: undefined,
   status: true,
   minimal: true,
   content,
@@ -163,7 +163,7 @@ MinimalANone.args = {
 export const MinimalBNone = TemplatePositionCard.bind({});
 MinimalBNone.args = {
   buttonStyle: 'b',
-  interaction: 'none',
+  interaction: undefined,
   status: true,
   minimal: true,
   content,

@@ -1,7 +1,6 @@
 import Head from 'next/head';
 
-import Footer from '@devlaunchers/components/components/Footer';
-import Navigation from '@devlaunchers/components/components/organisms/Navigation';
+import { Footer, Navigation } from '@devlaunchers/components/components/organisms';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import {
   initGA,
@@ -14,7 +13,6 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import Script from 'next/script';
 import iubendaScript from '../scripts/iubendaScript';
-
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -51,15 +49,8 @@ function MyApp({ Component, pageProps }) {
       <UserDataProvider>
         <ThemeProvider theme={theme}>
           <div>
-            <script
-              type="text/partytown"
-              dangerouslySetInnerHTML={{ __html: iubendaScript }}
-            />
-            <Script
-              strategy="worker"
-              async
-              src="//cdn.iubenda.com/cs/iubenda_cs.js"
-            ></Script>
+            <Script dangerouslySetInnerHTML={{ __html: iubendaScript }} />
+            <Script async src="//cdn.iubenda.com/cs/iubenda_cs.js"></Script>
             <Head>
               <script
                 async

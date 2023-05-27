@@ -1,19 +1,27 @@
-import React from 'react'
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
-import IdeaCard from './IdeaCard/IdeaCard'
-import axios from "axios";
-import SortableDropdown from '../../common/SortableDropdown/SortableDropdown';
+import React from 'react';
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
+import axios from 'axios';
+import { atoms } from '@devlaunchers/components/src/components';
+import IdeaCard from '../../common/IdeaCard/IdeaCard';
+import BackButton from '../../common/BackButton/BackButton';
+import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
-import { PageWrapper, CardsWrapper, FilterDiv } from './StyledBrowseIdeas'
-
+import {
+  PageWrapper,
+  HeadWapper,
+  Headline,
+  StyledRanbow,
+  IdeaCardWrapper,
+  FilterDiv,
+} from './StyledBrowseIdeas';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
-  const [selectedCard, setSelectedCard] = React.useState({});
+  const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const [sortedCards, setSortedCards] = React.useState([]);
-  
-  const defaultOptions = [<option key='0'></option>];
+  const { isMobile } = useResponsive();
+
   const sortingConfigs = [
     {
       value: 'mostRecentCommentTime',
@@ -32,9 +40,34 @@ function BrowseIdeas() {
     },
   ];
 
-  /*const handleSetSortedCards = (sortedCardList) => {
-    setSortedCards(sortedCardList);
-  };*/
+  const sortCards = (selectedSortCriterion) => {
+    let selectedSortingConfig = sortingConfigs.filter(
+      (configOption) => configOption.label === selectedSortCriterion
+    );
+    const cardsClone = JSON.parse(JSON.stringify(cards));
+    if (selectedSortingConfig[0].isAscending) {
+      cardsClone.sort((a, b) => {
+        return a[selectedSortingConfig[0].value] <
+          b[selectedSortingConfig[0].value]
+          ? -1
+          : a[selectedSortingConfig[0].value] >
+            b[selectedSortingConfig[0].value]
+          ? 1
+          : 0;
+      });
+    } else {
+      cardsClone.sort((a, b) => {
+        return a[selectedSortingConfig[0].value] >
+          b[selectedSortingConfig[0].value]
+          ? -1
+          : a[selectedSortingConfig[0].value] <
+            b[selectedSortingConfig[0].value]
+          ? 1
+          : 0;
+      });
+    }
+    setCards(cardsClone);
+  };
 
   React.useEffect(() => {
     axios
@@ -52,38 +85,103 @@ function BrowseIdeas() {
         });
 
         setLoading(false);
-        setCards(getCards);
+        setSourceCards(getCards);
       });
   }, []);
 
+  React.useEffect(() => {
+    setCards(sourceCards.filter((item) => item?.status !== 'archived'));
+    if (defaultShownCardNum >= sourceCards.length) {
+      setButtonDisplay({ display: 'none' });
+    } else {
+      setButtonDisplay({ display: '' });
+    }
+  }, [sourceCards]);
+
+  const defaultShownCardNum = 30;
+  const [buttonDisplay, setButtonDisplay] = React.useState();
+  const [displayCardAmount, setDisplayCardAmount] =
+    React.useState(defaultShownCardNum);
+  const loadMore = () => {
+    setDisplayCardAmount(displayCardAmount + defaultShownCardNum);
+    if (displayCardAmount + defaultShownCardNum >= cards.length) {
+      setButtonDisplay({ display: 'none' });
+    }
+  };
+
   return (
-    <PageWrapper>
-      {loading === true ? (
-        <CircularIndeterminateLoader text="Loading..." color="black" />
-      ) : (
-        <div>
-          <FilterDiv>
-            <label htmlFor="sortBy">Sort By</label>
-            <SortableDropdown
-                sortingConfigs={sortingConfigs}
-                elements={cards}
-                defaultOptions={defaultOptions}
-                handleSetSortedElements={setSortedCards}
+    <>
+      <HeadWapper>
+        <Headline>Browse Ideas</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
+        <BackButton />
+        <atoms.Typography type="h4">
+          Want to help develop an idea?
+          <br />
+          <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
+            {' '}
+            Check out these ideas submitted by other Dev Launchers!
+          </atoms.Typography>
+        </atoms.Typography>
+      </HeadWapper>
+
+      <PageWrapper>
+        {loading === true ? (
+          <CircularIndeterminateLoader text="Loading..." color="black" />
+        ) : (
+          <div>
+            <FilterDiv>
+              <Dropdown
+                width={isMobile ? 'sm' : 'lg'}
+                isOpen={false}
+                options={[
+                  {
+                    disabled: false,
+                    text: 'Recent Activity',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Recent Ideas',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Time Commitment',
+                  },
+                ]}
+                recieveValue={(value) => {
+                  sortCards(
+                    Object.entries(value).filter(([key, value]) => {
+                      return value;
+                    })[0][0]
+                  );
+                }}
+                title="Sort By"
+                type="radio"
               />
-          </FilterDiv>
-          <CardsWrapper>
-            {sortedCards.map((item) => {
-              return (
-                <IdeaCard
-                  key={item.id}
-                  cards={item}
-                />
-              );
-            })}
-          </CardsWrapper>
-        </div>
-      )}
-    </PageWrapper>
+            </FilterDiv>
+
+            <IdeaCardWrapper>
+              {cards.slice(0, displayCardAmount).map((item) => {
+                return (
+                  <IdeaCard key={item.id} cards={item} cardType="browse" />
+                );
+              })}
+            </IdeaCardWrapper>
+
+            <atoms.Button
+              buttonSize="standard"
+              buttonType="primary"
+              onClick={loadMore}
+              style={buttonDisplay}
+            >
+              load more
+            </atoms.Button>
+          </div>
+        )}
+      </PageWrapper>
+    </>
   );
 }
 

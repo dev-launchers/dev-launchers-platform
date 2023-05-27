@@ -1,21 +1,61 @@
 import styled from "styled-components";
 
 export const PageWrapper = styled.section`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
-  padding: 58px 0 21px 0;
+  background-color: #FFFFFF;
+  padding: 0rem calc((100% - 75.5rem)/2) 3.5rem calc((100% - 75.5rem)/2);
+
+  @media (max-width: 1278px) {
+    padding: 0rem calc((100% - 70.5rem)/2) 3.5rem calc((100% - 70.5rem)/2);
+  }
+  @media (max-width: 1192px) {
+    padding: 0rem calc((100% - 46.5rem)/2) 3.5rem calc((100% - 46.5rem)/2);
+  }
+  @media (max-width: 810px) {
+    padding: 0rem 2rem 5rem 2rem;
+  }
 `;
 
-export const CardsWrapper = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  width: 100%;
-  max-width: 1900px;
-  padding: 0;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+export const HeadWapper = styled.div`
+  background-color: #FFFFFF;
+  padding: 6rem 1rem 4rem 1rem;
+
+  @media (max-width: 1712px) {
+    padding: 3rem 1rem 2rem 1rem;
+  }
+
+  @media (max-width: 529px) {
+    padding: 5rem 1rem 1rem 1rem;
+  }
+`;
+
+export const Headline = styled.div`
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 68px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #1C1C1C;
+`;
+
+export const StyledRanbow = styled.div`
+  margin: 1.3rem auto 0 auto;
+  max-width: 21rem;
+  height: 5px;
+`;
+
+export const IdeaCardWrapper = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap; 
+column-gap: 3.8rem;
+row-gap: 2rem;
+margin: 1.5rem auto;
+
+@media (max-width: 1278px) {
+  column-gap: 1.2rem;
+}
 `;
 
 export const FilterDiv = styled.div`

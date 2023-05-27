@@ -48,7 +48,7 @@ const h4 = `
     }
 `;
 
-const h5 = `
+const subtitle = `
     font-family: 'Nunito Sans';
     font-size: 1rem;
     font-weight: 400;
@@ -114,7 +114,6 @@ const label = `
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    text-transform: uppercase;
     @media only screen and (max-width: 62.5rem) {
         font-size: 1rem;
         line-height: 1.5rem;
@@ -139,12 +138,21 @@ const link = `
     }
 `;
 
+const navLink = `
+    font-family: 'Abel';
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+`;
+
 export const typographyStyles = {
   h1,
   h2,
   h3,
   h4,
-  h5,
+  subtitle,
   pLarge,
   p,
   pSmall,
@@ -153,6 +161,7 @@ export const typographyStyles = {
   label,
   labelSmall,
   link,
+  navLink,
 } as const;
 
 export const Text = styled.p<TypographyProps>`
