@@ -4,28 +4,14 @@ import React from "react";
 
 import { Heading, Title } from "./StyledCardTitle";
 
-interface Props {
-  data?: {
-    titleAlignment?: string;
-    titleSize?: string;
-    titleUnderlineColor?: string;
-    titleUnderlineThickness?: string;
-    titleUnderlineType?: string;
-    href?: string;
-    title?: string;
-    repoUrl?: string;
-  };
-  attachment?: boolean;
-  isLinkingInside?: boolean;
-  pathname?: string;
-}
+
 
 export default function CardTitle({
   data,
   attachment,
   isLinkingInside,
   pathname,
-}: Props) {
+}) {
   return (
     <Heading
       cardTitleAlignment={data.titleAlignment}
