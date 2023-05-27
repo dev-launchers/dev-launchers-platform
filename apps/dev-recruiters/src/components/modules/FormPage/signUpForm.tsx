@@ -24,7 +24,7 @@ export default function SignUpForm() {
       'Invalid url'
     ).transform((_, value) => value === '' ? null : value),
     commitment: Yup.number()
-      .moreThan(0, 'Commitment Field Entry is Required')
+      .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
     experience: Yup.string().required('Experience Field Entry is Required'),
     accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
@@ -164,8 +164,9 @@ export default function SignUpForm() {
                 </atoms.Typography>
 
                 <atoms.Slider
-                  min={0}
-                  max={10}
+                  min={5}
+                  max={40}
+                  initialValue={5}
                   onChange={(value) => setFieldValue('commitment', +value)}
                   withLabels
                   suffix=" hrs"
