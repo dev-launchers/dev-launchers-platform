@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Body = styled.div`
+export const ThirdPartyContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
