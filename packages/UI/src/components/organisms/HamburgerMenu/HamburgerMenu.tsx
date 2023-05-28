@@ -8,7 +8,6 @@ import Link from 'next/link';
 import React from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import logoMonogramImage from '../../../images/logo-monogram.png';
-import { env } from '../../../utils/EnvironmentVariables';
 import Logout from '../../../utils/Logout';
 
 import {
@@ -112,7 +111,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
                   <a
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      '?redirectURL=https://devlaunchers.org/users/me'
+                      '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'
                     }
                     className="nav-link"
                   >

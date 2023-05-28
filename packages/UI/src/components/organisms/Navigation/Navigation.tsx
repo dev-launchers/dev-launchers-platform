@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
@@ -80,7 +79,7 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL=https://devlaunchers.org/users/me'
+                        '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'
                       }
                       buttonType="primary"
                       buttonSize="standard"
@@ -91,7 +90,7 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL=https://devlaunchers.org/users/me'
+                        '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'
                       }
                       buttonType="secondary"
                       buttonSize="standard"
