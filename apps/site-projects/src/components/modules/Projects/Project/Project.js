@@ -35,7 +35,7 @@ const Project = ({ project, theme }) => {
   }
 
   const userData = useUserDataContext();
-
+console.log(project);
   return (
     <Wrapper>
       <div id="background" />
@@ -57,7 +57,7 @@ const Project = ({ project, theme }) => {
         description={project?.attributes.description}
         images={project?.attributes.Images}
       /> */}
-      <Role ref={roleRef} data={project?.attributes.opportunities.data.attributes} projectSlug={project.attributes.slug} />
+      <Role ref={roleRef} data={project?.attributes.opportunities.attributes} projectSlug={project.attributes.slug} />
       <Milestones data={project?.attributes.board?.ProjectMilestone} />
       {<Sessions calendarId={project.attributes.calendarId} />}
       <Team data={project.attributes?.team} />

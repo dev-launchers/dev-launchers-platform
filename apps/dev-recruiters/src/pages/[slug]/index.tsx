@@ -9,8 +9,8 @@ import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
 
-  const result: Project[] = await res.json();
-  let projects = result?.data?.filter((p) => p.attributes.opportunities?.data?.length > 0);
+  const result = await agent.Projects.list( new URLSearchParams('populate=deep&publicationState=live'));
+  let projects = result?.filter((p) => p.attributes.opportunities?.data?.length > 0);
   projects = projects.map(projects => projects.attributes);	// Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
@@ -28,15 +28,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking',
   };
 };
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-  const projectsRes = await agent.Projects.get(params.slug as string);
-  const opportuntiesRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?populate=deep&filters[projects][slug][$eq]=${params.slug}`
+  const projectsRes = await agent.Projects.get(params.slug as string, new URLSearchParams(`populate=deep&[filters][slug][$eq]=${params.slug}`));
+  const opportuntiesRes = await agent.Opportunities.list(new URLSearchParams(`populate=deep&filters[projects][slug][$eq]=${params.slug}`)
   );
 
-  let project: Project = projectsRes[0].attributes;
+  let project: Project = projectsRes.attributes;
 
   // Restructure data returned from the API to flatten and make resemble data returned from old API
   // Any relational data set up in Strapi should be flattened here
