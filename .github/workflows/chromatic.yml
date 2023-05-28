@@ -21,11 +21,17 @@ jobs:
       buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
       storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
       code: ${{ steps.chromatic.outputs.code }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
     # The list of steps that the action will go through
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
+      
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        id: extract_branch
+        
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
@@ -46,15 +52,6 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           onlyChanged: true
-
-      - name: Discord Channel Notification
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.UI_BUILDS_WEBHOOK }}
-          DISCORD_EMBEDS: '[{"title": "UI changes are ready for review: ${{ github.event.pull_request.comment }}","description": "Started by ${{ github.event.pull_request.user.login }}. Click [here](${{ steps.chromatic.outputs.buildUrl }}) to view the Chromatic review.","url": "${{steps.chromatic.outputs.storybookUrl}}"}]'
-
-        uses: Ilshidur/action-discord@master
-        with:
-          args: 'New build for {{ EVENT_PAYLOAD.repository.full_name }} Finished.'
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
