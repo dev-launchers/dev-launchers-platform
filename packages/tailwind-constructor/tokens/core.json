@@ -947,8 +947,8 @@
       "type": "color"
     }
   },
-  "Highlight": {
-    "highlight100": {
+  "Shadow": {
+    "highlight-sm": {
       "value": {
         "color": "#7f7e7f52",
         "type": "dropShadow",
@@ -959,7 +959,7 @@
       },
       "type": "boxShadow"
     },
-    "highlight200": {
+    "highlight": {
       "value": {
         "color": "#7f7e7f7a",
         "type": "dropShadow",
@@ -970,7 +970,7 @@
       },
       "type": "boxShadow"
     },
-    "highlight300": {
+    "highlight-md": {
       "value": {
         "color": "#7f7e7fb8",
         "type": "dropShadow",
@@ -981,7 +981,7 @@
       },
       "type": "boxShadow"
     },
-    "highlight400": {
+    "highlight-lg": {
       "value": {
         "color": "#7f7e7fe0",
         "type": "dropShadow",
@@ -992,7 +992,7 @@
       },
       "type": "boxShadow"
     },
-    "highlight500": {
+    "highlight-xl": {
       "value": {
         "color": "#7f7e7f",
         "type": "dropShadow",
@@ -1002,10 +1002,8 @@
         "spread": 0
       },
       "type": "boxShadow"
-    }
-  },
-  "Shadow": {
-    "shadow-200": {
+    },
+    "shadow": {
       "value": {
         "color": "#3333331a",
         "type": "dropShadow",
@@ -1016,7 +1014,7 @@
       },
       "type": "boxShadow"
     },
-    "shadow-100": {
+    "shadow-sm": {
       "value": {
         "color": "#33333314",
         "type": "dropShadow",
@@ -1027,7 +1025,7 @@
       },
       "type": "boxShadow"
     },
-    "shadow-300": {
+    "shadow-md": {
       "value": {
         "color": "#3333331a",
         "type": "dropShadow",
@@ -1038,7 +1036,7 @@
       },
       "type": "boxShadow"
     },
-    "shadow-400": {
+    "shadow-lg": {
       "value": {
         "color": "#7f7e7f40",
         "type": "dropShadow",
@@ -1049,7 +1047,7 @@
       },
       "type": "boxShadow"
     },
-    "shadow-500": {
+    "shadow-xl": {
       "value": {
         "color": "#7f7e7f40",
         "type": "dropShadow",
@@ -1060,7 +1058,7 @@
       },
       "type": "boxShadow"
     },
-    "innershadow-100": {
+    "shadow-inner": {
       "value": {
         "color": "#7f7e7f80",
         "type": "innerShadow",
@@ -1158,7 +1156,20 @@
       "type": "fontSizes"
     }
   },
-  "Subtitle": {
+  "x-small-typecase": {
+    "value": {
+      "fontFamily": "Nunito Sans",
+      "fontWeight": "Regular",
+      "lineHeight": 20,
+      "fontSize": 12,
+      "letterSpacing": "0%",
+      "paragraphSpacing": 0,
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "type": "typography"
+  },
+  "subtitle": {
     "value": {
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
@@ -1166,14 +1177,13 @@
       "fontSize": 16,
       "letterSpacing": "8%",
       "paragraphSpacing": 0,
-      "paragraphIndent": 0,
       "textCase": "uppercase",
       "textDecoration": "none"
     },
     "type": "typography",
     "description": "Subtitles on Cards"
   },
-  "Product Name": {
+  "product-name": {
     "value": {
       "fontFamily": "Abel",
       "fontWeight": "Regular",
@@ -1181,14 +1191,13 @@
       "fontSize": 44,
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
-      "paragraphIndent": 0,
       "textCase": "none",
       "textDecoration": "none"
     },
     "type": "typography",
     "description": "Product Cards - Product Name"
   },
-  "Dropdown Text": {
+  "dropdown-text": {
     "value": {
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
@@ -1196,14 +1205,13 @@
       "fontSize": 16,
       "letterSpacing": "4%",
       "paragraphSpacing": 0,
-      "paragraphIndent": 0,
       "textCase": "capitalize",
       "textDecoration": "none"
     },
     "type": "typography"
   },
   "Link Text": {
-    "Link-Mobile-Default": {
+    "link-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1211,13 +1219,12 @@
         "fontSize": 14,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography"
     },
-    "Link-Desktop-Disabled": {
+    "link-disabled": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Light Italic",
@@ -1225,28 +1232,27 @@
         "fontSize": 16,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography",
       "description": "Disabled links on Desktop"
     },
-    "Link-Desktop-Default": {
+    "link-m-disabled": {
       "value": {
         "fontFamily": "Nunito Sans",
-        "fontWeight": "SemiBold",
+        "fontWeight": "Light Italic",
         "lineHeight": 16,
-        "fontSize": 16,
+        "fontSize": 14,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
-      "type": "typography"
+      "type": "typography",
+      "description": "Links on Mobile that are disabled"
     },
-    "Link-Desktop-Visited": {
+    "link-focus": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1254,13 +1260,53 @@
         "fontSize": 16,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
+        "textCase": "none",
+        "textDecoration": "underline"
+      },
+      "type": "typography",
+      "description": "Links on desktops in Focus State"
+    },
+    "link-m-focus": {
+      "value": {
+        "fontFamily": "Nunito Sans",
+        "fontWeight": "Regular",
+        "lineHeight": 16,
+        "fontSize": 14,
+        "letterSpacing": 0,
+        "paragraphSpacing": 0,
+        "textCase": "none",
+        "textDecoration": "underline"
+      },
+      "type": "typography",
+      "description": "Links on mobile in focus state"
+    },
+    "link": {
+      "value": {
+        "fontFamily": "Nunito Sans",
+        "fontWeight": "SemiBold",
+        "lineHeight": 16,
+        "fontSize": 16,
+        "letterSpacing": 0,
+        "paragraphSpacing": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography"
     },
-    "Link-Desktop-Hover": {
+    "link-visited": {
+      "value": {
+        "fontFamily": "Nunito Sans",
+        "fontWeight": "Regular",
+        "lineHeight": 16,
+        "fontSize": 16,
+        "letterSpacing": 0,
+        "paragraphSpacing": 0,
+        "textCase": "none",
+        "textDecoration": "underline"
+      },
+      "type": "typography"
+    },
+    "link-hover": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "SemiBold",
@@ -1268,27 +1314,12 @@
         "fontSize": 16,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography"
     },
-    "Link-Desktop-Focus": {
-      "value": {
-        "fontFamily": "Nunito Sans",
-        "fontWeight": "Regular",
-        "lineHeight": 16,
-        "fontSize": 16,
-        "letterSpacing": 0,
-        "paragraphSpacing": 0,
-        "paragraphIndent": 0,
-        "textCase": "none",
-        "textDecoration": "none"
-      },
-      "type": "typography"
-    },
-    "Link-Desktop-Active": {
+    "link-active": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1296,13 +1327,12 @@
         "fontSize": 16,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Link-Mobile-Visited": {
+    "link-m-visited": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1310,13 +1340,12 @@
         "fontSize": 14,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography"
     },
-    "Link-Mobile-Hover": {
+    "link-m-hover": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "SemiBold",
@@ -1324,13 +1353,12 @@
         "fontSize": 14,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "underline"
       },
       "type": "typography"
     },
-    "Link-Mobile-Focus": {
+    "link-m-active": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1338,21 +1366,6 @@
         "fontSize": 14,
         "letterSpacing": 0,
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
-        "textCase": "none",
-        "textDecoration": "none"
-      },
-      "type": "typography"
-    },
-    "Link-Mobile-Active": {
-      "value": {
-        "fontFamily": "Nunito Sans",
-        "fontWeight": "Regular",
-        "lineHeight": 16,
-        "fontSize": 14,
-        "letterSpacing": 0,
-        "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
@@ -1360,7 +1373,7 @@
     }
   },
   "Universal": {
-    "Display LG": {
+    "display-lg": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1368,13 +1381,12 @@
         "fontSize": 64,
         "letterSpacing": "-2%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Display SM": {
+    "display-sm": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1382,13 +1394,12 @@
         "fontSize": 48,
         "letterSpacing": "-2%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Logo Text": {
+    "logo-text": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1396,13 +1407,12 @@
         "fontSize": 26,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Nav Items": {
+    "nav-items": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1410,13 +1420,12 @@
         "fontSize": 16,
         "letterSpacing": "4%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Tool Tip": {
+    "tool-tip": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Light",
@@ -1424,13 +1433,12 @@
         "fontSize": 14,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "X Small": {
+    "x-small": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1438,7 +1446,6 @@
         "fontSize": 12,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
@@ -1447,7 +1454,7 @@
     }
   },
   "Default": {
-    "H1": {
+    "h1": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1455,27 +1462,25 @@
         "fontSize": 44,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H2": {
+    "h2": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
         "lineHeight": "AUTO",
         "fontSize": 40,
         "letterSpacing": "0%",
-        "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
-        "textDecoration": "none"
+        "textDecoration": "none",
+        "paragraphSpacing": 0
       },
       "type": "typography"
     },
-    "H3": {
+    "h3": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1483,13 +1488,12 @@
         "fontSize": 32,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H4": {
+    "h4": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1497,13 +1501,12 @@
         "fontSize": 28,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H5": {
+    "h5": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1511,13 +1514,12 @@
         "fontSize": 16,
         "letterSpacing": "8%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "P-L-D": {
+    "p-l-d": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1525,14 +1527,13 @@
         "fontSize": 20,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography",
       "description": "Paragraph - Large - Default \n"
     },
-    "P-D-D": {
+    "p-d-d": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1540,13 +1541,12 @@
         "fontSize": 16,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "P-S-D": {
+    "p-s-d": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1554,13 +1554,12 @@
         "fontSize": 14,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Placeholder": {
+    "placeholder": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Light",
@@ -1568,13 +1567,12 @@
         "fontSize": 14,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Button": {
+    "button": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1582,7 +1580,6 @@
         "fontSize": 14,
         "letterSpacing": "8%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
@@ -1596,7 +1593,6 @@
         "fontSize": 14,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
@@ -1604,7 +1600,7 @@
     }
   },
   "Mobile": {
-    "H1 - M": {
+    "h1-m": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1612,13 +1608,12 @@
         "fontSize": 40,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H2- M": {
+    "h2-m": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1626,13 +1621,12 @@
         "fontSize": 36,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H3- M": {
+    "h3-m": {
       "value": {
         "fontFamily": "Abel",
         "fontWeight": "Regular",
@@ -1640,13 +1634,12 @@
         "fontSize": 24,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H4-M": {
+    "h4-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1654,13 +1647,12 @@
         "fontSize": 24,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "H5-M": {
+    "h5-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1668,13 +1660,12 @@
         "fontSize": 20,
         "letterSpacing": "8%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "P-L-M": {
+    "p-l-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1682,14 +1673,13 @@
         "fontSize": 20,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography",
       "description": "Paragraph Large Mobile"
     },
-    "P-D-M": {
+    "p-d-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1697,14 +1687,13 @@
         "fontSize": 16,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography",
       "description": "Paragraph - Body - Mobile"
     },
-    "P-S-M": {
+    "p-s-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1712,13 +1701,12 @@
         "fontSize": 14,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Label- M": {
+    "label-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1726,13 +1714,12 @@
         "fontSize": 16,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Button Text - M": {
+    "button-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Regular",
@@ -1740,13 +1727,12 @@
         "fontSize": 14,
         "letterSpacing": "12%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "uppercase",
         "textDecoration": "none"
       },
       "type": "typography"
     },
-    "Placeholder-M": {
+    "placeholder-m": {
       "value": {
         "fontFamily": "Nunito Sans",
         "fontWeight": "Light",
@@ -1754,7 +1740,6 @@
         "fontSize": 16,
         "letterSpacing": "0%",
         "paragraphSpacing": 0,
-        "paragraphIndent": 0,
         "textCase": "none",
         "textDecoration": "none"
       },
@@ -1785,74 +1770,72 @@
       "type": "textDecoration"
     }
   },
-  "borderRadius": {
-    "100": {
-      "value": "0.25rem",
-      "type": "borderRadius"
-    },
-    "200": {
-      "value": "0.5rem",
-      "type": "borderRadius"
-    },
-    "300": {
-      "value": "1rem",
-      "type": "borderRadius"
-    },
-    "400": {
-      "value": "1.5rem",
-      "type": "borderRadius"
-    },
-    "500": {
-      "value": "2rem",
-      "type": "borderRadius"
-    },
-    "600": {
-      "value": "3rem",
-      "type": "borderRadius"
-    },
-    "700": {
-      "value": "4rem",
-      "type": "borderRadius"
-    },
-    "800": {
-      "value": "6rem",
-      "type": "borderRadius"
-    }
+  "rounded-sm": {
+    "value": "0.25rem",
+    "type": "borderRadius"
   },
-  "uniPad": {
-    "100": {
+  "rounded": {
+    "value": "0.5rem",
+    "type": "borderRadius"
+  },
+  "rounded-md": {
+    "value": "1rem",
+    "type": "borderRadius"
+  },
+  "rounded-lg": {
+    "value": "1.5rem",
+    "type": "borderRadius"
+  },
+  "rounded-xl": {
+    "value": "2rem",
+    "type": "borderRadius"
+  },
+  "rounded-2xl": {
+    "value": "3rem",
+    "type": "borderRadius"
+  },
+  "rounded-3xl": {
+    "value": "4rem",
+    "type": "borderRadius"
+  },
+  "rounded-4xl": {
+    "value": "6rem",
+    "type": "borderRadius"
+  },
+  "padding": {
+    "p-1": {
       "value": "0.25rem",
       "type": "spacing"
     },
-    "200": {
+    "p-2": {
       "value": "0.5rem",
       "type": "spacing"
     },
-    "300": {
+    "p-4": {
       "value": "1rem",
       "type": "spacing"
     },
-    "400": {
+    "p-6": {
       "value": "1.5rem",
       "type": "spacing"
     },
-    "500": {
+    "p-8": {
       "value": "2rem",
       "type": "spacing"
     },
-    "600": {
+    "p-12": {
       "value": "3rem",
       "type": "spacing"
     },
-    "700": {
+    "p-16": {
       "value": "4rem",
       "type": "spacing"
     },
-    "800": {
+    "p-24": {
       "value": "6rem",
       "type": "spacing"
     },
-    "900": {
+    "p-32": {
       "value": "8rem",
       "type": "spacing"
     }

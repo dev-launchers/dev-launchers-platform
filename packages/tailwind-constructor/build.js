@@ -13,9 +13,11 @@ StyleDictionaryPackage.registerFormat({
 StyleDictionaryPackage.registerTransform({
     name: 'sizes/px',
     type: 'value',
+   
     matcher: function(prop) {
+      //console.log(prop.attributes);
         // You can be more specific here if you only want 'em' units for font sizes    
-        return ["fontSizes", "spacing", "borderRadius", "borderWidth", "sizing", "Highlight", "Shadow"].includes(prop.attributes.category);
+        return ["fontSizes", "spacing", "borderRadius", "borderWidth", "sizing", "Highlight", "Shadow", "Universal", "Link Text", "Default", "Mobile"].includes(prop.attributes.category);
     },
     transformer: function(prop) {
         // You can also modify the value here if you want to convert pixels to ems
@@ -23,15 +25,17 @@ StyleDictionaryPackage.registerTransform({
 
         switch (prop.attributes.category) {
           case 'fontSizes':
-              return parseFloat(prop.original.value) + 'rem';
           case 'spacing':
-              return parseFloat(prop.original.value) + 'rem';
           case 'borderRadius':
-              return parseFloat(prop.original.value) + 'rem';
           case 'borderWidth':
+          case 'sizing': 
               return parseFloat(prop.original.value) + 'rem';
-          case 'sizing':
-              return parseFloat(prop.original.value) + 'rem';
+          case 'Default':
+          case 'Mobile':
+          case 'Link Text':  
+          case 'Universal':
+              const {fontFamily, fontSize, fontWeight, lineHeight, letterSpacing, paragraphSpacing, textCase, textDecoration} = prop.original.value;
+              return prop.original.value ? `${fontFamily} ${fontSize}px ${fontWeight} ${lineHeight}px ${letterSpacing} ${paragraphSpacing} ${textCase} ${textDecoration}` : 'none';
           case 'Highlight':
           case 'Shadow':
               const {x, y, blur, spread, color} = prop.original.value;

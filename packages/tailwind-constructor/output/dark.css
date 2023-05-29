@@ -1,0 +1,12 @@
+.dark-theme {
+  --fg-default: #ffffff;
+  --fg-muted: #e2e8f0;
+  --fg-subtle: #a0aec0;
+  --bg-default: #1a202c;
+  --bg-muted: #4a5568;
+  --bg-subtle: #718096;
+  --accent-default: #5a67d8;
+  --accent-on-accent: #ffffff;
+  --accent-bg: #434190;
+  --shadows-default: #0000004d;
+}
