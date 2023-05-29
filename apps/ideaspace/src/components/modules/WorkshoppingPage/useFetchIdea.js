@@ -4,15 +4,7 @@ import { cleanData } from '../../../utils/StrapiHelper';
 
 export const useFetchIdea = (ideaId) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState({
-    ideaName: '',
-    discord: '',
-    description: '',
-    email: '',
-    created_at: '',
-    comments: [],
-    author: {},
-  });
+  const [data, setData] = useState({});
   useEffect(() => {
     const fetchIdea = async (ideaId) => {
       setLoading(true)
