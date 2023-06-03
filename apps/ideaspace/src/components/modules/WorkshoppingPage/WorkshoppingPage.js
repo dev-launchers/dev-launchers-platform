@@ -24,6 +24,7 @@ export default function WorkshoppingPage(props) {
   const [handleChange, setHandleChange] = React.useState(null);
   const [handleTextChange, setHandleTextChange] = React.useState([]);
   const { data, loading } = useFetchIdea(ideaId);
+  // const [seed, setSeed] = useState(1);
 
   console.log("number of comments =", data.comments);
   console.log("data =", data);
@@ -44,8 +45,19 @@ export default function WorkshoppingPage(props) {
           </Form>
 
           <Comments>
+<<<<<<< Updated upstream
             {/* a count of the comments in the comment feed: */}
             <h6>Comment Feed: {data.comments.length}</h6>
+=======
+            <h4 style={{textAlign: "left", paddingLeft: "20px"}}>Comment feed</h4>
+            {/* a count of the comments in the comment feed: */}
+            <h6 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENTS: {JSON.stringify(data?.comments?.data?.length)}</h6>
+
+            <Form>
+              <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
+            </Form>
+
+>>>>>>> Stashed changes
             <CommentList selectedCard={data} />
           </Comments>
         </Wrapper>
