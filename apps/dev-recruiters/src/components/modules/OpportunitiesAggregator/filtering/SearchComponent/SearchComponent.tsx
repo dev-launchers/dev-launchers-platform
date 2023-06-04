@@ -1,6 +1,7 @@
-import React, { KeyboardEvent, useState } from "react";
+import React, { KeyboardEvent, useEffect, useState } from "react";
 import { Container, Icon, SearchField } from "./StyledSearchComponent";
 import _, { debounce } from "lodash";
+import useProjects from "../useProject";
 
 interface Props {
   value: string;
@@ -22,6 +23,7 @@ export default function SearchComponent({ value, onChange }: Props) {
       onChange(searchTerm);
     }
   };
+
   return (
     <Container>
       <Icon
@@ -39,10 +41,11 @@ export default function SearchComponent({ value, onChange }: Props) {
         />
       </Icon>
       <SearchField
-        onChange={({ target }) => handleOnInputChange(target.value)}
+        onChange={({ target }) => onChange(target.value)}
         placeholder="Search for a position or skill"
         type="text"
         onKeyDown={handleOnKeyDown}
+        value={value}
       />
       {/* <SearchButton type='submit' value={'Search'} /> */}
     </Container>

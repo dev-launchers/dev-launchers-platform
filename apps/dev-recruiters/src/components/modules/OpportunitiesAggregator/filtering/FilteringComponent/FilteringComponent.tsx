@@ -84,11 +84,17 @@ export default function FilteringComponent({
     }
   }, []);
 
-  const [input, setState] = useState([]);
 
   const clearAllAction = () => {
-    resetFilters();
-    setState([]);
+    // resetFilters();
+    // SetProjectParams({
+    //   projectType: [],
+    //   opportunity: [],
+    //   level: [],
+    //   maxCommit: 0,
+    //   searchTerm: '',
+    // })
+    handleSearchTermChange('')
   };
 
   return (

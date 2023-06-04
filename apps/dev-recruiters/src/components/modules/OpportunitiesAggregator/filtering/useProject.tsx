@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SkillLevel } from '@devlaunchers/models/level';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
@@ -22,6 +22,10 @@ export default function useProjects() {
   const SetProjectParams = (value: ProjectParams) => {
     setFilteredProjects(FilterProjects(projects, value));
   };
+
+  // useEffect(() => {
+  //   console.log(projectParams);
+  // }, [projectParams])
 
   //#region Fetching Operations
   const fetchProjects = (projectsList: Project[]) => {
