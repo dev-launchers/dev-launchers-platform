@@ -83,14 +83,6 @@ function CommentForm(props) {
               placeholder="What are your thoughts? (max 250 characters)"
               value={props.handleTextChange}
               onChange={handleTextChange}
-<<<<<<< Updated upstream
-              maxlength={MAX_COMMENT_CHARS}
-            ></textarea>
-            {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-            <div id="the-count">
-              <span id="chars-left">{charsLeft}</span>
-            </div>
-=======
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
             <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
@@ -99,7 +91,6 @@ function CommentForm(props) {
               <span id="chars-left">{charsLeft}</span>
               <span id="char-counter">{charCount}</span>
             </div> */}
->>>>>>> Stashed changes
           </UserComment>
         </form>
       ) : (

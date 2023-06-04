@@ -168,12 +168,6 @@ export const CommentBox = styled.textarea`
 `;
 
 
-// export const SubmitButton = styled.button`
-//   background-color: #3A7CA5;
-//   color: white;
-// `;
-
-
 export const Idea = styled.div`
   width: 100%;
   max-width: 700px;

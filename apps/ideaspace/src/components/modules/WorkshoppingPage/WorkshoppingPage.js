@@ -20,7 +20,6 @@ import { useFetchIdea } from './useFetchIdea';
 
 export default function WorkshoppingPage(props) {
   const { ideaId } = props;
-  console.log(ideaId);
   const [handleChange, setHandleChange] = React.useState(null);
   const [handleTextChange, setHandleTextChange] = React.useState([]);
   const { data, loading } = useFetchIdea(ideaId);
@@ -45,10 +44,6 @@ export default function WorkshoppingPage(props) {
           </Form>
 
           <Comments>
-<<<<<<< Updated upstream
-            {/* a count of the comments in the comment feed: */}
-            <h6>Comment Feed: {data.comments.length}</h6>
-=======
             <h4 style={{textAlign: "left", paddingLeft: "20px"}}>Comment feed</h4>
             {/* a count of the comments in the comment feed: */}
             <h6 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENTS: {JSON.stringify(data?.comments?.data?.length)}</h6>
@@ -57,7 +52,6 @@ export default function WorkshoppingPage(props) {
               <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
             </Form>
 
->>>>>>> Stashed changes
             <CommentList selectedCard={data} />
           </Comments>
         </Wrapper>
@@ -65,5 +59,3 @@ export default function WorkshoppingPage(props) {
     </Container>
   );
 }
-
-// export default WorkshoppingPage;
