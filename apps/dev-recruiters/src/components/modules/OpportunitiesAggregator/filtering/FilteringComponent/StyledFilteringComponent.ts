@@ -191,3 +191,19 @@ export const FilterMenuButton = styled.button`
     display: flex;
   }
 `;
+export const ClearAllButton = styled.button`
+  display: inline-flex;
+  background: ${({ theme }) => theme?.colors?.AntiFlashWhite};
+  color: ${({ theme }) => theme?.colors?.Black};
+  border-radius: 2.9rem;
+  padding: 8px 10px;
+  align-items: center;
+  width: 100%;
+  min-width: 80px;
+  border-radius: 30.3694px;
+
+  border: none;
+  height: 28px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+`;
