@@ -1,6 +1,6 @@
 import { IdeaSkill } from './ideaSkill';
 import { Position } from './position';
-import { User } from 'user';
+import { User } from './user';
 import { Comment } from './comment';
 
 export interface Idea {
