@@ -174,6 +174,46 @@ export function UserProfileView({
     return <strong>Loading.....</strong>;
   }
 
+  const serializeSchedule = () => {
+    // id={`scheduler-hour-block-${day}-${hour}`}
+    // Create an array of objects representing the days
+    // Each object has a day property and an array of hours
+    let days = [
+      { day: 'Sunday', hours: [] },
+      { day: 'Monday', hours: [] },
+      { day: 'Tuesday', hours: [] },
+      { day: 'Wednesday', hours: [] },
+      { day: 'Thursday', hours: [] },
+      { day: 'Friday', hours: [] },
+      { day: 'Saturday', hours: [] },
+    ];
+
+    // Loop through all the days and get data from the dom
+		let dayIndex = 0;
+    days.forEach((day) => {
+			console.log(day);
+			let dayString = day.day;
+      // Get all the hours for the day
+			let newHours = [];
+      let hours = [...Array(24).keys()].map((hourNum) => {
+				let hourElement = document.getElementById(`scheduler-hour-block-${dayString}-${hourNum}`);
+
+				// Add hourElement state to the day object
+				// Mark whether the hour is available or not
+				newHours.push(hourElement.classList.contains('available'));
+
+				return hourElement;
+			});
+			day.hours = newHours;
+
+			// Store data back into days array
+			days[dayIndex] = day;
+
+			dayIndex++;
+    });
+    console.log(JSON.stringify(days));
+  };
+
   return (
     <PageBody>
       {/*}{userData?.id || (otherUser?.id && !loading) ? ( {*/}
@@ -191,19 +231,19 @@ export function UserProfileView({
 
             <UserInfo>
               {/* }
-              <Points
-                availablePoints={
-                  otherUser?.point?.availablePoints || userData.availablePoints
-                }
-                seasonPoints={
-                  otherUser?.point?.totalSeasonPoints ||
-                  userData.totalSeasonPoints
-                }
-                volunteerHours={
-                  otherUser?.point?.volunteerHours || userData.volunteerHours
-                }
-              />
-              { */}
+							<Points
+								availablePoints={
+									otherUser?.point?.availablePoints || userData.availablePoints
+								}
+								seasonPoints={
+									otherUser?.point?.totalSeasonPoints ||
+									userData.totalSeasonPoints
+								}
+								volunteerHours={
+									otherUser?.point?.volunteerHours || userData.volunteerHours
+								}
+							/>
+							{ */}
               <BioBox
                 data={otherUser?.profile || userData}
                 canEdit={!otherUser}
@@ -212,8 +252,8 @@ export function UserProfileView({
           </UserSection>
 
           {/*
-          <LabCampus />
-          */}
+					<LabCampus />
+					*/}
 
           <Misc>
             <Tabs
@@ -277,11 +317,19 @@ export function UserProfileView({
                 style={{
                   width: '100%',
                   display: 'flex',
-                  justifyContent: 'space-around',
+                  justifyContent: 'flex-start',
                   alignItems: 'center',
                 }}
               >
-                {['s', 'm', 't', 'w', 't', 'f', 's'].map((weekday) => (
+                {[
+                  'Sunday',
+                  'Monday',
+                  'Tuesday',
+                  'Wednesday',
+                  'Thursday',
+                  'Friday',
+                  'Saturday',
+                ].map((weekday) => (
                   <div
                     style={{
                       display: 'flex',
@@ -290,23 +338,14 @@ export function UserProfileView({
                     }}
                   >
                     <b style={{ fontSize: '1.5em', flex: 1 }}>{weekday}</b>
+
+                    {/* This is the list of hours for each day */}
+                    {/* It will be a list of 24 divs, each representing an hour */}
+                    {/* Each div will be clickable and will alert the user of the day and hour */}
+                    {/* Hours are from 1-12, so we will need to convert from 24 hour time */}
+                    {/* We also need to add AM/PM */}
                     {[...Array(24).keys()].map((hourNum) => (
-                      <div
-                        style={{
-                          cursor: 'pointer',
-                          backgroundColor: 'lightgrey',
-                          width: '100%',
-                          height: '100%',
-                          margin: '.1rem',
-                          flex: 1,
-                          textAlign: 'center',
-                        }}
-                        onClick={() => {
-                          alert(`${weekday} - ${hourNum}`);
-                        }}
-                      >
-                        {hourNum}:00
-                      </div>
+                      <SchedulerHourBlock day={weekday} hour={hourNum} />
                     ))}
                   </div>
                 ))}
@@ -320,19 +359,27 @@ export function UserProfileView({
                   alignItems: 'center',
                 }}
               ></div>
+              {/* Add a button that serializes the entire schedule and outputs it to the console */}
+              {/* It should be a button that says "Save Schedule" */}
+              {/* When clicked, it should output the schedule to the console */}
+              {/* The schedule should be an array of objects, each object representing a day */}
+              {/* Each object should have a day property and an array of hours */}
+              {/* Each hour should be a boolean, true if the hour is available, false if not */}
+              {/* Example: [{day: 's', hours: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, true, true, true, true, true, true]}, {day: 'm', hours: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, false, true, true, true, true, true, true]}, ...] */}
+              <button onClick={() => serializeSchedule()}>Save Schedule</button>
             </div>
 
             {/* }<WeeksGlance />{ */}
             {/*
-            <LabMember />
-            */}
+						<LabMember />
+						*/}
             {/*
-              <DiscordSection
-                discordId={userData.discord.id}
-                avatarKey={userData.discord.avatar}
-                discordUsername={userData.discord.username}
-                discordDiscriminator={userData.discord.discriminator}
-              /> */}
+							<DiscordSection
+								discordId={userData.discord.id}
+								avatarKey={userData.discord.avatar}
+								discordUsername={userData.discord.username}
+								discordDiscriminator={userData.discord.discriminator}
+							/> */}
           </Misc>
         </Wrapper>
       ) : (
@@ -362,3 +409,36 @@ export function UserProfileView({
     </PageBody>
   );
 }
+
+const SchedulerHourBlock = ({ day, hour }) => {
+  const [hourBlockState, setHourBlockState] = useState(false);
+
+  return (
+    <div
+      id={`scheduler-hour-block-${day}-${hour}`}
+      style={{
+        cursor: 'pointer',
+        backgroundColor: hourBlockState ? 'grey' : 'lightgrey',
+        width: '100%',
+        height: '100%',
+        margin: '0',
+        flex: 1,
+        textAlign: 'center',
+        userSelect: 'none',
+      }}
+      onClick={() => {
+        setHourBlockState(!hourBlockState);
+      }}
+      onMouseOver={(e) => {
+        // When a mouse hovers over an hour block div, check if the mouse is down
+        // If it is, toggle the hour block state
+        if (e.buttons === 1) {
+          setHourBlockState(!hourBlockState);
+        }
+      }}
+    >
+      {hour % 12 === 0 ? 12 : hour % 12}
+      {hour < 12 ? 'AM' : 'PM'}
+    </div>
+  );
+};
