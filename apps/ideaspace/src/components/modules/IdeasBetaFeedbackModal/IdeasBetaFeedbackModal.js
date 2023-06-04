@@ -37,22 +37,12 @@ const ModalCustomStyles = {
 const IdeasBetaFeedbackModal = () => {
   const [showModal, setShowModal] = useState(false);
 
-  function refreshIsIdeaSpaceVisited() {
-    localStorage.setItem('dl_Ideas_isVisited', true);
-  }
-
-  /*useEffect(() => {
-    const isVisited = localStorage.dl_Ideas_isVisited || false;
-    if (!isVisited) openModal();
-  });*/
-
   function openModal() {
     setShowModal(true);
   }
 
   function closeModal() {
     setShowModal(false);
-    refreshIsIdeaSpaceVisited();
   }
 
   Modal.setAppElement('#__next');
