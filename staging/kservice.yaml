@@ -131,8 +131,13 @@ spec:
         - name: OPEN_POSITIONS_DISCORD_WEBHOOK
           valueFrom:
             secretKeyRef:
-              name: site-projects
+              name: integrations
               key: discord-webhook
+        - name: SENTRY_DSN
+          valueFrom:
+            secretKeyRef:
+              name: integrations
+              key: sentry-dsn
         - name: V_MATCH_USER
           valueFrom:
             secretKeyRef:
