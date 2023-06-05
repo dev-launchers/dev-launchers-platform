@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Typography } from '@devlaunchers/components/components/atoms'
 import { OnboardingCardContainer, PicWrapper, TextWrapper, CheckedWrapper, CheckedSVG, IconImg } from './StyledOnboardingCard'
 
@@ -12,8 +12,12 @@ export default function OnboardingCard({
     subtitle,
     completed,
 }) {
+    const [isActive, setIsActive] = useState(false);
+    const detectHover = event => {
+        setIsActive(current => !current);
+      };
     return (
-        <OnboardingCardContainer completed = {completed}>
+        <OnboardingCardContainer completed = {completed} className={isActive ? 'hovered' : ''} onMouseEnter={detectHover} onMouseLeave={detectHover}>
             <PicWrapper>
                     <IconImg iconImg={iconImg} />
             </PicWrapper>
