@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { RoleCardContainer, IconWrapper, TextWrapper, IconImg} from './StyledRoleCard'
 import { Typography } from '@devlaunchers/components/components/atoms'
 
@@ -11,16 +11,22 @@ export default function RoleCard({
     iconImg,
     title,
     subtitle,
-    titletheme,
+    theme,
 }) {
+    const [isActive, setIsActive] = useState(false);
+    const handleClick = event => {
+        setIsActive(current => !current);
+      };
+      
+
     return (
-        <RoleCardContainer>
+        <RoleCardContainer className={isActive ? 'selected' : ''} onClick={handleClick}>
             <IconWrapper>
                     <IconImg iconImg={iconImg} />
             </IconWrapper>
 
             <TextWrapper>
-                <Typography type="pLarge"><span className={`theme ${titletheme}`}>{title}</span></Typography>
+                <Typography type="pLarge"><span className={`title ${theme}`}>{title}</span></Typography>
                 <Typography type="pSmall">{subtitle}</Typography>
             </TextWrapper>
                     
