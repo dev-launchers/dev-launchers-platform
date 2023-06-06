@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -148,6 +147,9 @@
         "mid-level",
         "senior"
       ]
+    },
+    "schedule": {
+      "type": "json"
     }
   }
 }
