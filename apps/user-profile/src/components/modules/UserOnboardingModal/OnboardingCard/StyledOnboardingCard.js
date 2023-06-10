@@ -62,6 +62,10 @@ export const OnboardingCardContainer = styled.div`
     background: ${props => props.completed ? '#E2E2E2' : 'white'};
     box-shadow: ${props => props.completed ? '' : '0px 10px 18px 10px rgba(127, 126, 127, 0.25)'};
     margin-bottom: 15px;
+
+    &:hover {
+        border: 1px solid #3A7CA5;
+    } 
 `;
 
 export const Wrapper = styled.div`
