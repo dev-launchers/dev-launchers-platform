@@ -12,12 +12,9 @@ export default function OnboardingCard({
     subtitle,
     completed,
 }) {
-    const [isActive, setIsActive] = useState(false);
-    const detectHover = event => {
-        setIsActive(current => !current);
-      };
+    
     return (
-        <OnboardingCardContainer completed = {completed} className={isActive ? 'hovered' : ''} onMouseEnter={detectHover} onMouseLeave={detectHover}>
+        <OnboardingCardContainer completed = {completed}>
             <PicWrapper>
                     <IconImg iconImg={iconImg} />
             </PicWrapper>
