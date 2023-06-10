@@ -30,8 +30,12 @@ export const RoleCardContainer = styled.div`
     gap: 10px;
     width: 220px;
     height: 250px;
-    border: 1px solid #7F7E7F;
+    border: 1px solid #7F7E7F;    
     border-radius: 10px;
+
+    &.selected {
+        border: 5px solid #3A7CA5;
+    }
 `;
 
 export const IconWrapper = styled.div`
@@ -43,7 +47,7 @@ export const TextWrapper = styled.div`
     text-align: center;
     width: 100%;
 
-    .theme {
+    .title {
         font-weight: 900;
 
         &.theme1 {
