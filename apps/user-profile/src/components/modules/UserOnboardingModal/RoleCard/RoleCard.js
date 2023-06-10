@@ -13,14 +13,14 @@ export default function RoleCard({
     subtitle,
     theme,
 }) {
-    const [isActive, setIsActive] = useState(false);
+    const [isSelected, setIsSelected] = useState(false);
     const handleClick = event => {
-        setIsActive(current => !current);
+        setIsSelected(current => !current);
       };
       
 
     return (
-        <RoleCardContainer className={isActive ? 'selected' : ''} onClick={handleClick}>
+        <RoleCardContainer className={isSelected ? 'selected' : ''} onClick={handleClick}>
             <IconWrapper>
                     <IconImg iconImg={iconImg} />
             </IconWrapper>
