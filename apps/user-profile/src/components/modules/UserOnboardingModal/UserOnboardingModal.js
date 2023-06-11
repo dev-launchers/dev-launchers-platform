@@ -6,7 +6,6 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
-import PageTwo from "./PlatformOnboarding/PageTwo/PageTwo.js";
 
 Modal.setAppElement("#__next");
 
