@@ -160,7 +160,7 @@ export default function SignUpForm() {
               </atoms.Box>
               <atoms.Box flexDirection="column">
                 <atoms.Typography type="pSmall">
-                  HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
+                  How many hours a week would you like to volunteer?
                 </atoms.Typography>
 
                 <atoms.Slider
