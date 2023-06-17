@@ -118,7 +118,7 @@ export default function UserOnboarding() {
                     buttonType="primary"
                     onClick={handleContinueClick}
                 >
-                    Continue
+                    Save and Continue
                 </Button>
             </form>
         </OnboardingForm>

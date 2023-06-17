@@ -6,9 +6,10 @@ import { Typography } from '@devlaunchers/components/components/atoms'
 const OnboardingForm = ({ children }) => {
     return (
         <OnboardingFormSection>
-            <PageBody width='40%'>
+            <PageBody width='40%' style={{backgroundColor: 'inherit'}}>
                 <div className='form-title-mb'>
-                    <Typography type='h2'>Let's Get to know each other</Typography>
+                    <Typography type='h1'>First Let's Set Up Your Profile</Typography>
+										<Typography type='h2'>A complete profile will help to match you with the perfect opportunity</Typography>
                 </div>
                 {children}
             </PageBody>
