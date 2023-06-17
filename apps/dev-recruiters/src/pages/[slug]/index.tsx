@@ -31,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const projectsRes = await agent.Projects.get(params.slug as string, new URLSearchParams(`populate=deep&[filters][slug][$eq]=${params.slug}`));
-  const opportuntiesRes = await agent.Opportunities.list(new URLSearchParams(`populate=deep&filters[projects][slug][$eq]=${params.slug}`)
+  let opportunities = await agent.Opportunities.list(new URLSearchParams(`populate=deep&filters[projects][slug][$eq]=${params.slug}`)
   );
 
   let project: Project = projectsRes.attributes;
@@ -57,8 +57,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const minCommitment = Math.min(...commitments);
   project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
-  let opportunities: Opportunity[] = await opportuntiesRes.json();
-  opportunities = opportunities?.data;
+  
   opportunities = opportunities.map(opportunity => opportunity.attributes);
 
   return {

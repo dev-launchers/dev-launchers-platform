@@ -52,11 +52,10 @@ console.log(project);
           scrollToDonate: () => excuteScroll(donateRef),
         }}
       />
-      //commenting out until we get the field images migrated
-      {/* <Description
+      <Description
         description={project?.attributes.description}
-        images={project?.attributes.Images}
-      /> */}
+        images={project?.attributes.images}
+      />
       <Role ref={roleRef} data={project?.attributes.opportunities.attributes} projectSlug={project.attributes.slug} />
       <Milestones data={project?.attributes.board?.ProjectMilestone} />
       {<Sessions calendarId={project.attributes.calendarId} />}

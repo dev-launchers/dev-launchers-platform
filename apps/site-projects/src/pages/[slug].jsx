@@ -8,7 +8,7 @@ import agent from "@devlaunchers/utility/agent"
 
 export const getStaticPaths = async () => {
   
-  const data = await agent.Projects.list({populate: 'deep', _publicationState: 'live'});
+  const data = await agent.Projects.list({populate: '*', _publicationState: 'live'});
 
   const paths = data.map((project) => ({
     params: { slug: project.attributes?.slug},
