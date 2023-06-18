@@ -11,7 +11,7 @@ const Projects = ({ projects }) => {
 
   const options = {
     includeScore: true,
-    keys: ['interests?.interest'],
+    keys: ['interests.interest'],
     threshold: 0.3,
     ignoreFieldNorm: true,
   };
