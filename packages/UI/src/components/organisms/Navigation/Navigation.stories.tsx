@@ -28,6 +28,6 @@ SignedInUser.args = {
     ...DEFAULT_USER,
     id: 1,
     name: 'test user',
-    profilePictureUrl: testImage,
+    profilePictureUrl: "images/logo-monogram.png",
   },
 };

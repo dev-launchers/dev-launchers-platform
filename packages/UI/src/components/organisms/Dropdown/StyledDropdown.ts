@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Icon from '../../../assets/icons/rawSvg/chevron-down.svg';
 import { radiusStyles } from '../../atoms';
 import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
 import type { DropdownProps } from '.';
@@ -53,7 +52,7 @@ export const Options = styled.form<DropdownProps>`
 `;
 
 export const Chevron = styled.img.attrs(() => ({
-  src: Icon,
+  src: 'rawSvg/chevron-down.svg',
   alt: 'icon',
 }))<DropdownProps>`
   display: inline-block;

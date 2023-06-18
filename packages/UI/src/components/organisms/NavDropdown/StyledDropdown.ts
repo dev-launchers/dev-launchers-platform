@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
 import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { shadowStyles } from '../../atoms/Shadow';
-import Icon from './chevron-down.svg';
 import type { NavDropdownProps } from '.';
 
 export const DropdownContainer = styled.div`
@@ -65,7 +64,7 @@ export const Options = styled.div`
 `;
 
 export const Chevron = styled.img.attrs(() => ({
-  src: Icon,
+  src: 'rawSvg/chevron-down.svg',
   alt: 'icon',
 }))<Pick<NavDropdownProps, 'isOpen'>>`
   display: inline-block;

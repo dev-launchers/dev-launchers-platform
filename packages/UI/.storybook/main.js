@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   staticDirs: ['../public'],
-  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-links', 'storybook-addon-next-router', '@storybook/addon-viewport', '@storybook/addon-mdx-gfm'],
-  framework: path.resolve(require.resolve('@storybook/react-webpack5/preset'), '..'),
+  addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-viewport', '@storybook/addon-mdx-gfm'],
+  framework: path.resolve(require.resolve('@storybook/nextjs/preset'), '..'),
   webpackFinal: async config => {
     config.module.rules.push({
       test: /\.mjs$/,

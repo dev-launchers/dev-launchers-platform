@@ -8,7 +8,6 @@ import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import BackButton from '../../molecules/BackButton';
 import NavDropdown from '../NavDropdown';
-import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
 
@@ -67,7 +66,7 @@ const MobileNavigation = ({
               ) : (
                 <Link href="/">
                   <a href="/">
-                    <img width="139.26" height="114" src={logo} alt="logo" />
+                    <img width="139.26" height="114" src={'images/logo-monogram.png'} alt="logo" />
                   </a>
                 </Link>
               )}

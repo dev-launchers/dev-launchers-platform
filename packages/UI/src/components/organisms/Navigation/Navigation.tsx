@@ -9,7 +9,6 @@ import Layer from '../../atoms/Layer';
 import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import NavDropdown from '../NavDropdown';
-import logo from './../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
 import { Nav, NavWrapper } from './Styled.Navigation';
@@ -53,7 +52,7 @@ export default function Navigation({ user }: NavigationProps) {
               <Link href="/">
                 <a href="/">
                   <Box gap={'5px'} alignItems={'center'}>
-                    <img width="36" height="33" src={logo} alt="logo" />
+                    <img width="36" height="33" src={'images/logo-monogram.png'} alt="logo" />
                     <Typography type="h3">Dev Launchers</Typography>
                   </Box>
                 </a>

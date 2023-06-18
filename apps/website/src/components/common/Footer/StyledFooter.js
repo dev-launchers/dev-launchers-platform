@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 
 function getRandomThemeColor(theme) {
   const colors = [
@@ -34,7 +33,7 @@ export const Wrapper = styled.div`
 `;
 
 export const FooterLogo = styled.img.attrs(() => ({
-  src: logoMonogramImage,
+  src: 'images/logo-monogram.png',
   alt: "logo",
 }))`
   width: 7rem;

@@ -1,4 +1,3 @@
-import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer } from '../../../atoms';
 import type { ProductProps } from '.';
@@ -46,7 +45,7 @@ export const ImageContainer = ({
       alignItems="center"
       gap="8px"
       css={{
-        backgroundImage: `url(${testImage})`,
+        backgroundImage: `url(${'images/test-image.png'})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

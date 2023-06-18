@@ -1,5 +1,4 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import logo from '../../../../assets/images/test-image.png';
 import { UserDataProvider } from '../../../../context/UserDataContext';
 import UserCard from './UserCard';
 
@@ -20,7 +19,7 @@ HorizontalUserAvatar.args = {
     name: 'John James',
     bio: 'Product Lead',
     email: 'email@email.com',
-    profilePictureUrl: logo,
+    profilePictureUrl: 'images/test-image.png',
     discord: {
       username: '@discordUsername',
       discriminator: '2324',
@@ -35,7 +34,7 @@ VerticalUserAvatar.args = {
     name: 'John James',
     bio: 'Product Lead',
     email: 'john_james@devlaunchers.com',
-    profilePictureUrl: logo,
+    profilePictureUrl: 'images/test-image.png',
     discord: {
       username: '@discordUsername',
       discriminator: '2324',

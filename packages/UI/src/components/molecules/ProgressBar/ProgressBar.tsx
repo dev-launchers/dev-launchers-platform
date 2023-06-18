@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Icon from '../../../assets/icons/rawSvg/check-circle.svg';
 import {
   ProgressBarWrapper,
   CheckIcon,
@@ -19,7 +18,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ value }) => {
       <progress value={progressValue} max={max} />
       <PercentageWrapper>
         <Percentage value={value}>{value}%</Percentage>
-        {value >= 100 && <CheckIcon src={Icon} />}
+        {value >= 100 && <CheckIcon src={'rawSvg/check-circle.svg'} />}
       </PercentageWrapper>
     </ProgressBarWrapper>
   );

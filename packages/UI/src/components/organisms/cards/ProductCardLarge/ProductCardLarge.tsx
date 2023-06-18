@@ -1,5 +1,4 @@
 import { useTheme } from 'styled-components';
-import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer, Button } from '../../../atoms';
 import { typographyStyles } from '../../../atoms/Typography';
@@ -32,7 +31,7 @@ const ProductCardLarge = ({
       <Box flexDirection="column">
         {image ? (
           <img
-            src={testImage}
+            src={'images/test-image.png'}
             alt="Banner"
             height="642px"
             css={{ borderRadius: '16px 16px 0 0' }}
