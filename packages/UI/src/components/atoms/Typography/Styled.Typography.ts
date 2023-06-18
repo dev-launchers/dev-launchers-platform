@@ -114,7 +114,6 @@ const label = `
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    text-transform: uppercase;
     @media only screen and (max-width: 62.5rem) {
         font-size: 1rem;
         line-height: 1.5rem;
