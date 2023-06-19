@@ -150,6 +150,10 @@
     },
     "schedule": {
       "type": "json"
+    },
+    "completedOnboarding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
