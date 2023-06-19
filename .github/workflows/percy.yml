@@ -1,0 +1,22 @@
+on:
+  push:
+    paths:
+      - 'packages/UI/.storybook/**'
+      - 'packages/UI/src/**'
+
+jobs:
+  name: 'Percy'
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Node 16.x  
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Percy Storybook Snapshots
+        run: yarn percy storybook http://localhost:6006
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
