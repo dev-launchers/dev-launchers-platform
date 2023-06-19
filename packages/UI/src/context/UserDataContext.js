@@ -1,8 +1,5 @@
-import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import React from 'react';
-
-import { env } from '../utils/EnvironmentVariables';
 
 export const DEFAULT_USER = {
   id: 0,
@@ -32,34 +29,14 @@ function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
-  React.useEffect(() => {
-    axios(`${env().STRAPI_URL}/users/me`, {
-      withCredentials: true,
-    })
-      .then(({ data: currentUser }) => {
-        setUserData({
-          id: currentUser.id,
-          name: currentUser.profile.displayName,
-          username: currentUser.username,
-          email: currentUser.email,
-          bio: currentUser.profile.bio,
-          profilePictureUrl: currentUser.profile.profilePictureUrl,
-          socialMediaLinks: currentUser.profile.socialMediaLinks,
-          totalPoints: currentUser.point.totalPoints,
-          totalSeasonPoints: currentUser.point.totalSeasonPoints,
-          availablePoints: currentUser.point.availablePoints,
-          volunteerHours: currentUser.point.volunteerHours,
-          interests: currentUser.interests,
-        });
-        setIsAuthenticated(true);
-      })
-      .catch(() => {
-        // setUserData({ id: "invalid" });
-        setIsAuthenticated(false);
-      });
-  }, []);
+  const updateUserData = (dataForUser) => {
+    console.log('updating the context', dataForUser);
+    setUserData(dataForUser);
+    setIsAuthenticated(true);
+    console.log('updated');
+  };
 
-  return { userData, setUserData, isAuthenticated };
+  return { userData, setUserData, isAuthenticated, updateUserData };
 }
 
 // Step 2: Declare your context state object to share the state with other components

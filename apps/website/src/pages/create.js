@@ -4,8 +4,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Create from '../components/modules/Create';
 
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+
 export default function CreateRoute() {
   const router = useRouter();
+  const { userData } = useUserDataContext();
+  console.log('ud', userData);
   // Need to use GET params to get a specific variable
   const params = queryString.parse(router.locale);
   // console.log("router locale", router.locale);
@@ -15,6 +19,7 @@ export default function CreateRoute() {
         <title>Create</title>
       </Head>
       <div>
+        Hello {userData.email}
         <Create templateId={params.template} />
       </div>
     </>

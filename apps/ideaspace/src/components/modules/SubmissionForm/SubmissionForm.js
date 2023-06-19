@@ -18,13 +18,14 @@ import {
 
 function SubmissionForm() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
+  console.log('ud', userData);
+  // if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
+  //   isAuthenticated = true;
 
-    React.useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+  //   React.useEffect(() => {
+  //     setUserData({ ...userData, id: 30 });
+  //   }, []);
+  // }
 
   const router = useRouter();
   const [sending, setSending] = useState(false);
@@ -136,7 +137,7 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <Headline>Submit an idea</Headline>
+        <Headline>Submit an idea {userData.id}</Headline>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>

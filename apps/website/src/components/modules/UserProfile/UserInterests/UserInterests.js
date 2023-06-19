@@ -1,9 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-import { useUserDataContext } from "../../../../context/UserDataContext";
-
-import { env } from "../../../../utils/EnvironmentVariables";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 
 import {
   UserInterestCard,

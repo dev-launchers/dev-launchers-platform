@@ -21,7 +21,7 @@ import Milestones from "./Milestones";
 import JoinSupport from "./JoinSupport";
 import HelpBuild from "./HelpBuild";
 import Sessions from "./Sessions";
-import {useUserDataContext} from "../../../../context/UserDataContext"
+import {useUserDataContext} from '@devlaunchers/components/src/context/UserDataContext';
 
 const Project = ({ project, theme }) => {
   const router = useRouter();

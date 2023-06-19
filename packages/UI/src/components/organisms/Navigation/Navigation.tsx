@@ -42,13 +42,19 @@ export default function Navigation({ user }: NavigationProps) {
   if (!user) {
     userInfo = useUserDataContext().userData;
   }
-  // const { userData } = useUserDataContext();
+
+  const { userData } = useUserDataContext();
+  console.log('ud', userData);
+  console.log('ui', userInfo);
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <Layer hasRainbowBottom={true} type="dark">
           <Nav>
-            <Box justifyContent={'space-between'} alignItems={'center'}>
+            <Box 
+            onClick={() => console.log(userData)}
+            justifyContent={'space-between'} alignItems={'center'}>
               <Link href="/">
                 <a href="/">
                   <Box gap={'5px'} alignItems={'center'}>
@@ -79,7 +85,7 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'
+                        '?redirect_uri='+ process.env.BASE_URL_WEBSITE +'/users/me'
                       }
                       buttonType="primary"
                       buttonSize="standard"
@@ -90,7 +96,7 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'
+                        '?redirect_uri='+ process.env.BASE_URL_WEBSITE +'/users/me'
                       }
                       buttonType="secondary"
                       buttonSize="standard"

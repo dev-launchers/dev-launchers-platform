@@ -6,7 +6,7 @@ import PageBody from "../../common/PageBody";
 
 import { FormWrapper } from "./StyledSignUp";
 
-import { useUserDataContext } from "../../../context/UserDataContext";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 import { env } from "../../../utils/EnvironmentVariables";
 
 export default function SignUp() {
