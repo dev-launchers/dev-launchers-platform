@@ -1,3 +1,4 @@
+name: 'Percy'
 on:
   push:
     paths:
@@ -5,7 +6,6 @@ on:
       - 'packages/UI/src/**'
 
 jobs:
-  name: 'Percy'
   build:
     runs-on: ubuntu-latest
 
