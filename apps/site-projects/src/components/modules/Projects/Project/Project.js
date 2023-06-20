@@ -23,6 +23,13 @@ import HelpBuild from "./HelpBuild";
 import Sessions from "./Sessions";
 import {useUserDataContext} from "../../../../context/UserDataContext"
 
+function isOnTeam(id, team) {
+  const leadersIds = team.leaders.map((leader) => leader.id);
+  const membersIds = team.members.map((member) => member.id);
+
+  return leadersIds.includes(id) || membersIds.includes(id);
+}
+
 const Project = ({ project, theme }) => {
   const router = useRouter();
   const roleRef = useRef();
@@ -36,6 +43,9 @@ const Project = ({ project, theme }) => {
   }
 
   const userData = useUserDataContext();
+
+  const checkIfIsOnTeam = isOnTeam(userData.userData.id, project.team);
+  const isLogged = userData.userData.id === 0 ? false : true
 
   return (
     <Wrapper>
@@ -59,7 +69,7 @@ const Project = ({ project, theme }) => {
         images={project?.Images}
       />
 			{/*}<Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />{*/}
-      <Milestones data={project?.board?.ProjectMilestone} />
+      {isLogged && checkIfIsOnTeam ? <Milestones data={project?.board?.ProjectMilestone} /> : null}
       {<Sessions calendarId={project.calendarId} />}
       <Team data={project.team} />
       <JoinSupport
