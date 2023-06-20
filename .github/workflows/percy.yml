@@ -15,9 +15,9 @@ jobs:
       - name: Node 16.x  
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: 16.x
       - name: Install @percy/cli @percy/script and @percy/storybook
-        - run: yarn add @percy/cli @percy/script @percy/storybook
+        run: yarn add @percy/cli @percy/script @percy/storybook
       - name: Percy Storybook Snapshots
         run: yarn percy storybook http://localhost:6006
         env:
