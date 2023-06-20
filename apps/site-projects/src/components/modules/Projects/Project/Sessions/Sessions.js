@@ -37,7 +37,7 @@ const Sessions = ({ calendarId }) => {
         console.log(res);
         const items = [...res.data.items];
         const notCancelled = items.filter((item) => item.end !== undefined);
-        const now = DateTime.now().minus({ days: 6 });
+        const now = DateTime.now();
         const currentEvents = notCancelled.filter(
           (item) => DateTime.fromISO(item.start.dateTime) > now
         );
