@@ -23,6 +23,13 @@ import Sessions from "./Sessions";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Role from "./Role/Role";
 
+function isOnTeam(id, team) {
+  const leadersIds = team.leaders.map((leader) => leader.id);
+  const membersIds = team.members.map((member) => member.id);
+
+  return leadersIds.includes(id) || membersIds.includes(id);
+}
+
 const Project = ({ project, theme }) => {
   const router = useRouter();
   const roleRef = useRef();
@@ -36,6 +43,9 @@ const Project = ({ project, theme }) => {
   }
 
   const userData = useUserDataContext();
+
+  const checkIfIsOnTeam = isOnTeam(userData.userData.id, project?.attributes?.team);
+  const isLogged = userData.userData.id === 0 ? false : true
 
   return (
     <Wrapper>
@@ -58,8 +68,8 @@ const Project = ({ project, theme }) => {
         description={project?.attributes.description}
         images={project?.attributes.images}
       />
-      <Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />
-      <Milestones data={project?.attributes.board?.ProjectMilestone} />
+			{/*}<Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />{*/}
+      {isLogged && checkIfIsOnTeam ? <Milestones data={project?.attributes?.board?.ProjectMilestone} /> : null}
       {<Sessions calendarId={project.attributes.calendarId} />}
       <Team data={project.attributes?.team} />
       <JoinSupport
