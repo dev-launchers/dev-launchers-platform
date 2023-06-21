@@ -18,6 +18,8 @@ jobs:
           node-version: 16.x
       - name: Install @percy/cli @percy/script and @percy/storybook
         run: yarn add @percy/cli @percy/script @percy/storybook
+      - name: Uninstall @percy/agent
+        run: yarn remove @percy/agent
       - name: Percy Storybook Snapshots
         run: yarn percy storybook http://localhost:6006
         env:
