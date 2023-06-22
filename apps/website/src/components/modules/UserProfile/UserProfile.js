@@ -7,7 +7,7 @@ import axios from "axios";
 import Button from '../../common/Button';
 import PageBody from '../../common/PageBody';
 
-import { useUserDataContext } from '../../../context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import BioBox from './BioBox';
 import Opportunities from './Opportunities';
 import ProfileCard from './ProfileCard';

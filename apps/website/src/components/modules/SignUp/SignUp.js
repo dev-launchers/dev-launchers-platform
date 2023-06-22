@@ -4,7 +4,7 @@ import axios from "axios";
 import PageBody from "../../common/PageBody";
 // import DiscordImage from "../../../images/signup/discord.png?webp";
 import { FormWrapper } from "./StyledSignUp";
-import { useUserDataContext } from "../../../context/UserDataContext";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 
 export default function SignUp() {
   // const [loading, setLoading] = useState(true);

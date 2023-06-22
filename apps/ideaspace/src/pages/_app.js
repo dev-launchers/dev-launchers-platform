@@ -12,7 +12,6 @@ import theme from '@devlaunchers/components/styles/theme';
 
 import useMockDataInDevelopment from "../utils/useMockData";
 /*
-import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer"
 */

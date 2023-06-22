@@ -5,7 +5,7 @@ import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 import Logout from "../../../utils/Logout";
-import { useUserDataContext } from "../../../context/UserDataContext";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 
 function HamburgerMenu() {
   const { userData } = useUserDataContext();

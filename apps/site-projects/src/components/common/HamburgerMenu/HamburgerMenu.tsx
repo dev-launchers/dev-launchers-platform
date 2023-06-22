@@ -7,7 +7,7 @@ import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 import Logout from "../../../utils/Logout";
 import { env } from "../../../utils/EnvironmentVariables";
-import { useUserDataContext } from "../../../context/UserDataContext";
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 const HamburgerMenu: React.FC = () => {
   const { userData } = useUserDataContext();

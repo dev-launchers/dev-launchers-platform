@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
-import { UserDataProvider } from '../context/UserDataContext';
+import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import { SheetsProvider } from '../context/SheetsContext';
 
 const hashRedirect = (router) => {

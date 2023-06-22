@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useUserDataContext } from "../../../../context/UserDataContext";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 import {
   UserInterestCard,
   UserInterestsCardContainer,
