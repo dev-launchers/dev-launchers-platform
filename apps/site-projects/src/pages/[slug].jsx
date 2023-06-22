@@ -22,13 +22,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  console.log(slug);
-  const project = await agent.Projects.list({populate: 'deep', slug: slug});
+  const [project] = await agent.Projects.list({populate: 'deep', slug});
 
 
   return {
     props: {
-      project:project[0],
+      project,
     },
     revalidate: 20,
   };

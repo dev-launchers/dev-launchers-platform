@@ -16,7 +16,7 @@ const DescriptionContent = ({ data }) => {
         {/* eslint-disable-next-line react/no-children-prop */}
         <ReactMarkdown children={description} />
       </Paragrapgh>
-      {!!images[0].image.data.length && (
+      {!!images[0]?.image?.data?.length && (
         <Strip>
           <Conatiner>
             <FlexSection>
