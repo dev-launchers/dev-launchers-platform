@@ -11,7 +11,7 @@ const Projects = ({ projects }) => {
 
   const options = {
     includeScore: true,
-    keys: ['interests?.interest'],
+    keys: ['interests.interest', 'description', 'Description', 'title'],
     threshold: 0.3,
     ignoreFieldNorm: true,
   };
@@ -53,8 +53,11 @@ const Projects = ({ projects }) => {
       </div>
 
       <div>
-				Come together to contribute, collaborate, and excel! Access a wealth of resources, tools, and support designed to help you succeed in building projects in the Dev Launchers ecosystem. <Link href="/join">Find a place you fit!</Link>
-			</div>
+        Come together to contribute, collaborate, and excel! Access a wealth of
+        resources, tools, and support designed to help you succeed in building
+        projects in the Dev Launchers ecosystem.{' '}
+        <Link href="/join">Find a place you fit!</Link>
+      </div>
       <Layout>
         {items.map((project, i) => (
           <ProjectContainer key={i}>

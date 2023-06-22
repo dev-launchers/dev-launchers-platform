@@ -44,16 +44,16 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
       </Toggle>
       <OptionsContainer isOpen={menuOpen}>
         <Options>
-          {links.map(({ text, href }, i) => {
+          {/* {links.map(({ text, href }, i) => {
             return (
-              <>
+              <div key={i}>
                 <Link href={href} passHref>
                   <SubNavLink text={text} key={i} />
                 </Link>
                 {i === 0 && <hr style={{ width: '100%' }} />}
-              </>
+              </div>
             );
-          })}
+          })} */}
         </Options>
       </OptionsContainer>
     </DropdownContainer>
