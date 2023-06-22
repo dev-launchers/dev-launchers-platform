@@ -3,11 +3,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import PageBody from "../../common/PageBody";
 // import DiscordImage from "../../../images/signup/discord.png?webp";
-
 import { FormWrapper } from "./StyledSignUp";
-
 import { useUserDataContext } from "../../../context/UserDataContext";
-import { env } from "../../../utils/EnvironmentVariables";
 
 export default function SignUp() {
   // const [loading, setLoading] = useState(true);
@@ -22,6 +19,7 @@ export default function SignUp() {
   useEffect(() => {
     // setLoading(userData.id === -1);
     // Prefetch the user profile page
+    console.log('just being stupid?');
     router.prefetch("/users/me");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
@@ -29,6 +27,7 @@ export default function SignUp() {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
+      console.log('updateUser');
       const currentUser = await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
         withCredentials: true,
       });

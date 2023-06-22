@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import AccountDropdown from "./AccountDropdown";
-
 import {
   HeaderBlock,
   Logo,
@@ -12,7 +11,6 @@ import {
   HeaderNav,
   NavEntry,
 } from "./StyledHeader";
-
 import { useUserDataContext } from "../../../context/UserDataContext";
 import HamburgerMenu from "../HamburgerMenu";
 
