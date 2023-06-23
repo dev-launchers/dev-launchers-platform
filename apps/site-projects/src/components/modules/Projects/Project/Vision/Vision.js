@@ -2,6 +2,7 @@ import React from "react";
 import { useTheme, withTheme } from "styled-components";
 import Section from "../Section";
 import { Wrapper, ButtonsContainer, Button } from "./StyledVision";
+import Link from "next/link";
 
 const Vision = ({ scrollMethods,vision }) => {
   const theme = useTheme()
@@ -18,12 +19,14 @@ const Vision = ({ scrollMethods,vision }) => {
           {vision}
         </p>
         <ButtonsContainer>
+        <Link href="../join" passHref>
           <Button
             style={{ cursor: "pointer" }}
-            onClick={scrollMethods.scrollToRoles}
           >
             <i className="fas fa-info"></i> Join Now
           </Button>
+        </Link>
+          
           <Button
             style={{ cursor: "pointer" }}
             onClick={scrollMethods.scrollToDonate}
