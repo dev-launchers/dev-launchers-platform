@@ -19,20 +19,21 @@ const Vision = ({ scrollMethods,vision }) => {
           {vision}
         </p>
         <ButtonsContainer>
+        <Link href="../join" passHref>
           <Button
             style={{ cursor: "pointer" }}
-            onClick={scrollMethods.scrollToRoles}
           >
             <i className="fas fa-info"></i> Join Now
           </Button>
-          <Link href="../support-us" passHref>
-            <Button
-              style={{ cursor: "pointer" }}
-              bgColor={theme?.colors?.ACCENT_2}
-            >
-              <i className="fas fa-coins"></i> Donate
-            </Button>
-          </Link>
+        </Link>
+          
+          <Button
+            style={{ cursor: "pointer" }}
+            onClick={scrollMethods.scrollToDonate}
+            bgColor={theme?.colors?.ACCENT_2}
+          >
+            <i className="fas fa-coins"></i> Donate
+          </Button>
         </ButtonsContainer>
       </Wrapper>
     }
