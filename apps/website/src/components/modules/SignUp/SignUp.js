@@ -82,7 +82,7 @@ export default function SignUp() {
                 <p style={{ fontSize: "1.25rem" }}>
                   Connect your Discord account! <i>(optional)</i>
                 </p>
-                <a href={env().DISCORD_AUTH_URL}>
+                <a href={process.env.NEXT_PUBLIC_DISCORD_AUTH_URL}>
                   <img
                     src={DiscordImage}
                     alt="discord"

@@ -6,7 +6,6 @@ import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 import Logout from "../../../utils/Logout";
-import { env } from "../../../utils/EnvironmentVariables";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 const HamburgerMenu: React.FC = () => {
@@ -90,7 +89,7 @@ const HamburgerMenu: React.FC = () => {
                   </a>
                 </>
               ) : (
-                <a href={env().GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"} className="nav-link">
+                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"} className="nav-link">
                   <div className={style.navEntry}>SIGN IN </div>
                 </a>
               )}

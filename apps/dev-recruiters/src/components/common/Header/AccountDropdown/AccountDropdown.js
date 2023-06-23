@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "@utils/Logout";
-import { env } from "@utils/EnvironmentVariables";
 import {
   AccountMenuDropdownItem,
   AccountMenuDropdownButton,

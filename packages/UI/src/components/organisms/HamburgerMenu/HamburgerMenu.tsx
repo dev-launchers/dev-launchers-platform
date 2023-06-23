@@ -8,7 +8,6 @@ import Link from 'next/link';
 import React from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import logoMonogramImage from '../../../images/logo-monogram.png';
-import { env } from '../../../utils/EnvironmentVariables';
 import Logout from '../../../utils/Logout';
 
 import {
