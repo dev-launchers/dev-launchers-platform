@@ -13,11 +13,7 @@ import {
   NavEntry,
 } from "./StyledHeader";
 
-<<<<<<< HEAD
-import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
-=======
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
->>>>>>> dbradham/testLogin
 import HamburgerMenu from "../HamburgerMenu";
 
 export default function Header() {

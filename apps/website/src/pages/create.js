@@ -9,7 +9,6 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 export default function CreateRoute() {
   const router = useRouter();
   const { userData } = useUserDataContext();
-  console.log('ud', userData);
   // Need to use GET params to get a specific variable
   const params = queryString.parse(router.locale);
   // console.log("router locale", router.locale);

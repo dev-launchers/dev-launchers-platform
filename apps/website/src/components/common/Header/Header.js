@@ -11,10 +11,6 @@ import {
   HeaderNav,
   NavEntry,
 } from "./StyledHeader";
-<<<<<<< HEAD
-
-=======
->>>>>>> dbradham/testLogin
 import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 import HamburgerMenu from "../HamburgerMenu";
 

@@ -20,11 +20,7 @@ import Milestones from "./Milestones";
 import JoinSupport from "./JoinSupport";
 import HelpBuild from "./HelpBuild";
 import Sessions from "./Sessions";
-<<<<<<< HEAD
-import {useUserDataContext} from '@devlaunchers/components/src/context/UserDataContext';
-=======
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
->>>>>>> dbradham/testLogin
 
 const Project = ({ project, theme }) => {
   const router = useRouter();
