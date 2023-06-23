@@ -16,12 +16,12 @@ import {
 
 function DashboardPage() {
 
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
+  let { userData, updateUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
+      updateUserData({ ...userData, id: 2 });
     }, []);
   }
 

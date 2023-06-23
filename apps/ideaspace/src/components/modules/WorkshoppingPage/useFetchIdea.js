@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 export const useFetchIdea = (ideaId) => {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
+  let { userData, updateUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     useEffect(() => {
-      setUserData({ ...userData, id: 30 });
+      updateUserData({ ...userData, id: 30 });
     }, []);
   }
 

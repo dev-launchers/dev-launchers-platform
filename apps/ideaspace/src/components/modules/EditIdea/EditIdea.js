@@ -18,12 +18,12 @@ import {
 } from './StyledEditIdea';
 
 function EditIdea() {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
+  let { userData, updateUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 30 });
+      updateUserData({ ...userData, id: 30 });
     }, []);
   }
 

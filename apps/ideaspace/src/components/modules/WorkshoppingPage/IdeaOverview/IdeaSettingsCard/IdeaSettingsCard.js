@@ -8,10 +8,10 @@ import useConfirm from '../../../../common/DialogBox/DialogBox';
 import theme from '@devlaunchers/components/styles/theme';
 
 const IdeaSettingsCard = ({ card }) => {
-    let { userData, setUserData, isAuthenticated } = useUserDataContext();
+    let { userData, updateUserData, isAuthenticated } = useUserDataContext();
     if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
         React.useEffect(() => {
-            setUserData({ ...userData, id: 30 });
+            updateUserData({ ...userData, id: 30 });
         }, []);
     }
 

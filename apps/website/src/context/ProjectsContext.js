@@ -16,7 +16,7 @@ function useProjectsData() {
         setProjectsData(data);
       })
       .catch(() => {
-        // setUserData({ id: "invalid" });
+        // updateUserData({ id: "invalid" });
       });
   }, []);
 
