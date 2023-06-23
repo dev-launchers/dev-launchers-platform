@@ -38,7 +38,6 @@ function useUserData() {
   
   useEffect(() => {
     const cacheData = JSON.parse(localStorage.getItem('userData'));
-    console.log('cache', cacheData);
 
     if (cacheData && cacheData.id > 0) {
       updateUserData(cacheData);
