@@ -68,10 +68,16 @@ const Project = ({ project, theme }) => {
         description={project?.attributes.description}
         images={project?.attributes.images}
       />
-			{/*}<Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />{*/}
-      {isLogged && checkIfIsOnTeam && project?.attributes?.board?.ProjectMilestone ? <Milestones data={project?.attributes?.board?.ProjectMilestone} /> : null}
-      {<Sessions calendarId={project.attributes.calendarId} />}
-      <Team data={project.attributes?.team} />
+			{/*}<Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />{*/}
+      {isLogged && checkIfIsOnTeam ? 
+      (
+        <>
+          <Milestones data={project?.attributes?.board?.ProjectMilestone} />
+          <Sessions calendarId={project?.attributes?.calendarId} />
+        </>
+      )
+      : null}
+      <Team data={project?.attributes?.team} />
       <JoinSupport
         ref={donateRef}
         scrollMethods={{
