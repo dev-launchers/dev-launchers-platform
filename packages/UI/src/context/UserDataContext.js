@@ -2,8 +2,6 @@ import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import React from 'react';
 
-import { env } from '../utils/EnvironmentVariables';
-
 export const DEFAULT_USER = {
   id: 0,
   name: '',
@@ -33,7 +31,7 @@ function useUserData() {
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    axios(`${env().STRAPI_URL}/users/me`, {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
