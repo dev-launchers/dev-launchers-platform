@@ -13,7 +13,6 @@ import FormEntry from "./FormEntry";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import TextAreaField from "./TextAreaField";
-import { env } from "@utils/EnvironmentVariables";
 import InputAdder from "./InputAdder";
 
 function validateEmail(email) {
@@ -74,7 +73,7 @@ export default function SignUpForm(props) {
         // console.log(response);
       });
     axios
-      .post(`${env().STRAPI_URL}/applicants`, {
+      .post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/applicants`, {
         email,
         name,
         age,

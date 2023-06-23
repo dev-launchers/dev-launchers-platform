@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "../../../../utils/Logout";
-import { env } from "../../../../utils/EnvironmentVariables";
 import {
   AccountMenuDropdownItem,
   AccountMenuDropdownButton,
@@ -29,7 +28,7 @@ export default function AccountDropdown(props) {
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <MenuButton fontSize="1.2rem" href={env().GOOGLE_AUTH_URL + 
+        <MenuButton fontSize="1.2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+
           '?redirectURL='+ process.env.BASE_URL_WEBSITE +'/users/me'}>
           Sign In{" "}
         </MenuButton>

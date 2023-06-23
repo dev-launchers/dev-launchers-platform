@@ -9,7 +9,6 @@ import {
   Secret,
 } from "./StyledNewsletter";
 import validateEmail from "../../../../utils/ValidateEmail";
-import { env } from "../../../../utils/EnvironmentVariables";
 
 const NewsLetter = (props) => {
   const [email, setEmail] = useState("");

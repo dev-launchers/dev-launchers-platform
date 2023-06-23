@@ -1,13 +1,12 @@
 import axios from "axios";
 import Head from "next/head";
 import Projects from "../components/modules/Projects";
-import { env } from "../utils/EnvironmentVariables";
 
 // const projectsData = require("../components/modules/Projects/data.json");
 
 export const getStaticProps = async () => {
   const { data: projects } = await axios(
-    `${env().STRAPI_URL}/projects?_publicationState=live`,
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`,
     {
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -31,7 +30,7 @@ export const getStaticProps = async () => {
       project.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
     } else {
       const { data: projectData } = await axios(
-        `${env().STRAPI_URL}/projects/${project.slug}`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${project.slug}`,
         {
           headers: {
             Accept: "application/json, text/plain, */*",

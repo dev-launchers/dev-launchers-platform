@@ -35,6 +35,33 @@ function useUserData() {
     setIsAuthenticated(true);
     console.log('updated');
   };
+  
+  React.useEffect(() => {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+      withCredentials: true,
+    })
+      .then(({ data: currentUser }) => {
+        setUserData({
+          id: currentUser.id,
+          name: currentUser.profile.displayName,
+          username: currentUser.username,
+          email: currentUser.email,
+          bio: currentUser.profile.bio,
+          profilePictureUrl: currentUser.profile.profilePictureUrl,
+          socialMediaLinks: currentUser.profile.socialMediaLinks,
+          totalPoints: currentUser.point.totalPoints,
+          totalSeasonPoints: currentUser.point.totalSeasonPoints,
+          availablePoints: currentUser.point.availablePoints,
+          volunteerHours: currentUser.point.volunteerHours,
+          interests: currentUser.interests,
+        });
+        setIsAuthenticated(true);
+      })
+      .catch(() => {
+        // setUserData({ id: "invalid" });
+        setIsAuthenticated(false);
+      });
+  }, []);
 
   return { userData, setUserData, isAuthenticated, updateUserData };
 }

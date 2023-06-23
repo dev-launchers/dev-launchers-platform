@@ -14,7 +14,10 @@ import ProfileCard from './ProfileCard';
 import RecommendedIdeas from './RecommendedIdeas';
 import UserProjects from './UserProjects';
 import People from './People';
+<<<<<<< HEAD
 
+=======
+>>>>>>> dbradham/testLogin
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
 import { useRouter } from "next/router";
