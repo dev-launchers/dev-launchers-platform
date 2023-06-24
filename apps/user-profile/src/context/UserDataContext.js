@@ -31,8 +31,8 @@ const DEFAULT_USER = {
 function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
-
   React.useEffect(() => {
+    // users/30 — use this for krises data
     axios(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       withCredentials: true,
     })
