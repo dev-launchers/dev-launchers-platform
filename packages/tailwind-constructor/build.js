@@ -10,6 +10,8 @@ StyleDictionaryPackage.registerFormat({
   }
 });
 
+//creater a new style dictionary transform
+
 StyleDictionaryPackage.registerTransform({
     name: 'sizes/px',
     type: 'value',
@@ -64,6 +66,7 @@ function getStyleDictionaryConfig(theme) {
           "destination": `${theme}.css`,
           "format": "css/variables",
           "selector": `.${theme}-theme`
+          //pass over the theme name to the css/variables formatter
         }]
       }
     }
@@ -80,7 +83,7 @@ console.log('Build started...');
     console.log(`\nProcessing: [${theme}]`);
 
     const StyleDictionary = StyleDictionaryPackage.extend(getStyleDictionaryConfig(theme));
-
+//extend the style dictionary config with typography
     StyleDictionary.buildPlatform('web');
 
     console.log('\nEnd processing');
