@@ -1,5 +1,14 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
-import welcomePageOnbaordingLogo from "./../../../../../images/welcomePageOnboardingLogo.png";import { PageOneContainer } from "./StyledPageOne";
+import "/Users/rinabo/developments/dev-launchers-platform/apps/user-profile/src/images/logo-monogram.png" 
+import LogoMonogram from '../../../../../images/logo-monogram.png'
+import { motion } from "framer-motion";
+import { PageOneContainer } from "./StyledPageOne";
+
+const bounceTransition = {
+    y: {
+        yoyo: Infinity,
+    }
+};
 
 export default function PageOne({name}){
     return (<>
@@ -10,7 +19,8 @@ export default function PageOne({name}){
         <Typography type="p">
             We’re so glad you’re here. Let’s get started on your journey.
         </Typography>
-        <img src={welcomePageOnbaordingLogo}></img>
+        <motion.img src={LogoMonogram} transition={bounceTransition} animate={{y: ["5%", "-5%"]}}/>
+        <motion.div animate={{ scale: 1.2 }} transition={{ damping: 1, repeat: Infinity, delay: 0.7, duration:1.2, repeatDelay: 0.3 }}/>
         </PageOneContainer>
     </>);
 }
