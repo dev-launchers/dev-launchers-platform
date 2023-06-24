@@ -33,7 +33,7 @@ function useUserData() {
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    axios(`https://api.devlaunchers.org/users/me`, {
+    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
