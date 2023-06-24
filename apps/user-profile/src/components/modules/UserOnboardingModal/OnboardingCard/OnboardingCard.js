@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Typography } from '@devlaunchers/components/components/atoms'
 import { OnboardingCardContainer, PicWrapper, TextWrapper, CheckedWrapper, CheckedSVG, IconImg } from './StyledOnboardingCard'
 
@@ -12,6 +12,7 @@ export default function OnboardingCard({
     subtitle,
     completed,
 }) {
+    
     return (
         <OnboardingCardContainer completed = {completed}>
             <PicWrapper>

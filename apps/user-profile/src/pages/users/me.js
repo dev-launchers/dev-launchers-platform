@@ -1,5 +1,6 @@
 import React from "react";
-import Head from 'next/head';
+import { useRouter } from 'next/router'
+
 import { useUserDataContext } from '../../context/UserDataContext';
 
 import UserProfile from "../../components/modules/UserProfile";
@@ -13,16 +14,17 @@ import PageBody from "../../components/common/PageBody";
  * @drescription This component renders the User Profile Component. 
  * A Modal is opened when user has not fully completed their onboarding.
  */
-export default function UserProfilePage() {
-  const { userData, isAuthenticated } = useUserDataContext();
+export default function UserProfilePage(props) {
+  const { userData } = useUserDataContext();
+  const router = useRouter();
+
 
   /**
-   * @description Open modal when user has no username. 
+   * @description Open modal when user is coming from the onbaording page. 
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    // return true
-    return !(userData && userData.username)
+    return (router.query?.onboarding)
   }
 
   return (
