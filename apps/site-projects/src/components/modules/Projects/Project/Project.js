@@ -12,6 +12,7 @@ import Team from "./Team";
 // import SignUpButton from "./SignUpButton";
 
 import HeroSection from "./HeroSection";
+import EditorNotification from "./EditorNotification";
 import Tags from "./Tags";
 import Vision from "./Vision";
 import Role from "./Role/Role";
@@ -39,6 +40,7 @@ const Project = ({ project, theme }) => {
   return (
     <Wrapper>
       <div id="background" />
+			<EditorNotification project={project}	/>
       <HeroSection
         projectName={project.attributes.title}
         projectCatchPhrase={project.attributes.catchPhrase}

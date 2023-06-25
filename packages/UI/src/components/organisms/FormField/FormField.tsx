@@ -26,7 +26,7 @@ function FormField({
     <>
       <Label htmlFor={id}>
         <Typography type="label">
-          {label} {required && <span style={{ color: 'red' }}>*</span>}
+          {label} {required && <span css={{ color: 'red' }}>*</span>}
         </Typography>
         <InputWrapper>
           <Input
@@ -38,7 +38,7 @@ function FormField({
             autoComplete="off"
             placeholder={placeholder}
             valid={touched && !error}
-            error={error}
+            error={touched ? error : ''}
             disabled={disabled}
             onChange={onChange}
             value={value}

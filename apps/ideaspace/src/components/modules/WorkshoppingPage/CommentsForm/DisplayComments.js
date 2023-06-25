@@ -23,7 +23,6 @@ function DisplayComments(props) {
     }
   }, [props.selectedCard]);
 
-
   const commentNodes = data.map(comment => (
     <Comment author={comment.author} key={comment.id} id={comment.id}>
       {comment.text}
