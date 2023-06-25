@@ -16,26 +16,11 @@ export const getStaticProps = async () => {
     };
   }
 
-  // Need to request each project's individual endpoint to get missing data
-  
-  const filteredProjects = projects.filter((project) => project.attributes.isListed);
-  const returnProjects = filteredProjects.map(async (project) => {
-    if (!project.attributes.isListed) {
-      project.heroImage = { url: "" }; // Project isn't listed. Don't waste a request on it
-    } else {
-      const projectsData = await agent.Projects.get(project.id)
 
-      project.heroImage = projectsData.attributes.heroImage.data.attributes;
-    }
-
-    return project;
-  });
-
-  const resolvedProjects = await Promise.all(returnProjects);
 
 
   return {
-    props: { projects: resolvedProjects },
+    props: { projects },
     revalidate: 600,
   };
 };

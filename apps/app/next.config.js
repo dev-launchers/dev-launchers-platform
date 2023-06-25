@@ -35,6 +35,7 @@ const nextConfig = {
     domains: [
       'images.prismic.io',
       'devlaunchersproduction.blob.core.windows.net',
+      'devlaunchersstaging.blob.core.windows.net',
       'lh3.googleusercontent.com',
       'localhost',
     ],

@@ -35,7 +35,7 @@ const Project = ({ project, theme }) => {
   }
 
   const userData = useUserDataContext();
-console.log(project);
+
   return (
     <Wrapper>
       <div id="background" />
@@ -52,12 +52,11 @@ console.log(project);
           scrollToDonate: () => excuteScroll(donateRef),
         }}
       />
-      //commenting out until we get the field images migrated
-      {/* <Description
+      <Description
         description={project?.attributes.description}
-        images={project?.attributes.Images}
-      /> */}
-      <Role ref={roleRef} data={project?.attributes.opportunities.attributes} projectSlug={project.attributes.slug} />
+        images={project?.attributes.images}
+      />
+      <Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />
       <Milestones data={project?.attributes.board?.ProjectMilestone} />
       {<Sessions calendarId={project.attributes.calendarId} />}
       <Team data={project.attributes?.team} />
