@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
@@ -39,7 +38,31 @@ const links = {
 */
 export default function Navigation({ user }: NavigationProps) {
   const ListStyle = { listStyle: 'none' };
-  const { userData } = useUserDataContext();
+  const { userData, setUserData } = useUserDataContext();
+
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    });
+  };
   
   return (
     <>
@@ -109,7 +132,7 @@ export default function Navigation({ user }: NavigationProps) {
                     <Button
                       buttonType="secondary"
                       buttonSize="standard"
-                      onClick={Logout}
+                      onClick={handleLogout}
                     >
                       Log out
                     </Button>
@@ -117,7 +140,7 @@ export default function Navigation({ user }: NavigationProps) {
                 )}
               </NavWrapper>
             </Box>
-            <MobileNavigation links={links} user={userData} />
+            <MobileNavigation links={links} user={userData} logout={handleLogout} />
           </Nav>
         </Layer>
       </ThemeProvider>

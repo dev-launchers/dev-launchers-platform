@@ -8,7 +8,7 @@ import Logout from "../../../utils/Logout";
 import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 
 function HamburgerMenu() {
-  const { userData } = useUserDataContext();
+  const { userData, setUserData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -19,6 +19,30 @@ function HamburgerMenu() {
   // Called whenever a navigation item in the menu is clicked (closes menu)
   const handleNavClick = () => {
     setMenuOpen(false);
+  };
+
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    })
   };
 
   return (

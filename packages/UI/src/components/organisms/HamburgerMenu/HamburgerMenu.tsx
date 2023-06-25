@@ -9,6 +9,7 @@ import React from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
 import logoMonogramImage from '../../../images/logo-monogram.png';
 import Logout from '../../../utils/Logout';
+import { useUserDataContext } from '../../../context/UserDataContext';
 
 import {
   EnclosingStyledComponent,
@@ -24,6 +25,7 @@ import {
 
 const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const { setUserData } = useUserDataContext();
 
   // Called when the open/close state of the menu changes (onStateChange callback)
   const isMenuOpen = (state: { isOpen: boolean }) => {
@@ -34,6 +36,30 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
   function handleNavClick(): void {
     setMenuOpen(false);
   }
+
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    });
+  };
 
   return (
     <EnclosingStyledComponent>
@@ -103,7 +129,7 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
                         <NavEntry>VISIT ACCOUNT PAGE</NavEntry>
                       </a>
                     </Link>
-                    <a onClick={Logout} className="nav-link">
+                    <a onClick={handleLogout} className="nav-link">
                       <NavEntry>LOG OUT </NavEntry>
                     </a>
                   </>

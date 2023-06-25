@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
-import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
@@ -15,8 +14,10 @@ import type { NavigationProps } from '.';
 const MobileNavigation = ({
   user,
   links,
+  logout
 }: NavigationProps & {
   links: { [key: string]: string | { text: string; href: string }[] };
+  logout: { (): void }
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -29,6 +30,7 @@ const MobileNavigation = ({
   function handleNavClick(): void {
     setMenuOpen(false);
   }
+
   return (
     <HamburgerWrapper>
       <SlideHamburgerMenu
@@ -128,7 +130,7 @@ const MobileNavigation = ({
                 <Button
                   buttonType="secondary"
                   buttonSize="standard"
-                  onClick={Logout}
+                  onClick={logout}
                 >
                   Logout
                 </Button>
