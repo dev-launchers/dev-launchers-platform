@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
-
 import { Checkbox, Link } from '@devlaunchers/components/components/atoms'
 import Button from '@devlaunchers/components/components/atoms/Button'
 import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
@@ -113,13 +112,15 @@ export default function UserOnboarding() {
                 <div className='separator'></div>
 
                 <Button
-                    className='continue-btn'
-                    buttonSize="standard"
-                    buttonType="primary"
-                    onClick={handleContinueClick}
+									buttonSize="standard"
+									buttonType="primary"
+									className="continue-btn"
+									onClick={handleContinueClick}
                 >
-                    Save and Continue
+                  Save and Continue
                 </Button>
+
+								<div className='separator'></div>
             </form>
         </OnboardingForm>
     )
