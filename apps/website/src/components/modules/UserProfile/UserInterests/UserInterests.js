@@ -8,7 +8,7 @@ import {
 } from "./StyledUserInterests";
 
 const UserInterests = ({interests}) => {
-  const { userData, updateUserData } = useUserDataContext();
+  const { userData, setUserData } = useUserDataContext();
 
   const [
     userInterestsUpdateRequestTimeout,
@@ -75,7 +75,7 @@ const UserInterests = ({interests}) => {
                         1
                       );
                     }
-                    updateUserData(tempUserData);
+                    setUserData(tempUserData);
                     userInterestsChanged();
                   }}
                 >

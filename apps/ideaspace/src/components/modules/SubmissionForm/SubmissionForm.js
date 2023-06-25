@@ -17,12 +17,12 @@ import {
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
-  let { userData, updateUserData, isAuthenticated } = useUserDataContext();
+  let { userData, setUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      updateUserData({ ...userData, id: 30 });
+      setUserData({ ...userData, id: 30 });
     }, []);
   }
 

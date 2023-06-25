@@ -30,23 +30,22 @@ function useUserData() {
   const [userData, setUserData] = useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = useState();
 
-  const updateUserData = (dataForUser) => {
-    localStorage.setItem('userData', JSON.stringify(dataForUser));
-    setUserData(dataForUser);
-    setIsAuthenticated(true);
-  };
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+    setIsAuthenticated(userData && userData.id > 0);
+  }, [userData]);
   
   useEffect(() => {
     const cacheData = JSON.parse(localStorage.getItem('userData'));
 
     if (cacheData && cacheData.id > 0) {
-      updateUserData(cacheData);
+      setUserData(cacheData);
     } else {
       axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
         withCredentials: true,
       })
         .then(({ data: currentUser }) => {
-          updateUserData({
+          setUserData({
             id: currentUser.id,
             name: currentUser.profile.displayName,
             username: currentUser.username,
@@ -62,13 +61,13 @@ function useUserData() {
           });
         })
         .catch(() => {
-          // updateUserData({ id: "invalid" });
+          // setUserData({ id: "invalid" });
           setIsAuthenticated(false);
         });
     }
   }, []);
 
-  return { userData, isAuthenticated, updateUserData };
+  return { userData, isAuthenticated, setUserData };
 }
 
 // Step 2: Declare your context state object to share the state with other components
