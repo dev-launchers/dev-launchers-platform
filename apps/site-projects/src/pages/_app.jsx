@@ -6,7 +6,6 @@ import GlobalStyle from "../styles/globals";
 
 import "react-toastify/dist/ReactToastify.css";
 import oldTheme from "../styles/theme";
-import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -37,7 +36,6 @@ function MyApp(props) {
               gtag('config', 'AW-599284852');
             `}
           </Script>
-          <UserDataProvider>
             <div className="App">
               <ToastContainer
                 className="toast-container"
@@ -49,7 +47,6 @@ function MyApp(props) {
               {/* <Component {...pageProps} /> */}
               {props.children}
             </div>
-          </UserDataProvider>
         </div>
       </ThemeProvider>
     </>
