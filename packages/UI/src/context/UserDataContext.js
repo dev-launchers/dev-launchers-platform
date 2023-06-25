@@ -1,6 +1,5 @@
 import constate from 'constate'; // State Context Object Creator
-import { useEffect, useState } from 'react';
-import axios from "axios";
+import React from 'react';
 
 export const DEFAULT_USER = {
   id: 0,
@@ -27,47 +26,15 @@ export const DEFAULT_USER = {
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
-  const [userData, setUserData] = useState(DEFAULT_USER);
-  const [isAuthenticated, setIsAuthenticated] = useState();
+  const [userData, setUserData] = React.useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   const updateUserData = (dataForUser) => {
-    localStorage.setItem('xx', JSON.stringify(dataForUser));
+    console.log('updating the context', dataForUser);
     setUserData(dataForUser);
     setIsAuthenticated(true);
+    console.log('updated');
   };
-  
-  useEffect(() => {
-    const cacheData = JSON.parse(localStorage.getItem('xx'));
-    console.log('cache', cacheData);
-
-    if (cacheData && cacheData.id > 0) {
-      updateUserData(cacheData);
-    } else {
-      axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
-        withCredentials: true,
-      })
-        .then(({ data: currentUser }) => {
-          updateUserData({
-            id: currentUser.id,
-            name: currentUser.profile.displayName,
-            username: currentUser.username,
-            email: currentUser.email,
-            bio: currentUser.profile.bio,
-            profilePictureUrl: currentUser.profile.profilePictureUrl,
-            socialMediaLinks: currentUser.profile.socialMediaLinks,
-            totalPoints: currentUser.point.totalPoints,
-            totalSeasonPoints: currentUser.point.totalSeasonPoints,
-            availablePoints: currentUser.point.availablePoints,
-            volunteerHours: currentUser.point.volunteerHours,
-            interests: currentUser.interests,
-          });
-        })
-        .catch(() => {
-          // setUserData({ id: "invalid" });
-          setIsAuthenticated(false);
-        });
-    }
-  }, []);
 
   return { userData, setUserData, isAuthenticated, updateUserData };
 }
