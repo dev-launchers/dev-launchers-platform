@@ -21,9 +21,7 @@ import { useRouter } from "next/router";
 
 // State management component
 export default function UserProfile({ otherUser }) {
-
   const { userData, isAuthenticated, updateUserData } = useUserDataContext();
-  console.log('ud in up', userData);
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -37,7 +35,7 @@ export default function UserProfile({ otherUser }) {
 
   useEffect(() => {
     if (!router.isReady || isAuthenticated) {
-      return
+      return;
     }
 
     const token = router.query.access_token;
@@ -47,9 +45,7 @@ export default function UserProfile({ otherUser }) {
       url: 'http://localhost:1337/api/auth/google/callback?access_token=' + token
     })
       .then((res) => {
-        console.log('res', res);
         updateUserData(res.data.user);
-        console.log('set the user data?');
       })
       .catch(e => {
         console.log('error authenticating');
