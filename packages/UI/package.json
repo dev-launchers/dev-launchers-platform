@@ -56,7 +56,6 @@
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
     "@percy/cli": "1.26.1",
-    "@percy/script": "1.1.0",
     "@percy/storybook": "4.3.6",
     "@storybook/addon-a11y": "6.5.10",
     "@storybook/addon-actions": "^6.5.10",
