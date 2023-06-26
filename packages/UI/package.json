@@ -5,7 +5,6 @@
   "dependencies": {
     "@devlaunchers/models": "workspace:*",
     "@devlaunchers/utility": "workspace:*",
-    "@storybook/addon-viewport": "6.5.16",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
     "constate": "^3.3.2",
@@ -33,6 +32,7 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "test": "run-s 'test:*'",
     "test:unit": "echo \"No tests yet\"",
+    "test:visual": "yarn percy storybook http://localhost:6006",
     "fix:staged-files": "lint-staged --allow-empty"
   },
   "resolutions": {
@@ -55,13 +55,14 @@
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
-    "@percy/cli": "1.24.2",
+    "@percy/cli": "1.26.1",
     "@percy/script": "1.1.0",
     "@percy/storybook": "4.3.6",
     "@storybook/addon-a11y": "6.5.10",
     "@storybook/addon-actions": "^6.5.10",
     "@storybook/addon-essentials": "^6.5.10",
     "@storybook/addon-links": "^6.5.10",
+    "@storybook/addon-viewport": "6.5.16",
     "@storybook/jest": "0.0.10",
     "@storybook/node-logger": "^6.5.10",
     "@storybook/react": "^6.5.10",
