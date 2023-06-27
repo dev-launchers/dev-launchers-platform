@@ -8,16 +8,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v1
+
       - name: Node 16.x  
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+
       - name: Install @percy/cli and @percy/storybook
         run: yarn add @percy/cli @percy/storybook
+        
       - name: Percy Storybook Snapshots
         run: yarn percy storybook https://632ca21aeea1618b7fa0bf48-axgzbckakp.chromatic.com/
         env:
