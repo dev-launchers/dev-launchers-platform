@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SkillLevel } from '@devlaunchers/models/level';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
@@ -10,13 +10,28 @@ export default function useProjects() {
   const [filteredProjects, setFilteredProjects] = useState<ProjectLite[]>();
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [opportunitiesLoaded, setOpportunitiesLoaded] = useState(false);
-  const [projectParams, setProjectParams] = useState<ProjectParams>({
+  const defaultParams = {
     projectType: [],
     opportunity: [],
     level: [],
     maxCommit: 0,
     searchTerm: '',
-  });
+  };
+  const getSavedParamsFromLocalStorage = () => {
+    if (typeof window !== 'undefined') {
+      const savedParams = localStorage.getItem('projectParams');
+
+      if (savedParams) {
+        const parsedParams = JSON.parse(savedParams);
+        delete parsedParams.searchTerm;
+        return parsedParams;
+      }
+      return null;
+    }
+  };
+  const [projectParams, setProjectParams] = useState<ProjectParams>(
+    getSavedParamsFromLocalStorage() || defaultParams
+  );
 
   // Apply Filters
   const SetProjectParams = (value: ProjectParams) => {
@@ -55,7 +70,18 @@ export default function useProjects() {
   const handleParamsChange = (params: ProjectParams) => {
     setProjectParams(params);
     setFilteredProjects(FilterProjects(projects, params));
+
+    const paramsToSave = { ...params };
+    delete paramsToSave.searchTerm;
+    localStorage.setItem('projectParams', JSON.stringify(params));
   };
+
+  useEffect(() => {
+    const savedParams = getSavedParamsFromLocalStorage();
+    if (savedParams) {
+      setProjectParams(savedParams);
+    }
+  }, []);
 
   const handlePlatformChange = (value: string[]) => {
     handleParamsChange({ ...projectParams, projectType: value });
@@ -138,7 +164,9 @@ function FilterBySearchTerm(project: ProjectLite, params: ProjectParams) {
       project.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
       project.opportunities.some((o) =>
         o.skills.some((s) =>
-          s!.interest!.toLowerCase()!.includes(params!.searchTerm!.toLowerCase())
+          s!
+            .interest!.toLowerCase()!
+            .includes(params!.searchTerm!.toLowerCase())
         )
       )
     );
@@ -166,7 +194,9 @@ function FilterProjectOpportunities(
 
 function FilterByLevel(project: ProjectLite, params: ProjectParams) {
   if (params.level && params.level.length > 0) {
-    return project.opportunities.some((op) => params!.level!.includes(op!.level));
+    return project.opportunities.some((op) =>
+      params!.level!.includes(op!.level)
+    );
   }
   return true;
 }
