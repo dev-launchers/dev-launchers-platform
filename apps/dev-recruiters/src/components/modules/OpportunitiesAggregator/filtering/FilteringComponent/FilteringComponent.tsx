@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
 import { ProjectType } from '../projectEnums';
 import ProjectsList from '../ProjectsList';
@@ -53,6 +53,38 @@ export default function FilteringComponent({
     fetchProjects,
     resetFilters,
   } = useProjects();
+
+  // State variable to keep track of the render count
+  const [renderCount, setRenderCount] = useState(0);
+
+  // State variable to store an initial value, retrieved from localStorage or defaulting to 10
+  const [initialValue, setInitialValue] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedValue = localStorage.getItem('sliderValue');
+      if (savedValue) {
+        return parseInt(savedValue, 10); // Parse saved value as an integer
+      } else {
+        return 10; // Default value if no value is found in localStorage
+      }
+    }
+  });
+
+  // useEffect hook triggered whenever renderCount changes
+  useEffect(() => {
+    // Call handleCommitmentChange with updated max value
+    handleCommitmentChange({ min: 3, max: initialValue });
+
+    // Return early if renderCount is 1 to stop tracking after two renderings
+    if (renderCount === 1) {
+      return;
+    }
+  }, [renderCount]); // Dependency array for the useEffect hook
+
+  // useEffect hook executed only once at the beginning
+  useEffect(() => {
+    // Set renderCount to 1
+    setRenderCount(1);
+  }, []); // Empty dependency array to run the effect only once
 
   useEffect(() => {
     if (projects && !projectsLoaded) {
@@ -151,7 +183,7 @@ export default function FilteringComponent({
                   handleCommitmentChange({ min: 1, max: value })
                 }
                 prefix="hrs"
-                initialValue={10}
+                initialValue={initialValue}
               />
             </div>
           </CommitmentSection>
