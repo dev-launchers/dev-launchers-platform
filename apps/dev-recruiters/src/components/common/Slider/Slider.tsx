@@ -23,19 +23,38 @@ export default function Slider({
   initialValue = 0,
   onChange,
 }: Props) {
-  const [value, setValue] = useState(initialValue);
+  const [value, setValue] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedValue = localStorage.getItem('sliderValue');
+      if (savedValue) {
+        return parseInt(savedValue, 10);
+      } else {
+        return initialValue;
+      }
+    }
+  });
+
+  useEffect(() => {
+    if (value !== undefined) {
+      setIsValueAvailable(true);
+      localStorage.setItem('sliderValue', value.toString());
+    }
+  }, [value]);
 
   const handleOnChange = (value: number) => {
     setValue(value);
     onChange(value);
   };
 
+  const [isValueAvailable, setIsValueAvailable] = useState(false);
+
   const getBubblePosition = () => {
     return value > 0 ? Number(((value - min) * 90) / (max - min)) : 0;
   };
 
   return (
-      <Container>
+    <Container>
+      {isValueAvailable && (
         <BubbleContainer>
           <Bubble newVal={getBubblePosition()}>
             <p>
@@ -44,15 +63,17 @@ export default function Slider({
             </p>
           </Bubble>
         </BubbleContainer>
-        <SliderInputContainer>
-          <SliderInput
-            step={1}
-            min={min}
-            max={max}
-            value={value}
-            onChange={({ target }) => handleOnChange(+target.value)}
-          />
-        </SliderInputContainer>
+      )}
+      <SliderInputContainer>
+        <SliderInput
+          step={1}
+          min={min}
+          max={max}
+          value={value}
+          onChange={({ target }) => handleOnChange(+target.value)}
+        />
+      </SliderInputContainer>
+      {isValueAvailable && (
         <LabelsContainer>
           <p>
             {min} {prefix}
@@ -66,6 +87,7 @@ export default function Slider({
             {max} {prefix}
           </p>
         </LabelsContainer>
-      </Container>
+      )}
+    </Container>
   );
 }
