@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 // import Link from "next/link";
 // import Image from "next/image";
+import { DateTime } from "luxon";
 import { withTheme } from "styled-components";
 import { useRouter } from "next/router";
 import Button from "../../../common/Button";
@@ -30,6 +31,15 @@ function isOnTeam(id, team) {
   return leadersIds.includes(id) || membersIds.includes(id);
 }
 
+function hasPassedOneMonth(dateString) {
+  const currentDate = DateTime.local();
+  const completionDate = DateTime.fromISO(dateString);
+
+  const oneMonthLater = completionDate.plus({ months: 1 });
+
+  return currentDate >= oneMonthLater;
+}
+
 const Project = ({ project, theme }) => {
   const router = useRouter();
   const roleRef = useRef();
@@ -46,6 +56,7 @@ const Project = ({ project, theme }) => {
 
   const checkIfIsOnTeam = isOnTeam(userData.userData.id, project.team);
   const isLogged = userData.userData.id === 0 ? false : true
+  const milestoneIsOutdated = hasPassedOneMonth(project.board.ProjectMilestone[0].task[0].completionDate)
 
   return (
     <Wrapper>
@@ -69,7 +80,7 @@ const Project = ({ project, theme }) => {
         images={project?.Images}
       />
 			{/*}<Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />{*/}
-      {isLogged && checkIfIsOnTeam ? <Milestones data={project?.board?.ProjectMilestone} /> : null}
+      {isLogged && checkIfIsOnTeam && !milestoneIsOutdated ? <Milestones data={project?.board?.ProjectMilestone} /> : null}
       {<Sessions calendarId={project.calendarId} />}
       <Team data={project.team} />
       <JoinSupport
