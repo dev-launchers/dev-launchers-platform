@@ -41,11 +41,11 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h4">Dev Launchers</Typography>
                     </ModalHeader>
                     <ModalBody>
-                        {/* <Typography type="h2">Get Started with Devlaunchers</Typography>
-                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography> */}
+                        <Typography type="h2">Get Started with Devlaunchers</Typography>
+                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
                         
-                        <PlatformOnboarding/>
+                        {/*<PlatformOnboarding/> (stepper) */}
 
                         {/* Role Card Component */}
                                        
