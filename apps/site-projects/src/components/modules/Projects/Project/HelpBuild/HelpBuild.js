@@ -13,7 +13,7 @@ const HelpBuild = () => (
         <h3>Join our mission!</h3>
         <p>
           We are looking for sponsors to fund the financial costs of different
-          operations, with your help we can build a better product!
+          operations. With your help we can build a better product!
         </p>
 
         <ButtonsContainer>
