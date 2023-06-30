@@ -42,9 +42,9 @@ const Team = ({ data }) => (
                 >
                   <span>{leader.profile?.displayName}</span>
                   <span>{leader.role}</span>
-                  <span>
+                  {/* <span>
                     <a href={`mailto:${leader.email}`}>Send Email</a>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             ))}
