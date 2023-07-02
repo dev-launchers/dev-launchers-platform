@@ -31,9 +31,10 @@ const DEFAULT_USER = {
 function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
+  console.log("DEBUGGING in user-profile: ",`${process.env.NEXT_PUBLIC_API_URL}/users/me`, )
 
   React.useEffect(() => {
-    axios(`https://api.devlaunchers.org/users/me`, {
+    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
