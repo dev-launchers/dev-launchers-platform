@@ -9,7 +9,7 @@ import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import { atoms } from '@devlaunchers/components/src/components';
+
 
 import {
   HeadWapper,
