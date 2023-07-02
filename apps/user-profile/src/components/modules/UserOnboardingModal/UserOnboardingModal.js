@@ -3,9 +3,11 @@ import Modal from "react-modal";
 import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import RoleCard from "./RoleCard/RoleCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
+import ProgressStepper from "../../common/ProgressStepper";
+import { useStepper } from "../../../context/ProgressStepperContext.js";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
-import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody, StepBody, Button } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
 
@@ -14,6 +16,7 @@ Modal.setAppElement("#__next");
  */
 export default function UserOnboardingModal({ isOpen }) {
     const [modalIsOpen, setModalIsOpen] = useState(true);
+    const { incrementCurrentStep, decrementCurrentStep } = useStepper();
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -26,6 +29,43 @@ export default function UserOnboardingModal({ isOpen }) {
     }
     return (
         <>
+            <div className="container">
+                <ProgressStepper>
+                    <ProgressStepper.Steps>
+                        <ProgressStepper.Step id="first" name="Profile">
+                            <StepBody>
+                                <div>
+                                    <Button onClick={incrementCurrentStep}>Next step</Button>
+                                </div>
+                            </StepBody>
+                        </ProgressStepper.Step>
+                        <ProgressStepper.Step id="second" name="DevLaunchers">
+                            <StepBody>
+                                <div>
+                                    <Button onClick={decrementCurrentStep}>Previous step</Button>
+                                    <Button onClick={incrementCurrentStep}>Next step</Button>
+                                </div>
+                            </StepBody>
+                        </ProgressStepper.Step>
+                        <ProgressStepper.Step id="third" name="About you">
+                            <StepBody>
+                                <div>
+                                    <Button onClick={decrementCurrentStep}>Previous step</Button>
+                                    <Button onClick={incrementCurrentStep}>Next step</Button>
+                                </div>
+                            </StepBody>
+                        </ProgressStepper.Step>
+                        <ProgressStepper.Step id="forth" name="Done">
+                            <StepBody>
+                                <div>
+                                    <Button onClick={decrementCurrentStep}>Previous step</Button>
+                                    <Button onClick={incrementCurrentStep}>Next step</Button>
+                                </div>
+                            </StepBody>
+                        </ProgressStepper.Step>
+                    </ProgressStepper.Steps>
+                </ProgressStepper>
+            </div>
             {/* "modalIsOpen ? true : false" set this way until we start adding typescript for 
          boolean type */}
             <Modal
@@ -44,11 +84,11 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h2">Get Started with Devlaunchers</Typography>
                         <Typography type="subtitle">Please complete the following onboarding tasks</Typography>
                         {/* Onboarding Card Component */}
-                        
+
                         {/*<PlatformOnboarding/> (stepper) */}
 
                         {/* Role Card Component */}
-                                       
+
                     </ModalBody>
                 </ModalContainer>
             </Modal>

@@ -3,6 +3,7 @@ import { Router, useRouter } from 'next/router';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
+import { StepperProvider } from '../context/ProgressStepperContext';
 
 import GlobalStyle from '../styles/globals';
 
@@ -45,6 +46,7 @@ function MyApp(props) {
   return (
     <>
       <UserDataProvider>
+        <StepperProvider>
           <ThemeProvider theme={theme}>
             <GlobalStyle />
             <div>
@@ -67,6 +69,7 @@ function MyApp(props) {
               {props.children}
             </div>
           </ThemeProvider>
+        </StepperProvider>
       </UserDataProvider>
     </>
   );

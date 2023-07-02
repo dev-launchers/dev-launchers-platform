@@ -55,3 +55,16 @@ export const userUnboardingModalStyle = {
   },
   overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
 };
+
+export const StepBody = styled.div`
+  text-align:center;
+`
+
+export const Button = styled.button`
+  margin:0 20px;
+  cursor:pointer;
+  outline:none;
+  background:#fff;
+  border:1px solid #000;
+  padding:6px 12px;
+`
