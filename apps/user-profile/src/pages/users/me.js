@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import { useUserDataContext } from '../../context/UserDataContext';
 
+import Head from 'next/head';
 import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
 import SignIn from "../../components/modules/UserProfile/SignIn";
@@ -15,7 +16,7 @@ import PageBody from "../../components/common/PageBody";
  * A Modal is opened when user has not fully completed their onboarding.
  */
 export default function UserProfilePage(props) {
-  const { userData } = useUserDataContext();
+  const { isAuthenticated, userData } = useUserDataContext();
   const router = useRouter();
 
 
