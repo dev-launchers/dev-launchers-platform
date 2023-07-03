@@ -7,6 +7,8 @@ const buttonStyles = tv({
     type: {
       Primary:
         'text-Grey-Scale-white font-normal capitalize leading-normal tracking-wider bg-Blue-blue-600 hover:bg-Blue-blue-700',
+      Secondary:
+        'text-Grey-Scale-white font-normal capitalize leading-normal tracking-wider bg-LightBlue-lightblue-650 hover:bg-LightBlue-lightblue-700',
     },
     size: {
       default: 'px-4 py-2',
