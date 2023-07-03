@@ -10,6 +10,9 @@ module.exports = {
     '@storybook/addon-viewport',
   ],
   framework: '@storybook/react',
+  core: {
+    builder: "webpack5",
+  },
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.mjs$/,
