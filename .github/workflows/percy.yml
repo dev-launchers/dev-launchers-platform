@@ -19,8 +19,11 @@ jobs:
 
       - name: Install @percy/cli and @percy/storybook
         run: yarn add @percy/cli @percy/storybook
+
+      - name: Storing Chromatic Storybook link into a URL
+        run: export scheme=https:// && export gitHash=$(git rev-parse --short HEAD) && export appID=--632ca21aeea1618b7fa0bf48.chromatic.com && export chromaticURL=${scheme}${gitHash}${appID}
         
       - name: Percy Storybook Snapshots
-        run: yarn percy storybook https://632ca21aeea1618b7fa0bf48-axgzbckakp.chromatic.com/
+        run: yarn percy storybook $chromaticURL
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
