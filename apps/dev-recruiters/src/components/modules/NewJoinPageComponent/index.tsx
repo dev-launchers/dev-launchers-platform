@@ -21,8 +21,8 @@ import Logo from '../../../images/logo-monogram.png';
 import SelectRole from './SelectRole/SelectRole';
 
 import CaseStudy from '../../../images/icons/Case-Study.png';
-import DesignServices from '../../../images/icons/Design-Services.png';
-import DeveloperMode from '../../../images/icons/Developer-Mode.png';
+import DesignServices from '../../../images/icons/Design-services.png';
+import DeveloperMode from '../../../images/icons/Developer-mode.png';
 import FloorPlan from '../../../images/icons/Floor-Plan.png';
 import PopularMan from '../../../images/icons/Popular-Man.png';
 import SourceCode from '../../../images/icons/Source-Code.png';
