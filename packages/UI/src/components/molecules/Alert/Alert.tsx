@@ -6,6 +6,7 @@ import type { AlertProps } from '.';
 
 const Alert: React.FC<React.PropsWithChildren<AlertProps>> = ({
   signal = 'notify',
+  handleClose,
   children,
   ...rest
 }) => {
@@ -21,7 +22,9 @@ const Alert: React.FC<React.PropsWithChildren<AlertProps>> = ({
         <></>
       )}
       <Typography css={{ flex: 1 }}>{children}</Typography>
-      <Icons.Close />
+      <button>
+        <Icons.Close onClick={handleClose} />
+      </button>
     </Container>
   );
 };
