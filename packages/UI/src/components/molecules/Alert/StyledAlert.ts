@@ -28,4 +28,10 @@ export const Container = styled.div<Styles>`
       `;
     }}
   }
+
+  > button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
 `;
