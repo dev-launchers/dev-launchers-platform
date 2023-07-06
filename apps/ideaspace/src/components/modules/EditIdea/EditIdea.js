@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Error from "next/error";
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-
+import { atoms } from '@devlaunchers/components/src/components';
+import { agent } from '@devlaunchers/utility';
+import { cleanData } from '../../../utils/StrapiHelper';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import { atoms, organisms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
@@ -22,14 +21,14 @@ function EditIdea() {
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
-    React.useEffect(() => {
+    useEffect(() => {
       setUserData({ ...userData, id: 30 });
     }, []);
   }
 
   const router = useRouter();
   const { ideaId } = router.query;
-  const [sending, setSending] = React.useState(false);
+  const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
@@ -76,19 +75,17 @@ function EditIdea() {
   const [card, setCard] = React.useState(originalValue);
   const [formValue, setFormValue] = React.useState(originalValue);
 
-  const [getError, setGetError] = React.useState(false);
-  React.useEffect(() => {
-    const rejectUser = async () => {
-      if (!(await confirmNotAuthor())) {
-        window.history.back(-1);
-      }
+  const rejectAuthor = async () => {
+    if (!(await confirmArchive())) {
+      router.push(`/ideaspace/workshop/${ideaId}`);
     }
+  };
 
-    const rejectAuthor = async () => {
-      if (!(await confirmArchive())) {
-        router.push(`/ideaspace/workshop/${ideaId}`);
-      }
+  const rejectUser = async () => {
+    if (!(await confirmNotAuthor())) {
+      window.history.back(-1);
     }
+  };
 
     const compareValuesToInitial = (values) => {
       const name = Object.keys(values);
@@ -100,33 +97,26 @@ function EditIdea() {
       return false;
     }
 
+  useEffect(async () => {
     if (ideaId) {
-      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
-        .then(response => {
-          if (response.status === 200) {
-            if (userData.id !== 0) {
-              if (response.data.author.id == userData.id) {
-                if (response.data?.status == 'archived') {
-                  rejectAuthor();
-                } else {
-                  setCard(response.data);
-                  if (sessionStorage.getItem("Form") !== null && compareValuesToInitial(JSON.parse(sessionStorage.getItem('Form')))) {
-                    setFormValue(JSON.parse(sessionStorage.getItem('Form')));
-                  } else {
-                    setFormValue(response.data);
-                  }
-                }
-              } else {
-                rejectUser();
-              }
-            }
+      const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
 
+      if (userData.id !== 0) {
+        if (idea.author.id === userData.id) {
+          if (response.data?.status == 'archived') {
+            rejectAuthor();
           }
-        })
-        .catch(error => {
-          console.log(error);
-          setGetError(true);
-        })
+
+          setCard(idea);
+          if (sessionStorage.getItem("Form") !== null && compareValuesToInitial(JSON.parse(sessionStorage.getItem('Form')))) {
+            setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+          } else {
+            setFormValue(response.data);
+          }
+        } else {
+          rejectUser();
+        }
+      }
     }
   }, [ideaId, userData.id]);
 
@@ -149,15 +139,12 @@ function EditIdea() {
     setSending(true);
 
     try {
-      const res = await axios.put(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`,
-        values
-      );
+      const data = cleanData(await agent.Ideas.put(ideaId, values));
 
-      if (res.status === 200) {
+      if (data.ideaName) {
         setunsavedChanges(false);
-        if (!(await confirmSucceed())) {
-          setUrrl(`/ideaspace/workshop/${ideaId}`);
+        if (await confirmNotice()){
+          setUrrl(`/ideaspace/workshop/${data.id}`);
         }
         if (sessionStorage.getItem("Form") !== null) {
           sessionStorage.removeItem("Form");
@@ -181,7 +168,7 @@ function EditIdea() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.onbeforeunload = () => {
       sessionStorage.setItem("Form",sessionStorage.getItem('FormTemp'));
     };
