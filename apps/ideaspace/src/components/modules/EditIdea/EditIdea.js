@@ -62,7 +62,7 @@ function EditIdea() {
     ['primary', 'got it'],
   );
 
-  const [card, setCard] = React.useState({
+  const originalValue = {
     ideaName: '',
     tagline: '',
     description: '',
@@ -72,7 +72,9 @@ function EditIdea() {
     extraInfo: '',
     involveLevel: '',
     status: '',
-  });
+  };
+  const [card, setCard] = React.useState(originalValue);
+  const [formValue, setFormValue] = React.useState(originalValue);
 
   const [getError, setGetError] = React.useState(false);
   React.useEffect(() => {
@@ -88,6 +90,16 @@ function EditIdea() {
       }
     }
 
+    const compareValuesToInitial = (values) => {
+      const name = Object.keys(values);
+      for (let i = 0; i < name.length; i++) {
+        if (values[name[i]] !== originalValue[name[i]]) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     if (ideaId) {
       axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
         .then(response => {
@@ -98,6 +110,11 @@ function EditIdea() {
                   rejectAuthor();
                 } else {
                   setCard(response.data);
+                  if (sessionStorage.getItem("Form") !== null && compareValuesToInitial(JSON.parse(sessionStorage.getItem('Form')))) {
+                    setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+                  } else {
+                    setFormValue(response.data);
+                  }
                 }
               } else {
                 rejectUser();
@@ -142,6 +159,12 @@ function EditIdea() {
         if (!(await confirmSucceed())) {
           setUrrl(`/ideaspace/workshop/${ideaId}`);
         }
+        if (sessionStorage.getItem("Form") !== null) {
+          sessionStorage.removeItem("Form");
+        }
+        if (sessionStorage.getItem("FormTemp") !== null) {
+          sessionStorage.removeItem("FormTemp");
+        }
       }
     } catch (error) {
       setSending(false);
@@ -160,9 +183,7 @@ function EditIdea() {
 
   React.useEffect(() => {
     window.onbeforeunload = () => {
-      if (unsavedChanges) {
-        return 'You have unsaved changes. Do you really want to leave?';
-      }
+      sessionStorage.setItem("Form",sessionStorage.getItem('FormTemp'));
     };
 
     if (unsavedChanges && urrl == '') {
@@ -224,13 +245,15 @@ function EditIdea() {
             <UpdateSucceed /><UpdateFailure />
             <NotAuthor /><ArchivedIdea />
             <IdeaForm
-              initialValues={card}
+              initialValues={formValue}
+              originalValue={card}
               SignupSchema={SignupSchema}
               submitHandler={submitHandler}
               unsavedHandler={setunsavedChanges}
               formButton="save"
               sending={sending}
               clickHandler={backHandler}
+              href="../ideaSubmissionTC"
             />
           </>
         )}

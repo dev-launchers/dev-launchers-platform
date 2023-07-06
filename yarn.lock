@@ -2704,6 +2704,7 @@ __metadata:
     react-router: ^5.2.0
     react-router-dom: ^5.2.0
     react-scripts: ^4.0.3
+    remark-gfm: 3.0.1
     semantic-ui-css: ^2.4.1
     semantic-ui-react: ^2.0.3
     styled-components: ^5.3.0
@@ -30406,7 +30407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"remark-gfm@npm:^3.0.1":
+"remark-gfm@npm:3.0.1, remark-gfm@npm:^3.0.1":
   version: 3.0.1
   resolution: "remark-gfm@npm:3.0.1"
   dependencies:

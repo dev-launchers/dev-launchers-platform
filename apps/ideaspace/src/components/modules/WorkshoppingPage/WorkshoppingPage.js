@@ -50,7 +50,7 @@ function WorkshoppingPage() {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
     return (
-      <Container theme={theme}>
+      <>
         <ArchivedIdea />
 
         <HeadWapper>
@@ -87,7 +87,7 @@ function WorkshoppingPage() {
             </Comments>
           </Wrapper>
         }
-      </Container>
+      </>
     );
   }
 }

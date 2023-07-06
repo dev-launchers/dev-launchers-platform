@@ -42,7 +42,7 @@ function SubmissionForm() {
     ['primary', 'close'],
   );
 
-  const initialValues = {
+  const originalValue = {
     ideaName: '',
     tagline: '',
     description: '',
@@ -53,6 +53,15 @@ function SubmissionForm() {
     involveLevel: '',
     status: '',
   };
+
+  const [formValue, setFormValue] = React.useState(originalValue);
+  React.useEffect(() => {
+    if (sessionStorage.getItem("Form") !== null) {
+      setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+    } else {
+      setFormValue(originalValue);
+    }
+  }, []);
 
   const SignupSchema = Yup.object().shape({
     ideaName: Yup.string().trim().required('Idea Name is Required.'),
@@ -82,6 +91,12 @@ function SubmissionForm() {
       if (res.status === 200) {
         setunsavedChanges(false);
         setUrrl(`workshop/${res.data.id}`);
+        if (sessionStorage.getItem("Form") !== null) {
+          sessionStorage.removeItem("Form");
+        }
+        if (sessionStorage.getItem("FormTemp") !== null) {
+          sessionStorage.removeItem("FormTemp");
+        }
       }
     } catch (error) {
       setSending(false);
@@ -100,9 +115,7 @@ function SubmissionForm() {
   React.useEffect(() => {
     // For reloading.
     window.onbeforeunload = () => {
-      if (unsavedChanges) {
-        return 'You have unsaved changes. Do you really want to leave?';
-      }
+      sessionStorage.setItem("Form",sessionStorage.getItem('FormTemp'));
     };
 
     // For changing route.
@@ -160,12 +173,14 @@ function SubmissionForm() {
           <Dialog />
           <CreateFailure />
           <IdeaForm
-            initialValues={initialValues}
+            initialValues={formValue}
+            originalValue={originalValue}
             SignupSchema={SignupSchema}
             submitHandler={submitHandler}
             unsavedHandler={setunsavedChanges}
             formButton="submit"
             sending={sending}
+            href="ideaSubmissionTC"
           />
         </>
       )}

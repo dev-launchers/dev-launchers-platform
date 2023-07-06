@@ -2,6 +2,7 @@ import React from 'react';
 import Vector from '../../../images/Vector.svg';
 import {
   GoBack,
+  GoBackTerms,
 } from './StyledBackButton';
 
 const BackButton = ({
@@ -17,7 +18,14 @@ const BackButton = ({
     clickHandler("back");
   };
 
-  if (buttonType == "confirm") {
+  if (buttonType == "terms") {
+    return (
+      <GoBackTerms onClick={goBack}>
+        <img alt='backButton' src={Vector} />
+        Back
+      </GoBackTerms>
+    );
+  } else if (buttonType == "confirm") {
     return (
       <GoBack onClick={goBack2}>
         <img alt='backButton' src={Vector} />

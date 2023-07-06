@@ -10,19 +10,21 @@ import EditionButton from './EditionButton';
 
 const IdeaForm = ({
 	initialValues,
+	originalValue,
 	SignupSchema,
 	submitHandler,
 	unsavedHandler,
 	formButton,
 	sending,
-	clickHandler
+	clickHandler,
+	href,
 },props) => {
 	const {	errors } = props;
 	const [disabling, setDisabling] = React.useState(true);
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
-			if (values[name[i]] !== initialValues[name[i]]) {
+			if (values[name[i]] !== originalValue[name[i]]) {
 				return true;
 			}
 		}
@@ -35,6 +37,7 @@ const IdeaForm = ({
 			if (compareValuesToInitial(values)) {
 				unsavedHandler(true);
 				setDisabling(false);
+				sessionStorage.setItem("FormTemp",JSON.stringify(values));
 			} else {
 				unsavedHandler(false);
 				setDisabling(true);
@@ -166,14 +169,14 @@ const IdeaForm = ({
 									</Field>
 
 									<atoms.ToolTip
-										content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshipping page."
+										content="As an “idea owner” you'll own the idea and be in charge of refine and update the information on the workshipping page."
 										direction="top"
 										delay={100}
 									>
 										<img alt='submit_image' src={popoverSvg} />
 									</atoms.ToolTip>
 								</atoms.Box>
-								<atoms.Typography type='p'style={{ marginLeft: '1rem', marginTop: '0.5rem', color:'#F03D3E', fontSize:'0.875rem' }}> {errors.involveLevel}</atoms.Typography>
+								<atoms.Typography type='p'style={{ marginLeft: '1rem', marginTop: '0.5rem', color:'#F03D3E', fontSize:'0.875rem' }}> {touched['involveLevel'] && errors.involveLevel}</atoms.Typography>
 							</atoms.Box>
 
 							<atoms.Typography type='p'>
@@ -183,7 +186,7 @@ const IdeaForm = ({
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
 								<atoms.Checkbox disabled={false} required />
 								<atoms.Typography type='p'>
-									&nbsp;I have read and agree to the Terms and Conditions.
+									&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.
 								</atoms.Typography>
 							</atoms.Box>
 
