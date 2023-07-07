@@ -1,4 +1,5 @@
-import { NewApplicant, Opportunity, Project, User as UserType } from "@devlaunchers/models";
+import { NewApplicant, Opportunity, Project, User as UserType, Idea, Like, Save } from "@devlaunchers/models";
+import { Comment } from "@devlaunchers/models/comment";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
@@ -76,15 +77,15 @@ function createFormData(item: any) {
   return formData;
 }
 
-const responseBody = (response: AxiosResponse) => response.data;
+const responseBody = (response: AxiosResponse) => response.data.data;
 
-//Axios requests simplified
+// Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
     axios.get<T>(url, { params }).then(responseBody),
   post: <T>(url: string, body: {}) =>
-    axios.post<T>(url, body).then(responseBody),
+    axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
   patch: <T>(url: string, body: {}) =>
     axios.patch<T>(url, body).then(responseBody),
@@ -118,10 +119,31 @@ const Opportunities = {
   list: () => requests.get<Opportunity[]>("opportunities"),
 };
 
-const Ideas = {};
+const Ideas = {
+  get: (params?: URLSearchParams) => 
+    requests.get<Idea[]>("idea-cards", params),
+  getIdea: (id: string, params?: URLSearchParams) => 
+    requests.get<Idea>(`/idea-cards/${id}`, params),
+  post: (body: {}) =>
+    requests.post<Idea>('/idea-cards/', body),
+  put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body)
+};
 
 const User = {
   get: () => requests.get<UserType>("users"),
+};
+
+const Comments = {
+  put: (id: string, body: {}) => requests.put<Comment>(id, body),
+};
+
+const Likes = {
+  get: (params?: URLSearchParams) => 
+    requests.get<Like[]>('/likes/', params)
+};
+
+const Saves = {
+  post: (body: {}) => requests.post<Save>('/saves/', body)
 };
 
 const agent = {
@@ -129,8 +151,10 @@ const agent = {
   Projects,
   Applicant,
   User,
+  Comments,
+  Ideas,
+  Likes,
+  Saves
 };
-
-
 
 export default agent;

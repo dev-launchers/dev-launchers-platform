@@ -96,6 +96,7 @@ function EditIdea() {
       }
       return false;
     }
+  };
 
   useEffect(async () => {
     if (ideaId) {

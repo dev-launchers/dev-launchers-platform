@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
-import {
-  ImgButton,
-  StatuBox,
-} from './StyledIdeaCard';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
 import IdeaCardComment from './IdeaCardComment';
 import IdeaCardUpdated from './IdeaCardUpdated';
 import useConfirm from '../DialogBox/DialogBox';
+import { agent } from '@devlaunchers/utility';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -23,7 +19,7 @@ function IdeaCard({ cards, cardType }) {
     ['primary', 'close'],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (cardType == "mine") {
       if (tagContent !== "archived") {
         setButtonContent(`WORKSHOP THIS IDEA`);
@@ -42,12 +38,9 @@ function IdeaCard({ cards, cardType }) {
     setButtonContent(`WAIT`);
 
     try {
-      const res = await axios.put(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${cards.id}`,
-        cards
-      );
+      const res = await agent.Ideas.getIdea(cards.id, new URLSearchParams(`populate=*`));
 
-      if (res.status === 200) {
+      if (res.ideaName) {
         setTagContent("workshopping");
       }
     } catch (error) {

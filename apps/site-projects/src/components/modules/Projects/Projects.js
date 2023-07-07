@@ -48,13 +48,13 @@ const Projects = ({ projects }) => {
           alignItems: 'center',
         }}
       >
-        <h1>Projects you can join!</h1>
+        <h1>Our Projects - Explore and Collaborate!</h1>
         <SearchBar onChange={searchProject} />
       </div>
 
       <div>
-      Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!
-      </div>
+				Come together to contribute, collaborate, and excel! Access a wealth of resources, tools, and support designed to help you succeed in building projects in the Dev Launchers ecosystem. <Link href="/join">Find a place you fit!</Link>
+			</div>
       <Layout>
         {items.map((project, i) => (
           <ProjectContainer key={i}>
