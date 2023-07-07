@@ -1,0 +1,4 @@
+html,
+body {
+  @apply flex h-full w-full;
+}

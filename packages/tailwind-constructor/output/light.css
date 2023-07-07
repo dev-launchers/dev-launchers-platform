@@ -1,0 +1,12 @@
+.light-theme {
+  --fg-default: #000000;
+  --fg-muted: #4a5568;
+  --fg-subtle: #a0aec0;
+  --bg-default: #ffffff;
+  --bg-muted: #f7fafc;
+  --bg-subtle: #edf2f7;
+  --accent-default: #7f9cf5;
+  --accent-on-accent: #ffffff;
+  --accent-bg: #c3dafe;
+  --shadows-default: #1a202c;
+}
