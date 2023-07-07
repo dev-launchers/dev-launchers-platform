@@ -3082,6 +3082,13 @@ __metadata:
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@devlaunchers/models": "workspace:^"
     "@devlaunchers/utility": "workspace:^"
+    "@storybook/addon-essentials": ^7.0.26
+    "@storybook/addon-interactions": ^7.0.26
+    "@storybook/addon-links": ^7.0.26
+    "@storybook/blocks": ^7.0.26
+    "@storybook/nextjs": ^7.0.26
+    "@storybook/react": ^7.0.26
+    "@storybook/testing-library": ^0.0.14-next.2
     "@types/lodash": ^4.14.182
     "@types/react": ^17.0.0
     "@types/react-burger-menu": ^2.8.3
@@ -3128,6 +3135,7 @@ __metadata:
     remark-gfm: ^3.0.1
     semantic-release: ^19.0.3
     slick-carousel: ^1.8.1
+    storybook: ^7.0.26
     styled-normalize: ^8.0.7
     typescript: ^4.7.4
     webp-loader: 0.6.0
