@@ -22,7 +22,4 @@ export const MemberImage = styled.img`
   width: 8.75rem;
   height: 8.75rem;
   flex-shrink: 0;
-  &:hover {
-    opacity: 0.5;
-  }
 `;
