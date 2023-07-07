@@ -1,9 +1,19 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import Alert from './Alert';
 
 export default {
   title: 'Molecules/Alert',
   component: Alert,
+  args: {
+    handleClose: (event) => {
+      console.log({ event });
+    },
+    isInitallyOpen: true,
+  },
+  decorators: [
+    (story) => <LazyMotion features={domAnimation}>{story()}</LazyMotion>,
+  ],
 } as ComponentMeta<typeof Alert>;
 
 export const NotificationAlert: ComponentStory<typeof Alert> = (args) => (
