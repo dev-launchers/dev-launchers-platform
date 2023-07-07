@@ -1,5 +1,9 @@
 name: CI
-on: [push]
+on: 
+  push:
+    branches: "development/design-team"
+    paths: 
+      - "packages/tailwind-constructor/tokens.json"
 
 jobs:
   build:
