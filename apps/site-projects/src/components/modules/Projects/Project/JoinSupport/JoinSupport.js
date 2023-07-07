@@ -27,7 +27,8 @@ const JoinSupport = ({ theme, scrollMethods }, ref) => (
             </Button>
           </Link>
 
-          <Link href="../support-us" replace passHref>
+          <Link href="../support-us" passHref>
+
             <Button bgColor={theme?.colors?.ACCENT_2}>
               <i className="fas fa-coins"></i> Donate
             </Button>
