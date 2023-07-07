@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Comment from './SingleComment';
-import { agent } from '@devlaunchers/utility';
-import { cleanData, cleanDataList } from '../../../../utils/StrapiHelper';
 
 //create your forceUpdate hook
 function useForceUpdate(){
@@ -13,13 +11,14 @@ function useForceUpdate(){
 
 function DisplayComments(props) {
 
-  const [comments, setComments] = useState([]); // the data for the comments array; setComments updates comment and triggers a re-render
+  // const [comments, setComments] = useState([]); // the data for the comments array; setComments updates comment and triggers a re-render
 
   // call your hook here
-  const forceUpdate = useForceUpdate();
+  // const forceUpdate = useForceUpdate();
 
   useEffect(async () => {
     if (props.selectedCard.id != undefined) {
+      setData((props.selectedCard.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
 
       const data = await agent.Ideas
       .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
@@ -36,15 +35,19 @@ function DisplayComments(props) {
     }
   }, [props.selectedCard]);
 
+  useEffect(() => {
+    // refresh the comment feed to show the new comment
+    this.forceUpdate();
+  }, [props.comments]);
 
-  const commentNodes = comments.map(comment => (
+  const commentNodes = data.map(comment => (
     <Comment author={comment.author} key={comment.id} id={comment.id}>
       {comment.text}
     </Comment>
   ));
   return (
     <div>
-      {comments.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
+      {props.comments.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
     </div>
   );
 };

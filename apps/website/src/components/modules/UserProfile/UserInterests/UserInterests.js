@@ -1,10 +1,6 @@
 import axios from "axios";
 import React from "react";
-
-import { useUserDataContext } from "../../../../context/UserDataContext";
-
-import { env } from "../../../../utils/EnvironmentVariables";
-
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 import {
   UserInterestCard,
   UserInterestsCardContainer,
@@ -12,7 +8,7 @@ import {
 } from "./StyledUserInterests";
 
 const UserInterests = ({interests}) => {
-  const { userData, setUserData } = useUserDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const [
     userInterestsUpdateRequestTimeout,
@@ -79,7 +75,7 @@ const UserInterests = ({interests}) => {
                         1
                       );
                     }
-                    setUserData(tempUserData);
+                    updateUserData(tempUserData);
                     userInterestsChanged();
                   }}
                 >

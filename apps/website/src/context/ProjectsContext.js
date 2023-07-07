@@ -2,8 +2,6 @@ import React from "react";
 import constate from "constate"; // State Context Object Creator
 import axios from "axios";
 
-import { env } from "../utils/EnvironmentVariables";
-
 const DEFAULT_PROJECTS = [];
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
@@ -18,7 +16,7 @@ function useProjectsData() {
         setProjectsData(data);
       })
       .catch(() => {
-        // setUserData({ id: "invalid" });
+        // updateUserData({ id: "invalid" });
       });
   }, []);
 

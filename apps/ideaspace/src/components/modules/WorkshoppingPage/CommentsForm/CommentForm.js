@@ -12,24 +12,25 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
-const MAX_COMMENT_CHARS = 250;
-
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
-  const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
+  const [disabled, setDisabled] = React.useState(true);
 
   const handleTextChange = (e) => {
     const text = e.target.value;
     props.setHandleTextChange(text);
 
-    let characterCount = text.length;
-    setCharsLeft(MAX_COMMENT_CHARS - characterCount);
+    if (text.trim() == '') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange };
+    var data = { author: userData.username, text: props.handleTextChange.trim() };
 
     try {
       const res = await agent.Comments.post(data);
@@ -80,18 +81,13 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts? (max 250 characters)"
+              placeholder="What are your thoughts?"
               value={props.handleTextChange}
               onChange={handleTextChange}
-              // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
-            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
             {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-            {/* <div id="the-count">
-              <span id="chars-left">{charsLeft}</span>
-              <span id="char-counter">{charCount}</span>
-            </div> */}
           </UserComment>
+          <button type="submit" disabled={disabled}>Submit</button>
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>

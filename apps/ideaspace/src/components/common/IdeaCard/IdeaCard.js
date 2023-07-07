@@ -1,151 +1,118 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
-import theme from '@devlaunchers/components/styles/theme';
 import {
   ImgButton,
   StatuBox,
 } from './StyledIdeaCard';
-import commentSvg from '../../../images/comment.svg';
-import timeSvg from '../../../images/time.svg';
+import IdeaCardImg from './IdeaCardImg';
+import IdeaCardTag from './IdeaCardTag';
+import IdeaCardComment from './IdeaCardComment';
+import IdeaCardUpdated from './IdeaCardUpdated';
+import useConfirm from '../DialogBox/DialogBox';
 
 function IdeaCard({ cards, cardType }) {
-  const [tag, setTag] = useState('');
-  const [tagColor, setTagColor] = useState('');
-  const [updated, setUpdated] = useState('');
-  React.useEffect(() => {
-    if (cards.statu == "submitted"){
-      setTag("submitted");
-      setTagColor(theme.colors.LIGHT_BLUE_100);
-    } else if (cards.statu == "applying"){
-      setTag("applying");
-      setTagColor(theme.colors.YELLOW_100);
-    } else if (cards.statu == "approved"){
-      setTag("approved");
-      setTagColor(theme.colors.SUCCESS_100);
-    } else if (cards.statu == "archived"){
-      setTag("archived");
-      setTagColor(theme.colors.BLUE_100);
-    } else {
-      setTag("workshopping");
-      setTagColor(theme.colors.ORANGE_100);
-    }
+  const [tagContent, setTagContent] = useState(cards.status);
+  const [buttonContent, setButtonContent] = useState('');
+  const [urlPath, setUrlPath] = useState('');
 
-    const toBeOneSecond = 1000;
-    const secondsInDay = 86400;
-    const secondsInMonth = secondsInDay * 30;
-    const secondsInYear = secondsInMonth * 12;
-    const secondsInHour = 3600;
-    const secondsInMinute = 60;
+  const [UpdateFailure, confirmFailure] = useConfirm(
+    ['Unable to reactivate your idea', '', ''],
+    'Please try again.',
+    ['primary', 'close'],
+  );
+
+  React.useEffect(() => {
+    if (cardType == "mine") {
+      if (tagContent !== "archived") {
+        setButtonContent(`WORKSHOP THIS IDEA`);
+      } else {
+        setButtonContent(`REACTIVATE THIS IDEA`);
+      }
+      setUrlPath(`/ideaspace/edit/${cards.id}`);
+    } else {
+      setButtonContent(`HELP THIS IDEA`);
+      setUrlPath(`/ideaspace/workshop/${cards.id}`);
+    }
+  }, [tagContent]);
+
+  const reactivateIdea = async () => {
+    cards["status"] = "workshopping";
+    setButtonContent(`WAIT`);
 
     const difftime = (new Date() - new Date(cards.updatedAt)) / toBeOneSecond; 
+    
+    try {
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${cards.id}`,
+        cards
+      );
 
-    if (difftime > secondsInYear) {
-      const years = parseInt(difftime / secondsInYear);
-      if (years > 1) {
-        setUpdated(years + ' years ago');
-      } else {
-        setUpdated(years + ' year ago');
+      if (res.status === 200) {
+        setTagContent("workshopping");
       }
-    } else if (difftime > secondsInMonth) {
-      const months = parseInt(difftime / secondsInMonth);
-      if (months > 1) {
-        setUpdated(months + ' months ago');
-      } else {
-        setUpdated(months + ' month ago');
-      }
-    } else if (difftime > secondsInDay) {
-      const days = parseInt(difftime / secondsInDay);
-      if (days > 1) {
-        setUpdated(days + ' days ago');
-      } else {
-        setUpdated(days + ' day ago');
-      }
-    } else if (difftime > secondsInHour) {
-      const hours = parseInt(difftime / secondsInHour);
-      if (hours > 1) {
-        setUpdated(hours + ' hours ago');
-      } else {
-        setUpdated(hours + ' hour ago');
-      }
-    } else {
-      const minutes = parseInt(difftime % secondsInHour / secondsInMinute);
-      if (minutes > 1) {
-        setUpdated(minutes + ' minutes ago');
-      } else {
-        setUpdated('1 minute ago');
-      }
+    } catch (error) {
+      confirmFailure();
+      setButtonContent(`REACTIVATE THIS IDEA`);
     }
-
-  }, []);
+  }
 
   return (
     <atoms.Box flexDirection='column'
       style={{ border: "0.05rem solid rgba(240, 237, 238, 1)", borderRadius: "1rem" }}
     >
 
-      <Link href={`/ideaspace/workshop/${cards.id}`}>
-        <ImgButton style={{ backgroundColor: "#FFFFFF", }}>
-          <img
-            alt="idea_image"
-            src={`https://picsum.photos/seed/${cards.id}/350/270?random=${cards.id}`}
-            style={{ width: "100%", height: "100%", borderRadius: "1rem", }}
+      <atoms.Box>
+        <IdeaCardTag
+          status={tagContent}
+        />
+      </atoms.Box>
+
+      <IdeaCardImg
+        cardId={cards.id}
+        cardImg={cards.imgSrc}
+      />
+
+      <Link href={{ pathname: urlPath }}>
+        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
+          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }}>
+
+          <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
+            {cards.ideaName}
+          </atoms.Typography>
+
+          <IdeaCardComment
+            commentLength={cards.comments.length}
           />
 
-        </ImgButton>
+          <IdeaCardUpdated
+            updatedAt={cards.updated_at}
+          />
+        </atoms.Box>
       </Link>
 
-      <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-        margin='-1.5rem 2rem 1.5rem' style={{ maxWidth: '18.5rem' }}>
-
-        <StatuBox style={{ background: tagColor, }}>{tag}</StatuBox>
-
-        <atoms.Typography type='h3' style={{ fontSize: '1.5rem', textAlign: 'left' }}>
-          {cards.ideaName}
-        </atoms.Typography>
-
-        {cards?.comments?.length > 0 ? (
-          <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
-            <img alt='commentSvg' src={commentSvg} />
-            <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }}>
-
-              &nbsp;COMMENTS:&nbsp;{cards.comments.length}
-            </atoms.Typography>
-          </atoms.Box>
-        ) : (
-          null
-        )}
-
-        <atoms.Box alignItems='center' style={{ marginTop: '0.5rem' }} >
-          <img alt='timeSvg' src={timeSvg} />
-          <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }}>
-            &nbsp;UPDATED:&nbsp;{updated}
-          </atoms.Typography>
-        </atoms.Box>
-
-        {cardType == "mine" ? (
-          <Link href={{ pathname: `/ideaspace/edit/${cards.id}` }}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='alternative'
-              style={{ width: "100%", marginTop: "2rem" }}
-            >
-              WORKSHOP&nbsp;THIS&nbsp;IDEA
-            </atoms.Button>
-          </Link>
-        ) : (
-          <Link href={{ pathname: `/ideaspace/workshop/${cards.id}` }}>
-            <atoms.Button
-              buttonSize='standard'
-              buttonType='alternative'
-              style={{ width: "100%", marginTop: "2rem" }}
-            >
-              HELP&nbsp;THIS&nbsp;IDEA
-            </atoms.Button>
-          </Link>
-        )}
-
-      </atoms.Box>
+      {tagContent == "archived" ? (
+        <atoms.Button
+          buttonSize='standard'
+          buttonType='alternative'
+          style={{ margin: '0rem 2rem 1.5rem' }}
+          onClick={reactivateIdea}
+        >
+          {buttonContent}
+        </atoms.Button>
+      ) : (
+        <Link href={{ pathname: urlPath }}>
+          <atoms.Button
+            buttonSize='standard'
+            buttonType='alternative'
+            style={{ margin: '0rem 2rem 1.5rem' }}
+          >
+            {buttonContent}
+          </atoms.Button>
+        </Link>
+      )}
+      <UpdateFailure />
 
     </atoms.Box>
   )

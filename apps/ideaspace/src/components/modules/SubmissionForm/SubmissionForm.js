@@ -16,13 +16,12 @@ import {
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
+  let { userData, updateUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
     React.useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-      console.log('data', userData);
+      updateUserData({ ...userData, id: 30 });
     }, []);
   }
 
@@ -30,10 +29,17 @@ function SubmissionForm() {
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
-    'You have unsaved changes',
+    ['You have unsaved changes','',''],
     'Are you sure you want to discard the changes and leave',
+    ['alternative primary', 'CANCEL', 'LEAVE']
   )
   const [urrl, setUrrl] = useState('');
+
+  const [CreateFailure, confirmFailure] = useConfirm(
+    ['Unable to register your idea.','',''],
+    'Please try again.',
+    ['primary', 'close'],
+  );
 
   const initialValues = {
     ideaName: '',
@@ -45,35 +51,43 @@ function SubmissionForm() {
     extraInfo: '',
     involveLevel: '',
     status: '',
-    hourCommitmentMin: 0,
-    hourCommitmentMax: 0,
-    difficultyLevel: 'Beginner',
   };
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().required('Idea Name is Required.'),
-    description: Yup.string().required('Idea Description is Required.'),
-    experience: Yup.string().required('Experience is Required.'),
-    features: Yup.string().required('Idea Feature is Required.'),
+    ideaName: Yup.string().trim().required('Idea Name is Required.'),
+    description: Yup.string().trim().required('Idea Description is Required.'),
+    experience: Yup.string().trim().required('Experience is Required.'),
+    features: Yup.string().trim().required('Idea Feature is Required.'),
+    involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
 
   const submitHandler = async (values) => {
     values['author'] = userData;
     values['status'] = 'workshopping';
-
-    console.log('values', values);
+    values['ideaName'] = values['ideaName'].trim();
+    values['tagline'] = values['tagline'].trim();
+    values['description'] = values['description'].trim();
+    values['targetAudience'] = values['targetAudience'].trim();
+    values['features'] = values['features'].trim();
+    values['experience'] = values['experience'].trim();
+    values['extraInfo'] = values['extraInfo'].trim();
     setSending(true);
 
-    const data = cleanData(await agent.Ideas.post(values));
+    try {
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
+        values
+      );
 
-    if (data.ideaName) {
-      setunsavedChanges(false);
-      router.push(`workshop/${data.id}`);
-    } else {
-      alert('Unable to register your idea.');
+      if (res.status === 200) {
+        setunsavedChanges(false);
+        setUrrl(`workshop/${res.data.id}`);
+      }
+    } catch (error) {
       setSending(false);
       setunsavedChanges(true);
+      confirmFailure();
     }
   };
 
@@ -104,9 +118,9 @@ function SubmissionForm() {
         router.events.off('routeChangeStart', routeChangeStart);
       };
     } else if (urrl !== '') {
-      if (urrl == 'back'){
+      if (urrl == 'back') {
         window.history.back(-1);
-      }else{
+      } else {
         router.push(urrl);
       }
     }
@@ -127,7 +141,7 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton 
+        <BackButton
           buttonType="confirm"
           clickHandler={backHandler}
         />
@@ -145,6 +159,7 @@ function SubmissionForm() {
       ) : (
         <>
           <Dialog />
+          <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
