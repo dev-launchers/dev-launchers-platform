@@ -77,7 +77,7 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "test:unit": "echo \"No tests yet\"",
     "fix:staged-files": "lint-staged --allow-empty",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6001",
     "build-storybook": "storybook build"
   },
   "browserslist": [

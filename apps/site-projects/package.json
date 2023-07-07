@@ -68,7 +68,7 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 6002",
     "build-storybook": "storybook build",
     "deploy-storybook": "storybook-to-ghpages",
     "clean": "rimraf --no-glob ./tsconfig.tsbuildinfo",

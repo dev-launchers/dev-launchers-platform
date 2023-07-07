@@ -51,7 +51,8 @@
     "check:renovate:config": "docker run -v renovate.json5:/usr/src/app/renovate.json5 -it renovate/renovate renovate-config-validator",
     "install:playwright": "playwright install",
     "postinstall": "is-ci || yarn husky install",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "storybooks": "yarn workspaces foreach -j unlimited --exclude '@devlaunchers/components' -p -v -i -A run storybook --no-open & (node -e 'setTimeout(() => process.exit(0), 15000)' && yarn workspace @devlaunchers/components storybook)"
   },
   "dependencies": {
     "cross-env": "7.0.3"

@@ -11,5 +11,11 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  core: {
+    crossOriginIsolated: false,
+  },
+  features: {
+    buildStoriesJson: true,
+  },
 };
 export default config;

@@ -15,5 +15,23 @@ module.exports = {
   },
   docs: {
     autodocs: true
-  }
+  },
+  refs: {
+    'idea-space': {
+      title: 'idea-space',
+      url: 'http://localhost:6001',
+    },
+    'site-projects': {
+      title: 'site-projects',
+      url: 'http://localhost:6002',
+    },
+    'dev-recruit': {
+      title: 'dev-recruit',
+      url: 'http://localhost:6003',
+    },
+    'website': {
+      title: 'website',
+      url: 'http://localhost:6004',
+    },
+  },
 };
