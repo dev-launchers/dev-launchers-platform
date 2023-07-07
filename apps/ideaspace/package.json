@@ -42,6 +42,13 @@
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@storybook/addon-essentials": "^7.0.26",
+    "@storybook/addon-interactions": "^7.0.26",
+    "@storybook/addon-links": "^7.0.26",
+    "@storybook/blocks": "^7.0.26",
+    "@storybook/nextjs": "^7.0.26",
+    "@storybook/react": "^7.0.26",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/luxon": "3.0.0",
     "@types/react": "^17.0.0",
     "babel-plugin-styled-components": "^2.0.7",
@@ -53,6 +60,7 @@
     "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
+    "storybook": "^7.0.26",
     "typescript": "^4.7.4",
     "webp-loader": "0.6.0"
   },
@@ -68,7 +76,9 @@
     "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix",
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "test:unit": "echo \"No tests yet\"",
-    "fix:staged-files": "lint-staged --allow-empty"
+    "fix:staged-files": "lint-staged --allow-empty",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "browserslist": [
     ">0.2%",
