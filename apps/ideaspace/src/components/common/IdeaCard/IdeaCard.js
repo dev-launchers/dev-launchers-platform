@@ -9,7 +9,10 @@ import IdeaCardComment from './IdeaCardComment';
 import IdeaCardUpdated from './IdeaCardUpdated';
 import useConfirm from '../DialogBox/DialogBox';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
-import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import {
+  useUserDataContext,
+  isAuthenticated,
+} from '@devlaunchers/components/src/context/UserDataContext';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -24,10 +27,6 @@ function IdeaCard({ cards, cardType }) {
     'Please try again.',
     ['primary', 'close']
   );
-
-  const handleToggleLike = () => {
-    setIsFilled(!isFilled);
-  };
 
   React.useEffect(() => {
     if (cardType == 'mine') {
@@ -102,7 +101,7 @@ function IdeaCard({ cards, cardType }) {
           onClick={() => setLiked((prev) => !prev)}
           filled={liked}
           text={liked ? 1 : ''}
-          disabled={useUserDataContext().isAuthenticated ? false : true}
+          disabled={isAuthenticated ? false : true}
         ></LikeButton>
       </atoms.Box>
 
