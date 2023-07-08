@@ -65,6 +65,7 @@ function SubmissionForm() {
   const submitHandler = async (values) => {
     values['author'] = userData;
     values['status'] = 'workshopping';
+<<<<<<< HEAD
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();
     values['description'] = values['description'].trim();
@@ -85,6 +86,19 @@ function SubmissionForm() {
         setUrrl(`workshop/${res.data.id}`);
       }
     } catch (error) {
+=======
+
+    console.log('values', values);
+    setSending(true);
+
+    const data = cleanData(await agent.Ideas.post(values));
+
+    if (data.ideaName) {
+      setunsavedChanges(false);
+      router.push(`workshop/${data.id}`);
+    } else {
+      alert('Unable to register your idea.');
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
       setSending(false);
       setunsavedChanges(true);
       confirmFailure();

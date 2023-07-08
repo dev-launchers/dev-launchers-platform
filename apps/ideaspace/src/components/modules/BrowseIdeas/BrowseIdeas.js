@@ -1,14 +1,24 @@
+<<<<<<< HEAD
 import React from 'react';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import axios from 'axios';
+=======
+import React from 'react'
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+<<<<<<< HEAD
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 import { cleanDataList } from '../../../utils/StrapiHelper';
 import { agent } from '@devlaunchers/utility';
 
+=======
+import { agent } from '@devlaunchers/utility';
+import { cleanDataList } from '../../../utils/StrapiHelper';
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 import {
   PageWrapper,
   HeadWapper,
@@ -75,9 +85,31 @@ function BrowseIdeas() {
     const ideaCards = cleanDataList(await agent.Ideas.get(
       new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
 
+<<<<<<< HEAD
       setLoading(false);
       setSourceCards(cards);
   });
+=======
+    const getCards = ideaCards.map((item) => {  
+      if (item?.comments?.data) {
+        item.comments = cleanDataList(item.comments.data);
+        return {
+          ...item,
+          mostRecentCommentTime: new Date(
+            item.comments[0]?.updated_at
+          )?.getTime(),
+        };
+      }
+      return {
+        ...item,
+        mostRecentCommentTime: new Date()?.getTime(),
+      };
+    });
+
+    setLoading(false);
+    setCards(getCards);
+  }, []);
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 
   React.useEffect(() => {
     setCards(sourceCards.filter((item) => item?.status !== 'archived'));
