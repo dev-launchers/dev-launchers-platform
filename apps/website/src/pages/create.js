@@ -18,7 +18,6 @@ export default function CreateRoute() {
         <title>Create</title>
       </Head>
       <div>
-        Hello {userData.email}
         <Create templateId={params.template} />
       </div>
     </>

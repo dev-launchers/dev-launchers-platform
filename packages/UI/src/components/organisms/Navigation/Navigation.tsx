@@ -63,15 +63,13 @@ export default function Navigation({ user }: NavigationProps) {
       interests: [],
     });
   };
-  
+
   return (
     <>
       <ThemeProvider theme={theme}>
         <Layer hasRainbowBottom={true} type="dark">
           <Nav>
-            <Box 
-            onClick={() => console.log(userData)}
-            justifyContent={'space-between'} alignItems={'center'}>
+            <Box justifyContent={'space-between'} alignItems={'center'}>
               <Link href="/">
                 <a href="/">
                   <Box gap={'5px'} alignItems={'center'}>

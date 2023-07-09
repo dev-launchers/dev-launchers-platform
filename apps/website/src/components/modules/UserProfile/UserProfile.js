@@ -21,7 +21,7 @@ import { useRouter } from "next/router";
 
 // State management component
 export default function UserProfile({ otherUser }) {
-  const { userData, isAuthenticated, updateUserData } = useUserDataContext();
+  const { userData, isAuthenticated, setUserData } = useUserDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -32,28 +32,6 @@ export default function UserProfile({ otherUser }) {
   
   // If user hasn't set a username, redirect them to the signup form
   const router = useRouter();
-
-  useEffect(() => {
-    if (process.env.NEXT_PUBLIC_NAME !== 'DEVELOPMENT' 
-      || !router.isReady || isAuthenticated) {
-      return;
-    }
-
-    const token = router.query.access_token;
-
-    axios({
-      method: 'GET',
-      url: 'http://localhost:1337/api/auth/google/callback?access_token=' + token
-    })
-      .then((res) => {
-        updateUserData(res.data.user);
-      })
-      .catch(e => {
-        console.log('error authenticating');
-        console.log(e);
-      });
-  }, [router.isReady]);
-
 
   React.useEffect(() => {
     if (isAuthenticated && userData.name === '')

@@ -37,7 +37,6 @@ function useUserData() {
   
   useEffect(() => {
     const cacheData = JSON.parse(localStorage.getItem('userData'));
-
     if (cacheData && cacheData.id > 0) {
       setUserData(cacheData);
     } else {
@@ -47,16 +46,16 @@ function useUserData() {
         .then(({ data: currentUser }) => {
           setUserData({
             id: currentUser.id,
-            name: currentUser.profile.displayName,
+            name: currentUser.profile?.displayName,
             username: currentUser.username,
             email: currentUser.email,
-            bio: currentUser.profile.bio,
-            profilePictureUrl: currentUser.profile.profilePictureUrl,
-            socialMediaLinks: currentUser.profile.socialMediaLinks,
-            totalPoints: currentUser.point.totalPoints,
-            totalSeasonPoints: currentUser.point.totalSeasonPoints,
-            availablePoints: currentUser.point.availablePoints,
-            volunteerHours: currentUser.point.volunteerHours,
+            bio: currentUser.profile?.bio,
+            profilePictureUrl: currentUser.profile?.profilePictureUrl,
+            socialMediaLinks: currentUser.profile?.socialMediaLinks,
+            totalPoints: currentUser.point?.totalPoints,
+            totalSeasonPoints: currentUser.point?.totalSeasonPoints,
+            availablePoints: currentUser.point?.availablePoints,
+            volunteerHours: currentUser.point?.volunteerHours,
             interests: currentUser.interests,
           });
         })
