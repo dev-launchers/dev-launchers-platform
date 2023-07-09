@@ -21,7 +21,7 @@ const IdeaForm = ({
 },props) => {
 	const {	errors } = props;
 	const [disabling, setDisabling] = React.useState(true);
-	const compareValuesToInitial = (values) => {
+	const differWithInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
 			if (values[name[i]] !== originalValue[name[i]]) {
@@ -34,7 +34,7 @@ const IdeaForm = ({
 	const AutoSubmitToken = () => {
 		const { values, submitForm } = useFormikContext();
 		React.useEffect(() => {
-			if (compareValuesToInitial(values)) {
+			if (differWithInitial(values)) {
 				unsavedHandler(true);
 				setDisabling(false);
 				sessionStorage.setItem("FormTemp",JSON.stringify(values));

@@ -8,6 +8,7 @@ export const QuickLinkLeft = styled.div`
   padding-top: 8rem;
   strong {
     padding-left: 1rem;
+    font-weight: lighter;
   }
   p {
     line-height: 1.5;
@@ -32,6 +33,7 @@ export const Content = styled.div`
 
 export const QuickLinkTop = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   background-color: #f0edee;
   text-align: left;
@@ -43,6 +45,7 @@ export const QuickLinkTop = styled.div`
   width: 100%;
   strong {
     padding-left: 1rem;
+    font-weight: lighter;
   }
   a {
     text-decoration: underline;
@@ -53,10 +56,34 @@ export const QuickLinkTop = styled.div`
   }
 `;
 
+export const MiddleSizeQL = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  @media (min-width: 1280px) {
+    display: none;
+  }
+
+  @media (max-width: 810px) {
+    display: none;
+  }
+`;
+
+export const SmallSizeQL = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0rem 3rem;
+  
+  @media (min-width: 810px) {
+    display: none;
+  }
+`;
+
 export const BackButtonArea = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 3rem 2rem 0 3rem;
+  margin: 3rem 3rem 0 3rem;
 
   @media (min-width: 1280px) {
     margin-left: -22rem;
@@ -116,6 +143,7 @@ export const QuickLinkMiddle = styled.div`
   padding: 2rem 2rem;
   strong {
     padding-left: 1rem;
+    font-weight: lighter;
   }
   p {
     line-height: 1.5;

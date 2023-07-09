@@ -53,8 +53,8 @@ function SubmissionForm() {
     status: '',
   };
 
-  const [formValue, setFormValue] = React.useState(originalValue);
-  React.useEffect(() => {
+  const [formValue, setFormValue] = useState(originalValue);
+  useEffect(() => {
     if (sessionStorage.getItem("Form") !== null) {
       setFormValue(JSON.parse(sessionStorage.getItem('Form')));
     } else {
@@ -182,7 +182,7 @@ function SubmissionForm() {
             unsavedHandler={setunsavedChanges}
             formButton="submit"
             sending={sending}
-            href="ideaSubmissionTC"
+            href="terms-and-conditions"
           />
         </>
       )}

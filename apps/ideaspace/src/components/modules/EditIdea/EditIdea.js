@@ -72,8 +72,8 @@ function EditIdea() {
     involveLevel: '',
     status: '',
   };
-  const [card, setCard] = React.useState(originalValue);
-  const [formValue, setFormValue] = React.useState(originalValue);
+  const [card, setCard] = useState(originalValue);
+  const [formValue, setFormValue] = useState(originalValue);
 
   const rejectAuthor = async () => {
     if (!(await confirmArchive())) {
@@ -87,15 +87,14 @@ function EditIdea() {
     }
   };
 
-    const compareValuesToInitial = (values) => {
-      const name = Object.keys(values);
-      for (let i = 0; i < name.length; i++) {
-        if (values[name[i]] !== originalValue[name[i]]) {
-          return true;
-        }
+  const differWithInitial = (values) => {
+    const name = Object.keys(values);
+    for (let i = 0; i < name.length; i++) {
+      if (values[name[i]] !== originalValue[name[i]]) {
+        return true;
       }
-      return false;
     }
+    return false;
   };
 
   useEffect(async () => {
@@ -109,7 +108,7 @@ function EditIdea() {
           }
 
           setCard(idea);
-          if (sessionStorage.getItem("Form") !== null && compareValuesToInitial(JSON.parse(sessionStorage.getItem('Form')))) {
+          if (sessionStorage.getItem("Form") !== null && differWithInitial(JSON.parse(sessionStorage.getItem('Form')))) {
             setFormValue(JSON.parse(sessionStorage.getItem('Form')));
           } else {
             setFormValue(response.data);
@@ -144,7 +143,7 @@ function EditIdea() {
 
       if (data.ideaName) {
         setunsavedChanges(false);
-        if (await confirmNotice()){
+        if (await confirmNotice()) {
           setUrrl(`/ideaspace/workshop/${data.id}`);
         }
         if (sessionStorage.getItem("Form") !== null) {
@@ -171,7 +170,7 @@ function EditIdea() {
 
   useEffect(() => {
     window.onbeforeunload = () => {
-      sessionStorage.setItem("Form",sessionStorage.getItem('FormTemp'));
+      sessionStorage.setItem("Form", sessionStorage.getItem('FormTemp'));
     };
 
     if (unsavedChanges && urrl == '') {
@@ -241,7 +240,7 @@ function EditIdea() {
               formButton="save"
               sending={sending}
               clickHandler={backHandler}
-              href="../ideaSubmissionTC"
+              href="../terms-and-conditions"
             />
           </>
         )}

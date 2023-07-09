@@ -12,6 +12,8 @@ import {
   QuickLinkLeft,
   Content,
   QuickLinkTop,
+  MiddleSizeQL,
+  SmallSizeQL,
   BackButtonArea,
   Dropdown,
   HeadWapper,
@@ -44,16 +46,16 @@ function IdeaSubmissionTC() {
     setShowOptions(defaultOptions);
   }, []);
 
-  const dropDownOptions =
-    quickLinkContentLeft.concat(quickLinkContentRight).split('\n').map((text, index) => {
+  const dropDownOptions = quickLinkContentLeft.concat(quickLinkContentRight)
+    .split('\n').slice(0, -1).map((text, index) => {
       return (
         <option
           key={index}
           value={
-            'ideaSubmissionTC'+text.substring(text.indexOf('(')+1, text.indexOf(')'))
+            'terms-and-conditions' + text.substring(text.indexOf('(') + 1, text.indexOf(')'))
           }
         >
-          {text.substring(text.indexOf('[')+1, text.indexOf(']'))}
+          {text.substring(text.indexOf('[') + 1, text.indexOf(']'))}
         </option>
       );
     });
@@ -84,11 +86,11 @@ function IdeaSubmissionTC() {
   let scrollElement = null;
   const handleScroll = () => {
     let scrollTop = document.documentElement.scrollTop;
-    scrollElement = document.getElementById(window.history.state.as.substr(window.history.state.as.lastIndexOf('#')+1));
+    scrollElement = document.getElementById(window.history.state.as.substr(window.history.state.as.lastIndexOf('#') + 1));
 
-    if (scrollTop <= document.getElementById('introduction').offsetTop || scrollTop > lastScrollTop ) {
+    if (scrollTop <= document.getElementById('introduction').offsetTop || scrollTop > lastScrollTop) {
       setIsShow(false)
-    } else if (scrollElement!== null && Math.abs(scrollElement.offsetTop - scrollTop) <= 1) {
+    } else if (scrollElement !== null && Math.abs(scrollElement.offsetTop - scrollTop) <= 1) {
       setIsShow(false)
     } else {
       setIsShow(true)
@@ -112,8 +114,22 @@ function IdeaSubmissionTC() {
       <Content>
         {isShow == true ? (
           <QuickLinkTop>
-            <ReactMarkdown children={quickLinkContentLeft} />
-            <ReactMarkdown children={quickLinkContentRight} />
+            <MiddleSizeQL>
+              <ReactMarkdown children={quickLinkContentLeft} />
+              <ReactMarkdown children={quickLinkContentRight} />
+            </MiddleSizeQL>
+
+            <SmallSizeQL>
+              <BackButton buttonType="terms" />
+              <Dropdown
+                name="sortBy"
+                id="sortBy"
+                onClick={handleClick}
+                onChange={handleSelectChange}
+              >
+                {showOptions}
+              </Dropdown>
+            </SmallSizeQL>
           </QuickLinkTop>
         ) :
           null
@@ -148,9 +164,9 @@ function IdeaSubmissionTC() {
         </QuickLinkMiddle>
 
         <MarkdownWrapper>
-          <ReactMarkdown 
-            children={markdownSource} 
-            remarkPlugins={[remarkGfm]} 
+          <ReactMarkdown
+            children={markdownSource}
+            remarkPlugins={[remarkGfm]}
             components={{ h2: HeadingRenderer, h3: HeadingRenderer, }}
           />
         </MarkdownWrapper>
