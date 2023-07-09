@@ -112,11 +112,14 @@ const Applicant = {
 
 const Projects = {
   list: (params?: URLSearchParams) =>
-    requests.get<Project[]>("projects", params),
+    requests.get<Project[]>("/projects", params ? params : {populate: '*'}),
+  get: (slug: string, params?: URLSearchParams) => requests.get<Project>(`projects/${slug}`, params ? params : {populate: '*'})
 };
 
 const Opportunities = {
-  list: () => requests.get<Opportunity[]>("opportunities"),
+  list: (params?: URLSearchParams) =>
+    requests.get<Opportunity[]>("/opportunities", params ? params : {populate: '*'}),
+  get: (slug: string, params?: URLSearchParams) => requests.get(`opportunities/${slug}`, params ? params : {populate: '*'})
 };
 
 const Ideas = {
