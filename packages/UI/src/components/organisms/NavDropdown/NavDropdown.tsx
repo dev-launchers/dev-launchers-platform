@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
 import {
@@ -46,12 +46,12 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
         <Options>
           {links.map(({ text, href }, i) => {
             return (
-              <div key={i}>
+              <React.Fragment key={i}>
                 <Link href={href} passHref>
                   <SubNavLink text={text} key={i} />
                 </Link>
                 {i === 0 && <hr style={{ width: '100%' }} />}
-              </div>
+              </React.Fragment>
             );
           })}
         </Options>
