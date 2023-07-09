@@ -8,6 +8,7 @@ import {
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
+import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
@@ -25,9 +26,13 @@ function CommentForm(props) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     var data = { author: userData.username, text: props.handleTextChange.trim() };
+
+    const res = await agent.Comments.put(selectedCard.id, data);
+    console.log('res', res);
+    props.setHandleTextChange('');
 
     axios
       .post(
