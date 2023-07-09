@@ -34,7 +34,8 @@ export default function UserProfile({ otherUser }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!router.isReady || isAuthenticated) {
+    if (process.env.NEXT_PUBLIC_NAME !== 'DEVELOPMENT' 
+      || !router.isReady || isAuthenticated) {
       return;
     }
 
