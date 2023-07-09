@@ -68,7 +68,7 @@ export default function Navigation({ user }: NavigationProps) {
     <>
       <ThemeProvider theme={theme}>
         <Layer hasRainbowBottom={true} type="dark">
-          <Nav onClick={() => console.log('ud', userData)}>
+          <Nav>
             <Box 
             onClick={() => console.log(userData)}
             justifyContent={'space-between'} alignItems={'center'}>
