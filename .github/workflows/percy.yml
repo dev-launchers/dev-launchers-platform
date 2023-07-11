@@ -6,6 +6,9 @@ on:
       - 'packages/UI/src/**'
 
 jobs:
+  defaults:
+      run:
+        working-directory: packages/UI
   build:
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +21,7 @@ jobs:
           node-version: 16.x
 
       - name: Install dependencies
-        run: cd packages/UI && yarn
+        run: yarn
 
       - name: Percy Storybook Snapshots
         run: export scheme=https:// && export gitHash=$(git rev-parse --short HEAD) && export appID=632ca21aeea1618b7fa0bf48 && export chromaticURL=${scheme}${gitHash}--${appID}.chromatic.com && yarn percy storybook $chromaticURL
