@@ -18,9 +18,9 @@ jobs:
           node-version: 16.x
 
       - name: Install @percy/cli and @percy/storybook
-        run: yarn add @percy/cli @percy/storybook
+        run: yarn
 
       - name: Percy Storybook Snapshots
-        run: export scheme=https:// && export gitHash=$(git rev-parse --short HEAD) && export appID=632ca21aeea1618b7fa0bf48 && export chromaticURL=${scheme}${gitHash}--${appID}.chromatic.com
+        run: export scheme=https:// && export gitHash=$(git rev-parse --short HEAD) && export appID=632ca21aeea1618b7fa0bf48 && export chromaticURL=${scheme}${gitHash}--${appID}.chromatic.com && yarn percy storybook $chromaticURL
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
