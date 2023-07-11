@@ -4,7 +4,7 @@ import type { LinkProps } from './index';
 
 const Link: FC<LinkProps> = ({ href, text, ...props }) => {
   return (
-    <StyledLink href={href} {...props}>
+    <StyledLink href={href} {props}>
       {text}
     </StyledLink>
   );
