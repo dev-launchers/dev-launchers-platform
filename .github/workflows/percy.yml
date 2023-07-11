@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Install @percy/cli and @percy/storybook
-        run: yarn
+      - name: Install dependencies
+        run: cd packages/UI && yarn
 
       - name: Percy Storybook Snapshots
         run: export scheme=https:// && export gitHash=$(git rev-parse --short HEAD) && export appID=632ca21aeea1618b7fa0bf48 && export chromaticURL=${scheme}${gitHash}--${appID}.chromatic.com && yarn percy storybook $chromaticURL
