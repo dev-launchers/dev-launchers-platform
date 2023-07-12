@@ -28,6 +28,8 @@ const Project = ({ project, theme }) => {
   const roleRef = useRef();
   const donateRef = useRef();
 
+
+
   const excuteScroll = (ref) =>
     ref.current?.scrollIntoView({ behavior: "smooth", block: "center" });
 

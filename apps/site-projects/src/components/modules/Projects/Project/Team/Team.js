@@ -6,7 +6,9 @@ import {
 } from "./StyledTeam";
 import Section from "../Section";
 
-const Team = ({ data }) => (
+const Team = ({ data }) => {
+console.log(data);
+return(
   <Section
     bgColor="#494949"
     Title="Team"
@@ -89,6 +91,6 @@ const Team = ({ data }) => (
       : "Currently no members!"
     }
   />
-);
+)};
 
 export default withTheme(Team);
