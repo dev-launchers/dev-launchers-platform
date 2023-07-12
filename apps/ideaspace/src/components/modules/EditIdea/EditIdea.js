@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Error from "next/error";
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -30,6 +31,7 @@ function EditIdea() {
   const { ideaId } = router.query;
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
+  const [getError, setGetError] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave?',
@@ -99,23 +101,28 @@ function EditIdea() {
 
   useEffect(async () => {
     if (ideaId) {
-      const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
+      try {
+        const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
 
-      if (userData.id !== 0) {
-        if (idea.author.id === userData.id) {
-          if (response.data?.status == 'archived') {
-            rejectAuthor();
-          }
+        if (userData.id !== 0) {
+          if (idea.author.id === userData.id) {
+            if (response.data?.status == 'archived') {
+              rejectAuthor();
+            }
 
-          setCard(idea);
-          if (sessionStorage.getItem("Form") !== null && differWithInitial(JSON.parse(sessionStorage.getItem('Form')))) {
-            setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+            setCard(idea);
+            if (sessionStorage.getItem("Form") !== null && differWithInitial(JSON.parse(sessionStorage.getItem('Form')))) {
+              setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+            } else {
+              setFormValue(response.data);
+            }
           } else {
-            setFormValue(response.data);
+            rejectUser();
           }
-        } else {
-          rejectUser();
         }
+      } catch (error) {
+        console.log(error);
+        setGetError(true);
       }
     }
   }, [ideaId, userData.id]);

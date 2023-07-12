@@ -34,7 +34,7 @@ const IdeaForm = ({
 	const AutoSubmitToken = () => {
 		const { values, submitForm } = useFormikContext();
 		React.useEffect(() => {
-			if (differWithInitial(values)) {
+			if (values !== null && differWithInitial(values)) {
 				unsavedHandler(true);
 				setDisabling(false);
 				sessionStorage.setItem("FormTemp",JSON.stringify(values));
@@ -186,7 +186,7 @@ const IdeaForm = ({
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
 								<atoms.Checkbox disabled={false} required />
 								<atoms.Typography type='p'>
-									&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.
+									&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 							</atoms.Box>
 

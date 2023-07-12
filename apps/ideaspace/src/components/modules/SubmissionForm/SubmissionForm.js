@@ -55,8 +55,9 @@ function SubmissionForm() {
 
   const [formValue, setFormValue] = useState(originalValue);
   useEffect(() => {
-    if (sessionStorage.getItem("Form") !== null) {
-      setFormValue(JSON.parse(sessionStorage.getItem('Form')));
+    const storageValue = sessionStorage.getItem("Form");
+    if (storageValue !== null && storageValue !== 'null') {
+      setFormValue(JSON.parse(storageValue));
     } else {
       setFormValue(originalValue);
     }
