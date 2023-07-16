@@ -56,7 +56,6 @@ function useUserData() {
         setIsAuthenticated(true);
       })
       .catch(() => {
-        // setUserData({ id: "invalid" });
         setIsAuthenticated(false);
       });
 

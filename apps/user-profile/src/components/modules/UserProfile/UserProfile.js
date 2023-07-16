@@ -5,9 +5,6 @@ import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-import Button from '../../common/Button';
-import PageBody from '../../common/PageBody';
-
 import BioBox from './BioBox';
 import Opportunities from './Opportunities';
 import ProfileCard from './ProfileCard';
@@ -16,6 +13,7 @@ import UserProjects from './UserProjects';
 import People from './People';
 import UserInterests from './UserInterests';
 
+import Loader from './../../common/Loader';
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import { env } from '../../../utils/EnvironmentVariables';
 import { useUserDataContext } from '../../../context/UserDataContext';
@@ -146,11 +144,11 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
-  return <UserProfileView
+  return loading ? <Loader /> : 
+  <UserProfileView
     publicUserData={publicUserData}
     isPublic={isPublic}
     userData={userData}
-    loading={loading}
     opportunities={opportunities}
     myProjects={myProjects}
     ideas={ideas}
@@ -164,7 +162,6 @@ export function UserProfileView({
   publicUserData,
   isPublic,
   userData,
-  loading,
   opportunities,
   myProjects,
   ideas,
@@ -172,14 +169,7 @@ export function UserProfileView({
   interests
 }) {
 
-  if (loading) {
-    return <strong>Loading.....</strong>;
-  }
   return (
-    <PageBody>
-      {/* TODO: When pushing changes to prod, remove `true ? ` and replace with default condution */}
-      {/*}{userData?.id || (publicUserData?.id && !loading) ? ( {*/}
-      {isPublic || !isPublic && userData?.id ? (
         <Wrapper>
           <UserSection>
             <ProfileCard
@@ -237,28 +227,6 @@ export function UserProfileView({
             </Tabs>
           </Misc>
         </Wrapper>
-      ) : (
-        <div
-          style={{
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '60vh',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <p style={{ fontSize: '2rem' }}>
-            Please sign in to access this page!
-          </p>
-          <Button fontSize="2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}>
-            Sign In
-          </Button>
-          <br />
-        </div>
-      )}
-      <br />
-    </PageBody>
   );
 }
 
