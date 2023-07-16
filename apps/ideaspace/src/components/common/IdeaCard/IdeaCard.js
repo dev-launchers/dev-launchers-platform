@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
-import {
-  ImgButton,
-  StatuBox,
-} from './StyledIdeaCard';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
 import IdeaCardComment from './IdeaCardComment';
@@ -42,15 +38,12 @@ function IdeaCard({ cards, cardType }) {
     setButtonContent(`WAIT`);
 
     const difftime = (new Date() - new Date(cards.updatedAt)) / toBeOneSecond; 
-<<<<<<< HEAD
     
     try {
       const res = await axios.put(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${cards.id}`,
         cards
       );
-=======
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 
       if (res.status === 200) {
         setTagContent("workshopping");
@@ -78,21 +71,23 @@ function IdeaCard({ cards, cardType }) {
       />
 
       <Link href={{ pathname: urlPath }}>
-        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }}>
+        <atoms.Box
+          flexDirection="column"
+          alignItems="flex-start"
+          justifyContent="space-between"
+          padding="0rem 2rem 2rem"
+          style={{ maxWidth: '18.5rem' }}
+        >
+          <atoms.Typography
+            type="h3"
+            style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
+          >
+            {cards.ideaName}
+          </atoms.Typography>
 
-        {cards?.comments?.length > 0 ? (
-          <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
-            <img alt='commentSvg' src={commentSvg} />
-            <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }}>
+          <IdeaCardComment commentLength={cards.comments.length} />
 
-          <IdeaCardComment
-            commentLength={cards.comments.length}
-          />
-
-          <IdeaCardUpdated
-            updatedAt={cards.updated_at}
-          />
+          <IdeaCardUpdated updatedAt={cards.updated_at} />
         </atoms.Box>
       </Link>
 
@@ -122,4 +117,4 @@ function IdeaCard({ cards, cardType }) {
   )
 }
 
-export default IdeaCard
+export default IdeaCard;
