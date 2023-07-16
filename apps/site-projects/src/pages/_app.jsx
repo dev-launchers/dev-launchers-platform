@@ -6,7 +6,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../styles/globals";
 
 import "react-toastify/dist/ReactToastify.css";
-import theme from "../styles/theme";
+import oldTheme from "../styles/theme";
 
 import { UserDataProvider } from "../context/UserDataContext";
 
@@ -23,7 +23,7 @@ function MyApp(props) {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={oldTheme}>
         <GlobalStyle />
         <div>
           <Script

@@ -12,6 +12,7 @@ import Team from "./Team";
 // import SignUpButton from "./SignUpButton";
 
 import HeroSection from "./HeroSection";
+import EditorNotification from "./EditorNotification";
 import Tags from "./Tags";
 import Vision from "./Vision";
 import Role from "./Role/Role";
@@ -39,6 +40,7 @@ const Project = ({ project, theme }) => {
   return (
     <Wrapper>
       <div id="background" />
+			<EditorNotification project={project}	/>
       <HeroSection
         projectName={project.title}
         projectCatchPhrase={project.catchPhrase}
@@ -56,7 +58,7 @@ const Project = ({ project, theme }) => {
         description={project?.description}
         images={project?.Images}
       />
-      <Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />
+			{/*}<Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />{*/}
       <Milestones data={project?.board?.ProjectMilestone} />
       {<Sessions calendarId={project.calendarId} />}
       <Team data={project.team} />

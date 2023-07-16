@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Stepper from '../../../../components/common/Stepper';
+import PageTwo from './PageTwo/PageTwo';
 
 export default function PlatformOnboarding() {
   const stepperConfig = [
@@ -25,7 +26,22 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p>Step 2</p>,
+      component: <PageTwo />,
+      config: {
+        buttons: {
+          next: {
+            label: 'Next',
+            useDefaultOnClick: true,
+          },
+          back: {
+            label: 'Back',
+            useDefaultOnClick: true,
+          },
+        },
+      },
+    },
+    {
+      component: <p>Step 3</p>,
       config: {
         buttons: {
           next: {
