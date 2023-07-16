@@ -2,8 +2,7 @@ import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import React from 'react';
 
-import { env } from '../utils/EnvironmentVariables';
-
+import { featureFlags } from '../utils/featureFlags';
 const DEFAULT_USER = {
   id: 1,
   name: 'Ethan Levin',
@@ -31,8 +30,6 @@ const DEFAULT_USER = {
 function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
-  console.log("DEBUGGING in user-profile: ",`${process.env.NEXT_PUBLIC_API_URL}/users/me`, )
-
   React.useEffect(() => {
     axios(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       withCredentials: true,
@@ -56,7 +53,7 @@ function useUserData() {
         setIsAuthenticated(true);
       })
       .catch(() => {
-        setIsAuthenticated(false);
+        setIsAuthenticated(featureFlags.inDevelopment);
       });
 
     setTimeout(() => {

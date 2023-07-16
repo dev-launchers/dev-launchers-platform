@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from 'next/router'
 
 import { useUserDataContext } from '../../context/UserDataContext';
-
+import { featureFlags } from '../../utils/featureFlags';
 import Head from 'next/head';
 import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
@@ -33,13 +33,13 @@ export default function UserProfilePage(props) {
       <Head>
         <title>User Profile</title>
       </Head>
-      
+
       <PageBody>
-        {isAuthenticated ? 
+        {isAuthenticated ?
           <>
-            {openUserOnboardingModal() && <UserOnboardingModal/>}
-            <UserProfile isPublic={false}/>
-          </>: 
+            {openUserOnboardingModal() && <UserOnboardingModal />}
+            <UserProfile isPublic={false} />
+          </> :
           <SignIn />
         }
       </PageBody>
