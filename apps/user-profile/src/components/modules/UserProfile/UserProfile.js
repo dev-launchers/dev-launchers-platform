@@ -49,7 +49,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
   React.useEffect(() => {
     getProjectData();
   }, []);
-  
+
   const getProjectData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
       .then(({ data }) => {
@@ -84,7 +84,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
 
   // Start Ideas
   React.useEffect(() => {
-      getIdeaData();
+    getIdeaData();
   }, []);
   const getIdeaData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
@@ -102,7 +102,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
 
   // Start People  
   React.useEffect(() => {
-    getPeopleData();
+    getPeopleData().catch(() => { console.error(`Could not fetch People's data`) });
   }, []);
   const getPeopleData = async () => {
     const userCount = (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/count`)).data;
