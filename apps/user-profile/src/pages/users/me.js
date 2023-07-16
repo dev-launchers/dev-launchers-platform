@@ -6,6 +6,7 @@ import { useUserDataContext } from '../../context/UserDataContext';
 import Head from 'next/head';
 import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
+import IntroductionModal from "./../../components/modules/IntroductionModal"
 
 /**
  * @drescription This component renders the User Profile Component. 
@@ -21,7 +22,7 @@ export default function UserProfilePage(props) {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return (router.query?.onboarding)
+    return true//(router.query?.onboarding)
   }
 
   return (
@@ -30,7 +31,7 @@ export default function UserProfilePage(props) {
         <title>User Profile</title>
       </Head>
       <div>
-        {openUserOnboardingModal() && <UserOnboardingModal/>}
+        {openUserOnboardingModal() && <IntroductionModal/>}
         <UserProfile isPublic={false}/>
       </div>
     </>
