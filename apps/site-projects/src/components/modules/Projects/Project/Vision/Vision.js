@@ -19,9 +19,9 @@ const Vision = ({ scrollMethods,vision }) => {
           {vision}
         </p>
         <ButtonsContainer>
+        <Link href="../join" passHref>
           <Button
             style={{ cursor: "pointer" }}
-            onClick={scrollMethods.scrollToRoles}
           >
             <i className="fas fa-info"></i> Join Now
           </Button>
