@@ -25,17 +25,21 @@ function hasEditingAccess(user, project) {
 }
 
 const EditorNotification = ({ project }) => {
-
+	const [isClosed, setIsClosed] = React.useState(false)
   const user = useUserDataContext().userData;
 
-	if (!hasEditingAccess(user, project)) {
+	if (!hasEditingAccess(user, project) || isClosed) {
 		return (<></>);
+	}
+
+	function closeEditor() {
+		setIsClosed(true)
 	}
 
 	return (
 		<div style={{paddingTop: "1rem"}}>
 			<ThemeProvider theme={theme}>
-      	<Alert signal="notify">
+      	<Alert handleClose={closeEditor} signal="notify">
         	<h3>It looks like you have editing permissions for this page!</h3>
         	<p>
           	Head to the dashboard in Strapi to make changes to the content of this page.
