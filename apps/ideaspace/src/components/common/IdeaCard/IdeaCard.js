@@ -76,11 +76,18 @@ function IdeaCard({ cards, cardType }) {
 
       <Link href={{ pathname: urlPath }}>
         <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }}>
+          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }} />
 
+<<<<<<< Updated upstream
           <atoms.Typography type='h3' style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>
             {cards.ideaName}
           </atoms.Typography>
+=======
+        {cards?.comments?.length > 0 ? (
+          <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
+            <img alt='commentSvg' src={commentSvg} />
+            <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
+>>>>>>> Stashed changes
 
           <IdeaCardComment
             commentLength={cards.comments.length}
@@ -90,7 +97,7 @@ function IdeaCard({ cards, cardType }) {
             updatedAt={cards.updated_at}
           />
         </atoms.Box>
-      </Link>
+        ) : null }</Link>
 
       {tagContent == "archived" ? (
         <atoms.Button

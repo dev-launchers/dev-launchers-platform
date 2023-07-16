@@ -16,6 +16,7 @@ const SingleCommentComponent = props => (
         <h3>{props.author}</h3>
         {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
         {/* if the user who wrote this comment is the idea owner, then have an "idea owner" tag */}
+        {/* that is, query the author's id and compare it to the author of the idea (Comment > "data" > "author" > "data" > "id"); if they're the same, add an idea owner tag */}
         <h3>{props.createdBy}</h3>
         {/* date of creation here, i.e. "2 days ago" */}
         <h3>{props.publishedAt}</h3>
