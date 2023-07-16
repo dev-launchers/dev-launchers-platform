@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+<<<<<<< HEAD
 import axios from 'axios';
 import Error from "next/error";
+=======
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -11,8 +14,11 @@ import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
+<<<<<<< HEAD
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 
+=======
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 import {
   HeadWapper,
   Headline,
@@ -76,6 +82,7 @@ function EditIdea() {
     status: '',
   });
 
+<<<<<<< HEAD
   const [getError, setGetError] = React.useState(false);
   React.useEffect(() => {
     const rejectUser = async () => {
@@ -112,6 +119,20 @@ function EditIdea() {
           console.log(error);
           setGetError(true);
         })
+=======
+  React.useEffect(async () => {
+    if (ideaId) {
+      const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
+
+      if(userData.id !== 0){
+        if (idea.author.id === userData.id) {
+          setCard(idea);
+        } else {
+          alert("This is not your idea. You can't edit it.");
+          window.history.back(-1);
+        }
+      }
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
     }
   }, [ideaId, userData.id]);
 
@@ -135,6 +156,7 @@ function EditIdea() {
 
     const data = cleanData(await agent.Ideas.put(ideaId, values));
 
+<<<<<<< HEAD
     try {
       const res = await axios.put(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`,
@@ -146,6 +168,12 @@ function EditIdea() {
         if (!(await confirmSucceed())) {
           setUrrl(`/ideaspace/workshop/${ideaId}`);
         }
+=======
+    if (data.ideaName) {
+      setunsavedChanges(false);
+      if (await confirmNotice()){
+        setUrrl(`/ideaspace/workshop/${data.id}`);
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
       }
     } catch (error) {
       setSending(false);
@@ -196,6 +224,7 @@ function EditIdea() {
     }
   }
 
+<<<<<<< HEAD
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />
   } else {
@@ -241,6 +270,47 @@ function EditIdea() {
       </>
     );
   }
+=======
+  return (
+    <>
+      <HeadWapper>
+        <Headline>Dev Ideas</Headline>
+        <StyledRanbow>
+          <atoms.Layer hasRainbowBottom />
+        </StyledRanbow>
+        <BackButton 
+          buttonType="confirm"
+          clickHandler={backHandler}
+        />
+        <atoms.Typography type='h4' >
+          Have an idea for a development project?<br />
+          Share your idea with us!
+        </atoms.Typography>
+      </HeadWapper>
+
+      {!isAuthenticated ? (
+        <SignInSection
+          label='Please sign in to edit your idea!'
+          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+        />
+      ) : (
+        <>
+          <Dialog />
+          <Notice />
+          <IdeaForm
+            initialValues={card}
+            SignupSchema={SignupSchema}
+            submitHandler={submitHandler}
+            unsavedHandler={setunsavedChanges}
+            formButton="save"
+            sending={sending}
+            clickHandler={backHandler}
+          />
+        </>
+      )}
+    </>
+  );
+>>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 }
 
 export default EditIdea;
