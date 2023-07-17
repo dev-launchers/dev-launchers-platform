@@ -7,7 +7,7 @@ import {
 import Section from "../Section";
 
 const Team = ({ data }) => {
-console.log(data);
+console.log(data.leaders)
 return(
   <Section
     bgColor="#494949"
@@ -45,7 +45,7 @@ return(
                   <span>{leader.profile?.displayName}</span>
                   <span>{leader.role}</span>
                   <span>
-                    <a href={`mailto:${leader.email}`}>Send Email</a>
+                    <a href={`mailto:${leader.calendly}`}>Calendly</a>
                   </span>
                 </div>
               </div>
