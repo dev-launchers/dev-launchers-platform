@@ -58,6 +58,7 @@ jobs:
           TARGET_URL: ${{ steps.chromatic.outputs.storybookUrl }}
 
   percy:    
+    needs: chromatic
     runs-on: ubuntu-latest
     defaults:
       run:
