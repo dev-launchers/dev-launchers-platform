@@ -2,7 +2,8 @@ name: 'Percy'
 on:
   workflow_run:
     workflows: ['Chromatic']
-    types: [completed]
+    types:
+      - completed
 
 jobs:
   runs-on: ubuntu-latest
