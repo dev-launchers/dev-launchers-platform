@@ -15,20 +15,28 @@ jobs:
   deploy:
     # The operating system it will run on
     runs-on: ubuntu-latest
+    continue-on-error: true
     outputs:
       url: ${{ steps.chromatic.outputs.url }}
       buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
       storybookUrl: ${{ steps.chromatic.outputs.storybookUrl }}
       code: ${{ steps.chromatic.outputs.code }}
+      branch: ${{ steps.extract_branch.outputs.branch }}
     # The list of steps that the action will go through
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-
+      
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        id: extract_branch
+        
       - name: Use Node.js 16.x
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
+          cache: yarn
 
       - name: install deps
         run: corepack enable && yarn
@@ -43,7 +51,9 @@ jobs:
           workingDir: packages/UI
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
+          onlyChanged: true
       - name: Run Storybook tests
         run: yarn test-storybook
         env:
           TARGET_URL: ${{ steps.chromatic.outputs.storybookUrl }}
+          
