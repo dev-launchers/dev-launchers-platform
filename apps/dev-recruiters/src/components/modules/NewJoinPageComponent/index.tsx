@@ -17,6 +17,8 @@ import {
 import BoxContainer from '../../common/BoxContainer';
 import ContainerImage from './ContainerImage/containerImage';
 import Logo from '../../../images/logo-monogram.png';
+import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
+import JoinPLeft from '../../../images/JoinPage/Join-page-image-left.png';
 
 import SelectRole from './SelectRole/SelectRole';
 
@@ -30,14 +32,14 @@ import SourceCode from '../../../images/icons/Source-Code.png';
 export default function NewJoinPageComponent() {
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={65} bgColor="Gray">
+      <BoxContainer paddingVertical={60}>
         <HeadingContainer>
           <HeadingText>
             Want to level up your tech skills and build world-changing products?
           </HeadingText>
         </HeadingContainer>
       </BoxContainer>
-      <BoxContainer paddingVertical={35}>
+      <BoxContainer paddingVertical={20}>
         <HeadingContainer>
           <HeadingSubText>
             <h1>
@@ -47,8 +49,8 @@ export default function NewJoinPageComponent() {
             <h1>Check out our open roles below!</h1>
           </HeadingSubText>
           <AreaImage>
-            <ContainerImage src={Logo} width="45%" />
-            <ContainerImage src={Logo} width="45%" />
+            <ContainerImage src={JoinPLeft} width="100%" />
+            <ContainerImage src={JoinPRight} width="100%" />
           </AreaImage>
         </HeadingContainer>
       </BoxContainer>
