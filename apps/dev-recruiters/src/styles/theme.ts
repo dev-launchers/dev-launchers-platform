@@ -19,6 +19,8 @@ const theme = {
     BlackT60: 'rgba(0,0,0,0.6)',
     BlackT38: 'rgba(0,0,0,0.38)',
 
+    BLUE_700: '#173242',
+
     AntiFlashWhite: '#F1F4F5',
     AntiFlashWhiteT40: 'rgba(241,244,245,0.4)',
 
