@@ -17,7 +17,7 @@ export const HeadingContainer = styled.div`
 `;
 
 export const HeadingText = styled.div`
-  width: 50%;
+  width: 100%;
   word-wrap: break-word;
   font-size: 44px;
   font-family: 'Abel', sans-serif;
