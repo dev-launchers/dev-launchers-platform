@@ -7,7 +7,7 @@ import {
 import Section from "../Section";
 
 const Team = ({ data }) => {
-console.log(data.leaders)
+console.log(data)
 return(
   <Section
     bgColor="#494949"
