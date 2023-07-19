@@ -16,7 +16,7 @@ export const HeadingContainer = styled.div`
 `;
 
 export const HeadingText = styled.div`
-  width: 50%;
+  width: 100%;
   word-wrap: break-word;
   font-size: 40px;
   font-weight: bold;
@@ -94,6 +94,10 @@ export const BtnSignUp = styled.button`
 `;
 
 export const AreaImage = styled.div`
-  width: 90%;
+  width: 100%;
+  height: 450px;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
+  overflow: hidden;
 `;
