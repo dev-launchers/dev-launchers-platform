@@ -151,8 +151,16 @@ export default function NewJoinPageComponent() {
       <BoxContainer paddingVertical={45} paddingHorizontal={50}>
         <Footer>
           <h1>Didn't find what you were looking for?</h1>
-          <h3>Sing up to be notified when more roles open up!</h3>
-          <BtnSignUp>SIGN UP</BtnSignUp>
+          <h3>Create an account to be notified when more roles open up!</h3>
+          <BtnSignUp
+            as="a"
+            href={
+              process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+              '?redirectURL=https://devlaunchers.org/users/me'
+            }
+          >
+            Create An Account
+          </BtnSignUp>
         </Footer>
       </BoxContainer>
     </Wrapper>
