@@ -74,7 +74,6 @@ export const Footer = styled.div`
   width: 100%;
   height: 315px;
   border-radius: 15px;
-  background-color: ${({ theme }) => theme?.colors?.Gray};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,12 +83,14 @@ export const Footer = styled.div`
 
 export const BtnSignUp = styled.button`
   background-color: black;
-  border-radius: 25px;
+  border-radius: 10px;
   color: white;
-  padding: 10px 70px;
+  padding: 10px 40px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
+  background-color: ${({ theme }) => theme?.colors?.BLUE_700};
+  text-decoration: none;
 `;
 
 export const AreaImage = styled.div`
