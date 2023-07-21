@@ -1,13 +1,15 @@
 import ResourceCard from "./ResourceCard";
+import { ResourceCardsContainer } from "./StyledTeamLinks";
 
 function TeamLinks() {
     return (
     <div>
-        <ul>
+        <h3>Project A resources</h3>
+        <ResourceCardsContainer>
             {
                 linksList.map((resource,i)=> <ResourceCard key={i} resource={resource} />)
             }
-        </ul>
+        </ResourceCardsContainer>
     </div>)
 }
 
