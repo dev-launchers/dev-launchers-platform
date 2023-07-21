@@ -36,7 +36,7 @@ const Project = ({ project, theme }) => {
   }
 
   const userData = useUserDataContext();
-
+ console.log(project)
   return (
     <Wrapper>
       <div id="background" />
