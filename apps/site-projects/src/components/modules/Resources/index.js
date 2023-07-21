@@ -1,10 +1,11 @@
 import ProjectResources from "./ProjectResources";
+import { MainResourcesContainer } from "./StyledResources";
 import YourProjects from "./YourProjects";
 
 
 function Resources() {
     return (
-          <main
+          <MainResourcesContainer
             style={{
               marginRight: 'auto',
               marginLeft: 'auto',
@@ -15,7 +16,7 @@ function Resources() {
           >
             <YourProjects projects={dummyData} />
             <ProjectResources/>
-          </main>
+          </MainResourcesContainer>
       );
 }
 

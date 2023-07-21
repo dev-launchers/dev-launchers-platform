@@ -1,11 +1,11 @@
+import { PrejectResourcesContainer } from "./StyledProjectResources";
 import TeamLinks from "./TeamLinks";
 
 function ProjectResources() {
     return (
-        <div>
-            <h3>Project A resources</h3>
+        <PrejectResourcesContainer>
             <TeamLinks/>
-        </div>
+        </PrejectResourcesContainer>
         );
 }
 
