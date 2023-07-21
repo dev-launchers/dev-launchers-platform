@@ -1,12 +1,15 @@
 import React from "react";
 import { withTheme } from "styled-components";
-// import Link from "next/link";
+import Link from "next/link";
+import PositionCard from '@devlaunchers/components/components/organisms/cards/PositionCard';
+import BackButton from '@devlaunchers/components/components/molecules/BackButton';
 
 import Image from "next/image";
-// import Button from "../../../../common/Button";
+import Button from "../../../../common/Button";
 // import Tag from "../../../../common/Tag";
 // import SignUpButton from "../SignUpButton";
 import { Wrapper } from "./StyledHeroSection";
+
 
 // import { env } from "../../../../../utils/EnvironmentVariables";
 
@@ -32,7 +35,20 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
   const heroImageConfig = heroImage?.formats?.large || heroImage;
   return (
     <Wrapper>
-      <h2>{projectName}</h2>
+
+
+
+<div style={{marginRight:"100%"}}>
+     
+     <BackButton
+ type="back"
+ withLabel
+ />
+   </div>     
+    
+    
+      <h2 style={{marginTop:"2rem"}}>{projectName}</h2>
+                 
       <span>{projectCatchPhrase}</span>
       <div
         style={{
