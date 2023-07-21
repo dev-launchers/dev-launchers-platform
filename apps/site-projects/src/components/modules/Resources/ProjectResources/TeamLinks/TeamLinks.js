@@ -1,16 +1,16 @@
 import ResourceCard from "./ResourceCard";
-import { ResourceCardsContainer } from "./StyledTeamLinks";
+import { ResourceCardsContainer, TeamLinksContainer, TeamLinksHeader } from "./StyledTeamLinks";
 
 function TeamLinks() {
     return (
-    <div>
-        <h3>Project A resources</h3>
+    <TeamLinksContainer>
+        <TeamLinksHeader>Project A resources</TeamLinksHeader>
         <ResourceCardsContainer>
             {
                 linksList.map((resource,i)=> <ResourceCard key={i} resource={resource} />)
             }
         </ResourceCardsContainer>
-    </div>)
+    </TeamLinksContainer>)
 }
 
 export default TeamLinks;
