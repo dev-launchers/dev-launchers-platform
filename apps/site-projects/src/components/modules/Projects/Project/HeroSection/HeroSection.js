@@ -43,16 +43,16 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
         }}
       >
         <Image
-          src={heroImageConfig.url}
+          // src={heroImageConfig.url}  // commented
           // height={heroImageConfig.height}
           // width={heroImageConfig.width}
           layout="fill"
           alt="project's image"
           objectFit="cover"
           placeholder="blur"
-          blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(heroImageConfig.width, heroImageConfig.height)
-          )}`}
+          // blurDataURL={`data:image/svg+xml;base64,${toBase64(    // commented
+          //   shimmer(heroImageConfig.width, heroImageConfig.height)
+          // )}`}
         />
       </div>
     </Wrapper>
