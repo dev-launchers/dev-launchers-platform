@@ -12,7 +12,7 @@ module.exports = (options, { strapi }) => {
     await next();
     // Check if the route is local login or login with a provider
     // Set token in cookie
-    if (ctx.url == '/api/auth/local' || ctx.url.startsWith('/connect/')) {
+    if (ctx.url.startsWith('/api/auth/')) {
       const token = ctx.response.body.jwt;
       if (token) {
         /*
