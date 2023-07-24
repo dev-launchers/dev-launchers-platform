@@ -74,7 +74,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         },
         {
@@ -84,7 +84,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         }
       ],
@@ -166,7 +166,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         },
         {
@@ -176,7 +176,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         }
       ],
@@ -258,7 +258,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         },
         {
@@ -268,7 +268,7 @@
           "deprecated": false,
           "required": true,
           "schema": {
-            "type": "string"
+            "type": "number"
           }
         }
       ],

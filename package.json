@@ -15,6 +15,7 @@
     "@strapi/plugin-sentry": "^4.10.5",
     "@strapi/plugin-users-permissions": "^4.10.5",
     "@strapi/strapi": "^4.10.5",
+    "@strapi/utils": "^4.10.5",
     "better-sqlite3": "^7.6.2",
     "node-cache": "^5.1.2",
     "nodemailer": "^6.7.4",
@@ -54,6 +55,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^10.1.0"
+    "@babel/eslint-parser": "^7.22.9"
   }
 }
