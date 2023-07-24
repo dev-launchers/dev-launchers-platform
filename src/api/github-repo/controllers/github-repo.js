@@ -3,7 +3,7 @@
 /**
  *  github-repo controller
  */
-const { sanitizeEntity } = require('strapi-utils');
+const { sanitizeEntity } = require('@strapi/utils');
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
