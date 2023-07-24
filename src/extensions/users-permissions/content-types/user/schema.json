@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -131,6 +130,30 @@
     },
     "discord_discriminator": {
       "type": "string"
+    },
+    "job": {
+      "type": "enumeration",
+      "enum": [
+        "developer",
+        "designer",
+        "other"
+      ],
+      "default": "other"
+    },
+    "experience": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid-level",
+        "senior"
+      ]
+    },
+    "schedule": {
+      "type": "json"
+    },
+    "completedOnboarding": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

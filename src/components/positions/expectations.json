@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_positions_expectations",
+  "info": {
+    "displayName": "expectations"
+  },
+  "options": {},
+  "attributes": {
+    "expectation": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

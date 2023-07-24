@@ -108,6 +108,17 @@
       "type": "component",
       "repeatable": true,
       "component": "dates.new-meeting-times"
+    },
+    "opportunities": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::opportunity.opportunity",
+      "mappedBy": "projects"
+    },
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.images"
     }
   }
 }
