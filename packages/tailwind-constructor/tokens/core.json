@@ -1073,7 +1073,7 @@
       "textCase": "none",
       "textDecoration": "none",
       "lineHeight": 20,
-      "fontSize": 0.75
+      "fontSize": "0.75rem"
     },
     "type": "typography"
   },
@@ -1085,7 +1085,7 @@
       "paragraphSpacing": 0,
       "textCase": "uppercase",
       "textDecoration": "none",
-      "fontSize": 1,
+      "fontSize": "1rem",
       "lineHeight": "AUTO"
     },
     "type": "typography",
@@ -1100,7 +1100,7 @@
       "paragraphSpacing": 0,
       "textCase": "none",
       "textDecoration": "none",
-      "fontSize": 2.75
+      "fontSize": "2.75rem"
     },
     "type": "typography",
     "description": "Product Cards - Product Name"
@@ -1114,7 +1114,7 @@
       "paragraphSpacing": 0,
       "textCase": "capitalize",
       "textDecoration": "none",
-      "fontSize": 1
+      "fontSize": "1rem"
     },
     "type": "typography"
   },
@@ -1123,7 +1123,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1140,7 +1140,7 @@
       "paragraphSpacing": 0,
       "textCase": "none",
       "textDecoration": "underline",
-      "fontSize": 1
+      "fontSize": "1rem"
     },
     "type": "typography",
     "description": "Disabled links on Desktop"
@@ -1150,7 +1150,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Light Italic",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1164,7 +1164,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1178,7 +1178,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1192,7 +1192,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "SemiBold",
       "lineHeight": 16,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1205,7 +1205,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1218,7 +1218,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "SemiBold",
       "lineHeight": 20,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1231,7 +1231,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 20,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1244,7 +1244,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1257,7 +1257,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "SemiBold",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1270,7 +1270,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 16,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": 0,
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1283,7 +1283,7 @@
       "fontFamily": "Abel",
       "fontWeight": "Regular",
       "lineHeight": 68,
-      "fontSize": 4,
+      "fontSize": "4rem",
       "letterSpacing": "-2%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1296,7 +1296,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 52,
-      "fontSize": 3,
+      "fontSize": "3rem",
       "letterSpacing": "-2%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1313,7 +1313,7 @@
       "paragraphSpacing": 0,
       "textCase": "none",
       "textDecoration": "none",
-      "fontSize": 1.625
+      "fontSize": "1.625rem"
     },
     "type": "typography"
   },
@@ -1326,7 +1326,7 @@
       "paragraphSpacing": 0,
       "textCase": "uppercase",
       "textDecoration": "none",
-      "fontSize": 1
+      "fontSize": "1rem"
     },
     "type": "typography"
   },
@@ -1335,7 +1335,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Light",
       "lineHeight": 20,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1352,7 +1352,7 @@
       "paragraphSpacing": 0,
       "textCase": "uppercase",
       "textDecoration": "none",
-      "fontSize": 0.75
+      "fontSize": "0.75rem"
     },
     "type": "typography",
     "description": "Small Labels \n\n-Slider Tool Tip"
@@ -1366,7 +1366,7 @@
       "paragraphSpacing": 0,
       "textCase": "none",
       "textDecoration": "none",
-      "fontSize": 2.75
+      "fontSize": "2.75rem"
     },
     "type": "typography"
   },
@@ -1379,7 +1379,7 @@
       "textCase": "none",
       "textDecoration": "none",
       "paragraphSpacing": 0,
-      "fontSize": 2.5
+      "fontSize": "2.5rem"
     },
     "type": "typography"
   },
@@ -1392,7 +1392,7 @@
       "paragraphSpacing": 0,
       "textCase": "none",
       "textDecoration": "none",
-      "fontSize": 2
+      "fontSize": "2rem"
     },
     "type": "typography"
   },
@@ -1401,7 +1401,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
-      "fontSize": 1.75,
+      "fontSize": "1.75rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1414,7 +1414,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": "8%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1427,7 +1427,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 28,
-      "fontSize": 1.25,
+      "fontSize": "1.25rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1441,7 +1441,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 24,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1454,7 +1454,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 20,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1467,7 +1467,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Light",
       "lineHeight": 20,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1480,7 +1480,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 24,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "8%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1493,7 +1493,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 20,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1506,7 +1506,7 @@
       "fontFamily": "Abel",
       "fontWeight": "Regular",
       "lineHeight": 40,
-      "fontSize": 2.5,
+      "fontSize": "2.5rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1519,7 +1519,7 @@
       "fontFamily": "Abel",
       "fontWeight": "Regular",
       "lineHeight": 48,
-      "fontSize": 2.25,
+      "fontSize": "2.25rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1532,7 +1532,7 @@
       "fontFamily": "Abel",
       "fontWeight": "Regular",
       "lineHeight": 32,
-      "fontSize": 1.5,
+      "fontSize": "1.5rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1545,7 +1545,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
-      "fontSize": 1.5,
+      "fontSize": "1.5rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1558,7 +1558,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 28,
-      "fontSize": 1.25,
+      "fontSize": "1.25rem",
       "letterSpacing": "8%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1571,7 +1571,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 28,
-      "fontSize": 1.25,
+      "fontSize": "1.25rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1585,7 +1585,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 24,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1599,7 +1599,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 20,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1612,7 +1612,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 24,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1625,7 +1625,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Regular",
       "lineHeight": 24,
-      "fontSize": 0.875,
+      "fontSize": "0.875rem",
       "letterSpacing": "12%",
       "paragraphSpacing": 0,
       "textCase": "uppercase",
@@ -1638,7 +1638,7 @@
       "fontFamily": "Nunito Sans",
       "fontWeight": "Light",
       "lineHeight": 24,
-      "fontSize": 1,
+      "fontSize": "1rem",
       "letterSpacing": "0%",
       "paragraphSpacing": 0,
       "textCase": "none",
@@ -1675,72 +1675,72 @@
     }
   },
   "rounded-sm": {
-    "value": 0.25,
+    "value": "0.25rem",
     "type": "borderRadius"
   },
   "rounded": {
-    "value": 0.5,
+    "value": "0.5rem",
     "type": "borderRadius"
   },
   "rounded-md": {
-    "value": 1,
+    "value": "1rem",
     "type": "borderRadius"
   },
   "rounded-lg": {
-    "value": 1.5,
+    "value": "1.5rem",
     "type": "borderRadius"
   },
   "rounded-xl": {
-    "value": 2,
+    "value": "2rem",
     "type": "borderRadius"
   },
   "rounded-2xl": {
-    "value": 3,
+    "value": "3rem",
     "type": "borderRadius"
   },
   "rounded-3xl": {
-    "value": 4,
+    "value": "4rem",
     "type": "borderRadius"
   },
   "rounded-4xl": {
-    "value": 6,
+    "value": "6rem",
     "type": "borderRadius"
   },
   "padding": {
     "p-1": {
-      "value": 0.25,
+      "value": "0.25rem",
       "type": "spacing"
     },
     "p-2": {
-      "value": 0.5,
+      "value": "0.5rem",
       "type": "spacing"
     },
     "p-4": {
-      "value": 1,
+      "value": "1rem",
       "type": "spacing"
     },
     "p-6": {
-      "value": 1.5,
+      "value": "1.5rem",
       "type": "spacing"
     },
     "p-8": {
-      "value": 2,
+      "value": "2rem",
       "type": "spacing"
     },
     "p-12": {
-      "value": 3,
+      "value": "3rem",
       "type": "spacing"
     },
     "p-16": {
-      "value": 4,
+      "value": "4rem",
       "type": "spacing"
     },
     "p-24": {
-      "value": 6,
+      "value": "6rem",
       "type": "spacing"
     },
     "p-32": {
-      "value": 8,
+      "value": "8rem",
       "type": "spacing"
     }
   },
@@ -1750,55 +1750,55 @@
   },
   "fontSize": {
     "0": {
-      "value": 0.75,
+      "value": "0.75rem",
       "type": "fontSizes"
     },
     "1": {
-      "value": 0.875,
+      "value": "0.875rem",
       "type": "fontSizes"
     },
     "2": {
-      "value": 1,
+      "value": "1rem",
       "type": "fontSizes"
     },
     "3": {
-      "value": 1.25,
+      "value": "1.25rem",
       "type": "fontSizes"
     },
     "4": {
-      "value": 1.5,
+      "value": "1.5rem",
       "type": "fontSizes"
     },
     "5": {
-      "value": 1.625,
+      "value": "1.625rem",
       "type": "fontSizes"
     },
     "6": {
-      "value": 1.75,
+      "value": "1.75rem",
       "type": "fontSizes"
     },
     "7": {
-      "value": 2,
+      "value": "2rem",
       "type": "fontSizes"
     },
     "8": {
-      "value": 2.25,
+      "value": "2.25rem",
       "type": "fontSizes"
     },
     "9": {
-      "value": 2.5,
+      "value": "2.5rem",
       "type": "fontSizes"
     },
     "10": {
-      "value": 2.75,
+      "value": "2.75rem",
       "type": "fontSizes"
     },
     "11": {
-      "value": 3,
+      "value": "3rem",
       "type": "fontSizes"
     },
     "12": {
-      "value": 4,
+      "value": "4rem",
       "type": "fontSizes"
     }
   }
