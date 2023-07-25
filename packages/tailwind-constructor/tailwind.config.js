@@ -1,15 +1,32 @@
 
 const { filterTokensByType } = require("./fns");
-// const tokens = require("./output/light.json")
+const tokens = require("./output/core.json")
 
-// const colors = filterTokensByType('color', tokens)
+const categories = [
+  "color",
+  "lineHeights",
+  "letterSpacing",
+  "paragraphSpacing",
+  "boxShadow",
+  "dropShadow",
+  "innerShadow",
+  "fontFamilies",
+  "fontWeights",
+  "typography",
+  "textCase",
+  "textDecoration",
+  "borderRadius",
+  "spacing",
+  "sizing",
+  "fontSizes"
+]
 
+
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
-  theme: {
-    // colors,
-  },
+  theme: categories.map(category => filterTokensByType(category, tokens)).reduce(((r, c) => Object.assign(r, c)), {}),
   variants: {},
   plugins: [],
 }
