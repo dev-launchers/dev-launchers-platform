@@ -491,7 +491,7 @@
       "type": "paragraphSpacing"
     }
   },
-  "Box Shadow": {
+  "BoxShadow": {
     "value": "#7f7e7f",
     "type": "color"
   },
@@ -522,11 +522,11 @@
     "value": "#5bb14d1a",
     "type": "color"
   },
-  "Light - Overlay": {
+  "Light-Overlay": {
     "value": "#f0edee66",
     "type": "color"
   },
-  "Dark- Overlay": {
+  "Dark-Overlay": {
     "value": "#7f7e7f66",
     "type": "color"
   },
@@ -566,7 +566,7 @@
     "value": "#000000a3",
     "type": "color"
   },
-  "Shadow and Highlight": {
+  "ShadowAndHighlight": {
     "Shadow": {
       "value": "#7f7e7f",
       "type": "color",
@@ -577,66 +577,66 @@
       "type": "color",
       "description": "Elevations and Depth on Dark Backgrounds"
     },
-    "highlight one": {
+    "highlightone": {
       "value": "#474747bf",
       "type": "color"
     },
-    "highlight two": {
+    "highlighttwo": {
       "value": "#47474799",
       "type": "color"
     },
-    "highlight three": {
+    "highlightthree": {
       "value": "#47474766",
       "type": "color"
     },
-    "highlight five": {
+    "highlightfive": {
       "value": "#4747471a",
       "type": "color"
     },
-    "shadow one": {
+    "shadowone": {
       "value": "#7f7e7fbf",
       "type": "color"
     },
-    "shadow two": {
+    "shadowtwo": {
       "value": "#7f7e7f99",
       "type": "color"
     },
-    "shadow three": {
+    "shadowthree": {
       "value": "#7f7e7f66",
       "type": "color"
     },
-    "shadow four": {
+    "shadowfour": {
       "value": "#7f7e7f40",
       "type": "color"
     },
-    "shadow five": {
+    "shadowfive": {
       "value": "#7f7e7f1a",
       "type": "color"
     },
-    "highlight four": {
+    "highlightfour": {
       "value": "#47474740",
       "type": "color"
     }
   },
-  "Base Layer Styles": {
-    "Base Layer- Light-White": {
+  "BaseLayerStyles": {
+    "BaseLayer-Light-White": {
       "value": "#ffffff",
       "type": "color"
     },
-    "Base Layer-Light-OffWhite": {
+    "BaseLayer-Light-OffWhite": {
       "value": "#f0edee",
       "type": "color"
     },
-    "Base Layer-Dark-OffBlack": {
+    "BaseLayer-Dark-OffBlack": {
       "value": "#1c1c1c",
       "type": "color"
     },
-    "Base Layer-Dark-Black": {
+    "BaseLayer-Dark-Black": {
       "value": "#000000",
       "type": "color"
     }
   },
-  "Grey Scale": {
+  "GreyScale": {
     "white": {
       "value": "#ffffff",
       "type": "color"
@@ -838,7 +838,7 @@
     }
   },
   "Success": {
-    "success -700": {
+    "success-700": {
       "value": "#24471f",
       "type": "color"
     },
@@ -846,27 +846,27 @@
       "value": "#5bb14d",
       "type": "color"
     },
-    "success -100": {
+    "success-100": {
       "value": "#8cc882",
       "type": "color"
     },
-    "success -200": {
+    "success-200": {
       "value": "#add8a6",
       "type": "color"
     },
-    "success -300": {
+    "success-300": {
       "value": "#66a25c",
       "type": "color"
     },
-    "success -400": {
+    "success-400": {
       "value": "#6d9766",
       "type": "color"
     },
-    "success -500": {
+    "success-500": {
       "value": "#529f45",
       "type": "color"
     },
-    "success -600": {
+    "success-600": {
       "value": "#407c36",
       "type": "color"
     }
