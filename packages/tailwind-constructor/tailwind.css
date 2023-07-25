@@ -905,19 +905,19 @@ video {
   --padding-p-24: 6rem;
   --padding-p-32: 8rem;
   --rem: 16;
-  --font-size-0: 0.75;
-  --font-size-1: 0.875;
-  --font-size-2: 1;
-  --font-size-3: 1.25;
-  --font-size-4: 1.5;
-  --font-size-5: 1.625;
-  --font-size-6: 1.75;
-  --font-size-7: 2;
-  --font-size-8: 2.25;
-  --font-size-9: 2.5;
-  --font-size-10: 2.75;
-  --font-size-11: 3;
-  --font-size-12: 4;
+  --font-size-0: 0.75rem;
+  --font-size-1: 0.875rem;
+  --font-size-2: 1rem;
+  --font-size-3: 1.25rem;
+  --font-size-4: 1.5rem;
+  --font-size-5: 1.625rem;
+  --font-size-6: 1.75rem;
+  --font-size-7: 2rem;
+  --font-size-8: 2.25rem;
+  --font-size-9: 2.5rem;
+  --font-size-10: 2.75rem;
+  --font-size-11: 3rem;
+  --font-size-12: 4rem;
 }
 
 .light-theme {
