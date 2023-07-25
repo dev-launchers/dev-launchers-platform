@@ -20,7 +20,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "interests"
+      "mappedBy": "interests"
     },
     "projects": {
       "type": "relation",
@@ -32,7 +32,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::category.category",
-      "inversedBy": "interests"
+      "mappedBy": "interests"
     }
   }
 }
