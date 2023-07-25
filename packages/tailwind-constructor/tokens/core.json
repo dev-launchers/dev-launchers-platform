@@ -1675,72 +1675,72 @@
     }
   },
   "rounded-sm": {
-    "value": 0.25,
+    "value": "0.25rem",
     "type": "borderRadius"
   },
   "rounded": {
-    "value": 0.5,
+    "value": "0.5rem",
     "type": "borderRadius"
   },
   "rounded-md": {
-    "value": 1,
+    "value": "1rem",
     "type": "borderRadius"
   },
   "rounded-lg": {
-    "value": 1.5,
+    "value": "1.5rem",
     "type": "borderRadius"
   },
   "rounded-xl": {
-    "value": 2,
+    "value": "2rem",
     "type": "borderRadius"
   },
   "rounded-2xl": {
-    "value": 3,
+    "value": "3rem",
     "type": "borderRadius"
   },
   "rounded-3xl": {
-    "value": 4,
+    "value": "4rem",
     "type": "borderRadius"
   },
   "rounded-4xl": {
-    "value": 6,
+    "value": "6rem",
     "type": "borderRadius"
   },
   "padding": {
     "p-1": {
-      "value": 0.25,
+      "value": "0.25rem",
       "type": "spacing"
     },
     "p-2": {
-      "value": 0.5,
+      "value": "0.5rem",
       "type": "spacing"
     },
     "p-4": {
-      "value": 1,
+      "value": "1rem",
       "type": "spacing"
     },
     "p-6": {
-      "value": 1.5,
+      "value": "1.5rem",
       "type": "spacing"
     },
     "p-8": {
-      "value": 2,
+      "value": "2rem",
       "type": "spacing"
     },
     "p-12": {
-      "value": 3,
+      "value": "3rem",
       "type": "spacing"
     },
     "p-16": {
-      "value": 4,
+      "value": "4rem",
       "type": "spacing"
     },
     "p-24": {
-      "value": 6,
+      "value": "6rem",
       "type": "spacing"
     },
     "p-32": {
-      "value": 8,
+      "value": "8rem",
       "type": "spacing"
     }
   },
