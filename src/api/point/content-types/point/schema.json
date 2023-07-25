@@ -36,7 +36,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "point"
+      "mappedBy": "point"
     }
   }
 }
