@@ -1,5 +1,5 @@
 .core-theme {
-  --colors-blackk: #000000;
+  --colors-black: #000000;
   --colors-white: #ffffff;
   --colors-gray-100: #f7fafc;
   --colors-gray-200: #edf2f7;
@@ -135,16 +135,16 @@
   --black-64: #000000a3;
   --shadow-and-highlight-shadow: #7f7e7f;
   --shadow-and-highlight-highlight: #474747;
-  --shadow-and-highlight-highlight-one: #474747bf;
-  --shadow-and-highlight-highlight-two: #47474799;
-  --shadow-and-highlight-highlight-three: #47474766;
-  --shadow-and-highlight-highlight-five: #4747471a;
-  --shadow-and-highlight-shadow-one: #7f7e7fbf;
-  --shadow-and-highlight-shadow-two: #7f7e7f99;
-  --shadow-and-highlight-shadow-three: #7f7e7f66;
-  --shadow-and-highlight-shadow-four: #7f7e7f40;
-  --shadow-and-highlight-shadow-five: #7f7e7f1a;
-  --shadow-and-highlight-highlight-four: #47474740;
+  --shadow-and-highlight-highlightone: #474747bf;
+  --shadow-and-highlight-highlighttwo: #47474799;
+  --shadow-and-highlight-highlightthree: #47474766;
+  --shadow-and-highlight-highlightfive: #4747471a;
+  --shadow-and-highlight-shadowone: #7f7e7fbf;
+  --shadow-and-highlight-shadowtwo: #7f7e7f99;
+  --shadow-and-highlight-shadowthree: #7f7e7f66;
+  --shadow-and-highlight-shadowfour: #7f7e7f40;
+  --shadow-and-highlight-shadowfive: #7f7e7f1a;
+  --shadow-and-highlight-highlightfour: #47474740;
   --base-layer-styles-base-layer-light-white: #ffffff;
   --base-layer-styles-base-layer-light-off-white: #f0edee;
   --base-layer-styles-base-layer-dark-off-black: #1c1c1c;
