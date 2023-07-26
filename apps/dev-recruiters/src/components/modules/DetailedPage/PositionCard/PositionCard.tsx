@@ -30,9 +30,10 @@ import {
   ModalProjectSection,
   BulletListItem,
   BulletList,
-  CloseIconButton,
   CloseButton,
   CloseIcon,
+  ColorRow,
+  ColorBox,
 } from './StyledPositionCard';
 import Modal from '../PositionPopupModal/Modal';
 import { RowContainer } from '../styledProjectDetails';
@@ -40,6 +41,7 @@ import { RowContainer } from '../styledProjectDetails';
 interface Props {
   projectSlug: string;
   position: Opportunity;
+  handleCloseModal?: () => void;
 }
 
 export default function PositionCard({ position, projectSlug }: Props) {
@@ -190,7 +192,13 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
-              modalContent={<ModalContent position={position} projectSlug="" />}
+              modalContent={
+                <ModalContent
+                  position={position}
+                  projectSlug=""
+                  handleCloseModal={handleCloseModal}
+                />
+              }
             />
             <Button
               color="SonicSilver"
@@ -211,9 +219,10 @@ export default function PositionCard({ position, projectSlug }: Props) {
   );
 }
 
-function ModalContent({ position }: Props, handleCloseModal) {
+function ModalContent({ position, handleCloseModal }: Props) {
   return (
     <div>
+      <ColorBox />
       <CloseButton onClick={handleCloseModal}>
         <CloseIcon
           xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +239,45 @@ function ModalContent({ position }: Props, handleCloseModal) {
         </CloseIcon>
       </CloseButton>
       <ModalTopSection position={position} projectSlug="" />
+      <ModalBottomSection position={position} projectSlug="" />
+    </div>
+  );
+}
 
+function ModalTopSection({ position }: Props) {
+  return (
+    <RowContainer paddingVertical={20}>
+      <ModalProjectSection>
+        <h3>{position.title}</h3>
+        {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
+        <h4>PRODUCT PLATFORM</h4>
+        <h6>TIME COMMITMENT</h6>
+        <p>{position.commitmentHoursPerWeek} hrs per week</p>
+      </ModalProjectSection>
+      <ModalDescriptionSection Mobile={false}>
+        <h3>ABOUT THE PROJECT</h3>
+        <p>{position.description}</p>
+      </ModalDescriptionSection>
+      <ModalProjectSection>
+        <h4>SKILLS REQUIRED</h4>
+        <TagsSection>
+          <TagsList>
+            <TagsListItem color="Dark">{position.level}</TagsListItem>
+            {position?.skills?.map((skill, index) => (
+              <TagsListItem color="Dark" key={index}>
+                {skill?.interest}
+              </TagsListItem>
+            ))}
+          </TagsList>
+        </TagsSection>
+      </ModalProjectSection>
+    </RowContainer>
+  );
+}
+
+function ModalBottomSection({ position, handleCloseModal }: Props) {
+  return (
+    <div>
       <RowContainer paddingVertical={50} justifycontent="justfiy-left">
         <ModalProjectSection>
           <div>
@@ -258,36 +305,5 @@ function ModalContent({ position }: Props, handleCloseModal) {
         )}
       </RowContainer>
     </div>
-  );
-}
-
-function ModalTopSection({ position }: Props) {
-  return (
-    <RowContainer>
-      <ModalProjectSection>
-        <h3>{position.title}</h3>
-        {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
-        <h4>PRODUCT PLATFORM</h4>
-        <h6>TIME COMMITMENT</h6>
-        <p>{position.commitmentHoursPerWeek} hrs per week</p>
-      </ModalProjectSection>
-      <ModalDescriptionSection Mobile={false}>
-        <h3>ABOUT THE PROJECT</h3>
-        <p>{position.description}</p>
-      </ModalDescriptionSection>
-      <ModalProjectSection>
-        <h4>SKILLS REQUIRED</h4>
-        <TagsSection>
-          <TagsList>
-            <TagsListItem color="Dark">{position.level}</TagsListItem>
-            {position?.skills?.map((skill, index) => (
-              <TagsListItem color="Dark" key={index}>
-                {skill?.interest}
-              </TagsListItem>
-            ))}
-          </TagsList>
-        </TagsSection>
-      </ModalProjectSection>
-    </RowContainer>
   );
 }
