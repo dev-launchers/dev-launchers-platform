@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   display: flex;
- 
+
   background: ${(props) => props.theme?.colors?.NEUTRAL_2};
   border-radius: 1.8rem;
   overflow: hidden;
@@ -20,7 +20,7 @@ export const Section = styled.div<{
   Mobile: boolean;
   Expanded?: boolean;
 }>`
-/* display: flex;
+  /* display: flex;
 flex-direction: column;
 align-items: flex-start;
 justify-content: flex-start; */
@@ -39,7 +39,7 @@ justify-content: flex-start; */
 
   @media (max-width: 760px) {
     display: ${({ Mobile, Expanded }) =>
-    Mobile ? (Expanded ? 'block' : 'none') : 'block'};
+      Mobile ? (Expanded ? 'block' : 'none') : 'block'};
     width: 100%;
   }
 `;
@@ -61,7 +61,6 @@ export const TitleSection = styled.div`
   padding: 0;
   padding: 10px 16.5px;
 
-
   min-width: 10rem;
 
   & h2 {
@@ -75,7 +74,7 @@ export const TitleSection = styled.div`
 
   @media (max-width: 760px) {
     width: 100%;
-  } ;
+  }
 `;
 
 export const DescriptionSection = styled.div<{
@@ -84,7 +83,7 @@ export const DescriptionSection = styled.div<{
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'block')};
   height: 100%;
-  
+
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
@@ -124,7 +123,7 @@ export const DescriptionSection = styled.div<{
 
 export const OpportunityDetailsContainer = styled.div`
   width: 100%;
-  
+
   margin: 0 auto;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-size: 1rem;
@@ -138,9 +137,9 @@ export const OpportunityDetailsContainer = styled.div`
 `;
 
 export const TagsSection = styled.div`
-  box-sizing: border-box;
   padding: 0 1rem;
-  width: 100%;
+  width: auto;
+  display: inline-block;
 
   & h4 {
     font-style: normal;
@@ -150,30 +149,29 @@ export const TagsSection = styled.div`
   }
   @media (max-width: 760px) {
     display: none;
-  } ;
+  }
 `;
 export const TagsList = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 6px; 
+  flex-direction: column;
+
+  text-align: center;
+  gap: 6px;
   padding: 0;
   margin: 0;
 `;
 export const TagsListItem = styled.li<{ color: sectionTheme }>`
-  padding: 0  8px;
- 
+  padding: 6px 8px 6px 8px;
   background-color: ${(props) =>
     props.color === 'Dark'
-      ? props.theme?.colors?.NEUTRAL_1
+      ? props.theme?.colors?.Gray
       : props.theme?.colors?.White};
 
   color: ${(props) =>
     props.color === 'Light'
       ? props.theme?.colors?.OuterSpace
-      : props.theme.colors.Argent};
-  border: ${({ theme }) => `0.723357px solid ${theme?.colors?.OuterSpace}`};
+      : props.theme.colors.LightGray};
   filter: ${({ theme }) =>
     `drop-shadow(0px 0.18rem 0.18rem ${theme?.colors?.BlackT38})`};
 
@@ -237,7 +235,6 @@ export const ExpectationsSection = styled.div<{ Expanded: boolean }>`
 `;
 
 export const ExpectationsList = styled.ul`
-
   list-style: disc;
   padding: 0;
   margin: 0;
@@ -245,11 +242,11 @@ export const ExpectationsList = styled.ul`
   margin-bottom: 1rem;
 `;
 export const ExpectationsListItem = styled.li`
-padding: 5px ;
+  padding: 5px;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
-  font-weight: 400;
-  //font-size: 13.0204px;
+  font-weight: 600;
+  font-size: 13.0204px;
   line-height: 9px;
 `;
 
@@ -263,10 +260,9 @@ export const ButtonsSection = styled.div<{
   justify-content: flex-end;
   width: 100%;
   //flex-direction: ${({ expanded }) => (expanded ? 'row-reverse' : 'row')};
-  
+
   align-items: center;
   //align-self: flex-end;
-  
 
   @media (max-width: 760px) {
     display: ${(props) => (props.Mobile ? 'flex' : 'none')};
@@ -350,8 +346,127 @@ export const ApplyButton = styled.a<{ color?: string }>`
 `;
 
 export const CommitmentContainer = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-height:100%
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
+export const RowContainer = styled.div`
+  display: flex; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+  justify-content: space-between; /* Distribute items evenly along the row */
+  /* Other styling properties for the row */
+`;
+
+export const ModalDescriptionSection = styled.div<{
+  Mobile: boolean;
+}>`
+  display: ${(props) => (props.Mobile ? 'none' : 'block')};
+  height: 100%;
+  padding: 0px 20px 0px 50px;
+
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  & p {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    line-height: 1.125rem;
+    max-width: 28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+
+  @media (max-width: 760px) {
+    padding: 0 1rem;
+    display: ${(props) => (props.Mobile ? 'block' : 'none')};
+    & p {
+      padding: 0 1rem;
+      font-family: ${(props) => props.theme?.fonts?.normal};
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.125rem;
+    }
+  }
+`;
+
+export const ModalProjectSection = styled.div`
+  height: 100%;
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+
+  & h4 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  & p {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    line-height: 1.125rem;
+    max-width: 28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+`;
+
+export const BulletListItem = styled.li`
+  font-size: 12px;
+`;
+
+export const BulletList = styled.div`
+  padding-right: 0 0 0px 50px;
+  max-width: 200px;
+`;
+
+export const CloseIconButton = styled.a`
+  font-family: ${({ theme }) => theme?.fonts?.normal};
+  font-size: 1rem;
+  padding: 4px 4px;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: ${({ theme }) => theme?.colors?.White};
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  color: ${({ theme }) => theme?.colors?.Black};
+
+  & svg {
+    margin-right: 0rem;
+    height: 20px;
+    width: 20px;
+  }
+`;
+
+export const CloseButton = styled.button`
+  background: ${({ theme }) => theme.colors.White};
+  border: none;
+  border-radius: 5px;
+  height: 22px;
+  width: 20px;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+`;
+
+export const CloseIcon = styled.svg`
+  color: ${({ theme }) => theme?.colors?.Black};
+  height: 100%;
+  width: 100%;
 `;

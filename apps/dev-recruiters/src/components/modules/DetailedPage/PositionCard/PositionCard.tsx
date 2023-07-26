@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { useState } from "react";
-import { Opportunity } from "@devlaunchers/models";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import Link from 'next/link';
+import { useState } from 'react';
+import { Opportunity } from '@devlaunchers/models';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 import {
   ApplyButton,
@@ -26,7 +26,16 @@ import {
   TagsSection,
   TitleSection,
   CommitmentContainer,
-} from "./StyledPositionCard";
+  ModalDescriptionSection,
+  ModalProjectSection,
+  BulletListItem,
+  BulletList,
+  CloseIconButton,
+  CloseButton,
+  CloseIcon,
+} from './StyledPositionCard';
+import Modal from '../PositionPopupModal/Modal';
+import { RowContainer } from '../styledProjectDetails';
 
 interface Props {
   projectSlug: string;
@@ -36,9 +45,19 @@ interface Props {
 export default function PositionCard({ position, projectSlug }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <Container>
-      <Section Mobile={false} color={"Dark"}>
+      <Section Mobile={false} color={'Dark'}>
         <LikeButton onClick={() => setLiked((prev) => !prev)}>
           <Icon
             Active={liked}
@@ -67,7 +86,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
             >
-              {`${isExpanded ? "Collapse Details" : "Position details"}`}
+              {`${isExpanded ? 'Collapse Details' : 'Position details'}`}
             </Button>
             <Link
               href={`${projectSlug}/apply?position=${position.title}`}
@@ -81,14 +100,14 @@ export default function PositionCard({ position, projectSlug }: Props) {
         </OpportunityInfoContainer>
       </Section>
 
-      <Section Mobile={true} color={"Light"}>
+      <Section Mobile={true} color={'Light'}>
         <DescriptionSection Mobile={false} Expanded={isExpanded}>
           <h3>Position Description</h3>
           {isExpanded ? (
             <ReactMarkdown
               components={{
                 // Map `h1` (`# heading`) to use `h2`s.
-                h1: "h4",
+                h1: 'h4',
                 // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
               }}
               rehypePlugins={[rehypeRaw]}
@@ -100,7 +119,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <ReactMarkdown
               components={{
                 // Map `h1` (`# heading`) to use `h2`s.
-                h1: "h4",
+                h1: 'h4',
                 // Rewrite `em`s (`*like so*`) to `i` with a red foreground color.
               }}
               remarkPlugins={[remarkGfm]}
@@ -117,7 +136,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
         </DescriptionSection>
       </Section>
 
-      <Section Mobile={true} color={"Light"}>
+      <Section Mobile={true} color={'Light'}>
         <OpportunityDetailsContainer>
           <TagsSection>
             <h4>Position Tags</h4>
@@ -133,7 +152,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
         </OpportunityDetailsContainer>
       </Section>
 
-      <Section Mobile={true} color={"Light"} Expanded={isExpanded}>
+      <Section Mobile={true} color={'Light'} Expanded={isExpanded}>
         <CommitmentContainer>
           <OpportunityDetailsContainer>
             <div>
@@ -165,11 +184,19 @@ export default function PositionCard({ position, projectSlug }: Props) {
             </p>
           </DescriptionSection>
           <ButtonsSection expanded={isExpanded} Mobile={false}>
+            <Button color="SonicSilver" onClick={handleOpenModal}>
+              Project details
+            </Button>
+            <Modal
+              modalIsOpen={showModal}
+              closeModal={handleCloseModal}
+              modalContent={<ModalContent position={position} projectSlug="" />}
+            />
             <Button
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
             >
-              {`${isExpanded ? "Collapse Description" : "Expand Description"}`}
+              {`${isExpanded ? 'Collapse Description' : 'Expand Description'}`}
             </Button>
             <Link
               href={`${projectSlug}/apply?position=${position.title}`}
@@ -181,5 +208,86 @@ export default function PositionCard({ position, projectSlug }: Props) {
         </CommitmentContainer>
       </Section>
     </Container>
+  );
+}
+
+function ModalContent({ position }: Props, handleCloseModal) {
+  return (
+    <div>
+      <CloseButton onClick={handleCloseModal}>
+        <CloseIcon
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </CloseIcon>
+      </CloseButton>
+      <ModalTopSection position={position} projectSlug="" />
+
+      <RowContainer paddingVertical={50} justifycontent="justfiy-left">
+        <ModalProjectSection>
+          <div>
+            <h4>WHY SHOULD YOU JOIN</h4>
+            <BulletList>
+              <BulletListItem>Mentor and manage a team</BulletListItem>
+              <BulletListItem>
+                Collaborate with people around the world
+              </BulletListItem>
+              <BulletListItem>Deliver high quality software</BulletListItem>
+            </BulletList>
+          </div>
+        </ModalProjectSection>
+        {position.expectations.length > 0 && (
+          <ModalDescriptionSection Mobile={false}>
+            <h3>RESPONSIBILITIES</h3>
+            <BulletList>
+              {position.expectations.map((item, index) => (
+                <ExpectationsListItem key={index}>
+                  {item.expectation}
+                </ExpectationsListItem>
+              ))}
+            </BulletList>
+          </ModalDescriptionSection>
+        )}
+      </RowContainer>
+    </div>
+  );
+}
+
+function ModalTopSection({ position }: Props) {
+  return (
+    <RowContainer>
+      <ModalProjectSection>
+        <h3>{position.title}</h3>
+        {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
+        <h4>PRODUCT PLATFORM</h4>
+        <h6>TIME COMMITMENT</h6>
+        <p>{position.commitmentHoursPerWeek} hrs per week</p>
+      </ModalProjectSection>
+      <ModalDescriptionSection Mobile={false}>
+        <h3>ABOUT THE PROJECT</h3>
+        <p>{position.description}</p>
+      </ModalDescriptionSection>
+      <ModalProjectSection>
+        <h4>SKILLS REQUIRED</h4>
+        <TagsSection>
+          <TagsList>
+            <TagsListItem color="Dark">{position.level}</TagsListItem>
+            {position?.skills?.map((skill, index) => (
+              <TagsListItem color="Dark" key={index}>
+                {skill?.interest}
+              </TagsListItem>
+            ))}
+          </TagsList>
+        </TagsSection>
+      </ModalProjectSection>
+    </RowContainer>
   );
 }

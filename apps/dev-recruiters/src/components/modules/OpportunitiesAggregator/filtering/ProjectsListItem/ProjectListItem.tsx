@@ -16,7 +16,7 @@ import {
   DetailsButton,
   PositionLevel,
 } from './StyleProjectListItem';
-//import ReactGA from '@devlaunchers/components/utils/GoogleAnalytics';
+import ReactGA from '@devlaunchers/components/utils/GoogleAnalytics';
 
 interface Props {
   project: ProjectLite;
@@ -50,13 +50,15 @@ export default function ProjectListItem({ project }: Props) {
                         <PositionLevel>{opportunity.level}</PositionLevel>
                       </li>
                     ))
-                  : project.opportunities.data.slice(0, 3).map((opportunity) => (
-                      <li key={opportunity.id}>
-                        <PositionTitle>{opportunity.title}</PositionTitle>
-                        <span> - </span>
-                        <PositionLevel>{opportunity.level}</PositionLevel>
-                      </li>
-                    ))}
+                  : project.opportunities.data
+                      .slice(0, 3)
+                      .map((opportunity) => (
+                        <li key={opportunity.id}>
+                          <PositionTitle>{opportunity.title}</PositionTitle>
+                          <span> - </span>
+                          <PositionLevel>{opportunity.level}</PositionLevel>
+                        </li>
+                      ))}
               </ul>
             </PositionsContainer>
 
