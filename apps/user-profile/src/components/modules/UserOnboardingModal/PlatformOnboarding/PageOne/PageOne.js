@@ -1,5 +1,4 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
-import "/Users/rinabo/developments/dev-launchers-platform/apps/user-profile/src/images/logo-monogram.png" 
 import LogoMonogram from '../../../../../images/logo-monogram.png'
 import {m} from "framer-motion";
 import { PageOneContainer } from "./StyledPageOne";
