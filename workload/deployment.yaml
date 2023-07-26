@@ -170,16 +170,16 @@ spec:
           subPath: license.txt
         resources:
           limits:
-            cpu: 128m
-            memory: 200Mi
+            cpu: 256m
+            memory: 512Mi
           requests:
-            cpu: 32m
-            memory: 128Mi
+            cpu: 128m
+            memory: 256Mi
         livenessProbe:
           httpGet:
             path: /
             port: 1337
-          initialDelaySeconds: 300
+          initialDelaySeconds: 480
           periodSeconds: 10
           timeoutSeconds: 10
           failureThreshold: 5
