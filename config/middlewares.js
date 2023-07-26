@@ -23,7 +23,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://devlaunchers.org', 'http://localhost:3000', ...DevLaunchersSubdomains],
+      origin: ['https://devlaunchers.org', 'https://staging.devlaunchers.org', 'http://localhost:3000', ...DevLaunchersSubdomains],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
