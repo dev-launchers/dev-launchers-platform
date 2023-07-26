@@ -328,7 +328,11 @@ export const ModalDescriptionSection = styled.div<{
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
+<<<<<<< HEAD
     font-weight: 400;
+=======
+    font-weight: 700;
+>>>>>>> 094c737b (setup the new modal)
     font-size: 16px;
     line-height: 22px;
   }
