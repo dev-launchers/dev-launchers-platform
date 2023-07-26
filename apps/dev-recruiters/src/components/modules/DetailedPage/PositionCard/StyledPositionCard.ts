@@ -1,3 +1,4 @@
+import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -437,31 +438,17 @@ export const BulletList = styled.div`
   max-width: 200px;
 `;
 
-export const CloseIconButton = styled.a`
-  font-family: ${({ theme }) => theme?.fonts?.normal};
-  font-size: 1rem;
-  padding: 4px 4px;
-  display: inline-flex;
-  align-items: center;
-  border: none;
-  background: ${({ theme }) => theme?.colors?.White};
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  color: ${({ theme }) => theme?.colors?.Black};
-
-  & svg {
-    margin-right: 0rem;
-    height: 20px;
-    width: 20px;
-  }
-`;
-
 export const CloseButton = styled.button`
   background: ${({ theme }) => theme.colors.White};
   border: none;
   border-radius: 5px;
   height: 22px;
   width: 20px;
+  margin: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
@@ -469,4 +456,27 @@ export const CloseIcon = styled.svg`
   color: ${({ theme }) => theme?.colors?.Black};
   height: 100%;
   width: 100%;
+`;
+
+export const ColorBox = styled.div`
+  width: 100%;
+  height: 10px;
+  position: absolute;
+  border: none;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+    to right,
+    #ff7f0e 25%,
+    #ffab00 25% 50%,
+    #81c3d7 50% 75%,
+    #3a7ca5 75% 100%
+  );
+`;
+
+export const ColorRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 10px 0;
 `;
