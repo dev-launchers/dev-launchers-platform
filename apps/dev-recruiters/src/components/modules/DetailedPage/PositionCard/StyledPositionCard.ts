@@ -1,3 +1,4 @@
+import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
