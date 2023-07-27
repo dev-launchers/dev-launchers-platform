@@ -26,6 +26,7 @@ import DeveloperMode from '../../../images/icons/Developer-mode.png';
 import FloorPlan from '../../../images/icons/Floor-Plan.png';
 import PopularMan from '../../../images/icons/Popular-Man.png';
 import SourceCode from '../../../images/icons/Source-Code.png';
+import RoleCard from '../FilterPage/RoleCard/RoleCard';
 
 export default function NewJoinPageComponent() {
   return (
@@ -155,6 +156,7 @@ export default function NewJoinPageComponent() {
           <BtnSignUp>SIGN UP</BtnSignUp>
         </Footer>
       </BoxContainer>
+      <RoleCard/>
     </Wrapper>
   );
 }
