@@ -354,10 +354,9 @@ export const CommitmentContainer = styled.div`
 `;
 
 export const RowContainer = styled.div`
-  display: flex; /* Use flexbox */
-  align-items: center; /* Align items vertically */
-  justify-content: space-between; /* Distribute items evenly along the row */
-  /* Other styling properties for the row */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const ModalDescriptionSection = styled.div<{
@@ -407,6 +406,7 @@ export const ModalProjectSection = styled.div`
   font-style: normal;
   font-weight: 700;
   line-height: 22px;
+  max-width: 200px;
 
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
