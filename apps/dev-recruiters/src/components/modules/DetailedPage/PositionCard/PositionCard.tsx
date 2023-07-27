@@ -246,7 +246,7 @@ function ModalContent({ position, handleCloseModal }: Props) {
 
 function ModalTopSection({ position }: Props) {
   return (
-    <RowContainer paddingVertical={20}>
+    <RowContainer paddingVertical={20} justifycontent="justfiy-left">
       <ModalProjectSection>
         <h3>{position.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
@@ -275,7 +275,7 @@ function ModalTopSection({ position }: Props) {
   );
 }
 
-function ModalBottomSection({ position, handleCloseModal }: Props) {
+function ModalBottomSection({ position }: Props) {
   return (
     <div>
       <RowContainer paddingVertical={50} justifycontent="justfiy-left">
