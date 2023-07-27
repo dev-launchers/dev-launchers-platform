@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from "axios";
-import { router } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import ReactMarkdown from 'react-markdown';
@@ -23,6 +22,8 @@ import {
   MarkdownWrapper,
 } from './StyledIdeaSubmissionTC';
 
+let scrollElementOffset = 0;
+
 function IdeaSubmissionTC() {
   // ReactMarkdown
   function flatten(text, child) {
@@ -38,13 +39,25 @@ function IdeaSubmissionTC() {
     return React.createElement('h' + props.level, { id: slug }, props.children)
   }
 
+  function scrollSmoothTo(elementId) {
+    var element = document.getElementById(elementId);
+    if (element !== null) {
+      scrollElementOffset = document.getElementById(elementId).offsetTop;
+    }
+    element.scrollIntoView({ block: 'start',  behavior: 'smooth' });
+  }
+
+  function LinkRenderer(props) {
+    var children = React.Children.toArray(props.children)
+    var text = props.href.substring(1);
+    return React.createElement('a', { onClick: () => scrollSmoothTo(text) },  props.children)
+  }
+
 
   // dropdown quick link
   const [showOptions, setShowOptions] = React.useState([]);
-  const defaultOptions = [<option key='-1'>Sort By</option>];
-  React.useEffect(() => {
-    setShowOptions(defaultOptions);
-  }, []);
+  const defaultOptions = [<option key='-1' value='-1'>Sort By</option>];
+  const [selectValue, setSelectValue] = React.useState('-1');
 
   const dropDownOptions = quickLinkContentLeft.concat(quickLinkContentRight)
     .split('\n').slice(0, -1).map((text, index) => {
@@ -52,7 +65,7 @@ function IdeaSubmissionTC() {
         <option
           key={index}
           value={
-            'terms-and-conditions' + text.substring(text.indexOf('(') + 1, text.indexOf(')'))
+            text.substring(text.indexOf('(') + 2, text.indexOf(')'))
           }
         >
           {text.substring(text.indexOf('[') + 1, text.indexOf(']'))}
@@ -60,20 +73,17 @@ function IdeaSubmissionTC() {
       );
     });
 
+    React.useEffect(() => {
+      setShowOptions(defaultOptions.concat(dropDownOptions));
+    }, []);
+
   const handleSelectChange = (e) => {
     if (!e.target.value) {
       return;
     }
-    router.push(e.target.value);
+    scrollSmoothTo(e.target.value);
+    setSelectValue('-1');
   };
-
-  const handleClick = (e) => {
-    if (defaultOptions[0].key === "-1") {
-      setShowOptions(dropDownOptions);
-      return;
-    }
-  };
-
 
   // top quick link show and hide
   const [isShow, setIsShow] = React.useState(false);
@@ -83,14 +93,13 @@ function IdeaSubmissionTC() {
   }, [])
 
   let lastScrollTop = 0;
-  let scrollElement = null;
+  
   const handleScroll = () => {
     let scrollTop = document.documentElement.scrollTop;
-    scrollElement = document.getElementById(window.history.state.as.substr(window.history.state.as.lastIndexOf('#') + 1));
 
     if (scrollTop <= document.getElementById('introduction').offsetTop || scrollTop > lastScrollTop) {
       setIsShow(false)
-    } else if (scrollElement !== null && Math.abs(scrollElement.offsetTop - scrollTop) <= 1) {
+    } else if (scrollElementOffset !== 0 && Math.abs(scrollElementOffset - scrollTop) <= 1) {
       setIsShow(false)
     } else {
       setIsShow(true)
@@ -107,16 +116,16 @@ function IdeaSubmissionTC() {
           Idea Submission <br />
           Terms & Conditions
         </atoms.Box><br />
-        <ReactMarkdown children={quickLinkContentLeft} />
-        <ReactMarkdown children={quickLinkContentRight} />
+        <ReactMarkdown children={quickLinkContentLeft} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
+        <ReactMarkdown children={quickLinkContentRight} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
       </QuickLinkLeft>
 
       <Content>
         {isShow == true ? (
           <QuickLinkTop>
             <MiddleSizeQL>
-              <ReactMarkdown children={quickLinkContentLeft} />
-              <ReactMarkdown children={quickLinkContentRight} />
+              <ReactMarkdown children={quickLinkContentLeft} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
+              <ReactMarkdown children={quickLinkContentRight} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
             </MiddleSizeQL>
 
             <SmallSizeQL>
@@ -124,7 +133,6 @@ function IdeaSubmissionTC() {
               <Dropdown
                 name="sortBy"
                 id="sortBy"
-                onClick={handleClick}
                 onChange={handleSelectChange}
               >
                 {showOptions}
@@ -140,7 +148,7 @@ function IdeaSubmissionTC() {
           <Dropdown
             name="sortBy"
             id="sortBy"
-            onClick={handleClick}
+            value={selectValue}
             onChange={handleSelectChange}
           >
             {showOptions}
@@ -159,15 +167,15 @@ function IdeaSubmissionTC() {
         </HeadWapper>
 
         <QuickLinkMiddle>
-          <ReactMarkdown children={quickLinkContentLeft} />
-          <ReactMarkdown children={quickLinkContentRight} />
+          <ReactMarkdown children={quickLinkContentLeft} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
+          <ReactMarkdown children={quickLinkContentRight} remarkPlugins={[remarkGfm]} components={{ a: LinkRenderer }}/>
         </QuickLinkMiddle>
 
         <MarkdownWrapper>
           <ReactMarkdown
             children={markdownSource}
             remarkPlugins={[remarkGfm]}
-            components={{ h2: HeadingRenderer, h3: HeadingRenderer, }}
+            components={{ h2: HeadingRenderer, h3: HeadingRenderer, a: LinkRenderer }}
           />
         </MarkdownWrapper>
       </Content>
