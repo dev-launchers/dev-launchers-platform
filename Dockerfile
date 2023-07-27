@@ -3,6 +3,7 @@ FROM node:18-alpine
 # Installing libvips-dev for sharp Compatibility
 RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev libpng-dev nasm bash vips-dev
 WORKDIR /srv/app
+COPY ./favicon.ico ./
 COPY ./package.json ./
 COPY ./package-lock.json ./
 RUN npm install
