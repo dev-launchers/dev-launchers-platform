@@ -4,7 +4,6 @@ import {
   IconImage,
   SelectRoleContainer,
   SelectRoleContainerBottom,
-  SelectRoleContainerTop,
   TextRole,
   TextRoleSituation,
 } from './StyledSelectRole';
@@ -13,15 +12,13 @@ function SelectRole(props) {
   return (
     <>
       <SelectRoleContainer>
-        <SelectRoleContainerTop>
-          <AreaIconImage>
-            <IconImage width={props.width} src={props.src} />
-          </AreaIconImage>
-          <TextRole>{props.textRole}</TextRole>
-        </SelectRoleContainerTop>
+        <AreaIconImage>
+          <IconImage width={props.width} src={props.src} />
+        </AreaIconImage>
+        <TextRole>{props.textRole}</TextRole>
 
         <SelectRoleContainerBottom>
-          <TextRoleSituation>{props.textRoleSituation}</TextRoleSituation>
+          <TextRoleSituation>{`${props.openPositions} roles open`}</TextRoleSituation>
         </SelectRoleContainerBottom>
       </SelectRoleContainer>
     </>

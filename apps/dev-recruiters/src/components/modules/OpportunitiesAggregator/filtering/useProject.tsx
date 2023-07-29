@@ -42,6 +42,8 @@ export default function useProjects() {
     }
   };
 
+  console.log(projects)
+
   function fetchOpportunities(opportunities: Opportunity[]) {
     if (opportunities.length <= 0) return;
     setOpportunities(opportunities);
