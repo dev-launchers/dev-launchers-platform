@@ -1,15 +1,23 @@
 import styled from 'styled-components';
 
 export const SelectRoleContainer = styled.div`
-  width: 297px;
-  height: 329px;
+  width: 360px;
+  height: 266px;
   border: 1px solid #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: #d9d9d9;
-  border-radius: 6px;
+  background-color: white;
+  border-radius: 16px;
+  margin: 0 20px;
+  box-shadow: 0 10px 18px 10px #7f7e7f40;
+  padding: 20px 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ff7f0e;
+  }
 `;
 
 export const SelectRoleContainerTop = styled.div`
@@ -33,7 +41,10 @@ export const IconImage = styled.img`
   display: inline;
 `;
 
-export const TextRole = styled.text``;
+export const TextRole = styled.text`
+  font-size: 35px;
+  font-weight: bold;
+`;
 
 export const SelectRoleContainerBottom = styled.div`
   height: 30px;
