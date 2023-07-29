@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.White};
+  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
 `;
 
 export const HeadingContainer = styled.div`
@@ -30,44 +30,13 @@ export const HeadingSubText = styled.div`
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
 `;
 
-export const SelectRolesContainer = styled.div`
+export const AreaImage = styled.div`
+  width: 100%;
+  height: 450px;
   display: flex;
-  justify-content: center;
-  text-align: center;
-  padding: 1.5rem;
-`;
-
-export const SelectRoles = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-`;
-
-export const BtnShowRoles = styled.button`
-  width: 292px;
-  height: 60px;
-  padding: 5px;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #e6e6e6;
-  cursor: pointer;
-`;
-
-export const RoleContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const RoleContainerHead = styled.div``;
-
-export const RoleContainerBody = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 50px;
-  justify-content: flex-start;
+  justify-content: space-around;
+  overflow: hidden;
 `;
 
 export const Footer = styled.div`
@@ -91,13 +60,4 @@ export const BtnSignUp = styled.button`
   cursor: pointer;
   background-color: ${({ theme }) => theme?.colors?.BLUE_700};
   text-decoration: none;
-`;
-
-export const AreaImage = styled.div`
-  width: 100%;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  overflow: hidden;
 `;
