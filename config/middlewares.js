@@ -16,6 +16,8 @@ const DevLaunchersSubdomains = [
   'https://user-profile1.devlaunchers.org',
   'https://user-profile2.devlaunchers.org',
   'https://staging.devlaunchers.org',
+  'https://apiv4-staging.devlaunchers.org',
+  'https://apiv4.devlaunchers.org',
 ];
 
 module.exports = [
