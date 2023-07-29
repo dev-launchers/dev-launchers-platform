@@ -1,5 +1,5 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
-import RoleCard from "./RoleCard/RoleCard.js";
+import RoleCard from "./../../RoleCard";
 import { PageFourContainer, PageFourRoleCards } from "./StyledPageFour.js";
 import { ThemeProvider } from "styled-components";
 
@@ -10,13 +10,13 @@ export default function PageThree(){
 						<Typography type="subtitle">We’ll use this to find you the right fit when pairing with other members</Typography>
             <PageFourRoleCards>
                 <RoleCard
-                    iconImg="New"
+                    iconImg="Junior"
                     title="Junior"
                     subtitle="You have about 0-2 years of experience"
                     theme="theme1"
                 />
                 <RoleCard
-                    iconImg="Mid"
+                    iconImg="Mid-Level"
                     title="Mid-Level"
                     subtitle="You have about 3-5 years of experience"
                     theme="theme1"
@@ -27,7 +27,7 @@ export default function PageThree(){
                     subtitle="You have 5+ years in the industry"
                     theme="theme1"
                 />
-            </FourRoleCards>               
+            </PageFourRoleCards>               
         </PageFourContainer>
     );
 }
