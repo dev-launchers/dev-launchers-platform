@@ -23,7 +23,7 @@ export const SectionTitle = styled.p<{ Mobile?: boolean }>`
 
 export const Wrapper = styled.div`
   padding-left: 0;
-  padding-bottom: 6.25rem;
+  padding-bottom: 1.25rem;
 `;
 
 export const Container = styled.div`
@@ -102,7 +102,7 @@ export const DropDownContainer = styled.div`
   @media (max-width: 1110px) {
     display: grid;
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    
+
     & #level,
     #positions,
     #projectType {
