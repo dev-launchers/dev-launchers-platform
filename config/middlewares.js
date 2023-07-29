@@ -15,6 +15,7 @@ const DevLaunchersSubdomains = [
   'https://user-profile.devlaunchers.org',
   'https://user-profile1.devlaunchers.org',
   'https://user-profile2.devlaunchers.org',
+  'https://staging.devlaunchers.org',
 ];
 
 module.exports = [
@@ -23,7 +24,7 @@ module.exports = [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://devlaunchers.org', 'https://staging.devlaunchers.org', 'http://localhost:3000', ...DevLaunchersSubdomains],
+      origin: ['https://devlaunchers.org', 'http://localhost:1337', 'http://localhost:3000', ...DevLaunchersSubdomains],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
