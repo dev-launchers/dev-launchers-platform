@@ -11,6 +11,8 @@ import theme from '../styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
 import { UserDataProvider } from '../context/UserDataContext';
+
+import { LazyMotion, domAnimation } from "framer-motion"
 import { OnboardingDataProvider } from '../context/OnboardingDataContext'
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -65,7 +67,10 @@ function MyApp(props) {
                 />
               </div>
               {/* <Component {...pageProps} /> */}
-              {props.children}
+              <LazyMotion features={domAnimation} strict>
+                {props.children}
+              </LazyMotion>
+              {/* {props.children} */}
             </div>
           </ThemeProvider>
         </OnboardingDataProvider>
