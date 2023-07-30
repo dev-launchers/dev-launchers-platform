@@ -25,7 +25,7 @@ export default function UserProfilePage(props) {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return (router.query?.onboarding)
+    return featureFlags.inDevelopment ? true : (router.query?.onboarding)
   }
 
   return (

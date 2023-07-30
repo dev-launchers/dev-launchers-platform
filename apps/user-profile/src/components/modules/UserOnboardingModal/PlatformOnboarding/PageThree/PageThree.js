@@ -1,5 +1,5 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
-import RoleCard from "./RoleCard/RoleCard.js";
+import RoleCard from "./../../RoleCard/RoleCard";
 import { PageThereeContainer, ThreeRoleCards } from "./StyledPageThree.js";
 
 export default function PageThree(){
