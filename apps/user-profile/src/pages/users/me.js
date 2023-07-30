@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from 'next/router'
 
 import { useUserDataContext } from '../../context/UserDataContext';
-import { featureFlags } from '../../utils/featureFlags';
+import { featureFlags } from '../../utils/featureFlags.js';
 import Head from 'next/head';
 import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
