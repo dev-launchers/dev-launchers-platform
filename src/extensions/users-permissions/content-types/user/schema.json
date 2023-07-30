@@ -154,6 +154,12 @@
     "completedOnboarding": {
       "type": "boolean",
       "default": false
+    },
+    "ownedCards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::idea-card.idea-card",
+      "mappedBy": "ideaOwner"
     }
   }
 }
