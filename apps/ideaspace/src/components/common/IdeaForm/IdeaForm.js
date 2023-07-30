@@ -184,9 +184,9 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
-								<atoms.Checkbox disabled={false} required />
+								<input type="checkbox" style={{ height: '1.5rem', width:'1.5rem'}} required/>
 								<atoms.Typography type='p'>
-									&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.<span style={{color:"red"}}>&nbsp;*</span>
+								&nbsp;&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 							</atoms.Box>
 
