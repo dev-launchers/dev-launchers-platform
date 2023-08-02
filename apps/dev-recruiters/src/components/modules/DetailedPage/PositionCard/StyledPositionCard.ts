@@ -256,11 +256,11 @@ export const ButtonsSection = styled.div<{
   expanded?: boolean;
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'flex')};
-  margin-left: auto;
-  margin-top: auto;
-  justify-content: flex-end;
-  width: 100%;
-  //flex-direction: ${({ expanded }) => (expanded ? 'row-reverse' : 'row')};
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
 
   align-items: center;
   //align-self: flex-end;
@@ -329,21 +329,23 @@ export const Icon = styled.svg<{ Active: boolean }>`
 
 export const ApplyButton = styled.a<{ color?: string }>`
   font-family: ${(props) => props.theme?.fonts?.normal};
-  background-color: ${(props) =>
-    props.color
-      ? props.theme.colors[props.color]
-      : props.theme?.colors?.OuterSpace};
+  background-color: ${(props) => props.theme?.colors?.BLUE_700};
   color: ${(props) => props.theme?.colors?.White};
-  border-radius: 1.8rem;
-  padding: 10px 20px;
+  border-radius: 0.4rem;
+  padding: 14px 24px;
   white-space: nowrap;
   margin: 0 3px;
   border: none;
   font-style: normal;
   font-weight: 400;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 11px;
   text-align: center;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme?.colors?.Argent};
+  }
 `;
 
 export const CommitmentContainer = styled.div`
