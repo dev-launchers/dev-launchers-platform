@@ -55,6 +55,12 @@ export default function PositionCard({ position, projectSlug }: Props) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+  const customModalStyles = {
+    content: {
+      width: '50px', // Set the desired width
+      height: '10px', // Set the desired height
+    },
+  };
 
   return (
     <Container>
@@ -191,6 +197,21 @@ export default function PositionCard({ position, projectSlug }: Props) {
             </Button>
 
             <Modal
+              preventScroll={true}
+              handleCloseModal={handleCloseModal}
+              modalIsOpen={showModal}
+              handleOpenModal={handleOpenModal}
+              onRequestClose={handleCloseModal}
+              contentLabel="Confirmation Modal"
+            >
+              <ConfirmationModal
+                handleCloseModal={handleCloseModal}
+                showModal={true}
+                handleOpenModal={handleOpenModal}
+              />
+            </Modal>
+
+            {/* <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
               handleOpenModal={handleOpenModal}
@@ -201,7 +222,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
                   handleCloseModal={handleCloseModal}
                 />
               }
-            />
+            /> */}
             <Button
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
