@@ -7,6 +7,7 @@ import Popballoon from '../Popover/Popover';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
+import { Checkbox } from './StyledCheckbox';
 
 const IdeaForm = ({
 	initialValues,
@@ -184,7 +185,7 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
-								<input type="checkbox" style={{ height: '1.5rem', width:'1.5rem'}} required/>
+								<Checkbox type="checkbox" required/>
 								<atoms.Typography type='p'>
 								&nbsp;&nbsp;I have read and agree to the <a href={href}>Terms and Conditions</a>.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
