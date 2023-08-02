@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Opportunity } from '@devlaunchers/models';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-
+import './modal_style.css';
 import {
   ApplyButton,
   Button,
@@ -37,6 +37,10 @@ import {
 } from './StyledPositionCard';
 import Modal from '../PositionPopupModal/Modal';
 import { RowContainer } from '../styledProjectDetails';
+import SignUpForm from '../../FormPage/signUpForm';
+import ConfirmationModal from '../Confirmation/ConfirmationModal';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 interface Props {
   projectSlug: string;
@@ -55,6 +59,12 @@ export default function PositionCard({ position, projectSlug }: Props) {
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+  const customModalStyles = {
+    content: {
+      width: '50px', // Set the desired width
+      height: '10px', // Set the desired height
+    },
   };
 
   return (
@@ -185,21 +195,38 @@ export default function PositionCard({ position, projectSlug }: Props) {
                 : `${position.description.substring(0, 320)}...`}
             </p>
           </DescriptionSection>
+
           <ButtonsSection expanded={isExpanded} Mobile={false}>
             <Button color="SonicSilver" onClick={handleOpenModal}>
               Project details
             </Button>
             <Modal
+              preventScroll={true}
+              handleCloseModal={handleCloseModal}
+              modalIsOpen={showModal}
+              handleOpenModal={handleOpenModal}
+              onRequestClose={handleCloseModal}
+              contentLabel="Confirmation Modal"
+            >
+              <ConfirmationModal
+                handleCloseModal={handleCloseModal}
+                showModal={true}
+                handleOpenModal={handleOpenModal}
+              />
+            </Modal>
+
+            {/* <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
+              handleOpenModal={handleOpenModal}
               modalContent={
                 <ModalContent
                   position={position}
-                  projectSlug=""
+                  projectSlug={projectSlug}
                   handleCloseModal={handleCloseModal}
                 />
               }
-            />
+            /> */}
             <Button
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
@@ -219,7 +246,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
   );
 }
 
-function ModalContent({ position, handleCloseModal }: Props) {
+function ModalContent({ position, handleCloseModal, projectSlug }: Props) {
   return (
     <div>
       <ColorBox />
@@ -238,8 +265,12 @@ function ModalContent({ position, handleCloseModal }: Props) {
           />
         </CloseIcon>
       </CloseButton>
-      <ModalTopSection position={position} projectSlug="" />
-      <ModalBottomSection position={position} projectSlug="" />
+      <ModalTopSection position={position} projectSlug={projectSlug} />
+      <ModalBottomSection
+        position={position}
+        projectSlug={projectSlug}
+        handleCloseModal={handleCloseModal}
+      />
     </div>
   );
 }
@@ -275,10 +306,24 @@ function ModalTopSection({ position }: Props) {
   );
 }
 
-function ModalBottomSection({ position }: Props) {
+function ModalBottomSection({
+  position,
+  projectSlug,
+  handleCloseModal,
+}: Props) {
+  const [showApplyModal, setShowApplyModal] = useState(false);
+
+  const handleOpenApplyModal = () => {
+    setShowApplyModal(true);
+  };
+
+  const handleCloseApplyModal = () => {
+    setShowApplyModal(false);
+  };
+
   return (
     <div>
-      <RowContainer paddingVertical={50} justifycontent="justfiy-left">
+      <RowContainer paddingVertical={20} justifycontent="justfiy-left">
         <ModalProjectSection>
           <div>
             <h4>WHY SHOULD YOU JOIN</h4>
@@ -304,6 +349,25 @@ function ModalBottomSection({ position }: Props) {
           </ModalDescriptionSection>
         )}
       </RowContainer>
+
+      {/* <Link href={`${projectSlug}/apply?position=${position.title}`} passHref> */}
+      <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
+        <ApplyButton as="a" color="DarkElectricBlue">
+          Apply
+        </ApplyButton>
+      </ButtonsSection>
+      {/* </Link> */}
+
+      <Modal
+        modalIsOpen={showApplyModal}
+        closeModal={handleCloseApplyModal}
+        modalContent={
+          <SignUpForm
+            handleCloseModal={handleCloseApplyModal}
+            position={position}
+          />
+        }
+      />
     </div>
   );
 }

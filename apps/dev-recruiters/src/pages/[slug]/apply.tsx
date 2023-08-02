@@ -1,9 +1,9 @@
-import Head from "next/head";
-import SignUpForm from "../../components/modules/FormPage/signUpForm";
-import BoxContainer from "../../components/common/BoxContainer";
-import TitledHeader from "../../components/common/TitledHeader";
+import Head from 'next/head';
+import SignUpForm from '../../components/modules/FormPage/signUpForm';
+import BoxContainer from '../../components/common/BoxContainer';
+import TitledHeader from '../../components/common/TitledHeader';
 
-function apply() {
+function appldy() {
   return (
     <>
       <Head>
@@ -42,10 +42,10 @@ function apply() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-        <TitledHeader title='Apply with Dev Launchers!'/>
-        <SignUpForm />
+      <TitledHeader title="Apply with Dev Launchers!" />
+      <SignUpForm />
     </>
   );
 }
 
-export default apply;
+export default appldy;
