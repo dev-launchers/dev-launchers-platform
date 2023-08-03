@@ -17,7 +17,7 @@ interface CollapsibleContainerProps {
 }
 
 const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
-  openPositions,
+  openPositions: openPositions,
 }) => {
   return (
     <>
@@ -28,21 +28,25 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               src={DesignServices}
               textRole="Product Lead"
               openPositions={openPositions['ProductLead']}
+              openPositionsCount={openPositions['ProductLead']}
             />
             <SelectRole
               src={PopularMan}
               textRole="UX Designer"
               openPositions={openPositions['UxDesigner']}
+              openPositionsCount={openPositions['UxDesigner']}
             />
             <SelectRole
               src={CaseStudy}
               textRole="UX Researcher"
               openPositions={openPositions['UxResearcher']}
+              openPositionsCount={openPositions['UxResearcher']}
             />
             <SelectRole
               src={FloorPlan}
               textRole="Information Architect"
               openPositions={openPositions['InformationArchitect']}
+              openPositionsCount={openPositions['InformationArchitect']}
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -53,16 +57,19 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               src={CaseStudy}
               textRole="Lead Developer"
               openPositions={openPositions['LeadDeveloper']}
+              openPositionsCount={openPositions['LeadDeveloper']}
             />
             <SelectRole
               src={SourceCode}
               textRole="Back-End Developer"
               openPositions={openPositions['BackEndDeveloper']}
+              openPositionsCount={openPositions['BackEndDeveloper']}
             />
             <SelectRole
               src={SourceCode}
               textRole="Front-End Developer"
               openPositions={openPositions['FrontEndDeveloper']}
+              openPositionsCount={openPositions['FrontEndDeveloper']}
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -73,11 +80,13 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               src={DeveloperMode}
               textRole="QA Lead"
               openPositions={openPositions['QaLead']}
+              openPositionsCount={openPositions['QaLead']}
             />
             <SelectRole
               src={SourceCode}
               textRole="QA Tester"
               openPositions={openPositions['QaTester']}
+              openPositionsCount={openPositions['QaTester']}
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -88,11 +97,13 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               src={DeveloperMode}
               textRole="Volunteer Coordinator"
               openPositions={openPositions['VoulunteerCordinator']}
+              openPositionsCount={openPositions['VoulunteerCordinator']}
             />
             <SelectRole
               src={SourceCode}
               textRole="Social Media Manager"
               openPositions={openPositions['SocialMediaManager']}
+              openPositionsCount={openPositions['SocialMediaManager']}
             />
           </RoleContainerBody>
         </CollapsibleSection>
