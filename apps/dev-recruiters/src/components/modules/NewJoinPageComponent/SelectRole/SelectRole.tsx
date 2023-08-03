@@ -9,6 +9,7 @@ import {
 } from './StyledSelectRole';
 
 function SelectRole(props) {
+  // For the selected role, the list of open positions in the catagory of that role can be found in props.openPositions
   return (
     <>
       <SelectRoleContainer>
@@ -18,7 +19,7 @@ function SelectRole(props) {
         <TextRole>{props.textRole}</TextRole>
 
         <SelectRoleContainerBottom>
-          <TextRoleSituation>{`${props.openPositions} roles open`}</TextRoleSituation>
+          <TextRoleSituation>{`${props.openPositions.length} roles open`}</TextRoleSituation>
         </SelectRoleContainerBottom>
       </SelectRoleContainer>
     </>
