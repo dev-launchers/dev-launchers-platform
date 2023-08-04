@@ -1,15 +1,5 @@
 import styled from 'styled-components';
 
-export const HeadingContainer = styled.div`
-height: 15rem;
-flex-shrink: 0;
-background-color:rgba(0, 0, 0, 0.63)
-`;
-
-export const Headingtext = styled.div`
-color:#fff;
-`;
-
 export const ResultTitle = styled.div`
 width: 100%;
 text-align: center;
