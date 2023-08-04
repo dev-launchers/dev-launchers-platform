@@ -156,7 +156,6 @@ export default function NewJoinPageComponent() {
           <BtnSignUp>SIGN UP</BtnSignUp>
         </Footer>
       </BoxContainer>
-      <RoleCard/>
     </Wrapper>
   );
 }
