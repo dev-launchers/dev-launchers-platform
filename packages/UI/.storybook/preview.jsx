@@ -5,7 +5,7 @@ import GlobalStyle from "../src/styles/global";
 import theme from "../src/styles/theme";
 import * as NextImage from "next/image";
 const OriginalNextImage = NextImage.default;
-
+import "@devlaunchers/tailwind/tailwind.css"
 Object.defineProperty(NextImage, "default", {
   configurable: true,
   value: (props) => (

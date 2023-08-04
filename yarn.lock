@@ -2903,6 +2903,7 @@ __metadata:
   dependencies:
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@devlaunchers/models": "workspace:*"
+    "@devlaunchers/tailwind": "workspace:*"
     "@devlaunchers/utility": "workspace:*"
     "@storybook/addon-a11y": 7.0.22
     "@storybook/addon-actions": ^7.0.22
@@ -2959,6 +2960,7 @@ __metadata:
     storybook-react-context: ^0.6.0
     styled-components: ^5.2.1
     styled-normalize: ^8.0.7
+    tailwind-variants: 0.1.13
     ts-jest: 28.0.7
     typescript: ^4.7.4
     web-vitals: ^2.1.4
@@ -3200,7 +3202,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/tailwind@workspace:packages/tailwind-constructor":
+"@devlaunchers/tailwind@workspace:*, @devlaunchers/tailwind@workspace:packages/tailwind-constructor":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/tailwind@workspace:packages/tailwind-constructor"
   dependencies:
@@ -36471,6 +36473,24 @@ __metadata:
     axios: ^0.19.2
     lodash: ^4.17.12
   checksum: 312cc96eee9c4cbf06180dc1ad0f00905be66d33c3bf8df509eab45c4c513971a94eb0b3aa0f43677ce2b065a40e6085fce10fd9e9a6e51361f9013038b59c6f
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^1.13.2":
+  version: 1.14.0
+  resolution: "tailwind-merge@npm:1.14.0"
+  checksum: 8cf5d37f51b3b32e4bdd5544feaed34357bfba2f64f14834cc4a21ac29b0ae22d7255386467a0f1dadb3e38499389efbbabeddcd0b16571af5a0d346a4921877
+  languageName: node
+  linkType: hard
+
+"tailwind-variants@npm:0.1.13":
+  version: 0.1.13
+  resolution: "tailwind-variants@npm:0.1.13"
+  dependencies:
+    tailwind-merge: ^1.13.2
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: d58a77768038963d18285ced665bc0a6cbaea5fc6b02f0220b11b698e6fa317782994fb103fb68eacd990a440696ea0ff4e24f6064949364d2a39161699aeaab
   languageName: node
   linkType: hard
 

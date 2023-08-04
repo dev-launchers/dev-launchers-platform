@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@devlaunchers/models": "workspace:*",
+    "@devlaunchers/tailwind": "workspace:*",
     "@devlaunchers/utility": "workspace:*",
     "@storybook/addon-viewport": "7.0.22",
     "axios": "^0.27.2",
@@ -19,6 +20,7 @@
     "react-scripts": "5.0.1",
     "storybook-react-context": "^0.6.0",
     "styled-normalize": "^8.0.7",
+    "tailwind-variants": "0.1.13",
     "web-vitals": "^2.1.4",
     "zod": "3.19.1",
     "zod-formik-adapter": "1.1.1"
