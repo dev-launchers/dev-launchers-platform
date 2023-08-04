@@ -28,19 +28,25 @@ padding:15px;
 `
 
 export const Title = styled.h2`
+ font-weight: 300;
 
+ margin-bottom: 10px
 `
 export const Category = styled.h4`
+font-weight: 300;
 
 `
 export const Content = styled.p`
-font-size:14px;
+font-size:12px;
 font-weigth:200;
 
 `
 
 export const TimeContainer = styled.div`
-margin-top:10px
+margin-top:10px;
+display: flex;
+flex-direction: column;
+gap: 10px
 `
 
 export const AboutContainer = styled.div`
