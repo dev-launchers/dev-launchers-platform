@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-=======
 import React, { useEffect, useState } from 'react';
->>>>>>> 0aaa478d (setup confirmation screen)
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
@@ -98,14 +94,9 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             .toString()
             .split(',')
             .map((skill) => ({ skill: skill })),
-<<<<<<< HEAD
-          role: router.query.position as string,
-          project: router.query.slug as string,
-=======
           role: position.title as string,
           // project: router.query.project as string,
           id: position.id as string,
->>>>>>> 0aaa478d (setup confirmation screen)
         })
           .then((res) => {
             setSubmitting(false);
@@ -168,13 +159,6 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                   touched={touched['name']}
                   error={errors.name}
                 />
-<<<<<<< HEAD
-              </atoms.Box>
-              <atoms.Box flexDirection="column">
-                <atoms.Typography type="pSmall">
-                  How many hours a week would you like to volunteer?
-                </atoms.Typography>
-=======
                 <Field
                   as={organisms.FormField}
                   label="Your Email"
@@ -209,7 +193,6 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                   <atoms.Typography type="pSmall">
                     HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
                   </atoms.Typography>
->>>>>>> 0aaa478d (setup confirmation screen)
 
                   <atoms.Slider
                     min={5}
