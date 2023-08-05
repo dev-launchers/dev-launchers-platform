@@ -1,10 +1,8 @@
 import { Opportunity } from '@devlaunchers/models';
 import { useState } from 'react';
 import {
-  ApplyButton,
   BulletList,
   BulletListItem,
-  ButtonsSection,
   CloseIcon,
   ColorBox,
   ModalDescriptionSection,
@@ -16,7 +14,7 @@ import {
 import Modal from '../../DetailedPage/PositionPopupModal';
 import { RowContainer } from '../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../FormPage/signUpForm';
-import { CloseButton } from './StyledRoleModal';
+import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
 
 interface Props {
   projectSlug: string;
@@ -129,9 +127,7 @@ function ModalBottomSection({
       </RowContainer>
 
       <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
-        <ApplyButton as="a" color="DarkElectricBlue">
-          Apply
-        </ApplyButton>
+        <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
       </ButtonsSection>
 
       <Modal

@@ -1,4 +1,3 @@
-import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -251,27 +250,6 @@ export const ExpectationsListItem = styled.li`
   line-height: 9px;
 `;
 
-export const ButtonsSection = styled.div<{
-  Mobile: boolean;
-  expanded?: boolean;
-}>`
-  display: ${(props) => (props.Mobile ? 'none' : 'flex')};
-
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 20px;
-
-  align-items: center;
-  //align-self: flex-end;
-
-  @media (max-width: 760px) {
-    display: ${(props) => (props.Mobile ? 'flex' : 'none')};
-    margin: auto auto;
-    justify-content: space-evenly;
-  }
-`;
-
 export const Button = styled.button<{ color?: string }>`
   font-family: ${(props) => props.theme?.fonts?.normal};
   background-color: ${(props) =>
@@ -325,27 +303,6 @@ export const Icon = styled.svg<{ Active: boolean }>`
   stroke: ${(props) => props.theme?.colors?.White};
   height: 2rem;
   width: 2rem;
-`;
-
-export const ApplyButton = styled.a<{ color?: string }>`
-  font-family: ${(props) => props.theme?.fonts?.normal};
-  background-color: ${(props) => props.theme?.colors?.BLUE_700};
-  color: ${(props) => props.theme?.colors?.White};
-  border-radius: 0.4rem;
-  padding: 14px 24px;
-  white-space: nowrap;
-  margin: 0 3px;
-  border: none;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1rem;
-  line-height: 11px;
-  text-align: center;
-  &:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: ${({ theme }) => theme?.colors?.Argent};
-  }
 `;
 
 export const CommitmentContainer = styled.div`
@@ -407,7 +364,6 @@ export const ModalProjectSection = styled.div`
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 700;
-  line-height: 22px;
   max-width: 200px;
 
   & h4 {
@@ -415,7 +371,12 @@ export const ModalProjectSection = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
-    line-height: 22px;
+  }
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 700;
+    font-size: 25px;
   }
 
   & p {
