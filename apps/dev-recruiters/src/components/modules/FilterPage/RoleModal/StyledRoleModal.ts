@@ -8,15 +8,33 @@ export const Icon = styled.svg<{ Active: boolean }>`
   width: 2rem;
 `;
 
+export const ButtonsSection = styled.div<{
+  Mobile: boolean;
+  expanded?: boolean;
+}>`
+  display: ${(props) => (props.Mobile ? 'none' : 'flex')};
+
+  padding: 14px 24px;
+  align-items: center;
+
+  @media (max-width: 760px) {
+    display: ${(props) => (props.Mobile ? 'flex' : 'none')};
+    margin: auto auto;
+    justify-content: space-evenly;
+  }
+`;
 export const ApplyButton = styled.a<{ color?: string }>`
   font-family: ${(props) => props.theme?.fonts?.normal};
   background-color: ${(props) => props.theme?.colors?.BLUE_700};
   color: ${(props) => props.theme?.colors?.White};
   border-radius: 0.4rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   padding: 14px 24px;
   white-space: nowrap;
-  margin: 0 3px;
   border: none;
+  margin: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;

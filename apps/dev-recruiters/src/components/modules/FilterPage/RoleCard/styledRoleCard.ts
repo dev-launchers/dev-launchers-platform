@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   max-width: 350px;
-  background-color: #d9d9d9;
   border-radius: 10px;
   margin: 20px;
 
@@ -68,6 +67,12 @@ export const AboutDescription = styled.p`
   font-size: 14px;
   line-height: 1.5;
   font-weight: 200;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 `;
 
 export const Divider = styled.div`
