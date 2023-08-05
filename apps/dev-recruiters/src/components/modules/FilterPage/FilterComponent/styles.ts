@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const ContainerMain = styled.div`
-  height: 600px;
   width: 100%;
+  background-color: white;
 
   border-radius: 8px;
-  display: flex;
+  display: inline-block;
   flex-direction: column;
   justify-content: flex-start;
 `;
@@ -18,6 +18,7 @@ export const ContainerHead = styled.div`
 
   color: white;
   display: flex;
+  font-size: 16px;
   align-items: center;
   justify-content: center;
   padding-right: 120px;
@@ -31,12 +32,12 @@ export const ContainerBody = styled.div`
 `;
 
 export const ContainerRoles = styled.div`
-  height: 350px;
+  height: auto;
   background-color: white;
   padding: 0 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 8px;
 `;
 
 export const ContainerCommitment = styled.div`
