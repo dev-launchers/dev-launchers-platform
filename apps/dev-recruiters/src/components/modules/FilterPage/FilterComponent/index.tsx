@@ -14,7 +14,7 @@ function FilterComponent() {
   return (
     <>
       <ContainerMain>
-        <ContainerHead>Search FIlter</ContainerHead>
+        <ContainerHead>Search Filter</ContainerHead>
         <ContainerBody>
           <ContainerRoles>
             <RolesButtons />

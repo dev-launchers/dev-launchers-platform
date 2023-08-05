@@ -62,7 +62,7 @@ const NewJoinPage = ({ projects, opportunities }: Props) => {
   return (
     <>
       <Head>
-        <title>New Join Page</title>
+        <title>Join</title>
         <meta name="title" content="Dev Discovery"></meta>
         <meta
           name="description"

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  width: 250px;
+  max-width: 350px;
   background-color: #d9d9d9;
-  border-radius: 6px;
+  border-radius: 10px;
   margin: 20px;
 
   &:before {
@@ -25,22 +25,41 @@ export const CardContainer = styled.div`
 
 export const CardContent = styled.div`
   width: 100%;
-  background-color: #d9d9d9;
-  border-radius: 6px;
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   padding: 15px;
+  padding: 40px 30px 30px 30px;
 `;
 
 export const Title = styled.h2`
   font-weight: 300;
-  margin-bottom: 10px;
+  font-size: 32px;
 `;
 
-export const Category = styled.h4`
+export const TimeCommitment = styled.h4`
   font-weight: 300;
+  padding-top: 10px;
+  font-size: 16px;
 `;
-export const Content = styled.p`
-  font-size: 12px;
+export const Time = styled.p`
+  font-size: 14px;
+  padding-top: 10px;
   font-weight: 200;
+`;
+
+export const AboutDescription = styled.p`
+  font-size: 14px;
+  padding-top: 20px;
+  line-height: 1.5;
+  font-weight: 200;
+`;
+
+export const Divider = styled.div`
+  width: 50%;
+  margin: 8px 0px;
+  height: 1.5px;
+  background-color: #5a5a5a;
 `;
 
 export const TimeContainer = styled.div`
@@ -51,18 +70,18 @@ export const TimeContainer = styled.div`
 `;
 
 export const AboutContainer = styled.div`
-  margin-top: 12px;
+  margin: 40px 20px;
 `;
 
 export const ButtonsContainer = styled.button`
   background-color: #000;
-  color: #fff;
   border-radius: 10px;
-  padding: 0.3rem 0.6rem;
+  padding: 10px 20px;
   display: flex;
+  border: 1px solid #000;
   justify-content: center;
   align-items: center;
-  font-size: 0.8rem;
+  font-size: 12px;
   margin-top: 10px;
   margin-left: auto;
 
