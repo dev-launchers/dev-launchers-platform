@@ -4,7 +4,8 @@ export const ResultTitle = styled.div`
   width: 100%;
   text-align: center;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: bold;
+  padding: 10px 0px 50px 0px;
 `;
 
 export const ResultProjects = styled.div`
