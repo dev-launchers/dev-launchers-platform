@@ -18,8 +18,8 @@
       "unique": true
     },
     "tagline": {
-      "type": "text",
-      "required": true
+      "type": "string",
+      "required": false
     },
     "description": {
       "type": "text",
@@ -27,25 +27,7 @@
     },
     "targetAudience": {
       "type": "text",
-      "required": true
-    },
-    "hourCommitmentMin": {
-      "type": "integer",
-      "required": true
-    },
-    "hourCommitmentMax": {
-      "type": "integer",
-      "required": true
-    },
-    "skills": {
-      "type": "component",
-      "repeatable": true,
-      "component": "skills.skills"
-    },
-    "openPositions": {
-      "type": "component",
-      "repeatable": true,
-      "component": "positions.open-positions"
+      "required": false
     },
     "author": {
       "type": "relation",
@@ -53,35 +35,52 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "idea_cards"
     },
-    "difficultyLevel": {
-      "type": "enumeration",
-      "enum": [
-        "Beginner",
-        "Intermediate",
-        "Advanced"
-      ],
-      "required": true
-    },
     "comments": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "idea_card"
     },
-    "discord": {
-      "type": "string"
-    },
-    "email": {
-      "type": "email"
-    },
-    "calendly": {
-      "type": "string"
-    },
     "features": {
-      "type": "string"
+      "type": "text",
+      "required": true
     },
     "experience": {
-      "type": "string"
+      "type": "text",
+      "required": true
+    },
+    "extraInfo": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "applying",
+        "approved",
+        "archived",
+        "workshopping",
+        "deleted"
+      ],
+      "default": "workshopping",
+      "required": false
+    },
+    "involveLevel": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "minimum",
+        "medium",
+        "highly"
+      ],
+      "default": "highly",
+      "required": true
+    },
+    "ideaOwner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "ownedCards"
     }
   }
 }

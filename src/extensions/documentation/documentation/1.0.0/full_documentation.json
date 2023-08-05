@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-07-25T22:36:08.048Z"
+    "x-generation-date": "2023-07-30T13:09:42.477Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -1399,46 +1399,6 @@
                                                           "targetAudience": {
                                                             "type": "string"
                                                           },
-                                                          "hourCommitmentMin": {
-                                                            "type": "integer"
-                                                          },
-                                                          "hourCommitmentMax": {
-                                                            "type": "integer"
-                                                          },
-                                                          "skills": {
-                                                            "type": "array",
-                                                            "items": {
-                                                              "type": "object",
-                                                              "properties": {
-                                                                "id": {
-                                                                  "type": "number"
-                                                                },
-                                                                "skill": {
-                                                                  "type": "string"
-                                                                }
-                                                              }
-                                                            }
-                                                          },
-                                                          "openPositions": {
-                                                            "type": "array",
-                                                            "items": {
-                                                              "type": "object",
-                                                              "properties": {
-                                                                "id": {
-                                                                  "type": "number"
-                                                                },
-                                                                "title": {
-                                                                  "type": "string"
-                                                                },
-                                                                "description": {
-                                                                  "type": "string"
-                                                                },
-                                                                "isHidden": {
-                                                                  "type": "boolean"
-                                                                }
-                                                              }
-                                                            }
-                                                          },
                                                           "author": {
                                                             "type": "object",
                                                             "properties": {
@@ -1455,14 +1415,6 @@
                                                                 }
                                                               }
                                                             }
-                                                          },
-                                                          "difficultyLevel": {
-                                                            "type": "string",
-                                                            "enum": [
-                                                              "Beginner",
-                                                              "Intermediate",
-                                                              "Advanced"
-                                                            ]
                                                           },
                                                           "comments": {
                                                             "type": "object",
@@ -1554,21 +1506,51 @@
                                                               }
                                                             }
                                                           },
-                                                          "discord": {
-                                                            "type": "string"
-                                                          },
-                                                          "email": {
-                                                            "type": "string",
-                                                            "format": "email"
-                                                          },
-                                                          "calendly": {
-                                                            "type": "string"
-                                                          },
                                                           "features": {
                                                             "type": "string"
                                                           },
                                                           "experience": {
                                                             "type": "string"
+                                                          },
+                                                          "extraInfo": {
+                                                            "type": "string"
+                                                          },
+                                                          "status": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "submitted",
+                                                              "applying",
+                                                              "approved",
+                                                              "archived",
+                                                              "workshopping",
+                                                              "deleted"
+                                                            ]
+                                                          },
+                                                          "involveLevel": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "none",
+                                                              "minimum",
+                                                              "medium",
+                                                              "highly"
+                                                            ]
+                                                          },
+                                                          "ideaOwner": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "data": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "id": {
+                                                                    "type": "number"
+                                                                  },
+                                                                  "attributes": {
+                                                                    "type": "object",
+                                                                    "properties": {}
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
                                                           },
                                                           "createdAt": {
                                                             "type": "string",
@@ -2125,6 +2107,26 @@
                                             "schedule": {},
                                             "completedOnboarding": {
                                               "type": "boolean"
+                                            },
+                                            "ownedCards": {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "id": {
+                                                        "type": "number"
+                                                      },
+                                                      "attributes": {
+                                                        "type": "object",
+                                                        "properties": {}
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -4640,46 +4642,6 @@
                                                     "targetAudience": {
                                                       "type": "string"
                                                     },
-                                                    "hourCommitmentMin": {
-                                                      "type": "integer"
-                                                    },
-                                                    "hourCommitmentMax": {
-                                                      "type": "integer"
-                                                    },
-                                                    "skills": {
-                                                      "type": "array",
-                                                      "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "id": {
-                                                            "type": "number"
-                                                          },
-                                                          "skill": {
-                                                            "type": "string"
-                                                          }
-                                                        }
-                                                      }
-                                                    },
-                                                    "openPositions": {
-                                                      "type": "array",
-                                                      "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "id": {
-                                                            "type": "number"
-                                                          },
-                                                          "title": {
-                                                            "type": "string"
-                                                          },
-                                                          "description": {
-                                                            "type": "string"
-                                                          },
-                                                          "isHidden": {
-                                                            "type": "boolean"
-                                                          }
-                                                        }
-                                                      }
-                                                    },
                                                     "author": {
                                                       "type": "object",
                                                       "properties": {
@@ -4696,14 +4658,6 @@
                                                           }
                                                         }
                                                       }
-                                                    },
-                                                    "difficultyLevel": {
-                                                      "type": "string",
-                                                      "enum": [
-                                                        "Beginner",
-                                                        "Intermediate",
-                                                        "Advanced"
-                                                      ]
                                                     },
                                                     "comments": {
                                                       "type": "object",
@@ -4795,21 +4749,51 @@
                                                         }
                                                       }
                                                     },
-                                                    "discord": {
-                                                      "type": "string"
-                                                    },
-                                                    "email": {
-                                                      "type": "string",
-                                                      "format": "email"
-                                                    },
-                                                    "calendly": {
-                                                      "type": "string"
-                                                    },
                                                     "features": {
                                                       "type": "string"
                                                     },
                                                     "experience": {
                                                       "type": "string"
+                                                    },
+                                                    "extraInfo": {
+                                                      "type": "string"
+                                                    },
+                                                    "status": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "submitted",
+                                                        "applying",
+                                                        "approved",
+                                                        "archived",
+                                                        "workshopping",
+                                                        "deleted"
+                                                      ]
+                                                    },
+                                                    "involveLevel": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "none",
+                                                        "minimum",
+                                                        "medium",
+                                                        "highly"
+                                                      ]
+                                                    },
+                                                    "ideaOwner": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "data": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "id": {
+                                                              "type": "number"
+                                                            },
+                                                            "attributes": {
+                                                              "type": "object",
+                                                              "properties": {}
+                                                            }
+                                                          }
+                                                        }
+                                                      }
                                                     },
                                                     "createdAt": {
                                                       "type": "string",
@@ -5367,6 +5351,26 @@
                                       "completedOnboarding": {
                                         "type": "boolean"
                                       },
+                                      "ownedCards": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -5754,46 +5758,6 @@
                       },
                       "targetAudience": {
                         "type": "string"
-                      },
-                      "hourCommitmentMin": {
-                        "type": "integer"
-                      },
-                      "hourCommitmentMax": {
-                        "type": "integer"
-                      },
-                      "skills": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "skill": {
-                              "type": "string"
-                            }
-                          }
-                        }
-                      },
-                      "openPositions": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "id": {
-                              "type": "number"
-                            },
-                            "title": {
-                              "type": "string"
-                            },
-                            "description": {
-                              "type": "string"
-                            },
-                            "isHidden": {
-                              "type": "boolean"
-                            }
-                          }
-                        }
                       },
                       "author": {
                         "type": "object",
@@ -8087,6 +8051,26 @@
                                   "completedOnboarding": {
                                     "type": "boolean"
                                   },
+                                  "ownedCards": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
                                   "createdAt": {
                                     "type": "string",
                                     "format": "date-time"
@@ -8134,14 +8118,6 @@
                             }
                           }
                         }
-                      },
-                      "difficultyLevel": {
-                        "type": "string",
-                        "enum": [
-                          "Beginner",
-                          "Intermediate",
-                          "Advanced"
-                        ]
                       },
                       "comments": {
                         "type": "object",
@@ -8233,21 +8209,51 @@
                           }
                         }
                       },
-                      "discord": {
-                        "type": "string"
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      },
-                      "calendly": {
-                        "type": "string"
-                      },
                       "features": {
                         "type": "string"
                       },
                       "experience": {
                         "type": "string"
+                      },
+                      "extraInfo": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "enum": [
+                          "submitted",
+                          "applying",
+                          "approved",
+                          "archived",
+                          "workshopping",
+                          "deleted"
+                        ]
+                      },
+                      "involveLevel": {
+                        "type": "string",
+                        "enum": [
+                          "none",
+                          "minimum",
+                          "medium",
+                          "highly"
+                        ]
+                      },
+                      "ideaOwner": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -10003,46 +10009,6 @@
                                                           "targetAudience": {
                                                             "type": "string"
                                                           },
-                                                          "hourCommitmentMin": {
-                                                            "type": "integer"
-                                                          },
-                                                          "hourCommitmentMax": {
-                                                            "type": "integer"
-                                                          },
-                                                          "skills": {
-                                                            "type": "array",
-                                                            "items": {
-                                                              "type": "object",
-                                                              "properties": {
-                                                                "id": {
-                                                                  "type": "number"
-                                                                },
-                                                                "skill": {
-                                                                  "type": "string"
-                                                                }
-                                                              }
-                                                            }
-                                                          },
-                                                          "openPositions": {
-                                                            "type": "array",
-                                                            "items": {
-                                                              "type": "object",
-                                                              "properties": {
-                                                                "id": {
-                                                                  "type": "number"
-                                                                },
-                                                                "title": {
-                                                                  "type": "string"
-                                                                },
-                                                                "description": {
-                                                                  "type": "string"
-                                                                },
-                                                                "isHidden": {
-                                                                  "type": "boolean"
-                                                                }
-                                                              }
-                                                            }
-                                                          },
                                                           "author": {
                                                             "type": "object",
                                                             "properties": {
@@ -10059,14 +10025,6 @@
                                                                 }
                                                               }
                                                             }
-                                                          },
-                                                          "difficultyLevel": {
-                                                            "type": "string",
-                                                            "enum": [
-                                                              "Beginner",
-                                                              "Intermediate",
-                                                              "Advanced"
-                                                            ]
                                                           },
                                                           "comments": {
                                                             "type": "object",
@@ -10158,21 +10116,51 @@
                                                               }
                                                             }
                                                           },
-                                                          "discord": {
-                                                            "type": "string"
-                                                          },
-                                                          "email": {
-                                                            "type": "string",
-                                                            "format": "email"
-                                                          },
-                                                          "calendly": {
-                                                            "type": "string"
-                                                          },
                                                           "features": {
                                                             "type": "string"
                                                           },
                                                           "experience": {
                                                             "type": "string"
+                                                          },
+                                                          "extraInfo": {
+                                                            "type": "string"
+                                                          },
+                                                          "status": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "submitted",
+                                                              "applying",
+                                                              "approved",
+                                                              "archived",
+                                                              "workshopping",
+                                                              "deleted"
+                                                            ]
+                                                          },
+                                                          "involveLevel": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                              "none",
+                                                              "minimum",
+                                                              "medium",
+                                                              "highly"
+                                                            ]
+                                                          },
+                                                          "ideaOwner": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                              "data": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                  "id": {
+                                                                    "type": "number"
+                                                                  },
+                                                                  "attributes": {
+                                                                    "type": "object",
+                                                                    "properties": {}
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
                                                           },
                                                           "createdAt": {
                                                             "type": "string",
@@ -10729,6 +10717,26 @@
                                             "schedule": {},
                                             "completedOnboarding": {
                                               "type": "boolean"
+                                            },
+                                            "ownedCards": {
+                                              "type": "object",
+                                              "properties": {
+                                                "data": {
+                                                  "type": "array",
+                                                  "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "id": {
+                                                        "type": "number"
+                                                      },
+                                                      "attributes": {
+                                                        "type": "object",
+                                                        "properties": {}
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
                                             },
                                             "createdAt": {
                                               "type": "string",
@@ -11526,12 +11534,10 @@
           "data": {
             "required": [
               "ideaName",
-              "tagline",
               "description",
-              "targetAudience",
-              "hourCommitmentMin",
-              "hourCommitmentMax",
-              "difficultyLevel"
+              "features",
+              "experience",
+              "involveLevel"
             ],
             "type": "object",
             "properties": {
@@ -11547,24 +11553,6 @@
               "targetAudience": {
                 "type": "string"
               },
-              "hourCommitmentMin": {
-                "type": "integer"
-              },
-              "hourCommitmentMax": {
-                "type": "integer"
-              },
-              "skills": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/SkillsSkillsComponent"
-                }
-              },
-              "openPositions": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/PositionsOpenPositionsComponent"
-                }
-              },
               "author": {
                 "oneOf": [
                   {
@@ -11575,14 +11563,6 @@
                   }
                 ],
                 "example": "string or id"
-              },
-              "difficultyLevel": {
-                "type": "string",
-                "enum": [
-                  "Beginner",
-                  "Intermediate",
-                  "Advanced"
-                ]
               },
               "comments": {
                 "type": "array",
@@ -11598,21 +11578,45 @@
                   "example": "string or id"
                 }
               },
-              "discord": {
-                "type": "string"
-              },
-              "email": {
-                "type": "string",
-                "format": "email"
-              },
-              "calendly": {
-                "type": "string"
-              },
               "features": {
                 "type": "string"
               },
               "experience": {
                 "type": "string"
+              },
+              "extraInfo": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "submitted",
+                  "applying",
+                  "approved",
+                  "archived",
+                  "workshopping",
+                  "deleted"
+                ]
+              },
+              "involveLevel": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "minimum",
+                  "medium",
+                  "highly"
+                ]
+              },
+              "ideaOwner": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
               }
             }
           }
@@ -11668,12 +11672,10 @@
         "type": "object",
         "required": [
           "ideaName",
-          "tagline",
           "description",
-          "targetAudience",
-          "hourCommitmentMin",
-          "hourCommitmentMax",
-          "difficultyLevel"
+          "features",
+          "experience",
+          "involveLevel"
         ],
         "properties": {
           "ideaName": {
@@ -11687,24 +11689,6 @@
           },
           "targetAudience": {
             "type": "string"
-          },
-          "hourCommitmentMin": {
-            "type": "integer"
-          },
-          "hourCommitmentMax": {
-            "type": "integer"
-          },
-          "skills": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/SkillsSkillsComponent"
-            }
-          },
-          "openPositions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PositionsOpenPositionsComponent"
-            }
           },
           "author": {
             "type": "object",
@@ -13501,46 +13485,6 @@
                                     "targetAudience": {
                                       "type": "string"
                                     },
-                                    "hourCommitmentMin": {
-                                      "type": "integer"
-                                    },
-                                    "hourCommitmentMax": {
-                                      "type": "integer"
-                                    },
-                                    "skills": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "skill": {
-                                            "type": "string"
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "openPositions": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "title": {
-                                            "type": "string"
-                                          },
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "isHidden": {
-                                            "type": "boolean"
-                                          }
-                                        }
-                                      }
-                                    },
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -13557,14 +13501,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "difficultyLevel": {
-                                      "type": "string",
-                                      "enum": [
-                                        "Beginner",
-                                        "Intermediate",
-                                        "Advanced"
-                                      ]
                                     },
                                     "comments": {
                                       "type": "object",
@@ -13656,21 +13592,51 @@
                                         }
                                       }
                                     },
-                                    "discord": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string",
-                                      "format": "email"
-                                    },
-                                    "calendly": {
-                                      "type": "string"
-                                    },
                                     "features": {
                                       "type": "string"
                                     },
                                     "experience": {
                                       "type": "string"
+                                    },
+                                    "extraInfo": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "submitted",
+                                        "applying",
+                                        "approved",
+                                        "archived",
+                                        "workshopping",
+                                        "deleted"
+                                      ]
+                                    },
+                                    "involveLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "minimum",
+                                        "medium",
+                                        "highly"
+                                      ]
+                                    },
+                                    "ideaOwner": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -14228,6 +14194,26 @@
                       "completedOnboarding": {
                         "type": "boolean"
                       },
+                      "ownedCards": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -14276,14 +14262,6 @@
               }
             }
           },
-          "difficultyLevel": {
-            "type": "string",
-            "enum": [
-              "Beginner",
-              "Intermediate",
-              "Advanced"
-            ]
-          },
           "comments": {
             "type": "object",
             "properties": {
@@ -14304,21 +14282,51 @@
               }
             }
           },
-          "discord": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "calendly": {
-            "type": "string"
-          },
           "features": {
             "type": "string"
           },
           "experience": {
             "type": "string"
+          },
+          "extraInfo": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "submitted",
+              "applying",
+              "approved",
+              "archived",
+              "workshopping",
+              "deleted"
+            ]
+          },
+          "involveLevel": {
+            "type": "string",
+            "enum": [
+              "none",
+              "minimum",
+              "medium",
+              "highly"
+            ]
+          },
+          "ideaOwner": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  }
+                }
+              }
+            }
           },
           "createdAt": {
             "type": "string",
@@ -14387,23 +14395,6 @@
           },
           "meta": {
             "type": "object"
-          }
-        }
-      },
-      "PositionsOpenPositionsComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "title": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "isHidden": {
-            "type": "boolean"
           }
         }
       },
@@ -16320,46 +16311,6 @@
                                       "targetAudience": {
                                         "type": "string"
                                       },
-                                      "hourCommitmentMin": {
-                                        "type": "integer"
-                                      },
-                                      "hourCommitmentMax": {
-                                        "type": "integer"
-                                      },
-                                      "skills": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "object",
-                                          "properties": {
-                                            "id": {
-                                              "type": "number"
-                                            },
-                                            "skill": {
-                                              "type": "string"
-                                            }
-                                          }
-                                        }
-                                      },
-                                      "openPositions": {
-                                        "type": "array",
-                                        "items": {
-                                          "type": "object",
-                                          "properties": {
-                                            "id": {
-                                              "type": "number"
-                                            },
-                                            "title": {
-                                              "type": "string"
-                                            },
-                                            "description": {
-                                              "type": "string"
-                                            },
-                                            "isHidden": {
-                                              "type": "boolean"
-                                            }
-                                          }
-                                        }
-                                      },
                                       "author": {
                                         "type": "object",
                                         "properties": {
@@ -16376,14 +16327,6 @@
                                             }
                                           }
                                         }
-                                      },
-                                      "difficultyLevel": {
-                                        "type": "string",
-                                        "enum": [
-                                          "Beginner",
-                                          "Intermediate",
-                                          "Advanced"
-                                        ]
                                       },
                                       "comments": {
                                         "type": "object",
@@ -16475,21 +16418,51 @@
                                           }
                                         }
                                       },
-                                      "discord": {
-                                        "type": "string"
-                                      },
-                                      "email": {
-                                        "type": "string",
-                                        "format": "email"
-                                      },
-                                      "calendly": {
-                                        "type": "string"
-                                      },
                                       "features": {
                                         "type": "string"
                                       },
                                       "experience": {
                                         "type": "string"
+                                      },
+                                      "extraInfo": {
+                                        "type": "string"
+                                      },
+                                      "status": {
+                                        "type": "string",
+                                        "enum": [
+                                          "submitted",
+                                          "applying",
+                                          "approved",
+                                          "archived",
+                                          "workshopping",
+                                          "deleted"
+                                        ]
+                                      },
+                                      "involveLevel": {
+                                        "type": "string",
+                                        "enum": [
+                                          "none",
+                                          "minimum",
+                                          "medium",
+                                          "highly"
+                                        ]
+                                      },
+                                      "ideaOwner": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "object",
+                                            "properties": {
+                                              "id": {
+                                                "type": "number"
+                                              },
+                                              "attributes": {
+                                                "type": "object",
+                                                "properties": {}
+                                              }
+                                            }
+                                          }
+                                        }
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -17046,6 +17019,26 @@
                         "schedule": {},
                         "completedOnboarding": {
                           "type": "boolean"
+                        },
+                        "ownedCards": {
+                          "type": "object",
+                          "properties": {
+                            "data": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "number"
+                                  },
+                                  "attributes": {
+                                    "type": "object",
+                                    "properties": {}
+                                  }
+                                }
+                              }
+                            }
+                          }
                         },
                         "createdAt": {
                           "type": "string",
@@ -19084,46 +19077,6 @@
                                     "targetAudience": {
                                       "type": "string"
                                     },
-                                    "hourCommitmentMin": {
-                                      "type": "integer"
-                                    },
-                                    "hourCommitmentMax": {
-                                      "type": "integer"
-                                    },
-                                    "skills": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "skill": {
-                                            "type": "string"
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "openPositions": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "title": {
-                                            "type": "string"
-                                          },
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "isHidden": {
-                                            "type": "boolean"
-                                          }
-                                        }
-                                      }
-                                    },
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -19140,14 +19093,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "difficultyLevel": {
-                                      "type": "string",
-                                      "enum": [
-                                        "Beginner",
-                                        "Intermediate",
-                                        "Advanced"
-                                      ]
                                     },
                                     "comments": {
                                       "type": "object",
@@ -19239,21 +19184,51 @@
                                         }
                                       }
                                     },
-                                    "discord": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string",
-                                      "format": "email"
-                                    },
-                                    "calendly": {
-                                      "type": "string"
-                                    },
                                     "features": {
                                       "type": "string"
                                     },
                                     "experience": {
                                       "type": "string"
+                                    },
+                                    "extraInfo": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "submitted",
+                                        "applying",
+                                        "approved",
+                                        "archived",
+                                        "workshopping",
+                                        "deleted"
+                                      ]
+                                    },
+                                    "involveLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "minimum",
+                                        "medium",
+                                        "highly"
+                                      ]
+                                    },
+                                    "ideaOwner": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -19810,6 +19785,26 @@
                       "schedule": {},
                       "completedOnboarding": {
                         "type": "boolean"
+                      },
+                      "ownedCards": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -22105,46 +22100,6 @@
                                                     "targetAudience": {
                                                       "type": "string"
                                                     },
-                                                    "hourCommitmentMin": {
-                                                      "type": "integer"
-                                                    },
-                                                    "hourCommitmentMax": {
-                                                      "type": "integer"
-                                                    },
-                                                    "skills": {
-                                                      "type": "array",
-                                                      "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "id": {
-                                                            "type": "number"
-                                                          },
-                                                          "skill": {
-                                                            "type": "string"
-                                                          }
-                                                        }
-                                                      }
-                                                    },
-                                                    "openPositions": {
-                                                      "type": "array",
-                                                      "items": {
-                                                        "type": "object",
-                                                        "properties": {
-                                                          "id": {
-                                                            "type": "number"
-                                                          },
-                                                          "title": {
-                                                            "type": "string"
-                                                          },
-                                                          "description": {
-                                                            "type": "string"
-                                                          },
-                                                          "isHidden": {
-                                                            "type": "boolean"
-                                                          }
-                                                        }
-                                                      }
-                                                    },
                                                     "author": {
                                                       "type": "object",
                                                       "properties": {
@@ -22161,14 +22116,6 @@
                                                           }
                                                         }
                                                       }
-                                                    },
-                                                    "difficultyLevel": {
-                                                      "type": "string",
-                                                      "enum": [
-                                                        "Beginner",
-                                                        "Intermediate",
-                                                        "Advanced"
-                                                      ]
                                                     },
                                                     "comments": {
                                                       "type": "object",
@@ -22260,21 +22207,51 @@
                                                         }
                                                       }
                                                     },
-                                                    "discord": {
-                                                      "type": "string"
-                                                    },
-                                                    "email": {
-                                                      "type": "string",
-                                                      "format": "email"
-                                                    },
-                                                    "calendly": {
-                                                      "type": "string"
-                                                    },
                                                     "features": {
                                                       "type": "string"
                                                     },
                                                     "experience": {
                                                       "type": "string"
+                                                    },
+                                                    "extraInfo": {
+                                                      "type": "string"
+                                                    },
+                                                    "status": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "submitted",
+                                                        "applying",
+                                                        "approved",
+                                                        "archived",
+                                                        "workshopping",
+                                                        "deleted"
+                                                      ]
+                                                    },
+                                                    "involveLevel": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "none",
+                                                        "minimum",
+                                                        "medium",
+                                                        "highly"
+                                                      ]
+                                                    },
+                                                    "ideaOwner": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "data": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "id": {
+                                                              "type": "number"
+                                                            },
+                                                            "attributes": {
+                                                              "type": "object",
+                                                              "properties": {}
+                                                            }
+                                                          }
+                                                        }
+                                                      }
                                                     },
                                                     "createdAt": {
                                                       "type": "string",
@@ -22831,6 +22808,26 @@
                                       "schedule": {},
                                       "completedOnboarding": {
                                         "type": "boolean"
+                                      },
+                                      "ownedCards": {
+                                        "type": "object",
+                                        "properties": {
+                                          "data": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                "id": {
+                                                  "type": "number"
+                                                },
+                                                "attributes": {
+                                                  "type": "object",
+                                                  "properties": {}
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
                                       },
                                       "createdAt": {
                                         "type": "string",
@@ -25074,46 +25071,6 @@
                                     "targetAudience": {
                                       "type": "string"
                                     },
-                                    "hourCommitmentMin": {
-                                      "type": "integer"
-                                    },
-                                    "hourCommitmentMax": {
-                                      "type": "integer"
-                                    },
-                                    "skills": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "skill": {
-                                            "type": "string"
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "openPositions": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "title": {
-                                            "type": "string"
-                                          },
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "isHidden": {
-                                            "type": "boolean"
-                                          }
-                                        }
-                                      }
-                                    },
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -25130,14 +25087,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "difficultyLevel": {
-                                      "type": "string",
-                                      "enum": [
-                                        "Beginner",
-                                        "Intermediate",
-                                        "Advanced"
-                                      ]
                                     },
                                     "comments": {
                                       "type": "object",
@@ -25229,21 +25178,51 @@
                                         }
                                       }
                                     },
-                                    "discord": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string",
-                                      "format": "email"
-                                    },
-                                    "calendly": {
-                                      "type": "string"
-                                    },
                                     "features": {
                                       "type": "string"
                                     },
                                     "experience": {
                                       "type": "string"
+                                    },
+                                    "extraInfo": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "submitted",
+                                        "applying",
+                                        "approved",
+                                        "archived",
+                                        "workshopping",
+                                        "deleted"
+                                      ]
+                                    },
+                                    "involveLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "minimum",
+                                        "medium",
+                                        "highly"
+                                      ]
+                                    },
+                                    "ideaOwner": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -25800,6 +25779,26 @@
                       "schedule": {},
                       "completedOnboarding": {
                         "type": "boolean"
+                      },
+                      "ownedCards": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -27831,46 +27830,6 @@
                                     "targetAudience": {
                                       "type": "string"
                                     },
-                                    "hourCommitmentMin": {
-                                      "type": "integer"
-                                    },
-                                    "hourCommitmentMax": {
-                                      "type": "integer"
-                                    },
-                                    "skills": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "skill": {
-                                            "type": "string"
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "openPositions": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "title": {
-                                            "type": "string"
-                                          },
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "isHidden": {
-                                            "type": "boolean"
-                                          }
-                                        }
-                                      }
-                                    },
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -27887,14 +27846,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "difficultyLevel": {
-                                      "type": "string",
-                                      "enum": [
-                                        "Beginner",
-                                        "Intermediate",
-                                        "Advanced"
-                                      ]
                                     },
                                     "comments": {
                                       "type": "object",
@@ -27986,21 +27937,51 @@
                                         }
                                       }
                                     },
-                                    "discord": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string",
-                                      "format": "email"
-                                    },
-                                    "calendly": {
-                                      "type": "string"
-                                    },
                                     "features": {
                                       "type": "string"
                                     },
                                     "experience": {
                                       "type": "string"
+                                    },
+                                    "extraInfo": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "submitted",
+                                        "applying",
+                                        "approved",
+                                        "archived",
+                                        "workshopping",
+                                        "deleted"
+                                      ]
+                                    },
+                                    "involveLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "minimum",
+                                        "medium",
+                                        "highly"
+                                      ]
+                                    },
+                                    "ideaOwner": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -28557,6 +28538,26 @@
                       "schedule": {},
                       "completedOnboarding": {
                         "type": "boolean"
+                      },
+                      "ownedCards": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
                       },
                       "createdAt": {
                         "type": "string",
@@ -29738,6 +29739,23 @@
           },
           "meta": {
             "type": "object"
+          }
+        }
+      },
+      "PositionsOpenPositionsComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isHidden": {
+            "type": "boolean"
           }
         }
       },
@@ -31068,46 +31086,6 @@
                                           "targetAudience": {
                                             "type": "string"
                                           },
-                                          "hourCommitmentMin": {
-                                            "type": "integer"
-                                          },
-                                          "hourCommitmentMax": {
-                                            "type": "integer"
-                                          },
-                                          "skills": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "skill": {
-                                                  "type": "string"
-                                                }
-                                              }
-                                            }
-                                          },
-                                          "openPositions": {
-                                            "type": "array",
-                                            "items": {
-                                              "type": "object",
-                                              "properties": {
-                                                "id": {
-                                                  "type": "number"
-                                                },
-                                                "title": {
-                                                  "type": "string"
-                                                },
-                                                "description": {
-                                                  "type": "string"
-                                                },
-                                                "isHidden": {
-                                                  "type": "boolean"
-                                                }
-                                              }
-                                            }
-                                          },
                                           "author": {
                                             "type": "object",
                                             "properties": {
@@ -31124,14 +31102,6 @@
                                                 }
                                               }
                                             }
-                                          },
-                                          "difficultyLevel": {
-                                            "type": "string",
-                                            "enum": [
-                                              "Beginner",
-                                              "Intermediate",
-                                              "Advanced"
-                                            ]
                                           },
                                           "comments": {
                                             "type": "object",
@@ -31223,21 +31193,51 @@
                                               }
                                             }
                                           },
-                                          "discord": {
-                                            "type": "string"
-                                          },
-                                          "email": {
-                                            "type": "string",
-                                            "format": "email"
-                                          },
-                                          "calendly": {
-                                            "type": "string"
-                                          },
                                           "features": {
                                             "type": "string"
                                           },
                                           "experience": {
                                             "type": "string"
+                                          },
+                                          "extraInfo": {
+                                            "type": "string"
+                                          },
+                                          "status": {
+                                            "type": "string",
+                                            "enum": [
+                                              "submitted",
+                                              "applying",
+                                              "approved",
+                                              "archived",
+                                              "workshopping",
+                                              "deleted"
+                                            ]
+                                          },
+                                          "involveLevel": {
+                                            "type": "string",
+                                            "enum": [
+                                              "none",
+                                              "minimum",
+                                              "medium",
+                                              "highly"
+                                            ]
+                                          },
+                                          "ideaOwner": {
+                                            "type": "object",
+                                            "properties": {
+                                              "data": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "id": {
+                                                    "type": "number"
+                                                  },
+                                                  "attributes": {
+                                                    "type": "object",
+                                                    "properties": {}
+                                                  }
+                                                }
+                                              }
+                                            }
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -31794,6 +31794,26 @@
                             "schedule": {},
                             "completedOnboarding": {
                               "type": "boolean"
+                            },
+                            "ownedCards": {
+                              "type": "object",
+                              "properties": {
+                                "data": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "id": {
+                                        "type": "number"
+                                      },
+                                      "attributes": {
+                                        "type": "object",
+                                        "properties": {}
+                                      }
+                                    }
+                                  }
+                                }
+                              }
                             },
                             "createdAt": {
                               "type": "string",
@@ -34418,46 +34438,6 @@
                                     "targetAudience": {
                                       "type": "string"
                                     },
-                                    "hourCommitmentMin": {
-                                      "type": "integer"
-                                    },
-                                    "hourCommitmentMax": {
-                                      "type": "integer"
-                                    },
-                                    "skills": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "skill": {
-                                            "type": "string"
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "openPositions": {
-                                      "type": "array",
-                                      "items": {
-                                        "type": "object",
-                                        "properties": {
-                                          "id": {
-                                            "type": "number"
-                                          },
-                                          "title": {
-                                            "type": "string"
-                                          },
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "isHidden": {
-                                            "type": "boolean"
-                                          }
-                                        }
-                                      }
-                                    },
                                     "author": {
                                       "type": "object",
                                       "properties": {
@@ -34474,14 +34454,6 @@
                                           }
                                         }
                                       }
-                                    },
-                                    "difficultyLevel": {
-                                      "type": "string",
-                                      "enum": [
-                                        "Beginner",
-                                        "Intermediate",
-                                        "Advanced"
-                                      ]
                                     },
                                     "comments": {
                                       "type": "object",
@@ -34573,21 +34545,51 @@
                                         }
                                       }
                                     },
-                                    "discord": {
-                                      "type": "string"
-                                    },
-                                    "email": {
-                                      "type": "string",
-                                      "format": "email"
-                                    },
-                                    "calendly": {
-                                      "type": "string"
-                                    },
                                     "features": {
                                       "type": "string"
                                     },
                                     "experience": {
                                       "type": "string"
+                                    },
+                                    "extraInfo": {
+                                      "type": "string"
+                                    },
+                                    "status": {
+                                      "type": "string",
+                                      "enum": [
+                                        "submitted",
+                                        "applying",
+                                        "approved",
+                                        "archived",
+                                        "workshopping",
+                                        "deleted"
+                                      ]
+                                    },
+                                    "involveLevel": {
+                                      "type": "string",
+                                      "enum": [
+                                        "none",
+                                        "minimum",
+                                        "medium",
+                                        "highly"
+                                      ]
+                                    },
+                                    "ideaOwner": {
+                                      "type": "object",
+                                      "properties": {
+                                        "data": {
+                                          "type": "object",
+                                          "properties": {
+                                            "id": {
+                                              "type": "number"
+                                            },
+                                            "attributes": {
+                                              "type": "object",
+                                              "properties": {}
+                                            }
+                                          }
+                                        }
+                                      }
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -35144,6 +35146,26 @@
                       "schedule": {},
                       "completedOnboarding": {
                         "type": "boolean"
+                      },
+                      "ownedCards": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
                       },
                       "createdAt": {
                         "type": "string",
