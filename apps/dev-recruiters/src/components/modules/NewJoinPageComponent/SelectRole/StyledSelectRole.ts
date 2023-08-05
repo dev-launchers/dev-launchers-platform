@@ -11,8 +11,8 @@ export const SelectRoleContainer = styled.div`
   background-color: white;
   border-radius: 16px;
   margin: 0 20px;
-  box-shadow: 0 10px 18px 10px #7f7e7f40;
-  padding: 20px 0;
+  box-shadow: 0 10px 18px 10px #7f7e7f25;
+  padding: 25px 0;
   cursor: pointer;
 
   &:hover {
@@ -41,13 +41,16 @@ export const IconImage = styled.img`
   display: inline;
 `;
 
-export const TextRole = styled.text`
-  font-size: 35px;
-  font-weight: bold;
+export const TextRole = styled.div`
+  font-size: 40px;
+  font-family: 'Abel', sans-serif;
 `;
 
 export const SelectRoleContainerBottom = styled.div`
   height: 30px;
 `;
 
-export const TextRoleSituation = styled.text``;
+export const TextRoleSituation = styled.div`
+  font-size: 16px;
+  font-family: 'Nunito Sans', sans-serif;
+`;
