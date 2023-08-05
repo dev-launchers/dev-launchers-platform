@@ -1,5 +1,10 @@
 import { GradientLine } from '../../FormPage/styledSignupForm';
+import { ApplyButton } from '../PositionCard/StyledPositionCard';
 import Modal from '../PositionPopupModal/Modal';
+import {
+  ConfirmationModalSection,
+  confirmationModalStyles,
+} from './StyledConfirmationModal';
 
 interface Props {
   showModal: Boolean;
@@ -11,37 +16,29 @@ const ConfirmationModal = ({
   handleOpenModal,
   handleCloseModal,
 }: Props) => {
-  return <ModalContent />;
   return (
     <Modal
-      preventScroll={true}
-      customModalStyles={customModalStyles}
-      showModal={showModal}
+      modalIsOpen={showModal}
+      closeModal={handleCloseModal}
+      customModalStyles={confirmationModalStyles}
       handleOpenModal={handleOpenModal}
-      handleCloseModal={handleCloseModal}
-      modalContent={<ModalContent />}
-    >
-      {/* <ModalContent /> */}
-    </Modal>
-  );
-};
+      modalContent={
+        <ConfirmationModalSection>
+          <h3>Thank you!</h3>
+          <GradientLine height={'5px'} />
+          <p>
+            Your application has been received and is now being reviewed. After
+            the product owner reviews your application, they will reach out
+            through the email address you have provided.
+          </p>
 
-const ModalContent = () => {
-  return (
-    <div>
-      <h1>Thank you!</h1>
-      <GradientLine />
-      <h1>Thank!</h1>
-    </div>
+          <ApplyButton color="DarkElectricBlue" onClick={handleCloseModal}>
+            Return to search results
+          </ApplyButton>
+        </ConfirmationModalSection>
+      }
+    />
   );
-};
-
-const customModalStyles = {
-  content: {
-    width: '2px',
-    height: '3px',
-    margin: 'auto',
-  },
 };
 
 export default ConfirmationModal;
