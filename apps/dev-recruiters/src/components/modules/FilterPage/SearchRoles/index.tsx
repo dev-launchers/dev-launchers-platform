@@ -15,11 +15,7 @@ function SearchRole() {
   return (
     <>
       {selectedRole.map((role, index) => (
-        <RoleCard
-          key={index}
-          title={role.title}
-          time={role.commitmentHoursPerWeek}
-        ></RoleCard>
+        <RoleCard key={index} role={role}></RoleCard>
       ))}
     </>
   );
