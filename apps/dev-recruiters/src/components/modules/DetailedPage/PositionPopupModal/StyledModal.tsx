@@ -6,7 +6,6 @@ export const ModalContent = styled.div`
   font-family: 'Abel', sans-serif;
 `;
 
-// Modal set up
 export const customModalStyles = {
   content: {
     position: 'absolute',
