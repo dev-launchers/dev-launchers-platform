@@ -1,3 +1,5 @@
+import { Opportunity } from '@devlaunchers/models/opportunity';
+import { Project } from '@devlaunchers/models/project';
 import React from 'react';
 import BoxContainer from '../../common/BoxContainer';
 import {
@@ -7,6 +9,7 @@ import {
   HeadingText,
   Wrapper,
 } from '../NewJoinPageComponent/StyledNewJoinPage';
+import FilterComponent from './FilterComponent';
 import SearchRole from './SearchRoles';
 import {
   FilterConatiner,
@@ -15,9 +18,6 @@ import {
   ResultTitle,
   RolesContainer,
 } from './styledFilterPage';
-import FilterComponent from './FilterComponent';
-import { Opportunity } from '@devlaunchers/models/opportunity';
-import { Project } from '@devlaunchers/models/project';
 
 export interface FilteringComponentProps {
   projects: Project[];
@@ -32,7 +32,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={20}>
+      <BoxContainer>
         <HeadingContainer>
           <HeadingText>
             Want to level up your tech skills and build world-changing products?
@@ -46,7 +46,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
           <HeadingSubText>Check out our open roles below!</HeadingSubText>
         </HeadingSubContainer>
       </BoxContainer>
-      <BoxContainer paddingVertical={20} paddingHorizontal={20}>
+      <BoxContainer paddingVertical={10} paddingHorizontal={20}>
         <ResultTitle>Search Result</ResultTitle>
         <ResultContainer>
           <FilterConatiner>

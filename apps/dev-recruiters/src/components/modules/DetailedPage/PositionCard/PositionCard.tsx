@@ -1,13 +1,22 @@
-import Link from 'next/link';
-import { useRef, useState } from 'react';
 import { Opportunity } from '@devlaunchers/models';
+import Link from 'next/link';
+import { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
+import SignUpForm from '../../FormPage/signUpForm';
+import Modal from '../PositionPopupModal/Modal';
+import { RowContainer } from '../styledProjectDetails';
 import {
   ApplyButton,
+  BulletList,
+  BulletListItem,
   Button,
   ButtonsSection,
+  CloseButton,
+  CloseIcon,
+  ColorBox,
+  CommitmentContainer,
   CommitmentSection,
   Container,
   DescriptionSection,
@@ -16,6 +25,8 @@ import {
   ExpectationsSection,
   Icon,
   LikeButton,
+  ModalDescriptionSection,
+  ModalProjectSection,
   OpportunityDetailsContainer,
   OpportunityInfoContainer,
   PositionDetailsMobile,
@@ -24,20 +35,7 @@ import {
   TagsListItem,
   TagsSection,
   TitleSection,
-  CommitmentContainer,
-  ModalDescriptionSection,
-  ModalProjectSection,
-  BulletListItem,
-  BulletList,
-  CloseButton,
-  CloseIcon,
-  ColorRow,
-  ColorBox,
 } from './StyledPositionCard';
-import Modal from '../PositionPopupModal/Modal';
-import { RowContainer } from '../styledProjectDetails';
-import SignUpForm from '../../FormPage/signUpForm';
-import React from 'react';
 
 interface Props {
   projectSlug: string;
@@ -56,12 +54,6 @@ export default function PositionCard({ position, projectSlug }: Props) {
 
   const handleCloseModal = () => {
     setShowModal(false);
-  };
-  const customModalStyles = {
-    content: {
-      width: '50px', // Set the desired width
-      height: '10px', // Set the desired height
-    },
   };
 
   return (
@@ -203,7 +195,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               closeModal={handleCloseModal}
               handleOpenModal={handleOpenModal}
               modalContent={
-                <ModalContent
+                <ProjectDetailsModal
                   position={position}
                   projectSlug={projectSlug}
                   handleCloseModal={handleCloseModal}
@@ -229,7 +221,11 @@ export default function PositionCard({ position, projectSlug }: Props) {
   );
 }
 
-function ModalContent({ position, handleCloseModal, projectSlug }: Props) {
+function ProjectDetailsModal({
+  position,
+  handleCloseModal,
+  projectSlug,
+}: Props) {
   return (
     <div>
       <ColorBox />

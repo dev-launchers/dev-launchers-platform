@@ -46,5 +46,7 @@ export const ContainerCommitment = styled.div`
 `;
 
 export const CommitmentText = styled.div`
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 10px;
 `;

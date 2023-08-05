@@ -1,31 +1,11 @@
-import { useCallback, useEffect, useState } from 'react';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
-import { ProjectType } from '@components/modules/OpportunitiesAggregator/filtering/projectEnums';
-import ProjectsList from '@components/modules/OpportunitiesAggregator/filtering/ProjectsList/ProjectsList';
-import { EnumToArray } from '@devlaunchers/utility/enumToArray';
-import {
-  FiltersWrapper,
-  SectionTitle,
-  Container,
-  ChipsList,
-  ChipsListItem,
-  DropDownContainer,
-  Section,
-  CommitmentSection,
-  FilterMenuButton,
-  Wrapper,
-} from '../../../../components/modules/OpportunitiesAggregator/filtering/FilteringComponent/StyledFilteringComponent';
+import { useEffect, useState } from 'react';
+import { Wrapper } from '../../../../components/modules/OpportunitiesAggregator/filtering/FilteringComponent/StyledFilteringComponent';
 
 import { Opportunity } from '@devlaunchers/models/opportunity';
-import { SkillLevel } from '@devlaunchers/models/level';
 
-import SearchComponent from '../../../../components/modules/OpportunitiesAggregator/filtering/SearchComponent/SearchComponent';
-import Slider from '../../../../components/common/Slider/Slider';
-import FiltersMenu from '../../../../components/modules/OpportunitiesAggregator/filtering/FilteringComponent/FiltersMenu/FiltersMenu';
-import styled from 'styled-components';
 import RolesList from '../RolesList';
 import useProjectRole from '../UseProjectRole';
-import CheckboxDropdown from '../../../../components/common/CheckboxDropdown/CheckboxDropdown';
 
 export interface FilteringComponentProps {
   projects: Project[];
@@ -57,6 +37,7 @@ export default function RolesComponent({
     resetFilters,
   } = useProjectRole();
 
+  console.log('here', filteredProjects);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);
