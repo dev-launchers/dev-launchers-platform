@@ -7,6 +7,7 @@ export const RoleContainerBody = styled.div`
   justify-content: flex-start;
   flex-wrap: wrap;
   padding: 36px;
+  margin-bottom: 50px;
 `;
 
 export const RoleContainer = styled.div`

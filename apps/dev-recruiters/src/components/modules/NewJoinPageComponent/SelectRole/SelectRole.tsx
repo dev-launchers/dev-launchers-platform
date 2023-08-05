@@ -9,10 +9,11 @@ import {
 } from './StyledSelectRole';
 
 function SelectRole(props) {
+  const { onClick } = props;
   // For the selected role, the list of open positions in the catagory of that role can be found in props.openPositions
   return (
     <>
-      <SelectRoleContainer>
+      <SelectRoleContainer onClick={onClick}>
         <AreaIconImage>
           <IconImage width={props.width} src={props.src} />
         </AreaIconImage>
