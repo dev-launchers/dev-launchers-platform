@@ -140,9 +140,9 @@ export const Tooltip = styled.p`
   }
 `;
 
-export const GradientLine = styled.div`
+export const GradientLine = styled.div<{ height?: string }>`
   width: 100%;
-  height: 10px;
+  height: ${(props) => props.height ?? '10px'};
   border: none;
   margin: 20px 0px 0px 0px;
   background: linear-gradient(

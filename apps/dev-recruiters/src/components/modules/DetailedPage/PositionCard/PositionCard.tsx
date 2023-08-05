@@ -4,7 +4,6 @@ import { Opportunity } from '@devlaunchers/models';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import './modal_style.css';
 import {
   ApplyButton,
   Button,
@@ -200,22 +199,12 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <Button color="SonicSilver" onClick={handleOpenModal}>
               Project details
             </Button>
-            <Modal
-              preventScroll={true}
-              handleCloseModal={handleCloseModal}
-              modalIsOpen={showModal}
+            {/* <ConfirmationModal
+              showModal={showModal}
               handleOpenModal={handleOpenModal}
-              onRequestClose={handleCloseModal}
-              contentLabel="Confirmation Modal"
-            >
-              <ConfirmationModal
-                handleCloseModal={handleCloseModal}
-                showModal={true}
-                handleOpenModal={handleOpenModal}
-              />
-            </Modal>
-
-            {/* <Modal
+              handleCloseModal={handleCloseModal}
+            /> */}
+            <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
               handleOpenModal={handleOpenModal}
@@ -226,7 +215,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
                   handleCloseModal={handleCloseModal}
                 />
               }
-            /> */}
+            />
             <Button
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
