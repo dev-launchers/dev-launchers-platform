@@ -1,18 +1,15 @@
 // components/CollapsibleContainer.tsx
-import React from 'react';
-import SelectRole from '../SelectRole';
-import DeveloperMode from '../../../../../images/icons/Developer-mode.png';
-import PopularMan from '../../../../../images/icons/Popular-Man.png';
-import DesignServices from '../../../../../images/icons/Design-services.png';
-import CaseStudy from '../../../../../images/icons/Case-Study.png';
-import SourceCode from '../../../../../images/icons/Source-Code.png';
-import FloorPlan from '../../../../../images/icons/Floor-Plan.png';
-import CollapsibleSection from '../CollapsibleSection';
-import { RoleContainer, RoleContainerBody } from './styles';
-import { useOpportunitiesContext } from '../../../../../contexts/SelectRoleContext';
-import Link from 'next/link';
-import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
+import React from 'react';
+import CaseStudy from '../../../../../images/icons/Case-Study.png';
+import DesignServices from '../../../../../images/icons/Design-services.png';
+import DeveloperMode from '../../../../../images/icons/Developer-mode.png';
+import FloorPlan from '../../../../../images/icons/Floor-Plan.png';
+import PopularMan from '../../../../../images/icons/Popular-Man.png';
+import SourceCode from '../../../../../images/icons/Source-Code.png';
+import CollapsibleSection from '../CollapsibleSection';
+import SelectRole from '../SelectRole';
+import { RoleContainer, RoleContainerBody } from './styles';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -25,6 +22,9 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
 }) => {
   function handleRoleClick(role) {
     const roleJsonString = JSON.stringify(role);
+
+    console.log('here', openPositions);
+
     localStorage.setItem('selectedRole', roleJsonString);
     router.push('/join/filter');
 
