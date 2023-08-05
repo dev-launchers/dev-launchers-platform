@@ -55,12 +55,6 @@ export default function PositionCard({ position, projectSlug }: Props) {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-  const customModalStyles = {
-    content: {
-      width: '50px', // Set the desired width
-      height: '10px', // Set the desired height
-    },
-  };
 
   return (
     <Container>

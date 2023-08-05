@@ -1,20 +1,30 @@
-import React from 'react';
+import { useState } from 'react';
+import Modal from '../../DetailedPage/PositionPopupModal';
+import RoleDetailsModal from '../RoleModal/RoleDetailsModal';
 import {
   AboutContainer,
+  AboutDescription,
   ButtonsContainer,
   CardContainer,
   CardContent,
-  TimeCommitment,
-  Time,
   Divider,
+  Time,
+  TimeCommitment,
   TimeContainer,
   Title,
-  AboutDescription,
 } from './styledRoleCard';
-import Link from 'next/link';
 
 const RoleCard = (props) => {
-  console.log(props);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   return (
     <CardContainer>
       <CardContent>
@@ -29,11 +39,21 @@ const RoleCard = (props) => {
           <TimeCommitment>ABOUT THE ROLE</TimeCommitment>
           <AboutDescription>{props.role.description}</AboutDescription>
         </AboutContainer>
-        <ButtonsContainer>
-          <Link href={`join/detail`} passHref>
-            More Details
-          </Link>
+        <ButtonsContainer onClick={handleOpenModal}>
+          More Details
         </ButtonsContainer>
+        <Modal
+          modalIsOpen={showModal}
+          closeModal={handleCloseModal}
+          handleOpenModal={handleOpenModal}
+          modalContent={
+            <RoleDetailsModal
+              position={props.role}
+              projectSlug={'projectSlug'}
+              handleCloseModal={handleCloseModal}
+            />
+          }
+        />
       </CardContent>
     </CardContainer>
   );

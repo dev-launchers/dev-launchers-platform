@@ -14,6 +14,16 @@ import { useOpportunitiesContext } from '../../../../../contexts/SelectRoleConte
 import Link from 'next/link';
 import { useHistory } from 'react-router-dom';
 import { useRouter } from 'next/router';
+import React from 'react';
+import CaseStudy from '../../../../../images/icons/Case-Study.png';
+import DesignServices from '../../../../../images/icons/Design-services.png';
+import DeveloperMode from '../../../../../images/icons/Developer-mode.png';
+import FloorPlan from '../../../../../images/icons/Floor-Plan.png';
+import PopularMan from '../../../../../images/icons/Popular-Man.png';
+import SourceCode from '../../../../../images/icons/Source-Code.png';
+import CollapsibleSection from '../CollapsibleSection';
+import SelectRole from '../SelectRole';
+import { RoleContainer, RoleContainerBody } from './styles';
 
 interface CollapsibleContainerProps {
   openPositions: {

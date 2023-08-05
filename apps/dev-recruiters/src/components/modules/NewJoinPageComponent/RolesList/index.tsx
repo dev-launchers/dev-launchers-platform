@@ -5,6 +5,7 @@ import { List } from '../../../../components/modules/OpportunitiesAggregator/fil
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
+import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
 
 interface Props {
   projects?: ProjectLite[];
@@ -77,7 +78,6 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
     setOpenPositions(separateRoles(allOpportunities));
   }, [projects]);
 
-  console.log(openPositions['ProductLead']);
   return (
     <List>
       <CollapsibleContainer openPositions={openPositions} />
