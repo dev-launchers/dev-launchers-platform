@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const CommitmentText = styled.div``;
+export const CommitmentText = styled.div`
+  font-size: 14px;
+`;
 
 export const TimeCommitment = styled.div`
   display: flex;

@@ -5,13 +5,13 @@ export const ResultTitle = styled.div`
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  padding: 10px 0px 50px 0px;
+  padding: 10px 0px 30px 0px;
 `;
 
 export const ResultProjects = styled.div`
   width: 100%;
   padding-left: 15px;
-  font-size: 2rem;
+  font-size: 30px;
   font-weight: 500;
 `;
 

@@ -1,9 +1,9 @@
 import { ProjectLite } from '@devlaunchers/models/project';
-import { List } from '../../../../components/modules/OpportunitiesAggregator/filtering/ProjectsList/StyledProjectsList';
 import { useEffect, useState } from 'react';
+import { List } from '../../../../components/modules/OpportunitiesAggregator/filtering/ProjectsList/StyledProjectsList';
 
-import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
+import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
 
 interface Props {
   projects?: ProjectLite[];
@@ -28,7 +28,7 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
     VoulunteerCordinator: [],
     SocialMediaManager: [],
   });
-
+  console.log(projects);
   // Extract all opportunities from the projects and flatten them into a single array
   const allOpportunities = projects.flatMap((project) => project.opportunities);
 
@@ -76,7 +76,6 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
     setOpenPositions(separateRoles(allOpportunities));
   }, [projects]);
 
-  console.log(openPositions['ProductLead']);
   return (
     <List>
       <CollapsibleContainer openPositions={openPositions} />

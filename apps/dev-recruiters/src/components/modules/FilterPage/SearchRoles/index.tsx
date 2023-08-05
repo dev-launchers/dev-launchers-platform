@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import RoleCard from '../RoleCard';
 
 function SearchRole() {
@@ -9,8 +8,6 @@ function SearchRole() {
     const selectedRole = JSON.parse(roleJsonString);
     setSelectedRole(selectedRole);
   }, []);
-
-  console.log(selectedRole);
 
   return (
     <>
