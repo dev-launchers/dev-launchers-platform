@@ -18,9 +18,11 @@ export const ResultProjects = styled.div`
 export const ResultContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
   padding: 2rem;
-  display: flex;
-  justify-content: space-around;
+  gap: 1rem; /* Add some gap between items */
+  justify-content: center; /* Center items horizontally */
+  align-items: flex-start; /* Align items at the start vertically */
 `;
 
 export const FilterConatiner = styled.div`
@@ -35,5 +37,4 @@ export const RolesContainer = styled.div`
   width: 65%;
   display: flex;
   flex-wrap: wrap;
-  height: 400px;
 `;
