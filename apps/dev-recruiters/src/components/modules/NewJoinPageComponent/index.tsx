@@ -7,6 +7,11 @@ import {
   HeadingText,
   Wrapper,
   AreaImage,
+  HeadingSubContainer,
+  SelectRoleContainer,
+  SelectRoleText,
+  FooterFirstText,
+  FooterSecondText,
 } from './StyledNewJoinPage';
 import BoxContainer from '../../common/BoxContainer';
 import ContainerImage from './ContainerImage/containerImage';
@@ -23,37 +28,46 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
 }) => {
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={60}>
+      <BoxContainer paddingVertical={20}>
         <HeadingContainer>
           <HeadingText>
             Want to level up your tech skills and build world-changing products?
           </HeadingText>
         </HeadingContainer>
-      </BoxContainer>
-      <BoxContainer paddingVertical={20}>
-        <HeadingContainer>
+        <HeadingSubContainer>
           <HeadingSubText>
-            <h1>
-              Join our collaborative, global team as we build the future of
-              technology.
-            </h1>
-            <h1>Check out our open roles below!</h1>
+            Join our collaborative, global team as we build the future of
+            technology.
           </HeadingSubText>
-          <AreaImage>
-            <ContainerImage src={JoinPLeft} width="100%" loading="lazy" />
-            <ContainerImage src={JoinPRight} width="100%" loading="lazy" />
-          </AreaImage>
-        </HeadingContainer>
+          <HeadingSubText>Check out our open roles below!</HeadingSubText>
+        </HeadingSubContainer>
       </BoxContainer>
 
-      <BoxContainer paddingHorizontal={85} paddingVertical={32}>
+      <AreaImage>
+        <ContainerImage src={JoinPLeft} width="100%" loading="lazy" />
+        <ContainerImage src={JoinPRight} width="100%" loading="lazy" />
+      </AreaImage>
+
+      <BoxContainer paddingVertical={75}>
+        <SelectRoleContainer>
+          <SelectRoleText>
+            Select the role that you're interested in:
+          </SelectRoleText>
+        </SelectRoleContainer>
+      </BoxContainer>
+
+      <BoxContainer paddingHorizontal={85}>
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 
-      <BoxContainer paddingVertical={20} paddingHorizontal={50}>
+      <BoxContainer paddingVertical={0} paddingHorizontal={50}>
         <Footer>
-          <h1>Didn't find what you were looking for?</h1>
-          <h3>Create an account to be notified when more roles open up!</h3>
+          <FooterFirstText>
+            Didn't find what you were looking for?
+          </FooterFirstText>
+          <FooterSecondText>
+            Create an account to be notified when more roles open up!
+          </FooterSecondText>
           <BtnSignUp
             as="a"
             href={
