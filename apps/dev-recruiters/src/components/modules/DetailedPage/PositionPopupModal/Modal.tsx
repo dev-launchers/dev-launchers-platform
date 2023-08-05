@@ -20,12 +20,12 @@ export default function Modal(props) {
 
   return (
     <ReactModal
-      isOpen={props.modalIsOpen ? props.modalIsOpen : modalIsOpen}
-      onRequestOpen={props.openModal ? props.openModal : openModal}
-      onRequestClose={props.closeModal ? props.closeModal : closeModal}
-      style={customModalStyles}
-      onAfterOpen={afterOpenModal}
-      preventScroll={true}
+      isOpen={props.modalIsOpen ?? modalIsOpen}
+      onRequestOpen={props.openModal ?? openModal}
+      onRequestClose={props.closeModal ?? closeModal}
+      style={props.customModalStyles ?? customModalStyles}
+      onAfterOpen={props.afterOpenModal ?? afterOpenModal}
+      preventScroll={props.preventScroll ?? true}
       contentLabel="Position Popup Modal"
     >
       <ModalContent>
