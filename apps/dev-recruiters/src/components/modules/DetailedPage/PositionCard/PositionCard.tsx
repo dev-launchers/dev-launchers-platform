@@ -201,17 +201,9 @@ export default function PositionCard({ position, projectSlug }: Props) {
               handleCloseModal={handleCloseModal}
               modalIsOpen={showModal}
               handleOpenModal={handleOpenModal}
-              onRequestClose={handleCloseModal}
-              contentLabel="Confirmation Modal"
-            >
-              <ConfirmationModal
-                handleCloseModal={handleCloseModal}
-                showModal={true}
-                handleOpenModal={handleOpenModal}
-              />
-            </Modal>
-
-            {/* <Modal
+              handleCloseModal={handleCloseModal}
+            /> */}
+            <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
               handleOpenModal={handleOpenModal}
@@ -222,7 +214,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
                   handleCloseModal={handleCloseModal}
                 />
               }
-            /> */}
+            />
             <Button
               color="SonicSilver"
               onClick={() => setIsExpanded((prev) => !prev)}
