@@ -37,9 +37,7 @@ import {
 import Modal from '../PositionPopupModal/Modal';
 import { RowContainer } from '../styledProjectDetails';
 import SignUpForm from '../../FormPage/signUpForm';
-import ConfirmationModal from '../Confirmation/ConfirmationModal';
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 interface Props {
   projectSlug: string;
@@ -199,11 +197,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <Button color="SonicSilver" onClick={handleOpenModal}>
               Project details
             </Button>
-            {/* <ConfirmationModal
-              showModal={showModal}
-              handleOpenModal={handleOpenModal}
-              handleCloseModal={handleCloseModal}
-            /> */}
+
             <Modal
               modalIsOpen={showModal}
               closeModal={handleCloseModal}
@@ -339,22 +333,18 @@ function ModalBottomSection({
         )}
       </RowContainer>
 
-      {/* <Link href={`${projectSlug}/apply?position=${position.title}`} passHref> */}
       <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
         <ApplyButton as="a" color="DarkElectricBlue">
           Apply
         </ApplyButton>
       </ButtonsSection>
-      {/* </Link> */}
 
       <Modal
         modalIsOpen={showApplyModal}
+        handleOpenModal={handleOpenApplyModal}
         closeModal={handleCloseApplyModal}
         modalContent={
-          <SignUpForm
-            handleCloseModal={handleCloseApplyModal}
-            position={position}
-          />
+          <SignUpForm handleCloseModal={handleCloseModal} position={position} />
         }
       />
     </div>
