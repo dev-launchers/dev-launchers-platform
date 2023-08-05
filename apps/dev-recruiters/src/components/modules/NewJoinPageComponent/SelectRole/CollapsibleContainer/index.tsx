@@ -10,6 +10,10 @@ import SourceCode from '../../../../../images/icons/Source-Code.png';
 import CollapsibleSection from '../CollapsibleSection';
 import SelectRole from '../SelectRole';
 import { RoleContainer, RoleContainerBody } from './styles';
+import { useOpportunitiesContext } from '../../../../../contexts/SelectRoleContext';
+import Link from 'next/link';
+import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 interface CollapsibleContainerProps {
   openPositions: {

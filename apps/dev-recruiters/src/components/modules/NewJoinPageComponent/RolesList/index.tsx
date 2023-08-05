@@ -77,6 +77,7 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
     setOpenPositions(separateRoles(allOpportunities));
   }, [projects]);
 
+  console.log(openPositions['ProductLead']);
   return (
     <List>
       <CollapsibleContainer openPositions={openPositions} />
