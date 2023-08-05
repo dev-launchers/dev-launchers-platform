@@ -21,3 +21,9 @@ export const RoleContainerBody = styled.div`
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 `;
+
+export const Title = styled.div`
+  color: #1e1e1e;
+  font-family: 'Abel', sans-serif;
+  font-size: 32px;
+`;

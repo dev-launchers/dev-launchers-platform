@@ -9,6 +9,10 @@ import SourceCode from '../../../../../images/icons/Source-Code.png';
 import FloorPlan from '../../../../../images/icons/Floor-Plan.png';
 import CollapsibleSection from '../CollapsibleSection';
 import { RoleContainer, RoleContainerBody } from './styles';
+import { useOpportunitiesContext } from '../../../../../contexts/SelectRoleContext';
+import Link from 'next/link';
+import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -19,6 +23,16 @@ interface CollapsibleContainerProps {
 const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
   openPositions: openPositions,
 }) => {
+  function handleRoleClick(role) {
+    const roleJsonString = JSON.stringify(role);
+    localStorage.setItem('selectedRole', roleJsonString);
+    router.push('/join/filter');
+
+    // You can also redirect here if needed
+  }
+
+  const router = useRouter();
+
   return (
     <>
       <RoleContainer>
@@ -29,24 +43,31 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               textRole="Product Lead"
               openPositions={openPositions['ProductLead']}
               openPositionsCount={openPositions['ProductLead']}
+              onClick={() => handleRoleClick(openPositions['ProductLead'])}
             />
+
             <SelectRole
               src={PopularMan}
               textRole="UX Designer"
               openPositions={openPositions['UxDesigner']}
               openPositionsCount={openPositions['UxDesigner']}
+              onClick={() => handleRoleClick(openPositions['UxDesigner'])}
             />
             <SelectRole
               src={CaseStudy}
               textRole="UX Researcher"
               openPositions={openPositions['UxResearcher']}
               openPositionsCount={openPositions['UxResearcher']}
+              onClick={() => handleRoleClick(openPositions['UxResearcher'])}
             />
             <SelectRole
               src={FloorPlan}
               textRole="Information Architect"
               openPositions={openPositions['InformationArchitect']}
               openPositionsCount={openPositions['InformationArchitect']}
+              onClick={() =>
+                handleRoleClick(openPositions['InformationArchitect'])
+              }
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -58,18 +79,23 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               textRole="Lead Developer"
               openPositions={openPositions['LeadDeveloper']}
               openPositionsCount={openPositions['LeadDeveloper']}
+              onClick={() => handleRoleClick(openPositions['LeadDeveloper'])}
             />
             <SelectRole
               src={SourceCode}
               textRole="Back-End Developer"
               openPositions={openPositions['BackEndDeveloper']}
               openPositionsCount={openPositions['BackEndDeveloper']}
+              onClick={() => handleRoleClick(openPositions['BackEndDeveloper'])}
             />
             <SelectRole
               src={SourceCode}
               textRole="Front-End Developer"
               openPositions={openPositions['FrontEndDeveloper']}
               openPositionsCount={openPositions['FrontEndDeveloper']}
+              onClick={() =>
+                handleRoleClick(openPositions['FrontEndDeveloper'])
+              }
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -81,12 +107,14 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               textRole="QA Lead"
               openPositions={openPositions['QaLead']}
               openPositionsCount={openPositions['QaLead']}
+              onClick={() => handleRoleClick(openPositions['QaLead'])}
             />
             <SelectRole
               src={SourceCode}
               textRole="QA Tester"
               openPositions={openPositions['QaTester']}
               openPositionsCount={openPositions['QaTester']}
+              onClick={() => handleRoleClick(openPositions['QaTester'])}
             />
           </RoleContainerBody>
         </CollapsibleSection>
@@ -98,12 +126,18 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
               textRole="Volunteer Coordinator"
               openPositions={openPositions['VoulunteerCordinator']}
               openPositionsCount={openPositions['VoulunteerCordinator']}
+              onClick={() =>
+                handleRoleClick(openPositions['VoulunteerCordinator'])
+              }
             />
             <SelectRole
               src={SourceCode}
               textRole="Social Media Manager"
               openPositions={openPositions['SocialMediaManager']}
               openPositionsCount={openPositions['SocialMediaManager']}
+              onClick={() =>
+                handleRoleClick(openPositions['SocialMediaManager'])
+              }
             />
           </RoleContainerBody>
         </CollapsibleSection>

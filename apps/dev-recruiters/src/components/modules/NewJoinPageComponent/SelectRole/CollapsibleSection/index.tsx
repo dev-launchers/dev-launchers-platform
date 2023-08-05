@@ -1,6 +1,11 @@
 // components/CollapsibleSection.tsx
 import React, { useState } from 'react';
-import { RoleContainerBody, RoleContainerHead, ToggleButton } from './styles';
+import {
+  RoleContainerBody,
+  RoleContainerHead,
+  Title,
+  ToggleButton,
+} from './styles';
 import ArrowUp from '../../../../../images/icons/ArrowUp.png';
 import ArrowDown from '../../../../../images/icons/ArrowDown.png';
 
@@ -21,7 +26,7 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   return (
     <>
       <RoleContainerHead onClick={toggleBody}>
-        <h1>{title}</h1>
+        <Title>{title}</Title>
         <img src={showBody ? ArrowUp : ArrowDown} alt="Vector" />
       </RoleContainerHead>
       <RoleContainerBody show={showBody}>{children}</RoleContainerBody>
