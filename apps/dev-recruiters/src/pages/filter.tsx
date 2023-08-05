@@ -1,14 +1,10 @@
-import Head from 'next/head';
-import ProductHeader from '../components/modules/DetailedPage/ProductHeader';
-import SignUpForm from '../components/modules/FormPage/signUpForm';
-import BoxContainer from '../components/common/BoxContainer';
-import FilterPageComponent from '../components/modules/FilterPage';
-import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
-import { GetStaticProps } from 'next';
-import { Project } from '@devlaunchers/models/project';
 import { Opportunity } from '@devlaunchers/models/opportunity';
+import { Project } from '@devlaunchers/models/project';
 import agent from '@devlaunchers/utility/agent';
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
+import FilterPageComponent from '../components/modules/FilterPage';
 import theme from '../styles/theme';
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -56,7 +52,7 @@ interface Props {
 const FilterPage = ({ projects, opportunities }: Props) => (
   <>
     <Head>
-      <title>Second page</title>
+      <title>Open roles</title>
       <meta name="title" content="Dev Discovery"></meta>
       <meta
         name="description"
