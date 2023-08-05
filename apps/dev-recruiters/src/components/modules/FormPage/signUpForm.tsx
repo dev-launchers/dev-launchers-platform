@@ -13,7 +13,6 @@ import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
-import Checkbox from '../../common/Checkbox/CheckBox';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
 import {
   CloseButton,
@@ -263,12 +262,6 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                     We require users to be 18 years old or older. Please confirm
                     below.
                   </atoms.Typography>
-                  <Checkbox
-                    id={''}
-                    label={'I am 18 years old or older.'}
-                    checked={checkCheckbox}
-                    onChange={handleSetCheckCheckbox}
-                  />
                   <atoms.Checkbox
                     label="I am 18 years old or older."
                     disabled={false}

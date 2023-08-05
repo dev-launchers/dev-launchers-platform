@@ -23,13 +23,31 @@ export const CardContainer = styled.div`
   }
 `;
 
+export const Button = styled.button<{ color?: string }>`
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  background-color: ${(props) =>
+    props.color
+      ? props.theme.colors[props.color]
+      : props.theme?.colors?.OuterSpace};
+  color: ${(props) => props.theme?.colors?.White};
+  border-radius: 1.8rem;
+  padding: 10px 20px;
+  white-space: nowrap;
+  margin: 0 3px;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 11px;
+  text-align: center;
+`;
+
 export const CardContent = styled.div`
   width: 100%;
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  padding: 15px;
-  padding: 40px 30px 30px 30px;
+  padding: 30px 30px 30px 30px;
 `;
 
 export const Title = styled.h2`
@@ -39,18 +57,15 @@ export const Title = styled.h2`
 
 export const TimeCommitment = styled.h4`
   font-weight: 300;
-  padding-top: 10px;
   font-size: 16px;
 `;
 export const Time = styled.p`
   font-size: 14px;
-  padding-top: 10px;
   font-weight: 200;
 `;
 
 export const AboutDescription = styled.p`
   font-size: 14px;
-  padding-top: 20px;
   line-height: 1.5;
   font-weight: 200;
 `;
@@ -85,8 +100,11 @@ export const ButtonsContainer = styled.button`
   margin-top: 10px;
   margin-left: auto;
 
-  a {
+  text-decoration: none;
+  color: white;
+  &:hover {
     text-decoration: none;
-    color: #fff;
+    cursor: pointer;
+    color: ${({ theme }) => theme?.colors?.Argent};
   }
 `;
