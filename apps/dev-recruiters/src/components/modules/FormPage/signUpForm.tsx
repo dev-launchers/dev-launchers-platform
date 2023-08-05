@@ -99,15 +99,13 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             .split(',')
             .map((skill) => ({ skill: skill })),
           role: position.title as string,
-          // project: router.query.project as string,
+          // project:  router.query.project as string,
           id: position.id as string,
         })
           .then((res) => {
-            setSubmitting(false);
             handleCloseModal();
+            setSubmitting(false);
             handleOpenConfirmationModal();
-
-            // router.push('/join/confirmation');
           })
           .catch((error) => {
             setSubmitting(false);
@@ -261,7 +259,7 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                 <atoms.Checkbox
                   label="I am 18 years old or older."
                   disabled={false}
-                  // required
+                  required
                 />
                 <atoms.Box maxWidth="50%">
                   <atoms.Button
@@ -278,7 +276,7 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             <ConfirmationModal
               showModal={showConfirmationModal}
               handleOpenModal={handleOpenConfirmationModal}
-              handleCloseModal={handleCloseConfirmationModal}
+              handleCloseModal={handleCloseModal}
             />
           </Form>
         </atoms.Box>
