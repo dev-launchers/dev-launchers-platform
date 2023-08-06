@@ -30,11 +30,8 @@ function CommentForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    var data = { author: userData.username, text: props.handleTextChange.trim() };
-=======
     var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange };
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
+    //var data = { author: userData.username, text: props.handleTextChange.trim() };
 
     try {
       const res = await agent.Comments.post(data);
@@ -88,12 +85,6 @@ function CommentForm(props) {
               placeholder="What are your thoughts?"
               value={props.handleTextChange}
               onChange={handleTextChange}
-<<<<<<< HEAD
-            ></CommentBox>
-            {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-          </UserComment>
-          <button type="submit" disabled={disabled}>Submit</button>
-=======
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
             <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
@@ -103,7 +94,6 @@ function CommentForm(props) {
               <span id="char-counter">{charCount}</span>
             </div> */}
           </UserComment>
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>

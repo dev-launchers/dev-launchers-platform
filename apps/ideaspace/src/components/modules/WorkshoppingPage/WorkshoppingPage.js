@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
-<<<<<<< HEAD
 import Error from "next/error";
-=======
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 import { useRouter } from 'next/router';
 import CommentList from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
@@ -31,7 +28,6 @@ import {
 import { useFetchIdea } from './useFetchIdea';
 
 export default function WorkshoppingPage(props) {
-<<<<<<< HEAD
   const router = useRouter()
   const { ideaId } = router.query;
   const [handleChange, setHandleChange] = useState('');
@@ -49,52 +45,12 @@ export default function WorkshoppingPage(props) {
   // const [handleTextChange, setHandleTextChange] = React.useState([]);
   // const { data, loading } = useFetchIdea(ideaId);
   // // const [seed, setSeed] = useState(1);
-=======
-  const { ideaId } = props;
-  const [handleChange, setHandleChange] = React.useState(null);
-  const [handleTextChange, setHandleTextChange] = React.useState([]);
-  const { data, loading } = useFetchIdea(ideaId);
-  // const [seed, setSeed] = useState(1);
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 
   console.log("number of comments =", data.comments);
   console.log("data =", data);
 
-<<<<<<< HEAD
   // copy-pasted from DisplayComments.js in the CommentsForm folder
   const [comments, setComments] = useState([]); // the data for the comments array; setComments updates comment and triggers a re-render
-=======
-  return (
-    <Container theme={theme}>
-      {loading === true ?
-        <CircularIndeterminateLoader
-          text="Loading..."
-          color="white"
-        />
-        :
-        <Wrapper>
-          <IdeaOverview selectedCard={data} />
-
-          <Form>
-            <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
-          </Form>
-
-          <Comments>
-            <h4 style={{textAlign: "left", paddingLeft: "20px"}}>Comment feed</h4>
-            {/* a count of the comments in the comment feed: */}
-            <h6 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENTS: {JSON.stringify(data?.comments?.data?.length)}</h6>
-
-            <Form>
-              <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
-            </Form>
-
-            <CommentList selectedCard={data} />
-          </Comments>
-        </Wrapper>
-      }
-    </Container>
-  );
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 
   React.useEffect(async () => {
     if (hidden) {
@@ -135,6 +91,8 @@ export default function WorkshoppingPage(props) {
     //   }
     // </Container>
 
+    console.log("Comments:\n", comments);
+
     return (
       <Container theme={theme}>
         <ArchivedIdea />
@@ -168,7 +126,7 @@ export default function WorkshoppingPage(props) {
 
             <Comments>
               {/* a count of the comments in the comment feed: */}
-              {/* <h6>Comment Feed: {data.comments.length}</h6> */}
+              <h6>Comment Feed: {comments.length}</h6>
               <CommentList selectedCard={data} />
             </Comments>
           </Wrapper>

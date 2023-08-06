@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import axios from 'axios';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-=======
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../utils/StrapiHelper';
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
 
 export const useFetchIdea = (ideaId) => {
   let { userData, updateUserData, isAuthenticated } = useUserDataContext();
@@ -29,7 +26,6 @@ export const useFetchIdea = (ideaId) => {
     difficultyLevel: '',
     ideaOwner: '',
   });
-<<<<<<< HEAD
   const [sourceData, setSourceData] = useState({
     ideaName: '',
     discord: '',
@@ -44,20 +40,6 @@ export const useFetchIdea = (ideaId) => {
   // useEffect is NOT being called, otherwise we’d see the idea ID from the URL of the workshopping page in the console.
   // Why is ideaId undefined?
   useEffect(async () => {
-=======
-  useEffect(() => {
-    const fetchIdea = async (ideaId) => {
-      setLoading(true)
-
-      const res = cleanData(await agent.Ideas.getIdea(ideaId, 
-        new URLSearchParams(`populate=*`)));
-
-      setLoading(false)
-      if (res) {
-        setData(res)
-      }
-    } 
->>>>>>> c5ef5fae273c4026dad7da3e657f2a3249157fdf
     try {
       if (ideaId) {
         setLoading(true)

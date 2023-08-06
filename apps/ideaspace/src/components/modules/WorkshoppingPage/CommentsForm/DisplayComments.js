@@ -16,6 +16,8 @@ function DisplayComments(props) {
   // call your hook here
   // const forceUpdate = useForceUpdate();
 
+  const [data, setData] = useState([]);
+
   useEffect(async () => {
     if (props.selectedCard.id != undefined) {
       setData((props.selectedCard.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
@@ -36,8 +38,10 @@ function DisplayComments(props) {
   }, [props.selectedCard]);
 
   useEffect(() => {
-    // refresh the comment feed to show the new comment
-    this.forceUpdate();
+    if (typeof this !== 'undefined') {
+      // refresh the comment feed to show the new comment
+      this.forceUpdate();
+    }
   }, [props.comments]);
 
   const commentNodes = data.map(comment => (
@@ -47,7 +51,7 @@ function DisplayComments(props) {
   ));
   return (
     <div>
-      {props.comments.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
+      {props.comments?.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
     </div>
   );
 };

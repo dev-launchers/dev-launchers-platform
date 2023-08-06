@@ -89,7 +89,7 @@ function IdeaCard({ cards, cardType }) {
 
           <IdeaCardUpdated updatedAt={cards.updated_at} />
         </atoms.Box>
-        ) : null }</Link>
+      </Link>
 
       {tagContent == "archived" ? (
         <atoms.Button
