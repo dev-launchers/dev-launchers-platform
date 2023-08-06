@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
@@ -39,11 +38,32 @@ const links = {
 */
 export default function Navigation({ user }: NavigationProps) {
   const ListStyle = { listStyle: 'none' };
-  let userInfo = user;
-  if (!user) {
-    userInfo = useUserDataContext().userData;
-  }
-  // const { userData } = useUserDataContext();
+  const { userData, setUserData } = useUserDataContext();
+
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    });
+  };
+  
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -74,7 +94,7 @@ export default function Navigation({ user }: NavigationProps) {
                     })}
                   </Box>
                 </ul>
-                {userInfo.id === 0 ? (
+                {userData.id === 0 ? (
                   <Box gap={'16px'}>
                     <Button
                       as="a"
@@ -104,15 +124,15 @@ export default function Navigation({ user }: NavigationProps) {
                     <img
                       width="36"
                       height="33"
-                      src={userInfo.profilePictureUrl}
+                      src={userData.profilePictureUrl}
                       alt="Profile avatar"
                       style={{ borderRadius: '50%' }}
                     />
-                    <Typography type="p">Hi {userInfo.name}</Typography>
+                    <Typography type="p">Hi {userData.name}</Typography>
                     <Button
                       buttonType="secondary"
                       buttonSize="standard"
-                      onClick={Logout}
+                      onClick={handleLogout}
                     >
                       Log out
                     </Button>
@@ -120,7 +140,7 @@ export default function Navigation({ user }: NavigationProps) {
                 )}
               </NavWrapper>
             </Box>
-            <MobileNavigation links={links} user={userInfo} />
+            <MobileNavigation links={links} user={userData} logout={handleLogout} />
           </Nav>
         </Layer>
       </ThemeProvider>

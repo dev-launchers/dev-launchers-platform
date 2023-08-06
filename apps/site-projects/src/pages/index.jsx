@@ -1,13 +1,9 @@
-import axios from "axios";
 import Head from "next/head";
 import Projects from "../components/modules/Projects";
-import { env } from "../utils/EnvironmentVariables";
 import agent from "@devlaunchers/utility/agent"
 // const projectsData = require("../components/modules/Projects/data.json");
 
 export const getStaticProps = async () => {
-
-
   // const projects = projectsData;
   const projects = await agent.Projects.list();
   if (!projects) {
@@ -15,9 +11,6 @@ export const getStaticProps = async () => {
       notFound: true,
     };
   }
-
-
-
 
   return {
     props: { projects },

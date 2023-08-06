@@ -1,7 +1,5 @@
-import axios from "axios";
 import Head from "next/head";
 import Project from "../components/modules/Projects/Project";
-import { env } from "../utils/EnvironmentVariables";
 import agent from "@devlaunchers/utility/agent"
 
 // const data = require("../components/modules/Projects/data.json");

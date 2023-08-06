@@ -1,17 +1,43 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "@utils/Logout";
-import { env } from "@utils/EnvironmentVariables";
 import {
   AccountMenuDropdownItem,
   AccountMenuDropdownButton,
   MenuButton,
 } from "./StyledAccountDropdown";
+import { useUserDataContext } from "@devlaunchers/components/src/context/UserDataContext";
 
 export default function AccountDropdown(props) {
+  const { userData, setUserData} = useUserDataContext();
+
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    })
+  };
+  
   return (
     <div>
-      {props.userData.id ? (
+      {userData.id ? (
         <AccountMenuDropdownButton
           toggleBtnText="Menu"
           dropdownItems={
@@ -22,7 +48,7 @@ export default function AccountDropdown(props) {
                   <a>Visit Account Page</a>
                 </Link>
               </AccountMenuDropdownItem>
-              <AccountMenuDropdownItem onClick={Logout}>
+              <AccountMenuDropdownItem onClick={handleLogout}>
                 Logout{" "}
               </AccountMenuDropdownItem>
             </>

@@ -4,9 +4,7 @@ import { withTheme } from "styled-components";
 
 import { ThemeProvider } from "styled-components";
 import theme from "@devlaunchers/components/styles/theme";
-
-import Section from "../Section";
-import { Wrapper, ButtonsContainer, Button } from "./StyledEditorNotification";
+import { ButtonsContainer, Button } from "./StyledEditorNotification";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 import Alert from '@devlaunchers/components/components/molecules/Alert';
