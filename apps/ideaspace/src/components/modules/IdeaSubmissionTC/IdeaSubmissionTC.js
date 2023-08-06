@@ -50,7 +50,7 @@ function IdeaSubmissionTC() {
   function LinkRenderer(props) {
     var children = React.Children.toArray(props.children)
     var text = props.href.substring(1);
-    return React.createElement('a', { onClick: () => scrollSmoothTo(text) },  props.children)
+    return React.createElement('a', { onClick: () => scrollSmoothTo(text), style: {cursor:"pointer"} },  props.children)
   }
 
 
