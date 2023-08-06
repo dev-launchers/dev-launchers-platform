@@ -1,6 +1,6 @@
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project } from '@devlaunchers/models/project';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BoxContainer from '../../common/BoxContainer';
 import {
   HeadingContainer,
@@ -30,6 +30,13 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
+  const [selectedRole, setSelectedRole] = useState([]);
+  useEffect(() => {
+    const roleJsonString = localStorage.getItem('selectedRole');
+    const selectedRole = JSON.parse(roleJsonString);
+    setSelectedRole(selectedRole);
+  }, []);
+
   return (
     <Wrapper>
       <BoxContainer>
@@ -53,7 +60,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
             <FilterComponent />
           </FilterConatiner>
           <RolesContainer>
-            <ResultProjects>Open Roles</ResultProjects>
+            <ResultProjects>Open Roles({selectedRole.length})</ResultProjects>
             <SearchRole />
           </RolesContainer>
         </ResultContainer>
