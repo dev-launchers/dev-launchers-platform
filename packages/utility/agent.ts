@@ -1,7 +1,7 @@
 import { NewApplicant, Opportunity, Project, User as UserType } from "@devlaunchers/models";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL + '/api';
 
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
