@@ -45,10 +45,6 @@ export default function WorkshoppingPage(props) {
           </Form>
 
           <Comments>
-<<<<<<< Updated upstream
-            {/* a count of the comments in the comment feed: */}
-            <h6>Comment Feed: {data.comments.length}</h6>
-=======
             <h4 style={{textAlign: "left", paddingLeft: "20px"}}>Comment feed</h4>
             {/* a count of the comments in the comment feed: */}
             <h6 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENTS: {JSON.stringify(data?.comments?.data?.length)}</h6>
@@ -57,7 +53,6 @@ export default function WorkshoppingPage(props) {
               <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
             </Form>
 
->>>>>>> Stashed changes
             <CommentList selectedCard={data} />
           </Comments>
         </Wrapper>
