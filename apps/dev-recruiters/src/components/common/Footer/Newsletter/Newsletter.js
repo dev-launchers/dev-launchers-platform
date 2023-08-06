@@ -52,7 +52,7 @@ const NewsLetter = (props) => {
           }}
         >
           →{" "}
-          <Secret href="https://devlaunchers.org/hangout">
+          <Secret href={process.env.FRONT_END_URL + "/hangout"}>
             <span>😄</span>
           </Secret>{" "}
           ←

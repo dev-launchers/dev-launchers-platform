@@ -50,7 +50,7 @@ const UserProjects = ({ myProjects }) => {
                   secondaryText: `Commitment level: ${project.commitmentLevel}`,
                   tags: project.keywords?.map(({ keyword }) => keyword),
                   description: project.catchPhrase,
-                  href: `https://devlaunchers.org/projects/${project.slug}`,
+                  href: `${process.env.FRONT_END_URL}/projects/${project.slug}`,
                   imageSrc: project.heroImage?.url,
                   /*
                                     actions: (

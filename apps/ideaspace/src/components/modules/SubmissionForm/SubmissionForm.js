@@ -154,7 +154,7 @@ function SubmissionForm() {
       {!isAuthenticated ? (
         <SignInSection
           label='Please sign in to submit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/submit'
+          redirectURL={process.env.FRONT_END_URL + '/ideaspace/submit'}
         />
       ) : (
         <>
