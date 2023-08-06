@@ -1,6 +1,5 @@
 import { ApplyButton } from '../../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/StyledRoleModal';
 import { GradientLine } from '../../FormPage/styledSignupForm';
-import { ApplyButton } from '../PositionCard/StyledPositionCard';
 import Modal from '../PositionPopupModal/Modal';
 import {
   ConfirmationModalSection,
