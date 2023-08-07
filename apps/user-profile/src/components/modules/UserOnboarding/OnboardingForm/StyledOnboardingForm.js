@@ -18,5 +18,8 @@ const OnboardingFormSection = styled.section`
 
 export const StepperContainer = styled.div`
 	height: 152px;
+	padding-top: 5rem;
+	text-align: center;
+	margin: auto;
 `;
 export default OnboardingFormSection;
