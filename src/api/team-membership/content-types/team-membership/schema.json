@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "team_memberships",
+  "info": {
+    "singularName": "team-membership",
+    "pluralName": "team-memberships",
+    "displayName": "TeamMembership",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "required": true
+    },
+    "joinDate": {
+      "type": "datetime"
+    },
+    "leaveDate": {
+      "type": "datetime"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project",
+      "required": true
+    }
+  }
+}
