@@ -69,7 +69,7 @@ const Project = ({ project, theme }) => {
         images={project?.attributes.images}
       />
 			{/*}<Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />{*/}
-      {isLogged && checkIfIsOnTeam ? <Milestones data={project?.attributes?.board?.ProjectMilestone} /> : null}
+      {isLogged && checkIfIsOnTeam && project?.attributes?.board?.ProjectMilestone ? <Milestones data={project?.attributes?.board?.ProjectMilestone} /> : null}
       {<Sessions calendarId={project.attributes.calendarId} />}
       <Team data={project.attributes?.team} />
       <JoinSupport
