@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "../../../../../../../../packages/UI/src/components/atoms/Button";
+import Button from "@devlaunchers/components/src/components/atoms/Button";
 import { ResourceCardContainer } from "./StyledResourceCard";
 
 function ResourceCard({resource : {img, title, guideTitle,guideLink}}) {
