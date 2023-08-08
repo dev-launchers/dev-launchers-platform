@@ -56,9 +56,12 @@ const Project = ({ project, theme }) => {
 
   const checkIfIsOnTeam = isOnTeam(userData.userData.id, project.team);
   const isLogged = userData.userData.id === 0 ? false : true;
-  const milestoneIsOutdated = hasPassedOneMonth(
-    project.board?.ProjectMilestone[0].task[0].completionDate
-  );
+  const milestoneIsOutdated = project.board?.ProjectMilestone[0]?.task[0] ? 
+                                  hasPassedOneMonth(
+                                    project.board?.ProjectMilestone[0]?.task[0]?.completionDate
+                                  ) 
+                                  : 
+                                  false;
 
   return (
     <Wrapper>
