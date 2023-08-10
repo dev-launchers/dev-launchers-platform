@@ -1,96 +1,126 @@
 .core-theme {
-  --colors-black: #000000;
-  --colors-white: #ffffff;
-  --colors-gray-100: #f7fafc;
-  --colors-gray-200: #edf2f7;
-  --colors-gray-300: #e2e8f0;
-  --colors-gray-400: #cbd5e0;
-  --colors-gray-500: #a0aec0;
-  --colors-gray-600: #718096;
-  --colors-gray-700: #4a5568;
-  --colors-gray-800: #2d3748;
-  --colors-gray-900: #1a202c;
-  --colors-red-100: #fff5f5;
-  --colors-red-200: #fed7d7;
-  --colors-red-300: #feb2b2;
-  --colors-red-400: #fc8181;
-  --colors-red-500: #f56565;
-  --colors-red-600: #e53e3e;
-  --colors-red-700: #c53030;
-  --colors-red-800: #9b2c2c;
-  --colors-red-900: #742a2a;
-  --colors-orange-100: #fffaf0;
-  --colors-orange-200: #feebc8;
-  --colors-orange-300: #fbd38d;
-  --colors-orange-400: #f6ad55;
-  --colors-orange-500: #ed8936;
-  --colors-orange-600: #dd6b20;
-  --colors-orange-700: #c05621;
-  --colors-orange-800: #9c4221;
-  --colors-orange-900: #7b341e;
-  --colors-yellow-100: #fffff0;
-  --colors-yellow-200: #fefcbf;
-  --colors-yellow-300: #faf089;
-  --colors-yellow-400: #f6e05e;
-  --colors-yellow-500: #ecc94b;
-  --colors-yellow-600: #d69e2e;
-  --colors-yellow-700: #b7791f;
-  --colors-yellow-800: #975a16;
-  --colors-yellow-900: #744210;
-  --colors-green-100: #f0fff4;
-  --colors-green-200: #c6f6d5;
-  --colors-green-300: #9ae6b4;
-  --colors-green-400: #68d391;
-  --colors-green-500: #48bb78;
-  --colors-green-600: #38a169;
-  --colors-green-700: #2f855a;
-  --colors-green-800: #276749;
-  --colors-green-900: #22543d;
-  --colors-teal-100: #e6fffa;
-  --colors-teal-200: #b2f5ea;
-  --colors-teal-300: #81e6d9;
-  --colors-teal-400: #4fd1c5;
-  --colors-teal-500: #38b2ac;
-  --colors-teal-600: #319795;
-  --colors-teal-700: #2c7a7b;
-  --colors-teal-800: #285e61;
-  --colors-teal-900: #234e52;
-  --colors-blue-100: #ebf8ff;
-  --colors-blue-200: #bee3f8;
-  --colors-blue-300: #90cdf4;
-  --colors-blue-400: #63b3ed;
-  --colors-blue-500: #4299e1;
-  --colors-blue-600: #3182ce;
-  --colors-blue-700: #2b6cb0;
-  --colors-blue-800: #2c5282;
-  --colors-blue-900: #2a4365;
-  --colors-indigo-100: #ebf4ff;
-  --colors-indigo-200: #c3dafe;
-  --colors-indigo-300: #a3bffa;
-  --colors-indigo-400: #7f9cf5;
-  --colors-indigo-500: #667eea;
-  --colors-indigo-600: #5a67d8;
-  --colors-indigo-700: #4c51bf;
-  --colors-indigo-800: #434190;
-  --colors-indigo-900: #3c366b;
-  --colors-purple-100: #faf5ff;
-  --colors-purple-200: #e9d8fd;
-  --colors-purple-300: #d6bcfa;
-  --colors-purple-400: #b794f4;
-  --colors-purple-500: #9f7aea;
-  --colors-purple-600: #805ad5;
-  --colors-purple-700: #6b46c1;
-  --colors-purple-800: #553c9a;
-  --colors-purple-900: #44337a;
-  --colors-pink-100: #fff5f7;
-  --colors-pink-200: #fed7e2;
-  --colors-pink-300: #fbb6ce;
-  --colors-pink-400: #f687b3;
-  --colors-pink-500: #ed64a6;
-  --colors-pink-600: #d53f8c;
-  --colors-pink-700: #b83280;
-  --colors-pink-800: #97266d;
-  --colors-pink-900: #702459;
+  --0: 0px;
+  --1: 0.25rem;
+  --2: 0.5rem;
+  --3: 0.75rem;
+  --4: 1rem;
+  --5: 1.25rem;
+  --6: 1.5rem;
+  --7: 1.75rem;
+  --8: 2rem;
+  --9: 2.25rem;
+  --10: 2.5rem;
+  --11: 2.75rem;
+  --12: 3rem;
+  --14: 3.5rem;
+  --16: 4rem;
+  --20: 5rem;
+  --24: 6rem;
+  --28: 7rem;
+  --32: 8rem;
+  --36: 9rem;
+  --40: 10rem;
+  --44: 11rem;
+  --48: 12rem;
+  --52: 13rem;
+  --56: 14rem;
+  --60: 15rem;
+  --64: 16rem;
+  --72: 18rem;
+  --80: 20rem;
+  --96: 24rem;
+  --black: #000000;
+  --white: #ffffff;
+  --gray-100: #f7fafc;
+  --gray-200: #edf2f7;
+  --gray-300: #e2e8f0;
+  --gray-400: #cbd5e0;
+  --gray-500: #a0aec0;
+  --gray-600: #718096;
+  --gray-700: #4a5568;
+  --gray-800: #2d3748;
+  --gray-900: #1a202c;
+  --red-100: #fff5f5;
+  --red-200: #fed7d7;
+  --red-300: #feb2b2;
+  --red-400: #fc8181;
+  --red-500: #f56565;
+  --red-600: #e53e3e;
+  --red-700: #c53030;
+  --red-800: #9b2c2c;
+  --red-900: #742a2a;
+  --orange-100: #fffaf0;
+  --orange-200: #feebc8;
+  --orange-300: #fbd38d;
+  --orange-400: #f6ad55;
+  --orange-500: #ed8936;
+  --orange-600: #dd6b20;
+  --orange-700: #c05621;
+  --orange-800: #9c4221;
+  --orange-900: #7b341e;
+  --yellow-100: #fffff0;
+  --yellow-200: #fefcbf;
+  --yellow-300: #faf089;
+  --yellow-400: #f6e05e;
+  --yellow-500: #ecc94b;
+  --yellow-600: #d69e2e;
+  --yellow-700: #b7791f;
+  --yellow-800: #975a16;
+  --yellow-900: #744210;
+  --green-100: #f0fff4;
+  --green-200: #c6f6d5;
+  --green-300: #9ae6b4;
+  --green-400: #68d391;
+  --green-500: #48bb78;
+  --green-600: #38a169;
+  --green-700: #2f855a;
+  --green-800: #276749;
+  --green-900: #22543d;
+  --teal-100: #e6fffa;
+  --teal-200: #b2f5ea;
+  --teal-300: #81e6d9;
+  --teal-400: #4fd1c5;
+  --teal-500: #38b2ac;
+  --teal-600: #319795;
+  --teal-700: #2c7a7b;
+  --teal-800: #285e61;
+  --teal-900: #234e52;
+  --blue-100: #ebf8ff;
+  --blue-200: #bee3f8;
+  --blue-300: #90cdf4;
+  --blue-400: #63b3ed;
+  --blue-500: #4299e1;
+  --blue-600: #3182ce;
+  --blue-700: #2b6cb0;
+  --blue-800: #2c5282;
+  --blue-900: #2a4365;
+  --indigo-100: #ebf4ff;
+  --indigo-200: #c3dafe;
+  --indigo-300: #a3bffa;
+  --indigo-400: #7f9cf5;
+  --indigo-500: #667eea;
+  --indigo-600: #5a67d8;
+  --indigo-700: #4c51bf;
+  --indigo-800: #434190;
+  --indigo-900: #3c366b;
+  --purple-100: #faf5ff;
+  --purple-200: #e9d8fd;
+  --purple-300: #d6bcfa;
+  --purple-400: #b794f4;
+  --purple-500: #9f7aea;
+  --purple-600: #805ad5;
+  --purple-700: #6b46c1;
+  --purple-800: #553c9a;
+  --purple-900: #44337a;
+  --pink-100: #fff5f7;
+  --pink-200: #fed7e2;
+  --pink-300: #fbb6ce;
+  --pink-400: #f687b3;
+  --pink-500: #ed64a6;
+  --pink-600: #d53f8c;
+  --pink-700: #b83280;
+  --pink-800: #97266d;
+  --pink-900: #702459;
   --line-heights-0: 20;
   --line-heights-1: AUTO;
   --line-heights-2: 16;
@@ -231,50 +261,6 @@
   --font-weights-nunito-sans-2: Light Italic;
   --font-weights-nunito-sans-3: SemiBold;
   --font-weights-nunito-sans-4: Light;
-  --x-small-typecase: [object Object];
-  --subtitle: [object Object];
-  --product-name: [object Object];
-  --dropdown-text: [object Object];
-  --link-m: [object Object];
-  --link-disabled: [object Object];
-  --link-m-disabled: [object Object];
-  --link-focus: [object Object];
-  --link-m-focus: [object Object];
-  --link: [object Object];
-  --link-visited: [object Object];
-  --link-hover: [object Object];
-  --link-active: [object Object];
-  --link-m-visited: [object Object];
-  --link-m-hover: [object Object];
-  --link-m-active: [object Object];
-  --display-lg: [object Object];
-  --display-sm: [object Object];
-  --logo-text: [object Object];
-  --nav-items: [object Object];
-  --tool-tip: [object Object];
-  --x-small: [object Object];
-  --h1: [object Object];
-  --h2: [object Object];
-  --h3: [object Object];
-  --h4: [object Object];
-  --h5: [object Object];
-  --p-l-d: [object Object];
-  --p-d-d: [object Object];
-  --p-s-d: [object Object];
-  --placeholder: [object Object];
-  --button: [object Object];
-  --label: [object Object];
-  --h1-m: [object Object];
-  --h2-m: [object Object];
-  --h3-m: [object Object];
-  --h4-m: [object Object];
-  --h5-m: [object Object];
-  --p-l-m: [object Object];
-  --p-d-m: [object Object];
-  --p-s-m: [object Object];
-  --label-m: [object Object];
-  --button-m: [object Object];
-  --placeholder-m: [object Object];
   --text-case-normal-case: none;
   --text-case-uppercase: uppercase;
   --text-case-capitalize: capitalize;
@@ -290,46 +276,10 @@
   --rounded-3xl: 4rem;
   --rounded-4xl: 6rem;
   --0-5: 0.125rem;
-  --padding-p-1: 0.25rem;
-  --padding-p-2: 0.5rem;
-  --padding-p-4: 1rem;
-  --padding-p-6: 1.5rem;
-  --padding-p-8: 2rem;
-  --padding-p-12: 3rem;
-  --padding-p-16: 4rem;
-  --padding-p-24: 6rem;
-  --padding-p-32: 8rem;
-  --gap-0: 0px;
-  --gap-px: 1px;
-  --gap-1: 0.25rem;
-  --gap-2: 0.5rem;
-  --gap-3: 0.75rem;
-  --gap-4: 1rem;
-  --gap-5: 1.25rem;
-  --gap-6: 1.5rem;
-  --gap-7: 1.75rem;
-  --gap-8: 2rem;
-  --gap-9: 2.25rem;
-  --gap-10: 2.5rem;
-  --gap-11: 2.75rem;
-  --gap-12: 3rem;
-  --gap-14: 3.5rem;
-  --gap-16: 4rem;
-  --gap-20: 5rem;
-  --gap-24: 6rem;
-  --gap-28: 7rem;
-  --gap-32: 8rem;
-  --gap-36: 9rem;
-  --gap-40: 10rem;
-  --gap-44: 11rem;
-  --gap-48: 12rem;
-  --gap-52: 13rem;
-  --gap-56: 14rem;
-  --gap-60: 15rem;
-  --gap-64: 16rem;
-  --gap-72: 18rem;
-  --gap-80: 20rem;
-  --gap-96: 24rem;
+  --px: 1px;
+  --1-5: 0.375rem;
+  --2-5: 0.625rem;
+  --3-5: 0.875rem;
   --rem: 16;
   --font-size-0: 0.75rem;
   --font-size-1: 0.875rem;
@@ -345,3 +295,445 @@
   --font-size-11: 3rem;
   --font-size-12: 4rem;
 }
+        
+.x-small-typecase {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  line-height: 20;
+  font-size: 0.75rem;
+}
+.subtitle {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  letter-spacing: 8%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: AUTO;
+}
+.product-name {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: AUTO;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 2.75rem;
+}
+.dropdown-text {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  letter-spacing: 4%;
+  word-spacing: 0;
+  text-transform: capitalize;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.link-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-disabled {
+  font-family: Nunito Sans;
+  font-weight: Light Italic;
+  line-height: 20;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+  font-size: 1rem;
+}
+.link-m-disabled {
+  font-family: Nunito Sans;
+  font-weight: Light Italic;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-focus {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 1rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-m-focus {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link {
+  font-family: Nunito Sans;
+  font-weight: SemiBold;
+  line-height: 16;
+  font-size: 1rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-visited {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 1rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-hover {
+  font-family: Nunito Sans;
+  font-weight: SemiBold;
+  line-height: 20;
+  font-size: 1rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-active {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  font-size: 1rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.link-m-visited {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-m-hover {
+  font-family: Nunito Sans;
+  font-weight: SemiBold;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+}
+.link-m-active {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 16;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.display-lg {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: 68;
+  font-size: 4rem;
+  letter-spacing: -2%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.display-sm {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 52;
+  font-size: 3rem;
+  letter-spacing: -2%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.logo-text {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: AUTO;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 1.625rem;
+}
+.nav-items {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: 20;
+  letter-spacing: 4%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.tool-tip {
+  font-family: Nunito Sans;
+  font-weight: Light;
+  line-height: 20;
+  font-size: 0.875rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.x-small {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+.h1 {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: AUTO;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 2.75rem;
+}
+.h2 {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: AUTO;
+  letter-spacing: 0%;
+  text-transform: none;
+  text-decoration: none;
+  word-spacing: 0;
+  font-size: 2.5rem;
+}
+.h3 {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: AUTO;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 2rem;
+}
+.h4 {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: AUTO;
+  font-size: 1.75rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.h5 {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: AUTO;
+  font-size: 1rem;
+  letter-spacing: 8%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.p-l-d {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 28;
+  font-size: 1.25rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.p-d-d {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 24;
+  font-size: 1rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.p-s-d {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  font-size: 0.875rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.placeholder {
+  font-family: Nunito Sans;
+  font-weight: Light;
+  line-height: 20;
+  font-size: 0.875rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.button {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 24;
+  font-size: 0.875rem;
+  letter-spacing: 8%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.label {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  font-size: 0.875rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.h1-m {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: 40;
+  font-size: 2.5rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.h2-m {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: 48;
+  font-size: 2.25rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.h3-m {
+  font-family: Abel;
+  font-weight: Regular;
+  line-height: 32;
+  font-size: 1.5rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.h4-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: AUTO;
+  font-size: 1.5rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.h5-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 28;
+  font-size: 1.25rem;
+  letter-spacing: 8%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.p-l-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 28;
+  font-size: 1.25rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.p-d-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 24;
+  font-size: 1rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.p-s-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 20;
+  font-size: 0.875rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+.label-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 24;
+  font-size: 1rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.button-m {
+  font-family: Nunito Sans;
+  font-weight: Regular;
+  line-height: 24;
+  font-size: 0.875rem;
+  letter-spacing: 12%;
+  word-spacing: 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.placeholder-m {
+  font-family: Nunito Sans;
+  font-weight: Light;
+  line-height: 24;
+  font-size: 1rem;
+  letter-spacing: 0%;
+  word-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+}
+      
