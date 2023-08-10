@@ -1032,15 +1032,13 @@
       "type": "boxShadow"
     }
   },
-  "fontFamilies": {
-    "nunito-sans": {
-      "value": "Nunito Sans",
-      "type": "fontFamilies"
-    },
-    "abel": {
-      "value": "Abel",
-      "type": "fontFamilies"
-    }
+  "nunito-sans": {
+    "value": "Nunito Sans",
+    "type": "fontFamilies"
+  },
+  "abel": {
+    "value": "Abel",
+    "type": "fontFamilies"
   },
   "fontWeights": {
     "nunito-sans-0": {
@@ -1705,6 +1703,10 @@
   "rounded-4xl": {
     "value": "6rem",
     "type": "borderRadius"
+  },
+  "0,5": {
+    "value": "0.125rem",
+    "type": "spacing"
   },
   "padding": {
     "p-1": {

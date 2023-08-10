@@ -829,8 +829,8 @@ video {
   --shadow-shadow-lg: 0px 4px 4px 4px #7f7e7f40;
   --shadow-shadow-xl: 0px 10px 18px 10px #7f7e7f40;
   --shadow-shadow-inner: 2px 2px 6px 0px #7f7e7f80;
-  --font-families-nunito-sans: Nunito Sans;
-  --font-families-abel: Abel;
+  --nunito-sans: Nunito Sans;
+  --abel: Abel;
   --font-weights-nunito-sans-0: Regular;
   --font-weights-abel-1: Regular;
   --font-weights-nunito-sans-2: Light Italic;
@@ -894,6 +894,7 @@ video {
   --rounded-2xl: 3rem;
   --rounded-3xl: 4rem;
   --rounded-4xl: 6rem;
+  --0-5: 0.125rem;
   --padding-p-1: 0.25rem;
   --padding-p-2: 0.5rem;
   --padding-p-4: 1rem;
