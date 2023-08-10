@@ -6,6 +6,7 @@
     "@devlaunchers/models": "workspace:*",
     "@devlaunchers/tailwind": "workspace:*",
     "@devlaunchers/utility": "workspace:*",
+    "@radix-ui/react-tabs": "1.0.4",
     "@storybook/addon-viewport": "7.0.22",
     "axios": "^0.27.2",
     "babel-loader": "8.2.5",
