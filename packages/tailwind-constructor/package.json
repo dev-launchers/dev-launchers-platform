@@ -9,16 +9,17 @@
         "build-transform": "npm run build-transform-core && npm run build-transform-light && npm run build-transform-dark",
         "build-sd": "node build.js",
         "build-tw": "postcss ./styles.css -o ./tailwind.css",
-        "build": "npm run build-transform && npm run build-sd && npm run build-tw"
+        "build": "npm run build-transform && npm run build-sd && npm run build-tw",
+        "dev": "tailwindcss -c ./tailwind.config.js -i ./styles.css -o ./tailwind.css --watch"
     },
     "dependencies": {
         "postcss-cli": "^9.0.1",
         "style-dictionary": "^3.0.2"
     },
     "devDependencies": {
-        "autoprefixer": "^10.4.0",
-        "postcss": "^8.3.11",
+        "autoprefixer": "10.4.14",
+        "postcss": "8.4.27",
         "postcss-import": "^14.0.2",
-        "tailwindcss": "^2.2.19"
+        "tailwindcss": "3.3.3"
     }
 }
