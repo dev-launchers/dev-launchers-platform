@@ -1,5 +1,6 @@
-const { filterTokensByType } = require('./fns');
-const tokens = require('./output/core.json');
+
+const { filterTokensByType } = require("./fns");
+const tokens = require("./output/core.json")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
