@@ -59,9 +59,6 @@ export const decorators = [
   ),
 ];
 export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
