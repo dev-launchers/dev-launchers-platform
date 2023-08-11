@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const SelectRoleContainer = styled.div`
-  width: 360px;
-  height: 266px;
+  width: 100px;
+  height: 50px;
   border: 1px solid #e5e5e5;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ export const IconImage = styled.img`
 `;
 
 export const TextRole = styled.div`
-  font-size: 40px;
+  font-size: 20px;
   font-family: 'Abel', sans-serif;
 `;
 

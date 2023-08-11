@@ -13,3 +13,8 @@ export const ButtonRoles = styled.div`
     border: none;
   }
 `;
+
+export const TextRole = styled.div`
+  font-size: 20px;
+  font-family: 'Abel', sans-serif;
+`;
