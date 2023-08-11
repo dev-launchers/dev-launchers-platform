@@ -28,7 +28,7 @@ export const ResultContainer = styled.div`
 export const FilterConatiner = styled.div`
   background-color: white;
   width: 20%;
-  height: 600px;
+  height: 700px;
   border-radius: 8px;
   box-shadow: 2px 2px 8px 0 #7f7e7f;
 `;
