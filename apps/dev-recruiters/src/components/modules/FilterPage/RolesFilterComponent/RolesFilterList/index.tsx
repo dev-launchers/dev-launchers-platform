@@ -5,6 +5,11 @@ import { Opportunity } from '@devlaunchers/models/opportunity';
 import CollapsibleContainerFilter from './CollapsibleContainerFilter';
 import { List } from '../../../../../components/modules/OpportunitiesAggregator/filtering/ProjectsList/StyledProjectsList';
 import SearchRole from '../../SearchRoles';
+import {
+  FilterConatiner,
+  ResultContainer,
+  RolesContainer,
+} from '../../styledFilterPage';
 
 interface Props {
   projects?: ProjectLite[];
@@ -87,11 +92,17 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 
   return (
     <List>
-      <CollapsibleContainerFilter
-        openPositions={openPositions}
-        onRoleSelection={handleRoleSelection}
-      />
-      <SearchRole selectedRoleLabel={selectRoleLabel} />
+      <ResultContainer>
+        <FilterConatiner>
+          <CollapsibleContainerFilter
+            openPositions={openPositions}
+            onRoleSelection={handleRoleSelection}
+          />
+        </FilterConatiner>
+        <RolesContainer>
+          <SearchRole selectedRoleLabel={selectRoleLabel} />
+        </RolesContainer>
+      </ResultContainer>
     </List>
   );
 }

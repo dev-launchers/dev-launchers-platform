@@ -1,16 +1,25 @@
-// components/CollapsibleContainer.tsx
-import { useRouter } from 'next/router';
 import React from 'react';
-import CaseStudy from '../../../../../../images/icons/Design-services.png';
-import DesignServices from '../../../../../../images/icons/Design-services.png';
-import DeveloperMode from '../../../../../../images/icons/Developer-mode.png';
-import FloorPlan from '../../../../../../images/icons/Floor-Plan.png';
-import PopularMan from '../../../../../../images/icons/Popular-Man.png';
-import SourceCode from '../../../../../../images/icons/Source-Code.png';
-
 import { RoleContainer, RoleContainerBody } from './styles';
 import CollapsibleSectionFilter from './CollapsibleSectionFilter';
 import SelectRoleFilter from './SelectRoleFilter';
+import {
+  FilterConatiner,
+  ResultContainer,
+  ResultProjects,
+  ResultTitle,
+  RolesContainer,
+} from '../../../../../../components/modules/FilterPage/styledFilterPage';
+import FilterComponent from '../../../../../../components/modules/FilterPage/FilterComponent';
+import {
+  CommitmentText,
+  ContainerBody,
+  ContainerCommitment,
+  ContainerHead,
+  ContainerMain,
+  ContainerRoles,
+} from '../../../../../../components/modules/FilterPage/FilterComponent/styles';
+import RolesButtons from '../../../../../../components/modules/FilterPage/FilterComponent/RolesButtons';
+import Commitment from '../../../../../../components/modules/FilterPage/FilterComponent/Commitment';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -34,113 +43,70 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 
   return (
     <>
-      <RoleContainer>
-        <CollapsibleSectionFilter title="Product / UX">
-          <RoleContainerBody>
-            <SelectRoleFilter
-              src={DesignServices}
+      <ContainerMain>
+        <ContainerHead>Search Filter</ContainerHead>
+        <ContainerBody>
+          <ContainerRoles>
+            <RolesButtons
               textRole="Product Lead"
-              openPositions={openPositions['ProductLead']}
-              openPositionsCount={openPositions['ProductLead']}
               onClick={() => handleRoleClick(openPositions['ProductLead'])}
             />
-
-            <SelectRoleFilter
-              src={PopularMan}
+            <RolesButtons
               textRole="UX Designer"
-              openPositions={openPositions['UxDesigner']}
-              openPositionsCount={openPositions['UxDesigner']}
               onClick={() => handleRoleClick(openPositions['UxDesigner'])}
             />
-            <SelectRoleFilter
-              src={CaseStudy}
+            <RolesButtons
               textRole="UX Researcher"
-              openPositions={openPositions['UxResearcher']}
-              openPositionsCount={openPositions['UxResearcher']}
               onClick={() => handleRoleClick(openPositions['UxResearcher'])}
             />
-            <SelectRoleFilter
-              src={FloorPlan}
+            <RolesButtons
               textRole="Information Architect"
-              openPositions={openPositions['InformationArchitect']}
-              openPositionsCount={openPositions['InformationArchitect']}
               onClick={() =>
                 handleRoleClick(openPositions['InformationArchitect'])
               }
             />
-          </RoleContainerBody>
-        </CollapsibleSectionFilter>
-
-        <CollapsibleSectionFilter title="Development">
-          <RoleContainerBody>
-            <SelectRoleFilter
-              src={CaseStudy}
+            <RolesButtons
               textRole="Lead Developer"
-              openPositions={openPositions['LeadDeveloper']}
-              openPositionsCount={openPositions['LeadDeveloper']}
               onClick={() => handleRoleClick(openPositions['LeadDeveloper'])}
             />
-            <SelectRoleFilter
-              src={SourceCode}
+            <RolesButtons
               textRole="Back-End Developer"
-              openPositions={openPositions['BackEndDeveloper']}
-              openPositionsCount={openPositions['BackEndDeveloper']}
               onClick={() => handleRoleClick(openPositions['BackEndDeveloper'])}
             />
-            <SelectRoleFilter
-              src={SourceCode}
+            <RolesButtons
               textRole="Front-End Developer"
-              openPositions={openPositions['FrontEndDeveloper']}
-              openPositionsCount={openPositions['FrontEndDeveloper']}
               onClick={() =>
                 handleRoleClick(openPositions['FrontEndDeveloper'])
               }
             />
-          </RoleContainerBody>
-        </CollapsibleSectionFilter>
-
-        <CollapsibleSectionFilter title="QA">
-          <RoleContainerBody>
-            <SelectRoleFilter
-              src={DeveloperMode}
+            <RolesButtons
               textRole="QA Lead"
-              openPositions={openPositions['QaLead']}
-              openPositionsCount={openPositions['QaLead']}
               onClick={() => handleRoleClick(openPositions['QaLead'])}
             />
-            <SelectRoleFilter
-              src={SourceCode}
+            <RolesButtons
               textRole="QA Tester"
-              openPositions={openPositions['QaTester']}
-              openPositionsCount={openPositions['QaTester']}
               onClick={() => handleRoleClick(openPositions['QaTester'])}
             />
-          </RoleContainerBody>
-        </CollapsibleSectionFilter>
-
-        <CollapsibleSectionFilter title="Operations">
-          <RoleContainerBody>
-            <SelectRoleFilter
-              src={DeveloperMode}
+            <RolesButtons
               textRole="Volunteer Coordinator"
-              openPositions={openPositions['VoulunteerCordinator']}
-              openPositionsCount={openPositions['VoulunteerCordinator']}
               onClick={() =>
                 handleRoleClick(openPositions['VoulunteerCordinator'])
               }
             />
-            <SelectRoleFilter
-              src={SourceCode}
+            <RolesButtons
               textRole="Social Media Manager"
-              openPositions={openPositions['SocialMediaManager']}
-              openPositionsCount={openPositions['SocialMediaManager']}
               onClick={() =>
                 handleRoleClick(openPositions['SocialMediaManager'])
               }
             />
-          </RoleContainerBody>
-        </CollapsibleSectionFilter>
-      </RoleContainer>
+          </ContainerRoles>
+          <ContainerCommitment>
+            <CommitmentText>Time Commitment</CommitmentText>
+
+            <Commitment />
+          </ContainerCommitment>
+        </ContainerBody>
+      </ContainerMain>
     </>
   );
 };
