@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import RoleCard from '../RoleCard';
+import RoleCard from '../../../RoleCard';
 
 function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
