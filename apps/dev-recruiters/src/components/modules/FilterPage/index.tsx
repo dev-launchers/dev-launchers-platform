@@ -18,6 +18,7 @@ import {
   ResultTitle,
   RolesContainer,
 } from './styledFilterPage';
+import RolesFilterComponent from './RolesFilterComponent';
 
 export interface FilteringComponentProps {
   projects: Project[];
@@ -61,9 +62,14 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
           </FilterConatiner>
           <RolesContainer>
             <ResultProjects>Open Roles({selectedRole.length})</ResultProjects>
-            <SearchRole />
           </RolesContainer>
         </ResultContainer>
+      </BoxContainer>
+      <BoxContainer paddingVertical={10} paddingHorizontal={20}>
+        <RolesFilterComponent
+          projects={projects}
+          opportunities={opportunities}
+        />
       </BoxContainer>
     </Wrapper>
   );
