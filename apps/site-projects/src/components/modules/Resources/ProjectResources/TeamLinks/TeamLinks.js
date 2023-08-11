@@ -2,7 +2,6 @@ import ResourceCard from "./ResourceCard";
 import { ResourceCardsContainer } from "./StyledTeamLinks";
   
 function TeamLinks({ selectedCard }) {
-    console.log(selectedCard)
     return (
         <div>
             <h3>{selectedCard.title}</h3>
