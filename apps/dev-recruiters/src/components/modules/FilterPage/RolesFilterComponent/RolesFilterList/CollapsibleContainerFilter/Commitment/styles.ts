@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+<<<<<<< HEAD
 export const CommitmentMain = styled.div`
   width: 100%;
   height: 80%;
@@ -31,12 +32,19 @@ export const CommitmentText = styled.div`
   display: flex;
   align-items: center;
   font-family: 'Nunito Sans', sans-serif;
+=======
+export const CommitmentText = styled.div`
+  font-size: 14px;
+>>>>>>> d03a4c35 (fix: cleaning the code)
 `;
 
 export const TimeCommitment = styled.div`
   display: flex;
   align-items: center;
+<<<<<<< HEAD
   gap: 10px;
+=======
+>>>>>>> d03a4c35 (fix: cleaning the code)
 `;
 
 export const IconImage = styled.img`
