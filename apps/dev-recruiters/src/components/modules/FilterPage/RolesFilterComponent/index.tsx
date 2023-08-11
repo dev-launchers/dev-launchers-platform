@@ -12,7 +12,7 @@ export interface FilteringComponentProps {
   opportunities: Opportunity[];
 }
 
-export default function RolesFilterComponent({
+export default function FilterComponent({
   projects,
   opportunities,
 }: FilteringComponentProps) {

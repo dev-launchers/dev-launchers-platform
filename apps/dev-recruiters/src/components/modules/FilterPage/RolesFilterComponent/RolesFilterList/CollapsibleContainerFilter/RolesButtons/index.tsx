@@ -1,4 +1,3 @@
-import SelectRoleFilter from '../../RolesFilterComponent/RolesFilterList/CollapsibleContainerFilter/SelectRoleFilter';
 import { ButtonRoles, TextRole } from './styles';
 
 function RolesButtons({ textRole, onClick }) {
