@@ -4,7 +4,7 @@ import { ResourceCardsContainer } from "./StyledTeamLinks";
 function TeamLinks({ selectedCard }) {
     return (
         <div>
-            <h3>{selectedCard.title}</h3>
+            <h3>{selectedCard ? selectedCard.title : "None project available"}</h3>
             <ResourceCardsContainer>
                 {
                     linksList.map((resource,i)=> <ResourceCard key={i} resource={resource} />)
