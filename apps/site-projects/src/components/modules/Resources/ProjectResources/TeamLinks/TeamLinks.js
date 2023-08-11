@@ -1,16 +1,18 @@
 import ResourceCard from "./ResourceCard";
 import { ResourceCardsContainer } from "./StyledTeamLinks";
-
-function TeamLinks() {
+  
+function TeamLinks({ selectedCard }) {
+    console.log(selectedCard)
     return (
-    <div>
-        <h3>Project A resources</h3>
-        <ResourceCardsContainer>
-            {
-                linksList.map((resource,i)=> <ResourceCard key={i} resource={resource} />)
-            }
-        </ResourceCardsContainer>
-    </div>)
+        <div>
+            <h3>{selectedCard.title}</h3>
+            <ResourceCardsContainer>
+                {
+                    linksList.map((resource,i)=> <ResourceCard key={i} resource={resource} />)
+                }
+            </ResourceCardsContainer>
+        </div>
+    )
 }
 
 export default TeamLinks;
