@@ -1,8 +1,11 @@
 import Card from "../../../common/Card";
 import { ProjectContainer } from "../../Projects/StyledProjects";
+import { useUserDataContext } from "../../../../context/UserDataContext";
 
 
 function YourProjects({projects}) {
+    const { userData } = useUserDataContext();
+
     return (
         <div>
               <h3>Your Projects</h3>
