@@ -2,12 +2,8 @@ import React from 'react';
 import {
   BtnSignUp,
   Footer,
-  HeadingContainer,
-  HeadingSubText,
-  HeadingText,
   Wrapper,
   AreaImage,
-  HeadingSubContainer,
   SelectRoleContainer,
   SelectRoleText,
   FooterFirstText,
@@ -19,6 +15,7 @@ import JoinPLeft from '../../../images/JoinPage/Join-page-image-left.png';
 import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 
 import RolesComponent, { FilteringComponentProps } from './RolesComponent';
+import { HeaderJoinPage } from './HeaderJoinPage';
 
 interface Props extends FilteringComponentProps {}
 
@@ -29,18 +26,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   return (
     <Wrapper>
       <BoxContainer paddingVertical={20}>
-        <HeadingContainer>
-          <HeadingText>
-            Want to level up your tech skills and build world-changing products?
-          </HeadingText>
-        </HeadingContainer>
-        <HeadingSubContainer>
-          <HeadingSubText>
-            Join our collaborative, global team as we build the future of
-            technology.
-          </HeadingSubText>
-          <HeadingSubText>Check out our open roles below!</HeadingSubText>
-        </HeadingSubContainer>
+        <HeaderJoinPage />
       </BoxContainer>
 
       <AreaImage>

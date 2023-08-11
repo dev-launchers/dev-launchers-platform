@@ -4,12 +4,8 @@ import { useEffect, useState } from 'react';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import CollapsibleContainerFilter from './CollapsibleContainerFilter';
 import { List } from '../../../../../components/modules/OpportunitiesAggregator/filtering/ProjectsList/StyledProjectsList';
-import SearchRole from '../../SearchRoles';
-import {
-  FilterConatiner,
-  ResultContainer,
-  RolesContainer,
-} from '../../styledFilterPage';
+import SearchRole from './SearchRoles';
+import { FilterConatiner, ResultContainer, RolesContainer } from './styles';
 
 interface Props {
   projects?: ProjectLite[];
