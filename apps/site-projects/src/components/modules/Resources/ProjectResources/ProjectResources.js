@@ -1,10 +1,10 @@
 import { PrejectResourcesContainer } from "./StyledProjectResources";
 import TeamLinks from "./TeamLinks";
 
-function ProjectResources() {
+function ProjectResources({ selectedCard }) {
     return (
         <PrejectResourcesContainer>
-            <TeamLinks/>
+            <TeamLinks selectedCard={selectedCard} />
         </PrejectResourcesContainer>
         );
 }
