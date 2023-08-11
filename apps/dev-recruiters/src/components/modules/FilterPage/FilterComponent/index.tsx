@@ -7,8 +7,8 @@ import {
   ContainerMain,
   ContainerRoles,
 } from './styles';
-import RolesButtons from './RolesButtons';
-import Commitment from './Commitment';
+import RolesButtons from '../RolesFilterComponent/RolesFilterList/CollapsibleContainerFilter/RolesButtons';
+import Commitment from '../RolesFilterComponent/RolesFilterList/CollapsibleContainerFilter/Commitment';
 
 function FilterComponent() {
   return (

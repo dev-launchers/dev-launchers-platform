@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CommitmentText, IconImage, TimeCommitment } from './styles';
-import CheckBox from '../../../../../images/icons/checkbox.png';
+import CheckBox from '../../../../../../../images/icons/checkbox.png';
 
 function Commitment() {
   return (

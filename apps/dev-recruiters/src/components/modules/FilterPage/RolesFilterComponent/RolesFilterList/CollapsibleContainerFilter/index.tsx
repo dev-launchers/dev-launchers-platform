@@ -1,15 +1,4 @@
 import React from 'react';
-import { RoleContainer, RoleContainerBody } from './styles';
-import CollapsibleSectionFilter from './CollapsibleSectionFilter';
-import SelectRoleFilter from './SelectRoleFilter';
-import {
-  FilterConatiner,
-  ResultContainer,
-  ResultProjects,
-  ResultTitle,
-  RolesContainer,
-} from '../../../../../../components/modules/FilterPage/styledFilterPage';
-import FilterComponent from '../../../../../../components/modules/FilterPage/FilterComponent';
 import {
   CommitmentText,
   ContainerBody,
@@ -18,8 +7,8 @@ import {
   ContainerMain,
   ContainerRoles,
 } from '../../../../../../components/modules/FilterPage/FilterComponent/styles';
-import RolesButtons from '../../../../../../components/modules/FilterPage/FilterComponent/RolesButtons';
-import Commitment from '../../../../../../components/modules/FilterPage/FilterComponent/Commitment';
+import RolesButtons from './RolesButtons';
+import Commitment from './Commitment';
 
 interface CollapsibleContainerProps {
   openPositions: {
