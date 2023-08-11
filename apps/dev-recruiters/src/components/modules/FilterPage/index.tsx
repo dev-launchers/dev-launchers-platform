@@ -51,6 +51,12 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
           </BtnSignUp>
         </Footer>
       </BoxContainer>
+      <BoxContainer paddingVertical={10} paddingHorizontal={20}>
+        <RolesFilterComponent
+          projects={projects}
+          opportunities={opportunities}
+        />
+      </BoxContainer>
     </Wrapper>
   );
 };
