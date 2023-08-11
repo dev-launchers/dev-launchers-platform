@@ -1,19 +1,12 @@
-import { ButtonRoles } from './styles';
+import SelectRoleFilter from '../../RolesFilterComponent/RolesFilterList/CollapsibleContainerFilter/SelectRoleFilter';
+import { ButtonRoles, TextRole } from './styles';
 
-function RolesButtons() {
+function RolesButtons({ textRole, onClick }) {
   return (
     <>
-      <ButtonRoles>Project Lead</ButtonRoles>
-      <ButtonRoles>UX Designer</ButtonRoles>
-      <ButtonRoles>UX Researcher</ButtonRoles>
-      <ButtonRoles>Info Architect</ButtonRoles>
-      <ButtonRoles>QA Lead</ButtonRoles>
-      <ButtonRoles>QA Tester</ButtonRoles>
-      <ButtonRoles>Lead Dev</ButtonRoles>
-      <ButtonRoles>Front-End Dev</ButtonRoles>
-      <ButtonRoles>Back-End Dev</ButtonRoles>
-      <ButtonRoles>Social Media Mgr.</ButtonRoles>
-      <ButtonRoles>Volunteer Coord.</ButtonRoles>
+      <ButtonRoles onClick={onClick}>
+        <TextRole>{textRole}</TextRole>
+      </ButtonRoles>
     </>
   );
 }

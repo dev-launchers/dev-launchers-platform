@@ -25,10 +25,11 @@ export const ContainerHead = styled.div`
 `;
 
 export const ContainerBody = styled.div`
-  height: 550px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-top: 20px;
 `;
 
 export const ContainerRoles = styled.div`

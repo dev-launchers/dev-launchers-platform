@@ -55,7 +55,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
         </HeadingSubContainer>
       </BoxContainer>
       <BoxContainer paddingVertical={10} paddingHorizontal={20}>
-        <ResultTitle>Search Result</ResultTitle>
+        {/* <ResultTitle>Search Result</ResultTitle>
         <ResultContainer>
           <FilterConatiner>
             <FilterComponent />
@@ -63,7 +63,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
           <RolesContainer>
             <ResultProjects>Open Roles({selectedRole.length})</ResultProjects>
           </RolesContainer>
-        </ResultContainer>
+        </ResultContainer>*/}
       </BoxContainer>
       <BoxContainer paddingVertical={10} paddingHorizontal={20}>
         <RolesFilterComponent
