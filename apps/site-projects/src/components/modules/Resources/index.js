@@ -4,8 +4,8 @@ import YourProjects from "./YourProjects";
 import { useUserDataContext } from "../../../context/UserDataContext";
 import { useState } from "react";
 
-function findUserRoles(userId, dataArray) {
-  const userRoles = [];
+function findUserTeams(userId, dataArray) {
+  const userTeams = [];
 
   for (const data of dataArray) {
     const team = data.team;
@@ -17,16 +17,16 @@ function findUserRoles(userId, dataArray) {
     const memberMatch = members.find(member => member.id === userId);
 
     if (leaderMatch || memberMatch) {
-      userRoles.push(data);
+      userTeams.push(data);
     }
   }
 
-  return userRoles.length > 0 ? userRoles : null;
+  return userTeams.length > 0 ? userTeams : null;
 }
 
 function Resources({ projects }) {
   const { userData } = useUserDataContext();
-  const userProjects = findUserRoles(6, projects)
+  const userProjects = findUserTeams(6, projects)
   const [selectedCard, setSelectedCard] = useState(userProjects[0])
 
     return (
