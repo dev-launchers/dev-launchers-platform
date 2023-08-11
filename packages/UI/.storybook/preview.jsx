@@ -1,8 +1,9 @@
 import React from "react";
+
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../src/styles/global";
 import theme from "../src/styles/theme";
-import "@devlaunchers/tailwind/tailwind.css"
+
 
 const customViewports = {
   sm: {
@@ -58,6 +59,9 @@ export const decorators = [
   ),
 ];
 export const parameters = {
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
