@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import RoleCard from '../RoleCard';
 
-function SearchRole() {
+function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
   useEffect(() => {
-    const roleJsonString = localStorage.getItem('selectedRole');
-    const selectedRole = JSON.parse(roleJsonString);
-    setSelectedRole(selectedRole);
-  }, []);
+    if (!selectedRoleLabel) {
+      const roleJsonString = localStorage.getItem('selectedRole');
+      const selectedRole = JSON.parse(roleJsonString);
+      setSelectedRole(selectedRole);
+    } else {
+      setSelectedRole(selectedRoleLabel);
+    }
+  }, [selectedRoleLabel]);
 
   return (
     <>
