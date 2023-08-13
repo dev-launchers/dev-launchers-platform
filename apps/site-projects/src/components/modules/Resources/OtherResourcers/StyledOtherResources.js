@@ -49,6 +49,18 @@ cursor:pointer;
 border:none;
 font-size: 16px;
 padding: 8px, 16px, 8px, 16px;
+
+&:hover {
+    background-color: #31464E; 
+  }
 `
 export const OtherResourcersIcon = styled.img`
+width : 4.375rem;
+height :  3.9375rem;
+`
+
+export const OtherResourcersIconInfo = styled.img`
+
+cursor:pointer;
+
 `
