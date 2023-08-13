@@ -7,6 +7,7 @@ export const PageTwoContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const ImageContainer = styled.div`
