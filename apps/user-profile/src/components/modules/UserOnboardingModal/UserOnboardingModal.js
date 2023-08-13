@@ -3,8 +3,9 @@ import Modal from "react-modal";
 import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import PageOne from "./PlatformOnboarding/PageOne";
+import PageThree from "./PlatformOnboarding/PageThree";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
-import LogoMonogram from '../../../images/logo-monogram.png'
+import LogoMonogram from "../../../images/logo-monogram.png"
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
@@ -48,7 +49,8 @@ export default function UserOnboardingModal({ isOpen }) {
                         {/*<PlatformOnboarding/> (stepper) */}
                         
                         {/* <PageOne name="any name"/> */}
-                                       
+
+                        {/* <PageThree />                */}
                     </ModalBody>
                 </ModalContainer>
             </Modal>
