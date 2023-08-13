@@ -2,7 +2,7 @@ import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import React from 'react';
 
-import { env } from '../utils/EnvironmentVariables';
+import { featureFlags } from './../utils/featureflags';
 
 const DEFAULT_USER = {
   id: 1,
@@ -13,7 +13,6 @@ const DEFAULT_USER = {
   profilePictureUrl: 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png',
   socialMediaLinks: [],
   totalPoints: 0,
-	hasOnboarded: true,
   totalSeasonPoints: 0,
   availablePoints: 0,
   volunteerHours: 0,
@@ -32,8 +31,6 @@ const DEFAULT_USER = {
 function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
-  console.log("DEBUGGING in user-profile: ",`${process.env.NEXT_PUBLIC_API_URL}/users/me`, )
-
   React.useEffect(() => {
     axios(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
       withCredentials: true,
@@ -46,7 +43,6 @@ function useUserData() {
           username: currentUser.username,
           email: currentUser.email,
           bio: currentUser.profile.bio,
-					hasOnboarded: currentUser.hasOnboarded,
           profilePictureUrl: currentUser.profile.profilePictureUrl,
           socialMediaLinks: currentUser.profile.socialMediaLinks,
           totalPoints: currentUser.point.totalPoints,
@@ -58,7 +54,7 @@ function useUserData() {
         setIsAuthenticated(true);
       })
       .catch(() => {
-        setIsAuthenticated(false);
+        setIsAuthenticated(featureFlags.inDevelopment);
       });
 
     setTimeout(() => {

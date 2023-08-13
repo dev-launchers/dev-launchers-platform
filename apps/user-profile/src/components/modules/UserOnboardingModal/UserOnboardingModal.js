@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
-import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
-import PageOne from "./PlatformOnboarding/PageOne";
-import Typography from "@devlaunchers/components/components/atoms/Typography";
-import LogoMonogram from '../../../images/logo-monogram.png'
+import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding.js";
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
 
 Modal.setAppElement("#__next");
 
@@ -13,11 +10,12 @@ Modal.setAppElement("#__next");
  * @description This is custom modal for the user onboarding. 
  */
 export default function UserOnboardingModal({ isOpen }) {
+    const { onboardingData: { showIntroductionModal, showPlatformOnboardingModal }, dispatch } = useOnboardingDataContext();
     const [modalIsOpen, setModalIsOpen] = useState(true);
-
     const openModal = () => {
         setModalIsOpen(true);
     }
+
     // const afterOpenModal = () => {
     //     // references are now sync'd and can be accessed.
     // }
@@ -36,20 +34,7 @@ export default function UserOnboardingModal({ isOpen }) {
                 contentLabel="User Onboarding"
             >
                 <ModalContainer>
-                    <ModalHeader>
-                        <img height="33.6px" src={LogoMonogram} alt="dev-launchers" />
-                        <Typography type="h4">Dev Launchers</Typography>
-                    </ModalHeader>
-                    <ModalBody>
-                        {/* <Typography type="h2">Get Started with Devlaunchers</Typography>
-                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography> */}
-                        {/* Onboarding Card Component */}
-                        
-                        {/*<PlatformOnboarding/> (stepper) */}
-                        
-                        {/* <PageOne name="any name"/> */}
-                                       
-                    </ModalBody>
+                    {showPlatformOnboardingModal && <PlatformOnboarding />}
                 </ModalContainer>
             </Modal>
         </>

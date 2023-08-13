@@ -1,30 +1,19 @@
 import { useEffect } from 'react';
-import Stepper from '../../../../components/common/Stepper';
+import Stepper from '../../../common/Stepper';
 import PageTwo from './PageTwo/PageTwo';
+import PageThree from './PageThree/PageThree';
+import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
+import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
+import { onboardingActions } from './../../../../state/actions';
 
 export default function PlatformOnboarding() {
+  const { dispatch } = useOnboardingDataContext();
+
+  const back = () => {
+    dispatch({ type: onboardingActions.SHOW_INTRODUCTION_MODAL });
+  }
+
   const stepperConfig = [
-    {
-      component: <p>Step 1</p>,
-      config: {
-        buttons: {
-          next: {
-            label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
-          },
-          back: {
-            label: 'Back',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
-          },
-        },
-      },
-    },
     {
       component: <PageTwo />,
       config: {
@@ -32,16 +21,20 @@ export default function PlatformOnboarding() {
           next: {
             label: 'Next',
             useDefaultOnClick: true,
+            onClick: () => {
+              console.log('..some function ');
+            },
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: true,
+            useDefaultOnClick: false,
+            onClick: back,
           },
         },
       },
     },
     {
-      component: <p>Step 3</p>,
+      component: <PageThree />,
       config: {
         buttons: {
           next: {
@@ -63,11 +56,9 @@ export default function PlatformOnboarding() {
     },
   ];
 
-  // useEffect(()=>{console.log(stepperConfig, "PLATFORM")});
   return (
-    <>
+    <PlatformOnboardingContainer>
       <Stepper steps={stepperConfig} />
-    </>
+    </PlatformOnboardingContainer>
   );
-  // return(<> <Stepper /> </>);
 }
