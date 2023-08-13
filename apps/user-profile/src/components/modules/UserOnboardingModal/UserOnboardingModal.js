@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding.js";
+import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
+import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
+import PageOne from "./PlatformOnboarding/PageOne";
+import Typography from "@devlaunchers/components/components/atoms/Typography";
+import LogoMonogram from '../../../images/logo-monogram.png'
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
 

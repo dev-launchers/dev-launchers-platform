@@ -1,25 +1,32 @@
 import styled from "styled-components";
 import React from 'react';
-import juniorExperienceSvg from '../../../../images/junior-experience.svg';
-import midExperienceSvg from '../../../../images/mid-experience.svg'
-import onboardingFoldersSvg from '../../../../images/onboarding-folders.svg';
-import seniorExperienceSvg from '../../../../images/senior-experience.svg'
-import userProfileSvg from '../../../../images/user-profile.svg';
+import Developer from '../../../.././images/Onboarding/RoleCard/developer.svg';
+import UX from '../../../.././images/Onboarding/RoleCard/ux-ui.svg';
+import Other from '../../../.././images/Onboarding/RoleCard/other.svg';
 
 export const IconImg = ({iconImg}) => {
     switch (iconImg) {
-        case 'Junior':
-            return <img src={juniorExperienceSvg}/>
-				case 'Mid-Level':
-					return <img src={midExperienceSvg}/>
-				case 'Senior':
-					return <img src={seniorExperienceSvg}/>	
-				case 'Onboarding':
-					return <img src={onboardingFoldersSvg}/>
+        case 'Developer':
+            return (
+                <img src={Developer}/>
+            )
+
+        case 'UX':
+            return (
+                <img src={UX}/>
+            )
+
+        case 'Other':
+            return (
+                <img src={Other}/>
+            )
+
         default:
-            return <img src={userProfileSvg} />
-      }
-} ;
+            return (
+            <img src={Developer} />
+            )
+    }
+};
 
 export const RoleCardContainer = styled.div`
     margin: 50px 10px 0px;
@@ -42,7 +49,11 @@ export const RoleCardContainer = styled.div`
 `;
 
 export const IconWrapper = styled.div`
-    width: 50%;
+    width: 100%;
+    img {
+        width: 50px;
+        height: 50px;
+    };
 `;
 
 

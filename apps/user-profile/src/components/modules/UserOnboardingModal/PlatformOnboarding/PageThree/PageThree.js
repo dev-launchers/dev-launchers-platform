@@ -9,19 +9,19 @@ export default function PageThree(){
             <Typography type="subtitle">We'll use this to recommend open source projects for you to work on.</Typography>
             <ThreeRoleCards>
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="Developer"
                     title="Developer"
                     subtitle="You’re here to work on our codebase"
                     theme="theme1"
                 />
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="UX"
                     title="UX Designer"
                     subtitle="You’re here to make our platform user friendly"
                     theme="theme2"
                 />
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="Other"
                     title=" Other"
                     subtitle="You’re a surprise!"
                     theme="theme3"
