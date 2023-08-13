@@ -2,7 +2,7 @@ import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import React from 'react';
 
-import { featureFlags } from './../utils/featureflags';
+import { featureFlags } from './../utils/featureFlags';
 
 const DEFAULT_USER = {
   id: 1,
