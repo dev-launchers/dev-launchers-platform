@@ -1,4 +1,4 @@
-import { OtherResourcesContainer, TitleResources, OtherResourcersCards, CardsBtn, OtherResourcersIcon } from "./StyledOtherResources";
+import { OtherResourcesContainer, TitleResources, OtherResourcersCards, CardsBtn, OtherResourcersIcon, OtherResourcersIconInfo } from "./StyledOtherResources";
 import Vector from '@/public/images/projects/resources/logos/Vector.png';
 import AI from '@/public/images/projects/resources/logos/AI.png';
 import chromatic from '@/public/images/projects/resources/logos/chromatic.svg';
@@ -19,18 +19,18 @@ const OtherResources = () => {
   <OtherResourcersCards>
   <OtherResourcersIcon src={chromatic} alt="Strapi AI" />
   <CardsBtn>Designer System</CardsBtn>
-   <OtherResourcersIcon src={moreInfo} />
+   <OtherResourcersIconInfo src={moreInfo} />
   </OtherResourcersCards>
   <OtherResourcersCards>
     <OtherResourcersIcon src={Vector} alt="Strapi AI" />
   <CardsBtn>Designer System</CardsBtn>
-   <OtherResourcersIcon src={moreInfo} />
+   <OtherResourcersIconInfo src={moreInfo} />
   </OtherResourcersCards>
   <OtherResourcersCards>
    
     <OtherResourcersIcon src={AI} alt="Strapi AI" />
     <CardsBtn>Strapi AI</CardsBtn>
-    <OtherResourcersIcon src={moreInfo} />
+    <OtherResourcersIconInfo src={moreInfo} />
   </OtherResourcersCards>
 
  
