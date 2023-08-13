@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
-import RoleCard from "./RoleCard/RoleCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
+import PageOne from "./PlatformOnboarding/PageOne";
+import PageThree from "./PlatformOnboarding/PageThree";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
-import LogoMonogram from '../../../images/logo-monogram.png'
+import LogoMonogram from "../../../images/logo-monogram.png"
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 
 Modal.setAppElement("#__next");
@@ -41,14 +42,15 @@ export default function UserOnboardingModal({ isOpen }) {
                         <Typography type="h4">Dev Launchers</Typography>
                     </ModalHeader>
                     <ModalBody>
-                        <Typography type="h2">Get Started with Devlaunchers</Typography>
-                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography>
+                        {/* <Typography type="h2">Get Started with Devlaunchers</Typography>
+                        <Typography type="subtitle">Please complete the following onboarding tasks</Typography> */}
                         {/* Onboarding Card Component */}
                         
                         {/*<PlatformOnboarding/> (stepper) */}
+                        
+                        {/* <PageOne name="any name"/> */}
 
-                        {/* Role Card Component */}
-                                       
+                        {/* <PageThree />                */}
                     </ModalBody>
                 </ModalContainer>
             </Modal>

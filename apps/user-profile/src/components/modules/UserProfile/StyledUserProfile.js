@@ -40,15 +40,40 @@ export const DiscordPlaceHolder = styled.div`
   background: grey;
 `;
 export const Misc = styled.div`
-  // width:80%;
   grid-area: Misc;
   /*display: grid;*/
   gap: 15px;
   grid-template-columns: auto auto;
   margin-bottom: 50px;
 
+  .react-tabs__tab-list {
+  border-bottom: none;
+  }
+
+  .react-tabs__tab {
+    font-family: ${({ theme }) => theme.fonts.headline};
+    border-radius:0;
+    font-size:3rem;
+    border:.3rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
+    background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+    margin-right:.5rem;
+  }
+
+  .react-tabs__tab--selected {
+    border-color:${({ theme }) => theme.colors.NEUTRAL_1};
+    color:${({ theme }) => theme.colors.NEUTRAL_1};
+    background-color:transparent;
+    border-bottom:none;
+  }
+
   @media (orientation: portrait) {
     grid-template-columns: auto;
     grid-template-rows: auto auto;
+
+    .react-tabs__tab {
+      font-size:2rem;
+    }
   }
+
 `;
