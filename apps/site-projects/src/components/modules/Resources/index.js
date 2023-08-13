@@ -1,3 +1,4 @@
+import OtherResources from "./OtherResourcers/OtherResources";
 import ProjectResources from "./ProjectResources";
 import { MainResourcesContainer } from "./StyledResources";
 import YourProjects from "./YourProjects";
@@ -16,7 +17,9 @@ function Resources() {
           >
             <YourProjects projects={dummyData} />
             <ProjectResources/>
+            <OtherResources />
           </MainResourcesContainer>
+          
       );
 }
 
