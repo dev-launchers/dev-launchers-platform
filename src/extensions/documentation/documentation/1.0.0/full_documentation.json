@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2023-08-13T18:55:01.499Z"
+    "x-generation-date": "2023-08-14T09:42:34.879Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2779,6 +2779,9 @@
                           }
                         }
                       },
+                      "discordWebhookUrl": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -4542,6 +4545,9 @@
                                                           }
                                                         }
                                                       }
+                                                    },
+                                                    "discordWebhookUrl": {
+                                                      "type": "string"
                                                     },
                                                     "createdAt": {
                                                       "type": "string",
@@ -7454,6 +7460,9 @@
                                                       }
                                                     }
                                                   }
+                                                },
+                                                "discordWebhookUrl": {
+                                                  "type": "string"
                                                 },
                                                 "createdAt": {
                                                   "type": "string",
@@ -11389,6 +11398,9 @@
                           }
                         }
                       },
+                      "discordWebhookUrl": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -13385,6 +13397,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -16212,6 +16227,9 @@
                                           }
                                         }
                                       },
+                                      "discordWebhookUrl": {
+                                        "type": "string"
+                                      },
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -18977,6 +18995,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -22001,6 +22022,9 @@
                                                         }
                                                       }
                                                     },
+                                                    "discordWebhookUrl": {
+                                                      "type": "string"
+                                                    },
                                                     "createdAt": {
                                                       "type": "string",
                                                       "format": "date-time"
@@ -24972,6 +24996,9 @@
                                         }
                                       }
                                     },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -27731,6 +27758,9 @@
                                         }
                                       }
                                     },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -28985,6 +29015,9 @@
                 "items": {
                   "$ref": "#/components/schemas/LinksImagesComponent"
                 }
+              },
+              "discordWebhookUrl": {
+                "type": "string"
               }
             }
           }
@@ -29831,6 +29864,9 @@
             "items": {
               "$ref": "#/components/schemas/LinksImagesComponent"
             }
+          },
+          "discordWebhookUrl": {
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
@@ -31146,6 +31182,9 @@
                                                 }
                                               }
                                             }
+                                          },
+                                          "discordWebhookUrl": {
+                                            "type": "string"
                                           },
                                           "createdAt": {
                                             "type": "string",
@@ -32687,6 +32726,10 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "user",
+              "project"
+            ],
             "type": "object",
             "properties": {
               "user": {
@@ -32771,6 +32814,10 @@
       },
       "TeamMembership": {
         "type": "object",
+        "required": [
+          "user",
+          "project"
+        ],
         "properties": {
           "user": {
             "type": "object",
@@ -34467,6 +34514,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -37253,6 +37303,9 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "discordWebhookUrl": {
+                                      "type": "string"
                                     },
                                     "createdAt": {
                                       "type": "string",

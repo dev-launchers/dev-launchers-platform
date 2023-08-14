@@ -119,6 +119,9 @@
       "type": "component",
       "repeatable": true,
       "component": "links.images"
+    },
+    "discordWebhookUrl": {
+      "type": "string"
     }
   }
 }
