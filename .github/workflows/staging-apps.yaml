@@ -44,6 +44,9 @@ jobs:
         shell: bash
         run: "sed -ie 's$unoptimized: false$unoptimized: true$g' ./apps/app/next.config.js"
         
+      - name: Change environment to staging
+        run: mv apps/app/.env.staging apps/app/.env.production
+        
       - name: Run build
         run: yarn workspace @devlaunchers/app build
 

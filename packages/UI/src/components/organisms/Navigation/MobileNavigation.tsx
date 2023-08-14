@@ -76,7 +76,7 @@ const MobileNavigation = ({
               <Box gap={'40px'} flexDirection="column" alignItems="center">
                 {Object.entries(links).map(([name, href], i) => {
                   if (Array.isArray(href))
-                    return <NavDropdown title={name} links={href} />;
+                    return <NavDropdown title={name} links={href} key={i} />;
                   return (
                     <li key={i}>
                       <Link href={href} passHref>

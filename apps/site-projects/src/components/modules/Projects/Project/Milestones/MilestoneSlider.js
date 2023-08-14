@@ -50,7 +50,7 @@ function MileStoneSlider({ milestones, slidesToShow, isCyclic, isAutoplay }) {
               <div style={{ display: "flex", flexWrap: "wrap" }}>
                 {/* Added for cyclic functionality between milestones */}
 
-                {milestone.task.map((task) => (
+                {milestone.task?.map((task) => (
                   <TaskContent key={i} primary={task.isReached}>
                     <div>{task.title}</div>
                     <p

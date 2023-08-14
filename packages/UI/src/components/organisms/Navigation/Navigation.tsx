@@ -63,7 +63,9 @@ export default function Navigation({ user }: NavigationProps) {
                   <Box gap={'16px'} alignItems="baseline">
                     {Object.entries(links).map(([name, href], i) => {
                       if (Array.isArray(href))
-                        return <NavDropdown title={name} links={href} />;
+                        return (
+                          <NavDropdown title={name} links={href} key={i} />
+                        );
                       return (
                         <li style={ListStyle} key={i}>
                           <Link href={href} passHref>

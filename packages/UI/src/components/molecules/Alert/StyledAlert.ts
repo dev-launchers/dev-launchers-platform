@@ -1,9 +1,10 @@
+import { m } from 'framer-motion';
 import styled from 'styled-components';
 import type { AlertProps } from '.';
 
 type Styles = Omit<Partial<AlertProps>, 'text'>;
 
-export const Container = styled.div<Styles>`
+export const Container = styled(m.div)<Styles>`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -27,5 +28,11 @@ export const Container = styled.div<Styles>`
         stroke: ${signalColor};
       `;
     }}
+  }
+
+  & > button {
+    border: none;
+    background: none;
+    cursor: pointer;
   }
 `;
