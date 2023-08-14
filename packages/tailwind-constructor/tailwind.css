@@ -1,6 +1,8 @@
 /*
 ! tailwindcss v3.3.3 | MIT License | https://tailwindcss.com
-*//*
+*/
+
+/*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
@@ -8,10 +10,14 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box; /* 1 */
-  border-width: 0; /* 2 */
-  border-style: solid; /* 2 */
-  border-color: var(--gray-200, #edf2f7); /* 2 */
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: var(--gray-200, #edf2f7);
+  /* 2 */
 }
 
 ::before,
@@ -29,14 +35,21 @@
 */
 
 html {
-  line-height: 1.5; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -moz-tab-size: 4; /* 3 */
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
   -o-tab-size: 4;
-     tab-size: 4; /* 3 */
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
-  font-feature-settings: normal; /* 5 */
-  font-variation-settings: normal; /* 6 */
+     tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
 }
 
 /*
@@ -45,8 +58,10 @@ html {
 */
 
 body {
-  margin: 0; /* 1 */
-  line-height: inherit; /* 2 */
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
 }
 
 /*
@@ -56,9 +71,12 @@ body {
 */
 
 hr {
-  height: 0; /* 1 */
-  color: inherit; /* 2 */
-  border-top-width: 1px; /* 3 */
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
 }
 
 /*
@@ -111,8 +129,10 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
-  font-size: 1em; /* 2 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */
 }
 
 /*
@@ -150,9 +170,12 @@ sup {
 */
 
 table {
-  text-indent: 0; /* 1 */
-  border-color: inherit; /* 2 */
-  border-collapse: collapse; /* 3 */
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
 }
 
 /*
@@ -166,15 +189,24 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-feature-settings: inherit; /* 1 */
-  font-variation-settings: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  font-weight: inherit; /* 1 */
-  line-height: inherit; /* 1 */
-  color: inherit; /* 1 */
-  margin: 0; /* 2 */
-  padding: 0; /* 3 */
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
 }
 
 /*
@@ -195,9 +227,12 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
-  -webkit-appearance: button; /* 1 */
-  background-color: transparent; /* 2 */
-  background-image: none; /* 2 */
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
 }
 
 /*
@@ -239,8 +274,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
 }
 
 /*
@@ -257,8 +294,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
 }
 
 /*
@@ -309,6 +348,7 @@ menu {
 /*
 Reset default styling for dialogs.
 */
+
 dialog {
   padding: 0;
 }
@@ -327,14 +367,18 @@ textarea {
 */
 
 input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1; /* 1 */
-  color: var(--gray-400, #cbd5e0); /* 2 */
+  opacity: 1;
+  /* 1 */
+  color: var(--gray-400, #cbd5e0);
+  /* 2 */
 }
 
 input::placeholder,
 textarea::placeholder {
-  opacity: 1; /* 1 */
-  color: var(--gray-400, #cbd5e0); /* 2 */
+  opacity: 1;
+  /* 1 */
+  color: var(--gray-400, #cbd5e0);
+  /* 2 */
 }
 
 /*
@@ -349,6 +393,7 @@ button,
 /*
 Make sure disabled buttons don't get the pointer cursor.
 */
+
 :disabled {
   cursor: default;
 }
@@ -367,8 +412,10 @@ audio,
 iframe,
 embed,
 object {
-  display: block; /* 1 */
-  vertical-align: middle; /* 2 */
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
 }
 
 /*
@@ -382,6 +429,7 @@ video {
 }
 
 /* Make elements with the HTML hidden attribute stay hidden by default */
+
 [hidden] {
   display: none;
 }
@@ -486,60 +534,39 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-
-
 .container {
   width: 100%;
 }
 
-
-
 @media (min-width: 640px) {
-
   .container {
     max-width: 640px;
   }
 }
 
-
-
 @media (min-width: 768px) {
-
   .container {
     max-width: 768px;
   }
 }
 
-
-
 @media (min-width: 1024px) {
-
   .container {
     max-width: 1024px;
   }
 }
 
-
-
 @media (min-width: 1280px) {
-
   .container {
     max-width: 1280px;
   }
 }
 
-
-
 @media (min-width: 1536px) {
-
   .container {
     max-width: 1536px;
   }
 }
-@import "output/core.css";
-@import "output/light.css";
-@import "output/dark.css";
-@import "custom.css";
 
 .visible {
   visibility: visible;
@@ -581,6 +608,10 @@ video {
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .table {
   display: table;
 }
@@ -595,6 +626,10 @@ video {
 
 .hidden {
   display: none;
+}
+
+.h-11 {
+  height: var(--11, 2.75rem);
 }
 
 .h-5 {
@@ -613,8 +648,16 @@ video {
   width: var(--6, 1.5rem);
 }
 
+.w-64 {
+  width: var(--64, 16rem);
+}
+
 .flex-shrink {
   flex-shrink: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 
 .flex-grow {
@@ -637,12 +680,59 @@ video {
   resize: both;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-wrap {
   flex-wrap: wrap;
 }
 
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.gap-2 {
+  gap: var(--2, 0.5rem);
+}
+
 .border {
   border-width: 1px;
+}
+
+.bg-\[\#111111\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 17 17 / var(--tw-bg-opacity));
+}
+
+.py-3 {
+  padding-top: var(--3, 0.75rem);
+  padding-bottom: var(--3, 0.75rem);
+}
+
+.font-nunito-sans {
+  font-family: var(--nunito-sans, Nunito Sans);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-\[1rem\] {
+  font-size: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-normal {
+  font-weight: 400;
 }
 
 .uppercase {
@@ -655,6 +745,15 @@ video {
 
 .italic {
   font-style: italic;
+}
+
+.text-\[\#888888\] {
+  --tw-text-opacity: 1;
+  color: rgb(136 136 136 / var(--tw-text-opacity));
+}
+
+.text-\[\] {
+  color: ;
 }
 
 .underline {
@@ -700,4 +799,105 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+.hover\:bg-\[\#f9f9f9\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 249 249 / var(--tw-bg-opacity));
+}
+
+.active\:border-b-2:active {
+  border-bottom-width: 2px;
+}
+
+.active\:border-solid:active {
+  border-style: solid;
+}
+
+.active\:border-\[\#3350e5\]:active {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 80 229 / var(--tw-border-opacity));
+}
+
+.active\:font-nunito-sans:active {
+  font-family: var(--nunito-sans, Nunito Sans);
+}
+
+.active\:text-\[1rem\]:active {
+  font-size: 1rem;
+}
+
+.active\:font-bold:active {
+  font-weight: 700;
+}
+
+.active\:text-\[\#000000\]:active {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.data-\[\]\:border-b-2[data-] {
+  border-bottom-width: 2px;
+}
+
+.data-\[state\=\]\:border-b-2[data-state] {
+  border-bottom-width: 2px;
+}
+
+.data-\[state\=active\]\:border-b-2[data-state=active] {
+  border-bottom-width: 2px;
+}
+
+.data-\[\]\:border-solid[data-] {
+  border-style: solid;
+}
+
+.data-\[state\=\]\:border-solid[data-state] {
+  border-style: solid;
+}
+
+.data-\[state\=active\]\:border-solid[data-state=active] {
+  border-style: solid;
+}
+
+.data-\[\]\:border-\[\#3350e5\][data-] {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 80 229 / var(--tw-border-opacity));
+}
+
+.data-\[state\=\]\:border-\[\#3350e5\][data-state] {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 80 229 / var(--tw-border-opacity));
+}
+
+.data-\[state\=active\]\:border-\[\#3350e5\][data-state=active] {
+  --tw-border-opacity: 1;
+  border-color: rgb(51 80 229 / var(--tw-border-opacity));
+}
+
+.data-\[\]\:font-bold[data-] {
+  font-weight: 700;
+}
+
+.data-\[state\=\]\:font-bold[data-state] {
+  font-weight: 700;
+}
+
+.data-\[state\=active\]\:font-bold[data-state=active] {
+  font-weight: 700;
+}
+
+.data-\[\]\:text-\[\#000000\][data-] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.data-\[state\=\]\:text-\[\#000000\][data-state] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.data-\[state\=active\]\:text-\[\#000000\][data-state=active] {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
