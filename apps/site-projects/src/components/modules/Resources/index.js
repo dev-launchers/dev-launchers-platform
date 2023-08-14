@@ -27,7 +27,7 @@ function findUserTeams(userId, dataArray) {
 function Resources({ projects }) {
   const { userData } = useUserDataContext();
   const userProjects = findUserTeams(userData.id, projects)
-  const [selectedCard, setSelectedCard] = useState(userProjects[0])
+  const [selectedCard, setSelectedCard] = useState(userProjects !== null ? userProjects[0] : null)
 
     return (
           <MainResourcesContainer
