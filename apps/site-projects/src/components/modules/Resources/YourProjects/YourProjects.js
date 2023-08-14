@@ -1,38 +1,18 @@
 import Card from "../../../common/Card";
 import { ProjectContainer } from "../../Projects/StyledProjects";
+import { InnerProjectContainer, YourProjectsContainer } from "./StyledYourProjects";
 
 function YourProjects({ userProjects, selectedCard, setSelectedCard }) {
     return (
-        <div>
+        <YourProjectsContainer>
               <h3>Your Projects</h3>
-              <ul
-                style={{
-                  paddingLeft: '0',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '1.5rem',
-                }}
-              >
+              <ul>
                 {userProjects ? (
                   userProjects.map((project) => {
                     return (
                       <ProjectContainer key={project.id}>
-                        <div style={{ position: 'relative', width: '100%', height: '100%', border: selectedCard.id == project.id ? '6px solid #3A7CA5' : 'none' }}>
-                        <button style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          background: 'transparent',
-                          border: 'none',
-                          outline: 'none',
-                          zIndex: 999,
-                          cursor: "pointer",
-                          }}
-                          onClick={() => setSelectedCard(project)}
-                        >
-                        </button>
+                        <InnerProjectContainer projectid={project.id} selectedcardid={selectedCard.id}>
+                          <button onClick={() => setSelectedCard(project)} />
                           <Card
                             isLinkingInside
                             style={{ margin: 0, width: '100%', height: '100%' }}
@@ -45,7 +25,7 @@ function YourProjects({ userProjects, selectedCard, setSelectedCard }) {
                               imageSrc: project?.heroImage?.url,
                             }}
                             />
-                        </div>
+                        </InnerProjectContainer>
                       </ProjectContainer>
                     );
                   })
@@ -53,7 +33,7 @@ function YourProjects({ userProjects, selectedCard, setSelectedCard }) {
                   <p>You don't have any projects available yet!</p>
                 )}
               </ul>
-            </div>
+            </YourProjectsContainer>
     )
 }
 
