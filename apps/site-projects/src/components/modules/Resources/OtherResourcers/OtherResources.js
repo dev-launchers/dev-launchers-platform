@@ -1,10 +1,6 @@
-import { OtherResourcesContainer, TitleResources, OtherResourcersCards, CardsBtn, OtherResourcersIcon, OtherResourcersIconInfo } from "./StyledOtherResources";
-import StoryBook from '@/public/images/projects/resources/logos/Vector.png';
-import Strapi from '@/public/images/projects/resources/logos/strapi.svg';
-import chromatic from '@/public/images/projects/resources/logos/chromatic.svg';
+import { OtherResourcesContainer, TitleResources } from "./StyledOtherResources";
 import moreInfo from '@/public/images/projects/resources/logos/moreInfo.svg';
-
-
+import OtherResourcersCard from "./OtherResourcesCard";
 
 
 const OtherResources = () => {
@@ -12,38 +8,48 @@ const OtherResources = () => {
   return (
   <OtherResourcesContainer>
   <TitleResources>
-  Other Resources
+   Other Resources
 
   </TitleResources>
 
-  <OtherResourcersCards>
-  <OtherResourcersIcon src={chromatic} alt="chromatic" />
-  <a href="https://www.chromatic.com/start" target="_blank">
-  <CardsBtn>Chromatic</CardsBtn>
-  </a>
-  <OtherResourcersIconInfo src={moreInfo} alt="more info" />
-  </OtherResourcersCards>
-  <OtherResourcersCards>
-  <OtherResourcersIcon src={StoryBook} alt="storybook" />
-  <a href="https://storybook.js.org/" target="_blank">
-  <CardsBtn>StoryBook</CardsBtn>
-  </a>
-  <OtherResourcersIconInfo src={moreInfo} alt="more info"  />
-  </OtherResourcersCards>
-  <OtherResourcersCards>
-   
-  <OtherResourcersIcon src={Strapi} alt="strapi"/>
-  <a href="https://github.com/dev-launchers/strapiv4/" target="_blank">
-  <CardsBtn>Strapi</CardsBtn>
-  </a>
-  <OtherResourcersIconInfo src={moreInfo} alt="more info"  />
-  </OtherResourcersCards>
-
  
+  {OtherResourcersData.map((resource, i) => (
+  <OtherResourcersCard key={i} resource={resource} />
+))}
+
+  
   </OtherResourcesContainer>
   )
 
 }
+
+
+
+const OtherResourcersData = [
+  {
+    img: "chromatic.svg",
+    titleButton: "Chromatic",
+    alt : "Chromatic",
+    link : "https://www.chromatic.com/start",
+    moreInfo: moreInfo
+},
+{
+  img: "Vector.png",
+  titleButton: "StoryBook",
+  alt : "storybook",
+  link : "https://storybook.js.org/",
+  moreInfo: moreInfo
+},
+
+  {
+      img: "strapi.svg",
+      titleButton: "Strapi",
+      alt : "strapi",
+      link : "https://github.com/dev-launchers/strapiv4/",
+      moreInfo: moreInfo
+  },
+
+];
 
 
 export default OtherResources;
