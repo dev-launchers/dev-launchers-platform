@@ -1,43 +1,39 @@
 import Card from "../../../common/Card";
 import { ProjectContainer } from "../../Projects/StyledProjects";
-import { useUserDataContext } from "../../../../context/UserDataContext";
+import { InnerProjectContainer, YourProjectsContainer } from "./StyledYourProjects";
 
-
-function YourProjects({projects}) {
-    const { userData } = useUserDataContext();
-
+function YourProjects({ userProjects, selectedCard, setSelectedCard }) {
     return (
-        <div>
+        <YourProjectsContainer>
               <h3>Your Projects</h3>
-              <ul
-                style={{
-                  paddingLeft: '0',
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '1.5rem',
-                }}
-              >
-                {projects.map((project) => {
-                  return (
-                    <ProjectContainer key={project.id}>
-                      <Card
-                        isLinkingInside
-                        style={{ margin: 0, width: '100%', height: '100%' }}
-                        cardData={{
-                          id: project.id,
-                          title: project.title,
-                          secondaryText: `Commitment level: ${project.commitmentLevel}`,
-                          tags: project.interests?.map(({ interest }) => interest),
-                          description: project.catchPhrase,
-                          href: project.slug,
-                          imageSrc: project?.heroImage?.url,
-                        }}
-                      />
-                    </ProjectContainer>
-                  );
-                })}
+              <ul>
+                {userProjects ? (
+                  userProjects.map((project) => {
+                    return (
+                      <ProjectContainer key={project.id}>
+                        <InnerProjectContainer projectid={project.id} selectedcardid={selectedCard.id}>
+                          <button onClick={() => setSelectedCard(project)} />
+                          <Card
+                            isLinkingInside
+                            style={{ margin: 0, width: '100%', height: '100%' }}
+                            cardData={{
+                              id: project.id,
+                              title: project.title,
+                              secondaryText: `Commitment level: ${project.commitmentLevel}`,
+                              tags: project.interests?.map(({ interest }) => interest),
+                              description: project.catchPhrase,
+                              imageSrc: project?.heroImage?.url,
+                            }}
+                            />
+                        </InnerProjectContainer>
+                      </ProjectContainer>
+                    );
+                  })
+                ) : (
+                  <p>You don't have any projects available yet!</p>
+                )}
               </ul>
-            </div>
+            </YourProjectsContainer>
     )
 }
 

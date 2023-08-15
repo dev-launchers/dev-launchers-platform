@@ -59,38 +59,6 @@ export const DEFAULT_USER = {
   ],
 };
 
-function findUserRoles(userId, dataArray) {
-  const userRoles = [];
-
-  for (const data of dataArray) {
-    const team = data.team;
-    const leaders = team.leaders;
-    const members = team.members;
-
-    // Search for the user ID in leaders array
-    const leaderMatch = leaders.find(leader => leader.id === userId);
-
-    // If user ID is not found in leaders, search in members array
-    const memberMatch = members.find(member => member.id === userId);
-
-    // Check if user ID is found in either leaders or members
-    if (leaderMatch || memberMatch) {
-      const teamName = data.title;
-      const userRole = leaderMatch ? leaderMatch.role : memberMatch.role;
-      
-      // Store the found role and team in the userRoles array
-      userRoles.push({
-        team: teamName,
-        role: userRole
-      });
-    }
-  }
-
-  // Return array of roles and teams
-  return userRoles.length > 0 ? userRoles : null;
-}
-
-
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
@@ -119,25 +87,6 @@ function useUserData() {
         });
 
         setIsAuthenticated(true);
-
-        axios(`${env().STRAPI_URL}/projects?_publicationState=live`, {
-          headers: {
-            Accept: "application/json, text/plain, */*",
-            "User-Agent":
-              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-          },
-        })
-          .then(({ data: projects }) => {
-            const userRoles = findUserRoles(currentUser.id, projects);
-
-              setUserData(prevUserData => ({
-                ...prevUserData,
-                positions: userRoles ?? null,
-              }));
-
-          })
-          .catch(() => {});
-
       })
       .catch(() => {
         // setUserData({ id: "invalid" });
