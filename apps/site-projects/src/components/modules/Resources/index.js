@@ -3,6 +3,7 @@ import { MainResourcesContainer } from "./StyledResources";
 import YourProjects from "./YourProjects";
 import { useUserDataContext } from "../../../context/UserDataContext";
 import { useState } from "react";
+import OtherResources from "./OtherResourcers/OtherResources";
 
 function findUserTeams(userId, dataArray) {
   const userTeams = [];
@@ -40,7 +41,8 @@ function Resources({ projects }) {
             }}
           >
             <YourProjects userProjects={userProjects} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
-            <ProjectResources selectedCard={selectedCard} />
+            <ProjectResources selectedCard={selectedCard} />    
+            <OtherResources />
           </MainResourcesContainer>
       );
 }
