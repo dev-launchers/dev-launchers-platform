@@ -1,9 +1,34 @@
 import ProjectResources from "./ProjectResources";
 import { MainResourcesContainer } from "./StyledResources";
 import YourProjects from "./YourProjects";
+import { useUserDataContext } from "../../../context/UserDataContext";
+import { useState } from "react";
 
+function findUserTeams(userId, dataArray) {
+  const userTeams = [];
 
-function Resources() {
+  for (const data of dataArray) {
+    const team = data.team;
+    const leaders = team.leaders;
+    const members = team.members;
+
+    const leaderMatch = leaders.find(leader => leader.id === userId);
+
+    const memberMatch = members.find(member => member.id === userId);
+
+    if (leaderMatch || memberMatch) {
+      userTeams.push(data);
+    }
+  }
+
+  return userTeams.length > 0 ? userTeams : null;
+}
+
+function Resources({ projects }) {
+  const { userData } = useUserDataContext();
+  const userProjects = findUserTeams(userData.id, projects)
+  const [selectedCard, setSelectedCard] = useState(userProjects !== null ? userProjects[0] : null)
+
     return (
           <MainResourcesContainer
             style={{
@@ -14,8 +39,8 @@ function Resources() {
               maxWidth: '69rem',
             }}
           >
-            <YourProjects projects={dummyData} />
-            <ProjectResources/>
+            <YourProjects userProjects={userProjects} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
+            <ProjectResources selectedCard={selectedCard} />
           </MainResourcesContainer>
       );
 }
