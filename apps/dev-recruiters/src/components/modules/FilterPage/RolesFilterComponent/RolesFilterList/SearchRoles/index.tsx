@@ -13,7 +13,7 @@ import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 
-function SearchRole({ selectedRoleLabel }) {
+function SearchRole({ selectedRoleLabel, commitmentRange }) {
   const [selectedRole, setSelectedRole] = useState([]);
 
   const { commitmentRange } = useOpportunitiesContext();
@@ -33,6 +33,7 @@ function SearchRole({ selectedRoleLabel }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
+<<<<<<< HEAD
     console.log(selectedRoleLabel);
     console.log(commitmentRange);
   }, [selectedRoleLabel, commitmentRange]);
@@ -51,7 +52,21 @@ function SearchRole({ selectedRoleLabel }) {
     }
   }, [commitmentRange, selectedRoleLabel]);
   */
+=======
+>>>>>>> 2bc7ee42 (fix: bug fix)
 
+    // Apply commitment filter if commitmentRange is provided
+    if (commitmentRange) {
+      const filteredRoles = selectedRole.filter(
+        (role) =>
+          role.commitmentHoursPerWeek >= commitmentRange.min &&
+          role.commitmentHoursPerWeek <= commitmentRange.max
+      );
+      setSelectedRole(filteredRoles);
+    }
+  }, [selectedRoleLabel, commitmentRange]);
+
+  console.log('teste', selectedRole);
   console.log(selectedRole.length);
 
   return (

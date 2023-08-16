@@ -15,12 +15,15 @@ interface CollapsibleContainerProps {
   };
   onRoleSelection: (roleLabel: string) => void;
   selectRoleLabel: string;
+  handleCommitmentFilter: any;
+  isFilterActive: any;
 }
 
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
   openPositions: openPositions,
   onRoleSelection,
-  selectRoleLabel,
+  handleCommitmentFilter,
+  isFilterActive,
 }) => {
   const [roleActive, setRoleActive] = useState(null);
 
@@ -142,8 +145,15 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 =======
             <CommitmentText>Time Commitment</CommitmentText>
 
+<<<<<<< HEAD
             <Commitment selectRoleLabel={selectRoleLabel} />
 >>>>>>> b4f9e26e (build: work in time commitment)
+=======
+            <Commitment
+              handleCommitmentFilter={handleCommitmentFilter}
+              isFilterActive={isFilterActive}
+            />
+>>>>>>> 2bc7ee42 (fix: bug fix)
           </ContainerCommitment>
         </ContainerBody>
       </ContainerMain>

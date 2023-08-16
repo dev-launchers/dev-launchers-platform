@@ -20,11 +20,15 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
   if (!projectsLoaded) return <div>loading please wait</div>;
 
   const [selectRoleLabel, setSelectRoleLabel] = useState(null);
+  const [commitmentRange, setCommitmentRange] = useState(null);
+  const [isCommitmentFilterActive, setIsCommitmentFilterActive] =
+    useState(false);
 
   function handleRoleSelection(roleLabel) {
     setSelectRoleLabel(roleLabel);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   const openPositions = useOpenPositions(projects);
@@ -36,6 +40,21 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 >>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
 
 =======
+=======
+  function handleCommitmentFilter(range) {
+    setCommitmentRange(range);
+  }
+
+  function handleCommitmentFilterToggle() {
+    setIsCommitmentFilterActive(!isCommitmentFilterActive);
+    if (!isCommitmentFilterActive) {
+      handleCommitmentFilter({ min: 0, max: 4 }); // Aplica o filtro ao ativar o checkbox
+    } else {
+      handleCommitmentFilter(null); // Desativa o filtro ao desativar o checkbox
+    }
+  }
+
+>>>>>>> 2bc7ee42 (fix: bug fix)
   console.log('Roles', selectRoleLabel);
 
   // Usando o hook personalizado para obter os openPositions
@@ -51,10 +70,15 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
             openPositions={openPositions}
             onRoleSelection={handleRoleSelection}
             selectRoleLabel={selectRoleLabel}
+            handleCommitmentFilter={handleCommitmentFilterToggle}
+            isFilterActive={isCommitmentFilterActive}
           />
         </FilterConatiner>
         <RolesContainer>
-          <SearchRole selectedRoleLabel={selectRoleLabel} />
+          <SearchRole
+            selectedRoleLabel={selectRoleLabel}
+            commitmentRange={commitmentRange}
+          />
         </RolesContainer>
       </ResultContainer>
     </List>
