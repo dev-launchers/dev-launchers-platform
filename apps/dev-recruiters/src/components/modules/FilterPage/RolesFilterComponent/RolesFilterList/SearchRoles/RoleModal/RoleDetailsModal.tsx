@@ -5,7 +5,10 @@ import {
   BulletListItem,
   CloseIcon,
   ColorBox,
+<<<<<<< HEAD
   ExpectationsListItem,
+=======
+>>>>>>> b4f9e26e (build: work in time commitment)
   ModalDescriptionSection,
   ModalProjectSection,
   TagsList,
@@ -58,7 +61,11 @@ function ModalTopSection({ position }: Props) {
       <ModalProjectSection>
         <h3>{position.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
+<<<<<<< HEAD
         <h4>Product Platform</h4>
+=======
+        <h4>PRODUCT PLATFORM</h4>
+>>>>>>> b4f9e26e (build: work in time commitment)
         <h6>TIME COMMITMENT</h6>
         <p>{position.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>

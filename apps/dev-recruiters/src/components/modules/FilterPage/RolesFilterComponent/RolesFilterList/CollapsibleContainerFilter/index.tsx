@@ -137,7 +137,13 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             />
           </ContainerRoles>
           <ContainerCommitment>
+<<<<<<< HEAD
             <Commitment />
+=======
+            <CommitmentText>Time Commitment</CommitmentText>
+
+            <Commitment selectRoleLabel={selectRoleLabel} />
+>>>>>>> b4f9e26e (build: work in time commitment)
           </ContainerCommitment>
         </ContainerBody>
       </ContainerMain>

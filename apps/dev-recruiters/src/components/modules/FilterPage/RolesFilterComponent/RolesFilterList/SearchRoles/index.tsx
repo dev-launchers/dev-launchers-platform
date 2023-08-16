@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import RoleCard from './RoleCard';
+<<<<<<< HEAD
 
 import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
+=======
+>>>>>>> b4f9e26e (build: work in time commitment)
 
-import { OpenRolesText } from './styles';
+import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
+import SuggestedRole from './SuggestedRole';
 
 function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
@@ -48,11 +52,14 @@ function SearchRole({ selectedRoleLabel }) {
   }, [commitmentRange, selectedRoleLabel]);
   */
 
-  console.log(selectedRole);
+  console.log(selectedRole.length);
 
   return (
     <>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b4f9e26e (build: work in time commitment)
       <>
         <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
         {selectedRole.length === 0 ? (
@@ -72,6 +79,7 @@ function SearchRole({ selectedRoleLabel }) {
           </RolesContainer>
         )}
       </>
+<<<<<<< HEAD
 =======
       <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
       <RolesContainer>
@@ -80,6 +88,8 @@ function SearchRole({ selectedRoleLabel }) {
         ))}
       </RolesContainer>
 >>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
+=======
+>>>>>>> b4f9e26e (build: work in time commitment)
     </>
   );
 }
