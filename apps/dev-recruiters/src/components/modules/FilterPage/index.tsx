@@ -1,9 +1,10 @@
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project } from '@devlaunchers/models/project';
 import BoxContainer from '../../common/BoxContainer';
-import { Wrapper } from '../NewJoinPageComponent/StyledNewJoinPage';
+
 import { HeaderJoinPage } from '../NewJoinPageComponent/HeaderJoinPage';
 import FilterComponent from './RolesFilterComponent';
+import { Wrapper } from './styles';
 
 export interface FilteringComponentProps {
   projects: Project[];
