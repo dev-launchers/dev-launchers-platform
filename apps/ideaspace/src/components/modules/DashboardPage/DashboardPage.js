@@ -69,7 +69,7 @@ function DashboardPage() {
       {!isAuthenticated ? (
         <SignInSection
           label='Please sign in to view your dashboard!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+          redirectURL={process.env.FRONT_END_URL + '/ideaspace/dashboard'}
         />
       ) : (
         <PageWrapper>

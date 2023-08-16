@@ -52,7 +52,9 @@ export default function AccountDropdown(props) {
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <MenuButton fontSize="1.2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
+        <MenuButton fontSize="1.2rem" 
+          href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
+            +`?redirectURL=${process.env.FRONT_END_URL}/users/me`}>
           Sign In{" "}
         </MenuButton>
       )}
