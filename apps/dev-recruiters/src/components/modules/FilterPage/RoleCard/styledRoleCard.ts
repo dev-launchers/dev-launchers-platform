@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   max-width: 350px;
   border-radius: 10px;
-  margin: 20px;
+  margin-left: 4.5rem;
+  margin-top: 2rem;
 
   &:before {
     content: '';

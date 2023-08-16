@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const ContainerMain = styled.div`
   width: 100%;
   background-color: white;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
   border-radius: 8px;
   display: inline-block;
   flex-direction: column;
@@ -23,7 +27,11 @@ export const ContainerHead = styled.div`
 `;
 
 export const ContainerBody = styled.div`
+<<<<<<< HEAD
   height: 650px;
+=======
+  height: 600px;
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -40,9 +48,14 @@ export const ContainerRoles = styled.div`
 `;
 
 export const ContainerCommitment = styled.div`
+<<<<<<< HEAD
   height: 250px;
   display: flex;
   align-items: center;
+=======
+  height: 140px;
+  padding: 0 20px;
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
 `;
 
 export const CommitmentText = styled.div`

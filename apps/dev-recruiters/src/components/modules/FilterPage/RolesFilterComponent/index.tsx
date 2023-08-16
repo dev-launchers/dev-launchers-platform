@@ -1,5 +1,9 @@
 import { Project, ProjectLite } from '@devlaunchers/models/project';
+<<<<<<< HEAD
 import { useEffect } from 'react';
+=======
+import { useEffect, useState } from 'react';
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import useProjectRole from '../../NewJoinPageComponent/UseProjectRole/index';
 import RolesFilterList from '../RolesFilterComponent/RolesFilterList';

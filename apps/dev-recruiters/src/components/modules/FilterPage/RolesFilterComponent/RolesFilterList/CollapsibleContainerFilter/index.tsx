@@ -20,6 +20,7 @@ interface CollapsibleContainerProps {
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
   openPositions: openPositions,
   onRoleSelection,
+  selectRoleLabel,
 }) => {
   const [roleActive, setRoleActive] = useState(null);
 
@@ -74,7 +75,11 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             <RolesButtons
               textRole="QA Lead"
               onClick={() => handleRoleClick('QaLead', openPositions['QaLead'])}
+<<<<<<< HEAD
               isActive={roleActive === 'QaLead'}
+=======
+              isActive={selectedRole === 'QaLead'}
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
             />
             <RolesButtons
               textRole="QA Tester"

@@ -13,7 +13,11 @@ export const ResultContainer = styled.div`
 export const FilterConatiner = styled.div`
   background-color: white;
   width: 21%;
+<<<<<<< HEAD
   height: 750px;
+=======
+  height: 800px;
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
   border-radius: 8px;
   box-shadow: 2px 2px 8px 0 #7f7e7f;
 `;
@@ -29,6 +33,9 @@ export const SearchResult = styled.div`
   justify-content: center;
   font-weight: 700;
   margin-top: 5rem;
+<<<<<<< HEAD
   font-size: 32px;
   font-family: 'Inter', sans-serif;
+=======
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
 `;

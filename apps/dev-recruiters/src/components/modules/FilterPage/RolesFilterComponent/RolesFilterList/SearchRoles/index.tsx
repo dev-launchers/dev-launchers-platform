@@ -6,6 +6,9 @@ import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
 
+import { OpenRolesText } from './styles';
+import { RolesContainer } from './styles';
+
 function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
 
@@ -45,8 +48,11 @@ function SearchRole({ selectedRoleLabel }) {
   }, [commitmentRange, selectedRoleLabel]);
   */
 
+  console.log(selectedRole);
+
   return (
     <>
+<<<<<<< HEAD
       <>
         <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
         {selectedRole.length === 0 ? (
@@ -66,6 +72,14 @@ function SearchRole({ selectedRoleLabel }) {
           </RolesContainer>
         )}
       </>
+=======
+      <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
+      <RolesContainer>
+        {selectedRole.map((role, index) => (
+          <RoleCard key={index} role={role}></RoleCard>
+        ))}
+      </RolesContainer>
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
     </>
   );
 }

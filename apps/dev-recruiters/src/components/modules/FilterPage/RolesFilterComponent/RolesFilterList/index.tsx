@@ -25,7 +25,14 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
     setSelectRoleLabel(roleLabel);
   }
 
+<<<<<<< HEAD
   const openPositions = useOpenPositions(projects);
+=======
+  // Usando o hook personalizado para obter os openPositions
+  const openPositions = useOpenPositions(projects);
+
+  console.log('openPositions', selectRoleLabel);
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
 
   return (
     <List>

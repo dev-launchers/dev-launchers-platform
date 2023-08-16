@@ -12,6 +12,7 @@ export const RolesContainer = styled.div`
   flex-wrap: wrap;
   gap: 0.25rem;
 `;
+<<<<<<< HEAD
 
 export const EmptyRolesContainer = styled.div`
   margin-left: 4.25rem;
@@ -25,3 +26,5 @@ export const EmptyRolesContainer = styled.div`
   border-radius: 15px;
   font-family: 'Nunito Sans', sans-serif;
 `;
+=======
+>>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
