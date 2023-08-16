@@ -25,10 +25,10 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
     setSelectRoleLabel(roleLabel);
   }
 
+  console.log('Roles', selectRoleLabel);
+
   // Usando o hook personalizado para obter os openPositions
   const openPositions = useOpenPositions(projects);
-
-  console.log('openPositions', selectRoleLabel);
 
   return (
     <List>
