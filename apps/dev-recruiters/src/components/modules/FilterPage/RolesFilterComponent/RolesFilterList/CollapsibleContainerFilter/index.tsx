@@ -136,7 +136,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
           <ContainerCommitment>
             <CommitmentText>Time Commitment</CommitmentText>
 
-            <Commitment />
+            <Commitment selectRoleLabel={selectRoleLabel} />
           </ContainerCommitment>
         </ContainerBody>
       </ContainerMain>

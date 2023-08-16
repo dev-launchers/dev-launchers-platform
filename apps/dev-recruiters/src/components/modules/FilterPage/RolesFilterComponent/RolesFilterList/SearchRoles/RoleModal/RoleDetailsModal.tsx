@@ -10,10 +10,10 @@ import {
   TagsList,
   TagsListItem,
   TagsSection,
-} from '../../DetailedPage/PositionCard/StyledPositionCard';
-import Modal from '../../DetailedPage/PositionPopupModal';
-import { RowContainer } from '../../DetailedPage/styledProjectDetails';
-import SignUpForm from '../../FormPage/signUpForm';
+} from '../../../../../DetailedPage/PositionCard/StyledPositionCard';
+import Modal from '../../../../../DetailedPage/PositionPopupModal';
+import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
+import SignUpForm from '../../../../../FormPage/signUpForm';
 import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
 
 interface Props {
