@@ -5,7 +5,7 @@ import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 
-function SearchRole({ selectedRoleLabel }) {
+function SearchRole({ selectedRoleLabel, commitmentRange }) {
   const [selectedRole, setSelectedRole] = useState([]);
   useEffect(() => {
     if (!selectedRoleLabel) {
@@ -15,8 +15,19 @@ function SearchRole({ selectedRoleLabel }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
-  }, [selectedRoleLabel]);
 
+    // Apply commitment filter if commitmentRange is provided
+    if (commitmentRange) {
+      const filteredRoles = selectedRole.filter(
+        (role) =>
+          role.commitmentHoursPerWeek >= commitmentRange.min &&
+          role.commitmentHoursPerWeek <= commitmentRange.max
+      );
+      setSelectedRole(filteredRoles);
+    }
+  }, [selectedRoleLabel, commitmentRange]);
+
+  console.log('teste', selectedRole);
   console.log(selectedRole.length);
 
   return (
