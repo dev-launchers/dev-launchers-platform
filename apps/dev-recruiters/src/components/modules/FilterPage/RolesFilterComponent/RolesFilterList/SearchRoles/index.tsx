@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import RoleCard from '../../../RoleCard';
 
+import { OpenRolesText } from './styles';
+import { RolesContainer } from './styles';
+
 function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
   useEffect(() => {
@@ -13,11 +16,16 @@ function SearchRole({ selectedRoleLabel }) {
     }
   }, [selectedRoleLabel]);
 
+  console.log(selectedRole);
+
   return (
     <>
-      {selectedRole.map((role, index) => (
-        <RoleCard key={index} role={role}></RoleCard>
-      ))}
+      <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
+      <RolesContainer>
+        {selectedRole.map((role, index) => (
+          <RoleCard key={index} role={role}></RoleCard>
+        ))}
+      </RolesContainer>
     </>
   );
 }

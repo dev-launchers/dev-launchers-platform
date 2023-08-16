@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RolesButtons from './RolesButtons';
+import Commitment from './Commitment';
 import {
   CommitmentText,
   ContainerBody,
@@ -6,30 +8,34 @@ import {
   ContainerHead,
   ContainerMain,
   ContainerRoles,
-} from '../../../../../../components/modules/FilterPage/FilterComponent/styles';
-import RolesButtons from './RolesButtons';
-import Commitment from './Commitment';
+} from './styles';
 
 interface CollapsibleContainerProps {
   openPositions: {
     [key: string]: any;
   };
   onRoleSelection: (roleLabel: string) => void;
+  selectRoleLabel: string;
 }
 
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
   openPositions: openPositions,
   onRoleSelection,
+  selectRoleLabel,
 }) => {
-  function handleRoleClick(roleLabel) {
+  const [roleActive, setRoleActive] = useState(null);
+
+  function handleRoleClick(roleName, roleLabel) {
     const roleJsonString = JSON.stringify(roleLabel);
 
     localStorage.setItem('selectedRole', roleJsonString);
     onRoleSelection(roleLabel);
+    setRoleActive(roleName);
 
     // You can also redirect here if needed
   }
 
+  const selectedRole = JSON.parse(localStorage.getItem('selectedRole'));
   return (
     <>
       <ContainerMain>
@@ -38,55 +44,93 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
           <ContainerRoles>
             <RolesButtons
               textRole="Product Lead"
-              onClick={() => handleRoleClick(openPositions['ProductLead'])}
+              onClick={() =>
+                handleRoleClick('ProductLead', openPositions['ProductLead'])
+              }
+              isActive={roleActive === 'ProductLead'}
             />
             <RolesButtons
               textRole="UX Designer"
-              onClick={() => handleRoleClick(openPositions['UxDesigner'])}
+              onClick={() =>
+                handleRoleClick('UxDesigner', openPositions['UxDesigner'])
+              }
+              isActive={roleActive === 'UxDesigner'}
             />
             <RolesButtons
               textRole="UX Researcher"
-              onClick={() => handleRoleClick(openPositions['UxResearcher'])}
-            />
-            <RolesButtons
-              textRole="Information Architect"
               onClick={() =>
-                handleRoleClick(openPositions['InformationArchitect'])
+                handleRoleClick('UxResearcher', openPositions['UxResearcher'])
               }
+              isActive={roleActive === 'UxResearcher'}
             />
             <RolesButtons
-              textRole="Lead Developer"
-              onClick={() => handleRoleClick(openPositions['LeadDeveloper'])}
-            />
-            <RolesButtons
-              textRole="Back-End Developer"
-              onClick={() => handleRoleClick(openPositions['BackEndDeveloper'])}
-            />
-            <RolesButtons
-              textRole="Front-End Developer"
+              textRole="Info Architect"
               onClick={() =>
-                handleRoleClick(openPositions['FrontEndDeveloper'])
+                handleRoleClick(
+                  'InformationArchitect',
+                  openPositions['InformationArchitect']
+                )
               }
+              isActive={roleActive === 'InformationArchitect'}
             />
             <RolesButtons
               textRole="QA Lead"
-              onClick={() => handleRoleClick(openPositions['QaLead'])}
+              onClick={() => handleRoleClick('QaLead', openPositions['QaLead'])}
+              isActive={selectedRole === 'QaLead'}
             />
             <RolesButtons
               textRole="QA Tester"
-              onClick={() => handleRoleClick(openPositions['QaTester'])}
+              onClick={() =>
+                handleRoleClick('QaTester', openPositions['QaTester'])
+              }
+              isActive={roleActive === 'QaTester'}
             />
             <RolesButtons
-              textRole="Volunteer Coordinator"
+              textRole="Lead Dev"
               onClick={() =>
-                handleRoleClick(openPositions['VoulunteerCordinator'])
+                handleRoleClick('LeadDeveloper', openPositions['LeadDeveloper'])
               }
+              isActive={roleActive === 'LeadDeveloper'}
             />
             <RolesButtons
-              textRole="Social Media Manager"
+              textRole="Front-End Dev"
               onClick={() =>
-                handleRoleClick(openPositions['SocialMediaManager'])
+                handleRoleClick(
+                  'FrontEndDeveloper',
+                  openPositions['FrontEndDeveloper']
+                )
               }
+              isActive={roleActive === 'FrontEndDeveloper'}
+            />
+            <RolesButtons
+              textRole="Back-End Dev"
+              onClick={() =>
+                handleRoleClick(
+                  'BackEndDeveloper',
+                  openPositions['BackEndDeveloper']
+                )
+              }
+              isActive={roleActive === 'BackEndDeveloper'}
+            />
+            <RolesButtons
+              textRole="Volunteer Coord."
+              onClick={() =>
+                handleRoleClick(
+                  'VoulunteerCordinator',
+                  openPositions['VoulunteerCordinator']
+                )
+              }
+              isActive={roleActive === 'VoulunteerCordinator'}
+            />
+            <RolesButtons
+              textRole="Social Media Mgr."
+              onClick={() =>
+                handleRoleClick(
+                  'SocialMediaManager',
+                  openPositions['SocialMediaManager']
+                )
+              }
+              isActive={roleActive === 'SocialMediaManager'}
             />
           </ContainerRoles>
           <ContainerCommitment>
