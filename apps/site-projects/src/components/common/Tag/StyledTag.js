@@ -2,8 +2,8 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.span`
   padding: 0.5rem 1rem;
-  border: 2px solid ${(props) => props.theme?.colors?.NEUTRAL_2};
-  color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  border: 2px solid ${(props) => props.theme?.colors?.GREYSCALE_WHITE};
+  color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   font-family: ${({ theme }) => theme.fonts.headline};
   font-weight: bold;
   ${({ filled }) =>
