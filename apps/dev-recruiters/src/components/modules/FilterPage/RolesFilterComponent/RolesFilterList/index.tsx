@@ -29,19 +29,6 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
     console.log(roleLabel);
   }
 
-  /*
-  function handleCommitmentFilterToggle() {
-    setIsCommitmentFilterActive(!isCommitmentFilterActive);
-    if (!isCommitmentFilterActive) {
-      handleCommitmentFilter({ min: 0, max: 4 }); // Aplica o filtro ao ativar o checkbox
-    } else {
-      handleCommitmentFilter(null); // Desativa o filtro ao desativar o checkbox
-    }
-  }*/
-
-  console.log('Roles', selectRoleLabel);
-
-  // Usando o hook personalizado para obter os openPositions
   const openPositions = useOpenPositions(projects);
 
   return (
