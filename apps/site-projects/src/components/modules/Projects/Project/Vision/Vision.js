@@ -25,7 +25,7 @@ const Vision = ({ scrollMethods, vision }) => {
             <Link href="../support-us" passHref>
               <Button
                 style={{ cursor: 'pointer' }}
-                bgColor={theme?.colors?.ACCENT_2}
+                bgColor={theme?.colors?.YELLOW}
               >
                 <i className="fas fa-coins"></i> Donate
               </Button>

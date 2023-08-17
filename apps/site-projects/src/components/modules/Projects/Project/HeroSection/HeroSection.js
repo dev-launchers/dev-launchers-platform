@@ -36,18 +36,12 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
   const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + heroImageConfig.url : heroImageConfig?.url
   return (
     <Wrapper>
-
-
-
-<div style={{marginRight:"100%"}}>
-     
-     <BackButton
- type="back"
- withLabel
- />
-   </div>     
-    
-    
+      <div style={{marginRight:"100%"}}>
+          <BackButton
+          type="back"
+          withLabel
+          />
+      </div>
       <h2 style={{marginTop:"2rem"}}>{projectName}</h2>
                  
       <span>{projectCatchPhrase}</span>
