@@ -12,8 +12,9 @@ import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleCo
 import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
+import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
 
-function SearchRole({ selectedRoleLabel, commitmentRange }) {
+function SearchRole({ selectedRoleLabel }) {
   const [selectedRole, setSelectedRole] = useState([]);
 
   const { commitmentRange } = useOpportunitiesContext();
@@ -33,6 +34,7 @@ function SearchRole({ selectedRoleLabel, commitmentRange }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     console.log(selectedRoleLabel);
     console.log(commitmentRange);
@@ -54,20 +56,22 @@ function SearchRole({ selectedRoleLabel, commitmentRange }) {
   */
 =======
 >>>>>>> 2bc7ee42 (fix: bug fix)
+=======
+  }, [selectedRoleLabel]);
+>>>>>>> 79e3fb90 (feat: create the logic of time commitment)
 
-    // Apply commitment filter if commitmentRange is provided
-    if (commitmentRange) {
-      const filteredRoles = selectedRole.filter(
+  useEffect(() => {
+    if (commitmentRange !== null) {
+      const filteredRoles = selectedRoleLabel.filter(
         (role) =>
           role.commitmentHoursPerWeek >= commitmentRange.min &&
           role.commitmentHoursPerWeek <= commitmentRange.max
       );
       setSelectedRole(filteredRoles);
+    } else {
+      setSelectedRole(selectedRoleLabel);
     }
-  }, [selectedRoleLabel, commitmentRange]);
-
-  console.log('teste', selectedRole);
-  console.log(selectedRole.length);
+  }, [commitmentRange, selectedRoleLabel]);
 
   return (
     <>

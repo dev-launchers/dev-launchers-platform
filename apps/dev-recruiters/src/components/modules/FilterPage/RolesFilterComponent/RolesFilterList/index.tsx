@@ -26,8 +26,10 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 
   function handleRoleSelection(roleLabel) {
     setSelectRoleLabel(roleLabel);
+    console.log(roleLabel);
   }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -45,6 +47,9 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
     setCommitmentRange(range);
   }
 
+=======
+  /*
+>>>>>>> 79e3fb90 (feat: create the logic of time commitment)
   function handleCommitmentFilterToggle() {
     setIsCommitmentFilterActive(!isCommitmentFilterActive);
     if (!isCommitmentFilterActive) {
@@ -52,7 +57,7 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
     } else {
       handleCommitmentFilter(null); // Desativa o filtro ao desativar o checkbox
     }
-  }
+  }*/
 
 >>>>>>> 2bc7ee42 (fix: bug fix)
   console.log('Roles', selectRoleLabel);
@@ -70,15 +75,11 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
             openPositions={openPositions}
             onRoleSelection={handleRoleSelection}
             selectRoleLabel={selectRoleLabel}
-            handleCommitmentFilter={handleCommitmentFilterToggle}
             isFilterActive={isCommitmentFilterActive}
           />
         </FilterConatiner>
         <RolesContainer>
-          <SearchRole
-            selectedRoleLabel={selectRoleLabel}
-            commitmentRange={commitmentRange}
-          />
+          <SearchRole selectedRoleLabel={selectRoleLabel} />
         </RolesContainer>
       </ResultContainer>
     </List>
