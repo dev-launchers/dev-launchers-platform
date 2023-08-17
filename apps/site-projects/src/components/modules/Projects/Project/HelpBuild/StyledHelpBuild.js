@@ -58,4 +58,9 @@ export const Button = styled.a`
   white-space: nowrap;
   border-radius: 5px;
   word-wrap: no;
+
+  &:hover{
+    background-color: ${({theme})=>theme.colors.SUCCESS_300};
+    color: ${({theme})=>theme.colors.GREYSCALE_WHITE};
+  }
 `;
