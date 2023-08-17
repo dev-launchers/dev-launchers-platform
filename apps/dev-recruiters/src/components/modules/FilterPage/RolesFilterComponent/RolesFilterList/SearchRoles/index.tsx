@@ -36,6 +36,7 @@ function SearchRole({ selectedRoleLabel }) {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log(selectedRoleLabel);
     console.log(commitmentRange);
   }, [selectedRoleLabel, commitmentRange]);
@@ -59,7 +60,13 @@ function SearchRole({ selectedRoleLabel }) {
 =======
   }, [selectedRoleLabel]);
 >>>>>>> 79e3fb90 (feat: create the logic of time commitment)
+=======
+    console.log(selectedRoleLabel);
+    console.log(commitmentRange);
+  }, [selectedRoleLabel, commitmentRange]);
+>>>>>>> e99587eb (fix: fixing the design)
 
+  /*
   useEffect(() => {
     if (commitmentRange !== null) {
       const filteredRoles = selectedRoleLabel.filter(
@@ -72,6 +79,7 @@ function SearchRole({ selectedRoleLabel }) {
       setSelectedRole(selectedRoleLabel);
     }
   }, [commitmentRange, selectedRoleLabel]);
+  */
 
   return (
     <>

@@ -33,6 +33,7 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const openPositions = useOpenPositions(projects);
 =======
   // Usando o hook personalizado para obter os openPositions
@@ -63,6 +64,8 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
   console.log('Roles', selectRoleLabel);
 
   // Usando o hook personalizado para obter os openPositions
+=======
+>>>>>>> e99587eb (fix: fixing the design)
   const openPositions = useOpenPositions(projects);
 
 >>>>>>> b4f9e26e (build: work in time commitment)

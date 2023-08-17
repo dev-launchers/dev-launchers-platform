@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e99587eb (fix: fixing the design)
 export const CommitmentMain = styled.div`
   width: 100%;
   height: 80%;
@@ -32,19 +35,26 @@ export const CommitmentText = styled.div`
   display: flex;
   align-items: center;
   font-family: 'Nunito Sans', sans-serif;
+<<<<<<< HEAD
 =======
 export const CommitmentText = styled.div`
   font-size: 14px;
 >>>>>>> d03a4c35 (fix: cleaning the code)
+=======
+>>>>>>> e99587eb (fix: fixing the design)
 `;
 
 export const TimeCommitment = styled.div`
   display: flex;
   align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
   gap: 10px;
 =======
 >>>>>>> d03a4c35 (fix: cleaning the code)
+=======
+  gap: 10px;
+>>>>>>> e99587eb (fix: fixing the design)
 `;
 
 export const IconImage = styled.img`

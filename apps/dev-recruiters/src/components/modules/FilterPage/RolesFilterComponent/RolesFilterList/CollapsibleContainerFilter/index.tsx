@@ -142,6 +142,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
           </ContainerRoles>
           <ContainerCommitment>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Commitment />
 =======
             <CommitmentText>Time Commitment</CommitmentText>
@@ -157,6 +158,8 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             />
 >>>>>>> 2bc7ee42 (fix: bug fix)
 =======
+=======
+>>>>>>> e99587eb (fix: fixing the design)
             <Commitment />
 >>>>>>> 79e3fb90 (feat: create the logic of time commitment)
           </ContainerCommitment>

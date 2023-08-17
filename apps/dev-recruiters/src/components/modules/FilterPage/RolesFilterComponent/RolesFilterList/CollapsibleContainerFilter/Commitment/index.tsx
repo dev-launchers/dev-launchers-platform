@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e99587eb (fix: fixing the design)
 import React, { useState } from 'react';
 import {
   CommitmentMain,
@@ -8,6 +11,7 @@ import {
   CommitmentTitle,
   TimeCommitment,
 } from './styles';
+<<<<<<< HEAD
 import StyledCheckbox from './checkBox';
 import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 
@@ -67,17 +71,17 @@ import React, { useEffect, useState, useContext } from 'react';
 >>>>>>> 79e3fb90 (feat: create the logic of time commitment)
 import { CommitmentText, IconImage, TimeCommitment } from './styles';
 import CheckBox from '../../../../../../../images/icons/checkbox.png';
+=======
+>>>>>>> e99587eb (fix: fixing the design)
 import StyledCheckbox from './checkBox';
 import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 
 function Commitment() {
-  const [selectedCheckbox, setSelectedCheckbox] = useState(null);
   const [checkBoxLow, setCheckBoxLow] = useState(null);
   const [checkBoxMed, setCheckBoxMed] = useState(null);
   const [checkBoxHigh, setCheckBoxHigh] = useState(null);
 
-  const { selectedRole, setCommitmentRange, commitmentRange } =
-    useOpportunitiesContext();
+  const { setCommitmentRange } = useOpportunitiesContext();
 
   const handleCheckboxChange = (min, max) => {
     setCheckBoxLow(min === checkBoxLow ? null : min);
@@ -91,32 +95,28 @@ function Commitment() {
     }
   };
 
-  console.log(selectedCheckbox);
-
-  useEffect(() => {
-    console.log('commitmentRange:', commitmentRange);
-  }, [commitmentRange]);
-
-  console.log(selectedRole);
-
   return (
     <>
-      <TimeCommitment>
-        <StyledCheckbox
-          isChecked={checkBoxLow === 0}
-          onChange={() => handleCheckboxChange(0, 4)}
-        />
-        <CommitmentText>Low (0-4 hrs/wk)</CommitmentText>
-      </TimeCommitment>
+      <CommitmentMain>
+        <CommitmentTitle>TIME COMMITMENT:</CommitmentTitle>
+        <CommitmentTimeContainer>
+          <TimeCommitment>
+            <StyledCheckbox
+              isChecked={checkBoxLow === 0}
+              onChange={() => handleCheckboxChange(0, 4)}
+            />
+            <CommitmentText>Low (0-4 hrs/wk)</CommitmentText>
+          </TimeCommitment>
 
-      <TimeCommitment>
-        <StyledCheckbox
-          isChecked={checkBoxMed === 5}
-          onChange={() => handleCheckboxChange(5, 9)}
-        />
-        <CommitmentText>Med (5-9 hrs/wk)</CommitmentText>
-      </TimeCommitment>
+          <TimeCommitment>
+            <StyledCheckbox
+              isChecked={checkBoxMed === 5}
+              onChange={() => handleCheckboxChange(5, 9)}
+            />
+            <CommitmentText>Med (5-9 hrs/wk)</CommitmentText>
+          </TimeCommitment>
 
+<<<<<<< HEAD
       <TimeCommitment>
         <StyledCheckbox
           isChecked={checkBoxHigh === 10}
@@ -125,6 +125,17 @@ function Commitment() {
         <CommitmentText>High (10-20 hrs/wk)</CommitmentText>
       </TimeCommitment>
 >>>>>>> d03a4c35 (fix: cleaning the code)
+=======
+          <TimeCommitment>
+            <StyledCheckbox
+              isChecked={checkBoxHigh === 10}
+              onChange={() => handleCheckboxChange(10, 20)}
+            />
+            <CommitmentText>High (10-20 hrs/wk)</CommitmentText>
+          </TimeCommitment>
+        </CommitmentTimeContainer>
+      </CommitmentMain>
+>>>>>>> e99587eb (fix: fixing the design)
     </>
   );
 }
