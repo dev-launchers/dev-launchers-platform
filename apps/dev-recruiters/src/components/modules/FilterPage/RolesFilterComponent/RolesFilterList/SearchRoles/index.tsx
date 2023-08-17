@@ -16,11 +16,21 @@ function SearchRole({ selectedRoleLabel }) {
       const roleJsonString = localStorage.getItem('selectedRole');
       const selectedRole = JSON.parse(roleJsonString);
       setSelectedRole(selectedRole);
+    } else if (commitmentRange !== null) {
+      const filteredRoles = selectedRoleLabel.filter(
+        (role) =>
+          role.commitmentHoursPerWeek >= commitmentRange.min &&
+          role.commitmentHoursPerWeek <= commitmentRange.max
+      );
+      setSelectedRole(filteredRoles);
     } else {
       setSelectedRole(selectedRoleLabel);
     }
-  }, [selectedRoleLabel]);
+    console.log(selectedRoleLabel);
+    console.log(commitmentRange);
+  }, [selectedRoleLabel, commitmentRange]);
 
+  /*
   useEffect(() => {
     if (commitmentRange !== null) {
       const filteredRoles = selectedRoleLabel.filter(
@@ -33,6 +43,7 @@ function SearchRole({ selectedRoleLabel }) {
       setSelectedRole(selectedRoleLabel);
     }
   }, [commitmentRange, selectedRoleLabel]);
+  */
 
   return (
     <>
