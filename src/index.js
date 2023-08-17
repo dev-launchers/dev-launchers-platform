@@ -27,15 +27,16 @@ module.exports = {
       // afterCreate lifecycle to create a new team-membership entry when a new user is created
       async afterCreate({ result }) {
         const { projects } = result
-
-        for (const project of projects) {
-          await strapi.service("api::team-membership.team-membership").create({
-            data: {
-              user: [result.id],
-              project: [project.id],
-              joinDate: new Date()
-            }
-          })
+        if (projects){
+          for (const project of projects) {
+            await strapi.service("api::team-membership.team-membership").create({
+              data: {
+                user: [result.id],
+                project: [project.id],
+                joinDate: new Date()
+              }
+            })
+          }
         }
       },
 
