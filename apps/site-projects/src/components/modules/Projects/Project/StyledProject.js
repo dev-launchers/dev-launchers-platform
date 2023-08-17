@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   position: relative;
   z-index: 1;
+  color:${({theme})=>theme.colors.GREYSCALE_WHITE};
 
   #background {
     position: absolute;
