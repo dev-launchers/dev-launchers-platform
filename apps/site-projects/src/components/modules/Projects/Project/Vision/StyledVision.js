@@ -38,7 +38,11 @@ export const Button = styled.a`
   width: 8em;
   padding: 0.5rem;
   background-color: ${({ theme, bgColor }) =>
-    bgColor || theme?.colors?.NEUTRAL_2 || ""};
+    bgColor || theme?.colors?.GREYSCALE_OFF_WHITE|| ""};
   color: #353535;
   border-radius: 5px;
+
+  &:hover{
+    color: ${({ theme }) =>theme?.colors?.GREYSCALE_BLACK};
+  }
 `;
