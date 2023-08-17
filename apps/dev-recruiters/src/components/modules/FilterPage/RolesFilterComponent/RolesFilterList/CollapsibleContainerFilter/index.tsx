@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import RolesButtons from './RolesButtons';
 import Commitment from './Commitment';
 import {
-  CommitmentText,
   ContainerBody,
   ContainerCommitment,
   ContainerHead,
@@ -134,8 +133,6 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             />
           </ContainerRoles>
           <ContainerCommitment>
-            <CommitmentText>Time Commitment</CommitmentText>
-
             <Commitment />
           </ContainerCommitment>
         </ContainerBody>

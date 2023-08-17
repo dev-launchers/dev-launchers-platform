@@ -13,7 +13,7 @@ export const ResultContainer = styled.div`
 export const FilterConatiner = styled.div`
   background-color: white;
   width: 21%;
-  height: 800px;
+  height: 750px;
   border-radius: 8px;
   box-shadow: 2px 2px 8px 0 #7f7e7f;
 `;
@@ -29,4 +29,6 @@ export const SearchResult = styled.div`
   justify-content: center;
   font-weight: 700;
   margin-top: 5rem;
+  font-size: 32px;
+  font-family: 'Inter', sans-serif;
 `;

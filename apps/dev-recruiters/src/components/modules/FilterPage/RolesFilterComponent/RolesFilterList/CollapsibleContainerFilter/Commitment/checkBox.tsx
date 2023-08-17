@@ -2,17 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Checkbox = styled.label`
-  /* Estilização do container do checkbox */
   display: inline-block;
   position: relative;
   cursor: pointer;
 
-  /* Estilos do checkbox oculto */
   input[type='checkbox'] {
     display: none;
   }
 
-  /* Estilos do "V" quando o checkbox está marcado */
   input[type='checkbox']:checked + span::before {
     content: '✔';
     position: absolute;
@@ -24,12 +21,10 @@ const Checkbox = styled.label`
     color: white;
   }
 
-  /* Estilos do container quando o checkbox está marcado */
   input[type='checkbox']:checked + span {
     background-color: black;
   }
 
-  /* Estilos do container quando o checkbox não está marcado */
   span {
     display: inline-block;
     width: 25px;
@@ -47,8 +42,5 @@ const StyledCheckbox = ({ isChecked, onChange }) => (
     <span></span>
   </Checkbox>
 );
-
-// Exemplo de uso:
-// <NikeStyledCheckbox isChecked={isFilterActive} onChange={handleCheckboxChange} />
 
 export default StyledCheckbox;
