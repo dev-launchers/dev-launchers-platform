@@ -1,5 +1,5 @@
 import { Project, ProjectLite } from '@devlaunchers/models/project';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import useProjectRole from '../../NewJoinPageComponent/UseProjectRole/index';
 import RolesFilterList from '../RolesFilterComponent/RolesFilterList';
