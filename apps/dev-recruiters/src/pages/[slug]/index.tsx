@@ -8,6 +8,7 @@ import ProjectDetails from '../../components/modules/DetailedPage';
 import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
+  /*
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
   );
@@ -86,7 +87,7 @@ export default function DetailedPage({
   opportunites: Opportunity[];
   maxCommitment: number;
   minCommitment: number;
-}) {
+}) {*/
   return (
     <>
       <Head>
@@ -129,6 +130,7 @@ export default function DetailedPage({
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+<<<<<<< HEAD
       <>
         <ThemeProvider theme={theme}>
           <ProjectDetails
@@ -139,6 +141,20 @@ export default function DetailedPage({
           />
         </ThemeProvider>
       </>
+=======
+      <ThemeProvider theme={theme}>
+        <>
+          {/* 
+        <ProjectDetails
+          maxCommitment={maxCommitment}
+          minCommitment={minCommitment}
+          project={project}
+          opportunites={opportunites}
+        />
+        */}
+        </>
+      </ThemeProvider>
+>>>>>>> 3bd1084a (fix: bug fix)
     </>
   );
-}
+};
