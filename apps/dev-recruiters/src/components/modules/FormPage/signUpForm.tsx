@@ -80,8 +80,8 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
           experience: '',
           reason: '',
           zip: 0,
-          role: position.title as string,
-          id: position.id as string,
+          role: 'title' as string, //  role: position.title as string,
+          id: '5' as string, // id: position.id as string,
           // project: router.query.slug as string,
           skills: [{ skill: '' }],
         }}
@@ -98,9 +98,9 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
               .toString()
               .split(',')
               .map((skill) => ({ skill: skill })),
-            role: position.title as string,
+            role: 'title' as string, // role: position.title as string,
             // project:  router.query.project as string,
-            id: position.id as string,
+            id: '5' as string, // id: position.id as string,
           })
             .then((res) => {
               handleCloseModal();
@@ -139,8 +139,8 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                 <atoms.Box flexDirection="column">
                   <atoms.Layer hasRainbow>
                     <atoms.Typography type="h2" textAlign="center">
-                      Volunteer Application for{' '}
-                      <strong>{position.title}</strong>
+                      Volunteer Application for <strong>{'title'}</strong>{' '}
+                      {/*position.title */}
                     </atoms.Typography>
                   </atoms.Layer>
                 </atoms.Box>
