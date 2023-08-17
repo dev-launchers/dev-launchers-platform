@@ -86,7 +86,7 @@ export default function DetailedPage({
   opportunites: Opportunity[];
   maxCommitment: number;
   minCommitment: number;
-}) {
+}) {*/
   return (
     <>
       <Head>
@@ -130,13 +130,17 @@ export default function DetailedPage({
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
       <ThemeProvider theme={theme}>
+        <>
+          {/* 
         <ProjectDetails
           maxCommitment={maxCommitment}
           minCommitment={minCommitment}
           project={project}
           opportunites={opportunites}
         />
+        */}
+        </>
       </ThemeProvider>
     </>
   );
-}
+};
