@@ -15,7 +15,6 @@ interface CollapsibleContainerProps {
   };
   onRoleSelection: (roleLabel: string) => void;
   selectRoleLabel: string;
-  isFilterActive: any;
 }
 
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({

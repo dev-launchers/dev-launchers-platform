@@ -20,13 +20,9 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
   if (!projectsLoaded) return <div>loading please wait</div>;
 
   const [selectRoleLabel, setSelectRoleLabel] = useState(null);
-  const [commitmentRange, setCommitmentRange] = useState(null);
-  const [isCommitmentFilterActive, setIsCommitmentFilterActive] =
-    useState(false);
 
   function handleRoleSelection(roleLabel) {
     setSelectRoleLabel(roleLabel);
-    console.log(roleLabel);
   }
 
   const openPositions = useOpenPositions(projects);
@@ -40,7 +36,6 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
             openPositions={openPositions}
             onRoleSelection={handleRoleSelection}
             selectRoleLabel={selectRoleLabel}
-            isFilterActive={isCommitmentFilterActive}
           />
         </FilterConatiner>
         <RolesContainer>
