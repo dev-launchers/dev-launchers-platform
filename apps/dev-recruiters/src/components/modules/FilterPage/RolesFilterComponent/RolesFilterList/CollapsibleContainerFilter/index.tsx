@@ -16,15 +16,12 @@ interface CollapsibleContainerProps {
   };
   onRoleSelection: (roleLabel: string) => void;
   selectRoleLabel: string;
-  handleCommitmentFilter: any;
   isFilterActive: any;
 }
 
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
   openPositions: openPositions,
   onRoleSelection,
-  handleCommitmentFilter,
-  isFilterActive,
 }) => {
   const [roleActive, setRoleActive] = useState(null);
 
@@ -79,7 +76,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             <RolesButtons
               textRole="QA Lead"
               onClick={() => handleRoleClick('QaLead', openPositions['QaLead'])}
-              isActive={selectedRole === 'QaLead'}
+              isActive={roleActive === 'QaLead'}
             />
             <RolesButtons
               textRole="QA Tester"
@@ -139,10 +136,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
           <ContainerCommitment>
             <CommitmentText>Time Commitment</CommitmentText>
 
-            <Commitment
-              handleCommitmentFilter={handleCommitmentFilter}
-              isFilterActive={isFilterActive}
-            />
+            <Commitment />
           </ContainerCommitment>
         </ContainerBody>
       </ContainerMain>
