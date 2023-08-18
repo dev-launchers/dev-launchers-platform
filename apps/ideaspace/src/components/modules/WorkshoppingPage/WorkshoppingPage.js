@@ -20,14 +20,14 @@ import { useFetchIdea } from './useFetchIdea';
 
 export default function WorkshoppingPage(props) {
   const { ideaId } = props;
-  console.log(ideaId);
+  console.log(ideaId); // this may read as undefined in the console
   const [handleChange, setHandleChange] = React.useState(null);
   const [handleTextChange, setHandleTextChange] = React.useState([]);
   const { data, loading } = useFetchIdea(ideaId);
   // const [seed, setSeed] = useState(1);
 
-  console.log("number of comments =", data.comments);
-  console.log("data =", data);
+  console.log("number of comments =", data.comments); // may return as empty
+  console.log("data =", data); // may return as the empty schema
 
   return (
     <Container theme={theme}>
@@ -60,5 +60,3 @@ export default function WorkshoppingPage(props) {
     </Container>
   );
 }
-
-// export default WorkshoppingPage;

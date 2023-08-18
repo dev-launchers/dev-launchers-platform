@@ -16,7 +16,7 @@ import {
   StyledRanbow,
 } from './StyledEditIdea';
 
-function SubmissionForm() {
+function EditIdea() {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
@@ -31,13 +31,34 @@ function SubmissionForm() {
   const [sending, setSending] = React.useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
-    'You have unsaved changes',
+    ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave?',
+    ['alternative primary', 'CANCEL', 'LEAVE'],
   );
   const [urrl, setUrrl] = useState('');
 
-  const [Notice, confirmNotice] = getNotice(
-    'Idea updated successfully',
+  const [UpdateSucceed, confirmSucceed] = useConfirm(
+    ['Idea updated successfully', '', ''],
+    '',
+    ['primary', 'got it'],
+  );
+
+  const [UpdateFailure, confirmFailure] = useConfirm(
+    ['Unable to update your idea', '', ''],
+    'Please try again.',
+    ['primary', 'close'],
+  );
+
+  const [NotAuthor, confirmNotAuthor] = useConfirm(
+    ["This is not your idea.", '', ''],
+    '',
+    ['primary', 'close'],
+  );
+
+  const [ArchivedIdea, confirmArchive] = useConfirm(
+    ["This idea has been archived.", '', ''],
+    'To workshop on it, you need to reactivate it first.',
+    ['primary', 'got it'],
   );
 
   const [card, setCard] = React.useState({
@@ -50,9 +71,6 @@ function SubmissionForm() {
     extraInfo: '',
     involveLevel: '',
     status: '',
-    hourCommitmentMin: 0,
-    hourCommitmentMax: 0,
-    difficultyLevel: 'Beginner',
   });
 
   React.useEffect(async () => {
@@ -68,20 +86,24 @@ function SubmissionForm() {
         }
       }
     }
-  }, [ideaId,userData.id]);
+  }, [ideaId, userData.id]);
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().required('Idea Name is Required.'),
-    description: Yup.string().required('Idea Description is Required.'),
-    experience: Yup.string().required('Experience is Required.'),
-    features: Yup.string().required('Idea Feature is Required.'),
+    ideaName: Yup.string().trim().required('Idea Name is Required.'),
+    description: Yup.string().trim().required('Idea Description is Required.'),
+    experience: Yup.string().trim().required('Experience is Required.'),
+    features: Yup.string().trim().required('Idea Feature is Required.'),
+    involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
   const submitHandler = async (values) => {
-    if (values == card) {
-      alert("nothing chage");
-      return;
-    }
+    values['ideaName'] = values['ideaName'].trim();
+    values['tagline'] = values['tagline'].trim();
+    values['description'] = values['description'].trim();
+    values['targetAudience'] = values['targetAudience'].trim();
+    values['features'] = values['features'].trim();
+    values['experience'] = values['experience'].trim();
+    values['extraInfo'] = values['extraInfo'].trim();
     setSending(true);
 
     const data = cleanData(await agent.Ideas.put(ideaId, values));
@@ -92,9 +114,10 @@ function SubmissionForm() {
         setUrrl(`/ideaspace/workshop/${data.id}`);
       }
     } else {
-      alert('Unable to update your idea.');
+      // alert('Unable to update your idea.');
       setSending(false);
       setunsavedChanges(true);
+      confirmFailure();
     }
   };
 
@@ -113,7 +136,7 @@ function SubmissionForm() {
       }
     };
     
-    if (unsavedChanges && urrl == '' ) {
+    if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         handleDialog(url);
         router.events.emit('routeChangeError');
@@ -124,9 +147,9 @@ function SubmissionForm() {
         router.events.off('routeChangeStart', routeChangeStart);
       };
     } else if (urrl !== '') {
-      if (urrl == 'back'){
+      if (urrl == 'back') {
         window.history.back(-1);
-      }else{
+      } else {
         router.push(urrl);
       }
     }
@@ -181,4 +204,4 @@ function SubmissionForm() {
   );
 }
 
-export default SubmissionForm;
+export default EditIdea;

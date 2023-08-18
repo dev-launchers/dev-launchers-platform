@@ -18,13 +18,17 @@ function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
+  const [disabled, setDisabled] = React.useState(true);
 
   const handleTextChange = (e) => {
     const text = e.target.value;
     props.setHandleTextChange(text);
 
-    let characterCount = text.length;
-    setCharsLeft(MAX_COMMENT_CHARS - characterCount);
+    if (text.trim() == '') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -54,6 +58,9 @@ function CommentForm(props) {
     // window.location.reload(false);
   };
 
+  console.log("user data =", userData); // user data is defined as Kris Gano's user data
+  console.log("authenticated? ", isAuthenticated) // but isAuthenticated is undefined
+
   // move to WorkshoppingPage?
   return (
     <div>
@@ -80,7 +87,7 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts? (max 250 characters)"
+              placeholder="What are your thoughts?"
               value={props.handleTextChange}
               onChange={handleTextChange}
               // maxlength={MAX_COMMENT_CHARS}
