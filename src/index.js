@@ -19,6 +19,7 @@ module.exports = {
    * run jobs, or perform some special logic.
    * called right after the plugin has registered.
    */
+
   async bootstrap({ strapi }) {
     await bootstrapUserPermissions({ strapi });
 
@@ -27,15 +28,17 @@ module.exports = {
       // afterCreate lifecycle to create a new team-membership entry when a new user is created
       async afterCreate({ result }) {
         const { projects } = result
-
-        for (const project of projects) {
-          await strapi.service("api::team-membership.team-membership").create({
-            data: {
-              user: [result.id],
-              project: [project.id],
-              joinDate: new Date()
-            }
-          })
+        //ensure the new user is a member of a team before the team-membership entry is created
+        if (projects){
+          for (const project of projects) {
+            await strapi.service("api::team-membership.team-membership").create({
+              data: {
+                user: [result.id],
+                project: [project.id],
+                joinDate: new Date()
+              }
+            })
+          }
         }
       },
 
@@ -80,3 +83,4 @@ module.exports = {
     })
   }
 }
+
