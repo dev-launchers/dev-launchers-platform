@@ -67,7 +67,7 @@ function useUserData() {
   const [isAuthenticated, setIsAuthenticated] = React.useState();
 
   React.useEffect(() => {
-    axios(`${env().STRAPI_URL}/users/26`, {
+    axios(`${env().STRAPI_URL}/users/6`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
