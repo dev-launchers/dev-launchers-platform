@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import theme from '@devlaunchers/components/styles/theme';
 import {
-StatuBox,
+  StatuBox,
 } from './StyledIdeaCard';
 
 const IdeaCardTag = ({
@@ -11,24 +11,24 @@ const IdeaCardTag = ({
     const [tagColor, setTagColor] = useState('');
 
     React.useEffect(() => {
-    if (status == "submitted"){
+      if (status == "submitted"){
         setTag("submitted");
         setTagColor(theme.colors.LIGHT_BLUE_100);
-    } else if (status == "applying"){
+      } else if (status == "applying"){
         setTag("applying");
         setTagColor(theme.colors.YELLOW_100);
-    } else if (status == "approved"){
+      } else if (status == "approved"){
         setTag("approved");
         setTagColor(theme.colors.SUCCESS_100);
-    } else if (status == "archived"){
+      } else if (status == "archived"){
         setTag("archived");
         setTagColor(theme.colors.BLUE_100);
-    } else {
+      } else {
         setTag("workshopping");
         setTagColor(theme.colors.ORANGE_100);
-    }
+      }
     }, [status]);
-
+  
     return (
         <StatuBox style={{ background: tagColor, }}>{tag}</StatuBox>
     )

@@ -10,12 +10,12 @@ const Team = ({ data }) => (
   <Section
     bgColor="#494949"
     Title="Team"
-    Content={data.leaders.length && data.members.length ? 
+    Content={data?.leaders?.length && data?.members?.length ? 
       <TeamContentBlock>
         <div>
           <h4>Leaders</h4>
           <MembersContainer>
-            {data.leaders?.map((leader) => (
+            {data?.leaders?.map((leader) => (
               <div
                 style={{
                   display: "flex",
@@ -53,7 +53,7 @@ const Team = ({ data }) => (
         <div>
           <h4>Members</h4>
           <MembersContainer>
-            {data.members?.map((member) => (
+            {data?.members?.map((member) => (
               <div
                 style={{
                   display: "flex",

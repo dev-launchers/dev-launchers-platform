@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
@@ -6,7 +6,8 @@ import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
-import { useResponsive } from '../../../../../../packages/UI/src/hooks/useResponsive';
+import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
+
 import {
   PageWrapper,
   HeadWapper,
@@ -20,7 +21,7 @@ function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-  const { isMobile, isDesktop } = useResponsive();
+  const { isMobile } = useResponsive();
 
   const sortingConfigs = [
     {
@@ -121,10 +122,9 @@ function BrowseIdeas() {
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton />
-        <atoms.Typography type="h4" >
+        <atoms.Typography type="h4">
           Want to help develop an idea?
           <br />
-
           <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
             {' '}
             Check out these ideas submitted by other Dev Launchers!
@@ -176,13 +176,13 @@ function BrowseIdeas() {
             </IdeaCardWrapper>
 
             <atoms.Button
-               buttonSize="standard"
-               buttonType="primary"
-               onClick={loadMore}
-               style={buttonDisplay}
-             >
-               load more
-             </atoms.Button>
+              buttonSize="standard"
+              buttonType="primary"
+              onClick={loadMore}
+              style={buttonDisplay}
+            >
+              load more
+            </atoms.Button>
           </div>
         )}
       </PageWrapper>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../utils/StrapiHelper';
-import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 export const useFetchIdea = (ideaId) => {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
@@ -33,30 +33,19 @@ export const useFetchIdea = (ideaId) => {
     created_at: '',
     comments: [],
     author: {},
-    difficultyLevel: '',
-    ideaOwner: '',
   });
+
   useEffect(async () => {
-    const fetchIdea = async (ideaId) => {
-      setLoading(true)
-
-      const res = cleanData(await agent.Ideas.getIdea(ideaId, 
-        new URLSearchParams(`populate=*`)));
-
-      console.log('res', res);
-
-      setLoading(false)
-      if (res) {
-        setData(res)
-      }
-    } 
     try {
       if (ideaId) {
-        setLoading(true)
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`);
-        setLoading(false)
-        if (response.data) {
-          setSourceData(response.data);
+        setLoading(true);
+
+        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+
+        setLoading(false);
+
+        if (data) {
+          setSourceData(data);
         }
       }
     } catch (error) {

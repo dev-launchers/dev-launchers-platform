@@ -18,7 +18,7 @@ const IdeaForm = ({
 	clickHandler
 },props) => {
 	const {	errors } = props;
- 	const [disabling, setDisabling] = React.useState(true);
+	const [disabling, setDisabling] = React.useState(true);
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
@@ -153,13 +153,13 @@ const IdeaForm = ({
 								</atoms.Typography>
 								<atoms.Box flexDirection='row' alignItems='flex-end' justifyContent='space-between'>
 									<Field
- 										required 
- 										as="select" 
- 										id='involveLevel'
- 										name="involveLevel" 
- 										style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}
- 									>
- 										<option value="none">I don't want to be involved after submitting</option>
+										required 
+										as="select" 
+										id='involveLevel'
+										name="involveLevel" 
+										style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}
+									>
+										<option value="none">I don't want to be involved after submitting</option>
 										<option value="minimum">I want to “own” this idea to help with workshopping and designing until it become a project</option>
 										<option value="medium">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
 										<option value="highly">I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project</option>
@@ -181,10 +181,10 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
- 								<atoms.Checkbox disabled={false} required />
- 								<atoms.Typography type='p'>
- 									&nbsp;I have read and agree to the Terms and Conditions.
- 								</atoms.Typography>
+								<atoms.Checkbox disabled={false} required />
+								<atoms.Typography type='p'>
+									&nbsp;I have read and agree to the Terms and Conditions.
+								</atoms.Typography>
 							</atoms.Box>
 
 							<atoms.Box justifyContent='flex-end' gap="1rem">

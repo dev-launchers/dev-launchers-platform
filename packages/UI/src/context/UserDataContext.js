@@ -1,8 +1,6 @@
-import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
-import React from 'react';
-
-import { env } from '../utils/EnvironmentVariables';
+import { useEffect, useState } from 'react';
+import axios from "axios";
 
 // export const DEFAULT_USER = {
 //   id: 0,
@@ -84,39 +82,47 @@ export const DEFAULT_USER = {
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
-  console.log("inside useUserData") // this never prints, so is useUserData() ever called?
-  const [userData, setUserData] = React.useState(DEFAULT_USER);
-  const [isAuthenticated, setIsAuthenticated] = React.useState();
-  console.log("still inside useUserData")
-  React.useEffect(() => {
-    console.log("inside useUserData useEffect hook")
-    axios(`${env().STRAPI_URL}/users/me`, {
-      withCredentials: true,
-    })
-      .then(({ data: currentUser }) => {
-        setUserData({
-          id: currentUser.id,
-          name: currentUser.profile.displayName,
-          username: currentUser.username,
-          email: currentUser.email,
-          bio: currentUser.profile.bio,
-          profilePictureUrl: currentUser.profile.profilePictureUrl,
-          socialMediaLinks: currentUser.profile.socialMediaLinks,
-          totalPoints: currentUser.point.totalPoints,
-          totalSeasonPoints: currentUser.point.totalSeasonPoints,
-          availablePoints: currentUser.point.availablePoints,
-          volunteerHours: currentUser.point.volunteerHours,
-          interests: currentUser.interests,
-        });
-        setIsAuthenticated(true);
+  const [userData, setUserData] = useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = useState();
+
+  useEffect(() => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+    setIsAuthenticated(userData && userData.id > 0);
+  }, [userData]);
+  
+  useEffect(() => {
+    const cacheData = JSON.parse(localStorage.getItem('userData'));
+
+    if (cacheData && cacheData.id > 0) {
+      setUserData(cacheData);
+    } else {
+      axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+        withCredentials: true,
       })
-      .catch(() => {
-        // setUserData({ id: "invalid" });
-        setIsAuthenticated(false);
-      });
+        .then(({ data: currentUser }) => {
+          setUserData({
+            id: currentUser.id,
+            name: currentUser.profile.displayName,
+            username: currentUser.username,
+            email: currentUser.email,
+            bio: currentUser.profile.bio,
+            profilePictureUrl: currentUser.profile.profilePictureUrl,
+            socialMediaLinks: currentUser.profile.socialMediaLinks,
+            totalPoints: currentUser.point.totalPoints,
+            totalSeasonPoints: currentUser.point.totalSeasonPoints,
+            availablePoints: currentUser.point.availablePoints,
+            volunteerHours: currentUser.point.volunteerHours,
+            interests: currentUser.interests,
+          });
+        })
+        .catch(() => {
+          // setUserData({ id: "invalid" });
+          setIsAuthenticated(false);
+        });
+    }
   }, []);
 
-  return { userData, setUserData, isAuthenticated };
+  return { userData, isAuthenticated, setUserData };
 }
 
 // Step 2: Declare your context state object to share the state with other components

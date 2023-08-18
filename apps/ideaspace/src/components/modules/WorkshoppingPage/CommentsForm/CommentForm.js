@@ -12,12 +12,9 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
-const MAX_COMMENT_CHARS = 250;
-
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
-  const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
   const [disabled, setDisabled] = React.useState(true);
 
   const handleTextChange = (e) => {
@@ -33,7 +30,7 @@ function CommentForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange };
+    var data = { author: userData.username, text: props.handleTextChange.trim() };
 
     try {
       const res = await agent.Comments.post(data);
@@ -105,7 +102,7 @@ function CommentForm(props) {
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={
-              'https://devlaunchers.org/ideaspace/workshop/' + selectedCard.id
+              `${process.env.FRONT_END_URL}/ideaspace/workshop/` + selectedCard.id
             }
           />
         </div>

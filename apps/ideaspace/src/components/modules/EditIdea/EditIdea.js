@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -8,8 +8,9 @@ import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
-import getNotice from '../../common/DialogBox/NoticeBox';
 import * as Yup from 'yup';
+
+
 import {
   HeadWapper,
   Headline,
@@ -21,14 +22,14 @@ function EditIdea() {
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
-    React.useEffect(() => {
+    useEffect(() => {
       setUserData({ ...userData, id: 30 });
     }, []);
   }
 
   const router = useRouter();
   const { ideaId } = router.query;
-  const [sending, setSending] = React.useState(false);
+  const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
@@ -61,7 +62,7 @@ function EditIdea() {
     ['primary', 'got it'],
   );
 
-  const [card, setCard] = React.useState({
+  const [card, setCard] = useState({
     ideaName: '',
     tagline: '',
     description: '',
@@ -73,16 +74,31 @@ function EditIdea() {
     status: '',
   });
 
-  React.useEffect(async () => {
+  const rejectAuthor = async () => {
+    if (!(await confirmArchive())) {
+      router.push(`/ideaspace/workshop/${ideaId}`);
+    }
+  };
+
+  const rejectUser = async () => {
+    if (!(await confirmNotAuthor())) {
+      window.history.back(-1);
+    }
+  };
+
+  useEffect(async () => {
     if (ideaId) {
       const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
 
-      if(userData.id !== 0){
+      if (userData.id !== 0) {
         if (idea.author.id === userData.id) {
+          if (response.data?.status == 'archived') {
+            rejectAuthor();
+          }
+
           setCard(idea);
         } else {
-          alert("This is not your idea. You can't edit it.");
-          window.history.back(-1);
+          rejectUser();
         }
       }
     }
@@ -106,15 +122,16 @@ function EditIdea() {
     values['extraInfo'] = values['extraInfo'].trim();
     setSending(true);
 
-    const data = cleanData(await agent.Ideas.put(ideaId, values));
+    try {
+      const data = cleanData(await agent.Ideas.put(ideaId, values));
 
-    if (data.ideaName) {
-      setunsavedChanges(false);
-      if (await confirmNotice()){
-        setUrrl(`/ideaspace/workshop/${data.id}`);
+      if (data.ideaName) {
+        setunsavedChanges(false);
+        if (await confirmNotice()){
+          setUrrl(`/ideaspace/workshop/${data.id}`);
+        }
       }
-    } else {
-      // alert('Unable to update your idea.');
+    } catch (error) {
       setSending(false);
       setunsavedChanges(true);
       confirmFailure();
@@ -129,13 +146,12 @@ function EditIdea() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     window.onbeforeunload = () => {
       if (unsavedChanges) {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
-    
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         handleDialog(url);
@@ -163,45 +179,51 @@ function EditIdea() {
     }
   }
 
-  return (
-    <>
-      <HeadWapper>
-        <Headline>Dev Ideas</Headline>
-        <StyledRanbow>
-          <atoms.Layer hasRainbowBottom />
-        </StyledRanbow>
-        <BackButton 
-          buttonType="confirm"
-          clickHandler={backHandler}
-        />
-        <atoms.Typography type='h4' >
-          Have an idea for a development project?<br />
-          Share your idea with us!
-        </atoms.Typography>
-      </HeadWapper>
+  if (getError) {
+    return <Error statusCode={404} title="page Not Found" />
+  } else {
 
-      {!isAuthenticated ? (
-        <SignInSection
-          label='Please sign in to edit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
-        />
-      ) : (
-        <>
-          <Dialog />
-          <Notice />
-          <IdeaForm
-            initialValues={card}
-            SignupSchema={SignupSchema}
-            submitHandler={submitHandler}
-            unsavedHandler={setunsavedChanges}
-            formButton="save"
-            sending={sending}
+    return (
+      <>
+        <HeadWapper>
+          <Headline>Dev Ideas</Headline>
+          <StyledRanbow>
+            <atoms.Layer hasRainbowBottom />
+          </StyledRanbow>
+          <BackButton
+            buttonType="confirm"
             clickHandler={backHandler}
           />
-        </>
-      )}
-    </>
-  );
+          <atoms.Typography type='h4' >
+            Have an idea for a development project?<br />
+            Share your idea with us!
+          </atoms.Typography>
+        </HeadWapper>
+
+        {!isAuthenticated ? (
+          <SignInSection
+            label='Please sign in to edit your idea!'
+            redirectURL={process.env.FRONT_END_URL + '/ideaspace/dashboard'}
+          />
+        ) : (
+          <>
+            <Dialog />
+            <UpdateSucceed /><UpdateFailure />
+            <NotAuthor /><ArchivedIdea />
+            <IdeaForm
+              initialValues={card}
+              SignupSchema={SignupSchema}
+              submitHandler={submitHandler}
+              unsavedHandler={setunsavedChanges}
+              formButton="save"
+              sending={sending}
+              clickHandler={backHandler}
+            />
+          </>
+        )}
+      </>
+    );
+  }
 }
 
 export default EditIdea;

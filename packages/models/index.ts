@@ -7,3 +7,4 @@ export type { Skill } from "./skill";
 export type { User } from "./user";
 export type { Idea } from './idea';
 export type { Like } from './like';
+export type { Save } from './save';
