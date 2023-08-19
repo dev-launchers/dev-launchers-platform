@@ -24,6 +24,7 @@ export const Tag = styled.div`
   height: 2rem;
   padding: 0 1rem 0 1rem;
   border-radius: 20px;
+  color:${({theme})=>theme.colors.GREYSCALE_BLACK};
   @media (max-width: 45em) {
     flex: 0;
   }
