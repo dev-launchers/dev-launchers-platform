@@ -12,6 +12,7 @@ export const ModalContainer = styled.div`
 
 export const ModalHeader = styled.div`
   width: 100%;
+ 
   
 
   
@@ -56,13 +57,6 @@ export const introductionModalStyle = {
   
 };
 
-export const button = {
-    content: {
-    width: "100px",
-    height:  "50px",
-    backgroundColor: "blue"
-    } 
-};
 
 export const Button = styled.div`
 width: "100px";
@@ -73,19 +67,3 @@ color: "black";
 
 ${'' /* Enter styling */}
 `;
-
-/*export const Typography = styled.div`
-  font-style: Nunito Sans;
-  `*/
-
-  
-export const h3 = styled.div`
-width: "65px";
-height:  "50px";
-backgroundColor: #0000FF;
-color: "black";
-`
-
-export const div = styled.div`
-width: "20px";
-`

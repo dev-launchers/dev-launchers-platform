@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import { ModalContainer, introductionModalStyle, ModalHeader, ModalBody, ModalFooter, h3, TempContainer } from "./StyledIntroductionModal";
+import { ModalContainer, introductionModalStyle, ModalHeader, ModalBody, ModalFooter } from "./StyledIntroductionModal";
 import { Typography } from "@devlaunchers/components/components/atoms";
 import Button from '@devlaunchers/components/components/atoms/Button';
 import RainbowBar from "./../../common//RainbowBar";
@@ -35,14 +35,17 @@ export default function IntroductionModal({ isOpen }) {
                 contentLabel="User Onboarding"
             >
                 <ModalContainer>
-                  
-                    <ModalBody>
+              
+                    {/*<ModalBody>*/}
+                    <ModalHeader>
                     <Typography type="h3" textAlign="center">
                      Welcome to Dev Launchers
                     </Typography>
                     <div>
                     <RainbowBar height="6px"/>
                   </div>
+                  </ModalHeader>
+                  <ModalBody>
                     <Typography type="p">
                      We'll introduce you to Dev Launchers and set up your profile for team collaboration.
                     </Typography>
