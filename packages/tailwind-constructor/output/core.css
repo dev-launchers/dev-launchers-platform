@@ -243,17 +243,17 @@
   --error-error-500: #d83738;
   --error-error-600: #a82b2b;
   --error-error-700: #601819;
-  --shadow-highlight-sm: 2px 2px 8px 0px #7f7e7f52;
-  --shadow-highlight: 2px 2px 8px 0px #7f7e7f7a;
-  --shadow-highlight-md: 2px 2px 8px 0px #7f7e7fb8;
-  --shadow-highlight-lg: 2px 2px 8px 0px #7f7e7fe0;
-  --shadow-highlight-xl: 2px 2px 8px 0px #7f7e7f;
-  --shadow-shadow: 0px 4px 6px 3px #3333331a;
-  --shadow-shadow-sm: 0px 2px 2px 2px #33333314;
-  --shadow-shadow-md: 0px 6px 10px 5px #3333331a;
-  --shadow-shadow-lg: 0px 4px 4px 4px #7f7e7f40;
-  --shadow-shadow-xl: 0px 10px 18px 10px #7f7e7f40;
-  --shadow-shadow-inner: 2px 2px 6px 0px #7f7e7f80;
+  --highlight-sm: [object Object];
+  --highlight: [object Object];
+  --highlight-md: [object Object];
+  --highlight-lg: [object Object];
+  --highlight-xl: [object Object];
+  --shadow: [object Object];
+  --shadow-sm: [object Object];
+  --shadow-md: [object Object];
+  --shadow-lg: [object Object];
+  --shadow-xl: [object Object];
+  --shadow-inner: [object Object];
   --nunito-sans: Nunito Sans;
   --abel: Abel;
   --font-weights-nunito-sans-0: Regular;
@@ -294,6 +294,16 @@
   --font-size-10: 2.75rem;
   --font-size-11: 3rem;
   --font-size-12: 4rem;
+  --inner-shadow-sm: [object Object];
+  --inner-shadow: [object Object];
+  --inner-shadow-md: [object Object];
+  --inner-shadow-lg: [object Object];
+  --inner-shadow-xl: [object Object];
+  --inner-highlight-sm: [object Object];
+  --inner-highlight: [object Object];
+  --inner-highlight-md: [object Object];
+  --inner-highlight-lg: [object Object];
+  --inner-highlight-xl: [object Object];
 }
         
 .x-small-typecase {
