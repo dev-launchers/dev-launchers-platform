@@ -2,7 +2,7 @@ import debounce from 'lodash/debounce';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useTheme } from 'styled-components';
 
-export function useResponsive() {
+const useResponsive = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const theme = useTheme();
@@ -18,3 +18,5 @@ export function useResponsive() {
 
   return { isMobile, isDesktop };
 };
+
+export default useResponsive;

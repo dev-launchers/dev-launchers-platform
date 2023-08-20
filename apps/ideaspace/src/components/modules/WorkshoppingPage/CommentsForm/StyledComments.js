@@ -23,8 +23,8 @@ export const SingleComment = styled.div`
 export const SingleCommentContent = styled.div`
   width: 100%;
   min-width: 430px;
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
-  color: #C4C4C4;
+  background-color: white;
+  color: black;
   border-radius: 25px;
   padding: 20px;
   display: inline-flex;

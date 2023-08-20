@@ -78,15 +78,17 @@ function WorkshoppingPage() {
             <IdeaOverview selectedCard={data} />
 
             <Comments>
-              <h4 style={{textAlign: "left", paddingLeft: "20px"}}>Comment feed</h4>
-              {/* a count of the comments in the comment feed: */}
-              <h6 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENTS: {JSON.stringify(data?.comments?.data?.length)}</h6>
+              <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {JSON.stringify(data?.comments?.data?.length)}</h5>
 
               <Form>
                 <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
               </Form>
 
               <CommentList selectedCard={data} />
+
+              <Form>
+                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
+              </Form>
             </Comments>
           </Wrapper>
         }
