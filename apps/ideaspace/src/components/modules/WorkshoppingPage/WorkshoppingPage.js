@@ -40,6 +40,8 @@ function WorkshoppingPage() {
     ['primary', 'got it', ''],
   );
 
+  const [comments, setComments] = useState([]); // the data for the comments array; setComments updates comment and triggers a re-render
+
   React.useEffect(async () => {
     if (hidden) {
       await confirmArchived();
