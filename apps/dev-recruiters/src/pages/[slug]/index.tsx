@@ -39,18 +39,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Restructure data returned from the API to flatten and make resemble data returned from old API
   // Any relational data set up in Strapi should be flattened here
   // We could `create a reusable function to handle this more elegantly
-  project = {
-    ...project, 
-    team: {
-      leaders: project.team ? project.team?.leaders?.map(leader => leader.leader?.data.attributes) : ``,
-      members: project.team ? project.team?.members?.map(member => member.member?.data.attributes) : ``
-    },
-    interests: project.interests?.data.map(interest => interest.attributes),
-    opportunities: project.opportunities?.data.map(opportunity => opportunity.attributes)
+  // project = {
+  //   ...project, 
+  //   team: {
+  //     leaders: project.team ? project.team?.leaders?.map(leader => leader.leader?.data.attributes) : ``,
+  //     members: project.team ? project.team?.members?.map(member => member.member?.data.attributes) : ``
+  //   },
+  //   interests: project.interests?.data.map(interest => interest.attributes),
+  //   opportunities: project.opportunities?.data.map(opportunity => opportunity.attributes)
     
-  };
+  // };
 
-  const commitments = project.opportunities.map(
+  const commitments = project?.opportunities?.data?.map(
     (opp) => opp.commitmentHoursPerWeek
   );
   const maxCommitment = Math.max(...commitments);

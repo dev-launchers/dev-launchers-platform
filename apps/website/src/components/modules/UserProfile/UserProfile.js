@@ -50,7 +50,7 @@ export default function UserProfile({ otherUser }) {
 
           const tempOpportunities = [];
           data.map((project) => {
-            project.opportunities.map((opportunity) => {
+            project?.opportunities?.map((opportunity) => {
               opportunity.project = project;
               tempOpportunities.push(opportunity);
             });
