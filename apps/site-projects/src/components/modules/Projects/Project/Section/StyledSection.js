@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: ${({ bgColor, theme }) =>
     bgColor || theme?.colors?.NEUTRAL_2};
   color: ${({ txtColor, theme }) =>
-    txtColor ? theme?.colors?.NEUTRAL_1 : theme?.colors?.NEUTRAL_2};
+    txtColor ? theme?.colors?.SUCCESS_300 : theme?.colors?.GREYSCALE_WHITE};
 
   p {
     margin: 0;

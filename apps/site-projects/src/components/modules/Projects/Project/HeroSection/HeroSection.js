@@ -35,18 +35,12 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
   const heroImageConfig = heroImage?.formats?.large || heroImage;
   return (
     <Wrapper>
-
-
-
-<div style={{marginRight:"100%"}}>
-     
-     <BackButton
- type="back"
- withLabel
- />
-   </div>     
-    
-    
+      <div style={{marginRight:"100%"}}>
+          <BackButton
+          type="back"
+          withLabel
+          />
+      </div>
       <h2 style={{marginTop:"2rem"}}>{projectName}</h2>
                  
       <span>{projectCatchPhrase}</span>
