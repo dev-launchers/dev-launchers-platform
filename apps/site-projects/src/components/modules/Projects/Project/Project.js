@@ -21,6 +21,7 @@ import JoinSupport from "./JoinSupport";
 import HelpBuild from "./HelpBuild";
 import Sessions from "./Sessions";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import Role from "./Role/Role";
 
 const Project = ({ project, theme }) => {
   const router = useRouter();
