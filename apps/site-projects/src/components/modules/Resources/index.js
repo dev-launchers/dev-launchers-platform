@@ -37,7 +37,7 @@ function Resources({ projects }) {
               marginLeft: 'auto',
               paddingLeft: '2rem',
               paddingRight: '2rem',
-              maxWidth: '69rem',
+              maxWidth: '80rem',
             }}
           >
             <YourProjects userProjects={userProjects} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
