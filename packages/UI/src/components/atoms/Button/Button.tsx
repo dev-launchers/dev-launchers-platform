@@ -1,5 +1,6 @@
 import type { DefaultTheme } from 'styled-components';
 import styled from 'styled-components';
+import theme1 from '../../../../../../packages/UI/src/styles/theme';
 import { paddingStyles } from '../Padding';
 import { shadowStyles } from '../Shadow';
 import { typographyStyles } from '../Typography';
@@ -34,15 +35,16 @@ const Button = styled.button.attrs(({ disabled }) => ({
   ${typographyStyles['button']}
   
   background-color: ${({ theme, buttonType }) => {
-    if (buttonType === 'primary') return theme.colors.BLUE_600;
-    if (buttonType === 'secondary') return theme.colors.LIGHT_BLUE_650;
-    if (buttonType === 'alternative') return theme.colors.GREYSCALE_WHITE;
+    console.log(theme1.colors.BLUE_600);
+    if (buttonType === 'primary') return theme1.colors.BLUE_600;
+    if (buttonType === 'secondary') return theme1.colors.LIGHT_BLUE_650;
+    if (buttonType === 'alternative') return theme1.colors.GREYSCALE_WHITE;
   }};
   border: none;
   color: ${({ theme, buttonType }) => {
-    if (buttonType === 'primary') return theme.colors.GREYSCALE_WHITE;
-    if (buttonType === 'secondary') return theme.colors.GREYSCALE_WHITE;
-    if (buttonType === 'alternative') return theme.colors.GREYSCALE_BLACK;
+    if (buttonType === 'primary') return theme1.colors.GREYSCALE_WHITE;
+    if (buttonType === 'secondary') return theme1.colors.GREYSCALE_WHITE;
+    if (buttonType === 'alternative') return theme1.colors.GREYSCALE_BLACK;
   }};
   cursor: pointer;
 
@@ -73,9 +75,10 @@ const Button = styled.button.attrs(({ disabled }) => ({
   }
   &:hover {
     background-color: ${({ theme, buttonType }) => {
-      if (buttonType === 'primary') return theme.colors.BLUE_700;
-      if (buttonType === 'secondary') return theme.colors.LIGHT_BLUE_700;
-      if (buttonType === 'alternative') return theme.colors.GREYSCALE_OFF_WHITE;
+      if (buttonType === 'primary') return theme1.colors.BLUE_700;
+      if (buttonType === 'secondary') return theme1.colors.LIGHT_BLUE_700;
+      if (buttonType === 'alternative')
+        return theme1.colors.GREYSCALE_OFF_WHITE;
     }};
     transition: background-color 0.5s, color 0.5s;
   }
@@ -84,7 +87,8 @@ const Button = styled.button.attrs(({ disabled }) => ({
       backgroundColorChanger(theme, buttonType)};
 
     color: ${({ theme, buttonType }) => {
-      if (buttonType === 'alternative') return theme.colors.GREYSCALE_OFF_WHITE;
+      if (buttonType === 'alternative')
+        return theme1.colors.GREYSCALE_OFF_WHITE;
     }};
   }
 `;

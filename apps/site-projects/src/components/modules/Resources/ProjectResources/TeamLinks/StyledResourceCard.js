@@ -2,17 +2,16 @@ import styled from "styled-components";
 
 
 export const ResourcesContainer = styled.fieldset`
-    display:flex;
-    flex-direction: row;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(15rem,16rem));
+    justify-content: center;
     gap:2rem;
     background: white;
     border: 3px solid #528cb0 ;
     border-radius: 1rem;
     padding: 2rem 3rem;
-    margin: 4rem 0;
+    margin: auto 0;
     padding-bottom: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
    
 `;
 
