@@ -1,6 +1,5 @@
 import type { DefaultTheme } from 'styled-components';
 import styled from 'styled-components';
-// import theme1 from '../../../../../../packages/UI/src/styles/theme';
 import { paddingStyles } from '../Padding';
 import { shadowStyles } from '../Shadow';
 import { typographyStyles } from '../Typography';
