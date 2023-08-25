@@ -21,7 +21,7 @@ export const ModalHeader = styled.div`
 `;
 
 export const ModalBody = styled.div`
-  padding: 0 115px;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +41,7 @@ h2 {
 export const userUnboardingModalStyle = {
   content: {
     position: "absolute",
-    width: "50%",
+    width: "70%",
     padding: "0px",
     height: "80%",
     top: "50%",

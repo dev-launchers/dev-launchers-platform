@@ -26,8 +26,8 @@ export default function RoleCard({
             </IconWrapper>
 
             <TextWrapper>
-                <Typography type="pLarge"><span className={`title ${theme}`}>{title}</span></Typography>
-                <Typography type="pSmall">{subtitle}</Typography>
+                <Typography type="pLarge" style={{color: "black"}}><span className={`title ${theme}`}>{title.toUpperCase()}</span></Typography>
+                <Typography type="pSmall" className="card-subtitle">{subtitle}</Typography>
             </TextWrapper>
                     
         </RoleCardContainer>

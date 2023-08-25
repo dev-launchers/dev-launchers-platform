@@ -22,17 +22,17 @@ export const IconImg = ({iconImg}) => {
 } ;
 
 export const RoleCardContainer = styled.div`
-    margin: 50px 10px 0px;
+    margin: 65px 10px 0px;
     /* Components */
     box-sizing: border-box;
     /* Auto layout */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5%;
+    padding: 6% 2%;
     gap: 10px;
-    width: 220px;
-    height: 250px;
+    width: 18vw;
+    height: 25vh;
     border: 1px solid #7F7E7F;    
     border-radius: 10px;
 
@@ -50,21 +50,18 @@ export const TextWrapper = styled.div`
     text-align: center;
     width: 100%;
 
+		p{
+			margin: 0px;
+			margin-bottom: 10px;
+		}
     .title {
-        font-weight: 900;
-
-        &.theme1 {
-        color: #295774;
-        }
-
-        &.theme2 {
-            color: #3A7CA5;
-        }
-
-        &.theme3 {
-            color: #FF7F0E;
-        }
+			font-weight: 900;
+			color: black;
     };
+
+		.card-subtitle{
+
+		}
 `;
 
 

@@ -12,19 +12,16 @@ export default function PageThree(){
                     iconImg="Onboarding"
                     title="Developer"
                     subtitle="You’re here to work on our codebase"
-                    theme="theme1"
                 />
                 <RoleCard
                     iconImg="Onboarding"
                     title="UX Designer"
                     subtitle="You’re here to make our platform user friendly"
-                    theme="theme2"
                 />
                 <RoleCard
                     iconImg="Onboarding"
                     title=" Other"
                     subtitle="You’re a surprise!"
-                    theme="theme3"
                 />
             </ThreeRoleCards>               
         </PageThereeContainer>
