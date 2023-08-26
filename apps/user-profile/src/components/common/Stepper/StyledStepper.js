@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import LeftCaretIcon from '../../../images/Onboarding/Stepper/left-caret.svg';
+import RightCaretIcon from '../../../images/Onboarding/Stepper/right-caret.svg';
 
 export const StepperHeader = styled.div`
     width: 71.6%;
@@ -33,11 +35,41 @@ export const EmptyBar = styled.div`
 `;
 
 export const StepperFooter = styled.div`
-    width: 100%;
+		width: 83%;
+		margin: auto;
+		padding: 2% 2%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 8px 14px;
     gap: 22px;
+
+		button {
+			text-transform: unset;
+			height: 48px;
+			width: 111px;
+			img{
+				margin-right: 10px;
+			}
+		}
+
+		.stepper-back-button{
+			border: 2px solid #173242;
+		}
+
+		.stepper-next-button{
+			background-color: #295774;
+			color: white;
+			img{
+				margin-left: 10px;
+			}
+		}
 `;
+
+export const LeftIcon = () => {
+	return  <img src={LeftCaretIcon} />;
+};
+
+export const RightIcon = () => {
+	return <img src={RightCaretIcon} />;
+};

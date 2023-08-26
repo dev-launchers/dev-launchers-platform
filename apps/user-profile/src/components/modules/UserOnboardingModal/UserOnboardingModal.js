@@ -5,7 +5,7 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import PageOne from "./PlatformOnboarding/PageOne";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
-import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody, CloseModalIcon } from "./StyledUserOnboardingModal";
 import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
 
 Modal.setAppElement("#__next");
@@ -38,7 +38,10 @@ export default function UserOnboardingModal({ isOpen }) {
                 contentLabel="User Onboarding"
             >
                 <ModalContainer>
-                    {showPlatformOnboardingModal && <PlatformOnboarding />}
+                    {showPlatformOnboardingModal && <>
+											<button className="modal-close-button" onClick={closeModal}><CloseModalIcon/></button>
+											<PlatformOnboarding />
+										</>}
                 </ModalContainer>
             </Modal>
         </>

@@ -1,8 +1,19 @@
 import styled from "styled-components";
+import CloseIcon from "../../../images/Onboarding/Modal/close-icon.svg";
 
+export const CloseModalIcon = () => {
+	return <img src={CloseIcon} />;
+};
 export const ModalContainer = styled.div`
   width: 100%;
   height: 100%;
+
+	.modal-close-button{
+		float: right;
+		margin: 15px 10px;
+		background-color: black;
+		border: none;
+	}
 `;
 
 export const ModalHeader = styled.div`
@@ -50,6 +61,7 @@ export const userUnboardingModalStyle = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
+		borderRadius: "32px",
     transform: "translate(-50%, -50%)",
     zIndex: 1001
   },

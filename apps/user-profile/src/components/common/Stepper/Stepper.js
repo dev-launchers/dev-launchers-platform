@@ -6,6 +6,8 @@ import {
   ProgressBarContainer,
   Bar,
   EmptyBar,
+	LeftIcon,
+	RightIcon,
 } from './StyledStepper';
 import { Button } from '@devlaunchers/components/components/atoms';
 
@@ -135,8 +137,8 @@ export default function Stepper({ steps = stepsMockData }) {
     index === 0 ? (
       <div></div>
     ) : (
-      <Button onClick={backOnClickHandler}>
-        {buttonConfig.back.label ? buttonConfig.back.label : 'Back'}
+      <Button className="stepper-back-button" onClick={backOnClickHandler}>
+        <LeftIcon/> {buttonConfig.back.label ? buttonConfig.back.label : 'Back'}
       </Button>
     );
 
@@ -153,8 +155,8 @@ export default function Stepper({ steps = stepsMockData }) {
 
       <StepperFooter>
         {backButton}
-        <Button onClick={nextOnClickHandler}>
-          {buttonConfig.next.label ? buttonConfig.next.label : 'Next'}
+        <Button className="stepper-next-button" onClick={nextOnClickHandler}>
+          {buttonConfig.next.label ? buttonConfig.next.label : 'Next'} <RightIcon/>
         </Button>
       </StepperFooter>
     </>

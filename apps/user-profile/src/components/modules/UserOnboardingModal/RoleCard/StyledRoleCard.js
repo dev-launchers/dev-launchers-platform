@@ -3,11 +3,11 @@ import React from 'react';
 import Developer from '../../../.././images/Onboarding/RoleCard/developer.svg';
 import UX from '../../../.././images/Onboarding/RoleCard/ux-ui.svg';
 import Other from '../../../.././images/Onboarding/RoleCard/other.svg';
-import juniorExperienceSvg from '../../../../images/junior-experience.svg';
-import midExperienceSvg from '../../../../images/mid-experience.svg'
-import onboardingFoldersSvg from '../../../../images/onboarding-folders.svg';
-import seniorExperienceSvg from '../../../../images/senior-experience.svg'
-import userProfileSvg from '../../../../images/user-profile.svg';
+import juniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/junior-experience.svg';
+import midExperienceSvg from '../../../.././images/Onboarding/RoleCard/mid-experience.svg'
+import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboarding-folders.svg';
+import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
+import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
 export const IconImg = ({iconImg}) => {
     switch (iconImg) {
