@@ -7,16 +7,13 @@ import axios from "axios";
 import Button from '../../common/Button';
 import PageBody from '../../common/PageBody';
 
-import { useUserDataContext } from '../../../context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import BioBox from './BioBox';
 import Opportunities from './Opportunities';
 import ProfileCard from './ProfileCard';
 import RecommendedIdeas from './RecommendedIdeas';
 import UserProjects from './UserProjects';
 import People from './People';
-
-import { env } from '../../../utils/EnvironmentVariables';
-
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
 import { useRouter } from "next/router";
@@ -53,7 +50,7 @@ export default function UserProfile({ otherUser }) {
 
           const tempOpportunities = [];
           data.map((project) => {
-            project.opportunities.map((opportunity) => {
+            project?.opportunities?.map((opportunity) => {
               opportunity.project = project;
               tempOpportunities.push(opportunity);
             });
