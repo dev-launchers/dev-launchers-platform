@@ -56,7 +56,7 @@ const Projects = ({ projects }) => {
 			</div>
       <Layout>
         {items.map((project, i) => {
-          const imageUrl = process.env.NODE_ENV == "development" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
+          const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
           const attributes = project?.attributes;
           return(
           <ProjectContainer key={i}>

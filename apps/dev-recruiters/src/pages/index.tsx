@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     });
 
     projects = projects.map((project) => {
-      const commitments = project.opportunities.map(
+      const commitments = project?.opportunities?.map(
         (opp) => opp.commitmentHoursPerWeek
       );
       const maxCommitment = Math.max(...commitments);
