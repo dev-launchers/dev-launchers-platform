@@ -1,8 +1,7 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
 import RoleCard from "./../../RoleCard";
-import { PageContainer, RoleCards } from "../StyledPageContainer";
+import { PageContainer, RoleCards, StepHeader } from "../StyledPageContainer";
 import { ThemeProvider } from "styled-components";
-import { StepHeader } from './StyledPageFour';
 
 export default function PageThree(){
     return (

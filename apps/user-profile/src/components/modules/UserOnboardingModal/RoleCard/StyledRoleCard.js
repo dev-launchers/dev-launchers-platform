@@ -3,28 +3,30 @@ import React from 'react';
 import Developer from '../../../.././images/Onboarding/RoleCard/developer.svg';
 import UX from '../../../.././images/Onboarding/RoleCard/ux-ui.svg';
 import Other from '../../../.././images/Onboarding/RoleCard/other.svg';
+import juniorExperienceSvg from '../../../../images/junior-experience.svg';
+import midExperienceSvg from '../../../../images/mid-experience.svg'
+import onboardingFoldersSvg from '../../../../images/onboarding-folders.svg';
+import seniorExperienceSvg from '../../../../images/senior-experience.svg'
+import userProfileSvg from '../../../../images/user-profile.svg';
 
 export const IconImg = ({iconImg}) => {
     switch (iconImg) {
+				case 'Junior':
+					return <img src={juniorExperienceSvg}/>
+				case 'Mid-Level':
+					return <img src={midExperienceSvg}/>
+				case 'Senior':
+					return <img src={seniorExperienceSvg}/>	
+				case 'Onboarding':
+					return <img src={onboardingFoldersSvg}/>
         case 'Developer':
-            return (
-                <img src={Developer}/>
-            )
-
+          return <img src={Developer}/>
         case 'UX':
-            return (
-                <img src={UX}/>
-            )
-
+          return <img src={UX}/>
         case 'Other':
-            return (
-                <img src={Other}/>
-            )
-
+          return <img src={Other}/>
         default:
-            return (
-            <img src={Developer} />
-            )
+          return <img src={Developer} />
     }
 };
 
@@ -36,12 +38,13 @@ export const RoleCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 6% 2%;
+    padding: 4% 2% 6% 2%;
     gap: 10px;
     width: 18vw;
     height: 25vh;
-    border: 1px solid #7F7E7F;    
+    border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
+		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
 
     &.selected {
         border: 5px solid #3A7CA5;

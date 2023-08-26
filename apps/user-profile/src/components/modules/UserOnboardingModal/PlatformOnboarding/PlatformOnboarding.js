@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Stepper from '../../../common/Stepper';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
+import PageFour from './PageFour/PageFour';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../state/actions';
@@ -35,6 +36,27 @@ export default function PlatformOnboarding() {
     },
     {
       component: <PageThree />,
+      config: {
+        buttons: {
+          next: {
+            label: 'Next',
+            useDefaultOnClick: true,
+            onClick: () => {
+              console.log('..some function ');
+            },
+          },
+          back: {
+            label: 'Back',
+            useDefaultOnClick: true,
+            onClick: () => {
+              console.log('..some function ');
+            },
+          },
+        },
+      },
+    },
+		{
+      component: <PageFour />,
       config: {
         buttons: {
           next: {
