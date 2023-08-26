@@ -41,9 +41,9 @@ h2 {
 export const userUnboardingModalStyle = {
   content: {
     position: "absolute",
-    width: "70%",
+    width: "auto",
     padding: "0px",
-    height: "80%",
+    height: "auto",
     top: "50%",
     left: "50%",
     overflow: "hidden",

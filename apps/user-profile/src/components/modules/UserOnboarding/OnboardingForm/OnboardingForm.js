@@ -2,12 +2,14 @@ import React from 'react'
 import PageBody from '../../../common/PageBody'
 import OnboardingFormSection, { StepperContainer } from './StyledOnboardingForm'
 import { Typography } from '@devlaunchers/components/components/atoms'
+import Breadcrumb from '../../../../images/Onboarding/breadcrumb-frame.png'
 
 const OnboardingForm = ({ children }) => {
     return (
 			<>
-				<StepperContainer></StepperContainer>
-				<div className="stepper-container"></div>
+				<StepperContainer>
+					<img src={Breadcrumb}/>
+				</StepperContainer>
 				<OnboardingFormSection>
 					<PageBody width='40%' style={{backgroundColor: 'inherit'}}>
 						<div className='form-title-mb'>

@@ -1,5 +1,5 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
-import RoleCard from "./RoleCard/RoleCard.js";
+import RoleCard from "./../../RoleCard/RoleCard.js";
 import { PageThereeContainer, ThreeRoleCards } from "./StyledPageThree.js";
 
 export default function PageThree(){
@@ -9,17 +9,17 @@ export default function PageThree(){
             <Typography type="subtitle">We'll use this to recommend open source projects for you to work on.</Typography>
             <ThreeRoleCards>
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="Developer"
                     title="Developer"
                     subtitle="You’re here to work on our codebase"
                 />
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="UX"
                     title="UX Designer"
                     subtitle="You’re here to make our platform user friendly"
                 />
                 <RoleCard
-                    iconImg="Onboarding"
+                    iconImg="Other"
                     title=" Other"
                     subtitle="You’re a surprise!"
                 />
