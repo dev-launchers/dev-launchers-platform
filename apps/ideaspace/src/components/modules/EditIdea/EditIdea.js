@@ -209,7 +209,7 @@ function EditIdea() {
         {!isAuthenticated ? (
           <SignInSection
             label='Please sign in to edit your idea!'
-            redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+            redirectURL={process.env.FRONT_END_URL + '/ideaspace/dashboard'}
           />
         ) : (
           <>

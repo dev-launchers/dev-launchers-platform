@@ -1,13 +1,9 @@
-import axios from "axios";
 import Head from "next/head";
 import Projects from "../components/modules/Projects";
-import { env } from "../utils/EnvironmentVariables";
 import agent from "@devlaunchers/utility/agent"
 // const projectsData = require("../components/modules/Projects/data.json");
 
 export const getStaticProps = async () => {
-
-
   // const projects = projectsData;
   const projects = await agent.Projects.list();
   if (!projects) {
@@ -15,9 +11,6 @@ export const getStaticProps = async () => {
       notFound: true,
     };
   }
-
-
-
 
   return {
     props: { projects },
@@ -38,7 +31,7 @@ const ProjectsList = ({ projects }) => (
       <meta property="og:type" content="website"></meta>
       <meta
         property="og:url"
-        content="https://devlaunchers.org/projects"
+        content={process.env.FRONT_END_URL + "/projects"}
       ></meta>
       <meta
         property="og:image"
@@ -53,7 +46,7 @@ const ProjectsList = ({ projects }) => (
       <meta property="twitter:card" content="summary_large_image"></meta>
       <meta
         property="twitter:url"
-        content="https://devlaunchers.org/projects"
+        content={process.env.FRONT_END_URL + "/projects"}
       ></meta>
       <meta property="twitter:title" content="Our Projects"></meta>
       <meta

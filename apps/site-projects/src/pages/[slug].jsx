@@ -1,7 +1,5 @@
-import axios from "axios";
 import Head from "next/head";
 import Project from "../components/modules/Projects/Project";
-import { env } from "../utils/EnvironmentVariables";
 import agent from "@devlaunchers/utility/agent"
 
 // const data = require("../components/modules/Projects/data.json");
@@ -51,7 +49,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={`https://devlaunchers.org/projects/${project?.attributes?.slug}`}
+          content={`${process.env.FRONT_END_URL}/projects/${project?.attributes?.slug}`}
         ></meta>
         <meta property="og:image" content={heroImage?.attributes?.url}></meta>
         <meta property="og:title" content={project?.attributes?.title}></meta>
@@ -60,7 +58,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
-          content={`https://devlaunchers.org/projects/${project?.attributes?.slug}`}
+          content={`${process.env.FRONT_END_URL}/projects/${project?.attributes?.slug}`}
         ></meta>
         <meta property="twitter:title" content={project?.attributes?.title}></meta>
         <meta
