@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Comment from './SingleComment';
 import { agent } from '@devlaunchers/utility';
 import { cleanData, cleanDataList } from '../../../../utils/StrapiHelper';
+import axios from 'axios';
 
 //create your forceUpdate hook
 function useForceUpdate(){
@@ -22,20 +23,23 @@ function DisplayComments(props) {
 
   useEffect(async () => {
     if (props.selectedCard.id != undefined) {
-      setData((props.selectedCard.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
+      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
+         .then(response => {
+        setData((response.data.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
 
-      const data = await agent.Ideas
-      .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
+        const data = agent.Ideas
+        .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
 
-      const card = cleanData(data);
+        const card = cleanData(data);
 
-      card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
+        card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
 
-      if (card.comments){
-        setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
-        // refresh the feed to show the new comment!
-        
-      }
+        if (card.comments){
+          setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+          // refresh the feed to show the new comment!
+          
+        }
+      })
     }
   }, [props.selectedCard]);
 
@@ -53,7 +57,7 @@ function DisplayComments(props) {
   ));
   return (
     <div>
-      {props.comments?.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
+      {data.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
     </div>
   );
 };

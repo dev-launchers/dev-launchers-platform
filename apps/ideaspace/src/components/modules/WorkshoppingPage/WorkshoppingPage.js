@@ -27,7 +27,7 @@ import {
 
 import { useFetchIdea } from './useFetchIdea';
 
-function WorkshoppingPage() {
+export default function WorkshoppingPage(preps) {
   const router = useRouter()
   const { ideaId } = router.query;
   const [handleChange, setHandleChange] = useState('');
@@ -80,7 +80,7 @@ function WorkshoppingPage() {
             <IdeaOverview selectedCard={data} />
 
             <Comments>
-              <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {JSON.stringify(data?.comments?.data?.length)}</h5>
+              <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {comments.length}</h5>
 
               <Form>
                 <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
@@ -99,4 +99,4 @@ function WorkshoppingPage() {
   }
 }
 
-export default WorkshoppingPage;
+// export default WorkshoppingPage;
