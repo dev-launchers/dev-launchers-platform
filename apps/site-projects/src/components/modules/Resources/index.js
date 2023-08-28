@@ -4,6 +4,8 @@ import YourProjects from "./YourProjects";
 import { useUserDataContext } from "../../../context/UserDataContext";
 import { useState } from "react";
 import OtherResources from "./OtherResourcers/OtherResources";
+import TeamResources from "./TeamResources/TeamResources";
+import SectionResources from "./SectionResources";
 
 function findUserTeams(userId, dataArray) {
   const userTeams = [];
@@ -40,9 +42,16 @@ function Resources({ projects }) {
               maxWidth: '80rem',
             }}
           >
+
             <YourProjects userProjects={userProjects} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
-            <ProjectResources selectedCard={selectedCard} />    
+
+            <SectionResources>
+              <ProjectResources selectedCard={selectedCard} />    
+              <TeamResources team={selectedCard.team} />
+            </SectionResources>
+
             <OtherResources />
+            
           </MainResourcesContainer>
       );
 }
