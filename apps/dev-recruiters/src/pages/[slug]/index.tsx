@@ -8,7 +8,6 @@ import ProjectDetails from '../../components/modules/DetailedPage';
 import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
-  /*
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
   );
@@ -87,7 +86,7 @@ export default function DetailedPage({
   opportunites: Opportunity[];
   maxCommitment: number;
   minCommitment: number;
-}) {*/
+}) {
   return (
     <>
       <Head>
@@ -168,4 +167,4 @@ export default function DetailedPage({
 >>>>>>> 0ac25e83 (fix: bug fix)
     </>
   );
-};
+}
