@@ -8,8 +8,8 @@ import ProjectDetails from '../../components/modules/DetailedPage';
 import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
-  const result = await agent.Projects.list(
-    new URLSearchParams('populate=*&publicationState=live')
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
   );
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
@@ -86,7 +86,7 @@ export default function DetailedPage({
   opportunites: Opportunity[];
   maxCommitment: number;
   minCommitment: number;
-}) {*/
+}) {
   return (
     <>
       <Head>
@@ -130,22 +130,15 @@ export default function DetailedPage({
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
       <>
-        {/*
-      <ThemeProvider theme={theme}>
-        
-         
-        <ProjectDetails
-          maxCommitment={maxCommitment}
-          minCommitment={minCommitment}
-          project={project}
-          opportunites={opportunites}
-        />
-    
-          <div>Hello</div>
-        
-      </ThemeProvider>
-      */}
+        <ThemeProvider theme={theme}>
+          <ProjectDetails
+            maxCommitment={maxCommitment}
+            minCommitment={minCommitment}
+            project={project}
+            opportunites={opportunites}
+          />
+        </ThemeProvider>
       </>
     </>
   );
-};
+}
