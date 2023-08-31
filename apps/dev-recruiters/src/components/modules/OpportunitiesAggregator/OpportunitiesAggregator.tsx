@@ -1,15 +1,19 @@
 import {
-  FeaturedProducts, FeaturedProductsSection, Heading, HeadingContainer, Wrapper
-} from "../../modules/OpportunitiesAggregator/StyledOpportunitiesAggregator";
+  FeaturedProducts,
+  FeaturedProductsSection,
+  Heading,
+  HeadingContainer,
+  Wrapper,
+} from '../../modules/OpportunitiesAggregator/StyledOpportunitiesAggregator';
 
-import * as React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import BoxContainer from "../../common/BoxContainer";
+import * as React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick-theme.css';
+import BoxContainer from '../../common/BoxContainer';
 import FilteringComponent, {
-  FilteringComponentProps
-} from "./filtering/FilteringComponent";
-import ShortCard from "./ShortCard";
+  FilteringComponentProps,
+} from './filtering/FilteringComponent';
+import ShortCard from './ShortCard';
 interface Props extends FilteringComponentProps {}
 
 const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
@@ -18,7 +22,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
 }) => {
   const customSlider = React.useRef<Slider>();
   const settings = {
-    className: "cards",
+    className: 'cards',
     dots: true,
     arrows: true,
     speed: 1000,
@@ -41,8 +45,13 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
       <BoxContainer paddingVertical={32}>
         <HeadingContainer>
           <Heading>Join Us!</Heading>
-          <span>We're an agile team bringing together people from around the world to learn and build world-changing tech.</span>
-          <span>We're excited that you're looking to join us in our mission.</span>
+          <span>
+            We're an agile team bringing together people from around the world
+            to learn and build world-changing tech.
+          </span>
+          <span>
+            We're excited that you're looking to join us in our mission.
+          </span>
         </HeadingContainer>
       </BoxContainer>
       <div id="background" />
@@ -55,6 +64,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
           <FeaturedProducts>
             <h2>Featured Products</h2>
           </FeaturedProducts>
+          {/* 
           <Slider
             ref={(slider) => (customSlider.current = slider)}
             {...settings}
@@ -72,6 +82,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
               />
             ))}
           </Slider>
+          */}
         </BoxContainer>
       </FeaturedProductsSection>
       <BoxContainer paddingHorizontal={20} paddingVertical={32}>
