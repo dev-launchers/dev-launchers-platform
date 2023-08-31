@@ -131,6 +131,7 @@ export default function DetailedPage({
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
 <<<<<<< HEAD
+<<<<<<< HEAD
       <>
         <ThemeProvider theme={theme}>
           <ProjectDetails
@@ -142,19 +143,29 @@ export default function DetailedPage({
         </ThemeProvider>
       </>
 =======
+=======
+      <>
+        {/*
+>>>>>>> 0ac25e83 (fix: bug fix)
       <ThemeProvider theme={theme}>
-        <>
-          {/* 
+        
+         
         <ProjectDetails
           maxCommitment={maxCommitment}
           minCommitment={minCommitment}
           project={project}
           opportunites={opportunites}
         />
-        */}
-        </>
+    
+          <div>Hello</div>
+        
       </ThemeProvider>
+<<<<<<< HEAD
 >>>>>>> 3bd1084a (fix: bug fix)
+=======
+      */}
+      </>
+>>>>>>> 0ac25e83 (fix: bug fix)
     </>
   );
 };
