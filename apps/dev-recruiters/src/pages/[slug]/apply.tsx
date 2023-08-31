@@ -42,8 +42,10 @@ function appldy() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <TitledHeader title="Apply with Dev Launchers!" />
-      <SignUpForm />
+      <>
+        {/*<TitledHeader title="Apply with Dev Launchers!" />
+        <SignUpForm /> */}
+      </>
     </>
   );
 }
