@@ -1,6 +1,6 @@
 import constate from 'constate'; // State Context Object Creator
-import { useEffect, useState } from 'react';
-import axios from "axios";
+import { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const DEFAULT_USER = {
   id: 0,
@@ -26,50 +26,49 @@ export const DEFAULT_USER = {
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
-function useUserData() {
-  const [userData, setUserData] = useState(DEFAULT_USER);
+function useUserDataHook() {
+  const [userData, _] = useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = useState();
 
+  const setUserData = useCallback((data) => _(() => data), []);
   useEffect(() => {
-    localStorage.setItem('userData', JSON.stringify(userData));
     setIsAuthenticated(userData && userData.id > 0);
-  }, [userData]);
-  
-  useEffect(() => {
-    const cacheData = JSON.parse(localStorage.getItem('userData'));
+  }, [userData.id > 0]);
 
-    if (cacheData && cacheData.id > 0) {
-      setUserData(cacheData);
-    } else {
-      axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
-        withCredentials: true,
-      })
-        .then(({ data: currentUser }) => {
-          setUserData({
-            id: currentUser.id,
-            name: currentUser.profile.displayName,
-            username: currentUser.username,
-            email: currentUser.email,
-            bio: currentUser.profile.bio,
-            profilePictureUrl: currentUser.profile.profilePictureUrl,
-            socialMediaLinks: currentUser.profile.socialMediaLinks,
-            totalPoints: currentUser.point.totalPoints,
-            totalSeasonPoints: currentUser.point.totalSeasonPoints,
-            availablePoints: currentUser.point.availablePoints,
-            volunteerHours: currentUser.point.volunteerHours,
-            interests: currentUser.interests,
-          });
-        })
-        .catch(() => {
-          // setUserData({ id: "invalid" });
-          setIsAuthenticated(false);
+  useEffect(() => {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+      withCredentials: true,
+    })
+      .then(({ data: currentUser }) => {
+        console.log('Fetching...');
+        setUserData({
+          id: currentUser.id,
+          name: currentUser.profile.displayName,
+          username: currentUser.username,
+          email: currentUser.email,
+          bio: currentUser.profile.bio,
+          profilePictureUrl: currentUser.profile.profilePictureUrl,
+          socialMediaLinks: currentUser.profile.socialMediaLinks,
+          totalPoints: currentUser.point.totalPoints,
+          totalSeasonPoints: currentUser.point.totalSeasonPoints,
+          availablePoints: currentUser.point.availablePoints,
+          volunteerHours: currentUser.point.volunteerHours,
+          interests: currentUser.interests,
         });
-    }
+      })
+      .catch(() => {
+        console.error('failed to fetch');
+        // setUserData({ id: "invalid" });
+        setIsAuthenticated(false);
+      });
   }, []);
 
-  return { userData, isAuthenticated, setUserData };
+  return { useUserDataContext: { userData, setUserData, isAuthenticated } };
 }
 
 // Step 2: Declare your context state object to share the state with other components
-const [UserDataProvider, useUserDataContext] = constate(useUserData);
+const [UserDataProvider, useUserDataContext] = constate(
+  useUserDataHook,
+  (value) => value.useUserDataContext
+);
 export { UserDataProvider, useUserDataContext };
