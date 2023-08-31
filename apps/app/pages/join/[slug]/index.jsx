@@ -1,4 +1,4 @@
-import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/index';
+/*import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/index';
 import App from '@devlaunchers/dev-recruiters/src/pages/_app';
 export {
   getStaticProps,
@@ -9,3 +9,4 @@ export {
 
 import { constructAppPage } from '../../../utils/routingTools.js';
 export default constructAppPage(App, Page);
+*/

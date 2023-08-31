@@ -1,4 +1,4 @@
-import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/apply';
+/*import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/apply';
 import App from '@devlaunchers/dev-recruiters/src/pages/_app';
 export {
   getStaticProps,
@@ -9,3 +9,7 @@ export {
 
 import { constructAppPage } from '../../../utils/routingTools.js';
 export default constructAppPage(App, Page);
+<<<<<<< HEAD
+=======
+*/
+>>>>>>> d8bad424 (fix: bug fix)
