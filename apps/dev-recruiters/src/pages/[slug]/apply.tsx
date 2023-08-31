@@ -43,8 +43,13 @@ function appldy() {
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       <>
+<<<<<<< HEAD
         <TitledHeader title="Apply with Dev Launchers!" backButtonUrl="/" />
         {/*<SignUpForm  handleCloseModal={handleCloseModal} position={position}/>*/}
+=======
+        {/*<TitledHeader title="Apply with Dev Launchers!" />
+        <SignUpForm /> */}
+>>>>>>> 3a818559 (build: bug fix)
       </>
     </>
   );
