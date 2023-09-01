@@ -11,6 +11,7 @@ import {
   useUserDataContext,
 } from '@devlaunchers/components/src/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
+import SaveIdea from '../../modules/SaveIdea/SaveIdea';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -19,6 +20,7 @@ function IdeaCard({ cards, cardType }) {
   const [isFilled, setIsFilled] = useState(false);
   const [liked, setLiked] = useState(false);
   const { userData, isAuthenticated } = useUserDataContext();
+  const [savedCards, setSavedCards] = useState([]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to reactivate your idea', '', ''],
@@ -66,6 +68,10 @@ function IdeaCard({ cards, cardType }) {
     >
       <atoms.Box>
         <IdeaCardTag status={tagContent} />
+        <SaveIdea 
+        savedCards={savedCards} 
+        setSavedCards={setSavedCards} 
+        id={cards.id}/>
       </atoms.Box>
 
       <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
