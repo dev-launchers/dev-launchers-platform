@@ -21,6 +21,8 @@ function DisplayComments(props) {
 
   const [data, setData] = useState([]);
 
+  console.log("props: ", props)
+
   useEffect(async () => {
     // if (props.selectedCard.id != undefined) {
     //   axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
@@ -42,8 +44,7 @@ function DisplayComments(props) {
     //     }
     //   })
     // }
-    const data = agent.Ideas
-    .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
+    const data = agent.Ideas.getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
     // console.log(data.comments)
     console.log("data from agent: ", data)
 

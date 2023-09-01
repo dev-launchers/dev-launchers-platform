@@ -27,9 +27,26 @@ import {
 
 import { useFetchIdea } from './useFetchIdea';
 
-export default function WorkshoppingPage(preps) {
+export default function WorkshoppingPage(props) {
+  console.log("Props given by parent component: ", props)
+
   const router = useRouter()
-  const { ideaId } = router.query;
+  //console.log("Router: ", router)
+  //console.log("Router query: ", router.query)
+  if(!router.isReady){ console.log("It's NOT ready yet!") }
+  else{
+    console.log("It's ready!")
+  }
+  React.useEffect(() => {
+    if(!router.isReady){ return; }
+    else{
+      console.log("It's ready!")
+      console.log("Router inside hook: ", router);
+    }
+  }, [router.isReady]);
+  // const { ideaId } = router.query;
+  const { ideaId } = "";
+
   const [handleChange, setHandleChange] = useState('');
   const [handleTextChange, setHandleTextChange] = useState('');
   const { data, loading, hidden, getError } = useFetchIdea(ideaId);
@@ -52,6 +69,11 @@ export default function WorkshoppingPage(preps) {
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
+    // test outputs
+    console.log("Idea ID = ", ideaId)
+    console.log("Data = ", data)
+    console.log("Comments = ", comments)
+
     return (
       <Container theme={theme}>
         <ArchivedIdea />
