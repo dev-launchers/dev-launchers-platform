@@ -33,6 +33,10 @@
       "path": "packages/models"
     },
     {
+      "name": "tailwind-constructor",
+      "path": "packages/tailwind-constructor"
+    },
+    {
       "name": "eslint-config-bases",
       "path": "packages/eslint-config-bases"
     },
