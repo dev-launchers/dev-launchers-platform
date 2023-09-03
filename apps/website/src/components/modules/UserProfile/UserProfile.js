@@ -79,7 +79,8 @@ export default function UserProfile({ otherUser }) {
 
   const getIdeaData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-      .then(({ data }) => {
+      .then(({ responseData }) => {
+        const data = cleanDataList(responseData);
         if (data) {
           setIdeas(data);
         }
@@ -99,18 +100,18 @@ export default function UserProfile({ otherUser }) {
       parseInt(Math.random()*userCount),
       parseInt(Math.random()*userCount),
     ];
-    console.log(randomUserIds);
+
     let usersData = await Promise.all(randomUserIds.map(async (userId) => 
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
 
-    console.log(usersData);
     setPeople(usersData);
   }
 
   const getInterests = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
-      .then(({ data }) => {
+      .then(({ responseData }) => {
+        const data = cleanDataList(responseData);
         if (data) {
           setInterests(data);
         }
