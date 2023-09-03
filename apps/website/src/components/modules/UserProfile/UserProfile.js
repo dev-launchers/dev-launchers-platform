@@ -78,16 +78,10 @@ export default function UserProfile({ otherUser }) {
   }, [projects, userData]);
 
   const getIdeaData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-      .then(({ responseData }) => {
-        const data = cleanDataList(responseData);
-        if (data) {
-          setIdeas(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch idea data");
-      });
+    const data = cleanDataList(await agent.Ideas.get(
+      new URLSearchParams(`populate=*`)));
+    
+    setIdeas(data);
   };
 
   const getPeopleData = async () => {
