@@ -1,13 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-<<<<<<< HEAD
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   display: flex;
   flex-direction: column;
-=======
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
->>>>>>> development/ideaspace
   box-sizing: border-box;
   padding: 25px;
   min-height: 100%;

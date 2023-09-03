@@ -18,6 +18,7 @@ import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
 import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
+import { cleanDataList } from '@devlaunchers/ideaspace/src/utils/StrapiHelper';
 
 // State management component
 export default function UserProfile({ otherUser }) {
@@ -38,13 +39,17 @@ export default function UserProfile({ otherUser }) {
       router.push("/signup");
   }, [isAuthenticated]);
 
-  // Start Projects/Opportunities
   React.useEffect(() => {
     getProjectData();
+    getIdeaData();
+    getPeopleData();
+    getInterests();
   }, []);
+
   const getProjectData = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
-      .then(({ data }) => {
+      .then(({ responseData }) => {
+        const data = cleanDataList(responseData);
         if (data) {
           setProjects(data);
 
@@ -58,8 +63,8 @@ export default function UserProfile({ otherUser }) {
           setOpportunities(tempOpportunities);
         }
       })
-      .catch(() => {
-        console.error("Could not fetch project data");
+      .catch((e) => {
+        console.log("Could not fetch project data");
       });
   };
   React.useEffect(() => {
@@ -71,31 +76,14 @@ export default function UserProfile({ otherUser }) {
     });
     setMyProjects(myProjects);
   }, [projects, userData]);
-  // End Projects/Opportunities
 
-
-  // Start Ideas
-  React.useEffect(() => {
-    getIdeaData();
-  }, []);
   const getIdeaData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-      .then(({ data }) => {
-        if (data) {
-          setIdeas(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch idea data");
-      });
+    const data = cleanDataList(await agent.Ideas.get(
+      new URLSearchParams(`populate=*`)));
+    
+    setIdeas(data);
   };
-  // End Ideas
 
-
-  // Start People  
-  React.useEffect(() => {
-    getPeopleData();
-  }, []);
   const getPeopleData = async () => {
     const userCount = (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/count`)).data;
     let randomUserIds = [
@@ -106,33 +94,26 @@ export default function UserProfile({ otherUser }) {
       parseInt(Math.random()*userCount),
       parseInt(Math.random()*userCount),
     ];
-    console.log(randomUserIds);
+
     let usersData = await Promise.all(randomUserIds.map(async (userId) => 
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
 
-    console.log(usersData);
     setPeople(usersData);
   }
-  // End People
 
-  // Start Interests
-  React.useEffect(() => {
-    getInterests();
-  }, []);
   const getInterests = async () => {
     await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
-      .then(({ data }) => {
+      .then(({ responseData }) => {
+        const data = cleanDataList(responseData);
         if (data) {
           setInterests(data);
         }
       })
-      .catch(() => {
-        console.error("Could not fetch interest data");
+      .catch((e) => {
+        console.log("Could not fetch interest data");
       });
   };
-  // End Interests
-
 
   useEffect(() => {
     setLoading(userData?.id === -1 || otherUser?.id === -1);
