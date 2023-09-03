@@ -23,41 +23,41 @@ function DisplayComments(props) {
 
   console.log("props: ", props)
 
-  useEffect(async () => {
-    // if (props.selectedCard.id != undefined) {
-    //   axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
-    //      .then(response => { // call backend
-    //     console.log(response.data)
-    //     setData((response.data.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
+  // useEffect(async () => {
+  //   // if (props.selectedCard.id != undefined) {
+  //   //   axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}`)
+  //   //      .then(response => { // call backend
+  //   //     console.log(response.data)
+  //   //     setData((response.data.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1))
 
-    //     const data = agent.Ideas // call backend AGAIN
-    //     .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
+  //   //     const data = agent.Ideas // call backend AGAIN
+  //   //     .getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
 
-    //     const card = cleanData(data);
+  //   //     const card = cleanData(data);
 
-    //     card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
+  //   //     card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
 
-    //     if (card.comments){
-    //       setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
-    //       // refresh the feed to show the new comment!
+  //   //     if (card.comments){
+  //   //       setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+  //   //       // refresh the feed to show the new comment!
           
-    //     }
-    //   })
-    // }
-    const data = agent.Ideas.getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
-    // console.log(data.comments)
-    console.log("data from agent: ", data)
+  //   //     }
+  //   //   })
+  //   // }
+  //   const data = agent.Ideas.getIdea(props.selectedCard.id, new URLSearchParams(`populate=*`));
+  //   // console.log(data.comments)
+  //   console.log("data from agent: ", data)
 
-    const card = cleanData(data);
+  //   const card = cleanData(data);
 
-    card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
+  //   card.comments = card.comments ? cleanDataList(card.comments?.data) : card.comments;
 
-    if (card.comments){
-      setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
-      // refresh the feed to show the new comment!
+  //   if (card.comments){
+  //     setComments((card.comments).sort((a, b) => a.published_at < b.published_at ? 1 : -1));
+  //     // refresh the feed to show the new comment!
       
-    }
-  }, [props.selectedCard]);
+  //   }
+  // }, [props.selectedCard]);
 
   useEffect(() => {
     if (typeof this !== 'undefined') {
@@ -66,14 +66,14 @@ function DisplayComments(props) {
     }
   }, [props.comments]);
 
-  const commentNodes = data.map(comment => (
+  const commentNodes = props.comments.map(comment => (
     <Comment author={comment.author} key={comment.id} id={comment.id}>
       {comment.text}
     </Comment>
   ));
   return (
     <div>
-      {data.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
+      {props.comments.length ? commentNodes : <div style={{padding:"2rem"}}>No comments yet!</div>}
     </div>
   );
 };

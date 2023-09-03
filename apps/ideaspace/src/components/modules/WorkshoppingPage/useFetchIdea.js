@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { agent } from '@devlaunchers/utility';
-import { cleanData } from '../../../utils/StrapiHelper';
+import { cleanData, cleanDataList } from '../../../utils/StrapiHelper';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-export const useFetchIdea = (ideaId) => {
+export const useFetchIdea = (ideaId, setComments) => {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     useEffect(() => {
@@ -35,12 +35,16 @@ export const useFetchIdea = (ideaId) => {
     author: {},
   });
 
+  // requests data from the backend
   useEffect(async () => {
     try {
       if (ideaId) {
         setLoading(true);
 
         const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+
+        setComments(cleanDataList(data.comments.data))
+        
 
         setLoading(false);
 

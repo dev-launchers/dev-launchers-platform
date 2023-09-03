@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import Error from "next/error";
 import { useRouter } from 'next/router';
-import CommentList from './CommentsForm/DisplayComments';
+import DisplayComments from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
 import { IdeaOverview } from './IdeaOverview/IdeaOverview';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -33,10 +33,13 @@ export default function WorkshoppingPage(props) {
   const router = useRouter()
   //console.log("Router: ", router)
   //console.log("Router query: ", router.query)
-  if(!router.isReady){ console.log("It's NOT ready yet!") }
+  if(!router.isReady){
+    console.log("It's NOT ready yet!")
+  }
   else{
     console.log("It's ready!")
   }
+  console.log("Idea ID via router: ", router.query.ideaId)
   React.useEffect(() => {
     if(!router.isReady){ return; }
     else{
@@ -47,17 +50,17 @@ export default function WorkshoppingPage(props) {
   // const { ideaId } = router.query;
   const { ideaId } = "";
 
+  const [comments, setComments] = useState([]);
+
   const [handleChange, setHandleChange] = useState('');
   const [handleTextChange, setHandleTextChange] = useState('');
-  const { data, loading, hidden, getError } = useFetchIdea(ideaId);
+  const { data, loading, hidden, getError } = useFetchIdea(router.query.ideaId, setComments);
 
   const [ArchivedIdea, confirmArchived] = useConfirm(
     ["This Idea has been archived.", '', ''],
     "You can't workshop on it.",
     ['primary', 'got it', ''],
   );
-
-  const [comments, setComments] = useState([]); // the data for the comments array; setComments updates comment and triggers a re-render
 
   React.useEffect(async () => {
     if (hidden) {
@@ -108,7 +111,7 @@ export default function WorkshoppingPage(props) {
                 <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
               </Form>
 
-              <CommentList selectedCard={data} />
+              <DisplayComments selectedCard={data} comments={comments} />
 
               <Form>
                 <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
