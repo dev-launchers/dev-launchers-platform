@@ -63,8 +63,8 @@ export default function UserProfile({ otherUser }) {
           setOpportunities(tempOpportunities);
         }
       })
-      .catch(() => {
-        console.error("Could not fetch project data");
+      .catch((e) => {
+        console.log("Could not fetch project data");
       });
   };
   React.useEffect(() => {
@@ -110,8 +110,8 @@ export default function UserProfile({ otherUser }) {
           setInterests(data);
         }
       })
-      .catch(() => {
-        console.error("Could not fetch interest data");
+      .catch((e) => {
+        console.log("Could not fetch interest data");
       });
   };
 
