@@ -7,7 +7,7 @@ function MeetingTimeCard(props) {
         <StyledMeetingTimeCard href={meetingLink} target="_blank" >
             <StyledMeetingTimeCardTitle>{title}</StyledMeetingTimeCardTitle>
             <StyledMeetingTimeCardTime>{meetingTime}</StyledMeetingTimeCardTime>
-            <img src="/images/projects/resources/logos/google-drive.svg" alt="google meets" />
+            <img src="/images/projects/resources/logos/google-meet.svg" alt="google meets" />
         </StyledMeetingTimeCard>
     )
 }
