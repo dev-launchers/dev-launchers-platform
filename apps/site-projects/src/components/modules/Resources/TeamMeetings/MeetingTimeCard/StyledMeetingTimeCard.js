@@ -20,10 +20,10 @@ export const StyledMeetingTimeCard = styled.a`
     }
 
     img{
-        width: 5rem;
+        width: 4rem;
 
         @media(min-width:37.5rem){
-            width: 6rem;
+            width: 5rem;
         }
     }
 `;
