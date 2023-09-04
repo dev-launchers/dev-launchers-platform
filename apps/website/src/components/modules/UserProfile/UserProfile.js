@@ -64,7 +64,7 @@ export default function UserProfile({ otherUser }) {
         }
       })
       .catch((e) => {
-        console.log("Could not fetch project data");
+        console.error("Could not fetch project data");
       });
   };
   React.useEffect(() => {
@@ -111,7 +111,7 @@ export default function UserProfile({ otherUser }) {
         }
       })
       .catch((e) => {
-        console.log("Could not fetch interest data");
+        console.error("Could not fetch interest data");
       });
   };
 
