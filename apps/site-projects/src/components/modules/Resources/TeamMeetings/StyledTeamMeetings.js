@@ -5,12 +5,17 @@ export const StyledTeamMeetingsContainer = styled.fieldset`
     gap: 2rem;
     background: white;
     border: 1px solid #B9B4B4 ;
-    padding: 2rem 3rem;
+    border-radius: .2rem;
+    padding: 2rem 1rem;
     margin: 1.5rem 0;
     padding-bottom: 2rem;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+
+    @media (min-width:40rem){
+        padding: 4rem 3rem;
+    }
 
     > legend {
         font-family: "Abel",sans-serif;
