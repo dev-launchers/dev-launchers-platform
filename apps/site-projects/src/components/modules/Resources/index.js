@@ -6,6 +6,7 @@ import { useState } from "react";
 import OtherResources from "./OtherResourcers/OtherResources";
 import TeamResources from "./TeamResources/TeamResources";
 import SectionResources from "./SectionResources";
+import TeamMeetings from "./TeamMeetings/";
 
 function findUserTeams(userId, dataArray) {
   const userTeams = [];
@@ -47,6 +48,7 @@ function Resources({ projects }) {
 
             <SectionResources>
               <ProjectResources selectedCard={selectedCard} />    
+              <TeamMeetings projectId={selectedCard.id} />
               <TeamResources team={selectedCard.team} />
             </SectionResources>
 
