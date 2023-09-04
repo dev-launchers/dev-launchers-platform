@@ -18,7 +18,7 @@ import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import UserInterests from './UserInterests';
 import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
-import { cleanDataList } from '@devlaunchers/ideaspace/src/utils/StrapiHelper';
+import { cleanDataList } from '@devlaunchers/components/utils/StrapiHelper';
 
 // State management component
 export default function UserProfile({ otherUser }) {
