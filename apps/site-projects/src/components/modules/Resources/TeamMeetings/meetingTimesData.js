@@ -1,3 +1,7 @@
+
+/** the mock data doesn't have meeting times it shows an empty array, 
+ * so just to see the meetings component in the page we use this object
+ */
 export const newMeetingTimes = {
     1 : [{
         title:"Weekly Team Meetings",
