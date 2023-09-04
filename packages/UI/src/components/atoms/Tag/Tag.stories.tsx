@@ -23,34 +23,48 @@ const buildDefaultProps = (props: TagProps): TagProps => {
   };
 };
 
-export const Primary: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps(props)} />;
+export const Primary: Story = {
+  render: (props: TagProps) => <Tag {...buildDefaultProps(props)} />,
 };
 
-export const Secondary: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'secondary' })} />;
+export const Secondary: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'secondary' })} />
+  ),
 };
 
-export const Success: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'success' })} />;
+export const Success: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'success' })} />
+  ),
 };
 
-export const Danger: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'danger' })} />;
+export const Danger: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'danger' })} />
+  ),
 };
 
-export const Warning: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'warning' })} />;
+export const Warning: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'warning' })} />
+  ),
 };
 
-export const Info: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'info' })} />;
+export const Info: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'info' })} />
+  ),
 };
 
-export const Light: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'light' })} />;
+export const Light: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'light' })} />
+  ),
 };
 
-export const Dark: Story = (props: TagProps) => {
-  return <Tag {...buildDefaultProps({ ...props, color: 'dark' })} />;
+export const Dark: Story = {
+  render: (props: TagProps) => (
+    <Tag {...buildDefaultProps({ ...props, color: 'dark' })} />
+  ),
 };
