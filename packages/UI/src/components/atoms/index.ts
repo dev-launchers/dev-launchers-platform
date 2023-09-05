@@ -6,6 +6,7 @@ export { default as Layer } from './Layer';
 export { default as Button } from './Button';
 export { default as Checkbox } from './Checkbox';
 export { default as Link } from './Link';
+export { default as MyComponent } from './MyComponent';
 export { default as Tag } from './Tags';
 export { default as NavLink } from './NavLink';
 export { default as Overlay } from './Overlay';
