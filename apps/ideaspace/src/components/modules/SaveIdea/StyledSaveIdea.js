@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import SaveButton, { SaveButtonProps } from '@devlaunchers/components/src/components/molecules/InteractionButtons/SaveButton';
 
 export const StyledSaveIdea = styled.div`
     font-weight: 400;
