@@ -18,7 +18,7 @@ export const StyledTeamMeetingsContainer = styled.fieldset`
     }
 
     > legend {
-        font-family: "Abel",sans-serif;
+        font-family: ${({theme})=>(theme.fonts.headline)};
         font-size: 2.3rem;
         font-weight: bold;
         padding: 0 1.5rem;
