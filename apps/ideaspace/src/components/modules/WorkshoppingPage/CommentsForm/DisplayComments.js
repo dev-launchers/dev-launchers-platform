@@ -67,7 +67,7 @@ function DisplayComments(props) {
   }, [props.comments]);
 
   const commentNodes = props.comments.map(comment => (
-    <Comment author={comment.author} key={comment.id} id={comment.id}>
+    <Comment author={comment.author} key={comment.id} id={comment.id} createdAt={comment.createdAt} publishedAt={comment.publishedAt} updatedAt={comment.updatedAt}>
       {comment.text}
     </Comment>
   ));

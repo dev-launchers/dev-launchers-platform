@@ -42,6 +42,14 @@ export const SingleCommentContent = styled.div`
     color: black;
   }
 
+  h5 {
+    margin: 0;
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: 1000 ;
+    color: black;
+  }
+
   p {
     font-size: 16px;
     margin: 0;
