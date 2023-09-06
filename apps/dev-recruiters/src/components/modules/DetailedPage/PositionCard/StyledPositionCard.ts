@@ -87,7 +87,7 @@ export const DescriptionSection = styled.div<{
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     margin: 0;
@@ -221,7 +221,7 @@ export const ExpectationsSection = styled.div<{ Expanded: boolean }>`
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
     margin: 0;
@@ -328,7 +328,7 @@ export const ModalDescriptionSection = styled.div<{
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
     line-height: 22px;
   }
@@ -338,7 +338,8 @@ export const ModalDescriptionSection = styled.div<{
     font-style: normal;
     font-size: 14px;
     line-height: 19px;
-    line-height: 1.125rem;
+    font-weight: 400;
+    line-height: 1.5rem;
     max-width: 28rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -363,20 +364,20 @@ export const ModalProjectSection = styled.div`
   height: 100%;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   max-width: 200px;
 
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
   }
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
+    font-weight: 400;
+    font-size: 32px;
   }
 
   & p {
@@ -389,6 +390,13 @@ export const ModalProjectSection = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre-wrap;
+  }
+
+  & h6 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
   }
 `;
 
