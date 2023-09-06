@@ -16,6 +16,7 @@ const defaultLabel = 'My Tag';
 type DefaultTagProps = {
   label?: string;
   color?: string;
+  selected?: boolean;
 };
 
 /**
@@ -97,4 +98,37 @@ export const Nebula: Story = {
 
 export const Cosmic: Story = {
   args: buildDefaultProps({ color: 'cosmic' }),
+};
+
+// example for display purposes
+export const TagBlockDisplayExample: Story = {
+  render: (props: TagProps) => (
+    <div className="flex space-x-2">
+      <Tag {...buildDefaultProps({ ...props })} />
+      <Tag
+        {...buildDefaultProps({
+          ...props,
+          label: 'Secondary',
+          color: 'secondary',
+        })}
+      />
+      <Tag
+        {...buildDefaultProps({
+          ...props,
+          label: 'Jupiter',
+          color: 'jupiter',
+          selected: true,
+        })}
+      />
+      <Tag
+        {...buildDefaultProps({ ...props, label: 'Uranus', color: 'uranus' })}
+      />
+      <Tag
+        {...buildDefaultProps({ ...props, label: 'Neptune', color: 'neptune' })}
+      />
+      <Tag
+        {...buildDefaultProps({ ...props, label: 'Cosmic', color: 'cosmic' })}
+      />
+    </div>
+  ),
 };
