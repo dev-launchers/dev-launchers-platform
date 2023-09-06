@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import type { TagProps } from './Tag';
-import { Tag, tag } from './Tag';
+import { Tag } from './Tag';
 
 const meta: Meta<typeof Tag> = {
   component: Tag,
@@ -11,60 +11,90 @@ export default meta;
 
 type Story = StoryObj<typeof Tag>;
 
+const defaultLabel = 'My Tag';
+
+type DefaultTagProps = {
+  label?: string;
+  color?: string;
+};
+
 /**
  * Build the properties with a default label
  * @param props The properties to use for the tag
  * @returns The default properties
  */
-const buildDefaultProps = (props: TagProps): TagProps => {
+const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
   return {
     ...props,
-    label: props.label ? props.label : 'My Tag',
-  };
+    label: props?.label ? props.label : defaultLabel,
+  } as TagProps;
 };
 
+// render method to display variants
+
+// export const Primary: Story = {
+//   render: (props: TagProps) => <Tag {...buildDefaultProps(props)} />,
+// };
+
+// export const Secondary: Story = {
+//   render: (props: TagProps) => (
+//     <Tag {...buildDefaultProps({ ...props, color: 'secondary' })} />
+//   ),
+// };
+
+// variants using story args
 export const Primary: Story = {
-  render: (props: TagProps) => <Tag {...buildDefaultProps(props)} />,
+  args: buildDefaultProps({ color: 'primary' }),
 };
 
 export const Secondary: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'secondary' })} />
-  ),
-};
-
-export const Success: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'success' })} />
-  ),
+  args: buildDefaultProps({ color: 'secondary' }),
 };
 
 export const Danger: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'danger' })} />
-  ),
+  args: buildDefaultProps({ color: 'danger' }),
 };
 
 export const Warning: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'warning' })} />
-  ),
+  args: buildDefaultProps({ color: 'warning' }),
 };
 
-export const Info: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'info' })} />
-  ),
+export const Notification: Story = {
+  args: buildDefaultProps({ color: 'notification' }),
 };
 
 export const Light: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'light' })} />
-  ),
+  args: buildDefaultProps({ color: 'light' }),
 };
 
 export const Dark: Story = {
-  render: (props: TagProps) => (
-    <Tag {...buildDefaultProps({ ...props, color: 'dark' })} />
-  ),
+  args: buildDefaultProps({ color: 'dark' }),
+};
+
+export const Success: Story = {
+  args: buildDefaultProps({ color: 'success' }),
+};
+
+export const Jupiter: Story = {
+  args: buildDefaultProps({ color: 'jupiter' }),
+};
+
+export const Uranus: Story = {
+  args: buildDefaultProps({ color: 'uranus' }),
+};
+
+export const Neptune: Story = {
+  args: buildDefaultProps({ color: 'neptune' }),
+};
+
+export const Saturn: Story = {
+  args: buildDefaultProps({ color: 'saturn' }),
+};
+
+export const Nebula: Story = {
+  args: buildDefaultProps({ color: 'nebula' }),
+};
+
+export const Cosmic: Story = {
+  args: buildDefaultProps({ color: 'cosmic' }),
 };

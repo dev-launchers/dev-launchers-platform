@@ -10,9 +10,21 @@ export const tag = tv({
       success: 'bg-green-500 hover:bg-green-700 text-white',
       danger: 'bg-red-500 hover:bg-red-700 text-white',
       warning: 'bg-yellow-500 hover:bg-yellow-700 text-white',
-      info: 'bg-cyan-500 hover:bg-cyan-700 text-black',
-      light: 'bg-stone-200 hover:bg-stone-400 text-black',
-      dark: 'bg-slate-800 hover:bg-slate-500 text-white',
+      notification: 'bg-teal-500 hover:bg-teal-700 text-white',
+      light: 'bg-gray-200 hover:bg-gray-400 text-black',
+      dark: 'bg-gray-800 hover:bg-gray-500 text-white',
+      jupiter:
+        'bg-brand-primary-jupiter-500 hover:bg-brand-primary-jupiter-700 text-white',
+      uranus:
+        'bg-brand-primary-uranus-500 hover:bg-brand-primary-uranus-700 text-white',
+      neptune:
+        'bg-brand-primary-neptune-500 hover:bg-brand-primary-neptune-700 text-white',
+      saturn:
+        'bg-brand-primary-saturn-500 hover:bg-brand-primary-saturn-700 text-white',
+      nebula:
+        'bg-brand-secondary-nebula-500 hover:bg-brand-secondary-nebula-700 text-white',
+      cosmic:
+        'bg-brand-secondary-cosmic-500 hover:bg-brand-secondary-cosmic-700 text-white',
     },
     size: {
       xs: 'px-2 py-1 text-xs',
@@ -23,6 +35,9 @@ export const tag = tv({
     },
     selected: {
       true: 'cursor-pointer',
+    },
+    shadow: {
+      true: 'drop-shadow',
     },
   },
   defaultVariants: {
@@ -41,8 +56,7 @@ export function Tag({ ...props }: TagProps) {
   const handleClose = () => {
     props.onClose?.();
   };
-  const iconFill =
-    props.color === 'info' || props.color === 'light' ? 'black' : 'white';
+  const iconFill = props.color === 'light' ? 'black' : 'white';
 
   // return options for accessibility
   return props.selected ? (
