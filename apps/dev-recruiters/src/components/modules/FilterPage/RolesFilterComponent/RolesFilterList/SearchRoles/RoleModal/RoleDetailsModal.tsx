@@ -5,6 +5,7 @@ import {
   BulletListItem,
   CloseIcon,
   ColorBox,
+  ExpectationsListItem,
   ModalDescriptionSection,
   ModalProjectSection,
   TagsList,
@@ -57,7 +58,7 @@ function ModalTopSection({ position }: Props) {
       <ModalProjectSection>
         <h3>{position.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
-        <h4>PRODUCT PLATFORM</h4>
+        <h4>Product Platform</h4>
         <h6>TIME COMMITMENT</h6>
         <p>{position.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>
