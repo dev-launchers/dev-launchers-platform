@@ -103,9 +103,8 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             id: position.id as string,
           })
             .then((res) => {
-              handleCloseModal();
+              handleOpenConfirmationModal(); 
               setSubmitting(false);
-              handleOpenConfirmationModal();
             })
             .catch((error) => {
               setSubmitting(false);
