@@ -3,7 +3,7 @@ import {
   MenuButton
 } from "./StyledSignInButton";
 
-export default function SignInButton({redirectUrl="https://devlaunchers.org/users/me"}) {
+export default function SignInButton({redirectUrl=(process.env.FRONT_END_URL + "/users/me")}) {
   return (
     <MenuButton fontSize="1.2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL="+redirectUrl}>
         Sign In{" "}

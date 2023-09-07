@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import AccountDropdown from "./AccountDropdown";
-
 import {
   HeaderBlock,
   Logo,
@@ -12,13 +11,9 @@ import {
   HeaderNav,
   NavEntry,
 } from "./StyledHeader";
-
-import { useUserDataContext } from "../../../context/UserDataContext";
 import HamburgerMenu from "../HamburgerMenu";
 
 export default function Header() {
-  const { userData } = useUserDataContext();
-
   return (
     <HeaderBlock>
       <Logo>
@@ -61,7 +56,7 @@ export default function Header() {
         </Link>
       </HeaderNav>
       <div />
-      <AccountDropdown userData={userData} />
+      <AccountDropdown />
       <HamburgerMenu />
     </HeaderBlock>
   );

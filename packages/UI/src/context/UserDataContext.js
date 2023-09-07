@@ -1,8 +1,6 @@
-import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
-import React from 'react';
-
-import { env } from '../utils/EnvironmentVariables';
+import { useCallback, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const DEFAULT_USER = {
   id: 0,
@@ -28,15 +26,21 @@ export const DEFAULT_USER = {
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
 
 // Step 1: Create a custom hook that contains your state and actions
-function useUserData() {
-  const [userData, setUserData] = React.useState(DEFAULT_USER);
-  const [isAuthenticated, setIsAuthenticated] = React.useState();
+function useUserDataHook() {
+  const [userData, _] = useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = useState();
 
-  React.useEffect(() => {
-    axios(`${env().STRAPI_URL}/users/me`, {
+  const setUserData = useCallback((data) => _(() => data), []);
+  useEffect(() => {
+    setIsAuthenticated(userData && userData.id > 0);
+  }, [userData.id > 0]);
+
+  useEffect(() => {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
+        console.log('Fetching...');
         setUserData({
           id: currentUser.id,
           name: currentUser.profile.displayName,
@@ -51,17 +55,20 @@ function useUserData() {
           volunteerHours: currentUser.point.volunteerHours,
           interests: currentUser.interests,
         });
-        setIsAuthenticated(true);
       })
       .catch(() => {
+        console.error('failed to fetch');
         // setUserData({ id: "invalid" });
         setIsAuthenticated(false);
       });
   }, []);
 
-  return { userData, setUserData, isAuthenticated };
+  return { useUserDataContext: { userData, setUserData, isAuthenticated } };
 }
 
 // Step 2: Declare your context state object to share the state with other components
-const [UserDataProvider, useUserDataContext] = constate(useUserData);
+const [UserDataProvider, useUserDataContext] = constate(
+  useUserDataHook,
+  (value) => value.useUserDataContext
+);
 export { UserDataProvider, useUserDataContext };
