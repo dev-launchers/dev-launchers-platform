@@ -44,7 +44,7 @@ export default function ProductHeader({
     .split(' ')
     .slice(1)
     .join(' ');
-  console.log(JSON.stringify(interests, null, 2));
+  
   return (
     <HeaderBlock>
       <Row>

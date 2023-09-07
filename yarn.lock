@@ -2840,6 +2840,7 @@ __metadata:
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@devlaunchers/ideaspace": "*"
     "@devlaunchers/site-projects": "*"
+    "@devlaunchers/utility": "workspace:*"
     "@ramonak/react-progress-bar": ^5.0.2
     "@types/luxon": 3.0.0
     "@types/react": ^17.0.0

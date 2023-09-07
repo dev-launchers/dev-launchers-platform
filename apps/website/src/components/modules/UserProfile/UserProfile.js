@@ -19,6 +19,7 @@ import UserInterests from './UserInterests';
 import { useRouter } from "next/router";
 // import DiscordSection from "./DiscordSection/DiscordSection";
 import { cleanDataList } from '@devlaunchers/ideaspace/src/utils/StrapiHelper';
+import { agent } from "@devlaunchers/utility";
 
 // State management component
 export default function UserProfile({ otherUser }) {
