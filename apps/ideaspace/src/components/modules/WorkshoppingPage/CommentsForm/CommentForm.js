@@ -84,7 +84,7 @@ function CommentForm(props) {
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={
-              `${process.env.FRONT_END_URL}/ideaspace/workshop/` + selectedCard.id
+              `${process.env.NEXT_PUBLIC_FRONT_END_URL}/ideaspace/workshop/` + selectedCard.id
             }
           />
         </div>
