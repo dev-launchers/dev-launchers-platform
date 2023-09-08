@@ -137,11 +137,6 @@ spec:
           value: info
         - name: AUDIT_FREQ_MINUTES
           value: "60"
-        - name: OPEN_POSITIONS_DISCORD_WEBHOOK
-          valueFrom:
-            secretKeyRef:
-              name: integrations
-              key: discord-webhook
         - name: SENTRY_DSN
           valueFrom:
             secretKeyRef:
