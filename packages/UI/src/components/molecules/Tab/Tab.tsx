@@ -17,17 +17,17 @@ type TabsProps = Omit<
      */
     defaultValue?: string;
     /**
-     * Contains the content associated with each trigger.
+     * Contains the content associated with each trigger. Dev Note: USE Content COMPONENT FOR BETTER ACCESSIBILITY
      */
-    content: ReactNode;
+    children: ReactNode;
     /**
      * Event handler called when the value changes.
      */
     onValueChange?: (value: string) => void;
     /**
-     * The value for the selected tab, if controlled
+     * The controlled value of the tab to activate. Should be used in conjunction with onValueChange.
      */
-    value: string;
+    value?: string;
     /**
      * When true, keyboard navigation will loop from last tab to first, and vice versa.
      */
@@ -46,16 +46,19 @@ const Tabs = ({
   defaultValue,
   onValueChange,
   value,
+  children,
   ...props
 }: TabsProps) => {
   return (
     <RadixTabs.Root
-      {...props}
       defaultValue={defaultValue}
       onValueChange={onValueChange}
+      {...props}
     >
-      <RadixTabs.List loop={loop}>{triggers}</RadixTabs.List>
-      {props.children}
+      <RadixTabs.List loop={loop} asChild>
+        {triggers}
+      </RadixTabs.List>
+      {children}
     </RadixTabs.Root>
   );
 };
@@ -72,3 +75,5 @@ export const Trigger: FC<RadixTabs.TabsTriggerProps> = ({
   const styles = TriggerStyles({ className });
   return <RadixTabs.Trigger className={styles} {...props} />;
 };
+
+export { Content } from '@radix-ui/react-tabs';
