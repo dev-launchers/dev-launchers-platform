@@ -42,7 +42,6 @@ const Tabs = ({
   loop = true,
   triggers,
   activationMode,
-  content,
   defaultValue,
   onValueChange,
   value,
@@ -52,6 +51,7 @@ const Tabs = ({
   return (
     <RadixTabs.Root
       defaultValue={defaultValue}
+      value={value}
       onValueChange={onValueChange}
       {...props}
     >
