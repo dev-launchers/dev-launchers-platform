@@ -49,7 +49,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={`${process.env.FRONT_END_URL}/projects/${project?.attributes?.slug}`}
+          content={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/projects/${project?.attributes?.slug}`}
         ></meta>
         <meta property="og:image" content={heroImage?.attributes?.url}></meta>
         <meta property="og:title" content={project?.attributes?.title}></meta>
@@ -58,7 +58,7 @@ const ProjectRoute = ({ project }) => {
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
-          content={`${process.env.FRONT_END_URL}/projects/${project?.attributes?.slug}`}
+          content={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/projects/${project?.attributes?.slug}`}
         ></meta>
         <meta property="twitter:title" content={project?.attributes?.title}></meta>
         <meta

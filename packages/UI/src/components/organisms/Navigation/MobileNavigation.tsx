@@ -107,7 +107,7 @@ const MobileNavigation = ({
                     as="a"
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      `?redirectURL=${process.env.FRONT_END_URL}/users/me`
+                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
                     }
                     buttonType="primary"
                     buttonSize="standard"
@@ -118,7 +118,7 @@ const MobileNavigation = ({
                     as="a"
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      `?redirectURL=${process.env.FRONT_END_URL}/users/me`
+                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
                     }
                     buttonType="secondary"
                     buttonSize="standard"
