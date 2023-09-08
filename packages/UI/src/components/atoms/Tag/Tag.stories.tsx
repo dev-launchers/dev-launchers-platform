@@ -21,8 +21,8 @@ type DefaultTagProps = {
 
 /**
  * Build the properties with a default label
- * @param props The properties to use for the tag
- * @returns The default properties
+ * @param {DefaultTagProps} props The properties to use for the tag
+ * @returns {TagProps} The default properties
  */
 const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
   return {
@@ -31,7 +31,7 @@ const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
   } as TagProps;
 };
 
-// render method to display variants
+// NOTE: alternate render method to display variants
 
 // export const Primary: Story = {
 //   render: (props: TagProps) => <Tag {...buildDefaultProps(props)} />,
@@ -43,64 +43,107 @@ const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
 //   ),
 // };
 
-// variants using story args
+/**
+ * Primary tag color
+ */
 export const Primary: Story = {
   args: buildDefaultProps({ color: 'primary' }),
 };
 
+/**
+ * Secondary tag color
+ */
 export const Secondary: Story = {
   args: buildDefaultProps({ color: 'secondary' }),
 };
 
-export const Danger: Story = {
-  args: buildDefaultProps({ color: 'danger' }),
-};
-
-export const Warning: Story = {
-  args: buildDefaultProps({ color: 'warning' }),
-};
-
-export const Notification: Story = {
-  args: buildDefaultProps({ color: 'notification' }),
-};
-
-export const Light: Story = {
-  args: buildDefaultProps({ color: 'light' }),
-};
-
-export const Dark: Story = {
-  args: buildDefaultProps({ color: 'dark' }),
-};
-
+/**
+ * Success tag color
+ */
 export const Success: Story = {
   args: buildDefaultProps({ color: 'success' }),
 };
 
+/**
+ * Danger tag color
+ */
+export const Danger: Story = {
+  args: buildDefaultProps({ color: 'danger' }),
+};
+
+/**
+ * Warning tag color
+ */
+export const Warning: Story = {
+  args: buildDefaultProps({ color: 'warning' }),
+};
+
+/**
+ * Info tag color
+ */
+export const Info: Story = {
+  args: buildDefaultProps({ color: 'info' }),
+};
+
+/**
+ * Light tag color
+ */
+export const Light: Story = {
+  args: buildDefaultProps({ color: 'light' }),
+};
+
+/**
+ * Dark tag color
+ */
+export const Dark: Story = {
+  args: buildDefaultProps({ color: 'dark' }),
+};
+
+/**
+ * White tag color
+ */
 export const Jupiter: Story = {
   args: buildDefaultProps({ color: 'jupiter' }),
 };
 
+/**
+ * Charcoal tag color
+ */
 export const Uranus: Story = {
   args: buildDefaultProps({ color: 'uranus' }),
 };
 
+/**
+ * Neptune tag color
+ */
 export const Neptune: Story = {
   args: buildDefaultProps({ color: 'neptune' }),
 };
 
+/**
+ * Saturn tag color
+ */
 export const Saturn: Story = {
   args: buildDefaultProps({ color: 'saturn' }),
 };
 
+/**
+ * Nebula tag color
+ */
 export const Nebula: Story = {
   args: buildDefaultProps({ color: 'nebula' }),
 };
 
+/**
+ * Cosmic tag color
+ */
 export const Cosmic: Story = {
   args: buildDefaultProps({ color: 'cosmic' }),
 };
 
-// example for display purposes
+/**
+ * This is an example of multiple tags displaying together.
+ */
 export const TagBlockDisplayExample: Story = {
   render: (props: TagProps) => (
     <div className="flex space-x-2">
