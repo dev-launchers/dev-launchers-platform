@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "save_ideas",
+  "info": {
+    "singularName": "save-idea",
+    "pluralName": "save-ideas",
+    "displayName": "SaveIdea",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ObjectId": {
+      "type": "uid"
+    },
+    "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "save_ideas"
+    },
+    "SavedAt": {
+      "type": "datetime"
+    },
+    "idea_card": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::idea-card.idea-card"
+    }
+  }
+}
