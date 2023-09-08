@@ -36,7 +36,7 @@ function useUserDataHook() {
   }, [userData.id > 0]);
 
   useEffect(() => {
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
@@ -54,10 +54,14 @@ function useUserDataHook() {
           availablePoints: currentUser.point.availablePoints,
           volunteerHours: currentUser.point.volunteerHours,
           interests: currentUser.interests,
+          projects: currentUser.projects,
+          idea_cards: currentUser.idea_cards,
+          profile: currentUser.profile,
+          ownedCards: currentUser.ownedCards,
         });
       })
-      .catch(() => {
-        console.error('failed to fetch');
+      .catch((e) => {
+        console.error('failed to fetch', e);
         // setUserData({ id: "invalid" });
         setIsAuthenticated(false);
       });
