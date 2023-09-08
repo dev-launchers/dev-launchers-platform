@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
-export const TeamResourcesContainer = styled.fieldset`
+export const StyledTeamMeetingsContainer = styled.fieldset`
     display: flex;
     gap: 2rem;
     background: white;
     border: 1px solid #B9B4B4 ;
-    /* border-radius: 1rem; */
-    padding: 2rem 3rem;
+    border-radius: .2rem;
+    padding: 2rem 1rem;
     margin: 1.5rem 0;
     padding-bottom: 2rem;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+
+    @media (min-width:40rem){
+        padding: 4rem 3rem;
+    }
 
     > legend {
         font-family: ${({theme})=>(theme.fonts.headline)};
