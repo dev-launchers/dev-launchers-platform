@@ -2,7 +2,7 @@ import MyComponent from './MyComponent';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof MyComponent> = {
-  title: 'MyComponent',
+  title: 'atoms/MyComponent',
   component: MyComponent
 }
 export default meta;

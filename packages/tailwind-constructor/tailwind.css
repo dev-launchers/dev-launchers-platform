@@ -710,14 +710,14 @@ video {
   padding-right: var(--4, 1rem);
 }
 
-.py-3 {
-  padding-top: var(--3, 0.75rem);
-  padding-bottom: var(--3, 0.75rem);
-}
-
 .py-2 {
   padding-top: var(--2, 0.5rem);
   padding-bottom: var(--2, 0.5rem);
+}
+
+.py-3 {
+  padding-top: var(--3, 0.75rem);
+  padding-bottom: var(--3, 0.75rem);
 }
 
 .pb-2 {
