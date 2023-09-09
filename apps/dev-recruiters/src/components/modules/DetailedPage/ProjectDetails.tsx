@@ -138,6 +138,7 @@ export default function ProjectDetails({
         <Container>
           <h2>Positions Available</h2>
 
+          {/* 
           <PositionsList>
             {opportunites?.map((position) => (
               <PositionCard
@@ -147,6 +148,7 @@ export default function ProjectDetails({
               />
             ))}
           </PositionsList>
+          */}
         </Container>
       </BoxContainer>
     </Wrapper>

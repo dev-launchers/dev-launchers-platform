@@ -8,10 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '@devlaunchers/components/src/styles/theme';
 
 import { UserDataProvider } from '@devlaunchers/components/src/context/UserDataContext';
+import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
+
 // import Footer from '@devlaunchers/components/Footer';
 // import Header from '@devlaunchers/components/components/Header';
-
-
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -42,19 +42,21 @@ function MyApp(props) {
             `}
         </Script>
         <UserDataProvider>
-        <div className="App">
-          <ToastContainer
-            className="toast-container"
-            toastClassName="toast"
-            progressClassName="toast-progress"
-          />
-        </div>
-        <div>
-          {/* <Header /> */}
-          {/* <Component {...pageProps} />  */}
-          {props.children}
-          {/* <Footer /> */}
-        </div>
+          <OpportunitiesProvider>
+            <div className="App">
+              <ToastContainer
+                className="toast-container"
+                toastClassName="toast"
+                progressClassName="toast-progress"
+              />
+            </div>
+            <div>
+              {/* <Header /> */}
+              {/* <Component {...pageProps} />  */}
+              {props.children}
+              {/* <Footer /> */}
+            </div>
+          </OpportunitiesProvider>
         </UserDataProvider>
       </div>
     </ThemeProvider>

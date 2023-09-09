@@ -1,4 +1,4 @@
-import { ApplyButton } from '../../FilterPage/RoleModal/StyledRoleModal';
+import { ApplyButton } from '../../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/StyledRoleModal';
 import { GradientLine } from '../../FormPage/styledSignupForm';
 import Modal from '../PositionPopupModal/Modal';
 import {

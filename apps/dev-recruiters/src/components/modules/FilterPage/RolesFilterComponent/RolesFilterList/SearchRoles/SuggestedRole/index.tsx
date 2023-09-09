@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Modal from '../../DetailedPage/PositionPopupModal';
+import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import RoleDetailsModal from '../RoleModal/RoleDetailsModal';
 import {
   AboutContainer,
@@ -12,9 +12,9 @@ import {
   TimeCommitment,
   TimeContainer,
   Title,
-} from './styledRoleCard';
+} from '../RoleCard/styledRoleCard';
 
-const RoleCard = (props) => {
+const SuggestedRole = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -28,18 +28,22 @@ const RoleCard = (props) => {
   return (
     <CardContainer>
       <CardContent>
-        <Title>{props.role.title}</Title>
+        <Title>{'UX Designer'}</Title>
         <Time style={{ fontSize: '1rem' }}>PRODUCT PLATFORM</Time>
         <Divider />
         <TimeContainer>
           <TimeCommitment>TIME COMMITMENT</TimeCommitment>
-          <Time>{props.role.commitmentHoursPerWeek} hrs per week</Time>
+          <Time>{'10'} hrs per week</Time>
         </TimeContainer>
         <AboutContainer>
           <TimeCommitment>ABOUT THE ROLE</TimeCommitment>
-          <AboutDescription>{props.role.description}</AboutDescription>
+          <AboutDescription>
+            {
+              'Previous experience conducting user interviews virtually, attending weekly meetings, and collaborating with team members to create effective insights.'
+            }
+          </AboutDescription>
         </AboutContainer>
-        <ButtonsContainer onClick={handleOpenModal}>
+        <ButtonsContainer /*onClick={handleOpenModal}*/>
           More Details
         </ButtonsContainer>
         <Modal
@@ -48,7 +52,7 @@ const RoleCard = (props) => {
           handleOpenModal={handleOpenModal}
           modalContent={
             <RoleDetailsModal
-              position={props.role}
+              position={null}
               projectSlug={'projectSlug'}
               handleCloseModal={handleCloseModal}
             />
@@ -59,4 +63,4 @@ const RoleCard = (props) => {
   );
 };
 
-export default RoleCard;
+export default SuggestedRole;
