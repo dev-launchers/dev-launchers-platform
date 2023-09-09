@@ -195,7 +195,6 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                     <atoms.Typography type="pSmall">
                       HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
                     </atoms.Typography>
-
                     <atoms.Slider
                       min={5}
                       max={40}
