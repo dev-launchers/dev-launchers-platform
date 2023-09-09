@@ -1,14 +1,16 @@
-import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { Opportunity } from '@devlaunchers/models/opportunity';
-import { Project } from '@devlaunchers/models/project';
-import agent from '@devlaunchers/utility/agent';
-import OpportunitiesAggregator from '../components/modules/OpportunitiesAggregator/OpportunitiesAggregator';
-import OpportunitiesAggregatorWithRoles from '../components/modules/OpportunitiesAggregatorWithRoles/OpportunitiesAggregator';
-
-import { useRouter } from 'next/router';
+import SignUpForm from '../components/modules/FormPage/signUpForm';
+import BoxContainer from '../components/common/BoxContainer';
+import { Wrapper } from '@components/modules/OpportunitiesAggregator/StyledOpportunitiesAggregator';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
+import NewJoinPageComponent from '../components/modules/NewJoinPageComponent';
+import { GetStaticProps } from 'next';
+import { Project } from '@devlaunchers/models/project';
+import { Opportunity } from '@devlaunchers/models/opportunity';
+import agent from '@devlaunchers/utility/agent';
+import { useRouter } from 'next/router';
+import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 export const getStaticProps: GetStaticProps = async (context) => {
   let projects: Project[] = [];
@@ -53,14 +55,14 @@ interface Props {
   opportunities: Opportunity[];
 }
 
-const IndexPage = ({ projects, opportunities }: Props) => {
+const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
 
   return (
     <>
       <Head>
-        <title>Dev Discovery</title>
+        <title>Join</title>
         <meta name="title" content="Dev Discovery"></meta>
         <meta
           name="description"
@@ -82,38 +84,33 @@ const IndexPage = ({ projects, opportunities }: Props) => {
           content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
         ></meta>
 
-        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
           content="https://devlaunchers.org/projects"
-        />
-        <meta property="twitter:title" content="Dev Discovery" />
+        ></meta>
+        <meta property="twitter:title" content="Dev Discovery"></meta>
         <meta
           property="twitter:description"
           content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
-        />
+        ></meta>
         <meta
           property="twitter:image"
           content="/images/DevlaunchersGitHubThumb.png"
-        />
+        ></meta>
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
+
       <ThemeProvider theme={theme}>
-        {format === 'roles' ? (
-          <OpportunitiesAggregatorWithRoles
+        <OpportunitiesProvider>
+          <NewJoinPageComponent
             projects={projects}
             opportunities={opportunities}
           />
-        ) : (
-          <OpportunitiesAggregator
-            projects={projects}
-            opportunities={opportunities}
-          />
-        )}
+        </OpportunitiesProvider>
       </ThemeProvider>
     </>
   );
 };
 
-export default IndexPage;
+export default NewJoinPage;

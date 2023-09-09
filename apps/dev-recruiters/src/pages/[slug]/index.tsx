@@ -111,14 +111,16 @@ export default function DetailedPage({
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
-      <ThemeProvider theme={theme}>
-        <ProjectDetails
-          maxCommitment={maxCommitment}
-          minCommitment={minCommitment}
-          project={project}
-          opportunites={opportunites}
-        />
-      </ThemeProvider>
+      <>
+        <ThemeProvider theme={theme}>
+          <ProjectDetails
+            maxCommitment={maxCommitment}
+            minCommitment={minCommitment}
+            project={project}
+            opportunites={opportunites}
+          />
+        </ThemeProvider>
+      </>
     </>
   );
 }

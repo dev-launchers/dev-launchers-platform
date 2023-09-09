@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.White};
@@ -49,7 +49,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: max-content;  
+  height: max-content;
   background-color: ${({ theme }) => theme?.colors?.NEUTRAL_2};
   border-radius: 30px;
   flex: 1 1 600px;
@@ -111,14 +111,14 @@ export const CardButton = styled.button`
 export const BackButton = styled.a`
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: 1rem;
-  padding: 5px 12px;
+  padding: 4px 4px;
   display: inline-flex;
   align-items: center;
   border: none;
-  background: ${({ theme }) => theme?.colors?.CoolGrey};
+  background: ${({ theme }) => theme?.colors?.White};
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  color: ${({ theme }) => theme?.colors?.White};
+  color: ${({ theme }) => theme?.colors?.Black};
 
   &:hover {
     text-decoration: none;
@@ -126,8 +126,32 @@ export const BackButton = styled.a`
   }
 
   & svg {
-    margin-right: 0.5rem;
+    margin-right: 0rem;
     height: 20px;
     width: 20px;
   }
+`;
+
+export const RowContainer = styled.div<{
+  paddingHorizontal?: number;
+  paddingVertical?: number;
+  justifycontent?: string;
+}>`
+  box-sizing: border-box;
+  width: 100%;
+  margin: auto auto;
+  padding-top: ${({ paddingVertical }) =>
+    paddingVertical ? `${paddingVertical}px` : 0};
+  padding-bottom: ${({ paddingVertical }) =>
+    paddingVertical ? `${paddingVertical}px` : 0};
+  padding-left: ${({ paddingHorizontal }) =>
+    paddingHorizontal ? `${paddingHorizontal}px` : 0};
+  padding-right: ${({ paddingHorizontal }) =>
+    paddingHorizontal ? `${paddingHorizontal}px` : 0};
+
+  display: flex;
+  align-items: start;
+  justify-content: ${({ justifycontent }) =>
+    justifycontent ??
+    'space-between'}; /* Distribute items evenly along the row */
 `;

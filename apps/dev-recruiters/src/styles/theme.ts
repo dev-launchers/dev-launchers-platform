@@ -1,23 +1,25 @@
 const theme = {
   colors: {
-    NEUTRAL_1: "#1c1c1c", // dark
-    ACCENT_1: "#ff7f0e", // orange
-    ACCENT_2: "#ffab00", // yellow
-    ACCENT_3: "#3a7ca5", // dark-blue
-    ACCENT_4: "#81c3d7", // loght-blue
-    ACCENT_5: "#ffc30f", // orange-yellow
-    ACCENT_6: "#C5B1A0", // beige
-    NEUTRAL_2: "#f0edee", // light
-    
-    NEUTRAL_3:"#59687B",
-    NEUTRAL_4:"#C4C4C4",
-    NEUTRAL_5:"#89969F",
-    NEUTRAL_6:"#C3C0C0",
+    NEUTRAL_1: '#1c1c1c', // dark
+    ACCENT_1: '#ff7f0e', // orange
+    ACCENT_2: '#ffab00', // yellow
+    ACCENT_3: '#3a7ca5', // dark-blue
+    ACCENT_4: '#81c3d7', // loght-blue
+    ACCENT_5: '#ffc30f', // orange-yellow
+    ACCENT_6: '#C5B1A0', // beige
+    NEUTRAL_2: '#f0edee', // light
+
+    NEUTRAL_3: '#59687B',
+    NEUTRAL_4: '#C4C4C4',
+    NEUTRAL_5: '#89969F',
+    NEUTRAL_6: '#C3C0C0',
     // Dev Recruiters theme colors
     White: '#FFFFFF',
     Black: '#000000',
     BlackT60: 'rgba(0,0,0,0.6)',
     BlackT38: 'rgba(0,0,0,0.38)',
+
+    BLUE_700: '#173242',
 
     AntiFlashWhite: '#F1F4F5',
     AntiFlashWhiteT40: 'rgba(241,244,245,0.4)',
