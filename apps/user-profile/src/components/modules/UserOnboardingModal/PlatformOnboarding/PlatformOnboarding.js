@@ -19,7 +19,7 @@ export default function PlatformOnboarding() {
       config: {
         buttons: {
           next: {
-            label: 'Next',
+            label: 'Finish',
             useDefaultOnClick: true,
             onClick: () => {
               console.log('..some function ');
