@@ -31,7 +31,7 @@ function WorkshoppingPage() {
   const { ideaId } = router.query;
   const [handleChange, setHandleChange] = useState('');
   const [handleTextChange, setHandleTextChange] = useState('');
-  const { data, loading, hidden, getError } = useFetchIdea(ideaId);
+  const { data, loading, hidden, getError } = useFetchIdea(ideaId)
 
   const [ArchivedIdea, confirmArchived] = useConfirm(
     ["This Idea has been archived.", '', ''],

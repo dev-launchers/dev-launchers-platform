@@ -41,7 +41,7 @@ export default function ProjectListItem({ project }: Props) {
               <Title>Positions Available / Level</Title>
               <ul>
                 {expanded
-                  ? project?.opportunities?.map((opportunity) => (
+                  ? project.opportunities.map((opportunity) => (
                       <li key={opportunity.id}>
                         <PositionTitle>{opportunity.title}</PositionTitle>
                         <span> - </span>

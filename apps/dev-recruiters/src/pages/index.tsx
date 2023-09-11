@@ -15,22 +15,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let opportunities: Opportunity[] = [];
   try {
     const result = await agent.Projects.list(
-      new URLSearchParams('populate=deep&publicationState=live')
+      new URLSearchParams('_publicationState=live')
     );
-    projects = result.filter((p: Project) => p.attributes.opportunities.data.length > 0);
-
-    // Do weird map to flatten and morph data object returned from new Strapiv4 api
-    projects = projects.map(project => {
-      return {
-        ...project.attributes, 
-        opportunities: project.attributes.opportunities?.data.map(opportunity => opportunity.attributes)
-      }
-    });
-
-    projects = projects.map((project) => {
-      const commitments = project?.opportunities?.map(
+    projects = result.filter((p: Project) => p.opportunities.length > 0);
+    projects.map((project) => {
+      const commitments = project.opportunities.map(
         (opp) => opp.commitmentHoursPerWeek
       );
+      // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
       project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
@@ -41,12 +33,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   try {
-    const result = await agent.Opportunities.list(
-      new URLSearchParams('populate=deep')
-		);
-    opportunities = result.filter((o: Opportunity) => o.attributes.projects.data.length > 0);
-		// Do weird map to flatten and morph data object returned from new Strapiv4 api
-		opportunities = opportunities.map(opportunity => opportunity.attributes);
+    const result = await agent.Opportunities.list();
+    opportunities = result.filter((o: Opportunity) => o.projects.length > 0);
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }
@@ -82,7 +70,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
+          content="https://devlaunchers.org/projects"
         ></meta>
         <meta
           property="og:image"
@@ -97,7 +85,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
+          content="https://devlaunchers.org/projects"
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta

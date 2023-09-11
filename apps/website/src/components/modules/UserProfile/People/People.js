@@ -1,5 +1,16 @@
 import React from "react";
 import Image from "next/image";
+import axios from "axios";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import Button from "../../../common/Button";
+import Card from "../../../common/Card";
+
+import { env } from "../../../../utils/EnvironmentVariables";
+
+import { useUserDataContext } from "../../../../context/UserDataContext";
+
 import { PeopleContainer } from "./StyledPeople";
 
 const People = ({ people }) => {

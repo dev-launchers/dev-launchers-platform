@@ -30,6 +30,7 @@ const Projects = ({ projects }) => {
   }
 
   const items = searchValue ? searchResult : projects;
+
   return (
     <div
       style={{
@@ -58,25 +59,22 @@ const Projects = ({ projects }) => {
         <Link href="/join">Find a place you fit!</Link>
       </div>
       <Layout>
-        {items.map((project, i) => {
-          const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
-          const attributes = project?.attributes;
-          return(
+        {items.map((project, i) => (
           <ProjectContainer key={i}>
             <Card
               isLinkingInside
               style={{ margin: 0, width: '100%', height: '100%' }}
               cardData={{
-                id: attributes.id,
-                title: attributes.title,
-                secondaryText: `Commitment level: ${attributes.commitmentLevel}`,
-                tags: attributes?.interests?.data?.map(({ attributes }) => attributes.interest),
-                description: attributes.catchPhrase,
-                href: attributes.slug,
-                imageSrc: imageUrl,
+                id: project.id,
+                title: project.title,
+                secondaryText: `Commitment level: ${project.commitmentLevel}`,
+                tags: project.interests?.map(({ interest }) => interest),
+                description: project.catchPhrase,
+                href: project.slug,
+                imageSrc: project?.heroImage?.url,
                 actions: (
                   <>
-                    <Link href={`${router?.asPath}/${project.attributes.slug}`} passHref>
+                    <Link href={`${router?.asPath}/${project.slug}`} passHref>
                       <a>LEARN MORE</a>
                     </Link>
                     <Link href="support-us" passHref>
@@ -87,8 +85,7 @@ const Projects = ({ projects }) => {
               }}
             />
           </ProjectContainer>
-          )
-})}
+        ))}
       </Layout>
     </div>
   );

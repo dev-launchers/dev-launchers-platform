@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
@@ -38,32 +39,11 @@ const links = {
 */
 export default function Navigation({ user }: NavigationProps) {
   const ListStyle = { listStyle: 'none' };
-  const { userData, setUserData } = useUserDataContext();
-
-  const handleLogout = () => {
-    Logout();
-    setUserData({
-      id: 0,
-      name: '',
-      username: '',
-      email: '',
-      bio: '',
-      profilePictureUrl: '',
-      socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
-      discord: {
-        id: 0,
-        avatar: '',
-        username: '',
-        discriminator: '',
-      },
-      interests: [],
-    });
-  };
-  
+  let userInfo = user;
+  if (!user) {
+    userInfo = useUserDataContext().userData;
+  }
+  // const { userData } = useUserDataContext();
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -96,13 +76,13 @@ export default function Navigation({ user }: NavigationProps) {
                     })}
                   </Box>
                 </ul>
-                {userData.id === 0 ? (
+                {userInfo.id === 0 ? (
                   <Box gap={'16px'}>
                     <Button
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                        '?redirectURL=https://devlaunchers.org/users/me'
                       }
                       buttonType="primary"
                       buttonSize="standard"
@@ -113,7 +93,7 @@ export default function Navigation({ user }: NavigationProps) {
                       as="a"
                       href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                        '?redirectURL=https://devlaunchers.org/users/me'
                       }
                       buttonType="secondary"
                       buttonSize="standard"
@@ -126,15 +106,15 @@ export default function Navigation({ user }: NavigationProps) {
                     <img
                       width="36"
                       height="33"
-                      src={userData.profilePictureUrl}
+                      src={userInfo.profilePictureUrl}
                       alt="Profile avatar"
                       style={{ borderRadius: '50%' }}
                     />
-                    <Typography type="p">Hi {userData.name}</Typography>
+                    <Typography type="p">Hi {userInfo.name}</Typography>
                     <Button
                       buttonType="secondary"
                       buttonSize="standard"
-                      onClick={handleLogout}
+                      onClick={Logout}
                     >
                       Log out
                     </Button>
@@ -142,7 +122,7 @@ export default function Navigation({ user }: NavigationProps) {
                 )}
               </NavWrapper>
             </Box>
-            <MobileNavigation links={links} user={userData} logout={handleLogout} />
+            <MobileNavigation links={links} user={userInfo} />
           </Nav>
         </Layer>
       </ThemeProvider>

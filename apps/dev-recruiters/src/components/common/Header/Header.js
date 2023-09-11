@@ -13,9 +13,12 @@ import {
   NavEntry,
 } from "./StyledHeader";
 
+import { useUserDataContext } from "@contexts/UserDataContext";
 import HamburgerMenu from "../HamburgerMenu";
 
-export default function Header() { 
+export default function Header() {
+  const { userData } = useUserDataContext();
+ 
   return (
     <HeaderBlock>
       <Logo>
@@ -58,7 +61,7 @@ export default function Header() {
         </Link>
       </HeaderNav>
       <div />
-      <AccountDropdown />
+      <AccountDropdown userData={userData} />
       <HamburgerMenu />
     </HeaderBlock>
   );

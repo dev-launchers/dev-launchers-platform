@@ -38,7 +38,7 @@ export default function useProjects() {
       }));
       // Kris hack: Duplicate product entries for each embedded opportunity
       list = list.reduce((accumulator, project, index) => {
-        accumulator = [...accumulator, ...project?.opportunities?.map((opportunity) => {
+        accumulator = [...accumulator, ...project.opportunities.map((opportunity) => {
           return {...project, opportunities:[opportunity]};
         })];
         return accumulator;

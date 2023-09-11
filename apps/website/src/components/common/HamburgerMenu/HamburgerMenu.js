@@ -5,10 +5,11 @@ import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "../../../images/logo-monogram.png?webp";
 import Logout from "../../../utils/Logout";
-import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
+import { env } from "../../../utils/EnvironmentVariables";
+import { useUserDataContext } from "../../../context/UserDataContext";
 
 function HamburgerMenu() {
-  const { userData, setUserData } = useUserDataContext();
+  const { userData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -19,30 +20,6 @@ function HamburgerMenu() {
   // Called whenever a navigation item in the menu is clicked (closes menu)
   const handleNavClick = () => {
     setMenuOpen(false);
-  };
-
-  const handleLogout = () => {
-    Logout();
-    setUserData({
-      id: 0,
-      name: '',
-      username: '',
-      email: '',
-      bio: '',
-      profilePictureUrl: '',
-      socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
-      discord: {
-        id: 0,
-        avatar: '',
-        username: '',
-        discriminator: '',
-      },
-      interests: [],
-    })
   };
 
   return (
@@ -112,8 +89,7 @@ function HamburgerMenu() {
                   </a>
                 </>
               ) : (
-                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
-                  +`?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`} className="nav-link">
+                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"} className="nav-link">
                   <div className={style.navEntry}>SIGN IN </div>
                 </a>
               )}

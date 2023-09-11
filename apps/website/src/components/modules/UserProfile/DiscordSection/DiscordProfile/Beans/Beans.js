@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { env } from "../../../../../../utils/EnvironmentVariables";
 
 export default function Beans({ discordId }) {
   const [devBeans, setDevBeans] = useState(0);

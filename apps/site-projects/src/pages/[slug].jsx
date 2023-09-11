@@ -1,15 +1,24 @@
+import axios from "axios";
 import Head from "next/head";
 import Project from "../components/modules/Projects/Project";
-import agent from "@devlaunchers/utility/agent"
+import { env } from "../utils/EnvironmentVariables";
 
 // const data = require("../components/modules/Projects/data.json");
 
 export const getStaticPaths = async () => {
-  
-  const data = await agent.Projects.list({populate: '*', _publicationState: 'live'});
+  const { data } = await axios(
+    `${env().STRAPI_URL}/projects?_publicationState=live`,
+    {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "User-Agent":
+          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+      },
+    }
+  );
 
   const paths = data.map((project) => ({
-    params: { slug: project.attributes?.slug},
+    params: { slug: project.slug },
   }));
 
   return {
@@ -20,8 +29,22 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const [project] = await agent.Projects.list({populate: 'deep', slug});
+  const { data: project } = await axios.get(
+    `${env().STRAPI_URL}/projects/${slug}`,
+    {
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "User-Agent":
+          "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+      },
+    }
+  );
 
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -32,41 +55,40 @@ export const getStaticProps = async (context) => {
 };
 
 const ProjectRoute = ({ project }) => {
-  const heroImageFormats = project?.attributes.heroImage?.attributes?.formats;
+  const heroImageFormats = project?.heroImage?.formats;
   const heroImage =
     heroImageFormats?.large ||
     heroImageFormats?.medium ||
     heroImageFormats?.small ||
-    project?.attributes.heroImage?.attributes?.url;
+    project?.heroImage?.url;
   return (
- 
     <>
       <Head>
-        <title>{project?.attributes?.title}</title>
-        <meta name="title" content={project?.attributes?.title}></meta>
-        <meta name="description" content={project?.attributes?.description}></meta>
+        <title>{project?.title}</title>
+        <meta name="title" content={project?.title}></meta>
+        <meta name="description" content={project?.description}></meta>
 
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/projects/${project?.attributes?.slug}`}
+          content={`https://devlaunchers.org/projects/${project?.slug}`}
         ></meta>
-        <meta property="og:image" content={heroImage?.attributes?.url}></meta>
-        <meta property="og:title" content={project?.attributes?.title}></meta>
-        <meta property="og:description" content={project?.attributes?.description}></meta>
+        <meta property="og:image" content={heroImage?.url}></meta>
+        <meta property="og:title" content={project?.title}></meta>
+        <meta property="og:description" content={project?.description}></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
-          content={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/projects/${project?.attributes?.slug}`}
+          content={`https://devlaunchers.org/projects/${project?.slug}`}
         ></meta>
-        <meta property="twitter:title" content={project?.attributes?.title}></meta>
+        <meta property="twitter:title" content={project?.title}></meta>
         <meta
           property="twitter:description"
-          content={project?.attributes?.description}
+          content={project?.description}
         ></meta>
-        <meta property="twitter:image" content={heroImage?.attributes?.url}></meta>
-        <meta property="twitter:image:src" content={heroImage?.attributes?.url}></meta>
+        <meta property="twitter:image" content={heroImage?.url}></meta>
+        <meta property="twitter:image:src" content={heroImage?.url}></meta>
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       <Project project={project || ""} />

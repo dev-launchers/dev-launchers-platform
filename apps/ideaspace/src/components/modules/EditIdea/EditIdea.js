@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import Error from "next/error";
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import { atoms } from '@devlaunchers/components/src/components';
-import { agent } from '@devlaunchers/utility';
-import { cleanData } from '../../../utils/StrapiHelper';
+
 import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-
+import { atoms, organisms } from '@devlaunchers/components/src/components';
 
 import {
   HeadWapper,
@@ -22,16 +22,15 @@ function EditIdea() {
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
-    useEffect(() => {
+    React.useEffect(() => {
       setUserData({ ...userData, id: 30 });
     }, []);
   }
 
   const router = useRouter();
   const { ideaId } = router.query;
-  const [sending, setSending] = useState(false);
+  const [sending, setSending] = React.useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
-  const [getError, setGetError] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave?',
@@ -63,7 +62,7 @@ function EditIdea() {
     ['primary', 'got it'],
   );
 
-  const [card, setCard] = useState({
+  const [card, setCard] = React.useState({
     ideaName: '',
     tagline: '',
     description: '',
@@ -75,37 +74,42 @@ function EditIdea() {
     status: '',
   });
 
-  const rejectAuthor = async () => {
-    if (!(await confirmArchive())) {
-      router.push(`/ideaspace/workshop/${ideaId}`);
+  const [getError, setGetError] = React.useState(false);
+  React.useEffect(() => {
+    const rejectUser = async () => {
+      if (!(await confirmNotAuthor())) {
+        window.history.back(-1);
+      }
     }
-  };
 
-  const rejectUser = async () => {
-    if (!(await confirmNotAuthor())) {
-      window.history.back(-1);
+    const rejectAuthor = async () => {
+      if (!(await confirmArchive())) {
+        router.push(`/ideaspace/workshop/${ideaId}`);
+      }
     }
-  };
 
-  useEffect(async () => {
     if (ideaId) {
-      const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
-      if (!idea || !idea.id || idea.id == 0) {
-        setGetError(true);
-        return;
-      }
+      axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`)
+        .then(response => {
+          if (response.status === 200) {
+            if (userData.id !== 0) {
+              if (response.data.author.id == userData.id) {
+                if (response.data?.status == 'archived') {
+                  rejectAuthor();
+                } else {
+                  setCard(response.data);
+                }
+              } else {
+                rejectUser();
+              }
+            }
 
-      if (userData.id !== 0) {
-        if (idea.author.id === userData.id) {
-          if (response.data?.status == 'archived') {
-            rejectAuthor();
           }
-
-          setCard(idea);
-        } else {
-          rejectUser();
-        }
-      }
+        })
+        .catch(error => {
+          console.log(error);
+          setGetError(true);
+        })
     }
   }, [ideaId, userData.id]);
 
@@ -128,12 +132,15 @@ function EditIdea() {
     setSending(true);
 
     try {
-      const data = cleanData(await agent.Ideas.put(ideaId, values));
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`,
+        values
+      );
 
-      if (data.ideaName) {
+      if (res.status === 200) {
         setunsavedChanges(false);
-        if (await confirmNotice()){
-          setUrrl(`/ideaspace/workshop/${data.id}`);
+        if (!(await confirmSucceed())) {
+          setUrrl(`/ideaspace/workshop/${ideaId}`);
         }
       }
     } catch (error) {
@@ -151,7 +158,7 @@ function EditIdea() {
     }
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.onbeforeunload = () => {
       if (unsavedChanges) {
         return 'You have unsaved changes. Do you really want to leave?';
@@ -209,7 +216,7 @@ function EditIdea() {
         {!isAuthenticated ? (
           <SignInSection
             label='Please sign in to edit your idea!'
-            redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
+            redirectURL='https://devlaunchers.org/ideaspace/dashboard'
           />
         ) : (
           <>

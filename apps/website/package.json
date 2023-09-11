@@ -8,7 +8,6 @@
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
-    "@devlaunchers/utility": "workspace:*",
     "@ramonak/react-progress-bar": "^5.0.2",
     "@types/styled-components": "5.1.25",
     "articles": "^0.2.2",

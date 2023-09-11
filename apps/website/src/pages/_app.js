@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
+import { UserDataProvider } from '../context/UserDataContext';
 import { SheetsProvider } from '../context/SheetsContext';
 
 const hashRedirect = (router) => {
@@ -44,30 +45,32 @@ function MyApp(props) {
 
   return (
     <>
-      <SheetsProvider>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <div>
-            <Head>
-              <script
-                async
-                src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-              ></script>
-            </Head>
+      <UserDataProvider>
+        <SheetsProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <div>
+              <Head>
+                <script
+                  async
+                  src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+                ></script>
+              </Head>
 
-            <div className="App">
-              <ToastContainer
-                className="toast-container"
-                toastClassName="toast"
-                bodyClassName="toast-body"
-                progressClassName="toast-progress"
-              />
+              <div className="App">
+                <ToastContainer
+                  className="toast-container"
+                  toastClassName="toast"
+                  bodyClassName="toast-body"
+                  progressClassName="toast-progress"
+                />
+              </div>
+              {/* <Component {...pageProps} /> */}
+              {props.children}
             </div>
-            {/* <Component {...pageProps} /> */}
-            {props.children}
-          </div>
-        </ThemeProvider>
-      </SheetsProvider>
+          </ThemeProvider>
+        </SheetsProvider>
+      </UserDataProvider>
     </>
   );
 }

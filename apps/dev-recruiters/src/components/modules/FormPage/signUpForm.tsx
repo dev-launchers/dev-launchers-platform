@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
+import { useUserDataContext } from '../../../contexts/UserDataContext';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
+import { SkillLevel } from '@devlaunchers/models/level';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';

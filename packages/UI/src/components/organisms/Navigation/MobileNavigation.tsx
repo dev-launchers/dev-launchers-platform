@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';
+import Logout from '../../../utils/Logout';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
@@ -14,10 +15,8 @@ import type { NavigationProps } from '.';
 const MobileNavigation = ({
   user,
   links,
-  logout
 }: NavigationProps & {
   links: { [key: string]: string | { text: string; href: string }[] };
-  logout: { (): void }
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -30,7 +29,6 @@ const MobileNavigation = ({
   function handleNavClick(): void {
     setMenuOpen(false);
   }
-
   return (
     <HamburgerWrapper>
       <SlideHamburgerMenu
@@ -107,7 +105,7 @@ const MobileNavigation = ({
                     as="a"
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                      '?redirectURL=https://devlaunchers.org/users/me'
                     }
                     buttonType="primary"
                     buttonSize="standard"
@@ -118,7 +116,7 @@ const MobileNavigation = ({
                     as="a"
                     href={
                       process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                      '?redirectURL=https://devlaunchers.org/users/me'
                     }
                     buttonType="secondary"
                     buttonSize="standard"
@@ -130,7 +128,7 @@ const MobileNavigation = ({
                 <Button
                   buttonType="secondary"
                   buttonSize="standard"
-                  onClick={logout}
+                  onClick={Logout}
                 >
                   Logout
                 </Button>

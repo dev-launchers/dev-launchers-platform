@@ -19,7 +19,7 @@ const HelpBuild = () => (
         <ButtonsContainer>
           <Button
             bgColor="#4A9D48"
-            href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/c/sponsorship/"}
+            href="https://devlaunchers.org/c/sponsorship/"
             target="_blank"
             rel="noopener noreferrer"
           >

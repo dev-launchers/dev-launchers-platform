@@ -26,7 +26,7 @@ export const IdeaOverview = ({ selectedCard }) => {
 
       <RightWrapper>
         <TopView>
-          <IdeaOwnerCard IdeaOwnerName={selectedCard.author?.username} ideaOwnerImage={selectedCard.id}/>
+          <IdeaOwnerCard IdeaOwnerName={selectedCard.ideaOwner} ideaOwnerImage={selectedCard.id}/>
           <TagsCard status={selectedCard.difficultyLevel} />
         </TopView>
         <IdeaContentCard title={"Idea features"} content={selectedCard.features}/>

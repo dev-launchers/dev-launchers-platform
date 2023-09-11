@@ -6,10 +6,10 @@ import { slide as SlideHamburgerMenu } from "react-burger-menu";
 import style from "./HamburgerMenu.module.css";
 import logoMonogramImage from "@images/logo-monogram.png?webp";
 import Logout from "@utils/Logout";
-import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
+import { useUserDataContext } from "@contexts/UserDataContext";
 
 const HamburgerMenu: React.FC = () => {
-  const { userData, setUserData } = useUserDataContext();
+  const { userData } = useUserDataContext();
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   // Called when the open/close state of the menu changes (onStateChange callback)
@@ -21,30 +21,6 @@ const HamburgerMenu: React.FC = () => {
   function handleNavClick(): void {
     setMenuOpen(false);
   }
-
-  const handleLogout = () => {
-    Logout();
-    setUserData({
-      id: 0,
-      name: '',
-      username: '',
-      email: '',
-      bio: '',
-      profilePictureUrl: '',
-      socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
-      discord: {
-        id: 0,
-        avatar: '',
-        username: '',
-        discriminator: '',
-      },
-      interests: [],
-    })
-  };
 
   return (
     <SlideHamburgerMenu
@@ -108,13 +84,12 @@ const HamburgerMenu: React.FC = () => {
                       <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
                     </a>
                   </Link>
-                  <a onClick={handleLogout} className="nav-link">
+                  <a onClick={Logout} className="nav-link">
                     <div className={style.navEntry}>LOG OUT </div>
                   </a>
                 </>
               ) : (
-                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
-                  +`?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`} className="nav-link">
+                <a href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"} className="nav-link">
                   <div className={style.navEntry}>SIGN IN </div>
                 </a>
               )}

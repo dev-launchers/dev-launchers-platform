@@ -31,5 +31,3 @@ jobs:
           # Get cache from latest build on main branch
           cache-from: type=gha
           # Don't set cache-to which will export the cache
-          build-args: |
-            NODE_ENV=staging

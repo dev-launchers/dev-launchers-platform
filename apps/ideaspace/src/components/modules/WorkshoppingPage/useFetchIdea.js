@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { agent } from '@devlaunchers/utility';
-import { cleanData } from '../../../utils/StrapiHelper';
+import axios from 'axios';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 export const useFetchIdea = (ideaId) => {
@@ -38,14 +37,11 @@ export const useFetchIdea = (ideaId) => {
   useEffect(async () => {
     try {
       if (ideaId) {
-        setLoading(true);
-
-        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
-
-        setLoading(false);
-
-        if (data) {
-          setSourceData(data);
+        setLoading(true)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`);
+        setLoading(false)
+        if (response.data) {
+          setSourceData(response.data);
         }
       }
     } catch (error) {

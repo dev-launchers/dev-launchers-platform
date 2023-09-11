@@ -17,12 +17,12 @@ const DescriptionContent = ({ data }) => {
         {/* eslint-disable-next-line react/no-children-prop */}
         <ReactMarkdown children={description} />
       </Paragrapgh>
-      {!!images[0]?.image?.data?.length && (
+      {!!images.length && (
         <Strip>
           <Conatiner>
             <FlexSection>
-              {images[0].image.data.map(({attributes, id}) => (
-                <ImageHolder key={id} src={attributes.url} />
+              {images.map((image) => (
+                <ImageHolder key={image.image[0].id} src={image.image[0].url} />
               ))}
             </FlexSection>
           </Conatiner>

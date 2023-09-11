@@ -15,7 +15,7 @@ const TitledHeader = ({ title, backButtonUrl }) => {
   const previousPath = router.asPath.slice(0, finalSlashIndex);
 
   return (
-    <atoms.Layer type="dark" hasRainbowBottom>
+    <atoms.Layer type="black" hasRainbow>
       <atoms.Box
         paddingBlock="2rem"
         paddingInline="1rem"
