@@ -684,48 +684,32 @@ video {
   gap: var(--2, 0.5rem);
 }
 
-.gap-4 {
-  gap: var(--4, 1rem);
-}
-
-.gap-0 {
-  gap: var(--0, 0px);
+.rounded {
+  border-radius: 0.25rem;
 }
 
 .rounded-lg {
   border-radius: 0.5rem;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.rounded {
-  border-radius: 0.25rem;
-}
-
 .border {
   border-width: 1px;
 }
 
-.bg-white {
-  background-color: var(--white, #ffffff);
-}
-
-.bg-blue-500 {
-  background-color: var(--blue-500, #4299e1);
-}
-
-.bg-green-500 {
-  background-color: var(--green-500, #48bb78);
+.bg-black {
+  background-color: var(--black, #000000);
 }
 
 .bg-purple-500 {
   background-color: var(--purple-500, #9f7aea);
 }
 
-.bg-black {
-  background-color: var(--black, #000000);
+.bg-red-400 {
+  background-color: var(--red-400, #fc8181);
+}
+
+.bg-white {
+  background-color: var(--white, #ffffff);
 }
 
 .p-2 {
@@ -740,6 +724,11 @@ video {
 .px-4 {
   padding-left: var(--4, 1rem);
   padding-right: var(--4, 1rem);
+}
+
+.px-6 {
+  padding-left: var(--6, 1.5rem);
+  padding-right: var(--6, 1.5rem);
 }
 
 .py-1 {
@@ -757,34 +746,8 @@ video {
   padding-bottom: var(--3, 0.75rem);
 }
 
-.px-6 {
-  padding-left: var(--6, 1.5rem);
-  padding-right: var(--6, 1.5rem);
-}
-
-.pb-3 {
-  padding-bottom: var(--3, 0.75rem);
-}
-
-.pl-4 {
-  padding-left: var(--4, 1rem);
-}
-
-.pr-4 {
-  padding-right: var(--4, 1rem);
-}
-
-.pt-3 {
-  padding-top: var(--3, 0.75rem);
-}
-
 .text-center {
   text-align: center;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -795,10 +758,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.font-semibold {
-  font-weight: 600;
 }
 
 .uppercase {
@@ -870,32 +829,4 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-.hover\:bg-blue-700:hover {
-  background-color: var(--blue-700, #2b6cb0);
-}
-
-.hover\:bg-green-700:hover {
-  background-color: var(--green-700, #2f855a);
-}
-
-.hover\:bg-purple-700:hover {
-  background-color: var(--purple-700, #6b46c1);
-}
-
-.hover\:bg-gray-400:hover {
-  background-color: var(--gray-400, #cbd5e0);
-}
-
-.hover\:bg-red-600:hover {
-  background-color: var(--red-600, #e53e3e);
-}
-
-.hover\:bg-gray-100:hover {
-  background-color: var(--gray-100, #f7fafc);
-}
-
-.active\:opacity-80:active {
-  opacity: 0.8;
 }
