@@ -1,44 +1,49 @@
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
-import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
-import PageOne from "./PlatformOnboarding/PageOne";
-import Typography from "@devlaunchers/components/components/atoms/Typography";
-import LogoMonogram from '../../../images/logo-monogram.png'
-import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
+import { ModalContainer, userUnboardingModalStyle } from "./StyledUserOnboardingModal";
 import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
-
+import IntroductionModal from "./IntroductionModal/IntroductionModal";
 Modal.setAppElement("#__next");
 
 /**
  * @description This is custom modal for the user onboarding. 
  */
-export default function UserOnboardingModal({ isOpen }) {
+export default function UserOnboardingModal() {
     const { onboardingData: { showIntroductionModal, showPlatformOnboardingModal }, dispatch } = useOnboardingDataContext();
     const [modalIsOpen, setModalIsOpen] = useState(true);
+
     const openModal = () => {
         setModalIsOpen(true);
     }
 
-    // const afterOpenModal = () => {
-    //     // references are now sync'd and can be accessed.
-    // }
     const closeModal = () => {
         setModalIsOpen(false);
     }
+
+    const showModals = () => {
+        if (showIntroductionModal) {
+            return <IntroductionModal />;
+        } else if (showPlatformOnboardingModal) {
+            return <PlatformOnboarding />;
+        } else {
+            return null;
+        }
+    }
+    
     return (
         <>
             {/* "modalIsOpen ? true : false" set this way until we start adding typescript for 
          boolean type */}
             <Modal
-                isOpen={modalIsOpen ? true : false}
+                isOpen={showIntroductionModal || showPlatformOnboardingModal}
                 onRequestOpen={openModal}
                 onRequestClose={closeModal}
                 style={userUnboardingModalStyle}
                 contentLabel="User Onboarding"
             >
                 <ModalContainer>
-                    {showPlatformOnboardingModal && <PlatformOnboarding />}
+                    {showModals()}
                 </ModalContainer>
             </Modal>
         </>

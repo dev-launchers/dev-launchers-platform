@@ -11,8 +11,8 @@ import { onboardingActions } from './../../../../state/actions';
 export default function PlatformOnboarding() {
   const { dispatch } = useOnboardingDataContext();
 
-  const back = () => {
-    dispatch({ type: onboardingActions.SHOW_INTRODUCTION_MODAL });
+  const hideAllModals = () => {
+    dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
   }
 
   const stepperConfig = [
@@ -25,15 +25,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: false,
-            onClick: back,
           },
         },
       },
@@ -46,16 +40,10 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
           back: {
             label: 'Back',
             hide: true,
-            useDefaultOnClick: false,
-            onClick: back,
           },
         },
       },
@@ -69,17 +57,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
         },
       },
@@ -92,18 +72,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: true,
-            // useDefaultHide: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
         },
       },
@@ -116,18 +87,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: true,
-            // useDefaultHide: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
         },
       },
@@ -142,18 +104,10 @@ export default function PlatformOnboarding() {
           next: {
             label: 'Finished',
             hideIcons: true,
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
+            onClick: hideAllModals,
           },
           back: {
             label: 'Back',
-            useDefaultOnClick: true,
-            // useDefaultHide: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
           },
         },
       },
