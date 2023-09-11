@@ -22,7 +22,7 @@ import Milestones from './Milestones';
 import JoinSupport from './JoinSupport';
 import HelpBuild from './HelpBuild';
 import Sessions from './Sessions';
-import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
+import { useUserDataContext } from '../../../../context/UserDataContext';
 
 function isOnTeam(id, team) {
   const leadersIds = team.leaders.map((leader) => leader.id);
