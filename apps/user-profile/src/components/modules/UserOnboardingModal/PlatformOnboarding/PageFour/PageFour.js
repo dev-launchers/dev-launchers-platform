@@ -1,19 +1,19 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
 import RoleCard from "./../../RoleCard";
-import { PageContainer, RoleCards, StepHeader } from "../StyledPageContainer";
-import { ThemeProvider } from "styled-components";
+import { GroupRoleCardsContainer } from '../../RoleCard/StyledRoleCard';
+import { PageFourContainer, Header } from './StyledPageFour';
 
-export default function PageThree(){
+export default function PageThree() {
     return (
-        <PageContainer>
-						<StepHeader> 
-							<Typography type="p" style={{color: "black"}}>ABOUT YOU</Typography>
-						</StepHeader>
+        <PageFourContainer>
+            <Header>
+                <Typography type="p" style={{ color: "black" }}>ABOUT YOU</Typography>
+            </Header>
 
             <Typography type="h3">What Is Your Experience Level in This Role?</Typography>
-						<Typography type="p" style={{color: "black"}}>We’ll use this to find you the right fit when pairing with other members</Typography>
+            <Typography type="p" style={{ color: "black" }}>We’ll use this to find you the right fit when pairing with other members</Typography>
 
-            <RoleCards>
+            <GroupRoleCardsContainer>
                 <RoleCard
                     iconImg="Junior"
                     title="Junior"
@@ -29,7 +29,7 @@ export default function PageThree(){
                     title="Senior"
                     subtitle="You have 5+ years in the industry"
                 />
-            </RoleCards>               
-        </PageContainer>
+            </GroupRoleCardsContainer>
+        </PageFourContainer>
     );
 }

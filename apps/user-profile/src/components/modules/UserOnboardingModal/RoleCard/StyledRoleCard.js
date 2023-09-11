@@ -9,25 +9,25 @@ import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboa
 import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
 import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
-export const IconImg = ({iconImg}) => {
-    switch (iconImg) {
-				case 'Junior':
-					return <img src={juniorExperienceSvg}/>
-				case 'Mid-Level':
-					return <img src={midExperienceSvg}/>
-				case 'Senior':
-					return <img src={seniorExperienceSvg}/>	
-				case 'Onboarding':
-					return <img src={onboardingFoldersSvg}/>
-        case 'Developer':
-          return <img src={Developer}/>
-        case 'UX':
-          return <img src={UX}/>
-        case 'Other':
-          return <img src={Other}/>
-        default:
-          return <img src={Developer} />
-    }
+export const IconImg = ({ iconImg }) => {
+  switch (iconImg) {
+    case 'Junior':
+      return <img src={juniorExperienceSvg} />
+    case 'Mid-Level':
+      return <img src={midExperienceSvg} />
+    case 'Senior':
+      return <img src={seniorExperienceSvg} />
+    case 'Onboarding':
+      return <img src={onboardingFoldersSvg} />
+    case 'Developer':
+      return <img src={Developer} />
+    case 'UX':
+      return <img src={UX} />
+    case 'Other':
+      return <img src={Other} />
+    default:
+      return <img src={Developer} />
+  }
 };
 
 export const RoleCardContainer = styled.div`
@@ -59,7 +59,6 @@ export const IconWrapper = styled.div`
     };
 `;
 
-
 export const TextWrapper = styled.div`
     text-align: center;
     width: 100%;
@@ -77,6 +76,12 @@ export const TextWrapper = styled.div`
 
 		}
 `;
+
+export const GroupRoleCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+		margin: 0% 7% 10% 7%;
+`
 
 
 
