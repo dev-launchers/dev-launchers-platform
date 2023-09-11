@@ -47,7 +47,8 @@ export const StepName = styled.div`
 `
 
 export const StepperBody = styled.div`
-    height: 564px;
+    height: 100%;
+    max-height: 564px;
 `;
 
 export const ProgressBarContainer = styled.div`
@@ -69,8 +70,7 @@ export const StepperFooter = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 8px 14px;
-    padding: 0 108px 54px;
+    padding: 60px 108px 54px;
     gap: 22px;
 
     .stepper-btn-icon-text{

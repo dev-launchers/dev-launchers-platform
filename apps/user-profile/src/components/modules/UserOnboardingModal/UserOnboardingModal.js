@@ -11,7 +11,7 @@ Modal.setAppElement("#__next");
  */
 export default function UserOnboardingModal() {
     const { onboardingData: { showIntroductionModal, showPlatformOnboardingModal }, dispatch } = useOnboardingDataContext();
-    const [modalIsOpen, setModalIsOpen] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(showIntroductionModal || showPlatformOnboardingModal);
 
     const openModal = () => {
         setModalIsOpen(true);

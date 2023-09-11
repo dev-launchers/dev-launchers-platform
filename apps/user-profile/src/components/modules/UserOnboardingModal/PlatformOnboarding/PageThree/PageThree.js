@@ -8,10 +8,10 @@ export default function PageThree() {
 		<PageThreeContainer>
 			<Header>
 				<Typography type="p" style={{ color: "black" }}>ABOUT YOU</Typography>
+				<Typography type="h3">First off, What Role Best Describes You?</Typography>
+				<Typography type="p" style={{ color: "black" }}>We'll use this to recommend open source projects for you to work on.</Typography>
 			</Header>
 
-			<Typography type="h3">First off, What Role Best Describes You?</Typography>
-			<Typography type="p" style={{ color: "black" }}>We'll use this to recommend open source projects for you to work on.</Typography>
 
 			<GroupRoleCardsContainer>
 				<RoleCard

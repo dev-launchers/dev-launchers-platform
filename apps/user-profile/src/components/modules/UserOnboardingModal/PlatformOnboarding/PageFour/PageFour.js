@@ -7,11 +7,11 @@ export default function PageThree() {
     return (
         <PageFourContainer>
             <Header>
-                <Typography type="p" style={{ color: "black" }}>ABOUT YOU</Typography>
+                <Typography className="eyebrow-text" type="p" style={{ color: "black" }}>ABOUT YOU</Typography>
+                <Typography type="h3">What Is Your Experience Level in This Role?</Typography>
+                <Typography type="p" style={{ color: "black" }}>We’ll use this to find you the right fit when pairing with other members</Typography>
             </Header>
 
-            <Typography type="h3">What Is Your Experience Level in This Role?</Typography>
-            <Typography type="p" style={{ color: "black" }}>We’ll use this to find you the right fit when pairing with other members</Typography>
 
             <GroupRoleCardsContainer>
                 <RoleCard

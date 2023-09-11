@@ -31,21 +31,17 @@ export const IconImg = ({ iconImg }) => {
 };
 
 export const RoleCardContainer = styled.div`
-    margin: 65px 10px 0px;
-    /* Components */
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 35px 18px;
     align-items: center;
-    padding: 4% 2% 6% 2%;
-    gap: 10px;
     width: 18vw;
-    height: 25vh;
     border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
 		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
-
+    height: 200px;
     &.selected {
         border: 5px solid #3A7CA5;
     }
@@ -80,7 +76,9 @@ export const TextWrapper = styled.div`
 export const GroupRoleCardsContainer = styled.div`
     display: flex;
     flex-direction: row;
-		margin: 0% 7% 10% 7%;
+    justify-content:space-between;
+    gap: 20px;
+    align-items: flex-end;
 `
 
 

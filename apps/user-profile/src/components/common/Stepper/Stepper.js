@@ -22,18 +22,9 @@ const stepsMockData = [
       buttons: {
         next: {
           label: 'Next',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          // useDefaultHide: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
@@ -45,17 +36,12 @@ const stepsMockData = [
       buttons: {
         next: {
           label: 'Next',
-          useDefaultOnClick: true,
           onClick: () => {
             console.log('..some function ');
           },
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
@@ -74,10 +60,6 @@ const stepsMockData = [
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
