@@ -9,43 +9,39 @@ import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboa
 import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
 import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
-export const IconImg = ({iconImg}) => {
-    switch (iconImg) {
-				case 'Junior':
-					return <img src={juniorExperienceSvg}/>
-				case 'Mid-Level':
-					return <img src={midExperienceSvg}/>
-				case 'Senior':
-					return <img src={seniorExperienceSvg}/>	
-				case 'Onboarding':
-					return <img src={onboardingFoldersSvg}/>
-        case 'Developer':
-          return <img src={Developer}/>
-        case 'UX':
-          return <img src={UX}/>
-        case 'Other':
-          return <img src={Other}/>
-        default:
-          return <img src={Developer} />
-    }
+export const IconImg = ({ iconImg }) => {
+  switch (iconImg) {
+    case 'Junior':
+      return <img src={juniorExperienceSvg} />
+    case 'Mid-Level':
+      return <img src={midExperienceSvg} />
+    case 'Senior':
+      return <img src={seniorExperienceSvg} />
+    case 'Onboarding':
+      return <img src={onboardingFoldersSvg} />
+    case 'Developer':
+      return <img src={Developer} />
+    case 'UX':
+      return <img src={UX} />
+    case 'Other':
+      return <img src={Other} />
+    default:
+      return <img src={Developer} />
+  }
 };
 
 export const RoleCardContainer = styled.div`
-    margin: 65px 10px 0px;
-    /* Components */
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 35px 18px;
     align-items: center;
-    padding: 4% 2% 6% 2%;
-    gap: 10px;
     width: 18vw;
-    height: 25vh;
     border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
 		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
-
+    height: 200px;
     &.selected {
         border: 5px solid #3A7CA5;
     }
@@ -58,7 +54,6 @@ export const IconWrapper = styled.div`
         height: 50px;
     };
 `;
-
 
 export const TextWrapper = styled.div`
     text-align: center;
@@ -77,6 +72,14 @@ export const TextWrapper = styled.div`
 
 		}
 `;
+
+export const GroupRoleCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap: 20px;
+    align-items: flex-end;
+`
 
 
 

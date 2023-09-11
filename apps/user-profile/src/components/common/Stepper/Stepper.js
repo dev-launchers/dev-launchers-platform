@@ -22,18 +22,9 @@ const stepsMockData = [
       buttons: {
         next: {
           label: 'Next',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          // useDefaultHide: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
@@ -45,17 +36,12 @@ const stepsMockData = [
       buttons: {
         next: {
           label: 'Next',
-          useDefaultOnClick: true,
           onClick: () => {
             console.log('..some function ');
           },
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
@@ -74,10 +60,6 @@ const stepsMockData = [
         },
         back: {
           label: 'Back',
-          useDefaultOnClick: true,
-          onClick: () => {
-            console.log('..some function ');
-          },
         },
       },
     },
@@ -107,22 +89,20 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
 
 
   const backOnClickHandler = () => {
-    if (buttonConfig?.back?.useDefaultOnClick) {
-      if (index >= 1) {
-        setIndex(index - 1);
-      }
-    } else {
+    const hasSetCustomFunction = buttonConfig?.back?.onClick ? true : false;
+    if (hasSetCustomFunction) {
       buttonConfig.back.onClick();
+    } else {
+      index >= 1 && setIndex(index - 1);
     }
   };
 
   const nextOnClickHandler = () => {
-    if (buttonConfig?.next?.useDefaultOnClick) {
-      if (index < lastStepIndex) {
-        setIndex(index + 1);
-      }
-    } else {
+    const hasSetCustomFunction = buttonConfig?.next?.onClick ? true : false;
+    if (hasSetCustomFunction) {
       buttonConfig.next.onClick();
+    } else {
+      index >= 1 && setIndex(index + 1);
     }
   };
 
@@ -174,11 +154,13 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
 
 
   const stepTracker = stepsData.map((step, mapIndex) => {
+    //TODO find way of adding id's to remove key error from console
     const trackerHtml =
       <>
         <div>{showStepNumber(mapIndex)}</div>
         {showBar(mapIndex)}
       </>
+
     return trackerHtml;
   });
 
