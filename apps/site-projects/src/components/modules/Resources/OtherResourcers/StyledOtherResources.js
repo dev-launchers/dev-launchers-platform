@@ -16,7 +16,7 @@ export const OtherResourcesContainer = styled.fieldset`
 
 
 export const TitleResources = styled.legend`
-    font-family: ${({theme})=>(theme.fonts.headline)};
+    font-family: "Abel",sans-serif;
     font-size: 2.3rem;
     font-weight: bold;
 

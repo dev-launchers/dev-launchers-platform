@@ -14,7 +14,7 @@ export const TeamResourcesContainer = styled.fieldset`
     width: 100%;
 
     > legend {
-        font-family: ${({theme})=>(theme.fonts.headline)};
+        font-family: "Abel",sans-serif;
         font-size: 2.3rem;
         font-weight: bold;
         padding: 0 1.5rem;
