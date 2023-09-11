@@ -2,18 +2,22 @@ import React from "react";
 import { useRouter } from 'next/router'
 
 import { useUserDataContext } from '../../context/UserDataContext';
+import { featureFlags } from './../../utils/featureFlags';
 
 import Head from 'next/head';
 import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
-import IntroductionModal from "./../../components/modules/IntroductionModal"
+import SignIn from "../../components/modules/UserProfile/SignIn";
+import PageBody from "../../components/common/PageBody";
+
+
 
 /**
  * @drescription This component renders the User Profile Component. 
  * A Modal is opened when user has not fully completed their onboarding.
  */
 export default function UserProfilePage(props) {
-  const { userData } = useUserDataContext();
+  const { isAuthenticated, userData } = useUserDataContext();
   const router = useRouter();
 
 
@@ -22,7 +26,7 @@ export default function UserProfilePage(props) {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return true//(router.query?.onboarding)
+    return featureFlags.inDevelopment ? true : userData.hasOnboarded !== true;
   }
 
   return (
@@ -30,10 +34,16 @@ export default function UserProfilePage(props) {
       <Head>
         <title>User Profile</title>
       </Head>
-      <div>
-        {openUserOnboardingModal() && <IntroductionModal/>}
-        <UserProfile isPublic={false}/>
-      </div>
+
+      <PageBody>
+        {isAuthenticated ?
+          <>
+            {openUserOnboardingModal() && <UserOnboardingModal />}
+            <UserProfile isPublic={false} />
+          </> :
+          <SignIn />
+        }
+      </PageBody>
     </>
   );
 }
