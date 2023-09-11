@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-
+import { agent } from '@devlaunchers/utility';
+import { atoms } from '@devlaunchers/components/src/components';
+import { cleanData } from '../../../utils/StrapiHelper';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import { atoms } from '@devlaunchers/components/src/components';
-
 import {
   HeadWapper,
   Headline,
@@ -21,7 +20,7 @@ function SubmissionForm() {
   if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
     isAuthenticated = true;
 
-    React.useEffect(() => {
+    useEffect(() => {
       setUserData({ ...userData, id: 30 });
     }, []);
   }
@@ -62,7 +61,9 @@ function SubmissionForm() {
     involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
+
   const submitHandler = async (values) => {
+    values['author'] = userData;
     values['status'] = 'workshopping';
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();
@@ -74,15 +75,15 @@ function SubmissionForm() {
     setSending(true);
 
     try {
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/`,
-        values
-      );
+      const data = cleanData(await agent.Ideas.post(values));
 
-      if (res.status === 200) {
+      if (data.ideaName) {
         setunsavedChanges(false);
-        setUrrl(`workshop/${res.data.id}`);
+        router.push(`workshop/${data.id}`);
+      } else {
+        alert('Unable to register your idea.');
       }
+
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
@@ -97,7 +98,7 @@ function SubmissionForm() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
@@ -153,7 +154,7 @@ function SubmissionForm() {
       {!isAuthenticated ? (
         <SignInSection
           label='Please sign in to submit your idea!'
-          redirectURL='https://devlaunchers.org/ideaspace/submit'
+          redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/submit'}
         />
       ) : (
         <>

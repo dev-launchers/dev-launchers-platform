@@ -4,16 +4,14 @@ import { withTheme } from "styled-components";
 
 import { ThemeProvider } from "styled-components";
 import theme from "@devlaunchers/components/styles/theme";
-
-import Section from "../Section";
-import { Wrapper, ButtonsContainer, Button } from "./StyledEditorNotification";
+import { ButtonsContainer, Button } from "./StyledEditorNotification";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 import Alert from '@devlaunchers/components/components/molecules/Alert';
 
 function isUserAProjectLeader(user, project) {
-	for (let i=0; i<project.team.leaders.length; i++) {
-		let leader = project.team.leaders[i];
+	for (let i=0; i<project.attributes.team.leaders.length; i++) {
+		let leader = project.attributes.team.leaders[i];
 		if (leader.id === user.id) return true;
 	}
 	
