@@ -1,0 +1,11 @@
+node_modules
+production
+staging
+workload
+.next
+/out/
+.vscode
+.github
+*.json
+*.lock
+*.md

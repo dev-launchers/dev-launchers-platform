@@ -6,6 +6,7 @@ const withTM = require('next-transpile-modules')([
   '@devlaunchers/site-projects',
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
+  '@devlaunchers/gptbot',
 ]); // pass the modules you would like to see transpiled
 
 /** @type {import('next').NextConfig} */

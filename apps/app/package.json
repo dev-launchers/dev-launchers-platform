@@ -7,6 +7,7 @@
   "dependencies": {
     "@builder.io/partytown": "0.7.4",
     "@devlaunchers/dev-recruiters": "workspace:^",
+    "@devlaunchers/gptbot": "workspace:*",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
     "@devlaunchers/website": "*",
