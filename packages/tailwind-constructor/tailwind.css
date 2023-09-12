@@ -706,6 +706,30 @@ video {
   border-width: 1px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
+.border-0 {
+  border-width: 0px;
+}
+
+.border-solid {
+  border-style: solid;
+}
+
+.border-white {
+  border-color: var(--white, #ffffff);
+}
+
+.border-black {
+  border-color: var(--black, #000000);
+}
+
 .bg-black {
   background-color: var(--black, #000000);
 }
@@ -784,6 +808,34 @@ video {
 
 .bg-yellow-500 {
   background-color: var(--yellow-500, #ecc94b);
+}
+
+.bg-blue-700 {
+  background-color: var(--blue-700, #2b6cb0);
+}
+
+.bg-brand-secondary-cosmic-300 {
+  background-color: var(--brand-secondary-cosmic-300, #7a87c7);
+}
+
+.bg-brand-primary-jupiter-300 {
+  background-color: var(--brand-primary-jupiter-300, #ffa95e);
+}
+
+.bg-brand-primary-neptune-300 {
+  background-color: var(--brand-primary-neptune-300, #7ba7c3);
+}
+
+.bg-brand-primary-saturn-300 {
+  background-color: var(--brand-primary-saturn-300, #ffc754);
+}
+
+.bg-brand-primary-uranus-300 {
+  background-color: var(--brand-primary-uranus-300, #abd7e4);
+}
+
+.bg-brand-secondary-nebula-300 {
+  background-color: var(--brand-secondary-nebula-300, #a17ac7);
 }
 
 .p-0 {
@@ -970,8 +1022,8 @@ video {
   background-color: var(--gray-500, #a0aec0);
 }
 
-.hover\:bg-gray-800:hover {
-  background-color: var(--gray-800, #2d3748);
+.hover\:bg-gray-700:hover {
+  background-color: var(--gray-700, #4a5568);
 }
 
 .hover\:bg-green-700:hover {
@@ -1002,8 +1054,28 @@ video {
   background-color: var(--yellow-700, #b7791f);
 }
 
-.hover\:bg-gray-700:hover {
-  background-color: var(--gray-700, #4a5568);
+.hover\:bg-brand-primary-jupiter-500:hover {
+  background-color: var(--brand-primary-jupiter-500, #ff7f0e);
+}
+
+.hover\:bg-brand-primary-neptune-500:hover {
+  background-color: var(--brand-primary-neptune-500, #3a7ca5);
+}
+
+.hover\:bg-brand-primary-saturn-500:hover {
+  background-color: var(--brand-primary-saturn-500, #ffab00);
+}
+
+.hover\:bg-brand-primary-uranus-500:hover {
+  background-color: var(--brand-primary-uranus-500, #81c3d7);
+}
+
+.hover\:bg-brand-secondary-cosmic-500:hover {
+  background-color: var(--brand-secondary-cosmic-500, #394cac);
+}
+
+.hover\:bg-brand-secondary-nebula-500:hover {
+  background-color: var(--brand-secondary-nebula-500, #7339ac);
 }
 
 .active\:opacity-80:active {

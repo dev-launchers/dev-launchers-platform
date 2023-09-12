@@ -43,74 +43,95 @@ const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
 //   ),
 // };
 
-/**
- * Primary tag color
- */
-export const Primary: Story = {
-  args: buildDefaultProps({ color: 'primary' }),
-};
+// /**
+//  * Primary tag color
+//  */
+// export const Primary: Story = {
+//   args: buildDefaultProps({ color: 'primary' }),
+// };
 
-/**
- * Secondary tag color
- */
-export const Secondary: Story = {
-  args: buildDefaultProps({ color: 'secondary' }),
-};
+// /**
+//  * Secondary tag color
+//  */
+// export const Secondary: Story = {
+//   args: buildDefaultProps({ color: 'secondary' }),
+// };
 
-/**
- * Success tag color
- */
-export const Success: Story = {
-  args: buildDefaultProps({ color: 'success' }),
-};
+// /**
+//  * Success tag color
+//  */
+// export const Success: Story = {
+//   args: buildDefaultProps({ color: 'success' }),
+// };
 
-/**
- * Danger tag color
- */
-export const Danger: Story = {
-  args: buildDefaultProps({ color: 'danger' }),
-};
+// /**
+//  * Danger tag color
+//  */
+// export const Danger: Story = {
+//   args: buildDefaultProps({ color: 'danger' }),
+// };
 
-/**
- * Warning tag color
- */
-export const Warning: Story = {
-  args: buildDefaultProps({ color: 'warning' }),
-};
+// /**
+//  * Warning tag color
+//  */
+// export const Warning: Story = {
+//   args: buildDefaultProps({ color: 'warning' }),
+// };
 
-/**
- * Info tag color
- */
-export const Info: Story = {
-  args: buildDefaultProps({ color: 'info' }),
-};
+// /**
+//  * Info tag color
+//  */
+// export const Info: Story = {
+//   args: buildDefaultProps({ color: 'info' }),
+// };
 
-/**
- * Light tag color
- */
-export const Light: Story = {
-  args: buildDefaultProps({ color: 'light' }),
-};
+// /**
+//  * Light tag color
+//  */
+// export const Light: Story = {
+//   args: buildDefaultProps({ color: 'light' }),
+// };
 
-/**
- * Dark tag color
- */
-export const Dark: Story = {
-  args: buildDefaultProps({ color: 'dark' }),
-};
+// /**
+//  * Dark tag color
+//  */
+// export const Dark: Story = {
+//   args: buildDefaultProps({ color: 'dark' }),
+// };
 
 /**
  * White tag color
+ */
+export const White: Story = {
+  args: buildDefaultProps({ color: 'white' }),
+};
+
+/**
+ * Black tag color
+ */
+export const Black: Story = {
+  args: buildDefaultProps({ color: 'black' }),
+};
+
+/**
+ * Cosmic tag color
+ */
+export const Cosmic: Story = {
+  args: buildDefaultProps({ color: 'cosmic' }),
+};
+
+/**
+ * Jupiter tag color
  */
 export const Jupiter: Story = {
   args: buildDefaultProps({ color: 'jupiter' }),
 };
 
 /**
- * Charcoal tag color
+ * Nebula tag color
  */
-export const Uranus: Story = {
-  args: buildDefaultProps({ color: 'uranus' }),
+export const Nebula: Story = {
+  args: buildDefaultProps({ color: 'nebula' }),
 };
 
 /**
@@ -128,17 +149,10 @@ export const Saturn: Story = {
 };
 
 /**
- * Nebula tag color
+ * Uranus tag color
  */
-export const Nebula: Story = {
-  args: buildDefaultProps({ color: 'nebula' }),
-};
-
-/**
- * Cosmic tag color
- */
-export const Cosmic: Story = {
-  args: buildDefaultProps({ color: 'cosmic' }),
+export const Uranus: Story = {
+  args: buildDefaultProps({ color: 'uranus' }),
 };
 
 /**
@@ -151,8 +165,8 @@ export const TagBlockDisplayExample: Story = {
       <Tag
         {...buildDefaultProps({
           ...props,
-          label: 'Secondary',
-          color: 'secondary',
+          label: 'White',
+          color: 'white',
         })}
       />
       <Tag

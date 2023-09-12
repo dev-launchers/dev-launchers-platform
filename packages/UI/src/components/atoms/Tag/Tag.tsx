@@ -2,22 +2,32 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { Close } from '../../../assets/icons';
 
 // track which colors should have black text as the svg icon needs to fill with black
-const blackTextIconColorVariants: string[] = [
-  'warning',
-  'light',
+const blackTextIconColorVariantsLightMode: string[] = [
+  // 'warning',
+  // 'light',
+  // 'yellow',
+  // 'light-blue',
+  // 'orange',
   'white',
-  'yellow',
-  'light-blue',
-  'orange',
+  'jupiter',
+  'saturn',
+  'uranus',
 ];
 
 /**
  * This is a helper function to determine the icon fill color
  * @param color The variant color string
+ * @param mode The variant mode string
  * @returns The icon fill color
  */
-const tagIconFillColor = (color: string): string => {
-  return blackTextIconColorVariants.includes(color) ? 'black' : 'white';
+const tagIconFillColor = (color: string, mode: string): string => {
+  if (mode === 'light') {
+    return blackTextIconColorVariantsLightMode.includes(color)
+      ? 'black'
+      : 'white';
+  } else {
+    return color === 'black' ? 'white' : 'black';
+  }
 };
 
 /**
@@ -30,27 +40,27 @@ export const tag = tv({
   variants: {
     color: {
       // TODO solidify classes for the light and dark mode variants
-      primary: 'bg-blue-500 tag-primary',
-      secondary: 'bg-purple-500 tag-secondary',
-      success: 'bg-green-500 tag-success',
-      danger: 'bg-red-500 tag-danger',
-      warning: 'bg-yellow-300 text-black tag-warning',
-      info: 'bg-teal-500 tag-info',
-      light: 'bg-gray-200 text-black tag-light',
-      dark: 'bg-gray-800 tag-dark',
+      // primary: 'bg-blue-500 tag-primary',
+      // secondary: 'bg-purple-500 tag-secondary',
+      // success: 'bg-green-500 tag-success',
+      // danger: 'bg-red-500 tag-danger',
+      // warning: 'bg-yellow-300 text-black tag-warning',
+      // info: 'bg-teal-500 tag-info',
+      // light: 'bg-gray-200 text-black tag-light',
+      // dark: 'bg-gray-800 tag-dark',
+      // charcoal: 'bg-gray-700 tag-charcoal',
+      // yellow: 'bg-yellow-500 text-black tag-yellow',
+      // 'light-blue': 'bg-blue-200 text-black tag-light-blue',
+      // blue: 'bg-blue-500 tag-blue',
+      // orange: 'bg-orange-200 text-black tag-orange',
       white: 'bg-white text-black tag-white',
-      charcoal: 'bg-gray-700 tag-charcoal',
       black: 'bg-black tag-black',
-      yellow: 'bg-yellow-500 text-black tag-yellow',
-      'light-blue': 'bg-blue-200 text-black tag-light-blue',
-      blue: 'bg-blue-500 tag-blue',
-      orange: 'bg-orange-200 text-black tag-orange',
-      jupiter: 'bg-brand-primary-jupiter-500 tag-jupiter',
-      uranus: 'bg-brand-primary-uranus-500 tag-uranus',
-      neptune: 'bg-brand-primary-neptune-500 tag-neptune',
-      saturn: 'bg-brand-primary-saturn-500 tag-saturn',
-      nebula: 'bg-brand-secondary-nebula-500 tag-nebula',
       cosmic: 'bg-brand-secondary-cosmic-500 tag-cosmic',
+      jupiter: 'bg-brand-primary-jupiter-500 text-black tag-jupiter',
+      nebula: 'bg-brand-secondary-nebula-500 tag-nebula',
+      neptune: 'bg-brand-primary-neptune-500 tag-neptune',
+      saturn: 'bg-brand-primary-saturn-500 text-black tag-saturn',
+      uranus: 'bg-brand-primary-uranus-500 text-black tag-uranus',
     },
     size: {
       xs: 'px-2 py-1 gap-1 text-xs tag-xs',
@@ -65,58 +75,127 @@ export const tag = tv({
     shadow: {
       true: 'shadow-xl tag-shadow',
     },
+    outline: {
+      true: 'border-solid border-black tag-outline', // may need a border radius
+    },
+    mode: {
+      light: 'tag-mode-light',
+      dark: 'tag-mode-dark',
+    },
   },
   compoundVariants: [
+    // setup outline border sizes
+    {
+      outline: true,
+      size: 'xs',
+      className: 'border-2',
+    },
+    {
+      outline: true,
+      size: 'sm',
+      className: 'border-2',
+    },
+    {
+      outline: true,
+      size: 'md',
+      className: 'border-4',
+    },
+    {
+      outline: true,
+      size: 'lg',
+      className: 'border-4',
+    },
+    {
+      outline: true,
+      size: 'xl',
+      className: 'border-4',
+    },
+    // // setup dark mode variations for the colors
+    // {
+    //   mode: 'dark',
+    //   color: 'primary',
+    //   className: 'bg-blue-700',
+    // },
+
     // setup hover classes for when a color variant is selected
+    // {
+    //   color: 'primary',
+    //   selected: true,
+    //   className: 'hover:bg-blue-700',
+    // },
+    // {
+    //   color: 'secondary',
+    //   selected: true,
+    //   className: 'hover:bg-purple-700',
+    // },
+    // {
+    //   color: 'success',
+    //   selected: true,
+    //   className: 'hover:bg-green-700',
+    // },
+    // {
+    //   color: 'danger',
+    //   selected: true,
+    //   className: 'hover:bg-red-700',
+    // },
+    // {
+    //   color: 'warning',
+    //   selected: true,
+    //   className: 'hover:bg-yellow-500',
+    // },
+    // {
+    //   color: 'info',
+    //   selected: true,
+    //   className: 'hover:bg-teal-700',
+    // },
+    // {
+    //   color: 'light',
+    //   selected: true,
+    //   className: 'hover:bg-gray-400',
+    // },
+    // {
+    //   color: 'dark',
+    //   selected: true,
+    //   className: 'hover:bg-gray-500',
+    // },
+    // {
+    //   color: 'charcoal',
+    //   selected: true,
+    //   className: 'hover:bg-gray-500',
+    // },
+    // {
+    //   color: 'yellow',
+    //   selected: true,
+    //   className: 'hover:bg-yellow-700',
+    // },
+    // {
+    //   color: 'light-blue',
+    //   selected: true,
+    //   className: 'hover:bg-blue-400',
+    // },
+    // {
+    //   color: 'blue',
+    //   selected: true,
+    //   className: 'hover:bg-blue-700',
+    // },
+    // {
+    //   color: 'orange',
+    //   selected: true,
+    //   className: 'hover:bg-orange-400',
+    // },
+
+    // setup outline variants for the colors
     {
-      color: 'primary',
-      selected: true,
-      className: 'hover:bg-blue-700',
+      mode: 'dark',
+      outline: true,
+      className: 'border-white',
     },
-    {
-      color: 'secondary',
-      selected: true,
-      className: 'hover:bg-purple-700',
-    },
-    {
-      color: 'success',
-      selected: true,
-      className: 'hover:bg-green-700',
-    },
-    {
-      color: 'danger',
-      selected: true,
-      className: 'hover:bg-red-700',
-    },
-    {
-      color: 'warning',
-      selected: true,
-      className: 'hover:bg-yellow-500',
-    },
-    {
-      color: 'info',
-      selected: true,
-      className: 'hover:bg-teal-700',
-    },
-    {
-      color: 'light',
-      selected: true,
-      className: 'hover:bg-gray-400',
-    },
-    {
-      color: 'dark',
-      selected: true,
-      className: 'hover:bg-gray-500',
-    },
+
+    // selected colors variations with dark and light mode
     {
       color: 'white',
       selected: true,
       className: 'hover:bg-gray-200',
-    },
-    {
-      color: 'charcoal',
-      selected: true,
-      className: 'hover:bg-gray-500',
     },
     {
       color: 'black',
@@ -124,61 +203,117 @@ export const tag = tv({
       className: 'hover:bg-gray-700',
     },
     {
-      color: 'yellow',
+      color: 'cosmic',
       selected: true,
-      className: 'hover:bg-yellow-700',
-    },
-    {
-      color: 'light-blue',
-      selected: true,
-      className: 'hover:bg-blue-400',
-    },
-    {
-      color: 'blue',
-      selected: true,
-      className: 'hover:bg-blue-700',
-    },
-    {
-      color: 'orange',
-      selected: true,
-      className: 'hover:bg-orange-400',
-    },
-    {
-      color: 'jupiter',
-      selected: true,
-      className: 'hover:bg-brand-primary-jupiter-700',
-    },
-    {
-      color: 'uranus',
-      selected: true,
-      className: 'hover:bg-brand-primary-uranus-700',
-    },
-    {
-      color: 'neptune',
-      selected: true,
-      className: 'hover:bg-brand-primary-neptune-700',
-    },
-    {
-      color: 'saturn',
-      selected: true,
-      className: 'hover:bg-brand-primary-saturn-700',
-    },
-    {
-      color: 'nebula',
-      selected: true,
-      className: 'hover:bg-brand-secondary-nebula-700',
+      mode: 'light',
+      className: 'hover:bg-brand-secondary-cosmic-700',
     },
     {
       color: 'cosmic',
       selected: true,
-      className: 'hover:bg-brand-secondary-cosmic-700',
+      mode: 'dark',
+      className: 'hover:bg-brand-secondary-cosmic-500',
+    },
+    {
+      color: 'jupiter',
+      selected: true,
+      mode: 'light',
+      className: 'hover:bg-brand-primary-jupiter-700',
+    },
+    {
+      color: 'jupiter',
+      selected: true,
+      mode: 'dark',
+      className: 'hover:bg-brand-primary-jupiter-500',
+    },
+    {
+      color: 'nebula',
+      selected: true,
+      mode: 'light',
+      className: 'hover:bg-brand-secondary-nebula-700',
+    },
+    {
+      color: 'nebula',
+      selected: true,
+      mode: 'dark',
+      className: 'hover:bg-brand-secondary-nebula-500',
+    },
+    {
+      color: 'neptune',
+      selected: true,
+      mode: 'light',
+      className: 'hover:bg-brand-primary-neptune-700',
+    },
+    {
+      color: 'neptune',
+      selected: true,
+      mode: 'dark',
+      className: 'hover:bg-brand-primary-neptune-500',
+    },
+    {
+      color: 'saturn',
+      selected: true,
+      mode: 'light',
+      className: 'hover:bg-brand-primary-saturn-700',
+    },
+    {
+      color: 'saturn',
+      selected: true,
+      mode: 'dark',
+      className: 'hover:bg-brand-primary-saturn-500',
+    },
+    {
+      color: 'uranus',
+      selected: true,
+      mode: 'light',
+      className: 'hover:bg-brand-primary-uranus-700',
+    },
+    {
+      color: 'uranus',
+      selected: true,
+      mode: 'dark',
+      className: 'hover:bg-brand-primary-uranus-500',
+    },
+
+    // setup dark mode variations for the colors
+    {
+      color: 'cosmic',
+      mode: 'dark',
+      className: 'text-black bg-brand-secondary-cosmic-300',
+    },
+    {
+      color: 'jupiter',
+      mode: 'dark',
+      className: 'bg-brand-primary-jupiter-300',
+    },
+    {
+      color: 'nebula',
+      mode: 'dark',
+      className: 'text-black bg-brand-secondary-nebula-300',
+    },
+    {
+      color: 'neptune',
+      mode: 'dark',
+      className: 'text-black bg-brand-primary-neptune-300',
+    },
+    {
+      color: 'saturn',
+      mode: 'dark',
+      className: 'bg-brand-primary-saturn-300',
+    },
+    {
+      color: 'uranus',
+      mode: 'dark',
+      className: 'bg-brand-primary-uranus-300',
     },
   ],
   defaultVariants: {
     size: 'md',
-    color: 'primary',
+    color: 'black',
     selected: false,
     shadow: false,
+    outline: false,
+    mode: 'light',
   },
 });
 
@@ -201,27 +336,37 @@ export interface TagProps extends VariantProps<typeof tag> {
    * The color of the tag. The default color is `primary`.
    */
   color:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'light'
-    | 'dark'
     | 'white'
-    | 'charcoal'
     | 'black'
-    | 'yellow'
-    | 'light-blue'
-    | 'blue'
-    | 'orange'
+    | 'cosmic'
     | 'jupiter'
-    | 'uranus'
+    | 'nebula'
     | 'neptune'
     | 'saturn'
-    | 'nebula'
-    | 'cosmic';
+    | 'uranus';
+
+  // color:
+  // | 'primary'
+  // | 'secondary'
+  // | 'success'
+  // | 'danger'
+  // | 'warning'
+  // | 'info'
+  // | 'light'
+  // | 'dark'
+  // | 'charcoal'
+  // | 'yellow'
+  // | 'light-blue'
+  // | 'blue'
+  // | 'orange'
+  // | 'white'
+  // | 'black'
+  // | 'cosmic'
+  // | 'jupiter'
+  // | 'nebula'
+  // | 'neptune'
+  // | 'saturn'
+  // | 'uranus';
 
   /**
    * The size of the tag. The default size is `md`.
@@ -237,6 +382,16 @@ export interface TagProps extends VariantProps<typeof tag> {
    * Whether the tag has a shadow. The default is `false`.
    */
   shadow: boolean;
+
+  /**
+   * Whether the tag has an outline. The default is `false`.
+   */
+  outline: boolean;
+
+  /**
+   * The display mode of the tag. The default mode is `light`.
+   */
+  mode: 'light' | 'dark';
 
   /**
    * This is clicked when the tag is closed and will only be displayed as clickable when the tag is selected.
@@ -271,7 +426,9 @@ export function Tag({ ...props }: TagProps) {
     >
       {props.label}
       <span className="p-0 m-0">
-        <Close stroke={tagIconFillColor(props.color as string)} />
+        <Close
+          stroke={tagIconFillColor(props.color as string, props.mode as string)}
+        />
       </span>
     </button>
   ) : (
