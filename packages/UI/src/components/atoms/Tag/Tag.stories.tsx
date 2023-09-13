@@ -5,6 +5,27 @@ import { Tag } from './Tag';
 const meta: Meta<typeof Tag> = {
   component: Tag,
   title: 'Atoms/Tag',
+  // NOTE: alternate way to display default values for the args
+  // argTypes: {
+  //   color: {
+  //     table: { defaultValue: { summary: 'black' } },
+  //   },
+  //   size: {
+  //     table: { defaultValue: { summary: 'md' } },
+  //   },
+  //   selected: {
+  //     table: { defaultValue: { summary: false } },
+  //   },
+  //   shadow: {
+  //     table: { defaultValue: { summary: false } },
+  //   },
+  //   outline: {
+  //     table: { defaultValue: { summary: false } },
+  //   },
+  //   mode: {
+  //     table: { defaultValue: { summary: 'light' } },
+  //   },
+  // },
 };
 
 export default meta;

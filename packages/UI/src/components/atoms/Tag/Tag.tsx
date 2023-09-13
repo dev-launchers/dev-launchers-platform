@@ -333,9 +333,10 @@ export interface TagProps extends VariantProps<typeof tag> {
   label: string;
 
   /**
-   * The color of the tag. The default color is `primary`.
+   * The color of the tag.
+   * @default black
    */
-  color:
+  color?:
     | 'white'
     | 'black'
     | 'cosmic'
@@ -369,29 +370,34 @@ export interface TagProps extends VariantProps<typeof tag> {
   // | 'uranus';
 
   /**
-   * The size of the tag. The default size is `md`.
+   * The size of the tag.
+   * @default md
    */
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
   /**
-   * Whether the tag is selected. The default is `false`.
+   * Whether the tag is selected.
+   * @default false
    */
-  selected: boolean;
+  selected?: boolean;
 
   /**
-   * Whether the tag has a shadow. The default is `false`.
+   * Whether the tag has a shadow.
+   * @default false
    */
-  shadow: boolean;
+  shadow?: boolean;
 
   /**
-   * Whether the tag has an outline. The default is `false`.
+   * Whether the tag has an outline.
+   * @default false
    */
-  outline: boolean;
+  outline?: boolean;
 
   /**
-   * The display mode of the tag. The default mode is `light`.
+   * The display mode of the tag.
+   * @default light
    */
-  mode: 'light' | 'dark';
+  mode?: 'light' | 'dark';
 
   /**
    * This is clicked when the tag is closed and will only be displayed as clickable when the tag is selected.
