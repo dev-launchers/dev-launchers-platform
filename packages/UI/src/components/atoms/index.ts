@@ -13,3 +13,5 @@ export { default as Radio } from './Radio';
 export { default as Tooltip } from './Tooltip';
 export { radiusStyles } from './Radius';
 export { default as BaseLayer } from './BaseLayer';
+export * from './NotificationItemWithAvatar';
+export * from './Avatar';

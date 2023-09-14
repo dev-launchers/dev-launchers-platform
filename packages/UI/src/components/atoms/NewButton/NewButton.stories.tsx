@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Chevron } from 'assets/icons';
+
+import { Chevron } from '../../../assets/icons';
 
 import Button from './NewButton';
 
