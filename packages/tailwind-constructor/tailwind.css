@@ -712,14 +712,6 @@ video {
   border-bottom-width: 1px;
 }
 
-.border-b-gray-700 {
-  border-bottom-color: var(--gray-700, #4a5568);
-}
-
-.border-b-gray-400 {
-  border-bottom-color: var(--gray-400, #cbd5e0);
-}
-
 .border-b-gray-200 {
   border-bottom-color: var(--gray-200, #edf2f7);
 }

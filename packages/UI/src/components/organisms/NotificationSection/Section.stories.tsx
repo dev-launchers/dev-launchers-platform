@@ -4,9 +4,6 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Section> = {
   title: 'organisms/NotificationSection',
   component: Section,
-  // args: {
-  //   label: '',
-  // },
 }
 export default meta;
 type Story = StoryObj<typeof Section>;

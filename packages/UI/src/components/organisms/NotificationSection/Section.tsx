@@ -2,24 +2,8 @@ import React from 'react';
 import { tv } from 'tailwind-variants';
 import Toggle from '../../atoms/Toggle'
 
-const button = tv({
-    base: "rounded-lg pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center relative ",
-    variants: {
-        color: {
-            primary: "bg-[#ffffff]",
-            secondary: "text-white",        
-        },
-        size: {
-            xs: 'p-2',
-            sm: 'text-sm px-4 py-2',
-            md: 'text-md',
-            lg: 'text-lg py-3 px-4',
-        },
-    },
-     defaultVariants: {
-        size: "md",
-        color: "primary"
-    }
+const paragraph = tv({
+    base: "weight-",
 });
 
 interface SectionProps {
