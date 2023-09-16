@@ -122,7 +122,7 @@ export default function Navigation({ user }: NavigationProps) {
                 ) : (
                   <Box gap={'16px'} alignItems={'center'}>
                     <Link
-                      href={process.env.NEXT_PUBLIC_BASE_SITE_URL + '/users/me'}
+                      href={process.env.NEXT_PUBLIC_FRONT_END_URL + '/users/me'}
                     >
                       <a>
                         <Box gap={'16px'} alignItems={'center'}>

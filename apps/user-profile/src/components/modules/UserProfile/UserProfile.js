@@ -70,15 +70,15 @@ export default function UserProfile({ publicUserData, isPublic }) {
       });
   };
 
-  React.useEffect(() => {
-    const myProjects = [];
-    projects.map((project) => {
-      [...project.team.leaders, ...project.team.members].map((member) => {
-        if (member.id == userData.id) myProjects.push(project);
-      });
-    });
-    setMyProjects(myProjects);
-  }, [projects, userData]);
+  // React.useEffect(() => {
+  //   const myProjects = [];
+  //   projects.map((project) => {
+  //     [...project.team.leaders, ...project.team.members].map((member) => {
+  //       if (member.id == userData.id) myProjects.push(project);
+  //     });
+  //   });
+  //   setMyProjects(myProjects);
+  // }, [projects, userData]);
   // End Projects/Opportunities
 
 
