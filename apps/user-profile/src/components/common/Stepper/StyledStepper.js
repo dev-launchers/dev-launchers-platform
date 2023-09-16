@@ -48,6 +48,7 @@ export const StepName = styled.div`
 export const StepperBody = styled.div`
     height: 100%;
     max-height: 564px;
+    
 `;
 
 export const ProgressBarContainer = styled.div`
