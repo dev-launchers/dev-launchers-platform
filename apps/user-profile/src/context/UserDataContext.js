@@ -32,7 +32,7 @@ function useUserData() {
   const [userData, setUserData] = React.useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = React.useState();
   React.useEffect(() => {
-    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/${featureFlags.inDevelopment ? '30' : 'me'}`, {
+    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/${featureFlags.inDevelopment ? '30?populate=*' : 'me?populate=*'}`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
@@ -57,7 +57,7 @@ function useUserData() {
         setIsAuthenticated(featureFlags.inDevelopment);
       });
 
-    setTimeout(() => {
+    featureFlags.inDevelopment && setTimeout(() => {
       console.log("User Data", userData);
     }, 5000);
   }, []);
