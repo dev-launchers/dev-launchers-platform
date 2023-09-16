@@ -5,15 +5,13 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import ProjectDetails from '../../components/modules/DetailedPage';
+import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
-  );
 
-  const result: Project[] = await res.json();
-  const projects = result?.filter((p) => p.opportunities?.length > 0);
-
+  const result = await agent.Projects.list( new URLSearchParams('populate=deep&publicationState=live'));
+  let projects = result?.filter((p) => p.attributes.opportunities?.data?.length > 0);
+  projects = projects.map(projects => projects.attributes);	// Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
       slug: project.slug,
@@ -30,30 +28,42 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking',
   };
 };
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const projectsRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${params.slug}`
-  );
-  const opportuntiesRes = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/opportunities?projects.slug=${params.slug}`
+
+  const [projectsRes] = await agent.Projects.list(new URLSearchParams(`populate=deep&[filters][slug][$eq]=${params.slug}`));
+  let opportunities = await agent.Opportunities.list(new URLSearchParams(`populate=deep&filters[projects][slug][$eq]=${params.slug}`)
   );
 
-  const project: Project = await projectsRes.json();
+  let project: Project = projectsRes.attributes;
 
-  const commitments = project.opportunities.map(
+  // Restructure data returned from the API to flatten and make resemble data returned from old API
+  // Any relational data set up in Strapi should be flattened here
+  // We could `create a reusable function to handle this more elegantly
+  // project = {
+  //   ...project, 
+  //   team: {
+  //     leaders: project.team ? project.team?.leaders?.map(leader => leader.leader?.data.attributes) : ``,
+  //     members: project.team ? project.team?.members?.map(member => member.member?.data.attributes) : ``
+  //   },
+  //   interests: project.interests?.data.map(interest => interest.attributes),
+  //   opportunities: project.opportunities?.data.map(opportunity => opportunity.attributes)
+    
+  // };
+
+  const commitments = project?.opportunities?.data?.map(
     (opp) => opp.commitmentHoursPerWeek
   );
   const maxCommitment = Math.max(...commitments);
   const minCommitment = Math.min(...commitments);
   project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
-  const opportunites: Opportunity[] = await opportuntiesRes.json();
+  
+  opportunities = opportunities.map(opportunity => opportunity.attributes);
 
   return {
     props: {
       project: project,
-      opportunites: opportunites,
+      opportunites: opportunities,
       maxCommitment,
       minCommitment,
     },
@@ -83,7 +93,7 @@ export default function DetailedPage({
         ></meta>
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://devlaunchers.org/projects" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}/>
         <meta
           property="og:image"
           content="/images/DevlaunchersGitHubThumb.png"
@@ -97,7 +107,7 @@ export default function DetailedPage({
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content="https://devlaunchers.org/projects"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta

@@ -15,7 +15,7 @@ function login() {
         />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://devlaunchers.org/projects" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"} />
         <meta
           property="og:image"
           content="/images/DevlaunchersGitHubThumb.png"
@@ -29,7 +29,7 @@ function login() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content="https://devlaunchers.org/projects"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta
