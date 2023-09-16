@@ -1,14 +1,9 @@
 import React from 'react';
-import {
-  PageTwoContainer,
-  Header,
-  ImageGroupContainer,
-  ProjectImage,
-  ImageContainer,
-  NetworkImage,
-  LevelUpImage,
-} from './StyledPageTwo';
+import { PageTwoContainer, Header, ImageGroupContainer, ImageContainer, } from './StyledPageTwo';
 import { Typography } from '@devlaunchers/components/components/atoms';
+import ProjectImagePath from './../../../../../images/onboarding/onboarding-project.png';
+import NetworkImagePath from './../../../../../images/onboarding/onboarding-network.png';
+import LevelUpImagePath from './../../../../../images/onboarding/onboarding-level-up.png';
 
 export default function PageTwo() {
   return (
@@ -21,7 +16,7 @@ export default function PageTwo() {
         </Header>
         <ImageGroupContainer>
           <ImageContainer>
-            <ProjectImage></ProjectImage>
+            <img src={ProjectImagePath} />
             <div>
               <Typography>Find Open Source Projects</Typography>
               <Typography>
@@ -30,7 +25,7 @@ export default function PageTwo() {
             </div>
           </ImageContainer>
           <ImageContainer>
-            <NetworkImage></NetworkImage>
+            <img src={NetworkImagePath} />
             <div>
               <Typography>Connect with Experienced People</Typography>
               <Typography>
@@ -39,7 +34,7 @@ export default function PageTwo() {
             </div>
           </ImageContainer>
           <ImageContainer>
-            <LevelUpImage></LevelUpImage>
+            <img src={LevelUpImagePath} />
             <div>
               <Typography>Gain Industry Experience</Typography>
               <Typography>

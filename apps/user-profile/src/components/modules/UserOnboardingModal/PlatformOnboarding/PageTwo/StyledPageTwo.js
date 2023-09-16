@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import projectImage from "./../../../../../images/onboarding/onboarding-project.png";
-import networkImage from "./../../../../../images/onboarding/onboarding-network.png";
-import levelUpImage from "./../../../../../images/onboarding/onboarding-level-up.png";
+
 
 export const PageTwoContainer = styled.div`
   display: flex;
@@ -28,24 +26,3 @@ export const ImageContainer = styled.div`
   flex-direction: row;
   gap: 4.7%
 `;
-
-export const ProjectImage = styled.img.attrs(() => ({
-  src: projectImage,
-  alt: "project image",
-}))`
-    width: 5rem;
-  `;
-
-export const NetworkImage = styled.img.attrs(() => ({
-  src: networkImage,
-  alt: "network image",
-}))`
-    width: 5rem;
-  `;
-
-export const LevelUpImage = styled.img.attrs(() => ({
-  src: levelUpImage,
-  alt: "level up image",
-}))`
-    width: 5rem;
-  `;
