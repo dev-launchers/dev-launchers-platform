@@ -5,7 +5,7 @@ import Button from '@devlaunchers/components/components/atoms/Button'
 import OpenResponse from '@devlaunchers/components/components/organisms/OpenResponse'
 import FormField from '@devlaunchers/components/src/components/organisms/FormField'
 import OnboardingForm from './OnboardingForm'
-import FormFieldMargin, { CheckboxSpacing, ConfirmationSection } from './StyledUserOnboarding'
+import FormFieldMargin, { CheckboxSpacing, ConfirmationSection } from './StyledOnboardingLandingPage'
 
 const initialValue = {
     firstName: '',
@@ -13,7 +13,7 @@ const initialValue = {
     bio: ''
 }
 
-export default function UserOnboarding() {
+export default function OnboardingLandingPage() {
     const [person, setPerson] = useState(initialValue)
     const router = useRouter()
 

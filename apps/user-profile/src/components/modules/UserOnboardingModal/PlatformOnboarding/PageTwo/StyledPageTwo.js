@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import projectImage from "../../../../../images/onboarding/onboarding-project.png";
-import networkImage from "../../../../../images/onboarding/onboarding-network.png";
-import levelUpImage from "../../../../../images/onboarding/onboarding-level-up.png";
+import projectImage from "./../../../../../images/onboarding/onboarding-project.png";
+import networkImage from "./../../../../../images/onboarding/onboarding-network.png";
+import levelUpImage from "./../../../../../images/onboarding/onboarding-level-up.png";
 
 export const PageTwoContainer = styled.div`
   display: flex;
