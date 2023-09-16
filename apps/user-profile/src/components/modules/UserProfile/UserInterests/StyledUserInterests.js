@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const UserInterestsContainer = styled.div`
   /*width: 100%;*/
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   padding: 2rem;
   /* display: ${(props) => (props.ideas?.length ? "block" : "none")}; */
 
   h2 {
-    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+    color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   }
 `;
 

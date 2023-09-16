@@ -15,7 +15,6 @@ export const StepperHeader = styled.div`
     align-items:center;
     background: black;
     padding: 30px 108px 54px; 
-
     .completed-step, .active-step {
         background-color: orange;
     }

@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   grid-area: ProfileCard;
-
-  background-color: #f0f0f0;
   width: 300px;
 
   display: flex;

@@ -3,8 +3,6 @@ import React from "react";
 
 import { useUserDataContext } from "../../../../context/UserDataContext";
 
-import { env } from "../../../../utils/EnvironmentVariables";
-
 import {
   UserInterestCard,
   UserInterestsCardContainer,

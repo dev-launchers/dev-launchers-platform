@@ -7,7 +7,8 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 
 import 'react-toastify/dist/ReactToastify.css';
-import theme from '../styles/theme';
+// import theme from '../styles/theme';
+import theme from '@devlaunchers/components/styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
 import { UserDataProvider } from '../context/UserDataContext';
@@ -28,6 +29,8 @@ function MyApp(props) {
   // Google analytics/Google adwords
   React.useEffect(() => {
     // Google Analytics
+
+    console.log(theme)
     initGA();
     logPageView();
     Router.events.on('routeChangeComplete', () => {
