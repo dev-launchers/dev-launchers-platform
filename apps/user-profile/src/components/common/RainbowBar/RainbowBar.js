@@ -5,10 +5,10 @@ import { Wrapper, BarSection } from "./StyledRainbowBar";
 function RainbowBar({ width = "100%", height = ".5rem", theme }) {
   return (
     <Wrapper width={width} height={height}>
-      <BarSection color={theme.colors.ACCENT_1} />
-      <BarSection color={theme.colors.ACCENT_2} />
-      <BarSection color={theme.colors.ACCENT_4} />
-      <BarSection color={theme.colors.ACCENT_3} />
+      <BarSection color={theme.colors.ORANGE} />
+      <BarSection color={theme.colors.YELLOW} />
+      <BarSection color={theme.colors.LIGHT_BLUE} />
+      <BarSection color={theme.colors.BLUE} />
     </Wrapper>
   );
 }

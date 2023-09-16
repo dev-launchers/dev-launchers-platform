@@ -54,15 +54,15 @@ export const Misc = styled.div`
     font-family: ${({ theme }) => theme.fonts.headline};
     border-radius:0;
     font-size:3rem;
-    border:.3rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
-    background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-    color: ${({ theme }) => theme.colors.NEUTRAL_2};
+    border:.3rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+    background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+    color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
     margin-right:.5rem;
   }
 
   .react-tabs__tab--selected {
-    border-color:${({ theme }) => theme.colors.NEUTRAL_1};
-    color:${({ theme }) => theme.colors.NEUTRAL_1};
+    border-color:${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+    color:${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
     background-color:transparent;
     border-bottom:none;
   }
