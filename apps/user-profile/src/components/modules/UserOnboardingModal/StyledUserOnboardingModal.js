@@ -19,7 +19,8 @@ export const userUnboardingModalStyle = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     zIndex: 1001,
-    borderRadius: "32px"
+    borderRadius: "32px",
+    border: "0"
   },
   overlay: { zIndex: 1000, backgroundColor: "rgba(0,0,0,.75)" }
 };

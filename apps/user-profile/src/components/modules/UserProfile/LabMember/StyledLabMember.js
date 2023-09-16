@@ -26,15 +26,15 @@ export const SignUpButton = styled.button`
   cursor: pointer;
   font-weight: bold;
   font-family: ${({ theme }) => theme.fonts.headline};
-  color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   /* background-color: ${({ theme }) => theme.colors.ACCENT_4}; */
   border: none;
-  border: 0.2rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
+  border: 0.2rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   min-height: 5rem;
   font-size: 1.5rem;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.NEUTRAL_1};
-    border-color: ${({ theme }) => theme.colors.ACCENT_2};
+    color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+    border-color: ${({ theme }) => theme.colors.YELLOW};
   }
 `;
