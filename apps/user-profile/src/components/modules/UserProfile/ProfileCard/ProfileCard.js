@@ -10,11 +10,12 @@ const UserProfileImage = ({ img, created_at }) => {
   }
 
   const year = date.toLocaleString("en-US", options);
+  const memberSinceText = year ? `Member since ${year}` : '';
 
   return (
     <Wrapper>
       <ProfilePicture width={266} height={266} src={img} />
-      <p> {`Member Since ${year}`}</p>
+      <p> {memberSinceText}</p>
     </Wrapper>
   )
 };

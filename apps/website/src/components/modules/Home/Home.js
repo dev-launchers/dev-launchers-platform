@@ -40,7 +40,8 @@ function Home({ theme }) {
     setTimeout(() => {
       toast(
         <>
-          Hey there! Are you a developer? Want management experience in a friendly, supportive environment? We're currently searching for intermediate and advanced devs to take on <span style={{fontSize:"2rem", textDecoration:"underline"}}><a href="https://devlaunchers.org/join">leadership positions</a></span> in our product teams!
+          Hey there! Are you a developer? Want management experience in a friendly, supportive environment? We're currently searching for intermediate and advanced devs to take on <span style={{fontSize:"2rem", textDecoration:"underline"}}>
+            <a href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/join"}>leadership positions</a></span> in our product teams!
         </>,
         {
           bodyClassName: "toast-body",
