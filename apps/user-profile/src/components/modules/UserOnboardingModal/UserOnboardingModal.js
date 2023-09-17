@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import OnboardingCard from "./OnboardingCard/OnboardingCard.js";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
-import PageOne from "./PlatformOnboarding/PageOne";
+import CongratulationsPage from "./PlatformOnboarding/CongratulationsPage/index.js";
 import Typography from "@devlaunchers/components/components/atoms/Typography";
 import LogoMonogram from '../../../images/logo-monogram.png'
 import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";

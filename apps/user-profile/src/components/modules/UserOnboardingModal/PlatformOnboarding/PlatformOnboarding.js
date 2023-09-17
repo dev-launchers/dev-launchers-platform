@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Stepper from '../../../common/Stepper';
+import CongratulationsPage from './CongratulationsPage/CongratulationsPage';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
@@ -15,7 +16,7 @@ export default function PlatformOnboarding() {
 
   const stepperConfig = [
     {
-      component: <PageTwo />,
+      component: <CongratulationsPage />,
       config: {
         buttons: {
           next: {
