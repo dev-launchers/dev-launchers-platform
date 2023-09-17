@@ -1,6 +1,5 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
 import LogoMonogram from '../../../../../images/logo-monogram.png'
-import {m} from "framer-motion";
 import { CongratulationsPageContainer, CongratulationsTitle, CongratulationsBody, AnimationContainer,
     CongratulationsAnamation, CongratulationsShadow, CongratulationsImg } from "./StyledCongratulationsPage";
 const bounceTransition = {
@@ -27,11 +26,11 @@ export default function CongratulationsPage({name}){
         </CongratulationsBody>
         
         <AnimationContainer>
-        <CongratulationsAnamation>  
-            <CongratulationsImg src={LogoMonogram} alt="你的图像" /> 
-            <CongratulationsShadow>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </CongratulationsShadow>
-        </CongratulationsAnamation>
+            <CongratulationsAnamation>  
+                <CongratulationsImg src={LogoMonogram} alt="" /> 
+                <CongratulationsShadow>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </CongratulationsShadow>
+            </CongratulationsAnamation>
         </AnimationContainer>
 
     </CongratulationsPageContainer>

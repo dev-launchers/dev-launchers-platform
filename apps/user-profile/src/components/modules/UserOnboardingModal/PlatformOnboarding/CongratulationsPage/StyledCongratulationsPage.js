@@ -27,7 +27,7 @@ export const AnimationContainer = styled.div`
     justify-content: center;
 `;
 
-// Create pilse animation
+// Create pulse animation
 const pulse = keyframes`
   0% {
     transform: scale(0.8);
