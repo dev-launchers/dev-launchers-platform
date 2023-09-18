@@ -58,24 +58,23 @@ StyleDictionaryPackage.registerTransform({
       'borderRadius',
       'borderWidth',
       'sizing',
-      'Highlight',
-      'Shadow',
+      'boxShadow',
       'Universal',
       'Link Text',
       'Default',
       'Mobile',
-    ].includes(prop.attributes.category);
+    ].includes(prop.type);
   },
   transformer: function (prop) {
     // You can also modify the value here if you want to convert pixels to ems
 
-    switch (prop.attributes.category) {
+    switch (prop.type) {
       case 'fontSizes':
       case 'spacing':
       case 'borderRadius':
       case 'borderWidth':
       case 'sizing':
-        return parseFloat(prop.original.value) + 'rem';
+        return prop.original.value;
       case 'Default':
       case 'Mobile':
       case 'Link Text':
@@ -93,11 +92,12 @@ StyleDictionaryPackage.registerTransform({
         return prop.original.value
           ? `${fontFamily} ${fontSize}px ${fontWeight} ${lineHeight}px ${letterSpacing} ${paragraphSpacing} ${textCase} ${textDecoration}`
           : 'none';
-      case 'Highlight':
-      case 'Shadow':
+      case 'boxShadow':
         const { x, y, blur, spread, color } = prop.original.value;
         return prop.original.value
-          ? `${x}px ${y}px ${blur}px ${spread}px ${color}`
+          ? `${
+              prop.original.value.type === 'innerShadow' ? 'inset ' : ''
+            }${x}px ${y}px ${blur}px ${spread}px ${color}`
           : 'none';
       default:
         return prop.original.value;

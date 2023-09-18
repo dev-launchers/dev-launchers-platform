@@ -1,10 +1,6 @@
 import React from "react";
-
 import axios from "axios";
-import Header from "../../components/common/Header";
 import UserProfile from "../../components/modules/UserProfile";
-import Footer from "../../components/common/Footer";
-import { env } from "../../utils/EnvironmentVariables";
 
 export const getStaticPaths = async () => {
   const { data } = await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users`, {
