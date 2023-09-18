@@ -1,20 +1,9 @@
 import React from "react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
+
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../src/styles/global";
 import theme from "../src/styles/theme";
-import * as NextImage from "next/image";
-const OriginalNextImage = NextImage.default;
-
-Object.defineProperty(NextImage, "default", {
-  configurable: true,
-  value: (props) => (
-    <OriginalNextImage
-      {...props}
-      unoptimized
-    />
-  ),
-});
+import "@devlaunchers/tailwind/tailwind.css";
 
 const customViewports = {
   sm: {
@@ -70,9 +59,6 @@ export const decorators = [
   ),
 ];
 export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {

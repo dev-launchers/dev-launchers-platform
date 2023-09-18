@@ -17,7 +17,7 @@ function confirmation() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content="https://devlaunchers.org/confirmation"
+          content={process.env.FRONT_END_URL + "/confirmation"}
         />
         <meta
           property="og:image"
@@ -32,7 +32,7 @@ function confirmation() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content="https://devlaunchers.org/projects"
+          content={process.env.FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta
