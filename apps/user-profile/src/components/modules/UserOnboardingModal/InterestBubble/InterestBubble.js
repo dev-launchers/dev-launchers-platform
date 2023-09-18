@@ -1,7 +1,4 @@
-import axios from "axios";
 import React, {useState} from "react";
-
-import { env } from "../../../../utils/EnvironmentVariables";
 
 import {
   UserInterestCard,
