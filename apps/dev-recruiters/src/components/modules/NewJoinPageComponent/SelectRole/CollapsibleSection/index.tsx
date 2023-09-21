@@ -17,7 +17,9 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   title,
   children,
 }) => {
-  const [showBody, setShowBody] = useState(true);
+  
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+  const [showBody, setShowBody] = useState(!isMobile);
 
   const toggleBody = () => {
     setShowBody((prevShow) => !prevShow);

@@ -20,6 +20,8 @@ export const RoleContainerBody = styled.div`
   max-height: ${(props: { show: boolean }) => (props.show ? '1000px' : '0')};
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
+  
+  padding: 0 0 ${(props: { show: boolean }) => (!props.show ? '20px' : '0')} 0px;
 `;
 
 export const Title = styled.div`

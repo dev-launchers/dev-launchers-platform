@@ -67,7 +67,6 @@ export const AreaImage = styled.div`
 
 export const Footer = styled.div`
   width: 100%;
-  height: 220px;
   border-radius: 15px;
   display: flex;
   align-items: center;
