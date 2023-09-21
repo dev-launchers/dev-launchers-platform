@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import {
   UserInterestCard,
   UserInterestsCardContainer,
+  // InterestsField,
   UserInterestsContainer,
 } from "./StyledInterestBubble";
 
@@ -18,26 +19,28 @@ const UserInterests = () => {
 
   return (
     <UserInterestsContainer>
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              alignItems: "stretch",
-              justifyContent: "center",
-              flexWrap: "wrap",
-            }}
-          >
-            {interests_list.map((interest) => (
-              <UserInterestsCardContainer key={interest.id}>
-                <UserInterestCard className={selectedInterests.includes(interest.id)?"selected":""} 
-                onClick={()=>{selectedInterests.includes(interest.id)?
-                setSelectedInterests(selectedInterests.filter(s => s !== interest.id)):
-                setSelectedInterests(s => [...s, interest.id])}}>
-                {interest.name}
-                </UserInterestCard>
-              </UserInterestsCardContainer>
-            ))}
-          </div>
+    {/* <InterestsField> */}
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        alignItems: "stretch",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}
+    >
+      {interests_list.map((interest) => (
+        <UserInterestsCardContainer key={interest.id}>
+          <UserInterestCard className={selectedInterests.includes(interest.id)?"selected":""} 
+          onClick={()=>{selectedInterests.includes(interest.id)?
+          setSelectedInterests(selectedInterests.filter(selected_interest => selected_interest !== interest.id)):
+          setSelectedInterests(selected_interests => [...selected_interests, interest.id])}}>
+          {interest.name}
+          </UserInterestCard>
+        </UserInterestsCardContainer>
+      ))}
+    </div>
+    {/* </InterestsField> */}
     </UserInterestsContainer>
   );
 };
