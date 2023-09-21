@@ -32,12 +32,13 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
   }
 
   const router = useRouter();
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   return (
     <>
       <RoleContainer>
         <CollapsibleSection title="Product / UX">
-          <RoleContainerBody>
+          <RoleContainerBody Mobile={isMobile}>
             <SelectRole
               src={DesignServices}
               textRole="Product Lead"
@@ -73,7 +74,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="Development">
-          <RoleContainerBody>
+          <RoleContainerBody Mobile={isMobile}>
             <SelectRole
               src={CaseStudy}
               textRole="Lead Developer"
@@ -101,7 +102,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="QA">
-          <RoleContainerBody>
+          <RoleContainerBody Mobile={isMobile}>
             <SelectRole
               src={DeveloperMode}
               textRole="QA Lead"
@@ -120,7 +121,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="Operations">
-          <RoleContainerBody>
+          <RoleContainerBody Mobile={isMobile}>
             <SelectRole
               src={DeveloperMode}
               textRole="Volunteer Coordinator"

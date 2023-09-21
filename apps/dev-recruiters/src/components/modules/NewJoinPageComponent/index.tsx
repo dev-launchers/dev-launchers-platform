@@ -23,6 +23,9 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
+
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
   return (
     <Wrapper>
       <BoxContainer paddingVertical={20}>
@@ -42,7 +45,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
         </SelectRoleContainer>
       </BoxContainer>
 
-      <BoxContainer paddingHorizontal={85}>
+      <BoxContainer paddingHorizontal={isMobile ? 0: 85}>
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 
