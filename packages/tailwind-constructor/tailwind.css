@@ -742,54 +742,6 @@ video {
   background-color: var(--blue-700, #2b6cb0);
 }
 
-.bg-brand-primary-jupiter-300 {
-  background-color: var(--brand-primary-jupiter-300, #ffa95e);
-}
-
-.bg-brand-primary-jupiter-500 {
-  background-color: var(--brand-primary-jupiter-500, #ff7f0e);
-}
-
-.bg-brand-primary-neptune-300 {
-  background-color: var(--brand-primary-neptune-300, #7ba7c3);
-}
-
-.bg-brand-primary-neptune-500 {
-  background-color: var(--brand-primary-neptune-500, #3a7ca5);
-}
-
-.bg-brand-primary-saturn-300 {
-  background-color: var(--brand-primary-saturn-300, #ffc754);
-}
-
-.bg-brand-primary-saturn-500 {
-  background-color: var(--brand-primary-saturn-500, #ffab00);
-}
-
-.bg-brand-primary-uranus-300 {
-  background-color: var(--brand-primary-uranus-300, #abd7e4);
-}
-
-.bg-brand-primary-uranus-500 {
-  background-color: var(--brand-primary-uranus-500, #81c3d7);
-}
-
-.bg-brand-secondary-cosmic-300 {
-  background-color: var(--brand-secondary-cosmic-300, #7a87c7);
-}
-
-.bg-brand-secondary-cosmic-500 {
-  background-color: var(--brand-secondary-cosmic-500, #394cac);
-}
-
-.bg-brand-secondary-nebula-300 {
-  background-color: var(--brand-secondary-nebula-300, #a17ac7);
-}
-
-.bg-brand-secondary-nebula-500 {
-  background-color: var(--brand-secondary-nebula-500, #7339ac);
-}
-
 .bg-gray-200 {
   background-color: var(--gray-200, #edf2f7);
 }
@@ -832,6 +784,54 @@ video {
 
 .bg-yellow-500 {
   background-color: var(--yellow-500, #ecc94b);
+}
+
+.bg-brand-alt-cosmic-300 {
+  background-color: var(--brand-alt-cosmic-300, #7a87c7);
+}
+
+.bg-brand-alt-cosmic-500 {
+  background-color: var(--brand-alt-cosmic-500, #394cac);
+}
+
+.bg-brand-alt-nebula-300 {
+  background-color: var(--brand-alt-nebula-300, #a17ac7);
+}
+
+.bg-brand-alt-nebula-500 {
+  background-color: var(--brand-alt-nebula-500, #7339ac);
+}
+
+.bg-jupiter-300 {
+  background-color: var(--jupiter-300, #ffa95e);
+}
+
+.bg-jupiter-500 {
+  background-color: var(--jupiter-500, #ff7f0e);
+}
+
+.bg-neptune-300 {
+  background-color: var(--neptune-300, #7ba7c3);
+}
+
+.bg-neptune-500 {
+  background-color: var(--neptune-500, #3a7ca5);
+}
+
+.bg-saturn-300 {
+  background-color: var(--saturn-300, #ffc754);
+}
+
+.bg-saturn-500 {
+  background-color: var(--saturn-500, #ffab00);
+}
+
+.bg-uranus-300 {
+  background-color: var(--uranus-300, #abd7e4);
+}
+
+.bg-uranus-500 {
+  background-color: var(--uranus-500, #81c3d7);
 }
 
 .p-0 {
@@ -918,7 +918,8 @@ video {
 }
 
 .underline {
-  text-decoration-line: underline;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
 }
 
 .shadow {
@@ -967,9 +968,9 @@ video {
 }
 
 .transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -980,54 +981,6 @@ video {
 
 .hover\:bg-blue-700:hover {
   background-color: var(--blue-700, #2b6cb0);
-}
-
-.hover\:bg-brand-primary-jupiter-500:hover {
-  background-color: var(--brand-primary-jupiter-500, #ff7f0e);
-}
-
-.hover\:bg-brand-primary-jupiter-700:hover {
-  background-color: var(--brand-primary-jupiter-700, #b55a0a);
-}
-
-.hover\:bg-brand-primary-neptune-500:hover {
-  background-color: var(--brand-primary-neptune-500, #3a7ca5);
-}
-
-.hover\:bg-brand-primary-neptune-700:hover {
-  background-color: var(--brand-primary-neptune-700, #295875);
-}
-
-.hover\:bg-brand-primary-saturn-500:hover {
-  background-color: var(--brand-primary-saturn-500, #ffab00);
-}
-
-.hover\:bg-brand-primary-saturn-700:hover {
-  background-color: var(--brand-primary-saturn-700, #b57900);
-}
-
-.hover\:bg-brand-primary-uranus-500:hover {
-  background-color: var(--brand-primary-uranus-500, #81c3d7);
-}
-
-.hover\:bg-brand-primary-uranus-700:hover {
-  background-color: var(--brand-primary-uranus-700, #5c8a99);
-}
-
-.hover\:bg-brand-secondary-cosmic-500:hover {
-  background-color: var(--brand-secondary-cosmic-500, #394cac);
-}
-
-.hover\:bg-brand-secondary-cosmic-700:hover {
-  background-color: var(--brand-secondary-cosmic-700, #28367a);
-}
-
-.hover\:bg-brand-secondary-nebula-500:hover {
-  background-color: var(--brand-secondary-nebula-500, #7339ac);
-}
-
-.hover\:bg-brand-secondary-nebula-700:hover {
-  background-color: var(--brand-secondary-nebula-700, #52287a);
 }
 
 .hover\:bg-gray-200:hover {
@@ -1072,6 +1025,54 @@ video {
 
 .hover\:bg-yellow-700:hover {
   background-color: var(--yellow-700, #b7791f);
+}
+
+.hover\:bg-brand-alt-cosmic-500:hover {
+  background-color: var(--brand-alt-cosmic-500, #394cac);
+}
+
+.hover\:bg-brand-alt-cosmic-700:hover {
+  background-color: var(--brand-alt-cosmic-700, #28367a);
+}
+
+.hover\:bg-brand-alt-nebula-500:hover {
+  background-color: var(--brand-alt-nebula-500, #7339ac);
+}
+
+.hover\:bg-brand-alt-nebula-700:hover {
+  background-color: var(--brand-alt-nebula-700, #52287a);
+}
+
+.hover\:bg-jupiter-500:hover {
+  background-color: var(--jupiter-500, #ff7f0e);
+}
+
+.hover\:bg-jupiter-700:hover {
+  background-color: var(--jupiter-700, #b55a0a);
+}
+
+.hover\:bg-neptune-500:hover {
+  background-color: var(--neptune-500, #3a7ca5);
+}
+
+.hover\:bg-neptune-700:hover {
+  background-color: var(--neptune-700, #295875);
+}
+
+.hover\:bg-saturn-500:hover {
+  background-color: var(--saturn-500, #ffab00);
+}
+
+.hover\:bg-saturn-700:hover {
+  background-color: var(--saturn-700, #b57900);
+}
+
+.hover\:bg-uranus-500:hover {
+  background-color: var(--uranus-500, #81c3d7);
+}
+
+.hover\:bg-uranus-700:hover {
+  background-color: var(--uranus-700, #5c8a99);
 }
 
 .active\:opacity-80:active {
