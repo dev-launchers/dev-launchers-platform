@@ -1,7 +1,7 @@
 // use `mergeConfig` to recursively merge Vite options
 import path, { dirname, join } from 'path';
 module.exports = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/**/*.mdx'],
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-essentials',

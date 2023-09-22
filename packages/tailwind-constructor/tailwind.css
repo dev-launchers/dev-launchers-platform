@@ -742,50 +742,6 @@ video {
   background-color: var(--blue-700, #2b6cb0);
 }
 
-.bg-gray-200 {
-  background-color: var(--gray-200, #edf2f7);
-}
-
-.bg-gray-700 {
-  background-color: var(--gray-700, #4a5568);
-}
-
-.bg-gray-800 {
-  background-color: var(--gray-800, #2d3748);
-}
-
-.bg-green-500 {
-  background-color: var(--green-500, #48bb78);
-}
-
-.bg-orange-200 {
-  background-color: var(--orange-200, #feebc8);
-}
-
-.bg-purple-500 {
-  background-color: var(--purple-500, #9f7aea);
-}
-
-.bg-red-500 {
-  background-color: var(--red-500, #f56565);
-}
-
-.bg-teal-500 {
-  background-color: var(--teal-500, #38b2ac);
-}
-
-.bg-white {
-  background-color: var(--white, #ffffff);
-}
-
-.bg-yellow-300 {
-  background-color: var(--yellow-300, #faf089);
-}
-
-.bg-yellow-500 {
-  background-color: var(--yellow-500, #ecc94b);
-}
-
 .bg-brand-alt-cosmic-300 {
   background-color: var(--brand-alt-cosmic-300, #7a87c7);
 }
@@ -800,6 +756,22 @@ video {
 
 .bg-brand-alt-nebula-500 {
   background-color: var(--brand-alt-nebula-500, #7339ac);
+}
+
+.bg-gray-200 {
+  background-color: var(--gray-200, #edf2f7);
+}
+
+.bg-gray-700 {
+  background-color: var(--gray-700, #4a5568);
+}
+
+.bg-gray-800 {
+  background-color: var(--gray-800, #2d3748);
+}
+
+.bg-green-500 {
+  background-color: var(--green-500, #48bb78);
 }
 
 .bg-jupiter-300 {
@@ -818,6 +790,18 @@ video {
   background-color: var(--neptune-500, #3a7ca5);
 }
 
+.bg-orange-200 {
+  background-color: var(--orange-200, #feebc8);
+}
+
+.bg-purple-500 {
+  background-color: var(--purple-500, #9f7aea);
+}
+
+.bg-red-500 {
+  background-color: var(--red-500, #f56565);
+}
+
 .bg-saturn-300 {
   background-color: var(--saturn-300, #ffc754);
 }
@@ -826,12 +810,28 @@ video {
   background-color: var(--saturn-500, #ffab00);
 }
 
+.bg-teal-500 {
+  background-color: var(--teal-500, #38b2ac);
+}
+
 .bg-uranus-300 {
   background-color: var(--uranus-300, #abd7e4);
 }
 
 .bg-uranus-500 {
   background-color: var(--uranus-500, #81c3d7);
+}
+
+.bg-white {
+  background-color: var(--white, #ffffff);
+}
+
+.bg-yellow-300 {
+  background-color: var(--yellow-300, #faf089);
+}
+
+.bg-yellow-500 {
+  background-color: var(--yellow-500, #ecc94b);
 }
 
 .p-0 {
@@ -983,6 +983,22 @@ video {
   background-color: var(--blue-700, #2b6cb0);
 }
 
+.hover\:bg-brand-alt-cosmic-500:hover {
+  background-color: var(--brand-alt-cosmic-500, #394cac);
+}
+
+.hover\:bg-brand-alt-cosmic-700:hover {
+  background-color: var(--brand-alt-cosmic-700, #28367a);
+}
+
+.hover\:bg-brand-alt-nebula-500:hover {
+  background-color: var(--brand-alt-nebula-500, #7339ac);
+}
+
+.hover\:bg-brand-alt-nebula-700:hover {
+  background-color: var(--brand-alt-nebula-700, #52287a);
+}
+
 .hover\:bg-gray-200:hover {
   background-color: var(--gray-200, #edf2f7);
 }
@@ -1003,46 +1019,6 @@ video {
   background-color: var(--green-700, #2f855a);
 }
 
-.hover\:bg-orange-400:hover {
-  background-color: var(--orange-400, #f6ad55);
-}
-
-.hover\:bg-purple-700:hover {
-  background-color: var(--purple-700, #6b46c1);
-}
-
-.hover\:bg-red-700:hover {
-  background-color: var(--red-700, #c53030);
-}
-
-.hover\:bg-teal-700:hover {
-  background-color: var(--teal-700, #2c7a7b);
-}
-
-.hover\:bg-yellow-500:hover {
-  background-color: var(--yellow-500, #ecc94b);
-}
-
-.hover\:bg-yellow-700:hover {
-  background-color: var(--yellow-700, #b7791f);
-}
-
-.hover\:bg-brand-alt-cosmic-500:hover {
-  background-color: var(--brand-alt-cosmic-500, #394cac);
-}
-
-.hover\:bg-brand-alt-cosmic-700:hover {
-  background-color: var(--brand-alt-cosmic-700, #28367a);
-}
-
-.hover\:bg-brand-alt-nebula-500:hover {
-  background-color: var(--brand-alt-nebula-500, #7339ac);
-}
-
-.hover\:bg-brand-alt-nebula-700:hover {
-  background-color: var(--brand-alt-nebula-700, #52287a);
-}
-
 .hover\:bg-jupiter-500:hover {
   background-color: var(--jupiter-500, #ff7f0e);
 }
@@ -1059,6 +1035,18 @@ video {
   background-color: var(--neptune-700, #295875);
 }
 
+.hover\:bg-orange-400:hover {
+  background-color: var(--orange-400, #f6ad55);
+}
+
+.hover\:bg-purple-700:hover {
+  background-color: var(--purple-700, #6b46c1);
+}
+
+.hover\:bg-red-700:hover {
+  background-color: var(--red-700, #c53030);
+}
+
 .hover\:bg-saturn-500:hover {
   background-color: var(--saturn-500, #ffab00);
 }
@@ -1067,12 +1055,24 @@ video {
   background-color: var(--saturn-700, #b57900);
 }
 
+.hover\:bg-teal-700:hover {
+  background-color: var(--teal-700, #2c7a7b);
+}
+
 .hover\:bg-uranus-500:hover {
   background-color: var(--uranus-500, #81c3d7);
 }
 
 .hover\:bg-uranus-700:hover {
   background-color: var(--uranus-700, #5c8a99);
+}
+
+.hover\:bg-yellow-500:hover {
+  background-color: var(--yellow-500, #ecc94b);
+}
+
+.hover\:bg-yellow-700:hover {
+  background-color: var(--yellow-700, #b7791f);
 }
 
 .active\:opacity-80:active {
