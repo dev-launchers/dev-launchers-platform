@@ -4,13 +4,14 @@ import { StyledSaveIdea } from './StyledSaveIdea';
 
 
 const SaveIdea = ({savedCards, setSavedCards, id}) =>{
+    const savedIdea = savedCards.includes(id)
     
     return(
         <StyledSaveIdea>
             <SaveButton
-            disabled = {savedCards.includes(id)}
-            text = {savedCards.includes(id) ? "Saved" : "Save"}
-            filled = {savedCards.includes(id)}
+            disabled = {savedIdea}
+            text = {savedIdea ? "Saved" : "Save"}
+            filled = {savedIdea}
             onClick = {()=>{
                 setSavedCards([...savedCards, id])
             }}
