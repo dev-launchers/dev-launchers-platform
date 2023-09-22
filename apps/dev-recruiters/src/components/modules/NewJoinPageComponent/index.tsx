@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BtnSignUp,
   Footer,
@@ -14,7 +14,7 @@ import ContainerImage from './ContainerImage/containerImage';
 import JoinPLeft from '../../../images/JoinPage/Join-page-image-left.png';
 import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 
-import RolesComponent, { FilteringComponentProps } from './RolesComponent';
+import RolesComponent, { FilteringComponentProps, isMobile } from './RolesComponent';
 import { HeaderJoinPage } from './HeaderJoinPage';
 
 interface Props extends FilteringComponentProps {}
@@ -23,9 +23,8 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
-
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
+ 
+  
   return (
     <Wrapper>
       <BoxContainer paddingVertical={20}>
@@ -45,7 +44,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
         </SelectRoleContainer>
       </BoxContainer>
 
-      <BoxContainer paddingHorizontal={isMobile ? 0: 85}>
+      <BoxContainer paddingHorizontal={isMobile() ? 0: 85}>
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 

@@ -37,7 +37,6 @@ export default function RolesComponent({
     resetFilters,
   } = useProjectRole();
 
-  console.log('here', filteredProjects);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);
@@ -215,3 +214,13 @@ export default function RolesComponent({
     </Wrapper>
   );
 }
+
+
+
+export const isMobile = () => {
+  if (typeof window !== 'undefined') {
+    return window.matchMedia('(max-width: 768px)').matches;
+  } else {
+    return false;  
+  }
+};

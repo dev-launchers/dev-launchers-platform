@@ -1,6 +1,6 @@
 // components/CollapsibleContainer.tsx
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CaseStudy from '../../../../../images/icons/Case-Study.png';
 import DesignServices from '../../../../../images/icons/Design-services.png';
 import DeveloperMode from '../../../../../images/icons/Developer-mode.png';
@@ -10,6 +10,7 @@ import SourceCode from '../../../../../images/icons/Source-Code.png';
 import CollapsibleSection from '../CollapsibleSection';
 import SelectRole from '../SelectRole';
 import { RoleContainer, RoleContainerBody } from './styles';
+import { isMobile } from '../../RolesComponent';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -23,8 +24,6 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
   function handleRoleClick(role) {
     const roleJsonString = JSON.stringify(role);
 
-    console.log('here', openPositions);
-
     localStorage.setItem('selectedRole', roleJsonString);
     router.push('/join/filter');
 
@@ -32,13 +31,13 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
   }
 
   const router = useRouter();
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+ 
 
   return (
     <>
       <RoleContainer>
         <CollapsibleSection title="Product / UX">
-          <RoleContainerBody Mobile={isMobile}>
+          <RoleContainerBody Mobile={isMobile()}>
             <SelectRole
               src={DesignServices}
               textRole="Product Lead"
@@ -74,7 +73,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="Development">
-          <RoleContainerBody Mobile={isMobile}>
+          <RoleContainerBody Mobile={isMobile()}>
             <SelectRole
               src={CaseStudy}
               textRole="Lead Developer"
@@ -102,7 +101,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="QA">
-          <RoleContainerBody Mobile={isMobile}>
+          <RoleContainerBody Mobile={isMobile()}>
             <SelectRole
               src={DeveloperMode}
               textRole="QA Lead"
@@ -121,7 +120,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
         </CollapsibleSection>
 
         <CollapsibleSection title="Operations">
-          <RoleContainerBody Mobile={isMobile}>
+          <RoleContainerBody Mobile={isMobile()}>
             <SelectRole
               src={DeveloperMode}
               textRole="Volunteer Coordinator"

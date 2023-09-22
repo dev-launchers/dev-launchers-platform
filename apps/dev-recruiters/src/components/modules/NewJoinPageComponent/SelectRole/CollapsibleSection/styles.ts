@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const RoleContainerHead = styled.div`
   display: flex;
-  justify-content:${(props: { show: boolean }) => (props.show ? 'flex-start' : 'center')} ;
+  justify-content:${(props: { mobile: boolean }) => (props.mobile ? 'center' : 'flex-start')};
   align-items: center;
   cursor: pointer;
   gap: 30px;

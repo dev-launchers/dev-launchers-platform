@@ -1,5 +1,5 @@
 // components/CollapsibleSection.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   RoleContainerBody,
   RoleContainerHead,
@@ -8,6 +8,7 @@ import {
 } from './styles';
 import ArrowUp from '../../../../../images/icons/ArrowUp.png';
 import ArrowDown from '../../../../../images/icons/ArrowDown.png';
+import { isMobile } from '../../RolesComponent';
 
 interface CollapsibleSectionProps {
   title: string;
@@ -18,16 +19,17 @@ const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
   children,
 }) => {
   
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-  const [showBody, setShowBody] = useState(!isMobile);
+ 
 
+  const [showBody, setShowBody] = useState(!isMobile());
+ 
   const toggleBody = () => {
     setShowBody((prevShow) => !prevShow);
   };
 
   return (
     <>
-      <RoleContainerHead onClick={toggleBody}>
+      <RoleContainerHead mobile={isMobile()} onClick={toggleBody}>
         <Title>{title}</Title>
         <img src={showBody ? ArrowUp : ArrowDown} alt="Vector" />
       </RoleContainerHead>
