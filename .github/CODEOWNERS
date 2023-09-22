@@ -4,6 +4,9 @@ packages/ @dev-launchers/platform-enablement
 # Ideaspace code
 apps/ideaspace/ @dev-launchers/ideaspace-team
 
+# UserProfile code
+apps/user-profile/ @dev-launchers/User-profile
+
 # Recruitment code
 apps/dev-recruiters/ @dev-launchers/dev-recruit-team
 
@@ -14,7 +17,7 @@ apps/website/ @Enjoy2Live @pyxld-kris
 apps/app/ @Enjoy2Live @pyxld-kris
 
 # Code in the backend directory
-strapiv4/ @dev-launchers/backend-devs
+strapiv4/ @dev-launchers/Backend-Devs
 
 # Deps
 package.json @Enjoy2Live
