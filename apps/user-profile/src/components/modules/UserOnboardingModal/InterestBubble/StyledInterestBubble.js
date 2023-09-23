@@ -3,13 +3,15 @@ import styled from "styled-components";
 export const UserInterestsContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
   padding: 2rem 5rem;
-  text-align: center;
-  width: 768px;
-
-  h2 {
-    color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  }
 `;
+
+// export const InterestsField = styled.div`
+//   width: "100%";
+//   display: "flex";
+//   alignItems: "stretch";
+//   justifyContent: "center";
+//   flexWrap: "wrap";
+// `;
 
 export const UserInterestsCardContainer = styled.div`
   height: 100%;
