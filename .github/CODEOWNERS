@@ -8,7 +8,7 @@ apps/ideaspace/ @dev-launchers/ideaspace-team
 apps/user-profile/ @dev-launchers/User-profile
 
 # Recruitment code
-apps/dev-recruiters/ @dev-launchers/dev-recruit-team
+apps/dev-recruiters/ @dev-launchers/dev-recruit 
 
 # Website code
 apps/website/ @Enjoy2Live @pyxld-kris
