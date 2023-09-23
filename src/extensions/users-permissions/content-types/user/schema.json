@@ -160,12 +160,6 @@
       "relation": "oneToMany",
       "target": "api::idea-card.idea-card",
       "mappedBy": "ideaOwner"
-    },
-    "save_ideas": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::save-idea.save-idea",
-      "mappedBy": "users"
     }
   }
 }
