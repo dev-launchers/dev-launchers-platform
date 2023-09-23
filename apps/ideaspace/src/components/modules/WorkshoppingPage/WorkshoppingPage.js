@@ -108,7 +108,7 @@ export default function WorkshoppingPage(props) {
               <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {comments.length}</h5>
 
               <Form>
-                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
+                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} comments={comments} setComments={() => setComments(comments)} />
               </Form>
 
               <DisplayComments selectedCard={data} comments={comments} />

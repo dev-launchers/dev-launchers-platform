@@ -13,6 +13,11 @@ import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
+  const [state, setState] = React.useState(false)
+  // state = {
+  //   reload: false
+  // };
+
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [disabled, setDisabled] = React.useState(true);
@@ -29,13 +34,20 @@ function CommentForm(props) {
   };
 
   const handleSubmit = async (e) => {
+    console.log("The submit button has been pressed!")
+
     e.preventDefault();
-    var data = { author: userData.username, text: props.handleTextChange.trim() };
+    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange.trim() };//need idea_card
+    console.log("data from comment:", data)
 
     try {
       const res = await agent.Comments.post(data);
-      console.log('res', res);
+      console.log('data for new comment:', data)
+      console.log('res:', res);
       props.setHandleTextChange('');
+
+      // submit the new comment to the comment feed
+      console.log("comments after new comment:", props.comments)
     } catch(error) {
       console.error(error)
     }
@@ -53,6 +65,11 @@ function CommentForm(props) {
 
     // Refresh the page so that the new comment is displayed:
     // window.location.reload(false);
+    // this.setState(
+    //   {reload: true},
+    //   () => this.setState({reload: false})
+    // )
+    setState(true)
   };
 
   console.log("user data =", userData); // user data is defined as Kris Gano's user data
