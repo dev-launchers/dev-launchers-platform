@@ -31,6 +31,7 @@ function EditIdea() {
   const { ideaId } = router.query;
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
+  const [getError, setGetError] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave?',
@@ -88,7 +89,11 @@ function EditIdea() {
 
   useEffect(async () => {
     if (ideaId) {
-      const idea = await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*"));
+      const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
+      if (!idea || !idea.id || idea.id == 0) {
+        setGetError(true);
+        return;
+      }
 
       if (userData.id !== 0) {
         if (idea.author.id === userData.id) {
@@ -203,7 +208,7 @@ function EditIdea() {
         {!isAuthenticated ? (
           <SignInSection
             label='Please sign in to edit your idea!'
-            redirectURL={process.env.FRONT_END_URL + '/ideaspace/dashboard'}
+            redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
           />
         ) : (
           <>

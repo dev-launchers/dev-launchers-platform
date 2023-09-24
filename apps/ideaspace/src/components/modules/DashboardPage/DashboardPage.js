@@ -69,7 +69,7 @@ function DashboardPage() {
       {!isAuthenticated ? (
         <SignInSection
           label='Please sign in to view your dashboard!'
-          redirectURL={process.env.FRONT_END_URL + '/ideaspace/dashboard'}
+          redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
         />
       ) : (
         <PageWrapper>
