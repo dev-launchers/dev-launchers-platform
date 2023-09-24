@@ -117,13 +117,27 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   }
 
   const showNextButton = () => {
+
+    // const changeButtonState = (state) => {
+    //   state = false;
+    //   return state;
+    // };
+    // const delayChange = setTimeout(changeButtonState(state), 5000);
+    // const buttonChange = (state) => {
+    //   delayChange;
+    // };
+
+    // var disabled = index === 1 ? true : false;
+
     const nextButtonHtml =
+      // <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={disabled}>
       <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}>
         <div className='stepper-btn-icon-text'>
           {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}
           {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}
         </div>
       </Button>;
+
     return nextButtonHtml;
   };
 
@@ -181,6 +195,7 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
         <StepperFooter>
           {showBackButton()}
           {showNextButton()}
+          {/* {index === 1 ? setTimeout(showNextButton, 5000) : showNextButton()} */}
         </StepperFooter>
       </StepperContainer>
     </>
