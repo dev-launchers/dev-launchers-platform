@@ -19,8 +19,6 @@ function DisplayComments(props) {
 
   const [data, setData] = useState([]);
 
-  console.log("props: ", props)
-
   useEffect(() => {
     if (typeof this !== 'undefined') {
       // refresh the comment feed to show the new comment

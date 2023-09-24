@@ -95,10 +95,6 @@ export default function WorkshoppingPage(props) {
               </Form>
 
               <DisplayComments selectedCard={data} comments={comments} />
-
-              <Form>
-                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
-              </Form>
             </Comments>
           </Wrapper>
         }
