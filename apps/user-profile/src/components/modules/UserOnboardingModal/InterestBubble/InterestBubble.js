@@ -3,48 +3,37 @@ import React, {useState} from "react";
 import {
   UserInterestCard,
   UserInterestsCardContainer,
-  // InterestsField,
+  InterestsField,
   UserInterestsContainer,
 } from "./StyledInterestBubble";
 
-const UserInterests = () => {
-    const interests_list = [
-        {id:1, name:"Blockchain"}, {id:2, name:"Javascript"}, {id:3, name:"Web Design"}, 
-        {id:4, name:"UI/UX"}, {id:5, name:"React"}, {id:6, name:"QA"}, {id:7, name:"Web Development"}, 
-        {id:8, name:"C/C++/C#"}, {id:9, name:"Discord"}, {id:10, name:"Node.js"}, {id:11, name:"Strapi"}, 
-        {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"}, 
-        {id:16, name:"Python"}, {id:17, name:"Data Structures"}, {id:18, name:"Prototyping"}, {id:19, name:"Project Management"}]
-    
+const UserInterestBubble = ({interests}) => {    
     const [selectedInterests, setSelectedInterests]=useState([])
+
+    const clickInterest = (interest)=>{
+      return () => {
+      selectedInterests.includes(interest.id)?
+      setSelectedInterests(selectedInterests.filter(selected_interest => selected_interest !== interest.id)):
+      setSelectedInterests(selected_interests => [...selected_interests, interest.id])
+      };
+    };
 
   return (
     <UserInterestsContainer>
-    {/* <InterestsField> */}
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        alignItems: "stretch",
-        justifyContent: "center",
-        flexWrap: "wrap",
-      }}
-    >
-      {interests_list.map((interest) => (
-        <UserInterestsCardContainer key={interest.id}>
-          <UserInterestCard className={selectedInterests.includes(interest.id)?"selected":""} 
-          onClick={()=>{selectedInterests.includes(interest.id)?
-          setSelectedInterests(selectedInterests.filter(selected_interest => selected_interest !== interest.id)):
-          setSelectedInterests(selected_interests => [...selected_interests, interest.id])}}>
-          {interest.name}
-          </UserInterestCard>
-        </UserInterestsCardContainer>
-      ))}
-    </div>
-    {/* </InterestsField> */}
+      <InterestsField>
+        {interests.map((interest) => (
+          <UserInterestsCardContainer key={interest.id}>
+            <UserInterestCard className={selectedInterests.includes(interest.id)?"selected":""} 
+            onClick={clickInterest(interest)}>
+            {interest.name}
+            </UserInterestCard>
+          </UserInterestsCardContainer>
+        ))}
+      </InterestsField>
     </UserInterestsContainer>
   );
 };
 
-export default UserInterests;
+export default UserInterestBubble;
 
 

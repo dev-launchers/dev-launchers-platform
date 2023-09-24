@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const UserInterestsContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   padding: 2rem 5rem;
 `;
 
-// export const InterestsField = styled.div`
-//   width: "100%";
-//   display: "flex";
-//   alignItems: "stretch";
-//   justifyContent: "center";
-//   flexWrap: "wrap";
-// `;
+export const InterestsField = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 export const UserInterestsCardContainer = styled.div`
   height: 100%;

@@ -4,6 +4,7 @@ import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
+// import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../state/actions';
@@ -14,6 +15,18 @@ export default function PlatformOnboarding() {
   const hideAllModals = () => {
     dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
   }
+
+  // @description 
+  // - dataFromBackend is currently sample
+  // - dataFromBackend should be retrieved from backend
+
+  // const  dataFromBackend= [
+  //   {id:1, name:"Blockchain"}, {id:2, name:"Javascript"}, {id:3, name:"Web Design"}, 
+  //   {id:4, name:"UI/UX"}, {id:5, name:"React"}, {id:6, name:"QA"}, {id:7, name:"Web Development"}, 
+  //   {id:8, name:"C/C++/C#"}, {id:9, name:"Discord"}, {id:10, name:"Node.js"}, {id:11, name:"Strapi"}, 
+  //   {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"}, 
+  //   {id:16, name:"Python"}, {id:17, name:"Data Structures"}, {id:18, name:"Prototyping"}, {id:19, name:"Project Management"}
+  // ]    
 
   const stepperConfig = [
     {
@@ -80,7 +93,9 @@ export default function PlatformOnboarding() {
       },
     },
     {
+
       component: <p> Interest </p>,
+      // component: <UserInterestBubble interests={dataFromBackend}/>,
       config: {
         barSize: 's',
         hideStepNumber: true,
