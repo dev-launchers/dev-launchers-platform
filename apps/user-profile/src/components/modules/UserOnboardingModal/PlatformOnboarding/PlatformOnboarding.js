@@ -4,6 +4,7 @@ import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
+import PageFive from './PageFive/PageFive';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../state/actions';
@@ -80,7 +81,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p> Interest </p>,
+      component: <PageFive />,
       config: {
         barSize: 's',
         hideStepNumber: true,
