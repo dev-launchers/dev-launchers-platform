@@ -1,9 +1,7 @@
-import axios from 'axios';
 import Like from '../../../../assets/icons/Like';
 import Box from '../../../atoms/Box';
 import { InteractionButton } from '../StyledCommonComponents';
 import type { LikeButtonProps } from '.';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 const LikeButton = ({ text, filled, disabled, ...props }: LikeButtonProps) => {
   return (

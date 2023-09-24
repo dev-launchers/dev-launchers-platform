@@ -121,60 +121,6 @@ function IdeaCard({ cards, cardType }) {
         </Link>
       )}
       <UpdateFailure />
-
-      <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
-
-      <Link href={{ pathname: urlPath }}>
-        <atoms.Box
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="space-between"
-          padding="0rem 2rem 2rem"
-          style={{ maxWidth: '18.5rem' }}
-        >
-          <atoms.Typography
-            type="h3"
-            style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
-          >
-            {cards.ideaName}
-          </atoms.Typography>
-
-          <IdeaCardComment commentLength={cards.comments.length} />
-
-          <IdeaCardUpdated updatedAt={cards.updated_at} />
-        </atoms.Box>
-      </Link>
-
-      <atoms.Box padding="0rem 2rem 2rem">
-        <LikeButton
-          onClick={() => setLiked((prev) => !prev)}
-          filled={liked}
-          text={liked ? 1 : ''}
-          disabled={isAuthenticated ? false : true}
-        ></LikeButton>
-      </atoms.Box>
-
-      {tagContent == 'archived' ? (
-        <atoms.Button
-          buttonSize="standard"
-          buttonType="alternative"
-          style={{ margin: '0rem 2rem 1.5rem' }}
-          onClick={reactivateIdea}
-        >
-          {buttonContent}
-        </atoms.Button>
-      ) : (
-        <Link href={{ pathname: urlPath }}>
-          <atoms.Button
-            buttonSize="standard"
-            buttonType="alternative"
-            style={{ margin: '0rem 2rem 1.5rem' }}
-          >
-            {buttonContent}
-          </atoms.Button>
-        </Link>
-      )}
-      <UpdateFailure />
     </atoms.Box>
   );
 }

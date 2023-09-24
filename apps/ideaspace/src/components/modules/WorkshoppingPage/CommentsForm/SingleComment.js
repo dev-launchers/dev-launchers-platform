@@ -48,7 +48,6 @@ const SingleCommentComponent = props => (
       </SingleCommentContent>
       <SingleCommentContent>
         {/* date of creation here, i.e. "2 days ago" */}
-        {/* <h5>{new Date(props.createdAt)[Symbol.toPrimitive]("string")}</h5> */}
         <h5>{timeSince(new Date(props.createdAt))}</h5>
       </SingleCommentContent>
       <SingleCommentContent>

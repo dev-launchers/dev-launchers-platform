@@ -14,9 +14,6 @@ import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
   const [state, setState] = React.useState(false)
-  // state = {
-  //   reload: false
-  // };
 
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
@@ -34,34 +31,16 @@ function CommentForm(props) {
   };
 
   const handleSubmit = async (e) => {
-    console.log("The submit button has been pressed!")
 
     e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange.trim() };//need idea_card
-    console.log("data from comment:", data)
+    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange.trim() };
 
     try {
       const res = await agent.Comments.post(data);
-      console.log('data for new comment:', data)
-      console.log('res:', res);
       props.setHandleTextChange('');
-
-      // submit the new comment to the comment feed
-      console.log("comments after new comment:", props.comments)
     } catch(error) {
       console.error(error)
     }
-
-    // axios
-    //   .post(
-    //     `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/idea-cards/${selectedCard.id}/comment`,
-    //     data
-    //   )
-    //   .then((response) => {
-    //     if (response.status === 200) {
-    //       props.setHandleTextChange('');
-    //     }
-    //   }).catch(error => console.error(error));
 
     // Refresh the page so that the new comment is displayed:
     // window.location.reload(false);
@@ -72,23 +51,11 @@ function CommentForm(props) {
     setState(true)
   };
 
-  console.log("user data =", userData); // user data is defined as Kris Gano's user data
-  console.log("authenticated? ", isAuthenticated) // but isAuthenticated is undefined
-
   // move to WorkshoppingPage?
   return (
     <div>
       {isAuthenticated ? (
         <form onSubmit={handleSubmit} style={{textAlign: "left", paddingLeft: "20px", paddingRight: "20px"}}>
-          {/* <UserNameCommentBox>
-            <UserNameComment
-              type="text"
-              name="author"
-              placeholder="Your name..."
-              value={props.handleChange}
-              onChange={handleChange}
-            />
-          </UserNameCommentBox> */}
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <CommentBox
@@ -107,11 +74,6 @@ function CommentForm(props) {
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
             <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
-            {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-            {/* <div id="the-count">
-              <span id="chars-left">{charsLeft}</span>
-              <span id="char-counter">{charCount}</span>
-            </div> */}
           </UserComment>
         </form>
       ) : (
