@@ -11,9 +11,9 @@ import useConfirm from '../DialogBox/DialogBox';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import {
   useUserDataContext,
-  isAuthenticated,
 } from '@devlaunchers/components/src/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
+import SaveIdea from '../../modules/SaveIdea/SaveIdea';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -21,7 +21,8 @@ function IdeaCard({ cards, cardType }) {
   const [urlPath, setUrlPath] = useState('');
   const [isFilled, setIsFilled] = useState(false);
   const [liked, setLiked] = useState(false);
-  const { userData } = useUserDataContext();
+  const { userData, isAuthenticated } = useUserDataContext();
+  const [savedCards, setSavedCards] = useState([]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to reactivate your idea', '', ''],
