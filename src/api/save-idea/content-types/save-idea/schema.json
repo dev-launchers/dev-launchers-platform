@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "save_ideas",
+  "info": {
+    "singularName": "save-idea",
+    "pluralName": "save-ideas",
+    "displayName": "Save",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ObjectId": {
+      "type": "uid"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "ObjectType": {
+      "type": "enumeration",
+      "enum": [
+        "IdeaCard"
+      ]
+    }
+  }
+}
