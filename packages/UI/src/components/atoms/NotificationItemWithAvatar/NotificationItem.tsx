@@ -24,13 +24,17 @@ function NotificationItem({
   name,
   platform,
   time,
-  
 }: NavigrationItemProp) {
   return (
-    <div className={div({ color, size })}>
-      <span></span>
-      <div></div>
-    </div>
+    <>
+      <div className={div({ color, size })}>
+        <span>{avatar}</span>
+        <div>
+          {name} commented on {platform} {time}
+        </div>
+      </div>
+      <div>{message}</div>
+    </>
   );
 }
 

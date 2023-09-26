@@ -5,27 +5,13 @@ const meta: Meta<typeof Avatar> = {
   component: Avatar,
   title: 'ATOMS/Avatar',
   tags: ['autodocs'],
-  argTypes: {
-    size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
-    },
-    color: {
-      control: 'select',
-      options: ['primary', 'secondary'],
-    },
-    radius: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'full'],
-    },
-  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Avatar>;
 
-export const Avatarwithimage: Story = {
+export const AvatarWithImage: Story = {
   args: {
     size: 'sm',
     src: 'https://bit.ly/3EBQXiH',
@@ -34,10 +20,10 @@ export const Avatarwithimage: Story = {
     color: 'primary',
   },
 };
-export const Avatarwithnoimage: Story = {
+export const AvatarWithNoImage: Story = {
   args: {
     size: 'sm',
-    name: 'Lamodot Wisdom',
+    name: 'Lamodot wisdom',
     radius: 'sm',
   },
 };
