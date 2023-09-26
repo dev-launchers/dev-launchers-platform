@@ -5,27 +5,6 @@ import { Tag } from './Tag';
 const meta: Meta<typeof Tag> = {
   component: Tag,
   title: 'Atoms/Tag',
-  // NOTE: alternate way to display default values for the args
-  // argTypes: {
-  //   color: {
-  //     table: { defaultValue: { summary: 'black' } },
-  //   },
-  //   size: {
-  //     table: { defaultValue: { summary: 'md' } },
-  //   },
-  //   selected: {
-  //     table: { defaultValue: { summary: false } },
-  //   },
-  //   shadow: {
-  //     table: { defaultValue: { summary: false } },
-  //   },
-  //   outline: {
-  //     table: { defaultValue: { summary: false } },
-  //   },
-  //   mode: {
-  //     table: { defaultValue: { summary: 'light' } },
-  //   },
-  // },
 };
 
 export default meta;
@@ -51,74 +30,6 @@ const buildDefaultProps = (props: DefaultTagProps | undefined): TagProps => {
     label: props?.label ? props.label : defaultLabel,
   } as TagProps;
 };
-
-// NOTE: alternate render method to display variants
-
-// export const Primary: Story = {
-//   render: (props: TagProps) => <Tag {...buildDefaultProps(props)} />,
-// };
-
-// export const Secondary: Story = {
-//   render: (props: TagProps) => (
-//     <Tag {...buildDefaultProps({ ...props, color: 'secondary' })} />
-//   ),
-// };
-
-// /**
-//  * Primary tag color
-//  */
-// export const Primary: Story = {
-//   args: buildDefaultProps({ color: 'primary' }),
-// };
-
-// /**
-//  * Secondary tag color
-//  */
-// export const Secondary: Story = {
-//   args: buildDefaultProps({ color: 'secondary' }),
-// };
-
-// /**
-//  * Success tag color
-//  */
-// export const Success: Story = {
-//   args: buildDefaultProps({ color: 'success' }),
-// };
-
-// /**
-//  * Danger tag color
-//  */
-// export const Danger: Story = {
-//   args: buildDefaultProps({ color: 'danger' }),
-// };
-
-// /**
-//  * Warning tag color
-//  */
-// export const Warning: Story = {
-//   args: buildDefaultProps({ color: 'warning' }),
-// };
-
-// /**
-//  * Info tag color
-//  */
-// export const Info: Story = {
-//   args: buildDefaultProps({ color: 'info' }),
-// };
-
-// /**
-//  * Light tag color
-//  */
-// export const Light: Story = {
-//   args: buildDefaultProps({ color: 'light' }),
-// };
-
-// /**
-//  * Dark tag color
-//  */
-// export const Dark: Story = {
-//   args: buildDefaultProps({ color: 'dark' }),
-// };
 
 /**
  * White tag color

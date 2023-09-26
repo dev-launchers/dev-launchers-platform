@@ -3,11 +3,6 @@ import { Close } from '../../../assets/icons';
 
 // track which colors should have black text as the svg icon needs to fill with black
 const blackTextIconColorVariantsLightMode: string[] = [
-  // 'warning',
-  // 'light',
-  // 'yellow',
-  // 'light-blue',
-  // 'orange',
   'white',
   'jupiter',
   'saturn',
@@ -20,7 +15,7 @@ const blackTextIconColorVariantsLightMode: string[] = [
  * @param mode The variant mode string
  * @returns The icon fill color
  */
-const tagIconFillColor = (color: string, mode: string): string => {
+const tagIconFillColor = (color = 'black', mode = 'light'): string => {
   if (mode === 'light') {
     return blackTextIconColorVariantsLightMode.includes(color)
       ? 'black'
@@ -32,55 +27,40 @@ const tagIconFillColor = (color: string, mode: string): string => {
 
 /**
  * Tag component variations
- * @property {string} color The color of the tag
- * @property {string} size The size of the tag
  */
 export const tag = tv({
   base: 'inline-flex items-center font-medium text-white rounded-full active:opacity-80 tag',
   variants: {
     color: {
-      // TODO solidify classes for the light and dark mode variants
-      // primary: 'bg-blue-500 tag-primary',
-      // secondary: 'bg-purple-500 tag-secondary',
-      // success: 'bg-green-500 tag-success',
-      // danger: 'bg-red-500 tag-danger',
-      // warning: 'bg-yellow-300 text-black tag-warning',
-      // info: 'bg-teal-500 tag-info',
-      // light: 'bg-gray-200 text-black tag-light',
-      // dark: 'bg-gray-800 tag-dark',
-      // charcoal: 'bg-gray-700 tag-charcoal',
-      // yellow: 'bg-yellow-500 text-black tag-yellow',
-      // 'light-blue': 'bg-blue-200 text-black tag-light-blue',
-      // blue: 'bg-blue-500 tag-blue',
-      // orange: 'bg-orange-200 text-black tag-orange',
-      white: 'bg-white text-black tag-white',
-      black: 'bg-black tag-black',
-      cosmic: 'bg-brand-alt-cosmic-500 tag-cosmic',
-      jupiter: 'bg-jupiter-500 text-black tag-jupiter',
-      nebula: 'bg-brand-alt-nebula-500 tag-nebula',
-      neptune: 'bg-neptune-500 tag-neptune',
-      saturn: 'bg-saturn-500 text-black tag-saturn',
-      uranus: 'bg-uranus-500 text-black tag-uranus',
+      white: 'bg-white text-black',
+      black: 'bg-black',
+      cosmic: 'bg-brand-alt-cosmic-500',
+      jupiter: 'bg-jupiter-500 text-black',
+      nebula: 'bg-brand-alt-nebula-500',
+      neptune: 'bg-neptune-500',
+      saturn: 'bg-saturn-500 text-black',
+      uranus: 'bg-uranus-500 text-black',
     },
     size: {
-      xs: 'px-2 py-1 gap-1 text-xs tag-xs',
-      sm: 'px-2 py-1 gap-1 text-sm tag-sm',
-      md: 'px-3 py-2 gap-2 text-base tag-md',
-      lg: 'px-4 py-2 gap-2 text-lg tag-lg',
-      xl: 'px-4 py-3 gap-2 text-xl tag-xl',
+      xs: 'px-2 py-1 gap-1 text-xs',
+      sm: 'px-2 py-1 gap-1 text-sm',
+      md: 'px-3 py-2 gap-2 text-base',
+      lg: 'px-4 py-2 gap-2 text-lg',
+      xl: 'px-4 py-3 gap-2 text-xl',
     },
     selected: {
-      true: 'cursor-pointer tag-selected',
+      true: 'cursor-pointer',
     },
     shadow: {
-      true: 'shadow-xl tag-shadow',
+      true: 'shadow-xl',
     },
     outline: {
-      true: 'border-solid border-black tag-outline', // may need a border radius
+      true: 'border-solid border-black', // may need a border radius
     },
+    // TODO - need to define how light/dark mode works
     mode: {
-      light: 'tag-mode-light',
-      dark: 'tag-mode-dark',
+      light: '',
+      dark: '',
     },
   },
   compoundVariants: [
@@ -110,79 +90,6 @@ export const tag = tv({
       size: 'xl',
       className: 'border-4',
     },
-    // // setup dark mode variations for the colors
-    // {
-    //   mode: 'dark',
-    //   color: 'primary',
-    //   className: 'bg-blue-700',
-    // },
-
-    // setup hover classes for when a color variant is selected
-    // {
-    //   color: 'primary',
-    //   selected: true,
-    //   className: 'hover:bg-blue-700',
-    // },
-    // {
-    //   color: 'secondary',
-    //   selected: true,
-    //   className: 'hover:bg-purple-700',
-    // },
-    // {
-    //   color: 'success',
-    //   selected: true,
-    //   className: 'hover:bg-green-700',
-    // },
-    // {
-    //   color: 'danger',
-    //   selected: true,
-    //   className: 'hover:bg-red-700',
-    // },
-    // {
-    //   color: 'warning',
-    //   selected: true,
-    //   className: 'hover:bg-yellow-500',
-    // },
-    // {
-    //   color: 'info',
-    //   selected: true,
-    //   className: 'hover:bg-teal-700',
-    // },
-    // {
-    //   color: 'light',
-    //   selected: true,
-    //   className: 'hover:bg-gray-400',
-    // },
-    // {
-    //   color: 'dark',
-    //   selected: true,
-    //   className: 'hover:bg-gray-500',
-    // },
-    // {
-    //   color: 'charcoal',
-    //   selected: true,
-    //   className: 'hover:bg-gray-500',
-    // },
-    // {
-    //   color: 'yellow',
-    //   selected: true,
-    //   className: 'hover:bg-yellow-700',
-    // },
-    // {
-    //   color: 'light-blue',
-    //   selected: true,
-    //   className: 'hover:bg-blue-400',
-    // },
-    // {
-    //   color: 'blue',
-    //   selected: true,
-    //   className: 'hover:bg-blue-700',
-    // },
-    // {
-    //   color: 'orange',
-    //   selected: true,
-    //   className: 'hover:bg-orange-400',
-    // },
 
     // setup outline variants for the colors
     {
@@ -319,12 +226,6 @@ export const tag = tv({
 
 /**
  * Tag component properties interface
- * @property {string} label The text to display in the tag
- * @property {string} color The color of the tag
- * @property {string} size The size of the tag
- * @property {boolean} selected Whether the tag is selected
- * @property {boolean} shadow Whether the tag has a shadow
- * @property {() => void} onClose Callback for when the tag is closed
  */
 export interface TagProps extends VariantProps<typeof tag> {
   /**
@@ -345,29 +246,6 @@ export interface TagProps extends VariantProps<typeof tag> {
     | 'neptune'
     | 'saturn'
     | 'uranus';
-
-  // color:
-  // | 'primary'
-  // | 'secondary'
-  // | 'success'
-  // | 'danger'
-  // | 'warning'
-  // | 'info'
-  // | 'light'
-  // | 'dark'
-  // | 'charcoal'
-  // | 'yellow'
-  // | 'light-blue'
-  // | 'blue'
-  // | 'orange'
-  // | 'white'
-  // | 'black'
-  // | 'cosmic'
-  // | 'jupiter'
-  // | 'nebula'
-  // | 'neptune'
-  // | 'saturn'
-  // | 'uranus';
 
   /**
    * The size of the tag.
@@ -414,27 +292,45 @@ export interface TagProps extends VariantProps<typeof tag> {
  * @property {string} TagProps.size The size of the tag
  * @property {boolean} TagProps.selected Whether the tag is selected
  * @property {boolean} TagProps.shadow Whether the tag has a shadow
+ * @property {boolean} TagProps.outline Whether the tag has an outline
+ * @property {string} TagProps.mode The display mode of the tag
  * @property {() => void} TagProps.onClose Callback for when the tag is closed
  * @returns The JSX for the Tag
  * @example <Tag label="Tag" color="primary" size="md" selected shadow onClose={() => {}} />
  */
-export function Tag({ ...props }: TagProps) {
-  const handleClose = () => {
-    props.onClose?.();
+export function Tag({
+  label,
+  size = 'md',
+  color = 'black',
+  selected = false,
+  shadow = false,
+  outline = false,
+  mode = 'light',
+  ...options
+}: TagProps) {
+  // set the default properties
+  const props = {
+    ...tag.defaultVariants,
+    ...options,
+    label,
+    size,
+    color,
+    selected,
+    shadow,
+    outline,
+    mode,
   };
 
   // return options for accessibility
   return props.selected ? (
     <button
       className={tag(props)}
-      onClick={handleClose}
-      onKeyDown={handleClose}
+      onClick={props.onClose}
+      onKeyDown={props.onClose}
     >
       {props.label}
       <span className="p-0 m-0">
-        <Close
-          stroke={tagIconFillColor(props.color as string, props.mode as string)}
-        />
+        <Close stroke={tagIconFillColor(props.color, props.mode)} />
       </span>
     </button>
   ) : (
