@@ -25,6 +25,7 @@ const links = {
   ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
+  NOTIFICATION: '/notificationSettings'
 };
 
 /*

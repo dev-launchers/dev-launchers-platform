@@ -1,7 +1,9 @@
-import Section from '../../../../packages/UI/src/components/organisms/NotificationSection/Section'
+import { Section } from '../../../packages/ui/src/components/organisms/NotificationSection'
 import React from 'react'
+import App from '@devlaunchers/website/src/pages/_app';
+import { constructAppPage } from '../utils/routingTools.js';
 
-const notifcationSettings = () => {
+const notificationSettings = () => {
   return (
     <div className='w-[820px] flex flex-col'>
         <h1>Notification settings</h1>
@@ -11,4 +13,4 @@ const notifcationSettings = () => {
   )
 }
 
-export default notifcationSettings
+export default constructAppPage(App, notificationSettings)

@@ -61,7 +61,6 @@ function MyApp({ Component, pageProps }) {
             <div className="App">
             </div>
            <Navigation />
-         
             <Component {...pageProps} />
             {/* {props.children} */}
             <Footer />
