@@ -20,6 +20,7 @@ const theme = {
     BlackT38: 'rgba(0,0,0,0.38)',
 
     BLUE_700: '#173242',
+    LIGHT_BLUE_700: '#344E56',
 
     AntiFlashWhite: '#F1F4F5',
     AntiFlashWhiteT40: 'rgba(241,244,245,0.4)',

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../../styles/theme';
 import Logout from '../../../utils/Logout';
@@ -14,6 +14,7 @@ import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
 import { Nav, NavWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+import ProfilePhoto from '../../../images/profile.png';
 
 const links = {
   CREATE: '/create',
@@ -43,6 +44,25 @@ export default function Navigation({ user }: NavigationProps) {
   if (!user) {
     userInfo = useUserDataContext().userData;
   }
+
+  const [userSimulation, setUserSimulation] = useState(false);
+
+  useEffect(() => {
+    const getData = localStorage.getItem('isAuthenticated');
+    const convertData = getData === 'true';
+    setUserSimulation(convertData);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.setItem('isAuthenticated', 'false');
+    setUserSimulation(false);
+  };
+
+  const handleSignIn = () => {
+    localStorage.setItem('isAuthenticated', 'true');
+    setUserSimulation(true);
+  };
+
   // const { userData } = useUserDataContext();
   return (
     <>
@@ -74,27 +94,29 @@ export default function Navigation({ user }: NavigationProps) {
                     })}
                   </Box>
                 </ul>
-                {userInfo.id === 0 ? (
+                {userSimulation === false ? (
                   <Box gap={'16px'}>
                     <Button
                       as="a"
-                      href={
+                      /*href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                         '?redirectURL=https://devlaunchers.org/users/me'
-                      }
+                      }*/
                       buttonType="primary"
                       buttonSize="standard"
+                      onClick={handleSignIn}
                     >
                       Sign In
                     </Button>
                     <Button
                       as="a"
-                      href={
+                      /*href={
                         process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                         '?redirectURL=https://devlaunchers.org/users/me'
-                      }
+                      }*/
                       buttonType="secondary"
                       buttonSize="standard"
+                      onClick={handleSignIn}
                     >
                       Create an Account
                     </Button>
@@ -104,7 +126,7 @@ export default function Navigation({ user }: NavigationProps) {
                     <img
                       width="36"
                       height="33"
-                      src={userInfo.profilePictureUrl}
+                      src={ProfilePhoto}
                       alt="Profile avatar"
                       style={{ borderRadius: '50%' }}
                     />
@@ -112,7 +134,8 @@ export default function Navigation({ user }: NavigationProps) {
                     <Button
                       buttonType="secondary"
                       buttonSize="standard"
-                      onClick={Logout}
+                      //onClick={Logout}
+                      onClick={handleLogout}
                     >
                       Log out
                     </Button>
