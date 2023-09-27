@@ -644,6 +644,26 @@ video {
   height: var(--6, 1.5rem);
 }
 
+.h-10 {
+  height: var(--10, 2.5rem);
+}
+
+.h-12 {
+  height: var(--12, 3rem);
+}
+
+.h-8 {
+  height: var(--8, 2rem);
+}
+
+.w-10 {
+  width: var(--10, 2.5rem);
+}
+
+.w-12 {
+  width: var(--12, 3rem);
+}
+
 .w-16 {
   width: var(--16, 4rem);
 }
@@ -662,6 +682,10 @@ video {
 
 .w-6 {
   width: var(--6, 1.5rem);
+}
+
+.w-8 {
+  width: var(--8, 2rem);
 }
 
 .flex-shrink {
@@ -724,12 +748,12 @@ video {
   border-radius: 0.375rem;
 }
 
-.rounded-sm {
-  border-radius: 0.125rem;
-}
-
 .rounded-none {
   border-radius: 0px;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .border {
@@ -744,6 +768,10 @@ video {
   background-color: var(--gray-300, #e2e8f0);
 }
 
+.bg-green-500 {
+  background-color: var(--green-500, #48bb78);
+}
+
 .bg-purple-500 {
   background-color: var(--purple-500, #9f7aea);
 }
@@ -756,20 +784,26 @@ video {
   background-color: var(--white, #ffffff);
 }
 
-.bg-yellow-400 {
-  background-color: var(--yellow-400, #f6e05e);
-}
-
-.bg-yellow-700 {
-  background-color: var(--yellow-700, #b7791f);
-}
-
 .bg-yellow-600 {
   background-color: var(--yellow-600, #d69e2e);
 }
 
-.bg-green-500 {
-  background-color: var(--green-500, #48bb78);
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-contain {
+  background-size: contain;
+}
+
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .p-2 {
@@ -810,6 +844,15 @@ video {
   text-align: center;
 }
 
+.align-middle {
+  vertical-align: middle;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -820,11 +863,6 @@ video {
   line-height: 1rem;
 }
 
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -833,12 +871,12 @@ video {
   font-weight: 800;
 }
 
-.font-semibold {
-  font-weight: 600;
-}
-
 .font-medium {
   font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {

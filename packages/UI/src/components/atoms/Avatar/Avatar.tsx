@@ -1,62 +1,58 @@
+import * as Avatar from '@radix-ui/react-avatar';
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
+import { initials } from './utils';
 
 const AvatarStyles = tv({
-  base: 'w-16 h-16 bg-green-500 flex justify-center items-center text-white text-base  rounded-none font-medium  text-center  uppercase',
+  base: ' w-6 h-6 rounded-none   bg-contain bg-white  font-medium text-base text-center justify-center align-middle',
   variants: {
-    color: {
-      primary: ' bg-yellow-600',
-      secondary: ' bg-gray-300',
-    },
     size: {
-      sm: 'w-16 h-16 font-semibold',
-      md: 'w-20 h-20 font-bold ',
-      lg: 'w-24 h-24 font-extrabold ',
+      sm: ' w-8 h-8',
+      md: ' w-10 h-10',
+      lg: ' w-12 h-12',
     },
-    radius: {
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      full: 'rounded-full',
-    },
-    defaultVariants: {
-      radius: 'sm',
+    rounded: {
+      sm: ' rounded-sm',
+      rounded: ' rounded',
+      lg: ' rounded-lg',
+      full: ' rounded-full',
     },
   },
 });
 
 interface AvatarProps extends VariantProps<typeof AvatarStyles> {
-  name?: string;
   src: string;
-  initials: (name: string) => string;
   alt: string;
+  delayMs: number;
+  onClick?: () => void;
 }
 
-function initials(name: string) {
-  const names = name.split(' ');
-  const firstName = names[0] ?? '';
-  const lastName = names.length > 1 ? names[names.length - 1] : '';
-  return firstName && lastName
-    ? `${firstName.charAt(0)}${lastName.charAt(0)}`
-    : firstName.charAt(0);
-}
-
-function Avatar({ name, src, alt, size, radius, color }: AvatarProps) {
+const AvatarComponent = (
+  { size, rounded, src, alt, delayMs, onClick }: AvatarProps,
+  ...Props
+) => {
   return (
-    <div className={AvatarStyles({ size, radius, color })}>
-      {src ? (
-        <img
-          src={src}
-          alt={alt}
-          className={AvatarStyles({ size, radius, color })}
-        />
-      ) : name ? (
-        initials(name)
-      ) : null}
-    </div>
-  );
-}
+    <Avatar.Root
+      className={AvatarStyles({ size, rounded })}
+      onClick={onClick}
+      {...Props}
+    >
+      <Avatar.Image
+        className={AvatarStyles({ size, rounded })}
+        alt={alt}
+        src={src}
+        {...Props}
 
-export default Avatar;
-// Solve when there is a broken src link
-// Add default avatar as a fallback avatar
+      />
+      <Avatar.Fallback
+        className={AvatarStyles({ size, rounded })}
+        delayMs={delayMs}
+        {...Props}
+      >
+        {initials(alt)}
+      </Avatar.Fallback>
+    </Avatar.Root>
+  );
+};
+
+export default AvatarComponent;
