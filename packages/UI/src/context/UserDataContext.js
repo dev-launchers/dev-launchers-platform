@@ -10,7 +10,7 @@ export const DEFAULT_USER = {
   username: '',
   email: '',
   bio: '',
-  profilePictureUrl: {},
+  profilePictureUrl: '',
   socialMediaLinks: [],
   totalPoints: 0,
   totalSeasonPoints: 0,

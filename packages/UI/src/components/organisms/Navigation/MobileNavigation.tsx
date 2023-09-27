@@ -11,6 +11,7 @@ import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+import ProfilePhoto from '../../../images/profile.png';
 
 const MobileNavigation = ({
   user,
@@ -58,7 +59,7 @@ const MobileNavigation = ({
                   <img
                     width="36"
                     height="33"
-                    src={user.profilePictureUrl}
+                    src={ProfilePhoto}
                     alt="Profile avatar"
                     style={{ borderRadius: '50%' }}
                   />
