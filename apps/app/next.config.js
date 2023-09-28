@@ -1,12 +1,6 @@
 const path = require('path');
 const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
-const withTM = require('next-transpile-modules')([
-  '@devlaunchers/ideaspace',
-  '@devlaunchers/site-projects',
-  '@devlaunchers/dev-recruiters',
-  '@devlaunchers/website',
-]); // pass the modules you would like to see transpiled
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -43,6 +37,13 @@ const nextConfig = {
     disableStaticImages: true,
     unoptimized: false
   },
+  // pass the modules you would like to see transpiled
+  transpilePackages: [
+    '@devlaunchers/ideaspace',
+    '@devlaunchers/site-projects',
+    '@devlaunchers/dev-recruiters',
+    '@devlaunchers/website',
+  ],
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
@@ -64,4 +65,4 @@ const nextConfig = {
     nextScriptWorkers: true,
   },
 };
-module.exports = withPlugins([[imagesPlugin], [withTM]], nextConfig);
+module.exports = withPlugins([[imagesPlugin]], nextConfig);

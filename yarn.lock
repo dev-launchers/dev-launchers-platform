@@ -2641,7 +2641,6 @@ __metadata:
     next: ^13.5.3
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
-    next-transpile-modules: ^9.0.0
     pluralize: ^8.0.0
     postcss: ^8.4.14
     prettier: ^2.7.1
@@ -3028,7 +3027,6 @@ __metadata:
     next: ^13.5.3
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
-    next-transpile-modules: ^9.0.0
     pluralize: ^8.0.0
     postcss: ^8.4.14
     prettier: ^2.7.1
@@ -17653,7 +17651,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"enhanced-resolve@npm:^5.10.0, enhanced-resolve@npm:^5.12.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.7.0":
+"enhanced-resolve@npm:^5.12.0, enhanced-resolve@npm:^5.15.0, enhanced-resolve@npm:^5.7.0":
   version: 5.15.0
   resolution: "enhanced-resolve@npm:5.15.0"
   dependencies:
@@ -28613,16 +28611,6 @@ __metadata:
   version: 1.1.0
   resolution: "next-tick@npm:1.1.0"
   checksum: 83b5cf36027a53ee6d8b7f9c0782f2ba87f4858d977342bfc3c20c21629290a2111f8374d13a81221179603ffc4364f38374b5655d17b6a8f8a8c77bdea4fe8b
-  languageName: node
-  linkType: hard
-
-"next-transpile-modules@npm:^9.0.0":
-  version: 9.1.0
-  resolution: "next-transpile-modules@npm:9.1.0"
-  dependencies:
-    enhanced-resolve: ^5.10.0
-    escalade: ^3.1.1
-  checksum: 8cc46196db3c2d2063fb29fe5b4d03c21065ab08130085b24d61e4ed512d99c12083d28179771cf02f70f8bf5970db0781a228aacf6cc61662dbdcabaddfc472
   languageName: node
   linkType: hard
 
