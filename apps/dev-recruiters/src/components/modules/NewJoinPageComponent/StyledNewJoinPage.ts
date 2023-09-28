@@ -57,14 +57,6 @@ export const SelectRoleText = styled.div`
   font-family: 'Abel', sans-serif;
 `;
 
-export const AreaImage = styled.div`
-  width: 100%;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-`;
-
 export const Footer = styled.div`
   width: 100%;
   border-radius: 15px;
@@ -96,4 +88,19 @@ export const BtnSignUp = styled.button`
   font-family: 'Nunito Sans', sans-serif;
   background-color: ${({ theme }) => theme?.colors?.BLUE_700};
   text-decoration: none;
+`;
+
+export const HeaderImage = styled.div`
+  position: relative;
+  width: 100%;
+  height: 600px;
+`;
+
+export const HeaderContent = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
 `;

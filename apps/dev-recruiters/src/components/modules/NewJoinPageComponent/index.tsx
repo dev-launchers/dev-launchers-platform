@@ -3,19 +3,22 @@ import {
   BtnSignUp,
   Footer,
   Wrapper,
-  AreaImage,
   SelectRoleContainer,
   SelectRoleText,
   FooterFirstText,
   FooterSecondText,
+  HeaderImage,
+  HeaderContent,
 } from './StyledNewJoinPage';
 import BoxContainer from '../../common/BoxContainer';
-import ContainerImage from './ContainerImage/containerImage';
-import JoinPLeft from '../../../images/JoinPage/Join-page-image-left.png';
-import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
+import HDRImage from '../../../images/JoinPage/headerImage.png';
 
-import RolesComponent, { FilteringComponentProps, isMobile } from './RolesComponent';
+import RolesComponent, {
+  FilteringComponentProps,
+  isMobile,
+} from './RolesComponent';
 import { HeaderJoinPage } from './HeaderJoinPage';
+import Image from 'next/image';
 
 interface Props extends FilteringComponentProps {}
 
@@ -23,18 +26,20 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
- 
-  
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={20}>
-        <HeaderJoinPage />
-      </BoxContainer>
-
-      <AreaImage>
-        <ContainerImage src={JoinPLeft} width="100%" loading="lazy" />
-        <ContainerImage src={JoinPRight} width="100%" loading="lazy" />
-      </AreaImage>
+      <HeaderImage>
+        <Image
+          src={HDRImage}
+          layout="fill"
+          objectFit="cover"
+          loading="lazy"
+          quality={100}
+        />
+        <HeaderContent>
+          <HeaderJoinPage />
+        </HeaderContent>
+      </HeaderImage>
 
       <BoxContainer paddingVertical={75}>
         <SelectRoleContainer>
@@ -44,7 +49,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
         </SelectRoleContainer>
       </BoxContainer>
 
-      <BoxContainer paddingHorizontal={isMobile() ? 0: 85}>
+      <BoxContainer paddingHorizontal={isMobile() ? 0 : 85}>
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 
