@@ -87,26 +87,29 @@ function EditIdea() {
     }
   };
 
-  useEffect(async () => {
-    if (ideaId) {
-      const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
-      if (!idea || !idea.id || idea.id == 0) {
-        setGetError(true);
-        return;
-      }
+  useEffect(() => {
+    const asyncFn = async () => {
+      if (ideaId) {
+        const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
+        if (!idea || !idea.id || idea.id == 0) {
+          setGetError(true);
+          return;
+        }
 
-      if (userData.id !== 0) {
-        if (idea.author.id === userData.id) {
-          if (response.data?.status == 'archived') {
-            rejectAuthor();
+        if (userData.id !== 0) {
+          if (idea.author.id === userData.id) {
+            if (response.data?.status == 'archived') {
+              rejectAuthor();
+            }
+
+            setCard(idea);
+          } else {
+            rejectUser();
           }
-
-          setCard(idea);
-        } else {
-          rejectUser();
         }
       }
-    }
+    };
+    asyncFn();
   }, [ideaId, userData.id]);
 
   const SignupSchema = Yup.object().shape({

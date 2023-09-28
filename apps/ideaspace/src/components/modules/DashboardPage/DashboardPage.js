@@ -30,24 +30,27 @@ function DashboardPage() {
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(async () => {
-    if (isAuthenticated) {
-      const data = cleanDataList(await agent.Ideas.get(
-        new URLSearchParams(`populate=*`)));
+  React.useEffect(() => {
+    const asyncFn = async () => {
+      if (isAuthenticated) {
+        const data = cleanDataList(await agent.Ideas.get(
+          new URLSearchParams(`populate=*`)));
 
-        const cards = data.map((item) => {
-          item.comments = cleanDataList(item.comments.data);
-          return {
-            ...item,
-            mostRecentCommentTime: new Date(
-              item.comments[0]?.updated_at
-            ).getTime(),
-          };
-        });
+          const cards = data.map((item) => {
+            item.comments = cleanDataList(item.comments.data);
+            return {
+              ...item,
+              mostRecentCommentTime: new Date(
+                item.comments[0]?.updated_at
+              ).getTime(),
+            };
+          });
 
-        setLoading(false);
-        setSourceCards(cards);
-    }
+          setLoading(false);
+          setSourceCards(cards);
+      }
+    };
+    asyncFn();
   }, [isAuthenticated]);
 
   React.useEffect(() => {
