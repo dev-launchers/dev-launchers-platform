@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 // eslint-disable-next-line no-use-before-define
 import type { User } from '@devlaunchers/models/user';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import React from 'react';
 import { slide as SlideHamburgerMenu } from 'react-burger-menu';

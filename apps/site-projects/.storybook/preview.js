@@ -1,5 +1,5 @@
 import React from "react";
-import * as NextImage from "next/image";
+import * as NextImage from "next/legacy/image";
 import { ThemeProvider } from "styled-components";
 import theme from "../src/styles/theme";
 import GlobalStyle from "../src/styles/globals";
