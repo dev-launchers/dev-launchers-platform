@@ -39,7 +39,7 @@ function Contribution(props) {
               members!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Link href="/projects" passHref>
+              <Link href="/projects" passHref legacyBehavior>
                 <Button fontSize="2rem">View Our Projects</Button>
               </Link>
               <Button

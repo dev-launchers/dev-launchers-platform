@@ -70,7 +70,7 @@ export default function ProjectListItem({ project }: Props) {
                 {expanded ? 'Collapse Positions' : 'More Available Positions'}
               </PositionsButton>
             )}
-            <Link href={`join/${project.slug}`} passHref>
+            <Link href={`join/${project.slug}`} passHref legacyBehavior>
               <DetailsButton onClick={() => {
                 ReactGA.event({
                   category: 'Join Page Actions',

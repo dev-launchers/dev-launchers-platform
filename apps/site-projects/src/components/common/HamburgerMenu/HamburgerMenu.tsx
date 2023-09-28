@@ -72,41 +72,41 @@ const HamburgerMenu: React.FC = () => {
       >
         <div className={style.Logo} onClick={handleNavClick}>
           <div className={style.LogoWrapper}>
-            <Link href={"/"} passHref>
-              <a className="nav-link">
-                <div className={style.LogoImageHolder}>
-                  <Image
-                    alt="Logo"
-                    src={logoMonogramImage}
-                    className={style.LogoImage}
-                    width="144"
-                    height="144"
-                  />
-                </div>
-              </a>
+            <Link href={"/"} passHref className="nav-link">
+
+              <div className={style.LogoImageHolder}>
+                <Image
+                  alt="Logo"
+                  src={logoMonogramImage}
+                  className={style.LogoImage}
+                  width="144"
+                  height="144"
+                />
+              </div>
+
             </Link>
           </div>
         </div>
         <div>
           <div className={style.HeaderNav} onClick={handleNavClick}>
-            <Link href={"/create"} passHref>
-              <a className="nav-link">
-                <div className={style.navEntry}>CREATE</div>
-              </a>
+            <Link href={"/create"} passHref className="nav-link">
+
+              <div className={style.navEntry}>CREATE</div>
+
             </Link>
-            <Link href={"/learn"} passHref>
-              <a className="nav-link">
-                <div className={style.navEntry}>LEARN</div>
-              </a>
+            <Link href={"/learn"} passHref className="nav-link">
+
+              <div className={style.navEntry}>LEARN</div>
+
             </Link>
 
             <div>
               {userData.id ? (
                 <>
-                  <Link href={"/users/me"} passHref>
-                    <a className="nav-link">
-                      <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
-                    </a>
+                  <Link href={"/users/me"} passHref className="nav-link">
+
+                    <div className={style.navEntry}>VISIT ACCOUNT PAGE</div>
+
                   </Link>
                   <a onClick={handleLogout} className="nav-link">
                     <div className={style.navEntry}>LOG OUT </div>
@@ -125,20 +125,20 @@ const HamburgerMenu: React.FC = () => {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             { */}
-            <Link href={"/earn"} passHref>
-              <a className="nav-link">
-                <div className={style.navEntry}>EARN</div>
-              </a>
+            <Link href={"/earn"} passHref className="nav-link">
+
+              <div className={style.navEntry}>EARN</div>
+
             </Link>
-            <Link href={"/support-us"} passHref>
-              <a className="nav-link">
-                <div className={style.navEntry}>SUPPORT US</div>
-              </a>
+            <Link href={"/support-us"} passHref className="nav-link">
+
+              <div className={style.navEntry}>SUPPORT US</div>
+
             </Link>
-            <Link href={"/projects"} passHref>
-              <a className="nav-link">
-                <div className={style.navEntry}>JOIN</div>
-              </a>
+            <Link href={"/projects"} passHref className="nav-link">
+
+              <div className={style.navEntry}>JOIN</div>
+
             </Link>
           </div>
           {/* }

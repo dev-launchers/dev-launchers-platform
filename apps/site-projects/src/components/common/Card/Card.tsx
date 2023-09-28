@@ -86,11 +86,14 @@ const Card: React.FC<CardProps> = (props) => {
             </TagsContainer>
           )}
           {props.isLinkingInside ? (
-            <Link href={`${router?.asPath}/${props?.cardData?.href}`} passHref>
-              <a rel="noopener noreferrer">
-                <Image alt="" imageSrc={props?.cardData?.imageSrc} />
-              </a>
-            </Link>
+            (<Link
+              href={`${router?.asPath}/${props?.cardData?.href}`}
+              passHref
+              rel="noopener noreferrer">
+
+              <Image alt="" imageSrc={props?.cardData?.imageSrc} />
+
+            </Link>)
           ) : (
             <a
               href={props?.cardData?.href}

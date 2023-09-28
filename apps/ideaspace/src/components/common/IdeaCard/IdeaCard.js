@@ -70,7 +70,7 @@ function IdeaCard({ cards, cardType }) {
 
       <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
-      <Link href={{ pathname: urlPath }}>
+      <Link href={{ pathname: urlPath }} legacyBehavior>
         <atoms.Box
           flexDirection="column"
           alignItems="flex-start"
@@ -110,7 +110,7 @@ function IdeaCard({ cards, cardType }) {
           {buttonContent}
         </atoms.Button>
       ) : (
-        <Link href={{ pathname: urlPath }}>
+        <Link href={{ pathname: urlPath }} legacyBehavior>
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"

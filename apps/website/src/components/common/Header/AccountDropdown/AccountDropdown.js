@@ -44,7 +44,7 @@ export default function AccountDropdown(props) {
             <>
               <AccountMenuDropdownItem>
                 <Link href="/users/me" passHref>
-                  <a>Visit Account Page</a>
+                  Visit Account Page
                 </Link>
               </AccountMenuDropdownItem>
               <AccountMenuDropdownItem onClick={handleLogout}>

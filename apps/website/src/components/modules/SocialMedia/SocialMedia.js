@@ -53,22 +53,22 @@ export default function SocialMedia() {
             <List>
               <li>
                 <Link href={"/hangout"} passHref>
-                  <a>
-                    <div>
-                      <LogoImage src={logoMonogramImage} />
-                      &nbsp;Hangout Link
-                    </div>
-                  </a>
+
+                  <div>
+                    <LogoImage src={logoMonogramImage} />
+                    &nbsp;Hangout Link
+                  </div>
+
                 </Link>
               </li>
               <li>
                 <Link href={"/play"} passHref>
-                  <a>
-                    <div>
-                      <LogoImage src={logoMonogramImage} />
-                      &nbsp;Project Showcase
-                    </div>
-                  </a>
+
+                  <div>
+                    <LogoImage src={logoMonogramImage} />
+                    &nbsp;Project Showcase
+                  </div>
+
                 </Link>
               </li>
             </List>

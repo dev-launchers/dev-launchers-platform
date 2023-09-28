@@ -45,14 +45,12 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
       <OptionsContainer isOpen={menuOpen}>
         <Options>
           {links.map(({ text, href }, i) => {
-            return (
-              <>
-                <Link href={href} passHref>
-                  <SubNavLink text={text} key={i} />
-                </Link>
-                {i === 0 && <hr style={{ width: '100%' }} />}
-              </>
-            );
+            return <>
+              <Link href={href} passHref legacyBehavior>
+                <SubNavLink text={text} key={i} />
+              </Link>
+              {i === 0 && <hr style={{ width: '100%' }} />}
+            </>;
           })}
         </Options>
       </OptionsContainer>

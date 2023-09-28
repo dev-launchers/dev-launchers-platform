@@ -72,7 +72,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <Link
               href={`${projectSlug}/apply?position=${position.title}`}
               passHref
-            >
+              legacyBehavior>
               <Button as="a" color="DarkElectricBlue">
                 Apply
               </Button>
@@ -174,7 +174,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <Link
               href={`${projectSlug}/apply?position=${position.title}`}
               passHref
-            >
+              legacyBehavior>
               <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
             </Link>
           </ButtonsSection>

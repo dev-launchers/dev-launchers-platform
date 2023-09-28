@@ -21,7 +21,7 @@ export default function CardTitle({
       }}
     >
       {isLinkingInside ? (
-        <Link href={`${pathname}/${data.href}`} passHref>
+        <Link href={`${pathname}/${data.href}`} passHref legacyBehavior>
           <Title>{data.title}</Title>
         </Link>
       ) : (

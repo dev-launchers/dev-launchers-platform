@@ -88,46 +88,46 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
         >
           <Logo onClick={handleNavClick}>
             <LogoWrapper>
-              <Link href={'/'} passHref>
-                <a className="nav-link">
-                  <LogoImageHolder>
-                    <Image
-                      alt="Logo"
-                      src={logoMonogramImage}
-                      className={String(LogoImage)}
-                      width="144"
-                      height="144"
-                    />
-                  </LogoImageHolder>
-                </a>
+              <Link href={'/'} passHref className="nav-link">
+
+                <LogoImageHolder>
+                  <Image
+                    alt="Logo"
+                    src={logoMonogramImage}
+                    className={String(LogoImage)}
+                    width="144"
+                    height="144"
+                  />
+                </LogoImageHolder>
+
               </Link>
             </LogoWrapper>
           </Logo>
           <div>
             <HeaderNav onClick={handleNavClick}>
-              <Link href={'/create'} passHref>
-                <a className="nav-link">
-                  <NavEntry>CREATE</NavEntry>
-                </a>
+              <Link href={'/create'} passHref className="nav-link">
+
+                <NavEntry>CREATE</NavEntry>
+
               </Link>
-              <Link href={'/learn'} passHref>
-                <a className="nav-link">
-                  <NavEntry>LEARN</NavEntry>
-                </a>
+              <Link href={'/learn'} passHref className="nav-link">
+
+                <NavEntry>LEARN</NavEntry>
+
               </Link>
-              <Link href={'/ideaspace'} passHref>
-                <a className="nav-link">
-                  <NavEntry>DREAM</NavEntry>
-                </a>
+              <Link href={'/ideaspace'} passHref className="nav-link">
+
+                <NavEntry>DREAM</NavEntry>
+
               </Link>
 
               <div>
                 {userData?.id ? (
                   <>
-                    <Link href={'/users/me'} passHref>
-                      <a className="nav-link">
-                        <NavEntry>VISIT ACCOUNT PAGE</NavEntry>
-                      </a>
+                    <Link href={'/users/me'} passHref className="nav-link">
+
+                      <NavEntry>VISIT ACCOUNT PAGE</NavEntry>
+
                     </Link>
                     <a onClick={handleLogout} className="nav-link">
                       <NavEntry>LOG OUT </NavEntry>
@@ -151,15 +151,15 @@ const HamburgerMenu: React.FC<{ userData: User }> = ({ userData }) => {
               <div className={style.navEntry}>PLAY</div>
             </Link>
             { */}
-              <Link href={'/support-us'} passHref>
-                <a className="nav-link">
-                  <NavEntry>SUPPORT US</NavEntry>
-                </a>
+              <Link href={'/support-us'} passHref className="nav-link">
+
+                <NavEntry>SUPPORT US</NavEntry>
+
               </Link>
-              <Link href={'/join'} passHref>
-                <a className="nav-link">
-                  <NavEntry>JOIN</NavEntry>
-                </a>
+              <Link href={'/join'} passHref className="nav-link">
+
+                <NavEntry>JOIN</NavEntry>
+
               </Link>
             </HeaderNav>
             {/* }
