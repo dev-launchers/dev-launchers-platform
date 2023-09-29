@@ -15,5 +15,6 @@ export const Avatar: StoryObj<typeof AvatarComponent> = {
     src: 'https://bit.ly/3EBQXiH',
     delayMs: 600,
     rounded: 'sm',
+    onClick: () => alert('Could open profile'),
   },
 };
