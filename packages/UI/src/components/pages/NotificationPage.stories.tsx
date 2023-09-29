@@ -14,6 +14,25 @@ export default {
   
   export const Primary = Template.bind({});
   Primary.args = {
-    user: {},
+    user: {
+      id: 2, 
+    name: 'John',
+    username: 'john',
+    email: 'john@test.com',
+    bio: 'test',
+    profilePictureUrl: 'string',
+    socialMediaLinks: [],
+    totalPoints: 2,
+    totalSeasonPoints: 2,
+    availablePoints: 2,
+    volunteerHours: 2,
+    discord: {
+      id: 1,
+      avatar: 'url', 
+      username: 'discordUsername',
+      discriminator: '1234', 
+    },
+    interests: [],
+    },
 
   };

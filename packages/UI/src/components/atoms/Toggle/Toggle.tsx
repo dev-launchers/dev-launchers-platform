@@ -1,19 +1,19 @@
 import { CheckBoxWrapper, CheckBox, Switch } from './StyledToggle';
 import type { ToggleProps } from '.';
 
-const Toggle = ({ disabled, label }: ToggleProps) => {
+const Toggle = ({ disabled, label, name = "checkbox", htmlFor = "checkbox" }: ToggleProps) => {
   return (
     <div>
       <CheckBoxWrapper>
         <CheckBox
           disabled={disabled}
-          name="checkbox"
+          name={name}
           type="checkbox"
-          id="checkbox"
+          id={name}
         />
-        <Switch htmlFor="checkbox" />
+        <Switch htmlFor={htmlFor} />
         {label && (
-          <label id="label" htmlFor="checkbox">
+          <label id="label" htmlFor={htmlFor}>
             {label}
           </label>
         )}

@@ -48,21 +48,29 @@ export function DocumentScreen({ user }: DocumentScreenProps) {
               disabled={false}
               header={'PROFILE UPDATES'}
               paragraph="Stay informed about any updates to your profile and account settings."
+              name="checkbox2"
+              htmlFor="checkbox2"
             />
             <Section
               disabled={false}
               header={'EVENTS'}
               paragraph="Get notified about upcoming events, workshops, or conferences."
+              name="checkbox3"
+              htmlFor="checkbox3"
             />
             <Section
               disabled={false}
               header={'TIP OF THE DAY'}
               paragraph="Recieve daily tips, tricks, or helpful insights to enhance your experience."
+              name="checkbox4"
+              htmlFor="checkbox4"
             />
             <Section
               disabled={false}
               header={'LATEST NEWS'}
               paragraph="Stay up to date with the latest news and updates of the organization"
+              name="checkbox5"
+              htmlFor="checkbox5"
             />
           </div>
         </div>
