@@ -23,8 +23,8 @@ export const SingleComment = styled.div`
 export const SingleCommentContent = styled.div`
   width: 100%;
   min-width: 430px;
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
-  color: #C4C4C4;
+  background-color: white;
+  color: black;
   border-radius: 25px;
   padding: 20px;
   display: inline-flex;
@@ -37,14 +37,21 @@ export const SingleCommentContent = styled.div`
   h3 {
     margin: 0;
     padding-right: 5px;
-    font-size: 12px;
-    font-style: italic;
+    font-size: 18px;
     font-weight: 1000 ;
-    color: white;
+    color: black;
+  }
+
+  h5 {
+    margin: 0;
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: 1000 ;
+    color: black;
   }
 
   p {
-    font-size: 12px;
+    font-size: 16px;
     margin: 0;
   }
 `;
@@ -155,6 +162,17 @@ export const UserImageOne = styled.img`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+`;
+
+
+export const CommentBox = styled.textarea`
+  border-radius: 10px;
+  background-color: #F0EDED;
+  border: solid 1px #F0EDED;
+  color: #7F7E7F;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 

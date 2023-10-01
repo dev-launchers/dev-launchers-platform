@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
+import commentSvg from '../../../images/comment.svg';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
 import IdeaCardComment from './IdeaCardComment';
@@ -66,50 +68,43 @@ function IdeaCard({ cards, cardType }) {
         borderRadius: '1rem',
       }}
     >
+
       <atoms.Box>
-        <IdeaCardTag status={tagContent} />
-        <SaveIdea 
-        savedCards={savedCards} 
-        setSavedCards={setSavedCards} 
-        id={cards.id}/>
+        <IdeaCardTag
+          status={tagContent}
+        />
       </atoms.Box>
 
-      <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
+      <IdeaCardImg
+        cardId={cards.id}
+        cardImg={cards.imgSrc}
+      />
 
       <Link href={{ pathname: urlPath }}>
-        <atoms.Box
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="space-between"
-          padding="0rem 2rem 2rem"
-          style={{ maxWidth: '18.5rem' }}
-        >
-          <atoms.Typography
-            type="h3"
-            style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
-          >
-            {cards.ideaName}
-          </atoms.Typography>
+        <a>
+        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
+          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }} />
 
-          <IdeaCardComment commentLength={cards.comments.length} />
+        {cards?.comments?.length > 0 ? (
+          <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
+            <img alt='commentSvg' src={commentSvg} />
+            <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
 
-          <IdeaCardUpdated updatedAt={cards.updated_at} />
-        </atoms.Box>
+          <IdeaCardComment
+            commentLength={cards.comments.length}
+          />
+
+          <IdeaCardUpdated
+            updatedAt={cards.updated_at}
+          />
+        </atoms.Box>) : null}
+        </a>
       </Link>
 
-      <atoms.Box padding="0rem 2rem 2rem">
-        <LikeButton
-          onClick={() => setLiked((prev) => !prev)}
-          filled={liked}
-          text={liked ? 1 : ''}
-          disabled={isAuthenticated ? false : true}
-        ></LikeButton>
-      </atoms.Box>
-
-      {tagContent == 'archived' ? (
+      {tagContent == "archived" ? (
         <atoms.Button
-          buttonSize="standard"
-          buttonType="alternative"
+          buttonSize='standard'
+          buttonType='alternative'
           style={{ margin: '0rem 2rem 1.5rem' }}
           onClick={reactivateIdea}
         >
@@ -118,8 +113,8 @@ function IdeaCard({ cards, cardType }) {
       ) : (
         <Link href={{ pathname: urlPath }}>
           <atoms.Button
-            buttonSize="standard"
-            buttonType="alternative"
+            buttonSize='standard'
+            buttonType='alternative'
             style={{ margin: '0rem 2rem 1.5rem' }}
           >
             {buttonContent}

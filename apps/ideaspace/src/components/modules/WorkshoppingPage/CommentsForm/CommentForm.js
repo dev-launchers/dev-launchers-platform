@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {
   UserNameCommentBox,
   UserNameComment,
   UserComment,
   UserImageOne,
+  CommentBox,
+  // SubmitButton,
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
+  const [state, setState] = React.useState(false)
+
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [disabled, setDisabled] = React.useState(true);
@@ -27,41 +31,34 @@ function CommentForm(props) {
   };
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
-    var data = { author: userData.username, text: props.handleTextChange.trim() };
+    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange.trim() };
 
-    const res = await agent.Comments.put(selectedCard.id, data);
-    console.log('res', res);
-    props.setHandleTextChange('');
+    try {
+      const res = await agent.Comments.post(data);
+      props.setHandleTextChange('');
+    } catch(error) {
+      console.error(error)
+    }
 
-    axios
-      .post(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${selectedCard.id}/comment`,
-        data
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          props.setHandleTextChange('');
-        }
-      });
+    // Refresh the page so that the new comment is displayed:
+    // window.location.reload(false);
+    // this.setState(
+    //   {reload: true},
+    //   () => this.setState({reload: false})
+    // )
+    setState(true)
   };
-  // move to WorkshoppingPage
+
+  // move to WorkshoppingPage?
   return (
     <div>
       {isAuthenticated ? (
-        <form onSubmit={handleSubmit}>
-          {/* <UserNameCommentBox>
-            <UserNameComment
-              type="text"
-              name="author"
-              placeholder="Your name..."
-              value={props.handleChange}
-              onChange={handleChange}
-            />
-          </UserNameCommentBox> */}
+        <form onSubmit={handleSubmit} style={{textAlign: "left", paddingLeft: "20px", paddingRight: "20px"}}>
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
-            <textarea
+            <CommentBox
               onKeyUp={(e) => {
                 e.target.style.height = 'inherit';
                 e.target.style.height = `${e.target.scrollHeight}px`;
@@ -74,10 +71,10 @@ function CommentForm(props) {
               placeholder="What are your thoughts?"
               value={props.handleTextChange}
               onChange={handleTextChange}
-            ></textarea>
-            {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
+              // maxlength={MAX_COMMENT_CHARS}
+            ></CommentBox>
+            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
           </UserComment>
-          <button type="submit" disabled={disabled}>Submit</button>
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>

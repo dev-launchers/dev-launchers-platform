@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
 import Error from "next/error";
 import { useRouter } from 'next/router';
-import CommentList from './CommentsForm/DisplayComments';
+import DisplayComments from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
 import { IdeaOverview } from './IdeaOverview/IdeaOverview';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -26,12 +27,21 @@ import {
 
 import { useFetchIdea } from './useFetchIdea';
 
-function WorkshoppingPage() {
+export default function WorkshoppingPage(props) {
+
   const router = useRouter()
-  const { ideaId } = router.query;
+  
+  React.useEffect(() => {
+    if(!router.isReady){ return; }
+  }, [router.isReady]);
+ 
+  const { ideaId } = "";
+
+  const [comments, setComments] = useState([]);
+
   const [handleChange, setHandleChange] = useState('');
   const [handleTextChange, setHandleTextChange] = useState('');
-  const { data, loading, hidden, getError } = useFetchIdea(ideaId);
+  const { data, loading, hidden, getError } = useFetchIdea(router.query.ideaId, setComments);
 
   const [ArchivedIdea, confirmArchived] = useConfirm(
     ["This Idea has been archived.", '', ''],
@@ -49,6 +59,7 @@ function WorkshoppingPage() {
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
+
     return (
       <Container theme={theme}>
         <ArchivedIdea />
@@ -76,14 +87,14 @@ function WorkshoppingPage() {
           <Wrapper>
             <IdeaOverview selectedCard={data} />
 
-            <Form>
-              <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} />
-            </Form>
-
             <Comments>
-              {/* a count of the comments in the comment feed: */}
-              {/* <h6>Comment Feed: {data.comments.length}</h6> */}
-              <CommentList selectedCard={data} />
+              <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {comments.length}</h5>
+
+              <Form>
+                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} comments={comments} setComments={() => setComments(comments)} />
+              </Form>
+
+              <DisplayComments selectedCard={data} comments={comments} />
             </Comments>
           </Wrapper>
         }
@@ -91,5 +102,3 @@ function WorkshoppingPage() {
     );
   }
 }
-
-export default WorkshoppingPage;

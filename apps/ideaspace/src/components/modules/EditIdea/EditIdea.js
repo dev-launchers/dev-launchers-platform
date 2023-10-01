@@ -157,7 +157,6 @@ function EditIdea() {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
-
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         handleDialog(url);
