@@ -17,7 +17,6 @@ import {
 
 function SubmissionForm() {
   let { userData, isAuthenticated } = useUserDataContext();
-  console.log('userData', userData);
 
   const router = useRouter();
   const [sending, setSending] = useState(false);
