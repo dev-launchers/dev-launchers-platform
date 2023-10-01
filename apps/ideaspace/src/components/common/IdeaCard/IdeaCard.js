@@ -1,17 +1,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
-import commentSvg from '../../../images/comment.svg';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
 import IdeaCardComment from './IdeaCardComment';
 import IdeaCardUpdated from './IdeaCardUpdated';
 import useConfirm from '../DialogBox/DialogBox';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
-import {
-  useUserDataContext,
-} from '@devlaunchers/components/src/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import SaveIdea from '../../modules/SaveIdea/SaveIdea';
 
@@ -19,9 +15,8 @@ function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
   const [buttonContent, setButtonContent] = useState('');
   const [urlPath, setUrlPath] = useState('');
-  const [isFilled, setIsFilled] = useState(false);
   const [liked, setLiked] = useState(false);
-  const { userData, isAuthenticated } = useUserDataContext();
+  const { isAuthenticated } = useUserDataContext();
   const [savedCards, setSavedCards] = useState([]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(
@@ -73,6 +68,10 @@ function IdeaCard({ cards, cardType }) {
         <IdeaCardTag
           status={tagContent}
         />
+        {isAuthenticated ? <SaveIdea 
+          savedCards={savedCards} 
+          setSavedCards={setSavedCards} 
+          id={cards.id}/> : null}
       </atoms.Box>
 
       <IdeaCardImg
@@ -81,25 +80,37 @@ function IdeaCard({ cards, cardType }) {
       />
 
       <Link href={{ pathname: urlPath }}>
-        <a>
-        <atoms.Box flexDirection='column' alignItems='flex-start' justifyContent='space-between'
-          padding='0rem 2rem 2rem' style={{ maxWidth: '18.5rem' }} />
+        <atoms.Box 
+          flexDirection='column' 
+          alignItems='flex-start' 
+          justifyContent='space-between'
+          padding='0rem 2rem 2rem' 
+          style={{ maxWidth: '18.5rem' }}
+        >
+          <atoms.Typography
+            type="h3"
+            style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
+          >
+            {cards.ideaName}
+          </atoms.Typography>
 
-        {cards?.comments?.length > 0 ? (
-          <atoms.Box alignItems='center' style={{ marginTop: '-1rem' }} >
-            <img alt='commentSvg' src={commentSvg} />
+          <atoms.Box alignItems='center' >
             <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
-
-          <IdeaCardComment
-            commentLength={cards.comments.length}
-          />
-
-          <IdeaCardUpdated
-            updatedAt={cards.updated_at}
-          />
-        </atoms.Box>) : null}
-        </a>
+            <IdeaCardComment commentLength={cards.comments.length} />
+          </atoms.Box>
+        <IdeaCardUpdated updatedAt={cards.updated_at} />
+        </atoms.Box>
       </Link>
+
+      {isAuthenticated ? <atoms.Box padding="0rem 2rem 2rem">
+        <LikeButton
+          onClick={() => setLiked((prev) => !prev)}
+          filled={liked}
+          text={liked ? 1 : ''}
+        ></LikeButton>
+      </atoms.Box>
+      : null}
+      
 
       {tagContent == "archived" ? (
         <atoms.Button
