@@ -16,14 +16,7 @@ import {
 } from './StyledSubmissionForm';
 
 function SubmissionForm() {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
   const [sending, setSending] = useState(false);

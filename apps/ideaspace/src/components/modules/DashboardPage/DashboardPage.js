@@ -17,14 +17,7 @@ import {
 
 function DashboardPage() {
 
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);

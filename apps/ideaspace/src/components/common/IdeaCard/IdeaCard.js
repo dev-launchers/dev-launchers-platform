@@ -98,7 +98,7 @@ function IdeaCard({ cards, cardType }) {
             <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
             <IdeaCardComment commentLength={cards.comments.length} />
           </atoms.Box>
-        <IdeaCardUpdated updatedAt={cards.updated_at} />
+        <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
         </atoms.Box>
       </Link>
 
