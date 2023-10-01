@@ -72,21 +72,24 @@ function BrowseIdeas() {
 
   React.useEffect(async () => {
     const ideaCards = cleanDataList(await agent.Ideas.get(
-      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
+      new URLSearchParams(`populate=deep&pagination[pageSize]=1000`)));
 
     const getCards = ideaCards.map((item) => {  
       if (item?.comments?.data) {
         item.comments = cleanDataList(item.comments.data);
+
+        const recentCommentedTime = item.comments.length > 0 ? new Date(
+          item.comments[0]?.updatedAt
+        ) :  new Date(item.updatedAt);
+
         return {
           ...item,
-          mostRecentCommentTime: new Date(
-            item.comments[0]?.updated_at
-          )?.getTime(),
+          mostRecentCommentTime: recentCommentedTime
         };
       }
       return {
         ...item,
-        mostRecentCommentTime: new Date()?.getTime(),
+        mostRecentCommentTime: new Date(item.updatedAt)?.getTime(),
       };
     });
 

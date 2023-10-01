@@ -4,12 +4,7 @@ import { cleanData, cleanDataList } from '../../../utils/StrapiHelper';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 export const useFetchIdea = (ideaId, setComments) => {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+  let { userData } = useUserDataContext();
 
   const [hidden, setHidden] = useState(false);
   const [getError, setGetError] = useState(false);
@@ -41,7 +36,7 @@ export const useFetchIdea = (ideaId, setComments) => {
       if (ideaId) {
         setLoading(true);
 
-        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=deep`)));
 
         setComments(cleanDataList(data.comments.data))
         

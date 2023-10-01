@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useParams } from "react-router-dom";
 import Error from "next/error";
 import { useRouter } from 'next/router';
 import DisplayComments from './CommentsForm/DisplayComments';
@@ -35,8 +34,6 @@ export default function WorkshoppingPage(props) {
     if(!router.isReady){ return; }
   }, [router.isReady]);
  
-  const { ideaId } = "";
-
   const [comments, setComments] = useState([]);
 
   const [handleChange, setHandleChange] = useState('');
