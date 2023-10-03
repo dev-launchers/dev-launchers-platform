@@ -4,5 +4,5 @@ export interface ToggleProps {
   disabled: boolean;
   label: string;
   name?: string;
-  htmlFor?: string
+  htmlFor?: string;
 }

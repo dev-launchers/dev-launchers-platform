@@ -20,6 +20,9 @@ module.exports = {
     colors: filterTokensByType('color', tokens),
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
+    screens: {
+      'xs': '345px'
+    }
   },
   variants: {},
   plugins: [],

@@ -14,8 +14,8 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ paragraph, header, disabled, name = "checkbox", htmlFor ='checkbox' }) => {
     return (
-        <div className='w-full py-8 flex border-b-gray-200 border-b gap-[17px] self-stretch content-center items-center'>
-            <div className='flex flex-[1_0_0] flex-col items-start gap-1 flex-align-middle'>
+        <div className='w-full py-8 flex border-b-gray-200 border-b gap-[17px] self-stretch content-center items-center flex-wrap xs:flex-nowrap'>
+            <div className='flex xs:flex-[1_0_0] flex-col items-start gap-1 flex-align-middle'>
                 <h2 className='leading-10'>{header}</h2>
                 <p>
                     {paragraph}
