@@ -29,7 +29,8 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")
       : window.btoa(str);
-  const heroImageConfig = heroImage?.formats?.large || heroImage;
+  const heroImageConfig = heroImage?.data?.attributes?.formats?.large || heroImage?.data?.attributes;
+  const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + heroImageConfig.url : heroImageConfig?.url
   return (
     <Wrapper>
       <h2>{projectName}</h2>
@@ -43,7 +44,7 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
         }}
       >
         <Image
-          src={heroImageConfig.url}
+          src={imageUrl}
           // height={heroImageConfig.height}
           // width={heroImageConfig.width}
           layout="fill"
@@ -51,7 +52,7 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
           objectFit="cover"
           placeholder="blur"
           blurDataURL={`data:image/svg+xml;base64,${toBase64(
-            shimmer(heroImageConfig.width, heroImageConfig.height)
+            shimmer(heroImageConfig?.width, heroImageConfig?.height)
           )}`}
         />
       </div>

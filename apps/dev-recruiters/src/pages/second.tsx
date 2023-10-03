@@ -15,7 +15,7 @@ const SecondPage = () => (
       <meta property="og:type" content="website"></meta>
       <meta
         property="og:url"
-        content="https://devlaunchers.org/projects"
+        content={process.env.FRONT_END_URL + "/projects"}
       ></meta>
       <meta
         property="og:image"
@@ -30,7 +30,7 @@ const SecondPage = () => (
       <meta property="twitter:card" content="summary_large_image"></meta>
       <meta
         property="twitter:url"
-        content="https://devlaunchers.org/projects"
+        content={process.env.FRONT_END_URL + "/projects"}
       ></meta>
       <meta property="twitter:title" content="Dev Discovery"></meta>
       <meta

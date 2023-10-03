@@ -11,7 +11,6 @@ export const StyledCard = styled(Card)`
   @media (max-width: 1280px) {
     margin-right: 0px;
     margin-bottom: 25px;
-    margin-top: 25px;
   }
 `;
 
