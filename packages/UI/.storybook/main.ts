@@ -1,6 +1,7 @@
-// use `mergeConfig` to recursively merge Vite options
+import type { StorybookConfig } from '@storybook/nextjs';
 import path, { dirname, join } from 'path';
-module.exports = {
+
+const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   staticDirs: ['../public'],
   addons: [
@@ -10,11 +11,11 @@ module.exports = {
     '@storybook/addon-mdx-gfm',
   ].map(getAbsolutePath),
   framework: {
-    name: getAbsolutePath('@storybook/nextjs'),
+    name: getAbsolutePath('@storybook/nextjs') as "@storybook/nextjs",
     options: {},
   },
   webpackFinal: async (config) => {
-    config.module.rules.push({
+    config?.module?.rules?.push({
       test: /\.mjs$/,
       include: /node_modules/,
       type: 'javascript/auto',
@@ -24,8 +25,21 @@ module.exports = {
   docs: {
     autodocs: true,
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      compilerOptions: {
+        allowSyntheticDefaultImports: false,
+        esModuleInterop: false,
+      },
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: () => true,
+    },
+  }
 };
 
 function getAbsolutePath(value) {
   return dirname(require.resolve(join(value, 'package.json')));
 }
+
+export default config;

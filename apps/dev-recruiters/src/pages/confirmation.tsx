@@ -17,7 +17,7 @@ function confirmation() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={process.env.FRONT_END_URL + "/confirmation"}
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/confirmation"}
         />
         <meta
           property="og:image"
@@ -32,7 +32,7 @@ function confirmation() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content={process.env.FRONT_END_URL + "/projects"}
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta
