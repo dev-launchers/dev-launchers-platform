@@ -28,8 +28,8 @@ const tagIconFillColor = (color = 'black', mode = 'light'): string => {
 /**
  * Tag component variations
  */
-export const tag = tv({
-  base: 'inline-flex items-center font-medium text-white rounded-full active:opacity-80 tag',
+const tag = tv({
+  base: 'inline-flex items-center font-medium text-white rounded-full active:opacity-80',
   variants: {
     color: {
       white: 'bg-white text-black',
@@ -227,7 +227,7 @@ export const tag = tv({
 /**
  * Tag component properties interface
  */
-export interface TagProps extends VariantProps<typeof tag> {
+interface TagProps extends VariantProps<typeof tag> {
   /**
    * The text to display in the tag.
    */
@@ -299,42 +299,30 @@ export interface TagProps extends VariantProps<typeof tag> {
  * @example <Tag label="Tag" color="primary" size="md" selected shadow onClose={() => {}} />
  */
 export function Tag({
+  color = tag.defaultVariants.color,
   label,
-  size = 'md',
-  color = 'black',
-  selected = false,
-  shadow = false,
-  outline = false,
-  mode = 'light',
-  ...options
+  mode = tag.defaultVariants.mode,
+  outline = tag.defaultVariants.outline,
+  selected = tag.defaultVariants.selected,
+  shadow = tag.defaultVariants.shadow,
+  size = tag.defaultVariants.size,
+  onClose,
+  ...props
 }: TagProps) {
-  // set the default properties
-  const props = {
-    ...tag.defaultVariants,
-    ...options,
-    label,
-    size,
-    color,
-    selected,
-    shadow,
-    outline,
-    mode,
-  };
+  const styles = tag({ color, mode, outline, selected, shadow, size });
 
   // return options for accessibility
-  return props.selected ? (
-    <button
-      className={tag(props)}
-      onClick={props.onClose}
-      onKeyDown={props.onClose}
-    >
-      {props.label}
+  return selected ? (
+    <button className={styles} onClick={onClose} onKeyDown={onClose} {...props}>
+      {label}
       <span className="p-0 m-0">
-        <Close stroke={tagIconFillColor(props.color, props.mode)} />
+        <Close stroke={tagIconFillColor(color, mode)} />
       </span>
     </button>
   ) : (
-    <span className={tag(props)}>{props.label}</span>
+    <span className={styles} {...props}>
+      {label}
+    </span>
   );
 }
 
