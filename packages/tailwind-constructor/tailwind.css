@@ -981,6 +981,17 @@ video {
          column-gap: var(--6, 1.5rem);
   }
 
+  @media not all and (min-width: 1280px) {
+    .sm\:max-xl\:grid-cols-8 {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+
+    .sm\:max-xl\:gap-x-6 {
+      -moz-column-gap: var(--6, 1.5rem);
+           column-gap: var(--6, 1.5rem);
+    }
+  }
+
   @media (min-width: 768px) {
     .sm\:md\:gap-x-4 {
       -moz-column-gap: var(--4, 1rem);

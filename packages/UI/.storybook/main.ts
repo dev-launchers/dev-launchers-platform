@@ -2,7 +2,7 @@ import type { StorybookConfig } from '@storybook/nextjs';
 import path, { dirname, join } from 'path';
 
 const config: StorybookConfig = {
-  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/**/*.mdx'],
   staticDirs: ['../public'],
   addons: [
     '@storybook/addon-essentials',

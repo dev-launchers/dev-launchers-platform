@@ -2,7 +2,7 @@ import * as React from 'react';
 import { tv } from 'tailwind-variants';
 
 const GridStyles = tv({
-  base: 'container grid mx-auto grid-cols-4 gap-x-4 sm:grid-cols-8 sm:gap-x-6 xl:grid-cols-12',
+  base: 'container grid mx-auto grid-cols-4 gap-x-4 sm:max-xl:grid-cols-8 sm:gap-x-6 xl:grid-cols-12',
 });
 
 interface GridProps {
