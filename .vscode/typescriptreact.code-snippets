@@ -1,0 +1,51 @@
+{
+	"Create a component": {
+		"prefix": "comp",
+		"body": [
+		  "import * as React from 'react';",
+		  "import { tv, type VariantProps } from 'tailwind-variants';",
+		  "",
+		  "const $1Styles = tv({",
+		  "  slots: {$2},",
+		  "  variants: {$3},",
+		  "});",
+		  "",
+		  "interface $1Props extends VariantProps<typeof $1Styles> {}",
+		  "",
+		  "const $1 = ({}: $1Props) => {",
+		  "  return <div>$0</div>;",
+		  "};",
+		  "",
+		  "$1.displayName = '$1';",
+		  "export default $1;",
+		  ""
+		],
+		"description": "Create a component"
+  },
+  "create a sample story": {
+		"prefix": "story",
+		"body": [
+		  "import type { Meta, StoryObj } from '@storybook/react';",
+		  "",
+		  "import $1 from './$1';",
+		  "",
+		  "const meta: Meta<typeof $1> = {",
+		  "  component: $1,",
+		  "};",
+		  "",
+		  "export default meta;",
+		  "type Story = StoryObj<typeof $1>;",
+		  "",
+		  "/*",
+		  " *👇 Render functions are a framework specific feature to allow you control on how the component renders.",
+		  " * See https://storybook.js.org/docs/react/api/csf",
+		  " * to learn how to use render functions.",
+		  " */",
+		  "export const Primary: Story = {",
+		  "  render: () => <$1 />,",
+		  "};",
+		  ""
+		],
+		"description": "create a sample story"
+  }
+}
