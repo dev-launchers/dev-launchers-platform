@@ -3,46 +3,45 @@ import React from 'react';
 import Developer from '../../../.././images/Onboarding/RoleCard/developer.svg';
 import UX from '../../../.././images/Onboarding/RoleCard/ux-ui.svg';
 import Other from '../../../.././images/Onboarding/RoleCard/other.svg';
+import juniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/junior-experience.svg';
+import midExperienceSvg from '../../../.././images/Onboarding/RoleCard/mid-experience.svg'
+import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboarding-folders.svg';
+import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
+import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
-export const IconImg = ({iconImg}) => {
-    switch (iconImg) {
-        case 'Developer':
-            return (
-                <img src={Developer}/>
-            )
-
-        case 'UX':
-            return (
-                <img src={UX}/>
-            )
-
-        case 'Other':
-            return (
-                <img src={Other}/>
-            )
-
-        default:
-            return (
-            <img src={Developer} />
-            )
-    }
+export const IconImg = ({ iconImg }) => {
+  switch (iconImg) {
+    case 'Junior':
+      return <img src={juniorExperienceSvg} />
+    case 'Mid-Level':
+      return <img src={midExperienceSvg} />
+    case 'Senior':
+      return <img src={seniorExperienceSvg} />
+    case 'Onboarding':
+      return <img src={onboardingFoldersSvg} />
+    case 'Developer':
+      return <img src={Developer} />
+    case 'UX':
+      return <img src={UX} />
+    case 'Other':
+      return <img src={Other} />
+    default:
+      return <img src={Developer} />
+  }
 };
 
 export const RoleCardContainer = styled.div`
-    margin: 50px 10px 0px;
-    /* Components */
     box-sizing: border-box;
-    /* Auto layout */
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 35px 18px;
     align-items: center;
-    padding: 5%;
-    gap: 10px;
-    width: 220px;
-    height: 250px;
-    border: 1px solid #7F7E7F;    
+    width: 18vw;
+    border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
-
+		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
+    height: 200px;
     &.selected {
         border: 5px solid #3A7CA5;
     }
@@ -56,27 +55,31 @@ export const IconWrapper = styled.div`
     };
 `;
 
-
 export const TextWrapper = styled.div`
     text-align: center;
     width: 100%;
 
+		p{
+			margin: 0px;
+			margin-bottom: 10px;
+		}
     .title {
-        font-weight: 900;
-
-        &.theme1 {
-        color: #295774;
-        }
-
-        &.theme2 {
-            color: #3A7CA5;
-        }
-
-        &.theme3 {
-            color: #FF7F0E;
-        }
+			font-weight: 900;
+			color: black;
     };
+
+		.card-subtitle{
+
+		}
 `;
+
+export const GroupRoleCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap: 20px;
+    align-items: flex-end;
+`
 
 
 

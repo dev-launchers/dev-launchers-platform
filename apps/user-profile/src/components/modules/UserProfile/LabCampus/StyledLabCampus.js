@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 export const TimeLineContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_2};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
   margin-bottom: 1rem;
 `;
 export const TimeStamp = styled.span`

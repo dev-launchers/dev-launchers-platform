@@ -70,15 +70,15 @@ export default function UserProfile({ publicUserData, isPublic }) {
       });
   };
 
-  React.useEffect(() => {
-    const myProjects = [];
-    projects.map((project) => {
-      [...project.team.leaders, ...project.team.members].map((member) => {
-        if (member.id == userData.id) myProjects.push(project);
-      });
-    });
-    setMyProjects(myProjects);
-  }, [projects, userData]);
+  // React.useEffect(() => {
+  //   const myProjects = [];
+  //   projects.map((project) => {
+  //     [...project.team.leaders, ...project.team.members].map((member) => {
+  //       if (member.id == userData.id) myProjects.push(project);
+  //     });
+  //   });
+  //   setMyProjects(myProjects);
+  // }, [projects, userData]);
   // End Projects/Opportunities
 
 
@@ -114,6 +114,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
       parseInt(Math.random() * userCount),
       parseInt(Math.random() * userCount),
     ];
+    
     let usersData = await Promise.all(randomUserIds.map(async (userId) =>
       (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
     ));
@@ -126,16 +127,13 @@ export default function UserProfile({ publicUserData, isPublic }) {
   React.useEffect(() => {
     getInterests();
   }, []);
+
   const getInterests = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
-      .then(({ data }) => {
-        if (data) {
-          setInterests(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch interest data");
-      });
+    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`).then(({ data }) => {
+      data && setInterests(data);
+    }).catch(() => {
+      console.error("Could not fetch interest data");
+    });
   };
   // End Interests
 
@@ -144,17 +142,17 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
-  return loading ? <Loader /> : 
-  <UserProfileView
-    publicUserData={publicUserData}
-    isPublic={isPublic}
-    userData={userData}
-    opportunities={opportunities}
-    myProjects={myProjects}
-    ideas={ideas}
-    people={people}
-    interests={interests}
-  />;
+  return loading ? <Loader /> :
+    <UserProfileView
+      publicUserData={publicUserData}
+      isPublic={isPublic}
+      userData={userData}
+      opportunities={opportunities}
+      myProjects={myProjects}
+      ideas={ideas}
+      people={people}
+      interests={interests}
+    />;
 }
 
 // View component
@@ -170,63 +168,63 @@ export function UserProfileView({
 }) {
 
   return (
-        <Wrapper>
-          <UserSection>
-            <ProfileCard
-              img={isPublic ? publicUserData?.profile?.profilePictureUrl : userData.profilePictureUrl}
-              name={isPublic ? publicUserData?.profile?.displayName : userData.name}
-              username={isPublic ? publicUserData?.username : userData.username}
-              created_at={isPublic ? publicUserData?.created_at : userData?.created_at}
-            />
+    <Wrapper>
+      <UserSection>
+        <ProfileCard
+          img={isPublic ? publicUserData?.profile?.profilePictureUrl : userData.profilePictureUrl}
+          name={isPublic ? publicUserData?.profile?.displayName : userData.name}
+          username={isPublic ? publicUserData?.username : userData.username}
+          created_at={isPublic ? publicUserData?.created_at : userData?.created_at}
+        />
 
-            <UserInfo>
-              <BioBox
-                name={isPublic ? publicUserData?.profile?.displayName : userData.name}
-                data={isPublic ? publicUserData?.profile : userData}
-                canEdit={!isPublic}
-              />
-            </UserInfo>
-          </UserSection>
+        <UserInfo>
+          <BioBox
+            name={isPublic ? publicUserData?.profile?.displayName : userData.name}
+            data={isPublic ? publicUserData?.profile : userData}
+            canEdit={!isPublic}
+          />
+        </UserInfo>
+      </UserSection>
 
-          <Misc>
-            <Tabs defaultFocus={true} defaultIndex={0} style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
-              <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>
-                {
-                  // Have to do this hack for some reason (create empty tab if page not loaded)...
-                  // otherwise tabs break
-                  Object.entries(userData || {}).length === 0 ? <Tab></Tab> : ""
-                }
-                {
-                  // Render tabs from our dynamically built learnPageData object
-                  ["Projects", "People", "Interests", "Ideas", "Opportunities"].map((key) => (
-                    <Tab key={`tab${key}`}>{key}</Tab>
-                  ))
-                }
-              </TabList>
+      <Misc>
+        <Tabs defaultFocus={true} defaultIndex={0} style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
+          <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>
+            {
+              // Have to do this hack for some reason (create empty tab if page not loaded)...
+              // otherwise tabs break
+              Object.entries(userData || {}).length === 0 ? <Tab></Tab> : ""
+            }
+            {
+              // Render tabs from our dynamically built learnPageData object
+              ["Projects", "People", "Interests", "Ideas", "Opportunities"].map((key) => (
+                <Tab key={`tab${key}`}>{key}</Tab>
+              ))
+            }
+          </TabList>
 
-              <TabPanel>
-                <UserProjects myProjects={myProjects} />
-              </TabPanel>
+          <TabPanel>
+            <UserProjects myProjects={myProjects} />
+          </TabPanel>
 
-              <TabPanel>
-                <People people={people} />
-              </TabPanel>
+          <TabPanel>
+            <People people={people} />
+          </TabPanel>
 
-              <TabPanel>
-                <UserInterests interests={interests} />
-              </TabPanel>
+          <TabPanel>
+            <UserInterests interests={interests} />
+          </TabPanel>
 
-              <TabPanel>
-                <RecommendedIdeas ideas={ideas} />
-              </TabPanel>
+          <TabPanel>
+            <RecommendedIdeas ideas={ideas} />
+          </TabPanel>
 
-              <TabPanel>
-                <Opportunities opportunities={opportunities} />
-              </TabPanel>
+          <TabPanel>
+            <Opportunities opportunities={opportunities} />
+          </TabPanel>
 
-            </Tabs>
-          </Misc>
-        </Wrapper>
+        </Tabs>
+      </Misc>
+    </Wrapper>
   );
 }
 

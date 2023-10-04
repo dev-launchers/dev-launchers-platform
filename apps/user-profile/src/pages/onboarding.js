@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import UserOnboarding from '../components/modules/UserOnboarding';
+import OnboardingLandingPage from '../components/modules/OnboardingLandingPage';
 
 export default function UserOnboardingPage() {
     return (
@@ -8,7 +8,7 @@ export default function UserOnboardingPage() {
                 <title>Onboarding</title>
             </Head>
             <div>
-                <UserOnboarding />
+                <OnboardingLandingPage />
             </div>
         </>
     );
