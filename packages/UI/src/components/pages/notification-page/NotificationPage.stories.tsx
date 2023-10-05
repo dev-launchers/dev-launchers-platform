@@ -1,4 +1,4 @@
-import DocumentScreen, { DocumentScreenProps } from './NotificationPage';
+import DocumentScreen, { DocumentScreenProps } from './notification-page/NotificationPage';
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 

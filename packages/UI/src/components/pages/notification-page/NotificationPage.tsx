@@ -1,9 +1,9 @@
 import { CLIENT_STATIC_FILES_RUNTIME_AMP } from 'next/dist/shared/lib/constants';
-import Section from '../organisms/NotificationSection/Section'
+import Section from '../../organisms/NotificationSection/Section'
 import { tv } from 'tailwind-variants';
-import Navbar from '../organisms/Navigation/Navigation'
+import Navbar from '../../organisms/Navigation/Navigation'
 import { User } from '@devlaunchers/models';
-import Header from '../organisms/NotificationSection/Header'
+import Header from '../../organisms/NotificationSection/Header'
 
 export interface DocumentScreenProps {
   user: {

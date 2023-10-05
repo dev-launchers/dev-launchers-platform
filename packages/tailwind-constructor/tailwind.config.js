@@ -21,7 +21,11 @@ module.exports = {
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
     screens: {
-      'xs': '345px'
+      'xs': '345px',
+      'sm': '640px',
+      'md': '768px',
+      'lg':  '1024px',
+      'xl': '1280px'
     }
   },
   variants: {},
