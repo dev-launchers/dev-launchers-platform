@@ -664,10 +664,6 @@ video {
   width: 100%;
 }
 
-.flex-\[1_0_0\] {
-  flex: 1 0 0;
-}
-
 .flex-shrink {
   flex-shrink: 1;
 }

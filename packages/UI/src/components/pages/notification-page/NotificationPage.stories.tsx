@@ -1,9 +1,9 @@
-import DocumentScreen, { DocumentScreenProps } from './notification-page/NotificationPage';
+import DocumentScreen, { DocumentScreenProps } from './NotificationPage';
 import { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 
 export default {
-    title: 'DocumentScreen',
+    title: 'Notification Settings',
     component: DocumentScreen,
     parameters: {
         layout: 'fullscreen',
