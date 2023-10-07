@@ -11,9 +11,15 @@ function getWidth(width?: string) {
   else return 301;
 }
 
+function getColor(color?: string){
+  if(color === 'light') return ['#F0EDEE', 'black'];
+  if(color === 'dark') return ['black', 'white'];
+  else return ['black', 'white'];
+}
+
 export const DropdownContainer = styled.div<DropdownProps>`
   font-family: ${({ theme }) => theme.fonts.normal};
-  background-color: #fff;
+  background-color: ${({ color }) => getColor(color)[0]};
   width: ${({ width }) => getWidth(width) + 'px'};
   ${radiusStyles['radius200']};
   display: flex;
@@ -30,8 +36,8 @@ export const Toggle = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: black;
-  color: white;
+  background-color: ${({ color }) => getColor(color)[0]};
+  color: ${({ color }) => getColor(color)[1]};
   cursor: pointer;
   z-index: 2;
 `;

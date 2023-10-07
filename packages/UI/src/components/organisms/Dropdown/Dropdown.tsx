@@ -17,6 +17,7 @@ import type { DropdownProps } from '.';
 const Dropdown = ({
   width,
   title,
+  color,
   type,
   isOpen = false,
   options = [],
@@ -63,8 +64,8 @@ const Dropdown = ({
   }, [menuOpen]);
 
   return (
-    <DropdownContainer ref={node} width={width}>
-      <Toggle onClick={() => setMenuOpen(!menuOpen)}>
+    <DropdownContainer ref={node} width={width} color={color}>
+      <Toggle onClick={() => setMenuOpen(!menuOpen)} color={color}>
         <Typography type="label">{title}</Typography>
         <Chevron isOpen={menuOpen} />
       </Toggle>

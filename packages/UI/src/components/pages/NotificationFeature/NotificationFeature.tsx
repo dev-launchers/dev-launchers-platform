@@ -4,6 +4,8 @@ import { tv } from 'tailwind-variants';
 import Navbar from '../../organisms/Navigation/Navigation';
 import { User } from '@devlaunchers/models';
 import Header from '../../organisms/NotificationSection/Header';
+import Dropdown from 'components/organisms/Dropdown';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 export interface DocumentScreenProps {
   user: {
@@ -29,17 +31,24 @@ export interface DocumentScreenProps {
 }
 const grid = tv({});
 export function Feature({ user }: DocumentScreenProps) {
+  const [showAll, setShowAll] = useState(false)
+  const [checkedOptions, setCheckedOptions] = useState<string>('');
+
+useEffect(() => {
+  console.log('Dropdown state has changed:', checkedOptions);
+}, [checkedOptions]);
+
   return (
     <>
       <Navbar user={user} />
-      <div className="grid w-full mx-auto grid-cols-4 gap-4 p-4 md:grid-cols-8 md:gap-6 md:p-6 lg:grid-cols-12 lg:gap-8 lg:p-8 lg:max-w-[1360px]">
-        <div className="flex flex-col items-center justify-center gap-12 col-span-4 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-11">
+      <div className="grid w-full mx-auto grid-cols-4 gap-4 px-4 mt-8 md:grid-cols-8 md:gap-6 md:mt-16 md:p-0 lg:m-0 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:px-[128px]">
+        <div className="flex flex-col items-center justify-center gap-12 col-span-4 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-11 lg:max-w-[1014px]">
           <div className="flex flex-col justify-center items-end gap-6 self-stretch">
             <div className="flex justify-between items-end content-end self-stretch gap-y-8 flex-wrap">
-              <h2>Notifications</h2>
+              <h1 className='text-center text-gray-900 font-abel font-[40px] font-400 capitalize leading-none m-0'>Notifications</h1>
               <div className="flex items-center w-[358px] justify-between md:w-auto md:gap-8">
-                <h3>Mark all as read</h3>
-                <div className="flex justify-center items-center gap-2">
+                <h3 className='cursor-pointer text-[#3340e5] text-right font-nunito-sans leading-6 font-normal'>Mark all as read</h3>
+                <div className="cursor-pointer flex justify-center items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="17"
@@ -52,40 +61,55 @@ export function Feature({ user }: DocumentScreenProps) {
                       fill="black"
                     />
                   </svg>
-                  <h3>Settings</h3>
+                  <h3 className='font-[14px] font-[Inter] text-gray-900'>Settings</h3>
                 </div>
               </div>
             </div>
             <div className="w-full h-[1px] bg-black"></div>
             <div className="flex  flex-wrap gap-y-6 content-end justify-between items-end self-stretch">
-              <div className="flex w-[291px] h-[52px] justify-center items-center">
-                <div className="flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]">
+              <div className="flex w-full md:w-[291px] h-[52px] justify-center items-center">
+                <div className="cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]">
                   <h3>All</h3>
                 </div>
-                <div className="flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch border-b-2 border-b-[#3350E5] bg-[#f9f9f9]">
+                <div className="cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch border-b-2 border-b-[#3350E5] bg-[#f9f9f9]">
                   <h3 className="">Unread</h3>
                 </div>
               </div>
-              <div className="flex w-[350px] lg:w-[234px] md:w-[216px] py-4 px-8 justify-between items-center rounded-lg bg-[#f0edee]">
-                <h3>Dropdown</h3>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="10"
-                  viewBox="0 0 18 10"
-                  fill="none"
-                >
-                  <path
-                    d="M1 1L9 9L17 1"
-                    stroke="#1C1C1C"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+              <div className="flex w-full lg:w-[234px] md:w-[216px] justify-between items-center rounded-lg">
+                {/* add tailwind variant for dropdown, then add base classes from figma  */}
+                <Dropdown
+                  color="light"
+                  options={[
+                    {
+                      disabled: false,
+                      text: 'Relevant',
+                    },
+                    {
+                      disabled: false,
+                      text: 'Read',
+                    },
+                    {
+                      disabled: false,
+                      text: 'Most recent'
+                    }
+                  ]}
+                  recieveValue={(value) => {
+                    // `value` is an object of type `{ [key: string]: boolean }`
+                    // You can iterate over the keys of the object to find which one is `true`
+                    //fix first button click not registering 
+                    for (const key in value) {
+                      if (value[key]) {
+                        // `key` is the selected option
+                        setCheckedOptions(key);
+                        break;
+                      }
+                    }
+                  }}
+                  title={checkedOptions ? `${checkedOptions}` : 'Select option'}
+                  type="radio"
+                />
               </div>
             </div>
-            header
           </div>
           <div className="flex py-8 px-0 flex-col items-center gap-[11px] self-stretch">
             <div>
@@ -310,8 +334,8 @@ export function Feature({ user }: DocumentScreenProps) {
                 </defs>
               </svg>
             </div>
-            <h2>No Notifications Yet</h2>
-            <h4>When you get notifications, they’ll show up here</h4>
+            <h1 className='text-center text-gray-900 font-abel font-[32px] leading-normal'>No Notifications Yet</h1>
+            <h4 className='text-[#7f7e7f] text-center font-nunito-sans font-normal leading-7 w-[303px]'>When you get notifications, they’ll show up here</h4>
           </div>
         </div>
       </div>
