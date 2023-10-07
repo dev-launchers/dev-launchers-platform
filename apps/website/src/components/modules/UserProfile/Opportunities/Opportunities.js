@@ -1,15 +1,4 @@
 import React from "react";
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
-
-import Button from "../../../common/Button";
-import Card from "../../../common/Card";
-
-import { env } from "../../../../utils/EnvironmentVariables";
-
-import { useUserDataContext } from "../../../../context/UserDataContext";
-
 import { OpportunitiesContainer } from "./StyledOpportunities";
 
 const Opportunities = ({ opportunities }) => {
@@ -45,7 +34,7 @@ const Opportunities = ({ opportunities }) => {
                 }}
               >
                 <h3 style={{ marginBottom: 0 }}>
-                  <a style={{ cursor: "pointer" }} href={`/join/${opportunity.project.slug}`}>{opportunity.title}</a>{" "}
+                  <a style={{ cursor: "pointer" }} href={`/join/${opportunity.attributes.project.slug}`}>{opportunity.attributes.title}</a>{" "}
                   <span style={{ fontSize: "1rem" }}>
                     ({opportunity.level} Opportunity)
                   </span>
@@ -53,11 +42,11 @@ const Opportunities = ({ opportunities }) => {
                 <div>
                   <span style={{ fontSize: "1rem" }}>Remote</span>
                 </div>
-                <div>{opportunity.project.title} Project</div>
+                <div>{opportunity.attributes.project.title} Project</div>
                 <div>
                   <span style={{ fontSize: "1.1rem" }}>
-                    {opportunity.description.substring(0, 200) +
-                      (opportunity.description.length > 200 ? "..." : "")}
+                    {opportunity.attributes.description.substring(0, 200) +
+                      (opportunity.attributes.description.length > 200 ? "..." : "")}
                   </span>
                 </div>
               </div>

@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from "axios";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
 import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
+import { cleanDataList } from '../../../utils/StrapiHelper';
+import { agent } from '@devlaunchers/utility';
 
 import {
   HeadWapper,
@@ -29,28 +30,23 @@ function DashboardPage() {
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() => {
-    {
-      isAuthenticated ?
-        axios
-          .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-            withCredentials: true,
-          })
-          .then((response) => {
-            const cards = response.data.map((item) => {
-              return {
-                ...item,
-                mostRecentCommentTime: new Date(
-                  item.comments[0]?.updated_at
-                ).getTime(),
-              };
-            });
+  React.useEffect(async () => {
+    if (isAuthenticated) {
+      const data = cleanDataList(await agent.Ideas.get(
+        new URLSearchParams(`populate=*`)));
 
-            setLoading(false);
-            setSourceCards(cards);
-          })
-        :
-        ''
+        const cards = data.map((item) => {
+          item.comments = cleanDataList(item.comments.data);
+          return {
+            ...item,
+            mostRecentCommentTime: new Date(
+              item.comments[0]?.updated_at
+            ).getTime(),
+          };
+        });
+
+        setLoading(false);
+        setSourceCards(cards);
     }
   }, [isAuthenticated]);
 
@@ -73,7 +69,7 @@ function DashboardPage() {
       {!isAuthenticated ? (
         <SignInSection
           label='Please sign in to view your dashboard!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+          redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
         />
       ) : (
         <PageWrapper>

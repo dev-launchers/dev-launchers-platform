@@ -8,6 +8,7 @@
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
+    "@devlaunchers/utility": "workspace:*",
     "@ramonak/react-progress-bar": "^5.0.2",
     "@types/styled-components": "5.1.25",
     "articles": "^0.2.2",
@@ -39,7 +40,7 @@
     "styled-components": "5.3.5",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
-    "wrangler": "2.14.0"
+    "wrangler": "^3.0.1"
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",

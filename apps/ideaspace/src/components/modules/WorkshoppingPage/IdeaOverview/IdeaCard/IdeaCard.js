@@ -36,7 +36,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
         </RightView>
       </TopView>
 
-      <BottomView>
+      {/* <BottomView>
         <Button>
           <BookmarkBorderOutlinedIcon />
           <StyledText>Save</StyledText>
@@ -49,7 +49,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
           <FavoriteBorderOutlinedIcon />
           <StyledText>Like</StyledText>
         </Button>
-      </BottomView>
+      </BottomView> */}
     </StyledCard>
   );
 };
