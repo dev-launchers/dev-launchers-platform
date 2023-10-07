@@ -7,7 +7,7 @@ import { onboardingReducer } from './../state/reducers'
 export const UseOnboardingData = ({ children }) => {
     const [onboardingData, dispatch] = useReducer(onboardingReducer.onboardingReducer, onboardingReducer.initialOnboardingState);
     const { userData } = useUserDataContext();
-
+ 
     useEffect(() => {
         // setOnboardingData to show modal;
     }, [])
