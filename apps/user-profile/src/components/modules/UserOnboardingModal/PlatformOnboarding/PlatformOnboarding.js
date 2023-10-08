@@ -111,7 +111,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p>Congratulations</p>,
+      component: <p className='quickfix' >Congratulations</p>,
       config: {
         stepName: 'Done',
         hideBar: true,

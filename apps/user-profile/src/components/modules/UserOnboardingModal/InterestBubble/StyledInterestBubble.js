@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const UserInterestsContainer = styled.div`
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
-  padding: 2rem 5rem;
+  ${'' /* background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE}; */}
+  ${'' /* padding: 2rem 5rem; */}
 `;
 
 export const InterestsField = styled.div`
@@ -28,9 +28,9 @@ export const UserInterestsCardContainer = styled.div`
 
 export const UserInterestCard = styled.div`
   padding: 10px 30px;
-  color: black;
+  color: #295774;
   background-color: white;
-  border: 2px solid #344E56;
+  border: 2px solid #295774;
   border-radius: 24px;
   display: flex;
   flex-direction: row;
@@ -46,7 +46,7 @@ export const UserInterestCard = styled.div`
   cursor: pointer;
 
   &.selected {
-    background-color: black;
+    background-color: #295774;
     color: white;
   }
 `;

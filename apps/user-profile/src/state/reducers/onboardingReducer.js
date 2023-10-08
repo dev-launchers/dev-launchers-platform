@@ -2,8 +2,8 @@
 import { onboardingActions } from './../actions';
 import { featureFlags } from './../../utils/featureFlags';
 export const initialOnboardingState = {
-    showIntroductionModal: false,
-    showPlatformOnboardingModal: true,
+    showIntroductionModal: true,
+    showPlatformOnboardingModal: false,
 }
 
 export const onboardingReducer = (state, action) => {
