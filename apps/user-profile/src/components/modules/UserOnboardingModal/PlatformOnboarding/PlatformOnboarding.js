@@ -4,6 +4,7 @@ import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
+import PageFive from './PageFive';
 // import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
@@ -94,7 +95,7 @@ export default function PlatformOnboarding() {
     },
     {
 
-      component: <p> Interest </p>,
+      component: <PageFive/>,
       // component: <UserInterestBubble interests={dataFromBackend}/>,
       config: {
         barSize: 's',
