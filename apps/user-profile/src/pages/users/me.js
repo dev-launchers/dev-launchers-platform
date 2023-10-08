@@ -26,7 +26,7 @@ export default function UserProfilePage(props) {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return featureFlags.inDevelopment ? true : userData.hasOnboarded !== true;
+    return featureFlags.inDevelopment || featureFlags.inStaging ? true : userData.hasOnboarded !== true;
   }
 
   return (
