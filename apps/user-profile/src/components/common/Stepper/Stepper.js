@@ -86,11 +86,9 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     setActiveComponent(stepsData[index].component);
     setButtonConfig(stepsData[index].config.buttons);
     setNextBtnConfig(stepsData[index].config.buttons.next);
-
     setNextButtonDisability(stepsData[index].config.buttons.next.disabled != undefined ?
       stepsData[index].config.buttons.next.disabled : false);
-    console.log(stepsData[index].config.buttons.next.disabled != undefined ?
-      stepsData[index].config.buttons.next.disabled : false);
+    console.log(nextBtnDisability);
     enableNextButton();
   }, [index]);
 
