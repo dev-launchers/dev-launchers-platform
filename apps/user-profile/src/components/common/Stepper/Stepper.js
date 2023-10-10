@@ -74,9 +74,10 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [index, setIndex] = useState(startIndex);
   const [activeComponent, setActiveComponent] = useState(stepsData[index].component);
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
-
+  const [nextBtnConfig, setNextBtnConfig] = useState(buttonConfig.next);
+  const [nextBtnDisability, setNextButtonDisability] = useState(nextBtnConfig.disabled != undefined ? nextBtnConfig.disabled : false);
   const lastStepIndex = stepsData.length - 1;
-
+  const timeoutIdList = [];
   /**
    * Everytime users navigates update the activeComponent & config
    */
@@ -84,9 +85,32 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     stepsData[index]?.skip == true && setIndex(index + 1);
     setActiveComponent(stepsData[index].component);
     setButtonConfig(stepsData[index].config.buttons);
+    setNextBtnConfig(stepsData[index].config.buttons.next);
+
+    setNextButtonDisability(stepsData[index].config.buttons.next.disabled != undefined ?
+      stepsData[index].config.buttons.next.disabled : false);
+    console.log(stepsData[index].config.buttons.next.disabled != undefined ?
+      stepsData[index].config.buttons.next.disabled : false);
+    enableNextButton();
   }, [index]);
 
+  const enableNextButton = () => {
+    if (stepsData[index].config.buttons.next.delayEnable != undefined) {
+      let timeoutId = setTimeout(() => {
+        setNextButtonDisability(false);
+      }, stepsData[index].config.buttons.next.delayEnable);
 
+      timeoutIdList.push(timeoutId);
+      console.log('timeoutIdList — ', timeoutIdList);
+    }
+  }
+
+  const clearAllTimeouts = () => {
+    for (let id in clearAllTimeouts) {
+      clearTimeout(id);
+      timeoutIdList.unshift();
+    }
+  };
 
   const backOnClickHandler = () => {
     const hasSetCustomFunction = buttonConfig?.back?.onClick ? true : false;
@@ -95,6 +119,8 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     } else {
       index >= 1 && setIndex(index - 1);
     }
+
+    clearAllTimeouts();
   };
 
   const nextOnClickHandler = () => {
@@ -104,6 +130,7 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     } else {
       index >= 1 && setIndex(index + 1);
     }
+    clearAllTimeouts();
   };
 
   const showBackButton = () => {
@@ -118,7 +145,8 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
 
   const showNextButton = () => {
     const nextButtonHtml =
-      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}>
+      // <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={disabled}>
+      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={nextBtnDisability}>
         <div className='stepper-btn-icon-text'>
           {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}
           {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}

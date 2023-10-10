@@ -27,7 +27,6 @@ export default function PlatformOnboarding() {
   //   {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"}, 
   //   {id:16, name:"Python"}, {id:17, name:"Data Structures"}, {id:18, name:"Prototyping"}, {id:19, name:"Project Management"}
   // ]    
-
   const stepperConfig = [
     {
       component: <p> Skip </p>,
@@ -53,6 +52,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: true,
+            delayEnable: 5000,
+            disableOnce: true
           },
           back: {
             label: 'Back',
