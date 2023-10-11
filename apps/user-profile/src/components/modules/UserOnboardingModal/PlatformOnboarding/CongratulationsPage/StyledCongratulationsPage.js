@@ -28,26 +28,42 @@ export const AnimationContainer = styled.div`
 `;
 
 // Create pulse animation
-const pulse = keyframes`
+const pulseRocket = keyframes`
   0% {
-    transform: scale(0.8);
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+`;
+const pulseCircle = keyframes`
+  0% {
+    transform: scale(0.25);
     opacity: 1;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(0.7);
     opacity: 1;
   }
   100% {
-    transform: scale(0.8);
+    transform: scale(0.25);
     opacity: 1;
   }
 `;
 
 //create anamation  
-export const CongratulationsAnamation = styled(m.div)`
+export const RocketAnamation = styled(m.div)`
+  opacity: 1;
+  animation: ${pulseRocket} 1.9s infinite;
+`;
+
+export const CircleAnamation = styled(m.div)`
   opacity: 1;
   color: black;
-  animation: ${pulse} 2s infinite;
+  animation: ${pulseCircle} 1.9s infinite;
 `;
 
 // create shadow
@@ -55,7 +71,7 @@ export const CongratulationsShadow = styled.div`
     background-color: black;
     border-radius: 50%;
     z-index: 1;
-    color: black;
+    color: darkgray ;
 `;
 
 

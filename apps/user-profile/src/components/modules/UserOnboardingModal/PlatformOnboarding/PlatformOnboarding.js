@@ -38,10 +38,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            useDefaultOnClick: true,
-            onClick: () => {
-              console.log('..some function ');
-            },
+
           },
           back: {
             label: 'Back',
@@ -97,7 +94,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p>Congratulations</p>,
+      component: <CongratulationsPage />,
       config: {
         stepName: 'Done',
         hideBar: true,
@@ -118,7 +115,7 @@ export default function PlatformOnboarding() {
 
   return (
     <PlatformOnboardingContainer>
-      <Stepper steps={stepperConfig} startIndex={1} />
+      <Stepper steps={stepperConfig} startIndex={5} />
     </PlatformOnboardingContainer>
   );
 }

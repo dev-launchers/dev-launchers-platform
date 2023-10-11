@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import { ModalContainer, userUnboardingModalStyle } from "./StyledUserOnboardingModal";
 import CongratulationsPage from "./PlatformOnboarding/CongratulationsPage/index.js";
-import { ModalContainer, userUnboardingModalStyle, ModalHeader, ModalBody } from "./StyledUserOnboardingModal";
 import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
 import IntroductionModal from "./IntroductionModal/IntroductionModal";
 Modal.setAppElement("#__next");

@@ -1,7 +1,7 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
 import LogoMonogram from '../../../../../images/logo-monogram.png'
 import { CongratulationsPageContainer, CongratulationsTitle, CongratulationsBody, AnimationContainer,
-    CongratulationsAnamation, CongratulationsShadow, CongratulationsImg } from "./StyledCongratulationsPage";
+    RocketAnamation, CongratulationsShadow, CongratulationsImg, CircleAnamation } from "./StyledCongratulationsPage";
 const bounceTransition = {
     y: {
         yoyo: Infinity,
@@ -26,11 +26,12 @@ export default function CongratulationsPage({name}){
         </CongratulationsBody>
         
         <AnimationContainer>
-            <CongratulationsAnamation>  
+            <RocketAnamation>  
                 <CongratulationsImg src={LogoMonogram} alt="" /> 
-                <CongratulationsShadow>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </CongratulationsShadow>
-            </CongratulationsAnamation>
+            </RocketAnamation>
+            <CircleAnamation>
+                <CongratulationsShadow>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</CongratulationsShadow>
+            </CircleAnamation>
         </AnimationContainer>
 
     </CongratulationsPageContainer>
