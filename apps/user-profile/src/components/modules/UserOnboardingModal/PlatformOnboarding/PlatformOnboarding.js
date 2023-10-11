@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Stepper from '../../../common/Stepper';
 import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
@@ -14,6 +14,17 @@ export default function PlatformOnboarding() {
   const hideAllModals = () => {
     dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
   }
+  
+  const [isDisabled, setIsDisabled] = useState(true);
+  const changeDisabledState = () => {
+    console.log("Is disabled?", isDisabled)
+    setTimeout(()=>{setIsDisabled(false); console.log("After is disabled", isDisabled)}, 5000);
+  };
+
+  // const changeDisabledState = (current) => {
+  //   console.log("Is disabled?", isDisabled)
+  //   setTimeout(()=>{current = false; console.log("After is disabled", current)}, 5000);
+  // };
 
   const stepperConfig = [
     {
@@ -25,6 +36,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: false,
           },
           back: {
             label: 'Back',
@@ -40,6 +52,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: false,
           },
           back: {
             label: 'Back',
@@ -57,6 +70,8 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: true,
+            enable: changeDisabledState,
           },
           back: {
             label: 'Back',
@@ -72,6 +87,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: false, 
           },
           back: {
             label: 'Back',
@@ -87,6 +103,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
+            disabled: false,
           },
           back: {
             label: 'Back',
@@ -105,6 +122,7 @@ export default function PlatformOnboarding() {
             label: 'Finished',
             hideIcons: true,
             onClick: hideAllModals,
+            disabled: false,
           },
           back: {
             label: 'Back',

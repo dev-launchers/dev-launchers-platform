@@ -74,9 +74,17 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [index, setIndex] = useState(startIndex);
   const [activeComponent, setActiveComponent] = useState(stepsData[index].component);
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
+  // This doesn't work but if you pass {buttonConfig.next.disabled} directly to the disable attribute in Button component it
+  // const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(buttonConfig.next.disabled)
+
+  // Jude's idea(process)
+  // const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(buttonConfig.next.disabled != undefined ? buttonConfig.next.disabled : false);
+  // const changeButtonDisabledState = () => {
+  //     console.log("Is disabled?", isNextButtonDisabled)
+  //     setTimeout(()=>{setIsNextButtonDisabled(false); console.log("After is disabled", isNextButtonDisabled)}, 5000);
+  //   };
 
   const lastStepIndex = stepsData.length - 1;
-
   /**
    * Everytime users navigates update the activeComponent & config
    */
@@ -117,27 +125,19 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   }
 
   const showNextButton = () => {
-
-    // const changeButtonState = (state) => {
-    //   state = false;
-    //   return state;
-    // };
-    // const delayChange = setTimeout(changeButtonState(state), 5000);
-    // const buttonChange = (state) => {
-    //   delayChange;
-    // };
-
-    // var disabled = index === 1 ? true : false;
-
+    // Jude's idea(process)
+    // console.log(buttonConfig.next.enable != undefined ? changeButtonDisabledState : "This is undefined.")
+    buttonConfig.next.enable != undefined && buttonConfig.next.enable()
+    
     const nextButtonHtml =
-      // <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={disabled}>
-      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}>
+      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={buttonConfig.next.disabled}>
+      {/*<Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}> */}
         <div className='stepper-btn-icon-text'>
           {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}
           {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}
         </div>
       </Button>;
-
+  
     return nextButtonHtml;
   };
 
@@ -195,7 +195,6 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
         <StepperFooter>
           {showBackButton()}
           {showNextButton()}
-          {/* {index === 1 ? setTimeout(showNextButton, 5000) : showNextButton()} */}
         </StepperFooter>
       </StepperContainer>
     </>
