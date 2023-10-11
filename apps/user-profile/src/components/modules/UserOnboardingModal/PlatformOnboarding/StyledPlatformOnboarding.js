@@ -5,4 +5,8 @@ export const PlatformOnboardingContainer = styled.div`
   height: 750px;
   padding: 0;
   margin: 0;
+  .quickfix {
+      color: black;
+      text-align: center;
+  }
 `;

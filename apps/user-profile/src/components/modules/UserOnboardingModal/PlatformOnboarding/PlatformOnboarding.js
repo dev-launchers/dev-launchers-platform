@@ -4,6 +4,7 @@ import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
+import PageFive from './PageFive';
 // import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
@@ -94,8 +95,7 @@ export default function PlatformOnboarding() {
     },
     {
 
-      component: <p> Interest </p>,
-      // component: <UserInterestBubble interests={dataFromBackend}/>,
+      component: <PageFive/>,
       config: {
         barSize: 's',
         hideStepNumber: true,
@@ -110,7 +110,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p>Congratulations</p>,
+      component: <p className='quickfix' >Congratulations</p>,
       config: {
         stepName: 'Done',
         hideBar: true,
