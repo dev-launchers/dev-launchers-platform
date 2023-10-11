@@ -95,8 +95,7 @@ export default function PlatformOnboarding() {
     },
     {
 
-      component: <PageFive/>,
-      // component: <UserInterestBubble interests={dataFromBackend}/>,
+      
       config: {
         barSize: 's',
         hideStepNumber: true,
