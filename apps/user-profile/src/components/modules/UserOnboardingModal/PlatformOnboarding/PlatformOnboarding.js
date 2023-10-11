@@ -95,7 +95,7 @@ export default function PlatformOnboarding() {
     },
     {
 
-      
+      component: <PageFive/>,
       config: {
         barSize: 's',
         hideStepNumber: true,
