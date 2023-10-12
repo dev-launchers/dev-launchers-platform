@@ -9,6 +9,12 @@ const bounceTransition = {
     }
 };
 
+const shadePulsing = {
+    repeat: Infinity,  
+    duration:1.5, 
+    repeatDelay: 0.1
+}
+
 export default function PageOne({name}){
     return (<>
     <PageOneContainer>
@@ -19,7 +25,7 @@ export default function PageOne({name}){
             We’re so glad you’re here. Let’s get started on your journey.
         </Typography>
         <m.img src={LogoMonogram} transition={bounceTransition} animate={{y: ["5%", "-5%"]}}/>
-        <m.div animate={{ scale: 1.5 }} transition={{ damping: 5, repeat: Infinity, delay: 0.5, duration:1.4, repeatDelay: 0.2 }}/>
+        <m.div animate={{ scale: [1.6,1.4,1.2,1,1,1.2,1.4,1.6] }} transition={shadePulsing}/>
         </PageOneContainer>
     </>);
 }
