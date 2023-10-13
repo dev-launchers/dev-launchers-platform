@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 
 import { Heading, Title } from "./StyledCardTitle";
@@ -37,7 +37,7 @@ export default function CardTitle({
       }}
     >
       {isLinkingInside ? (
-        <Link href={`${pathname}${data.href}`} passHref>
+        <Link href={`${pathname}${data.href}`} passHref legacyBehavior>
           <Title>{data.title}</Title>
         </Link>
       ) : (

@@ -64,86 +64,84 @@ export default function Navigation({ user }: NavigationProps) {
     });
   };
   
-  return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Layer hasRainbowBottom={true} type="dark">
-          <Nav>
-            <Box justifyContent={'space-between'} alignItems={'center'}>
-              <Link href="/">
-                <a href="/">
-                  <Box gap={'5px'} alignItems={'center'}>
-                    <img width="36" height="33" src={logo} alt="logo" />
-                    <Typography type="h3">Dev Launchers</Typography>
-                  </Box>
-                </a>
-              </Link>
-              <NavWrapper>
-                <ul>
-                  <Box gap={'16px'} alignItems="baseline">
-                    {Object.entries(links).map(([name, href], i) => {
-                      if (Array.isArray(href))
-                        return <NavDropdown title={name} links={href} />;
-                      return (
-                        <li style={ListStyle} key={i}>
-                          <Link href={href} passHref>
-                            <NavLink>{name}</NavLink>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </Box>
-                </ul>
-                {userData.id === 0 ? (
-                  <Box gap={'16px'}>
-                    <Button
-                      as="a"
-                      href={
-                        process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-                      }
-                      buttonType="primary"
-                      buttonSize="standard"
-                    >
-                      Sign In
-                    </Button>
-                    <Button
-                      as="a"
-                      href={
-                        process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-                      }
-                      buttonType="secondary"
-                      buttonSize="standard"
-                    >
-                      Create an Account
-                    </Button>
-                  </Box>
-                ) : (
-                  <Box gap={'16px'} alignItems={'center'}>
-                    <img
-                      width="36"
-                      height="33"
-                      src={userData.profilePictureUrl}
-                      alt="Profile avatar"
-                      style={{ borderRadius: '50%' }}
-                    />
-                    <Typography type="p">Hi {userData.name}</Typography>
-                    <Button
-                      buttonType="secondary"
-                      buttonSize="standard"
-                      onClick={handleLogout}
-                    >
-                      Log out
-                    </Button>
-                  </Box>
-                )}
-              </NavWrapper>
-            </Box>
-            <MobileNavigation links={links} user={userData} logout={handleLogout} />
-          </Nav>
-        </Layer>
-      </ThemeProvider>
-    </>
-  );
+  return <>
+    <ThemeProvider theme={theme}>
+      <Layer hasRainbowBottom={true} type="dark">
+        <Nav>
+          <Box justifyContent={'space-between'} alignItems={'center'}>
+            <Link href="/">
+
+              <Box gap={'5px'} alignItems={'center'}>
+                <img width="36" height="33" src={logo} alt="logo" />
+                <Typography type="h3">Dev Launchers</Typography>
+              </Box>
+
+            </Link>
+            <NavWrapper>
+              <ul>
+                <Box gap={'16px'} alignItems="baseline">
+                  {Object.entries(links).map(([name, href], i) => {
+                    if (Array.isArray(href))
+                      return <NavDropdown title={name} links={href} />;
+                    return (
+                      <li style={ListStyle} key={i}>
+                        <Link href={href} passHref legacyBehavior>
+                          <NavLink>{name}</NavLink>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </Box>
+              </ul>
+              {userData.id === 0 ? (
+                <Box gap={'16px'}>
+                  <Button
+                    as="a"
+                    href={
+                      process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                    }
+                    buttonType="primary"
+                    buttonSize="standard"
+                  >
+                    Sign In
+                  </Button>
+                  <Button
+                    as="a"
+                    href={
+                      process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                      `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                    }
+                    buttonType="secondary"
+                    buttonSize="standard"
+                  >
+                    Create an Account
+                  </Button>
+                </Box>
+              ) : (
+                <Box gap={'16px'} alignItems={'center'}>
+                  <img
+                    width="36"
+                    height="33"
+                    src={userData.profilePictureUrl}
+                    alt="Profile avatar"
+                    style={{ borderRadius: '50%' }}
+                  />
+                  <Typography type="p">Hi {userData.name}</Typography>
+                  <Button
+                    buttonType="secondary"
+                    buttonSize="standard"
+                    onClick={handleLogout}
+                  >
+                    Log out
+                  </Button>
+                </Box>
+              )}
+            </NavWrapper>
+          </Box>
+          <MobileNavigation links={links} user={userData} logout={handleLogout} />
+        </Nav>
+      </Layer>
+    </ThemeProvider>
+  </>;
 }

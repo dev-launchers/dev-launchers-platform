@@ -19,14 +19,14 @@ export default function Footer() {
       <Newsletter />
       <FooterNav>
         <Link href={"/create"} passHref className="nav-link">
-          <a>
-            <NavEntry>CREATE</NavEntry>
-          </a>
+
+          <NavEntry>CREATE</NavEntry>
+
         </Link>
         <Link href={"/learn"} passHref className="nav-link">
-          <a>
-            <NavEntry>LEARN</NavEntry>
-          </a>
+
+          <NavEntry>LEARN</NavEntry>
+
         </Link>
         {/* }
         <Link href={"/play"} passHref className="nav-link">
@@ -34,23 +34,23 @@ export default function Footer() {
         </Link>
         { */}
         <Link href={"/support-us"} passHref className="nav-link">
-          <a>
-            <NavEntry>SUPPORT US</NavEntry>
-          </a>
+
+          <NavEntry>SUPPORT US</NavEntry>
+
         </Link>
         <Link href={"/projects"} passHref className="nav-link">
-          <a>
-            <NavEntry>JOIN</NavEntry>
-          </a>
+
+          <NavEntry>JOIN</NavEntry>
+
         </Link>
       </FooterNav>
       <SocialMediaContainer>
         <SocialMediaLink Type="Instagram" />
         <SocialMediaLink Type="Linkedin" />
         <Link href={"/"} passHref className="nav-link">
-          <a>
-            <FooterLogo />
-          </a>
+
+          <FooterLogo />
+
         </Link>
         <SocialMediaLink Type="Twitch" />
         <SocialMediaLink Type="Discord" />
@@ -59,11 +59,11 @@ export default function Footer() {
       <OrgInfoArea>
         -
         <Link href="/page/terms-and-conditions" passHref>
-          <a>Terms of Service </a>
+          Terms of Service 
         </Link>
         - | -
         <Link href="/page/privacy-policy" passHref>
-          <a>Privacy Policy </a>
+          Privacy Policy 
         </Link>{" "}
         {"- | "} ©Dev Launchers, 2020.
       </OrgInfoArea>

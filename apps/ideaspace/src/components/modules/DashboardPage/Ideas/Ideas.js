@@ -60,7 +60,7 @@ const Ideas = ({
                 })
                 }
 
-                <Link href="/ideaspace/submit">
+                <Link href="/ideaspace/submit" legacyBehavior>
                     <SubmitButton style={{ cursor: 'pointer' }}>
                         <img
                             alt="submit_image"

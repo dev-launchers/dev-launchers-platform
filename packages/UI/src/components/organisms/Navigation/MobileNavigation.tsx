@@ -67,11 +67,11 @@ const MobileNavigation = ({
                   <Typography type="h2">Hi {user.name}</Typography>
                 </Box>
               ) : (
-                <Link href="/">
-                  <a href="/">
-                    <img width="139.26" height="114" src={logo} alt="logo" />
-                  </a>
-                </Link>
+                (<Link href="/">
+
+                  <img width="139.26" height="114" src={logo} alt="logo" />
+
+                </Link>)
               )}
             </Box>
             <ul>
@@ -81,7 +81,7 @@ const MobileNavigation = ({
                     return <NavDropdown title={name} links={href} />;
                   return (
                     <li key={i}>
-                      <Link href={href} passHref>
+                      <Link href={href} passHref legacyBehavior>
                         <Button
                           as={NavLink}
                           buttonType="alternative"

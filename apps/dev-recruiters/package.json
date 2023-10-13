@@ -9,14 +9,14 @@
     "formik": "^2.2.9",
     "fuse.js": "^6.6.2",
     "luxon": "^3.0.1",
-    "next": "12.2.3",
+    "next": "^13.5.3",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
     "polished": "^4.2.2",
-    "react": "^17.0.2",
+    "react": "^18.2.0",
     "react-burger-menu": "^3.0.8",
     "react-calendly": "^4.0.1",
-    "react-dom": "^17.0.2",
+    "react-dom": "^18.2.0",
     "react-form": "^4.0.1",
     "react-ga": "^3.3.1",
     "react-hook-form": "^7.34.0",
@@ -36,7 +36,7 @@
     "@devlaunchers/models": "workspace:^",
     "@devlaunchers/utility": "workspace:^",
     "@types/lodash": "^4.14.182",
-    "@types/react": "^17.0.0",
+    "@types/react": "^18.2.0",
     "@types/react-burger-menu": "^2.8.3",
     "@types/react-slick": "0.23.10",
     "@types/styled-components": "^5.1.25",
@@ -47,7 +47,7 @@
     "eslint": "^8.21.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-next": "^12.2.3",
+    "eslint-config-next": "^13.5.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
@@ -85,7 +85,7 @@
   },
   "resolutions": {
     "styled-components": "^5",
-    "@types/react": "^17.0.30"
+    "@types/react": "^18.2.0"
   },
   "release": {
     "branches": [

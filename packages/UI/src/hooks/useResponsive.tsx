@@ -6,7 +6,7 @@ const useResponsive = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const theme = useTheme();
-  useLayoutEffect(() => {
+  useEffect(() => {
     const updateSize = (): void => {
       setIsMobile(window.innerWidth < theme.breakpoints.md);
       setIsDesktop(window.innerWidth > theme.breakpoints.lg);

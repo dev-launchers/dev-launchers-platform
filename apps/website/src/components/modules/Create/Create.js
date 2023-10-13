@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 import React from "react";
 import "react-tabs/style/react-tabs.css"; // import react-tabs styles
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import Modal from "react-modal";
 

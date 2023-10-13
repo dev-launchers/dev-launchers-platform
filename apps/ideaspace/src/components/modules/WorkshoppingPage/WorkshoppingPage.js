@@ -39,11 +39,14 @@ function WorkshoppingPage() {
     ['primary', 'got it', ''],
   );
 
-  React.useEffect(async () => {
-    if (hidden) {
-      await confirmArchived();
-      window.history.back(-1);
-    }
+  React.useEffect(() => {
+    const asyncFn = async () => {
+      if (hidden) {
+        await confirmArchived();
+        window.history.back(-1);
+      }
+    };
+    asyncFn();
   }, [hidden]);
 
   if (getError) {

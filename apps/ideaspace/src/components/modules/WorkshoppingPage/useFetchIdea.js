@@ -35,23 +35,26 @@ export const useFetchIdea = (ideaId) => {
     author: {},
   });
 
-  useEffect(async () => {
-    try {
-      if (ideaId) {
-        setLoading(true);
+  useEffect(() => {
+    const asyncFn = async () => {
+      try {
+        if (ideaId) {
+          setLoading(true);
 
-        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+          const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
 
-        setLoading(false);
+          setLoading(false);
 
-        if (data) {
-          setSourceData(data);
+          if (data) {
+            setSourceData(data);
+          }
         }
+      } catch (error) {
+        console.log(error)
+        setGetError(true);
       }
-    } catch (error) {
-      console.log(error)
-      setGetError(true);
-    }
+    };
+    asyncFn();
   }, [ideaId, setLoading, setData]);
 
   useEffect(() => {

@@ -21,25 +21,25 @@ export default function Header() {
       <Logo>
         <LogoWrapper>
           <Link href="../" replace>
-            <a>
-              <LogoImageHolder>
-                <LogoImage />
-              </LogoImageHolder>
-              <LogoWords>Dev Launchers</LogoWords>
-            </a>
+
+            <LogoImageHolder>
+              <LogoImage />
+            </LogoImageHolder>
+            <LogoWords>Dev Launchers</LogoWords>
+
           </Link>
         </LogoWrapper>
       </Logo>
       <HeaderNav>
         <Link href="../create" replace>
-          <a>
-            <NavEntry>CREATE</NavEntry>
-          </a>
+
+          <NavEntry>CREATE</NavEntry>
+
         </Link>
         <Link href="../learn" replace>
-          <a>
-            <NavEntry>LEARN</NavEntry>
-          </a>
+
+          <NavEntry>LEARN</NavEntry>
+
         </Link>
         {/* }
           <Link href={"/play"} className="nav-link">
@@ -47,14 +47,14 @@ export default function Header() {
           </Link>
           { */}
         <Link href="../support-us" replace>
-          <a>
-            <NavEntry>SUPPORT US</NavEntry>
-          </a>
+
+          <NavEntry>SUPPORT US</NavEntry>
+
         </Link>
         <Link href="/">
-          <a>
-            <NavEntry>JOIN</NavEntry>
-          </a>
+
+          <NavEntry>JOIN</NavEntry>
+
         </Link>
       </HeaderNav>
       <div />

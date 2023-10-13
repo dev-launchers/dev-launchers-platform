@@ -24,9 +24,9 @@ const TitledHeader = ({ title, backButtonUrl }) => {
         flexWrap='wrap'
       >
         <Link href={backButtonUrl || previousPath} passHref>
-          <a>
-            <molecules.BackButton type="small" withLabel={false} />
-          </a>
+
+          <molecules.BackButton type="small" withLabel={false} />
+
         </Link>
         <atoms.Box margin='0 1rem 0 0'>
           <atoms.Typography

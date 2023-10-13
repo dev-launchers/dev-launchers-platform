@@ -70,28 +70,31 @@ function BrowseIdeas() {
     setCards(cardsClone);
   };
 
-  React.useEffect(async () => {
-    const ideaCards = cleanDataList(await agent.Ideas.get(
-      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
+  React.useEffect(() => {
+    const asyncFn = async () => {
+      const ideaCards = cleanDataList(await agent.Ideas.get(
+        new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
 
-    const getCards = ideaCards.map((item) => {  
-      if (item?.comments?.data) {
-        item.comments = cleanDataList(item.comments.data);
+      const getCards = ideaCards.map((item) => {  
+        if (item?.comments?.data) {
+          item.comments = cleanDataList(item.comments.data);
+          return {
+            ...item,
+            mostRecentCommentTime: new Date(
+              item.comments[0]?.updated_at
+            )?.getTime(),
+          };
+        }
         return {
           ...item,
-          mostRecentCommentTime: new Date(
-            item.comments[0]?.updated_at
-          )?.getTime(),
+          mostRecentCommentTime: new Date()?.getTime(),
         };
-      }
-      return {
-        ...item,
-        mostRecentCommentTime: new Date()?.getTime(),
-      };
-    });
+      });
 
-    setLoading(false);
-    setCards(getCards);
+      setLoading(false);
+      setCards(getCards);
+    };
+    asyncFn();
   }, []);
 
   React.useEffect(() => {

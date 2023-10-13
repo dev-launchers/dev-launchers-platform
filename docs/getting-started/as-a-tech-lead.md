@@ -55,7 +55,13 @@ yarn workspace @devlaunchers/app add @devlaunchers/[name of app]@0.1.0
 4. Let `@devlaunchers/app` app transpile pages coming from your app by going to `next.config.js` inside apps/platform\_\_website folder (use the same exact name you provided in step 2)
 
 ```
+// Next v12
 const withTM = require("next-transpile-modules")([...,"@devlaunchers/[name of app]"]); // pass the modules you would like to see transpiled
+
+// Next v13
+module.exports = {
+  transpilePackages: ['@devlaunchers/[name of app]'],
+};
 ```
 
 5. Create a page inside your project directory's pages folder i.e `apps/@devlaunchers/[name of app]/pages/sample.js` and defaultly export a react component out from it

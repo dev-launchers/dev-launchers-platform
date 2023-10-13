@@ -28,7 +28,7 @@ export default function Organization() {
               built for people just like you, take a look around and join us!
             </CtaSectionDescription>
             <CtaSectionButtonArea>
-              <Link href={"/members"} passHref>
+              <Link href={"/members"} passHref legacyBehavior>
                 <Button fontSize="2rem">Join Our Programs</Button>
               </Link>
             </CtaSectionButtonArea>

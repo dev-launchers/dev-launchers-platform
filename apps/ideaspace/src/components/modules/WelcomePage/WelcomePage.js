@@ -31,60 +31,58 @@ const helpExistingIdeaCardTitle = `Help Existing Idea`;
 const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check out ideas submitted by other Dev Launchers!`;
 
 function WelcomePage() {
-  return (
-    <>
-      <HeadWapper>
-        <Headline>IdeaSpace (Beta)</Headline>
-        <StyledRanbow>
-          <atoms.Layer hasRainbowBottom />
-        </StyledRanbow>
+  return <>
+    <HeadWapper>
+      <Headline>IdeaSpace (Beta)</Headline>
+      <StyledRanbow>
+        <atoms.Layer hasRainbowBottom />
+      </StyledRanbow>
 
-        <atoms.Typography type='h4' >
-          WELCOME TO THE IDEA PLATFORM!
-          <Subheader>
-            Have an idea for a development project? Want to help develop an idea? Want to generate an idea?
-          </Subheader>
-          LET'S GET STARTED
-          <RocketImage src={rocketImage} />
-        </atoms.Typography>
-      </HeadWapper>
+      <atoms.Typography type='h4' >
+        WELCOME TO THE IDEA PLATFORM!
+        <Subheader>
+          Have an idea for a development project? Want to help develop an idea? Want to generate an idea?
+        </Subheader>
+        LET'S GET STARTED
+        <RocketImage src={rocketImage} />
+      </atoms.Typography>
+    </HeadWapper>
 
-      <NavButtonArea>
-        <ButtonArea>
-          <Link href="/ideaspace/submit">
-            <a>
-              <IdeaspaceNavCard
-                cardBackgroundColor={submitIdeaCardBackgroundColor}
-                cardBackgroundImage={bulletinBoardPostItImage}
-                cardTitle={submitIdeaCardTitle}
-                cardDescription={submitIdeaCardDescription}
-              />
-            </a>
-          </Link>
+    <NavButtonArea>
+      <ButtonArea>
+        <Link href="/ideaspace/submit">
 
-          <Link href="/ideaspace/browse">
-            <a>
-              <IdeaspaceNavCard
-                cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
-                cardBackgroundImage={helpButtonImage}
-                cardTitle={helpExistingIdeaCardTitle}
-                cardDescription={helpExistingIdeaCardDescription}
-              />
-            </a>
-          </Link>
+          <IdeaspaceNavCard
+            cardBackgroundColor={submitIdeaCardBackgroundColor}
+            cardBackgroundImage={bulletinBoardPostItImage}
+            cardTitle={submitIdeaCardTitle}
+            cardDescription={submitIdeaCardDescription}
+          />
 
-          <IdeaGeneratorButton showExtendedContent>
-            <IdeaspaceNavCard
-              cardBackgroundColor={appGeneratorCardBackgroundColor}
-              cardBackgroundImage={handWithLightbulbImage}
-              cardTitle="Generate an Idea"
-              cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
-                to get you started!" />
-          </IdeaGeneratorButton>
-        </ButtonArea>
-      </NavButtonArea>
-    </>
-  );
+        </Link>
+
+        <Link href="/ideaspace/browse">
+
+          <IdeaspaceNavCard
+            cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
+            cardBackgroundImage={helpButtonImage}
+            cardTitle={helpExistingIdeaCardTitle}
+            cardDescription={helpExistingIdeaCardDescription}
+          />
+
+        </Link>
+
+        <IdeaGeneratorButton showExtendedContent>
+          <IdeaspaceNavCard
+            cardBackgroundColor={appGeneratorCardBackgroundColor}
+            cardBackgroundImage={handWithLightbulbImage}
+            cardTitle="Generate an Idea"
+            cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
+              to get you started!" />
+        </IdeaGeneratorButton>
+      </ButtonArea>
+    </NavButtonArea>
+  </>;
 }
 
 export default WelcomePage;
