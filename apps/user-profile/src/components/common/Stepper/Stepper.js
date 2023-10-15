@@ -75,16 +75,18 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [activeComponent, setActiveComponent] = useState(stepsData[index].component);
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
   // This doesn't work but if you pass {buttonConfig.next.disabled} directly to the disable attribute in Button component it
-  // const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(buttonConfig.next.disabled)
-
-  // Jude's idea(process)
-  // const [isNextButtonDisabled, setIsNextButtonDisabled] = useState(buttonConfig.next.disabled != undefined ? buttonConfig.next.disabled : false);
-  // const changeButtonDisabledState = () => {
-  //     console.log("Is disabled?", isNextButtonDisabled)
-  //     setTimeout(()=>{setIsNextButtonDisabled(false); console.log("After is disabled", isNextButtonDisabled)}, 5000);
-  //   };
+  const [nextBtnDisability, setNextButtonDisability] = useState(buttonConfig.next.disabled)
 
   const lastStepIndex = stepsData.length - 1;
+
+  // const updateConfigs =  () => {
+  //   setActiveComponent( stepsData[index].componnet );
+  //   setButtonConfig( stepsData[index].config.buttons );
+  //   //setNextBtnConfig( stepsData[index].config.buttons.next);
+  //   setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
+  //        stepsData[index].config.buttons.next.disabled : false);
+  // };
+
   /**
    * Everytime users navigates update the activeComponent & config
    */
@@ -92,9 +94,21 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     stepsData[index]?.skip == true && setIndex(index + 1);
     setActiveComponent(stepsData[index].component);
     setButtonConfig(stepsData[index].config.buttons);
+    setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
+      stepsData[index].config.buttons.next.disabled : false);
+    // updateConfigs();
+    const timeoutId = enableNextButton();
+    return () => clearTimeout(timeoutId);
   }, [index]);
 
-
+  const enableNextButton = () => {
+    if ( stepsData[index].config.buttons.next.delayEnable != undefined ) {
+      let timeoutId = setTimeout( () => {
+        setNextButtonDisability(false);
+      }, stepsData[index].config.buttons.next.delayEnable);
+     return timeoutId;
+   }
+  }
 
   const backOnClickHandler = () => {
     const hasSetCustomFunction = buttonConfig?.back?.onClick ? true : false;
@@ -102,6 +116,7 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
       buttonConfig.back.onClick();
     } else {
       index >= 1 && setIndex(index - 1);
+      // updateConfigs();
     }
   };
 
@@ -125,12 +140,9 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   }
 
   const showNextButton = () => {
-    // Jude's idea(process)
-    // console.log(buttonConfig.next.enable != undefined ? changeButtonDisabledState : "This is undefined.")
-    buttonConfig.next.enable != undefined && buttonConfig.next.enable()
     
     const nextButtonHtml =
-      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={buttonConfig.next.disabled}>
+      <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={nextBtnDisability}>
       {/*<Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}> */}
         <div className='stepper-btn-icon-text'>
           {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}

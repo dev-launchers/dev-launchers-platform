@@ -14,17 +14,6 @@ export default function PlatformOnboarding() {
   const hideAllModals = () => {
     dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
   }
-  
-  const [isDisabled, setIsDisabled] = useState(true);
-  const changeDisabledState = () => {
-    console.log("Is disabled?", isDisabled)
-    setTimeout(()=>{setIsDisabled(false); console.log("After is disabled", isDisabled)}, 5000);
-  };
-
-  // const changeDisabledState = (current) => {
-  //   console.log("Is disabled?", isDisabled)
-  //   setTimeout(()=>{current = false; console.log("After is disabled", current)}, 5000);
-  // };
 
   const stepperConfig = [
     {
@@ -52,7 +41,9 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            disabled: false,
+            disabled: true,
+            delayEnable: 5000,
+            disableOnce: true
           },
           back: {
             label: 'Back',
@@ -70,8 +61,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            disabled: true,
-            enable: changeDisabledState,
+            disabled: false,
           },
           back: {
             label: 'Back',
