@@ -1,8 +1,6 @@
 import { useRouter } from "next/router";
 import Script from "next/script";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../styles/globals";
-import oldTheme from "../styles/theme";
+import GlobalStyle from "../styles/globals"
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -17,7 +15,6 @@ function MyApp(props) {
 
   return (
     <>
-      <ThemeProvider theme={oldTheme}>
         <GlobalStyle />
         <div>
           <Script
@@ -38,7 +35,6 @@ function MyApp(props) {
               {props.children}
             </div>
         </div>
-      </ThemeProvider>
     </>
   );
 }

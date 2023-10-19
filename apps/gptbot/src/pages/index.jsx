@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React, { useEffect } from 'react';
-import Button from "../../../../packages/UI/src/components/atoms/Button";
-import OpenResponse from "../../../../packages/UI/src/components/organisms/OpenResponse";
-import BaseLayer from "../../../../packages/UI/src/components/Atoms/BaseLayer";
+import Button from "@devlaunchers/components/src/components/atoms/Button";
+import OpenResponse from "@devlaunchers/components/src/components/organisms/OpenResponse";
+import BaseLayer from "@devlaunchers/components/src/components/atoms/BaseLayer";
 import { send } from "../utils/chat.js";
 import { displayText } from "../utils/chat.js";
 import { enterKey } from "../utils/chat.js";
