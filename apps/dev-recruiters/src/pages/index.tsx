@@ -82,7 +82,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content={process.env.FRONT_END_URL + "/projects"}
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         ></meta>
         <meta
           property="og:image"
@@ -97,7 +97,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content={process.env.FRONT_END_URL + "/projects"}
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta
