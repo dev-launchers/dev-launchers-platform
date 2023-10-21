@@ -79,24 +79,19 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
 
   const lastStepIndex = stepsData.length - 1;
 
-  // const updateConfigs =  () => {
-  //   setActiveComponent( stepsData[index].componnet );
-  //   setButtonConfig( stepsData[index].config.buttons );
-  //   //setNextBtnConfig( stepsData[index].config.buttons.next);
-  //   setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
-  //        stepsData[index].config.buttons.next.disabled : false);
-  // };
+  const updateConfigs =  () => {
+    setActiveComponent( stepsData[index].component );
+    setButtonConfig( stepsData[index].config.buttons );
+    setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
+         stepsData[index].config.buttons.next.disabled : false);
+  };
 
   /**
    * Everytime users navigates update the activeComponent & config
    */
   useEffect(() => {
     stepsData[index]?.skip == true && setIndex(index + 1);
-    setActiveComponent(stepsData[index].component);
-    setButtonConfig(stepsData[index].config.buttons);
-    setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
-      stepsData[index].config.buttons.next.disabled : false);
-    // updateConfigs();
+    updateConfigs();
     const timeoutId = enableNextButton();
     return () => clearTimeout(timeoutId);
   }, [index]);
@@ -116,7 +111,6 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
       buttonConfig.back.onClick();
     } else {
       index >= 1 && setIndex(index - 1);
-      // updateConfigs();
     }
   };
 
