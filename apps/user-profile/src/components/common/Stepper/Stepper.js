@@ -74,7 +74,6 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [index, setIndex] = useState(startIndex);
   const [activeComponent, setActiveComponent] = useState(stepsData[index].component);
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
-  // This doesn't work but if you pass {buttonConfig.next.disabled} directly to the disable attribute in Button component it
   const [nextBtnDisability, setNextButtonDisability] = useState(buttonConfig.next.disabled)
 
   const lastStepIndex = stepsData.length - 1;
@@ -137,7 +136,6 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
     
     const nextButtonHtml =
       <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={nextBtnDisability}>
-      {/*<Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler}> */}
         <div className='stepper-btn-icon-text'>
           {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}
           {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}
