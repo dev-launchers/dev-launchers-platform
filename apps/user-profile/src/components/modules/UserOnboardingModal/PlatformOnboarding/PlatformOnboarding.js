@@ -43,7 +43,6 @@ export default function PlatformOnboarding() {
             label: 'Next',
             disabled: true,
             delayEnable: 5000,
-            disableOnce: true
           },
           back: {
             label: 'Back',
