@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from 'next/router'
 
 import { useUserDataContext } from '../../context/UserDataContext';
@@ -21,12 +21,18 @@ export default function UserProfilePage(props) {
   const router = useRouter();
 
 
+  // useEffect(() => {
+  //   // if (featureFlags.inDevelopment) {
+  //   //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
+  //   // }
+  // }, []);
+
   /**
    * @description Open modal when user is coming from the onbaording page. 
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    return featureFlags.inDevelopment || featureFlags.inStaging ? true : userData.hasOnboarded !== true;
+    return featureFlags.inDevelopment ? true : userData.hasOnboarded !== true;
   }
 
   return (
