@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 
 export const PageTwoContainer = styled.div`
+  padding-top: 20px;
+  margin-bottom: -40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
 `;
 
 export const Header = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-text: center;
 `;
 
 export const ImageGroupContainer = styled.div`
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -22,7 +22,14 @@ export const ImageGroupContainer = styled.div`
 
 export const ImageContainer = styled.div`
   display: flex;
-  align-items: flex-start;
   flex-direction: row;
-  gap: 4.7%
+  justify-content: start;
+  padding: 10px;
+
+  img {
+    margin-right: 50px;
+    width: 80px;
+    height: 80px;
+
+  }
 `;
