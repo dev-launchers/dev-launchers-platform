@@ -30,8 +30,6 @@ function DisplayComments(props) {
     if (props.selectedCard.id != undefined) {
       axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${props.selectedCard.id}?populate=deep`)
         .then(response => {
-          console.log(response);
-          console.log(response.data.data.attributes.comments.data);
           const responseData = cleanDataList(response.data.data.attributes.comments.data).sort((a, b) => {
             const dateA = new Date(a.publishedAt);
             const dateB = new Date(b.publishedAt);
@@ -45,16 +43,12 @@ function DisplayComments(props) {
             // dates must be equal
             return 0;
           });
-          console.log("response data:", responseData);
-            setData((responseData));
-          });
+          setData((responseData));
+      });
     }
   }, [props.selectedCard]);
 
-  console.log(data);
-
   const commentNodes = data.map(comment => {
-    console.log(comment.publishedAt);
     return <Comment author={comment.author} key={comment.id} id={comment.id} createdAt={comment.createdAt} publishedAt={comment.publishedAt} updatedAt={comment.updatedAt}>
       {comment.text}
     </Comment>
