@@ -5,8 +5,6 @@ import OpenResponse from "../../../../packages/UI/src/components/organisms/OpenR
 import BaseLayer from "../../../../packages/UI/src/components/Atoms/BaseLayer";
 import { send } from "../utils/chat.js";
 import { displayText } from "../utils/chat.js";
-import { enterKey } from "../utils/chat.js";
-import { handleKeyBind } from "../utils/chat.js";
 
 const ProjectsList = () => {
   useEffect(() => {
