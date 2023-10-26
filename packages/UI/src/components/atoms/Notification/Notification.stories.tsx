@@ -13,8 +13,9 @@ export const NotificationItem: StoryObj<typeof Notification> = {
     message:
       ' What you want to achieve through an online questionnaire is quality rather than quantity.',
     name: 'Lamodot',
-    platform: 'DevSocials',
-    time: '30m',
+    target: 'DevSocials',
+    targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
+    timeStamp: '30m',
     action: 'commented on',
     src: 'https://bit.ly/3EBQXiH',
     alt: 'Lamodot',
