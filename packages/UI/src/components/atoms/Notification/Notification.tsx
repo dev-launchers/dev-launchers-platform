@@ -125,7 +125,7 @@ function Notification({
             </div>
             <div className={descriptionStyle()}>
               {windowSize.innerWidth < 811 ? (
-                <span>{message.slice(0, 32)}...</span>
+                <span>{message.slice(0, 33)}...</span>
               ) : (
                 message
               )}
