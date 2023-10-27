@@ -9,12 +9,12 @@ const notificationStyles = tv({
     avatarContainer:
       ' w-12 h-12 hidden  md:flex items-center  text-center lg:flex lg:w-12 lg:h-12 lg:items-center lg:justify-center',
     detailsContentStyle:
-      'grow   md:flex md:items-center lg:flex  lg:flex-row lg:items-center',
-    contentContainerStyle: ' md:grow lg:grow',
+      'grow   md:flex md:items-center lg:flex  lg:flex-row lg:items-center  ',
+    contentContainerStyle: ' md:grow lg:grow  flex flex-col gap-1 w-full',
     headerStyle: ' flex gap-1 ',
     usernameStyle: ' ',
     actionStyle: ' ',
-    descriptionStyle: ' text-base leading-5 pt-4 text-ellipsis',
+    descriptionStyle: ' text-base leading-5 ',
     timeStampStyle: ' text-base pt-1',
     targetStyle: ' grow-0 ',
     rounded: 'sm',
@@ -124,12 +124,11 @@ function Notification({
               </a>
             </div>
             <div className={descriptionStyle()}>
-              {/* {windowSize.innerWidth < 761 ? (
+              {windowSize.innerWidth < 811 ? (
                 <span>{message.slice(0, 32)}...</span>
               ) : (
                 message
-              )} */}
-              {message}
+              )}
             </div>
           </div>
           <div className={timeStampStyle()}>{timeStamp}</div>
