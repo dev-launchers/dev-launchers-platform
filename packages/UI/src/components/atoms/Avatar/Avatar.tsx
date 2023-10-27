@@ -20,34 +20,31 @@ const AvatarStyles = tv({
   },
 });
 
-interface AvatarProps extends VariantProps<typeof AvatarStyles> {
+interface AvatarProps
+  extends VariantProps<typeof AvatarStyles>,
+    Avatar.AvatarProps {
   src: string;
   alt: string;
   delayMs: number;
   onClick?: () => void;
 }
 
-const AvatarComponent = (
-  { size, rounded, src, alt, delayMs, onClick }: AvatarProps,
+const AvatarComponent = ({
+  size,
+  rounded,
+  src,
+  alt,
+  delayMs,
+  onClick,
   ...Props
-) => {
+}: AvatarProps) => {
+  const avatarStyles = AvatarStyles({ size, rounded });
   return (
-    <Avatar.Root
-      className={AvatarStyles({ size, rounded })}
-      onClick={onClick}
-      {...Props}
-    >
-      <Avatar.Image
-        className={AvatarStyles({ size, rounded })}
-        alt={alt}
-        src={src}
-        {...Props}
-
-      />
+    <Avatar.Root className={avatarStyles} onClick={onClick} {...Props}>
+      <Avatar.Image className={avatarStyles} alt={alt} src={src} />
       <Avatar.Fallback
         className={AvatarStyles({ size, rounded })}
         delayMs={delayMs}
-        {...Props}
       >
         {initials(alt)}
       </Avatar.Fallback>
