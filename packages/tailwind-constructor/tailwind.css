@@ -740,6 +740,10 @@ video {
   gap: var(--4, 1rem);
 }
 
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -983,10 +987,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:block {
-    display: block;
-  }
-
   .lg\:flex {
     display: flex;
   }

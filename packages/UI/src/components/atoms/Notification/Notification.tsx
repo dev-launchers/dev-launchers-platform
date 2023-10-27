@@ -14,7 +14,7 @@ const notificationStyles = tv({
     headerStyle: ' flex gap-1 ',
     usernameStyle: ' ',
     actionStyle: ' ',
-    descriptionStyle: ' text-base leading-5 pt-4',
+    descriptionStyle: ' text-base leading-5 pt-4 text-ellipsis',
     timeStampStyle: ' text-base pt-1',
     targetStyle: ' grow-0 ',
     rounded: 'sm',
@@ -24,19 +24,6 @@ const notificationStyles = tv({
   },
 });
 
-// const {
-//   container,
-//   metaInfo,
-//   messageText,
-//   timeStyle,
-//   notifyItems,
-//   nameStyle,
-//   actionStyle,
-//   targetStyle,
-//   metaText,
-//   unRead,
-//   read,
-// } = notificationStyles();
 const {
   container,
   unRead,
@@ -137,11 +124,12 @@ function Notification({
               </a>
             </div>
             <div className={descriptionStyle()}>
-              {windowSize.innerWidth < 761 ? (
+              {/* {windowSize.innerWidth < 761 ? (
                 <span>{message.slice(0, 32)}...</span>
               ) : (
                 message
-              )}
+              )} */}
+              {message}
             </div>
           </div>
           <div className={timeStampStyle()}>{timeStamp}</div>
