@@ -1,6 +1,6 @@
 import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
-import React from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { featureFlags } from './../utils/featureFlags';
 
@@ -29,41 +29,40 @@ const DEFAULT_USER = {
 
 // Step 1: Create a custom hook that contains your state and actions
 function useUserData() {
-  const [userData, setUserData] = React.useState(DEFAULT_USER);
-  const [isAuthenticated, setIsAuthenticated] = React.useState();
-  React.useEffect(() => {
+  const [userData, setUserData] = useState(DEFAULT_USER);
+  const [isAuthenticated, setIsAuthenticated] = useState();
+  useEffect(() => {
     axios(`${process.env.NEXT_PUBLIC_API_URL}/users/${featureFlags.bypassLogin ? '80?populate=*' : 'me?populate=*'}`, {
       withCredentials: true,
-    })
-      .then(({ data: currentUser }) => {
-        setUserData({
-          ...currentUser,
-          id: currentUser.id,
-          name: currentUser.profile.displayName,
-          username: currentUser.username,
-          email: currentUser.email,
-          bio: currentUser.profile.bio,
-          profilePictureUrl: currentUser.profile.profilePictureUrl,
-          socialMediaLinks: currentUser.profile.socialMediaLinks,
-          totalPoints: currentUser.point.totalPoints,
-          totalSeasonPoints: currentUser.point.totalSeasonPoints,
-          availablePoints: currentUser.point.availablePoints,
-          volunteerHours: currentUser.point.volunteerHours,
-          interests: currentUser.interests,
-        });
-        setIsAuthenticated(true);
-      })
-      .catch(() => {
-        setIsAuthenticated(featureFlags.bypassLogin);
-      });
+    }).then(({ data }) => {
+      const user = {
+        ...data,
+        id: data.id,
+        name: data.profile.displayName,
+        username: data.username,
+        email: data.email,
+        bio: data.profile.bio,
+        profilePictureUrl: data.profile.profilePictureUrl,
+        socialMediaLinks: data.profile.socialMediaLinks,
+        hasOnboarded: data.completedOnboarding,
+        // totalPoints: data.point.totalPoints,
+        // totalSeasonPoints: data.point.totalSeasonPoints,
+        // availablePoints: data.point.availablePoints,
+        // volunteerHours: data.point.volunteerHours,
+        interests: data.interests
+      };
+      setUserData(user);
+      console.log("[Context] User Data: ", userData);
+      setIsAuthenticated(true);
 
-    featureFlags.bypassLogin && setTimeout(() => {
-      console.log(`Enviroment:`, featureFlags.inStaging ? 'Staging' : 'Development')
-      console.log("User Data", userData);
-    }, 5000);
+    }).catch((error) => {
+      console.error('Error: ', error);
+      setIsAuthenticated(featureFlags.bypassLogin);
+    });
   }, []);
 
-  return { userData, setUserData, isAuthenticated };
+  console.log(`Enviroment:`, featureFlags.inStaging ? 'Staging' : 'Development');
+  return { userData: userData, setUserData, isAuthenticated };
 }
 
 // Step 2: Declare your context state object to share the state with other components

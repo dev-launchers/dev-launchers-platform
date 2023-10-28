@@ -11,7 +11,7 @@ export const PageOneContainer = styled.div`
     }   
 
     div {
-        width: 120px;
+        width: 100px;
         height: 14px;
         background-color: grey;
         border-radius: 50%;
