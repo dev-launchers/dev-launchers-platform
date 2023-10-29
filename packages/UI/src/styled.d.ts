@@ -10,7 +10,7 @@ declare module 'styled-components' {
 }
 
 declare module 'react' {
-  interface Attributes  {
+  interface Attributes {
     css?: CSSProp<DefaultTheme>;
   }
   interface HTMLAttributes<T> extends DOMAttributes<T> {

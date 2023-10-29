@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { paddingStyles } from '../../atoms/Padding';
 import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { shadowStyles } from '../../atoms/Shadow';
 import Icon from './chevron-down.svg';
@@ -11,13 +10,13 @@ export const DropdownContainer = styled.div`
   z-index: 2;
 `;
 
-export const Toggle = styled.div`
+export const Toggle = styled.button`
   width: fit-content;
   gap: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
+  color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   cursor: pointer;
   img {
     filter: invert(1);
@@ -37,9 +36,6 @@ export const OptionsContainer = styled.div<Pick<NavDropdownProps, 'isOpen'>>`
   transform: translateX(-50%);
   ${radiusStyles.radius200};
   ${shadowStyles.shadow500};
-  /* @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg + 'px'}) {
-    background: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  } */
 `;
 
 export const Options = styled.div`
@@ -49,9 +45,6 @@ export const Options = styled.div`
   padding: 1rem;
   color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
   word-break: keep-all;
-  /* @media screen and (max-width: ${({ theme }) => theme.breakpoints.lg + 'px'}) {
-    color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-  } */
 `;
 
 export const Chevron = styled.img.attrs(() => ({
