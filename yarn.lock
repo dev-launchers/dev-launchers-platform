@@ -2697,6 +2697,7 @@ __metadata:
     "@types/react": ^17.0.0
     "@types/react-dom": ^17.0.15
     "@types/styled-components": 5.1.25
+    "@types/uuid": 9.0.6
     "@typescript-eslint/eslint-plugin": 5.32.0
     "@typescript-eslint/parser": 5.32.0
     axe-playwright: 1.1.11
@@ -2705,6 +2706,7 @@ __metadata:
     babel-plugin-styled-components: 2.0.7
     camelcase: 7.0.0
     chromatic: ^6.7.3
+    clsx: 2.0.0
     constate: ^3.3.2
     eslint: 8.21.0
     eslint-config-prettier: 8.5.0
@@ -2733,10 +2735,12 @@ __metadata:
     storybook-react-context: ^0.6.0
     styled-components: ^5.2.1
     styled-normalize: ^8.0.7
+    tailwind-merge: ^1.13.2
     tailwind-variants: 0.1.13
     ts-jest: 28.0.7
     type-fest: 4.3.1
     typescript: ^4.7.4
+    uuid: ^8.3.2
     web-vitals: ^2.1.4
     zod: 3.19.1
     zod-formik-adapter: 1.1.1
@@ -2986,6 +2990,8 @@ __metadata:
     postcss-cli: ^9.0.1
     postcss-import: ^14.0.2
     style-dictionary: ^3.0.2
+    tailwind-hamburgers: 1.3.5
+    tailwind-variants: 0.1.14
     tailwindcss: 3.3.3
   languageName: unknown
   linkType: soft
@@ -10850,6 +10856,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:9.0.6":
+  version: 9.0.6
+  resolution: "@types/uuid@npm:9.0.6"
+  checksum: 739dcb2e620ff097fa916edeab455eb75640c4883a850784fdb15b32f67b719e05275c6d6419bb6da11350d26bd14ed05ba5e992ff228411cdd98cbc772d71ef
+  languageName: node
+  linkType: hard
+
 "@types/wait-on@npm:^5.2.0":
   version: 5.3.1
   resolution: "@types/wait-on@npm:5.3.1"
@@ -14946,17 +14959,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:2.0.0, clsx@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "clsx@npm:2.0.0"
+  checksum: a2cfb2351b254611acf92faa0daf15220f4cd648bdf96ce369d729813b85336993871a4bf6978ddea2b81b5a130478339c20d9d0b5c6fc287e5147f0c059276e
+  languageName: node
+  linkType: hard
+
 "clsx@npm:^1.0.4, clsx@npm:^1.1.0, clsx@npm:^1.1.1":
   version: 1.2.1
   resolution: "clsx@npm:1.2.1"
   checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
-  languageName: node
-  linkType: hard
-
-"clsx@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "clsx@npm:2.0.0"
-  checksum: a2cfb2351b254611acf92faa0daf15220f4cd648bdf96ce369d729813b85336993871a4bf6978ddea2b81b5a130478339c20d9d0b5c6fc287e5147f0c059276e
   languageName: node
   linkType: hard
 
@@ -37499,6 +37512,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-hamburgers@npm:1.3.5":
+  version: 1.3.5
+  resolution: "tailwind-hamburgers@npm:1.3.5"
+  checksum: f61b5d21571929cd9f1073173388370a374a18e2198bc0d65a04298a719dc4a2eee07527f3635241edc6325e9abf962bd9b47622617db0498392974b9abacd13
+  languageName: node
+  linkType: hard
+
 "tailwind-merge@npm:^1.13.2":
   version: 1.14.0
   resolution: "tailwind-merge@npm:1.14.0"
@@ -37514,6 +37534,17 @@ __metadata:
   peerDependencies:
     tailwindcss: "*"
   checksum: d58a77768038963d18285ced665bc0a6cbaea5fc6b02f0220b11b698e6fa317782994fb103fb68eacd990a440696ea0ff4e24f6064949364d2a39161699aeaab
+  languageName: node
+  linkType: hard
+
+"tailwind-variants@npm:0.1.14":
+  version: 0.1.14
+  resolution: "tailwind-variants@npm:0.1.14"
+  dependencies:
+    tailwind-merge: ^1.13.2
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: 3e0c198bb7dfcbcbc61017bf19e4a0a9b80cfc6c72cee91ef4925fc55f07343f9439f68121432a5949b6825bd52618525bdb4194113c0929b1e803b699d86ac3
   languageName: node
   linkType: hard
 
