@@ -21,7 +21,7 @@ const HamburgerButton = ({
     <button
       className={`tham tham-e-squeeze tham-w-10 ${
         !open || 'tham-active'
-      } ${className} z-10`}
+      } ${className} z-30`}
       onClick={() => setOpen((prev) => !prev)}
     >
       <div className="tham-box">
@@ -49,9 +49,19 @@ export const links = {
   CREATE: '/create',
   LEARN: '/learn',
   DREAM: [
-    { text: 'Ideaspace', href: '/ideaspace', hasUnderline: true },
-    { text: 'Submit an idea', href: '/ideaspace/submit' },
-    { text: 'Help existing idea', href: '/ideaspace/browse' },
+    {
+      text: 'Ideaspace',
+      href: '/ideaspace',
+      hasUnderline: true,
+    },
+    {
+      text: 'Submit an idea',
+      href: '/ideaspace/submit',
+    },
+    {
+      text: 'Help existing idea',
+      href: '/ideaspace/browse',
+    },
   ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
@@ -63,10 +73,6 @@ export const accountOptions = [
     text: 'my ideas dashboard',
     href: '/ideaspace/dashboard',
     hasUnderline: true,
-  },
-  {
-    text: 'Log out',
-    onClick: Logout,
   },
 ];
 
@@ -81,7 +87,7 @@ const Navigation = () => {
     <nav className={$wrapper()}>
       <Link href="/">
         <a href="/" className={$logoContainer()}>
-          <img className="w-10" src={logo.src} alt="logo"></img>
+          <img className="w-10" src={logo} alt="logo"></img>
           <span className="hidden md:inline-block">Dev Launchers</span>
         </a>
       </Link>
@@ -161,6 +167,7 @@ const Navigation = () => {
         isAuthenticated={isAuthenticated}
         logout={() => Logout()}
         isSidebarExpanded={isSidebarExpanded}
+        setIsSidebarExpanded={setIsSidebarExpanded}
       />
     </nav>
   );
