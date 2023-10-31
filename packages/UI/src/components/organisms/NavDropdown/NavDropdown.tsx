@@ -1,19 +1,24 @@
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
 import {
   DropdownContainer,
   Toggle,
-  Chevron,
   OptionsContainer,
   Options,
 } from './StyledDropdown';
 import type { NavDropdownProps } from '.';
 
-const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
+const NavDropdown = ({
+  title,
+  isOpen = false,
+  links,
+  toggleElementProps,
+}: NavDropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
-
+  const optionsContainerId = useRef(`NavDropdown-${uuidv4()}`);
   const node = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = () => {
@@ -34,28 +39,61 @@ const NavDropdown = ({ title, isOpen = false, links }: NavDropdownProps) => {
   return (
     <DropdownContainer ref={node}>
       <Toggle
+        {...toggleElementProps}
+        aria-expanded={menuOpen}
+        aria-haspopup="menu"
+        aria-controls={optionsContainerId.current}
         onClick={(e) => {
           e.stopPropagation();
           setMenuOpen(!menuOpen);
         }}
       >
         <Typography type="navLink">{title}</Typography>
-        <Chevron isOpen={menuOpen} />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="feather feather-chevron-down transition-transform duration-500 "
+          style={{
+            transform: !menuOpen ? 'none' : 'rotateX(180deg)',
+            transitionTimingFunction: 'ease',
+          }}
+        >
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </Toggle>
-      <OptionsContainer isOpen={menuOpen}>
-        <Options>
-          {links.map(({ text, href }, i) => {
-            return (
-              <>
-                <Link href={href} passHref>
-                  <SubNavLink text={text} key={i} />
-                </Link>
-                {i === 0 && <hr style={{ width: '100%' }} />}
-              </>
-            );
-          })}
-        </Options>
-      </OptionsContainer>
+      {menuOpen && (
+        <OptionsContainer id={optionsContainerId.current} isOpen={menuOpen}>
+          <Options>
+            {links.map(({ text, href, hasUnderline, ...rest }, i) => {
+              if (!href) {
+                return (
+                  <>
+                    <div>
+                      <SubNavLink {...rest} text={text} key={i} />
+                    </div>
+                    {hasUnderline && <hr style={{ width: '100%' }} />}
+                  </>
+                );
+              }
+              return (
+                <>
+                  <Link href={href} passHref>
+                    <SubNavLink {...rest} text={text} key={i} />
+                  </Link>
+                  {hasUnderline && <hr style={{ width: '100%' }} />}
+                </>
+              );
+            })}
+          </Options>
+        </OptionsContainer>
+      )}
     </DropdownContainer>
   );
 };
