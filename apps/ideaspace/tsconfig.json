@@ -13,8 +13,8 @@
       "@/pages/*": ["./pages/*"],
       "@/public/*": ["../public/*"],
       "@/themes/*": ["./themes/*"],
-      "@devlaunchers/components/*": ["../../../packages/components/src/*"],
-      "@devlaunchers/components": ["../../../packages/components/src/index"],
+      "@devlaunchers/components/*": ["../../../packages/UI/src/*"],
+      "@devlaunchers/components": ["../../../packages/UI/src/index"],
       "@devlaunchers/core-lib/*": ["../../../packages/core-lib/src/*"],
       "@devlaunchers/core-lib": ["../../../packages/core-lib/src/index"]
     }

@@ -2863,6 +2863,7 @@ __metadata:
   resolution: "@devlaunchers/ideaspace@workspace:apps/ideaspace"
   dependencies:
     "@banana-dev/banana-dev": ^3.0.0
+    "@devlaunchers/components": "workspace:*"
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
@@ -2898,7 +2899,7 @@ __metadata:
     react-scripts: ^4.0.3
     semantic-ui-css: ^2.4.1
     semantic-ui-react: ^2.0.3
-    styled-components: ^5.3.0
+    styled-components: 5.3.5
     styled-normalize: ^8.0.7
     tabletop: ^1.6.3
     typescript: ^4.7.4
@@ -37210,7 +37211,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^5.2.1, styled-components@npm:^5.3.0":
+"styled-components@npm:^5.2.1":
   version: 5.3.11
   resolution: "styled-components@npm:5.3.11"
   dependencies:

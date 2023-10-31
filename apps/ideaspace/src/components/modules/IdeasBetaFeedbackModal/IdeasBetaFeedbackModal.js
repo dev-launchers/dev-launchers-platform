@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { useState, useEffect } from 'react';
-import './IdeasBetaFeedbackModal.css';
+import './IdeasBetaFeedbackModal.css'; // TODO Global CSS cannot be imported from files other than your Custom <App>. Please move all global CSS imports to pages/_app.js. Or convert the import to Component-Level CSS (CSS Modules).
 import messageIcon from './message-square.svg';
 import modalImage from './modal-img.png';
 
