@@ -16,11 +16,12 @@ import {
   CtaHeaderMessage,
   CtaButtonWrapper,
   StatusNote,
+  Wrapper,
 } from "./StyledSupportUs";
 
 export default function SupportUs() {
   return (
-    <div>
+    <Wrapper>
       <SupportUsOverlay />
       <PageBody>
         <ContentArea>
@@ -51,6 +52,6 @@ export default function SupportUs() {
           </CtaWrapper>
         </ContentArea>
       </PageBody>
-    </div>
+    </Wrapper>
   );
 }
