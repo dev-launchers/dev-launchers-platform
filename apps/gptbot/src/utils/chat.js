@@ -38,11 +38,8 @@ function response(i) {
         })
         .then((responseText) => {
             // Handle the response here (e.g., printing it to the console)
-            
-            
             displayText("Onboarding bot: " + responseText);
             d.disabled = false;
-            
         })
         .catch((error) => {
             // Handle any errors that occurred during the request
