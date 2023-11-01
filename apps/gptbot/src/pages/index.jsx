@@ -2,7 +2,7 @@ import Head from "next/head";
 import React, { useEffect } from 'react';
 import Button from "@devlaunchers/components/src/components/atoms/Button"; 
 import OpenResponse from "@devlaunchers/components/src/components/organisms/OpenResponse";
-import BaseLayer from "@devlaunchers/components/src/components/Atoms/BaseLayer";
+import BaseLayer from "@devlaunchers/components/src/components/atoms/BaseLayer";
 import { send } from "../utils/chat.js";
 import { displayText } from "../utils/chat.js";
 
