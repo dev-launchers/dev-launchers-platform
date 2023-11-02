@@ -49,7 +49,7 @@ const nextConfig = {
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
     // Important: return the modified config
-    config.resolve.alias['styled-components'] = path.resolve("./node_modules", "styled-components");
+    config.resolve.alias['styled-components'] = path.resolve("../../node_modules", "styled-components");
     return config
   },
   reactStrictMode: true, // It helps you avoid legacy code, and deprecated APIs.
