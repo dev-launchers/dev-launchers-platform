@@ -31,6 +31,7 @@ function response(i) {
     fetch(serverUrl, requestOptions)
         .then((response) => {
             if (response.ok) {
+
                 return response.text();
             } else {
                 throw new Error(`Failed to make the request: ${response.status}`);
@@ -45,7 +46,7 @@ function response(i) {
             // Handle any errors that occurred during the request
             console.error(error);
             d.disabled = false;
-        
+            displayText("System: " + error);
         });
 }
 
@@ -55,5 +56,5 @@ export function displayText(i){
 }
 
 function msg(i){
-    return (`<div style="border: 1px solid black width: 70px overflow: hidden white-space: nowrap">${i}</div>`);
+    return (`<div id="message"><img float="left" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg width="60px" height="60px"><div style="border: 1px solid black width:70px overflow: hidden white-space: nowrap">${i}</div></div>`);
 }
