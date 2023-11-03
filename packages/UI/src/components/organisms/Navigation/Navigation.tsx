@@ -1,149 +1,177 @@
 import Link from 'next/link';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styles/theme';
+import * as React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
-import Box from '../../atoms/Box';
-import Button from '../../atoms/Button';
-import Layer from '../../atoms/Layer';
-import NavLink from '../../atoms/NavLink/NavLink';
-import Typography from '../../atoms/Typography';
-import NavDropdown from '../NavDropdown';
+import { Button, NavLink } from '../../atoms';
+import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
-import { useUserDataContext } from './../../../context/UserDataContext';
 import MobileNavigation from './MobileNavigation';
-import { Nav, NavWrapper } from './Styled.Navigation';
-import type { NavigationProps } from '.';
 
-const links = {
+const HamburgerButton = ({
+  className,
+  open,
+  setOpen,
+}: {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  className: string;
+}) => {
+  return (
+    <button
+      className={`tham tham-e-squeeze tham-w-10 ${
+        !open || 'tham-active'
+      } ${className} z-30`}
+      onClick={() => setOpen((prev) => !prev)}
+    >
+      <div className="tham-box">
+        <div className={`tham-inner ${open ? 'bg-black' : 'bg-white'}`} />
+      </div>
+    </button>
+  );
+};
+
+// TODO: Use fonts from figma
+const NavigationStyles = tv(
+  {
+    slots: {
+      $wrapper: 'flex justify-between items-center px-8 h-[100px] bg-[#1C1C1C]',
+      $logoContainer: 'flex gap-4 items-center text-white',
+      $linksContainer: '',
+      $actionsContainer: '',
+    },
+    variants: {},
+  }
+  // { responsiveVariants: ['sm', 'md'] }
+);
+
+export const links = {
   CREATE: '/create',
   LEARN: '/learn',
   DREAM: [
-    { text: 'Ideaspace', href: '/ideaspace' },
-    { text: 'Submit an idea', href: '/ideaspace/submit' },
-    { text: 'Help existing idea', href: '/ideaspace/browse' },
+    {
+      text: 'Ideaspace',
+      href: '/ideaspace',
+      hasUnderline: true,
+    },
+    {
+      text: 'Submit an idea',
+      href: '/ideaspace/submit',
+    },
+    {
+      text: 'Help existing idea',
+      href: '/ideaspace/browse',
+    },
   ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
 };
 
-/*
-* The following Consumes data from any context:
-*  if (!user) {
-    userInfo = useUserDataContext().userData;
-  }
-* This is declaration is only for UserDataCotext:
-*const { userData } = useUserDataContext();
-*
-* Either of these can be used
-*/
-export default function Navigation({ user }: NavigationProps) {
-  const ListStyle = { listStyle: 'none' };
-  const { userData, setUserData } = useUserDataContext();
+export const accountOptions = [
+  { text: 'My Profile', href: '/users/me' },
+  {
+    text: 'my ideas dashboard',
+    href: '/ideaspace/dashboard',
+    hasUnderline: true,
+  },
+];
 
-  const handleLogout = () => {
-    Logout();
-    setUserData({
-      id: 0,
-      name: '',
-      username: '',
-      email: '',
-      bio: '',
-      profilePictureUrl: '',
-      socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
-      discord: {
-        id: 0,
-        avatar: '',
-        username: '',
-        discriminator: '',
-      },
-      interests: [],
-    });
-  };
-  
+type NavigationProps = VariantProps<typeof NavigationStyles>;
+
+const Navigation = () => {
+  const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(false);
+  const { $wrapper, $logoContainer } = NavigationStyles();
+  const { userData, isAuthenticated } = useUserDataContext();
+
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Layer hasRainbowBottom={true} type="dark">
-          <Nav>
-            <Box justifyContent={'space-between'} alignItems={'center'}>
-              <Link href="/">
-                <a href="/">
-                  <Box gap={'5px'} alignItems={'center'}>
-                    <img width="36" height="33" src={logo} alt="logo" />
-                    <Typography type="h3">Dev Launchers</Typography>
-                  </Box>
-                </a>
-              </Link>
-              <NavWrapper>
-                <ul>
-                  <Box gap={'16px'} alignItems="baseline">
-                    {Object.entries(links).map(([name, href], i) => {
-                      if (Array.isArray(href))
-                        return <NavDropdown title={name} links={href} />;
-                      return (
-                        <li style={ListStyle} key={i}>
-                          <Link href={href} passHref>
-                            <NavLink>{name}</NavLink>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </Box>
-                </ul>
-                {userData.id === 0 ? (
-                  <Box gap={'16px'}>
-                    <Button
-                      as="a"
-                      href={
-                        process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-                      }
-                      buttonType="primary"
-                      buttonSize="standard"
-                    >
-                      Sign In
-                    </Button>
-                    <Button
-                      as="a"
-                      href={
-                        process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                        `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-                      }
-                      buttonType="secondary"
-                      buttonSize="standard"
-                    >
-                      Create an Account
-                    </Button>
-                  </Box>
-                ) : (
-                  <Box gap={'16px'} alignItems={'center'}>
-                    <img
-                      width="36"
-                      height="33"
-                      src={userData.profilePictureUrl}
-                      alt="Profile avatar"
-                      style={{ borderRadius: '50%' }}
-                    />
-                    <Typography type="p">Hi {userData.name}</Typography>
-                    <Button
-                      buttonType="secondary"
-                      buttonSize="standard"
-                      onClick={handleLogout}
-                    >
-                      Log out
-                    </Button>
-                  </Box>
-                )}
-              </NavWrapper>
-            </Box>
-            <MobileNavigation links={links} user={userData} logout={handleLogout} />
-          </Nav>
-        </Layer>
-      </ThemeProvider>
-    </>
+    <nav className={$wrapper()}>
+      <Link href="/">
+        <a href="/" className={$logoContainer()}>
+          <img className="w-10" src={logo} alt="logo"></img>
+          <span className="hidden md:inline-block">Dev Launchers</span>
+        </a>
+      </Link>
+      <ul>
+        <div className="hidden lg:flex lg:gap-12 lg:items-baseline">
+          {Object.entries(links).map(([name, href], i) => {
+            if (Array.isArray(href))
+              return (
+                <li key={`${name}-` + i}>
+                  <NavDropdown
+                    title={name}
+                    links={href}
+                    toggleElementProps={{ style: { color: 'white' } }}
+                  />
+                </li>
+              );
+            return (
+              <li className="list-none" key={i}>
+                <Link href={href} passHref>
+                  <NavLink>{name}</NavLink>
+                </Link>
+              </li>
+            );
+          })}
+        </div>
+      </ul>
+      {!isAuthenticated ? (
+        <div className="hidden lg:flex lg:gap-4">
+          <Button
+            as="a"
+            href={
+              process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+              `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+            }
+            buttonType="primary"
+            buttonSize="standard"
+          >
+            Sign In
+          </Button>
+          <Button
+            as="a"
+            href={
+              process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+              `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+            }
+            buttonType="secondary"
+            buttonSize="standard"
+          >
+            Create an Account
+          </Button>
+        </div>
+      ) : (
+        <div className="hidden text-white lg:flex lg:gap-4 lg:items-center">
+          <img
+            width="36"
+            height="33"
+            src={userData.profilePictureUrl}
+            alt="Profile avatar"
+            style={{ borderRadius: '50%' }}
+          />
+          <NavDropdown
+            title={`Hi ${userData.name}`}
+            links={accountOptions}
+            toggleElementProps={{ style: { color: 'white' } }}
+          />
+        </div>
+      )}
+      <HamburgerButton
+        open={isSidebarExpanded}
+        setOpen={setIsSidebarExpanded}
+        className="lg:hidden"
+      />
+      <MobileNavigation
+        links={links}
+        accountOptions={accountOptions}
+        user={userData}
+        isAuthenticated={isAuthenticated}
+        logout={() => Logout()}
+        isSidebarExpanded={isSidebarExpanded}
+        setIsSidebarExpanded={setIsSidebarExpanded}
+      />
+    </nav>
   );
-}
+};
+
+Navigation.displayName = 'Navigation';
+export default Navigation;
