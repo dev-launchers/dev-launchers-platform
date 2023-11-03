@@ -9,11 +9,8 @@ import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import {
-  HeadWapper,
-  Headline,
-  StyledRanbow,
-} from './StyledSubmissionForm';
+import { StyledRanbow } from './StyledSubmissionForm';
+import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function SubmissionForm() {
   let { userData, isAuthenticated } = useUserDataContext();

@@ -34,14 +34,12 @@ function MyApp(props) {
   }, []);
 
   return (
-    <div className="IdeasApp">
-      <ThemeProvider theme={theme}>
-        <Head><meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" /></Head>
-        <GlobalStyle />
-        <IdeasBetaFeedbackModal />
-        {props.children}
-      </ThemeProvider>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Head><meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" /></Head>
+      <GlobalStyle />
+      <IdeasBetaFeedbackModal />
+      {props.children}
+    </ThemeProvider>
   );
 }
 

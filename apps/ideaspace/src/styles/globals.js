@@ -70,13 +70,6 @@ p {
   text-align: left;
 }
 
-.IdeasApp {
-  /* font-family: sans-serif; */
-  text-align: center;
-  font-family: "Nunito Sans", sans-serif;
-  background-color:#f0edee;
-}
-
 a {
   width: auto;
   display: inline;
