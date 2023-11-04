@@ -23,8 +23,8 @@ export const SingleComment = styled.div`
 export const SingleCommentContent = styled.div`
   width: 100%;
   min-width: 430px;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  color: #C4C4C4;
+  background-color: white;
+  color: black;
   border-radius: 25px;
   padding: 20px;
   display: inline-flex;
@@ -37,14 +37,21 @@ export const SingleCommentContent = styled.div`
   h3 {
     margin: 0;
     padding-right: 5px;
-    font-size: 12px;
-    font-style: italic;
+    font-size: 18px;
     font-weight: 1000 ;
-    color: white;
+    color: black;
+  }
+
+  h5 {
+    margin: 0;
+    padding-right: 5px;
+    font-size: 14px;
+    font-weight: 1000 ;
+    color: black;
   }
 
   p {
-    font-size: 12px;
+    font-size: 16px;
     margin: 0;
   }
 `;
@@ -57,7 +64,7 @@ export const UserNameComment = styled.input`
   /* width: 100%; */
   min-width: 200px;
   height: 1.2rem;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   border-radius: 25px;
   padding: 20px;
 `;
@@ -158,6 +165,17 @@ export const UserImageOne = styled.img`
 `;
 
 
+export const CommentBox = styled.textarea`
+  border-radius: 10px;
+  background-color: #F0EDED;
+  border: solid 1px #F0EDED;
+  color: #7F7E7F;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
+
 export const Idea = styled.div`
   width: 100%;
   max-width: 700px;
@@ -182,8 +200,8 @@ export const Idea = styled.div`
 `;
 
 export const IdeaName = styled.div`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
-  border: .2rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+  border: .2rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   width: 100%;
   height: 50%;
   border-top-right-radius: 30px;
@@ -195,7 +213,7 @@ export const IdeaName = styled.div`
 
 
 export const IdeaProgress = styled.div`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   width: 100%;
   height: 50%;
   padding-top: 30px;
@@ -205,7 +223,7 @@ export const IdeaProgress = styled.div`
 
 export const Description = styled.div`
   background-color: white;
-  border: .2rem solid ${({ theme }) => theme.colors.NEUTRAL_1};
+  border: .2rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   width: 100%;
   // height: 50%;
   border-bottom-right-radius: 30px;
@@ -237,7 +255,7 @@ export const LeaderImage = styled.img`
 
 export const LeaderInfo = styled.div`
   margin-left: 30px;
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_1};
+  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   width: 100%;
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;

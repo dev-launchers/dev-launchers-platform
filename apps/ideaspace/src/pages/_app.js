@@ -4,17 +4,13 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../styles/globals';
 import Head from 'next/head';
 
-
-import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
-import platformTheme from '@devlaunchers/components/styles/theme';
-import ideaspaceTheme from '../styles/theme';
+import theme from '@devlaunchers/components/styles/theme';
 
 import useMockDataInDevelopment from "../utils/useMockData";
 /*
-import { UserDataProvider } from "@contexts/UserDataContext";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer"
 */
@@ -25,19 +21,6 @@ const hashRedirect = (router) => {
     router.push(router.asPath.replace('/#', ''));
   }
 };
-
-const theme = () =>{
-  // platformTheme and ideaspaceTheme both have color argument
-  // it need to concat instead of replace each other
-  for(let a in platformTheme){
-    if(a in ideaspaceTheme){
-      ideaspaceTheme[a] = {...platformTheme[a], ...ideaspaceTheme[a]};
-    }else{
-      ideaspaceTheme[a] = platformTheme[a];
-    }
-  }
-  return ideaspaceTheme;
-}
 
 function MyApp(props) {
   //useMockDataInDevelopment();
@@ -54,11 +37,9 @@ function MyApp(props) {
     <div className="IdeasApp">
       <ThemeProvider theme={theme}>
         <Head><meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" /></Head>
-        <UserDataProvider>
-          <GlobalStyle />
-          <IdeasBetaFeedbackModal />
-          {props.children}
-        </UserDataProvider>
+        <GlobalStyle />
+        <IdeasBetaFeedbackModal />
+        {props.children}
       </ThemeProvider>
     </div>
   );

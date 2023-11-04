@@ -13,7 +13,7 @@ export const TagsCard = ({ status }) => {
         <StyledTag>Tags</StyledTag>
       </TopView>
       <BottomView>
-        <Tag tag={status ? {status} : 'No Tags Listed'} />
+        <Tag tag={status ? status : 'No Tags Listed'} />
       </BottomView>
     </StyledCard>
   );

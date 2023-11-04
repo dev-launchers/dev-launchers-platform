@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.section`
   background-color: #FFFFFF;
-  padding: 0rem calc((100% - 75.5rem)/2) 5rem calc((100% - 75.5rem)/2);
+  padding: 0rem calc((100% - 75.5rem)/2) 3.5rem calc((100% - 75.5rem)/2);
 
   @media (max-width: 1278px) {
-    padding: 0rem calc((100% - 70.5rem)/2) 5rem calc((100% - 70.5rem)/2);
+    padding: 0rem calc((100% - 70.5rem)/2) 3.5rem calc((100% - 70.5rem)/2);
   }
   @media (max-width: 1192px) {
-    padding: 0rem calc((100% - 46.5rem)/2) 5rem calc((100% - 46.5rem)/2);
+    padding: 0rem calc((100% - 46.5rem)/2) 3.5rem calc((100% - 46.5rem)/2);
   }
   @media (max-width: 810px) {
     padding: 0rem 2rem 5rem 2rem;
@@ -51,10 +51,10 @@ flex-direction: row;
 flex-wrap: wrap; 
 column-gap: 3.8rem;
 row-gap: 2rem;
-margin-top: 1.5rem;
+margin: 1.5rem auto;
 
 @media (max-width: 1278px) {
-  column-gap: 1.5rem;
+  column-gap: 1.2rem;
 }
 `;
 
