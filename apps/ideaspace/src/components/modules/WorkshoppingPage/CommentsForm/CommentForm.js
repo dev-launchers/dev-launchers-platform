@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import {
-  UserNameCommentBox,
-  UserNameComment,
   UserComment,
   UserImageOne,
   CommentBox,
@@ -13,11 +10,11 @@ import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
-  const [state, setState] = React.useState(false)
+  const [state, setState] = useState(false)
 
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
-  const [disabled, setDisabled] = React.useState(true);
+  const [disabled, setDisabled] = useState(true);
 
   const handleTextChange = (e) => {
     const text = e.target.value;

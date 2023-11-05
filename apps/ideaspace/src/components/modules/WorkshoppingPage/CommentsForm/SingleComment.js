@@ -1,12 +1,9 @@
 import {
   SingleComment,
   UserImage,
-  TextContent,
   SingleCommentContent,
   SingleCommentButtons
 } from './StyledComments.js';
-import agent from '@DevLaunchers/utility/agent';
-import { molecules } from '@DevLaunchers/components/src/components';
 
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
