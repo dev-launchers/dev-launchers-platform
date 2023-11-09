@@ -8,6 +8,24 @@ import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
 
+const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M2 3.49691e-07C1.45 2.53526e-07 0.979003 0.195667 0.587003 0.587C0.19567 0.979 2.89369e-06 1.45 2.79753e-06 2L3.49691e-07 16C2.53526e-07 16.55 0.195667 17.021 0.587 17.413C0.979 17.8043 1.45 18 2 18L9 18L9 16L2 16L2 2L9 2L9 1.57361e-06L2 3.49691e-07ZM13 4L11.625 5.45L14.175 8L6 8L6 10L14.175 10L11.625 12.55L13 14L18 9L13 4Z"
+        fill={fill || '#1C1C1C'}
+      />
+    </svg>
+  );
+};
+
 const HamburgerButton = ({
   className,
   open,
@@ -150,7 +168,17 @@ const Navigation = () => {
           />
           <NavDropdown
             title={`Hi ${userData.name}`}
-            links={accountOptions}
+            links={[
+              ...accountOptions,
+              {
+                text: (
+                  <div className="flex gap-1">
+                    <LogoutIcon fill="white" />
+                    <span>logout</span>
+                  </div>
+                ),
+              },
+            ]}
             toggleElementProps={{ style: { color: 'white' } }}
           />
         </div>

@@ -1778,10 +1778,6 @@ video {
   top: var(--0, 0px);
 }
 
-.z-10 {
-  z-index: 10;
-}
-
 .z-20 {
   z-index: 20;
 }
@@ -1857,10 +1853,6 @@ video {
 
 .h-\[71px\] {
   height: 71px;
-}
-
-.h-full {
-  height: 100%;
 }
 
 .w-10 {
@@ -1952,6 +1944,10 @@ video {
   gap: var(--4, 1rem);
 }
 
+.gap-1 {
+  gap: var(--1, 0.25rem);
+}
+
 .gap-x-4 {
   -moz-column-gap: var(--4, 1rem);
        column-gap: var(--4, 1rem);
@@ -1965,16 +1961,8 @@ video {
   overflow: auto;
 }
 
-.overflow-hidden {
-  overflow: hidden;
-}
-
 .overflow-x-hidden {
   overflow-x: hidden;
-}
-
-.overflow-y-hidden {
-  overflow-y: hidden;
 }
 
 .border {
