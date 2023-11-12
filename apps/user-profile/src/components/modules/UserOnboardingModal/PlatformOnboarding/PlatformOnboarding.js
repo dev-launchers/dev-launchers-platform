@@ -13,9 +13,27 @@ import { onboardingActions } from './../../../../state/actions';
 export default function PlatformOnboarding() {
   const { dispatch } = useOnboardingDataContext();
 
-  const hideAllModals = () => {
-    dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
-  }
+  const [showOnboarding, setShowOnboarding] = useState(true);
+
+
+  useEffect(() => {
+    const onboardingCompleted = localStorage.getItem('onboardingCompleted');
+    if(onboardingCompleted){
+      setShowOnboarding(false);
+    }
+  }, []);
+
+  
+
+  const hideAllModalsAndUpdateFlag = () => {
+    dispatch({ type: onboardingActions.HIDE_ALL_MODALS});
+    localStorage.setItem('onboardingCompleted', 'true');
+    setShowOnboarding(false);
+  };
+
+
+
+
 
   // @description 
   // - dataFromBackend is currently sample
@@ -125,7 +143,7 @@ export default function PlatformOnboarding() {
           next: {
             label: 'Finished',
             hideIcons: true,
-            onClick: hideAllModals,
+            onClick: hideAllModalsAndUpdateFlag,
             disabled: false,
           },
           back: {
@@ -135,6 +153,10 @@ export default function PlatformOnboarding() {
       },
     },
   ];
+
+  if(!showOnboarding) {
+    return null;
+  }
 
   return (
     <PlatformOnboardingContainer>

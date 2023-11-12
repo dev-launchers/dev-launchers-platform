@@ -4,21 +4,28 @@ import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import { ModalContainer, userUnboardingModalStyle } from "./StyledUserOnboardingModal";
 import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
 import IntroductionModal from "./IntroductionModal/IntroductionModal";
+import { onboardingActions } from './../../../state/actions';
+
 Modal.setAppElement("#__next");
 
-/**
- * @description This is custom modal for the user onboarding. 
- */
 export default function UserOnboardingModal() {
     const { onboardingData: { showIntroductionModal, showPlatformOnboardingModal }, dispatch } = useOnboardingDataContext();
-    const [modalIsOpen, setModalIsOpen] = useState(showIntroductionModal || showPlatformOnboardingModal);
 
-    const openModal = () => {
-        setModalIsOpen(true);
-    }
+    useEffect(() => {
+        // Check if the onboarding has already been completed
+        const onboardingCompleted = localStorage.getItem('onboardingCompleted');
+        if (onboardingCompleted === 'true') {
+            // Update the context to reflect that the onboarding modals should not be shown
+            dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
+        }
+    }, [dispatch]);
+
+    // You no longer need this state since the display logic should be driven by the context
+    // const [modalIsOpen, setModalIsOpen] = useState(showIntroductionModal || showPlatformOnboardingModal);
 
     const closeModal = () => {
-        setModalIsOpen(false);
+        // When closing the modal, ensure to update the context as well
+        dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
     }
 
     const showModals = () => {
@@ -33,11 +40,8 @@ export default function UserOnboardingModal() {
     
     return (
         <>
-            {/* "modalIsOpen ? true : false" set this way until we start adding typescript for 
-         boolean type */}
             <Modal
                 isOpen={showIntroductionModal || showPlatformOnboardingModal}
-                onRequestOpen={openModal}
                 onRequestClose={closeModal}
                 style={userUnboardingModalStyle}
                 contentLabel="User Onboarding"

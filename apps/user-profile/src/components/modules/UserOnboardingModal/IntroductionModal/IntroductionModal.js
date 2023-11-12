@@ -2,6 +2,7 @@ import { IntroductionContainer, Header, Body, Footer } from "./StyledIntroductio
 import { Typography } from "@devlaunchers/components/components/atoms";
 import Button from '@devlaunchers/components/components/atoms/Button';
 import RainbowBar from './../../../common/RainbowBar/RainbowBar';
+import { useEffect } from 'react';
 
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../state/actions';
@@ -13,7 +14,12 @@ import { onboardingActions } from './../../../../state/actions';
  */
 export default function IntroductionModal() {
     const { onboardingData, dispatch } = useOnboardingDataContext();
-
+    useEffect(() => {
+        const onboardingCompleted = localStorage.getItem('onboardingCompleted');
+        if (onboardingCompleted) {
+            dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
+        }
+    }, [dispatch]);
     const onGetStarted = () => {
         dispatch({ type: onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL });
     }
