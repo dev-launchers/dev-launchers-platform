@@ -45,6 +45,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   name: string;
   target: string;
   targetLink: string;
+  profileLink: string;
   timeStamp: string;
   action: string;
   src: string;
@@ -77,6 +78,7 @@ function Notification({
   delayMs,
   status,
   targetLink,
+  profileLink,
 }: NotificationProps) {
   /**
    * Determine the width of device so i can decide the number of text in a message to display
@@ -106,18 +108,22 @@ function Notification({
       <div className={container()}>
         <div className={status === 'unread' ? unRead() : read()}></div>
         <div className={avatarContainer()}>
-          <Avatar
-            src={src}
-            alt={alt}
-            rounded={rounded}
-            size={size}
-            delayMs={delayMs}
-          />
+          <a href={profileLink} rel="noreferrer" target="_blank">
+            <Avatar
+              src={src}
+              alt={alt}
+              rounded={rounded}
+              size={size}
+              delayMs={delayMs}
+            />
+          </a>
         </div>
         <div className={detailsContentStyle()}>
           <div className={contentContainerStyle()}>
             <div className={headerStyle()}>
-              <strong className={usernameStyle()}>{name}</strong>
+              <a href={profileLink} rel="noreferrer" target="_blank">
+                <strong className={usernameStyle()}>{name}</strong>
+              </a>
               <span className={actionStyle()}>{action}</span>
               <a href={targetLink} rel="noreferrer" target="_blank">
                 <strong className={targetStyle()}>{target}</strong>

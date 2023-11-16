@@ -744,16 +744,6 @@ video {
   gap: var(--4, 1rem);
 }
 
-.truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.text-ellipsis {
-  text-overflow: ellipsis;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
@@ -856,10 +846,6 @@ video {
 
 .pt-1 {
   padding-top: var(--1, 0.25rem);
-}
-
-.pt-4 {
-  padding-top: var(--4, 1rem);
 }
 
 .text-center {
@@ -972,10 +958,6 @@ video {
 @media (min-width: 768px) {
   .md\:flex {
     display: flex;
-  }
-
-  .md\:w-1\/2 {
-    width: 50%;
   }
 
   .md\:grow {

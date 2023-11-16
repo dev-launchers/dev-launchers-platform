@@ -15,6 +15,7 @@ export const NotificationItem: StoryObj<typeof Notification> = {
     name: 'Lamodot',
     target: 'DevSocials',
     targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
+    profileLink: 'https://devlaunchers.org/users/me',
     timeStamp: '30m',
     action: 'commented on',
     src: 'https://bit.ly/3EBQXiH',
