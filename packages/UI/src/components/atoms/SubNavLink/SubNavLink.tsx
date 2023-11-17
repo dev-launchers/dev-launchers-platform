@@ -4,7 +4,7 @@ import type { SubNavLinkProps } from './index';
 
 const NavLink: FC<SubNavLinkProps> = ({ href, text, ...props }) => {
   return (
-    <StyledSubNavLink href={href} {...props}>
+    <StyledSubNavLink style={{wordBreak: 'keep-all'}} href={href} {...props}>
       {text}
     </StyledSubNavLink>
   );

@@ -61,7 +61,7 @@ export const Options = styled.form<DropdownProps>`
 `;
 
 export const Chevron = styled.img.attrs(() => ({
-  src: Icon,
+  src: Icon.src,
   alt: 'icon',
 }))<DropdownProps>`
   display: inline-block;
