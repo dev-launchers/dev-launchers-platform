@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import {ThemeProvider} from 'styled-components';
-import theme from "../../../styles/theme";
+import { ThemeProvider } from 'styled-components';
+import theme from '../../../styles/theme';
 
 import Newsletter from './Newsletter';
 import RandomQuote from './RandomQuote';

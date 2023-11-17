@@ -25,11 +25,11 @@ const UseLessBox = ({
 export const Primary: Story = {
   render: () => (
     <Grid className="gap-y-6">
-      <UseLessBox className="h-[71px] col-span-full" />
-      <UseLessBox className="h-[442px] col-span-full" />
-      <UseLessBox className="h-[442px] col-span-4" />
-      <UseLessBox className="h-[442px] col-span-4" />
-      <UseLessBox className="h-[442px] col-span-4" />
+      <UseLessBox className="col-span-full h-[71px]" />
+      <UseLessBox className="col-span-full h-[442px]" />
+      <UseLessBox className="col-span-4 h-[442px]" />
+      <UseLessBox className="col-span-4 h-[442px]" />
+      <UseLessBox className="col-span-4 h-[442px]" />
     </Grid>
   ),
 };

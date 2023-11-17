@@ -1,4 +1,4 @@
-import validateEmail from '@devlaunchers/components/utils/ValidateEmail';
+import validateEmail from '../../../../utils/ValidateEmail';
 import axios from 'axios';
 import { useState } from 'react';
 import { withTheme } from 'styled-components';
@@ -52,7 +52,7 @@ const NewsLetter = (props) => {
           }}
         >
           →{' '}
-          <Secret href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/hangout"}>
+          <Secret href={process.env.NEXT_PUBLIC_FRONT_END_URL + '/hangout'}>
             <span>😄</span>
           </Secret>{' '}
           ←

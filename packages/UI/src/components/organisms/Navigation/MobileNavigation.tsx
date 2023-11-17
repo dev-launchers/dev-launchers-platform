@@ -34,7 +34,7 @@ const MobileNavigation = ({
 
   return (
     <HamburgerWrapper
-      className={`block absolute w-full h-full left-full top-0 transition-transform duration-200 ${
+      className={`absolute left-full top-0 block h-full w-full transition-transform duration-200 ${
         isSidebarExpanded ? '-translate-x-full' : 'hidden'
       }`}
     >
