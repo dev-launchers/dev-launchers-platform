@@ -10,12 +10,11 @@ import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 import {
   PageWrapper,
-  HeadWapper,
-  Headline,
   StyledRanbow,
   IdeaCardWrapper,
   FilterDiv,
 } from './StyledBrowseIdeas';
+import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
