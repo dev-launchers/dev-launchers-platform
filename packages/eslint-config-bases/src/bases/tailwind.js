@@ -3,6 +3,8 @@
  * @see https://github.com/belgattitude/nextjs-monorepo-example/tree/main/packages/eslint-config-bases
  */
 
+const { join, dirname } = require('path');
+
 const reactPatterns = {
   files: ['*.{jsx,tsx}'],
 };
@@ -26,6 +28,16 @@ module.exports = {
         'plugin:tailwindcss/recommended',
       ],
       rules: {},
+      settings: {
+        tailwindcss: {
+          config: join(
+            dirname(
+              require.resolve(join('@devlaunchers/tailwind', 'package.json'))
+            ),
+            'tailwind.config.js'
+          ),
+        },
+      },
     },
   ],
 };
