@@ -49,10 +49,11 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
       <BoxContainer paddingVertical={0} paddingHorizontal={50}>
         <Footer>
           <FooterFirstText>
-            Didn't find what you were looking for?
+            Join the Dev Launchers Talent Community
           </FooterFirstText>
           <FooterSecondText>
-            Create an account to be notified when more roles open up!
+            Join the Dev Launchers Talent Community to be notified about new
+            volunteering roles that match your skillset!
           </FooterSecondText>
           <BtnSignUp
             as="a"
@@ -61,7 +62,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
               '?redirectURL=https://devlaunchers.org/users/me'
             }
           >
-            Create An Account
+            Join the Talent Community
           </BtnSignUp>
         </Footer>
       </BoxContainer>
