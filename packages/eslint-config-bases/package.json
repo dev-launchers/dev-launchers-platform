@@ -51,6 +51,9 @@
     },
     "./typescript": {
       "require": "./src/bases/typescript.js"
+    },
+    "./tailwind": {
+      "require": "./src/bases/tailwind.js"
     }
   },
   "scripts": {
@@ -106,6 +109,7 @@
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15",
     "eslint": "8.21.0",
+    "eslint-plugin-tailwindcss": "3.13.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "3.0.2",
