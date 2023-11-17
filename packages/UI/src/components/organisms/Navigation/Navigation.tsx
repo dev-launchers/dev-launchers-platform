@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import * as React from 'react';
-import { tv, type VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import { Button, NavLink } from '../../atoms';
@@ -70,7 +70,7 @@ export const accountOptions = [
   },
 ];
 
-type NavigationProps = VariantProps<typeof NavigationStyles>;
+// type NavigationProps = VariantProps<typeof NavigationStyles>;
 
 const Navigation = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(false);

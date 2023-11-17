@@ -1,7 +1,7 @@
-import validateEmail from '../../../../utils/ValidateEmail';
 import axios from 'axios';
 import { useState } from 'react';
 import { withTheme } from 'styled-components';
+import validateEmail from '../../../../utils/ValidateEmail';
 import {
   Col,
   ErrorMessage,
