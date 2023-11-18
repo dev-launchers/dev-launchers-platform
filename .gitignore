@@ -69,3 +69,6 @@ yarn-error.log*
 
 # Storybook
 storybook-static
+
+# Tailwind
+packages/tailwind-constructor/tailwind.css

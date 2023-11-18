@@ -18,6 +18,7 @@ import {
   ColoredCtaEntry,
   ColoredCtaEntryImage,
   ColoredCtaEntryTitle,
+  Wrapper,
 } from "./StyledHome";
 import CtaDescriptionArea from "./CtaDescriptionArea";
 
@@ -56,7 +57,7 @@ function Home({ theme }) {
   }, []);
 
   return (
-    <div>
+    <Wrapper>
       <HeroImage />
       <HeroOverlay />
       <PageBody>
@@ -224,7 +225,7 @@ function Home({ theme }) {
           <Partners />
         </HomePageBody>
       </PageBody>
-    </div>
+    </Wrapper>
   );
 }
 
