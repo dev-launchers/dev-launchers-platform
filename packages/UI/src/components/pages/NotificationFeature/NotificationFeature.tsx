@@ -41,9 +41,6 @@ useEffect(() => {
   console.log('Dropdown state has changed:', checkedOptions);
 }, [checkedOptions]);
 
-function changeTab(){
-  
-}
   return (
     <>
       <Navbar/>
@@ -86,7 +83,6 @@ function changeTab(){
                 </button>
               </div>
               <div className="flex w-full lg:w-[234px] md:w-[216px] justify-between items-center rounded-lg">
-                {/* add tailwind variant for dropdown, then add base classes from figma  */}
                 <Dropdown
                   color="light"
                   options={[
