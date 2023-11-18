@@ -45,11 +45,11 @@ useEffect(() => {
     <>
       <Navbar/>
       <div className="grid w-full mx-auto grid-cols-4 gap-4 px-4 mt-8 md:grid-cols-8 md:gap-6 md:mt-16 md:p-0 lg:m-0 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:px-[128px]">
-        <div className="flex flex-col items-center justify-center gap-12 col-span-4 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-11 lg:max-w-[1014px]">
+        <div className="flex flex-col items-center justify-center gap-12 col-span-4 md:col-start-2 md:col-end-8 lg:col-span-12 lg:self-center lg:justify-self-center lg:max-w-[1014px] lg:w-[1014px]">
           <div className="flex flex-col justify-center items-end gap-6 self-stretch">
             <div className="flex justify-between items-end content-end self-stretch gap-y-8 flex-wrap">
               <h1 className='text-center text-gray-900 font-abel font-[40px] font-400 capitalize leading-none m-0'>Notifications</h1>
-              <div className="flex items-center w-[358px] justify-between md:w-auto md:gap-8">
+              <div className="flex items-center w-full justify-between md:justify-normal md:w-auto md:gap-8">
                 <button>
                 <h3 className='cursor-pointer text-[#3340e5] text-right font-nunito-sans leading-6 font-normal'>Mark all as read</h3>
                 </button>
