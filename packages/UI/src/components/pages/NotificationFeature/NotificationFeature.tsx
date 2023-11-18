@@ -37,10 +37,6 @@ export function Feature({ user }: DocumentScreenProps) {
   const unselectedTabTailwind = "cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]";
   const selectedTabTailwind = "cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch outline-none border-b-2 border-b-[#3350E5] bg-[#f9f9f9]";
 
-useEffect(() => {
-  console.log('Dropdown state has changed:', checkedOptions);
-}, [checkedOptions]);
-
   return (
     <>
       <Navbar/>
