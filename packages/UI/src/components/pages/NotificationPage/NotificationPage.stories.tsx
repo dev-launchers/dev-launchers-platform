@@ -23,6 +23,7 @@ export default {
     profilePictureUrl: 'string',
     socialMediaLinks: [],
     totalPoints: 2,
+    
     totalSeasonPoints: 2,
     availablePoints: 2,
     volunteerHours: 2,

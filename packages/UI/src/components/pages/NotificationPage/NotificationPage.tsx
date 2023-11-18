@@ -34,7 +34,7 @@ const grid = tv({
 export function DocumentScreen({ user }: DocumentScreenProps) {
   return (
     <>
-      <Navbar user={user} />
+      <Navbar/>
       <div className='inline-flex py-8 px-4 flex-col items-center lg:py-16 lg:px-[128px] md:w-full'>
         <div className="md:grid lg:grid-cols-[1fr_1015px_1fr] md:grid-cols-[1fr_699px_1fr] flex flex-col items-start">
           <div className="md:col-start-2 lg:m-auto md:col-end-3 lg:w-[1015px] md:w-[699px] flex w-[min(100%,358px)] flex-col items-start">

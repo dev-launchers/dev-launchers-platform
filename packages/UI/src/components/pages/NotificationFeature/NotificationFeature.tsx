@@ -33,6 +33,9 @@ const grid = tv({});
 export function Feature({ user }: DocumentScreenProps) {
   const [showAll, setShowAll] = useState(false)
   const [checkedOptions, setCheckedOptions] = useState<string>('');
+  const [activeTab, setActiveTab] = useState(false)
+  const selectedTabTailwind = "cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]";
+  const unselectedTabTailwind = "cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch outline-none border-b-2 border-b-[#3350E5] bg-[#f9f9f9]";
 
 useEffect(() => {
   console.log('Dropdown state has changed:', checkedOptions);
@@ -40,15 +43,18 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar user={user} />
+      <Navbar/>
       <div className="grid w-full mx-auto grid-cols-4 gap-4 px-4 mt-8 md:grid-cols-8 md:gap-6 md:mt-16 md:p-0 lg:m-0 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:px-[128px]">
         <div className="flex flex-col items-center justify-center gap-12 col-span-4 md:col-start-2 md:col-end-8 lg:col-start-3 lg:col-end-11 lg:max-w-[1014px]">
           <div className="flex flex-col justify-center items-end gap-6 self-stretch">
             <div className="flex justify-between items-end content-end self-stretch gap-y-8 flex-wrap">
               <h1 className='text-center text-gray-900 font-abel font-[40px] font-400 capitalize leading-none m-0'>Notifications</h1>
               <div className="flex items-center w-[358px] justify-between md:w-auto md:gap-8">
+                <button>
                 <h3 className='cursor-pointer text-[#3340e5] text-right font-nunito-sans leading-6 font-normal'>Mark all as read</h3>
-                <div className="cursor-pointer flex justify-center items-center gap-2">
+                </button>
+                <div>
+                  <button className="cursor-pointer flex justify-center items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="17"
@@ -62,18 +68,19 @@ useEffect(() => {
                     />
                   </svg>
                   <h3 className='font-[14px] font-[Inter] text-gray-900'>Settings</h3>
+                  </button>
                 </div>
               </div>
             </div>
             <div className="w-full h-[1px] bg-black"></div>
             <div className="flex  flex-wrap gap-y-6 content-end justify-between items-end self-stretch">
               <div className="flex w-full md:w-[291px] h-[52px] justify-center items-center">
-                <div className="cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]">
+                <button onClick={() => setActiveTab(!activeTab)} className={`${activeTab ? selectedTabTailwind : unselectedTabTailwind}`}>
                   <h3>All</h3>
-                </div>
-                <div className="cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch border-b-2 border-b-[#3350E5] bg-[#f9f9f9]">
-                  <h3 className="">Unread</h3>
-                </div>
+                </button>
+                <button onClick={() => setActiveTab(!activeTab)} className={`${activeTab ? unselectedTabTailwind : selectedTabTailwind}`}>
+                  <h3>Unread</h3>
+                </button>
               </div>
               <div className="flex w-full lg:w-[234px] md:w-[216px] justify-between items-center rounded-lg">
                 {/* add tailwind variant for dropdown, then add base classes from figma  */}
