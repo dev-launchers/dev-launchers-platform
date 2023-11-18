@@ -33,14 +33,17 @@ const grid = tv({});
 export function Feature({ user }: DocumentScreenProps) {
   const [showAll, setShowAll] = useState(false)
   const [checkedOptions, setCheckedOptions] = useState<string>('');
-  const [activeTab, setActiveTab] = useState(false)
-  const selectedTabTailwind = "cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]";
-  const unselectedTabTailwind = "cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch outline-none border-b-2 border-b-[#3350E5] bg-[#f9f9f9]";
+  const [activeTab, setActiveTab] = useState<string>('all')
+  const unselectedTabTailwind = "cursor-pointer flex py-3 px-0 w-[358px] justify-center items-center gap-2 flex-[1_0_0] self-stretch md:w-[291px]";
+  const selectedTabTailwind = "cursor-pointer flex py-3 px-0 justify-center items-center gap-2 flex-[1_0_0] self-stretch outline-none border-b-2 border-b-[#3350E5] bg-[#f9f9f9]";
 
 useEffect(() => {
   console.log('Dropdown state has changed:', checkedOptions);
 }, [checkedOptions]);
 
+function changeTab(){
+  
+}
   return (
     <>
       <Navbar/>
@@ -75,10 +78,10 @@ useEffect(() => {
             <div className="w-full h-[1px] bg-black"></div>
             <div className="flex  flex-wrap gap-y-6 content-end justify-between items-end self-stretch">
               <div className="flex w-full md:w-[291px] h-[52px] justify-center items-center">
-                <button onClick={() => setActiveTab(!activeTab)} className={`${activeTab ? selectedTabTailwind : unselectedTabTailwind}`}>
+                <button onClick={() => setActiveTab('all')} className={`${activeTab === 'all' ? selectedTabTailwind : unselectedTabTailwind}`}>
                   <h3>All</h3>
                 </button>
-                <button onClick={() => setActiveTab(!activeTab)} className={`${activeTab ? unselectedTabTailwind : selectedTabTailwind}`}>
+                <button onClick={() => setActiveTab('unread')} className={`${activeTab === 'unread' ? selectedTabTailwind : unselectedTabTailwind}`}>
                   <h3>Unread</h3>
                 </button>
               </div>
