@@ -13,6 +13,8 @@ on:
       - 'staging/website[1-2]'
       - 'staging/user-profile'
       - 'staging/user-profile[1-2]'
+      - 'staging/gptbot'
+      - 'staging/gptbot[1-2]'
 
 jobs:
   Publish:

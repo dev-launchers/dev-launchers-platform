@@ -45,7 +45,7 @@ const NavDropdown = ({
         aria-controls={optionsContainerId.current}
         onClick={(e) => {
           e.stopPropagation();
-          setMenuOpen(!menuOpen);
+          setMenuOpen((prev) => !prev);
         }}
       >
         <Typography type="navLink">{title}</Typography>
@@ -68,32 +68,31 @@ const NavDropdown = ({
           <polyline points="6 9 12 15 18 9"></polyline>
         </svg>
       </Toggle>
-      {menuOpen && (
-        <OptionsContainer id={optionsContainerId.current} isOpen={menuOpen}>
-          <Options>
-            {links.map(({ text, href, hasUnderline, ...rest }, i) => {
-              if (!href) {
-                return (
-                  <>
-                    <div>
-                      <SubNavLink {...rest} text={text} key={i} />
-                    </div>
-                    {hasUnderline && <hr style={{ width: '100%' }} />}
-                  </>
-                );
-              }
+
+      <OptionsContainer id={optionsContainerId.current} isOpen={menuOpen}>
+        <Options>
+          {links.map(({ text, href, hasUnderline, ...rest }, i) => {
+            if (!href) {
               return (
                 <>
-                  <Link href={href} passHref>
+                  <div>
                     <SubNavLink {...rest} text={text} key={i} />
-                  </Link>
+                  </div>
                   {hasUnderline && <hr style={{ width: '100%' }} />}
                 </>
               );
-            })}
-          </Options>
-        </OptionsContainer>
-      )}
+            }
+            return (
+              <>
+                <Link href={href}>
+                  <SubNavLink {...rest} href={href} text={text} key={i} />
+                </Link>
+                {hasUnderline && <hr style={{ width: '100%' }} />}
+              </>
+            );
+          })}
+        </Options>
+      </OptionsContainer>
     </DropdownContainer>
   );
 };
