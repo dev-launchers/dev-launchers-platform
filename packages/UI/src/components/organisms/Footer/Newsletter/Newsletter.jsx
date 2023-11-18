@@ -74,7 +74,7 @@ const NewsLetter = (props) => {
   }
   if (check) {
     return (
-      <div className="form">
+      <div>
         <h2
           style={{
             fontSize: '3rem',
@@ -130,7 +130,7 @@ const NewsLetter = (props) => {
   }
   if (isEmailAlreadyUsed) {
     return (
-      <div className="form">
+      <div>
         <h2
           style={{
             fontSize: '3rem',
@@ -185,7 +185,7 @@ const NewsLetter = (props) => {
     );
   }
   return (
-    <div className="form">
+    <div>
       <h2
         style={{
           fontSize: '3rem',

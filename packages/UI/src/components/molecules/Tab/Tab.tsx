@@ -65,7 +65,7 @@ const Tabs = ({
 export default Tabs;
 
 const TriggerStyles = tv({
-  base: 'font-nunito-sans inline-flex h-11 w-64 flex-shrink-0 items-center justify-center gap-2 py-3 text-[1rem] font-normal text-[#888888] hover:bg-[#f9f9f9] data-[state=active]:border-b-2 data-[state=active]:border-solid data-[state=active]:border-[#3350e5] data-[state=active]:font-bold data-[state=active]:text-[#000000]',
+  base: 'inline-flex h-11 w-64 flex-shrink-0 items-center justify-center gap-2 py-3 font-nunito-sans text-[1rem] font-normal text-[#888888] hover:bg-[#f9f9f9] data-[state=active]:border-b-2 data-[state=active]:border-solid data-[state=active]:border-[#3350e5] data-[state=active]:font-bold data-[state=active]:text-[#000000]',
 });
 
 export const Trigger: FC<RadixTabs.TabsTriggerProps> = ({

@@ -20,32 +20,32 @@ export default function Footer() {
       <ThemeProvider theme={theme}>
         <Newsletter />
         <FooterNav>
-          <Link href={'/create'} passHref className="nav-link">
+          <Link href={'/create'} passHref>
             <a href={'/create'}>
               <NavEntry>CREATE</NavEntry>
             </a>
           </Link>
-          <Link href={'/learn'} passHref className="nav-link">
+          <Link href={'/learn'} passHref>
             <a href={'/learn'}>
               <NavEntry>LEARN</NavEntry>
             </a>
           </Link>
-          <Link href={'/ideaspace'} passHref className="nav-link">
+          <Link href={'/ideaspace'} passHref>
             <a href={'/ideaspace'}>
               <NavEntry>DREAM</NavEntry>
             </a>
           </Link>
           {/* }
-          <Link href={"/play"} passHref className="nav-link">
+          <Link href={"/play"} passHref>
             <NavEntry>PLAY</NavEntry>
           </Link>
           { */}
-          <Link href={'/support-us'} passHref className="nav-link">
+          <Link href={'/support-us'} passHref>
             <a href={'/support-us'}>
               <NavEntry>SUPPORT US</NavEntry>
             </a>
           </Link>
-          <Link href={'/projects'} passHref className="nav-link">
+          <Link href={'/projects'} passHref>
             <a href={'/projects'}>
               <NavEntry>JOIN</NavEntry>
             </a>
@@ -53,7 +53,7 @@ export default function Footer() {
         </FooterNav>
         <SocialMediaContainer>
           <SocialMediaLink Type="Instagram" />
-          <Link href={'/'} passHref className="nav-link">
+          <Link href={'/'} passHref>
             <a href={'/'}>
               <FooterLogo />
             </a>
