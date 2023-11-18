@@ -48,7 +48,7 @@ export const Options = styled.div`
 `;
 
 export const Chevron = styled.img.attrs(() => ({
-  src: Icon.src,
+  src: Icon,
   alt: 'icon',
 }))<Pick<NavDropdownProps, 'isOpen'>>`
   display: inline-block;

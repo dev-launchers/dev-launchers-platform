@@ -11,7 +11,7 @@
     "babel-loader": "8.2.5",
     "clsx": "2.0.0",
     "constate": "^3.3.2",
-    "formik": "2.2.9",
+    "formik": "^2.2.9",
     "framer-motion": "6.5.1",
     "next": "^12.2.3",
     "polished": "^4.2.2",

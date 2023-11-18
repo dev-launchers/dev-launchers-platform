@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
@@ -18,6 +19,7 @@ interface MobileNavigationProps {
   logout: () => void;
   isSidebarExpanded?: boolean;
   isAuthenticated?: boolean;
+  setIsSidebarExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MobileNavigation = ({
@@ -26,20 +28,27 @@ const MobileNavigation = ({
   accountOptions,
   logout,
   isSidebarExpanded,
+  setIsSidebarExpanded,
   isAuthenticated,
 }: NavigationProps & MobileNavigationProps) => {
-  if (!isSidebarExpanded) {
-    document.documentElement.classList.add('overflow-x-hidden');
-  }
+  useEffect(() => {
+    if (!isSidebarExpanded) {
+      document.documentElement.classList.add('overflow-x-hidden');
+    } else {
+      document.documentElement.classList.remove('overflow-x-hidden');
+    }
+
+    return () => document.documentElement.classList.remove('overflow-x-hidden');
+  }, [isSidebarExpanded]);
 
   return (
     <HamburgerWrapper
-      className={`absolute left-full top-0 block h-full w-full transition-transform duration-200 ${
+      className={`absolute left-full top-0 z-20 block w-full overflow-auto transition-transform duration-200 ${
         isSidebarExpanded ? '-translate-x-full' : 'hidden'
       }`}
     >
-      <Box flexDirection="column" style={{ display: 'flex', height: '100%' }}>
-        <MobileNav>
+      <Box flexDirection="column" style={{ display: 'flex' }}>
+        <MobileNav className="grow">
           <Box
             gap={'5px'}
             alignItems={'center'}
@@ -59,8 +68,8 @@ const MobileNavigation = ({
               </Box>
             ) : (
               <Link href="/">
-                <a href="/">
-                  <img width="139.26" height="114" src={logo.src} alt="logo" />
+                <a href="/" onClick={() => setIsSidebarExpanded?.(false)}>
+                  <img width="139.26" height="114" src={logo} alt="logo" />
                 </a>
               </Link>
             )}
@@ -79,7 +88,10 @@ const MobileNavigation = ({
                           style: { color: 'black' },
                         }}
                         title={name}
-                        links={href}
+                        links={href.map((el) => ({
+                          ...el,
+                          onClick: () => setIsSidebarExpanded?.(false),
+                        }))}
                       />
                     </li>
                   );
@@ -90,6 +102,7 @@ const MobileNavigation = ({
                         as={NavLink}
                         buttonType="alternative"
                         buttonSize="standard"
+                        onClick={() => setIsSidebarExpanded?.(false)}
                       >
                         {name}
                       </Button>
