@@ -1,7 +1,7 @@
+/* eslint-disable sonarjs/cognitive-complexity */
 import { useTheme } from 'styled-components';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Button, Typography } from '../../../atoms';
-import { typographyStyles } from '../../../atoms/Typography';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription, TagsContainer } from '../StyledCommonComponents';
 import {
@@ -67,7 +67,7 @@ const ProductCardLong = ({
               width: verticalSocialButtons && saveButton ? '114px' : '360px',
             }}
           >
-            {saveButton ? (
+            {saveButton && (
               <SaveButton
                 text="Save"
                 css={{
@@ -76,8 +76,8 @@ const ProductCardLong = ({
                     : '0 0.5rem 0 0.5rem',
                 }}
               />
-            ) : undefined}
-            {socialButton ? (
+            )}
+            {socialButton && (
               <>
                 <LikeButton
                   text="Like"
@@ -92,7 +92,7 @@ const ProductCardLong = ({
                   css={{ borderRadius: '0.5rem 0 0 0' }}
                 />
               </>
-            ) : undefined}
+            )}
           </Box>
         </ImageContainer>
         <Box
