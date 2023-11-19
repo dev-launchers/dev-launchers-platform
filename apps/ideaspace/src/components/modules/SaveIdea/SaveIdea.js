@@ -10,8 +10,8 @@ const SaveIdea = ({savedCards, setSavedCards, id, user}) =>{
     const handleSaved = async () =>{
         const data = {
             objectId: id,
-            objectType: "IdeaCard",
-            user: userData.id
+            objectType: 1,
+            user: user
         }
         try {
            const request = await agent.Saves.post(data)
