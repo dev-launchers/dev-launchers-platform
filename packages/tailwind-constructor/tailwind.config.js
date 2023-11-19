@@ -25,6 +25,7 @@ module.exports = withTV({
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
     screens: {
+      'xs': '345px',
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
