@@ -16,8 +16,8 @@ const Section: React.FC<SectionProps> = ({ paragraph, header, disabled, name = "
     return (
         <div className='w-full justify-between py-8 flex border-b-gray-200 border-b gap-[17px] self-stretch content-center items-center flex-wrap xs:flex-nowrap'>
             <div className='flex xs:flex-[1_0_0] flex-col items-start gap-1 flex-align-middle'>
-                <h2 className='leading-10'>{header}</h2>
-                <p>
+                <h2 className='font-nunito-sans font-normal text-grayscale-800'>{header}</h2>
+                <p className='font-nunito-sans font-normal leading-6 text-[#7f7e7f]'>
                     {paragraph}
                 </p>
             </div>
