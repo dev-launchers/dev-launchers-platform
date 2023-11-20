@@ -1,7 +1,7 @@
 import { Option, Input } from './StyledRadio';
 import type { RadioProps } from '.';
 
-const Radio = ({ disabled = false, label, onChange }: RadioProps) => {
+const Radio = ({ disabled = false, label, onChange, checked }: RadioProps) => {
   return (
     <Option htmlFor={label}>
       <Input
@@ -10,6 +10,7 @@ const Radio = ({ disabled = false, label, onChange }: RadioProps) => {
         id={label}
         name="radio"
         onChange={(e) => onChange(e, label as string)}
+        checked={checked}
       />
       {label && <p>{label}</p>}
     </Option>

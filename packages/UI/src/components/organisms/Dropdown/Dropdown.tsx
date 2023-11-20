@@ -19,14 +19,15 @@ const Dropdown = ({
   title,
   color,
   type,
+  checked,
   isOpen = false,
   options = [],
   recieveValue,
 }: DropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
-
+  let openedMenu = false;
   const node = useRef<HTMLDivElement>(null);
-
+  
   const handleClickOutside = (e: MouseEvent) => {
     if (node.current?.contains(e.target as Node)) return;
     setMenuOpen(false);
@@ -38,6 +39,7 @@ const Dropdown = ({
       setCheckedOptions((prev) => {
         Object.keys(prev).forEach((key) => (prev[key] = false));
         prev[text] = checked;
+        recieveValue?.(prev);
         return prev;
       });
     if (type === 'checkbox')
@@ -52,11 +54,16 @@ const Dropdown = ({
     [key: string]: boolean;
   }>({});
 
+  
   useEffect(() => {
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      openedMenu = true;
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
+    }
+    if(checked !== null && checked !== undefined){
+      setCheckedOptions(checked)
     }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -86,6 +93,7 @@ const Dropdown = ({
                   label={text}
                   onChange={onChange}
                   disabled={disabled}
+                  checked={checkedOptions[text]}
                 />
               );
             })}

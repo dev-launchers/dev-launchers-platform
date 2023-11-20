@@ -5,4 +5,5 @@ export interface RadioProps {
   disabled: boolean;
   label?: string;
   onChange: (e: ChangeEvent, label: string) => void;
+  checked?: boolean;
 }

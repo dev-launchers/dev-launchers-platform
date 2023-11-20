@@ -27,9 +27,6 @@ export interface DocumentScreenProps {
     interests: [],
   };
 }
-const grid = tv({
-
-});
 
 export function DocumentScreen({ user }: DocumentScreenProps) {
   return (

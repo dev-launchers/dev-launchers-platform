@@ -10,5 +10,6 @@ export interface DropdownProps {
   isOpen?: boolean;
   type?: 'radio' | 'checkbox';
   color?: 'light' | 'dark';
+  checked?: { [key: string]: boolean };
   recieveValue?: (value: { [key: string]: boolean }) => void;
 }
