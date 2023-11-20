@@ -17,7 +17,7 @@ const Modal = () => {
         <label className="text-zinc-900 text-sm font-normal font-['Nunito Sans'] uppercase leading-tight">Email address</label>
       </div>
       <div className="self-stretch pl-6 pr-2 py-4 bg-white rounded-lg border border-black justify-start items-center inline-flex">
-        <input className="text-zinc-500 text-sm font-light font-['Nunito Sans'] leading-tight">Enter your email address</input>
+        <div className="text-zinc-500 text-sm font-light font-['Nunito Sans'] leading-tight">Enter your email address</div>
       </div>
     </div>
   </div>
