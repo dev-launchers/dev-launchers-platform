@@ -1,9 +1,8 @@
-const body = () => {
+const body = (bodyContent) => {
   return (
     <div className="h-36 flex-col justify-start items-center gap-4 flex">
       <div className="self-stretch text-black text-base font-normal font-['Nunito Sans'] leading-normal">
-        Subscribe to our newsletter for the latest trends and exclusive content
-        delivered straight to your inbox!
+        {bodyContent}
       </div>
       <div className="self-stretch h-20 flex-col justify-start items-start gap-2 flex">
         <div className="px-4 justify-start items-center inline-flex">
