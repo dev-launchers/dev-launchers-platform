@@ -11,7 +11,7 @@ export const BackButton = styled.a`
     type === 'cancel'
       ? `
       ${radiusStyles['radius100']}
-      ${paddingStyles['uniPad200']}`
+      ${paddingStyles['uniPad100']}`
       : `${radiusStyles['radius200']}
          ${paddingStyles['comPad100']}`}
   display: inline-flex;

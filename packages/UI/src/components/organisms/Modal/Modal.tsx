@@ -14,7 +14,7 @@ const Modal = () => {
   return (
     <>
       <div className="w-[480px] h-[326px] p-8 bg-white rounded-2xl shadow flex-col justify-start items-end gap-6 inline-flex">
-        <Header modalType={modalType}/>
+        <Header modalType={modalType} closeButton={true}/>
         <Body
           modalType={modalType}
         />

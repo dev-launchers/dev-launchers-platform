@@ -4,12 +4,9 @@ import { tv } from "tailwind-variants";
 
 
 const roleBody = () => {
-    const [isSelected, setIsSelected] = useState<string>('');
-
+    const [isSelected, setIsSelected] = useState<string>('developer');
   const handleRoleChange = (e: React.MouseEvent) => {
     setIsSelected((e.target as HTMLElement).id);
-    // console.log(isSelected);
-    // console.log((e.target as HTMLInputElement).checked);
   };
     return (
         <div
