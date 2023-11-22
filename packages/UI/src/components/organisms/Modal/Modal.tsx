@@ -5,6 +5,7 @@ import header from '../../molecules/ModalComponents/header';
 import FormField from "../FormField/FormField";
 import footer from '../../molecules/ModalComponents/footer';
 import Button from '../../atoms/Button/Button';
+import newsFooter from '../..//molecules/ModalComponents/news-footer';
 
 const Modal = () => {
   const headerContent = 'SUBSCRIBE TO OUR NEWSLETTER';
@@ -15,7 +16,7 @@ const Modal = () => {
     </div>
   );
   const footerButtons = (
-    <div className="justify-end items-start gap-6 inline-flex">
+    <div className="">
       <button className="px-6 py-2 bg-white rounded-lg border-2 border-zinc-900 justify-center items-center gap-2.5 flex">
         <div className="text-center text-zinc-900 text-base font-normal font-['Nunito Sans'] capitalize leading-normal tracking-wide">
           Dismiss
@@ -41,7 +42,7 @@ const Modal = () => {
           })}
           bodyString={bodyString}
         />
-        <Footer footerContent={<Button content='button' color="purple" buttonSize="standard" buttonType="secondary">Button</Button>} />
+        <Footer footerContent={newsFooter} />
       </div>
     </>
   );

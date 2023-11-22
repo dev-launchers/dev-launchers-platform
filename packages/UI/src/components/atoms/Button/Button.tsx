@@ -5,7 +5,7 @@ import { shadowStyles } from '../Shadow';
 import { typographyStyles } from '../Typography';
 
 interface ButtonProps {
-  buttonType: 'primary' | 'secondary' | 'alternative';
+  buttonType: 'primary' | 'secondary' | 'alternative' | string;
   buttonSize: 'standard' | 'xl';
 }
 
@@ -16,6 +16,9 @@ const backgroundColorChanger = (
   if (buttonType === 'primary') return theme.colors.BLUE_300;
   if (buttonType === 'secondary') return theme.colors.LIGHT_BLUE_300;
   if (buttonType === 'alternative') return theme.colors.GREYSCALE_WHITE;
+  else {
+    return buttonType;
+  }
 };
 
 const colorChanger = (
@@ -25,6 +28,7 @@ const colorChanger = (
   if (buttonType === 'primary') return theme.colors.GREYSCALE_WHITE;
   if (buttonType === 'secondary') return theme.colors.GREYSCALE_WHITE;
   if (buttonType === 'alternative') return theme.colors.GREYSCALE_GREY;
+  
 };
 
 const Button = styled.button.attrs(({ disabled }) => ({
