@@ -19,7 +19,9 @@ const AvatarStyles = tv({
   },
 });
 
-interface AvatarProps extends VariantProps<typeof AvatarStyles>, Avatar.AvatarProps  {
+export interface AvatarProps
+  extends VariantProps<typeof AvatarStyles>,
+    Avatar.AvatarProps {
   src: string;
   /**
    * An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error.
@@ -46,7 +48,6 @@ const AvatarComponent = ({
     <Avatar.Root
       className={AvatarStyles({ size, rounded })}
       onClick={onClick}
-      
       {...Props}
     >
       <Avatar.Image

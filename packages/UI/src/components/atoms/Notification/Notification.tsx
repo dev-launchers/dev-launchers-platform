@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { Avatar } from '../Avatar';
-import useResponsive from 'hooks/useResponsive';
+import Avatar, { type AvatarProps } from '../Avatar/Avatar';
+
+import useResponsive from '../../../hooks/useResponsive';
 
 const notificationStyles = tv({
   slots: {
@@ -25,17 +25,18 @@ const notificationStyles = tv({
   variants: {
     readStatus: {
       read: {
-        status: 'invisible'
+        status: 'invisible',
       },
       unRead: {
-        status: 'rounded-full bg-[#407BFF]'
-      }
-    }
-  }
+        status: 'rounded-full bg-[#407BFF]',
+      },
+    },
+  },
 });
 
-
-interface NotificationProps extends VariantProps<typeof notificationStyles> {
+interface NotificationProps
+  extends VariantProps<typeof notificationStyles>,
+    Pick<AvatarProps, 'alt' | 'src'> {
   // Avatar: React.ReactNode;
   message: string;
   name: string;
@@ -44,12 +45,10 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   profileLink: string;
   timeStamp: string;
   action: string;
-  src: string;
-  alt: string;
+
   /**
    * The buttons that activate its associated content.      Dev Note: USE Trigger COMPONENT FOR BETTER ACCESSIBILITY
    */
-  delayMs: number;
 }
 
 /**
@@ -74,8 +73,7 @@ function Notification({
    * Determine the width of device so i can decide the number of text in a message to display
    *
    */
-  const [windowSize, setWindowSize] = useState(getWindowSize());
-  const {isMobile} = useResponsive();
+  const { isMobile } = useResponsive();
   const {
     container,
     avatarContainer,
@@ -88,36 +86,15 @@ function Notification({
     timeStampStyle,
     targetStyle,
     status,
-  } = notificationStyles({readStatus});
-  // useEffect(() => {
-  //   function handleWindowResize() {
-  //     setWindowSize(getWindowSize());
-  //   }
+  } = notificationStyles({ readStatus });
 
-  //   window.addEventListener('resize', handleWindowResize);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleWindowResize);
-  //   };
-  // }, []);
-
-  function getWindowSize() {
-    const { innerWidth } = window;
-    return { innerWidth };
-  }
-  console.log(windowSize);
   return (
     <>
       <div className={container()}>
         <div className={status()}></div>
         <div className={avatarContainer()}>
           <a href={profileLink} rel="noreferrer" target="_blank">
-            <Avatar
-              src={src}
-              alt={alt}
-              rounded={'full'}
-              size={'md'}
-            />
+            <Avatar src={src} alt={alt} rounded={'full'} size={'md'} />
           </a>
         </div>
         <div className={detailsContentStyle()}>
@@ -132,11 +109,7 @@ function Notification({
               </a>
             </div>
             <div className={descriptionStyle()}>
-              {isMobile ? (
-                <span>{message.slice(0, 33)}...</span>
-              ) : (
-                message
-              )}
+              {isMobile ? <span>{message.slice(0, 33)}...</span> : message}
             </div>
           </div>
           <div className={timeStampStyle()}>{timeStamp}</div>

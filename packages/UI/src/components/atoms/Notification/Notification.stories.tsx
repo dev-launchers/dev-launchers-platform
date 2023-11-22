@@ -3,7 +3,6 @@ import Notification from './Notification';
 
 const meta: Meta<typeof Notification> = {
   component: Notification,
-  title: 'Atoms/Notification',
 };
 
 export default meta;
