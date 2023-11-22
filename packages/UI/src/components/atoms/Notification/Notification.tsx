@@ -18,8 +18,6 @@ const notificationStyles = tv({
     descriptionStyle: ' text-base leading-5 ',
     timeStampStyle: ' text-base pt-1',
     targetStyle: ' grow-0 ',
-    rounded: 'sm',
-    size: 'sm',
     status: 'w-3 h-3 shrink-0',
   },
   variants: {
