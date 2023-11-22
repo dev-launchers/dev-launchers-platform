@@ -10,7 +10,7 @@ import termsFooter from 'components/molecules/ModalComponents/terms-footer';
 
 
 const Modal = () => {
-  const modalType = "terms";
+  const modalType = "roles";
   return (
     <>
       <div className="w-[480px] h-[326px] p-8 bg-white rounded-2xl shadow flex-col justify-start items-end gap-6 inline-flex">

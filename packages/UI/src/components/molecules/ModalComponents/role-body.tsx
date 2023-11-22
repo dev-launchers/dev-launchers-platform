@@ -1,60 +1,72 @@
+import { EventHandler, useEffect, useState } from "react";
+import { tv } from "tailwind-variants";
+
+
+
 const roleBody = () => {
+    const [isSelected, setIsSelected] = useState<string>('');
+
+  const handleRoleChange = (e: React.MouseEvent) => {
+    setIsSelected((e.target as HTMLElement).id);
+    // console.log(isSelected);
+    // console.log((e.target as HTMLInputElement).checked);
+  };
     return (
         <div
       className={
         "bg-[#f9f9f9] flex flex-row gap-6 items-center justify-center flex-wrap self-stretch flex-1 relative "
       }
     >
-      <div className="bg-grayscale-900 rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
-        <div
-          className="text-grayscale-50 text-left relative"
+      <button onClick={handleRoleChange} className={`${isSelected === 'developer' ? 'bg-grayscale-900 text-grayscale-50' : 'bg-grayscale-50 border-grayscale-900 border-solid border-grayscale-900 border-4'} rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative`}>
+        <div id='developer'
+          className="text-left relative"
           style={{
             font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
           }}
         >
           Developer{" "}
         </div>
-      </div>
-      <div className="bg-grayscale-50 rounded-3xl border-solid border-grayscale-900 border-4 pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
-        <div
-          className="text-grayscale-900 text-left relative"
+      </button>
+      <button onClick={handleRoleChange} className={`${isSelected === 'designer' ? 'bg-grayscale-900 text-grayscale-50' : 'bg-grayscale-50 border-grayscale-900 border-solid border-grayscale-900 border-4'} rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative`}>
+        <div id='designer'
+          className="text-left relative"
           style={{
             font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
           }}
         >
           Designer{" "}
         </div>
-      </div>
-      <div className="bg-grayscale-50 rounded-3xl border-solid border-grayscale-900 border-4 pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
-        <div
-          className="text-grayscale-900 text-left relative"
+      </button>
+      <button onClick={handleRoleChange} className={`${isSelected === 'researcher' ? 'bg-grayscale-900 text-grayscale-50' : 'bg-grayscale-50 border-grayscale-900 border-solid border-grayscale-900 border-4'} rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative`}>
+        <div id='researcher'
+          className="text-left relative"
           style={{
             font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
           }}
         >
           Researcher{" "}
         </div>
-      </div>
-      <div className="bg-grayscale-50 rounded-3xl border-solid border-grayscale-900 border-4 pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
-        <div
-          className="text-grayscale-900 text-left relative"
+      </button>
+      <button onClick={handleRoleChange} className={`${isSelected === 'manager' ? 'bg-grayscale-900 text-grayscale-50' : 'bg-grayscale-50 border-grayscale-900 border-solid border-grayscale-900 border-4'} rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative`}>
+        <div id='manager'
+          className="text-left relative"
           style={{
             font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
           }}
         >
-          project Manager{" "}
+          Project Manager{" "}
         </div>
-      </div>
-      <div className="bg-grayscale-50 rounded-3xl border-solid border-grayscale-900 border-4 pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
-        <div
-          className="text-grayscale-900 text-left relative"
+      </button>
+      <button  className={`${isSelected === 'other' ? 'bg-grayscale-900 text-grayscale-50' : 'bg-grayscale-50 border-grayscale-900 border-solid border-grayscale-900 border-4'} rounded-3xl pt-2 pr-4 pb-2 pl-4 flex flex-row gap-2.5 items-center justify-center shrink-0 relative`}>
+        <div onClick={handleRoleChange} id='other'
+          className="text-left relative"
           style={{
             font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
           }}
         >
-          other{" "}
+          Other{" "}
         </div>
-      </div>
+      </button>
     </div>
     )
   }

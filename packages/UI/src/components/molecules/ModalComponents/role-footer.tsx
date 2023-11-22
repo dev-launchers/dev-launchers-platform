@@ -26,16 +26,16 @@ return (
             Previous{" "}
           </div>
         </div>
-        <div className="bg-brand-alt-nebula-600 rounded-lg border-solid border-brand-secondary-nebula-600 border pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
+        <button className="bg-brand-alt-nebula-600 rounded-lg border-solid border-brand-secondary-nebula-600 border pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
           <div
             className="text-grayscale-50 text-center relative"
             style={{
               font: "var(--tosort-universal-button, 400 16px/150% 'NunitoSans-Regular', sans-serif)",
             }}
           >
-            next{" "}
+            Next{" "}
           </div>
-        </div>
+        </button>
       </div>
     </div>
 )

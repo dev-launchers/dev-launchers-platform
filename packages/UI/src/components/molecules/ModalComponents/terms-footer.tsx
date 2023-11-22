@@ -8,6 +8,7 @@ const termsFooter = () => {
       console.log(submit.disabled);
       submit.disabled = !isChecked;
     }, [isChecked])
+    
 
   const handleCheckboxChange = (e: ChangeEvent) => {
     setIsChecked(!isChecked);
