@@ -27,8 +27,11 @@ module.exports = {
         // @see https://github.com/francoismassart/eslint-plugin-tailwindcss,
         'plugin:tailwindcss/recommended',
       ],
-      rules: {},
+      rules: {
+        'tailwindcss/no-arbitrary-value': 'warn',
+      },
       settings: {
+        callees: ['classnames', 'clsx', 'ctl', 'cn', 'tv'],
         tailwindcss: {
           config: join(
             dirname(
