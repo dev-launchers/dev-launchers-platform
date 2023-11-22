@@ -42,15 +42,15 @@ const onHoverBackgroundColor = (hexColor) => {
 };
 const Button = styled.a`
   font-family: ${({ theme }) => theme.fonts.headline}, sans-serif;
-  background-color: ${({ theme, bgColor }) => bgColor || theme.colors.ACCENT_1};
-  color: ${({ theme, textColor }) => textColor || theme.colors.NEUTRAL_2};
+  background-color: ${({ theme, bgColor }) => bgColor || theme.colors.ORANGE};
+  color: ${({ theme, textColor }) => textColor || theme.colors.GREYSCALE_OFF_WHITE};
   transition: background-color 0.5s, color 0.5s;
 
   width: ${({ width }) => width || ""};
   border: 0px;
   border-bottom: 3px solid
     ${({ theme, bgColor }) =>
-      colorUnderButtons(bgColor || theme.colors.ACCENT_1)};
+      colorUnderButtons(bgColor || theme.colors.ORANGE)};
   cursor: pointer;
   font-size: ${({ fontSize }) => fontSize || "1.5rem"};
   margin-top: ${({ marginTop }) => marginTop || ""};
@@ -98,9 +98,9 @@ const Button = styled.a`
     `}
   &:hover {
     background-color: ${({ theme, bgColor }) =>
-      onHoverBackgroundColor(bgColor || theme.colors.ACCENT_2)};
+      onHoverBackgroundColor(bgColor || theme.colors.YELLOW)};
     color: ${({ theme, bgColor }) =>
-      (bgColor && shadeColor(bgColor, -40)) || theme.colors.ACCENT_3};
+      (bgColor && shadeColor(bgColor, -40)) || theme.colors.BLUE};
   }
 `;
 export default Button;

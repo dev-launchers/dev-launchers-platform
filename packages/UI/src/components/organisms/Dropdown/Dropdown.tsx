@@ -70,7 +70,7 @@ const Dropdown = ({
       </Toggle>
       <OptionsContainer isOpen={menuOpen}>
         <Layer type="light" css={radiusStyles['radius200']}>
-          <Options>
+          <Options isOpen={menuOpen}>
             {options.map(({ text, disabled }, i) => {
               return type === 'checkbox' ? (
                 <Checkbox
