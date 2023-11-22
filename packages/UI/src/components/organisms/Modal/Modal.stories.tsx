@@ -20,7 +20,7 @@ type Story = StoryObj<typeof Modal>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = (args) => <Modal {...args}/>; {
+export const Primary: Story = (args: { modalType?: string | undefined; }) => <Modal {...args}/>; {
   Primary.args = {
     modalType: 'terms',
   }
