@@ -19,25 +19,20 @@ const notificationStyles = tv({
     targetStyle: ' grow-0 ',
     rounded: 'sm',
     size: 'sm',
-    unRead: 'w-3 h-3 rounded-full shrink-0 bg-[#407BFF]',
-    read: ' w-3 h-3 invisible shrink-0 ',
+    status: 'w-3 h-3 shrink-0',
   },
+  variants: {
+    readStatus: {
+      read: {
+        status: 'invisible'
+      },
+      unRead: {
+        status: 'rounded-full bg-[#407BFF]'
+      }
+    }
+  }
 });
 
-const {
-  container,
-  unRead,
-  read,
-  avatarContainer,
-  detailsContentStyle,
-  contentContainerStyle,
-  headerStyle,
-  usernameStyle,
-  actionStyle,
-  descriptionStyle,
-  timeStampStyle,
-  targetStyle,
-} = notificationStyles();
 
 interface NotificationProps extends VariantProps<typeof notificationStyles> {
   // Avatar: React.ReactNode;
@@ -50,13 +45,10 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   action: string;
   src: string;
   alt: string;
-  rounded?: 'rounded' | 'sm' | 'lg' | 'full';
-  size?: 'sm' | 'md' | 'lg';
   /**
    * The buttons that activate its associated content.      Dev Note: USE Trigger COMPONENT FOR BETTER ACCESSIBILITY
    */
   delayMs: number;
-  status: 'read' | 'unread';
 }
 
 /**
@@ -73,19 +65,28 @@ function Notification({
   action,
   src,
   alt,
-  rounded,
-  size,
-  delayMs,
-  status,
   targetLink,
   profileLink,
+  readStatus,
 }: NotificationProps) {
   /**
    * Determine the width of device so i can decide the number of text in a message to display
    *
    */
   const [windowSize, setWindowSize] = useState(getWindowSize());
-
+  const {
+    container,
+    avatarContainer,
+    detailsContentStyle,
+    contentContainerStyle,
+    headerStyle,
+    usernameStyle,
+    actionStyle,
+    descriptionStyle,
+    timeStampStyle,
+    targetStyle,
+    status,
+  } = notificationStyles({readStatus});
   useEffect(() => {
     function handleWindowResize() {
       setWindowSize(getWindowSize());
@@ -106,15 +107,14 @@ function Notification({
   return (
     <>
       <div className={container()}>
-        <div className={status === 'unread' ? unRead() : read()}></div>
+        <div className={status()}></div>
         <div className={avatarContainer()}>
           <a href={profileLink} rel="noreferrer" target="_blank">
             <Avatar
               src={src}
               alt={alt}
-              rounded={rounded}
-              size={size}
-              delayMs={delayMs}
+              rounded={'full'}
+              size={'md'}
             />
           </a>
         </div>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
-const button = tv({
-  base: 'text-center text-black  ',
+const ButtonStyles = tv({
+  base: 'flex flex-row gap-2 items-center justify-center text-center text-black rounded-lg',
   variants: {
     color: {
-      primary: 'bg-white shadow text-black text-center uppercase',
+      primary: 'bg-white shadow text-black uppercase',
       secondary: 'bg-red-400 text-white',
     },
     size: {
-      sm: ' rounded-lg py-2 px-4  flex flex-row gap-2 items-center justify-center',
-      md: ' rounded-lg px-4 py-2  flex flex-row gap-2 items-center ',
-      lg: ' rounded-lg px-4 py-3  flex flex-row gap-2 items-center ',
+      sm: 'py-2 px-4',
+      md: 'px-4 py-2',
+      lg: 'px-4 py-3',
     },
   },
   compoundVariants: [
@@ -26,7 +26,7 @@ const button = tv({
   },
 });
 
-interface ButtonProps extends VariantProps<typeof button> {
+interface ButtonProps extends VariantProps<typeof ButtonStyles> {
   children?: React.ReactNode;
   onclick?: () => void;
   iconRight?: React.ReactNode;
@@ -35,7 +35,7 @@ interface ButtonProps extends VariantProps<typeof button> {
 
 const Button = ({ size, color, children,  iconLeft, iconRight, onclick }: ButtonProps) => {
   return (
-    <button onClick={onclick} className={button({ size, color })}>
+    <button onClick={onclick} className={ButtonStyles({ size, color })}>
       {iconLeft}
       {children}
       {iconRight}

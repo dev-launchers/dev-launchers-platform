@@ -1,7 +1,6 @@
 import * as Avatar from '@radix-ui/react-avatar';
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { initials } from './utils';
 
 const AvatarStyles = tv({
   base: ' w-6 h-6 rounded-none   bg-contain bg-white  font-medium text-base text-center justify-center align-middle',
@@ -20,36 +19,47 @@ const AvatarStyles = tv({
   },
 });
 
-interface AvatarProps extends VariantProps<typeof AvatarStyles> {
+interface AvatarProps extends VariantProps<typeof AvatarStyles>, Avatar.AvatarProps  {
   src: string;
+  /**
+   * An element that renders when the image hasn't loaded. This means whilst it's loading, or if there was an error.
+   */
+  fallback?: React.JSX.Element;
   alt: string;
-  delayMs: number;
+  delayMs?: Avatar.AvatarFallbackProps['delayMs'];
   onClick?: () => void;
+  onLoadingStatusChange?: Avatar.AvatarImageProps['onLoadingStatusChange'];
 }
 
-const AvatarComponent = (
-  { size, rounded, src, alt, delayMs, onClick }: AvatarProps,
+const AvatarComponent = ({
+  size,
+  rounded,
+  src,
+  alt,
+  delayMs,
+  onClick,
+  fallback,
+  onLoadingStatusChange,
   ...Props
-) => {
+}: AvatarProps) => {
   return (
     <Avatar.Root
       className={AvatarStyles({ size, rounded })}
       onClick={onClick}
+      
       {...Props}
     >
       <Avatar.Image
         className={AvatarStyles({ size, rounded })}
         alt={alt}
         src={src}
-        {...Props}
-
+        onLoadingStatusChange={onLoadingStatusChange}
       />
       <Avatar.Fallback
         className={AvatarStyles({ size, rounded })}
         delayMs={delayMs}
-        {...Props}
       >
-        {initials(alt)}
+        {fallback}
       </Avatar.Fallback>
     </Avatar.Root>
   );

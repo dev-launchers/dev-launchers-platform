@@ -2,37 +2,36 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Chevron } from '../../../assets/icons';
 
-import Button from './NewButton';
+import BackButton from './BackButton';
 
-const meta: Meta<typeof Button> = {
-  component: Button,
-  title: 'ATOMS/NewButton',
+const meta: Meta<typeof BackButton> = {
+  component: BackButton,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof BackButton>;
 
 export const LargeButton: Story = {
   render: () => (
-    <Button size="lg" iconLeft={<Chevron />}>
+    <BackButton size="lg" iconLeft={<Chevron />}>
       Back
-    </Button>
+    </BackButton>
   ),
 };
 
 export const MediumButton: Story = {
   render: () => (
-    <Button size="md" iconLeft={<Chevron />}>
+    <BackButton size="md" iconLeft={<Chevron />}>
       Back
-    </Button>
+    </BackButton>
   ),
 };
 
 export const SmallButton: Story = {
   render: () => (
-    <Button size="sm">
+    <BackButton size="sm">
       <Chevron />
-    </Button>
+    </BackButton>
   ),
 };
