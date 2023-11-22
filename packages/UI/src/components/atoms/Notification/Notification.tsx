@@ -6,7 +6,7 @@ import useResponsive from 'hooks/useResponsive';
 const notificationStyles = tv({
   slots: {
     container:
-      ' flex gap-4 py-4 pr-4 pl-2  items-center bg-white  border-t w-full hover:bg-[#F0EDEE] md:py-4 md:pl-4 md:pr-8 lg:p-8  ',
+      ' flex gap-4 py-4 pr-4 pl-2  items-center bg-white  border-t w-full hover:bg-grayscale-100 md:py-4 md:pl-4 md:pr-8 lg:p-8  ',
     avatarContainer:
       ' w-12 h-12 hidden  md:flex items-center  text-center lg:flex lg:w-12 lg:h-12 lg:items-center lg:justify-center',
     detailsContentStyle:
