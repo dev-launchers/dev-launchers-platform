@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { Avatar } from '../Avatar';
+import useResponsive from 'hooks/useResponsive';
 
 const notificationStyles = tv({
   slots: {
@@ -74,6 +75,7 @@ function Notification({
    *
    */
   const [windowSize, setWindowSize] = useState(getWindowSize());
+  const {isMobile} = useResponsive();
   const {
     container,
     avatarContainer,
@@ -87,17 +89,17 @@ function Notification({
     targetStyle,
     status,
   } = notificationStyles({readStatus});
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-    }
+  // useEffect(() => {
+  //   function handleWindowResize() {
+  //     setWindowSize(getWindowSize());
+  //   }
 
-    window.addEventListener('resize', handleWindowResize);
+  //   window.addEventListener('resize', handleWindowResize);
 
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('resize', handleWindowResize);
+  //   };
+  // }, []);
 
   function getWindowSize() {
     const { innerWidth } = window;
@@ -130,7 +132,7 @@ function Notification({
               </a>
             </div>
             <div className={descriptionStyle()}>
-              {windowSize.innerWidth < 811 ? (
+              {isMobile ? (
                 <span>{message.slice(0, 33)}...</span>
               ) : (
                 message
