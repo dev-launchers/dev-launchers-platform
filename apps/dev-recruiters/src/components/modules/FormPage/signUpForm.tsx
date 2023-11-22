@@ -71,7 +71,8 @@ export default function SignUpForm() {
             .toString()
             .split(',')
             .map((skill) => ({ skill: skill })),
-            project: router.query.slug as string,
+          role: router.query.position as string,
+          project: router.query.slug as string,
         })
           .then((res) => {
             setSubmitting(false);
