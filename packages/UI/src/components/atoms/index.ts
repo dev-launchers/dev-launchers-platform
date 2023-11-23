@@ -1,5 +1,5 @@
 export { default as Box } from './Box';
-export { default as MyComponent } from './MyComponent';
+export { default as Buttons } from './Buttons';
 export { default as ToolTip } from './Tooltip';
 export { default as Slider } from './Slider';
 export { default as Typography } from './Typography';

@@ -18,19 +18,17 @@ const button = tv({
         },
     },
      defaultVariants: {
-        size: "md",
         color: "primary"
     }
 });
 
-interface MyComponentProps {
-    size?: 'xs' | 'sm' | 'md' | 'lg';
-    color?: 'primary';
+interface ButtonsProps {
+    size: 'xs' | 'sm' | 'md' | 'lg';
 }
 
-const MyComponent: React.FC<MyComponentProps> = ({ size, color }) => {
+const Buttons: React.FC<ButtonsProps> = ({ size }) => {
     return (
-        <button className={button({ size, color })} style={{
+        <button className={button({ size })} style={{
             boxShadow:
               "var(--shadow-xl-box-shadow, 0px 10px 18px 10px rgba(127, 126, 127, 0.25))",
           }}>
@@ -39,4 +37,4 @@ const MyComponent: React.FC<MyComponentProps> = ({ size, color }) => {
             </button>
     )
 }
-  export default MyComponent;
+  export default Buttons;
