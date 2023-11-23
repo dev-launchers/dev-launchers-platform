@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import { useState } from 'react';
 import { ToolTip as StyledTooltip, Wrapper } from './styled.Tooltip';
 import type { ToolTipProps } from '.';

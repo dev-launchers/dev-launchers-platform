@@ -1,4 +1,3 @@
-import type { FC } from 'react';
 import styled from 'styled-components';
 import { typographyStyles } from '../Typography';
 
