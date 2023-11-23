@@ -9,7 +9,7 @@ const meta: Meta<typeof Modal> = {
       options: ['newsletter', 'terms', 'roles'],
       control: { type: 'radio' },
     },
-    closeButton: {
+    hasCloseButton: {
       options: [true, false],
       control: {type: 'radio'},
       defaultValue: true,
@@ -25,9 +25,10 @@ type Story = StoryObj<typeof Modal>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = (args: { modalType?: string | undefined; closeButton: boolean; }) => <Modal {...args}/>; {
+//What type do I set args equal to in order to avoid error type any? the solution below won't work for a component with a lot of options
+export const Primary: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; }) => <Modal {...args}/>; {
   Primary.args = {
     modalType: 'terms',
-    closeButton: true,
+    hasCloseButton: true,
   }
 };
