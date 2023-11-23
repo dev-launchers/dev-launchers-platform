@@ -2,15 +2,16 @@ import Body from '../../molecules/ModalComponents/Body';
 import Header from '../../molecules/ModalComponents/Header';
 import Footer from '../../molecules/ModalComponents/Footer';
 
-type modalProps = {
+type ModalProps = {
   modalType?: string;
+  closeButton: boolean;
 }
-const Modal = ({modalType = 'terms'}) => {
+const Modal: React.FC<ModalProps> = ({modalType = 'terms', closeButton}) => {
   
   return (
     <>
       <div className="w-[480px] h-[326px] p-8 bg-white rounded-2xl shadow flex-col justify-start items-end gap-6 inline-flex">
-        <Header modalType={modalType} closeButton={true}/>
+        <Header modalType={modalType} closeButton={closeButton}/>
         <Body
           modalType={modalType}
         />

@@ -9,6 +9,11 @@ const meta: Meta<typeof Modal> = {
       options: ['newsletter', 'terms', 'roles'],
       control: { type: 'radio' },
     },
+    closeButton: {
+      options: [true, false],
+      control: {type: 'radio'},
+      defaultValue: true,
+    }
   },
 };
 
@@ -20,8 +25,9 @@ type Story = StoryObj<typeof Modal>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = (args: { modalType?: string | undefined; }) => <Modal {...args}/>; {
+export const Primary: Story = (args: { modalType?: string | undefined; closeButton: boolean; }) => <Modal {...args}/>; {
   Primary.args = {
     modalType: 'terms',
+    closeButton: true,
   }
 };
