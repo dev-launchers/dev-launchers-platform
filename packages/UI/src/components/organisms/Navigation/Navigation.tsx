@@ -83,6 +83,7 @@ export const links = {
   ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
+  //Route to notification settings
   NOTIFICATION: '/notificationSettings'
 };
 

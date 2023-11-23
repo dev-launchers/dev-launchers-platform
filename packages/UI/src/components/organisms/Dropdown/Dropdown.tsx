@@ -25,7 +25,6 @@ const Dropdown = ({
   recieveValue,
 }: DropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
-  let openedMenu = false;
   const node = useRef<HTMLDivElement>(null);
   
   const handleClickOutside = (e: MouseEvent) => {
@@ -58,7 +57,6 @@ const Dropdown = ({
   useEffect(() => {
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
-      openedMenu = true;
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
@@ -93,6 +91,7 @@ const Dropdown = ({
                   label={text}
                   onChange={onChange}
                   disabled={disabled}
+                  // send current checked option to radio component
                   checked={checkedOptions[text]}
                 />
               );

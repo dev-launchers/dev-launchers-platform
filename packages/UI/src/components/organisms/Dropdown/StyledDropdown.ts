@@ -11,9 +11,9 @@ function getWidth(width?: string) {
   else return 301;
 }
 
+// Get and set the color of the dropdown 
 function getColor(color?: string){
   if(color === 'light') return ['#F0EDEE', 'black'];
-  if(color === 'dark') return ['black', 'white'];
   else return ['black', 'white'];
 }
 
