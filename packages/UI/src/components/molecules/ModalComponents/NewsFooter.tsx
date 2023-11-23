@@ -1,6 +1,6 @@
 import Button from '../../atoms/Button/Button';
 
-const newsFooter = () => {
+const NewsFooter = () => {
   return (
     <div className="flex flex-row gap-6 items-start justify-end shrink-0 relative">
       <button className="bg-grayscale-50 rounded-lg border-solid border-grayscale-800 border-2 pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
@@ -21,4 +21,4 @@ const newsFooter = () => {
   );
 };
 
-export default newsFooter;
+export default NewsFooter;

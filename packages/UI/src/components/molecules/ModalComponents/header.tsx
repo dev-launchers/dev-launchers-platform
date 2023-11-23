@@ -5,7 +5,7 @@ type HeaderProps = {
   closeButton: boolean;
 };
 
-const header: React.FC<HeaderProps> = ({modalType, closeButton}) => {
+const Header: React.FC<HeaderProps> = ({modalType, closeButton}) => {
   const newsContent = 'SUBSCRIBE TO OUR NEWSLETTER';
   const termsContent = "TERMS OF SERVICE";
   const roleContent = "SELECT YOUR ROLE";
@@ -36,4 +36,4 @@ const header: React.FC<HeaderProps> = ({modalType, closeButton}) => {
     );
 }
 
-export default header;
+export default Header;

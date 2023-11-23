@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import Checkbox from '../../atoms/Checkbox/Checkbox';
 
-const termsFooter = () => {
+const TermsFooter = () => {
     const [isChecked, setIsChecked] = useState(false);
     useEffect(() => {
       const submit = (document.getElementById('submit') as HTMLButtonElement);
@@ -32,5 +32,5 @@ const termsFooter = () => {
     </div>
 );
 }
-termsFooter.displayName = "TermsFooter";
-export default termsFooter;
+TermsFooter.displayName = "TermsFooter";
+export default TermsFooter;

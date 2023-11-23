@@ -1,4 +1,4 @@
-const termsBody = () => {
+const TermsBody = () => {
   return (
 <div className="text-[#000000] font-['Nunito Sans'] text-left relative self-stretch font-normal overflow-y-scroll">
       By accessing or using our services, you agree to abide by our terms and
@@ -16,4 +16,4 @@ const termsBody = () => {
   )
 }
 
-export default termsBody;
+export default TermsBody;

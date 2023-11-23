@@ -1,12 +1,6 @@
-import Body from '../../molecules/ModalComponents/body';
-import Header from '../../molecules/ModalComponents/header';
-import Footer from '../../molecules/ModalComponents/footer';
-import header from '../../molecules/ModalComponents/header';
-import footer from '../../molecules/ModalComponents/footer';
-import Button from '../../atoms/Button/Button';
-import newsFooter from '../..//molecules/ModalComponents/news-footer';
-
-import termsFooter from 'components/molecules/ModalComponents/terms-footer';
+import Body from '../../molecules/ModalComponents/Body';
+import Header from '../../molecules/ModalComponents/Header';
+import Footer from '../../molecules/ModalComponents/Footer';
 
 type modalProps = {
   modalType?: string;

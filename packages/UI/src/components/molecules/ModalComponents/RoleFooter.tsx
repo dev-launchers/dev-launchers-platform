@@ -1,4 +1,4 @@
-const roleFooter = () => {
+const RoleFooter = () => {
 return (
 <div
       className={
@@ -41,4 +41,4 @@ return (
 )
 }
 
-export default roleFooter;
+export default RoleFooter;

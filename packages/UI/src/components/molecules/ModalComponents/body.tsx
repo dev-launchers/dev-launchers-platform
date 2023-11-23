@@ -1,14 +1,14 @@
 import { bodyStreamToNodeStream } from 'next/dist/server/body-streams';
 import FormField from '../../organisms/FormField/FormField';
-import TermsBody from './terms-body';
-import NewsBody from './news-body';
-import RoleBody from './role-body';
+import TermsBody from './TermsBody';
+import NewsBody from './NewsBody';
+import RoleBody from './RoleBody';
 
 type BodyProps = {
   modalType: string;
 };
 
-const body: React.FC<BodyProps> = ({ modalType }) => {
+const Body: React.FC<BodyProps> = ({ modalType }) => {
   function handleBody() {
     if (modalType === 'newsletter') {
       return (
@@ -35,4 +35,4 @@ const body: React.FC<BodyProps> = ({ modalType }) => {
   );
 };
 
-export default body;
+export default Body;

@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
-import TermsFooter from './terms-footer';
-import NewsFooter from './news-footer';
-import RoleFooter from './role-footer';
+import TermsFooter from './TermsFooter';
+import NewsFooter from './NewsFooter';
+import RoleFooter from './RoleFooter';
 
 type FooterProps = {
   modalType: string;
 };
 
-const footer: React.FC<FooterProps> = ({modalType}) => {
+const Footer: React.FC<FooterProps> = ({modalType}) => {
 
   function fetchFooter() {
     if (modalType === 'newsletter') {
@@ -27,4 +27,4 @@ const footer: React.FC<FooterProps> = ({modalType}) => {
   );
 }
 
-export default footer;
+export default Footer;
