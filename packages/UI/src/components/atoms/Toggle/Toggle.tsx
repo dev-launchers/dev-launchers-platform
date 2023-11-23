@@ -1,19 +1,24 @@
+import { useRef } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { CheckBoxWrapper, CheckBox, Switch } from './StyledToggle';
 import type { ToggleProps } from '.';
 
-const Toggle = ({ disabled, label, name, htmlFor }: ToggleProps) => {
+const Toggle = ({ disabled, label, onChange }: ToggleProps) => {
+  const { current: id } = useRef(uuidv4());
+
   return (
     <div>
       <CheckBoxWrapper>
         <CheckBox
           disabled={disabled}
-          name={name}
+          name={`Checkbox-${id}`}
           type="checkbox"
-          id={name}
+          id={`Checkbox-${id}`}
+          onChange={onChange}
         />
-        <Switch htmlFor={htmlFor} />
+        <Switch htmlFor={`Checkbox-${id}`} />
         {label && (
-          <label id="label" htmlFor={htmlFor}>
+          <label id="label" htmlFor={`Checkbox-${id}`}>
             {label}
           </label>
         )}

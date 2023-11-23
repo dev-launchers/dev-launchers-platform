@@ -26,7 +26,7 @@ const Dropdown = ({
 }: DropdownProps) => {
   const [menuOpen, setMenuOpen] = useState(isOpen);
   const node = useRef<HTMLDivElement>(null);
-  
+
   const handleClickOutside = (e: MouseEvent) => {
     if (node.current?.contains(e.target as Node)) return;
     setMenuOpen(false);
@@ -60,7 +60,7 @@ const Dropdown = ({
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
     }
-    if(checked !== null && checked !== undefined){
+    if (checked !== null && checked !== undefined) {
       setCheckedOptions(checked)
     }
     return () => {

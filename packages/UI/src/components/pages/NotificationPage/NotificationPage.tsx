@@ -1,40 +1,39 @@
-import { CLIENT_STATIC_FILES_RUNTIME_AMP } from 'next/dist/shared/lib/constants';
-import Section from '../../organisms/NotificationSection/Section'
-import { tv } from 'tailwind-variants';
-import Navbar from '../../organisms/Navigation/Navigation'
 import { User } from '@devlaunchers/models';
-import Header from '../../organisms/NotificationSection/Header'
+import { CLIENT_STATIC_FILES_RUNTIME_AMP } from 'next/dist/shared/lib/constants';
+import { tv } from 'tailwind-variants';
+import Navbar from '../../organisms/Navigation/Navigation';
+import Header from '../../organisms/NotificationSection/Header';
+import Section from '../../organisms/NotificationSection/Section';
 
 export interface DocumentScreenProps {
   user: {
-    id: 2, 
-    name: 'John',
-    username: 'john',
-    email: 'john@test.com',
-    bio: 'test',
-    profilePictureUrl: 'string',
-    socialMediaLinks: [],
-    totalPoints: 2,
-    totalSeasonPoints: 2,
-    availablePoints: 2,
-    volunteerHours: 2,
+    id: 2;
+    name: 'John';
+    username: 'john';
+    email: 'john@test.com';
+    bio: 'test';
+    profilePictureUrl: 'string';
+    socialMediaLinks: [];
+    totalPoints: 2;
+    totalSeasonPoints: 2;
+    availablePoints: 2;
+    volunteerHours: 2;
     discord: {
-      id: 1,
-      avatar: 'url', 
-      username: 'discordUsername',
-      discriminator: '1234', 
-    },
-    interests: [],
+      id: 1;
+      avatar: 'url';
+      username: 'discordUsername';
+      discriminator: '1234';
+    };
+    interests: [];
   };
 }
 
-export function DocumentScreen({ user }: DocumentScreenProps) {
+export function NotificationSettingsPage({ user }: DocumentScreenProps) {
   return (
     <>
-      <Navbar/>
-      <div className='inline-flex w-full py-8 px-4 flex-col items-center lg:py-16 lg:px-[128px] md:w-full'>
-        <div className="md:grid lg:grid-cols-[1fr_1015px_1fr] md:grid-cols-[1fr_699px_1fr] flex flex-col items-start">
-          <div className="md:col-start-2 lg:m-auto md:col-end-3 lg:w-[1015px] md:w-[699px] flex flex-col items-start">
+      <div className="inline-flex w-full flex-col items-center px-4 py-8 md:w-full lg:px-[128px] lg:py-16">
+        <div className="flex flex-col items-start md:grid md:grid-cols-[1fr_699px_1fr] lg:grid-cols-[1fr_1015px_1fr]">
+          <div className="flex flex-col items-start md:col-start-2 md:col-end-3 md:w-[699px] lg:m-auto lg:w-[1015px]">
             <Header />
             <Section
               disabled={false}
@@ -45,29 +44,21 @@ export function DocumentScreen({ user }: DocumentScreenProps) {
               disabled={false}
               header={'PROFILE UPDATES'}
               paragraph="Stay informed about any updates to your profile and account settings."
-              name="checkbox2"
-              htmlFor="checkbox2"
             />
             <Section
               disabled={false}
               header={'EVENTS'}
               paragraph="Get notified about upcoming events, workshops, or conferences."
-              name="checkbox3"
-              htmlFor="checkbox3"
             />
             <Section
               disabled={false}
               header={'TIP OF THE DAY'}
               paragraph="Recieve daily tips, tricks, or helpful insights to enhance your experience."
-              name="checkbox4"
-              htmlFor="checkbox4"
             />
             <Section
               disabled={false}
               header={'LATEST NEWS'}
               paragraph="Stay up to date with the latest news and updates of the organization"
-              name="checkbox5"
-              htmlFor="checkbox5"
             />
           </div>
         </div>
@@ -75,5 +66,4 @@ export function DocumentScreen({ user }: DocumentScreenProps) {
     </>
   );
 }
-export default DocumentScreen;
-
+export default NotificationSettingsPage;
