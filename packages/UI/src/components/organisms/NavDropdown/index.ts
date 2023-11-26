@@ -1,10 +1,10 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes, ReactNode } from 'react';
 
 export { default } from './NavDropdown';
 
 export interface NavDropdownProps {
   links: ({
-    text: string;
+    text: string | ReactNode;
     href?: string;
     hasUnderline?: boolean;
   } & HTMLAttributes<unknown>)[];
