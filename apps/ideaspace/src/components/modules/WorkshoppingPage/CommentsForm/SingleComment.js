@@ -1,14 +1,10 @@
 import {
   SingleComment,
   UserImage,
-  TextContent,
   SingleCommentContent,
   SingleCommentButtons
 } from './StyledComments.js';
-import agent from '@DevLaunchers/utility/agent';
-import { molecules } from '@DevLaunchers/components/src/components';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
-import { TtyRounded } from '@mui/icons-material';
 import { useState } from 'react';
 
 // A function to show the date as X hours ago, etc.
