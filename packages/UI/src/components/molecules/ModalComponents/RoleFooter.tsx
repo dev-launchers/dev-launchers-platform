@@ -2,7 +2,7 @@ const RoleFooter = () => {
 return (
 <div
       className={
-        "flex flex-row items-center justify-between self-stretch shrink-0 relative "
+        "flex flex-row w-full items-center justify-between self-stretch shrink-0 relative "
       }
     >
       <div className="flex flex-row gap-3 items-start justify-center shrink-0 relative">

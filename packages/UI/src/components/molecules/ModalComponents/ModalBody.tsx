@@ -24,12 +24,12 @@ const Body: React.FC<BodyProps> = ({ modalType }) => {
       );
     } else if (modalType === 'terms') {
       return <TermsBody />;
-    } else {
+    } else if(modalType === 'roles'){
       return <RoleBody />;
-    }
+    } 
   }
   return (
-    <div className="h-36 flex-col justify-start items-center gap-4 flex">
+    <div className={`${modalType === '' ? 'hidden' : ''} h-36 flex-col justify-start items-center gap-4 flex`}>
       {handleBody()}
     </div>
   );

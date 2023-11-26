@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = ({modalType, closeButton}) => {
     }
   }
     return (
-      <div className="self-stretch justify-between items-center inline-flex">
+      <div className={`${modalType === '' ? 'hidden' : ''} self-stretch justify-between items-center inline-flex`}>
         <div className="grow shrink basis-0 text-black text-base font-normal font-['Nunito Sans'] uppercase tracking-wider">
           {handleHeader()}
         </div>

@@ -15,7 +15,7 @@ const TermsFooter = () => {
     // console.log((e.target as HTMLInputElement).checked);
   };
     return (
-    <div className="flex flex-row items-center justify-between self-stretch shrink-0 relative ">
+    <div className="flex flex-row w-full items-center justify-between self-stretch shrink-0 relative ">
       <div className="flex flex-row gap-3 items-start justify-center shrink-0 relative">
         <Checkbox disabled={false} label={"I’ve read the terms of services"} required={true} onChange={handleCheckboxChange}/>
       </div>

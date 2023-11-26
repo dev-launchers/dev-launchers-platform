@@ -21,9 +21,11 @@ const Footer: React.FC<FooterProps> = ({modalType}) => {
     }
   }
   return (
-    <>
+    <div className={`${modalType === '' ? 'hidden' : 'flex w-full'}`} >
+      <>
       {fetchFooter()}
-    </>
+      </>
+    </div>
   );
 }
 

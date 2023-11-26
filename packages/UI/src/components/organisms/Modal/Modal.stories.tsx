@@ -13,6 +13,21 @@ const meta: Meta<typeof Modal> = {
       options: [true, false],
       control: {type: 'radio'},
       defaultValue: true,
+    },
+    hasHeader: {
+      options: [true, false],
+      control: {type: 'radio'},
+      defaultValue: true,
+    },
+    hasBody: {
+      options: [true, false],
+      control: {type: 'radio'},
+      defaultValue: true,
+    },
+    hasFooter: {
+      options: [true, false],
+      control: {type: 'radio'},
+      defaultValue: true,
     }
   },
 };
@@ -26,9 +41,11 @@ type Story = StoryObj<typeof Modal>;
  * to learn how to use render functions.
  */
 //What type do I set args equal to in order to avoid error type any? the solution below won't work for a component with a lot of options
-export const Primary: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; }) => <Modal {...args}/>; {
+export const Primary: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; hasHeader: boolean; hasBody: boolean; hasFooter: boolean;}) => <Modal {...args}/>; {
   Primary.args = {
     modalType: 'terms',
     hasCloseButton: true,
+    hasHeader: true,
+    hasFooter: true,
   }
 };

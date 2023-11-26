@@ -1,21 +1,31 @@
-import Body from '../../molecules/ModalComponents/Body';
+import Body from '../../molecules/ModalComponents/ModalBody';
 import Header from '../../molecules/ModalComponents/Header';
-import Footer from '../../molecules/ModalComponents/Footer';
+import Footer from '../../molecules/ModalComponents/ModalFooter';
+import { useEffect, useState } from 'react';
 
 type ModalProps = {
   modalType?: string;
   hasCloseButton: boolean;
+  hasHeader: boolean;
+  hasBody: boolean;
+  hasFooter: boolean;
 }
-const Modal: React.FC<ModalProps> = ({modalType = 'terms', hasCloseButton}) => {
+const Modal: React.FC<ModalProps> = ({modalType = 'terms', hasCloseButton, hasHeader = true, hasBody = true, hasFooter = true}) => {
+  const [isCustom, setIsCustom] = useState(false);
   
+  useEffect(() => {
+    if(hasHeader === false || hasBody === false || hasFooter === false){
+      setIsCustom(true);
+    }
+  }, [hasHeader, hasBody, hasFooter])
   return (
     <>
-      <div className="w-[480px] h-[326px] p-8 bg-white rounded-2xl shadow flex-col justify-start items-end gap-6 inline-flex">
-        <Header modalType={modalType} closeButton={hasCloseButton}/>
+      <div className={`${isCustom ? '' : 'h-[326px]'} w-[480px] p-8 bg-white rounded-2xl shadow flex-col justify-start items-end gap-6 inline-flex`}>
+        <Header modalType={hasHeader ? modalType : ""} closeButton={hasCloseButton}/>
         <Body
-          modalType={modalType}
+          modalType={hasBody ? modalType : ""}
         />
-        <Footer modalType={modalType}/>
+        <Footer modalType={hasFooter ? modalType : ""}/>
       </div>
     </>
   );
