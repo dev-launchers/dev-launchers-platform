@@ -16,7 +16,7 @@ return (
         </div>
       </div>
       <div className="flex flex-row gap-6 items-start justify-end shrink-0 relative">
-        <button className="bg-grayscale-50 rounded-lg border-solid border-grayscale-800 border-2 pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
+        <button className="bg-grayscale-50 rounded-lg border-solid border-grayscale-800 border-2 pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative" onClick={() =>{console.log("previous")}}>
           <div
             className="text-grayscale-800 text-center relative"
             style={{
@@ -26,7 +26,7 @@ return (
             Previous{" "}
           </div>
         </button>
-        <button className="bg-brand-alt-nebula-600 rounded-lg border-solid border-brand-secondary-nebula-600 border pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative">
+        <button className="bg-brand-alt-nebula-600 rounded-lg border-solid border-brand-secondary-nebula-600 border pt-2 pr-6 pb-2 pl-6 flex flex-row gap-2.5 items-center justify-center shrink-0 relative" onClick={() =>{console.log("next")}}>
           <div
             className="text-grayscale-50 text-center relative"
             style={{

@@ -46,6 +46,7 @@ export const Primary: Story = (args: { modalType?: string | undefined; hasCloseB
     modalType: 'terms',
     hasCloseButton: true,
     hasHeader: true,
+    hasBody: true,
     hasFooter: true,
   }
 };
