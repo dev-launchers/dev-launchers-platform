@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Stepper from '../../../common/Stepper';
-import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
+import PageSix from './PageSix/PageSix';
+
 // import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
@@ -116,9 +117,8 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p className='quickfix' >Congratulations</p>,
+      component: <PageSix/>,
       config: {
-        stepName: 'Done',
         hideBar: true,
         stepNumber: 4,
         buttons: {
