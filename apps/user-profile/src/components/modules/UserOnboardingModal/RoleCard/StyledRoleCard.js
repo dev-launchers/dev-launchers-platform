@@ -31,20 +31,32 @@ export const IconImg = ({ iconImg }) => {
 };
 
 export const RoleCardContainer = styled.div`
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    input:checked ~ .custom-radio-btn{
+      border: 5px solid #3A7CA5;
+    }
+`
+
+export const RadioCardContainer = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 35px 18px;
-    align-items: center;
-    width: 18vw;
+    cursor: pointer;
+    width: 224px;
     border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
 		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
     height: 200px;
-    &.selected {
-        border: 5px solid #3A7CA5;
-    }
 `;
 
 export const IconWrapper = styled.div`
