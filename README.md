@@ -26,7 +26,9 @@ Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of ou
 
 3. Install project dependencies: `yarn install`
 
-4. Run dev version: `yarn workspace @devlaunchers/app dev`
+4. Run the tailwindcss compiler: `yarn workspace @devlaunchers/tailwind dev`
+
+5. Run app's development server: `yarn workspace @devlaunchers/app dev`
 
 ---
 
