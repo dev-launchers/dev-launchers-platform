@@ -1,10 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import { useRouter } from 'next/router';
-import { useUserDataContext } from '../../../contexts/UserDataContext';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
-import { SkillLevel } from '@devlaunchers/models/level';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
@@ -74,8 +72,7 @@ export default function SignUpForm() {
             .split(',')
             .map((skill) => ({ skill: skill })),
           role: router.query.position as string,
-          project: router.query.project as string,
-          id: router.query.slug as string,
+          project: router.query.slug as string,
         })
           .then((res) => {
             setSubmitting(false);

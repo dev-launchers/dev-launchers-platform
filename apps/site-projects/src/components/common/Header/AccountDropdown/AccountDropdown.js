@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import Logout from "../../../../utils/Logout";
-import { env } from "../../../../utils/EnvironmentVariables";
 import {
   AccountMenuDropdownItem,
   AccountMenuDropdownButton,
@@ -9,6 +8,30 @@ import {
 } from "./StyledAccountDropdown";
 
 export default function AccountDropdown(props) {
+  const handleLogout = () => {
+    Logout();
+    setUserData({
+      id: 0,
+      name: '',
+      username: '',
+      email: '',
+      bio: '',
+      profilePictureUrl: '',
+      socialMediaLinks: [],
+      totalPoints: 0,
+      totalSeasonPoints: 0,
+      availablePoints: 0,
+      volunteerHours: 0,
+      discord: {
+        id: 0,
+        avatar: '',
+        username: '',
+        discriminator: '',
+      },
+      interests: [],
+    })
+  };
+
   return (
     <div>
       {props.userData.id ? (
@@ -22,14 +45,16 @@ export default function AccountDropdown(props) {
                   <a>Visit Account Page</a>
                 </Link>
               </AccountMenuDropdownItem>
-              <AccountMenuDropdownItem onClick={Logout}>
+              <AccountMenuDropdownItem onClick={handleLogout}>
                 Logout{" "}
               </AccountMenuDropdownItem>
             </>
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <MenuButton fontSize="1.2rem" href={env().GOOGLE_AUTH_URL+"?redirectURL=https://devlaunchers.org/users/me"}>
+        <MenuButton fontSize="1.2rem" 
+          href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
+            +`?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`}>
           Sign In{" "}
         </MenuButton>
       )}
