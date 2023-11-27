@@ -1,5 +1,5 @@
 import Body from '../../molecules/ModalComponents/ModalBody';
-import Header from '../../molecules/ModalComponents/Header';
+import Header from '../../molecules/ModalComponents/ModalHeader';
 import Footer from '../../molecules/ModalComponents/ModalFooter';
 import { useEffect, useState } from 'react';
 
