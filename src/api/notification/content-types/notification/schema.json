@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "idea_card": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::idea-card.idea-card"
+    },
+    "Content": {
+      "type": "string"
+    },
+    "Read": {
+      "type": "boolean"
+    },
+    "Tag": {
+      "type": "string"
+    },
+    "TimeCreated": {
+      "type": "datetime"
+    }
+  }
+}
