@@ -14,18 +14,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
-    const result = await agent.Projects.list(
+    projects = await agent.Projects.list(
       new URLSearchParams('populate=deep&publicationState=live')
     );
-    projects = result.filter((p: Project) => p.attributes.opportunities.data.length > 0);
 
-    // Do weird map to flatten and morph data object returned from new Strapiv4 api
-    projects = projects.map(project => {
-      return {
-        ...project.attributes, 
-        opportunities: project.attributes.opportunities?.data.map(opportunity => opportunity.attributes)
-      }
-    });
+    
 
     projects = projects.map((project) => {
       const commitments = project?.opportunities?.map(
@@ -44,9 +37,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const result = await agent.Opportunities.list(
       new URLSearchParams('populate=deep')
 		);
-    opportunities = result.filter((o: Opportunity) => o.attributes.projects.data.length > 0);
-		// Do weird map to flatten and morph data object returned from new Strapiv4 api
-		opportunities = opportunities.map(opportunity => opportunity.attributes);
+    opportunities = result.filter((o: Opportunity) => o.projects.length > 0);
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }

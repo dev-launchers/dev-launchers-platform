@@ -9,7 +9,7 @@ import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
 
-  const result = await agent.Projects.list( new URLSearchParams('populate=deep&publicationState=live'));
+  const result = await agent.Projects.list( new URLSearchParams('populate=*&publicationState=live'));
   let projects = result?.filter((p) => p.attributes.opportunities?.data?.length > 0);
   projects = projects.map(projects => projects.attributes);	// Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
@@ -30,11 +30,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 
-  const [projectsRes] = await agent.Projects.list(new URLSearchParams(`populate=deep&[filters][slug][$eq]=${params.slug}`));
-  let opportunities = await agent.Opportunities.list(new URLSearchParams(`populate=deep&filters[projects][slug][$eq]=${params.slug}`)
+  const project: Project = await agent.Projects.get(params.slug as string, new URLSearchParams(`populate=*`));
+  let opportunities = await agent.Opportunities.list(new URLSearchParams(`populate=*&filters[projects][slug][$eq]=${params.slug}`)
   );
-
-  let project: Project = projectsRes.attributes;
 
   // Restructure data returned from the API to flatten and make resemble data returned from old API
   // Any relational data set up in Strapi should be flattened here
@@ -50,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     
   // };
 
-  const commitments = project?.opportunities?.data?.map(
+  const commitments = project?.opportunities?.map(
     (opp) => opp.commitmentHoursPerWeek
   );
   const maxCommitment = Math.max(...commitments);

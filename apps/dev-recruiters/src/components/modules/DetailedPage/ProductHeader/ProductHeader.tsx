@@ -58,8 +58,8 @@ export default function ProductHeader({
         <Column w="384px" style={{ flexGrow: 1 }}>
           <ColumnTitle>Tags</ColumnTitle>
           <Row>
-            {interests.data.map(({ attributes, id }) => {
-              return <Tags key={id}>{attributes.interest}</Tags>;
+            {interests.map(({ interest, id }) => {
+              return <Tags key={id}>{interest}</Tags>;
             })}
           </Row>
         </Column>
