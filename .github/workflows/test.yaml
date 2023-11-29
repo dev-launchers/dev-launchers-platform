@@ -26,8 +26,8 @@ jobs:
         newman run integration-test/collection.json
       env:
         NODE_ENV: test
-        OPEN_POSITIONS_DISCORD_WEBHOOK: "not_used"
         JWT_SECRET: "NlpLY6zZ7JON8CHyNORWKw=="
+        FRONTEND_URL: "not_used"
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v1
     - name: Set up Docker Buildx

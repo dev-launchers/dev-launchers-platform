@@ -9,3 +9,5 @@ node_modules/*
 build/*
 
 .strapi-updater.json
+
+documentation/

@@ -7,7 +7,16 @@
 4. Go to http://localhost:1337/admin to create an account
 
 # Running from Docker
-Alternatively, you can it with docker `./docker-run.sh`
+Alternatively, you can run it with Docker. There are 2 make targets available to do this.
+- Ensure that Docker is running. This usually means that you need to start up Docker Desktop.
+- cd to the project's root directory
+- `make build-docker` to build the docker container. This may take a minute.
+- `make run-docker` to start up the strapiv4 server.
+
+### **_Note_**: You do not need to do the build and run steps every time you make a change.
+Once the docker container is running, the strapi server will auto-reload with your changes without having to restart the container.
+
+Also, if the container goes down for some reason, you do not need to rebuild it again. Run `make run-docker` and it will start up again.
 
 # Contributing
 Follow the [contributing guide](./CONTRIBUTING.md)

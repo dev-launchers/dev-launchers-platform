@@ -4,8 +4,8 @@ metadata:
   name: strapi-config
   namespace: strapiv4
 data:
-  url: "https://api.devlaunchers.org"
+  url: "https://apiv4.devlaunchers.org"
   frontend_url: "https://devlaunchers.org"
   node_env: "production"
-  redirect_url: "https://api.devlaunchers.org/auth/discord/redirect"
+  redirect_url: "https://apiv4.devlaunchers.org/auth/discord/redirect"
   domain: "devlaunchers.org"

@@ -5,24 +5,4 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = {
-    "routes": [
-        {
-            method: "GET",
-            path: "/projects",
-            handler: "project.find",
-            config: {
-              "policies": []
-            }
-        },
-        {
-            method: "GET",
-            path: "/projects/:slug",
-            handler: "project.findOne",
-            config: {
-                "policies": []
-            }
-        }
-    ]
-}
-
+module.exports = createCoreRouter('api::project.project');
