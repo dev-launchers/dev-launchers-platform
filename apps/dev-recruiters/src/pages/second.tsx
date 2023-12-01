@@ -9,8 +9,4 @@ const SecondPage = () => (
     <BoxContainer>
       <TalcommunityPage></TalcommunityPage>
       <SignUpForm />
-    </BoxContainer>
   </>
-);
-
-export default SecondPage;

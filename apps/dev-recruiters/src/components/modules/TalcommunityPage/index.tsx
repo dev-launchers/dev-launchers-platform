@@ -7,7 +7,11 @@ import { HeaderTalPage } from './HeaderTalPage';
 const TalcommunityPage = () => {
   return (
     <Wrapper>
+<<<<<<< HEAD
       <BoxContainer paddingVertical={0}>
+=======
+      <BoxContainer>
+>>>>>>> af8bec7d (For #1468)
         <HeaderTalPage />
       </BoxContainer>
     </Wrapper>
