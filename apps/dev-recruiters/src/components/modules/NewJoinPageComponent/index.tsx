@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import {
   BtnSignUp,
   Footer,
@@ -23,6 +24,11 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
+  const router = useRouter();
+  const routeChange = (e) => {
+    e.preventDefault();
+    router.push('join/second');
+  };
   return (
     <Wrapper>
       <BoxContainer paddingVertical={20}>
@@ -55,13 +61,8 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
             Join the Dev Launchers Talent Community to be notified about new
             volunteering roles that match your skillset!
           </FooterSecondText>
-          <BtnSignUp
-            as="a"
-            href={
-              process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-              '?redirectURL=https://devlaunchers.org/users/me'
-            }
-          >
+          {/* <BtnSignUp as="a" type="submit" href="/second"> */}
+          <BtnSignUp as="a" type="submit" onClick={routeChange}>
             Join the Talent Community
           </BtnSignUp>
         </Footer>
@@ -70,4 +71,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   );
 };
 
+// href={
+//   process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+//   '?redirectURL=https://devlaunchers.org/users/me'}
 export default NewJoinPageComponent;
