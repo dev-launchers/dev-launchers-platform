@@ -29,7 +29,7 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
     typeof window === "undefined"
       ? Buffer.from(str).toString("base64")
       : window.btoa(str);
-  const heroImageConfig = heroImage?.formats?.large || heroImage;
+  const heroImageConfig = heroImage?.data?.attributes?.formats?.large || heroImage?.data?.attributes;
   const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + heroImageConfig.url : heroImageConfig?.url
   return (
     <Wrapper>

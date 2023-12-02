@@ -42,26 +42,26 @@ const Project = ({ project, theme }) => {
       <div id="background" />
 			<EditorNotification project={project}	/>
       <HeroSection
-        projectName={project.title}
-        projectCatchPhrase={project.catchPhrase}
-        heroImage={project?.heroImage}
+        projectName={project.attributes.title}
+        projectCatchPhrase={project.attributes.catchPhrase}
+        heroImage={project.attributes?.heroImage}
       />
-      <Tags tags={project?.interests} />
+      <Tags tags={project?.attributes.interests} />
       <Vision
-        vision={project?.vision || ""}
+        vision={project?.attributes.vision || ""}
         scrollMethods={{
           scrollToRoles: () => excuteScroll(roleRef),
           scrollToDonate: () => excuteScroll(donateRef),
         }}
       />
       <Description
-        description={project?.description}
-        images={project?.images}
+        description={project?.attributes.description}
+        images={project?.attributes.images}
       />
-      <Role ref={roleRef} data={project?.opportunities} projectSlug={project.slug} />
-      <Milestones data={project?.board?.ProjectMilestone} />
-      {<Sessions calendarId={project?.calendarId} />}
-      <Team data={project?.team} />
+      <Role ref={roleRef} data={project?.attributes?.opportunities?.attributes} projectSlug={project.attributes.slug} />
+      <Milestones data={project?.attributes.board?.ProjectMilestone} />
+      {<Sessions calendarId={project.attributes.calendarId} />}
+      <Team data={project.attributes?.team} />
       <JoinSupport
         ref={donateRef}
         scrollMethods={{
