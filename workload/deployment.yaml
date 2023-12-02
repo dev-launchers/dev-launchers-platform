@@ -175,6 +175,6 @@ spec:
             path: /
             port: 1337
           initialDelaySeconds: 480
-          periodSeconds: 10
-          timeoutSeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 30
           failureThreshold: 5
