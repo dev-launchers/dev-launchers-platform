@@ -77,7 +77,7 @@ function createFormData(item: any) {
   return formData;
 }
 
-const responseBody = (response: AxiosResponse) => response.data.data;
+const responseBody = (response: AxiosResponse) => response.data.data ? response.data.data : response.data;
 
 // Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
