@@ -47,6 +47,7 @@ export default function UserProfile({ otherUser }) {
 
   const getProjectData = async () => {
     try {
+      //TODO IMPORTANT make sure to refactor this to use proper populate level
       const data = await agent.Projects.list({ populate: 'deep' });
       const cleanedData = cleanDataList(data);
       if (cleanedData) {
@@ -79,6 +80,7 @@ export default function UserProfile({ otherUser }) {
   }, [projects, userData]);
 
   const getIdeaData = async () => {
+    //TODO IMPORTANT make sure to refactor this to use proper populate level
     const data = cleanDataList(
       await agent.Ideas.get(new URLSearchParams(`populate=deep`))
     );
@@ -115,6 +117,7 @@ export default function UserProfile({ otherUser }) {
 
   const getInterests = async () => {
     try {
+      //TODO IMPORTANT make sure to refactor this to use proper populate level
       const { data } = await axios(
         `${process.env.NEXT_PUBLIC_STRAPI_URL}/interests?populate=deep`
       );
