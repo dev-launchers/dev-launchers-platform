@@ -37,25 +37,6 @@ function Home({ theme }) {
   const createRef = useRef(null);
   const donateRef = useRef(null);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      toast(
-        <>
-          Hey there! Are you a developer? Want management experience in a friendly, supportive environment? We're currently searching for intermediate and advanced devs to take on <span style={{fontSize:"2rem", textDecoration:"underline"}}>
-            <a href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/join"}>leadership positions</a></span> in our product teams!
-        </>,
-        {
-          bodyClassName: "toast-body",
-          position: "bottom-right",
-          autoClose: 25000,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        }
-      );
-    }, 6000)
-  }, []);
-
   return (
     <Wrapper>
       <HeroImage />
