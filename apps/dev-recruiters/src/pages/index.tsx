@@ -15,7 +15,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let opportunities: Opportunity[] = [];
   try {
     projects = await agent.Projects.list(
-      new URLSearchParams('populate=deep&publicationState=live')
+      new URLSearchParams('populate=*&publicationState=live')
     );
 
     projects = projects.map((project) => {
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     const result = await agent.Opportunities.list(
-      new URLSearchParams('populate=deep')
+      new URLSearchParams('populate=*')
     );
     opportunities = result.filter(
       (o: Opportunity) => o.attributes.projects.data.length > 0
