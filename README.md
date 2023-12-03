@@ -22,11 +22,11 @@ Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of ou
 
 1. Clone the repo
 
-2. Install: `yarn`
+2. Install dependencies: `yarn install`
 
-3. Install project dependencies: `yarn install`
+3. Run the tailwindcss compiler: `yarn workspace @devlaunchers/tailwind dev`
 
-4. Run dev version: `yarn workspace @devlaunchers/app dev`
+4. Run the app's development server: `yarn workspace @devlaunchers/app dev`
 
 ---
 
