@@ -16,25 +16,49 @@ function timeSince(date) {
   var interval = seconds / 31536000;
 
   if (interval > 1) {
-    return Math.floor(interval) + " years ago";
+    if (Math.floor(interval) == 1) {
+      return "1 year ago";
+    } else {
+      return Math.floor(interval) + " years ago";
+    }
   }
   interval = seconds / 2592000;
   if (interval > 1) {
-    return Math.floor(interval) + " months ago";
+    if (Math.floor(interval) == 1) {
+      return "1 month ago";
+    } else {
+      return Math.floor(interval) + " months ago";
+    }
   }
   interval = seconds / 86400;
   if (interval > 1) {
-    return Math.floor(interval) + " days ago";
+    if (Math.floor(interval) == 1) {
+      return "1 day ago";
+    } else {
+      return Math.floor(interval) + " days ago";
+    }
   }
   interval = seconds / 3600;
   if (interval > 1) {
-    return Math.floor(interval) + " hours ago";
+    if (Math.floor(interval) == 1) {
+      return "1 hour ago";
+    } else {
+      return Math.floor(interval) + " hours ago";
+    }
   }
   interval = seconds / 60;
   if (interval > 1) {
-    return Math.floor(interval) + " minutes ago";
+    if (Math.floor(interval) == 1) {
+      return "1 minute ago";
+    } else {
+      return Math.floor(interval) + " minutes ago";
+    }
   }
-  return Math.floor(seconds) + " seconds ago";
+  if (Math.floor(interval) == 1) {
+    return "1 second ago";
+  } else {
+    return Math.floor(seconds) + " seconds ago";
+  }
 }
 
 // Do we need to make a function returning the comment component to keep track of the likes?
