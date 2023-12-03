@@ -26,9 +26,9 @@ function DashboardPage() {
   React.useEffect(async () => {
     if (isAuthenticated) {
       const data = cleanDataList(await agent.Ideas.get(
-        new URLSearchParams(`populate=*`)));
+        new URLSearchParams(`populate=*pagination[pageSize]=1000`)));
 
-        const cards = data.map((item) => {
+        const allCards = data.map((item) => {
           item.comments = cleanDataList(item.comments.data);
           return {
             ...item,
@@ -39,7 +39,7 @@ function DashboardPage() {
         });
 
         setLoading(false);
-        setSourceCards(cards);
+        setSourceCards(allCards);
     }
   }, [isAuthenticated]);
 
