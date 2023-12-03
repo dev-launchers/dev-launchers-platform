@@ -6,4 +6,4 @@ resources:
 images:
 - name: devlaunchers/platform-website
   newName: devlaunchers/platform-website
-  newTag: "cfd0630-202312020121" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
+  newTag: "9424141-202312032221" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
