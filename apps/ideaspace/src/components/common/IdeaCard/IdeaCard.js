@@ -16,7 +16,7 @@ function IdeaCard({ cards, cardType }) {
   const [buttonContent, setButtonContent] = useState('');
   const [urlPath, setUrlPath] = useState('');
   const [liked, setLiked] = useState(false);
-  const { isAuthenticated, id, name} = useUserDataContext();
+  const { isAuthenticated, userData } = useUserDataContext();
   const [savedCards, setSavedCards] = useState([]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(
