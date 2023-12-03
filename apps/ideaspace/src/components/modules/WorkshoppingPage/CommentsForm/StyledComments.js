@@ -26,7 +26,7 @@ export const SingleCommentContent = styled.div`
   background-color: white;
   color: black;
   border-radius: 25px;
-  padding: 20px;
+  padding: 1px;
   display: inline-flex;
 
 
@@ -37,22 +37,40 @@ export const SingleCommentContent = styled.div`
   h3 {
     margin: 0;
     padding-right: 5px;
-    font-size: 18px;
-    font-weight: 1000 ;
-    color: black;
+    
+    color: var(--grey-scale-off-black, #1C1C1C);
+    font-feature-settings: 'clig' off, 'liga' off;
+    
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.28px;
+    text-transform: uppercase;
   }
 
   h5 {
     margin: 0;
     padding-right: 5px;
-    font-size: 14px;
-    font-weight: 1000 ;
-    color: black;
+
+    color: var(--grey-scale-grey, #7F7E7F);
+    
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
   }
 
   p {
-    font-size: 16px;
     margin: 0;
+
+    color: var(--grey-scale-off-black, #1C1C1C);
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 `;
 
@@ -71,9 +89,14 @@ export const UserNameComment = styled.input`
 
 
 export const UserImage = styled.img`
-  height: 60px;
   margin-right: 10px;
-  border-radius: 50%;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  border-radius: 48px;
+  background: url(<path-to-image>), lightgray 0px -1.948px / 100% 153.333% no-repeat;
 `;
 
 
