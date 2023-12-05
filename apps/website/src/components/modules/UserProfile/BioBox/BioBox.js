@@ -1,9 +1,6 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
-
 import { Wrapper, Bio } from "./StyledBioBox";
-
-import { env } from "../../../../utils/EnvironmentVariables";
 
 export default function BioBox({ data, canEdit }) {
   const [bioText, setBioText] = useState(data.bio);

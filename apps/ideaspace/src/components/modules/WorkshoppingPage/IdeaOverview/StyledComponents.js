@@ -41,16 +41,8 @@ export const TopView = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 3rem;
   @media (max-width: 1280px) {
     flex-direction: column;
   }
-`;
-
-export const BottomView = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  margin-top: 25px;
 `;

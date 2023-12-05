@@ -10,7 +10,7 @@ const HelpBuild = () => (
     Title=""
     Content={
       <Wrapper>
-        <h3>Help build this project!</h3>
+        <h3>Join our mission!</h3>
         <p>
           We are looking for sponsors to fund the financial costs of different
           operations, with your help we can build a better product!
@@ -19,7 +19,7 @@ const HelpBuild = () => (
         <ButtonsContainer>
           <Button
             bgColor="#4A9D48"
-            href="https://devlaunchers.org/c/sponsorship/"
+            href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/c/sponsorship/"}
             target="_blank"
             rel="noopener noreferrer"
           >
