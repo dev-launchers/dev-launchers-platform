@@ -4,5 +4,6 @@ module.exports = {
         const ctx = strapi.requestContext.get();
         event.params.data.author = ctx.state.user;
         event.params.data.ideaOwner = ctx.state.user;
+        console.log("create idea card ctx", ctx)
     },
 };
