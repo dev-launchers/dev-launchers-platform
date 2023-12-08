@@ -1,10 +1,11 @@
 import React from 'react';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
-import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import { agent } from '@devlaunchers/utility';
+import { cleanDataList } from '../../../utils/StrapiHelper';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 import {
@@ -69,24 +70,28 @@ function BrowseIdeas() {
     setCards(cardsClone);
   };
 
-  React.useEffect(() => {
-    axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        const getCards = response.data.map((item) => {
-          return {
-            ...item,
-            mostRecentCommentTime: new Date(
-              item.comments[0]?.updated_at
-            ).getTime(),
-          };
-        });
+  React.useEffect(async () => {
+    const ideaCards = cleanDataList(await agent.Ideas.get(
+      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
 
-        setLoading(false);
-        setSourceCards(getCards);
-      });
+    const getCards = ideaCards.map((item) => {  
+      if (item?.comments?.data) {
+        item.comments = cleanDataList(item.comments.data);
+        return {
+          ...item,
+          mostRecentCommentTime: new Date(
+            item.comments[0]?.updated_at
+          )?.getTime(),
+        };
+      }
+      return {
+        ...item,
+        mostRecentCommentTime: new Date()?.getTime(),
+      };
+    });
+
+    setLoading(false);
+    setCards(getCards);
   }, []);
 
   React.useEffect(() => {

@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+
+export const Wrapper = styled.div`
+  img {
+    max-width: none;
+  }
+
+
+`
 export const ContentArea = styled.div`
   display: flex;
   flex-direction: row;

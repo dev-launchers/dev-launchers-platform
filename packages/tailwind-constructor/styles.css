@@ -1,0 +1,11 @@
+@tailwind base;
+
+
+
+@tailwind components;
+@import "output/core.css";
+@import "output/light.css";
+@import "output/dark.css";
+@import "custom.css";
+
+@tailwind utilities;

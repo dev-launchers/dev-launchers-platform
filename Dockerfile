@@ -84,6 +84,7 @@ COPY --from=deps /workspace-install ./
 RUN if [ "${NODE_ENV}" = "staging" ]; then mv ./apps/app/.env.staging ./apps/app/.env.production ; fi
 
 # # Optional: if the app depends on global /static shared assets like images, locales...
+RUN yarn workspace @devlaunchers/tailwind build-tw
 RUN yarn workspace @devlaunchers/app build
 
 # Does not play well with buildkit on CI

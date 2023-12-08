@@ -61,7 +61,7 @@ export default function Header() {
         </Link>
       </HeaderNav>
       <div />
-      <AccountDropdown userData={userData} />
+      <AccountDropdown />
       <HamburgerMenu />
     </HeaderBlock>
   );

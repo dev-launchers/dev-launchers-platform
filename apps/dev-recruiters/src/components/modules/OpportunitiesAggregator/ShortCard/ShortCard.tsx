@@ -55,8 +55,8 @@ const ShortCard = ({
             <CategoryContainer>
               <Category>Position Available</Category>
               <ul>
-                {opp.map((position) => (
-                  <Content as={PositionContent} key={position.id}>
+                {opp.map(({attributes: position, id}) => (
+                  <Content as={PositionContent} key={id}>
                     <span>{position.title}</span>
                   </Content>
                 ))}

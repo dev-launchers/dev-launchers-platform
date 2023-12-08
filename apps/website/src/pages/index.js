@@ -15,7 +15,7 @@ export default function Index() {
         ></meta>
 
         <meta property="og:type" content="website"></meta>
-        <meta property="og:url" content="https://devlaunchers.org/"></meta>
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_FRONT_END_URL}></meta>
         <meta
           property="og:image"
           content="/images/DevlaunchersGitHubThumb.png"
@@ -27,7 +27,7 @@ export default function Index() {
         ></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
-        <meta property="twitter:url" content="https://devlaunchers.org/"></meta>
+        <meta property="twitter:url" content={process.env.NEXT_PUBLIC_FRONT_END_URL}></meta>
         <meta
           property="twitter:image"
           content="/images/DevlaunchersGitHubThumb.png"

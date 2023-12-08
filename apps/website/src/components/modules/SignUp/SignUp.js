@@ -19,7 +19,6 @@ export default function SignUp() {
   useEffect(() => {
     // setLoading(userData.id === -1);
     // Prefetch the user profile page
-    console.log('just being stupid?');
     router.prefetch("/users/me");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
@@ -27,7 +26,6 @@ export default function SignUp() {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      console.log('updateUser');
       const currentUser = await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me`, {
         withCredentials: true,
       });

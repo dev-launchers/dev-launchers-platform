@@ -1,5 +1,14 @@
 import styled from "styled-components";
 
+
+export const Wrapper = styled.div`
+  img {
+    max-width: none;
+  }
+
+
+`
+
 export const HomePageBody = styled.div`
   /*margin-top: 45vw;*/
   width: 100%;

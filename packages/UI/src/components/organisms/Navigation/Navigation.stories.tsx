@@ -1,33 +1,26 @@
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import testImage from './../../../assets/images/logo-monogram.png';
-import {
-  UserDataProvider,
-  DEFAULT_USER,
-} from './../../../context/UserDataContext';
-import Navigation from './Navigation';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
-  title: 'Molecules/Navigation',
-  component: Navigation,
-} as ComponentMeta<typeof Navigation>;
-
-const TemplateNavigation: ComponentStory<typeof Navigation> = (args) => (
-  <UserDataProvider>
-    <Navigation {...args} />
-  </UserDataProvider>
-);
-
-export const DefaultNav = TemplateNavigation.bind({});
-DefaultNav.args = {
-  user: { ...DEFAULT_USER },
+import { UserDataProvider } from '../../../context/UserDataContext';
+import NewNavigation from './Navigation';
+const meta: Meta<typeof NewNavigation> = {
+  component: NewNavigation,
+  decorators: [
+    (Story) => (
+      <UserDataProvider>
+        <Story />
+      </UserDataProvider>
+    ),
+  ],
 };
 
-export const SignedInUser = TemplateNavigation.bind({});
-SignedInUser.args = {
-  user: {
-    ...DEFAULT_USER,
-    id: 1,
-    name: 'test user',
-    profilePictureUrl: testImage,
-  },
+export default meta;
+type Story = StoryObj<typeof NewNavigation>;
+
+/*
+ *👇 Render functions are a framework specific feature to allow you control on how the component renders.
+ * See https://storybook.js.org/docs/react/api/csf
+ * to learn how to use render functions.
+ */
+export const Primary: Story = {
+  render: () => <NewNavigation />,
 };
