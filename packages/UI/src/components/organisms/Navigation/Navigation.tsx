@@ -104,11 +104,11 @@ const Navigation = () => {
   return (
     <Layer hasRainbowBottom type="dark">
       <nav className={$wrapper()}>
-        <Link href="/">
-          <a href="/" className={$logoContainer()}>
-            <img className="w-10" src={logo} alt="logo"></img>
-            <span className="hidden md:inline-block">Dev Launchers</span>
-          </a>
+        <Link href="/" className={$logoContainer()}>
+
+          <img className="w-10" src={logo} alt="logo"></img>
+          <span className="hidden md:inline-block">Dev Launchers</span>
+
         </Link>
         <ul>
           <div className="hidden lg:flex lg:gap-12 lg:items-baseline">
@@ -125,7 +125,7 @@ const Navigation = () => {
                 );
               return (
                 <li className="list-none" key={i}>
-                  <Link href={href} passHref>
+                  <Link href={href} passHref legacyBehavior>
                     <NavLink>{name}</NavLink>
                   </Link>
                 </li>

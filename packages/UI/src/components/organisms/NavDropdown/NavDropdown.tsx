@@ -82,14 +82,12 @@ const NavDropdown = ({
                 </>
               );
             }
-            return (
-              <>
-                <Link href={href}>
-                  <SubNavLink {...rest} href={href} text={text} key={i} />
-                </Link>
-                {hasUnderline && <hr style={{ width: '100%' }} />}
-              </>
-            );
+            return <>
+              <Link href={href} legacyBehavior key={i}>
+                <SubNavLink {...rest} href={href} text={text} key={i} />
+              </Link>
+              {hasUnderline && <hr style={{ width: '100%' }} />}
+            </>;
           })}
         </Options>
       </OptionsContainer>

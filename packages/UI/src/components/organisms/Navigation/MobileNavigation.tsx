@@ -67,11 +67,11 @@ const MobileNavigation = ({
                 <Typography type="h2">Hi {user.name}</Typography>
               </Box>
             ) : (
-              <Link href="/">
-                <a href="/" onClick={() => setIsSidebarExpanded?.(false)}>
-                  <img width="139.26" height="114" src={logo} alt="logo" />
-                </a>
-              </Link>
+              (<Link href="/" onClick={() => setIsSidebarExpanded?.(false)}>
+
+                <img width="139.26" height="114" src={logo} alt="logo" />
+
+              </Link>)
             )}
           </Box>
           <ul>
@@ -97,7 +97,7 @@ const MobileNavigation = ({
                   );
                 return (
                   <li key={`${name} ` + i}>
-                    <Link href={href} passHref>
+                    <Link href={href} passHref legacyBehavior>
                       <Button
                         as={NavLink}
                         buttonType="alternative"
