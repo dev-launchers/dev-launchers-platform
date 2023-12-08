@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from "axios";
 import { useRouter } from 'next/router';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaSettingsContent from './IdeaSettingsContent';
 import useConfirm from '../../../../common/DialogBox/DialogBox';
-import theme from '@devlaunchers/components/styles/theme';
+import theme from '@devlaunchers/components/src/styles/theme';
 
 const IdeaSettingsCard = ({ card }) => {
     let { userData, setUserData, isAuthenticated } = useUserDataContext();

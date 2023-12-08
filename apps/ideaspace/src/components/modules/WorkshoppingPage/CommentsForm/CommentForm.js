@@ -6,7 +6,7 @@ import {
   UserComment,
   UserImageOne,
 } from './StyledComments.js';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 

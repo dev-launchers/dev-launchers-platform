@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
-import theme from '@devlaunchers/components/styles/theme';
+import theme from '@devlaunchers/components/src/styles/theme';
 import { atoms } from '@devlaunchers/components/src/components';
 
 const IdeaSettingsContent = ({

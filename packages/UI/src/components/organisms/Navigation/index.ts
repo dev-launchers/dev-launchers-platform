@@ -8,3 +8,35 @@ export interface NavigationProps {
 export interface MobileNavProps {
   open: boolean;
 }
+
+export const links = {
+  CREATE: '/create',
+  LEARN: '/learn',
+  DREAM: [
+    {
+      text: 'Ideaspace',
+      href: '/ideaspace',
+      hasUnderline: true,
+    },
+    {
+      text: 'Submit an idea',
+      href: '/ideaspace/submit',
+    },
+    {
+      text: 'Help existing idea',
+      href: '/ideaspace/browse',
+    },
+  ],
+  'SUPPORT US': '/support-us',
+  JOIN: '/join',
+};
+
+
+export const accountOptions = [
+  { text: 'My Profile', href: '/users/me' },
+  {
+    text: 'my ideas dashboard',
+    href: '/ideaspace/dashboard',
+    hasUnderline: true,
+  },
+];

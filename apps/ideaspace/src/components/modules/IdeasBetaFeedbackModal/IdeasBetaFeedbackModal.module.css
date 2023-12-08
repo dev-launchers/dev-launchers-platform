@@ -1,11 +1,35 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 11;
+}
 .ReactModal__Content {
+  font-family: Nunito Sans;
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: 2rem;
+  bottom: 2rem;
+  max-width: 320px;
+  padding-top: 80px;
+  padding-bottom: 0;
+  text-align: center;
+  height: 550px;
+  border: none;
+  background: rgb(255, 255, 255);
+  border-radius: 16px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   transition: 0.4s all ease-in-out;
   transform: translateX(200%);
 }
-.ReactModal__Overlay--after-open .ReactModal__Content {
+.ReactModal__Overlay--after-open > .ReactModal__Content {
   transform: translateX(0);
 }
-.ReactModal__Overlay--before-close .ReactModal__Content {
+.ReactModal__Overlay--before-close > .ReactModal__Content {
   transform: translateX(200%);
 }
 
@@ -96,6 +120,6 @@
   margin-bottom: 16px;
 }
 
-small {
+.small {
   font-size: 15px !important;
 }

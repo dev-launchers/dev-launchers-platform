@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import theme from '@devlaunchers/components/styles/theme';
+import theme from '@devlaunchers/components/src/styles/theme';
 import {
   StatuBox,
 } from './StyledIdeaCard';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'

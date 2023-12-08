@@ -9,7 +9,7 @@ const IdeaCardImg = ({
 }) => {
 
     return (
-        <Link href={`/ideaspace/workshop/${cardId}`}>
+        <Link href={`/ideaspace/workshop/${cardId}`} legacyBehavior>
             <ImgButton style={{ backgroundColor: "#FFFFFF", }}>
                 <img
                     alt="idea_image"
@@ -18,7 +18,7 @@ const IdeaCardImg = ({
                 />
             </ImgButton>
         </Link>
-    )
+    );
 };
 
 export default IdeaCardImg;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../utils/StrapiHelper';

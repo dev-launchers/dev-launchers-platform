@@ -3,7 +3,7 @@ import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
-import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import Dropdown from '@devlaunchers/components/src/components/organisms/Dropdown';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';

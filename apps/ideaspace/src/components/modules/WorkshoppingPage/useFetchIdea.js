@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../utils/StrapiHelper';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 
 export const useFetchIdea = (ideaId) => {
   let { userData, setUserData, isAuthenticated } = useUserDataContext();

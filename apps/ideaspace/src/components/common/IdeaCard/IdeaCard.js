@@ -110,7 +110,7 @@ function IdeaCard({ cards, cardType }) {
           {buttonContent}
         </atoms.Button>
       ) : (
-        <Link href={{ pathname: urlPath }}>
+        <Link href={{ pathname: urlPath }} legacyBehavior>
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"

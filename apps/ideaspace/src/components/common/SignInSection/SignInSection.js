@@ -11,7 +11,9 @@ const SignInSection = ({
         <SignInWrapper>
             <atoms.Box flexDirection='column'>{label}</atoms.Box>
             <br />
-            <Link href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=' + redirectURL}>
+            <Link
+                href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL + '?redirectURL=' + redirectURL}
+                legacyBehavior>
                 <atoms.Button
                     buttonSize='standard'
                     buttonType='primary'
@@ -20,7 +22,7 @@ const SignInSection = ({
                 </atoms.Button>
             </Link>
         </SignInWrapper>
-    )
+    );
 };
 
 export default SignInSection;
