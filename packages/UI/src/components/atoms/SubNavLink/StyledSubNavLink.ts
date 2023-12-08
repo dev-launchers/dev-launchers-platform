@@ -13,9 +13,9 @@ export const StyledSubNavLink = styled.a`
   border-left: 7px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
   border-right: 7px solid ${({ theme }) => theme.colors.GREYSCALE_BLACK};
 
-  &:visited {
+  /* &:visited {
     color: ${({ theme }) => theme.colors.BLUE};
-  }
+  } */
 
   &:hover {
     color: ${({ theme }) => theme.colors.BLUE_200};

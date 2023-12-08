@@ -10,9 +10,7 @@ export default function DynamicPageRoute() {
 
   return (
     <div>
-      <Header />
       <DynamicPage pageId={pid} />
-      <Footer />
     </div>
   );
 }

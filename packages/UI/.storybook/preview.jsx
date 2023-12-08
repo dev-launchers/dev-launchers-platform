@@ -1,54 +1,50 @@
 import React from "react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
+
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "../src/styles/global";
 import theme from "../src/styles/theme";
-import * as NextImage from "next/image";
-const OriginalNextImage = NextImage.default;
-
-Object.defineProperty(NextImage, "default", {
-  configurable: true,
-  value: (props) => (
-    <OriginalNextImage
-      {...props}
-      unoptimized
-    />
-  ),
-});
+import "@devlaunchers/tailwind/tailwind.css";
 
 const customViewports = {
+  mobile: {
+    name: 'mobile',
+    styles: {
+      width: `412px`,
+      height: '100%',
+    },
+  },
   sm: {
     name: 'sm',
     styles: {
-      width: `${theme.breakpoints.sm}px`,
+      width: `640px`,
       height: '100%',
     },
   },
   md: {
     name: 'md',
     styles: {
-      width: `${theme.breakpoints.md}px`,
+      width: `768px`,
       height: '100%',
     },
   },
   lg: {
     name: 'lg',
     styles: {
-      width: `${theme.breakpoints.lg}px`,
+      width: `1024px`,
       height: '100%',
     },
   },
   xl: {
     name: 'xl',
     styles: {
-      width: `${theme.breakpoints.xl}px`,
+      width: `1280px`,
       height: '100%',
     },
   },
-  xxl: {
-    name: 'xxl',
+  '2xl': {
+    name: '2xl',
     styles: {
-      width: `${theme.breakpoints.xxl}px`,
+      width: `1536px`,
       height: '100%',
     },
   },
@@ -70,9 +66,6 @@ export const decorators = [
   ),
 ];
 export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
-  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
