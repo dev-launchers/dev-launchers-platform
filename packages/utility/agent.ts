@@ -18,6 +18,16 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     return config;
 // });
 
+axios.interceptors.request.use(
+  async (request) => {
+    request.withCredentials = true
+    return request
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+)
+
 axios.interceptors.response.use(
   async (response) => {
     if (process.env.NODE_ENV === "development") {
