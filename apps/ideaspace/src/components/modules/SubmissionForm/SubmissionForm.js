@@ -54,6 +54,7 @@ function SubmissionForm() {
 
   const submitHandler = async (values) => {
     values['author'] = userData.id;
+    values['ideaOwner'] = userData.id;
     values['status'] = 'workshopping';
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();
