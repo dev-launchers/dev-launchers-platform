@@ -36,10 +36,22 @@ export const useFetchIdea = (ideaId, setComments) => {
       if (ideaId) {
         setLoading(true);
 
-        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=deep`)));
+        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
 
-        setComments(cleanDataList(data.comments.data))
-        
+        const commentResponse = data?.comments?.data;
+        if (commentResponse !== undefined) {
+          setComments(cleanDataList(commentResponse))
+        }
+
+        const author = data?.author?.data;
+        if (author !== undefined) {
+          data.author = cleanData(author);
+        }
+
+        const ideaOwner = data?.ideaOwner?.data;
+        if (ideaOwner !== undefined) {
+          data.ideaOwner = cleanData(ideaOwner);
+        }
 
         setLoading(false);
 
