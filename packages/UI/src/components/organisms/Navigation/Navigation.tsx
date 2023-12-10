@@ -179,7 +179,7 @@ const Navigation = () => {
                     </div>
                   ),
                   onClick: Logout,
-                  as: 'Button',
+                  as: 'button',
                 },
               ]}
               toggleElementProps={{ style: { color: 'white' } }}
