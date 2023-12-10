@@ -41,14 +41,14 @@ export default function ProjectListItem({ project }: Props) {
               <Title>Positions Available / Level</Title>
               <ul>
                 {expanded
-                  ? project?.opportunities?.map((opportunity) => (
+                  ? project?.opportunities?.data?.map((opportunity) => (
                       <li key={opportunity.id}>
                         <PositionTitle>{opportunity.title}</PositionTitle>
                         <span> - </span>
                         <PositionLevel>{opportunity.level}</PositionLevel>
                       </li>
                     ))
-                  : project.opportunities.slice(0, 3).map((opportunity) => (
+                  : project.opportunities.data.slice(0, 3).map((opportunity) => (
                       <li key={opportunity.id}>
                         <PositionTitle>{opportunity.title}</PositionTitle>
                         <span> - </span>
