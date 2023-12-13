@@ -41,9 +41,27 @@ type Story = StoryObj<typeof Modal>;
  * to learn how to use render functions.
  */
 //What type do I set args equal to in order to avoid error type any? the solution below won't work for a component with a lot of options
-export const Primary: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; hasHeader: boolean; hasBody: boolean; hasFooter: boolean;}) => <Modal {...args}/>; {
-  Primary.args = {
+export const Newsletter: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; hasHeader: boolean; hasBody: boolean; hasFooter: boolean;}) => <Modal {...args}/>; {
+  Newsletter.args = {
+    modalType: 'newsletter',
+    hasCloseButton: true,
+    hasHeader: true,
+    hasBody: true,
+    hasFooter: true,
+  }
+};
+export const Terms: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; hasHeader: boolean; hasBody: boolean; hasFooter: boolean;}) => <Modal {...args}/>; {
+  Terms.args = {
     modalType: 'terms',
+    hasCloseButton: true,
+    hasHeader: true,
+    hasBody: true,
+    hasFooter: true,
+  }
+};
+export const Roles: Story = (args: { modalType?: string | undefined; hasCloseButton: boolean; hasHeader: boolean; hasBody: boolean; hasFooter: boolean;}) => <Modal {...args}/>; {
+  Roles.args = {
+    modalType: 'roles',
     hasCloseButton: true,
     hasHeader: true,
     hasBody: true,
