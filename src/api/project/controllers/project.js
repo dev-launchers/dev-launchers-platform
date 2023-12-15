@@ -7,14 +7,14 @@ module.exports = createCoreController('api::project.project', ({ strapi }) => ({
         const slug = ctx.request.params.id;
         const entity = await strapi.db.query('api::project.project').findOne({
             where: { slug },
-            populate: ['team.leaders.leader', 'team.members.member', 'heroImage', 'images', 'interests', 'subProjects', 'opportunities']
+            populate: ['team.leaders.leader.profile', 'team.members.member.profile', 'heroImage', 'images', 'interests', 'subProjects', 'opportunities']
         });
 
         if (entity?.team) {
             entity.team.leaders = entity.team.leaders.map((leader) => ({
                 id: leader.leader?.id,
                 username: leader.leader?.username,
-                profile: leader.leader?.profile,
+                profile: userProfile(leader.leader),
                 email: leader.leader?.email,
                 role: leader.role,
             }));
@@ -22,7 +22,7 @@ module.exports = createCoreController('api::project.project', ({ strapi }) => ({
             entity.team.members = entity.team.members.map((member) => ({
                 id: member.member?.id,
                 username: member.member?.username,
-                profile: member.member?.profile,
+                profile: userProfile(member.member),
                 role: member.role,
             }));
         }
@@ -32,3 +32,11 @@ module.exports = createCoreController('api::project.project', ({ strapi }) => ({
         return this.transformResponse(sanitizedResults);
     },
 }));
+
+// don't return everything from profile
+function userProfile(user) {
+    return {
+        profilePictureUrl: user?.profile?.profilePictureUrl,
+        displayName: user?.profile?.displayName,
+    }
+}
