@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dl_tal_communities",
+  "info": {
+    "singularName": "dl-tal-community",
+    "pluralName": "dl-tal-communities",
+    "displayName": "DLTalCommunity"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "emailID": {
+      "type": "email"
+    },
+    "skills": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "string"
+    }
+  }
+}
