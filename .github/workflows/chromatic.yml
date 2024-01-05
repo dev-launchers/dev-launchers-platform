@@ -40,6 +40,9 @@ jobs:
       - name: install deps
         run: corepack enable && yarn
 
+      - name: generate css
+        run: yarn workspace @devlaunchers/tailwind build-tw
+        
         #👇 Adds Chromatic as a step in the workflow
       - name: Chromatic
         uses: chromaui/action@v1

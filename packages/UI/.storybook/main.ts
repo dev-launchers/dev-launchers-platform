@@ -1,6 +1,7 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 import path, { dirname, join } from 'path';
-module.exports = {
+
+const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)', '../src/**/*.mdx'],
   staticDirs: ['../public'],
   addons: [
@@ -40,3 +41,5 @@ module.exports = {
 function getAbsolutePath(value) {
   return dirname(require.resolve(join(value, 'package.json')));
 }
+
+export default config;
