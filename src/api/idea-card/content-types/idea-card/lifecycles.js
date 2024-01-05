@@ -1,34 +1,30 @@
 module.exports = {
-<<<<<<< HEAD
-    beforeCreate(event) {
-        // Set author and ideaOwner to the user sending the request
-        const ctx = strapi.requestContext.get();
-        event.params.data.author = ctx.state.user;
-        event.params.data.ideaOwner = ctx.state.user;
-        console.log("create idea card ctx", ctx)
-    },
-};
-=======
 
-    async afterCreate(event) {
+  beforeCreate(event) {
+      // Set author and ideaOwner to the user sending the request
+      const ctx = strapi.requestContext.get();
+      event.params.data.author = ctx.state.user;
+      event.params.data.ideaOwner = ctx.state.user;
+      console.log("create idea card ctx", ctx)
+  },
 
-        const ideaCard = event.result.id
-        const ideaName = event.result.ideaName
-        const timeCreated = event.result.createdAt
+  async afterCreate(event) {
+    console.log(event.result)
 
-        await strapi.entityService.create('api::notification.notification', {
-            data: {
-              Title:"A new idea has been created",
-              Content: "You created idea " + ideaName,
-              Tag: "New Idea",
-              idea_card: ideaCard,
-              TimeCreated: timeCreated,
-              Read: false,
-            },
-        });
-        
-    }
-      
+    const { id: id, ideaName: ideaName, createdAt: timeCreated } = event.result;
+    
+    await strapi.entityService.create('api::notification.notification', {
+      data: {
+        Title:"A new idea has been created",
+        Content: "You created idea " + ideaName,
+        Collection: "IdeaCard",
+        ObjectID: id,
+        TimeCreated: timeCreated,
+        Read: false
+      },
+    });
+  }
 
 }
->>>>>>> 3d3cfb7... feat(oriyomi): Create the notification feature
+
+

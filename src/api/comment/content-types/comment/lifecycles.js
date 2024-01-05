@@ -1,23 +1,22 @@
 module.exports = {
 
-    async afterCreate(event) {
+  async afterCreate(event) {
+    console.log(event.result)
 
-        const ideaCard = event.result.idea_card
-        const ideaName = event.result.idea_card.ideaName
-        const commentAuthor = event.result.author
-        const commentText = event.result.text
-        const timeCreated = event.result.createdAt
+    const { id: id, idea_card: idea, author: commentAuthor, text: commentText, createdAt: timeCreated } = event.result;
+    
+    await strapi.entityService.create('api::notification.notification', {
+      data: {
+        Title: commentAuthor + " commented on " + idea.ideaName,
+        Content: commentText,
+        Collection: "Comment",
+        ObjectID: id,
+        TimeCreated: timeCreated,
+        Read: false
+      },
+    });
 
-        await strapi.entityService.create('api::notification.notification', {
-            data: {
-              Title: commentAuthor + " commented on " + ideaName,
-              Content: commentText,
-              Tag: "New Comment",
-              idea_card: ideaCard.id,
-              TimeCreated: timeCreated,
-              Read: false,
-            },
-        });
-    }
+  }
 
 }
+

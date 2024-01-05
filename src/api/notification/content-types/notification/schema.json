@@ -15,22 +15,24 @@
     "Title": {
       "type": "string"
     },
-    "idea_card": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::idea-card.idea-card"
-    },
     "Content": {
       "type": "string"
     },
     "Read": {
       "type": "boolean"
     },
-    "Tag": {
-      "type": "string"
-    },
     "TimeCreated": {
       "type": "datetime"
+    },
+    "Collection": {
+      "type": "enumeration",
+      "enum": [
+        "IdeaCard",
+        "Comment"
+      ]
+    },
+    "ObjectID": {
+      "type": "integer"
     }
   }
 }
