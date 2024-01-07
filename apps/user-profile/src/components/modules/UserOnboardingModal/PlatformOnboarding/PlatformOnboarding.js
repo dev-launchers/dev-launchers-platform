@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import Stepper from '../../../common/Stepper';
-import PageOne from './PageOne/PageOne';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
+import PageSix from './PageSix/PageSix';
+
 // import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
@@ -27,7 +28,7 @@ export default function PlatformOnboarding() {
   //   {id:8, name:"C/C++/C#"}, {id:9, name:"Discord"}, {id:10, name:"Node.js"}, {id:11, name:"Strapi"}, 
   //   {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"}, 
   //   {id:16, name:"Python"}, {id:17, name:"Data Structures"}, {id:18, name:"Prototyping"}, {id:19, name:"Project Management"}
-  // ]    
+  // ]    a
 
   const stepperConfig = [
     {
@@ -57,6 +58,7 @@ export default function PlatformOnboarding() {
             label: 'Next',
             disabled: true,
             delayEnable: 5000,
+            disableOnce: true
           },
           back: {
             label: 'Back',
@@ -116,10 +118,10 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <p className='quickfix' >Congratulations</p>,
+      component: <PageSix/>,
       config: {
-        stepName: 'Done',
         hideBar: true,
+        stepName: 'Done',
         stepNumber: 4,
         buttons: {
           next: {
@@ -138,7 +140,7 @@ export default function PlatformOnboarding() {
 
   return (
     <PlatformOnboardingContainer>
-      <Stepper steps={stepperConfig} startIndex={1} />
+      <Stepper className="platform-onboarding-stepper" steps={stepperConfig} startIndex={0} />
     </PlatformOnboardingContainer>
   );
 }

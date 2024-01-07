@@ -9,6 +9,63 @@ import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboa
 import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
 import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
+export const RoleCardContainer = styled.div`
+
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    input:checked ~ .custom-radio-btn{
+      border: 5px solid #3A7CA5;
+    }
+`
+
+export const RadioCardContainer = styled.div`
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    padding: 35px 18px;
+    cursor: pointer;
+    width: 224px;
+    border: 1px solid rgba(127,126,127, 0.25); 
+    border-radius: 10px;
+		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
+    height: 208px;
+
+`;
+
+export const IconWrapper = styled.div`
+    img {
+        width: 32px;
+        height: 32px;
+    };
+`;
+
+export const TextWrapper = styled.div`
+  .card-subtitle {
+    color: #7F7E7F;
+    margin-top: 8px;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
+
+export const GroupRoleCardsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    gap: 20px;
+    align-items: flex-end;
+`
+
 export const IconImg = ({ iconImg }) => {
   switch (iconImg) {
     case 'Junior':
@@ -29,57 +86,6 @@ export const IconImg = ({ iconImg }) => {
       return <img src={Developer} />
   }
 };
-
-export const RoleCardContainer = styled.div`
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 35px 18px;
-    align-items: center;
-    width: 18vw;
-    border: 1px solid rgba(127,126,127, 0.25); 
-    border-radius: 10px;
-		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
-    height: 200px;
-    &.selected {
-        border: 5px solid #3A7CA5;
-    }
-`;
-
-export const IconWrapper = styled.div`
-    width: 100%;
-    img {
-        width: 50px;
-        height: 50px;
-    };
-`;
-
-export const TextWrapper = styled.div`
-    text-align: center;
-    width: 100%;
-
-		p{
-			margin: 0px;
-			margin-bottom: 10px;
-		}
-    .title {
-			font-weight: 900;
-			color: black;
-    };
-
-		.card-subtitle{
-
-		}
-`;
-
-export const GroupRoleCardsContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    gap: 20px;
-    align-items: flex-end;
-`
 
 
 

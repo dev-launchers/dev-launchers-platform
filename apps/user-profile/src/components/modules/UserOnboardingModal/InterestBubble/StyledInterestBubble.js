@@ -1,50 +1,24 @@
 import styled from "styled-components";
 
 export const UserInterestsContainer = styled.div`
-  ${'' /* background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE}; */}
-  ${'' /* padding: 2rem 5rem; */}
-`;
-
-export const InterestsField = styled.div`
   width: 100%;
   display: flex;
-  align-items: stretch;
   justify-content: center;
   flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 24px;
 `;
 
-export const UserInterestsCardContainer = styled.div`
-  height: 100%;
-  ${'' /* max-width: 530px; */}
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 5px 10px;
 
-  @media (orientation: portrait) {
-    ${'' /* width: 45%; */}
-  }
-`;
-
-export const UserInterestCard = styled.div`
+export const Bubble = styled.div`
+background-color: white;
   padding: 10px 30px;
   color: #295774;
-  background-color: white;
   border: 2px solid #295774;
   border-radius: 24px;
-  display: flex;
-  flex-direction: row;
-  flexwrap: "wrap";
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
   font-family: Nunito Sans;
-  font-size: 16px;
-  ${'' /* margin: 0.5rem; */}
-  
+  font-size: 16px;  
   cursor: pointer;
-
   &.selected {
     background-color: #295774;
     color: white;

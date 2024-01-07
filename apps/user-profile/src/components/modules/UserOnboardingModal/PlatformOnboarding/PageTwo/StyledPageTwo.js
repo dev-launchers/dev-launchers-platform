@@ -2,34 +2,40 @@ import styled from "styled-components";
 
 
 export const PageTwoContainer = styled.div`
-  padding-top: 20px;
   margin-bottom: -40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  p, h2{
+    margin-bottom: 0;
+    margin-top: 8px;
+  }
 `;
 
 export const Header = styled.div`
   align-text: center;
+  margin-top: 40px;
 `;
 
 export const ImageGroupContainer = styled.div`
-  margin-top: 30px;
+  margin-top: 52px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
-  padding: 10px;
-
+  height: 84px;
+  align-items:center;
+  
+  gap: 56px; 
   img {
-    margin-right: 50px;
-    width: 80px;
-    height: 80px;
-
+    width: 64px;
+    height: 64px;
   }
 `;
