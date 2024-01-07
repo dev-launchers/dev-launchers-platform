@@ -58,6 +58,7 @@ export default function PlatformOnboarding() {
             label: 'Next',
             disabled: true,
             delayEnable: 5000,
+            disableOnce: true
           },
           back: {
             label: 'Back',
@@ -120,6 +121,7 @@ export default function PlatformOnboarding() {
       component: <PageSix/>,
       config: {
         hideBar: true,
+        stepName: 'Done',
         stepNumber: 4,
         buttons: {
           next: {
@@ -138,7 +140,7 @@ export default function PlatformOnboarding() {
 
   return (
     <PlatformOnboardingContainer>
-      <Stepper steps={stepperConfig} startIndex={1} />
+      <Stepper className="platform-onboarding-stepper" steps={stepperConfig} startIndex={0} />
     </PlatformOnboardingContainer>
   );
 }

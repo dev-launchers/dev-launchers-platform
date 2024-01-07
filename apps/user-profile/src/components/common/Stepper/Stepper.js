@@ -13,6 +13,7 @@ import { Button, Typography } from '@devlaunchers/components/components/atoms';
 import chevronLeftImg from './../../../images/btn-chevron-left.svg';
 import chevronRightImg from './../../../images/btn-chevron-right.svg';
 import checkImg from './../../../images/Onboarding/stepper/check.svg';
+import RainbowBar from '../RainbowBar';
 
 const stepsMockData = [
   {
@@ -75,14 +76,34 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [activeComponent, setActiveComponent] = useState(stepsData[index].component);
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
   const [nextBtnDisability, setNextButtonDisability] = useState(buttonConfig.next.disabled)
-
   const lastStepIndex = stepsData.length - 1;
 
-  const updateConfigs =  () => {
-    setActiveComponent( stepsData[index].component );
-    setButtonConfig( stepsData[index].config.buttons );
-    setNextButtonDisability( stepsData[index].config.buttons.next.disabled != undefined ? 
-         stepsData[index].config.buttons.next.disabled : false);
+  // TODO finish functionality for this part
+  // function initialiseStepMetaData() {
+  //   const metaData = {};
+  //   console.log("INTIALISING", stepsMetaData);
+  //   stepsData.forEach((steps, index) => {
+  //     // index is the step
+  //     metaData[index] = {
+  //       hasLandedOnStepCount: 0
+  //     }
+  //   });
+
+  //   return metaData;
+  // }
+
+  // TODO finish functionality for this part
+  // const updateLandedOnStepCount = () => {
+  //   const newMetaData = { ...stepsMetaData, [index]: { hasLandedOnStepCount: stepsMetaData[index].hasLandedOnStepCount++ } };
+  //   newMetaData[index].hasLandedOnStepCount = newMetaData[index].hasLandedOnStepCount++;
+  //   setStepsMetaData(newMetaData);
+  // }
+
+  const updateConfigs = () => {
+    setActiveComponent(stepsData[index].component);
+    setButtonConfig(stepsData[index].config.buttons);
+    setNextButtonDisability(stepsData[index].config.buttons.next.disabled != undefined ?
+      stepsData[index].config.buttons.next.disabled : false);
   };
 
   /**
@@ -96,12 +117,12 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   }, [index]);
 
   const enableNextButton = () => {
-    if ( stepsData[index].config.buttons.next.delayEnable != undefined ) {
-      let timeoutId = setTimeout( () => {
+    if (stepsData[index].config.buttons.next.delayEnable != undefined) {
+      let timeoutId = setTimeout(() => {
         setNextButtonDisability(false);
       }, stepsData[index].config.buttons.next.delayEnable);
-     return timeoutId;
-   }
+      return timeoutId;
+    }
   }
 
   const backOnClickHandler = () => {
@@ -133,7 +154,7 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   }
 
   const showNextButton = () => {
-    
+
     const nextButtonHtml =
       <Button className="next-btn" buttonType="primary" buttonSize="xl" onClick={nextOnClickHandler} disabled={nextBtnDisability}>
         <div className='stepper-btn-icon-text'>
@@ -141,7 +162,7 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
           {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}
         </div>
       </Button>;
-  
+
     return nextButtonHtml;
   };
 
@@ -185,11 +206,15 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   return (
     <>
       <StepperContainer>
-        <StepperHeader>
-          <ProgressBarContainer>
-            {stepTracker}
-          </ProgressBarContainer>
-        </StepperHeader>
+        <div>
+          <StepperHeader>
+            <ProgressBarContainer>
+              {stepTracker}
+            </ProgressBarContainer>
+          </StepperHeader>
+          <RainbowBar />
+        </div>
+
 
         <StepperBody>
           {/* activeComponent holds the component e.g */}

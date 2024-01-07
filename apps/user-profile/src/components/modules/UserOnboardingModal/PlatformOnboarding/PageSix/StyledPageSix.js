@@ -6,27 +6,31 @@ export const PageSixContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0 108px;
 `;
 
-export const CongratulationsTitle = styled.div`
-    margin-top: 50px;
-    flex: 1;
-`;
+export const Header = styled.div`
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column; 
+  text-align: center;
+	gap: 15px;
+	p, h2, h3 {
+	margin-bottom: 0;
+	margin-top: 8px;
+	}
+	.margin-0 {
+		margin: 0;
+	}
 
-export const CongratulationsBody = styled.div`
-    flex: 1;
-    width: 450px;   
-    height: 88px;
-    text-align: center;
-    filter: 
+	.subtitle {
+    max-width: 518px;
+		color: #1C1C1C;
+	}
 `;
 
 export const AnimationContainer = styled.div`
-    flex: 1;
-    width: auto;
-    height: auto;
-    align-items: center;
-    justify-content: center;
+
 `;
 
 // Create pulse animation
@@ -64,23 +68,20 @@ export const RocketAnamation = styled(m.div)`
 
 export const CircleAnamation = styled(m.div)`
   opacity: 1;
-  color: black;
   animation: ${pulseCircle} 1.9s infinite;
 `;
 
 // create shadow
 export const CongratulationsShadow = styled.div`
-    background-color: black;
+    background-color: #474747;
     border-radius: 50%;
     z-index: 1;
-    color: darkgray ;
 `;
 
 
 export const CongratulationsImg = styled(m.img)`
     margin-top: 50px;
-    font-color: black;
     width: 150px;
     height: 150px;
-    filter: brightness(0%);
+    filter: brightness(15%)
 `;

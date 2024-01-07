@@ -11,11 +11,11 @@ export default function PageTwo() {
     <>
       <PageTwoContainer>
         <Header>
-          <Typography type="pLarge" textAlign="center">
+          <Typography type="p" textAlign="center">
             ABOUT US
           </Typography>
-          <Typography type="h2" textAlign="center">
-            What is DevLaunchers
+          <Typography type="h3" textAlign="center">
+            What is DevLaunchers?
           </Typography>
         </Header>
         
@@ -29,7 +29,7 @@ export default function PageTwo() {
           <ImageContainer>
             <img src={NetworkImagePath} />
             <div>
-              <Typography>Network With Other Developers</Typography>
+              <Typography type="pLarge">Network With Other Developers</Typography>
               <Typography type="pSmall" style={{color: "#7F7E7F"}}>
                 Expand your network, join discussions, and find opportunities.
               </Typography>
@@ -45,7 +45,7 @@ export default function PageTwo() {
           <ImageContainer>
               <img src={ProjectImagePath} />
               <div>
-                <Typography>Make An Impact</Typography>
+                <Typography type="pLarge">Make An Impact</Typography>
                 <Typography type="pSmall" style={{color: "#7F7E7F"}}>
                   Join a real team and work on projects that matter to you.
                 </Typography>
@@ -61,7 +61,7 @@ export default function PageTwo() {
           <ImageContainer>
             <img src={LevelUpImagePath} />
             <div>
-              <Typography>Gain Job Experience</Typography>
+              <Typography type="pLarge">Gain Job Experience</Typography>
               <Typography type="pSmall" style={{color: "#7F7E7F"}}>
                 Build confidence to level up your career.
               </Typography>

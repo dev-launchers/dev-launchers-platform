@@ -9,27 +9,6 @@ import onboardingFoldersSvg from '../../../.././images/Onboarding/RoleCard/onboa
 import seniorExperienceSvg from '../../../.././images/Onboarding/RoleCard/senior-experience.svg'
 import userProfileSvg from '../../../.././images/Onboarding/RoleCard/user-profile.svg';
 
-export const IconImg = ({ iconImg }) => {
-  switch (iconImg) {
-    case 'Junior':
-      return <img src={juniorExperienceSvg} />
-    case 'Mid-Level':
-      return <img src={midExperienceSvg} />
-    case 'Senior':
-      return <img src={seniorExperienceSvg} />
-    case 'Onboarding':
-      return <img src={onboardingFoldersSvg} />
-    case 'Developer':
-      return <img src={Developer} />
-    case 'UX':
-      return <img src={UX} />
-    case 'Other':
-      return <img src={Other} />
-    default:
-      return <img src={Developer} />
-  }
-};
-
 export const RoleCardContainer = styled.div`
 
     input {
@@ -50,39 +29,33 @@ export const RadioCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 24px;
     padding: 35px 18px;
     cursor: pointer;
     width: 224px;
     border: 1px solid rgba(127,126,127, 0.25); 
     border-radius: 10px;
 		box-shadow: 0px 7px 18px 5px rgba(127,127, 127, 0.2);
-    height: 200px;
+    height: 208px;
+
 `;
 
 export const IconWrapper = styled.div`
-    width: 100%;
     img {
-        width: 50px;
-        height: 50px;
+        width: 32px;
+        height: 32px;
     };
 `;
 
 export const TextWrapper = styled.div`
-    text-align: center;
-    width: 100%;
+  .card-subtitle {
+    color: #7F7E7F;
+    margin-top: 8px;
+  }
 
-		p{
-			margin: 0px;
-			margin-bottom: 10px;
-		}
-    .title {
-			font-weight: 900;
-			color: black;
-    };
-
-		.card-subtitle{
-
-		}
+  p {
+    margin: 0;
+  }
 `;
 
 export const GroupRoleCardsContainer = styled.div`
@@ -92,6 +65,27 @@ export const GroupRoleCardsContainer = styled.div`
     gap: 20px;
     align-items: flex-end;
 `
+
+export const IconImg = ({ iconImg }) => {
+  switch (iconImg) {
+    case 'Junior':
+      return <img src={juniorExperienceSvg} />
+    case 'Mid-Level':
+      return <img src={midExperienceSvg} />
+    case 'Senior':
+      return <img src={seniorExperienceSvg} />
+    case 'Onboarding':
+      return <img src={onboardingFoldersSvg} />
+    case 'Developer':
+      return <img src={Developer} />
+    case 'UX':
+      return <img src={UX} />
+    case 'Other':
+      return <img src={Other} />
+    default:
+      return <img src={Developer} />
+  }
+};
 
 
 

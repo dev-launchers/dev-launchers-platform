@@ -20,24 +20,22 @@ export default function RoleCard({
     onChange
 }) {
     return (
-        <>
-            <RoleCardContainer>
-                <label>
-                    <input type='radio' checked={checked ? 'checked' : ''} onChange={onChange} name={groupName} value={value} />
-                    <RadioCardContainer className='custom-radio-btn'>
-                        <IconWrapper>
-                            <IconImg iconImg={iconImg} />
-                        </IconWrapper>
+        <RoleCardContainer>
+            <label>
+                <input type='radio' checked={checked ? 'checked' : ''} onChange={onChange} name={groupName} value={value} />
+                <RadioCardContainer className='custom-radio-btn'>
+                    <IconWrapper>
+                        <IconImg iconImg={iconImg} />
+                    </IconWrapper>
 
-                        <TextWrapper>
-                            <Typography type="pLarge" style={{ color: "black" }}><span className={`title ${theme}`}>{title.toUpperCase()}</span></Typography>
-                            <Typography type="pSmall" style={{ color: "#7F7E7F" }} className="card-subtitle">{subtitle}</Typography>
-                        </TextWrapper>
+                    <TextWrapper>
+                        <Typography type="p"><span className={`title ${theme}`}>{title.toUpperCase()}</span></Typography>
+                        <Typography type="pSmall" className="card-subtitle"> {subtitle}</Typography>
+                    </TextWrapper>
 
-                    </RadioCardContainer>
-                </label>
-            </RoleCardContainer>
-        </>
+                </RadioCardContainer>
+            </label>
+        </RoleCardContainer>
     )
 }
 
