@@ -94,43 +94,42 @@ function timeSince(date) {
 // );
 
 function SingleCommentComponent(props) {
+  const { userData, isAuthenticated } = useUserDataContext();
   const [liked, setLiked] = useState(false);
   const [commentLikes, setCommentLikes] = useState([]);
   const [state, setState] = useState(false); // to refresh the page when a comment receives a like
 
   // a function to keep track of the number of likes and when the user clicks the like button for this comment
-  function handleLikeClick() {
+  function handleLikeClick(event) {
     if (liked) {
       // if there's a like object corresponding to this user and comment, delete it
 
-      // Refresh the page so that the new comment is displayed:
-      // window.location.reload(false);
-      // this.setState(
-      //   {reload: true},
-      //   () => this.setState({reload: false})
-      // )
-      setState(true)
+      // Refresh the page so that the new comment is displayed
+      setState(true);
 
       setLiked(false);
     } else {
-      // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the like ID, and the "Comment" object type
-      e.preventDefault();
-      
+      // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the comment ID, and the "Comment" object type
+      var likeData = { objectId: this.id, objectType: "Comment", userId: userData.userId };
 
       try {
-       
-        props.setHandleTextChange('');
+        const res = await agent.Likes.post(likeData);
       } catch(error) {
         console.error(error)
       }
 
-      // Refresh the page so that the new comment is displayed:
-      // window.location.reload(false);
-      // this.setState(
-      //   {reload: true},
-      //   () => this.setState({reload: false})
-      // )
-      setState(true)
+      event.preventDefault();
+      
+
+      try {
+        
+        props.setHandleTextChange('');
+      } catch(error) {
+        console.error(error);
+      }
+
+      // Refresh the page so that the new comment is displayed
+      setState(true);
 
       setLiked(true);
     }

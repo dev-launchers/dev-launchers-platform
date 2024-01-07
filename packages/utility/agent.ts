@@ -102,12 +102,12 @@ const requests = {
       .put(url, data, {
         headers: { "Content-Type": "multipart/form-data" },
       })
-      .then(responseBody),
+      .then(responseBody)
 };
 
 const Applicant = {
   get: () => requests.get<NewApplicant[]>("applicants"),
-  post: (data: NewApplicant) => requests.post<NewApplicant>("applicants", data),
+  post: (data: NewApplicant) => requests.post<NewApplicant>("applicants", data)
 };
 
 const Projects = {
@@ -133,17 +133,19 @@ const Ideas = {
 };
 
 const User = {
-  get: () => requests.get<UserType>("users"),
+  get: () => requests.get<UserType>("users")
 };
 
 const Comments = {
   put: (id: string, body: {}) => requests.put<Comment>(id, body),
-  post: (body: Comment) => requests.post<Comment>("comments", body),
+  post: (body: Comment) => requests.post<Comment>("comments", body)
 };
 
 const Likes = {
   get: (params?: URLSearchParams) => 
-    requests.get<Like[]>('/likes/', params)
+    requests.get<Like[]>('/likes/', params),
+  put: (objectId: string, objectType: string, userId: string) => requests.put<Like>(objectId, objectType, userId),
+  post: (body: {}) => requests.post<Like>('/likes/', body)
 };
 
 const Saves = {

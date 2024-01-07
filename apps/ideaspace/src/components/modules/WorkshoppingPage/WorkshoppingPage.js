@@ -57,8 +57,6 @@ export default function WorkshoppingPage(props) {
     setComments([comment, ...comments]);
   }
 
-  console.log(comments);
-
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
