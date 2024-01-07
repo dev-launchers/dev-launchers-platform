@@ -5,16 +5,16 @@ export const StepperContainer = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    
     border-radius: 32px;
 `;
 
 export const StepperHeader = styled.div`
     display: flex;
     flex-direction: row;
-    align-items:center;
     background: black;
-    padding: 30px 108px 54px; 
+    max-height: 120px;
+    justify-content: center;
+    padding: 40px 108px 54px; 
     .completed-step, .active-step {
         background-color: orange;
     }
@@ -41,14 +41,14 @@ export const StepName = styled.div`
     color: white;
     position: absolute;
     font-size: 14px;
-    bottom: -24px;
+    bottom: -30px;
     width: max-content;
 `
 
 export const StepperBody = styled.div`
     height: 100%;
-    max-height: 564px;
-    
+    ${'' /* max-height: 564px; */}
+    max-height: 666px;
 `;
 
 export const ProgressBarContainer = styled.div`
@@ -57,6 +57,7 @@ export const ProgressBarContainer = styled.div`
     flex-direction: row;
     align-items: stretch;
     align-items: center;
+    max-width: 423px;
 `;
 
 export const Bar = styled.div`
@@ -72,7 +73,6 @@ export const StepperFooter = styled.div`
     justify-content: space-between;
     padding: 60px 108px 54px;
     gap: 22px;
-
     .stepper-btn-icon-text{
         display: flex;
         align-items:center;

@@ -7,16 +7,25 @@ export const PageFourContainer = styled.div`
 	padding: 0 108px;
 	display:flex; 
 	flex-direction:column;
-	justify-content:space-between;
+	display:flex; 
+	flex-direction:column;
+	gap: 82px;
 `;
 
 export const Header = styled.div`
-	padding: 40px;
-    .eyebrow-text {
-		text-transform: capitalize;
-		font-size: 16px;
-		font-weight: 300;		
-		letter-spacing: 2px;
-		color: black;
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column; 
+	gap: 24px;
+	p, h2, h3 {
+	margin-bottom: 0;
+	margin-top: 8px;
+	}
+	.margin-0 {
+		margin: 0;
+	}
+
+	.subtitle {
+		color: #1C1C1C;
 	}
 `;
