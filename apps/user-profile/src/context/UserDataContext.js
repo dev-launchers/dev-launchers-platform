@@ -61,7 +61,7 @@ function useUserData() {
     });
   }, []);
 
-  console.log(`Enviroment:`, featureFlags.inStaging ? 'Staging' : 'Development');
+  console.log(`Enviroment:`, featureFlags);
   return { userData: userData, setUserData, isAuthenticated };
 }
 
