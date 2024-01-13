@@ -7,8 +7,7 @@ dev-launchers-platform is a mono repo using yarn. All yarn script lines need to 
 2. clone the repo @  https://github.com/dev-launchers/dev-launchers-platform
 3. After cloning repo, navigate to /dev-launchers-platform
 4. "yarn install" in the root folder to install dependencies 
-5. In one terminal run: "yarn workspace @devlaunchers/tailwind dev". This needs to stay up while doing dev work.
-6. In a 2nd terminal run: "yarn workspace @devlaunchers/components storybook" to start Storybook.
+5. "yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook" to run both tailwind dev and storybook.
 7. Start Development work.
 
 ## Git branch checkout flow
@@ -48,9 +47,7 @@ When creating the folder/files in src/components :
 
 ## Storybook & tailwind dev environment. 
 
-You will need to have at least two terminals open. 
-
-You will be running "tailwind dev", so that tailwind classes get updated while you are using them, this will need to stay open in a terminal.
+In a terminal, in order to run tailwind dev, you will want to run the following command.
 
     $ yarn workspace @devlaunchers/tailwind dev
 
@@ -58,6 +55,9 @@ Storybook will be the primary way you will see your design changes. Running "com
 
     $ yarn workspace @devlaunchers/components storybook
 
+To run both commands at once :
+
+    $ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook
 
 ## Submit the branch with a new pull request.
 
