@@ -13,8 +13,9 @@ export default function PageFive() {
     function onSelectedInterest(selectedInterest) {
         return () => {
             if (hasId(selectedInterest.id)) {
-                setInterestList(updateInterestList(selectedInterest.id));
-                dispatch({ type: onboardingActions.SET_USERS_INTEREST, data: interestList });
+                const updateInterests = updateInterestList(selectedInterest.id)
+                setInterestList(updateInterests);
+                dispatch({ type: onboardingActions.SET_USERS_INTEREST, data: updateInterests });
             }
         };
     };
@@ -37,6 +38,7 @@ export default function PageFive() {
                 interest.selected = !interest.selected;
             }
         });
+        console.log("NEW LIST: ", newList)
         return newList;
     }
 
@@ -51,7 +53,7 @@ export default function PageFive() {
             </Header>
             <UserInterestsContainer>
                 {interestList.map((interest) => (
-                    <Bubble className={interest.selected ? "selected" : ""}
+                    <Bubble className={interest.selected ? "selected" : ""} key={interest.id}
                         onClick={onSelectedInterest(interest)}>
                         {interest.name}
                     </Bubble>
