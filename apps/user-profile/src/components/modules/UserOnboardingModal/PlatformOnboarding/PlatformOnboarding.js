@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Stepper from '../../../common/Stepper';
-// import PageTwo from './PageTwo/PageTwo';
+import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
@@ -48,25 +48,25 @@ export default function PlatformOnboarding() {
         },
       },
     },
-    // {
-    //   component: <PageTwo />,
-    //   config: {
-    //     stepName: 'DevLaunchers',
-    //     stepNumber: 2,
-    //     buttons: {
-    //       next: {
-    //         label: 'Next',
-    //         disabled: true,
-    //         delayEnable: 5000,
-    //         disableOnce: true
-    //       },
-    //       back: {
-    //         label: 'Back',
-    //         hide: true,
-    //       },
-    //     },
-    //   },
-    // },
+    {
+      component: <PageTwo />,
+      config: {
+        stepName: 'DevLaunchers',
+        stepNumber: 2,
+        buttons: {
+          next: {
+            label: 'Next',
+            disabled: true,
+            delayEnable: 5000,
+            disableOnce: true
+          },
+          back: {
+            label: 'Back',
+            hide: true,
+          },
+        },
+      },
+    },
     {
       component: <PageThree />,
       config: {
