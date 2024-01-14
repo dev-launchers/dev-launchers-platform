@@ -1,15 +1,15 @@
 import { tv } from 'tailwind-variants';
 import Checkmark from './../../assets/icons/Checkmark';
 
-export interface CheckboxProps {
-  className?: string;
+export interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement>{
   state?: 'focus' | 'disable' | 'hover' | undefined;
   checked?: boolean;
 }
 export default function Checkbox({
-  className,
   checked = false,
+  className,
   state = 'disable',
+  ...props
 }: CheckboxProps) {
   const checkbox = tv({
     base: 'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50',
@@ -41,7 +41,7 @@ export default function Checkbox({
   });
 
   return (
-    <div className={checkbox({ className, color: state, checked })}>
+    <div className={checkbox({ className, color: state, checked })} {...props}>
       <Checkmark className={checkmark({ checked })} />
     </div>
   );
