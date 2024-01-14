@@ -8,13 +8,13 @@ export interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Checkbox({
   checked = false,
   className,
-  state = 'disable',
+  state,
   ...props
 }: CheckboxProps) {
   const checkbox = tv({
     base: 'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50',
     variants: {
-      color: {
+      state: {
         focus:
           'outline outline-2 outline-offset-2 outline-brand-alt-nebula-500',
         hover:
@@ -41,7 +41,7 @@ export default function Checkbox({
   });
 
   return (
-    <div className={checkbox({ className, color: state, checked })} {...props}>
+    <div className={checkbox({ className, state, checked })} {...props}>
       <Checkmark className={checkmark({ checked })} />
     </div>
   );
