@@ -1,10 +1,7 @@
 import { tv } from 'tailwind-variants';
 import Checkmark from './../../assets/icons/Checkmark';
+import type { CheckboxProps } from '.';
 
-export interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
-  state?: 'focus' | 'disable' | 'hover' | undefined;
-  checked?: boolean;
-}
 export default function Checkbox({
   checked = false,
   className,
