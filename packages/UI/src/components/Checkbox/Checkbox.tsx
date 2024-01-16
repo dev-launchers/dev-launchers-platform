@@ -2,9 +2,8 @@ import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { tv } from 'tailwind-variants';
 import CheckmarkImg from './../../assets/icons/Checkmark';
 
-export type CheckboxProps = Omit<RadixCheckbox.CheckboxProps, 'state'> & {
+export type CheckboxProps = RadixCheckbox.CheckboxProps & {
   state?: 'disable' | undefined;
-  checked?: boolean;
 };
 
 const checkboxTV = tv({
