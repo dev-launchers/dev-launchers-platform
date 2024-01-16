@@ -29,7 +29,7 @@ const checkmark = tv({
 });
 
 export default function Checkbox({
-  checked = true,
+  checked = false,
   className,
   state,
   ...props
