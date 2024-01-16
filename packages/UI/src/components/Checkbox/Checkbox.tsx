@@ -1,45 +1,54 @@
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import { tv } from 'tailwind-variants';
-import Checkmark from './../../assets/icons/Checkmark';
+import CheckmarkImg from './../../assets/icons/Checkmark';
+
 import type { CheckboxProps } from '.';
 
+const checkboxTV = tv({
+  base: 'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-alt-nebula-500',
+  variants: {
+    state: {
+      disable:
+        'border-grayscale-500 bg-grayscale-200 hover:outline-none hover:outline-0',
+    },
+    checked: {
+      true: 'bg-brand-alt-nebula-500',
+      disable:
+        'border-grayscale-400 bg-grayscale-400 hover:outline-none hover:outline-0',
+    },
+  },
+});
+
+const checkmark = tv({
+  base: '',
+  variants: {
+    checked: {
+      false: 'hidden',
+    },
+  },
+});
+
 export default function Checkbox({
-  checked = false,
+  checked = true,
   className,
   state,
   ...props
 }: CheckboxProps) {
-  const checkbox = tv({
-    base: 'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50',
-    variants: {
-      state: {
-        focus:
-          'outline outline-2 outline-offset-2 outline-brand-alt-nebula-500',
-        hover:
-          'outline outline-4 outline-offset-0 outline-brand-alt-nebula-100',
-        disable: 'border-grayscale-500 bg-grayscale-200',
-      },
-      checked: {
-        true: `${
-          state !== 'disable'
-            ? 'bg-brand-alt-nebula-500'
-            : 'border-grayscale-400 bg-grayscale-400'
-        }`,
-      },
-    },
-  });
-
-  const checkmark = tv({
-    base: '',
-    variants: {
-      checked: {
-        false: 'hidden',
-      },
-    },
-  });
-
   return (
-    <div className={checkbox({ className, state, checked })} {...props}>
-      <Checkmark className={checkmark({ checked })} />
-    </div>
+    <>
+      <RadixCheckbox.Root
+        className={checkboxTV({
+          className,
+          state,
+          checked: state === 'disable' ? 'disable' : checked,
+        })}
+        checked={checked}
+        {...props}
+      >
+        <RadixCheckbox.Indicator className={checkmark({ checked })}>
+          <CheckmarkImg />
+        </RadixCheckbox.Indicator>
+      </RadixCheckbox.Root>
+    </>
   );
 }

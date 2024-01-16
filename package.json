@@ -54,6 +54,8 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@devlaunchers/components": "workspace:*",
+    "@radix-ui/react-checkbox": "1.0.4",
     "cross-env": "7.0.3"
   },
   "devDependencies": {
