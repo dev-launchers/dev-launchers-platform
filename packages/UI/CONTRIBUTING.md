@@ -6,8 +6,8 @@ dev-launchers-platform is a mono repo using yarn. All yarn script lines need to 
 1. install yarn @  https://classic.yarnpkg.com/en/docs/install#windows-stable
 2. clone the repo @  https://github.com/dev-launchers/dev-launchers-platform
 3. After cloning repo, navigate to /dev-launchers-platform
-4. "yarn install" in the root folder to install dependencies 
-5. "yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook" to run both tailwind dev and storybook.
+4. "$ yarn install " in the root folder to install dependencies 
+5. "$ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook " to run both tailwind dev and storybook.
 7. Start Development work.
 
 ## Git branch checkout flow
@@ -58,6 +58,22 @@ Storybook will be the primary way you will see your design changes. Running "com
 To run both commands at once :
 
     $ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook
+
+## Installing packages
+
+To install an package into a spefic workspace:
+
+    $ yarn workspace @devlaunchers/<workspace> add <library>
+
+### Installing Radix-ui components
+
+Radix-ui components need to be installed indiviually, if you are not able to import @radix-ui follow the command below to install in devlaunchers components workspace.
+
+    $ yarn workspace @devlaunchers/components add <library>
+
+Below is the command to install radix-ui/react-checkbox
+
+    $ yarn workspace @devlaunchers/components add @radix-ui/react-checkbox
 
 ## Submit the branch with a new pull request.
 
