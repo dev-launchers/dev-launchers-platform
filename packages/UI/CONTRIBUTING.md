@@ -10,6 +10,44 @@ dev-launchers-platform is a mono repo using yarn. All yarn script lines need to 
 5. "$ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook " to run both tailwind dev and storybook.
 7. Start Development work.
 
+## Yarn scripts.
+
+To run scripts in a mono repo, you will need to target a workspace with the following CLI.
+
+    $ yarn workspace @devlaunchers/<workspace> <cmd>
+
+workspace - components
+
+cmd - add, init, install, remove
+
+Below is the command to run the dev script in the devlaunchers/components workspace.
+
+    $ yarn workspace @devlaunchers/components dev
+
+This is an script to yarn install in a speific workspace. 
+
+    $ yarn workspace @devlaunchers/components install
+
+Yarn documentation : https://classic.yarnpkg.com/en/docs
+
+
+### Installing packages
+
+To install an package into a spefic workspace:
+
+    $ yarn workspace @devlaunchers/<workspace> add <library>
+
+#### Installing Radix-ui components
+
+Radix-ui components need to be installed indiviually, if you are not able to import @radix-ui follow the command below to install in devlaunchers components workspace.
+
+    $ yarn workspace @devlaunchers/components add <library>
+
+Below is the command to install radix-ui/react-checkbox
+
+    $ yarn workspace @devlaunchers/components add @radix-ui/react-checkbox
+
+
 ## Git branch checkout flow
 
 We will be working out of development/components. 
@@ -31,7 +69,22 @@ Go to universal Figma @:
 
 - All component designs will be coming from the universal UI library.
 - Make sure dev mode is toggled in Figma.
+- All tailwind classes will be made up of dashes, other characters like '/' will be replaced with '-'.
 
+### Figma plugins
+
+#### AutoHTML
+
+Turn components into code with this extension. This can assist with slots, elements and tailwind classes as a beginning point. 
+```    
+1. Select the component.
+2. Select thte Plugins tab on the top left
+3. Select AutoHTML
+    - Install if you do not see this plugin.
+    - Settings are: HTML Framework with Tailwind styling. 
+4. Select the <> Code tab
+5. Copy over the classes into React.
+```
 
 ## Creating components
 
@@ -58,22 +111,6 @@ Storybook will be the primary way you will see your design changes. Running "com
 To run both commands at once :
 
     $ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook
-
-## Installing packages
-
-To install an package into a spefic workspace:
-
-    $ yarn workspace @devlaunchers/<workspace> add <library>
-
-### Installing Radix-ui components
-
-Radix-ui components need to be installed indiviually, if you are not able to import @radix-ui follow the command below to install in devlaunchers components workspace.
-
-    $ yarn workspace @devlaunchers/components add <library>
-
-Below is the command to install radix-ui/react-checkbox
-
-    $ yarn workspace @devlaunchers/components add @radix-ui/react-checkbox
 
 ## Submit the branch with a new pull request.
 
