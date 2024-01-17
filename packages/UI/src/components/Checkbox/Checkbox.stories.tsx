@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Checkbox from './Checkbox';
 
-
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   argTypes: {
@@ -27,13 +26,13 @@ type Story = StoryObj<typeof Checkbox>;
  */
 export const Default: Story = {
   args: {
-    // checked: false,
+    checked: false,
     disabled: false,
   },
   render: (args) => (
     <div className="flex gap-3">
       <Checkbox {...args} />
-      <Checkbox checked {...args} />
+      <Checkbox {...args} checked />
     </div>
   ),
 };
