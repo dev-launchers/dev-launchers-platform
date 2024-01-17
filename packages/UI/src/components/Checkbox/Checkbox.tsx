@@ -23,19 +23,16 @@ const checkboxStyles = tv({
 export type CheckboxProps = RadixCheckbox.CheckboxProps &
   VariantProps<typeof checkboxStyles>;
 
-export default function Checkbox({
-  checked = false,
-  className,
-  ...props
-}: CheckboxProps) {
-  const { rootStyle, indicatorStyle } = checkboxStyles({ checked });
+export default function Checkbox({ className, ...props }: CheckboxProps) {
+  const { rootStyle, indicatorStyle } = checkboxStyles({
+    checked: props.checked,
+  });
   return (
     <>
       <RadixCheckbox.Root
         className={rootStyle({
           className,
         })}
-        checked={checked}
         {...props}
       >
         <RadixCheckbox.Indicator className={indicatorStyle()}>

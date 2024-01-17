@@ -1,4 +1,6 @@
+import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import type { Meta, StoryObj } from '@storybook/react';
+import CheckmarkImg from './../../assets/icons/Checkmark';
 
 import Checkbox from './Checkbox';
 
@@ -33,6 +35,13 @@ export const Default: Story = {
     <div className="flex gap-3">
       <Checkbox {...args} />
       <Checkbox {...args} checked />
+      {/* <Checkbox /> */}
+      {/* <RadixCheckbox.Root>
+        <RadixCheckbox.Indicator >
+          <CheckmarkImg />
+        </RadixCheckbox.Indicator>
+      </RadixCheckbox.Root>
+       */}
     </div>
   ),
 };
