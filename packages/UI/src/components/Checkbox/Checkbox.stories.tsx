@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Checkbox from './Checkbox';
+import Checkbox from './Checkbox copy';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
@@ -14,6 +14,6 @@ type Story = StoryObj<typeof Checkbox>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = {
+export const DefaultUnchecked: Story = {
   render: () => <Checkbox />,
 };
