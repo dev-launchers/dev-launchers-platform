@@ -34,7 +34,7 @@ function veryComplexFunc() {
     }
   }
 }
-
+veryComplexFunc();
 function lessComplexFunc() {
   switch (
     num // 1
