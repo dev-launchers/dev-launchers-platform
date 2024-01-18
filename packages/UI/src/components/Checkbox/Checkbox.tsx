@@ -27,17 +27,19 @@ const checkboxStyles = tv({
  * @property {boolean} disabled - Indicates whether the checkbox is disabled
  */
 
-export type CheckboxProps = RadixCheckbox.CheckboxProps &
-  VariantProps<typeof checkboxStyles> & {
-    /**
-     * Indicates whether the checkbox is checked
-     */
-    checked?: boolean;
-    /**
-     * Indicates whether the checkbox is disabled
-     */
-    disabled?: boolean;
-  };
+type OriginalProps = RadixCheckbox.CheckboxProps &
+  VariantProps<typeof checkboxStyles>;
+
+export type CheckboxProps = Omit<OriginalProps, 'checked' | 'disabled'> & {
+  /**
+   * Indicates whether the checkbox is checked
+   */
+  checked?: boolean;
+  /**
+   * Indicates whether the checkbox is disabled
+   */
+  disabled?: boolean;
+};
 
 /**
  * @description Created with the Checkbox component from Radix UI.
