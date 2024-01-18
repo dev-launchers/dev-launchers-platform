@@ -2734,6 +2734,7 @@ __metadata:
     rimraf: 3.0.2
     shell-quote: 1.7.3
     storybook: 7.2.2
+    storybook-addon-pseudo-states: 2.1.2
     storybook-react-context: ^0.6.0
     styled-components: ^5.2.1
     styled-normalize: ^8.0.7
@@ -36691,6 +36692,26 @@ __metadata:
   version: 2.14.2
   resolution: "store2@npm:2.14.2"
   checksum: 6f270fc5bab99b63f45fcc7bd8b99c2714b4adf880f557ed7ffb5ed3987131251165bccde425a00928aaf044870aee79ddeef548576d093c68703ed2edec45d7
+  languageName: node
+  linkType: hard
+
+"storybook-addon-pseudo-states@npm:2.1.2":
+  version: 2.1.2
+  resolution: "storybook-addon-pseudo-states@npm:2.1.2"
+  peerDependencies:
+    "@storybook/components": ^7.4.6
+    "@storybook/core-events": ^7.4.6
+    "@storybook/manager-api": ^7.4.6
+    "@storybook/preview-api": ^7.4.6
+    "@storybook/theming": ^7.4.6
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: a0272593dd494165b7e8c9d4defa4eea20611d56e4b1d9ef3598e60b776428b876917779718b7a6c5c23ed733cadd5daf43c88cb718ad18ce5c3d5094a090737
   languageName: node
   linkType: hard
 

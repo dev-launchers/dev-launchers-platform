@@ -22,6 +22,9 @@ module.exports = withTV({
       'current': 'currentColor',
       ...filterTokensByType('color', tokens)
     },
+    data: {
+      checked: 'state="checked"', //data-[state=checked]
+    },
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
     screens: {

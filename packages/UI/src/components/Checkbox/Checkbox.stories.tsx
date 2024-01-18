@@ -30,10 +30,12 @@ export const Default: Story = {
     disabled: false,
   },
   render: (args) => (
-    <form className="flex gap-3">
+    <form className="flex flex-col gap-3">
       <Checkbox />
-      <Checkbox {...args} />
-      <Checkbox {...args} checked />
+      <div className="flex gap-3">
+        <Checkbox {...args} />
+        <Checkbox {...args} checked />
+      </div>
     </form>
   ),
 };
@@ -46,3 +48,23 @@ export const Disabled: Story = {
     </div>
   ),
 };
+
+export const Hover: Story = {
+  render: () => (
+    <div className="flex gap-3">
+      <Checkbox />
+      <Checkbox checked />
+    </div>
+  ),
+};
+Hover.parameters = { pseudo: { hover: true } };
+
+export const Focus: Story = {
+  render: () => (
+    <div className="flex gap-3">
+      <Checkbox />
+      <Checkbox checked />
+    </div>
+  ),
+};
+Focus.parameters = { pseudo: { focus: true } };
