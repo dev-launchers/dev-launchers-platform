@@ -26,7 +26,6 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
@@ -35,6 +34,9 @@ const config: StorybookConfig = {
       shouldExtractLiteralValuesFromEnum: true,
       propFilter: () => true,
     },
+    reactDocgen: 'react-docgen',
+    // skipBabel: true,
+    check: true,
   }
 };
 

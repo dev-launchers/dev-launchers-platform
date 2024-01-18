@@ -4,6 +4,16 @@ import Checkbox from './Checkbox copy';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
+  argTypes: {
+    checked: {
+      control: 'boolean',
+      description: 'Indicates whether the checkbox is checked',
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Indicates whether the checkbox is disabled',
+    },
+  },
 };
 
 export default meta;
@@ -14,6 +24,25 @@ type Story = StoryObj<typeof Checkbox>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const DefaultUnchecked: Story = {
-  render: () => <Checkbox />,
+export const Default: Story = {
+  args: {
+    checked: false,
+    disabled: false,
+  },
+  render: (args) => (
+    <form className="flex gap-3">
+      <Checkbox />
+      <Checkbox {...args} />
+      <Checkbox {...args} checked />
+    </form>
+  ),
+};
+
+export const Disabled: Story = {
+  render: () => (
+    <div className="flex gap-3">
+      <Checkbox disabled />
+      <Checkbox disabled checked />
+    </div>
+  ),
 };
