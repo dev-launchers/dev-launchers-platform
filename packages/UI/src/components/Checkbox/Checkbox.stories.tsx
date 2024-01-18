@@ -14,10 +14,10 @@ const meta: Meta<typeof Checkbox> = {
       description: 'Indicates whether the checkbox is disabled',
     },
   },
-  // args: {
-  //   checked: false,
-  //   disabled: false,
-  // },
+  args: {
+    checked: false,
+    disabled: false,
+  },
 };
 
 export default meta;
@@ -34,7 +34,7 @@ export const DefaultCheckbox: Story = {
       <h3>Default</h3> <Checkbox />
       <h3>Disabled</h3> <Checkbox {...args} disabled />
       <h3>Checked</h3> <Checkbox {...args} checked />
-      <h3>Focus</h3> <Checkbox id="focused" />
+      <h3>Focus</h3> <Checkbox id="focused" {...args} />
     </form>
   ),
   parameters: {
