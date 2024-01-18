@@ -4,16 +4,6 @@ import Checkbox from './Checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Indicates whether the checkbox is checked',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Indicates whether the checkbox is disabled',
-    },
-  },
   args: {
     checked: false,
     disabled: false,
