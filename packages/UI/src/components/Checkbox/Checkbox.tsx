@@ -20,13 +20,6 @@ const checkboxStyles = tv({
   },
 });
 
-/**
- * This is a description of the CheckboxProps type.
- * @typedef CheckboxProps
- * @type {boolean} checked - Indicates whether the checkbox is checked
- * @property {boolean} disabled - Indicates whether the checkbox is disabled
- */
-
 type OriginalProps = RadixCheckbox.CheckboxProps &
   VariantProps<typeof checkboxStyles>;
 
