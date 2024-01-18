@@ -1,15 +1,13 @@
 import { Meta, Title, IconGallery, IconItem } from '@storybook/blocks';
-import { Icons } from '../../assets';
+import * as Icons from '../../assets/icons';
 
-<Meta
-  title="Docs/Iconography"
-/>
+<Meta title="Docs/Iconography" />
 
 # Iconography
 
 <IconGallery>
   {Object.entries(Icons).map(([IconName, IconJSX]) => (
-    <IconItem name={IconName}>
+    <IconItem name={IconName} key={IconName}>
       <IconJSX />
     </IconItem>
   ))}

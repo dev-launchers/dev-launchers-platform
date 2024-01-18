@@ -28,6 +28,9 @@ module.exports = withTV({
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
+    },
+    data: {
+      checked: 'state~="checked"',
     }
   },
   variants: {},

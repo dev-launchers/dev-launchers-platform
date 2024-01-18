@@ -36,6 +36,9 @@ export const Default: Story = {
       <Checkbox {...args} checked />
     </form>
   ),
+  parameters: {
+    pseudo: { hover: true },
+  },
 };
 
 export const Disabled: Story = {
