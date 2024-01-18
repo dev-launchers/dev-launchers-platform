@@ -96,7 +96,11 @@ When creating the folder/files in src/components :
     - Example "src/components/Checkbox/Checkbox.tsx"
 - Project components need a #.stories.tsx to work with storybook.
   - find a template or copy from another stories.tsx
-- Make sure you re-export all components into an index.ts for exporting. 
+
+## Adding assets
+
+For .tsx assets check the need too re-export all components into an index.ts for exporting in the folder that it is living in.
+ 
 ```
 packages/UI/src/assets/icons/index.ts
 ```
