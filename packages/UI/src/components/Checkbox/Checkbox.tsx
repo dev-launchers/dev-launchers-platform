@@ -5,7 +5,7 @@ import CheckmarkImg from './../../assets/icons/Checkmark';
 const checkboxStyles = tv({
   slots: {
     rootStyle:
-      'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 disabled:hover:outline-none disabled:hover:outline-0 data-checked:bg-brand-alt-nebula-500 data-checked:disabled:bg-grayscale-200',
+      'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 disabled:hover:outline-none disabled:hover:outline-0 hover:disabled:outline-0 data-checked:bg-brand-alt-nebula-500 data-checked:disabled:bg-grayscale-200',
     indicatorStyle: '',
   },
   variants: {
@@ -20,25 +20,39 @@ const checkboxStyles = tv({
   },
 });
 
-export type CheckboxProps = RadixCheckbox.CheckboxProps &
+type OriginalProps = RadixCheckbox.CheckboxProps &
   VariantProps<typeof checkboxStyles>;
+
+export type CheckboxProps = Omit<OriginalProps, 'checked' | 'disabled'> & {
+  /**
+   * Indicates whether the checkbox is checked
+   */
+  checked?: boolean;
+  /**
+   * Indicates whether the checkbox is disabled
+   */
+  disabled?: boolean;
+};
+
+/**
+ * @description Created with the Checkbox component from Radix UI.
+ * https://www.radix-ui.com/primitives/docs/components/checkbox
+ */
 
 export default function Checkbox({ className, ...props }: CheckboxProps) {
   const { rootStyle, indicatorStyle } = checkboxStyles({
     checked: props.checked,
   });
   return (
-    <>
-      <RadixCheckbox.Root
-        className={rootStyle({
-          className,
-        })}
-        {...props}
-      >
-        <RadixCheckbox.Indicator className={indicatorStyle()}>
-          <CheckmarkImg />
-        </RadixCheckbox.Indicator>
-      </RadixCheckbox.Root>
-    </>
+    <RadixCheckbox.Root
+      className={rootStyle({
+        className,
+      })}
+      {...props}
+    >
+      <RadixCheckbox.Indicator className={indicatorStyle()}>
+        <CheckmarkImg />
+      </RadixCheckbox.Indicator>
+    </RadixCheckbox.Root>
   );
 }

@@ -4,15 +4,9 @@ import Checkbox from './Checkbox copy';
 
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
-  argTypes: {
-    checked: {
-      control: 'boolean',
-      description: 'Indicates whether the checkbox is checked',
-    },
-    disabled: {
-      control: 'boolean',
-      description: 'Indicates whether the checkbox is disabled',
-    },
+  args: {
+    checked: false,
+    disabled: false,
   },
 };
 
@@ -24,28 +18,18 @@ type Story = StoryObj<typeof Checkbox>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Default: Story = {
-  args: {
-    checked: false,
-    disabled: false,
-  },
+export const DefaultCheckbox: Story = {
   render: (args) => (
-    <form className="flex gap-3">
-      <Checkbox />
-      <Checkbox {...args} />
-      <Checkbox {...args} checked />
+    <form className="grid w-fit grid-cols-2 gap-3 rounded-lg border-2 border-dashed border-brand-alt-nebula-500 p-4">
+      <h3>Default</h3> <Checkbox />
+      <h3>Disabled</h3> <Checkbox {...args} disabled />
+      <h3>Checked</h3> <Checkbox {...args} checked />
+      <h3>Focus</h3> <Checkbox id="focused" {...args} />
     </form>
   ),
   parameters: {
-    pseudo: { hover: true },
+    pseudo: {
+      focus: '#focused',
+    },
   },
-};
-
-export const Disabled: Story = {
-  render: () => (
-    <div className="flex gap-3">
-      <Checkbox disabled />
-      <Checkbox disabled checked />
-    </div>
-  ),
 };
