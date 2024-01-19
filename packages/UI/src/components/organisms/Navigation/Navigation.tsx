@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import * as React from 'react';
-import { tv, type VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import { Button, Layer, NavLink } from '../../atoms';
@@ -53,8 +53,8 @@ const HamburgerButton = ({
 const NavigationStyles = tv(
   {
     slots: {
-      $wrapper: 'flex justify-between items-center px-8 h-[100px] bg-[#1C1C1C]',
-      $logoContainer: 'flex gap-4 items-center text-white',
+      $wrapper: 'flex h-[100px] items-center justify-between bg-[#1C1C1C] px-8',
+      $logoContainer: 'flex items-center gap-4 text-white',
       $linksContainer: '',
       $actionsContainer: '',
     },
@@ -94,7 +94,7 @@ export const accountOptions = [
   },
 ];
 
-type NavigationProps = VariantProps<typeof NavigationStyles>;
+// type NavigationProps = VariantProps<typeof NavigationStyles>;
 
 const Navigation = () => {
   const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(false);
