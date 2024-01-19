@@ -33,9 +33,9 @@ const config: StorybookConfig = {
         esModuleInterop: false,
       },
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: () => true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
-    reactDocgen: 'react-docgen',
+    reactDocgen: 'react-docgen-typescript',
     // skipBabel: true,
     check: true,
   }
