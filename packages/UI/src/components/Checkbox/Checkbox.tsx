@@ -14,13 +14,13 @@ export type CheckboxProps = VariantProps<typeof checkboxStyles> &
     | 'value'
   > & {
     /**
-     * The controlled checked state of the checkbox. Must be used in conjunction with onCheckedChange.
-     */
-    checked?: RadixCheckbox.CheckboxProps['checked'] & NonNullable<unknown>;
-    /**
      * When true, prevents the user from interacting with the checkbox.
      */
     disabled?: RadixCheckbox.CheckboxProps['disabled'];
+    /**
+     * The controlled checked state of the checkbox. Must be used in conjunction with onCheckedChange.
+     */
+    checked?: RadixCheckbox.CheckboxProps['checked'] & NonNullable<unknown>;
     /**
      * The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.
      */
@@ -51,11 +51,6 @@ const checkboxStyles = tv({
     indicatorStyle: '',
   },
 });
-
-/**
- * @description Created with the Checkbox component from Radix UI.
- * https://www.radix-ui.com/primitives/docs/components/checkbox
- */
 
 export default function Checkbox({ className, ...props }: CheckboxProps) {
   const { rootStyle, indicatorStyle } = checkboxStyles({
