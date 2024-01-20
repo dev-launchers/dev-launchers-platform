@@ -9,11 +9,12 @@ const meta: Meta<typeof Checkbox> = {
     defaultChecked: {
       control: 'radio',
       options: [true, false, 'indeterminate'],
-    }
+    },
   },
 };
 
 export default meta;
+
 type Story = StoryObj<typeof Checkbox>;
 
 /*
@@ -21,7 +22,7 @@ type Story = StoryObj<typeof Checkbox>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
- export const DefaultUnchecked: Story = {
+export const DefaultUnchecked: Story = {
   render: (args) => <Checkbox {...args} />,
 };
 
