@@ -47,7 +47,7 @@ export type CheckboxProps = VariantProps<typeof checkboxStyles> &
 const checkboxStyles = tv({
   slots: {
     rootStyle:
-      'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 disabled:hover:outline-none hover:disabled:outline-0 data-checked:bg-brand-alt-nebula-500 data-checked:disabled:border-grayscale-400 data-checked:disabled:bg-grayscale-400',
+      'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 hover:disabled:outline-none hover:disabled:outline-0 data-checked:bg-brand-alt-nebula-500 disabled:data-checked:border-grayscale-400 disabled:data-checked:bg-grayscale-400',
     indicatorStyle: '',
   },
 });
@@ -58,7 +58,9 @@ const checkboxStyles = tv({
  */
 
 export default function Checkbox({ className, ...props }: CheckboxProps) {
-  const { rootStyle, indicatorStyle } = checkboxStyles();
+  const { rootStyle, indicatorStyle } = checkboxStyles({
+    className,
+  });
   return (
     <RadixCheckbox.Root
       className={rootStyle({

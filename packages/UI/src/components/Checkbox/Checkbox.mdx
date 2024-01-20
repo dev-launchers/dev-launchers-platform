@@ -1,14 +1,10 @@
-import { Meta, Controls, Stories } from '@storybook/blocks';
+import { Meta, Controls, Stories,Description, Primary } from '@storybook/blocks';
 import * as CheckboxStories from './Checkbox.stories.tsx';
 import Checkbox from './Checkbox.tsx';
 
 <Meta of={CheckboxStories} />
 
-# Checkbox
-
-Created with the Checkbox component from Radix UI.
-
-https://www.radix-ui.com/primitives/docs/components/checkbox
+<Description of={CheckboxStories} />
 
  <div className="flex gap-8 box-border">
 
@@ -22,19 +18,16 @@ https://www.radix-ui.com/primitives/docs/components/checkbox
     <form className="w-32 justify-center flex-wrap flex gap-8 rounded-lg outline-2 outline-dashed outline-brand-alt-nebula-500 p-4">
       <Checkbox />
       <Checkbox checked />
-
       <Checkbox className="outline outline-4 outline-offset-0 outline-brand-alt-nebula-100" />
       <Checkbox
         className="outline outline-4 outline-offset-0 outline-brand-alt-nebula-100"
         checked
       />
-
       <Checkbox className={"outline outline-2 outline-offset-2 outline-brand-alt-nebula-500"} />
       <Checkbox
         className={"outline outline-2 outline-offset-2 outline-brand-alt-nebula-500"}
         checked
       />
-
       <Checkbox
         disabled
       />
@@ -52,5 +45,6 @@ https://www.radix-ui.com/primitives/docs/components/checkbox
     />
   </div>
 </div>
-<Controls story={CheckboxStories.DefaultUnchecked}/>
+<Primary/>
+<Controls/>
 <Stories />

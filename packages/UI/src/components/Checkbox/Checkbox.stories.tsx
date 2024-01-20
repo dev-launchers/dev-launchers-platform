@@ -2,6 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Checkbox from './Checkbox';
 
+/**
+ * # Checkbox
+ * Created with the Checkbox component from Radix UI.
+ * * https://www.radix-ui.com/primitives/docs/components/checkbox
+ */
+
 const meta: Meta<typeof Checkbox> = {
   component: Checkbox,
   argTypes: {
@@ -17,17 +23,12 @@ export default meta;
 
 type Story = StoryObj<typeof Checkbox>;
 
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/react/api/csf
- * to learn how to use render functions.
- */
 export const DefaultUnchecked: Story = {
   render: (args) => <Checkbox {...args} />,
 };
 
 export const DefaultChecked: Story = {
-  render: (args) => <Checkbox {...args} defaultChecked />,
+  render: (args) => <Checkbox {...args} />,
 };
 
 export const DisabledUnchecked: Story = {
