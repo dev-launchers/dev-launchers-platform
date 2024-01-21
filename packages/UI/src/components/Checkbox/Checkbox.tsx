@@ -53,9 +53,7 @@ const checkboxStyles = tv({
 });
 
 export default function Checkbox({ className, ...props }: CheckboxProps) {
-  const { rootStyle, indicatorStyle } = checkboxStyles({
-    className,
-  });
+  const { rootStyle, indicatorStyle } = checkboxStyles();
   return (
     <RadixCheckbox.Root
       className={rootStyle({
