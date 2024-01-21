@@ -86,7 +86,7 @@ Turn components into code with this extension. This can assist with slots, eleme
 5. Copy over the classes into React.
 ```
 
-## Creating components
+## Creating new components in project.
 
 When creating the folder/files in src/components :
 
@@ -111,6 +111,27 @@ Storybook will be the primary way you will see your design changes. Running "com
 To run both commands at once :
 
     $ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook
+
+
+## Jsdocs auto intergration with storybook.
+
+Attempt to put all documentation via jsdocs. Storyblok will auto import depending on the location of the jsdocs.
+
+### types.
+To add description to types in both jsdocs and storybook you will have to Omit the variables in order to add a description.
+
+```
+export type CheckboxProps = VariantProps<typeof checkboxStyles> &
+  Omit<
+    'disabled'
+  > & {
+    /**
+     * When true, prevents the user from interacting with the checkbox.
+     */
+    disabled?: RadixCheckbox.CheckboxProps['disabled'];
+  }
+```
+
 
 ## Submit the branch with a new pull request.
 
