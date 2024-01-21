@@ -20,16 +20,17 @@ export type CheckboxProps = VariantProps<typeof checkboxStyles> &
     /**
      * The controlled checked state of the checkbox. Must be used in conjunction with onCheckedChange.
      */
-    checked?: RadixCheckbox.CheckboxProps['checked'] & NonNullable<unknown>;
+    checked?: RadixCheckbox.CheckedState & NonNullable<unknown>;
     /**
      * The checked state of the checkbox when it is initially rendered. Use when you do not need to control its checked state.
      */
-    defaultChecked?: RadixCheckbox.CheckboxProps['defaultChecked'] &
-      NonNullable<unknown>;
+    defaultChecked?: RadixCheckbox.CheckedState & NonNullable<unknown>;
     /**
      * Event handler called when the checked state of the checkbox changes.
      */
-    onCheckedChange?: RadixCheckbox.CheckboxProps['onCheckedChange'];
+    onCheckedChange?: (
+      checked: RadixCheckbox.CheckedState & NonNullable<unknown>
+    ) => void;
     /**
      * When true, indicates that the user must check the checkbox before the owning form can be submitted.
      */
