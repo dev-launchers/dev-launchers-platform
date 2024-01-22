@@ -24,22 +24,22 @@ Below is the command to run the dev script in the devlaunchers/components worksp
 
     $ yarn workspace @devlaunchers/components dev
 
-This is an script to yarn install in a speific workspace. 
+This is a script to yarn install in a specific workspace. 
 
     $ yarn workspace @devlaunchers/components install
 
-Yarn documentation : https://classic.yarnpkg.com/en/docs
+Yarn documentation: https://classic.yarnpkg.com/en/docs
 
 
 ### Installing packages
 
-To install an package into a spefic workspace:
+To install a package into a specific workspace:
 
     $ yarn workspace @devlaunchers/<workspace> add <library>
 
 #### Installing Radix-ui components
 
-Radix-ui components need to be installed indiviually, if you are not able to import @radix-ui follow the command below to install in devlaunchers components workspace.
+Radix-ui components need to be installed individually, if you are not able to import @radix-ui follow the command below to install in devlaunchers components workspace.
 
     $ yarn workspace @devlaunchers/components add <library>
 
@@ -75,13 +75,13 @@ Go to universal Figma @:
 
 #### AutoHTML
 
-Turn components into code with this extension. This can assist with slots, elements and tailwind classes as a beginning point. 
+Turn components into code with this extension. This can assist with slots, elements, and tailwind classes as a beginning point. 
 ```    
 1. Select the component.
-2. Select thte Plugins tab on the top left
+2. Select the Plugins tab on the top left
 3. Select AutoHTML
     - Install if you do not see this plugin.
-    - Settings are: HTML Framework with Tailwind styling. 
+    - Settings are HTML Framework with Tailwind styling. 
 4. Select the <> Code tab
 5. Copy over the classes into React.
 ```
@@ -90,12 +90,20 @@ Turn components into code with this extension. This can assist with slots, eleme
 
 When creating the folder/files in src/components :
 
-- Project Components folder should match Figma design location 
+- The Project Components folder should match the Figma design location 
     - Example "src/components/Checkbox"
 - Project Components names should match the design Name - "Capitalized"
     - Example "src/components/Checkbox/Checkbox.tsx"
 - Project components need a #.stories.tsx to work with storybook.
   - find a template or copy from another stories.tsx
+
+## Adding assets
+
+For .tsx assets check the need too re-export all components into an index.ts for exporting in the folder that it is living in.
+ 
+```
+packages/UI/src/assets/icons/index.ts
+```
 
 
 ## Storybook & tailwind dev environment. 
@@ -131,7 +139,6 @@ export type CheckboxProps = VariantProps<typeof checkboxStyles> &
     disabled?: RadixCheckbox.CheckboxProps['disabled'];
   }
 ```
-
 
 ## Submit the branch with a new pull request.
 
