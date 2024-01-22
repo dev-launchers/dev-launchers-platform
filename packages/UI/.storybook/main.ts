@@ -26,15 +26,17 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
     reactDocgenTypescriptOptions: {
       compilerOptions: {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
       },
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: () => true,
+      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
     },
+    reactDocgen: 'react-docgen-typescript',
+    // skipBabel: true,
+    check: true,
   }
 };
 

@@ -315,7 +315,7 @@ export function Tag({
   return selected ? (
     <button className={styles} onClick={onClose} onKeyDown={onClose} {...props}>
       {label}
-      <span className="p-0 m-0">
+      <span className="m-0 p-0">
         <Close stroke={tagIconFillColor(color, mode)} />
       </span>
     </button>
