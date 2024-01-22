@@ -24,6 +24,7 @@ module.exports = withTV({
     },
     data: {
       checked: 'state="checked"', //data-[state=checked]
+      open: 'state="open"', //data-[state=open]
     },
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
