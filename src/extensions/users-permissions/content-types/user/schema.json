@@ -99,10 +99,12 @@
       "mappedBy": "user"
     },
     "discordId": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "googleId": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "discordUsername": {
       "type": "string"
@@ -111,13 +113,16 @@
       "type": "uid"
     },
     "birthday": {
-      "type": "date"
+      "type": "date",
+      "private": true
     },
     "country": {
-      "type": "string"
+      "type": "string",
+      "private": true
     },
     "zipCode": {
-      "type": "integer"
+      "type": "integer",
+      "private": true
     },
     "hasAcceptedTermsOfService": {
       "type": "boolean"
