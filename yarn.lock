@@ -2722,6 +2722,7 @@ __metadata:
     formik: ^2.2.9
     framer-motion: 6.5.1
     jest: ^27.0.6
+    lucide-react: 0.314.0
     next: ^12.2.3
     npm-run-all: 4.1.5
     polished: ^4.2.2
@@ -26986,6 +26987,15 @@ __metadata:
   version: 10.0.1
   resolution: "lru-cache@npm:10.0.1"
   checksum: 06f8d0e1ceabd76bb6f644a26dbb0b4c471b79c7b514c13c6856113879b3bf369eb7b497dad4ff2b7e2636db202412394865b33c332100876d838ad1372f0181
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:0.314.0":
+  version: 0.314.0
+  resolution: "lucide-react@npm:0.314.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+  checksum: 57b1fe980ec73304dc9b17264515cb8a4627a5bbb88e54de7bac91115740ccc960ed9f3b57145c8482a8ce198289a8e79f53326369572331adbe2df4161f99e6
   languageName: node
   linkType: hard
 

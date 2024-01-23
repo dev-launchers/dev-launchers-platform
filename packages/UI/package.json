@@ -13,6 +13,7 @@
     "constate": "^3.3.2",
     "formik": "^2.2.9",
     "framer-motion": "6.5.1",
+    "lucide-react": "0.314.0",
     "next": "^12.2.3",
     "polished": "^4.2.2",
     "react": "^17.0.2",
