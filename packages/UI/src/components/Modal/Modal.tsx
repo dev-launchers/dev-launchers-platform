@@ -3,35 +3,29 @@ import * as Dialog from '@radix-ui/react-dialog';
 export interface ModalProps{
   hasCloseBtn?: boolean;
   // trigger
-  // header
+  header?: React.ReactNode;
   // content
   // footer
 }
 
-// export interface CloseModalWrapperProps { 
-//   children
-// }
+export { Close } from '@radix-ui/react-dialog';
 
-// export function CloseModalWrapper({ children }): CloseModalWrapperProps {
-//   return (
-//     <Dialog.Close asChild>
-//       {children}
-//     </Dialog.Close>
-//   )
-// }
+export default function Modal({
+  header = <div />,
+  hasCloseBtn = true,
+}: ModalProps) {
 
-export default function Modal({hasCloseBtn = true}:ModalProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <button className="">Edit profile</button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black" />
+        <Dialog.Overlay className="fixed inset-0 bg-Light-Overlay" />
         <Dialog.Content className="fixed left-1/2 top-1/2 p-8 flex flex-col items-center justify-between h-64 max-w-md rounded-lg -translate-x-1/2 -translate-y-1/2 bg-white">
 
           <Dialog.Title className="bg-yellow-300 w-full flex flex-row items-center justify-between">
-            <h3>Edit profile</h3>
+            {header}
             {hasCloseBtn && <Dialog.Close asChild>
               <button className="bg-yellow-300" aria-label="Close">
                 X
@@ -40,15 +34,11 @@ export default function Modal({hasCloseBtn = true}:ModalProps) {
             }
           </Dialog.Title>
 
-          <Dialog.Description className="bg-blue-300">
+          <Dialog.Description className="bg-blue-300 min-h-64">
             Make changes to your profile here. Click save when you're done.
           </Dialog.Description>
 
-          <div className="">
-            <Dialog.Close asChild>
-              <button className="bg-yellow-300">Save changes</button>
-            </Dialog.Close>
-          </div>
+          {/* {footer} */}
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
