@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Modal, { Close } from './Modal';
+import Modal, { Close, Description } from './Modal';
 
 const meta: Meta<typeof Modal> = {
   component: Modal,
@@ -14,19 +14,50 @@ type Story = StoryObj<typeof Modal>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
- const footer = (
-  <div className="">
-    <button className="bg-yellow-300">Save changes</button>
-    <Close>
-      <button closeModal className="bg-yellow-300">Save changes</button>
-    </Close>
-    <Close>
-      <button className="bg-yellow-300">Save changes</button>
-    </Close>
-  </div>
-)
 
+const TriggerBtn = (
+  <button className="rounded-lg uppercase font-bold border-2 border-solid border-black bg-yellow-300  p-3 hover:bg-yellow-700 hover:text-white">
+    Edit profile
+  </button>
+);
+
+const Header = <h3 className="uppercase"> Subscribe to our newsletter </h3>;
+
+const Content = (
+  <p className="">
+    {' '}
+    <Description>Get notified</Description>
+  </p>
+);
+
+const Footer = (
+  <Close >
+    <button className="rounded-sm border-2 border-solid border-black bg-yellow-300 p-3 hover:bg-yellow-700 hover:text-white">
+      {' '}
+      Subscribe{' '}
+    </button>
+  </Close>
+);
 
 export const Primary: Story = {
-  render: () => <Modal />,
+  render: () => (
+    <Modal
+      trigger={TriggerBtn}
+      header={Header}
+      content={Content}
+      footer={Footer}
+    />
+  ),
+};
+
+export const PrimaryNoCloseBtn: Story = {
+  render: () => (
+    <Modal
+      trigger={TriggerBtn}
+      header={Header}
+      content={Content}
+      footer={Footer}
+      hasCloseBtn={false}
+    />
+  ),
 };
