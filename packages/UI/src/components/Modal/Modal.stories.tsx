@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Modal>;
  */
 
 const TriggerBtn = (
-  <button className="rounded-lg uppercase font-bold border-2 border-solid border-black bg-yellow-300  p-3 hover:bg-yellow-700 hover:text-white">
+  <button className="rounded-lg border-2 border-solid border-black bg-yellow-300 p-3 font-bold uppercase hover:bg-yellow-700 hover:text-white">
     Edit profile
   </button>
 );
