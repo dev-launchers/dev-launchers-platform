@@ -1,2 +1,2 @@
-export { default as Checkbox } from './Modal';
-// export type { CheckboxProps } from './Checkbox';
+export { default as Modal } from './Modal';
+export type { ModalProps } from './Modal';

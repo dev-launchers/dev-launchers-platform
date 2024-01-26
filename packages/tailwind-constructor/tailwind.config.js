@@ -40,7 +40,6 @@ module.exports = withTV({
       minHeight:{
         36: "9rem",
       }
-
     }
   },
   variants: {},
