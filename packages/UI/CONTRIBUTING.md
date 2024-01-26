@@ -2,34 +2,30 @@
 
 dev-launchers-platform is a mono repo using yarn. All yarn script lines need to be run in the root folder. 
 
-## Installing and getting started
-1. install yarn @  https://classic.yarnpkg.com/en/docs/install#windows-stable
+## Installing and quick started
+1. install yarn 
+    - https://classic.yarnpkg.com/en/docs/install#windows-stable
+    - In a terminal with admin run "$ corepack enable"
+    - "$ npm install --global yarn"
 2. clone the repo @  https://github.com/dev-launchers/dev-launchers-platform
 3. After cloning repo, navigate to /dev-launchers-platform
-4. "$ yarn install " in the root folder to install dependencies 
-5. "$ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook " to run both tailwind dev and storybook.
+4. ```$ yarn install``` in the root folder to install dependencies 
+5. Open a new terminal and run ```$ yarn workspace @devlaunchers/tailwind dev```. to start tailwind constructor.
+5. Open a 2nd terminal and run ```$ yarn workspace @devlaunchers/components storybook``` to start storybook.
 7. Start Development work.
 
-## Yarn scripts.
+## Yarn scripts basics.
 
-To run scripts in a mono repo, you will need to target a workspace with the following CLI.
+This is just a quick rundown on how to run scripts in a mono repo using yarn, you will need to target a workspace with the following CLI.  Further information can be found in the root folder markdowns. 
 
     $ yarn workspace @devlaunchers/<workspace> <cmd>
 
-workspace - components
-
-cmd - add, init, install, remove
-
-Below is the command to run the dev script in the devlaunchers/components workspace.
-
-    $ yarn workspace @devlaunchers/components dev
-
-This is a script to yarn install in a specific workspace. 
-
-    $ yarn workspace @devlaunchers/components install
-
-Yarn documentation: https://classic.yarnpkg.com/en/docs
-
+### Yarn scripts for this team
+```
+$ yarn workspace @devlaunchers/tailwind dev
+$ yarn workspace @devlaunchers/components storybook
+$ yarn workspace @devlaunchers/components typecheck
+```
 
 ### Installing packages
 
@@ -71,20 +67,56 @@ Go to universal Figma @:
 - Make sure dev mode is toggled in Figma.
 - All tailwind classes will be made up of dashes, other characters like '/' will be replaced with '-'.
 
-### Figma plugins
+## Vscode extensions
 
-#### AutoHTML
+1. Tailwind css intellisense
+2. Eslint
+3. ES7 + React/redux/React-native snippets.
+4. Figma for vs code
 
-Turn components into code with this extension. This can assist with slots, elements, and tailwind classes as a beginning point. 
-```    
-1. Select the component.
-2. Select the Plugins tab on the top left
-3. Select AutoHTML
-    - Install if you do not see this plugin.
-    - Settings are HTML Framework with Tailwind styling. 
-4. Select the <> Code tab
-5. Copy over the classes into React.
+### Storybook snippet
+
 ```
+	"create a sample storybook story.tsx file to connect": {
+		"prefix": "story",
+		"body": [
+		  "import type { Meta, StoryObj } from '@storybook/react';",
+		  "",
+		  "import $1 from './$1';",
+		  "",
+		  "const meta: Meta<typeof $1> = {",
+		  "  component: $1,",
+		  "};",
+		  "",
+		  "export default meta;",
+		  "type Story = StoryObj<typeof $1>;",
+		  "",
+		  "/*",
+		  " *👇 Render functions are a framework specific feature to allow you control on how the component renders.",
+		  " * See https://storybook.js.org/docs/react/api/csf",
+		  " * to learn how to use render functions.",
+		  " */",
+		  "export const Primary: Story = {",
+		  "  render: () => <$1 />,",
+		  "};",
+		  ""
+		],
+		"description": "create a sample story"
+  }
+
+```
+
+## Storybook & tailwind dev environment. 
+
+In a terminal, in order to get tailwind classes in your project you will need to run the dev command.
+
+    $ yarn workspace @devlaunchers/tailwind dev
+
+Storybook will be the primary way you will see your design changes. Running "components storybook" this is open up a browser for storybook. This is where you can see changes that are made. By running the command below, a window should open with storybook running.
+
+    $ yarn workspace @devlaunchers/components storybook
+
+
 
 ## Creating new components in project.
 
@@ -96,6 +128,12 @@ When creating the folder/files in src/components :
     - Example "src/components/Checkbox/Checkbox.tsx"
 - Project components need a #.stories.tsx to work with storybook.
   - find a template or copy from another stories.tsx
+- Create an index.ts file for exporting the tsx files. 
+    ```
+    export { default as Alert } from './Alert';
+    export type {AlertProp} from './Alert'
+    ```
+
 
 ## Adding assets
 
@@ -106,39 +144,10 @@ packages/UI/src/assets/icons/index.ts
 ```
 
 
-## Storybook & tailwind dev environment. 
-
-In a terminal, in order to run tailwind dev, you will want to run the following command.
-
-    $ yarn workspace @devlaunchers/tailwind dev
-
-Storybook will be the primary way you will see your design changes. Running "components storybook" this is open up a browser for storybook. This is where you can see changes that are made. By running the command below, a window should open with storybook running.
-
-    $ yarn workspace @devlaunchers/components storybook
-
-To run both commands at once :
-
-    $ yarn workspace @devlaunchers/tailwind dev & yarn workspace @devlaunchers/components storybook
-
-
 ## Jsdocs auto intergration with storybook.
 
-Attempt to put all documentation via jsdocs. Storyblok will auto import depending on the location of the jsdocs.
+Attempt to put all documentation via jsdocs. Storyblok will auto import depending on the location of the jsdocs. Make it so documenation is only in one location in code, and both storybook and jsdocs draw from the same location. 
 
-### types.
-To add description to types in both jsdocs and storybook you will have to Omit the variables in order to add a description.
-
-```
-export type CheckboxProps = VariantProps<typeof checkboxStyles> &
-  Omit<
-    'disabled'
-  > & {
-    /**
-     * When true, prevents the user from interacting with the checkbox.
-     */
-    disabled?: RadixCheckbox.CheckboxProps['disabled'];
-  }
-```
 
 ## Submit the branch with a new pull request.
 
@@ -146,7 +155,7 @@ In git bash, you will want to do the git push flow.
 
   - git add .
   - Git commit -m "describes what you worked on"
-  - git push
+  - git push origin branch
 
 Go to github.com and make sure you are logged in and in the right repo.
 https://github.com/dev-launchers/dev-launchers-platform
