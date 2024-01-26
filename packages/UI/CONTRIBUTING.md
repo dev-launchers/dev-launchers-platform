@@ -3,10 +3,10 @@
 dev-launchers-platform is a mono repo using yarn. All yarn script lines need to be run in the root folder. 
 
 ## Installing and quick started
-1. install yarn 
+1. install yarn, below are several ways to install. 
     - https://classic.yarnpkg.com/en/docs/install#windows-stable
-    - In a terminal with admin run "$ corepack enable"
-    - "$ npm install --global yarn"
+    - In a terminal with admin run ```$ corepack enable```
+    - ```$ npm install --global yarn```
 2. clone the repo @  https://github.com/dev-launchers/dev-launchers-platform
 3. After cloning repo, navigate to /dev-launchers-platform
 4. ```$ yarn install``` in the root folder to install dependencies 
@@ -26,6 +26,7 @@ $ yarn workspace @devlaunchers/tailwind dev
 $ yarn workspace @devlaunchers/components storybook
 $ yarn workspace @devlaunchers/components typecheck
 ```
+More scripts are located in the package.json file. 
 
 ### Installing packages
 
