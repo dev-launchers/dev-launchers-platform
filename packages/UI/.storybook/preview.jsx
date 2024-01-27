@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../src/styles/global";
-import theme from "../src/styles/theme";
-import "@devlaunchers/tailwind/tailwind.css";
-
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from '../src/styles/global';
+import theme from '../src/styles/theme';
+import '@devlaunchers/tailwind/tailwind.css';
+const isDevelopmentEnv = process.env.NODE_ENV == 'development';
 const customViewports = {
   mobile: {
     name: 'mobile',
@@ -49,24 +49,47 @@ const customViewports = {
     },
   },
 };
- 
+
 /*
  * Global decorator to apply the styles to all stories
  * Read more about them at:
  * https://storybook.js.org/docs/react/writing-stories/decorators#global-decorators
  */
 export const decorators = [
-  (Story) => (
-    <>
-      <ThemeProvider theme={theme}>
+  // apply global theme
+  (Story) => {
+    return (
+      <>
+        <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Story />
-      </ThemeProvider>
-    </>
-  ),
+        </ThemeProvider>
+      </>
+    );
+  },
+  // do Figma comparison in development mode
+  (Story, { parameters }) => {
+    if (
+      process.env.STORYBOOK_FIGMA_ACCESS_TOKEN &&
+      isDevelopmentEnv &&
+      parameters.design
+    ) {
+      const figmaUrl = new URL(parameters.design.url);
+      return (
+        <ftl-holster
+          access-token={process.env.STORYBOOK_FIGMA_ACCESS_TOKEN}
+          // extract the second slug from the figma url
+          file-id={figmaUrl.pathname.match(/\/([^\/]+)\/([^\/]+)/)[2]}
+          node={figmaUrl.searchParams.get('node-id').replace('-', ':')}
+        >
+          <Story />
+        </ftl-holster>
+      );
+    }
+  },
 ];
 export const parameters = {
-  actions: { argTypesRegex: "^on.*" },
+  actions: { argTypesRegex: '^on.*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
