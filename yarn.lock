@@ -2683,6 +2683,7 @@ __metadata:
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.2.2
     "@storybook/addon-actions": ^7.2.2
+    "@storybook/addon-designs": 7.0.9
     "@storybook/addon-essentials": ^7.2.2
     "@storybook/addon-links": ^7.2.2
     "@storybook/addon-mdx-gfm": 7.2.2
@@ -7104,6 +7105,29 @@ __metadata:
     react-dom:
       optional: true
   checksum: 5535af0a1d4d5cd58566252b93ed8f6e75afb7f1fcc46ba04ad493af6a09c48ef5baad116e4fa818859e372ba58e26dcf3f05aaac7206e7ef3c68e7cefce3d08
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-designs@npm:7.0.9":
+  version: 7.0.9
+  resolution: "@storybook/addon-designs@npm:7.0.9"
+  dependencies:
+    "@figspec/react": ^1.0.0
+  peerDependencies:
+    "@storybook/addon-docs": ^7.0.0
+    "@storybook/addons": ^7.0.0
+    "@storybook/components": ^7.0.0
+    "@storybook/manager-api": ^7.0.0
+    "@storybook/preview-api": ^7.0.0
+    "@storybook/theming": ^7.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: cd11e7e881b8fe3e05fedc4c3f777fa0c7b2e673440793640e882f1e3ae6e8d2a06234debaf0fc72dc22cb14d82049df3c147fcb03255505040725516dde7298
   languageName: node
   linkType: hard
 
