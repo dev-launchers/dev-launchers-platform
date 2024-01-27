@@ -86,6 +86,7 @@ export const decorators = [
         </ftl-holster>
       );
     }
+    return <Story />
   },
 ];
 export const parameters = {
