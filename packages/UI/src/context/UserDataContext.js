@@ -11,10 +11,6 @@ export const DEFAULT_USER = {
   profilePictureUrl:
     'https://lh3.googleusercontent.com/a/AATXAJxZ3nb3nA60iLAv1-RqQizgB871aHjJp4LTwi55=s96-c',
   socialMediaLinks: [],
-  totalPoints: 0,
-  totalSeasonPoints: 0,
-  availablePoints: 0,
-  volunteerHours: 0,
   discord: {
     id: 0,
     avatar: '',
@@ -83,10 +79,6 @@ function useUserDataHook() {
           bio: currentUser.profile.bio,
           profilePictureUrl: currentUser.profile.profilePictureUrl,
           socialMediaLinks: currentUser.profile.socialMediaLinks,
-          totalPoints: currentUser.point.totalPoints,
-          totalSeasonPoints: currentUser.point.totalSeasonPoints,
-          availablePoints: currentUser.point.availablePoints,
-          volunteerHours: currentUser.point.volunteerHours,
           interests: currentUser.interests,
           projects: currentUser.projects,
           idea_cards: currentUser.idea_cards,
@@ -96,7 +88,6 @@ function useUserDataHook() {
       })
       .catch((e) => {
         console.error('failed to fetch', e);
-        // setUserData({ id: "invalid" });
         setIsAuthenticated(false);
       });
   }, []);

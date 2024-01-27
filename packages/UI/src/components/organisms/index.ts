@@ -9,3 +9,4 @@ export { default as UserCard } from './cards/UserCard';
 export { TagsContainer } from './cards/StyledCommonComponents';
 export { CardDescription } from './cards/StyledCommonComponents';
 export { ExpandableBlurb } from './cards/StyledCommonComponents';
+export { default as Dropdown } from './Dropdown';

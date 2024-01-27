@@ -13,6 +13,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import Script from 'next/script';
 import iubendaScript from '../scripts/iubendaScript';
+import '@devlaunchers/tailwind/tailwind.css';
 
 
 const hashRedirect = (router) => {
