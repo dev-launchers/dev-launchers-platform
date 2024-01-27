@@ -23,10 +23,10 @@ export const SingleComment = styled.div`
 export const SingleCommentContent = styled.div`
   width: 100%;
   min-width: 430px;
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
-  color: #C4C4C4;
+  background-color: white;
+  color: black;
   border-radius: 25px;
-  padding: 20px;
+  padding: 1px;
   display: inline-flex;
 
 
@@ -37,15 +37,40 @@ export const SingleCommentContent = styled.div`
   h3 {
     margin: 0;
     padding-right: 5px;
-    font-size: 12px;
-    font-style: italic;
-    font-weight: 1000 ;
-    color: white;
+    
+    color: var(--grey-scale-off-black, #1C1C1C);
+    font-feature-settings: 'clig' off, 'liga' off;
+    
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.28px;
+    text-transform: uppercase;
+  }
+
+  h5 {
+    margin: 0;
+    padding-right: 5px;
+
+    color: var(--grey-scale-grey, #7F7E7F);
+    
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
   }
 
   p {
-    font-size: 12px;
     margin: 0;
+
+    color: var(--grey-scale-off-black, #1C1C1C);
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 `;
 
@@ -64,9 +89,14 @@ export const UserNameComment = styled.input`
 
 
 export const UserImage = styled.img`
-  height: 60px;
   margin-right: 10px;
-  border-radius: 50%;
+
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+
+  border-radius: 48px;
+  background: url(<path-to-image>), lightgray 0px -1.948px / 100% 153.333% no-repeat;
 `;
 
 
@@ -155,6 +185,17 @@ export const UserImageOne = styled.img`
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+`;
+
+
+export const CommentBox = styled.textarea`
+  border-radius: 10px;
+  background-color: #F0EDED;
+  border: solid 1px #F0EDED;
+  color: #7F7E7F;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 

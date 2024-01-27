@@ -18,14 +18,7 @@ import {
 } from './StyledEditIdea';
 
 function EditIdea() {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
   const { ideaId } = router.query;
@@ -157,7 +150,6 @@ function EditIdea() {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
-
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         handleDialog(url);
