@@ -1,4 +1,5 @@
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
+import * as React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import CheckmarkImg from './../../assets/icons/Checkmark';
 
@@ -48,23 +49,33 @@ export type CheckboxProps = VariantProps<typeof checkboxStyles> &
 const checkboxStyles = tv({
   slots: {
     rootStyle:
-      'flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 hover:disabled:outline-none hover:disabled:outline-0 data-checked:bg-brand-alt-nebula-500 disabled:data-checked:border-grayscale-400 disabled:data-checked:bg-grayscale-400',
+      'inline-flex h-6 w-6 items-center justify-center rounded-sm border-2 border-solid border-brand-alt-nebula-500 bg-grayscale-50 hover:outline hover:outline-4 hover:outline-offset-0 hover:outline-brand-alt-nebula-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-alt-nebula-500 disabled:border-grayscale-500 disabled:bg-grayscale-200 hover:disabled:outline-none hover:disabled:outline-0 data-checked:bg-brand-alt-nebula-500 disabled:data-checked:border-grayscale-400 disabled:data-checked:bg-grayscale-400',
     indicatorStyle: '',
   },
 });
 
-export default function Checkbox({ className, ...props }: CheckboxProps) {
+const Checkbox = React.forwardRef<
+  React.ElementRef<typeof RadixCheckbox.Root>,
+  CheckboxProps
+>(({ className, ...props }: CheckboxProps, ref) => {
   const { rootStyle, indicatorStyle } = checkboxStyles();
   return (
-    <RadixCheckbox.Root
-      className={rootStyle({
-        className,
-      })}
-      {...props}
-    >
-      <RadixCheckbox.Indicator className={indicatorStyle()}>
-        <CheckmarkImg />
-      </RadixCheckbox.Indicator>
-    </RadixCheckbox.Root>
+    <div className="p-1">
+      <RadixCheckbox.Root
+        className={rootStyle({
+          className,
+        })}
+        ref={ref}
+        {...props}
+      >
+        <RadixCheckbox.Indicator className={indicatorStyle()}>
+          <CheckmarkImg />
+        </RadixCheckbox.Indicator>
+      </RadixCheckbox.Root>
+    </div>
   );
-}
+});
+
+Checkbox.displayName = 'Checkbox';
+
+export default Checkbox;
