@@ -4,9 +4,9 @@ dev-launchers-platform is a mono repo using yarn. All yarn script lines need to 
 
 ## Installing and quick started
 1. install yarn, below are several ways to install. 
-    - https://classic.yarnpkg.com/en/docs/install#windows-stable
     - In a terminal with admin run ```$ corepack enable```
     - ```$ npm install --global yarn```
+
 2. clone the repo @  https://github.com/dev-launchers/dev-launchers-platform
 3. After cloning repo, navigate to /dev-launchers-platform
 4. ```$ yarn install``` in the root folder to install dependencies 
@@ -14,13 +14,8 @@ dev-launchers-platform is a mono repo using yarn. All yarn script lines need to 
 5. Open a 2nd terminal and run ```$ yarn workspace @devlaunchers/components storybook``` to start storybook.
 7. Start Development work.
 
-## Yarn scripts basics.
-
-This is just a quick rundown on how to run scripts in a mono repo using yarn, you will need to target a workspace with the following CLI.  Further information can be found in the root folder markdowns. 
-
-    $ yarn workspace @devlaunchers/<workspace> <cmd>
-
 ### Yarn scripts for this team
+
 ```
 $ yarn workspace @devlaunchers/tailwind dev
 $ yarn workspace @devlaunchers/components storybook
@@ -70,41 +65,39 @@ Go to universal Figma @:
 
 ## Vscode extensions
 
+```extensions.json``` in this workspace will recommend the follow extensions when you first open the workspace:
+
 1. Tailwind css intellisense
 2. Eslint
 3. ES7 + React/redux/React-native snippets.
 4. Figma for vs code
 
+
+
 ### Storybook snippet
 
-```
-	"create a sample storybook story.tsx file to connect": {
-		"prefix": "story",
-		"body": [
-		  "import type { Meta, StoryObj } from '@storybook/react';",
-		  "",
-		  "import $1 from './$1';",
-		  "",
-		  "const meta: Meta<typeof $1> = {",
-		  "  component: $1,",
-		  "};",
-		  "",
-		  "export default meta;",
-		  "type Story = StoryObj<typeof $1>;",
-		  "",
-		  "/*",
-		  " *👇 Render functions are a framework specific feature to allow you control on how the component renders.",
-		  " * See https://storybook.js.org/docs/react/api/csf",
-		  " * to learn how to use render functions.",
-		  " */",
-		  "export const Primary: Story = {",
-		  "  render: () => <$1 />,",
-		  "};",
-		  ""
-		],
-		"description": "create a sample story"
-  }
+By typing "story" in an empty file, you can get the below snippet as a starter for storybook files. When thes snippet is imported it will have selected all the parts needs to type in your Component.
 
+```
+import type { Meta, StoryObj } from '@storybook/react';
+
+import Component from './Component';
+
+const meta: Meta<typeof Component> = {
+  component: Component,
+};
+
+export default meta;
+type Story = StoryObj<typeof Component>;
+
+/*
+ *👇 Render functions are a framework specific feature to allow you control on how the component renders.
+ * See https://storybook.js.org/docs/react/api/csf
+ * to learn how to use render functions.
+ */
+export const Primary: Story = {
+  render: () => <Component />,
+};
 ```
 
 ## Storybook & tailwind dev environment. 
@@ -147,7 +140,7 @@ packages/UI/src/assets/icons/index.ts
 
 ## Jsdocs auto intergration with storybook.
 
-Attempt to put all documentation via jsdocs. Storyblok will auto import depending on the location of the jsdocs. Make it so documenation is only in one location in code, and both storybook and jsdocs draw from the same location. 
+Attempt to put all documentation via jsdocs. Storybook will auto import depending on the location of the jsdocs. Make it so documenation is only in one location in code, and both storybook and jsdocs draw from the same location. 
 
 
 ## Submit the branch with a new pull request.
