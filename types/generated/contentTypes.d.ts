@@ -645,13 +645,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::time-capsule.time-capsule'
     >;
-    discordId: Attribute.String;
-    googleId: Attribute.String;
+    discordId: Attribute.String & Attribute.Private;
+    googleId: Attribute.String & Attribute.Private;
     discordUsername: Attribute.String;
     userId: Attribute.UID;
-    birthday: Attribute.Date;
-    country: Attribute.String;
-    zipCode: Attribute.Integer;
+    birthday: Attribute.Date & Attribute.Private;
+    country: Attribute.String & Attribute.Private;
+    zipCode: Attribute.Integer & Attribute.Private;
     hasAcceptedTermsOfService: Attribute.Boolean;
     hasSubscribedEmails: Attribute.Boolean;
     discord_avatar: Attribute.String;
@@ -1128,6 +1128,41 @@ export interface ApiNewsletterNewsletter extends Schema.CollectionType {
   };
 }
 
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    Title: Attribute.String;
+    Content: Attribute.String;
+    Read: Attribute.Boolean;
+    TimeCreated: Attribute.DateTime;
+    Collection: Attribute.Enumeration<['IdeaCard', 'Comment']>;
+    ObjectID: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOpportunityOpportunity extends Schema.CollectionType {
   collectionName: 'opportunities';
   info: {
@@ -1521,6 +1556,7 @@ declare module '@strapi/types' {
       'api::interest.interest': ApiInterestInterest;
       'api::like.like': ApiLikeLike;
       'api::newsletter.newsletter': ApiNewsletterNewsletter;
+      'api::notification.notification': ApiNotificationNotification;
       'api::opportunity.opportunity': ApiOpportunityOpportunity;
       'api::point.point': ApiPointPoint;
       'api::profile.profile': ApiProfileProfile;
