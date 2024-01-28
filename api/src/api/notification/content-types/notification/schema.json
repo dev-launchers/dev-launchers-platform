@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notifications",
+  "info": {
+    "singularName": "notification",
+    "pluralName": "notifications",
+    "displayName": "Notification",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "string"
+    },
+    "Read": {
+      "type": "boolean"
+    },
+    "TimeCreated": {
+      "type": "datetime"
+    },
+    "Collection": {
+      "type": "enumeration",
+      "enum": [
+        "IdeaCard",
+        "Comment"
+      ]
+    },
+    "ObjectID": {
+      "type": "integer"
+    }
+  }
+}

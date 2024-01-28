@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_keywords_keywords",
+  "info": {
+    "name": "keywords",
+    "icon": "network-wired",
+    "displayName": "Keywords",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "keyword": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

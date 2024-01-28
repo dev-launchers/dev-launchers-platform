@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "idea_cards",
+  "info": {
+    "singularName": "idea-card",
+    "pluralName": "idea-cards",
+    "displayName": "IdeaCard",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ideaName": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "tagline": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "targetAudience": {
+      "type": "text",
+      "required": false
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "idea_cards"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "idea_card"
+    },
+    "features": {
+      "type": "text",
+      "required": true
+    },
+    "experience": {
+      "type": "text",
+      "required": true
+    },
+    "extraInfo": {
+      "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "submitted",
+        "applying",
+        "approved",
+        "archived",
+        "workshopping",
+        "deleted"
+      ],
+      "default": "workshopping",
+      "required": false
+    },
+    "involveLevel": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "minimum",
+        "medium",
+        "highly"
+      ],
+      "default": "highly",
+      "required": true
+    },
+    "ideaOwner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "ownedCards"
+    }
+  }
+}

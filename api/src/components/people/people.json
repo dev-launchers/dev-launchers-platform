@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_people_people",
+  "info": {
+    "name": "people",
+    "icon": "people-carry",
+    "description": "",
+    "displayName": "People"
+  },
+  "options": {},
+  "attributes": {
+    "leaders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "people.leader"
+    },
+    "members": {
+      "type": "component",
+      "repeatable": true,
+      "component": "people.members"
+    }
+  }
+}

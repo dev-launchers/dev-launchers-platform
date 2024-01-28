@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "7bf7e66a-8b24-4bbb-bd79-2faf6ecc6c1d",
+		"name": "strapiv4-integration-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19614747"
+	},
+	"item": [
+		{
+			"name": "get project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get dev-recruiting project\", () => {\r",
+							"  const project = pm.response.json().data.attributes;\r",
+							"  pm.expect(project.slug).to.eql(\"dev-recruiting\");\r",
+							"  pm.expect(project.catchPhase).to.eql(\"Join a new Project or Product that aligns with your personal goals!\");\r",
+							"  pm.expect(project.vision).to.eql(\"Dev Recruit will allow members and non- members to browse ideas, products and projects they can join and workshop through filters to easier align them with the right involvement in the Dev Launchers community.\");\r",
+							"  pm.expect(project.description).to.eql(\"Dev Recruit Project\");\r",
+							"  pm.expect(project.commitmentLevel).to.eql(\"Medium to High\");\r",
+							"  pm.expect(project.signupFormUrl).to.eql(\"http://localhost:3000\");\r",
+							"  pm.expect(project.images.length).to.equal(1);\r",
+							"\r",
+							"  const team = project.team;\r",
+							"  const members = team.members;\r",
+							"  const leaders = team.leaders;\r",
+							"\r",
+							"  pm.expect(members.length).to.equal(1);\r",
+							"  const member = members[0]; // Fixed accessing the first member\r",
+							"  pm.expect(member.username).to.equal(\"Dev Recruit Member\");\r",
+							"  pm.expect(member.role).to.equal(\"UI Designer\");\r",
+							"  const member_profile = member.profile;\r",
+							"  pm.expect(member_profile).to.be.an('object').and.have.keys(['profilePictureUrl', 'displayName'])\r",
+							"  pm.expect(member_profile.profilePictureUrl).to.equal(\"https://dev-recruiting-member.image.com\");\r",
+							"  pm.expect(member_profile.displayName).to.equal(\"dev-recruit-member\");\r",
+							"\r",
+							"  pm.expect(leaders.length).to.equal(1);\r",
+							"  const leader = leaders[0]; // Fixed accessing the first leader\r",
+							"  pm.expect(leader.username).to.equal(\"Dev Recruit Leader\");\r",
+							"  pm.expect(leader.role).to.equal(\"Product Lead\");\r",
+							"  const leader_profile = leader.profile;\r",
+							"  pm.expect(leader_profile).to.be.an('object').and.have.keys(['profilePictureUrl', 'displayName'])\r",
+							"  pm.expect(leader_profile.profilePictureUrl).to.equal(\"https://dev-recruiting-leader.image.com\");\r",
+							"  pm.expect(leader_profile.displayName).to.equal(\"dev-recruit-leader\");\r",
+							"\r",
+							"  pm.expect(project.interests.data.length).to.equal(1);\r",
+							"  pm.expect(project.interests.data[0].attributes.interest).to.equal(\"Web Dev\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/projects/dev-recruiting",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"projects",
+						"dev-recruiting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"identifier\": \"integration-test@devlaunchers.org\",\r\n  \"password\": \"integration-test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/auth/local",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"auth",
+						"local"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"User is integration-test\", () => {\r",
+							"  const user = pm.response.json();\r",
+							"  pm.expect(user.username).to.eql(\"integration-test\");\r",
+							"  pm.expect(user.email).to.eql(\"integration-test@devlaunchers.org\");\r",
+							"  pm.expect(user.discordUsername).to.eql(\"integration-test\");\r",
+							"  pm.expect(user.projects.length).to.equal(1);\r",
+							"  const project = user.projects[0];\r",
+							"  pm.expect(project.slug).to.equal(\"dev-recruiting\");\r",
+							"\r",
+							"  pm.expect(user.interests.length).to.equal(1);\r",
+							"  const interest = user.interests[0];\r",
+							"  pm.expect(interest.interest).to.eql(\"Web Dev\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/users/me?populate=*",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"users",
+						"me"
+					],
+					"query": [
+						{
+							"key": "populate",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"  pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:1337/api",
+			"type": "default"
+		}
+	]
+}

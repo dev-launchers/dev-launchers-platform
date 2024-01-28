@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_project_project_milestones",
+  "info": {
+    "name": "Milestone",
+    "icon": "clipboard-check",
+    "description": "",
+    "displayName": "Milestone"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "task": {
+      "type": "component",
+      "repeatable": true,
+      "component": "project.task"
+    }
+  }
+}

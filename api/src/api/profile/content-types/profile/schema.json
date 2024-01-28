@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profiles",
+  "info": {
+    "singularName": "profile",
+    "pluralName": "profiles",
+    "displayName": "profile",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bio": {
+      "type": "text"
+    },
+    "profilePictureUrl": {
+      "type": "text"
+    },
+    "socialMediaLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.social-media-links"
+    },
+    "level": {
+      "type": "integer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "profile"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "profilePicture": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "config": {
+        "provider": "azure-storage"
+      }
+    }
+  }
+}

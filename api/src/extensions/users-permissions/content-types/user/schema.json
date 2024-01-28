@@ -1,0 +1,170 @@
+{
+  "kind": "collectionType",
+  "collectionName": "up_users",
+  "info": {
+    "name": "user",
+    "description": "",
+    "singularName": "user",
+    "pluralName": "users",
+    "displayName": "User"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true,
+      "configurable": false,
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "configurable": false,
+      "required": true
+    },
+    "provider": {
+      "type": "string",
+      "configurable": false
+    },
+    "password": {
+      "type": "password",
+      "minLength": 6,
+      "configurable": false,
+      "private": true
+    },
+    "resetPasswordToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmationToken": {
+      "type": "string",
+      "configurable": false,
+      "private": true
+    },
+    "confirmed": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "blocked": {
+      "type": "boolean",
+      "default": false,
+      "configurable": false
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users",
+      "configurable": false
+    },
+    "projects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::project.project",
+      "mappedBy": "user"
+    },
+    "interests": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::interest.interest",
+      "inversedBy": "users_permissions_users"
+    },
+    "idea_cards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::idea-card.idea-card",
+      "mappedBy": "author"
+    },
+    "point": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::point.point",
+      "inversedBy": "user"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "user"
+    },
+    "time_capsules": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::time-capsule.time-capsule",
+      "mappedBy": "user"
+    },
+    "discordId": {
+      "type": "string",
+      "private": true
+    },
+    "googleId": {
+      "type": "string",
+      "private": true
+    },
+    "discordUsername": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "uid"
+    },
+    "birthday": {
+      "type": "date",
+      "private": true
+    },
+    "country": {
+      "type": "string",
+      "private": true
+    },
+    "zipCode": {
+      "type": "integer",
+      "private": true
+    },
+    "hasAcceptedTermsOfService": {
+      "type": "boolean"
+    },
+    "hasSubscribedEmails": {
+      "type": "boolean"
+    },
+    "discord_avatar": {
+      "type": "string"
+    },
+    "discord_discriminator": {
+      "type": "string"
+    },
+    "job": {
+      "type": "enumeration",
+      "enum": [
+        "developer",
+        "designer",
+        "other"
+      ],
+      "default": "other"
+    },
+    "experience": {
+      "type": "enumeration",
+      "enum": [
+        "junior",
+        "mid-level",
+        "senior"
+      ]
+    },
+    "schedule": {
+      "type": "json"
+    },
+    "completedOnboarding": {
+      "type": "boolean",
+      "default": false
+    },
+    "ownedCards": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::idea-card.idea-card",
+      "mappedBy": "ideaOwner"
+    }
+  }
+}

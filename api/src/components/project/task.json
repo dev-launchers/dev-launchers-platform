@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_project_tasks",
+  "info": {
+    "name": "task",
+    "icon": "tasks",
+    "displayName": "task",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "isReached": {
+      "type": "boolean",
+      "required": true
+    },
+    "completionDate": {
+      "type": "date",
+      "required": false
+    }
+  }
+}
