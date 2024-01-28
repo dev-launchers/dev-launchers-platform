@@ -3,11 +3,29 @@ import { X } from 'lucide-react';
 import { tv } from 'tailwind-variants';
 
 export interface ModalProps {
+  /**
+   * hasCloseBtn: boolean - defaulted true, will render a close button in the top right corner of the modal
+   */
   hasCloseBtn?: boolean;
+  /**
+   * trigger: React.ReactNode - the element that will trigger the modal to open
+   */
   trigger: React.ReactNode;
+  /**
+   * header: React.ReactNode - the element that will be rendered in the top of the modal
+   */
   header: React.ReactNode;
+  /**
+   * content: React.ReactNode - the element that will be rendered in the middle of the modal
+   */
   content: React.ReactNode;
+  /**
+   * footer: React.ReactNode - the element that will be rendered at the bottom of the modal
+   */
   footer: React.ReactNode;
+  /**
+   * className: string - the className that will be applied to the root element
+   */
   className?: string;
 }
 
@@ -19,7 +37,19 @@ const modalStyles = tv({
     overlayStyle:`fixed inset-0 bg-Light-Overlay`,
   },
 });
-
+/**
+ * @description A modal is a dialog box/popup window that is displayed on top of the current page
+ * https://www.radix-ui.com/primitives/docs/components/dialog
+ * Close export is an wrapper to close the modal from a trigger element.
+ * Description export is an wrapper to add a description to the modal for accessibility.
+ * @example
+ * <Modal
+ * header={<h1>Header</h1>}
+ * trigger={<button>Trigger</button>}
+ * footer={<button>Footer</button>}
+ * content={<p>Content</p>}
+ * />
+ */
 export default function Modal({
   header,
   trigger,
@@ -39,7 +69,7 @@ export default function Modal({
           {hasCloseBtn && (
             <Dialog.Close asChild>
               <button
-                className="absolute right-7 top-7 flex h-7 w-7 items-center justify-center rounded-md shadow-xl"
+                className="absolute right-8 top-8 flex h-7 w-7 items-center justify-center rounded-md shadow-xl bg-white"
                 aria-label="Close"
               >
                 <X />
