@@ -15,7 +15,7 @@ export { Close, Description } from '@radix-ui/react-dialog';
 
 const modalStyles = tv({
   slots:{
-    rootStyle:'min-h-80 fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
+    rootStyle:'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
     overlayStyle:`fixed inset-0 bg-Light-Overlay`,
   },
 });
@@ -35,18 +35,17 @@ export default function Modal({
       <Dialog.Portal>
         <Dialog.Overlay className={overlayStyle()} />
         <Dialog.Content className={rootStyle({ className })}>
-          <Dialog.Title className="flex w-full flex-row items-center justify-between">
-            {header}
-            {hasCloseBtn && <Dialog.Close asChild>
-                <button
-                  className="flex h-7 w-7 items-center justify-center rounded-md shadow-xl"
-                  aria-label="Close"
-                >
-                  <X />
-                </button>
-              </Dialog.Close>
-            }
-          </Dialog.Title>
+          <Dialog.Title className="w-full">{header}</Dialog.Title>
+          {hasCloseBtn && (
+            <Dialog.Close asChild>
+              <button
+                className="absolute right-7 top-7 flex h-7 w-7 items-center justify-center rounded-md shadow-xl"
+                aria-label="Close"
+              >
+                <X />
+              </button>
+            </Dialog.Close>
+          )}
           <div className="my-6 min-h-36 w-full">{content}</div>
           <div className="w-full">{footer}</div>
         </Dialog.Content>

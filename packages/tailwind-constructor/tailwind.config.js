@@ -36,6 +36,7 @@ module.exports = withTV({
     extend: {
       minWidth: {
         128: "512px",
+        80: "320px",
       },
       minHeight:{
         36: "9rem",
