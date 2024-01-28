@@ -2,6 +2,13 @@ import * as React from 'react';
 import type { ThemeType } from '../../../styles/theme';
 import { Tag, CloseButton, CloseIcon } from './Styled.Tags';
 
+/**
+ * TODO - Remove this component once all references have been updated to use the `Tag` component
+ */
+
+/**
+ * @deprecated Use `Tag` instead
+ */
 export interface Props {
   onClose?: () => void;
   bgColor: keyof Pick<
@@ -22,6 +29,10 @@ export interface Props {
   children: string;
 }
 
+/**
+ * Deprecated - Use the `Tag` component instead
+ * @deprecated Use `Tag` instead
+ */
 export default function Tags({
   onClose,
   children,

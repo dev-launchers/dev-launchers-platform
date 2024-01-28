@@ -1,7 +1,7 @@
-import validateEmail from '@devlaunchers/components/utils/ValidateEmail';
 import axios from 'axios';
 import { useState } from 'react';
 import { withTheme } from 'styled-components';
+import validateEmail from '../../../../utils/ValidateEmail';
 import {
   Col,
   ErrorMessage,
@@ -52,7 +52,7 @@ const NewsLetter = (props) => {
           }}
         >
           →{' '}
-          <Secret href={process.env.NEXT_PUBLIC_FRONT_END_URL + "/hangout"}>
+          <Secret href={process.env.NEXT_PUBLIC_FRONT_END_URL + '/hangout'}>
             <span>😄</span>
           </Secret>{' '}
           ←
@@ -74,7 +74,7 @@ const NewsLetter = (props) => {
   }
   if (check) {
     return (
-      <div className="form">
+      <div>
         <h2
           style={{
             fontSize: '3rem',
@@ -130,7 +130,7 @@ const NewsLetter = (props) => {
   }
   if (isEmailAlreadyUsed) {
     return (
-      <div className="form">
+      <div>
         <h2
           style={{
             fontSize: '3rem',
@@ -185,7 +185,7 @@ const NewsLetter = (props) => {
     );
   }
   return (
-    <div className="form">
+    <div>
       <h2
         style={{
           fontSize: '3rem',
