@@ -18,10 +18,6 @@ export default function AccountDropdown(props) {
       bio: '',
       profilePictureUrl: '',
       socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
       discord: {
         id: 0,
         avatar: '',
@@ -52,9 +48,9 @@ export default function AccountDropdown(props) {
           }
         ></AccountMenuDropdownButton>
       ) : (
-        <MenuButton fontSize="1.2rem" 
+        <MenuButton fontSize="1.2rem"
           href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
-            +`?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`}>
+            + `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`}>
           Sign In{" "}
         </MenuButton>
       )}
