@@ -154,7 +154,7 @@ const Comments = {
 const Likes = {
   get: (params?: URLSearchParams) => 
     requests.get<Like[]>('/likes/', params),
-  put: (objectId: string, objectType: string, userId: string) => requests.put<Like>(objectId, objectType, userId),
+  put: (id: string, body: {}) => requests.put<Like>(id, body),
   post: (body: {}) => requests.post<Like>('/likes/', body)
 };
 

@@ -13,7 +13,7 @@ function useForceUpdate() {
 
 function DisplayComments(props) {
   const commentNodes = props.comments.map(comment => {
-    return <Comment author={comment.author} key={comment.id} id={comment.id} createdAt={comment.createdAt} publishedAt={comment.publishedAt} updatedAt={comment.updatedAt}>
+    return <Comment author={comment.author} key={comment.id} id={comment.id} createdAt={comment.createdAt} publishedAt={comment.publishedAt} updatedAt={comment.updatedAt} forIdea={props.selectedCard}>
       {comment.text}
     </Comment>
   });

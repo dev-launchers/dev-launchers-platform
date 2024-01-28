@@ -6,6 +6,7 @@ import {
 } from './StyledComments.js';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useState } from 'react';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
@@ -110,10 +111,10 @@ function SingleCommentComponent(props) {
       setLiked(false);
     } else {
       // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the comment ID, and the "Comment" object type
-      var likeData = { objectId: this.id, objectType: "Comment", userId: userData.userId };
+      var likeData = { objectId: this.id, objectType: "Comment", users_permission_user: userData.userId };
 
       try {
-        const res = await agent.Likes.post(likeData);
+        const res = agent.Likes.post(likeData);
       } catch(error) {
         console.error(error)
       }
@@ -141,7 +142,7 @@ function SingleCommentComponent(props) {
         <UserImage alt="user_image" src={`https://picsum.photos/70?random=${props.id}`} />
         <div className="textContent">
           <SingleCommentContent>
-            <h3>{props.author}</h3>
+            <h3>{props.author}</h3><h5>{props.forIdea.author?.username == props.author?.username ? "idea owner" : ""}</h5>
             {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
           </SingleCommentContent>
           <SingleCommentContent>
