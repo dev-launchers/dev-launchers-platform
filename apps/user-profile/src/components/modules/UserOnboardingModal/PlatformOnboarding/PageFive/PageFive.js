@@ -49,7 +49,7 @@ export default function PageFive() {
                     <Typography type="p" >ABOUT YOU</Typography>
                     <Typography type="h3" >Select Your Interests Below</Typography>
                 </div>
-                <Typography className="margin-0 subtitle" type="p">We’ll use this to help you find projects that match your needs</Typography>
+                <Typography className="margin-0 modal-subtitle" type="p">We’ll use this to help you find projects that match your needs</Typography>
             </Header>
             <UserInterestsContainer>
                 {interestList.map((interest) => (

@@ -23,7 +23,7 @@ export const Header = styled.div`
 	}
 
 
-	.subtitle {
+	.modal-subtitle {
 		color: #1C1C1C;
 	}
 `;

@@ -23,7 +23,7 @@ export const Header = styled.div`
 		margin: 0;
 	}
 
-	.subtitle {
+	.modal-subtitle {
     max-width: 518px;
 		color: #1C1C1C;
 	}
