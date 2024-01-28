@@ -22,7 +22,7 @@ export default function PageThree() {
                     <Typography type="p">ABOUT YOU</Typography>
                     <Typography type="h3">What Is Your Experience Level in This Role?</Typography>
                 </div>
-                <Typography className="margin-0 subtitle" type="p">We’ll use this to find you the right fit when pairing with other members</Typography>
+                <Typography className="margin-0 modal-subtitle" type="p">We’ll use this to find you the right fit when pairing with other members</Typography>
             </Header>
 
             <GroupRoleCardsContainer>
