@@ -41,6 +41,8 @@ export const RadioCardContainer = styled.div`
 `;
 
 export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
     img {
         width: 32px;
         height: 32px;

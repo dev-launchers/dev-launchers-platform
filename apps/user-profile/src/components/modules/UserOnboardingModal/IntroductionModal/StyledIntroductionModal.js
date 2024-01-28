@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const IntroductionContainer = styled.div`
-  height: 400px;
-  width: 400px;
+  height: 470px;
+  width: 470px;
   padding: 30px 45px 50px;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,9 @@ export const Header = styled.div`
 
 export const Body = styled.div`
   ${'' /* Enter styling */}
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;
 
 export const Footer = styled.div`
