@@ -40,6 +40,20 @@ Below is the command to install radix-ui/react-checkbox
     $ yarn workspace @devlaunchers/components add @radix-ui/react-checkbox
 
 
+# Boards and issues.
+
+### Issues in github
+
+When looking at issues in github, you will want to filter by Platform Enablement. 
+
+https://github.com/dev-launchers/dev-launchers-platform/issues?q=is%3Aopen+is%3Aissue+label%3A%22Platform+Enablement%22
+
+### Zenhub
+
+Platform Enablement Team uses zenhub as it's board. If this link does not work msg lead to invite you to the team.
+
+https://app.zenhub.com/workspaces/platform-enablement-63529f02029ee50018fe58c6/board
+
 ## Git branch checkout flow
 
 We will be working out of development/components. 
@@ -142,6 +156,9 @@ packages/UI/src/assets/icons/index.ts
 
 Attempt to put all documentation via jsdocs. Storybook will auto import depending on the location of the jsdocs. Make it so documenation is only in one location in code, and both storybook and jsdocs draw from the same location. 
 
+As a example - Tabs story in storybook will grab this jsdocs, at the same time it will be shown by a description in mouse hover. 
+
+![Example Image](example.png)
 
 ## Submit the branch with a new pull request.
 
