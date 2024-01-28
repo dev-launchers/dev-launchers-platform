@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
-import * as Yup from 'yup';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import Popballoon from '../Popover/Popover';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
