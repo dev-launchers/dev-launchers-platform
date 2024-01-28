@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-mdx-gfm',
+    '@storybook/addon-designs'
   ].map(getAbsolutePath),
   framework: {
     name: getAbsolutePath('@storybook/nextjs') as "@storybook/nextjs",

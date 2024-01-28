@@ -2684,6 +2684,7 @@ __metadata:
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.2.2
     "@storybook/addon-actions": ^7.2.2
+    "@storybook/addon-designs": 7.0.9
     "@storybook/addon-essentials": ^7.2.2
     "@storybook/addon-links": ^7.2.2
     "@storybook/addon-mdx-gfm": 7.2.2
@@ -2736,7 +2737,6 @@ __metadata:
     rimraf: 3.0.2
     shell-quote: 1.7.3
     storybook: 7.2.2
-    storybook-addon-designs: 6.3.1
     storybook-react-context: ^0.6.0
     styled-components: ^5.2.1
     styled-normalize: ^8.0.7
@@ -7205,6 +7205,29 @@ __metadata:
     react-dom:
       optional: true
   checksum: 5535af0a1d4d5cd58566252b93ed8f6e75afb7f1fcc46ba04ad493af6a09c48ef5baad116e4fa818859e372ba58e26dcf3f05aaac7206e7ef3c68e7cefce3d08
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-designs@npm:7.0.9":
+  version: 7.0.9
+  resolution: "@storybook/addon-designs@npm:7.0.9"
+  dependencies:
+    "@figspec/react": ^1.0.0
+  peerDependencies:
+    "@storybook/addon-docs": ^7.0.0
+    "@storybook/addons": ^7.0.0
+    "@storybook/components": ^7.0.0
+    "@storybook/manager-api": ^7.0.0
+    "@storybook/preview-api": ^7.0.0
+    "@storybook/theming": ^7.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: cd11e7e881b8fe3e05fedc4c3f777fa0c7b2e673440793640e882f1e3ae6e8d2a06234debaf0fc72dc22cb14d82049df3c147fcb03255505040725516dde7298
   languageName: node
   linkType: hard
 
@@ -36877,15 +36900,6 @@ __metadata:
   version: 2.14.2
   resolution: "store2@npm:2.14.2"
   checksum: 6f270fc5bab99b63f45fcc7bd8b99c2714b4adf880f557ed7ffb5ed3987131251165bccde425a00928aaf044870aee79ddeef548576d093c68703ed2edec45d7
-  languageName: node
-  linkType: hard
-
-"storybook-addon-designs@npm:6.3.1":
-  version: 6.3.1
-  resolution: "storybook-addon-designs@npm:6.3.1"
-  dependencies:
-    "@figspec/react": ^1.0.0
-  checksum: 63d91358540a59801028b4fe2fe61a2cad52ac2354efde0959f081379045230af4ea6dea6a8abddae2a7eb14699fd04024dec44b6fd396065e0e585d31980635
   languageName: node
   linkType: hard
 

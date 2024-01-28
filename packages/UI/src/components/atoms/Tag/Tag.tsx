@@ -29,7 +29,7 @@ const tagIconFillColor = (color = 'black', mode = 'light'): string => {
  * Tag component variations
  */
 const tag = tv({
-  base: 'inline-flex items-center font-medium text-white rounded-full active:opacity-80',
+  base: 'inline-flex items-center rounded-full font-medium text-white active:opacity-80',
   variants: {
     color: {
       white: 'bg-white text-black',
@@ -42,11 +42,11 @@ const tag = tv({
       uranus: 'bg-uranus-500 text-black',
     },
     size: {
-      xs: 'px-2 py-1 gap-1 text-xs',
-      sm: 'px-2 py-1 gap-1 text-sm',
-      md: 'px-3 py-2 gap-2 text-base',
-      lg: 'px-4 py-2 gap-2 text-lg',
-      xl: 'px-4 py-3 gap-2 text-xl',
+      xs: 'gap-1 px-2 py-1 text-xs',
+      sm: 'gap-1 px-2 py-1 text-sm',
+      md: 'gap-2 px-3 py-2 text-base',
+      lg: 'gap-2 px-4 py-2 text-lg',
+      xl: 'gap-2 px-4 py-3 text-xl',
     },
     selected: {
       true: 'cursor-pointer',
@@ -186,7 +186,7 @@ const tag = tv({
     {
       color: 'cosmic',
       mode: 'dark',
-      className: 'text-black bg-brand-alt-cosmic-300',
+      className: 'bg-brand-alt-cosmic-300 text-black',
     },
     {
       color: 'jupiter',
@@ -196,12 +196,12 @@ const tag = tv({
     {
       color: 'nebula',
       mode: 'dark',
-      className: 'text-black bg-brand-alt-nebula-300',
+      className: 'bg-brand-alt-nebula-300 text-black',
     },
     {
       color: 'neptune',
       mode: 'dark',
-      className: 'text-black bg-neptune-300',
+      className: 'bg-neptune-300 text-black',
     },
     {
       color: 'saturn',
