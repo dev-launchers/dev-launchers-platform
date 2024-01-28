@@ -15,7 +15,7 @@ export const ImgButton = styled.button`
   cursor: pointer;
   border: 0 none;
   padding: 0;
-  margin-top: -1.9rem;
+  margin-top: -3rem;
   width: 22.5rem;
 `;
 
@@ -29,7 +29,7 @@ border-radius: 1rem;
 z-index: 1;
 position: relative;
 left: 1.5rem;
-top: 1.5rem;
+top: 1rem;
 padding: 0.2rem 0.5rem;
 
 font-family: 'Nunito Sans';
