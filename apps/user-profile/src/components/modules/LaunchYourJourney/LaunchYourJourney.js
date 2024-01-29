@@ -1,9 +1,11 @@
 import PageBody from "../../common/PageBody"
 import { Typography} from '@devlaunchers/components/components/atoms';
-import { PageContainer, Header, SubHeader, Footer } from "./StyledLaunchYourJourney";
+import { PageContainer, Header, SubHeader, Footer, Icons} from "./StyledLaunchYourJourney";
 import { JourneySectionRight, JourneySectionLeft } from "./JourneySection/JourneySection";
 import header from "./../../../images/Onboarding/EmailTemplate/Header.png";
-import footer from "./../../../images/Onboarding/EmailTemplate/Footer.png"
+import rocket from "./../../../images/Onboarding/EmailTemplate/rocket-icon.png"
+import insta from "./../../../images/Onboarding/EmailTemplate/insta-icon.png"
+import facebook from "./../../../images/Onboarding/EmailTemplate/facebook-icon.png"
 
 export default function LaunchYourJourney() {
     return(
@@ -52,11 +54,18 @@ export default function LaunchYourJourney() {
                 />
             </PageBody>
             <Footer>
-                <img src={footer}/>
+                <Icons>
+                    <img src={insta} style={{padding:"0px 10px"}}/>
+                    <img src={rocket} style={{padding:"0px 10px"}}/>
+                    <img src={facebook} style={{padding:"0px 10px"}}/>
+                </Icons>
+                <Typography type="pLarge" style={{color: "white"}}>Join - Create - Learn - Dream - Support</Typography>
+                <Typography type="pSmall" style={{color: "white"}}>Dev Launchers</Typography>
+                <Typography type="pSmall" style={{color: "white"}}>Austin, TX</Typography>
+                <Typography type="pSmall" style={{color: "white"}}>Terms of Service - Privacy Policy</Typography>
             </Footer>
         </PageContainer>
         
-
         </>
     );
 }

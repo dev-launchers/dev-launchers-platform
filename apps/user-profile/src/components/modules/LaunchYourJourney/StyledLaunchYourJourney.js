@@ -17,6 +17,16 @@ export const SubHeader = styled.div`
   align-text: center;
 `;
 
+export const Icons = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 export const Footer = styled.div`
-  margin-top: 50px;
+  padding: 10px 5px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
