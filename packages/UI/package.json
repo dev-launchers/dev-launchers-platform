@@ -103,6 +103,7 @@
     "rimraf": "3.0.2",
     "shell-quote": "1.7.3",
     "storybook": "7.2.2",
+    "storybook-addon-pseudo-states": "2.1.2",
     "styled-components": "^5.2.1",
     "ts-jest": "28.0.7",
     "type-fest": "4.3.1",
