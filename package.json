@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": [
+    "api",
     "apps/*",
     "packages/*"
   ],
@@ -107,7 +108,7 @@
     "typescript"
   ],
   "engines": {
-    "node": "^14.13.1 || >=16.0.0",
+    "node": ">=18.x.x <=20.x.x",
     "yarn": ">=1.22.0",
     "npm": "please-use-yarn"
   },

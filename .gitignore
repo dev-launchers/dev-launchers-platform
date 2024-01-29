@@ -72,3 +72,13 @@ storybook-static
 
 # Tailwind
 packages/tailwind-constructor/tailwind.css
+
+#Strapi
+
+api/.cache/*
+
+api/.tmp/*
+
+.strapi-updater.json
+
+documentation/
