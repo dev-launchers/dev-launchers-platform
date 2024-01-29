@@ -11,6 +11,10 @@ import type { VariantProps } from 'tailwind-variants';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../utils/classesMerger';
 
+/**
+ * Pagination with page navigation, next and previous links.
+ * @see http://localhost:6006/?path=/docs/components-pagination--docs
+*/
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
     role="navigation"
@@ -50,9 +54,19 @@ const paginationLinkStyles = tv({
     },
   },
 });
-type PaginationLinkProps = VariantProps<typeof paginationLinkStyles> &
-  React.ComponentProps<'a'>;
+interface PaginationLinkProps
+  extends VariantProps<typeof paginationLinkStyles>,
+    React.ComponentProps<'a'> {
+      /**
+       * determines whether the link is for the current page or not
+       */
+      isActive?: boolean;
+    }
 
+/**
+ * Pagination link.
+ * @see http://localhost:6006/?path=/docs/components-pagination-paginationnumbers--docs
+*/
 const PaginationLink = ({
   className,
   isActive = false,
@@ -71,11 +85,16 @@ const PaginationLink = ({
 );
 PaginationLink.displayName = 'PaginationLink';
 
+/**
+ * Pagination jump.
+ * @see http://localhost:6006/?path=/docs/components-pagination-paginationjumps--docs
+*/
 const PaginationJump = ({
   className,
   destination,
   ...props
 }: React.ComponentProps<'a'> & {
+  /** Renders the appropriate icon for the destination jump */
   destination: 'first' | 'next' | 'previous' | 'last';
 }) => (
   <PaginationLink
