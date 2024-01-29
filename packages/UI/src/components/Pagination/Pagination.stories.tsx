@@ -21,9 +21,9 @@ type Story = StoryObj<typeof Pagination>;
  * to learn how to use render functions.
  */
 
-export const Primary: Story = {
-  render: () => (
-    <Pagination>
+export const WithJumps: Story = {
+  args: {
+    children: (
       <PaginationContent>
         <div className="flex gap-2">
           <PaginationItem>
@@ -58,6 +58,36 @@ export const Primary: Story = {
           </PaginationItem>
         </div>
       </PaginationContent>
-    </Pagination>
-  ),
+    ),
+  },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/rvdnSOeHdjODE0U7xdNTR9/DL-Universal-Design-System-(NEW)?type=design&node-id=12-3480&mode=dev',
+    },
+  },
+};
+
+export const WithoutJumps: Story = {
+  args: {
+    children: (
+      <PaginationContent>
+        <div className="flex gap-2">
+          <PaginationItem>
+            <PaginationLink href="#">1</PaginationLink>
+          </PaginationItem>
+
+          <PaginationItem>
+            <PaginationLink href="#" isActive>
+              2
+            </PaginationLink>
+          </PaginationItem>
+
+          <PaginationItem>
+            <PaginationLink href="#">3</PaginationLink>
+          </PaginationItem>
+        </div>
+      </PaginationContent>
+    ),
+  },
 };
