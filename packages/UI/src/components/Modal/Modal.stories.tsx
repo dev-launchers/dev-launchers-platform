@@ -58,7 +58,7 @@ const RoleContent = (
         <button
           key={i}
           className={`rounded-3xl border-2 border-solid border-black p-4 font-nunito-sans capitalize ${
-            i === 0 ? ' bg-black text-white' : 'bg-white text-black '
+            i === 0 ? 'bg-black text-white' : 'bg-white text-black '
           } `}
         >
           {' '}
@@ -69,7 +69,7 @@ const RoleContent = (
   </div>
 );
 const RoleFooter = (
-  <div className="flex h-10 w-full  items-center justify-between">
+  <div className="flex h-10 w-full items-center justify-between">
     <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
     <div className="flex gap-4">
       <Button buttonType="primary" buttonSize="standard">
@@ -110,7 +110,7 @@ const ToSContent = (
 );
 const ToSFooter = (
   <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center">
       <Checkbox />
       <p className="ml-2">I've read the terms of services</p>
     </div>
@@ -128,7 +128,7 @@ const PrimaryTriggerBtn = (
   </Button>
 );
 const PrimaryHeader = (
-  <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider ">
+  <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
     {' '}
     Subscribe to our newsletter{' '}
   </h3>
