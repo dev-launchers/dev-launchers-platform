@@ -63,7 +63,7 @@ export default function Modal({
           {hasCloseBtn && (
             <Dialog.Close asChild>
               <button
-                className="absolute right-8 top-8 flex h-7 w-7 items-center justify-center rounded-md shadow-xl bg-white"
+                className="absolute right-8 top-8 flex h-7 w-7 items-center justify-center rounded-md bg-white drop-shadow-xl"
                 aria-label="Close"
               >
                 <X />
