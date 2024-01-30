@@ -30,28 +30,20 @@ export interface ModalProps {
   className?: string;
 }
 
-
 /**
  * @description A modal is a dialog box/popup window that is displayed on top of the current page
  * https://www.radix-ui.com/primitives/docs/components/dialog
  * Close export is an wrapper to close the modal from a trigger element.
  * Description export is an wrapper to add a description to the modal for accessibility.
- * @example
- * <Modal
- * header={<h1>Header</h1>}
- * trigger={<button>Trigger</button>}
- * footer={<button>Footer</button>}
- * content={<p>Content</p>}
- * />
  */
-export default function Modal({
+const Modal = ({
   header,
   trigger,
   footer,
   content,
   className,
   hasCloseBtn = true,
-}: ModalProps) {
+}: ModalProps) => {
   const { rootStyle, overlayStyle } = modalStyles();
   return (
     <Dialog.Root>
@@ -76,7 +68,9 @@ export default function Modal({
       </Dialog.Portal>
     </Dialog.Root>
   );
-}
+};
+
+export default Modal;
 
 const modalStyles = tv({
   slots:{

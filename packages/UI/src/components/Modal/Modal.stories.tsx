@@ -3,6 +3,13 @@ import { Button } from 'components/atoms';
 import { Checkbox } from './../Checkbox';
 import Modal, { Close, Description } from './Modal';
 
+/**
+ * @description A modal is a dialog box/popup window that is displayed on top of the current page
+ * https://www.radix-ui.com/primitives/docs/components/dialog
+ * Close export is an wrapper to close the modal from a trigger element.
+ * Description export is an wrapper to add a description to the modal for accessibility.
+ */
+
 const meta: Meta<typeof Modal> = {
   component: Modal,
 };
@@ -15,18 +22,16 @@ type Story = StoryObj<typeof Modal>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
+
 const EmptyTriggerBtn = (
   <Button buttonType="primary" buttonSize="standard">
     Empty
   </Button>
 );
-
 const EmptyHeader = (
   <h3 className="h-8 w-full bg-grayscale-100 uppercase"> </h3>
 );
-
 const EmptyContent = <div className="h-36 w-full bg-grayscale-100"></div>;
-
 const EmptyFooter = <div className="h-10 w-full bg-grayscale-100"></div>;
 
 const RoleTriggerBtn = (
@@ -34,7 +39,6 @@ const RoleTriggerBtn = (
     Role
   </Button>
 );
-
 const RoleHeader = (
   <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
     Select your role
@@ -64,7 +68,6 @@ const RoleContent = (
     })}
   </div>
 );
-
 const RoleFooter = (
   <div className="flex h-10 w-full  items-center justify-between">
     <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
@@ -84,14 +87,12 @@ const ToSTriggerBtn = (
     ToS
   </Button>
 );
-
 const ToSHeader = (
   <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
     {' '}
     Terms of services{' '}
   </h3>
 );
-
 const ToSContent = (
   <div className="h-36 max-w-md overflow-y-auto font-nunito-sans">
     <p className="pr-6 text-base">
@@ -107,7 +108,6 @@ const ToSContent = (
     </p>
   </div>
 );
-
 const ToSFooter = (
   <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
     <div className="flex items-center justify-center ">
@@ -127,14 +127,12 @@ const PrimaryTriggerBtn = (
     Subscribe!
   </Button>
 );
-
 const PrimaryHeader = (
   <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider ">
     {' '}
     Subscribe to our newsletter{' '}
   </h3>
 );
-
 const PrimaryContent = (
   <div className="">
     <p className="w-96 pl-8 font-nunito-sans">
@@ -158,7 +156,6 @@ const PrimaryContent = (
     </div>
   </div>
 );
-
 const PrimaryFooter = (
   <div className="flex items-center justify-end gap-6">
     <Close>
@@ -175,7 +172,6 @@ const PrimaryFooter = (
     </Close>
   </div>
 );
-
 
 export const Primary: Story = {
   render: () => (
