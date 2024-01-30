@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { tv } from 'tailwind-variants';
+export { Close, Description } from '@radix-ui/react-dialog';
 
 export interface ModalProps {
   /**
@@ -29,14 +30,7 @@ export interface ModalProps {
   className?: string;
 }
 
-export { Close, Description } from '@radix-ui/react-dialog';
 
-const modalStyles = tv({
-  slots:{
-    rootStyle:'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
-    overlayStyle:`fixed inset-0 bg-Light-Overlay`,
-  },
-});
 /**
  * @description A modal is a dialog box/popup window that is displayed on top of the current page
  * https://www.radix-ui.com/primitives/docs/components/dialog
@@ -83,3 +77,10 @@ export default function Modal({
     </Dialog.Root>
   );
 }
+
+const modalStyles = tv({
+  slots:{
+    rootStyle:'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
+    overlayStyle:`fixed inset-0 bg-Light-Overlay`,
+  },
+});
