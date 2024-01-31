@@ -1,5 +1,7 @@
-import { GroupContainer,IndividualContainer,TextContainer, IconImg } from "./StyledJourneySection";
+import { GroupContainer,IndividualContainer,TextContainer, IconImg, LinkButton } from "./StyledJourneySection";
 import { Typography, Button } from '@devlaunchers/components/components/atoms';
+
+
 
 /**
  * @description  This component renders the JourneySection Component.
@@ -12,8 +14,12 @@ export function JourneySectionRight({
     iconImg,
     title,
     subtitle,
-    buttonTitle
+    buttonTitle,
+    clickFunction
 }) {
+
+
+
     return(
         <>
             <GroupContainer>
@@ -22,7 +28,7 @@ export function JourneySectionRight({
                     <TextContainer>
                         <Typography type="pLarge" style={{color: "white"}}>{title}</Typography>
                         <Typography type="pSmall" style={{color: "white"}}>{subtitle}</Typography>
-                        <Button buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
+                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
                     </TextContainer>
                 </IndividualContainer>
             </GroupContainer>
@@ -34,7 +40,8 @@ export function JourneySectionLeft({
     iconImg,
     title,
     subtitle,
-    buttonTitle
+    buttonTitle,
+    clickFunction
 }) {
     return(
         <>
@@ -43,7 +50,7 @@ export function JourneySectionLeft({
                     <TextContainer>
                         <Typography type="pLarge" style={{color: "white"}}>{title}</Typography>
                         <Typography type="pSmall" style={{color: "white"}}>{subtitle}</Typography>
-                        <Button buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
+                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
                     </TextContainer>
                     <IconImg iconImg={iconImg} style={{width: "50%", height:"70%"}}/>
                 </IndividualContainer>

@@ -6,8 +6,29 @@ import header from "./../../../images/Onboarding/EmailTemplate/Header.png";
 import rocket from "./../../../images/Onboarding/EmailTemplate/rocket-icon.png"
 import insta from "./../../../images/Onboarding/EmailTemplate/insta-icon.png"
 import facebook from "./../../../images/Onboarding/EmailTemplate/facebook-icon.png"
+import { useRouter } from 'next/router'
 
 export default function LaunchYourJourney() {
+
+
+    const router = useRouter();
+
+    const CreatePage = (e) => {
+        router.push('/create')
+    };
+
+    const IdeaSpacePage = (e) => {
+    router.push('/ideaspace')
+    };
+
+    const LearnPage = (e) => {
+    router.push('/learn')
+    };
+
+    const JoinPage = (e) => {
+    router.push('/join')
+    };
+
     return(
         <>
 
@@ -27,6 +48,8 @@ export default function LaunchYourJourney() {
 					title="Powering your Profile"
 					subtitle="Shape your stunning professional profile and shine bright like a supernova💫. Showcase your unique talents and interests for the galaxy to see."
                     buttonTitle="Create Your Profile"
+                    buttonPath='create'
+                    clickFunction={CreatePage}
                 />
                 <JourneySectionLeft
                     iconImg='Journey2'
@@ -39,18 +62,21 @@ export default function LaunchYourJourney() {
 					title="Dream with IdeaSpace"
 					subtitle="Dive into our project ideation portal, IdeaSpace, and blast us away with your incredible ideas. Dream bigger than the cosmos!"
                     buttonTitle="Explore Ideaspace"
+                    clickFunction={IdeaSpacePage}
                 />
                 <JourneySectionLeft
                     iconImg='Journey4'
 					title="Learn Code and Design"
 					subtitle="Keep growing and thriving with our wealth of resource tools for code and design. Our devotion to continuous learning fuels your journey across the development cosmos."
                     buttonTitle="Start Learning Now"
+                    clickFunction={LearnPage}
                 />
                 <JourneySectionRight
                     iconImg='Journey5'
 					title="Join Forces"
 					subtitle="Collaborate and gain real-world experience to reach Core Member status. Become a part of a platform product team team and defy gravitational limitations!🚀"
                     buttonTitle="Become A Core Member"
+                    clickFunction={JoinPage}
                 />
             </PageBody>
             <Footer>
