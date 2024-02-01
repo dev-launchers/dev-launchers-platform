@@ -20,7 +20,7 @@ export default function ConfirmationPage() {
           review. After the product owner reviews your application they will
           reach out through the email address you have provided.
         </Message>
-        <Link href="/join" passHref>
+        <Link href="/join" passHref legacyBehavior>
           <Button as="a">Return to Recruiting Main Page</Button>
         </Link>
       </MessageWrapper>

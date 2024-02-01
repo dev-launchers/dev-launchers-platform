@@ -48,7 +48,7 @@ export default function ProjectDetails({
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
-        <Link href={"/join"} passHref>
+        <Link href={"/join"} passHref legacyBehavior>
           <BackButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"

@@ -7,10 +7,10 @@ import GlobalStyle from '@devlaunchers/components/src/styles/global';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '@devlaunchers/components/src/styles/theme';
 
-// import Footer from '@devlaunchers/components/Footer';
-// import Header from '@devlaunchers/components/components/Header';
-
-
+import Footer from '@devlaunchers/components/src/components/organisms/Footer';
+import Header from '@devlaunchers/components/src/components/organisms/Navigation';
+import '@devlaunchers/tailwind/tailwind.css';
+import { UserDataProvider } from '@devlaunchers/components/src/context/UserDataContext';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -19,41 +19,42 @@ const hashRedirect = (router) => {
   }
 };
 
-function MyApp(props) {
+function MyApp({ Component, pageProps }) {
   const router = useRouter();
   hashRedirect(router);
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <div>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+      <UserDataProvider>
+        <GlobalStyle />
+        <div>
+          <Script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){window.dataLayer.push(arguments);}
               gtag('js', new Date());
 
               gtag('config', 'AW-599284852');
             `}
-        </Script>
-        <div className="App">
-          <ToastContainer
-            className="toast-container"
-            toastClassName="toast"
-            progressClassName="toast-progress"
-          />
+          </Script>
+          <div className="App">
+            <ToastContainer
+              className="toast-container"
+              toastClassName="toast"
+              progressClassName="toast-progress"
+            />
+          </div>
+          <div>
+            <Header />
+            <Component {...pageProps} />
+            <Footer />
+          </div>
         </div>
-        <div>
-          {/* <Header /> */}
-          {/* <Component {...pageProps} />  */}
-          {props.children}
-          {/* <Footer /> */}
-        </div>
-      </div>
+      </UserDataProvider>
     </ThemeProvider>
   );
 }
