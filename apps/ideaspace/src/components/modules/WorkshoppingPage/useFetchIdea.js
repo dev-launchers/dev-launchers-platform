@@ -1,15 +1,10 @@
 import { useState, useEffect } from 'react';
 import { agent } from '@devlaunchers/utility';
-import { cleanData } from '../../../utils/StrapiHelper';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import { cleanData, cleanDataList } from '../../../utils/StrapiHelper';
 
-export const useFetchIdea = (ideaId) => {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+export const useFetchIdea = (ideaId, setComments) => {
+  let { userData } = useUserDataContext();
 
   const [hidden, setHidden] = useState(false);
   const [getError, setGetError] = useState(false);
@@ -35,12 +30,28 @@ export const useFetchIdea = (ideaId) => {
     author: {},
   });
 
+  // requests data from the backend
   useEffect(async () => {
     try {
       if (ideaId) {
         setLoading(true);
 
         const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+
+        const commentResponse = data?.comments?.data;
+        if (commentResponse !== undefined) {
+          setComments(cleanDataList(commentResponse))
+        }
+
+        const author = data?.author?.data;
+        if (author !== undefined) {
+          data.author = cleanData(author);
+        }
+
+        const ideaOwner = data?.ideaOwner?.data;
+        if (ideaOwner !== undefined) {
+          data.ideaOwner = cleanData(ideaOwner);
+        }
 
         setLoading(false);
 

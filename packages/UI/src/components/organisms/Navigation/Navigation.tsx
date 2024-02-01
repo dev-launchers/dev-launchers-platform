@@ -81,7 +81,7 @@ const Navigation = () => {
 
         </Link>
         <ul>
-          <div className="hidden lg:flex lg:gap-12 lg:items-baseline">
+          <div className="hidden lg:flex lg:items-baseline lg:gap-12">
             {Object.entries(links).map(([name, href], i) => {
               if (Array.isArray(href))
                 return (
@@ -129,7 +129,7 @@ const Navigation = () => {
             </Button>
           </div>
         ) : (
-          <div className="hidden text-white lg:flex lg:gap-4 lg:items-center">
+          <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
             <img
               width="36"
               height="33"
@@ -148,6 +148,8 @@ const Navigation = () => {
                       <span>logout</span>
                     </div>
                   ),
+                  onClick: Logout,
+                  as: 'button',
                 },
               ]}
               toggleElementProps={{ style: { color: 'white' } }}

@@ -9,7 +9,6 @@ import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '@devlaunchers/components/src/styles/theme';
 
-import useMockDataInDevelopment from '../utils/useMockData';
 import {
   Footer,
   Navigation,
@@ -20,6 +19,7 @@ import { UserDataProvider } from '@devlaunchers/components/src/context/UserDataC
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer"
 */
+import useMockDataInDevelopment from "../utils/useMockData";
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
