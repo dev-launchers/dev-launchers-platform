@@ -6,12 +6,12 @@ import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
+import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type {
   links as Links,
   accountOptions as AccountOptions,
-} from './Navigation';
-import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
-import type { NavigationProps } from '.';
+  NavigationProps,
+} from '.';
 
 interface MobileNavigationProps {
   links: typeof Links;
@@ -67,11 +67,9 @@ const MobileNavigation = ({
                 <Typography type="h2">Hi {user.name}</Typography>
               </Box>
             ) : (
-              (<Link href="/" onClick={() => setIsSidebarExpanded?.(false)}>
-
+              <Link href="/" onClick={() => setIsSidebarExpanded?.(false)}>
                 <img width="139.26" height="114" src={logo} alt="logo" />
-
-              </Link>)
+              </Link>
             )}
           </Box>
           <ul>
