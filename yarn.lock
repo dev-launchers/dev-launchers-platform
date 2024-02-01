@@ -2739,6 +2739,7 @@ __metadata:
     "@devlaunchers/models": "workspace:*"
     "@devlaunchers/tailwind": "workspace:*"
     "@devlaunchers/utility": "workspace:*"
+    "@radix-ui/react-checkbox": 1.0.4
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.6.4
     "@storybook/addon-actions": ^7.6.4
@@ -2782,6 +2783,7 @@ __metadata:
     formik: ^2.2.9
     framer-motion: 6.5.1
     jest: ^27.0.6
+    lucide-react: 0.314.0
     next: 13
     npm-run-all: 4.1.5
     polished: ^4.2.2
@@ -6074,6 +6076,33 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 8cca086f0dbb33360e3c0142adf72f99fc96352d7086d6c2356dbb2ea5944cfb720a87d526fc48087741c602cd8162ca02b0af5e6fdf5f56d20fddb44db8b4c3
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-checkbox@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@radix-ui/react-checkbox@npm:1.0.4"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/primitive": 1.0.1
+    "@radix-ui/react-compose-refs": 1.0.1
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-presence": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+    "@radix-ui/react-use-controllable-state": 1.0.1
+    "@radix-ui/react-use-previous": 1.0.1
+    "@radix-ui/react-use-size": 1.0.1
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 6dac5bddd9e1c42b149555501440918d9eae70da13b6d8539c3bf46b6c07681119d865d2106a43f729884ae8e2043bedc34c4d00a09a527b3bf0feade088d188
   languageName: node
   linkType: hard
 
@@ -26846,6 +26875,15 @@ __metadata:
   version: 7.18.3
   resolution: "lru-cache@npm:7.18.3"
   checksum: e550d772384709deea3f141af34b6d4fa392e2e418c1498c078de0ee63670f1f46f5eee746e8ef7e69e1c895af0d4224e62ee33e66a543a14763b0f2e74c1356
+  languageName: node
+  linkType: hard
+
+"lucide-react@npm:0.314.0":
+  version: 0.314.0
+  resolution: "lucide-react@npm:0.314.0"
+  peerDependencies:
+    react: ^16.5.1 || ^17.0.0 || ^18.0.0
+  checksum: 57b1fe980ec73304dc9b17264515cb8a4627a5bbb88e54de7bac91115740ccc960ed9f3b57145c8482a8ce198289a8e79f53326369572331adbe2df4161f99e6
   languageName: node
   linkType: hard
 

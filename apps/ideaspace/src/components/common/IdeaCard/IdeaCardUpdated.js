@@ -58,10 +58,10 @@ const IdeaCardUpdated = ({
 
     return (
         <atoms.Box alignItems='center' style={{ marginTop: '0.5rem' }} >
-          <img alt='timeSvg' src={timeSvg} />
-          <atoms.Typography type='p'>
+        <img alt='timeSvg' src={timeSvg} />
+        <atoms.Typography type='p'>
             &nbsp;UPDATED:&nbsp;{updated}
-          </atoms.Typography>
+        </atoms.Typography>
         </atoms.Box>
     )
 };
