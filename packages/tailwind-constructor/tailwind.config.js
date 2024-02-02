@@ -8,7 +8,7 @@ module.exports = withTV({
   content: {
     relative: true,
     files: [
-      '../UI/src/components/**/*.{html,js,jsx,tsx}',
+      '../UI/src/components/**/*.{html,js,jsx,tsx,mdx}',
       '../../apps/app/src/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/dev-recruiters/src/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/ideaspace/src/**/*.{html,js,jsx,ts,tsx}',
@@ -21,6 +21,9 @@ module.exports = withTV({
     colors: {
       'current': 'currentColor',
       ...filterTokensByType('color', tokens)
+    },
+    data: {
+      checked: 'state="checked"', //data-[state=checked]
     },
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),

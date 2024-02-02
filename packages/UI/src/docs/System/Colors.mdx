@@ -1,0 +1,47 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import JSON from '@devlaunchers/tailwind/output/core.json';
+import { filterTokensByType } from '@devlaunchers/tailwind/fns';
+
+<Meta title="Colors" />
+
+# Colors
+
+<ColorPalette>
+  {Object.entries(filterTokensByType('color', JSON)).map(([rootKey, value]) => {
+    let isNestedElementOfTypeObject;
+    if (typeof value === 'object') {
+      isNestedElementOfTypeObject = Object.values(value).some(
+        (element) => typeof element === 'object'
+      );
+      if (isNestedElementOfTypeObject) {
+        return Object.entries(value).map(([subtitle, colors]) => {
+          //TODO: Discuss with design team the possiblity of having these values two levels nested maximum
+          if (
+            ['alert', 'warning', 'success', 'notification', 'error'].includes(
+              subtitle
+            )
+          ) {
+            return Object.values(colors).map((obj) => (
+              <ColorItem
+                title={rootKey}
+                subtitle={subtitle}
+                colors={Object.values(obj)}
+              />
+            ));
+          } else {
+            // for when colors are two levels level nested
+            return (
+              <ColorItem title={rootKey} subtitle={subtitle} colors={colors} />
+            );
+          }
+        });
+      } else {
+        // for when colors are one level nested
+        return <ColorItem title={rootKey} colors={value} />;
+      }
+    } else {
+      // for when colors are in the root level
+      return <ColorItem title={rootKey} colors={[value]} />;
+    }
+  })}
+</ColorPalette>

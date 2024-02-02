@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
-import * as Yup from 'yup';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import Popballoon from '../Popover/Popover';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
@@ -81,7 +79,7 @@ const IdeaForm = ({
 								<Field
 									required
 									as={organisms.OpenResponse}
-									label='What is your idea?&nbsp;'
+									label='What Is Your Idea?&nbsp;'
 									placeholder='What is your product idea? Would it be helpful or fun? Who would use it and why?'
 									id='description'
 									name='description'
@@ -95,7 +93,7 @@ const IdeaForm = ({
 								<Field
 									required
 									as={organisms.OpenResponse}
-									label='Do you have any relevant experience in Development or design?&nbsp;'
+									label='Do You Have Any Relevant Experience in Development or Design?&nbsp;'
 									placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Devlaunchers and won't be publicly shown in the workshopping page."
 									id='experience'
 									name='experience'
@@ -108,7 +106,7 @@ const IdeaForm = ({
 							<atoms.Box flexDirection='column'>
 								<Field
 									as={organisms.OpenResponse}
-									label='who do you think your idea is helpful to?'
+									label='Who Do You Think Your Idea is Helpful To?'
 									placeholder='Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc.'
 									id='targetAudience'
 									name='targetAudience'
@@ -120,7 +118,7 @@ const IdeaForm = ({
 								<Field
 									required
 									as={organisms.OpenResponse}
-									label='What Features would your Product have?&nbsp;'
+									label='What Features Would Your Product Have?&nbsp;'
 									placeholder='A list of possible features your product could have.'
 									id='features'
 									name='features'
@@ -132,7 +130,7 @@ const IdeaForm = ({
 							</atoms.Box>
 							<Field
 								as={organisms.OpenResponse}
-								label='Anything else you would like to share with us?'
+								label='Anything Else You Would Like to Share With Us?'
 								placeholder='Want to share something else not listed above?'
 								id='extraInfo'
 								name='extraInfo'
@@ -141,7 +139,7 @@ const IdeaForm = ({
 							/>
 							<Field
 								as={organisms.FormField}
-								label='Do you have a catchy tagline for this idea submission?'
+								label='Do You Have a Catchy Tagline for This Idea Submission?'
 								placeholder='Your Tagline'
 								id='tagline'
 								name='tagline'
@@ -149,7 +147,7 @@ const IdeaForm = ({
 
 							<atoms.Box flexDirection='column'>
 								<atoms.Typography type='label' style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
-									what level of involvement do you want to have after submission?<span style={{color:"red"}}>&nbsp;*</span>
+									What Level of Involvement Do You Want to Have After Submission?<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 								<atoms.Box flexDirection='row' alignItems='flex-end' justifyContent='space-between'>
 									<Field
@@ -159,6 +157,7 @@ const IdeaForm = ({
 										name="involveLevel" 
 										style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}
 									>
+										<option value="" disabled>Select desired level of involvement</option>
 										<option value="none">I don't want to be involved after submitting</option>
 										<option value="minimum">I want to “own” this idea to help with workshopping and designing until it become a project</option>
 										<option value="medium">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
@@ -177,7 +176,7 @@ const IdeaForm = ({
 							</atoms.Box>
 
 							<atoms.Typography type='p'>
-								After submitting your idea will be reviewed and enter the workshopping stage!
+								After submitting your idea, it will be reviewed and enter the workshopping stage!
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>

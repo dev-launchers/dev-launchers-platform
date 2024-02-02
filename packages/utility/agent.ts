@@ -17,6 +17,7 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     }
 //     return config;
 // });
+axios.defaults.withCredentials = true
 
 axios.interceptors.response.use(
   async (response) => {
@@ -138,6 +139,7 @@ const User = {
 
 const Comments = {
   put: (id: string, body: {}) => requests.put<Comment>(id, body),
+  post: (body: Comment) => requests.post<Comment>("comments", body),
 };
 
 const Likes = {
