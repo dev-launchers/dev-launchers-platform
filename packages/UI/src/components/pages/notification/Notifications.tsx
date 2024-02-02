@@ -39,6 +39,10 @@ const Cog = () => (
   </svg>
 );
 
+const NotificationItemSkeleton = () => (
+  <div className="my-4 h-[116px] bg-gray-600"></div>
+);
+
 type NotificationsProps = VariantProps<typeof NotificationsStyles>;
 
 const Notifications = ({}: NotificationsProps) => {
@@ -74,20 +78,29 @@ const Notifications = ({}: NotificationsProps) => {
           <hr className="h-px self-stretch bg-grayscale-100" />
           <div className={filtersContainer()}>
             <Tabs
+              className="grow"
               defaultValue="tab1"
               triggers={
-                <div>
-                  <Trigger value="tab1">Tab 1</Trigger>
-                  <Trigger value="tab2">Tab 2</Trigger>
+                <div className="flex">
+                  <Trigger className="grow" value="tab1">
+                    Unread
+                  </Trigger>
+                  <Trigger className="grow" value="tab2">
+                    Read
+                  </Trigger>
                 </div>
               }
             >
               <>
                 <Content value="tab1">
-                  <h1>hello from tab 1</h1>
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <NotificationItemSkeleton key={num} />
+                  ))}
                 </Content>
                 <Content value="tab2">
-                  <h1>hello from tab 2</h1>
+                  {[1, 2, 3].map((num) => (
+                    <NotificationItemSkeleton key={num} />
+                  ))}
                 </Content>
               </>
             </Tabs>
