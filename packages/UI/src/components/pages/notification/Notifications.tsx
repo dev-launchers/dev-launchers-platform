@@ -3,6 +3,13 @@ import * as React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Grid from '../../atoms/Grid/Grid';
 import Tabs, { Trigger, Content } from '../../molecules/Tab/Tab';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationJump,
+  PaginationLink,
+} from '../../Pagination/Pagination';
 
 const NotificationsStyles = tv({
   slots: {
@@ -106,7 +113,39 @@ const Notifications = ({}: NotificationsProps) => {
             </Tabs>
           </div>
         </div>
-        <div></div>
+        <Pagination>
+          <PaginationContent>
+            <div className="flex gap-2">
+              <PaginationItem>
+                <PaginationJump destination="first" href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationJump destination="previous" href="#" />
+              </PaginationItem>
+            </div>
+            <div className="flex gap-2">
+              <PaginationItem>
+                <PaginationLink href="#" isActive>
+                  1
+                </PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">2</PaginationLink>
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationLink href="#">3</PaginationLink>
+              </PaginationItem>
+            </div>
+            <div className="flex gap-2">
+              <PaginationItem>
+                <PaginationJump destination="next" href="#" />
+              </PaginationItem>
+              <PaginationItem>
+                <PaginationJump destination="last" href="#" />
+              </PaginationItem>
+            </div>
+          </PaginationContent>
+        </Pagination>
       </div>
     </Grid>
   );
