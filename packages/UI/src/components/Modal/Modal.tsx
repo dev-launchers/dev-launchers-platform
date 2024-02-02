@@ -5,27 +5,27 @@ export { Close, Description } from '@radix-ui/react-dialog';
 
 export interface ModalProps {
   /**
-   * hasCloseBtn: boolean - defaulted true, will render a close button in the top right corner of the modal
+   * boolean - defaulted true, will render a close button in the top right corner of the modal
    */
   hasCloseBtn?: boolean;
   /**
-   * trigger: React.ReactNode - the element that will trigger the modal to open
+   * JSX button element that opens the modal. In order to keep accessability, this trigger needs to be a button element.
    */
   trigger: React.ReactNode;
   /**
-   * header: React.ReactNode - the element that will be rendered in the top of the modal
+   * JSX content that will be rendered in the header of the open modal.
    */
   header: React.ReactNode;
   /**
-   * content: React.ReactNode - the element that will be rendered in the middle of the modal
+   * JSX content that will be rendered in the body of the open modal.
    */
   content: React.ReactNode;
   /**
-   * footer: React.ReactNode - the element that will be rendered at the bottom of the modal
+   * JSX content that will be rendered in the footer of the open modal.
    */
   footer: React.ReactNode;
   /**
-   * className: string - the className that will be applied to the root element
+   * string - the className that will be applied to the root element
    */
   className?: string;
 }
@@ -73,8 +73,9 @@ const Modal = ({
 export default Modal;
 
 const modalStyles = tv({
-  slots:{
-    rootStyle:'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
-    overlayStyle:`fixed inset-0 bg-Light-Overlay`,
+  slots: {
+    rootStyle:
+      'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
+    overlayStyle: `fixed inset-0 bg-Light-Overlay`,
   },
 });
