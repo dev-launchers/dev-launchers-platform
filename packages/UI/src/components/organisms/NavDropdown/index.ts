@@ -7,6 +7,7 @@ export interface NavDropdownProps {
     text: string | ReactNode;
     href?: string;
     hasUnderline?: boolean;
+    as?: keyof JSX.IntrinsicElements;
   } & HTMLAttributes<unknown>)[];
   title: string;
   isOpen?: boolean;
