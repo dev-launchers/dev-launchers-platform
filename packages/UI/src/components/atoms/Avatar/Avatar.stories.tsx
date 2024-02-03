@@ -12,7 +12,6 @@ export const Default: StoryObj<typeof Avatar> = {
     alt: 'Lamodot',
     src: 'https://bit.ly/3EBQXiH',
     delayMs: 600,
-    onClick: () => alert('Could open profile'),
   },
   parameters: {
     design: {
@@ -27,7 +26,6 @@ export const NoImage: StoryObj<typeof Avatar> = {
     alt: 'Lamodot',
     src: '',
     delayMs: 600,
-    onClick: () => alert('Could open profile'),
   },
   parameters: {
     design: {
