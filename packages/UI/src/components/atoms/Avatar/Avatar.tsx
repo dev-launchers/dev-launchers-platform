@@ -21,7 +21,6 @@ interface AvatarProps extends Avatar.AvatarProps {
    * A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.
    */
   onLoadingStatusChange?: Avatar.AvatarImageProps['onLoadingStatusChange'];
-  onClick?: () => void;
 }
 
 const AvatarComponent = ({
@@ -30,12 +29,12 @@ const AvatarComponent = ({
   delayMs,
 
   onLoadingStatusChange,
-  onClick,
+
   ...Props
 }: AvatarProps) => {
   const avatarStyles = AvatarStyles();
   return (
-    <Avatar.Root className={avatarStyles} onClick={onClick} {...Props}>
+    <Avatar.Root className={avatarStyles} {...Props}>
       <Avatar.Image
         className={avatarStyles}
         alt={alt}
