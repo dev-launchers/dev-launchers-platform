@@ -2679,6 +2679,7 @@ __metadata:
     "@devlaunchers/models": "workspace:*"
     "@devlaunchers/tailwind": "workspace:*"
     "@devlaunchers/utility": "workspace:*"
+    "@radix-ui/react-avatar": 1.0.4
     "@radix-ui/react-checkbox": 1.0.4
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.2.2
@@ -41365,7 +41366,6 @@ __metadata:
     "@commitlint/config-conventional": 17.0.3
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@playwright/test": 1.24.2
-    "@radix-ui/react-avatar": 1.0.4
     "@types/prettier": 2.6.4
     "@types/shell-quote": 1.7.1
     commitizen: 4.2.5

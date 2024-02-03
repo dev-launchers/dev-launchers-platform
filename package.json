@@ -54,7 +54,6 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "@radix-ui/react-avatar": "1.0.4",
     "cross-env": "7.0.3"
   },
   "devDependencies": {
