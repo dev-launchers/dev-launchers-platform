@@ -8,9 +8,17 @@ export const PageContainer = styled.div`
   align-items: center;
 `;
 
+export const HeaderSection = styled.div`
+  padding: 50px 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Header = styled.div`
   align-text: center;
-`;
+`
 
 export const SubHeader = styled.div`
   width: 50%;

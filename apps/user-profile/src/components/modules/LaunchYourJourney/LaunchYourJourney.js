@@ -1,8 +1,8 @@
 import PageBody from "../../common/PageBody"
 import { Typography} from '@devlaunchers/components/components/atoms';
-import { PageContainer, Header, SubHeader, Footer, Icons} from "./StyledLaunchYourJourney";
+import { PageContainer, HeaderSection, Header, SubHeader, Footer, Icons} from "./StyledLaunchYourJourney";
 import { JourneySectionRight, JourneySectionLeft } from "./JourneySection/JourneySection";
-import header from "./../../../images/Onboarding/EmailTemplate/Header.png";
+import headerBG from "./../../../images/Onboarding/EmailTemplate/headerBG.png";
 import rocket from "./../../../images/Onboarding/EmailTemplate/rocket-icon.png"
 import insta from "./../../../images/Onboarding/EmailTemplate/insta-icon.png"
 import facebook from "./../../../images/Onboarding/EmailTemplate/facebook-icon.png"
@@ -33,15 +33,16 @@ export default function LaunchYourJourney() {
         <>
 
         <PageContainer>
-            <Header>
-                <img src={header}/>
-                {/* <Typography type="h1" style={{color: "white"}}>Launch Your Journey!</Typography> */}
-            </Header>
-            {/* <SubHeader>
-                <Typography type="pLarge" style={{color: "white"}}>
-                    Dev Launchers is here to launch your tech career into the stratosphere. Our community is full of cosmic adventurers, all ready to help you reach new dimensions of success.
-                </Typography>
-            </SubHeader> */}
+            <HeaderSection style={{ backgroundImage:`url(${headerBG})` }}>
+                <Header>
+                    <Typography style={{color: "white", fontSize: "80px"}}>Launch Your Journey!</Typography>
+                </Header>
+                <SubHeader>
+                    <Typography type="pLarge" style={{color: "white"}}>
+                        Dev Launchers is here to launch your tech career into the stratosphere. Our community is full of cosmic adventurers, all ready to help you reach new dimensions of success.
+                    </Typography>
+                </SubHeader>
+            </HeaderSection>
             <PageBody>
                 <JourneySectionRight
                     iconImg='Journey1'
