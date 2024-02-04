@@ -143,7 +143,7 @@ function SingleCommentComponent(props) {
         <UserImage alt="user_image" src={`https://picsum.photos/70?random=${props.id}`} />
         <div className="textContent">
           <SingleCommentContent>
-            <h3>{props.author}</h3><h5>{props.forIdea.author?.username == props.author?.username ? <IdeaOwnerTag>idea owner</IdeaOwnerTag> : ""}</h5>
+            <h3>{props.author}</h3><h5>{props.forIdea.author?.id == props.author?.id ? <IdeaOwnerTag>idea owner</IdeaOwnerTag> : ""}</h5>
             {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
           </SingleCommentContent>
           <SingleCommentContent>

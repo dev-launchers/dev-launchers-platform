@@ -54,7 +54,7 @@ export const useFetchIdea = (ideaId, setComments) => {
   }, [ideaId, setLoading, setData]);
 
   useEffect(() => {
-    if (sourceData.status == "archived" && sourceData.author.id !== userData.id) {
+    if (sourceData.status == "archived" && sourceData.author?.id !== userData.id) {
       setHidden(true);
     } else {
       setData(sourceData);
