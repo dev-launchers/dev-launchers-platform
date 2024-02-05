@@ -24,7 +24,6 @@ type Story = StoryObj<typeof Modal>;
  */
 
 export const Primary: Story = {
-
   render: () => {
     // Empty modal jsx
     const EmptyTriggerBtn = (
@@ -215,7 +214,7 @@ export const Primary: Story = {
       type: 'figma',
       url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6380',
     },
-  },  
+  },
 };
 
 export const EmptyModal: Story = {
@@ -314,19 +313,16 @@ export const Subscribe: Story = {
     // Return all modals
     return (
       <div className="flex gap-4">
-
         <Modal
           trigger={PrimaryTriggerBtn}
           header={PrimaryHeader}
           content={PrimaryContent}
           footer={PrimaryFooter}
         />
-
       </div>
     );
   },
 };
-
 
 export const TermsOfService: Story = {
   parameters: {
@@ -336,7 +332,6 @@ export const TermsOfService: Story = {
     },
   },
   render: () => {
-
     // Terms of services modal jsx
     const ToSTriggerBtn = (
       <Button buttonType="primary" buttonSize="standard">
@@ -401,7 +396,6 @@ export const RoleModal: Story = {
     },
   },
   render: () => {
-
     // Role selection modal jsx
     const RoleArray = [
       'developer',
@@ -456,19 +450,16 @@ export const RoleModal: Story = {
     // Return all modals
     return (
       <div className="flex gap-4">
-
         <Modal
           trigger={roleTrigger}
           header={roleHeader}
           content={roleContent}
           footer={roleFooter}
         />
-
       </div>
     );
   },
 };
-
 
 export const SubscribeNoCloseButton: Story = {
   render: () => {

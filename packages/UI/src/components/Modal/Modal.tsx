@@ -35,6 +35,7 @@ export interface ModalProps {
  * https://www.radix-ui.com/primitives/docs/components/dialog
  * Close export is an wrapper to close the modal from a trigger element.
  * Description export is an wrapper to add a description to the modal for accessibility.
+ * z level is defaulted to z-50 to ensure it is on top of all other elements. This can be overridden by passing a className prop.
  */
 const Modal = ({
   header,
@@ -75,7 +76,7 @@ export default Modal;
 const modalStyles = tv({
   slots: {
     rootStyle:
-      'min-h-80 relative fixed left-1/2 top-1/2 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
+      'min-h-80 fixed relative left-1/2 top-1/2 z-50 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
     overlayStyle: `fixed inset-0 bg-Light-Overlay`,
   },
 });
