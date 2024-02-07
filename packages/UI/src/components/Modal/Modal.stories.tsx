@@ -8,6 +8,7 @@ import Modal, { Close, Description } from './Modal';
  * https://www.radix-ui.com/primitives/docs/components/dialog
  * Close export is an wrapper to close the modal from a trigger element.
  * Description export is an wrapper to add a description to the modal for accessibility.
+ * z level is defaulted to z-50 to ensure it is on top of all other elements. This can be overridden by passing a className prop.
  */
 
 const meta: Meta<typeof Modal> = {
@@ -37,20 +38,20 @@ export const Primary: Story = {
     const EmptyContent = <div className="h-36 w-full bg-grayscale-100"></div>;
     const EmptyFooter = <div className="h-10 w-full bg-grayscale-100"></div>;
     // Subscribe modal jsx
-    const PrimaryTriggerBtn = (
+    const SubscribeTriggerBtn = (
       <Button buttonType="primary" buttonSize="standard">
         Subscribe!
       </Button>
     );
-    const PrimaryHeader = (
+    const SubscribeHeader = (
       <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
         {' '}
         Subscribe to our newsletter{' '}
       </h3>
     );
-    const PrimaryContent = (
+    const SubscribeContent = (
       <div className="">
-        <p className="w-96 pl-8 font-nunito-sans">
+        <p className="w-96 pl-8 font-nunito-sans mb-2">
           {' '}
           <Description>
             Subscribe to our newsletter for the latest trends and exclusive
@@ -58,8 +59,8 @@ export const Primary: Story = {
           </Description>
         </p>
         {/* Email address label with an email address input element */}
-        <div className="flex flex-col items-center justify-center">
-          <label className="font-nunito-sans text-sm font-bold uppercase tracking-wide">
+        <div className="flex flex-col items-center justify-center pl-8">
+          <label className="mb-2 w-full pl-2 font-nunito-sans text-sm font-bold uppercase tracking-wide">
             {' '}
             Email address{' '}
           </label>
@@ -71,10 +72,10 @@ export const Primary: Story = {
         </div>
       </div>
     );
-    const PrimaryFooter = (
+    const SubscribeFooter = (
       <div className="flex items-center justify-end gap-6">
         <Close>
-          <Button buttonType="primary" buttonSize="standard">
+          <Button buttonType="alternative" buttonSize="standard">
             {' '}
             dismiss{' '}
           </Button>
@@ -170,7 +171,7 @@ export const Primary: Story = {
       <div className="flex h-10 w-full items-center justify-between">
         <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
         <div className="flex gap-4">
-          <Button buttonType="primary" buttonSize="standard">
+          <Button buttonType="alternative" buttonSize="standard">
             Previous
           </Button>
           <Button buttonType="primary" buttonSize="standard">
@@ -195,10 +196,10 @@ export const Primary: Story = {
           footer={roleFooter}
         />
         <Modal
-          trigger={PrimaryTriggerBtn}
-          header={PrimaryHeader}
-          content={PrimaryContent}
-          footer={PrimaryFooter}
+          trigger={SubscribeTriggerBtn}
+          header={SubscribeHeader}
+          content={SubscribeContent}
+          footer={SubscribeFooter}
         />
         <Modal
           trigger={ToSTriggerBtn}
@@ -212,7 +213,7 @@ export const Primary: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6380',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6382',
     },
   },
 };
@@ -221,7 +222,7 @@ export const EmptyModal: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6380',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6381',
     },
   },
   render: () => {
@@ -259,18 +260,18 @@ export const Subscribe: Story = {
     },
   },
   render: () => {
-    const PrimaryTriggerBtn = (
+    const SubscribeTriggerBtn = (
       <Button buttonType="primary" buttonSize="standard">
         Subscribe!
       </Button>
     );
-    const PrimaryHeader = (
+    const SubscribeHeader = (
       <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
         {' '}
         Subscribe to our newsletter{' '}
       </h3>
     );
-    const PrimaryContent = (
+    const SubscribeContent = (
       <div className="">
         <p className="w-96 pl-8 font-nunito-sans">
           {' '}
@@ -293,7 +294,7 @@ export const Subscribe: Story = {
         </div>
       </div>
     );
-    const PrimaryFooter = (
+    const SubscribeFooter = (
       <div className="flex items-center justify-end gap-6">
         <Close>
           <Button buttonType="primary" buttonSize="standard">
@@ -314,10 +315,10 @@ export const Subscribe: Story = {
     return (
       <div className="flex gap-4">
         <Modal
-          trigger={PrimaryTriggerBtn}
-          header={PrimaryHeader}
-          content={PrimaryContent}
-          footer={PrimaryFooter}
+          trigger={SubscribeTriggerBtn}
+          header={SubscribeHeader}
+          content={SubscribeContent}
+          footer={SubscribeFooter}
         />
       </div>
     );
@@ -328,7 +329,7 @@ export const TermsOfService: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6380',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6379',
     },
   },
   render: () => {
@@ -392,7 +393,7 @@ export const RoleModal: Story = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6380',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=8769%3A6378',
     },
   },
   render: () => {
@@ -463,18 +464,18 @@ export const RoleModal: Story = {
 
 export const SubscribeNoCloseButton: Story = {
   render: () => {
-    const PrimaryTriggerBtn = (
+    const SubscribeTriggerBtn = (
       <Button buttonType="primary" buttonSize="standard">
         Subscribe!
       </Button>
     );
-    const PrimaryHeader = (
+    const SubscribeHeader = (
       <h3 className="w-full font-nunito-sans text-lg uppercase tracking-wider">
         {' '}
         Subscribe to our newsletter{' '}
       </h3>
     );
-    const PrimaryContent = (
+    const SubscribeContent = (
       <div className="">
         <p className="w-96 pl-8 font-nunito-sans">
           {' '}
@@ -497,7 +498,7 @@ export const SubscribeNoCloseButton: Story = {
         </div>
       </div>
     );
-    const PrimaryFooter = (
+    const SubscribeFooter = (
       <div className="flex items-center justify-end gap-6">
         <Close>
           <Button buttonType="primary" buttonSize="standard">
@@ -515,10 +516,10 @@ export const SubscribeNoCloseButton: Story = {
     );
     return (
       <Modal
-        trigger={PrimaryTriggerBtn}
-        header={PrimaryHeader}
-        content={PrimaryContent}
-        footer={PrimaryFooter}
+        trigger={SubscribeTriggerBtn}
+        header={SubscribeHeader}
+        content={SubscribeContent}
+        footer={SubscribeFooter}
         hasCloseBtn={false}
       />
     );

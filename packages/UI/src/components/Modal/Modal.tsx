@@ -63,8 +63,8 @@ const Modal = ({
               </button>
             </Dialog.Close>
           )}
-          <div className="my-6 min-h-36 w-full">{content}</div>
-          <div className="w-full">{footer}</div>
+          <div className="min-h-36 min-w-96 my-6 w-full">{content}</div>
+          <div className="w-full min-w-96">{footer}</div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
@@ -76,7 +76,7 @@ export default Modal;
 const modalStyles = tv({
   slots: {
     rootStyle:
-      'min-h-80 fixed relative left-1/2 top-1/2 z-50 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12 md:min-w-128',
+      'min-h-80 fixed left-1/2 top-1/2 z-50 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12',
     overlayStyle: `fixed inset-0 bg-Light-Overlay`,
   },
 });

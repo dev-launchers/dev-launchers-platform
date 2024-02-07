@@ -32,11 +32,6 @@ module.exports = withTV({
       'sm': '640px',
       'md': '768px',
       'lg': '1024px',
-    },
-    extend: {
-      minWidth: {
-        128: "512px",
-      },
     }
   },
   variants: {},
