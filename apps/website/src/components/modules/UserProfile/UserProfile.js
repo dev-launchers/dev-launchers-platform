@@ -46,10 +46,12 @@ export default function UserProfile({ otherUser }) {
     getProjectData();
   }, []);
   const getProjectData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/projects`)
-      .then(({ data }) => {
-        if (data) {
-          setProjects(data);
+    try {
+      //TODO IMPORTANT make sure to refactor this to use proper populate level
+      const data = await agent.Projects.list({ populate: 'deep' });
+      const cleanedData = cleanDataList(data);
+      if (cleanedData) {
+        setProjects(cleanedData);
 
           const tempOpportunities = [];
           data.map((project) => {
@@ -82,15 +84,12 @@ export default function UserProfile({ otherUser }) {
     getIdeaData();
   }, []);
   const getIdeaData = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`)
-      .then(({ data }) => {
-        if (data) {
-          setIdeas(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch idea data");
-      });
+    //TODO IMPORTANT make sure to refactor this to use proper populate level
+    const data = cleanDataList(
+      await agent.Ideas.get(new URLSearchParams(`populate=deep`))
+    );
+
+    setIdeas(data);
   };
   // End Ideas
 
@@ -124,15 +123,15 @@ export default function UserProfile({ otherUser }) {
     getInterests();
   }, []);
   const getInterests = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
-      .then(({ data }) => {
-        if (data) {
-          setInterests(data);
-        }
-      })
-      .catch(() => {
-        console.error("Could not fetch interest data");
-      });
+    try {
+      //TODO IMPORTANT make sure to refactor this to use proper populate level
+      const { data } = await axios(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/interests?populate=deep`
+      );
+      setInterests(cleanDataList(data.data));
+    } catch (e) {
+      console.error('error fetching interests', e);
+    }
   };
   // End Interests
 

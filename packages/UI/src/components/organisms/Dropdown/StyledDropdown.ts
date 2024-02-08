@@ -47,7 +47,7 @@ export const OptionsContainer = styled.div<DropdownProps>`
 `;
 
 export const Options = styled.form<DropdownProps>`
-  display: flex;
+  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem 2rem;

@@ -16,41 +16,29 @@ import {
 
 function DashboardPage() {
 
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() => {
-    {
-      isAuthenticated ?
-        axios
-          .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-            withCredentials: true,
-          })
-          .then((response) => {
-            const cards = response.data.map((item) => {
-              return {
-                ...item,
-                mostRecentCommentTime: new Date(
-                  item.comments[0]?.updated_at
-                ).getTime(),
-              };
-            });
+  React.useEffect(async () => {
+    if (isAuthenticated) {
+      const data = cleanDataList(await agent.Ideas.get(
+        new URLSearchParams(`populate=*pagination[pageSize]=1000`)));
 
-            setLoading(false);
-            setSourceCards(cards);
-          })
-        :
-        ''
+        const allCards = data.map((item) => {
+          item.comments = cleanDataList(item.comments.data);
+          return {
+            ...item,
+            mostRecentCommentTime: new Date(
+              item.comments[0]?.updated_at
+            ).getTime(),
+          };
+        });
+
+        setLoading(false);
+        setSourceCards(allCards);
     }
   }, [isAuthenticated]);
 

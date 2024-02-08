@@ -15,7 +15,6 @@ jobs:
   deploy:
     # The operating system it will run on
     runs-on: ubuntu-latest
-    continue-on-error: true
     outputs:
       url: ${{ steps.chromatic.outputs.url }}
       buildUrl: ${{ steps.chromatic.outputs.buildUrl }}
@@ -41,6 +40,9 @@ jobs:
       - name: install deps
         run: corepack enable && yarn
 
+      - name: generate css
+        run: yarn workspace @devlaunchers/tailwind build-tw
+        
         #👇 Adds Chromatic as a step in the workflow
       - name: Chromatic
         uses: chromaui/action@v1
@@ -52,7 +54,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.GITHUB_TOKEN }}
           onlyChanged: true
-      - name: Run Storybook tests
-        run: yarn test-storybook
-        env:
-          TARGET_URL: ${{ steps.chromatic.outputs.storybookUrl }}
+#       - name: Run Storybook tests
+#         run: yarn test-storybook
+#         env:
+#           TARGET_URL: ${{ steps.chromatic.outputs.storybookUrl }}

@@ -14,13 +14,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
-    const result = await agent.Projects.list(
-      new URLSearchParams('_publicationState=live')
+    projects = await agent.Projects.list(
+      new URLSearchParams('populate=*&publicationState=live')
     );
-    projects = result.filter((p: Project) => p.opportunities.length > 0);
-    projects.map((project) => {
-      const commitments = project.opportunities.map(
-        (opp) => opp.commitmentHoursPerWeek
+
+    projects = projects.map((project) => {
+      const commitments = project?.attributes?.opportunities?.data?.map(
+        (opp) => opp.attributes.commitmentHoursPerWeek
       );
       // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
@@ -33,15 +33,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   try {
-    const result = await agent.Opportunities.list();
-    opportunities = result.filter((o: Opportunity) => o.projects.length > 0);
+    const result = await agent.Opportunities.list(
+      new URLSearchParams('populate=*')
+    );
+    opportunities = result.filter(
+      (o: Opportunity) => o.attributes.projects.data.length > 0
+    );
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }
 
   return {
     props: {
-      projects,
+      projects: projects.map(({ attributes }) => attributes),
       opportunities,
     },
     revalidate: 10,
@@ -70,7 +74,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="og:type" content="website"></meta>
         <meta
           property="og:url"
-          content="https://devlaunchers.org/projects"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
         ></meta>
         <meta
           property="og:image"
@@ -85,7 +89,7 @@ const IndexPage = ({ projects, opportunities }: Props) => {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content="https://devlaunchers.org/projects"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta

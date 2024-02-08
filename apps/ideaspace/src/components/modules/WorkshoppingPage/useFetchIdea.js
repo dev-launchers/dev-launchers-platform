@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { agent } from '@devlaunchers/utility';
+import { cleanData, cleanDataList } from '../../../utils/StrapiHelper';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-export const useFetchIdea = (ideaId) => {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+export const useFetchIdea = (ideaId, setComments) => {
+  let { userData } = useUserDataContext();
 
   const [hidden, setHidden] = useState(false);
   const [getError, setGetError] = useState(false);
@@ -34,14 +30,33 @@ export const useFetchIdea = (ideaId) => {
     author: {},
   });
 
+  // requests data from the backend
   useEffect(async () => {
     try {
       if (ideaId) {
-        setLoading(true)
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${ideaId}`);
-        setLoading(false)
-        if (response.data) {
-          setSourceData(response.data);
+        setLoading(true);
+
+        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+
+        const commentResponse = data?.comments?.data;
+        if (commentResponse !== undefined) {
+          setComments(cleanDataList(commentResponse))
+        }
+
+        const author = data?.author?.data;
+        if (author !== undefined) {
+          data.author = cleanData(author);
+        }
+
+        const ideaOwner = data?.ideaOwner?.data;
+        if (ideaOwner !== undefined) {
+          data.ideaOwner = cleanData(ideaOwner);
+        }
+
+        setLoading(false);
+
+        if (data) {
+          setSourceData(data);
         }
       }
     } catch (error) {

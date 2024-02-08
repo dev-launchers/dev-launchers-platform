@@ -8,23 +8,11 @@ import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
-import { atoms } from '@devlaunchers/components/src/components';
-
-import {
-  HeadWapper,
-  Headline,
-  StyledRanbow,
-} from './StyledSubmissionForm';
+import { StyledRanbow } from './StyledSubmissionForm';
+import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function SubmissionForm() {
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    React.useEffect(() => {
-      setUserData({ ...userData, id: 30 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
   const [sending, setSending] = useState(false);
@@ -63,6 +51,8 @@ function SubmissionForm() {
   });
 
   const submitHandler = async (values) => {
+    values['author'] = userData.id;
+    values['ideaOwner'] = userData.id;
     values['status'] = 'workshopping';
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();

@@ -13,6 +13,8 @@ on:
       - 'staging/website[1-2]'
       - 'staging/user-profile'
       - 'staging/user-profile[1-2]'
+      - 'staging/gptbot'
+      - 'staging/gptbot[1-2]'
 
 jobs:
   Publish:
@@ -46,6 +48,9 @@ jobs:
         
       - name: Change environment to staging
         run: mv apps/app/.env.staging apps/app/.env.production
+        
+      - name: generate css
+        run: yarn workspace @devlaunchers/tailwind build-tw
         
       - name: Run build
         run: yarn workspace @devlaunchers/app build

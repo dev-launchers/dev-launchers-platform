@@ -56,7 +56,7 @@ export const ExpandableBlurb = ({
     if (!content.current) return;
     const height = content.current.clientHeight;
     setHeight(height);
-  });
+  }, []);
 
   return (
     <LazyMotion features={domAnimation}>

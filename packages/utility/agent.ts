@@ -16,6 +16,7 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     }
 //     return config;
 // });
+axios.defaults.withCredentials = true
 
 axios.interceptors.response.use(
   async (response) => {
@@ -76,7 +77,7 @@ function createFormData(item: any) {
   return formData;
 }
 
-const responseBody = (response: AxiosResponse) => response.data;
+const responseBody = (response: AxiosResponse) => response.data.data ? response.data.data : response.data;
 
 //Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
@@ -122,6 +123,20 @@ const Ideas = {};
 
 const User = {
   get: () => requests.get<UserType>("users"),
+};
+
+const Comments = {
+  put: (id: string, body: {}) => requests.put<Comment>(id, body),
+  post: (body: Comment) => requests.post<Comment>("comments", body),
+};
+
+const Likes = {
+  get: (params?: URLSearchParams) => 
+    requests.get<Like[]>('/likes/', params)
+};
+
+const Saves = {
+  post: (body: {}) => requests.post<Save>('/saves/', body)
 };
 
 const agent = {

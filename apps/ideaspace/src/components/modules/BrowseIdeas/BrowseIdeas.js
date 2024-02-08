@@ -9,12 +9,11 @@ import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 import {
   PageWrapper,
-  HeadWapper,
-  Headline,
   StyledRanbow,
   IdeaCardWrapper,
   FilterDiv,
 } from './StyledBrowseIdeas';
+import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
@@ -84,9 +83,27 @@ function BrowseIdeas() {
           };
         });
 
-        setLoading(false);
-        setSourceCards(getCards);
-      });
+    const getCards = ideaCards.map((item) => {  
+      if (item?.comments?.data) {
+        item.comments = cleanDataList(item.comments.data);
+
+        const recentCommentedTime = item.comments.length > 0 ? new Date(
+          item.comments[0]?.updatedAt
+        ) :  new Date(item.updatedAt);
+
+        return {
+          ...item,
+          mostRecentCommentTime: recentCommentedTime
+        };
+      }
+      return {
+        ...item,
+        mostRecentCommentTime: new Date(item.updatedAt)?.getTime(),
+      };
+    });
+
+    setLoading(false);
+    setCards(getCards);
   }, []);
 
   React.useEffect(() => {
