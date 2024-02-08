@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useRouter } from 'next/router';
 
 // interface FormFields extends Omit<NewApplicant, 'level'> {
@@ -22,6 +23,13 @@ interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
 }
 >>>>>>> b73a74e3 (For talcomm)
+=======
+import { useRouter } from 'next/router';
+
+// interface FormFields extends Omit<NewApplicant, 'level'> {
+//   level: NewApplicant['level'] | '';
+// }
+>>>>>>> efd5608a (For talcomm)
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;
@@ -47,13 +55,19 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
     setShowConfirmationModal(true);
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> efd5608a (For talcomm)
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();
     router.push('/join/oldjoin');
   };
+<<<<<<< HEAD
 =======
 >>>>>>> b73a74e3 (For talcomm)
+=======
+>>>>>>> efd5608a (For talcomm)
 
   return (
     <ThemeProvider theme={theme}>
@@ -174,12 +188,17 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       buttonSize="standard"
                       buttonType="primary"
 <<<<<<< HEAD
+<<<<<<< HEAD
                       as="a"
                       onClick={routeChange} //add submit here to button property once backend is complete
                     >
                       SUBMIT
 =======
                       type="submit"
+=======
+                      as="a"
+                      onClick={routeChange}
+>>>>>>> efd5608a (For talcomm)
                     >
                       Submit
 >>>>>>> b73a74e3 (For talcomm)
