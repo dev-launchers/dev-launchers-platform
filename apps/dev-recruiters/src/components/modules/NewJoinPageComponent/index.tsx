@@ -27,7 +27,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();
-    router.push('join/second');
+    router.push('/join/second');
   };
   return (
     <Wrapper>
