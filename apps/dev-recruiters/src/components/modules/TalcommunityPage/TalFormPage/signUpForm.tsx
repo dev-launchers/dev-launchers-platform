@@ -10,10 +10,11 @@ import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
+import { useRouter } from 'next/router';
 
-interface FormFields extends Omit<NewApplicant, 'level'> {
-  level: NewApplicant['level'] | '';
-}
+// interface FormFields extends Omit<NewApplicant, 'level'> {
+//   level: NewApplicant['level'] | '';
+// }
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;
@@ -37,6 +38,11 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
 
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
+  };
+  const router = useRouter();
+  const routeChange = (e) => {
+    e.preventDefault();
+    router.push('/join/oldjoin');
   };
 
   return (
@@ -157,7 +163,8 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                     <atoms.Button
                       buttonSize="standard"
                       buttonType="primary"
-                      type="submit"
+                      as="a"
+                      onClick={routeChange}
                     >
                       Submit
                     </atoms.Button>
