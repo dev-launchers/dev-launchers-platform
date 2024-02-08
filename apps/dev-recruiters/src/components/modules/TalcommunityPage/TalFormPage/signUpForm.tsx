@@ -10,11 +10,18 @@ import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
+<<<<<<< HEAD
 import { useRouter } from 'next/router';
 
 // interface FormFields extends Omit<NewApplicant, 'level'> {
 //   level: NewApplicant['level'] | '';
 // }
+=======
+
+interface FormFields extends Omit<NewApplicant, 'level'> {
+  level: NewApplicant['level'] | '';
+}
+>>>>>>> b73a74e3 (For talcomm)
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;
@@ -39,11 +46,14 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
   };
+<<<<<<< HEAD
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();
     router.push('/join/oldjoin');
   };
+=======
+>>>>>>> b73a74e3 (For talcomm)
 
   return (
     <ThemeProvider theme={theme}>
@@ -163,10 +173,16 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                     <atoms.Button
                       buttonSize="standard"
                       buttonType="primary"
+<<<<<<< HEAD
                       as="a"
                       onClick={routeChange} //add submit here to button property once backend is complete
                     >
                       SUBMIT
+=======
+                      type="submit"
+                    >
+                      Submit
+>>>>>>> b73a74e3 (For talcomm)
                     </atoms.Button>
                   </atoms.Box>
                 </atoms.Box>
