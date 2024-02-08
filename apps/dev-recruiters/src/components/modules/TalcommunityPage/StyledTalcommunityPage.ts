@@ -18,13 +18,14 @@ export const Wrap = styled.div`
     url(${RocketIll});
   background-size: cover;
   background-position: center;
+  background-size: contain;
   height: 455px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 24;
   display: inline-flex;
-  width: 100%;
+  /* max-width: 100%; */
   padding-left: 196px;
   padding-right: 196px;
   display: flex;
