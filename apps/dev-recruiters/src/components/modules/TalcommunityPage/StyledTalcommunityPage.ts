@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+  background-color: #f0edee;
 `;
 
 export const Wrap = styled.div`
@@ -16,10 +16,10 @@ export const Wrap = styled.div`
       rgba(0, 0, 0, 0.6) 100%
     ),
     url(${RocketIll});
-  background-size: cover;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   height: 455px;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
