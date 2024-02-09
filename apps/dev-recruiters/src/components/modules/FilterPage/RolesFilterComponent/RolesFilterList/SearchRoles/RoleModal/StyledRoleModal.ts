@@ -13,7 +13,10 @@ export const ButtonsSection = styled.div<{
   expanded?: boolean;
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'flex')};
-
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
   padding: 14px 24px;
   align-items: center;
 
@@ -28,9 +31,6 @@ export const ApplyButton = styled.a<{ color?: string }>`
   background-color: ${(props) => props.theme?.colors?.BLUE_700};
   color: ${(props) => props.theme?.colors?.White};
   border-radius: 0.4rem;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   padding: 14px 24px;
   white-space: nowrap;
   border: none;
@@ -40,6 +40,53 @@ export const ApplyButton = styled.a<{ color?: string }>`
   font-size: 1rem;
   line-height: 11px;
   text-align: center;
+  letter-spacing: 2px;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme?.colors?.Argent};
+  }
+`;
+
+export const SaveForLater = styled.a<{ color?: string }>`
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  background-color: ${(props) => props.theme?.colors?.LIGHT_BLUE_700};
+  color: ${(props) => props.theme?.colors?.White};
+  border-radius: 0.4rem;
+  padding: 14px 24px;
+  white-space: nowrap;
+  border: none;
+  margin: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 11px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 2px;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme?.colors?.Argent};
+  }
+`;
+
+export const SingUpToApply = styled.a<{ color?: string }>`
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  background-color: ${(props) => props.theme?.colors?.BLUE_700};
+  color: ${(props) => props.theme?.colors?.White};
+  border-radius: 0.4rem;
+  padding: 14px 24px;
+  white-space: nowrap;
+  border: none;
+  margin: 20px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 11px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 2px;
   &:hover {
     text-decoration: none;
     cursor: pointer;

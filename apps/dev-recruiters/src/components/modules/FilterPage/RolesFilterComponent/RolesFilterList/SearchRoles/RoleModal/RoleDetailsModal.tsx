@@ -1,5 +1,5 @@
 import { Opportunity } from '@devlaunchers/models';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BulletList,
   BulletListItem,
@@ -15,7 +15,13 @@ import {
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
-import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
+import {
+  ApplyButton,
+  ButtonsSection,
+  CloseButton,
+  SaveForLater,
+  SingUpToApply,
+} from './StyledRoleModal';
 
 interface Props {
   projectSlug: string;
@@ -98,6 +104,14 @@ function ModalBottomSection({
     setShowApplyModal(false);
   };
 
+  const [isAutenticate, setIsAutenticate] = useState(false);
+
+  useEffect(() => {
+    const getData = localStorage.getItem('isAuthenticated');
+    const convertData = getData === 'true';
+    setIsAutenticate(convertData);
+  }, []);
+
   return (
     <div>
       <RowContainer paddingVertical={20} justifycontent="justfiy-left">
@@ -127,8 +141,28 @@ function ModalBottomSection({
         )} */}
       </RowContainer>
 
-      <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
-        <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
+      <ButtonsSection Mobile={false}>
+        {isAutenticate === false ? (
+          <SingUpToApply>SIGN IN TO APPLY OR SAVE</SingUpToApply>
+        ) : (
+          <>
+            <SaveForLater
+              href={
+                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                '?redirectURL=https://devlaunchers.org/users/me'
+              }
+              color="DarkElectricBlue"
+            >
+              SAVE FOR LATER
+            </SaveForLater>
+            <ApplyButton
+              onClick={handleOpenApplyModal}
+              color="DarkElectricBlue"
+            >
+              APPLY
+            </ApplyButton>
+          </>
+        )}
       </ButtonsSection>
 
       <Modal
