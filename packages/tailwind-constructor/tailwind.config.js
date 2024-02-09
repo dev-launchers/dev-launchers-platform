@@ -1,7 +1,6 @@
-
-const { withTV } = require("tailwind-variants/transformer");
-const { filterTokensByType } = require("./fns");
-const tokens = require("./output/core.json")
+const { withTV } = require('tailwind-variants/transformer');
+const { filterTokensByType } = require('./fns');
+const tokens = require('./output/core.json');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = withTV({
@@ -25,15 +24,17 @@ module.exports = withTV({
       ...filterTokensByType('color', tokens),
     },
     data: {
-      checked: 'state="checked"', //data-[state=checked]
+      checked: 'state="checked"', //data-[state='checked']
+      unchecked: 'state="unchecked"', //data-[state='unchecked']
+      disabled: 'disabled=""', //data-[disabled='']
     },
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
     screens: {
-      'sm': '640px',
-      'md': '768px',
-      'lg': '1024px',
-    }
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+    },
   },
   variants: {},
   plugins: [require('tailwind-hamburgers')],
