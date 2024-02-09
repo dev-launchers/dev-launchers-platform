@@ -6,8 +6,10 @@ import TalcommunityPage from '../components/modules/TalcommunityPage';
 
 const SecondPage = () => (
   <>
-    <TalcommunityPage></TalcommunityPage>
-    <SignUpForm />
+    <BoxContainer>
+      <TalcommunityPage></TalcommunityPage>
+      <SignUpForm />
+    </BoxContainer>
   </>
 );
 

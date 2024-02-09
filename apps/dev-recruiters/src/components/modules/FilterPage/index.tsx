@@ -4,6 +4,7 @@ import BoxContainer from '../../common/BoxContainer';
 
 import { HeaderJoinPage } from '../NewJoinPageComponent/HeaderJoinPage';
 import FilterComponent from './RolesFilterComponent';
+import { useRouter } from 'next/router';
 import {
   Wrapper,
   Footer,
@@ -23,6 +24,11 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
   projects,
   opportunities,
 }) => {
+  const router = useRouter();
+  const routeChange = (e) => {
+    e.preventDefault();
+    router.push('/join/second');
+  };
   return (
     <Wrapper>
       <BoxContainer>
@@ -40,13 +46,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
             Join the Dev Launchers Talent Community to be notified about new
             volunteering roles that match your skillset!
           </FooterSecondText>
-          <BtnSignUp
-            as="a"
-            href={
-              process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-              '?redirectURL=https://devlaunchers.org/users/me'
-            }
-          >
+          <BtnSignUp as="a" type="submit" onClick={routeChange}>
             Join the Talent Community
           </BtnSignUp>
         </Footer>
