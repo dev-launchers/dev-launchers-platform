@@ -13,11 +13,11 @@ export const HeaderContainer = styled.div`
 
 export const BaseText = styled.div`
   word-wrap: break-word;
-  color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_2};
 `;
 
 export const HeaderText = styled(BaseText)`
-  width: 50%;
+  width: 80%;
   font-size: 44px;
   font-family: 'Abel', sans-serif;
 `;
