@@ -18,6 +18,23 @@ export const HeaderContainer = styled.div`
   padding-bottom: 56px;
 `;
 
+export const BtnSignUp = styled.button`
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+  background-color: #295774;
+  text-decoration: none;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.64px;
+  word-wrap: break-word;
+  justify-content: center;
+`;
+
 export const SubHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,30 +53,7 @@ export const SubHeaderContainer = styled.div`
   padding-bottom: 0;
 `;
 
-export const BaseText = styled.div`
-  word-wrap: break-word;
-  color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
-`;
-
-export const HeaderText = styled(BaseText)`
-  font-size: 44px;
-  font-family: 'Abel', sans-serif;
-  font-weight: 400;
-  color: white;
-  overflow: hidden;
-  position: relative;
-`;
-
-export const SubHeaderText = styled(BaseText)`
-  font-size: 20px;
-  font-family: 'Nunito Sans', sans-serif;
-  color: white;
-  font-weight: 400;
-  padding-bottom: 24px;
-  overflow: hidden;
-  position: relative;
-`;
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+  background-color: #f0edee;
   height: 500px;
 `;

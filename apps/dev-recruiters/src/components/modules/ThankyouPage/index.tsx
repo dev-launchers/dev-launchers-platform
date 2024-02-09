@@ -1,16 +1,19 @@
 import React from 'react';
 import {
-  BaseText,
   HeaderContainer,
-  HeaderText,
   SubHeaderContainer,
-  SubHeaderText,
   Wrapper,
+  BtnSignUp,
 } from './styles';
 import BoxContainer from '../../common/BoxContainer';
-import { Wrap } from '../TalcommunityPage/StyledTalcommunityPage';
+import { useRouter } from 'next/router';
 
 export function ThankyouPage() {
+  const router = useRouter();
+  const routeChange = (e) => {
+    e.preventDefault();
+    router.push('/join/filter');
+  };
   return (
     <>
       <Wrapper>
@@ -18,11 +21,16 @@ export function ThankyouPage() {
         <SubHeaderContainer>
           Your application for the Dev Launchers Talent Community has been
           received.
-          <SubHeaderContainer>
-            We will email you when a volunteer role that matches your skillsets
-            and/or interests opens up!
-          </SubHeaderContainer>
         </SubHeaderContainer>
+        <SubHeaderContainer>
+          We will email you when a volunteer role that matches your skillsets
+          and/or interests opens up!
+        </SubHeaderContainer>
+        <BoxContainer paddingVertical={24} paddingHorizontal={520}>
+          <BtnSignUp as="a" type="submit" onClick={routeChange}>
+            VIEW CURRENT OPEN ROLES
+          </BtnSignUp>
+        </BoxContainer>
       </Wrapper>
     </>
   );
