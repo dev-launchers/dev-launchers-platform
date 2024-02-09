@@ -164,9 +164,9 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       buttonSize="standard"
                       buttonType="primary"
                       as="a"
-                      onClick={routeChange}
+                      onClick={routeChange} //add submit here to button property once backend is complete
                     >
-                      Submit
+                      SUBMIT
                     </atoms.Button>
                   </atoms.Box>
                 </atoms.Box>
