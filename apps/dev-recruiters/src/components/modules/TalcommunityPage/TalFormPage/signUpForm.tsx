@@ -197,11 +197,17 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       type="submit"
 =======
                       as="a"
+<<<<<<< HEAD
                       onClick={routeChange}
 >>>>>>> efd5608a (For talcomm)
                     >
                       Submit
 >>>>>>> b73a74e3 (For talcomm)
+=======
+                      onClick={routeChange} //add submit here to button property once backend is complete
+                    >
+                      SUBMIT
+>>>>>>> 73419391 (#1469)
                     </atoms.Button>
                   </atoms.Box>
                 </atoms.Box>
