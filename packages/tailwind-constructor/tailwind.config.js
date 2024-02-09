@@ -19,8 +19,10 @@ module.exports = withTV({
   // darkMode: false, // or 'media' or 'class'
   theme: {
     colors: {
-      'current': 'currentColor',
-      ...filterTokensByType('color', tokens)
+      current: 'currentColor',
+      inherit: 'inherit',
+      transparent: 'transparent',
+      ...filterTokensByType('color', tokens),
     },
     data: {
       checked: 'state="checked"', //data-[state=checked]
