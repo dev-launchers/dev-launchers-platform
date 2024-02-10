@@ -2822,7 +2822,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/eslint-config-bases@workspace:^, @devlaunchers/eslint-config-bases@workspace:packages/eslint-config-bases":
+"@devlaunchers/eslint-config-bases@workspace:*, @devlaunchers/eslint-config-bases@workspace:^, @devlaunchers/eslint-config-bases@workspace:packages/eslint-config-bases":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/eslint-config-bases@workspace:packages/eslint-config-bases"
   dependencies:
@@ -2936,7 +2936,7 @@ __metadata:
   resolution: "@devlaunchers/site-projects@workspace:apps/site-projects"
   dependencies:
     "@babel/core": ^7.18.9
-    "@devlaunchers/eslint-config-bases": "workspace:^"
+    "@devlaunchers/eslint-config-bases": "workspace:*"
     "@devlaunchers/utility": "workspace:*"
     "@storybook/addon-actions": ^6.5.9
     "@storybook/addon-essentials": ^6.5.9
