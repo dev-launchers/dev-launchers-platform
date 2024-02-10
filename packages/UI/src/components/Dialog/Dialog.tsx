@@ -53,7 +53,7 @@ const DialogContent = React.forwardRef<
         {children}
         {hasCloseBtn && (
           <DialogPrimitive.Close className="absolute right-8 top-8 flex items-center justify-center rounded-md bg-white drop-shadow-xl">
-            <X className="h-7 w-7" />
+            <X className="h-6 w-6" />
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>
@@ -67,7 +67,7 @@ const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('', className)} {...props} />
+  <div className={cn('mb-8', className)} {...props} />
 );
 DialogHeader.displayName = 'DialogHeader';
 
@@ -85,7 +85,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('mb-8', className)}
+    className={cn('', className)}
     {...props}
   />
 ));

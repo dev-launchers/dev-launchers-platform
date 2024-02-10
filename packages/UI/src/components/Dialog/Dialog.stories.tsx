@@ -114,31 +114,33 @@ export const Newsletter: Story = {
           </DialogTrigger>
           <DialogContent >
             <DialogHeader>
-              <h3 className="w-96 font-nunito-sans text-lg uppercase tracking-wider">
-                <DialogTitle>Subscribe to our newsletter</DialogTitle>
+              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+              <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
+                Subscribe to our newsletter
               </h3>
             </DialogHeader>
             <div className="">
-              <p className="mb-4 w-96 pl-8 font-nunito-sans">
+              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+              <p className="mb-4 w-[448px] pl-8 font-nunito-sans">
                 <DialogDescription>
                   Subscribe to our newsletter for the latest trends and
                   exclusive content delivered straight to your inbox!
                 </DialogDescription>
               </p>
-              <div className="flex flex-col items-center justify-center">
-                <h3 className="mb-2 w-full font-nunito-sans text-sm font-bold uppercase tracking-wide">
+              <div className="ml-8 flex flex-col items-center justify-center">
+                <h3 className="ml-4 mb-2 w-full font-nunito-sans text-sm font-bold uppercase tracking-wide">
                   Email address
                 </h3>
                 <input
-                  className="w-96 rounded-lg border-2 border-solid border-black p-2"
+                  className="w-full rounded-lg border-2 border-solid border-black p-4"
                   type="email"
                   placeholder="Enter your email address"
                 />
               </div>
             </div>
-            <DialogFooter className="flex w-96 items-center justify-end gap-6">
+            <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <DialogClose>
-                <Button buttonType="primary" buttonSize="standard">
+                <Button buttonType="alternative" buttonSize="standard">
                   {' '}
                   dismiss{' '}
                 </Button>
@@ -175,7 +177,7 @@ export const TermsOfService: Story = {
           </DialogTrigger>
           <DialogContent >
             <DialogHeader>
-              <h3 className="w-96 font-nunito-sans text-lg uppercase tracking-wider">
+              <h3 className="font-nunito-sans uppercase tracking-wider h-6 flex w-[448px] items-center">
                 <DialogTitle>Terms of services</DialogTitle>
               </h3>
             </DialogHeader>
@@ -196,7 +198,7 @@ export const TermsOfService: Story = {
               </p>
             </div>
 
-            <DialogFooter className="flex w-96 items-center justify-between gap-6">
+            <DialogFooter className="flex w-[448px] items-center justify-between gap-6">
               <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
                 <div className="flex items-center justify-center">
                   <Checkbox />
@@ -241,7 +243,7 @@ export const RoleModal: Story = {
           </DialogTrigger>
           <DialogContent >
             <DialogHeader>
-              <h3 className="w-96 font-nunito-sans text-lg uppercase tracking-wider">
+              <h3 className="w-[448px] font-nunito-sans uppercase tracking-wider h-6 flex items-center">
                 <DialogTitle>Select your role</DialogTitle>
               </h3>
             </DialogHeader>
@@ -262,7 +264,7 @@ export const RoleModal: Story = {
               })}
             </div>
 
-            <DialogFooter className="flex w-96 items-center justify-end gap-6">
+            <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <div className="flex h-10 w-full items-center justify-between">
                 <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
                 <div className="flex gap-4">

@@ -1,0 +1,68 @@
+import { Meta, Controls, Stories,Description, Primary } from '@storybook/blocks';
+import * as DialogStories from './Dialog.stories.tsx';
+import { Button } from 'components/atoms';
+import { Checkbox } from './../Checkbox';
+
+import {
+  Dialog,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from './Dialog';
+
+# Dialog
+
+<Meta of={DialogStories} />
+
+<Description of={DialogStories} />
+<div>
+  <Dialog>
+          <DialogTrigger>
+            <Button  buttonType="primary" buttonSize="standard">
+              ToS
+            </Button>
+          </DialogTrigger>
+          <DialogContent >
+            <DialogHeader>
+              <h3 className="font-nunito-sans uppercase tracking-wider h-6 flex w-[448px] items-center">
+                <DialogTitle>Terms of services</DialogTitle>
+              </h3>
+            </DialogHeader>
+
+            <div className="h-36 max-w-md overflow-y-auto font-nunito-sans">
+              <p className="pr-6 text-base">
+                By accessing or using our services, you agree to abide by our
+                terms and conditions. This includes adherence to our privacy
+                policy, responsible use of the service, and acknowledgment of
+                any disclaimers or limitations of liability outlined therein.
+                Your continued use of the service constitutes acceptance of
+                these terms. By accessing or using our services, you agree to
+                abide by our terms and conditions. This includes adherence to
+                our privacy policy, responsible use of the service, and
+                acknowledgment of any disclaimers or limitations of liability
+                outlined therein. Your continued use of the service constitutes
+                acceptance of these terms.
+              </p>
+            </div>
+
+            <DialogFooter className="flex w-[448px] items-center justify-between gap-6">
+              <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
+                <div className="flex items-center justify-center">
+                  <Checkbox />
+                  <p className="ml-2">I've read the terms of services</p>
+                </div>
+                <DialogClose>
+                  <button buttonType="primary" buttonSize="standard">
+                    Submit
+                  </button>
+                </DialogClose>
+              </div>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+</div>
+<Stories />
