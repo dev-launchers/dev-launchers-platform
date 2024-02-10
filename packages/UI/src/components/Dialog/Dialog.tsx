@@ -1,10 +1,6 @@
-// import * as Dialog from '@radix-ui/react-dialog';
-// import { X } from 'lucide-react';
-// export { Close, Description } from '@radix-ui/react-dialog';
-
-import * as React from 'react';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
+import * as React from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../utils/classesMerger';
 
@@ -32,22 +28,18 @@ const DialogOverlay = React.forwardRef<
   return (
     <DialogPrimitive.Overlay
       ref={ref}
-      className={cn(overlayStyle(), className)}
+      className={overlayStyle({ className })}
       {...props}
     />
   );
 });
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 
-type DialogContentProps = React.ComponentPropsWithoutRef<
-  typeof DialogPrimitive.Content
-> & {
-  hasCloseBtn?: boolean;
-};
-
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  DialogContentProps
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    hasCloseBtn?: boolean;
+  }
 >(({ className, children, hasCloseBtn = true, ...props }, ref) => {
   const { contentStyle } = modalStyles();
   return (
@@ -55,7 +47,7 @@ const DialogContent = React.forwardRef<
       <DialogOverlay />
       <DialogPrimitive.Content
         ref={ref}
-        className={cn(contentStyle(), className)}
+        className={contentStyle({ className })}
         {...props}
       >
         {children}
@@ -83,7 +75,7 @@ const DialogFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('', className)} {...props} />
+  <div className={cn('mt-8', className)} {...props} />
 );
 DialogFooter.displayName = 'DialogFooter';
 
@@ -93,7 +85,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('', className)}
+    className={cn('mb-8', className)}
     {...props}
   />
 ));
