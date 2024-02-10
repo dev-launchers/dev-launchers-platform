@@ -2,7 +2,7 @@ import { NewApplicant, Opportunity, Project, User as UserType, Idea, Like, Save 
 import { Comment } from "@devlaunchers/models/comment";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL || import.meta.env.NEXT_PUBLIC_API_URL;
 
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
@@ -17,11 +17,13 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     }
 //     return config;
 // });
+
 axios.defaults.withCredentials = true
 
 axios.interceptors.response.use(
   async (response) => {
-    if (process.env.NODE_ENV === "development") {
+    console.log({test: response});
+    if (process.env.NODE_ENV === "development" || import.meta.env.NODE_ENV === "development") {
       // execute codes for dev environment
     }
 

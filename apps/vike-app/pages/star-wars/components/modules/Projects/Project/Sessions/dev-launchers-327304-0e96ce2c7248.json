@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dev-launchers-327304",
+  "private_key_id": "0e96ce2c72489d0c1bac44414e1fd76a87ed552b",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDO9RP9U3TcqTMF\n/aRI2QZIOdyc0I1qwtU3mVYOk9XxC0D07g2RQ3c7bNaw7HIWNe+GEYcVCJOpx5XW\ng9Xi7mRnML874km9mq1FS496rfN/lRLDX+V5JW2r/Iqlkvqcpc6NIlx6n/RLg3Vp\n07nGbOUxA/FCQykOWfq1CtzvzvCftSaXapJlG46G/WLDBG3gtrnFfh5uhv1Eaqpr\nyiQUlV686EGd7f547anLp06E2BSYcsApEV1OgaG22FUdzeIw08SOW4ay+ki8PtyD\nI6lfwRZjw89+i3G2U/1PXI31MT+ki48tM/c7hBNHbEBloYj2fV1EKQ/vG1jeUSyT\nUFfSHF/DAgMBAAECggEACl5uC3Wod7vEcirklb/F2E2J15N9Wll7nEcC8EUI5YRG\nU18v79S8/w2zbfbSunkmUIXFSlD9MPbuc2p0h2OhRShElIgAYM8EmmGwRRm9Bund\noEtIMHsnFQRYn/YOt1V5VUng70XfU/84nT494wqmqv+DEWpS/sSUUojCTAOGu8Gd\nJbHNxSNfbwh5S42Va4NXsuWsOuzX1/AYK588UFBRjD28UfAGfDqsP+L2yoKA+g8n\niLuqNQ4fEpMiGp6RchcVLdmDsFr1M6hPd776CURQ4Db7/E+OmiehuftQQ7s1OoDA\nynMcT1D7vEVbph0eaALZahgGzhTFHLzawyMo7b98/QKBgQDphNFzxnYko8GApKrd\nzwkM6nbdDGWWSUeAWSQImrqb7D7VYFLN5afFDOfyvEKD5cjuRvA3TEzGtVoPWmlM\n379i4dEMewsZudRzDnBgzzhYzuWWNvDPQgYOcRFHaX3GLybtEa4gKO5WqM74XddE\nNIDlSixhFbnui1a69eiqAvTBnQKBgQDi4aO5xpelp9TTf3cnHq2epavAu4MmcUyO\nPeNas8XMjl50QfICrDWtqGTJo5sGG/IWMKAUwtV0Y0j4Fv9g/U2qTeAomUNN1flu\nFyVdNNuvT7k2pRTaOOBcmJb2APalGlSqlwcqMIoxoEiJ/dQhMgC5PPbN8vKIfwgM\nfn9qEHUY3wKBgQCCIVK7KshhiKPndVwGeT445VvRuPvPcQyYWJR8+wSsqU0miSP7\nu1Pvuk5zdTe32tBLAFsS5cEPJraGQcLWZQV5LA/b3aGE94qNh2lWeYOT8c/9EqbF\nSKypVZbkbcP6MgKGL8kSAN04i5+yxlCUoJGHtPrgK0ROy3VMgIbkXvtX/QKBgBHd\nAi8WW8pHNJKSbqc92x2qnaNHIERel1B7vvLdRK2eaAFvT8a2GGPb5lOZ9hK9EIp+\nuZvo2zWWu6AM736Lcxn9l7CaoJn4RvNMDz0PdFyRQlvzE3k7ES85NGmaGdFWCWSF\nD6Navwa5P/zdZ15VuYjcK/J7Nm1Y0yFotE99jDqxAoGBALNVG+IpC+jBr4xYsS01\ng0V2eHMz/rPzLSWXsQRXg9h9+Rdq3jSTGxB9M7mImWeO9B203A5HLFFuUR96kxbo\nj0pvUfUTmVHyiCI0nHRYGXI4qOHOy0Eum8vDessFWjoSUC3HR/VOz6MRKiqAeFDS\nYHK0AxeXeN++I5eMcFQZSPp8\n-----END PRIVATE KEY-----\n",
+  "client_email": "google-calandar-api@dev-launchers-327304.iam.gserviceaccount.com",
+  "client_id": "110617864679789824484",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/google-calandar-api%40dev-launchers-327304.iam.gserviceaccount.com"
+}

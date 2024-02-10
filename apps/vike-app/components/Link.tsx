@@ -1,5 +1,5 @@
 import React from "react";
-import { usePageContext } from "vike-react/usePageContext";
+import { usePageContext } from "@devlaunchers/vike-react/usePageContext";
 
 export function Link({ href, children }: { href: string; children: string }) {
   const pageContext = usePageContext();

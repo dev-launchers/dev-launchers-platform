@@ -1,22 +1,53 @@
-import React from "react";
-import { useData } from "vike-react/useData";
-import type { Data } from "./+data";
+import Projects from '../../components/modules/Projects';
+import { useData } from "@devlaunchers/vike-react/useData";
 
-export default function Page() {
-  const movies = useData<Data>();
+const ProjectsList = () => {
+  const projects = useData();
+
   return (
     <>
-      <h1>Star Wars Movies</h1>
-      <ol>
-        {movies.map(({ id, title, release_date }) => (
-          <li key={id}>
-            <a href={`/star-wars/${id}`}>{title}</a> ({release_date})
-          </li>
-        ))}
-      </ol>
-      <p>
-        Source: <a href="https://brillout.github.io/star-wars">brillout.github.io/star-wars</a>.
-      </p>
+      <head>
+        <title>Our Projects</title>
+        <meta name="title" content="Our Projects"></meta>
+        <meta
+          name="description"
+          content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
+        ></meta>
+
+        <meta property="og:type" content="website"></meta>
+        <meta
+          property="og:url"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
+        ></meta>
+        <meta
+          property="og:image"
+          content="/images/DevlaunchersGitHubThumb.png"
+        ></meta>
+        <meta property="og:title" content="Our Projects"></meta>
+        <meta
+          property="og:description"
+          content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
+        ></meta>
+
+        <meta property="twitter:card" content="summary_large_image"></meta>
+        <meta
+          property="twitter:url"
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
+        ></meta>
+        <meta property="twitter:title" content="Our Projects"></meta>
+        <meta
+          property="twitter:description"
+          content="Create, discover, and join an agile team building open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and apps used by real people while learning valuable skills and meeting awesome people!"
+        ></meta>
+        <meta
+          property="twitter:image"
+          content="/images/DevlaunchersGitHubThumb.png"
+        ></meta>
+        <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
+      </head>
+      <Projects projects={projects || ''} />
     </>
   );
-}
+};
+
+export default ProjectsList;
