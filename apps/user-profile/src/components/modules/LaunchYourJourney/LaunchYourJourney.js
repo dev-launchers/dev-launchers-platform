@@ -13,19 +13,19 @@ export default function LaunchYourJourney() {
 
     const router = useRouter();
 
-    const CreatePage = (e) => {
+    const createPage = (e) => {
         router.push('/create')
     };
 
-    const IdeaSpacePage = (e) => {
+    const ideaSpacePage = (e) => {
     router.push('/ideaspace')
     };
 
-    const LearnPage = (e) => {
+    const learnPage = (e) => {
     router.push('/learn')
     };
 
-    const JoinPage = (e) => {
+    const joinPage = (e) => {
     router.push('/join')
     };
 
@@ -56,28 +56,28 @@ export default function LaunchYourJourney() {
 					title="Create with Templates"
 					subtitle="Fire up your engines and learn to create games and apps using our stellar templates."
                     buttonTitle="Discover Templates"
-                    clickFunction={CreatePage}
+                    clickFunction={createPage}
                 />
                 <JourneySectionRight
                     iconImg='Journey3'
 					title="Dream with IdeaSpace"
 					subtitle="Dive into our project ideation portal, IdeaSpace, and blast us away with your incredible ideas. Dream bigger than the cosmos!"
                     buttonTitle="Explore Ideaspace"
-                    clickFunction={IdeaSpacePage}
+                    clickFunction={ideaSpacePage}
                 />
                 <JourneySectionLeft
                     iconImg='Journey4'
 					title="Learn Code and Design"
 					subtitle="Keep growing and thriving with our wealth of resource tools for code and design. Our devotion to continuous learning fuels your journey across the development cosmos."
                     buttonTitle="Start Learning Now"
-                    clickFunction={LearnPage}
+                    clickFunction={learnPage}
                 />
                 <JourneySectionRight
                     iconImg='Journey5'
 					title="Join Forces"
 					subtitle="Collaborate and gain real-world experience to reach Core Member status. Become a part of a platform product team team and defy gravitational limitations!🚀"
                     buttonTitle="Become A Core Member"
-                    clickFunction={JoinPage}
+                    clickFunction={joinPage}
                 />
             </PageBody>
             <Footer>
