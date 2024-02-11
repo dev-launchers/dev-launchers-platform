@@ -24,11 +24,11 @@ export function JourneySectionRight({
         <>
             <GroupContainer>
                 <IndividualContainer>
-                    <IconImg iconImg={iconImg} style={{width: "50%", height:"70%"}}/>
+                    <IconImg iconImg={iconImg}/>
                     <TextContainer>
-                        <Typography type="pLarge" style={{color: "white"}}>{title}</Typography>
-                        <Typography type="pSmall" style={{color: "white"}}>{subtitle}</Typography>
-                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
+                        <Typography type="pLarge" className="journey-text">{title}</Typography>
+                        <Typography type="pSmall" className="journey-text">{subtitle}</Typography>
+                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button">{buttonTitle}</Button>
                     </TextContainer>
                 </IndividualContainer>
             </GroupContainer>
@@ -48,11 +48,11 @@ export function JourneySectionLeft({
             <GroupContainer>
                 <IndividualContainer>
                     <TextContainer>
-                        <Typography type="pLarge" style={{color: "white"}}>{title}</Typography>
-                        <Typography type="pSmall" style={{color: "white"}}>{subtitle}</Typography>
-                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" style={{padding:"3% 5%",width:"70%" ,color: "#7F7E7F"}}>{buttonTitle}</Button>
+                        <Typography type="pLarge" className="journey-text">{title}</Typography>
+                        <Typography type="pSmall" className="journey-text">{subtitle}</Typography>
+                        <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button">{buttonTitle}</Button>
                     </TextContainer>
-                    <IconImg iconImg={iconImg} style={{width: "50%", height:"70%"}}/>
+                    <IconImg iconImg={iconImg}/>
                 </IndividualContainer>
             </GroupContainer>
         </>

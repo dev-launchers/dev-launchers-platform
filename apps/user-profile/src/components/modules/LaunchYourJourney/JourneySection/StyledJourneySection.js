@@ -32,22 +32,33 @@ export const TextContainer = styled.div`
   flex-direction: column;
   align-items: center;
   align-text: center;
+
+  .journey-text {
+    color: white;
+  }
+
+  .journey-button {
+    padding: 3% 5%;
+    width: 70%;
+    color: #7F7E7F;
+  }
 `;
 
 export const IconImg = ({ iconImg }) => {
+
     switch (iconImg) {
       case 'Journey1':
-        return <img src={profile} />
+        return <img src={profile} style={{width: "50%", height:"70%"}}/>
       case 'Journey2':
-        return <img src={templates} />
+        return <img src={templates} style={{width: "50%", height:"70%"}}/>
       case 'Journey3':
-        return <img src={ideaspace} />
+        return <img src={ideaspace} style={{width: "50%", height:"70%"}}/>
       case 'Journey4':
-        return <img src={learning} />
+        return <img src={learning} style={{width: "50%", height:"70%"}}/>
       case 'Journey5':
-        return <img src={collaboration} />
+        return <img src={collaboration} style={{width: "50%", height:"70%"}}/>
       default:
-        return <img src={profile} />
+        return <img src={profile} style={{width: "50%", height:"70%"}}/>
     }
   };
   
