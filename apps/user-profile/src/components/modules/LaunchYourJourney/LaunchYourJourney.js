@@ -50,13 +50,13 @@ export default function LaunchYourJourney() {
 					subtitle="Shape your stunning professional profile and shine bright like a supernova💫. Showcase your unique talents and interests for the galaxy to see."
                     buttonTitle="Create Your Profile"
                     buttonPath='create'
-                    clickFunction={CreatePage}
                 />
                 <JourneySectionLeft
                     iconImg='Journey2'
 					title="Create with Templates"
 					subtitle="Fire up your engines and learn to create games and apps using our stellar templates."
                     buttonTitle="Discover Templates"
+                    clickFunction={CreatePage}
                 />
                 <JourneySectionRight
                     iconImg='Journey3'
