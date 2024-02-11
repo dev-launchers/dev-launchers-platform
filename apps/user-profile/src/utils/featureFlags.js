@@ -1,13 +1,14 @@
-const env = process.env.NODE_ENV;
+const env = process.env.NEXT_PUBLIC_NAME?.toLowerCase();
 
 const flags = {
     useLiveData: {
         always: true,
     },
+    env,
     inDevelopment: env === 'development',
     inStaging: env === 'staging',
     inProduction: env === 'production',
-    bypassLogin: true,//env === 'development' || env === 'staging'
+    bypassLogin: env === 'development' || env === 'staging'
 }
 
 export const featureFlags = flags;
