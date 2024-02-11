@@ -29,8 +29,6 @@ function MyApp(props) {
   // Google analytics/Google adwords
   React.useEffect(() => {
     // Google Analytics
-
-    console.log(theme)
     initGA();
     logPageView();
     Router.events.on('routeChangeComplete', () => {

@@ -1,9 +1,10 @@
-const env = process.env.NODE_ENV;
+const env = process.env.NEXT_PUBLIC_NAME?.toLocaleLowerCase();
 
 const flags = {
     useLiveData: {
         always: true,
     },
+    env,
     inDevelopment: env === 'development',
     inStaging: env === 'staging',
     inProduction: env === 'production',

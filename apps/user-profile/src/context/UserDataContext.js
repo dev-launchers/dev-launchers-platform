@@ -32,7 +32,7 @@ function useUserData() {
   const [userData, setUserData] = useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = useState();
   useEffect(() => {
-    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/${featureFlags.bypassLogin ? '80?populate=*' : 'me?populate=*'}`, {
+    axios(`${process.env.NEXT_PUBLIC_API_URL}/users/${featureFlags.bypassLogin ? '80?populate=deep' : 'me?populate=deep'}`, {
       withCredentials: true,
     }).then(({ data }) => {
       const user = {
