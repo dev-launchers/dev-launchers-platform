@@ -3,9 +3,11 @@ import { onboardingActions } from './../actions';
 import { featureFlags } from './../../utils/featureFlags';
 
 export const initialOnboardingState = {
-    showIntroductionModal: true,
-    showPlatformOnboardingModal: false,
-    user: {
+    
+    showIntroductionModal: false,
+    showPlatformOnboardingModal: true,
+    showCloseModal: false,
+    user: { 
         selectedRole: null,
         selectedExperience: null,
         interest: [
@@ -33,7 +35,11 @@ export const initialOnboardingState = {
     },
 }
 
+
+
 export const onboardingReducer = (state, action) => {
+    
+    
     switch (action.type) {
         case onboardingActions.SET_USERS_INTEREST: {
             console.log(action);
@@ -64,18 +70,22 @@ export const onboardingReducer = (state, action) => {
             }
         }
         case onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL: {
+            console.log("hello")
+
             return {
                 ...state,
-                showIntroductionModal: false,
+                showIntroductionModal: true,
                 showPlatformOnboardingModal: true
             }
         }
         case onboardingActions.SHOW_INTRODUCTION_MODAL: {
+            console.log("hello")
             return {
                 ...state,
-                showPlatformOnboardingModal: false,
+                showPlatformOnboardingModal: true,
                 showIntroductionModal: true
             }
+            
         }
         case onboardingActions.HIDE_PLATFORM_ONBOARDING_MODAL: {
             return {
@@ -94,6 +104,20 @@ export const onboardingReducer = (state, action) => {
                 ...state,
                 showIntroductionModal: false,
                 showPlatformOnboardingModal: false,
+                showCloseModal: false,
+            }
+        }
+        case onboardingActions.HIDE_CLOSING_MODAL: {
+            return {
+                ...state,
+                showCloseModal: false,
+            }
+        }
+        case onboardingActions.SHOW_CLOSING_MODAL: {
+            console.log('showclosemodal')
+            return {
+                ...state,
+                showCloseModal: true,
             }
         }
         default: {

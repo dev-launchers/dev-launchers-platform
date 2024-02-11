@@ -8,8 +8,9 @@ import PageSix from './PageSix/PageSix';
 
 // import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
-import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
+import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext.js';
 import { onboardingActions } from './../../../../state/actions';
+// import * as onboardingActions from '../../../state/actions/onboardingActions.js';
 
 export default function PlatformOnboarding() {
   const { dispatch } = useOnboardingDataContext();

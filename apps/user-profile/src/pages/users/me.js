@@ -9,6 +9,7 @@ import UserProfile from "../../components/modules/UserProfile";
 import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
 import SignIn from "../../components/modules/UserProfile/SignIn";
 import PageBody from "../../components/common/PageBody";
+import { UseOnboardingData, useOnboardingDataContext } from '../../context/OnboardingDataContext';
 
 
 
@@ -19,9 +20,11 @@ import PageBody from "../../components/common/PageBody";
 export default function UserProfilePage(props) {
   const { isAuthenticated, userData } = useUserDataContext();
   const router = useRouter();
+  const { onboardingData, dispatch } = useOnboardingDataContext();
 
 
   useEffect(() => {
+    console.log('onboardingdata', onboardingData)
     // if (featureFlags.inDevelopment) {
     //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
     // }
@@ -47,7 +50,13 @@ export default function UserProfilePage(props) {
       <PageBody>
         {isAuthenticated ?
           <>
-            {openUserOnboardingModal() && <UserOnboardingModal />}
+            {openUserOnboardingModal() && <UserOnboardingModal modalsToShow={{
+              showIntroductionModal: onboardingData?.showIntroductionModal,
+              showPlatformOnboardingModal: onboardingData?.showPlatformOnboardingModal,
+              }}/> }
+            {openUserOnboardingModal() && onboardingData.showCloseModal && <UserOnboardingModal modalsToShow={{
+              showCloseModal: onboardingData?.showCloseModal
+            }}/> }
             <UserProfile isPublic={false} />
           </> :
           <SignIn />
