@@ -1,4 +1,4 @@
-const env = process.env.NEXT_PUBLIC_NAME?.toLocaleLowerCase();
+const env = process.env.NEXT_PUBLIC_NAME?.toLowerCase();
 
 const flags = {
     useLiveData: {
