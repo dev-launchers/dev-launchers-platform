@@ -2,7 +2,6 @@ import PageBody from "../../common/PageBody"
 import { Typography} from '@devlaunchers/components/components/atoms';
 import { PageContainer, HeaderSection, Header, SubHeader, Footer, Icons} from "./StyledLaunchYourJourney";
 import { JourneySectionRight, JourneySectionLeft } from "./JourneySection/JourneySection";
-import headerBG from "./../../../images/Onboarding/EmailTemplate/headerBG.png";
 import rocket from "./../../../images/Onboarding/EmailTemplate/rocket-icon.png"
 import insta from "./../../../images/Onboarding/EmailTemplate/insta-icon.png"
 import facebook from "./../../../images/Onboarding/EmailTemplate/facebook-icon.png"
@@ -33,12 +32,12 @@ export default function LaunchYourJourney() {
         <>
 
         <PageContainer>
-            <HeaderSection style={{ backgroundImage:`url(${headerBG})` }}>
+            <HeaderSection>
                 <Header>
-                    <Typography style={{color: "white", fontSize: "80px"}}>Launch Your Journey!</Typography>
+                    <Typography className="header-text">Launch Your Journey!</Typography>
                 </Header>
                 <SubHeader>
-                    <Typography type="pLarge" style={{color: "white"}}>
+                    <Typography type="pLarge">
                         Dev Launchers is here to launch your tech career into the stratosphere. Our community is full of cosmic adventurers, all ready to help you reach new dimensions of success.
                     </Typography>
                 </SubHeader>
@@ -82,14 +81,14 @@ export default function LaunchYourJourney() {
             </PageBody>
             <Footer>
                 <Icons>
-                    <img src={insta} style={{padding:"0px 10px"}}/>
-                    <img src={rocket} style={{padding:"0px 10px"}}/>
-                    <img src={facebook} style={{padding:"0px 10px"}}/>
+                    <img src={insta} className="footer-icon"/>
+                    <img src={rocket} className="footer-icon"/>
+                    <img src={facebook} className="footer-icon"/>
                 </Icons>
-                <Typography type="pLarge" style={{color: "white"}}>Join - Create - Learn - Dream - Support</Typography>
-                <Typography type="pSmall" style={{color: "white"}}>Dev Launchers</Typography>
-                <Typography type="pSmall" style={{color: "white"}}>Austin, TX</Typography>
-                <Typography type="pSmall" style={{color: "white"}}>Terms of Service - Privacy Policy</Typography>
+                <Typography type="pLarge" className="footer-text">Join - Create - Learn - Dream - Support</Typography>
+                <Typography type="pSmall" className="footer-text">Dev Launchers</Typography>
+                <Typography type="pSmall" className="footer-text">Austin, TX</Typography>
+                <Typography type="pSmall" className="footer-text">Terms of Service - Privacy Policy</Typography>
             </Footer>
         </PageContainer>
         
