@@ -7,7 +7,7 @@ const flags = {
     inDevelopment: env === 'development',
     inStaging: env === 'staging',
     inProduction: env === 'production',
-    bypassLogin: true,//env === 'development' || env === 'staging'
+    bypassLogin: env === 'development' || env === 'staging'
 }
 
 export const featureFlags = flags;

@@ -52,11 +52,9 @@ function useUserData() {
         interests: data.interests
       };
       setUserData(user);
-      console.log("[Context] User Data: ", userData);
       setIsAuthenticated(true);
 
     }).catch((error) => {
-      console.error('Error: ', error);
       setIsAuthenticated(featureFlags.bypassLogin);
     });
   }, []);
