@@ -40,6 +40,9 @@ export const TextContainer = styled.div`
   .journey-button {
     padding: 3% 5%;
     width: 70%;
+  }
+
+  .button-text {
     color: #7F7E7F;
   }
 `;

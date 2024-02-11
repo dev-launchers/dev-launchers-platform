@@ -56,7 +56,7 @@ export default function LaunchYourJourney() {
 					title="Powering your Profile"
 					subtitle="Shape your stunning professional profile and shine bright like a supernova💫. Showcase your unique talents and interests for the galaxy to see."
                     buttonTitle="Create Your Profile"
-                    buttonPath='create'
+                    buttonLink='https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=164131315429-hcllbtrq77jsc7b3fqviak7148hj8oa9.apps.googleusercontent.com&response_type=code&redirect_uri=https%3A%2F%2Fapiv4.devlaunchers.org%2Fapi%2Fconnect%2Fgoogle%2Fcallback&scope=email%20profile&service=lso&o2v=2&theme=glif&flowName=GeneralOAuthFlow'
                     side='right'
                 />
                 <JourneySection

@@ -17,6 +17,7 @@ export function JourneySection({
     title,
     subtitle,
     buttonTitle,
+    buttonLink,
     clickFunction,
     side,
 }) {
@@ -29,7 +30,7 @@ export function JourneySection({
                         <TextContainer>
                             <Typography type="pLarge" className="journey-text">{title}</Typography>
                             <Typography type="pSmall" className="journey-text">{subtitle}</Typography>
-                            <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button">{buttonTitle}</Button>
+                            <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button"><a href={buttonLink} className="button-text">{buttonTitle}</a></Button>
                         </TextContainer>
                     </IndividualContainer>
                 </GroupContainer>
@@ -43,7 +44,7 @@ export function JourneySection({
                         <TextContainer>
                             <Typography type="pLarge" className="journey-text">{title}</Typography>
                             <Typography type="pSmall" className="journey-text">{subtitle}</Typography>
-                            <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button">{buttonTitle}</Button>
+                            <Button onClick={clickFunction} buttonType="alternative" buttonSize="standard" className="journey-button"><a href={buttonLink} className="button-text">{buttonTitle}</a></Button>
                         </TextContainer>
                         <IconImg iconImg={iconImg}/>
                     </IndividualContainer>
