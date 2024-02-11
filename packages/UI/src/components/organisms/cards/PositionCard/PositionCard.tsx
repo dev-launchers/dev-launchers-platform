@@ -112,7 +112,7 @@ const Blurp = ({
           <Box flexDirection="column" gap="16px">
             <Typography type="subtitle">why should you join?</Typography>
             <ul css={{ listStylePosition: 'inside' }}>
-              {content.benifits.map((el1, i1) => (
+              {content.benefits.map((el1, i1) => (
                 <Typography type="p" key={i1}>
                   <li>{el1}</li>
                 </Typography>
