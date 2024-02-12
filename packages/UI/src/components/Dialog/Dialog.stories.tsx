@@ -128,7 +128,7 @@ export const Newsletter: Story = {
                 </DialogDescription>
               </p>
               <div className="ml-8 flex flex-col items-center justify-center">
-                <h3 className="ml-4 mb-2 w-full font-nunito-sans text-sm font-bold uppercase tracking-wide">
+                <h3 className="mb-2 ml-4 w-full font-nunito-sans text-sm font-bold uppercase tracking-wide">
                   Email address
                 </h3>
                 <input
@@ -138,6 +138,7 @@ export const Newsletter: Story = {
                 />
               </div>
             </div>
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <DialogClose>
                 <Button buttonType="alternative" buttonSize="standard">
@@ -177,7 +178,8 @@ export const Terms: Story = {
           </DialogTrigger>
           <DialogContent >
             <DialogHeader>
-              <h3 className="font-nunito-sans uppercase tracking-wider h-6 flex w-[448px] items-center">
+              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+              <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 <DialogTitle>Terms of services</DialogTitle>
               </h3>
             </DialogHeader>
@@ -197,7 +199,7 @@ export const Terms: Story = {
                 acceptance of these terms.
               </p>
             </div>
-
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-between gap-6">
               <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
                 <div className="flex items-center justify-center">
@@ -243,7 +245,8 @@ export const Roles: Story = {
           </DialogTrigger>
           <DialogContent >
             <DialogHeader>
-              <h3 className="w-[448px] font-nunito-sans uppercase tracking-wider h-6 flex items-center">
+              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+              <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 <DialogTitle>Select your role</DialogTitle>
               </h3>
             </DialogHeader>
@@ -263,7 +266,7 @@ export const Roles: Story = {
                 );
               })}
             </div>
-
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <div className="flex h-10 w-full items-center justify-between">
                 <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
