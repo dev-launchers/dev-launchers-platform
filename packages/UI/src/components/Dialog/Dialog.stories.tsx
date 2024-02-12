@@ -34,7 +34,7 @@ type Story = StoryObj<typeof Dialog>;
  * to learn how to use render functions.
  */
 
-export const EmptyDialog: Story = {
+export const Default: Story = {
   render: () => {
     return (
       <>
@@ -50,7 +50,7 @@ export const EmptyDialog: Story = {
                 <div className="h-8 w-96 bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            <div className="h-36 w-96 bg-grayscale-200"></div>
+            <div className="h-36 w-96 bg-grayscale-100"></div>
             <div className="h-8 w-96 bg-white"></div>
           </DialogContent>
         </Dialog>
@@ -65,7 +65,7 @@ export const EmptyDialog: Story = {
   },
 };
 
-export const EmptyDialogWithNoClose: Story = {
+export const DefaultWithNoClose: Story = {
   render: () => {
     return (
       <>
@@ -81,7 +81,7 @@ export const EmptyDialogWithNoClose: Story = {
                 <div className="h-8 w-96 bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            <div className="h-36 w-96 bg-grayscale-200"></div>
+            <div className="h-36 w-96 bg-grayscale-100"></div>
             <div className="h-8 w-96 bg-white"></div>
           </DialogContent>
         </Dialog>
@@ -159,7 +159,7 @@ export const Newsletter: Story = {
   },
 };
 
-export const TermsOfService: Story = {
+export const Terms: Story = {
   parameters: {
     design: {
       type: 'figma',
@@ -218,7 +218,7 @@ export const TermsOfService: Story = {
   },
 };
 
-export const RoleModal: Story = {
+export const Roles: Story = {
   parameters: {
     design: {
       type: 'figma',
