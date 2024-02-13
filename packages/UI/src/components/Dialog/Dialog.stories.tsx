@@ -47,11 +47,14 @@ export const Default: Story = {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
-                <div className="h-8 w-96 bg-white uppercase" />
+                {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+                <div className="h-8 w-[448px] bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            <div className="h-36 w-96 bg-grayscale-100"></div>
-            <div className="h-8 w-96 bg-white"></div>
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+            <div className="h-36 w-[448px] bg-grayscale-100"></div>
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+            <div className="h-8 w-[448px] bg-white"></div>
           </DialogContent>
         </Dialog>
       </>
@@ -78,11 +81,14 @@ export const DefaultWithNoClose: Story = {
           <DialogContent hasCloseBtn={false}>
             <DialogHeader>
               <DialogTitle>
-                <div className="h-8 w-96 bg-white uppercase" />
+                {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+                <div className="h-8 w-[448px] bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            <div className="h-36 w-96 bg-grayscale-100"></div>
-            <div className="h-8 w-96 bg-white"></div>
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+            <div className="h-36 w-[448px] bg-grayscale-100"></div>
+            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
+            <div className="h-8 w-[448px] bg-white"></div>
           </DialogContent>
         </Dialog>
       </>
