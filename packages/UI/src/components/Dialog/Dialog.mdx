@@ -1,6 +1,5 @@
 import { Meta, Stories, Description } from '@storybook/blocks';
 import * as DialogStories from './Dialog.stories.tsx';
-import theme  from '../../styles/theme';
 import { Button } from 'components/atoms';
 import { Checkbox } from './../Checkbox';
 
@@ -23,7 +22,7 @@ import {
   <div className='flex gap-4'>
     <Dialog>
       <DialogTrigger>
-        <Button theme={theme} buttonType="primary" buttonSize="standard">
+        <Button  buttonType="primary" buttonSize="standard">
           Empty
         </Button>
       </DialogTrigger>
@@ -40,7 +39,7 @@ import {
 
     <Dialog>
       <DialogTrigger>
-        <Button theme={theme} buttonType="primary" buttonSize="standard">
+        <Button  buttonType="primary" buttonSize="standard">
           Submit
         </Button>
       </DialogTrigger>
@@ -72,7 +71,7 @@ import {
               <p className="ml-2">I've read the terms of services</p>
             </div>
             <DialogClose>
-              <Button theme={theme} buttonType="primary" buttonSize="standard">
+              <Button  buttonType="primary" buttonSize="standard">
                 Submit
               </Button>
             </DialogClose>
@@ -83,7 +82,7 @@ import {
 
     <Dialog>
       <DialogTrigger>
-        <Button  theme={theme} buttonType="primary" buttonSize="standard">
+        <Button   buttonType="primary" buttonSize="standard">
           Subscribe!
         </Button>
       </DialogTrigger>
@@ -115,13 +114,13 @@ import {
         </div>
         <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
           <DialogClose>
-            <Button theme={theme} buttonType="alternative" buttonSize="standard">
+            <Button  buttonType="alternative" buttonSize="standard">
               {' '}
               dismiss{' '}
             </Button>
           </DialogClose>
           <DialogClose>
-            <Button theme={theme} buttonType="primary" buttonSize="standard">
+            <Button  buttonType="primary" buttonSize="standard">
               {' '}
               Subscribe{' '}
             </Button>
@@ -131,7 +130,7 @@ import {
     </Dialog>    
     <Dialog>
       <DialogTrigger>
-        <Button theme={theme} buttonType="primary" buttonSize="standard">
+        <Button  buttonType="primary" buttonSize="standard">
           Role
         </Button>
       </DialogTrigger>
@@ -168,10 +167,10 @@ import {
           <div className="flex h-10 w-full items-center justify-between">
             <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
             <div className="flex gap-4">
-              <Button theme={theme} buttonType="primary" buttonSize="standard">
+              <Button  buttonType="primary" buttonSize="standard">
                 Previous
               </Button>
-              <Button theme={theme} buttonType="primary" buttonSize="standard">
+              <Button  buttonType="primary" buttonSize="standard">
                 Next
               </Button>
             </div>
