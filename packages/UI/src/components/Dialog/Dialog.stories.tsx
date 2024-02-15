@@ -118,13 +118,12 @@ export const Newsletter: Story = {
               Subscribe!
             </Button>
           </DialogTrigger>
-          <DialogContent >
+          <DialogContent>
             <DialogHeader>
               {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 Subscribe to our newsletter
               </h3>
-
             </DialogHeader>
             <div className="ml-16">
               <p className="mb-4 w-96 pl-8 font-nunito-sans">
@@ -182,7 +181,7 @@ export const Terms: Story = {
               ToS
             </Button>
           </DialogTrigger>
-          <DialogContent >
+          <DialogContent>
             <DialogHeader>
               {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
