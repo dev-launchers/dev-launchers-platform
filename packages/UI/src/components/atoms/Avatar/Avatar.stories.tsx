@@ -1,5 +1,7 @@
+import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from './Avatar';
+import base64img from './base64img';
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
@@ -8,11 +10,14 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 
 export const Default: StoryObj<typeof Avatar> = {
-  args: {
-    alt: 'Lamodot',
-    src: 'https://bit.ly/3EBQXiH',
-    delayMs: 600,
-  },
+  render: () => (
+    <Avatar
+      alt="Profile picture of John Doe"
+      src={`data:image/png;base64,${base64img}`}
+      delayMs={600}
+      onLoadingStatusChange={action('onLoadingStatusChange')}
+    />
+  ),
   parameters: {
     design: {
       type: 'figma',
@@ -21,16 +26,41 @@ export const Default: StoryObj<typeof Avatar> = {
   },
 };
 
-export const NoImage: StoryObj<typeof Avatar> = {
-  args: {
-    alt: 'Lamodot',
-    src: '',
-    delayMs: 600,
-  },
+export const FailToLoadFallback: StoryObj<typeof Avatar> = {
+  render: () => (
+    <Avatar
+      alt="Profile picture of John Doe"
+      src={`https://someUrlThatDoesNotReturnAnything.com/myPicture.png`}
+      delayMs={600}
+      onLoadingStatusChange={action('onLoadingStatusChange')}
+    />
+  ),
   parameters: {
     design: {
       type: 'figma',
       url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=8575-7191&mode=design&t=1SqrP5S7pH7kkYa6-4',
     },
+  },
+};
+
+export const Playground: StoryObj<typeof Avatar> = {
+  render({ src, delayMs, alt }) {
+    return (
+      <Avatar
+        src={Array.isArray(src) ? src[0] : src}
+        alt={alt}
+        delayMs={delayMs}
+        onLoadingStatusChange={action('onLoadingStatusChange')}
+      />
+    );
+  },
+  argTypes: { src: { control: { type: 'file', accept: '.png' } } },
+  args: {
+    alt: 'Profile picture of John Doe',
+    src: `data:image/png;base64,${base64img}`,
+    delayMs: 600,
+  },
+  parameters: {
+    docs: { disable: true },
   },
 };
