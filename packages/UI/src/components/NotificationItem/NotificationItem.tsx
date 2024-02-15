@@ -25,7 +25,7 @@ const notificationStyles = tv({
         statusIndicator: 'invisible',
       },
       unRead: {
-        statusIndicator: 'rounded-full bg-[#407BFF]',
+        statusIndicator: 'rounded-full bg-alert-notification-o-100-600',
       },
     },
   },
