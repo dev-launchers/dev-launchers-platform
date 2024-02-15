@@ -38,6 +38,9 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    /**
+     * Boolean when set to false will remove the close button in the top right corner of the dialog.
+     */
     hasCloseBtn?: boolean;
   }
 >(({ className, children, hasCloseBtn = true, ...props }, ref) => {

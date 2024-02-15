@@ -124,10 +124,10 @@ export const Newsletter: Story = {
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 Subscribe to our newsletter
               </h3>
+
             </DialogHeader>
-            <div className="">
-              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
-              <p className="mb-4 w-[448px] pl-8 font-nunito-sans">
+            <div className="ml-16">
+              <p className="mb-4 w-96 pl-8 font-nunito-sans">
                 <DialogDescription>
                   Subscribe to our newsletter for the latest trends and
                   exclusive content delivered straight to your inbox!
