@@ -1,5 +1,6 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { CircleUserRound } from 'lucide-react';
+import { useState } from 'react';
 
 import { tv } from 'tailwind-variants';
 
@@ -8,6 +9,23 @@ const AvatarStyles = tv({
     baseSlot:
       'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
     fallbackSlot: 'bg-gray-100',
+    fallbackIconSlot: '',
+  },
+  variants: {
+    loadingStatus: {
+      loading: {
+        fallbackIconSlot: 'animate-pulse',
+      },
+      loaded: {
+        fallbackIconSlot: '',
+      },
+      error: {
+        fallbackIconSlot: '',
+      },
+      idle: {
+        fallbackIconSlot: '',
+      },
+    },
   },
 });
 
@@ -35,20 +53,29 @@ const Avatar = ({
   onLoadingStatusChange,
   ...props
 }: AvatarProps) => {
-  const { baseSlot, fallbackSlot } = AvatarStyles();
+  const [loadingStatus, setLoadingStatus] =
+    useState<AvatarPrimitive.ImageLoadingStatus>('loading');
+  const { baseSlot, fallbackSlot, fallbackIconSlot } = AvatarStyles({
+    loadingStatus,
+  });
   return (
     <AvatarPrimitive.Root className={baseSlot()} {...props}>
       <AvatarPrimitive.Image
         className={baseSlot()}
         alt={alt}
         src={src}
-        onLoadingStatusChange={onLoadingStatusChange}
+        onLoadingStatusChange={(status) => {
+          onLoadingStatusChange?.(status);
+          setLoadingStatus(status);
+        }}
       />
       <AvatarPrimitive.Fallback
-        className={baseSlot({ className: fallbackSlot() })}
+        className={baseSlot({
+          className: fallbackSlot(),
+        })}
         delayMs={delayMs}
       >
-        <CircleUserRound />
+        <CircleUserRound className={fallbackIconSlot()} />
       </AvatarPrimitive.Fallback>
     </AvatarPrimitive.Root>
   );
