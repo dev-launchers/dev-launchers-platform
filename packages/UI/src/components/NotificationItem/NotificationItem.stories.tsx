@@ -10,66 +10,47 @@ export default meta;
 export const Read: StoryObj<typeof NotificationItem> = {
   args: {
     message:
-      ' What you want to achieve through an online questionnaire is quality rather than quantity.',
-    name: 'Lamodot',
+      'What you want to achieve through an online questionnaire is quality rather than quantity.',
+    name: 'Arthur Wells',
     target: 'DevSocials',
     targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
     profileLink: 'https://devlaunchers.org/users/me',
     timeStamp: '30m',
     action: 'commented on',
-    // src: 'https://bit.ly/3EBQXiH',
-    // alt: 'Lamodot',
-
+    avatar: {
+      src: 'https://bit.ly/3EBQXiH',
+      alt: 'Lamodot',
+    },
     status: 'read',
   },
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=7428-603&mode=design&t=nocYacV77TIMT4qp-4',
+      url: 'https://www.figma.com/file/rvdnSOeHdjODE0U7xdNTR9/DL-Universal-Design-System-(NEW)?type=design&node-id=63-10336&mode=dev',
     },
   },
 };
 export const UnRead: StoryObj<typeof NotificationItem> = {
   args: {
-    message:
-      ' What you want to achieve through an online questionnaire is quality rather than quantity.',
-    name: 'Lamodot',
-    target: 'DevSocials',
-    targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
-    profileLink: 'https://devlaunchers.org/users/me',
-    timeStamp: '30m',
-    action: 'commented on',
-    // src: 'https://bit.ly/3EBQXiH',
-    // alt: 'Lamodot',
-
+    ...Read.args,
     status: 'unRead',
   },
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=7428-604&mode=design&t=nocYacV77TIMT4qp-4',
+      url: 'https://www.figma.com/file/rvdnSOeHdjODE0U7xdNTR9/DL-Universal-Design-System-(NEW)?type=design&node-id=63-10354&mode=dev',
     },
   },
 };
 export const Hover: StoryObj<typeof NotificationItem> = {
   args: {
-    message:
-      ' What you want to achieve through an online questionnaire is quality rather than quantity.',
-    name: 'Lamodot',
-    target: 'DevSocials',
-    targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
-    profileLink: 'https://devlaunchers.org/users/me',
-    timeStamp: '30m',
-    action: 'commented on',
-    // src: 'https://bit.ly/3EBQXiH',
-    // alt: 'Lamodot',
-
+    ...Read.args,
     status: 'unRead',
   },
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=7467-6778&mode=design&t=nocYacV77TIMT4qp-4',
+      url: 'https://www.figma.com/file/rvdnSOeHdjODE0U7xdNTR9/DL-Universal-Design-System-(NEW)?type=design&node-id=63-10345&mode=dev',
     },
     pseudo: {
       hover: true,
