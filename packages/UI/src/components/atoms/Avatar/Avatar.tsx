@@ -4,7 +4,11 @@ import { CircleUserRound } from 'lucide-react';
 import { tv } from 'tailwind-variants';
 
 const AvatarStyles = tv({
-  base: ' h-12 w-12 justify-center rounded-full bg-white  bg-contain text-center align-middle text-base font-medium',
+  slots: {
+    baseSlot:
+      'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
+    fallbackSlot: 'bg-gray-100',
+  },
 });
 
 interface AvatarProps extends AvatarPrimitive.AvatarProps {
@@ -31,16 +35,19 @@ const Avatar = ({
   onLoadingStatusChange,
   ...props
 }: AvatarProps) => {
-  const avatarStyles = AvatarStyles();
+  const { baseSlot, fallbackSlot } = AvatarStyles();
   return (
-    <AvatarPrimitive.Root className={avatarStyles} {...props}>
+    <AvatarPrimitive.Root className={baseSlot()} {...props}>
       <AvatarPrimitive.Image
-        className={avatarStyles}
+        className={baseSlot()}
         alt={alt}
         src={src}
         onLoadingStatusChange={onLoadingStatusChange}
       />
-      <AvatarPrimitive.Fallback className={avatarStyles} delayMs={delayMs}>
+      <AvatarPrimitive.Fallback
+        className={baseSlot({ className: fallbackSlot() })}
+        delayMs={delayMs}
+      >
         <CircleUserRound />
       </AvatarPrimitive.Fallback>
     </AvatarPrimitive.Root>
