@@ -5,19 +5,19 @@ import useResponsive from '../../hooks/useResponsive';
 const notificationStyles = tv({
   slots: {
     container:
-      ' flex gap-4 py-4 pr-4 pl-2  items-center bg-white  border-t w-full hover:bg-grayscale-100 md:py-4 md:pl-4 md:pr-8 lg:p-8  ',
+      ' flex w-full items-center gap-4 border-t  bg-white py-4  pl-2 pr-4 hover:bg-grayscale-100 md:py-4 md:pl-4 md:pr-8 lg:p-8  ',
     avatarContainer:
-      ' w-12 h-12 hidden  md:flex items-center  text-center lg:flex lg:w-12 lg:h-12 lg:items-center lg:justify-center',
+      ' hidden h-12 w-12  items-center text-center  md:flex lg:flex lg:h-12 lg:w-12 lg:items-center lg:justify-center',
     detailsContentStyle:
       'grow   md:flex md:items-center lg:flex  lg:flex-row lg:items-center  ',
-    contentContainerStyle: ' md:grow lg:grow  flex flex-col gap-1 w-full',
+    contentContainerStyle: ' flex w-full  flex-col gap-1 md:grow lg:grow',
     headerStyle: ' flex gap-1 ',
     usernameStyle: ' ',
     actionStyle: ' ',
     descriptionStyle: ' text-base leading-5 ',
-    timeStampStyle: ' text-base pt-1',
+    timeStampStyle: ' pt-1 text-base',
     targetStyle: ' grow-0 ',
-    statusIndicator: 'w-3 h-3 shrink-0',
+    statusIndicator: 'h-3 w-3 shrink-0',
   },
   variants: {
     status: {
@@ -87,7 +87,7 @@ function NotificationItem({
         <div className={statusIndicator()}></div>
         <div className={avatarContainer()}>
           <a href={profileLink} rel="noreferrer" target="_blank">
-            <div className="w-12 h-12 bg-gray-600 rounded-full"></div>
+            <div className="h-12 w-12 rounded-full bg-gray-600"></div>
           </a>
         </div>
         <div className={detailsContentStyle()}>
