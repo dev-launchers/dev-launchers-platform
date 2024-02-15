@@ -1,13 +1,13 @@
-import * as Avatar from '@radix-ui/react-avatar';
-import { CircleUser } from 'lucide-react';
+import * as AvatarPrimitive from '@radix-ui/react-avatar';
+import { CircleUserRound } from 'lucide-react';
 
-import { tv, type VariantProps } from 'tailwind-variants';
+import { tv } from 'tailwind-variants';
 
 const AvatarStyles = tv({
-  base: ' h-12 w-12 justify-center   rounded-full bg-white  bg-contain text-center align-middle text-base font-medium',
+  base: ' h-12 w-12 justify-center rounded-full bg-white  bg-contain text-center align-middle text-base font-medium',
 });
 
-interface AvatarProps extends Avatar.AvatarProps {
+interface AvatarProps extends AvatarPrimitive.AvatarProps {
   /**
    * Source of the image
    */
@@ -17,36 +17,34 @@ interface AvatarProps extends Avatar.AvatarProps {
   /**
    * Useful for delaying rendering so it only appears for those with slower connections.
    */
-  delayMs?: Avatar.AvatarFallbackProps['delayMs'];
+  delayMs?: AvatarPrimitive.AvatarFallbackProps['delayMs'];
   /**
    * A callback providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.
    */
-  onLoadingStatusChange?: Avatar.AvatarImageProps['onLoadingStatusChange'];
+  onLoadingStatusChange?: AvatarPrimitive.AvatarImageProps['onLoadingStatusChange'];
 }
 
-const AvatarComponent = ({
+const Avatar = ({
   src,
   alt,
   delayMs,
-
   onLoadingStatusChange,
-
-  ...Props
+  ...props
 }: AvatarProps) => {
   const avatarStyles = AvatarStyles();
   return (
-    <Avatar.Root className={avatarStyles} {...Props}>
-      <Avatar.Image
+    <AvatarPrimitive.Root className={avatarStyles} {...props}>
+      <AvatarPrimitive.Image
         className={avatarStyles}
         alt={alt}
         src={src}
         onLoadingStatusChange={onLoadingStatusChange}
       />
-      <Avatar.Fallback className={avatarStyles} delayMs={delayMs}>
-        <CircleUser />
-      </Avatar.Fallback>
-    </Avatar.Root>
+      <AvatarPrimitive.Fallback className={avatarStyles} delayMs={delayMs}>
+        <CircleUserRound />
+      </AvatarPrimitive.Fallback>
+    </AvatarPrimitive.Root>
   );
 };
 
-export default AvatarComponent;
+export default Avatar;
