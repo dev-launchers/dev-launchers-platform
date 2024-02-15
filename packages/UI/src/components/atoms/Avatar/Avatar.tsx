@@ -54,7 +54,7 @@ const Avatar = ({
   ...props
 }: AvatarProps) => {
   const [loadingStatus, setLoadingStatus] =
-    useState<AvatarPrimitive.ImageLoadingStatus>('loading');
+    useState<AvatarPrimitive.ImageLoadingStatus>();
   const { baseSlot, fallbackSlot, fallbackIconSlot } = AvatarStyles({
     loadingStatus,
   });
