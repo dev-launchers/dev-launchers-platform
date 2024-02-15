@@ -47,13 +47,10 @@ export const Default: Story = {
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
-                {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
                 <div className="h-8 w-[448px] bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <div className="h-36 w-[448px] bg-grayscale-100"></div>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <div className="h-8 w-[448px] bg-white"></div>
           </DialogContent>
         </Dialog>
@@ -81,13 +78,10 @@ export const DefaultWithNoClose: Story = {
           <DialogContent hasCloseBtn={false}>
             <DialogHeader>
               <DialogTitle>
-                {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
                 <div className="h-8 w-[448px] bg-white uppercase" />
               </DialogTitle>
             </DialogHeader>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <div className="h-36 w-[448px] bg-grayscale-100"></div>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <div className="h-8 w-[448px] bg-white"></div>
           </DialogContent>
         </Dialog>
@@ -120,7 +114,6 @@ export const Newsletter: Story = {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 Subscribe to our newsletter
               </h3>
@@ -143,7 +136,6 @@ export const Newsletter: Story = {
                 />
               </div>
             </div>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <DialogClose>
                 <Button buttonType="alternative" buttonSize="standard">
@@ -183,12 +175,10 @@ export const Terms: Story = {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 <DialogTitle>Terms of services</DialogTitle>
               </h3>
             </DialogHeader>
-
             <div className="h-36 max-w-md overflow-y-auto font-nunito-sans">
               <p className="pr-6 text-base">
                 By accessing or using our services, you agree to abide by our
@@ -204,7 +194,6 @@ export const Terms: Story = {
                 acceptance of these terms.
               </p>
             </div>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-between gap-6">
               <div className="flex h-10 w-full items-center justify-between font-nunito-sans">
                 <div className="flex items-center justify-center">
@@ -250,7 +239,6 @@ export const Roles: Story = {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
                 <DialogTitle>Select your role</DialogTitle>
               </h3>
@@ -271,7 +259,6 @@ export const Roles: Story = {
                 );
               })}
             </div>
-            {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
             <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <div className="flex h-10 w-full items-center justify-between">
                 <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
