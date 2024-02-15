@@ -24,7 +24,8 @@ module.exports = withTV({
       ...filterTokensByType('color', tokens),
     },
     data: {
-      checked: 'state="checked"', //data-[state='checked']
+      checked: 'state="checked"', //data-[state=checked]
+      open: 'state="open"', //data-[state=open]
       unchecked: 'state="unchecked"', //data-[state='unchecked']
       disabled: 'disabled=""', //data-[disabled='']
     },
