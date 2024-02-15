@@ -7,7 +7,7 @@ import { cn } from '../../utils/classesMerger';
 const modalStyles = tv({
   slots: {
     contentStyle:
-      'min-h-80 min-w-96 fixed left-1/2 top-1/2 z-50 mx-auto flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white my-8 p-8 max-md:w-11/12',
+      'min-h-80 min-w-96 fixed left-1/2 top-1/2 z-50 mx-auto my-8 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-between rounded-lg bg-white p-8 max-md:w-11/12',
     overlayStyle: `fixed inset-0 bg-Light-Overlay`,
   },
 });
@@ -20,6 +20,9 @@ const DialogPortal = DialogPrimitive.Portal;
 
 const DialogClose = DialogPrimitive.Close;
 
+/**
+ * A layer that covers the inert portion of the view when the dialog is open.
+ */
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
@@ -82,6 +85,10 @@ const DialogFooter = ({
 );
 DialogFooter.displayName = 'DialogFooter';
 
+/**
+ * An accessible title to be announced when the dialog is opened.
+ * If you want to hide the title, add sr-only className to it.
+ */
 const DialogTitle = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Title>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
@@ -90,6 +97,10 @@ const DialogTitle = React.forwardRef<
 ));
 DialogTitle.displayName = DialogPrimitive.Title.displayName;
 
+/**
+ * An optional accessible description to be announced when the dialog is opened.
+ * If you want to hide the description, add sr-only className to it. If you want to remove the description entirely, remove this part and pass aria-describedby={undefined} to DialogContent.
+ */
 const DialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from 'components/atoms';
+import Button from '../atoms/Button';
 import { Checkbox } from './../Checkbox';
 import {
   Dialog,
@@ -39,7 +39,7 @@ export const Default: Story = {
     return (
       <>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button buttonType="primary" buttonSize="standard">
               Empty
             </Button>
@@ -73,7 +73,7 @@ export const DefaultWithNoClose: Story = {
     return (
       <>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button buttonType="primary" buttonSize="standard">
               Empty
             </Button>
@@ -113,7 +113,7 @@ export const Newsletter: Story = {
     return (
       <>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button buttonType="primary" buttonSize="standard">
               Subscribe!
             </Button>
@@ -177,7 +177,7 @@ export const Terms: Story = {
     return (
       <>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button buttonType="primary" buttonSize="standard">
               ToS
             </Button>
@@ -244,12 +244,12 @@ export const Roles: Story = {
     return (
       <>
         <Dialog>
-          <DialogTrigger>
+          <DialogTrigger asChild>
             <Button buttonType="primary" buttonSize="standard">
               Role
             </Button>
           </DialogTrigger>
-          <DialogContent >
+          <DialogContent>
             <DialogHeader>
               {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
               <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">

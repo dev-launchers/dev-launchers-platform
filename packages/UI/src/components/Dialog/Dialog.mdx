@@ -1,7 +1,7 @@
 import { Meta, Stories, Description } from '@storybook/blocks';
 import * as DialogStories from './Dialog.stories.tsx';
-import { Button } from 'components/atoms';
-import { Checkbox } from './../Checkbox';
+import Button  from '../atoms/Button';
+import { Checkbox } from '../Checkbox';
 
 import {
   Dialog,
@@ -20,9 +20,11 @@ import {
 
 <Description of={DialogStories} />
 
+## Showcase
+
 <div className='flex gap-4'>
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
         Empty
       </Button>
@@ -38,7 +40,7 @@ import {
     </DialogContent>
   </Dialog>
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
         Submit
       </Button>
@@ -80,7 +82,7 @@ import {
     </DialogContent>
   </Dialog>
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
         Subscribe!
       </Button>
@@ -128,7 +130,7 @@ import {
     </DialogContent>
   </Dialog>    
   <Dialog>
-    <DialogTrigger>
+    <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
         Role
       </Button>
@@ -176,5 +178,48 @@ import {
     </DialogContent>
   </Dialog>        
 </div>
+
+## Anatomy
+
+```jsx
+import {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from '@devlaunchers/components/src/components/Dialog';
+
+export default () => (
+  <Dialog>
+    <DialogTrigger />
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle />
+        </DialogHeader>
+        <DialogDescription />
+        <DialogClose />
+      </DialogContent>
+    </DialogPortal>
+  </Dialog>
+);
+```
+
+## Examples:
+### [Close after asynchronous form submission](https://www.radix-ui.com/primitives/docs/components/dialog#close-after-asynchronous-form-submission)
+<p className="!mt-0 !text-base">Use the controlled props to programmatically close the Dialog after an async operation has completed.</p>
+
+### [Scrollable overlay](https://www.radix-ui.com/primitives/docs/components/dialog#scrollable-overlay)
+<p className="!mt-0 !text-base">Move the content inside the overlay to render a dialog with overflow.</p>
+
+### [Custom portal container](https://www.radix-ui.com/primitives/docs/components/dialog#custom-portal-container)
+<p className="!mt-0 !text-base">Customise the element that your dialog portals into.</p>
 
 <Stories />

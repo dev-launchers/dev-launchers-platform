@@ -6,7 +6,6 @@ import theme from '../src/styles/theme';
 import { DocsContainer } from '@storybook/blocks';
 import '@devlaunchers/tailwind/tailwind.css';
 
-
 const isDevelopmentEnv = process.env.NODE_ENV == 'development';
 const customViewports = {
   mobile: {
@@ -89,16 +88,19 @@ export const decorators = [
         </ftl-holster>
       );
     }
-    return <Story />
+    return <Story />;
   },
 ];
 
 const DocsThemeContainer = ({ children, ...props }) => {
-  return <DocsContainer {...props}>
-      <ThemeProvider theme={theme}>
+  return (
+    <ThemeProvider theme={theme}>
+      <DocsContainer {...props}>
+        <GlobalStyle />
         {children}
-      </ThemeProvider>
-    </DocsContainer>;
+      </DocsContainer>
+    </ThemeProvider>
+  );
 };
 
 export const parameters = {
