@@ -6,8 +6,7 @@ import { tv } from 'tailwind-variants';
 
 const AvatarStyles = tv({
   slots: {
-    baseSlot:
-      'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
+    baseSlot: '',
     fallbackSlot: 'bg-gray-100',
     fallbackIconSlot: '',
   },
@@ -27,6 +26,13 @@ const AvatarStyles = tv({
       },
     },
   },
+  compoundSlots: [
+    {
+      ...{slots: ['baseSlot', 'fallbackSlot']},
+      className:
+        'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
+    },
+  ],
 });
 
 interface AvatarProps extends AvatarPrimitive.AvatarProps {
@@ -69,12 +75,7 @@ const Avatar = ({
           setLoadingStatus(status);
         }}
       />
-      <AvatarPrimitive.Fallback
-        className={baseSlot({
-          className: fallbackSlot(),
-        })}
-        delayMs={delayMs}
-      >
+      <AvatarPrimitive.Fallback className={fallbackSlot()} delayMs={delayMs}>
         <CircleUserRound className={fallbackIconSlot()} />
       </AvatarPrimitive.Fallback>
     </AvatarPrimitive.Root>
