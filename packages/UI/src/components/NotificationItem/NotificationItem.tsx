@@ -63,7 +63,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   targetLink: string;
   profileLink: string;
   /**
-   * TimeStamp in this ISO_8601 duration format
+   * TimeStamp in ISO_8601 duration format
    * @description it starts with P[duration designator, stands for period) followed by number and Y or M or D then T[time designator] followed by number and H or M or S
    * @example "P3Y6M4DT12H30M5S" represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds".
    * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
