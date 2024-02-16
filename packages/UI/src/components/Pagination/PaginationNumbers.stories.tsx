@@ -37,7 +37,7 @@ export const Hover: Story = {
       url: 'https://www.figma.com/file/rvdnSOeHdjODE0U7xdNTR9/DL-Universal-Design-System-(NEW)?type=design&node-id=66-60815&mode=dev',
     },
     pseudo: { hover: true },
-    docs: { disable: true }
+    docs: { disable: true },
   },
 };
 

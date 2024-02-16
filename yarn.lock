@@ -2726,6 +2726,7 @@ __metadata:
     eslint-plugin-testing-library: 5.6.0
     formik: ^2.2.9
     framer-motion: 6.5.1
+    iso8601-duration: 2.1.2
     jest: ^27.0.6
     lucide-react: 0.314.0
     next: ^12.2.3
@@ -24017,6 +24018,13 @@ __metadata:
   version: 2.0.0
   resolution: "isexe@npm:2.0.0"
   checksum: 26bf6c5480dda5161c820c5b5c751ae1e766c587b1f951ea3fcfc973bafb7831ae5b54a31a69bd670220e42e99ec154475025a468eae58ea262f813fdc8d1c62
+  languageName: node
+  linkType: hard
+
+"iso8601-duration@npm:2.1.2":
+  version: 2.1.2
+  resolution: "iso8601-duration@npm:2.1.2"
+  checksum: 6b2c7812d2b3f57bf17ee488cbf45ffd8e1dde64fc5b0fc77fff50afffd8783fdfb1b852edc0fc942d08dd4cf28ce37f8cdb5e975335670ff708c6ef10705b1e
   languageName: node
   linkType: hard
 

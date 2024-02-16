@@ -1,7 +1,6 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import Avatar from './Avatar';
-import base64img from './base64img';
 
 const meta: Meta<typeof Avatar> = {
   component: Avatar,
@@ -13,7 +12,7 @@ export const Default: StoryObj<typeof Avatar> = {
   render: () => (
     <Avatar
       alt="Profile picture of John Doe"
-      src={`data:image/png;base64,${base64img}`}
+      src={`/Person.svg`}
       delayMs={600}
       onLoadingStatusChange={action('onLoadingStatusChange')}
     />
@@ -56,8 +55,8 @@ export const Playground: StoryObj<typeof Avatar> = {
   },
   argTypes: { src: { control: { type: 'file', accept: '.png' } } },
   args: {
-    alt: 'Profile picture of John Doe',
-    src: `data:image/png;base64,${base64img}`,
+    alt: 'Profile picture of Arthur Wells',
+    src: `/Person.svg`,
     delayMs: 600,
   },
   parameters: {

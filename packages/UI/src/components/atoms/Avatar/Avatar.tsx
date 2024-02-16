@@ -1,8 +1,16 @@
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 import { CircleUserRound } from 'lucide-react';
 import { useState } from 'react';
-
 import { tv } from 'tailwind-variants';
+import { type WritableDeep } from 'type-fest';
+
+const compoundSlots = [
+  {
+    slots: ['baseSlot', 'fallbackSlot'],
+    className:
+      'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
+  },
+] as const;
 
 const AvatarStyles = tv({
   slots: {
@@ -26,13 +34,7 @@ const AvatarStyles = tv({
       },
     },
   },
-  compoundSlots: [
-    {
-      ...{slots: ['baseSlot', 'fallbackSlot']},
-      className:
-        'inline-flex h-12 w-12 items-center justify-center rounded-full bg-contain',
-    },
-  ],
+  compoundSlots: compoundSlots as WritableDeep<typeof compoundSlots>,
 });
 
 interface AvatarProps extends AvatarPrimitive.AvatarProps {
