@@ -2,6 +2,9 @@
   "name": "@devlaunchers/site-projects",
   "version": "0.1.0",
   "private": true,
+  "installConfig": {
+    "hoistingLimits": "workspaces"
+  },
   "dependencies": {
     "@devlaunchers/utility": "workspace:*",
     "@types/react-burger-menu": "2.8.3",

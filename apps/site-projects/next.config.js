@@ -7,7 +7,9 @@ const imagesPlugin = require("next-optimized-images");
 * */
 const nextConfig = {
   transpilePackages: ["@devlaunchers/utility"],
-
+  compiler: {
+    styledComponents: true,
+  },
 
   images: {
     /*
