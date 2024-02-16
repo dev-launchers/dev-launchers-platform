@@ -110,7 +110,12 @@ function NotificationItem({
 
   return (
     <li className="list-none">
-      <a href={targetLink} className={wrapper()}>
+      <a
+        href={targetLink}
+        rel="noreferrer"
+        target="_blank"
+        className={wrapper()}
+      >
         <span className={statusIndicator()}></span>
         <a
           href={profileLink}

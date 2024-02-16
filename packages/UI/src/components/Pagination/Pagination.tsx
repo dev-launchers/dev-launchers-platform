@@ -14,7 +14,7 @@ import { cn } from '../../utils/classesMerger';
 /**
  * Pagination with page navigation, next and previous links.
  * @see http://localhost:6006/?path=/docs/components-pagination--docs
-*/
+ */
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <nav
     role="navigation"
@@ -57,16 +57,16 @@ const paginationLinkStyles = tv({
 interface PaginationLinkProps
   extends VariantProps<typeof paginationLinkStyles>,
     React.ComponentProps<'a'> {
-      /**
-       * determines whether the link is for the current page or not
-       */
-      isActive?: boolean;
-    }
+  /**
+   * determines whether the link is for the current page or not
+   */
+  isActive?: boolean;
+}
 
 /**
  * Pagination link.
  * @see http://localhost:6006/?path=/docs/components-pagination-paginationnumbers--docs
-*/
+ */
 const PaginationLink = ({
   className,
   isActive = false,
@@ -88,7 +88,7 @@ PaginationLink.displayName = 'PaginationLink';
 /**
  * Pagination jump.
  * @see http://localhost:6006/?path=/docs/components-pagination-paginationjumps--docs
-*/
+ */
 const PaginationJump = ({
   className,
   destination,

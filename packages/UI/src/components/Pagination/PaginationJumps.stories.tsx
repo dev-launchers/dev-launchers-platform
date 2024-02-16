@@ -6,7 +6,7 @@ const meta: Meta<typeof PaginationJump> = {
   component: PaginationJump,
   argTypes: {
     destination: {
-      control: {type: 'inline-radio'},
+      control: { type: 'inline-radio' },
       options: ['first', 'last', 'next', 'previous'],
     },
   },
