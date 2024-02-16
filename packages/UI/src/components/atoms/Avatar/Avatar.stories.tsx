@@ -55,7 +55,7 @@ export const Playground: StoryObj<typeof Avatar> = {
   },
   argTypes: { src: { control: { type: 'file', accept: '.png' } } },
   args: {
-    alt: 'Profile picture of John Doe',
+    alt: 'Profile picture of Arthur Wells',
     src: `/Person.svg`,
     delayMs: 600,
   },
