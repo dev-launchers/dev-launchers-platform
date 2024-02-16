@@ -1,34 +1,59 @@
 import { tv, type VariantProps } from 'tailwind-variants';
+import { type WritableDeep } from 'type-fest';
 
-import useResponsive from '../../hooks/useResponsive';
+import Avatar from '../atoms/Avatar/Avatar';
+
+const compoundSlots = [
+  {
+    slots: [
+      'actionStyle',
+      'usernameStyle',
+      'descriptionStyle',
+      'targetStyle',
+    ] as const,
+    className: 'font-nunito-sans text-base leading-normal',
+  },
+  {
+    slots: ['targetStyle', 'usernameStyle'] as const,
+    className: 'font-bold',
+  },
+  {
+    slots: ['timeStampStyle', 'descriptionStyle'] as const,
+    className: 'font-normal',
+  },
+];
 
 const notificationStyles = tv({
   slots: {
-    container:
-      ' flex w-full items-center gap-4 border-t  bg-white py-4  pl-2 pr-4 hover:bg-grayscale-100 md:py-4 md:pl-4 md:pr-8 lg:p-8  ',
-    avatarContainer:
-      ' hidden h-12 w-12  items-center text-center  md:flex lg:flex lg:h-12 lg:w-12 lg:items-center lg:justify-center',
-    detailsContentStyle:
-      'grow   md:flex md:items-center lg:flex  lg:flex-row lg:items-center  ',
-    contentContainerStyle: ' flex w-full  flex-col gap-1 md:grow lg:grow',
-    headerStyle: ' flex gap-1 ',
-    usernameStyle: ' ',
-    actionStyle: ' ',
-    descriptionStyle: ' text-base leading-5 ',
-    timeStampStyle: ' pt-1 text-base',
-    targetStyle: ' grow-0 ',
-    statusIndicator: 'h-3 w-3 shrink-0',
+    wrapper:
+      'flex items-center gap-4 py-4 pl-2 pr-4 hover:bg-grayscale-100 md:p-8',
+    avatarContainer: 'hidden md:inline-flex',
+    detailsContainer:
+      'flex flex-shrink-0 flex-grow basis-0 flex-col items-start gap-2 md:flex-row md:flex-wrap md:content-start',
+    contentContainer:
+      'md:flex md:flex-shrink-0 md:flex-grow md:basis-0 md:flex-col md:items-start md:gap-1',
+    headerStyle: 'flex items-start gap-1 self-stretch',
+    usernameStyle: '',
+    actionStyle: 'leading-normal',
+    targetStyle: '',
+    descriptionStyle: 'line-clamp-2 self-stretch md:order-1',
+    timeStampStyle:
+      'text-right font-nunito-sans text-base leading-6 text-grayscale-400',
+    statusIndicator: 'h-3  w-3 shrink-0 rounded-full',
   },
   variants: {
     status: {
       read: {
+        wrapper: 'text-grayscale-500',
         statusIndicator: 'invisible',
       },
       unRead: {
-        statusIndicator: 'rounded-full bg-alert-notification-o-100-600',
+        wrapper: 'text-grayscale-900',
+        statusIndicator: 'bg-alert-notification-o-100-600',
       },
     },
   },
+  compoundSlots: compoundSlots as WritableDeep<typeof compoundSlots>,
 });
 
 interface NotificationProps extends VariantProps<typeof notificationStyles> {
@@ -41,9 +66,10 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   timeStamp: string;
   action: string;
 
-  /**
-   * The buttons that activate its associated content.      Dev Note: USE Trigger COMPONENT FOR BETTER ACCESSIBILITY
-   */
+  avatar: {
+    src: React.ComponentProps<typeof Avatar>['src'];
+    alt: React.ComponentProps<typeof Avatar>['alt'];
+  };
 }
 
 /**
@@ -61,54 +87,60 @@ function NotificationItem({
   targetLink,
   profileLink,
   status,
+  avatar,
 }: NotificationProps) {
-  /**
-   * Determine the width of device so i can decide the number of text in a message to display
-   *
-   */
-  const { isMobile } = useResponsive();
   const {
-    container,
+    wrapper,
+    statusIndicator,
     avatarContainer,
-    detailsContentStyle,
-    contentContainerStyle,
     headerStyle,
+    detailsContainer,
+    contentContainer,
     usernameStyle,
     actionStyle,
+    targetStyle,
     descriptionStyle,
     timeStampStyle,
-    targetStyle,
-    statusIndicator,
   } = notificationStyles({ status });
 
   return (
-    <>
-      <div className={container()}>
-        <div className={statusIndicator()}></div>
-        <div className={avatarContainer()}>
-          <a href={profileLink} rel="noreferrer" target="_blank">
-            <div className="h-12 w-12 rounded-full bg-gray-600"></div>
-          </a>
-        </div>
-        <div className={detailsContentStyle()}>
-          <div className={contentContainerStyle()}>
+      <li className={wrapper()}>
+        <span className={statusIndicator()}></span>
+        <a
+          href={profileLink}
+          rel="noreferrer"
+          target="_blank"
+          className={avatarContainer()}
+        >
+          <Avatar {...avatar} />
+        </a>
+        <div className={detailsContainer()}>
+          <div className={contentContainer()}>
             <div className={headerStyle()}>
-              <a href={profileLink} rel="noreferrer" target="_blank">
-                <strong className={usernameStyle()}>{name}</strong>
+              <a
+                href={profileLink}
+                rel="noreferrer"
+                target="_blank"
+                className={usernameStyle()}
+              >
+                <strong>{name}</strong>
               </a>
               <span className={actionStyle()}>{action}</span>
-              <a href={targetLink} rel="noreferrer" target="_blank">
-                <strong className={targetStyle()}>{target}</strong>
+              <a
+                href={targetLink}
+                rel="noreferrer"
+                target="_blank"
+                className={targetStyle()}
+              >
+                <strong>{target}</strong>
               </a>
             </div>
-            <div className={descriptionStyle()}>
-              {isMobile ? <span>{message.slice(0, 33)}...</span> : message}
-            </div>
+            <p className={descriptionStyle()}>{message}</p>
           </div>
-          <div className={timeStampStyle()}>{timeStamp}</div>
+
+          <span className={timeStampStyle()}>{timeStamp}</span>
         </div>
-      </div>
-    </>
+      </li>
   );
 }
 
