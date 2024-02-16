@@ -16,7 +16,7 @@ export const Read: StoryObj<typeof NotificationItem> = {
     target: 'DevSocials',
     targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
     profileLink: 'https://devlaunchers.org/users/me',
-    timeStamp: '30m',
+    timeStamp: 'P3Y6M4DT12H30M5S',
     action: 'commented on',
     avatar: {
       src: Playground.args?.src as string,

@@ -1,6 +1,7 @@
+import type { Duration } from 'iso8601-duration';
+import { parse } from 'iso8601-duration';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { type WritableDeep } from 'type-fest';
-
 import Avatar from '../atoms/Avatar/Avatar';
 
 const compoundSlots = [
@@ -83,6 +84,61 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
  *
  */
 
+function formatDate(
+  { years, months, weeks, days, hours, minutes, seconds }: Duration,
+  minified?: boolean
+) {
+  const units = [];
+
+  if (years && months) {
+    units.push(
+      { count: years, unit: 'year' },
+      { count: months, unit: 'month' }
+    );
+  } else if (months && weeks) {
+    units.push(
+      { count: months, unit: 'month' },
+      { count: weeks, unit: 'week' }
+    );
+  } else if (weeks && days) {
+    units.push({ count: weeks, unit: 'week' }, { count: days, unit: 'day' });
+  } else if (days && hours) {
+    units.push({ count: days, unit: 'day' }, { count: hours, unit: 'hour' });
+  } else if (hours && minutes) {
+    units.push(
+      { count: hours, unit: 'hour' },
+      { count: minutes, unit: 'minute' }
+    );
+  } else if (minutes && seconds) {
+    units.push(
+      { count: minutes, unit: 'minute' },
+      { count: seconds, unit: 'second' }
+    );
+  } else if (years || months || weeks || days || hours || minutes || seconds) {
+    // Handle single units or combinations not covered by above cases
+    units.push({ count: years || 0, unit: 'year' });
+    units.push({ count: months || 0, unit: 'month' });
+    units.push({ count: weeks || 0, unit: 'week' });
+    units.push({ count: days || 0, unit: 'day' });
+    units.push({ count: hours || 0, unit: 'hour' });
+    units.push({ count: minutes || 0, unit: 'minute' });
+    units.push({ count: seconds || 0, unit: 'second' });
+  } else {
+    // Handle the case where no time units are provided
+    return !minified ? '0 seconds ago' : '0s';
+  }
+  if (!minified) {
+    const formattedUnits = units
+      .filter((unit) => unit.count > 0)
+      .map((unit) => `${unit.count} ${unit.unit}${unit.count > 1 ? 's' : ''}`);
+    return `${formattedUnits.join(' and ')} ago`;
+  }
+  const formattedUnits = units
+    .filter((unit) => unit.count > 0)
+    .map((unit) => `${unit.count}${unit.unit[0]}`);
+  return `${formattedUnits.join(':')}`;
+}
+
 function NotificationItem({
   message,
   name,
@@ -148,8 +204,12 @@ function NotificationItem({
             </div>
             <p className={descriptionStyle()}>{message}</p>
           </div>
-          <time dateTime={timeStamp} className={timeStampStyle()}>
-            {timeStamp.replaceAll('T', '').replaceAll('P', '')} ago
+          <time
+            dateTime={timeStamp}
+            className={timeStampStyle()}
+            aria-label={formatDate(parse(timeStamp))}
+          >
+            {formatDate(parse(timeStamp), true)}
           </time>
         </div>
       </a>
