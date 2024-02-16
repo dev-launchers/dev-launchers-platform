@@ -2978,6 +2978,7 @@ __metadata:
     remark-gfm: ^3.0.1
     semantic-release: ^19.0.3
     slick-carousel: ^1.8.1
+    styled-components: 5.3.5
     styled-normalize: ^8.0.7
     typescript: ^4.7.4
     uuid: ^8.3.2
