@@ -6,36 +6,8 @@ const imagesPlugin = require("next-optimized-images");
  * @type {import('next').NextConfig}
 * */
 const nextConfig = {
-  basePath: "/projects",
-  
-  async rewrites() {
-    return [
-      {
-        source: "/:path*",
-        destination: `/:path*`,
-      },
-      {
-        source: "/",
-        destination: "https://devlaunchers.org/",
-        basePath: false
-      },
-      {
-        source: "/create",
-        destination: "https://devlaunchers.org/create",
-        basePath: false
-      },
-      {
-        source: "/learn",
-        destination: `https://devlaunchers.org/learn`,
-        basePath: false
-      },
-      {
-        source: "/support-us",
-        destination: `https://devlaunchers.org/support-us`,
-        basePath: false
-      },
-    ];
-  },
+  transpilePackages: ["@devlaunchers/utility"],
+
 
   images: {
     /*

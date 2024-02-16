@@ -24,7 +24,7 @@ function hasEditingAccess(user, project) {
 
 const EditorNotification = ({ project }) => {
 
-  const user = useUserDataContext().userData;
+  // const user = useUserDataContext().userData;
 
 	if (!hasEditingAccess(user, project)) {
 		return (<></>);
@@ -32,7 +32,8 @@ const EditorNotification = ({ project }) => {
 
 	return (
 		<div style={{paddingTop: "1rem"}}>
-			<ThemeProvider theme={theme}>
+      <p>hello</p>
+			{/* <ThemeProvider theme={theme}>
       	<Alert signal="notify">
         	<h3>It looks like you have editing permissions for this page!</h3>
         	<p>
@@ -52,7 +53,7 @@ const EditorNotification = ({ project }) => {
           	</Button>
         	</ButtonsContainer>
       	</Alert>
-			</ThemeProvider>
+			</ThemeProvider> */}
 		</div>
 	);
 }

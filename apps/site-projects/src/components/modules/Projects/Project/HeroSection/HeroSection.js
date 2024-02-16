@@ -2,7 +2,7 @@ import React from "react";
 import { withTheme } from "styled-components";
 // import Link from "next/link";
 
-import Image from "next/image";
+import Image from "next/legacy/image";
 // import Button from "../../../../common/Button";
 // import Tag from "../../../../common/Tag";
 // import SignUpButton from "../SignUpButton";
