@@ -78,12 +78,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   };
 }
 
-/**
- * @description A set of layered sections of content—known as tab panels—that are displayed one at a time.
- * https://www.radix-ui.com/primitives/docs/components/tabs/1.0.4
- *
- */
-
+// eslint-disable-next-line sonarjs/cognitive-complexity
 function formatDate(
   { years, months, weeks, days, hours, minutes, seconds }: Duration,
   minified?: boolean
