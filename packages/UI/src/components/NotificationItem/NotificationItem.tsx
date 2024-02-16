@@ -57,12 +57,17 @@ const notificationStyles = tv({
 });
 
 interface NotificationProps extends VariantProps<typeof notificationStyles> {
-  // Avatar: React.ReactNode;
   message: string;
   name: string;
   target: string;
   targetLink: string;
   profileLink: string;
+  /**
+   * TimeStamp in this ISO_8601 duration format
+   * @description it starts with P[duration designator, stands for period) followed by number and Y or M or D then T[time designator] followed by number and H or M or S
+   * @example "P3Y6M4DT12H30M5S" represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds".
+   * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
+   */
   timeStamp: string;
   action: string;
 
@@ -104,7 +109,8 @@ function NotificationItem({
   } = notificationStyles({ status });
 
   return (
-      <li className={wrapper()}>
+    <li className="list-none">
+      <a href={targetLink} className={wrapper()}>
         <span className={statusIndicator()}></span>
         <a
           href={profileLink}
@@ -137,10 +143,12 @@ function NotificationItem({
             </div>
             <p className={descriptionStyle()}>{message}</p>
           </div>
-
-          <span className={timeStampStyle()}>{timeStamp}</span>
+          <time dateTime={timeStamp} className={timeStampStyle()}>
+            {timeStamp.replaceAll('T', '').replaceAll('P', '')} ago
+          </time>
         </div>
-      </li>
+      </a>
+    </li>
   );
 }
 
