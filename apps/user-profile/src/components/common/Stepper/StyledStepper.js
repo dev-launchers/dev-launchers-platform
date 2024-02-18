@@ -6,6 +6,10 @@ export const StepperContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 32px;
+    .close-button {
+        color: white;
+        cursor: pointer;
+    }
 `;
 
 export const StepperHeader = styled.div`

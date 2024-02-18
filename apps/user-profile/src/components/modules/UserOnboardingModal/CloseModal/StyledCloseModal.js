@@ -9,7 +9,12 @@ export const IntroductionContainer = styled.div`
   align-items: flex-start;
   gap: 0px;
   
+  .custom-button {
+    cursor: pointer;
+    margin-left: auto; 
+margin-right: 0;
 
+  }
   & > Button:first-child {
     margin-left: auto;
   }
