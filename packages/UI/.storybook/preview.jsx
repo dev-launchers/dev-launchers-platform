@@ -3,7 +3,9 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../src/styles/global';
 import theme from '../src/styles/theme';
+import { DocsContainer } from '@storybook/blocks';
 import '@devlaunchers/tailwind/tailwind.css';
+
 const isDevelopmentEnv = process.env.NODE_ENV == 'development';
 const customViewports = {
   mobile: {
@@ -86,9 +88,21 @@ export const decorators = [
         </ftl-holster>
       );
     }
-    return <Story />
+    return <Story />;
   },
 ];
+
+const DocsThemeContainer = ({ children, ...props }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <DocsContainer {...props}>
+        <GlobalStyle />
+        {children}
+      </DocsContainer>
+    </ThemeProvider>
+  );
+};
+
 export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   controls: {
@@ -99,5 +113,8 @@ export const parameters = {
   },
   viewport: {
     viewports: customViewports,
+  },
+  docs: {
+    container: DocsThemeContainer,
   },
 };

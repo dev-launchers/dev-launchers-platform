@@ -9,7 +9,8 @@ const config: StorybookConfig = {
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-mdx-gfm',
-    '@storybook/addon-designs'
+    '@storybook/addon-designs',
+    'storybook-addon-pseudo-states'
   ].map(getAbsolutePath),
   framework: {
     name: getAbsolutePath('@storybook/nextjs') as "@storybook/nextjs",
@@ -33,7 +34,12 @@ const config: StorybookConfig = {
         esModuleInterop: false,
       },
       shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+      propFilter: (prop) => {
+        // pull radix-ui props declaration files
+        if (prop.parent?.fileName.includes('@radix-ui')) return true;
+        // ignore rest of node_modules props declaration file
+        return (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true)
+      },
     },
     reactDocgen: 'react-docgen-typescript',
     // skipBabel: true,
