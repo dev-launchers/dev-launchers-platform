@@ -1,6 +1,6 @@
 import { Meta, IconGallery, IconItem } from '@storybook/blocks';
 import * as Icons from '../../assets/icons';
-import * as LucideIcons from 'lucide-react';
+import { icons } from 'lucide-react';
 
 <Meta title="Iconography" />
 
@@ -15,10 +15,10 @@ import * as LucideIcons from 'lucide-react';
 
 </IconGallery>
 
-# Lucide Icons
+## Lucide Icons
 
 <IconGallery>
-  {Object.entries(LucideIcons).map(([IconName, IconJSX]) => (
+  {Object.entries(icons).map(([IconName, IconJSX]) => (
     <IconItem name={IconName} key={IconName}>
       <IconJSX />
     </IconItem>
