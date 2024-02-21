@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Checkbox } from 'components/Checkbox';
+
 import { ChevronUp, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
@@ -30,22 +32,77 @@ type Story = StoryObj<typeof DropdownMenu>;
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
+
 export const Primary: Story = {
-  render: () => (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
-          Dropdown
-          <ChevronDown className="data."/>
-          {/* <ChevronUp /> */}
-        </div>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  ),
+  render: () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+            Dropdown
+            <ChevronDown className="data-open"/>
+            {/* <ChevronUp /> */}
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Team</DropdownMenuItem>
+          <DropdownMenuItem>Subscription</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  },
+};
+
+export const RadioDropdown: Story = {
+  render: () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+            Dropdown
+            <ChevronDown/>
+            {/* <ChevronUp /> */}
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuRadioGroup value="grid">
+            <DropdownMenuRadioItem value="grid">Grid</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="list">List</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  },
+};
+
+export const CheckboxDropdown: Story = {
+  render: () => {
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+            Dropdown
+            <ChevronDown className="data."/>
+            {/* <ChevronUp /> */}
+          </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuCheckboxItem>
+            <Checkbox /> Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Checkbox/>  Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Checkbox/>  Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem>
+            <Checkbox/>  Option
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  },
 };
