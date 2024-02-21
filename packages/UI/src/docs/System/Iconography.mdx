@@ -1,28 +1,48 @@
 import { Meta, IconGallery, IconItem } from '@storybook/blocks';
-import * as Icons from '../../assets/icons';
+import * as CustomIcons from '../../assets/icons';
 import { icons } from 'lucide-react';
+
 
 <Meta title="Iconography" />
 
 # Iconography
 
-<IconGallery>
-  {Object.entries(Icons).map(([IconName, IconJSX]) => (
-    <IconItem name={IconName} key={IconName}>
-      <IconJSX />
-    </IconItem>
-  ))}
+## This page is made to make developers aware of what Icon sets we can use
 
-</IconGallery>
+### We have two categories
 
-## Lucide Icons
+<details>
+  <summary>lucide-react icons</summary>
+  
+  #### how to use 
+  ```jsx
+  import { NAME_OF_ICON_FROM_HERE } from 'lucide-react'
 
-<IconGallery>
-  {Object.entries(icons).map(([IconName, IconJSX]) => (
-    <IconItem name={IconName} key={IconName}>
-      <IconJSX />
-    </IconItem>
-  ))}
-</IconGallery>
+  <NAME_OF_ICON_FROM_HERE />
+  ```
+  <IconGallery>
+    {Object.entries(icons).map(([IconName, IconJSX]) => (
+      <IconItem name={IconName} key={IconName}>
+        <IconJSX />
+      </IconItem>
+    ))}
+  </IconGallery>
+</details>
 
-### TODO: Write documentations of how to use,create,modify Icons
+<details>
+  <summary>custom-made icons</summary>
+  
+  #### how to use 
+  ```jsx
+  import { Icons } from '@devlaunchers/components/src/assets'
+
+  <Icons.NAME_OF_ICON_FROM_HERE />
+  ```
+  <IconGallery>
+    {Object.entries(CustomIcons).map(([IconName, IconJSX]) => (
+      <IconItem name={IconName} key={IconName}>
+        <IconJSX />
+      </IconItem>
+    ))}
+  </IconGallery>
+</details>
