@@ -18,11 +18,11 @@ function YourProjects({ userProjects, selectedCard, setSelectedCard }) {
                             style={{ margin: 0, width: '100%', height: '100%' }}
                             cardData={{
                               id: project.id,
-                              title: project.title,
-                              secondaryText: `Commitment level: ${project.commitmentLevel}`,
-                              tags: project.interests?.map(({ interest }) => interest),
-                              description: project.catchPhrase,
-                              imageSrc: project?.heroImage?.url,
+                              title: project.attributes.title,
+                              secondaryText: `Commitment level: ${project.attributes.commitmentLevel}`,
+                              tags: project?.attributes?.interests?.data.map(({ attributes }) => attributes.interest),
+                              description: project.attributes.catchPhrase,
+                              imageSrc: project?.attributes?.heroImage?.data?.attributes?.url,
                             }}
                             />
                         </InnerProjectContainer>
