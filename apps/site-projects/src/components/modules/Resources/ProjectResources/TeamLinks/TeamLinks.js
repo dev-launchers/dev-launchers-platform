@@ -5,7 +5,7 @@ import moreInfo from '@/public/images/projects/resources/logos/moreInfo.svg';
 function TeamLinks({ selectedCard }) {
     return (
         <div style={{ width: '100%' }} >
-            <h3>{selectedCard ? selectedCard.title : "None project available"}</h3>
+            <h3>{selectedCard ? selectedCard.attributes.title : "None project available"}</h3>
             <ResourcesContainer>
 
             <TitleResources>
