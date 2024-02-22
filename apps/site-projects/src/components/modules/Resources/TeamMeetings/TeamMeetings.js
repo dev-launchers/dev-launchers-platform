@@ -7,8 +7,8 @@ function TeamMeetings({ projectId }) {
         <StyledTeamMeetingsContainer>
             <legend>Team Meetings</legend>
             
-            {
-                  newMeetingTimes[projectId].map((meeting) => {
+            {//TODO: savely index this dynamically with projectId
+                  newMeetingTimes[10].map((meeting) => {
                     return (
                         <MeetingTimeCard
                             meeting={meeting}
