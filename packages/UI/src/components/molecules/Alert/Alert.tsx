@@ -39,7 +39,7 @@ const Alert: React.FC<React.PropsWithChildren<AlertProps>> = ({
       ) : (
         <></>
       )}
-      <Typography css={{ flex: 1 }}>{children}</Typography>
+      <Typography className="flex-1">{children}</Typography>
       <button
         onClick={(e) => {
           setIsOpen((prev) => !prev);
