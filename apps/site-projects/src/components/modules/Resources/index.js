@@ -12,7 +12,7 @@ function findUserTeams(userId, dataArray) {
   const userTeams = [];
 
   for (const data of dataArray) {
-    const team = data.team;
+    const team = data.attributes.team;
     const leaders = team.leaders;
     const members = team.members;
 
@@ -49,7 +49,7 @@ function Resources({ projects }) {
             <SectionResources>
               <ProjectResources selectedCard={selectedCard} />    
               <TeamMeetings projectId={selectedCard.id} />
-              <TeamResources team={selectedCard.team} />
+              <TeamResources team={selectedCard.attributes.team} />
             </SectionResources>
 
             <OtherResources />
