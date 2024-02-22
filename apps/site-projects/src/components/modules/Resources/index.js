@@ -1,12 +1,12 @@
-import ProjectResources from "./ProjectResources";
-import { MainResourcesContainer } from "./StyledResources";
-import YourProjects from "./YourProjects";
-import { useUserDataContext } from "@devlaunchers/components/src/context/UserDataContext";
-import { useState } from "react";
-import OtherResources from "./OtherResourcers/OtherResources";
-import TeamResources from "./TeamResources/TeamResources";
-import SectionResources from "./SectionResources";
-import TeamMeetings from "./TeamMeetings/";
+import ProjectResources from './ProjectResources';
+import { MainResourcesContainer } from './StyledResources';
+import YourProjects from './YourProjects';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import { useState } from 'react';
+import OtherResources from './OtherResourcers/OtherResources';
+import TeamResources from './TeamResources/TeamResources';
+import SectionResources from './SectionResources';
+import TeamMeetings from './TeamMeetings/';
 
 function findUserTeams(userId, dataArray) {
   const userTeams = [];
@@ -16,9 +16,9 @@ function findUserTeams(userId, dataArray) {
     const leaders = team.leaders;
     const members = team.members;
 
-    const leaderMatch = leaders.find(leader => leader.id === userId);
+    const leaderMatch = leaders.find((leader) => leader.id === userId);
 
-    const memberMatch = members.find(member => member.id === userId);
+    const memberMatch = members.find((member) => member.id === userId);
 
     if (leaderMatch || memberMatch) {
       userTeams.push(data);
@@ -30,32 +30,40 @@ function findUserTeams(userId, dataArray) {
 
 function Resources({ projects }) {
   const { userData } = useUserDataContext();
-  const userProjects = findUserTeams(userData.id, projects)
-  const [selectedCard, setSelectedCard] = useState(userProjects !== null ? userProjects[0] : null)
+  const userProjects = findUserTeams(userData.id, projects);
+  const [selectedCard, setSelectedCard] = useState(
+    userProjects !== null ? userProjects[0] : null
+  );
 
-    return (
-          <MainResourcesContainer
-            style={{
-              marginRight: 'auto',
-              marginLeft: 'auto',
-              paddingLeft: '2rem',
-              paddingRight: '2rem',
-              maxWidth: '80rem',
-            }}
-          >
+  return (
+    <MainResourcesContainer
+      style={{
+        marginRight: 'auto',
+        marginLeft: 'auto',
+        paddingLeft: '2rem',
+        paddingRight: '2rem',
+        maxWidth: '80rem',
+      }}
+    >
+      {selectedCard && (
+        <>
+          <YourProjects
+            userProjects={userProjects}
+            selectedCard={selectedCard}
+            setSelectedCard={setSelectedCard}
+          />
 
-            <YourProjects userProjects={userProjects} selectedCard={selectedCard} setSelectedCard={setSelectedCard} />
+          <SectionResources>
+            <ProjectResources selectedCard={selectedCard} />
+            <TeamMeetings projectId={selectedCard.id} />
+            <TeamResources team={selectedCard.attributes.team} />
+          </SectionResources>
 
-            <SectionResources>
-              <ProjectResources selectedCard={selectedCard} />    
-              <TeamMeetings projectId={selectedCard.id} />
-              <TeamResources team={selectedCard.attributes.team} />
-            </SectionResources>
-
-            <OtherResources />
-            
-          </MainResourcesContainer>
-      );
+          <OtherResources />
+        </>
+      )}
+    </MainResourcesContainer>
+  );
 }
 
 export default Resources;
