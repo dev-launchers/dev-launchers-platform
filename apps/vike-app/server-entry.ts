@@ -13,17 +13,20 @@
 
 // server/index.js
 
-const m_koa = require('koa');
-const m_koa_router = require('koa-router');
-const m_koa_static = require('koa-static');
-const m_koa_connect = require('koa-connect');
-const m_koa_compress = require('koa-compress');
-const { renderPage } = require('vike/server');
+import m_koa from 'koa';
+import m_koa_router from 'koa-router';
+import m_koa_static from 'koa-static';
+import m_koa_connect from 'koa-connect';
+import m_koa_compress from 'koa-compress';
+import { renderPage } from 'vike/server';
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const m_vite = require('vite');
 
-const isProduction = process.env.NODE_ENV === 'production';
-const root = `${__dirname}/..`;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const isProduction = process.env.NODE_ENV === "production";
+const root = __dirname;
 
 startServer();
 
@@ -42,8 +45,9 @@ async function startServer() {
 		// We instantiate Vite's development server and integrate its middleware to our server.
 		// ⚠️ We instantiate it only in development. (It isn't needed in production and it
 		// would unnecessarily bloat our server in production.)
+        const vite = await import("vite");
 		const viteDevMiddleware = (
-			await m_vite.createServer({
+			await vite.createServer({
 				root,
 				server: { middlewareMode: true }
 			})
