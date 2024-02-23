@@ -37,7 +37,9 @@
     "vike": "^0.4.161"
   },
   "dependencies": {
-    "react-streaming": "^0.3.22"
+    "@types/styled-components": "5.1.25",
+    "react-streaming": "^0.3.22",
+    "styled-components": "5.3.5"
   },
   "typesVersions": {
     "*": {

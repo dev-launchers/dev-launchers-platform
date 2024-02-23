@@ -1,6 +1,7 @@
-export { Page }
+export { Page };
 
-import { Counter } from './Counter'
+import { Counter } from './Counter';
+import Button from '@devlaunchers/components/src/components/atoms/Button/Button';
 
 function Page() {
   return (
@@ -13,6 +14,7 @@ function Page() {
           Interactive. <Counter />
         </li>
       </ul>
+      <Button buttonSize="standard" buttonType="primary" />
     </>
-  )
+  );
 }

@@ -1,9 +1,12 @@
-import react from '@vitejs/plugin-react'
-import vike from 'vike/plugin'
-import { UserConfig } from 'vite'
+import react from '@vitejs/plugin-react';
+import vike from 'vike/plugin';
+import { UserConfig } from 'vite';
 
 const config: UserConfig = {
-  plugins: [react(), vike()]
-}
+  plugins: [react(), vike()],
+  ssr: {
+    noExternal: ['styled-components', '@emotion/*'],
+  },
+};
 
-export default config
+export default config;
