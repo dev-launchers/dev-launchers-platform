@@ -1,24 +1,28 @@
+let questionNumber = 0;
+
 export async function send() {
     let d = document.getElementById("chatbox");
     var i = d.value
     d.value = '';
-    displayText("User: " + i);
+    questionNumber++;
+    displayText("User: " + i + " : {Question #" + questionNumber + "}");
     await response(i);
 }
 
 function response(i) {
     let d = document.getElementById("chatbox");
     let b = document.getElementById("sendButton");
-    d.disabled = true;
+    //d.disabled = true;
     
     // Define the URL of the server where your Flask app is running
-    const serverUrl = "http://127.0.0.1:5000/question";
+    //const serverUrl = "http://127.0.0.1:5000/question";
 
     // Create an object with the data you want to send
-    const data = new URLSearchParams();
-    data.append("string", i);
+    //const data = new URLSearchParams();
+    //data.append("string", i);
 
     // Define the configuration for the POST request
+    /*
     const requestOptions = {
         method: "POST",
         body: data,
@@ -26,8 +30,9 @@ function response(i) {
             "Content-Type": "application/x-www-form-urlencoded",
         },
     };
-
+    */
     // Send the POST request
+    /*
     fetch(serverUrl, requestOptions)
         .then((response) => {
             if (response.ok) {
@@ -38,8 +43,9 @@ function response(i) {
             }
         })
         .then((responseText) => {
+            responseNumber++;
             // Handle the response here (e.g., printing it to the console)
-            displayText("Onboarding bot: " + responseText);
+            displayText("Onboarding bot: " + responseText + "{Response #" + responseNumber + "}");
             d.disabled = false;
         })
         .catch((error) => {
@@ -48,6 +54,8 @@ function response(i) {
             d.disabled = false;
             displayText("System: " + error);
         });
+        */
+       displayText("System: {Message #" + questionNumber + "} was " + i);
 }
 
 export function displayText(i){
@@ -56,5 +64,5 @@ export function displayText(i){
 }
 
 function msg(i){
-    return (`<div id="message"><img float="left" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg width="60px" height="60px"><div style="border: 1px solid black width:70px overflow: hidden white-space: nowrap">${i}</div></div>`);
+    return (`<div style="border: 1px solid black width:70px overflow: hidden white-space: nowrap">${i}</div>`);
 }
