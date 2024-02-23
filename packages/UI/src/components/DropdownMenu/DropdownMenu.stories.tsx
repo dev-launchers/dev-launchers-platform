@@ -1,7 +1,8 @@
+import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Checkbox } from 'components/Checkbox';
+import { ChevronDown } from 'lucide-react';
+import React from "react";
 
-import { ChevronUp, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -9,14 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuCheckboxItem,
   DropdownMenuRadioItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuGroup,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuRadioGroup,
 } from './DropdownMenu';
 
@@ -40,8 +33,7 @@ export const Primary: Story = {
         <DropdownMenuTrigger>
           <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
             Dropdown
-            <ChevronDown className="data-open"/>
-            {/* <ChevronUp /> */}
+            <ChevronDown className=""/>
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -58,18 +50,23 @@ export const Primary: Story = {
 
 export const RadioDropdown: Story = {
   render: () => {
+    const [value, setValue] = React.useState<string>();
     return (
       <DropdownMenu>
         <DropdownMenuTrigger>
           <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
             Dropdown
-            <ChevronDown className='data-open:rotate-90'/>
+            <ChevronDown className="data-open:rotate-90" />
             {/* <ChevronUp /> */}
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuRadioGroup value="list5" asChild>
-            <div className='flex flex-col gap-2 font-nunito-sans'>
+          <DropdownMenuRadioGroup
+            value={value}
+            onValueChange={setValue}
+            asChild
+          >
+            <div className="flex flex-col gap-2 font-nunito-sans">
               <DropdownMenuRadioItem value="grid">Option</DropdownMenuRadioItem>
               <DropdownMenuRadioItem value="list1">
                 Option
@@ -97,8 +94,15 @@ export const RadioDropdown: Story = {
   },
 };
 
+type Checked = DropdownMenuCheckboxItemProps['checked'];
+
 export const CheckboxDropdown: Story = {
   render: () => {
+    const [showStatusBar, setShowStatusBar] = React.useState<Checked>(false);
+    const [showStatusBar2, setShowStatusBar2] = React.useState<Checked>(false);
+    const [showStatusBar3, setShowStatusBar3] = React.useState<Checked>(false);
+    const [showStatusBar4, setShowStatusBar4] = React.useState<Checked>(false);
+    const [showStatusBar5, setShowStatusBar5] = React.useState<Checked>(false);
     return (
       <DropdownMenu>
         <DropdownMenuTrigger>
@@ -108,20 +112,35 @@ export const CheckboxDropdown: Story = {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <div className='space-y-2'>
-            <DropdownMenuCheckboxItem checked={false}>
+          <div className="space-y-2">
+            <DropdownMenuCheckboxItem 
+              checked={showStatusBar}
+              onCheckedChange={setShowStatusBar}
+            >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={true}>
+            <DropdownMenuCheckboxItem 
+              checked={showStatusBar2}
+              onCheckedChange={setShowStatusBar2}
+            >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={false}>
+            <DropdownMenuCheckboxItem 
+              checked={showStatusBar3}
+              onCheckedChange={setShowStatusBar3}
+            >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={false}>
+            <DropdownMenuCheckboxItem 
+              checked={showStatusBar4}
+              onCheckedChange={setShowStatusBar4}
+            >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem checked={false}>
+            <DropdownMenuCheckboxItem
+              checked={showStatusBar5}
+              onCheckedChange={setShowStatusBar5}
+            >
               Option
             </DropdownMenuCheckboxItem>
           </div>
@@ -130,4 +149,3 @@ export const CheckboxDropdown: Story = {
     );
   },
 };
-
