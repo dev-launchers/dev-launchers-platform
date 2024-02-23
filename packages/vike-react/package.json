@@ -1,0 +1,72 @@
+{
+  "name": "@devlaunchers/vike-react",
+  "version": "0.4.6",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./useData": "./dist/hooks/useData.js",
+    "./usePageContext": "./dist/hooks/usePageContext.js",
+    "./ClientOnly": "./dist/components/ClientOnly.js",
+    ".": "./dist/index.js",
+    "./config": "./dist/+config.js",
+    "./renderer/onRenderHtml": "./dist/renderer/onRenderHtml.js",
+    "./renderer/onRenderClient": "./dist/renderer/onRenderClient.js"
+  },
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "rm -rf dist/ && tsc",
+    "release": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ patch",
+    "release:minor": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ minor",
+    "release:commit": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ commit"
+  },
+  "peerDependencies": {
+    "react": "18.x.x",
+    "react-dom": "18.x.x",
+    "vike": "^0.4.160",
+    "vite": "^4.3.8 || ^5.0.10"
+  },
+  "devDependencies": {
+    "@brillout/release-me": "^0.1.14",
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.3.3",
+    "vike": "^0.4.161"
+  },
+  "dependencies": {
+    "react-streaming": "^0.3.22"
+  },
+  "typesVersions": {
+    "*": {
+      "useData": [
+        "./dist/hooks/useData.d.ts"
+      ],
+      "usePageContext": [
+        "./dist/hooks/usePageContext.d.ts"
+      ],
+      "ClientOnly": [
+        "./dist/components/ClientOnly.d.ts"
+      ],
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "config": [
+        "./dist/+config.d.ts"
+      ],
+      "renderer/onRenderHtml": [
+        "./dist/renderer/onRenderHtml.d.ts"
+      ],
+      "renderer/onRenderClient": [
+        "./dist/renderer/onRenderClient.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "repository": "github:vikejs/vike-react",
+  "license": "MIT"
+}
