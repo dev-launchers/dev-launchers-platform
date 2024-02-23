@@ -1,7 +1,8 @@
 'use client';
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Check, ChevronRight, Circle } from 'lucide-react';
+import { ChevronRight, Circle } from 'lucide-react';
+import { Checkbox } from 'components/Checkbox';
 import * as React from 'react';
 
 import { cn } from '../../utils/classesMerger';
@@ -65,13 +66,14 @@ const DropdownMenuContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        'overflow-hidden rounded-b-xl shadow-md w-80 -translate-y-2', //
+        'overflow-hidden data-sideTop:rounded-t-xl data-sideBottom:rounded-b-xl shadow-md w-80 data-sideTop:translate-y-2 data-sideBottom:-translate-y-2 ', //
         className
       )}
       {...props}
-    >
-      <div className="pointer-events-none h-2 bg-transparent" />
-      <div className="bg-white px-8 py-4">{children}</div>
+     >
+       <div className="pointer-events-none h-2 bg-transparent opacity-0 data-sideBottom:opacity-100" />
+       <div className="bg-white px-8 py-4">{children}</div>
+       <div className="pointer-events-none h-2  bg-transparent opacity-0 data-sideTop:opacity-100" />
     </DropdownMenuPrimitive.Content>
   </DropdownMenuPrimitive.Portal>
 ));
@@ -80,7 +82,7 @@ DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-    inset?: boolean
+    inset?: boolean;
   }
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
@@ -102,18 +104,16 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-60 h-10 px-4 py-2 cursor-default select-none items-center rounded-sm py-1.5 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
     checked={checked}
     {...props}
   >
-    <span className="absolute left-2 flex h-3,5 w-3,5 items-center justify-center">
-      <DropdownMenuPrimitive.ItemIndicator>
-        <Check className="h-4 w-4" />
-      </DropdownMenuPrimitive.ItemIndicator>
+    <span className="absolute left-10 flex h-6 w-6 items-center justify-center gap-2">
+      <Checkbox className="h-6 w-6" checked={checked}/>
+      {children}
     </span>
-    {children}
   </DropdownMenuPrimitive.CheckboxItem>
 ));
 DropdownMenuCheckboxItem.displayName =
@@ -126,15 +126,16 @@ const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      'relative flex cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-60 h-10 px-4 py-2 cursor-default select-none items-center rounded-sm py-1.5 pl-10 pr-2 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3,5 w-3,5 items-center justify-center">
+    <span className="absolute left-2 flex h-6 w-6 items-center justify-center">
       <DropdownMenuPrimitive.ItemIndicator>
-        <Circle className="h-2 w-2 fill-current" />
+        <Circle className="h-6 w-6 fill-current" strokeWidth={1} />
       </DropdownMenuPrimitive.ItemIndicator>
+      <Circle className="h-6 w-6 data-checked:!hidden" strokeWidth={1} />
     </span>
     {children}
   </DropdownMenuPrimitive.RadioItem>
@@ -144,7 +145,7 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 const DropdownMenuLabel = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Label>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label> & {
-    inset?: boolean
+    inset?: boolean;
   }
 >(({ className, inset, ...props }, ref) => (
   <DropdownMenuPrimitive.Label
