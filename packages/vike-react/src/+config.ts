@@ -10,9 +10,9 @@ export default {
   name: 'vike-react',
 
   // https://vike.dev/onRenderHtml
-  onRenderHtml: 'import:vike-react/renderer/onRenderHtml:onRenderHtml',
+  onRenderHtml: 'import:@devlaunchers/vike-react/renderer/onRenderHtml:onRenderHtml',
   // https://vike.dev/onRenderClient
-  onRenderClient: 'import:vike-react/renderer/onRenderClient:onRenderClient',
+  onRenderClient: 'import:@devlaunchers/vike-react/renderer/onRenderClient:onRenderClient',
 
   passToClient: [
     // https://github.com/vikejs/vike-react/issues/25
