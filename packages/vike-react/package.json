@@ -23,6 +23,7 @@
   "peerDependencies": {
     "react": "18.x.x",
     "react-dom": "18.x.x",
+    "styled-components": "^5.3.5",
     "vike": "^0.4.160",
     "vite": "^4.3.8 || ^5.0.10"
   },
@@ -37,9 +38,7 @@
     "vike": "^0.4.161"
   },
   "dependencies": {
-    "@types/styled-components": "5.1.25",
-    "react-streaming": "^0.3.22",
-    "styled-components": "5.3.5"
+    "react-streaming": "^0.3.22"
   },
   "typesVersions": {
     "*": {
