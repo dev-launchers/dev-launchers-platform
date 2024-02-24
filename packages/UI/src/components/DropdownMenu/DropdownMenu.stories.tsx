@@ -31,7 +31,7 @@ function RadioRender() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild size="small">
-        <div className='group'>
+        <div className="group">
           Dropdown
           <ChevronDown className="group-data-open:rotate-180" />
         </div>
@@ -65,7 +65,7 @@ function CheckBoxRender() {
   const [showStatusBar5, setShowStatusBar5] = useState<Checked>(false);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild size="medium" >
+      <DropdownMenuTrigger asChild size="medium">
         <div className="group">
           Dropdown
           <ChevronDown className="group-data-open:rotate-180" />
