@@ -59,7 +59,7 @@ const onRenderHtml: OnRenderHtmlAsync = async (
         ${headHtml}
         ${faviconTag}
 
-        <style>${dangerouslySkipEscape(sheet.getStyleTags())}</style>
+        ${dangerouslySkipEscape(sheet.getStyleTags())}
       </head>
       <body>
         <div id="page-view">${pageView}</div>
