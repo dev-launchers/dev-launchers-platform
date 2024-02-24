@@ -2,7 +2,7 @@
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Checkbox } from 'components/Checkbox';
-import { ChevronRight, Circle } from 'lucide-react';
+import { Circle } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '../../utils/classesMerger';
@@ -104,7 +104,7 @@ const DropdownMenuContent = React.forwardRef<
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 // Everything below this comment is things not yet implmented.
-
+/*
 const DropdownMenuSubTrigger = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
@@ -185,7 +185,7 @@ const DropdownMenuShortcut = ({
   );
 };
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';
-
+*/
 export {
   DropdownMenu,
   DropdownMenuTrigger,

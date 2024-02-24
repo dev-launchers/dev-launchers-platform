@@ -1,7 +1,7 @@
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChevronDown } from 'lucide-react';
-import React from "react";
+import { useState } from 'react';
 
 import {
   DropdownMenu,
@@ -26,124 +26,117 @@ type Story = StoryObj<typeof DropdownMenu>;
  * to learn how to use render functions.
  */
 
+
+function RadioRender() {
+  const [value, setValue] = useState<string>();
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+          Dropdown
+          <ChevronDown className="group-data-open:rotate-180" />
+        </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuRadioGroup value={value} onValueChange={setValue} asChild>
+          <div className="flex flex-col gap-2 font-nunito-sans">
+            <DropdownMenuRadioItem value="grid">Option</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="list1"> Option</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="list2">Option</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="list3">Option</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="list4">Option</DropdownMenuRadioItem>
+          </div>
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export const RadioDropdown: Story = {
+  render: RadioRender,
+};
+
+type Checked = DropdownMenuCheckboxItemProps['checked'];
+
+function CheckBoxRender() {
+  const [showStatusBar, setShowStatusBar] = useState<Checked>(false);
+  const [showStatusBar2, setShowStatusBar2] = useState<Checked>(false);
+  const [showStatusBar3, setShowStatusBar3] = useState<Checked>(false);
+  const [showStatusBar4, setShowStatusBar4] = useState<Checked>(false);
+  const [showStatusBar5, setShowStatusBar5] = useState<Checked>(false);
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+          Dropdown
+          <ChevronDown className="group-data-open:rotate-180" />
+        </div>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <div className="space-y-2">
+          <DropdownMenuCheckboxItem 
+            checked={showStatusBar}
+            onCheckedChange={setShowStatusBar}
+          >
+            Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem 
+            checked={showStatusBar2}
+            onCheckedChange={setShowStatusBar2}
+          >
+            Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem 
+            checked={showStatusBar3}
+            onCheckedChange={setShowStatusBar3}
+          >
+            Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem 
+            checked={showStatusBar4}
+            onCheckedChange={setShowStatusBar4}
+          >
+            Option
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showStatusBar5}
+            onCheckedChange={setShowStatusBar5}
+          >
+            Option
+          </DropdownMenuCheckboxItem>
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export const CheckboxDropdown: Story = {
+  render: CheckBoxRender,
+};
+
 export const Primary: Story = {
   render: () => {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger>
-          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+          <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
             Dropdown
-            <ChevronDown className=""/>
+            <ChevronDown className="group-data-open:rotate-180" />
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  },
-};
-
-
-export const RadioDropdown: Story = {
-  render: () => {
-    const [value, setValue] = React.useState<string>();
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
-            Dropdown
-            <ChevronDown className="data-open:rotate-90" />
-            {/* <ChevronUp /> */}
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuRadioGroup
-            value={value}
-            onValueChange={setValue}
-            asChild
-          >
-            <div className="flex flex-col gap-2 font-nunito-sans">
-              <DropdownMenuRadioItem value="grid">Option</DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list1">
-                Option
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list2">
-                Option
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list3">
-                Option
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list4">
-                Option
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list5">
-                Option
-              </DropdownMenuRadioItem>
-              <DropdownMenuRadioItem value="list6">
-                Option
-              </DropdownMenuRadioItem>
-            </div>
-          </DropdownMenuRadioGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  },
-};
-
-type Checked = DropdownMenuCheckboxItemProps['checked'];
-
-export const CheckboxDropdown: Story = {
-  render: () => {
-    const [showStatusBar, setShowStatusBar] = React.useState<Checked>(false);
-    const [showStatusBar2, setShowStatusBar2] = React.useState<Checked>(false);
-    const [showStatusBar3, setShowStatusBar3] = React.useState<Checked>(false);
-    const [showStatusBar4, setShowStatusBar4] = React.useState<Checked>(false);
-    const [showStatusBar5, setShowStatusBar5] = React.useState<Checked>(false);
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger>
-          <div className="flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
-            Dropdown
-            <ChevronDown className=""/>
-          </div>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <div className="space-y-2">
-            <DropdownMenuCheckboxItem 
-              checked={showStatusBar}
-              onCheckedChange={setShowStatusBar}
-            >
-              Option
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
-              checked={showStatusBar2}
-              onCheckedChange={setShowStatusBar2}
-            >
-              Option
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
-              checked={showStatusBar3}
-              onCheckedChange={setShowStatusBar3}
-            >
-              Option
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
-              checked={showStatusBar4}
-              onCheckedChange={setShowStatusBar4}
-            >
-              Option
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem
-              checked={showStatusBar5}
-              onCheckedChange={setShowStatusBar5}
-            >
-              Option
-            </DropdownMenuCheckboxItem>
-          </div>
+          <DropdownMenuItem>
+            <button aria-label="fake-anchor">Profile</button>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <button aria-label="fake-anchor">Billing</button>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <button aria-label="fake-anchor">Team</button>
+          </DropdownMenuItem>
+          <DropdownMenuItem>
+            <button aria-label="fake-anchor">Subscription</button>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     );
