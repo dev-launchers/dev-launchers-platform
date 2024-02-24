@@ -26,18 +26,17 @@ type Story = StoryObj<typeof DropdownMenu>;
  * to learn how to use render functions.
  */
 
-
 function RadioRender() {
   const [value, setValue] = useState<string>();
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+      <DropdownMenuTrigger asChild size="small">
+        <div className='group'>
           Dropdown
           <ChevronDown className="group-data-open:rotate-180" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent size="small">
         <DropdownMenuRadioGroup value={value} onValueChange={setValue} asChild>
           <div className="flex flex-col gap-2 font-nunito-sans">
             <DropdownMenuRadioItem value="grid">Option</DropdownMenuRadioItem>
@@ -66,13 +65,13 @@ function CheckBoxRender() {
   const [showStatusBar5, setShowStatusBar5] = useState<Checked>(false);
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+      <DropdownMenuTrigger asChild size="medium" >
+        <div className="group">
           Dropdown
           <ChevronDown className="group-data-open:rotate-180" />
         </div>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent size="medium">
         <div className="space-y-2">
           <DropdownMenuCheckboxItem 
             checked={showStatusBar}
@@ -118,13 +117,13 @@ export const Primary: Story = {
   render: () => {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger>
-          <div className="group flex w-80 justify-between rounded-md bg-black px-8 py-4 capitalize text-white">
+        <DropdownMenuTrigger asChild size="large">
+          <div className="group">
             Dropdown
             <ChevronDown className="group-data-open:rotate-180" />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent size="large">
           <DropdownMenuItem>
             <button aria-label="fake-anchor">Profile</button>
           </DropdownMenuItem>

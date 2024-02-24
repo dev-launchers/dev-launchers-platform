@@ -4,12 +4,54 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Checkbox } from 'components/Checkbox';
 import { Circle } from 'lucide-react';
 import * as React from 'react';
-
+import { tv } from 'tailwind-variants';
 import { cn } from '../../utils/classesMerger';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
-const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+// const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+
+const dropdownStyles = tv({
+  slots: {
+    trigger:
+      'flex items-center justify-between rounded-md bg-black px-8 py-4 capitalize text-white',
+    content:
+      'overflow-hidden shadow-md data-sideBottom:-translate-y-2 data-sideBottom:rounded-b-xl data-sideTop:translate-y-2 data-sideTop:rounded-t-xl ',
+  },
+  variants: {
+    size: {
+      small: {
+        trigger: 'w-48',
+        content: 'w-48',
+      },
+      medium: {
+        trigger: 'w-60',
+        content: 'w-60',
+      },
+      large: {
+        trigger: 'w-80',
+        content: 'w-80',
+      },
+    },
+  },
+});
+
+const DropdownMenuTrigger = React.forwardRef<
+  React.ElementRef<typeof DropdownMenuPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger> & {
+    // Predetermined sizes for Dropdown Trigger.
+    size?: 'small' | 'medium' | 'large';
+  }
+>(({ className, size = 'medium', children, ...props }, ref) => (
+  <DropdownMenuPrimitive.Trigger
+    ref={ref}
+    className={cn(dropdownStyles({ size }).trigger(), className)}
+    {...props}
+  >
+    {children}
+  </DropdownMenuPrimitive.Trigger>
+));
+DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName;
 
 // Not yet used dropdown menu options.
 // const DropdownMenuGroup = DropdownMenuPrimitive.Group;
@@ -21,6 +63,7 @@ const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
+    // Inset is to determine if it needs a left padding.
     inset?: boolean;
   }
 >(({ className, inset, ...props }, ref) => (
@@ -83,16 +126,16 @@ DropdownMenuRadioItem.displayName = DropdownMenuPrimitive.RadioItem.displayName;
 
 const DropdownMenuContent = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
->(({ className, children, sideOffset = 4, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> & {
+    // Predetermined sizes for Dropdown Trigger.
+    size?: 'small' | 'medium' | 'large';
+  }
+>(({ className, children, size = 'medium', sideOffset = 4, ...props }, ref) => (
   <DropdownMenuPrimitive.Portal>
     <DropdownMenuPrimitive.Content
       ref={ref}
       sideOffset={sideOffset}
-      className={cn(
-        'overflow-hidden data-sideTop:rounded-t-xl data-sideBottom:rounded-b-xl shadow-md w-80 data-sideTop:translate-y-2 data-sideBottom:-translate-y-2 ', 
-        className
-      )}
+      className={cn(dropdownStyles({ size }).content(), className)}
       {...props}
     >
       <div className="pointer-events-none h-2 bg-transparent opacity-0 data-sideBottom:opacity-100" />
