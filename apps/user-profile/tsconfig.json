@@ -30,5 +30,5 @@
     "**/*.jsx",
     "**/*.mjs",
     "**/*.json"
-, ".eslintrc-example.js"  ]
+, ".eslintrc.js"  ]
 }
