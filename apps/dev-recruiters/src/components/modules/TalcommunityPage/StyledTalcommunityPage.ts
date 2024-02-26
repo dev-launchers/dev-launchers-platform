@@ -19,7 +19,6 @@ export const Wrap = styled.div`
   background-position: center;
   background-size: cover;
   height: 455px;
-
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -28,6 +27,6 @@ export const Wrap = styled.div`
   /* max-width: 100%; */
   padding-left: 196px;
   padding-right: 196px;
-  display: flex;
   overflow: hidden;
+  background-color: #f0edee;
 `;
