@@ -11,7 +11,7 @@ export const Label = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;
 export const Input = styled.input<{ height?: string; width?: string }>`
-  background-color: ${({ theme }) => theme.colors.SilverSand};
+  background-color: #f0edee};
   height: ${({ height }) => height || 'auto'};
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -23,7 +23,7 @@ export const Input = styled.input<{ height?: string; width?: string }>`
 `;
 export const TextArea = styled.textarea.attrs({ wrap: 'hard' })`
   resize: none;
-  background-color: ${({ theme }) => theme.colors.SilverSand};
+  background-color: #f0edee;
   height: 175.5px;
   box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
@@ -68,14 +68,14 @@ export const RadioWrapper = styled.div`
 
 export const CheckboxLabel = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  background-color: ${({ theme }) => theme.colors.SilverSand};
+  background-color: #f0edee;
   border-radius: 1.875rem;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
 `;
 
 export const Slider = styled.input.attrs({ type: 'range' })`
-  background-color: ${({ theme }) => theme.colors.SilverSand};
+  background-color: #f0edee;
   border-radius: 30px;
   padding: 0.5rem;
   width: 40%;
@@ -85,7 +85,7 @@ export const Slider = styled.input.attrs({ type: 'range' })`
 export const FileUpload = styled.input.attrs({ type: 'file' })`
   margin-top: 1.25rem;
   color: ${({ theme }) => theme?.colors?.Black};
-  background-color: ${({ theme }) => theme.colors.SilverSand};
+  background-color: #f0edee;
   border-radius: 30px;
   width: 40%;
 `;
