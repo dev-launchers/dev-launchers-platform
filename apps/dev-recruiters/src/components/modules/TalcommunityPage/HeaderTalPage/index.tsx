@@ -1,5 +1,5 @@
 import { Wrap } from '../StyledTalcommunityPage';
-
+import React from 'react';
 import {
   HeaderContainer,
   HeaderText,
