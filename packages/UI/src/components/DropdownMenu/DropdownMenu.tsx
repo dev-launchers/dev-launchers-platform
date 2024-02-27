@@ -1,22 +1,25 @@
 'use client';
 
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { Checkbox } from 'components/Checkbox';
 import { Circle } from 'lucide-react';
 import * as React from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../utils/classesMerger';
+import { Checkbox } from '../Checkbox';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
-// const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
+// Not yet used dropdown menu options.
+// const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+// const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
+// const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
 const dropdownStyles = tv({
   slots: {
     trigger:
       'flex items-center justify-between rounded-md bg-black px-8 py-4 capitalize text-white',
     content:
-      'overflow-hidden shadow-md data-sideBottom:-translate-y-2 data-sideBottom:rounded-b-xl data-sideTop:translate-y-2 data-sideTop:rounded-t-xl ',
+      'overflow-hidden shadow-md data-sideBottom:-translate-y-2 data-sideBottom:rounded-b-xl data-sideTop:translate-y-2 data-sideTop:rounded-t-xl',
   },
   variants: {
     size: {
@@ -52,11 +55,6 @@ const DropdownMenuTrigger = React.forwardRef<
   </DropdownMenuPrimitive.Trigger>
 ));
 DropdownMenuTrigger.displayName = DropdownMenuPrimitive.Trigger.displayName;
-
-// Not yet used dropdown menu options.
-// const DropdownMenuGroup = DropdownMenuPrimitive.Group;
-// const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
-// const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
