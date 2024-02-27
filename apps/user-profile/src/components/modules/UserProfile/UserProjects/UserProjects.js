@@ -1,41 +1,44 @@
-import React from "react";
-import axios from "axios";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React from 'react';
+import axios from 'axios';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import Button from "../../../common/Button";
-import Card from "../../../common/Card";
+import Button from '../../../common/Button';
+import Card from '../../../common/Card';
 
-import { env } from "../../../../utils/EnvironmentVariables";
+import { env } from '../../../../utils/EnvironmentVariables';
 
-import { useUserDataContext } from "../../../../context/UserDataContext";
+// import { useUserDataContext } from "../../../../context/UserDataContext";
 
-import { UserProjectsContainer } from "./StyledUserProjects";
+import { UserProjectsContainer } from './StyledUserProjects';
 
 const UserProjects = ({ myProjects }) => {
   const noProjectsDisplay = (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
       }}
     >
       <h3>
-        It looks like you&apos;re not currently part of any of our Product Teams...
+        It looks like you&apos;re not currently part of any of our Product
+        Teams...
       </h3>
       <div
-        style={{ color: "white", fontSize: "1.3rem", marginBottom: "2rem" }}
+        style={{ color: 'white', fontSize: '1.3rem', marginBottom: '2rem' }}
       ></div>
-      <Button style={{ marginLeft: "auto", marginRight: "auto" }} href="/join">
+      <Button style={{ marginLeft: 'auto', marginRight: 'auto' }} href="/join">
         Explore Team Openings!
       </Button>
     </div>
   );
 
-  const unique = [...new Map(myProjects.map((m) => [m.catchPhrase, m])).values()];
+  const unique = [
+    ...new Map(myProjects.map((m) => [m.catchPhrase, m])).values(),
+  ];
 
-  const unDuplicatedProject = unique.map(project => (
+  const unDuplicatedProject = unique.map((project) => (
     <Card
       key={Math.random()}
       size="large"
@@ -63,8 +66,7 @@ const UserProjects = ({ myProjects }) => {
                           */
       }}
     />
-  ))
-
+  ));
 
   return (
     <UserProjectsContainer myProjects={myProjects}>
@@ -73,11 +75,11 @@ const UserProjects = ({ myProjects }) => {
           <h2>My Project Teams</h2>
           <div
             style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "space-around",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'space-around',
             }}
           >
             {unDuplicatedProject}

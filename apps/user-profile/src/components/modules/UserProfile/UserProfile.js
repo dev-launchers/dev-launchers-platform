@@ -1,9 +1,8 @@
-import React from "react";
-import { useEffect, useState } from 'react';
-import "react-tabs/style/react-tabs.css";
-import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
-import axios from "axios";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import 'react-tabs/style/react-tabs.css';
+import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 import BioBox from './BioBox';
 import Opportunities from './Opportunities';
@@ -16,19 +15,18 @@ import UserInterests from './UserInterests';
 import Loader from './../../common/Loader';
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import { env } from '../../../utils/EnvironmentVariables';
-import { useUserDataContext } from '../../../context/UserDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 // State management component
 /**
- * This component has been broken down into two, 
- * 1. State management component (UserProfile) – initialising states, getting data from backeend. 
+ * This component has been broken down into two,
+ * 1. State management component (UserProfile) – initialising states, getting data from backeend.
  * 2. The view component (UserProfileView) – rendering the UI elements.
- * @export 
- * @param {*} { publicUserData, isPublic } 
- * @return {*}  
+ * @export
+ * @param {*} { publicUserData, isPublic }
+ * @return {*}
  */
 export default function UserProfile({ publicUserData, isPublic }) {
-
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
@@ -41,8 +39,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
   // If user hasn't set a username, redirect them to the signup form
   const router = useRouter();
   React.useEffect(() => {
-    if (isAuthenticated && userData.name === '')
-      router.push("/signup");
+    if (isAuthenticated && userData.name === '') router.push('/signup');
   }, [isAuthenticated]);
 
   // Start Projects/Opportunities
@@ -66,7 +63,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
         }
       })
       .catch(() => {
-        console.error("Could not fetch project data");
+        console.error('Could not fetch project data');
       });
   };
 
@@ -81,7 +78,6 @@ export default function UserProfile({ publicUserData, isPublic }) {
   // }, [projects, userData]);
   // End Projects/Opportunities
 
-
   // Start Ideas
   React.useEffect(() => {
     getIdeaData();
@@ -94,18 +90,21 @@ export default function UserProfile({ publicUserData, isPublic }) {
         }
       })
       .catch(() => {
-        console.error("Could not fetch idea data");
+        console.error('Could not fetch idea data');
       });
   };
   // End Ideas
 
-
-  // Start People  
+  // Start People
   React.useEffect(() => {
-    getPeopleData().catch(() => { console.error(`Could not fetch People's data`) });
+    getPeopleData().catch(() => {
+      console.error(`Could not fetch People's data`);
+    });
   }, []);
   const getPeopleData = async () => {
-    const userCount = (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/count`)).data;
+    const userCount = (
+      await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/count`)
+    ).data;
     let randomUserIds = [
       parseInt(Math.random() * userCount),
       parseInt(Math.random() * userCount),
@@ -114,13 +113,18 @@ export default function UserProfile({ publicUserData, isPublic }) {
       parseInt(Math.random() * userCount),
       parseInt(Math.random() * userCount),
     ];
-    
-    let usersData = await Promise.all(randomUserIds.map(async (userId) =>
-      (await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)).data
-    ));
+
+    let usersData = await Promise.all(
+      randomUserIds.map(
+        async (userId) =>
+          (
+            await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`)
+          ).data
+      )
+    );
 
     setPeople(usersData);
-  }
+  };
   // End People
 
   // Start Interests
@@ -129,20 +133,23 @@ export default function UserProfile({ publicUserData, isPublic }) {
   }, []);
 
   const getInterests = async () => {
-    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`).then(({ data }) => {
-      data && setInterests(data);
-    }).catch(() => {
-      console.error("Could not fetch interest data");
-    });
+    await axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`)
+      .then(({ data }) => {
+        data && setInterests(data);
+      })
+      .catch(() => {
+        console.error('Could not fetch interest data');
+      });
   };
   // End Interests
-
 
   useEffect(() => {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
-  return loading ? <Loader /> :
+  return loading ? (
+    <Loader />
+  ) : (
     <UserProfileView
       publicUserData={publicUserData}
       isPublic={isPublic}
@@ -152,7 +159,8 @@ export default function UserProfile({ publicUserData, isPublic }) {
       ideas={ideas}
       people={people}
       interests={interests}
-    />;
+    />
+  );
 }
 
 // View component
@@ -164,22 +172,29 @@ export function UserProfileView({
   myProjects,
   ideas,
   people,
-  interests
+  interests,
 }) {
-
   return (
     <Wrapper>
       <UserSection>
         <ProfileCard
-          img={isPublic ? publicUserData?.profile?.profilePictureUrl : userData.profilePictureUrl}
+          img={
+            isPublic
+              ? publicUserData?.profile?.profilePictureUrl
+              : userData.profilePictureUrl
+          }
           name={isPublic ? publicUserData?.profile?.displayName : userData.name}
           username={isPublic ? publicUserData?.username : userData.username}
-          created_at={isPublic ? publicUserData?.created_at : userData?.created_at}
+          created_at={
+            isPublic ? publicUserData?.created_at : userData?.created_at
+          }
         />
 
         <UserInfo>
           <BioBox
-            name={isPublic ? publicUserData?.profile?.displayName : userData.name}
+            name={
+              isPublic ? publicUserData?.profile?.displayName : userData.name
+            }
             data={isPublic ? publicUserData?.profile : userData}
             canEdit={!isPublic}
           />
@@ -187,18 +202,32 @@ export function UserProfileView({
       </UserSection>
 
       <Misc>
-        <Tabs defaultFocus={true} defaultIndex={0} style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
-          <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>
+        <Tabs
+          defaultFocus={true}
+          defaultIndex={0}
+          style={{ width: '80vw', maxWidth: '1400px', minHeight: '30rem' }}
+        >
+          <TabList
+            style={{
+              width: '100%',
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
             {
               // Have to do this hack for some reason (create empty tab if page not loaded)...
               // otherwise tabs break
-              Object.entries(userData || {}).length === 0 ? <Tab></Tab> : ""
+              Object.entries(userData || {}).length === 0 ? <Tab></Tab> : ''
             }
             {
               // Render tabs from our dynamically built learnPageData object
-              ["Projects", "People", "Interests", "Ideas", "Opportunities"].map((key) => (
-                <Tab key={`tab${key}`}>{key}</Tab>
-              ))
+              ['Projects', 'People', 'Interests', 'Ideas', 'Opportunities'].map(
+                (key) => (
+                  <Tab key={`tab${key}`}>{key}</Tab>
+                )
+              )
             }
           </TabList>
 
@@ -221,11 +250,8 @@ export function UserProfileView({
           <TabPanel>
             <Opportunities opportunities={opportunities} />
           </TabPanel>
-
         </Tabs>
       </Misc>
     </Wrapper>
   );
 }
-
-
