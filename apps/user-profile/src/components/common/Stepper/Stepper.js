@@ -116,7 +116,6 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   };
 
   const showClosingModal = () => {
-    console.log("actions", onboardingActions);
     dispatch({ type: onboardingActions.SHOW_CLOSING_MODAL });
   };
   
