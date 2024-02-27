@@ -4,8 +4,8 @@ import { featureFlags } from './../../utils/featureFlags';
 
 export const initialOnboardingState = {
     
-    showIntroductionModal: false,
-    showPlatformOnboardingModal: true,
+    showIntroductionModal: true,
+    showPlatformOnboardingModal: false,
     showCloseModal: false,
     user: { 
         selectedRole: null,
@@ -42,7 +42,6 @@ export const onboardingReducer = (state, action) => {
     
     switch (action.type) {
         case onboardingActions.SET_USERS_INTEREST: {
-            console.log(action);
             return {
                 ...state,
                 user: {
@@ -70,7 +69,6 @@ export const onboardingReducer = (state, action) => {
             }
         }
         case onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL: {
-            console.log("hello")
 
             return {
                 ...state,
@@ -79,7 +77,6 @@ export const onboardingReducer = (state, action) => {
             }
         }
         case onboardingActions.SHOW_INTRODUCTION_MODAL: {
-            console.log("hello")
             return {
                 ...state,
                 showPlatformOnboardingModal: true,
@@ -114,7 +111,6 @@ export const onboardingReducer = (state, action) => {
             }
         }
         case onboardingActions.SHOW_CLOSING_MODAL: {
-            console.log('showclosemodal')
             return {
                 ...state,
                 showCloseModal: true,
