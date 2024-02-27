@@ -16,9 +16,7 @@ import chevronRightImg from './../../../images/btn-chevron-right.svg';
 import checkImg from './../../../images/Onboarding/stepper/check.svg';
 import RainbowBar from '../RainbowBar';
 import { useOnboardingDataContext } from '../../../context/OnboardingDataContext.js'
-// import onboardingActions from '../../../state/actions';
 
-// import  { SHOW_PLATFORM_ONBOARDING_MODAL } from '../../../state/actions/onboardingActions'
 import * as onboardingActions from '../../../state/actions/onboardingActions';
 
 
