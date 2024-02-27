@@ -14,16 +14,13 @@ import { onboardingActions } from './../../../../state/actions';
 export default function IntroductionModal() {
     const { onboardingData, dispatch } = useOnboardingDataContext();
     if (!onboardingData || onboardingData.showIntroductionModal === false) {
-        console.log("hello")
         return null; //dont render the modal if showIntroductionModal is false
     }
     const onGetStarted = () => {
-        console.log("hello")
 
         dispatch({ type: onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL });
     }
     const onSetUpLater = () => {
-        console.log("hello")
 
         dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
     }
