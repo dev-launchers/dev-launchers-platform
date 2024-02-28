@@ -49,7 +49,6 @@ const IdeaForm = ({
 		}, [values]);
 		return null;
 	};
-
 	return (
 		<atoms.Box margin='1rem 1.5rem 3rem 1.5rem'>
 			<atoms.Box maxWidth='36rem' margin='auto' style={{ textAlign: 'left' }}>
@@ -59,7 +58,6 @@ const IdeaForm = ({
 				onSubmit={submitHandler}
 				enableReinitialize
 			>
-
 				{({ errors, setFieldValue, touched }) => (
 					<Form>
 						<AutoSubmitToken />
@@ -159,28 +157,34 @@ const IdeaForm = ({
 									What Level of Involvement Do You Want to Have After Submission?<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 								<atoms.Box flexDirection='row' alignItems='flex-end' >
-									<Dropdown
-										title ="Select desired level of involvement"
-										width={isMobile ? 'sm' : 'lg'}
-										type="radio"
-										options={[
-											{
-											disabled: false,
-											text:`I don't want to be involved after submitting`,
-											},
-											{
-											disabled: false,
-											text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
-											},
-											{
-											disabled: false,
-											text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
-											},
-											{
-											disabled: false,
-											text: `I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project`,
-											},
-										]}
+								<Field
+									as={Dropdown}
+									title="Select desired level of involvement"
+									width={isMobile ? 'sm' : 'lg'}
+									type="radio"
+									id="involveLevel"
+									name="involveLevel"
+									touched={touched['involveLevel']}
+									options={[
+										{
+										text:`I don't want to be involved after submitting`,
+										},
+										{
+										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+										},
+										{
+										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+										},
+										{	
+										text: `I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project`,
+										},
+									]}
+									recieveValue={(value) => {
+										const selectedOptions = Object.entries(value).find(([key,value])=> value === true)
+											if (selectedOptions){
+												setFieldValue('involveLevel', selectedOptions[0])
+											}					
+									}}
 									/>
 									<atoms.ToolTip
 										content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshipping page."
@@ -201,7 +205,7 @@ const IdeaForm = ({
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
 								<atoms.Checkbox disabled={false} required />
 								<atoms.Typography type='p'>
-									&nbsp;I have read and agree to the Terms and Conditions.
+									&nbsp;I have read and agree to the Terms and Conditions.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 							</atoms.Box>
 

@@ -63,6 +63,7 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
+    values['involveLevel'] = values['involveLevel'].trim()
     setSending(true);
 
     try {
