@@ -79,8 +79,11 @@ DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
 
 const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
-  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
->(({ className, children, checked, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> & {
+    // Prop passed to determine when any item in the CheckboxItem is clicked on, not just checkbox.
+    onCheckedChange: (checked: boolean) => void;
+  }
+>(({ className, children, checked, onCheckedChange, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
     ref={ref}
     className={cn(
@@ -88,10 +91,15 @@ const DropdownMenuCheckboxItem = React.forwardRef<
       className
     )}
     checked={checked}
+    onCheckedChange={onCheckedChange}
     {...props}
   >
     <span className="absolute left-10 flex h-6 w-6 items-center justify-center gap-2">
-      <Checkbox className="h-6 w-6" checked={checked} />
+      <Checkbox
+        className="h-6 w-6"
+        checked={checked}
+        // onClick={onCheckedChange }
+      />
       {children}
     </span>
   </DropdownMenuPrimitive.CheckboxItem>
