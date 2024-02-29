@@ -81,7 +81,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> & {
     // Prop passed to determine when any item in the CheckboxItem is clicked on, not just checkbox.
-    onCheckedChange: (checked: boolean) => void;
+    onCheckedChange?: (checked: boolean) => void;
   }
 >(({ className, children, checked, onCheckedChange, ...props }, ref) => (
   <DropdownMenuPrimitive.CheckboxItem
