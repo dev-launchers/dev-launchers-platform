@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const OpenRolesText = styled.div`
   margin-left: 4.25rem;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'Nunito Sans', sans-serif;
 `;
 
@@ -22,6 +22,6 @@ export const EmptyRolesContainer = styled.div`
   margin-bottom: 3rem;
   background-color: white;
   padding: 2.5rem;
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   font-family: 'Nunito Sans', sans-serif;
 `;

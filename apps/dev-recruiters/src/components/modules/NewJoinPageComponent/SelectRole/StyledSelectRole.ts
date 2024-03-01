@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 
 export const SelectRoleContainer = styled.div`
-  width: 360px;
-  height: 266px;
-  border: 1px solid #e5e5e5;
+  width: 23rem;
+  height: 17rem;
+  border: .5rem solid #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   background-color: white;
-  border-radius: 16px;
-  margin: 0 20px;
-  box-shadow: 0 10px 18px 10px #7f7e7f25;
-  padding: 25px 0;
+  border-radius: 1rem;
+  margin: 0 1.25rem;
+  box-shadow: 0 .6rem 1.2rem .6rem #7f7e7f25;
+  padding: 1.5rem;
   cursor: pointer;
+  @media not all and (min-width: 640px) {
+    /* height: 100vh; */
+    max-height: 24rem;
+  }
 
   &:hover {
     background-color: #ff7f0e;
@@ -25,7 +29,7 @@ export const SelectRoleContainerTop = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 150px;
+  height: 10rem;
 `;
 
 export const AreaIconImage = styled.div`
@@ -42,15 +46,15 @@ export const IconImage = styled.img`
 `;
 
 export const TextRole = styled.div`
-  font-size: 40px;
+  font-size: 2.5rem;
   font-family: 'Abel', sans-serif;
 `;
 
 export const SelectRoleContainerBottom = styled.div`
-  height: 30px;
+  height: 1.8rem;
 `;
 
 export const TextRoleSituation = styled.div`
-  font-size: 16px;
+  font-size: 1rem;
   font-family: 'Nunito Sans', sans-serif;
 `;

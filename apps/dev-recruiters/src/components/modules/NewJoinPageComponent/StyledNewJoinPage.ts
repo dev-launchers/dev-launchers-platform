@@ -75,6 +75,9 @@ export const Footer = styled.div`
   flex-direction: column;
   gap: 25px;
   margin-bottom: 50px;
+  @media not all and (min-width: 640px) {
+    margin: 1.5rem 0 2.5rem;
+  }
 `;
 
 export const FooterFirstText = styled.div`

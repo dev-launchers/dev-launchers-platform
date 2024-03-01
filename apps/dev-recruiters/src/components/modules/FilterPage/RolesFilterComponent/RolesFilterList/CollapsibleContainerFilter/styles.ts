@@ -3,52 +3,56 @@ import styled from 'styled-components';
 export const ContainerMain = styled.div`
   width: 100%;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   display: inline-block;
   flex-direction: column;
   justify-content: flex-start;
 `;
 
 export const ContainerHead = styled.div`
-  height: 50px;
+  height: 3.125rem;
+  /* height: 50px; */
   width: 100%;
   background-color: black;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   color: white;
   display: flex;
-  font-size: 16px;
+  font-size: 1rem;
   align-items: center;
   justify-content: center;
-  padding-right: 120px;
+  /* padding-right: 7.5rem; */
+  padding: 0 auto ;
 `;
 
 export const ContainerBody = styled.div`
-  height: 650px;
+  height: 40.625rem;
+  /* height: 650px; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 `;
 
 export const ContainerRoles = styled.div`
   height: auto;
   background-color: white;
-  padding: 0 20px;
+  padding: 0 1.25rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 `;
 
 export const ContainerCommitment = styled.div`
-  height: 250px;
+  height: 15.625rem;
+  /* height: 250px; */
   display: flex;
   align-items: center;
 `;
 
 export const CommitmentText = styled.div`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
 `;
 
 // export const RoleContainerBody = styled.div`

@@ -5,21 +5,21 @@ interface ButtonRolesProps {
 }
 
 export const ButtonRoles = styled.div<ButtonRolesProps>`
-  border-radius: 24px;
-  padding: 10px 8px;
-  font-size: 14px;
+  border-radius: 1.5rem;
+  padding: 0.625rem 0.5rem;
+  font-size: 0.875rem;
   font-family: 'Nunito Sans', sans-serif;
-  border: 1px solid ${({ isActive }) => (isActive ? '#ff7f0e' : 'black')};
+  border: 0.0625rem solid ${({ isActive }) => (isActive ? '#ff7f0e' : 'black')};
   background-color: ${({ isActive }) => (isActive ? '#ff7f0e' : 'transparent')};
   cursor: pointer;
   &:hover {
     background-color: #ff7f0e;
-    border: 1px solid #ff7f0e;
+    border: 0.0625rem solid #ff7f0e;
     transition: 0.1s;
   }
 `;
 
 export const TextRole = styled.div`
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: 'Abel', sans-serif;
 `;

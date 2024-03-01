@@ -8,19 +8,29 @@ export const ResultContainer = styled.div`
   gap: 1rem; /* Add some gap between items */
   justify-content: center; /* Center items horizontally */
   align-items: flex-start; /* Align items at the start vertically */
+  @media not all and (min-width: 640px) {
+    padding: .5rem;
+  }
 `;
 
 export const FilterConatiner = styled.div`
   background-color: white;
   width: 21%;
-  height: 750px;
-  border-radius: 8px;
-  box-shadow: 2px 2px 8px 0 #7f7e7f;
+  height: 46.875rem;
+  border-radius: 0.5rem;
+  box-shadow: 0.125rem 0.125rem 0.5rem 0 #7f7e7f;
+  @media not all and (min-width: 640px) {
+    width: 100%;
+  }
 `;
 
 export const RolesContainer = styled.div`
   width: 65%;
   margin-left: 2.5rem;
+  @media not all and (min-width: 640px) {
+    width: 100%;
+    margin-left: 0;
+  }
 `;
 
 export const SearchResult = styled.div`
@@ -29,6 +39,6 @@ export const SearchResult = styled.div`
   justify-content: center;
   font-weight: 700;
   margin-top: 5rem;
-  font-size: 32px;
+  font-size: 2rem;
   font-family: 'Inter', sans-serif;
 `;

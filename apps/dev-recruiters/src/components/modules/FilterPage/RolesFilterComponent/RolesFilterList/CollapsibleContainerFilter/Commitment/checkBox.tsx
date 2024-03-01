@@ -16,7 +16,7 @@ const Checkbox = styled.label`
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: bold;
     color: white;
   }
@@ -27,11 +27,13 @@ const Checkbox = styled.label`
 
   span {
     display: inline-block;
-    width: 25px;
-    height: 25px;
+    width: 1.5625rem;
+    height: 1.5625rem;
+    /* width: 25px;
+    height: 25px; */
     background-color: white;
-    border: 2px solid black;
-    border-radius: 4px;
+    border: 0.125rem solid black;
+    border-radius: 0.25rem;
     transition: background-color 0.2s;
   }
 `;

@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 // interface FormFields extends Omit<NewApplicant, 'level'> {
 //   level: NewApplicant['level'] | '';
 // }
+
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;
@@ -82,6 +83,18 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
               console.log(error.response.data);
               console.log(error.response.status);
             });
+            {
+              axios
+                .post(`${process.env.NEXT_PUBLIC_STRAPI_URL}/dl-tal-communities`, {
+                  email,
+                })
+                .then(() => {
+                  setIsCorrect(true);
+                })
+                .catch(() => {
+                  setIsEmailAlreadyUsed(true);
+                });
+            }
         }}
         validationSchema={SignupSchema}
       >
