@@ -75,6 +75,12 @@ function MyApp({ Component, pageProps }) {
               {/* {props.children} */}
               <Footer />
             </div>
+           <Navigation />
+
+            <Component {...pageProps} />
+            {/* {props.children} */}
+            <Footer />
+          </div>
         </ThemeProvider>
       </UserDataProvider>
     </>

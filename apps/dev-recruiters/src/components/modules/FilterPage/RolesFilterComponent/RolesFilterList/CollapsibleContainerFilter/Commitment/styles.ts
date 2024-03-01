@@ -16,7 +16,7 @@ export const CommitmentTimeContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 `;
 
 export const CommitmentTitle = styled.div`
@@ -27,7 +27,7 @@ export const CommitmentTitle = styled.div`
 `;
 
 export const CommitmentText = styled.div`
-  font-size: 14px;
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   font-family: 'Nunito Sans', sans-serif;
@@ -36,7 +36,7 @@ export const CommitmentText = styled.div`
 export const TimeCommitment = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
 `;
 
 export const IconImage = styled.img`

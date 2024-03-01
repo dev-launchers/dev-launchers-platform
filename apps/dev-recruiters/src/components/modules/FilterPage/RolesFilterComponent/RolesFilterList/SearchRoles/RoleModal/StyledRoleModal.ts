@@ -14,7 +14,7 @@ export const ButtonsSection = styled.div<{
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'flex')};
 
-  padding: 14px 24px;
+  padding: 0.875rem 1.5rem;
   align-items: center;
 
   @media (max-width: 760px) {
@@ -31,14 +31,14 @@ export const ApplyButton = styled.a<{ color?: string }>`
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 14px 24px;
+  padding: 0.875rem 1.5rem;
   white-space: nowrap;
   border: none;
-  margin: 20px;
+  margin: 1.25rem;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
-  line-height: 11px;
+  line-height: 0.6875rem;
   text-align: center;
   &:hover {
     text-decoration: none;
@@ -65,21 +65,21 @@ export const ModalDescriptionSection = styled.div<{
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'block')};
   height: 100%;
-  padding: 0px 20px 0px 50px;
+  padding: 0 1.25rem 0 3.125rem;
 
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
   }
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
     line-height: 1.125rem;
     max-width: 28rem;
     overflow: hidden;
@@ -106,22 +106,22 @@ export const ModalProjectSection = styled.div`
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 700;
-  line-height: 22px;
-  max-width: 200px;
+  line-height: 1.375rem;
+  max-width: 12.5rem;
 
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
     font-weight: 700;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 1rem;
+    line-height: 1.375rem;
   }
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 0.875rem;
+    line-height: 1.1875rem;
     line-height: 1.125rem;
     max-width: 28rem;
     overflow: hidden;
@@ -131,21 +131,21 @@ export const ModalProjectSection = styled.div`
 `;
 
 export const BulletListItem = styled.li`
-  font-size: 12px;
+  font-size: 0.75rem;
 `;
 
 export const BulletList = styled.div`
-  padding-right: 0 0 0px 50px;
-  max-width: 200px;
+  padding-right: 0 0 0 3.125rem;
+  max-width: 12.5rem;
 `;
 
 export const CloseButton = styled.button`
   background: ${({ theme }) => theme.colors.White};
   border: none;
-  border-radius: 5px;
-  height: 22px;
-  width: 20px;
-  margin: 20px;
+  border-radius: 0.3125rem;
+  height: 1.375rem;
+  width: 1.25rem;
+  margin: 1.25rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -161,7 +161,7 @@ export const CloseIcon = styled.svg`
 
 export const ColorBox = styled.div`
   width: 100%;
-  height: 10px;
+  height: 0.625rem;
   position: absolute;
   border: none;
   top: 0;
@@ -179,5 +179,5 @@ export const ColorRow = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 0 10px 0;
+  margin: 0 0 0.625rem 0;
 `;

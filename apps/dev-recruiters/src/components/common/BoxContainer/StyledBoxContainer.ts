@@ -10,6 +10,10 @@ export const Container = styled.div<{
   height: auto;
   background: ${({ theme, bgColor }) =>
     bgColor ? theme.colors[bgColor] : 'transparent'};
+  @media not all and (min-width: 640px) {
+    margin: .5rem;
+    overflow: hidden;
+  }
 `;
 
 export const Content = styled.div<{
@@ -27,6 +31,10 @@ export const Content = styled.div<{
     paddingHorizontal ? `${paddingHorizontal}px` : 0};
   padding-right: ${({ paddingHorizontal }) =>
     paddingHorizontal ? `${paddingHorizontal}px` : 0};
+
+  @media not all and (min-width: 640px) {
+    padding: .5rem;
+  }
 
   /* @media (min-width: 640px) {
     max-width: 640px;

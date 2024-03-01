@@ -239,7 +239,7 @@ function ProjectDetailsModal({
         >
           <path
             strokeLinecap="round"
-            strokeLinejoin="round"
+            strokeLine="round"
             d="M6 18L18 6M6 6l12 12"
           />
         </CloseIcon>
@@ -305,7 +305,7 @@ function ModalBottomSection({
       <RowContainer paddingVertical={20} justifycontent="justfiy-left">
         <ModalProjectSection>
           <div>
-            <h4>WHY SHOULD YOU JOIN</h4>
+            <h4>WHY SHOULD YOU </h4>
             <BulletList>
               <BulletListItem>Mentor and manage a team</BulletListItem>
               <BulletListItem>
