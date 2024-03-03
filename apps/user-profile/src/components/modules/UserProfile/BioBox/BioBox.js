@@ -1,12 +1,12 @@
-import axios from "axios";
-import React, { useRef, useState } from "react";
+import axios from 'axios';
+import React, { useRef, useState } from 'react';
 
-import { Wrapper, Bio } from "./StyledBioBox";
+import { Wrapper, Bio } from './StyledBioBox';
 
-import { env } from "../../../../utils/EnvironmentVariables";
+import { env } from '../../../../utils/EnvironmentVariables';
 
-import { Name } from "../ProfileCard/StyledProfileCard";
-import { Typography } from "@devlaunchers/components/components/atoms";
+import { Name } from '../ProfileCard/StyledProfileCard';
+import { Typography } from '@devlaunchers/components/components/atoms';
 import Button from '@devlaunchers/components/components/atoms/Button/Button';
 
 export default function BioBox({ data, canEdit, name }) {
@@ -20,7 +20,7 @@ export default function BioBox({ data, canEdit, name }) {
   const sendText = () => {
     axios
       .put(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${data.id}/profiles`,
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/${data.id}/profiles`,
         { bio: bioText },
         { withCredentials: true }
       )
@@ -41,7 +41,7 @@ export default function BioBox({ data, canEdit, name }) {
         rows="7"
         cols="50"
         placeholder={
-          canEdit ? "Write your bio here!" : `${data.displayName} has no bio!`
+          canEdit ? 'Write your bio here!' : `${data.displayName} has no bio!`
         }
         maxlength="144"
         value={bioText}
@@ -51,14 +51,14 @@ export default function BioBox({ data, canEdit, name }) {
         ref={bioRef}
       ></Bio>
       <br />
-      { canEdit &&
+      {canEdit &&
         (isReadOnly ? (
           <Button
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
             }}
-            style = {{color:"black"}}
+            style={{ color: 'black' }}
           >
             Edit
           </Button>
@@ -68,7 +68,7 @@ export default function BioBox({ data, canEdit, name }) {
               setIsReadOnly(true);
               sendText();
             }}
-            style = {{color:"black"}}
+            style={{ color: 'black' }}
           >
             Save
           </Button>
