@@ -103,7 +103,7 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             id: '5' as string, // id: position.id as string,
           })
             .then((res) => {
-              handleOpenConfirmationModal(); 
+              handleOpenConfirmationModal();
               setSubmitting(false);
             })
             .catch((error) => {
@@ -138,8 +138,8 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                 <atoms.Box flexDirection="column">
                   <atoms.Layer hasRainbow>
                     <atoms.Typography type="h2" textAlign="center">
-                      Volunteer Application for <strong>{'title'}</strong>{' '}
-                      {/*position.title */}
+                      Volunteer Application for{' '}
+                      <strong>{position.title}</strong> {/*position.title */}
                     </atoms.Typography>
                   </atoms.Layer>
                 </atoms.Box>
