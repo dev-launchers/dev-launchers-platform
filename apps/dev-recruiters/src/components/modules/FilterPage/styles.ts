@@ -37,3 +37,21 @@ export const BtnSignUp = styled.button`
   background-color: ${({ theme }) => theme?.colors?.BLUE_700};
   text-decoration: none;
 `;
+
+export const SearchResult = styled.div`
+  width: 100%;
+  height: 172px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.63);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 44px;
+  font-family: Abel;
+  font-weight: 400;
+  word-wrap: break-word;
+
+  color: white;
+`;

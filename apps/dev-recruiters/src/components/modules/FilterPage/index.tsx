@@ -11,6 +11,7 @@ import {
   FooterFirstText,
   FooterSecondText,
   BtnSignUp,
+  SearchResult,
 } from './styles';
 
 export interface FilteringComponentProps {
@@ -32,7 +33,8 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
   return (
     <Wrapper>
       <BoxContainer>
-        <HeaderJoinPage />
+        {/* <HeaderJoinPage /> */}
+        <SearchResult>Search Results</SearchResult>
       </BoxContainer>
       <BoxContainer paddingVertical={10} paddingHorizontal={20}>
         <FilterComponent projects={projects} opportunities={opportunities} />
