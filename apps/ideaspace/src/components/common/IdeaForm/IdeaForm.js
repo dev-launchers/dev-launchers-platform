@@ -8,7 +8,6 @@ import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
-import { WidthFull } from '@mui/icons-material';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 
