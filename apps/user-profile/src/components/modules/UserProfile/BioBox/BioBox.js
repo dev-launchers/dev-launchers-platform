@@ -9,7 +9,7 @@ import { Name } from "../ProfileCard/StyledProfileCard";
 import { Typography } from "@devlaunchers/components/components/atoms";
 import Button from '@devlaunchers/components/components/atoms/Button/Button';
 
-export default function BioBox({ data, canEdit, name }) {
+export default function BioBox({ data, canEdit, name, edit }) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const bioRef = useRef(null);
@@ -32,6 +32,7 @@ export default function BioBox({ data, canEdit, name }) {
         // TODO handle errors
       });
   };
+
   return (
     <Wrapper>
       <br />
@@ -50,6 +51,7 @@ export default function BioBox({ data, canEdit, name }) {
         readOnly={isReadOnly}
         ref={bioRef}
       ></Bio>
+      {edit()}
       <br />
       { canEdit &&
         (isReadOnly ? (
@@ -57,6 +59,7 @@ export default function BioBox({ data, canEdit, name }) {
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
+              // edit();
             }}
             style = {{color:"black"}}
           >

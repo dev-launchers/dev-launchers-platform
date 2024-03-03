@@ -27,7 +27,7 @@ import { useUserDataContext } from '../../../context/UserDataContext';
  * @param {*} { publicUserData, isPublic } 
  * @return {*}  
  */
-export default function UserProfile({ publicUserData, isPublic }) {
+export default function UserProfile({ publicUserData, isPublic, edit }) {
 
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
@@ -152,6 +152,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
       ideas={ideas}
       people={people}
       interests={interests}
+      edit={edit}
     />;
 }
 
@@ -164,7 +165,8 @@ export function UserProfileView({
   myProjects,
   ideas,
   people,
-  interests
+  interests,
+  edit
 }) {
 
   return (
@@ -182,10 +184,10 @@ export function UserProfileView({
             name={isPublic ? publicUserData?.profile?.displayName : userData.name}
             data={isPublic ? publicUserData?.profile : userData}
             canEdit={!isPublic}
+            edit={edit}
           />
         </UserInfo>
       </UserSection>
-
       <Misc>
         <Tabs defaultFocus={true} defaultIndex={0} style={{ width: "80vw", maxWidth: "1400px", minHeight: "30rem" }}>
           <TabList style={{ width: "100%", fontSize: "2rem", fontWeight: "bold", display: "flex", justifyContent: "center" }}>

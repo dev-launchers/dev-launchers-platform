@@ -18,6 +18,7 @@ export default function ProfileEditModal() {
 
     return (
         <>
+            {/* <button onClick={() => openModal()} style={{backgroundColor:"orange" , borderRadius:"20px", fontSize:"15px", padding:"2px", color:"white"}}>Edit Profile Button</button> */}
             <Modal style={userUnboardingModalStyle} isOpen={modalIsOpen}>
                 <ModalHeader>
                     <img src={rocket} className="rocket-img"></img>

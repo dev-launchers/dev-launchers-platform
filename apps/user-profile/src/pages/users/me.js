@@ -10,7 +10,7 @@ import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
 import SignIn from "../../components/modules/UserProfile/SignIn";
 import PageBody from "../../components/common/PageBody";
 
-
+import ProfileEditModal from "../../../src/components/modules/UserProfile/ProfileEditModal";
 
 /**
  * @drescription This component renders the User Profile Component. 
@@ -40,6 +40,14 @@ export default function UserProfilePage(props) {
     }
   }
 
+  const EditProfileModal = () => {
+    return <ProfileEditModal />;
+  }
+
+  const openEditProfileModal = () => {
+    return EditProfileModal();
+  }
+
   return (
     <>
       <Head>
@@ -50,10 +58,11 @@ export default function UserProfilePage(props) {
         {isAuthenticated ?
           <>
             {openUserOnboardingModal() && <UserOnboardingModal />}
-            <UserProfile isPublic={false} />
+            <UserProfile isPublic={false} edit={()=> openEditProfileModal()}/>
           </> :
           <SignIn />
         }
+        {/* {openEditProfileModal()} */}
       </PageBody>
     </>
   );
