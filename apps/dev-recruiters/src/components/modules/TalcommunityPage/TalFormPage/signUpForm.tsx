@@ -2,10 +2,11 @@ import { atoms, organisms } from '@devlaunchers/components/src/components';
 import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
-// import { NewApplicant } from '@devlaunchers/models/newApplicant';
+import { Checkbox } from '@devlaunchers/components/src/components/Checkbox';
 
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
+import React from 'react';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
@@ -224,11 +225,12 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       onChange={handleSetCheckCheckbox}
                       required
                     />
-                    <atoms.Checkbox
+                    <Checkbox
                       label="I have read and agreed to the terms and conditions"
                       disabled={false}
                       onChange={handleSetCheckCheckbox}
                       required
+                      // className="bg-transparent"
                     />
                     <atoms.Box maxWidth="50%">
                       <atoms.Button

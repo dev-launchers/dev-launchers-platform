@@ -33,6 +33,10 @@ export const RolesContainer = styled.div`
 
 export const SearchResult = styled.div`
   width: 100%;
+  height: 100%;
+  position: relative;
+  background: rgba(0, 0, 0, 0.63);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   font-weight: 700;
