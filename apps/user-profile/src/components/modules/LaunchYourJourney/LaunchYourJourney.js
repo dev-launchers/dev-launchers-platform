@@ -101,7 +101,7 @@ export default function LaunchYourJourney() {
                 <Typography type="pLarge" className="footer-text">Join - Create - Learn - Dream - Support</Typography>
                 <Typography type="pSmall" className="footer-text">Dev Launchers</Typography>
                 <Typography type="pSmall" className="footer-text">Austin, TX</Typography>
-                <Typography type="pSmall" className="footer-text">Terms of Service - Privacy Policy</Typography>
+                <Typography type="pSmall" className="footer-text">Unsubscribe - Terms of Service - Privacy Policy</Typography>
             </Footer>
         </PageContainer>
         
