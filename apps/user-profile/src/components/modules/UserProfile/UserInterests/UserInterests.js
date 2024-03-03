@@ -21,7 +21,7 @@ const UserInterests = ({ interests }) => {
     setUserInterestsUpdateRequestTimeout(
       setTimeout(() => {
         axios.put(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/users/${userData.id}`,
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userData.id}`,
           { interests: userData.interests },
           { withCredentials: true }
         );
