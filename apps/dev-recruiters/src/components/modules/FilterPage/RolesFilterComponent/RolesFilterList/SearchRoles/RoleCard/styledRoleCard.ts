@@ -94,7 +94,7 @@ export const TimeContainer = styled.div`
 `;
 
 export const AboutContainer = styled.div`
-  margin: 2.5rem 1.25rem;
+  margin: 2.5rem .25rem;
 `;
 
 export const ButtonsContainer = styled.button`

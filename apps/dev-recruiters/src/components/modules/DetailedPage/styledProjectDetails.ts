@@ -154,4 +154,9 @@ export const RowContainer = styled.div<{
   justify-content: ${({ justifycontent }) =>
     justifycontent ??
     'space-between'}; /* Distribute items evenly along the row */
+  @media not all and (min-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0px
+  }
 `;

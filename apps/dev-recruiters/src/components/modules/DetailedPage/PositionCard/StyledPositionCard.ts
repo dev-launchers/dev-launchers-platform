@@ -87,9 +87,9 @@ export const DescriptionSection = styled.div<{
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 2.1875rem;
     margin: 0;
   }
 
@@ -130,36 +130,42 @@ export const OpportunityDetailsContainer = styled.div`
 
   & h4 {
     font-style: normal;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 1.1875rem;
   }
 `;
 
 export const TagsSection = styled.div`
-  padding: 0 1rem;
+  padding: 0rem;
   width: auto;
   display: inline-block;
 
   & h4 {
     font-style: normal;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 1.1875rem;
   }
-  @media (max-width: 760px) {
-    display: none;
+  @media not all and (min-width: 640px) {
+    /* display: none; */
+    padding: 0;
   }
 `;
 export const TagsList = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
   text-align: center;
   gap: 6px;
-  padding: 0;
+  padding: 1rem 0;
   margin: 0;
+
+  @media not all and (min-width: 640px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
 `;
 export const TagsListItem = styled.li<{ color: sectionTheme }>`
   padding: 6px 8px 6px 8px;
@@ -191,12 +197,14 @@ export const CommitmentSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   & h4 {
     font-style: normal;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 1.1875rem;
   }
+
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
@@ -216,16 +224,15 @@ export const ExpectationsSection = styled.div<{ Expanded: boolean }>`
   display: ${(props) => (props.Expanded ? 'block' : 'none')};
   margin-right: auto;
   width: auto;
-
   padding: 0 1rem;
+
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    margin: 0;
-    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.1875rem;
+    margin: 0 0 1rem 0;
   }
 
   @media (max-width: 760px) {
@@ -328,18 +335,17 @@ export const ModalDescriptionSection = styled.div<{
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 2.1875rem;
+    padding-bottom: .5rem ;
   }
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
-    font-weight: 400;
-    line-height: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.1875rem;
     max-width: 28rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -347,10 +353,15 @@ export const ModalDescriptionSection = styled.div<{
   }
 
   @media (max-width: 760px) {
-    padding: 0 1rem;
-    display: ${(props) => (props.Mobile ? 'block' : 'none')};
+    padding: 1rem 0;
+    & h3 {
+      font-style: normal;
+      font-weight: 900;
+      font-size: 1.2rem;
+  }
+    display: ${(props) => (props.Mobile ? 'block' : 'inline')};
     & p {
-      padding: 0 1rem;
+      /* padding: 0.5rem 0; */
       font-family: ${(props) => props.theme?.fonts?.normal};
       font-style: normal;
       font-weight: 400;
@@ -365,27 +376,29 @@ export const ModalProjectSection = styled.div`
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 400;
-  max-width: 200px;
+  max-width: 300px;
 
   & h4 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    line-height: 1.1875rem;
   }
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 2.1875rem;
+
   }
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
-    line-height: 1.125rem;
+    font-size: 1rem;
+    line-height: 1.1875rem;
     max-width: 28rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -396,17 +409,18 @@ export const ModalProjectSection = styled.div`
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1.1rem;
+    line-height: 2.1875rem;
   }
 `;
 
 export const BulletListItem = styled.li`
-  font-size: 12px;
+  font-size: 0.875rem;
 `;
 
 export const BulletList = styled.div`
-  padding-right: 0 0 0px 50px;
-  max-width: 200px;
+  padding: 10px 0 0 5px;
+  max-width: 400px;
 `;
 
 export const CloseButton = styled.button`

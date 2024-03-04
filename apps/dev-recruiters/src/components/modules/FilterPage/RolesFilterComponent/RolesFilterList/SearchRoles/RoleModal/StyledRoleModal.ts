@@ -18,7 +18,7 @@ export const ButtonsSection = styled.div<{
   align-items: center;
 
   @media (max-width: 760px) {
-    display: ${(props) => (props.Mobile ? 'flex' : 'none')};
+    display: ${(props) => (props.Mobile ? 'flex' : 'block')};
     margin: auto auto;
     justify-content: space-evenly;
   }
@@ -58,6 +58,9 @@ export const RowContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media not all and (min-width: 640px) {
+    display: grid;
+  }
 `;
 
 export const ModalDescriptionSection = styled.div<{
@@ -132,10 +135,12 @@ export const ModalProjectSection = styled.div`
 
 export const BulletListItem = styled.li`
   font-size: 0.75rem;
+  padding: 0.2rem 0;
+  margin-left: 0.2rem;
 `;
 
 export const BulletList = styled.div`
-  padding-right: 0 0 0 3.125rem;
+  padding: 0 0 0 3.125rem;
   max-width: 12.5rem;
 `;
 
@@ -180,4 +185,11 @@ export const ColorRow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 0 0 0.625rem 0;
+`;
+
+export const Divider = styled.div`
+  width: 50%;
+  margin: 0.5rem 0;
+  height: 0.09375rem;
+  background-color: #5a5a5a;
 `;
