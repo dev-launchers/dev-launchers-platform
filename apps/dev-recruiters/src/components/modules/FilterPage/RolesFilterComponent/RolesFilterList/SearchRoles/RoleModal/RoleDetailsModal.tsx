@@ -15,7 +15,7 @@ import {
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
-import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
+import { ApplyButton, ButtonsSection, CloseButton, Divider } from './StyledRoleModal';
 
 interface Props {
   projectSlug: string;
@@ -59,6 +59,7 @@ function ModalTopSection({ position }: Props) {
         <h3>{position.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
         <h4>Product Platform</h4>
+        <Divider />
         <h6>TIME COMMITMENT</h6>
         <p>{position.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>
