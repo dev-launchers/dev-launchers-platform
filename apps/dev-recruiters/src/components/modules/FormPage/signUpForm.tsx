@@ -1,8 +1,3 @@
-import React, { useEffect, useState } from 'react';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
-import { useRouter } from 'next/router';
-import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
@@ -108,7 +103,7 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             id: '5' as string, // id: position.id as string,
           })
             .then((res) => {
-              handleOpenConfirmationModal(); 
+              handleOpenConfirmationModal();
               setSubmitting(false);
             })
             .catch((error) => {
