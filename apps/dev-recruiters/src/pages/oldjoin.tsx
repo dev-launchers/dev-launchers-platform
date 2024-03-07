@@ -4,15 +4,13 @@ import SignUpForm from '../components/modules/TalcommunityPage/TalFormPage/signU
 import BoxContainer from '../components/common/BoxContainer';
 import React from 'react';
 
-import TalcommunityPage from '../components/modules/TalcommunityPage';
 import { ThankyouPage } from '../components/modules/ThankyouPage';
+import { HeaderTalPage } from '../components/modules/TalcommunityPage/HeaderTalPage';
 
 const IndexPage = () => (
   <>
-    <BoxContainer paddingVertical={0}>
-      <TalcommunityPage></TalcommunityPage>
-    </BoxContainer>
-    <BoxContainer paddingVertical={0}>
+    <BoxContainer>
+      <HeaderTalPage></HeaderTalPage>
       <ThankyouPage></ThankyouPage>
     </BoxContainer>
   </>

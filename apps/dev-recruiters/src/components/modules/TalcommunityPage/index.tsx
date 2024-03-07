@@ -7,7 +7,7 @@ import { HeaderTalPage } from './HeaderTalPage';
 const TalcommunityPage = () => {
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={0}>
+      <BoxContainer paddingVertical={40}>
         <HeaderTalPage />
       </BoxContainer>
     </Wrapper>

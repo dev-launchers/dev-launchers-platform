@@ -138,8 +138,8 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                 <atoms.Box flexDirection="column">
                   <atoms.Layer hasRainbow>
                     <atoms.Typography type="h2" textAlign="center">
-                      Volunteer Application for <strong>{'title'}</strong>{' '}
-                      {/*position.title */}
+                      Volunteer Application for{' '}
+                      <strong>{position.title}</strong> {/*position.title */}
                     </atoms.Typography>
                   </atoms.Layer>
                 </atoms.Box>
@@ -195,7 +195,6 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                     <atoms.Typography type="pSmall">
                       HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
                     </atoms.Typography>
-
                     <atoms.Slider
                       min={5}
                       max={40}

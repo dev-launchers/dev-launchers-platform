@@ -54,6 +54,6 @@ export const SubHeaderContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  background-color: #f0edee;
-  height: 500px;
+  background-color: #f0edee !important;
+  /* height: 500px; */
 `;
