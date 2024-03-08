@@ -1,32 +1,58 @@
 import { Typography } from "@devlaunchers/components/components/atoms";
 import { ModalHeader, ModalBody,userUnboardingModalStyle} from "./StyledProfileEditModal";
 import rocket from "../../../../../../../packages/UI/src/images/logo-monogram.png"
-import {useState} from "react";
+import { useReducer, useContext } from "react";
 import Modal from "react-modal";
 Modal.setAppElement("#__next");
 
+import { editModalReducer } from "../../../../state/reducers/editModalReducer";
+
+// import ProfileEditContext from "../../../../context/ProfileEditContext";
+
 export default function ProfileEditModal() {
-    const [modalIsOpen, setModalIsOpen] = useState(true);
+    const [isOpen, dispatch] = useReducer(editModalReducer, { showProfileEditModal: false });
 
     const openModal = () => {
-        setModalIsOpen(true);
+        dispatch({type: 'SHOW_PROFILE_EDIT_MODAL'});
     }
 
     const closeModal = () => {
-        setModalIsOpen(false);
+        dispatch({type: 'HIDE_PROFILE_EDIT_MODAL'});
     }
 
     return (
         <>
-            {/* <button onClick={() => openModal()} style={{backgroundColor:"orange" , borderRadius:"20px", fontSize:"15px", padding:"2px", color:"white"}}>Edit Profile Button</button> */}
-            <Modal style={userUnboardingModalStyle} isOpen={modalIsOpen}>
+            <button onClick={() => openModal()} style={{backgroundColor:"orange" , borderRadius:"20px", fontSize:"15px", padding:"5px", color:"white"}}>Edit Profile</button>
+            <Modal 
+                style={userUnboardingModalStyle} 
+                isOpen={isOpen.showProfileEditModal}
+            >
                 <ModalHeader>
                     <img src={rocket} className="rocket-img"></img>
                     <Typography type="h4" className="navbar-title">Dev Launchers</Typography>
-                    <button className="close-button" onClick={() => closeModal(false)}>×</button>
+                    <button className="close-button" onClick={() => closeModal()}>×</button>
                 </ModalHeader>
                 <ModalBody/>
             </Modal>
         </>
     )
+
+    // const { isOpen, openModal, closeModal } = useContext( ProfileEditContext )
+
+    // return (
+    //     <>
+    //         <button onClick={() => openModal()} style={{backgroundColor:"orange" , borderRadius:"20px", fontSize:"15px", padding:"2px", color:"white"}}>Edit Profile Button</button>
+    //         <Modal 
+    //             style={userUnboardingModalStyle} 
+    //             isOpen={isOpen.showProfileEditModal}
+    //         >
+    //             <ModalHeader>
+    //                 <img src={rocket} className="rocket-img"></img>
+    //                 <Typography type="h4" className="navbar-title">Dev Launchers</Typography>
+    //                 <button className="close-button" onClick={() => closeModal()}>×</button>
+    //             </ModalHeader>
+    //             <ModalBody/>
+    //         </Modal>
+    //     </>
+    // )
 }
