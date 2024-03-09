@@ -41,11 +41,6 @@ module.exports = withTV({
     },
     fontFamily: filterTokensByType('fontFamilies', tokens),
     spacing: filterTokensByType('spacing', tokens),
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-    },
   },
   variants: {},
   plugins: [require('tailwind-hamburgers')],
