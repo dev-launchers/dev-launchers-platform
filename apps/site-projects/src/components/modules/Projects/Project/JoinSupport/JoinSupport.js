@@ -19,14 +19,17 @@ const JoinSupport = ({ theme, scrollMethods }, ref) => (
           all learning while building.
         </p>
         <ButtonsContainer>
-          <Button
-            style={{ cursor: "pointer" }}
-            onClick={scrollMethods.scrollToRoles}
-          >
-            <i className="fas fa-info"></i> Join Now
-          </Button>
-          <Link href="../support-us" replace passHref>
-            <Button bgColor={theme?.colors?.ACCENT_2}>
+          <Link href="../join" passHref>
+            <Button
+              style={{ cursor: "pointer" }}
+            >
+              <i className="fas fa-info"></i> Join Now
+            </Button>
+          </Link>
+
+          <Link href="../support-us" passHref>
+
+            <Button bgColor={theme?.colors?.YELLOW}>
               <i className="fas fa-coins"></i> Donate
             </Button>
           </Link>
