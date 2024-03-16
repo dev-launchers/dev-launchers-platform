@@ -5,12 +5,12 @@ import { useReducer, useContext } from "react";
 import Modal from "react-modal";
 Modal.setAppElement("#__next");
 
-import { editModalReducer } from "../../../../state/reducers/editModalReducer";
+import { editModalReducer, editModalState } from "../../../../state/reducers/editModalReducer";
 
-// import ProfileEditContext from "../../../../context/ProfileEditContext";
+// import { UserProfileDataContext } from "../../../../context/UserProfileDataContext";
 
 export default function ProfileEditModal() {
-    const [isOpen, dispatch] = useReducer(editModalReducer, { showProfileEditModal: false });
+    const [isOpen, dispatch] = useReducer(editModalReducer, editModalState);
 
     const openModal = () => {
         dispatch({type: 'SHOW_PROFILE_EDIT_MODAL'});
@@ -37,14 +37,24 @@ export default function ProfileEditModal() {
         </>
     )
 
-    // const { isOpen, openModal, closeModal } = useContext( ProfileEditContext )
+    // const { editModalIsOpen, dispatch } = useContext(UserProfileDataContext)
+
+    // const openModal = () => {
+    //     dispatch({type: 'SHOW_PROFILE_EDIT_MODAL'});
+    // }
+
+    // const closeModal = () => {
+    //     dispatch({type: 'HIDE_PROFILE_EDIT_MODAL'});
+    // }
 
     // return (
     //     <>
     //         <button onClick={() => openModal()} style={{backgroundColor:"orange" , borderRadius:"20px", fontSize:"15px", padding:"2px", color:"white"}}>Edit Profile Button</button>
     //         <Modal 
     //             style={userUnboardingModalStyle} 
-    //             isOpen={isOpen.showProfileEditModal}
+    //             isOpen={editModalIsOpen}
+    //             onRequestOpen={openModal}
+    //             onRequestClose={closeModal}
     //         >
     //             <ModalHeader>
     //                 <img src={rocket} className="rocket-img"></img>

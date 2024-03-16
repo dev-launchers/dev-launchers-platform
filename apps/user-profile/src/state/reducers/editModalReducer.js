@@ -1,4 +1,8 @@
-export const editModalReducer = (state, action) => {
+const editModalState = {
+    showProfileEditModal: false
+}
+
+const editModalReducer = (state, action) => {
     switch (action.type) {
         case 'SHOW_PROFILE_EDIT_MODAL': {
             return {
@@ -14,4 +18,9 @@ export const editModalReducer = (state, action) => {
             return state;
         }
     }
+}
+
+export {
+    editModalReducer,
+    editModalState
 }
