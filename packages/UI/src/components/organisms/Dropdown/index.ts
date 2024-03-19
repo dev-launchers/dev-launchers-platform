@@ -1,5 +1,8 @@
 export { default } from './Dropdown';
 
+/**
+ * @deprecated please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from @devlaunchers/components/src/components/DropdownMenu
+ */
 export interface DropdownProps {
   width?: 'sm' | 'md' | 'lg';
   options?: {

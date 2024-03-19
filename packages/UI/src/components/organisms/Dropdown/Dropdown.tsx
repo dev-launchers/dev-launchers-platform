@@ -14,6 +14,9 @@ import {
 } from './StyledDropdown';
 import type { DropdownProps } from '.';
 
+/**
+ * @deprecated please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from @devlaunchers/components/src/components/DropdownMenu
+ */
 const Dropdown = ({
   width,
   title,
