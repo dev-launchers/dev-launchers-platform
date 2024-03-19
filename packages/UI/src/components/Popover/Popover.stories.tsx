@@ -1,7 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import {Popover,  PopoverContent,
-    PopoverTrigger,} from './Popover';
+import Button from '../atoms/Button';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverClose,
+} from './Popover';
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
@@ -16,8 +20,54 @@ type Story = StoryObj<typeof Popover>;
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  render: () => <Popover>
-  <PopoverTrigger>Open</PopoverTrigger>
-  <PopoverContent>Place content for the popover here.</PopoverContent>
-</Popover>,
+  render: () => (
+    <Popover>
+      <PopoverTrigger>
+        <Button buttonType="primary" buttonSize="standard">
+          Open
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent hasCloseBtn={false}>
+        {' '}
+        Click outside of the popover to close
+      </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const WithClose: Story = {
+  render: () => (
+    <Popover>
+      <PopoverTrigger>
+        <Button buttonType="primary" buttonSize="standard">
+          Open
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-96"> Click X to close </PopoverContent>
+    </Popover>
+  ),
+};
+
+export const UsingPopoverClose: Story = {
+  render: () => (
+    <Popover>
+      <PopoverTrigger>
+        <Button buttonType="primary" buttonSize="standard">
+          Open
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent
+        hasCloseBtn={false}
+        className="flex w-96 items-center justify-between"
+      >
+        <p>Click button to close</p>
+        <PopoverClose>
+          <Button buttonType="primary" buttonSize="standard">
+            {' '}
+            Close{' '}
+          </Button>
+        </PopoverClose>
+      </PopoverContent>
+    </Popover>
+  ),
 };
