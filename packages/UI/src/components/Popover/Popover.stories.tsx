@@ -22,7 +22,7 @@ type Story = StoryObj<typeof Popover>;
 export const Primary: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button buttonType="primary" buttonSize="standard">
           Open
         </Button>
@@ -38,7 +38,7 @@ export const Primary: Story = {
 export const WithClose: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button buttonType="primary" buttonSize="standard">
           Open
         </Button>
@@ -51,7 +51,7 @@ export const WithClose: Story = {
 export const UsingPopoverClose: Story = {
   render: () => (
     <Popover>
-      <PopoverTrigger>
+      <PopoverTrigger asChild>
         <Button buttonType="primary" buttonSize="standard">
           Open
         </Button>

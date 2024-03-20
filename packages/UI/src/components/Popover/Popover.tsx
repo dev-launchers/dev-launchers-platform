@@ -3,10 +3,8 @@ import * as PopoverPrimitive from '@radix-ui/react-popover';
 import { X } from 'lucide-react';
 import * as React from 'react';
 import { cn } from '../../utils/classesMerger';
-import { VariantProps } from 'tailwind-variants';
 
 /**
- * Popover component. HasCloseBtn will automatically add a button, if developers need another way to close the popover, you can use PopoverClose
  * @see http://localhost:6006/?path=/docs/components-popover--docs
  */
 
@@ -21,7 +19,6 @@ const PopoverContent = React.forwardRef<
     /**
      * Boolean when set to false will remove the close button in the top right corner of the dialog.
      */
-
     hasCloseBtn?: boolean;
   }
 >(
@@ -55,7 +52,8 @@ const PopoverContent = React.forwardRef<
         )}
       </PopoverPrimitive.Content>
     </PopoverPrimitive.Portal>
-));
+  )
+);
 PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
 export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverClose };
