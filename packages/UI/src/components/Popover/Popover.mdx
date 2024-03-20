@@ -1,0 +1,38 @@
+import {
+  Meta,
+  Controls,
+  Stories,
+  Description,
+  Primary,
+} from '@storybook/blocks';
+import * as PopoverStories from './Popover.stories.tsx';
+import Popover from './Popover.tsx';
+
+# Popover
+
+Popover component. HasCloseBtn will automatically add a button, if developers need another way to close the popover, you can use PopoverClose. Everything needs to be wrapped in the `Popover` component.
+
+## PopoverTrigger
+
+PopoverTrigger is a wrapper component that will be displayed and when clicked it will open the PopoverContent.
+PopoverTrigger is an button component, if you want to use your own button make sure you are passing `asChild` prop.
+
+## PopoverContent
+
+PopoverContent is a wrapper that will hide the content until the PopoverTrigger is clicked on.
+
+## Close buttons.
+
+### Built in close button.
+
+If you want too have automatically add a close X button, pass the prop hasCloseBtn = true.
+
+### Adding a dynamic close button.
+
+If you want to a custom close button, use PopoverClose as a wrapper for the component you want to close the popover.
+
+<Meta of={PopoverStories} />
+
+<Description of={PopoverStories} />
+
+<Stories />
