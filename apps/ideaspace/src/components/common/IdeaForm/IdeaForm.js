@@ -9,8 +9,6 @@ import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox'
 
-
-
 const IdeaForm = ({
 	initialValues,
 	SignupSchema,
