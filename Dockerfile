@@ -61,6 +61,9 @@ ENV PRISMA_CLI_BINARY_TARGETS=linux-musl
 # Does not play well with buildkit on CI
 # https://github.com/moby/buildkit/issues/1673
 
+# Make sure the env is set to be CI
+ENV CI=true
+
 RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
     YARN_CACHE_FOLDER=/root/.yarn3-cache \
     yarn install --immutable --inline-builds
@@ -74,6 +77,8 @@ FROM node:14.19.3-bullseye AS builder
 ARG NODE_ENV=production
 ENV NEXTJS_IGNORE_ESLINT=1
 ENV NEXTJS_IGNORE_TYPECHECK=0
+# Make sure the env is set to be CI
+ENV CI=true
 
 WORKDIR /app
 
