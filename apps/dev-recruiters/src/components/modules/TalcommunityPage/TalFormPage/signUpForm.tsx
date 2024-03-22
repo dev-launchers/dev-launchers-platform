@@ -2,7 +2,7 @@ import { atoms, organisms } from '@devlaunchers/components/src/components';
 import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
-import { Checkbox } from '@devlaunchers/components/src/components/Checkbox';
+// import { Checkbox } from '@devlaunchers/components/src/components/Checkbox';
 
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
@@ -157,7 +157,7 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       onChange={handleSetCheckCheckbox}
                       required
                     />
-                    <Checkbox
+                    <atoms.Checkbox
                       label="I have read and agreed to the terms and conditions"
                       disabled={false}
                       onChange={handleSetCheckCheckbox}
