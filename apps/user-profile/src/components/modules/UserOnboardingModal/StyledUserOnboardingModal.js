@@ -4,7 +4,7 @@ export const ModalContainer = styled.div`
   
 `;
 
-// Modal set up
+
 export const userUnboardingModalStyle = {
   content: {
     position: "absolute",

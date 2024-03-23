@@ -1,6 +1,6 @@
 
 import { onboardingActions } from './../actions';
-import { featureFlags } from './../../utils/featureFlags';
+
 
 export const initialOnboardingState = {
     
@@ -72,14 +72,14 @@ export const onboardingReducer = (state, action) => {
 
             return {
                 ...state,
-                showIntroductionModal: true,
+                showIntroductionModal: false,
                 showPlatformOnboardingModal: true
             }
         }
         case onboardingActions.SHOW_INTRODUCTION_MODAL: {
             return {
                 ...state,
-                showPlatformOnboardingModal: true,
+                showPlatformOnboardingModal: false,
                 showIntroductionModal: true
             }
             
@@ -96,7 +96,7 @@ export const onboardingReducer = (state, action) => {
                 showIntroductionModal: false
             }
         }
-        case onboardingActions.HIDE_ALL_MODALS: {
+        case onboardingActions.HIDE_ALL_ONBOARDING_MODALS: {
             return {
                 ...state,
                 showIntroductionModal: false,

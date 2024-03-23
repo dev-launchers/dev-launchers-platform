@@ -24,12 +24,10 @@ export default function UserProfilePage(props) {
 
 
   useEffect(() => {
-    console.log('onboardingdata', onboardingData)
     // if (featureFlags.inDevelopment) {
     //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
     // }
 
-    console.log("THIS SHOULD PRINT!");
   }, []);
 
   /**
@@ -37,7 +35,6 @@ export default function UserProfilePage(props) {
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    console.log("FLAGS",featureFlags);
     return true;//featureFlags.inDevelopment ? true : userData.hasOnboarded !== true;
   }
 
@@ -50,11 +47,14 @@ export default function UserProfilePage(props) {
       <PageBody>
         {isAuthenticated ?
           <>
-            {openUserOnboardingModal() && <UserOnboardingModal modalsToShow={{
+            {openUserOnboardingModal() && 
+            (onboardingData?.showIntroductionModal || onboardingData?.showPlatformOnboardingModal) 
+            && <UserOnboardingModal modalsToShow={{
               showIntroductionModal: onboardingData?.showIntroductionModal,
               showPlatformOnboardingModal: onboardingData?.showPlatformOnboardingModal,
               }}/> }
-            {openUserOnboardingModal() && onboardingData.showCloseModal && <UserOnboardingModal modalsToShow={{
+            {openUserOnboardingModal() && onboardingData.showCloseModal 
+            && <UserOnboardingModal modalsToShow={{
               showCloseModal: onboardingData?.showCloseModal
             }}/> }
             <UserProfile isPublic={false} />
