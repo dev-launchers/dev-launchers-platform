@@ -3,6 +3,7 @@ const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
   '@devlaunchers/ideaspace',
+  '@devlaunchers/user-profile',
   '@devlaunchers/site-projects',
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',

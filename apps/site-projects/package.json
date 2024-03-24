@@ -53,10 +53,7 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "semantic-release": "^19.0.3",
     "typescript": "^4.7.4",
     "webp-loader": "0.6.0",
     "webpack": "^5.74.0"
@@ -83,27 +80,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "resolutions": {
     "styled-components": "^5"
-  },
-  "release": {
-    "branches": [
-      "release"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      "@semantic-release/github"
-    ]
   }
 }
