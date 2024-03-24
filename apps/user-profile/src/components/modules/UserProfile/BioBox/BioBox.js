@@ -11,7 +11,7 @@ import Button from '@devlaunchers/components/components/atoms/Button/Button';
 
 import ProfileEditModal from "../../UserProfile/ProfileEditModal";
 
-// import { UserProfileDataContex } from "../../../../context/UserProfileDataContext";
+import { UserProfileDataContext } from "../../../../context/UserProfileDataContext";
 
 export default function BioBox({ data, canEdit, name}) {
   const [bioText, setBioText] = useState(data.bio);
@@ -40,11 +40,8 @@ export default function BioBox({ data, canEdit, name}) {
   const EditProfileModal = () => {
     return <ProfileEditModal />;
   }
-
-  // const { dispatch } = useContext( UserProfileDataContex )
-  // const openModal = () => {
-  //       dispatch({type: 'SHOW_PROFILE_EDIT_MODAL'});
-  //   }
+  
+  const { editModalIsOpen, openModal, closeModal } = useContext(UserProfileDataContext);
 
   return (
     <Wrapper>
@@ -71,7 +68,7 @@ export default function BioBox({ data, canEdit, name}) {
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
-              // openModal();
+              openModal();
             }}
             style = {{color:"black"}}
           >
