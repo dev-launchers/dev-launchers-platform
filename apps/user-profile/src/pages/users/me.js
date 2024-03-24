@@ -10,7 +10,7 @@ import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
 import SignIn from "../../components/modules/UserProfile/SignIn";
 import PageBody from "../../components/common/PageBody";
 
-import ProfileEditModal from "../../../src/components/modules/UserProfile/ProfileEditModal";
+// import { UserProfileDataProvider } from '../../context/UserProfileDataContext';
 
 /**
  * @drescription This component renders the User Profile Component. 
@@ -40,30 +40,31 @@ export default function UserProfilePage(props) {
     }
   }
 
-  const EditProfileModal = () => {
-    return <ProfileEditModal />;
-  }
-
-  const openEditProfileModal = () => {
-    return EditProfileModal();
-  }
-
   return (
     <>
-      <Head>
-        <title>User Profile</title>
-      </Head>
+      {/* <UserProfileDataProvider> */}
+        <Head>
+          <title>User Profile</title>
+        </Head>
 
-      <PageBody>
-        {isAuthenticated ?
-          <>
-            {openUserOnboardingModal() && <UserOnboardingModal />}
-            <UserProfile isPublic={false} edit={()=> openEditProfileModal()}/>
-          </> :
-          <SignIn />
-        }
-        {/* {openEditProfileModal()} */}
-      </PageBody>
+        
+        <PageBody>
+          {/* {isAuthenticated ?
+            <>
+              {openUserOnboardingModal() && <UserOnboardingModal />}
+              <UserProfile isPublic={false}/>
+            </> :
+            <SignIn />
+          } */}
+          {isAuthenticated ?
+            <>
+              {openUserOnboardingModal() && <UserOnboardingModal />}
+              <UserProfile isPublic={false}/>
+            </> :
+            <SignIn />
+          }
+        </PageBody>
+      {/* </UserProfileDataProvider> */}
     </>
   );
 }

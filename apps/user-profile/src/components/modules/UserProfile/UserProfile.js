@@ -27,7 +27,7 @@ import { useUserDataContext } from '../../../context/UserDataContext';
  * @param {*} { publicUserData, isPublic } 
  * @return {*}  
  */
-export default function UserProfile({ publicUserData, isPublic, edit }) {
+export default function UserProfile({ publicUserData, isPublic}) {
 
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);
@@ -152,7 +152,6 @@ export default function UserProfile({ publicUserData, isPublic, edit }) {
       ideas={ideas}
       people={people}
       interests={interests}
-      edit={edit}
     />;
 }
 
@@ -166,7 +165,6 @@ export function UserProfileView({
   ideas,
   people,
   interests,
-  edit
 }) {
 
   return (
@@ -184,7 +182,6 @@ export function UserProfileView({
             name={isPublic ? publicUserData?.profile?.displayName : userData.name}
             data={isPublic ? publicUserData?.profile : userData}
             canEdit={!isPublic}
-            edit={edit}
           />
         </UserInfo>
       </UserSection>
