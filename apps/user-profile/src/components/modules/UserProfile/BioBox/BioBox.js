@@ -37,11 +37,11 @@ export default function BioBox({ data, canEdit, name}) {
       });
   };
 
-  const EditProfileModal = () => {
-    return <ProfileEditModal />;
-  }
-
-  const { openModal } = useContext(UserProfileDataContext);
+  // * The functionality for opening the ProfileEditModal will be added later
+  // const EditProfileModal = () => {
+  //   return <ProfileEditModal />;
+  // }
+  // const { openModal } = useContext(UserProfileDataContext);
 
   return (
     <Wrapper>
@@ -68,7 +68,7 @@ export default function BioBox({ data, canEdit, name}) {
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
-              openModal();
+              // openModal();
             }}
             style = {{color:"black"}}
           >
@@ -86,7 +86,7 @@ export default function BioBox({ data, canEdit, name}) {
           </Button>
         ))}
         <br />
-        {EditProfileModal()}
+        {/* {EditProfileModal()} */}
     </Wrapper>
   );
 }
