@@ -1,1 +1,1 @@
-export { default } from "./ProfileEditModal";
+export { default } from "./EditProfileModal";

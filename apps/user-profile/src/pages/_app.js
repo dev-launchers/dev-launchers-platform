@@ -22,7 +22,7 @@ const hashRedirect = (router) => {
   }
 };
 
-import { UserProfileDataProvider } from '../context/UserProfileDataContext';
+import { EditProfileDataProvider } from '../context/EditProfileDataContext';
 
 function MyApp(props) {
   const router = useRouter();
@@ -51,7 +51,7 @@ function MyApp(props) {
     <>
       <UserDataProvider>
         <OnboardingDataProvider>
-          <UserProfileDataProvider>
+          <EditProfileDataProvider>
             <ThemeProvider theme={theme}>
               <GlobalStyle />
               <div>
@@ -77,7 +77,7 @@ function MyApp(props) {
                 {/* {props.children} */}
               </div>
             </ThemeProvider>
-          </UserProfileDataProvider>
+          </EditProfileDataProvider>
         </OnboardingDataProvider>
       </UserDataProvider>
     </>
