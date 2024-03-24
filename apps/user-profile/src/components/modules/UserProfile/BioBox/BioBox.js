@@ -40,8 +40,8 @@ export default function BioBox({ data, canEdit, name}) {
   const EditProfileModal = () => {
     return <ProfileEditModal />;
   }
-  
-  const { editModalIsOpen, openModal, closeModal } = useContext(UserProfileDataContext);
+
+  const { openModal } = useContext(UserProfileDataContext);
 
   return (
     <Wrapper>
