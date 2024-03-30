@@ -7,6 +7,9 @@ const config: UserConfig = {
   ssr: {
     noExternal: ['styled-components', '@emotion/*'],
   },
+  resolve: {
+    dedupe: ['styled-components'],
+  },
 };
 
 export default config;
