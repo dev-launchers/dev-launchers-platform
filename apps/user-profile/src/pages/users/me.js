@@ -5,10 +5,12 @@ import { useUserDataContext } from '../../context/UserDataContext';
 import { featureFlags } from './../../utils/featureFlags';
 
 import Head from 'next/head';
-import UserProfile from '../../components/modules/UserProfile';
-import UserOnboardingModal from '../../components/modules/UserOnboardingModal';
-import SignIn from '../../components/modules/UserProfile/SignIn';
-import PageBody from '../../components/common/PageBody';
+import UserProfile from "../../components/modules/UserProfile";
+import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
+import SignIn from "../../components/modules/UserProfile/SignIn";
+import PageBody from "../../components/common/PageBody";
+
+
 
 /**
  * @drescription This component renders the User Profile Component. 
@@ -19,44 +21,38 @@ export default function UserProfilePage(props) {
   const router = useRouter();
 
 
-  // useEffect(() => {
-  //   // if (featureFlags.inDevelopment) {
-  //   //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
-  //   // }
-  // }, []);
+  useEffect(() => {
+    // if (featureFlags.inDevelopment) {
+    //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
+    // }
+
+    console.log("THIS SHOULD PRINT!");
+  }, []);
 
   /**
    * @description Open modal when user is coming from the onbaording page. 
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    if(featureFlags.inDevelopment || featureFlags.inStaging) { 
-      return true;
-    } else {
-      // undo comment line 39, once backend fully integrated.
-      return false //userData.hasOnboarded !== true;
-    }
+    console.log("FLAGS",featureFlags);
+    return true;//featureFlags.inDevelopment ? true : userData.hasOnboarded !== true;
   }
 
   return (
     <>
-      
       <Head>
         <title>User Profile</title>
       </Head>
 
-      
       <PageBody>
-        {isAuthenticated ? (
+        {isAuthenticated ?
           <>
             {openUserOnboardingModal() && <UserOnboardingModal />}
             <UserProfile isPublic={false} />
-          </> 
-        ) : (
+          </> :
           <SignIn />
-        )}
+        }
       </PageBody>
-      
     </>
   );
 }
