@@ -52,7 +52,7 @@ export default function UserProfilePage(props) {
             {openUserOnboardingModal() && <UserOnboardingModal />}
             <UserProfile isPublic={false}/>
           </> 
-        )  :  (
+        ) : (
           <SignIn />
         )}
       </PageBody>
