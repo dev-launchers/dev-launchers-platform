@@ -50,7 +50,7 @@ export default function UserProfilePage(props) {
         {isAuthenticated ? (
           <>
             {openUserOnboardingModal() && <UserOnboardingModal />}
-            <UserProfile isPublic={false}/>
+            <UserProfile isPublic={false} />
           </> 
         ) : (
           <SignIn />
