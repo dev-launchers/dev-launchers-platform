@@ -19,11 +19,11 @@ export default function UserProfilePage(props) {
   const router = useRouter();
 
 
-  useEffect(() => {
-    // if (featureFlags.inDevelopment) {
-    //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
-    // }
-  }, []);
+  // useEffect(() => {
+  //   // if (featureFlags.inDevelopment) {
+  //   //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
+  //   // }
+  // }, []);
 
   /**
    * @description Open modal when user is coming from the onbaording page. 
