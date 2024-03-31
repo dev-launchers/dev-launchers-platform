@@ -47,13 +47,14 @@ export default function UserProfilePage(props) {
 
       
       <PageBody>
-        {isAuthenticated ?
+        {isAuthenticated ? (
           <>
             {openUserOnboardingModal() && <UserOnboardingModal />}
             <UserProfile isPublic={false}/>
-          </> :
+          </> 
+        )  :  (
           <SignIn />
-        }
+        )}
       </PageBody>
       
     </>
