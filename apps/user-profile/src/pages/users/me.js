@@ -5,10 +5,10 @@ import { useUserDataContext } from '../../context/UserDataContext';
 import { featureFlags } from './../../utils/featureFlags';
 
 import Head from 'next/head';
-import UserProfile from "../../components/modules/UserProfile";
-import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
-import SignIn from "../../components/modules/UserProfile/SignIn";
-import PageBody from "../../components/common/PageBody";
+import UserProfile from '../../components/modules/UserProfile';
+import UserOnboardingModal from '../../components/modules/UserOnboardingModal';
+import SignIn from '../../components/modules/UserProfile/SignIn';
+import PageBody from '../../components/common/PageBody';
 
 /**
  * @drescription This component renders the User Profile Component. 
@@ -19,11 +19,11 @@ export default function UserProfilePage(props) {
   const router = useRouter();
 
 
-  // useEffect(() => {
-  //   // if (featureFlags.inDevelopment) {
-  //   //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
-  //   // }
-  // }, []);
+  useEffect(() => {
+    // if (featureFlags.inDevelopment) {
+    //  !userData?.hasAcceptedTermsOfService && router.push('/onboarding');
+    // }
+  }, []);
 
   /**
    * @description Open modal when user is coming from the onbaording page. 

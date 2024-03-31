@@ -27,7 +27,7 @@ import { useUserDataContext } from '../../../context/UserDataContext';
  * @param {*} { publicUserData, isPublic } 
  * @return {*}  
  */
-export default function UserProfile({ publicUserData, isPublic}) {
+export default function UserProfile({ publicUserData, isPublic }) {
 
   const { userData, isAuthenticated } = useUserDataContext();
   const [loading, setLoading] = useState(true);

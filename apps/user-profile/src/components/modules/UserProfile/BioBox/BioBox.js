@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState } from "react";
 
 import { Wrapper, Bio } from "./StyledBioBox";
 
@@ -82,7 +82,7 @@ export default function BioBox({ data, canEdit, name}) {
           </Button>
         ))}
         <br />
-        <EditPforileModal/>
+        {/* <EditPforileModal/> */}
     </Wrapper>
   );
 }
