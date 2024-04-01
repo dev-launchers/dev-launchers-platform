@@ -16,6 +16,7 @@ import Loader from './../../common/Loader';
 import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
 import { env } from '../../../utils/EnvironmentVariables';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import SideBar from './SideBar';
 
 // State management component
 /**
@@ -159,6 +160,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
       ideas={ideas}
       people={people}
       interests={interests}
+      
     />
   );
 }
@@ -174,9 +176,13 @@ export function UserProfileView({
   people,
   interests,
 }) {
-  return (
-    <Wrapper>
-      <UserSection>
+  return (   
+    <div className="flex">
+    <SideBar />
+    <div className="ml-64 p-4">
+      <div className="overflow-y-auto h-screen">
+      <Wrapper>
+     <UserSection>
         <ProfileCard
           img={
             isPublic
@@ -253,5 +259,8 @@ export function UserProfileView({
         </Tabs>
       </Misc>
     </Wrapper>
-  );
+      </div>
+    </div>
+  </div>
+);
 }
