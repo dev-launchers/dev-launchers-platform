@@ -1,0 +1,17 @@
+/* Button.css */
+.button {
+    background-color: #ffffff;
+    color: #69349D;
+    border: 2px solid #69349D;
+    border-radius: 8px;
+    padding: 8px 24px;
+    width: 108px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* Add any other default styles here */
+}
+
+/* Additional classes for variants could be defined here */
