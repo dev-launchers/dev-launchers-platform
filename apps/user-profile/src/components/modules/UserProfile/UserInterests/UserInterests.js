@@ -1,13 +1,13 @@
-import axios from "axios";
-import React from "react";
-import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
+import axios from 'axios';
+import React from 'react';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import {
   UserInterestCard,
   UserInterestsCardContainer,
   UserInterestsContainer,
-} from "./StyledUserInterests";
+} from './StyledUserInterests';
 
-const UserInterests = ({interests}) => {
+const UserInterests = ({ interests }) => {
   const { userData, setUserData } = useUserDataContext();
 
   const [
@@ -40,7 +40,7 @@ const UserInterests = ({interests}) => {
         <div>
           <h2>What are you interested in?</h2>
           <div
-            style={{ color: "white", fontSize: "1.3rem", marginBottom: "2rem" }}
+            style={{ color: 'white', fontSize: '1.3rem', marginBottom: '2rem' }}
           >
             Select some interests to help us match you with the people and
             content that you love!
@@ -48,19 +48,19 @@ const UserInterests = ({interests}) => {
 
           <div
             style={{
-              width: "100%",
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "stretch",
-              justifyContent: "center",
-              flexWrap: "wrap",
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'stretch',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
             }}
           >
             {interests.map((interest) => (
               <UserInterestsCardContainer key={Math.random()}>
                 <UserInterestCard
                   className={
-                    userHasInterest(userData, interest) ? "selected" : ""
+                    userHasInterest(userData, interest) ? 'selected' : ''
                   }
                   onClick={() => {
                     // Add or remove interest from user
@@ -86,7 +86,7 @@ const UserInterests = ({interests}) => {
           </div>
         </div>
       ) : (
-        ""
+        ''
       )}
     </UserInterestsContainer>
   );

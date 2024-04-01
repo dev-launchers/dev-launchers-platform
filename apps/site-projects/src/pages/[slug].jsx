@@ -5,11 +5,9 @@ import agent from "@devlaunchers/utility/agent"
 // const data = require("../components/modules/Projects/data.json");
 
 export const getStaticPaths = async () => {
-  
-  const data = await agent.Projects.list({populate: '*', _publicationState: 'live'});
-
+  const data = await agent.Projects.list({ _publicationState: 'live' });
   const paths = data.map((project) => ({
-    params: { slug: project.attributes?.slug},
+    params: { slug: project.attributes?.slug },
   }));
 
   return {
@@ -20,8 +18,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const [project] = await agent.Projects.list({populate: 'deep', slug});
-
+  const project = await agent.Projects.get(slug, { "populate[heroImage][populate]": '*' });
 
   return {
     props: {
@@ -39,7 +36,7 @@ const ProjectRoute = ({ project }) => {
     heroImageFormats?.small ||
     project?.attributes.heroImage?.attributes?.url;
   return (
- 
+
     <>
       <Head>
         <title>{project?.attributes?.title}</title>

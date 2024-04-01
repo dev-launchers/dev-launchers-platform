@@ -9,7 +9,8 @@
     "@devlaunchers/dev-recruiters": "workspace:^",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
-    "@devlaunchers/user-profile": "*",
+    "@devlaunchers/tailwind": "workspace:*",
+    "@devlaunchers/user-profile": "workspace:*",
     "@devlaunchers/website": "*",
     "@next/env": "^12.2.3",
     "@ramonak/react-progress-bar": "^5.0.2",
@@ -18,7 +19,7 @@
     "autosave": "^1.0.3",
     "axios": "^0.27.2",
     "constate": "^3.3.2",
-    "formik": "2.2.9",
+    "formik": "^2.2.9",
     "luxon": "^3.0.1",
     "next": "^12.2.3",
     "next-compose-plugins": "^2.2.1",
@@ -55,8 +56,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "^12.2.3",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4",
@@ -84,10 +83,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "resolutions": {
     "styled-components": "^5"
   },

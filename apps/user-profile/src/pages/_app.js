@@ -11,9 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import theme from '@devlaunchers/components/styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
 
-import { UserDataProvider } from '../context/UserDataContext';
+import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 
-import { LazyMotion, domAnimation } from "framer-motion";
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { OnboardingDataProvider } from './../context/OnboardingDataContext';
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -29,8 +29,6 @@ function MyApp(props) {
   // Google analytics/Google adwords
   React.useEffect(() => {
     // Google Analytics
-
-    console.log(theme)
     initGA();
     logPageView();
     Router.events.on('routeChangeComplete', () => {

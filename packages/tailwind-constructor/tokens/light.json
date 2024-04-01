@@ -1,0 +1,50 @@
+{
+  "fg": {
+    "default": {
+      "value": "#000000",
+      "type": "color"
+    },
+    "muted": {
+      "value": "#4a5568",
+      "type": "color"
+    },
+    "subtle": {
+      "value": "#a0aec0",
+      "type": "color"
+    }
+  },
+  "bg": {
+    "default": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "muted": {
+      "value": "#f7fafc",
+      "type": "color"
+    },
+    "subtle": {
+      "value": "#edf2f7",
+      "type": "color"
+    }
+  },
+  "accent": {
+    "default": {
+      "value": "#7f9cf5",
+      "type": "color"
+    },
+    "onAccent": {
+      "value": "#ffffff",
+      "type": "color"
+    },
+    "bg": {
+      "value": "#c3dafe",
+      "type": "color"
+    }
+  },
+  "shadows": {
+    "default": {
+      "value": "#1a202c",
+      "type": "color"
+    }
+  }
+}

@@ -152,7 +152,7 @@ export default function OnboardingLandingPage() {
                                 error=""
                                 label="Headline (optional)"
                                 onChange={onHeadLineChange}
-                                placeholder="CSS Developer"
+                                placeholder="I'm an experienced CSS developer"
                             />
                         </FormFields>
                         <FormFooter>

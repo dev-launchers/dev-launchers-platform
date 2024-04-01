@@ -12,9 +12,11 @@ export const BannerContainer = styled.div`
     background-color: #F6F6F6;
     width: 100%;
     height: 150px;
-	padding-top: 5rem;
 	text-align: center;
 	margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 export const OnboardingContainer = styled.div`
     width: 578px;
