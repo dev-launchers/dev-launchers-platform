@@ -15,11 +15,18 @@ const PopoverClose = PopoverPrimitive.Close;
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
+  Omit<
+    React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>,
+    'align'
+  > & {
     /**
      * Boolean when set to false will remove the close button in the top right corner of the dialog.
      */
     hasCloseBtn?: boolean;
+    /**
+     * The side offset of the dialog.
+     */
+    align?: 'center' | 'start' | 'end';
   }
 >(
   (
