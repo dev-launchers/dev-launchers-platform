@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import PositionCard from './PositionCard';
 export default {
-  title: 'Organisms/PositionCard',
+  title: 'Deprecated/Organisms/PositionCard',
   component: PositionCard,
 } as ComponentMeta<typeof PositionCard>;
 
