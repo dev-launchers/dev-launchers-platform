@@ -305,7 +305,7 @@ function ModalBottomSection({
       <RowContainer paddingVertical={20} justifycontent="justfiy-left">
         <ModalProjectSection>
           <div>
-            <h4>WHY SHOULD YOU </h4>
+            <h4>WHY SHOULD YOU JOIN</h4>
             <BulletList>
               <BulletListItem>Mentor and manage a team</BulletListItem>
               <BulletListItem>
