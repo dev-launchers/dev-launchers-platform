@@ -21,7 +21,7 @@ export const ContainerHead = styled.div`
   align-items: center;
   justify-content: center;
   /* padding-right: 7.5rem; */
-  padding: 0 auto ;
+  padding: 0 auto;
 `;
 
 export const ContainerBody = styled.div`

@@ -9,7 +9,7 @@ export const ResultContainer = styled.div`
   justify-content: center; /* Center items horizontally */
   align-items: flex-start; /* Align items at the start vertically */
   @media not all and (min-width: 640px) {
-    padding: .5rem;
+    padding: 0.5rem;
   }
 `;
 

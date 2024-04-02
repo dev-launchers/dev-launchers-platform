@@ -24,7 +24,7 @@ export const FooterFirstText = styled.div`
   font-size: 2.5rem;
   font-family: 'Abel', sans-serif;
   @media not all and (min-width: 640px) {
-   text-align: center;
+    text-align: center;
   }
 `;
 

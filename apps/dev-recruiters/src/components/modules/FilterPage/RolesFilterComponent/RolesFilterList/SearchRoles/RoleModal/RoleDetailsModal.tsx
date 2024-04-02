@@ -15,7 +15,12 @@ import {
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
-import { ApplyButton, ButtonsSection, CloseButton, Divider } from './StyledRoleModal';
+import {
+  ApplyButton,
+  ButtonsSection,
+  CloseButton,
+  Divider,
+} from './StyledRoleModal';
 
 interface Props {
   projectSlug: string;

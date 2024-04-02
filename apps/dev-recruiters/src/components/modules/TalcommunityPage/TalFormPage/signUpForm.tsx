@@ -18,7 +18,6 @@ import { Wrapper } from '../StyledTalcommunityPage';
 // interface FormFields extends Omit<NewApplicant, 'level'> {
 //   level: NewApplicant['level'] | '';
 // }
-
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;

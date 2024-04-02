@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SelectRoleContainer = styled.div`
   width: 23rem;
   height: 17rem;
-  border: .5rem solid #e5e5e5;
+  border: 0.5rem solid #e5e5e5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@ export const SelectRoleContainer = styled.div`
   background-color: white;
   border-radius: 1rem;
   margin: 0 1.25rem;
-  box-shadow: 0 .6rem 1.2rem .6rem #7f7e7f25;
+  box-shadow: 0 0.6rem 1.2rem 0.6rem #7f7e7f25;
   padding: 1.5rem;
   cursor: pointer;
   @media not all and (min-width: 640px) {

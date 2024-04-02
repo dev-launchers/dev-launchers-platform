@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   margin-left: 4.5rem;
   margin-top: 2rem;
   @media not all and (min-width: 640px) {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
   &:before {
     content: '';
@@ -94,7 +94,7 @@ export const TimeContainer = styled.div`
 `;
 
 export const AboutContainer = styled.div`
-  margin: 2.5rem .25rem;
+  margin: 2.5rem 0.25rem;
 `;
 
 export const ButtonsContainer = styled.button`

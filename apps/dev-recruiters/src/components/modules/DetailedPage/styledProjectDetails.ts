@@ -157,6 +157,6 @@ export const RowContainer = styled.div<{
   @media not all and (min-width: 640px) {
     display: flex;
     flex-direction: column;
-    padding-bottom: 0px
+    padding-bottom: 0px;
   }
 `;

@@ -338,7 +338,7 @@ export const ModalDescriptionSection = styled.div<{
     font-weight: 900;
     font-size: 1.6rem;
     line-height: 2.1875rem;
-    padding-bottom: .5rem ;
+    padding-bottom: 0.5rem;
   }
 
   & p {
@@ -353,15 +353,10 @@ export const ModalDescriptionSection = styled.div<{
   }
 
   @media (max-width: 760px) {
-    padding: 1rem 0;
-    & h3 {
-      font-style: normal;
-      font-weight: 900;
-      font-size: 1.2rem;
-  }
-    display: ${(props) => (props.Mobile ? 'block' : 'inline')};
+    padding: 0 1rem;
+    display: ${(props) => (props.Mobile ? 'block' : 'none')};
     & p {
-      /* padding: 0.5rem 0; */
+      padding: 0 1rem;
       font-family: ${(props) => props.theme?.fonts?.normal};
       font-style: normal;
       font-weight: 400;
@@ -391,7 +386,6 @@ export const ModalProjectSection = styled.div`
     font-weight: 900;
     font-size: 1.6rem;
     line-height: 2.1875rem;
-
   }
 
   & p {

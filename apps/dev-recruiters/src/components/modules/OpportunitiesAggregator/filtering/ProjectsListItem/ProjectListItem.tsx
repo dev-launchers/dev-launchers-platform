@@ -16,7 +16,8 @@ import {
   DetailsButton,
   PositionLevel,
 } from './StyleProjectListItem';
-import ReactGA from '@devlaunchers/components/utils/GoogleAnalytics';
+
+//import ReactGA from '@devlaunchers/components/utils/GoogleAnalytics';
 
 interface Props {
   project: ProjectLite;
