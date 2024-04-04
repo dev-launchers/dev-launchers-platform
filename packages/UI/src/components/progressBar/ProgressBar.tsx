@@ -1,24 +1,28 @@
 import * as Progress from '@radix-ui/react-progress';
 import React from 'react';
-import './styles.css';
+import { tv } from 'tailwind-variants';
 
 interface ProgressProps {
+  startColor?: string;
+  endColor?: string;
   backgroundColor?: string;
   width?: string;
   height?: string;
 }
 
 const ProgressBar: React.FC<ProgressProps> = ({
-  backgroundColor = '#394CAC',
-  width = '100%',
-  height = '100%',
+  startColor = '#394CAC',
+  endColor = '#7339AC',
+  backgroundColor = '#F0EDEE',
+  width = '332px',
+  height = '25px',
 }) => {
   const [progress, setProgress] = React.useState(0);
 
   React.useEffect(() => {
     const timer = setInterval(() => {
       setProgress((currentProgress) => {
-        const newProgress = currentProgress + 20;
+        const newProgress = currentProgress + 5;
         if (newProgress >= 100) {
           clearInterval(timer);
           return 100;
@@ -29,29 +33,33 @@ const ProgressBar: React.FC<ProgressProps> = ({
 
     return () => clearInterval(timer);
   }, []);
-
+  const currentColor = progress >= 95 ? endColor : startColor;
   const indicatorStyle = {
-    transform: `translateX(-${100 - progress}%)`,
-    backgroundColor: progress === 100 ? '#7339AC' : backgroundColor,
-    transition: 'transform 660ms cubic-bezier(0.65, 0, 0.35, 1)',
-    width,
-    height,
+    height: '100%',
+    backgroundColor: `${currentColor}`,
+    width: `${progress}%`,
   };
 
+  // const progressClass = progress === 100 ? endColor : startColor;
+
   return (
-    <div>
-      {/* ! The issue is down below */}
-      {/* <Progress.Root className="ProgressRoot" value={progress}>
-      <Progress.Indicator
-        className="ProgressIndicator"
-        style={{ transform: `translateX(-${100 - progress}%)` }}
-      />
+    <>
+      <Progress.Root
+        className="rounded-2xl relative overflow-hidden"
+        style={{
+          width,
+          height,
+          backgroundColor,
+        }}
+        value={progress}
+      >
+        <Progress.Indicator
+          style={indicatorStyle}
+          className="transition-width duration-500 ease-in-out"
+        />
       </Progress.Root>
-  );
-};
- */}
       <p>Progress: {progress}%</p>
-    </div>
+    </>
   );
 };
 
