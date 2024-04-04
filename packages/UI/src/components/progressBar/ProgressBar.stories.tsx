@@ -41,10 +41,6 @@ export const Primary: Story = {
     height: '26px',
   },
   parameters: {
-    design: {
-      type: 'figma',
-      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11653-23398&mode=design&t=pKeXByjq7arsjXYv-0',
-    },
     layout: 'centered',
   },
 };
