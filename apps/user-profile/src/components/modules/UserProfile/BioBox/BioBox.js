@@ -9,7 +9,10 @@ import { Name } from '../ProfileCard/StyledProfileCard';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import Button from '@devlaunchers/components/components/atoms/Button/Button';
 
-export default function BioBox({ data, canEdit, name }) {
+import { EditProfileDataContext } from "../../../../context/EditProfileDataContext";
+import EditPforileModal from "../ProfileEditModal/EditProfileModal";
+
+export default function BioBox({ data, canEdit, name}) {
   const [bioText, setBioText] = useState(data.bio);
   const [isReadOnly, setIsReadOnly] = useState(true);
   const bioRef = useRef(null);
@@ -34,6 +37,10 @@ export default function BioBox({ data, canEdit, name }) {
         // TODO handle errors
       });
   };
+
+  // * The functionality for opening the ProfileEditModal will be added later
+  // const { openModal } = useContext(EditProfileDataContext);
+
   return (
     <Wrapper>
       <br />
@@ -59,6 +66,7 @@ export default function BioBox({ data, canEdit, name }) {
             onClick={() => {
               setIsReadOnly(false);
               bioRef.current.focus();
+              // openModal();
             }}
             style={{ color: 'black' }}
           >
@@ -75,6 +83,8 @@ export default function BioBox({ data, canEdit, name }) {
             Save
           </Button>
         ))}
+        <br />
+        {/* <EditPforileModal/> */}
     </Wrapper>
   );
 }

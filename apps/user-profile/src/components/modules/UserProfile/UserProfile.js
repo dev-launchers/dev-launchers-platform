@@ -206,7 +206,6 @@ export function UserProfileView({
           />
         </UserInfo>
       </UserSection>
-
       <Misc>
         <Tabs
           defaultFocus={true}

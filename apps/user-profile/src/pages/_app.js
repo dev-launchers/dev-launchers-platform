@@ -22,6 +22,8 @@ const hashRedirect = (router) => {
   }
 };
 
+import { EditProfileDataProvider } from '../context/EditProfileDataContext';
+
 function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
@@ -49,31 +51,33 @@ function MyApp(props) {
     <>
       <UserDataProvider>
         <OnboardingDataProvider>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <div>
-              <Head>
-                <script
-                  async
-                  src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-                ></script>
-              </Head>
+          <EditProfileDataProvider>
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              <div>
+                <Head>
+                  <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+                  ></script>
+                </Head>
 
-              <div className="App">
-                <ToastContainer
-                  className="toast-container"
-                  toastClassName="toast"
-                  bodyClassName="toast-body"
-                  progressClassName="toast-progress"
-                />
+                <div className="App">
+                  <ToastContainer
+                    className="toast-container"
+                    toastClassName="toast"
+                    bodyClassName="toast-body"
+                    progressClassName="toast-progress"
+                  />
+                </div>
+                {/* <Component {...pageProps} /> */}
+                <LazyMotion features={domAnimation} strict>
+                  {props.children}
+                </LazyMotion>
+                {/* {props.children} */}
               </div>
-              {/* <Component {...pageProps} /> */}
-              <LazyMotion features={domAnimation} strict>
-                {props.children}
-              </LazyMotion>
-              {/* {props.children} */}
-            </div>
-          </ThemeProvider>
+            </ThemeProvider>
+          </EditProfileDataProvider>
         </OnboardingDataProvider>
       </UserDataProvider>
     </>
