@@ -37,7 +37,7 @@ export default function WorkshoppingPage(props) {
   const [comments, setComments] = useState([]);
 
   const [handleChange, setHandleChange] = useState('');
-  const [handleTextChange, setHandleTextChange] = useState('');
+  
   const { data, loading, hidden, getError } = useFetchIdea(router.query.ideaId, setComments);
 
   const [ArchivedIdea, confirmArchived] = useConfirm(
@@ -52,6 +52,10 @@ export default function WorkshoppingPage(props) {
       window.history.back(-1);
     }
   }, [hidden]);
+
+  function renderNewComment(comment) {
+    setComments([comment, ...comments]);
+  }
 
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
@@ -88,7 +92,7 @@ export default function WorkshoppingPage(props) {
               <h5 style={{textAlign: "left", paddingLeft: "20px"}}>COMMENT FEED: {comments.length}</h5>
 
               <Form>
-                <CommentForm setHandleChange={setHandleChange} data={data} handleChange={handleChange} setHandleTextChange={setHandleTextChange} handleTextChange={handleTextChange} selectedCard={data} comments={comments} setComments={() => setComments(comments)} />
+                <CommentForm selectedCard={data} comments={comments} renderNewComment={renderNewComment} />
               </Form>
 
               <DisplayComments selectedCard={data} comments={comments} />
