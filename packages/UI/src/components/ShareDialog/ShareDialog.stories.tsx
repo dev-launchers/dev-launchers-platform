@@ -19,10 +19,8 @@ type Story = StoryObj<typeof ShareDialog>;
 export const Idea: Story = {
   render: () => (
     <ShareDialog
-      header="Idea"
+      header="Share this Idea"
       url="https://devlaunchers/shareme.org"
-      title="Share my idea"
-      description="this is my idea"
       quote="Share my idea"
       hashtag="idea"
     />
@@ -32,10 +30,8 @@ export const Idea: Story = {
 export const Posistion: Story = {
   render: () => (
     <ShareDialog
-      header="Position"
+      header="Share this Position"
       url="https://devlaunchers/shareme.org"
-      title="Share my posistion"
-      description="This is my posistion"
       quote="Share my posistion"
       hashtag="posistion"
       button={<Share />}
@@ -46,10 +42,8 @@ export const Posistion: Story = {
 export const Product: Story = {
   render: () => (
     <ShareDialog
-      header="Product"
+      header="Share this Product"
       url="https://devlaunchers/shareme.org"
-      title="Share my product"
-      description="This is my Product"
       quote="Share my product"
       hashtag="Product"
     />

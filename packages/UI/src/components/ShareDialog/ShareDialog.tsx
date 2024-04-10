@@ -1,71 +1,30 @@
-import {
-  Twitter,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Link as LinkIcon,
-} from 'lucide-react';
+import { Twitter, Facebook, Linkedin, Link as LinkIcon, X } from 'lucide-react';
 import {
   FacebookShareButton,
   TwitterShareButton,
   LinkedinShareButton,
-  InstapaperShareButton,
 } from 'next-share';
-import { tv } from 'tailwind-variants';
 import Button from '../atoms/Button';
 import {
   Dialog,
+  DialogClose,
   DialogTrigger,
   DialogContent,
   DialogHeader,
   DialogFooter,
   DialogTitle,
 } from './../Dialog';
-
-const ShareDialogStyles = tv(
-  {
-    slots: {
-      dialogHeader:
-        'flex h-6 w-[360px] items-center justify-center font-nunito-sans text-xl uppercase tracking-wider',
-      dialogFooter:
-        'flex w-[320px] flex-col items-center justify-end gap-4 font-nunito-sans',
-      dialogBody: 'flex w-[320px] items-center justify-evenly gap-4',
-      shareBtn: 'flex h-10 w-10 items-center justify-center rounded shadow-lg',
-    },
-    variants: {
-      screenPseudo: {
-        md: {
-          dialogHeader: 'w-[448px]',
-        },
-        lg: {},
-        xl: {},
-      },
-    },
-  },
-  {
-    responsiveVariants: ['md', 'lg', 'xl'],
-  }
-);
-
 export interface ShareDialogProps {
   /*
-   * The header of the dialog. For example, "Idea" or "Project".
+   * The header of the dialog. For example, "Share this Idea" or "Project".
    */
   header: string;
-  /*
-   * The title of the shared content. Defaults to the current page title.
-   */
-  title?: string;
-  /*
-   * The description of the shared content. Defaults to the current page description.
-   */
-  description?: string;
   /*
    * The quote of the shared content. Defaults to the current page description.
    */
   quote?: string;
   /*
-   * The hashtag to share. Defaults to the current page hashtag.
+   * Adding a hashtag to shared content. Facebook #hastags.
    */
   hashtag?: string;
   /*
@@ -77,28 +36,21 @@ export interface ShareDialogProps {
    */
   button?: JSX.Element;
 }
+
 /*
+ * Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
+ * url, title, description, quote, and hashtag are all optional props that can be passed to the ShareDialog component. These optional props will be used to populate the social media share dialog with the provided information.
+ * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
  * https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0
  */
 
 export function ShareDialog({
-  title,
   header,
   url = '',
   quote,
-  description,
   hashtag,
   button,
 }: ShareDialogProps) {
-  const { dialogHeader, dialogFooter, dialogBody, shareBtn } =
-    ShareDialogStyles({
-      screenPseudo: {
-        md: 'md',
-        lg: 'lg',
-        xl: 'xl',
-      },
-    });
-
   const copyToClipboard = () => {
     alert('Link copied to clipboard!');
     navigator.clipboard.writeText(url);
@@ -115,42 +67,39 @@ export function ShareDialog({
           )}
         </DialogTrigger>
 
-        <DialogContent>
-          <DialogHeader>
-            <h3 className={dialogHeader()}>
-              <DialogTitle>Share this {header}</DialogTitle>
+        <DialogContent
+          className="px-8 pb-12 pt-4 shadow-md"
+          hasCloseBtn={false}
+        >
+          <DialogHeader className="mt-8 px-12">
+            <h3 className="flex h-6 w-20 items-center justify-center font-nunito-sans text-xl uppercase tracking-wider md:w-80">
+              <DialogTitle>{header}</DialogTitle>
             </h3>
           </DialogHeader>
-          <div className={dialogBody()}>
+          <DialogClose className="absolute right-6 top-4 flex items-center justify-center rounded-md bg-white drop-shadow-xl md:right-8">
+            <X className="h-6 w-6" />
+          </DialogClose>
+
+          <div className="flex w-80 items-center justify-between gap-4">
             <TwitterShareButton url={url}>
-              <div className={shareBtn()}>
+              <div className="flex h-10 w-10 items-center justify-center rounded shadow-lg">
                 <Twitter className="h-8 w-8" />
               </div>
             </TwitterShareButton>
 
             <FacebookShareButton url={url} quote={quote} hashtag={hashtag}>
-              <div className={shareBtn()}>
+              <div className="flex h-10 w-10 items-center justify-center rounded shadow-lg">
                 <Facebook className="h-8 w-8" />
               </div>
             </FacebookShareButton>
 
-            <InstapaperShareButton
-              title={title}
-              description={description}
-              url={url}
-              className={shareBtn()}
-            >
-              <div className={shareBtn()}>
-                <Instagram className="h-8 w-8" />
-              </div>
-            </InstapaperShareButton>
             <LinkedinShareButton url={url}>
-              <div className={shareBtn()}>
+              <div className="flex h-10 w-10 items-center justify-center rounded shadow-lg">
                 <Linkedin className="h-8 w-8" />
               </div>
             </LinkedinShareButton>
           </div>
-          <DialogFooter className={dialogFooter()}>
+          <DialogFooter className="mt-9 flex w-80 flex-col items-center justify-end gap-4 font-nunito-sans">
             <h3 className="ml-8 w-full uppercase">Share with a link</h3>
             <div className="flex w-full items-center justify-center gap-2 rounded-lg border-2 border-solid border-black px-4 py-2 text-GreyScale-grey">
               <button
