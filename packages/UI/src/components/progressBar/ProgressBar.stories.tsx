@@ -5,7 +5,6 @@ import '@devlaunchers/tailwind/tailwind.css';
 
 const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
-  tags: ['autodocs'],
   argTypes: {
     startColor: {
       control: 'color',
