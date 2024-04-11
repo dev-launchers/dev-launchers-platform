@@ -1,64 +1,52 @@
 import * as Progress from '@radix-ui/react-progress';
 import React from 'react';
-import { tv } from 'tailwind-variants';
 
 interface ProgressProps {
-  startColor?: string;
-  endColor?: string;
-  backgroundColor?: string;
-  width?: string;
-  height?: string;
+  /** The starting color of the progress bar. */
+  startColor: string;
+  /** The color of the progress bar when progress is complete. */
+  endColor: string;
+  /** The background color of the progress bar container. */
+  backgroundColor: string;
+  /** The width of the progress bar. Can be any TailwindCSS valid value. */
+  width: string;
+  /**
+   * The height of the progress bar. Can be any TailwindCSS valid value.
+   */
+  height: string;
+  /**
+   * Progress value passed as a prop
+   */
+  progress: number;
 }
-
+/** Defines the properties for the ProgressBar component */
 const ProgressBar: React.FC<ProgressProps> = ({
-  startColor = '#394CAC',
-  endColor = '#7339AC',
-  backgroundColor = '#F0EDEE',
-  width = '332px',
-  height = '25px',
+  startColor,
+  endColor,
+  backgroundColor,
+  width,
+  height,
+  progress,
 }) => {
-  const [progress, setProgress] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((currentProgress) => {
-        const newProgress = currentProgress + 5;
-        if (newProgress >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
-        return newProgress;
-      });
-    }, 500);
-
-    return () => clearInterval(timer);
-  }, []);
   const currentColor = progress >= 95 ? endColor : startColor;
   const indicatorStyle = {
-    height: '100%',
-    backgroundColor: `${currentColor}`,
     width: `${progress}%`,
   };
-
-  // const progressClass = progress === 100 ? endColor : startColor;
 
   return (
     <>
       <Progress.Root
-        className="rounded-2xl relative overflow-hidden"
-        style={{
-          width,
-          height,
-          backgroundColor,
-        }}
+        aria-labelledby="loadinglabel"
+        className={`relative overflow-hidden rounded-2xl ${backgroundColor} ${width} ${height}`}
         value={progress}
       >
         <Progress.Indicator
           style={indicatorStyle}
-          className="transition-width duration-500 ease-in-out"
+          // eslint-disable-next-line tailwindcss/no-custom-classname
+          className={`transition-width duration-500 ease-in-out ${currentColor} h-full`}
         />
       </Progress.Root>
-      <p>Progress: {progress}%</p>
+      <span>Progress: {progress}%</span>
     </>
   );
 };
