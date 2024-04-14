@@ -7,8 +7,7 @@ import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
-
-
+import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox'
 
 const IdeaForm = ({
 	initialValues,
@@ -22,7 +21,7 @@ const IdeaForm = ({
 	const {	errors } = props;
 	const [disabling, setDisabling] = React.useState(true);
 	const { isMobile } = useResponsive();
-
+	
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
@@ -200,7 +199,7 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
-								<atoms.Checkbox disabled={false} required />
+								<Checkbox disabled={false} required/>
 								<atoms.Typography type='p'>
 									&nbsp;I have read and agree to the Terms and Conditions.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
