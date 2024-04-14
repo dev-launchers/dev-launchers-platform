@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -72,17 +71,13 @@ const IdeaSettingsCard = ({ card }) => {
   };
 
   const clickArchive = async () => {
-    console.log('ARCHIVING');
     setCardStatus(card['status']);
     if (await confirmArchive()) {
-      console.log('doing it...');
       card['status'] = 'archived';
       setArchiveButtonText(`WAIT`);
 
       try {
-        const id = card.id;
-        const cardForPut = cleanIdeaForPost(card);
-        const res = cleanData(await agent.Ideas.put(id, cardForPut));
+        const res = putIdea();
 
         if (res.status === 200) {
           setArchiveButtonText(`ARCHIVE`);
@@ -106,10 +101,7 @@ const IdeaSettingsCard = ({ card }) => {
     setReactiveButtonText(`WAIT`);
 
     try {
-      const res = await axios.put(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${card.id}`,
-        card
-      );
+      const res = putIdea();
 
       if (res.status === 200) {
         setReactiveButtonText(`REACTIVE`);
@@ -129,10 +121,8 @@ const IdeaSettingsCard = ({ card }) => {
       setDeleteButtonText(`WAIT`);
 
       try {
-        const res = await axios.put(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${card.id}`,
-          card
-        );
+        const res = putIdea();
+
         if (res.status === 200) {
           setDeleteButtonText(`DELETE`);
           if (await confirmDeleteSuccess()) {
@@ -147,6 +137,12 @@ const IdeaSettingsCard = ({ card }) => {
         setDeleteButtonText(`DELETE`);
       }
     }
+  };
+
+  const putIdea = async () => {
+    const id = card.id;
+    const cardForPut = cleanIdeaForPost(card);
+    return cleanData(await agent.Ideas.put(id, cardForPut));
   };
 
   if (card.author?.id !== userData.id) {
