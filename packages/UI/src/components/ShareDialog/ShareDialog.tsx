@@ -5,6 +5,7 @@ import {
   LinkedinShareButton,
 } from 'next-share';
 import Button from '../atoms/Button';
+import Typography from './../atoms/Typography';
 import {
   Dialog,
   DialogClose,
@@ -14,6 +15,7 @@ import {
   DialogFooter,
   DialogTitle,
 } from './../Dialog';
+
 export interface ShareDialogProps {
   /*
    * The header of the dialog. For example, "Share this Idea" or "Project".
@@ -72,15 +74,15 @@ export function ShareDialog({
           hasCloseBtn={false}
         >
           <DialogHeader className="mt-8 px-12">
-            <h3 className="flex h-6 w-20 items-center justify-center font-nunito-sans text-xl uppercase tracking-wider md:w-80">
+            <Typography type="h3">
               <DialogTitle>{header}</DialogTitle>
-            </h3>
+            </Typography>
           </DialogHeader>
           <DialogClose className="absolute right-6 top-4 flex items-center justify-center rounded-md bg-white drop-shadow-xl md:right-8">
             <X className="h-6 w-6" />
           </DialogClose>
 
-          <div className="flex w-80 items-center justify-between gap-4">
+          <div className="flex w-80 items-center justify-center gap-4">
             <TwitterShareButton url={url}>
               <div className="flex h-10 w-10 items-center justify-center rounded shadow-lg">
                 <Twitter className="h-8 w-8" />
