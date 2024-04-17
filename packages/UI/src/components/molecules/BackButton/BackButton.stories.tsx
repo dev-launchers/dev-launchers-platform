@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import BackButton from './BackButton';
 export default {
-  title: 'Molecules/BackButton',
+  title: 'Deprecated/Molecules/BackButton',
   component: BackButton,
 } as ComponentMeta<typeof BackButton>;
 

@@ -3,7 +3,7 @@ import * as React from 'react';
 import Typography from './Typography';
 
 export default {
-  title: 'Atoms/Typography',
+  title: 'Deprecated/Atoms/Typography',
   component: Typography,
 } as ComponentMeta<typeof Typography>;
 
