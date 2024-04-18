@@ -6,20 +6,11 @@ import '@devlaunchers/tailwind/tailwind.css';
 const meta: Meta<typeof ProgressBar> = {
   component: ProgressBar,
   argTypes: {
-    startColor: {
-      control: 'color',
-    },
-    endColor: {
-      control: 'color',
-    },
-    width: {
-      control: 'text',
-    },
-    height: {
-      control: 'text',
-    },
-    backgroundColor: {
-      control: 'color',
+    theme: {
+      control: {
+        type: 'select',
+        options: 'light',
+      },
     },
     progress: { control: 'number' },
   },
@@ -30,11 +21,7 @@ type Story = StoryObj<typeof ProgressBar>;
 
 export const Primary: Story = {
   args: {
-    startColor: 'bg-indigo-700',
-    endColor: 'bg-purple-600',
-    backgroundColor: 'bg-gray-300',
-    width: 'w-80',
-    height: 'h-6',
+    theme: 'light',
     progress: 0,
   },
   decorators: [
