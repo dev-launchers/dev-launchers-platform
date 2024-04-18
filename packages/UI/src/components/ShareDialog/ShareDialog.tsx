@@ -75,7 +75,9 @@ export function ShareDialog({
         >
           <DialogHeader className="mt-8 px-12">
             <Typography type="h3">
-              <DialogTitle>{header}</DialogTitle>
+              <DialogTitle className="text-xl tracking-wider">
+                {header}
+              </DialogTitle>
             </Typography>
           </DialogHeader>
           <DialogClose className="absolute right-6 top-4 flex items-center justify-center rounded-md bg-white drop-shadow-xl md:right-8">
