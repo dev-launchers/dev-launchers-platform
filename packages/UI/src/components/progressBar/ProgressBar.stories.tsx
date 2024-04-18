@@ -8,7 +8,6 @@ const meta: Meta<typeof ProgressBar> = {
   argTypes: {
     theme: {
       control: {
-        type: 'select',
         options: 'light',
       },
     },
