@@ -34,7 +34,12 @@ export const Posistion: Story = {
       url="https://devlaunchers/shareme.org"
       quote="Share my posistion"
       hashtag="posistion"
-      button={<Share />}
+      button={
+        <div className="flex w-fit items-center justify-center gap-2 rounded border-2 border-solid border-black bg-white px-4 py-2 font-nunito-sans shadow-lg hover:cursor-pointer">
+          <Share />
+          Share
+        </div>
+      }
     />
   ),
 };
