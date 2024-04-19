@@ -1,11 +1,18 @@
-import { Twitter, Facebook, Linkedin, Link as LinkIcon, X } from 'lucide-react';
+import {
+  Twitter,
+  Facebook,
+  Linkedin,
+  Link as LinkIcon,
+  X,
+  Share,
+} from 'lucide-react';
 import {
   FacebookShareButton,
   TwitterShareButton,
   LinkedinShareButton,
 } from 'next-share';
-import Button from '../atoms/Button';
-import Typography from './../atoms/Typography';
+import Button from '../../atoms/Button';
+import Typography from '../../atoms/Typography';
 import {
   Dialog,
   DialogClose,
@@ -14,7 +21,7 @@ import {
   DialogHeader,
   DialogFooter,
   DialogTitle,
-} from './../Dialog';
+} from '..';
 
 export interface ShareDialogProps {
   /*
@@ -63,8 +70,12 @@ export function ShareDialog({
       <Dialog>
         <DialogTrigger asChild>
           {button ?? (
-            <Button buttonType="primary" buttonSize="standard">
-              Share
+            <Button
+              buttonType="primary"
+              buttonSize="standard"
+              className="flex items-center justify-center gap-2"
+            >
+              <Share className="h-4 w-4" /> Share
             </Button>
           )}
         </DialogTrigger>
@@ -73,7 +84,7 @@ export function ShareDialog({
           className="px-8 pb-12 pt-4 shadow-md"
           hasCloseBtn={false}
         >
-          <DialogHeader className="mt-8 px-12">
+          <DialogHeader className="mx-0 mt-8 w-96 text-center md:mx-12">
             <Typography type="h3">
               <DialogTitle className="text-xl tracking-wider">
                 {header}

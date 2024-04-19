@@ -6,9 +6,15 @@ import * as ShareDialogStories from './ShareDialog.stories.tsx';
 
 Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
 
-url, quote, and hashtag are all optional props that can be passed to the ShareDialog component. These optional props will be used to populate the social media share dialog with the provided information.
+- Header is a required prop that will be used as the header of the dialog.
 
-button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
+- url is a required prop that will be used as the link to be shared.
+
+- quote is an optional prop that will be used as the quote to be shared.
+
+- hashtag is an optional prop that will be used as the hashtag to be shared on facebook.
+
+- button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
 
 <Meta of={ShareDialogStories} />
 
@@ -21,12 +27,13 @@ import { ShareDialog } from '@devlaunchers/components/src/components/ShareDialog
 
 export default () => (
   <ShareDialog
-    header="Position"
+    header="Share this Idea"
     url="https://devlaunchers/shareme.org"
-    quote="Share my posistion"
+    quote="Share my Idea"
     hashtag="#posistion #share"
   />
 );
 ```
 
 <Stories />
+./ShareDialog.stories.js
