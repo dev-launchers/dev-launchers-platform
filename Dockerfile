@@ -127,6 +127,9 @@ COPY --from=builder /app/apps/site-projects/next.config.js \
 COPY --from=builder /app/apps/dev-recruiters/next.config.js \
                     /app/apps/dev-recruiters/package.json \
                     ./apps/dev-recruiters/
+COPY --from=builder /app/apps/gptbot/next.config.js \
+                    /app/apps/gptbot/package.json \
+                    ./apps/gptbot/
 COPY --from=builder /app/apps/app/public ./apps/app/public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.next ./apps/app/.next
 COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.env.production ./apps/app/.env.production
