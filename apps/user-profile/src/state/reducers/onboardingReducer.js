@@ -1,11 +1,13 @@
 
 import { onboardingActions } from './../actions';
-import { featureFlags } from './../../utils/featureFlags';
+
 
 export const initialOnboardingState = {
+    
     showIntroductionModal: true,
     showPlatformOnboardingModal: false,
-    user: {
+    showCloseModal: false,
+    user: { 
         selectedRole: null,
         selectedExperience: null,
         interest: [
@@ -33,10 +35,13 @@ export const initialOnboardingState = {
     },
 }
 
+
+
 export const onboardingReducer = (state, action) => {
+    
+    
     switch (action.type) {
         case onboardingActions.SET_USERS_INTEREST: {
-            console.log(action);
             return {
                 ...state,
                 user: {
@@ -64,6 +69,7 @@ export const onboardingReducer = (state, action) => {
             }
         }
         case onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL: {
+
             return {
                 ...state,
                 showIntroductionModal: false,
@@ -76,6 +82,7 @@ export const onboardingReducer = (state, action) => {
                 showPlatformOnboardingModal: false,
                 showIntroductionModal: true
             }
+            
         }
         case onboardingActions.HIDE_PLATFORM_ONBOARDING_MODAL: {
             return {
@@ -89,11 +96,24 @@ export const onboardingReducer = (state, action) => {
                 showIntroductionModal: false
             }
         }
-        case onboardingActions.HIDE_ALL_MODALS: {
+        case onboardingActions.HIDE_ALL_ONBOARDING_MODALS: {
             return {
                 ...state,
                 showIntroductionModal: false,
                 showPlatformOnboardingModal: false,
+                showCloseModal: false,
+            }
+        }
+        case onboardingActions.HIDE_CLOSING_MODAL: {
+            return {
+                ...state,
+                showCloseModal: false,
+            }
+        }
+        case onboardingActions.SHOW_CLOSING_MODAL: {
+            return {
+                ...state,
+                showCloseModal: true,
             }
         }
         default: {

@@ -2,7 +2,6 @@ import { IntroductionContainer, Header, Body, Footer } from "./StyledIntroductio
 import { Typography } from "@devlaunchers/components/components/atoms";
 import Button from '@devlaunchers/components/components/atoms/Button';
 import RainbowBar from './../../../common/RainbowBar/RainbowBar';
-
 import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../state/actions';
 
@@ -14,16 +13,23 @@ import { onboardingActions } from './../../../../state/actions';
 export default function IntroductionModal() {
     const { onboardingData, dispatch } = useOnboardingDataContext();
 
+    if (!onboardingData || onboardingData.showIntroductionModal === false) {
+        return null; 
+    }
     const onGetStarted = () => {
+
         dispatch({ type: onboardingActions.SHOW_PLATFORM_ONBOARDING_MODAL });
     }
     const onSetUpLater = () => {
-        dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
+        
+        dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
+       
     }
+    
 
     return (
         <>
-            <IntroductionContainer>
+            <IntroductionContainer >
                 <Header>
                     <Typography type="h3" textAlign="center">
                         Welcome to Dev Launchers
@@ -42,6 +48,7 @@ export default function IntroductionModal() {
                 </Body>
                 <Footer>
                     <Button buttonType="primary" buttonSize="xl" onClick={onGetStarted}>
+                        
                         GET STARTED (TAKES 2-5 MINUTES)
                     </Button>
 
@@ -52,5 +59,5 @@ export default function IntroductionModal() {
             </IntroductionContainer>
         </>
     );
-}
 
+    }

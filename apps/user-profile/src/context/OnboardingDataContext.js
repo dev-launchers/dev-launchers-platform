@@ -1,23 +1,19 @@
-import axios from 'axios';
-import { useState, useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from "react";
 import constate from 'constate';
-// import { useUserDataContext } from './UserDataContext';
-import { onboardingReducer } from './../state/reducers';
+import { useUserDataContext } from './UserDataContext';
+import { onboardingReducer, initialOnboardingState } from './../state/reducers'
+
 
 export const UseOnboardingData = ({ children }) => {
-  const [onboardingData, dispatch] = useReducer(
-    onboardingReducer.onboardingReducer,
-    onboardingReducer.initialOnboardingState
-  );
-  // const { userData } = useUserDataContext();
+    const [onboardingData, dispatch] = useReducer(onboardingReducer.onboardingReducer, onboardingReducer.initialOnboardingState);
+    const { userData } = useUserDataContext();
+ 
+    useEffect(() => {
+       
+    }, []); 
 
-  useEffect(() => {
-    // setOnboardingData to show modal;
-  }, []);
+    return { onboardingData, dispatch };
+}
 
-  return { onboardingData, dispatch };
-};
-
-const [OnboardingDataProvider, useOnboardingDataContext] =
-  constate(UseOnboardingData);
+const [OnboardingDataProvider, useOnboardingDataContext] = constate(UseOnboardingData);
 export { OnboardingDataProvider, useOnboardingDataContext };

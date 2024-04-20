@@ -6,6 +6,10 @@ export const StepperContainer = styled.div`
     display: flex;
     flex-direction: column;
     border-radius: 32px;
+    .close-button {
+        color: white;
+        cursor: pointer;
+    }
 `;
 
 export const StepperHeader = styled.div`
@@ -14,6 +18,7 @@ export const StepperHeader = styled.div`
     background: black;
     max-height: 120px;
     justify-content: center;
+    border: 10px red;
     padding: 40px 108px 54px; 
     .completed-step, .active-step {
         background-color: orange;
@@ -21,7 +26,15 @@ export const StepperHeader = styled.div`
     .uncompleted-step {
         background-color: white;
     }
+
 `;
+
+export const CloseIcon = styled.div` 
+    position: absolute; 
+    top: 20px; right: 20px;
+
+
+    `;
 
 export const StepNumber = styled.div`
     position: relative;

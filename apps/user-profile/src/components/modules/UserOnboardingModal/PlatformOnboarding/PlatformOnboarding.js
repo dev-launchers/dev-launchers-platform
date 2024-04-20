@@ -5,17 +5,15 @@ import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
 import PageSix from './PageSix/PageSix';
-
-// import UserInterestBubble from '../InterestBubble';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
-import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
+import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext.js';
 import { onboardingActions } from './../../../../state/actions';
 
 export default function PlatformOnboarding() {
   const { dispatch } = useOnboardingDataContext();
 
   const hideAllModals = () => {
-    dispatch({ type: onboardingActions.HIDE_ALL_MODALS });
+    dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
   }
 
   // @description 

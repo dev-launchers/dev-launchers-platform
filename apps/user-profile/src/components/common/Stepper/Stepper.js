@@ -4,16 +4,21 @@ import {
   StepperBody,
   StepperFooter,
   ProgressBarContainer,
-  Bar,
+  Bar, 
   StepNumber,
   StepName,
-  StepperContainer
+  StepperContainer,
+  CloseIcon
 } from './StyledStepper';
 import { Button, Typography } from '@devlaunchers/components/components/atoms';
 import chevronLeftImg from './../../../images/btn-chevron-left.svg';
 import chevronRightImg from './../../../images/btn-chevron-right.svg';
+import closeButton from './../../../images/btn-close-button.svg'
 import checkImg from './../../../images/Onboarding/stepper/check.svg';
 import RainbowBar from '../RainbowBar';
+import { useOnboardingDataContext } from '../../../context/OnboardingDataContext.js'
+import * as onboardingActions from '../../../state/actions/onboardingActions';
+
 
 const stepsMockData = [
   {
@@ -77,6 +82,10 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
   const [buttonConfig, setButtonConfig] = useState(stepsData[index].config.buttons);
   const [nextBtnDisability, setNextButtonDisability] = useState(buttonConfig.next.disabled)
   const lastStepIndex = stepsData.length - 1;
+  const { onboardingData, dispatch } = useOnboardingDataContext();
+  
+
+
 
   // TODO finish functionality for this part
   // function initialiseStepMetaData() {
@@ -106,6 +115,10 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
       stepsData[index].config.buttons.next.disabled : false);
   };
 
+  const showClosingModal = () => {
+    dispatch({ type: onboardingActions.SHOW_CLOSING_MODAL });
+  };
+  
   /**
    * Everytime users navigates update the activeComponent & config
    */
@@ -208,9 +221,17 @@ export default function Stepper({ steps = stepsMockData, startIndex = 0 }) {
       <StepperContainer>
         <div>
           <StepperHeader>
+
             <ProgressBarContainer>
+            
               {stepTracker}
             </ProgressBarContainer>
+            <CloseIcon>
+            <div className="close-button"
+             onClick={showClosingModal}>
+                        <img src={closeButton} />
+              </div>
+              </CloseIcon>
           </StepperHeader>
           <RainbowBar />
         </div>

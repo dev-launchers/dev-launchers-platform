@@ -2,16 +2,29 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import PlatformOnboarding from "./PlatformOnboarding/PlatformOnboarding";
 import { ModalContainer, userUnboardingModalStyle } from "./StyledUserOnboardingModal";
-import { useOnboardingDataContext } from './../../../context/OnboardingDataContext';
+import { UseOnboardingData, useOnboardingDataContext } from './../../../context/OnboardingDataContext';
+import { onboardingActions } from './../../../../src/state/actions/onboardingActions';
 import IntroductionModal from "./IntroductionModal/IntroductionModal";
+import CloseModal from "./CloseModal/CloseModal";
+
 Modal.setAppElement("#__next");
 
-/**
- * @description This is custom modal for the user onboarding. 
- */
-export default function UserOnboardingModal() {
-    const { onboardingData: { showIntroductionModal, showPlatformOnboardingModal }, dispatch } = useOnboardingDataContext();
-    const [modalIsOpen, setModalIsOpen] = useState(showIntroductionModal || showPlatformOnboardingModal);
+// /**
+//  * @description This is custom modal for the user onboarding. 
+//  */
+
+export default function UserOnboardingModal({modalsToShow}) {
+    const { onboardingData, dispatch } = useOnboardingDataContext();
+    const tempData = useOnboardingDataContext();
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    useEffect(() => {
+        const showIntro = onboardingData?.showIntroductionModal;
+        const showPlatform = onboardingData?.showPlatformOnboardingModal;
+        const showClose = onboardingData?.showCloseModal;
+        setModalIsOpen(showIntro || showPlatform || showClose);
+    }, []);
+
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -22,10 +35,12 @@ export default function UserOnboardingModal() {
     }
 
     const showModals = () => {
-        if (showIntroductionModal) {
+        if (modalsToShow?.showIntroductionModal) {
             return <IntroductionModal />;
-        } else if (showPlatformOnboardingModal) {
+        } else if (modalsToShow?.showPlatformOnboardingModal) {
             return <PlatformOnboarding />;
+        } else if (modalsToShow?.showCloseModal) {
+            return <CloseModal />
         } else {
             return null;
         }
@@ -33,11 +48,9 @@ export default function UserOnboardingModal() {
     
     return (
         <>
-            {/* "modalIsOpen ? true : false" set this way until we start adding typescript for 
-         boolean type */}
-            <Modal
-                isOpen={showIntroductionModal || showPlatformOnboardingModal}
-                onRequestOpen={openModal}
+            <Modal 
+                isOpen={modalIsOpen}
+                onAfterOpen={openModal} 
                 onRequestClose={closeModal}
                 style={userUnboardingModalStyle}
                 contentLabel="User Onboarding"
