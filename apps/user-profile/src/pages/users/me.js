@@ -5,35 +5,35 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import { featureFlags } from './../../utils/featureFlags';
 
 import Head from 'next/head';
-import UserProfile from "../../components/modules/UserProfile";
-import UserOnboardingModal from "../../components/modules/UserOnboardingModal"
-import SignIn from "../../components/modules/UserProfile/SignIn";
-import PageBody from "../../components/common/PageBody";
-import { UseOnboardingData, useOnboardingDataContext } from '../../context/OnboardingDataContext';
-
-
-
+import UserProfile from '../../components/modules/UserProfile';
+import UserOnboardingModal from '../../components/modules/UserOnboardingModal';
+import SignIn from '../../components/modules/UserProfile/SignIn';
+import PageBody from '../../components/common/PageBody';
+import {
+  UseOnboardingData,
+  useOnboardingDataContext,
+} from '../../context/OnboardingDataContext';
 
 /**
  * @drescription This component renders the User Profile Component.
  * A Modal is opened when user has not fully completed their onboarding.
  */
 export default function UserProfilePage(props) {
-  const { isAuthenticated = false } = useUserDataContext();
+  const { userData, isAuthenticated = false } = useUserDataContext();
   const router = useRouter();
   const { onboardingData, dispatch } = useOnboardingDataContext();
-
-
   /**
    * @description Open modal when user is coming from the onbaording page.
    * More conditions will be applied when modal should be opened in the future.
    */
   const openUserOnboardingModal = () => {
-    if (featureFlags.inDevelopment || featureFlags.inStaging) {
-      return true;
-    } else {
-      return false; 
-    }
+    // console.log('YOOOO', userData);
+    const hasCompletedOnboarding = userData?.profile?.user?.completedOnboarding;
+    const hasAcceptedTermsOfService =
+      userData?.profile?.user?.hasAcceptedTermsOfService;
+
+    // console.log('hasCompletedOnboarding: ', hasCompletedOnboarding);
+    return !hasCompletedOnboarding; // featureFlags.inDevelopment || featureFlags.inStaging; // userData.hasOnboarded !== true;
   };
 
   return (
@@ -45,16 +45,25 @@ export default function UserProfilePage(props) {
       <PageBody>
         {isAuthenticated ? (
           <>
-            {openUserOnboardingModal() && 
-            (onboardingData?.showIntroductionModal || onboardingData?.showPlatformOnboardingModal) 
-            && <UserOnboardingModal modalsToShow={{
-              showIntroductionModal: onboardingData?.showIntroductionModal,
-              showPlatformOnboardingModal: onboardingData?.showPlatformOnboardingModal,
-              }}/> }
-            {openUserOnboardingModal() && onboardingData.showCloseModal 
-            && <UserOnboardingModal modalsToShow={{
-              showCloseModal: onboardingData?.showCloseModal
-            }}/> }
+            {openUserOnboardingModal() &&
+              (onboardingData?.showIntroductionModal ||
+                onboardingData?.showPlatformOnboardingModal) && (
+                <UserOnboardingModal
+                  modalsToShow={{
+                    showIntroductionModal:
+                      onboardingData?.showIntroductionModal,
+                    showPlatformOnboardingModal:
+                      onboardingData?.showPlatformOnboardingModal,
+                  }}
+                />
+              )}
+            {openUserOnboardingModal() && onboardingData.showCloseModal && (
+              <UserOnboardingModal
+                modalsToShow={{
+                  showCloseModal: onboardingData?.showCloseModal,
+                }}
+              />
+            )}
             <UserProfile isPublic={false} />
           </>
         ) : (
