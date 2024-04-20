@@ -15,14 +15,14 @@ import { UserDataProvider } from '@devlaunchers/components/context/UserDataConte
 
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { OnboardingDataProvider } from './../context/OnboardingDataContext';
+import { EditProfileDataProvider } from '../context/EditProfileDataContext';
+
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
   if (router.asPath.startsWith('/#')) {
     router.push(router.asPath.replace('/#', ''));
   }
 };
-
-import { EditProfileDataProvider } from '../context/EditProfileDataContext';
 
 function MyApp(props) {
   const router = useRouter();

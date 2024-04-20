@@ -6,25 +6,52 @@ import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
 import PageSix from './PageSix/PageSix';
 import { PlatformOnboardingContainer } from './StyledPlatformOnboarding';
-import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext.js';
+import { useOnboardingDataContext } from './../../../../context/OnboardingDataContext';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { onboardingActions } from './../../../../state/actions';
-
+import axios from 'axios';
 export default function PlatformOnboarding() {
-  const { dispatch } = useOnboardingDataContext();
+  const { userData } = useUserDataContext();
 
-  const hideAllModals = () => {
-    dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
-  }
+  const finishOnboarding = ({ onboardingData, dispatch }) => {
+    const userId = userData?.profile?.user?.id;
 
-  // @description 
+    const requestBody = {
+      completedOnboarding: true,
+      interests: [],
+      experience: onboardingData.user?.selectedExperience,
+      job: onboardingData.user?.selectedRole,
+    };
+
+    onboardingData.user?.interest?.forEach((interest) => {
+      interest.selected && requestBody.interests.push({ id: interest.id });
+    });
+
+    userId &&
+      axios
+        .put(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`,
+          requestBody,
+          { withCredentials: true }
+        )
+        .then(() => {
+          console.log('Onboarding completed successfullyy');
+          dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
+        })
+        .catch(() => {
+          // TODO handle errors
+        });
+  };
+
+  // @description
   // - dataFromBackend is currently sample
   // - dataFromBackend should be retrieved from backend
 
   // const  dataFromBackend= [
-  //   {id:1, name:"Blockchain"}, {id:2, name:"Javascript"}, {id:3, name:"Web Design"}, 
-  //   {id:4, name:"UI/UX"}, {id:5, name:"React"}, {id:6, name:"QA"}, {id:7, name:"Web Development"}, 
-  //   {id:8, name:"C/C++/C#"}, {id:9, name:"Discord"}, {id:10, name:"Node.js"}, {id:11, name:"Strapi"}, 
-  //   {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"}, 
+  //   {id:1, name:"Blockchain"}, {id:2, name:"Javascript"}, {id:3, name:"Web Design"},
+  //   {id:4, name:"UI/UX"}, {id:5, name:"React"}, {id:6, name:"QA"}, {id:7, name:"Web Development"},
+  //   {id:8, name:"C/C++/C#"}, {id:9, name:"Discord"}, {id:10, name:"Node.js"}, {id:11, name:"Strapi"},
+  //   {id:12, name:"Agile Development"}, {id:13, name:"HTML"}, {id:14, name:"Git"}, {id:15, name:"Frontend Development"},
   //   {id:16, name:"Python"}, {id:17, name:"Data Structures"}, {id:18, name:"Prototyping"}, {id:19, name:"Project Management"}
   // ]    a
 
@@ -56,7 +83,7 @@ export default function PlatformOnboarding() {
             label: 'Next',
             disabled: true,
             delayEnable: 5000,
-            disableOnce: true
+            disableOnce: true,
           },
           back: {
             label: 'Back',
@@ -90,7 +117,7 @@ export default function PlatformOnboarding() {
         buttons: {
           next: {
             label: 'Next',
-            disabled: false, 
+            disabled: false,
           },
           back: {
             label: 'Back',
@@ -99,8 +126,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-
-      component: <PageFive/>,
+      component: <PageFive />,
       config: {
         barSize: 's',
         hideStepNumber: true,
@@ -116,7 +142,7 @@ export default function PlatformOnboarding() {
       },
     },
     {
-      component: <PageSix/>,
+      component: <PageSix />,
       config: {
         hideBar: true,
         stepName: 'Done',
@@ -125,7 +151,7 @@ export default function PlatformOnboarding() {
           next: {
             label: 'Finished',
             hideIcons: true,
-            onClick: hideAllModals,
+            onClick: finishOnboarding,
             disabled: false,
           },
           back: {
@@ -138,7 +164,12 @@ export default function PlatformOnboarding() {
 
   return (
     <PlatformOnboardingContainer>
-      <Stepper className="platform-onboarding-stepper" steps={stepperConfig} startIndex={0} />
+      <Stepper
+        className="platform-onboarding-stepper"
+        steps={stepperConfig}
+        startIndex={4}
+        context={useOnboardingDataContext}
+      />
     </PlatformOnboardingContainer>
   );
 }
