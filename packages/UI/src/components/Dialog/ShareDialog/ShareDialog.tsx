@@ -11,8 +11,6 @@ import {
   TwitterShareButton,
   LinkedinShareButton,
 } from 'next-share';
-import Button from '../../atoms/Button';
-import Typography from '../../atoms/Typography';
 import {
   Dialog,
   DialogClose,
@@ -22,37 +20,38 @@ import {
   DialogFooter,
   DialogTitle,
 } from '..';
+import Button from '../../atoms/Button';
+import Typography from '../../atoms/Typography';
 
 export interface ShareDialogProps {
   /*
-   * The header of the dialog. For example, "Share this Idea" or "Project".
+   * Header is a required prop that will be used as the header of the dialog. For example, "Share this Idea" or "Project".
    */
   header: string;
   /*
-   * The quote of the shared content. Defaults to the current page description.
+   * quote is an optional prop that will be used as the quote to be shared.
    */
   quote?: string;
   /*
-   * Adding a hashtag to shared content. Facebook #hastags.
+   * hashtag is an optional prop that will be used as the hashtag to be shared on facebook. Facebook #hastags.
    */
   hashtag?: string;
   /*
-   * The URL to share. Defaults to the current URL.
+   * url is a required prop that will be used as the link to be shared. Defaults to the current URL.
    */
   url?: string;
   /*
-   * The button to trigger the dialog.
+   * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
    */
   button?: JSX.Element;
 }
 
 /*
- * Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
+ * @description Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
  * url, title, description, quote, and hashtag are all optional props that can be passed to the ShareDialog component. These optional props will be used to populate the social media share dialog with the provided information.
  * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
  * https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0
  */
-
 export function ShareDialog({
   header,
   url = '',

@@ -1,12 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { ShareDialog } from './ShareDialog';
-
+/**
+ * @description Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
+ * url, title, description, quote, and hashtag are all optional props that can be passed to the ShareDialog component. These optional props will be used to populate the social media share dialog with the provided information.
+ * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
+ * https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0
+ */
 const meta: Meta<typeof ShareDialog> = {
   component: ShareDialog,
 };
 
 export default meta;
+
 type Story = StoryObj<typeof ShareDialog>;
 
 /*
@@ -24,6 +30,12 @@ export const Idea: Story = {
       hashtag="idea"
     />
   ),
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0',
+    },
+  },
 };
 
 export const Posistion: Story = {
@@ -35,6 +47,12 @@ export const Posistion: Story = {
       hashtag="posistion"
     />
   ),
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0',
+    },
+  },
 };
 
 export const Product: Story = {
@@ -46,4 +64,10 @@ export const Product: Story = {
       hashtag="Product"
     />
   ),
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?type=design&node-id=11488-39095&mode=design&t=D8fOpTHCs7PlLEic-0',
+    },
+  },
 };
