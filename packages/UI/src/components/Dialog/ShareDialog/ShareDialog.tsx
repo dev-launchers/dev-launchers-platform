@@ -24,29 +24,29 @@ import Button from '../../atoms/Button';
 import Typography from '../../atoms/Typography';
 
 export interface ShareDialogProps {
-  /*
+  /**
    * Header is a required prop that will be used as the header of the dialog. For example, "Share this Idea" or "Project".
    */
   header: string;
-  /*
+  /**
    * quote is an optional prop that will be used as the quote to be shared.
    */
   quote?: string;
-  /*
+  /**
    * hashtag is an optional prop that will be used as the hashtag to be shared on facebook. Facebook #hastags.
    */
   hashtag?: string;
-  /*
+  /**
    * url is a required prop that will be used as the link to be shared. Defaults to the current URL.
    */
   url?: string;
-  /*
+  /**
    * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
    */
   button?: JSX.Element;
 }
 
-/*
+/**
  * @description Built from Dialog component, ShareDialog is a dialog that allows the user to share a link to a social media platform.
  * url, title, description, quote, and hashtag are all optional props that can be passed to the ShareDialog component. These optional props will be used to populate the social media share dialog with the provided information.
  * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
