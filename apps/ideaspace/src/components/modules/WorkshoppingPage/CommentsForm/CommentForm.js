@@ -3,7 +3,7 @@ import {
   UserComment,
   UserImageOne,
   CommentBox,
-  // SubmitButton,
+  SubmitButton,
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
@@ -19,34 +19,51 @@ function CommentForm(props) {
   const handleTextChange = (e) => {
     const text = e.target.value;
     setTextChange(text);
+    console.log(textChange)
 
-    if (text.trim() == '') {
+    if (textChange.trim().length === 0) {
+      console.log("disabled 24")
       setDisabled(true);
     } else {
+      console.log("enabled 27")
       setDisabled(false);
     }
   };
 
   const handleSubmit = async (e) => {
+    // if (not (textChange.trim().length === 0)) {
+      console.log("enabled 34")
+      e.preventDefault();
+      var data = { author: userData.id.toString(), idea_card: selectedCard, text: textChange.trim() };
+      console.log(userData.id)
+      console.log(userData)
+      console.log(textChange.trim())
+      console.log(data)
 
-    e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
+      try {
+        console.log("trying")
+        // const res = await agent.Comments.post(data); // something goes wrong here
+        try {
+        const res = await agent.Comments.post(data);
+        } catch (e) {
+        console.log('error when posting comment', e);
+        }
+        console.log("posting")
+        setTextChange('');
+        // render the comment in the comment feed
+        props.renderNewComment(data);
+        console.log("posted")
+      } catch(error) {
+        console.error(error)
+      }
 
-    try {
-      const res = await agent.Comments.post(data);
-      setTextChange('');
-      // render the comment in the comment feed
-      props.renderNewComment(data);
-    } catch(error) {
-      console.error(error)
-    }
-
-    // Refresh the page so that the new comment is displayed:
-    // window.location.reload(false);
-    // this.setState(
-    //   {reload: true},
-    //   () => this.setState({reload: false})
-    // )
+      // Refresh the page so that the new comment is displayed:
+      // window.location.reload(false);
+      // this.setState(
+      //   {reload: true},
+      //   () => this.setState({reload: false})
+      // )
+    // }
 
     
   };
@@ -73,7 +90,7 @@ function CommentForm(props) {
               onChange={handleTextChange}
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
-            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
+            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}} disabled={textChange.trim().length === 0}><i class="fas fa-arrow-right"></i></button>
           </UserComment>
         </form>
       ) : (
