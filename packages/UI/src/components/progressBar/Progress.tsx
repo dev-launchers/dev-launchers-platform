@@ -1,5 +1,6 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import * as React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { cn } from '../../utils/classesMerger';
 import Clock from './../../assets/icons/Clock';
 import Done from './../../assets/icons/Done';
@@ -50,6 +51,7 @@ const Progress = React.forwardRef<
     },
     ref
   ) => {
+    const labelId = React.useRef(uuidv4());
     const isComplete = value === 100;
     const currentColor = isComplete ? styles.endColor : styles.startColor;
     const progressPercentage = `${value}%`;
@@ -65,15 +67,16 @@ const Progress = React.forwardRef<
           <div className={`${styles.flex} w-full ${styles.justifyContent}`}>
             <p
               className={`text-base ${styles.font} ${styles.fontStyle} leading-6 ${styles.textColor}`}
+              id={labelId.current}
             >
               {fileName}
             </p>
             <div className={`${styles.flex} ${styles.justifyContent} gap-2`}>
-              <p
+              <span
                 className={`text-xs ${styles.font} ${styles.fontStyle} leading-5 ${styles.textColor}`}
               >
                 {progressPercentage}
-              </p>
+              </span>
               {icon}
             </div>
           </div>
@@ -84,6 +87,7 @@ const Progress = React.forwardRef<
               className
             )}
             {...props}
+            aria-labelledby={labelId.current}
           >
             <ProgressPrimitive.Indicator
               className={`h-full w-full flex-1 ${currentColor} transition-all`}
