@@ -25,7 +25,7 @@ interface ProgressProps
   /**
    * Progress value passed as a prop
    */
-  progress: number;
+  value: ProgressPrimitive.ProgressProps['value'];
   /**
    * It is used to uniquely identify the name of the file
    */
@@ -41,12 +41,18 @@ const Progress = React.forwardRef<
   ProgressProps
 >(
   (
-    { className, fileName = 'name your file', progress, toggleClock, ...props },
+    {
+      className,
+      fileName = 'name your file',
+      value = 0,
+      toggleClock,
+      ...props
+    },
     ref
   ) => {
-    const isComplete = progress === 100;
+    const isComplete = value === 100;
     const currentColor = isComplete ? styles.endColor : styles.startColor;
-    const progressPercentage = `${progress}%`;
+    const progressPercentage = `${value}%`;
     const icon = toggleClock ? isComplete ? <Done /> : <Clock /> : null;
 
     return (
@@ -81,7 +87,7 @@ const Progress = React.forwardRef<
           >
             <ProgressPrimitive.Indicator
               className={`h-full w-full flex-1 ${currentColor} transition-all`}
-              style={{ transform: `translateX(-${100 - progress}%)` }}
+              style={{ transform: `translateX(-${100 - (value ?? 0)}%)` }}
             />
           </ProgressPrimitive.Root>
         </div>

@@ -9,7 +9,7 @@ const meta: Meta<typeof Progress> = {
     docs: {
       // Customize the args table by excluding certain arg types
       argTypes: {
-        exclude: ['asChild', 'value', 'max', 'getValueLabel'],
+        exclude: ['asChild'],
       },
     },
     design: {
@@ -18,10 +18,10 @@ const meta: Meta<typeof Progress> = {
     },
   },
   argTypes: {
-    progress: {
+    value: {
       control: {
         type: 'range',
-        min: 25,
+        min: 0,
         max: 100,
         step: 25,
       },
@@ -39,7 +39,7 @@ type Story = StoryObj<typeof Progress>;
 
 export const Primary: Story = {
   args: {
-    progress: 25,
+    value: 25,
     fileName: 'File name',
     toggleClock: true,
   },
@@ -48,18 +48,18 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     ...Primary.args,
-    progress: 50,
+    value: 50,
   },
 };
 export const Tertiary: Story = {
   args: {
     ...Primary.args,
-    progress: 75,
+    value: 75,
   },
 };
 export const Quartary: Story = {
   args: {
     ...Primary.args,
-    progress: 100,
+    value: 100,
   },
 };
