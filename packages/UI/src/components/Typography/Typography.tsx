@@ -1,7 +1,13 @@
+import React from 'react';
 import { tv } from 'tailwind-variants';
+import { Slot } from './../../utils/Slot';
 
 interface TypographyProps {
   children: React.ReactNode;
+  /**
+   * If true, the Typography will be rendered as a child of the parent element.
+   */
+  asChild?: boolean;
   type?:
     | 'h1'
     | 'h2'
@@ -27,9 +33,26 @@ const TypographyStyles = tv({
     },
   },
 });
+const Typography = React.forwardRef<HTMLElement, TypographyProps>(
+  ({ type, children, asChild = false, ...props }, ref) => {
+    let Comp;
+    if (asChild) {
+      Comp = Slot;
+    } else {
+      switch (type) {
+        default:
+          Comp = type?.toLowerCase();
+          break;
+      }
+    }
 
-function Typography({ type, children }: TypographyProps) {
-  return <div className={TypographyStyles({ type })}>{children}</div>;
-}
+    return (
+      <Comp className={TypographyStyles({ type })} {...props} ref={ref}>
+        {children}
+      </Comp>
+    );
+  }
+);
+Typography.displayName = 'Typography';
 
 export { Typography };
