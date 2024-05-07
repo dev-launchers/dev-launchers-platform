@@ -1,6 +1,7 @@
 import { tv } from 'tailwind-variants';
 
 interface TypographyProps {
+  children: React.ReactNode;
   type?:
     | 'h1'
     | 'h2'
@@ -19,11 +20,16 @@ interface TypographyProps {
 
 const TypographyStyles = tv({
   base: '',
-  variants: {},
+  variants: {
+    type: {
+      h1: 'text-7xl font-medium leading-none lg:text-6xl lg:leading-snug',
+      'display-sm': '',
+    },
+  },
 });
 
-function Typography({ type }: TypographyProps) {
-  return <div className={TypographyStyles({})}></div>;
+function Typography({ type, children }: TypographyProps) {
+  return <div className={TypographyStyles({ type })}>{children}</div>;
 }
 
 export { Typography };
