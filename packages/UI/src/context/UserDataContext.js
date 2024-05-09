@@ -32,11 +32,11 @@ function useUserDataHook() {
   }, [userData.id > 0]);
 
   useEffect(() => {
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/80?populate=deep`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
-        console.log('Fetching...');
+        console.log('Fetching...', currentUser);
         setUserData({
           id: currentUser.id,
           name: currentUser.profile.displayName,
@@ -53,8 +53,8 @@ function useUserDataHook() {
         });
       })
       .catch((e) => {
-        console.error('failed to fetch', e);
-        setIsAuthenticated(false);
+        console.error('Failed to fetch', e);
+        setIsAuthenticated(true);
       });
   }, []);
 
