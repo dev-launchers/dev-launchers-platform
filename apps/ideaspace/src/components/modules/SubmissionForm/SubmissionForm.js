@@ -31,7 +31,7 @@ function SubmissionForm() {
     ['primary', 'close'],
   );
 
-  const getInvolveLevel = (involveString) => {
+  const getDBInvolveLevel = (involveString) => {
     if (involveString.includes("and also believe")) {
       return "highly";
     } else if (involveString.includes("to help with workshopping")) {
@@ -75,11 +75,11 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    const involveValueForDataBase = getInvolveLevel(
+    const involveValueForDataBase = getDBInvolveLevel(
       values['involveLevel'].trim());
 
     values['involveLevel'] = involveValueForDataBase;
-    setSending(true);
+      setSending(true);
 
     try {
       const data = cleanData(await agent.Ideas.post(values));
