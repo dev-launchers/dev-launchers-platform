@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import NavLink from './NavLink';
 
 export default {
-  title: 'Atoms/NavLink',
+  title: 'Deprecated/Atoms/NavLink',
   component: NavLink,
 } as ComponentMeta<typeof NavLink>;
 

@@ -2,7 +2,7 @@ import type { ComponentStory } from '@storybook/react';
 import Dropdown from './Dropdown';
 
 export default {
-  title: 'Organisms/Dropdown',
+  title: 'Deprecated/Organisms/Dropdown',
   component: Dropdown,
 };
 

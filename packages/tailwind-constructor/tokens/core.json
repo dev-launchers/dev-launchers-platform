@@ -1473,7 +1473,7 @@
   },
   "h1": {
     "value": {
-      "fontFamily": "Abel",
+      "fontFamily": "Oswald",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
       "letterSpacing": "0%",
@@ -1486,7 +1486,7 @@
   },
   "h2": {
     "value": {
-      "fontFamily": "Abel",
+      "fontFamily": "Oswald",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
       "letterSpacing": "0%",
@@ -1499,7 +1499,7 @@
   },
   "h3": {
     "value": {
-      "fontFamily": "Abel",
+      "fontFamily": "Oswald",
       "fontWeight": "Regular",
       "lineHeight": "AUTO",
       "letterSpacing": "0%",
