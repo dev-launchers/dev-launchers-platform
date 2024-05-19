@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
       <UserDataProvider>
         <ThemeProvider theme={theme}>
             <div>
-              {/* <script
+              <script
                 type="text/partytown"
                 dangerouslySetInnerHTML={{ __html: iubendaScript }}
               />
@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps }) {
                 strategy="worker"
                 async
                 src="//cdn.iubenda.com/cs/iubenda_cs.js"
-              ></Script> */}
+              ></Script>
               <Head>
                 <script
                   async
