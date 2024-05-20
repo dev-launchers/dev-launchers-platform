@@ -61,11 +61,12 @@ spec:
                   key: password
           ports:
             - containerPort: 80
-              name: wordpress
           volumeMounts:
             - name: wordpress-persistent-storage
               mountPath: /var/www/html
+              readOnly: false
       volumes:
         - name: wordpress-persistent-storage
           persistentVolumeClaim:
             claimName: wp-pv-claim
+            readOnly: false
