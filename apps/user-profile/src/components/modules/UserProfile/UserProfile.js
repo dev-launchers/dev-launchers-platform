@@ -179,7 +179,18 @@ export function UserProfileView({
   return (
     <div className="flex flex-row bg-[#f9f9f9] h-screen">
       <div className="w-72">
-        <SideBar />
+        <SideBar
+          isPublic={isPublic}
+          profilePictureUrl={
+            isPublic
+              ? publicUserData?.profile?.profilePictureUrl
+              : userData.profilePictureUrl
+          }
+          displayName={
+            isPublic ? publicUserData?.profile?.displayName : userData.name
+          }
+          title={isPublic ? publicUserData?.profile?.bio : userData.bio}
+        />
       </div>
       <div className="px-20 pb-20">
         <Overview />
