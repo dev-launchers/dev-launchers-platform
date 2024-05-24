@@ -178,7 +178,18 @@ export function UserProfileView({
 }) {
   return (   
     <div className="flex">
-    <SideBar />
+      <SideBar
+        isPublic={isPublic}
+        profilePictureUrl={ isPublic
+            ? publicUserData?.profile?.profilePictureUrl
+            : userData.profilePictureUrl
+        }
+        displayName={
+          isPublic ? publicUserData?.profile?.displayName : userData.name
+        }
+        title={isPublic ? publicUserData?.profile?.bio : userData.bio}
+      />
+
     <div className="ml-64 p-4">
       <div className="overflow-y-auto h-screen">
       <Wrapper>
