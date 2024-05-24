@@ -32,7 +32,7 @@ function useUserDataHook() {
   }, [userData.id > 0]);
 
   useEffect(() => {
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/74?populate=deep`, {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
