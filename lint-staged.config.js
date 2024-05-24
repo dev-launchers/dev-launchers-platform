@@ -18,8 +18,7 @@ const rules = {
   "**/*.{json,md,mdx,css,html,yml,yaml,scss,ts,js,tsx,jsx,mjs}": (
     filenames
   ) => {
-    // return [`prettier --write ${concatFilesForPrettier(filenames)}`];
-    return [];
+    return [`prettier --write ${concatFilesForPrettier(filenames)}`];
   },
 };
 
