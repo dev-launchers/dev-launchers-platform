@@ -17,9 +17,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let opportunities: Opportunity[] = [];
   try {
     const result = await agent.Projects.list(
-      new URLSearchParams({'_publicationState': 'live', populate: 'opportunities'})
+      new URLSearchParams('_publicationState=live&populate=opportunities')
     );
-    projects = result.filter((p: Project) => p.attributes.opportunities.length > 0);
+    //console.log("fetched projects", result)
+    projects = result.filter((p: Project) => p.attributes.opportunities.data.length > 0);
     projects.map((project) => {
       const commitments = project.opportunities.map(
         (opp) => opp.commitmentHoursPerWeek
@@ -36,11 +37,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     const result = await agent.Opportunities.list();
-    opportunities = result.filter((o: Opportunity) => o.attributes.projects.length > 0);
+    opportunities = result.filter((o: Opportunity) => {
+      return o.attributes.projects.data.length > 0
+    });
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }
 
+  //console.log("return projects", projects);
+  //console.log("return opportunities", opportunities);
   return {
     props: {
       projects,
