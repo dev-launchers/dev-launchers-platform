@@ -1,8 +1,8 @@
-import Link from "next/link";
-import Image from "next/image";
-import React from "react";
+import Link from 'next/link';
+import Image from 'next/image';
+import React from 'react';
 
-import { Heading, Title } from "./StyledCardTitle";
+import { Heading, Title } from './StyledCardTitle';
 
 export default function CardTitle({
   data,
@@ -36,7 +36,7 @@ export default function CardTitle({
             alt="github"
             height="32"
             width="32"
-            src={"images/GitHub-Mark-Light-32px.png?webp"}
+            src={'images/GitHub-Mark-Light-32px.png?webp'}
           />
         </a>
       )}
