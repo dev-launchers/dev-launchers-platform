@@ -48,9 +48,9 @@ export const useFetchIdea = (ideaId, setComments) => {
           setComments(cleanDataList(commentResponse));
         }
 
-        const user = data?.user?.data;
-        if (user !== undefined) {
-          data.user = cleanData(user);
+        const author = data?.author?.data;
+        if (author !== undefined) {
+          data.author = cleanData(author);
         }
 
         const ideaOwner = data?.ideaOwner?.data;
