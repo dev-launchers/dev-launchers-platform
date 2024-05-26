@@ -9,7 +9,7 @@ import {
 import { useUserDataContext } from "@devlaunchers/components/src/context/UserDataContext";
 
 export default function AccountDropdown(props) {
-  const { userData, setUserData} = useUserDataContext();
+  const { userData, setUserData } = useUserDataContext();
 
   const handleLogout = () => {
     Logout();
@@ -21,10 +21,6 @@ export default function AccountDropdown(props) {
       bio: '',
       profilePictureUrl: '',
       socialMediaLinks: [],
-      totalPoints: 0,
-      totalSeasonPoints: 0,
-      availablePoints: 0,
-      volunteerHours: 0,
       discord: {
         id: 0,
         avatar: '',
@@ -34,7 +30,7 @@ export default function AccountDropdown(props) {
       interests: [],
     })
   };
-  
+
   return (
     <div>
       {userData.id ? (
@@ -56,7 +52,7 @@ export default function AccountDropdown(props) {
         ></AccountMenuDropdownButton>
       ) : (
         <MenuButton fontSize="1.2rem" href={process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL
-          +`?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`}>
+          + `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`}>
           Sign In{" "}
         </MenuButton>
       )}

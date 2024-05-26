@@ -31,6 +31,18 @@ function SubmissionForm() {
     ['primary', 'close'],
   );
 
+  const getDBInvolveLevel = (involveString) => {
+    if (involveString.includes("and also believe")) {
+      return "highly";
+    } else if (involveString.includes("to help with workshopping")) {
+      return "medium";
+    }/* else if (involveString.includes("")) {
+      return "minimum";
+    }*/ else {
+      return "none"
+    }
+  };
+
   const initialValues = {
     ideaName: '',
     tagline: '',
@@ -53,7 +65,8 @@ function SubmissionForm() {
 
 
   const submitHandler = async (values) => {
-    values['author'] = userData;
+    values['author'] = userData.id;
+    values['ideaOwner'] = userData.id;
     values['status'] = 'workshopping';
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();
@@ -62,7 +75,11 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    setSending(true);
+    const involveValueForDataBase = getDBInvolveLevel(
+      values['involveLevel'].trim());
+
+    values['involveLevel'] = involveValueForDataBase;
+      setSending(true);
 
     try {
       const data = cleanData(await agent.Ideas.post(values));

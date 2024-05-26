@@ -14,6 +14,9 @@ import {
 } from './StyledDropdown';
 import type { DropdownProps } from '.';
 
+/**
+ * @deprecated please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from @devlaunchers/components/src/components/DropdownMenu
+ */
 const Dropdown = ({
   width,
   title,
@@ -70,7 +73,7 @@ const Dropdown = ({
       </Toggle>
       <OptionsContainer isOpen={menuOpen}>
         <Layer type="light" css={radiusStyles['radius200']}>
-          <Options>
+          <Options isOpen={menuOpen}>
             {options.map(({ text, disabled }, i) => {
               return type === 'checkbox' ? (
                 <Checkbox

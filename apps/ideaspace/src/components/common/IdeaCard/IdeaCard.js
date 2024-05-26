@@ -9,7 +9,7 @@ import useConfirm from '../DialogBox/DialogBox';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
-import SaveIdea from '../../modules/SaveIdea/SaveIdea';
+
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -17,7 +17,7 @@ function IdeaCard({ cards, cardType }) {
   const [urlPath, setUrlPath] = useState('');
   const [liked, setLiked] = useState(false);
   const { isAuthenticated, userData } = useUserDataContext();
-  const [savedCards, setSavedCards] = useState([]);
+  
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to reactivate your idea', '', ''],
@@ -68,11 +68,6 @@ function IdeaCard({ cards, cardType }) {
         <IdeaCardTag
           status={tagContent}
         />
-        {isAuthenticated ? <SaveIdea 
-          savedCards={savedCards} 
-          setSavedCards={setSavedCards} 
-          id={cards.id} 
-          user={userData.id}/> : null}
       </atoms.Box>
 
       <IdeaCardImg
@@ -97,7 +92,7 @@ function IdeaCard({ cards, cardType }) {
 
           <atoms.Box alignItems='center' >
             <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
-            <IdeaCardComment commentLength={cards.comments.length} />
+            <IdeaCardComment commentLength={cards.comments?.length} />
           </atoms.Box>
         <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
         </atoms.Box>

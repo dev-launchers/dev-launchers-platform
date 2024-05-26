@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
-import * as Yup from 'yup';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import Popballoon from '../Popover/Popover';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
+import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
+import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox'
 
 const IdeaForm = ({
 	initialValues,
@@ -19,6 +20,8 @@ const IdeaForm = ({
 },props) => {
 	const {	errors } = props;
 	const [disabling, setDisabling] = React.useState(true);
+	const { isMobile } = useResponsive();
+	
 	const compareValuesToInitial = (values) => {
 		const name = Object.keys(values);
 		for (let i = 0; i < name.length; i++) {
@@ -42,7 +45,6 @@ const IdeaForm = ({
 		}, [values]);
 		return null;
 	};
-
 	return (
 		<atoms.Box margin='1rem 1.5rem 3rem 1.5rem'>
 			<atoms.Box maxWidth='36rem' margin='auto' style={{ textAlign: 'left' }}>
@@ -52,7 +54,6 @@ const IdeaForm = ({
 				onSubmit={submitHandler}
 				enableReinitialize
 			>
-
 				{({ errors, setFieldValue, touched }) => (
 					<Form>
 						<AutoSubmitToken />
@@ -151,25 +152,41 @@ const IdeaForm = ({
 								<atoms.Typography type='label' style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}>
 									What Level of Involvement Do You Want to Have After Submission?<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
-								<atoms.Box flexDirection='row' alignItems='flex-end' justifyContent='space-between'>
-									<Field
-										required 
-										as="select" 
-										id='involveLevel'
-										name="involveLevel" 
-										style={{ fontSize: '1rem', padding: '0.5rem', width: '95%' }}
-									>
-										<option value="" disabled>Select desired level of involvement</option>
-										<option value="none">I don't want to be involved after submitting</option>
-										<option value="minimum">I want to “own” this idea to help with workshopping and designing until it become a project</option>
-										<option value="medium">I want to “own” this idea and also be part of the development/design team when it becomes a project</option>
-										<option value="highly">I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project</option>
-									</Field>
-
+								<atoms.Box flexDirection='row' alignItems='flex-end' >
+								<Field
+									as={Dropdown}
+									title="Select desired level of involvement"
+									width={isMobile ? 'sm' : 'lg'}
+									type="radio"
+									id="involveLevel"
+									name="involveLevel"
+									touched={touched['involveLevel']}
+									options={[
+										{
+										text:`I don't want to be involved after submitting`,
+										},
+										{
+										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+										},
+										{
+										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+										},
+										{	
+										text: `I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project`,
+										},
+									]}
+									recieveValue={(value) => {
+										const selectedOptions = Object.entries(value).find(([key,value])=> value === true)
+											if (selectedOptions){
+												setFieldValue('involveLevel', selectedOptions[0])
+											}					
+									}}
+									/>
 									<atoms.ToolTip
 										content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshipping page."
 										direction="top"
 										delay={100}
+										style={{ marginLeft: '0.1rem', marginBottom: '0.7rem' }}
 									>
 										<img alt='submit_image' src={popoverSvg} />
 									</atoms.ToolTip>
@@ -182,9 +199,9 @@ const IdeaForm = ({
 							</atoms.Typography>
 
 							<atoms.Box style={{ fontSize: '1rem', alignItems:'center'}}>
-								<atoms.Checkbox disabled={false} required />
+								<Checkbox disabled={false} required/>
 								<atoms.Typography type='p'>
-									&nbsp;I have read and agree to the Terms and Conditions.
+									&nbsp;I have read and agree to the Terms and Conditions.<span style={{color:"red"}}>&nbsp;*</span>
 								</atoms.Typography>
 							</atoms.Box>
 

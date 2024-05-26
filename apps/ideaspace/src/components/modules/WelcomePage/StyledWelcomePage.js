@@ -32,10 +32,11 @@ export const RocketImage = styled.img`
   width: 25px;
   height: 25px;
   padding-left: 5px;
+  display: inline-block;
 `;
 
 export const HeadWapper = styled.div`
-  padding: 6rem 1rem 4rem 1rem;
+  padding: 4.5rem 1rem 4rem 1rem;
 
   @media (max-width: 1712px) {
     padding: 3rem 1rem 2rem 1rem;
@@ -58,7 +59,7 @@ export const Headline = styled.div`
 `;
 
 export const StyledRanbow = styled.div`
-  margin: 1.3rem auto 0 auto;
+  margin: 1.3rem auto 1.0rem auto;
   max-width: 28rem;
   height: 5px;
 `;

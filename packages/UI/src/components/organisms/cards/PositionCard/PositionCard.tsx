@@ -45,24 +45,93 @@ const MinimalPositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={handleMoreDetails}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              more details
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={handleMoreDetails}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                more details
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>
     </Container>
+  );
+};
+
+const InteractionBox = ({
+  interaction,
+}: Pick<PositionCardProps, 'interaction'>) => {
+  return (
+    <Box
+      width={interaction === 'all-h' ? '100%' : 'auto'}
+      gap={interaction === 'all-h' ? 'unset' : '16px'}
+      justifyContent="space-between"
+      flexDirection={interaction === 'all-v' ? 'column' : 'row'}
+      style={{
+        height: interaction === 'all-v' ? '100%' : 'auto',
+        position: 'absolute',
+        [interaction === 'all-h' ? 'left' : 'right']: 0,
+        [interaction !== 'all-h' ? 'top' : 'bottom']: 0,
+      }}
+    >
+      <SaveButton text="save" />
+      {interaction !== 'save-only' && (
+        <>
+          <LikeButton text="like" />
+          <ShareButton text="share" />
+        </>
+      )}
+    </Box>
+  );
+};
+
+const Blurp = ({
+  expanded,
+  content,
+}: { expanded?: boolean } & Pick<PositionCardProps, 'content'>) => {
+  return (
+    <ExpandableBlurb>
+      {expanded ? (
+        <Details>
+          <Box flexDirection="column" gap="16px">
+            <Typography type="subtitle">why should you join?</Typography>
+            <ul css={{ listStylePosition: 'inside' }}>
+              {content.benefits.map((el1, i1) => (
+                <Typography type="p" key={i1}>
+                  <li>{el1}</li>
+                </Typography>
+              ))}
+            </ul>
+          </Box>
+          <Box flexDirection="column" gap="16px">
+            <Typography type="subtitle">expectations</Typography>
+            <ul css={{ listStylePosition: 'inside' }}>
+              {content.expectations.map((el2, i2) => (
+                <Typography type="p" key={i2}>
+                  <li>{el2}</li>
+                </Typography>
+              ))}
+            </ul>
+          </Box>
+        </Details>
+      ) : null}
+    </ExpandableBlurb>
   );
 };
 
@@ -99,28 +168,7 @@ const PositionCard = ({
             <Typography type="subtitle">time committment</Typography>
             <Typography type="pSmall">{content.timeCommittment}</Typography>
           </Box>
-          {interaction && (
-            <Box
-              width={interaction === 'all-h' ? '100%' : 'auto'}
-              gap={interaction === 'all-h' ? 'unset' : '16px'}
-              justifyContent="space-between"
-              flexDirection={interaction === 'all-v' ? 'column' : 'row'}
-              style={{
-                height: interaction === 'all-v' ? '100%' : 'auto',
-                position: 'absolute',
-                [interaction === 'all-h' ? 'left' : 'right']: 0,
-                [interaction !== 'all-h' ? 'top' : 'bottom']: 0,
-              }}
-            >
-              <SaveButton text="save" />
-              {interaction !== 'save-only' && (
-                <>
-                  <LikeButton text="like" />
-                  <ShareButton text="share" />
-                </>
-              )}
-            </Box>
-          )}
+          {interaction && <InteractionBox interaction={interaction} />}
         </Thumbnail>
         <div>
           <CardDescription
@@ -135,51 +183,34 @@ const PositionCard = ({
           <TagsContainer title="Position Tags" list={content.tags} />
         </div>
       </Header>
-      <ExpandableBlurb>
-        {expanded ? (
-          <Details>
-            <Box flexDirection="column" gap="16px">
-              <Typography type="subtitle">why should you join?</Typography>
-              <ul css={{ listStylePosition: 'inside' }}>
-                {content.benifits.map((el1, i1) => (
-                  <Typography type="p" key={i1}>
-                    <li>{el1}</li>
-                  </Typography>
-                ))}
-              </ul>
-            </Box>
-            <Box flexDirection="column" gap="16px">
-              <Typography type="subtitle">expectations</Typography>
-              <ul css={{ listStylePosition: 'inside' }}>
-                {content.expectations.map((el2, i2) => (
-                  <Typography type="p" key={i2}>
-                    <li>{el2}</li>
-                  </Typography>
-                ))}
-              </ul>
-            </Box>
-          </Details>
-        ) : null}
-      </ExpandableBlurb>
+      <Blurp content={content} expanded={expanded} />
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={() =>
-                minimal ? handleMoreDetails() : setExpanded((open) => !open)
-              }
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              {expanded ? 'collapse details' : 'more details'}
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={() =>
+                  minimal ? handleMoreDetails() : setExpanded((open) => !open)
+                }
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                {expanded ? 'collapse details' : 'more details'}
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>

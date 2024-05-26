@@ -59,7 +59,7 @@ const NavDropdown = ({
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="feather feather-chevron-down transition-transform duration-500 "
+          className="transition-transform duration-500 "
           style={{
             transform: !menuOpen ? 'none' : 'rotateX(180deg)',
             transitionTimingFunction: 'ease',

@@ -10,12 +10,7 @@ import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
 
-
-import {
-  HeadWapper,
-  Headline,
-  StyledRanbow,
-} from './StyledEditIdea';
+import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
 function EditIdea() {
   let { userData, isAuthenticated } = useUserDataContext();
@@ -28,32 +23,32 @@ function EditIdea() {
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave?',
-    ['alternative primary', 'CANCEL', 'LEAVE'],
+    ['alternative primary', 'CANCEL', 'LEAVE']
   );
   const [urrl, setUrrl] = useState('');
 
   const [UpdateSucceed, confirmSucceed] = useConfirm(
     ['Idea updated successfully', '', ''],
     '',
-    ['primary', 'got it'],
+    ['primary', 'got it']
   );
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to update your idea', '', ''],
     'Please try again.',
-    ['primary', 'close'],
+    ['primary', 'close']
   );
 
   const [NotAuthor, confirmNotAuthor] = useConfirm(
-    ["This is not your idea.", '', ''],
+    ['This is not your idea.', '', ''],
     '',
-    ['primary', 'close'],
+    ['primary', 'close']
   );
 
   const [ArchivedIdea, confirmArchive] = useConfirm(
-    ["This idea has been archived.", '', ''],
+    ['This idea has been archived.', '', ''],
     'To workshop on it, you need to reactivate it first.',
-    ['primary', 'got it'],
+    ['primary', 'got it']
   );
 
   const [card, setCard] = useState({
@@ -82,15 +77,17 @@ function EditIdea() {
 
   useEffect(async () => {
     if (ideaId) {
-      const idea = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams("populate=*")));
+      const idea = cleanData(
+        await agent.Ideas.getIdea(ideaId, new URLSearchParams('populate=*'))
+      );
       if (!idea || !idea.id || idea.id == 0) {
         setGetError(true);
         return;
       }
 
       if (userData.id !== 0) {
-        if (idea.author.id === userData.id) {
-          if (response.data?.status == 'archived') {
+        if (idea.author.data.id === userData.id) {
+          if (idea.status == 'archived') {
             rejectAuthor();
           }
 
@@ -125,7 +122,7 @@ function EditIdea() {
 
       if (data.ideaName) {
         setunsavedChanges(false);
-        if (await confirmNotice()){
+        if (await confirmNotice()) {
           setUrrl(`/ideaspace/workshop/${data.id}`);
         }
       }
@@ -142,7 +139,7 @@ function EditIdea() {
     } else {
       setSending(false);
     }
-  }
+  };
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -155,7 +152,7 @@ function EditIdea() {
         handleDialog(url);
         router.events.emit('routeChangeError');
         throw 'Abort route change. Please ignore this error.';
-      }
+      };
       router.events.on('routeChangeStart', routeChangeStart);
       return () => {
         router.events.off('routeChangeStart', routeChangeStart);
@@ -175,12 +172,11 @@ function EditIdea() {
     } else {
       window.history.back(-1);
     }
-  }
+  };
 
   if (getError) {
-    return <Error statusCode={404} title="page Not Found" />
+    return <Error statusCode={404} title="page Not Found" />;
   } else {
-
     return (
       <>
         <HeadWapper>
@@ -188,26 +184,28 @@ function EditIdea() {
           <StyledRanbow>
             <atoms.Layer hasRainbowBottom />
           </StyledRanbow>
-          <BackButton
-            buttonType="confirm"
-            clickHandler={backHandler}
-          />
-          <atoms.Typography type='h4' >
-            Have an idea for a development project?<br />
+          <BackButton buttonType="confirm" clickHandler={backHandler} />
+          <atoms.Typography type="h4">
+            Have an idea for a development project?
+            <br />
             Share your idea with us!
           </atoms.Typography>
         </HeadWapper>
 
         {!isAuthenticated ? (
           <SignInSection
-            label='Please sign in to edit your idea!'
-            redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
+            label="Please sign in to edit your idea!"
+            redirectURL={
+              process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
+            }
           />
         ) : (
           <>
             <Dialog />
-            <UpdateSucceed /><UpdateFailure />
-            <NotAuthor /><ArchivedIdea />
+            <UpdateSucceed />
+            <UpdateFailure />
+            <NotAuthor />
+            <ArchivedIdea />
             <IdeaForm
               initialValues={card}
               SignupSchema={SignupSchema}
