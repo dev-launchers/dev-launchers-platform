@@ -36,16 +36,21 @@ export const useFetchIdea = (ideaId, setComments) => {
       if (ideaId) {
         setLoading(true);
 
-        const data = cleanData(await agent.Ideas.getIdea(ideaId, new URLSearchParams(`populate=*`)));
+        const data = cleanData(
+          await agent.Ideas.getIdea(
+            ideaId,
+            new URLSearchParams(`populate=deep`)
+          )
+        );
 
         const commentResponse = data?.comments?.data;
         if (commentResponse !== undefined) {
-          setComments(cleanDataList(commentResponse))
+          setComments(cleanDataList(commentResponse));
         }
 
-        const author = data?.author?.data;
-        if (author !== undefined) {
-          data.author = cleanData(author);
+        const user = data?.user?.data;
+        if (user !== undefined) {
+          data.user = cleanData(user);
         }
 
         const ideaOwner = data?.ideaOwner?.data;
@@ -60,13 +65,16 @@ export const useFetchIdea = (ideaId, setComments) => {
         }
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       setGetError(true);
     }
   }, [ideaId, setLoading, setData]);
 
   useEffect(() => {
-    if (sourceData.status == "archived" && sourceData.author?.id !== userData.id) {
+    if (
+      sourceData.status == 'archived' &&
+      sourceData.author?.id !== userData.id
+    ) {
       setHidden(true);
     } else {
       setData(sourceData);
