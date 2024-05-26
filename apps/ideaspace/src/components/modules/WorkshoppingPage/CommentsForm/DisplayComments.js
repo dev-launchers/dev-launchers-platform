@@ -16,6 +16,7 @@ function DisplayComments(props) {
     return (
       <Comment
         user={commentUser}
+        author={comment.author}
         key={comment.id}
         id={comment.id}
         createdAt={comment.createdAt}

@@ -115,7 +115,7 @@ function SingleCommentComponent(props) {
         />
         <div className="textContent">
           <SingleCommentContent>
-            <h3>{props.user.email}</h3>
+            <h3>{props.author}</h3>
             <h5>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
                 <IdeaOwnerTag>idea owner</IdeaOwnerTag>
