@@ -1,10 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { within, userEvent, waitFor } from '@storybook/testing-library';
+import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import * as React from 'react';
 import Button from './Button';
 
 export default {
-  title: 'Atoms/Button',
+  title: 'Deprecated/Atoms/Button',
   component: Button,
 } as ComponentMeta<typeof Button>;
 

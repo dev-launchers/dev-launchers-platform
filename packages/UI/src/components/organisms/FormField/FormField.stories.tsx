@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import FormField from './FormField';
 export default {
-  title: 'Organisms/FormField',
+  title: 'Deprecated/Organisms/FormField',
   component: FormField,
 } as ComponentMeta<typeof FormField>;
 

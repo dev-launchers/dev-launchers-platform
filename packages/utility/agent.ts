@@ -17,6 +17,7 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     }
 //     return config;
 // });
+axios.defaults.withCredentials = true
 
 axios.interceptors.response.use(
   async (response) => {

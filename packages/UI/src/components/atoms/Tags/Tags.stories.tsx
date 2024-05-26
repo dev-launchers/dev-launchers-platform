@@ -1,10 +1,9 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import { within, userEvent, waitFor } from '@storybook/testing-library';
 import * as React from 'react';
 import Tags from './Tags';
 
 export default {
-  title: 'Atoms/Tags',
+  title: 'Deprecated/Atoms/Tags',
   component: Tags,
 } as ComponentMeta<typeof Tags>;
 
