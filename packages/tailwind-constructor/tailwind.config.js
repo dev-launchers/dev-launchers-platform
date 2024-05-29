@@ -24,6 +24,10 @@ module.exports = withTV({
       transparent: 'transparent',
       ...filterTokensByType('color', tokens),
     },
+    extend: {
+      colors: {
+        'sky-blue': '#7dd3fc',
+      }},
     data: {
       checked: 'state="checked"', //data-[state=checked]
       open: 'state="open"', //data-[state=open]
