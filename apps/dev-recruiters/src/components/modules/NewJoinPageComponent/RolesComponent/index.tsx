@@ -37,7 +37,7 @@ export default function RolesComponent({
     resetFilters,
   } = useProjectRole();
 
-  console.log('here', filteredProjects);
+  console.log('here filteredProjects', filteredProjects);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);

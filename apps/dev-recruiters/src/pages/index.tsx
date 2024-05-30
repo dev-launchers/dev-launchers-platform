@@ -13,34 +13,46 @@ import { useRouter } from 'next/router';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  console.log(context);
+  console.log('above context');
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
     const result = await agent.Projects.list(
-      new URLSearchParams({'_publicationState': 'live', populate: 'opportunities'})
+      new URLSearchParams({
+        _publicationState: 'live',
+        populate: 'opportunities',
+      })
     );
-    projects = result.filter((p: Project) => p.attributes.opportunities.length > 0);
+    console.log(`result`);
+    console.log(result);
+    projects =
+      typeof result === 'object' &&
+      result?.filter((p: Project) => p.attributes.opportunities.length > 0);
     projects.map((project) => {
-      const commitments = project.opportunities.map(
+      const commitments = project.attributes.opportunities.map(
         (opp) => opp.commitmentHoursPerWeek
       );
       // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
-      project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
+      project.attributes.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
       return project;
     });
   } catch (error) {
+    console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
 
-  try {
+  /*try {
     const result = await agent.Opportunities.list();
-    opportunities = result.filter((o: Opportunity) => o.attributes.projects.length > 0);
+    opportunities = result.filter(
+      (o: Opportunity) => o.attributes.projects.length > 0
+    );
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }
-
+  */
   return {
     props: {
       projects,

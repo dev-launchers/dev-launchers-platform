@@ -17,7 +17,8 @@ export default function useProjectRole() {
     maxCommit: 0,
     searchTerm: '',
   });
-
+  console.log('inside export fn useProjectRole');
+  console.log(projects);
   // Apply Filters
   const SetProjectParams = (value: ProjectParams) => {
     setFilteredProjects(FilterProjects(projects, value));
@@ -25,6 +26,8 @@ export default function useProjectRole() {
 
   //#region Fetching Operations
   const fetchProjects = (projectsList: Project[]) => {
+    console.log('inside fetchProjects');
+    console.log(projectsList);
     if (projectsList.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
