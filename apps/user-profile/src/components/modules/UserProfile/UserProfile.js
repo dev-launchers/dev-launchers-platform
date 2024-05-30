@@ -170,7 +170,7 @@ export function UserProfileView({
   };
 
   return (
-    <div className="flex flex-row bg-[#f9f9f9] h-screen">
+    <div className="flex flex-row bg-[#f9f9f9]">
       <div className="w-72">
         <SideBar
           isPublic={isPublic}
