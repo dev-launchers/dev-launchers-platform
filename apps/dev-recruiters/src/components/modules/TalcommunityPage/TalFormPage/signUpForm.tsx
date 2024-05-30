@@ -3,7 +3,6 @@ import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
 import { Checkbox } from '@devlaunchers/components/src/components/Checkbox';
-
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import React from 'react';
@@ -151,19 +150,26 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       We require users to be 18 years old or older. Please
                       confirm below.
                     </atoms.Typography>
-                    <atoms.Checkbox
-                      label="I am 18 years old or older."
+                    <Checkbox
                       disabled={false}
                       onChange={handleSetCheckCheckbox}
                       required
                     />
+                    <label className="CheckboxLabel">
+                      I am 18 years old or older.
+                    </label>
                     <Checkbox
-                      label="I have read and agreed to the terms and conditions"
                       disabled={false}
                       onChange={handleSetCheckCheckbox}
                       required
+
                       // className="bg-transparent"
                     />
+
+                    <label className="CheckboxLabel">
+                      I have read and agreed to the terms and conditions
+                    </label>
+
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
                         buttonSize="standard"

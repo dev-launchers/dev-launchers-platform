@@ -38,6 +38,8 @@ export const Radio = styled.input.attrs({ type: 'radio' })`
 `;
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   margin: 0.5rem;
+  vertical-align: middle;
+  position: relative;
 `;
 
 export const Row = styled.div`
@@ -68,10 +70,10 @@ export const RadioWrapper = styled.div`
 
 export const CheckboxLabel = styled.label`
   font-size: ${({ theme }) => theme.fontSizes.small};
-  background-color: #f0edee;
   border-radius: 1.875rem;
-  padding: 1.25rem;
+  padding-left: 1.25rem;
   margin-bottom: 1.25rem;
+  position: relative;
 `;
 
 export const Slider = styled.input.attrs({ type: 'range' })`

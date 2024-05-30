@@ -21,6 +21,7 @@ export default function FilterComponent({
     fetchProjects,
   } = useProjectRole();
 
+  console.log('projects and opportunities', projects, opportunities);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);
