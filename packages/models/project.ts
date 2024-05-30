@@ -281,6 +281,7 @@ export interface NewMeetingTime {
 
 export interface Project {
     id: string;
+    attributes: {
     slug: string;
     catchPhrase: string;
     title: string;
@@ -289,19 +290,22 @@ export interface Project {
     description: string;
     commitmentLevel: string;
     signupFormUrl: string;
-    team: Team;
-    user: User;
-    Images: Image[];
-    interests: Interest[];
+    //team: Team;
+    //user: User;
+    //Images: Image[];
+    //interests: Interest[];
     calendarId: string;
-    board: Board;
+    //board: Board;
     isListed: boolean;
-    subProjects: SubProject[];
-    parentProject: ParentProject;
-    google_meet: GoogleMeet;
-    newMeetingTimes: NewMeetingTime[];
-    opportunities: Opportunity[];
-    isPlatform: boolean;
+    discordWebhookUrl:string;
+    //subProjects: SubProject[];
+    //parentProject: ParentProject;
+    //google_meet: GoogleMeet;
+    //newMeetingTimes: NewMeetingTime[];
+    opportunities:  Opportunity[];
+    //isPlatform: boolean;
+    created_at:string;
+    updated_at:string;
     published_at: string;
 }
 

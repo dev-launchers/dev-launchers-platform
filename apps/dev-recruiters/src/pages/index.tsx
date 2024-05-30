@@ -13,6 +13,8 @@ import { useRouter } from 'next/router';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  console.log(context);
+  console.log('above context');
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
@@ -39,10 +41,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
       );
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
-      project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
+      project.attributes.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
       return project;
     });
   } catch (error) {
+    console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
 
@@ -58,7 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
   }
-
+  */
   return {
     props: {
       projects,
