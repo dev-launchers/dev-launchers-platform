@@ -103,16 +103,17 @@ const responseBody = (response: AxiosResponse) =>
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: async <T>(url: string, params?: URLSearchParams) => {
-    console.log('requests before');
+    /*console.log('requests before');
     console.log(url);
     console.log(params);
     console.log(url + params?.toString());
     console.log('requests after');
-    axios.get<T>(url, { params }).then(function (responseBody) {
+    */
+    axios.get<T>(url, { params }).then(function (responseBody);/* {
       console.log(responseBody.data);
       console.log('in agents after response above line');
       return responseBody;
-    });
+    });*/
   },
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
@@ -147,7 +148,7 @@ const Applicant = {
 
 const Projects = {
   list: async <T>(params?: URLSearchParams) => {
-    console.log('inside Projects in agents');
+    //console.log('inside Projects in agents');
     //  const searchParams = useSearchParams();
     //  const paramsVal = new URLSearchParams(searchParams);
     //  const inParams = new URLSearchParams(params);
