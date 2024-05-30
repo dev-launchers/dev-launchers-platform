@@ -79,6 +79,10 @@ interface Props {
 const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
+  console.log('NewJoinPage');
+  console.log(projects);
+  console.log(opportunities);
+  console.log('NewJoinPage above');
 
   return (
     <>
@@ -123,12 +127,12 @@ const NewJoinPage = ({ projects, opportunities }: Props) => {
       </Head>
 
       <ThemeProvider theme={theme}>
-        <OpportunitiesProvider>
-          <NewJoinPageComponent
-            projects={projects}
-            opportunities={opportunities}
-          />
-        </OpportunitiesProvider>
+        {/*<OpportunitiesProvider> */}
+        <NewJoinPageComponent
+          projects={projects}
+          opportunities={opportunities}
+        />
+        {/*</OpportunitiesProvider> */}
       </ThemeProvider>
     </>
   );

@@ -102,19 +102,19 @@ const responseBody = (response: AxiosResponse) =>
 // Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
-  get: async <T>(url: string, params?: URLSearchParams) => {
+  get: <T>(url: string, params?: URLSearchParams) =>
     /*console.log('requests before');
     console.log(url);
     console.log(params);
     console.log(url + params?.toString());
     console.log('requests after');
     */
-    axios.get<T>(url, { params }).then(function (responseBody);/* {
+    axios.get<T>(url, { params }).then(responseBody),
+  /* {
       console.log(responseBody.data);
       console.log('in agents after response above line');
       return responseBody;
     });*/
-  },
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
@@ -147,7 +147,8 @@ const Applicant = {
 };
 
 const Projects = {
-  list: async <T>(params?: URLSearchParams) => {
+  list: (params?: URLSearchParams) =>
+    //  list: async <T>(params?: URLSearchParams) => {
     //console.log('inside Projects in agents');
     //  const searchParams = useSearchParams();
     //  const paramsVal = new URLSearchParams(searchParams);
@@ -161,17 +162,16 @@ const Projects = {
     console.log(inParams);
     */
 
-    await requests.get<Project[]>(
+    requests.get<Project[]>(
       '/projects',
       new URLSearchParams(
         '_publicationState=live&populate=opportunities'
         //params ? params : { populate: '*' }
       )
       //: { populate: '*' }
-    );
-    //console.log(params ? params : { populate: '*' });
-    //  console.log('after');
-  },
+    ),
+  //console.log(params ? params : { populate: '*' });
+  //  console.log('after');
   /*get: (slug: string, params?: URLSearchParams) =>
     requests.get<Project>(
       `projects/${slug}`,
