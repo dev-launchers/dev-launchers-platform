@@ -302,7 +302,7 @@ export interface Project {
     //parentProject: ParentProject;
     //google_meet: GoogleMeet;
     //newMeetingTimes: NewMeetingTime[];
-    opportunities:  Opportunity[];
+    opportunities:  {data:Opportunity[]};
     //isPlatform: boolean;
     created_at:string;
     updated_at:string;

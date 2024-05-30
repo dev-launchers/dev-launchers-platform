@@ -26,12 +26,29 @@ export const getStaticProps: GetStaticProps = async (context) => {
     );
     console.log(`result`);
     console.log(result);
-    projects =
-      typeof result === 'object' &&
-      result?.filter((p: Project) => p.attributes.opportunities.length > 0);
+    projects = result?.filter(
+      (p: Project) => p.attributes.opportunities.data.length > 0
+    );
+    console.log(projects);
+    console.log('projects above line');
+    //const
+    try {
+      const result = await agent.Opportunities.list();
+      opportunities = result.filter((o: Opportunity) => {
+        return o.attributes.projects.length > 0;
+      });
+    } catch (error) {
+      console.error('An error occurred while fetching Opportunities', error);
+    }
+
+    //  opportunities = result?.attributes.opportunities.data.filter(
+    //    (o: Opportunity) => console.log(o)
+    //  );
+    console.log('below opportunities');
+    console.log(opportunities);
     projects.map((project) => {
-      const commitments = project.attributes.opportunities.map(
-        (opp) => opp.commitmentHoursPerWeek
+      const commitments = project.attributes.opportunities.data.map(
+        (opp) => opp.attributes.commitmentHoursPerWeek
       );
       // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
@@ -43,11 +60,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
-
+  console.log(projects);
   /*try {
-    const result = await agent.Opportunities.list();
-    opportunities = result.filter(
-      (o: Opportunity) => o.attributes.projects.length > 0
+    const result = projects.attributes.Opportunities.length > 0
     );
   } catch (error) {
     console.error('An error occurred while fetching Opportunities', error);
@@ -70,6 +85,10 @@ interface Props {
 const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
+  console.log('NewJoinPage');
+  console.log(projects);
+  console.log(opportunities);
+  console.log('NewJoinPage above');
 
   return (
     <>
@@ -114,12 +133,12 @@ const NewJoinPage = ({ projects, opportunities }: Props) => {
       </Head>
 
       <ThemeProvider theme={theme}>
-        <OpportunitiesProvider>
-          <NewJoinPageComponent
-            projects={projects}
-            opportunities={opportunities}
-          />
-        </OpportunitiesProvider>
+        {/*<OpportunitiesProvider> */}
+        <NewJoinPageComponent
+          projects={projects}
+          opportunities={opportunities}
+        />
+        {/*</OpportunitiesProvider> */}
       </ThemeProvider>
     </>
   );

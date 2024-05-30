@@ -26,6 +26,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
 }) => {
   console.log('newjoinpagecomponent');
   console.log(projects);
+  console.log(opportunities);
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();

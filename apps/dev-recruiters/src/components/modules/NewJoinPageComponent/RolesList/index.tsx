@@ -47,24 +47,24 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
       SocialMediaManager: [],
     };
     arr.forEach((role) => {
-      console.log(typeof parseInt(role.id));
-      if (parseInt(role.id) === 8 || parseInt(role.id) === 4) {
+      console.log(typeof parseInt(role?.id));
+      if (parseInt(role?.id) === 8 || parseInt(role?.id) === 4) {
         separatedGroups['ProductLead'].push(role);
-      } else if (parseInt(role.id) === 6) {
+      } else if (parseInt(role?.id) === 6) {
         separatedGroups['UxDesigner'].push(role);
-      } else if (parseInt(role.id) === 7 || parseInt(role.id) === 5) {
+      } else if (parseInt(role?.id) === 7 || parseInt(role?.id) === 5) {
         separatedGroups['UxResearcher'].push(role);
-      } else if (parseInt(role.id) === 15) {
+      } else if (parseInt(role?.id) === 15) {
         separatedGroups['LeadDeveloper'].push(role);
-      } else if (parseInt(role.id) === 2) {
+      } else if (parseInt(role?.id) === 2) {
         separatedGroups['BackEndDeveloper'].push(role);
       } else if (
-        parseInt(role.id) === 1 ||
-        parseInt(role.id) === 10 ||
-        parseInt(role.id) === 16
+        parseInt(role?.id) === 1 ||
+        parseInt(role?.id) === 10 ||
+        parseInt(role?.id) === 16
       ) {
         separatedGroups['FrontEndDeveloper'].push(role);
-      } else if (parseInt(role.id) === 3) {
+      } else if (parseInt(role?.id) === 3) {
         separatedGroups['QaTester'].push(role);
       }
     });
