@@ -299,6 +299,12 @@ export interface Project {
     //google_meet: GoogleMeet;
     //newMeetingTimes: NewMeetingTime[];
     opportunities: { data: Opportunity[] };
+    /*    openPositions: {
+      id: string;
+      title: string;
+      description: string;
+      ishidden: boolean;
+    }; */
     //isPlatform: boolean;
     created_at: string;
     updated_at: string;
@@ -308,13 +314,13 @@ export interface Project {
 
 export interface ProjectLite {
   id: string;
-  //attributes: {
-  slug: string;
-  catchPhrase: string;
-  title: string;
-  description: string;
-  commitmentLevel: string;
-  opportunities: Opportunity[];
-  //};
+  attributes: {
+    slug: string;
+    catchPhrase: string;
+    title: string;
+    description: string;
+    commitmentLevel: string;
+    opportunities: Opportunity[];
+  };
   // isPlatform: boolean;
 }

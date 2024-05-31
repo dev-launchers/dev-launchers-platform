@@ -161,6 +161,7 @@ const Projects = {
       '/projects',
       new URLSearchParams(
         '_publicationState=live&populate=opportunities'
+        //&&populate=openPositions
         //params ? params : { populate: '*' }
       )
       //: { populate: '*' }
@@ -185,7 +186,11 @@ const Opportunities = {
     ),
     */
   get: (slug: string, params?: URLSearchParams) =>
-    requests.get(`opportunities/${slug}`, params ? params : { populate: '*' }),
+    requests.get(
+      `opportunities/${slug}`,
+      new URLSearchParams('_publicationState=live&populate=projects')
+      //params ? params : { populate: '*' }),
+    ),
 };
 
 const Ideas = {
