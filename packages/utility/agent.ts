@@ -180,8 +180,9 @@ const Projects = {
 };
 const Opportunities = {
   list: async (params?: URLSearchParams) =>
-    await Projects.list(
-      new URLSearchParams('_publicationState=live&populate=opportunities')
+    requests.get<Opportunity[]>(
+      '/opportunities',
+      new URLSearchParams('_publicationState=live&populate=projects')
     ),
   /*    requests.get<Opportunity[]>(
       '/opportunities',
