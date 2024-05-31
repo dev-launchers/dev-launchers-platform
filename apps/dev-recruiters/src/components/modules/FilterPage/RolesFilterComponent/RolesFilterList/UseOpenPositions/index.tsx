@@ -12,7 +12,7 @@ interface Props {
 
 export function useOpenPositions(projects: ProjectLite[] | undefined) {
   const allOpportunities =
-    projects?.flatMap((project) => project.opportunities) || [];
+    projects?.flatMap((project) => project.attributes.opportunities) || [];
 
   const [openPositions, setOpenPositions] = useState<{
     [key: string]: Opportunity[];

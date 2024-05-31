@@ -26,16 +26,19 @@ export default function useProjectRole() {
   const fetchProjects = (projectsList: Project[]) => {
     console.log('inside fetchProjects');
     console.log(projectsList);
-    if (projectsList.length > 0) {
+    if (projectsList?.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
-        slug: item.attributes.slug,
-        catchPhrase: item.attributes.catchPhrase,
-        title: item.attributes.title,
-        description: item.attributes.description,
-        commitmentLevel: item.attributes.commitmentLevel,
-        opportunities: item.attributes.opportunities.data,
-        //isPlatform: item.attributes.isPlatform,
+        attributes: {
+          slug: item.attributes.slug,
+          catchPhrase: item.attributes.catchPhrase,
+          title: item.attributes.title,
+          description: item.attributes.description,
+          commitmentLevel: item.attributes.commitmentLevel,
+          opportunities: item.attributes.opportunities.data,
+
+          //isPlatform: item.attributes.isPlatform,
+        },
       }));
       setProjects(list);
       setFilteredProjects(list);
@@ -138,8 +141,10 @@ export default function useProjectRole() {
 function FilterBySearchTerm(project: ProjectLite, params: ProjectParams) {
   if (params.searchTerm) {
     return (
-      project.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
-      project.opportunities.some((o) =>
+      project.attributes.title
+        .toLowerCase()
+        .includes(params.searchTerm.toLowerCase()) ||
+      project.attributes.opportunities.some((o) =>
         o.skills.some((s) =>
           s!
             .interest!.toLowerCase()!
