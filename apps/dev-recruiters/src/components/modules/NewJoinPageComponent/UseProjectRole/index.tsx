@@ -17,8 +17,6 @@ export default function useProjectRole() {
     maxCommit: 0,
     searchTerm: '',
   });
-  console.log('inside export fn useProjectRole');
-  console.log(projects);
   // Apply Filters
   const SetProjectParams = (value: ProjectParams) => {
     setFilteredProjects(FilterProjects(projects, value));
@@ -31,13 +29,13 @@ export default function useProjectRole() {
     if (projectsList.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
-        slug: item.slug,
-        catchPhrase: item.catchPhrase,
-        title: item.title,
-        description: item.description,
-        commitmentLevel: item.commitmentLevel,
-        opportunities: item.opportunities,
-        isPlatform: item.isPlatform,
+        slug: item.attributes.slug,
+        catchPhrase: item.attributes.catchPhrase,
+        title: item.attributes.title,
+        description: item.attributes.description,
+        commitmentLevel: item.attributes.commitmentLevel,
+        opportunities: item.attributes.opportunities.data,
+        //isPlatform: item.attributes.isPlatform,
       }));
       setProjects(list);
       setFilteredProjects(list);
@@ -158,6 +156,9 @@ function FilterProjectOpportunities(
   project: ProjectLite,
   params: ProjectParams
 ) {
+  console.log('inside filterprojectopportunities');
+  console.log(project);
+  console.log(params);
   const filterByLevel = params.level && params.level.length > 0;
   const filterByOpportunity =
     params.opportunity && params.opportunity.length > 0;

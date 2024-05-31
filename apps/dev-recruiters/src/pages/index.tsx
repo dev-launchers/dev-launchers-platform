@@ -35,7 +35,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     try {
       const result = await agent.Opportunities.list();
       opportunities = result.filter((o: Opportunity) => {
-        return o.attributes.projects.length > 0;
+        console.log('opp filter');
+        console.log(o);
+        return o.attributes.projects.data.length > 0;
       });
     } catch (error) {
       console.error('An error occurred while fetching Opportunities', error);

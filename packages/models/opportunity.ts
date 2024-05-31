@@ -6,14 +6,15 @@ export interface Opportunity {
   id: string;
   attributes: {
     title: string;
-    skills: Skill[];
+    //skills: Skill[];
     level: SkillLevel;
     commitmentHoursPerWeek: number;
     description: string;
-    //expectations: Expectation[];
+    expectations: Expectation[];
     isHidden: boolean;
     published_at: Date;
-    projects: Project[];
+    created_at: Date;
+    projects: { data: Project[] };
   };
 }
 
