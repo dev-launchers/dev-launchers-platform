@@ -22,7 +22,9 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
 }) => {
   function handleRoleClick(role) {
     const roleJsonString = JSON.stringify(role);
-
+    console.log('handleRoleClick');
+    console.log(roleJsonString);
+    console.log(role);
     console.log('here openPositions', openPositions);
 
     localStorage.setItem('selectedRole', roleJsonString);
