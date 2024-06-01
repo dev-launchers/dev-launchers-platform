@@ -67,7 +67,7 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 >>>>>>> b4f9e26e (build: work in time commitment)
   return (
     <List>
-      {/* <SearchResult>Search Results</SearchResult> */}
+      <SearchResult>Search Results</SearchResult>
       <ResultContainer>
         <FilterConatiner>
           <CollapsibleContainerFilter
