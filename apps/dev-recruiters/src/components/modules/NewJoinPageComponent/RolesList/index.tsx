@@ -82,7 +82,6 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
   useEffect(() => {
     setOpenPositions(separateRoles(allOpportunities));
   }, [projects]);
-
   return (
     <List>
       <CollapsibleContainer openPositions={openPositions} />
