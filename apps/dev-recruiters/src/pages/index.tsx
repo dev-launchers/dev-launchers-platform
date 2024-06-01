@@ -135,12 +135,12 @@ const NewJoinPage = ({ projects, opportunities }: Props) => {
       </Head>
 
       <ThemeProvider theme={theme}>
-        {/*<OpportunitiesProvider> */}
-        <NewJoinPageComponent
-          projects={projects}
-          opportunities={opportunities}
-        />
-        {/*</OpportunitiesProvider> */}
+        <OpportunitiesProvider>
+          <NewJoinPageComponent
+            projects={projects}
+            opportunities={opportunities}
+          />
+        </OpportunitiesProvider>
       </ThemeProvider>
     </>
   );
