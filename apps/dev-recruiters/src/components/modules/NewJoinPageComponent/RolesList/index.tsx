@@ -28,9 +28,12 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
     VoulunteerCordinator: [],
     SocialMediaManager: [],
   });
+  console.log('roles list');
   console.log(projects);
   // Extract all opportunities from the projects and flatten them into a single array
-  const allOpportunities = projects.flatMap((project) => project.opportunities);
+  const allOpportunities = projects.flatMap(
+    (project) => project.attributes.opportunities
+  );
 
   function separateRoles(arr: Opportunity[]) {
     const separatedGroups: { [key: string]: Opportunity[] } = {
@@ -47,6 +50,8 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
       SocialMediaManager: [],
     };
     arr.forEach((role) => {
+      console.log('inside roles list');
+      console.log(role);
       console.log(typeof parseInt(role?.id));
       if (parseInt(role?.id) === 8 || parseInt(role?.id) === 4) {
         separatedGroups['ProductLead'].push(role);

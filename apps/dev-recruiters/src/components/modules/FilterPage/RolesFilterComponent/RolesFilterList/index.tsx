@@ -29,7 +29,7 @@ export default function RolesFilterList({ projects, projectsLoaded }: Props) {
 
   return (
     <List>
-      {/* <SearchResult>Search Results</SearchResult> */}
+      <SearchResult>Search Results</SearchResult>
       <ResultContainer>
         <FilterConatiner>
           <CollapsibleContainerFilter

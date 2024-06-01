@@ -38,6 +38,6 @@ export function separateRoles(arr: Opportunity[]) {
       separatedGroups['QaTester'].push(role);
     }
   });
-
+  console.log(separatedGroups);
   return separatedGroups;
 }
