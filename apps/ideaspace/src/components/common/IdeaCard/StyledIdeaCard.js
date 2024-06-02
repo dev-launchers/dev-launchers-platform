@@ -20,7 +20,6 @@ export const StatuBox = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: #c0e1eb;
   border-radius: 1rem;
   z-index: 1;
   position: relative;
