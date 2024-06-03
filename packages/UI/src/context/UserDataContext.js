@@ -36,7 +36,6 @@ function useUserDataHook() {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
-        console.log('Fetching...', currentUser);
         setUserData({
           id: currentUser.id,
           name: currentUser.profile.displayName,
@@ -53,8 +52,7 @@ function useUserDataHook() {
         });
       })
       .catch((e) => {
-        console.error('Failed to fetch', e);
-        setIsAuthenticated(true);
+        setIsAuthenticated(false);
       });
   }, []);
 
