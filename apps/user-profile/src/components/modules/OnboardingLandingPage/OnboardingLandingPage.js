@@ -61,22 +61,33 @@ export default function OnboardingLandingPage() {
     setFormValidation(validate(person));
   }, [person]);
 
-  function validate(formValue) {
-    return {
-      isFirstNameValid:
-        formValue.firstNameTouched &&
-        /^[a-z ,.'-]+$/i.test(formValue.firstName),
-      isLastNameValid:
-        formValue.lastNameTouched && /^[a-z ,.'-]+$/i.test(formValue.lastName),
-      isFormValid: function () {
-        return (
-          formValue.termsAndConditions &&
-          this.isFirstNameValid &&
-          this.isLastNameValid
-        );
-      },
-    };
+function validate(formValue) {
+  var errors = {};
+  if (!formValue.firstNameTouched) {
+    errors.isFirstNameValid = false;
+    errors.firstNameError = 'First name is required';
+  } else if (!/^[a-z ,.'-]+$/i.test(formValue.firstName)) {
+    errors.isFirstNameValid = false;
+    errors.firstNameError = 'First name is not valid';
+  } else {
+    errors.isFirstNameValid = true;
   }
+
+  if (!formValue.lastNameTouched) {
+    errors.isLastNameValid = false;
+    errors.lastNameError = 'Last name is required';
+  } else if (!/^[a-z ,.'-]+$/i.test(formValue.lastName)) {
+    errors.isLastNameValid = false;
+    errors.lastNameError = 'Last name is not valid';
+  } else {
+    errors.isLastNameValid = true;
+  }
+
+  errors.isFormValid = () => formValue.termsAndConditions && errors.isFirstNameValid && errors.isLastNameValid;
+
+  return errors;
+}
+
 
   async function handleFileChange(event) {
     const file = event.target.files[0];
@@ -200,27 +211,21 @@ export default function OnboardingLandingPage() {
           <Typography>* Indicates a required field</Typography>
           <FormFields name="myForm">
             <InputField
-              error="Please fill in your First Name"
+              error={formValidation.firstNameError}
               label="First Name"
               name="First Name"
               onChange={onFirstNameChange}
               placeholder="John"
-              touched={
-                person.firstNameTouched
-                  ? !formValidation.isFirstNameValid
-                  : false
-              }
+              touched={person.firstNameTouched && !formValidation.isFirstNameValid}
               required
             />
             <InputField
-              error="Please fill in your Last Name"
+              error={formValidation.lastNameError}
               label="Last Name"
               name="Last Name"
               onChange={onLastNameChange}
               placeholder="Doe"
-              touched={
-                person.lastNameTouched ? !formValidation.isLastNameValid : false
-              }
+              touched={person.lastNameTouched && !formValidation.isLastNameValid}
               required
             />
 
