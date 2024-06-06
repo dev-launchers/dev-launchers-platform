@@ -136,10 +136,12 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             <Form>
               <atoms.Box flexDirection="column" margin="auto">
                 <atoms.Box flexDirection="column">
-                  <atoms.Layer hasRainbow>
+                  {/* is the atoms.Layer setting correct? */}
+                  <atoms.Layer hasRainbowBottom={true} hasRainbowTop={false}>
                     <atoms.Typography type="h2" textAlign="center">
                       Volunteer Application for{' '}
-                      <strong>{position.title}</strong> {/*position.title */}
+                      <strong>{position.attributes.title}</strong>{' '}
+                      {/*position.title */}
                     </atoms.Typography>
                   </atoms.Layer>
                 </atoms.Box>
