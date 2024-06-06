@@ -2,7 +2,7 @@ import BoxContainer from '../../common/BoxContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Project } from 'src/models/project';
+import { Project } from '@devlaunchers/models';
 import LongCard from '../OpportunitiesAggregator/LongCard';
 import ShortCard from '../OpportunitiesAggregator/ShortCard';
 import PositionCard from './PositionCard';
@@ -68,7 +68,7 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader
+        {/* <ProductHeader
           title={project.title}
           vision={project.vision}
           isPlatform={project.isPlatform}
@@ -78,11 +78,11 @@ export default function ProjectDetails({
           minCommitmentHours={minCommitment}
           interests={project.interests}
           team={project.team}
-        />
+  /> */}
 
         <LongCard
-          description={project.description}
-          details={project.description}
+          description={project.attributes.description}
+          details={project.attributes.description}
         ></LongCard>
       </BoxContainer>
 
