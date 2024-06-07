@@ -24,8 +24,6 @@ export default function useProjectRole() {
 
   //#region Fetching Operations
   const fetchProjects = (projectsList: Project[]) => {
-    console.log('inside fetchProjects');
-    console.log(projectsList);
     if (projectsList?.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
@@ -45,8 +43,6 @@ export default function useProjectRole() {
       setProjectsLoaded(true);
     }
   };
-
-  console.log(projects);
 
   function fetchOpportunities(opportunities: Opportunity[]) {
     if (opportunities.length <= 0) return;
@@ -161,42 +157,41 @@ function FilterProjectOpportunities(
   project: ProjectLite,
   params: ProjectParams
 ) {
-  console.log('inside filterprojectopportunities');
-  console.log(project);
-  console.log(params);
   const filterByLevel = params.level && params.level.length > 0;
   const filterByOpportunity =
     params.opportunity && params.opportunity.length > 0;
   const filterByCommitment = params.maxCommit > 0;
 
-  return project.opportunities.some(
+  return project.attributes.opportunities.some(
     (op) =>
-      (!filterByLevel || params!.level!.includes(op!.level)) &&
-      (!filterByOpportunity || params!.opportunity!.includes(op!.title)) &&
-      (!filterByCommitment || op!.commitmentHoursPerWeek <= params!.maxCommit)
+      (!filterByLevel || params!.level!.includes(op!.attributes.level)) &&
+      (!filterByOpportunity ||
+        params!.opportunity!.includes(op!.attributes.title)) &&
+      (!filterByCommitment ||
+        op!.attributes.commitmentHoursPerWeek <= params!.maxCommit)
   );
 }
 
 function FilterByLevel(project: ProjectLite, params: ProjectParams) {
   if (params.level && params.level.length > 0) {
-    return project.opportunities.some((op) =>
-      params!.level!.includes(op!.level)
+    return project.attributes.opportunities.some((op) =>
+      params!.level!.includes(op!.attributes.level)
     );
   }
   return true;
 }
 function FilterByOpportunities(project: ProjectLite, params: ProjectParams) {
   if (params.opportunity && params.opportunity.length > 0) {
-    return project.opportunities.some((op) =>
-      params!.opportunity!.includes(op!.title)
+    return project.attributes.opportunities.some((op) =>
+      params!.opportunity!.includes(op!.attributes.title)
     );
   }
   return true;
 }
 function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
   if (params.maxCommit > 0) {
-    return project.opportunities.some(
-      (op) => op.commitmentHoursPerWeek <= params.maxCommit
+    return project.attributes.opportunities.some(
+      (op) => op.attributes.commitmentHoursPerWeek <= params.maxCommit
     );
   }
   return true;
@@ -204,9 +199,10 @@ function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
 function FilterByProjectType(project: ProjectLite, params: ProjectParams) {
   if (params.projectType && params.projectType.length > 0) {
     const isPlatform =
-      params.projectType.includes('Platform') && project.isPlatform;
+      params.projectType.includes('Platform') && project.attributes.isPlatform;
     const isIndependent =
-      params.projectType.includes('Independent') && !project.isPlatform;
+      params.projectType.includes('Independent') &&
+      !project.attributes.isPlatform;
 
     return isPlatform || isIndependent;
   }
@@ -217,7 +213,8 @@ function FilterProject(project: ProjectLite, params: ProjectParams) {
   return (
     FilterProjectOpportunities(project, params) &&
     FilterByProjectType(project, params) &&
-    FilterBySearchTerm(project, params)
+    FilterBySearchTerm(project, params) &&
+    FilterByCommitment(project, params)
   );
 }
 //#endregion
@@ -233,10 +230,10 @@ export function FilterProjects(projects: ProjectLite[], params: ProjectParams) {
     return projects
       .filter((project) => FilterProject(project, params))
       .sort((a, b) => {
-        if (a.title < b.title) {
+        if (a.attributes.title < b.attributes.title) {
           return -1;
         }
-        if (a.title > b.title) {
+        if (a.attributes.title > b.attributes.title) {
           return 1;
         }
         return 0;

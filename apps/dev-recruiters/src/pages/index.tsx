@@ -13,8 +13,6 @@ import { useRouter } from 'next/router';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
-  console.log('above context');
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
@@ -79,10 +77,6 @@ interface Props {
 const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
-  console.log('NewJoinPage');
-  console.log(projects);
-  console.log(opportunities);
-  console.log('NewJoinPage above');
 
   return (
     <>
