@@ -10,15 +10,7 @@ import {
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import * as dotenv from 'dotenv';
-//import { useSearchParams } from '/next/navigation';
-//const searchParams = useSearchParams();
-//import { usePathname, useSearchParams } from 'next/navigation';
-
-//dotenv.config();
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
-console.log(axios.defaults.baseURL);
-console.log('above url');
-console.log(`env ${process.env.NODE_ENV}`);
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
 
@@ -103,18 +95,7 @@ const responseBody = (response: AxiosResponse) =>
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
-    /*console.log('requests before');
-    console.log(url);
-    console.log(params);
-    console.log(url + params?.toString());
-    console.log('requests after');
-    */
     axios.get<T>(url, { params }).then(responseBody),
-  /* {
-      console.log(responseBody.data);
-      console.log('in agents after response above line');
-      return responseBody;
-    });*/
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
@@ -143,36 +124,15 @@ const Applicant = {
 
 const Projects = {
   list: (params?: URLSearchParams) =>
-    //  list: async <T>(params?: URLSearchParams) => {
-    //console.log('inside Projects in agents');
-    //  const searchParams = useSearchParams();
-    //  const paramsVal = new URLSearchParams(searchParams);
-    //  const inParams = new URLSearchParams(params);
-    /*console.log('before');
-    const inParams: URLSearchParams = new URLSearchParams(
-      '_publicationState=live&populate=opportunities'
-      //params ? params : { populate: '*' }
-    );
-    console.log(params);
-    console.log(inParams);
-    */
-
     requests.get<Project[]>(
       '/projects',
-      new URLSearchParams(
-        '_publicationState=live&populate=opportunities'
-        //&&populate=openPositions
-        //params ? params : { populate: '*' }
-      )
-      //: { populate: '*' }
+      new URLSearchParams('_publicationState=live&populate=opportunities')
     ),
-  //console.log(params ? params : { populate: '*' });
-  //  console.log('after');
-  /*get: (slug: string, params?: URLSearchParams) =>
+  get: (slug: string, params?: URLSearchParams) =>
     requests.get<Project>(
       `projects/${slug}`,
-      params ? params : { populate: '*' }
-    ),*/
+      new URLSearchParams('_publicationState=live&populate=*')
+    ),
 };
 const Opportunities = {
   list: async (params?: URLSearchParams) =>
@@ -180,16 +140,10 @@ const Opportunities = {
       '/opportunities',
       new URLSearchParams('_publicationState=live&populate=projects')
     ),
-  /*    requests.get<Opportunity[]>(
-      '/opportunities',
-      params ? params : { populate: '*' }
-    ),
-    */
   get: (slug: string, params?: URLSearchParams) =>
     requests.get(
       `opportunities/${slug}`,
       new URLSearchParams('_publicationState=live&populate=projects')
-      //params ? params : { populate: '*' }),
     ),
 };
 

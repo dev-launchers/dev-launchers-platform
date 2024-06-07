@@ -36,10 +36,6 @@ export default function RolesComponent({
     fetchProjects,
     resetFilters,
   } = useProjectRole();
-  console.log('projects in Roles Component');
-  console.log(projects);
-  console.log(opportunities);
-  console.log('here filteredProjects', filteredProjects);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);

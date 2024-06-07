@@ -1,5 +1,6 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import theme from '@devlaunchers/components/src/styles/theme';
+import { theme, DefaultTheme } from '@devlaunchers/components/src/styles/theme';
+import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
@@ -65,7 +66,7 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
   // }, [router, userData.id]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === theme ? DefaultTheme : undefined}>
       <Formik
         initialValues={{
           discordUsername: '',

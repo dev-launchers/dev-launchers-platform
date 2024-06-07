@@ -13,8 +13,6 @@ import { useRouter } from 'next/router';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  console.log(context);
-  console.log('above context');
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
   try {
@@ -24,19 +22,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
         populate: 'opportunities',
       })
     );
-    console.log(`result`);
-    console.log(result);
     projects = result?.filter(
       (p: Project) => p.attributes.opportunities.data.length > 0
     );
-    console.log(projects);
-    console.log('projects above line');
-    //const
     try {
       const result = await agent.Opportunities.list();
       opportunities = result.filter((o: Opportunity) => {
-        console.log('opp filter');
-        console.log(o);
         return o.attributes.projects.data.length > 0;
       });
     } catch (error) {
@@ -46,13 +37,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     //  opportunities = result?.attributes.opportunities.data.filter(
     //    (o: Opportunity) => console.log(o)
     //  );
-    console.log('below opportunities');
-    console.log(opportunities);
     projects.map((project) => {
       const commitments = project.attributes.opportunities.data.map(
         (opp) => opp.attributes.commitmentHoursPerWeek
       );
-      // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
       project.attributes.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
@@ -62,14 +50,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
-  console.log(projects);
-  /*try {
-    const result = projects.attributes.Opportunities.length > 0
-    );
-  } catch (error) {
-    console.error('An error occurred while fetching Opportunities', error);
-  }
-  */
   return {
     props: {
       projects,
@@ -87,10 +67,6 @@ interface Props {
 const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
-  console.log('NewJoinPage');
-  console.log(projects);
-  console.log(opportunities);
-  console.log('NewJoinPage above');
 
   return (
     <>

@@ -9,8 +9,6 @@ import {
 } from './StyledSelectRole';
 
 function SelectRole(props) {
-  console.log(props);
-  console.log(`length in SelectRole ${props.openPositions.length}`);
   const { onClick } = props;
   // For the selected role, the list of open positions in the catagory of that role can be found in props.openPositions
   return (
