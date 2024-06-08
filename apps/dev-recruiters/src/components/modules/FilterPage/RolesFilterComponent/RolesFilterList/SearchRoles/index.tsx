@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react';
 import RoleCard from './RoleCard';
-<<<<<<< HEAD
 
 import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
-=======
->>>>>>> b4f9e26e (build: work in time commitment)
 
 import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
@@ -34,9 +31,6 @@ function SearchRole({ selectedRoleLabel }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     console.log(selectedRoleLabel);
     console.log(commitmentRange);
   }, [selectedRoleLabel, commitmentRange]);

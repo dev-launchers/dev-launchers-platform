@@ -1,5 +1,6 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import { theme, DefaultTheme } from '@devlaunchers/components/src/styles/theme';
+import theme from '@devlaunchers/components/src/styles/theme';
+import { DefaultTheme, useTheme } from 'styled-components';
 import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
@@ -64,9 +65,17 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
   //     router.push("/login");
   //   }
   // }, [router, userData.id]);
-
+  //'DefaultTheme' only refers to a type, but is being used as a value here.
+  /*const isDefaultTheme = (unknownValue): unknownValue is DefaultTheme => {
+    // check unknownValue is DefaultTheme or not
+    // return boolean
+  }
+  
+  if (isDefaultTheme(someValue:any)) {
+    // now type of someValue is DefaultTheme
+  } */
   return (
-    <ThemeProvider theme={theme === theme ? DefaultTheme : undefined}>
+    <ThemeProvider theme={useTheme()}>
       <Formik
         initialValues={{
           discordUsername: '',

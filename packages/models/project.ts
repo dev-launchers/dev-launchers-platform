@@ -320,7 +320,7 @@ export interface ProjectLite {
     title: string;
     description: string;
     commitmentLevel: string;
-    opportunities: Opportunity[];
+    opportunities: { data: Opportunity[] };
   };
   // isPlatform: boolean;
 }

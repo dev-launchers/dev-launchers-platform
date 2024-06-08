@@ -1,7 +1,7 @@
-import NoProjects from "../NoProjects";
-import { ProjectLite } from "@devlaunchers/models/project";
-import ProjectListItem from "../ProjectsListItem";
-import { List } from "./StyledProjectsList";
+import NoProjects from '../NoProjects';
+import { ProjectLite } from '@devlaunchers/models/project';
+import ProjectListItem from '../ProjectsListItem';
+import { List } from './StyledProjectsList';
 import { useEffect } from 'react';
 
 interface Props {
@@ -11,12 +11,11 @@ interface Props {
 
 export default function ProjectsList({ projects, projectsLoaded }: Props) {
   if (!projectsLoaded) return <div>loading please wait</div>;
-  
+
   useEffect(() => {
     const allOpportunities = projects.flatMap(
-      (project) => project.opportunities
+      (project) => project.attributes.opportunities
     );
-    console.log(allOpportunities);
 
     const resultadoContagem = contarElementosRepetidos(allOpportunities);
     console.log(resultadoContagem);
@@ -58,7 +57,6 @@ export default function ProjectsList({ projects, projectsLoaded }: Props) {
     return contagemElementos;
   }
 
-  console.log(projects);
   return (
     <List>
       {projects && projects.length > 0 ? (
