@@ -26,8 +26,6 @@ function SearchRole({ selectedRoleLabel }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
-    console.log(selectedRoleLabel);
-    console.log(commitmentRange);
   }, [selectedRoleLabel, commitmentRange]);
 
   /*
