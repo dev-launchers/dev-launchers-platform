@@ -30,6 +30,8 @@ function RoleDetailsModal({
   projectId,
   projectSlug,
 }: Props) {
+  console.log(projectId);
+  console.log(projectSlug);
   return (
     <div>
       <ColorBox />
@@ -151,7 +153,12 @@ function ModalBottomSection({
         handleOpenModal={handleOpenApplyModal}
         closeModal={handleCloseApplyModal}
         modalContent={
-          <SignUpForm handleCloseModal={handleCloseModal} position={position} />
+          <SignUpForm
+            handleCloseModal={handleCloseModal}
+            position={position}
+            projectId={projectId}
+            projectSlug={projectSlug}
+          />
         }
       />
     </div>

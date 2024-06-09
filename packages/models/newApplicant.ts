@@ -17,6 +17,6 @@ export interface NewApplicant {
   zip: number;
   role: string;
   //id?: string;
-  project?: { id: string; slug: string };
+  project: { id: string; slug: string };
   level: keyof typeof SkillLevel;
 }
