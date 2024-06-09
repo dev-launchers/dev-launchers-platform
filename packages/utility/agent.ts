@@ -145,6 +145,13 @@ const Opportunities = {
       `opportunities/${slug}`,
       new URLSearchParams('_publicationState=live&populate=projects')
     ),
+  getById: (
+    oppId: string //, params?: URLSearchParams
+  ) =>
+    requests.get<Opportunity[]>(
+      `opportunities/${oppId}`,
+      new URLSearchParams('_publicationState=live&populate=projects')
+    ),
 };
 
 const Ideas = {

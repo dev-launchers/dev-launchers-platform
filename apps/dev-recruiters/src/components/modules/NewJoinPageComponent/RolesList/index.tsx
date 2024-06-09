@@ -32,7 +32,7 @@ export default function RolesList({ projects, projectsLoaded }: Props) {
   const allOpportunities = projects.flatMap(
     (project) => project.attributes.opportunities
   );
-
+  console.log(allOpportunities);
   function separateRoles(arr: Opportunity[]) {
     const separatedGroups: { [key: string]: Opportunity[] } = {
       ProductLead: [],

@@ -21,11 +21,20 @@ interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
 }
 interface Props {
+  projectId: string;
+  projectSlug: string;
   handleCloseModal: () => void;
   position: Opportunity;
 }
 
-export default function SignUpForm({ handleCloseModal, position }: Props) {
+export default function SignUpForm({
+  projectId,
+  projectSlug,
+  handleCloseModal,
+  position,
+}: Props) {
+  console.log(projectId);
+  console.log(projectSlug);
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -91,8 +100,10 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
           reason: '',
           zip: 0,
           role: 'title' as string, //  role: position.title as string,
-          id: '5' as string, // id: position.id as string,
+          //id: '5' as string, // id: position.id as string,
           // project: router.query.slug as string,
+          project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
+
           skills: [{ skill: '' }],
         }}
         onSubmit={(
@@ -110,7 +121,9 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
               .map((skill) => ({ skill: skill })),
             role: 'title' as string, // role: position.title as string,
             // project:  router.query.project as string,
-            id: '5' as string, // id: position.id as string,
+            project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
+
+            //id: '5' as string, // id: position.id as string,
           })
             .then((res) => {
               handleOpenConfirmationModal();
