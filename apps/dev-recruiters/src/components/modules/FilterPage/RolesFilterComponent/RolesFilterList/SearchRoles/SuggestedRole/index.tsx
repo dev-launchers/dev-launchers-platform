@@ -61,6 +61,7 @@ const SuggestedRole = () => {
           modalContent={
             <RoleDetailsModal
               position={null}
+              projectId={'projectId'}
               projectSlug={'projectSlug'}
               handleCloseModal={handleCloseModal}
             />
