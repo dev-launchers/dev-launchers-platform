@@ -43,11 +43,16 @@ import {
 
 interface Props {
   projectSlug: string;
+  projectId: string;
   position: Opportunity;
   handleCloseModal?: () => void;
 }
 
-export default function PositionCard({ position, projectSlug }: Props) {
+export default function PositionCard({
+  position,
+  projectId,
+  projectSlug,
+}: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [liked, setLiked] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -213,6 +218,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               modalContent={
                 <ProjectDetailsModal
                   position={position}
+                  projectId={projectId}
                   projectSlug={projectSlug}
                   handleCloseModal={handleCloseModal}
                 />
@@ -240,6 +246,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
 function ProjectDetailsModal({
   position,
   handleCloseModal,
+  projectId,
   projectSlug,
 }: Props) {
   return (
@@ -260,10 +267,15 @@ function ProjectDetailsModal({
           />
         </CloseIcon>
       </CloseButton>
-      <ModalTopSection position={position} projectSlug={projectSlug} />
+      <ModalTopSection
+        position={position}
+        projectId={projectId}
+        projectSlug={projectSlug}
+      />
       <ModalBottomSection
         position={position}
         projectSlug={projectSlug}
+        projectId={projectId}
         handleCloseModal={handleCloseModal}
       />
     </div>
@@ -305,6 +317,7 @@ function ModalTopSection({ position }: Props) {
 
 function ModalBottomSection({
   position,
+  projectId,
   projectSlug,
   handleCloseModal,
 }: Props) {
@@ -358,7 +371,12 @@ function ModalBottomSection({
         handleOpenModal={handleOpenApplyModal}
         closeModal={handleCloseApplyModal}
         modalContent={
-          <SignUpForm handleCloseModal={handleCloseModal} position={position} />
+          <SignUpForm
+            handleCloseModal={handleCloseModal}
+            position={position}
+            projectId={projectId}
+            projectSlug={projectSlug}
+          />
         }
       />
     </div>
