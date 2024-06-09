@@ -36,6 +36,8 @@ const Dropdown = ({
 
   const onChange = (e: ChangeEvent, text: string) => {
     const { checked } = e.target as HTMLInputElement;
+    var optionsToReturn = {};
+    optionsToReturn[text] = checked;
     if (type === 'radio')
       setCheckedOptions((prev) => {
         Object.keys(prev).forEach((key) => (prev[key] = false));
@@ -47,7 +49,7 @@ const Dropdown = ({
         prev[text] = checked;
         return prev;
       });
-    recieveValue?.(checkedOptions);
+    recieveValue?.(optionsToReturn);
   };
   // add typings here
   const [checkedOptions, setCheckedOptions] = useState<{
