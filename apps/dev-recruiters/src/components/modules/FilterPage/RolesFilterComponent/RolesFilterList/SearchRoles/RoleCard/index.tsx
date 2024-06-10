@@ -16,8 +16,8 @@ import {
 import { agent } from '@devlaunchers/utility';
 import { result } from 'lodash';
 import { Opportunity } from '@devlaunchers/models';
-let projectId: string;
-let projectSlug: string;
+//let projectId: string;
+//let projectSlug: string;
 
 let oppProject = {
   projectId: 'projectId',
@@ -25,7 +25,6 @@ let oppProject = {
 };
 const RoleCard = (props) => {
   const [showModal, setShowModal] = useState(false);
-  //const [oppProjects, setOppProjects] = useState<Opportunity[]>([]);
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -36,83 +35,23 @@ const RoleCard = (props) => {
   };
 
   const getProjectSlugs = async () => {
-    const oppProjectSlug = await agent.Opportunities.getById(
-      `${props.role.id}`
-    ).then((result) => {
-      projectSlug = result.attributes.projects.data[0].attributes.slug;
-      projectId = result.attributes.projects.data[0].id;
-      oppProject.projectId = projectId;
-      oppProject.projectSlug = projectSlug;
+    try {
+      const oppProjectSlug = await agent.Opportunities.getById(
+        `${props.role.id}`
+      ).then((result) => {
+        oppProject.projectId = result.attributes.projects.data[0].id;
+        oppProject.projectSlug =
+          result.attributes.projects.data[0].attributes.slug;
 
+        return result;
+      });
       return oppProjectSlug;
-    });
-    //const oppProjectSlugs = await oppProjectSlug();
-    //return oppProjectSlugs;
-    /*.then((res) => {
-      console.log('inside getProjectSlugs');
-      console.log(res);
-      projectSlug = res.attributes.projects.data[0].attributes.slug;
-      projectId = res.attributes.projects.data[0].id;
-      console.log(projectId);
-      console.log(projectSlug);
-      return res;
-    });
-    */
-    /*console.log(projectId);
-    console.log(projectSlug);
-    console.log(oppProjectSlugs);
-    return oppProjectSlugs;*/
+    } catch (error) {
+      console.log('an error occured while fetching project slugs');
+    }
   };
-  console.log('below line getProjectSlugs result');
+
   getProjectSlugs();
-  /*const rrrrr = async () => {
-    await getProjectSlugs().then((result) => {
-      console.log('inside rrrr');
-      console.log(result);
-      return result;
-    });
-  };
-  console.log(rrrrr());
-  */
-  console.log(oppProject);
-
-  //console.log(getProjectSlugs().then((res) => res));
-  //const resOppProjectSlugs = async () =>
-  //  await getProjectSlugs().then((res) => res);
-  //console.log(' line below');
-
-  //console.log(resOppProjectSlugs());
-  //console.log(' line above');
-
-  /*let oppProjects: Opportunity[];
-  const getProjectSlugs = async () => {
-    const result = await agent.Opportunities.getById(`${props.role.id}`);
-    oppProjects = result.filter(
-      (o: Opportunity) => o.attributes.projects.data.length > 0
-    );
-    return oppProjects;
-  };
-  try {
-    const ops = getProjectSlugs().then((res) => {
-      console.log(res);
-      //  setOppProjects(res);
-      console.log(res?.attributes.projects);
-      console.log(res?.attributes.projects.data[0].id);
-      console.log(res?.attributes?.projects.data[0].attributes.slug);
-
-      //console.log('2');
-      //return res;
-    });
-  } catch (error) {
-    console.error(
-      'An error occurred while fetching Opportunities Project Id and Slug',
-      error
-    );
-  }
-  //const oppProjects = getProjectSlugs().then((res) => res);
-  console.log(oppProjects);
-  console.log('above line');
-  */
   return (
     <CardContainer>
       <CardContent>
