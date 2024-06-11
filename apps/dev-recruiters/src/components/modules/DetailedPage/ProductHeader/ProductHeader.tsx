@@ -29,11 +29,11 @@ interface ProductHeaderProps
 export default function ProductHeader({
   title,
   vision,
-  isPlatform = false,
+  //isPlatform = false,
   type,
-  interests = [], //keywords = [],
+  //interests = [], //keywords = [],
   published_at, //date,
-  team, //username,
+  //team, //username,
   // userAvatar,
   minCommitmentHours,
   maxCommitmentHours,
@@ -44,24 +44,28 @@ export default function ProductHeader({
     .split(' ')
     .slice(1)
     .join(' ');
-  
+
   return (
     <HeaderBlock>
       <Row>
         <Column w="614px" style={{ flexGrow: 1 }}>
           <ColumnTitle>{title}</ColumnTitle>
+          {/*}
           <Type>
             {isPlatform ? 'Platform' : 'Independent'} {type}
           </Type>
+  */}
           <Vision>{vision}</Vision>
         </Column>
         <Column w="384px" style={{ flexGrow: 1 }}>
           <ColumnTitle>Tags</ColumnTitle>
+          {/*
           <Row>
             {interests.data.map(({ attributes, id }) => {
               return <Tags key={id}>{attributes.interest}</Tags>;
             })}
           </Row>
+          */}
         </Column>
         <Column
           bgColor="#ffffff"
