@@ -9,39 +9,54 @@ import {
   RolesContainer,
   SearchResult,
 } from './styles';
-import { useOpenPositions } from './UseOpenPositions';
+import useOpenPositions from './UseOpenPositions';
+//import useOpenPositions from './UseOpenPositions';
+import { Opportunity } from '@devlaunchers/models';
 
 interface Props {
   projects?: ProjectLite[];
   projectsLoaded: boolean;
+  opportunities?: Opportunity[];
 }
 
-export default function RolesFilterList({ projects, projectsLoaded }: Props) {
+export default function RolesFilterList({
+  projects,
+  projectsLoaded,
+  opportunities,
+}: Props) {
   if (!projectsLoaded) return <div>loading please wait</div>;
 
   const [selectRoleLabel, setSelectRoleLabel] = useState(null);
 
-  function handleRoleSelection(roleLabel) {
+  function handleRoleSelection(roleLabel: any) {
     setSelectRoleLabel(roleLabel);
   }
 
-  const openPositions = useOpenPositions(projects);
-
-  return (
-    <List>
-      <SearchResult>Search Results</SearchResult>
-      <ResultContainer>
-        <FilterConatiner>
-          <CollapsibleContainerFilter
-            openPositions={openPositions}
-            onRoleSelection={handleRoleSelection}
-            selectRoleLabel={selectRoleLabel}
-          />
-        </FilterConatiner>
-        <RolesContainer>
-          <SearchRole selectedRoleLabel={selectRoleLabel} />
-        </RolesContainer>
-      </ResultContainer>
-    </List>
-  );
+  const openPositions = useOpenPositions({
+    projects,
+    projectsLoaded,
+    opportunities,
+  });
+  {
+    return (
+      <List>
+        <SearchResult>Search Results</SearchResult>
+        <ResultContainer>
+          <FilterConatiner>
+            <CollapsibleContainerFilter
+              openPositions={openPositions}
+              onRoleSelection={handleRoleSelection}
+              selectRoleLabel={selectRoleLabel}
+            />
+          </FilterConatiner>
+          <RolesContainer>
+            <SearchRole
+              selectedRoleLabel={selectRoleLabel}
+              opportunities={opportunities}
+            />
+          </RolesContainer>
+        </ResultContainer>
+      </List>
+    );
+  }
 }

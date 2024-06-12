@@ -208,6 +208,7 @@ export default function RolesComponent({
         <RolesList
           projects={filteredProjects as ProjectLite[]}
           projectsLoaded={projectsLoaded}
+          opportunities={opportunities}
         />
       )}
     </Wrapper>

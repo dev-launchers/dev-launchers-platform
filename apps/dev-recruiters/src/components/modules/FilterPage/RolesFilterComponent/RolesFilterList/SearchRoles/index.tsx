@@ -5,8 +5,13 @@ import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
+import { Opportunity } from '@devlaunchers/models';
 
-function SearchRole({ selectedRoleLabel }) {
+interface Props {
+  selectedRoleLabel: any;
+  opportunities?: Opportunity[];
+}
+function SearchRole({ selectedRoleLabel, opportunities }: Props) {
   const [selectedRole, setSelectedRole] = useState([]);
 
   const { commitmentRange } = useOpportunitiesContext();
@@ -42,7 +47,6 @@ function SearchRole({ selectedRoleLabel }) {
     }
   }, [commitmentRange, selectedRoleLabel]);
   */
-
   return (
     <>
       <>
@@ -58,9 +62,15 @@ function SearchRole({ selectedRoleLabel }) {
           </>
         ) : (
           <RolesContainer>
-            {selectedRole.map((role, index) => (
-              <RoleCard key={index} role={role}></RoleCard>
-            ))}
+            {selectedRole.map((role, index) => {
+              return (
+                <RoleCard
+                  key22={index}
+                  role={role}
+                  opportunities={opportunities}
+                ></RoleCard>
+              );
+            })}
           </RolesContainer>
         )}
       </>
