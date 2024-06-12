@@ -9,19 +9,26 @@ import {
   RolesContainer,
   SearchResult,
 } from './styles';
-import { useOpenPositions } from './UseOpenPositions';
+import useOpenPositions from './UseOpenPositions';
+//import useOpenPositions from './UseOpenPositions';
+import { Opportunity } from '@devlaunchers/models';
 
 interface Props {
   projects?: ProjectLite[];
   projectsLoaded: boolean;
+  opportunities?: Opportunity[];
 }
 
-export default function RolesFilterList({ projects, projectsLoaded }: Props) {
+export default function RolesFilterList({
+  projects,
+  projectsLoaded,
+  opportunities,
+}: Props) {
   if (!projectsLoaded) return <div>loading please wait</div>;
 
   const [selectRoleLabel, setSelectRoleLabel] = useState(null);
 
-  function handleRoleSelection(roleLabel) {
+  function handleRoleSelection(roleLabel: any) {
     setSelectRoleLabel(roleLabel);
   }
 

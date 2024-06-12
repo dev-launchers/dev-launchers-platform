@@ -8,6 +8,7 @@ export default function useProjectRole() {
   const [projects, setProjects] = useState<ProjectLite[]>([]);
   const [projectsLoaded, setProjectsLoaded] = useState(false);
   const [filteredProjects, setFilteredProjects] = useState<ProjectLite[]>();
+
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [opportunitiesLoaded, setOpportunitiesLoaded] = useState(false);
   const [projectParams, setProjectParams] = useState<ProjectParams>({
@@ -33,7 +34,7 @@ export default function useProjectRole() {
           title: item.attributes.title,
           description: item.attributes.description,
           commitmentLevel: item.attributes.commitmentLevel,
-          opportunities: item.attributes.opportunities.data,
+          opportunities: item.attributes.opportunities,
 
           //isPlatform: item.attributes.isPlatform,
         },
@@ -135,20 +136,21 @@ export default function useProjectRole() {
 
 //#region Single Project Filtering
 function FilterBySearchTerm(project: ProjectLite, params: ProjectParams) {
-  if (params.searchTerm) {
+  /*if (params.searchTerm) {
     return (
       project.attributes.title
         .toLowerCase()
-        .includes(params.searchTerm.toLowerCase()) ||
-      project.attributes.opportunities.some((o) =>
+        .includes(params.searchTerm.toLowerCase()) 
+        ||
+      project.attributes.opportunities.data.some((o) =>
         o.skills.some((s) =>
           s!
             .interest!.toLowerCase()!
             .includes(params!.searchTerm!.toLowerCase())
-        )
+        ) 
       )
     );
-  }
+  } */
   return true;
 }
 
@@ -162,7 +164,7 @@ function FilterProjectOpportunities(
     params.opportunity && params.opportunity.length > 0;
   const filterByCommitment = params.maxCommit > 0;
 
-  return project.attributes.opportunities.some(
+  return project.attributes.opportunities.data.some(
     (op) =>
       (!filterByLevel || params!.level!.includes(op!.attributes.level)) &&
       (!filterByOpportunity ||
@@ -174,7 +176,7 @@ function FilterProjectOpportunities(
 
 function FilterByLevel(project: ProjectLite, params: ProjectParams) {
   if (params.level && params.level.length > 0) {
-    return project.attributes.opportunities.some((op) =>
+    return project.attributes.opportunities.data.some((op) =>
       params!.level!.includes(op!.attributes.level)
     );
   }
@@ -182,7 +184,7 @@ function FilterByLevel(project: ProjectLite, params: ProjectParams) {
 }
 function FilterByOpportunities(project: ProjectLite, params: ProjectParams) {
   if (params.opportunity && params.opportunity.length > 0) {
-    return project.attributes.opportunities.some((op) =>
+    return project.attributes.opportunities.data.some((op) =>
       params!.opportunity!.includes(op!.attributes.title)
     );
   }
@@ -190,7 +192,7 @@ function FilterByOpportunities(project: ProjectLite, params: ProjectParams) {
 }
 function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
   if (params.maxCommit > 0) {
-    return project.attributes.opportunities.some(
+    return project.attributes.opportunities.data.some(
       (op) => op.attributes.commitmentHoursPerWeek <= params.maxCommit
     );
   }
@@ -198,13 +200,13 @@ function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
 }
 function FilterByProjectType(project: ProjectLite, params: ProjectParams) {
   if (params.projectType && params.projectType.length > 0) {
-    const isPlatform =
+    /* const isPlatform =
       params.projectType.includes('Platform') && project.attributes.isPlatform;
     const isIndependent =
       params.projectType.includes('Independent') &&
       !project.attributes.isPlatform;
-
-    return isPlatform || isIndependent;
+   */
+    return 'isPlatform' || 'isIndependent';
   }
   return true;
 }

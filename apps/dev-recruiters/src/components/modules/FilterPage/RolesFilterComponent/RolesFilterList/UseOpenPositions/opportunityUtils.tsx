@@ -1,8 +1,8 @@
-// OpportunityUtils.ts
+// opportunityUtils.tsx
 
 import { Opportunity } from '@devlaunchers/models/opportunity';
 
-export function separateRoles(arr: Opportunity[]) {
+export default function separateRoles(arr: Opportunity[]) {
   const separatedGroups: { [key: string]: Opportunity[] } = {
     ProductLead: [],
     UxDesigner: [],

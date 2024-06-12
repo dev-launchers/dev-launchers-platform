@@ -5,13 +5,13 @@ import { EmptyRolesContainer, OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import SuggestedRole from './SuggestedRole';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
+import { Opportunity } from '@devlaunchers/models';
 
-import { EmptyRolesContainer, OpenRolesText } from './styles';
-import { RolesContainer } from './styles';
-import SuggestedRole from './SuggestedRole';
-import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
-
-function SearchRole({ selectedRoleLabel }) {
+interface Props {
+  selectedRoleLabel: any;
+  opportunities?: Opportunity[];
+}
+function SearchRole({ selectedRoleLabel, opportunities }: Props) {
   const [selectedRole, setSelectedRole] = useState([]);
 
   const { commitmentRange } = useOpportunitiesContext();
@@ -31,8 +31,6 @@ function SearchRole({ selectedRoleLabel }) {
     } else {
       setSelectedRole(selectedRoleLabel);
     }
-    console.log(selectedRoleLabel);
-    console.log(commitmentRange);
   }, [selectedRoleLabel, commitmentRange]);
 
   /*
@@ -49,38 +47,8 @@ function SearchRole({ selectedRoleLabel }) {
     }
   }, [commitmentRange, selectedRoleLabel]);
   */
-=======
->>>>>>> 2bc7ee42 (fix: bug fix)
-=======
-  }, [selectedRoleLabel]);
->>>>>>> 79e3fb90 (feat: create the logic of time commitment)
-=======
-    console.log(selectedRoleLabel);
-    console.log(commitmentRange);
-  }, [selectedRoleLabel, commitmentRange]);
->>>>>>> e99587eb (fix: fixing the design)
-
-  /*
-  useEffect(() => {
-    if (commitmentRange !== null) {
-      const filteredRoles = selectedRoleLabel.filter(
-        (role) =>
-          role.commitmentHoursPerWeek >= commitmentRange.min &&
-          role.commitmentHoursPerWeek <= commitmentRange.max
-      );
-      setSelectedRole(filteredRoles);
-    } else {
-      setSelectedRole(selectedRoleLabel);
-    }
-  }, [commitmentRange, selectedRoleLabel]);
-  */
-
   return (
     <>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b4f9e26e (build: work in time commitment)
       <>
         <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
         {selectedRole.length === 0 ? (
@@ -94,23 +62,18 @@ function SearchRole({ selectedRoleLabel }) {
           </>
         ) : (
           <RolesContainer>
-            {selectedRole.map((role, index) => (
-              <RoleCard key={index} role={role}></RoleCard>
-            ))}
+            {selectedRole.map((role, index) => {
+              return (
+                <RoleCard
+                  key22={index}
+                  role={role}
+                  opportunities={opportunities}
+                ></RoleCard>
+              );
+            })}
           </RolesContainer>
         )}
       </>
-<<<<<<< HEAD
-=======
-      <OpenRolesText>Open roles ({selectedRole.length})</OpenRolesText>
-      <RolesContainer>
-        {selectedRole.map((role, index) => (
-          <RoleCard key={index} role={role}></RoleCard>
-        ))}
-      </RolesContainer>
->>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
-=======
->>>>>>> b4f9e26e (build: work in time commitment)
     </>
   );
 }

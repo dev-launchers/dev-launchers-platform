@@ -74,15 +74,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             <RolesButtons
               textRole="QA Lead"
               onClick={() => handleRoleClick('QaLead', openPositions['QaLead'])}
-<<<<<<< HEAD
-<<<<<<< HEAD
               isActive={roleActive === 'QaLead'}
-=======
-              isActive={selectedRole === 'QaLead'}
->>>>>>> 1fc468f4 (feat: creating logic to change the button color when active)
-=======
-              isActive={roleActive === 'QaLead'}
->>>>>>> 79e3fb90 (feat: create the logic of time commitment)
             />
             <RolesButtons
               textRole="QA Tester"
@@ -140,27 +132,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             />
           </ContainerRoles>
           <ContainerCommitment>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <Commitment />
-=======
-            <CommitmentText>Time Commitment</CommitmentText>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <Commitment selectRoleLabel={selectRoleLabel} />
->>>>>>> b4f9e26e (build: work in time commitment)
-=======
-            <Commitment
-              handleCommitmentFilter={handleCommitmentFilter}
-              isFilterActive={isFilterActive}
-            />
->>>>>>> 2bc7ee42 (fix: bug fix)
-=======
-=======
->>>>>>> e99587eb (fix: fixing the design)
-            <Commitment />
->>>>>>> 79e3fb90 (feat: create the logic of time commitment)
           </ContainerCommitment>
         </ContainerBody>
       </ContainerMain>
