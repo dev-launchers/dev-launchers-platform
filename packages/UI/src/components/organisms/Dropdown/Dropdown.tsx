@@ -36,7 +36,7 @@ const Dropdown = ({
 
   const onChange = (e: ChangeEvent, text: string) => {
     const { checked } = e.target as HTMLInputElement;
-    var optionsToReturn = {};
+    const optionsToReturn: Record<string, boolean> = {};
     optionsToReturn[text] = checked;
     if (type === 'radio')
       setCheckedOptions((prev) => {
