@@ -2683,6 +2683,7 @@ __metadata:
     "@radix-ui/react-checkbox": 1.0.4
     "@radix-ui/react-dialog": 1.0.5
     "@radix-ui/react-dropdown-menu": 2.0.6
+    "@radix-ui/react-progress": 1.0.3
     "@radix-ui/react-switch": 1.0.3
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.2.2
@@ -2731,6 +2732,7 @@ __metadata:
     jest: ^27.0.6
     lucide-react: 0.314.0
     next: ^12.2.3
+    next-share: 0.27.0
     npm-run-all: 4.1.5
     polished: ^4.2.2
     prettier: ^2.7.1
@@ -6547,6 +6549,27 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 9402bc22923c8e5c479051974a721c301535c36521c0237b83e5fa213d013174e77f3ad7905e6d60ef07e14f88ec7f4ea69891dc7a2b39047f8d3640e8f8d713
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-progress@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@radix-ui/react-progress@npm:1.0.3"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: a4398812315ae5b25f8637a6553daf85bd36e6e08d15f7486248538a994a99268752e2c21e4af15277c17e861c1825fdd7292938c515c112dc2cdce63ec1a892
   languageName: node
   linkType: hard
 
@@ -29156,6 +29179,17 @@ __metadata:
     raw-loader: ^2.0.0
     url-loader: ^1.1.2
   checksum: e9356f8ca0b63152cfa4c02e938ce0beebc28bdfde7cdc9b9a310740c9e1493bdb85184d4b446f5156280a84930ccdbf5fa4469c3e4c9b4b519080aaec9903f1
+  languageName: node
+  linkType: hard
+
+"next-share@npm:0.27.0":
+  version: 0.27.0
+  resolution: "next-share@npm:0.27.0"
+  dependencies:
+    jsonp: ^0.2.1
+  peerDependencies:
+    react: ">=17.0.2"
+  checksum: db2695ba6bdd1c74747b1c2cdc65eb6ca446f17ffc873cc959867e5bd09180333a51954f1208e51bef94d2f35986ab86684b0fbbc39bcbe93ce8a45e2700df07
   languageName: node
   linkType: hard
 

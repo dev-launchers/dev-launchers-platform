@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Alert from './Alert';
 
 export default {
-  title: 'Molecules/Alert',
+  title: 'Deprecated/Molecules/Alert',
   component: Alert,
 } as ComponentMeta<typeof Alert>;
 
