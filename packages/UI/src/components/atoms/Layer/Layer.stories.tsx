@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Layer from './Layer';
 
 export default {
-  title: 'Atoms/Layer',
+  title: 'Deprecated/Atoms/Layer',
   component: Layer,
   parameters: {
     docs: {

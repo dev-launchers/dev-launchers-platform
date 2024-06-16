@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import SubNavLink from './SubNavLink';
 
 export default {
-  title: 'Atoms/SubNavLink',
+  title: 'Deprecated/Atoms/SubNavLink',
   component: SubNavLink,
 } as ComponentMeta<typeof SubNavLink>;
 
