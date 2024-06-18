@@ -33,8 +33,6 @@ export default function SignUpForm({
   handleCloseModal,
   position,
 }: Props) {
-  console.log(projectId);
-  console.log(projectSlug);
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -51,6 +49,16 @@ export default function SignUpForm({
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
+    /* Adding new column yearsExperience column */
+    yearsExperience: Yup.number()
+      .default(0)
+      .min(0, 'Years Experience should be greater than 0')
+      .max(100, 'Years Expereince should be less than 100')
+      .test(
+        'maxDigitsAfterDecimal',
+        'Years Experience must have 2 digits after decimal or less',
+        (number) => /^\d+(\.\d{1,2})?$/.test(number.toString())
+      ),
     experience: Yup.string().required('Experience Field Entry is Required'),
     accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
   });
@@ -234,11 +242,22 @@ export default function SignUpForm({
                     </atoms.Typography>
                   </atoms.Box>
                   <Field
+                    as={organisms.FormField}
+                    label="How many years of relevant experience do you have"
+                    placeholder="eg, 1"
+                    id="yearsExperience"
+                    name="yearsExperience"
+                    required
+                    touched={touched['yearsExperience']}
+                    error={errors.yearsExperience}
+                  />
+
+                  <Field
                     as={organisms.OpenResponse}
                     cols={50}
                     touched={touched['experience']}
                     error={errors.experience}
-                    label="Please briefly describe your experience in development or design"
+                    label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
                     rows={5}
