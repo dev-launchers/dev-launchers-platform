@@ -1,5 +1,5 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import theme from '@devlaunchers/components/src/styles/theme';
+//import theme from '@devlaunchers/components/src/styles/theme';
 import { DefaultTheme, useTheme } from 'styled-components';
 import { ThemeType } from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
@@ -9,6 +9,9 @@ import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import theme from '../../../../../../apps/dev-recruiters/src/styles/theme';
+//import { ThemeProvider } from 'styled-components';
+
 import * as Yup from 'yup';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
 import {
@@ -82,17 +85,9 @@ export default function SignUpForm({
   //     router.push("/login");
   //   }
   // }, [router, userData.id]);
-  //'DefaultTheme' only refers to a type, but is being used as a value here.
-  /*const isDefaultTheme = (unknownValue): unknownValue is DefaultTheme => {
-    // check unknownValue is DefaultTheme or not
-    // return boolean
-  }
-  
-  if (isDefaultTheme(someValue:any)) {
-    // now type of someValue is DefaultTheme
-  } */
+
   return (
-    <ThemeProvider theme={useTheme()}>
+    <ThemeProvider theme={theme}>
       <Formik
         initialValues={{
           discordUsername: '',
@@ -108,8 +103,6 @@ export default function SignUpForm({
           reason: '',
           zip: 0,
           role: 'title' as string, //  role: position.title as string,
-          //id: '5' as string, // id: position.id as string,
-          // project: router.query.slug as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
 
           skills: [{ skill: '' }],
@@ -127,11 +120,8 @@ export default function SignUpForm({
               .toString()
               .split(',')
               .map((skill) => ({ skill: skill })),
-            role: 'title' as string, // role: position.title as string,
-            // project:  router.query.project as string,
+            role: position.attributes.title as string,
             project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
-
-            //id: '5' as string, // id: position.id as string,
           })
             .then((res) => {
               handleOpenConfirmationModal();
