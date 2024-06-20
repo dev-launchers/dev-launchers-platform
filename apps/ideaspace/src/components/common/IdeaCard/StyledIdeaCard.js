@@ -19,6 +19,7 @@ export const StatuBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  background-color: ${({ backgroundColor }) => backgroundColor};
   align-items: center;
   border-radius: 1rem;
   z-index: 1;
