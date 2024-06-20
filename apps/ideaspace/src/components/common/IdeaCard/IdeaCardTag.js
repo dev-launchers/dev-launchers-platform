@@ -7,11 +7,11 @@ const IdeaCardTag = ({ status }) => {
   // const [tagColor, setTagColor] = useState('');
 
   const tagColor = {
-    submitted: 'bg-light-blue-lightblue-100',
-    'in-review': 'bg-yellow-yellow-100',
-    approved: 'bg-success-success-100',
-    archieved: 'bg-blue-blue-100',
-    workshopping: 'bg-orange-orange-100',
+    submitted: 'bg-LightBlue-lightblue-100',
+    'in-review': 'bg-Yellow-yellow-100',
+    approved: 'bg-Success-success-100',
+    archieved: 'bg-Blue-blue-100',
+    workshopping: 'bg-Orange-orange-100',
   };
 
   // React.useEffect(() => {
@@ -33,8 +33,7 @@ const IdeaCardTag = ({ status }) => {
   //   }
   // }, [status]);
 
-  return <StatuBox backgroundColor={tagColor[status]}> {status} </StatuBox>;
-
+  return <StatuBox className={tagColor[status]}> {status} </StatuBox>;
   // return (
   //     <StatuBox style={{ background: tagColor, }}>{tag}</StatuBox>
   // )
