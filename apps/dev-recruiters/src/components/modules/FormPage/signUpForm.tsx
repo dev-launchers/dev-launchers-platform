@@ -7,7 +7,7 @@ import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
@@ -16,6 +16,8 @@ import {
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
 import { GradientLine } from './styledSignupForm';
+import { Button } from '../ConfirmationPage/styledConfirmationPage';
+import axios, { AxiosResponse } from 'axios';
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -64,6 +66,46 @@ export default function SignUpForm({
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
   };
+  const portfolioUploadformData = new FormData();
+  let responseUploadId;
+  function handleUpload(
+    event: MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    //const responseBody = (response: AxiosResponse) =>
+    //  response.data.data ? response.data.data : response.data;
+
+    const response = (async () => {
+      const postResult = await axios
+        .post(
+          'http://localhost:1337/api/upload',
+          portfolioUploadformData //(event.target.files),
+        )
+        .then((responseBody) => {
+          console.log(responseBody);
+          responseUploadId = responseBody.data[0]?.id;
+          console.log(responseUploadId);
+          return responseBody;
+        });
+      return postResult;
+    })();
+  }
+
+  function handleFileSelectClick(event: any): void {
+    //can be removed
+  }
+
+  function handleFileSelectChange(event: ChangeEvent<HTMLInputElement>): void {
+    const inputFiles = [...event.target.files];
+
+    console.log(inputFiles);
+    inputFiles?.map(async (fil) => {
+      //    console.log(fil.name || fil.size);
+      //  console.log(fil);
+      portfolioUploadformData.append('files', fil);
+      return portfolioUploadformData;
+    });
+    console.log(portfolioUploadformData);
+  }
 
   // const router = useRouter();
   // const { userData } = useUserDataContext();
@@ -103,7 +145,7 @@ export default function SignUpForm({
           //id: '5' as string, // id: position.id as string,
           // project: router.query.slug as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
-
+          // newColumn:{data:""},
           skills: [{ skill: '' }],
         }}
         onSubmit={(
@@ -275,6 +317,25 @@ export default function SignUpForm({
                     // onChange={handleChange}
                     touched={touched.portfolioLink && !!values['portfolioLink']}
                     error={errors.portfolioLink}
+                  />
+                  {/*Upload button */}
+                  <atoms.Box maxWidth="50%">
+                    <atoms.Button
+                      buttonSize="standard"
+                      buttonType="primary"
+                      type="button"
+                      onClick={handleUpload}
+                    >
+                      Upload
+                    </atoms.Button>
+                  </atoms.Box>
+                  <input
+                    id="fileSelect"
+                    type="file"
+                    multiple
+                    onChange={handleFileSelectChange}
+                    onClick={handleFileSelectClick}
+                    accept="doc/pdf"
                   />
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
