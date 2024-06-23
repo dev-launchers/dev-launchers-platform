@@ -45,6 +45,7 @@ function CommentForm(props) {
       setTextChange('');
       // render the comment in the comment feed
       props.renderNewComment(data);
+      console.log(props);
     } catch (error) {
       console.error(error);
     }

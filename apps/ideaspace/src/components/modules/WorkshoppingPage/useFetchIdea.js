@@ -39,7 +39,9 @@ export const useFetchIdea = (ideaId, setComments) => {
         const data = cleanData(
           await agent.Ideas.getIdea(
             ideaId,
-            new URLSearchParams(`populate=deep`)
+            new URLSearchParams(
+              `populate[ideaOwner][populate]&populate[author][populate]&populate[comments][populate][user][populate]=profile`
+            )
           )
         );
 

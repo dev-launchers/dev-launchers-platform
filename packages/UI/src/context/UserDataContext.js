@@ -39,7 +39,7 @@ function useUserDataHook() {
         console.log('Fetching...');
         setUserData({
           id: currentUser.id,
-          name: currentUser.profile.displayName,
+          name: currentUser.profile.name,
           username: currentUser.username,
           email: currentUser.email,
           bio: currentUser.profile.bio,
