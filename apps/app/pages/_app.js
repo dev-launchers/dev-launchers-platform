@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import '../../../packages/tailwind-constructor/output/core.css';
 
 import {
   Footer,
