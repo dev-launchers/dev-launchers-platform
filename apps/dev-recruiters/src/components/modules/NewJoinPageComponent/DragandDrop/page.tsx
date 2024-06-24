@@ -8,7 +8,7 @@ import { ChangeEvent, useRef, useState } from 'react';
 export default function DragAndDrop() {
   const [selectFiles, setSelectFiles] = useState<any>([]);
   const [uploadFiles, setUploadFiles] = useState<any>([]);
-
+  let uploadedids = '';
   console.log(selectFiles);
   const portfolioUploadformData = new FormData();
   //let responseUploadId;
@@ -22,12 +22,15 @@ export default function DragAndDrop() {
         portfolioUploadformData.append('files', selectFiles[i]);
 
         const postResult = await axios
-          .post(
-            'http://localhost:1337/api/upload',
-            portfolioUploadformData //(event.target.files),
-          )
+          .post('http://localhost:1337/api/upload', portfolioUploadformData)
           .then((responseBody) => {
-            //console.log(responseBody);
+            console.log(responseBody.data[i]['id']);
+            /* console.log(uploadedids);
+            uploadedids === '' || null || undefined
+              ? responseBody.data[i]['id']
+              : uploadedids + ',' + responseBody.data[i]['id'];
+            console.log(uploadedids);
+            */
             setUploadFiles((prevState: any) => [
               ...prevState,
               responseBody.data[i],
@@ -37,6 +40,19 @@ export default function DragAndDrop() {
     })();
   }
   console.log(uploadFiles);
+  console.log(uploadFiles.length);
+  if (uploadFiles.length === 1) uploadedids = uploadFiles[0]['id'];
+  //console.log(uploadFiles[0]['id']);
+  //uploadFiles[0]['id'];
+  else if (uploadFiles.length > 1) {
+    uploadedids = uploadFiles.reduce(
+      (acc, currentValue) => acc + ',' + currentValue['id'],
+      ''
+    );
+    uploadedids = uploadedids.slice(1);
+  }
+
+  console.log(uploadedids);
 
   function handleFileSelectChange(event: ChangeEvent<HTMLInputElement>): void {
     const inputFiles = [...event.target.files];
@@ -83,7 +99,13 @@ export default function DragAndDrop() {
       <>
         {selectFiles.length > 0 &&
           selectFiles.map((fil, idx) => (
-            <div className="flex flex-row">
+            <atoms.Box
+              justifyContent="center"
+              paddingBlock="0.1rem"
+              gap="10px"
+              flexDirection="row"
+              margin="auto"
+            >
               {' '}
               <span> {fil.name} </span>
               <span
@@ -92,7 +114,7 @@ export default function DragAndDrop() {
               >
                 remove
               </span>
-            </div>
+            </atoms.Box>
           ))}
       </>
       <>
