@@ -3,15 +3,17 @@
 import { atoms } from '@devlaunchers/components/src/components';
 import axios from 'axios';
 import { rgba } from 'polished';
-import { ChangeEvent, useRef, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function DragAndDrop() {
   const [selectFiles, setSelectFiles] = useState<any>([]);
   const [uploadFiles, setUploadFiles] = useState<any>([]);
+  const [file, setFile] = useState<string>();
+
+  const [dragActive, setDragActive] = useState<boolean>(false);
   let uploadedids = '';
   console.log(selectFiles);
   const portfolioUploadformData = new FormData();
-  //let responseUploadId;
   function handleUpload(
     event: MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
@@ -76,8 +78,77 @@ export default function DragAndDrop() {
     console.log(uploadFiles[0]['name']);
     console.log(uploadFiles[0]['id']);
   }
+
+  function dropHandler(e: any): void {
+    e.preventDefault();
+    // e.stoppropagation();
+    setDragActive(false);
+    console.log('drop handler start');
+    console.log(e.dataTransfer.items);
+    /*if (e.dataTransfer.items) {
+      [...e.dataTransfer.items].forEach((item, i) => {
+        if (item.kind === 'file') {
+          const file = item.getAsFile();
+          if (file) {
+            let blobUrl = URL.createObjectURL(file);
+            setFile(blobUrl);
+          }
+          console.log(`items file[${i}].name = ${file?.name}`);
+        }
+      });
+    } else */
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      for (let i = 0; i < e.dataTransfer.files.length; ++i)
+        setSelectFiles((prevState: any) => [
+          ...prevState,
+          e.dataTransfer.files[i],
+        ]);
+      /*
+      [...e.dataTransfer.files].forEach((file, i) => {
+        console.log(`… file[${i}].name = ${file.name}`);
+      });*/
+    }
+    console.log('drop handler End');
+  }
+
+  function dragLeaver(e: any): void {
+    e.preventDefault();
+    //e.stoppropagation();
+    setDragActive(false);
+  }
+
+  function dragEnter(e: any): void {
+    e.preventDefault();
+    //e.stoppropagation();
+    setDragActive(true);
+  }
+
+  function dragOverHandler(e: any): void {
+    e.preventDefault();
+    //e.stoppropagation();
+    setDragActive(true);
+    console.log(e.dataTransfer.items);
+  }
+
   return (
     <>
+      <div
+        id="drop_zone"
+        className={`
+           border: 5px solid blue;
+  width: 200px;
+  height: 100px;
+  `}
+        onDragEnter={(e) => dragEnter(e)}
+        onDrop={(e) => dropHandler(e)}
+        onDragOver={(e) => dragOverHandler(e)}
+        onDragLeave={(e) => dragLeaver(e)}
+      >
+        <p>
+          Drag and Drop files to this<i> drop zone</i> or{' '}
+          <span> Select Files</span> to Upload
+        </p>
+      </div>
       <atoms.Box maxWidth="50%">
         <atoms.Button
           buttonSize="standard"
@@ -96,24 +167,22 @@ export default function DragAndDrop() {
         onChange={handleFileSelectChange}
         accept=".pdf, .doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document, image/*"
       />
+
       <>
         {selectFiles.length > 0 &&
           selectFiles.map((fil, idx) => (
             <atoms.Box
-              justifyContent="center"
+              justifyContent="space-between"
               paddingBlock="0.1rem"
               gap="10px"
               flexDirection="row"
               margin="auto"
             >
-              {' '}
-              <span> {fil.name} </span>
-              <span
-                className="text-red-500 cursor-pointer"
-                onClick={() => removeFile(fil.name, idx)}
-              >
-                remove
-              </span>
+              <atoms.Typography> {fil.name} </atoms.Typography>
+              <atoms.Link
+                href="javascript.removeFile(fil.name,idx)"
+                text="remove"
+              ></atoms.Link>
             </atoms.Box>
           ))}
       </>

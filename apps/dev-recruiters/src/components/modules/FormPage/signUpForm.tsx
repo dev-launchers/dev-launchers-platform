@@ -15,7 +15,7 @@ import {
   CloseButton,
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
-import { GradientLine } from './styledSignupForm';
+import { FileUpload, GradientLine } from './styledSignupForm';
 import DragAndDrop from '../NewJoinPageComponent/DragandDrop/page';
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
