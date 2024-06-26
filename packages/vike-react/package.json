@@ -1,6 +1,6 @@
 {
   "name": "@devlaunchers/vike-react",
-  "version": "0.4.6",
+  "version": "0.4.15",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,30 +15,31 @@
   },
   "scripts": {
     "dev": "tsc --watch",
-    "build": "rm -rf dist/ && tsc",
-    "release": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ patch",
-    "release:minor": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ minor",
-    "release:commit": "release-me --git-prefix vike-react --changelog-dir packages/vike-react/ commit"
+    "build": "rimraf dist/ && tsc",
+    "release": "release-me patch",
+    "release:minor": "release-me minor",
+    "release:commit": "release-me commit"
   },
   "peerDependencies": {
-    "react": "18.x.x",
-    "react-dom": "18.x.x",
-    "styled-components": "^5.3.5",
-    "vike": "^0.4.160",
-    "vite": "^4.3.8 || ^5.0.10"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "vike": ">=0.4.173",
+    "vite": ">=4.3.8"
   },
   "devDependencies": {
-    "@brillout/release-me": "^0.1.14",
+    "@biomejs/biome": "^1.6.4",
+    "@brillout/release-me": "^0.3.8",
     "@types/node": "^20.11.17",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3",
-    "vike": "^0.4.161"
+    "vike": "^0.4.173"
   },
   "dependencies": {
-    "react-streaming": "^0.3.22"
+    "react-streaming": "^0.3.27"
   },
   "typesVersions": {
     "*": {

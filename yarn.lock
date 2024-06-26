@@ -1906,6 +1906,97 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@biomejs/biome@npm:^1.6.4":
+  version: 1.8.2
+  resolution: "@biomejs/biome@npm:1.8.2"
+  dependencies:
+    "@biomejs/cli-darwin-arm64": 1.8.2
+    "@biomejs/cli-darwin-x64": 1.8.2
+    "@biomejs/cli-linux-arm64": 1.8.2
+    "@biomejs/cli-linux-arm64-musl": 1.8.2
+    "@biomejs/cli-linux-x64": 1.8.2
+    "@biomejs/cli-linux-x64-musl": 1.8.2
+    "@biomejs/cli-win32-arm64": 1.8.2
+    "@biomejs/cli-win32-x64": 1.8.2
+  dependenciesMeta:
+    "@biomejs/cli-darwin-arm64":
+      optional: true
+    "@biomejs/cli-darwin-x64":
+      optional: true
+    "@biomejs/cli-linux-arm64":
+      optional: true
+    "@biomejs/cli-linux-arm64-musl":
+      optional: true
+    "@biomejs/cli-linux-x64":
+      optional: true
+    "@biomejs/cli-linux-x64-musl":
+      optional: true
+    "@biomejs/cli-win32-arm64":
+      optional: true
+    "@biomejs/cli-win32-x64":
+      optional: true
+  bin:
+    biome: bin/biome
+  checksum: 2bb9366aef9b8a6455984d177caa85e9df5c6da63da346633411157c8a0bbe291c52e2b8d714840f6ca1ef5ef5d8d0b49a4c9d18b7138afd29f492d5f8d7ddd2
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-darwin-arm64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-darwin-arm64@npm:1.8.2"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-darwin-x64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-darwin-x64@npm:1.8.2"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-linux-arm64-musl@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-linux-arm64-musl@npm:1.8.2"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-linux-arm64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-linux-arm64@npm:1.8.2"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-linux-x64-musl@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-linux-x64-musl@npm:1.8.2"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-linux-x64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-linux-x64@npm:1.8.2"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-win32-arm64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-win32-arm64@npm:1.8.2"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@biomejs/cli-win32-x64@npm:1.8.2":
+  version: 1.8.2
+  resolution: "@biomejs/cli-win32-x64@npm:1.8.2"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@brillout/import@npm:^0.2.3":
   version: 0.2.3
   resolution: "@brillout/import@npm:0.2.3"
@@ -1920,6 +2011,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@brillout/json-serializer@npm:^0.5.10":
+  version: 0.5.10
+  resolution: "@brillout/json-serializer@npm:0.5.10"
+  checksum: ec15aecabebfdfd3ae0f3f0969e0e6711589a798098969d79c43f6e1b3a2d1e5ea41b5a53758197d5ff4d8447d19e85cebe8d106d23252d3735024b25644d984
+  languageName: node
+  linkType: hard
+
 "@brillout/picocolors@npm:^1.0.10":
   version: 1.0.10
   resolution: "@brillout/picocolors@npm:1.0.10"
@@ -1927,19 +2025,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@brillout/release-me@npm:^0.1.14":
-  version: 0.1.14
-  resolution: "@brillout/release-me@npm:0.1.14"
+"@brillout/picocolors@npm:^1.0.11, @brillout/picocolors@npm:^1.0.12, @brillout/picocolors@npm:^1.0.13":
+  version: 1.0.13
+  resolution: "@brillout/picocolors@npm:1.0.13"
+  checksum: 337fd4d9799b7cd55225a7405061c3aca1c6b357bb9f02996bf054713344dd1044cf7fb56e80044029d08a3c3169cb3e7094269bfcacc00b6530b408c39c6a69
+  languageName: node
+  linkType: hard
+
+"@brillout/release-me@npm:^0.3.8":
+  version: 0.3.9
+  resolution: "@brillout/release-me@npm:0.3.9"
   dependencies:
+    "@brillout/picocolors": ^1.0.12
     commander: ^11.1.0
     conventional-changelog: ^5.1.0
     execa: ^5.1.1
-    js-yaml: ^4.1.0
-    picocolors: ^1.0.0
     semver: ^7.5.4
   bin:
     release-me: bin.js
-  checksum: f2846ab9d4dc613987a65565d8183ebb12291e4988c9511eec69bfe57e74f0c69f66f7d66a7f6d1a681d935bc4f947f4523ae813e588956b0d86f11c326eba39
+  checksum: 64efa127510dc41fe137fd6849a36e76f638a7f9ffcad67e6d4330f16d3f95d454f6067915e7be4131b8a6b83e85d4f12bc23b68a030e8d6e89532a95ea9b85b
   languageName: node
   linkType: hard
 
@@ -1956,6 +2060,15 @@ __metadata:
   dependencies:
     "@brillout/import": ^0.2.3
   checksum: 86b341bc06f8de7d54f401f05208cc811e5ae8ab771b642a5840db851e292c3d55a71447cd6e21b7ba559ca10b811fed4968c297667e3c04fc0e3f03221e42e2
+  languageName: node
+  linkType: hard
+
+"@brillout/vite-plugin-server-entry@npm:^0.4.5":
+  version: 0.4.6
+  resolution: "@brillout/vite-plugin-server-entry@npm:0.4.6"
+  dependencies:
+    "@brillout/import": ^0.2.3
+  checksum: 9b527a6d09dcc6faa6470a3f99df8298efd841b2a8baead08f4c00b6198d44497addf165e0aa1ae41aba187fe5a2f009c887c724d59b71f28c7203991331dbfb
   languageName: node
   linkType: hard
 
@@ -3254,21 +3367,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@devlaunchers/vike-react@workspace:packages/vike-react"
   dependencies:
-    "@brillout/release-me": ^0.1.14
+    "@biomejs/biome": ^1.6.4
+    "@brillout/release-me": ^0.3.8
     "@types/node": ^20.11.17
     "@types/react": ^18.2.55
     "@types/react-dom": ^18.2.19
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-streaming: ^0.3.22
+    react-streaming: ^0.3.27
+    rimraf: ^5.0.5
     typescript: ^5.3.3
-    vike: ^0.4.161
+    vike: ^0.4.173
   peerDependencies:
-    react: 18.x.x
-    react-dom: 18.x.x
-    styled-components: ^5.3.5
-    vike: ^0.4.160
-    vite: ^4.3.8 || ^5.0.10
+    react: ">=18.0.0"
+    react-dom: ">=18.0.0"
+    vike: ">=0.4.173"
+    vite: ">=4.3.8"
   languageName: unknown
   linkType: soft
 
@@ -22598,6 +22712,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"glob@npm:^10.3.7":
+  version: 10.4.2
+  resolution: "glob@npm:10.4.2"
+  dependencies:
+    foreground-child: ^3.1.0
+    jackspeak: ^3.1.2
+    minimatch: ^9.0.4
+    minipass: ^7.1.2
+    package-json-from-dist: ^1.0.0
+    path-scurry: ^1.11.1
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: bd7c0e30701136e936f414e5f6f82c7f04503f01df77408f177aa584927412f0bde0338e6ec541618cd21eacc57dde33e7b3c6c0a779cc1c6e6a0e14f3d15d9b
+  languageName: node
+  linkType: hard
+
 "glob@npm:^8.0.1":
   version: 8.1.0
   resolution: "glob@npm:8.1.0"
@@ -25527,6 +25657,19 @@ __metadata:
     "@pkgjs/parseargs":
       optional: true
   checksum: 57d43ad11eadc98cdfe7496612f6bbb5255ea69fe51ea431162db302c2a11011642f50cfad57288bd0aea78384a0612b16e131944ad8ecd09d619041c8531b54
+  languageName: node
+  linkType: hard
+
+"jackspeak@npm:^3.1.2":
+  version: 3.4.0
+  resolution: "jackspeak@npm:3.4.0"
+  dependencies:
+    "@isaacs/cliui": ^8.0.2
+    "@pkgjs/parseargs": ^0.11.0
+  dependenciesMeta:
+    "@pkgjs/parseargs":
+      optional: true
+  checksum: 350f6f311018bb175ffbe736b19c26ac0b134bb5a17a638169e89594eb0c24ab1c658ab3a2fda24ff63b3b19292e1a5ec19d2255bc526df704e8168d392bef85
   languageName: node
   linkType: hard
 
@@ -29931,6 +30074,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minimatch@npm:^9.0.4":
+  version: 9.0.5
+  resolution: "minimatch@npm:9.0.5"
+  dependencies:
+    brace-expansion: ^2.0.1
+  checksum: 2c035575eda1e50623c731ec6c14f65a85296268f749b9337005210bb2b34e2705f8ef1a358b188f69892286ab99dc42c8fb98a57bde55c8d81b3023c19cea28
+  languageName: node
+  linkType: hard
+
 "minimist-options@npm:4.1.0, minimist-options@npm:^4.0.2":
   version: 4.1.0
   resolution: "minimist-options@npm:4.1.0"
@@ -30075,6 +30227,13 @@ __metadata:
   version: 7.1.1
   resolution: "minipass@npm:7.1.1"
   checksum: d2c461947a7530f93de4162aa3ca0a1bed1f121626906f6ec63a5ba05fd7b1d9bee4fe89a37a43db7241c2416be98a799c1796abae583c7180be37be5c392ef6
+  languageName: node
+  linkType: hard
+
+"minipass@npm:^7.1.2":
+  version: 7.1.2
+  resolution: "minipass@npm:7.1.2"
+  checksum: 2bfd325b95c555f2b4d2814d49325691c7bee937d753814861b0b49d5edcda55cbbf22b6b6a60bb91eddac8668771f03c5ff647dcd9d0f798e9548b9cdc46ee3
   languageName: node
   linkType: hard
 
@@ -32025,6 +32184,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"package-json-from-dist@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "package-json-from-dist@npm:1.0.0"
+  checksum: ac706ec856a5a03f5261e4e48fa974f24feb044d51f84f8332e2af0af04fbdbdd5bbbfb9cbbe354190409bc8307c83a9e38c6672c3c8855f709afb0006a009ea
+  languageName: node
+  linkType: hard
+
 "pacote@npm:^13.0.3, pacote@npm:^13.6.1, pacote@npm:^13.6.2":
   version: 13.6.2
   resolution: "pacote@npm:13.6.2"
@@ -32361,7 +32527,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-scurry@npm:^1.11.0":
+"path-scurry@npm:^1.11.0, path-scurry@npm:^1.11.1":
   version: 1.11.1
   resolution: "path-scurry@npm:1.11.1"
   dependencies:
@@ -35879,17 +36045,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-streaming@npm:^0.3.22":
-  version: 0.3.22
-  resolution: "react-streaming@npm:0.3.22"
+"react-streaming@npm:^0.3.27":
+  version: 0.3.28
+  resolution: "react-streaming@npm:0.3.28"
   dependencies:
     "@brillout/import": ^0.2.3
     "@brillout/json-serializer": ^0.5.1
+    "@brillout/picocolors": ^1.0.11
     isbot-fast: 1.2.0
   peerDependencies:
     react: ">=18"
     react-dom: ">=18"
-  checksum: fc4f74fcefae1babfadf6b24d3350601a053caf2c888d4e1fa9add9937eda25f0b0140044f3e1445583e490c58b3eabf369a452550158f677030188a7baa07c0
+  checksum: 852adbe0de0ce320b90951da0c6b9455fd9fe5702583328bffb13107976a361938081732c91fd5263b7f29c8bcad03d54d615ae663675e5e6ba046df85cb35db
   languageName: node
   linkType: hard
 
@@ -37034,6 +37201,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^5.0.5":
+  version: 5.0.7
+  resolution: "rimraf@npm:5.0.7"
+  dependencies:
+    glob: ^10.3.7
+  bin:
+    rimraf: dist/esm/bin.mjs
+  checksum: 884852abf8aefd4667448d87bdab04120a8641266c828cf382ac811713547eda18f81799d2146ffec3178f357d83d44ec01c10095949c82e23551660732bf14f
+  languageName: node
+  linkType: hard
+
 "rimraf@npm:~2.6.2":
   version: 2.6.3
   resolution: "rimraf@npm:2.6.3"
@@ -37698,6 +37876,15 @@ __metadata:
   bin:
     semver: bin/semver.js
   checksum: ae47d06de28836adb9d3e25f22a92943477371292d9b665fb023fae278d345d508ca1958232af086d85e0155aee22e313e100971898bbb8d5d89b8b1d4054ca2
+  languageName: node
+  linkType: hard
+
+"semver@npm:^7.6.2":
+  version: 7.6.2
+  resolution: "semver@npm:7.6.2"
+  bin:
+    semver: bin/semver.js
+  checksum: 40f6a95101e8d854357a644da1b8dd9d93ce786d5c6a77227bc69dbb17bea83d0d1d1d7c4cd5920a6df909f48e8bd8a5909869535007f90278289f2451d0292d
   languageName: node
   linkType: hard
 
@@ -41771,7 +41958,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vike@npm:^0.4.161, vike@npm:^0.4.163":
+"vike@npm:^0.4.163":
   version: 0.4.163
   resolution: "vike@npm:0.4.163"
   dependencies:
@@ -41796,6 +41983,35 @@ __metadata:
   bin:
     vike: node/cli/bin-entry.js
   checksum: 916538f85ee7f53b05cba5053a307c37cc513de9a7c521df4072aa352901415898cd2851c09ea34ce9177b42d12f7eb3c171ef6748a69cc80fc0522fc81e16d5
+  languageName: node
+  linkType: hard
+
+"vike@npm:^0.4.173":
+  version: 0.4.177
+  resolution: "vike@npm:0.4.177"
+  dependencies:
+    "@brillout/import": ^0.2.3
+    "@brillout/json-serializer": ^0.5.10
+    "@brillout/picocolors": ^1.0.13
+    "@brillout/require-shim": ^0.1.2
+    "@brillout/vite-plugin-server-entry": ^0.4.5
+    acorn: ^8.0.0
+    cac: ^6.0.0
+    es-module-lexer: ^1.0.0
+    esbuild: ^0.19.0
+    fast-glob: ^3.0.0
+    semver: ^7.6.2
+    sirv: ^2.0.0
+    source-map-support: ^0.5.0
+  peerDependencies:
+    react-streaming: ">=0.3.5"
+    vite: ">=4.4.0"
+  peerDependenciesMeta:
+    react-streaming:
+      optional: true
+  bin:
+    vike: node/cli/bin-entry.js
+  checksum: 60744c0857c304a2a0be5ede95bdbae0adb3a267a7a8455cae32e2847acf450687c0c95f25a77db82c5dfa7bd86999488939f89f2863d87e8803caeb1e31166f
   languageName: node
   linkType: hard
 

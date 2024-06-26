@@ -1,28 +1,28 @@
-export { getPageElement }
+export { getPageElement };
 
-import React, { type ReactNode } from 'react'
-import type { PageContext } from 'vike/types'
-import { PageContextProvider } from '../hooks/usePageContext.js'
+import React from 'react';
+import type { PageContext } from 'vike/types';
+import { PageContextProvider } from '../hooks/usePageContext.js';
 
 function getPageElement(pageContext: PageContext): JSX.Element {
-  const Layout = pageContext.config.Layout ?? PassThrough
-  const Wrapper = pageContext.config.Wrapper ?? PassThrough
-  const VikeReactQueryWrapper = pageContext.config.VikeReactQueryWrapper ?? (PassThrough as any)
-  const { Page } = pageContext
-  const page = (
-    <React.StrictMode>
-      <PageContextProvider pageContext={pageContext}>
-        <VikeReactQueryWrapper pageContext={pageContext}>
-          <Wrapper>
-            <Layout>{Page ? <Page /> : null}</Layout>
-          </Wrapper>
-        </VikeReactQueryWrapper>
-      </PageContextProvider>
-    </React.StrictMode>
-  )
-  return page
-}
+  const { Page } = pageContext;
+  let page = Page ? <Page /> : null;
 
-function PassThrough({ children }: { children: ReactNode }) {
-  return <>{children}</>
+  // Wrapping
+  [
+    // Inner wrapping
+    ...(pageContext.config.Layout || []),
+    // Outer wrapping
+    ...(pageContext.config.Wrapper || []),
+  ].forEach((Wrapper) => {
+    page = <Wrapper>{page}</Wrapper>;
+  });
+  page = (
+    <PageContextProvider pageContext={pageContext}>{page}</PageContextProvider>
+  );
+  if (pageContext.config.reactStrictMode !== false) {
+    page = <React.StrictMode>{page}</React.StrictMode>;
+  }
+
+  return page;
 }
