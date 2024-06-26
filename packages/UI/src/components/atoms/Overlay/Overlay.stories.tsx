@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Overlay from './Overlay';
 
 export default {
-  title: 'Atoms/Overlay',
+  title: 'Deprecated/Atoms/Overlay',
   component: Overlay,
   parameters: {
     docs: {

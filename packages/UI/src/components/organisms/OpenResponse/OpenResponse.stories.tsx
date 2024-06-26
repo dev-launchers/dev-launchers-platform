@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import OpenResponse from './OpenResponse';
 export default {
-  title: 'Organisms/OpenResponse',
+  title: 'Deprecated/Organisms/OpenResponse',
   component: OpenResponse,
 } as ComponentMeta<typeof OpenResponse>;
 
