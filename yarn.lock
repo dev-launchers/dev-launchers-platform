@@ -2893,7 +2893,7 @@ __metadata:
     eslint: ^8.21.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     formik: ^2.2.9
     luxon: ^3.0.1
     next: ^12.2.3
@@ -2902,7 +2902,7 @@ __metadata:
     next-transpile-modules: ^9.0.0
     pluralize: ^8.0.0
     postcss: ^8.4.14
-    prettier: ^2.7.1
+    prettier: 3.3.2
     prismic-reactjs: ^1.3.4
     query-string: 7.1.1
     react: ^17.0.2
@@ -2922,7 +2922,7 @@ __metadata:
     styled-components: ^5.3.5
     styled-normalize: ^8.0.7
     tabletop: 1.6.3
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
     wrangler: ^3.0.1
   languageName: unknown
@@ -2974,12 +2974,12 @@ __metadata:
     clsx: 2.0.0
     constate: ^3.3.2
     eslint: 8.21.0
-    eslint-config-prettier: 8.5.0
+    eslint-config-prettier: 9.1.0
     eslint-plugin-import: 2.26.0
     eslint-plugin-jest: 26.7.0
     eslint-plugin-jest-formatting: 3.1.0
     eslint-plugin-jsx-a11y: 6.6.1
-    eslint-plugin-prettier: 4.2.1
+    eslint-plugin-prettier: ^5.1.3
     eslint-plugin-react: 7.30.1
     eslint-plugin-react-hooks: 4.6.0
     eslint-plugin-testing-library: 5.6.0
@@ -2992,7 +2992,7 @@ __metadata:
     next-share: 0.27.0
     npm-run-all: 4.1.5
     polished: ^4.2.2
-    prettier: ^2.7.1
+    prettier: 3.3.2
     react: ^17.0.2
     react-burger-menu: ^3.0.8
     react-dom: ^17.0.2
@@ -3008,7 +3008,7 @@ __metadata:
     tailwind-variants: 0.1.13
     ts-jest: 28.0.7
     type-fest: 4.3.1
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     uuid: ^8.3.2
     web-vitals: ^2.1.4
     zod: 3.19.1
@@ -3042,7 +3042,7 @@ __metadata:
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-react: ^7.30.1
@@ -3054,7 +3054,7 @@ __metadata:
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     polished: ^4.2.2
-    prettier: ^2.7.1
+    prettier: 3.3.2
     react: ^17.0.2
     react-burger-menu: ^3.0.8
     react-calendly: ^4.0.1
@@ -3072,7 +3072,7 @@ __metadata:
     semantic-release: ^19.0.3
     slick-carousel: ^1.8.1
     styled-normalize: ^8.0.7
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
     webpack: ^5.74.0
     yup: ^0.32.11
@@ -3090,20 +3090,20 @@ __metadata:
     "@testing-library/react-hooks": ^8.0.1
     "@types/jest": 28.1.6
     "@types/node": 18.0.6
-    "@types/prettier": 2.7.0
+    "@types/prettier": 3.0.0
     "@types/react": ^17.0.44
     "@types/react-dom": ^17.0.15
     "@typescript-eslint/eslint-plugin": ^5.30.7
     "@typescript-eslint/parser": ^5.30.7
     eslint: 8.21.0
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     eslint-import-resolver-typescript: ^3.3.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jest: ^26.6.0
     eslint-plugin-jest-formatting: ^3.1.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-playwright: ^0.10.0
-    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-prettier: ^5.1.3
     eslint-plugin-react: ^7.30.1
     eslint-plugin-react-hooks: ^4.6.0
     eslint-plugin-regexp: ^1.7.0
@@ -3111,16 +3111,16 @@ __metadata:
     eslint-plugin-storybook: ^0.6.1
     eslint-plugin-tailwindcss: 3.13.0
     eslint-plugin-testing-library: ^5.5.1
-    prettier: ^2.7.1
+    prettier: 3.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     rimraf: 3.0.2
-    typescript: 4.7.4
+    typescript: ^5.3.3
   peerDependencies:
     eslint: ^8.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    typescript: ^4.5.2
+    typescript: ^5.3.3
   peerDependenciesMeta:
     react:
       optional: true
@@ -3146,7 +3146,7 @@ __metadata:
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-react: ^7.30.1
@@ -3155,11 +3155,11 @@ __metadata:
     lint-staged: ^13.0.3
     next: ^12.2.3
     next-optimized-images: ^2.6.2
-    prettier: ^2.7.1
+    prettier: 3.3.2
     react: ^17.0.2
     react-dom: ^17.0.2
     semantic-release: ^19.0.3
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
     webpack: ^5.74.0
   languageName: unknown
@@ -3185,12 +3185,12 @@ __metadata:
     eslint: ^8.21.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     husky: ^8.0.1
     next: ^12.1.6
     phosphor-react: ^1.4.1
     postcss: ^8.4.14
-    prettier: ^2.7.1
+    prettier: 3.3.2
     prop-types: ^15.7.2
     react: ^17.0.2
     react-burger-menu: ^3.0.8
@@ -3207,7 +3207,7 @@ __metadata:
     styled-components: ^5.3.0
     styled-normalize: ^8.0.7
     tabletop: ^1.6.3
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
   languageName: unknown
   linkType: soft
@@ -3247,7 +3247,7 @@ __metadata:
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     eslint-plugin-import: ^2.26.0
     eslint-plugin-jsx-a11y: ^6.6.1
     eslint-plugin-react: ^7.30.1
@@ -3258,7 +3258,7 @@ __metadata:
     next-compose-plugins: ^2.2.1
     next-optimized-images: ^2.6.2
     polished: ^4.2.2
-    prettier: ^2.7.1
+    prettier: 3.3.2
     react: ^17.0.2
     react-burger-menu: ^3.0.8
     react-calendly: ^4.0.1
@@ -3273,7 +3273,7 @@ __metadata:
     remark-gfm: ^3.0.1
     slick-carousel: ^1.8.1
     styled-normalize: ^8.0.7
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     uuid: ^8.3.2
     webp-loader: 0.6.0
     webpack: ^5.74.0
@@ -3315,7 +3315,7 @@ __metadata:
     eslint: ^8.21.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     framer-motion: 6.2.4
     husky: ^8.0.1
     lint-staged: ^13.0.3
@@ -3326,7 +3326,7 @@ __metadata:
     next-transpile-modules: ^9.0.0
     pluralize: ^8.0.0
     postcss: ^8.4.14
-    prettier: ^2.7.1
+    prettier: 3.3.2
     prismic-reactjs: ^1.3.4
     query-string: 7.1.1
     react: ^17.0.2
@@ -3346,7 +3346,7 @@ __metadata:
     styled-components: ^5.3.5
     styled-normalize: ^8.0.7
     tabletop: 1.6.3
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
     wrangler: ^3.0.1
   languageName: unknown
@@ -3447,7 +3447,7 @@ __metadata:
     eslint: ^8.21.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-next: ^12.2.3
-    eslint-config-prettier: ^8.5.0
+    eslint-config-prettier: ^9.1.0
     luxon: ^3.0.1
     next: ^12.2.3
     next-compose-plugins: ^2.2.1
@@ -3455,7 +3455,7 @@ __metadata:
     next-transpile-modules: ^9.0.0
     pluralize: ^8.0.0
     postcss: ^8.4.14
-    prettier: ^2.7.1
+    prettier: 3.3.2
     prismic-reactjs: ^1.3.4
     query-string: 7.1.1
     react: ^17.0.2
@@ -3474,7 +3474,7 @@ __metadata:
     styled-components: ^5.3.5
     styled-normalize: ^8.0.7
     tabletop: 1.6.3
-    typescript: ^4.7.4
+    typescript: ^5.3.3
     webp-loader: 0.6.0
     wrangler: ^3.0.1
   languageName: unknown
@@ -6431,6 +6431,13 @@ __metadata:
   version: 0.11.0
   resolution: "@pkgjs/parseargs@npm:0.11.0"
   checksum: 6ad6a00fc4f2f2cfc6bff76fb1d88b8ee20bc0601e18ebb01b6d4be583733a860239a521a7fbca73b612e66705078809483549d2b18f370eb346c5155c8e4a0f
+  languageName: node
+  linkType: hard
+
+"@pkgr/core@npm:^0.1.0":
+  version: 0.1.1
+  resolution: "@pkgr/core@npm:0.1.1"
+  checksum: 6f25fd2e3008f259c77207ac9915b02f1628420403b2630c92a07ff963129238c9262afc9e84344c7a23b5cc1f3965e2cd17e3798219f5fd78a63d144d3cceba
   languageName: node
   linkType: hard
 
@@ -11509,17 +11516,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/prettier@npm:2.6.4":
-  version: 2.6.4
-  resolution: "@types/prettier@npm:2.6.4"
-  checksum: a8ec6601cbacf8040782cc883bf1a9393fdcb991ebe88440b0f875bb1556652927ac9fe61a721b6c666ac6252158ba327ce2868559bafa2c86e7dfef4089782a
-  languageName: node
-  linkType: hard
-
-"@types/prettier@npm:2.7.0":
-  version: 2.7.0
-  resolution: "@types/prettier@npm:2.7.0"
-  checksum: bf5d0c7c1270909b39399539ac106d20ddaa85fe92eb1d59922dc99159604b4f8d5e41b0045fb29c8011585cf5bca2350b7441ef3d9816c08bd0e10ebd4b31d4
+"@types/prettier@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@types/prettier@npm:3.0.0"
+  dependencies:
+    prettier: "*"
+  checksum: a2a512d304e5bcf78f38089dc88ad19215e6ab871d435a17aef3ce538a63b07c0e359c18db23989dc1ed9fff96d99eee1f680416080184df5c7e0e3bf767e165
   languageName: node
   linkType: hard
 
@@ -19829,25 +19831,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-prettier@npm:8.5.0":
-  version: 8.5.0
-  resolution: "eslint-config-prettier@npm:8.5.0"
+"eslint-config-prettier@npm:9.1.0, eslint-config-prettier@npm:^9.1.0":
+  version: 9.1.0
+  resolution: "eslint-config-prettier@npm:9.1.0"
   peerDependencies:
     eslint: ">=7.0.0"
   bin:
     eslint-config-prettier: bin/cli.js
-  checksum: 0d0f5c32e7a0ad91249467ce71ca92394ccd343178277d318baf32063b79ea90216f4c81d1065d60f96366fdc60f151d4d68ae7811a58bd37228b84c2083f893
-  languageName: node
-  linkType: hard
-
-"eslint-config-prettier@npm:^8.5.0":
-  version: 8.10.0
-  resolution: "eslint-config-prettier@npm:8.10.0"
-  peerDependencies:
-    eslint: ">=7.0.0"
-  bin:
-    eslint-config-prettier: bin/cli.js
-  checksum: 153266badd477e49b0759816246b2132f1dbdb6c7f313ca60a9af5822fd1071c2bc5684a3720d78b725452bbac04bb130878b2513aea5e72b1b792de5a69fec8
+  checksum: 9229b768c879f500ee54ca05925f31b0c0bafff3d9f5521f98ff05127356de78c81deb9365c86a5ec4efa990cb72b74df8612ae15965b14136044c73e1f6a907
   languageName: node
   linkType: hard
 
@@ -20171,18 +20162,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:4.2.1, eslint-plugin-prettier@npm:^4.2.1":
-  version: 4.2.1
-  resolution: "eslint-plugin-prettier@npm:4.2.1"
+"eslint-plugin-prettier@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "eslint-plugin-prettier@npm:5.1.3"
   dependencies:
     prettier-linter-helpers: ^1.0.0
+    synckit: ^0.8.6
   peerDependencies:
-    eslint: ">=7.28.0"
-    prettier: ">=2.0.0"
+    "@types/eslint": ">=8.0.0"
+    eslint: ">=8.0.0"
+    eslint-config-prettier: "*"
+    prettier: ">=3.0.0"
   peerDependenciesMeta:
+    "@types/eslint":
+      optional: true
     eslint-config-prettier:
       optional: true
-  checksum: b9e839d2334ad8ec7a5589c5cb0f219bded260839a857d7a486997f9870e95106aa59b8756ff3f37202085ebab658de382b0267cae44c3a7f0eb0bcc03a4f6d6
+  checksum: eb2a7d46a1887e1b93788ee8f8eb81e0b6b2a6f5a66a62bc6f375b033fc4e7ca16448da99380be800042786e76cf5c0df9c87a51a2c9b960ed47acbd7c0b9381
   languageName: node
   linkType: hard
 
@@ -34681,12 +34677,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.7.1":
-  version: 2.7.1
-  resolution: "prettier@npm:2.7.1"
+"prettier@npm:*, prettier@npm:3.3.2":
+  version: 3.3.2
+  resolution: "prettier@npm:3.3.2"
   bin:
-    prettier: bin-prettier.js
-  checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
+    prettier: bin/prettier.cjs
+  checksum: 5557d8caed0b182f68123c2e1e370ef105251d1dd75800fadaece3d061daf96b1389141634febf776050f9d732c7ae8fd444ff0b4a61b20535e7610552f32c69
   languageName: node
   linkType: hard
 
@@ -39759,6 +39755,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"synckit@npm:^0.8.6":
+  version: 0.8.8
+  resolution: "synckit@npm:0.8.8"
+  dependencies:
+    "@pkgr/core": ^0.1.0
+    tslib: ^2.6.2
+  checksum: 9ed5d33abb785f5f24e2531efd53b2782ca77abf7912f734d170134552b99001915531be5a50297aa45c5701b5c9041e8762e6cd7a38e41e2461c1e7fccdedf8
+  languageName: node
+  linkType: hard
+
 "table@npm:^6.0.9":
   version: 6.8.1
   resolution: "table@npm:6.8.1"
@@ -40687,6 +40693,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tslib@npm:^2.6.2":
+  version: 2.6.3
+  resolution: "tslib@npm:2.6.3"
+  checksum: 74fce0e100f1ebd95b8995fbbd0e6c91bdd8f4c35c00d4da62e285a3363aaa534de40a80db30ecfd388ed7c313c42d930ee0eaf108e8114214b180eec3dbe6f5
+  languageName: node
+  linkType: hard
+
 "tsscmp@npm:1.0.6":
   version: 1.0.6
   resolution: "tsscmp@npm:1.0.6"
@@ -40969,16 +40982,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.7.4":
-  version: 4.7.4
-  resolution: "typescript@npm:4.7.4"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 5750181b1cd7e6482c4195825547e70f944114fb47e58e4aa7553e62f11b3f3173766aef9c281783edfd881f7b8299cf35e3ca8caebe73d8464528c907a164df
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^4.6.4 || ^5.2.2, typescript@npm:^5.3.3":
   version: 5.3.3
   resolution: "typescript@npm:5.3.3"
@@ -40989,26 +40992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.7.4":
-  version: 4.9.5
-  resolution: "typescript@npm:4.9.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: ee000bc26848147ad423b581bd250075662a354d84f0e06eb76d3b892328d8d4440b7487b5a83e851b12b255f55d71835b008a66cbf8f255a11e4400159237db
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@4.7.4#~builtin<compat/typescript>":
-  version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=bda367"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 96d3030cb01143570567cb4f3a616b10df65f658f0e74e853e77a089a6a954e35c800be7db8b9bfe9a1ae05d9c2897e281359f65e4caa1caf266368e1c4febd3
-  languageName: node
-  linkType: hard
-
 "typescript@patch:typescript@^4.6.4 || ^5.2.2#~builtin<compat/typescript>, typescript@patch:typescript@^5.3.3#~builtin<compat/typescript>":
   version: 5.3.3
   resolution: "typescript@patch:typescript@npm%3A5.3.3#~builtin<compat/typescript>::version=5.3.3&hash=bda367"
@@ -41016,16 +40999,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: f61375590b3162599f0f0d5b8737877ac0a7bc52761dbb585d67e7b8753a3a4c42d9a554c4cc929f591ffcf3a2b0602f65ae3ce74714fd5652623a816862b610
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^4.7.4#~builtin<compat/typescript>":
-  version: 4.9.5
-  resolution: "typescript@patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=bda367"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 2eee5c37cad4390385db5db5a8e81470e42e8f1401b0358d7390095d6f681b410f2c4a0c496c6ff9ebd775423c7785cdace7bcdad76c7bee283df3d9718c0f20
   languageName: node
   linkType: hard
 
@@ -43677,7 +43650,7 @@ __metadata:
     "@commitlint/config-conventional": 17.0.3
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@playwright/test": 1.24.2
-    "@types/prettier": 2.6.4
+    "@types/prettier": 3.0.0
     "@types/shell-quote": 1.7.1
     commitizen: 4.2.5
     cross-env: 7.0.3
@@ -43689,10 +43662,10 @@ __metadata:
     msw: 0.48.0
     msw-storybook-addon: 1.6.3
     npm-run-all: 4.1.5
-    prettier: 2.7.1
+    prettier: 3.3.2
     rimraf: 3.0.2
     shell-quote: 1.7.3
-    typescript: 4.7.4
+    typescript: ^5.3.3
   languageName: unknown
   linkType: soft
 
