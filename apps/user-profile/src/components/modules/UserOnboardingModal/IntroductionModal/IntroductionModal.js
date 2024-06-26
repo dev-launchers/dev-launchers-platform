@@ -1,4 +1,3 @@
-import { styles } from "./StyledIntroductionModal";
 import { Typography } from "@devlaunchers/components/components/atoms";
 import Button from '@devlaunchers/components/components/atoms/Button';
 import RainbowBar from './../../../common/RainbowBar/RainbowBar';
@@ -26,8 +25,8 @@ export default function IntroductionModal() {
     
 
     return (
-        <div className={styles.introductionContainer}>
-        <div className={styles.header}>
+        <div className="h-[470px] w-[470px] p-[30px_45px_50px] flex flex-col justify-between">
+        <div className="w-full">
             <Typography type="h3" textAlign="center">
                 Welcome to Dev Launchers
             </Typography>
@@ -35,7 +34,7 @@ export default function IntroductionModal() {
                 <RainbowBar height="6px" />
             </div>
         </div>
-        <div className={styles.body}>
+        <div className="flex flex-col gap-[10px]">
             <Typography type="p">
                 We'll introduce you to Dev Launchers and set up your profile for team collaboration.
             </Typography>
@@ -43,7 +42,7 @@ export default function IntroductionModal() {
                 Rest assured, we'll guide you through each step of the process.
             </Typography>
         </div>
-        <div className={styles.footer}>
+        <div className="flex flex-col gap-[15px]">
             <Button buttonType="primary" buttonSize="xl" onClick={onGetStarted}>
                 GET STARTED (TAKES 2-5 MINUTES)
             </Button>
