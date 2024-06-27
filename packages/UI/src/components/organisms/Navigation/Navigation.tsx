@@ -53,7 +53,8 @@ const HamburgerButton = ({
 const NavigationStyles = tv(
   {
     slots: {
-      $wrapper: 'flex h-[100px] items-center justify-between bg-[#1C1C1C] px-8',
+      $wrapper:
+        'flex h-[100px] items-center justify-between bg-BaseLayerStyles-BaseLayer-Dark-OffBlack px-8',
       $logoContainer: 'flex items-center gap-4 text-white',
       $linksContainer: '',
       $actionsContainer: '',
@@ -107,7 +108,9 @@ const Navigation = () => {
         <Link href="/">
           <a href="/" className={$logoContainer()}>
             <img className="w-10" src={logo} alt="logo"></img>
-            <span className="hidden md:inline-block">Dev Launchers</span>
+            <span className="hidden text-2xl md:inline-block">
+              Dev Launchers
+            </span>
           </a>
         </Link>
         <ul>

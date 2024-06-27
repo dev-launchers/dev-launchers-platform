@@ -107,12 +107,12 @@
     "@types/jest": "28.1.6",
     "@types/node": "18.0.6",
     "@types/prettier": "3.0.0",
-    "@types/react": "^17.0.44",
-    "@types/react-dom": "^17.0.15",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "eslint": "8.21.0",
     "eslint-plugin-tailwindcss": "3.13.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "3.0.2",
     "typescript": "^5.3.3"
   }

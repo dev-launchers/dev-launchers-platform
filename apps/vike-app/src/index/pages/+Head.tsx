@@ -1,0 +1,136 @@
+import React from 'react';
+
+export const Head = () => {
+  return (
+    <>
+      <script
+        // type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `var _iub = _iub || [];
+_iub.csConfiguration = {
+  lang: 'en',
+  siteId: 2928269, 
+  cookiePolicyId: 92551427, 
+  enableCcpa: true,
+  ccpaApplies: true,
+  enableGdpr: true,
+  gdprAppliesGlobally: false,
+  gdprApplies: true,
+  perPurposeConsent: true,
+  timeoutLoadConfiguration: 30000,
+  consentOnScroll: false, //avoid consent to be given when the user scrolls the page
+  banner:{ acceptButtonCaptionColor:"#FFFFFF",acceptButtonColor:"#3A7CA5",acceptButtonDisplay:true,backgroundColor:"#FFFFFF",brandBackgroundColor:"#FFFFFF",brandTextColor:"#000000",closeButtonDisplay:false,customizeButtonCaptionColor:"#4D4D4D",customizeButtonColor:"#DADADA",customizeButtonDisplay:true,explicitWithdrawal:true,listPurposes:true,position:"float-bottom-left",rejectButtonCaptionColor:"#000000",rejectButtonColor:"#eee",rejectButtonDisplay:true,textColor:"#000000",
+  "logo":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAjCAYAAADmOUiuAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAPYSURBVHgBxVi9UttAEF7ZZobhb0TnDDAjunQRHR12ly74CTBlKqBLKtATAF06mzJVxBMgnsAukwplgBmGShl+M4Cdb8WdR1Zk30nI8M1o7rS6n73dve/2ZNAIMT8/X+l2u3ahUPjQ6XRswzAsiE08HuQH5+fnTdUYBuUMVgrFCp5NoczgyQ3DR+E+PDzsX1xc+IltKL0C2ygqeI6fnp7asI5/c3PjT05O1jHhJ/EtNWDRJsZz4opqKygss4vHphEirqhSQROYnp7eRsdNekWwovDM1lAF2WpwWwONLXoDYO5mQdHAhHKHqHr0RtCOwXK5bJVKpRYpdmbO8Iq6La+vrwPE4l9Y9SO9HvzUNLOwsHCSISaZmA+xuLYImw3SoCO0a5do9AgeHx/XY/zmYgPuodwY1hEcaw7dJHHMzc3ZGaxnInYbcSFkOxjLV3VOpSDOzjaKgNKjIoi+B9/3A7j7QNVRW0FM0GLSRnWfMoD5VPTvQWVBfNdzMTbGKgp7ampqE67Zowzg0OD+MfGKopuegsVi0UPBLllj11B24t5gPuUKlxhvVdVBiweDILifmZlZRnUZXPgbA/PpUqf0GMfOtCcmJo7HxsaOWE9VBy0etCzLBFWcoGpyDnd6erqImOQJKpQN7AWtEymNBd+hylbk7OYPFP1O2azIGNdpxESdaEGRxawJzjuG9ZosxwY5kTrj6FtEkrrH7WhEwLyL/ykIMm5g0npUxisBBy7F3Orwjpaup/zhnJ2d7fQpCDrZHZSYQr7FZymqR1LGK8QOX4V8l/KFC+VqXOnFoLhrfElqjRS8dnt7615eXv5ELM7ScyzyWWnDsp8hq+DVohzA3kImXbsH+D20oNil8ryMc1MYb9gogWyLW1hLXCFDy2IBLix5JGUvVK4q5+opKDEgldqHuUO3i6RVfpeuDtCnymlURJaLcn0KYnPwtbGR0FdylouH2d+8urpaEtfMMPaYG+OylHDhpfW4cowwBoVlGpS8GyVnvadn5jdxCvxC7H2LxCPLypB9jcaoJthD6zLm4gjPYsTPdpo8D78xwpWy69FvCVWPqYk3mggHV2cczmZk+AxCQRzaddIED3p3d+fJd84RYf2aUNLi8QRFVLEQRzGcp/hOJbZekhJcYkK2VN+fBFCLE48VkeFUozIo6bECsCqHTWJqjwUckgIGaMOKTOTLuvij0BKuZwWYpB0xsTaiiUb8GzbGbNLG6FNw0Ad2lTgl2hiorRpoGGDFH9TPr0xNDsJDmfzm/vstCVF+lf9cdBc88mtn5Cbo4WGreWn6j1xBcVHf0nFnEv4Bry/59nGD6xAAAAAASUVORK5CYII="},
+  callback: {
+    onPreferenceExpressedOrNotNeeded: function (preference) {
+      dataLayer.push({
+        iubenda_ccpa_opted_out: _iub.cs.api.isCcpaOptedOut(),
+      });
+      if (!preference) {
+        dataLayer.push({
+          event: 'iubenda_preference_not_needed',
+        });
+      } else {
+        if (preference.consent === true) {
+          dataLayer.push({
+            event: 'iubenda_consent_given',
+          });
+        } else if (preference.consent === false) {
+          dataLayer.push({
+            event: 'iubenda_consent_rejected',
+          });
+        } else if (preference.purposes) {
+          for (var purposeId in preference.purposes) {
+            if (preference.purposes[purposeId]) {
+              dataLayer.push({
+                event: 'iubenda_consent_given_purpose_' + purposeId,
+              });
+            }
+          }
+        }
+      }
+    },
+  },
+}`,
+        }}
+      />
+      <script
+        strategy="worker"
+        async
+        src="https://cdn.iubenda.com/cs/iubenda_cs.js"
+      ></script>
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&family=Nunito+Sans&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        rel="stylesheet"
+      />
+
+      {/* <!-- Google Tag Manager --> */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-KMZNFSB');`,
+        }}
+      />
+      {/* <!-- End Google Tag Manager --> */}
+
+      {/* <!-- Hotjar Tracking Code for https://devlaunchers.org/ideaspace --> */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:3188526,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
+        }}
+      />
+      <title>Home</title>
+      <meta name="title" content="Home"></meta>
+      <meta
+        name="description"
+        content="We build world-changing software while preparing people to thrive in technical careers"
+      ></meta>
+
+      <meta property="og:type" content="website"></meta>
+      <meta
+        property="og:url"
+        content={process.env.NEXT_PUBLIC_FRONT_END_URL}
+      ></meta>
+      <meta
+        property="og:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
+      <meta property="og:title" content="Home"></meta>
+      <meta
+        property="og:description"
+        content="We build world-changing software while preparing people to thrive in technical careers"
+      ></meta>
+
+      <meta property="twitter:card" content="summary_large_image"></meta>
+      <meta
+        property="twitter:url"
+        content={process.env.NEXT_PUBLIC_FRONT_END_URL}
+      ></meta>
+      <meta
+        property="twitter:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
+      <meta property="twitter:title" content="Home"></meta>
+      <meta
+        property="twitter:description"
+        content="We build world-changing software while preparing people to thrive in technical careers"
+      ></meta>
+      <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
+    </>
+  );
+};

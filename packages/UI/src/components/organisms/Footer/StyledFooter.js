@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import logoMonogramImage from '@devlaunchers/components/images/logo-monogram.png?webp';
+import logoMonogramImage from '@devlaunchers/components/src/images/logo-monogram.png?webp';
 import styled from 'styled-components';
 
 function getRandomThemeColor(theme) {
@@ -31,7 +31,9 @@ export const Wrapper = styled.div`
   align-items: center;
 
   z-index: 3;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 export const FooterLogo = styled.img.attrs(() => ({

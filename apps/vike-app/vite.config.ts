@@ -1,15 +1,26 @@
 import react from '@vitejs/plugin-react';
+import path, { resolve } from 'path';
 import vike from 'vike/plugin';
-import { UserConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-const config: UserConfig = {
-  plugins: [react(), vike()],
-  ssr: {
-    noExternal: ['styled-components', '@emotion/*'],
-  },
-  resolve: {
-    dedupe: ['styled-components'],
-  },
-};
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory.
+  // Set the third parameter to '' to load all env regardless of the `VITE_` prefix.
+  const env = loadEnv(mode, process.cwd(), '');
 
-export default config;
+  return {
+    define: {
+      'process.env': env,
+    },
+    plugins: [react(), vike()],
+    envPrefix: 'NEXT_PUBLIC_',
+    ssr: {
+      noExternal: ['styled-components', '@emotion/*'],
+    },
+    resolve: {
+      alias: {
+        '#root': path.resolve(__dirname, 'src'),
+      },
+    },
+  };
+});
