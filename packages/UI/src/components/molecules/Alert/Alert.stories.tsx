@@ -3,7 +3,7 @@ import { LazyMotion, domAnimation } from 'framer-motion';
 import Alert from './Alert';
 
 export default {
-  title: 'Molecules/Alert',
+  title: 'Deprecated/Molecules/Alert',
   component: Alert,
   args: {
     handleClose: (event) => {
