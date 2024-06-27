@@ -11,12 +11,13 @@ export interface NewApplicant {
   commitment: number;
   extraInfo?: string;
   portfolioLink?: string;
-  yearsExperience?: number;
+  yearsOfExperience?: number;
   experience: string;
   reason: string;
   accepted: boolean;
   zip: number;
   role: string;
+  id?: string;
   project: { id: string; slug: string };
   level: keyof typeof SkillLevel;
 }

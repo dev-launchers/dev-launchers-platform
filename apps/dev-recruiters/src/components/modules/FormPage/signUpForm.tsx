@@ -48,13 +48,13 @@ export default function SignUpForm({
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
     /* Adding new column yearsExperience column */
-    yearsExperience: Yup.number()
+    yearsOfExperience: Yup.number()
       .default(0)
-      .min(0, 'Years Experience should be greater than 0')
-      .max(100, 'Years Expereince should be less than 100')
+      .min(0, 'Years of Experience should be greater than 0')
+      .max(100, 'Years of Expereince should be less than 100')
       .test(
         'maxDigitsAfterDecimal',
-        'Years Experience must have 2 digits after decimal or less',
+        'Years of Experience must have 2 digits after decimal or less',
         (number) => /^\d+(\.\d{1,2})?$/.test(number.toString())
       ),
     experience: Yup.string().required('Experience Field Entry is Required'),
@@ -94,12 +94,12 @@ export default function SignUpForm({
           commitment: 0,
           extraInfo: '',
           portfolioLink: null,
+          yearsOfExperience: 0,
           experience: '',
           reason: '',
           zip: 0,
           role: 'title' as string, //  role: position.title as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
-
           skills: [{ skill: '' }],
         }}
         onSubmit={(
@@ -119,6 +119,7 @@ export default function SignUpForm({
             project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
           })
             .then((res) => {
+              console.log(res);
               handleOpenConfirmationModal();
               setSubmitting(false);
             })
@@ -230,11 +231,11 @@ export default function SignUpForm({
                     as={organisms.FormField}
                     label="How many years of relevant experience do you have"
                     placeholder="eg, 1"
-                    id="yearsExperience"
-                    name="yearsExperience"
+                    id="yearsOfExperience"
+                    name="yearsOfExperience"
                     required
-                    touched={touched['yearsExperience']}
-                    error={errors.yearsExperience}
+                    touched={touched['yearsOfExperience']}
+                    error={errors.yearsOfExperience}
                   />
 
                   <Field
