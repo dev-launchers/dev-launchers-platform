@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { StatuBox } from './StyledIdeaCard';
 
 const IdeaCardTag = ({ status }) => {
-  if (status == 'applying') {
-    status = 'in-review';
+  let tag = status;
+  if (tag == 'applying') {
+    tag = 'in-review';
   }
 
   const tagColor = {
@@ -14,7 +15,7 @@ const IdeaCardTag = ({ status }) => {
     workshopping: 'bg-Orange-orange-100',
   };
 
-  return <StatuBox className={tagColor[status]}> {status} </StatuBox>;
+  return <StatuBox className={tagColor[tag]}> {tag} </StatuBox>;
 };
 
 export default IdeaCardTag;
