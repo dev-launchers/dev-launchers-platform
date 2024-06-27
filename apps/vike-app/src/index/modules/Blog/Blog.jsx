@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { RichText, Elements } from 'prismic-reactjs';
-import PageBody from '../../common/PageBody';
+import pkg from 'prismic-reactjs';
+const { RichText, Elements } = pkg;
+import PageBody from '#root/components/PageBody';
 import ArticleInfoBar from './ArticleInfoBar';
 
 import {
@@ -33,45 +34,37 @@ const htmlSerializer = (type, element, content, children, key) => {
     case Elements.heading1:
       props = {};
       return (
-        <ArticleHeading1 {...propsWithUniqueKey(props, key)}>
+        <ArticleHeading1 key={key} {...props}>
           {children}
         </ArticleHeading1>
       );
     case Elements.heading2:
       props = {};
       return (
-        <ArticleHeading2 {...propsWithUniqueKey(props, key)}>
+        <ArticleHeading2 key={key} {...props}>
           {children}
         </ArticleHeading2>
       );
     case Elements.heading3:
       props = {};
       return (
-        <ArticleHeading3 {...propsWithUniqueKey(props, key)}>
+        <ArticleHeading3 key={key} {...props}>
           {children}
         </ArticleHeading3>
       );
     case Elements.heading4:
       props = {};
       return (
-        <ArticleHeading4 {...propsWithUniqueKey(props, key)}>
+        <ArticleHeading4 key={key} {...props}>
           {children}
         </ArticleHeading4>
       );
     case Elements.heading5:
-      props = {};
-      return React.createElement(
-        'h5',
-        propsWithUniqueKey(props, key),
-        children
-      );
+      props = { key };
+      return React.createElement('h5', props, children);
     case Elements.heading6:
-      props = {};
-      return React.createElement(
-        'h6',
-        propsWithUniqueKey(props, key),
-        children
-      );
+      props = { key };
+      return React.createElement('h6', props, children);
 
     // Add a class to paragraph elements
     case Elements.paragraph:
@@ -81,14 +74,12 @@ const htmlSerializer = (type, element, content, children, key) => {
         props = {
           dangerouslySetInnerHTML: { __html: element.text },
         };
-        const iframeHolder = (
-          <ArticleIframe {...propsWithUniqueKey(props, key)} />
-        );
+        const iframeHolder = <ArticleIframe key={key} {...props} />;
         return iframeHolder;
       }
       props = {};
       return (
-        <ArticleParagraph {...propsWithUniqueKey(props, key)}>
+        <ArticleParagraph key={key} {...props}>
           {children}
         </ArticleParagraph>
       );
@@ -99,7 +90,7 @@ const htmlSerializer = (type, element, content, children, key) => {
         src: element.url,
         alt: element.alt || '',
       };
-      return <ArticleImage {...propsWithUniqueKey(props, key)} />;
+      return <ArticleImage key={key} {...props} />;
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
@@ -111,7 +102,7 @@ const htmlSerializer = (type, element, content, children, key) => {
         ...relAttr,
       };
       return (
-        <ArticleLink {...propsWithUniqueKey(props, key)}>
+        <ArticleLink key={key} {...props}>
           {children}
         </ArticleLink>
       );
@@ -176,7 +167,7 @@ export default function Blog(props) {
         ? articles.map((article) => {
             if (article.uid === articleId) {
               return (
-                <ArticleContainer>
+                <ArticleContainer key={article.uid}>
                   <TitleArea>
                     <RichText
                       render={article.data.title}

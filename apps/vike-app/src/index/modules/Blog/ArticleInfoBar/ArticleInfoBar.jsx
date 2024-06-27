@@ -32,7 +32,7 @@ export default function ArticleInfoBar(props) {
             overflow: 'hidden',
           }}
         >
-          <Image
+          <img
             src={article.data.author_image.url}
             alt=""
             layout="fill"
