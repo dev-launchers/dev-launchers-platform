@@ -1,6 +1,5 @@
 import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/index';
-//import App from '@devlaunchers/dev-recruiters/src/pages/_app';
-//import App from 'apps\dev-recruiters\src\pages\_app'
+import App from '@devlaunchers/website/_app.js';
 export {
   getStaticProps,
   getStaticPaths,
