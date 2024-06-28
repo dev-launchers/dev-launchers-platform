@@ -1,5 +1,7 @@
 import Page from '@devlaunchers/dev-recruiters/src/pages/[slug]/index';
-import App from '@devlaunchers/website/_app.js';
+//import App from '@devlaunchers/dev-recruiters/src/pages/_app.jsx';
+//Above path format doesnt work. So updated to this format
+import App from '../../../pages/_app';
 export {
   getStaticProps,
   getStaticPaths,
