@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
-import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import BioBox from './BioBox';
-import Opportunities from './Opportunities';
-import ProfileCard from './ProfileCard';
-import RecommendedIdeas from './RecommendedIdeas';
-import UserProjects from './UserProjects';
-import People from './People';
-import UserInterests from './UserInterests';
-
 import Loader from './../../common/Loader';
-import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
-import { env } from '../../../utils/EnvironmentVariables';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SideBar from './SideBar';
 import Overview from './Overview';
+import EditProfileModal from './EditProfileModal';
 
 // State management component
 /**
@@ -194,6 +184,7 @@ export function UserProfileView({
       </div>
       <div className="px-20 pb-20">
         <Overview />
+        <EditProfileModal />
       </div>
     </div>
   );
