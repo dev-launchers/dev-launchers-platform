@@ -1,9 +1,11 @@
 import React from 'react';
 
-function OutlinedShapes({ colorClass, svgClass }) {
+function OutlinedShapes({ width, height, colorClass, svgClass }) {
   return (
     <svg
-      className={svgClass ?? 'w-5'}
+      width={width ?? '20'}
+      height={height ?? '20'}
+      className={svgClass ?? ''}
       viewBox="0 0 18 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

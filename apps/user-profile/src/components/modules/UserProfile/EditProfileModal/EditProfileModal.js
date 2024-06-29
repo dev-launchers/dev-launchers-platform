@@ -1,34 +1,22 @@
-import ModalHeader from './ModalHeader';
+import { editProfileDataContext } from '../../../../context/EditProfileDataContext';
+import { editProfileActions } from './../../../../state/actions';
+
 import SideBar from './SideBar';
 import SettingPage from './SettingPage';
-import Modal from 'react-modal';
-
-Modal.setAppElement('#__next');
+import Modal from './../../../common/Modal'
+import ModalHeader from './ModalHeader';
 
 function EditProfileModal() {
-  const userUnboardingModalStyle = {
-    content: {
-      position: 'absolute',
-      width: '1000px',
-      padding: '0px',
-      height: '720px',
-      top: '50%',
-      left: '50%',
-      overflow: 'hidden',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      zIndex: 1001,
-      borderRadius: '16px',
-      border: '0',
-    },
-    overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,.75)' },
-  };
+  const { editProfileDispatch } = editProfileDataContext();
+
+  const onClose = () => {
+    editProfileDispatch({ type: editProfileActions.HIDE_EDIT_PROFILE_MODAL });
+  }
+
   return (
-    <>
-      <Modal style={userUnboardingModalStyle} isOpen={true}>
-        <ModalHeader />
+    <Modal isOpen={true} showHeader={true} onClose={onClose}>
+      <div className='h-[720px] w-[1000px]'>
+        {/* <ModalHeader /> */}
 
         <div className="flex h-full">
           <SideBar></SideBar>
@@ -36,8 +24,9 @@ function EditProfileModal() {
         </div>
         {/* </ModalHeader> */}
         {/* <ModalBody /> */}
-      </Modal>
-    </>
+      </div>
+
+    </Modal>
   );
 }
 

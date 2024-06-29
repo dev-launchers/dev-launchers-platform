@@ -1,7 +1,8 @@
 import { editProfileActions } from './../actions';
 
 const editProfileInitialState = {
-  showEditProfileModal: true,
+  showEditProfileModal: false,
+  showModalFooter: false,
   pages: {
     showPhoto: false,
     showBio: true,
@@ -18,11 +19,13 @@ const editProfileReducer = (state, action) => {
   switch (action.type) {
     case editProfileActions.SHOW_EDIT_PROFILE_MODAL: {
       return {
+        ...state,
         showEditProfileModal: true,
       };
     }
     case editProfileActions.HIDE_EDIT_PROFILE_MODAL: {
       return {
+        ...state,
         showEditProfileModal: false,
       };
     }
@@ -30,6 +33,8 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.SHOW_PHOTO_SETTING: {
       return {
         ...state,
+        showEditProfileModal: true,
+        showModalFooter: false,
         pages: {
           ...state.pages,
           showPhoto: true,
@@ -52,6 +57,8 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.SHOW_BIO_SETTING: {
       return {
         ...state,
+        showEditProfileModal: true,
+        showModalFooter: true,
         pages: {
           ...state.pages,
           showPhoto: false,
@@ -74,6 +81,8 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.SHOW_DETAILS_SETTING: {
       return {
         ...state,
+        showEditProfileModal: true,
+        showModalFooter: true,
         pages: {
           ...state.pages,
           showPhoto: false,
@@ -96,6 +105,8 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.SHOW_SKILLS_SETTING: {
       return {
         ...state,
+        showEditProfileModal: true,
+        showModalFooter: true,
         pages: {
           ...state.pages,
           showPhoto: false,
@@ -118,6 +129,8 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.SHOW_INTERESTS_SETTING: {
       return {
         ...state,
+        showEditProfileModal: true,
+        showModalFooter: true,
         pages: {
           ...state.pages,
           showPhoto: false,

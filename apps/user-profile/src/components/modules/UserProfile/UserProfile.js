@@ -8,7 +8,8 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SideBar from './SideBar';
 import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
-
+import Modal from './../../../components/common/Modal'
+import { editProfileDataContext } from '../../../context/EditProfileDataContext';
 // State management component
 /**
  * This component has been broken down into two,
@@ -20,6 +21,8 @@ import EditProfileModal from './EditProfileModal';
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
+  const { editProfileState } = editProfileDataContext();
+
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -142,31 +145,6 @@ export default function UserProfile({ publicUserData, isPublic }) {
   return loading ? (
     <Loader />
   ) : (
-    <UserProfileView
-      publicUserData={publicUserData}
-      isPublic={isPublic}
-      userData={userData}
-      opportunities={opportunities}
-      myProjects={myProjects}
-      ideas={ideas}
-      people={people}
-      interests={interests}
-    />
-  );
-}
-
-// View component
-export function UserProfileView({
-  publicUserData,
-  isPublic,
-  userData,
-  opportunities,
-  myProjects,
-  ideas,
-  people,
-  interests,
-}) {
-  return (
     <div className="flex flex-row bg-[#f9f9f9] h-screen">
       <div className="w-72">
         <SideBar
@@ -184,7 +162,7 @@ export function UserProfileView({
       </div>
       <div className="px-20 pb-20">
         <Overview />
-        <EditProfileModal />
+        {editProfileState.showEditProfileModal ? <EditProfileModal /> : null}
       </div>
     </div>
   );
