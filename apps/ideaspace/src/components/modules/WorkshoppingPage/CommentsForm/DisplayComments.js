@@ -12,14 +12,11 @@ function useForceUpdate() {
 
 function DisplayComments(props) {
   const commentNodes = props.comments.map((comment) => {
-    const commentUser = cleanData(comment.user?.data);
-    console.log(commentUser.profile.data.attributes.displayName);
-    console.log(comment.author);
+    const commentUser = comment.user;
     return (
       <Comment
         user={commentUser}
-        // author={comment.author}
-        author={commentUser.profile.data.attributes.displayName}
+        author={commentUser.profile.displayName}
         key={comment.id}
         id={comment.id}
         createdAt={comment.createdAt}

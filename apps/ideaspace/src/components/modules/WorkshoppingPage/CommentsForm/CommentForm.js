@@ -8,6 +8,7 @@ import {
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
+import { cleanData } from '../../../../utils/StrapiHelper.js';
 
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
@@ -28,7 +29,6 @@ function CommentForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // var data = { author: userData.id.toString(), authorId: userData.id, idea_card: selectedCard, text: textChange.trim() };
     var data = {
       text: textChange.trim(),
       idea_card: selectedCard.id.toString(),
@@ -39,23 +39,18 @@ function CommentForm(props) {
     try {
       try {
         const res = await agent.Comments.post(data);
+        setTextChange('');
+        // render the comment in the comment feed
+        let commentData = cleanData(res);
+        commentData.user = userData;
+        props.renderNewComment(commentData);
       } catch (e) {
         console.log('error when posting comment', e);
       }
-      setTextChange('');
-      // render the comment in the comment feed
-      props.renderNewComment(data);
-      console.log(props);
     } catch (error) {
-      console.error(error);
+      console.log('error');
+      console.log(error);
     }
-
-    // Refresh the page so that the new comment is displayed:
-    // window.location.reload(false);
-    // this.setState(
-    //   {reload: true},
-    //   () => this.setState({reload: false})
-    // )
   };
 
   // move to WorkshoppingPage?

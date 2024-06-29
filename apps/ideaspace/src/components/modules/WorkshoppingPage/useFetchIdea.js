@@ -47,7 +47,12 @@ export const useFetchIdea = (ideaId, setComments) => {
 
         const commentResponse = data?.comments?.data;
         if (commentResponse !== undefined) {
-          setComments(cleanDataList(commentResponse));
+          let cleanList = cleanDataList(commentResponse);
+          cleanList.forEach((element) => {
+            element.user = cleanData(element.user?.data);
+            element.user.profile = cleanData(element.user?.profile.data);
+          });
+          setComments(cleanList);
         }
 
         const author = data?.author?.data;
