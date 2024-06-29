@@ -1,24 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
-import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
-import BioBox from './BioBox';
-import Opportunities from './Opportunities';
-import ProfileCard from './ProfileCard';
-import RecommendedIdeas from './RecommendedIdeas';
-import UserProjects from './UserProjects';
-import People from './People';
-import UserInterests from './UserInterests';
-
 import Loader from './../../common/Loader';
-import { Misc, UserInfo, UserSection, Wrapper } from './StyledUserProfile';
-import { env } from '../../../utils/EnvironmentVariables';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SideBar from './SideBar';
 import Overview from './Overview';
-
+import EditProfileModal from './EditProfileModal';
+import Modal from './../../../components/common/Modal'
+import { editProfileDataContext } from '../../../context/EditProfileDataContext';
 // State management component
 /**
  * This component has been broken down into two,
@@ -30,6 +21,8 @@ import Overview from './Overview';
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
+  const { editProfileState } = editProfileDataContext();
+
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
   const [myProjects, setMyProjects] = React.useState([]);
@@ -152,31 +145,6 @@ export default function UserProfile({ publicUserData, isPublic }) {
   return loading ? (
     <Loader />
   ) : (
-    <UserProfileView
-      publicUserData={publicUserData}
-      isPublic={isPublic}
-      userData={userData}
-      opportunities={opportunities}
-      myProjects={myProjects}
-      ideas={ideas}
-      people={people}
-      interests={interests}
-    />
-  );
-}
-
-// View component
-export function UserProfileView({
-  publicUserData,
-  isPublic,
-  userData,
-  opportunities,
-  myProjects,
-  ideas,
-  people,
-  interests,
-}) {
-  return (
     <div className="flex flex-row bg-[#f9f9f9] h-screen">
       <div className="w-72">
         <SideBar
@@ -194,6 +162,7 @@ export function UserProfileView({
       </div>
       <div className="px-20 pb-20">
         <Overview />
+        {editProfileState.showEditProfileModal ? <EditProfileModal /> : null}
       </div>
     </div>
   );
