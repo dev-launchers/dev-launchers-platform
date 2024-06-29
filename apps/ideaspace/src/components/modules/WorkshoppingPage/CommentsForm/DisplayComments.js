@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Comment from './SingleComment';
-import { cleanData } from '../../../../utils/StrapiHelper';
 
 //create your forceUpdate hook
 function useForceUpdate() {

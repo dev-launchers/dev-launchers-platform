@@ -37,19 +37,14 @@ function CommentForm(props) {
     };
 
     try {
-      try {
-        const res = await agent.Comments.post(data);
-        setTextChange('');
-        // render the comment in the comment feed
-        let commentData = cleanData(res);
-        commentData.user = userData;
-        props.renderNewComment(commentData);
-      } catch (e) {
-        console.log('error when posting comment', e);
-      }
-    } catch (error) {
-      console.log('error');
-      console.log(error);
+      const res = await agent.Comments.post(data);
+      setTextChange('');
+      // render the comment in the comment feed
+      let commentData = cleanData(res);
+      commentData.user = userData;
+      props.renderNewComment(commentData);
+    } catch (e) {
+      console.log('error when posting comment', e);
     }
   };
 
