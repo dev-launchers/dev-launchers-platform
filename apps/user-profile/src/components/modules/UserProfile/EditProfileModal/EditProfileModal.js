@@ -4,7 +4,6 @@ import { editProfileActions } from './../../../../state/actions';
 import SideBar from './SideBar';
 import SettingPage from './SettingPage';
 import Modal from './../../../common/Modal'
-import ModalHeader from './ModalHeader';
 
 function EditProfileModal() {
   const { editProfileDispatch } = editProfileDataContext();
@@ -15,17 +14,10 @@ function EditProfileModal() {
 
   return (
     <Modal isOpen={true} showHeader={true} onClose={onClose}>
-      <div className='h-[720px] w-[1000px]'>
-        {/* <ModalHeader /> */}
-
-        <div className="flex h-full">
-          <SideBar></SideBar>
-          <SettingPage></SettingPage>
-        </div>
-        {/* </ModalHeader> */}
-        {/* <ModalBody /> */}
+      <div className='flex h-[720px] w-[1000px]'>
+        <SideBar></SideBar>
+        <SettingPage></SettingPage>
       </div>
-
     </Modal>
   );
 }
