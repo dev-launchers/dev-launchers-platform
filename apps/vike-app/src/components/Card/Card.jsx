@@ -1,7 +1,7 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { useRouter } from 'next/router';
 
-import Link from "next/link";
+import Link from 'next/link';
 import {
   Container,
   Content,
@@ -13,13 +13,14 @@ import {
   AttachmentsContainer,
   ActionsContainer,
   TagsContainer,
-} from "./StyledCard";
-import Tag from "../Tag";
+} from './StyledCard';
+import Tag from '../Tag';
 
-import RainbowBar from "../RainbowBar";
+import RainbowBar from '../RainbowBar';
 
-import CardTitle from "./CardTitle";
-import Attachments from "./Attachments";
+import CardTitle from './CardTitle';
+import Attachments from './Attachments';
+import { usePageContext } from '@devlaunchers/vike-react/usePageContext';
 
 /**
  * Props:
@@ -35,7 +36,7 @@ import Attachments from "./Attachments";
  *  - cardFlexDirection: changes flex-direction if existed otherwise delete flex-direction
  */
 export default function Card(props) {
-  const router = useRouter();
+  const { urlPathname } = usePageContext();
 
   return (
     <Container
@@ -44,7 +45,9 @@ export default function Card(props) {
       key={props.i}
       onClick={props.cardData.onClick}
     >
-      {props.noImage ? "" : 
+      {props.noImage ? (
+        ''
+      ) : (
         <ImageHolder
           size={props.size}
           bgColor={props.cardData.imageHolderBackgroundColor}
@@ -56,37 +59,29 @@ export default function Card(props) {
               ))}
             </TagsContainer>
           )}
-          {props.isLinkingInside ? (
-            <Link href={`${router.pathname}/${props.cardData.href}`} passHref>
-              <a rel="noopener noreferrer">
-                <Image alt="" imageSrc={props.cardData.imageSrc} />
-              </a>
-            </Link>
-          ) : (
-            <a
-              href={props.cardData.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image alt="" imageSrc={props.cardData.imageSrc} />
-            </a>
-          )}
-        </ImageHolder>
-      }
 
-      {props.size === "large" ? "" : (<RainbowBar height=".3rem" />)}
+          <a
+            href={props.cardData.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image alt="" imageSrc={props.cardData.imageSrc} />
+          </a>
+        </ImageHolder>
+      )}
+
+      {props.size === 'large' ? '' : <RainbowBar height=".3rem" />}
 
       <Content
         size={props.size}
         textAlignment={props.cardData.textAlignment}
         flexDirection={props.cardData.flexDirection}
       >
-        
         <DataHolder size={props.size}>
           <CardTitle
             data={props.cardData}
             isLinkingInside={props.isLinkingInside}
-            pathname={router.pathname}
+            pathname={urlPathname}
           />
           {props.cardData.secondaryText && (
             <SecondaryText>{props.cardData.secondaryText}</SecondaryText>

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   AttachmentLink,
   AttachmentLinkContainer,
   AttachmentImg,
   AttachmentImgContainer,
-} from "./StyledAttachments";
+} from './StyledAttachments';
 
 export default function Attachments(props) {
   const [showAttachment, setShowAttachment] = useState(false);

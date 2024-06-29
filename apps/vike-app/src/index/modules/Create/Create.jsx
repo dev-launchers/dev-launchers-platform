@@ -4,11 +4,10 @@ import 'react-tabs/style/react-tabs.css'; // import react-tabs styles
 import Image from 'next/image';
 import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 import Modal from 'react-modal';
+import { useSheetsContext } from '#root/index/context/SheetsContext';
 
-import { useSheetsContext } from '../../../context/SheetsContext';
-
-import PageBody from '../../common/PageBody';
-import Section from '../../common/Section';
+import PageBody from '#root/components/PageBody';
+import Section from '#root/components/Section';
 
 import NeedHelpSection from './NeedHelpSection';
 
@@ -27,7 +26,7 @@ const customModalStyles = {
   },
   overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,.75)' },
 };
-Modal.setAppElement('#__next');
+Modal.setAppElement('#root');
 
 export default function Create(props) {
   const { createPageData } = useSheetsContext();
@@ -174,15 +173,20 @@ export default function Create(props) {
         {
           // Render sections and groups from our dynamically built pageData object
           // Render tab panels from our dynamically built pageData object
-          Object.values(createPageData || {}).map((tab, i) => (
-            // render all sections for this tab
-            <TabPanel key={i}>
-              {Object.keys(tab || {}).map((sectionTitle) => {
-                const section = tab[sectionTitle];
-                return <Section data={section} title={sectionTitle} key={i} />;
-              })}
-            </TabPanel>
-          ))
+          Object.values(createPageData || {}).map((tab, i) => {
+            console.log({ tab });
+            return (
+              // render all sections for this tab
+              <TabPanel key={i}>
+                {Object.keys(tab || {}).map((sectionTitle) => {
+                  const section = tab[sectionTitle];
+                  return (
+                    <Section data={section} title={sectionTitle} key={i} />
+                  );
+                })}
+              </TabPanel>
+            );
+          })
         }
       </Tabs>
     </PageBody>

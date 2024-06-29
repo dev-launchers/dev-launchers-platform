@@ -9,6 +9,11 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   return {
+    esbuild: {
+      supported: {
+        'top-level-await': true, //browsers can handle top-level-await features
+      },
+    },
     define: {
       'process.env': env,
     },

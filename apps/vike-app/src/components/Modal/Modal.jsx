@@ -1,9 +1,9 @@
-import React from "react";
-import ReactModal from "react-modal";
+import React from 'react';
+import ReactModal from 'react-modal';
 
-import { ModalContent, customModalStyles } from "./StyledModal";
+import { ModalContent, customModalStyles } from './StyledModal';
 
-ReactModal.setAppElement("#__next");
+ReactModal.setAppElement('#root');
 
 export default function Modal(props) {
   const [modalContent] = React.useState(props.modalContent);
