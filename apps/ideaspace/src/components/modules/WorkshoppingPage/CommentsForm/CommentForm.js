@@ -10,7 +10,6 @@ import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
-
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [disabled, setDisabled] = useState(true);
@@ -28,34 +27,64 @@ function CommentForm(props) {
   };
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
+
+    const trimmedText = textChange.trim();
+
+    // Check if the comment is empty after trimming
+    if (trimmedText === '') {
+      console.error('Comment cannot be empty');
+      return;
+    }
+
+    var data = {
+      author: userData.username,
+      idea_card: selectedCard,
+      text: trimmedText,
+    };
 
     try {
       const res = await agent.Comments.post(data);
       setTextChange('');
-      // render the comment in the comment feed
       props.renderNewComment(data);
-    } catch(error) {
-      console.error(error)
+    } catch (error) {
+      console.error(error);
     }
-
-    // Refresh the page so that the new comment is displayed:
-    // window.location.reload(false);
-    // this.setState(
-    //   {reload: true},
-    //   () => this.setState({reload: false})
-    // )
-
-    
   };
+
+  // e.preventDefault();
+  // var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
+
+  // try {
+  //   const res = await agent.Comments.post(data);
+  //   setTextChange('');
+  //   // render the comment in the comment feed
+  //   props.renderNewComment(data);
+  // } catch(error) {
+  //   console.error(error)
+  // }
+
+  // Refresh the page so that the new comment is displayed:
+  // window.location.reload(false);
+  // this.setState(
+  //   {reload: true},
+  //   () => this.setState({reload: false})
+  // )
+
+  // };
 
   // move to WorkshoppingPage?
   return (
     <div>
       {isAuthenticated ? (
-        <form onSubmit={handleSubmit} style={{textAlign: "left", paddingLeft: "20px", paddingRight: "20px"}}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            textAlign: 'left',
+            paddingLeft: '20px',
+            paddingRight: '20px',
+          }}
+        >
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <CommentBox
@@ -73,15 +102,21 @@ function CommentForm(props) {
               onChange={handleTextChange}
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>
-            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
+            <button
+              type="submit"
+              style={{ color: 'white', backgroundColor: '#3A7CA5' }}
+            >
+              <i class="fas fa-arrow-right"></i>
+            </button>
           </UserComment>
         </form>
       ) : (
-        <div style={{ margin: '2rem', marginTop: '4rem'}}>
+        <div style={{ margin: '2rem', marginTop: '4rem' }}>
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={
-              `${process.env.NEXT_PUBLIC_FRONT_END_URL}/ideaspace/workshop/` + selectedCard.id
+              `${process.env.NEXT_PUBLIC_FRONT_END_URL}/ideaspace/workshop/` +
+              selectedCard.id
             }
           />
         </div>
