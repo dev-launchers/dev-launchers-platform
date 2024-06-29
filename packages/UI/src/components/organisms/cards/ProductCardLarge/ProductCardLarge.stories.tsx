@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import ProductCardLarge from './ProductCardLarge';
 
 export default {
-  title: 'Organisms/ProductCardLarge',
+  title: 'Deprecated/Organisms/ProductCardLarge',
   component: ProductCardLarge,
 } as ComponentMeta<typeof ProductCardLarge>;
 

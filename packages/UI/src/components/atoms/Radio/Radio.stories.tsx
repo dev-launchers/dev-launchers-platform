@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Radio from './Radio';
 
 export default {
-  title: 'Atoms/Radio',
+  title: 'Deprecated/Atoms/Radio',
   component: Radio,
 } as ComponentMeta<typeof Radio>;
 

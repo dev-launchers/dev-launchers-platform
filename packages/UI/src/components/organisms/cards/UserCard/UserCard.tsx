@@ -9,14 +9,21 @@ import Mail from '../../../../assets/icons/Mail';
 import { useUserDataContext } from '../../../../context/UserDataContext';
 import type { UserCardProps } from '.';
 
-export default function UserCard({ user, isVertical }: UserCardProps) {
+export default function UserCard({
+  user,
+  isVertical,
+  style = {},
+}: UserCardProps) {
   let userInfo = user;
   if (!user) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     userInfo = useUserDataContext().userData;
   }
   return (
-    <Layer type="light" css={{ borderRadius: '16px', maxWidth: '360px' }}>
+    <Layer
+      type="light"
+      css={{ ...style, ...{ borderRadius: '16px', maxWidth: '360px' } }}
+    >
       <Box
         padding="24px"
         flexDirection="column"
@@ -66,34 +73,43 @@ export default function UserCard({ user, isVertical }: UserCardProps) {
           </Box>
         )}
         <Box flexDirection="column" alignItems="flex-start">
-          <Box
-            flexDirection="row"
-            alignItems="center"
-            margin={isVertical ? ' 1rem 0 1rem 1rem' : ' 0 0 1rem 0'}
-            gap="1rem"
-          >
-            <Discord width={'22px'} height={'16px'} />
-            <Box flexDirection="column">
-              <Typography type="label">DISCORD</Typography>
-              <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
-                {userInfo.discord.username}#{userInfo.discord.discriminator}
-              </Typography>
+          {userInfo.discord ? (
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              margin={isVertical ? ' 1rem 0 1rem 1rem' : ' 0 0 1rem 0'}
+              gap="1rem"
+            >
+              <Discord width={'22px'} height={'16px'} />
+              <Box flexDirection="column">
+                <Typography type="label">DISCORD</Typography>
+                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                  {userInfo?.discord?.username}#
+                  {userInfo?.discord?.discriminator}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
-          <Box
-            flexDirection="row"
-            alignItems="center"
-            margin={isVertical ? ' 0 0 0 1rem' : undefined}
-            gap="1rem"
-          >
-            <Mail width={'22px'} height={'16px'} />
-            <Box flexDirection="column">
-              <Typography type="label">Email</Typography>
-              <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
-                {userInfo.email}
-              </Typography>
+          ) : (
+            ``
+          )}
+          {userInfo.email ? (
+            <Box
+              flexDirection="row"
+              alignItems="center"
+              margin={isVertical ? ' 0 0 0 1rem' : undefined}
+              gap="1rem"
+            >
+              <Mail width={'22px'} height={'16px'} />
+              <Box flexDirection="column">
+                <Typography type="label">Email</Typography>
+                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                  {userInfo.email}
+                </Typography>
+              </Box>
             </Box>
-          </Box>
+          ) : (
+            ``
+          )}
         </Box>
       </Box>
     </Layer>

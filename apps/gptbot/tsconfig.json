@@ -1,0 +1,32 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@/lib/*": ["./lib/*"],
+      "@/components/*": ["./components/*"],
+      "@/pages/*": ["./pages/*"],
+      "@/public/*": ["../public/*"],
+      "@/themes/*": ["./themes/*"],
+      "@devlaunchers/components/*": ["../../../packages/components/src/*"],
+      "@devlaunchers/components": ["../../../packages/components/src/index"],
+      "@devlaunchers/core-lib/*": ["../../../packages/core-lib/src/*"],
+      "@devlaunchers/core-lib": ["../../../packages/core-lib/src/index"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/.*/", ".next"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs",
+    "**/*.json"
+, ".eslintrc-example.js"  ]
+}

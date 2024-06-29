@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Slider from './Slider';
 export default {
-  title: 'Atoms/Slider',
+  title: 'Deprecated/Atoms/Slider',
   component: Slider,
 } as ComponentMeta<typeof Slider>;
 

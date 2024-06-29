@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import SocialIconButton from './SocialIconButton';
 export default {
-  title: 'Molecules/SocialIconButton',
+  title: 'Deprecated/Molecules/SocialIconButton',
   component: SocialIconButton,
 } as ComponentMeta<typeof SocialIconButton>;
 

@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import LikeButton from './LikeButton';
 export default {
-  title: 'Molecules/Interactions/LikeButton',
+  title: 'Deprecated/Molecules/Interactions/LikeButton',
   component: LikeButton,
 } as ComponentMeta<typeof LikeButton>;
 

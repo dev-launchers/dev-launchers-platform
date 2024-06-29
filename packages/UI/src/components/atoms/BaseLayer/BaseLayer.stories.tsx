@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import BaseLayer from './BaseLayer';
 
 export default {
-  title: 'Atoms/BaseLayer',
+  title: 'Deprecated/Atoms/BaseLayer',
   component: BaseLayer,
   parameters: {
     docs: {

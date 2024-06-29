@@ -2,7 +2,7 @@ import type { ComponentStory } from '@storybook/react';
 import NavDropdown from './NavDropdown';
 
 export default {
-  title: 'organisms/NavDropdown',
+  title: 'Deprecated/organisms/NavDropdown',
   component: NavDropdown,
 };
 

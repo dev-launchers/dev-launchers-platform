@@ -36,7 +36,6 @@
     "react-tabs": "^3.1.0",
     "react-toastify": "latest",
     "regenerator-runtime": "^0.13.9",
-    "semantic-release": "^19.0.3",
     "styled-components": "5.3.5",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
@@ -51,8 +50,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "^12.2.3",
     "eslint-config-prettier": "^8.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4",
@@ -64,7 +61,6 @@
     "start": "next start",
     "prettier": "prettier --write \"./**/*.{js,jsx,json}\"",
     "pre-commit": "eslint '*/**/*.{js,jsx}' --fix",
-    "prepare": "husky install",
     "clean": "rimraf --no-glob ./tsconfig.tsbuildinfo",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx",
     "fix-all-files": "eslint . --ext .ts,.tsx,.js,.jsx,.cjs,.mjs,.mdx --fix",
@@ -79,27 +75,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "resolutions": {
     "styled-components": "^5"
-  },
-  "release": {
-    "branches": [
-      "release"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      "@semantic-release/github"
-    ]
   }
 }

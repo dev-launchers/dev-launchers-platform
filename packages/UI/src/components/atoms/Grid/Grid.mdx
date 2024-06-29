@@ -1,0 +1,53 @@
+import Grid from "./Grid";
+import * as GridStories from "./Grid.stories.tsx";
+import { Meta, Canvas, Controls, Story, Description, Primary, Title } from '@storybook/blocks';
+
+
+
+<Meta of={GridStories} />
+
+<Title of={GridStories} />
+A flexible grid that can support arbitrary rows of content with static number of columns, gap, gutter depending on user's viewport size.
+Row and column gaps are configured in a responsive way. For example, you might have two grid elements these two will have bigger gap on bigger screens and small gaps on small screens.
+
+## Usage
+```jsx
+import { Grid } from "@devlaunchers/components/src/components/atoms";
+
+<Grid>
+    <ReactNode />
+</Grid>
+```
+
+## Viewports and their fixed attributes
+
+|    **viewport width**   | **#columns** | **gutter** | **column gap** |
+|:-----------------------:|:------------:|:----------:|:-------:|
+| Mobile (below 640px)    | 4            | 16px       | 16px    |
+| sm (640px >= ***x*** < 768px)  | 4            | 16px       | 16px    |
+| md (768px >= ***x*** < 1024px) | 8            | 16px       | 16px    |
+| lg (1024px >= ***x*** < 1280px)| 12           | 24px       | 20px    |
+| xl (1280px >= ***x*** < 1536px)| 12           | 24px       | 32px    |
+| 2xl (above 1536px)      | 12           | 16px       | 32px    |
+
+
+## [Row Gap](https://tailwindcss.com/docs/gap#changing-row-and-column-gaps-independently)
+Grid gaps are the space between cells horizontally (you should NEVER change space between vertically).
+If you would like to adjust the space between columns, use tailwind's utility class [`gap-y-{n}`](https://tailwindcss.com/docs/gap#changing-row-and-column-gaps-independently).
+
+Below is an example of a grid layout using a row gap of 24px, Notice the `gap-y-6` class applied to `<Grid>`.
+<Canvas of={GridStories.RowGap} />
+
+## [Spanning](https://tailwindcss.com/docs/grid-column#spanning-columns)
+Spanning is the action of taking content and span it to the available columns at a given breakpoint.
+In alot of cases you may find yourself wanting to have more than a element in a row.
+for example you want the header to span across all columns in the first row but you want the second row to have content and sidebar, the below example show to utilize [`col-span-`](https://tailwindcss.com/docs/grid-column#spanning-columns) class to acheive that goal.
+<Canvas of={GridStories.Spanning} />
+> ⚠️ **Warning**: When spanning columns make sure it *looks right* on different breakpoints. 
+The previous example is intentionally broken on bigger screens, see [its story](http://localhost:6006/?path=/story/components-atoms-grid--spanning) and notice how "Content" box is only spanning to 3 columns which is problematic on `md` breakpoints and above as they have higher number of columns than 4.
+You can easily fix this issue by spanning cols on different breakpoints: `md:col-span-7 lg:col-span-11` which means "on `md` breakpoint span 7 columns and for `lg` breakpoint **or above** span 11 columns"
+
+## [Starting and ending lines](https://tailwindcss.com/docs/grid-column#starting-and-ending-lines)
+You can make an element start or end at the nth grid line. These can also be combined with the `col-span-{n}` utilities to span a specific number of columns.
+To demonstarte this we are going to let the "Header" in previous example start at the second column line and allow the sidebar to occupy that space the Header left.
+<Canvas of={GridStories.StartingAndEndingLines} />

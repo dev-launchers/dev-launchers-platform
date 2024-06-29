@@ -22,14 +22,47 @@ const UseLessBox = ({
  * See https://storybook.js.org/docs/react/api/csf
  * to learn how to use render functions.
  */
-export const Primary: Story = {
+export const RowGap: Story = {
   render: () => (
     <Grid className="gap-y-6">
-      <UseLessBox className="col-span-full h-[71px]" />
-      <UseLessBox className="col-span-full h-[442px]" />
-      <UseLessBox className="col-span-4 h-[442px]" />
-      <UseLessBox className="col-span-4 h-[442px]" />
-      <UseLessBox className="col-span-4 h-[442px]" />
+      <UseLessBox className="col-span-full flex h-16 items-center justify-center">
+        Header
+      </UseLessBox>
+      <UseLessBox className="col-span-full flex h-96 items-center justify-center">
+        Content
+      </UseLessBox>
+    </Grid>
+  ),
+};
+
+export const Spanning: Story = {
+  render: () => (
+    <Grid className="gap-y-6">
+      <UseLessBox className="col-span-full flex h-16 items-center justify-center">
+        Header
+      </UseLessBox>
+      <UseLessBox className="col-span-1 flex h-96 items-center justify-center">
+        Sidebar
+      </UseLessBox>
+      <UseLessBox className="col-span-3 flex h-96 items-center justify-center">
+        Content
+      </UseLessBox>
+    </Grid>
+  ),
+};
+
+export const StartingAndEndingLines: Story = {
+  render: () => (
+    <Grid className="grid-rows-2 gap-y-6">
+      <UseLessBox className="col-span-3 col-start-2 flex h-16 items-center justify-center">
+        Header
+      </UseLessBox>
+      <UseLessBox className="col-span-1 row-span-2 row-start-1 flex items-center justify-center">
+        Sidebar
+      </UseLessBox>
+      <UseLessBox className="col-span-3 col-start-2 row-start-2 row-end-2 flex items-center justify-center">
+        Content
+      </UseLessBox>
     </Grid>
   ),
 };

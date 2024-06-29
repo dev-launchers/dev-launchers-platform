@@ -45,20 +45,28 @@ const MinimalPositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={handleMoreDetails}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              more details
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={handleMoreDetails}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                more details
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>
@@ -104,7 +112,7 @@ const Blurp = ({
           <Box flexDirection="column" gap="16px">
             <Typography type="subtitle">why should you join?</Typography>
             <ul css={{ listStylePosition: 'inside' }}>
-              {content.benifits.map((el1, i1) => (
+              {content.benefits.map((el1, i1) => (
                 <Typography type="p" key={i1}>
                   <li>{el1}</li>
                 </Typography>
@@ -179,22 +187,30 @@ const PositionCard = ({
       <Actions>
         <Box width="100%" padding="0px 24px" justifyContent="flex-end">
           <Box gap="16px">
-            <Button
-              onClick={() =>
-                minimal ? handleMoreDetails() : setExpanded((open) => !open)
-              }
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
-            >
-              {expanded ? 'collapse details' : 'more details'}
-            </Button>
-            <Button
-              onClick={handleApply}
-              buttonSize="standard"
-              buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
-            >
-              apply
-            </Button>
+            {content.expectations?.length && content.benefits?.length ? (
+              <Button
+                onClick={() =>
+                  minimal ? handleMoreDetails() : setExpanded((open) => !open)
+                }
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+              >
+                {expanded ? 'collapse details' : 'more details'}
+              </Button>
+            ) : (
+              ``
+            )}
+            {handleApply ? (
+              <Button
+                onClick={handleApply}
+                buttonSize="standard"
+                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+              >
+                apply
+              </Button>
+            ) : (
+              ``
+            )}
           </Box>
         </Box>
       </Actions>

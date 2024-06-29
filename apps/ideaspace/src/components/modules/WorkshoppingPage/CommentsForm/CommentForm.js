@@ -10,15 +10,15 @@ import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
-  const [state, setState] = useState(false)
 
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
   const [disabled, setDisabled] = useState(true);
+  const [textChange, setTextChange] = useState('');
 
   const handleTextChange = (e) => {
     const text = e.target.value;
-    props.setHandleTextChange(text);
+    setTextChange(text);
 
     if (text.trim() == '') {
       setDisabled(true);
@@ -30,11 +30,13 @@ function CommentForm(props) {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    var data = { author: userData.username, idea_card: selectedCard, text: props.handleTextChange.trim() };
+    var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
 
     try {
       const res = await agent.Comments.post(data);
-      props.setHandleTextChange('');
+      setTextChange('');
+      // render the comment in the comment feed
+      props.renderNewComment(data);
     } catch(error) {
       console.error(error)
     }
@@ -45,7 +47,8 @@ function CommentForm(props) {
     //   {reload: true},
     //   () => this.setState({reload: false})
     // )
-    setState(true)
+
+    
   };
 
   // move to WorkshoppingPage?
@@ -66,7 +69,7 @@ function CommentForm(props) {
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
               placeholder="What are your thoughts?"
-              value={props.handleTextChange}
+              value={textChange}
               onChange={handleTextChange}
               // maxlength={MAX_COMMENT_CHARS}
             ></CommentBox>

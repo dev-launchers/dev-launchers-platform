@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Checkbox from './Checkbox';
 
 export default {
-  title: 'Atoms/Checkbox',
+  title: 'Deprecated/Atoms/Checkbox',
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 

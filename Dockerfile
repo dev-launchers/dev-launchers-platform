@@ -61,6 +61,9 @@ ENV PRISMA_CLI_BINARY_TARGETS=linux-musl
 # Does not play well with buildkit on CI
 # https://github.com/moby/buildkit/issues/1673
 
+# Make sure the env is set to be CI
+ENV CI=true
+
 RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
     YARN_CACHE_FOLDER=/root/.yarn3-cache \
     yarn install --immutable --inline-builds
@@ -74,6 +77,8 @@ FROM node:14.19.3-bullseye AS builder
 ARG NODE_ENV=production
 ENV NEXTJS_IGNORE_ESLINT=1
 ENV NEXTJS_IGNORE_TYPECHECK=0
+# Make sure the env is set to be CI
+ENV CI=true
 
 WORKDIR /app
 
@@ -113,12 +118,18 @@ COPY --from=builder /app/apps/website/next.config.js \
 COPY --from=builder /app/apps/ideaspace/next.config.js \
                     /app/apps/ideaspace/package.json \
                     ./apps/ideaspace/
+COPY --from=builder /app/apps/user-profile/next.config.js \
+                    /app/apps/user-profile/package.json \
+                    ./apps/user-profile/
 COPY --from=builder /app/apps/site-projects/next.config.js \
                     /app/apps/site-projects/package.json \
                     ./apps/site-projects/
 COPY --from=builder /app/apps/dev-recruiters/next.config.js \
                     /app/apps/dev-recruiters/package.json \
                     ./apps/dev-recruiters/
+COPY --from=builder /app/apps/gptbot/next.config.js \
+                    /app/apps/gptbot/package.json \
+                    ./apps/gptbot/
 COPY --from=builder /app/apps/app/public ./apps/app/public
 COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.next ./apps/app/.next
 COPY --from=builder --chown=nextjs:nodejs /app/apps/app/.env.production ./apps/app/.env.production

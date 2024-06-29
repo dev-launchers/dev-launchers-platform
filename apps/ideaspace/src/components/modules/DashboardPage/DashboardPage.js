@@ -2,10 +2,10 @@ import React from 'react';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import SignInSection from '../../common/SignInSection/SignInSection';
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
-import { cleanDataList } from '../../../utils/StrapiHelper';
+import { cleanDataList, cleanData } from '../../../utils/StrapiHelper';
 import { agent } from '@devlaunchers/utility';
 
 import {
@@ -16,7 +16,6 @@ import {
 } from './StyledDashboardPage';
 
 function DashboardPage() {
-
   let { userData, isAuthenticated } = useUserDataContext();
 
   const [loading, setLoading] = React.useState(true);
@@ -25,21 +24,28 @@ function DashboardPage() {
 
   React.useEffect(async () => {
     if (isAuthenticated) {
-      const data = cleanDataList(await agent.Ideas.get(
-        new URLSearchParams(`populate=*pagination[pageSize]=1000`)));
+      const data = cleanDataList(
+        await agent.Ideas.get(new URLSearchParams(`populate=deep`))
+      );
 
-        const allCards = data.map((item) => {
-          item.comments = cleanDataList(item.comments.data);
-          return {
-            ...item,
-            mostRecentCommentTime: new Date(
-              item.comments[0]?.updated_at
-            ).getTime(),
-          };
-        });
+      const allCards = data.map((item) => {
+        if (item.comments === undefined) item.comments = [];
+        else item.comments = cleanDataList(item.comments.data);
 
-        setLoading(false);
-        setSourceCards(allCards);
+        if (item.author.data !== null) {
+          item.author = cleanData(item.author.data);
+        }
+
+        return {
+          ...item,
+          mostRecentCommentTime: new Date(
+            item.comments[0]?.updated_at
+          ).getTime(),
+        };
+      });
+
+      setLoading(false);
+      setSourceCards(allCards);
     }
   }, [isAuthenticated]);
 
@@ -54,15 +60,17 @@ function DashboardPage() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <atoms.Typography type='h4' >
+        <atoms.Typography type="h4">
           Everything about your ideas in one place.
         </atoms.Typography>
       </HeadWapper>
 
       {!isAuthenticated ? (
         <SignInSection
-          label='Please sign in to view your dashboard!'
-          redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'}
+          label="Please sign in to view your dashboard!"
+          redirectURL={
+            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
+          }
         />
       ) : (
         <PageWrapper>
@@ -70,18 +78,12 @@ function DashboardPage() {
             <CircularIndeterminateLoader text="Loading..." color="black" />
           ) : (
             <>
-              <Stats
-                totalCard={cards}
-              />
-
-              <Ideas
-                totalCard={cards}
-              />
+              <Stats totalCard={cards} />
+              <Ideas totalCard={cards} />
             </>
           )}
         </PageWrapper>
-      )
-      }
+      )}
     </>
   );
 }

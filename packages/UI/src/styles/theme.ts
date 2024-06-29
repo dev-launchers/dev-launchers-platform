@@ -73,7 +73,7 @@ const theme = {
     GREYSCALE_BLACK: '#000000',
   },
   fonts: {
-    headline: 'Abel',
+    headline: 'Oswald',
     normal: 'Nunito Sans',
   },
   fontSizes: {

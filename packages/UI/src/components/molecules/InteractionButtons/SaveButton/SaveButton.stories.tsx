@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import SaveButton from './SaveButton';
 export default {
-  title: 'Molecules/Interactions/SaveButton',
+  title: 'Deprecated/Molecules/Interactions/SaveButton',
   component: SaveButton,
 } as ComponentMeta<typeof SaveButton>;
 

@@ -4,7 +4,6 @@ import Tag from './Tag';
 
 const meta: Meta<typeof Tag> = {
   component: Tag,
-  title: 'Atoms/Tag',
   args: { label: 'My Tag' },
 };
 

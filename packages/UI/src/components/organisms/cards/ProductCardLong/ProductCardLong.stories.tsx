@@ -1,7 +1,7 @@
 import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import ProductCardLong from './ProductCardLong';
 export default {
-  title: 'Organisms/ProductCardLong',
+  title: 'Deprecated/Organisms/ProductCardLong',
   component: ProductCardLong,
 } as ComponentMeta<typeof ProductCardLong>;
 

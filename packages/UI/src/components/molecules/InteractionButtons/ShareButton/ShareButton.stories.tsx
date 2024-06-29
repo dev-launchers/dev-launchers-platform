@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import ShareButton from './ShareButton';
 export default {
-  title: 'Molecules/Interactions/ShareButton',
+  title: 'Deprecated/Molecules/Interactions/ShareButton',
   component: ShareButton,
 } as ComponentMeta<typeof ShareButton>;
 
