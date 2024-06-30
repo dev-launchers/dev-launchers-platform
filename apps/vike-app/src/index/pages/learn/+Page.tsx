@@ -1,4 +1,4 @@
-import Learn from '../../modules/Learn';
+import Learn from './Learn';
 
 export const Page = () => {
   return <Learn />;
