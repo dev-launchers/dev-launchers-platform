@@ -1,5 +1,5 @@
 import React from 'react';
-import FlexPageSection from '../../../common/FlexPageSection';
+import FlexPageSection from '#root/components/FlexPageSection';
 
 import {
   Wrapper,
@@ -9,9 +9,9 @@ import {
   ImageArea,
   Image,
 } from './StyledSupportUsOverlay';
-import RainbowBar from '../../../common/RainbowBar';
+import RainbowBar from '#root/components/RainbowBar';
 
-import boyFrontImage from '../../../../images/people-cutouts/boy-front.png?webp';
+import boyFrontImage from '#root/images/people-cutouts/boy-front.png?webp';
 
 export default function HeroOverlay() {
   return (

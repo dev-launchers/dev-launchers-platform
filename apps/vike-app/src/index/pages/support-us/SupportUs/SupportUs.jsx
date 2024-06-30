@@ -1,11 +1,11 @@
 import React from 'react';
 
-import PageBody from '../../common/PageBody';
-import Button from '../../common/Button';
+import PageBody from '#root/components/PageBody';
+import Button from '#root/components/Button';
 
 import SupportUsOverlay from './SupportUsOverlay';
 
-import studentPhoto from '../../../images/support-us/bw-girl-profile.png?webp';
+import studentPhoto from '#root/images/support-us/bw-girl-profile.png?webp';
 import {
   ContentArea,
   StudentImageWrapper,
