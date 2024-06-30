@@ -4,7 +4,7 @@ import { UserDataProvider } from '../../../../context/UserDataContext';
 import UserCard from './UserCard';
 
 export default {
-  title: 'Organisms/UserCard',
+  title: 'Deprecated/Organisms/UserCard',
   component: UserCard,
 } as ComponentMeta<typeof UserCard>;
 

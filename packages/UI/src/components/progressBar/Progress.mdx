@@ -1,0 +1,27 @@
+import { Progress } from './Progress.tsx';
+import * as ProgressStories from './Progress.stories.tsx';
+import {
+  Meta,
+  Stories,
+  Description,
+  Story,
+  ArgTypes,
+  Canvas,
+  Controls,
+} from '@storybook/blocks';
+
+<Meta of={ProgressStories} />
+<div className="gap-14">
+  <h1>Progress Bar</h1>
+  <p className="text-[#8A8D97]">
+    Component with all the variants, states, etc.
+  </p>
+</div>
+<div className="flex flex-col items-start gap-3 rounded-lg p-4 outline-dashed outline-2 outline-brand-alt-nebula-500 w-96">
+  <Story of={ProgressStories.Primary} />
+  <Story of={ProgressStories.Secondary} />
+  <Story of={ProgressStories.Tertiary} />
+  <Story of={ProgressStories.Quartary} />
+</div>
+<Canvas />
+<Controls of={ProgressStories.Primary} exclude={['asChild']} />

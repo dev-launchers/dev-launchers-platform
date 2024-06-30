@@ -3,7 +3,7 @@ import * as React from 'react';
 import Tags from './Tags';
 
 export default {
-  title: 'Atoms/Tags',
+  title: 'Deprecated/Atoms/Tags',
   component: Tags,
 } as ComponentMeta<typeof Tags>;
 

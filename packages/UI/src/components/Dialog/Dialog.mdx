@@ -1,6 +1,6 @@
 import { Meta, Stories, Description } from '@storybook/blocks';
 import * as DialogStories from './Dialog.stories.tsx';
-import Button  from '../atoms/Button';
+import Button from '../atoms/Button';
 import { Checkbox } from '../Checkbox';
 
 import {
@@ -22,7 +22,7 @@ import {
 
 ## Showcase
 
-<div className='flex gap-4'>
+<div className="flex gap-4">
   <Dialog>
     <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
@@ -45,7 +45,7 @@ import {
         Submit
       </Button>
     </DialogTrigger>
-    <DialogContent >
+    <DialogContent>
       <DialogHeader>
         <h3 className="font-nunito-sans uppercase tracking-wider h-6 flex w-[448px] items-center">
           <DialogTitle>Terms of services</DialogTitle>
@@ -53,17 +53,16 @@ import {
       </DialogHeader>
       <div className="h-36 max-w-md overflow-y-auto font-nunito-sans">
         <p className="pr-6 text-base">
-          By accessing or using our services, you agree to abide by our
-          terms and conditions. This includes adherence to our privacy
-          policy, responsible use of the service, and acknowledgment of
-          any disclaimers or limitations of liability outlined therein.
-          Your continued use of the service constitutes acceptance of
-          these terms. By accessing or using our services, you agree to
-          abide by our terms and conditions. This includes adherence to
-          our privacy policy, responsible use of the service, and
-          acknowledgment of any disclaimers or limitations of liability
-          outlined therein. Your continued use of the service constitutes
-          acceptance of these terms.
+          By accessing or using our services, you agree to abide by our terms
+          and conditions. This includes adherence to our privacy policy,
+          responsible use of the service, and acknowledgment of any disclaimers
+          or limitations of liability outlined therein. Your continued use of
+          the service constitutes acceptance of these terms. By accessing or
+          using our services, you agree to abide by our terms and conditions.
+          This includes adherence to our privacy policy, responsible use of the
+          service, and acknowledgment of any disclaimers or limitations of
+          liability outlined therein. Your continued use of the service
+          constitutes acceptance of these terms.
         </p>
       </div>
       <DialogFooter className="flex w-[448px] items-center justify-between gap-6">
@@ -87,7 +86,7 @@ import {
         Subscribe!
       </Button>
     </DialogTrigger>
-    <DialogContent >
+    <DialogContent>
       <DialogHeader>
         {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
         <h3 className="flex h-6 w-[448px] items-center font-nunito-sans uppercase tracking-wider">
@@ -98,8 +97,8 @@ import {
         {/* eslint-disable-next-line tailwindcss/no-arbitrary-value */}
         <p className="mb-4 w-[448px] pl-8 font-nunito-sans">
           <DialogDescription>
-            Subscribe to our newsletter for the latest trends and
-            exclusive content delivered straight to your inbox!
+            Subscribe to our newsletter for the latest trends and exclusive
+            content delivered straight to your inbox!
           </DialogDescription>
         </p>
         <div className="ml-8 flex flex-col items-center justify-center">
@@ -128,7 +127,7 @@ import {
         </DialogClose>
       </DialogFooter>
     </DialogContent>
-  </Dialog>    
+  </Dialog>
   <Dialog>
     <DialogTrigger asChild>
       <Button buttonType="primary" buttonSize="standard">
@@ -150,17 +149,17 @@ import {
           'other',
         ].map((role, i) => {
           return (
-              <button
-                key={i}
-                className={`rounded-3xl border-2 border-solid border-black p-4 font-nunito-sans capitalize ${
-                  i === 0 ? 'bg-black text-white' : 'bg-white text-black'
-                } `}
-              >
-                {' '}
-                {role}
-              </button>
-            );
-          })}
+            <button
+              key={i}
+              className={`rounded-3xl border-2 border-solid border-black p-4 font-nunito-sans capitalize ${
+                i === 0 ? 'bg-black text-white' : 'bg-white text-black'
+              } `}
+            >
+              {' '}
+              {role}
+            </button>
+          );
+        })}
       </div>
       <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
         <div className="flex h-10 w-full items-center justify-between">
@@ -176,7 +175,7 @@ import {
         </div>
       </DialogFooter>
     </DialogContent>
-  </Dialog>        
+  </Dialog>
 </div>
 
 ## Anatomy
@@ -213,13 +212,24 @@ export default () => (
 ```
 
 ## Examples:
+
 ### [Close after asynchronous form submission](https://www.radix-ui.com/primitives/docs/components/dialog#close-after-asynchronous-form-submission)
-<p className="!mt-0 !text-base">Use the controlled props to programmatically close the Dialog after an async operation has completed.</p>
+
+<p className="!mt-0 !text-base">
+  Use the controlled props to programmatically close the Dialog after an async
+  operation has completed.
+</p>
 
 ### [Scrollable overlay](https://www.radix-ui.com/primitives/docs/components/dialog#scrollable-overlay)
-<p className="!mt-0 !text-base">Move the content inside the overlay to render a dialog with overflow.</p>
+
+<p className="!mt-0 !text-base">
+  Move the content inside the overlay to render a dialog with overflow.
+</p>
 
 ### [Custom portal container](https://www.radix-ui.com/primitives/docs/components/dialog#custom-portal-container)
-<p className="!mt-0 !text-base">Customise the element that your dialog portals into.</p>
+
+<p className="!mt-0 !text-base">
+  Customise the element that your dialog portals into.
+</p>
 
 <Stories />
