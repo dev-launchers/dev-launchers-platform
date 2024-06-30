@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Avatar from '../../../../images/avatar.png';
 import {
@@ -14,13 +15,21 @@ import {
   UsernameAvatar,
 } from './StyledProductHeader';
 import { Leader2, Project, Team } from '@devlaunchers/models/project';
-
+import { string } from 'yup';
+/*
 interface ProductHeaderProps
   extends Pick<
     Project,
     'title' | 'vision' | 'isPlatform' | 'interests' | 'published_at' | 'team'
   > {
   type: 'Product' | 'Project' | 'Idea';
+  userAvatar?: string;
+  minCommitmentHours: number;
+  maxCommitmentHours: number;
+} */
+/*interface ProductHeaderProps
+  extends Pick<Project, 'title' | 'vision' | 'published_at'> {
+  type: 'Product' | 'ProjectLite' | 'Idea';
   userAvatar?: string;
   minCommitmentHours: number;
   maxCommitmentHours: number;
@@ -37,14 +46,18 @@ export default function ProductHeader({
   // userAvatar,
   minCommitmentHours,
   maxCommitmentHours,
-}: ProductHeaderProps) {
-  const teamLeader = (team?.leaders[0] as Partial<Leader2>)?.username;
-  const formattedDate = new Date(published_at)
+}: ProductHeaderProps) */
+interface ProductHeaderProps {
+  title: string;
+}
+export default function ProductHeader({ title }: ProductHeaderProps) {
+  //const teamLeader = (team?.leaders[0] as Partial<Leader2>)?.username;
+  /* const formattedDate = new Date(published_at as string)
     .toDateString()
     .split(' ')
     .slice(1)
     .join(' ');
-
+*/
   return (
     <HeaderBlock>
       <Row>
@@ -55,7 +68,7 @@ export default function ProductHeader({
             {isPlatform ? 'Platform' : 'Independent'} {type}
           </Type>
   */}
-          <Vision>{vision}</Vision>
+          <Vision>{title}</Vision>
         </Column>
         <Column w="384px" style={{ flexGrow: 1 }}>
           <ColumnTitle>Tags</ColumnTitle>
@@ -78,7 +91,7 @@ export default function ProductHeader({
             style={{ width: '100%', textAlign: 'left' }}
             color="#000000"
           >
-            {type} Lead
+            {title} Lead
           </ColumnTitle>
           <Row
             css={`
@@ -89,13 +102,13 @@ export default function ProductHeader({
             `}
           >
             <UsernameAvatar src={Avatar} />
-            <Username>{teamLeader}</Username>
+            {/* <Username>{teamLeader}</Username> */}
           </Row>
           <CreationDate style={{ width: '100%', textAlign: 'left' }}>
-            Product Created: {formattedDate}
+            Product Created: {'formattedDate'}
           </CreationDate>
           <Commitment style={{ width: '100%', textAlign: 'left' }}>
-            {minCommitmentHours} - {maxCommitmentHours} hrs/week
+            {'minCommitmentHours'} - {'maxCommitmentHours'} hrs/week
           </Commitment>
         </Column>
       </Row>

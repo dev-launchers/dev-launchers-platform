@@ -1,1 +1,2 @@
-export {default} from "./ProductHeader";
+'use client';
+export { default } from './ProductHeader';

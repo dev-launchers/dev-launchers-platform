@@ -1,9 +1,11 @@
+'use client';
 import Head from 'next/head';
 import SignUpForm from '../../components/modules/FormPage/signUpForm';
 import BoxContainer from '../../components/common/BoxContainer';
 import TitledHeader from '../../components/common/TitledHeader';
 
 function appldy() {
+  console.log('appsdev-recruiterssrcpages[slug]apply.tsx');
   return (
     <>
       <Head>

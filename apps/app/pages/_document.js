@@ -1,7 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 import { ServerStyleSheet } from 'styled-components';
-
+console.log('appsapppages_document.js');
 export default class MyDocument extends Document {
   render() {
     return (

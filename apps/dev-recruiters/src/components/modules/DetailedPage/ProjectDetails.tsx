@@ -1,3 +1,4 @@
+'use client';
 import BoxContainer from '../../common/BoxContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import Link from 'next/link';
@@ -18,7 +19,7 @@ import {
   Wrapper,
 } from './styledProjectDetails';
 
-interface Props {
+interface ProjectDetailsProps {
   project: Project;
   opportunites: Opportunity[];
   maxCommitment: number;
@@ -30,7 +31,7 @@ export default function ProjectDetails({
   opportunites,
   maxCommitment,
   minCommitment,
-}: Props) {
+}: ProjectDetailsProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
 
   const IsExpanded = (id: string) => {
@@ -44,7 +45,8 @@ export default function ProjectDetails({
 
     setExpanded(items);
   };
-
+  console.log('project below line');
+  console.log(project);
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
@@ -68,21 +70,11 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        {/* <ProductHeader
-          title={project.title}
-          vision={project.vision}
-          isPlatform={project.isPlatform}
-          published_at={project.published_at}
-          type="Product"
-          maxCommitmentHours={maxCommitment}
-          minCommitmentHours={minCommitment}
-          interests={project.interests}
-          team={project.team}
-  /> */}
+        <ProductHeader title={project.title} />
 
         <LongCard
-          description={project.attributes.description}
-          details={project.attributes.description}
+          description={project.title}
+          details={project.vision}
         ></LongCard>
       </BoxContainer>
 

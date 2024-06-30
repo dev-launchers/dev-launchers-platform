@@ -1,1 +1,2 @@
-export { default } from "./ProjectDetails"
+'use client';
+export { default } from './ProjectDetails';
