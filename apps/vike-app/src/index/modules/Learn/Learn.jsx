@@ -2,10 +2,10 @@ import React from 'react';
 import 'react-tabs/style/react-tabs.css'; // import react-tabs styles
 import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 
-import { useSheetsContext } from '../../../context/SheetsContext';
+import { useSheetsContext } from '#root/index/context/SheetsContext';
 
-import PageBody from '../../common/PageBody';
-import Section from '../../common/Section/Section';
+import PageBody from '#root/components/PageBody';
+import Section from '#root/components/Section/Section';
 
 export default function Learn() {
   const { learnPageData } = useSheetsContext();
