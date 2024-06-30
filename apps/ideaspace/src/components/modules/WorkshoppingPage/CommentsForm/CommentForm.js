@@ -3,11 +3,12 @@ import {
   UserComment,
   UserImageOne,
   CommentBox,
-  // SubmitButton,
+  SubmitButton,
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
+import { cleanData } from '../../../../utils/StrapiHelper.js';
 
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
@@ -19,7 +20,7 @@ function CommentForm(props) {
     const text = e.target.value;
     setTextChange(text);
 
-    if (text.trim() == '') {
+    if (textChange.trim().length === 0) {
       setDisabled(true);
     } else {
       setDisabled(false);
@@ -28,50 +29,24 @@ function CommentForm(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const trimmedText = textChange.trim();
-
-    // Check if the comment is empty after trimming
-    if (trimmedText === '') {
-      console.error('Comment cannot be empty');
-      return;
-    }
-
     var data = {
-      author: userData.username,
-      idea_card: selectedCard,
-      text: trimmedText,
+      text: textChange.trim(),
+      idea_card: selectedCard.id.toString(),
+      author: userData.name,
+      user: userData.id.toString(),
     };
 
     try {
       const res = await agent.Comments.post(data);
       setTextChange('');
-      props.renderNewComment(data);
-    } catch (error) {
-      console.error(error);
+      // render the comment in the comment feed
+      let commentData = cleanData(res);
+      commentData.user = userData;
+      props.renderNewComment(commentData);
+    } catch (e) {
+      console.log('error when posting comment', e);
     }
   };
-
-  // e.preventDefault();
-  // var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
-
-  // try {
-  //   const res = await agent.Comments.post(data);
-  //   setTextChange('');
-  //   // render the comment in the comment feed
-  //   props.renderNewComment(data);
-  // } catch(error) {
-  //   console.error(error)
-  // }
-
-  // Refresh the page so that the new comment is displayed:
-  // window.location.reload(false);
-  // this.setState(
-  //   {reload: true},
-  //   () => this.setState({reload: false})
-  // )
-
-  // };
 
   // move to WorkshoppingPage?
   return (
@@ -105,6 +80,7 @@ function CommentForm(props) {
             <button
               type="submit"
               style={{ color: 'white', backgroundColor: '#3A7CA5' }}
+              disabled={textChange.trim().length === 0}
             >
               <i class="fas fa-arrow-right"></i>
             </button>
