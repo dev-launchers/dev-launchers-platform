@@ -1,4 +1,4 @@
-import Blog from '../../../../../modules/Blog';
+import Blog from '../../../Blog';
 import { usePageContext } from '@devlaunchers/vike-react/usePageContext';
 // { authorId: 'kris-gano', articleId: 'somesing' }
 export const Page = () => {
