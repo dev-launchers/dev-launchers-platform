@@ -2,7 +2,7 @@ import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SubNavLink from '../../atoms/SubNavLink';
-import Typography from '../../atoms/Typography';
+import { typographyStyles, css2obj } from '../../atoms/Typography';
 import {
   DropdownContainer,
   Toggle,
@@ -48,7 +48,7 @@ const NavDropdown = ({
           setMenuOpen((prev) => !prev);
         }}
       >
-        <Typography type="navLink">{title}</Typography>
+        <p style={css2obj(typographyStyles.navLink)}>{title}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

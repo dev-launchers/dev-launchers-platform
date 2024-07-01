@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
-import Typography from '../../atoms/Typography';
+import { typographyStyles, css2obj } from '../../atoms/Typography';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import type {
@@ -64,7 +64,7 @@ const MobileNavigation = ({
                   alt="Profile avatar"
                   style={{ borderRadius: '50%' }}
                 />
-                <Typography type="h2">Hi {user.name}</Typography>
+                <h2 style={css2obj(typographyStyles.h2)}>{user.name}</h2>
               </Box>
             ) : (
               <Link href="/">
