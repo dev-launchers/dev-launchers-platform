@@ -51,7 +51,7 @@ const nextConfig = {
   ) => {
     // Important: return the modified config
     config.resolve.alias['styled-components'] = path.resolve(
-      './node_modules',
+      '../../node_modules',
       'styled-components'
     );
     return config;
