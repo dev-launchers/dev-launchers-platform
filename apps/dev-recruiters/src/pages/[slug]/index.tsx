@@ -8,19 +8,22 @@ import ProjectDetails from '../../components/modules/DetailedPage';
 import { agent } from '@devlaunchers/utility';
 
 export const getProjectsSlugs = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
+  const result = await agent.Projects.list(
+    new URLSearchParams('populate=*&publicationState=live')
   );
+  //const res = await fetch(
+  //  `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
+  //);
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
   );
+
   projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
       slug: project.slug,
     },
   }));
-
   return projectsSlugs;
 };
 
@@ -34,14 +37,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { attributes: project }: Project = await agent.Projects.get(
     params.slug as string,
-    new URLSearchParams(`populate=*`)
+    new URLSearchParams(`populate=*&publicationState=live`)
   );
   let opportunities = await agent.Opportunities.list(
     new URLSearchParams(
       `populate=*&filters[projects][slug][$eq]=${params.slug}`
     )
   );
-
   // Restructure data returned from the API to flatten and make resemble data returned from old API
   // Any relational data set up in Strapi should be flattened here
   // We could `create a reusable function to handle this more elegantly
@@ -59,34 +61,39 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const commitments = project?.opportunities?.data?.map(
     (opp) => opp.attributes.commitmentHoursPerWeek
   );
-  const maxCommitment = Math.max(...commitments);
-  const minCommitment = Math.min(...commitments);
-  project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
+  const maxCommitment =
+    commitments === undefined ? 0 : Math.max(...commitments);
+  const minCommitment =
+    commitments === undefined ? 0 : Math.min(...commitments);
+  //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
   opportunities = opportunities.map((opportunity) => opportunity.attributes);
-
-  return {
-    props: {
-      project: project,
-      opportunites: opportunities,
-      maxCommitment,
-      minCommitment,
-    },
-    revalidate: 10,
-  };
+  return project !== undefined
+    ? {
+        props: {
+          project: project,
+          opportunites: opportunities,
+          maxCommitment,
+          minCommitment,
+        },
+        revalidate: 10,
+      }
+    : { notFound: true };
 };
+
+interface Props {
+  project: Project;
+  opportunites: Opportunity[];
+  maxCommitment: number;
+  minCommitment: number;
+}
 
 export default function DetailedPage({
   project,
   opportunites,
   maxCommitment,
   minCommitment,
-}: {
-  project: Project;
-  opportunites: Opportunity[];
-  maxCommitment: number;
-  minCommitment: number;
-}) {
+}: Props) {
   return (
     <>
       <Head>
@@ -129,8 +136,6 @@ export default function DetailedPage({
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
       {/* TODO: Remove the old theme and standarize the one coming from @devlaunchers/components */}
-<<<<<<< HEAD
-<<<<<<< HEAD
       <>
         <ThemeProvider theme={theme}>
           <ProjectDetails
@@ -141,30 +146,6 @@ export default function DetailedPage({
           />
         </ThemeProvider>
       </>
-=======
-=======
-      <>
-        {/*
->>>>>>> 0ac25e83 (fix: bug fix)
-      <ThemeProvider theme={theme}>
-        
-         
-        <ProjectDetails
-          maxCommitment={maxCommitment}
-          minCommitment={minCommitment}
-          project={project}
-          opportunites={opportunites}
-        />
-    
-          <div>Hello</div>
-        
-      </ThemeProvider>
-<<<<<<< HEAD
->>>>>>> 3bd1084a (fix: bug fix)
-=======
-      */}
-      </>
->>>>>>> 0ac25e83 (fix: bug fix)
     </>
   );
 }

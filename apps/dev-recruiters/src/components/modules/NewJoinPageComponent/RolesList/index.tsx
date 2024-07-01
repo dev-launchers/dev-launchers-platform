@@ -4,8 +4,6 @@ import { List } from '../../../../components/modules/OpportunitiesAggregator/fil
 
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
-import { Opportunity } from '@devlaunchers/models/opportunity';
-import CollapsibleContainer from '../SelectRole/CollapsibleContainer';
 
 export function separateRoles(arr: Opportunity[]) {
   const separatedGroups: { [key: string]: Opportunity[] } = {

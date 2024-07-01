@@ -114,17 +114,12 @@ const requests = {
       .put(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
-      .then(responseBody)
+      .then(responseBody),
 };
 
 const Applicant = {
-<<<<<<< HEAD
-  get: () => requests.get<NewApplicant[]>("applicants"),
-  post: (data: NewApplicant) => requests.post<NewApplicant>("applicants", data)
-=======
   get: () => requests.get<NewApplicant[]>('applicants'),
   post: (data: NewApplicant) => requests.post<NewApplicant>('applicants', data),
->>>>>>> a772656e (fix:front-end to show project and opportunities)
 };
 
 const Projects = {
@@ -168,31 +163,18 @@ const Ideas = {
 };
 
 const User = {
-<<<<<<< HEAD
-  get: () => requests.get<UserType>("users")
-=======
   get: () => requests.get<UserType>('users'),
->>>>>>> a772656e (fix:front-end to show project and opportunities)
 };
 
 const Comments = {
   put: (id: string, body: {}) => requests.put<Comment>(id, body),
-<<<<<<< HEAD
-  post: (body: Comment) => requests.post<Comment>("comments", body)
-};
-
-const Likes = {
-  get: (params?: URLSearchParams) => 
-    requests.get<Like[]>('/likes/', params),
-  put: (id: string, body: {}) => requests.put<Like>(id, body),
-  post: (body: {}) => requests.post<Like>('/likes/', body)
-=======
   post: (body: Comment) => requests.post<Comment>('comments', body),
 };
 
 const Likes = {
   get: (params?: URLSearchParams) => requests.get<Like[]>('/likes/', params),
->>>>>>> a772656e (fix:front-end to show project and opportunities)
+  put: (id: string, body: {}) => requests.put<Like>(id, body),
+  post: (body: {}) => requests.post<Like>('/likes/', body),
 };
 
 const Saves = {

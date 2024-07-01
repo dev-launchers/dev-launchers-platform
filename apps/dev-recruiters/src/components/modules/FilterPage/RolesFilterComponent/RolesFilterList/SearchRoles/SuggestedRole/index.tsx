@@ -43,15 +43,7 @@ const SuggestedRole = () => {
             }
           </AboutDescription>
         </AboutContainer>
-<<<<<<< HEAD
-<<<<<<< HEAD
         <ButtonsContainer /*onClick={handleOpenModal}*/>
-=======
-        <ButtonsContainer onClick={handleOpenModal}>
->>>>>>> b4f9e26e (build: work in time commitment)
-=======
-        <ButtonsContainer /*onClick={handleOpenModal}*/>
->>>>>>> e99587eb (fix: fixing the design)
           More Details
         </ButtonsContainer>
         <Modal

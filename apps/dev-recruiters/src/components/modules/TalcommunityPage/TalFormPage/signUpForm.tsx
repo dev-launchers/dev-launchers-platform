@@ -11,8 +11,6 @@ import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
 import { Wrapper } from '../StyledTalcommunityPage';
@@ -20,19 +18,6 @@ import { Wrapper } from '../StyledTalcommunityPage';
 // interface FormFields extends Omit<NewApplicant, 'level'> {
 //   level: NewApplicant['level'] | '';
 // }
-=======
-
-interface FormFields extends Omit<NewApplicant, 'level'> {
-  level: NewApplicant['level'] | '';
-}
->>>>>>> b73a74e3 (For talcomm)
-=======
-import { useRouter } from 'next/router';
-
-// interface FormFields extends Omit<NewApplicant, 'level'> {
-//   level: NewApplicant['level'] | '';
-// }
->>>>>>> efd5608a (For talcomm)
 interface Props {
   handleCloseModal: () => void;
   position: Opportunity;
@@ -57,20 +42,11 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
   };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> efd5608a (For talcomm)
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();
     router.push('/join/oldjoin');
   };
-<<<<<<< HEAD
-=======
->>>>>>> b73a74e3 (For talcomm)
-=======
->>>>>>> efd5608a (For talcomm)
 
   return (
     <Wrapper>
@@ -171,50 +147,6 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       // onChange={handleChange}
                     />
 
-<<<<<<< HEAD
-                  <atoms.Typography type="p">
-                    We require users to be 18 years old or older. Please confirm
-                    below.
-                  </atoms.Typography>
-                  <atoms.Checkbox
-                    label="I am 18 years old or older."
-                    disabled={false}
-                    onChange={handleSetCheckCheckbox}
-                    required
-                  />
-                  <atoms.Checkbox
-                    label="I have read and agreed to the terms and conditions"
-                    disabled={false}
-                    onChange={handleSetCheckCheckbox}
-                    required
-                  />
-                  <atoms.Box maxWidth="50%">
-                    <atoms.Button
-                      buttonSize="standard"
-                      buttonType="primary"
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      as="a"
-                      onClick={routeChange} //add submit here to button property once backend is complete
-                    >
-                      SUBMIT
-=======
-                      type="submit"
-=======
-                      as="a"
-<<<<<<< HEAD
-                      onClick={routeChange}
->>>>>>> efd5608a (For talcomm)
-                    >
-                      Submit
->>>>>>> b73a74e3 (For talcomm)
-=======
-                      onClick={routeChange} //add submit here to button property once backend is complete
-                    >
-                      SUBMIT
->>>>>>> 73419391 (#1469)
-                    </atoms.Button>
-=======
                     <atoms.Typography type="p">
                       We require users to be 18 years old or older. Please
                       confirm below.
@@ -242,7 +174,6 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                         SUBMIT
                       </atoms.Button>
                     </atoms.Box>
->>>>>>> 06074bd6 (fixing errors)
                   </atoms.Box>
                 </atoms.Box>
                 <FormErrorScroller focusAfterScroll />

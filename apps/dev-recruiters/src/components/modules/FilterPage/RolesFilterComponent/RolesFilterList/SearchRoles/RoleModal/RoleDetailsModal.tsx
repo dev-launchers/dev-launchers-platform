@@ -5,14 +5,7 @@ import {
   BulletListItem,
   CloseIcon,
   ColorBox,
-<<<<<<< HEAD:apps/dev-recruiters/src/components/modules/FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/RoleDetailsModal.tsx
-<<<<<<< HEAD
   ExpectationsListItem,
-=======
->>>>>>> b4f9e26e (build: work in time commitment)
-=======
-  ExpectationsListItem,
->>>>>>> cdd29da3 (Restructure position popup font):apps/dev-recruiters/src/components/modules/FilterPage/RoleModal/RoleDetailsModal.tsx
   ModalDescriptionSection,
   ModalProjectSection,
   TagsList,
@@ -78,15 +71,7 @@ function ModalTopSection({ position }: Props) {
       <ModalProjectSection>
         <h3>{position.attributes.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
-<<<<<<< HEAD:apps/dev-recruiters/src/components/modules/FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/RoleDetailsModal.tsx
-<<<<<<< HEAD
         <h4>Product Platform</h4>
-=======
-        <h4>PRODUCT PLATFORM</h4>
->>>>>>> b4f9e26e (build: work in time commitment)
-=======
-        <h4>Product Platform</h4>
->>>>>>> cdd29da3 (Restructure position popup font):apps/dev-recruiters/src/components/modules/FilterPage/RoleModal/RoleDetailsModal.tsx
         <h6>TIME COMMITMENT</h6>
         <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>
