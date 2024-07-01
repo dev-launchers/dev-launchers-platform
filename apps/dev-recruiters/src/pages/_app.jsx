@@ -19,11 +19,9 @@ const hashRedirect = (router) => {
     router.push(router.asPath.replace('/#', ''));
   }
 };
-
-function MyApp(props) {
+export default function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -63,4 +61,4 @@ function MyApp(props) {
   );
 }
 
-export default MyApp;
+//export default MyApp;

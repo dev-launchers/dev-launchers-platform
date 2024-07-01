@@ -91,11 +91,13 @@ function createFormData(item: any) {
 const responseBody = (response: AxiosResponse) =>
   response.data.data ? response.data.data : response.data;
 
+const errorBody = (error: AxiosError) => (error ? error : null);
+
 // Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
-    axios.get<T>(url, { params }).then(responseBody),
+    axios.get<T>(url, { params }).then(responseBody).catch(errorBody),
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
@@ -128,11 +130,12 @@ const Projects = {
       '/projects',
       new URLSearchParams('_publicationState=live&populate=opportunities')
     ),
-  get: (slug: string, params?: URLSearchParams) =>
-    requests.get<Project>(
+  get: (slug: string, params?: URLSearchParams) => {
+    return requests.get<Project>(
       `projects/${slug}`,
       new URLSearchParams('_publicationState=live&populate=*')
-    ),
+    );
+  },
 };
 const Opportunities = {
   list: async (params?: URLSearchParams) =>

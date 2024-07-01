@@ -58,7 +58,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     revalidate: 10,
   };
 };
-
 interface Props {
   projects: Project[];
   opportunities: Opportunity[];
