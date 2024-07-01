@@ -8,12 +8,14 @@
     "server:dev": "npm run server",
     "server:prod": "cross-env NODE_ENV=production npm run server",
     "lint": "eslint . --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite build && wrangler dev",
+    "deploy": "vite build && wrangler publish"
   },
   "imports": {
     "#root/*": "./*"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "0.3.4",
     "@devlaunchers/components": "workspace:*",
     "@devlaunchers/vike-react": "workspace:*",
     "@types/compression": "^1.7.5",
@@ -46,7 +48,8 @@
     "tsx": "4.7.1",
     "typescript": "^5.3.3",
     "vike": "0.4.177",
-    "vite": "^5.0.10"
+    "vite": "^5.0.10",
+    "wrangler": "3.62.0"
   },
   "type": "module",
   "devDependencies": {
