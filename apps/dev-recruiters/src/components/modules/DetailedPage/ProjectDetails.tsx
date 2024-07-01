@@ -67,11 +67,11 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader title={project.attributes.title} />
+        <ProductHeader title={project.attributes?.title} />
 
         <LongCard
-          description={project.attributes.title}
-          details={project.attributes.vision}
+          description={project.attributes?.title}
+          details={project.attributes?.vision}
         ></LongCard>
       </BoxContainer>
 
@@ -81,11 +81,10 @@ export default function ProjectDetails({
             <Card key={index}>
               <h2>{title}</h2>
               <CardContent>
-                {elements
-                  .slice(0, IsExpanded(title) ? elements.length : 1)
-                  .map((element, elIndex) => (
-                    <p key={elIndex}>{element}</p>
-                  ))}
+                {!elements &&
+                  elements
+                    .slice(0, IsExpanded(title) ? elements.length : 1)
+                    .map((element, elIndex) => <p key={elIndex}>{element}</p>)}
                 <CardButton onClick={() => handleExpand(title)}>
                   {expanded.some((x) => x === title)
                     ? 'Collapse Description'
