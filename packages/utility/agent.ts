@@ -131,12 +131,6 @@ const Projects = {
       new URLSearchParams('_publicationState=live&populate=opportunities')
     ),
   get: (slug: string, params?: URLSearchParams) => {
-    console.log(
-      requests.get<Project>(
-        `projects/${slug}`,
-        new URLSearchParams('_publicationState=live&populate=*')
-      )
-    );
     return requests.get<Project>(
       `projects/${slug}`,
       new URLSearchParams('_publicationState=live&populate=*')

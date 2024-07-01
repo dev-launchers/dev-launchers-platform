@@ -1,4 +1,3 @@
-('use client');
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project } from '@devlaunchers/models/project';
 import theme from '../../styles/theme';
@@ -12,56 +11,39 @@ export const getProjectsSlugs = async () => {
   const result = await agent.Projects.list(
     new URLSearchParams('populate=*&publicationState=live')
   );
-  //console.log('getProjectsSlugs');
-  //console.log(result);
   //const res = await fetch(
   //  `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
   //);
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
   );
-  //console.log('getProjectsSlugs projects after filter');
-  //console.log(projects);
 
   projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
-  //console.log('getProjectsSlugs projects after map');
-  //console.log(projects);
   const projectsSlugs = projects.map((project) => ({
     params: {
       slug: project.slug,
     },
   }));
-  //console.log(projectsSlugs);
-  //console.log('getProjectsSlugs projectsSlugs');
   return projectsSlugs;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = await getProjectsSlugs();
-  //console.log(paths);
-  //console.log('getStaticPaths before return');
   return {
     paths,
     fallback: 'blocking',
   };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log('getStaticProps');
-  console.log(params);
-  console.log(params.slug);
   const { attributes: project }: Project = await agent.Projects.get(
     params.slug as string,
     new URLSearchParams(`populate=*&publicationState=live`)
   );
-  console.log('projects in getStaticProps');
-  console.log(project);
   let opportunities = await agent.Opportunities.list(
     new URLSearchParams(
       `populate=*&filters[projects][slug][$eq]=${params.slug}`
     )
   );
-  //console.log('opportunities in getStaticProps');
-  //console.log(opportunities);
   // Restructure data returned from the API to flatten and make resemble data returned from old API
   // Any relational data set up in Strapi should be flattened here
   // We could `create a reusable function to handle this more elegantly
@@ -86,9 +68,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
   opportunities = opportunities.map((opportunity) => opportunity.attributes);
-  console.log('getStaticProps before return two values');
-  console.log(project);
-  console.log(opportunities);
   return project !== undefined
     ? {
         props: {
@@ -110,15 +89,11 @@ interface Props {
 }
 
 export default function DetailedPage({
-  //params,
   project,
   opportunites,
   maxCommitment,
   minCommitment,
 }: Props) {
-  console.log('appsdev-recruiterssrcpages[slug]index.tsx Detailed page');
-  console.log('project in DetailedPage');
-  console.log(project);
   return (
     <>
       <Head>
@@ -164,7 +139,6 @@ export default function DetailedPage({
       <>
         <ThemeProvider theme={theme}>
           <ProjectDetails
-            //params={params}
             maxCommitment={maxCommitment}
             minCommitment={minCommitment}
             project={project}

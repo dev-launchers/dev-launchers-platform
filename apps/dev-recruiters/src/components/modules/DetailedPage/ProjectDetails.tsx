@@ -1,4 +1,3 @@
-'use client';
 import BoxContainer from '../../common/BoxContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import Link from 'next/link';
@@ -45,8 +44,6 @@ export default function ProjectDetails({
 
     setExpanded(items);
   };
-  console.log('project below line');
-  console.log(project);
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
@@ -70,11 +67,11 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader title={project.title} />
+        <ProductHeader title={project.attributes.title} />
 
         <LongCard
-          description={project.title}
-          details={project.vision}
+          description={project.attributes.title}
+          details={project.attributes.vision}
         ></LongCard>
       </BoxContainer>
 

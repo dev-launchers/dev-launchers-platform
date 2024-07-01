@@ -19,11 +19,9 @@ const hashRedirect = (router) => {
     router.push(router.asPath.replace('/#', ''));
   }
 };
-('use client');
 export default function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
-  console.log('appsdev-recruiterssrcpages_app.jsx MyApp');
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

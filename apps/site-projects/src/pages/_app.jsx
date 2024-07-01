@@ -17,8 +17,6 @@ const hashRedirect = (router) => {
 export default function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
-  console.log(props);
-  console.log('MyApp');
   return (
     <>
       <ThemeProvider theme={oldTheme}>
