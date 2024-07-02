@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   useSidebarState,
   useSidebarDispatch,
 } from './../../../../context/SidebarContext';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { Avatar, UserInfo, NavItem } from './../SideBarComponents';
 
 const images = require.context(
   './../../../../images/UserProfile',
@@ -17,53 +18,6 @@ const getImage = (name) => {
   console.log(`Image loaded: ${name} -> ${image}`);
   return image;
 };
-
-function Avatar({ src, alt }) {
-  return (
-    <div className="flex justify-center items-center rounded-full overflow-hidden w-10 h-10">
-      <img
-        loading="lazy"
-        src={src}
-        alt={alt}
-        className="w-10 h-10 object-cover"
-      />
-    </div>
-  );
-}
-
-function UserInfo({ name }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="text-sky-blue text-md font-normal font-['Oswald'] leading-normal tracking-wide">
-        {name}
-      </div>
-    </div>
-  );
-}
-
-export function NavItem({ icon, hoverIcon, label, isActive, onClick }) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div className="flex w-full">
-      <a
-        onClick={onClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className={`flex items-center w-full py-2 px-6 rounded-full transition-colors duration-200 cursor-pointer ${
-          isActive ? 'text-black bg-white' : 'text-white bg-black'
-        } ${isHovered || isActive ? 'hover:bg-white hover:text-black' : ''}`}
-      >
-        <img
-          src={isHovered || isActive ? icon : hoverIcon}
-          alt=""
-          className="w-5 h-5 mr-3"
-        />
-        <span>{label}</span>
-      </a>
-    </div>
-  );
-}
 
 const Sidebar = () => {
   const { userData } = useUserDataContext();
@@ -97,6 +51,7 @@ const Sidebar = () => {
       label: 'Overview',
       tab: 'overview',
     },
+    // Uncomment and add more nav items as needed
     // { icon: getImage('projects.png'), hoverIcon: getImage('naprojects.png'), label: 'Projects', tab: 'projects' },
     // { icon: getImage('profiles.png'), hoverIcon: getImage('naprofiles.png'), label: 'Profiles', tab: 'profiles' },
     // { icon: getImage('ideas.png'), hoverIcon: getImage('naideas.png'), label: 'Ideas', tab: 'ideas' },
