@@ -8,8 +8,10 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SideBar from './SideBar';
 import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
-import Modal from './../../../components/common/Modal'
+import Modal from './../../../components/common/Modal';
 import { editProfileDataContext } from '../../../context/EditProfileDataContext';
+import { useSidebarState } from '../../../context/SidebarContext';
+
 // State management component
 /**
  * This component has been broken down into two,
@@ -22,14 +24,15 @@ import { editProfileDataContext } from '../../../context/EditProfileDataContext'
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
   const { editProfileState } = editProfileDataContext();
+  const state = useSidebarState();
 
   const [loading, setLoading] = useState(true);
-  const [opportunities, setOpportunities] = React.useState([]);
-  const [myProjects, setMyProjects] = React.useState([]);
-  const [projects, setProjects] = React.useState([]);
-  const [ideas, setIdeas] = React.useState([]);
-  const [people, setPeople] = React.useState([]);
-  const [interests, setInterests] = React.useState([]);
+  const [opportunities, setOpportunities] = useState([]);
+  const [myProjects, setMyProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [ideas, setIdeas] = useState([]);
+  const [people, setPeople] = useState([]);
+  const [interests, setInterests] = useState([]);
 
   // If user hasn't set a username, redirect them to the signup form
   const router = useRouter();
@@ -142,26 +145,32 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
+  const renderContent = () => {
+    switch (state.activeTab) {
+      case 'overview':
+        return <Overview />;
+      case 'projects':
+        return <UserProjects myProjects={myProjects} />;
+      case 'profiles':
+        return <People people={people} />;
+      case 'ideas':
+        return <RecommendedIdeas ideas={ideas} />;
+      case 'opportunities':
+        return <Opportunities opportunities={opportunities} />;
+      default:
+        return <Overview />;
+    }
+  };
+
   return loading ? (
     <Loader />
   ) : (
-    <div className="flex flex-row bg-[#f9f9f9] h-screen">
+    <div className="flex flex-row bg-[#f9f9f9]">
       <div className="w-72">
-        <SideBar
-          isPublic={isPublic}
-          profilePictureUrl={
-            isPublic
-              ? publicUserData?.profile?.profilePictureUrl
-              : userData.profilePictureUrl
-          }
-          displayName={
-            isPublic ? publicUserData?.profile?.displayName : userData.name
-          }
-          title={isPublic ? publicUserData?.profile?.bio : userData.bio}
-        />
+        <SideBar />
       </div>
-      <div className="px-20 pb-20">
-        <Overview />
+      <div className="px-20 pb-20 w-full">
+        {renderContent()}
         {editProfileState.showEditProfileModal ? <EditProfileModal /> : null}
       </div>
     </div>
