@@ -9,7 +9,7 @@
     "server:prod": "cross-env NODE_ENV=production npm run server",
     "lint": "eslint . --max-warnings 0",
     "preview": "vite build && wrangler dev",
-    "deploy": "vite build && wrangler publish"
+    "deploy": "vite build && wrangler deploy"
   },
   "imports": {
     "#root/*": "./*"
