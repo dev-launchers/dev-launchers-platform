@@ -3,6 +3,7 @@ import * as React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import Grid from '../../atoms/Grid/Grid';
 import Tabs, { Trigger, Content } from '../../molecules/Tab/Tab';
+import NotificationItem from '../../NotificationItem/NotificationItem';
 import {
   Pagination,
   PaginationContent,
@@ -44,10 +45,6 @@ const Cog = () => (
       fill="black"
     />
   </svg>
-);
-
-const NotificationItemSkeleton = () => (
-  <div className="my-4 h-[116px] bg-gray-600"></div>
 );
 
 type NotificationsProps = VariantProps<typeof NotificationsStyles>;
@@ -101,12 +98,40 @@ const Notifications = ({}: NotificationsProps) => {
               <>
                 <Content value="tab1">
                   {[1, 2, 3, 4, 5].map((num) => (
-                    <NotificationItemSkeleton key={num} />
+                    <NotificationItem
+                      key={num}
+                      action="commented on"
+                      avatar={{
+                        alt: 'Profile picture of Arthur Wells',
+                        src: '/Person.svg',
+                      }}
+                      message="What you want to achieve through an online questionnaire is quality rather than quantity."
+                      name="Arthur Wells"
+                      profileLink="https://devlaunchers.org/users/me"
+                      status="unRead"
+                      target="DevSocials"
+                      targetLink="https://devlaunchers.org/projects/DL-IdeaSpace"
+                      timeStamp="P3Y6M4DT12H30M5S"
+                    />
                   ))}
                 </Content>
                 <Content value="tab2">
                   {[1, 2, 3].map((num) => (
-                    <NotificationItemSkeleton key={num} />
+                    <NotificationItem
+                      key={num}
+                      action="commented on"
+                      avatar={{
+                        alt: 'Profile picture of Arthur Wells',
+                        src: '/Person.svg',
+                      }}
+                      message="What you want to achieve through an online questionnaire is quality rather than quantity."
+                      name="Arthur Wells"
+                      profileLink="https://devlaunchers.org/users/me"
+                      status="read"
+                      target="DevSocials"
+                      targetLink="https://devlaunchers.org/projects/DL-IdeaSpace"
+                      timeStamp="P3Y6M4DT12H30M5S"
+                    />
                   ))}
                 </Content>
               </>
