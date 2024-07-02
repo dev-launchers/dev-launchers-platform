@@ -38,17 +38,17 @@ function WelcomePage() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-
-        <atoms.Typography type='h4' >
+        
+        <atoms.Typography type='h4'  textAlign='center'>
           WELCOME TO THE IDEA PLATFORM!
           <Subheader>
             Have an idea for a development project? Want to help develop an idea? Want to generate an idea?
           </Subheader>
-          LET'S GET STARTED
-          <RocketImage src={rocketImage} />
+          LET'S GET STARTED <RocketImage src={rocketImage} />
         </atoms.Typography>
+       
       </HeadWapper>
-
+     
       <NavButtonArea>
         <ButtonArea>
           <Link href="/ideaspace/submit">

@@ -7,9 +7,11 @@
   "dependencies": {
     "@builder.io/partytown": "0.7.4",
     "@devlaunchers/dev-recruiters": "workspace:^",
+    "@devlaunchers/gptbot": "workspace:*",
     "@devlaunchers/ideaspace": "*",
     "@devlaunchers/site-projects": "*",
     "@devlaunchers/tailwind": "workspace:*",
+    "@devlaunchers/user-profile": "workspace:*",
     "@devlaunchers/website": "*",
     "@next/env": "^12.2.3",
     "@ramonak/react-progress-bar": "^5.0.2",

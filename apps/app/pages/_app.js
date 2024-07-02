@@ -1,6 +1,9 @@
 import Head from 'next/head';
 
-import { Footer, Navigation } from '@devlaunchers/components/components/organisms';
+import {
+  Footer,
+  Navigation,
+} from '@devlaunchers/components/components/organisms';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 import {
   initGA,
@@ -50,8 +53,15 @@ function MyApp({ Component, pageProps }) {
       <UserDataProvider>
         <ThemeProvider theme={theme}>
           <div>
-            <Script dangerouslySetInnerHTML={{ __html: iubendaScript }} />
-            <Script async src="//cdn.iubenda.com/cs/iubenda_cs.js"></Script>
+            <script
+              type="text/partytown"
+              dangerouslySetInnerHTML={{ __html: iubendaScript }}
+            />
+            <Script
+              strategy="worker"
+              async
+              src="//cdn.iubenda.com/cs/iubenda_cs.js"
+            ></Script>
             <Head>
               <script
                 async
@@ -59,10 +69,9 @@ function MyApp({ Component, pageProps }) {
               ></script>
             </Head>
 
-            <div className="App">
-            </div>
-           <Navigation />
-         
+            <div className="App"></div>
+            <Navigation />
+
             <Component {...pageProps} />
             {/* {props.children} */}
             <Footer />
