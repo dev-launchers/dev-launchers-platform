@@ -15,6 +15,7 @@ const NavItem = ({ iconColor, hoverIconColor, label, isActive, onClick }) => {
         } ${isHovered || isActive ? 'hover:bg-white hover:text-black' : ''}`}
       >
         <SideNavBarIcon
+          iconName={label}
           color={iconColor}
           hoverColor={hoverIconColor}
           isHovered={isHovered || isActive}

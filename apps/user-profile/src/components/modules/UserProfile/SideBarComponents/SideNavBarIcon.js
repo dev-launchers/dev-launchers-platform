@@ -1,13 +1,13 @@
 import React from 'react';
 
 export const SideNavBarIcon = ({
-  iconImg,
+  iconName,
   color,
   hoverColor,
   isHovered,
   className,
 }) => {
-  switch (iconImg) {
+  switch (iconName) {
     case 'overview':
       return (
         <svg
