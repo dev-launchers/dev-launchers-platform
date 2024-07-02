@@ -1,4 +1,4 @@
-import { SkillLevel } from "./level";
+import { SkillLevel } from './level';
 export interface NewApplicant {
   discordUsername?: string;
   name: string;
@@ -16,7 +16,7 @@ export interface NewApplicant {
   accepted: boolean;
   zip: number;
   role: string;
-  id?: string;
-  project?: string;
+  //id?: string;
+  project: { id: string; slug: string };
   level: keyof typeof SkillLevel;
 }
