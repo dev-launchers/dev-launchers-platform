@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SideNavBarIcon from './SideNavBarIcon';
+import SideNavBarIcon from '../../../../images/UserProfile/SVG/SideNavBarIcon';
 
 const NavItem = ({ iconColor, hoverIconColor, label, isActive, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
