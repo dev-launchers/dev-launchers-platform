@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import SideNavBarIcon from './SideNavBarIcon';
 
-const NavItem = ({ icon, hoverIcon, label, isActive, onClick }) => {
+const NavItem = ({ iconColor, hoverIconColor, label, isActive, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -13,9 +14,10 @@ const NavItem = ({ icon, hoverIcon, label, isActive, onClick }) => {
           isActive ? 'text-black bg-white' : 'text-white bg-black'
         } ${isHovered || isActive ? 'hover:bg-white hover:text-black' : ''}`}
       >
-        <img
-          src={isHovered || isActive ? icon : hoverIcon}
-          alt=""
+        <SideNavBarIcon
+          color={iconColor}
+          hoverColor={hoverIconColor}
+          isHovered={isHovered || isActive}
           className="w-5 h-5 mr-3"
         />
         <span>{label}</span>

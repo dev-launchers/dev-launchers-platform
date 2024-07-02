@@ -7,18 +7,6 @@ import {
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { Avatar, UserInfo, NavItem } from './../SideBarComponents';
 
-const images = require.context(
-  './../../../../images/UserProfile',
-  false,
-  /\.(png|jpe?g|svg)$/
-);
-
-const getImage = (name) => {
-  const image = images(`./${name}`);
-  console.log(`Image loaded: ${name} -> ${image}`);
-  return image;
-};
-
 const Sidebar = () => {
   const { userData } = useUserDataContext();
   const state = useSidebarState();
@@ -46,16 +34,15 @@ const Sidebar = () => {
 
   const navItems = [
     {
-      icon: getImage('overview.png'),
-      hoverIcon: getImage('naoverview.png'),
+      iconColor: '#000000',
+      hoverIconColor: '#FFFFFF',
       label: 'Overview',
       tab: 'overview',
     },
     // Uncomment and add more nav items as needed
-    // { icon: getImage('projects.png'), hoverIcon: getImage('naprojects.png'), label: 'Projects', tab: 'projects' },
-    // { icon: getImage('profiles.png'), hoverIcon: getImage('naprofiles.png'), label: 'Profiles', tab: 'profiles' },
-    // { icon: getImage('ideas.png'), hoverIcon: getImage('naideas.png'), label: 'Ideas', tab: 'ideas' },
-    // { icon: getImage('opportunities.png'), hoverIcon: getImage('naopportunities.png'), label: 'Opportunities', tab: 'opportunities' },
+    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Projects', tab: 'projects' },
+    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Ideas', tab: 'ideas' },
+    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Opportunities', tab: 'opportunities' },
   ];
 
   return (
@@ -68,11 +55,11 @@ const Sidebar = () => {
         <div className="gap-0 mt-5 w-full border border-solid bg-zinc-700 border-zinc-700 min-h-[1px]" />
       </div>
       <nav className="flex flex-col items-center gap-3 w-full text-base font-light tracking-wider text-white uppercase">
-        {navItems.map(({ icon, hoverIcon, label, tab }) => (
+        {navItems.map(({ iconColor, hoverIconColor, label, tab }) => (
           <NavItem
             key={tab}
-            icon={icon}
-            hoverIcon={hoverIcon}
+            iconColor={iconColor}
+            hoverIconColor={hoverIconColor}
             label={label}
             isActive={state.activeTab === tab}
             onClick={() => handleTabClick(tab)}
