@@ -66,14 +66,26 @@ export default function ProjectDetails({
           </BackButton>
         </Link>
       </BoxContainer>
-      <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader title={project.attributes?.title} />
+      {project.id && (
+        <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
+          <ProductHeader
+            type={'Project'}
+            minCommitmentHours={minCommitment}
+            maxCommitmentHours={maxCommitment}
+            title={project['attributes']['title']}
+            vision={project['attributes']['vision']}
+            publishedAt={project['attributes']['publishedAt']}
+            interests={project['attributes']['interests']}
+            team={project['attributes']['team']}
+          />
 
-        <LongCard
-          description={project.attributes?.title}
-          details={project.attributes?.vision}
-        ></LongCard>
-      </BoxContainer>
+          <LongCard
+            description={project.attributes?.title}
+            details={project.attributes?.description}
+          ></LongCard>
+        </BoxContainer>
+      )}
+      {!project && <> No Data Found</>}
 
       <BoxContainer bgColor="White" paddingVertical={32}>
         <CardWrapper>
@@ -81,7 +93,7 @@ export default function ProjectDetails({
             <Card key={index}>
               <h2>{title}</h2>
               <CardContent>
-                {!elements &&
+                {elements &&
                   elements
                     .slice(0, IsExpanded(title) ? elements.length : 1)
                     .map((element, elIndex) => <p key={elIndex}>{element}</p>)}
@@ -126,17 +138,18 @@ export default function ProjectDetails({
         <Container>
           <h2>Positions Available</h2>
 
-          {/* 
-          <PositionsList>
-            {opportunites?.map((position) => (
-              <PositionCard
-                key={position.id}
-                position={position}
-                projectSlug={project.slug}
-              />
-            ))}
+          {/*
+          <PositionsList> 
+          {opportunites?.map((position) => (
+            <PositionCard
+              key={position.id}
+              position={position}
+              projectSlug={project.attributes.slug}
+              projectId={project.id}
+            />
+          ))}
           </PositionsList>
-          */}
+           */}
         </Container>
       </BoxContainer>
     </Wrapper>

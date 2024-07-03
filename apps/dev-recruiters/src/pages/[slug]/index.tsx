@@ -17,13 +17,16 @@ export const getProjectsSlugs = async () => {
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
   );
-
-  projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
+  //console.log('appsdev-recruiterssrcpages[slug]index.tsx');
+  //console.log(projects);
+  //  projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
-      slug: project.slug,
+      slug: project.attributes.slug,
     },
   }));
+  //console.log('getProjectsSlugs');
+  //console.log(projectsSlugs);
   return projectsSlugs;
 };
 
@@ -35,10 +38,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { attributes: project }: Project = await agent.Projects.get(
+  /*  const { attributes: project }: Project = await agent.Projects.get(
+    params.slug as string,
+    new URLSearchParams(`populate=*&publicationState=live`)
+  ); */
+  const project = await agent.Projects.get(
     params.slug as string,
     new URLSearchParams(`populate=*&publicationState=live`)
   );
+  //.then((res) => res)
+  //.catch((err) => err);
+  const projectNull = project || 'projectNull';
   let opportunities = await agent.Opportunities.list(
     new URLSearchParams(
       `populate=*&filters[projects][slug][$eq]=${params.slug}`
@@ -67,9 +77,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     commitments === undefined ? 0 : Math.min(...commitments);
   //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
-  opportunities = opportunities.map((opportunity) => opportunity.attributes);
-  return project !== undefined
-    ? {
+  //opportunities = opportunities.map((opportunity) => opportunity.attributes);
+  opportunities = opportunities.map((opportunity) => opportunity);
+  //console.log('before props return');
+  //console.log(project);
+  //console.log(project === undefined || typeof project === null);
+  return project === undefined || typeof project === null
+    ? { notFound: true }
+    : {
         props: {
           project: project,
           opportunites: opportunities,
@@ -77,8 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
           minCommitment,
         },
         revalidate: 10,
-      }
-    : { notFound: true };
+      };
 };
 
 interface Props {
