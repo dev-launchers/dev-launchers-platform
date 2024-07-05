@@ -13,8 +13,21 @@ import {
   TimeContainer,
   Title,
 } from './styledRoleCard';
+import { agent } from '@devlaunchers/utility';
+import { result } from 'lodash';
+import { Opportunity } from '@devlaunchers/models';
 
-const RoleCard = (props) => {
+let oppProject = {
+  projectId: 'projectId',
+  projectSlug: 'projectSlug',
+};
+interface Props {
+  role: any;
+  key22: number;
+  opportunities?: Opportunity[];
+}
+
+const RoleCard = ({ role, key22, opportunities }: Props) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -25,19 +38,38 @@ const RoleCard = (props) => {
     setShowModal(false);
   };
 
+  /*const getProjectSlugs = async () => {
+    try {
+      const oppProjectSlug = await agent.Opportunities.getById(
+        `${props.role.id}`
+      ).then((result) => {
+        oppProject.projectId = result.attributes.projects.data[0].id;
+        oppProject.projectSlug =
+          result.attributes.projects.data[0].attributes.slug;
+
+        return result;
+      });
+      return oppProjectSlug;
+    } catch (error) {
+      console.log('an error occured while fetching project slugs');
+    }
+  };
+
+  getProjectSlugs();
+  */
   return (
     <CardContainer>
       <CardContent>
-        <Title>{props.role.title}</Title>
+        <Title>{role.title}</Title>
         <Time style={{ fontSize: '1rem' }}>PRODUCT PLATFORM</Time>
         <Divider />
         <TimeContainer>
           <TimeCommitment>TIME COMMITMENT</TimeCommitment>
-          <Time>{props.role.commitmentHoursPerWeek} hrs per week</Time>
+          <Time>{role.commitmentHoursPerWeek} hrs per week</Time>
         </TimeContainer>
         <AboutContainer>
           <TimeCommitment>ABOUT THE ROLE</TimeCommitment>
-          <AboutDescription>{props.role.description}</AboutDescription>
+          <AboutDescription>{role.description}</AboutDescription>
         </AboutContainer>
         <ButtonsContainer onClick={handleOpenModal}>
           More Details
@@ -48,8 +80,11 @@ const RoleCard = (props) => {
           handleOpenModal={handleOpenModal}
           modalContent={
             <RoleDetailsModal
-              position={props.role}
-              projectSlug={'projectSlug'}
+              position={role}
+              projectId={role?.attributes?.projects?.data[key22]?.id}
+              projectSlug={
+                role?.attributes?.projects?.data[key22]?.attributes?.slug
+              }
               handleCloseModal={handleCloseModal}
             />
           }

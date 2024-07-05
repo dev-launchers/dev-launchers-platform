@@ -3,13 +3,16 @@ import ProductHeader from '../components/modules/DetailedPage/ProductHeader';
 import SignUpForm from '../components/modules/TalcommunityPage/TalFormPage/signUpForm';
 import BoxContainer from '../components/common/BoxContainer';
 import React from 'react';
-import TalcommunityPage from '../components/modules/TalcommunityPage';
+
 import { ThankyouPage } from '../components/modules/ThankyouPage';
+import { HeaderTalPage } from '../components/modules/TalcommunityPage/HeaderTalPage';
 
 const IndexPage = () => (
   <>
-    <TalcommunityPage></TalcommunityPage>
-    <ThankyouPage></ThankyouPage>
+    <BoxContainer>
+      <HeaderTalPage></HeaderTalPage>
+      <ThankyouPage></ThankyouPage>
+    </BoxContainer>
   </>
 );
 

@@ -3,11 +3,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import PageBody from "../../common/PageBody";
 // import DiscordImage from "../../../images/signup/discord.png?webp";
-
 import { FormWrapper } from "./StyledSignUp";
-
-import { useUserDataContext } from "../../../context/UserDataContext";
-import { env } from "../../../utils/EnvironmentVariables";
+import { useUserDataContext } from "@devlaunchers/components/context/UserDataContext";
 
 export default function SignUp() {
   // const [loading, setLoading] = useState(true);
@@ -83,7 +80,7 @@ export default function SignUp() {
                 <p style={{ fontSize: "1.25rem" }}>
                   Connect your Discord account! <i>(optional)</i>
                 </p>
-                <a href={env().DISCORD_AUTH_URL}>
+                <a href={process.env.NEXT_PUBLIC_DISCORD_AUTH_URL}>
                   <img
                     src={DiscordImage}
                     alt="discord"

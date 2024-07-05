@@ -8,11 +8,11 @@ import SignUpForm from '../../FormPage/signUpForm';
 import Modal from '../PositionPopupModal/Modal';
 import { RowContainer } from '../styledProjectDetails';
 import {
-  ApplyButton,
+  // ApplyButton,
   BulletList,
   BulletListItem,
   Button,
-  ButtonsSection,
+  // ButtonsSection,
   CloseButton,
   CloseIcon,
   ColorBox,
@@ -36,14 +36,23 @@ import {
   TagsSection,
   TitleSection,
 } from './StyledPositionCard';
+import {
+  ApplyButton,
+  ButtonsSection,
+} from '@components/modules/FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/StyledRoleModal';
 
 interface Props {
   projectSlug: string;
+  projectId: string;
   position: Opportunity;
   handleCloseModal?: () => void;
 }
 
-export default function PositionCard({ position, projectSlug }: Props) {
+export default function PositionCard({
+  position,
+  projectId,
+  projectSlug,
+}: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [liked, setLiked] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -76,11 +85,11 @@ export default function PositionCard({ position, projectSlug }: Props) {
         </LikeButton>
         <OpportunityInfoContainer>
           <TitleSection>
-            <h2>{position.title}</h2>
+            <h2>{position.attributes.title}</h2>
           </TitleSection>
           <PositionDetailsMobile>
-            <p>{position.level}</p>
-            <p>{position.commitmentHoursPerWeek} hrs/week</p>
+            <p>{position.attributes.level}</p>
+            <p>{position.attributes.commitmentHoursPerWeek} hrs/week</p>
           </PositionDetailsMobile>
           <ButtonsSection Mobile={true}>
             <Button
@@ -90,7 +99,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               {`${isExpanded ? 'Collapse Details' : 'Position details'}`}
             </Button>
             <Link
-              href={`${projectSlug}/apply?position=${position.title}`}
+              href={`${projectSlug}/apply?position=${position.attributes.title}`}
               passHref
             >
               <Button as="a" color="DarkElectricBlue">
@@ -114,7 +123,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               rehypePlugins={[rehypeRaw]}
               remarkPlugins={[remarkGfm]}
             >
-              {position.description}
+              {position.attributes.description}
             </ReactMarkdown>
           ) : (
             <ReactMarkdown
@@ -126,13 +135,16 @@ export default function PositionCard({ position, projectSlug }: Props) {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >
-              {position.description.slice(0, position.description.length / 2)}
+              {position.attributes.description.slice(
+                0,
+                position.attributes.description.length / 2
+              )}
             </ReactMarkdown>
           )}
           {/* <p>
             {isExpanded
-              ? position.description
-              : `${position.description.substring(0, 320)}...`}
+              ? position.attributes.description
+              : `${position.attributes.description.substring(0, 320)}...`}
           </p> */}
         </DescriptionSection>
       </Section>
@@ -142,12 +154,14 @@ export default function PositionCard({ position, projectSlug }: Props) {
           <TagsSection>
             <h4>Position Tags</h4>
             <TagsList>
-              <TagsListItem color="Dark">{position.level}</TagsListItem>
-              {position?.skills?.map((skill, index) => (
+              <TagsListItem color="Dark">
+                {position.attributes.level}
+              </TagsListItem>
+              {/*} {position?.skills?.map((skill, index) => (
                 <TagsListItem color="Light" key={index}>
-                  {skill?.interest}
-                </TagsListItem>
-              ))}
+             {skill?.interest} 
+             </TagsListItem> 
+              ))} */}
             </TagsList>
           </TagsSection>
         </OpportunityDetailsContainer>
@@ -161,13 +175,13 @@ export default function PositionCard({ position, projectSlug }: Props) {
                 <h4>Time Commitment</h4>
                 <div>
                   <p>Min</p>
-                  <p>{position.commitmentHoursPerWeek} hrs/week</p>
+                  <p>{position.attributes.commitmentHoursPerWeek} hrs/week</p>
                 </div>
               </CommitmentSection>
               <ExpectationsSection Expanded={isExpanded}>
                 <h4>Expectations</h4>
                 <ExpectationsList>
-                  {position.expectations.map((item, index) => (
+                  {position.attributes.expectations.map((item, index) => (
                     <ExpectationsListItem key={index}>
                       {item.expectation}
                     </ExpectationsListItem>
@@ -180,8 +194,8 @@ export default function PositionCard({ position, projectSlug }: Props) {
             <h3>Position Description</h3>
             <p>
               {isExpanded
-                ? position.description
-                : `${position.description.substring(0, 320)}...`}
+                ? position.attributes.description
+                : `${position.attributes.description.substring(0, 320)}...`}
             </p>
           </DescriptionSection>
 
@@ -197,6 +211,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               modalContent={
                 <ProjectDetailsModal
                   position={position}
+                  projectId={projectId}
                   projectSlug={projectSlug}
                   handleCloseModal={handleCloseModal}
                 />
@@ -209,7 +224,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
               {`${isExpanded ? 'Collapse Description' : 'Expand Description'}`}
             </Button>
             <Link
-              href={`${projectSlug}/apply?position=${position.title}`}
+              href={`${projectSlug}/apply?position=${position.attributes.title}`}
               passHref
             >
               <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
@@ -224,6 +239,7 @@ export default function PositionCard({ position, projectSlug }: Props) {
 function ProjectDetailsModal({
   position,
   handleCloseModal,
+  projectId,
   projectSlug,
 }: Props) {
   return (
@@ -244,10 +260,15 @@ function ProjectDetailsModal({
           />
         </CloseIcon>
       </CloseButton>
-      <ModalTopSection position={position} projectSlug={projectSlug} />
+      <ModalTopSection
+        position={position}
+        projectId={projectId}
+        projectSlug={projectSlug}
+      />
       <ModalBottomSection
         position={position}
         projectSlug={projectSlug}
+        projectId={projectId}
         handleCloseModal={handleCloseModal}
       />
     </div>
@@ -258,26 +279,28 @@ function ModalTopSection({ position }: Props) {
   return (
     <RowContainer paddingVertical={20} justifycontent="justfiy-left">
       <ModalProjectSection>
-        <h3>{position.title}</h3>
+        <h3>{position.attributes.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
         <h4>PRODUCT PLATFORM</h4>
         <h6>TIME COMMITMENT</h6>
-        <p>{position.commitmentHoursPerWeek} hrs per week</p>
+        <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>
       <ModalDescriptionSection Mobile={false}>
         <h3>ABOUT THE PROJECT</h3>
-        <p>{position.description}</p>
+        <p>{position.attributes.description}</p>
       </ModalDescriptionSection>
       <ModalProjectSection>
         <h4>SKILLS REQUIRED</h4>
         <TagsSection>
           <TagsList>
-            <TagsListItem color="Dark">{position.level}</TagsListItem>
-            {position?.skills?.map((skill, index) => (
+            <TagsListItem color="Dark">
+              {position.attributes.level}
+            </TagsListItem>
+            {/*{position?.skills?.map((skill, index) => (
               <TagsListItem color="Dark" key={index}>
                 {skill?.interest}
               </TagsListItem>
-            ))}
+            ))} */}
           </TagsList>
         </TagsSection>
       </ModalProjectSection>
@@ -287,6 +310,7 @@ function ModalTopSection({ position }: Props) {
 
 function ModalBottomSection({
   position,
+  projectId,
   projectSlug,
   handleCloseModal,
 }: Props) {
@@ -315,11 +339,11 @@ function ModalBottomSection({
             </BulletList>
           </div>
         </ModalProjectSection>
-        {position.expectations.length > 0 && (
+        {position.attributes.expectations.length > 0 && (
           <ModalDescriptionSection Mobile={false}>
             <h3>RESPONSIBILITIES</h3>
             <BulletList>
-              {position.expectations.map((item, index) => (
+              {position.attributes.expectations.map((item, index) => (
                 <ExpectationsListItem key={index}>
                   {item.expectation}
                 </ExpectationsListItem>
@@ -340,7 +364,12 @@ function ModalBottomSection({
         handleOpenModal={handleOpenApplyModal}
         closeModal={handleCloseApplyModal}
         modalContent={
-          <SignUpForm handleCloseModal={handleCloseModal} position={position} />
+          <SignUpForm
+            handleCloseModal={handleCloseModal}
+            position={position}
+            projectId={projectId}
+            projectSlug={projectSlug}
+          />
         }
       />
     </div>

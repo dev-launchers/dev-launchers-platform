@@ -1,29 +1,25 @@
-import { useRouter } from "next/router";
-import Script from "next/script";
-import { ToastContainer } from "react-toastify";
-import { ThemeProvider } from "styled-components";
-// import type { AppProps } from "next/app";
-import GlobalStyle from "../styles/globals";
+import { useRouter } from 'next/router';
+import Script from 'next/script';
+import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from '../styles/globals';
 
-import "react-toastify/dist/ReactToastify.css";
-import theme from "../styles/theme";
-
-import { UserDataProvider } from "../context/UserDataContext";
+import 'react-toastify/dist/ReactToastify.css';
+import oldTheme from '../styles/theme';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
-  if (router.asPath.startsWith("/#")) {
-    router.push(router.asPath.replace("/#", ""));
+  if (router.asPath.startsWith('/#')) {
+    router.push(router.asPath.replace('/#', ''));
   }
 };
 
-function MyApp(props) {
+export default function MyApp(props) {
   const router = useRouter();
   hashRedirect(router);
-
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={oldTheme}>
         <GlobalStyle />
         <div>
           <Script
@@ -39,23 +35,21 @@ function MyApp(props) {
               gtag('config', 'AW-599284852');
             `}
           </Script>
-          <UserDataProvider>
-            <div className="App">
-              <ToastContainer
-                className="toast-container"
-                toastClassName="toast"
-                progressClassName="toast-progress"
-              />
-            </div>
-            <div>
-              {/* <Component {...pageProps} /> */}
-              {props.children}
-            </div>
-          </UserDataProvider>
+          <div className="App">
+            <ToastContainer
+              className="toast-container"
+              toastClassName="toast"
+              progressClassName="toast-progress"
+            />
+          </div>
+          <div>
+            {/* <Component {...pageProps} /> */}
+            {props.children}
+          </div>
         </div>
       </ThemeProvider>
     </>
   );
 }
 
-export default MyApp;
+//export default MyApp;

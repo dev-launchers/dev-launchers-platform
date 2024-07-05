@@ -1,1 +1,1 @@
-export { default } from "./signUpForm";
+export { default } from './signUpForm';

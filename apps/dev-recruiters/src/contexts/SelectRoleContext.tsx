@@ -42,7 +42,6 @@ export function OpportunitiesProvider({
     commitmentRange,
     setCommitmentRange,
   };
-
   return (
     <OpportunitiesContext.Provider value={contextValue}>
       {children}

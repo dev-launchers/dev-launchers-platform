@@ -11,7 +11,7 @@ export interface PositionCardProps {
     timeCommittment: string;
     role: string;
     tags: string[];
-    benifits: string[];
+    benefits: string[];
     level: string;
     title: string;
   };

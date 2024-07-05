@@ -43,10 +43,12 @@ export const OptionsContainer = styled.div<DropdownProps>`
   width: 100%;
   position: absolute;
   top: 100%;
+  z-index: 100;
+  box-shadow: 1px 1px 4px;
 `;
 
 export const Options = styled.form<DropdownProps>`
-  display: flex;
+  display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem 2rem;

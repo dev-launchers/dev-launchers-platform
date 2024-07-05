@@ -25,6 +25,7 @@ module.exports = {
     '@devlaunchers/eslint-config-bases/rtl',
     '@devlaunchers/eslint-config-bases/storybook',
     '@devlaunchers/eslint-config-bases/playwright',
+    '@devlaunchers/eslint-config-bases/tailwind',
 
     // Add specific rules for your framework if needed.
     // ie:
@@ -38,6 +39,13 @@ module.exports = {
   ],
   rules: {
     // Specific global rules for your app or package
+    'tailwindcss/no-custom-classname': [
+      'error',
+      {
+        // if you want to use a class that isn't tailwind specific (NOT RECOMMENDED) make sure to add it here
+        whitelist: [],
+      },
+    ],
   },
   overrides: [
     // Specific file rules for your app or package

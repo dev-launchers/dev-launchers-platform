@@ -39,6 +39,7 @@ export default function FilterComponent({
         <RolesFilterList
           projects={filteredProjects as ProjectLite[]}
           projectsLoaded={projectsLoaded}
+          opportunities={opportunities}
         />
       )}
     </>

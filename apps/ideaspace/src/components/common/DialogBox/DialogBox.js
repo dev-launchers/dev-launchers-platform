@@ -6,8 +6,10 @@ import {
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { atoms } from '@devlaunchers/components/src/components';
+import { Icons } from '@devlaunchers/components/src/assets';
+import DialogBoxButton from './DialogBoxButton';
 
-const useConfirm = (title, message) => {
+const useConfirm = (title, message, buttonInfo) => {
   const [promise, setPromise] = useState(null);
 
   const confirm = () => new Promise((resolve, reject) => {
@@ -32,6 +34,7 @@ const useConfirm = (title, message) => {
 
     <Dialog
       open={promise !== null}
+      onClose={handleCancel}
       fullWidth
       sx={{
         '& .MuiDialog-paper': {
@@ -58,10 +61,13 @@ const useConfirm = (title, message) => {
       <DialogTitle
         sx={{
           paddingTop: '2.2rem',
-          paddingBottom: '0.5rem'
+          paddingBottom: '0.5rem',
         }}
       >
-        {title}
+        <atoms.Box alignItems='center' style={{columnGap: '0.5rem', color: title[2]}}>
+          {title[1] == '' ? null : (title[1] == 'Success' ? <Icons.Success /> : <Icons.Error />)} 
+          {title[0]}
+        </atoms.Box>
       </DialogTitle>
 
       <DialogContent>
@@ -83,20 +89,11 @@ const useConfirm = (title, message) => {
           fontSize: '0.8rem'
         }}
       >
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='alternative'
-          onClick={handleCancel}
-        >
-          CANCEL
-        </atoms.Button>
-        <atoms.Button
-          buttonSize='standard'
-          buttonType='primary'
-          onClick={handleConfirm}
-        >
-          LEAVE
-        </atoms.Button>
+        <DialogBoxButton
+          handleConfirmButton={handleConfirm}
+          handleCancelButton={handleCancel}
+          buttonDetail={buttonInfo}
+        />
       </DialogActions>
 
     </Dialog>

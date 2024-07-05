@@ -8,6 +8,7 @@ export default function useProjectRole() {
   const [projects, setProjects] = useState<ProjectLite[]>([]);
   const [projectsLoaded, setProjectsLoaded] = useState(false);
   const [filteredProjects, setFilteredProjects] = useState<ProjectLite[]>();
+
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [opportunitiesLoaded, setOpportunitiesLoaded] = useState(false);
   const [projectParams, setProjectParams] = useState<ProjectParams>({
@@ -17,7 +18,6 @@ export default function useProjectRole() {
     maxCommit: 0,
     searchTerm: '',
   });
-
   // Apply Filters
   const SetProjectParams = (value: ProjectParams) => {
     setFilteredProjects(FilterProjects(projects, value));
@@ -25,24 +25,25 @@ export default function useProjectRole() {
 
   //#region Fetching Operations
   const fetchProjects = (projectsList: Project[]) => {
-    if (projectsList.length > 0) {
+    if (projectsList?.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
-        slug: item.slug,
-        catchPhrase: item.catchPhrase,
-        title: item.title,
-        description: item.description,
-        commitmentLevel: item.commitmentLevel,
-        opportunities: item.opportunities,
-        isPlatform: item.isPlatform,
+        attributes: {
+          slug: item.attributes.slug,
+          catchPhrase: item.attributes.catchPhrase,
+          title: item.attributes.title,
+          description: item.attributes.description,
+          commitmentLevel: item.attributes.commitmentLevel,
+          opportunities: item.attributes.opportunities,
+
+          //isPlatform: item.attributes.isPlatform,
+        },
       }));
       setProjects(list);
       setFilteredProjects(list);
       setProjectsLoaded(true);
     }
   };
-
-  console.log(projects);
 
   function fetchOpportunities(opportunities: Opportunity[]) {
     if (opportunities.length <= 0) return;
@@ -135,18 +136,21 @@ export default function useProjectRole() {
 
 //#region Single Project Filtering
 function FilterBySearchTerm(project: ProjectLite, params: ProjectParams) {
-  if (params.searchTerm) {
+  /*if (params.searchTerm) {
     return (
-      project.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
-      project.opportunities.some((o) =>
+      project.attributes.title
+        .toLowerCase()
+        .includes(params.searchTerm.toLowerCase()) 
+        ||
+      project.attributes.opportunities.data.some((o) =>
         o.skills.some((s) =>
           s!
             .interest!.toLowerCase()!
             .includes(params!.searchTerm!.toLowerCase())
-        )
+        ) 
       )
     );
-  }
+  } */
   return true;
 }
 
@@ -160,46 +164,49 @@ function FilterProjectOpportunities(
     params.opportunity && params.opportunity.length > 0;
   const filterByCommitment = params.maxCommit > 0;
 
-  return project.opportunities.some(
+  return project.attributes.opportunities.data.some(
     (op) =>
-      (!filterByLevel || params!.level!.includes(op!.level)) &&
-      (!filterByOpportunity || params!.opportunity!.includes(op!.title)) &&
-      (!filterByCommitment || op!.commitmentHoursPerWeek <= params!.maxCommit)
+      (!filterByLevel || params!.level!.includes(op!.attributes.level)) &&
+      (!filterByOpportunity ||
+        params!.opportunity!.includes(op!.attributes.title)) &&
+      (!filterByCommitment ||
+        op!.attributes.commitmentHoursPerWeek <= params!.maxCommit)
   );
 }
 
 function FilterByLevel(project: ProjectLite, params: ProjectParams) {
   if (params.level && params.level.length > 0) {
-    return project.opportunities.some((op) =>
-      params!.level!.includes(op!.level)
+    return project.attributes.opportunities.data.some((op) =>
+      params!.level!.includes(op!.attributes.level)
     );
   }
   return true;
 }
 function FilterByOpportunities(project: ProjectLite, params: ProjectParams) {
   if (params.opportunity && params.opportunity.length > 0) {
-    return project.opportunities.some((op) =>
-      params!.opportunity!.includes(op!.title)
+    return project.attributes.opportunities.data.some((op) =>
+      params!.opportunity!.includes(op!.attributes.title)
     );
   }
   return true;
 }
 function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
   if (params.maxCommit > 0) {
-    return project.opportunities.some(
-      (op) => op.commitmentHoursPerWeek <= params.maxCommit
+    return project.attributes.opportunities.data.some(
+      (op) => op.attributes.commitmentHoursPerWeek <= params.maxCommit
     );
   }
   return true;
 }
 function FilterByProjectType(project: ProjectLite, params: ProjectParams) {
   if (params.projectType && params.projectType.length > 0) {
-    const isPlatform =
-      params.projectType.includes('Platform') && project.isPlatform;
+    /* const isPlatform =
+      params.projectType.includes('Platform') && project.attributes.isPlatform;
     const isIndependent =
-      params.projectType.includes('Independent') && !project.isPlatform;
-
-    return isPlatform || isIndependent;
+      params.projectType.includes('Independent') &&
+      !project.attributes.isPlatform;
+   */
+    return 'isPlatform' || 'isIndependent';
   }
   return true;
 }
@@ -208,7 +215,8 @@ function FilterProject(project: ProjectLite, params: ProjectParams) {
   return (
     FilterProjectOpportunities(project, params) &&
     FilterByProjectType(project, params) &&
-    FilterBySearchTerm(project, params)
+    FilterBySearchTerm(project, params) &&
+    FilterByCommitment(project, params)
   );
 }
 //#endregion
@@ -224,10 +232,10 @@ export function FilterProjects(projects: ProjectLite[], params: ProjectParams) {
     return projects
       .filter((project) => FilterProject(project, params))
       .sort((a, b) => {
-        if (a.title < b.title) {
+        if (a.attributes.title < b.attributes.title) {
           return -1;
         }
-        if (a.title > b.title) {
+        if (a.attributes.title > b.attributes.title) {
           return 1;
         }
         return 0;

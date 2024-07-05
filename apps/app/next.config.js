@@ -3,9 +3,11 @@ const withPlugins = require('next-compose-plugins');
 const imagesPlugin = require('next-optimized-images');
 const withTM = require('next-transpile-modules')([
   '@devlaunchers/ideaspace',
+  '@devlaunchers/user-profile',
   '@devlaunchers/site-projects',
   '@devlaunchers/dev-recruiters',
   '@devlaunchers/website',
+  '@devlaunchers/gptbot',
 ]); // pass the modules you would like to see transpiled
 
 /** @type {import('next').NextConfig} */
@@ -35,18 +37,24 @@ const nextConfig = {
     domains: [
       'images.prismic.io',
       'devlaunchersproduction.blob.core.windows.net',
+      'devlaunchersstaging.blob.core.windows.net',
       'lh3.googleusercontent.com',
+      'localhost',
+      'apiv4-staging.devlaunchers.org',
     ],
     disableStaticImages: true,
-    unoptimized: false
+    unoptimized: false,
   },
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
   ) => {
     // Important: return the modified config
-    config.resolve.alias['styled-components'] = path.resolve("./node_modules", "styled-components");
-    return config
+    config.resolve.alias['styled-components'] = path.resolve(
+      './node_modules',
+      'styled-components'
+    );
+    return config;
   },
   reactStrictMode: true, // It helps you avoid legacy code, and deprecated APIs.
   eslint: {
