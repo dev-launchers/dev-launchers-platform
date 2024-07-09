@@ -4,6 +4,7 @@ import BoxContainer from '../../components/common/BoxContainer';
 import TitledHeader from '../../components/common/TitledHeader';
 
 function appldy() {
+  console.log('appsdev-recruiterssrcpages[slug]apply.tsx');
   return (
     <>
       <Head>
