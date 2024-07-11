@@ -25,7 +25,7 @@ export function ThankyouPage() {
           </SubHeaderContainer>
           <SubHeaderContainer>
             We will email you when a volunteer role that matches your skillsets
-            and/or interests opens up!
+            and/or interests opens up!.
           </SubHeaderContainer>
           <BoxContainer paddingVertical={80} paddingHorizontal={520}>
             <BtnSignUp as="a" type="submit" onClick={routeChange}>
