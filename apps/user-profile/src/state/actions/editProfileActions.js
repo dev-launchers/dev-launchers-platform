@@ -1,3 +1,10 @@
+const UPDATE_BIO = 'Update user bio details.';
+const SAVE_CHANGES = 'Save edit profile changes';
+const SAVE_CHANGES_SUCCESS = 'Save edit profile changes success!';
+const SAVE_CHANGES_FAILED = 'Save edit profile changes failed!';
+
+// -- show/hide actions
+
 const SHOW_EDIT_PROFILE_MODAL = 'Show edit profile modal.';
 const HIDE_EDIT_PROFILE_MODAL = 'Hide edit profile modal.';
 
@@ -17,6 +24,10 @@ const SHOW_INTERESTS_SETTING = 'Show interests settings.';
 const HIDE_INTERESTS_SETTING = 'Hide interests settings.';
 
 export {
+  UPDATE_BIO,
+  SAVE_CHANGES,
+  SAVE_CHANGES_SUCCESS,
+  SAVE_CHANGES_FAILED,
   SHOW_EDIT_PROFILE_MODAL,
   HIDE_EDIT_PROFILE_MODAL,
   SHOW_PHOTO_SETTING,
