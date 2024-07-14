@@ -38,7 +38,7 @@ function SettingPage() {
       const requestBody = { data: {} };
 
       // only update values where changs have been made
-      if (editProfileState.bio) {
+      if (editProfileState.changes.bioChanged) {
         requestBody.data.bio = editProfileState.bio;
       }
 
