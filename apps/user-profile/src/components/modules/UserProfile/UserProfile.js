@@ -8,8 +8,10 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SideBar from './SideBar';
 import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
-import Modal from './../../../components/common/Modal'
-import { editProfileDataContext } from '../../../context/EditProfileDataContext';
+import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
+
+import Modal from './../../../components/common/Modal';
+
 // State management component
 /**
  * This component has been broken down into two,
@@ -21,7 +23,6 @@ import { editProfileDataContext } from '../../../context/EditProfileDataContext'
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
-  const { editProfileState } = editProfileDataContext();
 
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = React.useState([]);
@@ -161,8 +162,10 @@ export default function UserProfile({ publicUserData, isPublic }) {
         />
       </div>
       <div className="px-20 pb-20">
-        <Overview />
-        {editProfileState.showEditProfileModal ? <EditProfileModal /> : null}
+        <EditProfileDataProvider>
+          <Overview />
+          <EditProfileModal />
+        </EditProfileDataProvider>
       </div>
     </div>
   );

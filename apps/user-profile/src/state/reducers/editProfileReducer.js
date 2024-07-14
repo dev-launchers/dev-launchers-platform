@@ -10,13 +10,53 @@ const editProfileInitialState = {
     showSkills: false,
     showInterests: false,
   },
+  changes: {
+    photoChanged: false,
+    bioChanged: false,
+    detailsChanged: false,
+    skillsChanged: false,
+    interestsChanged: false,
+  },
   photo: null,
   bio: null,
   skills: null,
+  saveInProgress: false,
 };
 
 const editProfileReducer = (state, action) => {
   switch (action.type) {
+    case editProfileActions.UPDATE_BIO: {
+      return {
+        ...state,
+        changes: {
+          ...state.changes,
+          bioChanged: action.payload.changed,
+        },
+        bio: action.payload.newBio,
+      };
+    }
+    case editProfileActions.SAVE_CHANGES: {
+      return {
+        ...state,
+        saveInProgress: true,
+      };
+    }
+    case editProfileActions.SAVE_CHANGES_SUCCESS: {
+      return {
+        ...state,
+        changes: {
+          ...state.changes,
+          bioChanged: false,
+        },
+        saveInProgress: false,
+      };
+    }
+    case editProfileActions.SAVE_CHANGES_FAILED: {
+      return {
+        ...state,
+        saveInProgress: false,
+      };
+    }
     case editProfileActions.SHOW_EDIT_PROFILE_MODAL: {
       return {
         ...state,
@@ -24,10 +64,7 @@ const editProfileReducer = (state, action) => {
       };
     }
     case editProfileActions.HIDE_EDIT_PROFILE_MODAL: {
-      return {
-        ...state,
-        showEditProfileModal: false,
-      };
+      return editProfileInitialState;
     }
 
     case editProfileActions.SHOW_PHOTO_SETTING: {
