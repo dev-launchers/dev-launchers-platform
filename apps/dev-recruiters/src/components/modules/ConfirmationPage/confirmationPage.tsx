@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   Header,
   MessageWrapper,
   Wrapper,
   Message,
   Button,
-} from "./styledConfirmationPage";
+} from './styledConfirmationPage';
 
-import Link from "next/link";
+import Link from 'next/link';
 export default function ConfirmationPage() {
   return (
     <Wrapper>
       <Header>Apply with Dev Launchers!</Header>
       <MessageWrapper>
-        <Message>Thank you for applying to Dev Launchers!</Message>
+        <Message>Thank you for applying to Dev Launchers!!!!</Message>
 
         <Message>
           Your application has been sent to the product owner and is now in

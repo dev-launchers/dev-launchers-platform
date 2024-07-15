@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const result = await agent.Projects.list(
       new URLSearchParams('_publicationState=live&populate=opportunities')
     );
+    console.log(result, 'projectsList');
     projects = result.filter(
       (p: Project) => p.attributes?.opportunities?.data.length > 0
     );
@@ -32,6 +33,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   try {
     const result = await agent.Opportunities.list();
+    console.log(result[0].projects, 'opportunities2');
     opportunities = result.filter(
       (o: Opportunity) => o.attributes.projects.data.length > 0
     );
