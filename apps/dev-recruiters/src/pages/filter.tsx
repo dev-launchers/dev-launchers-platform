@@ -14,6 +14,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       new URLSearchParams('_publicationState=live&populate=opportunities')
     );
     console.log(result, 'projectsList');
+    console.log('The result', result, 'The productList');
     projects = result.filter(
       (p: Project) => p.attributes?.opportunities?.data.length > 0
     );
