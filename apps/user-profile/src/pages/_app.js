@@ -15,7 +15,6 @@ import { UserDataProvider } from '@devlaunchers/components/context/UserDataConte
 
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { OnboardingDataProvider } from './../context/OnboardingDataContext';
-import { EditProfileDataProvider } from '../context/EditProfileDataContext';
 import { SidebarProvider } from '../context/SidebarContext';
 
 const hashRedirect = (router) => {
@@ -52,35 +51,33 @@ function MyApp(props) {
     <>
       <UserDataProvider>
         <OnboardingDataProvider>
-          <EditProfileDataProvider>
-            <SidebarProvider>
-              <ThemeProvider theme={theme}>
-                <GlobalStyle />
-                <div>
-                  <Head>
-                    <script
-                      async
-                      src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-                    ></script>
-                  </Head>
+          <SidebarProvider>
+            <ThemeProvider theme={theme}>
+              <GlobalStyle />
+              <div>
+                <Head>
+                  <script
+                    async
+                    src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+                  ></script>
+                </Head>
 
-                  <div className="App">
-                    <ToastContainer
-                      className="toast-container"
-                      toastClassName="toast"
-                      bodyClassName="toast-body"
-                      progressClassName="toast-progress"
-                    />
-                  </div>
-                  {/* <Component {...pageProps} /> */}
-                  <LazyMotion features={domAnimation} strict>
-                    {props.children}
-                  </LazyMotion>
-                  {/* {props.children} */}
+                <div className="App">
+                  <ToastContainer
+                    className="toast-container"
+                    toastClassName="toast"
+                    bodyClassName="toast-body"
+                    progressClassName="toast-progress"
+                  />
                 </div>
-              </ThemeProvider>
-            </SidebarProvider>
-          </EditProfileDataProvider>
+                {/* <Component {...pageProps} /> */}
+                <LazyMotion features={domAnimation} strict>
+                  {props.children}
+                </LazyMotion>
+                {/* {props.children} */}
+              </div>
+            </ThemeProvider>
+          </SidebarProvider>
         </OnboardingDataProvider>
       </UserDataProvider>
     </>

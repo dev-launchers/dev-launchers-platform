@@ -8,8 +8,10 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import SideBar from './SideBar';
 import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
+import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
+
 import Modal from './../../../components/common/Modal';
-import { editProfileDataContext } from '../../../context/EditProfileDataContext';
+
 import { useSidebarState } from '../../../context/SidebarContext';
 
 // State management component
@@ -169,9 +171,12 @@ export default function UserProfile({ publicUserData, isPublic }) {
       <div className="w-72">
         <SideBar />
       </div>
-      <div className="px-20 pb-20 w-full">
-        {renderContent()}
-        {editProfileState.showEditProfileModal ? <EditProfileModal /> : null}
+      <div className="px-20 pb-20">
+        <EditProfileDataProvider>
+          {renderContent()}
+          <Overview />
+          <EditProfileModal />
+        </EditProfileDataProvider>
       </div>
     </div>
   );
