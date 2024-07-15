@@ -60,16 +60,16 @@ const RoleCard = ({ role, key22, opportunities }: Props) => {
   return (
     <CardContainer>
       <CardContent>
-        <Title>{role.attributes.title}</Title>
+        <Title>{role.title}</Title>
         <Time style={{ fontSize: '1rem' }}>PRODUCT PLATFORM</Time>
         <Divider />
         <TimeContainer>
           <TimeCommitment>TIME COMMITMENT</TimeCommitment>
-          <Time>{role.attributes.commitmentHoursPerWeek} hrs per week</Time>
+          <Time>{role.commitmentHoursPerWeek} hrs per week</Time>
         </TimeContainer>
         <AboutContainer>
           <TimeCommitment>ABOUT THE ROLE</TimeCommitment>
-          <AboutDescription>{role.attributes.description}</AboutDescription>
+          <AboutDescription>{role.description}</AboutDescription>
         </AboutContainer>
         <ButtonsContainer onClick={handleOpenModal}>
           More Details
