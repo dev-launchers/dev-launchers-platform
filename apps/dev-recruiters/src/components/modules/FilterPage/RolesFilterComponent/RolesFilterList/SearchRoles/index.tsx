@@ -66,7 +66,7 @@ function SearchRole({ selectedRoleLabel, opportunities }: Props) {
               return (
                 <RoleCard
                   key22={index}
-                  role={role}
+                  role={role.attributes}
                   opportunities={opportunities}
                 ></RoleCard>
               );
