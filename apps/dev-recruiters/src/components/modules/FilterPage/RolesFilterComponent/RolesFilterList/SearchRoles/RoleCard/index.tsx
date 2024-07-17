@@ -32,7 +32,6 @@ const RoleCard = ({ role, key22, opportunities }: Props) => {
 
   const handleOpenModal = () => {
     setShowModal(true);
-    console.log('opppeeen');
   };
 
   const handleCloseModal = () => {
