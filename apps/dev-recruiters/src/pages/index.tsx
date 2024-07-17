@@ -17,30 +17,39 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let opportunities: Opportunity[] = [];
   try {
     const result = await agent.Projects.list(
-      new URLSearchParams('_publicationState=live')
+      new URLSearchParams({
+        _publicationState: 'live',
+        populate: 'opportunities',
+      })
     );
-    projects = result.filter((p: Project) => p.opportunities.length > 0);
+    projects = result?.filter(
+      (p: Project) => p.attributes.opportunities.data.length > 0
+    );
+    try {
+      const result = await agent.Opportunities.list();
+      opportunities = result.filter((o: Opportunity) => {
+        return o.attributes.projects.data.length > 0;
+      });
+    } catch (error) {
+      console.error('An error occurred while fetching Opportunities', error);
+    }
+
+    //  opportunities = result?.attributes.opportunities.data.filter(
+    //    (o: Opportunity) => console.log(o)
+    //  );
     projects.map((project) => {
-      const commitments = project.opportunities.map(
-        (opp) => opp.commitmentHoursPerWeek
+      const commitments = project.attributes.opportunities.data.map(
+        (opp) => opp.attributes.commitmentHoursPerWeek
       );
-      // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
-      project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
+      project.attributes.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
       return project;
     });
   } catch (error) {
+    console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
-
-  try {
-    const result = await agent.Opportunities.list();
-    opportunities = result.filter((o: Opportunity) => o.projects.length > 0);
-  } catch (error) {
-    console.error('An error occurred while fetching Opportunities', error);
-  }
-
   return {
     props: {
       projects,
@@ -49,7 +58,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     revalidate: 10,
   };
 };
-
 interface Props {
   projects: Project[];
   opportunities: Opportunity[];

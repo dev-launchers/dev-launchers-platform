@@ -1,23 +1,26 @@
-import React from 'react'
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
-import axios from "axios";
+import React from 'react';
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import { agent } from '@devlaunchers/utility';
+import { cleanDataList } from '../../../utils/StrapiHelper';
+import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 
 import {
   PageWrapper,
-  HeadWapper,
-  Headline,
   StyledRanbow,
   IdeaCardWrapper,
-  FilterDiv
+  FilterDiv,
 } from './StyledBrowseIdeas';
+import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
   const [cards, setCards] = React.useState([]);
+  const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const { isMobile } = useResponsive();
 
   const sortingConfigs = [
     {
@@ -66,25 +69,52 @@ function BrowseIdeas() {
     setCards(cardsClone);
   };
 
-  React.useEffect(() => {
-    axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        const getCards = response.data.map((item) => {
-          return {
-            ...item,
-            mostRecentCommentTime: new Date(
-              item.comments[0]?.updated_at
-            ).getTime(),
-          };
-        });
+  React.useEffect(async () => {
+    const ideaCards = cleanDataList(await agent.Ideas.get(
+      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
 
-        setLoading(false);
-        setCards(getCards);
-      });
+    const getCards = ideaCards.map((item) => {  
+      if (item?.comments?.data) {
+        item.comments = cleanDataList(item.comments.data);
+
+        const recentCommentedTime = item.comments.length > 0 ? new Date(
+          item.comments[0]?.updatedAt
+        ) :  new Date(item.updatedAt);
+
+        return {
+          ...item,
+          mostRecentCommentTime: recentCommentedTime
+        };
+      }
+      return {
+        ...item,
+        mostRecentCommentTime: new Date(item.updatedAt)?.getTime(),
+      };
+    });
+
+    setLoading(false);
+    setCards(getCards);
   }, []);
+
+  React.useEffect(() => {
+    setCards(sourceCards.filter((item) => item?.status !== 'archived'));
+    if (defaultShownCardNum >= sourceCards.length) {
+      setButtonDisplay({ display: 'none' });
+    } else {
+      setButtonDisplay({ display: '' });
+    }
+  }, [sourceCards]);
+
+  const defaultShownCardNum = 30;
+  const [buttonDisplay, setButtonDisplay] = React.useState();
+  const [displayCardAmount, setDisplayCardAmount] =
+    React.useState(defaultShownCardNum);
+  const loadMore = () => {
+    setDisplayCardAmount(displayCardAmount + defaultShownCardNum);
+    if (displayCardAmount + defaultShownCardNum >= cards.length) {
+      setButtonDisplay({ display: 'none' });
+    }
+  };
 
   return (
     <>
@@ -94,9 +124,13 @@ function BrowseIdeas() {
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton />
-        <atoms.Typography type='h4' >
-          Want to help developing an idea?<br />
-          <atoms.Typography type='p' style={{ fontSize: '1.3rem' }}> Check out these ideas submitted by other Dev Launchers!</atoms.Typography>
+        <atoms.Typography type="h4">
+          Want to help develop an idea?
+          <br />
+          <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
+            {' '}
+            Check out these ideas submitted by other Dev Launchers!
+          </atoms.Typography>
         </atoms.Typography>
       </HeadWapper>
 
@@ -105,47 +139,52 @@ function BrowseIdeas() {
           <CircularIndeterminateLoader text="Loading..." color="black" />
         ) : (
           <div>
-          <FilterDiv>
-            <Dropdown
-              width="lg"
-              isOpen
-              options={[
-                {
-                  disabled: false,
-                  text: 'Recent Activity',
-                },
-                {
-                  disabled: false,
-                  text: 'Recent Ideas',
-                },
-                {
-                  disabled: false,
-                  text: 'Time Commitment',
-                },
-              ]}
-              recieveValue={(value) => {
-                sortCards(
-                  Object.entries(value).filter(([key, value]) => {
-                    return value;
-                  })[0][0]
-                );
-              }}
-              title="Sort By"
-              type="radio"
-            />
-          </FilterDiv>
+            <FilterDiv>
+              <Dropdown
+                width={isMobile ? 'sm' : 'lg'}
+                isOpen={false}
+                options={[
+                  {
+                    disabled: false,
+                    text: 'Recent Activity',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Recent Ideas',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Time Commitment',
+                  },
+                ]}
+                recieveValue={(value) => {
+                  sortCards(
+                    Object.entries(value).filter(([key, value]) => {
+                      return value;
+                    })[0][0]
+                  );
+                }}
+                title="Sort By"
+                type="radio"
+              />
+            </FilterDiv>
 
             <IdeaCardWrapper>
-              {cards.map((item) => {
+              {cards.slice(0, displayCardAmount).map((item) => {
                 return (
-                  <IdeaCard
-                    key={item.id}
-                    cards={item}
-                    cardType="browse"
-                  />
+                  <IdeaCard key={item.id} cards={item} cardType="browse" />
                 );
               })}
             </IdeaCardWrapper>
+
+            <atoms.Button
+              buttonSize="standard"
+              buttonType="primary"
+              onClick={loadMore}
+              style={buttonDisplay}
+            >
+              load more
+            </atoms.Button>
           </div>
         )}
       </PageWrapper>

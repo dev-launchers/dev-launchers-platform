@@ -1,79 +1,110 @@
-import React from "react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "../src/styles/global";
-import theme from "../src/styles/theme";
-import * as NextImage from "next/image";
-const OriginalNextImage = NextImage.default;
+import React from 'react';
 
-Object.defineProperty(NextImage, "default", {
-  configurable: true,
-  value: (props) => (
-    <OriginalNextImage
-      {...props}
-      unoptimized
-    />
-  ),
-});
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from '../src/styles/global';
+import theme from '../src/styles/theme';
+import { DocsContainer } from '@storybook/blocks';
+import '@devlaunchers/tailwind/tailwind.css';
 
+const isDevelopmentEnv = process.env.NODE_ENV == 'development';
 const customViewports = {
+  mobile: {
+    name: 'mobile',
+    styles: {
+      width: `412px`,
+      height: '100%',
+    },
+  },
   sm: {
     name: 'sm',
     styles: {
-      width: `${theme.breakpoints.sm}px`,
+      width: `640px`,
       height: '100%',
     },
   },
   md: {
     name: 'md',
     styles: {
-      width: `${theme.breakpoints.md}px`,
+      width: `768px`,
       height: '100%',
     },
   },
   lg: {
     name: 'lg',
     styles: {
-      width: `${theme.breakpoints.lg}px`,
+      width: `1024px`,
       height: '100%',
     },
   },
   xl: {
     name: 'xl',
     styles: {
-      width: `${theme.breakpoints.xl}px`,
+      width: `1280px`,
       height: '100%',
     },
   },
-  xxl: {
-    name: 'xxl',
+  '2xl': {
+    name: '2xl',
     styles: {
-      width: `${theme.breakpoints.xxl}px`,
+      width: `1536px`,
       height: '100%',
     },
   },
 };
- 
+
 /*
  * Global decorator to apply the styles to all stories
  * Read more about them at:
  * https://storybook.js.org/docs/react/writing-stories/decorators#global-decorators
  */
 export const decorators = [
-  (Story) => (
-    <>
-      <ThemeProvider theme={theme}>
+  // apply global theme
+  (Story) => {
+    return (
+      <>
+        <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Story />
-      </ThemeProvider>
-    </>
-  ),
-];
-export const parameters = {
-  nextRouter: {
-    Provider: RouterContext.Provider,
+        </ThemeProvider>
+      </>
+    );
   },
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  // do Figma comparison in development mode
+  (Story, { parameters }) => {
+    if (
+      process.env.STORYBOOK_FIGMA_ACCESS_TOKEN &&
+      isDevelopmentEnv &&
+      parameters.design
+    ) {
+      const figmaUrl = new URL(parameters.design.url);
+      return (
+        <ftl-holster
+          access-token={process.env.STORYBOOK_FIGMA_ACCESS_TOKEN}
+          // extract the second slug from the figma url
+          file-id={figmaUrl.pathname.match(/\/([^\/]+)\/([^\/]+)/)[2]}
+          node={figmaUrl.searchParams.get('node-id').replace('-', ':')}
+        >
+          <Story />
+        </ftl-holster>
+      );
+    }
+    return <Story />;
+  },
+];
+
+const DocsThemeContainer = ({ children, ...props }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <DocsContainer {...props}>
+        <GlobalStyle />
+        {children}
+      </DocsContainer>
+    </ThemeProvider>
+  );
+};
+
+export const parameters = {
+  actions: { argTypesRegex: '^on.*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -82,5 +113,8 @@ export const parameters = {
   },
   viewport: {
     viewports: customViewports,
+  },
+  docs: {
+    container: DocsThemeContainer,
   },
 };

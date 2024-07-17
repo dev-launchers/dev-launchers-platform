@@ -1,61 +1,64 @@
-import React from 'react';
-import axios from 'axios';
+import { useState } from 'react';
 import {
-  UserNameCommentBox,
-  UserNameComment,
   UserComment,
   UserImageOne,
+  CommentBox,
+  // SubmitButton,
 } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import SignInButton from '../../../common/SignInButton/SignInButton';
-
-const MAX_COMMENT_CHARS = 250;
+import { agent } from '@devlaunchers/utility';
 
 function CommentForm(props) {
+
   const { userData, isAuthenticated } = useUserDataContext();
   const { selectedCard, ...other } = props;
-  const [charsLeft, setCharsLeft] = React.useState(MAX_COMMENT_CHARS);
+  const [disabled, setDisabled] = useState(true);
+  const [textChange, setTextChange] = useState('');
 
   const handleTextChange = (e) => {
     const text = e.target.value;
-    props.setHandleTextChange(text);
+    setTextChange(text);
 
-    let characterCount = text.length;
-    setCharsLeft(MAX_COMMENT_CHARS - characterCount);
+    if (text.trim() == '') {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+
     e.preventDefault();
-    var data = { author: userData.username, text: props.handleTextChange };
+    var data = { author: userData.username, idea_card: selectedCard, text: textChange.trim() };
 
-    axios
-      .post(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards/${selectedCard.id}/comment`,
-        data
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          props.setHandleTextChange('');
-        }
-      });
+    try {
+      const res = await agent.Comments.post(data);
+      setTextChange('');
+      // render the comment in the comment feed
+      props.renderNewComment(data);
+    } catch(error) {
+      console.error(error)
+    }
+
+    // Refresh the page so that the new comment is displayed:
+    // window.location.reload(false);
+    // this.setState(
+    //   {reload: true},
+    //   () => this.setState({reload: false})
+    // )
+
+    
   };
-  // move to WorkshoppingPage
+
+  // move to WorkshoppingPage?
   return (
     <div>
       {isAuthenticated ? (
-        <form onSubmit={handleSubmit}>
-          {/* <UserNameCommentBox>
-            <UserNameComment
-              type="text"
-              name="author"
-              placeholder="Your name..."
-              value={props.handleChange}
-              onChange={handleChange}
-            />
-          </UserNameCommentBox> */}
+        <form onSubmit={handleSubmit} style={{textAlign: "left", paddingLeft: "20px", paddingRight: "20px"}}>
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
-            <textarea
+            <CommentBox
               onKeyUp={(e) => {
                 e.target.style.height = 'inherit';
                 e.target.style.height = `${e.target.scrollHeight}px`;
@@ -65,24 +68,20 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts? (max 250 characters)"
-              value={props.handleTextChange}
+              placeholder="What are your thoughts?"
+              value={textChange}
               onChange={handleTextChange}
-              maxlength={MAX_COMMENT_CHARS}
-            ></textarea>
-            {/* source: https://codepen.io/patrickwestwood/pen/gPPywv */}
-            <div id="the-count">
-              <span id="chars-left">{charsLeft}</span>
-            </div>
+              // maxlength={MAX_COMMENT_CHARS}
+            ></CommentBox>
+            <button type="submit" style={{color: "white", backgroundColor: "#3A7CA5"}}><i class="fas fa-arrow-right"></i></button>
           </UserComment>
-          <button type="submit">Submit</button>
         </form>
       ) : (
         <div style={{ margin: '2rem', marginTop: '4rem'}}>
           Sign in to leave a comment!{' '}
           <SignInButton
             redirectUrl={
-              'https://devlaunchers.org/ideaspace/workshop/' + selectedCard.id
+              `${process.env.NEXT_PUBLIC_FRONT_END_URL}/ideaspace/workshop/` + selectedCard.id
             }
           />
         </div>

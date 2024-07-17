@@ -23,7 +23,7 @@ export const ContainerHead = styled.div`
 `;
 
 export const ContainerBody = styled.div`
-  height: 650px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

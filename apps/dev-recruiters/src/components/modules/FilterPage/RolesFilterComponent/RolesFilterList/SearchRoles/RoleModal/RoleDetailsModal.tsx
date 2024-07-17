@@ -19,11 +19,19 @@ import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
 
 interface Props {
   projectSlug: string;
+  projectId: string;
   position: Opportunity;
   handleCloseModal?: () => void;
 }
 
-function RoleDetailsModal({ position, handleCloseModal, projectSlug }: Props) {
+function RoleDetailsModal({
+  position,
+  handleCloseModal,
+  projectId,
+  projectSlug,
+}: Props) {
+  console.log(projectId);
+  console.log(projectSlug);
   return (
     <div>
       <ColorBox />
@@ -42,9 +50,14 @@ function RoleDetailsModal({ position, handleCloseModal, projectSlug }: Props) {
           />
         </CloseIcon>
       </CloseButton>
-      <ModalTopSection position={position} projectSlug={projectSlug} />
+      <ModalTopSection
+        position={position}
+        projectId={projectId}
+        projectSlug={projectSlug}
+      />
       <ModalBottomSection
         position={position}
+        projectId={projectId}
         projectSlug={projectSlug}
         handleCloseModal={handleCloseModal}
       />
@@ -56,26 +69,29 @@ function ModalTopSection({ position }: Props) {
   return (
     <RowContainer paddingVertical={20} justifycontent="justfiy-left">
       <ModalProjectSection>
-        <h3>{position.title}</h3>
+        <h3>{position.attributes.title}</h3>
         {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
         <h4>Product Platform</h4>
         <h6>TIME COMMITMENT</h6>
-        <p>{position.commitmentHoursPerWeek} hrs per week</p>
+        <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>
       </ModalProjectSection>
       <ModalDescriptionSection Mobile={false}>
         <h3>ABOUT THE PROJECT</h3>
-        <p>{position.description}</p>
+        <p>{position.attributes.description}</p>
       </ModalDescriptionSection>
       <ModalProjectSection>
         <h4>SKILLS REQUIRED</h4>
         <TagsSection>
           <TagsList>
-            <TagsListItem color="Dark">{position.level}</TagsListItem>
-            {position?.skills?.map((skill, index) => (
+            <TagsListItem color="Dark">
+              {position.attributes.level}
+            </TagsListItem>
+            {/* }  {position?.skills?.map((skill, index) => (
               <TagsListItem color="Dark" key={index}>
                 {skill?.interest}
               </TagsListItem>
             ))}
+          */}
           </TagsList>
         </TagsSection>
       </ModalProjectSection>
@@ -85,6 +101,7 @@ function ModalTopSection({ position }: Props) {
 
 function ModalBottomSection({
   position,
+  projectId,
   projectSlug,
   handleCloseModal,
 }: Props) {
@@ -136,7 +153,12 @@ function ModalBottomSection({
         handleOpenModal={handleOpenApplyModal}
         closeModal={handleCloseApplyModal}
         modalContent={
-          <SignUpForm handleCloseModal={handleCloseModal} position={position} />
+          <SignUpForm
+            handleCloseModal={handleCloseModal}
+            position={position}
+            projectId={projectId}
+            projectSlug={projectSlug}
+          />
         }
       />
     </div>

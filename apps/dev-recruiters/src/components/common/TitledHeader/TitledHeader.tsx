@@ -15,24 +15,21 @@ const TitledHeader = ({ title, backButtonUrl }) => {
   const previousPath = router.asPath.slice(0, finalSlashIndex);
 
   return (
-    <atoms.Layer type="black" hasRainbow>
+    <atoms.Layer type="dark" hasRainbowBottom>
       <atoms.Box
         paddingBlock="2rem"
         paddingInline="1rem"
         justifyContent="space-between"
         alignItems="center"
-        flexWrap='wrap'
+        flexWrap="wrap"
       >
         <Link href={backButtonUrl || previousPath} passHref>
           <a>
-            <molecules.BackButton type="small" withLabel={false} />
+            <molecules.BackButton type="back" withLabel={false} />
           </a>
         </Link>
-        <atoms.Box margin='0 1rem 0 0'>
-          <atoms.Typography
-            type="h1"
-            css={{ color: theme.colors.GREYSCALE_WHITE, textAlign: 'center' }}
-          >
+        <atoms.Box margin="0 1rem 0 0">
+          <atoms.Typography type="h1" css={{ textAlign: 'center' }}>
             {title}
           </atoms.Typography>
         </atoms.Box>

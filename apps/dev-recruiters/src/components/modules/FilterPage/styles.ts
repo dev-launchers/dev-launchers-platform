@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import StarySky from '../../../images/Searchresults/starysky.jpg';
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
@@ -36,4 +37,28 @@ export const BtnSignUp = styled.button`
   font-family: 'Nunito Sans', sans-serif;
   background-color: ${({ theme }) => theme?.colors?.BLUE_700};
   text-decoration: none;
+`;
+
+export const SearchResult = styled.div`
+  width: 100%;
+  height: 172px;
+  position: relative;
+  /* background: rgba(0, 0, 0, 0.63); */
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.063) 100%
+    ),
+    url(${StarySky});
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 44px;
+  font-family: Abel;
+  font-weight: 400;
+  word-wrap: break-word;
+
+  color: white;
 `;

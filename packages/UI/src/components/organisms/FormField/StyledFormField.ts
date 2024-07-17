@@ -4,7 +4,6 @@ import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { typographyStyles } from '../../atoms/Typography';
 import type { InputProps } from '.';
 
-
 export const Label = styled.label`
   display: block;
   ${typographyStyles['label']};

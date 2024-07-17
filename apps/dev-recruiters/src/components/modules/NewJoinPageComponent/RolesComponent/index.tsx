@@ -36,8 +36,6 @@ export default function RolesComponent({
     fetchProjects,
     resetFilters,
   } = useProjectRole();
-
-  console.log('here', filteredProjects);
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);
@@ -210,6 +208,7 @@ export default function RolesComponent({
         <RolesList
           projects={filteredProjects as ProjectLite[]}
           projectsLoaded={projectsLoaded}
+          opportunities={opportunities}
         />
       )}
     </Wrapper>

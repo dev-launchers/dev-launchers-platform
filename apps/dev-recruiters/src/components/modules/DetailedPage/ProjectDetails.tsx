@@ -2,7 +2,7 @@ import BoxContainer from '../../common/BoxContainer';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Project } from 'src/models/project';
+import { Project } from '@devlaunchers/models';
 import LongCard from '../OpportunitiesAggregator/LongCard';
 import ShortCard from '../OpportunitiesAggregator/ShortCard';
 import PositionCard from './PositionCard';
@@ -18,7 +18,7 @@ import {
   Wrapper,
 } from './styledProjectDetails';
 
-interface Props {
+interface ProjectDetailsProps {
   project: Project;
   opportunites: Opportunity[];
   maxCommitment: number;
@@ -30,7 +30,7 @@ export default function ProjectDetails({
   opportunites,
   maxCommitment,
   minCommitment,
-}: Props) {
+}: ProjectDetailsProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
 
   const IsExpanded = (id: string) => {
@@ -44,7 +44,6 @@ export default function ProjectDetails({
 
     setExpanded(items);
   };
-
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
@@ -68,21 +67,11 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader
-          title={project.title}
-          vision={project.vision}
-          isPlatform={project.isPlatform}
-          published_at={project.published_at}
-          type="Product"
-          maxCommitmentHours={maxCommitment}
-          minCommitmentHours={minCommitment}
-          interests={project.interests}
-          team={project.team}
-        />
+        <ProductHeader title={project.attributes?.title} />
 
         <LongCard
-          description={project.description}
-          details={project.description}
+          description={project.attributes?.title}
+          details={project.attributes?.vision}
         ></LongCard>
       </BoxContainer>
 
@@ -92,11 +81,10 @@ export default function ProjectDetails({
             <Card key={index}>
               <h2>{title}</h2>
               <CardContent>
-                {elements
-                  .slice(0, IsExpanded(title) ? elements.length : 1)
-                  .map((element, elIndex) => (
-                    <p key={elIndex}>{element}</p>
-                  ))}
+                {!elements &&
+                  elements
+                    .slice(0, IsExpanded(title) ? elements.length : 1)
+                    .map((element, elIndex) => <p key={elIndex}>{element}</p>)}
                 <CardButton onClick={() => handleExpand(title)}>
                   {expanded.some((x) => x === title)
                     ? 'Collapse Description'

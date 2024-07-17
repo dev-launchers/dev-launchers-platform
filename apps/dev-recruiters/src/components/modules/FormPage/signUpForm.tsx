@@ -1,5 +1,4 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
@@ -7,6 +6,7 @@ import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
 import {
@@ -19,11 +19,18 @@ interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
 }
 interface Props {
+  projectId: string;
+  projectSlug: string;
   handleCloseModal: () => void;
   position: Opportunity;
 }
 
-export default function SignUpForm({ handleCloseModal, position }: Props) {
+export default function SignUpForm({
+  projectId,
+  projectSlug,
+  handleCloseModal,
+  position,
+}: Props) {
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -40,6 +47,16 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
+    /* Adding new column yearsExperience column */
+    yearsOfExperience: Yup.number()
+      .default(0)
+      .min(0, 'Years of Experience should be greater than 0')
+      .max(100, 'Years of Expereince should be less than 100')
+      .test(
+        'maxDigitsAfterDecimal',
+        'Years of Experience must have 2 digits after decimal or less',
+        (number) => /^\d+(\.\d{1,2})?$/.test(number.toString())
+      ),
     experience: Yup.string().required('Experience Field Entry is Required'),
     accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
   });
@@ -77,12 +94,12 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
           commitment: 0,
           extraInfo: '',
           portfolioLink: null,
+          yearsOfExperience: 0,
           experience: '',
           reason: '',
           zip: 0,
           role: 'title' as string, //  role: position.title as string,
-          id: '5' as string, // id: position.id as string,
-          // project: router.query.slug as string,
+          project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
           skills: [{ skill: '' }],
         }}
         onSubmit={(
@@ -98,12 +115,12 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
               .toString()
               .split(',')
               .map((skill) => ({ skill: skill })),
-            role: 'title' as string, // role: position.title as string,
-            // project:  router.query.project as string,
-            id: '5' as string, // id: position.id as string,
+            role: position.attributes.title as string,
+            project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
           })
             .then((res) => {
-              handleOpenConfirmationModal(); 
+              console.log(res);
+              handleOpenConfirmationModal();
               setSubmitting(false);
             })
             .catch((error) => {
@@ -136,9 +153,11 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
             <Form>
               <atoms.Box flexDirection="column" margin="auto">
                 <atoms.Box flexDirection="column">
-                  <atoms.Layer hasRainbow>
+                  {/* is the atoms.Layer setting correct? */}
+                  <atoms.Layer hasRainbowBottom={true} hasRainbowTop={false}>
                     <atoms.Typography type="h2" textAlign="center">
-                      Volunteer Application for <strong>{'title'}</strong>{' '}
+                      Volunteer Application for{' '}
+                      <strong>{position.attributes.title}</strong>{' '}
                       {/*position.title */}
                     </atoms.Typography>
                   </atoms.Layer>
@@ -209,11 +228,22 @@ export default function SignUpForm({ handleCloseModal, position }: Props) {
                     </atoms.Typography>
                   </atoms.Box>
                   <Field
+                    as={organisms.FormField}
+                    label="How many years of relevant experience do you have"
+                    placeholder="eg, 1"
+                    id="yearsOfExperience"
+                    name="yearsOfExperience"
+                    required
+                    touched={touched['yearsOfExperience']}
+                    error={errors.yearsOfExperience}
+                  />
+
+                  <Field
                     as={organisms.OpenResponse}
                     cols={50}
                     touched={touched['experience']}
                     error={errors.experience}
-                    label="Please briefly describe your experience in development or design"
+                    label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
                     rows={5}

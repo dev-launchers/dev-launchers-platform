@@ -2,18 +2,21 @@
 
 import { useEffect, useState } from 'react';
 import { Opportunity } from '@devlaunchers/models/opportunity';
-import { separateRoles } from './opportunityUtils';
+import separateRoles from './opportunityUtils';
 import { ProjectLite } from '@devlaunchers/models/project';
 
 interface Props {
   projects?: ProjectLite[];
-  projectsLoaded: boolean;
+  projectsLoaded?: boolean;
+  opportunities?: Opportunity[];
 }
 
-export function useOpenPositions(projects: ProjectLite[] | undefined) {
-  const allOpportunities =
-    projects?.flatMap((project) => project.opportunities) || [];
-
+export default function useOpenPositions({
+  projects,
+  projectsLoaded,
+  opportunities,
+}: Props) {
+  const allOpportunities = opportunities?.flatMap((opportun) => opportun) || [];
   const [openPositions, setOpenPositions] = useState<{
     [key: string]: Opportunity[];
   }>({
