@@ -10,9 +10,8 @@ import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
 import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
 
+import { SidebarDataProvider } from './../../../context/SidebarDataContext';
 import Modal from './../../../components/common/Modal';
-
-import { useSidebarState } from '../../../context/SidebarContext';
 
 // State management component
 /**
@@ -25,9 +24,7 @@ import { useSidebarState } from '../../../context/SidebarContext';
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
-  const { editProfileState } = editProfileDataContext();
-  const state = useSidebarState();
-
+  // const { sidebarDispatch } = useSidebarDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = useState([]);
   const [myProjects, setMyProjects] = useState([]);
@@ -147,33 +144,17 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
-  const renderContent = () => {
-    switch (state.activeTab) {
-      case 'overview':
-        return <Overview />;
-      case 'projects':
-        return <UserProjects myProjects={myProjects} />;
-      case 'profiles':
-        return <People people={people} />;
-      case 'ideas':
-        return <RecommendedIdeas ideas={ideas} />;
-      case 'opportunities':
-        return <Opportunities opportunities={opportunities} />;
-      default:
-        return <Overview />;
-    }
-  };
-
   return loading ? (
     <Loader />
   ) : (
     <div className="flex flex-row bg-[#f9f9f9]">
       <div className="w-72">
-        <SideBar />
+        <SidebarDataProvider>
+          <SideBar />
+        </SidebarDataProvider>
       </div>
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
-          {renderContent()}
           <Overview />
           <EditProfileModal />
         </EditProfileDataProvider>

@@ -1,52 +1,116 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import {
-  useSidebarState,
-  useSidebarDispatch,
-} from './../../../../context/SidebarContext';
+import { Typography } from '@devlaunchers/components/components/atoms';
+import { useSidebarDataContext } from './../../../../context/SidebarDataContext';
+import { sidebarActions } from './../../../../state/actions';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import { Avatar, UserInfo, NavItem } from './../SideBarComponents';
+import { Avatar, UserInfo } from './../SideBar/SidebarHeader';
+import {
+  OutlinedOverview,
+  OutlinedProjects,
+  OutlinedProfiles,
+  OutlinedIdeas,
+  OutlinedOpportunities,
+} from './../../../common/Icons';
 
-const Sidebar = () => {
+function SideBar() {
   const { userData } = useUserDataContext();
-  const state = useSidebarState();
-  const dispatch = useSidebarDispatch();
-  const router = useRouter();
-  const { tab } = router.query;
+  const { sidebarState, sidebarDispatch } = useSidebarDataContext();
 
-  useEffect(() => {
-    if (tab) {
-      dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
-    }
-  }, [tab]);
+  if (!sidebarState) {
+    return null;
+  }
 
-  const handleTabClick = (tab) => {
-    dispatch({ type: 'SET_ACTIVE_TAB', payload: tab });
-    router.push(
-      {
-        pathname: router.pathname,
-        query: { tab },
-      },
-      undefined,
-      { shallow: true }
-    );
+  const { pages } = sidebarState;
+
+  const styling = {
+    li: 'flex py-3 pl-6 items-center gap-3 rounded-3xl',
+    text: 'text-white group-hover:text-black',
+    background: 'hover:bg-grayscale-200 hover:cursor-pointer',
+    active: {
+      background: 'bg-grayscale-100 hover:cursor-default',
+      text: 'text-black ',
+    },
   };
 
-  const navItems = [
-    {
-      iconColor: '#000000',
-      hoverIconColor: '#FFFFFF',
-      label: 'Overview',
-      tab: 'overview',
-    },
-    // Uncomment and add more nav items as needed
-    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Projects', tab: 'projects' },
-    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Ideas', tab: 'ideas' },
-    // { iconColor: '#000000', hoverIconColor: '#FFFFFF', label: 'Opportunities', tab: 'opportunities' },
-  ];
+  styling.overview = {
+    li: `group ${styling.li} ${
+      pages.showOverview ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showOverview
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showOverview ? styling.active.text : styling.text}`,
+  };
+
+  styling.projects = {
+    li: `group ${styling.li} ${
+      pages.showProjects ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showProjects
+        ? 'stroke-white'
+        : 'stroke-grayscale-100 group-hover:stroke-grayscale'
+    }`,
+    typography: `${pages.showProjects ? styling.active.text : styling.text}`,
+  };
+
+  styling.profiles = {
+    li: `group ${styling.li} ${
+      pages.showProfiles ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showProfiles
+        ? 'stroke-white'
+        : 'stroke-grayscale-100 group-hover:stroke-grayscale'
+    }`,
+    typography: `${pages.showProfiles ? styling.active.text : styling.text}`,
+  };
+
+  styling.ideas = {
+    li: `group ${styling.li} ${
+      pages.showIdeas ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showIdeas
+        ? 'stroke-white'
+        : 'stroke-grayscale-100 group-hover:stroke-white'
+    }`,
+    typography: `${pages.showIdeas ? styling.active.text : styling.text}`,
+  };
+
+  styling.opportunities = {
+    li: `group ${styling.li} ${
+      pages.showOpportunities ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showOpportunities
+        ? 'stroke-white'
+        : 'stroke-grayscale-100 group-hover:stroke-white'
+    }`,
+    typography: `${
+      pages.showOpportunities ? styling.active.text : styling.text
+    }`,
+  };
+
+  const onOverviewClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_OVERVIEW_SETTING });
+  };
+  const onProjectsClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_PROJECTS_SETTING });
+  };
+  const onProfilesClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_PROFILES_SETTING });
+  };
+  const onIdeasClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_IDEAS_SETTING });
+  };
+  const onOpportunitiesClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_OPPORTUNITIES_SETTING });
+  };
 
   return (
-    <div className="flex flex-col gap-5 pt-6 text-white border-r-2 bg-black border-black h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
+    <div className="flex flex-col gap-7 pt-6 w-72 text-white border-r-2 bg-black border-black h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
       <div className="flex flex-col gap-5 w-full ">
         <div className="flex gap-3 self-start ml-8">
           <Avatar src={userData.profilePictureUrl} alt="Profile avatar" />
@@ -54,20 +118,32 @@ const Sidebar = () => {
         </div>
         <div className="gap-0 mt-5 w-full border border-solid bg-zinc-700 border-zinc-700 min-h-[1px]" />
       </div>
-      <nav className="flex flex-col items-center gap-3 w-full text-base font-light tracking-wider text-white uppercase">
-        {navItems.map(({ iconColor, hoverIconColor, label, tab }) => (
-          <NavItem
-            key={tab}
-            iconColor={iconColor}
-            hoverIconColor={hoverIconColor}
-            label={label}
-            isActive={state.activeTab === tab}
-            onClick={() => handleTabClick(tab)}
-          />
-        ))}
-      </nav>
+      <ul className="flex flex-col gap-6 px-4">
+        <li className={styling.overview.li} onClick={onOverviewClick}>
+          <OutlinedOverview colorClass={styling.overview.iconColor} />
+          <Typography type="p" className={styling.overview.typography}>
+            OVERVIEW
+          </Typography>
+        </li>
+        {/* <li className={styling.projects.li} onClick={onProjectsClick}>
+          <OutlinedProjects colorClass={styling.projects.iconColor} />
+          <Typography type="p" className={styling.projects.typography}>PROJECTS</Typography>
+        </li>
+        <li className={styling.profiles.li} onClick={onProfilesClick}>
+          <OutlinedProfiles colorClass={styling.profiles.iconColor} />
+          <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
+        </li>
+        <li className={styling.ideas.li} onClick={onIdeasClick}>
+          <OutlinedIdeas colorClass={styling.ideas.iconColor} />
+          <Typography type="p" className={styling.ideas.typography}>IDEAS</Typography>
+        </li>
+        <li className={styling.opportunities.li} onClick={onOpportunitiesClick}>
+          <OutlinedOpportunities colorClass={styling.opportunities.iconColor} />
+          <Typography type="p" className={styling.opportunities.typography}>OPPORTUNITIES</Typography>
+        </li> */}
+      </ul>
     </div>
   );
-};
+}
 
-export default Sidebar;
+export default SideBar;
