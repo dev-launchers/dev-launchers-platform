@@ -13,6 +13,7 @@ import {
   UseOnboardingData,
   useOnboardingDataContext,
 } from '../../context/OnboardingDataContext';
+import { SidebarDataProvider } from './../../context/SidebarDataContext';
 
 /**
  * @drescription This component renders the User Profile Component.
@@ -64,7 +65,9 @@ export default function UserProfilePage(props) {
                 }}
               />
             )}
-            <UserProfile isPublic={false} />
+            <SidebarDataProvider>
+              <UserProfile isPublic={false} />
+            </SidebarDataProvider>
           </>
         ) : (
           <SignIn />

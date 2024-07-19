@@ -10,6 +10,7 @@ import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
 import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
 
+import { useSidebarDataContext } from './../../../context/SidebarDataContext';
 import Modal from './../../../components/common/Modal';
 
 // State management component
@@ -23,14 +24,14 @@ import Modal from './../../../components/common/Modal';
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
-
+  const { sidebarState, sidebarDispatch } = useSidebarDataContext();
   const [loading, setLoading] = useState(true);
-  const [opportunities, setOpportunities] = React.useState([]);
-  const [myProjects, setMyProjects] = React.useState([]);
-  const [projects, setProjects] = React.useState([]);
-  const [ideas, setIdeas] = React.useState([]);
-  const [people, setPeople] = React.useState([]);
-  const [interests, setInterests] = React.useState([]);
+  const [opportunities, setOpportunities] = useState([]);
+  const [myProjects, setMyProjects] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [ideas, setIdeas] = useState([]);
+  const [people, setPeople] = useState([]);
+  const [interests, setInterests] = useState([]);
 
   // If user hasn't set a username, redirect them to the signup form
   const router = useRouter();
@@ -143,27 +144,37 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
+  if (!sidebarState) {
+    null;
+  }
+  const { pages } = sidebarState;
+  const showPages = () => {
+    if (pages.showOverview) {
+      return <Overview />;
+    }
+    // else if (pages.showProjects) {
+    //   return <UserProjects myProjects={myProjects} />;
+    // } else if (pages.showProfiles) {
+    //   return <People people={people} />;
+    // } else if (pages.showIdeas) {
+    //   return <RecommendedIdeas ideas={ideas} />;
+    // } else if (pages.showOpportunities) {
+    //   return <Opportunities opportunities={opportunities} />;
+    // }
+    else {
+      return <Overview />;
+    }
+  };
   return loading ? (
     <Loader />
   ) : (
-    <div className="flex flex-row bg-[#f9f9f9] h-screen">
+    <div className="flex flex-row bg-[#f9f9f9]">
       <div className="w-72">
-        <SideBar
-          isPublic={isPublic}
-          profilePictureUrl={
-            isPublic
-              ? publicUserData?.profile?.profilePictureUrl
-              : userData.profilePictureUrl
-          }
-          displayName={
-            isPublic ? publicUserData?.profile?.displayName : userData.name
-          }
-          title={isPublic ? publicUserData?.profile?.bio : userData.bio}
-        />
+        <SideBar />
       </div>
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
-          <Overview />
+          {showPages()}
           <EditProfileModal />
         </EditProfileDataProvider>
       </div>
