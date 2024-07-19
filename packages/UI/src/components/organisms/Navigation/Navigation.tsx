@@ -1,9 +1,11 @@
+import { Bell } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 import { tv } from 'tailwind-variants';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import { Button, Layer, NavLink } from '../../atoms';
+import { Popover, PopoverContent, PopoverTrigger } from '../../Popover';
 import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
@@ -133,7 +135,7 @@ const Navigation = () => {
             })}
           </div>
         </ul>
-        {!isAuthenticated ? (
+        {false ? (
           <div className="hidden lg:flex lg:gap-4">
             <Button
               as="a"
@@ -160,6 +162,18 @@ const Navigation = () => {
           </div>
         ) : (
           <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
+            <Popover>
+              <PopoverTrigger asChild>
+                <button>
+                  <Bell />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent hasCloseBtn={false}>
+                {' '}
+                Click outside of the popover to close
+              </PopoverContent>
+            </Popover>
+
             <img
               width="36"
               height="33"
