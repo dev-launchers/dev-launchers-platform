@@ -49,8 +49,8 @@ function SideBar() {
     }`,
     iconColor: `${
       pages.showProjects
-        ? 'stroke-white'
-        : 'stroke-grayscale-100 group-hover:stroke-grayscale'
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
     }`,
     typography: `${pages.showProjects ? styling.active.text : styling.text}`,
   };
@@ -61,8 +61,8 @@ function SideBar() {
     }`,
     iconColor: `${
       pages.showProfiles
-        ? 'stroke-white'
-        : 'stroke-grayscale-100 group-hover:stroke-grayscale'
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
     }`,
     typography: `${pages.showProfiles ? styling.active.text : styling.text}`,
   };
@@ -73,8 +73,8 @@ function SideBar() {
     }`,
     iconColor: `${
       pages.showIdeas
-        ? 'stroke-white'
-        : 'stroke-grayscale-100 group-hover:stroke-white'
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
     }`,
     typography: `${pages.showIdeas ? styling.active.text : styling.text}`,
   };
@@ -85,8 +85,8 @@ function SideBar() {
     }`,
     iconColor: `${
       pages.showOpportunities
-        ? 'stroke-white'
-        : 'stroke-grayscale-100 group-hover:stroke-white'
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
     }`,
     typography: `${
       pages.showOpportunities ? styling.active.text : styling.text
@@ -110,7 +110,7 @@ function SideBar() {
   };
 
   return (
-    <div className="flex flex-col gap-7 pt-6 w-72 text-white border-r-2 bg-black border-black h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
+    <div className="flex flex-col gap-7 pt-6 w-72 text-white border-r-2 bg-grayscale-900 border-grayscale-900 h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
       <div className="flex flex-col gap-5 w-full ">
         <div className="flex gap-3 self-start ml-8">
           <Avatar src={userData.profilePictureUrl} alt="Profile avatar" />
@@ -125,11 +125,13 @@ function SideBar() {
             OVERVIEW
           </Typography>
         </li>
-        {/* <li className={styling.projects.li} onClick={onProjectsClick}>
+        <li className={styling.projects.li} onClick={onProjectsClick}>
           <OutlinedProjects colorClass={styling.projects.iconColor} />
-          <Typography type="p" className={styling.projects.typography}>PROJECTS</Typography>
+          <Typography type="p" className={styling.projects.typography}>
+            PROJECTS
+          </Typography>
         </li>
-        <li className={styling.profiles.li} onClick={onProfilesClick}>
+        {/*<li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
           <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
         </li>

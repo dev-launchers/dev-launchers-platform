@@ -15,7 +15,7 @@ function OutlinedOverview({ width, height, colorClass, svgClass }) {
         stroke-width="1.66667"
         stroke-linecap="round"
         stroke-linejoin="round"
-        className={colorClass ?? 'stroke-grayscale-400'}
+        className={colorClass ?? 'stroke-grayscale-900'}
       />
     </svg>
   );

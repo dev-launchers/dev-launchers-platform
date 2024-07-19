@@ -10,7 +10,7 @@ import Overview from './Overview';
 import EditProfileModal from './EditProfileModal';
 import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
 
-import { SidebarDataProvider } from './../../../context/SidebarDataContext';
+import { useSidebarDataContext } from './../../../context/SidebarDataContext';
 import Modal from './../../../components/common/Modal';
 
 // State management component
@@ -24,7 +24,7 @@ import Modal from './../../../components/common/Modal';
  */
 export default function UserProfile({ publicUserData, isPublic }) {
   const { userData, isAuthenticated } = useUserDataContext();
-  // const { sidebarDispatch } = useSidebarDataContext();
+  const { sidebarState, sidebarDispatch } = useSidebarDataContext();
   const [loading, setLoading] = useState(true);
   const [opportunities, setOpportunities] = useState([]);
   const [myProjects, setMyProjects] = useState([]);
@@ -144,18 +144,37 @@ export default function UserProfile({ publicUserData, isPublic }) {
     setLoading(userData?.id === -1 || publicUserData?.id === -1);
   }, [publicUserData, userData]);
 
+  if (!sidebarState) {
+    null;
+  }
+  const { pages } = sidebarState;
+  const showPages = () => {
+    if (pages.showOverview) {
+      return <Overview />;
+    }
+    // else if (pages.showProjects) {
+    //   return <UserProjects myProjects={myProjects} />;
+    // } else if (pages.showProfiles) {
+    //   return <People people={people} />;
+    // } else if (pages.showIdeas) {
+    //   return <RecommendedIdeas ideas={ideas} />;
+    // } else if (pages.showOpportunities) {
+    //   return <Opportunities opportunities={opportunities} />;
+    // }
+    else {
+      return <Overview />;
+    }
+  };
   return loading ? (
     <Loader />
   ) : (
     <div className="flex flex-row bg-[#f9f9f9]">
       <div className="w-72">
-        <SidebarDataProvider>
-          <SideBar />
-        </SidebarDataProvider>
+        <SideBar />
       </div>
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
-          <Overview />
+          {showPages()}
           <EditProfileModal />
         </EditProfileDataProvider>
       </div>
