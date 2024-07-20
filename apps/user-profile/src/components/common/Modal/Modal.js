@@ -9,18 +9,20 @@ function Modal({ isOpen, onClose, showHeader, children, zIndexClass }) {
       onClose();
     }
     setOpenModal(false);
-  }
+  };
 
   return openModal ? (
-    <div className={`fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,.75)] transition-opacity ${zIndexClass ?? 'z-50'}`}>
+    <div
+      className={`fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,.75)] transition-opacity ${
+        zIndexClass ?? 'z-50'
+      }`}
+    >
       <div className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg ">
         {showHeader ? <ModalHeader closeModal={closeModal} /> : null}
-        <div>
-          {children}
-        </div>
+        <div className="relative">{children}</div>
       </div>
     </div>
-  ) : null
+  ) : null;
 }
 
-export default Modal
+export default Modal;

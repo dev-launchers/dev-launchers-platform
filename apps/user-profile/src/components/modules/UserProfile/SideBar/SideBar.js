@@ -1,8 +1,10 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
 import { useSidebarDataContext } from './../../../../context/SidebarDataContext';
 import { sidebarActions } from './../../../../state/actions';
+import ProfileImage from '../../../common/ProfileImage';
+
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import { Avatar, UserInfo } from './../SideBar/SidebarHeader';
+import UserInfo from './UserInfo';
 import {
   OutlinedOverview,
   OutlinedProjects,
@@ -14,10 +16,6 @@ import {
 function SideBar() {
   const { userData } = useUserDataContext();
   const { sidebarState, sidebarDispatch } = useSidebarDataContext();
-
-  if (!sidebarState) {
-    return null;
-  }
 
   const { pages } = sidebarState;
 
@@ -110,13 +108,14 @@ function SideBar() {
   };
 
   return (
-    <div className="flex flex-col gap-7 pt-6 w-72 text-white border-r-2 bg-grayscale-900 border-grayscale-900 h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
-      <div className="flex flex-col gap-5 w-full ">
-        <div className="flex gap-3 self-start ml-8">
-          <Avatar src={userData.profilePictureUrl} alt="Profile avatar" />
-          <UserInfo name={userData.name} />
-        </div>
-        <div className="gap-0 mt-5 w-full border border-solid bg-zinc-700 border-zinc-700 min-h-[1px]" />
+    <div className="flex flex-col gap-7 w-72 text-white border-r-2 bg-grayscale-900 border-grayscale-900 shadow-tra h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
+      <div className="flex gap-4 w-full items-center px-8 py-6 border-b border-[#474747]">
+        <ProfileImage
+          imgSrc={userData.profilePictureUrl}
+          alt="Profile avatar"
+          imageClass="w-10 h-10 shadow-md shadow-grayscale-600 rounded-full overflow-hidden"
+        />
+        <UserInfo name={userData.name} />
       </div>
       <ul className="flex flex-col gap-6 px-4">
         <li className={styling.overview.li} onClick={onOverviewClick}>
@@ -125,12 +124,12 @@ function SideBar() {
             OVERVIEW
           </Typography>
         </li>
-        <li className={styling.projects.li} onClick={onProjectsClick}>
+        {/* <li className={styling.projects.li} onClick={onProjectsClick}>
           <OutlinedProjects colorClass={styling.projects.iconColor} />
           <Typography type="p" className={styling.projects.typography}>
             PROJECTS
           </Typography>
-        </li>
+        </li> */}
         {/*<li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
           <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
