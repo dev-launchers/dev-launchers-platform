@@ -13,7 +13,7 @@ function Headers({ title, subtitle, username }) {
           <Typography type="pLarge">{`@${username}`}</Typography>
         </div>
       </div>
-      {subtitle ? <Typography type="pLarge">{subtitle}</Typography> : null}
+      {/* {subtitle ? <Typography type="pLarge">{subtitle}</Typography> : null} */}
     </div>
   ) : (
     <> </>

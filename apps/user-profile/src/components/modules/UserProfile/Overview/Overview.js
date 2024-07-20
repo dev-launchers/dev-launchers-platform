@@ -8,9 +8,6 @@ import Interests from './Interests';
 function Overview() {
   const { userData } = useUserDataContext();
 
-  useEffect(() => {
-    console.log('userData', userData);
-  }, []);
   return (
     <>
       <div className="flex flex-col gap-9">

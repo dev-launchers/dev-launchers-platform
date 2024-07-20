@@ -14,7 +14,6 @@ import { initGA, logPageView } from '../utils/GoogleAnalytics';
 import { UserDataProvider } from '@devlaunchers/components/context/UserDataContext';
 
 import { LazyMotion, domAnimation } from 'framer-motion';
-import { OnboardingDataProvider } from './../context/OnboardingDataContext';
 
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
@@ -49,33 +48,31 @@ function MyApp(props) {
   return (
     <>
       <UserDataProvider>
-        <OnboardingDataProvider>
-          <ThemeProvider theme={theme}>
-            <GlobalStyle />
-            <div>
-              <Head>
-                <script
-                  async
-                  src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-                ></script>
-              </Head>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <div>
+            <Head>
+              <script
+                async
+                src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+              ></script>
+            </Head>
 
-              <div className="App">
-                <ToastContainer
-                  className="toast-container"
-                  toastClassName="toast"
-                  bodyClassName="toast-body"
-                  progressClassName="toast-progress"
-                />
-              </div>
-              {/* <Component {...pageProps} /> */}
-              <LazyMotion features={domAnimation} strict>
-                {props.children}
-              </LazyMotion>
-              {/* {props.children} */}
+            <div className="App">
+              <ToastContainer
+                className="toast-container"
+                toastClassName="toast"
+                bodyClassName="toast-body"
+                progressClassName="toast-progress"
+              />
             </div>
-          </ThemeProvider>
-        </OnboardingDataProvider>
+            {/* <Component {...pageProps} /> */}
+            <LazyMotion features={domAnimation} strict>
+              {props.children}
+            </LazyMotion>
+            {/* {props.children} */}
+          </div>
+        </ThemeProvider>
       </UserDataProvider>
     </>
   );

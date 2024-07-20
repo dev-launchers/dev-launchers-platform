@@ -41,10 +41,10 @@ function MetaInfo({ location, role, membersince, website }) {
 
   const bulletPointElement = <img src={greyBulletPoint} className="w-2"></img>;
 
-  location && metaInfoElementList.push(locationElement);
-  role && metaInfoElementList.push(roleElement);
+  // location && metaInfoElementList.push(locationElement);
+  // role && metaInfoElementList.push(roleElement);
   membersince && metaInfoElementList.push(memberSinceElement);
-  website && metaInfoElementList.push(websiteElement);
+  // website && metaInfoElementList.push(websiteElement);
 
   const metaInfoElementsToShow = metaInfoElementList.flatMap((element, index) =>
     index == 0 ? element : [bulletPointElement, element]
