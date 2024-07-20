@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Toggle from './Toggle';
 
 export default {
-  title: 'Atoms/Toggle',
+  title: 'Deprecated/Atoms/Toggle',
   component: Toggle,
 } as ComponentMeta<typeof Toggle>;
 

@@ -50,7 +50,7 @@ const paginationLinkStyles = tv({
   variants: {
     isActive: {
       true: 'bg-grayscale-900 text-grayscale-50',
-      false: 'bg-grayscale-50 text-GreyScale-grey hover:bg-grayscale-100',
+      false: 'bg-grayscale-50 text-grayscale-500 hover:bg-grayscale-100',
     },
   },
 });

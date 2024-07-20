@@ -14,6 +14,9 @@ import {
 } from './StyledDropdown';
 import type { DropdownProps } from '.';
 
+/**
+ * @deprecated please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from @devlaunchers/components/src/components/DropdownMenu
+ */
 const Dropdown = ({
   width,
   title,
@@ -33,6 +36,8 @@ const Dropdown = ({
 
   const onChange = (e: ChangeEvent, text: string) => {
     const { checked } = e.target as HTMLInputElement;
+    const optionsToReturn: Record<string, boolean> = {};
+    optionsToReturn[text] = checked;
     if (type === 'radio')
       setCheckedOptions((prev) => {
         Object.keys(prev).forEach((key) => (prev[key] = false));
@@ -44,7 +49,7 @@ const Dropdown = ({
         prev[text] = checked;
         return prev;
       });
-    recieveValue?.(checkedOptions);
+    recieveValue?.(optionsToReturn);
   };
   // add typings here
   const [checkedOptions, setCheckedOptions] = useState<{
