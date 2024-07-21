@@ -159,7 +159,7 @@ const Likes = {
 };
 
 const Saves = {
-  post: (body: {}) => requests.post<Save>('/saves/', body),,
+  post: (body: {}) => requests.post<Save>('/saves/', body),
 };
 
 const Profiles = {
