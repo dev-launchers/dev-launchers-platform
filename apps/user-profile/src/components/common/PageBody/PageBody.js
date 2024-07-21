@@ -14,7 +14,7 @@ function PageBody({ children, loading = false, error = null }) {
           <div className="flex flex-col gap-4 items-center justify-center h-screen max-h-[800px] text-grayscale-700">
             <p>
               Failed to load page, experiencing some issues
-              {error?.response?.status ? `(${error?.response?.status})` : ''}
+              {error?.response?.status ? ` (${error?.response?.status})` : ''}
               {' :('}
             </p>
             <p>Please refresh & try again after some time.</p>
