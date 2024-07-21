@@ -5,7 +5,7 @@ function Interests() {
   return (
     <Card title="Interests">
       <Typography className="text-grayscale-500" type="p">
-        {'No interests selected...'}
+        {'Coming Soon...'}
       </Typography>
     </Card>
   );
