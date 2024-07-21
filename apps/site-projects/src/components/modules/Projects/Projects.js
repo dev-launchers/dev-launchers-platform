@@ -52,40 +52,50 @@ const Projects = ({ projects }) => {
       </div>
 
       <div>
-				Come together to contribute, collaborate, and excel! Access a wealth of resources, tools, and support designed to help you succeed in building projects in the Dev Launchers ecosystem. <Link href="/join">Find a place you fit!</Link>
-			</div>
+        Come together to contribute, collaborate, and excel! Access a wealth of
+        resources, tools, and support designed to help you succeed in building
+        projects in the Dev Launchers ecosystem.{' '}
+        <Link href="/join">Find a place you fit!</Link>
+      </div>
       <Layout>
         {items.map((project, i) => {
-          const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
+          //const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + project?.attributes?.heroImage?.data?.attributes?.url : project?.attributes?.heroImage?.data?.attributes?.url;
+          const imageUrl =
+            project?.attributes?.heroImage?.data?.attributes?.url;
           const attributes = project?.attributes;
-          return(
-          <ProjectContainer key={i}>
-            <Card
-              isLinkingInside
-              style={{ margin: 0, width: '100%', height: '100%' }}
-              cardData={{
-                id: attributes.id,
-                title: attributes.title,
-                secondaryText: `Commitment level: ${attributes.commitmentLevel}`,
-                tags: attributes?.interests?.data?.map(({ attributes }) => attributes.interest),
-                description: attributes.catchPhrase,
-                href: attributes.slug,
-                imageSrc: imageUrl,
-                actions: (
-                  <>
-                    <Link href={`${router?.asPath}/${project.attributes.slug}`} passHref>
-                      <a>LEARN MORE</a>
-                    </Link>
-                    <Link href="support-us" passHref>
-                      <a>DONATE</a>
-                    </Link>
-                  </>
-                ),
-              }}
-            />
-          </ProjectContainer>
-          )
-})}
+          return (
+            <ProjectContainer key={i}>
+              <Card
+                isLinkingInside
+                style={{ margin: 0, width: '100%', height: '100%' }}
+                cardData={{
+                  id: attributes.id,
+                  title: attributes.title,
+                  secondaryText: `Commitment level: ${attributes.commitmentLevel}`,
+                  tags: attributes?.interests?.data?.map(
+                    ({ attributes }) => attributes.interest
+                  ),
+                  description: attributes.catchPhrase,
+                  href: attributes.slug,
+                  imageSrc: imageUrl,
+                  actions: (
+                    <>
+                      <Link
+                        href={`${router?.asPath}/${project.attributes.slug}`}
+                        passHref
+                      >
+                        <a>LEARN MORE</a>
+                      </Link>
+                      <Link href="support-us" passHref>
+                        <a>DONATE</a>
+                      </Link>
+                    </>
+                  ),
+                }}
+              />
+            </ProjectContainer>
+          );
+        })}
       </Layout>
     </div>
   );
