@@ -8,12 +8,14 @@ function Headers({ title, subtitle, username }) {
         <Typography type="h2" className="m-0 p-0">
           {title}
         </Typography>
-        <div className="flex flex-row gap-2 text-grayscale-500 items-center">
-          <img src={greyBulletPoint} className="w-2" />
-          <Typography type="pLarge">{`@${username}`}</Typography>
-        </div>
+        {username ? (
+          <div className="flex flex-row gap-2 text-grayscale-500 items-center">
+            <img src={greyBulletPoint} className="w-2" />
+            <Typography type="pLarge">{`@${username}`}</Typography>
+          </div>
+        ) : null}
       </div>
-      {subtitle ? <Typography type="pLarge">{subtitle}</Typography> : null}
+      {/* {subtitle ? <Typography type="pLarge">{subtitle}</Typography> : null} */}
     </div>
   ) : (
     <> </>

@@ -1,151 +1,150 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { Typography } from '@devlaunchers/components/components/atoms';
+import { useSidebarDataContext } from './../../../../context/SidebarDataContext';
+import { sidebarActions } from './../../../../state/actions';
+import ProfileImage from '../../../common/ProfileImage';
 
-const images = require.context(
-  './../../../../images/UserProfile',
-  false,
-  /\.(png|jpe?g|svg)$/
-);
-const getImage = (name) => {
-  const image = images(`./${name}`);
-  console.log(`Image loaded: ${name} -> ${image}`);
-  return image;
-};
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import UserInfo from './UserInfo';
+import {
+  OutlinedOverview,
+  OutlinedProjects,
+  OutlinedProfiles,
+  OutlinedIdeas,
+  OutlinedOpportunities,
+} from './../../../common/Icons';
 
-function Avatar({ src, alt }) {
+function SideBar() {
+  const { userData } = useUserDataContext();
+  const { sidebarState, sidebarDispatch } = useSidebarDataContext();
+
+  const { pages } = sidebarState;
+
+  const styling = {
+    li: 'flex py-3 pl-6 items-center gap-3 rounded-3xl',
+    text: 'text-white group-hover:text-black',
+    background: 'hover:bg-grayscale-200 hover:cursor-pointer',
+    active: {
+      background: 'bg-grayscale-100 hover:cursor-default',
+      text: 'text-black ',
+    },
+  };
+
+  styling.overview = {
+    li: `group ${styling.li} ${
+      pages.showOverview ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showOverview
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showOverview ? styling.active.text : styling.text}`,
+  };
+
+  styling.projects = {
+    li: `group ${styling.li} ${
+      pages.showProjects ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showProjects
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showProjects ? styling.active.text : styling.text}`,
+  };
+
+  styling.profiles = {
+    li: `group ${styling.li} ${
+      pages.showProfiles ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showProfiles
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showProfiles ? styling.active.text : styling.text}`,
+  };
+
+  styling.ideas = {
+    li: `group ${styling.li} ${
+      pages.showIdeas ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showIdeas
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showIdeas ? styling.active.text : styling.text}`,
+  };
+
+  styling.opportunities = {
+    li: `group ${styling.li} ${
+      pages.showOpportunities ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showOpportunities
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${
+      pages.showOpportunities ? styling.active.text : styling.text
+    }`,
+  };
+
+  const onOverviewClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_OVERVIEW_SETTING });
+  };
+  const onProjectsClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_PROJECTS_SETTING });
+  };
+  const onProfilesClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_PROFILES_SETTING });
+  };
+  const onIdeasClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_IDEAS_SETTING });
+  };
+  const onOpportunitiesClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_OPPORTUNITIES_SETTING });
+  };
+
   return (
-    <div className="flex justify-center items-center rounded-full overflow-hidden w-16 h-16">
-      <img
-        loading="lazy"
-        src={src}
-        alt={alt}
-        className="w-full h-full object-cover"
-      />
-    </div>
-  );
-}
-
-function UserInfo({ name, title }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="text-sky-300 text-xl font-normal font-['Oswald'] leading-normal tracking-wide">
-        {name}
-      </div>
-      <div className="text-zinc-100 text-sm font-normal font-['Nunito Sans'] leading-tight">
-        {title}
-      </div>
-    </div>
-  );
-}
-
-export function NavItem({ icon, hoverIcon, label, href, isActive, onClick }) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div className="flex w-full">
-      <a
-        href={href}
-        onClick={onClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        className={`flex items-center w-full py-2 px-6 rounded-full transition-colors duration-200 ${
-          isActive ? 'text-black bg-white' : 'text-white bg-black'
-        } ${isHovered ? 'hover:bg-white hover:text-black' : ''}`}
-      >
-        <img
-          loading="lazy"
-          src={isHovered ? hoverIcon : icon}
-          alt=""
-          className="w-5 h-5 mr-3"
+    <div className="flex flex-col gap-7 w-72 text-white border-r-2 bg-grayscale-900 border-grayscale-900 shadow-tra h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
+      <div className="flex gap-4 w-full items-center px-8 py-6 border-b border-[#474747]">
+        <ProfileImage
+          imgSrc={userData.profilePictureUrl}
+          alt="Profile avatar"
+          imageClass="w-10 h-10 shadow-md shadow-grayscale-600 rounded-full overflow-hidden"
         />
-        <span>{label}</span>
-      </a>
+        <UserInfo name={userData.name} />
+      </div>
+      <ul className="flex flex-col gap-6 px-4">
+        <li className={styling.overview.li} onClick={onOverviewClick}>
+          <OutlinedOverview colorClass={styling.overview.iconColor} />
+          <Typography type="p" className={styling.overview.typography}>
+            OVERVIEW
+          </Typography>
+        </li>
+        {/* <li className={styling.projects.li} onClick={onProjectsClick}>
+          <OutlinedProjects colorClass={styling.projects.iconColor} />
+          <Typography type="p" className={styling.projects.typography}>
+            PROJECTS
+          </Typography>
+        </li> */}
+        {/*<li className={styling.profiles.li} onClick={onProfilesClick}>
+          <OutlinedProfiles colorClass={styling.profiles.iconColor} />
+          <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
+        </li>
+        <li className={styling.ideas.li} onClick={onIdeasClick}>
+          <OutlinedIdeas colorClass={styling.ideas.iconColor} />
+          <Typography type="p" className={styling.ideas.typography}>IDEAS</Typography>
+        </li>
+        <li className={styling.opportunities.li} onClick={onOpportunitiesClick}>
+          <OutlinedOpportunities colorClass={styling.opportunities.iconColor} />
+          <Typography type="p" className={styling.opportunities.typography}>OPPORTUNITIES</Typography>
+        </li> */}
+      </ul>
     </div>
   );
 }
 
-const Sidebar = ({ isPublic, profilePictureUrl, displayName, title }) => {
-  const router = useRouter();
-  const routerPathname = router.pathname;
-
-  const navItems = [
-    {
-      icon: getImage('overview.png'),
-      hoverIcon: getImage('naoverview.png'),
-      label: 'Overview',
-      href: '/UserProjects',
-    },
-    {
-      icon: getImage('projects.png'),
-      hoverIcon: getImage('naprojects.png'),
-      label: 'Projects',
-      href: '/UserProjects',
-    },
-    {
-      icon: getImage('profiles.png'),
-      hoverIcon: getImage('naprofiles.png'),
-      label: 'Profiles',
-      href: '/UserProfiles',
-    },
-    {
-      icon: getImage('ideas.png'),
-      hoverIcon: getImage('naideas.png'),
-      label: 'Ideas',
-      href: '/UserIdeas',
-    },
-    {
-      icon: getImage('opportunities.png'),
-      hoverIcon: getImage('naopportunities.png'),
-      label: 'Opportunities',
-      href: '/UserOpportunities',
-    },
-  ];
-
-  if (isPublic) {
-    return null;
-  }
-
-  return (
-    <div className="flex flex-col gap-5 pt-6 text-white border-r-2 bg-black border-black border-solid shadow-sm bg-zinc-900 max-w-[288px]">
-      <div className="flex flex-col gap-5 w-full">
-        <div className="flex gap-3 self-start ml-8">
-          <Avatar src={profilePictureUrl} alt="Profile avatar" />
-          <UserInfo name={displayName} title="Software Engineer" />
-        </div>
-        <div className="gap-0 mt-5 w-full border border-solid bg-zinc-700 border-zinc-700 min-h-[1px]" />
-      </div>
-      <nav className="flex flex-col items-center gap-3 w-full text-base font-light tracking-wider text-white uppercase">
-        {navItems.map((item, index) => (
-          <NavItem
-            key={index}
-            icon={item.hoverIcon}
-            hoverIcon={item.icon}
-            label={item.label}
-            href={item.href}
-            isActive={routerPathname === item.href}
-            onClick={(e) => {
-              e.preventDefault();
-              router.push(item.href);
-            }}
-          />
-        ))}
-      </nav>
-      <div className="flex flex-col gap-0 items-center justify-center px-7 py-6 mt-auto w-full text-base font-light tracking-wider text-center uppercase border-t border-solid border-zinc-700 text-zinc-100">
-        <a
-          href="/logout"
-          className="flex gap-2.5 px-6 py-3 shadow-sm rounded-full hover:bg-zinc-800"
-        >
-          <img
-            loading="lazy"
-            src="/icons/logout.svg"
-            alt=""
-            className="w-5 h-5"
-          />
-          <div>Log out</div>
-        </a>
-      </div>
-    </div>
-  );
-};
-
-export default Sidebar;
+export default SideBar;

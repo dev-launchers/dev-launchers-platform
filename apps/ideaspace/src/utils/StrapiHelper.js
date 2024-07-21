@@ -1,5 +1,5 @@
 export function cleanData(data) {
-  return { id: data.id, ...data?.attributes };
+  return { id: data?.id, ...data?.attributes };
 }
 
 export function cleanDataList(dataList) {
