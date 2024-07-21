@@ -5,7 +5,7 @@ function Skills() {
   return (
     <Card title="Skills">
       <Typography className="text-grayscale-500" type="p">
-        {'No skills selected...'}
+        {'Coming soon...'}
       </Typography>
     </Card>
   );
