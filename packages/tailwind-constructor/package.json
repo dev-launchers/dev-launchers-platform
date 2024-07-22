@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build-transform-core": "npx token-transformer tokens.json tokens/core.json core",
+    "build-transform-core": "npx token-transformer tokens.json tokens/core.json primitive-colors/opacity-100",
     "build-transform-light": "npx token-transformer tokens.json tokens/light.json core,light,theme core",
     "build-transform-dark": "npx token-transformer tokens.json tokens/dark.json core,dark,theme core",
     "build-transform": "npm run build-transform-core && npm run build-transform-light && npm run build-transform-dark",

@@ -21,7 +21,7 @@ module.exports = withTV({
       current: 'currentColor',
       inherit: 'inherit',
       transparent: 'transparent',
-      ...filterTokensByType('color', tokens),
+      ...filterTokensByType('color', tokens).color,
     },
     data: {
       checked: 'state="checked"', //data-[state=checked]

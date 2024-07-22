@@ -14,7 +14,7 @@ function deepen(obj) {
     }
 
     // Set value at end of path
-    target[parts[0]] = obj[objectPath]
+    target[parts[0]] = obj[objectPath];
   }
 
   return result;
@@ -27,14 +27,29 @@ function createArray({ dictionary, platform }) {
 
 function filterTokensByType(type, tokens) {
   const obj = tokens.reduce((acc, cur) => {
-    if (cur.type === type) {
-      acc[cur.path.join(".")] = `var(--${cur.name}, ${cur.value})`
+    switch (type) {
+      case 'color':
+        acc[
+          cur.path.join('.')
+        ] = `var(--${cur.name} / <alpha-value>, ${cur.value} / <alpha-value>)`;
+        break;
+      case cur.type:
+        acc[cur.path.join('.')] = `var(--${cur.name}, ${cur.value})`;
+        break;
+      default:
+        const availableTypes = Array.from(new Set(tokens.map((t) => t.type)));
+        throw new Error(
+          'Invalid type name: ' +
+            type +
+            '\nValid types are: ' +
+            JSON.stringify(availableTypes, null, 2)
+        );
     }
-    return acc
-  }, {})
+    return acc;
+  }, {});
 
-  const deep = deepen(obj)
-  return deep
+  const deep = deepen(obj);
+  return deep;
 }
 
 module.exports = { createArray, filterTokensByType };
