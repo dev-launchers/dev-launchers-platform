@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     );
     try {
       const result = await agent.Opportunities.list();
-      opportunities = result.filter((o: Opportunity) => {
+      opportunities = result?.filter((o: Opportunity) => {
         return o.attributes.projects.data.length > 0;
       });
     } catch (error) {
