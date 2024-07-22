@@ -31,8 +31,8 @@ function ProfileHeader() {
 
   return (
     <div className="flex flex-col max-h-96 w-full shadow-lg bg-white">
-      <div className="h-full overflow-hidden max-h-36">
-        <img src={profileHeaderBackground}></img>
+      <div className="h-full overflow-hidden max-h-36 w-full">
+        <img className="w-full" src={profileHeaderBackground}></img>
       </div>
       <div className="relative flex flex-row max-h-60 px-8 pt-6 pb-12 ">
         {/* left side */}

@@ -19,27 +19,27 @@ function SubmissionForm() {
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [Dialog, confirmLeave] = useConfirm(
-    ['You have unsaved changes','',''],
+    ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave',
     ['alternative primary', 'CANCEL', 'LEAVE']
-  )
+  );
   const [urrl, setUrrl] = useState('');
 
   const [CreateFailure, confirmFailure] = useConfirm(
-    ['Unable to register your idea.','',''],
+    ['Unable to register your idea.', '', ''],
     'Please try again.',
-    ['primary', 'close'],
+    ['primary', 'close']
   );
 
   const getDBInvolveLevel = (involveString) => {
-    if (involveString.includes("and also believe")) {
-      return "highly";
-    } else if (involveString.includes("to help with workshopping")) {
-      return "medium";
-    }/* else if (involveString.includes("")) {
+    if (involveString.includes('and also believe')) {
+      return 'highly';
+    } else if (involveString.includes('to help with workshopping')) {
+      return 'medium';
+    } /* else if (involveString.includes("")) {
       return "minimum";
     }*/ else {
-      return "none"
+      return 'none';
     }
   };
 
@@ -63,7 +63,6 @@ function SubmissionForm() {
     involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
-
   const submitHandler = async (values) => {
     values['author'] = userData.id;
     values['ideaOwner'] = userData.id;
@@ -76,10 +75,11 @@ function SubmissionForm() {
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
     const involveValueForDataBase = getDBInvolveLevel(
-      values['involveLevel'].trim());
+      values['involveLevel'].trim()
+    );
 
     values['involveLevel'] = involveValueForDataBase;
-      setSending(true);
+    setSending(true);
 
     try {
       const data = cleanData(await agent.Ideas.post(values));
@@ -90,7 +90,6 @@ function SubmissionForm() {
       } else {
         alert('Unable to register your idea.');
       }
-
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
@@ -98,14 +97,13 @@ function SubmissionForm() {
     }
   };
 
-
   const handleDialog = async (url) => {
-    if (await confirmLeave()) {
-      setUrrl(url);
-    }
-  }
+    //if (await confirmLeave()) {
+    setUrrl(url);
+    //}
+  };
 
-  useEffect(() => {
+  /*useEffect(() => {
     // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
@@ -131,15 +129,15 @@ function SubmissionForm() {
         router.push(urrl);
       }
     }
-  }, [unsavedChanges, urrl]);
+  }, [unsavedChanges, urrl]);*/
 
   const backHandler = (url) => {
-    if (unsavedChanges) {
+    /*if (unsavedChanges) {
       handleDialog(url);
     } else {
-      window.history.back(-1);
-    }
-  }
+      */ window.history.back(-1);
+    //}
+  };
 
   return (
     <>
@@ -148,24 +146,24 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton
-          buttonType="confirm"
-          clickHandler={backHandler}
-        />
-        <atoms.Typography type='h4' >
-          Have an idea for a development project?<br />
+        <BackButton buttonType="confirm" clickHandler={backHandler} />
+        <atoms.Typography type="h4">
+          Have an idea for a development project?
+          <br />
           Share your idea with us!
         </atoms.Typography>
       </HeadWapper>
 
       {!isAuthenticated ? (
         <SignInSection
-          label='Please sign in to submit your idea!'
-          redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/submit'}
+          label="Please sign in to submit your idea!"
+          redirectURL={
+            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/submit'
+          }
         />
       ) : (
         <>
-          <Dialog />
+          {/* <Dialog /> */}
           <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
@@ -179,7 +177,6 @@ function SubmissionForm() {
       )}
     </>
   );
-
 }
 
 export default SubmissionForm;
