@@ -11,6 +11,7 @@ export const getProjectsSlugs = async () => {
   const result = await agent.Projects.list(
     new URLSearchParams('populate=*&publicationState=live')
   );
+  console.log('The rsult is', result);
   //const res = await fetch(
   //  `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
   //);
@@ -18,6 +19,7 @@ export const getProjectsSlugs = async () => {
     (p) => p.attributes.opportunities?.data?.length > 0
   );
 
+  console.log('HERE IS ERRROR', result);
   projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
     params: {
