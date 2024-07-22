@@ -39,8 +39,8 @@ module.exports = withTV({
       orientationVertical: 'orientation="vertical"', //data-orientation="vertical"
       orientationHorizontal: 'orientation="horizontal"', //data-orientation="horizontal"
     },
-    fontFamily: filterTokensByType('fontFamilies', tokens),
-    spacing: filterTokensByType('spacing', tokens),
+    // fontFamily: filterTokensByType('fontFamilies', tokens),
+    // spacing: filterTokensByType('spacing', tokens),
   },
   variants: {},
   plugins: [require('tailwind-hamburgers')],
