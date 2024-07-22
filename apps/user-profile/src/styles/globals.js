@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "styled-normalize";
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
@@ -88,6 +88,10 @@ h1 {
   // color:${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
 
   border-bottom: .3rem solid ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
+}
+
+p {
+  white-space: pre-wrap; /* or pre-line */
 }
 
 h2 {

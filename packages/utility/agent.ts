@@ -30,41 +30,26 @@ axios.interceptors.response.use(
     if (process.env.NODE_ENV === 'development') {
       // execute codes for dev environment
     }
-
-    // Parses the Pagination header from the response
-
-    // const pagination = response.headers["pagination"];
-    // if (pagination) {
-    //     HANDLE PAGINATION RESULTS
-    //     return response;
-    // }
-
     return response;
   },
   (error: AxiosError) => {
-    // Handle the exceptions sent from server
     if (error.response) {
       const { data, status } = error.response;
-
       switch (status) {
         case 400:
           // Handle Clients Errors
           break;
-
         case 401:
           // Handle Authentication Errors
           break;
-
         case 403:
           // Handle Authorization Errors
           break;
-
         case 404:
-          // Handle Not Found Errors, Generally navigate to a Not Found page.
+          // Handle Not Found Errors
           break;
-
         case 500:
-          // Handle Server Errors, Generally navigate to a Server Error page.
+          // Handle Server Errors
           break;
 
         default:
@@ -75,10 +60,6 @@ axios.interceptors.response.use(
   }
 );
 
-/**
- * Create a simple data form.
- * TODO: add flattening complex objects.
- */
 function createFormData(item: any) {
   let formData = new FormData();
   for (const key in item) {
@@ -92,8 +73,6 @@ const responseBody = (response: AxiosResponse) =>
 
 const errorBody = (error: AxiosError) => (error ? error : null);
 
-// Axios requests simplified
-// the T Class type is optional but provides a better type safety for return type.
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
     axios.get<T>(url, { params }).then(responseBody).catch(errorBody),
@@ -183,6 +162,12 @@ const Saves = {
   post: (body: {}) => requests.post<Save>('/saves/', body),
 };
 
+const Profiles = {
+  get: (id: string) => requests.get(`/profiles/${id}`),
+  post: (body: {}) => requests.post('/profiles/', body),
+  put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -192,6 +177,8 @@ const agent = {
   Ideas,
   Likes,
   Saves,
+  Profiles,
+  requests,
 };
 
 export default agent;
