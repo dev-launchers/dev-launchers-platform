@@ -90,7 +90,7 @@ function createFormData(item: any) {
 const responseBody = (response: AxiosResponse) =>
   response.data.data ? response.data.data : response.data;
 
-const errorBody = (error: AxiosError) => (error ? error : null);
+const errorBody = (error: AxiosError) => (error ? error.toJSON : null);
 
 // Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.

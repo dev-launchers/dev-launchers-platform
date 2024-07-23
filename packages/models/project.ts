@@ -171,13 +171,15 @@ export interface Image {
 
 export interface Interest {
   id: string;
-  interest: string;
-  users_permissions_users: string[];
-  projects: string[];
-  categories: string[];
-  published_at: string;
-  created_by: string;
-  updated_by: string;
+  attributes: {
+    interest: string;
+    //users_permissions_users: string[];
+    //projects: string[];
+    //categories: string[];
+    publishedAt: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 
 export interface Task {
@@ -201,30 +203,33 @@ export interface Board {
 
 export interface SubProject {
   id: string;
-  slug: string;
-  catchPhrase: string;
-  title: string;
-  heroImage: string;
-  vision: string;
-  description: string;
-  commitmentLevel: string;
-  signupFormUrl: string;
+  attributes: {
+    slug: string;
+    catchPhrase: string;
+    title: string;
+    vision: string;
+    description: string;
+    commitmentLevel: string;
+    signupFormUrl: string;
+    calendarId: string;
+    isListed: boolean;
+    discordWebhookUrl: string;
+    publishedAt: string;
+    createdAt: string;
+    updatedAt: string;
+  };
   team: string;
   user: string;
   Images: string;
   interests: string[];
-  calendarId: string;
   board: string;
-  isListed: boolean;
   subProjects: string[];
   parentProject: string;
   google_meet: string;
   newMeetingTimes: string;
   opportunities: string[];
   isPlatform: boolean;
-  published_at: string;
-  created_by: string;
-  updated_by: string;
+  heroImage: string;
 }
 
 export interface ParentProject {
@@ -286,29 +291,29 @@ export interface Project {
     description: string;
     commitmentLevel: string;
     signupFormUrl: string;
-    //team: Team;
-    //user: User;
+    team: Team;
+    user: User;
     //Images: Image[];
-    //interests: Interest[];
+    interests: Interest[];
     calendarId: string;
     //board: Board;
     isListed: boolean;
     discordWebhookUrl: string;
-    //subProjects: SubProject[];
-    //parentProject: ParentProject;
+    subProjects: SubProject[];
+    parentProject: ParentProject;
     //google_meet: GoogleMeet;
-    //newMeetingTimes: NewMeetingTime[];
+    newMeetingTimes: NewMeetingTime[];
     opportunities: { data: Opportunity[] };
-    /*    openPositions: {
+    openPositions: {
       id: string;
       title: string;
       description: string;
       ishidden: boolean;
-    }; */
+    };
     //isPlatform: boolean;
-    created_at: string;
-    updated_at: string;
-    published_at: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
   };
 }
 
@@ -318,8 +323,10 @@ export interface ProjectLite {
     slug: string;
     catchPhrase: string;
     title: string;
+    vision: string;
     description: string;
     commitmentLevel: string;
+    publishedAt: string;
     opportunities: { data: Opportunity[] };
   };
   // isPlatform: boolean;
