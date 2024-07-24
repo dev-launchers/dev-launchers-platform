@@ -1,37 +1,21 @@
 import React, { useState } from 'react';
-import theme from '@devlaunchers/components/styles/theme';
-import {
-  StatuBox,
-} from './StyledIdeaCard';
+import { StatuBox } from './StyledIdeaCard';
 
-const IdeaCardTag = ({
-    status
-}) => {
-    const [tag, setTag] = useState('');
-    const [tagColor, setTagColor] = useState('');
+const IdeaCardTag = ({ status }) => {
+  let tag = status;
+  if (tag == 'applying') {
+    tag = 'in-review';
+  }
 
-    React.useEffect(() => {
-      if (status == "submitted"){
-        setTag("submitted");
-        setTagColor(theme.colors.LIGHT_BLUE_100);
-      } else if (status == "applying"){
-        setTag("applying");
-        setTagColor(theme.colors.YELLOW_100);
-      } else if (status == "approved"){
-        setTag("approved");
-        setTagColor(theme.colors.SUCCESS_100);
-      } else if (status == "archived"){
-        setTag("archived");
-        setTagColor(theme.colors.BLUE_100);
-      } else {
-        setTag("workshopping");
-        setTagColor(theme.colors.ORANGE_100);
-      }
-    }, [status]);
-  
-    return (
-        <StatuBox style={{ background: tagColor, }}>{tag}</StatuBox>
-    )
+  const tagColor = {
+    submitted: 'bg-LightBlue-lightblue-100',
+    'in-review': 'bg-Yellow-yellow-100',
+    approved: 'bg-Success-success-100',
+    archieved: 'bg-Blue-blue-100',
+    workshopping: 'bg-Orange-orange-100',
+  };
+
+  return <StatuBox className={tagColor[tag]}> {tag} </StatuBox>;
 };
 
 export default IdeaCardTag;
