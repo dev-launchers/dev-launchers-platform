@@ -166,7 +166,7 @@ const Navigation = () => {
             <img
               width="36"
               height="33"
-              src="https://cdn.discordapp.com/avatars/615320334287110164/d03dc77704630b09e6c8b65bdb2d25b0.webp"
+              src={userData.profilePictureUrl}
               alt="Profile avatar"
               style={{ borderRadius: '50%' }}
             />
