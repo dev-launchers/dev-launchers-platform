@@ -1,14 +1,13 @@
-import { Bell } from 'lucide-react';
 import Link from 'next/link';
 import * as React from 'react';
 import { tv } from 'tailwind-variants';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import { Button, Layer, NavLink } from '../../atoms';
-import { Popover, PopoverContent, PopoverTrigger } from '../../Popover';
 import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
+import NotificationPopover from '../../molecules/NotificationPopover';
 
 const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
   return (
@@ -162,22 +161,12 @@ const Navigation = () => {
           </div>
         ) : (
           <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
-            <Popover>
-              <PopoverTrigger asChild>
-                <button>
-                  <Bell />
-                </button>
-              </PopoverTrigger>
-              <PopoverContent hasCloseBtn={false}>
-                {' '}
-                Click outside of the popover to close
-              </PopoverContent>
-            </Popover>
+            <NotificationPopover />
 
             <img
               width="36"
               height="33"
-              src={userData.profilePictureUrl}
+              src="https://cdn.discordapp.com/avatars/615320334287110164/d03dc77704630b09e6c8b65bdb2d25b0.webp"
               alt="Profile avatar"
               style={{ borderRadius: '50%' }}
             />
