@@ -3,6 +3,7 @@ import queryString from 'query-string';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Create from '../components/modules/Create';
+import GlobalStyle from '../styles/globals';
 
 export default function CreateRoute() {
   const router = useRouter();
@@ -14,6 +15,7 @@ export default function CreateRoute() {
       <Head>
         <title>Create</title>
       </Head>
+      <GlobalStyle />
       <div>
         <Create templateId={params.template} />
       </div>
