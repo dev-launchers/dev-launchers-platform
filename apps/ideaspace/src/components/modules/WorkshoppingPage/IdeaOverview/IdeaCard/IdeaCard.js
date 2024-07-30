@@ -28,7 +28,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
         </RightView>
       </TopView>
 
-      <BottomView>
+      {/* <BottomView>
         <Button>
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
@@ -41,7 +41,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
           <ShareOutlinedIcon />
           <StyledText>SHARE</StyledText>
         </Button>
-      </BottomView>
+      </BottomView> */}
     </StyledCard>
   );
 };
