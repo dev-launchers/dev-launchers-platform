@@ -156,7 +156,7 @@ export default function Photo() {
     <>
       {showDropdown ? (
         <div
-          className="w-[636px] h-[719px] bg-neutral-50 flex-col justify-start items-start gap-10 inline-flex"
+          className="w-[636px] h-[719px] bg-gray-50 flex-col justify-start items-start gap-10 inline-flex"
           onDrop={handleDrop}
           onDragOver={handleDragOver}
         >
@@ -172,17 +172,17 @@ export default function Photo() {
               PHOTO UPLOADER
             </div>
             <div
-              className={`pl-[132px] pr-[132.92px] pt-[69px] pb-[81px] rounded-lg border-4 border-spacing-8 border-dashed justify-center items-center inline-flex ${
-                isFileSelected ? 'bg-green-800' : ' bg-gray-200'
+              className={`pl-32 pr-32 pt-16 pb-20 rounded-lg border-4 border-spacing-8 border-dashed justify-center items-center inline-flex ${
+                isFileSelected ? 'bg-gray-800' : 'bg-gray-200'
               }`}
             >
-              <div className="self-stretch justify-start items-end gap-[42px] inline-flex">
-                <div className="flex-col justify-start items-start gap-[37px] inline-flex">
-                  <div className="w-[200.08px] text-zinc-500 text-base font-normal font-['Nunito Sans'] leading-normal">
+              <div className="self-stretch justify-start items-end gap-10 inline-flex">
+                <div className="flex-col justify-start items-start gap-9 inline-flex">
+                  <div className="w-52 text-gray-500 text-base font-normal font-['Nunito Sans'] leading-normal">
                     Drop your files here or select them using the button below
                   </div>
                   <Button
-                    className="w-[155px] h-10 px-4 py-2 bg-white rounded-lg shadow justify-center items-center gap-2.5 inline-flex"
+                    className="w-40 h-10 px-4 py-2 bg-white rounded-lg shadow justify-center items-center gap-2.5 inline-flex"
                     onClick={() =>
                       document.getElementById('file-input').click()
                     }
@@ -199,25 +199,25 @@ export default function Photo() {
                     className="hidden"
                   />
                 </div>
-                <div className="w-[84px] h-[147.03px] relative">
+                <div className="w-20 h-36 relative">
                   <img
                     src={bottomlefttriangle}
                     alt="Bottom Left Triangle"
-                    className="absolute top-2 right-2 w-[19.6px] h-[19.6px] fill-current text-[#474747] stroke-current stroke-1.352"
+                    className="absolute top-2 right-2 w-5 h-5 text-gray-700 stroke-1.352"
                   />
-                  <div className="opacity-20 mix-blend-hard-light w-[84px] h-[109.20px] left-0 top-0 absolute">
+                  <div className="opacity-20 mix-blend-hard-light w-20 h-28 left-0 top-0 absolute">
                     <img
                       src={paper}
                       alt="Paper"
-                      className="w-21 h-28 flex-shrink-0 fill-current text-[#F0EDEE] stroke-current text-[#474747] stroke-1.352"
+                      className="w-21 h-28 flex-shrink-0 text-gray-200 stroke-current text-gray-700 stroke-1.352"
                     />
-                    <div className="w-[84px] h-[32.20px] left-0 top-[43.40px] absolute flex-col justify-center items-center gap-[2.70px] inline-flex">
+                    <div className="w-20 h-8 left-0 top-11 absolute flex-col justify-center items-center gap-1 inline-flex">
                       <img src={rectangle} />
                       <img src={rectangle} />
                       <img src={rectangleSmall} />
                     </div>
                   </div>
-                  <div className="w-[60.55px] h-[60.55px] left-[11.34px] top-[86.48px] absolute">
+                  <div className="w-14 h-14 left-3 top-21 absolute">
                     <img
                       src={uparrow}
                       alt="Up Arrow"
@@ -229,7 +229,7 @@ export default function Photo() {
             </div>
           </div>
           <div
-            className="absolute top-[743px] wl-[250px] w-[777px] flex justify-end items-center gap-6 h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC] px-4"
+            className="absolute top-[743px] w-64 flex justify-end items-center gap-6 h-20 border-t-2 border-gray-200 bg-gray-100 px-4"
             style={{
               left: '567px',
               borderTopLeftRadius: '0px',
@@ -260,10 +260,10 @@ export default function Photo() {
         </div>
       ) : (
         <div className="w-[636px] h-[719px] relative">
-          <div className="absolute left-[150px] top-[180px] flex flex-col justify-start items-center gap-[25px]">
-            <div className="flex justify-start items-start gap-[14.96px]">
+          <div className="absolute left-36 top-44 flex flex-col justify-start items-center gap-6">
+            <div className="flex justify-start items-start gap-4">
               <img
-                className="w-[200px] h-[200.38px] rounded-full"
+                className="w-52 h-52 rounded-full"
                 src={
                   uploadedProfilePicture ||
                   profilePicture ||
@@ -276,7 +276,7 @@ export default function Photo() {
               <div className="flex justify-start items-start gap-4">
                 <button
                   onClick={handleRemove}
-                  className="w-[126px] px-4 py-2 bg-white rounded-lg shadow flex justify-center items-center gap-2"
+                  className="w-32 px-4 py-2 bg-white rounded-lg shadow flex justify-center items-center gap-2"
                   disabled={isLoading}
                 >
                   <img src={trashCan} alt="Trash can" className="w-6 h-6" />
@@ -286,18 +286,18 @@ export default function Photo() {
                 </button>
                 <button
                   onClick={handleChangeClick}
-                  className="w-[123px] px-4 py-2 bg-zinc-100 rounded-lg shadow flex justify-center items-center gap-2"
+                  className="w-32 px-4 py-2 bg-gray-100 rounded-lg shadow flex justify-center items-center gap-2"
                   disabled={isLoading}
                 >
                   <img src={pencil} alt="Pencil" className="w-6 h-6" />
-                  <div className="text-zinc-900 text-base font-normal font-['Nunito Sans'] capitalize leading-normal tracking-wide">
+                  <div className="text-gray-900 text-base font-normal font-['Nunito Sans'] capitalize leading-normal tracking-wide">
                     {isLoading && isChanging ? 'Changing...' : 'Change'}
                   </div>
                 </button>
               </div>
             </div>
           </div>
-          <div className="absolute left-[6px] top-[9px] flex flex-col justify-start items-start gap-6">
+          <div className="absolute left-1.5 top-2.5 flex flex-col justify-start items-start gap-6">
             <div className="flex flex-col justify-start items-start gap-6">
               <div className="text-center text-black text-2xl font-semibold font-['Nunito Sans']">
                 Change your profile picture
