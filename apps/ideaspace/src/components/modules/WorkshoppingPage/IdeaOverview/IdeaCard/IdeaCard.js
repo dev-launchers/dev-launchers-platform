@@ -66,20 +66,21 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
         </RightView>
       </TopView>
 
-      {/* <BottomView>
-        <Button>
+      <BottomView>
+        {/* <Button>
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
-        </Button>
-        <Button onClick={handleUpvoteClick}>
+        </Button> */}
+        <UpvoteButton />
+        {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>
-        </Button>
-        <Button>
+        </Button> */}
+        {/* <Button>
           <ShareOutlinedIcon />
           <StyledText>SHARE</StyledText>
-        </Button>
-      </BottomView> */}
+        </Button> */}
+      </BottomView>
     </StyledCard>
   );
 };
