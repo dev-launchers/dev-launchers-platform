@@ -14,6 +14,7 @@ import {
   Button,
   StyledText,
 } from './StyledIdeaCard';
+import UpvoteButton from '../../../../common/Upvote/UpvoteButton';
 
 export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
   return (
@@ -28,20 +29,21 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
         </RightView>
       </TopView>
 
-      {/* <BottomView>
-        <Button>
+      <BottomView>
+        {/* <Button>
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
-        </Button>
-        <Button>
+        </Button> */}
+        <UpvoteButton />
+        {/* <Button>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>
-        </Button>
-        <Button>
+        </Button> */}
+        {/* <Button>
           <ShareOutlinedIcon />
           <StyledText>SHARE</StyledText>
-        </Button>
-      </BottomView> */}
+        </Button> */}
+      </BottomView>
     </StyledCard>
   );
 };
