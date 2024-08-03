@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../../Popover';
+import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
 import { Bell, Settings } from 'lucide-react';
-import NotificationItem from '../../NotificationItem/NotificationItem';
+import NotificationItem from '../../../NotificationItem/NotificationItem';
 import natificationsData from './notificationsData';
 
 export default function NotificationPopover() {
@@ -22,7 +22,7 @@ export default function NotificationPopover() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="relative">
+        <button className="relative" aria-label="notification">
           <span
             className={`absolute top-0 right-0 bg-red-700 text-white rounded-full aspect-square w-5 text-xs font-bold content-center translate-x-1/2 -translate-y-1/2 ${
               newNotificationsCount ? '' : 'hidden'
@@ -40,15 +40,15 @@ export default function NotificationPopover() {
               notification
             </span>
             <button
-              className="text-[#357196] hover:text-[#81c3d7]"
+              className="text-neptune-600 hover:text-uranus-500"
               onClick={markAllReadHandle}
             >
               Mark all as read
             </button>
           </div>
-          {notifications.map((n, i) => {
-            return (
-              <li>
+          <ul>
+            {notifications.map((n, i) => {
+              return (
                 <NotificationItem
                   key={i}
                   action={n.action}
@@ -61,11 +61,14 @@ export default function NotificationPopover() {
                   targetLink={n.targetLink}
                   timeStamp={n.timeStamp}
                 />
-              </li>
-            );
-          })}
+              );
+            })}
+          </ul>
           <div className="flex items-center justify-between">
-            <a href={'/notifications'} className="text-[#357196]">
+            <a
+              href={'/notifications'}
+              className="text-neptune-600 hover:text-uranus-500"
+            >
               View all notifications
             </a>
             <a

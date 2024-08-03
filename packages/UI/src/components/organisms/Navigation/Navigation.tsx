@@ -7,7 +7,7 @@ import { Button, Layer, NavLink } from '../../atoms';
 import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
-import NotificationPopover from '../../molecules/NotificationPopover';
+import NotificationPopover from './NotificationPopover';
 
 const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
   return (
