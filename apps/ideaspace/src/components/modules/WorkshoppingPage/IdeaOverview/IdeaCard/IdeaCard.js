@@ -14,8 +14,12 @@ import {
   Button,
   StyledText,
 } from './StyledIdeaCard';
+import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
+import { useState, useEffect } from 'react';
 
 export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
+  const [upvoted, setUpvoted] = useState(false);
+
   // a function to keep track of the number of upvotes and when the user clicks the upvote button for this idea
   function handleUpvoteClick(event) {
     if (liked) {
@@ -71,7 +75,11 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
         </Button> */}
-        <UpvoteButton />
+        <UpvoteButton
+          onClick={() => setUpvoted((prev) => !prev)}
+          selected={upvoted}
+          text={upvoted ? ' | 1' : ''}
+        />
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>

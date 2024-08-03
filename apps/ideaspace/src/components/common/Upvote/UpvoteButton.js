@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-const UpvoteButton = () => {
+const UpvoteButton = ({ text, selected, disabled }) => {
   const [hovered, setHovered] = useState(false);
 
-  const icon = false ? (
+  const icon = selected ? (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
@@ -69,6 +69,7 @@ const UpvoteButton = () => {
     >
       {icon}
       Upvote
+      {text}
     </div>
   );
 };
