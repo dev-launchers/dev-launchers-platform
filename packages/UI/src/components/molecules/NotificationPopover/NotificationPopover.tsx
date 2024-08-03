@@ -48,18 +48,20 @@ export default function NotificationPopover() {
           </div>
           {notifications.map((n, i) => {
             return (
-              <NotificationItem
-                key={i}
-                action={n.action}
-                avatar={n.avatar}
-                message={n.message}
-                name={n.name}
-                profileLink={n.profileLink}
-                status={n.status}
-                target={n.target}
-                targetLink={n.targetLink}
-                timeStamp={n.timeStamp}
-              />
+              <li>
+                <NotificationItem
+                  key={i}
+                  action={n.action}
+                  avatar={n.avatar}
+                  message={n.message}
+                  name={n.name}
+                  profileLink={n.profileLink}
+                  status={n.status}
+                  target={n.target}
+                  targetLink={n.targetLink}
+                  timeStamp={n.timeStamp}
+                />
+              </li>
             );
           })}
           <div className="flex items-center justify-between">
