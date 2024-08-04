@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UpvoteButton = ({ text, selected, disabled }) => {
+const UpvoteButton = ({ text, selected, disabled, onclick }) => {
   const [hovered, setHovered] = useState(false);
 
   const icon = selected ? (
@@ -43,6 +43,7 @@ const UpvoteButton = ({ text, selected, disabled }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onclick}
       style={{
         cursor: 'pointer',
 

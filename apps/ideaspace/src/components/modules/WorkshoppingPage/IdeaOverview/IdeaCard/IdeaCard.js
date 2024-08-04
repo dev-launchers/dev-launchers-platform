@@ -16,13 +16,31 @@ import {
 } from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
 import { useState, useEffect } from 'react';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
+import { agent } from '@devlaunchers/utility';
+import { cleanDataList } from '../../../../../utils/StrapiHelper';
 
-export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
+export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [state, setState] = useState(false);
+  const { userData, isAuthenticated } = useUserDataContext();
+  useEffect(() => {
+    loadDataOnlyOnce(); // query database
+  }, []);
+
+  const loadDataOnlyOnce = async () => {
+    // use get likes from agent
+    console.log(userData);
+    const params = '?populate=deep&filters[objectId][$eq]=' + ideaId;
+    console.log('params:', params);
+    const data = cleanDataList(
+      await agent.Likes.get(new URLSearchParams(params))
+    );
+    console.log(data);
+  };
 
   // a function to keep track of the number of upvotes and when the user clicks the upvote button for this idea
-  function handleUpvoteClick(event) {
+  async function handleUpvoteClick(event) {
     if (upvoted) {
       // if there's a like object corresponding to this user and idea, delete it
 
@@ -33,13 +51,14 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
     } else {
       // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the idea ID, and the "IdeaCard" object type
       var likeData = {
-        objectId: this.id,
+        objectId: ideaId.toString(),
         objectType: 'IdeaCard',
         users_permission_user: userData.userId,
       };
 
       try {
-        const res = agent.Likes.post(likeData);
+        const res = await agent.Likes.post(likeData);
+        console.log('res:', res);
       } catch (error) {
         console.error(error);
       }

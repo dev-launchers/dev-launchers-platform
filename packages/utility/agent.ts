@@ -1,6 +1,14 @@
-import { NewApplicant, Opportunity, Project, User as UserType, Idea, Like, Save } from "@devlaunchers/models";
-import { Comment } from "@devlaunchers/models/comment";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import {
+  NewApplicant,
+  Opportunity,
+  Project,
+  User as UserType,
+  Idea,
+  Like,
+  Save,
+} from '@devlaunchers/models';
+import { Comment } from '@devlaunchers/models/comment';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -17,11 +25,11 @@ axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 //     }
 //     return config;
 // });
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
 axios.interceptors.response.use(
   async (response) => {
-    if (process.env.NODE_ENV === "development") {
+    if (process.env.NODE_ENV === 'development') {
       // execute codes for dev environment
     }
 
@@ -78,7 +86,8 @@ function createFormData(item: any) {
   return formData;
 }
 
-const responseBody = (response: AxiosResponse) => response.data.data ? response.data.data : response.data;
+const responseBody = (response: AxiosResponse) =>
+  response.data.data ? response.data.data : response.data;
 
 // Axios requests simplified
 // the T Class type is optional but provides a better type safety for return type.
@@ -95,62 +104,68 @@ const requests = {
   postForm: (url: string, data: FormData) =>
     axios
       .post(url, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(responseBody),
   putForm: (url: string, data: FormData) =>
     axios
       .put(url, data, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: { 'Content-Type': 'multipart/form-data' },
       })
-      .then(responseBody)
+      .then(responseBody),
 };
 
 const Applicant = {
-  get: () => requests.get<NewApplicant[]>("applicants"),
-  post: (data: NewApplicant) => requests.post<NewApplicant>("applicants", data)
+  get: () => requests.get<NewApplicant[]>('applicants'),
+  post: (data: NewApplicant) => requests.post<NewApplicant>('applicants', data),
 };
 
 const Projects = {
   list: (params?: URLSearchParams) =>
-    requests.get<Project[]>("/projects", params ? params : {populate: '*'}),
-  get: (slug: string, params?: URLSearchParams) => requests.get<Project>(`projects/${slug}`, params ? params : {populate: '*'})
+    requests.get<Project[]>('/projects', params ? params : { populate: '*' }),
+  get: (slug: string, params?: URLSearchParams) =>
+    requests.get<Project>(
+      `projects/${slug}`,
+      params ? params : { populate: '*' }
+    ),
 };
 
 const Opportunities = {
   list: (params?: URLSearchParams) =>
-    requests.get<Opportunity[]>("/opportunities", params ? params : {populate: '*'}),
-  get: (slug: string, params?: URLSearchParams) => requests.get(`opportunities/${slug}`, params ? params : {populate: '*'})
+    requests.get<Opportunity[]>(
+      '/opportunities',
+      params ? params : { populate: '*' }
+    ),
+  get: (slug: string, params?: URLSearchParams) =>
+    requests.get(`opportunities/${slug}`, params ? params : { populate: '*' }),
 };
 
 const Ideas = {
-  get: (params?: URLSearchParams) => 
-    requests.get<Idea[]>("idea-cards", params),
-  getIdea: (id: string, params?: URLSearchParams) => 
+  get: (params?: URLSearchParams) => requests.get<Idea[]>('idea-cards', params),
+  getIdea: (id: string, params?: URLSearchParams) =>
     requests.get<Idea>(`/idea-cards/${id}`, params),
-  post: (body: {}) =>
-    requests.post<Idea>('/idea-cards/', body),
-  put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body)
+  post: (body: {}) => requests.post<Idea>('/idea-cards/', body),
+  put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body),
 };
 
 const User = {
-  get: () => requests.get<UserType>("users")
+  get: () => requests.get<UserType>('users'),
 };
 
 const Comments = {
   put: (id: string, body: {}) => requests.put<Comment>(id, body),
-  post: (body: Comment) => requests.post<Comment>("comments", body)
+  post: (body: Comment) => requests.post<Comment>('comments', body),
 };
 
 const Likes = {
-  get: (params?: URLSearchParams) => 
-    requests.get<Like[]>('/likes/', params),
+  get: (params?: URLSearchParams) => requests.get<Like[]>('/likes/', params),
   put: (id: string, body: {}) => requests.put<Like>(id, body),
-  post: (body: {}) => requests.post<Like>('/likes/', body)
+  post: (body: {}) => requests.post<Like>('/likes/', body),
+  delete: (id: number) => requests.delete<Like>(id.toString()),
 };
 
 const Saves = {
-  post: (body: {}) => requests.post<Save>('/saves/', body)
+  post: (body: {}) => requests.post<Save>('/saves/', body),
 };
 
 const agent = {
@@ -161,7 +176,7 @@ const agent = {
   Comments,
   Ideas,
   Likes,
-  Saves
+  Saves,
 };
 
 export default agent;
