@@ -52,7 +52,9 @@ const UpvoteButton = ({ text, selected, disabled }) => {
         alignItems: 'center',
         gap: 'var(--25, 10px)',
 
-        color: 'var(--grayscale-700, #303030)',
+        color: selected
+          ? 'var(--brand-alt-nebula-600, #69349D)'
+          : 'var(--grayscale-700, #303030)',
         textAlign: 'center',
 
         /* button */

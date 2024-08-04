@@ -78,7 +78,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
         <UpvoteButton
           onClick={() => setUpvoted((prev) => !prev)}
           selected={upvoted}
-          text={upvoted ? ' | 1' : ''}
+          text={upvoted ? 'd | 1' : ''}
         />
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
