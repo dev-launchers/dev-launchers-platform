@@ -19,16 +19,17 @@ import { useState, useEffect } from 'react';
 
 export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
+  const [state, setState] = useState(false);
 
   // a function to keep track of the number of upvotes and when the user clicks the upvote button for this idea
   function handleUpvoteClick(event) {
-    if (liked) {
+    if (upvoted) {
       // if there's a like object corresponding to this user and idea, delete it
 
       // Refresh the page so that the new number of upvotes is displayed
       setState(true);
 
-      setLiked(false);
+      setUpvoted(false);
     } else {
       // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the idea ID, and the "IdeaCard" object type
       var likeData = {
@@ -54,7 +55,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
       // Refresh the page so that the new number of upvotes is displayed
       setState(true);
 
-      setLiked(true);
+      setUpvoted(true);
     }
   }
 
@@ -76,7 +77,7 @@ export const IdeaCard = ({ ideaImage, ideaName, ideaTagLine }) => {
           <StyledText>FOLLOW</StyledText>
         </Button> */}
         <UpvoteButton
-          onClick={() => setUpvoted((prev) => !prev)}
+          onclick={handleUpvoteClick}
           selected={upvoted}
           text={upvoted ? 'd | 1' : ''}
         />
