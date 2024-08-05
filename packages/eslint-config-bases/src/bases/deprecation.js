@@ -20,8 +20,11 @@ module.exports = {
     {
       files: deprecationPatterns.files,
       excludedFiles: deprecationPatterns.excludedFiles,
-      extends: ['plugin:deprecation/recommended'],
-      rules: {},
+      parser: '@typescript-eslint/parser',
+      plugins: ['@delagen/deprecation'],
+      rules: {
+        '@delagen/deprecation/deprecation': 'warn',
+      },
     },
   ],
 };
