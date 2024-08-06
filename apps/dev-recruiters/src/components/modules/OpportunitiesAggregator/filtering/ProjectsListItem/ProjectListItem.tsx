@@ -16,7 +16,7 @@ import {
   DetailsButton,
   PositionLevel,
 } from './StyleProjectListItem';
-import ReactGA from "@devlaunchers/components/utils/GoogleAnalytics";
+//import ReactGA from '@devlaunchers/components/utils/GoogleAnalytics';
 
 interface Props {
   project: ProjectLite;
@@ -27,10 +27,12 @@ export default function ProjectListItem({ project }: Props) {
   const [liked, setLiked] = useState(false);
   return (
     <ItemContainer>
-      <Section bgColor='NEUTRAL_2' color='NEUTRAL_1'>
+      <Section bgColor="NEUTRAL_2" color="NEUTRAL_1">
         <InfoSection>
           <h2>{project.title}</h2>
-          <span style={{fontSize:"1rem"}}>Product - {project.isPlatform ? 'Platform' : 'Independent'}</span>
+          <span style={{ fontSize: '1rem' }}>
+            Product - {project.isPlatform ? 'Platform' : 'Independent'}
+          </span>
           <p>{project.catchPhrase}</p>
         </InfoSection>
       </Section>
@@ -48,13 +50,15 @@ export default function ProjectListItem({ project }: Props) {
                         <PositionLevel>{opportunity.level}</PositionLevel>
                       </li>
                     ))
-                  : project.opportunities.data.slice(0, 3).map((opportunity) => (
-                      <li key={opportunity.id}>
-                        <PositionTitle>{opportunity.title}</PositionTitle>
-                        <span> - </span>
-                        <PositionLevel>{opportunity.level}</PositionLevel>
-                      </li>
-                    ))}
+                  : project.opportunities.data
+                      .slice(0, 3)
+                      .map((opportunity) => (
+                        <li key={opportunity.id}>
+                          <PositionTitle>{opportunity.title}</PositionTitle>
+                          <span> - </span>
+                          <PositionLevel>{opportunity.level}</PositionLevel>
+                        </li>
+                      ))}
               </ul>
             </PositionsContainer>
 
@@ -70,18 +74,22 @@ export default function ProjectListItem({ project }: Props) {
                 {expanded ? 'Collapse Positions' : 'More Available Positions'}
               </PositionsButton>
             )}
+            {/* 
             <Link href={`join/${project.slug}`} passHref>
-              <DetailsButton onClick={() => {
-                ReactGA.event({
-                  category: 'Join Page Actions',
-                  action: 'Button Clicked [A]',
-                  testCategory: 'A',
-                  label: project.slug+` [A]`
-                });
-              }}>
+              <DetailsButton
+                onClick={() => {
+                  ReactGA.event({
+                    category: 'Join Page Actions',
+                    action: 'Button Clicked [A]',
+                    testCategory: 'A',
+                    label: project.slug + ` [A]`,
+                  });
+                }}
+              >
                 Project Details
               </DetailsButton>
             </Link>
+            */}
           </ButtonsContainer>
         </DetailsSection>
       </Section>
