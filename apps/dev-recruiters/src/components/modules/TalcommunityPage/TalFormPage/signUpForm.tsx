@@ -20,10 +20,9 @@ import { Wrapper } from '../StyledTalcommunityPage';
 // }
 interface Props {
   handleCloseModal: () => void;
-  position: Opportunity;
 }
 
-export default function TalCommForm({ handleCloseModal, position }: Props) {
+export default function TalCommForm({ handleCloseModal }: Props) {
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -134,6 +133,7 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       id="skills"
                       name="skills"
                       error={errors.skills}
+                      touched={touched.skills}
                       // onChange={handleChange}
                     />
                     <Field
@@ -144,6 +144,7 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       id="roles"
                       name="roles"
                       error={errors.roles}
+                      touched={touched.roles}
                       // onChange={handleChange}
                     />
 
@@ -156,13 +157,6 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       disabled={false}
                       onChange={handleSetCheckCheckbox}
                       required
-                    />
-                    <Checkbox
-                      label="I have read and agreed to the terms and conditions"
-                      disabled={false}
-                      onChange={handleSetCheckCheckbox}
-                      required
-                      // className="bg-transparent"
                     />
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
