@@ -60,10 +60,10 @@ body {
 a {
   width: auto;
   display: inline;
-  color: ${({ theme }) => theme.colors.ACCENT_3};
+  color: ${({ theme }) => theme.colors.BLUE};
   text-decoration: none;
   &:hover {
-    color: ${({ theme }) => theme.colors.ACCENT_4};
+    color: ${({ theme }) => theme.colors.BLUE_100};
   }
 }
 h1,

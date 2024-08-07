@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SubNavLink from '../../atoms/SubNavLink';
 import Typography from '../../atoms/Typography';
@@ -83,12 +83,12 @@ const NavDropdown = ({
               );
             }
             return (
-              <>
+              <React.Fragment key={i}>
                 <Link href={href}>
                   <SubNavLink {...rest} href={href} text={text} key={i} />
                 </Link>
                 {hasUnderline && <hr style={{ width: '100%' }} />}
-              </>
+              </React.Fragment>
             );
           })}
         </Options>

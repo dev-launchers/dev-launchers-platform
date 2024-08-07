@@ -1,7 +1,8 @@
 export { default } from './Typography';
 export { typographyStyles } from './Styled.Typography';
 import type CSS from 'csstype';
-export interface TypographyProps {
+import type { ComponentProps } from 'react';
+export interface TypographyProps extends ComponentProps<'p'> {
   type?:
     | 'h1'
     | 'h2'
