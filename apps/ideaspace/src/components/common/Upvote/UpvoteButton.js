@@ -68,10 +68,10 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
         textTransform: 'capitalize',
 
         background: hovered ? 'var(--brand-alt-nebula-50, #F1EBF7)' : '',
+        borderRadius: '8px',
       }}
     >
       {icon}
-      Upvote
       {text}
     </div>
   );

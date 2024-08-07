@@ -43,6 +43,30 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   async function handleUpvoteClick(event) {
     if (upvoted) {
       // if there's a like object corresponding to this user and idea, delete it
+      const params =
+        '?populate=deep&filters[objectId][$eq]=' +
+        ideaId +
+        '&filters[userId][$eq]=' +
+        userData.id;
+      console.log(params);
+      const data = cleanDataList(
+        await agent.Likes.get(new URLSearchParams(params))
+      );
+      console.log(data);
+      try {
+        const res = await agent.Likes.delete();
+        console.log('res:', res);
+      } catch (error) {
+        console.error(error);
+      }
+
+      event.preventDefault();
+
+      try {
+        props.setHandleTextChange('');
+      } catch (error) {
+        console.error(error);
+      }
 
       // Refresh the page so that the new number of upvotes is displayed
       setState(true);
@@ -98,7 +122,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         <UpvoteButton
           onclick={handleUpvoteClick}
           selected={upvoted}
-          text={upvoted ? 'd | 1' : ''}
+          text={upvoted ? 'Upvoted | 1' : 'Upvote | 0'}
         />
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
