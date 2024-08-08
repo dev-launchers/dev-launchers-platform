@@ -10,6 +10,10 @@ export default function DragAndDrop() {
   const [uploadFiles, setUploadFiles] = useState<any>([]);
   const [file, setFile] = useState<string>();
 
+  const maxSizeInMB = 25;
+  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+  const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
+
   const [dragActive, setDragActive] = useState<boolean>(false);
   let uploadedids = '';
   console.log(selectFiles);
@@ -22,17 +26,25 @@ export default function DragAndDrop() {
       for (let i = 0; i < selectFiles.length; ++i) {
         console.log(`i is ${i}`);
         portfolioUploadformData.append('files', selectFiles[i]);
+        // Check file size
+
+        if (selectFiles[i].size > maxSizeInBytes) {
+          alert('File size must be less than 25MB');
+          return;
+        }
+
+        // Check file type
+        if (!allowedExtensions.exec(selectFiles[i].name)) {
+          alert(
+            'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
+          );
+          return;
+        }
 
         const postResult = await axios
           .post('http://localhost:1337/api/upload', portfolioUploadformData)
           .then((responseBody) => {
             console.log(responseBody.data[i]['id']);
-            /* console.log(uploadedids);
-            uploadedids === '' || null || undefined
-              ? responseBody.data[i]['id']
-              : uploadedids + ',' + responseBody.data[i]['id'];
-            console.log(uploadedids);
-            */
             setUploadFiles((prevState: any) => [
               ...prevState,
               responseBody.data[i],
@@ -44,8 +56,6 @@ export default function DragAndDrop() {
   console.log(uploadFiles);
   console.log(uploadFiles.length);
   if (uploadFiles.length === 1) uploadedids = uploadFiles[0]['id'];
-  //console.log(uploadFiles[0]['id']);
-  //uploadFiles[0]['id'];
   else if (uploadFiles.length > 1) {
     uploadedids = uploadFiles.reduce(
       (acc, currentValue) => acc + ',' + currentValue['id'],
@@ -85,28 +95,12 @@ export default function DragAndDrop() {
     setDragActive(false);
     console.log('drop handler start');
     console.log(e.dataTransfer.items);
-    /*if (e.dataTransfer.items) {
-      [...e.dataTransfer.items].forEach((item, i) => {
-        if (item.kind === 'file') {
-          const file = item.getAsFile();
-          if (file) {
-            let blobUrl = URL.createObjectURL(file);
-            setFile(blobUrl);
-          }
-          console.log(`items file[${i}].name = ${file?.name}`);
-        }
-      });
-    } else */
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       for (let i = 0; i < e.dataTransfer.files.length; ++i)
         setSelectFiles((prevState: any) => [
           ...prevState,
           e.dataTransfer.files[i],
         ]);
-      /*
-      [...e.dataTransfer.files].forEach((file, i) => {
-        console.log(`… file[${i}].name = ${file.name}`);
-      });*/
     }
     console.log('drop handler End');
   }
@@ -136,19 +130,26 @@ export default function DragAndDrop() {
         id="drop_zone"
         className={`
            border: 5px solid blue;
-  width: 200px;
-  height: 100px;
-  `}
+            width: 200px;
+           height: 100px;
+                  `}
         onDragEnter={(e) => dragEnter(e)}
         onDrop={(e) => dropHandler(e)}
         onDragOver={(e) => dragOverHandler(e)}
         onDragLeave={(e) => dragLeaver(e)}
       >
         <p>
-          Drag and Drop files to this<i> drop zone</i> or{' '}
-          <span> Select Files</span> to Upload
+          Please include your portfolio/resume: Max file size 25MB, Only .doc,
+          .pdf, .png and .jpg allowed
         </p>
       </div>
+      <input
+        /*{style={{ color: rgba(0, 0, 0, 0) }} }*/
+        id="fileSelect"
+        type="file"
+        onChange={handleFileSelectChange}
+        accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
+      />
       <atoms.Box maxWidth="50%">
         <atoms.Button
           buttonSize="standard"
@@ -159,37 +160,6 @@ export default function DragAndDrop() {
           Upload
         </atoms.Button>
       </atoms.Box>
-      <input
-        style={{ color: rgba(0, 0, 0, 0) }}
-        id="fileSelect"
-        type="file"
-        multiple
-        onChange={handleFileSelectChange}
-        accept=".pdf, .doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document, image/*"
-      />
-
-      <>
-        {selectFiles.length > 0 &&
-          selectFiles.map((fil, idx) => (
-            <atoms.Box
-              justifyContent="space-between"
-              paddingBlock="0.1rem"
-              gap="10px"
-              flexDirection="row"
-              margin="auto"
-            >
-              <atoms.Typography> {fil.name} </atoms.Typography>
-              <atoms.Link
-                href="javascript.removeFile(fil.name,idx)"
-                text="remove"
-              ></atoms.Link>
-            </atoms.Box>
-          ))}
-      </>
-      <>
-        {uploadFiles.length > 0 &&
-          uploadFiles?.map((upfil, indx) => <span> {upfil['name']} </span>)}
-      </>
     </>
   );
 }
