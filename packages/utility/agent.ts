@@ -161,7 +161,7 @@ const Likes = {
   get: (params?: URLSearchParams) => requests.get<Like[]>('/likes/', params),
   put: (id: string, body: {}) => requests.put<Like>(id, body),
   post: (body: {}) => requests.post<Like>('/likes/', body),
-  delete: (id: number) => requests.delete<Like>(id.toString()),
+  delete: (body: {}) => requests.delete<Like>('/likes/', body),
 };
 
 const Saves = {

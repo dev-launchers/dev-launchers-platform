@@ -22,6 +22,7 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 
 export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
+  const [count, setCount] = useState(0); // number of likes on this idea
   const [state, setState] = useState(false);
   const { userData, isAuthenticated } = useUserDataContext();
   useEffect(() => {
@@ -31,12 +32,19 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const loadDataOnlyOnce = async () => {
     // use get likes from agent
     console.log(userData);
-    const params = '?populate=deep&filters[objectId][$eq]=' + ideaId;
+    const params = '?populate=deep&filters[objectId][$eq]=' + ideaId.toString();
     console.log('params:', params);
     const data = cleanDataList(
       await agent.Likes.get(new URLSearchParams(params))
     );
     console.log(data);
+    setCount(data.length);
+    // check if user has already liked idea
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].users_permissions_user.id == userData.id) {
+        setUpvoted(true);
+      }
+    }
   };
 
   // a function to keep track of the number of upvotes and when the user clicks the upvote button for this idea
@@ -45,17 +53,19 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       // if there's a like object corresponding to this user and idea, delete it
       const params =
         '?populate=deep&filters[objectId][$eq]=' +
-        ideaId +
-        '&filters[userId][$eq]=' +
-        userData.id;
+        ideaId.toString() +
+        '&filters[users_permissions_user][id][$eq]=' +
+        userData.id.toString();
       console.log(params);
       const data = cleanDataList(
         await agent.Likes.get(new URLSearchParams(params))
       );
       console.log(data);
       try {
-        const res = await agent.Likes.delete();
+        const res = await agent.Likes.delete({ id: data[0].id });
         console.log('res:', res);
+        // subtract 1 like
+        setCount(count - 1);
       } catch (error) {
         console.error(error);
       }
@@ -77,12 +87,15 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       var likeData = {
         objectId: ideaId.toString(),
         objectType: 'IdeaCard',
-        users_permission_user: userData.userId,
+        users_permissions_user: userData.id.toString(),
       };
+      console.log(likeData);
 
       try {
         const res = await agent.Likes.post(likeData);
         console.log('res:', res);
+        // add 1 like
+        setCount(count + 1);
       } catch (error) {
         console.error(error);
       }
@@ -122,7 +135,11 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         <UpvoteButton
           onclick={handleUpvoteClick}
           selected={upvoted}
-          text={upvoted ? 'Upvoted | 1' : 'Upvote | 0'}
+          text={
+            upvoted
+              ? 'Upvoted | ' + count.toString()
+              : 'Upvote | ' + count.toString()
+          }
         />
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
