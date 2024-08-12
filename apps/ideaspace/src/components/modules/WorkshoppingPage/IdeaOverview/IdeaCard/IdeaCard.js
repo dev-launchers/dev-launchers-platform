@@ -100,6 +100,19 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
     }
   }
 
+  const upvoteButton =
+    serData?.id > 0 ? (
+      <UpvoteButton
+        onclick={handleUpvoteClick}
+        selected={upvoted}
+        text={
+          upvoted
+            ? 'Upvoted | ' + count.toString()
+            : 'Upvote | ' + count.toString()
+        }
+      />
+    ) : null;
+
   return (
     <StyledCard>
       <TopView>
@@ -118,17 +131,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <StyledText>FOLLOW</StyledText>
         </Button> */}
 
-        {userData?.id > 0 ?? (
-          <UpvoteButton
-            onclick={handleUpvoteClick}
-            selected={upvoted}
-            text={
-              upvoted
-                ? 'Upvoted | ' + count.toString()
-                : 'Upvote | ' + count.toString()
-            }
-          />
-        )}
+        {upvoteButton}
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>
