@@ -101,7 +101,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   }
 
   const upvoteButton =
-    serData?.id > 0 ? (
+    userData?.id > 0 ? (
       <UpvoteButton
         onclick={handleUpvoteClick}
         selected={upvoted}
