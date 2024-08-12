@@ -118,7 +118,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <StyledText>FOLLOW</StyledText>
         </Button> */}
 
-        {isAuthenticated ?? (
+        {userData?.id > 0 ?? (
           <UpvoteButton
             onclick={handleUpvoteClick}
             selected={upvoted}
