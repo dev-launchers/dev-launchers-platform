@@ -78,10 +78,6 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.js": "eslint '*/**/*.{js,jsx}' --fix",
-    "*.{js,css,md}": "prettier --write"
-  },
   "resolutions": {
     "styled-components": "^5"
   },

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: block;
@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HeadingContainer = styled.div`
+  font-family: Abel, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
