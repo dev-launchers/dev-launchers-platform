@@ -128,17 +128,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
         </Button> */}
-        {isAuthenticated ?? (
-          <UpvoteButton
-            onclick={handleUpvoteClick}
-            selected={upvoted}
-            text={
-              upvoted
-                ? 'Upvoted | ' + count.toString()
-                : 'Upvote | ' + count.toString()
-            }
-          />
-        )}
+        {upvoteButton}
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>
