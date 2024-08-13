@@ -30,9 +30,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
 
   const loadDataOnlyOnce = async () => {
     // use get likes from agent
-    console.log(userData);
     const params = '?populate=deep&filters[objectId][$eq]=' + ideaId.toString();
-    console.log('params:', params);
     const data = cleanDataList(
       await agent.Likes.get(new URLSearchParams(params))
     );
@@ -99,6 +97,19 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       setUpvoted(true);
     }
   }
+
+  const upvoteButton =
+    userData?.id > 0 ? (
+      <UpvoteButton
+        onclick={handleUpvoteClick}
+        selected={upvoted}
+        text={
+          upvoted
+            ? 'Upvoted | ' + count.toString()
+            : 'Upvote | ' + count.toString()
+        }
+      />
+    ) : null;
 
   return (
     <StyledCard>
