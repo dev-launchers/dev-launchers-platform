@@ -58,6 +58,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       console.log(data);
       try {
         await agent.Likes.delete(data[0].id);
+        setUpvoted(false);
         setCount(count - 1);
       } catch (error) {
         //console.log('failed to delete vote', error);
@@ -70,8 +71,6 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       } catch (error) {
         console.error(error);
       }
-
-      setUpvoted(false);
     } else {
       var likeData = {
         objectId: ideaId.toString(),
@@ -81,6 +80,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
 
       try {
         await agent.Likes.post(likeData);
+        setUpvoted(true);
         setCount(count + 1);
       } catch (error) {
         console.error(error);
@@ -93,8 +93,6 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       } catch (error) {
         console.error(error);
       }
-
-      setUpvoted(true);
     }
   }
 
