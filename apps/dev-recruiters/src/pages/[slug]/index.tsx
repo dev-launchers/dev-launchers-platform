@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     commitments === undefined ? 0 : Math.min(...commitments);
   //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
-  opportunities = opportunities.map((opportunity) => opportunity.attributes);
+  opportunities = opportunities?.map((opportunity) => opportunity.attributes);
   return project !== undefined
     ? {
         props: {
