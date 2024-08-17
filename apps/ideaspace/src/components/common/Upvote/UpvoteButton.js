@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const UpvoteButton = ({ text, selected, disabled, onclick }) => {
   const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
 
   const icon = selected ? (
     <svg
@@ -39,11 +40,20 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
     </svg>
   );
 
+  // // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
+  // function clickFunc() {
+  //   setFocused(true);
+  //   onclick();
+  // }
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      // onClick={() => { setFocused(true); onclick(); }}
       onClick={onclick}
+      onMouseUp={setFocused(false)}
+      onTouchEnd={setFocused(false)}
       style={{
         cursor: 'pointer',
 
@@ -53,7 +63,9 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
         alignItems: 'center',
         gap: 'var(--25, 10px)',
 
-        color: selected
+        color: disabled
+          ? 'var(--grayscale-400, #979797)'
+          : selected
           ? 'var(--brand-alt-nebula-600, #69349D)'
           : 'var(--grayscale-700, #303030)',
         textAlign: 'center',
@@ -67,7 +79,11 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
         letterSpacing: '0.64px',
         textTransform: 'capitalize',
 
-        background: hovered ? 'var(--brand-alt-nebula-50, #F1EBF7)' : '',
+        background: focused
+          ? '#EBE6F1'
+          : hovered
+          ? 'var(--brand-alt-nebula-50, #F1EBF7)'
+          : '',
         borderRadius: '8px',
       }}
     >
