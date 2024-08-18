@@ -108,12 +108,17 @@ export const ErrorMsg = styled.div`
 `;
 
 export const SubmitButton = styled.button.attrs({ type: 'submit' })`
-  background-color: ${({ theme }) => theme?.colors?.White};
-  border-radius: 30px;
-  padding: 0.5rem;
-  width: 15%;
   color: ${({ theme }) => theme?.colors?.Black};
   cursor: pointer;
+  display: flex;
+  padding: var(--2, 8px) var(--6, 24px);
+  align-items: center;
+  width: 15%;
+  justify-content: right;
+  gap: var(--25, 10px);
+  border-radius: var(--2, 8px);
+  border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);
+  background: var(--brand-alt-nebula-600, #69349d);
   @media (max-width: 768px) {
     width: 100%;
   }
