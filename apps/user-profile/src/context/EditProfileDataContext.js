@@ -11,6 +11,7 @@ export const EditProfileData = () => {
   return { editProfileState, editProfileDispatch };
 };
 
-const [EditProfileDataProvider, editProfileDataContext] = constate(EditProfileData);
+const [EditProfileDataProvider, editProfileDataContext] =
+  constate(EditProfileData);
 
 export { EditProfileDataProvider, editProfileDataContext };

@@ -24,6 +24,7 @@ export const IdeaOverview = ({ selectedCard }) => {
       <LeftWrapper>
         <TopView>
           <IdeaCard
+            ideaId={selectedCard.id}
             ideaName={selectedCard.ideaName}
             ideaTagLine={selectedCard.tagline}
           />

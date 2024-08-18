@@ -10964,6 +10964,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:22.2.0":
+  version: 22.2.0
+  resolution: "@types/node@npm:22.2.0"
+  dependencies:
+    undici-types: ~6.13.0
+  checksum: 63724799337bfb57719a1992690e738341d824e1744a2ac52c5278a008fbfadf99765519c19858feb80418cc7da0d5c8bdf7ea4d82973869b3882bd602c48ade
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:^12.7.1":
   version: 12.20.55
   resolution: "@types/node@npm:12.20.55"
@@ -39398,6 +39407,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"undici-types@npm:~6.13.0":
+  version: 6.13.0
+  resolution: "undici-types@npm:6.13.0"
+  checksum: 9d0ef6bf58994bebbea6a4ab75f381c69a89a7ed151bfbae0d4ef95450d56502c9eccb323abf17b7d099c1d9c1cbae62e909e4dfeb8d204612d2f1fdada24707
+  languageName: node
+  linkType: hard
+
 "undici@npm:^5.22.1":
   version: 5.23.0
   resolution: "undici@npm:5.23.0"
@@ -41865,6 +41881,7 @@ __metadata:
     "@commitlint/config-conventional": 17.0.3
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@playwright/test": 1.24.2
+    "@types/node": 22.2.0
     "@types/prettier": 2.6.4
     "@types/shell-quote": 1.7.1
     commitizen: 4.2.5

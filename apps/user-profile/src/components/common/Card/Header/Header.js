@@ -7,7 +7,9 @@ function Header({ title, onEdit }) {
       <Typography type="h3" className="m-0 p-0">
         {title}
       </Typography>
-      {onEdit != null && typeof onEdit == 'function' ? <EditButton onEdit={onEdit} /> : null}
+      {onEdit != null && typeof onEdit == 'function' ? (
+        <EditButton onEdit={onEdit} />
+      ) : null}
     </div>
   ) : (
     <></>
