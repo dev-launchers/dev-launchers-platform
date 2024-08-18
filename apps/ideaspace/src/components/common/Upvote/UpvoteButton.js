@@ -50,10 +50,9 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      // onClick={() => { setFocused(true); onclick(); }}
       onClick={onclick}
-      onMouseUp={setFocused(false)}
-      onTouchEnd={setFocused(false)}
+      onMouseUp={() => setFocused(false)}
+      onMouseDown={() => setFocused(true)}
       style={{
         cursor: 'pointer',
 
