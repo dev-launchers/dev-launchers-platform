@@ -65,7 +65,7 @@ export default function Footer() {
           <a className="pr-1" href="mailto:contact@devlaunchers.com">
             contact@devlaunchers.com
           </a>
-          -
+          - | -
           <Link href="/page/terms-and-conditions" passHref>
             <a href="/page/terms-and-conditions">Terms of Service </a>
           </Link>
