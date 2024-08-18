@@ -37,7 +37,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
     setCount(data.length);
     // check if user has already liked idea
     for (let i = 0; i < data.length; i++) {
-      if (data[i].users_permissions_user.data.id == userData.id) {
+      if (data[i].users_permissions_user.data?.id == userData.id) {
         setUpvoted(true);
       }
     }
