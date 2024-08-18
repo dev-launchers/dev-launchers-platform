@@ -13,7 +13,7 @@ import {
   CloseButton,
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
-import { GradientLine } from './styledSignupForm';
+import { GradientLine, SubmitButton } from './styledSignupForm';
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -135,7 +135,7 @@ export default function SignUpForm({
         }}
         validationSchema={SignupSchema}
       >
-        {({ errors, setFieldValue, touched, values }) => (
+        {(formik) => (
           <atoms.Box paddingInline="0.5rem" justifyContent="center">
             <CloseButton onClick={handleCloseModal}>
               <CloseIcon
@@ -152,7 +152,7 @@ export default function SignUpForm({
                 />
               </CloseIcon>
             </CloseButton>
-            <Form>
+            <form onSubmit={formik.handleSubmit}>
               <atoms.Box flexDirection="column" margin="auto">
                 <atoms.Box flexDirection="column">
                   {/* is the atoms.Layer setting correct? */}
@@ -179,8 +179,8 @@ export default function SignUpForm({
                     name="name"
                     required
                     // onChange={handleChange}
-                    touched={touched['name']}
-                    error={errors.name}
+                    touched={formik.touched['name']}
+                    error={formik.errors.name}
                   />
                   <Field
                     as={organisms.FormField}
@@ -189,8 +189,8 @@ export default function SignUpForm({
                     id="email"
                     name="email"
                     required
-                    touched={touched['email']}
-                    error={errors.email}
+                    touched={formik.touched['email']}
+                    error={formik.errors.email}
                   />
                   <atoms.Box gap="32px" flexDirection="column">
                     <Field
@@ -220,13 +220,15 @@ export default function SignUpForm({
                       min={5}
                       max={40}
                       initialValue={5}
-                      onChange={(value) => setFieldValue('commitment', +value)}
+                      onChange={(value) =>
+                        formik.setFieldValue('commitment', +value)
+                      }
                       withLabels
                       suffix=" hrs"
                       maxWidth="430px"
                     />
                     <atoms.Typography type="pSmall" css={{ color: 'red' }}>
-                      {errors.commitment}
+                      {formik.errors.commitment}
                     </atoms.Typography>
                   </atoms.Box>
                   <Field
@@ -236,15 +238,15 @@ export default function SignUpForm({
                     id="yearsOfExperience"
                     name="yearsOfExperience"
                     required
-                    touched={touched['yearsOfExperience']}
-                    error={errors.yearsOfExperience}
+                    touched={formik.touched['yearsOfExperience']}
+                    error={formik.errors.yearsOfExperience}
                   />
 
                   <Field
                     as={organisms.OpenResponse}
                     cols={50}
-                    touched={touched['experience']}
-                    error={errors.experience}
+                    touched={formik.touched['experience']}
+                    error={formik.errors.experience}
                     label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
@@ -280,8 +282,11 @@ export default function SignUpForm({
                     id="portfolioLink"
                     name="portfolioLink"
                     // onChange={handleChange}
-                    touched={touched.portfolioLink && !!values['portfolioLink']}
-                    error={errors.portfolioLink}
+                    touched={
+                      formik.touched.portfolioLink &&
+                      !!formik.values['portfolioLink']
+                    }
+                    error={formik.errors.portfolioLink}
                   />
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
@@ -293,6 +298,13 @@ export default function SignUpForm({
                     onChange={handleSetCheckCheckbox}
                     required
                   />
+                  <SubmitButton
+                    as="a"
+                    type="submit"
+                    onClick={formik.handleSubmit}
+                  >
+                    Styled Submit
+                  </SubmitButton>
                   <atoms.Box maxWidth="50%">
                     <atoms.Button
                       buttonSize="standard"
@@ -310,7 +322,7 @@ export default function SignUpForm({
                 handleOpenModal={handleOpenConfirmationModal}
                 handleCloseModal={handleCloseModal}
               />
-            </Form>
+            </form>
           </atoms.Box>
         )}
       </Formik>
