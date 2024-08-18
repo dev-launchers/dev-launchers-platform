@@ -83,6 +83,11 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
           : hovered
           ? 'var(--brand-alt-nebula-50, #F1EBF7)'
           : '',
+        border: disabled
+          ? 'var(--button-border-width, 4px) solid var(--border-btn-interactive-gray, #979797)'
+          : focused
+          ? 'var(--button-border-width, 4px) solid var(--border-btn-interactive-gray, #B9B9B9)'
+          : 'var(--button-border-width, 4px) solid transparent',
         borderRadius: '8px',
       }}
     >
