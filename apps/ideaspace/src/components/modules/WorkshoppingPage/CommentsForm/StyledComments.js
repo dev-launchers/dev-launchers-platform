@@ -340,3 +340,21 @@ export const WorkshopIncomplete = styled.div`
   top: 2px;
   margin-bottom: -40px;
 `;
+
+export const IdeaOwnerTag = styled.div`
+  display: inline-flex;
+  padding: 2px 8px;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 16px;
+  background: var(--Orange-orange-200, #FFBF86);
+
+  color: var(--Orange-orange-600, #B3590A);
+
+  /* laptop-desktop/p-d-d */
+  font-family: "Nunito Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+`;

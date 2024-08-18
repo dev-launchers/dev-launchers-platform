@@ -63,6 +63,7 @@
     "@commitlint/config-conventional": "17.0.3",
     "@devlaunchers/eslint-config-bases": "workspace:^",
     "@playwright/test": "1.24.2",
+    "@types/node": "22.2.0",
     "@types/prettier": "2.6.4",
     "@types/shell-quote": "1.7.1",
     "commitizen": "4.2.5",
