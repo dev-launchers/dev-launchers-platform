@@ -42,10 +42,10 @@ function SearchRole({
     }
   }, [selectedRoleLabel, commitmentRange]);
 
-  function handleSuggestedRole(RoleCategory) {
-    if (RoleCategory !== '') {
+  function handleSuggestedRole(roleCategory) {
+    if (roleCategory !== '') {
       const suggestedRoleList = opportunities.filter(
-        (role) => role?.attributes?.roleCategory === RoleCategory
+        (role) => role?.attributes?.roleCategory === roleCategory
       );
       setSuggestedRole(suggestedRoleList);
     }
