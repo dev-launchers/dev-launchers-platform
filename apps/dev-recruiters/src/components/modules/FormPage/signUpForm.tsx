@@ -61,10 +61,12 @@ export default function SignUpForm({
     accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [checkCheckbox, setCheckCheckbox] = useState();
+  const [checkCheckbox, setCheckCheckbox] = useState<undefined | boolean>(
+    undefined
+  );
 
   const handleSetCheckCheckbox = () => {
-    setCheckCheckbox(checkCheckbox!);
+    setCheckCheckbox(!checkCheckbox);
   };
 
   const handleOpenConfirmationModal = () => {
