@@ -108,13 +108,28 @@ export const ErrorMsg = styled.div`
 `;
 
 export const SubmitButton = styled.button.attrs({ type: 'submit' })`
-  color: ${({ theme }) => theme?.colors?.Black};
+  color: var(--grayscale-50, #fff);
+  text-align: center;
+
+  /* to sort/Universal/button */
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+  text-transform: capitalize;
+
   cursor: pointer;
   display: flex;
   padding: var(--2, 8px) var(--6, 24px);
   align-items: center;
   width: 15%;
-  justify-content: right;
+
+  margin-top: 10px;
+  margin-left: auto;
+
+  justify-content: center;
   gap: var(--25, 10px);
   border-radius: var(--2, 8px);
   border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);

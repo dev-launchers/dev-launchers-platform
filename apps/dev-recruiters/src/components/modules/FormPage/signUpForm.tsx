@@ -303,7 +303,7 @@ export default function SignUpForm({
                     type="submit"
                     onClick={formik.handleSubmit}
                   >
-                    Styled Submit
+                    Submit
                   </SubmitButton>
                   <atoms.Box maxWidth="50%">
                     <atoms.Button
