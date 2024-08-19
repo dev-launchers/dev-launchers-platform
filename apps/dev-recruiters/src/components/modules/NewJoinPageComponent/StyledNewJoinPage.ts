@@ -1,7 +1,27 @@
 import styled from 'styled-components';
+import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 
 export const Wrapper = styled.div`
   background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+`;
+
+export const Wrapjoin = styled.div`
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 100%
+    ),
+    url(${JoinPRight});
+  display: flex;
+  height: 360px;
+  min-height: 240px;
+  padding: var(--0, 0px) var(--48, 192px);
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--10, 40px);
+  align-self: stretch;
 `;
 
 export const HeadingContainer = styled.div`
