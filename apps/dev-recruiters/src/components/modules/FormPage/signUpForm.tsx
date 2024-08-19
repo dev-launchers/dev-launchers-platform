@@ -3,8 +3,8 @@ import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScrol
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import { useState } from 'react';
+import { Field, Formik, FormikHelpers } from 'formik';
+import { MouseEventHandler, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
@@ -301,9 +301,11 @@ export default function SignUpForm({
                   <SubmitButton
                     as="a"
                     type="submit"
-                    onClick={formik.handleSubmit}
+                    onClick={
+                      formik.handleSubmit as unknown as MouseEventHandler<HTMLAnchorElement>
+                    }
                   >
-                    Submit
+                    Submit Application
                   </SubmitButton>
                   <atoms.Box maxWidth="50%">
                     <atoms.Button
