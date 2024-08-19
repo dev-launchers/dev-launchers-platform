@@ -124,7 +124,7 @@ export const SubmitButton = styled.button.attrs({ type: 'submit' })`
   display: flex;
   padding: var(--2, 8px) var(--6, 24px);
   align-items: center;
-  width: 15%;
+  width: 45%;
 
   margin-top: 10px;
   margin-left: auto;
