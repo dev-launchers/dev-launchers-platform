@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
 import { ProjectType } from '../projectEnums';
 import ProjectsList from '../ProjectsList';
@@ -54,38 +54,6 @@ export default function FilteringComponent({
     resetFilters,
   } = useProjects();
 
-  // State variable to keep track of the render count
-  const [renderCount, setRenderCount] = useState(0);
-
-  // State variable to store an initial value, retrieved from localStorage or defaulting to 10
-  const [initialValue, setInitialValue] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedValue = localStorage.getItem('sliderValue');
-      if (savedValue) {
-        return parseInt(savedValue, 10); // Parse saved value as an integer
-      } else {
-        return 10; // Default value if no value is found in localStorage
-      }
-    }
-  });
-
-  // useEffect hook triggered whenever renderCount changes
-  useEffect(() => {
-    // Call handleCommitmentChange with updated max value
-    handleCommitmentChange({ min: 3, max: initialValue });
-
-    // Return early if renderCount is 1 to stop tracking after two renderings
-    if (renderCount === 1) {
-      return;
-    }
-  }, [renderCount]); // Dependency array for the useEffect hook
-
-  // useEffect hook executed only once at the beginning
-  useEffect(() => {
-    // Set renderCount to 1
-    setRenderCount(1);
-  }, []); // Empty dependency array to run the effect only once
-
   useEffect(() => {
     if (projects && !projectsLoaded) {
       fetchProjects(projects);
@@ -125,21 +93,19 @@ export default function FilteringComponent({
             <Section>
               <SectionTitle>Filters</SectionTitle>
               <DropDownContainer>
-                {/*
-                  <div id="projectType">
+                <div id='projectType'>
                   <CheckboxDropdown
-                    title="Platform or Independent"
+                    title='Platform or Independent'
                     keyProperty={'name'}
                     items={EnumToArray(ProjectType)}
                     onChange={handlePlatformChange}
                     selectedItems={projectParams.projectType}
                   />
                 </div>
-                  */}
                 {opportunitiesLoaded && (
-                  <div id="positions">
+                  <div id='positions'>
                     <CheckboxDropdown
-                      title="Positions"
+                      title='Positions'
                       keyProperty={'title'}
                       items={opportunities}
                       onChange={handleOpportunityChange}
@@ -147,9 +113,9 @@ export default function FilteringComponent({
                     />
                   </div>
                 )}
-                <div id="level">
+                <div id='level'>
                   <CheckboxDropdown
-                    title="Level"
+                    title='Level'
                     keyProperty={'name'}
                     items={EnumToArray(SkillLevel)}
                     onChange={handleLevelChange}
@@ -175,29 +141,29 @@ export default function FilteringComponent({
 
           <CommitmentSection>
             <SectionTitle Mobile={true}>Time Commitment</SectionTitle>
-            <div id="sliderContainer">
+            <div id='sliderContainer'>
               <Slider
                 min={3}
                 max={10}
                 onChange={(value) =>
                   handleCommitmentChange({ min: 1, max: value })
                 }
-                prefix="hrs"
-                initialValue={initialValue}
+                prefix='hrs'
+                initialValue={10}
               />
             </div>
           </CommitmentSection>
           <FilterMenuButton onClick={() => setVisible(true)}>
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
               strokeWidth={2}
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                d='M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4'
               />
             </svg>
             Filters
@@ -219,7 +185,7 @@ export default function FilteringComponent({
                 key={`position${index + 1}`}
               >
                 <p>{item}</p>
-                <button type="button">x</button>
+                <button type='button'>x</button>
               </ChipsListItem>
             ))}
           {projectParams.projectType &&
@@ -229,20 +195,20 @@ export default function FilteringComponent({
                 key={`platform${index + 1}`}
               >
                 <p>{item}</p>
-                <button type="button">
+                <button type='button'>
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns='http://www.w3.org/2000/svg'
                     height={7}
                     width={7}
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
                     strokeWidth={2}
                   >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      d='M6 18L18 6M6 6l12 12'
                     />
                   </svg>
                 </button>
@@ -255,7 +221,7 @@ export default function FilteringComponent({
                 key={`level${index + 1}`}
               >
                 <p>{item}</p>
-                <button type="button">x</button>
+                <button type='button'>x</button>
               </ChipsListItem>
             ))}
         </ChipsList>

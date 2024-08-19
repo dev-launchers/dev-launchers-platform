@@ -1,19 +1,51 @@
-import Head from 'next/head';
-import ProductHeader from '../components/modules/DetailedPage/ProductHeader';
-import React from 'react';
-import SignUpForm from '../components/modules/TalcommunityPage/TalFormPage/signUpForm';
-import BoxContainer from '../components/common/BoxContainer';
-import TalcommunityPage from '../components/modules/TalcommunityPage';
-import TalFormPage from '../components/modules/TalcommunityPage/TalFormPage';
-import { HeaderTalPage } from '../components/modules/TalcommunityPage/HeaderTalPage';
-
+import Head from "next/head";
+import ProductHeader from "../components/modules/DetailedPage/ProductHeader";
+import SignUpForm from "../components/modules/FormPage/signUpForm";
+import BoxContainer from "../components/common/BoxContainer";
 const SecondPage = () => (
   <>
-    <BoxContainer>
-      {/* <TalcommunityPage></TalcommunityPage> */}
-      <HeaderTalPage></HeaderTalPage>
+    <Head>
+      <title>Second page</title>
+      <meta name="title" content="Dev Discovery"></meta>
+      <meta
+        name="description"
+        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+      ></meta>
+
+      <meta property="og:type" content="website"></meta>
+      <meta
+        property="og:url"
+        content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
+      ></meta>
+      <meta
+        property="og:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
+      <meta property="og:title" content="Dev Discovery"></meta>
+      <meta
+        property="og:description"
+        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+      ></meta>
+
+      <meta property="twitter:card" content="summary_large_image"></meta>
+      <meta
+        property="twitter:url"
+        content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
+      ></meta>
+      <meta property="twitter:title" content="Dev Discovery"></meta>
+      <meta
+        property="twitter:description"
+        content="Create, discover, and join open-source software projects! We help members to contribute meaningfully and gain industry-ready experience along the way. Build epic products, tools, and games used by real people while learning valuable skills and meeting awesome people!"
+      ></meta>
+      <meta
+        property="twitter:image"
+        content="/images/DevlaunchersGitHubThumb.png"
+      ></meta>
+      <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
+    </Head>
+    <h1>hello from page second</h1>
+    <BoxContainer bgColor="OuterSpace">
       <SignUpForm />
-      {/* <TalFormPage></TalFormPage> */}
     </BoxContainer>
   </>
 );

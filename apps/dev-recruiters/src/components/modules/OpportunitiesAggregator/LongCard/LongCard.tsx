@@ -23,7 +23,7 @@ export default function LongCard({ description, details }: Props) {
     <>
       <Container>
         <HeaderCard>
-          <h2 style={{ padding: '1rem', margin: '0' }}>Description</h2>
+          <h2 style={{padding: "1rem", margin: "0"}}>Description</h2>
         </HeaderCard>
         <FooterCard>
           {isExpanded ? (
@@ -38,7 +38,7 @@ export default function LongCard({ description, details }: Props) {
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >
-              {!details && details?.slice(0, details?.length / 2)}
+              {details.slice(0, details.length / 2)}
             </ReactMarkdown>
           )}
         </FooterCard>

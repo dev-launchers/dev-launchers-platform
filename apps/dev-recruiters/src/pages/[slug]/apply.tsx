@@ -1,10 +1,9 @@
-import Head from 'next/head';
-import SignUpForm from '../../components/modules/FormPage/signUpForm';
-import BoxContainer from '../../components/common/BoxContainer';
-import TitledHeader from '../../components/common/TitledHeader';
+import Head from "next/head";
+import SignUpForm from "../../components/modules/FormPage/signUpForm";
+import BoxContainer from "../../components/common/BoxContainer";
+import TitledHeader from "../../components/common/TitledHeader";
 
-function appldy() {
-  console.log('appsdev-recruiterssrcpages[slug]apply.tsx');
+function apply() {
   return (
     <>
       <Head>
@@ -16,10 +15,7 @@ function appldy() {
         />
 
         <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
-        />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"} />
         <meta
           property="og:image"
           content="/images/DevlaunchersGitHubThumb.png"
@@ -33,7 +29,7 @@ function appldy() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content={process.env.NEXT_PUBLIC_FRONT_END_URL + '/projects'}
+          content={process.env.NEXT_PUBLIC_FRONT_END_URL + "/projects"}
         />
         <meta property="twitter:title" content="Dev Discovery" />
         <meta
@@ -46,12 +42,10 @@ function appldy() {
         />
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <>
-        <TitledHeader title="Apply with Dev Launchers!" backButtonUrl="/" />
-        {/*<SignUpForm  handleCloseModal={handleCloseModal} position={position}/>*/}
-      </>
+        <TitledHeader title='Apply with Dev Launchers!'/>
+        <SignUpForm />
     </>
   );
 }
 
-export default appldy;
+export default apply;
