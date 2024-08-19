@@ -35,8 +35,6 @@ export const UserInterestsContainer = styled.div`
   flex-wrap: wrap;
   row-gap: 20px;
   column-gap: 24px;
-  max-height: 308px;
-  overflow: auto;
 `;
 
 export const Bubble = styled.div`

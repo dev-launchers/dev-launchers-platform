@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 function Interests() {
-  return <div>Interests</div>;
+  return (
+    <div>Interests</div>
+  )
 }
 
-export default Interests;
+export default Interests
