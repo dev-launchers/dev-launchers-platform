@@ -1,36 +1,18 @@
-import { useEffect, useReducer } from 'react';
-import constate from 'constate';
-import { onboardingReducer, initialOnboardingState } from './../state/reducers';
-import { onboardingActions } from './../state/actions';
 import axios from 'axios';
+import { useState, useEffect, useReducer } from 'react';
+import constate from 'constate';
+// import { useUserDataContext } from './UserDataContext';
+import { onboardingReducer } from './../state/reducers';
 
 export const UseOnboardingData = ({ children }) => {
   const [onboardingData, dispatch] = useReducer(
     onboardingReducer.onboardingReducer,
     onboardingReducer.initialOnboardingState
   );
+  // const { userData } = useUserDataContext();
 
   useEffect(() => {
-    // get all interests categories
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`, {
-      withCredentials: true,
-    })
-      .then(({ data: response }) => {
-        const interestList = response?.data?.map((interest) => {
-          return {
-            id: interest.id,
-            name: interest.attributes.interest,
-            selected: false,
-          };
-        });
-        dispatch({
-          type: onboardingActions.SET_USERS_INTEREST,
-          data: interestList,
-        });
-      })
-      .catch(() => {
-        // TODO handle errors
-      });
+    // setOnboardingData to show modal;
   }, []);
 
   return { onboardingData, dispatch };

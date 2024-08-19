@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SkillLevel } from '@devlaunchers/models/level';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import { Project, ProjectLite } from '@devlaunchers/models/project';
@@ -10,28 +10,13 @@ export default function useProjects() {
   const [filteredProjects, setFilteredProjects] = useState<ProjectLite[]>();
   const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
   const [opportunitiesLoaded, setOpportunitiesLoaded] = useState(false);
-  const defaultParams = {
+  const [projectParams, setProjectParams] = useState<ProjectParams>({
     projectType: [],
     opportunity: [],
     level: [],
     maxCommit: 0,
     searchTerm: '',
-  };
-  const getSavedParamsFromLocalStorage = () => {
-    if (typeof window !== 'undefined') {
-      const savedParams = localStorage.getItem('projectParams');
-
-      if (savedParams) {
-        const parsedParams = JSON.parse(savedParams);
-        delete parsedParams.searchTerm;
-        return parsedParams;
-      }
-      return null;
-    }
-  };
-  const [projectParams, setProjectParams] = useState<ProjectParams>(
-    getSavedParamsFromLocalStorage() || defaultParams
-  );
+  });
 
   // Apply Filters
   const SetProjectParams = (value: ProjectParams) => {
@@ -43,15 +28,13 @@ export default function useProjects() {
     if (projectsList.length > 0) {
       const list = projectsList.map((item: Project) => ({
         id: item.id,
-        attributes: {
-          slug: item.attributes.slug,
-          catchPhrase: item.attributes.catchPhrase,
-          title: item.attributes.title,
-          description: item.attributes.description,
-          commitmentLevel: item.attributes.commitmentLevel,
-          opportunities: item.attributes.opportunities,
-          //isPlatform: item.attributes.isPlatform,
-        },
+        slug: item.slug,
+        catchPhrase: item.catchPhrase,
+        title: item.title,
+        description: item.description,
+        commitmentLevel: item.commitmentLevel,
+        opportunities: item.opportunities,
+        isPlatform: item.isPlatform,
       }));
       setProjects(list);
       setFilteredProjects(list);
@@ -72,18 +55,7 @@ export default function useProjects() {
   const handleParamsChange = (params: ProjectParams) => {
     setProjectParams(params);
     setFilteredProjects(FilterProjects(projects, params));
-
-    const paramsToSave = { ...params };
-    delete paramsToSave.searchTerm;
-    localStorage.setItem('projectParams', JSON.stringify(params));
   };
-
-  useEffect(() => {
-    const savedParams = getSavedParamsFromLocalStorage();
-    if (savedParams) {
-      setProjectParams(savedParams);
-    }
-  }, []);
 
   const handlePlatformChange = (value: string[]) => {
     handleParamsChange({ ...projectParams, projectType: value });
@@ -163,14 +135,10 @@ export default function useProjects() {
 function FilterBySearchTerm(project: ProjectLite, params: ProjectParams) {
   if (params.searchTerm) {
     return (
-      project.attributes.title
-        .toLowerCase()
-        .includes(params.searchTerm.toLowerCase()) ||
-      project.attributes.opportunities.data.some((o) =>
+      project.title.toLowerCase().includes(params.searchTerm.toLowerCase()) ||
+      project.opportunities.some((o) =>
         o.skills.some((s) =>
-          s!
-            .interest!.toLowerCase()!
-            .includes(params!.searchTerm!.toLowerCase())
+          s!.interest!.toLowerCase()!.includes(params!.searchTerm!.toLowerCase())
         )
       )
     );
@@ -188,46 +156,42 @@ function FilterProjectOpportunities(
     params.opportunity && params.opportunity.length > 0;
   const filterByCommitment = params.maxCommit > 0;
 
-  return project.attributes.opportunities.data.some(
+  return project.opportunities.some(
     (op) =>
-      (!filterByLevel || params!.level!.includes(op!.attributes.level)) &&
-      (!filterByOpportunity ||
-        params!.opportunity!.includes(op!.attributes.title)) &&
-      (!filterByCommitment ||
-        op!.attributes.commitmentHoursPerWeek <= params!.maxCommit)
+      (!filterByLevel || params!.level!.includes(op!.level)) &&
+      (!filterByOpportunity || params!.opportunity!.includes(op!.title)) &&
+      (!filterByCommitment || op!.commitmentHoursPerWeek <= params!.maxCommit)
   );
 }
 
 function FilterByLevel(project: ProjectLite, params: ProjectParams) {
   if (params.level && params.level.length > 0) {
-    return project.attributes.opportunities.data.some((op) =>
-      params!.level!.includes(op!.attributes.level)
-    );
+    return project.opportunities.some((op) => params!.level!.includes(op!.level));
   }
   return true;
 }
 function FilterByOpportunities(project: ProjectLite, params: ProjectParams) {
   if (params.opportunity && params.opportunity.length > 0) {
-    return project.attributes.opportunities.data.some((op) =>
-      params!.opportunity!.includes(op!.attributes.title)
+    return project.opportunities.some((op) =>
+      params!.opportunity!.includes(op!.title)
     );
   }
   return true;
 }
 function FilterByCommitment(project: ProjectLite, params: ProjectParams) {
   if (params.maxCommit > 0) {
-    return project.attributes.opportunities.data.some(
-      (op) => op.attributes.commitmentHoursPerWeek <= params.maxCommit
+    return project.opportunities.some(
+      (op) => op.commitmentHoursPerWeek <= params.maxCommit
     );
   }
   return true;
 }
 function FilterByProjectType(project: ProjectLite, params: ProjectParams) {
   if (params.projectType && params.projectType.length > 0) {
-    const isPlatform = undefined;
-    //params.projectType.includes('Platform') && project.isPlatform;
-    const isIndependent = undefined;
-    //params.projectType.includes('Independent') && !project.isPlatform;
+    const isPlatform =
+      params.projectType.includes('Platform') && project.isPlatform;
+    const isIndependent =
+      params.projectType.includes('Independent') && !project.isPlatform;
 
     return isPlatform || isIndependent;
   }
@@ -254,10 +218,10 @@ export function FilterProjects(projects: ProjectLite[], params: ProjectParams) {
     return projects
       .filter((project) => FilterProject(project, params))
       .sort((a, b) => {
-        if (a.attributes.title < b.attributes.title) {
+        if (a.title < b.title) {
           return -1;
         }
-        if (a.attributes.title > b.attributes.title) {
+        if (a.title > b.title) {
           return 1;
         }
         return 0;

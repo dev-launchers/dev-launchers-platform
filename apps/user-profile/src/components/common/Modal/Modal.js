@@ -1,28 +1,35 @@
-import { useState } from 'react';
-import ModalHeader from './ModalHeader';
+import React from "react";
+import ReactModal from "react-modal";
 
-function Modal({ isOpen, onClose, showHeader, children, zIndexClass }) {
-  const [openModal, setOpenModal] = useState(isOpen);
+import { ModalContent, customModalStyles } from "./StyledModal";
 
-  const closeModal = () => {
-    if (onClose != null && typeof onClose == 'function') {
-      onClose();
-    }
-    setOpenModal(false);
+ReactModal.setAppElement("#__next");
+
+export default function Modal(props) {
+  const [modalContent] = React.useState(props.modalContent);
+
+  // Modal functions
+  const [modalIsOpen, setModalIsOpen] = React.useState(props.modalIsOpen);
+  const openModal = () => {
+    setModalIsOpen(true);
   };
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+  const afterOpenModal = () => {};
 
-  return openModal ? (
-    <div
-      className={`fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,.75)] transition-opacity ${
-        zIndexClass ?? 'z-50'
-      }`}
+  return (
+    <ReactModal
+      isOpen={props.modalIsOpen ? props.modalIsOpen : modalIsOpen}
+      onRequestOpen={props.openModal ? props.openModal : openModal}
+      onRequestClose={props.closeModal ? props.closeModal : closeModal}
+      style={customModalStyles}
+      onAfterOpen={afterOpenModal}
+      contentLabel="Template Modal"
     >
-      <div className="flex flex-col bg-white rounded-2xl overflow-hidden shadow-lg ">
-        {showHeader ? <ModalHeader closeModal={closeModal} /> : null}
-        <div className="relative">{children}</div>
-      </div>
-    </div>
-  ) : null;
+      <ModalContent>
+        {props.modalContent ? props.modalContent : modalContent}
+      </ModalContent>
+    </ReactModal>
+  );
 }
-
-export default Modal;
