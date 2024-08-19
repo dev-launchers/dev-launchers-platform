@@ -115,6 +115,7 @@ export default function SignUpForm({
           values: NewApplicant,
           { setSubmitting }: FormikHelpers<NewApplicant>
         ) => {
+          console.log(values);
           setSubmitting(true);
           agent.Applicant.post({
             ...values,
