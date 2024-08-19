@@ -39,7 +39,7 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
       <BoxContainer paddingVertical={10} paddingHorizontal={20}>
         <FilterComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
-      <BoxContainer paddingVertical={0} paddingHorizontal={50}>
+      <BoxContainer paddingVertical={0} paddingHorizontal={0}>
         <Footer>
           <FooterFirstText>
             Join the Dev Launchers Talent Community

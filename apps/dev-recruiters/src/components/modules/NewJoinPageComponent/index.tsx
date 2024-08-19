@@ -50,7 +50,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 
-      <BoxContainer paddingVertical={0} paddingHorizontal={50}>
+      <BoxContainer paddingVertical={0} paddingHorizontal={0}>
         <Footer>
           <FooterFirstText>
             Join the Dev Launchers Talent Community

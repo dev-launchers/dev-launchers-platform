@@ -19,7 +19,7 @@ export const BaseText = styled.div`
 
 export const HeaderText = styled(BaseText)`
   text-align: center;
-  font-family: 'Alternate Gothic' sans serif;
+  font-family: 'Abel' sans serif;
   font-size: 48px;
   font-style: normal;
   font-weight: 200;
