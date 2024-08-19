@@ -18,24 +18,28 @@ export default function separateRoles(arr: Opportunity[]) {
   };
 
   arr.forEach((role) => {
-    if (parseInt(role.id) === 8 || parseInt(role.id) === 4) {
+    if (role?.attributes?.roleType === 'Product Lead') {
       separatedGroups['ProductLead'].push(role);
-    } else if (parseInt(role.id) === 6) {
+    } else if (role?.attributes?.roleType === 'UX Designer') {
       separatedGroups['UxDesigner'].push(role);
-    } else if (parseInt(role.id) === 7 || parseInt(role.id) === 5) {
+    } else if (role?.attributes?.roleType === 'UX Researcher') {
       separatedGroups['UxResearcher'].push(role);
-    } else if (parseInt(role.id) === 15) {
+    } else if (role?.attributes?.roleType === 'Lead Developer') {
       separatedGroups['LeadDeveloper'].push(role);
-    } else if (parseInt(role.id) === 2) {
+    } else if (role?.attributes?.roleType === 'Back-End Developer') {
       separatedGroups['BackEndDeveloper'].push(role);
-    } else if (
-      parseInt(role.id) === 1 ||
-      parseInt(role.id) === 10 ||
-      parseInt(role.id) === 16
-    ) {
+    } else if (role?.attributes?.roleType === 'Front-End Developer') {
       separatedGroups['FrontEndDeveloper'].push(role);
-    } else if (parseInt(role.id) === 3) {
+    } else if (role?.attributes?.roleType === 'QA Tester') {
       separatedGroups['QaTester'].push(role);
+    } else if (role?.attributes?.roleType === 'QA Lead') {
+      separatedGroups['QaLead'].push(role);
+    } else if (role?.attributes?.roleType === 'Information Architect') {
+      separatedGroups['InformationArchitect'].push(role);
+    } else if (role?.attributes?.roleType === 'Voulunteer Cordinator') {
+      separatedGroups['VoulunteerCordinator'].push(role);
+    } else if (role?.attributes?.roleType === 'Social Media Manager') {
+      separatedGroups['SocialMediaManager'].push(role);
     }
   });
   return separatedGroups;
