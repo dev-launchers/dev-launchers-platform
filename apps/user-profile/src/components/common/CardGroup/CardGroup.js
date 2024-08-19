@@ -1,6 +1,6 @@
-import React from "react";
-import Card from "../Card/Card";
-import { Collection, CollectionTitle } from "./StyledCardGroup";
+import React from 'react';
+import Card from '../OldCard/Card';
+import { Collection, CollectionTitle } from './StyledCardGroup';
 
 export default function CardGroup(props) {
   return (

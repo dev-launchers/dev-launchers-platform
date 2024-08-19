@@ -25,6 +25,8 @@ export const DEFAULT_USER = {
 function useUserDataHook() {
   const [userData, _] = useState(DEFAULT_USER);
   const [isAuthenticated, setIsAuthenticated] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const setUserData = useCallback((data) => _(() => data), []);
   useEffect(() => {
@@ -51,14 +53,25 @@ function useUserDataHook() {
           profile: currentUser.profile,
           ownedCards: currentUser.ownedCards,
         });
+        setIsLoading(false);
       })
       .catch((e) => {
         console.error('failed to fetch', e);
         setIsAuthenticated(false);
+        setIsLoading(false);
+        setError(e);
       });
   }, []);
 
-  return { useUserDataContext: { userData, setUserData, isAuthenticated } };
+  return {
+    useUserDataContext: {
+      userData,
+      setUserData,
+      isAuthenticated,
+      isLoading,
+      error,
+    },
+  };
 }
 
 // Step 2: Declare your context state object to share the state with other components

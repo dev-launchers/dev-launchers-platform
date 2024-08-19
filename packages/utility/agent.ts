@@ -9,9 +9,7 @@ import {
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
-
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
-
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
 
@@ -32,52 +30,36 @@ axios.interceptors.response.use(
     if (process.env.NODE_ENV === 'development') {
       // execute codes for dev environment
     }
-
-    // Parses the Pagination header from the response
-
-    // const pagination = response.headers["pagination"];
-    // if (pagination) {
-    //     HANDLE PAGINATION RESULTS
-    //     return response;
-    // }
-
     return response;
   },
   (error: AxiosError) => {
-    // Handle the exceptions sent from server
     if (error.response) {
       const { data, status } = error.response;
-
       switch (status) {
         case 400:
           // Handle Clients Errors
           break;
-
         case 401:
           // Handle Authentication Errors
           break;
-
         case 403:
           // Handle Authorization Errors
           break;
-
         case 404:
-          // Handle Not Found Errors, Generally navigate to a Not Found page.
+          // Handle Not Found Errors
+          break;
+        case 500:
+          // Handle Server Errors
           break;
 
-        case 500:
-          // Handle Server Errors, Generally navigate to a Server Error page.
-          break;
+        default:
+          console.error(`agents.ts ${error}`);
       }
     }
     return Promise.reject(error.response);
   }
 );
 
-/**
- * Create a simple data form.
- * TODO: add flattening complex objects.
- */
 function createFormData(item: any) {
   let formData = new FormData();
   for (const key in item) {
@@ -89,11 +71,11 @@ function createFormData(item: any) {
 const responseBody = (response: AxiosResponse) =>
   response.data.data ? response.data.data : response.data;
 
-// Axios requests simplified
-// the T Class type is optional but provides a better type safety for return type.
+const errorBody = (error: AxiosError) => (error ? error : null);
+
 const requests = {
   get: <T>(url: string, params?: URLSearchParams) =>
-    axios.get<T>(url, { params }).then(responseBody),
+    axios.get<T>(url, { params }).then(responseBody).catch(errorBody),
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
@@ -122,22 +104,35 @@ const Applicant = {
 
 const Projects = {
   list: (params?: URLSearchParams) =>
-    requests.get<Project[]>('/projects', params ? params : { populate: '*' }),
-  get: (slug: string, params?: URLSearchParams) =>
-    requests.get<Project>(
-      `projects/${slug}`,
-      params ? params : { populate: '*' }
+    requests.get<Project[]>(
+      '/projects',
+      new URLSearchParams('_publicationState=live&populate=opportunities')
     ),
+  get: (slug: string, params?: URLSearchParams) => {
+    return requests.get<Project>(
+      `projects/${slug}`,
+      new URLSearchParams('_publicationState=live&populate=*')
+    );
+  },
 };
-
 const Opportunities = {
-  list: (params?: URLSearchParams) =>
+  list: async (params?: URLSearchParams) =>
     requests.get<Opportunity[]>(
       '/opportunities',
-      params ? params : { populate: '*' }
+      new URLSearchParams('_publicationState=live&populate=projects')
     ),
   get: (slug: string, params?: URLSearchParams) =>
-    requests.get(`opportunities/${slug}`, params ? params : { populate: '*' }),
+    requests.get(
+      `opportunities/${slug}`,
+      new URLSearchParams('_publicationState=live&populate=projects')
+    ),
+  getById: (
+    oppId: string //, params?: URLSearchParams
+  ) =>
+    requests.get<Opportunity[]>(
+      `opportunities/${oppId}`,
+      new URLSearchParams('_publicationState=live&populate=projects')
+    ),
 };
 
 const Ideas = {
@@ -170,6 +165,12 @@ const Saves = {
   post: (body: {}) => requests.post<Save>('/saves/', body),
 };
 
+const Profiles = {
+  get: (id: string) => requests.get(`/profiles/${id}`),
+  post: (body: {}) => requests.post('/profiles/', body),
+  put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -179,6 +180,8 @@ const agent = {
   Ideas,
   Likes,
   Saves,
+  Profiles,
+  requests,
 };
 
 export default agent;

@@ -1,12 +1,12 @@
-import BoxContainer from "../../common/BoxContainer";
-import { Opportunity } from "@devlaunchers/models/opportunity";
-import Link from "next/link";
-import { useState } from "react";
-import { Project } from "src/models/project";
-import LongCard from "../OpportunitiesAggregator/LongCard";
-import ShortCard from "../OpportunitiesAggregator/ShortCard";
-import PositionCard from "./PositionCard";
-import ProductHeader from "./ProductHeader";
+import BoxContainer from '../../common/BoxContainer';
+import { Opportunity } from '@devlaunchers/models/opportunity';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Project } from '@devlaunchers/models';
+import LongCard from '../OpportunitiesAggregator/LongCard';
+import ShortCard from '../OpportunitiesAggregator/ShortCard';
+import PositionCard from './PositionCard';
+import ProductHeader from './ProductHeader';
 import {
   BackButton,
   Card,
@@ -16,9 +16,9 @@ import {
   Container,
   PositionsList,
   Wrapper,
-} from "./styledProjectDetails";
+} from './styledProjectDetails';
 
-interface Props {
+interface ProjectDetailsProps {
   project: Project;
   opportunites: Opportunity[];
   maxCommitment: number;
@@ -30,7 +30,7 @@ export default function ProjectDetails({
   opportunites,
   maxCommitment,
   minCommitment,
-}: Props) {
+}: ProjectDetailsProps) {
   const [expanded, setExpanded] = useState<string[]>([]);
 
   const IsExpanded = (id: string) => {
@@ -44,11 +44,10 @@ export default function ProjectDetails({
 
     setExpanded(items);
   };
-
   return (
     <Wrapper>
       <BoxContainer paddingVertical={3}>
-        <Link href={"/join"} passHref>
+        <Link href={'/join'} passHref>
           <BackButton>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,21 +67,11 @@ export default function ProjectDetails({
         </Link>
       </BoxContainer>
       <BoxContainer bgColor="White" paddingVertical={10} marginTop={32}>
-        <ProductHeader
-          title={project.title}
-          vision={project.vision}
-          isPlatform={project.isPlatform}
-          published_at={project.published_at}
-          type="Product"
-          maxCommitmentHours={maxCommitment}
-          minCommitmentHours={minCommitment}
-          interests={project.interests}
-          team={project.team}
-        />
+        <ProductHeader title={project.attributes?.title} />
 
         <LongCard
-          description={project.description}
-          details={project.description}
+          description={project.attributes?.title}
+          details={project.attributes?.vision}
         ></LongCard>
       </BoxContainer>
 
@@ -92,15 +81,14 @@ export default function ProjectDetails({
             <Card key={index}>
               <h2>{title}</h2>
               <CardContent>
-                {elements
-                  .slice(0, IsExpanded(title) ? elements.length : 1)
-                  .map((element, elIndex) => (
-                    <p key={elIndex}>{element}</p>
-                  ))}
+                {!elements &&
+                  elements
+                    .slice(0, IsExpanded(title) ? elements.length : 1)
+                    .map((element, elIndex) => <p key={elIndex}>{element}</p>)}
                 <CardButton onClick={() => handleExpand(title)}>
                   {expanded.some((x) => x === title)
-                    ? "Collapse Description"
-                    : "Expand Description"}
+                    ? 'Collapse Description'
+                    : 'Expand Description'}
                 </CardButton>
               </CardContent>
             </Card>
@@ -138,6 +126,7 @@ export default function ProjectDetails({
         <Container>
           <h2>Positions Available</h2>
 
+          {/* 
           <PositionsList>
             {opportunites?.map((position) => (
               <PositionCard
@@ -147,6 +136,7 @@ export default function ProjectDetails({
               />
             ))}
           </PositionsList>
+          */}
         </Container>
       </BoxContainer>
     </Wrapper>
@@ -155,14 +145,14 @@ export default function ProjectDetails({
 
 const AboutCardsData = [
   {
-    title: "About Our Volunteers",
+    title: 'About Our Volunteers',
     elements: [
       `You’re someone who cares about technology and the people whose lives it shapes. You’re looking to build something that matters alongside like-minded people. You are excited, ready to learn, and looking to grow.`,
       `You want to work towards achieving a goal, you’re willing to work hard, and you’re not afraid to ask for help getting where you want to be! It's not about how much time you can spend, but about being here when you're here. When you work, you work hard.`,
     ],
   },
   {
-    title: "About Dev Launchers",
+    title: 'About Dev Launchers',
     elements: [
       `Dev Launchers is an international nonprofit organization dedicated to preparing people from diverse backgrounds to tackle future-proof careers. We are made up of people just like you.`,
       `Dev Launchers facilitates ambitious open source software projects, along with other projects centered around communities and products. We use those same projects to train our members in skills in the realm of software, leadership, community management, product development, marketing, and anything else that may be required to launch real world products. `,
