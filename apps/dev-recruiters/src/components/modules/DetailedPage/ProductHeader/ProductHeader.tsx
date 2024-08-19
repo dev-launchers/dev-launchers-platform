@@ -14,8 +14,7 @@ import {
   UsernameAvatar,
 } from './StyledProductHeader';
 import { Leader2, Project, Team } from '@devlaunchers/models/project';
-import { string } from 'yup';
-/*
+
 interface ProductHeaderProps
   extends Pick<
     Project,
@@ -25,59 +24,44 @@ interface ProductHeaderProps
   userAvatar?: string;
   minCommitmentHours: number;
   maxCommitmentHours: number;
-} */
-/*interface ProductHeaderProps
-  extends Pick<Project, 'title' | 'vision' | 'published_at'> {
-  type: 'Product' | 'ProjectLite' | 'Idea';
-  userAvatar?: string;
-  minCommitmentHours: number;
-  maxCommitmentHours: number;
 }
 
 export default function ProductHeader({
   title,
   vision,
-  //isPlatform = false,
+  isPlatform = false,
   type,
-  //interests = [], //keywords = [],
+  interests = [], //keywords = [],
   published_at, //date,
-  //team, //username,
+  team, //username,
   // userAvatar,
   minCommitmentHours,
   maxCommitmentHours,
-}: ProductHeaderProps) */
-interface ProductHeaderProps {
-  title: string;
-}
-export default function ProductHeader({ title }: ProductHeaderProps) {
-  //const teamLeader = (team?.leaders[0] as Partial<Leader2>)?.username;
-  /* const formattedDate = new Date(published_at as string)
+}: ProductHeaderProps) {
+  const teamLeader = (team?.leaders[0] as Partial<Leader2>)?.username;
+  const formattedDate = new Date(published_at)
     .toDateString()
     .split(' ')
     .slice(1)
     .join(' ');
-*/
+  
   return (
     <HeaderBlock>
       <Row>
         <Column w="614px" style={{ flexGrow: 1 }}>
           <ColumnTitle>{title}</ColumnTitle>
-          {/*}
           <Type>
             {isPlatform ? 'Platform' : 'Independent'} {type}
           </Type>
-  */}
-          <Vision>{title}</Vision>
+          <Vision>{vision}</Vision>
         </Column>
         <Column w="384px" style={{ flexGrow: 1 }}>
           <ColumnTitle>Tags</ColumnTitle>
-          {/*
           <Row>
             {interests.data.map(({ attributes, id }) => {
               return <Tags key={id}>{attributes.interest}</Tags>;
             })}
           </Row>
-          */}
         </Column>
         <Column
           bgColor="#ffffff"
@@ -90,7 +74,7 @@ export default function ProductHeader({ title }: ProductHeaderProps) {
             style={{ width: '100%', textAlign: 'left' }}
             color="#000000"
           >
-            {title} Lead
+            {type} Lead
           </ColumnTitle>
           <Row
             css={`
@@ -101,13 +85,13 @@ export default function ProductHeader({ title }: ProductHeaderProps) {
             `}
           >
             <UsernameAvatar src={Avatar} />
-            {/* <Username>{teamLeader}</Username> */}
+            <Username>{teamLeader}</Username>
           </Row>
           <CreationDate style={{ width: '100%', textAlign: 'left' }}>
-            Product Created: {'formattedDate'}
+            Product Created: {formattedDate}
           </CreationDate>
           <Commitment style={{ width: '100%', textAlign: 'left' }}>
-            {'minCommitmentHours'} - {'maxCommitmentHours'} hrs/week
+            {minCommitmentHours} - {maxCommitmentHours} hrs/week
           </Commitment>
         </Column>
       </Row>
