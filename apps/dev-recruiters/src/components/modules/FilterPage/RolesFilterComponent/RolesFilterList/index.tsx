@@ -40,7 +40,7 @@ export default function RolesFilterList({
   {
     return (
       <List>
-        <SearchResult>Search Results</SearchResult>
+        {/* <SearchResult>Search Results</SearchResult> */}
         <ResultContainer>
           <FilterConatiner>
             <CollapsibleContainerFilter
