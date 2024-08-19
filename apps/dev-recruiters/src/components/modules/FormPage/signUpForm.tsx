@@ -58,7 +58,12 @@ export default function SignUpForm({
         (number) => /^\d+(\.\d{1,2})?$/.test(number.toString())
       ),
     experience: Yup.string().required('Experience Field Entry is Required'),
-    accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
+    isAgeOver18: Yup.boolean()
+      .required('Age over 18 Field is Required')
+      .oneOf([true], 'Age over 18 Field is Required'),
+    isTermsAgreed: Yup.boolean()
+      .required('Terms and Conditions is Required')
+      .oneOf([true], 'Terms and Conditions Field is Required'),
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [checkCheckbox, setCheckCheckbox] = useState<undefined | boolean>(
@@ -103,11 +108,14 @@ export default function SignUpForm({
           role: 'title' as string, //  role: position.title as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
           skills: [{ skill: '' }],
+          isAgeOver18: false,
+          isTermsAgreed: false,
         }}
         onSubmit={(
           values: NewApplicant,
           { setSubmitting }: FormikHelpers<NewApplicant>
         ) => {
+          console.log(values);
           setSubmitting(true);
           agent.Applicant.post({
             ...values,
@@ -292,12 +300,45 @@ export default function SignUpForm({
                     We require users to be 18 years old or older. Please confirm
                     below.
                   </atoms.Typography>
-                  <atoms.Checkbox
-                    label="I am 18 years old or older."
-                    disabled={false}
-                    onChange={handleSetCheckCheckbox}
+                  <Field
+                    as={atoms.Checkbox}
+                    type="checkbox"
+                    name="isAgeOver18"
+                    id="isAgeOver18"
                     required
+                    touched={formik.touched['isAgeOver18']}
+                    error={formik.errors.isAgeOver18}
+                    label="I am 18 years old or older."
+                    onChange={(e) =>
+                      formik.setFieldValue('isAgeOver18', e.target.checked)
+                    }
+                    checked={formik.values.isAgeOver18}
                   />
+                  {formik.errors.isAgeOver18 ? (
+                    <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                      {formik.errors.isAgeOver18}
+                    </atoms.Typography>
+                  ) : null}
+                  <Field
+                    as={atoms.Checkbox}
+                    type="checkbox"
+                    name="isTermsAgreed"
+                    id="isTermsAgreed"
+                    required
+                    touched={formik.touched['isTermsAgreed']}
+                    error={formik.errors.isTermsAgreed}
+                    label="I have read and agree to the Terms and Conditions.*"
+                    onChange={(e) => {
+                      formik.setFieldValue('isTermsAgreed', e.target.checked);
+                    }}
+                    checked={formik.values.isTermsAgreed}
+                  />
+                  {formik.errors.isTermsAgreed ? (
+                    <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                      {formik.errors.isTermsAgreed}
+                    </atoms.Typography>
+                  ) : null}
+
                   <SubmitButton
                     as="a"
                     type="submit"
@@ -307,15 +348,6 @@ export default function SignUpForm({
                   >
                     Submit Application
                   </SubmitButton>
-                  <atoms.Box maxWidth="50%">
-                    <atoms.Button
-                      buttonSize="standard"
-                      buttonType="primary"
-                      type="submit"
-                    >
-                      Submit
-                    </atoms.Button>
-                  </atoms.Box>
                 </atoms.Box>
               </atoms.Box>
               <FormErrorScroller focusAfterScroll />
