@@ -1,6 +1,6 @@
 import React from 'react';
 
-function OutlinedCamera({ width, height, colorClass, svgClass }) {
+function OutlinedCamera({ width, height, colorClass, svgClass, }) {
   return (
     <svg
       width={width ?? '18'}
