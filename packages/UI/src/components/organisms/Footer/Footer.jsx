@@ -61,7 +61,10 @@ export default function Footer() {
           <SocialMediaLink Type="Linkedin" />
         </SocialMediaContainer>
         <RandomQuote />
-        <OrgInfoArea>
+        <div className="flex justify-end self-end pr-8 text-right text-sm">
+          <a className="pr-1" href="mailto:contact@devlaunchers.com">
+            contact@devlaunchers.com
+          </a>
           -
           <Link href="/page/terms-and-conditions" passHref>
             <a href="/page/terms-and-conditions">Terms of Service </a>
@@ -70,8 +73,8 @@ export default function Footer() {
           <Link href="/page/privacy-policy" passHref>
             <a href="/page/privacy-policy">Privacy Policy </a>
           </Link>{' '}
-          {'- | '} ©Dev Launchers, 2021.
-        </OrgInfoArea>
+          {'- | '} ©Dev Launchers, 2024.
+        </div>
       </ThemeProvider>
     </Wrapper>
   );
