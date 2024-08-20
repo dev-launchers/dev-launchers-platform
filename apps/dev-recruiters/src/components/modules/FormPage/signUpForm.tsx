@@ -300,45 +300,50 @@ export default function SignUpForm({
                     We require users to be 18 years old or older. Please confirm
                     below.
                   </atoms.Typography>
-                  <Field
-                    as={atoms.Checkbox}
-                    type="checkbox"
-                    name="isAgeOver18"
-                    id="isAgeOver18"
-                    required
-                    touched={formik.touched['isAgeOver18']}
-                    error={formik.errors.isAgeOver18}
-                    label="I am 18 years old or older."
-                    onChange={(e) =>
-                      formik.setFieldValue('isAgeOver18', e.target.checked)
-                    }
-                    checked={formik.values.isAgeOver18}
-                  />
-                  {formik.errors.isAgeOver18 ? (
-                    <atoms.Typography type="pSmall" css={{ color: 'red' }}>
-                      {formik.errors.isAgeOver18}
-                    </atoms.Typography>
-                  ) : null}
-                  <Field
-                    as={atoms.Checkbox}
-                    type="checkbox"
-                    name="isTermsAgreed"
-                    id="isTermsAgreed"
-                    required
-                    touched={formik.touched['isTermsAgreed']}
-                    error={formik.errors.isTermsAgreed}
-                    label="I have read and agree to the Terms and Conditions.*"
-                    onChange={(e) => {
-                      formik.setFieldValue('isTermsAgreed', e.target.checked);
-                    }}
-                    checked={formik.values.isTermsAgreed}
-                  />
-                  {formik.errors.isTermsAgreed ? (
-                    <atoms.Typography type="pSmall" css={{ color: 'red' }}>
-                      {formik.errors.isTermsAgreed}
-                    </atoms.Typography>
-                  ) : null}
-
+                  <atoms.Box
+                    flexDirection="column"
+                    alignItems="flex-start"
+                    gap="1rem"
+                  >
+                    <Field
+                      as={atoms.Checkbox}
+                      type="checkbox"
+                      name="isAgeOver18"
+                      id="isAgeOver18"
+                      required
+                      touched={formik.touched['isAgeOver18']}
+                      error={formik.errors.isAgeOver18}
+                      label="I am 18 years old or older."
+                      onChange={(e) =>
+                        formik.setFieldValue('isAgeOver18', e.target.checked)
+                      }
+                      checked={formik.values.isAgeOver18}
+                    />
+                    {formik.errors.isAgeOver18 ? (
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        {formik.errors.isAgeOver18}
+                      </atoms.Typography>
+                    ) : null}
+                    <Field
+                      as={atoms.Checkbox}
+                      type="checkbox"
+                      name="isTermsAgreed"
+                      id="isTermsAgreed"
+                      required
+                      touched={formik.touched['isTermsAgreed']}
+                      error={formik.errors.isTermsAgreed}
+                      label="I have read and agree to the Terms and Conditions.*"
+                      onChange={(e) => {
+                        formik.setFieldValue('isTermsAgreed', e.target.checked);
+                      }}
+                      checked={formik.values.isTermsAgreed}
+                    />
+                    {formik.errors.isTermsAgreed ? (
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        {formik.errors.isTermsAgreed}
+                      </atoms.Typography>
+                    ) : null}
+                  </atoms.Box>
                   <SubmitButton
                     as="a"
                     type="submit"
