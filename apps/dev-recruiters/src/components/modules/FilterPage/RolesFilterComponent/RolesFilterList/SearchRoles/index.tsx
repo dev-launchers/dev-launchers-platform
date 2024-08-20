@@ -39,7 +39,7 @@ function SearchRole({
     } else {
       setSelectedRole(selectedRoleLabel);
       handleSuggestedRole(selectedRoleCategory);
-      console.log('test');
+      console.log('test1');
     }
   }, [selectedRoleLabel, commitmentRange]);
 
