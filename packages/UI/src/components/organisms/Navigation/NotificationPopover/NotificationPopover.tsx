@@ -3,14 +3,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
 import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
 import natificationsData from './notificationsData';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export default function NotificationPopover() {
   const [notifications, setNotifications] = React.useState(natificationsData);
   const newNotificationsCount = notifications.reduce((count, x) => {
     return x.status == 'unRead' ? count + 1 : count;
   }, 0);
-  const queryClient = useQueryClient();
   const { data, error, isPending } = useQuery({
     queryKey: ['getNotifications'],
     queryFn: getAllNotifications,
