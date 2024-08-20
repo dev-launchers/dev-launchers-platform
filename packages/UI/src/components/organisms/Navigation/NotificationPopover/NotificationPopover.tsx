@@ -3,14 +3,51 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
 import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
 import natificationsData from './notificationsData';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 export default function NotificationPopover() {
   const [notifications, setNotifications] = React.useState(natificationsData);
   const newNotificationsCount = notifications.reduce((count, x) => {
     return x.status == 'unRead' ? count + 1 : count;
   }, 0);
+  const queryClient = useQueryClient();
+  const { data, error, isPending } = useQuery({
+    queryKey: ['getNotifications'],
+    queryFn: getAllNotifications,
+  });
+
+  console.log(data);
+
+  function getAllNotifications() {
+    return fetch('https://apiv4-staging.devlaunchers.org/api/notifications', {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  async function getNotifications() {
+    try {
+      const data = await fetch(
+        'https://apiv4-staging.devlaunchers.org/api/notifications/87?populate=deep',
+        {
+          method: 'GET',
+          credentials: 'include',
+        }
+      );
+      const parsed = await data.json();
+      console.log(parsed);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   function markAllReadHandle() {
+    getNotifications();
     setNotifications((prev) => {
       return prev.map((n) => {
         n.status = 'read';

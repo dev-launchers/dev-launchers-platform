@@ -8,6 +8,8 @@ import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
 import NotificationPopover from './NotificationPopover';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './NotificationPopover/queryClient';
 
 const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
   return (
@@ -104,106 +106,108 @@ const Navigation = () => {
 
   return (
     <Layer hasRainbowBottom type="dark">
-      <nav className={$wrapper()}>
-        <Link href="/">
-          <a href="/" className={$logoContainer()}>
-            <img className="w-10" src={logo} alt="logo"></img>
-            <span className="hidden md:inline-block">Dev Launchers</span>
-          </a>
-        </Link>
-        <ul>
-          <div className="hidden lg:flex lg:items-baseline lg:gap-12">
-            {Object.entries(links).map(([name, href], i) => {
-              if (Array.isArray(href))
+      <QueryClientProvider client={queryClient}>
+        <nav className={$wrapper()}>
+          <Link href="/">
+            <a href="/" className={$logoContainer()}>
+              <img className="w-10" src={logo} alt="logo"></img>
+              <span className="hidden md:inline-block">Dev Launchers</span>
+            </a>
+          </Link>
+          <ul>
+            <div className="hidden lg:flex lg:items-baseline lg:gap-12">
+              {Object.entries(links).map(([name, href], i) => {
+                if (Array.isArray(href))
+                  return (
+                    <li key={`${name}-` + i}>
+                      <NavDropdown
+                        title={name}
+                        links={href}
+                        toggleElementProps={{ style: { color: 'white' } }}
+                      />
+                    </li>
+                  );
                 return (
-                  <li key={`${name}-` + i}>
-                    <NavDropdown
-                      title={name}
-                      links={href}
-                      toggleElementProps={{ style: { color: 'white' } }}
-                    />
+                  <li className="list-none" key={i}>
+                    <Link href={href} passHref>
+                      <NavLink>{name}</NavLink>
+                    </Link>
                   </li>
                 );
-              return (
-                <li className="list-none" key={i}>
-                  <Link href={href} passHref>
-                    <NavLink>{name}</NavLink>
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
-        </ul>
-        {false ? (
-          <div className="hidden lg:flex lg:gap-4">
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="primary"
-              buttonSize="standard"
-            >
-              Sign In
-            </Button>
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="secondary"
-              buttonSize="standard"
-            >
-              Create an Account
-            </Button>
-          </div>
-        ) : (
-          <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
-            <NotificationPopover />
+              })}
+            </div>
+          </ul>
+          {false ? (
+            <div className="hidden lg:flex lg:gap-4">
+              <Button
+                as="a"
+                href={
+                  process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                  `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                }
+                buttonType="primary"
+                buttonSize="standard"
+              >
+                Sign In
+              </Button>
+              <Button
+                as="a"
+                href={
+                  process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
+                  `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
+                }
+                buttonType="secondary"
+                buttonSize="standard"
+              >
+                Create an Account
+              </Button>
+            </div>
+          ) : (
+            <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
+              <NotificationPopover />
 
-            <img
-              width="36"
-              height="33"
-              src={userData.profilePictureUrl}
-              alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
-            />
-            <NavDropdown
-              title={`Hi ${userData.name}`}
-              links={[
-                ...accountOptions,
-                {
-                  text: (
-                    <div className="flex gap-1">
-                      <LogoutIcon fill="white" />
-                      <span>logout</span>
-                    </div>
-                  ),
-                  onClick: Logout,
-                  as: 'button',
-                },
-              ]}
-              toggleElementProps={{ style: { color: 'white' } }}
-            />
-          </div>
-        )}
-        <HamburgerButton
-          open={isSidebarExpanded}
-          setOpen={setIsSidebarExpanded}
-          className="lg:hidden"
-        />
-        <MobileNavigation
-          links={links}
-          accountOptions={accountOptions}
-          user={userData}
-          isAuthenticated={isAuthenticated}
-          logout={() => Logout()}
-          isSidebarExpanded={isSidebarExpanded}
-          setIsSidebarExpanded={setIsSidebarExpanded}
-        />
-      </nav>
+              <img
+                width="36"
+                height="33"
+                src={userData.profilePictureUrl}
+                alt="Profile avatar"
+                style={{ borderRadius: '50%' }}
+              />
+              <NavDropdown
+                title={`Hi ${userData.name}`}
+                links={[
+                  ...accountOptions,
+                  {
+                    text: (
+                      <div className="flex gap-1">
+                        <LogoutIcon fill="white" />
+                        <span>logout</span>
+                      </div>
+                    ),
+                    onClick: Logout,
+                    as: 'button',
+                  },
+                ]}
+                toggleElementProps={{ style: { color: 'white' } }}
+              />
+            </div>
+          )}
+          <HamburgerButton
+            open={isSidebarExpanded}
+            setOpen={setIsSidebarExpanded}
+            className="lg:hidden"
+          />
+          <MobileNavigation
+            links={links}
+            accountOptions={accountOptions}
+            user={userData}
+            isAuthenticated={isAuthenticated}
+            logout={() => Logout()}
+            isSidebarExpanded={isSidebarExpanded}
+            setIsSidebarExpanded={setIsSidebarExpanded}
+          />
+        </nav>
+      </QueryClientProvider>
     </Layer>
   );
 };

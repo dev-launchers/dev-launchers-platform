@@ -54,6 +54,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "@tanstack/react-query": "5.51.23",
     "cross-env": "7.0.3"
   },
   "devDependencies": {

@@ -10273,6 +10273,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.51.21":
+  version: 5.51.21
+  resolution: "@tanstack/query-core@npm:5.51.21"
+  checksum: a602e70bfbfa1fa28333be8c1b9ac9c9b97937b236d3997a757079ae04086fe59c2688cb6406fd82dcf9ef07f73e7a4ba1d373040f6cad340e1f64bceafe0e07
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:5.51.23":
+  version: 5.51.23
+  resolution: "@tanstack/react-query@npm:5.51.23"
+  dependencies:
+    "@tanstack/query-core": 5.51.21
+  peerDependencies:
+    react: ^18.0.0
+  checksum: d1d8131232430635923694befff9bdabc8d18ca2392789456a28191020d489671577e02ee5b0107e0064fea981c74c99cea3077a4e34cc1ac7438175bd50effe
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^8.0.0, @testing-library/dom@npm:^8.5.0":
   version: 8.20.1
   resolution: "@testing-library/dom@npm:8.20.1"
@@ -41865,6 +41883,7 @@ __metadata:
     "@commitlint/config-conventional": 17.0.3
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@playwright/test": 1.24.2
+    "@tanstack/react-query": 5.51.23
     "@types/prettier": 2.6.4
     "@types/shell-quote": 1.7.1
     commitizen: 4.2.5
