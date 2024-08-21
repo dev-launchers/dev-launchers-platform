@@ -125,7 +125,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <BookmarkBorderOutlinedIcon />
           <StyledText>FOLLOW</StyledText>
         </Button> */}
-        {upvoteButton}
+        {/* {upvoteButton} */}
         {/* <Button onClick={handleUpvoteClick}>
           <StarBorderOutlinedIcon />
           <StyledText>UPVOTE</StyledText>
