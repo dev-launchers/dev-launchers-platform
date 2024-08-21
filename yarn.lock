@@ -2683,6 +2683,8 @@ __metadata:
     "@radix-ui/react-checkbox": 1.0.4
     "@radix-ui/react-dialog": 1.0.5
     "@radix-ui/react-dropdown-menu": 2.0.6
+    "@radix-ui/react-popover": 1.0.7
+    "@radix-ui/react-progress": 1.0.3
     "@radix-ui/react-switch": 1.0.3
     "@radix-ui/react-tabs": 1.0.4
     "@storybook/addon-a11y": 7.2.2
@@ -2731,6 +2733,7 @@ __metadata:
     jest: ^27.0.6
     lucide-react: 0.314.0
     next: ^12.2.3
+    next-share: 0.27.0
     npm-run-all: 4.1.5
     polished: ^4.2.2
     prettier: ^2.7.1
@@ -3032,7 +3035,7 @@ __metadata:
     style-dictionary: ^3.0.2
     tailwind-hamburgers: 1.3.5
     tailwind-variants: 0.1.14
-    tailwindcss: 3.3.3
+    tailwindcss: 3.4.3
   languageName: unknown
   linkType: soft
 
@@ -6411,6 +6414,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-popover@npm:1.0.7":
+  version: 1.0.7
+  resolution: "@radix-ui/react-popover@npm:1.0.7"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/primitive": 1.0.1
+    "@radix-ui/react-compose-refs": 1.0.1
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-dismissable-layer": 1.0.5
+    "@radix-ui/react-focus-guards": 1.0.1
+    "@radix-ui/react-focus-scope": 1.0.4
+    "@radix-ui/react-id": 1.0.1
+    "@radix-ui/react-popper": 1.1.3
+    "@radix-ui/react-portal": 1.0.4
+    "@radix-ui/react-presence": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+    "@radix-ui/react-slot": 1.0.2
+    "@radix-ui/react-use-controllable-state": 1.0.1
+    aria-hidden: ^1.1.1
+    react-remove-scroll: 2.5.5
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 3ec15c0923ea457f586aa34f77e17fabffa02dffeab622951560ec21c38df2f43718ff088d24bf9fd1d9cd0db62436fc19cae5b122d90f72de4945a1f508dc59
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-popper@npm:1.1.2":
   version: 1.1.2
   resolution: "@radix-ui/react-popper@npm:1.1.2"
@@ -6547,6 +6584,27 @@ __metadata:
     "@types/react-dom":
       optional: true
   checksum: 9402bc22923c8e5c479051974a721c301535c36521c0237b83e5fa213d013174e77f3ad7905e6d60ef07e14f88ec7f4ea69891dc7a2b39047f8d3640e8f8d713
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-progress@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@radix-ui/react-progress@npm:1.0.3"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: a4398812315ae5b25f8637a6553daf85bd36e6e08d15f7486248538a994a99268752e2c21e4af15277c17e861c1825fdd7292938c515c112dc2cdce63ec1a892
   languageName: node
   linkType: hard
 
@@ -20150,7 +20208,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.5":
+"fast-glob@npm:^3.2.5, fast-glob@npm:^3.3.0":
   version: 3.3.2
   resolution: "fast-glob@npm:3.3.2"
   dependencies:
@@ -21537,6 +21595,21 @@ __metadata:
   bin:
     glob: dist/cjs/src/bin.js
   checksum: 176b97c124414401cb51329a93d2ba112cef8814adbed10348481916b9521b677773eee2691cb6b24d66632d8c8bb8913533f5ac4bfb2d0ef5454a1856082361
+  languageName: node
+  linkType: hard
+
+"glob@npm:^10.3.10":
+  version: 10.3.15
+  resolution: "glob@npm:10.3.15"
+  dependencies:
+    foreground-child: ^3.1.0
+    jackspeak: ^2.3.6
+    minimatch: ^9.0.1
+    minipass: ^7.0.4
+    path-scurry: ^1.11.0
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: c7aeae0b4eea0dfedc6682b71a8ad4d1ea9dfec0f2440571f916e1918c046824c8d441bbe1965c06fede025a0726c6daab5ae8019afe667364f43776eaaf9044
   languageName: node
   linkType: hard
 
@@ -24407,6 +24480,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jackspeak@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "jackspeak@npm:2.3.6"
+  dependencies:
+    "@isaacs/cliui": ^8.0.2
+    "@pkgjs/parseargs": ^0.11.0
+  dependenciesMeta:
+    "@pkgjs/parseargs":
+      optional: true
+  checksum: 57d43ad11eadc98cdfe7496612f6bbb5255ea69fe51ea431162db302c2a11011642f50cfad57288bd0aea78384a0612b16e131944ad8ecd09d619041c8531b54
+  languageName: node
+  linkType: hard
+
 "jake@npm:^10.8.5":
   version: 10.8.7
   resolution: "jake@npm:10.8.7"
@@ -26072,6 +26158,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jiti@npm:^1.21.0":
+  version: 1.21.0
+  resolution: "jiti@npm:1.21.0"
+  bin:
+    jiti: bin/jiti.js
+  checksum: a7bd5d63921c170eaec91eecd686388181c7828e1fa0657ab374b9372bfc1f383cf4b039e6b272383d5cb25607509880af814a39abdff967322459cca41f2961
+  languageName: node
+  linkType: hard
+
 "joi@npm:^17.3.0":
   version: 17.10.1
   resolution: "joi@npm:17.10.1"
@@ -26333,7 +26428,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.0.0, jsonc-parser@npm:^3.2.0":
+"jsonc-parser@npm:^3.0.0":
+  version: 3.2.1
+  resolution: "jsonc-parser@npm:3.2.1"
+  checksum: 656d9027b91de98d8ab91b3aa0d0a4cab7dc798a6830845ca664f3e76c82d46b973675bbe9b500fae1de37fd3e81aceacbaa2a57884bf2f8f29192150d2d1ef7
+  languageName: node
+  linkType: hard
+
+"jsonc-parser@npm:^3.2.0":
   version: 3.2.0
   resolution: "jsonc-parser@npm:3.2.0"
   checksum: 946dd9a5f326b745aa326d48a7257e3f4a4b62c5e98ec8e49fa2bdd8d96cef7e6febf1399f5c7016114fd1f68a1c62c6138826d5d90bc650448e3cf0951c53c7
@@ -27426,6 +27528,13 @@ __metadata:
   bin:
     lpad-align: cli.js
   checksum: e3ee93a8392c0161f8e28d9743e2cea925a4729e89b86a9bd8ce1a984879645afbcc9db4a3332a531e28d0d297fafe40c09589deda4a8a598ea2b05aff634f1e
+  languageName: node
+  linkType: hard
+
+"lru-cache@npm:^10.2.0":
+  version: 10.2.2
+  resolution: "lru-cache@npm:10.2.2"
+  checksum: 98e8fc93691c546f719a76103ef2bee5a3ac823955c755a47641ec41f8c7fafa1baeaba466937cc1cbfa9cfd47e03536d10e2db3158a64ad91ff3a58a32c893e
   languageName: node
   linkType: hard
 
@@ -28791,6 +28900,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"minipass@npm:^7.0.4":
+  version: 7.1.1
+  resolution: "minipass@npm:7.1.1"
+  checksum: d2c461947a7530f93de4162aa3ca0a1bed1f121626906f6ec63a5ba05fd7b1d9bee4fe89a37a43db7241c2416be98a799c1796abae583c7180be37be5c392ef6
+  languageName: node
+  linkType: hard
+
 "minizlib@npm:^2.1.1, minizlib@npm:^2.1.2":
   version: 2.1.2
   resolution: "minizlib@npm:2.1.2"
@@ -29156,6 +29272,17 @@ __metadata:
     raw-loader: ^2.0.0
     url-loader: ^1.1.2
   checksum: e9356f8ca0b63152cfa4c02e938ce0beebc28bdfde7cdc9b9a310740c9e1493bdb85184d4b446f5156280a84930ccdbf5fa4469c3e4c9b4b519080aaec9903f1
+  languageName: node
+  linkType: hard
+
+"next-share@npm:0.27.0":
+  version: 0.27.0
+  resolution: "next-share@npm:0.27.0"
+  dependencies:
+    jsonp: ^0.2.1
+  peerDependencies:
+    react: ">=17.0.2"
+  checksum: db2695ba6bdd1c74747b1c2cdc65eb6ca446f17ffc873cc959867e5bd09180333a51954f1208e51bef94d2f35986ab86684b0fbbc39bcbe93ce8a45e2700df07
   languageName: node
   linkType: hard
 
@@ -30966,6 +31093,16 @@ __metadata:
     lru-cache: ^9.1.1 || ^10.0.0
     minipass: ^5.0.0 || ^6.0.2 || ^7.0.0
   checksum: e2557cff3a8fb8bc07afdd6ab163a92587884f9969b05bbbaf6fe7379348bfb09af9ed292af12ed32398b15fb443e81692047b786d1eeb6d898a51eb17ed7d90
+  languageName: node
+  linkType: hard
+
+"path-scurry@npm:^1.11.0":
+  version: 1.11.1
+  resolution: "path-scurry@npm:1.11.1"
+  dependencies:
+    lru-cache: ^10.2.0
+    minipass: ^5.0.0 || ^6.0.2 || ^7.0.0
+  checksum: 890d5abcd593a7912dcce7cf7c6bf7a0b5648e3dee6caf0712c126ca0a65c7f3d7b9d769072a4d1baf370f61ce493ab5b038d59988688e0c5f3f646ee3c69023
   languageName: node
   linkType: hard
 
@@ -37644,21 +37781,21 @@ __metadata:
   linkType: hard
 
 "style-dictionary@npm:^3.0.2":
-  version: 3.8.0
-  resolution: "style-dictionary@npm:3.8.0"
+  version: 3.9.2
+  resolution: "style-dictionary@npm:3.9.2"
   dependencies:
     chalk: ^4.0.0
     change-case: ^4.1.2
     commander: ^8.3.0
     fs-extra: ^10.0.0
-    glob: ^7.2.0
+    glob: ^10.3.10
     json5: ^2.2.2
     jsonc-parser: ^3.0.0
     lodash: ^4.17.15
     tinycolor2: ^1.4.1
   bin:
     style-dictionary: bin/style-dictionary
-  checksum: ed2440c2d1bd84593f9f60ffbfbb7c85c9592d125e169ea63e2044fe681191e8c9c156853d82ae606f9adf6aacbaa162e03d5ef85b80be334d76e28a57bfc189
+  checksum: dffb8a2c56530cd24f55087abe4237ed3b1e57f8aea2155c8ad2342579ddec0b8d9d497c12aaf97dc11663b9d52d1f5edb35d860f47649a6488ddc9a85ed4255
   languageName: node
   linkType: hard
 
@@ -38070,7 +38207,40 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:3.3.3, tailwindcss@npm:^3.0.2":
+"tailwindcss@npm:3.4.3":
+  version: 3.4.3
+  resolution: "tailwindcss@npm:3.4.3"
+  dependencies:
+    "@alloc/quick-lru": ^5.2.0
+    arg: ^5.0.2
+    chokidar: ^3.5.3
+    didyoumean: ^1.2.2
+    dlv: ^1.1.3
+    fast-glob: ^3.3.0
+    glob-parent: ^6.0.2
+    is-glob: ^4.0.3
+    jiti: ^1.21.0
+    lilconfig: ^2.1.0
+    micromatch: ^4.0.5
+    normalize-path: ^3.0.0
+    object-hash: ^3.0.0
+    picocolors: ^1.0.0
+    postcss: ^8.4.23
+    postcss-import: ^15.1.0
+    postcss-js: ^4.0.1
+    postcss-load-config: ^4.0.1
+    postcss-nested: ^6.0.1
+    postcss-selector-parser: ^6.0.11
+    resolve: ^1.22.2
+    sucrase: ^3.32.0
+  bin:
+    tailwind: lib/cli.js
+    tailwindcss: lib/cli.js
+  checksum: 7d181a6aafb520c5760d23d0a199444a324dfa36538edd31934daa253ed9a7ac4bde18c4205aaa89c1269bc2ff11781efda04d2e27ded535a9a2547667a344b1
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^3.0.2":
   version: 3.3.3
   resolution: "tailwindcss@npm:3.3.3"
   dependencies:

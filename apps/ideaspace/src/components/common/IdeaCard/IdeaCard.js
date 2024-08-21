@@ -10,14 +10,12 @@ import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 
-
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
   const [buttonContent, setButtonContent] = useState('');
   const [urlPath, setUrlPath] = useState('');
   const [liked, setLiked] = useState(false);
   const { isAuthenticated, userData } = useUserDataContext();
-  
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to reactivate your idea', '', ''],
@@ -26,9 +24,9 @@ function IdeaCard({ cards, cardType }) {
   );
 
   useEffect(() => {
-    if (cardType == "mine") {
-      if (tagContent !== "archived") {
-        setButtonContent(`WORKSHOP THIS IDEA`);
+    if (cardType == 'mine') {
+      if (tagContent !== 'archived') {
+        setButtonContent(`Edit This Idea`);
       } else {
         setButtonContent(`REACTIVATE THIS IDEA`);
       }
@@ -44,7 +42,10 @@ function IdeaCard({ cards, cardType }) {
     setButtonContent(`WAIT`);
 
     try {
-      const res = await agent.Ideas.getIdea(cards.id, new URLSearchParams(`populate=*`));
+      const res = await agent.Ideas.getIdea(
+        cards.id,
+        new URLSearchParams(`populate=*`)
+      );
 
       if (res.status === 200) {
         setTagContent('workshopping');
@@ -63,24 +64,18 @@ function IdeaCard({ cards, cardType }) {
         borderRadius: '1rem',
       }}
     >
-
       <atoms.Box>
-        <IdeaCardTag
-          status={tagContent}
-        />
+        <IdeaCardTag status={tagContent} />
       </atoms.Box>
 
-      <IdeaCardImg
-        cardId={cards.id}
-        cardImg={cards.imgSrc}
-      />
+      <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
       <Link href={{ pathname: urlPath }}>
-        <atoms.Box 
-          flexDirection='column' 
-          alignItems='flex-start' 
-          justifyContent='space-between'
-          padding='0rem 2rem 2rem' 
+        <atoms.Box
+          flexDirection="column"
+          alignItems="flex-start"
+          justifyContent="space-between"
+          padding="0rem 2rem 2rem"
           style={{ maxWidth: '18.5rem' }}
         >
           <atoms.Typography
@@ -90,28 +85,31 @@ function IdeaCard({ cards, cardType }) {
             {cards.ideaName}
           </atoms.Typography>
 
-          <atoms.Box alignItems='center' >
-            <atoms.Typography type='p' style={{ fontSize: '1rem', textAlign: 'left' }} />
+          <atoms.Box alignItems="center">
+            <atoms.Typography
+              type="p"
+              style={{ fontSize: '1rem', textAlign: 'left' }}
+            />
             <IdeaCardComment commentLength={cards.comments?.length} />
           </atoms.Box>
-        <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
+          <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
         </atoms.Box>
       </Link>
 
-      {isAuthenticated ? <atoms.Box padding="0rem 2rem 2rem">
-        <LikeButton
-          onClick={() => setLiked((prev) => !prev)}
-          filled={liked}
-          text={liked ? 1 : ''}
-        ></LikeButton>
-      </atoms.Box>
-      : null}
-      
+      {isAuthenticated ? (
+        <atoms.Box padding="0rem 2rem 2rem">
+          <LikeButton
+            onClick={() => setLiked((prev) => !prev)}
+            filled={liked}
+            text={liked ? 1 : ''}
+          ></LikeButton>
+        </atoms.Box>
+      ) : null}
 
-      {tagContent == "archived" ? (
+      {tagContent == 'archived' ? (
         <atoms.Button
-          buttonSize='standard'
-          buttonType='alternative'
+          buttonSize="standard"
+          buttonType="alternative"
           style={{ margin: '0rem 2rem 1.5rem' }}
           onClick={reactivateIdea}
         >
@@ -120,8 +118,8 @@ function IdeaCard({ cards, cardType }) {
       ) : (
         <Link href={{ pathname: urlPath }}>
           <atoms.Button
-            buttonSize='standard'
-            buttonType='alternative'
+            buttonSize="standard"
+            buttonType="alternative"
             style={{ margin: '0rem 2rem 1.5rem' }}
           >
             {buttonContent}
