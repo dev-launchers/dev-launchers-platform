@@ -4,6 +4,7 @@ import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
 import natificationsData from './notificationsData';
 import { useQuery } from '@tanstack/react-query';
+import { agent } from '@devlaunchers/utility';
 
 export default function NotificationPopover() {
   const [notifications, setNotifications] = React.useState(natificationsData);
@@ -15,15 +16,12 @@ export default function NotificationPopover() {
     queryFn: getAllNotifications,
   });
 
-  console.log(data);
-
   function getAllNotifications() {
-    return fetch('https://apiv4-staging.devlaunchers.org/api/notifications', {
+    return agent.Notifications.get({
       method: 'GET',
       credentials: 'include',
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => 1)
       .catch((error) => {
         console.log(error);
       });
