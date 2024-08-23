@@ -10,7 +10,6 @@
     "noEmit": false,
     "composite": false,
     "incremental": true,
-    "outDir": "dist",
     "paths": {
       "@devlaunchers/core-lib/*": ["../../../packages/core-lib/src/*"],
       "@devlaunchers/core-lib": ["../../../packages/core-lib/src/index"]
