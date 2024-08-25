@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const UpvoteButton = ({ text, selected, disabled, onclick }) => {
+const UpvoteButton = ({ text, count, selected, disabled, onclick }) => {
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -40,11 +40,22 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
     </svg>
   );
 
-  // // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
-  // function clickFunc() {
-  //   setFocused(true);
-  //   onclick();
-  // }
+  const counter = ({ count }) => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          paddingLeft: 'var(--2, 8px)',
+          alignItems: 'center',
+          gap: 'var(--gap-g-x-0, 0px)',
+          borderLeft:
+            'var(--05, 2px) solid var(--icon-btn-interactive-gray, #000)',
+        }}
+      >
+        {count}
+      </div>
+    );
+  };
 
   return (
     <div
@@ -93,6 +104,7 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
     >
       {icon}
       {text}
+      {/* {counter {count}} */}
     </div>
   );
 };

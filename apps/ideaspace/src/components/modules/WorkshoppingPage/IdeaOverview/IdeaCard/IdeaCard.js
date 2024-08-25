@@ -35,8 +35,11 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       await agent.Likes.get(new URLSearchParams(params))
     );
     setCount(data.length);
+    console.log('data:', data);
     // check if user has already liked idea
     for (let i = 0; i < data.length; i++) {
+      console.log(data[i].users_permissions_user.data?.id);
+      console.log(userData.id);
       if (data[i].users_permissions_user.data?.id == userData.id) {
         setUpvoted(true);
       }
@@ -100,11 +103,13 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       <UpvoteButton
         onclick={handleUpvoteClick}
         selected={upvoted}
-        text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
-        }
+        // text={
+        //   upvoted
+        //     ? 'Upvoted | ' + count.toString()
+        //     : 'Upvote | ' + count.toString()
+        // }
+        text={upvoted ? 'Upvoted' : 'Upvote'}
+        count={count.toString()}
       />
     ) : null;
 
