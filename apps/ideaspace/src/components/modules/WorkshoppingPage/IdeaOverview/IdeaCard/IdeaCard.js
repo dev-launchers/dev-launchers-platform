@@ -23,6 +23,7 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
+  const [state, setState] = useState(false);
   const { userData, isAuthenticated } = useUserDataContext();
   useEffect(() => {
     loadDataOnlyOnce(); // query database
@@ -34,6 +35,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
     const data = cleanDataList(
       await agent.Likes.get(new URLSearchParams(params))
     );
+    console.log(data);
     setCount(data.length);
     console.log('data:', data);
     // check if user has already liked idea
@@ -55,6 +57,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         ideaId.toString() +
         '&filters[users_permissions_user][id][$eq]=' +
         userData.id.toString();
+      console.log(params);
       const data = cleanDataList(
         await agent.Likes.get(new URLSearchParams(params))
       );
@@ -63,7 +66,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         setUpvoted(false);
         setCount(count - 1);
       } catch (error) {
-        //console.log('failed to delete vote', error);
+        console.error(error);
       }
 
       event.preventDefault();
@@ -74,11 +77,13 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         console.error(error);
       }
     } else {
+      // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the idea ID, and the "IdeaCard" object type
       var likeData = {
         objectId: ideaId.toString(),
         objectType: 'IdeaCard',
         users_permissions_user: userData.id.toString(),
       };
+      console.log(likeData);
 
       try {
         await agent.Likes.post(likeData);

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import Button from '../../../common/Button';
-import Card from '../../../common/OldCard';
+import Card from '../../../common/Card';
 
 import { env } from '../../../../utils/EnvironmentVariables';
 

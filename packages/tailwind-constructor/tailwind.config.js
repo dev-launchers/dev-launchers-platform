@@ -13,7 +13,6 @@ module.exports = withTV({
       '../../apps/ideaspace/src/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/site-projects/src/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/website/src/**/*.{html,js,jsx,ts,tsx}',
-      '../../apps/user-profile/src/**/*.{html,js,jsx,ts,tsx}',
     ],
   },
   // darkMode: false, // or 'media' or 'class'
