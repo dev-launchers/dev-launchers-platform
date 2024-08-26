@@ -128,12 +128,3 @@ export const NavEntry = styled.div`
     font-size: 1.2rem;
   }
 `;
-
-export const OrgInfoArea = styled.div`
-  width: 90%;
-  text-align: right;
-  font-size: 0.85rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
