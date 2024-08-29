@@ -77,8 +77,8 @@ const IdeaForm = (
                   <Field
                     required
                     as={organisms.FormField}
-                    label="Idea Name&nbsp;"
-                    placeholder="Your Product Name"
+                    label="Idea Name:&nbsp;"
+                    placeholder="Title of your idea"
                     id="ideaName"
                     name="ideaName"
                     touched={touched['ideaName']}
@@ -89,8 +89,8 @@ const IdeaForm = (
                   <Field
                     required
                     as={organisms.OpenResponse}
-                    label="What Is Your Idea?&nbsp;"
-                    placeholder="What is your product idea? Would it be helpful or fun? Who would use it and why?"
+                    label="Describe your idea:&nbsp;"
+                    placeholder="What is your product idea? What are the primary features? Who would use it and why?"
                     id="description"
                     name="description"
                     touched={touched['description']}
@@ -103,8 +103,8 @@ const IdeaForm = (
                   <Field
                     required
                     as={organisms.OpenResponse}
-                    label="Do You Have Any Relevant Experience in Development or Design?&nbsp;"
-                    placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Devlaunchers and won't be publicly shown in the workshopping page."
+                    label="Do you have any relevant experience in software development or design that you'd like to utilize?:&nbsp;"
+                    placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Dev Launchers to make decisions on planning and team roles. It won't be publicly shown on the workshopping page."
                     id="experience"
                     name="experience"
                     touched={touched['experience']}
@@ -116,7 +116,7 @@ const IdeaForm = (
                 <atoms.Box flexDirection="column">
                   <Field
                     as={organisms.OpenResponse}
-                    label="Who Do You Think Your Idea is Helpful To?"
+                    label="Describe your expected users:"
                     placeholder="Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc."
                     id="targetAudience"
                     name="targetAudience"
@@ -140,7 +140,7 @@ const IdeaForm = (
                 </atoms.Box>
                 <Field
                   as={organisms.OpenResponse}
-                  label="Anything Else You Would Like to Share With Us?"
+                  label="Anything else you would like to share to support your idea?:"
                   placeholder="Want to share something else not listed above?"
                   id="extraInfo"
                   name="extraInfo"
@@ -149,8 +149,8 @@ const IdeaForm = (
                 />
                 <Field
                   as={organisms.FormField}
-                  label="Do You Have a Catchy Tagline for This Idea Submission?"
-                  placeholder="Your Tagline"
+                  label="What's a catchy tagline for your idea that sums up your value and purpose: ?"
+                  placeholder="Your tagline"
                   id="tagline"
                   name="tagline"
                 />
@@ -160,8 +160,8 @@ const IdeaForm = (
                     type="label"
                     style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}
                   >
-                    What Level of Involvement Do You Want to Have After
-                    Submission?<span style={{ color: 'red' }}>&nbsp;*</span>
+                    What level of involvement would you like to have after
+                    this submission?<span style={{ color: 'red' }}>&nbsp;*</span>
                     <atoms.ToolTip
                       content="As an “idea owner” you'll own the idea and be in charge of refine and update the information on the workshopping page."
                       direction="top"
@@ -176,13 +176,13 @@ const IdeaForm = (
                       onChange={(e, label) =>
                         setFieldValue('involveLevel', label)
                       }
-                      label="I don't want to be involved after submitting"
+                      label="I don't want to be involved after submitting this idea"
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
                         setFieldValue('involveLevel', label)
                       }
-                      label='I want to "own" this idea during workshopping only'
+                      label='I want to "own" this idea during workshopping and planning only'
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
@@ -241,8 +241,7 @@ const IdeaForm = (
                 </atoms.Box>
 
                 <atoms.Typography type="p">
-                  After submitting your idea, it will be reviewed and enter the
-                  workshopping stage!
+                  After submitting your idea, it will be posted in the Workshopping area to begin collaboration with other Dev Launchers.
                 </atoms.Typography>
 
                 <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
