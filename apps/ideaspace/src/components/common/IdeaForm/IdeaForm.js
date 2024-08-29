@@ -49,12 +49,6 @@ const IdeaForm = (
     return null;
   };
 
-  const recieveValue = (value) => {
-    console.log('going to set a value');
-    console.log(value);
-    setFieldValue('involveLevel', value);
-  };
-
   return (
     <atoms.Box margin="1rem 1.5rem 3rem 1.5rem">
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
