@@ -32,13 +32,13 @@ function SubmissionForm() {
   );
 
   const getDBInvolveLevel = (involveString) => {
-    if (involveString.includes('and also believe')) {
+    if (involveString.includes('to end')) {
       return 'highly';
-    } else if (involveString.includes('to help with workshopping')) {
+    } else if (involveString.includes('during workshopping')) {
       return 'medium';
-    } /* else if (involveString.includes("")) {
-      return "minimum";
-    }*/ else {
+    } else if (involveString.includes('after it is approved')) {
+      return 'minimum';
+    } else {
       return 'none';
     }
   };
@@ -117,7 +117,7 @@ function SubmissionForm() {
         handleDialog(url);
         router.events.emit('routeChangeError');
         throw 'Abort route change. Please ignore this error.';
-      }
+      };
       router.events.on('routeChangeStart', routeChangeStart);
       return () => {
         router.events.off('routeChangeStart', routeChangeStart);

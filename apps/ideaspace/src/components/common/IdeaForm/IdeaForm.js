@@ -48,6 +48,13 @@ const IdeaForm = (
     }, [values]);
     return null;
   };
+
+  const recieveValue = (value) => {
+    console.log('going to set a value');
+    console.log(value);
+    setFieldValue('involveLevel', value);
+  };
+
   return (
     <atoms.Box margin="1rem 1.5rem 3rem 1.5rem">
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
@@ -155,12 +162,40 @@ const IdeaForm = (
                   >
                     What Level of Involvement Do You Want to Have After
                     Submission?<span style={{ color: 'red' }}>&nbsp;*</span>
+                    <atoms.ToolTip
+                      content="As an “idea owner” you'll own the idea and be in charge of refine and update the information on the workshopping page."
+                      direction="top"
+                      delay={100}
+                      style={{ marginLeft: '0.1rem', marginBottom: '0.7rem' }}
+                    >
+                      <img alt="submit_image" src={popoverSvg} />
+                    </atoms.ToolTip>
                   </atoms.Typography>
                   <atoms.Box flexDirection="column" alignItems="flex-start">
-                    <atoms.Radio label="I don't want to be involved after submitting" />
-                    <atoms.Radio label='I want to "own" this idea during workshopping only' />
-                    <atoms.Radio label='I want to "own" this idea only after it is approved as a project' />
-                    <atoms.Radio label='I want to "own" this idea from beginning to end' />
+                    <atoms.Radio
+                      onChange={(e, label) =>
+                        setFieldValue('involveLevel', label)
+                      }
+                      label="I don't want to be involved after submitting"
+                    />
+                    <atoms.Radio
+                      onChange={(e, label) =>
+                        setFieldValue('involveLevel', label)
+                      }
+                      label='I want to "own" this idea during workshopping only'
+                    />
+                    <atoms.Radio
+                      onChange={(e, label) =>
+                        setFieldValue('involveLevel', label)
+                      }
+                      label='I want to "own" this idea only after it is approved as a project'
+                    />
+                    <atoms.Radio
+                      onChange={(e, label) =>
+                        setFieldValue('involveLevel', label)
+                      }
+                      label='I want to "own" this idea from beginning to end'
+                    />
                     {/* <Field
 									as={Dropdown}
 									title="Select desired level of involvement"
@@ -190,14 +225,6 @@ const IdeaForm = (
 											}					
 									}}
 									/> */}
-                    {/* <atoms.ToolTip
-										content="As an “idea owner” you’ll own the idea and be in charge of refine and update the information on the workshopping page."
-										direction="top"
-										delay={100}
-										style={{ marginLeft: '0.1rem', marginBottom: '0.7rem' }}
-									>
-										<img alt='submit_image' src={popoverSvg} />
-									</atoms.ToolTip> */}
                   </atoms.Box>
                   <atoms.Typography
                     type="p"
