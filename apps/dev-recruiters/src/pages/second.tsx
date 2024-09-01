@@ -17,7 +17,7 @@ const SecondPage = () => {
       {/* <TalcommunityPage></TalcommunityPage> */}
       <HeaderTalPage></HeaderTalPage>
       <SignUpForm handleCloseModal={handleCloseModal} />
-      {/* <TalCommForm></TalFormPage> */}
+      {/* <TalFormPage></TalFormPage> */}
     </BoxContainer>
   );
 };
