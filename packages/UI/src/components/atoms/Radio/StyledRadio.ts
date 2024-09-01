@@ -16,6 +16,8 @@ export const Option = styled.label`
   p {
     pointer-events: none;
   }
+
+  margin-bottom: 0.25rem;
 `;
 
 export const Input = styled.input`
