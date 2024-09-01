@@ -32,10 +32,15 @@ export default function TalCommForm({ handleCloseModal }: Props) {
     skills: Yup.string().required('Skills Field Entry is Required'),
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [checkCheckbox, setCheckCheckbox] = useState();
+  const [ageCheckbox, setAgeCheckbox] = useState<boolean | undefined>();
+  const [termsCheckbox, setTermsCheckbox] = useState<boolean | undefined>();
 
-  const handleSetCheckCheckbox = () => {
-    setCheckCheckbox(checkCheckbox!);
+  const handleSetAgeCheckbox = () => {
+    setAgeCheckbox(!ageCheckbox);
+  };
+
+  const handleSetTermsCheckbox = () => {
+    setTermsCheckbox(!termsCheckbox);
   };
 
   const handleOpenConfirmationModal = () => {
@@ -155,9 +160,16 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     <atoms.Checkbox
                       label="I am 18 years old or older."
                       disabled={false}
-                      onChange={handleSetCheckCheckbox}
+                      onChange={handleSetAgeCheckbox}
                       required
                     />
+                    <atoms.Checkbox
+                      label="I have read and agreed to the terms and conditions"
+                      disabled={false}
+                      onChange={handleSetTermsCheckbox}
+                      required
+                    />
+
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
                         buttonSize="standard"
