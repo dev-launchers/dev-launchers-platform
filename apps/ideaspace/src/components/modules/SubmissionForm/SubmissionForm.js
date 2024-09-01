@@ -148,9 +148,9 @@ function SubmissionForm() {
         </StyledRanbow>
         <BackButton buttonType="confirm" clickHandler={backHandler} />
         <atoms.Typography type="h4">
-          Have an idea for a development project?
+          Have an idea for a software project but need developers to build it?
           <br />
-          Share your idea with us!
+          Bring your idea to us - we will work with you to spin up a project to bring it to life!
         </atoms.Typography>
       </HeadWapper>
 
