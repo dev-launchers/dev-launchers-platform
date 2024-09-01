@@ -24,7 +24,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
-  const { userData, isLoading } = useUserDataContext();
+  const { userData, isLoading, isAuthenticated } = useUserDataContext();
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -103,6 +103,7 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
     userData?.id > 0 ? (
       <UpvoteButton
         show={showVoteButton}
+        disabled={!isAuthenticated}
         onclick={handleUpvoteClick}
         selected={upvoted}
         text={
