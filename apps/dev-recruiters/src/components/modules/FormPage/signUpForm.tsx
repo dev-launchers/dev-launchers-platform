@@ -36,6 +36,10 @@ export default function SignUpForm({
     email: Yup.string()
       .email('Invalid email')
       .required('Email Field Entry is Required'),
+    skills: Yup.string()
+      .required('Skills Field Entry is Required')
+      .nullable(false)
+      .matches(/^[^\s]+$/, 'Skills Field Entry is Required'),
     portfolioLink: Yup.string()
       .nullable(true)
       .default(undefined)
@@ -217,6 +221,9 @@ export default function SignUpForm({
                       placeholder="javascript, react, backend"
                       id="skills"
                       name="skills"
+                      required
+                      touched={formik.touched['skills']}
+                      error={formik.errors.skills}
                     />
                   </atoms.Box>
                   <atoms.Box flexDirection="column">
