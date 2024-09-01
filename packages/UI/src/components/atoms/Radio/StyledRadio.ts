@@ -5,7 +5,7 @@ export const Option = styled.label`
   font-family: ${({ theme }) => theme.fonts.normal};
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   list-style: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -16,6 +16,8 @@ export const Option = styled.label`
   p {
     pointer-events: none;
   }
+
+  margin-bottom: 0.25rem;
 `;
 
 export const Input = styled.input`
