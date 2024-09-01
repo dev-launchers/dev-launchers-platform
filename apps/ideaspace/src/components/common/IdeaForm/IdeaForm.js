@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
+import { Field, Form, Formik, useFormikContext } from 'formik';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
@@ -48,6 +48,7 @@ const IdeaForm = (
     }, [values]);
     return null;
   };
+
   return (
     <atoms.Box margin="1rem 1.5rem 3rem 1.5rem">
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
@@ -167,16 +168,16 @@ const IdeaForm = (
                       touched={touched['involveLevel']}
                       options={[
                         {
-                          text: `I don't want to be involved after submitting this idea`,
+                          text: `I want to "own" this idea from beginning to end`,
                         },
                         {
-                          text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+                          text: `I want to "own" this idea only after it is approved as a project`,
                         },
                         {
-                          text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
+                          text: `I want to "own" this idea during workshopping only`,
                         },
                         {
-                          text: `I want to “own” this idea and also believe have the skills necessary to apply as the product leadto make it a successful project`,
+                          text: `I don't want to be involved after submitting`,
                         },
                       ]}
                       recieveValue={(value) => {

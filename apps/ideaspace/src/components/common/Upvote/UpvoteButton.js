@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { Loader } from 'semantic-ui-react';
 
-const UpvoteButton = ({ text, selected, disabled, onclick }) => {
+const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+
+  if (!show) return null;
 
   const icon = selected ? (
     <svg
