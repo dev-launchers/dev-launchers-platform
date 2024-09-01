@@ -154,8 +154,8 @@ const IdeaForm = (
                     type="label"
                     style={{ marginLeft: '1rem', marginBottom: '0.5rem' }}
                   >
-                    What level of involvement would you like to have after
-                    this submission?<span style={{ color: 'red' }}>&nbsp;*</span>
+                    What level of involvement would you like to have after this
+                    submission?<span style={{ color: 'red' }}>&nbsp;*</span>
                     <atoms.ToolTip
                       content="As an “idea owner” you'll own the idea and be in charge of refine and update the information on the workshopping page."
                       direction="top"
@@ -170,13 +170,7 @@ const IdeaForm = (
                       onChange={(e, label) =>
                         setFieldValue('involveLevel', label)
                       }
-                      label="I don't want to be involved after submitting this idea"
-                    />
-                    <atoms.Radio
-                      onChange={(e, label) =>
-                        setFieldValue('involveLevel', label)
-                      }
-                      label='I want to "own" this idea during workshopping and planning only'
+                      label='I want to "own" this idea from beginning to end'
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
@@ -188,37 +182,14 @@ const IdeaForm = (
                       onChange={(e, label) =>
                         setFieldValue('involveLevel', label)
                       }
-                      label='I want to "own" this idea from beginning to end'
+                      label='I want to "own" this idea during workshopping only'
                     />
-                    {/* <Field
-									as={Dropdown}
-									title="Select desired level of involvement"
-									width={isMobile ? 'sm' : 'lg'}
-									type="radio"
-									id="involveLevel"
-									name="involveLevel"
-									touched={touched['involveLevel']}
-									options={[
-										{
-										text:`I don't want to be involved after submitting`,
-										},
-										{
-										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
-										},
-										{
-										text: `I want to “own” this idea to help with workshopping and designing until it become a project`,
-										},
-										{	
-										text: `I want to “own” this idea and also believe have the skills necessary to apply as the product lead to make it a successful project`,
-										},
-									]}
-									recieveValue={(value) => {
-										const selectedOptions = Object.entries(value).find(([key,value])=> value === true)
-											if (selectedOptions){
-												setFieldValue('involveLevel', selectedOptions[0])
-											}					
-									}}
-									/> */}
+                    <atoms.Radio
+                      onChange={(e, label) =>
+                        setFieldValue('involveLevel', label)
+                      }
+                      label="I don't want to be involved after submitting"
+                    />
                   </atoms.Box>
                   <atoms.Typography
                     type="p"
@@ -235,7 +206,9 @@ const IdeaForm = (
                 </atoms.Box>
 
                 <atoms.Typography type="p">
-                  After submitting your idea, it will be posted in the Workshopping area to begin collaboration with other Dev Launchers.
+                  After submitting your idea, it will be posted in the
+                  Workshopping area to begin collaboration with other Dev
+                  Launchers.
                 </atoms.Typography>
 
                 <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
