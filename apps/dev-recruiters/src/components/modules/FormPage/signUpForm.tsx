@@ -54,6 +54,7 @@ export default function SignUpForm({
     /* Adding new column yearsExperience column */
     yearsOfExperience: Yup.number()
       .default(0)
+      .typeError('Years of Experience is Required')
       .min(0, 'Years of Experience should be greater than 0')
       .max(100, 'Years of Expereince should be less than 100')
       .test(
