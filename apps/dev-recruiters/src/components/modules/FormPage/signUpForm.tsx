@@ -204,27 +204,22 @@ export default function SignUpForm({
                     error={formik.errors.email}
                   />
                   <atoms.Box gap="32px" flexDirection="column">
-                    <Field
-                      as={organisms.FormField}
-                      label={
-                        <atoms.Box gap="1rem" alignItems="center">
-                          What are your relevant skills?
-                          <atoms.ToolTip
-                            content="Please Separate skills with a comma."
-                            direction="left"
-                            delay={100}
-                          >
-                            ℹ️
-                          </atoms.ToolTip>
-                        </atoms.Box>
-                      }
-                      placeholder="javascript, react, backend"
-                      id="skills"
-                      name="skills"
-                      required
-                      touched={formik.touched['skills']}
-                      error={formik.errors.skills}
-                    />
+                    <atoms.ToolTip
+                      content="Please Separate skills with a comma."
+                      direction="right"
+                      delay={100}
+                    >
+                      <Field
+                        as={organisms.FormField}
+                        label={'What are your relevant skills?'}
+                        placeholder="javascript, react, backend"
+                        id="skills"
+                        name="skills"
+                        required
+                        touched={formik.touched['skills']}
+                        error={formik.errors.skills}
+                      />
+                    </atoms.ToolTip>
                   </atoms.Box>
                   <atoms.Box flexDirection="column">
                     <atoms.Typography type="pSmall">
