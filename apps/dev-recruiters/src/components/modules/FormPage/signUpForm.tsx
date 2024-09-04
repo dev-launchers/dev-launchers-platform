@@ -222,16 +222,30 @@ export default function SignUpForm({
                     </atoms.ToolTip>
                   </atoms.Box>
                   <atoms.Box flexDirection="column">
+                    <atoms.Box flexDirection="row">
+                      <atoms.Typography type="pSmall" textAlign="center">
+                        How many hours a week would you like to volunteer?
+                      </atoms.Typography>
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        &nbsp; *
+                      </atoms.Typography>
+                    </atoms.Box>
                     <atoms.Typography type="pSmall">
-                      HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
+                      Note: this role requires at least 10 hours a week.
                     </atoms.Typography>
-                    <atoms.Slider
-                      min={5}
-                      max={40}
-                      initialValue={5}
+                    <Field
+                      as={atoms.Slider}
+                      id="commitment"
+                      name="commitment"
+                      required
+                      touched={formik.touched['commitment']}
+                      error={formik.errors.commitment}
                       onChange={(value) =>
                         formik.setFieldValue('commitment', +value)
                       }
+                      min={5}
+                      max={40}
+                      initialValue={5}
                       withLabels
                       suffix=" hrs"
                       maxWidth="430px"
