@@ -38,8 +38,8 @@ export default function SignUpForm({
       .required('Email Field Entry is Required'),
     skills: Yup.string()
       .required('Skills Field Entry is Required')
-      .nullable(false)
-      .matches(/^[^\s]+$/, 'Skills Field Entry is Required'),
+      .nullable()
+      .matches(/^[^\s]+(\s+[^\s]+)*$/, 'Skills Field Entry is Required'),
     portfolioLink: Yup.string()
       .nullable(true)
       .default(undefined)
@@ -132,7 +132,6 @@ export default function SignUpForm({
             project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
           })
             .then((res) => {
-              console.log(res);
               handleOpenConfirmationModal();
               setSubmitting(false);
             })
