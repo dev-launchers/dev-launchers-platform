@@ -97,7 +97,7 @@ const IdeaForm = (
                   <Field
                     required
                     as={organisms.OpenResponse}
-                    label="Do you have any relevant experience in software development or design that you'd like to utilize?:&nbsp;"
+                    label="Do you have any relevant experience in software development or design that you'd like to utilize?&nbsp;"
                     placeholder="If you have any relevant experience in development or design, please explain here. This information will be shared with Dev Launchers to make decisions on planning and team roles. It won't be publicly shown on the workshopping page."
                     id="experience"
                     name="experience"
@@ -134,7 +134,7 @@ const IdeaForm = (
                 </atoms.Box>
                 <Field
                   as={organisms.OpenResponse}
-                  label="Anything else you would like to share to support your idea?:"
+                  label="Anything else you would like to share to support your idea?"
                   placeholder="Want to share something else not listed above?"
                   id="extraInfo"
                   name="extraInfo"
@@ -143,7 +143,7 @@ const IdeaForm = (
                 />
                 <Field
                   as={organisms.FormField}
-                  label="What's a catchy tagline for your idea that sums up your value and purpose: ?"
+                  label="What's a catchy tagline for your idea that sums up your value and purpose?"
                   placeholder="Your tagline"
                   id="tagline"
                   name="tagline"
@@ -158,9 +158,14 @@ const IdeaForm = (
                     submission?<span style={{ color: 'red' }}>&nbsp;*</span>
                     <atoms.ToolTip
                       content="As an “idea owner” you'll own the idea and be in charge of refine and update the information on the workshopping page."
-                      direction="top"
+                      direction="right"
                       delay={100}
-                      style={{ marginLeft: '0.1rem', marginBottom: '0.7rem' }}
+                      style={{
+                        marginLeft: '0.1rem',
+                        marginBottom: '0.5rem',
+                        width: '1rem',
+                        height: '1rem',
+                      }}
                     >
                       <img alt="submit_image" src={popoverSvg} />
                     </atoms.ToolTip>
