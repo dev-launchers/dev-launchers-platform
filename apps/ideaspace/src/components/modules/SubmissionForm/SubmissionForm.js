@@ -116,14 +116,6 @@ function SubmissionForm() {
     }
   }, [unsavedChanges, urrl]);*/
 
-  const backHandler = (url) => {
-    /*if (unsavedChanges) {
-      handleDialog(url);
-    } else {
-      */ window.history.back(-1);
-    //}
-  };
-
   return (
     <>
       <HeadWapper>
@@ -131,7 +123,7 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton buttonType="confirm" clickHandler={backHandler} />
+        <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
         <atoms.Typography type="h4">
           Have an idea for a software project but need developers to build it?
           <br />
