@@ -168,25 +168,25 @@ const IdeaForm = (
                   <atoms.Box flexDirection="column" alignItems="flex-start">
                     <atoms.Radio
                       onChange={(e, label) =>
-                        setFieldValue('involveLevel', label)
+                        setFieldValue('involveLevel', 'highly')
                       }
                       label='I want to "own" this idea from beginning to end'
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
-                        setFieldValue('involveLevel', label)
+                        setFieldValue('involveLevel', 'medium')
                       }
                       label='I want to "own" this idea only after it is approved as a project'
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
-                        setFieldValue('involveLevel', label)
+                        setFieldValue('involveLevel', 'minimum')
                       }
                       label='I want to "own" this idea during workshopping only'
                     />
                     <atoms.Radio
                       onChange={(e, label) =>
-                        setFieldValue('involveLevel', label)
+                        setFieldValue('involveLevel', 'none')
                       }
                       label="I don't want to be involved after submitting"
                     />
