@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
@@ -31,18 +31,6 @@ function SubmissionForm() {
     ['primary', 'close']
   );
 
-  const getDBInvolveLevel = (involveString) => {
-    if (involveString.includes('and also believe')) {
-      return 'highly';
-    } else if (involveString.includes('to help with workshopping')) {
-      return 'medium';
-    } /* else if (involveString.includes("")) {
-      return "minimum";
-    }*/ else {
-      return 'none';
-    }
-  };
-
   const initialValues = {
     ideaName: '',
     tagline: '',
@@ -74,11 +62,8 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    const involveValueForDataBase = getDBInvolveLevel(
-      values['involveLevel'].trim()
-    );
+    values['involveLevel'] = values['involveLevel'].trim();
 
-    values['involveLevel'] = involveValueForDataBase;
     setSending(true);
 
     try {
@@ -117,7 +102,7 @@ function SubmissionForm() {
         handleDialog(url);
         router.events.emit('routeChangeError');
         throw 'Abort route change. Please ignore this error.';
-      }
+      };
       router.events.on('routeChangeStart', routeChangeStart);
       return () => {
         router.events.off('routeChangeStart', routeChangeStart);
@@ -131,14 +116,6 @@ function SubmissionForm() {
     }
   }, [unsavedChanges, urrl]);*/
 
-  const backHandler = (url) => {
-    /*if (unsavedChanges) {
-      handleDialog(url);
-    } else {
-      */ window.history.back(-1);
-    //}
-  };
-
   return (
     <>
       <HeadWapper>
@@ -146,11 +123,12 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton buttonType="confirm" clickHandler={backHandler} />
+        <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
         <atoms.Typography type="h4">
-          Have an idea for a development project?
+          Have an idea for a software project but need developers to build it?
           <br />
-          Share your idea with us!
+          Bring your idea to us - we will work with you to spin up a project to
+          bring it to life!
         </atoms.Typography>
       </HeadWapper>
 

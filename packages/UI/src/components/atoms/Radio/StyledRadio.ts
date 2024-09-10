@@ -16,13 +16,15 @@ export const Option = styled.label`
   p {
     pointer-events: none;
   }
+
+  margin-bottom: 0.25rem;
 `;
 
 export const Input = styled.input`
   height: 24px;
-  width: 24px;
+  /* width: 24px; */
   aspect-ratio: 1/1;
-  
+
   -webkit-appearance: none;
   appearance: none;
 
