@@ -4,6 +4,7 @@ import {
   BtnSignUp,
   Footer,
   Wrapper,
+  Wrapjoin,
   AreaImage,
   SelectRoleContainer,
   SelectRoleText,
@@ -31,14 +32,11 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
   };
   return (
     <Wrapper>
-      <BoxContainer paddingVertical={20}>
-        <HeaderJoinPage />
-      </BoxContainer>
-
-      <AreaImage>
-        <ContainerImage src={JoinPLeft} width="100%" loading="lazy" />
-        <ContainerImage src={JoinPRight} width="100%" loading="lazy" />
-      </AreaImage>
+      <Wrapjoin>
+        <BoxContainer paddingVertical={20}>
+          <HeaderJoinPage />
+        </BoxContainer>
+      </Wrapjoin>
 
       <BoxContainer paddingVertical={75}>
         <SelectRoleContainer>
@@ -52,7 +50,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
         <RolesComponent projects={projects} opportunities={opportunities} />
       </BoxContainer>
 
-      <BoxContainer paddingVertical={0} paddingHorizontal={50}>
+      <BoxContainer paddingVertical={0} paddingHorizontal={0}>
         <Footer>
           <FooterFirstText>
             Join the Dev Launchers Talent Community

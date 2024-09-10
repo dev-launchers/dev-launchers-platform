@@ -15,6 +15,8 @@ export interface Opportunity {
     published_at: Date;
     created_at: Date;
     projects: { data: Project[] };
+    roleType: string;
+    roleCategory: string;
   };
 }
 
