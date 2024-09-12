@@ -9,13 +9,19 @@ import useConfirm from '../DialogBox/DialogBox';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
+import { cleanDataList } from '../../../utils/StrapiHelper';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
   const [buttonContent, setButtonContent] = useState('');
   const [urlPath, setUrlPath] = useState('');
   const [liked, setLiked] = useState(false);
-  const { isAuthenticated, userData } = useUserDataContext();
+  const { isAuthenticated, isLoading, userData } = useUserDataContext();
+  const [votes, setVotes] = useState('');
+
+  useEffect(() => {
+    if (!isLoading) loadDataOnlyOnce(); // query database
+  }, [isLoading]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(
     ['Unable to reactivate your idea', '', ''],
@@ -56,6 +62,16 @@ function IdeaCard({ cards, cardType }) {
     }
   };
 
+  const loadDataOnlyOnce = async () => {
+    // use get likes from agent
+    const params =
+      '?populate=deep&filters[objectId][$eq]=' + cards.id.toString();
+    const data = cleanDataList(
+      await agent.Likes.get(new URLSearchParams(params))
+    );
+    setVotes(data.length);
+  };
+
   return (
     <atoms.Box
       flexDirection="column"
@@ -92,6 +108,7 @@ function IdeaCard({ cards, cardType }) {
             />
             <IdeaCardComment commentLength={cards.comments?.length} />
           </atoms.Box>
+          {votes}
           <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
         </atoms.Box>
       </Link>
