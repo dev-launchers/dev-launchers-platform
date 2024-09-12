@@ -11,7 +11,7 @@ const SecondPage = () => {
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = (): void => {};
-
+  console.log('Testing Merge after testAfterTalComPageAck1470');
   return (
     <BoxContainer>
       {/* <TalcommunityPage></TalcommunityPage> */}
