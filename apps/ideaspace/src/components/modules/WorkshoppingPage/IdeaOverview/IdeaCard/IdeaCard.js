@@ -112,7 +112,18 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
             : 'Upvote | ' + count.toString()
         }
       />
-    ) : null;
+    ) : (
+      <UpvoteButton
+        show={showVoteButton}
+        disabled={true}
+        selected={upvoted}
+        text={
+          upvoted
+            ? 'Upvoted | ' + count.toString()
+            : 'Upvote | ' + count.toString()
+        }
+      />
+    );
 
   return (
     <StyledCard>
