@@ -21,7 +21,7 @@ export default function NotificationPopover() {
       method: 'GET',
       credentials: 'include',
     })
-      .then((data) => 1)
+      .then((data) => console.log('boom got the data'))
       .catch((error) => {
         console.log(error);
       });
@@ -67,10 +67,13 @@ export default function NotificationPopover() {
           <Bell />
         </button>
       </PopoverTrigger>
-      <PopoverContent hasCloseBtn={false}>
-        <div className="text-base">
-          <div className="flex items-center justify-between text-base">
-            <span className="capitalize font-semibold text-xl">
+      <PopoverContent
+        className="w-[min(90vw,40rem)] text-sm md:text-base"
+        hasCloseBtn={false}
+      >
+        <div>
+          <div className="flex items-center justify-between">
+            <span className="capitalize font-semibold text-base md:text-xl">
               notification
             </span>
             <button
