@@ -80,9 +80,9 @@ function IdeaCard({ cards, cardType }) {
         borderRadius: '1rem',
       }}
     >
-      <atoms.Box>
+      {/* <atoms.Box>
         <IdeaCardTag status={tagContent} />
-      </atoms.Box>
+      </atoms.Box> */}
 
       <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
