@@ -134,7 +134,7 @@ const Navigation = () => {
             })}
           </div>
         </ul>
-        {false ? (
+        {!isAuthenticated ? (
           <div className="hidden lg:flex lg:gap-4">
             <Button
               as="a"

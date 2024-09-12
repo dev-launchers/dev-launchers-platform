@@ -7,44 +7,31 @@ import { useQuery } from '@tanstack/react-query';
 import { agent } from '@devlaunchers/utility';
 
 export default function NotificationPopover() {
-  const [notifications, setNotifications] = React.useState(natificationsData);
+  const [notifications, setNotifications] = React.useState([]);
   const newNotificationsCount = notifications.reduce((count, x) => {
     return x.status == 'unRead' ? count + 1 : count;
   }, 0);
-  const { data, error, isPending } = useQuery({
-    queryKey: ['getNotifications'],
-    queryFn: getAllNotifications,
-  });
 
   function getAllNotifications() {
     return agent.Notifications.get({
       method: 'GET',
       credentials: 'include',
     })
-      .then((data) => console.log('boom got the data'))
+      .then((data) => {
+        setNotifications(data);
+      })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  async function getNotifications() {
-    try {
-      const data = await fetch(
-        'https://apiv4-staging.devlaunchers.org/api/notifications/87?populate=deep',
-        {
-          method: 'GET',
-          credentials: 'include',
-        }
-      );
-      const parsed = await data.json();
-      console.log(parsed);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const { data, error, isPending } = useQuery({
+    queryKey: ['getNotifications'],
+    queryFn: getAllNotifications,
+  });
 
   function markAllReadHandle() {
-    getNotifications();
+    getAllNotifications();
     setNotifications((prev) => {
       return prev.map((n) => {
         n.status = 'read';
@@ -83,20 +70,23 @@ export default function NotificationPopover() {
               Mark all as read
             </button>
           </div>
-          <ul>
+          <ul style={{ overflowY: 'auto', height: '25rem' }}>
             {notifications.map((n, i) => {
+              const { readDateTime, createdDateTime } = n.attributes;
+              const { title, content, entityId } =
+                n.attributes.event.data.attributes;
               return (
                 <NotificationItem
                   key={i}
-                  action={n.action}
-                  avatar={n.avatar}
-                  message={n.message}
-                  name={n.name}
-                  profileLink={n.profileLink}
-                  status={n.status}
-                  target={n.target}
-                  targetLink={n.targetLink}
-                  timeStamp={n.timeStamp}
+                  action={title}
+                  avatar={null}
+                  message={content}
+                  name={''}
+                  profileLink={null}
+                  status={readDateTime ? 'read' : 'unRead'}
+                  target={null}
+                  targetLink={'/ideaspace/workshop/' + entityId}
+                  timeStamp={'P0Y0M0DT12H30M5S'}
                 />
               );
             })}
@@ -121,3 +111,211 @@ export default function NotificationPopover() {
     </Popover>
   );
 }
+
+const exmpleNotification = {
+  id: 87,
+  attributes: {
+    createdAt: '2024-08-16T10:47:24.757Z',
+    updatedAt: '2024-08-16T10:47:24.757Z',
+    createdDateTime: '2024-08-16T10:47:24.728Z',
+    readDateTime: null,
+    user: {
+      data: {
+        id: 100,
+        attributes: {
+          username: 'yacine.k',
+          email: 'yacine.k@devlaunchers.com',
+          provider: 'google',
+          confirmed: true,
+          blocked: false,
+          discordUsername: null,
+          userId: 'e96c2149-a172-4b51-839c-50b8ed36765c',
+          hasAcceptedTermsOfService: null,
+          hasSubscribedEmails: null,
+          createdAt: '2024-08-10T07:16:54.908Z',
+          updatedAt: '2024-08-10T07:16:54.908Z',
+          discord_avatar: null,
+          discord_discriminator: null,
+          job: 'other',
+          experience: null,
+          schedule: null,
+          completedOnboarding: false,
+          projects: {
+            data: [],
+          },
+          interests: {
+            data: [],
+          },
+          idea_cards: {
+            data: [
+              {
+                id: 313,
+                attributes: {
+                  ideaName: 'pizza',
+                  tagline: '',
+                  description: 'pizza pizza',
+                  targetAudience: '',
+                  features: 'pizza',
+                  experience: 'pizza',
+                  createdAt: '2024-08-16T10:47:24.135Z',
+                  updatedAt: '2024-08-16T10:47:24.135Z',
+                  publishedAt: '2024-08-16T10:47:24.081Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 314,
+                attributes: {
+                  ideaName: 'yooooooooooo',
+                  tagline: 'yooooooooooo',
+                  description: 'yooooooooooo',
+                  targetAudience: 'yooooooooooo',
+                  features: 'yooooooooooo',
+                  experience: 'yooooooooooo',
+                  createdAt: '2024-08-16T14:44:24.655Z',
+                  updatedAt: '2024-08-16T14:44:24.655Z',
+                  publishedAt: '2024-08-16T14:44:24.601Z',
+                  extraInfo: 'yooooooooooo',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 316,
+                attributes: {
+                  ideaName: 'Firebase',
+                  tagline: '',
+                  description: 'lets start using firebase',
+                  targetAudience: '',
+                  features: 'lets start using firebase',
+                  experience: 'lets start using firebase',
+                  createdAt: '2024-08-22T08:02:51.545Z',
+                  updatedAt: '2024-08-22T08:02:51.545Z',
+                  publishedAt: '2024-08-22T08:02:51.490Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'medium',
+                },
+              },
+            ],
+          },
+          profile: {
+            data: null,
+          },
+          ownedCards: {
+            data: [
+              {
+                id: 312,
+                attributes: {
+                  ideaName: 'pizza ',
+                  tagline: null,
+                  description: 'pizza pizza ',
+                  targetAudience: null,
+                  features: 'pizza ',
+                  experience: 'pizza ',
+                  createdAt: '2024-08-16T10:44:06.580Z',
+                  updatedAt: '2024-08-16T10:45:42.568Z',
+                  publishedAt: '2024-08-16T10:45:42.510Z',
+                  extraInfo: null,
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 313,
+                attributes: {
+                  ideaName: 'pizza',
+                  tagline: '',
+                  description: 'pizza pizza',
+                  targetAudience: '',
+                  features: 'pizza',
+                  experience: 'pizza',
+                  createdAt: '2024-08-16T10:47:24.135Z',
+                  updatedAt: '2024-08-16T10:47:24.135Z',
+                  publishedAt: '2024-08-16T10:47:24.081Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 314,
+                attributes: {
+                  ideaName: 'yooooooooooo',
+                  tagline: 'yooooooooooo',
+                  description: 'yooooooooooo',
+                  targetAudience: 'yooooooooooo',
+                  features: 'yooooooooooo',
+                  experience: 'yooooooooooo',
+                  createdAt: '2024-08-16T14:44:24.655Z',
+                  updatedAt: '2024-08-16T14:44:24.655Z',
+                  publishedAt: '2024-08-16T14:44:24.601Z',
+                  extraInfo: 'yooooooooooo',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 316,
+                attributes: {
+                  ideaName: 'Firebase',
+                  tagline: '',
+                  description: 'lets start using firebase',
+                  targetAudience: '',
+                  features: 'lets start using firebase',
+                  experience: 'lets start using firebase',
+                  createdAt: '2024-08-22T08:02:51.545Z',
+                  updatedAt: '2024-08-22T08:02:51.545Z',
+                  publishedAt: '2024-08-22T08:02:51.490Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'medium',
+                },
+              },
+            ],
+          },
+          comments: {
+            data: [
+              {
+                id: 286,
+                attributes: {
+                  text: 'what is this idea about ?',
+                  author: 'yacine.k',
+                  createdAt: '2024-08-22T07:58:58.635Z',
+                  updatedAt: '2024-08-22T07:58:58.635Z',
+                  publishedAt: '2024-08-22T07:58:58.606Z',
+                },
+              },
+              {
+                id: 287,
+                attributes: {
+                  text: 'what is this tool',
+                  author: 'yacine.k',
+                  createdAt: '2024-08-22T08:03:16.686Z',
+                  updatedAt: '2024-08-22T08:03:16.686Z',
+                  publishedAt: '2024-08-22T08:03:16.659Z',
+                },
+              },
+            ],
+          },
+        },
+      },
+    },
+    event: {
+      data: {
+        id: 78,
+        attributes: {
+          entityId: 313,
+          entityType: 'IdeaCard',
+          title: 'Idea Submitted Successfully',
+          content: 'yacine.k added new idea, pizza -  is created',
+          createdDateTime: '2024-08-16T10:47:24.135Z',
+          createdAt: '2024-08-16T10:47:24.563Z',
+          updatedAt: '2024-08-16T10:47:24.563Z',
+        },
+      },
+    },
+  },
+};
