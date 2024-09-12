@@ -73,68 +73,70 @@ function IdeaCard({ cards, cardType }) {
   };
 
   return (
-    <atoms.Box
-      flexDirection="column"
-      style={{
-        border: '0.05rem solid rgba(240, 237, 238, 1)',
-        borderRadius: '1rem',
-      }}
-    >
-      {/* <atoms.Box>
+    <Link href={{ pathname: urlPath }}>
+      <atoms.Box
+        flexDirection="column"
+        style={{
+          border: '0.05rem solid rgba(240, 237, 238, 1)',
+          borderRadius: '1rem',
+        }}
+      >
+        {/* <atoms.Box>
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
 
-      <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
+        <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
-      <Link href={{ pathname: urlPath }}>
-        <atoms.Box
-          flexDirection="column"
-          alignItems="flex-start"
-          justifyContent="space-between"
-          padding="0rem 2rem 2rem"
-          style={{ maxWidth: '18.5rem' }}
-        >
-          <atoms.Typography
-            type="h3"
-            style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
-          >
-            {cards.ideaName}
-          </atoms.Typography>
-
-          <atoms.Box alignItems="center">
-            <atoms.Typography
-              type="p"
-              style={{ fontSize: '1rem', textAlign: 'left' }}
-            />
-            <IdeaCardComment commentLength={cards.comments?.length} />
-          </atoms.Box>
-          {votes}
-          <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
-        </atoms.Box>
-      </Link>
-
-      {tagContent == 'archived' ? (
-        <atoms.Button
-          buttonSize="standard"
-          buttonType="alternative"
-          style={{ margin: '0rem 2rem 1.5rem' }}
-          onClick={reactivateIdea}
-        >
-          {buttonContent}
-        </atoms.Button>
-      ) : (
         <Link href={{ pathname: urlPath }}>
+          <atoms.Box
+            flexDirection="column"
+            alignItems="flex-start"
+            justifyContent="space-between"
+            padding="0rem 2rem 2rem"
+            style={{ maxWidth: '18.5rem' }}
+          >
+            <atoms.Typography
+              type="h3"
+              style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
+            >
+              {cards.ideaName}
+            </atoms.Typography>
+
+            <atoms.Box alignItems="center">
+              <atoms.Typography
+                type="p"
+                style={{ fontSize: '1rem', textAlign: 'left' }}
+              />
+              <IdeaCardComment commentLength={cards.comments?.length} />
+            </atoms.Box>
+            {votes}
+            <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
+          </atoms.Box>
+        </Link>
+
+        {tagContent == 'archived' ? (
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"
             style={{ margin: '0rem 2rem 1.5rem' }}
+            onClick={reactivateIdea}
           >
             {buttonContent}
           </atoms.Button>
-        </Link>
-      )}
-      <UpdateFailure />
-    </atoms.Box>
+        ) : (
+          <Link href={{ pathname: urlPath }}>
+            <atoms.Button
+              buttonSize="standard"
+              buttonType="alternative"
+              style={{ margin: '0rem 2rem 1.5rem' }}
+            >
+              {buttonContent}
+            </atoms.Button>
+          </Link>
+        )}
+        <UpdateFailure />
+      </atoms.Box>
+    </Link>
   );
 }
 
