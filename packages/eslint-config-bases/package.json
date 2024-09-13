@@ -50,7 +50,8 @@
       "require": "./src/bases/storybook.js"
     },
     "./typescript": {
-      "require": "./src/bases/typescript.js"
+      "require": "./src/bases/typescript.mjs",
+      "import": "./src/bases/typescript.mjs"
     },
     "./tailwind": {
       "require": "./src/bases/tailwind.js"
@@ -67,11 +68,11 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.5",
     "@testing-library/react-hooks": "^8.0.1",
-    "@typescript-eslint/eslint-plugin": "^5.30.7",
-    "@typescript-eslint/parser": "^5.30.7",
+    "@typescript-eslint/eslint-plugin": "8.5.0",
+    "@typescript-eslint/parser": "8.5.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.3.0",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-import": "2.30.0",
     "eslint-plugin-jest": "^26.6.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
@@ -83,7 +84,9 @@
     "eslint-plugin-sonarjs": "^0.14.0",
     "eslint-plugin-storybook": "^0.6.1",
     "eslint-plugin-testing-library": "^5.5.1",
-    "prettier": "^2.7.1"
+    "globals": "15.9.0",
+    "prettier": "^2.7.1",
+    "typescript-eslint": "8.5.0"
   },
   "peerDependencies": {
     "eslint": "^8.0.0",

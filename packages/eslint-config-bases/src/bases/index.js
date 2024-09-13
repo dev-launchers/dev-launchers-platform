@@ -6,6 +6,6 @@ module.exports = {
   reactTestingLibrary: require('./rtl'),
   sonar: require('./sonar'),
   storybook: require('./storybook'),
-  typescript: require('./typescript'),
+  typescript: require('./typescript.mjs'),
   tailwind: require('./tailwind'),
 };
