@@ -31,11 +31,14 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   }, [isLoading]);
 
   const loadDataOnlyOnce = async () => {
+    console.log('loading data...');
     // use get likes from agent
     const params = '?populate=deep&filters[objectId][$eq]=' + ideaId.toString();
     const data = cleanDataList(
       await agent.Likes.get(new URLSearchParams(params))
     );
+    console.log('got some data, below');
+    console.log(data);
     setCount(data.length);
     // check if user has already liked idea
     for (let i = 0; i < data.length; i++) {
@@ -43,6 +46,8 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         setUpvoted(true);
       }
     }
+
+    console.log('updating!');
 
     setShowVoteButton(true);
   };
