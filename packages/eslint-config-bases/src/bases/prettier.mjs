@@ -13,7 +13,7 @@ export default ts.config({
   // extends: ['prettier'],
   // plugins: ['prettier'],
   rules: {
-    // 'prettier/prettier': ['error', prettierConfig],
+    'prettier/prettier': ['error', prettierConfig],
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
   },
