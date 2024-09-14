@@ -31,28 +31,18 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   }, [isLoading]);
 
   const loadDataOnlyOnce = async () => {
-    console.log('loading data...');
-    try {
-      const params =
-        '?populate=deep&filters[objectId][$eq]=' + ideaId.toString();
-      const data = cleanDataList(
-        await agent.Likes.get(new URLSearchParams(params))
-      );
-      console.log('got some data, below');
-      console.log(data);
-      setCount(data.length);
-      // check if user has already liked idea
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].users_permissions_user.data?.id == userData.id) {
-          setUpvoted(true);
-        }
-      }
-    } catch (e) {
-      console.log('error fetching like data');
-      console.log(e);
-    }
+    const params = '?populate=deep&filters[objectId][$eq]=' + ideaId.toString();
+    const data = cleanDataList(
+      await agent.Likes.get(new URLSearchParams(params))
+    );
 
-    console.log('updating!');
+    setCount(data.length);
+    // check if user has already liked idea
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].users_permissions_user.data?.id == userData.id) {
+        setUpvoted(true);
+      }
+    }
 
     setShowVoteButton(true);
   };
