@@ -18,6 +18,7 @@ export default function NotificationPopover() {
       credentials: 'include',
     })
       .then((data) => {
+        data.reverse();
         setNotifications(data);
       })
       .catch((error) => {
@@ -86,7 +87,7 @@ export default function NotificationPopover() {
                   status={readDateTime ? 'read' : 'unRead'}
                   target={null}
                   targetLink={'/ideaspace/workshop/' + entityId}
-                  timeStamp={'P0Y0M0DT12H30M5S'}
+                  timeStamp={createdDateTime}
                 />
               );
             })}

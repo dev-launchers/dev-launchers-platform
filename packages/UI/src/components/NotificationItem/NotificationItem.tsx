@@ -134,6 +134,25 @@ function formatDate(
   return `${formattedUnits.join(':')}`;
 }
 
+function timeSincePublished(publishedAt: string) {
+  const now = new Date();
+  const publishedDate = new Date(publishedAt);
+  const diffInMs = now.getTime() - publishedDate.getTime();
+
+  const diffInSeconds = Math.floor(diffInMs / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+
+  if (diffInDays > 0) {
+    return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+  } else if (diffInMinutes > 0) {
+    return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+  } else {
+    return `${diffInSeconds} second${diffInSeconds > 1 ? 's' : ''} ago`;
+  }
+}
+
 function NotificationItem({
   message,
   name,
@@ -202,9 +221,9 @@ function NotificationItem({
           <time
             dateTime={timeStamp}
             className={timeStampStyle()}
-            aria-label={formatDate(parse(timeStamp))}
+            aria-label={timeSincePublished(timeStamp)}
           >
-            {formatDate(parse(timeStamp), true)}
+            {timeSincePublished(timeStamp)}
           </time>
         </div>
       </a>
