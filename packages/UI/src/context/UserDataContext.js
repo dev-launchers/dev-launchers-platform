@@ -1,7 +1,8 @@
+import axios from 'axios';
 import constate from 'constate'; // State Context Object Creator
 import { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const DEFAULT_USER = {
   id: 0,
   name: '',

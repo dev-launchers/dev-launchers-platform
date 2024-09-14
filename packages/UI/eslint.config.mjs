@@ -1,17 +1,8 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import js from '@eslint/js';
-import { FlatCompat } from '@eslint/eslintrc';
+import { getDefaultIgnorePatterns } from '@devlaunchers/eslint-config-bases/helpers';
 import typescript from '@devlaunchers/eslint-config-bases/typescript';
-// const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
+import ts from 'typescript-eslint';
 
-export default [
+export default ts.config(
   // {
   //   ignores: [
   //     '**/node_modules',
@@ -22,6 +13,7 @@ export default [
   //   ],
   // },
   ...typescript,
+  { ignores: getDefaultIgnorePatterns() }
   // ...compat
   //   .extends(
   //   // "@devlaunchers/eslint-config-bases/sonar",
@@ -35,18 +27,17 @@ export default [
   //   // "@devlaunchers/eslint-config-bases/prettier",
   //   ),
   // {
-  //   // languageOptions: {
-  //   //     ecmaVersion: 5,
-  //   //     sourceType: "script",
-  //   //     parserOptions: {
-  //   //         tsconfigRootDir: "/home/momaqbol/Documents/github/dev-launchers-platform/packages/UI",
-  //   //         project: "tsconfig.json",
-  //   //     },
-  //   // },
+  //   languageOptions: {
+  //       ecmaVersion: 5,
+  //       sourceType: "script",
+  //       parserOptions: {
+  //           tsconfigRootDir: __dirname,
+  //       },
+  //   },
   //   // rules: {
   //   //     "tailwindcss/no-custom-classname": ["error", {
   //   //         whitelist: [],
   //   //     }],
   //   // },
   // },
-];
+);

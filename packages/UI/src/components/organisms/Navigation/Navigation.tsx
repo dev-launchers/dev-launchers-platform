@@ -81,6 +81,7 @@ export const links = {
       href: '/ideaspace/browse',
     },
   ],
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   'SUPPORT US': '/support-us',
   JOIN: '/join',
 };

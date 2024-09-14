@@ -23,7 +23,8 @@
       "require": "./src/patch/modern-module-resolution.js"
     },
     "./helpers": {
-      "require": "./src/helpers/index.js"
+      "require": "./src/helpers/index.js",
+      "import": "./src/helpers/index.js"
     },
     "./jest": {
       "require": "./src/bases/jest.js"
@@ -71,7 +72,7 @@
     "@typescript-eslint/eslint-plugin": "8.5.0",
     "@typescript-eslint/parser": "8.5.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^3.3.0",
+    "eslint-import-resolver-typescript": "3.6.3",
     "eslint-plugin-import": "2.30.0",
     "eslint-plugin-jest": "^26.6.0",
     "eslint-plugin-jest-formatting": "^3.1.0",
@@ -107,6 +108,7 @@
   },
   "devDependencies": {
     "@devlaunchers/tailwind": "workspace:*",
+    "@types/espree": "10.1.0",
     "@types/jest": "28.1.6",
     "@types/node": "18.0.6",
     "@types/prettier": "2.7.0",

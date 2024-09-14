@@ -1,5 +1,5 @@
-import Router from 'next/router';
 import axios from 'axios';
+import Router from 'next/router';
 
 const Logout = () => {
   axios

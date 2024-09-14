@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import logoMonogramImage from '@devlaunchers/components/images/logo-monogram.png?webp';
 import styled from 'styled-components';
 

@@ -2,19 +2,21 @@
  * Custom config base for projects using typescript / javascript.
  * @see https://github.com/belgattitude/nextjs-monorepo-example/tree/main/packages/eslint-config-bases
  */
-
-import globals from 'globals';
+import * as globals from 'globals';
 import js from '@eslint/js';
 import ts from'typescript-eslint';
+// @ts-ignore
 import importPlugin from 'eslint-plugin-import';
-console.log(ts.configs.recommended);
+import { parser } from 'typescript-eslint';
+import * as espree from 'espree';
+
 
 export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
-  importPlugin.configs.recommended,
-  importPlugin.configs.typescript,
   {
+    ...importPlugin.flatConfigs.recommended,
+    ...importPlugin.flatConfigs.typescript,
     languageOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
@@ -22,7 +24,7 @@ export default ts.config(
         ...globals.es2016,
         ...globals.node,
       },
-      parser: '@typescript-eslint/parser',
+      parser,
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -33,7 +35,7 @@ export default ts.config(
     },
     settings: {
       'import/resolver': {
-        typescript: {},
+        'typescript': true
       },
     },
     rules: {
@@ -52,9 +54,11 @@ export default ts.config(
           },
         },
       ],
-      'linebreak-style': ['error', 'unix'],
+      // 'linebreak-style': ['error', 'unix'],
+      'linebreak-style': 'off',
       'no-empty-function': 'off',
-      'import/default': 'off',
+      // 'import/default': 'off',
+      'no-undef': 'off',
       'import/no-duplicates': ['error', { considerQueryString: true }],
       'import/no-named-as-default-member': 'off',
       'import/no-named-as-default': 'off',
@@ -74,6 +78,9 @@ export default ts.config(
         },
       ],
       '@typescript-eslint/ban-tslint-comment': ['error'],
+      '@typescript-eslint/no-empty-object-type': ['error', {
+        allowInterfaces: 'with-single-extends'
+      }],
       '@typescript-eslint/ban-ts-comment': [
         'error',
         {
@@ -110,17 +117,17 @@ export default ts.config(
           trailingUnderscore: 'forbid',
         },
         {
-          selector: 'variable',
+          selector: ['variable', 'import'],
           format: ['camelCase', 'PascalCase'],
           leadingUnderscore: 'allow',
         },
         {
           selector: ['function'],
-          format: ['camelCase'],
+          format: ['camelCase', 'PascalCase'],
         },
         {
           selector: 'parameter',
-          format: ['camelCase'],
+          format: ['camelCase', 'PascalCase'],
           leadingUnderscore: 'allow',
         },
         {
@@ -162,25 +169,30 @@ export default ts.config(
         },
       ],
     },
-    overrides: [
-      {
-        // commonjs or assumed
-        files: ['*.js', '*.cjs'],
-        parser: 'espree',
-        parserOptions: {
-          ecmaVersion: 2020,
-        },
-        rules: {
-          '@typescript-eslint/naming-convention': 'off',
-          '@typescript-eslint/ban-ts-comment': 'off',
-          '@typescript-eslint/no-explicit-any': 'off',
-          '@typescript-eslint/no-var-requires': 'off',
-          '@typescript-eslint/explicit-module-boundary-types': 'off',
-          '@typescript-eslint/consistent-type-exports': 'off',
-          '@typescript-eslint/consistent-type-imports': 'off',
-          'import/order': 'off',
-        },
-      },
-    ],
   },
+  {
+    // commonjs or assumed
+    files: ['*.js', '*.cjs'],
+    languageOptions: {
+      parser: espree,
+      parserOptions: {
+        project: ['tsconfig.json'],
+        ecmaVersion: 2020,
+      },
+      globals: {
+        ...globals.browser
+      }
+    },
+    rules: {
+      '@typescript-eslint/naming-convention': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/consistent-type-exports': 'off',
+      '@typescript-eslint/consistent-type-imports': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
+      'import/order': 'off',
+    },
+  }
 );
