@@ -3,6 +3,8 @@ import { HeadWapper, Headline } from '../../common/CommonStyles';
 import { atoms } from '@devlaunchers/components/src/components';
 import { Link } from '@devlaunchers/components/src/components/atoms';
 import { StyledRainbow } from './StyledTermsConditionPage';
+import TermsConditionContent from './TermsConditionContent';
+import TermsTable from './TermsTable';
 
 function TermsConditionPage() {
   return (
@@ -29,7 +31,100 @@ function TermsConditionPage() {
           </div>
         </div>
       </HeadWapper>
-      <div className="max-w-6xl px-10"></div>
+      <div className="max-w-8xl px-16  py-10">
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.introduction.heading}
+          </h2>
+          {TermsConditionContent.introduction.paragraphs.map((para, index) => (
+            <p key={index}>{para}</p>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.definitions.heading}
+          </h2>
+          <ul className="list-disc pl-5">
+            {TermsConditionContent.definitions.paragraphs.map((para, index) => (
+              <li key={index}>{para}</li>
+            ))}
+          </ul>
+        </div>
+
+        <TermsTable></TermsTable>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.ageEligibility.heading}
+          </h2>
+          {TermsConditionContent.ageEligibility.paragraphs.map(
+            (para, index) => (
+              <p key={index}>{para}</p>
+            )
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.nonCondidentiality.heading}
+          </h2>
+          {TermsConditionContent.nonCondidentiality.paragraphs.map(
+            (para, index) => (
+              <p key={index}>{para}</p>
+            )
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.intellectualPropertyRights.heading}
+          </h2>
+          {TermsConditionContent.intellectualPropertyRights.paragraphs.map(
+            (para, index) => (
+              <p key={index}>{para}</p>
+            )
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.ideaEvaluation.heading}
+          </h2>
+          {TermsConditionContent.ideaEvaluation.paragraphs.map(
+            (para, index) => (
+              <p key={index}>{para}</p>
+            )
+          )}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.consulting.heading}
+          </h2>
+          {TermsConditionContent.consulting.paragraphs.map((para, index) => (
+            <p key={index}>{para}</p>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.indemnity.heading}
+          </h2>
+          {TermsConditionContent.indemnity.paragraphs.map((para, index) => (
+            <p key={index}>{para}</p>
+          ))}
+        </div>
+
+        <div className="flex flex-col gap-3 mb-10">
+          <h2 className="text-2xl font-bold mb-4">
+            {TermsConditionContent.changeToTerms.heading}
+          </h2>
+          {TermsConditionContent.changeToTerms.paragraphs.map((para, index) => (
+            <p key={index}>{para}</p>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
