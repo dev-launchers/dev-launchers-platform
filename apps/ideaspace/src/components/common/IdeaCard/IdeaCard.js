@@ -102,7 +102,7 @@ function IdeaCard({ cards, cardType }) {
               {cards.ideaName}
             </atoms.Typography>
 
-            <atoms.Box alignItems="center">
+            {/* <atoms.Box alignItems="center">
               <atoms.Typography
                 type="p"
                 style={{ fontSize: '1rem', textAlign: 'left' }}
@@ -110,11 +110,32 @@ function IdeaCard({ cards, cardType }) {
               <IdeaCardComment commentLength={cards.comments?.length} />
             </atoms.Box>
             {votes}
-            <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} />
+            <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} /> */}
+
+            <atoms.Typography
+              type="p"
+              style={{ fontSize: '1.1rem', marginBottom: '2rem' }}
+            >
+              {cards.description}
+            </atoms.Typography>
+            <div>
+              {/* <atoms.Typography
+                type="label"
+                style={{ fontSize: '1rem', marginBottom: '2rem' }}
+              >
+                Updated: {cards.mostRecentCommentTime}
+              </atoms.Typography> */}
+              <atoms.Typography
+                type="label"
+                style={{ fontSize: '1rem', marginBottom: '2rem' }}
+              >
+                {cards.comments?.length} comments - {votes} upvotes
+              </atoms.Typography>
+            </div>
           </atoms.Box>
         </Link>
 
-        {tagContent == 'archived' ? (
+        {/* {tagContent == 'archived' ? (
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"
@@ -133,7 +154,7 @@ function IdeaCard({ cards, cardType }) {
               {buttonContent}
             </atoms.Button>
           </Link>
-        )}
+        )} */}
         <UpdateFailure />
       </atoms.Box>
     </Link>
