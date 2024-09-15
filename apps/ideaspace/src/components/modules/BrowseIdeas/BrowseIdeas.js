@@ -28,6 +28,11 @@ function BrowseIdeas() {
       label: 'Recent Activity',
       isAscending: false,
     },
+    {
+      value: 'publishedAt',
+      label: 'Recent Ideas',
+      isAscending: false,
+    },
   ];
 
   const sortCards = (selectedSortCriterion) => {
@@ -69,6 +74,7 @@ function BrowseIdeas() {
     const getCards = ideaCards.map((item) => {
       if (item?.comments?.data) {
         item.comments = cleanDataList(item.comments.data);
+        console.log(item);
 
         const recentCommentedTime =
           item.comments.length > 0
@@ -141,6 +147,10 @@ function BrowseIdeas() {
                   {
                     disabled: false,
                     text: 'Recent Activity',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Recent Ideas',
                   },
                 ]}
                 recieveValue={(value) => {
