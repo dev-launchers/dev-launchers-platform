@@ -96,16 +96,6 @@ function IdeaCard({ cards, cardType }) {
         </atoms.Box>
       </Link>
 
-      {isAuthenticated ? (
-        <atoms.Box padding="0rem 2rem 2rem">
-          <LikeButton
-            onClick={() => setLiked((prev) => !prev)}
-            filled={liked}
-            text={liked ? 1 : ''}
-          ></LikeButton>
-        </atoms.Box>
-      ) : null}
-
       {tagContent == 'archived' ? (
         <atoms.Button
           buttonSize="standard"

@@ -82,7 +82,7 @@ const requests = {
   patch: <T>(url: string, body: {}) =>
     axios.patch<T>(url, body).then(responseBody),
   delete: <T>(url: string, body?: {}) =>
-    axios.delete<T>(url, body).then(responseBody),
+    axios.delete<T>(url, { data: body }).then(responseBody),
   postForm: (url: string, data: FormData) =>
     axios
       .post(url, data, {
@@ -156,6 +156,9 @@ const Likes = {
   get: (params?: URLSearchParams) => requests.get<Like[]>('/likes/', params),
   put: (id: string, body: {}) => requests.put<Like>(id, body),
   post: (body: {}) => requests.post<Like>('/likes/', body),
+  delete: (id: number) => {
+    requests.delete<Like>('/likes/' + id.toString());
+  },
 };
 
 const Saves = {
