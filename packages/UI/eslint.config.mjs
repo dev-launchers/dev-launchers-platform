@@ -1,4 +1,5 @@
 import { getDefaultIgnorePatterns } from '@devlaunchers/eslint-config-bases/helpers';
+import prettier from '@devlaunchers/eslint-config-bases/prettier';
 import typescript from '@devlaunchers/eslint-config-bases/typescript';
 import ts from 'typescript-eslint';
 
@@ -13,6 +14,7 @@ export default ts.config(
   //   ],
   // },
   ...typescript,
+  prettier,
   { ignores: getDefaultIgnorePatterns() }
   // ...compat
   //   .extends(
@@ -30,10 +32,11 @@ export default ts.config(
   //   languageOptions: {
   //       ecmaVersion: 5,
   //       sourceType: "script",
-  //       parserOptions: {
-  //           tsconfigRootDir: __dirname,
-  //       },
+  //       // parserOptions: {
+  //       //     tsconfigRootDir: __dirname,
+  //       // },
   //   },
+  // }
   //   // rules: {
   //   //     "tailwindcss/no-custom-classname": ["error", {
   //   //         whitelist: [],

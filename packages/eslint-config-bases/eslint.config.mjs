@@ -3,7 +3,7 @@ import prettier from './src/bases/prettier.mjs';
 
 export default [
   ...typescript,
-  ...prettier,
+  prettier,
   {
     ignores: [
       '**/node_modules',
@@ -13,6 +13,7 @@ export default [
       '**/dist',
       '**/.storybook',
       '**/storybook-static',
+      'src/bases/**/*',
     ],
   },
 ];

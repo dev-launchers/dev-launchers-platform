@@ -5,16 +5,10 @@
 
 import { getPrettierConfig } from '../helpers/getPrettierConfig.js';
 const { ...prettierConfig } = getPrettierConfig();
-import eslintPluginPrettierRecommended from'eslint-plugin-prettier/recommended';
-import ts from 'typescript-eslint';
-
-export default ts.config({
-  ...eslintPluginPrettierRecommended,
-  // extends: ['prettier'],
-  // plugins: ['prettier'],
-  rules: {
-    'prettier/prettier': ['error', prettierConfig],
-    'arrow-body-style': 'off',
-    'prefer-arrow-callback': 'off',
-  },
-});
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+if (eslintPluginPrettierRecommended.rules) {
+  eslintPluginPrettierRecommended.rules['prettier/prettier'] = ['error', prettierConfig];
+  eslintPluginPrettierRecommended.rules['arrow-body-style'] = 'off';
+  eslintPluginPrettierRecommended.rules['prefer-arrow-callback'] = 'off';
+}
+export default eslintPluginPrettierRecommended;
