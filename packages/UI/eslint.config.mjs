@@ -1,5 +1,7 @@
+import { resolve } from 'node:path';
 import { getDefaultIgnorePatterns } from '@devlaunchers/eslint-config-bases/helpers';
 import prettier from '@devlaunchers/eslint-config-bases/prettier';
+import tailwind from '@devlaunchers/eslint-config-bases/tailwind';
 import typescript from '@devlaunchers/eslint-config-bases/typescript';
 import ts from 'typescript-eslint';
 
@@ -14,8 +16,17 @@ export default ts.config(
   //   ],
   // },
   ...typescript,
+  ...tailwind,
   prettier,
-  { ignores: getDefaultIgnorePatterns() }
+  { ignores: getDefaultIgnorePatterns() },
+  {
+    settings: {
+      tailwindcss: {
+        callees: ['classnames', 'clsx', 'ctl', 'cn', 'tv'],
+        config: resolve('../', 'tailwind-constructor/tailwind.config.js'),
+      },
+    },
+  }
   // ...compat
   //   .extends(
   //   // "@devlaunchers/eslint-config-bases/sonar",

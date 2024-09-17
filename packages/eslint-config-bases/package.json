@@ -56,7 +56,8 @@
       "import": "./src/bases/typescript.mjs"
     },
     "./tailwind": {
-      "require": "./src/bases/tailwind.js"
+      "require": "./src/bases/tailwind.mjs",
+      "import": "./src/bases/tailwind.mjs"
     }
   },
   "scripts": {
@@ -109,6 +110,7 @@
   },
   "devDependencies": {
     "@devlaunchers/tailwind": "workspace:*",
+    "@types/eslint-plugin-tailwindcss": "3.17.0",
     "@types/espree": "10.1.0",
     "@types/jest": "28.1.6",
     "@types/node": "18.0.6",
@@ -116,7 +118,7 @@
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.15",
     "eslint": "8.21.0",
-    "eslint-plugin-tailwindcss": "3.13.0",
+    "eslint-plugin-tailwindcss": "3.17.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "3.0.2",
