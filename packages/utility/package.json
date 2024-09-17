@@ -12,6 +12,6 @@
     "@devlaunchers/eslint-config-bases": "workspace:^",
     "@devlaunchers/models": "workspace:^",
     "axios": "^0.27.2",
-    "eslint": "8.21.0"
+    "eslint": "9.10.0"
   }
 }

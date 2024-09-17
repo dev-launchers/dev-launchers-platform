@@ -59,6 +59,7 @@ export default ts.config(
       'no-empty-function': 'off',
       // 'import/default': 'off',
       'no-undef': 'off',
+      "@typescript-eslint/no-deprecated": "error",
       'import/no-duplicates': ['error', { considerQueryString: true }],
       'import/no-named-as-default-member': 'off',
       'import/no-named-as-default': 'off',

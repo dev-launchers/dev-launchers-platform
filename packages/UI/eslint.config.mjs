@@ -3,8 +3,7 @@ import { getDefaultIgnorePatterns } from '@devlaunchers/eslint-config-bases/help
 import prettier from '@devlaunchers/eslint-config-bases/prettier';
 import tailwind from '@devlaunchers/eslint-config-bases/tailwind';
 import typescript from '@devlaunchers/eslint-config-bases/typescript';
-import ts from 'typescript-eslint';
-
+import ts, { parser } from 'typescript-eslint';
 export default ts.config(
   // {
   //   ignores: [
@@ -26,7 +25,7 @@ export default ts.config(
         config: resolve('../', 'tailwind-constructor/tailwind.config.js'),
       },
     },
-  }
+  },
   // ...compat
   //   .extends(
   //   // "@devlaunchers/eslint-config-bases/sonar",
@@ -39,19 +38,13 @@ export default ts.config(
   //   // "@devlaunchers/eslint-config-bases/tailwind",
   //   // "@devlaunchers/eslint-config-bases/prettier",
   //   ),
-  // {
-  //   languageOptions: {
-  //       ecmaVersion: 5,
-  //       sourceType: "script",
-  //       // parserOptions: {
-  //       //     tsconfigRootDir: __dirname,
-  //       // },
-  //   },
-  // }
-  //   // rules: {
-  //   //     "tailwindcss/no-custom-classname": ["error", {
-  //   //         whitelist: [],
-  //   //     }],
-  //   // },
-  // },
+  {
+    languageOptions: {
+      parser,
+      parserOptions: {
+        tsconfigRootDir: import.meta.dirname,
+        project: ['./tsconfig.json'],
+      },
+    },
+  }
 );
