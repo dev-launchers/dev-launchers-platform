@@ -1,0 +1,25 @@
+name: Report Deprecation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-for-deprecation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.12.2'
+
+      - name: Install dependencies
+        run: corepack enable && yarn
+
+      - name: Run ESLint on changed files
+        run: |
+          filterByRule="no-deprecated" fileName="deprecated.md" yarn workspaces foreach --since run lint -f $PWD/packages/eslint-config-bases/src/formatters/formatByRule.js

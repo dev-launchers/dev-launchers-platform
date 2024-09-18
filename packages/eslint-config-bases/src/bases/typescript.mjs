@@ -15,69 +15,8 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
   {
-    ...importPlugin.flatConfigs.recommended,
-    ...importPlugin.flatConfigs.typescript,
-    languageOptions: {
-      ecmaVersion: 2020,
-      sourceType: 'module',
-      globals: {
-        ...globals.es2016,
-        ...globals.node,
-      },
-      parser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-          globalReturn: false,
-        },
-        project: ['tsconfig.json'],
-      },
-    },
-    settings: {
-      'import/resolver': {
-        'typescript': true
-      },
-    },
     rules: {
-      'spaced-comment': [
-        'error',
-        'always',
-        {
-          line: {
-            markers: ['/'],
-            exceptions: ['-', '+'],
-          },
-          block: {
-            markers: ['!'],
-            exceptions: ['*'],
-            balanced: true,
-          },
-        },
-      ],
-      // 'linebreak-style': ['error', 'unix'],
-      'linebreak-style': 'off',
-      'no-empty-function': 'off',
-      // 'import/default': 'off',
-      'no-undef': 'off',
       "@typescript-eslint/no-deprecated": "error",
-      'import/no-duplicates': ['error', { considerQueryString: true }],
-      'import/no-named-as-default-member': 'off',
-      'import/no-named-as-default': 'off',
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-          ],
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
       '@typescript-eslint/ban-tslint-comment': ['error'],
       '@typescript-eslint/no-empty-object-type': ['error', {
         allowInterfaces: 'with-single-extends'
@@ -167,6 +106,71 @@ export default ts.config(
         {
           selector: ['typeParameter'],
           format: ['PascalCase'],
+        },
+      ],
+    }
+  },
+  {
+    ...importPlugin.flatConfigs.recommended,
+    ...importPlugin.flatConfigs.typescript,
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      globals: {
+        ...globals.es2016,
+        ...globals.node,
+      },
+      parser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+          globalReturn: false,
+        },
+        project: ['tsconfig.json'],
+      },
+    },
+    settings: {
+      'import/resolver': {
+        'typescript': true
+      },
+    },
+    rules: {
+      'spaced-comment': [
+        'error',
+        'always',
+        {
+          line: {
+            markers: ['/'],
+            exceptions: ['-', '+'],
+          },
+          block: {
+            markers: ['!'],
+            exceptions: ['*'],
+            balanced: true,
+          },
+        },
+      ],
+      // 'linebreak-style': ['error', 'unix'],
+      'linebreak-style': 'off',
+      'no-empty-function': 'off',
+      // 'import/default': 'off',
+      'no-undef': 'off',
+      'import/no-duplicates': ['error', { considerQueryString: true }],
+      'import/no-named-as-default-member': 'off',
+      'import/no-named-as-default': 'off',
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+          ],
+          alphabetize: { order: 'asc', caseInsensitive: true },
         },
       ],
     },

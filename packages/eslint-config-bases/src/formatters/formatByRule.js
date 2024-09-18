@@ -1,4 +1,5 @@
-// const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const fs = require('fs');
 
 function containRules(result, targetRuleId) {
   if (!result || !targetRuleId) {
@@ -15,6 +16,7 @@ function containRules(result, targetRuleId) {
 
 module.exports = function (results, context) {
   const filteredRule = process.env.filterByRule;
+  const fileName = process.env.fileName;
   let md = `| File | Line | Column | Rule | Message |\n| --- | --- | --- | --- | --- |\n`;
 
   results.forEach((cur) => {
@@ -26,7 +28,7 @@ module.exports = function (results, context) {
     }
   });
 
-  // fs.writeFileSync('eslint-error-files.md', md);
+  fs.writeFileSync(fileName || 'eslint-error-files.md', md);
   // return 'Done Write';
 
   return md;
