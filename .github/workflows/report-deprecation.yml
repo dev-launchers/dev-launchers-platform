@@ -22,4 +22,4 @@ jobs:
 
       - name: Run ESLint on changed files
         run: |
-          filterByRule="no-deprecated" fileName="deprecated.md" yarn workspaces foreach --since run lint -f $PWD/packages/eslint-config-bases/src/formatters/formatByRule.js
+          filterByRule="no-deprecated" fileName="deprecated.md" yarn workspaces foreach run lint -f $PWD/packages/eslint-config-bases/src/formatters/formatByRule.js
