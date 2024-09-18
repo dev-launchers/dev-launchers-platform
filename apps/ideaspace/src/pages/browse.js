@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import BrowseIdeas from "../components/modules/BrowseIdeas/BrowseIdeas"
+import BrowseIdeas from '../components/modules/BrowseIdeas/BrowseIdeas';
 
 export default function BrowseIdeasRoute() {
   return (
@@ -10,4 +10,4 @@ export default function BrowseIdeasRoute() {
       <BrowseIdeas />
     </>
   );
-};
+}

@@ -8,6 +8,8 @@ import EditionButton from './EditionButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox';
+import Link from 'next/link';
+Link;
 
 const IdeaForm = (
   {
@@ -24,6 +26,12 @@ const IdeaForm = (
   const { errors } = props;
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
+
+  const [isLinkClicked, setIsLinkClicked] = useState(false);
+
+  const handleLinkClick = () => {
+    setIsLinkClicked(true);
+  };
 
   const compareValuesToInitial = (values) => {
     const name = Object.keys(values);
@@ -217,10 +225,19 @@ const IdeaForm = (
                 </atoms.Typography>
 
                 <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                  <Checkbox disabled={false} required />
+                  <Checkbox disabled={!isLinkClicked} required />
                   <atoms.Typography type="p">
-                    &nbsp;I have read and agree to the Terms and Conditions.
-                    <span style={{ color: 'red' }}>&nbsp;*</span>
+                    &nbsp;I have read and agree to the{' '}
+                    <Link href="/ideaspace/terms" passHref>
+                      <a
+                        style={{ color: 'blue', textDecoration: 'underline' }}
+                        target="_blank"
+                        onClick={handleLinkClick}
+                      >
+                        Terms and Conditions
+                      </a>
+                    </Link>
+                    .<span style={{ color: 'red' }}>&nbsp;*</span>
                   </atoms.Typography>
                 </atoms.Box>
 
