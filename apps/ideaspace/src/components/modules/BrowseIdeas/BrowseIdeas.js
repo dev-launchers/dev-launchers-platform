@@ -28,6 +28,11 @@ function BrowseIdeas() {
       label: 'Recent Activity',
       isAscending: false,
     },
+    {
+      value: 'publishedAt',
+      label: 'Recent Ideas',
+      isAscending: false,
+    },
   ];
 
   const sortCards = (selectedSortCriterion) => {
@@ -141,6 +146,10 @@ function BrowseIdeas() {
                   {
                     disabled: false,
                     text: 'Recent Activity',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Recent Ideas',
                   },
                 ]}
                 recieveValue={(value) => {
