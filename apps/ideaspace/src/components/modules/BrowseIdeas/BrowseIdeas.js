@@ -29,7 +29,7 @@ function BrowseIdeas() {
       isAscending: false,
     },
     {
-      value: 'publishedAt',
+      value: 'createdAt',
       label: 'Recent Ideas',
       isAscending: false,
     },
@@ -75,10 +75,17 @@ function BrowseIdeas() {
       if (item?.comments?.data) {
         item.comments = cleanDataList(item.comments.data);
 
+        //add current time to created time to ensure ideas without comment will be listed first when sorted by recent activity
+        const totalMillis =
+          new Date().getTime() + new Date(item.createdAt).getTime();
+        const formatedCombinedTime = new Date(totalMillis).toISOString();
+        console.log('formated:' + formatedCombinedTime);
+        console.log('created:' + item.createdAt);
+
         const recentCommentedTime =
           item.comments.length > 0
-            ? new Date(item.comments[0]?.updatedAt)
-            : new Date(item.updatedAt);
+            ? new Date(item.comments[item.comments.length - 1]?.updatedAt)
+            : new Date(formatedCombinedTime);
 
         return {
           ...item,
