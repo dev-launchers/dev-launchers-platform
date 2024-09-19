@@ -79,8 +79,6 @@ function BrowseIdeas() {
         const totalMillis =
           new Date().getTime() + new Date(item.createdAt).getTime();
         const formatedCombinedTime = new Date(totalMillis).toISOString();
-        console.log('formated:' + formatedCombinedTime);
-        console.log('created:' + item.createdAt);
 
         const recentCommentedTime =
           item.comments.length > 0
