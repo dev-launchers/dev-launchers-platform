@@ -13,7 +13,45 @@ import {
   CloseButton,
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
-import { GradientLine, SubmitButton } from './styledSignupForm';
+import {
+  GradientLine,
+  ModalUploadSection,
+  SubmitButton,
+} from './styledSignupForm';
+import { ButtonsContainer } from '../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleCard/styledRoleCard';
+import UploadModal from './uploadModal';
+import Modal from 'react-calendly/typings/components/PopupModal/Modal';
+
+interface UploadProps {
+  handleUploadCloseModal?: () => void;
+}
+
+function UploadDetailsModal({ handleUploadCloseModal }: UploadProps) {
+  return (
+    <div>
+      <CloseButton onClick={handleUploadCloseModal}>
+        <CloseIcon
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </CloseIcon>
+      </CloseButton>
+      <ModalUploadSection>
+        <h3>Choose File</h3>
+        <h4>Product Platform</h4>
+        <h6>TIME COMMITMENT</h6>
+      </ModalUploadSection>
+    </div>
+  );
+}
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -76,6 +114,16 @@ export default function SignUpForm({
 
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
+  };
+
+  const [showUploadModal, setShowUploadModal] = useState(false);
+
+  const handleUploadOpenModal = () => {
+    setShowUploadModal(true);
+  };
+
+  const handleUploadCloseModal = () => {
+    setShowUploadModal(false);
   };
 
   // const router = useRouter();
@@ -295,6 +343,25 @@ export default function SignUpForm({
                     }
                     error={formik.errors.portfolioLink}
                   />
+                  <ButtonsContainer onClick={handleUploadOpenModal}>
+                    Upload
+                  </ButtonsContainer>
+                  {showUploadModal && <UploadModal />}
+                  <UploadModal
+                    modalIsOpen={showUploadModal}
+                    closeModal={handleUploadCloseModal}
+                    handleOpenModal={handleUploadOpenModal}
+                    modalContent={
+                      <UploadDetailsModal
+                        handleUploadCloseModal={handleUploadCloseModal}
+                      />
+                    }
+                  />
+                  {showUploadModal && (
+                    <UploadDetailsModal
+                      handleUploadCloseModal={handleUploadCloseModal}
+                    />
+                  )}
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.

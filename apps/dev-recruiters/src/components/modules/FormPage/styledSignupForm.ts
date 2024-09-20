@@ -173,3 +173,43 @@ export const GradientLine = styled.div<{ height?: string }>`
     #3a7ca5 75% 100%
   );
 `;
+
+export const ModalUploadSection = styled.div`
+  height: 100%;
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  font-style: normal;
+  font-weight: 400;
+  max-width: 200px;
+
+  & h4 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+  }
+
+  & p {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    line-height: 1.125rem;
+    max-width: 28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+
+  & h6 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+`;
