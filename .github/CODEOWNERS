@@ -1,6 +1,9 @@
 # Shared Packages
 packages/ @dev-launchers/platform-enablement
 
+# eslint errors
+**/eslint-errors.txt @dev-launchers/platform-enablement
+
 # Ideaspace code
 apps/ideaspace/ @dev-launchers/ideaspace-team
 
