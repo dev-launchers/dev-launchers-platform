@@ -82,10 +82,10 @@ const requests = {
   patch: <T>(url: string, body: {}) =>
     axios.patch<T>(url, body).then(responseBody),
   delete: <T>(url: string, body?: {}) =>
-    axios.delete<T>(url, body).then(responseBody),
-  postForm: (url: string, data: FormData) =>
+    axios.delete<T>(url, body).then((response) => response.status),
+  postForm: <T>(url: string, data: FormData) =>
     axios
-      .post(url, data, {
+      .post<T>(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(responseBody),
@@ -172,6 +172,15 @@ const Profiles = {
   put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
 };
 
+const GoogledriveFile = {
+  post: async (data: FormData) => {
+    return await requests.postForm<FormData>(`/googledrive/`, data);
+  },
+  delete: async (id: string) => {
+    return await requests.delete('/googledrive/' + id);
+  },
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -183,6 +192,7 @@ const agent = {
   Saves,
   Profiles,
   requests,
+  GoogledriveFile,
 };
 
 export default agent;

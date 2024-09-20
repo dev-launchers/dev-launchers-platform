@@ -1,10 +1,17 @@
+'use client';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
-import { Field, Formik, FormikHelpers } from 'formik';
-import { MouseEventHandler, useState } from 'react';
+import {
+  Field,
+  Formik,
+  FormikHelpers,
+  useFormikContext,
+  useField,
+} from 'formik';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
@@ -13,7 +20,23 @@ import {
   CloseButton,
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
-import { GradientLine, SubmitButton } from './styledSignupForm';
+import {
+  CancelUploadButton,
+  GradientLine,
+  ModalUploadSection,
+  SubmitButton,
+  UploadButton,
+} from './styledSignupForm';
+import UploadModal from './uploadModal';
+import DragAndDrop from '../NewJoinPageComponent/Drag and Drop';
+import axios from 'axios';
+import Modal from '../DetailedPage/PositionPopupModal';
+
+interface UploadProps {
+  handleUploadCloseModal?: () => void;
+  handleOkCloseModal?: () => void;
+  handleCancelCloseModal?: () => void;
+}
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -31,6 +54,64 @@ export default function SignUpForm({
   handleCloseModal,
   position,
 }: Props) {
+  const [filesUploaded, setFilesUploaded] = useState<any>({});
+
+  const [selectedFiles, setSelectedFiles] = useState<any>([]);
+  const [isUploading, setIsUploading] = useState(false); // Uploading state
+
+  const [isDeleting, setIsDeleting] = useState(false); // Uploading state
+
+  //dependent fields
+  const PortFolioLink = (props) => {
+    const { setFieldValue } = useFormikContext();
+    const [field] = useField(props);
+
+    useEffect(() => {
+      {
+        setFieldValue(props.name, filesUploaded['webViewLink']);
+      }
+    }, [filesUploaded]);
+    return (
+      <Field
+        as={organisms.FormField}
+        label="Portfolio/Resume Link"
+        disabled={true}
+        placeholder="https://myportfolio.com"
+        id="portfolioLink"
+        name="portfolioLink"
+        {...props}
+        {...field}
+      />
+    );
+  };
+
+  function UploadDetailsModal({
+    handleUploadCloseModal,
+    handleOkCloseModal,
+    handleCancelCloseModal,
+  }: UploadProps) {
+    const handleFiles = (uploadedFiles) => {
+      setFilesUploaded(uploadedFiles);
+      setShowUploadModal(false);
+    };
+
+    return (
+      <>
+        <ModalUploadSection>
+          <DragAndDrop
+            filesUploaded={filesUploaded}
+            onFilesUploaded={handleFiles}
+          />
+        </ModalUploadSection>
+        <atoms.Box gap="30px">
+          <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+            {uploadError}
+          </atoms.Typography>
+        </atoms.Box>
+      </>
+    );
+  }
+
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -40,14 +121,7 @@ export default function SignUpForm({
       .required('Skills Field Entry is Required')
       .nullable()
       .matches(/^[^\s]+(\s+[^\s]+)*$/, 'Skills Field Entry is Required'),
-    portfolioLink: Yup.string()
-      .nullable(true)
-      .default(undefined)
-      .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-        'Invalid url'
-      )
-      .transform((_, value) => (value === '' ? null : value)),
+    portfolioLink: Yup.string().nullable(true).default(undefined),
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
@@ -83,6 +157,63 @@ export default function SignUpForm({
     setShowConfirmationModal(true);
   };
 
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [uploadError, setUploadError] = useState('');
+  const [deleteError, setDeleteError] = useState('');
+
+  const [canButVis, setCanButVis] = useState(true);
+
+  const handleUploadOpenModal = () => {
+    setSelectedFiles([]);
+    setFilesUploaded({});
+    setUploadError('');
+    setCanButVis(true);
+    setShowUploadModal(true);
+  };
+
+  const handleUploadCloseModal = () => {
+    setShowUploadModal(false);
+  };
+  const handleOkCloseModal = async () => {
+    setShowUploadModal(false);
+    setIsUploading(true);
+  };
+  const handleCancelCloseModal = () => {
+    setSelectedFiles([]);
+    setFilesUploaded([]);
+    setShowUploadModal(false);
+  };
+
+  const handleRemoveFile = () => {
+    setIsDeleting(true); // Deleting state
+    const newArr = [...selectedFiles];
+    try {
+      const deleteResult = agent.GoogledriveFile.delete(
+        `${filesUploaded['id']}`
+      )
+        .then((responseBody) => {
+          if (responseBody === 200) {
+            newArr.splice(filesUploaded[0], 1);
+            setSelectedFiles([]);
+            setSelectedFiles(newArr);
+            setFilesUploaded({});
+            setCanButVis(false);
+            setIsDeleting(false); // Deleting state
+            setDeleteError('');
+          }
+        })
+        .catch((error) => {
+          setDeleteError('Error Deleting files');
+          setIsDeleting(false);
+          return 'Delete failed due to an error';
+        });
+    } catch (error) {
+      setDeleteError('Error Deleting files');
+      setIsDeleting(false);
+      return 'Delete failed due to an error';
+    }
+  };
+
   // const router = useRouter();
   // const { userData } = useUserDataContext();
 
@@ -106,7 +237,8 @@ export default function SignUpForm({
           commitment: 0,
           extraInfo: '',
           portfolioLink: null,
-          yearsOfExperience: null,
+          portfolioFileId: null,
+          yearsOfExperience: 0,
           experience: '',
           reason: '',
           zip: 0,
@@ -125,6 +257,8 @@ export default function SignUpForm({
             ...values,
             //@ts-ignore
             level: values.level.toLowerCase(),
+            portfolioLink: filesUploaded['webViewLink'],
+            portfolioFileId: filesUploaded['id'],
             skills: values.skills
               .toString()
               .split(',')
@@ -138,10 +272,6 @@ export default function SignUpForm({
             })
             .catch((error) => {
               setSubmitting(false);
-              console.log(error);
-              console.log(error.response);
-              console.log(error.response.data);
-              console.log(error.response.status);
             });
         }}
         validationSchema={SignupSchema}
@@ -273,7 +403,7 @@ export default function SignUpForm({
                     label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
-                    rows={5}
+                    rows={1}
                     id="experience"
                     name="experience"
                     // onChange={handleChange}
@@ -283,7 +413,7 @@ export default function SignUpForm({
                     cols={50}
                     label="Why would you like to be a Dev Launcher?"
                     placeholder="My experience with development / design is..."
-                    rows={5}
+                    rows={1}
                     id="reason"
                     name="reason"
                     // onChange={handleChange}
@@ -293,24 +423,54 @@ export default function SignUpForm({
                     cols={50}
                     label="Anything else you would like to share with us?"
                     placeholder="I just want the Team Lead to know..."
-                    rows={5}
+                    rows={1}
                     id="extraInfo"
                     name="extraInfo"
                     // onChange={handleChange}
                   />
-                  <Field
-                    as={organisms.FormField}
-                    label="Portfolio/Resume Link"
-                    placeholder="https://myportfolio.com"
-                    id="portfolioLink"
-                    name="portfolioLink"
-                    // onChange={handleChange}
-                    touched={
-                      formik.touched.portfolioLink &&
-                      !!formik.values['portfolioLink']
+                  <h6> Upload your resume using the links below. </h6>
+                  <p>
+                    Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed
+                  </p>
+
+                  <UploadButton onClick={handleUploadOpenModal}>
+                    Upload Files
+                  </UploadButton>
+                  <PortFolioLink name="testField" />
+
+                  <UploadModal
+                    modalIsOpen={showUploadModal}
+                    closeModal={handleUploadCloseModal}
+                    handleOpenModal={handleUploadOpenModal}
+                    modalContent={
+                      <UploadDetailsModal
+                        handleUploadCloseModal={handleUploadCloseModal}
+                        handleOkCloseModal={handleOkCloseModal}
+                        handleCancelCloseModal={handleCancelCloseModal}
+                      />
                     }
-                    error={formik.errors.portfolioLink}
                   />
+                  {filesUploaded['id'] !== undefined ? (
+                    <atoms.Box
+                      gap="1rem"
+                      justifyContent="center"
+                      flexDirection="row"
+                    >
+                      {filesUploaded['name']}
+                      {!!canButVis && filesUploaded['name'] && (
+                        <CancelUploadButton onClick={handleRemoveFile}>
+                          Remove
+                        </CancelUploadButton>
+                      )}
+                    </atoms.Box>
+                  ) : null}
+                  <atoms.Box>
+                    {isDeleting
+                      ? 'Deleting'
+                      : deleteError === ''
+                      ? null
+                      : 'Delete Failed'}
+                  </atoms.Box>
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
