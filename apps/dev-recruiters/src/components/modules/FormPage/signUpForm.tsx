@@ -82,7 +82,7 @@ export default function SignUpForm({
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
   };
-
+  console.log('Test after merge jeyanthi_sm/volApplFormContentChg_1349');
   // const router = useRouter();
   // const { userData } = useUserDataContext();
 
