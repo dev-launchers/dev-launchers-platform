@@ -346,7 +346,6 @@ export default function SignUpForm({
                   <ButtonsContainer onClick={handleUploadOpenModal}>
                     Upload
                   </ButtonsContainer>
-                  {showUploadModal && <UploadModal />}
                   <UploadModal
                     modalIsOpen={showUploadModal}
                     closeModal={handleUploadCloseModal}
@@ -357,11 +356,7 @@ export default function SignUpForm({
                       />
                     }
                   />
-                  {showUploadModal && (
-                    <UploadDetailsModal
-                      handleUploadCloseModal={handleUploadCloseModal}
-                    />
-                  )}
+
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
