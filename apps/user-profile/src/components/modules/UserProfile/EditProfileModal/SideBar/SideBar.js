@@ -110,13 +110,14 @@ function SideBar() {
       <ul className="flex flex-col gap-6 px-4">
         {/* <li className={styling.photo.li} onClick={onPhotoClick}>
           <OutlinedCamera colorClass={styling.photo.iconColor} />
-          <Typography type="p" className={styling.photo.typography}> PHOTO </Typography>
+          <Typography type="p" className={styling.photo.typography}>
+            PHOTO
+          </Typography>
         </li> */}
         <li className={styling.bio.li} onClick={onBioClick}>
           <OutlinedPerson colorClass={styling.bio.iconColor} />
           <Typography type="p" className={styling.bio.typography}>
-            {' '}
-            BIO{' '}
+            BIO
           </Typography>
         </li>
         {/* <li className={styling.details.li} onClick={onDetailsClick}>
