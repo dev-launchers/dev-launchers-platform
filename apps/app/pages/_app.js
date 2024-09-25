@@ -17,7 +17,9 @@ import theme from '../styles/theme';
 import Script from 'next/script';
 import iubendaScript from '../scripts/iubendaScript';
 import '@devlaunchers/tailwind/tailwind.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+const queryClient = new QueryClient();
 const hashRedirect = (router) => {
   // Strip out hash from url (if any) so we can transition from HashRouter to BrowserRouter
   if (router.asPath.startsWith('/#')) {
@@ -50,34 +52,36 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <UserDataProvider>
-        <ThemeProvider theme={theme}>
-          <div>
-            <script
-              type="text/partytown"
-              dangerouslySetInnerHTML={{ __html: iubendaScript }}
-            />
-            <Script
-              strategy="worker"
-              async
-              src="//cdn.iubenda.com/cs/iubenda_cs.js"
-            ></Script>
-            <Head>
+      <QueryClientProvider client={queryClient}>
+        <UserDataProvider>
+          <ThemeProvider theme={theme}>
+            <div>
               <script
+                type="text/partytown"
+                dangerouslySetInnerHTML={{ __html: iubendaScript }}
+              />
+              <Script
+                strategy="worker"
                 async
-                src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
-              ></script>
-            </Head>
+                src="//cdn.iubenda.com/cs/iubenda_cs.js"
+              ></Script>
+              <Head>
+                <script
+                  async
+                  src="https://www.googletagmanager.com/gtag/js?id=AW-599284852"
+                ></script>
+              </Head>
 
-            <div className="App"></div>
-            <Navigation />
+              <div className="App"></div>
+              <Navigation />
 
-            <Component {...pageProps} />
-            {/* {props.children} */}
-            <Footer />
-          </div>
-        </ThemeProvider>
-      </UserDataProvider>
+              <Component {...pageProps} />
+              {/* {props.children} */}
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </UserDataProvider>
+      </QueryClientProvider>
     </>
   );
 }
