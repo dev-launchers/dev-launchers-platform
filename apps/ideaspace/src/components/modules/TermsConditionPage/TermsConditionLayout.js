@@ -5,7 +5,7 @@ import TermsTable from './TermsTable';
 const TermsConditionLayout = () => {
   return (
     <>
-      <div className="max-w-8xl px-20 py-10">
+      <div className="max-w-8xl px-12 sm:px-20 py-10">
         <div className="flex flex-col gap-3 mb-16">
           <h2 className="text-4xl font-extralight mb-4">
             {TermsConditionContent.introduction.heading}
@@ -110,13 +110,15 @@ const TermsConditionLayout = () => {
           <h2 id="idea-evaluation" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.ideaEvaluation.heading}
           </h2>
-          {TermsConditionContent.ideaEvaluation.paragraphs.map(
-            (para, index) => (
-              <p key={index} className="text-xl">
-                {para}
-              </p>
-            )
-          )}
+          <ul>
+            {TermsConditionContent.ideaEvaluation.paragraphs.map(
+              (para, index) => (
+                <li key={index} className="ml-10 text-xl list-disc">
+                  {para}
+                </li>
+              )
+            )}
+          </ul>
           <div className="selectionProcess">
             <div className="text-xl font-bold mb-4">Selection Process:</div>
             <div className="text-xl">
