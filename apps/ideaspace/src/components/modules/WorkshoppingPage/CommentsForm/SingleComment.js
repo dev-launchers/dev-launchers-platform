@@ -139,12 +139,12 @@ function SingleCommentComponent(props) {
             </div>
           </SingleCommentContent>
           <SingleCommentButtons style={{ display: 'flex' }}>
-            <LikeButton
+            {/* <LikeButton
               style={{ marginLeft: 'auto' }}
               onClick={handleLikeClick}
               filled={liked ? true : false}
               text={liked ? '479' : 'Like'}
-            />
+            /> */}
           </SingleCommentButtons>
           <hr></hr>
         </div>

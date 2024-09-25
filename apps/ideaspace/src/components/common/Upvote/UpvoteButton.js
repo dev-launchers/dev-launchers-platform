@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { Loader } from 'semantic-ui-react';
 
-const UpvoteButton = ({ text, selected, disabled, onclick }) => {
+const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
+
+  if (!show) return null;
 
   const icon = selected ? (
     <svg
@@ -40,17 +43,19 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
     </svg>
   );
 
-  // // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
-  // function clickFunc() {
-  //   setFocused(true);
-  //   onclick();
-  // }
+  // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
+  function clickFunc() {
+    if (disabled == false) {
+      onclick();
+    }
+  }
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={onclick}
+      // onClick={clickFunc}
       onMouseUp={() => setFocused(false)}
       onMouseDown={() => setFocused(true)}
       style={{
@@ -89,6 +94,8 @@ const UpvoteButton = ({ text, selected, disabled, onclick }) => {
           ? 'var(--button-border-width, 4px) solid var(--border-btn-interactive-gray, #B9B9B9)'
           : 'var(--button-border-width, 4px) solid transparent',
         borderRadius: '8px',
+
+        pointerEvents: disabled ? 'none' : '',
       }}
     >
       {icon}

@@ -28,16 +28,6 @@ function BrowseIdeas() {
       label: 'Recent Activity',
       isAscending: false,
     },
-    {
-      value: 'updated_at',
-      label: 'Recent Ideas',
-      isAscending: false,
-    },
-    {
-      value: 'hourCommitmentMin',
-      label: 'Time Commitment',
-      isAscending: true,
-    },
   ];
 
   const sortCards = (selectedSortCriterion) => {
@@ -70,20 +60,24 @@ function BrowseIdeas() {
   };
 
   React.useEffect(async () => {
-    const ideaCards = cleanDataList(await agent.Ideas.get(
-      new URLSearchParams(`populate=*&pagination[pageSize]=1000`)));
+    const ideaCards = cleanDataList(
+      await agent.Ideas.get(
+        new URLSearchParams(`populate=*&pagination[pageSize]=1000`)
+      )
+    );
 
-    const getCards = ideaCards.map((item) => {  
+    const getCards = ideaCards.map((item) => {
       if (item?.comments?.data) {
         item.comments = cleanDataList(item.comments.data);
 
-        const recentCommentedTime = item.comments.length > 0 ? new Date(
-          item.comments[0]?.updatedAt
-        ) :  new Date(item.updatedAt);
+        const recentCommentedTime =
+          item.comments.length > 0
+            ? new Date(item.comments[0]?.updatedAt)
+            : new Date(item.updatedAt);
 
         return {
           ...item,
-          mostRecentCommentTime: recentCommentedTime
+          mostRecentCommentTime: recentCommentedTime,
         };
       }
       return {
@@ -123,7 +117,7 @@ function BrowseIdeas() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton />
+        <BackButton backRoute={'/ideaspace'} />
         <atoms.Typography type="h4">
           Want to help develop an idea?
           <br />
@@ -147,14 +141,6 @@ function BrowseIdeas() {
                   {
                     disabled: false,
                     text: 'Recent Activity',
-                  },
-                  {
-                    disabled: false,
-                    text: 'Recent Ideas',
-                  },
-                  {
-                    disabled: false,
-                    text: 'Time Commitment',
                   },
                 ]}
                 recieveValue={(value) => {
