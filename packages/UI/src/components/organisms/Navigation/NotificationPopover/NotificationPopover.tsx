@@ -2,14 +2,13 @@ import * as React from 'react';
 import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
 import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
-import natificationsData from './notificationsData';
 import { useQuery } from '@tanstack/react-query';
 import { agent } from '@devlaunchers/utility';
 
 export default function NotificationPopover() {
   const [notifications, setNotifications] = React.useState([]);
   const newNotificationsCount = notifications.reduce((count, x) => {
-    return x.status == 'unRead' ? count + 1 : count;
+    return x.attributes.readDateTime ? count : count + 1;
   }, 0);
 
   function getAllNotifications() {
@@ -20,9 +19,11 @@ export default function NotificationPopover() {
       .then((data) => {
         data.reverse();
         setNotifications(data);
+        return data;
       })
       .catch((error) => {
         console.log(error);
+        return error;
       });
   }
 
@@ -56,7 +57,7 @@ export default function NotificationPopover() {
         </button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[min(90vw,40rem)] text-sm md:text-base"
+        className="w-[min(100vw,40rem)]  md:w-[min(90vw,40rem)] text-xs md:text-base"
         hasCloseBtn={false}
       >
         <div>
@@ -71,7 +72,14 @@ export default function NotificationPopover() {
               Mark all as read
             </button>
           </div>
-          <ul style={{ overflowY: 'auto', height: '25rem' }}>
+          <ul
+            style={{
+              overflowY: 'auto',
+              height: '25rem',
+              scrollbarWidth: 'thin',
+              scrollbarGutter: 'stable both-edges',
+            }}
+          >
             {notifications.map((n, i) => {
               const { readDateTime, createdDateTime } = n.attributes;
               const { title, content, entityId } =

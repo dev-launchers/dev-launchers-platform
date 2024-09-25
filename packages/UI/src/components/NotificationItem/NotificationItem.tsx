@@ -12,7 +12,7 @@ const compoundSlots = [
       'descriptionStyle',
       'targetStyle',
     ] as const,
-    className: 'font-nunito-sans text-base leading-normal',
+    className: 'font-nunito-sans text-sm md:text-base leading-normal',
   },
   {
     slots: ['targetStyle', 'usernameStyle'] as const,
@@ -39,7 +39,7 @@ const notificationStyles = tv({
     targetStyle: '',
     descriptionStyle: 'line-clamp-2 self-stretch md:order-1',
     timeStampStyle:
-      'text-right font-nunito-sans text-base leading-6 text-grayscale-400',
+      'text-right font-nunito-sans text-sm md:text-base leading-6 text-grayscale-400',
     statusIndicator: 'h-3  w-3 shrink-0 rounded-full',
   },
   variants: {
@@ -144,8 +144,12 @@ function timeSincePublished(publishedAt: string) {
   const diffInHours = Math.floor(diffInMinutes / 60);
   const diffInDays = Math.floor(diffInHours / 24);
 
+  console.log('boop boop:', diffInHours);
+
   if (diffInDays > 0) {
     return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+  } else if (diffInHours > 0) {
+    return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
   } else if (diffInMinutes > 0) {
     return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
   } else {
@@ -179,7 +183,7 @@ function NotificationItem({
   } = notificationStyles({ status });
 
   return (
-    <li className="list-none">
+    <li className="list-none !text-xs">
       <a
         href={targetLink}
         rel="noreferrer"
