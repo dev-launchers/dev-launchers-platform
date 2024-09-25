@@ -144,8 +144,6 @@ function timeSincePublished(publishedAt: string) {
   const diffInHours = Math.floor(diffInMinutes / 60);
   const diffInDays = Math.floor(diffInHours / 24);
 
-  console.log('boop boop:', diffInHours);
-
   if (diffInDays > 0) {
     return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
   } else if (diffInHours > 0) {
