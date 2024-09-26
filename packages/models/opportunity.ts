@@ -6,8 +6,9 @@ export interface Opportunity {
   id: string;
   attributes: {
     title: string;
-    //skills: Skill[];
+    skills: Skill[];
     level: SkillLevel;
+    interests: string[];
     commitmentHoursPerWeek: number;
     description: string;
     expectations: Expectation[];

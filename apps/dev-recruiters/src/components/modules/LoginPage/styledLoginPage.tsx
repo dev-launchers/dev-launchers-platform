@@ -1,10 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Header = styled.h2`
+export const IconWrapper = styled.div`
+  box-shadow: 0px 10px 18px 10px rgba(127, 126, 127, 0.25);
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: ${({ theme }) => theme?.colors?.White};
+  cursor: pointer;
+`;
+export const Header = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  color: ${({ theme }) => theme?.colors?.LightGray};
+  color: ${({ theme }) => theme?.colors?.Black};
   font-family: ${({ theme }) => theme.fonts.headline};
   border-bottom: none;
+  font-weight: 300;
+`;
+export const Text = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  color: ${({ theme }) => theme?.colors?.Black};
+  font-family: ${({ theme }) => theme.fonts.normal};
+  border-bottom: none;
+  text-align: center;
+  font-weight: 400;
+  margin: 16px 0px 24px;
 `;
 
 export const Wrapper = styled.div`
@@ -12,33 +29,47 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  background-color: ${({ theme }) => theme?.colors?.OuterSpace};
+  // width: 100%;
+  height: 100%;
+  // background-color: ${({ theme }) => theme?.colors?.White};
 `;
 export const MessageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
-  margin: 30px;
-  background-color: ${({ theme }) => theme?.colors?.Crayola};
-  border-radius: 30px;
-  width: 60%;
+  padding: 24px 32px 32px 32px;
+  // margin: 30px;
+  background-color: ${({ theme }) => theme?.colors?.White};
+  border-radius: 16px;
+  width: 100%;
+  max-width: 488px;
   word-wrap: break-word;
+  box-shadow: 0px 4px 6px 3px rgba(51, 51, 51, 0.1);
 `;
 export const ButtonWrapper = styled.div`
-  padding: 30px;
+  // padding: 30px;
   display: flex;
   flex-direction: row;
 `;
-export const Button = styled.a`
-  background-color: ${({ theme }) => theme.colors.NEUTRAL_3};
+export const LoginButton = styled.a`
+  background-color: ${({ theme }) => theme.colors.White};
+  color: ${({ theme }) => theme?.colors?.BrandAltNebula600};
+  font-size: ${({ theme }) => theme.fontSizes.small};
+  font-family: ${({ theme }) => theme?.fonts?.normal};
+  border: 2px solid ${({ theme }) => theme.colors.BrandAltNebula600};
+  border-radius: 8px;
+  padding: 8px 24px 8px 24px;
+  margin: 10px;
+  cursor: pointer;
+`;
+export const CreateAccountButton = styled.a`
+  background-color: ${({ theme }) => theme.colors.BrandAltNebula600};
   color: ${({ theme }) => theme?.colors?.White};
   font-size: ${({ theme }) => theme.fontSizes.small};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   border: none;
-  border-radius: 30px;
-  padding: 20px;
+  border-radius: 8px;
+  padding: 8px 24px 8px 24px;
   margin: 10px;
   cursor: pointer;
 `;
