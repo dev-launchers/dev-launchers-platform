@@ -27,9 +27,11 @@ export default function RolesFilterList({
   if (!projectsLoaded) return <div>loading please wait</div>;
 
   const [selectRoleLabel, setSelectRoleLabel] = useState(null);
+  const [selectedRoleCategory, setSelectedRoleCategory] = useState('');
 
-  function handleRoleSelection(roleLabel: any) {
+  function handleRoleSelection(roleLabel: any, roleCategory: string) {
     setSelectRoleLabel(roleLabel);
+    setSelectedRoleCategory(roleCategory);
   }
 
   const openPositions = useOpenPositions({
@@ -40,7 +42,7 @@ export default function RolesFilterList({
   {
     return (
       <List>
-        <SearchResult>Search Results</SearchResult>
+        {/* <SearchResult>Search Results</SearchResult> */}
         <ResultContainer>
           <FilterConatiner>
             <CollapsibleContainerFilter
@@ -53,6 +55,7 @@ export default function RolesFilterList({
             <SearchRole
               selectedRoleLabel={selectRoleLabel}
               opportunities={opportunities}
+              selectedRoleCategory={selectedRoleCategory}
             />
           </RolesContainer>
         </ResultContainer>

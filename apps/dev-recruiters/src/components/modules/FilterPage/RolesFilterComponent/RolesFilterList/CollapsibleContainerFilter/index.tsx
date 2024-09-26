@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import RolesButtons from './RolesButtons';
 import Commitment from './Commitment';
 import {
@@ -13,7 +13,7 @@ interface CollapsibleContainerProps {
   openPositions: {
     [key: string]: any;
   };
-  onRoleSelection: (roleLabel: string) => void;
+  onRoleSelection: (roleLabel: string, roleCategory: string) => void;
   selectRoleLabel: string;
 }
 
@@ -23,11 +23,18 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 }) => {
   const [roleActive, setRoleActive] = useState(null);
 
-  function handleRoleClick(roleName, roleLabel) {
+  useEffect(() => {
+    const roleName = localStorage.getItem('roleName');
+    setRoleActive(roleName);
+  }, []);
+
+  function handleRoleClick(roleName, roleLabel, roleCategory) {
     const roleJsonString = JSON.stringify(roleLabel);
 
     localStorage.setItem('selectedRole', roleJsonString);
-    onRoleSelection(roleLabel);
+    localStorage.setItem('roleCategory', roleCategory);
+    localStorage.setItem('roleName', roleName);
+    onRoleSelection(roleLabel, roleCategory);
     setRoleActive(roleName);
 
     // You can also redirect here if needed
@@ -43,21 +50,33 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             <RolesButtons
               textRole="Product Lead"
               onClick={() =>
-                handleRoleClick('ProductLead', openPositions['ProductLead'])
+                handleRoleClick(
+                  'ProductLead',
+                  openPositions['ProductLead'],
+                  'Product / UX'
+                )
               }
               isActive={roleActive === 'ProductLead'}
             />
             <RolesButtons
               textRole="UX Designer"
               onClick={() =>
-                handleRoleClick('UxDesigner', openPositions['UxDesigner'])
+                handleRoleClick(
+                  'UxDesigner',
+                  openPositions['UxDesigner'],
+                  'Product / UX'
+                )
               }
               isActive={roleActive === 'UxDesigner'}
             />
             <RolesButtons
               textRole="UX Researcher"
               onClick={() =>
-                handleRoleClick('UxResearcher', openPositions['UxResearcher'])
+                handleRoleClick(
+                  'UxResearcher',
+                  openPositions['UxResearcher'],
+                  'Product / UX'
+                )
               }
               isActive={roleActive === 'UxResearcher'}
             />
@@ -66,27 +85,34 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onClick={() =>
                 handleRoleClick(
                   'InformationArchitect',
-                  openPositions['InformationArchitect']
+                  openPositions['InformationArchitect'],
+                  'Product / UX'
                 )
               }
               isActive={roleActive === 'InformationArchitect'}
             />
             <RolesButtons
               textRole="QA Lead"
-              onClick={() => handleRoleClick('QaLead', openPositions['QaLead'])}
+              onClick={() =>
+                handleRoleClick('QaLead', openPositions['QaLead'], 'QA')
+              }
               isActive={roleActive === 'QaLead'}
             />
             <RolesButtons
               textRole="QA Tester"
               onClick={() =>
-                handleRoleClick('QaTester', openPositions['QaTester'])
+                handleRoleClick('QaTester', openPositions['QaTester'], 'QA')
               }
               isActive={roleActive === 'QaTester'}
             />
             <RolesButtons
               textRole="Lead Dev"
               onClick={() =>
-                handleRoleClick('LeadDeveloper', openPositions['LeadDeveloper'])
+                handleRoleClick(
+                  'LeadDeveloper',
+                  openPositions['LeadDeveloper'],
+                  'Development'
+                )
               }
               isActive={roleActive === 'LeadDeveloper'}
             />
@@ -95,7 +121,8 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onClick={() =>
                 handleRoleClick(
                   'FrontEndDeveloper',
-                  openPositions['FrontEndDeveloper']
+                  openPositions['FrontEndDeveloper'],
+                  'Development'
                 )
               }
               isActive={roleActive === 'FrontEndDeveloper'}
@@ -105,7 +132,8 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onClick={() =>
                 handleRoleClick(
                   'BackEndDeveloper',
-                  openPositions['BackEndDeveloper']
+                  openPositions['BackEndDeveloper'],
+                  'Development'
                 )
               }
               isActive={roleActive === 'BackEndDeveloper'}
@@ -115,7 +143,8 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onClick={() =>
                 handleRoleClick(
                   'VoulunteerCordinator',
-                  openPositions['VoulunteerCordinator']
+                  openPositions['VoulunteerCordinator'],
+                  'Operations'
                 )
               }
               isActive={roleActive === 'VoulunteerCordinator'}
@@ -125,7 +154,8 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onClick={() =>
                 handleRoleClick(
                   'SocialMediaManager',
-                  openPositions['SocialMediaManager']
+                  openPositions['SocialMediaManager'],
+                  'Operations'
                 )
               }
               isActive={roleActive === 'SocialMediaManager'}
