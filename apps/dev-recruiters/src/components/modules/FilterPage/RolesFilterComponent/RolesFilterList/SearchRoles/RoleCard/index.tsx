@@ -1,6 +1,9 @@
+'use client';
 import { useState } from 'react';
+
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import RoleDetailsModal from '../RoleModal/RoleDetailsModal';
+
 import {
   AboutContainer,
   AboutDescription,
@@ -26,6 +29,13 @@ interface Props {
   key22: number;
   opportunities?: Opportunity[];
 }
+
+interface OptionsType {
+  name: string;
+  path?: string;
+  domain?: string;
+}
+//User Login Token
 
 const RoleCard = ({ role, key22, opportunities }: Props) => {
   const [showModal, setShowModal] = useState(false);
