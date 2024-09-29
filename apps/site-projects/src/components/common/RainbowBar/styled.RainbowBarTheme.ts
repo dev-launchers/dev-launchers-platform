@@ -1,12 +1,12 @@
-import "styled-components";
+import 'styled-components';
 
-declare module "styled-components" {
+declare module 'styled-components' {
   export interface RainbowBarTheme {
     colors: {
-      ACCENT_1: string;
-      ACCENT_2: string;
-      ACCENT_3: string;
-      ACCENT_4: string;
+      ORANGE: string;
+      YELLOW: string;
+      LIGHT_BLUE: string;
+      BLUE: string;
     };
   }
 }

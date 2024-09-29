@@ -83,6 +83,7 @@ export const links = {
   ],
   'SUPPORT US': '/support-us',
   JOIN: '/join',
+  PROJECTS: '/projects',
 };
 
 export const accountOptions = [

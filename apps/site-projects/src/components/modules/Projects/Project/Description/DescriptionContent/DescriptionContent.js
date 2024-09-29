@@ -11,6 +11,7 @@ const DescriptionContent = ({ data }) => {
   const { description, images } = data;
   return (
     <>
+
       <Paragrapgh style={{ paddingBottom: "1.5625rem" }}>
         {" "}
         {/* eslint-disable-next-line react/no-children-prop */}
