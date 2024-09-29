@@ -27,12 +27,6 @@ const IdeaForm = (
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
 
-  const [isLinkClicked, setIsLinkClicked] = useState(false);
-
-  const handleLinkClick = () => {
-    setIsLinkClicked(true);
-  };
-
   const compareValuesToInitial = (values) => {
     const name = Object.keys(values);
     for (let i = 0; i < name.length; i++) {
@@ -225,16 +219,15 @@ const IdeaForm = (
                 </atoms.Typography>
 
                 <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                  <Checkbox disabled={!isLinkClicked} required />
+                  <Checkbox required />
                   <atoms.Typography type="p">
                     &nbsp;I have read and agree to the{' '}
                     <Link href="/ideaspace/terms" passHref>
                       <a
                         style={{ color: 'blue', textDecoration: 'underline' }}
                         target="_blank"
-                        onClick={handleLinkClick}
                       >
-                        Terms and Conditions
+                        Idea Submission Terms & Conditions
                       </a>
                     </Link>
                     .<span style={{ color: 'red' }}>&nbsp;*</span>
