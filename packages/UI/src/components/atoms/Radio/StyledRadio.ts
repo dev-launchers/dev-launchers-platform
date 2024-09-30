@@ -9,7 +9,7 @@ export const Option = styled.label`
   list-style: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  width: fit-content;
+  width: 16.8125rem;
   position: relative;
   z-index: 1;
 
