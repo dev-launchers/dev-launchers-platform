@@ -37,27 +37,50 @@ const IdeaForm = (
     return false;
   };
 
+  const autoSaveLocalStorage = (values) => {
+    localStorage.setItem('ideaFormData', JSON.stringify(values));
+  };
+
+  const loadFromLocalStorage = () => {
+    const savedData = localStorage.getItem('ideaFormData');
+    return savedData ? JSON.parse(savedData) : null;
+  };
+
+  const clearLocalStorage = () => {
+    localStorage.removeItem('ideaFormData');
+  };
+
   const AutoSubmitToken = () => {
     const { values, submitForm } = useFormikContext();
+    const [previousValues, setPreviousValues] = useState(values);
     React.useEffect(() => {
+      autoSaveLocalStorage(values);
       if (compareValuesToInitial(values)) {
         unsavedHandler(true);
         setDisabling(false);
-      } else {
+      } else if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
         unsavedHandler(false);
         setDisabling(true);
+        setPreviousValues(values);
       }
-    }, [values]);
+    }, [values, previousValues]);
     return null;
   };
+
+  const savedData = loadFromLocalStorage();
+  const newInitialValues = { ...initialValues, ...savedData };
 
   return (
     <atoms.Box margin="1rem 1.5rem 3rem 1.5rem">
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
         <Formik
-          initialValues={initialValues}
+          initialValues={newInitialValues}
           validationSchema={SignupSchema}
-          onSubmit={submitHandler}
+          onSubmit={(values, actions) => {
+            submitHandler(values, actions);
+            clearLocalStorage(); // Clear localStorage on form submission
+            actions.resetForm({ values: initialValues });
+          }}
           enableReinitialize
         >
           {({ errors, setFieldValue, touched }) => (

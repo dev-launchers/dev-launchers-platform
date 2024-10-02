@@ -127,8 +127,8 @@ const TermsTable = () => {
           </tbody>
         </table>
 
-        <table class="w-full text-sm text-gray-500 rounded-xl  text-left rtl:text-righ text-xl sm:hidden">
-          <thead class="text-xl text-gray-700 uppercase bg-[#F0EDEE]">
+        <table class="w-full text-sm text-gray-500 rounded-xl  text-left rtl:text-righ sm:hidden">
+          <thead class="text-gray-700 uppercase bg-[#F0EDEE]">
             <tr>
               <th scope="col" class="px-6 py-3 font-extrabold">
                 Section
