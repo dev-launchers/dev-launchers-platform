@@ -3,13 +3,14 @@ import styled from 'styled-components';
 export const Option = styled.label`
   background: #fff;
   font-family: ${({ theme }) => theme.fonts.normal};
+  font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   list-style: none;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  width: 16.8125rem;
+  width: 100%;
   position: relative;
   z-index: 1;
 
