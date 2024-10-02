@@ -45,7 +45,6 @@ export const OptionsContainer = styled.div<DropdownProps>`
   position: absolute;
   top: 100%;
   z-index: 100;
-  // box-shadow: 0px 6px 10px 5px rgba(51, 51, 51, 0.10);
 `;
 
 export const Options = styled.form<DropdownProps>`
