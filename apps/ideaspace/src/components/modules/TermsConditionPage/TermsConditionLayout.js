@@ -1,11 +1,13 @@
 import React from 'react';
 import TermsConditionContent from './TermsConditionContent';
 import TermsTable from './TermsTable';
+import BackButton from '../../common/BackButton/BackButton';
 
 const TermsConditionLayout = () => {
   return (
     <>
       <div className="max-w-8xl px-12 sm:px-16 py-10">
+        {/* <BackButton buttonType="confirm"/> */}
         <div className="flex flex-col gap-[14px] mb-8">
           <h2 className="text-[32px] font-light leading-[48px]">
             {TermsConditionContent.introduction.heading}
