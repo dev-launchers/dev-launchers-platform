@@ -9,7 +9,7 @@ export const Option = styled.label`
   padding: 0.5rem 1rem;
   border-radius: 8px;
   position: relative;
-  width: fit-content;
+  width: 100%;
   background: #fff;
   z-index: 1;
 
