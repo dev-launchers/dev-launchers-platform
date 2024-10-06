@@ -3,11 +3,11 @@ import React from 'react';
 const TermsTable = () => {
   return (
     <>
-      <div class="relative overflow-x-auto shadow-md rounded-xl mb-16">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 text-xl hidden sm:table">
-          <thead class="text-xl text-gray-700 uppercase bg-[#F0EDEE]">
+      <div class="relative overflow-x-auto shadow-md rounded-xl mb-8">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 hidden sm:table">
+          <thead class=" text-gray-700 uppercase bg-[#F0EDEE]">
             <tr>
-              <th scope="col" class="px-6 py-3 font-extrabold">
+              <th scope="col" class="px-6 py-3 font-extrabold ">
                 Section
               </th>
               <th scope="col" class="px-6 py-3 font-extrabold">
@@ -127,8 +127,8 @@ const TermsTable = () => {
           </tbody>
         </table>
 
-        <table class="w-full text-sm text-gray-500 rounded-xl  text-left rtl:text-righ text-xl sm:hidden">
-          <thead class="text-xl text-gray-700 uppercase bg-[#F0EDEE]">
+        <table class="w-full text-sm text-gray-500 rounded-xl  text-left rtl:text-righ sm:hidden">
+          <thead class="text-gray-700 uppercase bg-[#F0EDEE]">
             <tr>
               <th scope="col" class="px-6 py-3 font-extrabold">
                 Section

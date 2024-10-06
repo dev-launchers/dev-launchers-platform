@@ -3,17 +3,17 @@ import { HeadWapper, Headline } from '../../common/CommonStyles';
 import { atoms } from '@devlaunchers/components/src/components';
 import { StyledRainbow } from './StyledTermsConditionPage';
 import TermsConditionLayout from './TermsConditionLayout';
+import BackButton from '../../common/BackButton/BackButton';
 
 function TermsConditionPage() {
   return (
     <>
       <HeadWapper>
-        <div className="Heading flex flex-col gap-4">
-          <Headline>IdeaSpace</Headline>
-          <atoms.Typography type="h4">
-            Idea Submission Terms & Conditions
-          </atoms.Typography>
-        </div>
+        <Headline>IdeaSpace</Headline>
+        <BackButton buttonType="confirm" />
+        <atoms.Typography type="h4">
+          Idea Submission Terms & Conditions
+        </atoms.Typography>
 
         <StyledRainbow>
           <atoms.Layer hasRainbowBottom />
