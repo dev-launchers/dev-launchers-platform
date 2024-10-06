@@ -73,21 +73,22 @@ function IdeaCard({ cards, cardType }) {
   };
 
   return (
-    <Link href={{ pathname: urlPath }}>
-      <atoms.Box
-        flexDirection="column"
-        style={{
-          border: '0.05rem solid rgba(240, 237, 238, 1)',
-          borderRadius: '1rem',
-        }}
-      >
-        {/* <atoms.Box>
+    // <Link href={{ pathname: urlPath }}>
+    <atoms.Box
+      flexDirection="column"
+      style={{
+        border: '0.05rem solid rgba(240, 237, 238, 1)',
+        borderRadius: '1rem',
+      }}
+    >
+      {/* <atoms.Box>
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
+      <Link href={{ pathname: urlPath }}>
+        <div>
+          <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
-        <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
-
-        <Link href={{ pathname: urlPath }}>
+          {/* <Link href={{ pathname: urlPath }}> */}
           <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
@@ -133,9 +134,11 @@ function IdeaCard({ cards, cardType }) {
               </atoms.Typography>
             </div>
           </atoms.Box>
-        </Link>
+          {/* </Link> */}
+        </div>
+      </Link>
 
-        {/* {tagContent == 'archived' ? (
+      {/* {tagContent == 'archived' ? (
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"
@@ -155,9 +158,9 @@ function IdeaCard({ cards, cardType }) {
             </atoms.Button>
           </Link>
         )} */}
-        <UpdateFailure />
-      </atoms.Box>
-    </Link>
+      <UpdateFailure />
+    </atoms.Box>
+    // </Link>
   );
 }
 
