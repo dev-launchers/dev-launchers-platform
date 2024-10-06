@@ -24,12 +24,5 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/components/common/Header/index.js",
-    "src/pages/_app.jsx"
-  ],
   "exclude": ["node_modules"]
 }

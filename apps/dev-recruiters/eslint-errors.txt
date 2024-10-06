@@ -1,0 +1,4 @@
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/apps/dev-recruiters/src/components/common/BoxContainer/BoxContainer.tsx: line 9, col 13, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/apps/dev-recruiters/src/components/common/BoxContainer/BoxContainer.tsx: line 9, col 27, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+
+2 problems

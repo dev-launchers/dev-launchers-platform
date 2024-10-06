@@ -1,0 +1,839 @@
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/Dialog/ShareDialog/ShareDialog.tsx: line 46, col 12, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/Dialog/ShareDialog/ShareDialog.tsx: line 100, col 18, Warning - 'Twitter' is deprecated.  (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/Dialog/ShareDialog/ShareDialog.tsx: line 106, col 18, Warning - 'Facebook' is deprecated.  (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/BaseLayer/BaseLayer.stories.tsx: line 14, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/BaseLayer/BaseLayer.stories.tsx: line 16, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/BaseLayer/BaseLayer.stories.tsx: line 27, col 24, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/BaseLayer/BaseLayer.stories.tsx: line 38, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/BaseLayer/BaseLayer.stories.tsx: line 49, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Button/Button.stories.tsx: line 8, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Button/Button.stories.tsx: line 10, col 23, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Button/Button.stories.tsx: line 14, col 31, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Checkbox/Checkbox.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Checkbox/Checkbox.stories.tsx: line 9, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 14, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 16, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 29, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 42, col 23, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 53, col 31, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Layer/Layer.stories.tsx: line 66, col 31, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Link/Link.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Link/Link.stories.tsx: line 9, col 21, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/NavLink/NavLink.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/NavLink/NavLink.stories.tsx: line 9, col 24, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 14, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 16, col 21, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 27, col 20, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 38, col 26, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 49, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 60, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 71, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 82, col 33, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Overlay/Overlay.stories.tsx: line 93, col 32, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Radio/Radio.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Radio/Radio.stories.tsx: line 9, col 22, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Slider/Slider.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Slider/Slider.stories.tsx: line 9, col 23, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/SubNavLink/SubNavLink.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/SubNavLink/SubNavLink.stories.tsx: line 9, col 21, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Styled.Tags.ts: line 6, col 25, Warning - 'Props' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 7, col 14, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 8, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 8, col 27, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 10, col 18, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 10, col 40, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 11, col 4, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 15, col 19, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 15, col 41, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.stories.tsx: line 16, col 4, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/Tags.tsx: line 42, col 4, Warning - 'Props' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/index.ts: line 1, col 10, Warning - 'default' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tags/index.ts: line 1, col 10, Warning - 'default' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Toggle/Toggle.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Toggle/Toggle.stories.tsx: line 9, col 23, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tooltip/Tooltip.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tooltip/Tooltip.stories.tsx: line 9, col 23, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Tooltip/index.ts: line 11, col 23, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 8, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 10, col 18, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 19, col 18, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 28, col 18, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 37, col 18, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 46, col 24, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 55, col 30, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 64, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 73, col 30, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/Typography/Typography.stories.tsx: line 82, col 21, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/index.ts: line 9, col 10, Warning - 'default' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/atoms/index.ts: line 9, col 21, Warning - 'Tag' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/Alert/Alert.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/Alert/Alert.stories.tsx: line 9, col 33, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/Alert/Alert.stories.tsx: line 17, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/Alert/Alert.stories.tsx: line 25, col 26, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/Alert/Alert.stories.tsx: line 33, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/BackButton/BackButton.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/BackButton/BackButton.stories.tsx: line 9, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/LikeButton/LikeButton.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/LikeButton/LikeButton.stories.tsx: line 9, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/SaveButton/SaveButton.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/SaveButton/SaveButton.stories.tsx: line 9, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/ShareButton/ShareButton.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/InteractionButtons/ShareButton/ShareButton.stories.tsx: line 9, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/ProgressBar/ProgressBar.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/ProgressBar/ProgressBar.stories.tsx: line 9, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/SocialIconButton/SocialIconButton.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/molecules/SocialIconButton/SocialIconButton.stories.tsx: line 9, col 27, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.stories.tsx: line 6, col 14, Warning - 'Dropdown' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.stories.tsx: line 9, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.stories.tsx: line 9, col 47, Warning - 'Dropdown' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.stories.tsx: line 10, col 4, Warning - 'Dropdown' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.tsx: line 27, col 4, Warning - 'DropdownProps' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/Dropdown.tsx: line 103, col 16, Warning - 'Dropdown' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/StyledDropdown.ts: line 14, col 45, Warning - 'DropdownProps' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/StyledDropdown.ts: line 39, col 44, Warning - 'DropdownProps' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/StyledDropdown.ts: line 50, col 36, Warning - 'DropdownProps' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/StyledDropdown.ts: line 60, col 5, Warning - 'DropdownProps' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/index.ts: line 1, col 10, Warning - 'default' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/Dropdown/index.ts: line 1, col 10, Warning - 'default' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/FormField/FormField.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/FormField/FormField.stories.tsx: line 9, col 26, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/FormField/index.ts: line 6, col 19, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/NavDropdown/NavDropdown.stories.tsx: line 9, col 28, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/NavDropdown/index.ts: line 10, col 16, Warning - 'JSX' is deprecated. Use `React.JSX` instead of the global `JSX` namespace. (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/OpenResponse/OpenResponse.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/OpenResponse/OpenResponse.stories.tsx: line 9, col 29, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/PositionCard/PositionCard.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/PositionCard/PositionCard.stories.tsx: line 9, col 29, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/ProductCardLarge/ProductCardLarge.stories.tsx: line 7, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/ProductCardLarge/ProductCardLarge.stories.tsx: line 19, col 33, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/ProductCardLong/ProductCardLong.stories.tsx: line 6, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/ProductCardLong/ProductCardLong.stories.tsx: line 21, col 32, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/StyledCommonComponents.tsx: line 18, col 12, Warning - 'Tags' is deprecated. Use `Tag` instead (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/UserCard/UserCard.stories.tsx: line 9, col 6, Warning - 'ComponentMeta' is deprecated. Use `Meta` instead, e.g. ComponentMeta<typeof Button> -> Meta<typeof Button>.
+
+For the common case where a component's stories are simple components that receives args as props:
+
+```tsx
+export default { ... } as ComponentMeta<typeof Button>;
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/cards/UserCard/UserCard.stories.tsx: line 11, col 25, Warning - 'ComponentStory' is deprecated. Use `StoryFn` instead, e.g. ComponentStory<typeof Button> -> StoryFn<typeof Button>.
+Use `StoryObj` if you want to migrate to CSF3, which uses objects instead of functions to represent stories
+You can read more about the CSF3 format here: https://storybook.js.org/blog/component-story-format-3-0/.
+
+For the common case where a (CSFv3) story is a simple component that receives args as props:
+
+```tsx
+const MyStory: ComponentStory<typeof Button> = {
+args: { buttonArg1: 'val' },
+}
+``` (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/index.ts: line 12, col 10, Warning - 'default' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/packages/UI/src/components/organisms/index.ts: line 12, col 21, Warning - 'Dropdown' is deprecated. please import {DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuCheckboxItem, DropdownMenuRadioItem, DropdownMenuRadioGroup} from (@delagen/deprecation/deprecation)
+
+115 problems

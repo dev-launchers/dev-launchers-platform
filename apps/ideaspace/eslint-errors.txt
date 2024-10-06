@@ -1,0 +1,3 @@
+/home/runner/work/dev-launchers-platform/dev-launchers-platform/apps/ideaspace/src/analytics/Analytics.js: line 11, col 9, Warning - 'pageview' is deprecated. Use `.send("pageview")` instead (@delagen/deprecation/deprecation)
+
+1 problem
