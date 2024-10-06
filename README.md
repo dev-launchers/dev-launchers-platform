@@ -14,7 +14,7 @@ Dev Launchers is a nonprofit tech company working to democratize access to techn
 
 ## Contributing
 
-Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of our teams!
+Visit https://devlaunchers.org/join to join one of our teams!
 
 ---
 
@@ -29,7 +29,6 @@ Visit https://www.volunteermatch.org/s/srp/orgOpps?org=1189675 to join one of ou
 4. Run the app's development server: `yarn workspace @devlaunchers/app dev`
 
 ---
-
 
 ## Monorepo scripts
 
@@ -85,7 +84,6 @@ Once you are ready to create a new release, create a PR to merge master branch t
 > This runs the main development branch (`master`) and is automatically redeployed when that branch is updated
 
 ---
-
 
 ## Licenses
 
