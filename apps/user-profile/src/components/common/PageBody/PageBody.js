@@ -9,7 +9,8 @@ function PageBody({ children, loading = false, error = null }) {
         </div>
       );
     } else {
-      if (error) {
+      // 401 is unauthorised entry
+      if (error && error?.response?.status != 401) {
         return (
           <div className="flex flex-col gap-4 items-center justify-center h-screen max-h-[800px] text-grayscale-700">
             <p>
