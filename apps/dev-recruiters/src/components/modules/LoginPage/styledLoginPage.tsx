@@ -13,6 +13,11 @@ export const Header = styled.h3`
   font-family: ${({ theme }) => theme.fonts.headline};
   border-bottom: none;
   font-weight: 300;
+
+  @media (max-width: 640px) {
+    font-size: 24px;
+    text-align: center;
+  }
 `;
 export const Text = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.small};
@@ -50,6 +55,11 @@ export const ButtonWrapper = styled.div`
   // padding: 30px;
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 export const LoginButton = styled.a`
   background-color: ${({ theme }) => theme.colors.White};
@@ -61,6 +71,9 @@ export const LoginButton = styled.a`
   padding: 8px 24px 8px 24px;
   margin: 10px;
   cursor: pointer;
+  @media (max-width: 640px) {
+    width: fit-content;
+  }
 `;
 export const CreateAccountButton = styled.a`
   background-color: ${({ theme }) => theme.colors.BrandAltNebula600};

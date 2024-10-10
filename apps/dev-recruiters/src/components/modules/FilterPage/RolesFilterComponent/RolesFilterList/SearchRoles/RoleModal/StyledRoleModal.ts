@@ -22,10 +22,17 @@ export const ButtonsSection = styled.div<{
   justify-content: flex-end;
   gap: 32px;
 
-  @media (max-width: 760px) {
-    display: ${(props) => (props.Mobile ? 'flex' : 'none')};
-    margin: auto auto;
-    justify-content: space-evenly;
+  @media (max-width: 640px) {
+    // display: ${(props) => (props.Mobile ? 'flex' : 'none')};
+    display: flex;
+    margin: 32px auto;
+    justify-content: end;
+  }
+  @media (max-width: 506px) {
+    // display: ${(props) => (props.Mobile ? 'flex' : 'none')};
+    display: flex;
+    flex-direction: column;
+    margin: 32px auto;
   }
 `;
 export const ApplyButton = styled.a<{ color?: string }>`
