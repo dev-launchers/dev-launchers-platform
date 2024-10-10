@@ -162,6 +162,12 @@ export const RowContainerTop = styled.div`
   gap: 32px;
   grid-template-columns: repeat(3, 1fr);
   // background-color: yellow;
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 `;
 export const RowContainerBottom = styled.div`
   margin-top: 32px;
@@ -170,5 +176,8 @@ export const RowContainerBottom = styled.div`
   // grid-template-columns: 8fr 4fr;
   justify-content: space-between;
   // margin-bottom: 32px;
-  // background-color: pink;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;

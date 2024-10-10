@@ -138,8 +138,8 @@ export const OpportunityDetailsContainer = styled.div`
 
 export const TagsSection = styled.div`
   // padding: 0 1rem;
-  width: auto;
-  display: inline-block;
+  // width: auto;
+  // display: inline-block;
 
   & h4 {
     font-style: normal;
@@ -147,19 +147,26 @@ export const TagsSection = styled.div`
     font-weight: 600;
     line-height: 22px;
   }
-  @media (max-width: 760px) {
-    display: none;
+
+  @media (max-width: 1024px) {
+    display: grid;
+    grid-column: 1 / span 3;
   }
 `;
 export const TagsList = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: column;
-
+  // flex-direction: column;
+  flex-wrap: wrap;
   text-align: center;
-  gap: 6px;
+  gap: 8px;
   padding: 0;
   margin: 8px 0 0;
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-wrap: no-wrap;
+    width: 100%;
+  }
 `;
 export const TagsListItem = styled.li<{ color: sectionTheme }>`
   padding: 6px 8px 6px 8px;
@@ -171,14 +178,14 @@ export const TagsListItem = styled.li<{ color: sectionTheme }>`
   color: ${(props) =>
     props.color === 'Light'
       ? props.theme?.colors?.SkillTagColor
-      : props.theme.colors.Black};
+      : props.theme.colors.White};
 
   border-radius: 1.8125rem;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  text-transform: Uppercase;
+  text-transform: capitalize;
 `;
 
 export const CommitmentSection = styled.div`
@@ -205,9 +212,9 @@ export const CommitmentSection = styled.div`
     margin-left: 1rem;
     text-align: center;
   }
-  @media (max-width: 760px) {
-    display: none;
-  }
+  // @media (max-width: 760px) {
+  //   display: none;
+  // }
 `;
 
 export const ExpectationsSection = styled.div<{ Expanded: boolean }>`
@@ -326,7 +333,7 @@ export const ModalDescriptionSection = styled.div<{
 
   & h5 {
     font-family: ${(props) => props.theme?.fonts?.normal};
-   font-size: 20px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height:  24px 
@@ -337,7 +344,6 @@ export const ModalDescriptionSection = styled.div<{
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
-
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -345,11 +351,11 @@ export const ModalDescriptionSection = styled.div<{
     margin-top: 8px
   }
 
-  @media (max-width: 760px) {
-    padding: 0 1rem;
-    display: ${(props) => (props.Mobile ? 'block' : 'none')};
+  @media (max-width: 640px) {
+    // padding: 0 1rem;
+    // display: ${(props) => (props.Mobile ? 'block' : 'none')};
     & p {
-      padding: 0 1rem;
+      // padding: 0 1rem;
       font-family: ${(props) => props.theme?.fonts?.normal};
       font-style: normal;
       font-weight: 400;
@@ -361,6 +367,7 @@ export const ModalDescriptionSection = styled.div<{
 
 export const ModalProjectSection = styled.div`
 
+    
   & .title h2 {
     margin: 0;
     padding: 0;
@@ -443,16 +450,8 @@ export const ModalProjectSection = styled.div`
     color: #000;
   }
 
-    & .skills {
-    font-family: ${(props) => props.theme?.fonts?.normal};
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height:  24px 
-    letter-spacing: 0.8px;
-    color: #000;
-    
-    }
+
+ 
 
     & .responsibilty h5 {
      font-family: ${(props) => props.theme?.fonts?.normal};
@@ -473,7 +472,35 @@ export const ModalProjectSection = styled.div`
     letter-spacing: 0.8px;
     }
 
+     @media (max-width: 1024px) {
+     & .title h2 {
+      font-size: 32px;
+     }
+  }
 
+
+`;
+export const ModalSkillRequiredSection = styled.div`
+
+
+    & .skills {
+    
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height:  24px 
+    letter-spacing: 0.8px;
+    color: #000;
+    
+    }
+
+ @media (max-width: 1024px) {
+    grid-column: 1 / span 3;
+  }
+ @media (max-width: 640px) {
+    grid-column: 1 / span 1;
+  }
 
 `;
 

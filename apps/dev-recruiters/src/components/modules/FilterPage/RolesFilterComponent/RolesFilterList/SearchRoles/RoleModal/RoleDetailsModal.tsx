@@ -9,6 +9,7 @@ import {
   ExpectationsListItem,
   ModalDescriptionSection,
   ModalProjectSection,
+  ModalSkillRequiredSection,
   TagsList,
   TagsListItem,
   TagsSection,
@@ -90,18 +91,26 @@ function RoleDetailsModal({
 }
 
 function ModalTopSection({ position }: Props) {
-  console.log('Here am', position);
+  /***destructuring propertid from position.attributes */
+  console.log(position);
+  const {
+    title,
+    commitmentHoursPerWeek,
+    level,
+    description,
+    interests: { data },
+  } = position.attributes;
   return (
     <RowContainerTop>
       <ModalProjectSection>
         <div className="title">
-          <h2>{position.attributes.title}</h2>
+          <h2>{title}</h2>
           {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
           <p>Product Platform</p>
         </div>
         <div className="commitment">
           <h5>TIME COMMITMENT</h5>
-          <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>
+          <p>{commitmentHoursPerWeek} hrs per week</p>
         </div>
         <div className="level">
           <h5>
@@ -123,14 +132,14 @@ function ModalTopSection({ position }: Props) {
               <path d="M12 17h.01" />
             </svg>
           </h5>
-          <p> {position.attributes.level}</p>
+          <p> {level}</p>
         </div>
       </ModalProjectSection>
       <ModalDescriptionSection Mobile={false}>
         <h5>About the Role</h5>
-        <p>{position.attributes.description}</p>
+        <p>{description}</p>
       </ModalDescriptionSection>
-      <ModalProjectSection>
+      <ModalSkillRequiredSection>
         <div className="require_skill">
           <h5 className="skills">Skills Required</h5>
           <TagsSection>
@@ -139,11 +148,14 @@ function ModalTopSection({ position }: Props) {
                 {position.attributes.level}
               </TagsListItem> */}
 
-              {position?.attributes.expectations?.map((skill, index) => (
-                <TagsListItem color="Dark" key={index}>
-                  {skill?.expectation}
-                </TagsListItem>
-              ))}
+              {data?.map((skill, index) => {
+                const { interest } = skill?.attributes;
+                return (
+                  <TagsListItem color="Dark" key={index}>
+                    {interest}
+                  </TagsListItem>
+                );
+              })}
               {/* }  {position?.skills?.map((skill, index) => (
               <TagsListItem color="Dark" key={index}>
                 {skill?.interest}
@@ -153,7 +165,7 @@ function ModalTopSection({ position }: Props) {
             </TagsList>
           </TagsSection>
         </div>
-      </ModalProjectSection>
+      </ModalSkillRequiredSection>
     </RowContainerTop>
   );
 }
@@ -254,7 +266,7 @@ function ModalBottomSection({
           </ButtonsSection>
         ) : (
           <ButtonsSection Mobile={false} onClick={handleOpenLoginModal}>
-            <ApplyButton>Sign in to Apply</ApplyButton>
+            <ApplyButton>Sign In To Apply</ApplyButton>
           </ButtonsSection>
         )}
       </div>

@@ -18,6 +18,7 @@ const theme = {
     Black: '#000000',
     BlackT60: 'rgba(0,0,0,0.6)',
     BlackT38: 'rgba(0,0,0,0.38)',
+    BlackT40: 'rgba(0,0,0,0.4)',
 
     BLUE_700: '#173242',
     BrandAltNebula600: '#69349D',
