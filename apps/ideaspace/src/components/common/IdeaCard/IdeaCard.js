@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import LinesEllipsis from 'react-lines-ellipsis';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
@@ -79,7 +78,23 @@ function IdeaCard({ cards, cardType }) {
     const update = new Date(cards.updatedAt);
     const now = new Date();
     const diffInDays = Math.floor((now - update) / (1000 * 60 * 60 * 24));
-    return diffInDays;
+    if (diffInDays >= 730) {
+      return Math.floor(diffInDays / 365) + ' years';
+    } else if (diffInDays >= 365) {
+      return '1 year';
+    } else if (diffInDays >= 60) {
+      return Math.floor(diffInDays / 30) + ' months';
+    } else if (diffInDays >= 30) {
+      return '1 month';
+    } else if (diffInDays >= 14) {
+      return Math.floor(diffInDays / 7) + ' weeks';
+    } else if (diffInDays >= 7) {
+      return '1 week';
+    } else if (diffInDays > 1) {
+      return Math.floor(diffInDays) + ' days';
+    } else {
+      return '1 day';
+    }
   };
 
   return (
@@ -87,11 +102,12 @@ function IdeaCard({ cards, cardType }) {
     <atoms.Box
       flexDirection="column"
       padding="0.5rem 0.5rem 1.5rem 0.5rem"
-      width="23.3125rem"
+      width="29%"
       style={{
         border: '0.125rem solid rgba(71, 71, 71, 0.10)',
         borderRadius: '1rem',
         cursor: 'pointer',
+        minWidth: '20rem',
         boxShadow: isHovered
           ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
           : 'none',
@@ -110,7 +126,6 @@ function IdeaCard({ cards, cardType }) {
           <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
-            justifyContent="space-between"
             padding="0rem 0.75rem 0rem"
           >
             <atoms.Typography
@@ -123,13 +138,9 @@ function IdeaCard({ cards, cardType }) {
                 letterSpacing: '0.045rem',
               }}
             >
-              <LinesEllipsis
-                text={cards.ideaName}
-                maxLine="1"
-                ellipsis=""
-                trimRight
-                basedOn="letters"
-              />
+              {cards.ideaName.length > 20
+                ? `${cards.ideaName.substring(0, 20)}`
+                : cards.ideaName}
             </atoms.Typography>
 
             {/* <atoms.Box alignItems="center">
@@ -144,19 +155,15 @@ function IdeaCard({ cards, cardType }) {
 
             <atoms.Typography
               type="p"
-              style={{ fontSize: '0.875rem', marginBottom: '2rem' }}
+              style={{ fontSize: '0.875rem', height: '1rem' }}
             >
-              <LinesEllipsis
-                text={cards.description}
-                maxLine="2"
-                ellipsis="..."
-                trimRight
-                basedOn="letters"
-              />
+              {cards.description.length > 80
+                ? `${cards.description.substring(0, 80)}...`
+                : cards.description}
             </atoms.Typography>
             <ActivityDetails>
               <atoms.Typography type="label" style={{ fontSize: '0.75rem' }}>
-                Updated: {daysAgo()} days ago
+                Updated: {daysAgo()} ago
               </atoms.Typography>
               <atoms.Typography
                 type="label"

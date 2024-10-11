@@ -25,8 +25,9 @@ export const IdeaCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 2.81rem;
-  row-gap: 2.5rem;
+  justify-content: center;
+  column-gap: 1rem;
+  row-gap: 1rem;
   margin: 1.5rem auto;
 
   @media (max-width: 1278px) {
@@ -38,5 +39,5 @@ export const FilterDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  margin-bottom: 4rem;
+  margin-bottom: 0.5rem;
 `;

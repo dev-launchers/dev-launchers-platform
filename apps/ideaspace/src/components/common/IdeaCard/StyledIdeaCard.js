@@ -9,7 +9,7 @@ export const IdeaCardButton = styled((props) => (
 
 export const ImgButton = styled.button`
   padding: 0.5rem;
-  width: 22.5rem;
+  width: 100%;
 `;
 
 export const StatuBox = styled.div`
@@ -41,4 +41,5 @@ export const ActivityDetails = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 4rem;
 `;
