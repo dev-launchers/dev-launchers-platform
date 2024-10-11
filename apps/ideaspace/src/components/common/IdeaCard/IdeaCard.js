@@ -78,7 +78,9 @@ function IdeaCard({ cards, cardType }) {
     const update = new Date(cards.updatedAt);
     const now = new Date();
     const diffInDays = Math.floor((now - update) / (1000 * 60 * 60 * 24));
-    if (diffInDays >= 730) {
+    if (diffInDays >= 1825) {
+      return 'long time';
+    } else if (diffInDays >= 730) {
       return Math.floor(diffInDays / 365) + ' years';
     } else if (diffInDays >= 365) {
       return '1 year';
@@ -98,31 +100,29 @@ function IdeaCard({ cards, cardType }) {
   };
 
   return (
-    // <Link href={{ pathname: urlPath }}>
-    <atoms.Box
-      flexDirection="column"
-      padding="0.5rem 0.5rem 1.5rem 0.5rem"
-      width="29%"
-      style={{
-        border: '0.125rem solid rgba(71, 71, 71, 0.10)',
-        borderRadius: '1rem',
-        cursor: 'pointer',
-        minWidth: '20rem',
-        boxShadow: isHovered
-          ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
-          : 'none',
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      {/* <atoms.Box>
+    <Link href={{ pathname: urlPath }}>
+      <atoms.Box
+        flexDirection="column"
+        padding="0.5rem 0.5rem 1.5rem 0.5rem"
+        width="29%"
+        style={{
+          border: '0.125rem solid rgba(71, 71, 71, 0.10)',
+          borderRadius: '1rem',
+          cursor: 'pointer',
+          minWidth: '20rem',
+          boxShadow: isHovered
+            ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
+            : 'none',
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        {/* <atoms.Box>
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
-      <Link href={{ pathname: urlPath }}>
         <div>
           <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
-          {/* <Link href={{ pathname: urlPath }}> */}
           <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
@@ -155,7 +155,7 @@ function IdeaCard({ cards, cardType }) {
 
             <atoms.Typography
               type="p"
-              style={{ fontSize: '0.875rem', height: '1rem' }}
+              style={{ fontSize: '0.875rem', height: '2.5rem' }}
             >
               {cards.description.length > 80
                 ? `${cards.description.substring(0, 80)}...`
@@ -173,11 +173,9 @@ function IdeaCard({ cards, cardType }) {
               </atoms.Typography>
             </ActivityDetails>
           </atoms.Box>
-          {/* </Link> */}
         </div>
-      </Link>
 
-      {/* {tagContent == 'archived' ? (
+        {/* {tagContent == 'archived' ? (
           <atoms.Button
             buttonSize="standard"
             buttonType="alternative"
@@ -197,9 +195,9 @@ function IdeaCard({ cards, cardType }) {
             </atoms.Button>
           </Link>
         )} */}
-      <UpdateFailure />
-    </atoms.Box>
-    // </Link>
+        <UpdateFailure />
+      </atoms.Box>
+    </Link>
   );
 }
 

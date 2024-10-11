@@ -41,5 +41,5 @@ export const ActivityDetails = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 2rem;
 `;
