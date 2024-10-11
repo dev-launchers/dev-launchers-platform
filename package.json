@@ -54,7 +54,9 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "cross-env": "7.0.3"
+    "cross-env": "7.0.3",
+    "react-line-ellipsis": "0.14.1",
+    "react-lines-ellipsis": "0.15.4"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.6",

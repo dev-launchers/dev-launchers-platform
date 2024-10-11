@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import LinesEllipsis from 'react-lines-ellipsis';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCardImg from './IdeaCardImg';
 import IdeaCardTag from './IdeaCardTag';
@@ -10,6 +11,7 @@ import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
+import { ActivityDetails } from './StyledIdeaCard';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -18,6 +20,7 @@ function IdeaCard({ cards, cardType }) {
   const [liked, setLiked] = useState(false);
   const { isAuthenticated, isLoading, userData } = useUserDataContext();
   const [votes, setVotes] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -72,14 +75,29 @@ function IdeaCard({ cards, cardType }) {
     setVotes(data.length);
   };
 
+  const daysAgo = () => {
+    const update = new Date(cards.updatedAt);
+    const now = new Date();
+    const diffInDays = Math.floor((now - update) / (1000 * 60 * 60 * 24));
+    return diffInDays;
+  };
+
   return (
     // <Link href={{ pathname: urlPath }}>
     <atoms.Box
       flexDirection="column"
+      padding="0.5rem 0.5rem 1.5rem 0.5rem"
+      width="23.3125rem"
       style={{
-        border: '0.05rem solid rgba(240, 237, 238, 1)',
+        border: '0.125rem solid rgba(71, 71, 71, 0.10)',
         borderRadius: '1rem',
+        cursor: 'pointer',
+        boxShadow: isHovered
+          ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
+          : 'none',
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* <atoms.Box>
         <IdeaCardTag status={tagContent} />
@@ -93,14 +111,25 @@ function IdeaCard({ cards, cardType }) {
             flexDirection="column"
             alignItems="flex-start"
             justifyContent="space-between"
-            padding="0rem 2rem 2rem"
-            style={{ maxWidth: '18.5rem' }}
+            padding="0rem 0.75rem 0rem"
           >
             <atoms.Typography
-              type="h3"
-              style={{ fontSize: '1.5rem', marginBottom: '2rem' }}
+              type="h4"
+              style={{
+                fontSize: '1.25rem',
+                marginBottom: '0.5rem',
+                fontWeight: 'bold',
+                lineHeight: '1.75rem',
+                letterSpacing: '0.045rem',
+              }}
             >
-              {cards.ideaName}
+              <LinesEllipsis
+                text={cards.ideaName}
+                maxLine="1"
+                ellipsis=""
+                trimRight
+                basedOn="letters"
+              />
             </atoms.Typography>
 
             {/* <atoms.Box alignItems="center">
@@ -115,24 +144,27 @@ function IdeaCard({ cards, cardType }) {
 
             <atoms.Typography
               type="p"
-              style={{ fontSize: '1.1rem', marginBottom: '2rem' }}
+              style={{ fontSize: '0.875rem', marginBottom: '2rem' }}
             >
-              {cards.description}
+              <LinesEllipsis
+                text={cards.description}
+                maxLine="2"
+                ellipsis="..."
+                trimRight
+                basedOn="letters"
+              />
             </atoms.Typography>
-            <div>
-              {/* <atoms.Typography
-                type="label"
-                style={{ fontSize: '1rem', marginBottom: '2rem' }}
-              >
-                Updated: {cards.mostRecentCommentTime}
-              </atoms.Typography> */}
+            <ActivityDetails>
+              <atoms.Typography type="label" style={{ fontSize: '0.75rem' }}>
+                Updated: {daysAgo()} days ago
+              </atoms.Typography>
               <atoms.Typography
                 type="label"
-                style={{ fontSize: '1rem', marginBottom: '2rem' }}
+                style={{ fontSize: '0.75rem', color: '#3A7CA5' }}
               >
-                {cards.comments?.length} comments - {votes} upvotes
+                {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>
-            </div>
+            </ActivityDetails>
           </atoms.Box>
           {/* </Link> */}
         </div>

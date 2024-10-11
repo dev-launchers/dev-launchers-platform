@@ -14894,9 +14894,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30000981, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001125, caniuse-lite@npm:^1.0.30001332, caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001464, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001520":
-  version: 1.0.30001528
-  resolution: "caniuse-lite@npm:1.0.30001528"
-  checksum: 7b6a71d41de1ce2b95f5851e7074050b7600157acf02c5701d9650a1faf824e368163f4ede5e269d4ea44fe33e00fe60673cb86f40cac35bd02a9a9a4ef7f162
+  version: 1.0.30001664
+  resolution: "caniuse-lite@npm:1.0.30001664"
+  checksum: cee25b4ea8a84779b7c9a60c1f9e304f6d99b79ef622b25fbc7873b4e55e8722a1091dd6c8b77bd7723e9f26a84b4a820a50a864989dd477e7ee51dc30461dca
   languageName: node
   linkType: hard
 
@@ -34270,6 +34270,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-line-ellipsis@npm:0.14.1":
+  version: 0.14.1
+  resolution: "react-line-ellipsis@npm:0.14.1"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: fedaec4018692661e8847048d7b16aeef9beeeaa3f15204b5499fbc07b2b1ffc532eec8323a1385a14c830e4a59e26ea8bbc489ce7c1d10e4f05791c8bf73ac7
+  languageName: node
+  linkType: hard
+
+"react-lines-ellipsis@npm:0.15.4":
+  version: 0.15.4
+  resolution: "react-lines-ellipsis@npm:0.15.4"
+  peerDependencies:
+    react: "*"
+    react-dom: "*"
+  checksum: f98b2653b6fbf4d47a7b963e258f571e72dca419f12b4c3122d6906aeff8e260aff8a0b297d12567f96c5b2eb288e2e51ef8ccd0d5b7c1f16046a180db6f5f8f
+  languageName: node
+  linkType: hard
+
 "react-markdown@npm:^8.0.3":
   version: 8.0.7
   resolution: "react-markdown@npm:8.0.7"
@@ -41878,6 +41898,8 @@ __metadata:
     msw-storybook-addon: 1.6.3
     npm-run-all: 4.1.5
     prettier: 2.7.1
+    react-line-ellipsis: 0.14.1
+    react-lines-ellipsis: 0.15.4
     rimraf: 3.0.2
     shell-quote: 1.7.3
     typescript: 4.7.4
