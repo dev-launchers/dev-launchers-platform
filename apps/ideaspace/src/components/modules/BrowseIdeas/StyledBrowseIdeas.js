@@ -26,7 +26,7 @@ export const IdeaCardWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 1rem;
+  column-gap: 2.81rem;
   row-gap: 1rem;
   margin: 1.5rem auto;
 

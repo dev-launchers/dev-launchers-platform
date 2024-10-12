@@ -8,7 +8,7 @@ export const IdeaCardButton = styled((props) => (
 `;
 
 export const ImgButton = styled.button`
-  padding: 0.5rem;
+  // padding: 0.5rem;
   width: 100%;
 `;
 
