@@ -1,6 +1,6 @@
 type Direction = 'vertical' | 'horizontal' | 'wrap';
 
-interface DivContainerProps {
+export interface DivContainerProps {
   direction: Direction;
   reverse: boolean;
   children: React.ReactNode;
