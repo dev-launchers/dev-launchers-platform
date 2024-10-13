@@ -11,6 +11,14 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
+// import {DropdownMenu} from "./../../../common/Dropdown/Dropdown";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from '@devlaunchers/components/components/DropdownMenu';
+import countryData from './../../../../content/countryData.json';
 import {
   ButtonContainer,
   OnboardingContainer,
@@ -31,9 +39,10 @@ const initialFormValue = {
   firstNameTouched: false,
   lastName: '',
   lastNameTouched: false,
-  location: '',
+  country: '',
   role: '',
-  headline: '',
+  linkedInPortfolio: '',
+  websitePortfolio: '',
   termsAndConditions: false,
   emailMarketing: false,
 };
@@ -50,6 +59,7 @@ export default function UserLandingPage() {
   const [formValidation, setFormValidation] = useState(
     validate(initialFormValue)
   );
+  console.log(person);
 
   const [profilePicture, setProfilePicture] = useState(
     userData?.profile?.profilePictureUrl
@@ -133,16 +143,20 @@ export default function UserLandingPage() {
     setPerson({ ...person, lastName: e.target.value, lastNameTouched: true });
   }
 
-  function onLocationChange(e) {
-    setPerson({ ...person, location: e.target.value });
+  function onCountryChange(e) {
+    setPerson({ ...person, country: e });
   }
 
   function onRoleChange(e) {
     setPerson({ ...person, role: e.target.value });
   }
 
-  function onHeadLineChange(e) {
-    setPerson({ ...person, headline: e.target.value });
+  function onLinkedInPortfolioChange(e) {
+    setPerson({ ...person, linkedInPortfolio: e.target.value });
+  }
+
+  function onWebsitePortfolioChange(e) {
+    setPerson({ ...person, websitePortfolio: e.target.value });
   }
 
   function onTermsAndConditionChange(e) {
@@ -267,12 +281,21 @@ export default function UserLandingPage() {
               required
             />
 
-            {/* <InputField
-              error=""
-              label="Location (optional)"
-              onChange={onLocationChange}
-              placeholder="Lose Angels, CA"
-            />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild size="large">
+                <div className="group">{person.country || 'Country'}</div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent size="large">
+                {countryData.map((item) => (
+                  <DropdownMenuItem
+                    key={item.code}
+                    onSelect={() => onCountryChange(item.name)}
+                  >
+                    <button aria-label="fake-anchor">{item.name}</button>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <InputField
               error=""
@@ -283,10 +306,16 @@ export default function UserLandingPage() {
 
             <InputField
               error=""
-              label="Headline (optional)"
-              onChange={onHeadLineChange}
-              placeholder="I'm an experienced CSS developer"
-            /> */}
+              label="linkedInPortfolio (optional)"
+              onChange={onLinkedInPortfolioChange}
+              placeholder="www.linkedin.com"
+            />
+            <InputField
+              error=""
+              label="websitePortfolio (optional)"
+              onChange={onWebsitePortfolioChange}
+              placeholder="www.portfolio.com"
+            />
           </FormFields>
           <FormFooter>
             <CheckboxField
