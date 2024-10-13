@@ -23,10 +23,12 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
-  const { userData, isAuthenticated } = useUserDataContext();
+  const [showVoteButton, setShowVoteButton] = useState(false);
+  const { userData, isLoading, isAuthenticated } = useUserDataContext();
+
   useEffect(() => {
-    loadDataOnlyOnce(); // query database
-  }, []);
+    if (!isLoading) loadDataOnlyOnce(); // query database
+  }, [isLoading]);
 
   const loadDataOnlyOnce = async () => {
     // use get likes from agent
@@ -41,6 +43,8 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         setUpvoted(true);
       }
     }
+
+    setShowVoteButton(true);
   };
 
   // a function to keep track of the number of upvotes and when the user clicks the upvote button for this idea
@@ -98,6 +102,8 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const upvoteButton =
     userData?.id > 0 ? (
       <UpvoteButton
+        show={showVoteButton}
+        disabled={!isAuthenticated}
         onclick={handleUpvoteClick}
         selected={upvoted}
         text={
@@ -106,7 +112,18 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
             : 'Upvote | ' + count.toString()
         }
       />
-    ) : null;
+    ) : (
+      <UpvoteButton
+        show={showVoteButton}
+        disabled={true}
+        selected={upvoted}
+        text={
+          upvoted
+            ? 'Upvoted | ' + count.toString()
+            : 'Upvote | ' + count.toString()
+        }
+      />
+    );
 
   return (
     <StyledCard>
