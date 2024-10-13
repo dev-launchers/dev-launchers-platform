@@ -62,7 +62,7 @@ const TermsConditionLayout = () => {
           >
             {TermsConditionContent.ageEligibility.heading}
           </h2>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col">
             {TermsConditionContent.ageEligibility.paragraphs.map(
               (para, index) => (
                 <p key={index} className="text-[16px] leading-[24x]">
@@ -80,7 +80,7 @@ const TermsConditionLayout = () => {
           >
             {TermsConditionContent.nonCondidentiality.heading}
           </h2>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col">
             {TermsConditionContent.nonCondidentiality.paragraphs.map(
               (para, index) => (
                 <p key={index} className="text-[16px] leading-[24x]">
@@ -130,7 +130,7 @@ const TermsConditionLayout = () => {
           >
             {TermsConditionContent.intellectualPropertyRights.heading}
           </h2>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             {TermsConditionContent.intellectualPropertyRights.paragraphs.map(
               (para, index) => (
                 <p
@@ -144,7 +144,7 @@ const TermsConditionLayout = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[14px] mb-8">
+        <div className="flex flex-col gap-[10px] mb-8">
           <h2
             id="idea-evaluation"
             className="text-[32px] leading-[48px] font-light"
@@ -178,7 +178,7 @@ const TermsConditionLayout = () => {
               Examples of Ideas and suggestions that Dev Launchers will not be
               considered are:
             </div>
-            <ul className="ml-10 list-disc pl-5">
+            <ul className="ml-2 list-disc pl-5">
               {TermsConditionContent.ideaEvaluation.subPointers.map(
                 (pointer, index) => (
                   <li
@@ -210,10 +210,7 @@ const TermsConditionLayout = () => {
           </h2>
           <div>
             {TermsConditionContent.indemnity.paragraphs.map((para, index) => (
-              <p
-                key={index}
-                className="text-[16px] leading-[24px] font-normal mb-8"
-              >
+              <p key={index} className="text-[16px] leading-[24px] font-normal">
                 {para}
               </p>
             ))}
@@ -239,7 +236,7 @@ const TermsConditionLayout = () => {
           >
             {TermsConditionContent.changeToTerms.heading}
           </h2>
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-1">
             {TermsConditionContent.changeToTerms.paragraphs.map(
               (para, index) => (
                 <p
