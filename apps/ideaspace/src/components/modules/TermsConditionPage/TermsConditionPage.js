@@ -10,7 +10,12 @@ function TermsConditionPage() {
     <>
       <HeadWapper>
         <Headline>IdeaSpace</Headline>
-        <BackButton buttonType="confirm" clickHandler={() => window.close()} />
+        <div className="hidden sm:block">
+          <BackButton
+            buttonType="confirm"
+            clickHandler={() => window.close()}
+          />
+        </div>
         <atoms.Typography type="h4">
           Idea Submission Terms & Conditions
         </atoms.Typography>
