@@ -11,14 +11,9 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
-// import {DropdownMenu} from "./../../../common/Dropdown/Dropdown";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from '@devlaunchers/components/components/DropdownMenu';
+import DropDownMenu from './../../../common/Dropdown/Dropdown';
 import countryData from './../../../../content/countryData.json';
+
 import {
   ButtonContainer,
   OnboardingContainer,
@@ -33,6 +28,7 @@ import {
   ProfilePicture,
   UploadedProfilePicture,
 } from './StyledUserLandingPage';
+import DropdownMenu from './../../../common/Dropdown/Dropdown';
 
 const initialFormValue = {
   firstName: '',
@@ -59,7 +55,6 @@ export default function UserLandingPage() {
   const [formValidation, setFormValidation] = useState(
     validate(initialFormValue)
   );
-  console.log(person);
 
   const [profilePicture, setProfilePicture] = useState(
     userData?.profile?.profilePictureUrl
@@ -281,21 +276,11 @@ export default function UserLandingPage() {
               required
             />
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild size="large">
-                <div className="group">{person.country || 'Country'}</div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent size="large">
-                {countryData.map((item) => (
-                  <DropdownMenuItem
-                    key={item.code}
-                    onSelect={() => onCountryChange(item.name)}
-                  >
-                    <button aria-label="fake-anchor">{item.name}</button>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <DropDownMenu
+              menuItems={countryData}
+              country={person.country}
+              onCountryChange={onCountryChange}
+            />
 
             <InputField
               error=""
