@@ -3,23 +3,18 @@ import { Typography } from '@devlaunchers/components/components/atoms';
 import BubbleList from './../../../../common/BubbleList';
 
 function Interests({ interestList }) {
-  let interestArray = null;
+  const filterInterestList = () => {
+    return interestList
+      .filter((interestObj) => Boolean(interestObj?.interest))
+      .map((interestObj) => interestObj.interest);
+  };
 
-  if (interestList?.length > 0) {
-    // whats provided by backend is an array of objects [{},{}], so mapping is needed
-    interestArray = interestList
-      .filter((interestObj) => {
-        return interestObj?.interest ? true : false;
-      })
-      .map((interestObj) => {
-        return interestObj.interest;
-      });
-  }
+  const filteredInterestList = filterInterestList();
 
   return (
     <Card title="Interests">
-      {interestArray && interestArray.length > 0 ? (
-        <BubbleList list={interestArray} />
+      {filteredInterestList?.length > 0 ? (
+        <BubbleList list={filteredInterestList} />
       ) : (
         <Typography className="text-grayscale-500" type="p">
           No interests selected...
