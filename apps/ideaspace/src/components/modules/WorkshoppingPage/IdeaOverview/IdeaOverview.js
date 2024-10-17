@@ -15,8 +15,8 @@ export const IdeaOverview = ({ selectedCard }) => {
   if (selectedCard.ideaName === '') return null;
 
   const authorName =
-    selectedCard.ideaOwner?.userName !== undefined
-      ? selectedCard.ideaOwner?.userName
+    selectedCard.ideaOwner?.username !== undefined
+      ? selectedCard.ideaOwner?.username
       : selectedCard.ideaOwner?.email;
 
   return (
