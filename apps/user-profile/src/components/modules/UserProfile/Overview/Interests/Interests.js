@@ -5,16 +5,20 @@ import BubbleList from './../../../../common/BubbleList';
 function Interests({ interestList }) {
   let interestArray = null;
 
-  if (interestList.length > 0) {
+  if (interestList?.length > 0) {
     // whats provided by backend is an array of objects [{},{}], so mapping is needed
-    interestArray = interestList.map((interestObj) => {
-      return interestObj.interest ?? null;
-    });
+    interestArray = interestList
+      .filter((interestObj) => {
+        return interestObj?.interest ? true : false;
+      })
+      .map((interestObj) => {
+        return interestObj.interest;
+      });
   }
 
   return (
     <Card title="Interests">
-      {interestArray ? (
+      {interestArray && interestArray.length > 0 ? (
         <BubbleList list={interestArray} />
       ) : (
         <Typography className="text-grayscale-500" type="p">
