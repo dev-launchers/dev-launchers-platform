@@ -3,13 +3,9 @@ import { Typography } from '@devlaunchers/components/components/atoms';
 import BubbleList from './../../../../common/BubbleList';
 
 function Interests({ interestList }) {
-  const filterInterestList = () => {
-    return interestList
-      .filter((interestObj) => Boolean(interestObj?.interest))
-      .map((interestObj) => interestObj.interest);
-  };
-
-  const filteredInterestList = filterInterestList();
+  const filteredInterestList = interestList
+    .filter((interestObj) => Boolean(interestObj?.interest))
+    .map((interestObj) => interestObj.interest);
 
   return (
     <Card title="Interests">
