@@ -1,12 +1,26 @@
 import Card from './../../../../common/Card';
 import { Typography } from '@devlaunchers/components/components/atoms';
+import BubbleList from './../../../../common/BubbleList';
 
-function Interests() {
+function Interests({ interestList }) {
+  let interestArray = null;
+
+  if (interestList.length > 0) {
+    // whats provided by backend is an array of objects [{},{}], so mapping is needed
+    interestArray = interestList.map((item) => {
+      return item.interest ?? null;
+    });
+  }
+
   return (
     <Card title="Interests">
-      <Typography className="text-grayscale-500" type="p">
-        {'Coming Soon...'}
-      </Typography>
+      {interestArray ? (
+        <BubbleList list={interestArray} />
+      ) : (
+        <Typography className="text-grayscale-500" type="p">
+          No interests selected...
+        </Typography>
+      )}
     </Card>
   );
 }
