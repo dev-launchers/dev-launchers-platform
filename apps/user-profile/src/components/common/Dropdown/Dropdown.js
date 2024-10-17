@@ -5,11 +5,14 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@devlaunchers/components/components/DropdownMenu';
-function Dropdown(menuItems = []) {
+function DropDownMenu({ menuItems = [], country, onCountryChange }) {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild size="large">
-        <div className="group">{person.country || 'Country'}</div>
+      <p className="text-xs leading-4 block w-full box-border font-normal pd-3">
+        Country
+      </p>
+      <DropdownMenuTrigger asChild size="100%">
+        <div className="group">{country || 'Select...'}</div>
       </DropdownMenuTrigger>
       <DropdownMenuContent size="large">
         {menuItems.map((item) => (
@@ -24,4 +27,4 @@ function Dropdown(menuItems = []) {
     </DropdownMenu>
   );
 }
-export default DropdownMenu;
+export default DropDownMenu;
