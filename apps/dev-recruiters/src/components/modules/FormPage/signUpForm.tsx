@@ -3,8 +3,8 @@ import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScrol
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
-import { useState } from 'react';
+import { Field, Formik, FormikHelpers } from 'formik';
+import { MouseEventHandler, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
@@ -13,7 +13,7 @@ import {
   CloseButton,
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
-import { GradientLine } from './styledSignupForm';
+import { GradientLine, SubmitButton } from './styledSignupForm';
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -58,13 +58,20 @@ export default function SignUpForm({
         (number) => /^\d+(\.\d{1,2})?$/.test(number.toString())
       ),
     experience: Yup.string().required('Experience Field Entry is Required'),
-    accepted: Yup.boolean().required('Acceptance Field Entry is Required'),
+    isAgeOver18: Yup.boolean()
+      .required('Age over 18 Field is Required')
+      .oneOf([true], 'Age over 18 Field is Required'),
+    isTermsAgreed: Yup.boolean()
+      .required('Terms and Conditions is Required')
+      .oneOf([true], 'Terms and Conditions Field is Required'),
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [checkCheckbox, setCheckCheckbox] = useState();
+  const [checkCheckbox, setCheckCheckbox] = useState<undefined | boolean>(
+    undefined
+  );
 
   const handleSetCheckCheckbox = () => {
-    setCheckCheckbox(checkCheckbox!);
+    setCheckCheckbox(!checkCheckbox);
   };
 
   const handleOpenConfirmationModal = () => {
@@ -101,6 +108,8 @@ export default function SignUpForm({
           role: 'title' as string, //  role: position.title as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
           skills: [{ skill: '' }],
+          isAgeOver18: false,
+          isTermsAgreed: false,
         }}
         onSubmit={(
           values: NewApplicant,
@@ -133,7 +142,7 @@ export default function SignUpForm({
         }}
         validationSchema={SignupSchema}
       >
-        {({ errors, setFieldValue, touched, values }) => (
+        {(formik) => (
           <atoms.Box paddingInline="0.5rem" justifyContent="center">
             <CloseButton onClick={handleCloseModal}>
               <CloseIcon
@@ -150,7 +159,7 @@ export default function SignUpForm({
                 />
               </CloseIcon>
             </CloseButton>
-            <Form>
+            <form onSubmit={formik.handleSubmit}>
               <atoms.Box flexDirection="column" margin="auto">
                 <atoms.Box flexDirection="column">
                   {/* is the atoms.Layer setting correct? */}
@@ -177,8 +186,8 @@ export default function SignUpForm({
                     name="name"
                     required
                     // onChange={handleChange}
-                    touched={touched['name']}
-                    error={errors.name}
+                    touched={formik.touched['name']}
+                    error={formik.errors.name}
                   />
                   <Field
                     as={organisms.FormField}
@@ -187,8 +196,8 @@ export default function SignUpForm({
                     id="email"
                     name="email"
                     required
-                    touched={touched['email']}
-                    error={errors.email}
+                    touched={formik.touched['email']}
+                    error={formik.errors.email}
                   />
                   <atoms.Box gap="32px" flexDirection="column">
                     <Field
@@ -218,13 +227,15 @@ export default function SignUpForm({
                       min={5}
                       max={40}
                       initialValue={5}
-                      onChange={(value) => setFieldValue('commitment', +value)}
+                      onChange={(value) =>
+                        formik.setFieldValue('commitment', +value)
+                      }
                       withLabels
                       suffix=" hrs"
                       maxWidth="430px"
                     />
                     <atoms.Typography type="pSmall" css={{ color: 'red' }}>
-                      {errors.commitment}
+                      {formik.errors.commitment}
                     </atoms.Typography>
                   </atoms.Box>
                   <Field
@@ -234,15 +245,15 @@ export default function SignUpForm({
                     id="yearsOfExperience"
                     name="yearsOfExperience"
                     required
-                    touched={touched['yearsOfExperience']}
-                    error={errors.yearsOfExperience}
+                    touched={formik.touched['yearsOfExperience']}
+                    error={formik.errors.yearsOfExperience}
                   />
 
                   <Field
                     as={organisms.OpenResponse}
                     cols={50}
-                    touched={touched['experience']}
-                    error={errors.experience}
+                    touched={formik.touched['experience']}
+                    error={formik.errors.experience}
                     label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
@@ -278,28 +289,69 @@ export default function SignUpForm({
                     id="portfolioLink"
                     name="portfolioLink"
                     // onChange={handleChange}
-                    touched={touched.portfolioLink && !!values['portfolioLink']}
-                    error={errors.portfolioLink}
+                    touched={
+                      formik.touched.portfolioLink &&
+                      !!formik.values['portfolioLink']
+                    }
+                    error={formik.errors.portfolioLink}
                   />
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
                   </atoms.Typography>
-                  <atoms.Checkbox
-                    label="I am 18 years old or older."
-                    disabled={false}
-                    onChange={handleSetCheckCheckbox}
-                    required
-                  />
-                  <atoms.Box maxWidth="50%">
-                    <atoms.Button
-                      buttonSize="standard"
-                      buttonType="primary"
-                      type="submit"
-                    >
-                      Submit
-                    </atoms.Button>
+                  <atoms.Box
+                    flexDirection="column"
+                    alignItems="flex-start"
+                    gap="1rem"
+                  >
+                    <Field
+                      as={atoms.Checkbox}
+                      type="checkbox"
+                      name="isAgeOver18"
+                      id="isAgeOver18"
+                      required
+                      touched={formik.touched['isAgeOver18']}
+                      error={formik.errors.isAgeOver18}
+                      label="I am 18 years old or older."
+                      onChange={(e) =>
+                        formik.setFieldValue('isAgeOver18', e.target.checked)
+                      }
+                      checked={formik.values.isAgeOver18}
+                    />
+                    {formik.errors.isAgeOver18 ? (
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        {formik.errors.isAgeOver18}
+                      </atoms.Typography>
+                    ) : null}
+                    <Field
+                      as={atoms.Checkbox}
+                      type="checkbox"
+                      name="isTermsAgreed"
+                      id="isTermsAgreed"
+                      required
+                      touched={formik.touched['isTermsAgreed']}
+                      error={formik.errors.isTermsAgreed}
+                      label="I have read and agree to the Terms and Conditions.*"
+                      onChange={(e) => {
+                        formik.setFieldValue('isTermsAgreed', e.target.checked);
+                      }}
+                      checked={formik.values.isTermsAgreed}
+                    />
+                    {formik.errors.isTermsAgreed ? (
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        {formik.errors.isTermsAgreed}
+                      </atoms.Typography>
+                    ) : null}
                   </atoms.Box>
+                  <SubmitButton
+                    as="a"
+                    type="submit"
+                    onClick={
+                      formik.handleSubmit as unknown as MouseEventHandler<HTMLAnchorElement>
+                    }
+                  >
+                    Submit Application
+                  </SubmitButton>
                 </atoms.Box>
               </atoms.Box>
               <FormErrorScroller focusAfterScroll />
@@ -308,7 +360,7 @@ export default function SignUpForm({
                 handleOpenModal={handleOpenConfirmationModal}
                 handleCloseModal={handleCloseModal}
               />
-            </Form>
+            </form>
           </atoms.Box>
         )}
       </Formik>
