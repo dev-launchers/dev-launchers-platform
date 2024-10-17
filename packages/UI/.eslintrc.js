@@ -26,6 +26,7 @@ module.exports = {
     '@devlaunchers/eslint-config-bases/storybook',
     '@devlaunchers/eslint-config-bases/playwright',
     '@devlaunchers/eslint-config-bases/tailwind',
+    '@devlaunchers/eslint-config-bases/deprecation',
 
     // Add specific rules for your framework if needed.
     // ie:

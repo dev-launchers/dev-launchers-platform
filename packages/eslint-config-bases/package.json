@@ -54,6 +54,9 @@
     },
     "./tailwind": {
       "require": "./src/bases/tailwind.js"
+    },
+    "./deprecation": {
+      "require": "./src/bases/deprecation.js"
     }
   },
   "scripts": {
@@ -103,6 +106,7 @@
     }
   },
   "devDependencies": {
+    "@delagen/eslint-plugin-deprecation": "1.3.2",
     "@devlaunchers/tailwind": "workspace:*",
     "@types/jest": "28.1.6",
     "@types/node": "18.0.6",

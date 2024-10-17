@@ -19,14 +19,5 @@
       "@devlaunchers/core-lib": ["../../../packages/core-lib/src/index"]
     }
   },
-  "exclude": ["**/node_modules", "**/.*/", ".next"],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js",
-    "**/*.jsx",
-    "**/*.mjs",
-    "**/*.json"
-, ".eslintrc-example.js"  ]
+  "exclude": ["**/node_modules", "**/.*/", ".next"]
 }

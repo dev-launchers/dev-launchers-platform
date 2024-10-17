@@ -8,4 +8,5 @@ module.exports = {
   storybook: require('./storybook'),
   typescript: require('./typescript'),
   tailwind: require('./tailwind'),
+  deprecation: require('./deprecation'),
 };
