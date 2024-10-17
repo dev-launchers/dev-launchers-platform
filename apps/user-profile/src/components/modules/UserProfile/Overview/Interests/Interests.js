@@ -7,8 +7,8 @@ function Interests({ interestList }) {
 
   if (interestList.length > 0) {
     // whats provided by backend is an array of objects [{},{}], so mapping is needed
-    interestArray = interestList.map((item) => {
-      return item.interest ?? null;
+    interestArray = interestList.map((interestObj) => {
+      return interestObj.interest ?? null;
     });
   }
 
