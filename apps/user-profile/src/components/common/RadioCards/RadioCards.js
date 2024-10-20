@@ -5,7 +5,7 @@ export default function RadioCards({ cards = config, className }) {
     <div className={`flex gap-6 ${className}`}>
       {cards.cards.map((card) => {
         return (
-          <label className="flex flex-col gap-6 justify-center w-56 max-h-52 pb-9 pt-10 px-4 bg-white rounded-lg border-2   border-grayscale-100 shadow-lg relative">
+          <label className="flex flex-col gap-6 justify-center cursor-pointer w-56 max-h-52 pb-9 pt-10 px-4 bg-white rounded-lg border-2   border-grayscale-100 shadow-lg relative">
             <input
               type="radio"
               checked={card.checked}

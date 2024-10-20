@@ -7,13 +7,13 @@
  * @point `point` Changes the angle of the chevron e.g `<FilledChevron point='up'>`
  * @colorClass `colorClass` changes the color of the svg/icon, use the **tailwind** `fill-[colour]` class names
  * e.g `<FilledChevron colorClass="fill-red-600">`
- * @svgClass `svgClass` allows you to apply tailwind class names to the svg element
  */
 function FilledChevron({
   width,
   height,
   colorClass,
   point = '',
+  className,
   ...attributes
 }) {
   let angle = '';
@@ -39,12 +39,13 @@ function FilledChevron({
     }
   }
   return (
-    <button {...attributes}>
+    <button className="appearance-none cursor-auto" {...attributes}>
       <svg
         width={width ?? '8'}
         height={height ?? '14'}
         viewBox="0 0 8 14"
         transform={`rotate(${angle})`}
+        className={className}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >

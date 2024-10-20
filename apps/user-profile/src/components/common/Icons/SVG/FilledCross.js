@@ -1,11 +1,12 @@
 import React from 'react';
 
-function FilledCross({ width, height, colorClass, ...attributes }) {
+function FilledCross({ width, height, colorClass, className, ...attributes }) {
   return (
-    <button {...attributes}>
+    <button className="appearance-none cursor-auto" {...attributes}>
       <svg
         width={width ?? '20'}
         height={height ?? '20'}
+        className={className}
         viewBox="0 0 14 14"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

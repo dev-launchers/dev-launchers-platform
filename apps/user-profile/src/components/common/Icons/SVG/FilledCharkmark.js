@@ -2,15 +2,15 @@ function FilledCharkmark({
   width,
   height,
   colorClass,
-  svgClass,
+  className,
   ...attributes
 }) {
   return (
-    <button {...attributes}>
+    <button className="appearance-none cursor-auto" {...attributes}>
       <svg
         width={width ?? '16'}
         height={height ?? '13'}
-        className={svgClass ?? ''}
+        className={className}
         viewBox="0 0 16 13"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
