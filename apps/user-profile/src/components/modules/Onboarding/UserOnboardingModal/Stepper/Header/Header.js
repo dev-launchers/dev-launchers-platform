@@ -10,20 +10,6 @@ import CheckMark from './../../../../../common/Icons/SVG/FilledCharkmark';
 function Header({ stepper = [], activeStepIndex, onClose, isLoading }) {
   const lastStepIndex = stepper.length - 1;
 
-  const getStepNumber = (mappingConfig, mappingIndex) => {
-    let stepNumber = mappingIndex + 1;
-    let count = 0;
-    let checkPoint = 0;
-    let previousStepsFromCheckPoint = [];
-
-    // stepper.forEach((step, index) => {
-    //   if (index < mappingIndex) {
-    //     if (step?.header?.hideNumber) {
-    //     }
-    //   }
-    // });
-  };
-
   const labelElement = (mappingConfig, mappingIndex) => {
     const isStepComplete = activeStepIndex > mappingIndex;
     const onActiveStep = activeStepIndex == mappingIndex;
