@@ -53,8 +53,23 @@ function BrowseIdeas() {
 
     const cardsClone = JSON.parse(JSON.stringify(cards));
     cardsClone.sort((a, b) => {
-      const valueA = a[selectedSortingConfig.value];
-      const valueB = b[selectedSortingConfig.value];
+      let valueA = a[selectedSortingConfig.value];
+      let valueB = b[selectedSortingConfig.value];
+
+      if (selectedSortingConfig.value === 'mostRecentCommentTime') {
+        valueA = Math.max(
+          new Date(a.mostRecentCommentTime).getTime(),
+          new Date(a.createdAt).getTime()
+        );
+        valueB = Math.max(
+          new Date(b.mostRecentCommentTime).getTime(),
+          new Date(b.createdAt).getTime()
+        );
+      } else if (selectedSortingConfig.value === 'createdAt') {
+        valueA = new Date(valueA).getTime();
+        valueB = new Date(valueB).getTime();
+      }
+
       if (selectedSortingConfig.isAscending) {
         return valueA - valueB;
       } else {
@@ -76,28 +91,25 @@ function BrowseIdeas() {
         const params = `?populate=deep&filters[objectId][$eq]=${item.id}`;
         const likes = await agent.Likes.get(new URLSearchParams(params));
 
+        let mostRecentCommentTime = new Date(item.createdAt).getTime();
+
         if (item?.comments?.data) {
           item.comments = cleanDataList(item.comments.data);
 
-          //add current time to created time to ensure ideas without comment will be listed first when sorted by recent activity
-          const totalMillis =
-            new Date().getTime() + new Date(item.createdAt).getTime();
-          const formatedCombinedTime = new Date(totalMillis).toISOString();
-
-          const recentCommentedTime =
-            item.comments.length > 0
-              ? new Date(item.comments[item.comments.length - 1]?.updatedAt)
-              : new Date(formatedCombinedTime);
-
-          return {
-            ...item,
-            mostRecentCommentTime: recentCommentedTime,
-            votes: likes.length,
-          };
+          if (item.comments.length > 0) {
+            const lastCommentTime = new Date(
+              item.comments[item.comments.length - 1]?.updatedAt
+            ).getTime();
+            mostRecentCommentTime = Math.max(
+              mostRecentCommentTime,
+              lastCommentTime
+            );
+          }
         }
+
         return {
           ...item,
-          mostRecentCommentTime: new Date(item.updatedAt)?.getTime(),
+          mostRecentCommentTime,
           votes: likes.length,
         };
       })
