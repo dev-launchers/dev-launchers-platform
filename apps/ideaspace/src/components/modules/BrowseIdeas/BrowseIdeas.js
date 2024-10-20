@@ -33,34 +33,49 @@ function BrowseIdeas() {
       label: 'Recent Ideas',
       isAscending: false,
     },
+    {
+      value: 'votes',
+      label: 'Most Upvotes',
+      isAscending: false,
+    },
+    {
+      value: 'votes',
+      label: 'Least Upvotes',
+      isAscending: true,
+    },
   ];
 
   const sortCards = (selectedSortCriterion) => {
-    let selectedSortingConfig = sortingConfigs.filter(
+    let selectedSortingConfig = sortingConfigs.find(
       (configOption) => configOption.label === selectedSortCriterion
     );
+    if (!selectedSortingConfig) return;
+
     const cardsClone = JSON.parse(JSON.stringify(cards));
-    if (selectedSortingConfig[0].isAscending) {
-      cardsClone.sort((a, b) => {
-        return a[selectedSortingConfig[0].value] <
-          b[selectedSortingConfig[0].value]
-          ? -1
-          : a[selectedSortingConfig[0].value] >
-            b[selectedSortingConfig[0].value]
-          ? 1
-          : 0;
-      });
-    } else {
-      cardsClone.sort((a, b) => {
-        return a[selectedSortingConfig[0].value] >
-          b[selectedSortingConfig[0].value]
-          ? -1
-          : a[selectedSortingConfig[0].value] <
-            b[selectedSortingConfig[0].value]
-          ? 1
-          : 0;
-      });
-    }
+    cardsClone.sort((a, b) => {
+      let valueA = a[selectedSortingConfig.value];
+      let valueB = b[selectedSortingConfig.value];
+
+      if (selectedSortingConfig.value === 'mostRecentCommentTime') {
+        valueA = Math.max(
+          new Date(a.mostRecentCommentTime).getTime(),
+          new Date(a.createdAt).getTime()
+        );
+        valueB = Math.max(
+          new Date(b.mostRecentCommentTime).getTime(),
+          new Date(b.createdAt).getTime()
+        );
+      } else if (selectedSortingConfig.value === 'createdAt') {
+        valueA = new Date(valueA).getTime();
+        valueB = new Date(valueB).getTime();
+      }
+
+      if (selectedSortingConfig.isAscending) {
+        return valueA - valueB;
+      } else {
+        return valueB - valueA;
+      }
+    });
     setCards(cardsClone);
   };
 
@@ -71,33 +86,38 @@ function BrowseIdeas() {
       )
     );
 
-    const getCards = ideaCards.map((item) => {
-      if (item?.comments?.data) {
-        item.comments = cleanDataList(item.comments.data);
+    const getCards = await Promise.all(
+      ideaCards.map(async (item) => {
+        const params = `?populate=deep&filters[objectId][$eq]=${item.id}`;
+        const likes = await agent.Likes.get(new URLSearchParams(params));
 
-        //add current time to created time to ensure ideas without comment will be listed first when sorted by recent activity
-        const totalMillis =
-          new Date().getTime() + new Date(item.createdAt).getTime();
-        const formatedCombinedTime = new Date(totalMillis).toISOString();
+        let mostRecentCommentTime = new Date(item.createdAt).getTime();
 
-        const recentCommentedTime =
-          item.comments.length > 0
-            ? new Date(item.comments[item.comments.length - 1]?.updatedAt)
-            : new Date(formatedCombinedTime);
+        if (item?.comments?.data) {
+          item.comments = cleanDataList(item.comments.data);
+
+          if (item.comments.length > 0) {
+            const lastCommentTime = new Date(
+              item.comments[item.comments.length - 1]?.updatedAt
+            ).getTime();
+            mostRecentCommentTime = Math.max(
+              mostRecentCommentTime,
+              lastCommentTime
+            );
+          }
+        }
 
         return {
           ...item,
-          mostRecentCommentTime: recentCommentedTime,
+          mostRecentCommentTime,
+          votes: likes.length,
         };
-      }
-      return {
-        ...item,
-        mostRecentCommentTime: new Date(item.updatedAt)?.getTime(),
-      };
-    });
+      })
+    );
 
     setLoading(false);
     setCards(getCards);
+    setSourceCards(getCards);
   }, []);
 
   React.useEffect(() => {
@@ -155,6 +175,14 @@ function BrowseIdeas() {
                   {
                     disabled: false,
                     text: 'Recent Ideas',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Most Upvotes',
+                  },
+                  {
+                    disabled: false,
+                    text: 'Least Upvotes',
                   },
                 ]}
                 recieveValue={(value) => {
