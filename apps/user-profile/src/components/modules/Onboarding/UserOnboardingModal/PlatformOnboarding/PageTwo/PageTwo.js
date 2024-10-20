@@ -16,7 +16,7 @@ export default function PageTwo() {
       <div className="flex justify-center">
         <div className="flex flex-col gap-6 max-w-[560px]">
           <m.div
-            transition={{ delay: 1.5, duration: 1.5 }}
+            transition={{ delay: 1, duration: 1.5 }}
             initial={{ opacity: 0, backgroundColor: '' }}
             animate={{ opacity: 1 }}
             layoutId="1"
@@ -35,7 +35,7 @@ export default function PageTwo() {
           </m.div>
 
           <m.div
-            transition={{ delay: 3, duration: 1.5 }}
+            transition={{ delay: 2.5, duration: 1.5 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{ zIndex: 1 }}
@@ -51,7 +51,7 @@ export default function PageTwo() {
           </m.div>
 
           <m.div
-            transition={{ delay: 4.5, duration: 1.5 }}
+            transition={{ delay: 4, duration: 1.5 }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="flex h-20 gap-14 items-center bg-inherit"
