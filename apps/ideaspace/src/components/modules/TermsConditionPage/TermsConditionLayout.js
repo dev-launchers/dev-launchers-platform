@@ -5,9 +5,9 @@ import TermsTable from './TermsTable';
 const TermsConditionLayout = () => {
   return (
     <>
-      <div className="max-w-8xl px-20 py-10">
+      <div className="max-w-8xl px-12 sm:px-20 py-10">
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-normal mb-4">
+          <h2 className="text-4xl font-extralight mb-4">
             {TermsConditionContent.introduction.heading}
           </h2>
           {TermsConditionContent.introduction.paragraphs.map((para, index) => (
@@ -41,7 +41,7 @@ const TermsConditionLayout = () => {
         <TermsTable></TermsTable>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="age-eligibility" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.ageEligibility.heading}
           </h2>
           {TermsConditionContent.ageEligibility.paragraphs.map(
@@ -54,7 +54,10 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2
+            id="non-confidentiality"
+            className="text-4xl font-extralight mb-4"
+          >
             {TermsConditionContent.nonCondidentiality.heading}
           </h2>
           {TermsConditionContent.nonCondidentiality.paragraphs.map(
@@ -67,7 +70,7 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-8 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="user-generated" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.userGenerated.heading}
           </h2>
 
@@ -80,7 +83,7 @@ const TermsConditionLayout = () => {
                   </div>
                   <ul className="ml-10 list-disc pl-5">
                     {section.pointers.map((pointer, i) => (
-                      <li key={i} className="text-xl">
+                      <li key={i} className="text-xl mb-4">
                         {pointer}
                       </li>
                     ))}
@@ -91,7 +94,7 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="i-property-rights" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.intellectualPropertyRights.heading}
           </h2>
           {TermsConditionContent.intellectualPropertyRights.paragraphs.map(
@@ -104,16 +107,18 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-6 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="idea-evaluation" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.ideaEvaluation.heading}
           </h2>
-          {TermsConditionContent.ideaEvaluation.paragraphs.map(
-            (para, index) => (
-              <p key={index} className="text-xl">
-                {para}
-              </p>
-            )
-          )}
+          <ul>
+            {TermsConditionContent.ideaEvaluation.paragraphs.map(
+              (para, index) => (
+                <li key={index} className="ml-10 text-xl list-disc">
+                  {para}
+                </li>
+              )
+            )}
+          </ul>
           <div className="selectionProcess">
             <div className="text-xl font-bold mb-4">Selection Process:</div>
             <div className="text-xl">
@@ -140,7 +145,7 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="consulting" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.consulting.heading}
           </h2>
           {TermsConditionContent.consulting.paragraphs.map((para, index) => (
@@ -151,7 +156,7 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="indemnity" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.indemnity.heading}
           </h2>
           {TermsConditionContent.indemnity.paragraphs.map((para, index) => (
@@ -171,7 +176,7 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-3 mb-16">
-          <h2 className="text-4xl font-extralight mb-4">
+          <h2 id="changeToTerms" className="text-4xl font-extralight mb-4">
             {TermsConditionContent.changeToTerms.heading}
           </h2>
           {TermsConditionContent.changeToTerms.paragraphs.map((para, index) => (
