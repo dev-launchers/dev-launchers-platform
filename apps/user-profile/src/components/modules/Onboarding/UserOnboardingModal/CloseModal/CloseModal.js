@@ -1,72 +1,45 @@
-import {
-  IntroductionContainer,
-  Header,
-  Body,
-  Footer,
-} from './StyledCloseModal';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import Button from '@devlaunchers/components/components/atoms/Button';
-import quitCloseModalButton from './../../../../../images/btn-quit-close-modal.svg';
-import onSetUpLaterButton from './../../../../../images/btn-set-up-later.svg';
-import closeModalXIcon from './../../../../../images/btn-close-x-icon.svg';
 import { useOnboardingDataContext } from './../../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../../state/actions';
 import Modal from './../../../../common/Modal';
+import CloseIcon from './../../../../common/Icons/SVG/FilledCross';
 
-/**
- * @description This is custom modal for the user onboarding.
- */
 export default function CloseModal() {
-  const { onboardingData, dispatch } = useOnboardingDataContext();
+  const { dispatch } = useOnboardingDataContext();
 
-  const onSetUpLater = () => {
+  const cancel = () => {
     dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
   };
-  const quitCloseModal = () => {
+  const closeModal = () => {
     dispatch({ type: onboardingActions.HIDE_CLOSING_MODAL });
   };
 
   return (
-    <Modal isOpen={onboardingData.showCloseModal}>
-      <IntroductionContainer>
-        <div onClick={quitCloseModal} className="custom-button">
-          <img src={closeModalXIcon} />
-        </div>
-        <Header>
-          <Typography type="h3" textAlign="flex-start">
-            <b>Close onboarding?</b>
-          </Typography>
+    <Modal width="600px" maxHeight="260px">
+      <div className="flex flex-col gap-7 px-8 py-3 relative">
+        <CloseIcon
+          width="14"
+          className="absolute right-4"
+          colorClass="fill-grayscale-700"
+          onClick={closeModal}
+        />
+        <div className="flex flex-col">
+          <Typography type="h3">Close onboarding?</Typography>
           <Typography type="p">
-            Are you sure you want to leave onboarding?
-            <br></br>
+            Are you sure you want to leave onboarding? <br />
             Don't worry, we'll save your changes!
           </Typography>
-        </Header>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="480"
-          height="1"
-          viewBox="0 0 524 1"
-          fill="none"
-        >
-          <line
-            x1="4.37114e-08"
-            y1="0.5"
-            x2="524"
-            y2="0.500046"
-            stroke="#ECECEC"
-          />
-        </svg>
-
-        <Footer>
-          <Button onClick={onSetUpLater} className="custom-button">
-            <img src={onSetUpLaterButton} />
+        </div>
+        <div className="flex justify-end  gap-4 pt-4 border-t-2 border-gray-200">
+          <Button buttonType="primary" buttonSize="standard" onClick={cancel}>
+            Confirm
           </Button>
-          <Button onClick={quitCloseModal} className="custom-button">
-            <img src={quitCloseModalButton} />
+          <Button buttonType="alternative" buttonSize="xl" onClick={closeModal}>
+            Cancel
           </Button>
-        </Footer>
-      </IntroductionContainer>
+        </div>
+      </div>
     </Modal>
   );
 }
