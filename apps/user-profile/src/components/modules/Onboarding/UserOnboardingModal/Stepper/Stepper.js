@@ -25,6 +25,7 @@ export default function Stepper({
     stepConfig[startingIndex]
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [disableNextButton, setDisableNextButton] = useState(false);
 
   const updateConfigs = () => {
     if (stepConfig[activeStepIndex]?.skip) {
@@ -74,6 +75,8 @@ export default function Stepper({
           isLoading={isLoading}
           setIsLoading={setIsLoading}
           context={[onboardingData, dispatch]}
+          disableNextButton={disableNextButton}
+          setDisableNextButton={setDisableNextButton}
         />
       </div>
     </Modal>

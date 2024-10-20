@@ -20,7 +20,7 @@ export default function CloseModal() {
       <div className="flex flex-col gap-7 px-8 py-3 relative">
         <CloseIcon
           width="14"
-          className="absolute right-4"
+          className="absolute right-4 cursor-pointer"
           colorClass="fill-grayscale-700"
           onClick={closeModal}
         />

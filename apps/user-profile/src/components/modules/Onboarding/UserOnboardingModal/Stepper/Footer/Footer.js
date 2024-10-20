@@ -10,6 +10,8 @@ function Footer({
   onSubmit,
   isLoading,
   setIsLoading,
+  disableNextButton,
+  setDisableNextButton,
   context,
 }) {
   const lastStepIndex = stepConfig.length - 1;
@@ -122,7 +124,7 @@ function Footer({
         buttonType="alternative"
         buttonSize="xl"
         onClick={backOnClickHandler}
-        disabled={isLoading}
+        disabled={isLoading || disableNextButton}
       >
         <div className="flex gap-3 items-center">
           {buttonConfig?.back?.hideIcons ? null : <Chevron point="left" />}

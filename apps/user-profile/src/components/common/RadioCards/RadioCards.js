@@ -5,14 +5,14 @@ export default function RadioCards({ cards = config, className }) {
     <div className={`flex gap-6 ${className}`}>
       {cards.cards.map((card) => {
         return (
-          <label className="flex flex-col gap-6 justify-center cursor-pointer w-56 max-h-52 pb-9 pt-10 px-4 bg-white rounded-lg border-2   border-grayscale-100 shadow-lg relative">
+          <label className="flex flex-col gap-6 justify-center cursor-pointer w-56 max-h-52 pb-9 pt-10 px-4 rounded-lg bg-white border-2 border-grayscale-100  hover:border-neptune-700  shadow-lg relative">
             <input
               type="radio"
               checked={card.checked}
               name={cards.name}
               value={card.value}
               onChange={card.onChange}
-              className="absolute right-4 top-4 w-6 h-6 rounded-full border-4 checked:bg-blue-500 border-grayscale-100 appearance-none "
+              className="absolute right-4 top-4 w-6 h-6 rounded-full border-4 checked:bg-neptune-600 border-grayscale-100 appearance-none "
             />
             <div className="flex justify-center">
               <img className="h-8" src={card?.img ?? 'test'} />

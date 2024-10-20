@@ -86,7 +86,7 @@ function Header({ stepper = [], activeStepIndex, onClose, isLoading }) {
       <CloseIcon
         disabled={isLoading}
         onClick={onClose}
-        className="absolute right-5 top-5"
+        className="absolute right-5 top-5 cursor-pointer"
       />
       <RainbowBar />
     </div>
