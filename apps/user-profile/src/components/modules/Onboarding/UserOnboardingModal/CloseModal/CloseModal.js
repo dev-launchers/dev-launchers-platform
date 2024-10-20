@@ -16,7 +16,7 @@ export default function CloseModal() {
   };
 
   return (
-    <Modal width="600px" maxHeight="260px">
+    <Modal width="600px" maxHeight="270px">
       <div className="flex flex-col gap-7 px-8 py-3 relative">
         <CloseIcon
           width="14"
@@ -31,7 +31,7 @@ export default function CloseModal() {
             Don't worry, we'll save your changes!
           </Typography>
         </div>
-        <div className="flex justify-end  gap-4 pt-4 border-t-2 border-gray-200">
+        <div className="flex justify-end  gap-4 py-4 border-t-2 border-gray-200">
           <Button buttonType="primary" buttonSize="standard" onClick={cancel}>
             Confirm
           </Button>
