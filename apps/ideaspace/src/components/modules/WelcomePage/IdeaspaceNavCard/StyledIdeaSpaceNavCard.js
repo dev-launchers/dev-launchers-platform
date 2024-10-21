@@ -6,7 +6,7 @@ export const CardBackground = styled.div`
   overflow: initial;
   flex-direction: column;
   height: 25rem;
-  max-width: 23.5rem;
+  max-width: 36rem;
   flex-direction: column;
   justify-content: space-between;
   color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
@@ -32,8 +32,8 @@ export const CardTitleDiv = styled.div`
 `;
 
 export const CardText = styled.div`
-text-align: start;
-margin-top: 25px;
+  text-align: start;
+  margin-top: 25px;
 `;
 
 export const CardContinueDiv = styled.div`

@@ -8,20 +8,18 @@ import {
 
 const IdeaspaceNavCard = ({
   cardBackgroundColor,
-  cardBackgroundImage,
   cardTitle,
   cardDescription,
 }) => {
   return (
     <CardBackground
       style={{
-        background: `linear-gradient(${cardBackgroundColor}, url(${cardBackgroundImage})`,
-        backgroundSize: 'cover'
+        backgroundColor: cardBackgroundColor,
       }}
     >
       <div>
-      <CardTitleDiv>{cardTitle}</CardTitleDiv>
-      <CardText>{cardDescription}</CardText>
+        <CardTitleDiv>{cardTitle}</CardTitleDiv>
+        <CardText>{cardDescription}</CardText>
       </div>
       <CardContinueDiv>
         <CardText>CONTINUE &#8594;</CardText>

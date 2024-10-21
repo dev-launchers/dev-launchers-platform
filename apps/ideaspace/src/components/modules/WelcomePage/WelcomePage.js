@@ -20,8 +20,6 @@ import {
   ButtonArea,
 } from './StyledWelcomePage';
 
-const appGeneratorCardBackgroundColor = `rgba(58,124,165, 0.9), rgba(58,124,165, 0.9))`;
-
 const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
 const submitIdeaCardTitle = `Submit Your Idea`;
 const submitIdeaCardDescription = `Have an idea for development? Turn your idea into a product through community.`;
@@ -38,24 +36,23 @@ function WelcomePage() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        
-        <atoms.Typography type='h4'  textAlign='center'>
+
+        <atoms.Typography type="h4" textAlign="center">
           WELCOME TO THE IDEA PLATFORM!
           <Subheader>
-            Have an idea for a development project? Want to help develop an idea? Want to generate an idea?
+            Have an idea for a development project? Want to help develop an
+            idea? Want to generate an idea?
           </Subheader>
           LET'S GET STARTED <RocketImage src={rocketImage} />
         </atoms.Typography>
-       
       </HeadWapper>
-     
+
       <NavButtonArea>
         <ButtonArea>
           <Link href="/ideaspace/submit">
             <a>
               <IdeaspaceNavCard
                 cardBackgroundColor={submitIdeaCardBackgroundColor}
-                cardBackgroundImage={bulletinBoardPostItImage}
                 cardTitle={submitIdeaCardTitle}
                 cardDescription={submitIdeaCardDescription}
               />
@@ -66,21 +63,11 @@ function WelcomePage() {
             <a>
               <IdeaspaceNavCard
                 cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
-                cardBackgroundImage={helpButtonImage}
                 cardTitle={helpExistingIdeaCardTitle}
                 cardDescription={helpExistingIdeaCardDescription}
               />
             </a>
           </Link>
-
-          <IdeaGeneratorButton showExtendedContent>
-            <IdeaspaceNavCard
-              cardBackgroundColor={appGeneratorCardBackgroundColor}
-              cardBackgroundImage={handWithLightbulbImage}
-              cardTitle="Generate an Idea"
-              cardDescription="Want to generate Ideas for you? Use machine learning to generate an idea
-                to get you started!" />
-          </IdeaGeneratorButton>
         </ButtonArea>
       </NavButtonArea>
     </>
