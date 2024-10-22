@@ -7,8 +7,10 @@ import handWithLightbulbImage from '../../../images/submit-image.png';
 import helpButtonImage from '../../../images/help-image.png';
 import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
-import IdeaspaceNavCard from './IdeaspaceNavCard';
+// import lightbulbIcon from '../../../images/lightbulb.svg';
+// import heartIcon from '../../../images/heart-handshake.svg';
 import IdeaGeneratorButton from './IdeaGeneratorButton';
+IdeaspaceNavCard;
 
 import {
   HeadWapper,
@@ -18,15 +20,20 @@ import {
   RocketImage,
   NavButtonArea,
   ButtonArea,
+  LightbulbIcon,
+  HeartHandshakeIcon,
 } from './StyledWelcomePage';
+import IdeaspaceNavCard from './IdeaspaceNavCard';
 
-const submitIdeaCardBackgroundColor = `rgba(255,127,14, 0.9), rgba(255,127,14, 0.9))`;
-const submitIdeaCardTitle = `Submit Your Idea`;
-const submitIdeaCardDescription = `Have an idea for development? Turn your idea into a product through community.`;
+const submitIdeaCardBackgroundColor = `rgba(255, 215, 180, 1)`;
+const submitIdeaCardTitle = `Have a product idea?`;
+const submitIdeaCardDescription = `Share your idea for a product, and turn it into a reality with the support of a our community. Gather feedback, refine your concept, and collaborate to bring your vision to life.`;
+const submitIdeaCardCTA = `Submit An Idea`;
 
-const helpExistingIdeaCardBackgroundColor = `rgba(255,171,0, 0.9), rgba(255,171,0, 0.9))`;
-const helpExistingIdeaCardTitle = `Help Existing Idea`;
-const helpExistingIdeaCardDescription = ` Want to help developing an idea? Check out ideas submitted by other Dev Launchers!`;
+const helpExistingIdeaCardBackgroundColor = `rgba(216, 236, 243, 1)`;
+const helpExistingIdeaCardTitle = `Want to help an existing idea?`;
+const helpExistingIdeaCardDescription = `Browse ideas from fellow creators, share your insights, or contribute to building innovative products. Discover fresh concepts and help turn creative ideas into reality.`;
+const helpExistingIdeaCardCTA = `Help Existing Ideas`;
 
 function WelcomePage() {
   return (
@@ -52,9 +59,11 @@ function WelcomePage() {
           <Link href="/ideaspace/submit">
             <a>
               <IdeaspaceNavCard
+                cardIcon={<LightbulbIcon />}
                 cardBackgroundColor={submitIdeaCardBackgroundColor}
                 cardTitle={submitIdeaCardTitle}
                 cardDescription={submitIdeaCardDescription}
+                cardCTA={submitIdeaCardCTA}
               />
             </a>
           </Link>
@@ -62,9 +71,11 @@ function WelcomePage() {
           <Link href="/ideaspace/browse">
             <a>
               <IdeaspaceNavCard
+                cardIcon={<HeartHandshakeIcon />}
                 cardBackgroundColor={helpExistingIdeaCardBackgroundColor}
                 cardTitle={helpExistingIdeaCardTitle}
                 cardDescription={helpExistingIdeaCardDescription}
+                cardCTA={helpExistingIdeaCardCTA}
               />
             </a>
           </Link>
