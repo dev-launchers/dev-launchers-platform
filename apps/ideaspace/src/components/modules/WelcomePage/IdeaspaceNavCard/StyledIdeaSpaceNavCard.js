@@ -21,6 +21,9 @@ export const CardBackground = styled.div`
 `;
 
 export const TypographyH = styled.div`
+  @media (max-width: 400px) {
+    font-size: var(--font-size-body-base, 28px);
+  }
   color: var(--status-default-content-btn-brand-tertiary, #3f1f5f);
   font-size: var(--font-size-headings-h1, 32px);
   font-style: normal;
@@ -30,6 +33,9 @@ export const TypographyH = styled.div`
 `;
 
 export const TypographyB = styled.div`
+  @media (max-width: 400px) {
+    font-size: var(--font-size-body-base, 14px);
+  }
   color: var(--status-default-content-btn-brand-tertiary, #3f1f5f);
   font-family: var(--font-family-secondary, 'Nunito Sans');
   font-size: var(--font-size-body-base, 16px);

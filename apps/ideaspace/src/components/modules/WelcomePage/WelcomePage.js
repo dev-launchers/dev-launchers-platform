@@ -22,6 +22,7 @@ import {
   ButtonArea,
   LightbulbIcon,
   HeartHandshakeIcon,
+  ArrowRightIcon,
 } from './StyledWelcomePage';
 import IdeaspaceNavCard from './IdeaspaceNavCard';
 
@@ -64,6 +65,7 @@ function WelcomePage() {
                 cardTitle={submitIdeaCardTitle}
                 cardDescription={submitIdeaCardDescription}
                 cardCTA={submitIdeaCardCTA}
+                cardIconCTA={<ArrowRightIcon />}
               />
             </a>
           </Link>
@@ -76,6 +78,7 @@ function WelcomePage() {
                 cardTitle={helpExistingIdeaCardTitle}
                 cardDescription={helpExistingIdeaCardDescription}
                 cardCTA={helpExistingIdeaCardCTA}
+                cardIconCTA={<ArrowRightIcon />}
               />
             </a>
           </Link>

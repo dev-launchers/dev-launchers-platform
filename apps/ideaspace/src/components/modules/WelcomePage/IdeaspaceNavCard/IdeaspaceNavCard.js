@@ -14,6 +14,7 @@ const IdeaspaceNavCard = ({
   cardTitle,
   cardDescription,
   cardCTA,
+  cardIconCTA,
 }) => {
   const backgroundClass =
     cardBackgroundColor === 'rgba(255, 215, 180, 1)'
@@ -28,8 +29,8 @@ const IdeaspaceNavCard = ({
         style={{ color: 'rgba(63, 31, 95, 1)' }}
       >
         <div>
-          <div className="h-[302px] w-[512px] ">
-            <div className="mb-4 transition-colors duration-300">
+          <div className="h-[378px] w-[260px] sm:h-[378px] sm:w-[285px] lg:w-[410px] lg:h-[302px] xl:w-[572px] xl:h-[302px] 2xl:w-[600px] 2xl:h-[302px]">
+            <div className="mb-[18px] transition-colors duration-300">
               {cardIcon}
             </div>
             <TypographyH className="mb-[6px] group-hover:text-white">
@@ -39,12 +40,15 @@ const IdeaspaceNavCard = ({
               {cardDescription}
             </TypographyB>
           </div>
-          <TypographyB
-            className="group-hover:text-white"
-            style={{ fontWeight: '700' }}
-          >
-            {cardCTA} &#8594;
-          </TypographyB>
+          <div className="flex flex-row gap-1">
+            <TypographyB
+              className="group-hover:text-white"
+              style={{ fontWeight: '700' }}
+            >
+              {cardCTA}
+            </TypographyB>
+            {cardIconCTA}
+          </div>
         </div>
       </div>
     </>
