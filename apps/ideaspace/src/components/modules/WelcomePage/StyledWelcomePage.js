@@ -3,24 +3,48 @@ import styled from 'styled-components';
 export const NavButtonArea = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-items: center
+  margin-left: 66px;
+  margin-right: 66px;
+
+  @media (max-width: 1536px){
+    margin-left: 48px;
+    margin-right: 48px;
+  }
+  @media (max-width: 1280px){
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  @media (max-width: 1024px){
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  @media (max-width: 768px){
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  @media (max-width: 640px){
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+
 `;
 
 export const ButtonArea = styled.aside`
   display: flex;
   flex-direction: row;
-  column-gap: 26px;
+  column-gap: 32px;
   margin-bottom: 10vh;
   @media (orientation: portrait) {
     min-height: 60vh;
   }
 
-  @media (max-width: 730px) {
+  @media (max-width: 768px) {
     row-gap: 24px;
     flex-direction: column;
   }
-  @media (max-width: 834px) {
-    column-gap: 28px;
+  @media (max-width: 1280px) {
+    column-gap: 24px;
   }
 `;
 

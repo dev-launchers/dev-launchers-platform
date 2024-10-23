@@ -21,11 +21,25 @@ export const CardBackground = styled.div`
 `;
 
 export const TypographyH = styled.div`
-  @media (max-width: 400px) {
+  @media (max-width: 1536px) {
+    font-size: var(--font-size-body-base, 32px);
+  }
+  @media (max-width: 1280px) {
     font-size: var(--font-size-body-base, 28px);
+    line-height: var(--font-line-height-headings-h1, 44px);
+  }
+  @media (max-width: 1024px) {
+    font-size: var(--font-size-body-base, 32px);
+  }
+  @media (max-width: 768px) {
+    font-size: var(--font-size-body-base, 32px);
+  }
+  @media (max-width: 640px) {
+    font-size: var(--font-size-body-base, 32px);
+    line-height: var(--font-line-height-headings-h1, 44px);
   }
   color: var(--status-default-content-btn-brand-tertiary, #3f1f5f);
-  font-size: var(--font-size-headings-h1, 32px);
+  font-size: var(--font-size-headings-h1, 36px);
   font-style: normal;
   font-weight: 700;
   line-height: var(--font-line-height-headings-h1, 48px); /* 150% */
@@ -33,12 +47,24 @@ export const TypographyH = styled.div`
 `;
 
 export const TypographyB = styled.div`
-  @media (max-width: 400px) {
+  @media (max-width: 1536px) {
+    font-size: var(--font-size-body-base, 16px);
+  }
+  @media (max-width: 1280px) {
+    font-size: var(--font-size-body-base, 16px);
+  }
+  @media (max-width: 1024px) {
+    font-size: var(--font-size-body-base, 14px);
+  }
+  @media (max-width: 768px) {
+    font-size: var(--font-size-body-base, 16px);
+  }
+  @media (max-width: 640px) {
     font-size: var(--font-size-body-base, 14px);
   }
   color: var(--status-default-content-btn-brand-tertiary, #3f1f5f);
   font-family: var(--font-family-secondary, 'Nunito Sans');
-  font-size: var(--font-size-body-base, 16px);
+  font-size: var(--font-size-body-base, 18px);
   font-style: normal;
   font-weight: 400;
   line-height: var(--font-line-height-body-base, 24px); /* 150% */

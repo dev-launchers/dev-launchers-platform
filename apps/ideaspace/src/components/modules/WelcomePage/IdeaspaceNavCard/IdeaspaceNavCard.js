@@ -29,7 +29,7 @@ const IdeaspaceNavCard = ({
         style={{ color: 'rgba(63, 31, 95, 1)' }}
       >
         <div>
-          <div className="h-[378px] w-[260px] sm:h-[378px] sm:w-[285px] lg:w-[410px] lg:h-[302px] xl:w-[572px] xl:h-[302px] 2xl:w-[600px] 2xl:h-[302px]">
+          <div className="2xl:h-[350px] xl:h-[294px] lg:h-[294px] md:h-[346px] sm:h-[342px] h-[326px]">
             <div className="mb-[18px] transition-colors duration-300">
               {cardIcon}
             </div>
