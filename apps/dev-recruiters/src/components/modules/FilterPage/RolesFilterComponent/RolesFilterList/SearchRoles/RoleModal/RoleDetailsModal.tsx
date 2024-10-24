@@ -55,25 +55,6 @@ function RoleDetailsModal({
         <CloseButton>
           <Icons.Close height={32} width={32} onClick={handleCloseModal} />
         </CloseButton>
-
-        {/* 
-        old join
-        
-        <CloseButton onClick={handleCloseModal}>
-          <CloseIcon
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </CloseIcon>
-        </CloseButton> */}
       </CloseColorBoxContainer>
       <ModalTopSection
         position={position}
@@ -92,7 +73,6 @@ function RoleDetailsModal({
 
 function ModalTopSection({ position }: Props) {
   /***destructuring propertid from position.attributes */
-  console.log(position);
   const {
     title,
     commitmentHoursPerWeek,
@@ -105,7 +85,6 @@ function ModalTopSection({ position }: Props) {
       <ModalProjectSection>
         <div className="title">
           <h2>{title}</h2>
-          {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
           <p>Product Platform</p>
         </div>
         <div className="commitment">
@@ -144,10 +123,6 @@ function ModalTopSection({ position }: Props) {
           <h5 className="skills">Skills Required</h5>
           <TagsSection>
             <TagsList>
-              {/* <TagsListItem color="Dark">
-                {position.attributes.level}
-              </TagsListItem> */}
-
               {data?.map((skill, index) => {
                 const { interest } = skill?.attributes;
                 return (
@@ -156,12 +131,6 @@ function ModalTopSection({ position }: Props) {
                   </TagsListItem>
                 );
               })}
-              {/* }  {position?.skills?.map((skill, index) => (
-              <TagsListItem color="Dark" key={index}>
-                {skill?.interest}
-              </TagsListItem>
-            ))}
-          */}
             </TagsList>
           </TagsSection>
         </div>
@@ -242,18 +211,6 @@ function ModalBottomSection({
             </BulletList>
           </div>
         </ModalProjectSection>
-        {/* {position.expectations.length > 0 && (
-          <ModalDescriptionSection Mobile={false}>
-            <h3>RESPONSIBILITIES</h3>
-            <BulletList>
-              {position.expectations.map((item, index) => (
-                <ExpectationsListItem key={index}>
-                  {item.expectation}
-                </ExpectationsListItem>
-              ))}
-            </BulletList>
-          </ModalDescriptionSection>
-        )} */}
       </RowContainerBottom>
 
       <div>

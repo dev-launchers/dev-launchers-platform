@@ -56,6 +56,7 @@ const theme = {
   fonts: {
     headline: 'Abel',
     normal: 'Nunito Sans',
+    loginModalText: 'Oswald',
   },
   fontSizes: {
     small: '1em',

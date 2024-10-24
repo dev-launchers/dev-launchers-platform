@@ -132,36 +132,12 @@ export const BackButton = styled.a`
   }
 `;
 
-// export const RowContainer = styled.div<{
-//   paddingHorizontal?: number;
-//   paddingVertical?: number;
-//   justifycontent?: string;
-// }>`
-//   box-sizing: border-box;
-//   width: 100%;
-//   margin: auto auto;
-//   padding-top: ${({ paddingVertical }) =>
-//     paddingVertical ? `${paddingVertical}px` : 0};
-//   padding-bottom: ${({ paddingVertical }) =>
-//     paddingVertical ? `${paddingVertical}px` : 0};
-//   padding-left: ${({ paddingHorizontal }) =>
-//     paddingHorizontal ? `${paddingHorizontal}px` : 0};
-//   padding-right: ${({ paddingHorizontal }) =>
-//     paddingHorizontal ? `${paddingHorizontal}px` : 0};
-
-//   display: flex;
-//   align-items: start;
-//   justify-content: ${({ justifycontent }) =>
-//     justifycontent ??
-//     'space-between'}; /* Distribute items evenly along the row */
-// `;
-
 export const RowContainerTop = styled.div`
   margin-top: 32px;
   display: grid;
   gap: 32px;
   grid-template-columns: repeat(3, 1fr);
-  // background-color: yellow;
+
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -173,9 +149,8 @@ export const RowContainerBottom = styled.div`
   margin-top: 32px;
   display: flex;
   gap: 32px;
-  // grid-template-columns: 8fr 4fr;
+
   justify-content: space-between;
-  // margin-bottom: 32px;
 
   @media (max-width: 1024px) {
     flex-direction: column;

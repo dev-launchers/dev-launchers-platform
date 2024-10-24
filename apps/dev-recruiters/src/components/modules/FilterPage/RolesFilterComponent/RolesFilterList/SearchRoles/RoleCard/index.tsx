@@ -47,26 +47,6 @@ const RoleCard = ({ role, key22, opportunities }: Props) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  /*const getProjectSlugs = async () => {
-    try {
-      const oppProjectSlug = await agent.Opportunities.getById(
-        `${props.role.id}`
-      ).then((result) => {
-        oppProject.projectId = result.attributes.projects.data[0].id;
-        oppProject.projectSlug =
-          result.attributes.projects.data[0].attributes.slug;
-
-        return result;
-      });
-      return oppProjectSlug;
-    } catch (error) {
-      console.log('an error occured while fetching project slugs');
-    }
-  };
-
-  getProjectSlugs();
-  */
   return (
     <CardContainer>
       <CardContent>

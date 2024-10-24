@@ -137,10 +137,6 @@ export const OpportunityDetailsContainer = styled.div`
 `;
 
 export const TagsSection = styled.div`
-  // padding: 0 1rem;
-  // width: auto;
-  // display: inline-block;
-
   & h4 {
     font-style: normal;
     font-size: 1rem;
@@ -156,7 +152,7 @@ export const TagsSection = styled.div`
 export const TagsList = styled.ul`
   list-style: none;
   display: flex;
-  // flex-direction: column;
+
   flex-wrap: wrap;
   text-align: center;
   gap: 8px;
@@ -212,9 +208,6 @@ export const CommitmentSection = styled.div`
     margin-left: 1rem;
     text-align: center;
   }
-  // @media (max-width: 760px) {
-  //   display: none;
-  // }
 `;
 
 export const ExpectationsSection = styled.div<{ Expanded: boolean }>`
@@ -328,9 +321,6 @@ export const ModalDescriptionSection = styled.div<{
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'block')};
   height: 100%;
-  // padding: 0px 20px 0px 50px;
- 
-
   & h5 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-size: 20px;
@@ -352,10 +342,7 @@ export const ModalDescriptionSection = styled.div<{
   }
 
   @media (max-width: 640px) {
-    // padding: 0 1rem;
-    // display: ${(props) => (props.Mobile ? 'block' : 'none')};
     & p {
-      // padding: 0 1rem;
       font-family: ${(props) => props.theme?.fonts?.normal};
       font-style: normal;
       font-weight: 400;
@@ -513,9 +500,6 @@ export const BulletListItem = styled.li`
 `;
 
 export const BulletList = styled.div`
-  // padding-right: 0 0 0px 50px;
-  // max-width: 200px;
-
   padding-left: 12px;
 `;
 
@@ -526,11 +510,6 @@ export const CloseButton = styled.button`
   height: 22px;
   width: 20px;
   margin: 20px;
-  // position: absolute;
-  // top: 0;
-  // right: 0;
-
-  // box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
 export const CloseIcon = styled.svg`
@@ -542,10 +521,9 @@ export const CloseIcon = styled.svg`
 export const ColorBox = styled.div`
   width: 100%;
   height: 10px;
-  // position: absolute;
+
   border: none;
-  // top: 20;
-  // right: 0;
+
   background: linear-gradient(
     to right,
     #ff7f0e 25%,

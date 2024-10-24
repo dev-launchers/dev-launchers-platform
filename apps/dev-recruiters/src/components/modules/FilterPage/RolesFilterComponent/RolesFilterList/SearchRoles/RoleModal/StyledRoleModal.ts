@@ -23,13 +23,11 @@ export const ButtonsSection = styled.div<{
   gap: 32px;
 
   @media (max-width: 640px) {
-    // display: ${(props) => (props.Mobile ? 'flex' : 'none')};
     display: flex;
     margin: 32px auto;
     justify-content: end;
   }
   @media (max-width: 506px) {
-    // display: ${(props) => (props.Mobile ? 'flex' : 'none')};
     display: flex;
     flex-direction: column;
     margin: 32px auto;
@@ -37,7 +35,6 @@ export const ButtonsSection = styled.div<{
 `;
 export const ApplyButton = styled.a<{ color?: string }>`
   font-family: ${(props) => props.theme?.fonts?.normal};
-  // background-color: ${(props) => props.theme?.colors?.BLUE_700};
   background-color: #69349d;
   color: ${(props) => props.theme?.colors?.White};
   border-radius: 0.4rem;
@@ -47,7 +44,6 @@ export const ApplyButton = styled.a<{ color?: string }>`
   padding: 14px 24px;
   white-space: nowrap;
   border: none;
-  // margin: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -61,8 +57,6 @@ export const ApplyButton = styled.a<{ color?: string }>`
 `;
 export const SaveForLaterButton = styled.button<{ color?: string }>`
   font-family: ${(props) => props.theme?.fonts?.normal};
-  // background-color: ${(props) => props.theme?.colors?.BLUE_700};
-
   color: ${(props) => props.theme?.colors?.BrandAltNebula600};
   border-radius: 0.4rem;
   position: relative;
@@ -71,7 +65,6 @@ export const SaveForLaterButton = styled.button<{ color?: string }>`
   padding: 14px 24px;
   white-space: nowrap;
   border: 2px solid #69349d;
-  // margin: 20px;
   font-style: normal;
   font-weight: 400;
   font-size: 1rem;
@@ -183,12 +176,6 @@ export const CloseButton = styled.button`
   border-radius: 5px;
   height: 32px;
   width: 32px;
-  // margin: 20px;
-  // position: absolute;
-  // top: 0;
-  // right: 0;
-
-  // box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
 export const CloseIcon = styled.svg`

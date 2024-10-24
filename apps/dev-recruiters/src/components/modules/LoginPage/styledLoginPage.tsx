@@ -34,16 +34,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // width: 100%;
   height: 100%;
-  // background-color: ${({ theme }) => theme?.colors?.White};
 `;
 export const MessageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 24px 32px 32px 32px;
-  // margin: 30px;
   background-color: ${({ theme }) => theme?.colors?.White};
   border-radius: 16px;
   width: 100%;
@@ -52,10 +49,8 @@ export const MessageWrapper = styled.div`
   box-shadow: 0px 4px 6px 3px rgba(51, 51, 51, 0.1);
 `;
 export const ButtonWrapper = styled.div`
-  // padding: 30px;
   display: flex;
   flex-direction: row;
-
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: center;
