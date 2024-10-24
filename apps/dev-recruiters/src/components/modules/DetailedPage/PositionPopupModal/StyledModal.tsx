@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const ModalContent = styled.div`
   position: relative;
   width: 100%;
-  // height: 652px;
   font-family: 'Abel', sans-serif;
 `;
 
