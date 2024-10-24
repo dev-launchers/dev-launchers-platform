@@ -49,7 +49,7 @@ function WelcomePage() {
           WELCOME TO THE IDEA PLATFORM!
           <Subheader>
             Have an idea for a development project? Want to help develop an
-            idea? Want to generate an idea?
+            idea?
           </Subheader>
           LET'S GET STARTED <RocketImage src={rocketImage} />
         </atoms.Typography>

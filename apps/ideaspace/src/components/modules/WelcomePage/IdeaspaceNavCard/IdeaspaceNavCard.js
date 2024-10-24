@@ -25,7 +25,7 @@ const IdeaspaceNavCard = ({
   return (
     <>
       <div
-        className={`group flex flex-col rounded-[20px] p-[32px] border-[#3F1F5F] border-[4px] hover:bg-[rgba(48,24,72,1)] text-[#3F1F5F] transition-colors duration-300 ease-in-out ${backgroundClass}`}
+        className={`group flex flex-col rounded-[20px] p-[32px] border-[#3F1F5F] active:border-[#52287A] border-[4px] hover:bg-[rgba(48,24,72,1)] text-[#3F1F5F] transition-colors duration-300 ease-in-out ${backgroundClass}`}
         style={{ color: 'rgba(63, 31, 95, 1)' }}
       >
         <div>
