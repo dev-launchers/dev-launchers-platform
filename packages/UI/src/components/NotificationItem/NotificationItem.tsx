@@ -155,6 +155,11 @@ function timeSincePublished(publishedAt: string) {
   }
 }
 
+const actionTexts = {
+  'Idea Created': 'created the idea',
+  Commented: 'commented on the idea',
+};
+
 function NotificationItem({
   message,
   name,
@@ -208,7 +213,7 @@ function NotificationItem({
               >
                 <strong>{name}</strong>
               </a>
-              <span className={actionStyle()}>{action}</span>
+              <span className={actionStyle()}>{actionTexts[action]}</span>
               <a
                 href={targetLink}
                 rel="noreferrer"

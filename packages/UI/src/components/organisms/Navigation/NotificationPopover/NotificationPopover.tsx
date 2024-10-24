@@ -18,6 +18,7 @@ export default function NotificationPopover() {
     })
       .then((data) => {
         data.reverse();
+        // console.log(data);
         setNotifications(data);
         return data;
       })
@@ -82,18 +83,18 @@ export default function NotificationPopover() {
           >
             {notifications.map((n, i) => {
               const { readDateTime, createdDateTime } = n.attributes;
-              const { title, content, entityId } =
+              const { action, entityName, eventUser, content, entityId } =
                 n.attributes.event.data.attributes;
+              const { username, discord_avatar } = eventUser.data.attributes;
               return (
                 <NotificationItem
                   key={i}
-                  action={title}
-                  avatar={null}
-                  message={content}
-                  name={''}
-                  profileLink={null}
+                  action={action}
+                  target={entityName}
+                  avatar={discord_avatar}
+                  message={''}
+                  name={username}
                   status={readDateTime ? 'read' : 'unRead'}
-                  target={null}
                   targetLink={'/ideaspace/workshop/' + entityId}
                   timeStamp={createdDateTime}
                 />
@@ -122,11 +123,11 @@ export default function NotificationPopover() {
 }
 
 const exmpleNotification = {
-  id: 87,
+  id: 188,
   attributes: {
-    createdAt: '2024-08-16T10:47:24.757Z',
-    updatedAt: '2024-08-16T10:47:24.757Z',
-    createdDateTime: '2024-08-16T10:47:24.728Z',
+    createdAt: '2024-10-24T17:31:39.715Z',
+    updatedAt: '2024-10-24T17:31:39.715Z',
+    createdDateTime: '2024-10-24T17:31:39.644Z',
     readDateTime: null,
     user: {
       data: {
@@ -208,6 +209,57 @@ const exmpleNotification = {
                   involveLevel: 'medium',
                 },
               },
+              {
+                id: 362,
+                attributes: {
+                  ideaName: 'aaaaaaaa',
+                  tagline: '',
+                  description: 'aaaaaaaaaaa',
+                  targetAudience: '',
+                  features: 'aaaaaaaaaaaa',
+                  experience: 'aaaaaaaaaaaa',
+                  createdAt: '2024-10-24T13:31:34.777Z',
+                  updatedAt: '2024-10-24T13:31:34.777Z',
+                  publishedAt: '2024-10-24T13:31:34.636Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 363,
+                attributes: {
+                  ideaName: 'mmmm',
+                  tagline: '',
+                  description: 'mmmmmmm',
+                  targetAudience: '',
+                  features: 'mmmmmmmmmmmmm',
+                  experience: 'mmmmmmmmmmm',
+                  createdAt: '2024-10-24T17:28:17.989Z',
+                  updatedAt: '2024-10-24T17:28:17.989Z',
+                  publishedAt: '2024-10-24T17:28:17.849Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'medium',
+                },
+              },
+              {
+                id: 364,
+                attributes: {
+                  ideaName: 'mmmmmm',
+                  tagline: '',
+                  description: 'mmmmmmmm',
+                  targetAudience: '',
+                  features: 'mmmmmmmmm',
+                  experience: 'mmmmmmmmmmm',
+                  createdAt: '2024-10-24T17:31:24.255Z',
+                  updatedAt: '2024-10-24T17:31:24.255Z',
+                  publishedAt: '2024-10-24T17:31:24.114Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
             ],
           },
           profile: {
@@ -283,6 +335,57 @@ const exmpleNotification = {
                   involveLevel: 'medium',
                 },
               },
+              {
+                id: 362,
+                attributes: {
+                  ideaName: 'aaaaaaaa',
+                  tagline: '',
+                  description: 'aaaaaaaaaaa',
+                  targetAudience: '',
+                  features: 'aaaaaaaaaaaa',
+                  experience: 'aaaaaaaaaaaa',
+                  createdAt: '2024-10-24T13:31:34.777Z',
+                  updatedAt: '2024-10-24T13:31:34.777Z',
+                  publishedAt: '2024-10-24T13:31:34.636Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
+              {
+                id: 363,
+                attributes: {
+                  ideaName: 'mmmm',
+                  tagline: '',
+                  description: 'mmmmmmm',
+                  targetAudience: '',
+                  features: 'mmmmmmmmmmmmm',
+                  experience: 'mmmmmmmmmmm',
+                  createdAt: '2024-10-24T17:28:17.989Z',
+                  updatedAt: '2024-10-24T17:28:17.989Z',
+                  publishedAt: '2024-10-24T17:28:17.849Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'medium',
+                },
+              },
+              {
+                id: 364,
+                attributes: {
+                  ideaName: 'mmmmmm',
+                  tagline: '',
+                  description: 'mmmmmmmm',
+                  targetAudience: '',
+                  features: 'mmmmmmmmm',
+                  experience: 'mmmmmmmmmmm',
+                  createdAt: '2024-10-24T17:31:24.255Z',
+                  updatedAt: '2024-10-24T17:31:24.255Z',
+                  publishedAt: '2024-10-24T17:31:24.114Z',
+                  extraInfo: '',
+                  status: 'workshopping',
+                  involveLevel: 'highly',
+                },
+              },
             ],
           },
           comments: {
@@ -307,6 +410,36 @@ const exmpleNotification = {
                   publishedAt: '2024-08-22T08:03:16.659Z',
                 },
               },
+              {
+                id: 324,
+                attributes: {
+                  text: 'Hey is anyone here ????',
+                  author: 'yacine.k',
+                  createdAt: '2024-09-14T11:08:55.401Z',
+                  updatedAt: '2024-09-14T11:08:55.401Z',
+                  publishedAt: '2024-09-14T11:08:55.328Z',
+                },
+              },
+              {
+                id: 339,
+                attributes: {
+                  text: 'hello',
+                  author: 'yacine.k',
+                  createdAt: '2024-10-13T20:55:13.465Z',
+                  updatedAt: '2024-10-13T20:55:13.465Z',
+                  publishedAt: '2024-10-13T20:55:13.395Z',
+                },
+              },
+              {
+                id: 343,
+                attributes: {
+                  text: 'hello hello',
+                  author: 'yacine.k',
+                  createdAt: '2024-10-24T17:31:37.821Z',
+                  updatedAt: '2024-10-24T17:31:37.821Z',
+                  publishedAt: '2024-10-24T17:31:37.749Z',
+                },
+              },
             ],
           },
         },
@@ -314,15 +447,40 @@ const exmpleNotification = {
     },
     event: {
       data: {
-        id: 78,
+        id: 188,
         attributes: {
-          entityId: 313,
-          entityType: 'IdeaCard',
-          title: 'Idea Submitted Successfully',
-          content: 'yacine.k added new idea, pizza -  is created',
-          createdDateTime: '2024-08-16T10:47:24.135Z',
-          createdAt: '2024-08-16T10:47:24.563Z',
-          updatedAt: '2024-08-16T10:47:24.563Z',
+          entityId: 343,
+          entityType: 'Comment',
+          content: 'yacine.k commented on idea: mmmmmm',
+          createdDateTime: '2024-10-24T17:31:39.081Z',
+          createdAt: '2024-10-24T17:31:39.151Z',
+          updatedAt: '2024-10-24T17:31:39.151Z',
+          action: 'Commented',
+          entityName: 'hello hello',
+          eventUser: {
+            data: {
+              id: 100,
+              attributes: {
+                username: 'yacine.k',
+                email: 'yacine.k@devlaunchers.com',
+                provider: 'google',
+                confirmed: true,
+                blocked: false,
+                discordUsername: null,
+                userId: 'e96c2149-a172-4b51-839c-50b8ed36765c',
+                hasAcceptedTermsOfService: null,
+                hasSubscribedEmails: null,
+                createdAt: '2024-08-10T07:16:54.908Z',
+                updatedAt: '2024-08-10T07:16:54.908Z',
+                discord_avatar: null,
+                discord_discriminator: null,
+                job: 'other',
+                experience: null,
+                schedule: null,
+                completedOnboarding: false,
+              },
+            },
+          },
         },
       },
     },
