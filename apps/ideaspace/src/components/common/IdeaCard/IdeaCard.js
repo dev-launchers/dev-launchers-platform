@@ -154,11 +154,17 @@ function IdeaCard({ cards, cardType }) {
 
             <atoms.Typography
               type="p"
-              style={{ fontSize: '0.875rem', height: '2.5rem' }}
+              style={{
+                fontSize: '0.875rem',
+                height: '2.6rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
             >
-              {cards.description.length > 80
-                ? `${cards.description.substring(0, 80)}...`
-                : cards.description}
+              {cards.description}
             </atoms.Typography>
             <ActivityDetails>
               <atoms.Typography type="label" style={{ fontSize: '0.75rem' }}>
