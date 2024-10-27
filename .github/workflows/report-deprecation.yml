@@ -1,0 +1,30 @@
+name: Report Deprecation
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.12.2'
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run lint
+        run: |
+          yarn workspaces foreach run lint --no-eslintrc --rule "@delagen/deprecation/deprecation: warn" --plugin "@delagen/eslint-plugin-deprecation" --parser-options project:tsconfig.json --parser @typescript-eslint/parser --parser-options ecmaVersion:2016 --parser-options projectService:true --ignore-pattern .eslintrc-example.js --ignore-pattern eslint.config.mjs --ignore-pattern '.eslintrc.*' --ignore-pattern '**/.*/' --no-inline-config -f compact -o eslint-errors.txt
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update eslint errors
