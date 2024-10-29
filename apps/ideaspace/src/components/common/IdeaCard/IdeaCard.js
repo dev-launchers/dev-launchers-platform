@@ -132,9 +132,11 @@ function IdeaCard({ cards, cardType }) {
               type="h4"
               className="logo-text"
               style={{
-                fontSize: '1.5rem',
+                fontSize: '20px',
                 lineHeight: '1.75rem',
                 fontFamily: 'Helvetica',
+                fontWeight: '700',
+                margin: '0rem 0rem 0.5rem',
               }}
             >
               {cards.ideaName.length > 20
@@ -156,7 +158,7 @@ function IdeaCard({ cards, cardType }) {
               type="p"
               style={{
                 fontSize: '0.875rem',
-                height: '2.6rem',
+                height: '40px',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
