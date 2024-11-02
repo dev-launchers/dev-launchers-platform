@@ -171,7 +171,7 @@ function IdeaCard({ cards, cardType }) {
               </atoms.Typography>
               <atoms.Typography
                 type="label"
-                style={{ fontSize: '0.75rem', color: '#3A7CA5' }}
+                style={{ fontSize: '0.75rem', color: '#7339AC' }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>
