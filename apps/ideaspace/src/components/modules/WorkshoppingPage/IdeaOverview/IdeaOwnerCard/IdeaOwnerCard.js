@@ -3,20 +3,18 @@ import {
   LeftView,
   StyledName,
   RightView,
-  StyledImage
-} from "./StyledComponent";
+  StyledImage,
+} from './StyledComponent';
 
-export const IdeaOwnerCard = ({ IdeaOwnerName, id }) => {
+export const IdeaOwnerCard = ({ IdeaOwnerName, profilePictureUrl }) => {
   return (
     <StyledCard>
       <LeftView>
-        <StyledName>
-          {IdeaOwnerName}
-        </StyledName>
+        <StyledName>{IdeaOwnerName}</StyledName>
         <h6>IDEA OWNER</h6>
       </LeftView>
       <RightView>
-        <StyledImage alt="user_image" src={`https://picsum.photos/70?random=${id}`} />
+        <StyledImage alt="user_image" src={profilePictureUrl} />
       </RightView>
     </StyledCard>
   );

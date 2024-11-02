@@ -111,7 +111,7 @@ function SingleCommentComponent(props) {
       <SingleComment>
         <UserImage
           alt="user_image"
-          src={`https://picsum.photos/70?random=${props.id}`}
+          src={props.user.profile.profilePictureUrl}
         />
         <div className="textContent">
           <SingleCommentContent>
