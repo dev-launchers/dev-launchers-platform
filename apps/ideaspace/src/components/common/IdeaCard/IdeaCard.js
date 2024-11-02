@@ -104,12 +104,10 @@ function IdeaCard({ cards, cardType }) {
       <atoms.Box
         flexDirection="column"
         padding="0.5rem 0.5rem 1.5rem 0.5rem"
-        width="23.2935rem"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           borderRadius: '1rem',
           cursor: 'pointer',
-          minWidth: '21.875rem',
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
             : 'none',
@@ -126,11 +124,10 @@ function IdeaCard({ cards, cardType }) {
           <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
-            padding="0rem 0.75rem 0rem"
+            padding="0rem 0.75rem"
           >
             <atoms.Typography
               type="h4"
-              className="logo-text"
               style={{
                 fontSize: '20px',
                 lineHeight: '1.75rem',
@@ -158,7 +155,7 @@ function IdeaCard({ cards, cardType }) {
               type="p"
               style={{
                 fontSize: '0.875rem',
-                height: '40px',
+                height: '43px',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
                 WebkitBoxOrient: 'vertical',
