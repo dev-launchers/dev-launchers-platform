@@ -116,15 +116,16 @@ function SingleCommentComponent(props) {
         <div className="textContent">
           <SingleCommentContent>
             <h3>{props.author}</h3>
-            <h5>
-              {props.forIdea.ideaOwner?.id == props.user?.id ? (
-                <IdeaOwnerTag>idea owner</IdeaOwnerTag>
-              ) : (
-                ''
-              )}
-            </h5>
+
+            {props.forIdea.ideaOwner?.id == props.user?.id ? (
+              <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
+            ) : (
+              ''
+            )}
+
             {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
           </SingleCommentContent>
+
           <SingleCommentContent>
             {/* date of creation here, i.e. "2 days ago" */}
             <h5>{timeSince(new Date(props.createdAt))}</h5>

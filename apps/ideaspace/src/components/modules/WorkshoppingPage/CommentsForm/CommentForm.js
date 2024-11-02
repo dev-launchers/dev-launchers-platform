@@ -72,7 +72,7 @@ function CommentForm(props) {
               }}
               style={{ width: '100%', overflow: 'hidden' }}
               name="text"
-              placeholder="What are your thoughts?"
+              // placeholder="What are your thoughts?"
               value={textChange}
               onChange={handleTextChange}
               // maxlength={MAX_COMMENT_CHARS}
