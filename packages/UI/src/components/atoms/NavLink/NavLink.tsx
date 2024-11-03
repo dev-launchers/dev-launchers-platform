@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 
 interface NavLinkProps {
   href?: string;
-  text?: string;
   children?: ReactNode;
 }
 
