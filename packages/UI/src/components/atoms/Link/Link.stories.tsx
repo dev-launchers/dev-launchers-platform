@@ -2,7 +2,7 @@ import type { ComponentStory, ComponentMeta } from '@storybook/react';
 import Link from './Link';
 
 export default {
-  title: 'Atoms/Link',
+  title: 'Deprecated/Atoms/Link',
   component: Link,
 } as ComponentMeta<typeof Link>;
 

@@ -1,11 +1,12 @@
 import React from 'react';
-import axios from "axios";
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
 import SignInSection from '../../common/SignInSection/SignInSection';
-import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader'
+import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
+import { cleanDataList, cleanData } from '../../../utils/StrapiHelper';
+import { agent } from '@devlaunchers/utility';
 
 import {
   HeadWapper,
@@ -15,42 +16,36 @@ import {
 } from './StyledDashboardPage';
 
 function DashboardPage() {
-
-  let { userData, setUserData, isAuthenticated } = useUserDataContext();
-  if (process.env.NEXT_PUBLIC_NAME == 'DEVELOPMENT') {
-    isAuthenticated = true;
-
-    React.useEffect(() => {
-      setUserData({ ...userData, id: 2 });
-    }, []);
-  }
+  let { userData, isAuthenticated } = useUserDataContext();
 
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
 
-  React.useEffect(() => {
-    {
-      isAuthenticated ?
-        axios
-          .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/idea-cards`, {
-            withCredentials: true,
-          })
-          .then((response) => {
-            const cards = response.data.map((item) => {
-              return {
-                ...item,
-                mostRecentCommentTime: new Date(
-                  item.comments[0]?.updated_at
-                ).getTime(),
-              };
-            });
+  React.useEffect(async () => {
+    if (isAuthenticated) {
+      const data = cleanDataList(
+        await agent.Ideas.get(new URLSearchParams(`populate=deep`))
+      );
 
-            setLoading(false);
-            setSourceCards(cards);
-          })
-        :
-        ''
+      const allCards = data.map((item) => {
+        if (item.comments === undefined) item.comments = [];
+        else item.comments = cleanDataList(item.comments.data);
+
+        if (item.author.data !== null) {
+          item.author = cleanData(item.author.data);
+        }
+
+        return {
+          ...item,
+          mostRecentCommentTime: new Date(
+            item.comments[0]?.updated_at
+          ).getTime(),
+        };
+      });
+
+      setLoading(false);
+      setSourceCards(allCards);
     }
   }, [isAuthenticated]);
 
@@ -65,15 +60,17 @@ function DashboardPage() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <atoms.Typography type='h4' >
+        <atoms.Typography type="h4">
           Everything about your ideas in one place.
         </atoms.Typography>
       </HeadWapper>
 
       {!isAuthenticated ? (
         <SignInSection
-          label='Please sign in to view your dashboard!'
-          redirectURL='https://devlaunchers.org/ideaspace/dashboard'
+          label="Please sign in to view your dashboard!"
+          redirectURL={
+            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
+          }
         />
       ) : (
         <PageWrapper>
@@ -81,18 +78,12 @@ function DashboardPage() {
             <CircularIndeterminateLoader text="Loading..." color="black" />
           ) : (
             <>
-              <Stats
-                totalCard={cards}
-              />
-
-              <Ideas
-                totalCard={cards}
-              />
+              <Stats totalCard={cards} />
+              <Ideas totalCard={cards} />
             </>
           )}
         </PageWrapper>
-      )
-      }
+      )}
     </>
   );
 }

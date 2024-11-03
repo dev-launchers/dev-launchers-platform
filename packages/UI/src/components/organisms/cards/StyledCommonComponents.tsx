@@ -1,5 +1,5 @@
 import { motion, LazyMotion, domAnimation } from 'framer-motion';
-import { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
 import Typography from '../../atoms/Typography';
@@ -56,7 +56,7 @@ export const ExpandableBlurb = ({
     if (!content.current) return;
     const height = content.current.clientHeight;
     setHeight(height);
-  });
+  }, []);
 
   return (
     <LazyMotion features={domAnimation}>

@@ -13,6 +13,10 @@
       "path": "apps/ideaspace"
     },
     {
+      "name": "user-profile",
+      "path": "apps/user-profile"
+    },
+    {
       "name": "site-projects",
       "path": "apps/site-projects"
     },
@@ -65,6 +69,7 @@
       "./apps/app",
       "./apps/website",
       "./apps/ideaspace",
+      "./apps/user-profile",
       "./apps/site-projects",
       "./apps/dev-recruiters",
       "./packages/UI",

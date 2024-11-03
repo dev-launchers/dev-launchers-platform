@@ -3,7 +3,7 @@ import theme from '../../../styles/theme';
 import type { TypographyProps } from '.';
 
 const h1 = `
-    font-family: Abel;
+    font-family: Oswald;
     font-size: 2.75rem;
     font-weight: 400;
     line-height: 3.5rem;
@@ -15,7 +15,7 @@ const h1 = `
 `;
 
 const h2 = `
-    font-family: 'Abel';
+    font-family: 'Oswald';
     font-size: 2.5rem;
     font-weight: 400;
     line-height: 3.1875rem;
@@ -27,7 +27,7 @@ const h2 = `
 `;
 
 const h3 = `
-    font-family: 'Abel';
+    font-family: 'Oswald';
     font-size: 2rem;
     font-weight: 400;
     line-height: 2.5625rem;
@@ -114,7 +114,6 @@ const label = `
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.25rem;
-    text-transform: uppercase;
     @media only screen and (max-width: 62.5rem) {
         font-size: 1rem;
         line-height: 1.5rem;
@@ -140,7 +139,7 @@ const link = `
 `;
 
 const navLink = `
-    font-family: 'Abel';
+    font-family: 'Oswald';
     font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;

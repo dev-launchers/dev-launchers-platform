@@ -66,7 +66,7 @@ const OpportunitiesAggregator: React.FunctionComponent<Props> = ({
                 catchPhrase={project.catchPhrase}
                 commitmentLevel={project.commitmentLevel}
                 isPlatform={project.isPlatform}
-                opportunities={project.opportunities}
+                opportunities={project.opportunities.data}
                 slug={project.slug}
               />
             ))}

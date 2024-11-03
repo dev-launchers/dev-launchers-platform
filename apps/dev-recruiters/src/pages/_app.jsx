@@ -7,7 +7,6 @@ import GlobalStyle from '@devlaunchers/components/src/styles/global';
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '@devlaunchers/components/src/styles/theme';
 
-import { UserDataProvider } from '@devlaunchers/components/src/context/UserDataContext';
 // import Footer from '@devlaunchers/components/Footer';
 // import Header from '@devlaunchers/components/components/Header';
 
@@ -41,7 +40,6 @@ function MyApp(props) {
               gtag('config', 'AW-599284852');
             `}
         </Script>
-        <UserDataProvider>
         <div className="App">
           <ToastContainer
             className="toast-container"
@@ -55,7 +53,6 @@ function MyApp(props) {
           {props.children}
           {/* <Footer /> */}
         </div>
-        </UserDataProvider>
       </div>
     </ThemeProvider>
   );
