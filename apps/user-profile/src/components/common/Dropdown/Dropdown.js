@@ -5,6 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@devlaunchers/components/components/DropdownMenu';
+import Chevron from './../../common/Icons/SVG/FilledChevron';
 function DropDownMenu({ menuItems = [], menu, onChange }) {
   return (
     <DropdownMenu>
@@ -12,21 +13,23 @@ function DropDownMenu({ menuItems = [], menu, onChange }) {
         {menu}
       </p>
       <DropdownMenuTrigger asChild size="100%">
-        <FilledChevron />
+        <Chevron point="down" />
         <div className="group">{menu || 'Select...'}</div>
       </DropdownMenuTrigger>
       <DropdownMenuContent size="large">
         {menuItems.map((item) => {
           // Validate the item before rendering
-          if (!item || typeof item !== 'object') {
+          {
+            /* if (!item || item == "" || item == undefined) {
             console.warn('Invalid menu item:', item);
             return null;
+          } */
           }
 
           return (
             <DropdownMenuItem
-              key={item.code ? item.code : 'item-${Math.random()}'}
-              onSelect={() => onChange(item?.name)}
+              key={item.code}
+              onSelect={() => onChange(item.name)}
             >
               <button aria-label="fake-anchor">{item?.name}</button>
             </DropdownMenuItem>
