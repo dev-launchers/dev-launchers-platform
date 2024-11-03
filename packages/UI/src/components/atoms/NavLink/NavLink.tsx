@@ -1,30 +1,21 @@
-import styled from 'styled-components';
-import { typographyStyles } from '../Typography';
+import { ReactNode } from 'react';
 
 interface NavLinkProps {
   href?: string;
   text?: string;
+  children?: ReactNode;
 }
 
-const NavLink = styled.a<NavLinkProps>`
-  ${typographyStyles.navLink}
-  color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  &:hover {
-    color: ${({ theme }) => theme.colors.BLUE_200};
-  }
-  &:focus {
-    color: ${({ theme }) => theme.colors.BLUE_200};
-  }
-  &:active {
-    color: ${({ theme }) => theme.colors.BLUE_100};
-    border-bottom: 3px solid ${({ theme }) => theme.colors.BLUE_200};
-    text-align: center;
-    width: 58px;
-    padding-bottom: 6px;
-  }
-  &:disabled {
-    color: ${({ theme }) => theme.colors.GREYSCALE_GREY};
-  }
-`;
+function NavLink(props: NavLinkProps) {
+  const { children, href } = props;
+  return (
+    <a
+      className="text-grayscale-50 hover:text-blue-200 focus:text-blue-200 active:text-blue-100 active:border-b-[3px] active:text-center active:w-14 active:border-blue-200 active:pb-1 disabled:text-grayscale-600"
+      href={href}
+    >
+      {children}
+    </a>
+  );
+}
 
 export default NavLink;
