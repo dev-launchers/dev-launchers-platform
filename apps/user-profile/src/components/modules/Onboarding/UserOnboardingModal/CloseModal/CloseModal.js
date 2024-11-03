@@ -3,7 +3,7 @@ import Button from '@devlaunchers/components/components/atoms/Button';
 import { useOnboardingDataContext } from './../../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../../state/actions';
 import Modal from './../../../../common/Modal';
-import CloseIcon from './../../../../common/Icons/SVG/FilledCross';
+import CloseIcon from '../../../../common/icons/FilledCross';
 
 export default function CloseModal() {
   const { dispatch } = useOnboardingDataContext();

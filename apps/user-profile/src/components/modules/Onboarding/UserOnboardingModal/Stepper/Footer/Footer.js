@@ -1,5 +1,5 @@
 import { Button, Typography } from '@devlaunchers/components/components/atoms';
-import Chevron from './../../../../../common/Icons/SVG/FilledChevron';
+import Chevron from '../../../../../common/icons/FilledChevron';
 import Loader from './../../../../../common/Loader';
 
 function Footer({

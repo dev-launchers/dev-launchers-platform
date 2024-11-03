@@ -1,5 +1,5 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
-import { FilledRocketLogo, FilledCross } from './../../../common/Icons';
+import { FilledRocketLogo, FilledCross } from '../../icons';
 
 function ModalHeader({ closeModal }) {
   return (
