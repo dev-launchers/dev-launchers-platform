@@ -13,6 +13,8 @@ import {
   OutlinedOpportunities,
 } from './../../../common/Icons';
 
+import OutlinedCat from './../../../common/CatIcon/OutlinedCat';
+
 function SideBar() {
   const { userData } = useUserDataContext();
   const { sidebarState, sidebarDispatch } = useSidebarDataContext();
@@ -91,6 +93,18 @@ function SideBar() {
     }`,
   };
 
+  styling.chatbot = {
+    li: `group ${styling.li} ${
+      pages.showChatbot ? styling.active.background : styling.background
+    }`,
+    iconColor: `${
+      pages.showChatbot
+        ? 'stroke-black'
+        : 'stroke-grayscale-100 group-hover:stroke-black'
+    }`,
+    typography: `${pages.showChatbot ? styling.active.text : styling.text}`,
+  };
+
   const onOverviewClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_OVERVIEW_SETTING });
   };
@@ -105,6 +119,10 @@ function SideBar() {
   };
   const onOpportunitiesClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_OPPORTUNITIES_SETTING });
+  };
+
+  const onChatbotClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_CHATBOT_SETTING });
   };
 
   return (
@@ -130,7 +148,7 @@ function SideBar() {
             PROJECTS
           </Typography>
         </li> */}
-        {/*<li className={styling.profiles.li} onClick={onProfilesClick}>
+        {/* <li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
           <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
         </li>
@@ -141,6 +159,11 @@ function SideBar() {
         <li className={styling.opportunities.li} onClick={onOpportunitiesClick}>
           <OutlinedOpportunities colorClass={styling.opportunities.iconColor} />
           <Typography type="p" className={styling.opportunities.typography}>OPPORTUNITIES</Typography>
+        </li> */}
+
+        {/* <li className={styling.chatbot.li} onClick={onChatbotClick}>
+          <OutlinedCat colorClass={styling.chatbot.iconColor}/>
+          <Typography type="p" className={styling.chatbot.typography}>DL Bot</Typography>
         </li> */}
       </ul>
     </div>
