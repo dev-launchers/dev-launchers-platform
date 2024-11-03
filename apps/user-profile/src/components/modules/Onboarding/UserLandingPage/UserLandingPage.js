@@ -146,13 +146,13 @@ export default function UserLandingPage() {
     setPerson({ ...person, role: e.target.value });
   }
 
-  function onLinkedInPortfolioChange(e) {
-    setPerson({ ...person, linkedInPortfolio: e.target.value });
-  }
+  // function onLinkedInPortfolioChange(e) {
+  //   setPerson({ ...person, linkedInPortfolio: e.target.value });
+  // }
 
-  function onWebsitePortfolioChange(e) {
-    setPerson({ ...person, websitePortfolio: e.target.value });
-  }
+  // function onWebsitePortfolioChange(e) {
+  //   setPerson({ ...person, websitePortfolio: e.target.value });
+  // }
 
   function onTermsAndConditionChange(e) {
     setPerson({ ...person, termsAndConditions: !person.termsAndConditions });
@@ -278,8 +278,8 @@ export default function UserLandingPage() {
 
             <DropDownMenu
               menuItems={countryData}
-              country={person.country}
-              onCountryChange={onCountryChange}
+              menu={person.country}
+              onChange={onCountryChange}
             />
 
             <InputField
@@ -289,7 +289,7 @@ export default function UserLandingPage() {
               placeholder="CSS Developer"
             />
 
-            <InputField
+            {/* <InputField
               error=""
               label="linkedInPortfolio (optional)"
               onChange={onLinkedInPortfolioChange}
@@ -300,7 +300,7 @@ export default function UserLandingPage() {
               label="websitePortfolio (optional)"
               onChange={onWebsitePortfolioChange}
               placeholder="www.portfolio.com"
-            />
+            /> */}
           </FormFields>
           <FormFooter>
             <CheckboxField
