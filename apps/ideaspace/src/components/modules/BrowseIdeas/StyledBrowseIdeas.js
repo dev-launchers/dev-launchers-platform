@@ -1,17 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PageWrapper = styled.section`
-  background-color: #FFFFFF;
-  padding: 0rem calc((100% - 75.5rem)/2) 3.5rem calc((100% - 75.5rem)/2);
+  background-color: #ffffff;
+  padding: 0rem 11.5rem 3.5rem;
 
-  @media (max-width: 1278px) {
-    padding: 0rem calc((100% - 70.5rem)/2) 3.5rem calc((100% - 70.5rem)/2);
+  @media (max-width: 1536px) {
+    padding: 0rem 3rem 3.5rem;
   }
   @media (max-width: 1192px) {
-    padding: 0rem calc((100% - 46.5rem)/2) 3.5rem calc((100% - 46.5rem)/2);
+    padding: 0rem 2rem 3.5rem;
   }
-  @media (max-width: 810px) {
-    padding: 0rem 2rem 5rem 2rem;
+  @media (max-width: 1024px) {
+    padding: 0rem 1.5rem 5rem;
+  }
+  @media (max-width: 640px) {
+    padding: 0rem 1.25rem 5rem;
   }
 `;
 
@@ -22,20 +25,56 @@ export const StyledRanbow = styled.div`
 `;
 
 export const IdeaCardWrapper = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap; 
-column-gap: 3.8rem;
-row-gap: 2rem;
-margin: 1.5rem auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin: 1.5rem 0rem;
 
-@media (max-width: 1278px) {
-  column-gap: 1.2rem;
-}
+  // Default screen: 3 cards per row
+  & > div {
+    flex: 1 1 calc(33.333% - 2rem); // Dynamic width for 3 cards per row
+    max-width: calc(33.333% - 2rem); // Max width for each card
+  }
+
+  @media (max-width: 1192px) {
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+  }
+
+  // Breakpoint for screens up to 1024px (2 cards per row)
+  @media (max-width: 1024px) {
+    & > div {
+      flex: 1 1 calc(50% - 2rem); // Dynamic width for 2 cards per row
+      max-width: calc(50% - 2rem);
+    }
+  }
+
+  // Breakpoint for screens up to 768px: Single card per row, height increases
+  @media (max-width: 768px) {
+    & > div {
+      flex: 1 1 calc(100% - 2rem); // Full width for a single card per row
+      max-width: calc(100% - 2rem);
+    }
+  }
+
+  // Breakpoint for screens up to 640px (1 card per row)
+  @media (max-width: 640px) {
+    column-gap: 1.25rem;
+    row-gap: 32px;
+
+    & > div {
+      flex: 1 1 calc(100% - 1.25rem); // Full width for a single card per row
+      max-width: calc(100% - 1.25rem);
+    }
+  }
 `;
 
 export const FilterDiv = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  margin-bottom: 0.5rem;
 `;
