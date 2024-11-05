@@ -1,10 +1,10 @@
-// import type { ComponentStory, ComponentMeta } from '@storybook/react';
-// import NavLink from './NavLink';
+import type { Meta } from '@storybook/react';
+import NavLink from './NavLink';
 
-// export default {
-//   title: 'Deprecated/Atoms/NavLink',
-//   component: NavLink,
-// } as ComponentMeta<typeof NavLink>;
+export default {
+  title: 'Deprecated/Atoms/NavLink',
+  component: NavLink,
+} as Meta<typeof NavLink>;
 
 // const NavLinkTemplate: ComponentStory<typeof NavLink> = (args) => (
 //   <NavLink {...args}>Navigation Link</NavLink>
