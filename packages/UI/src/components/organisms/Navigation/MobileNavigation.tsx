@@ -99,7 +99,6 @@ const MobileNavigation = ({
                   <li key={`${name} ` + i}>
                     <Link href={href} passHref>
                       <Button
-                        as={NavLink}
                         buttonType="alternative"
                         buttonSize="standard"
                         onClick={() => setIsSidebarExpanded?.(false)}
