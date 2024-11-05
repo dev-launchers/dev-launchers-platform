@@ -1,17 +1,17 @@
-import type { ComponentStory, ComponentMeta } from '@storybook/react';
-import NavLink from './NavLink';
+// import type { ComponentStory, ComponentMeta } from '@storybook/react';
+// import NavLink from './NavLink';
 
-export default {
-  title: 'Deprecated/Atoms/NavLink',
-  component: NavLink,
-} as ComponentMeta<typeof NavLink>;
+// export default {
+//   title: 'Deprecated/Atoms/NavLink',
+//   component: NavLink,
+// } as ComponentMeta<typeof NavLink>;
 
-const NavLinkTemplate: ComponentStory<typeof NavLink> = (args) => (
-  <NavLink {...args}>Navigation Link</NavLink>
-);
+// const NavLinkTemplate: ComponentStory<typeof NavLink> = (args) => (
+//   <NavLink {...args}>Navigation Link</NavLink>
+// );
 
-export const Light = NavLinkTemplate.bind({});
-Light.args = {
-  href: '/anywhere',
-  text: 'Learn',
-};
+// export const Light = NavLinkTemplate.bind({});
+// Light.args = {
+//   href: '/anywhere',
+//   text: 'Learn',
+// };
