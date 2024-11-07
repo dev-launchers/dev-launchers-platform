@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
   width: 100%;
-  margin: 40px;
+
   @media (max-width: 1280px) {
     flex-direction: column;
     align-items: center;
-    justify-content: center
+    justify-content: center;
   }
 `;
 
@@ -17,12 +17,21 @@ export const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 50%;
+  width: 688px;
   margin-right: 25px;
-  margin-left: 25px;
+  margin-left: 117px;
   @media (max-width: 1280px) {
     width: 70%;
   }
+`;
+
+export const LeftSubWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 340px;
+  margin-right: 25px;
+  margin-left: 25px;
 `;
 
 export const RightWrapper = styled.div`

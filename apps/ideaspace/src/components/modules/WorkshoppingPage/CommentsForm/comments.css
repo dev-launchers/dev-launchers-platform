@@ -6,7 +6,7 @@
   width: 100vw;
   display: flex;
   align-items: top;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 

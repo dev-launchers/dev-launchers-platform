@@ -34,16 +34,19 @@ export const SingleCommentContent = styled.div`
   h3 {
     margin-right: 6px;
 
-    color: var(--grey-scale-off-black, #1c1c1c);
-    font-feature-settings: 'clig' off, 'liga' off;
+    // color: var(--grey-scale-off-black, #1c1c1c);
+    // font-feature-settings: 'clig' off, 'liga' off;
 
-    font-family: Nunito Sans;
-    font-size: 14px;
+    color: var(--Grey-Scale-off-black, #1c1c1c);
+
+    /* body/sm */
+    font-family: var(--font-family-secondary, 'Nunito Sans');
+    font-size: var(--font-size-body-sm, 14px);
     font-style: normal;
     font-weight: 700;
-    line-height: 20px;
-    letter-spacing: 0px;
-    text-transform: uppercase;
+    line-height: var(--font-line-height-body-sm, 20px); /* 142.857% */
+    letter-spacing: var(--font-letter-spacing-body-body, 0px);
+    // text-transform: uppercase;
   }
 
   h5 {
@@ -142,20 +145,26 @@ export const Form = styled.div`
   }
 
   button {
-    padding: 8px 9px;
-    color: black;
-    font-weight: bold;
-    border-radius: 25px;
-    border: 1px solid #999;
-    background-color: #c3c0c0;
-    margin-right: 0;
-    margin-left: auto;
+    display: flex;
+    height: 36px;
+    width: 36px;
+    justify-content: center;
+    align-items: center;
+    gap: var(--button-default-space-g-x, 4px);
+
+    border-radius: 30px;
+    border: var(--btn-border-width, 2px) solid
+      var(--btn-border-brand-primary, #3f1f5f);
+    background: var(--btn-surface-brand-primary, #52287a);
   }
 
   button:hover {
     cursor: pointer;
-    color: #385997;
-    border-color: #385997;
+    border-color: #52287a;
+  }
+  button:focus {
+    border: var(--btn-border-width, 4px) solid
+      var(--btn-border-brand-primary, #3f1f5f);
   }
 `;
 
@@ -168,23 +177,25 @@ export const UserComment = styled.div`
   display: flex;
   align-items: center;
 
-  input {
-    width: 100%;
-    height: 3rem;
-  }
+  // input {
+  //   width: 100%;
+  //   height: 3rem;
+  // }
 `;
 
 export const UserImageOne = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  margin-top: 8px;
+  align-self: flex-start;
 `;
 
 export const CommentBox = styled.textarea`
   width: 100%;
   border-radius: 30px;
   background-color: #f0eded;
-  border: solid 1px #f0eded;
+  border: solid 2px #f0eded;
   color: #7f7e7f;
   // padding: 5px;
   margin-left: 10px;
