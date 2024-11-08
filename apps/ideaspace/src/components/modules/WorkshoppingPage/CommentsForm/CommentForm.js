@@ -72,14 +72,14 @@ function CommentForm(props) {
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <div
-              className={`flex items-center p-2 w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
+              className={`flex items-center px-[14px] py-[14px] w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
                 isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
               } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'}`}
               style={{ minHeight: '55px' }}
             >
               <textarea
-                placeholder="What are your thoughts?"
-                className="flex-grow ml-1 mr-3 resize-none overflow-hidden focus:outline-none"
+                placeholder="What are your thoughtsss?"
+                className="flex-grow  mr-3 resize-none overflow-hidden focus:outline-none "
                 rows="1"
                 value={textChange}
                 onFocus={() => setIsFocused(true)} // Set isFocused to true on focus

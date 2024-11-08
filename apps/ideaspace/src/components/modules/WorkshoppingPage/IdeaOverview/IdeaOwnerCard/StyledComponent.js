@@ -63,7 +63,7 @@ export const IdeaOwnerTag = styled.div`
   padding: 2px 8px;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
   gap: var(--25, 10px);
   border-radius: 6px;
   background: var(--static-surface-brand-uranus, #d8ecf3);

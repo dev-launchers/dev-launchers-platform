@@ -46,6 +46,12 @@
   flex-direction: row-reverse;
 }
 
+textarea::placeholder {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+}
+
 .user_name_comment_box {
   padding-left: 20px;
 }

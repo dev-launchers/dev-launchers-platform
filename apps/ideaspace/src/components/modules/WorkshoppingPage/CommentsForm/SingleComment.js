@@ -135,7 +135,7 @@ function SingleCommentComponent(props) {
       <SingleComment>
         <div className="textContent">
           <SingleCommentContent>
-            <div source={props.children}>
+            <div source={props.children} style={{ marginBottom: '20px' }}>
               <p>{props.children}</p>
             </div>
           </SingleCommentContent>
@@ -147,7 +147,7 @@ function SingleCommentComponent(props) {
               text={liked ? '479' : 'Like'}
             /> */}
           </SingleCommentButtons>
-          <hr></hr>
+          <hr className="mb-[7px]"></hr>
         </div>
       </SingleComment>
     </div>
