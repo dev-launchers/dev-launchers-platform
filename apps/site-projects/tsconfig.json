@@ -27,6 +27,7 @@
     "**/*.js",
     "**/*.jsx",
     "**/*.mjs",
-    "**/*.json"
-, ".eslintrc-example.js"  ]
+    "**/*.json",
+    ".eslintrc.js"
+  ]
 }
