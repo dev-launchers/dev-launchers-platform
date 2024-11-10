@@ -55,6 +55,7 @@ export const RightView = styled.div`
 export const StyledImage = styled.img`
   border-radius: 100%;
   border: 1px solid gray;
+  height: 80px;
 `;
 
 export const IdeaOwnerTag = styled.div`

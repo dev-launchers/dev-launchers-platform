@@ -18,6 +18,7 @@ import {
   Headline,
   StyledRanbow,
   ParaWrapper,
+  InnerWrapper,
 } from './StyledComponents';
 
 import { useFetchIdea } from './useFetchIdea';
@@ -81,25 +82,44 @@ export default function WorkshoppingPage(props) {
         {loading === true ? (
           <CircularIndeterminateLoader text="Loading..." color="white" />
         ) : (
-          <Wrapper>
-            <IdeaOverview selectedCard={data} />
+          // <Wrapper>
+          //   <IdeaOverview selectedCard={data} />
 
-            <Comments>
-              <h5 style={{ textAlign: 'left', paddingLeft: '20px' }}>
-                COMMENT FEED: {comments.length}
-              </h5>
+          // <Comments>
+          //   <h5 style={{ textAlign: 'left', paddingLeft: '20px' }}>
+          //     COMMENT FEED: {comments.length}
+          //   </h5>
 
-              <Form>
-                <CommentForm
-                  selectedCard={data}
-                  comments={comments}
-                  renderNewComment={renderNewComment}
-                />
-              </Form>
+          //   <Form>
+          //     <CommentForm
+          //       selectedCard={data}
+          //       comments={comments}
+          //       renderNewComment={renderNewComment}
+          //     />
+          //   </Form>
 
-              <DisplayComments selectedCard={data} comments={comments} />
-            </Comments>
-          </Wrapper>
+          //   <DisplayComments selectedCard={data} comments={comments} />
+          // </Comments>
+          // </Wrapper>
+
+          <div className="flex flex-row justify-center">
+            <Wrapper>
+              <IdeaOverview selectedCard={data} />
+              <Comments>
+                <h5 style={{ textAlign: 'left' }}>
+                  COMMENT FEED: {comments.length}
+                </h5>
+                <Form>
+                  <CommentForm
+                    selectedCard={data}
+                    comments={comments}
+                    renderNewComment={renderNewComment}
+                  />
+                </Form>
+                <DisplayComments selectedCard={data} comments={comments} />
+              </Comments>
+            </Wrapper>
+          </div>
         )}
       </Container>
     );

@@ -108,7 +108,7 @@ function SingleCommentComponent(props) {
 
   return (
     <div className="textContent">
-      <SingleComment>
+      <SingleComment style={{ marginBottom: props.isLast ? '0' : '20px' }}>
         <UserImage
           alt="user_image"
           src={props.user.profile.profilePictureUrl}
@@ -132,7 +132,7 @@ function SingleCommentComponent(props) {
           </SingleCommentContent>
         </div>
       </SingleComment>
-      <SingleComment>
+      <SingleComment style={{ marginBottom: props.isLast ? '0' : '20px' }}>
         <div className="textContent">
           <SingleCommentContent>
             <div source={props.children} style={{ marginBottom: '20px' }}>
@@ -147,7 +147,8 @@ function SingleCommentComponent(props) {
               text={liked ? '479' : 'Like'}
             /> */}
           </SingleCommentButtons>
-          <hr className="mb-[7px]"></hr>
+          {/* <hr className="mb-[7px]"></hr> */}
+          {!props.isLast && <hr className="mb-[7px]" />}
         </div>
       </SingleComment>
     </div>

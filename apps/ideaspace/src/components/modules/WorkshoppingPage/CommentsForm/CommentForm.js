@@ -65,8 +65,6 @@ function CommentForm(props) {
           onSubmit={handleSubmit}
           style={{
             textAlign: 'left',
-            paddingLeft: '20px',
-            paddingRight: '20px',
           }}
         >
           <UserComment>

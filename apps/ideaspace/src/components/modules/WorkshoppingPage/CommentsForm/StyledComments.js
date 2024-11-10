@@ -3,17 +3,22 @@ import styled from 'styled-components';
 export const Comments = styled.div`
   overflow: auto;
   width: 100%;
-  max-width: 700px;
+  max-width: 690px;
+  min-width: 300px;
+  padding: 32px 20px;
   background-color: white;
   border-radius: 30px;
 
   h2 {
     font-weight: 300;
   }
+  border-radius: 16px;
+  border: 2px solid var(--static-surface-grey-brand, #f0edee);
+  background: #fff;
 `;
 
 export const SingleComment = styled.div`
-  padding: 0px 20px 12px;
+  padding: 0px 0px 12px;
   display: flex;
 `;
 
