@@ -1,4 +1,4 @@
-interface CardImagePairProps {
+export interface CardImagePairProps {
   image: string;
   altText: string;
   title: string;
