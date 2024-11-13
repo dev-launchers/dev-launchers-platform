@@ -166,12 +166,15 @@ function IdeaCard({ cards, cardType }) {
               {cards.description}
             </atoms.Typography>
             <ActivityDetails>
-              <atoms.Typography type="label" style={{ fontSize: '0.75rem' }}>
+              <atoms.Typography
+                type="label"
+                style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
+              >
                 Updated: {daysAgo()} ago
               </atoms.Typography>
               <atoms.Typography
                 type="label"
-                style={{ fontSize: '0.75rem', color: '#7339AC' }}
+                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300' }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>
