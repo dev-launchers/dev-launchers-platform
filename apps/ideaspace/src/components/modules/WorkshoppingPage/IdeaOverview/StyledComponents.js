@@ -18,7 +18,7 @@ export const LeftWrapper = styled.div`
   flex-direction: column;
   height: 100%;
   width: 688px;
-  gap: 16px;
+  gap: 12px;
   // margin-right: 25px;
   // margin-left: 117px;
   // @media (max-width: 1280px) {

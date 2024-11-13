@@ -18,7 +18,7 @@ export const Comments = styled.div`
 `;
 
 export const SingleComment = styled.div`
-  padding: 0px 0px 12px;
+  //  padding: 0px 0px 12px;
   display: flex;
 `;
 
@@ -107,8 +107,6 @@ export const UserImage = styled.img`
 `;
 
 export const SingleCommentButtons = styled.div`
-  padding-top: 5px;
-
   a {
     margin: 0px 3px;
     padding-top: 10px;
@@ -192,7 +190,7 @@ export const UserImageOne = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-top: 8px;
+  margin-top: 7.5px;
   align-self: flex-start;
 `;
 

@@ -13,6 +13,7 @@ export const IdeaOwnerCard = ({
   profilePictureUrl,
   IdeaOwnerEmail,
 }) => {
+  const defaultEmail = 'Email is Missing';
   return (
     <>
       <div
@@ -29,8 +30,10 @@ export const IdeaOwnerCard = ({
         </div>
         <div>
           <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
-          <StyledName>{IdeaOwnerName}</StyledName>
-          <StyledEmail>{IdeaOwnerEmail}</StyledEmail>
+          <StyledName length={IdeaOwnerName.length}>{IdeaOwnerName}</StyledName>
+          <StyledEmail>
+            {IdeaOwnerEmail ? IdeaOwnerEmail : defaultEmail}
+          </StyledEmail>
         </div>
       </div>
     </>

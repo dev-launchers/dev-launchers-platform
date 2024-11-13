@@ -67,7 +67,7 @@ function CommentForm(props) {
             textAlign: 'left',
           }}
         >
-          <UserComment>
+          {/* <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <div
               className={`flex items-center px-[14px] py-[14px] w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
@@ -88,8 +88,53 @@ function CommentForm(props) {
               {textChange.trim().length > 0 && (
                 <button
                   type="submit"
-                  className="p-2 rounded-full text-white self-end"
+                  className="rounded-full text-white self-end"
                   style={{ backgroundColor: '#52287A' }}
+                >
+                  <i className="fas fa-arrow-up"></i>
+                </button>
+              )}
+            </div>
+          </UserComment> */}
+          <UserComment>
+            <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
+            <div
+              className={`relative flex items-center py-[14px] w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
+                isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
+              } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'}`}
+              style={{
+                minHeight: '55px',
+                paddingLeft: '16px',
+                paddingRight: '50px',
+              }} // Extra right padding for button space
+            >
+              <textarea
+                placeholder="What are your thoughtsss?"
+                className="flex-grow mr-3 resize-none overflow-hidden focus:outline-none"
+                rows="1"
+                value={textChange}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+                onInput={handleInput}
+                onChange={handleTextChange}
+                style={{ width: '500px' }}
+              />
+              {textChange.trim().length > 0 && (
+                <button
+                  type="submit"
+                  className="  rounded-full text-white"
+                  style={{
+                    position: 'absolute',
+                    right: '10px',
+                    bottom: '8px',
+                    backgroundColor: '#52287A',
+                    height: '36px',
+                    width: '36px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    border: '2px solid #3f1f5f',
+                  }}
                 >
                   <i className="fas fa-arrow-up"></i>
                 </button>

@@ -26,7 +26,8 @@ export const LeftView = styled.div`
 export const StyledName = styled.h4`
   color: var(--Grey-Scale-off-black, #1c1c1c);
   font-family: Helvetica;
-  font-size: var(--global-24-px-15-rem, 24px);
+  font-size: ${({ length }) =>
+    length > 10 ? '17px' : 'var(--global-24-px-15-rem, 24px)'};
   font-style: normal;
   font-weight: 700;
   line-height: var(--font-line-height-body-xl, 36px); /* 150% */
@@ -60,7 +61,7 @@ export const StyledImage = styled.img`
 
 export const IdeaOwnerTag = styled.div`
   display: flex;
-  width: 98px;
+  width: 80px;
   padding: 2px 8px;
   justify-content: center;
   align-items: center;

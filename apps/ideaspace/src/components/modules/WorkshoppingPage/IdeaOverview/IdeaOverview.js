@@ -59,17 +59,19 @@ export const IdeaOverview = ({ selectedCard }) => {
           title={'Description'}
           content={selectedCard.description}
         />
-        <div className="flex flex-row gap-2">
-          <div style={{ width: '100%', height: '100%' }}>
+        <div className="flex flex-row gap-3">
+          <div style={{ width: '100%' }}>
             <IdeaContentCard
               title={'Idea features'}
               content={selectedCard.features}
+              fullHeight
             />
           </div>
-          <div style={{ width: '100%', height: '100%', minHeight: '100px' }}>
+          <div style={{ width: '100%' }}>
             <IdeaContentCard
               title={'Idea target Audience'}
               content={selectedCard.targetAudience}
+              fullHeight
             />
           </div>
         </div>

@@ -158,7 +158,7 @@ textarea::placeholder {
   height: 30px;
 }
 
-.form button {
+/* .form button {
   padding: 8px 30px;
   color: black;
   font-weight: bold;
@@ -172,7 +172,7 @@ textarea::placeholder {
   cursor: pointer;
   color: #385997;
   border-color: #385997;
-}
+} */
 
 .idea {
   width: 100%;

@@ -107,51 +107,54 @@ function SingleCommentComponent(props) {
   }
 
   return (
-    <div className="textContent">
-      <SingleComment style={{ marginBottom: props.isLast ? '0' : '20px' }}>
-        <UserImage
-          alt="user_image"
-          src={props.user.profile.profilePictureUrl}
-        />
-        <div className="textContent">
-          <SingleCommentContent>
-            <h3>{props.author}</h3>
-
-            {props.forIdea.ideaOwner?.id == props.user?.id ? (
-              <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
-            ) : (
-              ''
-            )}
-
-            {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
-          </SingleCommentContent>
-
-          <SingleCommentContent>
-            {/* date of creation here, i.e. "2 days ago" */}
-            <h5>{timeSince(new Date(props.createdAt))}</h5>
-          </SingleCommentContent>
-        </div>
-      </SingleComment>
-      <SingleComment style={{ marginBottom: props.isLast ? '0' : '20px' }}>
-        <div className="textContent">
-          <SingleCommentContent>
-            <div source={props.children} style={{ marginBottom: '20px' }}>
-              <p>{props.children}</p>
-            </div>
-          </SingleCommentContent>
-          <SingleCommentButtons style={{ display: 'flex' }}>
-            {/* <LikeButton
-              style={{ marginLeft: 'auto' }}
-              onClick={handleLikeClick}
-              filled={liked ? true : false}
-              text={liked ? '479' : 'Like'}
-            /> */}
-          </SingleCommentButtons>
-          {/* <hr className="mb-[7px]"></hr> */}
-          {!props.isLast && <hr className="mb-[7px]" />}
-        </div>
-      </SingleComment>
-    </div>
+    <>
+      <div className="textContent">
+        <SingleComment style={{ marginBottom: '12px' }}>
+          <UserImage
+            alt="user_image"
+            src={props.user.profile.profilePictureUrl}
+          />
+          <div className="textContent">
+            <SingleCommentContent>
+              <h3>{props.author}</h3>
+              {props.forIdea.ideaOwner?.id == props.user?.id ? (
+                <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
+              ) : (
+                ''
+              )}
+              {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
+            </SingleCommentContent>
+            <SingleCommentContent>
+              {/* date of creation here, i.e. "2 days ago" */}
+              <h5>{timeSince(new Date(props.createdAt))}</h5>
+            </SingleCommentContent>
+          </div>
+        </SingleComment>
+        <SingleComment>
+          <div className="textContent">
+            <SingleCommentContent>
+              <div source={props.children}>
+                <p>{props.children}</p>
+              </div>
+            </SingleCommentContent>
+            {/* <SingleCommentButtons style={{ display: 'flex' }}>
+              <LikeButton
+                style={{ marginLeft: 'auto' }}
+                onClick={handleLikeClick}
+                filled={liked ? true : false}
+                text={liked ? '479' : 'Like'}
+              />
+            </SingleCommentButtons> */}
+            {/* <hr className="mb-[7px]"></hr> */}
+          </div>
+        </SingleComment>
+      </div>
+      <div>
+        {!props.isLast && (
+          <hr style={{ marginBottom: '20px', marginTop: '20px' }} />
+        )}
+      </div>
+    </>
   );
 }
 
