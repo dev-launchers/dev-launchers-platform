@@ -179,11 +179,6 @@ export const UserComment = styled.div`
   border-radius: 20px;
   display: flex;
   align-items: center;
-
-  // input {
-  //   width: 100%;
-  //   height: 3rem;
-  // }
 `;
 
 export const UserImageOne = styled.img`

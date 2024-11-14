@@ -25,6 +25,10 @@ export const IdeaOverview = ({ selectedCard }) => {
       : selectedCard.ideaOwner?.email;
 
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
+  const [ownerDisplayName, setOwnerDisplayName] = useState('');
+  const [ownerUserName, setOwnerUserName] = useState('');
+  const OwnerID = selectedCard.ideaOwner.id;
+  console.log(selectedCard.ideaOwner.id);
   useEffect(() => {
     const fetchOwnerImage = async () => {
       try {
@@ -37,8 +41,9 @@ export const IdeaOverview = ({ selectedCard }) => {
             }).toString(),
           { withCredentials: true }
         );
-        console.log(data.profile.profilePictureUrl);
         setProfilePictureUrl(data.profile?.profilePictureUrl);
+        setOwnerDisplayName(data.profile.displayName);
+        setOwnerUserName('@' + data.username);
       } catch (error) {
         console.error('Error fetching owner image:', error);
       }
@@ -80,9 +85,9 @@ export const IdeaOverview = ({ selectedCard }) => {
       <RightWrapper>
         <TopView>
           <IdeaOwnerCard
-            IdeaOwnerName={authorName}
+            IdeaOwnerName={ownerDisplayName}
             profilePictureUrl={profilePictureUrl}
-            IdeaOwnerEmail={selectedCard.ideaOwner.email}
+            IdeaOwnerEmail={ownerUserName}
           />
         </TopView>
 

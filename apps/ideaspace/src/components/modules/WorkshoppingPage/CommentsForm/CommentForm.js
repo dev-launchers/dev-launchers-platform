@@ -67,49 +67,20 @@ function CommentForm(props) {
             textAlign: 'left',
           }}
         >
-          {/* <UserComment>
-            <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
-            <div
-              className={`flex items-center px-[14px] py-[14px] w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
-                isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
-              } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'}`}
-              style={{ minHeight: '55px' }}
-            >
-              <textarea
-                placeholder="What are your thoughtsss?"
-                className="flex-grow  mr-3 resize-none overflow-hidden focus:outline-none "
-                rows="1"
-                value={textChange}
-                onFocus={() => setIsFocused(true)} // Set isFocused to true on focus
-                onBlur={() => setIsFocused(false)} // Set isFocused to false on blur
-                onInput={handleInput}
-                onChange={handleTextChange} // Update textChange state
-              />
-              {textChange.trim().length > 0 && (
-                <button
-                  type="submit"
-                  className="rounded-full text-white self-end"
-                  style={{ backgroundColor: '#52287A' }}
-                >
-                  <i className="fas fa-arrow-up"></i>
-                </button>
-              )}
-            </div>
-          </UserComment> */}
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <div
-              className={`relative flex items-center py-[14px] w-[598px] text-base text-[#494949] border-[#DAD8D9] border-2 ml-2 ${
+              className={`relative flex items-center py-[14px] w-[598px] text-base text-[#494949] border-[#7339AC] border-2 ml-2 ${
                 isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
               } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'}`}
               style={{
                 minHeight: '55px',
                 paddingLeft: '16px',
                 paddingRight: '50px',
-              }} // Extra right padding for button space
+              }}
             >
               <textarea
-                placeholder="What are your thoughtsss?"
+                placeholder="What are your thoughts?"
                 className="flex-grow mr-3 resize-none overflow-hidden focus:outline-none"
                 rows="1"
                 value={textChange}

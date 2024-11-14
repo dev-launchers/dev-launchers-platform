@@ -134,18 +134,9 @@ function SingleCommentComponent(props) {
           <div className="textContent">
             <SingleCommentContent>
               <div source={props.children}>
-                <p>{props.children}</p>
+                <p className="text-justify">{props.children}</p>
               </div>
             </SingleCommentContent>
-            {/* <SingleCommentButtons style={{ display: 'flex' }}>
-              <LikeButton
-                style={{ marginLeft: 'auto' }}
-                onClick={handleLikeClick}
-                filled={liked ? true : false}
-                text={liked ? '479' : 'Like'}
-              />
-            </SingleCommentButtons> */}
-            {/* <hr className="mb-[7px]"></hr> */}
           </div>
         </SingleComment>
       </div>

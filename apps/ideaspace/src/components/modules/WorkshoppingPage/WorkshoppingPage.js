@@ -74,7 +74,7 @@ export default function WorkshoppingPage(props) {
           <ParaWrapper>
             <atoms.Typography type="p" style={{ fontSize: '1.2rem' }}>
               Want to help this product idea? Comment and ideate this idea with
-              other people to help it become an open source project
+              other people to help it become an open source project.
             </atoms.Typography>
           </ParaWrapper>
         </HeadWapper>

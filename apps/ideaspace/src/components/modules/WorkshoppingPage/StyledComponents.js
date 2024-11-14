@@ -15,12 +15,6 @@ export const Container = styled.div`
   // margin: 0 auto; /* Centers the component horizontally */
 `;
 
-// export const InnerWrapper = styled.div`
-//   width: 80%; /* Adjust the width of centered content */
-//   max-width: 1200px; /* Optional: set a max-width for larger screens */
-//   margin: 0 auto;
-// `;
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

@@ -14,6 +14,7 @@ export const IdeaOwnerCard = ({
   IdeaOwnerEmail,
 }) => {
   const defaultEmail = 'Email is Missing';
+  console.log(IdeaOwnerName);
   return (
     <>
       <div
