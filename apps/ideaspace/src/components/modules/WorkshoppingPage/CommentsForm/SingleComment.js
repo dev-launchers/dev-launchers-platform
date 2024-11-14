@@ -107,49 +107,45 @@ function SingleCommentComponent(props) {
   }
 
   return (
-    <div className="textContent">
-      <SingleComment>
-        <UserImage
-          alt="user_image"
-          src={`https://picsum.photos/70?random=${props.id}`}
-        />
-        <div className="textContent">
-          <SingleCommentContent>
-            <h3>{props.author}</h3>
-            <h5>
+    <>
+      <div className="textContent">
+        <SingleComment style={{ marginBottom: '12px' }}>
+          <UserImage
+            alt="user_image"
+            src={props.user.profile.profilePictureUrl}
+          />
+          <div className="textContent">
+            <SingleCommentContent>
+              <h3>{props.author}</h3>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
-                <IdeaOwnerTag>idea owner</IdeaOwnerTag>
+                <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
               ) : (
                 ''
               )}
-            </h5>
-            {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
-          </SingleCommentContent>
-          <SingleCommentContent>
-            {/* date of creation here, i.e. "2 days ago" */}
-            <h5>{timeSince(new Date(props.createdAt))}</h5>
-          </SingleCommentContent>
-        </div>
-      </SingleComment>
-      <SingleComment>
-        <div className="textContent">
-          <SingleCommentContent>
-            <div source={props.children}>
-              <p>{props.children}</p>
-            </div>
-          </SingleCommentContent>
-          <SingleCommentButtons style={{ display: 'flex' }}>
-            {/* <LikeButton
-              style={{ marginLeft: 'auto' }}
-              onClick={handleLikeClick}
-              filled={liked ? true : false}
-              text={liked ? '479' : 'Like'}
-            /> */}
-          </SingleCommentButtons>
-          <hr></hr>
-        </div>
-      </SingleComment>
-    </div>
+              {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
+            </SingleCommentContent>
+            <SingleCommentContent>
+              {/* date of creation here, i.e. "2 days ago" */}
+              <h5>{timeSince(new Date(props.createdAt))}</h5>
+            </SingleCommentContent>
+          </div>
+        </SingleComment>
+        <SingleComment>
+          <div className="textContent">
+            <SingleCommentContent>
+              <div source={props.children}>
+                <p className="text-left">{props.children}</p>
+              </div>
+            </SingleCommentContent>
+          </div>
+        </SingleComment>
+      </div>
+      <div>
+        {!props.isLast && (
+          <hr style={{ marginBottom: '20px', marginTop: '20px' }} />
+        )}
+      </div>
+    </>
   );
 }
 
