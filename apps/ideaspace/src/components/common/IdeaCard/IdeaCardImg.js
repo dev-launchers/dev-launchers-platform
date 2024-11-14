@@ -9,7 +9,13 @@ const IdeaCardImg = ({ cardId }) => {
         <img
           alt="idea_image"
           src={`https://picsum.photos/seed/${cardId}/350/270?random=${cardId}`}
-          style={{ width: '100%', height: '100%', borderRadius: '0.5rem' }}
+          style={{
+            width: '100%',
+            height: '202px',
+            borderRadius: '0.5rem',
+            // objectFit: "fit", // not working with height 100%, need investigation
+            backgroundColor: 'rgba(0, 0, 0, 0.05)',
+          }}
         />
       </ImgButton>
     </Link>
