@@ -28,7 +28,6 @@ export const IdeaOverview = ({ selectedCard }) => {
   const [ownerDisplayName, setOwnerDisplayName] = useState('');
   const [ownerUserName, setOwnerUserName] = useState('');
   const OwnerID = selectedCard.ideaOwner.id;
-  console.log(selectedCard.ideaOwner.id);
   useEffect(() => {
     const fetchOwnerImage = async () => {
       try {

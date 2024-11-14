@@ -134,7 +134,7 @@ function SingleCommentComponent(props) {
           <div className="textContent">
             <SingleCommentContent>
               <div source={props.children}>
-                <p className="text-justify">{props.children}</p>
+                <p className="text-left">{props.children}</p>
               </div>
             </SingleCommentContent>
           </div>
