@@ -58,8 +58,12 @@ export default function PageFive() {
         <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
           {interestList.map((interest) => (
             <div
-              className={`py-3 px-8 rounded-3xl cursor-pointer font-nunito-sans text-base bg-white border-2 border-neptune-700
-              ${interest.selected ? 'bg-neptune-700 text-white' : ''}`}
+              className={`py-3 px-8 rounded-3xl cursor-pointer font-nunito-sans text-base  border-2 border-neptune-700 
+              ${
+                interest.selected
+                  ? 'bg-neptune-700 text-white'
+                  : 'bg-white text-neptune-700'
+              }`}
               onClick={onSelectedInterest(interest)}
             >
               {interest.name}
