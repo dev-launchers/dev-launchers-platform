@@ -11,7 +11,7 @@ function ModalHeader({ closeModal }) {
         </Typography>
       </div>
       <div onClick={closeModal}>
-        <FilledCross svgClass="hover:cursor-pointer border-1 border-white" />
+        <FilledCross className="cursor-pointer border-1 border-white" />
       </div>
     </div>
   );
