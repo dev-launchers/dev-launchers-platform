@@ -11,6 +11,8 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
+import Upload from './../../../common/images/UploadProfilePicture';
+
 import {
   ButtonContainer,
   OnboardingContainer,
