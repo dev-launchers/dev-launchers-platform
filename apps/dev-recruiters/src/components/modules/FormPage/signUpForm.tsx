@@ -1,3 +1,4 @@
+'use client';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { Opportunity } from '@devlaunchers/models';
@@ -21,6 +22,8 @@ import {
 import { ButtonsContainer } from '../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleCard/styledRoleCard';
 import UploadModal from './uploadModal';
 import Modal from 'react-calendly/typings/components/PopupModal/Modal';
+import { OkIcon } from './styledUploadModal';
+import DragAndDrop from '../NewJoinPageComponent/Drag and Drop/page';
 
 interface UploadProps {
   handleUploadCloseModal?: () => void;
@@ -30,7 +33,7 @@ function UploadDetailsModal({ handleUploadCloseModal }: UploadProps) {
   return (
     <div>
       <CloseButton onClick={handleUploadCloseModal}>
-        <CloseIcon
+        <OkIcon
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -42,12 +45,10 @@ function UploadDetailsModal({ handleUploadCloseModal }: UploadProps) {
             strokeLinejoin="round"
             d="M6 18L18 6M6 6l12 12"
           />
-        </CloseIcon>
+        </OkIcon>
       </CloseButton>
       <ModalUploadSection>
-        <h3>Choose File</h3>
-        <h4>Product Platform</h4>
-        <h6>TIME COMMITMENT</h6>
+        <DragAndDrop />
       </ModalUploadSection>
     </div>
   );
