@@ -11,6 +11,9 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
+import DropDownMenu from './../../../common/Dropdown/Dropdown';
+import countryData from './../../../../content/countryData.json';
+
 import {
   ButtonContainer,
   OnboardingContainer,
@@ -25,15 +28,17 @@ import {
   ProfilePicture,
   UploadedProfilePicture,
 } from './StyledUserLandingPage';
+import DropdownMenu from './../../../common/Dropdown/Dropdown';
 
 const initialFormValue = {
   firstName: '',
   firstNameTouched: false,
   lastName: '',
   lastNameTouched: false,
-  location: '',
+  country: '',
   role: '',
-  headline: '',
+  linkedInPortfolio: '',
+  websitePortfolio: '',
   termsAndConditions: false,
   emailMarketing: false,
 };
@@ -133,17 +138,21 @@ export default function UserLandingPage() {
     setPerson({ ...person, lastName: e.target.value, lastNameTouched: true });
   }
 
-  function onLocationChange(e) {
-    setPerson({ ...person, location: e.target.value });
+  function onCountryChange(e) {
+    setPerson({ ...person, country: e });
   }
 
   function onRoleChange(e) {
     setPerson({ ...person, role: e.target.value });
   }
 
-  function onHeadLineChange(e) {
-    setPerson({ ...person, headline: e.target.value });
-  }
+  // function onLinkedInPortfolioChange(e) {
+  //   setPerson({ ...person, linkedInPortfolio: e.target.value });
+  // }
+
+  // function onWebsitePortfolioChange(e) {
+  //   setPerson({ ...person, websitePortfolio: e.target.value });
+  // }
 
   function onTermsAndConditionChange(e) {
     setPerson({ ...person, termsAndConditions: !person.termsAndConditions });
@@ -267,11 +276,10 @@ export default function UserLandingPage() {
               required
             />
 
-            {/* <InputField
-              error=""
-              label="Location (optional)"
-              onChange={onLocationChange}
-              placeholder="Lose Angels, CA"
+            <DropDownMenu
+              menuItems={countryData}
+              menu={person.country}
+              onChange={onCountryChange}
             />
 
             <InputField
@@ -281,11 +289,17 @@ export default function UserLandingPage() {
               placeholder="CSS Developer"
             />
 
+            {/* <InputField
+              error=""
+              label="linkedInPortfolio (optional)"
+              onChange={onLinkedInPortfolioChange}
+              placeholder="www.linkedin.com"
+            />
             <InputField
               error=""
-              label="Headline (optional)"
-              onChange={onHeadLineChange}
-              placeholder="I'm an experienced CSS developer"
+              label="websitePortfolio (optional)"
+              onChange={onWebsitePortfolioChange}
+              placeholder="www.portfolio.com"
             /> */}
           </FormFields>
           <FormFooter>
