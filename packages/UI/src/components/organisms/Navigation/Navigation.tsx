@@ -7,6 +7,7 @@ import { Button, Layer, NavLink } from '../../atoms';
 import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
+import NotificationPopover from './NotificationPopover';
 
 const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
   return (
@@ -160,6 +161,8 @@ const Navigation = () => {
           </div>
         ) : (
           <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
+            <NotificationPopover />
+
             <img
               width="36"
               height="33"

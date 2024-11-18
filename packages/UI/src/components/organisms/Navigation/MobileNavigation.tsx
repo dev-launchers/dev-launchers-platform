@@ -12,6 +12,7 @@ import type {
 } from './Navigation';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
+import NotificationPopover from './NotificationPopover';
 
 interface MobileNavigationProps {
   links: typeof Links;
@@ -76,6 +77,7 @@ const MobileNavigation = ({
           </Box>
           <ul>
             <Box gap={'40px'} flexDirection="column" alignItems="center">
+              {isAuthenticated ? <NotificationPopover /> : ''}
               {Object.entries(links).map(([name, href], i) => {
                 if (Array.isArray(href))
                   return (
@@ -99,7 +101,6 @@ const MobileNavigation = ({
                   <li key={`${name} ` + i}>
                     <Link href={href} passHref>
                       <Button
-                        as={NavLink}
                         buttonType="alternative"
                         buttonSize="standard"
                         onClick={() => setIsSidebarExpanded?.(false)}
