@@ -5,15 +5,15 @@ export const Comments = styled.div`
   width: 100%;
   max-width: 690px;
   min-width: 300px;
-  padding: 32px 20px;
+  // padding: 32px 20px;
   background-color: white;
-  border-radius: 30px;
+  // border-radius: 30px;
 
   h2 {
     font-weight: 300;
   }
-  border-radius: 16px;
-  border: 2px solid var(--static-surface-grey-brand, #f0edee);
+  // border-radius: 16px;
+  // border: 2px solid var(--static-surface-grey-brand, #f0edee);
   background: #fff;
 `;
 

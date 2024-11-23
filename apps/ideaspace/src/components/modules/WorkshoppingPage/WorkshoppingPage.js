@@ -67,16 +67,16 @@ export default function WorkshoppingPage(props) {
 
         <HeadWapper>
           <Headline>Idea Workshop</Headline>
-          <StyledRanbow>
+          {/* <StyledRanbow>
             <atoms.Layer hasRainbowBottom />
-          </StyledRanbow>
+          </StyledRanbow> */}
           <BackButton backRoute={'/ideaspace/browse'} />
-          <ParaWrapper>
+          {/* <ParaWrapper>
             <atoms.Typography type="p" style={{ fontSize: '1.2rem' }}>
               Want to help this product idea? Comment and ideate this idea with
               other people to help it become an open source project.
             </atoms.Typography>
-          </ParaWrapper>
+          </ParaWrapper> */}
         </HeadWapper>
 
         {loading === true ? (
@@ -85,6 +85,7 @@ export default function WorkshoppingPage(props) {
           <div className="flex flex-row justify-center">
             <Wrapper>
               <IdeaOverview selectedCard={data} />
+              {/* <div className='w-full h-[1px] bg-[#F0EDEE]'></div> */}
               <Comments>
                 <h5 style={{ textAlign: 'left' }}>
                   COMMENT FEED: {comments.length}

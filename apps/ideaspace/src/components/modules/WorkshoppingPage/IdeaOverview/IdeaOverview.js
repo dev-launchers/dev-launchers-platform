@@ -12,6 +12,7 @@ import {
   RightWrapper,
   LeftWrapper,
   LeftSubWrapper,
+  Separator,
 } from './StyledComponents';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -52,18 +53,20 @@ export const IdeaOverview = ({ selectedCard }) => {
   return (
     <Wrapper>
       <LeftWrapper>
-        <TopView>
-          <IdeaCard
-            ideaId={selectedCard.id}
-            ideaName={selectedCard.ideaName}
-            ideaTagLine={selectedCard.tagline}
+        <div className="flex flex-col gap-[24px]">
+          <TopView>
+            <IdeaCard
+              ideaId={selectedCard.id}
+              ideaName={selectedCard.ideaName}
+              ideaTagLine={selectedCard.tagline}
+            />
+          </TopView>
+          <IdeaContentCard
+            title={'Description'}
+            content={selectedCard.description}
           />
-        </TopView>
-        <IdeaContentCard
-          title={'Description'}
-          content={selectedCard.description}
-        />
-        <div className="flex flex-row gap-3">
+        </div>
+        <div className="flex flex-col gap-3">
           <div style={{ width: '100%' }}>
             <IdeaContentCard
               title={'Idea features'}
@@ -80,6 +83,8 @@ export const IdeaOverview = ({ selectedCard }) => {
           </div>
         </div>
       </LeftWrapper>
+
+      <Separator />
 
       <RightWrapper>
         <TopView>

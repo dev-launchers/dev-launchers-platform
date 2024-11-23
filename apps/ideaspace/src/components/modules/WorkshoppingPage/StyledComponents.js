@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: var(
-    --static-effect-overlay-brand-nebula-muted,
-    rgba(212, 194, 229, 0.25)
-  );
+  // background: var(
+  //   --static-effect-overlay-brand-nebula-muted,
+  //   rgba(212, 194, 229, 0.25)
+  // );
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -55,4 +55,7 @@ export const HeadWapper = styled.div`
   @media (max-width: 529px) {
     padding: 5rem 1rem 1rem 1rem;
   }
+  margin-bottom: 32px;
+  border-bottom: 1px solid #f0edee;
+  // margin-bottom
 `;

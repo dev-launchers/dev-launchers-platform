@@ -17,10 +17,9 @@ export const IdeaOwnerCard = ({
   return (
     <>
       <div
-        className="flex flex-col border-2 border-[#F0EDEE] rounded-xl "
+        className="flex flex-col  "
         style={{
           gap: '14px',
-          padding: '20px',
           width: '272px',
           background: '#FFF',
         }}

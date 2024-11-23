@@ -19,12 +19,21 @@ import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
+import wp from '../../../../../images/workshopI.jpeg';
+import moreIcon from '../../../../../images/more-icon.svg';
+import shareIcon from '../../../../../images/share-icon.svg';
+import editIcon from '../../../../../images/pen-line.svg';
+import archiveIcon from '../../../../../images/archive.svg';
+import deleteIcon from '../../../../../images/trash-2.svg';
 
 export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
+  const [shareOpen, setShareOpen] = useState(false);
+
+  const toggleDropdown = () => setShareOpen(!shareOpen);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -126,32 +135,93 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
     );
 
   return (
-    <StyledCard>
-      <TopView>
-        <LeftView>
-          {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
-        </LeftView>
-        <RightView>
-          <IdeaName>{ideaName}</IdeaName>
-          <IdeaTagLine>{ideaTagLine}</IdeaTagLine>
-        </RightView>
-      </TopView>
+    // <div>
+    //   <TopView>
+    //     <LeftView>
+    //       {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
+    //     </LeftView>
+    //     <RightView>
+    //       <IdeaName>{ideaName}</IdeaName>
+    //       <IdeaTagLine>{ideaTagLine}</IdeaTagLine>
+    //     </RightView>
+    //   </TopView>
 
-      <BottomView>
-        {/* <Button>
-          <BookmarkBorderOutlinedIcon />
-          <StyledText>FOLLOW</StyledText>
-        </Button> */}
-        {upvoteButton}
-        {/* <Button onClick={handleUpvoteClick}>
-          <StarBorderOutlinedIcon />
-          <StyledText>UPVOTE</StyledText>
-        </Button> */}
-        {/* <Button>
-          <ShareOutlinedIcon />
-          <StyledText>SHARE</StyledText>
-        </Button> */}
-      </BottomView>
-    </StyledCard>
+    //   <BottomView>
+    //     <Button>
+    //       <BookmarkBorderOutlinedIcon />
+    //       <StyledText>FOLLOW</StyledText>
+    //     </Button>
+    //     {upvoteButton}
+    //     <Button onClick={handleUpvoteClick}>
+    //       <StarBorderOutlinedIcon />
+    //       <StyledText>UPVOTE</StyledText>
+    //     </Button>
+    //     <Button>
+    //       <ShareOutlinedIcon />
+    //       <StyledText>SHARE</StyledText>
+    //     </Button>
+    //   </BottomView>
+    // </div>
+
+    <>
+      <div className="flex flex-col gap-[24px]">
+        <div className="flex flex-col gap-[36px]">
+          <div className="flex flex-col gap-[6px]">
+            <div className="text-[40px] font-bold tracking-[1.92px] text-black font-helvetica leading-[56px]">
+              Idea Name
+            </div>
+            <div className="text-[20px] font-normal leading-[36px] tracking-[0px] text-black font-nunito">
+              Idea Tagline
+            </div>
+          </div>
+          <div className="flex flex-row items-center justify-between">
+            <div className="w-fit">{upvoteButton}</div>
+            <div className="flex flex-row gap-[12px]">
+              <button className="p-[12px]">
+                <img src={shareIcon} alt="" />
+              </button>
+              <div className="relative inline-block">
+                <button className="p-[12px]" onClick={toggleDropdown}>
+                  <img src={moreIcon} alt="" />
+                </button>
+
+                {shareOpen && (
+                  <div className="absolute z-50 bg-white border border-gray-200 shadow-lg mt-2 w-[150px] rounded-[22px] p-2 overflow-hidden">
+                    {/* <button className="block w-full  text-left text-sm text-gray-700 hover:bg-gray-100">
+                      <div className='flex flex-row gap-1 px-[18px] py-[12px] '>
+                        <img src={editIcon} alt="" />
+                        <div>Edit</div>
+                      </div>
+                    </button> */}
+                    <button className="block w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-100">
+                      <div className="flex flex-row gap-1">
+                        <img src={editIcon} alt="" />
+                        <div className="text-[16px]">Edit</div>
+                      </div>
+                    </button>
+                    <button className="block w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-100">
+                      <div className="flex flex-row gap-1">
+                        <img src={archiveIcon} alt="" />
+                        <div className="text-[16px]">Archive</div>
+                      </div>
+                    </button>
+                    <button className="block w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-100">
+                      <div className="flex flex-row gap-1">
+                        <img src={deleteIcon} alt="" />
+                        <div className="text-[16px] leading-[24px]">Delete</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="wp-img h-[240px] bg-cover bg-center bg-no-repeat rounded-[16px]"
+          style={{ backgroundImage: `url(${wp})` }}
+        ></div>
+      </div>
+    </>
   );
 };
