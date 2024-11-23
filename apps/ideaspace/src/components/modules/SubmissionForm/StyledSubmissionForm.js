@@ -16,9 +16,9 @@ export const TextAreaWrapper = styled.div`
       if (isCompleted) return '#1B501D';
       return '#494949';
     }};
-  border-radius: 16px;
+  border-radius: 24px;
   background-color: ${({ theme }) => theme.colors.white};
-
+  overflow: hidden;
   &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
   }
@@ -49,14 +49,16 @@ export const RequiredAsterisk = styled.span`
 
 export const StyledTextArea = styled.textarea`
   width: 100%;
-  min-height: 120px;
+  min-height: 192px;
   padding: 24px;
   border: none;
   outline: none;
   font: 300 16px/24px 'Nunito Sans', sans-serif;
   color: #494949;
   resize: vertical;
-  border-radius: 12px;
+  border-radius: 0px;
+  display: block;
+  margin: 0;
 `;
 
 export const CharacterCounter = styled.div`
@@ -75,7 +77,7 @@ export const StyledInput = styled.input`
   outline: none;
   font: 300 16px/24px 'Nunito Sans', sans-serif;
   color: #494949;
-  border-radius: 12px;
+  border-radius: 24px;
 `;
 
 export const GroupWrapper = styled.fieldset`

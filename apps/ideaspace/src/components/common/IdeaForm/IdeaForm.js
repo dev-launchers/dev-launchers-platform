@@ -157,7 +157,7 @@ const IdeaForm = ({
     <atoms.Box
       margin="1.5rem 0rem"
       style={{
-        backgroundColor: 'rgba(212, 194, 229, 0.25)',
+        backgroundColor: 'rgba(244, 240, 249, 1)',
         padding: '40px 0',
       }}
     >
