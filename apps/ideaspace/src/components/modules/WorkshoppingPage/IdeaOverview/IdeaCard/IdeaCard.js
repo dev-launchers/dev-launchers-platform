@@ -32,8 +32,10 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [shareOpen, setShareOpen] = useState(false);
+  const [isEditOpen, setEditOpen] = useState(false);
 
   const toggleDropdown = () => setShareOpen(!shareOpen);
+  const toggleEdit = () => setEditOpen(!isEditOpen);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -174,28 +176,25 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
               Idea Tagline
             </div>
           </div>
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center justify-between ">
             <div className="w-fit">{upvoteButton}</div>
-            <div className="flex flex-row gap-[12px]">
+            <div className="flex flex-row gap-[12px] relative inline-block">
               <button className="p-[12px]">
                 <img src={shareIcon} alt="" />
               </button>
-              <div className="relative inline-block">
+              <div className="">
                 <button className="p-[12px]" onClick={toggleDropdown}>
                   <img src={moreIcon} alt="" />
                 </button>
 
                 {shareOpen && (
-                  <div className="absolute z-50 bg-white border border-gray-200 shadow-lg mt-2 w-[150px] rounded-[22px] p-2 overflow-hidden">
-                    {/* <button className="block w-full  text-left text-sm text-gray-700 hover:bg-gray-100">
-                      <div className='flex flex-row gap-1 px-[18px] py-[12px] '>
-                        <img src={editIcon} alt="" />
-                        <div>Edit</div>
-                      </div>
-                    </button> */}
+                  <div
+                    className="absolute z-50 bg-white border border-gray-200 shadow-lg mt-2 w-[150px] rounded-lg p-4 overflow-hidden"
+                    style={{ right: 0 }}
+                  >
                     <button className="block w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-100">
                       <div className="flex flex-row gap-1">
-                        <img src={editIcon} alt="" />
+                        <img src={editIcon} alt="" onClick={toggleEdit} />
                         <div className="text-[16px]">Edit</div>
                       </div>
                     </button>
