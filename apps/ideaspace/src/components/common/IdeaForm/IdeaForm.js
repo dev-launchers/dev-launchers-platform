@@ -86,10 +86,10 @@ const IdeaForm = (
           {({ errors, setFieldValue, touched }) => (
             <Form>
               <AutoSubmitToken />
-              <atoms.Typography type="h4">
+              {/* <atoms.Typography type="h4">
                 Idea Info
                 <hr noshade="false" style={{ margin: '1rem auto 2rem' }} />
-              </atoms.Typography>
+              </atoms.Typography> */}
 
               <atoms.Box flexDirection="column" gap="2rem">
                 <atoms.Box maxWidth="20rem" flexDirection="column">

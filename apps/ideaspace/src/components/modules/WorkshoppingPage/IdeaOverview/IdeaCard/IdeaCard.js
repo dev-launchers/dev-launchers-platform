@@ -25,17 +25,38 @@ import shareIcon from '../../../../../images/share-icon.svg';
 import editIcon from '../../../../../images/pen-line.svg';
 import archiveIcon from '../../../../../images/archive.svg';
 import deleteIcon from '../../../../../images/trash-2.svg';
+import IdeaForm from '../../../../common/IdeaForm/IdeaForm';
+// import SubmissionForm from '../../../SubmissionForm/SubmissionForm';
+import EditForm from '../../../EditIdea/EditIdea';
+// import EditIdea from '@/components/modules/EditIdea/EditIdea';
 
-export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
+export const IdeaCard = ({
+  ideaImage,
+  ideaId,
+  ideaName,
+  ideaTagLine,
+  ...otherProps
+}) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [shareOpen, setShareOpen] = useState(false);
   const [isEditOpen, setEditOpen] = useState(false);
+  const [ideaData, setIdeaData] = useState(null); // Holds the idea data
 
   const toggleDropdown = () => setShareOpen(!shareOpen);
-  const toggleEdit = () => setEditOpen(!isEditOpen);
+  const refreshCard = async () => {
+    const updatedIdea = await agent.Ideas.getIdea(
+      ideaId,
+      new URLSearchParams('populate=*')
+    );
+    setIdeaData(updatedIdea.data); // Update the state with the latest data
+  };
+  const toggleEdit = () => {
+    setEditOpen(!isEditOpen);
+    console.log('Edit button is clicked!' + isEditOpen);
+  };
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -109,6 +130,13 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       }
     }
   }
+  const initialCardData = {
+    ideaName,
+    tagline: ideaTagLine,
+    ...otherProps, // Include additional card data
+  };
+
+  console.log('Initial card data for EditIdea:', initialCardData); // Debug log
 
   const upvoteButton =
     userData?.id > 0 ? (
@@ -170,10 +198,10 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         <div className="flex flex-col gap-[36px]">
           <div className="flex flex-col gap-[6px]">
             <div className="text-[40px] font-bold tracking-[1.92px] text-black font-helvetica leading-[56px]">
-              Idea Name
+              {ideaName}
             </div>
             <div className="text-[20px] font-normal leading-[36px] tracking-[0px] text-black font-nunito">
-              Idea Tagline
+              {ideaTagLine}
             </div>
           </div>
           <div className="flex flex-row items-center justify-between ">
@@ -189,12 +217,12 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
 
                 {shareOpen && (
                   <div
-                    className="absolute z-50 bg-white border border-gray-200 shadow-lg mt-2 w-[150px] rounded-lg p-4 overflow-hidden"
+                    className="absolute z-50 bg-white border border-gray-200 shadow-lg mt-2 w-[150px] rounded-lg p-2 overflow-hidden"
                     style={{ right: 0 }}
                   >
                     <button className="block w-full px-4 py-3 text-left text-sm text-gray-700 hover:bg-gray-100">
-                      <div className="flex flex-row gap-1">
-                        <img src={editIcon} alt="" onClick={toggleEdit} />
+                      <div className="flex flex-row gap-1" onClick={toggleEdit}>
+                        <img src={editIcon} alt="" />
                         <div className="text-[16px]">Edit</div>
                       </div>
                     </button>
@@ -221,6 +249,56 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           style={{ backgroundImage: `url(${wp})` }}
         ></div>
       </div>
+      {/* Edit Box (fixed to the screen) */}
+      {isEditOpen && (
+        <div
+          className={`transform transition-transform duration-500 ${
+            isEditOpen ? 'translate-y-0' : 'translate-y-full'
+          }`}
+          style={{
+            width: '640px',
+            height: '664px',
+            borderRadius: '32px 0px 0px 0px',
+            background: '#F4F0F9',
+            boxShadow: '0px 3px 9px 0px rgba(212, 194, 229, 0.80)',
+            position: 'fixed',
+            bottom: '0',
+            right: '0',
+            zIndex: '1000',
+          }}
+        >
+          <div className="flex flex-col bg-white h-full bg-[#F4F0F9]">
+            <div className="flex flex-row justify-between px-[24px] py-[20px] items-center bg-white">
+              <h3 className="text-[20px] font-bold">Edit Idea</h3>
+              <button onClick={toggleEdit}>X</button>
+            </div>
+
+            <div className="w-full h-[0.3px]"></div>
+            <div
+              className="flex-1 p-4 overflow-y-auto"
+              style={{
+                maxHeight: 'calc(100% - 80px)', // Adjust to subtract header height
+              }}
+            >
+              <EditForm
+                className="bg-[#D4C2E5]"
+                initialCardData={ideaData}
+                onSave={refreshCard}
+              />
+            </div>
+            <div className="px-[24px] py-[20px] bg-white">
+              <div className="flex flex-row gap-2 justify-end items-center">
+                <button className="px-[18px] py-[12px] rounded-[6px] border-2 text-[#7339AC] border-[#7339AC]">
+                  Cancel
+                </button>
+                <button className="px-[18px] py-[12px] rounded-[6px] border-[#3F1F5F] border-2 text-white bg-[#7339AC]">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
