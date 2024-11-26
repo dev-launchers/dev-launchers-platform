@@ -28,7 +28,7 @@ export const FieldWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 650px;
+  max-width: 560px;
   margin-bottom: 32px;
 `;
 
