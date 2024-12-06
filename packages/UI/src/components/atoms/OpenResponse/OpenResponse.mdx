@@ -1,0 +1,48 @@
+import { OpenResponse } from './OpenResponse';
+import * as OpenResponseStories from './OpenResponse.stories.tsx';
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={OpenResponseStories} />
+
+<div className="w-[1000px] h-[1700px] relative border-2 border-brand-alt-nebula-500">
+  {/* Header */}
+  <div className="h-[120px] border-b border-gray-300">
+    <div className="h-[96px] w-[400px] flex flex-col gap-y-2 pl-4">
+      <span className="font-bold leading-[60px] size-10 whitespace-nowrap">Open Response Component</span>
+      <span className="text-gray-600 font-normal size-5 leading-8 whitespace-nowrap ">Component with all the variants, states, etc.</span>
+    </div>
+  </div>
+
+{/* Sidebar Labels */}
+
+{' '}
+<div className="absolute h-[1190px] w-[184px] top-[300px] left-[0] flex flex-col justify-between">
+  {['Default', 'Focus', 'Error', 'Success', 'Disabled'].map((label, index) => (
+    <span
+      key={label}
+      className="h-[58px] w-full flex items-center justify-start pl-4 text-black font-extralight size-12 leading-[57.6px] tracking-wider"
+    >
+      {label}
+    </span>
+  ))}
+</div>
+
+{/* Component Stories */}
+
+  <div
+    className="absolute h-[1416px] w-[260px] top-[200px] left-[260px] rounded-[5px] border py-[20px] outline-dashed outline-2 outline-brand-alt-nebula-500"
+  >
+    {[
+      OpenResponseStories.DefaultState,
+      OpenResponseStories.FocusState,
+      OpenResponseStories.ErrorState,
+      OpenResponseStories.SuccessState,
+      OpenResponseStories.DisabledState,
+    ].map((StoryComponent, index) => (
+      <Story key={index} of={StoryComponent} />
+    ))}
+  </div>
+</div>
+
+<Canvas />
+<Controls of={OpenResponseStories.DefaultState} />
