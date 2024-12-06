@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal';
 import {
   UploadModalContent,
@@ -19,12 +19,14 @@ export default function UploadModal(props) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-  const afterOpenModal = () => {};
+  const afterOpenModal = () => {
+    setModalIsOpen(true);
+  };
 
   return (
     <ReactModal
       isOpen={props.modalIsOpen ?? modalIsOpen}
-      onRequestOpen={props.openModal ?? openModal}
+      onRequestOpen={props.modalIsOpen ?? modalIsOpen}
       onRequestClose={props.closeModal ?? closeModal}
       style={props.UploadCustomModalStyles ?? UploadCustomModalStyles}
       onAfterOpen={props.afterOpenModal ?? afterOpenModal}
@@ -32,7 +34,6 @@ export default function UploadModal(props) {
       contentLabel="Upload Popup Modal"
     >
       <UploadModalContent>
-        Updated This Upload Modal
         {props.modalContent ? props.modalContent : modalContent}
       </UploadModalContent>
     </ReactModal>

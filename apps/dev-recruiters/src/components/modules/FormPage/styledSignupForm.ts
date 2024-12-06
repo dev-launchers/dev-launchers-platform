@@ -176,6 +176,34 @@ export const GradientLine = styled.div<{ height?: string }>`
 
 export const ModalUploadSection = styled.div`
   height: 100%;
+  background-color: yellow;
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  font-style: normal;
+  font-weight: 400;
+  max-width: 400px;
+
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  & p {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-size: 17px;
+    line-height: 19px;
+    line-height: 1.125rem;
+    max-width: 28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+`;
+export const ModalFooterSection = styled.div`
+  height: 10%;
+  top: 80;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 400;

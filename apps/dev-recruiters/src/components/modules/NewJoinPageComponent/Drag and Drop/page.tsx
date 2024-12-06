@@ -2,22 +2,22 @@
 import { atoms } from '@devlaunchers/components/src/components';
 import axios from 'axios';
 import { ChangeEvent, useState } from 'react';
-export default function DragAndDrop() {
+export default function DragAndDrop({ onFilesSelected }) {
   const [selectFiles, setSelectFiles] = useState<any>([]);
   const [uploadFiles, setUploadFiles] = useState<any>([]);
   const [file, setFile] = useState<string>();
   //const [showUploadModal, setShowUploadModal] = useState(false);
-  const [isUploading, setIsUploading] = useState(false); // Uploading state
+  //const [isUploading, setIsUploading] = useState(false); // Uploading state
 
-  const maxSizeInMB = 25;
-  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+  //const maxSizeInMB = 25;
+  //const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
 
   const [dragActive, setDragActive] = useState<boolean>(false);
   let uploadedids = '';
   console.log(selectFiles);
-  const portfolioUploadformData = new FormData();
-  function handleUpload(
+  //const portfolioUploadformData = new FormData();
+  /*function handleUpload(
     event: MouseEvent<HTMLButtonElement, MouseEvent>
   ): void {
     setIsUploading(true);
@@ -57,19 +57,20 @@ export default function DragAndDrop() {
           });
 
         */
+  /*
           const postResult = await axios
             .post(
-              'http://localhost:1337/googledrive/upload',
+              'http://localhost:1337/api/googledrive/upload',
               portfolioUploadformData
             )
             .then((responseBody) => {
               console.log(responseBody);
-              console.log(responseBody.data.data.id);
+              console.log(responseBody.data.id);
 
-              console.log(responseBody.data.data.name);
+              console.log(responseBody.data.name);
               setUploadFiles((prevState: any) => [
                 ...prevState,
-                responseBody.data.data,
+                responseBody.data,
               ]);
             });
           postResult;
@@ -94,16 +95,24 @@ export default function DragAndDrop() {
     } finally {
       setIsUploading(false); // Reset uploading state
     }
-  }
+  } */
   function handleFileSelectChange(event: ChangeEvent<HTMLInputElement>): void {
-    const inputFiles = [...event.target.files];
+    alert('handleFileSelectChange');
     console.log('handleFileSelectChange');
-    console.log(inputFiles);
-    inputFiles?.map((fil) => {
-      console.log(fil);
-      setSelectFiles((prevState: any) => [...prevState, fil]);
-    });
+    console.log('inputFiles');
+
+    const inputFiles = [...event.target.files];
+    //const files = Array.from(event.dataTransfer.files);
+    inputFiles?.map((fil) =>
+      setSelectFiles((prevState: any) => [...prevState, fil])
+    );
+    onFilesSelected(inputFiles);
+    //onFilesSelected(selectFiles);
+
+    console.log('onFilesSelected below');
+    console.log(onFilesSelected);
     console.log(selectFiles);
+    console.log(inputFiles);
   }
 
   //function removeFile(name: any, idx: any): void {
@@ -115,6 +124,31 @@ export default function DragAndDrop() {
     setSelectFiles(newArr);
     setUploadFiles([]);
     setUploadFiles(newArr);
+    try {
+      const response = (async () => {
+        const delResult = await axios
+          .delete(
+            'http://localhost:1337/api/googledrive/delete?fileId=' +
+              uploadFiles[0].id
+          )
+          .then((responseBody) => {
+            console.log(responseBody);
+            console.log(responseBody.status);
+
+            console.log(responseBody.status);
+            setUploadFiles((prevState: any) => [
+              ...prevState,
+              responseBody.status,
+            ]);
+          });
+        delResult;
+        //}
+      })();
+    } catch (error) {
+      console.error('Delete failed:', error);
+    } //finally {
+    //setIsUploading(false); // Reset uploading state
+    //}
   }
   console.log(uploadFiles.length);
   if (uploadFiles.length > 0) {
@@ -136,6 +170,7 @@ export default function DragAndDrop() {
         ]);
     }
     console.log('drop handler End');
+    onFilesSelected(selectFiles);
   }
 
   function dragLeaver(e: any): void {
@@ -171,10 +206,8 @@ export default function DragAndDrop() {
         onDragOver={(e) => dragOverHandler(e)}
         onDragLeave={(e) => dragLeaver(e)}
       >
-        <p>
-          Please include your portfolio/resume: Max file size 25MB, Only .doc,
-          .pdf, .png and .jpg allowed
-        </p>
+        <h3>Please include your portfolio/resume:</h3>
+        <p>Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed</p>
       </div>
       <input
         /*{style={{ color: rgba(0, 0, 0, 0) }} }*/
@@ -183,8 +216,8 @@ export default function DragAndDrop() {
         onChange={handleFileSelectChange}
         accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
       />
-      <atoms.Box maxWidth="50%">
-        <atoms.Button
+      {/* <atoms.Box maxWidth="50%">
+         <atoms.Button
           buttonSize="standard"
           buttonType="primary"
           type="button"
@@ -193,7 +226,7 @@ export default function DragAndDrop() {
         >
           {isUploading ? 'Uploading...' : 'Upload'}
         </atoms.Button>
-      </atoms.Box>
+      </atoms.Box> }
       {uploadFiles.length}
       {uploadFiles.length > 0 ? (
         <>
@@ -208,7 +241,7 @@ export default function DragAndDrop() {
         </>
       ) : (
         <> NO files loaded yet </>
-      )}{' '}
+      )}{' '} */}
     </>
   );
 }
