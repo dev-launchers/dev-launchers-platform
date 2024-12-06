@@ -22,10 +22,7 @@ const OpenResponse = React.forwardRef<HTMLTextAreaElement, OpenResponseProps>(
   ) => {
     const stateClass = styles.state[status];
     const hintMessageClass = styles.hintMessage;
-    // dont forget to ask mohammed about using arbitrary values for tailwind
-    // tailwind config is missing .ts
-    // remember to add onChange
-    // Handler for input value changes
+
     const handleInputChange: React.ChangeEventHandler<HTMLTextAreaElement> = (
       e
     ) => {
