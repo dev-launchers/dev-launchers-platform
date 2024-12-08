@@ -70,8 +70,8 @@ export function ShareDialog({
         <DialogTrigger asChild>
           {button ?? (
             <Button
-              buttonType="primary"
-              buttonSize="standard"
+              type="primary"
+              size="medium"
               className="flex items-center justify-center gap-2"
             >
               <Share className="h-4 w-4" /> Share

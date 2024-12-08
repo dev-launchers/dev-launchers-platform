@@ -6,7 +6,9 @@ export type PropsType = {
   icon?: 'right' | 'left';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  onClick?: MouseEventHandler<
+    HTMLButtonElement | HTMLAnchorElement | HTMLFormElement
+  >;
   children?: ReactNode;
   as?: 'button' | 'a';
   href?: string;
