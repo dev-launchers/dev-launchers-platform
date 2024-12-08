@@ -59,8 +59,8 @@ const ProductCardLarge = ({
             ) : undefined}
             <Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
               <Button
-                buttonType={defaultButton ? 'secondary' : 'alternative'}
-                buttonSize="xl"
+                type={defaultButton ? 'secondary' : 'alt-primary'}
+                size="large"
                 onClick={button1.onClick}
               >
                 <a
@@ -78,8 +78,8 @@ const ProductCardLarge = ({
               </Button>
 
               <Button
-                buttonType={defaultButton ? 'primary' : 'alternative'}
-                buttonSize="xl"
+                type={defaultButton ? 'primary' : 'alt-primary'}
+                size="large"
                 onClick={button2.onClick}
               >
                 <a

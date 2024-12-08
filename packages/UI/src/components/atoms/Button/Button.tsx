@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactNode } from 'react';
+import { EventHandler, FormEvent, MouseEventHandler, ReactNode } from 'react';
 
 export type PropsType = {
   mode?: 'light' | 'dark';
@@ -6,7 +6,7 @@ export type PropsType = {
   icon?: 'right' | 'left';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>;
+  onClick?: EventHandler<any>;
   children?: ReactNode;
   as?: 'button' | 'a';
   href?: string;
@@ -17,7 +17,7 @@ const defaultProps: PropsType = {
   mode: 'dark',
   size: 'small',
   disabled: false,
-  type: 'secondary',
+  type: 'primary',
   icon: 'right',
   as: 'button',
 };
