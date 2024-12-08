@@ -1,14 +1,13 @@
 .container {
-  background-color: #444D58;
+  background-color: #444d58;
   box-sizing: border-box;
   padding: 25px;
   min-height: 100vh;
   width: 100vw;
   display: flex;
   align-items: top;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-
 }
 
 .comments {
@@ -17,10 +16,9 @@
   max-width: 700px;
   min-width: 300px;
   height: 300px;
-  background-color: #C3C0C0;
+  background-color: #c3c0c0;
   border-radius: 30px;
 }
-
 
 .comments h2 {
   font-weight: 300;
@@ -35,8 +33,8 @@
 .singleCommentContent {
   width: 100%;
   min-width: 430px;
-  background-color: #444D58;
-  color: #C4C4C4;
+  background-color: #444d58;
+  color: #c4c4c4;
   border-radius: 25px;
   padding: 20px;
   display: inline-flex;
@@ -44,16 +42,15 @@
 
 .form_box {
   width: 100%;
-  display:flex;
-  flex-direction: row-reverse;  
+  display: flex;
+  flex-direction: row-reverse;
 }
 
-
-
-
-
-
-
+textarea::placeholder {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+}
 
 .user_name_comment_box {
   padding-left: 20px;
@@ -62,11 +59,9 @@
 .user_name_comment {
   width: 100%;
   min-width: 200px;
-  background-color: #444D58;
+  background-color: #444d58;
   border-radius: 25px;
   padding: 20px;
-
-
 }
 
 .userImage {
@@ -75,16 +70,14 @@
   border-radius: 50%;
 }
 
-
 .singleCommentContent h3 {
   margin: 0;
   padding-right: 5px;
   font-size: 12px;
   font-style: italic;
-  font-weight: 1000 ;
+  font-weight: 1000;
   color: white;
 }
-
 
 .side_button_box {
   width: 70%;
@@ -111,7 +104,7 @@
 }
 
 .singleCommentButtons a {
-  margin: 0px 3px;;
+  margin: 0px 3px;
   padding-top: 10px;
   cursor: pointer;
   font-size: 10px;
@@ -139,18 +132,16 @@
   height: 80px;
   padding-left: 10px;
   border: 1px solid #c1c1c1;
-  background-color: #C3C0C0;
+  background-color: #c3c0c0;
   margin-right: 10px;
   border-radius: 25px;
   width: 85%;
   float: right;
 }
 
-
-
 .user_comment {
   width: 100%;
-  background-color: #C3C0C0;
+  background-color: #c3c0c0;
   margin-top: 10px;
   border-radius: 20px;
   display: flex;
@@ -165,16 +156,15 @@
 .form input:first-child {
   width: 100%;
   height: 30px;
-}             
+}
 
-.form button {
-  margin-top: 10px;
+/* .form button {
   padding: 8px 30px;
   color: black;
   font-weight: bold;
   border-radius: 25px;
   border: 1px solid #999;
-  background-color: #C3C0C0;
+  background-color: #c3c0c0;
   float: right;
 }
 
@@ -182,7 +172,7 @@
   cursor: pointer;
   color: #385997;
   border-color: #385997;
-}
+} */
 
 .idea {
   width: 100%;
@@ -193,7 +183,7 @@
   text-align: left;
 }
 
-.idea h2{
+.idea h2 {
   padding-top: 10px;
   margin-bottom: 5px;
 }
@@ -204,7 +194,7 @@
 }
 
 .idea_name {
-  background-color: #30363E;
+  background-color: #30363e;
   width: 100%;
   height: 50%;
   border-top-right-radius: 30px;
@@ -214,7 +204,7 @@
 }
 
 .idea_progress {
-  background-color: #30363E;
+  background-color: #30363e;
   width: 100%;
   height: 50%;
   padding-top: 30px;
@@ -222,7 +212,7 @@
 }
 
 .description {
-  background-color: #89969F;
+  background-color: #89969f;
   width: 100%;
   height: 50%;
   border-bottom-right-radius: 30px;
@@ -240,7 +230,6 @@
   justify-content: right;
 }
 
-
 .leader_image {
   height: 30px;
   margin-right: 10px;
@@ -248,7 +237,7 @@
 }
 .leader_info {
   margin-left: 30px;
-  background-color: #30363E;
+  background-color: #30363e;
   width: 100%;
   height: 50%;
   border-top-right-radius: 30px;
@@ -261,7 +250,6 @@
   padding-bottom: 20px;
   color: white;
 }
-
 
 .workshop_test {
   position: relative;
@@ -280,7 +268,7 @@
 }
 
 .workshop_circule {
-  height: 20px ;
+  height: 20px;
   width: 20px;
   background-color: white;
   border-radius: 50%;
@@ -292,7 +280,7 @@
 }
 
 .workshop_completed {
-  background-color: #322E2E;
+  background-color: #322e2e;
   height: 16px;
   width: 16px;
   border-radius: 50px;
