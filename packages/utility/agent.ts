@@ -6,6 +6,7 @@ import {
   Idea,
   Like,
   Save,
+  Notification,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -163,10 +164,7 @@ const Likes = {
 };
 
 const Notifications = {
-  get: () =>
-    requests.get<Like[]>('/notifications?populate=deep', {
-      credentials: 'include',
-    }),
+  get: () => requests.get<Notification[]>('/notifications?populate=deep'),
 };
 
 const Saves = {
