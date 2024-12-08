@@ -4,7 +4,6 @@ namespace: platform-website-staging
 resources:
   - kservice.yaml
 images:
-- name: devlaunchers/platform-website
-  newName: devlaunchers/platform-website
-  newTag: "c97fddf-202410132058" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
-
+  - name: devlaunchers/platform-website
+    newName: devlaunchers/platform-website
+    newTag: "f1fb78d-202412062346" # {"$imagepolicy": "platform-website-staging:platform-website:tag"}
