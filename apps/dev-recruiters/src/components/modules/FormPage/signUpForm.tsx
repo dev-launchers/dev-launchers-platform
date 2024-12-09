@@ -197,7 +197,6 @@ export default function SignUpForm({
     handleCancelCloseModal,
   }: UploadProps) {
     const handleFiles = (selectedFiles) => {
-      alert('handleFiles');
       console.log('selectedFiles below');
       console.log(selectedFiles);
       setSelectedFiles(selectedFiles);
@@ -231,11 +230,13 @@ export default function SignUpForm({
             <OkButton onClick={handleOkCloseModal}> Ok </OkButton>
             <CancelButton onClick={handleCancelCloseModal}>Cancel</CancelButton>
           </ModalFooterSection>
-          {selectedFiles.length > 0 ? (
-            <ul>{selectedFiles[0]['name']}</ul>
-          ) : (
-            <> No files Selected yet </>
-          )}
+          <ul>
+            {selectedFiles.length > 0 ? (
+              <li>{selectedFiles[0]['name']}</li>
+            ) : (
+              <> No files Selected yet </>
+            )}
+          </ul>
         </div>
       </>
     );
@@ -292,6 +293,9 @@ export default function SignUpForm({
   const [uploadError, setUploadError] = useState('');
 
   const handleUploadOpenModal = () => {
+    setSelectedFiles([]);
+    setUploadFiles([]);
+    setUploadError('');
     setShowUploadModal(true);
   };
 
@@ -299,42 +303,35 @@ export default function SignUpForm({
     setShowUploadModal(false);
   };
   const handleOkCloseModal = async () => {
-    alert('sihandleOkCloseModal');
     setShowUploadModal(false);
-    //handleUpload content
-    alert('handleUpload');
-    alert(showUploadModal);
     setIsUploading(true);
     console.log('handleUpload');
-    alert(isUploading);
-    alert(selectedFiles.length);
     //try {
     const response = async () => {
       console.log(selectedFiles.length);
       console.log('handleUpload');
-      for (let i = 0; i < selectedFiles.length; ++i) {
-        console.log(`i is ${i}`);
-        // Check file type
-        if (!allowedExtensions.exec(selectedFiles[i].name)) {
-          alert(
-            'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
-          );
-          setUploadError(
-            'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
-          );
-          return false;
-        }
-        // Check file size
+      //for (let i = 0; i < selectedFiles.length; ++i) {
+      //  console.log(`i is ${i}`);
+      // Check file type
+      if (!allowedExtensions.exec(selectedFiles[0].name)) {
+        alert(
+          'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
+        );
+        setUploadError(
+          'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
+        );
+        return false;
+      }
+      // Check file size
 
-        if (selectedFiles[i].size > maxSizeInBytes) {
-          alert('File size must be less than 25MB');
+      if (selectedFiles[0].size > maxSizeInBytes) {
+        alert('File size must be less than 25MB');
 
-          setUploadError('File size must be less than 25MB');
-          return false;
-        }
+        setUploadError('File size must be less than 25MB');
+        return false;
+      }
 
-        portfolioUploadformData.append('files', selectedFiles[i]);
-        /*
+      /*
         const postResult = await axios
           .post('http://localhost:1337/api/upload', portfolioUploadformData)
           .then((responseBody) => {
@@ -346,11 +343,13 @@ export default function SignUpForm({
           });
 
         */
-      }
+      //}
     };
     //response().then(async () => {
     const responseResult = await response();
     if (responseResult === true) {
+      portfolioUploadformData.append('files', selectedFiles[0]);
+
       const postResult = await axios
         .post(
           'http://localhost:1337/api/googledrive/upload',
@@ -368,24 +367,11 @@ export default function SignUpForm({
 
     console.log(uploadFiles);
     console.log(uploadFiles.length);
-    /*if (uploadFiles.length === 1) uploadedids = uploadFiles[0]['id'];
-      else if (uploadFiles.length > 1) {
-        uploadedids = uploadFiles.reduce(
-          (acc, currentValue) => acc + ',' + currentValue['id'],
-          ''
-        );
-        uploadedids = uploadedids.slice(1);
-      }
-
-      console.log(uploadedids); */
-    //setShowUploadModal(false);
-    //} catch (error) {
-    //  console.error('Upload failed:', error);
-    //} finally {
-    //  setIsUploading(false); // Reset uploading state
-    //}
   };
   const handleCancelCloseModal = () => {
+    alert('handleCancelCloseModal');
+    setSelectedFiles([]);
+    setUploadFiles([]);
     setShowUploadModal(false);
   };
 
@@ -621,14 +607,24 @@ export default function SignUpForm({
                       />
                     }
                   />
-                  {selectedFiles.length}
-                  {selectedFiles.length > 0 &&
-                    selectedFiles.map((fil) => <ul> {fil.name}</ul>)}
-                  {uploadFiles.length}
-                  {uploadError !== '' && uploadError}
-                  {uploadFiles.length > 0 &&
-                    uploadFiles.map((fil) => <ul> {fil.name}</ul>)}
-
+                  <ul>
+                    <atoms.Box gap="30px">
+                      {(selectedFiles.length > 0 &&
+                        selectedFiles.map((fil) => <li> {fil.name}</li>)) ||
+                        (uploadFiles.length > 0 &&
+                          uploadFiles.map((fil) => <li> {fil.name}</li>))}
+                      {uploadError !== '' && uploadError && (
+                        <li>
+                          <atoms.Typography
+                            type="pSmall"
+                            css={{ color: 'red' }}
+                          >
+                            {uploadError}
+                          </atoms.Typography>
+                        </li>
+                      )}
+                    </atoms.Box>
+                  </ul>
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
