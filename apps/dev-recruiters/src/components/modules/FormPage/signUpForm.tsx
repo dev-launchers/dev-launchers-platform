@@ -28,6 +28,7 @@ import Modal from 'react-calendly/typings/components/PopupModal/Modal';
 import { OkIcon } from './styledUploadModal';
 import DragAndDrop from '../NewJoinPageComponent/Drag and Drop/page';
 import axios from 'axios';
+import { Button } from '../ConfirmationPage/styledConfirmationPage';
 
 interface UploadProps {
   handleUploadCloseModal?: () => void;
@@ -291,6 +292,7 @@ export default function SignUpForm({
 
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [uploadError, setUploadError] = useState('');
+  const [canButVis, setCanButVis] = useState(true);
 
   const handleUploadOpenModal = () => {
     setSelectedFiles([]);
@@ -320,6 +322,7 @@ export default function SignUpForm({
         setUploadError(
           'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
         );
+        setIsUploading(false);
         return false;
       }
       // Check file size
@@ -328,8 +331,10 @@ export default function SignUpForm({
         alert('File size must be less than 25MB');
 
         setUploadError('File size must be less than 25MB');
+        setIsUploading(false);
         return false;
       }
+      return true;
 
       /*
         const postResult = await axios
@@ -361,6 +366,10 @@ export default function SignUpForm({
 
           console.log(responseBody.data.name);
           setUploadFiles((prevState: any) => [...prevState, responseBody.data]);
+          setCanButVis(true);
+          setIsUploading(false);
+          console.log('canButVis');
+          console.log(canButVis);
         });
       return postResult;
     }
@@ -373,6 +382,43 @@ export default function SignUpForm({
     setSelectedFiles([]);
     setUploadFiles([]);
     setShowUploadModal(false);
+  };
+  const handleRemoveFile = () => {
+    alert(canButVis);
+    const newArr = [...selectedFiles];
+    newArr.splice(uploadFiles[0], 1);
+    console.log(newArr);
+    setSelectedFiles([]);
+    setSelectedFiles(newArr);
+    setUploadFiles([]);
+    setUploadFiles(newArr);
+    setCanButVis(false);
+    try {
+      const response = (async () => {
+        const delResult = await axios
+          .delete(
+            'http://localhost:1337/api/googledrive/delete?fileId=' +
+              uploadFiles[0].id
+          )
+          .then((responseBody) => {
+            console.log(responseBody);
+            console.log(responseBody.status);
+            console.log(canButVis);
+
+            console.log(responseBody.status);
+            setUploadFiles((prevState: any) => [
+              ...prevState,
+              responseBody.status,
+            ]);
+          });
+        delResult;
+        //}
+      })();
+    } catch (error) {
+      console.error('Delete failed:', error);
+    } //finally {
+    //setIsUploading(false); // Reset uploading state
+    //}
   };
 
   // const router = useRouter();
@@ -607,12 +653,55 @@ export default function SignUpForm({
                       />
                     }
                   />
-                  <ul>
+                  {isUploading
+                    ? 'Uploading'
+                    : uploadFiles.length > 0
+                    ? !!uploadFiles.length &&
+                      uploadFiles.map((fil) => (
+                        <>
+                          <li>
+                            {fil.name}
+                            {!!canButVis && (
+                              <Button onClick={handleRemoveFile}>
+                                Cancel Upload {fil.name}
+                              </Button>
+                            )}
+                          </li>
+                        </>
+                      ))
+                    : selectedFiles.length > 0 &&
+                      uploadError !== '' &&
+                      uploadError
+                    ? selectedFiles.map((fil) => (
+                        <atoms.Box gap="30px">
+                          <li> {fil.name}</li>
+                          <atoms.Typography
+                            type="pSmall"
+                            css={{ color: 'red' }}
+                          >
+                            {uploadError}
+                          </atoms.Typography>
+                        </atoms.Box>
+                      ))
+                    : null}
+                  {/* <ul>
                     <atoms.Box gap="30px">
-                      {(selectedFiles.length > 0 &&
-                        selectedFiles.map((fil) => <li> {fil.name}</li>)) ||
-                        (uploadFiles.length > 0 &&
-                          uploadFiles.map((fil) => <li> {fil.name}</li>))}
+                      {(!!uploadFiles.length &&
+                        uploadFiles.map((fil) => (
+                          <>
+                            <li>
+                              {fil.name}
+                              {!!canButVis && (
+                                <Button onClick={handleRemoveFile}>
+                                  Cancel Upload {fil.name}
+                                </Button>
+                              )}
+                            </li>
+                          </>
+                        ))) ||
+                        (selectedFiles.length > 0 &&
+                          selectedFiles.map((fil) => <li> {fil.name}</li>)) ||
+                        null}
                       {uploadError !== '' && uploadError && (
                         <li>
                           <atoms.Typography
@@ -624,7 +713,7 @@ export default function SignUpForm({
                         </li>
                       )}
                     </atoms.Box>
-                  </ul>
+                  </ul> */}
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
