@@ -40,7 +40,7 @@ export const Default: Story = {
       <>
         <Dialog>
           <DialogTrigger asChild>
-            <Button buttonType="primary" buttonSize="standard">
+            <Button type="primary" size="medium">
               Empty
             </Button>
           </DialogTrigger>
@@ -71,7 +71,7 @@ export const DefaultWithNoClose: Story = {
       <>
         <Dialog>
           <DialogTrigger asChild>
-            <Button buttonType="primary" buttonSize="standard">
+            <Button type="primary" size="medium">
               Empty
             </Button>
           </DialogTrigger>
@@ -108,7 +108,7 @@ export const Newsletter: Story = {
       <>
         <Dialog>
           <DialogTrigger asChild>
-            <Button buttonType="primary" buttonSize="standard">
+            <Button type="primary" size="medium">
               Subscribe!
             </Button>
           </DialogTrigger>
@@ -138,13 +138,13 @@ export const Newsletter: Story = {
             </div>
             <DialogFooter className="flex w-[448px] items-center justify-end gap-6">
               <DialogClose>
-                <Button buttonType="alternative" buttonSize="standard">
+                <Button type="secondary" size="medium">
                   {' '}
                   dismiss{' '}
                 </Button>
               </DialogClose>
               <DialogClose>
-                <Button buttonType="primary" buttonSize="standard">
+                <Button type="primary" size="medium">
                   {' '}
                   Subscribe{' '}
                 </Button>
@@ -169,7 +169,7 @@ export const Terms: Story = {
       <>
         <Dialog>
           <DialogTrigger asChild>
-            <Button buttonType="primary" buttonSize="standard">
+            <Button type="primary" size="medium">
               ToS
             </Button>
           </DialogTrigger>
@@ -201,7 +201,7 @@ export const Terms: Story = {
                   <p className="ml-2">I've read the terms of services</p>
                 </div>
                 <DialogClose>
-                  <Button buttonType="primary" buttonSize="standard">
+                  <Button type="primary" size="medium">
                     Submit
                   </Button>
                 </DialogClose>
@@ -233,7 +233,7 @@ export const Roles: Story = {
       <>
         <Dialog>
           <DialogTrigger asChild>
-            <Button buttonType="primary" buttonSize="standard">
+            <Button type="primary" size="medium">
               Role
             </Button>
           </DialogTrigger>
@@ -263,10 +263,10 @@ export const Roles: Story = {
               <div className="flex h-10 w-full items-center justify-between">
                 <h3 className="font-nunito-sans text-lg">Step 1 out of 5</h3>
                 <div className="flex gap-4">
-                  <Button buttonType="primary" buttonSize="standard">
+                  <Button type="primary" size="medium">
                     Previous
                   </Button>
-                  <Button buttonType="primary" buttonSize="standard">
+                  <Button type="primary" size="medium">
                     Next
                   </Button>
                 </div>
