@@ -142,8 +142,8 @@ const Navigation = () => {
                 process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                 `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
               }
-              buttonType="primary"
-              buttonSize="standard"
+              type="primary"
+              size="medium"
             >
               Sign In
             </Button>
@@ -153,8 +153,8 @@ const Navigation = () => {
                 process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                 `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
               }
-              buttonType="secondary"
-              buttonSize="standard"
+              type="secondary"
+              size="medium"
             >
               Create an Account
             </Button>
