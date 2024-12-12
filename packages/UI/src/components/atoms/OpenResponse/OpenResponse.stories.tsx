@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
 import { OpenResponse } from './OpenResponse';
 import '@devlaunchers/tailwind/tailwind.css';
+import type { OpenResponseProps } from './index';
 
 const meta: Meta<typeof OpenResponse> = {
   component: OpenResponse,
@@ -42,7 +43,7 @@ const meta: Meta<typeof OpenResponse> = {
     isRequired: {
       control: 'boolean',
       defaultValue: true,
-      description: 'Whether the input is required',
+      description: 'Whether the input is required or not',
     },
     hintMessage: {
       control: 'text',
@@ -56,6 +57,11 @@ const meta: Meta<typeof OpenResponse> = {
       description:
         'Toggles the visibility of a help or status message below the text area which is the hint message',
     },
+    onInputChange: {
+      table: {
+        disable: true, // Hides it from both controls and documentation table
+      },
+    },
   },
 };
 
@@ -63,23 +69,26 @@ export default meta;
 type Story = StoryObj<typeof OpenResponse>;
 
 // Wrapper for dynamic behavior
-const OpenResponseWrapper = (args: any) => {
-  const [inputValue, setInputValue] = useState(args.inputValue || '');
+const OpenResponseWrapper = (props: OpenResponseProps) => {
+  const [localValue, setLocalValue] = useState(props.inputValue || '');
 
   React.useEffect(() => {
     // Sync with Storybook control panel updates
-    setInputValue(args.inputValue);
-  }, [args.inputValue]);
+    setLocalValue(props.inputValue || '');
+  }, [props.inputValue]);
 
   const handleInputChange = (value: string) => {
-    setInputValue(value);
+    if (props.onInputChange) {
+      props.onInputChange(value); // Notify Storybook of the change
+    }
+    setLocalValue(value); // Update the internal state
   };
 
   return (
     <OpenResponse
-      {...args}
-      inputValue={args.status === 'disabled' ? '' : inputValue} // Disable input
-      onInputChange={args.status === 'disabled' ? undefined : handleInputChange} // Disable handler
+      {...props}
+      inputValue={localValue}
+      onInputChange={handleInputChange}
     />
   );
 };
@@ -95,6 +104,9 @@ export const DefaultState: Story = {
     isRequired: true,
     hintMessage: 'This is a default helper message.',
     hasMessage: true,
+    onInputChange: (value: string) => {
+      console.log('Updated value:', value);
+    },
   },
 };
 
