@@ -1,10 +1,14 @@
 'use client';
 import { atoms } from '@devlaunchers/components/src/components';
 import axios from 'axios';
-import { ChangeEvent, useState } from 'react';
-export default function DragAndDrop({ onFilesSelected }) {
-  const [selectFiles, setSelectFiles] = useState<any>([]);
+import { ChangeEvent, useState, useRef } from 'react';
+export default function DragAndDrop({ files, onFilesSelected }) {
+  // const [selectFiles, setSelectFiles] = useState<any>([]);
+  const [selectFiles, setSelectFiles] = useState([]);
+
+  const fileInput = useRef(null);
   const [uploadFiles, setUploadFiles] = useState<any>([]);
+
   const [file, setFile] = useState<string>();
   //const [showUploadModal, setShowUploadModal] = useState(false);
   //const [isUploading, setIsUploading] = useState(false); // Uploading state
@@ -96,24 +100,51 @@ export default function DragAndDrop({ onFilesSelected }) {
       setIsUploading(false); // Reset uploading state
     }
   } */
-  function handleFileSelectChange(event: ChangeEvent<HTMLInputElement>): void {
-    alert('handleFileSelectChange');
+  //function handleFileSelectChange(event: ChangeEvent<HTMLInputElement>): void {
+  const handleFileSelectChange = async (
+    event: ChangeEvent<HTMLInputElement>
+  ) => {
     console.log('handleFileSelectChange');
     console.log('inputFiles');
-
-    const inputFiles = [...event.target.files];
-    //const files = Array.from(event.dataTransfer.files);
-    inputFiles?.map((fil) =>
-      setSelectFiles((prevState: any) => [...prevState, fil])
-    );
-    onFilesSelected(inputFiles);
-    //onFilesSelected(selectFiles);
-
-    console.log('onFilesSelected below');
-    console.log(onFilesSelected);
-    console.log(selectFiles);
+    //const inputFiles = [...event.target.files];
+    const inputFiles = Array.from(event.target.files);
     console.log(inputFiles);
-  }
+
+    await new Promise<void>(async (resolve) => {
+      //setSelectFiles((prevState: any) => [...prevState, inputFiles]);
+      setSelectFiles(inputFiles);
+      console.log('before resolve');
+      /*if (selectFiles.length > 0) {
+        await new Promise<void>((resolve) => {
+          onFilesSelected(inputFiles);
+          resolve();
+        });
+      }*/
+      resolve();
+      onFilesSelected(inputFiles);
+
+      console.log('after resolve');
+    });
+    console.log('selectFiles');
+    console.log(selectFiles);
+
+    console.log('after resolved');
+    console.log(onFilesSelected);
+
+    //const files = Array.from(event.dataTransfer.files);
+    //inputFiles?.map((fil) =>
+    //  setSelectFiles((prevState: any) => [...prevState, fil])
+    //);
+    //setSelectFiles((prevState: any) => [...prevState, inputFiles]);
+    //console.log(selectFiles);
+
+    //console.log('onFilesSelected below');
+    //console.log(onFilesSelected);
+
+    //setSelectFiles(inputFiles);
+    //onFilesSelected(inputFiles);
+    //onFilesSelected(selectFiles);
+  };
 
   //function removeFile(name: any, idx: any): void {
   function removeFile(): void {
@@ -161,7 +192,7 @@ export default function DragAndDrop({ onFilesSelected }) {
     // e.stoppropagation();
     setDragActive(false);
     console.log('drop handler start');
-    console.log(e.dataTransfer.items);
+    console.log(e.dataTransfer.files);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       for (let i = 0; i < e.dataTransfer.files.length; ++i)
         setSelectFiles((prevState: any) => [
@@ -170,7 +201,8 @@ export default function DragAndDrop({ onFilesSelected }) {
         ]);
     }
     console.log('drop handler End');
-    onFilesSelected(selectFiles);
+    onFilesSelected(e.dataTransfer.files);
+    //onFilesSelected(selectFiles);
   }
 
   function dragLeaver(e: any): void {
@@ -210,12 +242,25 @@ export default function DragAndDrop({ onFilesSelected }) {
         <p>Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed</p>
       </div>
       <input
-        /*{style={{ color: rgba(0, 0, 0, 0) }} }*/
+        /*{style={{ color: rgba(0, 0, 0, 0) }} }
+        style={{ display: 'none' }}
+        ref={fileInput}
+        "color:transparent"
+        */
         id="fileSelect"
         type="file"
-        onChange={handleFileSelectChange}
+        style={{ color: 'transparent' }}
+        onChange={(event) => {
+          handleFileSelectChange(event);
+        }}
         accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
       />
+      {/*<button onClick={() => fileInput.current.click()}>Choose File</button>
+       */}
+      <div>
+        {' '}
+        {files.length > 0 ? <>{files[0]['name']}</> : 'Nothing  selected'}
+      </div>
       {/* <atoms.Box maxWidth="50%">
          <atoms.Button
           buttonSize="standard"

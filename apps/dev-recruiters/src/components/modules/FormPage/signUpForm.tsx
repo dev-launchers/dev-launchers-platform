@@ -11,16 +11,20 @@ import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
 import {
-  CancelButton,
+  //CancelButton,
   CloseButton,
   CloseIcon,
-  OkButton,
+  //OkButton,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
 import {
+  CancelUploadButton,
   GradientLine,
   ModalFooterSection,
   ModalUploadSection,
   SubmitButton,
+  UploadButton,
+  OkButton,
+  CancelButton,
 } from './styledSignupForm';
 import { ButtonsContainer } from '../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleCard/styledRoleCard';
 import UploadModal from './uploadModal';
@@ -223,8 +227,9 @@ export default function SignUpForm({
             </OkIcon>
           </CloseButton>
           <ModalUploadSection>
-            <DragAndDrop onFilesSelected={handleFiles} />
+            <DragAndDrop files={selectedFiles} onFilesSelected={handleFiles} />
           </ModalUploadSection>
+          <div> Parent sees {selectedFiles.length} files </div>
         </div>
         <div>
           <ModalFooterSection>
@@ -248,14 +253,12 @@ export default function SignUpForm({
     email: Yup.string()
       .email('Invalid email')
       .required('Email Field Entry is Required'),
-    portfolioLink: Yup.string()
-      .nullable(true)
-      .default(undefined)
-      .matches(
-        /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-        'Invalid url'
-      )
-      .transform((_, value) => (value === '' ? null : value)),
+    portfolioLink: Yup.string().nullable(true).default(undefined),
+    //.matches(
+    //  /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
+    //  'Invalid url'
+    //)
+    //.transform((_, value) => (value === '' ? null : value))
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
@@ -353,11 +356,13 @@ export default function SignUpForm({
     //response().then(async () => {
     const responseResult = await response();
     if (responseResult === true) {
+      console.log(process.env.NEXT_PUBLIC_STRAPI_URL);
+      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/upload`);
       portfolioUploadformData.append('files', selectedFiles[0]);
 
       const postResult = await axios
         .post(
-          'http://localhost:1337/api/googledrive/upload',
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/upload`,
           portfolioUploadformData
         )
         .then((responseBody) => {
@@ -397,8 +402,8 @@ export default function SignUpForm({
       const response = (async () => {
         const delResult = await axios
           .delete(
-            'http://localhost:1337/api/googledrive/delete?fileId=' +
-              uploadFiles[0].id
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/delete?fileId=`,
+            uploadFiles[0].id
           )
           .then((responseBody) => {
             console.log(responseBody);
@@ -444,6 +449,7 @@ export default function SignUpForm({
           commitment: 0,
           extraInfo: '',
           portfolioLink: null,
+          portfolioFileId: null,
           yearsOfExperience: 0,
           experience: '',
           reason: '',
@@ -459,10 +465,15 @@ export default function SignUpForm({
           { setSubmitting }: FormikHelpers<NewApplicant>
         ) => {
           setSubmitting(true);
+          console.log('insidesubmit');
+          console.log(values);
+          console.log(uploadFiles[0].id);
           agent.Applicant.post({
             ...values,
             //@ts-ignore
             level: values.level.toLowerCase(),
+            portfolioLink: uploadFiles[0].webViewLink,
+            portfolioFileId: uploadFiles[0].id,
             skills: values.skills
               .toString()
               .split(',')
@@ -620,7 +631,7 @@ export default function SignUpForm({
                     cols={50}
                     label="Anything else you would like to share with us?"
                     placeholder="I just want the Team Lead to know..."
-                    rows={5}
+                    rows={1}
                     id="extraInfo"
                     name="extraInfo"
                     // onChange={handleChange}
@@ -628,9 +639,11 @@ export default function SignUpForm({
                   <Field
                     as={organisms.FormField}
                     label="Portfolio/Resume Link"
+                    enabled="false"
                     placeholder="https://myportfolio.com"
                     id="portfolioLink"
                     name="portfolioLink"
+                    value={uploadFiles[0]?.webViewLink}
                     // onChange={handleChange}
                     touched={
                       formik.touched.portfolioLink &&
@@ -638,6 +651,9 @@ export default function SignUpForm({
                     }
                     error={formik.errors.portfolioLink}
                   />
+                  <UploadButton onClick={handleUploadOpenModal}>
+                    Upload{' '}
+                  </UploadButton>
                   <ButtonsContainer onClick={handleUploadOpenModal}>
                     Upload
                   </ButtonsContainer>
@@ -660,11 +676,12 @@ export default function SignUpForm({
                       uploadFiles.map((fil) => (
                         <>
                           <li>
+                            {fil.id}
                             {fil.name}
                             {!!canButVis && (
-                              <Button onClick={handleRemoveFile}>
+                              <CancelUploadButton onClick={handleRemoveFile}>
                                 Cancel Upload {fil.name}
-                              </Button>
+                              </CancelUploadButton>
                             )}
                           </li>
                         </>
@@ -684,36 +701,6 @@ export default function SignUpForm({
                         </atoms.Box>
                       ))
                     : null}
-                  {/* <ul>
-                    <atoms.Box gap="30px">
-                      {(!!uploadFiles.length &&
-                        uploadFiles.map((fil) => (
-                          <>
-                            <li>
-                              {fil.name}
-                              {!!canButVis && (
-                                <Button onClick={handleRemoveFile}>
-                                  Cancel Upload {fil.name}
-                                </Button>
-                              )}
-                            </li>
-                          </>
-                        ))) ||
-                        (selectedFiles.length > 0 &&
-                          selectedFiles.map((fil) => <li> {fil.name}</li>)) ||
-                        null}
-                      {uploadError !== '' && uploadError && (
-                        <li>
-                          <atoms.Typography
-                            type="pSmall"
-                            css={{ color: 'red' }}
-                          >
-                            {uploadError}
-                          </atoms.Typography>
-                        </li>
-                      )}
-                    </atoms.Box>
-                  </ul> */}
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
