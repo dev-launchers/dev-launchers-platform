@@ -22,6 +22,20 @@ const defaultProps: PropsType = {
   as: 'button',
 };
 
+const validTypes: Exclude<PropsType['type'], undefined>[] = [
+  'primary',
+  'secondary',
+  'alt-primary',
+  'alt-secondary',
+];
+const validModes: Exclude<PropsType['mode'], undefined>[] = ['light', 'dark'];
+const validSizes: Exclude<PropsType['size'], undefined>[] = [
+  'small',
+  'medium',
+  'large',
+];
+const validIcons: Exclude<PropsType['icon'], undefined>[] = ['right', 'left'];
+
 export default function Button(props: PropsType) {
   props = { ...defaultProps, ...props };
   const {
@@ -39,13 +53,18 @@ export default function Button(props: PropsType) {
 
   const Component = as === 'a' ? 'a' : 'button';
 
+  const safeType = validateField(type, validTypes);
+  const safeMode = validateField(mode, validModes);
+  const safeSize = validateField(size, validSizes);
+  const safeIcon = validateField(icon, validIcons);
+
   let btnClasses = `${params.base} 
-                    ${params.mode[mode ?? 'light'][type ?? 'primary'].default}
-                    ${params.mode[mode ?? 'light'][type ?? 'primary'].hover}
-                    ${params.mode[mode ?? 'light'][type ?? 'primary'].active}
-                    ${params.mode[mode ?? 'light'][type ?? 'primary'].disabled}
-                    ${params.size[size ?? 'small']}
-                    ${params.icon[icon ?? 'right']}`;
+                    ${params.mode[safeMode][safeType].default}
+                    ${params.mode[safeMode][safeType].hover}
+                    ${params.mode[safeMode][safeType].active}
+                    ${params.mode[safeMode][safeType].disabled}
+                    ${params.size[safeSize]}
+                    ${params.icon[safeIcon]}`;
 
   return (
     <Component
@@ -60,8 +79,18 @@ export default function Button(props: PropsType) {
   );
 }
 
+function validateField<T>(
+  field: T | undefined,
+  validFieldsArray: readonly T[],
+  defaultValueIndex = 0
+) {
+  return !field || !validFieldsArray.includes(field)
+    ? validFieldsArray[defaultValueIndex]
+    : field;
+}
+
 const params = {
-  base: 'rounded-md px-6 outline disabled:outline-none flex items-center gap-2',
+  base: 'rounded-md px-6 outline disabled:outline-none flex items-center justify-center gap-2 text-center',
   mode: {
     dark: {
       primary: {
