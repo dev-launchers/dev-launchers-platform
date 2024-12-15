@@ -19,12 +19,22 @@ import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
+import EditDrawer from '../../../../common/IdeaForm/EditDrawer';
 
-export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
+export const IdeaCard = ({
+  ideaImage,
+  ideaId,
+  ideaName,
+  ideaTagLine,
+  authorId,
+}) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
+  const [isEditCardOpen, setIsEditCardOpen] = useState(false);
+
+  const isCurrentUserAuthor = userData?.id === authorId;
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -152,6 +162,20 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <StyledText>SHARE</StyledText>
         </Button> */}
       </BottomView>
+
+      {isCurrentUserAuthor && (
+        <button
+          onClick={() => setIsEditCardOpen(true)}
+          className="text-black px-4 py-2 rounded"
+        >
+          Edit
+        </button>
+      )}
+
+      <EditDrawer
+        isOpen={isEditCardOpen}
+        onClose={() => setIsEditCardOpen(false)}
+      />
     </StyledCard>
   );
 };

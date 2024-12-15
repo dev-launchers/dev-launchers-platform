@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-function EditIdea() {
+function EditIdea({ isEditOpen }) {
   let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
@@ -179,7 +179,7 @@ function EditIdea() {
   } else {
     return (
       <>
-        <HeadWapper>
+        {/* <HeadWapper>
           <Headline>Dev Ideas</Headline>
           <StyledRanbow>
             <atoms.Layer hasRainbowBottom />
@@ -190,7 +190,7 @@ function EditIdea() {
             <br />
             Share your idea with us!
           </atoms.Typography>
-        </HeadWapper>
+        </HeadWapper> */}
 
         {!isAuthenticated ? (
           <SignInSection
@@ -214,6 +214,7 @@ function EditIdea() {
               formButton="save"
               sending={sending}
               clickHandler={backHandler}
+              isEditCardOpen={isEditOpen}
             />
           </>
         )}

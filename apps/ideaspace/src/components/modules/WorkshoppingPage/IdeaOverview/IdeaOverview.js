@@ -57,6 +57,7 @@ export const IdeaOverview = ({ selectedCard }) => {
             ideaId={selectedCard.id}
             ideaName={selectedCard.ideaName}
             ideaTagLine={selectedCard.tagline}
+            authorId={OwnerID}
           />
         </TopView>
         <IdeaContentCard
