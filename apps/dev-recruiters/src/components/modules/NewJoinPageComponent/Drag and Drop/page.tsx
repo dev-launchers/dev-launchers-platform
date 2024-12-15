@@ -2,7 +2,13 @@
 import { atoms } from '@devlaunchers/components/src/components';
 import axios from 'axios';
 import { ChangeEvent, useState, useRef } from 'react';
-export default function DragAndDrop({ files, onFilesSelected }) {
+export default function DragAndDrop({
+  filesUploaded,
+  onFilesUploaded,
+  //,uploadError
+  //  errorEncountered,
+  //  onUploadError,
+}) {
   // const [selectFiles, setSelectFiles] = useState<any>([]);
   const [selectFiles, setSelectFiles] = useState([]);
 
@@ -10,13 +16,17 @@ export default function DragAndDrop({ files, onFilesSelected }) {
   const [uploadFiles, setUploadFiles] = useState<any>([]);
 
   const [file, setFile] = useState<string>();
-  //const [showUploadModal, setShowUploadModal] = useState(false);
-  //const [isUploading, setIsUploading] = useState(false); // Uploading state
-
-  //const maxSizeInMB = 25;
-  //const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
+  //uncommented this
+  const [showUploadModal, setShowUploadModal] = useState(false);
+  const [isUploading, setIsUploading] = useState(false); // Uploading state
+  const maxSizeInMB = 25;
+  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
+  const [uploadError, setUploadError] = useState('');
+  const [canButVis, setCanButVis] = useState(true);
+  const portfolioUploadformData = new FormData();
 
+  //uncommented above lines
   const [dragActive, setDragActive] = useState<boolean>(false);
   let uploadedids = '';
   console.log(selectFiles);
@@ -106,11 +116,105 @@ export default function DragAndDrop({ files, onFilesSelected }) {
   ) => {
     console.log('handleFileSelectChange');
     console.log('inputFiles');
+    let sampleOutput = {
+      id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
+      name: 'Energy.jpg',
+      mimeType: 'image/jpeg',
+      parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
+      webViewLink:
+        'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
+    };
+    onFilesUploaded(sampleOutput);
+    return sampleOutput;
     //const inputFiles = [...event.target.files];
     const inputFiles = Array.from(event.target.files);
     console.log(inputFiles);
 
-    await new Promise<void>(async (resolve) => {
+    // copied from handleOkCloseButton
+    //setShowUploadModal(false);
+    let uploadStatus = true;
+    setIsUploading(true);
+    console.log('handleUpload');
+    //try {
+    const response = async () => {
+      console.log(inputFiles.length);
+      console.log('handleUpload');
+      if (!allowedExtensions.exec(inputFiles[0].name)) {
+        alert(
+          'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
+        );
+        //uploadError(
+        //  'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
+        //);
+        setUploadError(
+          'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
+        );
+        setIsUploading(false);
+        uploadStatus = false;
+        return false;
+      }
+      // Check file size
+
+      if (inputFiles[0].size > maxSizeInBytes) {
+        alert('File size must be less than 25MB');
+        //uploadError('File size must be less than 25MB');
+        //setUploadError('File size must be less than 25MB');
+        setUploadError(
+          'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
+        );
+
+        setIsUploading(false);
+        uploadStatus = false;
+        return false;
+      }
+      return true;
+    };
+    console.log('before uploadError msg');
+    console.log(uploadError);
+    const responseResult = await response();
+    console.log('before responseResult ');
+    console.log(responseResult);
+
+    if (responseResult === true) {
+      console.log(process.env.NEXT_PUBLIC_STRAPI_URL);
+      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`);
+      portfolioUploadformData.append('files', inputFiles[0]);
+
+      const postResult = await axios
+        .post(
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
+          portfolioUploadformData
+        )
+        .then((responseBody) => {
+          console.log(responseBody);
+          console.log(responseBody.data.id);
+
+          console.log(responseBody.data.name);
+          //setUploadFiles((prevState: any) => [...prevState, responseBody.data]);
+          //setUploadFiles(responseBody.data);
+          onFilesUploaded(responseBody.data);
+          setUploadFiles(responseBody.data);
+          setCanButVis(true);
+          setShowUploadModal(false);
+          setIsUploading(false);
+          uploadStatus = false;
+          console.log('canButVis');
+          console.log(canButVis);
+        });
+      console.log(postResult);
+      console.log(uploadStatus);
+      console.log(!uploadStatus);
+      if (!uploadStatus) return postResult;
+    }
+
+    console.log(filesUploaded);
+    console.log(filesUploaded.length);
+    console.log(uploadFiles);
+    console.log(uploadFiles.length);
+
+    //
+
+    /*await new Promise<void>(async (resolve) => {
       //setSelectFiles((prevState: any) => [...prevState, inputFiles]);
       setSelectFiles(inputFiles);
       console.log('before resolve');
@@ -119,17 +223,18 @@ export default function DragAndDrop({ files, onFilesSelected }) {
           onFilesSelected(inputFiles);
           resolve();
         });
-      }*/
+      }
       resolve();
-      onFilesSelected(inputFiles);
+      onFilesUploaded(uploadFiles);
 
       console.log('after resolve');
-    });
+    });*/
     console.log('selectFiles');
     console.log(selectFiles);
+    //onFilesUploaded(uploadFiles);
 
     console.log('after resolved');
-    console.log(onFilesSelected);
+    console.log(onFilesUploaded);
 
     //const files = Array.from(event.dataTransfer.files);
     //inputFiles?.map((fil) =>
@@ -182,11 +287,15 @@ export default function DragAndDrop({ files, onFilesSelected }) {
     //}
   }
   console.log(uploadFiles.length);
+  console.log(filesUploaded.length);
   if (uploadFiles.length > 0) {
     console.log(uploadFiles[0]['name']);
     console.log(uploadFiles[0]['id']);
   }
-
+  if (filesUploaded.length > 0) {
+    console.log(filesUploaded[0]['name']);
+    console.log(filesUploaded[0]['id']);
+  }
   function dropHandler(e: any): void {
     e.preventDefault();
     // e.stoppropagation();
@@ -201,7 +310,7 @@ export default function DragAndDrop({ files, onFilesSelected }) {
         ]);
     }
     console.log('drop handler End');
-    onFilesSelected(e.dataTransfer.files);
+    onFilesUploaded(e.dataTransfer.files);
     //onFilesSelected(selectFiles);
   }
 
@@ -228,39 +337,43 @@ export default function DragAndDrop({ files, onFilesSelected }) {
     <>
       <div
         id="drop_zone"
-        className={`
-           border: 5px solid blue;
-            width: 200px;
-           height: 100px;
-                  `}
+        className="flex flex-col
+        border-e-8 w-96 h-80 bg-orange-400"
         onDragEnter={(e) => dragEnter(e)}
         onDrop={(e) => dropHandler(e)}
         onDragOver={(e) => dragOverHandler(e)}
         onDragLeave={(e) => dragLeaver(e)}
       >
-        <h3>Please include your portfolio/resume:</h3>
-        <p>Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed</p>
-      </div>
-      <input
-        /*{style={{ color: rgba(0, 0, 0, 0) }} }
+        <h3>Drop your files here or select them using the button below</h3>
+        <input
+          /*{style={{ color: rgba(0, 0, 0, 0) }} }
         style={{ display: 'none' }}
         ref={fileInput}
         "color:transparent"
         */
-        id="fileSelect"
-        type="file"
-        style={{ color: 'transparent' }}
-        onChange={(event) => {
-          handleFileSelectChange(event);
-        }}
-        accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
-      />
-      {/*<button onClick={() => fileInput.current.click()}>Choose File</button>
-       */}
+          id="fileSelect"
+          type="file"
+          style={{ color: 'transparent' }}
+          onChange={(event) => {
+            handleFileSelectChange(event);
+          }}
+          accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
+        />
+      </div>
+      {isUploading ? 'Uploading' : 'no Uploading'}
+      {filesUploaded.length}
+
+      <atoms.Box gap="30px">
+        <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+          {uploadError}
+        </atoms.Typography>
+      </atoms.Box>
+
+      {/* 
       <div>
         {' '}
         {files.length > 0 ? <>{files[0]['name']}</> : 'Nothing  selected'}
-      </div>
+      </div> */}
       {/* <atoms.Box maxWidth="50%">
          <atoms.Button
           buttonSize="standard"
@@ -271,9 +384,10 @@ export default function DragAndDrop({ files, onFilesSelected }) {
         >
           {isUploading ? 'Uploading...' : 'Upload'}
         </atoms.Button>
-      </atoms.Box> }
-      {uploadFiles.length}
-      {uploadFiles.length > 0 ? (
+      </atoms.Box> } 
+      {isUploading ? 'Uploading...' : ''}
+      {uploadFiles.length > 0 ? uploadFiles[0].name : 'Nothing Uploaded'}
+      {/* {uploadFiles.length > 0 ? (
         <>
           <atoms.Button
             buttonSize="standard"

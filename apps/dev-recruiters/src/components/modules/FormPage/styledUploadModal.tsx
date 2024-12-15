@@ -21,21 +21,27 @@ export const OkIcon = styled.svg`
 `;
 
 export const UploadModalContent = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
   font-family: 'Abel', sans-serif;
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
 `;
 
 export const UploadCustomModalStyles = {
   content: {
     position: 'absolute',
-    width: '50%',
-    height: '50%',
+    /* width: '40%',
+    height: '80%', */
     top: '50%',
     left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-30%',
+    marginRight: '-20%',
     transform: 'translate(-50%, -50%)',
     zIndex: 1002,
   },

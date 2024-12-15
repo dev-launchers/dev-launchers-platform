@@ -174,12 +174,14 @@ export const GradientLine = styled.div<{ height?: string }>`
   );
 `;
 export const ModalUploadSection = styled.div`
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background-color: yellow;
+  width: 100%;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 400;
-  max-width: 400px;
+  background-color: gray;
 
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
@@ -201,11 +203,9 @@ export const ModalUploadSection = styled.div`
   }
 `;
 export const ModalFooterSection = styled.div`
-  height: 50%;
-  background-color: green;
   display: flex;
+  background-color: yellow;
   justify-content: space-around;
-  top: 150;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 400;
@@ -229,10 +229,9 @@ export const UploadButton = styled.button.attrs({ type: 'submit' })`
   display: flex;
   padding: var(--2, 8px) var(--6, 24px);
   align-items: center;
-  width: 45%;
+  width: 20%;
 
   margin-top: 10px;
-  margin-left: auto;
 
   justify-content: center;
   gap: var(--25, 10px);

@@ -56,7 +56,10 @@ export default function SignUpForm({
   handleCloseModal,
   position,
 }: Props) {
-  const [uploadFiles, setUploadFiles] = useState<any>([]);
+  //const [uploadFiles, setUploadFiles] = useState<any>([]);
+  // const [filesUploaded, setFilesUploaded] = useState<any>([]);
+  const [filesUploaded, setFilesUploaded] = useState<{}>([]);
+
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
   //const [showUploadModal, setShowUploadModal] = useState(false);
 
@@ -201,16 +204,41 @@ export default function SignUpForm({
     handleOkCloseModal,
     handleCancelCloseModal,
   }: UploadProps) {
-    const handleFiles = (selectedFiles) => {
+    /*const handleFiles = (selectedFiles) => {
       console.log('selectedFiles below');
       console.log(selectedFiles);
       setSelectedFiles(selectedFiles);
+      //setShowUploadModal(false); // Close the modal after receiving the files
+    };*/
+    const handleFiles = (uploadedFiles) => {
+      console.log('uploadedFiles below');
+      console.log(uploadedFiles);
+      /*setFilesUploaded({
+        id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
+        name: 'Energy.jpg',
+        mimeType: 'image/jpeg',
+        parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
+        webViewLink:
+          'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
+      });*/
+      setFilesUploaded(uploadedFiles); //resulted in error
+      //setUploadFiles(uploadedFiles);
+
+      //setShowUploadModal(false); // Close the modal after receiving the files
+    };
+    const handleError = (inUploadError) => {
+      console.log('upload Error below');
+      console.log(inUploadError);
+      setUploadError(inUploadError);
+      console.log('uploadError');
+      console.log(uploadError);
+
       //setShowUploadModal(false); // Close the modal after receiving the files
     };
 
     return (
       <>
-        <div>
+        {/*<div>
           <CloseButton onClick={handleUploadCloseModal}>
             <OkIcon
               xmlns="http://www.w3.org/2000/svg"
@@ -225,22 +253,43 @@ export default function SignUpForm({
                 d="M6 18L18 6M6 6l12 12"
               />
             </OkIcon>
-          </CloseButton>
-          <ModalUploadSection>
-            <DragAndDrop files={selectedFiles} onFilesSelected={handleFiles} />
-          </ModalUploadSection>
-          <div> Parent sees {selectedFiles.length} files </div>
-        </div>
+          </CloseButton> */}
+        <ModalUploadSection>
+          <DragAndDrop
+            filesUploaded={filesUploaded}
+            onFilesUploaded={handleFiles}
+            //uploadError={handleError}
+            //errorEncountered={uploadError}
+            //onUploadError={handleError}
+          />
+        </ModalUploadSection>
         <div>
+          Parent sees
+          {JSON.stringify(filesUploaded).length > 0
+            ? filesUploaded['name']
+            : 'Nothing'}
+        </div>
+
+        <div> Parent sees {uploadError} </div>
+        <atoms.Box gap="30px">
+          <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+            {uploadError}
+          </atoms.Typography>
+        </atoms.Box>
+
+        {/*</div> 
+        
           <ModalFooterSection>
             <OkButton onClick={handleOkCloseModal}> Ok </OkButton>
             <CancelButton onClick={handleCancelCloseModal}>Cancel</CancelButton>
           </ModalFooterSection>
+          */}
+        <div>
           <ul>
-            {selectedFiles.length > 0 ? (
-              <li>{selectedFiles[0]['name']}</li>
+            {JSON.stringify(filesUploaded).length > 0 ? (
+              <li>{filesUploaded['name']}</li>
             ) : (
-              <> No files Selected yet </>
+              <> No files Uploaded yet </>
             )}
           </ul>
         </div>
@@ -294,12 +343,15 @@ export default function SignUpForm({
   };
 
   const [showUploadModal, setShowUploadModal] = useState(false);
+  const [errorEncountered, setErrorEncountered] = useState('');
   const [uploadError, setUploadError] = useState('');
+
   const [canButVis, setCanButVis] = useState(true);
 
   const handleUploadOpenModal = () => {
     setSelectedFiles([]);
-    setUploadFiles([]);
+    //setUploadFiles([]);
+    setFilesUploaded([]);
     setUploadError('');
     setShowUploadModal(true);
   };
@@ -357,12 +409,12 @@ export default function SignUpForm({
     const responseResult = await response();
     if (responseResult === true) {
       console.log(process.env.NEXT_PUBLIC_STRAPI_URL);
-      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/upload`);
+      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`);
       portfolioUploadformData.append('files', selectedFiles[0]);
 
       const postResult = await axios
         .post(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/upload`,
+          `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
           portfolioUploadformData
         )
         .then((responseBody) => {
@@ -370,7 +422,12 @@ export default function SignUpForm({
           console.log(responseBody.data.id);
 
           console.log(responseBody.data.name);
-          setUploadFiles((prevState: any) => [...prevState, responseBody.data]);
+          //setUploadFiles((prevState: any) => [...prevState, responseBody.data]);
+          setFilesUploaded((prevState: any) => [
+            ...prevState,
+            responseBody.data,
+          ]);
+
           setCanButVis(true);
           setIsUploading(false);
           console.log('canButVis');
@@ -379,42 +436,54 @@ export default function SignUpForm({
       return postResult;
     }
 
-    console.log(uploadFiles);
-    console.log(uploadFiles.length);
+    console.log(filesUploaded);
+    console.log(JSON.stringify(filesUploaded).length);
   };
   const handleCancelCloseModal = () => {
     alert('handleCancelCloseModal');
     setSelectedFiles([]);
-    setUploadFiles([]);
+    //setUploadFiles([]);
+    setFilesUploaded([]);
+
     setShowUploadModal(false);
   };
   const handleRemoveFile = () => {
     alert(canButVis);
     const newArr = [...selectedFiles];
-    newArr.splice(uploadFiles[0], 1);
+    //newArr.splice(uploadFiles[0], 1);
+    newArr.splice(filesUploaded[0], 1);
+
     console.log(newArr);
     setSelectedFiles([]);
     setSelectedFiles(newArr);
-    setUploadFiles([]);
-    setUploadFiles(newArr);
+    //setUploadFiles([]);
+    //setUploadFiles(newArr);
+    setFilesUploaded([]);
+    setFilesUploaded(newArr);
     setCanButVis(false);
     try {
       const response = (async () => {
+        //const delResult = await axios
+        //  .delete(
+        //    `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
+        //    uploadFiles[0].id
+        //  )
         const delResult = await axios
           .delete(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/delete?fileId=`,
-            uploadFiles[0].id
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
+            filesUploaded[0].id
           )
+
           .then((responseBody) => {
             console.log(responseBody);
             console.log(responseBody.status);
             console.log(canButVis);
 
             console.log(responseBody.status);
-            setUploadFiles((prevState: any) => [
-              ...prevState,
-              responseBody.status,
-            ]);
+            // setUploadFiles((prevState: any) => [
+            //   ...prevState,
+            //   responseBody.status,
+            // ]);
           });
         delResult;
         //}
@@ -467,13 +536,13 @@ export default function SignUpForm({
           setSubmitting(true);
           console.log('insidesubmit');
           console.log(values);
-          console.log(uploadFiles[0].id);
+          console.log(filesUploaded['id']);
           agent.Applicant.post({
             ...values,
             //@ts-ignore
             level: values.level.toLowerCase(),
-            portfolioLink: uploadFiles[0].webViewLink,
-            portfolioFileId: uploadFiles[0].id,
+            portfolioLink: filesUploaded['webViewLink'],
+            portfolioFileId: filesUploaded['id'],
             skills: values.skills
               .toString()
               .split(',')
@@ -611,7 +680,7 @@ export default function SignUpForm({
                     label="Please briefly describe your relevant experience"
                     placeholder="My experience with development / design is..."
                     required
-                    rows={5}
+                    rows={1}
                     id="experience"
                     name="experience"
                     // onChange={handleChange}
@@ -621,7 +690,7 @@ export default function SignUpForm({
                     cols={50}
                     label="Why would you like to be a Dev Launcher?"
                     placeholder="My experience with development / design is..."
-                    rows={5}
+                    rows={1}
                     id="reason"
                     name="reason"
                     // onChange={handleChange}
@@ -636,14 +705,22 @@ export default function SignUpForm({
                     name="extraInfo"
                     // onChange={handleChange}
                   />
+                  <h6> Upload your resume using the links below. </h6>
+                  <p>
+                    Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed
+                  </p>
+
+                  <UploadButton onClick={handleUploadOpenModal}>
+                    Upload Files
+                  </UploadButton>
                   <Field
                     as={organisms.FormField}
                     label="Portfolio/Resume Link"
-                    enabled="false"
+                    disabled={true}
                     placeholder="https://myportfolio.com"
                     id="portfolioLink"
                     name="portfolioLink"
-                    value={uploadFiles[0]?.webViewLink}
+                    value={filesUploaded['webViewLink']}
                     // onChange={handleChange}
                     touched={
                       formik.touched.portfolioLink &&
@@ -651,12 +728,6 @@ export default function SignUpForm({
                     }
                     error={formik.errors.portfolioLink}
                   />
-                  <UploadButton onClick={handleUploadOpenModal}>
-                    Upload{' '}
-                  </UploadButton>
-                  <ButtonsContainer onClick={handleUploadOpenModal}>
-                    Upload
-                  </ButtonsContainer>
                   <UploadModal
                     modalIsOpen={showUploadModal}
                     closeModal={handleUploadCloseModal}
@@ -669,37 +740,24 @@ export default function SignUpForm({
                       />
                     }
                   />
+                  {isUploading}
                   {isUploading
                     ? 'Uploading'
-                    : uploadFiles.length > 0
-                    ? !!uploadFiles.length &&
-                      uploadFiles.map((fil) => (
-                        <>
-                          <li>
-                            {fil.id}
-                            {fil.name}
-                            {!!canButVis && (
-                              <CancelUploadButton onClick={handleRemoveFile}>
-                                Cancel Upload {fil.name}
-                              </CancelUploadButton>
-                            )}
-                          </li>
-                        </>
-                      ))
-                    : selectedFiles.length > 0 &&
-                      uploadError !== '' &&
-                      uploadError
-                    ? selectedFiles.map((fil) => (
-                        <atoms.Box gap="30px">
-                          <li> {fil.name}</li>
-                          <atoms.Typography
-                            type="pSmall"
-                            css={{ color: 'red' }}
-                          >
-                            {uploadError}
-                          </atoms.Typography>
+                    : JSON.stringify(filesUploaded).length > 0
+                    ? !!JSON.stringify(filesUploaded).length && (
+                        <atoms.Box
+                          gap="1rem"
+                          justifyContent="center"
+                          flexDirection="row"
+                        >
+                          {filesUploaded['name']}
+                          {!!canButVis && (
+                            <CancelUploadButton onClick={handleRemoveFile}>
+                              Remove
+                            </CancelUploadButton>
+                          )}
                         </atoms.Box>
-                      ))
+                      )
                     : null}
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
