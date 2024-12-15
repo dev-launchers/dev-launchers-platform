@@ -1,213 +1,257 @@
-/* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
-import { toast } from 'react-toastify';
-import { withTheme } from "styled-components";
-import PageBody from "../../common/PageBody";
+import React from 'react';
+import { CardImagePair } from '@devlaunchers/components/components/CardImagePair';
+import Image from 'next/image';
 
-import HeroImage from "./HeroImage";
-import HeroOverlay from "./HeroOverlay";
-import Intro from "./Intro";
-// import Programs from "./Programs";
+const Home = () => {
+  const opportunities = [
+    {
+      title: 'Build Your Beginning',
+      description:
+        'Start your tech career or switch paths with hands-on experience at Dev Launchers. Participate in impactful projects and receive mentorship to gain confidence and skills needed in the tech industry.',
+      buttonText: 'Apply | Level Beginner',
+    },
+    {
+      title: 'Launch to Leadership',
+      description:
+        'Lead teams and mentor emerging talent. Share your experience, guide projects, and help shape the future of tech innovation. Develop leadership skills and advance your career with us.',
+      buttonText: 'Learn More',
+    },
+    {
+      title: 'Shape the Future',
+      description:
+        'Become a catalyst for change by becoming a mentor or partnering with us. Help us build an inclusive and innovative tech sector through resources and expertise.',
+      buttonText: 'Leadership Opportunities',
+    },
+  ];
 
-import Contribution from "./Contribution";
-import Partners from "./Partners";
+  const testimonials = [
+    {
+      text: 'This program has been transformative for my career. The hands-on experience and mentorship were invaluable.',
+      author: 'Sophie M.',
+      role: 'Software Engineer',
+    },
+    {
+      text: 'The community support and practical projects helped me transition into tech successfully.',
+      author: 'Jason R.',
+      role: 'Product Manager',
+    },
+    {
+      text: 'An incredible platform that truly empowers tech professionals to reach their full potential.',
+      author: 'Alex K.',
+      role: 'Tech Lead',
+    },
+  ];
 
-import {
-  HomePageBody,
-  ColoredCtaWrapper,
-  ColoredCtaEntry,
-  ColoredCtaEntryImage,
-  ColoredCtaEntryTitle,
-  Wrapper,
-} from "./StyledHome";
-import CtaDescriptionArea from "./CtaDescriptionArea";
+  const features = [
+    {
+      title: "Shape Tomorrow's Tech",
+      description:
+        "Explore, contribute, and refine innovative project ideas with our community. Whether you're sharing your own concepts or helping others evolve theirs, every perspective helps turn great ideas into reality.",
+      buttonText: 'Explore Ideas',
+    },
+    {
+      title: 'Meet Our Community',
+      description:
+        "Our diverse members support each other to achieve remarkable things. From launching new careers to building innovative solutions, we're creating positive change through technology. Discover the stories and projects shaping our community's success",
+      buttonText: 'See Our Impact',
+    },
+    {
+      title: 'Hands-on Learning',
+      description:
+        "Grow your skills through our collection of resources and hands-on projects. Whether you're exploring development, design, product management, QA, or research, build confidence with real-world examples and guided challenges.",
+      buttonText: 'Explore Resources',
+    },
+  ];
 
-import womanComputerImage from "../../../images/people-cutouts/woman-computer.png?webp";
-import manGlassesImage from "../../../images/people-cutouts/man-glasses.png?webp";
-import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png?webp";
-import boyFrontImage from "../../../images/people-cutouts/boy-front.png?webp";
+  const sections = {
+    join: {
+      title: 'Join Us',
+      description:
+        "Create your profile, discover opportunities, and join our community—all for free! Whether you're just starting out, looking to switch careers, or seeking new challenges, our community is here to support you every step of the way.",
+      buttonText: 'Join Today',
+      styles: {
+        container: 'border-2 border-white rounded-xl p-8',
+        heading: 'font-bold text-center',
+        description: 'text-base mb-4 text-gray-500 font-normal text-center',
+        buttonWrapper: 'flex justify-center',
+        button:
+          'text-base bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700',
+      },
+    },
 
-// General scroll-to function
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
-
-function Home({ theme }) {
-  // Scroll-to functions
-  const learnRef = useRef(null);
-  const leadRef = useRef(null);
-  const createRef = useRef(null);
-  const donateRef = useRef(null);
-
+    supportMission: {
+      title: 'Transform Tech Today',
+      description:
+        "Together, we're building pathways into technology careers for everyone. Your tax-deductible donation helps create an inclusive community where aspiring developers, designers, product managers, researchers, and QA professionals can turn their potential into impact.",
+      buttonText: 'Donate Today',
+      styles: {
+        container: 'border-2 border-white rounded-xl p-8',
+        heading: 'font-bold text-center',
+        description: 'text-base mb-4 text-gray-500 font-normal text-center',
+        buttonWrapper: 'flex justify-center',
+        button:
+          'text-base bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700',
+      },
+    },
+  };
   return (
-    <Wrapper>
-      <HeroImage />
-      <HeroOverlay />
-      <PageBody>
-        <HomePageBody>
-          <ColoredCtaWrapper>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(learnRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_1}
-            >
-              <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={womanComputerImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(leadRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_2}
-            >
-              <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={manGlassesImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(createRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_4}
-            >
-              <ColoredCtaEntryTitle>CREATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={girlSmilingImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(donateRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_3}
-            >
-              <ColoredCtaEntryTitle>DONATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={boyFrontImage} />
-            </ColoredCtaEntry>
-          </ColoredCtaWrapper>
-          <Intro />
-          <Contribution />
-          <div
-            className="scrollToDiv"
-            ref={learnRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row"
-            title="LEARN"
-            descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
-            descriptionContent={
-              <div>
-                Learn at a pace tailored completely to you! You&apos;ll have
-                hands on help, starting from{" "}
-                <span
-                  style={{
-                    backgroundColor: theme.colors.NEUTRAL_2,
-                    color: theme.colors.NEUTRAL_1,
-                  }}
-                >
-                  square one
-                </span>{" "}
-                all the way through building complex projects working in agile
-                teams. Whether you&apos;re looking to build clean, professional
-                apps and sites, or create scalable data-driven solutions, Dev
-                Launchers has been crafted for <u>YOU</u>.
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_1}
-            imageSrc={womanComputerImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={leadRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row-reverse"
-            title="LEAD"
-            descriptionHeadline="Evolve your career in the direction you want to go"
-            descriptionContent={
-              <div>
-                <p>
-                  Change your life while changing the world! Lead ambitious
-                  agile teams designed to engage new learners and solve real
-                  problems, all with guidance and support from people who have
-                  walked the same path.
-                </p>
-                <p>
-                  You&apos;ll gain the soft skills needed to land more senior
-                  roles in your career while managing projects and making
-                  lifelong friends. Join a growing network of software
-                  professionals working to build something great, together.
-                </p>
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_2}
-            imageSrc={manGlassesImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={createRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row"
-            title="CREATE"
-            descriptionHeadline="Build epic products, tools, and apps used by real people!"
-            descriptionContent={
-              <div>
-                <p>
-                  We build <u>awesome</u> things, and you can join us!
-                </p>{" "}
-                <p>The Dev Launchers Project Ethos:</p>
-                <ul>
-                  <li>Keep it exciting, always</li>
-                  <li>
-                    Encourage people at all levels and from all backgrounds to
-                    learn technical skills
-                  </li>
-                  <li>
-                    When given the chance, experiment with groundbreaking
-                    technology.
-                  </li>
-                  <li>Make the world better</li>
-                </ul>
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_4}
-            imageSrc={girlSmilingImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={donateRef}
-            style={{
-              height: "0",
-              paddingTop: "5rem",
-              backgroundColor: theme.colors.NEUTRAL_1,
-            }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row-reverse"
-            title="DONATE"
-            descriptionHeadline="Your donation will create an opportunity for a young learner, preparing them to face the technical challenges of the future head on."
-            descriptionContent={
-              <div>
-                Dev Launchers is a registered 501(c)(3) not-for-profit
-                organization. We can’t keep changing lives without your support!
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_1}
-            imageSrc={boyFrontImage}
-            imageOutlineColor={theme.colors.NEUTRAL_2}
-            mainBackgroundColor={theme.colors.NEUTRAL_1}
-            titleFontColor={theme.colors.NEUTRAL_2}
-            descriptionBackgroundColor={theme.colors.NEUTRAL_1}
-            descriptionFontColor={theme.colors.NEUTRAL_2}
-          />
-          <Partners />
-        </HomePageBody>
-      </PageBody>
-    </Wrapper>
-  );
-}
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section */}
+      <section className="flex flex-col container mx-auto px-4 py-16 flex justify-center items-center">
+        <div className="items-center max-w-4xl py-16 gap-4 text-center">
+          <h1
+            style={{ fontSize: '4rem', lineHeight: '1.25' }}
+            className="text-4xl font-bold border-0 m-0"
+          >
+            Collaborate, Build, and Thrive in Tech
+          </h1>
+          <p className="text-xl mb-4 px-12 max-w-3xl text-gray-500 font-normal">
+            Join our global community of 200+ members who’ve launched their
+            careers to the next level through collaborative, real-world
+            projects.
+          </p>
+        </div>
+        <div>
+          <button className="text-base bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700">
+            Explore Opportunities
+          </button>
+        </div>
+      </section>
 
-export default withTheme(Home);
+      {/* Opportunities Section */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="flex flex-col gap-y-4 pt-6 pb-12 mx-auto text-center max-w-3xl">
+          <h2 style={{ fontSize: '3rem' }} className="font-bold text-center">
+            Opportunities for Everyone
+          </h2>
+          <p className="text-lg mb-4 text-gray-500 font-normal">
+            Whether you’re starting your journey, leading teams, or seeking to
+            give back, we provide the hands-on experience, mentorship, and
+            community you need to succeed.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {opportunities.map((item, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-purple-900 to-purple-800 p-6 rounded-xl border border-purple-500"
+            >
+              <h3 className="text-xl font-bold mb-4">{item.title}</h3>
+              <p className="mb-6 text-gray-300">{item.description}</p>
+              <button className="text-base text-purple-300 hover:text-purple-100">
+                {item.buttonText}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Join Us Section */}
+      <section className="container mx-auto px-4 py-16 max-w-4xl">
+        <div className={sections.join.styles.container}>
+          <h2
+            style={{ fontSize: '3rem' }}
+            className={sections.join.styles.heading}
+          >
+            {sections.join.title}
+          </h2>
+          <p className={sections.join.styles.description}>
+            {sections.join.description}
+          </p>
+          <div className={sections.join.styles.buttonWrapper}>
+            <button className={sections.join.styles.button}>
+              {sections.join.buttonText}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Build Section*/}
+      <section className="container mx-auto px-4 py-16">
+        <div className="flex flex-col gap-y-4 pt-6 pb-12 mx-auto text-center max-w-3xl">
+          <h2 style={{ fontSize: '3rem' }} className="font-bold text-center">
+            We Build with the Best
+          </h2>
+          <p className="text-base mb-4 text-gray-500 font-normal">
+            {' '}
+            We collaborate and build using the best tools and software including
+            Figma, React, Next.js and more to launch our members to the next
+            level. Learn how we leverage these technologies in real-world
+            projects and develop competitive skills that keep you at the
+            forefront of the industry.
+          </p>
+        </div>
+        <div>
+          <img src="/images/home/logo-tailwind.png" />
+          <img src="/images/home/logo-react.png" />
+          <img src="/images/home/logo-github.png" />
+          <img src="/images/home/logo-typescript.png" />
+          <img src="/images/home/logo-figma.png" />
+          <img src="/images/home/logo-schadcn.png" />
+        </div>
+      </section>
+
+      {/* Community Section */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">Our Community</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="border border-orange-500 rounded-xl p-6 bg-black"
+            >
+              <p className="mb-4 text-gray-300">{testimonial.text}</p>
+              <div>
+                <p className="font-bold">{testimonial.author}</p>
+                <p className="text-gray-400">{testimonial.role}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-center mb-12">
+          Why Dev Launchers?
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-br from-purple-900 to-purple-800 p-6 rounded-xl border border-purple-500"
+            >
+              <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+              <p className="mb-6 text-gray-300">{feature.description}</p>
+              <button className="text-base text-purple-300 hover:text-purple-100">
+                {feature.buttonText}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Support Mission Section */}
+      <section className="container mx-auto px-4 py-16 max-w-4xl">
+        <div className={sections.supportMission.styles.container}>
+          <h2
+            style={{ fontSize: '3rem' }}
+            className={sections.supportMission.styles.heading}
+          >
+            {sections.supportMission.title}
+          </h2>
+          <p className={sections.supportMission.styles.description}>
+            {sections.supportMission.description}
+          </p>
+          <div className={sections.supportMission.styles.buttonWrapper}>
+            <button className={sections.supportMission.styles.button}>
+              {sections.supportMission.buttonText}
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Home;
