@@ -10,7 +10,7 @@ const SubmissionButton = ({ sending, onClick }) => {
       onClick={onClick}
     >
       {' '}
-      {sending === true ? 'Wait' : 'Submit'}{' '}
+      {sending === true ? 'Wait' : 'Post Idea'}{' '}
     </atoms.Button>
   );
 };

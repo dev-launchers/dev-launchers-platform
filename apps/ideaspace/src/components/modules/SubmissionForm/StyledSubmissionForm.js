@@ -59,6 +59,16 @@ export const StyledTextArea = styled.textarea`
   border-radius: 0px;
   display: block;
   margin: 0;
+
+  &::placeholder {
+    color: var(--static-content-text-grey-muted, #494949);
+    font-family: var(--font-family-secondary, 'Nunito Sans');
+    font-size: var(--placeholder-font-size, 18px);
+    font-style: normal;
+    font-weight: 300;
+    line-height: var(--placeholder-line-height, 24px);
+    letter-spacing: var(--font-letter-spacing-body-body, 0px);
+  }
 `;
 
 export const CharacterCounter = styled.div`
@@ -78,6 +88,16 @@ export const StyledInput = styled.input`
   font: 300 16px/24px 'Nunito Sans', sans-serif;
   color: #494949;
   border-radius: 24px;
+
+  &::placeholder {
+    color: var(--static-content-text-grey-muted, #494949);
+    font-family: var(--font-family-secondary, 'Nunito Sans');
+    font-size: var(--placeholder-font-size, 18px);
+    font-style: normal;
+    font-weight: 300;
+    line-height: var(--placeholder-line-height, 24px);
+    letter-spacing: var(--font-letter-spacing-body-body, 0px);
+  }
 `;
 
 export const GroupWrapper = styled.fieldset`

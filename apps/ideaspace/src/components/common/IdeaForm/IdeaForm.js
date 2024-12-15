@@ -155,7 +155,7 @@ const IdeaForm = ({
 
   return (
     <atoms.Box
-      margin="1.5rem 0rem"
+      margin="0rem"
       style={{
         backgroundColor: 'rgba(244, 240, 249, 1)',
         padding: '40px 0',
@@ -646,7 +646,9 @@ const IdeaForm = ({
                   )}
                 </atoms.Box>
               </atoms.Box>
-              {successMessageVisible && <SuccessAlert />}
+              {successMessageVisible && (
+                <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
+              )}
             </Form>
           )}
         </Formik>

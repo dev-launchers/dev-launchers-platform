@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import styled from 'styled-components';
 
@@ -9,12 +9,14 @@ const AlertWrapper = styled.div`
   transform: translateX(-50%);
   z-index: 1000;
   background-color: #c4ebc6;
-  width: 940px;
-  height: 38px;
-  border-radius: 16px;
+  width: 928px;
+  height: 56px;
+  border: 2px solid #226626;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 16px;
   animation: slideDown 0.5s ease-out;
 
   @keyframes slideDown {
@@ -28,23 +30,90 @@ const AlertWrapper = styled.div`
     }
   }
 `;
+
+const AlertContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+`;
+
 const AlertMessage = styled.h4`
   color: #206124;
   margin: 0;
-  padding: 16px 32px;
-  text-align: center;
+  text-align: left;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 `;
 
-const SuccessAlert = ({
-  message = 'Your idea was submmited. Now your idea can be workshop with our comunity so you get better insights ',
-}) => {
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #226626;
+  padding: 4px;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+const SuccessAlert = ({ onClose }) => {
+  const [countdown, setCountdown] = useState(5);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <AlertWrapper>
-      <AlertMessage>{message}</AlertMessage>
+      <AlertContent>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"
+            fill="#226626"
+          />
+        </svg>
+        <AlertMessage>
+          Your idea was successfully posted! You'll be redirected to the Idea
+          Workshopping Page in <strong>{countdown}</strong> seconds.
+        </AlertMessage>
+      </AlertContent>
+      <CloseButton onClick={onClose}>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+            fill="#226626"
+          />
+        </svg>
+      </CloseButton>
     </AlertWrapper>
   );
 };
