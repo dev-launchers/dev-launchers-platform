@@ -1,30 +1,25 @@
-import styled from 'styled-components';
-import { typographyStyles } from '../Typography';
+import { ReactNode } from 'react';
 
 interface NavLinkProps {
   href?: string;
-  text?: string;
+  children?: ReactNode;
+  disabled?: boolean;
 }
 
-const NavLink = styled.a<NavLinkProps>`
-  ${typographyStyles.navLink}
-  color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  &:hover {
-    color: ${({ theme }) => theme.colors.BLUE_200};
-  }
-  &:focus {
-    color: ${({ theme }) => theme.colors.BLUE_200};
-  }
-  &:active {
-    color: ${({ theme }) => theme.colors.BLUE_100};
-    border-bottom: 3px solid ${({ theme }) => theme.colors.BLUE_200};
-    text-align: center;
-    width: 58px;
-    padding-bottom: 6px;
-  }
-  &:disabled {
-    color: ${({ theme }) => theme.colors.GREYSCALE_GREY};
-  }
-`;
+export default function NavLink(props: NavLinkProps) {
+  const { children, href, disabled } = props;
 
-export default NavLink;
+  return (
+    <a
+      href={href}
+      className={`font-['Oswald'] border-b-[3px] border-transparent pb-1 text-center whitespace-nowrap text-base uppercase font-normal no-underline inline-block hover:text-blue-200 focus:text-blue-200 active:text-blue-100 active:border-blue-200 visited:text-neptune-500 px-1 
+        ${
+          disabled === true
+            ? 'text-grayscale-300 cursor-default visited:text-grayscale-300 pointer-events-none'
+            : 'text-grayscale-50 cursor-pointer'
+        }`}
+    >
+      {children}
+    </a>
+  );
+}

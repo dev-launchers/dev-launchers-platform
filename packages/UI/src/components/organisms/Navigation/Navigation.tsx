@@ -7,6 +7,7 @@ import { Button, Layer, NavLink } from '../../atoms';
 import NavDropdown from '../NavDropdown/NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import MobileNavigation from './MobileNavigation';
+import NotificationPopover from './NotificationPopover';
 
 const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
   return (
@@ -141,8 +142,8 @@ const Navigation = () => {
                 process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                 `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
               }
-              buttonType="primary"
-              buttonSize="standard"
+              type="primary"
+              size="medium"
             >
               Sign In
             </Button>
@@ -152,14 +153,16 @@ const Navigation = () => {
                 process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                 `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
               }
-              buttonType="secondary"
-              buttonSize="standard"
+              type="secondary"
+              size="medium"
             >
               Create an Account
             </Button>
           </div>
         ) : (
           <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
+            <NotificationPopover />
+
             <img
               width="36"
               height="33"

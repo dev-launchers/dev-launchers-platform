@@ -1,8 +1,7 @@
-import type { Duration } from 'iso8601-duration';
-import { parse } from 'iso8601-duration';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { type WritableDeep } from 'type-fest';
 import Avatar from '../atoms/Avatar/Avatar';
+import { NotificationEvent, NotificationUser } from '@devlaunchers/models';
 
 const compoundSlots = [
   {
@@ -12,7 +11,7 @@ const compoundSlots = [
       'descriptionStyle',
       'targetStyle',
     ] as const,
-    className: 'font-nunito-sans text-base leading-normal',
+    className: 'font-nunito-sans text-sm md:text-base leading-normal',
   },
   {
     slots: ['targetStyle', 'usernameStyle'] as const,
@@ -39,7 +38,7 @@ const notificationStyles = tv({
     targetStyle: '',
     descriptionStyle: 'line-clamp-2 self-stretch md:order-1',
     timeStampStyle:
-      'text-right font-nunito-sans text-base leading-6 text-grayscale-400',
+      'text-right font-nunito-sans text-sm md:text-base leading-6 text-grayscale-400',
     statusIndicator: 'h-3  w-3 shrink-0 rounded-full',
   },
   variants: {
@@ -59,10 +58,9 @@ const notificationStyles = tv({
 
 interface NotificationProps extends VariantProps<typeof notificationStyles> {
   message: string;
-  name: string;
+  name: NotificationUser['data']['attributes']['username'];
   target: string;
   targetLink: string;
-  profileLink: string;
   /**
    * TimeStamp in ISO_8601 duration format
    * @description it starts with P[duration designator, stands for period) followed by number and Y or M or D then T[time designator] followed by number and H or M or S
@@ -70,7 +68,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
    * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
    */
   timeStamp: string;
-  action: string;
+  action: NotificationEvent['data']['attributes']['action'];
 
   avatar: {
     src: React.ComponentProps<typeof Avatar>['src'];
@@ -78,61 +76,31 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   };
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
-function formatDate(
-  { years, months, weeks, days, hours, minutes, seconds }: Duration,
-  minified?: boolean
-) {
-  const units = [];
+function timeSincePublished(publishedAt: string) {
+  const now = new Date();
+  const publishedDate = new Date(publishedAt);
+  const diffInMs = now.getTime() - publishedDate.getTime();
 
-  if (years && months) {
-    units.push(
-      { count: years, unit: 'year' },
-      { count: months, unit: 'month' }
-    );
-  } else if (months && weeks) {
-    units.push(
-      { count: months, unit: 'month' },
-      { count: weeks, unit: 'week' }
-    );
-  } else if (weeks && days) {
-    units.push({ count: weeks, unit: 'week' }, { count: days, unit: 'day' });
-  } else if (days && hours) {
-    units.push({ count: days, unit: 'day' }, { count: hours, unit: 'hour' });
-  } else if (hours && minutes) {
-    units.push(
-      { count: hours, unit: 'hour' },
-      { count: minutes, unit: 'minute' }
-    );
-  } else if (minutes && seconds) {
-    units.push(
-      { count: minutes, unit: 'minute' },
-      { count: seconds, unit: 'second' }
-    );
-  } else if (years || months || weeks || days || hours || minutes || seconds) {
-    // Handle single units or combinations not covered by above cases
-    units.push({ count: years || 0, unit: 'year' });
-    units.push({ count: months || 0, unit: 'month' });
-    units.push({ count: weeks || 0, unit: 'week' });
-    units.push({ count: days || 0, unit: 'day' });
-    units.push({ count: hours || 0, unit: 'hour' });
-    units.push({ count: minutes || 0, unit: 'minute' });
-    units.push({ count: seconds || 0, unit: 'second' });
+  const diffInSeconds = Math.floor(diffInMs / 1000);
+  const diffInMinutes = Math.floor(diffInSeconds / 60);
+  const diffInHours = Math.floor(diffInMinutes / 60);
+  const diffInDays = Math.floor(diffInHours / 24);
+
+  if (diffInDays > 0) {
+    return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+  } else if (diffInHours > 0) {
+    return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+  } else if (diffInMinutes > 0) {
+    return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
   } else {
-    // Handle the case where no time units are provided
-    return !minified ? '0 seconds ago' : '0s';
+    return `${diffInSeconds} second${diffInSeconds > 1 ? 's' : ''} ago`;
   }
-  if (!minified) {
-    const formattedUnits = units
-      .filter((unit) => unit.count > 0)
-      .map((unit) => `${unit.count} ${unit.unit}${unit.count > 1 ? 's' : ''}`);
-    return `${formattedUnits.join(' and ')} ago`;
-  }
-  const formattedUnits = units
-    .filter((unit) => unit.count > 0)
-    .map((unit) => `${unit.count}${unit.unit[0]}`);
-  return `${formattedUnits.join(':')}`;
 }
+
+const actionTexts = {
+  'Idea Created': 'created the idea',
+  Commented: 'commented on the idea',
+};
 
 function NotificationItem({
   message,
@@ -141,18 +109,15 @@ function NotificationItem({
   timeStamp,
   action,
   targetLink,
-  profileLink,
   status,
   avatar,
 }: NotificationProps) {
   const {
     wrapper,
     statusIndicator,
-    avatarContainer,
     headerStyle,
     detailsContainer,
     contentContainer,
-    usernameStyle,
     actionStyle,
     targetStyle,
     descriptionStyle,
@@ -160,7 +125,7 @@ function NotificationItem({
   } = notificationStyles({ status });
 
   return (
-    <li className="list-none">
+    <li className="list-none !text-xs">
       <a
         href={targetLink}
         rel="noreferrer"
@@ -168,26 +133,15 @@ function NotificationItem({
         className={wrapper()}
       >
         <span className={statusIndicator()}></span>
-        <a
-          href={profileLink}
-          rel="noreferrer"
-          target="_blank"
-          className={avatarContainer()}
-        >
-          <Avatar {...avatar} />
-        </a>
+
+        <Avatar {...avatar} />
+
         <div className={detailsContainer()}>
           <div className={contentContainer()}>
             <div className={headerStyle()}>
-              <a
-                href={profileLink}
-                rel="noreferrer"
-                target="_blank"
-                className={usernameStyle()}
-              >
-                <strong>{name}</strong>
-              </a>
-              <span className={actionStyle()}>{action}</span>
+              <strong>{name}</strong>
+
+              <span className={actionStyle()}>{actionTexts[action]}</span>
               <a
                 href={targetLink}
                 rel="noreferrer"
@@ -202,9 +156,9 @@ function NotificationItem({
           <time
             dateTime={timeStamp}
             className={timeStampStyle()}
-            aria-label={formatDate(parse(timeStamp))}
+            aria-label={timeSincePublished(timeStamp)}
           >
-            {formatDate(parse(timeStamp), true)}
+            {timeSincePublished(timeStamp)}
           </time>
         </div>
       </a>

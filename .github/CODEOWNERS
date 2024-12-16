@@ -1,6 +1,9 @@
 # Shared Packages
 packages/ @dev-launchers/platform-enablement
 
+# Design tokens
+packages/tailwind-constructor @dev-launchers/universal-design
+
 # Ideaspace code
 apps/ideaspace/ @dev-launchers/ideaspace-team
 
