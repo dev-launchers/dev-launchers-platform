@@ -1,8 +1,7 @@
+import { useArgs } from '@storybook/addons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
 import { OpenResponse } from './OpenResponse';
 import '@devlaunchers/tailwind/tailwind.css';
-import type { OpenResponseProps } from './index';
 
 const meta: Meta<typeof OpenResponse> = {
   component: OpenResponse,
@@ -15,7 +14,7 @@ const meta: Meta<typeof OpenResponse> = {
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11488-38057&t=Oj7D5W1AoEfoRwc0-0',
+      url: 'https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11488-23424&m=dev&t=tdZXS21OVzS9krjx-1',
     },
   },
   argTypes: {
@@ -68,34 +67,23 @@ const meta: Meta<typeof OpenResponse> = {
 export default meta;
 type Story = StoryObj<typeof OpenResponse>;
 
-// Wrapper for dynamic behavior
-const OpenResponseWrapper = (props: OpenResponseProps) => {
-  const [localValue, setLocalValue] = useState(props.inputValue || '');
-
-  React.useEffect(() => {
-    // Sync with Storybook control panel updates
-    setLocalValue(props.inputValue || '');
-  }, [props.inputValue]);
-
-  const handleInputChange = (value: string) => {
-    if (props.onInputChange) {
-      props.onInputChange(value); // Notify Storybook of the change
-    }
-    setLocalValue(value); // Update the internal state
-  };
-
-  return (
-    <OpenResponse
-      {...props}
-      inputValue={localValue}
-      onInputChange={handleInputChange}
-    />
-  );
-};
-
 // Stories
 export const DefaultState: Story = {
-  render: (args) => <OpenResponseWrapper {...args} />,
+  render: function Render(args) {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    const handleInputChange = (value: string) => {
+      updateArgs({ inputValue: value }); // Sync Storybook controls with user input
+    };
+
+    return (
+      <OpenResponse
+        {...args}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+      />
+    );
+  },
   args: {
     status: 'default',
     fieldLabel: 'Label',
@@ -111,7 +99,21 @@ export const DefaultState: Story = {
 };
 
 export const FocusState: Story = {
-  render: (args) => <OpenResponseWrapper {...args} />,
+  render: function Render(args) {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    const handleInputChange = (value: string) => {
+      updateArgs({ inputValue: value });
+    };
+
+    return (
+      <OpenResponse
+        {...args}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+      />
+    );
+  },
   args: {
     status: 'focus',
     fieldLabel: 'Label',
@@ -124,7 +126,21 @@ export const FocusState: Story = {
 };
 
 export const ErrorState: Story = {
-  render: (args) => <OpenResponseWrapper {...args} />,
+  render: function Render(args) {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    const handleInputChange = (value: string) => {
+      updateArgs({ inputValue: value });
+    };
+
+    return (
+      <OpenResponse
+        {...args}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+      />
+    );
+  },
   args: {
     status: 'error',
     fieldLabel: 'Label',
@@ -137,7 +153,21 @@ export const ErrorState: Story = {
 };
 
 export const SuccessState: Story = {
-  render: (args) => <OpenResponseWrapper {...args} />,
+  render: function Render(args) {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    const handleInputChange = (value: string) => {
+      updateArgs({ inputValue: value });
+    };
+
+    return (
+      <OpenResponse
+        {...args}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+      />
+    );
+  },
   args: {
     status: 'success',
     fieldLabel: 'Label',
@@ -150,7 +180,21 @@ export const SuccessState: Story = {
 };
 
 export const DisabledState: Story = {
-  render: (args) => <OpenResponseWrapper {...args} />,
+  render: function Render(args) {
+    const [{ inputValue }, updateArgs] = useArgs();
+
+    const handleInputChange = (value: string) => {
+      updateArgs({ inputValue: value });
+    };
+
+    return (
+      <OpenResponse
+        {...args}
+        inputValue={inputValue}
+        onInputChange={handleInputChange}
+      />
+    );
+  },
   args: {
     status: 'disabled',
     fieldLabel: 'Label',

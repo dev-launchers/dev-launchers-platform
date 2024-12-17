@@ -1,8 +1,7 @@
-import type * as Form from '@radix-ui/react-form';
 import type * as React from 'react';
 
 export interface OpenResponseProps
-  extends Omit<React.ComponentPropsWithoutRef<typeof Form.Field>, 'onChange'> {
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   /**
    * Label for the input field
    */

@@ -14,8 +14,7 @@ export const styles = {
   },
   textArea:
     'h-[192px] w-[260px] min-w-[260px] max-w-[544px] gap-[10px] rounded-3xl border-solid border-4 p-6 focus:outline-none placeholder:font-nunito-sans placeholder:text-[18px] placeholder:leading-6 placeholder:text-[#b6b6b6] placeholder:font-light font-nunito-sans text-black font-normal size-[18px] leading-6 resize-none',
-  messageContainer:
-    'h-[52px] w-[260px] min-w-[260px] max-w-[544px] gap-0.5 py-[4px] px-[24px]',
+  messageContainer: 'h-[52px] w-[260px] gap-0.5 py-[4px] px-[24px]',
   hintMessageBase: 'size-[15px] font-nunito-sans text-sm font-normal leading-5',
   hintMessage: {
     default: ' text-gray-800',
