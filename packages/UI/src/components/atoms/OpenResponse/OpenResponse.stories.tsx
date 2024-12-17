@@ -14,7 +14,7 @@ const meta: Meta<typeof OpenResponse> = {
     },
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11488-23424&m=dev&t=tdZXS21OVzS9krjx-1',
+      url: 'https://www.figma.com/proto/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11488-38057&t=2OYINKZoYXbk552m-1',
     },
   },
   argTypes: {
