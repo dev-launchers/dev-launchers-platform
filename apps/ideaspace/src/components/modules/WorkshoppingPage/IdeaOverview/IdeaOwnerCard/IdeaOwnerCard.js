@@ -3,21 +3,39 @@ import {
   LeftView,
   StyledName,
   RightView,
-  StyledImage
-} from "./StyledComponent";
+  StyledImage,
+  IdeaOwnerTag,
+  StyledEmail,
+} from './StyledComponent';
 
-export const IdeaOwnerCard = ({ IdeaOwnerName, id }) => {
+export const IdeaOwnerCard = ({
+  IdeaOwnerName,
+  profilePictureUrl,
+  IdeaOwnerEmail,
+}) => {
+  const defaultEmail = 'Email is Missing';
   return (
-    <StyledCard>
-      <LeftView>
-        <StyledName>
-          {IdeaOwnerName}
-        </StyledName>
-        <h6>IDEA OWNER</h6>
-      </LeftView>
-      <RightView>
-        <StyledImage alt="user_image" src={`https://picsum.photos/70?random=${id}`} />
-      </RightView>
-    </StyledCard>
+    <>
+      <div
+        className="flex flex-col border-2 border-[#F0EDEE] rounded-xl "
+        style={{
+          gap: '14px',
+          padding: '20px',
+          width: '272px',
+          background: '#FFF',
+        }}
+      >
+        <div className="self-start">
+          <StyledImage alt="user_image" src={profilePictureUrl} />
+        </div>
+        <div>
+          <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
+          <StyledName length={IdeaOwnerName.length}>{IdeaOwnerName}</StyledName>
+          <StyledEmail>
+            {IdeaOwnerEmail ? IdeaOwnerEmail : defaultEmail}
+          </StyledEmail>
+        </div>
+      </div>
+    </>
   );
 };

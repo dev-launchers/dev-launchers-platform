@@ -3,9 +3,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
 import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
 import { agent } from '@devlaunchers/utility';
+import { Notification } from '@devlaunchers/models';
+
+const SettingsIcon = Settings as React.FC<React.SVGProps<SVGSVGElement>>;
+const BellIcon = Bell as React.FC<React.SVGProps<SVGSVGElement>>;
 
 export default function NotificationPopover() {
-  const [notifications, setNotifications] = React.useState([]);
+  const [notifications, setNotifications] = React.useState<Notification[]>([]);
   const newNotificationsCount = notifications.reduce((count, x) => {
     return x.attributes.readDateTime ? count : count + 1;
   }, 0);
@@ -40,12 +44,13 @@ export default function NotificationPopover() {
       <PopoverTrigger asChild>
         <button className="relative" aria-label="notification">
           <span
-            className={`absolute top-0 right-0 bg-red-700 text-white rounded-full aspect-square w-5 text-xs font-bold content-center translate-x-1/2 -translate-y-1/2 ${newNotificationsCount ? '' : 'hidden'
-              }`}
+            className={`absolute top-0 right-0 bg-red-700 text-white rounded-full aspect-square w-5 text-xs font-bold content-center translate-x-1/2 -translate-y-1/2 ${
+              newNotificationsCount ? '' : 'hidden'
+            }`}
           >
             {newNotificationsCount}
           </span>
-          <Bell />
+          <BellIcon />
         </button>
       </PopoverTrigger>
       <PopoverContent
@@ -103,7 +108,7 @@ export default function NotificationPopover() {
               href="/notifications/settings"
               className="flex gap-2 items-end text-black hover:text-grayscale-600 capitalize"
             >
-              <Settings />
+              <SettingsIcon />
               settings
             </a>
           </div>

@@ -10,13 +10,13 @@ function useForceUpdate() {
 }
 
 function DisplayComments(props) {
-  const commentNodes = props.comments.map((comment) => {
+  const commentNodes = props.comments.map((comment, index) => {
     const commentUser = comment.user;
     const commentAuthorName =
       commentUser.username !== undefined
         ? commentUser.username
         : commentUser.profile.displayName;
-
+    const isLast = index === props.comments.length - 1;
     return (
       <Comment
         user={commentUser}
@@ -27,6 +27,7 @@ function DisplayComments(props) {
         publishedAt={comment.publishedAt}
         updatedAt={comment.updatedAt}
         forIdea={props.selectedCard}
+        isLast={isLast}
       >
         {comment.text}
       </Comment>

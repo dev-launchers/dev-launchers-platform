@@ -101,8 +101,8 @@ const MobileNavigation = ({
                   <li key={`${name} ` + i}>
                     <Link href={href} passHref>
                       <Button
-                        buttonType="alternative"
-                        buttonSize="standard"
+                        type="secondary"
+                        size="medium"
                         onClick={() => setIsSidebarExpanded?.(false)}
                       >
                         {name}
@@ -127,8 +127,8 @@ const MobileNavigation = ({
                     process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                     `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
                   }
-                  buttonType="primary"
-                  buttonSize="standard"
+                  type="primary"
+                  size="medium"
                 >
                   Sign In
                 </Button>
@@ -138,8 +138,8 @@ const MobileNavigation = ({
                     process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
                     `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
                   }
-                  buttonType="secondary"
-                  buttonSize="standard"
+                  type="secondary"
+                  size="medium"
                 >
                   Create an Account
                 </Button>
@@ -159,11 +159,7 @@ const MobileNavigation = ({
                     { ...accountOptions[1], hasUnderline: false },
                   ]}
                 />
-                <Button
-                  buttonType="secondary"
-                  buttonSize="standard"
-                  onClick={logout}
-                >
+                <Button type="secondary" size="medium" onClick={logout}>
                   Logout
                 </Button>
               </>

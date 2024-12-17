@@ -48,8 +48,8 @@ const MinimalPositionCard = ({
             {content.expectations?.length && content.benefits?.length ? (
               <Button
                 onClick={handleMoreDetails}
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+                size="medium"
+                type={buttonStyle === 'b' ? 'secondary' : 'alt-primary'}
               >
                 more details
               </Button>
@@ -59,8 +59,8 @@ const MinimalPositionCard = ({
             {handleApply ? (
               <Button
                 onClick={handleApply}
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+                size="medium"
+                type={buttonStyle === 'b' ? 'primary' : 'alt-primary'}
               >
                 apply
               </Button>
@@ -192,8 +192,8 @@ const PositionCard = ({
                 onClick={() =>
                   minimal ? handleMoreDetails() : setExpanded((open) => !open)
                 }
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'secondary' : 'alternative'}
+                size="medium"
+                type={buttonStyle === 'b' ? 'secondary' : 'alt-primary'}
               >
                 {expanded ? 'collapse details' : 'more details'}
               </Button>
@@ -203,8 +203,8 @@ const PositionCard = ({
             {handleApply ? (
               <Button
                 onClick={handleApply}
-                buttonSize="standard"
-                buttonType={buttonStyle === 'b' ? 'primary' : 'alternative'}
+                size="medium"
+                type={buttonStyle === 'b' ? 'primary' : 'alt-primary'}
               >
                 apply
               </Button>
