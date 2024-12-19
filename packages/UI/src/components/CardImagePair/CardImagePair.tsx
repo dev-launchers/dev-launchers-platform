@@ -1,78 +1,103 @@
-export interface CardImagePairProps {
+import React from 'react';
+
+// Define TypeScript interface for component props
+interface CardImagePairProps {
+  layoutRatio: '2/3-1/3' | '1/2-1/2' | '3/4-1/4';
   image: string;
-  altText: string;
+  imageBorderColor?: string; // Optional border color for the image
+  imageFit?: 'cover' | 'contain' | 'fill';
+  imageAspectRatio?: '1/1' | '16/9' | '4/3' | '3/2';
+  imagePosition?: 'left' | 'right' | 'top' | 'bottom';
+  altText?: string;
   title: string;
   subtitle?: string;
   description: string;
-  imagePosition?: 'left' | 'right';
-  layoutRatio?: '2/3-1/3' | '1/2-1/2' | '3/4-1/4';
+  btnText: string;
+  cardBackgroundColor?: string; // Optional background color for the card
+  cardBorderColor?: string; // Optional border color for the card
+  onClick?: () => void; // Optional click handler
 }
 
+// Functional Component using React.FC with defined props
 const CardImagePair: React.FC<CardImagePairProps> = ({
   image,
   altText,
   title,
   subtitle,
   description,
+  btnText,
   imagePosition = 'right',
   layoutRatio = '2/3-1/3',
+  imageFit = 'cover',
+  imageAspectRatio = '16/9',
+  cardBackgroundColor = 'bg-white',
+  cardBorderColor = 'border-gray-200',
+  imageBorderColor = 'border-gray-200',
+  onClick,
 }) => {
-  const orderClasses =
-    imagePosition === 'right'
-      ? 'flex-col-reverse md:flex-row-reverse'
-      : 'flex-col md:flex-row';
-  const cardRatio =
-    layoutRatio === '1/2-1/2'
-      ? 'basis-1/2'
-      : layoutRatio === '3/4-1/4'
-      ? 'basis-3/4'
-      : 'basis-2/3';
-  const imageRatio =
-    layoutRatio === '1/2-1/2'
-      ? 'basis-1/2'
-      : layoutRatio === '3/4-1/4'
-      ? 'basis-1/4'
-      : 'basis-1/3';
+  // Flex direction based on image position for responsive design
+  const flexDirection = {
+    top: 'flex-col',
+    bottom: 'flex-col-reverse',
+    right: 'flex-row-reverse',
+    left: 'flex-row',
+  }[imagePosition];
+
+  // Mapping layout ratios to flex-grow settings
+  const ratioMap = {
+    '2/3-1/3': { card: 'flex-grow md:basis-2/3', image: 'md:basis-1/3' },
+    '1/2-1/2': { card: 'flex-grow md:basis-1/2', image: 'md:basis-1/2' },
+    '3/4-1/4': { card: 'flex-grow md:basis-3/4', image: 'md:basis-1/4' },
+  }[layoutRatio];
+
+  // Determine object-fit style based on prop
+  const imageFitClass = {
+    cover: 'object-cover',
+    contain: 'object-contain',
+    fill: 'object-fill',
+  }[imageFit];
+
+  // Render component
   return (
-    <div className={`flex ${orderClasses} items-center justify-center gap-6`}>
-      {/* Image Container */}
-      <div className={`w-[300px] shrink grow md:h-[300px] ${imageRatio} flex`}>
+    <article
+      className={`flex ${flexDirection} mx-auto max-w-full flex-wrap gap-6 p-4 text-left`}
+    >
+      <div
+        // eslint-disable-next-line tailwindcss/no-arbitrary-value
+        className={`${ratioMap.image} min-h-10 w-full grow overflow-hidden           rounded-3xl border-4 md:w-[16.25rem]`}
+        style={{
+          aspectRatio: imageAspectRatio,
+          borderColor: imageBorderColor,
+          borderStyle: 'solid',
+        }}
+      >
         <img
-          className="w-[300px] shrink grow rounded-3xl md:h-[300px]"
+          className={`h-full w-full ${imageFitClass}`}
           src={image}
           alt={altText}
+          loading="lazy"
         />
       </div>
-
-      {/* Card Container */}
       <div
-        className={`w-[300px] shrink grow md:h-[300px] ${cardRatio} rounded-3xl border-2 border-[#ff993e] bg-[#8c4608]/40`}
+        // eslint-disable-next-line tailwindcss/no-arbitrary-value
+        className={`${ratioMap.card} flex w-full flex-col rounded-3xl border-4 p-6 md:w-[16.25rem]`}
+        style={{
+          backgroundColor: cardBackgroundColor,
+          borderColor: cardBorderColor,
+          borderStyle: 'solid',
+        }}
       >
-        <div className="gap-8 px-6 py-8">
-          {/* Title + description */}
-          <div className="py-6">
-            <h2 className="font-['Oswald'] text-2xl font-light leading-9 tracking-wide text-white">
-              {title}
-            </h2>
-            {subtitle && <h3 className="text-lg text-gray-600">{subtitle}</h3>}
-            <p className="font-['Nunito Sans'] text-sm font-normal leading-tight text-[#b9b9b9]">
-              {description}
-            </p>
-          </div>
-
-          {/* Button */}
-          <div className="bg-black/25 inline-flex h-11 items-center justify-center rounded-md border-[#979797]">
-            <div className="bg-black/25 flex items-center justify-center gap-1 rounded-md border-2 border-[#979797] px-[18px] py-3">
-              <div className="flex items-center justify-start gap-1">
-                <div className="font-['Nunito Sans'] text-sm font-normal capitalize leading-tight text-[#dad8d9]">
-                  Leadership Opportunities
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="flex grow flex-col gap-2">
+          <h3 className="mb-2 text-3xl font-bold">{title}</h3>
+          <p className="font-nunito-sans text-base font-normal text-gray-600">
+            {description}
+          </p>
+          <button onClick={onClick} className="text-left text-base">
+            {btnText}
+          </button>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
