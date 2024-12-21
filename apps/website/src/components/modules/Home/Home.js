@@ -1,5 +1,6 @@
 import React from 'react';
 import CardImagePair from '@devlaunchers/components/components/CardImagePair';
+import Button from '@devlaunchers/components/components/atoms/Button';
 import Image from 'next/image';
 
 const Home = () => {
@@ -108,6 +109,8 @@ const Home = () => {
       description:
         'Start your tech career or switch paths with hands-on experience at Dev Launchers. Participate in impactful projects and receive mentorship to gain confidence and skills needed in the tech industry.',
       btnText: 'Entry-Level Opportunities',
+      btnLink: '/projects',
+      layoutRatio: '1/2-1/2',
       imageBorderColor: 'hsla(28, 100%, 53%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(270, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(270, 41%, 65%, 1)', // Border color of the card
@@ -122,6 +125,8 @@ const Home = () => {
       description:
         'Lead teams and mentor emerging talent. Share your experience, guide projects, and help shape the future of tech innovation. Develop leadership skills and advance your career with us.',
       btnText: 'Leadership Opportunities',
+      btnLink: '/projects',
+      layoutRatio: '1/2-1/2',
       imageBorderColor: 'hsla(194, 52%, 67%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(270, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(270, 41%, 65%, 1)', // Border color of the card
@@ -136,6 +141,8 @@ const Home = () => {
       description:
         'Become a catalyst for change by becoming a mentor or partnering with us. Help us build an inclusive and innovative tech sector through resources and expertise.',
       btnText: 'Partnership Opportunities',
+      btnLink: '/projects',
+      layoutRatio: '1/2-1/2',
       imageBorderColor: 'hsla(40, 100%, 50%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(270, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(270, 41%, 65%, 1)', // Border color of the card
@@ -153,6 +160,7 @@ const Home = () => {
       description:
         "Explore, contribute, and refine innovative project ideas with our community. Whether you're sharing your own concepts or helping others evolve theirs, every perspective helps turn great ideas into reality.",
       btnText: 'Explore Ideas',
+      btnLink: '/projects',
       imageBorderColor: 'hsla(40, 100%, 50%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(230, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(230, 41%, 63%, 1)', // Border color of the card
@@ -167,6 +175,7 @@ const Home = () => {
       description:
         "Our diverse members support each other to achieve remarkable things. From launching new careers to building innovative solutions, we're creating positive change through technology. Discover the stories and projects shaping our community's success",
       btnText: 'See Our Impact',
+      btnLink: '/projects',
       imageBorderColor: 'hsla(194, 52%, 67%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(230, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(230, 41%, 63%, 1)', // Border color of the card
@@ -181,6 +190,7 @@ const Home = () => {
       description:
         "Grow your skills through our collection of resources and hands-on projects. Whether you're exploring development, design, product management, QA, or research, build confidence with real-world examples and guided challenges.",
       btnText: 'Explore Resources',
+      btnLink: '/projects',
       imageBorderColor: 'hsla(28, 100%, 53%, 1)', // Border color of the image
       cardBackgroundColor: 'hsla(230, 51%, 25%, 0.4)',
       cardBorderColor: 'hsla(230, 41%, 63%, 1)', // Border color of the card
@@ -216,9 +226,9 @@ const Home = () => {
           <p className={commonStyles.subHeading}>{sections.hero.description}</p>
         </div>
         <div className={commonStyles.buttonContainer}>
-          <button className={commonStyles.button}>
+          <Button className={commonStyles.button}>
             {sections.hero.buttonText}
-          </button>
+          </Button>
         </div>
         <div className={commonStyles.partnerContainer}>
           <p className={commonStyles.label}>{sections.hero.label}</p>
@@ -240,7 +250,7 @@ const Home = () => {
             {sections.opportunities.description}
           </p>
         </div>
-        <div className={commonStyles.grid}>
+        <div>
           {opportunities.map((item, index) => (
             <CardImagePair key={index} {...item} />
           ))}
@@ -254,9 +264,9 @@ const Home = () => {
           <p className={commonStyles.subHeading}>{sections.join.description}</p>
         </div>
         <div className={commonStyles.buttonContainer}>
-          <button className={commonStyles.button}>
+          <Button className={commonStyles.button}>
             {sections.join.buttonText}
-          </button>
+          </Button>
         </div>
       </Section>
 
@@ -334,9 +344,9 @@ const Home = () => {
           </p>
         </div>
         <div className={commonStyles.buttonContainer}>
-          <button className={commonStyles.button}>
+          <Button className={commonStyles.button}>
             {sections.donate.buttonText}
-          </button>
+          </Button>
         </div>
       </Section>
     </main>
