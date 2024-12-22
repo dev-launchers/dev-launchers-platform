@@ -1,0 +1,777 @@
+* @file darkModeTokens.ts
+ * Dark mode theme definitions building upon color primitives
+ */
+
+import colorPrimitives, { ColorValue } from '.';
+
+// Type definitions for semantic color categories
+interface SemanticColors {
+  readonly status: {
+    readonly default: StatusColors;
+    readonly hover: StatusColors;
+    readonly focus: StatusColors;
+    readonly active: StatusColors;
+    readonly disabled: StatusColors;
+  };
+  readonly static: {
+    readonly core: CoreColors;
+    readonly surface: SurfaceColors;
+    readonly border: BorderColors;
+    readonly content: ContentColors;
+    readonly effect: EffectColors;
+  };
+}
+
+interface StatusColors {
+  readonly surface: {
+    readonly btn: ButtonStateColors;
+    readonly interactive: ButtonStateColors;
+  };
+  readonly border: {
+    readonly btn: ButtonStateColors;
+    readonly interactive: ButtonStateColors;
+  };
+  readonly content: {
+    readonly btn: ButtonStateColors;
+    readonly interactive: ButtonStateColors;
+  };
+  readonly indicator: {
+    readonly surface: {
+      readonly btn: ButtonStateColors;
+      readonly interactive: ButtonStateColors;
+    };
+    readonly border: {
+      readonly btn: ButtonStateColors;
+      readonly interactive: ButtonStateColors;
+    };
+    readonly indicate: string;
+  };
+}
+
+interface ButtonStateColors {
+  readonly brand: {
+    readonly primary: string;
+    readonly secondary: string;
+    readonly tertiary: string;
+  };
+  readonly grey: {
+    readonly primary: string;
+    readonly secondary: string;
+    readonly tertiary: string;
+  };
+  readonly alert: {
+    readonly success: ButtonVariants;
+    readonly info: ButtonVariants;
+    readonly warning: ButtonVariants;
+    readonly error: ButtonVariants;
+  };
+}
+
+interface ButtonVariants {
+  readonly primary: string;
+  readonly secondary: string;
+  readonly tertiary: string;
+}
+
+interface CoreColors {
+  readonly jupiter: string;
+  readonly saturn: string;
+  readonly neptune: string;
+  readonly uranus: string;
+  readonly cosmic: string;
+  readonly nebula: string;
+}
+
+interface SurfaceColors {
+  readonly brand: {
+    readonly uranus: string;
+    readonly jupiter: string;
+    readonly neptune: string;
+    readonly saturn: string;
+    readonly cosmic: string;
+    readonly nebula: string;
+  };
+  readonly grey: {
+    readonly pure: string;
+    readonly brand: string;
+    readonly muted: string;
+    readonly transparent: string;
+  };
+  readonly alert: {
+    readonly info: string;
+    readonly warning: string;
+    readonly success: string;
+    readonly error: string;
+  };
+}
+
+interface BorderColors {
+  readonly brand: {
+    readonly jupiter: string;
+    readonly saturn: string;
+    readonly uranus: string;
+    readonly neptune: string;
+    readonly cosmic: string;
+    readonly nebula: string;
+  };
+  readonly grey: {
+    readonly pure: string;
+    readonly brand: string;
+    readonly muted: string;
+  };
+  readonly alert: {
+    readonly info: string;
+    readonly warning: string;
+    readonly success: string;
+    readonly error: string;
+  };
+}
+
+interface ContentColors {
+  readonly text: {
+    readonly grey: {
+      readonly pure: string;
+      readonly brand: string;
+      readonly muted: string;
+    };
+    readonly brand: {
+      readonly jupiter: string;
+      readonly saturn: string;
+      readonly uranus: string;
+      readonly neptune: string;
+      readonly cosmic: string;
+      readonly nebula: string;
+    };
+    readonly alert: {
+      readonly info: string;
+      readonly warning: string;
+      readonly success: string;
+      readonly error: string;
+    };
+  };
+  readonly icon: {
+    readonly grey: {
+      readonly pure: string;
+      readonly brand: string;
+      readonly muted: string;
+    };
+    readonly brand: {
+      readonly jupiter: string;
+      readonly saturn: string;
+      readonly uranus: string;
+      readonly neptune: string;
+      readonly cosmic: string;
+      readonly nebula: string;
+    };
+    readonly alert: {
+      readonly info: string;
+      readonly warning: string;
+      readonly success: string;
+      readonly error: string;
+    };
+  };
+}
+
+interface EffectColors {
+  readonly overlay: {
+    readonly grey: {
+      readonly strong: string;
+      readonly base: string;
+      readonly muted: string;
+    };
+    readonly brand: {
+      readonly jupiter: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly saturn: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly uranus: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly neptune: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly nebula: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly cosmic: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+    };
+    readonly alert: {
+      readonly success: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly info: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly warning: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+      readonly error: {
+        readonly strong: string;
+        readonly base: string;
+        readonly muted: string;
+      };
+    };
+  };
+  readonly shadow: {
+    readonly brand: {
+      readonly uranus: string;
+      readonly jupiter: string;
+      readonly neptune: string;
+      readonly saturn: string;
+      readonly cosmic: string;
+      readonly nebula: string;
+    };
+    readonly grey: {
+      readonly pure: string;
+      readonly brand: string;
+      readonly muted: string;
+    };
+    readonly alert: {
+      readonly info: string;
+      readonly warning: string;
+      readonly success: string;
+      readonly error: string;
+    };
+  };
+}
+// Type definitions from previous version remain the same...
+
+export const darkModeTokens: SemanticColors = {
+  status: {
+    default: {
+      indicator: {
+        indicate: 'rgba(255, 255, 255, 1)',
+        surface: {
+          btn: {
+            brand: {
+              primary: color.brand.nebula('700'),
+              secondary: alpha(0.25),
+              tertiary: alpha(0)
+            },
+            grey: {
+              primary: color.grey('600'),
+              secondary: alpha(0.25),
+              tertiary: alpha(0)
+            },
+            alert: {
+              success: {
+                primary: color.alert.success('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              info: {
+                primary: color.alert.info('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              warning: {
+                primary: color.alert.warning('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              error: {
+                primary: color.alert.error('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              }
+            }
+          },
+          interactive: {
+            brand: {
+              primary: color.brand.nebula('700'),
+              secondary: alpha(0.25),
+              tertiary: alpha(0)
+            },
+            grey: {
+              primary: color.grey('600'),
+              secondary: alpha(0.25),
+              tertiary: alpha(0)
+            },
+            alert: {
+              success: {
+                primary: color.alert.success('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              info: {
+                primary: color.alert.info('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              warning: {
+                primary: color.alert.warning('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              },
+              error: {
+                primary: color.alert.error('800'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0)
+              }
+            }
+          }
+        },
+        border: {
+          btn: {
+            brand: {
+              primary: color.brand.nebula('400'),
+              secondary: color.brand.nebula('400'),
+              tertiary: alpha(0)
+            },
+            grey: {
+              primary: color.grey('400'),
+              secondary: color.grey('400'),
+              tertiary: alpha(0)
+            },
+            alert: {
+              success: {
+                primary: color.alert.success('600'),
+                secondary: color.alert.success('600'),
+                tertiary: alpha(0)
+              },
+              info: {
+                primary: color.alert.info('600'),
+                secondary: color.alert.info('600'),
+                tertiary: alpha(0)
+              },
+              warning: {
+                primary: color.alert.warning('600'),
+                secondary: color.alert.warning('600'),
+                tertiary: alpha(0)
+              },
+              error: {
+                primary: color.alert.error('500'),
+                secondary: color.alert.error('500'),
+                tertiary: alpha(0)
+              }
+            }
+          },
+          interactive: {
+            brand: {
+              primary: color.brand.nebula('400'),
+              secondary: color.brand.nebula('400'),
+              tertiary: alpha(0)
+            },
+            grey: {
+              primary: color.grey('400'),
+              secondary: color.grey('400'),
+              tertiary: alpha(0)
+            },
+            alert: {
+              success: {
+                primary: color.alert.success('600'),
+                secondary: color.alert.success('600'),
+                tertiary: alpha(0)
+              },
+              info: {
+                primary: color.alert.info('600'),
+                secondary: color.alert.info('600'),
+                tertiary: alpha(0)
+              },
+              warning: {
+                primary: color.alert.warning('600'),
+                secondary: color.alert.warning('600'),
+                tertiary: alpha(0)
+              },
+              error: {
+                primary: color.alert.error('500'),
+                secondary: color.alert.error('500'),
+                tertiary: alpha(0)
+              }
+            }
+          }
+        }
+      },
+      content: {
+        btn: {
+          brand: {
+            primary: color.grey('50'),
+            secondary: color.brand.nebula('200'),
+            tertiary: color.brand.nebula('400')
+          },
+          grey: {
+            primary: color.grey('50'),
+            secondary: color.grey('200'),
+            tertiary: color.grey('300')
+          },
+          alert: {
+            success: {
+              primary: color.grey('50'),
+              secondary: color.alert.success('200'),
+              tertiary: color.alert.success('400')
+            },
+            info: {
+              primary: color.grey('50'),
+              secondary: color.alert.info('200'),
+              tertiary: color.alert.info('400')
+            },
+            warning: {
+              primary: color.grey('50'),
+              secondary: color.alert.warning('200'),
+              tertiary: color.alert.warning('400')
+            },
+            error: {
+              primary: color.grey('50'),
+              secondary: color.alert.error('200'),
+              tertiary: color.alert.error('400')
+            }
+          }
+        }
+      }
+    }
+    } as const;
+    hover: {
+        indicator: {
+          indicate: 'rgba(255, 255, 255, 1)',
+          surface: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('600'),
+                secondary: alpha(0.4),
+                tertiary: alpha(0.25)
+              },
+              grey: {
+                primary: color.grey('500'),
+                secondary: alpha(0.4),
+                tertiary: alpha(0.4)
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('600'),
+                  secondary: alpha(0.4),
+                  tertiary: alpha(0.4)
+                },
+                info: {
+                  primary: color.alert.info('600'),
+                  secondary: alpha(0.4),
+                  tertiary: alpha(0.4)
+                },
+                warning: {
+                  primary: color.alert.warning('600'),
+                  secondary: alpha(0.4),
+                  tertiary: alpha(0.4)
+                },
+                error: {
+                  primary: color.alert.error('600'),
+                  secondary: alpha(0.4),
+                  tertiary: alpha(0.4)
+                }
+              }
+            }
+          },
+          border: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('300'),
+                secondary: color.brand.nebula('300'),
+                tertiary: color.brand.nebula('300')
+              },
+              grey: {
+                primary: color.grey('300'),
+                secondary: color.grey('300'),
+                tertiary: color.grey('300')
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('300'),
+                  secondary: color.alert.success('300'),
+                  tertiary: color.alert.success('300')
+                },
+                info: {
+                  primary: color.alert.info('300'),
+                  secondary: color.alert.info('300'),
+                  tertiary: color.alert.info('300')
+                },
+                warning: {
+                  primary: color.alert.warning('300'),
+                  secondary: color.alert.warning('300'),
+                  tertiary: color.alert.warning('300')
+                },
+                error: {
+                  primary: color.alert.error('300'),
+                  secondary: color.alert.error('300'),
+                  tertiary: color.alert.error('300')
+                }
+              }
+            }
+          }
+        }
+      },
+      focus: {
+        indicator: {
+          indicate: 'rgba(255, 255, 255, 1)',
+          surface: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('600'),
+                secondary: alpha(0.6),
+                tertiary: alpha(0.6)
+              },
+              grey: {
+                primary: color.grey('500'),
+                secondary: alpha(0.6),
+                tertiary: alpha(0.6)
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('600'),
+                  secondary: alpha(0.6),
+                  tertiary: alpha(0.6)
+                },
+                info: {
+                  primary: color.alert.info('600'),
+                  secondary: alpha(0.6),
+                  tertiary: alpha(0.6)
+                },
+                warning: {
+                  primary: color.alert.warning('600'),
+                  secondary: alpha(0.6),
+                  tertiary: alpha(0.6)
+                },
+                error: {
+                  primary: color.alert.error('600'),
+                  secondary: alpha(0.6),
+                  tertiary: alpha(0.6)
+                }
+              }
+            }
+          }
+        }
+      },
+      active: {
+        indicator: {
+          indicate: 'rgba(255, 255, 255, 1)',
+          surface: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('900'),
+                secondary: color.brand.nebula('600'),
+                tertiary: color.brand.nebula('600')
+              },
+              grey: {
+                primary: color.grey('900'),
+                secondary: color.grey('600'),
+                tertiary: color.grey('600')
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('900'),
+                  secondary: color.alert.success('600'),
+                  tertiary: color.alert.success('600')
+                },
+                info: {
+                  primary: color.alert.info('900'),
+                  secondary: color.alert.info('600'),
+                  tertiary: color.alert.info('600')
+                },
+                warning: {
+                  primary: color.alert.warning('900'),
+                  secondary: color.alert.warning('600'),
+                  tertiary: color.alert.warning('600')
+                },
+                error: {
+                  primary: color.alert.error('900'),
+                  secondary: color.alert.error('600'),
+                  tertiary: color.alert.error('600')
+                }
+              }
+            }
+          },
+          border: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('100'),
+                secondary: color.brand.nebula('400'),
+                tertiary: color.brand.nebula('400')
+              },
+              grey: {
+                primary: color.grey('100'),
+                secondary: color.grey('400'),
+                tertiary: color.grey('400')
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('100'),
+                  secondary: color.alert.success('400'),
+                  tertiary: color.alert.success('400')
+                },
+                info: {
+                  primary: color.alert.info('100'),
+                  secondary: color.alert.info('400'),
+                  tertiary: color.alert.info('400')
+                },
+                warning: {
+                  primary: color.alert.warning('100'),
+                  secondary: color.alert.warning('400'),
+                  tertiary: color.alert.warning('400')
+                },
+                error: {
+                  primary: color.alert.error('100'),
+                  secondary: color.alert.error('400'),
+                  tertiary: color.alert.error('400')
+                }
+              }
+            }
+          }
+        }
+      },
+      disabled: {
+        indicator: {
+          indicate: 'rgba(255, 255, 255, 1)',
+          surface: {
+            btn: {
+              brand: {
+                primary: color.brand.nebula('700'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0.25)
+              },
+              grey: {
+                primary: color.grey('600'),
+                secondary: alpha(0.25),
+                tertiary: alpha(0.25)
+              },
+              alert: {
+                success: {
+                  primary: color.alert.success('800'),
+                  secondary: alpha(0.25),
+                  tertiary: alpha(0.25)
+                },
+                info: {
+                  primary: color.alert.info('800'),
+                  secondary: alpha(0.25),
+                  tertiary: alpha(0.25)
+                },
+                warning: {
+                  primary: color.alert.warning('800'),
+                  secondary: alpha(0.25),
+                  tertiary: alpha(0.25)
+                },
+                error: {
+                  primary: color.alert.error('800'),
+                  secondary: alpha(0.25),
+                  tertiary: alpha(0.25)
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    static: {
+      effect: {
+        overlay: {
+          grey: {
+            strong: alpha(0.6),
+            base: alpha(0.4),
+            muted: alpha(0.25)
+          },
+          brand: {
+            jupiter: {
+              strong: `rgba(${color.brand.jupiter('800')}, 0.6)`,
+              base: `rgba(${color.brand.jupiter('800')}, 0.4)`,
+              muted: `rgba(${color.brand.jupiter('900')}, 0.25)`
+            },
+            saturn: {
+              strong: `rgba(${color.brand.saturn('800')}, 0.6)`,
+              base: `rgba(${color.brand.saturn('800')}, 0.4)`,
+              muted: `rgba(${color.brand.saturn('900')}, 0.25)`
+            },
+            uranus: {
+              strong: `rgba(${color.brand.uranus('800')}, 0.6)`,
+              base: `rgba(${color.brand.uranus('800')}, 0.4)`,
+              muted: `rgba(${color.brand.uranus('900')}, 0.25)`
+            },
+            neptune: {
+              strong: `rgba(${color.brand.neptune('800')}, 0.6)`,
+              base: `rgba(${color.brand.neptune('800')}, 0.4)`,
+              muted: `rgba(${color.brand.neptune('900')}, 0.25)`
+            },
+            nebula: {
+              strong: `rgba(${color.brand.nebula('800')}, 0.6)`,
+              base: `rgba(${color.brand.nebula('800')}, 0.4)`,
+              muted: `rgba(${color.brand.nebula('900')}, 0.25)`
+            },
+            cosmic: {
+              strong: `rgba(${color.brand.cosmic('800')}, 0.6)`,
+              base: `rgba(${color.brand.cosmic('800')}, 0.4)`,
+              muted: `rgba(${color.brand.cosmic('900')}, 0.25)`
+            }
+          },
+          alert: {
+            success: {
+              strong: `rgba(${color.alert.success('800')}, 0.6)`,
+              base: `rgba(${color.alert.success('800')}, 0.4)`,
+              muted: `rgba(${color.alert.success('900')}, 0.25)`
+            },
+            info: {
+              strong: `rgba(${color.alert.info('800')}, 0.6)`,
+              base: `rgba(${color.alert.info('900')}, 0.4)`,
+              muted: `rgba(${color.alert.info('900')}, 0.25)`
+            },
+            warning: {
+              strong: `rgba(${color.alert.warning('800')}, 0.6)`,
+              base: `rgba(${color.alert.warning('800')}, 0.4)`,
+              muted: `rgba(${color.alert.warning('900')}, 0.25)`
+            },
+            error: {
+              strong: `rgba(${color.alert.error('800')}, 0.6)`,
+              base: `rgba(${color.alert.error('700')}, 0.4)`,
+              muted: `rgba(${color.alert.error('900')}, 0.25)`
+            }
+          }
+        },
+        shadow: {
+          brand: {
+            jupiter: color.brand.jupiter('600'),
+            saturn: color.brand.saturn('600'),
+            uranus: color.brand.uranus('600'),
+            neptune: color.brand.neptune('600'),
+            cosmic: color.brand.cosmic('600'),
+            nebula: color.brand.nebula('600')
+          },
+          grey: {
+            pure: color.grey('700'),
+            brand: color.grey('600'),
+            muted: color.grey('500')
+          },
+          alert: {
+            info: color.alert.info('700'),
+            warning: color.alert.warning('600'),
+            success: color.alert.success('600'),
+            error: color.alert.error('600')
+          }
+        }
+      }
+    }
+  } as const;
+  
+  export const darkThemeConfig = {
+    isDarkMode: true,
+    isLightMode: false
+  } as const;
+  
+  export type DarkModeTokens = typeof darkModeTokens;
+  
+  export default darkModeTokens;
