@@ -102,7 +102,7 @@ const button = `
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5rem;
-    text-transform: uppercase;
+    text-transform: capitalize;
     letter-spacing: 0.04em;
     @media only screen and (max-width: 62.5rem) {
         letter-spacing: 0.0125em;
