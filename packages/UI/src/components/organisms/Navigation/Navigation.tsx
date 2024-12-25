@@ -1,209 +1,204 @@
+import React from 'react';
 import Link from 'next/link';
-import * as React from 'react';
-import { tv } from 'tailwind-variants';
-import { useUserDataContext } from '../../../context/UserDataContext';
-import Logout from '../../../utils/Logout';
-import { Button, Layer, NavLink } from '../../atoms';
-import NavDropdown from '../NavDropdown/NavDropdown';
-import logo from './../../../assets/images/logo-monogram.png';
-import MobileNavigation from './MobileNavigation';
-
-const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M2 3.49691e-07C1.45 2.53526e-07 0.979003 0.195667 0.587003 0.587C0.19567 0.979 2.89369e-06 1.45 2.79753e-06 2L3.49691e-07 16C2.53526e-07 16.55 0.195667 17.021 0.587 17.413C0.979 17.8043 1.45 18 2 18L9 18L9 16L2 16L2 2L9 2L9 1.57361e-06L2 3.49691e-07ZM13 4L11.625 5.45L14.175 8L6 8L6 10L14.175 10L11.625 12.55L13 14L18 9L13 4Z"
-        fill={fill || '#1C1C1C'}
-      />
-    </svg>
-  );
-};
-
-const HamburgerButton = ({
-  className,
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  className: string;
-}) => {
-  return (
-    <button
-      className={`tham tham-e-squeeze tham-w-10 ${
-        !open || 'tham-active'
-      } ${className} z-30`}
-      onClick={() => setOpen((prev) => !prev)}
-    >
-      <div className="tham-box">
-        <div className={`tham-inner ${open ? 'bg-black' : 'bg-white'}`} />
-      </div>
-    </button>
-  );
-};
-
-// TODO: Use fonts from figma
-const NavigationStyles = tv(
-  {
-    slots: {
-      $wrapper: 'flex h-[100px] items-center justify-between bg-[#1C1C1C] px-8',
-      $logoContainer: 'flex items-center gap-4 text-white',
-      $linksContainer: '',
-      $actionsContainer: '',
-    },
-    variants: {},
-  }
-  // { responsiveVariants: ['sm', 'md'] }
-);
-
-export const links = {
-  CREATE: '/create',
-  LEARN: '/learn',
-  DREAM: [
-    {
-      text: 'Ideaspace',
-      href: '/ideaspace',
-      hasUnderline: true,
-    },
-    {
-      text: 'Submit an idea',
-      href: '/ideaspace/submit',
-    },
-    {
-      text: 'Help existing idea',
-      href: '/ideaspace/browse',
-    },
-  ],
-  'SUPPORT US': '/support-us',
-  JOIN: '/join',
-};
-
-export const accountOptions = [
-  { text: 'My Profile', href: '/users/me' },
-  {
-    text: 'my ideas dashboard',
-    href: '/ideaspace/dashboard',
-    hasUnderline: true,
-  },
-];
-
-// type NavigationProps = VariantProps<typeof NavigationStyles>;
-
+import { ChevronDown, Menu, X } from 'lucide-react';
+import logo from '../../../assets/images/logo-monogram.png';
 const Navigation = () => {
-  const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(false);
-  const { $wrapper, $logoContainer } = NavigationStyles();
-  const { userData, isAuthenticated } = useUserDataContext();
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
   return (
-    <Layer hasRainbowBottom type="dark">
-      <nav className={$wrapper()}>
+    <nav className="relative flex h-20 items-center justify-between bg-black px-8">
+      <div className="flex items-center gap-4">
         <Link href="/">
-          <a href="/" className={$logoContainer()}>
-            <img className="w-10" src={logo} alt="logo"></img>
-            <span className="hidden md:inline-block">Dev Launchers</span>
+          <a className="flex items-center gap-3 text-white">
+            <div className="h-12 w-12 rounded-full bg-white/10 p-1">
+              <img
+                src={logo}
+                alt="Dev Launchers Logo"
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <h2 className="text-lg font-semibold">Dev Launchers</h2>
           </a>
         </Link>
-        <ul>
-          <div className="hidden lg:flex lg:items-baseline lg:gap-12">
-            {Object.entries(links).map(([name, href], i) => {
-              if (Array.isArray(href))
-                return (
-                  <li key={`${name}-` + i}>
-                    <NavDropdown
-                      title={name}
-                      links={href}
-                      toggleElementProps={{ style: { color: 'white' } }}
-                    />
-                  </li>
-                );
-              return (
-                <li className="list-none" key={i}>
-                  <Link href={href} passHref>
-                    <NavLink>{name}</NavLink>
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
-        </ul>
+      </div>
+
+      <div className="hidden text-sm flex-1 items-center justify-center gap-8 lg:flex">
+        <DropdownMenu
+          trigger="Our Projects"
+          items={[
+            { label: 'Project 1', href: '/projects/1' },
+            { label: 'Project 2', href: '/projects/2' },
+          ]}
+        />
+        <DropdownMenu
+          trigger="Collaborate"
+          items={[
+            { label: 'Join Team', href: '/collaborate/join' },
+            { label: 'Open Positions', href: '/collaborate/positions' },
+          ]}
+        />
+        <Link href="/about">
+          <a className="text-gray-300 hover:text-white">About Us</a>
+        </Link>
+        <Link href="/resources">
+          <a className="text-gray-300 hover:text-white">Resources</a>
+        </Link>
+        <Link href="/donate">
+          <a className="text-gray-300 hover:text-white">Donate</a>
+        </Link>
+      </div>
+
+      <div className="hidden items-center gap-4 lg:flex">
         {!isAuthenticated ? (
-          <div className="hidden lg:flex lg:gap-4">
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="primary"
-              buttonSize="standard"
+          <>
+            <button
+              className="rounded-lg bg-[#52287A] border border-[#996FC3] px-6 py-2 text-sm font-medium text-white hover:bg-purple-700"
+              onClick={() => setIsAuthenticated(true)}
             >
               Sign In
-            </Button>
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="secondary"
-              buttonSize="standard"
-            >
-              Create an Account
-            </Button>
-          </div>
+            </button>
+            <button className="rounded-lg border border-purple-600 bg-transparent px-6 py-2 text-sm font-medium text-white hover:bg-purple-600/10">
+              Create Account
+            </button>
+          </>
         ) : (
-          <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
-            <img
-              width="36"
-              height="33"
-              src={userData.profilePictureUrl}
-              alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
-            />
-            <NavDropdown
-              title={`Hi ${userData.name}`}
-              links={[
-                ...accountOptions,
-                {
-                  text: (
-                    <div className="flex gap-1">
-                      <LogoutIcon fill="white" />
-                      <span>logout</span>
-                    </div>
-                  ),
-                  onClick: Logout,
-                  as: 'button',
-                },
-              ]}
-              toggleElementProps={{ style: { color: 'white' } }}
-            />
-          </div>
+          <button
+            className="rounded-lg bg-purple-600 px-6 py-2 text-sm font-medium text-white hover:bg-purple-700"
+            onClick={() => setIsAuthenticated(false)}
+          >
+            Sign Out
+          </button>
         )}
-        <HamburgerButton
-          open={isSidebarExpanded}
-          setOpen={setIsSidebarExpanded}
-          className="lg:hidden"
-        />
-        <MobileNavigation
-          links={links}
-          accountOptions={accountOptions}
-          user={userData}
-          isAuthenticated={isAuthenticated}
-          logout={() => Logout()}
-          isSidebarExpanded={isSidebarExpanded}
-          setIsSidebarExpanded={setIsSidebarExpanded}
-        />
-      </nav>
-    </Layer>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        className="text-white lg:hidden"
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
+      </button>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed inset-y-0 right-0 z-50 w-64 transform bg-black p-8 shadow-lg text-sm transition-transform duration-300 ease-in-out lg:hidden ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex flex-col gap-6">
+          <MobileDropdown
+            title="Our Projects"
+            items={[
+              { label: 'Project 1', href: '/projects/1' },
+              { label: 'Project 2', href: '/projects/2' },
+            ]}
+          />
+          <MobileDropdown
+            title="Collaborate"
+            items={[
+              { label: 'Join Team', href: '/collaborate/join' },
+              { label: 'Open Positions', href: '/collaborate/positions' },
+            ]}
+          />
+          <Link href="/about">
+            <a className="text-gray-300 hover:text-white">About Us</a>
+          </Link>
+          <Link href="/resources">
+            <a className="text-gray-300 hover:text-white">Resources</a>
+          </Link>
+          <Link href="/donate">
+            <a className="text-gray-300 hover:text-white">Donate</a>
+          </Link>
+
+          <div className="mt-6 flex flex-col gap-4">
+            {!isAuthenticated ? (
+              <>
+                <button
+                  className="rounded-lg bg-purple-600 px-6 py-2 text-sm font-medium text-white hover:bg-purple-700"
+                  onClick={() => setIsAuthenticated(true)}
+                >
+                  Sign In
+                </button>
+                <button className="rounded-lg border border-purple-600 bg-transparent px-6 py-2 text-sm font-medium text-white hover:bg-purple-600/10">
+                  Create Account
+                </button>
+              </>
+            ) : (
+              <button
+                className="rounded-lg bg-purple-600 px-6 py-2 text-sm font-medium text-white hover:bg-purple-700"
+                onClick={() => setIsAuthenticated(false)}
+              >
+                Sign Out
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 
-Navigation.displayName = 'Navigation';
+const DropdownMenu = ({ trigger, items }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div className="relative">
+      <button
+        className="flex items-center gap-1 text-gray-300 hover:text-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {trigger}
+        <ChevronDown className="h-4 w-4" />
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-full mt-2 w-48 rounded-lg bg-black/95 py-2 shadow-xl">
+          {items.map((item, index) => (
+            <Link key={index} href={item.href}>
+              <a className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/10 hover:text-white">
+                {item.label}
+              </a>
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const MobileDropdown = ({ title, items }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <div>
+      <button
+        className="flex w-full items-center justify-between text-gray-300 hover:text-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {title}
+        <ChevronDown
+          className={`h-4 w-4 transform transition-transform ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+
+      <div className={`mt-2 space-y-2 pl-4 ${isOpen ? 'block' : 'hidden'}`}>
+        {items.map((item, index) => (
+          <Link key={index} href={item.href}>
+            <a className="block py-2 text-sm text-gray-300 hover:text-white">
+              {item.label}
+            </a>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default Navigation;
