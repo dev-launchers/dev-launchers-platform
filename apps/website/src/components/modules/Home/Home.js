@@ -1,213 +1,256 @@
-/* eslint-disable react/no-unescaped-entities */
-import React, { useRef } from "react";
-import { toast } from 'react-toastify';
-import { withTheme } from "styled-components";
-import PageBody from "../../common/PageBody";
+import HeroSection from './HomeSections/HeroSection';
+import JoinUsSection from './HomeSections/JoinUsSection';
+import TechStackSection from './HomeSections/TechStackSection';
+import CommunitySection from './HomeSections/CommunitySection';
+import CardImagePair from './HomeSections/CardImagePair';
 
-import HeroImage from "./HeroImage";
-import HeroOverlay from "./HeroOverlay";
-import Intro from "./Intro";
-// import Programs from "./Programs";
+// Common styles
+const styles = {
+  section: {
+    container:
+      'max-w-screen-xl container mx-auto flex flex-col pb-20 gap-6 justify-center items-center',
+    withBackground:
+      'max-w-screen-xl container mx-auto flex flex-col py-16 gap-10 justify-center items-center bg-cover bg-center bg-no-repeat',
+    header: 'flex flex-col items-center justify-center w-full text-center py-6',
+    headerHero:
+      'flex flex-col items-center justify-center w-full text-center pt-16',
+    heading: 'text-6xl font-bold text-center leading-relaxed',
+    headingHero: {
+      className: 'font-bold text-center align-center border-none border-0 m-0',
+      style: { fontSize: '4.5rem' }, // This approximates what a text-7xl would be
+    },
+    subHeading: 'text-lg text-gray-600 max-w-3xl mx-auto font-normal',
+    label:
+      'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
+    grid: 'grid grid-cols-1 w-full md:grid-cols-3 gap-6',
+    button:
+      'text-base bg-brand-alt-cosmic-200 text-white px-8 py-3 rounded-lg hover:bg-purple-700 capitalize',
+    buttonContainer: 'flex justify-center ',
+    partnerContainer: 'w-full  mx-auto pt-16 px-4',
+    cardsContainer: 'flex flex-wrap justify-center my-4 gap-8',
+    partnerLogos:
+      'flex flex-col md:flex-row items-center justify-around gap-20 mt-8',
+    logoStyle: 'h-16 w-auto flex-shrink-0',
+    logoContainer:
+      'justify-center p-6 grid grid-cols-1 md:grid-cols-3 gap-16 align-items',
+  },
+  main: 'min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
+};
 
-import Contribution from "./Contribution";
-import Partners from "./Partners";
+// Section component
+const Section = ({ children, className = '' }) => (
+  <section className={`${styles.section.container} ${className}`}>
+    {children}
+  </section>
+);
 
-import {
-  HomePageBody,
-  ColoredCtaWrapper,
-  ColoredCtaEntry,
-  ColoredCtaEntryImage,
-  ColoredCtaEntryTitle,
-  Wrapper,
-} from "./StyledHome";
-import CtaDescriptionArea from "./CtaDescriptionArea";
+// Content sections
+const sections = {
+  hero: {
+    title: 'Collaborate, Build, and Thrive in Tech',
+    description:
+      "Join our global community of 200+ members who've launched their careers to the next level through collaborative, real-world projects.",
+    label: 'Partners and Sponsors',
+    buttonText: 'Explore Opportunities',
+  },
+  opportunities: {
+    title: 'Opportunities for Everyone',
+    description:
+      "Whether you're starting your journey, leading teams, or seeking to give back, we provide the hands-on experience, mentorship, and community you need to succeed.",
+  },
+  join: {
+    title: 'Join Us',
+    description:
+      "Create your profile, discover opportunities, and join our community—all for free! Whether you're just starting out, looking to switch careers, or seeking new challenges, our community is here to support you every step of the way.",
+    buttonText: 'Join Today',
+  },
+  features: {
+    title: 'Why Dev Launchers?',
+    description:
+      "Transform your tech career through real-world experience, collaborative projects, and supportive community. We provide the hands-on opportunities and resources you need to succeed in today's tech industry.",
+  },
+  build: {
+    title: 'We Build with the Best',
+    description:
+      'We collaborate and build using the best tools and software including Figma, React, Next.js and more to launch our members to the next level. Learn how we leverage these technologies in real-world projects and develop competitive skills that keep you at the forefront of the industry.',
+  },
+  donate: {
+    title: 'Transform Tech Today',
+    description:
+      "Together, we're building pathways into technology careers for everyone. Your tax-deductible donation helps create an inclusive community where aspiring developers, designers, product managers, researchers, and QA professionals can turn their potential into impact.",
+    buttonText: 'Donate Today',
+  },
+};
 
-import womanComputerImage from "../../../images/people-cutouts/woman-computer.png?webp";
-import manGlassesImage from "../../../images/people-cutouts/man-glasses.png?webp";
-import girlSmilingImage from "../../../images/people-cutouts/girl-smiling.png?webp";
-import boyFrontImage from "../../../images/people-cutouts/boy-front.png?webp";
+const opportunities = [
+  {
+    image: '/dev_image.png',
+    altText:
+      'Close-up of a finger interacting with a glowing blue digital circuit interface',
+    imagePosition: 'top',
+    title: 'Build Your Beginning',
+    description:
+      'Start your tech career or switch paths with hands-on experience at Dev Launchers. Participate in impactful projects and receive mentorship to gain confidence and skills needed in the tech industry.',
+    descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
+    btnText: 'Entry-Level Opportunities',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(28, 100%, 53%, 1)',
+    cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(270, 41%, 65%, 1)',
+    onClick: () => console.log('Build Your Beginning clicked'),
+  },
+  {
+    image: '/dev_image (1).png',
+    altText:
+      'Person presenting to team members in front of a wall covered with colorful sticky notes',
+    imagePosition: 'bottom',
+    title: 'Launch to Leadership',
+    description:
+      'Lead teams and mentor emerging talent. Share your experience, guide projects, and help shape the future of tech innovation. Develop leadership skills and advance your career with us.',
+    descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
+    btnText: 'Leadership Opportunities',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(194, 52%, 67%, 1)',
+    cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(270, 41%, 65%, 1)',
+    onClick: () => console.log('Launch to Leadership clicked'),
+  },
+  {
+    image: '/dev_image (2).png',
+    altText:
+      'Professional handshake silhouetted against vibrant blue and pink lighting',
+    imagePosition: 'top',
+    title: 'Shape the Future',
+    description:
+      'Become a catalyst for change by becoming a mentor or partnering with us. Help us build an inclusive and innovative tech sector through resources and expertise.',
+    descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
+    btnText: 'Partnership Opportunities',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(40, 100%, 50%, 1)',
+    cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(270, 41%, 65%, 1)',
+    onClick: () => console.log('Shape the Future clicked'),
+  },
+];
 
-// General scroll-to function
-const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop);
+const features = [
+  {
+    image: '/dev_image (3).png',
+    altText:
+      'Group of people working together at a table with laptops, backlit by warm orange lighting',
+    imagePosition: 'top',
+    title: "Shape Tomorrow's Tech",
+    description:
+      "Explore, contribute, and refine innovative project ideas with our community. Whether you're sharing your own concepts or helping others evolve theirs, every perspective helps turn great ideas into reality.",
+    descriptionTextColor: 'hsla(230, 41%, 63%, 1)',
+    btnText: 'Explore Ideas',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(40, 100%, 50%, 1)',
+    cardBackgroundColor: 'hsla(230, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(230, 41%, 63%, 1)',
+    onClick: () => console.log('Shape Tomorrow clicked'),
+  },
+  {
+    image: '/dev_image (4).png',
+    altText:
+      'Glowing digital world map visualization with interconnected network nodes in pink and purple',
+    imagePosition: 'bottom',
+    title: 'Meet Our Community',
+    description:
+      "Our diverse members support each other to achieve remarkable things. From launching new careers to building innovative solutions, we're creating positive change through technology. Discover the stories and projects shaping our community's success",
+    descriptionTextColor: 'hsla(230, 41%, 63%, 1)',
+    btnText: 'See Our Impact',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(194, 52%, 67%, 1)',
+    cardBackgroundColor: 'hsla(230, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(230, 41%, 63%, 1)',
+    onClick: () => console.log('Meet Community clicked'),
+  },
+  {
+    image: '/dev_image (5).png',
+    altText:
+      'People working at computer stations in a modern workspace with colorful ambient lighting',
+    imagePosition: 'top',
+    title: 'Hands-on Learning',
+    description:
+      "Grow your skills through our collection of resources and hands-on projects. Whether you're exploring development, design, product management, QA, or research, build confidence with real-world examples and guided challenges.",
+    descriptionTextColor: 'hsla(230, 41%, 63%, 1)',
+    btnText: 'Explore Resources',
+    btnLink: '/projects',
+    imageBorderColor: 'hsla(28, 100%, 53%, 1)',
+    cardBackgroundColor: 'hsla(230, 51%, 25%, 0.25)',
+    cardBorderColor: 'hsla(230, 41%, 63%, 1)',
+    onClick: () => console.log('Hands-on Learning clicked'),
+  },
+];
 
-function Home({ theme }) {
-  // Scroll-to functions
-  const learnRef = useRef(null);
-  const leadRef = useRef(null);
-  const createRef = useRef(null);
-  const donateRef = useRef(null);
-
+const testimonials = [
+  {
+    text: 'This program has been transformative for my career. The hands-on experience and mentorship were invaluable.',
+    author: 'Sophie M.',
+    role: 'Software Engineer',
+  },
+  {
+    text: 'The community support and practical projects helped me transition into tech successfully.',
+    author: 'Jason R.',
+    role: 'Product Manager',
+  },
+  {
+    text: 'An incredible platform that truly empowers tech professionals to reach their full potential.',
+    author: 'Alex K.',
+    role: 'Tech Lead',
+  },
+];
+const Home = () => {
   return (
-    <Wrapper>
-      <HeroImage />
-      <HeroOverlay />
-      <PageBody>
-        <HomePageBody>
-          <ColoredCtaWrapper>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(learnRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_1}
-            >
-              <ColoredCtaEntryTitle>LEARN</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={womanComputerImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(leadRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_2}
-            >
-              <ColoredCtaEntryTitle>LEAD</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={manGlassesImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(createRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_4}
-            >
-              <ColoredCtaEntryTitle>CREATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={girlSmilingImage} />
-            </ColoredCtaEntry>
-            <ColoredCtaEntry
-              onClick={() => {
-                scrollToRef(donateRef);
-              }}
-              backgroundColor={theme.colors.ACCENT_3}
-            >
-              <ColoredCtaEntryTitle>DONATE</ColoredCtaEntryTitle>
-              <ColoredCtaEntryImage src={boyFrontImage} />
-            </ColoredCtaEntry>
-          </ColoredCtaWrapper>
-          <Intro />
-          <Contribution />
-          <div
-            className="scrollToDiv"
-            ref={learnRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row"
-            title="LEARN"
-            descriptionHeadline="Get trained to become a developer from the ground up while working on real projects!"
-            descriptionContent={
-              <div>
-                Learn at a pace tailored completely to you! You&apos;ll have
-                hands on help, starting from{" "}
-                <span
-                  style={{
-                    backgroundColor: theme.colors.NEUTRAL_2,
-                    color: theme.colors.NEUTRAL_1,
-                  }}
-                >
-                  square one
-                </span>{" "}
-                all the way through building complex projects working in agile
-                teams. Whether you&apos;re looking to build clean, professional
-                apps and sites, or create scalable data-driven solutions, Dev
-                Launchers has been crafted for <u>YOU</u>.
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_1}
-            imageSrc={womanComputerImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={leadRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row-reverse"
-            title="LEAD"
-            descriptionHeadline="Evolve your career in the direction you want to go"
-            descriptionContent={
-              <div>
-                <p>
-                  Change your life while changing the world! Lead ambitious
-                  agile teams designed to engage new learners and solve real
-                  problems, all with guidance and support from people who have
-                  walked the same path.
-                </p>
-                <p>
-                  You&apos;ll gain the soft skills needed to land more senior
-                  roles in your career while managing projects and making
-                  lifelong friends. Join a growing network of software
-                  professionals working to build something great, together.
-                </p>
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_2}
-            imageSrc={manGlassesImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={createRef}
-            style={{ height: "0", paddingTop: "5rem" }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row"
-            title="CREATE"
-            descriptionHeadline="Build epic products, tools, and apps used by real people!"
-            descriptionContent={
-              <div>
-                <p>
-                  We build <u>awesome</u> things, and you can join us!
-                </p>{" "}
-                <p>The Dev Launchers Project Ethos:</p>
-                <ul>
-                  <li>Keep it exciting, always</li>
-                  <li>
-                    Encourage people at all levels and from all backgrounds to
-                    learn technical skills
-                  </li>
-                  <li>
-                    When given the chance, experiment with groundbreaking
-                    technology.
-                  </li>
-                  <li>Make the world better</li>
-                </ul>
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_4}
-            imageSrc={girlSmilingImage}
-            imageOutlineColor={theme.colors.NEUTRAL_1}
-          />
-          <div
-            className="scrollToDiv"
-            ref={donateRef}
-            style={{
-              height: "0",
-              paddingTop: "5rem",
-              backgroundColor: theme.colors.NEUTRAL_1,
-            }}
-          />
-          <CtaDescriptionArea
-            flexDirection="row-reverse"
-            title="DONATE"
-            descriptionHeadline="Your donation will create an opportunity for a young learner, preparing them to face the technical challenges of the future head on."
-            descriptionContent={
-              <div>
-                Dev Launchers is a registered 501(c)(3) not-for-profit
-                organization. We can’t keep changing lives without your support!
-              </div>
-            }
-            titleUnderlineColor={theme.colors.ACCENT_1}
-            imageSrc={boyFrontImage}
-            imageOutlineColor={theme.colors.NEUTRAL_2}
-            mainBackgroundColor={theme.colors.NEUTRAL_1}
-            titleFontColor={theme.colors.NEUTRAL_2}
-            descriptionBackgroundColor={theme.colors.NEUTRAL_1}
-            descriptionFontColor={theme.colors.NEUTRAL_2}
-          />
-          <Partners />
-        </HomePageBody>
-      </PageBody>
-    </Wrapper>
+    <div className="relative min-h-screen text-white bg-black pt-16">
+      <HeroSection />
+      <Section>
+        <div className={styles.section.header}>
+          <h2 className={styles.section.heading}>
+            {sections.opportunities.title}
+          </h2>
+          <p className={styles.section.subHeading}>
+            {sections.opportunities.description}
+          </p>
+        </div>
+        <div className={styles.section.cardsContainer}>
+          {opportunities.map((item, index) => (
+            <CardImagePair key={index} {...item} />
+          ))}
+        </div>
+      </Section>
+      <JoinUsSection />
+      <TechStackSection />
+      <CommunitySection />
+      <Section>
+        <div className={styles.section.header}>
+          <h2 className={styles.section.heading}>{sections.features.title}</h2>
+          <p className={styles.section.subHeading}>
+            {sections.features.description}
+          </p>
+        </div>
+        <div className={styles.section.cardsContainer}>
+          {features.map((item, index) => (
+            <CardImagePair key={index} {...item} />
+          ))}
+        </div>
+      </Section>
+      <Section className="bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat">
+        <div className={styles.section.header}>
+          <h2 className={styles.section.heading}>{sections.donate.title}</h2>
+          <p className={styles.section.subHeading}>
+            {sections.donate.description}
+          </p>
+        </div>
+        <div className={styles.section.buttonContainer}>
+          <button className="bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200">
+            {sections.donate.buttonText}
+          </button>
+        </div>
+      </Section>
+    </div>
   );
-}
+};
 
-export default withTheme(Home);
+export default Home;
