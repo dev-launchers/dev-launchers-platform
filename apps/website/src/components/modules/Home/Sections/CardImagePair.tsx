@@ -9,7 +9,7 @@ interface CardImagePairProps {
   imageBorderColor?: string;
   cardBackgroundColor?: string;
   cardBorderColor?: string;
-  descriptionTextColor?: string; // Added property
+  descriptionTextColor?: string;
   title: string;
   description: string;
   btnText: string;
@@ -30,7 +30,7 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
   imageBorderColor,
   cardBackgroundColor,
   cardBorderColor,
-  descriptionTextColor, // Added property
+  descriptionTextColor,
   title,
   description,
   btnText,
@@ -42,11 +42,11 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
       base: 'flex sm:max-w-xs grow gap-6',
       position: {
         top: 'flex-col',
-        bottom: 'sm: flex-col-reverse flex-col',
+        bottom: 'sm:flex-col-reverse flex-col',
       },
     },
     image: {
-      wrapper: `basis-1/2 overflow-hidden rounded-3xl border-4 `,
+      wrapper: `basis-1/2 overflow-hidden rounded-3xl border-4`,
       img: (imageFit: 'cover' | 'contain' | 'fill') =>
         `w-full h-full object-${imageFit}`,
     },
@@ -56,11 +56,11 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
       title: 'text-4xl font-normal',
       description: 'text-base font-normal',
       buttonWrapper: 'flex flex-col pt-4',
-      button: 'normal-case', // Remove the inline style string
-      link: 'border-2 p-4 text-white rounded-xl text-base capitalize font-medium', // Remove the inline style string
+      button: 'normal-case',
+      link: 'border-2 p-4 text-white rounded-xl text-base capitalize font-medium',
     },
   } as const;
-  console.log(imagePosition);
+
   // Dynamic styles that depend on props
   const containerClasses = `${LAYOUT.container.base} ${LAYOUT.container.position[imagePosition]}`;
   const imageClasses = LAYOUT.image.img(imageFit);
