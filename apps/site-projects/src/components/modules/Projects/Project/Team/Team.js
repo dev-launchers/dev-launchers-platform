@@ -25,13 +25,11 @@ const Team = ({ data }) => (
                 key={leader.id}
               >
                 <span>
-                  <a href="#">
-                    <MemberImage
-                        src={leader.profile?.profilePictureUrl}
-                        // src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
-                        alt="Image of Team member"
-                      ></MemberImage>
-                  </a>
+                  <MemberImage
+                      src={leader.profile?.profilePictureUrl}
+                      // src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
+                      alt="Image of Team member"
+                    ></MemberImage>
                 </span>
                 <div
                   style={{
@@ -42,9 +40,9 @@ const Team = ({ data }) => (
                 >
                   <span>{leader.profile?.displayName}</span>
                   <span>{leader.role}</span>
-                  <span>
+                  {/* <span>
                     <a href={`mailto:${leader.email}`}>Send Email</a>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             ))}
@@ -63,13 +61,11 @@ const Team = ({ data }) => (
                 key={member.id}
               >
                 <span>
-                  <a href="#">
-                    <MemberImage
-                        src={member.profile?.profilePictureUrl}
-                        // src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
-                        alt="Image of Team member"
-                      ></MemberImage>
-                  </a>
+                  <MemberImage
+                      src={member.profile?.profilePictureUrl}
+                      // src="https://pbs.twimg.com/profile_images/1157313327867092993/a09TxL_1_400x400.jpg"
+                      alt="Image of Team member"
+                    ></MemberImage>
                 </span>
                 <div
                   style={{
