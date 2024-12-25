@@ -1,0 +1,111 @@
+import React from 'react';
+
+/**
+ * Type definitions for style objects
+ */
+interface StyleDefinition {
+  section: {
+    container: string;
+    withBackground: string;
+    header: string;
+    headerHero: string;
+    heading: string;
+    headingHero: {
+      className: string;
+      style: {
+        fontSize: string;
+      };
+    };
+    subHeading: string;
+    label: string;
+    grid: string;
+    button: string;
+    buttonContainer: string;
+    partnerContainer: string;
+    cardsContainer: string;
+    partnerLogos: string;
+    logoStyle: string;
+    logoContainer: string;
+  };
+  main: string;
+}
+
+/**
+ * Props interface for Section component
+ */
+interface SectionProps {
+  children: React.ReactNode;
+  className?: string;
+  backgroundImage?: string;
+}
+
+/**
+ * Props interface for HomeFormat component
+ */
+interface HomeFormatProps {
+  children: React.ReactNode;
+}
+
+/**
+ * Common styles used throughout the application
+ */
+export const styles: StyleDefinition = {
+  section: {
+    container:
+      'max-w-screen-xl container mx-auto flex flex-col pb-20 gap-6 justify-center items-center',
+    withBackground:
+      'max-w-screen-xl container mx-auto flex flex-col py-16 gap-10 justify-center items-center bg-cover bg-center bg-no-repeat',
+    
+    header: 'flex flex-col items-center justify-center w-full text-center py-6',
+    headerHero:
+      'flex flex-col items-center justify-center w-full text-center pt-16',
+    heading: 'text-6xl font-bold text-center leading-relaxed',
+    headingHero: {
+      className: 'font-bold text-center align-center border-none border-0 m-0',
+      style: { fontSize: '4.5rem' }, // This approximates what a text-7xl would be
+    },
+    subHeading: 'text-lg text-gray-600 max-w-3xl mx-auto font-normal',
+    label:
+      'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
+    grid: 'grid grid-cols-1 w-full md:grid-cols-3 gap-6',
+    button:
+      'bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200 capitalize',
+    buttonContainer: 'flex justify-center',
+    partnerContainer: 'w-full mx-auto pt-16 px-4',
+    cardsContainer: 'flex flex-wrap justify-center my-4 gap-8',
+    partnerLogos:
+      'flex flex-col md:flex-row items-center justify-around gap-20 mt-8 mix-blend-luminosity',
+    logoStyle: "h-16 w-auto flex-shrink-0 opacity-70 hover:opacity-100 transition-opacity",
+    logoContainer:
+      'justify-center p-6 grid grid-cols-1 md:grid-cols-3 gap-16 align-items',
+  },
+  main: 'min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
+};
+
+/**
+ * Section component that provides consistent styling and layout for content sections
+ */
+export const Section: React.FC<SectionProps> = ({
+  children,
+  className = '',
+  backgroundImage,
+}) => (
+  <section
+    className={`${
+      backgroundImage ? styles.section.withBackground : styles.section.container
+    } ${className}`}
+    style={backgroundImage ? { backgroundImage: `url(${backgroundImage})` } : undefined}
+  >
+    {children}
+  </section>
+);
+
+/**
+ * HomeFormat component that provides the main layout and styling structure
+ */
+const HomeFormat: React.FC<HomeFormatProps> = ({ children }) => {
+  return <div className={styles.main}>{children}</div>;
+};
+
+export type { StyleDefinition, SectionProps, HomeFormatProps };
+export default HomeFormat;

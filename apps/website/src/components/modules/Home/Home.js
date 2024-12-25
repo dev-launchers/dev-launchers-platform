@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import HeroSection from './HomeSections/HeroSection';
 import JoinUsSection from './HomeSections/JoinUsSection';
 import TechStackSection from './HomeSections/TechStackSection';
@@ -10,23 +11,25 @@ const styles = {
     container:
       'max-w-screen-xl container mx-auto flex flex-col pb-20 gap-6 justify-center items-center',
     withBackground:
-      'max-w-screen-xl container mx-auto flex flex-col py-16 gap-10 justify-center items-center bg-cover bg-center bg-no-repeat',
+      "mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full justify-center text-center bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat h-[700px]",
+    withGradient:
+      'max-w-screen-xl container mx-auto flex flex-col py-16 gap-10 justify-center relative z-10 items-center bg-gradient-to-t from-black/30 via-[rgba(82,40,122,0.3)] to-[rgba(153,111,195,0.3)] bg-[length:100%_100%] bg-[center_10%]',
     header: 'flex flex-col items-center justify-center w-full text-center py-6',
     headerHero:
       'flex flex-col items-center justify-center w-full text-center pt-16',
     heading: 'text-6xl font-bold text-center leading-relaxed',
     headingHero: {
       className: 'font-bold text-center align-center border-none border-0 m-0',
-      style: { fontSize: '4.5rem' }, // This approximates what a text-7xl would be
+      style: { fontSize: '4.5rem' },
     },
     subHeading: 'text-lg text-gray-600 max-w-3xl mx-auto font-normal',
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     grid: 'grid grid-cols-1 w-full md:grid-cols-3 gap-6',
     button:
-      'text-base bg-brand-alt-cosmic-200 text-white px-8 py-3 rounded-lg hover:bg-purple-700 capitalize',
-    buttonContainer: 'flex justify-center ',
-    partnerContainer: 'w-full  mx-auto pt-16 px-4',
+      'bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200 font-normal capitalize',
+    buttonContainer: 'flex justify-center',
+    partnerContainer: 'w-full mx-auto pt-16 px-4',
     cardsContainer: 'flex flex-wrap justify-center my-4 gap-8',
     partnerLogos:
       'flex flex-col md:flex-row items-center justify-around gap-20 mt-8',
@@ -34,7 +37,7 @@ const styles = {
     logoContainer:
       'justify-center p-6 grid grid-cols-1 md:grid-cols-3 gap-16 align-items',
   },
-  main: 'min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
+  main: 'relative min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
 };
 
 // Section component
@@ -201,10 +204,54 @@ const testimonials = [
     role: 'Tech Lead',
   },
 ];
+
 const Home = () => {
   return (
-    <div className="relative min-h-screen text-white bg-black pt-16">
-      <HeroSection />
+    <main className={styles.main}>
+      {/* <HeroSection /> */}
+      <Section className={styles.section.withGradient}>
+        <div className={styles.section.headerHero}>
+          <h1
+            className={styles.section.headingHero.className}
+            style={styles.section.headingHero.style}
+          >
+            {sections.hero.title}
+          </h1>
+          <p className={styles.section.subHeading}>
+            {sections.hero.description}
+          </p>
+        </div>
+
+        <div className={styles.section.buttonContainer}>
+          <button className={styles.section.button}>
+            {sections.hero.buttonText}
+          </button>
+        </div>
+
+        <div className={styles.section.partnerContainer}>
+          <p className={styles.section.label}>{sections.hero.label}</p>
+
+          <div className={styles.section.partnerLogos}>
+            <img
+              className={styles.section.logoStyle}
+              src="/images/home/google.png"
+              alt="Google Logo"
+            />
+            <img
+              className={styles.section.logoStyle}
+              src="/images/home/krafties.png"
+              alt="Krafties Logo"
+            />
+            <img
+              className={styles.section.logoStyle}
+              src="/images/home/microsoft.png"
+              alt="Microsoft Logo"
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* <OpportunitiesSection /> */}
       <Section>
         <div className={styles.section.header}>
           <h2 className={styles.section.heading}>
@@ -220,9 +267,14 @@ const Home = () => {
           ))}
         </div>
       </Section>
-      <JoinUsSection />
-      <TechStackSection />
-      <CommunitySection />
+
+      {/* <JoinUsSection /> */}
+
+      {/* <TechStackSection />/}
+
+      {/* <CommunitySection />*/}
+
+      {/* <FeaturesSection /> */}
       <Section>
         <div className={styles.section.header}>
           <h2 className={styles.section.heading}>{sections.features.title}</h2>
@@ -236,7 +288,9 @@ const Home = () => {
           ))}
         </div>
       </Section>
-      <Section className="bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat">
+
+      {/* <DonateSection /> */}
+      <Section className={styles.section.withBackground}>
         <div className={styles.section.header}>
           <h2 className={styles.section.heading}>{sections.donate.title}</h2>
           <p className={styles.section.subHeading}>
@@ -244,12 +298,12 @@ const Home = () => {
           </p>
         </div>
         <div className={styles.section.buttonContainer}>
-          <button className="bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200">
+          <button className={styles.section.button}>
             {sections.donate.buttonText}
           </button>
         </div>
       </Section>
-    </div>
+    </main>
   );
 };
 
