@@ -27,6 +27,11 @@ export const sections = {
     description:
       'We collaborate and build using the best tools and software including Figma, React, Next.js and more to launch our members to the next level. Learn how we leverage these technologies in real-world projects and develop competitive skills that keep you at the forefront of the industry.',
   },
+  community: {
+    title: 'Our Community',
+    description:
+      'From career-launching success stories to global collaborations, our tight-knit community drives innovation in tech. Our alumni work at industry leaders like Amazon, Microsoft, Meta, and J.P. Morgan, while our active members collaborate across five continents to build impactful solutions.',
+  },
   donate: {
     title: 'Transform Tech Today',
     description:
