@@ -36,6 +36,11 @@ export const sections = {
     description:
       'From career-launching success stories to global collaborations, our tight-knit community drives innovation in tech. Our alumni work at industry leaders like Amazon, Microsoft, Meta, and J.P. Morgan, while our active members collaborate across five continents to build impactful solutions.',
   },
+  community: {
+    title: 'Our Community',
+    description:
+      'From career-launching success stories to global collaborations, our tight-knit community drives innovation in tech. Our alumni work at industry leaders like Amazon, Microsoft, Meta, and J.P. Morgan, while our active members collaborate across five continents to build impactful solutions.',
+  },
   donate: {
     title: 'Transform Tech Today',
     description:
