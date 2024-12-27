@@ -38,17 +38,9 @@ export const styles = {
     subHeading: 'text-lg text-gray-600 max-w-3xl mx-auto font-normal',
     withBackground:
       "mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full justify-center text-center bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat ",
-    withGradient: {
-      style: {
-        background: `linear-gradient(to top, 
-          rgba(0, 0, 0, 0.3) 0%, 
-          rgba(82, 40, 122, 0.3) 30%, 
-          rgba(153, 111, 195, 0.3) 40%, 
-          rgba(82, 40, 122, 0.3) 50%, 
-          rgba(0, 0, 0, 0.3) 70%)`,
-        backgroundPosition: 'center 10%',
-        backgroundSize: '100% 100%',
-      },
-    },
+    withBackground01:
+      "mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full justify-center text-center bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat ",
+    withBackground02:
+      "mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center w-full justify-center text-center bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat ",
   },
 };
