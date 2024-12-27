@@ -30,7 +30,7 @@ export const styles = {
     logoContainer:
       'justify-center p-6 grid grid-cols-1 md:grid-cols-3 gap-16 align-items',
     logoStyle: 'h-16 w-auto flex-shrink-0',
-    partnerContainer: 'w-full mx-auto pt-16 px-4',
+    partnerContainer: 'w-full mx-auto pt-20 px-4',
     partnerLogos:
       'flex flex-col md:flex-row items-center justify-around gap-20 mt-8',
     stackLogo:
