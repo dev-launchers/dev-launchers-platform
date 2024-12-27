@@ -59,24 +59,24 @@ const TestimonialCarousel = () => {
                 <div
                   className={`${
                     index % 2 === 1
-                      ? 'bg-[#36525A50] border-[#9ACFDF]'
-                      : 'bg-[#FF573350] border-[#FFA500]'
+                      ? 'bg-[rgba(54,82,90,0.25)] border-[#9ACFDF]'
+                      : 'bg-[rgba(255,87,51,0.25)] border-[#FFA500]'
                   } rounded-3xl p-12 h-full border-4`}
                 >
                   <div className="flex flex-col h-full">
                     <p
                       className={`${
                         index % 2 === 1 ? 'text-[#9ACFDF]' : 'text-[#FFA500]'
-                      } mb-8 text-sm flex-grow leading-relaxed`}
+                      } mb-8 text-sm flex-grow font-normal leading-relaxed`}
                     >
                       {testimonial.content}
                     </p>
                     <div className="flex items-center justify-center gap-3">
-                      <div className="bg-gray-500 w-8 h-8 rounded-full flex items-center justify-center text-white">
+                      <div className="bg-black w-8 h-8 rounded-full flex items-center justify-center text-white">
                         {testimonial.author[0]}
                       </div>
                       <div className="gap-2">
-                        <h4 className="text-white font-medium my-0">
+                        <h4 className="text-white text-lg text-left font-medium my-0">
                           {testimonial.author}
                         </h4>
                         <p className="text-gray-400 text-sm">
