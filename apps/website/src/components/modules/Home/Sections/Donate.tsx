@@ -6,7 +6,7 @@ import { sections } from './sections';
 
 const DonateSection = () => {
   return (
-    <Section className="bg-[url('/background-shape.png')] bg-cover bg-bottom bg-no-repeat">
+    <Section className={styles.section.withBackground}>
       <div className={styles.section.header}>
         <h2 className={styles.section.heading}>{sections.donate.title}</h2>
         <p className={styles.section.subHeading}>
@@ -14,7 +14,7 @@ const DonateSection = () => {
         </p>
       </div>
       <div className={styles.section.buttonContainer}>
-        <button className="bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200">
+        <button className={styles.section.button}>
           {sections.donate.buttonText}
         </button>
       </div>
