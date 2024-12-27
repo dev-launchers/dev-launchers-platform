@@ -2,7 +2,7 @@ export const styles = {
   main: 'relative min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
   section: {
     button:
-      'bg-[#52287A] border-2 text-base border-[#996FC3] text-white py-3 px-6 rounded-lg transition-colors duration-200 font-normal capitalize',
+      'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-lg transition-all duration-200 hover:border-4 hover:bg-purple-700 hover:font-semibold',
     buttonContainer: 'flex justify-center',
     cardsContainer: 'flex flex-wrap justify-center my-4 gap-8',
     communityCard:
