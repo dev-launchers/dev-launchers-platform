@@ -36,11 +36,12 @@ const styles = {
   // Dropdown styles
   // Dropdown styles
   // Change these in the styles object
-  dropdownContainer: 'flex flex-row items-center relative static lg:relative',
+  dropdownContainer:
+    'flex flex-row items-center  bg-black relative static lg:relative',
   dropdownTrigger:
     'text-gray-300 font-normal transition-all duration-200 hover:text-white hover:text-white hover:font-semibold flex items-center gap-2',
   dropdownContent:
-    'absolute left-0 w-full bg-black border-t border-gray-800 mt-2',
+    'absolute top-8 left-0 max-w-xl bg-black border-t border-gray-800 mt-2',
   dropdownItem:
     'block rounded-lg bg-[#1C1C1C] p-6 transition-colors hover:bg-gray-800',
   dropdownGrid: 'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px]',
