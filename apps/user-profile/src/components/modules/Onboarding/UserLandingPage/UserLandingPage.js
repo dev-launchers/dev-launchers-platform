@@ -214,10 +214,10 @@ export default function UserLandingPage() {
   };
 
   return (
-    <PageContainer>
-      <BannerContainer>
+    <div className="">
+      <div className="flex h-40 bg-[#F6F6F6] flex-shrink-0 items-center justify-center">
         <img src={Breadcrumb} />
-      </BannerContainer>
+      </div>
       <OnboardingContainer>
         <ProfileContainer>
           <ProfileHeader>
@@ -342,6 +342,6 @@ export default function UserLandingPage() {
           </FormFooter>
         </FormContainer>
       </OnboardingContainer>
-    </PageContainer>
+    </div>
   );
 }
