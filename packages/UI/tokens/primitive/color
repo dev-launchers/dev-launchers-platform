@@ -1,0 +1,204 @@
+type ColorShade = {
+    50: string;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
+    700: string;
+    800: string;
+    900: string;
+};
+
+type BrandColors = {
+    jupiter: ColorShade;
+    saturn: ColorShade;
+    uranus: ColorShade;
+    neptune: ColorShade;
+    nebula: ColorShade;
+    cosmic: ColorShade;
+};
+
+type AlertColors = {
+    success: ColorShade;
+    info: ColorShade;
+    warning: ColorShade;
+    error: ColorShade;
+};
+
+interface ColorPalette {
+    grey: ColorShade;
+    brand: BrandColors;
+    alert: AlertColors;
+}
+
+export const colors: ColorPalette = {
+    grey: {
+        50: "rgba(255, 255, 255, var(--opacity))",
+        100: "rgba(240, 237, 238, var(--opacity))",
+        200: "rgba(218, 216, 217, var(--opacity))",
+        300: "rgba(185, 185, 185, var(--opacity))",
+        400: "rgba(151, 151, 151, var(--opacity))",
+        500: "rgba(103, 103, 103, var(--opacity))",
+        600: "rgba(73, 73, 73, var(--opacity))",
+        700: "rgba(41, 41, 41, var(--opacity))",
+        800: "rgba(28, 28, 28, var(--opacity))",
+        900: "rgba(0, 0, 0, var(--opacity))"
+    },
+    brand: {
+        jupiter: {
+            50: "rgba(255, 242, 231, var(--opacity))",
+            100: "rgba(255, 215, 180, var(--opacity))",
+            200: "rgba(255, 196, 144, var(--opacity))",
+            300: "rgba(255, 169, 94, var(--opacity))",
+            400: "rgba(255, 153, 62, var(--opacity))",
+            500: "rgba(255, 127, 14, var(--opacity))",
+            600: "rgba(232, 116, 13, var(--opacity))",
+            700: "rgba(181, 90, 10, var(--opacity))",
+            800: "rgba(140, 70, 8, var(--opacity))",
+            900: "rgba(107, 53, 6, var(--opacity))"
+        },
+        saturn: {
+            50: "rgba(255, 247, 230, var(--opacity))",
+            100: "rgba(255, 229, 176, var(--opacity))",
+            200: "rgba(255, 216, 138, var(--opacity))",
+            300: "rgba(255, 199, 84, var(--opacity))",
+            400: "rgba(255, 188, 51, var(--opacity))",
+            500: "rgba(255, 171, 0, var(--opacity))",
+            600: "rgba(232, 156, 0, var(--opacity))",
+            700: "rgba(181, 121, 0, var(--opacity))",
+            800: "rgba(140, 94, 0, var(--opacity))",
+            900: "rgba(107, 72, 0, var(--opacity))"
+        },
+        uranus: {
+            50: "rgba(242, 249, 251, var(--opacity))",
+            100: "rgba(216, 236, 243, var(--opacity))",
+            200: "rgba(197, 227, 237, var(--opacity))",
+            300: "rgba(171, 215, 228, var(--opacity))",
+            400: "rgba(154, 207, 223, var(--opacity))",
+            500: "rgba(129, 195, 215, var(--opacity))",
+            600: "rgba(117, 177, 196, var(--opacity))",
+            700: "rgba(92, 138, 153, var(--opacity))",
+            800: "rgba(71, 107, 118, var(--opacity))",
+            900: "rgba(54, 82, 90, var(--opacity))"
+        },
+        neptune: {
+            50: "rgba(235, 242, 246, var(--opacity))",
+            100: "rgba(194, 214, 227, var(--opacity))",
+            200: "rgba(164, 195, 214, var(--opacity))",
+            300: "rgba(123, 167, 195, var(--opacity))",
+            400: "rgba(97, 150, 183, var(--opacity))",
+            500: "rgba(58, 124, 165, var(--opacity))",
+            600: "rgba(53, 113, 150, var(--opacity))",
+            700: "rgba(41, 88, 117, var(--opacity))",
+            800: "rgba(32, 68, 91, var(--opacity))",
+            900: "rgba(24, 52, 69, var(--opacity))"
+        },
+        nebula: {
+            50: "rgba(241, 235, 247, var(--opacity))",
+            100: "rgba(205, 183, 225, var(--opacity))",
+            200: "rgba(189, 156, 222, var(--opacity))",
+            300: "rgba(166, 129, 202, var(--opacity))",
+            400: "rgba(153, 111, 195, var(--opacity))",
+            500: "rgba(115, 57, 172, var(--opacity))",
+            600: "rgba(105, 52, 157, var(--opacity))",
+            700: "rgba(82, 40, 122, var(--opacity))",
+            800: "rgba(63, 31, 95, var(--opacity))",
+            900: "rgba(48, 24, 72, var(--opacity))"
+        },
+        cosmic: {
+            50: "rgba(235, 237, 247, var(--opacity))",
+            100: "rgba(194, 200, 229, var(--opacity))",
+            200: "rgba(164, 173, 217, var(--opacity))",
+            300: "rgba(122, 135, 199, var(--opacity))",
+            400: "rgba(97, 112, 189, var(--opacity))",
+            500: "rgba(57, 76, 172, var(--opacity))",
+            600: "rgba(52, 69, 157, var(--opacity))",
+            700: "rgba(40, 54, 122, var(--opacity))",
+            800: "rgba(31, 42, 95, var(--opacity))",
+            900: "rgba(24, 32, 72, var(--opacity))"
+        }
+    },
+    alert: {
+        success: {
+            50: "rgba(236, 249, 237, var(--opacity))",
+            100: "rgba(196, 235, 198, var(--opacity))",
+            200: "rgba(167, 226, 170, var(--opacity))",
+            300: "rgba(127, 212, 131, var(--opacity))",
+            400: "rgba(102, 204, 107, var(--opacity))",
+            500: "rgba(58, 174, 64, var(--opacity))",
+            600: "rgba(45, 136, 50, var(--opacity))",
+            700: "rgba(34, 102, 38, var(--opacity))",
+            800: "rgba(27, 80, 29, var(--opacity))",
+            900: "rgba(21, 61, 22, var(--opacity))"
+        },
+        info: {
+            50: "rgba(234, 248, 246, var(--opacity))",
+            100: "rgba(190, 232, 228, var(--opacity))",
+            200: "rgba(159, 221, 215, var(--opacity))",
+            300: "rgba(115, 206, 197, var(--opacity))",
+            400: "rgba(88, 197, 186, var(--opacity))",
+            500: "rgba(46, 182, 169, var(--opacity))",
+            600: "rgba(39, 155, 143, var(--opacity))",
+            700: "rgba(25, 99, 93, var(--opacity))",
+            800: "rgba(17, 69, 65, var(--opacity))",
+            900: "rgba(12, 49, 46, var(--opacity))"
+        },
+        warning: {
+            50: "rgba(253, 250, 231, var(--opacity))",
+            100: "rgba(248, 239, 179, var(--opacity))",
+            200: "rgba(245, 231, 142, var(--opacity))",
+            300: "rgba(240, 220, 91, var(--opacity))",
+            400: "rgba(237, 213, 59, var(--opacity))",
+            500: "rgba(233, 203, 10, var(--opacity))",
+            600: "rgba(212, 185, 9, var(--opacity))",
+            700: "rgba(107, 93, 5, var(--opacity))",
+            800: "rgba(82, 71, 3, var(--opacity))",
+            900: "rgba(51, 44, 2, var(--opacity))"
+        },
+        error: {
+            50: "rgba(249, 236, 236, var(--opacity))",
+            100: "rgba(235, 196, 196, var(--opacity))",
+            200: "rgba(226, 152, 152, var(--opacity))",
+            300: "rgba(212, 127, 127, var(--opacity))",
+            400: "rgba(204, 102, 102, var(--opacity))",
+            500: "rgba(190, 85, 85, var(--opacity))",
+            600: "rgba(174, 58, 58, var(--opacity))",
+            700: "rgba(136, 45, 45, var(--opacity))",
+            800: "rgba(105, 35, 35, var(--opacity))",
+            900: "rgba(80, 27, 27, var(--opacity))"
+        }
+    }
+};
+
+// Helper function to get color with specific opacity
+export const getColorWithOpacity = (
+    category: keyof ColorPalette,
+    subCategory: string,
+    shade: keyof ColorShade,
+    opacity: number
+): string => {
+    let color: string;
+    
+    if (category === 'grey') {
+        color = colors.grey[shade];
+    } else if (category === 'brand') {
+        color = colors.brand[subCategory as keyof BrandColors][shade];
+    } else {
+        color = colors.alert[subCategory as keyof AlertColors][shade];
+    }
+    
+    return color.replace('var(--opacity)', opacity.toString());
+};
+
+// Usage examples:
+// Basic color access
+// colors.grey[500]
+// colors.brand.jupiter[500]
+// colors.alert.success[500]
+
+// With custom opacity
+// getColorWithOpacity('grey', '', '500', 0.5)
+// getColorWithOpacity('brand', 'jupiter', '500', 0.8)
+// getColorWithOpacity('alert', 'success', '500', 0.7)
