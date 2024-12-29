@@ -2,7 +2,7 @@ import { styles } from './style';
 import type { TypographyProps } from './index';
 
 /**
- * Generates Tailwind classes based on TypographyProps.
+ * Generates Tailwind classes based on TypographyProps by the following function.
  */
 export const generateClasses = (props: TypographyProps) => {
   const size = styles.size[props.size || 'body_base'];

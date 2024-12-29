@@ -1,3 +1,4 @@
+// all styles except dark/light mode
 export const styles = {
   variant: {
     primary: "font-['Oswald']",

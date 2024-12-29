@@ -1,3 +1,5 @@
+// Typography interface
+
 export interface TypographyProps {
   /**
    * Determines the semantic HTML tag.
