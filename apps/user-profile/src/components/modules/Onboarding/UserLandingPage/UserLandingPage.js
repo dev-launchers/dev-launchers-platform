@@ -214,19 +214,19 @@ export default function UserLandingPage() {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col justify-center gap-8 bg-[#FFF]">
       <div className="flex h-40 bg-[#F6F6F6] flex-shrink-0 items-center justify-center">
         <img src={Breadcrumb} />
       </div>
-      <OnboardingContainer>
-        <ProfileContainer>
-          <ProfileHeader>
-            <Typography type="p">PROFILE</Typography>
-            <Typography type="h2">Let's Create Your Profile</Typography>
-          </ProfileHeader>
-          <Typography>
+      <div className="">
+        <div className="flex flex-col justify-center gap-8 items-center">
+          <div className="flex flex-col justify-center gap-6 w-2/6 items-center">
+            <p className="text-base text-black">PROFILE</p>
+            <p className="text-3xl text-black">Let's Create Your Profile</p>
+          </div>
+          <p className="text-base text-stone-900">
             A completed profile will help us match you with opportunities
-          </Typography>
+          </p>
 
           {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
             <UploadedProfilePicture
@@ -249,7 +249,7 @@ export default function UserLandingPage() {
               style={{ display: 'none' }}
             />
           </UploadButton>
-        </ProfileContainer>
+        </div>
         <FormContainer>
           <Typography>* Indicates a required field</Typography>
           <FormFields name="myForm">
@@ -341,7 +341,7 @@ export default function UserLandingPage() {
             </ButtonContainer>
           </FormFooter>
         </FormContainer>
-      </OnboardingContainer>
+      </div>
     </div>
   );
 }
