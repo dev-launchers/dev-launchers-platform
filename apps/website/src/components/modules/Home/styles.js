@@ -1,8 +1,8 @@
 export const styles = {
-  main: 'relative min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 md:px-6 py-12',
+  main: 'relative min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 pt-20 md:px-6 py-12',
   section: {
     button:
-      'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-lg transition-all duration-200 hover:border-4 hover:bg-purple-700 hover:font-semibold',
+      'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:border-purple-300 hover:border-4',
     buttonContainer: 'flex justify-center',
     cardsContainer: 'flex flex-wrap justify-center my-4 gap-8',
     communityCard:
@@ -28,7 +28,7 @@ export const styles = {
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     logoContainer:
-      'justify-center p-6 grid grid-cols-1 md:grid-cols-3 gap-16 align-items',
+      'justify-center p-2 grid grid-cols-1 md:grid-cols-3 gap-14 align-items',
     logoStyle: 'h-16 w-auto flex-shrink-0',
     partnerContainer: 'w-full mx-auto pt-20 px-4',
     partnerLogos:

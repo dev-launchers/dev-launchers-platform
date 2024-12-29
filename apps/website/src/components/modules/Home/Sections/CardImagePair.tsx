@@ -52,12 +52,12 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
     },
     card: {
       wrapper: 'flex  basis-1/2 flex-col rounded-3xl border-4 p-6',
-      content: 'flex flex-col gap-2',
-      title: 'text-4xl font-normal',
-      description: 'text-base font-normal',
+      content: 'flex flex-col gap-1',
+      title: 'text-4xl text-left font-normal',
+      description: 'text-base text-left font-normal',
       buttonWrapper: 'flex flex-col pt-4',
-      button: 'normal-case',
-      link: 'border-2 p-4 text-white rounded-xl text-base capitalize font-medium',
+      button: 'text-left normal-case',
+      link: 'border-2 p-4 text-white rounded-xl text-left text-base normal-case font-medium',
     },
   } as const;
 

@@ -16,7 +16,7 @@ const TechStackSection = () => (
               src={`/${tech.toLowerCase().replace(/\s/g, '')}.svg`}
               alt={tech}
             />
-            <span className="text-sm font-medium">{tech}</span>
+            <span className="text-xl font-medium">{tech}</span>
           </div>
         )
       )}
