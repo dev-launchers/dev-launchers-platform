@@ -95,7 +95,7 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
           : 'var(--button-border-width, 4px) solid transparent',
         borderRadius: '8px',
 
-        pointerEvents: disabled ? 'none' : '',
+        pointerEvents: disabled ? 'none' : 'pointer',
       }}
     >
       {icon}

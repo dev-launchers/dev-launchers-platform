@@ -8,8 +8,10 @@ const BackButton = ({ buttonType, clickHandler, backRoute }) => {
   const goBack = () => {
     if (backRoute) {
       router.push(backRoute);
+    } else if (window.history.length > 1) {
+      window.history.back();
     } else {
-      window.history.back(-1);
+      window.close();
     }
   };
 
@@ -18,8 +20,10 @@ const BackButton = ({ buttonType, clickHandler, backRoute }) => {
       clickHandler('back');
     } else if (backRoute) {
       router.push(backRoute);
+    } else if (window.history.length > 1) {
+      window.history.back();
     } else {
-      window.history.back(-1);
+      window.close();
     }
   };
 

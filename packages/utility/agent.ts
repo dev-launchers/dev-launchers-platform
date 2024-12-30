@@ -6,9 +6,11 @@ import {
   Idea,
   Like,
   Save,
+  Notification,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
@@ -161,6 +163,10 @@ const Likes = {
   },
 };
 
+const Notifications = {
+  get: () => requests.get<Notification[]>('/notifications?populate=deep'),
+};
+
 const Saves = {
   post: (body: {}) => requests.post<Save>('/saves/', body),
 };
@@ -180,6 +186,7 @@ const agent = {
   Ideas,
   Likes,
   Saves,
+  Notifications,
   Profiles,
   requests,
 };

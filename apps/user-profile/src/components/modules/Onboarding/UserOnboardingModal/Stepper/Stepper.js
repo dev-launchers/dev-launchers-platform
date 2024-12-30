@@ -1,288 +1,180 @@
 import { useEffect, useState } from 'react';
-import {
-  StepperHeader,
-  StepperBody,
-  StepperFooter,
-  ProgressBarContainer,
-  Bar,
-  StepNumber,
-  StepName,
-  StepperContainer,
-  CloseIcon,
-} from './StyledStepper';
-import { Button, Typography } from '@devlaunchers/components/components/atoms';
-import chevronLeftImg from './../../../../../images/btn-chevron-left.svg';
-import chevronRightImg from './../../../../../images/btn-chevron-right.svg';
-import closeButton from './../../../../../images/btn-close-button.svg';
-import checkImg from './../../../../../images/Onboarding/stepper/check.svg';
-import RainbowBar from '../../../../common/RainbowBar';
-// import { useOnboardingDataContext } from '../../../context/OnboardingDataContext.js';
-import * as onboardingActions from '../../../../../state/actions/onboardingActions';
+import { useOnboardingDataContext } from './../../../../../context/OnboardingDataContext';
+import * as onboardingActions from './../../../../../state/actions/onboardingActions';
+
+import Header from './Header';
+import Footer from './Footer';
+import Modal from '../../../../common/Modal';
 
 /**
  * @description This is a stepper component that is used for the user onboarding
  */
 export default function Stepper({
   steps = stepsMockData,
-  startIndex = 0,
-  context,
+  startingIndex = 0,
+  maxHeight = '1000px',
+  maxWidth = '936px',
+  width = '936px',
+  height = '792px',
 }) {
-  const [stepsData, setStepsData] = useState(steps);
-  const [index, setIndex] = useState(startIndex);
-  const [activeComponent, setActiveComponent] = useState(
-    stepsData[index].component
-  );
-  const [buttonConfig, setButtonConfig] = useState(
-    stepsData[index].config.buttons
-  );
-  const [nextBtnDisability, setNextButtonDisability] = useState(
-    buttonConfig.next.disabled
-  );
-  const lastStepIndex = stepsData.length - 1;
-  const contextState = context();
+  const { onboardingData, dispatch } = useOnboardingDataContext();
 
-  // TODO finish functionality for this part
-  // function initialiseStepMetaData() {
-  //   const metaData = {};
-  //   console.log("INTIALISING", stepsMetaData);
-  //   stepsData.forEach((steps, index) => {
-  //     // index is the step
-  //     metaData[index] = {
-  //       hasLandedOnStepCount: 0
-  //     }
-  //   });
-
-  //   return metaData;
-  // }
-
-  // TODO finish functionality for this part
-  // const updateLandedOnStepCount = () => {
-  //   const newMetaData = { ...stepsMetaData, [index]: { hasLandedOnStepCount: stepsMetaData[index].hasLandedOnStepCount++ } };
-  //   newMetaData[index].hasLandedOnStepCount = newMetaData[index].hasLandedOnStepCount++;
-  //   setStepsMetaData(newMetaData);
-  // }
+  const [stepConfig] = useState(steps);
+  const [activeStepIndex, setActiveStepIndex] = useState(startingIndex);
+  const [activeStepConfig, setActiveStepConfig] = useState(
+    stepConfig[startingIndex]
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [disableNextButton, setDisableNextButton] = useState(false);
 
   const updateConfigs = () => {
-    setActiveComponent(stepsData[index].component);
-    setButtonConfig(stepsData[index].config.buttons);
-    setNextButtonDisability(
-      stepsData[index].config.buttons.next.disabled != undefined
-        ? stepsData[index].config.buttons.next.disabled
-        : false
-    );
+    if (stepConfig[activeStepIndex]?.skip) {
+      setActiveStepIndex(activeStepIndex + 1);
+    }
+    setActiveStepConfig(stepConfig[activeStepIndex]);
+    setIsLoading(false);
   };
 
-  const showClosingModal = () => {
-    // TODO improve this logic
-    contextState.dispatch({ type: onboardingActions.SHOW_CLOSING_MODAL });
-  };
-
-  /**
-   * Everytime users navigates update the activeComponent & config
-   */
   useEffect(() => {
-    stepsData[index]?.skip == true && setIndex(index + 1);
     updateConfigs();
-    const timeoutId = enableNextButton();
-    return () => clearTimeout(timeoutId);
-  }, [index]);
+  }, [activeStepIndex]);
 
-  const enableNextButton = () => {
-    if (stepsData[index].config.buttons.next.delayEnable != undefined) {
-      return setTimeout(() => {
-        setNextButtonDisability(false);
-      }, stepsData[index].config.buttons.next.delayEnable);
-    }
+  const openCloseModal = () => {
+    dispatch({ type: onboardingActions.SHOW_CLOSING_MODAL });
   };
 
-  const backOnClickHandler = () => {
-    const hasSetCustomFunction = buttonConfig?.back?.onClick ? true : false;
-    if (hasSetCustomFunction) {
-      buttonConfig.back.onClick();
-    } else {
-      index >= 1 && setIndex(index - 1);
-    }
+  const closeStepper = () => {
+    dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
   };
-
-  const nextOnClickHandler = () => {
-    const hasSetCustomFunction = buttonConfig?.next?.onClick ? true : false;
-    if (hasSetCustomFunction) {
-      // console.log('TEST', onboardingData);
-      buttonConfig.next.onClick({ ...contextState });
-    } else {
-      index >= 1 && setIndex(index + 1);
-    }
-  };
-
-  const showBackButton = () => {
-    const backButtonHtml = (
-      <Button
-        buttonType="alternative"
-        buttonSize="xl"
-        onClick={backOnClickHandler}
-        className="stepper-btn-icon-text back-button"
-      >
-        {buttonConfig.back.hideIcons ? null : <img src={chevronLeftImg} />}
-        {buttonConfig.back.label ? buttonConfig.back.label : 'Back'}
-      </Button>
-    );
-    // This hides the button if index == 0
-    return index === 0 || buttonConfig.back.hide ? (
-      <span></span>
-    ) : (
-      backButtonHtml
-    );
-  };
-
-  const showNextButton = () => {
-    return (
-      <Button
-        className="next-btn"
-        buttonType="primary"
-        buttonSize="xl"
-        onClick={nextOnClickHandler}
-        disabled={nextBtnDisability}
-      >
-        <div className="stepper-btn-icon-text">
-          {buttonConfig?.next?.label ? buttonConfig.next.label : 'Next'}
-          {buttonConfig?.next?.hideIcons ? null : <img src={chevronRightImg} />}
-        </div>
-      </Button>
-    );
-  };
-
-  const showStepNumber = (mapIndex) => {
-    const stepConfig = stepsData[mapIndex].config;
-    const stepCompleted = index > mapIndex;
-    const onActivestep = index == mapIndex;
-    const onLastStep = index == lastStepIndex;
-    const stepNumberHtml = (
-      <StepNumber
-        className={
-          stepCompleted || onActivestep ? 'completed-step' : 'uncompleted-step'
-        }
-      >
-        {stepCompleted || onLastStep ? (
-          <img src={checkImg} />
-        ) : stepConfig.stepNumber ? (
-          stepConfig.stepNumber
-        ) : (
-          mapIndex + 1
-        )}
-        <StepName>{stepConfig.stepName}</StepName>
-      </StepNumber>
-    );
-    return stepConfig?.hideStepNumber ? null : stepNumberHtml;
-  };
-
-  const showBar = (mapIndex) => {
-    const stepConfig = stepsData[mapIndex]?.config;
-    const width = (stepConfig.barSize == 's' ? 50 : 100) + '%';
-    const nextStepConfig =
-      mapIndex === lastStepIndex
-        ? lastStepIndex
-        : stepsData[mapIndex + 1].config;
-    const addSpaceToRight = nextStepConfig.hideStepNumber;
-    const stepCompleted = index > mapIndex;
-
-    const barHtml = (
-      <Bar
-        key={mapIndex}
-        width={width}
-        spacing={{ addSpaceToRight }}
-        className={stepCompleted ? 'completed-step' : 'uncompleted-step'}
-      />
-    );
-
-    return stepConfig?.hideBar ? null : barHtml;
-  };
-
-  const stepTracker = stepsData.map((step, mapIndex) => {
-    // TODO find way of adding id's to remove key error from console
-    return (
-      <>
-        <div>{showStepNumber(mapIndex)}</div>
-        {showBar(mapIndex)}
-      </>
-    );
-  });
 
   return (
-    <>
-      <StepperContainer>
-        <div>
-          <StepperHeader>
-            <ProgressBarContainer>{stepTracker}</ProgressBarContainer>
-            <CloseIcon>
-              <div className="close-button" onClick={showClosingModal}>
-                <img src={closeButton} />
-              </div>
-            </CloseIcon>
-          </StepperHeader>
-          <RainbowBar />
+    <Modal
+      maxWidth={maxWidth}
+      maxHeight={maxHeight}
+      width={width}
+      className={'w-full bg-grayscale-100 h-full'}
+    >
+      <div className="flex flex-col gap-10 overflow-hidden">
+        <Header
+          stepper={stepConfig}
+          activeStepIndex={activeStepIndex}
+          activeStepConfig={activeStepConfig}
+          onClose={openCloseModal}
+          isLoading={isLoading}
+        />
+        <div className="h-[480px] w-full">
+          {activeStepConfig?.component ?? null}
         </div>
-
-        <StepperBody>
-          {/* activeComponent holds the component e.g */}
-          {activeComponent}
-        </StepperBody>
-
-        <StepperFooter>
-          {showBackButton()}
-          {showNextButton()}
-        </StepperFooter>
-      </StepperContainer>
-    </>
+        <Footer
+          stepConfig={stepConfig}
+          buttonConfig={activeStepConfig?.buttons}
+          activeStepIndex={activeStepIndex}
+          setActiveStepIndex={setActiveStepIndex}
+          setActiveStepConfig={setActiveStepConfig}
+          onSubmit={closeStepper}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
+          context={[onboardingData, dispatch]}
+          disableNextButton={disableNextButton}
+          setDisableNextButton={setDisableNextButton}
+        />
+      </div>
+    </Modal>
   );
 }
 
 const stepsMockData = [
   {
     component: <p>Step 1</p>,
-    label: 'Step 3',
-    config: {
-      buttons: {
-        next: {
-          label: 'Next',
-        },
-        back: {
-          label: 'Back',
-        },
+    skip: false,
+    header: {
+      name: 'Step 1',
+      number: 1,
+      barSize: null,
+      hideNumber: null,
+    },
+    buttons: {
+      next: {
+        label: 'Next',
+        hideIcons: false,
+        onClick: null,
+      },
+      back: {
+        label: 'Back',
+        hideIcons: false,
+        onClick: null,
       },
     },
   },
   {
     component: <p>Step 2</p>,
-    label: 'Step 2',
-    config: {
-      buttons: {
-        next: {
-          label: 'Next',
-          onClick: () => {
-            console.log('..some function ');
-          },
-        },
-        back: {
-          label: 'Back',
-        },
+    skip: false,
+    header: {
+      name: 'Step 2',
+      number: 2,
+      barSize: null,
+      hideNumber: null,
+    },
+    buttons: {
+      next: {
+        label: 'Next',
+        hideIcons: false,
+        onClick: null,
+      },
+      back: {
+        label: 'Back',
+        hideIcons: false,
+        onClick: null,
       },
     },
   },
   {
-    component: <p> Step 3</p>,
-    label: 'Step 2',
-    config: {
-      buttons: {
-        next: {
-          label: 'Finish',
-          useDefaultOnClick: false,
-          onClick: () => {
-            Router.push('./users-me');
-          },
+    component: <p>Step 3 - Number Hidden</p>,
+    skip: false,
+    header: {
+      name: 'Step 3',
+      number: 2,
+      barSize: null,
+      hideNumber: true,
+    },
+    buttons: {
+      next: {
+        label: 'Next',
+        hideIcons: false,
+        onClick: null,
+      },
+      back: {
+        label: 'Back',
+        hideIcons: false,
+        onClick: null,
+      },
+    },
+  },
+  {
+    component: <p>Step 4</p>,
+    skip: false,
+    header: {
+      name: 'Final',
+      number: 4,
+      barSize: null,
+      hideNumber: null,
+    },
+    buttons: {
+      submit: {
+        label: 'Done',
+        hideIcons: true,
+        onClick: () => {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, 5000);
+          });
         },
-        back: {
-          label: 'Back',
-        },
+      },
+      back: {
+        label: 'Back',
+        hideIcons: false,
+        onClick: null,
       },
     },
   },

@@ -68,7 +68,7 @@ const Dropdown = ({
   }, [menuOpen]);
 
   return (
-    <DropdownContainer ref={node} width={width}>
+    <DropdownContainer ref={node} width={width} isOpen={menuOpen}>
       <Toggle onClick={() => setMenuOpen(!menuOpen)}>
         <Typography type="label">{title}</Typography>
         <Chevron isOpen={menuOpen} />
