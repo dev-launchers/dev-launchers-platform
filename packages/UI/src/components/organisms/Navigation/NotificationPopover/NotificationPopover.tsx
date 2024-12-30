@@ -62,12 +62,12 @@ export default function NotificationPopover() {
             <span className="capitalize font-semibold text-base md:text-xl">
               notification
             </span>
-            <button
+            {/* <button
               className="text-neptune-600 hover:text-uranus-500"
               onClick={markAllReadHandle}
             >
               Mark all as read
-            </button>
+            </button> */}
           </div>
           <ul
             style={{
@@ -97,7 +97,7 @@ export default function NotificationPopover() {
               );
             })}
           </ul>
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <a
               href={'/notifications'}
               className="text-neptune-600 hover:text-uranus-500"
@@ -111,7 +111,7 @@ export default function NotificationPopover() {
               <SettingsIcon />
               settings
             </a>
-          </div>
+          </div> */}
         </div>
       </PopoverContent>
     </Popover>
