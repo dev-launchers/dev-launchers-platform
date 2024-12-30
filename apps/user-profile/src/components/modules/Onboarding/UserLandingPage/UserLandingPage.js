@@ -218,40 +218,44 @@ export default function UserLandingPage() {
       <div className="flex h-40 bg-[#F6F6F6] flex-shrink-0 items-center justify-center">
         <img src={Breadcrumb} />
       </div>
-      <div className="">
+      <div className="flex flex-col justify-center gap-6 items-center">
         <div className="flex flex-col justify-center gap-8 items-center">
-          <div className="flex flex-col justify-center gap-6 w-2/6 items-center">
+          <div className="flex flex-col justify-center gap-6 items-center">
             <p className="text-base text-black">PROFILE</p>
             <p className="text-3xl text-black">Let's Create Your Profile</p>
           </div>
           <p className="text-base text-stone-900">
             A completed profile will help us match you with opportunities
           </p>
-
-          {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-            <UploadedProfilePicture
-              src={
-                uploadedProfilePicture || userData?.profile?.profilePictureUrl
-              }
-            />
-          ) : (
-            <UploadProfilePicture width={120} height={120} />
-          )}
-          <UploadButton>
-            <label htmlFor="file-upload" className="cursor-pointer">
-              <img src={CameraIcon} className="Camera Icon" />
-            </label>
-            <input
-              id="file-upload"
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={handleFileChange}
-              style={{ display: 'none' }}
-            />
-          </UploadButton>
+          <div>
+            {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
+              <UploadedProfilePicture
+                src={
+                  uploadedProfilePicture || userData?.profile?.profilePictureUrl
+                }
+              />
+            ) : (
+              <UploadProfilePicture width={120} height={120} />
+            )}
+            <div className="relative right-[-10] bottom-5">
+              <label htmlFor="file-upload" className="cursor-pointer">
+                <img src={CameraIcon} className="Camera Icon" />
+              </label>
+              <input
+                id="file-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+              />
+            </div>
+          </div>
         </div>
-        <FormContainer>
-          <Typography>* Indicates a required field</Typography>
+        <div className="flex flex-col">
+          <p className="text-sm font-normal text-black">
+            <p className="text-sm font-bold text-red-500">*</p> Indicates a
+            required field
+          </p>
           <FormFields name="myForm">
             <InputField
               error={formValidation.firstNameError}
@@ -313,20 +317,18 @@ export default function UserLandingPage() {
               checked={person.termsAndConditions}
               required={true}
             />
-            <ButtonContainer>
-              <Button
-                buttonType="alternative"
-                buttonSize="xl"
-                onClick={onCancelClick}
+            <div className="flex">
+              <button
+                className="bg-transparent hover:bg-blue-700 text-blue-700 text-base font-normal hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded mr-6"
+                onclick="onCancelClick()"
               >
                 Cancel
-              </Button>
-              <Button
+              </button>
+              <button
                 type="submit"
-                buttonType="secondary"
-                buttonSize="xl"
-                onClick={onContinueClick}
-                disabled={!formValidation.isFormValid()}
+                className="bg-teal-900 hover:bg-blue-700 text-white text-base font-normal py-2 px-4 rounded"
+                onclick="onContinueClick()"
+                disabled="!formValidation.isFormValid()"
               >
                 {saveInProgress ? (
                   <p className="flex items-center gap-3">
@@ -337,10 +339,10 @@ export default function UserLandingPage() {
                 ) : (
                   'Save and Continue'
                 )}
-              </Button>
-            </ButtonContainer>
+              </button>
+            </div>
           </FormFooter>
-        </FormContainer>
+        </div>
       </div>
     </div>
   );
