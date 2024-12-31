@@ -251,34 +251,42 @@ export default function UserLandingPage() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
+        <form className="flex flex-col">
           <p className="text-sm font-normal text-black">
             <p className="text-sm font-bold text-red-500">*</p> Indicates a
             required field
           </p>
-          <FormFields name="myForm">
-            <InputField
-              error={formValidation.firstNameError}
-              label="First Name"
-              name="First Name"
-              onChange={onFirstNameChange}
+          <div name="myForm">
+            <label class="text-stone-900 text-base font-bold" for="First Name">
+              First Name *
+            </label>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              id="First Name"
+              type="text"
               placeholder="John"
+              error={formValidation.firstNameError}
+              onChange="onFirstNameChange()"
               touched={
                 person.firstNameTouched && !formValidation.isFirstNameValid
               }
               required
-            />
-            <InputField
-              error={formValidation.lastNameError}
-              label="Last Name"
-              name="Last Name"
-              onChange={onLastNameChange}
+            ></input>
+            <label class="text-stone-900 text-base font-bold" for="Last Name">
+              Last Name *
+            </label>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              id="Last Name"
+              type="text"
               placeholder="Doe"
+              error={formValidation.lastNameError}
+              onChange="onLastNameChange()"
               touched={
                 person.lastNameTouched && !formValidation.isLastNameValid
               }
               required
-            />
+            ></input>
 
             <DropDownMenu
               menuItems={countryData}
@@ -286,12 +294,22 @@ export default function UserLandingPage() {
               onChange={onCountryChange}
             />
 
-            <InputField
+            {/* <InputField
               error=""
               label="Role (optional)"
               onChange={onRoleChange}
               placeholder="CSS Developer"
-            />
+            /> */}
+            <label class="text-stone-900 text-base font-bold" for="Role">
+              Role (optional)
+            </label>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              id="Role"
+              type="text"
+              placeholder="CSS Developer"
+              onChange="onRoleChange()"
+            ></input>
 
             {/* <InputField
               error=""
@@ -305,7 +323,7 @@ export default function UserLandingPage() {
               onChange={onWebsitePortfolioChange}
               placeholder="www.portfolio.com"
             /> */}
-          </FormFields>
+          </div>
           <FormFooter>
             <CheckboxField
               customLabel={
@@ -317,7 +335,7 @@ export default function UserLandingPage() {
               checked={person.termsAndConditions}
               required={true}
             />
-            <div className="flex">
+            <div className="flex pb-16">
               <button
                 className="bg-transparent hover:bg-blue-700 text-blue-700 text-base font-normal hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded mr-6"
                 onclick="onCancelClick()"
@@ -326,7 +344,7 @@ export default function UserLandingPage() {
               </button>
               <button
                 type="submit"
-                className="bg-teal-900 hover:bg-blue-700 text-white text-base font-normal py-2 px-4 rounded"
+                className="bg-teal-900 hover:bg-blue-700 text-white text-base font-normal py-2 px-4 rounded shadow-xl"
                 onclick="onContinueClick()"
                 disabled="!formValidation.isFormValid()"
               >
@@ -342,7 +360,7 @@ export default function UserLandingPage() {
               </button>
             </div>
           </FormFooter>
-        </div>
+        </form>
       </div>
     </div>
   );
