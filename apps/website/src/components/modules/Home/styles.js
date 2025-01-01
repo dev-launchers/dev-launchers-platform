@@ -3,7 +3,7 @@ export const styles = {
   section: {
     button:
       'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:border-purple-300 hover:border-4',
-    buttonContainer: 'flex justify-center py-2',
+    buttonContainer: 'flex justify-center py-6',
     cardsContainer: 'flex flex-wrap justify-center my-4 pt-16 gap-8',
     communityCard:
       'relative rounded-xl p-[2px] bg-gradient-to-r from-blue-300 to-purple-300',
@@ -30,13 +30,13 @@ export const styles = {
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     logoContainer:
-      'justify-center p-2 grid grid-cols-1 md:grid-cols-3 gap-14 align-items',
+      'justify-center p-2 grid grid-cols-1 md:grid-cols-3 gap-8 align-items',
     logoStyle: 'h-16 w-auto flex-shrink-0',
     partnerContainer: 'w-full mx-auto pt-20 px-4',
     partnerLogos:
       'flex flex-col md:flex-row items-center justify-around gap-20 mt-8',
     stackLogo:
-      'flex items-center gap-4 p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/50 transition-colors',
+      'flex items-center  p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/50 transition-colors',
     subHeading:
       'text-lg text-center text-gray-600 max-w-3xl mx-auto font-normal',
     withBackground01:
