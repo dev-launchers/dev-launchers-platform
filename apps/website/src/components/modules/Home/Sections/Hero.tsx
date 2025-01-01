@@ -15,9 +15,11 @@ const HeroSection = () => (
       <p className={styles.section.subHeading}>{sections.hero.description}</p>
     </div>
     <div className={styles.section.buttonContainer}>
-      <button className={styles.section.button}>
-        {sections.hero.buttonText}
-      </button>
+      <a href="#opportunities">
+        <button className={styles.section.button}>
+          {sections.hero.buttonText}
+        </button>
+      </a>
     </div>
     <div className={styles.section.partnerContainer}>
       <p className={styles.section.label}>{sections.hero.label}</p>

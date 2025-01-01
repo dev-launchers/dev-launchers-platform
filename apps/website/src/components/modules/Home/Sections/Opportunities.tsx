@@ -15,7 +15,7 @@ const opportunities = [
       'Start your tech career or switch paths with hands-on experience at Dev Launchers. Participate in impactful projects and receive mentorship to gain confidence and skills needed in the tech industry.',
     descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
     btnText: 'Entry-Level Opportunities',
-    btnLink: '/projects',
+    btnLink: '/join',
     imageBorderColor: 'hsla(28, 100%, 53%, 1)',
     cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
     cardBorderColor: 'hsla(270, 41%, 65%, 1)',
@@ -31,7 +31,7 @@ const opportunities = [
       'Lead teams and mentor emerging talent. Share your experience, guide projects, and help shape the future of tech innovation. Develop leadership skills and advance your career with us.',
     descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
     btnText: 'Leadership Opportunities',
-    btnLink: '/projects',
+    btnLink: '/join',
     imageBorderColor: 'hsla(194, 52%, 67%, 1)',
     cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
     cardBorderColor: 'hsla(270, 41%, 65%, 1)',
@@ -47,7 +47,7 @@ const opportunities = [
       'Become a catalyst for change by becoming a mentor or partnering with us. Help us build an inclusive and innovative tech sector through resources and expertise.',
     descriptionTextColor: 'hsla(271, 50%, 74%, 1)',
     btnText: 'Partnership Opportunities',
-    btnLink: '/projects',
+    btnLink: '/support-us',
     imageBorderColor: 'hsla(40, 100%, 50%, 1)',
     cardBackgroundColor: 'hsla(270, 51%, 25%, 0.25)',
     cardBorderColor: 'hsla(270, 41%, 65%, 1)',
@@ -58,7 +58,7 @@ const opportunities = [
 const Opportunities = () => {
   return (
     <Section className={styles.section.withBackground02}>
-      <div className={styles.section.header}>
+      <div id="opportunities" className={styles.section.header}>
         <h2 className={styles.section.heading}>
           {sections.opportunities.title}
         </h2>

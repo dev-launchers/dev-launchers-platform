@@ -14,9 +14,11 @@ const DonateSection = () => {
         </p>
       </div>
       <div className={styles.section.buttonContainer}>
-        <button className={styles.section.button}>
-          {sections.donate.buttonText}
-        </button>
+        <a href="https://devlaunchers.org/support-us">
+          <button className={styles.section.button}>
+            {sections.donate.buttonText}
+          </button>
+        </a>
       </div>
     </Section>
   );
