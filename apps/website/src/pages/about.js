@@ -5,7 +5,7 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>Mentorship Tiers</title>
+        <title>About Us</title>
       </Head>
       <div className="min-h-screen bg-black text-white">
         <section className="relative py-24 px-4 md:px-8">
