@@ -57,7 +57,7 @@ const opportunities = [
 
 const Opportunities = () => {
   return (
-    <Section className={styles.section.container}>
+    <Section className={styles.section.withBackground02}>
       <div id="opportunities" className={styles.section.header}>
         <h2 className={styles.section.heading}>
           {sections.opportunities.title}

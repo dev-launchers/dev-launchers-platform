@@ -9,9 +9,11 @@ const TechStackSection = () => (
       <p className={styles.section.subHeading}>{sections.build.description}</p>
     </div>
     <div className={styles.section.buttonContainer}>
-      <button className={styles.section.button}>
-        {sections.build.buttonText}
-      </button>
+      <a href="https://github.com/dev-launchers/dev-launchers-platform">
+        <button className={styles.section.button}>
+          {sections.build.buttonText}
+        </button>
+      </a>
     </div>
     <div className={styles.section.logoContainer}>
       {['Tailwind', 'React', 'Github', 'TypeScript', 'Figma', 'Shadcn'].map(
