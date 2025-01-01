@@ -105,8 +105,13 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
           </p>
         </div>
         <div className={LAYOUT.card.buttonWrapper}>
-          <a href={btnLink} className={LAYOUT.card.link} style={linkStyle}>
-            <Button onClick={onClick}>{btnText}</Button>
+          <a
+            href={btnLink}
+            onClick={onClick}
+            className={LAYOUT.card.link}
+            style={linkStyle}
+          >
+            {btnText}
           </a>
         </div>
       </div>
