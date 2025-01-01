@@ -1,6 +1,3 @@
-import kraftiesImage from '../../../../images/home-page/krafties.png?webp';
-import googleImage from '../../../../images/home-page/google.png?webp';
-import microsoftImage from '../../../../images/home-page/microsoft.png?webp';
 import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';

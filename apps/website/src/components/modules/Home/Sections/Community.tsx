@@ -14,11 +14,13 @@ const stats = [
 ];
 
 const CommunitySection = () => (
-  <Section className={styles.section.withBackground}>
-    <h2 className={styles.section.heading}>{sections.community.title}</h2>
-    <p className={styles.section.subHeading}>
-      {sections.community.description}
-    </p>
+  <Section className={styles.section.withBackground01}>
+    <div className={styles.section.header}>
+      <h2 className={styles.section.heading}>{sections.community.title}</h2>
+      <p className={styles.section.subHeading}>
+        {sections.community.description}
+      </p>
+    </div>
     <div className={styles.section.communityCardContainer}>
       {stats.map((stat, index) => (
         <div key={index} className={styles.section.communityCard}>

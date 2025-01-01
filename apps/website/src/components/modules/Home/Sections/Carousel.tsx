@@ -10,9 +10,9 @@ import {
 const testimonials = [
   {
     content:
-      "Dev Launchers is a great organization to volunteer with, and I would recommend it to anyone looking for an opportunity to learn new things, grow your skills and experience in Tech and work with great people all around the world. I've been volunteering for 9 months now and it has been a great experience. Members are very collaborative, kind and polite. Whoever wants to learn new stuff, join teams full of great people and work on open source projects that has real impact this is the place for that! One of the best decisions I've ever made.",
-    author: 'John D.',
-    role: 'Team Member',
+      'I joined Dev launchers as a volunteer and it helped me to polish my skills and the experience of working as a team. I was able to showcase my volunteer works in interviews which helped me to land on a new position with a company in a short span of time. Dev launchers provides people from diverse backgrounds the skills and resources necessary to succeed in their careers. I am happy that I made a wise choice by considering volunteer at Dev launchers. You will be surprised at just how much you can gain from taking the plunge.',
+    author: 'Hredhya M.',
+    role: 'Previous Lead',
   },
   {
     content:
@@ -22,27 +22,27 @@ const testimonials = [
   },
   {
     content:
-      "Dev Launchers is a great organization to volunteer with, and I would recommend it to anyone looking for an opportunity to learn new things, grow your skills and experience in Tech and work with great people all around the world. I've been volunteering for 9 months now and it has been a great experience. Members are very collaborative, kind and polite. Whoever wants to learn new stuff, join teams full of great people and work on open source projects that has real impact this is the place for that! One of the best decisions I've ever made.",
-    author: 'Sarah K.',
-    role: 'Project Lead',
+      'Dev Launchers is an excellent organization, which helps the development of both participants and volunteers alike. The management is flexible, competent, open to ideas, and has plenty of knowledge to share. The culture is fantastic, and each meeting is productive and fun.',
+    author: 'Mohammedi A.',
+    role: 'Previous Member',
   },
   {
     content:
-      "Dev Launchers is a great organization to volunteer with, and I would recommend it to anyone looking for an opportunity to learn new things, grow your skills and experience in Tech and work with great people all around the world. I've been volunteering for 9 months now and it has been a great experience. Members are very collaborative, kind and polite. Whoever wants to learn new stuff, join teams full of great people and work on open source projects that has real impact this is the place for that! One of the best decisions I've ever made.",
-    author: 'Sarah K.',
-    role: 'Project Lead',
+      'Dev Launchers is an excellent organization, which helps the development of both participants and volunteers alike. The management is flexible, competent, open to ideas, and has plenty of knowledge to share. The culture is fantastic, and each meeting is productive and fun.',
+    author: 'James D.',
+    role: 'Previous Member',
   },
 ];
 
 const TestimonialCarousel = () => {
   return (
-    <div className="relative w-full max-w-7xl mx-auto">
+    <div className="relative w-full max-w-7xl pt-2 mx-auto rounded-lg ">
       {/* Fade effect containers */}
       <div className="hidden sm:block absolute left-0 top-0 w-48 h-full bg-gradient-to-r from-black via-black to-transparent z-10" />
       <div className="hidden sm:block absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-black via-black to-transparent z-10" />
 
       {/* Main carousel container */}
-      <div className="bg-black px-8 pt-12 pb-24 relative select-none">
+      <div className="bg-black px-8 pt-12 relative select-none">
         <Carousel
           opts={{
             align: 'center',

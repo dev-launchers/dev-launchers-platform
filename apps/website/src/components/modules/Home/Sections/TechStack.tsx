@@ -8,6 +8,11 @@ const TechStackSection = () => (
       <h2 className={styles.section.heading}>{sections.build.title}</h2>
       <p className={styles.section.subHeading}>{sections.build.description}</p>
     </div>
+    <div className={styles.section.buttonContainer}>
+      <button className={styles.section.button}>
+        {sections.build.buttonText}
+      </button>
+    </div>
     <div className={styles.section.logoContainer}>
       {['Tailwind', 'React', 'Github', 'TypeScript', 'Figma', 'Shadcn'].map(
         (tech) => (

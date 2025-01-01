@@ -4,7 +4,7 @@ import { styles } from '../styles';
 import { sections } from './sections';
 
 const JoinUsSection = () => (
-  <Section className={styles.section.withBackground}>
+  <Section className={styles.section.withBackground03}>
     <div className={styles.section.header}>
       <h2 className={styles.section.heading}>{sections.join.title}</h2>
       <p className={styles.section.subHeading}>{sections.join.description}</p>

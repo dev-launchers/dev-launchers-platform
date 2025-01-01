@@ -57,7 +57,7 @@ const features = [
 
 const Features = () => {
   return (
-    <Section>
+    <Section className={styles.section.withBackground02}>
       <div className={styles.section.header}>
         <h2 className={styles.section.heading}>{sections.features.title}</h2>
         <p className={styles.section.subHeading}>
