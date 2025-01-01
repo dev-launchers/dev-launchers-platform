@@ -30,7 +30,7 @@ export const styles = {
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     logoContainer:
-      'justify-center p-2 grid grid-cols-1 md:grid-cols-3 gap-8 align-items',
+      'justify-center p-2 grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-4 align-items',
     logoStyle: 'h-16 w-auto flex-shrink-0',
     partnerContainer: 'w-full mx-auto pt-20 px-4',
     partnerLogos:
