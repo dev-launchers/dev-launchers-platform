@@ -44,7 +44,10 @@ export default function SupportUs() {
           </div>
         </section>
         <section className="max-w-full bg-black py-24 px-4 md:px-8">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+          <h2
+            id="partner"
+            className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+          >
             Partner with Us
           </h2>
           <p className="text-lg text-left max-w-3xl  text-gray-500  font-normal">
