@@ -3,9 +3,9 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
-import Button from '@devlaunchers/components/components/atoms/Button';
+// import Button from '@devlaunchers/components/components/atoms/Button';
 import Typography from '@devlaunchers/components/components/atoms/Typography';
-import InputField from './../../../common/Forms/Input';
+// import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/UploadProfilePicture';
@@ -15,20 +15,20 @@ import DropDownMenu from './../../../common/Dropdown/Dropdown';
 import countryData from './../../../../content/countryData.json';
 
 import {
-  ButtonContainer,
-  OnboardingContainer,
-  FormContainer,
-  PageContainer,
-  BannerContainer,
-  FormFields,
+  // ButtonContainer,
+  // OnboardingContainer,
+  // FormContainer,
+  // PageContainer,
+  // BannerContainer,
+  // FormFields,
   FormFooter,
-  ProfileContainer,
-  UploadButton,
-  ProfileHeader,
-  ProfilePicture,
+  // ProfileContainer,
+  // UploadButton,
+  // ProfileHeader,
+  // ProfilePicture,
   UploadedProfilePicture,
 } from './StyledUserLandingPage';
-import DropdownMenu from './../../../common/Dropdown/Dropdown';
+// import DropdownMenu from './../../../common/Dropdown/Dropdown';
 
 const initialFormValue = {
   firstName: '',
@@ -294,12 +294,6 @@ export default function UserLandingPage() {
               onChange={onCountryChange}
             />
 
-            {/* <InputField
-              error=""
-              label="Role (optional)"
-              onChange={onRoleChange}
-              placeholder="CSS Developer"
-            /> */}
             <label class="text-stone-900 text-base font-bold" for="Role">
               Role (optional)
             </label>
