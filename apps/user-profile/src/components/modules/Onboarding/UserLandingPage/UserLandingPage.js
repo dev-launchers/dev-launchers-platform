@@ -361,30 +361,6 @@ export default function UserLandingPage() {
                 )}
               </Button>
             </ButtonContainer>
-            {/* <div className="flex pb-16">
-              <button
-                className="bg-transparent hover:bg-blue-700 text-blue-700 text-base font-normal hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded mr-6"
-                onclick="onCancelClick()"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-teal-900 hover:bg-blue-700 text-white text-base font-normal py-2 px-4 rounded shadow-xl"
-                onclick="onContinueClick()"
-                disabled="!formValidation.isFormValid()"
-              >
-                {saveInProgress ? (
-                  <p className="flex items-center gap-3">
-                    {' '}
-                    <span> Saving </span>{' '}
-                    <Loader borderColorClass="border-white" />{' '}
-                  </p>
-                ) : (
-                  'Save and Continue'
-                )}
-              </button>
-            </div> */}
           </FormFooter>
         </form>
       </div>
