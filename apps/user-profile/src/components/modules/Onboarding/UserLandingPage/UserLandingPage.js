@@ -214,8 +214,8 @@ export default function UserLandingPage() {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-8 bg-[#FFF]">
-      <div className="flex h-40 bg-[#F6F6F6] flex-shrink-0 items-center justify-center">
+    <div className="flex flex-col justify-center gap-8 bg-white">
+      <div className="flex h-40 bg-grayscale-100 flex-shrink-0 items-center justify-center">
         <img src={Breadcrumb} />
       </div>
       <div className="flex flex-col justify-center gap-6 items-center">
@@ -224,7 +224,7 @@ export default function UserLandingPage() {
             <p className="text-base text-black">PROFILE</p>
             <p className="text-3xl text-black">Let's Create Your Profile</p>
           </div>
-          <p className="text-base text-stone-900">
+          <p className="text-base text-grayscale-900">
             A completed profile will help us match you with opportunities
           </p>
           <div>
@@ -257,11 +257,14 @@ export default function UserLandingPage() {
             required field
           </p>
           <div name="myForm">
-            <label class="text-stone-900 text-base font-bold" for="First Name">
+            <label
+              class="text-grayscale-900 text-base font-bold"
+              for="First Name"
+            >
               First Name *
             </label>
             <input
-              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
               id="First Name"
               type="text"
               placeholder="John"
@@ -272,11 +275,14 @@ export default function UserLandingPage() {
               }
               required
             ></input>
-            <label class="text-stone-900 text-base font-bold" for="Last Name">
+            <label
+              class="text-grayscale-900 text-base font-bold"
+              for="Last Name"
+            >
               Last Name *
             </label>
             <input
-              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
               id="Last Name"
               type="text"
               placeholder="Doe"
@@ -294,11 +300,11 @@ export default function UserLandingPage() {
               onChange={onCountryChange}
             />
 
-            <label class="text-stone-900 text-base font-bold" for="Role">
+            <label class="text-grayscale-900 text-base font-bold" for="Role">
               Role (optional)
             </label>
             <input
-              class="flex border border-black rounded-lg w-full py-3 px-3 text-gray-500 text-sm font-light justify-center items-center"
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
               id="Role"
               type="text"
               placeholder="CSS Developer"
