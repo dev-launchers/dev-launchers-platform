@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
-// import Button from '@devlaunchers/components/components/atoms/Button';
+import Button from '@devlaunchers/components/components/atoms/Button';
 import Typography from '@devlaunchers/components/components/atoms/Typography';
 // import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
@@ -15,7 +15,7 @@ import DropDownMenu from './../../../common/Dropdown/Dropdown';
 import countryData from './../../../../content/countryData.json';
 
 import {
-  // ButtonContainer,
+  ButtonContainer,
   // OnboardingContainer,
   // FormContainer,
   // PageContainer,
@@ -329,7 +329,33 @@ export default function UserLandingPage() {
               checked={person.termsAndConditions}
               required={true}
             />
-            <div className="flex pb-16">
+            <ButtonContainer className="flex pb-16">
+              <Button
+                buttonType="alternative"
+                buttonSize="xl"
+                onClick={onCancelClick}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                buttonType="secondary"
+                buttonSize="xl"
+                onClick={onContinueClick}
+                disabled={!formValidation.isFormValid()}
+              >
+                {saveInProgress ? (
+                  <p className="flex items-center gap-3">
+                    {' '}
+                    <span> Saving </span>{' '}
+                    <Loader borderColorClass="border-white" />{' '}
+                  </p>
+                ) : (
+                  'Save and Continue'
+                )}
+              </Button>
+            </ButtonContainer>
+            {/* <div className="flex pb-16">
               <button
                 className="bg-transparent hover:bg-blue-700 text-blue-700 text-base font-normal hover:text-white py-2 px-4 border border-blue-700 hover:border-transparent rounded mr-6"
                 onclick="onCancelClick()"
@@ -352,7 +378,7 @@ export default function UserLandingPage() {
                   'Save and Continue'
                 )}
               </button>
-            </div>
+            </div> */}
           </FormFooter>
         </form>
       </div>
