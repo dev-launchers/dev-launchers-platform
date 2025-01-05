@@ -4,35 +4,32 @@ import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScrol
 import { Opportunity } from '@devlaunchers/models';
 import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
-import { Field, Formik, FormikHelpers } from 'formik';
-import { MouseEventHandler, useState } from 'react';
+import {
+  Field,
+  Formik,
+  FormikHelpers,
+  useFormikContext,
+  useField,
+} from 'formik';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '@devlaunchers/dev-recruiters/src/styles/theme';
 import * as Yup from 'yup';
 import ConfirmationModal from '../DetailedPage/Confirmation/ConfirmationModal';
 import {
-  //CancelButton,
   CloseButton,
   CloseIcon,
-  //OkButton,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
 import {
   CancelUploadButton,
   GradientLine,
-  ModalFooterSection,
   ModalUploadSection,
   SubmitButton,
   UploadButton,
-  OkButton,
-  CancelButton,
 } from './styledSignupForm';
-import { ButtonsContainer } from '../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleCard/styledRoleCard';
 import UploadModal from './uploadModal';
-import Modal from 'react-calendly/typings/components/PopupModal/Modal';
-import { OkIcon } from './styledUploadModal';
-import DragAndDrop from '../NewJoinPageComponent/Drag and Drop/page';
+import DragAndDrop from '../NewJoinPageComponent/Drag and Drop';
 import axios from 'axios';
-import { Button } from '../ConfirmationPage/styledConfirmationPage';
 
 interface UploadProps {
   handleUploadCloseModal?: () => void;
@@ -56,243 +53,63 @@ export default function SignUpForm({
   handleCloseModal,
   position,
 }: Props) {
-  //const [uploadFiles, setUploadFiles] = useState<any>([]);
-  // const [filesUploaded, setFilesUploaded] = useState<any>([]);
-  const [filesUploaded, setFilesUploaded] = useState<{}>([]);
+  //const [filesUploaded, setFilesUploaded] = useState<any>([]);
+  const [filesUploaded, setFilesUploaded] = useState<any>({});
 
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
-  //const [showUploadModal, setShowUploadModal] = useState(false);
-
-  //
   const [isUploading, setIsUploading] = useState(false); // Uploading state
 
-  const maxSizeInMB = 25;
-  const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
-  const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
+  const [isDeleting, setIsDeleting] = useState(false); // Uploading state
 
-  const portfolioUploadformData = new FormData();
-  /*
-  function handleUpload(
-    event: MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    handleOkCloseModal();
+  //dependent fields
+  const PortFolioLink = (props) => {
+    const { setFieldValue } = useFormikContext();
+    const [field] = useField(props);
 
-    alert('handleUpload');
-    alert(showUploadModal);
-    setIsUploading(true);
-    console.log('handleUpload');
-    alert(isUploading);
-    alert(selectedFiles.length);
-    //try {
-    const response = (async () => {
-      console.log(selectedFiles.length);
-      console.log('handleUpload');
-      for (let i = 0; i < selectedFiles.length; ++i) {
-        console.log(`i is ${i}`);
-        portfolioUploadformData.append('files', selectedFiles[i]);
-        // Check file size
-
-        if (selectedFiles[i].size > maxSizeInBytes) {
-          alert('File size must be less than 25MB');
-          return;
-        }
-
-        // Check file type
-        if (!allowedExtensions.exec(selectedFiles[i].name)) {
-          alert(
-            'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
-          );
-          return;
-        }
-        /*
-        const postResult = await axios
-          .post('http://localhost:1337/api/upload', portfolioUploadformData)
-          .then((responseBody) => {
-            console.log(responseBody.data[i]['id']);
-            setUploadFiles((prevState: any) => [
-              ...prevState,
-              responseBody.data[i],
-            ]);
-          });
-
-        */
-  /*
-        console.log(await response);
-        const postResult = await axios
-          .post(
-            'http://localhost:1337/api/googledrive/upload',
-            portfolioUploadformData
-          )
-          .then((responseBody) => {
-            console.log(responseBody);
-            console.log(responseBody.data.id);
-
-            console.log(responseBody.data.name);
-            setUploadFiles((prevState: any) => [
-              ...prevState,
-              responseBody.data,
-            ]);
-          });
-        postResult;
+    useEffect(() => {
+      {
+        setFieldValue(props.name, filesUploaded['webViewLink']);
       }
-    })();
+    }, [filesUploaded]);
+    return (
+      <Field
+        as={organisms.FormField}
+        label="Portfolio/Resume Link"
+        disabled={true}
+        placeholder="https://myportfolio.com"
+        id="portfolioLink"
+        name="portfolioLink"
+        {...props}
+        {...field}
+      />
+    );
+  };
 
-    console.log(uploadFiles);
-    console.log(uploadFiles.length);
-    /*if (uploadFiles.length === 1) uploadedids = uploadFiles[0]['id'];
-      else if (uploadFiles.length > 1) {
-        uploadedids = uploadFiles.reduce(
-          (acc, currentValue) => acc + ',' + currentValue['id'],
-          ''
-        );
-        uploadedids = uploadedids.slice(1);
-      }
-
-      console.log(uploadedids); */
-  /*
-    //setShowUploadModal(false);
-    //} catch (error) {
-    //  console.error('Upload failed:', error);
-    //} finally {
-    //  setIsUploading(false); // Reset uploading state
-    //}
-  }
-
-  //
-  function removeFile(): void {
-    const newArr = [...selectedFiles];
-    newArr.splice(uploadFiles[0], 1);
-    console.log(newArr);
-    setSelectedFiles([]);
-    setSelectedFiles(newArr);
-    setUploadFiles([]);
-    setUploadFiles(newArr);
-    try {
-      const response = (async () => {
-        const delResult = await axios
-          .delete(
-            'http://localhost:1337/api/googledrive/delete?fileId=' +
-              uploadFiles[0].id
-          )
-          .then((responseBody) => {
-            console.log(responseBody);
-            console.log(responseBody.status);
-
-            console.log(responseBody.status);
-            setUploadFiles((prevState: any) => [
-              ...prevState,
-              responseBody.status,
-            ]);
-          });
-        delResult;
-        //}
-      })();
-    } catch (error) {
-      console.error('Delete failed:', error);
-    } //finally {
-    //setIsUploading(false); // Reset uploading state
-    //}
-  }
-  console.log(uploadFiles.length);
-  if (uploadFiles.length > 0) {
-    console.log(uploadFiles[0]['name']);
-    console.log(uploadFiles[0]['id']);
-  }
-*/
   function UploadDetailsModal({
     handleUploadCloseModal,
     handleOkCloseModal,
     handleCancelCloseModal,
   }: UploadProps) {
-    /*const handleFiles = (selectedFiles) => {
-      console.log('selectedFiles below');
-      console.log(selectedFiles);
-      setSelectedFiles(selectedFiles);
-      //setShowUploadModal(false); // Close the modal after receiving the files
-    };*/
     const handleFiles = (uploadedFiles) => {
       console.log('uploadedFiles below');
       console.log(uploadedFiles);
-      /*setFilesUploaded({
-        id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
-        name: 'Energy.jpg',
-        mimeType: 'image/jpeg',
-        parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
-        webViewLink:
-          'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
-      });*/
       setFilesUploaded(uploadedFiles); //resulted in error
-      //setUploadFiles(uploadedFiles);
-
-      //setShowUploadModal(false); // Close the modal after receiving the files
-    };
-    const handleError = (inUploadError) => {
-      console.log('upload Error below');
-      console.log(inUploadError);
-      setUploadError(inUploadError);
-      console.log('uploadError');
-      console.log(uploadError);
-
-      //setShowUploadModal(false); // Close the modal after receiving the files
+      setShowUploadModal(false);
     };
 
     return (
       <>
-        {/*<div>
-          <CloseButton onClick={handleUploadCloseModal}>
-            <OkIcon
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </OkIcon>
-          </CloseButton> */}
         <ModalUploadSection>
           <DragAndDrop
             filesUploaded={filesUploaded}
             onFilesUploaded={handleFiles}
-            //uploadError={handleError}
-            //errorEncountered={uploadError}
-            //onUploadError={handleError}
           />
         </ModalUploadSection>
-        <div>
-          Parent sees
-          {JSON.stringify(filesUploaded).length > 0
-            ? filesUploaded['name']
-            : 'Nothing'}
-        </div>
-
-        <div> Parent sees {uploadError} </div>
         <atoms.Box gap="30px">
           <atoms.Typography type="pSmall" css={{ color: 'red' }}>
             {uploadError}
           </atoms.Typography>
         </atoms.Box>
-
-        {/*</div> 
-        
-          <ModalFooterSection>
-            <OkButton onClick={handleOkCloseModal}> Ok </OkButton>
-            <CancelButton onClick={handleCancelCloseModal}>Cancel</CancelButton>
-          </ModalFooterSection>
-          */}
-        <div>
-          <ul>
-            {JSON.stringify(filesUploaded).length > 0 ? (
-              <li>{filesUploaded['name']}</li>
-            ) : (
-              <> No files Uploaded yet </>
-            )}
-          </ul>
-        </div>
       </>
     );
   }
@@ -303,11 +120,6 @@ export default function SignUpForm({
       .email('Invalid email')
       .required('Email Field Entry is Required'),
     portfolioLink: Yup.string().nullable(true).default(undefined),
-    //.matches(
-    //  /((https?):\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/,
-    //  'Invalid url'
-    //)
-    //.transform((_, value) => (value === '' ? null : value))
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
       .required('Commitment Field Entry is Required'),
@@ -343,16 +155,15 @@ export default function SignUpForm({
   };
 
   const [showUploadModal, setShowUploadModal] = useState(false);
-  const [errorEncountered, setErrorEncountered] = useState('');
   const [uploadError, setUploadError] = useState('');
 
   const [canButVis, setCanButVis] = useState(true);
 
   const handleUploadOpenModal = () => {
     setSelectedFiles([]);
-    //setUploadFiles([]);
-    setFilesUploaded([]);
+    setFilesUploaded({});
     setUploadError('');
+    setCanButVis(true);
     setShowUploadModal(true);
   };
 
@@ -363,78 +174,6 @@ export default function SignUpForm({
     setShowUploadModal(false);
     setIsUploading(true);
     console.log('handleUpload');
-    //try {
-    const response = async () => {
-      console.log(selectedFiles.length);
-      console.log('handleUpload');
-      //for (let i = 0; i < selectedFiles.length; ++i) {
-      //  console.log(`i is ${i}`);
-      // Check file type
-      if (!allowedExtensions.exec(selectedFiles[0].name)) {
-        alert(
-          'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
-        );
-        setUploadError(
-          'Invalid file type. Only .doc, .pdf, .jpg, .jpeg, and .png are allowed.'
-        );
-        setIsUploading(false);
-        return false;
-      }
-      // Check file size
-
-      if (selectedFiles[0].size > maxSizeInBytes) {
-        alert('File size must be less than 25MB');
-
-        setUploadError('File size must be less than 25MB');
-        setIsUploading(false);
-        return false;
-      }
-      return true;
-
-      /*
-        const postResult = await axios
-          .post('http://localhost:1337/api/upload', portfolioUploadformData)
-          .then((responseBody) => {
-            console.log(responseBody.data[i]['id']);
-            setUploadFiles((prevState: any) => [
-              ...prevState,
-              responseBody.data[i],
-            ]);
-          });
-
-        */
-      //}
-    };
-    //response().then(async () => {
-    const responseResult = await response();
-    if (responseResult === true) {
-      console.log(process.env.NEXT_PUBLIC_STRAPI_URL);
-      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`);
-      portfolioUploadformData.append('files', selectedFiles[0]);
-
-      const postResult = await axios
-        .post(
-          `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
-          portfolioUploadformData
-        )
-        .then((responseBody) => {
-          console.log(responseBody);
-          console.log(responseBody.data.id);
-
-          console.log(responseBody.data.name);
-          //setUploadFiles((prevState: any) => [...prevState, responseBody.data]);
-          setFilesUploaded((prevState: any) => [
-            ...prevState,
-            responseBody.data,
-          ]);
-
-          setCanButVis(true);
-          setIsUploading(false);
-          console.log('canButVis');
-          console.log(canButVis);
-        });
-      return postResult;
-    }
 
     console.log(filesUploaded);
     console.log(JSON.stringify(filesUploaded).length);
@@ -442,57 +181,42 @@ export default function SignUpForm({
   const handleCancelCloseModal = () => {
     alert('handleCancelCloseModal');
     setSelectedFiles([]);
-    //setUploadFiles([]);
     setFilesUploaded([]);
-
     setShowUploadModal(false);
   };
+
   const handleRemoveFile = () => {
-    alert(canButVis);
+    console.log(filesUploaded['name']);
+    setIsDeleting(true); // Deleting state
     const newArr = [...selectedFiles];
-    //newArr.splice(uploadFiles[0], 1);
-    newArr.splice(filesUploaded[0], 1);
+    axios
+      .delete(
+        `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/${filesUploaded['id']}`
+      )
 
-    console.log(newArr);
-    setSelectedFiles([]);
-    setSelectedFiles(newArr);
-    //setUploadFiles([]);
-    //setUploadFiles(newArr);
-    setFilesUploaded([]);
-    setFilesUploaded(newArr);
-    setCanButVis(false);
-    try {
-      const response = (async () => {
-        //const delResult = await axios
-        //  .delete(
-        //    `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
-        //    uploadFiles[0].id
-        //  )
-        const delResult = await axios
-          .delete(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`,
-            filesUploaded[0].id
-          )
+      .then((responseBody) => {
+        console.log(responseBody);
+        console.log(responseBody.status);
+        console.log(canButVis);
 
-          .then((responseBody) => {
-            console.log(responseBody);
-            console.log(responseBody.status);
-            console.log(canButVis);
+        console.log(responseBody.status);
+        if (responseBody.status === 200) {
+          setFilesUploaded({});
+          newArr.splice(filesUploaded[0], 1);
+          console.log('newArr');
+          console.log(newArr);
+          setSelectedFiles([]);
+          setSelectedFiles(newArr);
+          setFilesUploaded({});
+          console.log('Null Object Files Uploaded');
+          console.log(filesUploaded);
+          setCanButVis(false);
+          setIsDeleting(false); // Deleting state
 
-            console.log(responseBody.status);
-            // setUploadFiles((prevState: any) => [
-            //   ...prevState,
-            //   responseBody.status,
-            // ]);
-          });
-        delResult;
-        //}
-      })();
-    } catch (error) {
-      console.error('Delete failed:', error);
-    } //finally {
-    //setIsUploading(false); // Reset uploading state
-    //}
+          console.log('filesDeleted');
+          console.log(filesUploaded['name']);
+        }
+      });
   };
 
   // const router = useRouter();
@@ -713,21 +437,8 @@ export default function SignUpForm({
                   <UploadButton onClick={handleUploadOpenModal}>
                     Upload Files
                   </UploadButton>
-                  <Field
-                    as={organisms.FormField}
-                    label="Portfolio/Resume Link"
-                    disabled={true}
-                    placeholder="https://myportfolio.com"
-                    id="portfolioLink"
-                    name="portfolioLink"
-                    value={filesUploaded['webViewLink']}
-                    // onChange={handleChange}
-                    touched={
-                      formik.touched.portfolioLink &&
-                      !!formik.values['portfolioLink']
-                    }
-                    error={formik.errors.portfolioLink}
-                  />
+                  <PortFolioLink name="testField" />
+
                   <UploadModal
                     modalIsOpen={showUploadModal}
                     closeModal={handleUploadCloseModal}
@@ -740,25 +451,23 @@ export default function SignUpForm({
                       />
                     }
                   />
-                  {isUploading}
-                  {isUploading
-                    ? 'Uploading'
-                    : JSON.stringify(filesUploaded).length > 0
-                    ? !!JSON.stringify(filesUploaded).length && (
-                        <atoms.Box
-                          gap="1rem"
-                          justifyContent="center"
-                          flexDirection="row"
-                        >
-                          {filesUploaded['name']}
-                          {!!canButVis && (
-                            <CancelUploadButton onClick={handleRemoveFile}>
-                              Remove
-                            </CancelUploadButton>
-                          )}
-                        </atoms.Box>
-                      )
-                    : null}
+                  {filesUploaded['id'] !== undefined ? (
+                    <atoms.Box
+                      gap="1rem"
+                      justifyContent="center"
+                      flexDirection="row"
+                    >
+                      {filesUploaded['name']}
+                      {!!canButVis && filesUploaded['name'] && (
+                        <CancelUploadButton onClick={handleRemoveFile}>
+                          Remove
+                        </CancelUploadButton>
+                      )}
+                    </atoms.Box>
+                  ) : null}
+
+                  {isDeleting ? 'Deleting' : null}
+
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
