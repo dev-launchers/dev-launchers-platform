@@ -2,14 +2,20 @@ import Head from 'next/head';
 import React from 'react';
 import 'react-tabs/style/react-tabs.css'; // import react-tabs styles
 import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
+import {
+  Tabs as Tabs2,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@devlaunchers/components/components/molecules/Tab/Tab';
 
 import { useSheetsContext } from '../context/SheetsContext';
 
 import PageBody from '../../src/components/common/PageBody';
 import Section from '../../src/components/common/Section';
 export default function Resources() {
-  const { learnPageData } = useSheetsContext();
-
+  const { learnPageData, createPageData } = useSheetsContext();
+  console.log(createPageData);
   return (
     <>
       <Head>
@@ -45,89 +51,124 @@ export default function Resources() {
               cater to learners at all levels.
             </p>
           </div>
-
-          <div className="grid pt-0 gap-4 sm:grid-cols-2 md:grid-cols-2 grid-rows-1 md:grid-rows-2">
-            <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                Design
-              </h3>
-              <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-900 border-gray-800  border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
-                Project Management
-              </h3>
-              <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-900 border-gray-800  border-4 items-center  p-8 rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
-                Data
-              </h3>
-              <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-900 border-gray-800  border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
-                Development
-              </h3>
-              <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-                <li>
-                  <a>item</a>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <Tabs2 defaultValue="code" className="w-[400px]">
+              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="dev"
+                >
+                  Development
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="design"
+                >
+                  Design
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="research"
+                >
+                  Research
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="pm"
+                >
+                  Project Management
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="dev">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Development
+                  </h3>
+                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                  </ul>
+                </div>
+              </TabsContent>
+              <TabsContent value="design">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Design
+                  </h3>
+                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                  </ul>
+                </div>
+              </TabsContent>
+              <TabsContent value="research">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Research
+                  </h3>
+                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                  </ul>
+                </div>
+              </TabsContent>
+              <TabsContent value="pm">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Project Management
+                  </h3>
+                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                    <li>
+                      <a>item</a>
+                    </li>
+                  </ul>
+                </div>
+              </TabsContent>
+            </Tabs2>
           </div>
         </section>
 
         <section className="max-w-full py-24 px-4 md:px-8">
-          <div className="py-24">
+          <div className="py-16">
             <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
               Learning and Games
             </h2>
@@ -139,6 +180,74 @@ export default function Resources() {
           </div>
 
           <div class="">
+            <Tabs2 defaultValue="code" className="w-[400px]">
+              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="code"
+                >
+                  Code
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="design"
+                >
+                  Design
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="phaser"
+                >
+                  Phaser3
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="react"
+                >
+                  React
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="code">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Development
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2">
+                    {learnPageData.map((item, index) => (
+                      <CardImagePair key={index} {...item} />
+                    ))}
+                  </div>
+                </div>
+              </TabsContent>
+              <TabsContent value="design">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Design
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(learnPageData)}
+                </div>
+              </TabsContent>
+              <TabsContent value="phaser">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Phaser3
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(learnPageData)}
+                </div>
+              </TabsContent>
+              <TabsContent value="react">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    React
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(learnPageData)}
+                </div>
+              </TabsContent>
+            </Tabs2>
+
             <Tabs defaultFocus={true} defaultIndex="0">
               <TabList style={{ fontSize: '2rem', fontWeight: 'bold' }}>
                 {
@@ -176,15 +285,116 @@ export default function Resources() {
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-            Create with Templates
-          </h2>
-          <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal">
-            Ready to test your skills? These templates are great ways to get
-            started and reinforce your learning
-          </p>
+          <div className="py-16">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+              Create with Templates
+            </h2>
+            <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal">
+              Ready to test your skills? These templates are great ways to get
+              started and reinforce your learning
+            </p>
+          </div>
 
-          <div></div>
+          <div>
+            <Tabs2 defaultValue="code" className="w-[400px]">
+              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="game"
+                >
+                  Games
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="app"
+                >
+                  Apps
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="design"
+                >
+                  Design
+                </TabsTrigger>
+                <TabsTrigger
+                  className=" text-xl focus:bg-purple-400"
+                  value="research"
+                >
+                  Research
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="game">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Games
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(createPageData)}
+                </div>
+              </TabsContent>
+              <TabsContent value="app">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Apps
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(createPageData)}
+                </div>
+              </TabsContent>
+              <TabsContent value="design">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Design
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(createPageData)}
+                </div>
+              </TabsContent>
+              <TabsContent value="research">
+                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                    Research
+                  </h3>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(createPageData)}
+                </div>
+              </TabsContent>
+            </Tabs2>
+            <Tabs defaultFocus={true} defaultIndex="0">
+              <TabList style={{ fontSize: '2rem', fontWeight: 'bold' }}>
+                {
+                  // Have to do this hack for some reason (create empty tab if page not loaded)...
+                  // otherwise tabs break
+                  Object.entries(createPageData || {}).length === 0 ? (
+                    <Tab></Tab>
+                  ) : (
+                    ''
+                  )
+                }
+                {
+                  // Render tabs from our dynamically built pageData object
+                  Object.keys(createPageData || {}).map((key) => (
+                    <Tab key={`tab${key}`}>{key}</Tab>
+                  ))
+                }
+              </TabList>
+              {
+                // Render sections and groups from our dynamically built pageData object
+                // Render tab panels from our dynamically built pageData object
+                Object.values(createPageData || {}).map((tab, i) => (
+                  // render all sections for this tab
+                  <TabPanel key={i}>
+                    {Object.keys(tab || {}).map((sectionTitle) => {
+                      const section = tab[sectionTitle];
+                      return (
+                        <Section data={section} title={sectionTitle} key={i} />
+                      );
+                    })}
+                  </TabPanel>
+                ))
+              }
+            </Tabs>
+          </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
