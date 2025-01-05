@@ -12,8 +12,8 @@ interface CardImagePairProps {
   descriptionTextColor?: string;
   title: string;
   description: string;
-  btnText: string;
-  btnLink: string;
+  btnText?: string;
+  btnLink?: string;
   onClick?: () => void;
 }
 
