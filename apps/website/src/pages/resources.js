@@ -212,11 +212,8 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Development
                   </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2">
-                    {learnPageData.map((item, index) => (
-                      <CardImagePair key={index} {...item} />
-                    ))}
-                  </div>
+                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+                  {JSON.stringify(learnPageData)}
                 </div>
               </TabsContent>
               <TabsContent value="design">
@@ -225,6 +222,7 @@ export default function Resources() {
                     Design
                   </h3>
                   <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
+
                   {JSON.stringify(learnPageData)}
                 </div>
               </TabsContent>
