@@ -14,7 +14,7 @@ const stats = [
 ];
 
 const CommunitySection = () => (
-  <Section className={styles.section.withBackground01}>
+  <Section className={styles.section}>
     <div className={styles.section.header}>
       <h2 className={styles.section.heading}>{sections.community.title}</h2>
       <p className={styles.section.subHeading}>

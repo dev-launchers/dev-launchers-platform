@@ -6,7 +6,7 @@ import { sections } from './sections';
 
 const DonateSection = () => {
   return (
-    <Section className={styles.section.withBackground03}>
+    <Section className="">
       <div className={styles.section.header}>
         <h2 className={styles.section.heading}>{sections.donate.title}</h2>
         <p className={styles.section.subHeading}>
