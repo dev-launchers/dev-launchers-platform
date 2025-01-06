@@ -35,18 +35,11 @@ export default function DragAndDrop({
   //uncommented above lines
   const [dragActive, setDragActive] = useState<boolean>(false);
   let uploadedids = '';
-  console.log(selectFiles);
   const fileUpload = async (inFiles) => {
     let uploadStatus = true;
     setIsUploading(true);
-    console.log('handleUpload');
     const response = async () => {
-      console.log(inFiles.length);
-      console.log('handleUpload');
       if (!allowedExtensions.exec(inFiles[0].name)) {
-        alert(
-          'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
-        );
         setUploadError(
           'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
         );
@@ -57,7 +50,6 @@ export default function DragAndDrop({
       // Check file size
 
       if (inFiles[0].size > maxSizeInBytes) {
-        alert('File size must be less than 25MB');
         setUploadError(
           'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)'
         );
@@ -68,15 +60,9 @@ export default function DragAndDrop({
       }
       return true;
     };
-    console.log('before uploadError msg');
-    console.log(uploadError);
     const responseResult = await response();
-    console.log('before responseResult ');
-    console.log(responseResult);
 
     if (responseResult === true) {
-      console.log(process.env.NEXT_PUBLIC_STRAPI_URL);
-      console.log(`${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/`);
       portfolioUploadformData.append('files', inFiles[0]);
 
       const postResult = await axios
@@ -85,21 +71,13 @@ export default function DragAndDrop({
           portfolioUploadformData
         )
         .then((responseBody) => {
-          console.log(responseBody);
-          console.log(responseBody.data.id);
-
-          console.log(responseBody.data.name);
           onFilesUploaded(responseBody.data);
           setUploadFiles(responseBody.data);
           setCanButVis(true);
           setShowUploadModal(false);
           setIsUploading(false);
           uploadStatus = false;
-          console.log('canButVis');
-          console.log(canButVis);
         });
-      console.log(postResult);
-      console.log(!uploadStatus);
       if (!uploadStatus) return postResult;
     }
   };
@@ -107,8 +85,6 @@ export default function DragAndDrop({
   const handleFileSelectChange = async (
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    console.log('handleFileSelectChange');
-    console.log('inputFiles');
     let sampleOutput = {
       id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
       name: 'Energy.jpg',
@@ -118,42 +94,20 @@ export default function DragAndDrop({
         'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
     };
     const inputFiles = Array.from(event.target.files);
-    console.log(inputFiles);
     fileUpload(inputFiles);
-    console.log(filesUploaded);
-    //console.log(filesUploaded.length);
-    console.log(filesUploaded['name']);
-
-    console.log('selectFiles');
-    console.log(selectFiles);
-
-    console.log('after resolved');
-    console.log(onFilesUploaded);
   };
-
-  console.log(uploadFiles['name']);
-  console.log(filesUploaded['name']);
-  console.log(uploadFiles['name']);
-  console.log(uploadFiles['id']);
-  console.log(filesUploaded['name']);
-  console.log(filesUploaded['id']);
 
   function dropHandler(e: any): void {
     e.preventDefault();
     // e.stoppropagation();
     setDragActive(false);
-    console.log('drop handler start');
-    console.log(e.dataTransfer.files);
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       setSelectFiles((prevState: any) => [
         ...prevState,
         e.dataTransfer.files[0],
       ]);
     }
-    console.log('drop handler End');
     fileUpload(e.dataTransfer.files);
-    //onFilesUploaded(e.dataTransfer.files[0]);
-    //onFilesSelected(selectFiles);
   }
 
   function dragLeaver(e: any): void {
@@ -172,7 +126,6 @@ export default function DragAndDrop({
     e.preventDefault();
     //e.stoppropagation();
     setDragActive(true);
-    console.log(e.dataTransfer.items);
   }
 
   return (

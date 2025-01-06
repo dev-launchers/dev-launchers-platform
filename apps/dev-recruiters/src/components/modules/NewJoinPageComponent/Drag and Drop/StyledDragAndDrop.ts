@@ -39,6 +39,7 @@ export const ChooseFileSection = styled.div`
   flex-direction: column;
   flex-shrink: 0;
   border-radius: 16px;
+  justify-content: space-between;
   border: 3px dashed var(--Grey-Scale-grey, #7f7e7f);
   background: var(--Grey-Scale-off-white, #f0edee);
   & h3 {

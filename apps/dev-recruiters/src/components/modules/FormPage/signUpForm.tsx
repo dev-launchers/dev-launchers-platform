@@ -30,6 +30,7 @@ import {
 import UploadModal from './uploadModal';
 import DragAndDrop from '../NewJoinPageComponent/Drag and Drop';
 import axios from 'axios';
+import Modal from '../DetailedPage/PositionPopupModal';
 
 interface UploadProps {
   handleUploadCloseModal?: () => void;
@@ -53,7 +54,6 @@ export default function SignUpForm({
   handleCloseModal,
   position,
 }: Props) {
-  //const [filesUploaded, setFilesUploaded] = useState<any>([]);
   const [filesUploaded, setFilesUploaded] = useState<any>({});
 
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
@@ -91,9 +91,7 @@ export default function SignUpForm({
     handleCancelCloseModal,
   }: UploadProps) {
     const handleFiles = (uploadedFiles) => {
-      console.log('uploadedFiles below');
-      console.log(uploadedFiles);
-      setFilesUploaded(uploadedFiles); //resulted in error
+      setFilesUploaded(uploadedFiles);
       setShowUploadModal(false);
     };
 
@@ -173,20 +171,14 @@ export default function SignUpForm({
   const handleOkCloseModal = async () => {
     setShowUploadModal(false);
     setIsUploading(true);
-    console.log('handleUpload');
-
-    console.log(filesUploaded);
-    console.log(JSON.stringify(filesUploaded).length);
   };
   const handleCancelCloseModal = () => {
-    alert('handleCancelCloseModal');
     setSelectedFiles([]);
     setFilesUploaded([]);
     setShowUploadModal(false);
   };
 
   const handleRemoveFile = () => {
-    console.log(filesUploaded['name']);
     setIsDeleting(true); // Deleting state
     const newArr = [...selectedFiles];
     axios
@@ -195,26 +187,14 @@ export default function SignUpForm({
       )
 
       .then((responseBody) => {
-        console.log(responseBody);
-        console.log(responseBody.status);
-        console.log(canButVis);
-
-        console.log(responseBody.status);
         if (responseBody.status === 200) {
           setFilesUploaded({});
           newArr.splice(filesUploaded[0], 1);
-          console.log('newArr');
-          console.log(newArr);
           setSelectedFiles([]);
           setSelectedFiles(newArr);
           setFilesUploaded({});
-          console.log('Null Object Files Uploaded');
-          console.log(filesUploaded);
           setCanButVis(false);
           setIsDeleting(false); // Deleting state
-
-          console.log('filesDeleted');
-          console.log(filesUploaded['name']);
         }
       });
   };
@@ -258,9 +238,6 @@ export default function SignUpForm({
           { setSubmitting }: FormikHelpers<NewApplicant>
         ) => {
           setSubmitting(true);
-          console.log('insidesubmit');
-          console.log(values);
-          console.log(filesUploaded['id']);
           agent.Applicant.post({
             ...values,
             //@ts-ignore
@@ -275,16 +252,11 @@ export default function SignUpForm({
             project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
           })
             .then((res) => {
-              console.log(res);
               handleOpenConfirmationModal();
               setSubmitting(false);
             })
             .catch((error) => {
               setSubmitting(false);
-              console.log(error);
-              console.log(error.response);
-              console.log(error.response.data);
-              console.log(error.response.status);
             });
         }}
         validationSchema={SignupSchema}
