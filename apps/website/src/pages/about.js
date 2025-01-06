@@ -7,49 +7,54 @@ export default function About() {
       <Head>
         <title>About Us</title>
       </Head>
-      <main className="min-h-screen bg-black text-white">
-        <section className="max-w-full bg-black py-32 px-4 md:px-8">
-          <h1
-            className="text-7xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
-            style={{ fontSize: '4.5rem' }}
-          >
-            Our Mission
-          </h1>
-          <p className="text-xl text-left max-w-3xl  text-gray-500  font-normal">
-            At Dev Launchers, we empower individuals to excel in their tech
-            careers at every stage of their journey. We believe that technology
-            careers should be accessible to everyone, regardless of their
-            background or starting point.
-          </p>
+      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
+        <section className="bg-black py-32 max-w-7xl px-4 md:px-8 justify-center">
+          <div className="flex flex-col justify-center items-center">
+            <h1
+              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              style={{ fontSize: '4.5rem' }}
+            >
+              Our Mission
+            </h1>
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+              At Dev Launchers, we empower individuals to excel in their tech
+              careers at every stage of their journey. We believe that
+              technology careers should be accessible to everyone, regardless of
+              their background or starting point.
+            </p>
+          </div>
         </section>
-        <section className="max-w-full bg-black py-24 px-4 md:px-8">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-            Our Story
-          </h2>
-          <p className="text-base text-left max-w-4xl  text-gray-500  font-normal">
-            Founded in 2019 in Austin, Texas, Dev Launchers began as a Saturday
-            program teaching coding and game development to local teenagers.
-            What started as a small group of passionate volunteers at the Austin
-            Central Library has grown into a global community of developers,
-            designers, and technology enthusiasts. When the world shifted in
-            2020, so did we – transitioning to a fully online platform that
-            opened our doors to members worldwide. This pivot allowed us to
-            expand our mission beyond geographical boundaries and age
-            restrictions, creating a truly inclusive space for anyone interested
-            in technology. Today, Dev Launchers operates with 6 dedicated teams
-            and over 50 active members across the globe, from the United States
-            to Australia, united by our mission to democratize access to
-            technology careers and launch our members to the next level in their
-            careers through experience and community.
-          </p>
+        <section className="max-w-7xl bg-black py-24 px-4 md:px-8 justify-center">
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+              Our Story
+            </h2>
+            <p className="text-base text-center max-w-4xl  text-gray-500  font-normal">
+              Founded in 2019 in Austin, Texas, Dev Launchers began as a
+              Saturday program teaching coding and game development to local
+              teenagers. What started as a small group of passionate volunteers
+              at the Austin Central Library has grown into a global community of
+              developers, designers, and technology enthusiasts. When the world
+              shifted in 2020, so did we – transitioning to a fully online
+              platform that opened our doors to members worldwide. This pivot
+              allowed us to expand our mission beyond geographical boundaries
+              and age restrictions, creating a truly inclusive space for anyone
+              interested in technology. Today, Dev Launchers operates with 6
+              dedicated teams and over 50 active members across the globe, from
+              the United States to Australia, united by our mission to
+              democratize access to technology careers and launch our members to
+              the next level in their careers through experience and community.
+            </p>
+          </div>
         </section>
-        <section className="max-w-full py-24 px-4 md:px-8">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-            What We Do
-          </h2>
-          <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal">
-            We build pathways to technology careers through:
-          </p>
+        <section className="max-w-7xl py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+              What We Do
+            </h2>
+            <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal"></p>
+          </div>
+
           <div className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-2 grid-rows-1 md:grid-rows-2">
             <div className="bg-orange-900 border-orange-500 border-4 p-8 items-center rounded-lg">
               <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
@@ -99,20 +104,23 @@ export default function About() {
           </div>
         </section>
 
-        <section className="max-w-full py-24 px-4 md:px-8">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-            Our Values
-          </h2>
-          <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal">
-            At Dev Launchers, our values shape how we work, learn, and grow
-            together. We believe that the best experiences come from combining
-            excitement and intention - making learning fun while staying
-            committed to continuous improvement. We foster deep connections and
-            emphasize teamwork, knowing that our greatest achievements come from
-            working together. Our community is built on the foundation of mutual
-            support, where asking for help is celebrated and every success is
-            shared.
-          </p>
+        <section className="max-w-7xl py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+              Our Values
+            </h2>
+            <p className="text-lg text-center max-w-4xl pb-10 text-gray-500  font-normal">
+              At Dev Launchers, our values shape how we work, learn, and grow
+              together. We believe that the best experiences come from combining
+              excitement and intention - making learning fun while staying
+              committed to continuous improvement. We foster deep connections
+              and emphasize teamwork, knowing that our greatest achievements
+              come from working together. Our community is built on the
+              foundation of mutual support, where asking for help is celebrated
+              and every success is shared.
+            </p>
+          </div>
+
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
               <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
@@ -183,45 +191,51 @@ export default function About() {
             </div>
           </div>
         </section>
-        <section className="max-w-full bg-black py-24 px-4 md:px-8">
-          <h2
-            id="partner"
-            className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
-          >
-            Partner with Us
-          </h2>
-          <p className="text-lg text-left max-w-3xl  text-gray-500  font-normal">
-            At Dev Launchers, we believe in the power of collaboration to create
-            transformative experiences. Join us in our mission to bridge
-            opportunity gaps in the tech industry by becoming a partner. Your
-            involvement can help provide essential resources, mentorship, and
-            opportunities to those who are eager to learn and grow in their
-            careers. Whether you are a company, a professional group, or an
-            individual with a passion for technology and education, your support
-            is crucial in building a more inclusive and diverse tech community.
-          </p>
-          <div className="flex flex-wrap gap-8 pt-8">
+        <section className="max-w-7xl bg-black py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2
+              id="partner"
+              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+            >
+              Partner with Us
+            </h2>
+            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+              At Dev Launchers, we believe in the power of collaboration to
+              create transformative experiences. Join us in our mission to
+              bridge opportunity gaps in the tech industry by becoming a
+              partner. Your involvement can help provide essential resources,
+              mentorship, and opportunities to those who are eager to learn and
+              grow in their careers. Whether you are a company, a professional
+              group, or an individual with a passion for technology and
+              education, your support is crucial in building a more inclusive
+              and diverse tech community.
+            </p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-8 pt-8">
             <a
-              className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+              className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
             </a>
             <a
-              className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+              className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/VLP2YHDsSXmLTqQ8A"
             >
               Apply for Partnership
             </a>
           </div>
         </section>
-        <section className="max-w-full bg-black py-24 px-4 md:px-8">
-          <h2
-            id="partner"
-            className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
-          >
-            Our Partners and Sponsors
-          </h2>
+        <section className="max-w-7xl bg-black py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center pb-10">
+            <h2
+              id="partner"
+              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+            >
+              Our Partners and Sponsors
+            </h2>
+          </div>
+
           <p className="text-lg text-left max-w-3xl  text-gray-500  font-normal"></p>
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-1">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
@@ -273,19 +287,23 @@ export default function About() {
           </div>
         </section>
 
-        <section className="max-w-full bg-black py-24 px-4 md:px-8">
-          <h2
-            id="partner"
-            className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
-          >
-            Our Teams
-          </h2>
-          <p className="text-lg text-left max-w-3xl  text-gray-500  font-normal">
-            {' '}
-            Our organization is entirely powered by our volunteer members
-            dedicated to launching their own careers as well as supporting
-            others building our collective, supportive and innovative community.
-          </p>
+        <section className="max-w-7xl bg-black py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2
+              id="partner"
+              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+            >
+              Our Teams
+            </h2>
+            <p className="text-lg text-center max-w-3xl  pb-10 text-gray-500  font-normal">
+              {' '}
+              Our organization is entirely powered by our volunteer members
+              dedicated to launching their own careers as well as supporting
+              others building our collective, supportive and innovative
+              community.
+            </p>
+          </div>
+
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-1">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
               <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
