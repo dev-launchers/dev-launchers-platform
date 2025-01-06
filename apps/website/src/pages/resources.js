@@ -8,11 +8,13 @@ import {
   TabsList,
   TabsTrigger,
 } from '@devlaunchers/components/components/molecules/Tab/Tab';
-
+import CardImagePair from '../components/modules/Home/Sections/CardImagePair';
 import { useSheetsContext } from '../context/SheetsContext';
 
 import PageBody from '../../src/components/common/PageBody';
 import Section from '../../src/components/common/Section';
+import Sec from '../../src/components/common/Section';
+
 export default function Resources() {
   const { learnPageData, createPageData } = useSheetsContext();
   console.log(createPageData);
@@ -52,28 +54,31 @@ export default function Resources() {
             </p>
           </div>
           <div>
-            <Tabs2 defaultValue="code" className="w-[400px]">
-              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
+            <Tabs2 defaultValue="code" className="">
+              <TabsList
+                className="flex flex-row justify-start
+               py-8 px-4  gap-8 bg-gray-900"
+              >
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
+                  className=" text-xl focus:bg-purple-500"
                   value="dev"
                 >
                   Development
                 </TabsTrigger>
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
+                  className=" text-xl focus:bg-purple-500"
                   value="design"
                 >
                   Design
                 </TabsTrigger>
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
+                  className=" text-xl focus:bg-purple-500"
                   value="research"
                 >
                   Research
                 </TabsTrigger>
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
+                  className=" text-xl focus:bg-purple-500"
                   value="pm"
                 >
                   Project Management
@@ -84,18 +89,54 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Development
                   </h3>
-                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                    <li>
-                      <a>item</a>
+                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -105,18 +146,54 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Design
                   </h3>
-                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                    <li>
-                      <a>item</a>
+                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -126,18 +203,54 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Research
                   </h3>
-                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                    <li>
-                      <a>item</a>
+                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -147,18 +260,54 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Project Management
                   </h3>
-                  <ul className="text-base text-left text-blue-200 p-0 font-normal">
-                    <li>
-                      <a>item</a>
+                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
-                    <li>
-                      <a>item</a>
+                    <li className="pb-2">
+                      <a
+                        className="text-white font-semibold underline underline-offset-4"
+                        href="https://htmlandcssguidebook.com/"
+                      >
+                        HTML & CSS Guidebook
+                      </a>{' '}
+                      <p>
+                        A free interactive guide to front-end web development
+                        for absolute beginners by Josiah Spence
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -180,106 +329,68 @@ export default function Resources() {
           </div>
 
           <div class="">
-            <Tabs2 defaultValue="code" className="w-[400px]">
-              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="code"
-                >
-                  Code
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="design"
-                >
-                  Design
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="phaser"
-                >
-                  Phaser3
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="react"
-                >
-                  React
-                </TabsTrigger>
+            <Tabs2
+              defaultValue={Object.keys(learnPageData)[0]}
+              className="w-full"
+            >
+              <TabsList className="flex flex-row justify-start py-8 px-4  gap-8 bg-gray-900">
+                {Object.keys(learnPageData).map((category) => (
+                  <TabsTrigger
+                    key={category}
+                    value={category}
+                    className=" text-xl focus:bg-purple-600"
+                  >
+                    {category}
+                  </TabsTrigger>
+                ))}
               </TabsList>
-              <TabsContent value="code">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Development
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(learnPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="design">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Design
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-
-                  {JSON.stringify(learnPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="phaser">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Phaser3
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(learnPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="react">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    React
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(learnPageData)}
-                </div>
-              </TabsContent>
+              {Object.entries(learnPageData).map(([category, sections]) => (
+                <TabsContent key={category} value={category}>
+                  {Object.entries(sections).map(
+                    ([sectionTitle, categories]) => (
+                      <div
+                        key={sectionTitle}
+                        className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg"
+                      >
+                        <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                          {sectionTitle}
+                        </h3>
+                        {Object.entries(categories).map(
+                          ([categoryTitle, items]) => (
+                            <div
+                              key={categoryTitle}
+                              className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"
+                            >
+                              {items.map((item, index) => (
+                                <CardImagePair
+                                  key={index}
+                                  image={
+                                    item.imageSrc ||
+                                    'https://via.placeholder.com/150'
+                                  }
+                                  altText={item.title}
+                                  imagePosition="bottom"
+                                  title={item.title}
+                                  description={
+                                    item.description ||
+                                    'No description available.'
+                                  }
+                                  btnText="Learn More"
+                                  btnLink={item.href}
+                                  cardBackgroundColor="#1F2937"
+                                  cardBorderColor="#374151"
+                                  descriptionTextColor="#9CA3AF"
+                                />
+                              ))}
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )
+                  )}
+                </TabsContent>
+              ))}
             </Tabs2>
-
-            <Tabs defaultFocus={true} defaultIndex="0">
-              <TabList style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-                {
-                  // Have to do this hack for some reason (create empty tab if page not loaded)...
-                  // otherwise tabs break
-                  Object.entries(learnPageData || {}).length === 0 ? (
-                    <Tab></Tab>
-                  ) : (
-                    ''
-                  )
-                }
-                {
-                  // Render tabs from our dynamically built learnPageData object
-                  Object.keys(learnPageData || {}).map((key) => (
-                    <Tab key={`tab${key}`}>{key}</Tab>
-                  ))
-                }
-              </TabList>
-              {
-                // Render sections and groups from our dynamically built learnPageData object
-                // Render tab panels from our dynamically built learnPageData object
-                Object.values(learnPageData || {}).map((tab, i) => (
-                  // render all sections for this tab
-                  <TabPanel key={i}>
-                    {Object.keys(tab).map((sectionTitle) => {
-                      const section = tab[sectionTitle];
-                      return (
-                        <Section key={i} data={section} title={sectionTitle} />
-                      );
-                    })}
-                  </TabPanel>
-                ))
-              }
-            </Tabs>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
@@ -294,104 +405,68 @@ export default function Resources() {
           </div>
 
           <div>
-            <Tabs2 defaultValue="code" className="w-[400px]">
-              <TabsList className="w-[400px] py-8 px-4  gap-8 bg-gray-900">
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="game"
-                >
-                  Games
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="app"
-                >
-                  Apps
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="design"
-                >
-                  Design
-                </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-400"
-                  value="research"
-                >
-                  Research
-                </TabsTrigger>
+            <Tabs2
+              defaultValue={Object.keys(createPageData)[0]}
+              className="w-full"
+            >
+              <TabsList className="flex flex-row justify-start py-8 px-4  gap-8 bg-gray-900">
+                {Object.keys(createPageData).map((category) => (
+                  <TabsTrigger
+                    key={category}
+                    value={category}
+                    className=" text-xl focus:bg-purple-600"
+                  >
+                    {category}
+                  </TabsTrigger>
+                ))}
               </TabsList>
-              <TabsContent value="game">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Games
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(createPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="app">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Apps
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(createPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="design">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Design
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(createPageData)}
-                </div>
-              </TabsContent>
-              <TabsContent value="research">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
-                    Research
-                  </h3>
-                  <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"></div>
-                  {JSON.stringify(createPageData)}
-                </div>
-              </TabsContent>
+              {Object.entries(createPageData).map(([category, sections]) => (
+                <TabsContent key={category} value={category}>
+                  {Object.entries(sections).map(
+                    ([sectionTitle, categories]) => (
+                      <div
+                        key={sectionTitle}
+                        className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg"
+                      >
+                        <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                          {sectionTitle}
+                        </h3>
+                        {Object.entries(categories).map(
+                          ([categoryTitle, items]) => (
+                            <div
+                              key={categoryTitle}
+                              className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"
+                            >
+                              {items.map((item, index) => (
+                                <CardImagePair
+                                  key={index}
+                                  image={
+                                    item.imageSrc ||
+                                    'https://via.placeholder.com/150'
+                                  }
+                                  altText={item.title}
+                                  imagePosition="bottom"
+                                  title={item.title}
+                                  description={
+                                    item.description ||
+                                    'No description available.'
+                                  }
+                                  btnText="Learn More"
+                                  btnLink={item.href}
+                                  cardBackgroundColor="#1F2937"
+                                  cardBorderColor="#374151"
+                                  descriptionTextColor="#9CA3AF"
+                                />
+                              ))}
+                            </div>
+                          )
+                        )}
+                      </div>
+                    )
+                  )}
+                </TabsContent>
+              ))}
             </Tabs2>
-            <Tabs defaultFocus={true} defaultIndex="0">
-              <TabList style={{ fontSize: '2rem', fontWeight: 'bold' }}>
-                {
-                  // Have to do this hack for some reason (create empty tab if page not loaded)...
-                  // otherwise tabs break
-                  Object.entries(createPageData || {}).length === 0 ? (
-                    <Tab></Tab>
-                  ) : (
-                    ''
-                  )
-                }
-                {
-                  // Render tabs from our dynamically built pageData object
-                  Object.keys(createPageData || {}).map((key) => (
-                    <Tab key={`tab${key}`}>{key}</Tab>
-                  ))
-                }
-              </TabList>
-              {
-                // Render sections and groups from our dynamically built pageData object
-                // Render tab panels from our dynamically built pageData object
-                Object.values(createPageData || {}).map((tab, i) => (
-                  // render all sections for this tab
-                  <TabPanel key={i}>
-                    {Object.keys(tab || {}).map((sectionTitle) => {
-                      const section = tab[sectionTitle];
-                      return (
-                        <Section data={section} title={sectionTitle} key={i} />
-                      );
-                    })}
-                  </TabPanel>
-                ))
-              }
-            </Tabs>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
