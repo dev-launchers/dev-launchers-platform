@@ -55,7 +55,7 @@ const styles = {
   profileContainer: 'flex items-center gap-2 text-white',
   profileImage: 'h-8 w-8 rounded-full',
   profileDropdown:
-    'absolute right-0 top-full mt-2 w-64 rounded-lg bg-[#1C1C1C] py-2 shadow-xl',
+    'absolute right-8 top-full mt-2 w-64 rounded-lg bg-[#1C1C1C] py-2 shadow-xl',
   profileMenuItem:
     'flex items-center gap-2 px-4 py-2 text-gray-300 hover:bg-gray-700',
 
