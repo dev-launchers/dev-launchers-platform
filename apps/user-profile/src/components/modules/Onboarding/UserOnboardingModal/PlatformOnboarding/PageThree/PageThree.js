@@ -1,62 +1,67 @@
-import { useState } from 'react';
 import { Typography } from '@devlaunchers/components/components/atoms';
-import RoleCard from './../../RoleCard/RoleCard';
-import { GroupRoleCardsContainer } from './../../RoleCard/StyledRoleCard';
-import { PageThreeContainer, Header } from './StyledPageThree';
 
 import { useOnboardingDataContext } from './../../../../../../context/OnboardingDataContext';
 import { onboardingActions } from './../../../../../../state/actions';
+import RadioCards from './../../../../../common/RadioCards';
+
+import developerIconImg from './../../../../../../images/icons/onboarding/card/outlined-developer.svg';
+import uxIconImg from './../../../../../../images/icons/onboarding/card/outlined-other.svg';
+import otherIconImg from './../../../../../../images/icons/onboarding/card/outlined-ux-ui.svg';
 
 export default function PageThree() {
   const {
     onboardingData: { user },
     dispatch,
   } = useOnboardingDataContext();
-  const onRoleCardChange = (e) => {
+
+  const onRoleChange = (e) => {
     dispatch({ type: onboardingActions.SET_USERS_ROLE, data: e.target.value });
   };
 
+  const cards = {
+    name: 'role',
+    cards: [
+      {
+        img: developerIconImg,
+        title: 'DEVELOPER',
+        subtitle: `Develop and maintain databases`,
+        value: 'developer',
+        checked: user.selectedRole == 'developer',
+        onChange: onRoleChange,
+      },
+      {
+        img: uxIconImg,
+        title: 'UX/UI',
+        subtitle: `Research and design interfaces`,
+        value: 'designer',
+        checked: user.selectedRole == 'designer',
+        onChange: onRoleChange,
+      },
+      {
+        img: otherIconImg,
+        title: 'OTHER',
+        subtitle: `Manage product teams and cross communication`,
+        value: 'other',
+        checked: user.selectedRole == 'other',
+        onChange: onRoleChange,
+      },
+    ],
+  };
+
   return (
-    <PageThreeContainer>
-      <Header>
+    <div className="flex flex-col gap-20">
+      <div className="flex flex-col text-center">
         <div>
           <Typography type="p">ABOUT YOU</Typography>
           <Typography type="h3">What Role Best Describes You?</Typography>
         </div>
-        <Typography className="margin-0 modal-subtitle" type="p">
+        <Typography className="m-0" type="p">
           We'll use this to recommend open source projects for you to work on.
         </Typography>
-      </Header>
-
-      <GroupRoleCardsContainer>
-        <RoleCard
-          iconImg="Developer"
-          title="Developer"
-          subtitle="You’re here to work on our codebase"
-          groupName="role"
-          value="developer"
-          checked={user.selectedRole == 'developer'}
-          onChange={onRoleCardChange}
-        />
-        <RoleCard
-          iconImg="UX"
-          title="UX Designer"
-          subtitle="You’re here to make our platform user friendly"
-          groupName="role"
-          value="designer"
-          checked={user.selectedRole == 'designer'}
-          onChange={onRoleCardChange}
-        />
-        <RoleCard
-          iconImg="Other"
-          title="Other"
-          subtitle="You’re a surprise!"
-          groupName="role"
-          value="other"
-          checked={user.selectedRole == 'other'}
-          onChange={onRoleCardChange}
-        />
-      </GroupRoleCardsContainer>
-    </PageThreeContainer>
+      </div>
+      <div className="flex justify-center">
+        <RadioCards cards={cards} className="max-w-[720px]" />
+      </div>
+    </div>
   );
 }

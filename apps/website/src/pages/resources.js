@@ -1,9 +1,15 @@
 import Head from 'next/head';
-import React from 'react';
+import { useState } from 'react';
 import 'react-tabs/style/react-tabs.css'; // import react-tabs styles
-import { Tabs, Tab, TabList, TabPanel } from 'react-tabs';
 import {
-  Tabs as Tabs2,
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationJump,
+  PaginationLink,
+} from '@devlaunchers/components/components/Pagination/Pagination';
+import {
+  Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
@@ -11,12 +17,144 @@ import {
 import CardImagePair from '../components/modules/Home/Sections/CardImagePair';
 import { useSheetsContext } from '../context/SheetsContext';
 
-import PageBody from '../../src/components/common/PageBody';
-import Section from '../../src/components/common/Section';
+const Card = ({ href, imageSrc, title, description }) => (
+  <a
+    href={href}
+    className="group flex flex-col h-full overflow-hidden rounded-lg bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
+  >
+    <div className="aspect-video w-full overflow-hidden">
+      <img
+        src={imageSrc || '/api/placeholder/400/320'}
+        alt={title}
+        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+    </div>
+    <div className="flex flex-col flex-grow p-6">
+      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
+        {title}
+      </h3>
+      <p className="text-gray-400 text-sm flex-grow">
+        {description || 'No description available.'}
+      </p>
+      <div className="flex items-center mt-4 text-purple-400 text-sm font-medium">
+        Learn More
+        <svg
+          className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </div>
+    </div>
+  </a>
+);
+
+const PaginatedGrid = ({ items, itemsPerPage = 4 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentItems = items.slice(startIndex, endIndex);
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  return (
+    <div className="w-full flex flex-col items-center gap-8">
+      <div className="grid w-full gap-6 sm:grid-cols-2 md:grid-cols-4">
+        {currentItems.map((item, index) => (
+          <Card
+            key={index}
+            href={item.href}
+            imageSrc={item.imageSrc}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
+      </div>
+
+      {totalPages > 1 && (
+        <Pagination>
+          <PaginationContent>
+            {currentPage > 1 && (
+              <>
+                <PaginationItem>
+                  <PaginationJump
+                    destination="first"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage(1);
+                    }}
+                  />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationJump
+                    destination="previous"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage((prev) => prev - 1);
+                    }}
+                  />
+                </PaginationItem>
+              </>
+            )}
+
+            {pages.map((page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  href="#"
+                  isActive={currentPage === page}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setCurrentPage(page);
+                  }}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+
+            {currentPage < totalPages && (
+              <>
+                <PaginationItem>
+                  <PaginationJump
+                    destination="next"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage((prev) => prev + 1);
+                    }}
+                  />
+                </PaginationItem>
+                <PaginationItem>
+                  <PaginationJump
+                    destination="last"
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentPage(totalPages);
+                    }}
+                  />
+                </PaginationItem>
+              </>
+            )}
+          </PaginationContent>
+        </Pagination>
+      )}
+    </div>
+  );
+};
 
 export default function Resources() {
   const { learnPageData, createPageData } = useSheetsContext();
-  console.log(createPageData);
+
   return (
     <>
       <Head>
@@ -33,7 +171,7 @@ export default function Resources() {
             </h1>
             <p className="text-xl text-center max-w-4xl  text-gray-500  font-normal">
               Embark on a path to expanding your technological prowess. Whether
-              you're just starting or looking to refine specific skills, our
+              you are just starting or looking to refine specific skills, our
               curated resources are here to guide you every step of the way.
               Dive into a comprehensive collection of tools, tutorials, and
               hands-on projects designed to enhance your understanding and
@@ -55,7 +193,7 @@ export default function Resources() {
             </p>
           </div>
           <div className="flex flex-col justify-center items-center py-4">
-            <Tabs2 defaultValue="dev" className="w-full">
+            <Tabs defaultValue="dev" className="w-full">
               <TabsList
                 className="flex flex-row justify-start
                   py-8 px-4  gap-8 bg-gray-900"
@@ -313,7 +451,7 @@ export default function Resources() {
                   </ul>
                 </div>
               </TabsContent>
-            </Tabs2>
+            </Tabs>
           </div>
         </section>
 
@@ -330,16 +468,13 @@ export default function Resources() {
           </div>
 
           <div class="flex flex-col justify-center items-center py-4">
-            <Tabs2
-              defaultValue={Object.keys(learnPageData)[0]}
-              className="w-full"
-            >
-              <TabsList className="flex flex-row justify-center py-8 px-4  gap-8 bg-gray-900">
+            <Tabs defaultValue={'Code'} className="w-full">
+              <TabsList className="flex flex-row justify-center py-8 px-4 gap-8 bg-gray-900">
                 {Object.keys(learnPageData).map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className=" text-xl focus:bg-purple-600"
+                    className=" text-lg bg-background"
                   >
                     {category}
                   </TabsTrigger>
@@ -358,31 +493,8 @@ export default function Resources() {
                         </h3>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
-                            <div
-                              key={categoryTitle}
-                              className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"
-                            >
-                              {items.map((item, index) => (
-                                <CardImagePair
-                                  key={index}
-                                  image={
-                                    item.imageSrc ||
-                                    'https://via.placeholder.com/150'
-                                  }
-                                  altText={item.title}
-                                  imagePosition="bottom"
-                                  title={item.title}
-                                  description={
-                                    item.description ||
-                                    'No description available.'
-                                  }
-                                  btnText="Learn More"
-                                  btnLink={item.href}
-                                  cardBackgroundColor="#1F2937"
-                                  cardBorderColor="#374151"
-                                  descriptionTextColor="#9CA3AF"
-                                />
-                              ))}
+                            <div key={categoryTitle} className="pt-8">
+                              <PaginatedGrid items={items} />
                             </div>
                           )
                         )}
@@ -391,7 +503,7 @@ export default function Resources() {
                   )}
                 </TabsContent>
               ))}
-            </Tabs2>
+            </Tabs>
           </div>
         </section>
         <section className="max-w-7xl pt-4 pb-10 px-4 md:px-8">
@@ -406,10 +518,7 @@ export default function Resources() {
           </div>
 
           <div>
-            <Tabs2
-              defaultValue={Object.keys(createPageData)[0]}
-              className="w-full"
-            >
+            <Tabs defaultValue={'Templates'} className="w-full">
               <TabsList className="flex flex-row justify-center py-8 px-4  gap-8 bg-gray-900">
                 {Object.keys(createPageData).map((category) => (
                   <TabsTrigger
@@ -434,31 +543,8 @@ export default function Resources() {
                         </h3>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
-                            <div
-                              key={categoryTitle}
-                              className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2"
-                            >
-                              {items.map((item, index) => (
-                                <CardImagePair
-                                  key={index}
-                                  image={
-                                    item.imageSrc ||
-                                    'https://via.placeholder.com/150'
-                                  }
-                                  altText={item.title}
-                                  imagePosition="bottom"
-                                  title={item.title}
-                                  description={
-                                    item.description ||
-                                    'No description available.'
-                                  }
-                                  btnText="Learn More"
-                                  btnLink={item.href}
-                                  cardBackgroundColor="#1F2937"
-                                  cardBorderColor="#374151"
-                                  descriptionTextColor="#9CA3AF"
-                                />
-                              ))}
+                            <div key={categoryTitle} className="pt-8">
+                              <PaginatedGrid items={items} />
                             </div>
                           )
                         )}
@@ -467,7 +553,7 @@ export default function Resources() {
                   )}
                 </TabsContent>
               ))}
-            </Tabs2>
+            </Tabs>
           </div>
         </section>
         <section className="max-w-7xl pt-4 pb-10 px-4 md:px-8">

@@ -4,6 +4,7 @@ const sidebarInitialState = {
   pages: {
     showOverview: true,
     showProjects: false,
+    showChatbot: false,
   },
 };
 
@@ -18,6 +19,7 @@ const sidebarReducer = (state, action) => {
           showProjects: false,
           showProfiles: false,
           showIdeas: false,
+          showChatbot: false,
           showOpportunities: false,
         },
       };
@@ -40,6 +42,7 @@ const sidebarReducer = (state, action) => {
           showProjects: true,
           showProfiles: false,
           showIdeas: false,
+          showChatbot: false,
           showOpportunities: false,
         },
       };
@@ -62,6 +65,7 @@ const sidebarReducer = (state, action) => {
           showProjects: false,
           showProfiles: true,
           showIdeas: false,
+          showChatbot: false,
           showOpportunities: false,
         },
       };
@@ -84,6 +88,7 @@ const sidebarReducer = (state, action) => {
           showProjects: false,
           showProfiles: false,
           showIdeas: true,
+          showChatbot: false,
           showOpportunities: false,
         },
       };
@@ -105,6 +110,7 @@ const sidebarReducer = (state, action) => {
           showOverview: false,
           showProjects: false,
           showProfiles: false,
+          showChatbot: false,
           showIdeas: false,
           showOpportunities: true,
         },
@@ -116,6 +122,29 @@ const sidebarReducer = (state, action) => {
         pages: {
           ...state.pages,
           showOpportunities: false,
+        },
+      };
+    }
+    case sidebarActions.SHOW_CHATBOT_SETTING: {
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          showOverview: false,
+          showProjects: false,
+          showProfiles: false,
+          showChatbot: true,
+          showIdeas: false,
+          showOpportunities: false,
+        },
+      };
+    }
+    case sidebarActions.HIDE_CHATBOT_SETTING: {
+      return {
+        ...state,
+        pages: {
+          ...state.pages,
+          showChatbot: false,
         },
       };
     }

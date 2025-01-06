@@ -8,6 +8,8 @@ import EditionButton from './EditionButton';
 import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
 import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox';
+import Link from 'next/link';
+Link;
 
 const IdeaForm = (
   {
@@ -35,27 +37,50 @@ const IdeaForm = (
     return false;
   };
 
+  const autoSaveLocalStorage = (values) => {
+    localStorage.setItem('ideaFormData', JSON.stringify(values));
+  };
+
+  const loadFromLocalStorage = () => {
+    const savedData = localStorage.getItem('ideaFormData');
+    return savedData ? JSON.parse(savedData) : null;
+  };
+
+  const clearLocalStorage = () => {
+    localStorage.removeItem('ideaFormData');
+  };
+
   const AutoSubmitToken = () => {
     const { values, submitForm } = useFormikContext();
+    const [previousValues, setPreviousValues] = useState(values);
     React.useEffect(() => {
+      autoSaveLocalStorage(values);
       if (compareValuesToInitial(values)) {
         unsavedHandler(true);
         setDisabling(false);
-      } else {
+      } else if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
         unsavedHandler(false);
         setDisabling(true);
+        setPreviousValues(values);
       }
-    }, [values]);
+    }, [values, previousValues]);
     return null;
   };
+
+  const savedData = loadFromLocalStorage();
+  const newInitialValues = { ...initialValues, ...savedData };
 
   return (
     <atoms.Box margin="1rem 1.5rem 3rem 1.5rem">
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
         <Formik
-          initialValues={initialValues}
+          initialValues={newInitialValues}
           validationSchema={SignupSchema}
-          onSubmit={submitHandler}
+          onSubmit={(values, actions) => {
+            submitHandler(values, actions);
+            clearLocalStorage(); // Clear localStorage on form submission
+            actions.resetForm({ values: initialValues });
+          }}
           enableReinitialize
         >
           {({ errors, setFieldValue, touched }) => (
@@ -217,10 +242,18 @@ const IdeaForm = (
                 </atoms.Typography>
 
                 <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                  <Checkbox disabled={false} required />
+                  <Checkbox required />
                   <atoms.Typography type="p">
-                    &nbsp;I have read and agree to the Terms and Conditions.
-                    <span style={{ color: 'red' }}>&nbsp;*</span>
+                    &nbsp;I have read and agree to the{' '}
+                    <Link href="/ideaspace/terms" passHref>
+                      <a
+                        style={{ color: 'blue', textDecoration: 'underline' }}
+                        target="_blank"
+                      >
+                        Idea Submission Terms & Conditions
+                      </a>
+                    </Link>
+                    .<span style={{ color: 'red' }}>&nbsp;*</span>
                   </atoms.Typography>
                 </atoms.Box>
 

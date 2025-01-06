@@ -111,7 +111,7 @@ const button = `
 
 const label = `
     font-family: 'Nunito Sans';
-    font-size: 0.875rem;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.25rem;
     @media only screen and (max-width: 62.5rem) {

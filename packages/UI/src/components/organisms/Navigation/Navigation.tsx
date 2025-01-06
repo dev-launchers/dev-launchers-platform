@@ -13,11 +13,12 @@ import {
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
+import NotificationPopover from './NotificationPopover';
 
 // Centralized styles
 const styles = {
   // Navigation styles
-  nav: 'sticky top-0 flex h-16 items-center justify-between bg-black px-4 md:px-8 z-50 text-lg sm:text-sm',
+  nav: 'sticky relative top-0 flex h-16 items-center justify-between bg-black px-4 md:px-8 z-50 text-lg sm:text-sm',
   navItem:
     'text-gray-400 font-normal transition-all duration-200 hover:text-white hover:font-semibold active:text-white active:font-semibold',
 
@@ -36,15 +37,14 @@ const styles = {
   // Dropdown styles
   // Dropdown styles
   // Change these in the styles object
-  dropdownContainer:
-    'flex flex-row items-center  bg-black relative static lg:relative',
+  dropdownContainer: 'flex flex-row items-center',
   dropdownTrigger:
     'text-gray-300 font-normal transition-all duration-200 hover:text-white hover:text-white hover:font-semibold flex items-center gap-2',
-  dropdownContent:
-    'absolute top-8 left-0 max-w-xl bg-black border-t border-gray-800 mt-2',
+  dropdownContent: 'absolute top-8 left-0 w-full border-t border-gray-800 mt-8',
   dropdownItem:
     'block rounded-lg bg-[#1C1C1C] p-6 transition-colors hover:bg-gray-800',
-  dropdownGrid: 'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px]',
+  dropdownGrid:
+    'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px] bg-black mx-auto',
 
   // Mobile menu styles
   mobileMenu:
@@ -57,10 +57,10 @@ const styles = {
   profileDropdown:
     'absolute right-0 top-full mt-2 w-64 rounded-lg bg-[#1C1C1C] py-2 shadow-xl',
   profileMenuItem:
-    'flex items-center gap-2 px-4 py-2 text-gray-300 hover:bg-gray-800',
+    'flex items-center gap-2 px-4 py-2 text-gray-300 hover:bg-gray-700',
 
   // Icon styles
-  icon: 'h-5 w-5',
+  icon: 'h-5 w-5 text-white',
   chevron: 'h-4 w-4 transform transition-transform',
 
   // Layout styles
@@ -106,7 +106,7 @@ const projectItems = [
   },
 ];
 
-const ProfileDropdown = ({ userData, notificationCount }) => {
+const ProfileDropdown = ({ userData }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef(null);
 
@@ -128,6 +128,9 @@ const ProfileDropdown = ({ userData, notificationCount }) => {
 
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>
+      <div className="text-white mr-6">
+        <NotificationPopover />
+      </div>
       <button
         className={styles.profileContainer}
         onClick={() => setIsOpen(!isOpen)}
@@ -142,7 +145,6 @@ const ProfileDropdown = ({ userData, notificationCount }) => {
           className={`${styles.chevron} ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
-
       {isOpen && (
         <div className={styles.profileDropdown}>
           <div className="px-4 py-2">
@@ -156,35 +158,16 @@ const ProfileDropdown = ({ userData, notificationCount }) => {
             </div>
           </div>
           <div className="mt-2 border-t border-gray-700">
-            <Link href="/notifications">
-              <a className={styles.profileMenuItem}>
-                <div className="flex items-center gap-2">
-                  <Bell className={styles.icon} />
-                  <span>Notifications</span>
-                </div>
-                {notificationCount > 0 && (
-                  <span className="rounded-full bg-red-500 px-2 py-0.5 text-xs">
-                    {notificationCount}
-                  </span>
-                )}
-              </a>
-            </Link>
             <Link href="/users/me">
               <a className={styles.profileMenuItem}>
                 <User className={styles.icon} />
                 <span>Profile</span>
               </a>
             </Link>
-            <Link href="/dashboard">
+            <Link href="ideaspace/dashboard">
               <a className={styles.profileMenuItem}>
                 <Lightbulb className={styles.icon} />
                 <span>Idea Dashboard</span>
-              </a>
-            </Link>
-            <Link href="/settings">
-              <a className={styles.profileMenuItem}>
-                <Settings className={styles.icon} />
-                <span>Account Settings</span>
               </a>
             </Link>
             <button
@@ -201,7 +184,7 @@ const ProfileDropdown = ({ userData, notificationCount }) => {
   );
 };
 
-const DropdownMenu = ({ trigger, items }) => {
+const DropdownMenu = ({ trigger, items = projectItems }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef(null);
 
@@ -236,7 +219,7 @@ const DropdownMenu = ({ trigger, items }) => {
       {isOpen && (
         <div className={styles.dropdownContent}>
           <div className={styles.dropdownGrid}>
-            {projectItems.map((item, index) => (
+            {items.map((item, index) => (
               <Link key={index} href={item.href}>
                 <a className={styles.dropdownItem}>
                   <h3 className="mb-2 text-xl font-semibold text-white">
@@ -299,7 +282,6 @@ const MobileDropdown = ({ title, items }) => {
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const { userData, isAuthenticated } = useUserDataContext();
-  const notificationCount = 5; // This should come from your notification system
 
   return (
     <nav className={styles.nav}>
@@ -321,8 +303,8 @@ const Navigation = () => {
         <DropdownMenu
           trigger="Collaborate"
           items={[
-            { label: 'Join Team', href: '/collaborate/join' },
-            { label: 'Open Positions', href: '/collaborate/positions' },
+            { title: 'Join Team', description: '', href: '/join' },
+            { title: 'IdeaSpace', description: '', href: '/ideaspace' },
           ]}
         />
         <Link href="/about">
@@ -335,7 +317,6 @@ const Navigation = () => {
           <a className={styles.navItem}>Donate</a>
         </Link>
       </div>
-
       <div className="hidden items-center gap-4 lg:flex">
         {!isAuthenticated ? (
           <>
@@ -358,24 +339,24 @@ const Navigation = () => {
           </>
         ) : (
           <div className="flex items-center gap-4">
-            <ProfileDropdown
-              userData={userData}
-              notificationCount={notificationCount}
-            />
+            <ProfileDropdown userData={userData} />
           </div>
         )}
       </div>
 
-      <button
-        className={styles.mobileToggle}
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-      >
-        {isMobileMenuOpen ? (
-          <X className={styles.icon} />
-        ) : (
-          <Menu className={styles.icon} />
-        )}
-      </button>
+      <div className={styles.mobileToggle + ' flex gap-6'}>
+        <NotificationPopover />
+        <button
+          className={styles.mobileToggle}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className={styles.icon} />
+          ) : (
+            <Menu className={styles.icon} />
+          )}
+        </button>
+      </div>
 
       <div
         className={`${styles.mobileMenu} ${
@@ -402,8 +383,8 @@ const Navigation = () => {
           <MobileDropdown
             title="Collaborate"
             items={[
-              { label: 'Join Team', href: '/collaborate/join' },
-              { label: 'Open Positions', href: '/collaborate/positions' },
+              { label: 'Join Team', href: '/join' },
+              { label: 'IdeaSpace', href: '/ideaspace' },
             ]}
           />
           <Link href="/about">
@@ -445,33 +426,16 @@ const Navigation = () => {
                 />
                 <span>{userData.name}</span>
               </div>
-              <Link href="/notifications">
-                <a className={styles.profileMenuItem}>
-                  <Bell className={styles.icon} />
-                  <span>Notifications</span>
-                  {notificationCount > 0 && (
-                    <span className="ml-2 rounded-full bg-red-500 px-2 py-0.5 text-xs">
-                      {notificationCount}
-                    </span>
-                  )}
-                </a>
-              </Link>
               <Link href="/users/me">
                 <a className={styles.profileMenuItem}>
                   <User className={styles.icon} />
                   <span>Profile</span>
                 </a>
               </Link>
-              <Link href="/dashboard">
+              <Link href="/ideaspace/dashboard">
                 <a className={styles.profileMenuItem}>
                   <Lightbulb className={styles.icon} />
                   <span>Idea Dashboard</span>
-                </a>
-              </Link>
-              <Link href="/settings">
-                <a className={styles.profileMenuItem}>
-                  <Settings className={styles.icon} />
-                  <span>Account Settings</span>
                 </a>
               </Link>
               <button
