@@ -4,6 +4,8 @@ export const UploadModalContent = styled.div`
   display: flex;
   flex-direction: column;
   font-family: 'Abel', sans-serif;
+  letter-spacing: 0.25vw;
+  font-size: 1.5vw;
 `;
 
 export const UploadCustomModalStyles = {
