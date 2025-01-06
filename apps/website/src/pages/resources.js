@@ -56,32 +56,26 @@ export default function Resources() {
           </div>
           <div className="flex flex-col justify-center items-center py-4">
             <Tabs2 defaultValue="dev" className="w-full">
-              <TabsList
-                className="flex flex-row justify-start
-                  py-8 px-4  gap-8 bg-gray-900"
-              >
+              <TabsList className="flex flex-row justify-center py-8 px-4 gap-8 bg-gray-900">
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-500"
+                  className="text-xl focus:bg-purple-500"
                   value="dev"
                 >
                   Development
                 </TabsTrigger>
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-500"
+                  className="text-xl focus:bg-purple-500"
                   value="design"
                 >
                   Design
                 </TabsTrigger>
                 <TabsTrigger
-                  className=" text-xl focus:bg-purple-500"
+                  className="text-xl focus:bg-purple-500"
                   value="research"
                 >
                   Research
                 </TabsTrigger>
-                <TabsTrigger
-                  className=" text-xl focus:bg-purple-500"
-                  value="pm"
-                >
+                <TabsTrigger className="text-xl focus:bg-purple-500" value="pm">
                   Project Management
                 </TabsTrigger>
               </TabsList>
@@ -90,53 +84,54 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Development
                   </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                  <ul className="text-base text-left text-gray-500 max-w-4xl p-0 font-normal">
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://docs.devlaunchers.org/dl-docs/development/development-at-dev-launchers"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Development Docs
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Comprehensive resource for development practices and
+                        guidelines at Dev Launchers.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://github.com/dev-launchers/dev-launchers-platform"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Github Repository
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Central repository for all code and development projects
+                        managed by Dev Launchers.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://code.visualstudio.com"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        VS Code
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A lightweight but powerful source code editor that runs
+                        on your desktop and is available for Windows, macOS, and
+                        Linux.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://tailwindcss.com/docs/installation"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Tailwind CSS Docs
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Official documentation for installing and using Tailwind
+                        CSS, a utility-first CSS framework.
                       </p>
                     </li>
                   </ul>
@@ -147,53 +142,57 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Design
                   </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://docs.devlaunchers.org/dl-docs/design/design-at-dev-launchers"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Design Docs
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A guide to the design principles and practices adopted
+                        by Dev Launchers for creating engaging user interfaces
+                        and experiences.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.figma.com"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Figma
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A web-based interface design tool that allows real-time
+                        collaboration among teams for building interactive and
+                        professional designs.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://atomicdesign.bradfrost.com"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Atomic Design by Brad Frost
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A methodology for creating design systems composed of
+                        atoms, molecules, and organisms to build robust user
+                        interfaces.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11483-2356&t=IiSxzdTKtxwEua46-1"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Universal Design System
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        This resource showcases the Universal Design System
+                        utilized by Dev Launchers, featuring standardized UI
+                        components and design tokens.
                       </p>
                     </li>
                   </ul>
@@ -204,53 +203,56 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Research
                   </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://docs.devlaunchers.org/dl-docs/research/research-at-dev-launchers"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Research Docs
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Essential reading for understanding the research
+                        processes and methodologies utilized by Dev Launchers.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.nngroup.com/topic/research-methods/"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Nielsen Norman Group Research Methods
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        An essential collection of user research methodologies
+                        and best practices offered by the Nielsen Norman Group,
+                        a leader in the UX field.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.userinterviews.com/ux-research-field-guide-chapter/user-interviews"
                       >
-                        HTML & CSS Guidebook
+                        The UX Research Field Guide
                       </a>{' '}
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A comprehensive guide to doing UX research by User
+                        Interviews
                       </p>
                     </li>
-                    <li className="pb-2">
+                    <li class="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.hotjar.com"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Hotjar
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Hotjar offers tools to visualize user behavior on your
+                        site through heatmaps, session recordings, and surveys,
+                        enabling deeper insights into user interactions and
+                        experiences.
                       </p>
                     </li>
                   </ul>
@@ -261,53 +263,55 @@ export default function Resources() {
                   <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                     Project Management
                   </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 font-normal">
+                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://docs.devlaunchers.org/dl-docs/product-management/product-management-at-dev-launchers"
                       >
-                        HTML & CSS Guidebook
-                      </a>{' '}
+                        Dev Launchers Project Management Docs
+                      </a>
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A resource for project managers at Dev Launchers,
+                        detailing workflows, strategies, and tools for effective
+                        project oversight and completion.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects"
                       >
-                        HTML & CSS Guidebook
+                        Github Projects
                       </a>{' '}
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        Learn about Github Projects; an adaptable, flexible tool
+                        for planning and tracking work on GitHub.
                       </p>
                     </li>
                     <li className="pb-2">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.atlassian.com/work-management/project-management/"
                       >
-                        HTML & CSS Guidebook
+                        Project Management Guide by Atlassian
                       </a>{' '}
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        An extensive guide to project management from basics to
+                        strategy breakdowns by Atlassian
                       </p>
                     </li>
-                    <li className="pb-2">
+                    <li className="pb-2 ">
                       <a
                         className="text-white font-semibold underline underline-offset-4"
-                        href="https://htmlandcssguidebook.com/"
+                        href="https://www.pmi.org/insights"
                       >
-                        HTML & CSS Guidebook
+                        Project Management Templates and Insights
                       </a>{' '}
                       <p>
-                        A free interactive guide to front-end web development
-                        for absolute beginners by Josiah Spence
+                        A curated selection of industry-vetted Project
+                        Management Institute templates, guides, and more to help
+                        you grow and maximize project success
                       </p>
                     </li>
                   </ul>
@@ -317,7 +321,7 @@ export default function Resources() {
           </div>
         </section>
 
-        <section className="max-w-7xl  pt-4 pb-10 px-4 md:px-8">
+        <section className="max-w-7xl  py-24  md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
             <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
               Learning and Games
@@ -394,7 +398,7 @@ export default function Resources() {
             </Tabs2>
           </div>
         </section>
-        <section className="max-w-7xl pt-4 pb-10 px-4 md:px-8">
+        <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
             <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
               Create with Templates
@@ -470,7 +474,7 @@ export default function Resources() {
             </Tabs2>
           </div>
         </section>
-        <section className="max-w-7xl pt-4 pb-10 px-4 md:px-8">
+        <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
             <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
               Create and Collaborate
