@@ -1,11 +1,15 @@
 // Typography interface
 
-export interface TypographyProps {
+export interface TypographyProps<
+  T extends keyof React.JSX.IntrinsicElements = 'p'
+> {
   /**
    * Determines the semantic HTML tag.
    * Example: 'h1', 'p', 'span', etc.
    */
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: T;
+
+  children?: React.ReactNode;
 
   /**
    * Variant determines the typography style.
