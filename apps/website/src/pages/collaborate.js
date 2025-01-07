@@ -6,16 +6,16 @@ export default function Collaborate() {
       <Head>
         <title>Collaborate</title>
       </Head>
-      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white">
+      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-full bg-black py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
             <h1
-              className="text-7xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
               style={{ fontSize: '4.5rem' }}
             >
               Collaborate with Us
             </h1>
-            <p className="text-xl text-left max-w-3xl  text-gray-500  font-normal">
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
               Collaborate with us to build real-world projects and gain
               invaluable experience. Whether you're a beginner or a seasoned
               professional your journey starts here!
@@ -24,7 +24,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide m-0 pb-4 text-white">
               Choose Your Journey
             </h2>
             <p className="text-lg text-center max-w-4xl pb-10 text-gray-500 font-normal">
@@ -34,8 +34,7 @@ export default function Collaborate() {
               each member uniquely. Select your path at Dev Launchers with our
               tailored membership levels. We have a place for you whether you
               want to grow independently in our Orbit, transition between levels
-              as a Traveler, or empower our core initiatives. Explore the
-              options:
+              as a Traveler, or empower our core initiatives.
             </p>
             <div className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3">
               <div className="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
@@ -73,7 +72,49 @@ export default function Collaborate() {
 
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+              Create your Profile
+            </h2>
+            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+              Create your profile and connect with like-minded individuals in
+              our vibrant community. Engage with other members, share your
+              journey, and find partners for your next project. Networking at
+              Dev Launchers opens doors to opportunities and collaborations.
+            </p>
+            <div className="flex pt-8">
+              <a
+                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+                href="/users/me"
+              >
+                Build your Profile
+              </a>
+            </div>
+          </div>
+        </section>
+        <section className="max-w-full py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+              Learn with Resources
+            </h2>
+            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+              Utilize our comprehensive library of resources, templates, and
+              tools to enhance your skillset. From beginner to advanced levels,
+              our learning materials are designed to support your growth in the
+              most dynamic industries.
+            </p>
+            <div className="flex pt-8">
+              <a
+                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+                href="/resources"
+              >
+                Explore Resources
+              </a>
+            </div>
+          </div>
+        </section>
+        <section className="max-w-full py-24 px-4 md:px-8">
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Dream with IdeaSpace
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -83,7 +124,7 @@ export default function Collaborate() {
             </p>
             <div className="flex pt-8">
               <a
-                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/ideaspace"
               >
                 Explore Ideas
@@ -93,7 +134,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Join with Dev Recruit
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -105,52 +146,10 @@ export default function Collaborate() {
             </p>
             <div className="flex pt-8">
               <a
-                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
               >
                 Explore Opportunities
-              </a>
-            </div>
-          </div>
-        </section>
-        <section className="max-w-full py-24 px-4 md:px-8">
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-              Create your Profile
-            </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
-              Create your profile and connect with like-minded individuals in
-              our vibrant community. Engage with other members, share your
-              journey, and find partners for your next project. Networking at
-              Dev Launchers opens doors to opportunities and collaborations.
-            </p>
-            <div className="flex pt-8">
-              <a
-                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
-                href="/users/me"
-              >
-                Build your Profile
-              </a>
-            </div>
-          </div>
-        </section>
-        <section className="max-w-full py-24 px-4 md:px-8">
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
-              Learn with Resources
-            </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
-              Utilize our comprehensive library of resources, templates, and
-              tools to enhance your skillset. From beginner to advanced levels,
-              our learning materials are designed to support your growth in the
-              most dynamic industries.
-            </p>
-            <div className="flex pt-8">
-              <a
-                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
-                href="/resources"
-              >
-                Explore Resources
               </a>
             </div>
           </div>
