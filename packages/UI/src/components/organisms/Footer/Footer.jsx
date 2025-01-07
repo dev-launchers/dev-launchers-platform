@@ -10,21 +10,22 @@ import logo from '../../../assets/images/logo-monogram.png';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-black text-gray-300">
-      <div className="flex gap-4">
-        <div className="max-w-12 bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
+    <footer className="flex flex-col bg-gray-900 text-gray-300">
+      <div className="border-t border-gray-700 mx-auto px-6 py-8 flex flex-col md:flex-row items-end justify-between gap-16">
+        <div className="max-w-12   rounded-lg">
           <div>
             <img src={logo} alt="Dev Launchers Logo" className="h-10 w-10" />
             <h2 className="text-xl font-semibold text-white whitespace-nowrap">
               Dev Launchers
             </h2>
           </div>
-          <p className="text-sm text-white">
+          <p className="max-w-3xl  text-sm text-gray-500">
             At Dev Launchers we bridge opportunity gaps in the technology
             industry through education and collaboration. Dev Launchers is a
             501(c)(3) nonprofit organization.
           </p>
         </div>
+        {/* B
 
         <div className=" bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
           <nav>
@@ -80,8 +81,9 @@ const Footer = () => {
             </div>
           </nav>
         </div>
-        <div className=" flex align-center items-center bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-          <blockquote className="text-gray-400 italic">
+        */}
+        <div className=" flex align-center items-center rounded-lg">
+          <blockquote className="text-gray-500 italic">
             "The technology you use impresses no one. The experience you create
             with it is everything." -{' '}
             <span className="text-bold">Sean Gerety</span>
