@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from '@devlaunchers/components/components/atoms/Button';
+import React, { useState } from 'react';
+import { ChevronRight } from 'lucide-react';
 
 interface CardImagePairProps {
   image: string;
@@ -20,7 +20,24 @@ interface CardImagePairProps {
 const COLORS = {
   description: 'hsla(271, 50%, 74%, 1)',
   defaultBorder: 'white',
+  defaultBackground: 'hsla(270, 51%, 25%, 0.4)',
 } as const;
+
+// Helper function to parse HSLA color and create a new one with different opacity
+const modifyHSLAOpacity = (hslaColor: string, newOpacity: number): string => {
+  // Default fallback if parsing fails
+  if (!hslaColor.startsWith('hsla(')) return `hsla(0, 0%, 100%, ${newOpacity})`;
+
+  try {
+    const values = hslaColor.match(/hsla?\(([^)]+)\)/)?.[1].split(',');
+    if (!values) return `hsla(0, 0%, 100%, ${newOpacity})`;
+
+    const [h, s, l] = values;
+    return `hsla(${h}, ${s}, ${l}, ${newOpacity})`;
+  } catch (e) {
+    return `hsla(0, 0%, 100%, ${newOpacity})`;
+  }
+};
 
 const CardImagePair: React.FC<CardImagePairProps> = ({
   image,
@@ -37,6 +54,8 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
   btnLink,
   onClick,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const LAYOUT = {
     container: {
       base: 'flex sm:max-w-xs grow gap-6',
@@ -51,29 +70,35 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
         `w-full h-full object-${imageFit}`,
     },
     card: {
-      wrapper: 'flex  basis-1/2 flex-col rounded-3xl border-4 p-6',
+      wrapper: 'flex basis-1/2 flex-col rounded-3xl border-4 p-6',
       content: 'flex flex-col gap-1',
-      title: 'text-4xl text-left font-normal',
-      description: 'text-base text-left font-normal',
-      buttonWrapper: 'flex flex-col pt-4',
+      title: 'text-2xl text-left font-semibold pt-4 pb-2',
+      description: 'text-sm text-left font-normal pb-2',
+      buttonWrapper: 'flex flex-row pt-2 pb-4',
       button: 'text-left normal-case',
-      link: 'border-2 p-4 text-white rounded-xl text-left text-base normal-case font-medium',
+      link: 'flex flex-row gap-2 align-center py-2 text-white rounded-xl text-left text-base normal-case font-medium',
     },
   } as const;
 
-  // Dynamic styles that depend on props
   const containerClasses = `${LAYOUT.container.base} ${LAYOUT.container.position[imagePosition]}`;
   const imageClasses = LAYOUT.image.img(imageFit);
 
-  // Style objects for elements with dynamic colors
+  // Create shadow color from border color with 0.3 opacity
+  const shadowColor = modifyHSLAOpacity(
+    cardBorderColor || COLORS.defaultBorder,
+    0.3
+  );
+
   const imageWrapperStyle = {
     borderColor: imageBorderColor || COLORS.defaultBorder,
     order: imagePosition === 'top' ? 2 : 1,
   };
 
   const cardWrapperStyle = {
-    backgroundColor: cardBackgroundColor || 'transparent',
     borderColor: cardBorderColor || COLORS.defaultBorder,
+    backgroundColor: cardBackgroundColor || COLORS.defaultBackground,
+    transition: 'all 0.3s ease',
+    boxShadow: isHovered ? `inset 0 0 42px ${shadowColor}` : 'none',
   };
 
   const descriptionStyle = {
@@ -81,41 +106,50 @@ const CardImagePair: React.FC<CardImagePairProps> = ({
   };
 
   const linkStyle = {
-    backgroundColor: 'hsla(0, 0%, 0%, 0.25)',
+    backgroundColor: 'hsla(0, 0%, 0%, 0)',
     borderColor: cardBorderColor || COLORS.defaultBorder,
   };
 
   return (
-    <div className={containerClasses}>
-      <div className={LAYOUT.image.wrapper} style={imageWrapperStyle}>
-        <img
-          src={image}
-          alt={altText || 'image'}
-          style={{ objectFit: 'cover' }}
-          loading="lazy"
-          className={imageClasses}
-        />
-      </div>
+    <a
+      href={btnLink}
+      onClick={onClick}
+      className={LAYOUT.card.link}
+      style={linkStyle}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className={containerClasses}>
+        <div className={LAYOUT.image.wrapper} style={imageWrapperStyle}>
+          <img
+            src={image}
+            alt={altText || 'image'}
+            style={{ objectFit: 'cover' }}
+            loading="lazy"
+            className={imageClasses}
+          />
+        </div>
 
-      <div className={LAYOUT.card.wrapper} style={cardWrapperStyle}>
-        <div className={LAYOUT.card.content}>
-          <h3 className={LAYOUT.card.title}>{title}</h3>
-          <p className={LAYOUT.card.description} style={descriptionStyle}>
-            {description}
-          </p>
-        </div>
-        <div className={LAYOUT.card.buttonWrapper}>
-          <a
-            href={btnLink}
-            onClick={onClick}
-            className={LAYOUT.card.link}
-            style={linkStyle}
-          >
-            {btnText}
-          </a>
+        <div className={LAYOUT.card.wrapper} style={cardWrapperStyle}>
+          <div className={LAYOUT.card.content}>
+            <h3 className={LAYOUT.card.title}>{title}</h3>
+            <p className={LAYOUT.card.description} style={descriptionStyle}>
+              {description}
+            </p>
+          </div>
+          <div className={LAYOUT.card.buttonWrapper}>
+            <a
+              href={btnLink}
+              onClick={onClick}
+              className={LAYOUT.card.link}
+              style={linkStyle}
+            >
+              {btnText} <ChevronRight />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
