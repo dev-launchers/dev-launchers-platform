@@ -37,14 +37,14 @@ const styles = {
   // Dropdown styles
   // Dropdown styles
   // Change these in the styles object
-  dropdownContainer: 'flex flex-row items-center',
+  dropdownContainer: 'flex flex-row items-center ',
   dropdownTrigger:
     'text-gray-300 font-normal transition-all duration-200 hover:text-white hover:text-white hover:font-semibold flex items-center gap-2',
   dropdownContent: 'absolute top-8 left-0 w-full border-t border-gray-800 mt-8',
   dropdownItem:
     'block rounded-lg bg-[#1C1C1C] p-6 transition-colors hover:bg-gray-800',
   dropdownGrid:
-    'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px] bg-black mx-auto',
+    'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px] bg-black p-4 mt-2 mx-auto rounded-xl',
 
   // Mobile menu styles
   mobileMenu:
@@ -299,17 +299,14 @@ const Navigation = () => {
       </div>
 
       <div className={styles.desktopNav}>
-        <DropdownMenu trigger="Our Projects" items={projectItems} />
-        <DropdownMenu
-          trigger="Collaborate"
-          items={[
-            { title: 'Join Team', description: '', href: '/join' },
-            { title: 'IdeaSpace', description: '', href: '/ideaspace' },
-          ]}
-        />
         <Link href="/about">
           <a className={styles.navItem}>About Us</a>
         </Link>
+        <Link href="/collaborate">
+          <a className={styles.navItem}>Collaborate</a>
+        </Link>
+        <DropdownMenu trigger="Our Projects" items={projectItems} />
+
         <Link href="/resources">
           <a className={styles.navItem}>Resources</a>
         </Link>
