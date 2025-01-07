@@ -35,9 +35,9 @@ export const styles = {
     logoStyle: 'h-16 w-auto flex-shrink-0',
     partnerContainer: 'w-full max-w-7xl mx-auto pt-20 px-4',
     partnerLogos:
-      'flex flex-col md:flex-row items-center justify-around gap-20 mt-8',
+      'flex flex-col md:flex-row items-center justify-between gap-20 mt-8',
     stackLogo:
-      'flex items-center  p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/50 transition-colors',
+      'flex items-center justify-center  gap-4 p-4 rounded-lg  transition-colors',
     subHeading:
       'text-lg text-center text-gray-500 max-w-3xl mx-auto font-normal',
   },
