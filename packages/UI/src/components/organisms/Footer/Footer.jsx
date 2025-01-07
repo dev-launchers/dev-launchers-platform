@@ -11,7 +11,7 @@ import logo from '../../../assets/images/logo-monogram.png';
 const Footer = () => {
   return (
     <footer className="flex flex-col bg-gray-900 text-gray-300">
-      <div className="border-t border-gray-700 mx-auto px-6 py-8 flex flex-col md:flex-row items-end justify-between gap-16">
+      <div className="border-t border-gray-700 mx-auto px-16 py-8 flex flex-col md:flex-row items-end justify-between gap-16">
         <div className="max-w-12   rounded-lg">
           <div>
             <img src={logo} alt="Dev Launchers Logo" className="h-10 w-10" />
