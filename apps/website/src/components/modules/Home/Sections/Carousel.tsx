@@ -36,7 +36,7 @@ const testimonials = [
 
 const TestimonialCarousel = () => {
   return (
-    <div className="relative w-full max-w-7xl pt-2 mx-auto rounded-lg ">
+    <div className="relative w-full max-w-7xl pt-2 mx-auto rounded-lg">
       {/* Fade effect containers */}
       <div className="hidden sm:block absolute left-0 top-0 w-48 h-full bg-gradient-to-r from-black via-black to-transparent z-10" />
       <div className="hidden sm:block absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-black via-black to-transparent z-10" />
@@ -59,27 +59,23 @@ const TestimonialCarousel = () => {
                 <div
                   className={`${
                     index % 2 === 1
-                      ? 'bg-[rgba(54,82,90,0.25)] border-[#9ACFDF]'
-                      : 'bg-[rgba(255,87,51,0.25)] border-[#FFA500]'
-                  } rounded-3xl p-12 h-full border-4`}
+                      ? 'bg-teal-900 border-teal-500'
+                      : 'bg-orange-900 border-orange-500'
+                  } rounded-3xl p-12 h-full border-4 flex align-center items-center justify-center`}
                 >
-                  <div className="flex flex-col h-full">
-                    <p
-                      className={`${
-                        index % 2 === 1 ? 'text-[#9ACFDF]' : 'text-[#FFA500]'
-                      } mb-8 text-sm flex-grow font-normal leading-relaxed`}
-                    >
+                  <div className="flex flex-col items-center justify-center align-center  space-y-8">
+                    <p className="align-center  text-sky-400/75 text-base text-center flex-grow font-normal leading-relaxed">
                       {testimonial.content}
                     </p>
                     <div className="flex items-center justify-center gap-3">
                       <div className="bg-black w-8 h-8 rounded-full flex items-center justify-center text-white">
                         {testimonial.author[0]}
                       </div>
-                      <div className="gap-2">
-                        <h4 className="text-white text-lg text-left font-medium my-0">
+                      <div className="flex flex-col items-start">
+                        <h4 className="text-white text-lg font-medium my-0">
                           {testimonial.author}
                         </h4>
-                        <p className="text-gray-400 text-sm">
+                        <p className="text-sky-400/75 text-sm">
                           {testimonial.role}
                         </p>
                       </div>
@@ -91,8 +87,8 @@ const TestimonialCarousel = () => {
           </CarouselContent>
 
           <div className="mt-12 flex gap-2 z-50 items-center justify-center">
-            <CarouselPrevious className="relative flex items-center justify-center left-0 text-white border-white hover:bg-gray-800" />
-            <CarouselNext className="relative flex items-center justify-center right-0 text-white border-white hover:bg-gray-800" />
+            <CarouselPrevious className="relative flex items-center justify-center left-0 ring-2 ring-white text-white hover:bg-gray-800" />
+            <CarouselNext className="relative flex items-center justify-center right-0 ring-2 ring-white text-white hover:bg-gray-800" />
           </div>
         </Carousel>
       </div>
