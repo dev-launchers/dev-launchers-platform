@@ -2,7 +2,7 @@ export const styles = {
   main: 'relative min-h-screen bg-black text-white flex flex-col gap-y-16 px-4 pt-20 md:px-6 py-12',
   section: {
     button:
-      'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:border-purple-300 hover:border-4',
+      'bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-300 hover:text-black hover:font-semibold hover:bg-purple-400 hover:border-purple-300',
     buttonContainer: 'flex justify-center py-6',
     cardsContainer:
       'flex flex-wrap justify-items-center justify-center my-4 pt-16 gap-8',
