@@ -24,7 +24,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide m-0 pb-4 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide m-0 pb-4 text-white">
               Choose Your Journey
             </h2>
             <p className="text-lg text-center max-w-4xl pb-10 text-gray-500 font-normal">
@@ -72,7 +72,7 @@ export default function Collaborate() {
 
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Create your Profile
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -93,7 +93,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Learn with Resources
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -114,7 +114,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Dream with IdeaSpace
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -134,7 +134,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Join with Dev Recruit
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
