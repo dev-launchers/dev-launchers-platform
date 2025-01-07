@@ -314,7 +314,7 @@ const Navigation = () => {
           <a className={styles.navItem}>Resources</a>
         </Link>
         <Link href="/support-us">
-          <a className={styles.navItem}>Donate</a>
+          <a className={styles.navItem}>Support Us</a>
         </Link>
       </div>
       <div className="hidden items-center gap-4 lg:flex">
