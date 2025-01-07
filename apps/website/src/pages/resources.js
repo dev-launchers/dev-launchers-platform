@@ -163,7 +163,7 @@ export default function Resources() {
         <section className="max-w-7xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
             <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
               style={{ fontSize: '4.5rem' }}
             >
               Resources for Growth
@@ -181,7 +181,7 @@ export default function Resources() {
 
         <section className="max-w-7xl  pt-4 pb-10 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Resources by Category
             </h2>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">

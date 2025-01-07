@@ -11,7 +11,7 @@ export default function About() {
         <section className="bg-black py-32 max-w-7xl px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
             <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
               style={{ fontSize: '4.5rem' }}
             >
               Our Mission
@@ -26,7 +26,7 @@ export default function About() {
         </section>
         <section className="max-w-7xl bg-black py-24 px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Our Story
             </h2>
             <p className="text-base text-center max-w-4xl  text-gray-500  font-normal">
@@ -49,7 +49,7 @@ export default function About() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               What We Do
             </h2>
             <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal"></p>
@@ -106,7 +106,7 @@ export default function About() {
 
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Our Values
             </h2>
             <p className="text-lg text-center max-w-4xl pb-10 text-gray-500  font-normal">
@@ -195,7 +195,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
             >
               Partner with Us
             </h2>
@@ -230,7 +230,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center pb-10">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-6xl max-w-4xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
             >
               Our Partners and Sponsors
             </h2>
@@ -291,7 +291,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white"
+              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
             >
               Our Teams
             </h2>
