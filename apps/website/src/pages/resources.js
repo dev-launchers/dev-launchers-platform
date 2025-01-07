@@ -159,7 +159,7 @@ export default function Resources() {
       <Head>
         <title>Resources</title>
       </Head>
-      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white">
+      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-7xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
             <h1

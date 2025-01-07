@@ -8,9 +8,9 @@ export default function SupportUsRoute() {
       <Head>
         <title>Support Us</title>
       </Head>
-      <div>
+      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <SupportUs />
-      </div>
+      </main>
     </>
   );
 }
