@@ -184,7 +184,7 @@ export default function Resources() {
             <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
               Resources by Category
             </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
               Explore a diverse array of resources organized by category to find
               exactly what you need to progress. From coding tools and design
               software to advanced tutorials, our categories are designed to
@@ -194,7 +194,7 @@ export default function Resources() {
           <div className="flex flex-col justify-center items-center py-4">
             <Tabs defaultValue="dev" className="w-full">
               <TabsList
-                className="flex flex-row justify-start
+                className="flex flex-row justify-around
                   py-8 px-4  gap-8 bg-gray-900"
               >
                 <TabsTrigger
@@ -221,13 +221,13 @@ export default function Resources() {
               </TabsList>
               <TabsContent value="dev">
                 <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
                     Development
                   </h3>
                   <ul className="text-base text-left text-gray-500 max-w-4xl p-0 font-normal">
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://docs.devlaunchers.org/dl-docs/development/development-at-dev-launchers"
                       >
                         Dev Launchers Development Docs
@@ -239,7 +239,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://github.com/dev-launchers/dev-launchers-platform"
                       >
                         Dev Launchers Github Repository
@@ -251,7 +251,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://code.visualstudio.com"
                       >
                         VS Code
@@ -264,7 +264,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://tailwindcss.com/docs/installation"
                       >
                         Tailwind CSS Docs
@@ -279,13 +279,13 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="design">
                 <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
                     Design
                   </h3>
                   <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://docs.devlaunchers.org/dl-docs/design/design-at-dev-launchers"
                       >
                         Dev Launchers Design Docs
@@ -298,7 +298,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.figma.com"
                       >
                         Figma
@@ -311,7 +311,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://atomicdesign.bradfrost.com"
                       >
                         Atomic Design by Brad Frost
@@ -324,7 +324,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11483-2356&t=IiSxzdTKtxwEua46-1"
                       >
                         Dev Launchers Universal Design System
@@ -340,13 +340,13 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="research">
                 <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
                     Research
                   </h3>
                   <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://docs.devlaunchers.org/dl-docs/research/research-at-dev-launchers"
                       >
                         Dev Launchers Research Docs
@@ -358,7 +358,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.nngroup.com/topic/research-methods/"
                       >
                         Nielsen Norman Group Research Methods
@@ -371,7 +371,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.userinterviews.com/ux-research-field-guide-chapter/user-interviews"
                       >
                         The UX Research Field Guide
@@ -383,7 +383,7 @@ export default function Resources() {
                     </li>
                     <li class="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.hotjar.com"
                       >
                         Hotjar
@@ -400,13 +400,13 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="pm">
                 <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
                     Project Management
                   </h3>
                   <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://docs.devlaunchers.org/dl-docs/product-management/product-management-at-dev-launchers"
                       >
                         Dev Launchers Project Management Docs
@@ -419,7 +419,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects"
                       >
                         Github Projects
@@ -431,7 +431,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.atlassian.com/work-management/project-management/"
                       >
                         Project Management Guide by Atlassian
@@ -443,7 +443,7 @@ export default function Resources() {
                     </li>
                     <li className="pb-2 ">
                       <a
-                        className="text-white font-semibold underline underline-offset-4"
+                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
                         href="https://www.pmi.org/insights"
                       >
                         Project Management Templates and Insights
@@ -463,10 +463,10 @@ export default function Resources() {
 
         <section className="max-w-7xl  py-24  md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Learning and Games
             </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
               Learn Code and Design using these games to build conceptual
               learning to prepare for creating software projects and
               applications
@@ -514,10 +514,10 @@ export default function Resources() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Create with Templates
             </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
               Ready to test your skills? These templates are great ways to get
               started and reinforce your learning
             </p>
@@ -564,10 +564,10 @@ export default function Resources() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 p-0 text-white">
+            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
               Create and Collaborate
             </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
               Join us in real cross-functional teams to apply your skills to
               real world applications
             </p>
