@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const GoBack = styled.button`
   cursor: pointer;
@@ -7,12 +7,12 @@ export const GoBack = styled.button`
   justify-content: space-evenly;
 
   float: left;
-  margin-top: -5.5rem;
-  margin-left: 8rem;
+  margin-top: -3.5rem;
+  margin-left: 2.1rem;
 
   width: 82px;
   height: 40px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   border: 0 none;

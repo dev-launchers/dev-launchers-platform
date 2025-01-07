@@ -50,7 +50,7 @@ export const useFetchIdea = (ideaId, setComments) => {
           let cleanList = cleanDataList(commentResponse);
           cleanList.forEach((element) => {
             element.user = cleanData(element.user?.data);
-            element.user.profile = cleanData(element.user?.profile.data);
+            element.user.profile = cleanData(element.user?.profile?.data);
           });
           setComments(cleanList);
         }
