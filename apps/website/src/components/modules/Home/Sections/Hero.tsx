@@ -4,7 +4,7 @@ import { styles } from '../styles';
 import { sections } from './sections';
 
 const HeroSection = () => (
-  <Section className={styles.section.withBackground01}>
+  <Section className={styles.section.container}>
     <div className={styles.section.headerHero}>
       <h1
         className={styles.section.headingHero.className}
