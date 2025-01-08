@@ -3,7 +3,7 @@ import Typography from './Typography';
 import '@devlaunchers/tailwind/tailwind.css';
 
 const meta: Meta<typeof Typography> = {
-  title: 'Components/Typography',
+  title: 'components/atoms/Typography',
   component: Typography,
   parameters: {
     docs: {
@@ -73,7 +73,7 @@ const meta: Meta<typeof Typography> = {
       ],
       table: { defaultValue: { summary: 'p' } },
     },
-    text: {
+    children: {
       control: 'text',
       description: 'Text to be rendered inside semantic HTML tags.',
       table: {
@@ -186,7 +186,7 @@ type Story = StoryObj<typeof Typography>;
 export const Default: Story = {
   args: {
     as: 'p',
-    text: 'Dev Launchers',
+    children: 'Welcome to Dev Launchers Platform',
     variant: 'secondary',
     leading: 'normal',
     textCase: 'normal',

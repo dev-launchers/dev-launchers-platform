@@ -1,14 +1,15 @@
 // Typography interface
 
-export interface TypographyProps<
-  T extends keyof React.JSX.IntrinsicElements = 'p'
-> {
+export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Determines the semantic HTML tag.
    * Example: 'h1', 'p', 'span', etc.
    */
-  as?: T;
+  as?: React.ElementType;
 
+  /**
+   * Text to be rendered inside the component.
+   */
   children?: React.ReactNode;
 
   /**
@@ -66,7 +67,12 @@ export interface TypographyProps<
   textDecoration?: 'underline' | 'lineThrough' | 'noUnderline';
 
   /**
-   * Text to be rendered inside the component.
+   * Additional Tailwind or custom class names.
    */
-  text?: string;
+  className?: string;
+
+  /**
+   * Inline styles if needed.
+   */
+  style?: React.CSSProperties;
 }
