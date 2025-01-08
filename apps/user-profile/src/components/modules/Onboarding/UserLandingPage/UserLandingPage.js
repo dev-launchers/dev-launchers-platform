@@ -252,17 +252,26 @@ export default function UserLandingPage() {
           </div>
         </div>
         <form className="flex flex-col">
-          <p className="text-sm font-normal text-black">
-            <p className="text-sm font-bold text-red-500">*</p> Indicates a
-            required field
-          </p>
+          <div className="flex flex-row">
+            <p className="text-sm font-bold text-red-500">*</p>
+            <p className="text-sm font-normal text-black">
+              {' '}
+              Indicates a required field
+            </p>
+          </div>
           <div name="myForm">
-            <label
-              class="text-grayscale-900 text-base font-bold"
-              for="First Name"
-            >
-              First Name *
-            </label>
+            <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                for="First Name"
+              >
+                First Name
+              </label>
+              <p className="text-grayscale-900 text-base font-bold text-red-500">
+                {' '}
+                *
+              </p>
+            </div>
             <input
               class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
               id="First Name"
@@ -275,12 +284,18 @@ export default function UserLandingPage() {
               }
               required
             ></input>
-            <label
-              class="text-grayscale-900 text-base font-bold"
-              for="Last Name"
-            >
-              Last Name *
-            </label>
+            <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                for="Last Name"
+              >
+                Last Name
+              </label>
+              <p className="text-grayscale-900 text-base font-bold text-red-500">
+                {' '}
+                *
+              </p>
+            </div>
             <input
               class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
               id="Last Name"
