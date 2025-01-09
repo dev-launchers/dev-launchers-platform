@@ -115,10 +115,17 @@ function EditIdea({ isEditOpen }) {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
+
+    // Set a default or valid status value if it's empty
+    if (!values['status'] || values['status'].trim() === '') {
+      values['status'] = 'workshopping'; // Assign a default status value, if necessary
+    }
+
     setSending(true);
 
     try {
-      const data = cleanData(await agent.Ideas.put(ideaId, values));
+      const payload = { data: values };
+      const data = cleanData(await agent.Ideas.put(ideaId, payload));
 
       if (data.ideaName) {
         setunsavedChanges(false);
