@@ -229,13 +229,15 @@ export default function UserLandingPage() {
           </p>
           <div>
             {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-              <UploadedProfilePicture
+              // <UploadedProfilePicture
+              <img
+                className="w-32 h-32 rounded-full"
                 src={
                   uploadedProfilePicture || userData?.profile?.profilePictureUrl
                 }
               />
             ) : (
-              <UploadProfilePicture width={120} height={120} />
+              <img className="w-32 h-32 rounded-full" />
             )}
             <div className="relative right-[-10] bottom-5">
               <label htmlFor="file-upload" className="cursor-pointer">
