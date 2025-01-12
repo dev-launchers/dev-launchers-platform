@@ -2,6 +2,7 @@ import React from 'react';
 import Vector from '../../../images/Vector.svg';
 import { GoBack } from './StyledBackButton';
 import { useRouter } from 'next/router';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 const BackButton = ({ buttonType, clickHandler, backRoute }) => {
   const router = useRouter();
@@ -36,10 +37,10 @@ const BackButton = ({ buttonType, clickHandler, backRoute }) => {
     );
   } else {
     return (
-      <GoBack onClick={goBack}>
+      <Button onClick={goBack}>
         <img alt="backButton" src={Vector} />
         Back
-      </GoBack>
+      </Button>
     );
   }
 };

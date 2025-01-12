@@ -13,6 +13,7 @@ import {
   TimeContainer,
   Title,
 } from '../RoleCard/styledRoleCard';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 const SuggestedRole = () => {
   const [showModal, setShowModal] = useState(false);

@@ -16,6 +16,7 @@ import {
 import { agent } from '@devlaunchers/utility';
 import { result } from 'lodash';
 import { Opportunity } from '@devlaunchers/models';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 let oppProject = {
   projectId: 'projectId',
@@ -74,6 +75,7 @@ const RoleCard = ({ role, key22, opportunities }: Props) => {
         <ButtonsContainer onClick={handleOpenModal}>
           More Details
         </ButtonsContainer>
+        <Button onClick={handleOpenModal}>More Details</Button>
         <Modal
           modalIsOpen={showModal}
           closeModal={handleCloseModal}

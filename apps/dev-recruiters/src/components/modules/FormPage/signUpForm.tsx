@@ -14,6 +14,7 @@ import {
   CloseIcon,
 } from '../DetailedPage/PositionCard/StyledPositionCard';
 import { GradientLine, SubmitButton } from './styledSignupForm';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 interface FormFields extends Omit<NewApplicant, 'level'> {
   level: NewApplicant['level'] | '';
@@ -352,6 +353,15 @@ export default function SignUpForm({
                   >
                     Submit Application
                   </SubmitButton>
+
+                  <Button
+                    as="a"
+                    onClick={
+                      formik.handleSubmit as unknown as MouseEventHandler<HTMLAnchorElement>
+                    }
+                  >
+                    Submit Application
+                  </Button>
                 </atoms.Box>
               </atoms.Box>
               <FormErrorScroller focusAfterScroll />

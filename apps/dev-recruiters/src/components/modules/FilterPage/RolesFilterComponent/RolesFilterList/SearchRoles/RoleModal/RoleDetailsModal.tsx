@@ -16,6 +16,7 @@ import Modal from '../../../../../DetailedPage/PositionPopupModal';
 import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
 import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   projectSlug: string;
@@ -146,6 +147,7 @@ function ModalBottomSection({
 
       <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
         <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
+        <Button onClick={handleOpenApplyModal}>Apply</Button>
       </ButtonsSection>
 
       <Modal
