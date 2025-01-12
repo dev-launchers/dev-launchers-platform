@@ -4,15 +4,12 @@ import { atoms } from '@devlaunchers/components/src/components';
 export const IdeaCardButton = styled((props) => (
   <atoms.Button buttonSize="standard" buttonType="alternative" {...props} />
 ))`
-  margin: 0rem 2rem 1.5rem;
+  margin: 0rem 1.25rem 0rem;
 `;
 
 export const ImgButton = styled.button`
-  cursor: pointer;
-  border: 0 none;
-  padding: 0;
-  margin-top: -3rem;
-  width: 22.5rem;
+  padding: 0rem 0rem 1rem;
+  width: 100%;
 `;
 
 export const StatuBox = styled.div`
@@ -38,4 +35,11 @@ export const StatuBox = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
+`;
+
+export const ActivityDetails = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
 `;

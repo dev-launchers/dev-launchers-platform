@@ -4,6 +4,8 @@ import { Card } from '../../../../common/Card';
 export const StyledCard = styled(Card)`
   display: flex;
   flex-direction: column;
+  min-height: 219px;
+  background: #fff;
 `;
 
 export const TopView = styled.div`
@@ -76,5 +78,5 @@ export const Button = styled(Card)`
 `;
 
 export const StyledText = styled.h6`
-  margin: 4px; 
+  margin: 4px;
 `;

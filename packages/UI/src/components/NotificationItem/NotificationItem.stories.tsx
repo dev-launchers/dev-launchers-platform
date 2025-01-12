@@ -15,9 +15,8 @@ export const Read: StoryObj<typeof NotificationItem> = {
     name: 'Arthur Wells',
     target: 'DevSocials',
     targetLink: 'https://devlaunchers.org/projects/DL-IdeaSpace',
-    profileLink: 'https://devlaunchers.org/users/me',
     timeStamp: 'P3Y6M4DT12H30M5S',
-    action: 'commented on',
+    action: 'Commented',
     avatar: {
       src: Playground.args?.src as string,
       alt: Playground.args?.alt as string,

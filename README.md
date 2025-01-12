@@ -30,6 +30,17 @@ Visit https://devlaunchers.org/join to join one of our teams!
 
 ---
 
+## Commit & Release
+
+We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
+to format the commit messages.
+
+We've created a command to guide you create conventional commit message all you need to do is run `yarn commit`
+
+The release cadence is every 4 weeks. We will create a PR to merge the master branch into the release branch.
+
+---
+
 ## Monorepo scripts
 
 Some convenience scripts can be run in any folder of this repo and will call their counterparts defined in packages and apps.
@@ -64,17 +75,6 @@ They are based on the excellent [npm-check-updates](https://github.com/raineorsh
 > After running `yarn deps:update`, a `yarn install` is required. To prevent
 > having duplicates in the yarn.lock, you can run `yarn dedupe --check` and `yarn dedupe` to
 > apply deduplication. The duplicate check is enforced in the example github actions.
-
-## Release
-
-We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
-to format the commit messages.
-
-We've created a command to guide you create conventional commit message all you need to do is run `yarn commit`
-
-Once you are ready to create a new release, create a PR to merge master branch to release branch.
-
-.
 
 ---
 
