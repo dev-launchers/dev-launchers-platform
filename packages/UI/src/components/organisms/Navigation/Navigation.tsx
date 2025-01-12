@@ -1,11 +1,28 @@
-import React from 'react';
-import Link from 'next/link';
 import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
+import Link from 'next/link';
+import React from 'react';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-
+type ProfileDropdownProps = {
+  userData: {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    bio: string;
+    profilePictureUrl: string;
+    socialMediaLinks: never[];
+    discord: {
+      id: number;
+      avatar: string;
+      username: string;
+      discriminator: string;
+    };
+    interests: never[];
+  };
+};
 // Centralized styles
 const styles = {
   // Navigation styles
@@ -38,7 +55,7 @@ const styles = {
   // Mobile menu styles
   mobileMenu:
     'fixed inset-y-0 right-0 z-50 w-64 transform bg-[#1C1C1C] p-6 shadow-lg transition-transform duration-300 ease-in-out lg:hidden',
-  mobileMenuItem: 'block py-2 text-gray-300 hover:text-white',
+  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white',
 
   // Profile styles
   profileContainer: 'flex items-center gap-2 text-white',
@@ -95,13 +112,16 @@ const projectItems = [
   },
 ];
 
-const ProfileDropdown = ({ userData }) => {
+const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -148,16 +168,16 @@ const ProfileDropdown = ({ userData }) => {
           </div>
           <div className="mt-2 border-t border-gray-700">
             <Link href="/users/me">
-              <a className={styles.profileMenuItem}>
+              <p className={styles.profileMenuItem}>
                 <User className={styles.icon} />
                 <span>Profile</span>
-              </a>
+              </p>
             </Link>
             <Link href="ideaspace/dashboard">
-              <a className={styles.profileMenuItem}>
+              <p className={styles.profileMenuItem}>
                 <Lightbulb className={styles.icon} />
                 <span>Idea Dashboard</span>
-              </a>
+              </p>
             </Link>
             <button
               onClick={Logout}
@@ -210,12 +230,12 @@ const DropdownMenu = ({ trigger, items = projectItems }) => {
           <div className={styles.dropdownGrid}>
             {items.map((item, index) => (
               <Link key={index} href={item.href}>
-                <a className={styles.dropdownItem}>
+                <p className={styles.dropdownItem}>
                   <h3 className="mb-2 text-xl font-semibold text-white">
                     {item.title}
                   </h3>
                   <p className="text-sm text-gray-300">{item.description}</p>
-                </a>
+                </p>
               </Link>
             ))}
           </div>
@@ -260,7 +280,7 @@ const MobileDropdown = ({ title, items }) => {
       <div className={`mt-2 space-y-2 pl-4 ${isOpen ? 'block' : 'hidden'}`}>
         {items.map((item, index) => (
           <Link key={index} href={item.href}>
-            <a className={styles.mobileMenuItem}>{item.label}</a>
+            <p className={styles.mobileMenuItem}>{item.label}</p>
           </Link>
         ))}
       </div>
@@ -276,31 +296,45 @@ const Navigation = () => {
     <nav className={styles.nav}>
       <div className={styles.logoContainer}>
         <Link href="/">
-          <a className={styles.logoLink}>
+          <p className={styles.logoLink}>
             <img
               src={logo}
               alt="Dev Launchers Logo"
               className={styles.logoImage}
             />
             <span className={styles.logoText}>Dev Launchers</span>
-          </a>
+          </p>
         </Link>
       </div>
 
       <div className={styles.desktopNav}>
         <Link href="/about">
-          <a className={styles.navItem}>About Us</a>
+          <p className={styles.navItem}>About Us</p>
         </Link>
-        <Link href="/collaborate">
-          <a className={styles.navItem}>Collaborate</a>
-        </Link>
+        <DropdownMenu
+          trigger="Collaborate"
+          items={[
+            {
+              title: 'Join Team',
+              description:
+                'Join a team to collaborate, share ideas, and work towards shared goals. Build connections, foster creativity, and make an impact together!',
+              href: '/join',
+            },
+            {
+              title: 'IdeaSpace',
+              description:
+                'A hub where we can make ideas into reality. Our platform allows Dev Launchers users to vocalize their ideas then build them into a project.',
+              href: '/ideaspace',
+            },
+          ]}
+        />
         <DropdownMenu trigger="Our Projects" items={projectItems} />
 
         <Link href="/resources">
-          <a className={styles.navItem}>Resources</a>
+          <p className={styles.navItem}>Resources</p>
         </Link>
         <Link href="/support-us">
-          <a className={styles.navItem}>Support Us</a>
+          <p className={styles.navItem}>Support Us</p>
         </Link>
       </div>
       <div className="hidden items-center gap-4 lg:flex">
@@ -331,7 +365,7 @@ const Navigation = () => {
       </div>
 
       <div className={styles.mobileToggle + ' flex gap-6'}>
-        <NotificationPopover />
+        {isAuthenticated && <NotificationPopover />}
         <button
           className={styles.mobileToggle}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -355,6 +389,16 @@ const Navigation = () => {
           </button>
         </div>
         <div className="mt-8 flex flex-col gap-4">
+          <Link href="/about">
+            <p className={styles.mobileMenuItem}>About Us</p>
+          </Link>
+          <MobileDropdown
+            title="Collaborate"
+            items={[
+              { label: 'Join Team', href: '/join' },
+              { label: 'IdeaSpace', href: '/ideaspace' },
+            ]}
+          />
           <MobileDropdown
             title="Our Projects"
             items={[
@@ -366,21 +410,11 @@ const Navigation = () => {
               { label: 'AI Ally', href: '/projects/ai-ally' },
             ]}
           />
-          <MobileDropdown
-            title="Collaborate"
-            items={[
-              { label: 'Join Team', href: '/join' },
-              { label: 'IdeaSpace', href: '/ideaspace' },
-            ]}
-          />
-          <Link href="/about">
-            <a className={styles.mobileMenuItem}>About Us</a>
-          </Link>
           <Link href="/resources">
-            <a className={styles.mobileMenuItem}>Resources</a>
+            <p className={styles.mobileMenuItem}>Resources</p>
           </Link>
-          <Link href="/donate">
-            <a className={styles.mobileMenuItem}>Donate</a>
+          <Link href="/support-us">
+            <p className={styles.mobileMenuItem}>Support Us</p>
           </Link>
 
           {!isAuthenticated ? (
@@ -413,16 +447,16 @@ const Navigation = () => {
                 <span>{userData.name}</span>
               </div>
               <Link href="/users/me">
-                <a className={styles.profileMenuItem}>
+                <p className={styles.profileMenuItem}>
                   <User className={styles.icon} />
                   <span>Profile</span>
-                </a>
+                </p>
               </Link>
               <Link href="/ideaspace/dashboard">
-                <a className={styles.profileMenuItem}>
+                <p className={styles.profileMenuItem}>
                   <Lightbulb className={styles.icon} />
                   <span>Idea Dashboard</span>
-                </a>
+                </p>
               </Link>
               <button
                 onClick={Logout}
