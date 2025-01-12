@@ -1,6 +1,6 @@
 import RainbowBar from '../../../../../common/RainbowBar';
-import CloseIcon from './../../../../../common/Icons/SVG/FilledCross';
-import CheckMark from './../../../../../common/Icons/SVG/FilledCharkmark';
+import CloseIcon from '../../../../../common/icons/FilledCross';
+import CheckMark from '../../../../../common/icons/FilledCharkmark';
 
 /**
  *

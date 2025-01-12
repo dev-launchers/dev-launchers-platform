@@ -1,6 +1,6 @@
 import cog from './../../../images/icons/outlined-cog.svg';
 import { Typography } from '@devlaunchers/components/components/atoms';
-import { OutlinedCog } from './../Icons/';
+import { OutlinedCog } from '../icons';
 function EditButton({ onEdit }) {
   return (
     <div className="flex gap-2 hover:cursor-pointer" onClick={onEdit}>

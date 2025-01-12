@@ -7,7 +7,7 @@ import {
   OutlinedNote,
   OutlinedWrench,
   OutlinedShapes,
-} from './../../../../common/Icons';
+} from '../../../../common/icons';
 
 function SideBar() {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
