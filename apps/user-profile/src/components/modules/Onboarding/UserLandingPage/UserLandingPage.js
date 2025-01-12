@@ -342,7 +342,7 @@ export default function UserLandingPage() {
             /> */}
           </div>
           <FormFooter>
-            <CheckboxField
+            {/* <CheckboxField
               customLabel={
                 <Typography type="pSmall">
                   I have read and agree to the <a>Terms and Conditions</a>
@@ -351,7 +351,21 @@ export default function UserLandingPage() {
               onChange={onTermsAndConditionChange}
               checked={person.termsAndConditions}
               required={true}
-            />
+            /> */}
+            <div className="flex flex-row">
+              <div className="flex items-center">
+                <input
+                  id="agree-checkbox"
+                  type="checkbox"
+                  value=""
+                  className="w-6 h-6 text-purple-700 accent-purple-700 bg-white border-purple-700 rounded"
+                ></input>
+                <label for="agree-checkbox" className="text-sm text-black">
+                  I have read and agree to the <a>Terms and Conditions</a>
+                </label>
+              </div>
+              <p className="text-base text-red-500"> *</p>
+            </div>
             <ButtonContainer className="flex pb-16">
               <Button
                 buttonType="alternative"
