@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import profileHeaderBackground from './../../../../images/profile/profile-header-bg.jpg';
-import ProfileImage from './../../../common/ProfileImage';
+import ProfilePicture from './../../../common/Images/ProfilePicture';
 import EditButton from './../../../common/EditButton';
 import Headers from './Headers';
 import MetaInfo from './MetaInfo';
@@ -38,7 +38,7 @@ function ProfileHeader() {
         {/* left side */}
         <div className="flex flex-col w-full pt-11 gap-6">
           <div className="absolute -top-24">
-            <ProfileImage imgSrc={userData?.profilePictureUrl} />
+            <ProfilePicture src={userData?.profilePictureUrl} />
           </div>
           <Headers
             title={userData?.name}

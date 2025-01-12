@@ -1,7 +1,7 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
 import { useSidebarDataContext } from './../../../../context/SidebarDataContext';
 import { sidebarActions } from './../../../../state/actions';
-import ProfileImage from '../../../common/ProfileImage';
+import ProfilePicture from './../../../common/Images/ProfilePicture';
 
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import UserInfo from './UserInfo';
@@ -80,10 +80,10 @@ function SideBar() {
   return (
     <div className="flex flex-col gap-7 w-72 text-white border-r-2 bg-grayscale-900 border-grayscale-900 shadow-tra h-full border-solid shadow-sm bg-zinc-900 max-w-[288px]">
       <div className="flex gap-4 w-full items-center px-8 py-6 border-b border-[#474747]">
-        <ProfileImage
+        <ProfilePicture
           imgSrc={userData.profilePictureUrl}
           alt="Profile avatar"
-          imageClass="w-10 h-10 shadow-md shadow-grayscale-600 rounded-full overflow-hidden"
+          className="w-10 h-10 shadow-md shadow-grayscale-600 rounded-full overflow-hidden"
         />
         <UserInfo name={userData.name} />
       </div>
