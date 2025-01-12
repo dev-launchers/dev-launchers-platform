@@ -7,6 +7,9 @@ export { default as OutlinedShapes } from './SVG/OutlinedShapes';
 
 export { default as FilledRocketLogo } from './SVG/FilledRocketLogo';
 export { default as FilledCross } from './SVG/FilledCross';
+export { default as FilledCamera } from './SVG/FilledCamera';
+export { default as FilledChevron } from './SVG/FilledChevron';
+export { default as FilledLogo } from './SVG/FilledLogo';
 
 export { default as OutlinedOverview } from './SVG/OutlinedOverview';
 export { default as OutlinedProjects } from './SVG/OutlinedProjects';
