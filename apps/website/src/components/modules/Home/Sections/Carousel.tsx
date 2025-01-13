@@ -42,7 +42,7 @@ const TestimonialCarousel = () => {
       <div className="hidden sm:block absolute right-0 top-0 w-48 h-full bg-gradient-to-l from-black via-black to-transparent z-10" />
 
       {/* Main carousel container */}
-      <div className="bg-black px-8 pt-12 relative select-none">
+      <div className="bg-black px-2 pt-12 relative select-none">
         <Carousel
           opts={{
             align: 'center',
@@ -61,10 +61,10 @@ const TestimonialCarousel = () => {
                     index % 2 === 1
                       ? 'bg-teal-900 border-teal-500'
                       : 'bg-orange-900 border-orange-500'
-                  } rounded-3xl p-12 h-full border-4 flex align-center items-center justify-center`}
+                  } rounded-3xl px-8 py-4 lg:pb-12 lg:pt-16 lg-px-10 h-full border-4 flex align-center items-center justify-center`}
                 >
                   <div className="flex flex-col items-center justify-center align-center  space-y-8">
-                    <p className="align-center  text-sky-400/75 text-base text-center flex-grow font-normal leading-relaxed">
+                    <p className="align-center opacity-70  text-white text-base text-center flex-grow font-normal leading-relaxed">
                       {testimonial.content}
                     </p>
                     <div className="flex items-center justify-center gap-3">
