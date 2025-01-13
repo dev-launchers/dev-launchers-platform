@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
@@ -6,12 +7,7 @@ import { sections } from './sections';
 const HeroSection = () => (
   <Section className={styles.section.container}>
     <div className={styles.section.headerHero}>
-      <h1
-        className={styles.section.headingHero.className}
-        style={styles.section.headingHero.style}
-      >
-        {sections.hero.title}
-      </h1>
+      <h1 className={styles.section.headingHero}>{sections.hero.title}</h1>
       <p className={styles.section.subHeading}>{sections.hero.description}</p>
     </div>
     <div className={styles.section.buttonContainer}>

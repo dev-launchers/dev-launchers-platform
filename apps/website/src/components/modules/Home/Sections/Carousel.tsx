@@ -87,8 +87,8 @@ const TestimonialCarousel = () => {
           </CarouselContent>
 
           <div className="mt-12 flex gap-2 z-50 items-center justify-center">
-            <CarouselPrevious className="relative flex items-center justify-center left-0 ring-2 ring-white text-white hover:bg-gray-800" />
-            <CarouselNext className="relative flex items-center justify-center right-0 ring-2 ring-white text-white hover:bg-gray-800" />
+            <CarouselPrevious />
+            <CarouselNext />
           </div>
         </Carousel>
       </div>
