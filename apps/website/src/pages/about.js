@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Donate } from '../../../website/src/components/modules/Home/Sections';
 import Head from 'next/head';
 
@@ -10,10 +11,7 @@ export default function About() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="bg-black py-32 max-w-7xl px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
-            <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-              style={{ fontSize: '4.5rem' }}
-            >
+            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
               Our Mission
             </h1>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -26,10 +24,10 @@ export default function About() {
         </section>
         <section className="max-w-7xl bg-black py-24 px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
               Our Story
             </h2>
-            <p className="text-base text-center max-w-4xl  text-gray-500  font-normal">
+            <p className="text-base text-center max-w-4xl pt-10 text-gray-500  font-normal">
               Founded in 2019 in Austin, Texas, Dev Launchers began as a
               Saturday program teaching coding and game development to local
               teenagers. What started as a small group of passionate volunteers
@@ -49,7 +47,7 @@ export default function About() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               What We Do
             </h2>
             <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal"></p>
@@ -106,7 +104,7 @@ export default function About() {
 
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Our Values
             </h2>
             <p className="text-lg text-center max-w-4xl pb-10 text-gray-500  font-normal">
@@ -195,7 +193,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Partner with Us
             </h2>
@@ -230,7 +228,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center pb-10">
             <h2
               id="partner"
-              className="text-6xl max-w-4xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Our Partners and Sponsors
             </h2>
@@ -291,7 +289,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Our Teams
             </h2>

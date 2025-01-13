@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
 import PageBody from '../../common/PageBody';
@@ -11,10 +12,7 @@ export default function SupportUs() {
     <div>
       <section className="max-w-7xl bg-black py-32 px-4 md:px-8 ">
         <div className="flex flex-col justify-center items-center">
-          <h1
-            className="max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-            style={{ fontSize: '4.5rem' }}
-          >
+          <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
             Fuel the Future
           </h1>
           <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -27,7 +25,7 @@ export default function SupportUs() {
       </section>
       <section className="max-w-full bg-black py-24 px-4 md:px-8">
         <div className="flex flex-col justify-center items-center">
-          <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+          <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
             Support Our Mission
           </h2>
           <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -36,7 +34,7 @@ export default function SupportUs() {
             many lives as we possibly can, and need your help to make that
             happen. Any amount helps!
           </p>
-          <div className="flex pt-8">
+          <div className="flex justify-center pt-8">
             <a
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E6TSNXLFG3UTY&source=url"
@@ -50,7 +48,7 @@ export default function SupportUs() {
         <div className="flex flex-col justify-center items-center">
           <h2
             id="partner"
-            className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+            className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
           >
             Partner with Us
           </h2>
@@ -64,7 +62,7 @@ export default function SupportUs() {
             individual with a passion for technology and education, your support
             is crucial in building a more inclusive and diverse tech community.
           </p>
-          <div className="flex flex-wrap gap-8 pt-8">
+          <div className="flex flex-wrap justify-center gap-8 pt-8">
             <a
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
@@ -82,7 +80,7 @@ export default function SupportUs() {
       </section>
       <section className="max-w-full bg-black py-24 px-4 md:px-8">
         <div className="flex flex-col justify-center items-center">
-          <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+          <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
             Become a Mentor
           </h2>
           <p className="text-lg text-center max-w-4xl  text-gray-500  font-normal">
@@ -98,7 +96,7 @@ export default function SupportUs() {
             space where every interaction is an opportunity for mutual learning
             and every challenge a chance to advance together.
           </p>
-          <div className="flex flex-wrap gap-8 pt-8">
+          <div className="flex flex-wrap justify-center gap-8 pt-8">
             <a
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"

@@ -24,10 +24,8 @@ export const styles = {
       'flex flex-col items-center justify-center w-full max-w-6xl text-center pt-6 pb-4',
     heading:
       'text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-4',
-    headingHero: {
-      className:
-        'font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4',
-    },
+    headingHero:
+      'font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4',
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     logoContainer:
