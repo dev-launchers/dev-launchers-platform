@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import { useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
@@ -162,10 +163,7 @@ export default function Resources() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-7xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-              style={{ fontSize: '4.5rem' }}
-            >
+            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
               Resources for Growth
             </h1>
             <p className="text-xl text-center max-w-4xl  text-gray-500  font-normal">
@@ -181,7 +179,7 @@ export default function Resources() {
 
         <section className="max-w-7xl  pt-4 pb-10 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Resources by Category
             </h2>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -191,7 +189,7 @@ export default function Resources() {
               cater to learners at all levels.
             </p>
           </div>
-          <div className="flex flex-col justify-center items-center py-4">
+          <div className="flex flex-wrap flex-col justify-center items-center py-4">
             <Tabs defaultValue="dev" className="w-full">
               <TabsList
                 className="flex flex-row justify-around
@@ -463,7 +461,7 @@ export default function Resources() {
 
         <section className="max-w-7xl  py-24  md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Learning and Games
             </h2>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -514,7 +512,7 @@ export default function Resources() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Create with Templates
             </h2>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -564,7 +562,7 @@ export default function Resources() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Create and Collaborate
             </h2>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">

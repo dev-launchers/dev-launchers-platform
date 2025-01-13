@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
 
 export default function Collaborate() {
@@ -9,10 +10,7 @@ export default function Collaborate() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-full bg-black py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-              style={{ fontSize: '4.5rem' }}
-            >
+            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
               Collaborate with Us
             </h1>
             <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
@@ -24,7 +22,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Choose Your Journey
             </h2>
             <p className="text-lg text-center max-w-4xl pb-10 text-gray-500 font-normal">
@@ -72,7 +70,7 @@ export default function Collaborate() {
 
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Create your Profile
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -93,7 +91,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Learn with Resources
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -114,7 +112,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Dream with IdeaSpace
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
@@ -134,7 +132,7 @@ export default function Collaborate() {
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Join with Dev Recruit
             </h2>
             <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
