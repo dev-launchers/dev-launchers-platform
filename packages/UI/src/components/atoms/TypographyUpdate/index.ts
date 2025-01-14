@@ -2,8 +2,8 @@
 
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**
-   * Determines the semantic HTML tag.
-   * Example: 'h1', 'p', 'span', etc.
+   * Determines the semantic HTML tags.
+   * Example: 'h1', 'p', etc.
    */
   as?: React.ElementType;
 
@@ -22,13 +22,13 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
    * Size corresponds to predefined styles, e.g., 'h1', 'body-base', etc.
    */
   size?:
-    | 'micro3'
-    | 'micro2'
-    | 'micro_xs'
-    | 'body_sm'
-    | 'body_base'
-    | 'body_lg'
-    | 'body_xl'
+    | 'xs3'
+    | 'xs2'
+    | 'xs'
+    | 'sm'
+    | 'base'
+    | 'lg'
+    | 'xl'
     | 'xl2'
     | 'xl3'
     | 'xl4'
@@ -75,4 +75,9 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
    * Inline styles if needed.
    */
   style?: React.CSSProperties;
+
+  /**
+   * specify text color directly.
+   */
+  textColor?: string;
 }
