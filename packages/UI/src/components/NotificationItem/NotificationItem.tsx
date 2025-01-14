@@ -11,11 +11,11 @@ const compoundSlots = [
       'descriptionStyle',
       'targetStyle',
     ] as const,
-    className: 'font-nunito-sans text-sm md:text-base leading-normal',
+    className: 'font-nunito-sans text-sm leading-normal',
   },
   {
     slots: ['targetStyle', 'usernameStyle'] as const,
-    className: 'font-bold',
+    className: 'font-semibold',
   },
   {
     slots: ['timeStampStyle', 'descriptionStyle'] as const,
@@ -26,30 +26,24 @@ const compoundSlots = [
 const notificationStyles = tv({
   slots: {
     wrapper:
-      'flex items-center gap-4 py-4 pl-2 pr-4 hover:bg-grayscale-100 md:p-8',
-    avatarContainer: 'hidden md:inline-flex',
-    detailsContainer:
-      'flex flex-shrink-0 flex-grow basis-0 flex-col items-start gap-2 md:flex-row md:flex-wrap md:content-start',
-    contentContainer:
-      'md:flex md:flex-shrink-0 md:flex-grow md:basis-0 md:flex-col md:items-start md:gap-1',
-    headerStyle: 'flex items-start gap-1 self-stretch',
-    usernameStyle: '',
-    actionStyle: 'leading-normal',
-    targetStyle: '',
-    descriptionStyle: 'line-clamp-2 self-stretch md:order-1',
-    timeStampStyle:
-      'text-right font-nunito-sans text-sm md:text-base leading-6 text-grayscale-400',
-    statusIndicator: 'h-3  w-3 shrink-0 rounded-full',
+      'flex items-center gap-4 p-4 border-b border-gray-800 transition-colors duration-200',
+    avatarContainer: 'flex-shrink-0',
+    detailsContainer: 'flex flex-grow items-start gap-2 min-w-0',
+    contentContainer: 'flex flex-col gap-1 min-w-0',
+    headerStyle: 'flex items-center gap-1 flex-wrap',
+    usernameStyle: 'text-white',
+    actionStyle: 'text-gray-300',
+    targetStyle: 'text-white',
+    descriptionStyle: 'line-clamp-2 text-gray-300',
+    timeStampStyle: 'text-sm text-gray-400',
   },
   variants: {
     status: {
       read: {
-        wrapper: 'text-grayscale-500',
-        statusIndicator: 'invisible',
+        wrapper: 'bg-transparent hover:bg-gray-800',
       },
       unRead: {
-        wrapper: 'text-grayscale-900',
-        statusIndicator: 'bg-alert-notification-o-100-600',
+        wrapper: 'bg-[#52287A]/10 hover:bg-gray-800',
       },
     },
   },
@@ -61,19 +55,10 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   name: NotificationUser['data']['attributes']['username'];
   target: string;
   targetLink: string;
-  /**
-   * TimeStamp in ISO_8601 duration format
-   * @description it starts with P[duration designator, stands for period) followed by number and Y or M or D then T[time designator] followed by number and H or M or S
-   * @example "P3Y6M4DT12H30M5S" represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds".
-   * @see https://en.wikipedia.org/wiki/ISO_8601#Durations
-   */
   timeStamp: string;
   action: NotificationEvent['data']['attributes']['action'];
-
-  avatar: {
-    src: React.ComponentProps<typeof Avatar>['src'];
-    alt: React.ComponentProps<typeof Avatar>['alt'];
-  };
+  avatar: string;
+  className?: string;
 }
 
 function timeSincePublished(publishedAt: string) {
@@ -111,55 +96,44 @@ function NotificationItem({
   targetLink,
   status,
   avatar,
+  className,
 }: NotificationProps) {
-  const {
-    wrapper,
-    statusIndicator,
-    headerStyle,
-    detailsContainer,
-    contentContainer,
-    actionStyle,
-    targetStyle,
-    descriptionStyle,
-    timeStampStyle,
-  } = notificationStyles({ status });
+  const styles = notificationStyles({ status });
 
   return (
-    <li className="list-none !text-xs">
+    <li className="list-none">
       <a
         href={targetLink}
         rel="noreferrer"
         target="_blank"
-        className={wrapper()}
+        className={`${styles.wrapper()} ${className || ''}`}
       >
-        <span className={statusIndicator()}></span>
+        <div className={styles.avatarContainer()}>
+          <Avatar
+            src={avatar}
+            alt={`${name}'s avatar`}
+            className="h-10 w-10 rounded-full text-black"
+          />
+        </div>
 
-        <Avatar {...avatar} />
-
-        <div className={detailsContainer()}>
-          <div className={contentContainer()}>
-            <div className={headerStyle()}>
-              <strong>{name}</strong>
-
-              <span className={actionStyle()}>{actionTexts[action]}</span>
-              <a
-                href={targetLink}
-                rel="noreferrer"
-                target="_blank"
-                className={targetStyle()}
-              >
-                <strong>{target}</strong>
-              </a>
+        <div className={styles.detailsContainer()}>
+          <div className={styles.contentContainer()}>
+            <div className={styles.headerStyle()}>
+              <span className={styles.usernameStyle()}>{name}</span>
+              <span className={styles.actionStyle()}>
+                {actionTexts[action]}
+              </span>
+              <span className={styles.targetStyle()}>{target}</span>
             </div>
-            <p className={descriptionStyle()}>{message}</p>
+            <p className={styles.descriptionStyle()}>{message}</p>
+            <time
+              dateTime={timeStamp}
+              className={styles.timeStampStyle()}
+              aria-label={timeSincePublished(timeStamp)}
+            >
+              {timeSincePublished(timeStamp)}
+            </time>
           </div>
-          <time
-            dateTime={timeStamp}
-            className={timeStampStyle()}
-            aria-label={timeSincePublished(timeStamp)}
-          >
-            {timeSincePublished(timeStamp)}
-          </time>
         </div>
       </a>
     </li>
