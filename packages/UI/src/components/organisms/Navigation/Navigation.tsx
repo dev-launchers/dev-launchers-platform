@@ -315,16 +315,28 @@ const Navigation = () => {
           trigger="Collaborate"
           items={[
             {
+              title: 'Collaborate with Us',
+              description:
+                'Learn about our community and how we can elevate your tech career. Launch into our orbit where your skills create real impact through collaboration.',
+              href: '/collaborate',
+            },
+            {
               title: 'Join Team',
               description:
                 'Join a team to collaborate, share ideas, and work towards shared goals. Build connections, foster creativity, and make an impact together!',
               href: '/join',
             },
             {
-              title: 'IdeaSpace',
+              title: 'Dream with IdeaSpace',
               description:
                 'A hub where we can make ideas into reality. Our platform allows Dev Launchers users to vocalize their ideas then build them into a project.',
               href: '/ideaspace',
+            },
+            {
+              title: 'Partner with Us',
+              description:
+                'Join us in shaping the future of technology by partnering with Dev Launchers. Discover how together we can drive innovation, support education, and build impactful projects.',
+              href: '/support-us#partner',
             },
           ]}
         />
@@ -395,8 +407,10 @@ const Navigation = () => {
           <MobileDropdown
             title="Collaborate"
             items={[
+              { label: 'Collaborate with Us', href: '/collaborate' },
               { label: 'Join Team', href: '/join' },
-              { label: 'IdeaSpace', href: '/ideaspace' },
+              { label: 'Dream with IdeaSpace', href: '/ideaspace' },
+              { label: 'Partner with Us', href: '/support-us#partner' },
             ]}
           />
           <MobileDropdown
