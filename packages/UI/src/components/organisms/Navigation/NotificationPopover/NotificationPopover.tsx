@@ -42,76 +42,83 @@ export default function NotificationPopover() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="relative" aria-label="notification">
-          <span
-            className={`absolute top-0 right-0 bg-red-700 text-white rounded-full aspect-square w-5 text-xs font-bold content-center translate-x-1/2 -translate-y-1/2 ${
-              newNotificationsCount ? '' : 'hidden'
-            }`}
-          >
-            {newNotificationsCount}
-          </span>
-          <BellIcon />
+        <button
+          className="relative text-gray-300 hover:text-white transition-colors duration-200"
+          aria-label="notification"
+        >
+          {newNotificationsCount > 0 && (
+            <span className="absolute top-0 right-0 bg-[#52287A] text-white rounded-full w-5 h-5 text-xs flex items-center justify-center transform translate-x-1/2 -translate-y-1/2">
+              {newNotificationsCount}
+            </span>
+          )}
+          <BellIcon className="h-5 w-5" />
         </button>
       </PopoverTrigger>
       <PopoverContent
-        className="w-[min(100vw,40rem)]  md:w-[min(90vw,40rem)] text-xs md:text-base"
+        className="w-[400px] p-0 border-0 mt-4"
         hasCloseBtn={false}
       >
-        <div>
-          <div className="flex items-center justify-between">
-            <span className="capitalize font-semibold text-base md:text-xl">
-              notification
+        <div className="bg-[#1C1C1C] text-white shadow-xl">
+          <div className="flex items-center justify-between p-4 border-b border-gray-800">
+            <span className="text-xl font-semibold text-white">
+              Notifications
             </span>
-            <button
-              className="text-neptune-600 hover:text-uranus-500"
-              onClick={markAllReadHandle}
-            >
-              Mark all as read
-            </button>
+            {/* {notifications.length > 0 && (
+              <button
+                className="text-gray-300 hover:text-white transition-colors duration-200"
+                onClick={markAllReadHandle}
+              >
+                Mark all as read
+              </button>
+            )} */}
           </div>
-          <ul
-            style={{
-              overflowY: 'auto',
-              height: '25rem',
-              scrollbarWidth: 'thin',
-              scrollbarGutter: 'stable both-edges',
-            }}
-          >
-            {notifications.map((n, i) => {
-              const { readDateTime, createdDateTime } = n.attributes;
-              const { action, entityName, eventUser, content, entityId } =
-                n.attributes.event.data.attributes;
-              const { username, discord_avatar } = eventUser.data.attributes;
-              return (
-                <NotificationItem
-                  key={i}
-                  action={action}
-                  target={entityName}
-                  avatar={discord_avatar}
-                  message={content}
-                  name={username}
-                  status={readDateTime ? 'read' : 'unRead'}
-                  targetLink={'/ideaspace/workshop/' + entityId}
-                  timeStamp={createdDateTime}
+
+          <div className="max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+            {notifications.length > 0 ? (
+              notifications.map((n, i) => {
+                const { readDateTime, createdDateTime } = n.attributes;
+                const { action, entityName, eventUser, content, entityId } =
+                  n.attributes.event.data.attributes;
+                const { username, discord_avatar } = eventUser.data.attributes;
+                return (
+                  <NotificationItem
+                    key={i}
+                    action={action}
+                    target={entityName}
+                    avatar={discord_avatar}
+                    message={content}
+                    name={username}
+                    status={readDateTime ? 'read' : 'unRead'}
+                    targetLink={'/ideaspace/workshop/' + entityId}
+                    timeStamp={createdDateTime}
+                    className={`p-4 border-b border-gray-800 ${
+                      readDateTime ? 'bg-transparent' : 'bg-[#52287A]/10'
+                    } hover:bg-gray-800 transition-colors duration-200`}
+                  />
+                );
+              })
+            ) : (
+              <div className="flex flex-col items-center justify-center py-16 px-4">
+                <Bell
+                  className="h-16 w-16 text-gray-500 mb-4"
+                  strokeWidth={1.5}
                 />
-              );
-            })}
-          </ul>
-          <div className="flex items-center justify-between">
+                <p className="text-gray-400 text-center">
+                  No notifications yet. We'll notify you when something
+                  important happens!
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* <div className="flex items-center justify-center p-4 border-t border-gray-800">
             <a
-              href={'/notifications'}
-              className="text-neptune-600 hover:text-uranus-500"
+              href="/notifications"
+              className="text-gray-300 hover:text-white transition-colors duration-200"
             >
               View all notifications
             </a>
-            <a
-              href="/notifications/settings"
-              className="flex gap-2 items-end text-black hover:text-grayscale-600 capitalize"
-            >
-              <SettingsIcon />
-              settings
-            </a>
-          </div>
+          </div> */}
         </div>
       </PopoverContent>
     </Popover>

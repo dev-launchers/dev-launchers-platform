@@ -1,79 +1,55 @@
-import * as RadixTabs from '@radix-ui/react-tabs';
-import { type FC, type ReactNode } from 'react';
-import { tv } from 'tailwind-variants';
+'use client';
 
-type TabsProps = Omit<
-  RadixTabs.TabsProps,
-  'asChild' | 'defaultValue' | 'content' | 'onValueChange'
-> &
-  Omit<RadixTabs.TabsListProps, 'asChild' | 'loop'> &
-  Omit<RadixTabs.TabsContentProps, 'asChild' | 'value'> & {
-    /**
-     * The buttons that activate its associated content.      Dev Note: USE Trigger COMPONENT FOR BETTER ACCESSIBILITY
-     */
-    triggers: ReactNode;
-    /**
-     * The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs.
-     */
-    defaultValue?: string;
-    /**
-     * Contains the content associated with each trigger. Dev Note: USE Content COMPONENT FOR BETTER ACCESSIBILITY
-     */
-    children: ReactNode;
-    /**
-     * Event handler called when the value changes.
-     */
-    onValueChange?: (value: string) => void;
-    /**
-     * The controlled value of the tab to activate. Should be used in conjunction with onValueChange.
-     */
-    value?: string;
-    /**
-     * When true, keyboard navigation will loop from last tab to first, and vice versa.
-     */
-    loop?: boolean;
-  };
+import * as React from 'react';
+import * as TabsPrimitive from '@radix-ui/react-tabs';
 
-/**
- * @description A set of layered sections of content—known as tab panels—that are displayed one at a time.
- * https://www.radix-ui.com/primitives/docs/components/tabs/1.0.4
- */
-const Tabs = ({
-  loop = true,
-  triggers,
-  activationMode,
-  defaultValue,
-  onValueChange,
-  value,
-  children,
-  ...props
-}: TabsProps) => {
-  return (
-    <RadixTabs.Root
-      defaultValue={defaultValue}
-      value={value}
-      onValueChange={onValueChange}
-      {...props}
-    >
-      <RadixTabs.List loop={loop} asChild>
-        {triggers}
-      </RadixTabs.List>
-      {children}
-    </RadixTabs.Root>
-  );
-};
-export default Tabs;
+import { cn } from '../../../utils/classesMerger';
 
-const TriggerStyles = tv({
-  base: 'inline-flex h-11 w-64 flex-shrink-0 items-center justify-center gap-2 py-3 font-nunito-sans text-[1rem] font-normal text-[#888888] hover:bg-[#f9f9f9] data-[state=active]:border-b-2 data-[state=active]:border-solid data-[state=active]:border-[#3350e5] data-[state=active]:font-bold data-[state=active]:text-[#000000]',
-});
+const Tabs = TabsPrimitive.Root;
 
-export const Trigger: FC<RadixTabs.TabsTriggerProps> = ({
-  className,
-  ...props
-}) => {
-  const styles = TriggerStyles({ className });
-  return <RadixTabs.Trigger className={styles} {...props} />;
-};
+const TabsList = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.List>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.List
+    ref={ref}
+    className={cn(
+      'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground',
+      className
+    )}
+    {...props}
+  />
+));
+TabsList.displayName = TabsPrimitive.List.displayName;
 
-export { Content } from '@radix-ui/react-tabs';
+const TabsTrigger = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Trigger
+    ref={ref}
+    className={cn(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-purple-700 data-[state=active]:text-white data-[state=active]:shadow',
+      className
+    )}
+    {...props}
+  />
+));
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+
+const TabsContent = React.forwardRef<
+  React.ElementRef<typeof TabsPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
+>(({ className, ...props }, ref) => (
+  <TabsPrimitive.Content
+    ref={ref}
+    className={cn(
+      'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+      className
+    )}
+    {...props}
+  />
+));
+TabsContent.displayName = TabsPrimitive.Content.displayName;
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };
