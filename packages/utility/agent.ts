@@ -119,12 +119,16 @@ const Opportunities = {
   list: async (params?: URLSearchParams) =>
     requests.get<Opportunity[]>(
       '/opportunities',
-      new URLSearchParams('_publicationState=live&populate=projects')
+      new URLSearchParams(
+        '_publicationState=live&populate=projects&populate=interests'
+      )
     ),
   get: (slug: string, params?: URLSearchParams) =>
     requests.get(
       `opportunities/${slug}`,
-      new URLSearchParams('_publicationState=live&populate=projects')
+      new URLSearchParams(
+        '_publicationState=live&populate=projects&populate=interests'
+      )
     ),
   getById: (
     oppId: string //, params?: URLSearchParams

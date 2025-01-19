@@ -117,6 +117,10 @@ export default function SignUpForm({
     email: Yup.string()
       .email('Invalid email')
       .required('Email Field Entry is Required'),
+    skills: Yup.string()
+      .required('Skills Field Entry is Required')
+      .nullable()
+      .matches(/^[^\s]+(\s+[^\s]+)*$/, 'Skills Field Entry is Required'),
     portfolioLink: Yup.string().nullable(true).default(undefined),
     commitment: Yup.number()
       .moreThan(4, 'Commitment Field Entry is Required')
@@ -124,6 +128,7 @@ export default function SignUpForm({
     /* Adding new column yearsExperience column */
     yearsOfExperience: Yup.number()
       .default(0)
+      .typeError('Years of Experience is Required')
       .min(0, 'Years of Experience should be greater than 0')
       .max(100, 'Years of Expereince should be less than 100')
       .test(
@@ -229,7 +234,7 @@ export default function SignUpForm({
           zip: 0,
           role: 'title' as string, //  role: position.title as string,
           project: { id: '1', slug: 'projectSlug' }, //router.query.slug as string },
-          skills: [{ skill: '' }],
+          skills: null,
           isAgeOver18: false,
           isTermsAgreed: false,
         }}
@@ -319,36 +324,48 @@ export default function SignUpForm({
                     error={formik.errors.email}
                   />
                   <atoms.Box gap="32px" flexDirection="column">
-                    <Field
-                      as={organisms.FormField}
-                      label={
-                        <atoms.Box gap="1rem" alignItems="center">
-                          What are your relevant skills?
-                          <atoms.ToolTip
-                            content="Please Separate skills with a comma."
-                            direction="left"
-                            delay={100}
-                          >
-                            ℹ️
-                          </atoms.ToolTip>
-                        </atoms.Box>
-                      }
-                      placeholder="javascript, react, backend"
-                      id="skills"
-                      name="skills"
-                    />
+                    <atoms.ToolTip
+                      content="Please Separate skills with a comma."
+                      direction="right"
+                      delay={100}
+                    >
+                      <Field
+                        as={organisms.FormField}
+                        label={'What are your relevant skills?'}
+                        placeholder="javascript, react, backend"
+                        id="skills"
+                        name="skills"
+                        required
+                        touched={formik.touched['skills']}
+                        error={formik.errors.skills}
+                      />
+                    </atoms.ToolTip>
                   </atoms.Box>
                   <atoms.Box flexDirection="column">
+                    <atoms.Box flexDirection="row">
+                      <atoms.Typography type="pSmall" textAlign="center">
+                        How many hours a week would you like to volunteer?
+                      </atoms.Typography>
+                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                        &nbsp; *
+                      </atoms.Typography>
+                    </atoms.Box>
                     <atoms.Typography type="pSmall">
-                      HOW MANY HOURS A WEEK WOULD YOU LIKE TO VOLUNTEER?
+                      Note: this role requires at least 10 hours a week.
                     </atoms.Typography>
-                    <atoms.Slider
-                      min={5}
-                      max={40}
-                      initialValue={5}
+                    <Field
+                      as={atoms.Slider}
+                      id="commitment"
+                      name="commitment"
+                      required
+                      touched={formik.touched['commitment']}
+                      error={formik.errors.commitment}
                       onChange={(value) =>
                         formik.setFieldValue('commitment', +value)
                       }
+                      min={5}
+                      max={40}
+                      initialValue={5}
                       withLabels
                       suffix=" hrs"
                       maxWidth="430px"

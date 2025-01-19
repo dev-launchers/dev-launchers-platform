@@ -137,49 +137,50 @@ export const OpportunityDetailsContainer = styled.div`
 `;
 
 export const TagsSection = styled.div`
-  padding: 0 1rem;
-  width: auto;
-  display: inline-block;
-
   & h4 {
     font-style: normal;
     font-size: 1rem;
     font-weight: 600;
     line-height: 22px;
   }
-  @media (max-width: 760px) {
-    display: none;
+
+  @media (max-width: 1024px) {
+    display: grid;
+    grid-column: 1 / span 3;
   }
 `;
 export const TagsList = styled.ul`
   list-style: none;
   display: flex;
-  flex-direction: column;
 
+  flex-wrap: wrap;
   text-align: center;
-  gap: 6px;
+  gap: 8px;
   padding: 0;
-  margin: 0;
+  margin: 8px 0 0;
+  @media (max-width: 1024px) {
+    display: flex;
+    flex-wrap: no-wrap;
+    width: 100%;
+  }
 `;
 export const TagsListItem = styled.li<{ color: sectionTheme }>`
   padding: 6px 8px 6px 8px;
   background-color: ${(props) =>
     props.color === 'Dark'
-      ? props.theme?.colors?.Gray
+      ? props.theme?.colors?.SkillTagColor
       : props.theme?.colors?.White};
 
   color: ${(props) =>
     props.color === 'Light'
-      ? props.theme?.colors?.OuterSpace
-      : props.theme.colors.LightGray};
-  filter: ${({ theme }) =>
-    `drop-shadow(0px 0.18rem 0.18rem ${theme?.colors?.BlackT38})`};
+      ? props.theme?.colors?.SkillTagColor
+      : props.theme.colors.White};
 
   border-radius: 1.8125rem;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-weight: 400;
-  font-size: 14px;
-  line-height: 19px;
+  font-size: 16px;
+  line-height: 24px;
   text-transform: capitalize;
 `;
 
@@ -206,9 +207,6 @@ export const CommitmentSection = styled.div`
     margin: 0;
     margin-left: 1rem;
     text-align: center;
-  }
-  @media (max-width: 760px) {
-    display: none;
   }
 `;
 
@@ -323,34 +321,28 @@ export const ModalDescriptionSection = styled.div<{
 }>`
   display: ${(props) => (props.Mobile ? 'none' : 'block')};
   height: 100%;
-  padding: 0px 20px 0px 50px;
-
-  & h3 {
+  & h5 {
     font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
+    line-height:  24px 
+    letter-spacing: 0.8px;
+    color: #000;
+    
   }
 
   & p {
     font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 16px;
     font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
     font-weight: 400;
-    line-height: 1.5rem;
-    max-width: 28rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: pre-wrap;
+    line-height: 24px;
+    margin-top: 8px
   }
 
-  @media (max-width: 760px) {
-    padding: 0 1rem;
-    display: ${(props) => (props.Mobile ? 'block' : 'none')};
+  @media (max-width: 640px) {
     & p {
-      padding: 0 1rem;
       font-family: ${(props) => props.theme?.fonts?.normal};
       font-style: normal;
       font-weight: 400;
@@ -361,52 +353,154 @@ export const ModalDescriptionSection = styled.div<{
 `;
 
 export const ModalProjectSection = styled.div`
-  height: 100%;
-  font-family: ${(props) => props.theme?.fonts?.normal};
-  font-style: normal;
-  font-weight: 400;
-  max-width: 200px;
 
-  & h4 {
+    
+  & .title h2 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 120%; /* 48px */
+    letter-spacing: 1.6px;
+    color: #000;
+  }
+
+  & .title p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #000;
+  }
+
+  & .commitment {
+    margin: 32px 0 0;
+  }
+  & .commitment h5 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%; /* 24px */
+    letter-spacing: 0.8px;
+    color: #000;
+  }
+  & .commitment p {
+    margin: 8px 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
     font-size: 16px;
-  }
-  & h3 {
-    font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
     font-weight: 400;
-    font-size: 32px;
+    line-height: 24px;
+    color: #000;
   }
-
-  & p {
-    font-family: ${(props) => props.theme?.fonts?.normal};
-    font-style: normal;
-    font-size: 14px;
-    line-height: 19px;
-    line-height: 1.125rem;
-    max-width: 28rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: pre-wrap;
+  & .level {
+    margin: 32px 0 0;
   }
-
-  & h6 {
-    font-family: ${(props) => props.theme?.fonts?.normal};
+  & .level h5 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    gap: 8px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 400;
+    line-height:  24px 
+    letter-spacing: 0.8px;
+    color: #000;
+    
+  }
+  & .level p {
+    margin: 8px 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
     font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: #000;
   }
+
+
+ 
+
+    & .responsibilty h5 {
+     font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height:  24px ;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+    }
+    & .why h5 {
+    margin-bottom: 8px;
+     font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height:  24px ;
+    letter-spacing: 0.8px;
+    }
+
+     @media (max-width: 1024px) {
+     & .title h2 {
+      font-size: 32px;
+     }
+  }
+
+
+`;
+export const ModalSkillRequiredSection = styled.div`
+
+
+    & .skills {
+    
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height:  24px 
+    letter-spacing: 0.8px;
+    color: #000;
+    
+    }
+
+ @media (max-width: 1024px) {
+    grid-column: 1 / span 3;
+  }
+ @media (max-width: 640px) {
+    grid-column: 1 / span 1;
+  }
+
 `;
 
 export const BulletListItem = styled.li`
-  font-size: 12px;
+  font-size: 16px;
+
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
 `;
 
 export const BulletList = styled.div`
-  padding-right: 0 0 0px 50px;
-  max-width: 200px;
+  padding-left: 12px;
 `;
 
 export const CloseButton = styled.button`
@@ -416,11 +510,6 @@ export const CloseButton = styled.button`
   height: 22px;
   width: 20px;
   margin: 20px;
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
 `;
 
 export const OkButton = styled.button`
@@ -460,10 +549,9 @@ export const CloseIcon = styled.svg`
 export const ColorBox = styled.div`
   width: 100%;
   height: 10px;
-  position: absolute;
+
   border: none;
-  top: 0;
-  right: 0;
+
   background: linear-gradient(
     to right,
     #ff7f0e 25%,
