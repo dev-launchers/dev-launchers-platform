@@ -358,7 +358,7 @@ const IdeaForm = ({
                 {/* Features Field - Required */}
                 <FieldWrapper data-field="features">
                   <FieldLabel>
-                    What Features Would Your Product Have?
+                    What features would your product have?
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
