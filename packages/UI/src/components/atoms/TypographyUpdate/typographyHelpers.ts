@@ -9,7 +9,7 @@ export const generateClasses = (props: TypographyProps) => {
   const variant = styles.variant[props.variant || 'secondary'];
   const leading = styles.leading[props.leading || 'normal'];
   const textCase = styles.textCase[props.textCase || 'normal'];
-  const textAlign = styles.textAlign[props.textAlign || 'right'];
+  const textAlign = styles.textAlign[props.textAlign || 'left'];
   const textWeight = styles.textWeight[props.textWeight || 'light'];
   const textStyle = styles.textStyle[props.textStyle || 'italic'];
   const textDecoration =

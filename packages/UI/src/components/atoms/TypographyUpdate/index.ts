@@ -79,5 +79,5 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * specify text color directly.
    */
-  textColor?: string;
+  color?: string;
 }
