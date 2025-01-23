@@ -513,8 +513,7 @@ const IdeaForm = ({
                       onBlur={handleBlur}
                     />
                     <RadioLabel htmlFor="highly">
-                      <strong>Level 1 - Highly</strong>
-                      <br />I want to "own" this idea from beginning to end
+                      I want to "own" this idea from beginning to end
                     </RadioLabel>
                   </RadioButton>
 
@@ -531,9 +530,8 @@ const IdeaForm = ({
                       onBlur={handleBlur}
                     />
                     <RadioLabel htmlFor="medium">
-                      <strong>Level 2 - Medium</strong>
-                      <br />I want to "own" this idea only after it is approved
-                      as a project
+                      I want to "own" this idea only after it is approved as a
+                      project
                     </RadioLabel>
                   </RadioButton>
 
@@ -550,8 +548,7 @@ const IdeaForm = ({
                       onBlur={handleBlur}
                     />
                     <RadioLabel htmlFor="minimum">
-                      <strong>Level 3 - Minimum</strong>
-                      <br />I want to "own" this idea during workshopping only
+                      I want to "own" this idea during workshopping only
                     </RadioLabel>
                   </RadioButton>
 
@@ -568,8 +565,7 @@ const IdeaForm = ({
                       onBlur={handleBlur}
                     />
                     <RadioLabel htmlFor="none">
-                      <strong>Level 4 - None</strong>
-                      <br />I don't want to be involved after submitting
+                      I don't want to be involved after submitting
                     </RadioLabel>
                   </RadioButton>
 
