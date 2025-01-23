@@ -44,11 +44,35 @@ function SubmissionForm() {
   };
 
   const SignupSchema = Yup.object().shape({
-    ideaName: Yup.string().trim().required('Idea Name is Required.'),
-    description: Yup.string().trim().required('Idea Description is Required.'),
-    experience: Yup.string().trim().required('Experience is Required.'),
-    features: Yup.string().trim().required('Idea Feature is Required.'),
-    involveLevel: Yup.string().required('Level of involvement is Required.'),
+    ideaName: Yup.string()
+      .trim()
+      .required('It looks like you missed a field.')
+      .max(80, 'Idea Name must be at most 80 characters'),
+    description: Yup.string()
+      .trim()
+      .required('It looks like you missed a field.')
+      .max(1000, 'Description must be at most 1000 characters'),
+    experience: Yup.string()
+      .trim()
+      .required('It looks like you missed a field.')
+      .max(1000, 'Experience must be at most 1000 characters'),
+    targetAudience: Yup.string()
+      .trim()
+      .required('It looks like you missed a field.')
+      .max(1000, 'Target Audience must be at most 1000 characters'),
+    features: Yup.string()
+      .trim()
+      .required('It looks like you missed a field.')
+      .max(1000, 'Features must be at most 1000 characters'),
+    extraInfo: Yup.string()
+      .trim()
+      .max(1000, 'Extra Info must be at most 1000 characters'),
+    tagline: Yup.string()
+      .trim()
+      .max(80, 'Tagline must be at most 80 characters'),
+    involveLevel: Yup.string()
+      .nullable()
+      .required('Please select your level of involvement'),
   });
 
   const submitHandler = async (values) => {
