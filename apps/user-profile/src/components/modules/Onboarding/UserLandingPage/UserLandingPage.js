@@ -8,7 +8,7 @@ import Typography from '@devlaunchers/components/components/atoms/Typography';
 // import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import CheckboxField from './../../../common/Forms/Checkbox';
-import UploadProfilePicture from './../../../common/UploadProfilePicture';
+import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
 import DropDownMenu from './../../../common/Dropdown/Dropdown';
@@ -229,15 +229,13 @@ export default function UserLandingPage() {
           </p>
           <div>
             {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-              // <UploadedProfilePicture
-              <img
-                className="w-32 h-32 rounded-full"
+              <UploadedProfilePicture
                 src={
                   uploadedProfilePicture || userData?.profile?.profilePictureUrl
                 }
               />
             ) : (
-              <img className="w-32 h-32 rounded-full" />
+              <UploadProfilePicture width={120} height={120} />
             )}
             <div className="relative right-[-10] bottom-5">
               <label htmlFor="file-upload" className="cursor-pointer">
