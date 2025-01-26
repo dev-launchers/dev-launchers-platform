@@ -25,29 +25,29 @@ export const styles = {
     normal: 'leading-normal',
     relaxed: 'leading-relaxed',
   },
-  textCase: {
+  textcase: {
     uppercase: 'uppercase',
     capitalize: 'capitalize',
     lowercase: 'lowercase',
     normal: 'normal-case',
   },
-  textAlign: {
+  textalign: {
     left: 'text-left',
     center: 'text-center',
     right: 'text-right',
   },
-  textWeight: {
+  textweight: {
     light: 'font-light',
     normal: 'font-normal',
     medium: 'font-medium',
     semibold: 'font-semibold',
     bold: 'font-bold',
   },
-  textStyle: {
+  textstyle: {
     normal: 'not-italic',
     italic: 'italic',
   },
-  textDecoration: {
+  textdecoration: {
     underline: 'underline',
     lineThrough: 'line-through',
     noUnderline: 'no-underline',

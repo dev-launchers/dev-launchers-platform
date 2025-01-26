@@ -8,11 +8,11 @@ export const generateClasses = (props: TypographyProps) => {
   const size = styles.size[props.size || 'base'];
   const variant = styles.variant[props.variant || 'secondary'];
   const leading = styles.leading[props.leading || 'normal'];
-  const textCase = styles.textCase[props.textCase || 'normal'];
-  const textAlign = styles.textAlign[props.textAlign || 'left'];
-  const textWeight = styles.textWeight[props.textWeight || 'light'];
-  const textStyle = styles.textStyle[props.textStyle || 'italic'];
+  const textCase = styles.textcase[props.textcase || 'normal'];
+  const textAlign = styles.textalign[props.textalign || 'left'];
+  const textWeight = styles.textweight[props.textweight || 'light'];
+  const textStyle = styles.textstyle[props.textstyle || 'italic'];
   const textDecoration =
-    styles.textDecoration[props.textDecoration || 'noUnderline'];
+    styles.textdecoration[props.textdecoration || 'noUnderline'];
   return `${size} ${variant} ${leading} ${textCase} ${textAlign} ${textWeight} ${textStyle} ${textDecoration}`;
 };

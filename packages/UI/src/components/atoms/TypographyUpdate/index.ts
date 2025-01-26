@@ -44,27 +44,27 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Controls text transformation (uppercase, capitalize, etc.).
    */
-  textCase?: 'uppercase' | 'capitalize' | 'lowercase' | 'normal';
+  textcase?: 'uppercase' | 'capitalize' | 'lowercase' | 'normal';
 
   /**
    * Text alignment, e.g., 'left', 'center', 'right'.
    */
-  textAlign?: 'left' | 'center' | 'right';
+  textalign?: 'left' | 'center' | 'right';
 
   /**
    * Font weight, supporting common weights like 'light' and 'bold'.
    */
-  textWeight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
+  textweight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold';
 
   /**
    * Supports normal and italic for font style.
    */
-  textStyle?: 'normal' | 'italic';
+  textstyle?: 'normal' | 'italic';
 
   /**
    * Adds underlines or strikethroughs.
    */
-  textDecoration?: 'underline' | 'lineThrough' | 'noUnderline';
+  textdecoration?: 'underline' | 'lineThrough' | 'noUnderline';
 
   /**
    * Additional Tailwind or custom class names.

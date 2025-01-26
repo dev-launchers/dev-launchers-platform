@@ -29,13 +29,9 @@ const meta: Meta<typeof Typography> = {
         'h5',
         'h6',
         'p',
-        'span',
         'figcaption',
         'summary',
-        'cite',
         'em',
-        'a',
-        'q',
         'time',
         'li',
         'dt',
@@ -70,7 +66,7 @@ const meta: Meta<typeof Typography> = {
       description: 'Custom line height for precise vertical spacing.',
       table: { defaultValue: { summary: 'normal' } },
     },
-    textCase: {
+    textcase: {
       control: { type: 'select' },
       options: ['uppercase', 'lowercase', 'capitalize', 'normal'],
       description:
@@ -81,7 +77,7 @@ const meta: Meta<typeof Typography> = {
         },
       },
     },
-    textAlign: {
+    textalign: {
       control: { type: 'select' },
       options: ['left', 'center', 'right'],
       description: 'Text alignment, e.g., "left", "center", "right".',
@@ -91,7 +87,7 @@ const meta: Meta<typeof Typography> = {
         },
       },
     },
-    textWeight: {
+    textweight: {
       control: { type: 'select' },
       options: ['light', 'normal', 'semibold', 'bold'],
       description:
@@ -102,7 +98,7 @@ const meta: Meta<typeof Typography> = {
         },
       },
     },
-    textStyle: {
+    textstyle: {
       control: { type: 'select' },
       options: ['normal', 'italic'],
       description: 'Supports normal and italic for font style.',
@@ -112,7 +108,7 @@ const meta: Meta<typeof Typography> = {
         },
       },
     },
-    textDecoration: {
+    textdecoration: {
       control: { type: 'select' },
       options: ['underline', 'lineThrough', 'noUnderline'],
       description: 'Adds underlines or strikethroughs.',
@@ -160,11 +156,11 @@ export const Default: Story = {
     children: 'Welcome to Dev Launchers Platform',
     variant: 'secondary',
     leading: 'normal',
-    textCase: 'normal',
-    textAlign: 'left',
-    textWeight: 'normal',
-    textStyle: 'normal',
-    textDecoration: 'noUnderline',
+    textcase: 'normal',
+    textalign: 'left',
+    textweight: 'normal',
+    textstyle: 'normal',
+    textdecoration: 'noUnderline',
     size: 'xl7',
   },
 };
