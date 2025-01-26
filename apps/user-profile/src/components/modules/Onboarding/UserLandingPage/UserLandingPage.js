@@ -8,7 +8,7 @@ import Typography from '@devlaunchers/components/components/atoms/Typography';
 import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import CheckboxField from './../../../common/Forms/Checkbox';
-import UploadProfilePicture from './../../../common/UploadProfilePicture';
+import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
 import {

@@ -43,7 +43,7 @@ export default function UserProfile() {
   };
 
   return (
-    <div className="flex flex-row bg-[#f9f9f9]">
+    <div className="flex flex-row min-h-[75.4vh] bg-[#f9f9f9]">
       <div className="w-72">
         <SideBar />
       </div>
