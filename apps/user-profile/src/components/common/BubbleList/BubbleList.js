@@ -11,7 +11,7 @@ import { Typography } from '@devlaunchers/components/components/atoms';
 
 function BubbleList({ list, colorClass = 'bg-white' }) {
   return (
-    // Container div with flex layout, gap between items, and wrapping for better layout on smaller screens
+    // Container disv with flex layout, gap between items, and wrapping for better layout on smaller screens
     <div className="flex gap-4 flex-wrap">
       {list.map((item) => {
         // Map through the list, only render a bubble if the item is truthy
