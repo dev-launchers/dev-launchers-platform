@@ -59,7 +59,8 @@ function Bio() {
           placeholder="Please enter bio..."
           onChange={onInputChange} // Handle input changes
         >
-          {userData?.bio ?? null} {/* Display the current bio or leave blank */}
+          {/* Display the current bio or leave blank */}
+          {userData?.bio ?? null}
         </textarea>
       </div>
     </div>
