@@ -13,7 +13,7 @@ function Overview() {
         <ProfileHeader />
         <div className="flex gap-9">
           <Bio bio={userData?.bio} />
-          <Skills />
+          <Skills skills={userData.skills} />
         </div>
         <Interests interestList={userData.interests} />
       </div>
