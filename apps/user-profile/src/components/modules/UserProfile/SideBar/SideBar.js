@@ -87,7 +87,7 @@ function SideBar() {
         />
         <UserInfo name={userData.name} />
       </div>
-      {/* <ul className="flex flex-col gap-6 px-4">
+      <ul className="flex flex-col gap-6 px-4">
         <li className={styling.overview.li} onClick={onOverviewClick}>
           <OutlinedOverview colorClass={styling.overview.iconColor} />
           <Typography type="p" className={styling.overview.typography}>
@@ -100,7 +100,7 @@ function SideBar() {
             PROJECTS
           </Typography>
         </li>
-        <li className={styling.profiles.li} onClick={onProfilesClick}>
+        {/* <li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
           <Typography type="p" className={styling.profiles.typography}>
             PROFILES
@@ -123,8 +123,8 @@ function SideBar() {
           <Typography type="p" className={styling.chatbot.typography}>
             DL Bot
           </Typography>
-        </li>
-      </ul> */}
+        </li> */}
+      </ul>
     </div>
   );
 }
