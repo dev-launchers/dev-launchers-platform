@@ -94,13 +94,13 @@ function SideBar() {
             OVERVIEW
           </Typography>
         </li>
-        <li className={styling.projects.li} onClick={onProjectsClick}>
+        {/* <li className={styling.projects.li} onClick={onProjectsClick}>
           <OutlinedProjects colorClass={styling.projects.iconColor} />
           <Typography type="p" className={styling.projects.typography}>
             PROJECTS
           </Typography>
         </li>
-        {/* <li className={styling.profiles.li} onClick={onProfilesClick}>
+        <li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
           <Typography type="p" className={styling.profiles.typography}>
             PROFILES
