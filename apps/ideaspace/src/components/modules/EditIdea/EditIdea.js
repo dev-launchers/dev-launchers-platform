@@ -179,7 +179,7 @@ function EditIdea() {
   } else {
     return (
       <>
-        <HeadWapper>
+        {/* <HeadWapper>
           <Headline>Dev Ideas</Headline>
           <StyledRanbow>
             <atoms.Layer hasRainbowBottom />
@@ -190,7 +190,7 @@ function EditIdea() {
             <br />
             Share your idea with us!
           </atoms.Typography>
-        </HeadWapper>
+        </HeadWapper> */}
 
         {!isAuthenticated ? (
           <SignInSection

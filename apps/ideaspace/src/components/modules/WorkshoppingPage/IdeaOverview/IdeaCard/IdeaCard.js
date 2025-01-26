@@ -19,12 +19,15 @@ import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
+import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
+import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 
 export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -151,6 +154,19 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <ShareOutlinedIcon />
           <StyledText>SHARE</StyledText>
         </Button> */}
+        <button
+          className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+          onClick={() => setIsModalOpen(true)}
+        >
+          Edit Idea
+        </button>
+        <EditComponent open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <div className="min-w-96">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </EditComponent>
       </BottomView>
     </StyledCard>
   );
