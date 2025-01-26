@@ -1,5 +1,13 @@
-import { Typography } from '@devlaunchers/components/components/atoms';
-
+/**
+ * UserInfo Component
+ *
+ * Displays the user's name in a styled container.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.name - The name of the user to display.
+ *
+ * @return {JSX.Element} The user info UI.
+ */
 const UserInfo = ({ name }) => {
   return (
     <div className="flex flex-col items-center">

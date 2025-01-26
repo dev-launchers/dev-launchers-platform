@@ -1,6 +1,19 @@
-import React from 'react';
 import profilePicturePlaceholder from './../../../images/profile/filled-profile-picture-placeholder.svg';
 
+/**
+ * ProfilePicture Component
+ *
+ * Displays a circular profile picture with a placeholder fallback if no image source is provided.
+ * The component supports custom styling through the `className` prop.
+ *
+ * Props:
+ * - `src` (String): The URL of the profile picture. If not provided, a default placeholder is used.
+ * - `alt` (String): The alt text for the profile picture. Improves accessibility.
+ * - `className` (String): Custom CSS classes for additional styling. Defaults to a circular frame with shadow.
+ *
+ * @param {Object} props - The component props.
+ * @return {JSX.Element} The rendered profile picture component.
+ */
 function ProfilePicture({ src, alt, className }) {
   return (
     <div
