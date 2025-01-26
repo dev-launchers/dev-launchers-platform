@@ -4,7 +4,7 @@ function PageBody({ children, loading = false, error = null }) {
   const page = () => {
     if (loading) {
       return (
-        <div className="flex items-center justify-center h-screen max-h-[800px]">
+        <div className="flex items-center justify-center min-h-[75.4vh]">
           <Loader heightClass={'h-20 w-20'} borderWidthClass={'border-4'} />
         </div>
       );
@@ -12,7 +12,7 @@ function PageBody({ children, loading = false, error = null }) {
       // 401 is unauthorised entry
       if (error && error?.response?.status != 401) {
         return (
-          <div className="flex flex-col gap-4 items-center justify-center h-screen max-h-[800px] text-grayscale-700">
+          <div className="flex flex-col gap-4 items-center justify-center min-h-[75.4vh] text-grayscale-700">
             <p>
               Failed to load page, experiencing some issues
               {error?.response?.status ? ` (${error?.response?.status})` : ''}
@@ -28,7 +28,7 @@ function PageBody({ children, loading = false, error = null }) {
   };
 
   error && console.log('Error: ', error);
-  return <div className="w-full h-auto">{page()}</div>;
+  return page();
 }
 
 export default PageBody;

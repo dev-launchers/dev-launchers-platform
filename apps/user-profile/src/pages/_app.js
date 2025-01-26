@@ -66,11 +66,9 @@ function MyApp(props) {
                 progressClassName="toast-progress"
               />
             </div>
-            {/* <Component {...pageProps} /> */}
             <LazyMotion features={domAnimation} strict>
               {props.children}
             </LazyMotion>
-            {/* {props.children} */}
           </div>
         </ThemeProvider>
       </UserDataProvider>

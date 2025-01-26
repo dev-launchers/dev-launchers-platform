@@ -62,12 +62,12 @@ export default function UserProfilePage() {
       </Head>
       <PageBody loading={isLoading} error={error}>
         {isAuthenticated ? (
-          <div>
+          <>
             {openUserOnboardingModal()}
             <SidebarDataProvider>
               <UserProfile isPublic={false} />
             </SidebarDataProvider>
-          </div>
+          </>
         ) : (
           <SignIn />
         )}
