@@ -16,3 +16,4 @@ export { default as OutlinedProjects } from './SVG/OutlinedProjects';
 export { default as OutlinedProfiles } from './SVG/OutlinedProfiles';
 export { default as OutlinedIdeas } from './SVG/OutlinedIdeas';
 export { default as OutlinedOpportunities } from './SVG/OutlinedOpportunities';
+export { default as OutlinedCat } from './SVG/OutlinedCat';

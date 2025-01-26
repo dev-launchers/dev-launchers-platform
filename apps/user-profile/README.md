@@ -1,34 +1,90 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dev Launchers (https://devlaunchers.org)
 
-## Getting Started
+## We Build People (and software)
 
-First, run the development server:
+This is the monorepo for all DevLaunchers internal products, we use React.js/Next.js and many other wonderful libraries.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About Dev Launchers
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Dev Launchers is a nonprofit tech company working to democratize access to technology and tech related skills. At our core, we build projects and run programs that are designed to prepare the world for a rapidly changing future. We've built an inclusive, software focused incubator giving people from diverse backgrounds the skills and resources necessary to succeed in careers touched by technology, and have an open community focused on advancing technology, one another, and ourselves. This repository holds the beginnings of the online platform we're creating in order to first impart the general skills required for members to begin their own projects, and then support their exploration as they tackle building something they're excited about. It also functions as our organization's website!
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Contributing
 
-## Learn More
+Visit https://devlaunchers.org/join to join one of our teams!
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Get Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repo
 
-## Deploy on Vercel
+2. Install dependencies: `yarn install`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Run the tailwindcss compiler: `yarn workspace @devlaunchers/tailwind dev`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Run the app's development server: `yarn workspace @devlaunchers/app dev`
+
+---
+
+## Commit & Release
+
+We are using semantic versioning to tag release. Follow https://github.com/semantic-release/semantic-release#commit-message-format
+to format the commit messages.
+
+We've created a command to guide you create conventional commit message all you need to do is run `yarn commit`
+
+The release cadence is every 4 weeks. We will create a PR to merge the master branch into the release branch.
+
+---
+
+## Monorepo scripts
+
+Some convenience scripts can be run in any folder of this repo and will call their counterparts defined in packages and apps.
+
+| Name                         | Description                                                                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `yarn g:changeset`           | Add a changeset to declare a new version                                                                                             |
+| `yarn nuke:node_modules`     | Remove `node_modules` folder in sub-folders                                                                                          |
+| `yarn commit`                | Format your commit message to follow our convention (Run `git add -p` first)                                                         |
+| `yarn g:typecheck`           | Run typechecks in all workspaces                                                                                                     |
+| `yarn g:lint`                | Display linter issues in all workspaces                                                                                              |
+| `yarn g:lint --fix`          | Attempt to run linter auto-fix in all workspaces                                                                                     |
+| `yarn g:build`               | Run build in all workspaces                                                                                                          |
+| `yarn g:clean`               | Clean builds in all workspaces                                                                                                       |
+| `yarn g:check-dist`          | Ensure build dist files passes es2017 (run `g:build` first). [WIP]                                                                   |
+| `yarn g:check-size`          | Ensure browser dist files are within size limit (run `g:build` first). [WIP]                                                         |
+| `yarn clean:global-cache`    | Clean tooling caches (eslint, jest...)                                                                                               |
+| `yarn deps:check --dep dev`  | Will print what packages can be upgraded globally (see also [.ncurc.yml](https://github.com/sortlist/packages/blob/main/.ncurc.yml)) |
+| `yarn deps:update --dep dev` | Apply possible updates (run `yarn install && yarn dedupe` after)                                                                     |
+| `yarn check:install`         | Verify if there's no peer-deps missing in packages                                                                                   |
+| `yarn dedupe`                | Built-in yarn deduplication of the lock file                                                                                         |
+
+> Why using `:` to prefix scripts names ? It's convenient in yarn 3+, we can call those scripts from any folder in the monorepo.
+> `g:` is a shortcut for `global:`. See the complete list in [root package.json](./package.json).
+
+## Maintaining deps updated
+
+The global commands `yarn deps:check` and `yarn deps:update` will help to maintain the same versions across the entire monorepo.
+They are based on the excellent [npm-check-updates](https://github.com/raineorshine/npm-check-updates)
+(see [options](https://github.com/raineorshine/npm-check-updates#options), i.e: `yarn check:deps -t minor`).
+
+> After running `yarn deps:update`, a `yarn install` is required. To prevent
+> having duplicates in the yarn.lock, you can run `yarn dedupe --check` and `yarn dedupe` to
+> apply deduplication. The duplicate check is enforced in the example github actions.
+
+---
+
+## UI/UX Testing
+
+> Available at: https://staging.devlaunchers.org
+> This runs the main development branch (`master`) and is automatically redeployed when that branch is updated
+
+---
+
+## Licenses
+
+The Dev Launchers platform is licensed under [GNU General Public License v3](./LICENSE.md).
