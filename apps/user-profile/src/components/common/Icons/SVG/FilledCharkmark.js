@@ -1,3 +1,17 @@
+/**
+ * FilledCharkmark Component
+ * Renders a button containing an SVG checkmark icon with customizable dimensions and color.
+ *
+ * @param {Object} props - The component props.
+ * @param {string|number} [props.width=16] - Width of the SVG icon.
+ * @param {string|number} [props.height=13] - Height of the SVG icon.
+ * @param {string} [props.colorClass='fill-white'] - CSS class for the fill color of the checkmark.
+ * @param {string} props.className - Additional CSS classes for the SVG element.
+ * @param {Object} props.attributes - Additional attributes to spread onto the button element.
+ *
+ * @returns {JSX.Element} The rendered checkmark SVG icon wrapped in a button.
+ */
+
 function FilledCharkmark({
   width,
   height,
@@ -6,14 +20,16 @@ function FilledCharkmark({
   ...attributes
 }) {
   return (
+    // Button container for the checkmark SVG
     <button className="appearance-none cursor-auto" {...attributes}>
+      {/* SVG element defining the checkmark icon */}
       <svg
-        width={width ?? '16'}
-        height={height ?? '13'}
-        className={className}
-        viewBox="0 0 16 13"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        width={width ?? '16'} // Use provided width or default to 16
+        height={height ?? '13'} // Use provided height or default to 13
+        className={className} // Additional CSS classes for the SVG
+        viewBox="0 0 16 13" // Viewbox defining the SVG's internal coordinate system
+        fill="none" // Ensures no default fill for the SVG
+        xmlns="http://www.w3.org/2000/svg" // Namespace for the SVG
       >
         <path
           className={colorClass ?? 'fill-white'}

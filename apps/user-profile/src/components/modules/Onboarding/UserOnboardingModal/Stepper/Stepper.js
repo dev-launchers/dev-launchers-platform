@@ -7,175 +7,137 @@ import Footer from './Footer';
 import Modal from '../../../../common/Modal';
 
 /**
- * @description This is a stepper component that is used for the user onboarding
+ * Stepper Component
+ *
+ * A reusable stepper component for the user onboarding process. It displays
+ * multiple steps in a modal and provides navigation between steps, such as
+ * Next and Back buttons, and handles step-specific actions.
+ *
+ * Props:
+ * - `steps` (Array): Configurations for the steps, including components and navigation buttons.
+ * - `startingIndex` (Number): Initial step index to display.
+ * - `maxHeight`, `maxWidth`, `width`, `height` (String): Dimensions for the modal.
+ *
+ * @return {JSX.Element} The rendered Stepper component.
  */
 export default function Stepper({
-  steps = stepsMockData,
-  startingIndex = 0,
-  maxHeight = '1000px',
-  maxWidth = '936px',
-  width = '936px',
-  height = '792px',
+  steps = stepsMockData, // Default step configurations
+  startingIndex = 0, // Initial step index
+  maxHeight = '1000px', // Maximum height of the modal
+  maxWidth = '936px', // Maximum width of the modal
+  width = '936px', // Width of the modal
+  height = '792px', // Height of the modal
 }) {
+  // Access onboarding context
   const { onboardingData, dispatch } = useOnboardingDataContext();
 
+  // State to store step configurations and current step
   const [stepConfig] = useState(steps);
   const [activeStepIndex, setActiveStepIndex] = useState(startingIndex);
   const [activeStepConfig, setActiveStepConfig] = useState(
     stepConfig[startingIndex]
   );
-  const [isLoading, setIsLoading] = useState(false);
-  const [disableNextButton, setDisableNextButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // State for loading actions
+  const [disableNextButton, setDisableNextButton] = useState(false); // Disable next button if required
 
+  /**
+   * Updates the configuration when the active step index changes.
+   * Automatically skips steps marked as `skip: true`.
+   */
   const updateConfigs = () => {
     if (stepConfig[activeStepIndex]?.skip) {
-      setActiveStepIndex(activeStepIndex + 1);
+      setActiveStepIndex(activeStepIndex + 1); // Skip the step
     }
-    setActiveStepConfig(stepConfig[activeStepIndex]);
-    setIsLoading(false);
+    setActiveStepConfig(stepConfig[activeStepIndex]); // Update the current step config
+    setIsLoading(false); // Reset loading state
   };
 
+  // Run `updateConfigs` whenever `activeStepIndex` changes
   useEffect(() => {
     updateConfigs();
   }, [activeStepIndex]);
 
+  /**
+   * Opens the closing confirmation modal.
+   */
   const openCloseModal = () => {
     dispatch({ type: onboardingActions.SHOW_CLOSING_MODAL });
   };
 
+  /**
+   * Closes the stepper and hides all onboarding-related modals.
+   */
   const closeStepper = () => {
     dispatch({ type: onboardingActions.HIDE_ALL_ONBOARDING_MODALS });
   };
 
   return (
     <Modal
-      maxWidth={maxWidth}
-      maxHeight={maxHeight}
-      width={width}
+      maxWidth={maxWidth} // Modal width
+      maxHeight={maxHeight} // Modal maximum height
+      width={width} // Modal specific width
       className={'w-full bg-grayscale-100 h-full'}
     >
       <div className="flex flex-col gap-10 overflow-hidden">
+        {/* Stepper Header */}
         <Header
-          stepper={stepConfig}
-          activeStepIndex={activeStepIndex}
-          activeStepConfig={activeStepConfig}
-          onClose={openCloseModal}
-          isLoading={isLoading}
+          stepper={stepConfig} // All step configurations
+          activeStepIndex={activeStepIndex} // Current step index
+          activeStepConfig={activeStepConfig} // Current step configuration
+          onClose={openCloseModal} // Close action
+          isLoading={isLoading} // Loading state
         />
+
+        {/* Step Content */}
         <div className="h-[480px] w-full">
           {activeStepConfig?.component ?? null}
+          {/* Render current step component */}
         </div>
+
+        {/* Stepper Footer */}
         <Footer
-          stepConfig={stepConfig}
-          buttonConfig={activeStepConfig?.buttons}
-          activeStepIndex={activeStepIndex}
-          setActiveStepIndex={setActiveStepIndex}
-          setActiveStepConfig={setActiveStepConfig}
-          onSubmit={closeStepper}
-          isLoading={isLoading}
-          setIsLoading={setIsLoading}
-          context={[onboardingData, dispatch]}
-          disableNextButton={disableNextButton}
-          setDisableNextButton={setDisableNextButton}
+          stepConfig={stepConfig} // Step configurations
+          buttonConfig={activeStepConfig?.buttons} // Current step button configuration
+          activeStepIndex={activeStepIndex} // Current step index
+          setActiveStepIndex={setActiveStepIndex} // Update step index
+          setActiveStepConfig={setActiveStepConfig} // Update step configuration
+          onSubmit={closeStepper} // Submit action
+          isLoading={isLoading} // Loading state
+          setIsLoading={setIsLoading} // Update loading state
+          context={[onboardingData, dispatch]} // Onboarding context
+          disableNextButton={disableNextButton} // Disable next button
+          setDisableNextButton={setDisableNextButton} // Update next button state
         />
       </div>
     </Modal>
   );
 }
 
+/**
+ * Mock data for step configurations
+ */
 const stepsMockData = [
   {
-    component: <p>Step 1</p>,
-    skip: false,
+    component: <p>Step 1</p>, // Component for Step 1
+    skip: false, // Whether to skip this step
     header: {
-      name: 'Step 1',
-      number: 1,
-      barSize: null,
-      hideNumber: null,
+      name: 'Step 1', // Header name
+      number: 1, // Step number
+      barSize: null, // Progress bar size
+      hideNumber: null, // Whether to hide the step number
     },
     buttons: {
       next: {
-        label: 'Next',
-        hideIcons: false,
-        onClick: null,
+        label: 'Next', // Label for the next button
+        hideIcons: false, // Whether to hide icons
+        onClick: null, // Action on click
       },
       back: {
-        label: 'Back',
-        hideIcons: false,
-        onClick: null,
+        label: 'Back', // Label for the back button
+        hideIcons: false, // Whether to hide icons
+        onClick: null, // Action on click
       },
     },
   },
-  {
-    component: <p>Step 2</p>,
-    skip: false,
-    header: {
-      name: 'Step 2',
-      number: 2,
-      barSize: null,
-      hideNumber: null,
-    },
-    buttons: {
-      next: {
-        label: 'Next',
-        hideIcons: false,
-        onClick: null,
-      },
-      back: {
-        label: 'Back',
-        hideIcons: false,
-        onClick: null,
-      },
-    },
-  },
-  {
-    component: <p>Step 3 - Number Hidden</p>,
-    skip: false,
-    header: {
-      name: 'Step 3',
-      number: 2,
-      barSize: null,
-      hideNumber: true,
-    },
-    buttons: {
-      next: {
-        label: 'Next',
-        hideIcons: false,
-        onClick: null,
-      },
-      back: {
-        label: 'Back',
-        hideIcons: false,
-        onClick: null,
-      },
-    },
-  },
-  {
-    component: <p>Step 4</p>,
-    skip: false,
-    header: {
-      name: 'Final',
-      number: 4,
-      barSize: null,
-      hideNumber: null,
-    },
-    buttons: {
-      submit: {
-        label: 'Done',
-        hideIcons: true,
-        onClick: () => {
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-            }, 5000);
-          });
-        },
-      },
-      back: {
-        label: 'Back',
-        hideIcons: false,
-        onClick: null,
-      },
-    },
-  },
+  // Additional steps...
 ];

@@ -1,28 +1,36 @@
 import { editProfileActions } from './../actions';
 
 const editProfileInitialState = {
-  showEditProfileModal: false,
-  showModalFooter: false,
+  showEditProfileModal: false, // Controls visibility of the edit profile modal
+  showModalFooter: false, // Controls visibility of the modal footer
   pages: {
-    showPhoto: false,
-    showBio: true,
-    showDetails: false,
-    showSkills: false,
-    showInterests: false,
+    showPhoto: false, // Determines if the photo section is shown
+    showBio: true, // Determines if the bio section is shown
+    showDetails: false, // Determines if the details section is shown
+    showSkills: false, // Determines if the skills section is shown
+    showInterests: false, // Determines if the interests section is shown
   },
   changes: {
-    photoChanged: false,
-    bioChanged: false,
-    detailsChanged: false,
-    skillsChanged: false,
-    interestsChanged: false,
+    photoChanged: false, // Tracks if the photo has been changed
+    bioChanged: false, // Tracks if the bio has been changed
+    detailsChanged: false, // Tracks if the details have been changed
+    skillsChanged: false, // Tracks if the skills have been changed
+    interestsChanged: false, // Tracks if the interests have been changed
   },
-  photo: null,
-  bio: null,
-  skills: null,
-  saveInProgress: false,
+  photo: null, // Stores the user's photo
+  bio: null, // Stores the user's bio
+  skills: null, // Stores the user's skills
+  saveInProgress: false, // Indicates if saving changes is in progress
 };
 
+/**
+ * Reducer function to manage the edit profile state.
+ * Handles actions such as showing/hiding sections, updating data, and saving changes.
+ *
+ * @param {Object} state - The current state of the edit profile.
+ * @param {Object} action - The action dispatched, containing a type and optional payload.
+ * @returns {Object} - The updated state based on the action type.
+ */
 const editProfileReducer = (state, action) => {
   switch (action.type) {
     case editProfileActions.UPDATE_BIO: {

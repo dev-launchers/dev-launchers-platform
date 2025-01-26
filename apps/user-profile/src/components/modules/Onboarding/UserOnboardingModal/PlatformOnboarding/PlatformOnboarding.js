@@ -7,13 +7,29 @@ import PageFive from './PageFive';
 import PageSix from './PageSix/PageSix';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
+/**
+ * PlatformOnboarding Component
+ *
+ * This component manages the onboarding process for the platform. It uses the `Stepper` component
+ * to navigate through multiple onboarding steps and submits the data to the backend upon completion.
+ *
+ * @return {JSX.Element} The rendered PlatformOnboarding component with steps.
+ */
 export default function PlatformOnboarding() {
-  const { userData } = useUserDataContext();
+  const { userData } = useUserDataContext(); // Access user data from context
 
+  /**
+   * Submits onboarding data to the backend.
+   *
+   * @param {Object} onboardingData - The onboarding data collected from the steps.
+   * @param {Function} dispatch - Dispatch function for managing onboarding state.
+   * @return {Promise} A promise that resolves when the data is successfully submitted or rejects on error.
+   */
   const submitOnboardingData = (onboardingData, dispatch) => {
     return new Promise((resolve, reject) => {
-      const userId = userData?.profile?.user?.id;
+      const userId = userData?.profile?.user?.id; // Get the user ID from the profile
 
+      // Prepare the request payload
       const requestBody = {
         completedOnboarding: true,
         interests: [],
@@ -21,16 +37,18 @@ export default function PlatformOnboarding() {
         job: onboardingData?.user?.selectedRole,
       };
 
+      // Add selected interests to the payload
       onboardingData?.user?.interest?.forEach((interest) => {
         interest?.selected && requestBody?.interests.push({ id: interest?.id });
       });
 
+      // Submit the data if user ID is available
       if (userId) {
         axios
           .put(
-            `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`,
+            `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`, // API endpoint
             requestBody,
-            { withCredentials: true }
+            { withCredentials: true } // Include credentials for authentication
           )
           .then(() => {
             resolve();
@@ -55,36 +73,28 @@ export default function PlatformOnboarding() {
     });
   };
 
+  // Step configurations for the onboarding stepper
   const profileStep = {
-    skip: true,
+    skip: true, // Skip this step
     header: {
       name: 'Profile',
       number: 1,
     },
     buttons: {
-      next: {
-        label: 'Next',
-      },
-      back: {
-        label: 'Back',
-      },
+      next: { label: 'Next' },
+      back: { label: 'Back' },
     },
   };
 
   const introductionStep = {
-    component: <PageTwo />,
+    component: <PageTwo />, // Render PageTwo for this step
     header: {
       name: 'DevLaunchers',
       number: 2,
     },
     buttons: {
-      next: {
-        label: 'Next',
-      },
-      back: {
-        label: 'Back',
-        hide: true,
-      },
+      next: { label: 'Next' },
+      back: { label: 'Back', hide: true }, // Hide the back button
     },
   };
 
@@ -93,15 +103,11 @@ export default function PlatformOnboarding() {
     header: {
       name: 'About you',
       number: 3,
-      barSize: 's',
+      barSize: 's', // Small progress bar
     },
     buttons: {
-      next: {
-        label: 'Next',
-      },
-      back: {
-        label: 'Back',
-      },
+      next: { label: 'Next' },
+      back: { label: 'Back' },
     },
   };
 
@@ -109,15 +115,11 @@ export default function PlatformOnboarding() {
     component: <PageFour />,
     header: {
       barSize: 's',
-      hideNumber: true,
+      hideNumber: true, // Hide the step number
     },
     buttons: {
-      next: {
-        label: 'Next',
-      },
-      back: {
-        label: 'Back',
-      },
+      next: { label: 'Next' },
+      back: { label: 'Back' },
     },
   };
 
@@ -128,12 +130,8 @@ export default function PlatformOnboarding() {
       hideNumber: true,
     },
     buttons: {
-      next: {
-        label: 'Next',
-      },
-      back: {
-        label: 'Back',
-      },
+      next: { label: 'Next' },
+      back: { label: 'Back' },
     },
   };
 
@@ -146,16 +144,15 @@ export default function PlatformOnboarding() {
     },
     buttons: {
       submit: {
-        label: 'Finish',
-        hideIcons: true,
-        onClick: submitOnboardingData,
+        label: 'Finish', // Final button label
+        hideIcons: true, // Hide icons for this button
+        onClick: submitOnboardingData, // Action to submit onboarding data
       },
-      back: {
-        label: 'Back',
-      },
+      back: { label: 'Back' },
     },
   };
 
+  // Combine all steps into a single stepper configuration
   const stepperConfig = [
     profileStep,
     introductionStep,
@@ -165,5 +162,6 @@ export default function PlatformOnboarding() {
     congratulationStep,
   ];
 
+  // Render the Stepper with the configuration
   return <Stepper steps={stepperConfig} startingIndex={0} />;
 }
