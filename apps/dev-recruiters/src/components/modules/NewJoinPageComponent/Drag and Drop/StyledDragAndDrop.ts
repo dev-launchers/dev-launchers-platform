@@ -56,49 +56,12 @@ export const ChooseFileSection = styled.div`
 
 export const AllPageSection = styled.svg`
   display: flex;
-  width: 84px;
-  height: 109.2px;
+  width: 250px;
+  height: 209.2px;
   flex-shrink: 0;
   position: relative;
   fill: var(--Grey-Scale-off-white, #f0edee);
   stroke-width: 1.352px;
   stroke: var(--Grey-Scale-charcoal, #474747);
   z-index: 1;
-`;
-
-export const PageSection = styled.svg`
-  display: flex;
-  width: 84px;
-  height: 109.2px;
-  flex-shrink: 0;
-  fill: var(--Grey-Scale-off-white, #f0edee);
-  stroke-width: 1.352px;
-  stroke: var(--Grey-Scale-charcoal, #474747);
-  z-index: 1;
-`;
-export const PageTriangleTopRightSection = styled.svg`
-  top: 0;
-  right: 0;
-  width: 19.6px;
-  height: 19.6px;
-  flex-shrink: 0;
-  position: absolute;
-  fill: var(--Grey-Scale-charcoal, #474747);
-  stroke-width: 1.352px;
-  stroke: var(--Grey-Scale-charcoal, #474747);
-  z-index: 10;
-`;
-export const PageCenterSection = styled.svg`
-  width: 16.229px;
-  height: 3.381px;
-  flex-shrink: 0;
-  border-radius: 5.41px;
-  background: var(--Grey-Scale-charcoal, #474747);
-  z-index: 12;
-`;
-export const PageArrowSection = styled.svg`
-  width: 60.547px;
-  height: 60.547px;
-  flex-shrink: 0;
-  z-index: 13;
 `;

@@ -186,13 +186,11 @@ export default function SignUpForm({
   const handleRemoveFile = () => {
     setIsDeleting(true); // Deleting state
     const newArr = [...selectedFiles];
-    axios
-      .delete(
-        `${process.env.NEXT_PUBLIC_STRAPI_URL}/googledrive/${filesUploaded['id']}`
-      )
-
-      .then((responseBody) => {
-        if (responseBody.status === 200) {
+    try {
+      const deleteResult = agent.GoogledriveFile.delete(
+        `${filesUploaded['id']}`
+      ).then((responseBody) => {
+        if (responseBody === 200) {
           setFilesUploaded({});
           newArr.splice(filesUploaded[0], 1);
           setSelectedFiles([]);
@@ -202,6 +200,12 @@ export default function SignUpForm({
           setIsDeleting(false); // Deleting state
         }
       });
+      if (!deleteResult) return deleteResult;
+      else return 'Not deleted';
+    } catch (error) {
+      console.error('Error Deleting files:', error);
+      return 'Delete failed due to an error';
+    }
   };
 
   // const router = useRouter();
