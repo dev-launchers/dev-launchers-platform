@@ -70,7 +70,8 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
           if (!uploadStatus) return postResult;
           else return 'Not uploaded';
         } catch (error) {
-          console.error('Error uploading files:', error);
+          setUploadError('Error uploading files');
+          setIsUploading(false);
           return 'Upload failed due to an error';
         }
       } else return 'file Empty';

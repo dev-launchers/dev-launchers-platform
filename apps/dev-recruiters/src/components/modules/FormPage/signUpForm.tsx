@@ -159,6 +159,7 @@ export default function SignUpForm({
 
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [uploadError, setUploadError] = useState('');
+  const [deleteError, setDeleteError] = useState('');
 
   const [canButVis, setCanButVis] = useState(true);
 
@@ -189,21 +190,26 @@ export default function SignUpForm({
     try {
       const deleteResult = agent.GoogledriveFile.delete(
         `${filesUploaded['id']}`
-      ).then((responseBody) => {
-        if (responseBody === 200) {
-          setFilesUploaded({});
-          newArr.splice(filesUploaded[0], 1);
-          setSelectedFiles([]);
-          setSelectedFiles(newArr);
-          setFilesUploaded({});
-          setCanButVis(false);
-          setIsDeleting(false); // Deleting state
-        }
-      });
-      if (!deleteResult) return deleteResult;
-      else return 'Not deleted';
+      )
+        .then((responseBody) => {
+          if (responseBody === 200) {
+            newArr.splice(filesUploaded[0], 1);
+            setSelectedFiles([]);
+            setSelectedFiles(newArr);
+            setFilesUploaded({});
+            setCanButVis(false);
+            setIsDeleting(false); // Deleting state
+            setDeleteError('');
+          }
+        })
+        .catch((error) => {
+          setDeleteError('Error Deleting files');
+          setIsDeleting(false);
+          return 'Delete failed due to an error';
+        });
     } catch (error) {
-      console.error('Error Deleting files:', error);
+      setDeleteError('Error Deleting files');
+      setIsDeleting(false);
       return 'Delete failed due to an error';
     }
   };
@@ -458,9 +464,13 @@ export default function SignUpForm({
                       )}
                     </atoms.Box>
                   ) : null}
-
-                  {isDeleting ? 'Deleting' : null}
-
+                  <>
+                    {isDeleting
+                      ? 'Deleting'
+                      : deleteError === ''
+                      ? null
+                      : 'Delete Failed'}
+                  </>
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.
