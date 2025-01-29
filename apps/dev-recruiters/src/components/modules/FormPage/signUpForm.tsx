@@ -464,13 +464,13 @@ export default function SignUpForm({
                       )}
                     </atoms.Box>
                   ) : null}
-                  <>
+                  <atoms.Box>
                     {isDeleting
                       ? 'Deleting'
                       : deleteError === ''
                       ? null
                       : 'Delete Failed'}
-                  </>
+                  </atoms.Box>
                   <atoms.Typography type="p">
                     We require users to be 18 years old or older. Please confirm
                     below.

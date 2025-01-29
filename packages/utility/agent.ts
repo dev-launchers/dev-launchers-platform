@@ -71,9 +71,6 @@ function createFormData(item: any) {
 const responseBody = (response: AxiosResponse) =>
   response.data.data ? response.data.data : response.data;
 
-const deleteStatus = (response: AxiosResponse) =>
-  response.status === 200 ? response.status : response.status;
-
 const errorBody = (error: AxiosError) => (error ? error : null);
 
 const requests = {
@@ -85,8 +82,7 @@ const requests = {
   patch: <T>(url: string, body: {}) =>
     axios.patch<T>(url, body).then(responseBody),
   delete: <T>(url: string, body?: {}) =>
-    //  axios.delete<T>(url, body).then(responseBody),
-    axios.delete<T>(url, body).then(deleteStatus),
+    axios.delete<T>(url, body).then((response) => response.status),
   postForm: <T>(url: string, data: FormData) =>
     axios
       .post<T>(url, data, {

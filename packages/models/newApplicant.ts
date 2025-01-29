@@ -9,9 +9,9 @@ export interface NewApplicant {
     skill: string;
   }[];
   commitment: number;
-  extraInfo?: string; //column missing
-  portfolioLink?: string; //column missing
-  portfolioFileId?: string; //column missing
+  extraInfo?: string;
+  portfolioLink?: string;
+  portfolioFileId?: string;
   yearsOfExperience?: number;
   experience: string;
   reason: string;
