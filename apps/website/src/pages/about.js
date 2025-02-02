@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Donate } from '../../../website/src/components/modules/Home/Sections';
 import Head from 'next/head';
 
@@ -10,13 +11,10 @@ export default function About() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="bg-black py-32 max-w-7xl px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
-            <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-              style={{ fontSize: '4.5rem' }}
-            >
+            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
               Our Mission
             </h1>
-            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-lg md:text-xl text-center max-w-3xl  text-gray-500  font-normal">
               At Dev Launchers, we empower individuals to excel in their tech
               careers at every stage of their journey. We believe that
               technology careers should be accessible to everyone, regardless of
@@ -26,10 +24,10 @@ export default function About() {
         </section>
         <section className="max-w-7xl bg-black py-24 px-4 md:px-8 justify-center">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
               Our Story
             </h2>
-            <p className="text-base text-center max-w-4xl  text-gray-500  font-normal">
+            <p className="text-base md:text-lg text-center max-w-4xl pt-10 text-gray-500  font-normal">
               Founded in 2019 in Austin, Texas, Dev Launchers began as a
               Saturday program teaching coding and game development to local
               teenagers. What started as a small group of passionate volunteers
@@ -49,18 +47,18 @@ export default function About() {
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-left leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               What We Do
             </h2>
-            <p className="text-lg text-left max-w-4xl  text-gray-500  font-normal"></p>
+            <p className="text-base md:text-lg text-left max-w-4xl  text-gray-500  font-normal"></p>
           </div>
 
           <div className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-2 grid-rows-1 md:grid-rows-2">
             <div className="bg-orange-900 border-orange-500 border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+              <h3 className="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
                 Create
               </h3>
-              <p className="text-base text-left text-orange-200 p-0 font-normal">
+              <p className="text-sm md:text-base text-left text-orange-200 pt-2 font-normal">
                 We're developing a platform to foster new projects, where ideas
                 come to life through collaboration and shared learning. Our
                 members work on real-world projects, gaining practical
@@ -69,10 +67,10 @@ export default function About() {
               </p>
             </div>
             <div className="bg-teal-900 border-teal-500 border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 className="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Connect
               </h3>
-              <p className="text-base text-left  text-teal-200 p-0 font-normal">
+              <p className="text-sm md:text-base text-left  text-teal-200 pt-2 font-normal">
                 We build professional networks and forge friendships across the
                 globe. Our community spans multiple continents, bringing
                 together diverse perspectives and experiences. We believe great
@@ -80,10 +78,10 @@ export default function About() {
               </p>
             </div>
             <div className="bg-yellow-900 border-yellow-500 border-4 items-center  p-8 rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 className="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Grow
               </h3>
-              <p className="text-base text-left  text-yellow-200 p-0 font-normal">
+              <p className="text-sm md:text-base text-left  text-yellow-200 pt-2 font-normal">
                 We mentor new members, encourage leadership development, and
                 expand our community. Learning from mistakes is part of our
                 journey, and we celebrate both the successes and the learning
@@ -91,10 +89,10 @@ export default function About() {
               </p>
             </div>
             <div className="bg-blue-900 border-blue-500 border-4 p-8 items-center rounded-lg">
-              <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 className="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
                 Have Fun!
               </h3>
-              <p className="text-base text-left text-blue-200 p-0 font-normal">
+              <p className="text-sm md:text-base text-left text-blue-200 pt-2 font-normal">
                 We believe that engagement is the gateway to learning, and
                 learning should be enjoyable. While we tackle challenging
                 problems, we maintain an environment that promotes creativity,
@@ -106,10 +104,10 @@ export default function About() {
 
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10">
               Our Values
             </h2>
-            <p className="text-lg text-center max-w-4xl pb-10 text-gray-500  font-normal">
+            <p className="text-base md:text-lg text-center max-w-4xl pb-10 text-gray-500  font-normal">
               At Dev Launchers, our values shape how we work, learn, and grow
               together. We believe that the best experiences come from combining
               excitement and intention - making learning fun while staying
@@ -123,10 +121,10 @@ export default function About() {
 
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-2">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Excitement
               </h3>
-              <p class="text-base text-left  text-orange-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-orange-200 pt-2 font-normal">
                 Excitement drives engagement and fuels learning. When you're
                 genuinely excited about what you're creating, learning happens
                 naturally. We create an environment where curiosity is
@@ -134,10 +132,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Intention
               </h3>
-              <p class="text-base text-left  text-teal-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-teal-200 pt-2 font-normal">
                 Success isn't about being the smartest or the most talented –
                 it's about showing up every day with purpose and dedication. We
                 approach challenges methodically, knowing that persistent,
@@ -145,10 +143,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Connection
               </h3>
-              <p class="text-base text-left  text-yellow-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-yellow-200 pt-2 font-normal">
                 In our community, reaching out for help is a sign of strength,
                 not weakness. Strong connections form the foundation of
                 effective learning and innovation. We celebrate collaboration
@@ -157,10 +155,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-blue-900 border-blue-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Building
               </h3>
-              <p class="text-base text-left  text-blue-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-blue-200 pt-2 font-normal">
                 Progress isn't always linear, and success looks different for
                 everyone. We encourage thoughtful self-assessment and believe in
                 setting meaningful, personal benchmarks for growth. Through
@@ -168,10 +166,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
                 Teamwork
               </h3>
-              <p class="text-base text-left  text-orange-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-orange-200 pt-2 font-normal">
                 Individual achievements are team victories. We foster an
                 environment where success is shared and celebrated collectively.
                 Respect isn't just an ideal – it's woven into how we collaborate
@@ -179,10 +177,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Leadership
               </h3>
-              <p class="text-base text-left  text-teal-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-teal-200 pt-2 font-normal">
                 Leadership isn't about titles; it's about taking initiative and
                 responsibility. Whether you're mentoring others, leading a
                 project, or suggesting improvements, we encourage everyone to
@@ -195,11 +193,11 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Partner with Us
             </h2>
-            <p className="text-lg text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-base md:text-lg text-center max-w-3xl  text-gray-500  font-normal">
               At Dev Launchers, we believe in the power of collaboration to
               create transformative experiences. Join us in our mission to
               bridge opportunity gaps in the tech industry by becoming a
@@ -230,7 +228,7 @@ export default function About() {
           <div className="flex flex-col justify-center items-center pb-10">
             <h2
               id="partner"
-              className="text-6xl max-w-4xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Our Partners and Sponsors
             </h2>
@@ -239,10 +237,10 @@ export default function About() {
           <p className="text-lg text-left max-w-3xl  text-gray-500  font-normal"></p>
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-1">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
-                Powered by Leading Technology Companies
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+                Powered by Leaders
               </h3>
-              <p class="text-base text-left  text-orange-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-orange-200 pt-4 font-normal">
                 Dev Launchers is proud to be supported by grants from industry
                 leaders who share our vision of making technology careers
                 accessible to everyone. Through the generous support of Google
@@ -253,10 +251,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Community Partnerships
               </h3>
-              <p class="text-base text-left  text-teal-200 p-0 font-normal">
+              <p class="text-sm md:text-base  text-left  text-teal-200 pt-4 font-normal">
                 Our roots in the Austin community run deep, starting with our
                 founding partnership with the Austin Public Library. This
                 collaboration helped launch our initial programming and
@@ -268,10 +266,10 @@ export default function About() {
               </p>
             </div>
             <div class="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
                 Building Together
               </h3>
-              <p class="text-base text-left  text-yellow-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-yellow-200 pt-4 font-normal">
                 These partnerships represent more than just financial support –
                 they're relationships that help us create meaningful
                 opportunities for our community. Our partners share our
@@ -291,11 +289,11 @@ export default function About() {
           <div className="flex flex-col justify-center items-center">
             <h2
               id="partner"
-              className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
+              className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-10"
             >
               Our Teams
             </h2>
-            <p className="text-lg text-center max-w-3xl  pb-10 text-gray-500  font-normal">
+            <p className="text-base md:text-lg text-center max-w-3xl  pb-10 text-gray-500  font-normal">
               {' '}
               Our organization is entirely powered by our volunteer members
               dedicated to launching their own careers as well as supporting
@@ -306,58 +304,58 @@ export default function About() {
 
           <div class="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3 grid-rows-1 md:grid-rows-1">
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
                 Dev Recruit
               </h3>
-              <p class="text-base text-left  text-orange-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-orange-200 pt-2 font-normal">
                 {' '}
                 Our internal recruitment platform that powers our teams through
                 providing recruitment management and support.
               </p>
             </div>
             <div class="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 IdeaSpace
               </h3>
-              <p class="text-base text-left  text-teal-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-teal-200 pt-2 font-normal">
                 Turn dreams into software ideas, a place to discover new ideas
                 or workshop your ideas and turn them into reality.
               </p>
             </div>
             <div class="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
                 Platform
               </h3>
-              <p class="text-base text-left  text-yellow-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-yellow-200 pt-2 font-normal">
                 {' '}
                 Our core development team that supports our community platform
                 through full-stack developed assets.
               </p>
             </div>
             <div class="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 User Profile
               </h3>
-              <p class="text-base text-left  text-teal-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-teal-200 pt-2 font-normal">
                 Powering the profile features and enabling connection and
                 collaboration support for our membership community.
               </p>
             </div>
             <div class="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 AI Ally
               </h3>
-              <p class="text-base text-left  text-yellow-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-yellow-200 pt-2 font-normal">
                 {' '}
                 Leveraging AI capabilities to improve our internal processes and
                 member workflow.
               </p>
             </div>
             <div class="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-              <h3 class="text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+              <h3 class="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
                 Universal Design
               </h3>
-              <p class="text-base text-left  text-orange-200 p-0 font-normal">
+              <p class="text-sm md:text-base text-left  text-orange-200 pt-2 font-normal">
                 {' '}
                 Building and maintaining our design system and brand identity
                 for the organization while providing assets and framework to

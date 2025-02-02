@@ -22,12 +22,10 @@ export const styles = {
       'flex flex-col items-center justify-center w-full text-center  max-w-screen-xl ',
     headerHero:
       'flex flex-col items-center justify-center w-full max-w-6xl text-center pt-6 pb-4',
-    heading: 'text-6xl font-bold text-center leading-relaxed pb-4',
-    headingHero: {
-      className:
-        'font-bold max-w-5xl text-center align-center border-none border-0 m-0 pt-0 pb-4',
-      style: { fontSize: '4.25rem' },
-    },
+    heading:
+      'text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl pb-4',
+    headingHero:
+      'font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4',
     label:
       'text-lg text-center uppercase text-gray-400 mx-auto font-normal min-w-full',
     logoContainer:
@@ -39,6 +37,6 @@ export const styles = {
     stackLogo:
       'flex items-center justify-center  gap-4 p-4 rounded-lg  transition-colors',
     subHeading:
-      'text-xl pb-2 text-center text-gray-500 max-w-3xl mx-auto font-normal',
+      'text-base md:text-lg lg:text-xl pb-2 pt-4 text-center leading-relaxed text-gray-500 max-w-3xl mx-auto font-normal',
   },
 };
