@@ -195,7 +195,7 @@ const IdeaForm = ({
                 {/* Idea Name Field */}
                 <FieldWrapper data-field="ideaName">
                   <FieldLabel>
-                    Idea Name
+                    Idea name
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
@@ -209,7 +209,7 @@ const IdeaForm = ({
                   >
                     <StyledInput
                       name="ideaName"
-                      placeholder="Enter your idea name"
+                      placeholder="Title your idea"
                       value={values.ideaName || ''}
                       onChange={(e) =>
                         setFieldValue('ideaName', e.target.value.slice(0, 80))
@@ -248,7 +248,7 @@ const IdeaForm = ({
                   >
                     <StyledTextArea
                       name="description"
-                      placeholder="What is your product idea?"
+                      placeholder="Describe your idea, its target audience, and the impact it would have."
                       value={values.description || ''}
                       onChange={(e) =>
                         setFieldValue(
@@ -276,7 +276,8 @@ const IdeaForm = ({
                 {/* Experience Field */}
                 <FieldWrapper data-field="experience">
                   <FieldLabel>
-                    What experience do you have with this idea?
+                    Do you have any relevant experience that you'd like to
+                    utilize?
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
@@ -290,7 +291,7 @@ const IdeaForm = ({
                   >
                     <StyledTextArea
                       name="experience"
-                      placeholder="Share your experience relevant to this idea"
+                      placeholder="If you have any relevant experience in development or design, please share here. It won't be shown publicly."
                       value={values.experience || ''}
                       onChange={(e) =>
                         setFieldValue(

@@ -9,7 +9,7 @@ export const StyledRanbow = styled.div`
 export const TextAreaWrapper = styled.div`
   position: relative;
   width: 100%;
-  border: 4px solid
+  border: 2px solid
     ${({ hasError, isCompleted, isFocused }) => {
       if (isFocused) return '#3F1F5F';
       if (hasError) return '#882D2D';
@@ -29,7 +29,7 @@ export const FieldWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 560px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 `;
 
 export const FieldLabel = styled.label`
@@ -38,8 +38,8 @@ export const FieldLabel = styled.label`
   gap: 2px;
   color: #1c1c1c;
   font: 400 16px/24px 'Nunito Sans', sans-serif;
-  text-transform: capitalize;
-  padding: 8px 0;
+  text-transform: none;
+  margin-bottom: 8px;
 `;
 
 export const RequiredAsterisk = styled.span`
@@ -61,13 +61,12 @@ export const StyledTextArea = styled.textarea`
   margin: 0;
 
   &::placeholder {
-    color: var(--static-content-text-grey-muted, #494949);
-    font-family: var(--font-family-secondary, 'Nunito Sans');
-    font-size: var(--placeholder-font-size, 18px);
-    font-style: normal;
-    font-weight: 300;
-    line-height: var(--placeholder-line-height, 24px);
-    letter-spacing: var(--font-letter-spacing-body-body, 0px);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    color: #494949;
+    font: 300 18px/24px 'Nunito Sans';
   }
 `;
 
@@ -76,6 +75,7 @@ export const CharacterCounter = styled.div`
   color: #7339ac;
   font: 400 14px/20px 'Nunito Sans', sans-serif;
   padding: 4px 16px;
+  margin-top: 4px;
   color: ${({ isLimit }) => (isLimit ? '#ae3a3a' : '#7339ac')};
 `;
 
@@ -90,13 +90,12 @@ export const StyledInput = styled.input`
   border-radius: 24px;
 
   &::placeholder {
-    color: var(--static-content-text-grey-muted, #494949);
-    font-family: var(--font-family-secondary, 'Nunito Sans');
-    font-size: var(--placeholder-font-size, 18px);
-    font-style: normal;
-    font-weight: 300;
-    line-height: var(--placeholder-line-height, 24px);
-    letter-spacing: var(--font-letter-spacing-body-body, 0px);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    color: #494949;
+    font: 300 18px/24px 'Nunito Sans';
   }
 `;
 
