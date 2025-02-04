@@ -77,6 +77,7 @@ const IdeaForm = ({
   formButton,
   sending,
   clickHandler,
+  editMode = false,
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
@@ -103,9 +104,11 @@ const IdeaForm = ({
 
   const handleSubmit = (values, actions) => {
     submitHandler(values, actions);
-    setSuccessMessageVisible(true);
-    actions.resetForm({ values: initialValues });
-    clearLocalStorage();
+    if (!editMode) {
+      setSuccessMessageVisible(true);
+      actions.resetForm({ values: initialValues });
+      clearLocalStorage();
+    }
   };
 
   const renderFieldMessage = (
@@ -646,7 +649,7 @@ const IdeaForm = ({
                   )}
                 </atoms.Box>
               </atoms.Box>
-              {successMessageVisible && (
+              {!editMode && successMessageVisible && (
                 <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
               )}
             </Form>

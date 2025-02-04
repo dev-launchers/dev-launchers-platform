@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-function EditIdea() {
+function EditIdea({ initialIdea, onEditSuccess }) {
   let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
@@ -51,17 +51,19 @@ function EditIdea() {
     ['primary', 'got it']
   );
 
-  const [card, setCard] = useState({
-    ideaName: '',
-    tagline: '',
-    description: '',
-    targetAudience: '',
-    features: '',
-    experience: '',
-    extraInfo: '',
-    involveLevel: '',
-    status: '',
-  });
+  const [card, setCard] = useState(
+    initialIdea || {
+      ideaName: '',
+      tagline: '',
+      description: '',
+      targetAudience: '',
+      features: '',
+      experience: '',
+      extraInfo: '',
+      involveLevel: '',
+      status: '',
+    }
+  );
 
   const rejectAuthor = async () => {
     if (!(await confirmArchive())) {
@@ -75,29 +77,30 @@ function EditIdea() {
     }
   };
 
-  useEffect(async () => {
-    if (ideaId) {
-      const idea = cleanData(
-        await agent.Ideas.getIdea(ideaId, new URLSearchParams('populate=*'))
-      );
-      if (!idea || !idea.id || idea.id == 0) {
-        setGetError(true);
-        return;
-      }
-
-      if (userData.id !== 0) {
-        if (idea.author.data.id === userData.id) {
-          if (idea.status == 'archived') {
-            rejectAuthor();
+  useEffect(() => {
+    async function fetchIdea() {
+      if (!initialIdea && ideaId) {
+        const idea = cleanData(
+          await agent.Ideas.getIdea(ideaId, new URLSearchParams('populate=*'))
+        );
+        if (!idea || !idea.id || idea.id === 0) {
+          setGetError(true);
+          return;
+        }
+        if (userData.id !== 0) {
+          if (idea.author.data.id === userData.id) {
+            if (idea.status === 'archived') {
+              rejectAuthor();
+            }
+            setCard(idea);
+          } else {
+            rejectUser();
           }
-
-          setCard(idea);
-        } else {
-          rejectUser();
         }
       }
     }
-  }, [ideaId, userData.id]);
+    fetchIdea();
+  }, [ideaId, userData.id, initialIdea]);
 
   const SignupSchema = Yup.object().shape({
     ideaName: Yup.string().trim().required('Idea Name is Required.'),
@@ -115,15 +118,21 @@ function EditIdea() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
+    // Setting a default or valid status value if it's empty
+    if (!values['status'] || values['status'].trim() === '') {
+      values['status'] = 'workshopping';
+    }
     setSending(true);
 
     try {
-      const data = cleanData(await agent.Ideas.put(ideaId, values));
+      const payload = { data: values };
+      const data = cleanData(await agent.Ideas.put(ideaId, payload));
 
       if (data.ideaName) {
         setunsavedChanges(false);
-        if (await confirmNotice()) {
-          setUrrl(`/ideaspace/workshop/${data.id}`);
+        setSending(false);
+        if (onEditSuccess) {
+          onEditSuccess(data);
         }
       }
     } catch (error) {
@@ -214,6 +223,7 @@ function EditIdea() {
               formButton="save"
               sending={sending}
               clickHandler={backHandler}
+              editMode={true}
             />
           </>
         )}
