@@ -38,7 +38,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
 
   const overlayClasses = `
     fixed inset-0 z-[1000] transition-colors duration-300 
-    ${overlayVisible ? 'bg-black/20 visible' : 'bg-transparent invisible'}
+    ${overlayVisible ? 'bg-[#676767]/60 visible' : 'bg-transparent invisible'}
     flex justify-center ${isMobileDrawer ? 'items-end' : 'items-center'}
   `;
 
@@ -46,13 +46,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     w-[640px] h-[664px] flex-shrink-0 rounded-[24px] 
     bg-[#F4F0F9] shadow-[0px_3px_9px_0px_rgba(212,194,229,0.8)] 
     flex flex-col overflow-hidden transition-all duration-300 ease 
-    ${
-      open
-        ? 'scale-100 translate-y-0 opacity-100'
-        : exiting
-        ? 'translate-y-full opacity-0'
-        : 'scale-125 opacity-0'
-    }
+    ${open ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
   `;
 
   const mobileDialogClasses = `
