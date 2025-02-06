@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
 import { useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
@@ -159,16 +160,13 @@ export default function Resources() {
       <Head>
         <title>Resources</title>
       </Head>
-      <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
-        <section className="max-w-7xl py-32 px-4 md:px-8">
+      <main className="flex flex-col justify-center items-center mx-auto max-w-full min-h-screen bg-black text-white py-16">
+        <section className="max-w-5xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h1
-              className="text-7xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white"
-              style={{ fontSize: '4.5rem' }}
-            >
+            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
               Resources for Growth
             </h1>
-            <p className="text-xl text-center max-w-4xl  text-gray-500  font-normal">
+            <p className="text-lg md:text-xl text-center max-w-4xl  text-gray-500 pb-4 font-normal">
               Embark on a path to expanding your technological prowess. Whether
               you are just starting or looking to refine specific skills, our
               curated resources are here to guide you every step of the way.
@@ -179,12 +177,12 @@ export default function Resources() {
           </div>
         </section>
 
-        <section className="max-w-7xl  pt-4 pb-10 px-4 md:px-8">
-          <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+        <section className=" flex flex-col flex-wrap max-w-5xl  pt-4 pb-10 px-4 md:px-8">
+          <div className="flex flex-col flex-wrap justify-center items-center py-4">
+            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
               Resources by Category
             </h2>
-            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-lg lg:text-xl text-center max-w-3xl py-8 px-8 sm:py-4 text-gray-500  font-normal">
               Explore a diverse array of resources organized by category to find
               exactly what you need to progress. From coding tools and design
               software to advanced tutorials, our categories are designed to
@@ -193,10 +191,7 @@ export default function Resources() {
           </div>
           <div className="flex flex-col justify-center items-center py-4">
             <Tabs defaultValue="dev" className="w-full">
-              <TabsList
-                className="flex flex-row justify-around
-                  py-8 px-4  gap-8 bg-gray-900"
-              >
+              <TabsList className="flex justify-around py-8 px-4 gap-8 bg-gray-900">
                 <TabsTrigger
                   className="text-xl focus:bg-purple-500"
                   value="dev"
@@ -461,26 +456,25 @@ export default function Resources() {
           </div>
         </section>
 
-        <section className="max-w-7xl  py-24  md:px-8">
-          <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+        <section className="flex flex-col flex-wrap max-w-full md:max-w-5xl  px-4">
+          <div className="flex flex-col flex-wrap justify-center items-center py-4">
+            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
               Learning and Games
             </h2>
-            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-lg lg:text-xl text-center max-w-3xl px-8 py-8  text-gray-500  font-normal">
               Learn Code and Design using these games to build conceptual
               learning to prepare for creating software projects and
               applications
             </p>
           </div>
-
-          <div class="flex flex-col justify-center items-center py-4">
+          <div class="flex flex-col max-w-full justify-center items-center py-4">
             <Tabs defaultValue={'Code'} className="w-full">
-              <TabsList className="flex flex-row justify-center py-8 px-4 gap-8 bg-gray-900">
+              <TabsList className="flex flex-wrap justify-around py-8 px-4 gap-8 bg-gray-900">
                 {Object.keys(learnPageData).map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className=" text-lg bg-background"
+                    className="text-lg bg-background"
                   >
                     {category}
                   </TabsTrigger>
@@ -512,19 +506,19 @@ export default function Resources() {
             </Tabs>
           </div>
         </section>
-        <section className="max-w-7xl py-24 px-4 md:px-8">
-          <div className="flex flex-col justify-center items-center py-16">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+
+        <section className="flex flex-col flex-wrap w-5xl max-w-full md:max-w-5xl py-10 px-4">
+          <div className="flex flex-col flex-wrap justify-center items-center pt-16 pb-8">
+            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center  ">
               Create with Templates
             </h2>
-            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-lg lg:text-xl text-center max-w-3xl px-8 py-8 text-gray-500  font-normal">
               Ready to test your skills? These templates are great ways to get
               started and reinforce your learning
             </p>
           </div>
-
-          <div>
-            <Tabs defaultValue={'Templates'} className="w-full">
+          <div class="flex flex-col max-w-full justify-center items-center py-4">
+            <Tabs defaultValue={'Templates'} className="px-10 w-full">
               <TabsList className="flex flex-row justify-center py-8 px-4  gap-8 bg-gray-900">
                 {Object.keys(createPageData).map((category) => (
                   <TabsTrigger
@@ -562,16 +556,17 @@ export default function Resources() {
             </Tabs>
           </div>
         </section>
-        <section className="max-w-7xl py-24 px-4 md:px-8">
-          <div className="flex flex-col justify-center items-center">
-            <h2 className="text-6xl max-w-3xl font-bold text-center leading-relaxed tracking-wide border-none border-0 m-0 pb-4 text-white">
+
+        <section className=" flex flex-col flex-wrap max-w-5xl px-4  py-10">
+          <div className="flex flex-col justify-center items-center py-10">
+            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
               Create and Collaborate
             </h2>
-            <p className="text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            <p className="text-base md:text-lg text-center max-w-xl py-4 px-8 text-gray-500  font-normal">
               Join us in real cross-functional teams to apply your skills to
               real world applications
             </p>
-            <div className="flex pt-8">
+            <div className="flex pt-4">
               <a
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
