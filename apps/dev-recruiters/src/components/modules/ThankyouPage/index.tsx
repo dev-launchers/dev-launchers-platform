@@ -12,7 +12,7 @@ export function ThankyouPage() {
   const router = useRouter();
   const routeChange = (e) => {
     e.preventDefault();
-    router.push('/join/filter');
+    router.push('/join');
   };
   return (
     <>
