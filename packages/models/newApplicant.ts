@@ -20,4 +20,6 @@ export interface NewApplicant {
   id?: string;
   project: { id: string; slug: string };
   level: keyof typeof SkillLevel;
+  isAgeOver18: boolean;
+  isTermsAgreed: boolean;
 }

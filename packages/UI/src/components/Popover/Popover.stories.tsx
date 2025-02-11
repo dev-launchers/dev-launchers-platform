@@ -23,7 +23,7 @@ export const Primary: Story = {
   render: () => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button buttonType="primary" buttonSize="standard">
+        <Button type="primary" size="medium">
           Open
         </Button>
       </PopoverTrigger>
@@ -39,7 +39,7 @@ export const WithClose: Story = {
   render: () => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button buttonType="primary" buttonSize="standard">
+        <Button type="primary" size="medium">
           Open
         </Button>
       </PopoverTrigger>
@@ -52,7 +52,7 @@ export const UsingPopoverClose: Story = {
   render: () => (
     <Popover>
       <PopoverTrigger asChild>
-        <Button buttonType="primary" buttonSize="standard">
+        <Button type="primary" size="medium">
           Open
         </Button>
       </PopoverTrigger>
@@ -62,7 +62,7 @@ export const UsingPopoverClose: Story = {
       >
         <p>Click button to close</p>
         <PopoverClose>
-          <Button buttonType="primary" buttonSize="standard">
+          <Button type="primary" size="medium">
             {' '}
             Close{' '}
           </Button>
