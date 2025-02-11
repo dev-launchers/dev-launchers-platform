@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const EditAlertWrapper = styled.div`
   position: fixed;
-  top: 65px;
+  top: 85px;
   right: 20px;
   z-index: 1100;
   background-color: #c4ebc6;

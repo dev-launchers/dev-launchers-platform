@@ -44,7 +44,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
 
   const desktopDialogClasses = `
     w-[640px] h-[664px] flex-shrink-0 rounded-[24px] 
-    bg-[#F4F0F9] shadow-[0px_3px_9px_0px_rgba(212,194,229,0.8)] 
+    bg-[#F4F0F9] 
     flex flex-col overflow-hidden transition-all duration-300 ease 
     ${open ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}
   `;
@@ -57,7 +57,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   `;
 
   const headerClasses =
-    'w-full flex justify-between items-center px-[24px] py-[20px] bg-white flex-shrink-0';
+    'w-full flex justify-between items-center px-[20px] pt-[16px] pb-[14px] bg-white flex-shrink-0';
   const contentClasses = 'flex-1 overflow-y-auto px-[24px] py-[20px]';
   const footerClasses =
     'w-full flex justify-end items-center px-[24px] py-[20px] bg-white flex-shrink-0';
@@ -77,7 +77,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
         }
       >
         <div className={headerClasses}>
-          <div className="font-bold text-xl">Edit Idea</div>
+          <div className="font-medium text-lg">Edit Idea</div>
           <button onClick={onClose} className={closeButtonClasses}>
             X
           </button>
