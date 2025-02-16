@@ -166,7 +166,7 @@ function SubmissionForm() {
       ) : (
         <>
           {/* <Dialog /> */}
-          <CreateFailure />
+          {/* <CreateFailure /> */}
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}

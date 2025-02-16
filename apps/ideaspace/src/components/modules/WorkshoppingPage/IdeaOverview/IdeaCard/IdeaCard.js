@@ -158,6 +158,14 @@ export const IdeaCard = ({
     }, 4000);
   };
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
   return (
     <StyledCard>
       <TopView>
