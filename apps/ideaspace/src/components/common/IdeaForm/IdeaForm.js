@@ -153,6 +153,9 @@ const IdeaForm = ({
     }
   };
 
+  const savedData = loadFromLocalStorage();
+  const newInitialValues = { ...initialValues, ...savedData };
+
   return (
     <atoms.Box
       margin="0rem"
