@@ -22,7 +22,7 @@ function IdeaCard({ cards, cardType }) {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    if (!isLoading) loadDataOnlyOnce(); // query database
+    if (!isLoading) loadDataOnlyOnce();
   }, [isLoading]);
 
   const [UpdateFailure, confirmFailure] = useConfirm(

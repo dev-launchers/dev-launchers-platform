@@ -3027,10 +3027,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/tailwind@workspace:*, @devlaunchers/tailwind@workspace:packages/tailwind-constructor":
+"@devlaunchers/tailwind@file:, @devlaunchers/tailwind@workspace:*, @devlaunchers/tailwind@workspace:packages/tailwind-constructor":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/tailwind@workspace:packages/tailwind-constructor"
   dependencies:
+    "@devlaunchers/tailwind": "file:"
     autoprefixer: 10.4.14
     postcss: 8.4.27
     postcss-cli: ^9.0.1
