@@ -29,6 +29,7 @@ export const IdeaCard = ({
   ideaName,
   ideaTagLine,
   fullIdea,
+  onEditSuccess,
 }) => {
   const [ideaData, setIdeaData] = useState(fullIdea);
   const [upvoted, setUpvoted] = useState(false);
@@ -143,14 +144,22 @@ export const IdeaCard = ({
       />
     );
 
-  // Defining a callback to handle edit success.
+  // Update both local state and notify parent
   const handleEditSuccess = (updatedIdea) => {
-    setIdeaData((prev) => ({
-      ...prev,
+    const newIdeaData = {
+      ...ideaData,
       ...updatedIdea,
-      ideaOwner: prev.ideaOwner,
-      ideaTagLine: updatedIdea.tagline || prev.ideaTagLine,
-    }));
+      ideaOwner: ideaData.ideaOwner,
+      ideaTagLine: updatedIdea.tagline || ideaData.ideaTagLine,
+      description: updatedIdea.description || ideaData.description,
+      features: updatedIdea.features || ideaData.features,
+      targetAudience: updatedIdea.targetAudience || ideaData.targetAudience,
+    };
+
+    setIdeaData(newIdeaData);
+    if (onEditSuccess) {
+      onEditSuccess(newIdeaData);
+    }
     setIsModalOpen(false);
     setShowEditSuccess(true);
     setTimeout(() => {
