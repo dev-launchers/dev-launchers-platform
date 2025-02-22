@@ -68,47 +68,20 @@ export const IdeaOverview = ({ selectedCard }) => {
   if (!ideaData.ideaName) return null;
 
   return (
-    <Wrapper>
-      <LeftWrapper>
-        <TopView>
-          <IdeaCard
-            ideaId={ideaData.id}
-            ideaName={ideaData.ideaName}
-            ideaTagLine={ideaData.tagline}
-            fullIdea={ideaData}
-            onEditSuccess={handleIdeaUpdate}
-          />
-        </TopView>
-        <IdeaContentCard title={'Description'} content={ideaData.description} />
-        <div className="flex flex-row gap-3">
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea features'}
-              content={ideaData.features}
-              fullHeight
-            />
-          </div>
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea target Audience'}
-              content={ideaData.targetAudience}
-              fullHeight
-            />
-          </div>
-        </div>
-      </LeftWrapper>
+    // <div className='flex flex-col gap-4 mx-[380px]'>
+    //   <IdeaOwnerCard
+    //     IdeaOwnerName={ownerDisplayName}
+    //     IdeaOwnerEmail={ownerUserName}
+    //     profilePictureUrl={profilePictureUrl}
+    //     />
+    // </div>
 
-      <RightWrapper>
-        <TopView>
-          <IdeaOwnerCard
-            IdeaOwnerName={ownerDisplayName}
-            profilePictureUrl={profilePictureUrl}
-            IdeaOwnerEmail={ownerUserName}
-          />
-        </TopView>
-
-        {/* <IdeaSettingsCard card={selectedCard} /> */}
-      </RightWrapper>
-    </Wrapper>
+    <div className="flex flex-col gap-4 w-full max-w-[690px]">
+      <IdeaOwnerCard
+        IdeaOwnerName={ownerDisplayName}
+        IdeaOwnerEmail={ownerUserName}
+        profilePictureUrl={profilePictureUrl}
+      />
+    </div>
   );
 };

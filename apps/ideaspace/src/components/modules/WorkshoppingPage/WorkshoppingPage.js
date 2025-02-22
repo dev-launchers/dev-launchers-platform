@@ -10,6 +10,7 @@ import theme from '../../../styles/theme';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import { Form, Comments } from './CommentsForm/StyledComments';
+import { ChevronLeft } from 'lucide-react';
 
 import {
   Container,
@@ -65,40 +66,55 @@ export default function WorkshoppingPage(props) {
       <Container theme={theme}>
         <ArchivedIdea />
 
-        <HeadWapper>
-          <Headline>Idea Workshop</Headline>
-          <StyledRanbow>
-            <atoms.Layer hasRainbowBottom />
-          </StyledRanbow>
-          <BackButton backRoute={'/ideaspace/browse'} />
-          <ParaWrapper>
-            <atoms.Typography type="p" style={{ fontSize: '1.2rem' }}>
-              Want to help this product idea? Comment and ideate this idea with
-              other people to help it become an open source project.
-            </atoms.Typography>
-          </ParaWrapper>
-        </HeadWapper>
+        <div className="flex pt-[44px] pb-[14px] pl-[379px] pr-[48px] items-center gap-4">
+          <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
+            <ChevronLeft />
+          </div>
+          <div className="w-full text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+            Idea Workshopping
+          </div>
+        </div>
 
         {loading === true ? (
           <CircularIndeterminateLoader text="Loading..." color="white" />
         ) : (
-          <div className="flex flex-row justify-center">
-            <Wrapper>
+          // <div className="flex flex-row justify-center">
+          //   {/* <Wrapper> */}
+          //     <div className=''>
+          //       <IdeaOverview selectedCard={data} />
+          //       <Comments>
+          //         <h5 style={{ textAlign: 'left' }}>
+          //           COMMENT FEED: {comments.length}
+          //         </h5>
+          //         <Form>
+          //           <CommentForm
+          //             selectedCard={data}
+          //             comments={comments}
+          //             renderNewComment={renderNewComment}
+          //           />
+          //         </Form>
+          //         <DisplayComments selectedCard={data} comments={comments} />
+          //       </Comments>
+          //     </div>
+          //   {/* </Wrapper> */}
+          // </div>
+          <div className="flex flex-row justify-center px-4 md:px-12 lg:px-[300px] xl:px-[380px]">
+            <div className=" max-w-[690px]">
               <IdeaOverview selectedCard={data} />
-              <Comments>
-                <h5 style={{ textAlign: 'left' }}>
-                  COMMENT FEED: {comments.length}
-                </h5>
-                <Form>
-                  <CommentForm
-                    selectedCard={data}
-                    comments={comments}
-                    renderNewComment={renderNewComment}
-                  />
-                </Form>
-                <DisplayComments selectedCard={data} comments={comments} />
-              </Comments>
-            </Wrapper>
+              {/* <Comments>
+                  <h5 className="text-left">
+                    COMMENT FEED: {comments.length}
+                  </h5>
+                  <Form>
+                    <CommentForm
+                      selectedCard={data}
+                      comments={comments}
+                      renderNewComment={renderNewComment}
+                    />
+                  </Form>
+                  <DisplayComments selectedCard={data} comments={comments} />
+                </Comments> */}
+            </div>
           </div>
         )}
       </Container>

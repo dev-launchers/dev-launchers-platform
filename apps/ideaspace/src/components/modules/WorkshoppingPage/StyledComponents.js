@@ -11,6 +11,7 @@ export const Container = styled.div`
   min-height: 100%;
   padding-bottom: 50px;
   width: 100%; /* Adjust width as needed */
+  padding-top: 20px;
 
   // margin: 0 auto; /* Centers the component horizontally */
 `;
