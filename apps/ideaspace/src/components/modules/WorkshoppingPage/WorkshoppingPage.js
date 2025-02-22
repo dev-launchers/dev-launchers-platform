@@ -64,56 +64,40 @@ export default function WorkshoppingPage(props) {
   } else {
     return (
       <Container theme={theme}>
-        <ArchivedIdea />
-
-        <div className="flex pt-[44px] pb-[14px] pl-[379px] pr-[48px] items-center gap-4">
-          <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
-            <ChevronLeft />
-          </div>
-          <div className="w-full text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
-            Idea Workshopping
+        <div
+          className="w-[680px] m-auto"
+          style={{ marginBottom: '28px', marginTop: '24px' }}
+        >
+          <div className="flex gap-4 items-center">
+            <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
+              <ChevronLeft />
+            </div>
+            <div className="w-full text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+              Idea Workshopping
+            </div>
           </div>
         </div>
 
         {loading === true ? (
           <CircularIndeterminateLoader text="Loading..." color="white" />
         ) : (
-          // <div className="flex flex-row justify-center">
-          //   {/* <Wrapper> */}
-          //     <div className=''>
-          //       <IdeaOverview selectedCard={data} />
-          //       <Comments>
-          //         <h5 style={{ textAlign: 'left' }}>
-          //           COMMENT FEED: {comments.length}
-          //         </h5>
-          //         <Form>
-          //           <CommentForm
-          //             selectedCard={data}
-          //             comments={comments}
-          //             renderNewComment={renderNewComment}
-          //           />
-          //         </Form>
-          //         <DisplayComments selectedCard={data} comments={comments} />
-          //       </Comments>
-          //     </div>
-          //   {/* </Wrapper> */}
-          // </div>
-          <div className="flex flex-row justify-center px-4 md:px-12 lg:px-[300px] xl:px-[380px]">
-            <div className=" max-w-[690px]">
+          <div className="flex flex-row justify-center px-4 md:px-12">
+            <div className=" max-w-[680px]">
               <IdeaOverview selectedCard={data} />
-              {/* <Comments>
-                  <h5 className="text-left">
-                    COMMENT FEED: {comments.length}
-                  </h5>
-                  <Form>
-                    <CommentForm
-                      selectedCard={data}
-                      comments={comments}
-                      renderNewComment={renderNewComment}
-                    />
-                  </Form>
-                  <DisplayComments selectedCard={data} comments={comments} />
-                </Comments> */}
+              <div className="h-[0px] border border-[#dad8d9] mb-10"></div>
+              <Comments>
+                <div className="text-black text-lg font-bold font-['Nunito Sans'] leading-tight">
+                  Comment Feed: {comments.length}
+                </div>
+                <Form>
+                  <CommentForm
+                    selectedCard={data}
+                    comments={comments}
+                    renderNewComment={renderNewComment}
+                  />
+                </Form>
+                <DisplayComments selectedCard={data} comments={comments} />
+              </Comments>
             </div>
           </div>
         )}

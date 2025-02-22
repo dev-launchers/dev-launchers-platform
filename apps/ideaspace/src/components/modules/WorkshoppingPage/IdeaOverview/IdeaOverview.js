@@ -68,20 +68,68 @@ export const IdeaOverview = ({ selectedCard }) => {
   if (!ideaData.ideaName) return null;
 
   return (
-    // <div className='flex flex-col gap-4 mx-[380px]'>
-    //   <IdeaOwnerCard
-    //     IdeaOwnerName={ownerDisplayName}
-    //     IdeaOwnerEmail={ownerUserName}
-    //     profilePictureUrl={profilePictureUrl}
-    //     />
-    // </div>
+    <div className="flex flex-col gap-6 w-full mb-10">
+      <div className=" flex flex-col gap-11">
+        <IdeaOwnerCard
+          IdeaOwnerName={ownerDisplayName}
+          IdeaOwnerEmail={ownerUserName}
+          profilePictureUrl={profilePictureUrl}
+        />
+        <IdeaCard
+          ideaImage={ideaData.ideaImage}
+          ideaId={ideaData.id}
+          ideaName={ideaData.ideaName}
+          ideaTagLine={ideaData.ideaTagLine}
+          fullIdea={ideaData}
+          onEditSuccess={handleIdeaUpdate}
+        />
+      </div>
 
-    <div className="flex flex-col gap-4 w-full max-w-[690px]">
-      <IdeaOwnerCard
-        IdeaOwnerName={ownerDisplayName}
-        IdeaOwnerEmail={ownerUserName}
-        profilePictureUrl={profilePictureUrl}
-      />
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Idea Description
+          </div>
+
+          <div
+            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.description}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Features
+          </div>
+          <div
+            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.features}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Target Audience
+          </div>
+          <div
+            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.targetAudience}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

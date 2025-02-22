@@ -176,53 +176,48 @@ export const IdeaCard = ({
   }, [isModalOpen]);
 
   return (
-    <StyledCard>
-      <TopView>
-        <LeftView>
-          {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
-        </LeftView>
-        <RightView>
-          <IdeaName>{ideaData.ideaName}</IdeaName>
-          <IdeaTagLine>{ideaData.ideaTagLine}</IdeaTagLine>
-        </RightView>
-      </TopView>
-
-      <BottomView>
-        {/* <Button>
-          <BookmarkBorderOutlinedIcon />
-          <StyledText>FOLLOW</StyledText>
-        </Button> */}
-        {upvoteButton}
-        {/* <Button onClick={handleUpvoteClick}>
-          <StarBorderOutlinedIcon />
-          <StyledText>UPVOTE</StyledText>
-        </Button> */}
-        {/* <Button>
-          <ShareOutlinedIcon />
-          <StyledText>SHARE</StyledText>
-        </Button> */}
-
-        {isOwner && (
-          <>
-            <button
-              className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Edit Idea
-            </button>
-            <EditComponent
-              open={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              // initialIdea={fullIdea}
-              initialIdea={ideaData}
-              onEditSuccess={handleEditSuccess}
+    <>
+      <div>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-2">
+              <div className="text-[40px] font-medium">{ideaData.ideaName}</div>
+              <div className="text-lg font-normal">{ideaData.tagline}</div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div>{upvoteButton}</div>
+              <div>
+                {isOwner && (
+                  <>
+                    <button
+                      className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Edit Idea
+                    </button>
+                    <EditComponent
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      // initialIdea={fullIdea}
+                      initialIdea={ideaData}
+                      onEditSuccess={handleEditSuccess}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <div>
+            <img
+              className="h-[304px] rounded-[20px]"
+              src="https://placehold.co/680x304"
             />
-          </>
+          </div>
+        </div>
+        {showEditSuccess && (
+          <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
         )}
-      </BottomView>
-      {showEditSuccess && (
-        <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
-      )}
-    </StyledCard>
+      </div>
+    </>
   );
 };

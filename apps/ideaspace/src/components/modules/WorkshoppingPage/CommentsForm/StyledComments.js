@@ -20,13 +20,8 @@ import styled from 'styled-components';
 export const Comments = styled.div`
   overflow: auto;
   width: 100%;
-  max-width: 690px;
+  max-width: 680px;
   min-width: 300px;
-  padding: 32px 20px;
-  background-color: white;
-  border-radius: 16px;
-  border: 2px solid var(--static-surface-grey-brand, #f0edee);
-  background: #fff;
 `;
 
 export const SingleComment = styled.div`

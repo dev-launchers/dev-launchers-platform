@@ -118,7 +118,11 @@ function SingleCommentComponent(props) {
             <SingleCommentContent>
               <h3>{props.author}</h3>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
-                <IdeaOwnerTag>Idea owner</IdeaOwnerTag>
+                <div className="px-[6px] py-[2px] bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-xl justify-center items-center">
+                  <div className="text-[#494949] text-xs font-normal ">
+                    Idea Owner
+                  </div>
+                </div>
               ) : (
                 ''
               )}
