@@ -64,16 +64,18 @@ export default function WorkshoppingPage(props) {
   } else {
     return (
       <Container theme={theme}>
-        <div
-          className="w-[680px] m-auto"
-          style={{ marginBottom: '28px', marginTop: '24px' }}
-        >
-          <div className="flex gap-4 items-center">
-            <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
-              <ChevronLeft />
-            </div>
-            <div className="w-full text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
-              Idea Workshopping
+        <div className="px-[20px]">
+          <div
+            className="w-full max-w-[680px] m-auto"
+            style={{ marginBottom: '28px', marginTop: '24px' }}
+          >
+            <div className="flex gap-4 items-center">
+              <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
+                <ChevronLeft />
+              </div>
+              <div className=" text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+                Idea Workshopping
+              </div>
             </div>
           </div>
         </div>
@@ -81,8 +83,8 @@ export default function WorkshoppingPage(props) {
         {loading === true ? (
           <CircularIndeterminateLoader text="Loading..." color="white" />
         ) : (
-          <div className="flex flex-row justify-center px-4 md:px-12">
-            <div className=" max-w-[680px]">
+          <div className="flex flex-row justify-center px-[20px]">
+            <div className=" max-w-[680px] min-w-[318px] w-full">
               <IdeaOverview selectedCard={data} />
               <div className="h-[0px] border border-[#dad8d9] mb-10"></div>
               <Comments>
