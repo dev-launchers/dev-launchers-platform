@@ -6,6 +6,7 @@
     "@devlaunchers/components": "workspace:*",
     "axios": "^0.27.2",
     "constate": "^3.3.2",
+    "cookies-next": "4.2.1",
     "formik": "^2.2.9",
     "fuse.js": "^6.6.2",
     "luxon": "^3.0.1",
