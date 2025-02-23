@@ -86,12 +86,12 @@ export const IdeaOverview = ({ selectedCard }) => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-2">
           <div
             className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
             style={{ lineHeight: '160%' }}
           >
-            Idea Descriptio
+            Idea Description
           </div>
 
           <div
