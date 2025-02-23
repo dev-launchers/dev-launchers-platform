@@ -16,7 +16,7 @@ export const IdeaOwnerCard = ({
   const defaultEmail = 'Email is Missing';
   return (
     <>
-      <div className="w-full max-w-[682px] h-[92px] p-5 bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-[20px] border justify-center items-start gap-3 flex">
+      <div className="w-full max-w-[682px] h-[80px] sm:h-[92px] px-4 py-3 sm:p-5 bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-[20px] border justify-center items-start gap-3 flex">
         <div className="w-[52px] h-[52px] flex-col justify-center items-start gap-1 inline-flex">
           <div className="w-[52px] h-[52px] justify-start items-center gap-3 inline-flex">
             <img
