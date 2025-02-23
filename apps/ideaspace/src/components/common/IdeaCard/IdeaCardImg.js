@@ -8,7 +8,7 @@ const IdeaCardImg = ({ cardId }) => {
       <ImgButton style={{ backgroundColor: '#FFFFFF' }}>
         <img
           alt="idea_image"
-          src={`https://picsum.photos/seed/${cardId}/350/270?random=${cardId}`} 
+          src={`https://picsum.photos/seed/${cardId}/350/270?random=${cardId}`}
           style={{
             width: '100%',
             // height: '100%',
