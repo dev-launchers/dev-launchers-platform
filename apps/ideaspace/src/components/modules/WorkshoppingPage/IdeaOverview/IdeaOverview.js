@@ -86,16 +86,16 @@ export const IdeaOverview = ({ selectedCard }) => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-10">
           <div
-            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
             style={{ lineHeight: '160%' }}
           >
-            Idea Description
+            Idea Descriptio
           </div>
 
           <div
-            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.description}
@@ -103,13 +103,13 @@ export const IdeaOverview = ({ selectedCard }) => {
         </div>
         <div className="flex flex-col gap-2">
           <div
-            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
             style={{ lineHeight: '160%' }}
           >
             Features
           </div>
           <div
-            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.features}
@@ -117,13 +117,13 @@ export const IdeaOverview = ({ selectedCard }) => {
         </div>
         <div className="flex flex-col gap-2">
           <div
-            className="text-black text-[22.28px] font-bold font-['Helvetica']"
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
             style={{ lineHeight: '160%' }}
           >
             Target Audience
           </div>
           <div
-            className="text-[#1c1c1c] text-[17px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.targetAudience}

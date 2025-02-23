@@ -126,9 +126,17 @@ export const IdeaCard = ({
         onclick={handleUpvoteClick}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     ) : (
@@ -137,9 +145,17 @@ export const IdeaCard = ({
         disabled={true}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     );
@@ -181,8 +197,18 @@ export const IdeaCard = ({
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-7">
             <div className="flex flex-col gap-2">
-              <div className="text-[40px] font-medium">{ideaData.ideaName}</div>
-              <div className="text-lg font-normal">{ideaData.tagline}</div>
+              <div
+                className="text-[24px] sm:text-[40px] font-bold sm:font-medium"
+                style={{ lineHeight: '32px' }}
+              >
+                {ideaData.ideaName}
+              </div>
+              <div
+                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
+                style={{ lineHeight: '28px' }}
+              >
+                {ideaData.tagline}
+              </div>
             </div>
             <div className="flex flex-row justify-between">
               <div>{upvoteButton}</div>
@@ -207,10 +233,11 @@ export const IdeaCard = ({
               </div>
             </div>
           </div>
-          <div>
+          <div className="w-full h-[256px] rounded-[20px] overflow-hidden">
             <img
-              className="h-[304px] rounded-[20px]"
+              className="w-full h-full object-cover"
               src="https://placehold.co/680x304"
+              alt="Idea Image"
             />
           </div>
         </div>

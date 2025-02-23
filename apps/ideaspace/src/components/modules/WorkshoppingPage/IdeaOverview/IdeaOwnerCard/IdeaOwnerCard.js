@@ -26,7 +26,7 @@ export const IdeaOwnerCard = ({
           </div>
         </div>
         <div className="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
-          <div className="self-stretch justify-start gap-3 inline-flex">
+          <div className="self-stretch justify-between sm:justify-start gap-3 inline-flex">
             <div
               className="text-[#1c1c1c] text-lg font-bold font-['Nunito Sans']"
               style={{ lineHeight: '160%' }}

@@ -70,7 +70,10 @@ export default function WorkshoppingPage(props) {
             style={{ marginBottom: '28px', marginTop: '24px' }}
           >
             <div className="flex gap-4 items-center">
-              <div className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D]">
+              <div
+                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
+                onClick={() => router.push('/ideaspace/browse')}
+              >
                 <ChevronLeft />
               </div>
               <div className=" text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">

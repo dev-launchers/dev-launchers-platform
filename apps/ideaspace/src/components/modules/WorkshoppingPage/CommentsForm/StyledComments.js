@@ -18,7 +18,7 @@ import styled from 'styled-components';
 // `;
 
 export const Comments = styled.div`
-  overflow: auto;
+  // overflow: auto;
   width: 100%;
   max-width: 680px;
   min-width: 300px;
@@ -132,12 +132,12 @@ export const Time = styled.div`
 `;
 
 export const Form = styled.div`
-  overflow: auto;
+  // overflow: auto;
   width: 100%;
   max-width: 700px;
   min-width: 300px;
   border-radius: 30px;
-  margin: 0 300 px 0 300px;
+  margin: 0 auto;
 
   form {
     display: flex;
