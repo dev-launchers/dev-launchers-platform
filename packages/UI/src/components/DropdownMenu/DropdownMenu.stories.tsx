@@ -1,7 +1,7 @@
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Button } from '../atoms';
 
 import {
@@ -108,28 +108,28 @@ export const CheckboxDropdown: Story = {
         </DropdownMenuTrigger>
         <DropdownMenuContent size="medium">
           <div className="space-y-2">
-            <DropdownMenuCheckboxItem 
+            <DropdownMenuCheckboxItem
               onSelect={(e) => e.preventDefault()}
               checked={showStatusBar}
               onCheckedChange={setShowStatusBar}
             >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
+            <DropdownMenuCheckboxItem
               onSelect={(e) => e.preventDefault()}
               checked={showStatusBar2}
               onCheckedChange={setShowStatusBar2}
             >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
+            <DropdownMenuCheckboxItem
               checked={showStatusBar3}
               onSelect={(e) => e.preventDefault()}
               onCheckedChange={setShowStatusBar3}
             >
               Option
             </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem 
+            <DropdownMenuCheckboxItem
               checked={showStatusBar4}
               onSelect={(e) => e.preventDefault()}
               onCheckedChange={setShowStatusBar4}
@@ -163,11 +163,7 @@ export const FormExample: Story = {
     const [showOptions2, setShowOptions2] = useState<Checked>(false);
     const [showOptions3, setShowOptions3] = useState<Checked>(false);
 
-    const onClick = (
-      event:
-        | React.MouseEvent<HTMLButtonElement>
-        | React.FormEvent<HTMLFormElement>
-    ) => {
+    const onClick = (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       alert(
@@ -187,19 +183,22 @@ export const FormExample: Story = {
           </DropdownMenuTrigger>
           <DropdownMenuContent size="large">
             <div className="mb-2 space-y-2">
-              <DropdownMenuCheckboxItem  onSelect={(e) => e.preventDefault()}
+              <DropdownMenuCheckboxItem
+                onSelect={(e) => e.preventDefault()}
                 checked={showOptions}
                 onCheckedChange={setShowOptions}
               >
                 Option#1
               </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem  onSelect={(e) => e.preventDefault()}
+              <DropdownMenuCheckboxItem
+                onSelect={(e) => e.preventDefault()}
                 checked={showOptions2}
                 onCheckedChange={setShowOptions2}
               >
                 Option#2
               </DropdownMenuCheckboxItem>
-              <DropdownMenuCheckboxItem  onSelect={(e) => e.preventDefault()}
+              <DropdownMenuCheckboxItem
+                onSelect={(e) => e.preventDefault()}
                 checked={showOptions3}
                 onCheckedChange={setShowOptions3}
               >
@@ -236,7 +235,7 @@ export const FormExample: Story = {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <Button onClick={onClick} buttonType="primary" buttonSize="standard">
+        <Button onClick={onClick} type="primary" size="medium">
           Submit
         </Button>
       </form>

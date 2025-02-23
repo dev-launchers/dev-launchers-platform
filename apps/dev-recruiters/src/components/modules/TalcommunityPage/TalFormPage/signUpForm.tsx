@@ -20,10 +20,9 @@ import { Wrapper } from '../StyledTalcommunityPage';
 // }
 interface Props {
   handleCloseModal: () => void;
-  position: Opportunity;
 }
 
-export default function TalCommForm({ handleCloseModal, position }: Props) {
+export default function TalCommForm({ handleCloseModal }: Props) {
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
     email: Yup.string()
@@ -33,10 +32,15 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
     skills: Yup.string().required('Skills Field Entry is Required'),
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
-  const [checkCheckbox, setCheckCheckbox] = useState();
+  const [ageCheckbox, setAgeCheckbox] = useState<boolean | undefined>();
+  const [termsCheckbox, setTermsCheckbox] = useState<boolean | undefined>();
 
-  const handleSetCheckCheckbox = () => {
-    setCheckCheckbox(checkCheckbox!);
+  const handleSetAgeCheckbox = () => {
+    setAgeCheckbox(!ageCheckbox);
+  };
+
+  const handleSetTermsCheckbox = () => {
+    setTermsCheckbox(!termsCheckbox);
   };
 
   const handleOpenConfirmationModal = () => {
@@ -134,6 +138,7 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       id="skills"
                       name="skills"
                       error={errors.skills}
+                      touched={touched.skills}
                       // onChange={handleChange}
                     />
                     <Field
@@ -144,6 +149,7 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                       id="roles"
                       name="roles"
                       error={errors.roles}
+                      touched={touched.roles}
                       // onChange={handleChange}
                     />
 
@@ -154,16 +160,16 @@ export default function TalCommForm({ handleCloseModal, position }: Props) {
                     <atoms.Checkbox
                       label="I am 18 years old or older."
                       disabled={false}
-                      onChange={handleSetCheckCheckbox}
+                      onChange={handleSetAgeCheckbox}
                       required
                     />
-                    <Checkbox
+                    <atoms.Checkbox
                       label="I have read and agreed to the terms and conditions"
                       disabled={false}
-                      onChange={handleSetCheckCheckbox}
+                      onChange={handleSetTermsCheckbox}
                       required
-                      // className="bg-transparent"
                     />
+
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
                         buttonSize="standard"

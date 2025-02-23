@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const PageWrapper = styled.section`
   background-color: #ffffff;
-  padding: 0rem 11.5rem 3.5rem;
+  padding: 0rem 4rem 3.5rem;
 
-  @media (max-width: 1536px) {
+  @media (max-width: 1440px) {
     padding: 0rem 3rem 3.5rem;
   }
   @media (max-width: 1192px) {
@@ -28,15 +28,35 @@ export const IdeaCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+<<<<<<< HEAD
   justify-content: center;
+=======
+  justify-content: space-between;
+>>>>>>> master
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 1.5rem 0rem;
 
+<<<<<<< HEAD
   // Default screen: 3 cards per row
   & > div {
     flex: 1 1 calc(33.333% - 2rem); // Dynamic width for 3 cards per row
     max-width: calc(33.333% - 2rem); // Max width for each card
+=======
+  // Default screen: 4 cards per row
+  & > div {
+    flex: 1 1 calc(25% - 1.5rem); // Dynamic width for 4 cards per row
+    max-width: calc(25% - 1.5rem); // Max width for each card
+    height: 344px;
+  }
+
+  // Breakpoint for screens up to 1440px (3 cards per row)
+  @media (max-width: 1440px) {
+    & > div {
+      flex: 1 1 calc(33.333% - 1.34rem); // Dynamic width for 3 cards per row
+      max-width: calc(33.333% - 1.34rem); // Max width for each card
+    }
+>>>>>>> master
   }
 
   @media (max-width: 1192px) {
@@ -47,6 +67,7 @@ export const IdeaCardWrapper = styled.div`
   // Breakpoint for screens up to 1024px (2 cards per row)
   @media (max-width: 1024px) {
     & > div {
+<<<<<<< HEAD
       flex: 1 1 calc(50% - 2rem); // Dynamic width for 2 cards per row
       max-width: calc(50% - 2rem);
     }
@@ -57,17 +78,29 @@ export const IdeaCardWrapper = styled.div`
     & > div {
       flex: 1 1 calc(100% - 2rem); // Full width for a single card per row
       max-width: calc(100% - 2rem);
+=======
+      flex: 1 1 calc(50% - 0.75rem); // Dynamic width for 2 cards per row
+      max-width: calc(50% - 0.75rem);
+>>>>>>> master
     }
   }
 
   // Breakpoint for screens up to 640px (1 card per row)
   @media (max-width: 640px) {
+<<<<<<< HEAD
     column-gap: 1.25rem;
     row-gap: 32px;
 
     & > div {
       flex: 1 1 calc(100% - 1.25rem); // Full width for a single card per row
       max-width: calc(100% - 1.25rem);
+=======
+    row-gap: 1.25rem;
+
+    & > div {
+      flex: 1 1 calc(100%); // Full width for a single card per row
+      max-width: calc(100%);
+>>>>>>> master
     }
   }
 `;

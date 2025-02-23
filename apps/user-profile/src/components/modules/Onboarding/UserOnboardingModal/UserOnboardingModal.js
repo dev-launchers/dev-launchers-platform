@@ -1,30 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useOnboardingDataContext } from '../../../../context/OnboardingDataContext';
 import PlatformOnboarding from './PlatformOnboarding/PlatformOnboarding';
-import {
-  ModalContainer,
-  userUnboardingModalStyle,
-} from './StyledUserOnboardingModal';
-import {
-  UseOnboardingData,
-  useOnboardingDataContext,
-} from '../../../../context/OnboardingDataContext';
-import { onboardingActions } from '../../../../state/actions/onboardingActions';
 import IntroductionModal from './IntroductionModal/IntroductionModal';
 import CloseModal from './CloseModal/CloseModal';
-
 import Modal from '../../../common/Modal';
 
 /**
  * @description This is custom modal for the user onboarding.
  */
 export default function UserOnboardingModal() {
-  const { onboardingData, dispatch } = useOnboardingDataContext();
+  const { onboardingData } = useOnboardingDataContext();
 
-  const showModal =
-    onboardingData.showIntroductionModal ||
-    onboardingData.showPlatformOnboardingModal;
-
-  const modalPage = () => {
+  const modal = () => {
     if (onboardingData.showIntroductionModal) {
       return <IntroductionModal />;
     } else if (onboardingData.showPlatformOnboardingModal) {
@@ -34,10 +20,10 @@ export default function UserOnboardingModal() {
     }
   };
 
-  return showModal ? (
-    <Modal isOpen={true}>
-      {modalPage()}
+  return (
+    <>
+      {modal()}
       {onboardingData.showCloseModal && <CloseModal />}
-    </Modal>
-  ) : null;
+    </>
+  );
 }

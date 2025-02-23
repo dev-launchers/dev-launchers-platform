@@ -106,7 +106,7 @@ function IdeaCard({ cards, cardType }) {
         padding="0.5rem 0.5rem 1.5rem 0.5rem"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
-          borderRadius: '1rem',
+          borderRadius: '1.25rem',
           cursor: 'pointer',
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
@@ -129,11 +129,11 @@ function IdeaCard({ cards, cardType }) {
             <atoms.Typography
               type="h4"
               style={{
-                fontSize: '20px',
-                lineHeight: '1.75rem',
+                fontSize: '18px',
+                lineHeight: '1.5rem',
                 fontFamily: 'Helvetica',
                 fontWeight: '700',
-                margin: '0rem 0rem 0.5rem',
+                margin: '0rem 0rem 0.375rem',
               }}
             >
               {cards.ideaName.length > 20
@@ -166,12 +166,15 @@ function IdeaCard({ cards, cardType }) {
               {cards.description}
             </atoms.Typography>
             <ActivityDetails>
-              <atoms.Typography type="label" style={{ fontSize: '0.75rem' }}>
-                Updated: {daysAgo()} ago
+              <atoms.Typography
+                type="p"
+                style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
+              >
+                {daysAgo()} ago
               </atoms.Typography>
               <atoms.Typography
-                type="label"
-                style={{ fontSize: '0.75rem', color: '#7339AC' }}
+                type="p"
+                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300' }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>
