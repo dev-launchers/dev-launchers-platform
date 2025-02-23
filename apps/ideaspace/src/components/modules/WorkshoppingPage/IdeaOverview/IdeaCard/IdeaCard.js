@@ -196,10 +196,10 @@ export const IdeaCard = ({
       <div>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-7">
-            <div className="flex flex-col gap-2 sm:gap-4">
+            <div className="flex flex-col gap-2">
               <div
-                className="text-[24px] sm:text-[40px] font-bold sm:font-medium"
-                style={{ lineHeight: '32px' }}
+                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
+                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
               >
                 {ideaData.ideaName}
               </div>

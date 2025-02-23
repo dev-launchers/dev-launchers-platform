@@ -69,7 +69,7 @@ export const IdeaOverview = ({ selectedCard }) => {
 
   return (
     <div className="flex flex-col gap-6 w-full mb-10">
-      <div className=" flex flex-col gap-11">
+      <div className=" flex flex-col gap-7 sm:gap-11">
         <IdeaOwnerCard
           IdeaOwnerName={ownerDisplayName}
           IdeaOwnerEmail={ownerUserName}
