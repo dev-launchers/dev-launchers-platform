@@ -594,7 +594,8 @@ const IdeaForm = ({
 
                 {!editMode && (
                   <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                    <Checkbox required />
+                    <Field type="checkbox" name="termsAndConditions" required />
+
                     <atoms.Typography type="p">
                       &nbsp;I have read and agree to the{' '}
                       <Link href="/ideaspace/terms" passHref>
@@ -616,6 +617,14 @@ const IdeaForm = ({
                       sending={sending}
                       onClick={async (e) => {
                         e.preventDefault();
+
+                        // Checking if the Terms & Conditions checkbox is checked
+                        if (!values.termsAndConditions) {
+                          alert(
+                            'You must accept the Terms & Conditions to submit the form.'
+                          );
+                          return; // Preventing form submission if T&C is not checked
+                        }
 
                         const fields = [
                           'ideaName',
