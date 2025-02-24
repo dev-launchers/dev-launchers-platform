@@ -19,12 +19,31 @@ import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
+import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
+import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
+import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
 
-export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
+export const IdeaCard = ({
+  ideaImage,
+  ideaId,
+  ideaName,
+  ideaTagLine,
+  fullIdea,
+  onEditSuccess,
+}) => {
+  const [ideaData, setIdeaData] = useState(fullIdea);
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showEditSuccess, setShowEditSuccess] = useState(false);
+
+  const isOwner =
+    userData &&
+    ideaData &&
+    ideaData.ideaOwner &&
+    Number(userData.id) === Number(ideaData.ideaOwner.id);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -125,6 +144,37 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
       />
     );
 
+  // Update both local state and notify parent
+  const handleEditSuccess = (updatedIdea) => {
+    const newIdeaData = {
+      ...ideaData,
+      ...updatedIdea,
+      ideaOwner: ideaData.ideaOwner,
+      ideaTagLine: updatedIdea.tagline || ideaData.ideaTagLine,
+      description: updatedIdea.description || ideaData.description,
+      features: updatedIdea.features || ideaData.features,
+      targetAudience: updatedIdea.targetAudience || ideaData.targetAudience,
+    };
+
+    setIdeaData(newIdeaData);
+    if (onEditSuccess) {
+      onEditSuccess(newIdeaData);
+    }
+    setIsModalOpen(false);
+    setShowEditSuccess(true);
+    setTimeout(() => {
+      setShowEditSuccess(false);
+    }, 4000);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
   return (
     <StyledCard>
       <TopView>
@@ -132,8 +182,8 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
         </LeftView>
         <RightView>
-          <IdeaName>{ideaName}</IdeaName>
-          <IdeaTagLine>{ideaTagLine}</IdeaTagLine>
+          <IdeaName>{ideaData.ideaName}</IdeaName>
+          <IdeaTagLine>{ideaData.ideaTagLine}</IdeaTagLine>
         </RightView>
       </TopView>
 
@@ -151,7 +201,28 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
           <ShareOutlinedIcon />
           <StyledText>SHARE</StyledText>
         </Button> */}
+
+        {isOwner && (
+          <>
+            <button
+              className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+              onClick={() => setIsModalOpen(true)}
+            >
+              Edit Idea
+            </button>
+            <EditComponent
+              open={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              // initialIdea={fullIdea}
+              initialIdea={ideaData}
+              onEditSuccess={handleEditSuccess}
+            />
+          </>
+        )}
       </BottomView>
+      {showEditSuccess && (
+        <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
+      )}
     </StyledCard>
   );
 };

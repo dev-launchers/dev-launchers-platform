@@ -4,8 +4,6 @@ import { IdeaOwnerCard } from './IdeaOwnerCard/IdeaOwnerCard';
 import { TagsCard } from './TagsCard/TagsCard';
 import IdeaContentCard from './IdeaContentCard/IdeaContentCard';
 import IdeaSettingsCard from './IdeaSettingsCard/IdeaSettingsCard';
-useState;
-useEffect;
 import {
   Wrapper,
   TopView,
@@ -17,7 +15,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const IdeaOverview = ({ selectedCard }) => {
-  if (selectedCard.ideaName === '') return null;
+  const [ideaData, setIdeaData] = useState(selectedCard);
+
+  useEffect(() => {
+    setIdeaData(selectedCard);
+  }, [selectedCard]);
 
   const authorName =
     selectedCard.ideaOwner?.username !== undefined
@@ -27,7 +29,7 @@ export const IdeaOverview = ({ selectedCard }) => {
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
   const [ownerDisplayName, setOwnerDisplayName] = useState('');
   const [ownerUserName, setOwnerUserName] = useState('');
-  const OwnerID = selectedCard.ideaOwner.id;
+
   useEffect(() => {
     const fetchOwnerImage = async () => {
       try {
@@ -49,32 +51,47 @@ export const IdeaOverview = ({ selectedCard }) => {
     };
     fetchOwnerImage();
   }, [selectedCard.ideaOwner?.id]);
+
+  // This callback updates the idea data from an edit.
+  const handleIdeaUpdate = (updatedIdea) => {
+    setIdeaData((prev) => ({
+      ...prev,
+      ...updatedIdea,
+      ideaTagLine: updatedIdea.tagline || prev.ideaTagLine,
+      description: updatedIdea.description || prev.description,
+      features: updatedIdea.features || prev.features,
+      targetAudience: updatedIdea.targetAudience || prev.targetAudience,
+    }));
+  };
+
+  // Now, after all hooks have been called, conditionally render if there's no idea name.
+  if (!ideaData.ideaName) return null;
+
   return (
     <Wrapper>
       <LeftWrapper>
         <TopView>
           <IdeaCard
-            ideaId={selectedCard.id}
-            ideaName={selectedCard.ideaName}
-            ideaTagLine={selectedCard.tagline}
+            ideaId={ideaData.id}
+            ideaName={ideaData.ideaName}
+            ideaTagLine={ideaData.tagline}
+            fullIdea={ideaData}
+            onEditSuccess={handleIdeaUpdate}
           />
         </TopView>
-        <IdeaContentCard
-          title={'Description'}
-          content={selectedCard.description}
-        />
+        <IdeaContentCard title={'Description'} content={ideaData.description} />
         <div className="flex flex-row gap-3">
           <div style={{ width: '100%' }}>
             <IdeaContentCard
               title={'Idea features'}
-              content={selectedCard.features}
+              content={ideaData.features}
               fullHeight
             />
           </div>
           <div style={{ width: '100%' }}>
             <IdeaContentCard
               title={'Idea target Audience'}
-              content={selectedCard.targetAudience}
+              content={ideaData.targetAudience}
               fullHeight
             />
           </div>

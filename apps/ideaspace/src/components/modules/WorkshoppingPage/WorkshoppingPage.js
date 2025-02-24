@@ -55,7 +55,7 @@ export default function WorkshoppingPage(props) {
   }, [hidden]);
 
   function renderNewComment(comment) {
-    setComments([comment, ...comments]);
+    setComments((prev) => [comment, ...prev]);
   }
 
   if (getError) {

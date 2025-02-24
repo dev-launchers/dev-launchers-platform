@@ -13,6 +13,9 @@ const HIDE_IDEAS_SETTING = 'Hide ideas settings.';
 const SHOW_OPPORTUNITIES_SETTING = 'Show opportunities settings.';
 const HIDE_OPPORTUNITIES_SETTING = 'Hide opportunities settings.';
 
+const SHOW_CHATBOT_SETTING = 'Show chatbot settings.';
+const HIDE_CHATBOT_SETTING = 'Hide chatbot settings.';
+
 export {
   SHOW_OVERVIEW_SETTING,
   HIDE_OVERVIEW_SETTING,
@@ -24,4 +27,6 @@ export {
   HIDE_IDEAS_SETTING,
   SHOW_OPPORTUNITIES_SETTING,
   HIDE_OPPORTUNITIES_SETTING,
+  SHOW_CHATBOT_SETTING,
+  HIDE_CHATBOT_SETTING,
 };
