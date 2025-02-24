@@ -7,7 +7,7 @@ module.exports = withTV({
   content: {
     relative: true,
     files: [
-      '../UI/src/components/**/*.{html,js,jsx,tsx,mdx}',
+      '../UI/src/components/**/*.{html,js,jsx,tsx,mdx,ts}',
       '../../apps/app/pages/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/dev-recruiters/src/**/*.{html,js,jsx,ts,tsx}',
       '../../apps/ideaspace/src/**/*.{html,js,jsx,ts,tsx}',
