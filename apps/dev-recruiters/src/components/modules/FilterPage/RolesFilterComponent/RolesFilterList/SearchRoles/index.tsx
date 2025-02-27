@@ -50,21 +50,6 @@ function SearchRole({
       setSuggestedRole(suggestedRoleList);
     }
   }
-
-  /*
-  useEffect(() => {
-    if (commitmentRange !== null) {
-      const filteredRoles = selectedRoleLabel.filter(
-        (role) =>
-          role.commitmentHoursPerWeek >= commitmentRange.min &&
-          role.commitmentHoursPerWeek <= commitmentRange.max
-      );
-      setSelectedRole(filteredRoles);
-    } else {
-      setSelectedRole(selectedRoleLabel);
-    }
-  }, [commitmentRange, selectedRoleLabel]);
-  */
   return (
     <>
       <>
