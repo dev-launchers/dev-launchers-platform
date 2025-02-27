@@ -95,7 +95,7 @@ export const IdeaOverview = ({ selectedCard }) => {
           </div>
 
           <div
-            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.description}
@@ -109,7 +109,7 @@ export const IdeaOverview = ({ selectedCard }) => {
             Features
           </div>
           <div
-            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.features}
@@ -123,7 +123,7 @@ export const IdeaOverview = ({ selectedCard }) => {
             Target Audience
           </div>
           <div
-            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans']"
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
             style={{ lineHeight: '160%' }}
           >
             {ideaData.targetAudience}
