@@ -68,47 +68,68 @@ export const IdeaOverview = ({ selectedCard }) => {
   if (!ideaData.ideaName) return null;
 
   return (
-    <Wrapper>
-      <LeftWrapper>
-        <TopView>
-          <IdeaCard
-            ideaId={ideaData.id}
-            ideaName={ideaData.ideaName}
-            ideaTagLine={ideaData.tagline}
-            fullIdea={ideaData}
-            onEditSuccess={handleIdeaUpdate}
-          />
-        </TopView>
-        <IdeaContentCard title={'Description'} content={ideaData.description} />
-        <div className="flex flex-row gap-3">
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea features'}
-              content={ideaData.features}
-              fullHeight
-            />
+    <div className="flex flex-col gap-6 w-full mb-10">
+      <div className=" flex flex-col gap-7 sm:gap-11">
+        <IdeaOwnerCard
+          IdeaOwnerName={ownerDisplayName}
+          IdeaOwnerEmail={ownerUserName}
+          profilePictureUrl={profilePictureUrl}
+        />
+        <IdeaCard
+          ideaImage={ideaData.ideaImage}
+          ideaId={ideaData.id}
+          ideaName={ideaData.ideaName}
+          ideaTagLine={ideaData.ideaTagLine}
+          fullIdea={ideaData}
+          onEditSuccess={handleIdeaUpdate}
+        />
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Idea Description
           </div>
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea target Audience'}
-              content={ideaData.targetAudience}
-              fullHeight
-            />
+
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.description}
           </div>
         </div>
-      </LeftWrapper>
-
-      <RightWrapper>
-        <TopView>
-          <IdeaOwnerCard
-            IdeaOwnerName={ownerDisplayName}
-            profilePictureUrl={profilePictureUrl}
-            IdeaOwnerEmail={ownerUserName}
-          />
-        </TopView>
-
-        {/* <IdeaSettingsCard card={selectedCard} /> */}
-      </RightWrapper>
-    </Wrapper>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Features
+          </div>
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.features}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Target Audience
+          </div>
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.targetAudience}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
