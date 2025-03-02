@@ -173,3 +173,172 @@ export const GradientLine = styled.div<{ height?: string }>`
     #3a7ca5 75% 100%
   );
 `;
+export const ModalUploadSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  font-style: normal;
+  font-weight: 400;
+  background-color: gray;
+
+  & h3 {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  & p {
+    font-family: ${(props) => props.theme?.fonts?.normal};
+    font-style: normal;
+    font-size: 17px;
+    line-height: 19px;
+    line-height: 1.125rem;
+    max-width: 28rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre-wrap;
+  }
+`;
+export const ModalFooterSection = styled.div`
+  display: flex;
+  background-color: yellow;
+  justify-content: space-around;
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  font-style: normal;
+  font-weight: 400;
+  max-width: 300px;
+`;
+//
+export const UploadButton = styled.button.attrs({ type: 'submit' })`
+  color: var(--grayscale-50, #fff);
+  text-align: center;
+
+  /* to sort/Universal/button */
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+  text-transform: capitalize;
+
+  cursor: pointer;
+  display: flex;
+  padding: var(--2, 8px) var(--6, 24px);
+  align-items: center;
+  width: 20%;
+
+  margin-top: 10px;
+
+  justify-content: center;
+  gap: var(--25, 10px);
+  border-radius: var(--2, 8px);
+  border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);
+  background: var(--brand-alt-nebula-600, #69349d);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+//
+//
+export const CancelUploadButton = styled.button.attrs({ type: 'submit' })`
+  color: var(--grayscale-50, #fff);
+  text-align: center;
+
+  /* to sort/Universal/button */
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+  text-transform: capitalize;
+
+  cursor: pointer;
+  display: flex;
+  padding: var(--2, 8px) var(--6, 24px);
+  align-items: center;
+  width: 20%;
+
+  margin-top: 10px;
+  margin-left: auto;
+
+  justify-content: center;
+  gap: var(--25, 10px);
+  border-radius: var(--2, 8px);
+  border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);
+  background: var(--brand-alt-nebula-600, #69349d);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+//
+//OkButton
+export const OkButton = styled.button.attrs({ type: 'submit' })`
+  color: var(--grayscale-50, #fff);
+  text-align: center;
+
+  /* to sort/Universal/button */
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+  text-transform: capitalize;
+
+  cursor: pointer;
+  display: flex;
+  padding: var(--2, 8px) var(--6, 24px);
+  align-items: center;
+  width: 30%;
+
+  margin-top: 10;
+  margin-left: 30;
+
+  justify-content: center;
+  gap: var(--25, 10px);
+  border-radius: var(--2, 8px);
+  border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);
+  background: var(--brand-alt-nebula-600, #69349d);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+//CancelButton
+export const CancelButton = styled.button.attrs({ type: 'submit' })`
+  color: var(--grayscale-500, #fff);
+  text-align: center;
+
+  /* to sort/Universal/button */
+  font-family: 'Nunito Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.64px;
+  text-transform: capitalize;
+
+  cursor: pointer;
+  display: flex;
+  padding: var(--2, 8px) var(--6, 24px);
+  align-items: center;
+  width: 30%;
+
+  margin-top: 10;
+  margin-right: 20;
+
+  justify-content: center;
+  gap: var(--25, 10px);
+  border-radius: var(--2, 8px);
+  border: var(--0, 1px) solid var(--brand-secondary-nebula-600, #69349d);
+  background: var(--brand-alt-nebula-600, #69349d);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;

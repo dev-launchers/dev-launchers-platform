@@ -11,6 +11,7 @@ export interface NewApplicant {
   commitment: number;
   extraInfo?: string;
   portfolioLink?: string;
+  portfolioFileId?: string;
   yearsOfExperience?: number;
   experience: string;
   reason: string;
