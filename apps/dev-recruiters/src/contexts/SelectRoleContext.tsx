@@ -42,6 +42,11 @@ export function OpportunitiesProvider({
     commitmentRange,
     setCommitmentRange,
   };
+
+  console.log('selected roles', selectedRole);
+  console.log('opportunities', opportunities);
+  console.log('commitmentRange', commitmentRange);
+
   return (
     <OpportunitiesContext.Provider value={contextValue}>
       {children}

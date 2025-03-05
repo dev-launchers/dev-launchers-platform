@@ -17,7 +17,6 @@ export const getProjectsSlugs = async () => {
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
   );
-  console.log(projects);
 
   projects = projects.map((projects) => projects.attributes); // Flatten strapiv4 response
   const projectsSlugs = projects.map((project) => ({
