@@ -1,3 +1,4 @@
+import React, { useImperativeHandle, forwardRef, useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
@@ -12,9 +13,9 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-function EditIdea({ initialIdea, onEditSuccess }) {
+const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   let { userData, isAuthenticated } = useUserDataContext();
-
+  const formikRef = useRef();
   const router = useRouter();
   const { ideaId } = router.query;
   const [sending, setSending] = useState(false);
@@ -182,6 +183,15 @@ function EditIdea({ initialIdea, onEditSuccess }) {
       window.history.back(-1);
     }
   };
+  useImperativeHandle(ref, () => ({
+    submitForm: () => {
+      if (formikRef.current) {
+        return formikRef.current.submitForm();
+      }
+      return Promise.reject('Formik instance not available');
+    },
+    isSending: () => sending,
+  }));
 
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
@@ -224,12 +234,14 @@ function EditIdea({ initialIdea, onEditSuccess }) {
               sending={sending}
               clickHandler={backHandler}
               editMode={true}
+              hideFormButtons={true}
+              formikRef={formikRef}
             />
           </>
         )}
       </>
     );
   }
-}
+});
 
 export default EditIdea;

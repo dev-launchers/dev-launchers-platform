@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
 
 const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+  const editIdeaRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -67,6 +69,20 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const closeButtonClasses =
     'bg-transparent border-0 text-[1.25rem] cursor-pointer';
 
+  const handleSave = async () => {
+    if (editIdeaRef.current) {
+      setIsSubmitting(true);
+      try {
+        await editIdeaRef.current.submitForm();
+        setIsSubmitting(false);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setIsSubmitting(false);
+      }
+    }
+  };
+
+  const isSending = editIdeaRef.current?.isSending() || false;
   return (
     <div onClick={onClose} className={overlayClasses}>
       <div
@@ -84,13 +100,20 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
         </div>
 
         <div className={contentClasses}>
-          <EditIdea initialIdea={initialIdea} onEditSuccess={onEditSuccess} />
+          <EditIdea
+            ref={editIdeaRef}
+            initialIdea={initialIdea}
+            onEditSuccess={onEditSuccess}
+          />
         </div>
 
         <div className={footerClasses}>
-          {/* <button onClick={onClose} className={cancelButtonClasses}>
+          <button onClick={onClose} className={cancelButtonClasses}>
             Cancel
-          </button> */}
+          </button>
+          <button onClick={handleSave} disabled={isSubmitting || isSending}>
+            {isSubmitting || isSending ? 'Saving...' : 'Save'}
+          </button>
         </div>
       </div>
     </div>
