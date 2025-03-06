@@ -83,7 +83,7 @@ export default function RolesList({
   );
   */
   const allOpportunities = opportunities.flatMap((opp) => opp);
-  console.log(allOpportunities);
+  // console.log(allOpportunities);
   /*function separateRoles(arr: Opportunity[]) {
     const separatedGroups: { [key: string]: Opportunity[] } = {
       ProductLead: [],

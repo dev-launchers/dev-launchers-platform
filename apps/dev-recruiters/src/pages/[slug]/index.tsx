@@ -69,10 +69,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
   opportunities = opportunities?.map((opportunity) => opportunity.attributes);
+
+  // Remove or transform non-serializable values
+  if (project.config && project.config.adapter) {
+    delete project.config.adapter; // Remove the function
+  }
+
+  // Ensure that the project object does not contain any non-serializable values
+  const serializableProject = JSON.parse(JSON.stringify(project));
+
   return project !== undefined
     ? {
         props: {
-          project: project,
+          project: serializableProject,
           opportunites: opportunities,
           maxCommitment,
           minCommitment,

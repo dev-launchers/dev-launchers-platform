@@ -1,6 +1,6 @@
-import Head from "next/head";
-import Project from "../components/modules/Projects/Project";
-import agent from "@devlaunchers/utility/agent"
+import Head from 'next/head';
+import Project from '../components/modules/Projects/Project';
+import agent from '@devlaunchers/utility/agent';
 
 // const data = require("../components/modules/Projects/data.json");
 
@@ -12,13 +12,17 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
+debugger;
+
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
-  const project = await agent.Projects.get(slug, { "populate[heroImage][populate]": '*' });
+  const project = await agent.Projects.get(slug, {
+    'populate[heroImage][populate]': '*',
+  });
 
   return {
     props: {
@@ -36,12 +40,14 @@ const ProjectRoute = ({ project }) => {
     heroImageFormats?.small ||
     project?.attributes.heroImage?.attributes?.url;
   return (
-
     <>
       <Head>
         <title>{project?.attributes?.title}</title>
         <meta name="title" content={project?.attributes?.title}></meta>
-        <meta name="description" content={project?.attributes?.description}></meta>
+        <meta
+          name="description"
+          content={project?.attributes?.description}
+        ></meta>
 
         <meta property="og:type" content="website"></meta>
         <meta
@@ -50,23 +56,35 @@ const ProjectRoute = ({ project }) => {
         ></meta>
         <meta property="og:image" content={heroImage?.attributes?.url}></meta>
         <meta property="og:title" content={project?.attributes?.title}></meta>
-        <meta property="og:description" content={project?.attributes?.description}></meta>
+        <meta
+          property="og:description"
+          content={project?.attributes?.description}
+        ></meta>
 
         <meta property="twitter:card" content="summary_large_image"></meta>
         <meta
           property="twitter:url"
           content={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/projects/${project?.attributes?.slug}`}
         ></meta>
-        <meta property="twitter:title" content={project?.attributes?.title}></meta>
+        <meta
+          property="twitter:title"
+          content={project?.attributes?.title}
+        ></meta>
         <meta
           property="twitter:description"
           content={project?.attributes?.description}
         ></meta>
-        <meta property="twitter:image" content={heroImage?.attributes?.url}></meta>
-        <meta property="twitter:image:src" content={heroImage?.attributes?.url}></meta>
+        <meta
+          property="twitter:image"
+          content={heroImage?.attributes?.url}
+        ></meta>
+        <meta
+          property="twitter:image:src"
+          content={heroImage?.attributes?.url}
+        ></meta>
         <meta content="#ff7f0e" data-react-helmet="true" name="theme-color" />
       </Head>
-      <Project project={project || ""} />
+      <Project project={project || ''} />
     </>
   );
 };
