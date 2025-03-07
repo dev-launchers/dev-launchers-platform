@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "cross-env": "7.0.3",
+    "react": "19.0.0",
     "react-toastify": "^8.0.0"
   },
   "devDependencies": {
@@ -66,7 +67,7 @@
     "@playwright/test": "1.24.2",
     "@types/prettier": "2.6.4",
     "@types/shell-quote": "1.7.1",
-    "commitizen": "4.2.5",
+    "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.21.0",
     "husky": "9.0.11",

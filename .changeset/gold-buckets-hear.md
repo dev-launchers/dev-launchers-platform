@@ -8,4 +8,4 @@
 "@devlaunchers/components": major
 ---
 
-Downgrade React-toastify < 9, "react-toastify": "^8.0.0" "
+Downgrade React-toastify < v9, "react-toastify": "^8.0.0" "

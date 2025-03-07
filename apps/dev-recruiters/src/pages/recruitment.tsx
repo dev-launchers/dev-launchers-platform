@@ -3,6 +3,8 @@ import Head from 'next/head';
 // manage styles => write CSS directly within files.
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
+// agent to make API call. => handles auth automatically.
+// import agent from '@devlaunchers/utility/agent';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
 const Recruitment: React.FC = () => {
