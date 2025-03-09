@@ -1,70 +1,602 @@
-import { EventHandler, FormEvent, MouseEventHandler, ReactNode } from 'react';
+import { EventHandler, ReactNode } from 'react';
+
+// Types
+export type ColorType =
+  | 'pure'
+  | 'uranus'
+  | 'jupiter'
+  | 'neptune'
+  | 'saturn'
+  | 'cosmic'
+  | 'nebula'
+  | 'info'
+  | 'warning'
+  | 'success'
+  | 'error';
+export type AlertType = 'none' | 'info' | 'warning' | 'success' | 'error';
 
 export type PropsType = {
   mode?: 'light' | 'dark';
-  type?: 'primary' | 'secondary' | 'alt-primary' | 'alt-secondary';
-  icon?: 'right' | 'left';
+  type?: 'primary' | 'secondary' | 'tertiary';
+  color?: ColorType;
+  iconPosition?: 'right' | 'left';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
   onClick?: EventHandler<any>;
   children?: ReactNode;
   as?: 'button' | 'a';
   href?: string;
+  icon?: ReactNode;
   target?: string;
+  isAlert?: boolean;
+  alertType?: AlertType;
 };
 
-const defaultProps: PropsType = {
+// Constants
+const DEFAULTS = {
   mode: 'dark',
   size: 'small',
   disabled: false,
   type: 'primary',
-  icon: 'right',
+  color: 'pure',
+  iconPosition: 'left',
   as: 'button',
+  alertType: 'none',
+} as const;
+
+const VALID_OPTIONS = {
+  types: ['primary', 'secondary', 'tertiary'],
+  modes: ['light', 'dark'],
+  sizes: ['small', 'medium', 'large'],
+  iconPositions: ['right', 'left'],
+  colors: [
+    'pure',
+    'uranus',
+    'jupiter',
+    'neptune',
+    'saturn',
+    'cosmic',
+    'nebula',
+    'info',
+    'warning',
+    'success',
+    'error',
+  ],
+  alertTypes: ['none', 'info', 'warning', 'success', 'error'],
+} as const;
+
+// Styles configuration
+const STYLES = {
+  base: 'rounded-lg px-6 border-[3px] flex items-center justify-center gap-2 text-center transition-all duration-200 font-medium',
+
+  size: {
+    small: 'px-1 py-2 text-sm',
+    medium: 'px-3 py-2 text-base',
+    large: 'px-4 py-2 text-lg',
+  },
+
+  iconPosition: {
+    left: '',
+    right: 'flex-row-reverse',
+  },
+
+  // Color generation function (used for all color derivations)
+  getColorClasses: (
+    type: string,
+    color: ColorType,
+    state?: 'base' | 'hover' | 'active' | 'disabled' | 'focus',
+    mode: 'light' | 'dark' = 'dark'
+  ) => {
+    // Dark mode color configuration (original styling)
+    const darkColorConfig = {
+      primary: {
+        base: {
+          pure: 'bg-gray-800 border-gray-900 text-white',
+          uranus: 'bg-uranus-600 border-uranus-800 text-white',
+          jupiter: 'bg-jupiter-600 border-jupiter-800 text-white',
+          neptune: 'bg-neptune-600 border-neptune-800 text-white',
+          saturn: 'bg-saturn-600 border-saturn-800 text-white',
+          cosmic:
+            'bg-brand-alt-cosmic-700 border-brand-alt-cosmic-900 text-white',
+          nebula:
+            'bg-brand-alt-nebula-800 border-brand-alt-nebula-900 text-white',
+          info: 'bg-alert-notification-o-100-700 border-alert-notification-o-100-900 text-white',
+          warning:
+            'bg-alert-warning-o-100-600 border-alert-warning-o-100-800 text-white',
+          success:
+            'bg-alert-success-o-100-600 border-alert-success-o-100-800 text-white',
+          error:
+            'bg-alert-error-o-100-600 border-alert-error-o-100-800 text-white',
+        },
+        hover: {
+          pure: 'hover:bg-gray-900',
+          uranus: 'hover:bg-uranus-700',
+          jupiter: 'hover:bg-jupiter-700',
+          neptune: 'hover:bg-neptune-700',
+          saturn: 'hover:bg-saturn-700',
+          cosmic: 'hover:bg-brand-alt-cosmic-800',
+          nebula: 'hover:bg-brand-alt-nebula-900',
+          info: 'hover:bg-alert-notification-o-100-800',
+          warning: 'hover:bg-alert-warning-o-100-700',
+          success: 'hover:bg-alert-success-o-100-700',
+          error: 'hover:bg-alert-error-o-100-700',
+        },
+        active: {
+          pure: 'active:bg-gray-900',
+          uranus: 'active:bg-uranus-700',
+          jupiter: 'active:bg-jupiter-700',
+          neptune: 'active:bg-neptune-700',
+          saturn: 'active:bg-saturn-700',
+          cosmic: 'active:bg-brand-alt-cosmic-800',
+          nebula: 'active:bg-nebula-800',
+          info: 'active:bg-alert-notification-o-100-800',
+          warning: 'active:bg-alert-warning-o-100-700',
+          success: 'active:bg-alert-success-o-100-800',
+          error: 'active:bg-alert-error-o-100-800',
+        },
+        disabled: {
+          pure: 'bg-gray-300 text-gray-500 cursor-not-allowed filter grayscale',
+          uranus:
+            'bg-uranus-200 text-uranus-400 cursor-not-allowed filter grayscale',
+          jupiter:
+            'bg-jupiter-200 text-jupiter-400 cursor-not-allowed filter grayscale',
+          neptune:
+            'bg-neptune-200 text-neptune-400 cursor-not-allowed filter grayscale',
+          saturn:
+            'bg-saturn-200 text-saturn-400 cursor-not-allowed filter grayscale',
+          cosmic:
+            'bg-brand-alt-cosmic-200 text-brand-alt-cosmic-400 cursor-not-allowed filter grayscale',
+          nebula:
+            'bg-nebula-200 text-nebula-400 cursor-not-allowed filter grayscale',
+          info: 'bg-alert-notification-o-100-200 text-alert-notification-o-100-400 cursor-not-allowed filter grayscale',
+          warning:
+            'bg-alert-warning-o-100-200 text-alert-warning-o-100-400 cursor-not-allowed filter grayscale',
+          success:
+            'bg-alert-success-o-100-200 text-alert-success-o-100-400 cursor-not-allowed filter grayscale',
+          error:
+            'bg-alert-error-o-100-200 text-alert-error-o-100-400 cursor-not-allowed filter grayscale',
+        },
+      },
+      secondary: {
+        base: {
+          pure: 'bg-gray-100 border-gray-800 text-gray-800',
+          uranus: 'bg-uranus-50 border-uranus-600 text-uranus-600',
+          jupiter: 'bg-jupiter-50 border-jupiter-600 text-jupiter-600',
+          neptune: 'bg-neptune-50 border-neptune-600 text-neptune-600',
+          saturn: 'bg-saturn-50 border-saturn-600 text-saturn-600',
+          cosmic:
+            'bg-brand-alt-cosmic-50 border-brand-alt-cosmic-700 text-brand-alt-cosmic-700',
+          nebula:
+            'bg-brand-alt-nebula-50 border-brand-alt-nebula-800 text-brand-alt-nebula-800',
+          info: 'bg-alert-notification-o-100-50 border-alert-notification-o-100-700 text-alert-notification-o-100-700',
+          warning:
+            'bg-alert-warning-o-100-50 border-alert-warning-o-100-600 text-alert-warning-o-100-600',
+          success:
+            'bg-alert-success-o-100-50 border-alert-success-o-100-600 text-alert-success-o-100-600',
+          error:
+            'bg-alert-error-o-100-50 border-alert-error-o-100-600 text-alert-error-o-100-600',
+        },
+        hover: {
+          pure: 'hover:bg-gray-200',
+          uranus: 'hover:bg-uranus-100',
+          jupiter: 'hover:bg-jupiter-100',
+          neptune: 'hover:bg-neptune-100',
+          saturn: 'hover:bg-saturn-100',
+          cosmic: 'hover:bg-brand-alt-cosmic-100',
+          nebula: 'hover:bg-brand-alt-nebula-100',
+          info: 'hover:bg-alert-notification-o-100-100',
+          warning: 'hover:bg-alert-warning-o-100-100',
+          success: 'hover:bg-alert-success-o-100-100',
+          error: 'hover:bg-alert-error-o-100-100',
+        },
+        active: {
+          pure: 'active:bg-gray-200',
+          uranus: 'active:bg-uranus-100',
+          jupiter: 'active:bg-jupiter-100',
+          neptune: 'active:bg-neptune-100',
+          saturn: 'active:bg-saturn-100',
+          cosmic: 'active:bg-brand-alt-cosmic-100',
+          nebula: 'active:bg-nebula-100',
+          info: 'active:bg-alert-notification-o-100-100',
+          warning: 'active:bg-alert-warning-o-100-100',
+          success: 'active:bg-alert-success-o-100-100',
+          error: 'active:bg-alert-error-o-100-100',
+        },
+        disabled: {
+          pure: 'border-gray-300 text-gray-300 cursor-not-allowed filter grayscale',
+          uranus:
+            'border-uranus-200 text-uranus-300 cursor-not-allowed filter grayscale',
+          jupiter:
+            'border-jupiter-200 text-jupiter-300 cursor-not-allowed filter grayscale',
+          neptune:
+            'border-neptune-200 text-neptune-300 cursor-not-allowed filter grayscale',
+          saturn:
+            'border-saturn-200 text-saturn-300 cursor-not-allowed filter grayscale',
+          cosmic:
+            'border-brand-alt-cosmic-200 text-brand-alt-cosmic-300 cursor-not-allowed filter grayscale',
+          nebula:
+            'border-nebula-200 text-nebula-300 cursor-not-allowed filter grayscale',
+          info: 'border-alert-notification-o-100-200 text-alert-notification-o-100-300 cursor-not-allowed filter grayscale',
+          warning:
+            'border-alert-warning-o-100-200 text-alert-warning-o-100-300 cursor-not-allowed filter grayscale',
+          success:
+            'border-alert-success-o-100-200 text-alert-success-o-100-300 cursor-not-allowed filter grayscale',
+          error:
+            'border-alert-error-o-100-200 text-alert-error-o-100-300 cursor-not-allowed filter grayscale',
+        },
+      },
+      tertiary: {
+        base: {
+          pure: 'bg-gray-100 border-transparent outline-0 text-gray-800',
+          uranus: 'bg-uranus-50 border-transparent outline-0 text-uranus-600',
+          jupiter:
+            'bg-jupiter-50 border-transparent outline-0 text-jupiter-600',
+          neptune:
+            'bg-neptune-50 border-transparent outline-0 text-neptune-600',
+          saturn: 'bg-saturn-50 border-transparent outline-0 text-saturn-600',
+          cosmic:
+            'bg-brand-alt-cosmic-50 border-transparent outline-0 text-brand-alt-cosmic-700',
+          nebula:
+            'bg-brand-alt-nebula-50 border-transparent outline-0 text-brand-alt-nebula-800',
+          info: 'bg-alert-notification-o-100-50 border-transparent outline-0 text-alert-notification-o-100-700',
+          warning:
+            'bg-alert-warning-o-100-50 border-transparent outline-0 text-alert-warning-o-100-600',
+          success:
+            'bg-alert-success-o-100-50 border-transparent outline-0 text-alert-success-o-100-600',
+          error:
+            'bg-alert-error-o-100-50 border-transparent outline-0 text-alert-error-o-100-600',
+        },
+        hover: {
+          pure: 'hover:bg-gray-200',
+          uranus: 'hover:bg-uranus-100',
+          jupiter: 'hover:bg-jupiter-100',
+          neptune: 'hover:bg-neptune-100',
+          saturn: 'hover:bg-saturn-100',
+          cosmic: 'hover:bg-brand-alt-cosmic-100',
+          nebula: 'hover:bg-brand-alt-nebula-100',
+          info: 'hover:bg-alert-notification-o-100-100',
+          warning: 'hover:bg-alert-warning-o-100-100',
+          success: 'hover:bg-alert-success-o-100-100',
+          error: 'hover:bg-alert-error-o-100-100',
+        },
+        active: {
+          pure: 'active:bg-gray-200',
+          uranus: 'active:bg-uranus-100',
+          jupiter: 'active:bg-jupiter-100',
+          neptune: 'active:bg-neptune-100',
+          saturn: 'active:bg-saturn-100',
+          cosmic: 'active:bg-brand-alt-cosmic-100',
+          nebula: 'active:bg-nebula-100',
+          info: 'active:bg-alert-notification-o-100-100',
+          warning: 'active:bg-alert-warning-o-100-100',
+          success: 'active:bg-alert-success-o-100-100',
+          error: 'active:bg-alert-error-o-100-100',
+        },
+        disabled: {
+          pure: 'text-gray-300 cursor-not-allowed filter grayscale',
+          uranus: 'text-uranus-300 cursor-not-allowed filter grayscale',
+          jupiter: 'text-jupiter-300 cursor-not-allowed filter grayscale',
+          neptune: 'text-neptune-300 cursor-not-allowed filter grayscale',
+          saturn: 'text-saturn-300 cursor-not-allowed filter grayscale',
+          cosmic:
+            'text-brand-alt-cosmic-300 cursor-not-allowed filter grayscale',
+          nebula: 'text-nebula-300 cursor-not-allowed filter grayscale',
+          info: 'text-alert-notification-o-100-300 cursor-not-allowed filter grayscale',
+          warning:
+            'text-alert-warning-o-100-300 cursor-not-allowed filter grayscale',
+          success:
+            'text-alert-success-o-100-300 cursor-not-allowed filter grayscale',
+          error:
+            'text-alert-error-o-100-300 cursor-not-allowed filter grayscale',
+        },
+      },
+    };
+
+    // Light mode color configuration
+    const lightColorConfig = {
+      primary: {
+        base: {
+          pure: 'bg-white border-gray-200 text-gray-800',
+          uranus: 'bg-uranus-400 border-uranus-600 text-white',
+          jupiter: 'bg-jupiter-400 border-jupiter-600 text-white',
+          neptune: 'bg-neptune-400 border-neptune-600 text-white',
+          saturn: 'bg-saturn-400 border-saturn-600 text-white',
+          cosmic:
+            'bg-brand-alt-cosmic-500 border-brand-alt-cosmic-700 text-white',
+          nebula:
+            'bg-brand-alt-nebula-500 border-brand-alt-nebula-700 text-white',
+          info: 'bg-alert-notification-o-100-500 border-alert-notification-o-100-700 text-white',
+          warning:
+            'bg-alert-warning-o-100-500 border-alert-warning-o-100-700 text-white',
+          success:
+            'bg-alert-success-o-100-500 border-alert-success-o-100-700 text-white',
+          error:
+            'bg-alert-error-o-100-500 border-alert-error-o-100-700 text-white',
+        },
+        hover: {
+          pure: 'hover:bg-gray-100',
+          uranus: 'hover:bg-uranus-500',
+          jupiter: 'hover:bg-jupiter-500',
+          neptune: 'hover:bg-neptune-500',
+          saturn: 'hover:bg-saturn-500',
+          cosmic: 'hover:bg-brand-alt-cosmic-600',
+          nebula: 'hover:bg-brand-alt-nebula-600',
+          info: 'hover:bg-alert-notification-o-100-600',
+          warning: 'hover:bg-alert-warning-o-100-600',
+          success: 'hover:bg-alert-success-o-100-600',
+          error: 'hover:bg-alert-error-o-100-600',
+        },
+        active: {
+          pure: 'active:bg-gray-200',
+          uranus: 'active:bg-uranus-600',
+          jupiter: 'active:bg-jupiter-600',
+          neptune: 'active:bg-neptune-600',
+          saturn: 'active:bg-saturn-600',
+          cosmic: 'active:bg-brand-alt-cosmic-700',
+          nebula: 'active:bg-brand-alt-nebula-700',
+          info: 'active:bg-alert-notification-o-100-700',
+          warning: 'active:bg-alert-warning-o-100-700',
+          success: 'active:bg-alert-success-o-100-700',
+          error: 'active:bg-alert-error-o-100-700',
+        },
+        disabled: {
+          pure: 'bg-gray-100 text-gray-400 cursor-not-allowed filter grayscale',
+          uranus:
+            'bg-uranus-100 text-uranus-300 cursor-not-allowed filter grayscale',
+          jupiter:
+            'bg-jupiter-100 text-jupiter-300 cursor-not-allowed filter grayscale',
+          neptune:
+            'bg-neptune-100 text-neptune-300 cursor-not-allowed filter grayscale',
+          saturn:
+            'bg-saturn-100 text-saturn-300 cursor-not-allowed filter grayscale',
+          cosmic:
+            'bg-brand-alt-cosmic-100 text-brand-alt-cosmic-300 cursor-not-allowed filter grayscale',
+          nebula:
+            'bg-brand-alt-nebula-100 text-brand-alt-nebula-300 cursor-not-allowed filter grayscale',
+          info: 'bg-alert-notification-o-100-100 text-alert-notification-o-100-300 cursor-not-allowed filter grayscale',
+          warning:
+            'bg-alert-warning-o-100-100 text-alert-warning-o-100-300 cursor-not-allowed filter grayscale',
+          success:
+            'bg-alert-success-o-100-100 text-alert-success-o-100-300 cursor-not-allowed filter grayscale',
+          error:
+            'bg-alert-error-o-100-100 text-alert-error-o-100-300 cursor-not-allowed filter grayscale',
+        },
+      },
+      secondary: {
+        base: {
+          pure: 'bg-white border-gray-400 text-gray-600',
+          uranus: 'bg-white border-uranus-400 text-uranus-500',
+          jupiter: 'bg-white border-jupiter-400 text-jupiter-500',
+          neptune: 'bg-white border-neptune-400 text-neptune-500',
+          saturn: 'bg-white border-saturn-400 text-saturn-500',
+          cosmic:
+            'bg-white border-brand-alt-cosmic-400 text-brand-alt-cosmic-500',
+          nebula:
+            'bg-white border-brand-alt-nebula-400 text-brand-alt-nebula-500',
+          info: 'bg-white border-alert-notification-o-100-400 text-alert-notification-o-100-500',
+          warning:
+            'bg-white border-alert-warning-o-100-400 text-alert-warning-o-100-500',
+          success:
+            'bg-white border-alert-success-o-100-400 text-alert-success-o-100-500',
+          error:
+            'bg-white border-alert-error-o-100-400 text-alert-error-o-100-500',
+        },
+        hover: {
+          pure: 'hover:bg-gray-50',
+          uranus: 'hover:bg-uranus-50',
+          jupiter: 'hover:bg-jupiter-50',
+          neptune: 'hover:bg-neptune-50',
+          saturn: 'hover:bg-saturn-50',
+          cosmic: 'hover:bg-brand-alt-cosmic-50',
+          nebula: 'hover:bg-brand-alt-nebula-50',
+          info: 'hover:bg-alert-notification-o-100-50',
+          warning: 'hover:bg-alert-warning-o-100-50',
+          success: 'hover:bg-alert-success-o-100-50',
+          error: 'hover:bg-alert-error-o-100-50',
+        },
+        active: {
+          pure: 'active:bg-gray-100',
+          uranus: 'active:bg-uranus-100',
+          jupiter: 'active:bg-jupiter-100',
+          neptune: 'active:bg-neptune-100',
+          saturn: 'active:bg-saturn-100',
+          cosmic: 'active:bg-brand-alt-cosmic-100',
+          nebula: 'active:bg-brand-alt-nebula-100',
+          info: 'active:bg-alert-notification-o-100-100',
+          warning: 'active:bg-alert-warning-o-100-100',
+          success: 'active:bg-alert-success-o-100-100',
+          error: 'active:bg-alert-error-o-100-100',
+        },
+        disabled: {
+          pure: 'border-gray-200 text-gray-300 cursor-not-allowed filter grayscale',
+          uranus:
+            'border-uranus-200 text-uranus-200 cursor-not-allowed filter grayscale',
+          jupiter:
+            'border-jupiter-200 text-jupiter-200 cursor-not-allowed filter grayscale',
+          neptune:
+            'border-neptune-200 text-neptune-200 cursor-not-allowed filter grayscale',
+          saturn:
+            'border-saturn-200 text-saturn-200 cursor-not-allowed filter grayscale',
+          cosmic:
+            'border-brand-alt-cosmic-200 text-brand-alt-cosmic-200 cursor-not-allowed filter grayscale',
+          nebula:
+            'border-brand-alt-nebula-200 text-brand-alt-nebula-200 cursor-not-allowed filter grayscale',
+          info: 'border-alert-notification-o-100-200 text-alert-notification-o-100-200 cursor-not-allowed filter grayscale',
+          warning:
+            'border-alert-warning-o-100-200 text-alert-warning-o-100-200 cursor-not-allowed filter grayscale',
+          success:
+            'border-alert-success-o-100-200 text-alert-success-o-100-200 cursor-not-allowed filter grayscale',
+          error:
+            'border-alert-error-o-100-200 text-alert-error-o-100-200 cursor-not-allowed filter grayscale',
+        },
+      },
+      tertiary: {
+        base: {
+          pure: 'bg-gray-50 border-transparent outline-0 text-gray-600',
+          uranus: 'bg-uranus-50 border-transparent outline-0 text-uranus-500',
+          jupiter:
+            'bg-jupiter-50 border-transparent outline-0 text-jupiter-500',
+          neptune:
+            'bg-neptune-50 border-transparent outline-0 text-neptune-500',
+          saturn: 'bg-saturn-50 border-transparent outline-0 text-saturn-500',
+          cosmic:
+            'bg-brand-alt-cosmic-50 border-transparent outline-0 text-brand-alt-cosmic-500',
+          nebula:
+            'bg-brand-alt-nebula-50 border-transparent outline-0 text-brand-alt-nebula-500',
+          info: 'bg-alert-notification-o-100-50 border-transparent outline-0 text-alert-notification-o-100-500',
+          warning:
+            'bg-alert-warning-o-100-50 border-transparent outline-0 text-alert-warning-o-100-500',
+          success:
+            'bg-alert-success-o-100-50 border-transparent outline-0 text-alert-success-o-100-500',
+          error:
+            'bg-alert-error-o-100-50 border-transparent outline-0 text-alert-error-o-100-500',
+        },
+        hover: {
+          pure: 'hover:bg-gray-100',
+          uranus: 'hover:bg-uranus-100',
+          jupiter: 'hover:bg-jupiter-100',
+          neptune: 'hover:bg-neptune-100',
+          saturn: 'hover:bg-saturn-100',
+          cosmic: 'hover:bg-brand-alt-cosmic-100',
+          nebula: 'hover:bg-brand-alt-nebula-100',
+          info: 'hover:bg-alert-notification-o-100-100',
+          warning: 'hover:bg-alert-warning-o-100-100',
+          success: 'hover:bg-alert-success-o-100-100',
+          error: 'hover:bg-alert-error-o-100-100',
+        },
+        active: {
+          pure: 'active:bg-gray-200',
+          uranus: 'active:bg-uranus-200',
+          jupiter: 'active:bg-jupiter-200',
+          neptune: 'active:bg-neptune-200',
+          saturn: 'active:bg-saturn-200',
+          cosmic: 'active:bg-brand-alt-cosmic-200',
+          nebula: 'active:bg-brand-alt-nebula-200',
+          info: 'active:bg-alert-notification-o-100-200',
+          warning: 'active:bg-alert-warning-o-100-200',
+          success: 'active:bg-alert-success-o-100-200',
+          error: 'active:bg-alert-error-o-100-200',
+        },
+        disabled: {
+          pure: 'text-gray-200 cursor-not-allowed filter grayscale',
+          uranus: 'text-uranus-200 cursor-not-allowed filter grayscale',
+          jupiter: 'text-jupiter-200 cursor-not-allowed filter grayscale',
+          neptune: 'text-neptune-200 cursor-not-allowed filter grayscale',
+          saturn: 'text-saturn-200 cursor-not-allowed filter grayscale',
+          cosmic:
+            'text-brand-alt-cosmic-200 cursor-not-allowed filter grayscale',
+          nebula:
+            'text-brand-alt-nebula-200 cursor-not-allowed filter grayscale',
+          info: 'text-alert-notification-o-100-200 cursor-not-allowed filter grayscale',
+          warning:
+            'text-alert-warning-o-100-200 cursor-not-allowed filter grayscale',
+          success:
+            'text-alert-success-o-100-200 cursor-not-allowed filter grayscale',
+          error:
+            'text-alert-error-o-100-200 cursor-not-allowed filter grayscale',
+        },
+      },
+    };
+
+    // Focus styles are consistent across button types and modes, just varying by color
+    const focusStyles = {
+      pure: 'outline focus:outline-2 outline-gray-500 focus:outline-offset-2 focus:border-gray-500',
+      uranus:
+        'outline focus:outline-2 outline-uranus-300 focus:outline-offset-2 focus:border-uranus-300',
+      jupiter:
+        'outline focus:outline-2 outline-jupiter-300 focus:outline-offset-2 focus:border-jupiter-300',
+      neptune:
+        'outline focus:outline-2 outline-neptune-300 focus:outline-offset-2 focus:border-neptune-300',
+      saturn:
+        'outline focus:outline-2 outline-saturn-300 focus:outline-offset-2 focus:border-saturn-300',
+      cosmic:
+        'outline focus:outline-2 outline-brand-alt-cosmic-300 focus:outline-offset-2 focus:border-brand-alt-cosmic-300',
+      nebula:
+        'outline focus:outline-2 outline-brand-alt-nebula-300 focus:outline-offset-2 focus:border-brand-alt-nebula-300',
+      info: 'outline focus:outline-2 outline-alert-notification-o-100-300 focus:outline-offset-2 focus:border-alert-notification-o-100-300',
+      warning:
+        'outline focus:outline-2 outline-alert-warning-o-100-300 focus:outline-offset-2 focus:border-alert-warning-o-100-300',
+      success:
+        'outline focus:outline-2 outline-alert-success-o-100-300 focus:outline-offset-2 focus:border-alert-success-o-100-300',
+      error:
+        'outline focus:outline-2 outline-alert-error-o-100-300 focus:outline-offset-2 focus:border-alert-error-o-100-300',
+    };
+
+    // Choose the appropriate color configuration based on mode
+    const colorConfig = mode === 'light' ? lightColorConfig : darkColorConfig;
+
+    // Return appropriate classes based on state
+    if (state === 'focus') return focusStyles[color];
+    const validType = type as keyof typeof colorConfig;
+
+    // If we have a valid state and that state exists in the configuration
+    if (
+      state &&
+      colorConfig[validType] &&
+      (state === 'base' ||
+        state === 'hover' ||
+        state === 'active' ||
+        state === 'disabled')
+    ) {
+      return colorConfig[validType][state][color];
+    }
+
+    // Default to base style or empty string
+    return colorConfig[validType]?.base[color] || '';
+  },
 };
 
-const validTypes: Exclude<PropsType['type'], undefined>[] = [
-  'primary',
-  'secondary',
-  'alt-primary',
-  'alt-secondary',
-];
-const validModes: Exclude<PropsType['mode'], undefined>[] = ['light', 'dark'];
-const validSizes: Exclude<PropsType['size'], undefined>[] = [
-  'small',
-  'medium',
-  'large',
-];
-const validIcons: Exclude<PropsType['icon'], undefined>[] = ['right', 'left'];
-
 export default function Button(props: PropsType) {
-  props = { ...defaultProps, ...props };
+  const mergedProps = { ...DEFAULTS, ...props };
   const {
     mode,
-    icon,
+    iconPosition,
     size,
     disabled,
     type,
+    color,
     onClick,
     children,
     as,
     href,
     target,
-  } = props;
+    isAlert,
+    alertType,
+    icon,
+  } = mergedProps;
+
+  // Validate fields
+  const safeType = validateField(type, VALID_OPTIONS.types);
+  const safeMode = validateField(mode, VALID_OPTIONS.modes);
+  const safeSize = validateField(size, VALID_OPTIONS.sizes);
+  const safeIconPosition = validateField(
+    iconPosition,
+    VALID_OPTIONS.iconPositions
+  );
+  const safeColor = validateField(color, VALID_OPTIONS.colors);
+  const safeAlertType = validateField(alertType, VALID_OPTIONS.alertTypes);
+
+  // Determine effective color based on alert type
+  const effectiveColor =
+    isAlert && safeAlertType !== 'none'
+      ? (safeAlertType as ColorType)
+      : safeColor;
+
+  // Build classes
+  const btnClasses = [
+    STYLES.base,
+    STYLES.getColorClasses(safeType, effectiveColor, 'base', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'hover', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'active', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'focus', safeMode),
+    disabled
+      ? STYLES.getColorClasses(safeType, effectiveColor, 'disabled', safeMode)
+      : '',
+    STYLES.size[safeSize],
+    STYLES.iconPosition[safeIconPosition],
+  ].join(' ');
 
   const Component = as === 'a' ? 'a' : 'button';
-
-  const safeType = validateField(type, validTypes);
-  const safeMode = validateField(mode, validModes);
-  const safeSize = validateField(size, validSizes);
-  const safeIcon = validateField(icon, validIcons);
-
-  let btnClasses = `${params.base} 
-                    ${params.mode[safeMode][safeType].default}
-                    ${params.mode[safeMode][safeType].hover}
-                    ${params.mode[safeMode][safeType].active}
-                    ${params.mode[safeMode][safeType].disabled}
-                    ${params.size[safeSize]}
-                    ${params.icon[safeIcon]}`;
 
   return (
     <Component
@@ -74,99 +606,19 @@ export default function Button(props: PropsType) {
       disabled={disabled}
       target={target}
     >
+      {icon}
       {children}
     </Component>
   );
 }
 
+// Utility function to validate field values
 function validateField<T>(
   field: T | undefined,
-  validFieldsArray: readonly T[],
-  defaultValueIndex = 0
+  validOptions: readonly T[],
+  defaultIndex = 0
 ) {
-  return !field || !validFieldsArray.includes(field)
-    ? validFieldsArray[defaultValueIndex]
+  return !field || !validOptions.includes(field)
+    ? validOptions[defaultIndex]
     : field;
 }
-
-const params = {
-  base: 'rounded-md px-6 outline disabled:outline-none flex items-center justify-center gap-2 text-center',
-  mode: {
-    dark: {
-      primary: {
-        default:
-          'bg-brand-alt-nebula-200 outline-2 text-black outline-transparent',
-        hover: 'hover:bg-brand-alt-nebula-400',
-        active: 'active:outline-brand-alt-nebula-800',
-        disabled:
-          'disabled:bg-brand-alt-nebula-800 disabled:text-brand-alt-nebula-600',
-      },
-      secondary: {
-        default:
-          'bg-grayscale-900 outline-1 outline-brand-alt-nebula-200 text-brand-alt-nebula-200 ',
-        hover:
-          'hover:shadow-[2px_2px_5px_0px] hover:shadow-brand-alt-nebula-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-500 disabled:text-brand-alt-nebula-800 disabled:shadow-none',
-      },
-      'alt-primary': {
-        default: 'bg-grayscale-50 outline-transparent text-black',
-        hover: 'hover:shadow-[1px_1px_4px_0px] hover:shadow-grayscale-200',
-        active: 'active:outline-grayscale-300 active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-300 disabled:text-grayscale-600 disabled:shadow-none',
-      },
-      'alt-secondary': {
-        default: 'bg-grayscale-900 outline-1 outline-white text-white',
-        hover: 'hover:shadow-[2px_2px_4px_0px] hover:shadow-grayscale-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-600 disabled:text-grayscale-300 disabled:shadow-none',
-      },
-    },
-    light: {
-      primary: {
-        default: 'bg-brand-alt-nebula-600 outline-transparent text-white',
-        hover:
-          'hover:bg-brand-alt-nebula-800 hover:shadow-[2px_2px_4px_0px] hover:shadow-grayscale-400',
-        active: 'active:outline-brand-alt-nebula-400 active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-300 disabled:text-brand-alt-nebula-600 disabled:shadow-none',
-      },
-      secondary: {
-        default:
-          'bg-white outline-1 outline-brand-alt-nebula-600 text-brand-alt-nebula-600 ',
-        hover:
-          'hover:shadow-[2px_2px_5px_0px] hover:shadow-brand-alt-nebula-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-50 disabled:text-brand-alt-nebula-300 disabled:shadow-none',
-      },
-      'alt-primary': {
-        default:
-          'bg-grayscale-800 outline-1 outline-transparent text-grayscale-50',
-        hover: 'hover:shadow-[2px_2px_5px_0px] hover:shadow-grayscale-500',
-        active: 'outline-grayscale-500 active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-500 disabled:text-grayscale-200 disabled:shadow-none',
-      },
-      'alt-secondary': {
-        default: 'bg-white outline-1 outline-grayscale-900 text-grayscale-800 ',
-        hover: 'hover:shadow-[2px_2px_5px_0px] hover:shadow-grayscale-800',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-50 disabled:text-grayscale-500 disabled:shadow-none',
-      },
-    },
-  },
-  size: {
-    small: 'py-2',
-    medium: 'py-[0.6rem]',
-    large: 'py-[0.8rem]',
-  },
-  icon: {
-    right: '',
-    left: 'flex-row-reverse',
-  },
-};
