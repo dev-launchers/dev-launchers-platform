@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button, { PropsType, ColorType } from './Button';
+import { PropsType, ColorType } from './types';
+import Button from './Button';
 
 export default {
   title: 'components/atoms/Button',
