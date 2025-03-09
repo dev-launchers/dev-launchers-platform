@@ -11,7 +11,7 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
-import DropDownMenu from './../../../common/Dropdown/Dropdown';
+import DropdownMenu from './../../../../../../../packages/UI/src/components/DropdownMenu';
 import countryData from './../../../../content/countryData.json';
 
 import {
@@ -26,7 +26,7 @@ import {
   // UploadButton,
   // ProfileHeader,
   // ProfilePicture,
-  UploadedProfilePicture,
+  // UploadedProfilePicture,
 } from './StyledUserLandingPage';
 // import DropdownMenu from './../../../common/Dropdown/Dropdown';
 
@@ -229,10 +229,11 @@ export default function UserLandingPage() {
           </p>
           <div>
             {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-              <UploadedProfilePicture
+              <img
                 src={
                   uploadedProfilePicture || userData?.profile?.profilePictureUrl
                 }
+                className="h-30 w-30"
               />
             ) : (
               <UploadProfilePicture width={120} height={120} />
@@ -306,7 +307,7 @@ export default function UserLandingPage() {
               required
             ></input>
 
-            <DropDownMenu
+            <DropdownMenu
               menuItems={countryData}
               menu={person.country}
               onChange={onCountryChange}
