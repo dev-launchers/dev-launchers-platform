@@ -87,7 +87,7 @@ const requests = {
     axios.delete<T>(url, { data: body }).then(responseBody),
   postForm: (url: string, data: FormData) =>
     axios
-      .post(url, data, {
+      .post<T>(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(responseBody),
@@ -181,6 +181,15 @@ const Profiles = {
   put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
 };
 
+const GoogledriveFile = {
+  post: async (data: FormData) => {
+    return await requests.postForm<FormData>(`/googledrive/`, data);
+  },
+  delete: async (id: string) => {
+    return await requests.delete('/googledrive/' + id);
+  },
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -193,6 +202,7 @@ const agent = {
   Notifications,
   Profiles,
   requests,
+  GoogledriveFile,
 };
 
 export default agent;
