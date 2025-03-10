@@ -13,6 +13,8 @@ import {
   OutlinedOpportunities,
 } from './../../../common/Icons';
 
+import OutlinedCat from './../../../common/CatIcon/OutlinedCat';
+
 function SideBar() {
   const { userData } = useUserDataContext();
   const { sidebarState, sidebarDispatch } = useSidebarDataContext();
@@ -29,67 +31,31 @@ function SideBar() {
     },
   };
 
-  styling.overview = {
-    li: `group ${styling.li} ${
-      pages.showOverview ? styling.active.background : styling.background
-    }`,
-    iconColor: `${
-      pages.showOverview
-        ? 'stroke-black'
-        : 'stroke-grayscale-100 group-hover:stroke-black'
-    }`,
-    typography: `${pages.showOverview ? styling.active.text : styling.text}`,
+  const getActiveStyling = (activePage) => {
+    return {
+      li: `group ${styling.li} ${
+        activePage ? styling.active.background : styling.background
+      }`,
+      iconColor: `${
+        activePage
+          ? 'stroke-black'
+          : 'stroke-grayscale-100 group-hover:stroke-black'
+      }`,
+      typography: `${activePage ? styling.active.text : styling.text}`,
+    };
   };
 
-  styling.projects = {
-    li: `group ${styling.li} ${
-      pages.showProjects ? styling.active.background : styling.background
-    }`,
-    iconColor: `${
-      pages.showProjects
-        ? 'stroke-black'
-        : 'stroke-grayscale-100 group-hover:stroke-black'
-    }`,
-    typography: `${pages.showProjects ? styling.active.text : styling.text}`,
-  };
+  styling.overview = getActiveStyling(pages.showOverview);
 
-  styling.profiles = {
-    li: `group ${styling.li} ${
-      pages.showProfiles ? styling.active.background : styling.background
-    }`,
-    iconColor: `${
-      pages.showProfiles
-        ? 'stroke-black'
-        : 'stroke-grayscale-100 group-hover:stroke-black'
-    }`,
-    typography: `${pages.showProfiles ? styling.active.text : styling.text}`,
-  };
+  styling.projects = getActiveStyling(pages.showProjects);
 
-  styling.ideas = {
-    li: `group ${styling.li} ${
-      pages.showIdeas ? styling.active.background : styling.background
-    }`,
-    iconColor: `${
-      pages.showIdeas
-        ? 'stroke-black'
-        : 'stroke-grayscale-100 group-hover:stroke-black'
-    }`,
-    typography: `${pages.showIdeas ? styling.active.text : styling.text}`,
-  };
+  styling.profiles = getActiveStyling(pages.showProfiles);
 
-  styling.opportunities = {
-    li: `group ${styling.li} ${
-      pages.showOpportunities ? styling.active.background : styling.background
-    }`,
-    iconColor: `${
-      pages.showOpportunities
-        ? 'stroke-black'
-        : 'stroke-grayscale-100 group-hover:stroke-black'
-    }`,
-    typography: `${
-      pages.showOpportunities ? styling.active.text : styling.text
-    }`,
-  };
+  styling.ideas = getActiveStyling(pages.showIdeas);
+
+  styling.opportunities = getActiveStyling(pages.showOpportunities);
+
+  styling.chatbot = getActiveStyling(pages.showChatbot);
 
   const onOverviewClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_OVERVIEW_SETTING });
@@ -105,6 +71,10 @@ function SideBar() {
   };
   const onOpportunitiesClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_OPPORTUNITIES_SETTING });
+  };
+
+  const onChatbotClick = () => {
+    sidebarDispatch({ type: sidebarActions.SHOW_CHATBOT_SETTING });
   };
 
   return (
@@ -129,18 +99,30 @@ function SideBar() {
           <Typography type="p" className={styling.projects.typography}>
             PROJECTS
           </Typography>
-        </li> */}
-        {/*<li className={styling.profiles.li} onClick={onProfilesClick}>
+        </li>
+        <li className={styling.profiles.li} onClick={onProfilesClick}>
           <OutlinedProfiles colorClass={styling.profiles.iconColor} />
-          <Typography type="p" className={styling.profiles.typography}>PROFILES</Typography>
+          <Typography type="p" className={styling.profiles.typography}>
+            PROFILES
+          </Typography>
         </li>
         <li className={styling.ideas.li} onClick={onIdeasClick}>
           <OutlinedIdeas colorClass={styling.ideas.iconColor} />
-          <Typography type="p" className={styling.ideas.typography}>IDEAS</Typography>
+          <Typography type="p" className={styling.ideas.typography}>
+            IDEAS
+          </Typography>
         </li>
         <li className={styling.opportunities.li} onClick={onOpportunitiesClick}>
           <OutlinedOpportunities colorClass={styling.opportunities.iconColor} />
-          <Typography type="p" className={styling.opportunities.typography}>OPPORTUNITIES</Typography>
+          <Typography type="p" className={styling.opportunities.typography}>
+            OPPORTUNITIES
+          </Typography>
+        </li>
+        <li className={styling.chatbot.li} onClick={onChatbotClick}>
+          <OutlinedCat colorClass={styling.chatbot.iconColor} />
+          <Typography type="p" className={styling.chatbot.typography}>
+            DL Bot
+          </Typography>
         </li> */}
       </ul>
     </div>

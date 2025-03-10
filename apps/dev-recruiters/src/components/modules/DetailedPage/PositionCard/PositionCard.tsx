@@ -141,11 +141,6 @@ export default function PositionCard({
               )}
             </ReactMarkdown>
           )}
-          {/* <p>
-            {isExpanded
-              ? position.attributes.description
-              : `${position.attributes.description.substring(0, 320)}...`}
-          </p> */}
         </DescriptionSection>
       </Section>
 
@@ -157,11 +152,6 @@ export default function PositionCard({
               <TagsListItem color="Dark">
                 {position.attributes.level}
               </TagsListItem>
-              {/*} {position?.skills?.map((skill, index) => (
-                <TagsListItem color="Light" key={index}>
-             {skill?.interest} 
-             </TagsListItem> 
-              ))} */}
             </TagsList>
           </TagsSection>
         </OpportunityDetailsContainer>
@@ -280,7 +270,7 @@ function ModalTopSection({ position }: Props) {
     <RowContainer paddingVertical={20} justifycontent="justfiy-left">
       <ModalProjectSection>
         <h3>{position.attributes.title}</h3>
-        {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
+
         <h4>PRODUCT PLATFORM</h4>
         <h6>TIME COMMITMENT</h6>
         <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>

@@ -43,7 +43,7 @@ export interface ShareDialogProps {
   /**
    * button prop is also optional and can be used to pass a custom button component to the ShareDialog component. If no button is passed, a default button will be used.
    */
-  button?: JSX.Element;
+  button?: typeof Button;
 }
 
 /**
@@ -69,11 +69,7 @@ export function ShareDialog({
       <Dialog>
         <DialogTrigger asChild>
           {button ?? (
-            <Button
-              buttonType="primary"
-              buttonSize="standard"
-              className="flex items-center justify-center gap-2"
-            >
+            <Button type="primary" size="medium">
               <Share className="h-4 w-4" /> Share
             </Button>
           )}

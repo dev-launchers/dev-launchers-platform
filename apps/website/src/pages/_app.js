@@ -4,8 +4,6 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '../styles/globals';
-
 import 'react-toastify/dist/ReactToastify.css';
 import theme from '../styles/theme';
 import { initGA, logPageView } from '../utils/GoogleAnalytics';
@@ -46,7 +44,6 @@ function MyApp(props) {
     <>
       <SheetsProvider>
         <ThemeProvider theme={theme}>
-          <GlobalStyle />
           <div>
             <Head>
               <script

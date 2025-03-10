@@ -7,7 +7,6 @@ import Interests from './Interests';
 
 function Overview() {
   const { userData } = useUserDataContext();
-
   return (
     <>
       <div className="flex flex-col gap-9">
@@ -16,7 +15,7 @@ function Overview() {
           <Bio bio={userData?.bio} />
           <Skills />
         </div>
-        <Interests />
+        <Interests interestList={userData.interests} />
       </div>
     </>
   );
