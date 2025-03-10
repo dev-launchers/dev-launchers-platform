@@ -4,12 +4,14 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
 `;
+
 export const Label = styled.label`
   margin: 1rem;
   color: ${({ theme }) => theme?.colors?.Black};
   font-family: ${({ theme }) => theme?.fonts?.normal};
   font-size: ${({ theme }) => theme.fontSizes.small};
 `;
+
 export const Input = styled.input<{ height?: string; width?: string }>`
   background-color: ${({ theme }) => theme.colors.SilverSand};
   height: ${({ height }) => height || 'auto'};
@@ -21,6 +23,7 @@ export const Input = styled.input<{ height?: string; width?: string }>`
     width: 100%;
   }
 `;
+
 export const TextArea = styled.textarea.attrs({ wrap: 'hard' })`
   resize: none;
   background-color: ${({ theme }) => theme.colors.SilverSand};
@@ -33,9 +36,11 @@ export const TextArea = styled.textarea.attrs({ wrap: 'hard' })`
     width: 100%;
   }
 `;
+
 export const Radio = styled.input.attrs({ type: 'radio' })`
   margin: 0.5rem;
 `;
+
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   margin: 0.5rem;
 `;
@@ -100,6 +105,7 @@ export const Statement = styled.p`
     width: 90%;
   }
 `;
+
 export const ErrorMsg = styled.div`
   color: ${({ theme }) => theme.colors.Red};
   font-family: ${({ theme }) => theme?.fonts?.normal};
@@ -138,6 +144,7 @@ export const SubmitButton = styled.button.attrs({ type: 'submit' })`
     width: 100%;
   }
 `;
+
 export const Header = styled.h1`
   color: ${({ theme }) => theme?.colors?.Black};
   line-height: 3.5rem;
@@ -173,6 +180,7 @@ export const GradientLine = styled.div<{ height?: string }>`
     #3a7ca5 75% 100%
   );
 `;
+
 export const ModalUploadSection = styled.div`
   display: flex;
   flex-direction: column;
@@ -202,6 +210,7 @@ export const ModalUploadSection = styled.div`
     white-space: pre-wrap;
   }
 `;
+
 export const ModalFooterSection = styled.div`
   display: flex;
   background-color: yellow;
@@ -211,7 +220,7 @@ export const ModalFooterSection = styled.div`
   font-weight: 400;
   max-width: 300px;
 `;
-//
+
 export const UploadButton = styled.button.attrs({ type: 'submit' })`
   color: var(--grayscale-50, #fff);
   text-align: center;
@@ -242,8 +251,7 @@ export const UploadButton = styled.button.attrs({ type: 'submit' })`
     width: 100%;
   }
 `;
-//
-//
+
 export const CancelUploadButton = styled.button.attrs({ type: 'submit' })`
   color: var(--grayscale-50, #fff);
   text-align: center;
@@ -276,8 +284,6 @@ export const CancelUploadButton = styled.button.attrs({ type: 'submit' })`
   }
 `;
 
-//
-//OkButton
 export const OkButton = styled.button.attrs({ type: 'submit' })`
   color: var(--grayscale-50, #fff);
   text-align: center;
@@ -310,7 +316,6 @@ export const OkButton = styled.button.attrs({ type: 'submit' })`
   }
 `;
 
-//CancelButton
 export const CancelButton = styled.button.attrs({ type: 'submit' })`
   color: var(--grayscale-500, #fff);
   text-align: center;

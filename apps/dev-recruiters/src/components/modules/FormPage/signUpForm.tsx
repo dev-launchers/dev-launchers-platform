@@ -57,11 +57,10 @@ export default function SignUpForm({
   const [filesUploaded, setFilesUploaded] = useState<any>({});
 
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
-  const [isUploading, setIsUploading] = useState(false); // Uploading state
+  const [isUploading, setIsUploading] = useState(false);
 
-  const [isDeleting, setIsDeleting] = useState(false); // Uploading state
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  //dependent fields
   const PortFolioLink = (props) => {
     const { setFieldValue } = useFormikContext();
     const [field] = useField(props);
@@ -148,10 +147,6 @@ export default function SignUpForm({
   const [checkCheckbox, setCheckCheckbox] = useState<undefined | boolean>(
     undefined
   );
-
-  const handleSetCheckCheckbox = () => {
-    setCheckCheckbox(!checkCheckbox);
-  };
 
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);

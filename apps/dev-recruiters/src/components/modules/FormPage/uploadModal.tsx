@@ -1,5 +1,3 @@
-//export { default } from '@devlaunchers/dev-recruiters/src/components/modules/DetailedPage/PositionPopupModal/Modal';
-
 'use client';
 import React, { useState } from 'react';
 import ReactModal from 'react-modal';

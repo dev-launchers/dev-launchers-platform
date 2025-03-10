@@ -11,8 +11,6 @@ export const UploadModalContent = styled.div`
 export const UploadCustomModalStyles = {
   content: {
     position: 'absolute',
-    /* width: '40%',
-    height: '80%', */
     top: '40%',
     left: '50%',
     marginRight: '-20%',
