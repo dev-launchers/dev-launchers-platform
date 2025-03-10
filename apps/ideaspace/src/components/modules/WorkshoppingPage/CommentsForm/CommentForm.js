@@ -70,9 +70,9 @@ function CommentForm(props) {
           <UserComment>
             <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
             <div
-              className={`relative flex items-center py-[14px] w-[598px] text-base text-[#494949] border-[#7339AC] border-2 ml-2 ${
+              className={`relative flex items-center py-[14px] w-full text-base text-[#494949] border-[#7339AC] border-2 ml-2 ${
                 isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
-              } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'}`}
+              } ${isExpanded ? 'rounded-[28px]' : 'rounded-[32px]'} max-w-full`}
               style={{
                 minHeight: '55px',
                 paddingLeft: '16px',
@@ -81,14 +81,13 @@ function CommentForm(props) {
             >
               <textarea
                 placeholder="What are your thoughts?"
-                className="flex-grow mr-3 resize-none overflow-hidden focus:outline-none"
+                className="flex-grow mr-3 resize-none overflow-hidden focus:outline-none w-full max-w-[500px] min-w-[100px]"
                 rows="1"
                 value={textChange}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 onInput={handleInput}
                 onChange={handleTextChange}
-                style={{ width: '500px' }}
               />
               {textChange.trim().length > 0 && (
                 <button

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const StyledRanbow = styled.div`
   margin: 1.3rem auto 0 auto;
   max-width: 24.8rem;
@@ -53,20 +52,26 @@ export const StyledTextArea = styled.textarea`
   padding: 24px;
   border: none;
   outline: none;
-  font: 300 16px/24px 'Nunito Sans', sans-serif;
-  color: #494949;
+  color: #000;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
   resize: vertical;
   border-radius: 0px;
   display: block;
   margin: 0;
 
   &::placeholder {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    flex: 1 0 0;
-    color: #494949;
-    font: 300 18px/24px 'Nunito Sans';
+    color: var(--static-content-text-grey-muted, #494949);
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0px;
   }
 `;
 
@@ -85,17 +90,23 @@ export const StyledInput = styled.input`
   padding: 24px;
   border: none;
   outline: none;
-  font: 300 16px/24px 'Nunito Sans', sans-serif;
-  color: #494949;
+  color: #000;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
   border-radius: 24px;
 
   &::placeholder {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    flex: 1 0 0;
-    color: #494949;
-    font: 300 18px/24px 'Nunito Sans';
+    color: var(--static-content-text-grey-muted, #494949);
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    letter-spacing: 0px;
   }
 `;
 

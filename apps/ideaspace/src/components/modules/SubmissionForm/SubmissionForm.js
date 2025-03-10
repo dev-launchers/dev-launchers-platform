@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
@@ -107,12 +107,12 @@ function SubmissionForm() {
   };
 
   const handleDialog = async (url) => {
-    //if (await confirmLeave()) {
-    setUrrl(url);
-    //}
+    if (await confirmLeave()) {
+      setUrrl(url);
+    }
   };
 
-  /*useEffect(() => {
+  useEffect(() => {
     // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
@@ -138,7 +138,7 @@ function SubmissionForm() {
         router.push(urrl);
       }
     }
-  }, [unsavedChanges, urrl]);*/
+  }, [unsavedChanges, urrl]);
 
   return (
     <>
@@ -165,7 +165,7 @@ function SubmissionForm() {
         />
       ) : (
         <>
-          {/* <Dialog /> */}
+          <Dialog />
           <CreateFailure />
           <IdeaForm
             initialValues={initialValues}

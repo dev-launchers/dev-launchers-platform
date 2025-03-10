@@ -512,6 +512,34 @@ export const CloseButton = styled.button`
   margin: 20px;
 `;
 
+export const OkButton = styled.button`
+  background: ${({ theme }) => theme.colors.White};
+  border: none;
+  border-radius: 5px;
+  height: 22px;
+  width: 20px;
+  margin: 20px;
+  position: absolute;
+  top: 80;
+  right: 40%;
+
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+`;
+
+export const CancelButton = styled.button`
+  background: ${({ theme }) => theme.colors.White};
+  border: none;
+  border-radius: 5px;
+  height: 22px;
+  width: 60px;
+  margin: 20px;
+  position: absolute;
+  top: 80;
+  right: 25%;
+
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+`;
+
 export const CloseIcon = styled.svg`
   color: ${({ theme }) => theme?.colors?.Black};
   height: 100%;
