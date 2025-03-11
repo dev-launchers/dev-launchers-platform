@@ -4,8 +4,6 @@ import { IdeaOwnerCard } from './IdeaOwnerCard/IdeaOwnerCard';
 import { TagsCard } from './TagsCard/TagsCard';
 import IdeaContentCard from './IdeaContentCard/IdeaContentCard';
 import IdeaSettingsCard from './IdeaSettingsCard/IdeaSettingsCard';
-useState;
-useEffect;
 import {
   Wrapper,
   TopView,
@@ -17,7 +15,11 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export const IdeaOverview = ({ selectedCard }) => {
-  if (selectedCard.ideaName === '') return null;
+  const [ideaData, setIdeaData] = useState(selectedCard);
+
+  useEffect(() => {
+    setIdeaData(selectedCard);
+  }, [selectedCard]);
 
   const authorName =
     selectedCard.ideaOwner?.username !== undefined
@@ -27,7 +29,7 @@ export const IdeaOverview = ({ selectedCard }) => {
   const [profilePictureUrl, setProfilePictureUrl] = useState(null);
   const [ownerDisplayName, setOwnerDisplayName] = useState('');
   const [ownerUserName, setOwnerUserName] = useState('');
-  const OwnerID = selectedCard.ideaOwner.id;
+
   useEffect(() => {
     const fetchOwnerImage = async () => {
       try {
@@ -49,49 +51,85 @@ export const IdeaOverview = ({ selectedCard }) => {
     };
     fetchOwnerImage();
   }, [selectedCard.ideaOwner?.id]);
+
+  // This callback updates the idea data from an edit.
+  const handleIdeaUpdate = (updatedIdea) => {
+    setIdeaData((prev) => ({
+      ...prev,
+      ...updatedIdea,
+      ideaTagLine: updatedIdea.tagline || prev.ideaTagLine,
+      description: updatedIdea.description || prev.description,
+      features: updatedIdea.features || prev.features,
+      targetAudience: updatedIdea.targetAudience || prev.targetAudience,
+    }));
+  };
+
+  // Now, after all hooks have been called, conditionally render if there's no idea name.
+  if (!ideaData.ideaName) return null;
+
   return (
-    <Wrapper>
-      <LeftWrapper>
-        <TopView>
-          <IdeaCard
-            ideaId={selectedCard.id}
-            ideaName={selectedCard.ideaName}
-            ideaTagLine={selectedCard.tagline}
-          />
-        </TopView>
-        <IdeaContentCard
-          title={'Description'}
-          content={selectedCard.description}
+    <div className="flex flex-col gap-6 w-full mb-10">
+      <div className=" flex flex-col gap-7 sm:gap-11">
+        <IdeaOwnerCard
+          IdeaOwnerName={ownerDisplayName}
+          IdeaOwnerEmail={ownerUserName}
+          profilePictureUrl={profilePictureUrl}
         />
-        <div className="flex flex-row gap-3">
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea features'}
-              content={selectedCard.features}
-              fullHeight
-            />
+        <IdeaCard
+          ideaImage={ideaData.ideaImage}
+          ideaId={ideaData.id}
+          ideaName={ideaData.ideaName}
+          ideaTagLine={ideaData.ideaTagLine}
+          fullIdea={ideaData}
+          onEditSuccess={handleIdeaUpdate}
+        />
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Idea Description
           </div>
-          <div style={{ width: '100%' }}>
-            <IdeaContentCard
-              title={'Idea target Audience'}
-              content={selectedCard.targetAudience}
-              fullHeight
-            />
+
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.description}
           </div>
         </div>
-      </LeftWrapper>
-
-      <RightWrapper>
-        <TopView>
-          <IdeaOwnerCard
-            IdeaOwnerName={ownerDisplayName}
-            profilePictureUrl={profilePictureUrl}
-            IdeaOwnerEmail={ownerUserName}
-          />
-        </TopView>
-
-        {/* <IdeaSettingsCard card={selectedCard} /> */}
-      </RightWrapper>
-    </Wrapper>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Features
+          </div>
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.features}
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <div
+            className="text-black sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            style={{ lineHeight: '160%' }}
+          >
+            Target Audience
+          </div>
+          <div
+            className="text-[#1c1c1c] sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-justify"
+            style={{ lineHeight: '160%' }}
+          >
+            {ideaData.targetAudience}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

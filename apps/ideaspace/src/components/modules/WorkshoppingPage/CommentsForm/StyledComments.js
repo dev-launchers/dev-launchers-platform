@@ -1,20 +1,27 @@
 import styled from 'styled-components';
 
-export const Comments = styled.div`
-  overflow: auto;
-  width: 100%;
-  max-width: 690px;
-  min-width: 300px;
-  padding: 32px 20px;
-  background-color: white;
-  border-radius: 30px;
+// export const Comments = styled.div`
+//   overflow: auto;
+//   width: 100%;
+//   max-width: 690px;
+//   min-width: 300px;
+//   padding: 32px 20px;
+//   background-color: white;
+//   border-radius: 30px;
 
-  h2 {
-    font-weight: 300;
-  }
-  border-radius: 16px;
-  border: 2px solid var(--static-surface-grey-brand, #f0edee);
-  background: #fff;
+//   h2 {
+//     font-weight: 300;
+//   }
+//   border-radius: 16px;
+//   border: 2px solid var(--static-surface-grey-brand, #f0edee);
+//   background: #fff;
+// `;
+
+export const Comments = styled.div`
+  // overflow: auto;
+  width: 100%;
+  max-width: 680px;
+  min-width: 300px;
 `;
 
 export const SingleComment = styled.div`
@@ -125,12 +132,12 @@ export const Time = styled.div`
 `;
 
 export const Form = styled.div`
-  overflow: auto;
+  // overflow: auto;
   width: 100%;
   max-width: 700px;
   min-width: 300px;
   border-radius: 30px;
-  margin: 0 300 px 0 300px;
+  margin: 0 auto;
 
   form {
     display: flex;

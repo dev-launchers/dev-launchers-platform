@@ -10,6 +10,7 @@ import theme from '../../../styles/theme';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import { Form, Comments } from './CommentsForm/StyledComments';
+import { ChevronLeft } from 'lucide-react';
 
 import {
   Container,
@@ -55,7 +56,7 @@ export default function WorkshoppingPage(props) {
   }, [hidden]);
 
   function renderNewComment(comment) {
-    setComments([comment, ...comments]);
+    setComments((prev) => [comment, ...prev]);
   }
 
   if (getError) {
@@ -63,32 +64,36 @@ export default function WorkshoppingPage(props) {
   } else {
     return (
       <Container theme={theme}>
-        <ArchivedIdea />
-
-        <HeadWapper>
-          <Headline>Idea Workshop</Headline>
-          <StyledRanbow>
-            <atoms.Layer hasRainbowBottom />
-          </StyledRanbow>
-          <BackButton backRoute={'/ideaspace/browse'} />
-          <ParaWrapper>
-            <atoms.Typography type="p" style={{ fontSize: '1.2rem' }}>
-              Want to help this product idea? Comment and ideate this idea with
-              other people to help it become an open source project.
-            </atoms.Typography>
-          </ParaWrapper>
-        </HeadWapper>
+        <div className="px-[20px]">
+          <div
+            className="w-full max-w-[680px] m-auto"
+            style={{ marginBottom: '28px', marginTop: '24px' }}
+          >
+            <div className="flex gap-4 items-center">
+              <div
+                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
+                onClick={() => router.push('/ideaspace/browse')}
+              >
+                <ChevronLeft />
+              </div>
+              <div className=" text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+                Idea Workshopping
+              </div>
+            </div>
+          </div>
+        </div>
 
         {loading === true ? (
           <CircularIndeterminateLoader text="Loading..." color="white" />
         ) : (
-          <div className="flex flex-row justify-center">
-            <Wrapper>
+          <div className="flex flex-row justify-center px-[20px]">
+            <div className=" max-w-[680px] min-w-[318px] w-full">
               <IdeaOverview selectedCard={data} />
+              <div className="h-[0px] border border-[#dad8d9] mb-10"></div>
               <Comments>
-                <h5 style={{ textAlign: 'left' }}>
-                  COMMENT FEED: {comments.length}
-                </h5>
+                <div className="text-black text-lg font-bold font-['Nunito Sans'] leading-tight">
+                  Comment Feed: {comments.length}
+                </div>
                 <Form>
                   <CommentForm
                     selectedCard={data}
@@ -98,7 +103,7 @@ export default function WorkshoppingPage(props) {
                 </Form>
                 <DisplayComments selectedCard={data} comments={comments} />
               </Comments>
-            </Wrapper>
+            </div>
           </div>
         )}
       </Container>

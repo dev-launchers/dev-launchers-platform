@@ -77,11 +77,18 @@ const IdeaForm = ({
   formButton,
   sending,
   clickHandler,
+  editMode = false,
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const handleCheckboxChange = (checked) => {
+    setIsChecked(checked);
+  };
 
   const isFieldCompleted = (value, error, fieldName) => {
     return value && !error && focusedField !== fieldName;
@@ -103,9 +110,11 @@ const IdeaForm = ({
 
   const handleSubmit = (values, actions) => {
     submitHandler(values, actions);
-    setSuccessMessageVisible(true);
-    actions.resetForm({ values: initialValues });
-    clearLocalStorage();
+    if (!editMode) {
+      setSuccessMessageVisible(true);
+      actions.resetForm({ values: initialValues });
+      clearLocalStorage();
+    }
   };
 
   const renderFieldMessage = (
@@ -186,10 +195,12 @@ const IdeaForm = ({
                 unsavedHandler={unsavedHandler}
                 initialValues={initialValues}
               />
-              <atoms.Typography type="h4">
-                Idea Info
-                <hr style={{ margin: '1rem auto 2rem' }} />
-              </atoms.Typography>
+              {!editMode && (
+                <atoms.Typography type="h4">
+                  Idea Info
+                  <hr style={{ margin: '1rem auto 2rem' }} />
+                </atoms.Typography>
+              )}
 
               <atoms.Box flexDirection="column" gap="2rem">
                 {/* Idea Name Field */}
@@ -579,27 +590,37 @@ const IdeaForm = ({
                   )}
                 </GroupWrapper>
 
-                <atoms.Typography type="p">
-                  After submitting your idea, it will be posted in the
-                  Workshopping area to begin collaboration with other Dev
-                  Launchers.
-                </atoms.Typography>
-
-                <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                  <Checkbox required />
+                {!editMode && (
                   <atoms.Typography type="p">
-                    &nbsp;I have read and agree to the{' '}
-                    <Link href="/ideaspace/terms" passHref>
-                      <a
-                        style={{ color: 'blue', textDecoration: 'underline' }}
-                        target="_blank"
-                      >
-                        Idea Submission Terms & Conditions
-                      </a>
-                    </Link>
-                    .<span style={{ color: 'red' }}>&nbsp;*</span>
+                    After submitting your idea, it will be posted in the
+                    Workshopping area to begin collaboration with other Dev
+                    Launchers.
                   </atoms.Typography>
-                </atoms.Box>
+                )}
+
+                {!editMode && (
+                  <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
+                    <Checkbox
+                      name="termsAndConditions"
+                      required
+                      checked={isChecked}
+                      onCheckedChange={handleCheckboxChange}
+                    />
+
+                    <atoms.Typography type="p">
+                      &nbsp;I have read and agree to the{' '}
+                      <Link href="/ideaspace/terms" passHref>
+                        <a
+                          style={{ color: 'blue', textDecoration: 'underline' }}
+                          target="_blank"
+                        >
+                          Idea Submission Terms & Conditions
+                        </a>
+                      </Link>
+                      .<span style={{ color: 'red' }}>&nbsp;*</span>
+                    </atoms.Typography>
+                  </atoms.Box>
+                )}
 
                 <atoms.Box justifyContent="flex-end" gap="1rem">
                   {formButton == 'submit' ? (
@@ -623,7 +644,13 @@ const IdeaForm = ({
                           scrollToError(validationErrors);
                           return;
                         }
-
+                        //  Updated T&C checkbox validation
+                        if (!isChecked) {
+                          alert(
+                            'You must accept the Terms & Conditions to submit the form.'
+                          );
+                          return; // Preventing form submission if T&C is not checked
+                        }
                         submitForm();
                       }}
                     />
@@ -647,7 +674,7 @@ const IdeaForm = ({
                   )}
                 </atoms.Box>
               </atoms.Box>
-              {successMessageVisible && (
+              {!editMode && successMessageVisible && (
                 <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
               )}
             </Form>
