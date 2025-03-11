@@ -6,6 +6,7 @@ import { useSidebarDataContext } from './../../../context/SidebarDataContext';
 
 import SideBar from './SideBar';
 import Overview from './Overview';
+import Chatbot from './Chatbot';
 import EditProfileModal from './EditProfileModal';
 
 /**
@@ -34,7 +35,9 @@ export default function UserProfile() {
     // } else if (pages?.showOpportunities) {
     //   return <Opportunities opportunities={opportunities} />;
     // }
-    else {
+    else if (pages?.showChatbot) {
+      return <Chatbot />;
+    } else {
       return <Overview />;
     }
   };

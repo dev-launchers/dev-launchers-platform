@@ -1,5 +1,6 @@
 import { Opportunity } from '@devlaunchers/models';
 import { useState } from 'react';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import {
   BulletList,
   BulletListItem,
@@ -8,20 +9,34 @@ import {
   ExpectationsListItem,
   ModalDescriptionSection,
   ModalProjectSection,
+  ModalSkillRequiredSection,
   TagsList,
   TagsListItem,
   TagsSection,
 } from '../../../../../DetailedPage/PositionCard/StyledPositionCard';
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
-import { RowContainer } from '../../../../../DetailedPage/styledProjectDetails';
+import {
+  RowContainerTop,
+  RowContainerBottom,
+} from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
-import { ApplyButton, ButtonsSection, CloseButton } from './StyledRoleModal';
+import LoginPage from '../../../../../LoginPage/loginPage';
+import {
+  ApplyButton,
+  ButtonsSection,
+  SaveForLaterButton,
+  CloseButton,
+} from './StyledRoleModal';
+import { RoleDetailsModalWrapper } from './StyledRoleModal';
+import { CloseColorBoxContainer } from './StyledRoleModal';
+import { Icons } from '@devlaunchers/components/src/assets';
 
 interface Props {
   projectSlug: string;
   projectId: string;
   position: Opportunity;
   handleCloseModal?: () => void;
+  isAuthenticated?: boolean;
 }
 
 function RoleDetailsModal({
@@ -32,24 +47,15 @@ function RoleDetailsModal({
 }: Props) {
   console.log(projectId);
   console.log(projectSlug);
+
   return (
-    <div>
-      <ColorBox />
-      <CloseButton onClick={handleCloseModal}>
-        <CloseIcon
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </CloseIcon>
-      </CloseButton>
+    <RoleDetailsModalWrapper>
+      <CloseColorBoxContainer>
+        <ColorBox />
+        <CloseButton>
+          <Icons.Close height={32} width={32} onClick={handleCloseModal} />
+        </CloseButton>
+      </CloseColorBoxContainer>
       <ModalTopSection
         position={position}
         projectId={projectId}
@@ -61,41 +67,75 @@ function RoleDetailsModal({
         projectSlug={projectSlug}
         handleCloseModal={handleCloseModal}
       />
-    </div>
+    </RoleDetailsModalWrapper>
   );
 }
 
 function ModalTopSection({ position }: Props) {
+  /***destructuring propertid from position.attributes */
+  const {
+    title,
+    commitmentHoursPerWeek,
+    level,
+    description,
+    interests: { data },
+  } = position.attributes;
   return (
-    <RowContainer paddingVertical={20} justifycontent="justfiy-left">
+    <RowContainerTop>
       <ModalProjectSection>
-        <h3>{position.attributes.title}</h3>
-        {/* <p>{position.isPlatform ? "Platform" : "Independent"}</p> */}
-        <h4>Product Platform</h4>
-        <h6>TIME COMMITMENT</h6>
-        <p>{position.attributes.commitmentHoursPerWeek} hrs per week</p>
+        <div className="title">
+          <h2>{title}</h2>
+          <p>Product Platform</p>
+        </div>
+        <div className="commitment">
+          <h5>TIME COMMITMENT</h5>
+          <p>{commitmentHoursPerWeek} hrs per week</p>
+        </div>
+        <div className="level">
+          <h5>
+            Level
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-circle-help"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <path d="M12 17h.01" />
+            </svg>
+          </h5>
+          <p> {level}</p>
+        </div>
       </ModalProjectSection>
       <ModalDescriptionSection Mobile={false}>
-        <h3>ABOUT THE PROJECT</h3>
-        <p>{position.attributes.description}</p>
+        <h5>About the Role</h5>
+        <p>{description}</p>
       </ModalDescriptionSection>
-      <ModalProjectSection>
-        <h4>SKILLS REQUIRED</h4>
-        <TagsSection>
-          <TagsList>
-            <TagsListItem color="Dark">
-              {position.attributes.level}
-            </TagsListItem>
-            {/* }  {position?.skills?.map((skill, index) => (
-              <TagsListItem color="Dark" key={index}>
-                {skill?.interest}
-              </TagsListItem>
-            ))}
-          */}
-          </TagsList>
-        </TagsSection>
-      </ModalProjectSection>
-    </RowContainer>
+      <ModalSkillRequiredSection>
+        <div className="require_skill">
+          <h5 className="skills">Skills Required</h5>
+          <TagsSection>
+            <TagsList>
+              {data?.map((skill, index) => {
+                const { interest } = skill?.attributes;
+                return (
+                  <TagsListItem color="Dark" key={index}>
+                    {interest}
+                  </TagsListItem>
+                );
+              })}
+            </TagsList>
+          </TagsSection>
+        </div>
+      </ModalSkillRequiredSection>
+    </RowContainerTop>
   );
 }
 
@@ -103,9 +143,12 @@ function ModalBottomSection({
   position,
   projectId,
   projectSlug,
+
   handleCloseModal,
 }: Props) {
   const [showApplyModal, setShowApplyModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { isAuthenticated } = useUserDataContext();
 
   const handleOpenApplyModal = () => {
     setShowApplyModal(true);
@@ -115,12 +158,38 @@ function ModalBottomSection({
     setShowApplyModal(false);
   };
 
+  /***Handle open and close Login */
+  const handleOpenLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const customStyles = {
+    content: {
+      position: 'absolute',
+      backgroundColor: 'rgba(0, 0, 0, 1)',
+      width: '70%',
+      height: '80%',
+      border: '1px solid  rgba(0, 0, 0, 1)',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      zIndex: 1001,
+    },
+    overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,1)' },
+  };
   return (
     <div>
-      <RowContainer paddingVertical={20} justifycontent="justfiy-left">
+      <RowContainerBottom>
         <ModalProjectSection>
-          <div>
-            <h4>WHY SHOULD YOU JOIN</h4>
+          <div className="responsibilty">
+            <h5>Responsibilities</h5>
             <BulletList>
               <BulletListItem>Mentor and manage a team</BulletListItem>
               <BulletListItem>
@@ -130,23 +199,34 @@ function ModalBottomSection({
             </BulletList>
           </div>
         </ModalProjectSection>
-        {/* {position.expectations.length > 0 && (
-          <ModalDescriptionSection Mobile={false}>
-            <h3>RESPONSIBILITIES</h3>
+        <ModalProjectSection>
+          <div className="why">
+            <h5>Why Should You Join?</h5>
             <BulletList>
-              {position.expectations.map((item, index) => (
-                <ExpectationsListItem key={index}>
-                  {item.expectation}
-                </ExpectationsListItem>
-              ))}
+              <BulletListItem>Mentor and manage a team</BulletListItem>
+              <BulletListItem>
+                Collaborate with people around the world
+              </BulletListItem>
+              <BulletListItem>Deliver high quality software</BulletListItem>
             </BulletList>
-          </ModalDescriptionSection>
-        )} */}
-      </RowContainer>
+          </div>
+        </ModalProjectSection>
+      </RowContainerBottom>
 
-      <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
-        <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
-      </ButtonsSection>
+      <div>
+        {isAuthenticated ? (
+          <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
+            <SaveForLaterButton color="DarkElectricBlue">
+              Save For Later
+            </SaveForLaterButton>
+            <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
+          </ButtonsSection>
+        ) : (
+          <ButtonsSection Mobile={false} onClick={handleOpenLoginModal}>
+            <ApplyButton>Sign In To Apply</ApplyButton>
+          </ButtonsSection>
+        )}
+      </div>
 
       <Modal
         modalIsOpen={showApplyModal}
@@ -160,6 +240,12 @@ function ModalBottomSection({
             projectSlug={projectSlug}
           />
         }
+      />
+      <Modal
+        modalIsOpen={showLoginModal}
+        handleOpenModal={handleOpenLoginModal}
+        customModalStyles={customStyles}
+        modalContent={<LoginPage closeModal={handleCloseLoginModal} />}
       />
     </div>
   );
