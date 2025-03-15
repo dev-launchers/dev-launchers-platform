@@ -161,6 +161,7 @@ function IdeaCard({ cards, cardType }) {
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
+                wordBreak: 'break-word',
               }}
             >
               {cards.description}
