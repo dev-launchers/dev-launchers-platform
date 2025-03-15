@@ -30,4 +30,5 @@ export type PropsType = {
   target?: string;
   isAlert?: boolean;
   alertType?: AlertType;
+  className?: string;
 };
