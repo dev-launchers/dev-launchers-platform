@@ -173,7 +173,7 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
                 <span>Profile</span>
               </p>
             </Link>
-            <Link href="ideaspace/dashboard">
+            <Link href="/ideaspace/dashboard">
               <p className={styles.profileMenuItem}>
                 <Lightbulb className={styles.icon} />
                 <span>Idea Dashboard</span>
