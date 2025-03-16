@@ -6,6 +6,8 @@ import greyBulletPoint from './../../../../../images/icons/grey-bullet-point.svg
 
 import { Typography } from '@devlaunchers/components/components/atoms';
 
+import React from 'react';
+
 /**
  * MetaInfo Component
  *
