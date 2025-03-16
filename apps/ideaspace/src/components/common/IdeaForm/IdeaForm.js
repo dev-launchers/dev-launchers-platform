@@ -84,6 +84,12 @@ const IdeaForm = ({
   const { isMobile } = useResponsive();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
 
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const handleCheckboxChange = (checked) => {
+    setIsChecked(checked);
+  };
+
   const isFieldCompleted = (value, error, fieldName) => {
     return value && !error && focusedField !== fieldName;
   };
@@ -594,7 +600,13 @@ const IdeaForm = ({
 
                 {!editMode && (
                   <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                    <Checkbox required />
+                    <Checkbox
+                      name="termsAndConditions"
+                      required
+                      checked={isChecked}
+                      onCheckedChange={handleCheckboxChange}
+                    />
+
                     <atoms.Typography type="p">
                       &nbsp;I have read and agree to the{' '}
                       <Link href="/ideaspace/terms" passHref>
@@ -632,7 +644,13 @@ const IdeaForm = ({
                           scrollToError(validationErrors);
                           return;
                         }
-
+                        //  Updated T&C checkbox validation
+                        if (!isChecked) {
+                          alert(
+                            'You must accept the Terms & Conditions to submit the form.'
+                          );
+                          return; // Preventing form submission if T&C is not checked
+                        }
                         submitForm();
                       }}
                     />
