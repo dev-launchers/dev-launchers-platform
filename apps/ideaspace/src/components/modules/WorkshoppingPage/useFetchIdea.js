@@ -50,8 +50,11 @@ export const useFetchIdea = (ideaId, setComments) => {
           let cleanList = cleanDataList(commentResponse);
           cleanList.forEach((element) => {
             element.user = cleanData(element.user?.data);
-            element.user.profile = cleanData(element.user?.profile.data);
+            element.user.profile = cleanData(element.user?.profile?.data);
           });
+          cleanList.sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+          );
           setComments(cleanList);
         }
 

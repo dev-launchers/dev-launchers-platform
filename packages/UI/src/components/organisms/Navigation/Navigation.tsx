@@ -1,209 +1,490 @@
+import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
-import * as React from 'react';
-import { tv } from 'tailwind-variants';
+import React from 'react';
+import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
-import { Button, Layer, NavLink } from '../../atoms';
-import NavDropdown from '../NavDropdown/NavDropdown';
-import logo from './../../../assets/images/logo-monogram.png';
-import MobileNavigation from './MobileNavigation';
-
-const LogoutIcon = ({ fill, ...props }: React.SVGAttributes<SVGElement>) => {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M2 3.49691e-07C1.45 2.53526e-07 0.979003 0.195667 0.587003 0.587C0.19567 0.979 2.89369e-06 1.45 2.79753e-06 2L3.49691e-07 16C2.53526e-07 16.55 0.195667 17.021 0.587 17.413C0.979 17.8043 1.45 18 2 18L9 18L9 16L2 16L2 2L9 2L9 1.57361e-06L2 3.49691e-07ZM13 4L11.625 5.45L14.175 8L6 8L6 10L14.175 10L11.625 12.55L13 14L18 9L13 4Z"
-        fill={fill || '#1C1C1C'}
-      />
-    </svg>
-  );
+import NotificationPopover from './NotificationPopover';
+type ProfileDropdownProps = {
+  userData: {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    bio: string;
+    profilePictureUrl: string;
+    socialMediaLinks: never[];
+    discord: {
+      id: number;
+      avatar: string;
+      username: string;
+      discriminator: string;
+    };
+    interests: never[];
+  };
 };
+// Centralized styles
+const styles = {
+  // Navigation styles
+  nav: 'sticky relative top-0 flex h-16 items-center justify-between bg-black px-4 md:px-8 z-50 text-lg sm:text-sm',
+  navItem:
+    'text-gray-400 font-normal transition-all duration-200 hover:text-white hover:font-semibold active:text-white active:font-semibold',
 
-const HamburgerButton = ({
-  className,
-  open,
-  setOpen,
-}: {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  className: string;
-}) => {
-  return (
-    <button
-      className={`tham tham-e-squeeze tham-w-10 ${
-        !open || 'tham-active'
-      } ${className} z-30`}
-      onClick={() => setOpen((prev) => !prev)}
-    >
-      <div className="tham-box">
-        <div className={`tham-inner ${open ? 'bg-black' : 'bg-white'}`} />
-      </div>
-    </button>
-  );
+  // Logo styles
+  logoContainer: 'flex items-center gap-4',
+  logoLink: 'flex items-center gap-3',
+  logoImage: 'h-8 w-8',
+  logoText: 'text-white font-semibold hidden md:block',
+
+  // Button styles
+  buttonPrimary:
+    'rounded-lg bg-[#52287A] border border-[#996FC3] px-6 py-2 text-sm font-medium text-white hover:bg-purple-700',
+  buttonSecondary:
+    'rounded-lg border border-purple-600 bg-transparent px-6 py-2 text-sm font-medium text-white hover:bg-purple-600/10',
+
+  // Dropdown styles
+  dropdownContainer: 'flex flex-row items-center ',
+  dropdownTrigger:
+    'text-gray-300 font-normal transition-all duration-200 hover:text-white hover:text-white hover:font-semibold flex items-center gap-2',
+  dropdownContent: 'absolute top-8 left-0 w-full border-t border-gray-800 mt-8',
+  dropdownItem:
+    'block rounded-lg bg-[#1C1C1C] p-6 transition-colors hover:bg-gray-800',
+  dropdownGrid:
+    'grid grid-cols-1 lg:grid-cols-2 gap-4 w-full lg:w-[900px] bg-black p-4 mt-2 mx-auto rounded-xl',
+
+  // Mobile menu styles
+  mobileMenu:
+    'fixed inset-y-0 right-0 z-50 w-64 transform bg-[#1C1C1C] p-6 shadow-lg transition-transform duration-300 ease-in-out lg:hidden',
+  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white',
+
+  // Profile styles
+  profileContainer: 'flex items-center gap-2 text-white',
+  profileImage: 'h-8 w-8 rounded-full',
+  profileDropdown:
+    'absolute right-8 top-full mt-2 w-64 rounded-lg bg-[#1C1C1C] py-2 shadow-xl',
+  profileMenuItem:
+    'flex items-center gap-2 px-4 py-2 text-gray-300 hover:bg-gray-700',
+
+  // Icon styles
+  icon: 'h-5 w-5 text-white',
+  chevron: 'h-4 w-4 transform transition-transform',
+
+  // Layout styles
+  desktopNav: 'hidden flex-1 items-center justify-center gap-8 lg:flex',
+  mobileToggle: 'text-white lg:hidden',
 };
-
-// TODO: Use fonts from figma
-const NavigationStyles = tv(
+const projectItems = [
   {
-    slots: {
-      $wrapper: 'flex h-[100px] items-center justify-between bg-[#1C1C1C] px-8',
-      $logoContainer: 'flex items-center gap-4 text-white',
-      $linksContainer: '',
-      $actionsContainer: '',
-    },
-    variants: {},
-  }
-  // { responsiveVariants: ['sm', 'md'] }
-);
-
-export const links = {
-  CREATE: '/create',
-  LEARN: '/learn',
-  DREAM: [
-    {
-      text: 'Ideaspace',
-      href: '/ideaspace',
-      hasUnderline: true,
-    },
-    {
-      text: 'Submit an idea',
-      href: '/ideaspace/submit',
-    },
-    {
-      text: 'Help existing idea',
-      href: '/ideaspace/browse',
-    },
-  ],
-  'SUPPORT US': '/support-us',
-  JOIN: '/join',
-};
-
-export const accountOptions = [
-  { text: 'My Profile', href: '/users/me' },
+    title: 'Dev Recruit',
+    description:
+      'Dev Recruit allows current and potential members to easily discover and learn about the projects they can join that aligns with their goals and experience',
+    href: '/projects/dev-recruit',
+  },
   {
-    text: 'my ideas dashboard',
-    href: '/ideaspace/dashboard',
-    hasUnderline: true,
+    title: 'IdeaSpace',
+    description:
+      'A hub where we can make ideas into reality. Our platform allows Dev Launchers users to vocalize their ideas then build them into a project.',
+    href: '/projects/DL-IdeaSpace',
+  },
+  {
+    title: 'Universal Design',
+    description:
+      "The Universal Design team's mission is to ensure consistent, high-quality user experiences across all organization products.",
+    href: '/projects/universal-design',
+  },
+  {
+    title: 'Platform',
+    description:
+      'Provide the underlying internal components required by our cross-functional teams to deliver higher-level services and functionalities.',
+    href: '/projects/platform',
+  },
+  {
+    title: 'User Profile',
+    description:
+      'Crafting a user-friendly profile for our members while facilitating global connections and transforming learning.',
+    href: '/projects/user-profile',
+  },
+  {
+    title: 'AI Ally',
+    description:
+      'Leveraging LLMs to build, streamline and support our platform through automating various aspects of our operations and improving our overall efficiency.',
+    href: '/projects/ai-ally',
   },
 ];
 
-// type NavigationProps = VariantProps<typeof NavigationStyles>;
+const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-const Navigation = () => {
-  const [isSidebarExpanded, setIsSidebarExpanded] = React.useState(false);
-  const { $wrapper, $logoContainer } = NavigationStyles();
-  const { userData, isAuthenticated } = useUserDataContext();
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <Layer hasRainbowBottom type="dark">
-      <nav className={$wrapper()}>
-        <Link href="/">
-          <a href="/" className={$logoContainer()}>
-            <img className="w-10" src={logo} alt="logo"></img>
-            <span className="hidden md:inline-block">Dev Launchers</span>
-          </a>
-        </Link>
-        <ul>
-          <div className="hidden lg:flex lg:items-baseline lg:gap-12">
-            {Object.entries(links).map(([name, href], i) => {
-              if (Array.isArray(href))
-                return (
-                  <li key={`${name}-` + i}>
-                    <NavDropdown
-                      title={name}
-                      links={href}
-                      toggleElementProps={{ style: { color: 'white' } }}
-                    />
-                  </li>
-                );
-              return (
-                <li className="list-none" key={i}>
-                  <Link href={href} passHref>
-                    <NavLink>{name}</NavLink>
-                  </Link>
-                </li>
-              );
-            })}
-          </div>
-        </ul>
-        {!isAuthenticated ? (
-          <div className="hidden lg:flex lg:gap-4">
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="primary"
-              buttonSize="standard"
-            >
-              Sign In
-            </Button>
-            <Button
-              as="a"
-              href={
-                process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
-                `?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`
-              }
-              buttonType="secondary"
-              buttonSize="standard"
-            >
-              Create an Account
-            </Button>
-          </div>
-        ) : (
-          <div className="hidden text-white lg:flex lg:items-center lg:gap-4">
-            <img
-              width="36"
-              height="33"
-              src={userData.profilePictureUrl}
-              alt="Profile avatar"
-              style={{ borderRadius: '50%' }}
-            />
-            <NavDropdown
-              title={`Hi ${userData.name}`}
-              links={[
-                ...accountOptions,
-                {
-                  text: (
-                    <div className="flex gap-1">
-                      <LogoutIcon fill="white" />
-                      <span>logout</span>
-                    </div>
-                  ),
-                  onClick: Logout,
-                  as: 'button',
-                },
-              ]}
-              toggleElementProps={{ style: { color: 'white' } }}
-            />
-          </div>
-        )}
-        <HamburgerButton
-          open={isSidebarExpanded}
-          setOpen={setIsSidebarExpanded}
-          className="lg:hidden"
+    <div className={styles.dropdownContainer} ref={dropdownRef}>
+      <div className="text-white mr-6">
+        <NotificationPopover />
+      </div>
+      <button
+        className={styles.profileContainer}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <img
+          src={userData.profilePictureUrl}
+          alt="Profile"
+          className={styles.profileImage}
         />
-        <MobileNavigation
-          links={links}
-          accountOptions={accountOptions}
-          user={userData}
-          isAuthenticated={isAuthenticated}
-          logout={() => Logout()}
-          isSidebarExpanded={isSidebarExpanded}
-          setIsSidebarExpanded={setIsSidebarExpanded}
+        <span>{userData.name}</span>
+        <ChevronDown
+          className={`${styles.chevron} ${isOpen ? 'rotate-180' : ''}`}
         />
-      </nav>
-    </Layer>
+      </button>
+      {isOpen && (
+        <div className={styles.profileDropdown}>
+          <div className="px-4 py-2">
+            <div className={styles.profileContainer}>
+              <img
+                src={userData.profilePictureUrl}
+                alt="Profile"
+                className={styles.profileImage}
+              />
+              <span>{userData.name}</span>
+            </div>
+          </div>
+          <div className="mt-2 border-t border-gray-700">
+            <Link href="/users/me">
+              <p className={styles.profileMenuItem}>
+                <User className={styles.icon} />
+                <span>Profile</span>
+              </p>
+            </Link>
+            <Link href="/ideaspace/dashboard">
+              <p className={styles.profileMenuItem}>
+                <Lightbulb className={styles.icon} />
+                <span>Idea Dashboard</span>
+              </p>
+            </Link>
+            <button
+              onClick={Logout}
+              className={`w-full ${styles.profileMenuItem}`}
+            >
+              <LogOut className={styles.icon} />
+              <span>Log Out</span>
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
-Navigation.displayName = 'Navigation';
+const DropdownMenu = ({ trigger, items = projectItems }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  return (
+    <div className={styles.dropdownContainer} ref={dropdownRef}>
+      <button
+        className={styles.dropdownTrigger}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {trigger}
+        <ChevronDown
+          className={`${styles.chevron} ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      {isOpen && (
+        <div className={styles.dropdownContent}>
+          <div className={styles.dropdownGrid}>
+            {items.map((item, index) => (
+              <Link key={index} href={item.href}>
+                <p className={styles.dropdownItem}>
+                  <h3 className="mb-2 text-xl font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-gray-300">{item.description}</p>
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+const MobileDropdown = ({ title, items }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const dropdownRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+  return (
+    <div ref={dropdownRef}>
+      <button
+        className={styles.dropdownTrigger}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {title}
+        <ChevronDown
+          className={`${styles.chevron} ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      <div className={`mt-2 space-y-2 pl-4 ${isOpen ? 'block' : 'hidden'}`}>
+        {items.map((item, index) => (
+          <Link key={index} href={item.href}>
+            <p className={styles.mobileMenuItem}>{item.label}</p>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Navigation = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const { userData, isAuthenticated } = useUserDataContext();
+
+  return (
+    <nav className={styles.nav}>
+      <div className={styles.logoContainer}>
+        <Link href="/">
+          <p className={styles.logoLink}>
+            <img
+              src={logo}
+              alt="Dev Launchers Logo"
+              className={styles.logoImage}
+            />
+            <span className={styles.logoText}>Dev Launchers</span>
+          </p>
+        </Link>
+      </div>
+
+      <div className={styles.desktopNav}>
+        <Link href="/about">
+          <p className={styles.navItem}>About Us</p>
+        </Link>
+        <DropdownMenu
+          trigger="Collaborate"
+          items={[
+            {
+              title: 'Collaborate with Us',
+              description:
+                'Learn about our community and how we can elevate your tech career. Launch into our orbit where your skills create real impact through collaboration.',
+              href: '/collaborate',
+            },
+            {
+              title: 'Join Team',
+              description:
+                'Join a team to collaborate, share ideas, and work towards shared goals. Build connections, foster creativity, and make an impact together!',
+              href: '/join',
+            },
+            {
+              title: 'Dream with IdeaSpace',
+              description:
+                'A hub where we can make ideas into reality. Our platform allows Dev Launchers users to vocalize their ideas then build them into a project.',
+              href: '/ideaspace',
+            },
+            {
+              title: 'Partner with Us',
+              description:
+                'Join us in shaping the future of technology by partnering with Dev Launchers. Discover how together we can drive innovation, support education, and build impactful projects.',
+              href: '/support-us#partner',
+            },
+          ]}
+        />
+        <DropdownMenu trigger="Our Projects" items={projectItems} />
+
+        <Link href="/resources">
+          <p className={styles.navItem}>Resources</p>
+        </Link>
+        <Link href="/support-us">
+          <p className={styles.navItem}>Support Us</p>
+        </Link>
+      </div>
+      <div className="hidden items-center gap-4 lg:flex">
+        {!isAuthenticated ? (
+          <>
+            <button
+              onClick={() =>
+                (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`)
+              }
+              className={styles.buttonSecondary}
+            >
+              Create Account
+            </button>
+            <button
+              onClick={() =>
+                (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`)
+              }
+              className={styles.buttonPrimary}
+            >
+              Sign In
+            </button>
+          </>
+        ) : (
+          <div className="flex items-center gap-4">
+            <ProfileDropdown userData={userData} />
+          </div>
+        )}
+      </div>
+
+      <div className={styles.mobileToggle + ' flex gap-6'}>
+        {isAuthenticated && <NotificationPopover />}
+        <button
+          className={styles.mobileToggle}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? (
+            <X className={styles.icon} />
+          ) : (
+            <Menu className={styles.icon} />
+          )}
+        </button>
+      </div>
+
+      <div
+        className={`${styles.mobileMenu} ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex justify-end">
+          <button onClick={() => setIsMobileMenuOpen(false)}>
+            <X className={styles.icon} />
+          </button>
+        </div>
+        <div className="mt-8 flex flex-col gap-4">
+          <Link href="/about">
+            <p className={styles.mobileMenuItem}>About Us</p>
+          </Link>
+          <MobileDropdown
+            title="Collaborate"
+            items={[
+              { label: 'Collaborate with Us', href: '/collaborate' },
+              { label: 'Join Team', href: '/join' },
+              { label: 'Dream with IdeaSpace', href: '/ideaspace' },
+              { label: 'Partner with Us', href: '/support-us#partner' },
+            ]}
+          />
+          <MobileDropdown
+            title="Our Projects"
+            items={[
+              { label: 'Dev Recruit', href: '/projects/dev-recruit' },
+              { label: 'IdeaSpace', href: '/projects/DL-IdeaSpace' },
+              { label: 'Universal Design', href: '/projects/universal-design' },
+              { label: 'Platform', href: '/projects/platform' },
+              { label: 'User Profile', href: '/projects/user-profile' },
+              { label: 'AI Ally', href: '/projects/ai-ally' },
+            ]}
+          />
+          <Link href="/resources">
+            <p className={styles.mobileMenuItem}>Resources</p>
+          </Link>
+          <Link href="/support-us">
+            <p className={styles.mobileMenuItem}>Support Us</p>
+          </Link>
+
+          {!isAuthenticated ? (
+            <div className="mt-4 space-y-4">
+              <button
+                onClick={() =>
+                  (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`)
+                }
+                className={styles.buttonSecondary}
+              >
+                Create Account
+              </button>
+              <button
+                onClick={() =>
+                  (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`)
+                }
+                className={styles.buttonPrimary}
+              >
+                Sign In
+              </button>
+            </div>
+          ) : (
+            <div className="mt-4 space-y-2">
+              <div className={styles.profileContainer}>
+                <img
+                  src={userData.profilePictureUrl}
+                  alt="Profile"
+                  className={styles.profileImage}
+                />
+                <span>{userData.name}</span>
+              </div>
+              <Link href="/users/me">
+                <p className={styles.profileMenuItem}>
+                  <User className={styles.icon} />
+                  <span>Profile</span>
+                </p>
+              </Link>
+              <Link href="/ideaspace/dashboard">
+                <p className={styles.profileMenuItem}>
+                  <Lightbulb className={styles.icon} />
+                  <span>Idea Dashboard</span>
+                </p>
+              </Link>
+              <button
+                onClick={Logout}
+                className={`w-full ${styles.profileMenuItem}`}
+              >
+                <LogOut className={styles.icon} />
+                <span>Log Out</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </nav>
+  );
+};
+
 export default Navigation;

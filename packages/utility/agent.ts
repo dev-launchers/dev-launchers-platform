@@ -6,9 +6,11 @@ import {
   Idea,
   Like,
   Save,
+  Notification,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 // In case of cross-site Access-Control requests should be made using credentials
 //axios.defaults.withCredentials = true;
@@ -85,7 +87,7 @@ const requests = {
     axios.delete<T>(url, { data: body }).then(responseBody),
   postForm: (url: string, data: FormData) =>
     axios
-      .post(url, data, {
+      .post<T>(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(responseBody),
@@ -119,12 +121,16 @@ const Opportunities = {
   list: async (params?: URLSearchParams) =>
     requests.get<Opportunity[]>(
       '/opportunities',
-      new URLSearchParams('_publicationState=live&populate=projects')
+      new URLSearchParams(
+        '_publicationState=live&populate=projects&populate=interests'
+      )
     ),
   get: (slug: string, params?: URLSearchParams) =>
     requests.get(
       `opportunities/${slug}`,
-      new URLSearchParams('_publicationState=live&populate=projects')
+      new URLSearchParams(
+        '_publicationState=live&populate=projects&populate=interests'
+      )
     ),
   getById: (
     oppId: string //, params?: URLSearchParams
@@ -161,6 +167,10 @@ const Likes = {
   },
 };
 
+const Notifications = {
+  get: () => requests.get<Notification[]>('/notifications?populate=deep'),
+};
+
 const Saves = {
   post: (body: {}) => requests.post<Save>('/saves/', body),
 };
@@ -169,6 +179,15 @@ const Profiles = {
   get: (id: string) => requests.get(`/profiles/${id}`),
   post: (body: {}) => requests.post('/profiles/', body),
   put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
+};
+
+const GoogledriveFile = {
+  post: async (data: FormData) => {
+    return await requests.postForm<FormData>(`/googledrive/`, data);
+  },
+  delete: async (id: string) => {
+    return await requests.delete('/googledrive/' + id);
+  },
 };
 
 const agent = {
@@ -180,8 +199,10 @@ const agent = {
   Ideas,
   Likes,
   Saves,
+  Notifications,
   Profiles,
   requests,
+  GoogledriveFile,
 };
 
 export default agent;
