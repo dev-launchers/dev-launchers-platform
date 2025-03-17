@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
-import Link from 'next/link';
 import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
