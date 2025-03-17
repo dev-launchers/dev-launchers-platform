@@ -55,7 +55,9 @@
   },
   "dependencies": {
     "cross-env": "7.0.3",
+    "lucide-react": "0.482.0",
     "react": "19.0.0",
+    "react-ga": "3.3.1",
     "react-toastify": "^8.0.0"
   },
   "devDependencies": {
