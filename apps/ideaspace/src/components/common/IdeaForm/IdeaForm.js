@@ -77,11 +77,18 @@ const IdeaForm = ({
   formButton,
   sending,
   clickHandler,
+  editMode = false,
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
+  const [isChecked, setIsChecked] = React.useState(false);
+
+  const handleCheckboxChange = (checked) => {
+    setIsChecked(checked);
+  };
 
   const isFieldCompleted = (value, error, fieldName) => {
     return value && !error && focusedField !== fieldName;
@@ -103,9 +110,11 @@ const IdeaForm = ({
 
   const handleSubmit = (values, actions) => {
     submitHandler(values, actions);
-    setSuccessMessageVisible(true);
-    actions.resetForm({ values: initialValues });
-    clearLocalStorage();
+    if (!editMode) {
+      setSuccessMessageVisible(true);
+      actions.resetForm({ values: initialValues });
+      clearLocalStorage();
+    }
   };
 
   const renderFieldMessage = (
@@ -186,16 +195,18 @@ const IdeaForm = ({
                 unsavedHandler={unsavedHandler}
                 initialValues={initialValues}
               />
-              <atoms.Typography type="h4">
-                Idea Info
-                <hr style={{ margin: '1rem auto 2rem' }} />
-              </atoms.Typography>
+              {!editMode && (
+                <atoms.Typography type="h4">
+                  Idea Info
+                  <hr style={{ margin: '1rem auto 2rem' }} />
+                </atoms.Typography>
+              )}
 
               <atoms.Box flexDirection="column" gap="2rem">
                 {/* Idea Name Field */}
                 <FieldWrapper data-field="ideaName">
                   <FieldLabel>
-                    Idea Name
+                    Idea name
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
@@ -209,7 +220,7 @@ const IdeaForm = ({
                   >
                     <StyledInput
                       name="ideaName"
-                      placeholder="Enter your idea name"
+                      placeholder="Title your idea"
                       value={values.ideaName || ''}
                       onChange={(e) =>
                         setFieldValue('ideaName', e.target.value.slice(0, 80))
@@ -248,7 +259,7 @@ const IdeaForm = ({
                   >
                     <StyledTextArea
                       name="description"
-                      placeholder="What is your product idea?"
+                      placeholder="Describe your idea, its target audience, and the impact it would have."
                       value={values.description || ''}
                       onChange={(e) =>
                         setFieldValue(
@@ -276,7 +287,8 @@ const IdeaForm = ({
                 {/* Experience Field */}
                 <FieldWrapper data-field="experience">
                   <FieldLabel>
-                    What experience do you have with this idea?
+                    Do you have any relevant experience that you'd like to
+                    utilize?
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
@@ -290,7 +302,7 @@ const IdeaForm = ({
                   >
                     <StyledTextArea
                       name="experience"
-                      placeholder="Share your experience relevant to this idea"
+                      placeholder="If you have any relevant experience in development or design, please share here. It won't be shown publicly."
                       value={values.experience || ''}
                       onChange={(e) =>
                         setFieldValue(
@@ -358,7 +370,7 @@ const IdeaForm = ({
                 {/* Features Field - Required */}
                 <FieldWrapper data-field="features">
                   <FieldLabel>
-                    What Features Would Your Product Have?
+                    What features would your product have?
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
@@ -578,27 +590,37 @@ const IdeaForm = ({
                   )}
                 </GroupWrapper>
 
-                <atoms.Typography type="p">
-                  After submitting your idea, it will be posted in the
-                  Workshopping area to begin collaboration with other Dev
-                  Launchers.
-                </atoms.Typography>
-
-                <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                  <Checkbox required />
+                {!editMode && (
                   <atoms.Typography type="p">
-                    &nbsp;I have read and agree to the{' '}
-                    <Link href="/ideaspace/terms" passHref>
-                      <a
-                        style={{ color: 'blue', textDecoration: 'underline' }}
-                        target="_blank"
-                      >
-                        Idea Submission Terms & Conditions
-                      </a>
-                    </Link>
-                    .<span style={{ color: 'red' }}>&nbsp;*</span>
+                    After submitting your idea, it will be posted in the
+                    Workshopping area to begin collaboration with other Dev
+                    Launchers.
                   </atoms.Typography>
-                </atoms.Box>
+                )}
+
+                {!editMode && (
+                  <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
+                    <Checkbox
+                      name="termsAndConditions"
+                      required
+                      checked={isChecked}
+                      onCheckedChange={handleCheckboxChange}
+                    />
+
+                    <atoms.Typography type="p">
+                      &nbsp;I have read and agree to the{' '}
+                      <Link href="/ideaspace/terms" passHref>
+                        <a
+                          style={{ color: 'blue', textDecoration: 'underline' }}
+                          target="_blank"
+                        >
+                          Idea Submission Terms & Conditions
+                        </a>
+                      </Link>
+                      .<span style={{ color: 'red' }}>&nbsp;*</span>
+                    </atoms.Typography>
+                  </atoms.Box>
+                )}
 
                 <atoms.Box justifyContent="flex-end" gap="1rem">
                   {formButton == 'submit' ? (
@@ -622,7 +644,13 @@ const IdeaForm = ({
                           scrollToError(validationErrors);
                           return;
                         }
-
+                        //  Updated T&C checkbox validation
+                        if (!isChecked) {
+                          alert(
+                            'You must accept the Terms & Conditions to submit the form.'
+                          );
+                          return; // Preventing form submission if T&C is not checked
+                        }
                         submitForm();
                       }}
                     />
@@ -646,7 +674,7 @@ const IdeaForm = ({
                   )}
                 </atoms.Box>
               </atoms.Box>
-              {successMessageVisible && (
+              {!editMode && successMessageVisible && (
                 <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
               )}
             </Form>

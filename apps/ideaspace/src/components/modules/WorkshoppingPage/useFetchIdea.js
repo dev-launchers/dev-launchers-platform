@@ -52,6 +52,9 @@ export const useFetchIdea = (ideaId, setComments) => {
             element.user = cleanData(element.user?.data);
             element.user.profile = cleanData(element.user?.profile?.data);
           });
+          cleanList.sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+          );
           setComments(cleanList);
         }
 
