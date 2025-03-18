@@ -10,4 +10,5 @@ console.log('Page Component:', Page);
 
 const ConstructedPage = constructAppPage(App, Page);
 
+// static site rendering.
 export default ConstructedPage;

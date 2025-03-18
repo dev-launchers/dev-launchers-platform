@@ -2,11 +2,11 @@ import Head from 'next/head';
 
 const Recruitment: React.FC = () => {
   // Placeholder for project lead check
-  const isProjectLead = false; // Change this to true to simulate a project lead
+  // const isProjectLead = false; // Change this to true to simulate a project lead
 
-  if (!isProjectLead) {
-    return <div>Access Denied: Only project leads can view this page.</div>;
-  }
+  // if (!isProjectLead) {
+  //   return <div>Access Denied: Only project leads can view this page.</div>;
+  // }
 
   return (
     <>
@@ -23,6 +23,7 @@ const Recruitment: React.FC = () => {
         {/* Add debugging to check the content */}
         {console.log('Rendering Recruitment Dashboard')}
       </div>
+      {/*  */}
     </>
   );
 };
