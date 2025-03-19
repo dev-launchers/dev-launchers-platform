@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
+import { atoms } from '@devlaunchers/components/src/components';
 
 const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
