@@ -108,12 +108,24 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
         </div>
 
         <div className={footerClasses}>
-          <button onClick={onClose} className={cancelButtonClasses}>
+          <atoms.Button
+            buttonSize="standard"
+            buttonType="alternative"
+            type="button"
+            onClick={onClose}
+          >
             Cancel
-          </button>
-          <button onClick={handleSave} disabled={isSubmitting || isSending}>
-            {isSubmitting || isSending ? 'Saving...' : 'Save'}
-          </button>
+          </atoms.Button>
+
+          <atoms.Button
+            buttonSize="standard"
+            buttonType="primary"
+            type="submit"
+            disabled={isSubmitting || isSending}
+            onClick={handleSave}
+          >
+            {isSubmitting || isSending ? 'Wait' : 'Save Changes'}
+          </atoms.Button>
         </div>
       </div>
     </div>
