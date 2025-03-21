@@ -1,13 +1,7 @@
 import Head from 'next/head';
+import { Typography } from '@devlaunchers/components/components/atoms';
 
 const Recruitment: React.FC = () => {
-  // Placeholder for project lead check
-  // const isProjectLead = false; // Change this to true to simulate a project lead
-
-  // if (!isProjectLead) {
-  //   return <div>Access Denied: Only project leads can view this page.</div>;
-  // }
-
   return (
     <>
       <Head>
@@ -19,7 +13,26 @@ const Recruitment: React.FC = () => {
         ></meta>
       </Head>
       <div>
-        <h1>Recruitment Dashboard</h1>
+        <Typography
+          type="p"
+          style={{
+            width: '48px',
+            height: '57.6px',
+            whiteSpace: 'nowrap',
+            marginTop: '30px',
+            marginLeft: '25px',
+            color: '#000',
+            textAlign: 'center',
+            fontFamily: 'Oswald',
+            fontSize: '48px',
+            fontStyle: 'normal',
+            fontWeight: 200,
+            lineHeight: '120%', // 57.6px
+            letterSpacing: '1.92px',
+          }}
+        >
+          Recruitment Dashboard
+        </Typography>
         {/* Add debugging to check the content */}
         {console.log('Rendering Recruitment Dashboard')}
       </div>
