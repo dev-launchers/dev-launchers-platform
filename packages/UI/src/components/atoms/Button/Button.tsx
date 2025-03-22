@@ -1,70 +1,126 @@
-import { EventHandler, FormEvent, MouseEventHandler, ReactNode } from 'react';
+import { darkColorConfig, lightColorConfig, focusStyles } from './colors';
+import { ColorType, PropsType } from './types';
 
-export type PropsType = {
-  mode?: 'light' | 'dark';
-  type?: 'primary' | 'secondary' | 'alt-primary' | 'alt-secondary';
-  icon?: 'right' | 'left';
-  size?: 'small' | 'medium' | 'large';
-  disabled?: boolean;
-  onClick?: EventHandler<any>;
-  children?: ReactNode;
-  as?: 'button' | 'a';
-  href?: string;
-  target?: string;
-};
-
-const defaultProps: PropsType = {
+const DEFAULTS = {
   mode: 'dark',
   size: 'small',
   disabled: false,
   type: 'primary',
-  icon: 'right',
+  color: 'pure',
+  iconPosition: 'left',
   as: 'button',
+  alertType: 'none',
+} as const;
+
+const VALID_OPTIONS = {
+  types: ['primary', 'secondary', 'tertiary'],
+  modes: ['light', 'dark'],
+  sizes: ['small', 'medium', 'large'],
+  iconPositions: ['right', 'left'],
+  colors: [
+    'pure',
+    'uranus',
+    'jupiter',
+    'neptune',
+    'saturn',
+    'cosmic',
+    'nebula',
+    'info',
+    'warning',
+    'success',
+    'error',
+  ],
+  alertTypes: ['none', 'info', 'warning', 'success', 'error'],
+} as const;
+
+const STYLES = {
+  base: 'rounded-lg px-6 border-[3px] flex items-center justify-center gap-2 text-center transition-all duration-200 font-medium',
+
+  size: {
+    small: 'px-1 py-2 text-sm',
+    medium: 'px-3 py-2 text-base',
+    large: 'px-4 py-2 text-lg',
+  },
+
+  iconPosition: {
+    left: '',
+    right: 'flex-row-reverse',
+  },
+
+  getColorClasses: (
+    type: string,
+    color: ColorType,
+    state?: 'base' | 'hover' | 'active' | 'disabled' | 'focus',
+    mode: 'light' | 'dark' = 'dark'
+  ) => {
+    const colorConfig = mode === 'light' ? lightColorConfig : darkColorConfig;
+
+    if (state === 'focus') return focusStyles[color];
+    const validType = type as keyof typeof colorConfig;
+
+    if (
+      state &&
+      colorConfig[validType] &&
+      (state === 'base' ||
+        state === 'hover' ||
+        state === 'active' ||
+        state === 'disabled')
+    ) {
+      return colorConfig[validType][state][color];
+    }
+
+    return colorConfig[validType]?.base[color] || '';
+  },
 };
 
-const validTypes: Exclude<PropsType['type'], undefined>[] = [
-  'primary',
-  'secondary',
-  'alt-primary',
-  'alt-secondary',
-];
-const validModes: Exclude<PropsType['mode'], undefined>[] = ['light', 'dark'];
-const validSizes: Exclude<PropsType['size'], undefined>[] = [
-  'small',
-  'medium',
-  'large',
-];
-const validIcons: Exclude<PropsType['icon'], undefined>[] = ['right', 'left'];
-
 export default function Button(props: PropsType) {
-  props = { ...defaultProps, ...props };
+  const mergedProps = { ...DEFAULTS, ...props };
   const {
     mode,
-    icon,
+    iconPosition,
     size,
     disabled,
     type,
+    color,
     onClick,
     children,
     as,
     href,
     target,
-  } = props;
+    isAlert,
+    alertType,
+    icon,
+  } = mergedProps;
+
+  const safeType = validateField(type, VALID_OPTIONS.types);
+  const safeMode = validateField(mode, VALID_OPTIONS.modes);
+  const safeSize = validateField(size, VALID_OPTIONS.sizes);
+  const safeIconPosition = validateField(
+    iconPosition,
+    VALID_OPTIONS.iconPositions
+  );
+  const safeColor = validateField(color, VALID_OPTIONS.colors);
+  const safeAlertType = validateField(alertType, VALID_OPTIONS.alertTypes);
+
+  const effectiveColor =
+    isAlert && safeAlertType !== 'none'
+      ? (safeAlertType as ColorType)
+      : safeColor;
+
+  const btnClasses = [
+    STYLES.base,
+    STYLES.getColorClasses(safeType, effectiveColor, 'base', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'hover', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'active', safeMode),
+    STYLES.getColorClasses(safeType, effectiveColor, 'focus', safeMode),
+    disabled
+      ? STYLES.getColorClasses(safeType, effectiveColor, 'disabled', safeMode)
+      : '',
+    STYLES.size[safeSize],
+    STYLES.iconPosition[safeIconPosition],
+  ].join(' ');
 
   const Component = as === 'a' ? 'a' : 'button';
-
-  const safeType = validateField(type, validTypes);
-  const safeMode = validateField(mode, validModes);
-  const safeSize = validateField(size, validSizes);
-  const safeIcon = validateField(icon, validIcons);
-
-  let btnClasses = `${params.base} 
-                    ${params.mode[safeMode][safeType].default}
-                    ${params.mode[safeMode][safeType].hover}
-                    ${params.mode[safeMode][safeType].active}
-                    ${params.mode[safeMode][safeType].disabled}
-                    ${params.size[safeSize]}
-                    ${params.icon[safeIcon]}`;
 
   return (
     <Component
@@ -74,6 +130,7 @@ export default function Button(props: PropsType) {
       disabled={disabled}
       target={target}
     >
+      {icon}
       {children}
     </Component>
   );
@@ -81,92 +138,10 @@ export default function Button(props: PropsType) {
 
 function validateField<T>(
   field: T | undefined,
-  validFieldsArray: readonly T[],
-  defaultValueIndex = 0
+  validOptions: readonly T[],
+  defaultIndex = 0
 ) {
-  return !field || !validFieldsArray.includes(field)
-    ? validFieldsArray[defaultValueIndex]
+  return !field || !validOptions.includes(field)
+    ? validOptions[defaultIndex]
     : field;
 }
-
-const params = {
-  base: 'rounded-md px-6 outline disabled:outline-none flex items-center justify-center gap-2 text-center',
-  mode: {
-    dark: {
-      primary: {
-        default:
-          'bg-brand-alt-nebula-200 outline-2 text-black outline-transparent',
-        hover: 'hover:bg-brand-alt-nebula-400',
-        active: 'active:outline-brand-alt-nebula-800',
-        disabled:
-          'disabled:bg-brand-alt-nebula-800 disabled:text-brand-alt-nebula-600',
-      },
-      secondary: {
-        default:
-          'bg-grayscale-900 outline-1 outline-brand-alt-nebula-200 text-brand-alt-nebula-200 ',
-        hover:
-          'hover:shadow-[2px_2px_5px_0px] hover:shadow-brand-alt-nebula-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-500 disabled:text-brand-alt-nebula-800 disabled:shadow-none',
-      },
-      'alt-primary': {
-        default: 'bg-grayscale-50 outline-transparent text-black',
-        hover: 'hover:shadow-[1px_1px_4px_0px] hover:shadow-grayscale-200',
-        active: 'active:outline-grayscale-300 active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-300 disabled:text-grayscale-600 disabled:shadow-none',
-      },
-      'alt-secondary': {
-        default: 'bg-grayscale-900 outline-1 outline-white text-white',
-        hover: 'hover:shadow-[2px_2px_4px_0px] hover:shadow-grayscale-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-600 disabled:text-grayscale-300 disabled:shadow-none',
-      },
-    },
-    light: {
-      primary: {
-        default: 'bg-brand-alt-nebula-600 outline-transparent text-white',
-        hover:
-          'hover:bg-brand-alt-nebula-800 hover:shadow-[2px_2px_4px_0px] hover:shadow-grayscale-400',
-        active: 'active:outline-brand-alt-nebula-400 active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-300 disabled:text-brand-alt-nebula-600 disabled:shadow-none',
-      },
-      secondary: {
-        default:
-          'bg-white outline-1 outline-brand-alt-nebula-600 text-brand-alt-nebula-600 ',
-        hover:
-          'hover:shadow-[2px_2px_5px_0px] hover:shadow-brand-alt-nebula-400',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-50 disabled:text-brand-alt-nebula-300 disabled:shadow-none',
-      },
-      'alt-primary': {
-        default:
-          'bg-grayscale-800 outline-1 outline-transparent text-grayscale-50',
-        hover: 'hover:shadow-[2px_2px_5px_0px] hover:shadow-grayscale-500',
-        active: 'outline-grayscale-500 active:outline-2',
-        disabled:
-          'disabled:bg-grayscale-500 disabled:text-grayscale-200 disabled:shadow-none',
-      },
-      'alt-secondary': {
-        default: 'bg-white outline-1 outline-grayscale-900 text-grayscale-800 ',
-        hover: 'hover:shadow-[2px_2px_5px_0px] hover:shadow-grayscale-800',
-        active: 'active:outline-2',
-        disabled:
-          'disabled:bg-brand-alt-nebula-50 disabled:text-grayscale-500 disabled:shadow-none',
-      },
-    },
-  },
-  size: {
-    small: 'py-2',
-    medium: 'py-[0.6rem]',
-    large: 'py-[0.8rem]',
-  },
-  icon: {
-    right: '',
-    left: 'flex-row-reverse',
-  },
-};
