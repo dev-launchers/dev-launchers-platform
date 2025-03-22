@@ -1,81 +1,74 @@
-import Link from 'next/link';
-import { ThemeProvider } from 'styled-components';
-import theme from '../../../styles/theme';
+import { Github, Linkedin } from 'lucide-react';
+import logo from '../../../assets/images/logo-monogram.png';
 
-import Newsletter from './Newsletter';
-import RandomQuote from './RandomQuote';
-import {
-  FooterLogo,
-  FooterNav,
-  NavEntry,
-  OrgInfoArea,
-  SocialMediaContainer,
-  SocialMediaLink,
-  Wrapper,
-} from './StyledFooter';
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <Wrapper>
-      <ThemeProvider theme={theme}>
-        <Newsletter />
-        <FooterNav>
-          <Link href={'/create'} passHref>
-            <a href={'/create'}>
-              <NavEntry>CREATE</NavEntry>
-            </a>
-          </Link>
-          <Link href={'/learn'} passHref>
-            <a href={'/learn'}>
-              <NavEntry>LEARN</NavEntry>
-            </a>
-          </Link>
-          <Link href={'/ideaspace'} passHref>
-            <a href={'/ideaspace'}>
-              <NavEntry>DREAM</NavEntry>
-            </a>
-          </Link>
-          {/* }
-          <Link href={"/play"} passHref>
-            <NavEntry>PLAY</NavEntry>
-          </Link>
-          { */}
-          <Link href={'/support-us'} passHref>
-            <a href={'/support-us'}>
-              <NavEntry>SUPPORT US</NavEntry>
-            </a>
-          </Link>
-          <Link href={'/projects'} passHref>
-            <a href={'/projects'}>
-              <NavEntry>JOIN</NavEntry>
-            </a>
-          </Link>
-        </FooterNav>
-        <SocialMediaContainer>
-          <SocialMediaLink Type="Instagram" />
-          <Link href={'/'} passHref>
-            <a href={'/'}>
-              <FooterLogo />
-            </a>
-          </Link>
-          <SocialMediaLink Type="Linkedin" />
-        </SocialMediaContainer>
-        <RandomQuote />
-        <div className="flex justify-end self-end pr-8 text-right text-sm">
-          <a className="pr-1" href="mailto:contact@devlaunchers.com">
-            contact@devlaunchers.com
-          </a>
-          - | -
-          <Link href="/page/terms-and-conditions" passHref>
-            <a href="/page/terms-and-conditions">Terms of Service </a>
-          </Link>
-          - | -
-          <Link href="/page/privacy-policy" passHref>
-            <a href="/page/privacy-policy">Privacy Policy </a>
-          </Link>{' '}
-          {'- | '} ©Dev Launchers, 2024.
+    <footer className="flex flex-col flex-wrap bg-gray-900 text-gray-300">
+      <div className="mx-auto flex max-w-7xl flex-col items-end justify-between gap-16 border-t border-gray-700  px-6 py-8 md:flex-row">
+        <div className="flex-1 rounded-lg">
+          <div>
+            <img src={logo} alt="Dev Launchers Logo" className="h-10 w-10" />
+            <h2 className="whitespace-nowrap text-xl font-semibold text-white">
+              Dev Launchers
+            </h2>
+          </div>
+          <p className="max-w-3xl  text-sm text-gray-500">
+            At Dev Launchers we bridge opportunity gaps in the technology
+            industry through education and collaboration. Dev Launchers is a
+            501(c)(3) nonprofit organization.
+          </p>
         </div>
-      </ThemeProvider>
-    </Wrapper>
+
+        <div className=" flex flex-1 items-center rounded-lg">
+          <blockquote className="italic text-gray-500">
+            "The technology you use impresses no one. The experience you create
+            with it is everything." -{' '}
+            <span className="font-bold">Sean Gerety</span>
+          </blockquote>
+        </div>
+      </div>
+
+      <div className="border-t border-gray-700 bg-black">
+        <div className="mx-auto flex max-w-7xl flex-row flex-wrap items-start justify-between px-6 pb-10 pt-6">
+          <div className="flex flex-col flex-wrap place-items-start space-x-4 text-sm md:flex-row">
+            <span className="py-2">© 2025 Dev Launchers, Inc.</span>
+            <a
+              href="mailto:contact@devlaunchers.com"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
+            >
+              contact@devlaunchers.com
+            </a>
+            <a
+              href="page/terms-and-conditions"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="page/privacy-policy"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
+            >
+              Privacy Policy
+            </a>
+          </div>
+          <div className="mt-4 flex gap-4 space-x-4 px-4 md:mt-0">
+            <a
+              href="www.linkedin.com/company/devlaunchers/"
+              className="text-purple-400 hover:text-purple-500"
+            >
+              <Linkedin />
+            </a>
+            <a
+              href="https://github.com/dev-launchers/dev-launchers-platform"
+              className="text-purple-400 hover:text-purple-500"
+            >
+              <Github />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
   );
-}
+};
+
+export default Footer;
