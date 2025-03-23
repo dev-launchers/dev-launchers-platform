@@ -122,6 +122,43 @@ function IdeaCard({ cards, cardType }) {
           <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
           <atoms.Box
+            flexDirection="row"
+            alignItems="flex-start"
+            padding="0rem 0.75rem"
+            margin=" 0 0 0.5rem 0"
+          >
+            <img
+              alt={`image of author ${cards.author?.data?.attributes.username}`}
+              src={
+                cards.author?.data?.attributes.profile?.data?.attributes
+                  .profilePictureUrl ??
+                `https://picsum.photos/seed/${cards.id}/350/270?random=${cards.id}`
+              }
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src = `https://picsum.photos/seed/${cards.id}/350/270?random=${cards.id}`;
+              }}
+              style={{
+                width: '28px',
+                height: '28px',
+                borderRadius: '28px',
+              }}
+            />
+            <atoms.Typography
+              type="p"
+              style={{
+                fontSize: '0.75rem',
+                color: '#494949',
+                weight: '400',
+                padding: '0rem 0.375rem',
+              }}
+            >
+              {cards.author?.data?.attributes?.profile?.data?.attributes
+                .displayName ?? cards.author?.data?.attributes?.username}
+            </atoms.Typography>
+          </atoms.Box>
+
+          <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
             padding="0rem 0.75rem"
