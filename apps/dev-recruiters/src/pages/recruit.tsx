@@ -1,5 +1,9 @@
 import Head from 'next/head';
-import { Typography } from '@devlaunchers/components/components/atoms';
+import {
+  atoms,
+  organisms,
+  molecules,
+} from '@devlaunchers/components/src/components';
 
 const Recruitment: React.FC = () => {
   return (
@@ -13,7 +17,7 @@ const Recruitment: React.FC = () => {
         ></meta>
       </Head>
       <div>
-        <Typography
+        <atoms.Typography
           type="p"
           style={{
             width: '48px',
@@ -32,11 +36,25 @@ const Recruitment: React.FC = () => {
           }}
         >
           Recruitment Dashboard
-        </Typography>
-        {/* Add debugging to check the content */}
-        {console.log('Rendering Recruitment Dashboard')}
+        </atoms.Typography>
+        <atoms.Typography
+          style={{
+            color: '#000',
+            fontFeatureSettings: "'liga' off, 'clig' off",
+            marginTop: '10px',
+            marginLeft: '25px',
+            fontFamily: 'Nunito Sans',
+            fontSize: '16px',
+            fontStyle: 'normal',
+            fontWeight: 700,
+            lineHeight: 'normal',
+            letterSpacing: '1.28px',
+            textTransform: 'uppercase',
+          }}
+        >
+          YOUR TEAM: {'project name here'}
+        </atoms.Typography>
       </div>
-      {/*  */}
     </>
   );
 };
