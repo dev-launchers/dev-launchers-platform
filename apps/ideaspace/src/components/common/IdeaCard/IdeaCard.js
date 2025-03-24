@@ -10,7 +10,7 @@ import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
-import { ActivityDetails } from './StyledIdeaCard';
+import { ActivityDetails, AuthorProfilePicture } from './StyledIdeaCard';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -127,22 +127,12 @@ function IdeaCard({ cards, cardType }) {
             padding="0rem 0.75rem"
             margin=" 0 0 0.5rem 0"
           >
-            <img
+            <AuthorProfilePicture
               alt={`image of author ${cards.author?.data?.attributes.username}`}
               src={
                 cards.author?.data?.attributes.profile?.data?.attributes
-                  .profilePictureUrl ??
-                `https://picsum.photos/seed/${cards.id}/350/270?random=${cards.id}`
+                  .profilePictureUrl
               }
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null;
-                currentTarget.src = `https://picsum.photos/seed/${cards.id}/350/270?random=${cards.id}`;
-              }}
-              style={{
-                width: '28px',
-                height: '28px',
-                borderRadius: '28px',
-              }}
             />
             <atoms.Typography
               type="p"
