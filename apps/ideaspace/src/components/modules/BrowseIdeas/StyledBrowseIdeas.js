@@ -37,7 +37,7 @@ export const IdeaCardWrapper = styled.div`
   & > div {
     flex: 1 1 calc(25% - 1.5rem); // Dynamic width for 4 cards per row
     max-width: calc(25% - 1.5rem); // Max width for each card
-    height: 344px;
+    height: 380px;
   }
 
   // Breakpoint for screens up to 1440px (3 cards per row)
