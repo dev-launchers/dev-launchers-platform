@@ -134,11 +134,15 @@ function IdeaCard({ cards, cardType }) {
                 fontFamily: 'Helvetica',
                 fontWeight: '700',
                 margin: '0rem 0rem 0.375rem',
+                display: '-webkit-box',
+                WebkitLineClamp: 1,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                wordBreak: 'break-word',
               }}
             >
-              {cards.ideaName.length > 20
-                ? `${cards.ideaName.substring(0, 20)}`
-                : cards.ideaName}
+              {cards.ideaName}
             </atoms.Typography>
 
             {/* <atoms.Box alignItems="center">
