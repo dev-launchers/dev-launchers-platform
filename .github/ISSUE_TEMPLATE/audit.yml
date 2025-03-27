@@ -1,0 +1,41 @@
+name: Audit
+description: Create an audit for compliance, guideline application, or adoption for components related to the Universal Design System.
+title: "[audit]: "
+labels: ["audit", "Universal Design"]
+projects: ["Universal Design"]
+type: "Feature"
+assignees: []
+
+body:
+  - type: dropdown
+    id: audit_type
+    attributes:
+      label: Audit Type
+      options: 
+        - Component Prod
+        - Component Figma
+        - Accessibility
+        - Prototype
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: audit_scope
+    attributes:
+      label: Scope
+      description: "Outline the scope of this audit"
+      placeholder: " "
+      value: |
+        Audit will include assessment of the following areas:
+        - area
+        - area
+        - area
+        
+        Using these methods:
+        - method
+        - method
+        - method
+    render: bash
+    validations:
+      required: true
