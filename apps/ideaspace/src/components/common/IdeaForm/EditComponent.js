@@ -1,7 +1,13 @@
 import React from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
 
-const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
+const EditComponent = ({
+  open,
+  onClose,
+  initialIdea,
+  onEditSuccess,
+  onEditError,
+}) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
 
@@ -84,7 +90,11 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
         </div>
 
         <div className={contentClasses}>
-          <EditIdea initialIdea={initialIdea} onEditSuccess={onEditSuccess} />
+          <EditIdea
+            initialIdea={initialIdea}
+            onEditSuccess={onEditSuccess}
+            onEditError={onEditError}
+          />
         </div>
 
         <div className={footerClasses}>

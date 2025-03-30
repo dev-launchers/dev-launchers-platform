@@ -11,6 +11,7 @@ import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
 import { StyledRanbow } from './StyledSubmissionForm';
 import { HeadWapper, Headline } from '../../common/CommonStyles';
+import SubmissionErrorAlert from '../../common/SubmissionAlert/SubmissionErrorAlert';
 
 function SubmissionForm() {
   let { userData, isAuthenticated } = useUserDataContext();
@@ -30,6 +31,8 @@ function SubmissionForm() {
     'Please try again.',
     ['primary', 'close']
   );
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const initialValues = {
     ideaName: '',
@@ -89,20 +92,31 @@ function SubmissionForm() {
     values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
+    setSubmissionStatus(null);
 
     try {
       const data = cleanData(await agent.Ideas.post(values));
 
       if (data.ideaName) {
         setunsavedChanges(false);
-        router.push(`workshop/${data.id}`);
+        setShowErrorAlert(false);
+        setSubmissionStatus('success');
+
+        setTimeout(() => {
+          router.push(`workshop/${data.id}`);
+        }, 3000);
       } else {
-        alert('Unable to register your idea.');
+        setSending(false);
+        setUnsavedChanges(true);
+        setShowErrorAlert(true);
+        setSubmissionStatus('error');
       }
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      confirmFailure();
+      // confirmFailure();
+      setShowErrorAlert(true);
+      setSubmissionStatus('error');
     }
   };
 
@@ -167,6 +181,9 @@ function SubmissionForm() {
         <>
           <Dialog />
           <CreateFailure />
+          {showErrorAlert && (
+            <SubmissionErrorAlert onClose={() => setShowErrorAlert(false)} />
+          )}
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
@@ -174,6 +191,7 @@ function SubmissionForm() {
             unsavedHandler={setunsavedChanges}
             formButton="submit"
             sending={sending}
+            submissionStatus={submissionStatus}
           />
         </>
       )}

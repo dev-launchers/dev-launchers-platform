@@ -22,6 +22,7 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
 import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
+import EditErrorAlert from '../../../../../components/common/SubmissionAlert/EditErrorAlert';
 
 export const IdeaCard = ({
   ideaImage,
@@ -38,6 +39,7 @@ export const IdeaCard = ({
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
+  const [showEditError, setShowEditError] = useState(false);
 
   const isOwner =
     userData &&
@@ -227,6 +229,13 @@ export const IdeaCard = ({
                       // initialIdea={fullIdea}
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
+                      onEditError={() => {
+                        setIsModalOpen(false);
+                        setShowEditError(true);
+                        setTimeout(() => {
+                          setShowEditError(false);
+                        }, 4000);
+                      }}
                     />
                   </>
                 )}
@@ -243,6 +252,9 @@ export const IdeaCard = ({
         </div>
         {showEditSuccess && (
           <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
+        )}
+        {showEditError && (
+          <EditErrorAlert onClose={() => setShowEditError(false)} />
         )}
       </div>
     </>

@@ -12,7 +12,7 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-function EditIdea({ initialIdea, onEditSuccess }) {
+function EditIdea({ initialIdea, onEditSuccess, onEditError }) {
   let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
@@ -138,7 +138,13 @@ function EditIdea({ initialIdea, onEditSuccess }) {
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      confirmFailure();
+      // confirmFailure();
+      if (onEditError) {
+        console.log('Calling onEditError');
+        onEditError(error);
+      } else {
+        console.log('onEditError prop is not provided');
+      }
     }
   };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
 import { atoms, organisms } from '@devlaunchers/components/src/components';
@@ -78,6 +78,7 @@ const IdeaForm = ({
   sending,
   clickHandler,
   editMode = false,
+  submissionStatus = null,
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
@@ -111,11 +112,19 @@ const IdeaForm = ({
   const handleSubmit = (values, actions) => {
     submitHandler(values, actions);
     if (!editMode) {
-      setSuccessMessageVisible(true);
+      // setSuccessMessageVisible(true);
       actions.resetForm({ values: initialValues });
       clearLocalStorage();
     }
   };
+
+  useEffect(() => {
+    if (submissionStatus === 'success' && !editMode) {
+      setSuccessMessageVisible(true);
+    } else {
+      setSuccessMessageVisible(false);
+    }
+  }, [submissionStatus, editMode]);
 
   const renderFieldMessage = (
     fieldName,
