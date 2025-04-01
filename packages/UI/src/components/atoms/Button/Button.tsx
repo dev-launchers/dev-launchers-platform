@@ -2,7 +2,7 @@ import { EventHandler, FormEvent, MouseEventHandler, ReactNode } from 'react';
 
 export type PropsType = {
   mode?: 'light' | 'dark';
-  type?: 'primary' | 'secondary' | 'alt-primary' | 'alt-secondary';
+  buttonType?: 'primary' | 'secondary' | 'alt-primary' | 'alt-secondary';
   icon?: 'right' | 'left';
   size?: 'small' | 'medium' | 'large';
   disabled?: boolean;
@@ -17,12 +17,12 @@ const defaultProps: PropsType = {
   mode: 'dark',
   size: 'small',
   disabled: false,
-  type: 'primary',
+  buttonType: 'primary',
   icon: 'right',
   as: 'button',
 };
 
-const validTypes: Exclude<PropsType['type'], undefined>[] = [
+const validTypes: Exclude<PropsType['buttonType'], undefined>[] = [
   'primary',
   'secondary',
   'alt-primary',
@@ -43,7 +43,7 @@ export default function Button(props: PropsType) {
     icon,
     size,
     disabled,
-    type,
+    buttonType,
     onClick,
     children,
     as,
@@ -53,7 +53,7 @@ export default function Button(props: PropsType) {
 
   const Component = as === 'a' ? 'a' : 'button';
 
-  const safeType = validateField(type, validTypes);
+  const safeType = validateField(buttonType, validTypes);
   const safeMode = validateField(mode, validModes);
   const safeSize = validateField(size, validSizes);
   const safeIcon = validateField(icon, validIcons);

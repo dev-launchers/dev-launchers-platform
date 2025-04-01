@@ -181,6 +181,11 @@ const Profiles = {
   put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
 };
 
+// Talent community form submission.
+const Talcommuser = {
+  post: (body: {}) => requests.post('/dl-tal-communities', body),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -193,6 +198,7 @@ const agent = {
   Notifications,
   Profiles,
   requests,
+  Talcommuser,
 };
 
 export default agent;

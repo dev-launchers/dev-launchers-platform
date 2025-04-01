@@ -1,11 +1,36 @@
-import Head from 'next/head';
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
-  atoms,
-  organisms,
-  molecules,
-} from '@devlaunchers/components/src/components';
+  useOpportunitiesContext,
+  OpportunitiesProvider,
+} from '../contexts/SelectRoleContext';
+import Head from 'next/head';
+import { atoms } from '@devlaunchers/components/src/components';
+// import user data
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+// import projects data
+// project.people
 
 const Recruitment: React.FC = () => {
+  const router = useRouter();
+  const { userData, isAuthenticated } = useUserDataContext();
+  const { selectedRole, opportunities, commitmentRange } =
+    useOpportunitiesContext();
+
+  useEffect(() => {
+    if (userData) {
+      router.push('/recruit');
+      return;
+    }
+  }, [userData]);
+
+  console.log(userData);
+  console.log(isAuthenticated);
+  console.log(userData.projects);
+  // if user.projects
+
   return (
     <>
       <Head>
@@ -55,8 +80,17 @@ const Recruitment: React.FC = () => {
           YOUR TEAM: {'project name here'}
         </atoms.Typography>
       </div>
+      <div>
+        <h1>Welcome, {userData.name}!</h1>
+      </div>
     </>
   );
 };
 
-export default Recruitment;
+const RecruitmentPage: React.FC = () => (
+  <OpportunitiesProvider>
+    <Recruitment />
+  </OpportunitiesProvider>
+);
+
+export default RecruitmentPage;

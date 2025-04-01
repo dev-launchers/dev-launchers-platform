@@ -11,6 +11,7 @@ const FormErrorScroller = ({
   align,
   focusAfterScroll,
 }: FormErrorScrollerProps) => {
+  console.log(formik);
   if (!formik) {
     throw new Error(
       "Please use this 'FormErrorScroller' component within formik rendering method"
