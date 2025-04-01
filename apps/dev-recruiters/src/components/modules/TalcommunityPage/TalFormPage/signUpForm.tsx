@@ -186,12 +186,12 @@ export default function TalCommForm({ handleCloseModal }: Props) {
 
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
-                        // buttonSize="standard"
+                        buttonSize="standard"
                         buttonType="primary"
                         as="a"
-                        type="submit" // this does not trigger form submission ?
+                        type="submit"
                         // onClick={routeChange} //add submit here to button property once backend is complete
-                        onSubmit={handleSubmit}
+                        onClick={handleSubmit}
                       >
                         SUBMIT
                       </atoms.Button>
