@@ -49,6 +49,7 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'localhost',
       'apiv4-staging.devlaunchers.org',
+      'apiv4.devlaunchers.org',
     ],
     disableStaticImages: true,
   },
