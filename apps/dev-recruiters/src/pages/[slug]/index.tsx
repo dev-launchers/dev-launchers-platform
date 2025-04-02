@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   opportunities = opportunities?.map((opportunity) => opportunity.attributes);
 
   // Remove or transform non-serializable values
-  if (project.config && project.config.adapter) {
+  if (project?.config?.adapter) {
     delete project.config.adapter; // Remove the function
   }
 

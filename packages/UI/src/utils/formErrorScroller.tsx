@@ -11,7 +11,6 @@ const FormErrorScroller = ({
   align,
   focusAfterScroll,
 }: FormErrorScrollerProps) => {
-  console.log(formik);
   if (!formik) {
     throw new Error(
       "Please use this 'FormErrorScroller' component within formik rendering method"
@@ -24,7 +23,6 @@ const FormErrorScroller = ({
     const selector = `[name="${keys[0]}"]`;
     const errorElement = document.querySelector(selector) as HTMLInputElement;
 
-    console.log(errorElement);
     if (errorElement) {
       errorElement.scrollIntoView({
         behavior: 'smooth',

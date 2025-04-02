@@ -8,10 +8,7 @@ import {
 } from '../contexts/SelectRoleContext';
 import Head from 'next/head';
 import { atoms } from '@devlaunchers/components/src/components';
-// import user data
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
-// import projects data
-// project.people
 
 const Recruitment: React.FC = () => {
   const router = useRouter();
@@ -25,11 +22,6 @@ const Recruitment: React.FC = () => {
       return;
     }
   }, [userData]);
-
-  console.log(userData);
-  console.log(isAuthenticated);
-  console.log(userData.projects);
-  // if user.projects
 
   return (
     <>
@@ -56,7 +48,7 @@ const Recruitment: React.FC = () => {
             fontSize: '48px',
             fontStyle: 'normal',
             fontWeight: 200,
-            lineHeight: '120%', // 57.6px
+            lineHeight: '120%',
             letterSpacing: '1.92px',
           }}
         >
