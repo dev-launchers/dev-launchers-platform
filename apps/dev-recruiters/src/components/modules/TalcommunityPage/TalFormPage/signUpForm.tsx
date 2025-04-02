@@ -30,6 +30,7 @@ export default function TalCommForm({ handleCloseModal }: Props) {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [ageCheckbox, setAgeCheckbox] = useState<boolean | undefined>();
   const [termsCheckbox, setTermsCheckbox] = useState<boolean | undefined>();
+  const router = useRouter();
 
   const handleSetAgeCheckbox = () => {
     setAgeCheckbox(!ageCheckbox);
@@ -41,11 +42,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
 
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
-  };
-  const router = useRouter();
-  const routeChange = (e) => {
-    e.preventDefault();
-    router.push('/join/oldjoin');
   };
 
   return (
@@ -84,6 +80,7 @@ export default function TalCommForm({ handleCloseModal }: Props) {
             })
               .then((res) => {
                 handleOpenConfirmationModal();
+                router.push('/join/oldjoin');
                 setSubmitting(false);
               })
               .catch((error) => {
@@ -191,7 +188,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                         buttonType="primary"
                         as="a"
                         type="submit"
-                        // onClick={routeChange} //add submit here to button property once backend is complete
                         onClick={handleSubmit}
                       >
                         SUBMIT

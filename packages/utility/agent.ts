@@ -21,7 +21,8 @@ axios.defaults.withCredentials = true;
  */
 
 axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+  console.log(token);
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
   }
