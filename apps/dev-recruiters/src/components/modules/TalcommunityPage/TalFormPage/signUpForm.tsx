@@ -8,7 +8,6 @@ import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
 import { Wrapper } from '../StyledTalcommunityPage';
-// import model DlTalCommUser
 import { DlTalCommUser } from '@devlaunchers/models/dltalcommuser';
 
 // interface FormFields extends Omit<NewApplicant, 'level'> {
@@ -65,19 +64,23 @@ export default function TalCommForm({ handleCloseModal }: Props) {
           ) => {
             setSubmitting(true);
 
-            console.log('Formik Values at Submit:', values);
+            // Log the data being sent to the backend
+            console.log('Data being sent to backend:', {
+              data: {
+                name: values.name,
+                emailID: values.email,
+                skills: values.skills,
+                roles: values.roles,
+              },
+            });
 
             agent.Talcommuser.post({
-              ...values,
-              //@ts-ignore
-              // level: values.level.toLowerCase(),
-              skills: values.skills
-                .toString()
-                .split(',')
-                .map((skill) => ({ skill: skill })),
-              roles: 'title' as string, // role: position.title as string,
-              // project:  router.query.project as string,
-              // id: '5' as string, // id: position.id as string,
+              data: {
+                name: values.name,
+                emailID: values.email,
+                skills: values.skills,
+                roles: values.roles,
+              },
             })
               .then((res) => {
                 handleOpenConfirmationModal();
@@ -85,10 +88,9 @@ export default function TalCommForm({ handleCloseModal }: Props) {
               })
               .catch((error) => {
                 setSubmitting(false);
-                console.log(error);
                 console.log(error.response);
-                console.log(error.response.data);
-                console.log(error.response.status);
+                console.log(error.response?.data);
+                console.log(error.response?.status);
               });
           }}
           validationSchema={SignupSchema}
@@ -108,7 +110,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                 strokeLinejoin="round"
                 d="M6 18L18 6M6 6l12 12"
               />
-
               <Form>
                 <atoms.Box flexDirection="column" margin="auto">
                   <atoms.Box

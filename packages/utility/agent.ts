@@ -7,25 +7,26 @@ import {
   Like,
   Save,
   Notification,
+  DlTalCommUser,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 // In case of cross-site Access-Control requests should be made using credentials
-//axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 /**
  * Configure the request headers with Authorization Header using the authentication token
  */
-// axios.interceptors.request.use(config => {
-//     const token = GetToken()
-//     if (token && config.headers) {
-//         config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-// });
-axios.defaults.withCredentials = true;
+
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token && config.headers) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
 axios.interceptors.response.use(
   async (response) => {
@@ -181,9 +182,11 @@ const Profiles = {
   put: (id: string, body: {}) => requests.put(`/profiles/${id}`, body),
 };
 
-// Talent community form submission.
 const Talcommuser = {
-  post: (body: {}) => requests.post('/dl-tal-communities', body),
+  get: () => requests.get<DlTalCommUser[]>('/dl-tal-communities'),
+  post: (body: {
+    data: { name: string; emailID: string; skills: string; roles: string };
+  }) => requests.post('/dl-tal-communities', body),
 };
 
 const agent = {
