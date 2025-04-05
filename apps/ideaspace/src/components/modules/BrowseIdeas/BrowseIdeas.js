@@ -7,7 +7,7 @@ import { DropdownMenu } from '@devlaunchers/components/src/components/DropdownMe
 import { DropdownMenuTrigger } from '@devlaunchers/components/components/DropdownMenu';
 import { DropdownMenuContent } from '@devlaunchers/components/components/DropdownMenu';
 import { DropdownMenuRadioGroup } from '@devlaunchers/components/components/DropdownMenu';
-import { DropdownMenuRadioItem } from '@devlaunchers/components/components/DropdownMenu';
+import { DropdownMenuRadioItemStyled } from './StyledBrowseIdeas';
 import { ChevronDown } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
@@ -203,12 +203,12 @@ function BrowseIdeas() {
                   >
                     <div className="flex flex-col gap-2">
                       {sortingConfigs.map((config) => (
-                        <DropdownMenuRadioItem
+                        <DropdownMenuRadioItemStyled
                           key={config.label}
                           value={config.label}
                         >
                           {config.label}
-                        </DropdownMenuRadioItem>
+                        </DropdownMenuRadioItemStyled>
                       ))}
                     </div>
                   </DropdownMenuRadioGroup>

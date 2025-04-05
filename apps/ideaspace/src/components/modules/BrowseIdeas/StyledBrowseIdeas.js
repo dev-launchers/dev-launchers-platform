@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { radiusStyles } from '@devlaunchers/components/src/components/atoms';
+import { DropdownMenuRadioItem } from '@devlaunchers/components/components/DropdownMenu';
 
 export const PageWrapper = styled.section`
   background-color: #ffffff;
@@ -77,4 +79,12 @@ export const FilterDiv = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-bottom: 0.5rem;
+`;
+
+export const DropdownMenuRadioItemStyled = styled(DropdownMenuRadioItem)`
+  ${radiusStyles['radius200']};
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
+  }
 `;
