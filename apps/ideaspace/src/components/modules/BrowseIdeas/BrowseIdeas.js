@@ -185,14 +185,17 @@ function BrowseIdeas() {
               <DropdownMenu>
                 <DropdownMenuTrigger
                   asChild
-                  size={isMobile ? 'small' : 'large'}
+                  size={isMobile ? 'medium' : 'large'}
                 >
                   <div className="group">
                     {selectedSortCriterionLabel}
                     <ChevronDown className="group-data-open:rotate-180" />
                   </div>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent size={isMobile ? 'small' : 'large'}>
+                <DropdownMenuContent
+                  size={isMobile ? 'medium' : 'large'}
+                  className="bg-white"
+                >
                   <DropdownMenuRadioGroup
                     value={selectedSortCriterionLabel}
                     onValueChange={(value) => sortCards(value)}
