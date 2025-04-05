@@ -83,9 +83,16 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     }
   };
 
+  const handleClose = () => {
+    // Clear localStorage
+    localStorage.removeItem('ideaFormData');
+    localStorage.removeItem('involveLevel');
+    onClose();
+  };
+
   const isSending = editIdeaRef.current?.isSending() || false;
   return (
-    <div onClick={onClose} className={overlayClasses}>
+    <div onClick={handleClose} className={overlayClasses}>
       <div
         onClick={(e) => e.stopPropagation()}
         className={isMobileDrawer ? mobileDialogClasses : desktopDialogClasses}
@@ -95,7 +102,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
       >
         <div className={headerClasses}>
           <div className="font-medium text-lg">Edit Idea</div>
-          <button onClick={onClose} className={closeButtonClasses}>
+          <button onClick={handleClose} className={closeButtonClasses}>
             X
           </button>
         </div>
@@ -113,7 +120,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
             buttonSize="standard"
             buttonType="alternative"
             type="button"
-            onClick={onClose}
+            onClick={handleClose}
           >
             Cancel
           </atoms.Button>

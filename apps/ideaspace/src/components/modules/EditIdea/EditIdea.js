@@ -79,6 +79,9 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   };
 
   useEffect(() => {
+    localStorage.removeItem('ideaFormData');
+    localStorage.removeItem('involveLevel');
+
     async function fetchIdea() {
       if (!initialIdea && ideaId) {
         const idea = cleanData(

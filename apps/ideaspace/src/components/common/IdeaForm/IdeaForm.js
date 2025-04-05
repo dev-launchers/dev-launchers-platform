@@ -77,7 +77,7 @@ const IdeaForm = ({
   formButton,
   sending,
   clickHandler,
-  editMode = false,
+  editMode,
   hideFormButtons = false,
   formikRef = null,
 }) => {
