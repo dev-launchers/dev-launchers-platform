@@ -2,7 +2,7 @@ import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer, Button } from '../../../atoms';
-import { typographyStyles } from '../../../atoms/Typography';
+import { typographyStyles } from '../../../atoms/TypographyOld';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';

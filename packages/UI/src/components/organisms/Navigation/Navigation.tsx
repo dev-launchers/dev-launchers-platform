@@ -5,24 +5,10 @@ import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-type ProfileDropdownProps = {
-  userData: {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    bio: string;
-    profilePictureUrl: string;
-    socialMediaLinks: never[];
-    discord: {
-      id: number;
-      avatar: string;
-      username: string;
-      discriminator: string;
-    };
-    interests: never[];
-  };
-};
+import ProfileDropdownProps from 'types/ProfileDropdownProps';
+import MobileNavigationDropdownItems from 'types/MobileNavigationDropdownItems';
+import MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
+
 // Centralized styles
 const styles = {
   // Navigation styles
@@ -245,7 +231,7 @@ const DropdownMenu = ({ trigger, items = projectItems }) => {
   );
 };
 
-const MobileDropdown = ({ title, items }) => {
+const MobileDropdown = ({ title, items }: MobileNavigationDropdownItems) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef(null);
 
@@ -278,7 +264,7 @@ const MobileDropdown = ({ title, items }) => {
       </button>
 
       <div className={`mt-2 space-y-2 pl-4 ${isOpen ? 'block' : 'hidden'}`}>
-        {items.map((item, index) => (
+        {items.map((item: MobileNavigationDropdownItem, index: number) => (
           <Link key={index} href={item.href}>
             <p className={styles.mobileMenuItem}>{item.label}</p>
           </Link>

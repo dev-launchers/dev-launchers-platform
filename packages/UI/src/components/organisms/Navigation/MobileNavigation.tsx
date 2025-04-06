@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 import type {
