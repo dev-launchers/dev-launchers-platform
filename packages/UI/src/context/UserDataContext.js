@@ -53,6 +53,7 @@ function useUserDataHook() {
           profile: currentUser.profile,
           ownedCards: currentUser.ownedCards,
         });
+        console.log(data);
         setIsLoading(false);
       })
       .catch((e) => {
