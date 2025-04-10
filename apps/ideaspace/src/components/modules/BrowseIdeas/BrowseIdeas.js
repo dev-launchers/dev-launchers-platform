@@ -3,7 +3,12 @@ import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
-import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
+import { DropdownMenu } from '@devlaunchers/components/src/components/DropdownMenu';
+import { DropdownMenuTrigger } from '@devlaunchers/components/components/DropdownMenu';
+import { DropdownMenuContent } from '@devlaunchers/components/components/DropdownMenu';
+import { DropdownMenuRadioGroup } from '@devlaunchers/components/components/DropdownMenu';
+import { DropdownMenuRadioItemStyled } from './StyledBrowseIdeas';
+import { ChevronDown } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
@@ -17,6 +22,8 @@ import {
 import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
+  const [selectedSortCriterionLabel, setSelectedSortCriterionLabel] =
+    React.useState('Default');
   const [cards, setCards] = React.useState([]);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -24,13 +31,18 @@ function BrowseIdeas() {
 
   const sortingConfigs = [
     {
+      value: 'default',
+      label: 'Default',
+      isAscending: false,
+    },
+    {
       value: 'mostRecentCommentTime',
       label: 'Recent Activity',
       isAscending: false,
     },
     {
       value: 'createdAt',
-      label: 'Recent Ideas',
+      label: 'Recently Posted',
       isAscending: false,
     },
     {
@@ -49,7 +61,15 @@ function BrowseIdeas() {
     let selectedSortingConfig = sortingConfigs.find(
       (configOption) => configOption.label === selectedSortCriterion
     );
+
     if (!selectedSortingConfig) return;
+
+    setSelectedSortCriterionLabel(selectedSortingConfig.label);
+
+    if (selectedSortingConfig.value === 'default') {
+      setCards(sourceCards);
+      return;
+    }
 
     const cardsClone = JSON.parse(JSON.stringify(cards));
     cardsClone.sort((a, b) => {
@@ -118,7 +138,6 @@ function BrowseIdeas() {
     );
 
     setLoading(false);
-    setCards(getCards);
     setSourceCards(getCards);
   }, []);
 
@@ -154,7 +173,6 @@ function BrowseIdeas() {
           Want to help develop an idea?
           <br />
           <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
-            {' '}
             Check out these ideas submitted by other Dev Launchers!
           </atoms.Typography>
         </atoms.Typography>
@@ -166,37 +184,38 @@ function BrowseIdeas() {
         ) : (
           <div>
             <FilterDiv>
-              <Dropdown
-                width={isMobile ? 'sm' : 'lg'}
-                isOpen={false}
-                options={[
-                  {
-                    disabled: false,
-                    text: 'Recent Activity',
-                  },
-                  {
-                    disabled: false,
-                    text: 'Recent Ideas',
-                  },
-                  {
-                    disabled: false,
-                    text: 'Most Upvotes',
-                  },
-                  {
-                    disabled: false,
-                    text: 'Least Upvotes',
-                  },
-                ]}
-                recieveValue={(value) => {
-                  sortCards(
-                    Object.entries(value).filter(([key, value]) => {
-                      return value;
-                    })[0][0]
-                  );
-                }}
-                title="Sort By"
-                type="radio"
-              />
+              <DropdownMenu>
+                <DropdownMenuTrigger
+                  asChild
+                  size={isMobile ? 'medium' : 'large'}
+                >
+                  <div className="group">
+                    {selectedSortCriterionLabel}
+                    <ChevronDown className="group-data-open:rotate-180" />
+                  </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  size={isMobile ? 'medium' : 'large'}
+                  className="bg-white"
+                >
+                  <DropdownMenuRadioGroup
+                    value={selectedSortCriterionLabel}
+                    onValueChange={(value) => sortCards(value)}
+                    asChild
+                  >
+                    <div className="flex flex-col gap-2">
+                      {sortingConfigs.map((config) => (
+                        <DropdownMenuRadioItemStyled
+                          key={config.label}
+                          value={config.label}
+                        >
+                          {config.label}
+                        </DropdownMenuRadioItemStyled>
+                      ))}
+                    </div>
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </FilterDiv>
 
             <IdeaCardWrapper>
