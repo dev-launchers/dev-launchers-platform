@@ -15,7 +15,7 @@ import DropdownMenu from './../../../../../../../packages/UI/src/components/Drop
 import countryData from './../../../../content/countryData.json';
 
 import {
-  ButtonContainer,
+  // ButtonContainer,
   // OnboardingContainer,
   // FormContainer,
   // PageContainer,
@@ -362,7 +362,7 @@ export default function UserLandingPage() {
               </div>
               <p className="text-base text-red-500"> *</p>
             </div>
-            <ButtonContainer className="flex pb-16">
+            <div className="flex pb-16 gap-134 h-full">
               <Button
                 buttonType="alternative"
                 buttonSize="xl"
@@ -386,7 +386,7 @@ export default function UserLandingPage() {
                   'Save and Continue'
                 )}
               </Button>
-            </ButtonContainer>
+            </div>
           </FormFooter>
         </form>
       </div>
