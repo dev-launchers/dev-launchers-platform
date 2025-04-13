@@ -31,7 +31,7 @@ function useUserDataHook() {
   const setUserData = useCallback((data) => _(() => data), []);
   useEffect(() => {
     setIsAuthenticated(userData && userData.id > 0);
-  }, [userData.id > 0]);
+  }, [userData.id]);
 
   useEffect(() => {
     axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
@@ -39,6 +39,8 @@ function useUserDataHook() {
     })
       .then(({ data: currentUser }) => {
         console.log('Fetching...');
+        console.log(currentUser);
+        console.log(JSON.stringify(currentUser));
         setUserData({
           id: currentUser.id,
           name: currentUser.profile.displayName,
@@ -53,7 +55,7 @@ function useUserDataHook() {
           profile: currentUser.profile,
           ownedCards: currentUser.ownedCards,
         });
-        console.log(data);
+        console.log(JSON.stringify(currentUser));
         setIsLoading(false);
       })
       .catch((e) => {
@@ -80,4 +82,4 @@ const [UserDataProvider, useUserDataContext] = constate(
   useUserDataHook,
   (value) => value.useUserDataContext
 );
-export { UserDataProvider, useUserDataContext };
+export default { UserDataProvider, useUserDataContext };
