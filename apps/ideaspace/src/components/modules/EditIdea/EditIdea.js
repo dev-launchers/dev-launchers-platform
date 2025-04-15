@@ -186,12 +186,71 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
       window.history.back(-1);
     }
   };
+  // useImperativeHandle(ref, () => ({
+  //   submitForm: () => {
+  //     if (formikRef.current) {
+  //       return formikRef.current.submitForm();
+  //     }
+  //     return Promise.reject('Formik instance not available');
+  //   },
+  //   isSending: () => sending,
+  // }));
   useImperativeHandle(ref, () => ({
     submitForm: () => {
       if (formikRef.current) {
-        return formikRef.current.submitForm();
+        // Touch all required fields before submission
+        const requiredFields = [
+          'ideaName',
+          'description',
+          'experience',
+          'targetAudience',
+          'features',
+          'involveLevel',
+        ];
+        requiredFields.forEach((field) =>
+          formikRef.current.setFieldTouched(field, true, false)
+        );
+
+        // Validate and trigger scrollToError if needed
+        return formikRef.current.validateForm().then((errors) => {
+          if (Object.keys(errors).length > 0) {
+            // Use the same scrollToError logic as in the non-edit mode
+            const firstError = Object.keys(errors)[0];
+            if (firstError) {
+              const errorElement = document.querySelector(
+                `[data-field="${firstError}"]`
+              );
+              if (errorElement) {
+                setTimeout(() => {
+                  errorElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                  });
+                }, 100);
+              }
+            }
+            return Promise.reject(errors);
+          }
+          return formikRef.current.submitForm();
+        });
       }
       return Promise.reject('Formik instance not available');
+    },
+    touchAllFields: () => {
+      if (formikRef.current) {
+        const requiredFields = [
+          'ideaName',
+          'description',
+          'experience',
+          'targetAudience',
+          'features',
+          'involveLevel',
+        ];
+        requiredFields.forEach((field) =>
+          formikRef.current.setFieldTouched(field, true, false)
+        );
+        formikRef.current.validateForm();
+      }
     },
     isSending: () => sending,
   }));

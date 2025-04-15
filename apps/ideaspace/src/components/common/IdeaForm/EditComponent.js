@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
 import { atoms } from '@devlaunchers/components/src/components';
 
@@ -8,7 +8,10 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const editIdeaRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  React.useEffect(() => {
+  // Add a key state to force re-render of EditIdea component
+  const [componentKey, setComponentKey] = React.useState(Date.now());
+
+  useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       setWindowHeight(window.innerHeight);
@@ -16,6 +19,17 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Reset key when the form opens or initialIdea changes
+  useEffect(() => {
+    if (open) {
+      setComponentKey(Date.now()); // Generate a new key to force re-render
+
+      // Clear any localStorage cache
+      localStorage.removeItem('ideaFormData');
+      localStorage.removeItem('involveLevel');
+    }
+  }, [open, initialIdea]);
 
   const isMobileDrawer = windowWidth < 1024;
 
@@ -26,8 +40,8 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     topMargin = 150; // Tablet gap
   }
 
-  const [exiting, setExiting] = React.useState(false);
-  React.useEffect(() => {
+  const [exiting, setExiting] = useState(false);
+  useEffect(() => {
     if (open) {
       setExiting(false);
     } else if (!isMobileDrawer) {
@@ -74,6 +88,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     if (editIdeaRef.current) {
       setIsSubmitting(true);
       try {
+        editIdeaRef.current.touchAllFields();
         await editIdeaRef.current.submitForm();
         setIsSubmitting(false);
       } catch (error) {
@@ -88,6 +103,19 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     localStorage.removeItem('ideaFormData');
     localStorage.removeItem('involveLevel');
     onClose();
+  };
+
+  const handleEditSuccess = (updatedIdea) => {
+    // Generate a new key to force re-render next time the component opens
+    setComponentKey(Date.now());
+
+    // Pass the updated idea to parent
+    if (onEditSuccess) {
+      onEditSuccess(updatedIdea);
+    }
+
+    // Close the dialog
+    handleClose();
   };
 
   const isSending = editIdeaRef.current?.isSending() || false;
@@ -108,27 +136,37 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
         </div>
 
         <div className={contentClasses}>
-          <EditIdea
-            ref={editIdeaRef}
-            initialIdea={initialIdea}
-            onEditSuccess={onEditSuccess}
-          />
+          {open && (
+            <EditIdea
+              key={componentKey} // Use key to force re-create component
+              ref={editIdeaRef}
+              initialIdea={initialIdea}
+              onEditSuccess={handleEditSuccess}
+            />
+          )}
         </div>
 
         <div className={footerClasses}>
           <atoms.Button
-            buttonSize="standard"
-            buttonType="alternative"
-            type="button"
+            //buttonSize="standard"
+            //buttonType="alternative"
+            //type="button"
+            type="secondary"
+            size="medium"
+            mode="light"
             onClick={handleClose}
           >
             Cancel
           </atoms.Button>
-
+          {/* Add an explicit spacer */}
+          <div style={{ width: '12px' }}></div>
           <atoms.Button
-            buttonSize="standard"
-            buttonType="primary"
-            type="submit"
+            // buttonSize="standard"
+            // buttonType="primary"
+            // type="submit"
+            type="primary"
+            size="medium"
+            mode="light"
             disabled={isSubmitting || isSending}
             onClick={handleSave}
           >
