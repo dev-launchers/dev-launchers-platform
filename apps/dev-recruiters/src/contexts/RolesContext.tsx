@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
-import agent from '@devlaunchers/utility';
+import { agent } from '@devlaunchers/utility';
 
 // Define the context data for roles.
 interface RolesContextData {
@@ -28,7 +28,7 @@ export const RolesProvider: React.FC<{ children: React.ReactNode }> = ({
         }
 
         // Use agent.userProjects.get to fetch user projects and opportunities
-        const userResponse = await agent.userProjects.get(userData.id);
+        const userResponse = await agent.userProjects.get(String(userData.id));
 
         // Extract projects and opportunities from the response
         const userProjects = userResponse.projects.map((project: any) => ({

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PlusCircle, Edit, Archive, Search, ChevronDown } from 'lucide-react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import PageHeader from '@devlaunchers/components/src/components/molecules/PageHeader';
@@ -8,14 +8,47 @@ import { useUserDataContext } from '@devlaunchers/components/src/context/UserDat
 
 export default function Dashboard() {
   const { userData, isAuthenticated } = useUserDataContext();
+  const [teamNames, setTeamNames] = useState<string[]>([]);
 
-  console.log(userData);
+  useEffect(() => {
+    if (isAuthenticated && userData) {
+      console.log(userData, isAuthenticated);
+
+      const userProjects = userData?.projects;
+
+      const capitalizeFirstLetter = (str: string) => {
+        return str
+          .split(' ')
+          .map(
+            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          )
+          .join(' ');
+      };
+
+      let formattedTeamNames: string[] = [];
+
+      if (userProjects) {
+        formattedTeamNames = userProjects.map((project) =>
+          capitalizeFirstLetter(project.title || 'Unknown Project')
+        );
+        console.log('Team Names:', formattedTeamNames);
+        setTeamNames(formattedTeamNames);
+      } else {
+        console.log('No user projects found or not yet loaded.');
+        setTeamNames([]); // Reset the state if no projects
+      }
+    } else {
+      setTeamNames([]); // Reset teamNames if not authenticated or no userData
+    }
+  }, [isAuthenticated, userData]);
 
   return (
     <div className="bg-black text-white">
       <PageHeader
         title={`Hello, ${userData.name}`}
-        subtitle="Team, Department"
+        subtitle={
+          teamNames.length > 0 ? `Your Team: ${teamNames.join(', ')}` : null
+        }
       />
       <section className="w-full flex-row pt-24 pr-48 pb-24 pl-48 gap-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
