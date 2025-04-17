@@ -190,6 +190,13 @@ const GoogledriveFile = {
   },
 };
 
+const userProjects = {
+  get: (id: string) =>
+    requests.get<Project[]>(
+      `/users/${id}?populate=projects&populate=opportunities`
+    ),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -203,6 +210,7 @@ const agent = {
   Profiles,
   requests,
   GoogledriveFile,
+  userProjects,
 };
 
 export default agent;

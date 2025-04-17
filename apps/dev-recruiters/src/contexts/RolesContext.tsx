@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import agent from '@devlaunchers/utility';
 
 // Define the context data for roles.
 interface RolesContextData {
@@ -16,43 +17,41 @@ export const RolesProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [projects, setProjects] = useState<any[]>([]);
   const [opportunities, setOpportunities] = useState<any[]>([]);
+  const { userData, isAuthenticated } = useUserDataContext();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch projects and opportunities
-        const [projectsResponse, userResponse] = await Promise.all([
-          axios.get(
-            'https://apiv4.devlaunchers.org/api/projects?populate=opportunities'
-          ),
-          axios.get(
-            'https://apiv4.devlaunchers.org/api/user/me/?populate=projects'
-          ),
-        ]);
+        if (!isAuthenticated || !userData?.id) {
+          console.log('User is not authenticated or user data is missing.');
+          return;
+        }
 
-        // Extract projects and opportunities from the API response => update here.
-        const projects = userResponse.data.data.map((project: any) => ({
+        // Use agent.userProjects.get to fetch user projects and opportunities
+        const userResponse = await agent.userProjects.get(userData.id);
+
+        // Extract projects and opportunities from the response
+        const userProjects = userResponse.projects.map((project: any) => ({
           id: project.id,
           ...project.attributes,
         }));
 
-        const opportunities = projectsResponse.data.data.flatMap(
-          (project: any) =>
-            project.attributes.opportunities.data.map((opportunity: any) => ({
-              id: opportunity.id,
-              ...opportunity.attributes,
-            }))
+        const allOpportunities = userProjects.flatMap((project: any) =>
+          project.opportunities?.data.map((opportunity: any) => ({
+            id: opportunity.id,
+            ...opportunity.attributes,
+          }))
         );
 
-        setProjects(projects);
-        setOpportunities(opportunities);
+        setProjects(userProjects);
+        setOpportunities(allOpportunities);
       } catch (err: any) {
-        console.log(err.message || 'Failed to fetch data');
+        console.error(err.message || 'Failed to fetch data');
       }
     };
 
     fetchData();
-  }, []);
+  }, [isAuthenticated, userData]);
 
   return (
     <RolesContext.Provider value={{ projects, opportunities }}>

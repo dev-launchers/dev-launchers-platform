@@ -9,7 +9,7 @@ import { useUserDataContext } from '@devlaunchers/components/src/context/UserDat
 export default function Dashboard() {
   const { userData, isAuthenticated } = useUserDataContext();
 
-  // console.log(userData, isAuthenticated)
+  console.log(userData);
 
   return (
     <div className="bg-black text-white">
