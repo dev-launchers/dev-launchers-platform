@@ -6,9 +6,23 @@ import ActiveRole from '@devlaunchers/components/src/components/organisms/cards/
 import ArchivedRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ArchivedRole';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 
+interface Project {
+  id: number;
+  title?: string;
+  openPositions?: any[]; // Adjust the type for openPositions as needed
+}
+
+interface UserData {
+  id: number;
+  name?: string;
+  projects?: Project[];
+  // ... other user data properties
+}
+
 export default function Dashboard() {
   const { userData, isAuthenticated } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
+  const [activePositions, setActivePositions] = useState<any[]>([]); // State for active roles
 
   useEffect(() => {
     if (isAuthenticated && userData) {
@@ -26,6 +40,7 @@ export default function Dashboard() {
       };
 
       let formattedTeamNames: string[] = [];
+      let extractedActivePositions: any[] = [];
 
       if (userProjects) {
         formattedTeamNames = userProjects.map((project) =>
@@ -33,19 +48,33 @@ export default function Dashboard() {
         );
         console.log('Team Names:', formattedTeamNames);
         setTeamNames(formattedTeamNames);
+
+        // Extract active positions
+        extractedActivePositions = userProjects.reduce<any[]>(
+          (acc, project) => {
+            if (project.openPositions && Array.isArray(project.openPositions)) {
+              acc.push(...project.openPositions);
+            }
+            return acc;
+          },
+          []
+        );
+        setActivePositions(extractedActivePositions);
       } else {
         console.log('No user projects found or not yet loaded.');
-        setTeamNames([]); // Reset the state if no projects
+        setTeamNames([]);
+        setActivePositions([]);
       }
     } else {
-      setTeamNames([]); // Reset teamNames if not authenticated or no userData
+      setTeamNames([]);
+      setActivePositions([]);
     }
   }, [isAuthenticated, userData]);
 
   return (
     <div className="bg-black text-white">
       <PageHeader
-        title={`Hello, ${userData.name}`}
+        title={`Hello, ${userData?.name || 'User'}`}
         subtitle={
           teamNames.length > 0 ? `Your Team: ${teamNames.join(', ')}` : null
         }
@@ -126,14 +155,21 @@ export default function Dashboard() {
           <h2 className="text-lg font-semibold mb-3">Active Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            <ActiveRole
-              key="1"
-              role="Backend Developer"
-              department="Product Platform"
-              date="12/11/25"
-              onEdit={() => alert('Edit')}
-              onView={() => alert('View')}
-            />
+            {activePositions?.map((position, index) => (
+              <ActiveRole
+                key={position.id || index} // Assuming 'id' exists in openPositions
+                role={position.title || 'Unknown Role'}
+                department={position.department || 'Unknown Department'}
+                date={position.postedDate || 'N/A'} // Adjust based on your data structure
+                onEdit={() => console.log('Edit:', position)}
+                onView={() => console.log('View:', position)}
+              />
+            ))}
+            {activePositions && activePositions.length === 0 && (
+              <div className="col-span-full">
+                <p>No active roles available.</p>
+              </div>
+            )}
           </div>
         </div>
 
@@ -141,14 +177,26 @@ export default function Dashboard() {
           <h2 className="text-lg font-semibold mb-3">Archived Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            <ArchivedRole
-              key="1"
-              role="Backend Developer"
-              department="Product Platform"
-              date="12/11/25"
-              onRepost={() => alert('Repost')}
-              onView={() => alert('View')}
-            />
+            {/* You might want to fetch and display archived roles here */}
+            {/* This example re-uses activePositions, which is likely incorrect for archived roles */}
+            {/* Consider fetching archived roles in a similar useEffect or state */}
+            {/* {activePositions?.map((position, index) => (
+              <ArchivedRole
+                key={position.id || index}
+                role={position.title || 'Unknown Role'}
+                department={position.department || 'Unknown Department'}
+                date={position.postedDate || 'N/A'}
+                onView={() => console.log('View Archived:', position)}
+              />
+            ))}
+            {activePositions && activePositions.length === 0 && (
+              <div className="col-span-full">
+                <p>No archived roles available.</p>
+              </div>
+            )} */}
+            <div className="col-span-full">
+              <p>Archived roles will be displayed here.</p>
+            </div>
           </div>
         </div>
       </section>
