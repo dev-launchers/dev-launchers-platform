@@ -4,11 +4,19 @@ import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import PageHeader from '@devlaunchers/components/src/components/molecules/PageHeader';
 import ActiveRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ActiveRole';
 import ArchivedRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ArchivedRole';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 
 export default function Dashboard() {
+  const { userData, isAuthenticated } = useUserDataContext();
+
+  // console.log(userData, isAuthenticated)
+
   return (
     <div className="bg-black text-white">
-      <PageHeader title="Hello, Name" subtitle="Team, Department" />
+      <PageHeader
+        title={`Hello, ${userData.name}`}
+        subtitle="Team, Department"
+      />
       <section className="w-full flex-row pt-24 pr-48 pb-24 pl-48 gap-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="bg-[#30184840] pt-16 pr-8 pb-16 pl-8 gap-12 rounded-lg">
