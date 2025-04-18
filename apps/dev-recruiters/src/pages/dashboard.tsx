@@ -176,19 +176,20 @@ export default function Dashboard() {
             )}
           </div>
         </div>
-
         <div className="mt-10">
           <h2 className="text-lg font-semibold mb-3">Archived Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {/* You might want to fetch and display archived roles here */}
             {/* This example re-uses activePositions, which is likely incorrect for archived roles */}
-            {/* Consider fetching archived roles in a similar useEffect or state */}
-            {/* {activePositions?.map((position, index) => (
+            {activePositions?.map((position, index) => (
               <ArchivedRole
                 key={position.id || index}
                 role={position.title || 'Unknown Role'}
-                department={position.department || 'Unknown Department'}
+                department={
+                  teamNames.length > 0
+                    ? `Your Team: ${teamNames.join(', ')}`
+                    : 'Unknown Department'
+                }
                 date={position.postedDate || 'N/A'}
                 onView={() => console.log('View Archived:', position)}
               />
@@ -197,7 +198,7 @@ export default function Dashboard() {
               <div className="col-span-full">
                 <p>No archived roles available.</p>
               </div>
-            )} */}
+            )}
             <div className="col-span-full">
               <p>Archived roles will be displayed here.</p>
             </div>
