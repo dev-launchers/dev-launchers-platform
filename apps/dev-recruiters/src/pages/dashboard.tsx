@@ -157,10 +157,14 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {activePositions?.map((position, index) => (
               <ActiveRole
-                key={position.id || index} // Assuming 'id' exists in openPositions
+                key={position.id || index}
                 role={position.title || 'Unknown Role'}
-                department={position.department || 'Unknown Department'}
-                date={position.postedDate || 'N/A'} // Adjust based on your data structure
+                department={
+                  teamNames.length > 0
+                    ? `Your Team: ${teamNames.join(', ')}`
+                    : 'Unknown Department'
+                }
+                date={new Date().toLocaleDateString()} // Displays today's date
                 onEdit={() => console.log('Edit:', position)}
                 onView={() => console.log('View:', position)}
               />
