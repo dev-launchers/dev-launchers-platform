@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { PlusCircle, Edit, Archive, Search, ChevronDown } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { PlusCircle, Edit, Archive } from 'lucide-react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import PageHeader from '@devlaunchers/components/src/components/molecules/PageHeader';
 import ActiveRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ActiveRole';
 import ArchivedRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ArchivedRole';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import SearchBar from '../components/common/SearchBar/searchbar';
 
 interface Project {
   id: number;
@@ -98,7 +99,6 @@ export default function Dashboard() {
               </Button>
             </div>
           </div>
-
           <div className="bg-[#30184840] pt-16 pr-8 pb-16 pl-8 gap-12 rounded-lg">
             <h2 className="text-lg font-semibold mb-4">Review Applicants</h2>
             <div className="space-y-4">
@@ -108,41 +108,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-
-        <div className="p-6 rounded-lg shadow-lg space-y-4 bg-[#30184840] mt-6">
-          <h2 className="text-lg font-semibold mb-4">Search Roles</h2>
-          <div className="flex items-center gap-4">
-            <div className="relative w-2/4">
-              <input
-                type="text"
-                placeholder="Search by role or applicant name"
-                className="w-full py-2 px-4 pl-10 rounded-md"
-              />
-              <Search className="absolute left-3 top-2 w-4 h-4 text-black" />
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row gap-4 text-black">
-            <select className="w-[300px] rounded-md py-2 px-4 relative">
-              <option value="" disabled selected>
-                Role Department
-              </option>
-              <option value="engineering">Engineering</option>
-              <option value="marketing">Marketing</option>
-              <option value="sales">Sales</option>
-              <ChevronDown className="absolute right-3 top-3 w-4 h-4 pointer-events-none" />
-            </select>
-
-            <select className="w-[300px] rounded-md py-2 px-4 relative">
-              <option value="" disabled selected>
-                Experience Level
-              </option>
-              <option value="entry">Entry Level</option>
-              <option value="mid">Mid Level</option>
-              <option value="senior">Senior Level</option>
-              <ChevronDown className="absolute right-3 top-3 w-4 h-4 pointer-events-none" />
-            </select>
-          </div>
-        </div>
+        <SearchBar />
       </section>
       <section className="w-full pr-48 pb-24 pl-48 gap-12">
         <div>
