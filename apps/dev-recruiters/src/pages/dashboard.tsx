@@ -10,26 +10,24 @@ import SearchBar from '../components/common/SearchBar/searchbar';
 interface Project {
   id: number;
   title?: string;
-  openPositions?: any[]; // Adjust the type for openPositions as needed
+  openPositions?: any[]; // Explicitly type openPositions
+  opportunities?: any[];
 }
 
 interface UserData {
   id: number;
   name?: string;
   projects?: Project[];
-  // ... other user data properties
 }
 
 export default function Dashboard() {
   const { userData, isAuthenticated } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
-  const [activePositions, setActivePositions] = useState<any[]>([]); // State for active roles
+  const [combinedResults, setCombinedResults] = useState([]);
 
   useEffect(() => {
     if (isAuthenticated && userData) {
-      console.log(userData, isAuthenticated);
-
-      const userProjects = userData?.projects;
+      const userProjects = userData?.projects || [];
 
       const capitalizeFirstLetter = (str: string) => {
         return str
@@ -40,37 +38,107 @@ export default function Dashboard() {
           .join(' ');
       };
 
-      let formattedTeamNames: string[] = [];
-      let extractedActivePositions: any[] = [];
+      const formattedTeamNames: string[] = userProjects.map((project) =>
+        capitalizeFirstLetter(project.title || 'Unknown Project')
+      );
+      setTeamNames(formattedTeamNames);
 
-      if (userProjects) {
-        formattedTeamNames = userProjects.map((project) =>
-          capitalizeFirstLetter(project.title || 'Unknown Project')
-        );
-        console.log('Team Names:', formattedTeamNames);
-        setTeamNames(formattedTeamNames);
+      // Extract and tag active positions
+      const extractedActivePositions = userProjects
+        .flatMap((project) => project.openPositions || [])
+        .map((position) => ({ ...position, source: 'activePositions' }));
 
-        // Extract active positions
-        extractedActivePositions = userProjects.reduce<any[]>(
-          (acc, project) => {
-            if (project.openPositions && Array.isArray(project.openPositions)) {
-              acc.push(...project.openPositions);
-            }
-            return acc;
-          },
-          []
-        );
-        setActivePositions(extractedActivePositions);
-      } else {
-        console.log('No user projects found or not yet loaded.');
-        setTeamNames([]);
-        setActivePositions([]);
-      }
+      // Extract and tag archived roles (opportunities)
+      const extractedOpportunities = userProjects
+        .flatMap((project) => project.opportunities || [])
+        .map((op) => ({ ...op, source: 'opportunities' }));
+
+      // Combine and set them
+      setCombinedResults([
+        ...extractedOpportunities,
+        ...extractedActivePositions,
+      ]);
     } else {
       setTeamNames([]);
-      setActivePositions([]);
+      setCombinedResults([]);
     }
   }, [isAuthenticated, userData]);
+
+  // search term + select options
+  //based on search term filter opportunities, and open positions for roles.
+  // based on options selected filter userData.projects.openPositions, and opportunities.
+
+  // handles filtering roles by level and searchTerm.
+  function handleSearch(
+    searchTerm = '',
+    department = '',
+    experienceLevel = ''
+  ) {
+    // If everything is empty, reset to show all roles
+    const isCleared = !searchTerm && !department && !experienceLevel;
+
+    const projects = userData?.projects || [];
+
+    if (isCleared) {
+      const allOpportunities = projects
+        ?.flatMap((project) => project.opportunities || [])
+        .map((op) => ({ ...op, source: 'opportunities' }));
+
+      const allActive = projects
+        ?.flatMap((project) => project.openPositions || [])
+        .map((position) => ({ ...position, source: 'activePositions' }));
+
+      setCombinedResults([...allOpportunities, ...allActive]);
+      return;
+    }
+
+    // Normal filtering logic continues here...
+    let formattedSearchTerm = '';
+    let formattedExperienceLevel = '';
+
+    try {
+      const parsed = JSON.parse(searchTerm);
+      formattedSearchTerm = parsed.searchTerm?.trim().toLowerCase() || '';
+      formattedExperienceLevel =
+        parsed.experienceLevel?.trim().toLowerCase() || '';
+    } catch (error) {
+      console.error('Invalid searchTerm JSON:', error);
+      setCombinedResults([]); // Clear results on error
+      return;
+    }
+
+    const filteredOpportunities = projects
+      ?.flatMap((project) => project.opportunities || [])
+      .filter((op) => {
+        const title = op.title?.toLowerCase() || '';
+        const level = op.level?.toLowerCase() || '';
+
+        const matchesSearchTerm = formattedSearchTerm
+          ? title.includes(formattedSearchTerm)
+          : true;
+
+        const matchesExperienceLevel = formattedExperienceLevel
+          ? level === formattedExperienceLevel
+          : true;
+
+        return matchesSearchTerm && matchesExperienceLevel;
+      })
+      .map((op) => ({ ...op, source: 'opportunities' }));
+
+    const filteredOpenPositions = projects
+      ?.flatMap((project) => project.openPositions || [])
+      .filter((position) => {
+        const title = position.title?.toLowerCase() || '';
+        const matchesSearchTerm = formattedSearchTerm
+          ? title.includes(formattedSearchTerm)
+          : true;
+        return matchesSearchTerm;
+      })
+      .map((position) => ({ ...position, source: 'activePositions' }));
+
+    const combined = [...filteredOpportunities, ...filteredOpenPositions];
+    setCombinedResults(combined);
+  }
 
   return (
     <div className="bg-black text-white">
@@ -108,7 +176,7 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
       </section>
       <section className="w-full pr-48 pb-24 pl-48 gap-12">
         <div>
@@ -119,53 +187,65 @@ export default function Dashboard() {
           <h2 className="text-lg font-semibold mb-3">Active Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {activePositions?.map((position, index) => (
-              <ActiveRole
-                key={position.id || index}
-                role={position.title || 'Unknown Role'}
-                department={
-                  teamNames.length > 0
-                    ? `Your Team: ${teamNames.join(', ')}`
-                    : 'Unknown Department'
-                }
-                date={new Date().toLocaleDateString()} // Displays today's date
-                onEdit={() => console.log('Edit:', position)}
-                onView={() => console.log('View:', position)}
-              />
-            ))}
-            {activePositions && activePositions.length === 0 && (
-              <div className="col-span-full">
-                <p>No active roles available.</p>
-              </div>
-            )}
+            {combinedResults
+              ?.filter((result) => result.source === 'activePositions')
+              .map((position, index) => (
+                <ActiveRole
+                  key={position.id || index}
+                  role={position.title || 'Unknown Role'}
+                  department={
+                    teamNames.length > 0
+                      ? `Your Team: ${teamNames.join(', ')}`
+                      : 'Unknown Department'
+                  }
+                  date={new Date().toLocaleDateString()} // Displays today's date
+                  onEdit={() => console.log('Edit:', position)}
+                  onView={() => console.log('View:', position)}
+                />
+              ))}
+            {combinedResults &&
+              combinedResults.filter(
+                (result) => result.source === 'activePositions'
+              ).length === 0 && (
+                <div className="col-span-full">
+                  <p>No active roles available.</p>
+                </div>
+              )}
           </div>
+          {combinedResults.length === 0 && (
+            <div className="col-span-full">
+              <p>No roles match your search criteria.</p>
+            </div>
+          )}
         </div>
+
         <div className="mt-10">
           <h2 className="text-lg font-semibold mb-3">Archived Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {/* This example re-uses activePositions, which is likely incorrect for archived roles */}
-            {activePositions?.map((position, index) => (
-              <ArchivedRole
-                key={position.id || index}
-                role={position.title || 'Unknown Role'}
-                department={
-                  teamNames.length > 0
-                    ? `Your Team: ${teamNames.join(', ')}`
-                    : 'Unknown Department'
-                }
-                date={position.postedDate || 'N/A'}
-                onView={() => console.log('View Archived:', position)}
-              />
-            ))}
-            {activePositions && activePositions.length === 0 && (
-              <div className="col-span-full">
-                <p>No archived roles available.</p>
-              </div>
-            )}
-            <div className="col-span-full">
-              <p>Archived roles will be displayed here.</p>
-            </div>
+            {combinedResults
+              ?.filter((result) => result.source === 'opportunities')
+              .map((position, index) => (
+                <ArchivedRole
+                  key={position.id || index}
+                  role={position.title || 'Unknown Role'}
+                  department={
+                    teamNames.length > 0
+                      ? `Your Team: ${teamNames.join(', ')}`
+                      : 'Unknown Department'
+                  }
+                  date={position.postedDate || 'N/A'}
+                  onView={() => console.log('View Archived:', position)}
+                />
+              ))}
+            {combinedResults &&
+              combinedResults.filter(
+                (result) => result.source === 'opportunities'
+              ).length === 0 && (
+                <div className="col-span-full">
+                  <p>No archived roles available.</p>
+                </div>
+              )}
           </div>
         </div>
       </section>
