@@ -193,13 +193,23 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
   );
 };
 
-const DropdownMenu = ({ trigger, items = projectItems }) => {
+const DropdownMenu = ({
+  trigger,
+  items = projectItems,
+}: {
+  trigger: string;
+  items: any;
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -247,11 +257,15 @@ const DropdownMenu = ({ trigger, items = projectItems }) => {
 
 const MobileDropdown = ({ title, items }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement | null>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        event.target instanceof Node &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
