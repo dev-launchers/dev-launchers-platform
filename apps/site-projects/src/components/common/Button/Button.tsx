@@ -59,9 +59,8 @@ const Button = styled.a<ButtonProps>`
 
   width: ${({ width }) => `${width}em` || ''};
   border: 0px;
-  border-bottom: 3px solid
-    ${({ theme, bgColor }: { theme: any; bgColor: string }) =>
-      colorUnderButtons(bgColor || theme.colors.ACCENT_1)};
+  border-bottom: 3px solid ${({ bgColor, theme }) =>
+    colorUnderButtons(bgColor || theme.colors.ACCENT_1)}
   cursor: pointer;
   font-size: ${({ fontSize }) => `${fontSize}rem` || '1.5rem'};
   margin-top: ${({ marginTop }) => `${marginTop}rem` || ''};
