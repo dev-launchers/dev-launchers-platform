@@ -11,6 +11,9 @@ export type PropsType = {
   as?: 'button' | 'a';
   href?: string;
   target?: string;
+  variant?: string;
+  className?: string;
+  ref?: React.LegacyRef<any>;
 };
 
 const defaultProps: PropsType = {
@@ -49,6 +52,7 @@ export default function Button(props: PropsType) {
     as,
     href,
     target,
+    ref,
   } = props;
 
   const Component = as === 'a' ? 'a' : 'button';
@@ -68,6 +72,7 @@ export default function Button(props: PropsType) {
 
   return (
     <Component
+      ref={ref}
       href={href}
       onClick={onClick}
       className={btnClasses}

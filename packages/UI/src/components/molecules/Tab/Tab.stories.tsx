@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Tabs, { Trigger, Content } from './Tab';
+import { Tabs, TabsTrigger, TabsContent, TabsList } from './Tab';
 
 const meta: Meta<typeof Tabs> = {
   component: Tabs,
@@ -12,25 +12,24 @@ type Story = StoryObj<typeof Tabs>;
 export const LoopingUsingKeyboard: Story = {
   render: () => {
     return (
-      <Tabs
-        triggers={
+      <Tabs defaultValue="tab1">
+        <TabsList>
           <div>
-            <Trigger value="tab1">Tab 1</Trigger>
-            <Trigger value="tab2">Tab 2</Trigger>
-            <Trigger value="tab3">Tab 3</Trigger>
+            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+            <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+            <TabsTrigger value="tab3">Tab 3</TabsTrigger>
           </div>
-        }
-      >
+        </TabsList>
         <>
-          <Content value="tab1">
+          <TabsContent value="tab1">
             <h1>hello from tab 1</h1>
-          </Content>
-          <Content value="tab2">
+          </TabsContent>
+          <TabsContent value="tab2">
             <h1>hello from tab 2</h1>
-          </Content>
-          <Content value="tab3">
+          </TabsContent>
+          <TabsContent value="tab3">
             <h1>hello from tab 3</h1>
-          </Content>
+          </TabsContent>
         </>
       </Tabs>
     );
@@ -40,26 +39,24 @@ export const LoopingUsingKeyboard: Story = {
 export const VerticalTabs: Story = {
   render: () => {
     return (
-      <Tabs
-        orientation="vertical"
-        triggers={
+      <Tabs orientation="vertical" defaultValue="tab1">
+        <TabsList>
           <div className="flex flex-col">
-            <Trigger value="tab1">Tab 1</Trigger>
-            <Trigger value="tab2">Tab 2</Trigger>
-            <Trigger value="tab3">Tab 3</Trigger>
+            <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+            <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+            <TabsTrigger value="tab3">Tab 3</TabsTrigger>
           </div>
-        }
-      >
+        </TabsList>
         <>
-          <Content value="tab1">
+          <TabsContent value="tab1">
             <h1>hello from tab 1</h1>
-          </Content>
-          <Content value="tab2">
+          </TabsContent>
+          <TabsContent value="tab2">
             <h1>hello from tab 2</h1>
-          </Content>
-          <Content value="tab3">
+          </TabsContent>
+          <TabsContent value="tab3">
             <h1>hello from tab 3</h1>
-          </Content>
+          </TabsContent>
         </>
       </Tabs>
     );
