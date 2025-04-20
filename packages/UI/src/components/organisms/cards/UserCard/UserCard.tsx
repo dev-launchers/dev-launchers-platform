@@ -83,7 +83,11 @@ export default function UserCard({
               <Discord width={'22px'} height={'16px'} />
               <Box flexDirection="column">
                 <Typography type="label">DISCORD</Typography>
-                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                <Typography
+                  variant="secondary"
+                  size="body_sm"
+                  css={{ marginTop: '.5rem' }}
+                >
                   {userInfo?.discord?.username}#
                   {userInfo?.discord?.discriminator}
                 </Typography>
@@ -102,7 +106,11 @@ export default function UserCard({
               <Mail width={'22px'} height={'16px'} />
               <Box flexDirection="column">
                 <Typography type="label">Email</Typography>
-                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                <Typography
+                  variant="secondary"
+                  size="body_sm"
+                  css={{ marginTop: '.5rem' }}
+                >
                   {userInfo.email}
                 </Typography>
               </Box>

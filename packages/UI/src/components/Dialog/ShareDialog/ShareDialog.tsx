@@ -80,7 +80,7 @@ export function ShareDialog({
           hasCloseBtn={false}
         >
           <DialogHeader className="mx-0 mt-8 w-96 text-center md:mx-12">
-            <Typography type="h3">
+            <Typography variant="primary" as="h3">
               <DialogTitle className="text-xl tracking-wider">
                 {header}
               </DialogTitle>

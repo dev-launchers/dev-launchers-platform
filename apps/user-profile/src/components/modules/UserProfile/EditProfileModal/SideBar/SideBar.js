@@ -103,7 +103,7 @@ function SideBar() {
   return (
     <div className="flex flex-col gap-7 w-72 border-r-2 border-grayscale-200 bg-grayscale-100">
       <div className="py-4 px-6 border-b-2 border-grayscale-200">
-        <Typography type="pLarge" className="p-0 m-0">
+        <Typography variant="secondary" size="body_base" className="p-0 m-0">
           Edit Profile
         </Typography>
       </div>

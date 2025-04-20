@@ -25,7 +25,7 @@ function TermsConditionPage() {
         </StyledRainbow>
 
         <div className="HeadingSub flex flex-col gap-3">
-          <atoms.Typography type="pLarge">
+          <atoms.Typography variant="secondary" size="body_base">
             Last updated: April 26, 2023
           </atoms.Typography>
         </div>

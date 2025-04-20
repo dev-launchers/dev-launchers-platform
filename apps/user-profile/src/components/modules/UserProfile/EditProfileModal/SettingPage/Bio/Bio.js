@@ -23,11 +23,11 @@ function Bio() {
 
   return (
     <div className="flex flex-col gap-9">
-      <Typography type="h4" className="p-0 m-0">
+      <Typography variant="primary" className="p-0 m-0">
         Edit your bio
       </Typography>
       <div className="flex flex-col gap-2">
-        <Typography type="p">
+        <Typography variant="secondary">
           <span className="font-extrabold">Bio</span> (optional)
         </Typography>
         <textarea
