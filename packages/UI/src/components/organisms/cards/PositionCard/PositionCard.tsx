@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Box from '../../../atoms/Box';
 import Button from '../../../atoms/Button';
-import Typography from '../../../atoms/TypographyOld';
+import Typography from '../../../atoms/Typography/Typography';
 import LikeButton from '../../../molecules/InteractionButtons/LikeButton';
 import SaveButton from '../../../molecules/InteractionButtons/SaveButton';
 import ShareButton from '../../../molecules/InteractionButtons/ShareButton';

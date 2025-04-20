@@ -2,7 +2,7 @@ import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
-import Typography from '../../atoms/TypographyOld';
+import Typography from '../../atoms/Typography/Typography';
 
 interface TagsContainerProps {
   list: string[];

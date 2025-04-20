@@ -21,7 +21,7 @@ import {
   DialogTitle,
 } from '..';
 import Button from '../../atoms/Button';
-import Typography from '../../atoms/TypographyOld';
+import Typography from '../../atoms/Typography/Typography';
 
 export interface ShareDialogProps {
   /**

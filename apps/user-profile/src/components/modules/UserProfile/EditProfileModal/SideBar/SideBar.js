@@ -116,7 +116,11 @@ function SideBar() {
         </li> */}
         <li className={styling.bio.li} onClick={onBioClick}>
           <OutlinedPerson colorClass={styling.bio.iconColor} />
-          <Typography type="p" className={styling.bio.typography}>
+          <Typography
+            variant="secondary"
+            type="p"
+            className={styling.bio.typography}
+          >
             BIO
           </Typography>
         </li>
