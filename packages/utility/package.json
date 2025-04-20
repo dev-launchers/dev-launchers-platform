@@ -15,7 +15,6 @@
     "eslint": "8.21.0"
   },
   "devDependencies": {
-    "@types/node": "22.14.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0"
   }
