@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import type { ThemeType } from 'styles/theme';
+import { ThemeType } from 'styles/theme';
 import { shadowStyles } from '../Shadow';
-import type { LayersProps } from '.';
+import { LayersProps } from '.';
 
 function addRainbowToLayer(theme: ThemeType, hasRainbow?: boolean) {
   return hasRainbow
