@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from 'react';
 
 export { default } from './NavDropdown';
 
