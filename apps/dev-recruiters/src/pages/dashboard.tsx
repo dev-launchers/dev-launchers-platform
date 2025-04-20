@@ -141,16 +141,22 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="bg-black text-white">
-      <PageHeader
-        title={`Hello, ${userData?.name || 'User'}`}
-        subtitle={
-          teamNames.length > 0 ? `Your Team: ${teamNames.join(', ')}` : null
-        }
-      />
-      <section className="w-full flex-row pt-24 pr-48 pb-24 pl-48 gap-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-[#30184840] pt-16 pr-8 pb-16 pl-8 gap-12 rounded-lg">
+    <div className="bg-black text-white w-full flex flex-col gap-4 sm:gap-6 sm:p-8 md:gap-6 lg:gap-8">
+      {/* Page Header */}
+      <div className="w-full px-4 md:px-16">
+        <PageHeader
+          title={`Hello, ${userData?.name || 'User'}`}
+          subtitle={
+            teamNames.length > 0 ? `Your Team: ${teamNames.join(', ')}` : null
+          }
+        />
+      </div>
+
+      {/* Role Actions + Review Applicants + Search */}
+      <section className="w-full px-4 md:px-16 flex flex-col gap-6">
+        {/* Actions */}
+        <div className="bg-[#30184840] p-6 md:p-8 rounded-lg flex flex-col lg:flex-row gap-6 w-full">
+          <div className="bg-[#30184840] pt-10 px-6 pb-10 rounded-lg w-full lg:w-1/2">
             <h2 className="text-lg font-semibold mb-4">Role Actions</h2>
             <div className="space-y-4">
               <Button>
@@ -167,7 +173,8 @@ export default function Dashboard() {
               </Button>
             </div>
           </div>
-          <div className="bg-[#30184840] pt-16 pr-8 pb-16 pl-8 gap-12 rounded-lg">
+
+          <div className="bg-[#30184840] pt-10 px-6 pb-10 rounded-lg w-full lg:w-1/2">
             <h2 className="text-lg font-semibold mb-4">Review Applicants</h2>
             <div className="space-y-4">
               <Button>By Team</Button>
@@ -176,13 +183,20 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
+        {/* Search Bar under Role Actions & Review Applicants */}
         <SearchBar onSearch={handleSearch} />
       </section>
-      <section className="w-full pr-48 pb-24 pl-48 gap-12">
+
+      {/* Roles Section */}
+      <section className="w-full px-4 md:px-16 pb-24 gap-12">
+        {/* All Roles Header */}
         <div>
           <h1 className="text-3xl font-semibold mb-3">All Roles</h1>
           <hr />
         </div>
+
+        {/* Active Roles */}
         <div className="mt-10">
           <h2 className="text-lg font-semibold mb-3">Active Roles</h2>
           <hr />
@@ -198,7 +212,7 @@ export default function Dashboard() {
                       ? `Your Team: ${teamNames.join(', ')}`
                       : 'Unknown Department'
                   }
-                  date={new Date().toLocaleDateString()} // Displays today's date
+                  date={new Date().toLocaleDateString()}
                   onEdit={() => console.log('Edit:', position)}
                   onView={() => console.log('View:', position)}
                 />
@@ -212,6 +226,7 @@ export default function Dashboard() {
                 </div>
               )}
           </div>
+
           {combinedResults.length === 0 && (
             <div className="col-span-full">
               <p>No roles match your search criteria.</p>
@@ -219,6 +234,7 @@ export default function Dashboard() {
           )}
         </div>
 
+        {/* Archived Roles */}
         <div className="mt-10">
           <h2 className="text-lg font-semibold mb-3">Archived Roles</h2>
           <hr />

@@ -22,8 +22,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     setSearchTerm(e.target.value);
   }
 
-  // call onSearch on initial render.
+  // set state to initial values.. which it will change the search term, experience level and edpartment to "".
   // useEffect(() => {
+  //   setDepartment('');
+  //   setExperienceLevel('');
+  //   setSearchTerm(''); // Reset searchTerm to empty string
   //   onSearch(JSON.stringify({ searchTerm, department, experienceLevel }));
   // }, []);
 
@@ -33,10 +36,14 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   }, [searchTerm, department, experienceLevel]);
 
   return (
-    <div className="p-6 rounded-lg shadow-lg space-y-4 bg-[#30184840] mt-6">
-      <h2 className="text-lg font-semibold mb-4">Search Roles</h2>
-      <div className="flex items-center gap-4">
-        <div className="relative w-2/4">
+    <div className="p-4 sm:p-6 rounded-lg shadow-lg space-y-4 bg-[#30184840] mt-6 overflow-hidden">
+      <h2 className="text-base sm:text-lg font-semibold mb-2 sm:mb-4">
+        Search Roles
+      </h2>
+
+      {/* Search Input */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+        <div className="relative sm:w-[200px] md:w-1/2">
           <input
             type="text"
             placeholder="Search by role"
@@ -44,37 +51,44 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
             onChange={handleInputChange}
             className="w-full py-2 px-4 pl-10 rounded-md text-black"
           />
-          <Search className="absolute left-3 top-2 w-4 h-4 text-black" />
+          <Search className="absolute left-3 top-2.5 w-4 h-4 text-black" />
         </div>
       </div>
-      <div className="flex flex-col md:flex-row gap-4 text-black">
-        <select
-          className="w-[300px] rounded-md py-2 px-4 relative"
-          value={department}
-          onChange={(e) => setDepartment(e.target.value)}
-        >
-          <option value="" disabled selected>
-            Role Department
-          </option>
-          <option value="development">Development</option>
-          <option value="product">Product</option>
-          <option value="design">Design</option>
-          <option value="research">Research</option>
+
+      {/* Filters */}
+      <div className="flex flex-col md:flex-row gap-4 text-black w-full">
+        <div className="relative w-full md:w-[300px]">
+          <select
+            className="w-full rounded-md py-2 px-4 appearance-none"
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
+          >
+            <option value="" disabled>
+              Role Department
+            </option>
+            <option value="development">Development</option>
+            <option value="product">Product</option>
+            <option value="design">Design</option>
+            <option value="research">Research</option>
+          </select>
           <ChevronDown className="absolute right-3 top-3 w-4 h-4 pointer-events-none" />
-        </select>
-        <select
-          className="w-[300px] rounded-md py-2 px-4 relative"
-          value={experienceLevel}
-          onChange={(e) => setExperienceLevel(e.target.value)}
-        >
-          <option value="" disabled selected>
-            Experience Level
-          </option>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="advanced">Advanced</option>
+        </div>
+
+        <div className="relative w-full md:w-[300px]">
+          <select
+            className="w-full rounded-md py-2 px-4 appearance-none"
+            value={experienceLevel}
+            onChange={(e) => setExperienceLevel(e.target.value)}
+          >
+            <option value="" disabled>
+              Experience Level
+            </option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
           <ChevronDown className="absolute right-3 top-3 w-4 h-4 pointer-events-none" />
-        </select>
+        </div>
       </div>
     </div>
   );

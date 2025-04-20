@@ -21,13 +21,13 @@ export default function ArchivedRole(props: props) {
       <h3 className="mb-3 text-lg font-semibold">{props.role}</h3>
       <p className="mb-2 text-sm">{props.department}</p>
       <p className="text-xs">Archived: {props.date}</p>
-      <div className="mt-5 flex justify-end space-x-3">
+      <div className="mt-5 flex flex-row justify-start gap-3 overflow-hidden">
         <Button onClick={props.onRepost}>
-          <RotateCw className="mr-1 h-5 w-5" />
-          <span className="text-xs">Repost</span>
+          <RotateCw className="mr-1 h-4 w-4 sm:h-auto sm:w-auto" />
+          <span className="text-xs sm:text-xs">Repost</span>
         </Button>
         <Button onClick={props.onView}>
-          <span className="text-xs">View Posting</span>
+          <span className="text-xs sm:text-xs">View Posting</span>
         </Button>
       </div>
     </div>
