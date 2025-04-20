@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { ReactNode, HTMLAttributes } from 'react';
 import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
@@ -7,11 +8,9 @@ import Typography from '../../atoms/TypographyOld';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
 
+import NotificationPopover from './NotificationPopover';
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
-import NotificationPopover from './NotificationPopover';
-import { ReactNode } from 'react';
-import { HTMLAttributes } from 'react';
 
 interface MobileNavigationProps {
   links: Record<string, string | { name: string; href: string }[]>;

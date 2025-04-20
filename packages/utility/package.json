@@ -13,5 +13,8 @@
     "@devlaunchers/models": "workspace:^",
     "axios": "^0.27.2",
     "eslint": "8.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.14.1"
   }
 }

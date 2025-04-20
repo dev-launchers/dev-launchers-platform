@@ -14,10 +14,7 @@ export const LoopingUsingKeyboard: Story = {
     return (
       <Tabs>
         <>
-          <TabsList
-            className="flex flex-row justify-around
-                  py-8 px-4  gap-8"
-          >
+          <TabsList className="flex flex-row justify-around gap-8 px-4  py-8">
             <TabsTrigger className="text-xl focus:bg-purple-500" value="dev">
               Development
             </TabsTrigger>
@@ -54,10 +51,7 @@ export const VerticalTabs: Story = {
     return (
       <Tabs orientation="vertical">
         <>
-          <TabsList
-            className="flex flex-row justify-around
-                  py-8 px-4  gap-8 bg-gray-900"
-          >
+          <TabsList className="flex flex-row justify-around gap-8 bg-gray-900  px-4 py-8">
             <TabsTrigger className="text-xl focus:bg-purple-500" value="dev">
               Development
             </TabsTrigger>

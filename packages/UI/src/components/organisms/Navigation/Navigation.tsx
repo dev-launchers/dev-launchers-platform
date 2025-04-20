@@ -1,13 +1,11 @@
-import React, { ReactNode } from 'react';
 import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
+import React from 'react';
+import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-import ProfileDropdownProps from 'types/ProfileDropdownProps';
-import MobileNavigationDropdownItems from 'types/MobileNavigationDropdownItems';
-import MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 
 // Centralized styles
 const styles = {
@@ -128,7 +126,7 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
 
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>
-      <div className="text-white mr-6">
+      <div className="mr-6 text-white">
         <NotificationPopover />
       </div>
       <button

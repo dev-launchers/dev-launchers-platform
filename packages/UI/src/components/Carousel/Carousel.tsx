@@ -225,9 +225,9 @@ const CarouselNext = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(({ className, size = 'small', ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel();
-
   return (
     <Button
+      ref={ref}
       size={size}
       className={cn(
         'absolute h-8 w-8 rounded-full',

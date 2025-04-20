@@ -1,5 +1,5 @@
 import { darkColorConfig, lightColorConfig, focusStyles } from './colors';
-import { ColorType, PropsType } from './types';
+import type { ColorType, PropsType } from './types';
 
 const DEFAULTS = {
   mode: 'dark',
@@ -90,6 +90,7 @@ export default function Button(props: PropsType) {
     isAlert,
     alertType,
     icon,
+    ref,
   } = mergedProps;
 
   const safeType = validateField(type, VALID_OPTIONS.types);
@@ -124,6 +125,7 @@ export default function Button(props: PropsType) {
 
   return (
     <Component
+      ref={ref}
       href={href}
       onClick={onClick}
       className={btnClasses}

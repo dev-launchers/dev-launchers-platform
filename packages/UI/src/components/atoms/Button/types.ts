@@ -31,4 +31,5 @@ export type PropsType = {
   isAlert?: boolean;
   alertType?: AlertType;
   className?: string;
+  ref?: React.LegacyRef<any>;
 };
