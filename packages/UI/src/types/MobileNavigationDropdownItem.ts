@@ -1,4 +1,4 @@
-export default interface ProfileDropdownProps {
+export default interface MobileNavigationDropdownItem {
   label: string;
   href: string;
 }
