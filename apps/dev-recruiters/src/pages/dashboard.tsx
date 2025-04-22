@@ -29,7 +29,7 @@ interface CombinedResult {
   postedDate?: string;
 }
 
-export default function Dashboard() {
+const Dashboard: React.FC = () => {
   const { userData, isAuthenticated } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
   const [combinedResults, setCombinedResults] = useState<CombinedResult[]>([]);
@@ -278,4 +278,4 @@ export default function Dashboard() {
       </section>
     </div>
   );
-}
+};
