@@ -6,12 +6,13 @@ import ActiveRole from '@devlaunchers/components/src/components/organisms/cards/
 import ArchivedRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ArchivedRole';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import SearchBar from '../components/common/SearchBar/searchbar';
+import { Opportunity } from '@devlaunchers/models/opportunity';
 
 interface Project {
   id: number;
   title?: string;
-  openPositions?: any[]; // Explicitly type openPositions
-  opportunities?: any[];
+  openPositions?: unknown;
+  opportunities?: Opportunity[];
 }
 
 interface UserData {
@@ -20,10 +21,20 @@ interface UserData {
   projects?: Project[];
 }
 
+interface CombinedResult {
+  id: number;
+  title?: string;
+  department?: string;
+  source: 'activePositions' | 'opportunities';
+  postedDate?: string;
+}
+
 export default function Dashboard() {
   const { userData, isAuthenticated } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
-  const [combinedResults, setCombinedResults] = useState([]);
+  const [combinedResults, setCombinedResults] = useState<CombinedResult[]>([]);
+
+  console.log(userData);
 
   useEffect(() => {
     if (isAuthenticated && userData) {
