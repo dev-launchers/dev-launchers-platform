@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import { radiusStyles } from '@devlaunchers/components/src/components/atoms';
-import { DropdownMenuRadioItem } from '@devlaunchers/components/components/DropdownMenu';
+import {
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from '@devlaunchers/components/components/DropdownMenu';
 
 export const PageWrapper = styled.section`
   background-color: #ffffff;
@@ -79,6 +82,11 @@ export const FilterDiv = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-bottom: 0.5rem;
+`;
+
+export const DropdownMenuTriggerStyled = styled(DropdownMenuTrigger)`
+  cursor: pointer;
+  pointer-events: auto;
 `;
 
 export const DropdownMenuRadioItemStyled = styled(DropdownMenuRadioItem)`
