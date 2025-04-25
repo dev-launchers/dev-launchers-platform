@@ -21,20 +21,21 @@ interface UserData {
   projects?: Project[];
 }
 
-interface CombinedResult {
+interface Opportunity {
   id: number;
-  title?: string;
-  department?: string;
-  source: 'activePositions' | 'opportunities';
-  postedDate?: string;
+  title: string;
+  level: string;
+  roleCategory: string;
 }
 
 const Dashboard: React.FC = () => {
   const { userData, isAuthenticated } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
-  const [combinedResults, setCombinedResults] = useState<CombinedResult[]>([]);
+  const [activeRoles, setActiveRoles] = useState<Opportunity>([]);
+  const [archivedRoles, setArchivedRoles] = useState<Opportunity>([]);
 
   console.log(userData);
+  // roleCategory is the department.
 
   useEffect(() => {
     if (isAuthenticated && userData) {
@@ -54,30 +55,18 @@ const Dashboard: React.FC = () => {
       );
       setTeamNames(formattedTeamNames);
 
-      // Extract and tag active positions
-      const extractedActivePositions = userProjects
-        .flatMap((project) => project.openPositions || [])
-        .map((position) => ({ ...position, source: 'activePositions' }));
+      const allPositions = userProjects.flatMap(
+        (project) => project.openPositions || []
+      );
 
-      // Extract and tag archived roles (opportunities)
-      const extractedOpportunities = userProjects
-        .flatMap((project) => project.opportunities || [])
-        .map((op) => ({ ...op, source: 'opportunities' }));
-
-      // Combine and set them
-      setCombinedResults([
-        ...extractedOpportunities,
-        ...extractedActivePositions,
-      ]);
+      setActiveRoles(allPositions.filter((pos) => pos.active));
+      setArchivedRoles(allPositions.filter((pos) => !pos.active));
     } else {
       setTeamNames([]);
-      setCombinedResults([]);
+      setActiveRoles([]);
+      setArchivedRoles([]);
     }
   }, [isAuthenticated, userData]);
-
-  // search term + select options
-  //based on search term filter opportunities, and open positions for roles.
-  // based on options selected filter userData.projects.openPositions, and opportunities.
 
   // handles filtering roles by level and searchTerm.
   function handleSearch(
@@ -85,25 +74,8 @@ const Dashboard: React.FC = () => {
     department = '',
     experienceLevel = ''
   ) {
-    // If everything is empty, reset to show all roles
-    const isCleared = !searchTerm && !department && !experienceLevel;
-
     const projects = userData?.projects || [];
 
-    if (isCleared) {
-      const allOpportunities = projects
-        ?.flatMap((project) => project.opportunities || [])
-        .map((op) => ({ ...op, source: 'opportunities' }));
-
-      const allActive = projects
-        ?.flatMap((project) => project.openPositions || [])
-        .map((position) => ({ ...position, source: 'activePositions' }));
-
-      setCombinedResults([...allOpportunities, ...allActive]);
-      return;
-    }
-
-    // Normal filtering logic continues here...
     let formattedSearchTerm = '';
     let formattedExperienceLevel = '';
 
@@ -114,41 +86,33 @@ const Dashboard: React.FC = () => {
         parsed.experienceLevel?.trim().toLowerCase() || '';
     } catch (error) {
       console.error('Invalid searchTerm JSON:', error);
-      setCombinedResults([]); // Clear results on error
+      setActiveRoles([]);
+      setArchivedRoles([]);
       return;
     }
 
-    const filteredOpportunities = projects
-      ?.flatMap((project) => project.opportunities || [])
-      .filter((op) => {
-        const title = op.title?.toLowerCase() || '';
-        const level = op.level?.toLowerCase() || '';
+    const allPositions = projects.flatMap(
+      (project) => project.openPositions || []
+    );
 
-        const matchesSearchTerm = formattedSearchTerm
-          ? title.includes(formattedSearchTerm)
-          : true;
+    const filterFn = (pos: any) => {
+      const title = pos.title?.toLowerCase() || '';
+      const level = pos.level?.toLowerCase() || '';
 
-        const matchesExperienceLevel = formattedExperienceLevel
-          ? level === formattedExperienceLevel
-          : true;
+      const matchesSearchTerm = formattedSearchTerm
+        ? title.includes(formattedSearchTerm)
+        : true;
+      const matchesExperienceLevel = formattedExperienceLevel
+        ? level === formattedExperienceLevel
+        : true;
 
-        return matchesSearchTerm && matchesExperienceLevel;
-      })
-      .map((op) => ({ ...op, source: 'opportunities' }));
+      return matchesSearchTerm && matchesExperienceLevel;
+    };
 
-    const filteredOpenPositions = projects
-      ?.flatMap((project) => project.openPositions || [])
-      .filter((position) => {
-        const title = position.title?.toLowerCase() || '';
-        const matchesSearchTerm = formattedSearchTerm
-          ? title.includes(formattedSearchTerm)
-          : true;
-        return matchesSearchTerm;
-      })
-      .map((position) => ({ ...position, source: 'activePositions' }));
-
-    const combined = [...filteredOpportunities, ...filteredOpenPositions];
-    setCombinedResults(combined);
+    setActiveRoles(allPositions.filter((pos) => pos.active && filterFn(pos)));
+    setArchivedRoles(
+      allPositions.filter((pos) => !pos.active && filterFn(pos))
+    );
   }
 
   return (
@@ -212,33 +176,30 @@ const Dashboard: React.FC = () => {
           <h2 className="text-lg font-semibold mb-3">Active Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {combinedResults
-              ?.filter((result) => result.source === 'activePositions')
-              .map((position, index) => (
-                <ActiveRole
-                  key={position.id || index}
-                  role={position.title || 'Unknown Role'}
-                  department={
-                    teamNames.length > 0
-                      ? `Your Team: ${teamNames.join(', ')}`
-                      : 'Unknown Department'
-                  }
-                  date={new Date().toLocaleDateString()}
-                  onEdit={() => console.log('Edit:', position)}
-                  onView={() => console.log('View:', position)}
-                />
-              ))}
-            {combinedResults &&
-              combinedResults.filter(
-                (result) => result.source === 'activePositions'
-              ).length === 0 && (
+            {activeRoles.map((position, index) => (
+              <ActiveRole
+                key={position.id || index}
+                role={position.title || 'Unknown Role'}
+                department={
+                  teamNames.length > 0
+                    ? `Your Team: ${teamNames.join(', ')}`
+                    : 'Unknown Department'
+                }
+                date={new Date().toLocaleDateString()}
+                onEdit={() => console.log('Edit:', position)}
+                onView={() => console.log('View:', position)}
+              />
+            ))}
+            {activeRoles &&
+              activeRoles.filter((result) => result.source === 'opportunities')
+                .length === 0 && (
                 <div className="col-span-full">
                   <p>No active roles available.</p>
                 </div>
               )}
           </div>
 
-          {combinedResults.length === 0 && (
+          {activeRoles.length === 0 && (
             <div className="col-span-full">
               <p>No roles match your search criteria.</p>
             </div>
@@ -250,23 +211,21 @@ const Dashboard: React.FC = () => {
           <h2 className="text-lg font-semibold mb-3">Archived Roles</h2>
           <hr />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            {combinedResults
-              ?.filter((result) => result.source === 'opportunities')
-              .map((position, index) => (
-                <ArchivedRole
-                  key={position.id || index}
-                  role={position.title || 'Unknown Role'}
-                  department={
-                    teamNames.length > 0
-                      ? `Your Team: ${teamNames.join(', ')}`
-                      : 'Unknown Department'
-                  }
-                  date={position.postedDate || 'N/A'}
-                  onView={() => console.log('View Archived:', position)}
-                />
-              ))}
-            {combinedResults &&
-              combinedResults.filter(
+            {archivedRoles.map((position, index) => (
+              <ArchivedRole
+                key={position.id || index}
+                role={position.title || 'Unknown Role'}
+                department={
+                  teamNames.length > 0
+                    ? `Your Team: ${teamNames.join(', ')}`
+                    : 'Unknown Department'
+                }
+                date={position.postedDate || 'N/A'}
+                onView={() => console.log('View Archived:', position)}
+              />
+            ))}
+            {archivedRoles &&
+              archivedRoles.filter(
                 (result) => result.source === 'opportunities'
               ).length === 0 && (
                 <div className="col-span-full">
@@ -279,3 +238,5 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
+
+export default Dashboard;

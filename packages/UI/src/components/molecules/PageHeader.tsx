@@ -18,7 +18,9 @@ export default function PageHeader(props: props) {
         {props.title}
       </h1>
       {!!props.subtitle && (
-        <p className="mb-2 text-base sm:text-lg md:text-xl">{props.subtitle}</p>
+        <p className="mb-2 text-base text-gray-500 mt-2 sm:text-lg md:text-xl">
+          {props.subtitle}
+        </p>
       )}
       {!!props.element && props.element}
     </header>
