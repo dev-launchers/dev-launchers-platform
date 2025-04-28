@@ -24,7 +24,7 @@ jobs:
     # The list of steps that the action will go through
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v1
 
       - name: Extract branch name
         shell: bash
