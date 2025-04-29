@@ -8,7 +8,7 @@ interface props {
 export default function PageHeader(props: props) {
   return (
     <header
-      className="w-full px-4 py-8 sm:px-6 md:px-12 lg:px-24 xl:px-48 text-white laptop-container"
+      className="w-full py-8 text-white laptop-container"
       style={{
         background:
           'linear-gradient(92.24deg, rgba(129, 195, 215, 0.2) 7%, rgba(143, 97, 189, 0.2) 51.5%, rgba(58, 124, 165, 0.2) 75.77%, rgba(57, 76, 172, 0.2) 96.6%), #000000',

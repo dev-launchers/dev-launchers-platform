@@ -7,22 +7,23 @@ import ArchivedRole from '@devlaunchers/components/src/components/organisms/card
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import SearchBar from '../components/common/SearchBar/searchbar';
 import { Opportunity } from '@devlaunchers/models/opportunity';
+import { useRouter } from 'next/router';
 
 interface Project {
-  id: number;
+  readonly id: number;
   title?: string;
   openPositions?: unknown;
   opportunities?: Opportunity[];
 }
 
 interface UserData {
-  id: number;
+  readonly id: number;
   name?: string;
   projects?: Project[];
 }
 
 interface Opportunity {
-  id: number;
+  readonly id: number;
   title: string;
   level: string;
   roleCategory: string;
@@ -33,9 +34,25 @@ const Dashboard: React.FC = () => {
   const [teamNames, setTeamNames] = useState<string[]>([]);
   const [activeRoles, setActiveRoles] = useState<Opportunity>([]);
   const [archivedRoles, setArchivedRoles] = useState<Opportunity>([]);
+  const router = useRouter();
 
   console.log(userData);
   // roleCategory is the department.
+
+  // restrict /dashboard page for project leaders only.
+  //some(...).some(...) — checks if any project has a team where the current user (userData.id) is a leader.
+
+  useEffect(() => {
+    if (isAuthenticated && userData) {
+      const isLeader = userData.projects?.some((project: any) =>
+        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+      );
+
+      if (!isLeader) {
+        router.replace('/');
+      }
+    }
+  }, [isAuthenticated, userData]);
 
   useEffect(() => {
     if (isAuthenticated && userData) {
