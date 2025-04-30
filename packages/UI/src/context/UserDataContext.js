@@ -46,6 +46,7 @@ function useUserDataHook() {
           name: currentUser.profile?.displayName,
           username: currentUser.username,
           email: currentUser.email,
+          skills: currentUser.skills,
           bio: currentUser.profile?.bio,
           profilePictureUrl: currentUser.profile?.profilePictureUrl,
           socialMediaLinks: currentUser.profile?.socialMediaLinks,

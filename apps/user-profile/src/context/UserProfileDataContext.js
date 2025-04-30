@@ -10,12 +10,6 @@ export const UserProfileData = ({ children }) => {
     userProfileState
   );
 
-  // const { userData } = useUserDataContext();
-
-  useEffect(() => {
-    // s
-  }, []);
-
   return { userProfileState, userProfileDispatch };
 };
 

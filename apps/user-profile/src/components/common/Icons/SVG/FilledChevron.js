@@ -1,12 +1,24 @@
 /**
  * @description
- * This is a chevron icon that can be dynamically modified using any of the
- * attributes listed below.
- * @height `height` sets the height of the svg element
- * @width `width` sets the width of the svg element
- * @point `point` Changes the angle of the chevron e.g `<FilledChevron point='up'>`
- * @colorClass `colorClass` changes the color of the svg/icon, use the **tailwind** `fill-[colour]` class names
- * e.g `<FilledChevron colorClass="fill-red-600">`
+ * Renders a chevron icon wrapped in a button, which can be dynamically rotated and styled.
+ *
+ * @param {Object} props - The component props.
+ * @param {string|number} [props.width=8] - Sets the width of the SVG element.
+ * @param {string|number} [props.height=14] - Sets the height of the SVG element.
+ * @param {string} [props.point=''] - Controls the rotation angle of the chevron. Accepts:
+ *   - 'up': Rotates the chevron 90 degrees upwards.
+ *   - 'down': Rotates the chevron -90 degrees downwards.
+ *   - 'left': Points the chevron to the left (default orientation).
+ *   - 'right': Rotates the chevron 180 degrees to point right.
+ *   - Custom angle: You can also pass a custom numeric angle (e.g., '45').
+ * @param {string} [props.colorClass='fill-grayscale-600'] - CSS class to set the fill color of the chevron.
+ *   Use Tailwind's `fill-[color]` class for customization, e.g., `fill-red-500`.
+ * @param {string} props.className - Additional CSS classes for the SVG element.
+ * @param {Object} props.attributes - Additional attributes to spread onto the button element.
+ *
+ * @example
+ * <FilledChevron point="up" colorClass="fill-blue-600" />
+ * <FilledChevron width={12} height={18} point="45" />
  */
 function FilledChevron({
   width,
@@ -19,35 +31,37 @@ function FilledChevron({
   let angle = '';
   switch (point) {
     case 'up': {
-      angle = '90';
+      angle = '90'; // Rotate chevron 90 degrees for "up" orientation
       break;
     }
     case 'down': {
-      angle = '-90';
+      angle = '-90'; // Rotate chevron -90 degrees for "down" orientation
       break;
     }
     case 'left': {
-      angle = '0';
+      angle = '0'; // Default "left" orientation
       break;
     }
     case 'right': {
-      angle = '180';
+      angle = '180'; // Rotate chevron 180 degrees for "right" orientation
       break;
     }
     default: {
-      angle = point ?? '0';
+      angle = point ?? '0'; // Use custom angle or default to '0' (left)
     }
   }
   return (
+    // Button container for the chevron SVG
     <button className="appearance-none cursor-auto" {...attributes}>
+      {/* SVG element defining the chevron icon */}
       <svg
-        width={width ?? '8'}
-        height={height ?? '14'}
-        viewBox="0 0 8 14"
-        transform={`rotate(${angle})`}
-        className={className}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        width={width ?? '8'} // Use provided width or default to 8
+        height={height ?? '14'} // Use provided height or default to 14
+        viewBox="0 0 8 14" // Defines the SVG's internal coordinate system
+        transform={`rotate(${angle})`} // Applies rotation based on the `point` prop
+        className={className} // Additional CSS classes for the SVG
+        fill="none" // Ensures no default fill for the SVG
+        xmlns="http://www.w3.org/2000/svg" // Namespace for the SVG
       >
         <path
           className={colorClass ?? 'fill-grayscale-600'}

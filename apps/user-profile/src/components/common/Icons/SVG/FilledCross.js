@@ -1,15 +1,35 @@
 import React from 'react';
 
+/**
+ * FilledCross Component
+ * Renders a button containing an SVG cross icon. The icon can be styled dynamically using props.
+ *
+ * @param {Object} props - The component props.
+ * @param {string|number} [props.width=20] - Width of the SVG icon.
+ * @param {string|number} [props.height=20] - Height of the SVG icon.
+ * @param {string} [props.colorClass='fill-white'] - CSS class to set the fill color of the cross icon.
+ *   Use Tailwind's `fill-[color]` class for customization, e.g., `fill-red-500`.
+ * @param {string} props.className - Additional CSS classes for the SVG element.
+ * @param {Object} props.attributes - Additional attributes to spread onto the button element.
+ *
+ * @example
+ * <FilledCross width={24} height={24} colorClass="fill-red-500" />
+ * <FilledCross className="custom-class" />
+ *
+ * @returns {JSX.Element} The rendered cross icon wrapped in a button.
+ */
 function FilledCross({ width, height, colorClass, className, ...attributes }) {
   return (
+    // Button container for the cross SVG
     <button className="appearance-none cursor-auto" {...attributes}>
+      {/* SVG element defining the cross icon */}
       <svg
-        width={width ?? '20'}
-        height={height ?? '20'}
-        className={className}
-        viewBox="0 0 14 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
+        width={width ?? '20'} // Use provided width or default to 20
+        height={height ?? '20'} // Use provided height or default to 20
+        className={className} // Additional CSS classes for the SVG
+        viewBox="0 0 14 14" // Defines the SVG's internal coordinate system
+        fill="none" // Ensures no default fill for the SVG
+        xmlns="http://www.w3.org/2000/svg" // Namespace for the SVG
       >
         <g id="Group 865">
           <path

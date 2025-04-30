@@ -79,7 +79,8 @@ export default function NotificationPopover() {
                 const { readDateTime, createdDateTime } = n.attributes;
                 const { action, entityName, eventUser, content, entityId } =
                   n.attributes.event.data.attributes;
-                const { username, discord_avatar } = eventUser.data.attributes;
+                const { username, discord_avatar } =
+                  eventUser?.data?.attributes;
                 return (
                   <NotificationItem
                     key={i}

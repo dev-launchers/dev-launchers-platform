@@ -4,12 +4,12 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import UserCard from '@devlaunchers/components/components/organisms/cards/UserCard';
-import { PeopleContainer } from './StyledPeople';
+import { PeopleContainer } from '../People[OLD]/StyledPeople';
 
 const People = ({ people }) => {
   const router = useRouter();
   return (
-    <PeopleContainer people={people}>
+    <div people={people}>
       <div>
         <h2>Interesting People</h2>
         <div
@@ -58,7 +58,7 @@ const People = ({ people }) => {
           })}
         </div>
       </div>
-    </PeopleContainer>
+    </div>
   );
 };
 

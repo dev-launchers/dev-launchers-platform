@@ -1,13 +1,29 @@
-import React from 'react';
-
+/**
+ * OutlinedCog Component
+ * Renders an SVG cog (gear) icon with dynamic properties for customization.
+ *
+ * @param {Object} props - The component props.
+ * @param {string|number} [props.width=18] - Width of the SVG icon.
+ * @param {string|number} [props.height=18] - Height of the SVG icon.
+ * @param {string} [props.colorClass='fill-grayscale-500'] - CSS class to set the fill color of the cog.
+ *   Use Tailwind's `fill-[color]` class for customization, e.g., `fill-blue-500`.
+ * @param {string} [props.svgClass=''] - CSS class to set additional styles for the SVG element.
+ *
+ * @example
+ * <OutlinedCog width={24} height={24} colorClass="fill-blue-500" svgClass="custom-class" />
+ * <OutlinedCog />
+ *
+ * @returns {JSX.Element} The rendered cog SVG icon.
+ */
 function OutlinedCog({ width, height, colorClass, svgClass }) {
   return (
+    // SVG container for the cog icon
     <svg
-      width={width ?? '18'}
-      height={height ?? '18'}
-      className={svgClass ?? ''}
-      viewBox="0 0 16 15"
-      xmlns="http://www.w3.org/2000/svg"
+      width={width ?? '18'} // Use provided width or default to 18
+      height={height ?? '18'} // Use provided height or default to 18
+      className={svgClass ?? ''} // Additional styling classes for the SVG
+      viewBox="0 0 16 15" // Defines the SVG's internal coordinate system
+      xmlns="http://www.w3.org/2000/svg" // Namespace for the SVG
     >
       <path
         className={colorClass ?? 'fill-grayscale-500'}
