@@ -19,12 +19,31 @@ import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
+import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
+import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
+import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
 
-export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
+export const IdeaCard = ({
+  ideaImage,
+  ideaId,
+  ideaName,
+  ideaTagLine,
+  fullIdea,
+  onEditSuccess,
+}) => {
+  const [ideaData, setIdeaData] = useState(fullIdea);
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showEditSuccess, setShowEditSuccess] = useState(false);
+
+  const isOwner =
+    userData &&
+    ideaData &&
+    ideaData.ideaOwner &&
+    Number(userData.id) === Number(ideaData.ideaOwner.id);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -107,9 +126,17 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         onclick={handleUpvoteClick}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     ) : (
@@ -118,40 +145,106 @@ export const IdeaCard = ({ ideaImage, ideaId, ideaName, ideaTagLine }) => {
         disabled={true}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     );
 
-  return (
-    <StyledCard>
-      <TopView>
-        <LeftView>
-          {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
-        </LeftView>
-        <RightView>
-          <IdeaName>{ideaName}</IdeaName>
-          <IdeaTagLine>{ideaTagLine}</IdeaTagLine>
-        </RightView>
-      </TopView>
+  // Update both local state and notify parent
+  const handleEditSuccess = (updatedIdea) => {
+    const newIdeaData = {
+      ...ideaData,
+      ...updatedIdea,
+      ideaOwner: ideaData.ideaOwner,
+      ideaTagLine: updatedIdea.tagline || ideaData.ideaTagLine,
+      description: updatedIdea.description || ideaData.description,
+      features: updatedIdea.features || ideaData.features,
+      targetAudience: updatedIdea.targetAudience || ideaData.targetAudience,
+    };
 
-      <BottomView>
-        {/* <Button>
-          <BookmarkBorderOutlinedIcon />
-          <StyledText>FOLLOW</StyledText>
-        </Button> */}
-        {upvoteButton}
-        {/* <Button onClick={handleUpvoteClick}>
-          <StarBorderOutlinedIcon />
-          <StyledText>UPVOTE</StyledText>
-        </Button> */}
-        {/* <Button>
-          <ShareOutlinedIcon />
-          <StyledText>SHARE</StyledText>
-        </Button> */}
-      </BottomView>
-    </StyledCard>
+    setIdeaData(newIdeaData);
+    if (onEditSuccess) {
+      onEditSuccess(newIdeaData);
+    }
+    setIsModalOpen(false);
+    setShowEditSuccess(true);
+    setTimeout(() => {
+      setShowEditSuccess(false);
+    }, 4000);
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isModalOpen]);
+
+  return (
+    <>
+      <div>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-2">
+              <div
+                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
+                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
+              >
+                {ideaData.ideaName}
+              </div>
+              <div
+                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
+                style={{ lineHeight: '28px' }}
+              >
+                {ideaData.tagline}
+              </div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div>{upvoteButton}</div>
+              <div>
+                {isOwner && (
+                  <>
+                    <button
+                      className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Edit Idea
+                    </button>
+                    <EditComponent
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      // initialIdea={fullIdea}
+                      initialIdea={ideaData}
+                      onEditSuccess={handleEditSuccess}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-[256px] rounded-[20px] overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              src="https://placehold.co/680x304"
+              alt="Idea Image"
+            />
+          </div>
+        </div>
+        {showEditSuccess && (
+          <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
+        )}
+      </div>
+    </>
   );
 };

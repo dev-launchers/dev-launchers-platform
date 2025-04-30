@@ -1,11 +1,14 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import ReactModal from 'react-modal';
-
-import { ModalContent, defaultModalStyles } from './StyledModal';
+import {
+  UploadModalContent,
+  UploadCustomModalStyles,
+} from './styledUploadModal';
 
 ReactModal.setAppElement('#__next');
 
-export default function Modal(props) {
+export default function UploadModal(props) {
   const [modalContent] = React.useState(props.modalContent);
 
   // Modal functions
@@ -16,21 +19,23 @@ export default function Modal(props) {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-  const afterOpenModal = () => {};
+  const afterOpenModal = () => {
+    setModalIsOpen(true);
+  };
 
   return (
     <ReactModal
       isOpen={props.modalIsOpen ?? modalIsOpen}
-      onRequestOpen={props.openModal ?? openModal}
+      onRequestOpen={props.modalIsOpen ?? modalIsOpen}
       onRequestClose={props.closeModal ?? closeModal}
-      style={props.customModalStyles ?? defaultModalStyles}
+      style={props.UploadCustomModalStyles ?? UploadCustomModalStyles}
       onAfterOpen={props.afterOpenModal ?? afterOpenModal}
       preventScroll={props.preventScroll ?? true}
-      contentLabel="Position Popup Modal"
+      contentLabel="Upload Popup Modal"
     >
-      <ModalContent>
+      <UploadModalContent>
         {props.modalContent ? props.modalContent : modalContent}
-      </ModalContent>
+      </UploadModalContent>
     </ReactModal>
   );
 }

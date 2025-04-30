@@ -1,16 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: var(
-    --static-effect-overlay-brand-nebula-muted,
-    rgba(212, 194, 229, 0.25)
-  );
+  background: var(--static-effect-overlay-brand-nebula-muted, rgba(white));
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   min-height: 100%;
   padding-bottom: 50px;
   width: 100%; /* Adjust width as needed */
+  padding-top: 20px;
 
   // margin: 0 auto; /* Centers the component horizontally */
 `;

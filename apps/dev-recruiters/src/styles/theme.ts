@@ -18,8 +18,10 @@ const theme = {
     Black: '#000000',
     BlackT60: 'rgba(0,0,0,0.6)',
     BlackT38: 'rgba(0,0,0,0.38)',
+    BlackT40: 'rgba(0,0,0,0.4)',
 
     BLUE_700: '#173242',
+    BrandAltNebula600: '#69349D',
 
     AntiFlashWhite: '#F1F4F5',
     AntiFlashWhiteT40: 'rgba(241,244,245,0.4)',
@@ -42,6 +44,7 @@ const theme = {
     DarkElectricBlue: '#59687B',
     Crayola: '#30363E',
     Gray: '#7E8288',
+    SkillTagColor: '#81C3D7',
     CoolGrey: '#89969F',
     Argent: '#C3C0C0',
     BlackCoral: '#5B6068',
@@ -53,6 +56,7 @@ const theme = {
   fonts: {
     headline: 'Abel',
     normal: 'Nunito Sans',
+    loginModalText: 'Oswald',
   },
   fontSizes: {
     small: '1em',
