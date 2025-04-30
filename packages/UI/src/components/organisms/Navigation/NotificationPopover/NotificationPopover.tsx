@@ -63,14 +63,14 @@ export default function NotificationPopover() {
             <span className="text-xl font-semibold text-white">
               Notifications
             </span>
-            {notifications.length > 0 && (
+            {/* {notifications.length > 0 && (
               <button
                 className="text-gray-300 hover:text-white transition-colors duration-200"
                 onClick={markAllReadHandle}
               >
                 Mark all as read
               </button>
-            )}
+            )} */}
           </div>
 
           <div className="max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
@@ -112,14 +112,14 @@ export default function NotificationPopover() {
             )}
           </div>
 
-          <div className="flex items-center justify-center p-4 border-t border-gray-800">
+          {/* <div className="flex items-center justify-center p-4 border-t border-gray-800">
             <a
               href="/notifications"
               className="text-gray-300 hover:text-white transition-colors duration-200"
             >
               View all notifications
             </a>
-          </div>
+          </div> */}
         </div>
       </PopoverContent>
     </Popover>

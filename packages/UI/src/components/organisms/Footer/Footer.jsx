@@ -3,12 +3,12 @@ import logo from '../../../assets/images/logo-monogram.png';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-gray-900 text-gray-300">
-      <div className="border-t border-gray-700 mx-auto px-16 py-8 flex flex-col md:flex-row items-end justify-between gap-16">
-        <div className=" flex-1 rounded-lg">
+    <footer className="flex flex-col flex-wrap bg-gray-900 text-gray-300">
+      <div className="mx-auto flex max-w-7xl flex-col items-end justify-between gap-16 border-t border-gray-700  px-6 py-8 md:flex-row">
+        <div className="flex-1 rounded-lg">
           <div>
             <img src={logo} alt="Dev Launchers Logo" className="h-10 w-10" />
-            <h2 className="text-xl font-semibold text-white whitespace-nowrap">
+            <h2 className="whitespace-nowrap text-xl font-semibold text-white">
               Dev Launchers
             </h2>
           </div>
@@ -19,42 +19,41 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className=" flex flex-1 align-center items-center rounded-lg">
-          <blockquote className="text-gray-500 italic">
+        <div className=" flex flex-1 items-center rounded-lg">
+          <blockquote className="italic text-gray-500">
             "The technology you use impresses no one. The experience you create
             with it is everything." -{' '}
-            <span className="text-bold">Sean Gerety</span>
+            <span className="font-bold">Sean Gerety</span>
           </blockquote>
         </div>
       </div>
 
       <div className="border-t border-gray-700 bg-black">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex space-x-4 text-sm">
-            <span>© 2025 Dev Launchers, Inc.</span>
+        <div className="mx-auto flex max-w-7xl flex-row flex-wrap items-start justify-between px-6 pb-10 pt-6">
+          <div className="flex flex-col flex-wrap place-items-start space-x-4 text-sm md:flex-row">
+            <span className="py-2">© 2025 Dev Launchers, Inc.</span>
             <a
               href="mailto:contact@devlaunchers.com"
-              className="hover:underline text-purple-400 hover:text-purple-500"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
             >
               contact@devlaunchers.com
             </a>
             <a
               href="page/terms-and-conditions"
-              className="hover:underline text-purple-400 hover:text-purple-500"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
             >
               Terms of Service
             </a>
             <a
               href="page/privacy-policy"
-              className="hover:underline text-purple-400 hover:text-purple-500"
+              className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
             >
               Privacy Policy
             </a>
           </div>
-
-          <div className="flex space-x-4 mt-4 md:mt-0">
+          <div className="mt-4 flex gap-4 space-x-4 px-4 md:mt-0">
             <a
-              href="www.linkedin.com/company/devlaunchers/"
+              href="https://www.linkedin.com/company/devlaunchers"
               className="text-purple-400 hover:text-purple-500"
             >
               <Linkedin />
