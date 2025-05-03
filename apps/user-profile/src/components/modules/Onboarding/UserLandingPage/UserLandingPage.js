@@ -5,7 +5,6 @@ import agent from '@devlaunchers/utility/agent';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
 import Button from '@devlaunchers/components/components/atoms/Button';
 import Typography from '@devlaunchers/components/components/atoms/Typography';
-// import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
@@ -14,21 +13,7 @@ import Loader from './../../../common/Loader';
 import DropdownMenu from './../../../../../../../packages/UI/src/components/DropdownMenu';
 import countryData from './../../../../content/countryData.json';
 
-import {
-  // ButtonContainer,
-  // OnboardingContainer,
-  // FormContainer,
-  // PageContainer,
-  // BannerContainer,
-  // FormFields,
-  FormFooter,
-  // ProfileContainer,
-  // UploadButton,
-  // ProfileHeader,
-  // ProfilePicture,
-  // UploadedProfilePicture,
-} from './StyledUserLandingPage';
-// import DropdownMenu from './../../../common/Dropdown/Dropdown';
+import { FormFooter } from './StyledUserLandingPage';
 
 const initialFormValue = {
   firstName: '',
