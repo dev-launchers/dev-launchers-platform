@@ -38,9 +38,6 @@ function useUserDataHook() {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {
-        console.log('Fetching...');
-        console.log(currentUser);
-        console.log(JSON.stringify(currentUser));
         setUserData({
           id: currentUser.id,
           name: currentUser.profile?.displayName,
