@@ -25,14 +25,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      
+
       - name: Extract branch name
         shell: bash
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
         id: extract_branch
-        
+
       - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 16.x
           cache: yarn
@@ -42,7 +42,7 @@ jobs:
 
       - name: generate css
         run: yarn workspace @devlaunchers/tailwind build-tw
-        
+
         #👇 Adds Chromatic as a step in the workflow
       - name: Chromatic
         uses: chromaui/action@v1

@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
-import NavLink from '../../atoms/NavLink/NavLink';
 import Typography from '../../atoms/Typography';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
