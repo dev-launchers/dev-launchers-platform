@@ -20,7 +20,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       const commitments = project.attributes.opportunities.data.map(
         (opp) => opp.attributes.commitmentHoursPerWeek
       );
-      // console.log(commitments);
       const maxCommitment = Math.max(...commitments);
       const minCommitment = Math.min(...commitments);
       project.attributes.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
