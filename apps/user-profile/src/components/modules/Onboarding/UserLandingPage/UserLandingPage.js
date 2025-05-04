@@ -10,7 +10,7 @@ import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
-import DropdownMenu from './../../../../../../../packages/UI/src/components/DropdownMenu';
+import { DropdownMenu } from './../../../../../../../packages/UI/src/components/DropdownMenu';
 import countryData from './../../../../content/countryData.json';
 
 import { FormFooter } from './StyledUserLandingPage';
@@ -224,7 +224,7 @@ export default function UserLandingPage() {
               <UploadProfilePicture width={120} height={120} />
             )}
             <div className="relative right-[-10] bottom-5">
-              <label htmlFor="file-upload" className="cursor-pointer">
+              <label id="file-upload" className="cursor-pointer">
                 <img src={CameraIcon} className="Camera Icon" />
               </label>
               <input
@@ -248,7 +248,7 @@ export default function UserLandingPage() {
             <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
-                for="First Name"
+                id="First Name"
               >
                 First Name
               </label>
@@ -271,7 +271,7 @@ export default function UserLandingPage() {
             <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
-                for="Last Name"
+                id="Last Name"
               >
                 Last Name
               </label>
@@ -298,7 +298,7 @@ export default function UserLandingPage() {
               onChange={onCountryChange}
             />
 
-            <label class="text-grayscale-900 text-base font-bold" for="Role">
+            <label class="text-grayscale-900 text-base font-bold" id="Role">
               Role (optional)
             </label>
             <input
@@ -341,7 +341,7 @@ export default function UserLandingPage() {
                   value=""
                   className="w-6 h-6 text-purple-700 accent-purple-700 bg-white border-purple-700 rounded"
                 ></input>
-                <label for="agree-checkbox" className="text-sm text-black">
+                <label id="agree-checkbox" className="text-sm text-black">
                   I have read and agree to the <a>Terms and Conditions</a>
                 </label>
               </div>
