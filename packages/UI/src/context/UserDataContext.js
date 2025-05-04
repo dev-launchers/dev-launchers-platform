@@ -80,4 +80,4 @@ const [UserDataProvider, useUserDataContext] = constate(
   useUserDataHook,
   (value) => value.useUserDataContext
 );
-export default { UserDataProvider, useUserDataContext };
+export { UserDataProvider, useUserDataContext };
