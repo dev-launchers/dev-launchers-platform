@@ -322,7 +322,7 @@ export default function UserLandingPage() {
               placeholder="www.portfolio.com"
             /> */}
           </div>
-          <FormFooter>
+          <div className="flex flex-col margin gap-32">
             {/* <CheckboxField
               customLabel={
                 <Typography type="pSmall">
@@ -372,7 +372,7 @@ export default function UserLandingPage() {
                 )}
               </Button>
             </div>
-          </FormFooter>
+          </div>
         </form>
       </div>
     </div>
