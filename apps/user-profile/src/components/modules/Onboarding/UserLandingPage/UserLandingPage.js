@@ -13,8 +13,6 @@ import Loader from './../../../common/Loader';
 import { DropdownMenu } from './../../../../../../../packages/UI/src/components/DropdownMenu';
 import countryData from './../../../../content/countryData.json';
 
-import { FormFooter } from './StyledUserLandingPage';
-
 const initialFormValue = {
   firstName: '',
   firstNameTouched: false,
