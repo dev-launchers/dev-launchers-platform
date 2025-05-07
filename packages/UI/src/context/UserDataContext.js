@@ -30,8 +30,8 @@ function useUserDataHook() {
 
   const setUserData = useCallback((data) => _(() => data), []);
   useEffect(() => {
-    setIsAuthenticated(userData && userData.id > 0);
-  }, [userData.id]);
+    setIsAuthenticated(userData && userData?.id > 0);
+  }, [userData?.id]);
 
   useEffect(() => {
     axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
