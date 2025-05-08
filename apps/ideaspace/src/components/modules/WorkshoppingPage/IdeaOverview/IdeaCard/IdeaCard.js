@@ -2,6 +2,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { MoreHorizontal, Trash } from 'lucide-react';
 import {
   StyledCard,
   TopView,
@@ -22,6 +23,16 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
 import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@devlaunchers/components/src/components/Popover/index';
+import {
+  cleanData,
+  cleanIdeaForPost,
+} from '../../../../../utils/StrapiHelper.js';
+import useConfirm from '../../../../../components/common/DialogBox/DialogBox';
 
 export const IdeaCard = ({
   ideaImage,
@@ -32,6 +43,7 @@ export const IdeaCard = ({
   onEditSuccess,
 }) => {
   const [ideaData, setIdeaData] = useState(fullIdea);
+  console.log('fullIdea', fullIdea);
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
@@ -183,6 +195,34 @@ export const IdeaCard = ({
     }, 4000);
   };
 
+  //== Delete Idea
+  const [DeleteIdea, confirmDelete] = useConfirm(
+    ['Permanently delete this idea?', 'Error', ''],
+    "This action can't be undone. Are you sure you want to delete this idea?",
+    ['primary alternative', 'Yes, Delete', 'No, Keep it']
+  );
+
+  const handleDeleteIdea = async () => {
+    if (await confirmDelete()) {
+      console.log('Confirmed delete');
+    } else {
+      console.log('Delete cancelled');
+      return;
+    }
+    // const card = { ...fullIdea };
+    // const id = card.id;
+    // const cardForPut = cleanIdeaForPost(card);
+    // const resp = cleanData(await agent.Ideas.put(id, cardForPut));
+    // console.log('resp', resp);
+    // if (resp.status === 200) {
+    //   // Idea deleted successfully
+    //   console.log('Idea deleted successfully');
+    // } else {
+    //   // Handle error
+    //   console.error('Error deleting idea:', resp.error);
+    // }
+  };
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -214,7 +254,7 @@ export const IdeaCard = ({
               <div>{upvoteButton}</div>
               <div>
                 {isOwner && (
-                  <>
+                  <div className="flex flex-row gap-2">
                     <button
                       className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
                       onClick={() => setIsModalOpen(true)}
@@ -228,7 +268,30 @@ export const IdeaCard = ({
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
                     />
-                  </>
+
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3">
+                          <MoreHorizontal />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        hasCloseBtn={false}
+                        side="bottom"
+                        align="end"
+                        className="rounded-md w-[224px] h-[60px] p-0"
+                      >
+                        <button
+                          className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
+                          onClick={handleDeleteIdea}
+                        >
+                          <Trash size={18} className="text-[#692323]" />
+                          Delete Idea
+                        </button>
+                      </PopoverContent>
+                    </Popover>
+                    <DeleteIdea />
+                  </div>
                 )}
               </div>
             </div>
