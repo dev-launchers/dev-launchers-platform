@@ -31,7 +31,7 @@ While the `Typography` component supports the `as` prop for dynamic tag renderin
 For instance:
 
 ```tsx
-<Typography as="span" textAlign="right">
+<Typography as="span" textalign="right">
   This text might not align correctly
 </Typography>
 ```
@@ -39,8 +39,8 @@ For instance:
 You can resolve this issue using one of these approaches or wrapping the `Typography` component in a parent element like `div`:
 
 ```tsx
-<Typography as="span" textAlign="right" style={{ display: "block" }}>You can use inline style</Typography>
-<Typography as="span" textWeight="light" className="block text-right">You can use Tailwind classes</Typography>
+<Typography as="span" textalign="right" style={{ display: "block" }}>You can use inline style</Typography>
+<Typography as="span" textweight="light" className="block text-right">You can use Tailwind classes</Typography>
 <Typography as="span" size="xl6" className="block text-right" style={{ color: "red" }}>You can combine both inline styles and Tailwind classes</Typography>
 ```
 

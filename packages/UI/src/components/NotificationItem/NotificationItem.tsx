@@ -57,7 +57,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   targetLink: string;
   timeStamp: string;
   action: NotificationEvent['data']['attributes']['action'];
-  avatar: string;
+  avatar: { src: string; alt: string };
   className?: string;
 }
 
@@ -110,7 +110,7 @@ function NotificationItem({
       >
         <div className={styles.avatarContainer()}>
           <Avatar
-            src={avatar}
+            src={avatar.src}
             alt={`${name}'s avatar`}
             className="h-10 w-10 rounded-full text-black"
           />
