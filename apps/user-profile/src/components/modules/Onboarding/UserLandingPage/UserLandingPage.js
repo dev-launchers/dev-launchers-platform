@@ -212,8 +212,8 @@ export default function UserLandingPage() {
       <OnboardingContainer>
         <ProfileContainer>
           <ProfileHeader>
-            <Typography type="p">PROFILE</Typography>
-            <Typography type="h2">Let's Create Your Profile</Typography>
+            <Typography variant="secondary">PROFILE</Typography>
+            <Typography variant="primary">Let's Create Your Profile</Typography>
           </ProfileHeader>
           <Typography>
             A completed profile will help us match you with opportunities
@@ -291,7 +291,7 @@ export default function UserLandingPage() {
           <FormFooter>
             <CheckboxField
               customLabel={
-                <Typography type="pSmall">
+                <Typography variant="secondary" size="body_sm">
                   I have read and agree to the <a>Terms and Conditions</a>
                 </Typography>
               }

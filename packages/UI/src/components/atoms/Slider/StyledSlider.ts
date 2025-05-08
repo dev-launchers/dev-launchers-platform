@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { paddingStyles } from '../Padding';
 import { radiusStyles } from '../Radius/StyledRadius';
-import { typographyStyles } from '../Typography';
+import { typographyStyles } from '../TypographyOld';
 import type { SliderProps } from '.';
 
 export const Container = styled.div<Pick<SliderProps, 'maxWidth'>>`

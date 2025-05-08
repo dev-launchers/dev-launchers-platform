@@ -18,10 +18,14 @@ export default function RadioCards({ cards = config, className }) {
               <img className="h-8" src={card?.img ?? 'test'} />
             </div>
             <div className="flex flex-col gap-2 text-center">
-              <Typography type="p">
+              <Typography variant="secondary">
                 <strong>{card.title}</strong>
               </Typography>
-              <Typography type="pSmall" className="text-grayscale-500">
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="text-grayscale-500"
+              >
                 {card.subtitle}
               </Typography>
             </div>

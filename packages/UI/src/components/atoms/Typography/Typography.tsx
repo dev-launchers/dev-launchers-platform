@@ -1,31 +1,16 @@
-import { Text } from './Styled.Typography';
-import type { TypographyProps } from '.';
+import React from 'react';
+import { generateClasses } from './typographyHelpers';
+import type { TypographyProps } from './index';
 
-const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
-  type = 'p',
+const Typography: React.FC<TypographyProps> = ({
+  as: Tag = 'p',
   children,
+  className,
   ...props
 }) => {
-  let tag: Extract<
-    TypographyProps['type'],
-    'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'label'
-  >;
-  if (type === 'subtitle') {
-    tag = 'p';
-  } else if (type === 'labelSmall' || type === 'label') {
-    tag = 'label';
-  } else if (type === 'h1' || type === 'h2' || type === 'h3' || type === 'h4') {
-    tag = type;
-  } else if (type === 'p' || type === 'pLarge' || type === 'pSmall') {
-    tag = 'p';
-  } else {
-    tag = 'p';
-  }
-  return (
-    <Text type={type} as={tag} {...props}>
-      {children}
-    </Text>
-  );
+  const classes = `${generateClasses({ ...props })} ${className || ''}`;
+
+  return React.createElement(Tag, { className: classes, ...props }, children);
 };
 
 export default Typography;

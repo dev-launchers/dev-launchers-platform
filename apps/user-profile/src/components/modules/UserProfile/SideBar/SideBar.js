@@ -90,7 +90,10 @@ function SideBar() {
       <ul className="flex flex-col gap-6 px-4">
         <li className={styling.overview.li} onClick={onOverviewClick}>
           <OutlinedOverview colorClass={styling.overview.iconColor} />
-          <Typography type="p" className={styling.overview.typography}>
+          <Typography
+            variant="secondary"
+            className={styling.overview.typography}
+          >
             OVERVIEW
           </Typography>
         </li>

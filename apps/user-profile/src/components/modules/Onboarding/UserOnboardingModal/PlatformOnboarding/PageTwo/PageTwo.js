@@ -10,8 +10,8 @@ export default function PageTwo() {
   return (
     <div className="flex flex-col gap-16 justify-center">
       <div className="flex flex-col text-center">
-        <Typography type="p">ABOUT US</Typography>
-        <Typography type="h3">What is DevLaunchers?</Typography>
+        <Typography variant="secondary">ABOUT US</Typography>
+        <Typography variant="primary">What is DevLaunchers?</Typography>
       </div>
       <div className="flex justify-center">
         <div className="flex flex-col gap-6 max-w-[560px]">
@@ -25,10 +25,14 @@ export default function PageTwo() {
           >
             <Image src={networkImagePath} width="64" height="64" />
             <div className="flex flex-col gap-1">
-              <Typography type="pLarge">
+              <Typography variant="secondary" size="body_base">
                 Network With Other Developers
               </Typography>
-              <Typography type="pSmall" className="text-grayscale-500">
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="text-grayscale-500"
+              >
                 Expand your network, join discussions, and find opportunities.
               </Typography>
             </div>
@@ -43,8 +47,14 @@ export default function PageTwo() {
           >
             <Image src={projectImagePath} width="64" height="64" />
             <div className="flex flex-col gap-1">
-              <Typography type="pLarge">Make An Impact</Typography>
-              <Typography type="pSmall" className="text-grayscale-500">
+              <Typography variant="secondary" size="body_base">
+                Make An Impact
+              </Typography>
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="text-grayscale-500"
+              >
                 Join a real team and work on projects that matter to you.
               </Typography>
             </div>
@@ -59,8 +69,14 @@ export default function PageTwo() {
           >
             <Image src={levelUpImagePath} width="64" height="64" />
             <div className="flex flex-col gap-1">
-              <Typography type="pLarge">Gain Job Experience</Typography>
-              <Typography type="pSmall" className="text-grayscale-500">
+              <Typography variant="secondary" size="body_base">
+                Gain Job Experience
+              </Typography>
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="text-grayscale-500"
+              >
                 Build confidence to level up your career.
               </Typography>
             </div>

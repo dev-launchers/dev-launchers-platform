@@ -44,12 +44,10 @@ export default function LaunchYourJourney() {
       <PageContainer>
         <HeaderSection>
           <Header>
-            <Typography className="header-text">
-              Launch Your Journey!
-            </Typography>
+            <Typography variant="primary">Launch Your Journey!</Typography>
           </Header>
           <SubHeader>
-            <Typography type="pLarge">
+            <Typography variant="secondary" size="body_base">
               Dev Launchers is here to launch your tech career into the
               stratosphere. Our community is full of cosmic adventurers, all
               ready to help you reach new dimensions of success.
@@ -104,16 +102,32 @@ export default function LaunchYourJourney() {
             <img src={rocket} className="footer-icon" />
             <img src={facebook} className="footer-icon" />
           </Icons>
-          <Typography type="pLarge" className="footer-text">
+          <Typography
+            variant="secondary"
+            size="body_base"
+            className="footer-text"
+          >
             Join - Create - Learn - Dream - Support
           </Typography>
-          <Typography type="pSmall" className="footer-text">
+          <Typography
+            variant="secondary"
+            size="body_sm"
+            className="footer-text"
+          >
             Dev Launchers
           </Typography>
-          <Typography type="pSmall" className="footer-text">
+          <Typography
+            variant="secondary"
+            size="body_sm"
+            className="footer-text"
+          >
             Austin, TX
           </Typography>
-          <Typography type="pSmall" className="footer-text">
+          <Typography
+            variant="secondary"
+            size="body_sm"
+            className="footer-text"
+          >
             Unsubscribe - Terms of Service - Privacy Policy
           </Typography>
         </Footer>

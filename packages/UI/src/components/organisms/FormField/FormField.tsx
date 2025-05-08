@@ -1,6 +1,6 @@
 import Error from '../../../assets/icons/Error';
 import Success from '../../../assets/icons/Success';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import {
   Label,
   Input,

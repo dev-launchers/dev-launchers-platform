@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { paddingStyles } from '../Padding';
 import { radiusStyles } from '../Radius/StyledRadius';
-import { typographyStyles } from '../Typography';
+import { typographyStyles } from '../TypographyOld';
 
 export const ToolTip = styled.div`
   ${typographyStyles['placeHolder']}

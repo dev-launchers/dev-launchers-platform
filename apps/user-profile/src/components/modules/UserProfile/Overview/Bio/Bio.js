@@ -7,12 +7,15 @@ function Bio({ bio }) {
   const { editProfileDispatch } = editProfileDataContext();
 
   const onEdit = () => {
-    editProfileDispatch({ type: editProfileActions.SHOW_BIO_SETTING })
-  }
+    editProfileDispatch({ type: editProfileActions.SHOW_BIO_SETTING });
+  };
 
   return (
     <Card title="Bio" onEdit={onEdit}>
-      <Typography className={` ${bio ? '' : 'text-grayscale-500'}`} type="p">
+      <Typography
+        className={` ${bio ? '' : 'text-grayscale-500'}`}
+        variant="secondary"
+      >
         {bio ? bio : 'No bio added...'}
       </Typography>
     </Card>

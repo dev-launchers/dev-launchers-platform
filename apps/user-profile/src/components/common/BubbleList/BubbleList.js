@@ -8,7 +8,7 @@ function BubbleList({ list, bubbleColorClass = 'bg-white' }) {
           <div
             className={`flex justify-center items-center h-10 px-4 rounded-3xl shadow-lg ${bubbleColorClass}`}
           >
-            <Typography type="p">{item}</Typography>
+            <Typography variant="secondary">{item}</Typography>
           </div>
         ) : null;
       })}

@@ -31,10 +31,18 @@ export function JourneySection({
           <IndividualContainer>
             <IconImg iconImg={iconImg} />
             <TextContainer>
-              <Typography type="pLarge" className="journey-text">
+              <Typography
+                variant="secondary"
+                size="body_base"
+                className="journey-text"
+              >
                 {title}
               </Typography>
-              <Typography type="pSmall" className="journey-text">
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="journey-text"
+              >
                 {subtitle}
               </Typography>
               <Button
@@ -58,10 +66,18 @@ export function JourneySection({
         <GroupContainer>
           <IndividualContainer>
             <TextContainer>
-              <Typography type="pLarge" className="journey-text">
+              <Typography
+                variant="secondary"
+                size="body_base"
+                className="journey-text"
+              >
                 {title}
               </Typography>
-              <Typography type="pSmall" className="journey-text">
+              <Typography
+                variant="secondary"
+                size="body_sm"
+                className="journey-text"
+              >
                 {subtitle}
               </Typography>
               <Button

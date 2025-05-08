@@ -2,7 +2,7 @@ import { motion, LazyMotion, domAnimation } from 'framer-motion';
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import Box from '../../atoms/Box';
 import Tags from '../../atoms/Tags';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/Typography/Typography';
 
 interface TagsContainerProps {
   list: string[];
@@ -12,7 +12,7 @@ interface TagsContainerProps {
 export const TagsContainer = ({ list, title }: TagsContainerProps) => {
   return (
     <Box flexDirection="column" gap="16px" maxWidth="282px">
-      <Typography type="subtitle">{title}</Typography>
+      <Typography variant="secondary">{title}</Typography>
       <Box flexWrap="wrap" gap="8px">
         {list.map((tag: string) => (
           <Tags key={tag} bgColor="GREYSCALE_BLACK" txtColor="GREYSCALE_WHITE">
@@ -37,9 +37,15 @@ export const CardDescription = ({
 }: CardDescriptionProps) => {
   return (
     <Box flexDirection="column" gap="16px" maxWidth="450px">
-      {title && <Typography type="h3">{title}</Typography>}
-      <Typography type="subtitle">{subtitle}</Typography>
-      <Typography type="p">{body}</Typography>
+      {title && (
+        <Typography variant="primary" as="h3">
+          {title}
+        </Typography>
+      )}
+      <Typography variant="secondary">{subtitle}</Typography>
+      <Typography variant="secondary" as="p">
+        {body}
+      </Typography>
     </Box>
   );
 };

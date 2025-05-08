@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SubNavLink from '../../atoms/SubNavLink';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import {
   DropdownContainer,
   Toggle,

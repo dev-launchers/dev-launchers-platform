@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 import { Layer, radiusStyles } from '../../atoms';
 import Checkbox from '../../atoms/Checkbox';
 import Radio from '../../atoms/Radio';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 
 import {
   DropdownContainer,

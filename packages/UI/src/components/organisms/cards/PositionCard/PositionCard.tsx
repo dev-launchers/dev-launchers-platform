@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Box from '../../../atoms/Box';
 import Button from '../../../atoms/Button';
-import Typography from '../../../atoms/Typography';
+import Typography from '../../../atoms/Typography/Typography';
 import LikeButton from '../../../molecules/InteractionButtons/LikeButton';
 import SaveButton from '../../../molecules/InteractionButtons/SaveButton';
 import ShareButton from '../../../molecules/InteractionButtons/ShareButton';
@@ -33,13 +33,15 @@ const MinimalPositionCard = ({
     <Container minimal>
       <Thumbnail minimal>
         <Box flexDirection="column" gap="8px" width="max-content">
-          <Typography type="h3">{content.title}</Typography>
-          <Typography type="subtitle">{content.level}</Typography>
+          <Typography variant="primary">{content.title}</Typography>
+          <Typography variant="secondary">{content.level}</Typography>
           <hr />
         </Box>
         <Box flexDirection="column" gap="8px" width="fit-content">
-          <Typography type="subtitle">time committment</Typography>
-          <Typography type="pSmall">{content.timeCommittment}</Typography>
+          <Typography variant="secondary">time committment</Typography>
+          <Typography variant="secondary" size="body_sm">
+            {content.timeCommittment}
+          </Typography>
         </Box>
       </Thumbnail>
       <Actions>
@@ -110,20 +112,20 @@ const Blurp = ({
       {expanded ? (
         <Details>
           <Box flexDirection="column" gap="16px">
-            <Typography type="subtitle">why should you join?</Typography>
+            <Typography variant="secondary">why should you join?</Typography>
             <ul css={{ listStylePosition: 'inside' }}>
               {content.benefits.map((el1, i1) => (
-                <Typography type="p" key={i1}>
+                <Typography variant="secondary" key={i1}>
                   <li>{el1}</li>
                 </Typography>
               ))}
             </ul>
           </Box>
           <Box flexDirection="column" gap="16px">
-            <Typography type="subtitle">expectations</Typography>
+            <Typography variant="secondary">expectations</Typography>
             <ul css={{ listStylePosition: 'inside' }}>
               {content.expectations.map((el2, i2) => (
-                <Typography type="p" key={i2}>
+                <Typography variant="secondary" key={i2}>
                   <li>{el2}</li>
                 </Typography>
               ))}
@@ -160,13 +162,15 @@ const PositionCard = ({
       <Header>
         <Thumbnail imgUrl={content.imgUrl}>
           <Box flexDirection="column" gap="8px" width="max-content">
-            <Typography type="h3">{content.title}</Typography>
-            <Typography type="subtitle">{content.level}</Typography>
+            <Typography variant="primary">{content.title}</Typography>
+            <Typography variant="secondary">{content.level}</Typography>
             <hr />
           </Box>
           <Box flexDirection="column" gap="8px" width="fit-content">
-            <Typography type="subtitle">time committment</Typography>
-            <Typography type="pSmall">{content.timeCommittment}</Typography>
+            <Typography variant="secondary">time committment</Typography>
+            <Typography variant="secondary" size="body_sm">
+              {content.timeCommittment}
+            </Typography>
           </Box>
           {interaction && <InteractionBox interaction={interaction} />}
         </Thumbnail>

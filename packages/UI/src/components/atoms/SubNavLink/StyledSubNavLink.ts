@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { radiusStyles } from '../Radius/StyledRadius';
-import { typographyStyles } from '../Typography';
+import { typographyStyles } from '../TypographyOld';
 
 export const StyledSubNavLink = styled.a`
   ${typographyStyles.navLink}

@@ -1,0 +1,48 @@
+import Typography from './Typography';
+import * as TypographyStories from './Typography.stories.tsx';
+import { Meta, Story, Canvas, Controls } from '@storybook/blocks';
+
+<Meta of={TypographyStories} />
+
+# Typography Documentation
+
+## Overview
+
+The `Typography` component provides a flexible way to apply semantic HTML tags, text styles, and other design tokens consistently.
+
+Below is the embedded Figma project for the Typography component:
+
+<iframe
+  style={{
+    border: '1px solid rgba(0, 0, 0, 0.1)',
+    height: '450px',
+  }}
+  className={'w-full'}
+  src="https://embed.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=16008-38063&embed-host=share"
+  allowFullScreen
+/>
+
+# Known Limitations
+
+## Issue with Certain HTML Tags
+
+While the `Typography` component supports the `as` prop for dynamic tag rendering, certain HTML tags like `<span>` may not behave as expected with some text-align or layout-related styles due to their default CSS behavior.
+
+For instance:
+
+```tsx
+<Typography as="span" textAlign="right">
+  This text might not align correctly
+</Typography>
+```
+
+You can resolve this issue using one of these approaches or wrapping the `Typography` component in a parent element like `div`:
+
+```tsx
+<Typography as="span" textAlign="right" style={{ display: "block" }}>You can use inline style</Typography>
+<Typography as="span" textWeight="light" className="block text-right">You can use Tailwind classes</Typography>
+<Typography as="span" size="xl6" className="block text-right" style={{ color: "red" }}>You can combine both inline styles and Tailwind classes</Typography>
+```
+
+<Canvas />
+<Controls of={TypographyStories.Default} />

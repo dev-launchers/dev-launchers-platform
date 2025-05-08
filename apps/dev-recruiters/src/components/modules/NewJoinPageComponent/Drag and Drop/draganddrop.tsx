@@ -137,7 +137,11 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
           'Uploading'
         ) : filesUploaded.id === undefined || filesUploaded.id === null ? (
           <atoms.Box gap="30px">
-            <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+            <atoms.Typography
+              variant="secondary"
+              size="body_sm"
+              css={{ color: 'red' }}
+            >
               {uploadError}
             </atoms.Typography>
           </atoms.Box>

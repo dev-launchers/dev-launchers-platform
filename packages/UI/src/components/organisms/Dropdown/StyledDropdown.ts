@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Icon from '../../../assets/icons/rawSvg/chevron-down.svg';
 import { radiusStyles } from '../../atoms';
-import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
+import { typographyStyles } from '../../atoms/TypographyOld/Styled.Typography';
 import type { DropdownProps } from '.';
 
 function getWidth(width?: string) {

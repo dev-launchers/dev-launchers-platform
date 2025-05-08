@@ -32,29 +32,29 @@ jobs:
         shell: bash
         run: echo "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/staging\///')" >>$GITHUB_OUTPUT
         id: extract_branch
-        
+
       - name: Setup node env 🏗
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/gallium
           cache: 'yarn'
 
       - name: Install dependencies 👨🏻‍💻
         run: yarn --frozen-lockfile --silent
-        
+
       - name: disable Image optimization
         shell: bash
         run: "sed -ie 's$unoptimized: false$unoptimized: true$g' ./apps/app/next.config.js"
-        
+
       - name: Change environment to the app specific subdomains
         run: "sed -ie 's$https://staging.devlaunchers.org$https://${{ steps.extract_branch.outputs.branch }}.devlaunchers.org$g' ./apps/app/.env.staging"
 
       - name: Change environment to staging
         run: mv apps/app/.env.staging apps/app/.env.production
-        
+
       - name: generate css
         run: yarn workspace @devlaunchers/tailwind build-tw
-        
+
       - name: Run build
         run: yarn workspace @devlaunchers/app build
 
@@ -66,7 +66,7 @@ jobs:
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: "b0eb1f5510cb71344976cb9cac51e2af"
+          accountId: 'b0eb1f5510cb71344976cb9cac51e2af'
           projectName: ${{ steps.extract_branch.outputs.branch }}
           directory: ./apps/app/out
           branch: main
