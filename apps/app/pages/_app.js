@@ -10,7 +10,7 @@ import {
   logPageView,
 } from '@devlaunchers/components/utils/GoogleAnalytics';
 import { Router, useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
@@ -28,6 +28,7 @@ const hashRedirect = (router) => {
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   hashRedirect(router);
+  const locale = pageProps?.locale || router.locale || 'en';
 
   // Google analytics/Google adwords
   React.useEffect(() => {
@@ -47,6 +48,19 @@ function MyApp({ Component, pageProps }) {
     gtag('js', new Date());
     gtag('config', 'AW-599284852');
   }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+
+    const enforceLang = () => {
+      document.documentElement.lang = locale;
+    };
+
+    router.events.on('routeChangeComplete', enforceLang);
+    return () => {
+      router.events.off('routeChangeComplete', enforceLang);
+    };
+  }, [router, locale]);
 
   return (
     <>

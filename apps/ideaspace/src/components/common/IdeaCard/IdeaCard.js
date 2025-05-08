@@ -10,7 +10,7 @@ import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
-import { ActivityDetails } from './StyledIdeaCard';
+import { ActivityDetails, AuthorProfilePicture } from './StyledIdeaCard';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -122,6 +122,33 @@ function IdeaCard({ cards, cardType }) {
           <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
 
           <atoms.Box
+            flexDirection="row"
+            alignItems="flex-start"
+            padding="0rem 0.75rem"
+            margin=" 0 0 0.5rem 0"
+          >
+            <AuthorProfilePicture
+              alt={`image of author ${cards.author?.data?.attributes.username}`}
+              src={
+                cards.author?.data?.attributes.profile?.data?.attributes
+                  .profilePictureUrl
+              }
+            />
+            <atoms.Typography
+              type="p"
+              style={{
+                fontSize: '0.75rem',
+                color: '#494949',
+                weight: '400',
+                padding: '0rem 0.375rem',
+              }}
+            >
+              {cards.author?.data?.attributes?.profile?.data?.attributes
+                .displayName ?? cards.author?.data?.attributes?.username}
+            </atoms.Typography>
+          </atoms.Box>
+
+          <atoms.Box
             flexDirection="column"
             alignItems="flex-start"
             padding="0rem 0.75rem"
@@ -161,6 +188,7 @@ function IdeaCard({ cards, cardType }) {
                 WebkitBoxOrient: 'vertical',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
+                wordBreak: 'break-word',
               }}
             >
               {cards.description}

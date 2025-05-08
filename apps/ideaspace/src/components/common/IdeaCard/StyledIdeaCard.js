@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { atoms } from '@devlaunchers/components/src/components';
+import Avatar from '@devlaunchers/components/src/components/atoms/Avatar/Avatar';
 
 export const IdeaCardButton = styled((props) => (
   <atoms.Button buttonSize="standard" buttonType="alternative" {...props} />
@@ -42,4 +43,16 @@ export const ActivityDetails = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 2rem;
+`;
+
+export const AuthorProfilePicture = styled(Avatar)`
+  width: 28px;
+  height: 28px;
+  border-radius: 28px;
+
+  //== set child elements to 100% width and height
+  & > * {
+    width: 100%;
+    height: 100%;
+  }
 `;

@@ -14,13 +14,13 @@ apps/user-profile/ @dev-launchers/User-profile
 apps/dev-recruiters/ @dev-launchers/dev-recruit 
 
 # Website code
-apps/website/ @Enjoy2Live @pyxld-kris
+apps/website/ @dev-launchers/platform-enablement
 
 # Website code
-apps/app/ @Enjoy2Live @pyxld-kris
+apps/app/ @dev-launchers/platform-enablement
 
 # Code in the backend directory
 strapiv4/ @dev-launchers/Backend-Devs
 
 # Deps
-package.json @Enjoy2Live
+package.json @dev-launchers/platform-enablement

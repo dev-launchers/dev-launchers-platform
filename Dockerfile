@@ -140,7 +140,7 @@ USER nextjs
 
 EXPOSE ${NEXTJS_APP_PORT:-3000}
 
-ENV NEXT_TELEMETRY_DISABLED 1
+ENV NEXT_TELEMETRY_DISABLED=1
 
 
 CMD ["./node_modules/.bin/next", "start", "apps/app/", "-p", "3000"]
