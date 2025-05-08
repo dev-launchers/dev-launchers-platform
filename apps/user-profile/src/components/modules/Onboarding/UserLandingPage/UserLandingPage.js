@@ -246,7 +246,7 @@ export default function UserLandingPage() {
             <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
-                id="First Name"
+                id="firstNameLabel"
               >
                 First Name
               </label>
@@ -256,7 +256,7 @@ export default function UserLandingPage() {
             </div>
             <input
               class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
-              id="First Name"
+              id="firstName"
               type="text"
               placeholder="John"
               error={formValidation.firstNameError}
@@ -269,7 +269,7 @@ export default function UserLandingPage() {
             <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
-                id="Last Name"
+                id="lastNameLabel"
               >
                 Last Name
               </label>
@@ -279,7 +279,7 @@ export default function UserLandingPage() {
             </div>
             <input
               class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
-              id="Last Name"
+              id="lastName"
               type="text"
               placeholder="Doe"
               error={formValidation.lastNameError}
