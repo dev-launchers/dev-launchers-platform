@@ -77,7 +77,9 @@ const IdeaForm = ({
   formButton,
   sending,
   clickHandler,
-  editMode = false,
+  editMode,
+  hideFormButtons = false,
+  formikRef = null,
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
@@ -167,7 +169,7 @@ const IdeaForm = ({
       margin="0rem"
       style={{
         backgroundColor: 'rgba(244, 240, 249, 1)',
-        padding: '40px 0',
+        padding: '20px 0',
       }}
     >
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
@@ -177,6 +179,7 @@ const IdeaForm = ({
           onSubmit={handleSubmit}
           enableReinitialize
           validateOnMount={true}
+          innerRef={formikRef}
         >
           {({
             values,
@@ -188,6 +191,9 @@ const IdeaForm = ({
             isValid,
             setFieldTouched,
             validateForm,
+            handleChange,
+            handleSubmit,
+            isSubmitting,
           }) => (
             <Form>
               <AutoSubmitToken
@@ -195,13 +201,12 @@ const IdeaForm = ({
                 unsavedHandler={unsavedHandler}
                 initialValues={initialValues}
               />
-              {!editMode && (
+              {/* {!editMode && (
                 <atoms.Typography type="h4">
                   Idea Info
                   <hr style={{ margin: '1rem auto 2rem' }} />
                 </atoms.Typography>
-              )}
-
+              )} */}
               <atoms.Box flexDirection="column" gap="2rem">
                 {/* Idea Name Field */}
                 <FieldWrapper data-field="ideaName">
@@ -622,57 +627,67 @@ const IdeaForm = ({
                   </atoms.Box>
                 )}
 
-                <atoms.Box justifyContent="flex-end" gap="1rem">
-                  {formButton == 'submit' ? (
-                    <SubmissionButton
-                      sending={sending}
-                      onClick={async (e) => {
-                        e.preventDefault();
+                {!hideFormButtons && (
+                  <atoms.Box justifyContent="flex-end" gap="1rem">
+                    {formButton == 'submit' ? (
+                      <SubmissionButton
+                        sending={sending}
+                        onClick={async (e) => {
+                          e.preventDefault();
 
-                        const fields = [
-                          'ideaName',
-                          'description',
-                          'experience',
-                          'targetAudience',
-                          'features',
-                          'involveLevel',
-                        ];
-                        fields.forEach((field) => setFieldTouched(field, true));
-
-                        const validationErrors = await validateForm();
-                        if (Object.keys(validationErrors).length > 0) {
-                          scrollToError(validationErrors);
-                          return;
-                        }
-                        //  Updated T&C checkbox validation
-                        if (!isChecked) {
-                          alert(
-                            'You must accept the Terms & Conditions to submit the form.'
+                          const fields = [
+                            'ideaName',
+                            'description',
+                            'experience',
+                            'targetAudience',
+                            'features',
+                            'involveLevel',
+                          ];
+                          fields.forEach((field) =>
+                            setFieldTouched(field, true)
                           );
-                          return; // Preventing form submission if T&C is not checked
-                        }
-                        submitForm();
-                      }}
-                    />
-                  ) : (
-                    <EditionButton
-                      clickHandlerButton={clickHandler}
-                      sending={sending}
-                      disabling={disabling}
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        try {
-                          await submitForm();
-                          if (Object.keys(errors).length > 0) {
-                            scrollToError(errors);
+
+                          const validationErrors = await validateForm();
+                          if (Object.keys(validationErrors).length > 0) {
+                            scrollToError(validationErrors);
+                            return;
                           }
-                        } catch (error) {
-                          console.error('Form submission error:', error);
-                        }
-                      }}
-                    />
-                  )}
-                </atoms.Box>
+                          //  Updated T&C checkbox validation
+                          if (!isChecked) {
+                            alert(
+                              'You must accept the Terms & Conditions to submit the form.'
+                            );
+                            return; // Preventing form submission if T&C is not checked
+                          }
+                          submitForm();
+                        }}
+                      />
+                    ) : (
+                      <EditionButton
+                        clickHandlerButton={clickHandler}
+                        sending={sending}
+                        disabling={disabling}
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          try {
+                            await submitForm();
+                            if (Object.keys(errors).length > 0) {
+                              scrollToError(errors);
+                            }
+                          } catch (error) {
+                            console.error('Form submission error:', error);
+                          }
+                        }}
+                      />
+                    )}
+                  </atoms.Box>
+                )}
+
+                <AutoSubmitToken
+                  setDisabling={setDisabling}
+                  unsavedHandler={unsavedHandler}
+                  initialValues={initialValues}
+                />
               </atoms.Box>
               {!editMode && successMessageVisible && (
                 <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
