@@ -169,7 +169,7 @@ const IdeaForm = ({
       margin="0rem"
       style={{
         backgroundColor: 'rgba(244, 240, 249, 1)',
-        padding: '40px 0',
+        padding: '20px 0',
       }}
     >
       <atoms.Box maxWidth="36rem" margin="auto" style={{ textAlign: 'left' }}>
@@ -201,13 +201,12 @@ const IdeaForm = ({
                 unsavedHandler={unsavedHandler}
                 initialValues={initialValues}
               />
-              {!editMode && (
+              {/* {!editMode && (
                 <atoms.Typography type="h4">
                   Idea Info
                   <hr style={{ margin: '1rem auto 2rem' }} />
                 </atoms.Typography>
-              )}
-
+              )} */}
               <atoms.Box flexDirection="column" gap="2rem">
                 {/* Idea Name Field */}
                 <FieldWrapper data-field="ideaName">

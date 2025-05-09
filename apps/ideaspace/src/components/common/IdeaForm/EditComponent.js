@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
 import { atoms } from '@devlaunchers/components/src/components';
+import { X } from 'lucide-react';
 
 const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
@@ -130,8 +131,10 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
       >
         <div className={headerClasses}>
           <div className="font-medium text-lg">Edit Idea</div>
-          <button onClick={handleClose} className={closeButtonClasses}>
-            X
+          {/* <button onClick={handleClose} className={closeButtonClasses}>
+            X */}
+          <button onClick={handleClose}>
+            <X size={20} />
           </button>
         </div>
 
