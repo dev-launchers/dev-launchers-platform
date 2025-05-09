@@ -1,6 +1,6 @@
+import React, { ReactNode } from 'react';
 import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
@@ -112,7 +112,12 @@ const projectItems = [
   },
 ];
 
-const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
+interface UserData {
+  name: string;
+  profilePictureUrl: string;
+}
+
+const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
@@ -193,13 +198,22 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
   );
 };
 
-const DropdownMenu = ({ trigger, items = projectItems }) => {
+const DropdownMenu = ({
+  trigger,
+  items = projectItems,
+}: {
+  trigger: React.ReactNode;
+  items: typeof projectItems;
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -245,13 +259,27 @@ const DropdownMenu = ({ trigger, items = projectItems }) => {
   );
 };
 
-const MobileDropdown = ({ title, items }) => {
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
+const MobileDropdown = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: DropdownItem[];
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
