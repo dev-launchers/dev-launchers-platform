@@ -364,7 +364,7 @@ export default function UserLandingPage() {
                 buttonType="secondary"
                 buttonSize="xl"
                 onClick={onContinueClick}
-                disabled={!formValidation.isFormValid()}
+                disabled={!formValidation.isFormValid() || saveInProgress}
               >
                 {saveInProgress ? (
                   <p className="flex items-center gap-3">
