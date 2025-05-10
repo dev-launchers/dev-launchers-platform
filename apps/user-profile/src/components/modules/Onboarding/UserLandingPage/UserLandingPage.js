@@ -250,7 +250,10 @@ export default function UserLandingPage() {
               >
                 First Name
               </label>
-              <p className="text-grayscale-900 text-base font-bold text-red-500">
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
                 *
               </p>
             </div>
@@ -273,7 +276,10 @@ export default function UserLandingPage() {
               >
                 Last Name
               </label>
-              <p className="text-grayscale-900 text-base font-bold text-red-500">
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
                 *
               </p>
             </div>
