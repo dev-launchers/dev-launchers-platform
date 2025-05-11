@@ -1,6 +1,6 @@
 import type { DefaultTheme } from 'styled-components';
 import styled from 'styled-components';
-import { typographyStyles } from '../Typography';
+import { typographyStyles } from '../TypographyOld';
 import type { Props } from './Tags';
 
 type StyledProps = Pick<Props, 'bgColor' | 'txtColor'>;

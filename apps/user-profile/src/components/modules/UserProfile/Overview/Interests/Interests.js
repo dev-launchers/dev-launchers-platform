@@ -14,7 +14,7 @@ function Interests({ interestList }) {
       {filteredInterestList?.length > 0 ? (
         <BubbleList list={filteredInterestList} />
       ) : (
-        <Typography className="text-grayscale-500" type="p">
+        <Typography className="text-grayscale-500" variant="secondary">
           No interests selected...
         </Typography>
       )}
