@@ -28,11 +28,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from '@devlaunchers/components/src/components/Popover/index';
-import {
-  cleanData,
-  cleanIdeaForPost,
-} from '../../../../../utils/StrapiHelper.js';
-import useConfirm from '../../../../../components/common/DialogBox/DialogBox';
+import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 
 export const IdeaCard = ({
   ideaImage,
@@ -43,14 +39,13 @@ export const IdeaCard = ({
   onEditSuccess,
 }) => {
   const [ideaData, setIdeaData] = useState(fullIdea);
-  console.log('fullIdea', fullIdea);
   const [upvoted, setUpvoted] = useState(false);
   const [count, setCount] = useState(0); // number of likes on this idea
   const [showVoteButton, setShowVoteButton] = useState(false);
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
-
+  const [shouldShowDeleteDialog, setShouldShowDeleteDialog] = useState(false);
   const isOwner =
     userData &&
     ideaData &&
@@ -196,31 +191,10 @@ export const IdeaCard = ({
   };
 
   //== Delete Idea
-  const [DeleteIdea, confirmDelete] = useConfirm(
-    ['Permanently delete this idea?', 'Error', ''],
-    "This action can't be undone. Are you sure you want to delete this idea?",
-    ['primary alternative', 'Yes, Delete', 'No, Keep it']
-  );
-
-  const handleDeleteIdea = async () => {
-    if (await confirmDelete()) {
-      console.log('Confirmed delete');
-    } else {
-      console.log('Delete cancelled');
-      return;
-    }
-    // const card = { ...fullIdea };
-    // const id = card.id;
-    // const cardForPut = cleanIdeaForPost(card);
-    // const resp = cleanData(await agent.Ideas.put(id, cardForPut));
-    // console.log('resp', resp);
-    // if (resp.status === 200) {
-    //   // Idea deleted successfully
-    //   console.log('Idea deleted successfully');
-    // } else {
-    //   // Handle error
-    //   console.error('Error deleting idea:', resp.error);
-    // }
+  const handleDeleteIdea = () => {
+    setShouldShowDeleteDialog(false);
+    window.onbeforeunload = null; // Clear the beforeunload event
+    window.location.href = '/ideaspace/dashboard?deleted=true';
   };
 
   useEffect(() => {
@@ -283,14 +257,21 @@ export const IdeaCard = ({
                       >
                         <button
                           className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
-                          onClick={handleDeleteIdea}
+                          onClick={() => setShouldShowDeleteDialog(true)}
                         >
                           <Trash size={18} className="text-[#692323]" />
                           Delete Idea
                         </button>
                       </PopoverContent>
                     </Popover>
-                    <DeleteIdea />
+
+                    {shouldShowDeleteDialog && (
+                      <DeleteConfirmationDialogBox
+                        card={fullIdea}
+                        onClose={setShouldShowDeleteDialog}
+                        onDelete={handleDeleteIdea}
+                      />
+                    )}
                   </div>
                 )}
               </div>
@@ -305,7 +286,10 @@ export const IdeaCard = ({
           </div>
         </div>
         {showEditSuccess && (
-          <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
+          <EditSuccessAlert
+            onClose={() => setShowEditSuccess(false)}
+            message={['', 'Your changes have been saved!']}
+          />
         )}
       </div>
     </>

@@ -1,12 +1,13 @@
 import React from 'react';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
+import { agent } from '@devlaunchers/utility';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
 import { cleanDataList, cleanData } from '../../../utils/StrapiHelper';
-import { agent } from '@devlaunchers/utility';
+import DeleteSuccessAlert from '../../common/SubmissionAlert/DeleteSuccessAlert';
 
 import {
   HeadWapper,
@@ -21,9 +22,22 @@ function DashboardPage() {
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
+  const [showDeleteAlertSuccess, setShowDeleteAlertSuccess] =
+    React.useState(false);
+
+  // check query string for deleted=true
+  const showAlert = () => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const deleted = urlParams.get('deleted');
+    if (deleted === 'true') {
+      setShowDeleteAlertSuccess(true);
+    }
+  };
 
   React.useEffect(async () => {
     if (isAuthenticated) {
+      showAlert();
       const data = cleanDataList(
         await agent.Ideas.get(new URLSearchParams(`populate=deep`))
       );
@@ -80,6 +94,11 @@ function DashboardPage() {
             <>
               <Stats totalCard={cards} />
               <Ideas totalCard={cards} />
+              {showDeleteAlertSuccess && (
+                <DeleteSuccessAlert
+                  onClose={() => setShowDeleteAlertSuccess(false)}
+                />
+              )}
             </>
           )}
         </PageWrapper>
