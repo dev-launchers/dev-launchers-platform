@@ -25,15 +25,12 @@ function DashboardPage() {
   const [showDeleteAlertSuccess, setShowDeleteAlertSuccess] =
     React.useState(false);
 
-  // check query string for deleted=true
-  const showAlert = () => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const deleted = urlParams.get('deleted');
-    if (deleted === 'true') {
+  const showAlert = React.useCallback(() => {
+    if (sessionStorage.getItem('showDeleteAlertSuccess') === 'true') {
       setShowDeleteAlertSuccess(true);
+      sessionStorage.removeItem('showDeleteAlertSuccess');
     }
-  };
+  }, []);
 
   React.useEffect(async () => {
     if (isAuthenticated) {

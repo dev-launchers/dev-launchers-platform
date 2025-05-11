@@ -192,9 +192,11 @@ export const IdeaCard = ({
 
   //== Delete Idea
   const handleDeleteIdea = () => {
+    // set sessionStorage to use in the dashboard page
+    sessionStorage.setItem('showDeleteAlertSuccess', 'true');
     setShouldShowDeleteDialog(false);
     window.onbeforeunload = null; // Clear the beforeunload event
-    window.location.href = '/ideaspace/dashboard?deleted=true';
+    window.location.href = '/ideaspace/dashboard';
   };
 
   useEffect(() => {
