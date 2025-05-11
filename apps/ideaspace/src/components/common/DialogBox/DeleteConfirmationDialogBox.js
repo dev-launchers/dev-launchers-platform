@@ -13,7 +13,6 @@ import { agent } from '@devlaunchers/utility';
 import { Icons } from '@devlaunchers/components/src/assets';
 
 const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
-  console.log('DeleteConfirmationDialogBox card', card);
   const [isDeleting, setIsDeleting] = React.useState(false);
   const handleClose = () => {
     onClose(false);
@@ -28,7 +27,6 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
     setIsDeleting(true);
     putIdea()
       .then((res) => {
-        console.log('DeleteConfirmationDialogBox res', res);
         if (res.status === 'deleted') {
           onDelete();
         } else {
