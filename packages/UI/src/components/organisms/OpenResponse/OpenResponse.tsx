@@ -1,4 +1,4 @@
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import {
   Label,
   Input,

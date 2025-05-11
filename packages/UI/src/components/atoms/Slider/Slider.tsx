@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Box from '../Box';
-import { typographyStyles } from '../Typography';
+import { typographyStyles } from '../TypographyOld';
 
 import {
   Bubble,

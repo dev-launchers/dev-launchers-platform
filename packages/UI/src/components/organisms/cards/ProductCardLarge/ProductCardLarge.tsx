@@ -2,7 +2,7 @@ import { useTheme } from 'styled-components';
 import testImage from '../../../../assets/images/test-image.png';
 import useResponsive from '../../../../hooks/useResponsive';
 import { Box, Layer, Button } from '../../../atoms';
-import { typographyStyles } from '../../../atoms/Typography';
+import { typographyStyles } from '../../../atoms/TypographyOld';
 import { LikeButton, SaveButton, ShareButton } from '../../../molecules';
 import { CardDescription } from '../StyledCommonComponents';
 import type { ProductProps } from '.';
@@ -59,7 +59,7 @@ const ProductCardLarge = ({
             ) : undefined}
             <Box gap="1rem" flexDirection={isMobile ? 'column' : 'row'}>
               <Button
-                type={defaultButton ? 'secondary' : 'alt-primary'}
+                type={defaultButton ? 'secondary' : 'secondary'}
                 size="large"
                 onClick={button1.onClick}
               >
@@ -78,7 +78,7 @@ const ProductCardLarge = ({
               </Button>
 
               <Button
-                type={defaultButton ? 'primary' : 'alt-primary'}
+                type={defaultButton ? 'primary' : 'secondary'}
                 size="large"
                 onClick={button2.onClick}
               >

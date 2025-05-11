@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { radiusStyles } from '../../atoms/Radius/StyledRadius';
-import { typographyStyles } from '../../atoms/Typography/Styled.Typography';
+import { typographyStyles } from '../../atoms/TypographyOld/Styled.Typography';
 import type { OpenResponseProps } from '.';
 
 export const Label = styled.label`
