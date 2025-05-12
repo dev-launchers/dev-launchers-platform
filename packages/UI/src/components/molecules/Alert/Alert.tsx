@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icons } from '../../../assets';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import { Container } from './StyledAlert';
 import type { AlertProps } from '.';
 

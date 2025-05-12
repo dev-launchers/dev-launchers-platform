@@ -1,10 +1,10 @@
 name: CI
-on: 
+on:
   push:
     branches:
-      - "development/design-team"
-    paths: 
-      - "packages/tailwind-constructor/tokens.json"
+      - 'development/design-team'
+    paths:
+      - 'packages/tailwind-constructor/tokens.json'
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v4
       # Install dependencies
       - run: yarn
       # Transform Figma Tokens JSON to something Style Dictionary can read, run Style Dictionary and later run Tailwind

@@ -103,7 +103,11 @@ export default function SignUpForm({
           />
         </ModalUploadSection>
         <atoms.Box gap="30px">
-          <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+          <atoms.Typography
+            variant="secondary"
+            size="body_sm"
+            css={{ color: 'red' }}
+          >
             {uploadError}
           </atoms.Typography>
         </atoms.Box>
@@ -348,14 +352,22 @@ export default function SignUpForm({
                   </atoms.Box>
                   <atoms.Box flexDirection="column">
                     <atoms.Box flexDirection="row">
-                      <atoms.Typography type="pSmall" textAlign="center">
+                      <atoms.Typography
+                        variant="secondary"
+                        size="body_sm"
+                        textAlign="center"
+                      >
                         How many hours a week would you like to volunteer?
                       </atoms.Typography>
-                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                      <atoms.Typography
+                        variant="secondary"
+                        size="body_sm"
+                        css={{ color: 'red' }}
+                      >
                         &nbsp; *
                       </atoms.Typography>
                     </atoms.Box>
-                    <atoms.Typography type="pSmall">
+                    <atoms.Typography variant="secondary" size="body_sm">
                       Note: this role requires at least 10 hours a week.
                     </atoms.Typography>
                     <Field
@@ -375,7 +387,11 @@ export default function SignUpForm({
                       suffix=" hrs"
                       maxWidth="430px"
                     />
-                    <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                    <atoms.Typography
+                      variant="secondary"
+                      size="body_sm"
+                      css={{ color: 'red' }}
+                    >
                       {formik.errors.commitment}
                     </atoms.Typography>
                   </atoms.Box>
@@ -490,7 +506,11 @@ export default function SignUpForm({
                       checked={formik.values.isAgeOver18}
                     />
                     {formik.errors.isAgeOver18 ? (
-                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                      <atoms.Typography
+                        variant="secondary"
+                        size="body_sm"
+                        css={{ color: 'red' }}
+                      >
                         {formik.errors.isAgeOver18}
                       </atoms.Typography>
                     ) : null}
@@ -509,7 +529,11 @@ export default function SignUpForm({
                       checked={formik.values.isTermsAgreed}
                     />
                     {formik.errors.isTermsAgreed ? (
-                      <atoms.Typography type="pSmall" css={{ color: 'red' }}>
+                      <atoms.Typography
+                        variant="secondary"
+                        size="body_sm"
+                        css={{ color: 'red' }}
+                      >
                         {formik.errors.isTermsAgreed}
                       </atoms.Typography>
                     ) : null}
