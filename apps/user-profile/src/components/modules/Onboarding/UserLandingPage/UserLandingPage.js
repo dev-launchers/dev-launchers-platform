@@ -289,7 +289,7 @@ export default function UserLandingPage() {
               type="text"
               placeholder="Doe"
               error={formValidation.lastNameError}
-              onChange="onLastNameChange()"
+              onChange={onLastNameChange}
               touched={
                 person.lastNameTouched && !formValidation.isLastNameValid
               }
