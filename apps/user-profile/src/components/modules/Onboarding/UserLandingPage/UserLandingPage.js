@@ -263,7 +263,7 @@ export default function UserLandingPage() {
               type="text"
               placeholder="John"
               error={formValidation.firstNameError}
-              onChange="onFirstNameChange()"
+              onChange={onFirstNameChange}
               touched={
                 person.firstNameTouched && !formValidation.isFirstNameValid
               }
