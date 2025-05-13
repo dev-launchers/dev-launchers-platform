@@ -3,24 +3,31 @@ import { useEffect } from 'react';
 import Box from '../../atoms/Box';
 import Button from '../../atoms/Button';
 import NavLink from '../../atoms/NavLink/NavLink';
-import Typography from '../../atoms/Typography';
+import Typography from '../../atoms/TypographyOld';
 import NavDropdown from '../NavDropdown';
 import logo from './../../../assets/images/logo-monogram.png';
-import type {
-  links as Links,
-  accountOptions as AccountOptions,
-} from './Navigation';
+
 import { MobileNav, HamburgerWrapper } from './Styled.Navigation';
 import type { NavigationProps } from '.';
 import NotificationPopover from './NotificationPopover';
+import { ReactNode } from 'react';
+import { HTMLAttributes } from 'react';
 
 interface MobileNavigationProps {
-  links: typeof Links;
-  accountOptions: typeof AccountOptions;
+  links: Record<string, string | { name: string; href: string }[]>;
+  accountOptions: { name: string; href: string; hasUnderline?: boolean }[];
   logout: () => void;
   isSidebarExpanded?: boolean;
   isAuthenticated?: boolean;
   setIsSidebarExpanded?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+// Create an interface that matches what NavDropdown expects
+interface NavDropdownLink extends HTMLAttributes<unknown> {
+  text: ReactNode;
+  href?: string;
+  hasUnderline?: boolean;
+  as?: ReactNode;
 }
 
 const MobileNavigation = ({
@@ -41,6 +48,17 @@ const MobileNavigation = ({
 
     return () => document.documentElement.classList.remove('overflow-x-hidden');
   }, [isSidebarExpanded]);
+
+  // Helper function to convert accountOptions to the format NavDropdown expects
+  const convertToNavDropdownLinks = (
+    options: { name: string; href: string; hasUnderline?: boolean }[]
+  ): NavDropdownLink[] => {
+    return options.map((option) => ({
+      text: option.name,
+      href: option.href,
+      hasUnderline: option.hasUnderline,
+    }));
+  };
 
   return (
     <HamburgerWrapper
@@ -91,7 +109,8 @@ const MobileNavigation = ({
                         }}
                         title={name}
                         links={href.map((el) => ({
-                          ...el,
+                          text: el.name,
+                          href: el.href,
                           onClick: () => setIsSidebarExpanded?.(false),
                         }))}
                       />
@@ -155,8 +174,15 @@ const MobileNavigation = ({
                   }}
                   title={'MY ACCOUNT'}
                   links={[
-                    accountOptions[0],
-                    { ...accountOptions[1], hasUnderline: false },
+                    {
+                      text: accountOptions[0].name,
+                      href: accountOptions[0].href,
+                    },
+                    {
+                      text: accountOptions[1].name,
+                      href: accountOptions[1].href,
+                      hasUnderline: false,
+                    },
                   ]}
                 />
                 <Button type="secondary" size="medium" onClick={logout}>
