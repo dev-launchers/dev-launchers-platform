@@ -26,11 +26,14 @@ function DashboardPage() {
     React.useState(false);
 
   const showAlert = React.useCallback(() => {
-    if (sessionStorage.getItem('showDeleteAlertSuccess') === 'true') {
+    if (
+      !showDeleteAlertSuccess &&
+      sessionStorage.getItem('showDeleteAlertSuccess') === 'true'
+    ) {
       setShowDeleteAlertSuccess(true);
       sessionStorage.removeItem('showDeleteAlertSuccess');
     }
-  }, []);
+  }, [showDeleteAlertSuccess]);
 
   React.useEffect(async () => {
     if (isAuthenticated) {
@@ -79,17 +82,17 @@ function DashboardPage() {
         </atoms.Typography>
       </HeadWapper>
 
-      {!isAuthenticated ? (
-        <SignInSection
-          label="Please sign in to view your dashboard!"
-          redirectURL={
-            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
-          }
-        />
+      {loading === true ? (
+        <CircularIndeterminateLoader text="Loading..." color="black" />
       ) : (
         <PageWrapper>
-          {loading === true ? (
-            <CircularIndeterminateLoader text="Loading..." color="black" />
+          {!isAuthenticated ? (
+            <SignInSection
+              label="Please sign in to view your dashboard!"
+              redirectURL={
+                process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
+              }
+            />
           ) : (
             <>
               <Stats totalCard={cards} />
