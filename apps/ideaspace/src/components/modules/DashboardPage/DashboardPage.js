@@ -36,9 +36,12 @@ function DashboardPage() {
     if (isAuthenticated) {
       showAlert();
       const data = cleanDataList(
-        await agent.Ideas.get(new URLSearchParams(`populate=deep`))
+        await agent.Ideas.get(
+          new URLSearchParams(
+            `populate=deep&filters[author][id][$eq]=${userData.id}&filters[status][$ne]=deleted`
+          )
+        )
       );
-
       const allCards = data.map((item) => {
         if (item.comments === undefined) item.comments = [];
         else item.comments = cleanDataList(item.comments.data);

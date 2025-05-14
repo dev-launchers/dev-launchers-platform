@@ -48,6 +48,13 @@ export default function WorkshoppingPage(props) {
     ['primary', 'got it', '']
   );
 
+  // if the idea is deleted, redirect to dashboard
+  React.useEffect(async () => {
+    if (data.status === 'deleted') {
+      window.location.href = '/ideaspace/dashboard';
+    }
+  }, [data]);
+
   React.useEffect(async () => {
     if (hidden) {
       await confirmArchived();
