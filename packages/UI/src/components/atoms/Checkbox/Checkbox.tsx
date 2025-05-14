@@ -34,20 +34,7 @@ const Checkbox = ({
       focusRing = 'focus:ring-purple-500';
   }
 
-  const sharedClass = `
-    appearance-none border-2 rounded flex items-center justify-center
-    transition duration-200 ease-in-out
-    hover:shadow-md
-    ${sizeClass}
-    ${baseColor}
-    ${focusRing}
-    ${checked ? checkedColor : ''}
-    ${
-      disabled
-        ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed opacity-60'
-        : 'cursor-pointer'
-    }
-  `;
+  const sharedClass = `appearance-none border-2 rounded flex items-center justify-center transition duration-200 ease-in-out hover:shadow-md ${sizeClass} ${baseColor} ${focusRing} ${checked ? checkedColor : ''} ${disabled ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed opacity-60' : 'cursor-pointer'}`;
 
   return (
     <label
