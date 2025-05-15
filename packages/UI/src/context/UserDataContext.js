@@ -41,12 +41,12 @@ function useUserDataHook() {
         console.log('Fetching...');
         setUserData({
           id: currentUser.id,
-          name: currentUser.profile.displayName,
+          name: currentUser.profile?.displayName,
           username: currentUser.username,
           email: currentUser.email,
-          bio: currentUser.profile.bio,
-          profilePictureUrl: currentUser.profile.profilePictureUrl,
-          socialMediaLinks: currentUser.profile.socialMediaLinks,
+          bio: currentUser.profile?.bio,
+          profilePictureUrl: currentUser.profile?.profilePictureUrl,
+          socialMediaLinks: currentUser.profile?.socialMediaLinks,
           interests: currentUser.interests,
           projects: currentUser.projects,
           idea_cards: currentUser.idea_cards,

@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { radiusStyles } from '@devlaunchers/components/src/components/atoms';
+import {
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from '@devlaunchers/components/components/DropdownMenu';
 
 export const PageWrapper = styled.section`
   background-color: #ffffff;
@@ -37,7 +42,7 @@ export const IdeaCardWrapper = styled.div`
   & > div {
     flex: 1 1 calc(25% - 1.5rem); // Dynamic width for 4 cards per row
     max-width: calc(25% - 1.5rem); // Max width for each card
-    height: 344px;
+    height: 380px;
   }
 
   // Breakpoint for screens up to 1440px (3 cards per row)
@@ -77,4 +82,17 @@ export const FilterDiv = styled.div`
   flex-direction: column;
   align-items: flex-end;
   margin-bottom: 0.5rem;
+`;
+
+export const DropdownMenuTriggerStyled = styled(DropdownMenuTrigger)`
+  cursor: pointer;
+  pointer-events: auto;
+`;
+
+export const DropdownMenuRadioItemStyled = styled(DropdownMenuRadioItem)`
+  ${radiusStyles['radius200']};
+  &:hover {
+    cursor: pointer;
+    box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
+  }
 `;

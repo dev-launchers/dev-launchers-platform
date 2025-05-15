@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
           <div className="mt-4 flex gap-4 space-x-4 px-4 md:mt-0">
             <a
-              href="www.linkedin.com/company/devlaunchers/"
+              href="https://www.linkedin.com/company/devlaunchers"
               className="text-purple-400 hover:text-purple-500"
             >
               <Linkedin />

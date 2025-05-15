@@ -132,7 +132,7 @@ const ProductCardLong = ({
             >
               <Button
                 as="a"
-                type={defaultButton ? 'secondary' : 'alt-primary'}
+                type={defaultButton ? 'secondary' : 'primary'}
                 size="large"
                 onClick={button1.onClick}
                 href={button1.href}
@@ -147,7 +147,7 @@ const ProductCardLong = ({
 
               <Button
                 as="a"
-                type={defaultButton ? 'primary' : 'alt-primary'}
+                type={defaultButton ? 'primary' : 'primary'}
                 size="large"
                 onClick={button2.onClick}
                 href={button2.href}

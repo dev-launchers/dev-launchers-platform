@@ -12,7 +12,7 @@ const getIcon = (type: string) => {
     case 'instagram':
       return <Icons.Instagram width="24px" height="24px" />;
     case 'linkedin':
-      return <Icons.Linkedin width="24px" height="24px" />;
+      return <Icons.LinkedIn width="24px" height="24px" />;
     case 'slack':
       return <Icons.Slack width="24px" height="24px" />;
     case 'github':
