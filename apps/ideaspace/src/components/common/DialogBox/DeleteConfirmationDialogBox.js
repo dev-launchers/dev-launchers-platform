@@ -87,8 +87,12 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
             lineHeight: '160%',
           }}
         >
-          This action can't be undone. <br />
-          Are you sure you want to delete this idea?
+          <atoms.Typography type="p">
+            This action can't be undone.
+          </atoms.Typography>
+          <atoms.Typography type="p">
+            Are you sure you want to delete this idea?
+          </atoms.Typography>
         </DialogContentText>
       </DialogContent>
 
