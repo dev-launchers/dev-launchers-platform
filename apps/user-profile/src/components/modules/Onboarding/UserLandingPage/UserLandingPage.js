@@ -327,16 +327,6 @@ export default function UserLandingPage() {
             /> */}
           </div>
           <div className="flex flex-col margin gap-32">
-            {/* <CheckboxField
-              customLabel={
-                <Typography type="pSmall">
-                  I have read and agree to the <a>Terms and Conditions</a>
-                </Typography>
-              }
-              onChange={onTermsAndConditionChange}
-              checked={person.termsAndConditions}
-              required={true}
-            /> */}
             <div className="flex flex-row">
               <div className="flex items-center">
                 <input
