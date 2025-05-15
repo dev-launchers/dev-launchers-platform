@@ -2,6 +2,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { MoreHorizontal, Trash } from 'lucide-react';
 import {
   StyledCard,
   TopView,
@@ -22,6 +23,12 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
 import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@devlaunchers/components/src/components/Popover/index';
+import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 
 export const IdeaCard = ({
   ideaImage,
@@ -38,7 +45,7 @@ export const IdeaCard = ({
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
-
+  const [shouldShowDeleteDialog, setShouldShowDeleteDialog] = useState(false);
   const isOwner =
     userData &&
     ideaData &&
@@ -183,6 +190,15 @@ export const IdeaCard = ({
     }, 4000);
   };
 
+  //== Delete Idea
+  const handleDeleteIdea = () => {
+    // set sessionStorage to use in the dashboard page
+    sessionStorage.setItem('showDeleteAlertSuccess', 'true');
+    setShouldShowDeleteDialog(false);
+    window.onbeforeunload = null; // Clear the beforeunload event
+    window.location.href = '/ideaspace/dashboard';
+  };
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -214,7 +230,7 @@ export const IdeaCard = ({
               <div>{upvoteButton}</div>
               <div>
                 {isOwner && (
-                  <>
+                  <div className="flex flex-row gap-2">
                     <button
                       className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
                       onClick={() => setIsModalOpen(true)}
@@ -228,7 +244,37 @@ export const IdeaCard = ({
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
                     />
-                  </>
+
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3">
+                          <MoreHorizontal />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        hasCloseBtn={false}
+                        side="bottom"
+                        align="end"
+                        className="rounded-md w-[224px] h-[60px] p-0"
+                      >
+                        <button
+                          className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
+                          onClick={() => setShouldShowDeleteDialog(true)}
+                        >
+                          <Trash size={18} className="text-[#692323]" />
+                          Delete Idea
+                        </button>
+                      </PopoverContent>
+                    </Popover>
+
+                    {shouldShowDeleteDialog && (
+                      <DeleteConfirmationDialogBox
+                        card={fullIdea}
+                        onClose={setShouldShowDeleteDialog}
+                        onDelete={handleDeleteIdea}
+                      />
+                    )}
+                  </div>
                 )}
               </div>
             </div>
@@ -242,7 +288,10 @@ export const IdeaCard = ({
           </div>
         </div>
         {showEditSuccess && (
-          <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
+          <EditSuccessAlert
+            onClose={() => setShowEditSuccess(false)}
+            message={['', 'Your changes have been saved!']}
+          />
         )}
       </div>
     </>

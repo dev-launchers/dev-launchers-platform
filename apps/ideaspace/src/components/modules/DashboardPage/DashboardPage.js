@@ -1,12 +1,13 @@
 import React from 'react';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { atoms } from '@devlaunchers/components/src/components';
+import { agent } from '@devlaunchers/utility';
 import SignInSection from '../../common/SignInSection/SignInSection';
 import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
 import { cleanDataList, cleanData } from '../../../utils/StrapiHelper';
-import { agent } from '@devlaunchers/utility';
+import DeleteSuccessAlert from '../../common/SubmissionAlert/DeleteSuccessAlert';
 
 import {
   HeadWapper,
@@ -21,13 +22,29 @@ function DashboardPage() {
   const [loading, setLoading] = React.useState(true);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [cards, setCards] = React.useState([]);
+  const [showDeleteAlertSuccess, setShowDeleteAlertSuccess] =
+    React.useState(false);
+
+  const showAlert = React.useCallback(() => {
+    if (
+      !showDeleteAlertSuccess &&
+      sessionStorage.getItem('showDeleteAlertSuccess') === 'true'
+    ) {
+      setShowDeleteAlertSuccess(true);
+      sessionStorage.removeItem('showDeleteAlertSuccess');
+    }
+  }, [showDeleteAlertSuccess]);
 
   React.useEffect(async () => {
     if (isAuthenticated) {
+      showAlert();
       const data = cleanDataList(
-        await agent.Ideas.get(new URLSearchParams(`populate=deep`))
+        await agent.Ideas.get(
+          new URLSearchParams(
+            `populate=deep&filters[author][id][$eq]=${userData.id}&filters[status][$ne]=deleted`
+          )
+        )
       );
-
       const allCards = data.map((item) => {
         if (item.comments === undefined) item.comments = [];
         else item.comments = cleanDataList(item.comments.data);
@@ -65,21 +82,26 @@ function DashboardPage() {
         </atoms.Typography>
       </HeadWapper>
 
-      {!isAuthenticated ? (
-        <SignInSection
-          label="Please sign in to view your dashboard!"
-          redirectURL={
-            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
-          }
-        />
+      {loading === true ? (
+        <CircularIndeterminateLoader text="Loading..." color="black" />
       ) : (
         <PageWrapper>
-          {loading === true ? (
-            <CircularIndeterminateLoader text="Loading..." color="black" />
+          {!isAuthenticated ? (
+            <SignInSection
+              label="Please sign in to view your dashboard!"
+              redirectURL={
+                process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
+              }
+            />
           ) : (
             <>
               <Stats totalCard={cards} />
               <Ideas totalCard={cards} />
+              {showDeleteAlertSuccess && (
+                <DeleteSuccessAlert
+                  onClose={() => setShowDeleteAlertSuccess(false)}
+                />
+              )}
             </>
           )}
         </PageWrapper>
