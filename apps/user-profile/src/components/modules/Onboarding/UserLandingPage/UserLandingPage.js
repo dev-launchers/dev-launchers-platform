@@ -312,19 +312,6 @@ export default function UserLandingPage() {
               placeholder="CSS Developer"
               onChange="onRoleChange()"
             ></input>
-
-            {/* <InputField
-              error=""
-              label="linkedInPortfolio (optional)"
-              onChange={onLinkedInPortfolioChange}
-              placeholder="www.linkedin.com"
-            />
-            <InputField
-              error=""
-              label="websitePortfolio (optional)"
-              onChange={onWebsitePortfolioChange}
-              placeholder="www.portfolio.com"
-            /> */}
           </div>
           <div className="flex flex-col margin gap-32">
             <div className="flex flex-row">
