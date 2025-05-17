@@ -129,14 +129,6 @@ export default function UserLandingPage() {
     setPerson({ ...person, role: e.target.value });
   }
 
-  // function onLinkedInPortfolioChange(e) {
-  //   setPerson({ ...person, linkedInPortfolio: e.target.value });
-  // }
-
-  // function onWebsitePortfolioChange(e) {
-  //   setPerson({ ...person, websitePortfolio: e.target.value });
-  // }
-
   function onTermsAndConditionChange(e) {
     setPerson({ ...person, termsAndConditions: !person.termsAndConditions });
   }
