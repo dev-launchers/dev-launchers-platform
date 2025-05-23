@@ -14,8 +14,8 @@ export default function PageSix() {
   return (
     <PageSixContainer>
       <Header>
-        <Typography type="h2">Congratulations!</Typography>
-        <Typography className="modal-subtitle" type="pLarge">
+        <Typography variant="primary">Congratulations!</Typography>
+        <Typography className="modal-subtitle" variant="primary">
           Thank you for taking the time to complete onboarding. Next, view the
           ongoing projects and if you find one that you like, contact the
           project lead.
