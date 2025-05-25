@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
 import Button from '@devlaunchers/components/components/atoms/Button';
-import Typography from '@devlaunchers/components/components/atoms/Typography';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
@@ -18,6 +15,7 @@ const initialFormValue = {
   firstNameTouched: false,
   lastName: '',
   lastNameTouched: false,
+  displayNameTouched: false,
   country: '',
   role: '',
   linkedInPortfolio: '',
@@ -73,10 +71,18 @@ export default function UserLandingPage() {
       errors.isLastNameValid = true;
     }
 
+    if (!formValue.displayNameTouched) {
+      errors.displayNameError = 'Display name is required';
+      errors.isDisplayNameValid = false;
+    } else {
+      errors.isDisplayNameValid = true;
+    }
+
     errors.isFormValid = () =>
       formValue.termsAndConditions &&
       errors.isFirstNameValid &&
-      errors.isLastNameValid;
+      errors.isLastNameValid &&
+      errors.isDisplayNameValid;
 
     return errors;
   }
@@ -121,6 +127,14 @@ export default function UserLandingPage() {
     setPerson({ ...person, lastName: e.target.value, lastNameTouched: true });
   }
 
+  function onDisplayNameChange(e) {
+    setPerson({
+      ...person,
+      displayName: e.target.value,
+      displayNameTouched: true,
+    });
+  }
+
   function onCountryChange(e) {
     setPerson({ ...person, country: e });
   }
@@ -136,50 +150,33 @@ export default function UserLandingPage() {
   function onJoinNewsLetterChange() {}
 
   const onContinueClick = (e) => {
-    const profileId = userData?.profile?.id;
-    const userId = userData?.profile?.user?.id;
+    const userId = userData?.id;
 
-    if (profileId && userId) {
+    if (userId) {
       const profileRequestBody = {
         data: {
-          displayName: `${person.firstName} ${person.lastName}`,
+          user: userData?.id,
+          displayName: `${person.displayName}`,
           profilePictureUrl: uploadedProfilePicture || profilePicture,
+          hasAcceptedTermsOfService: true,
         },
       };
       setSaveInProgress(true);
 
-      agent.Profiles.put(profileId, profileRequestBody)
+      agent.Profiles.post(profileRequestBody)
         .then(() => {
-          const userRequestBody = {
-            hasAcceptedTermsOfService: true,
-          };
+          setSaveInProgress(false);
 
-          axios
-            .put(
-              `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`,
-              userRequestBody,
-              { withCredentials: true }
-            )
-            .then(() => {
-              router
-                .push({
-                  pathname: '/users/me',
-                })
-                .then(() => {
-                  setSaveInProgress(false);
-                });
-            })
-            .catch((error) => {
-              setSaveInProgress(false);
-              console.log('Error Updating User Data: ', error);
-            });
+          router.push({
+            pathname: '/users/me',
+          });
         })
         .catch((error) => {
           console.log('Error Updating Profile Data: ', error);
           setSaveInProgress(false);
         });
     } else {
-      console.log('Error profileId: ', profileId, ' Userid: ', userId);
+      console.log('Error Userid: ', userId);
     }
   };
 
@@ -235,7 +232,7 @@ export default function UserLandingPage() {
             </p>
           </div>
           <div name="myForm">
-            <div className="flex flex-row">
+            {/* <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
                 id="firstNameLabel"
@@ -286,6 +283,31 @@ export default function UserLandingPage() {
                 person.lastNameTouched && !formValidation.isLastNameValid
               }
               required
+            ></input> */}
+
+            <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                id="displayNameLabel"
+              >
+                Display Name
+              </label>
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
+                *
+              </p>
+            </div>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              id="lastName"
+              type="text"
+              placeholder="Doe"
+              error={formValidation.displayNameError}
+              onChange={onDisplayNameChange}
+              touched={person.displayNameTouched}
+              required
             ></input>
 
             <DropdownMenu
@@ -294,7 +316,7 @@ export default function UserLandingPage() {
               onChange={onCountryChange}
             />
 
-            <label class="text-grayscale-900 text-base font-bold" id="Role">
+            {/* <label class="text-grayscale-900 text-base font-bold" id="Role">
               Role (optional)
             </label>
             <input
@@ -303,7 +325,7 @@ export default function UserLandingPage() {
               type="text"
               placeholder="CSS Developer"
               onChange="onRoleChange()"
-            ></input>
+            ></input> */}
           </div>
           <div className="flex flex-col margin gap-32">
             <div className="flex flex-row">
