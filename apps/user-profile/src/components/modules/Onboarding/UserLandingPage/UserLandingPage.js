@@ -58,7 +58,7 @@ export default function UserLandingPage() {
       errors.isFirstNameValid = false;
       errors.firstNameError = 'First name is not valid';
     } else {
-      errors.isFirstNameValid = formValue.firstName.length > 0;
+      errors.isFirstNameValid = formValue.firstName.trim().length > 0;
     }
 
     if (!formValue.lastNameTouched) {
@@ -68,14 +68,14 @@ export default function UserLandingPage() {
       errors.isLastNameValid = false;
       errors.lastNameError = 'Last name is not valid';
     } else {
-      errors.isLastNameValid = formValue.lastName.length > 0;
+      errors.isLastNameValid = formValue.lastName.trim().length > 0;
     }
 
     if (!formValue.displayNameTouched) {
       errors.displayNameError = 'Display name is required';
       errors.isDisplayNameValid = false;
     } else {
-      errors.isDisplayNameValid = formValue.displayName.length > 0;
+      errors.isDisplayNameValid = formValue.displayName.trim().length > 0;
     }
 
     return errors;
@@ -162,21 +162,18 @@ export default function UserLandingPage() {
               { withCredentials: true }
             )
             .then(() => {
-              router
-                .push({
-                  pathname: '/users/me',
-                })
-                .then(() => {
-                  setSaveInProgress(false);
-                });
+              router.push({
+                pathname: '/users/me',
+              });
             })
             .catch((error) => {
-              setSaveInProgress(false);
               console.log('Error Updating User Data: ', error);
             });
         })
         .catch((error) => {
           console.log('Error Updating Profile Data: ', error);
+        })
+        .finally(() => {
           setSaveInProgress(false);
         });
     } else {
