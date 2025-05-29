@@ -142,7 +142,7 @@ export default function UserLandingPage() {
 
     if (userId) {
       const profileRequestBody = {
-        user: userData?.id,
+        user: userId,
         displayName: person.displayName,
         profilePictureUrl: uploadedProfilePicture || profilePicture,
       };
