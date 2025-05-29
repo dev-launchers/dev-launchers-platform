@@ -1,39 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
 import Button from '@devlaunchers/components/components/atoms/Button';
-import Typography from '@devlaunchers/components/components/atoms/Typography';
-import InputField from './../../../common/Forms/Input';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import CheckboxField from './../../../common/Forms/Checkbox';
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
-import {
-  ButtonContainer,
-  OnboardingContainer,
-  FormContainer,
-  PageContainer,
-  BannerContainer,
-  FormFields,
-  FormFooter,
-  ProfileContainer,
-  UploadButton,
-  ProfileHeader,
-  ProfilePicture,
-  UploadedProfilePicture,
-} from './StyledUserLandingPage';
+import { DropdownMenu } from './../../../../../../../packages/UI/src/components/DropdownMenu';
+import countryData from './../../../../content/countryData.json';
 
 const initialFormValue = {
   firstName: '',
   firstNameTouched: false,
   lastName: '',
   lastNameTouched: false,
-  location: '',
+  displayNameTouched: false,
+  country: '',
   role: '',
-  headline: '',
+  linkedInPortfolio: '',
+  websitePortfolio: '',
   termsAndConditions: false,
   emailMarketing: false,
 };
@@ -85,10 +71,18 @@ export default function UserLandingPage() {
       errors.isLastNameValid = true;
     }
 
+    if (!formValue.displayNameTouched) {
+      errors.displayNameError = 'Display name is required';
+      errors.isDisplayNameValid = false;
+    } else {
+      errors.isDisplayNameValid = true;
+    }
+
     errors.isFormValid = () =>
       formValue.termsAndConditions &&
       errors.isFirstNameValid &&
-      errors.isLastNameValid;
+      errors.isLastNameValid &&
+      errors.isDisplayNameValid;
 
     return errors;
   }
@@ -133,16 +127,20 @@ export default function UserLandingPage() {
     setPerson({ ...person, lastName: e.target.value, lastNameTouched: true });
   }
 
-  function onLocationChange(e) {
-    setPerson({ ...person, location: e.target.value });
+  function onDisplayNameChange(e) {
+    setPerson({
+      ...person,
+      displayName: e.target.value,
+      displayNameTouched: true,
+    });
+  }
+
+  function onCountryChange(e) {
+    setPerson({ ...person, country: e });
   }
 
   function onRoleChange(e) {
     setPerson({ ...person, role: e.target.value });
-  }
-
-  function onHeadLineChange(e) {
-    setPerson({ ...person, headline: e.target.value });
   }
 
   function onTermsAndConditionChange(e) {
@@ -152,50 +150,33 @@ export default function UserLandingPage() {
   function onJoinNewsLetterChange() {}
 
   const onContinueClick = (e) => {
-    const profileId = userData?.profile?.id;
-    const userId = userData?.profile?.user?.id;
+    const userId = userData?.id;
 
-    if (profileId && userId) {
+    if (userId) {
       const profileRequestBody = {
         data: {
-          displayName: `${person.firstName} ${person.lastName}`,
+          user: userData?.id,
+          displayName: `${person.displayName}`,
           profilePictureUrl: uploadedProfilePicture || profilePicture,
+          hasAcceptedTermsOfService: true,
         },
       };
       setSaveInProgress(true);
 
-      agent.Profiles.put(profileId, profileRequestBody)
+      agent.Profiles.post(profileRequestBody)
         .then(() => {
-          const userRequestBody = {
-            hasAcceptedTermsOfService: true,
-          };
+          setSaveInProgress(false);
 
-          axios
-            .put(
-              `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`,
-              userRequestBody,
-              { withCredentials: true }
-            )
-            .then(() => {
-              router
-                .push({
-                  pathname: '/users/me',
-                })
-                .then(() => {
-                  setSaveInProgress(false);
-                });
-            })
-            .catch((error) => {
-              setSaveInProgress(false);
-              console.log('Error Updating User Data: ', error);
-            });
+          router.push({
+            pathname: '/users/me',
+          });
         })
         .catch((error) => {
           console.log('Error Updating Profile Data: ', error);
           setSaveInProgress(false);
         });
     } else {
-      console.log('Error profileId: ', profileId, ' Userid: ', userId);
+      console.log('Error Userid: ', userId);
     }
   };
 
@@ -205,101 +186,166 @@ export default function UserLandingPage() {
   };
 
   return (
-    <PageContainer>
-      <BannerContainer>
+    <div className="flex flex-col justify-center gap-8 bg-white">
+      <div className="flex h-40 bg-grayscale-100 flex-shrink-0 items-center justify-center">
         <img src={Breadcrumb} />
-      </BannerContainer>
-      <OnboardingContainer>
-        <ProfileContainer>
-          <ProfileHeader>
-            <Typography type="p">PROFILE</Typography>
-            <Typography type="h2">Let's Create Your Profile</Typography>
-          </ProfileHeader>
-          <Typography>
+      </div>
+      <div className="flex flex-col justify-center gap-6 items-center">
+        <div className="flex flex-col justify-center gap-8 items-center">
+          <div className="flex flex-col justify-center gap-6 items-center">
+            <p className="text-base text-black">PROFILE</p>
+            <p className="text-3xl text-black">Let's Create Your Profile</p>
+          </div>
+          <p className="text-base text-grayscale-900">
             A completed profile will help us match you with opportunities
-          </Typography>
-
-          {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-            <UploadedProfilePicture
-              src={
-                uploadedProfilePicture || userData?.profile?.profilePictureUrl
-              }
-            />
-          ) : (
-            <UploadProfilePicture width={120} height={120} />
-          )}
-          <UploadButton>
-            <label htmlFor="file-upload" className="cursor-pointer">
-              <img src={CameraIcon} className="Camera Icon" />
-            </label>
+          </p>
+          <div>
+            {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
+              <img
+                src={
+                  uploadedProfilePicture || userData?.profile?.profilePictureUrl
+                }
+                className="h-30 w-30"
+              />
+            ) : (
+              <UploadProfilePicture width={120} height={120} />
+            )}
+            <div className="relative right-[-10] bottom-5">
+              <label id="file-upload" className="cursor-pointer">
+                <img src={CameraIcon} className="Camera Icon" />
+              </label>
+              <input
+                id="file-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+              />
+            </div>
+          </div>
+        </div>
+        <form className="flex flex-col">
+          <div className="flex flex-row">
+            <p className="text-sm font-bold text-red-500">*</p>
+            <p className="text-sm font-normal text-black">
+              Indicates a required field
+            </p>
+          </div>
+          <div name="myForm">
+            {/* <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                id="firstNameLabel"
+              >
+                First Name
+              </label>
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
+                *
+              </p>
+            </div>
             <input
-              id="file-upload"
-              type="file"
-              accept="image/png, image/jpeg"
-              onChange={handleFileChange}
-              style={{ display: 'none' }}
-            />
-          </UploadButton>
-        </ProfileContainer>
-        <FormContainer>
-          <Typography>* Indicates a required field</Typography>
-          <FormFields name="myForm">
-            <InputField
-              error={formValidation.firstNameError}
-              label="First Name"
-              name="First Name"
-              onChange={onFirstNameChange}
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              id="firstName"
+              type="text"
               placeholder="John"
+              error={formValidation.firstNameError}
+              onChange={onFirstNameChange}
               touched={
                 person.firstNameTouched && !formValidation.isFirstNameValid
               }
               required
-            />
-            <InputField
-              error={formValidation.lastNameError}
-              label="Last Name"
-              name="Last Name"
-              onChange={onLastNameChange}
+            ></input>
+            <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                id="lastNameLabel"
+              >
+                Last Name
+              </label>
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
+                *
+              </p>
+            </div>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              id="lastName"
+              type="text"
               placeholder="Doe"
+              error={formValidation.lastNameError}
+              onChange={onLastNameChange}
               touched={
                 person.lastNameTouched && !formValidation.isLastNameValid
               }
               required
+            ></input> */}
+
+            <div className="flex flex-row">
+              <label
+                class="text-grayscale-900 text-base font-bold"
+                id="displayNameLabel"
+              >
+                Display Name
+              </label>
+              <p
+                aria-label="Required field"
+                className="text-grayscale-900 text-base font-bold text-red-500"
+              >
+                *
+              </p>
+            </div>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              id="lastName"
+              type="text"
+              placeholder="Doe"
+              error={formValidation.displayNameError}
+              onChange={onDisplayNameChange}
+              touched={person.displayNameTouched}
+              required
+            ></input>
+
+            <DropdownMenu
+              menuItems={countryData}
+              menu={person.country}
+              onChange={onCountryChange}
             />
 
-            {/* <InputField
-              error=""
-              label="Location (optional)"
-              onChange={onLocationChange}
-              placeholder="Lose Angels, CA"
-            />
-
-            <InputField
-              error=""
-              label="Role (optional)"
-              onChange={onRoleChange}
+            {/* <label class="text-grayscale-900 text-base font-bold" id="Role">
+              Role (optional)
+            </label>
+            <input
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              id="Role"
+              type="text"
               placeholder="CSS Developer"
-            />
-
-            <InputField
-              error=""
-              label="Headline (optional)"
-              onChange={onHeadLineChange}
-              placeholder="I'm an experienced CSS developer"
-            /> */}
-          </FormFields>
-          <FormFooter>
-            <CheckboxField
-              customLabel={
-                <Typography type="pSmall">
-                  I have read and agree to the <a>Terms and Conditions</a>
-                </Typography>
-              }
-              onChange={onTermsAndConditionChange}
-              checked={person.termsAndConditions}
-              required={true}
-            />
-            <ButtonContainer>
+              onChange="onRoleChange()"
+            ></input> */}
+          </div>
+          <div className="flex flex-col margin gap-32">
+            <div className="flex flex-row">
+              <div className="flex items-center">
+                <input
+                  id="agree-checkbox"
+                  type="checkbox"
+                  value=""
+                  className="w-6 h-6 text-purple-700 accent-purple-700 bg-white border-purple-700 rounded"
+                ></input>
+                <label id="agree-checkbox" className="text-sm text-black">
+                  I have read and agree to the{' '}
+                  <a href="https://staging.devlaunchers.org/page/terms-and-conditions">
+                    Terms and Conditions
+                  </a>
+                </label>
+              </div>
+              <p className="text-base text-red-500"> *</p>
+            </div>
+            <div className="flex pb-16 gap-134 h-full">
               <Button
                 buttonType="alternative"
                 buttonSize="xl"
@@ -312,22 +358,21 @@ export default function UserLandingPage() {
                 buttonType="secondary"
                 buttonSize="xl"
                 onClick={onContinueClick}
-                disabled={!formValidation.isFormValid()}
+                disabled={!formValidation.isFormValid() || saveInProgress}
               >
                 {saveInProgress ? (
                   <p className="flex items-center gap-3">
-                    {' '}
-                    <span> Saving </span>{' '}
-                    <Loader borderColorClass="border-white" />{' '}
+                    <span> Saving </span>
+                    <Loader borderColorClass="border-white" />
                   </p>
                 ) : (
                   'Save and Continue'
                 )}
               </Button>
-            </ButtonContainer>
-          </FormFooter>
-        </FormContainer>
-      </OnboardingContainer>
-    </PageContainer>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
