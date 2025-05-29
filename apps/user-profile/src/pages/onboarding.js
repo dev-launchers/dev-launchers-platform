@@ -38,7 +38,7 @@ export default function UserOnboardingPage() {
     if (!isLoading && isAuthenticated && hasAcceptedTermsOfService) {
       router.push('/users/me');
     }
-  }, [isAuthenticated, isLoading]); // Run the effect when `isAuthenticated` or `isLoading` changes
+  }, [isAuthenticated]); // Run the effect when `isAuthenticated` changes
 
   return (
     <>
