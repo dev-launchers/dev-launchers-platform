@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProfileHeader from './../ProfileHeader';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Skills from './Skills';
 import Bio from './Bio';
 import Interests from './Interests';
+import { useRouter } from 'next/router';
 
 /**
  * Overview Component
@@ -16,6 +17,15 @@ import Interests from './Interests';
 function Overview() {
   // Access user data from the context
   const { userData } = useUserDataContext();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!userData.hasAcceptedTermsOfService) {
+      router.push({
+        pathname: '/onboarding',
+      });
+    }
+  }, []);
 
   return (
     <>

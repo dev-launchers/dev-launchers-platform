@@ -33,16 +33,12 @@ export default function UserOnboardingPage() {
   const hasAcceptedTermsOfService =
     userData?.profile?.user?.hasAcceptedTermsOfService; // Check if the user accepted terms of service
 
-  // useEffect(() => {
-  //   // Redirect to signup if authenticated but no username is set
-  //   if (!isLoading && isAuthenticated && userData.name === '') {
-  //     router.push('/signup');
-  //   }
-  //   // Redirect to the user profile page if terms of service are accepted
-  //   else if (!isLoading && isAuthenticated && hasAcceptedTermsOfService) {
-  //     router.push('/users/me');
-  //   }
-  // }, [isAuthenticated]); // Run the effect when `isAuthenticated` changes
+  useEffect(() => {
+    // Redirect to the user profile page if terms of service are accepted
+    if (!isLoading && isAuthenticated && hasAcceptedTermsOfService) {
+      router.push('/users/me');
+    }
+  }, [isAuthenticated]); // Run the effect when `isAuthenticated` changes
 
   return (
     <>
