@@ -354,7 +354,7 @@ const Navigation = () => {
           <>
             <button
               onClick={() =>
-                (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/users/me`)
+                (window.location.href = `${process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL}?redirectURL=${process.env.NEXT_PUBLIC_FRONT_END_URL}/onboarding`)
               }
               className={styles.buttonSecondary}
             >

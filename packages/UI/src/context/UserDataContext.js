@@ -17,6 +17,7 @@ export const DEFAULT_USER = {
     discriminator: '',
   },
   interests: [],
+  hasAcceptedTermsOfService: false,
 };
 
 // Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
@@ -52,6 +53,7 @@ function useUserDataHook() {
           idea_cards: currentUser.idea_cards,
           profile: currentUser.profile,
           ownedCards: currentUser.ownedCards,
+          hasAcceptedTermsOfService: currentUser.hasAcceptedTermsOfService,
         });
         setIsLoading(false);
       })

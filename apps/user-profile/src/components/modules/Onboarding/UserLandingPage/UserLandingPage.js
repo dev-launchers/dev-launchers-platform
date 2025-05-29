@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
+import axios from 'axios';
 import CameraIcon from './../../../../../src/images/camera-icon.svg';
 import Button from '@devlaunchers/components/components/atoms/Button';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
@@ -33,9 +34,8 @@ export default function UserLandingPage() {
   const { userData } = useUserDataContext();
   const [person, setPerson] = useState({ ...initialFormValue });
   const [saveInProgress, setSaveInProgress] = useState(false);
-  const [formValidation, setFormValidation] = useState(
-    validate(initialFormValue)
-  );
+  const [formValidation, setFormValidation] = useState({});
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const [profilePicture, setProfilePicture] = useState(
     userData?.profile?.profilePictureUrl
@@ -58,7 +58,7 @@ export default function UserLandingPage() {
       errors.isFirstNameValid = false;
       errors.firstNameError = 'First name is not valid';
     } else {
-      errors.isFirstNameValid = true;
+      errors.isFirstNameValid = formValue.firstName.trim().length > 0;
     }
 
     if (!formValue.lastNameTouched) {
@@ -68,21 +68,15 @@ export default function UserLandingPage() {
       errors.isLastNameValid = false;
       errors.lastNameError = 'Last name is not valid';
     } else {
-      errors.isLastNameValid = true;
+      errors.isLastNameValid = formValue.lastName.trim().length > 0;
     }
 
     if (!formValue.displayNameTouched) {
       errors.displayNameError = 'Display name is required';
       errors.isDisplayNameValid = false;
     } else {
-      errors.isDisplayNameValid = true;
+      errors.isDisplayNameValid = formValue.displayName.trim().length > 0;
     }
-
-    errors.isFormValid = () =>
-      formValue.termsAndConditions &&
-      errors.isFirstNameValid &&
-      errors.isLastNameValid &&
-      errors.isDisplayNameValid;
 
     return errors;
   }
@@ -143,36 +137,43 @@ export default function UserLandingPage() {
     setPerson({ ...person, role: e.target.value });
   }
 
-  function onTermsAndConditionChange(e) {
-    setPerson({ ...person, termsAndConditions: !person.termsAndConditions });
-  }
-
-  function onJoinNewsLetterChange() {}
-
   const onContinueClick = (e) => {
     const userId = userData?.id;
 
     if (userId) {
       const profileRequestBody = {
-        data: {
-          user: userData?.id,
-          displayName: `${person.displayName}`,
-          profilePictureUrl: uploadedProfilePicture || profilePicture,
-          hasAcceptedTermsOfService: true,
-        },
+        user: userId,
+        displayName: person.displayName,
+        profilePictureUrl: uploadedProfilePicture || profilePicture,
       };
+
       setSaveInProgress(true);
 
       agent.Profiles.post(profileRequestBody)
         .then(() => {
-          setSaveInProgress(false);
+          const userRequestBody = {
+            hasAcceptedTermsOfService: true,
+          };
 
-          router.push({
-            pathname: '/users/me',
-          });
+          axios
+            .put(
+              `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}/`,
+              userRequestBody,
+              { withCredentials: true }
+            )
+            .then(() => {
+              router.push({
+                pathname: '/users/me',
+              });
+            })
+            .catch((error) => {
+              console.log('Error Updating User Data: ', error);
+            });
         })
         .catch((error) => {
           console.log('Error Updating Profile Data: ', error);
+        })
+        .finally(() => {
           setSaveInProgress(false);
         });
     } else {
@@ -224,7 +225,7 @@ export default function UserLandingPage() {
             </div>
           </div>
         </div>
-        <form className="flex flex-col">
+        <div className="flex flex-col">
           <div className="flex flex-row">
             <p className="text-sm font-bold text-red-500">*</p>
             <p className="text-sm font-normal text-black">
@@ -331,6 +332,7 @@ export default function UserLandingPage() {
             <div className="flex flex-row">
               <div className="flex items-center">
                 <input
+                  onChange={(e) => setTermsAccepted(e.target.checked)}
                   id="agree-checkbox"
                   type="checkbox"
                   value=""
@@ -354,15 +356,14 @@ export default function UserLandingPage() {
                 Cancel
               </Button>
               <Button
-                type="submit"
                 buttonType="secondary"
                 buttonSize="xl"
                 onClick={onContinueClick}
-                disabled={!formValidation.isFormValid() || saveInProgress}
+                disabled={!formValidation.isDisplayNameValid || !termsAccepted}
               >
                 {saveInProgress ? (
                   <p className="flex items-center gap-3">
-                    <span> Saving </span>
+                    <span>Saving</span>
                     <Loader borderColorClass="border-white" />
                   </p>
                 ) : (
@@ -371,7 +372,7 @@ export default function UserLandingPage() {
               </Button>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );
