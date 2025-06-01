@@ -13,9 +13,5 @@
     "@devlaunchers/models": "workspace:^",
     "axios": "^0.27.2",
     "eslint": "8.21.0"
-  },
-  "devDependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0"
   }
 }

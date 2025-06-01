@@ -82,8 +82,8 @@
     "typescript": "5.3.3"
   },
   "resolutions": {
-    "@types/react": "17.0.14",
-    "@types/react-dom": "17.0.14"
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0"
   },
   "release": {
     "branches": [
@@ -122,9 +122,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "resolutions": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0"
   }
 }
