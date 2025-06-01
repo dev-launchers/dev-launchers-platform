@@ -35,9 +35,9 @@ export default function UserProfilePage() {
       router.push('/signup');
     }
     // this will force people on the onbaording page to accept temps of service
-    // else if (!isLoading && isAuthenticated && !hasAcceptedTermsOfService) {
-    //   router.push('/onboarding')
-    // };
+    else if (!isLoading && isAuthenticated && !hasAcceptedTermsOfService) {
+      router.push('/onboarding');
+    }
   }, [isAuthenticated]);
 
   /**
