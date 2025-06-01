@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
+import { atoms } from '@devlaunchers/components/src/components';
+import { X } from 'lucide-react';
 
 const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+  const editIdeaRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-  React.useEffect(() => {
+  // Add a key state to force re-render of EditIdea component
+  const [componentKey, setComponentKey] = React.useState(Date.now());
+
+  useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       setWindowHeight(window.innerHeight);
@@ -13,6 +20,17 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // Reset key when the form opens or initialIdea changes
+  useEffect(() => {
+    if (open) {
+      setComponentKey(Date.now()); // Generate a new key to force re-render
+
+      // Clear any localStorage cache
+      localStorage.removeItem('ideaFormData');
+      localStorage.removeItem('involveLevel');
+    }
+  }, [open, initialIdea]);
 
   const isMobileDrawer = windowWidth < 1024;
 
@@ -23,8 +41,8 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     topMargin = 150; // Tablet gap
   }
 
-  const [exiting, setExiting] = React.useState(false);
-  React.useEffect(() => {
+  const [exiting, setExiting] = useState(false);
+  useEffect(() => {
     if (open) {
       setExiting(false);
     } else if (!isMobileDrawer) {
@@ -67,8 +85,43 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
   const closeButtonClasses =
     'bg-transparent border-0 text-[1.25rem] cursor-pointer';
 
+  const handleSave = async () => {
+    if (editIdeaRef.current) {
+      setIsSubmitting(true);
+      try {
+        editIdeaRef.current.touchAllFields();
+        await editIdeaRef.current.submitForm();
+        setIsSubmitting(false);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setIsSubmitting(false);
+      }
+    }
+  };
+
+  const handleClose = () => {
+    // Clear localStorage
+    localStorage.removeItem('ideaFormData');
+    localStorage.removeItem('involveLevel');
+    onClose();
+  };
+
+  const handleEditSuccess = (updatedIdea) => {
+    // Generate a new key to force re-render next time the component opens
+    setComponentKey(Date.now());
+
+    // Pass the updated idea to parent
+    if (onEditSuccess) {
+      onEditSuccess(updatedIdea);
+    }
+
+    // Close the dialog
+    handleClose();
+  };
+
+  const isSending = editIdeaRef.current?.isSending() || false;
   return (
-    <div onClick={onClose} className={overlayClasses}>
+    <div onClick={handleClose} className={overlayClasses}>
       <div
         onClick={(e) => e.stopPropagation()}
         className={isMobileDrawer ? mobileDialogClasses : desktopDialogClasses}
@@ -78,19 +131,50 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
       >
         <div className={headerClasses}>
           <div className="font-medium text-lg">Edit Idea</div>
-          <button onClick={onClose} className={closeButtonClasses}>
-            X
+          {/* <button onClick={handleClose} className={closeButtonClasses}>
+            X */}
+          <button onClick={handleClose}>
+            <X size={20} />
           </button>
         </div>
 
         <div className={contentClasses}>
-          <EditIdea initialIdea={initialIdea} onEditSuccess={onEditSuccess} />
+          {open && (
+            <EditIdea
+              key={componentKey} // Use key to force re-create component
+              ref={editIdeaRef}
+              initialIdea={initialIdea}
+              onEditSuccess={handleEditSuccess}
+            />
+          )}
         </div>
 
         <div className={footerClasses}>
-          {/* <button onClick={onClose} className={cancelButtonClasses}>
+          <atoms.Button
+            //buttonSize="standard"
+            //buttonType="alternative"
+            //type="button"
+            type="secondary"
+            size="medium"
+            mode="light"
+            onClick={handleClose}
+          >
             Cancel
-          </button> */}
+          </atoms.Button>
+          {/* Add an explicit spacer */}
+          <div style={{ width: '12px' }}></div>
+          <atoms.Button
+            // buttonSize="standard"
+            // buttonType="primary"
+            // type="submit"
+            type="primary"
+            size="medium"
+            mode="light"
+            disabled={isSubmitting || isSending}
+            onClick={handleSave}
+          >
+            {isSubmitting || isSending ? 'Wait' : 'Save Changes'}
+          </atoms.Button>
         </div>
       </div>
     </div>
