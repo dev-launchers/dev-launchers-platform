@@ -166,5 +166,5 @@ export const typographyStyles = {
 
 export const Text = styled.p<TypographyProps>`
   ${({ type }) => eval(type || p)};
-  text-align: ${({ textAlign }) => textAlign};
+  text-align: ${({ textalign }) => textalign};
 `;
