@@ -1,6 +1,7 @@
 export { default } from './Typography';
 export { typographyStyles } from './Styled.Typography';
-import type CSS from 'csstype';
+import type { styles } from './style';
+
 export interface TypographyProps {
   type?:
     | 'h1'
@@ -16,5 +17,12 @@ export interface TypographyProps {
     | 'labelSmall'
     | 'link'
     | 'navLink';
-  textAlign?: CSS.Properties['textAlign'];
+  size?: keyof typeof styles.size;
+  variant?: keyof typeof styles.variant;
+  leading?: keyof typeof styles.leading;
+  textalign?: keyof typeof styles.textalign;
+  textcase?: keyof typeof styles.textcase;
+  textweight?: keyof typeof styles.textweight;
+  textstyle?: keyof typeof styles.textstyle;
+  textdecoration?: keyof typeof styles.textdecoration;
 }
