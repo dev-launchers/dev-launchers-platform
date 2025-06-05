@@ -13,6 +13,7 @@
     "dev": "tailwindcss -c ./tailwind.config.js -i ./styles.css -o ./tailwind.css --watch"
   },
   "dependencies": {
+    "@devlaunchers/tailwind": "file:",
     "postcss-cli": "^9.0.1",
     "style-dictionary": "^3.0.2",
     "tailwind-hamburgers": "1.3.5",
