@@ -24,7 +24,7 @@
     "framer-motion": "6.5.1",
     "iso8601-duration": "2.1.2",
     "lucide-react": "0.314.0",
-    "next": "^12.2.3",
+    "next": "^14.2.25",
     "next-share": "0.27.0",
     "polished": "^4.2.2",
     "react": "^17.0.2",
