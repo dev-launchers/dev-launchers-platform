@@ -97,12 +97,12 @@ function SubmissionForm() {
         setunsavedChanges(false);
         router.push(`workshop/${data.id}`);
       } else {
-        alert('Unable to register your idea.');
+        throw new Error('Unable to register your idea.');
       }
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      confirmFailure();
+      throw error;
     }
   };
 
