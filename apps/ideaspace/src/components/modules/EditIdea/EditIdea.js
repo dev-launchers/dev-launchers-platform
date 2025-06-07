@@ -28,7 +28,7 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   );
   const [urrl, setUrrl] = useState('');
 
-  const REQUIRED_FIELDS = [
+  const requiredFields = [
     'ideaName',
     'description',
     'experience',
@@ -202,7 +202,7 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     submitForm: () => {
       if (formikRef.current) {
         // Touch all required fields before submission
-        REQUIRED_FIELDS.forEach((field) =>
+        requiredFields.forEach((field) =>
           formikRef.current.setFieldTouched(field, true, false)
         );
 
@@ -233,7 +233,7 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     },
     touchAllFields: () => {
       if (formikRef.current) {
-        REQUIRED_FIELDS.forEach((field) =>
+        requiredFields.forEach((field) =>
           formikRef.current.setFieldTouched(field, true, false)
         );
         formikRef.current.validateForm();
