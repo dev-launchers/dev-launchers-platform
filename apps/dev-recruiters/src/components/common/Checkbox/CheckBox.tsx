@@ -1,13 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
 import { CheckboxContainer, CheckboxInput, CheckMark } from './StyledCheckbox';
-// import {
-//   CheckboxContainer,
-//   HiddenCheckbox,
-//   StyledCheckbox,
-//   Icon,
-//   Label,
-// } from './StyledCheckbox';
 
 interface Props {
   id: string;
@@ -23,11 +15,11 @@ export default function Checkbox({ id, label, checked, onChange }: Props) {
       <CheckboxInput
         checked={checked}
         onChange={onChange}
-        type='checkbox'
+        type="checkbox"
         id={id}
       />
 
-      <CheckMark className='checkmark' />
+      <CheckMark className="checkmark" />
     </CheckboxContainer>
   );
 }

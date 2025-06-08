@@ -5,7 +5,7 @@ const Checkbox = ({
   checked = false,
   label,
   onChange,
-  theme = 'brand',
+  theme = 'grey',
   size = 'base',
   ...props
 }: CheckboxProps) => {
@@ -14,27 +14,45 @@ const Checkbox = ({
 
   // Theme classes
   let baseColor = '';
-  let checkedColor = '';
+  let checkedColor = 'text-white ';
   let focusRing = '';
+  let hoverRing = '';
 
   switch (theme) {
-    case 'grey':
-      baseColor = 'border-gray-500';
-      checkedColor = 'bg-black text-white';
-      focusRing = 'focus:ring-gray-400';
-      break;
     case 'error':
       baseColor = 'border-red-600';
-      checkedColor = 'bg-red-600 text-white';
+      checkedColor += 'bg-red-600';
       focusRing = 'focus:ring-red-500';
+      hoverRing = 'hover:[--tw-ring-color:#EBC4C4]';
+      break;
+    case 'brand':
+      baseColor = 'border-purple-700';
+      checkedColor += 'bg-purple-700';
+      focusRing = 'focus:ring-purple-500';
+      hoverRing = 'hover:[--tw-ring-color:#CDB7E1]';
+      break;
+    case 'grey':
+      baseColor = 'border-gray-900';
+      checkedColor += 'bg-black';
+      focusRing = 'focus:ring-gray-400';
+      hoverRing = 'hover:[--tw-ring-color:#DAD8D9]';
       break;
     default:
-      baseColor = 'border-purple-700';
-      checkedColor = 'bg-purple-700 text-white';
-      focusRing = 'focus:ring-purple-500';
+      break;
   }
 
-  const sharedClass = `appearance-none border-2 rounded flex items-center justify-center transition duration-200 ease-in-out hover:shadow-md ${sizeClass} ${baseColor} ${focusRing} ${checked ? checkedColor : ''} ${disabled ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed opacity-60' : 'cursor-pointer'}`;
+  const sharedClass = `appearance-none border-2 rounded flex items-center justify-center transition duration-200 ease-in-out hover:shadow-md
+  ${sizeClass} ${baseColor} ${focusRing} hover:ring-2 ${hoverRing}
+  ${
+    checked
+      ? `${checkedColor} before:content-['✓'] before:text-white before:text-sm before:font-bold`
+      : ''
+  }
+  ${
+    disabled
+      ? 'bg-gray-200 border-gray-300 text-gray-400 cursor-not-allowed opacity-60'
+      : 'cursor-pointer'
+  } relative before:absolute before:inset-0 before:flex before:items-center before:justify-center`;
 
   return (
     <label
