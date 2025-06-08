@@ -39,13 +39,13 @@ const Footer = () => {
               contact@devlaunchers.com
             </a>
             <a
-              href="page/terms-and-conditions"
+              href="/page/terms-and-conditions"
               className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
             >
               Terms of Service
             </a>
             <a
-              href="page/privacy-policy"
+              href="/page/privacy-policy"
               className=" py-2 text-purple-400 hover:text-purple-500 hover:underline md:min-w-0"
             >
               Privacy Policy
