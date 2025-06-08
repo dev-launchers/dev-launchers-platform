@@ -1,6 +1,7 @@
 import type { CheckboxProps } from '.';
 
 const Checkbox = ({
+  id = '',
   disabled = false,
   checked = false,
   label,
@@ -60,6 +61,7 @@ const Checkbox = ({
         disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'
       }`}
       htmlFor={label}
+      id={id}
     >
       <input
         type="checkbox"
