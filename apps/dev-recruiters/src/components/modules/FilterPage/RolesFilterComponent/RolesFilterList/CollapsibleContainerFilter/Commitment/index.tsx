@@ -6,7 +6,7 @@ import {
   CommitmentTitle,
   TimeCommitment,
 } from './styles';
-import Checkbox from '../../../../../../../../../../packages/UI/src/components/atoms/Checkbox';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox';
 import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 
 function Commitment() {
