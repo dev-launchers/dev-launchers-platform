@@ -28,6 +28,15 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   );
   const [urrl, setUrrl] = useState('');
 
+  const requiredFields = [
+    'ideaName',
+    'description',
+    'experience',
+    'targetAudience',
+    'features',
+    'involveLevel',
+  ];
+
   const [UpdateSucceed, confirmSucceed] = useConfirm(
     ['Idea updated successfully', '', ''],
     '',
@@ -110,6 +119,9 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     ideaName: Yup.string().trim().required('Idea Name is Required.'),
     description: Yup.string().trim().required('Idea Description is Required.'),
     experience: Yup.string().trim().required('Experience is Required.'),
+    targetAudience: Yup.string()
+      .trim()
+      .required('Target Audience is Required.'),
     features: Yup.string().trim().required('Idea Feature is Required.'),
     involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
@@ -186,27 +198,10 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
       window.history.back(-1);
     }
   };
-  // useImperativeHandle(ref, () => ({
-  //   submitForm: () => {
-  //     if (formikRef.current) {
-  //       return formikRef.current.submitForm();
-  //     }
-  //     return Promise.reject('Formik instance not available');
-  //   },
-  //   isSending: () => sending,
-  // }));
   useImperativeHandle(ref, () => ({
     submitForm: () => {
       if (formikRef.current) {
         // Touch all required fields before submission
-        const requiredFields = [
-          'ideaName',
-          'description',
-          'experience',
-          'targetAudience',
-          'features',
-          'involveLevel',
-        ];
         requiredFields.forEach((field) =>
           formikRef.current.setFieldTouched(field, true, false)
         );
@@ -238,14 +233,6 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     },
     touchAllFields: () => {
       if (formikRef.current) {
-        const requiredFields = [
-          'ideaName',
-          'description',
-          'experience',
-          'targetAudience',
-          'features',
-          'involveLevel',
-        ];
         requiredFields.forEach((field) =>
           formikRef.current.setFieldTouched(field, true, false)
         );
@@ -260,19 +247,6 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   } else {
     return (
       <>
-        {/* <HeadWapper>
-          <Headline>Dev Ideas</Headline>
-          <StyledRanbow>
-            <atoms.Layer hasRainbowBottom />
-          </StyledRanbow>
-          <BackButton buttonType="confirm" clickHandler={backHandler} />
-          <atoms.Typography type="h4">
-            Have an idea for a development project?
-            <br />
-            Share your idea with us!
-          </atoms.Typography>
-        </HeadWapper> */}
-
         {!isAuthenticated ? (
           <SignInSection
             label="Please sign in to edit your idea!"
