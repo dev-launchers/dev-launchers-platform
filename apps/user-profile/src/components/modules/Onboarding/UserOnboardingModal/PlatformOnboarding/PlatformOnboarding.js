@@ -3,7 +3,7 @@ import Stepper from '../Stepper';
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
-import PageFive from './PageFive';
+import PageFive from './PageFive/PageFive';
 import PageSix from './PageSix/PageSix';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
