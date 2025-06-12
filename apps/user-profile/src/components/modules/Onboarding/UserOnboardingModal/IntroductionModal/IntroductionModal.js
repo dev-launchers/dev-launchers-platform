@@ -39,15 +39,21 @@ export default function IntroductionModal() {
           </Typography>
         </div>
         <div className="flex flex-col gap-4">
-          <Button buttonType="primary" buttonSize="xl" onClick={onGetStarted}>
-            GET STARTED (TAKES 2-5 MINUTES)
+          <Button
+            type="primary"
+            size="large"
+            color="nebula"
+            onClick={onGetStarted}
+          >
+            Get Started (Takes 2-5 Minutes)
           </Button>
           <Button
-            buttonType="alternative"
-            buttonSize="xl"
+            type="secondary"
+            color="nebula"
+            size="large"
             onClick={onSetUpLater}
           >
-            SET UP LATER
+            Set Up Later
           </Button>
         </div>
       </div>
