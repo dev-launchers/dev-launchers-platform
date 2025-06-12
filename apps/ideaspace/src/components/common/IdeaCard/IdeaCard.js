@@ -38,7 +38,7 @@ function IdeaCard({ cards, cardType }) {
       } else {
         setButtonContent(`REACTIVATE THIS IDEA`);
       }
-      setUrlPath(`/ideaspace/edit/${cards.id}`);
+      setUrlPath(`/ideaspace/workshop/${cards.id}`);
     } else {
       setButtonContent(`HELP THIS IDEA`);
       setUrlPath(`/ideaspace/workshop/${cards.id}`);
