@@ -154,6 +154,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
             type="secondary"
             size="medium"
             mode="dark"
+            color="nebula"
             onClick={handleClose}
           >
             Cancel
@@ -164,6 +165,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
             type="primary"
             size="medium"
             mode="dark"
+            color="nebula"
             disabled={isSubmitting || isSending}
             onClick={handleSave}
           >
