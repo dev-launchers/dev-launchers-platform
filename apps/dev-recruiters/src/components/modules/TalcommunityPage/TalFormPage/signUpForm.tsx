@@ -1,39 +1,39 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import theme from '@devlaunchers/components/src/styles/theme';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
-import { Opportunity } from '@devlaunchers/models';
-import { Checkbox } from '@devlaunchers/components/src/components/Checkbox';
-
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
-import React from 'react';
 import { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
 import { Wrapper } from '../StyledTalcommunityPage';
 
-// interface FormFields extends Omit<NewApplicant, 'level'> {
-//   level: NewApplicant['level'] | '';
-// }
 interface Props {
   handleCloseModal: () => void;
+}
+
+interface TalCommFormValues {
+  name: string;
+  emailID: string;
+  skills: string;
+  roles: string;
 }
 
 export default function TalCommForm({ handleCloseModal }: Props) {
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name Field Entry is Required'),
-    email: Yup.string()
+    emailID: Yup.string()
       .email('Invalid email')
       .required('Email Field Entry is Required'),
     roles: Yup.string().required('Roles Field Entry is Required'),
     skills: Yup.string().required('Skills Field Entry is Required'),
   });
+
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
   const [ageCheckbox, setAgeCheckbox] = useState<boolean | undefined>();
   const [termsCheckbox, setTermsCheckbox] = useState<boolean | undefined>();
+  const router = useRouter();
 
   const handleSetAgeCheckbox = () => {
     setAgeCheckbox(!ageCheckbox);
@@ -46,11 +46,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
   const handleOpenConfirmationModal = () => {
     setShowConfirmationModal(true);
   };
-  const router = useRouter();
-  const routeChange = (e) => {
-    e.preventDefault();
-    router.push('/join/oldjoin');
-  };
 
   return (
     <Wrapper>
@@ -58,42 +53,51 @@ export default function TalCommForm({ handleCloseModal }: Props) {
         <Formik
           initialValues={{
             name: '',
-            email: '',
+            emailID: '',
             roles: '',
             skills: '',
           }}
           onSubmit={(
-            values: Talcommuser,
-            { setSubmitting }: FormikHelpers<Talcommuser>
+            values: TalCommFormValues,
+            { setSubmitting }: FormikHelpers<TalCommFormValues>
           ) => {
             setSubmitting(true);
-            agent.Talcommuser.post({
-              ...values,
-              //@ts-ignore
-              // level: values.level.toLowerCase(),
-              skills: values.skills
-                .toString()
-                .split(',')
-                .map((skill) => ({ skill: skill })),
-              roles: 'title' as string, // role: position.title as string,
-              // project:  router.query.project as string,
-              // id: '5' as string, // id: position.id as string,
+            console.log('Formik Values at Submit:', values);
+
+            console.log('Data being sent to backend:', {
+              data: {
+                name: values.name,
+                emailID: values.emailID,
+                skills: values.skills,
+                roles: values.roles,
+              },
+            });
+
+            agent.DlTalcommuser.post({
+              data: {
+                name: values.name,
+                emailID: values.emailID,
+                skills: values.skills,
+                roles: values.roles,
+              },
             })
               .then((res) => {
+                console.log(res);
                 handleOpenConfirmationModal();
+                router.push('/join/oldjoin');
                 setSubmitting(false);
               })
               .catch((error) => {
                 setSubmitting(false);
-                console.log(error);
-                console.log(error.response);
-                console.log(error.response.data);
-                console.log(error.response.status);
+                console.error(
+                  'Submission Error:',
+                  error.response || error.message || error
+                );
               });
           }}
           validationSchema={SignupSchema}
         >
-          {({ errors, setFieldValue, touched, values }) => (
+          {({ errors, touched, isSubmitting }) => (
             <atoms.Box paddingInline="0.5rem" justifyContent="center">
               <path
                 strokeLinecap="round"
@@ -123,11 +127,11 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       as={organisms.FormField}
                       label="Your Email"
                       placeholder="johnsmith@gmail.com"
-                      id="email"
-                      name="email"
+                      id="emailID"
+                      name="emailID"
                       required
-                      touched={touched['email']}
-                      error={errors.email}
+                      touched={touched['emailID']}
+                      error={errors.emailID}
                     />
 
                     <Field
@@ -139,7 +143,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       name="skills"
                       error={errors.skills}
                       touched={touched.skills}
-                      // onChange={handleChange}
                     />
                     <Field
                       as={organisms.FormField}
@@ -150,7 +153,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       name="roles"
                       error={errors.roles}
                       touched={touched.roles}
-                      // onChange={handleChange}
                     />
 
                     <atoms.Typography type="p">
@@ -172,10 +174,11 @@ export default function TalCommForm({ handleCloseModal }: Props) {
 
                     <atoms.Box maxWidth="50%">
                       <atoms.Button
-                        buttonSize="standard"
+                        type="submit"
+                        disabled={isSubmitting}
+                        buttonSize="medium"
                         buttonType="primary"
-                        as="a"
-                        onClick={routeChange} //add submit here to button property once backend is complete
+                        className="w-full"
                       >
                         SUBMIT
                       </atoms.Button>
