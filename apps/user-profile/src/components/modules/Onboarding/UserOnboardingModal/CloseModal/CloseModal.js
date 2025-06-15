@@ -25,8 +25,8 @@ export default function CloseModal() {
           onClick={closeModal}
         />
         <div className="flex flex-col">
-          <Typography type="h3">Close onboarding?</Typography>
-          <Typography type="p">
+          <Typography variant="primary">Close onboarding?</Typography>
+          <Typography variant="secondary">
             Are you sure you want to leave onboarding? <br />
             Don't worry, we'll save your changes!
           </Typography>

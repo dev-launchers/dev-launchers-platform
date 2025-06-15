@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
 import { radiusStyles } from '../../atoms/Radius/StyledRadius';
 import { shadowStyles } from '../../atoms/Shadow';
-import { typographyStyles } from '../../atoms/Typography';
+import { typographyStyles } from '../../atoms/TypographyOld';
 
 export const BackButton = styled.a`
   ${typographyStyles['label']}

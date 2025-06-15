@@ -1,9 +1,9 @@
-import React from 'react';
 import {
   Box,
   Layer,
   Typography,
 } from '@devlaunchers/components/src/components/atoms';
+import React from 'react';
 import Discord from '../../../../assets/icons/Discord';
 import Mail from '../../../../assets/icons/Mail';
 import { useUserDataContext } from '../../../../context/UserDataContext';
@@ -83,7 +83,11 @@ export default function UserCard({
               <Discord width={'22px'} height={'16px'} />
               <Box flexDirection="column">
                 <Typography type="label">DISCORD</Typography>
-                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                <Typography
+                  variant="secondary"
+                  size="sm"
+                  css={{ marginTop: '.5rem' }}
+                >
                   {userInfo?.discord?.username}#
                   {userInfo?.discord?.discriminator}
                 </Typography>
@@ -102,7 +106,11 @@ export default function UserCard({
               <Mail width={'22px'} height={'16px'} />
               <Box flexDirection="column">
                 <Typography type="label">Email</Typography>
-                <Typography type="pSmall" css={{ marginTop: '.5rem' }}>
+                <Typography
+                  variant="secondary"
+                  size="sm"
+                  css={{ marginTop: '.5rem' }}
+                >
                   {userInfo.email}
                 </Typography>
               </Box>

@@ -4,10 +4,12 @@ import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
 import { DropdownMenu } from '@devlaunchers/components/src/components/DropdownMenu';
-import { DropdownMenuTrigger } from '@devlaunchers/components/components/DropdownMenu';
 import { DropdownMenuContent } from '@devlaunchers/components/components/DropdownMenu';
 import { DropdownMenuRadioGroup } from '@devlaunchers/components/components/DropdownMenu';
-import { DropdownMenuRadioItemStyled } from './StyledBrowseIdeas';
+import {
+  DropdownMenuRadioItemStyled,
+  DropdownMenuTriggerStyled,
+} from './StyledBrowseIdeas';
 import { ChevronDown } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
@@ -103,7 +105,7 @@ function BrowseIdeas() {
     const ideaCards = cleanDataList(
       await agent.Ideas.get(
         new URLSearchParams(
-          `&populate[ideaOwner][populate]&populate[comments][populate]&populate[author][populate]=*&pagination[pageSize]=1000`
+          `&populate[ideaOwner][populate]&populate[comments][populate]&populate[author][populate][profile][populate]&pagination[pageSize]=1000&filters[status][$ne]=deleted`
         )
       )
     );
@@ -185,7 +187,7 @@ function BrowseIdeas() {
           <div>
             <FilterDiv>
               <DropdownMenu>
-                <DropdownMenuTrigger
+                <DropdownMenuTriggerStyled
                   asChild
                   size={isMobile ? 'medium' : 'large'}
                 >
@@ -193,7 +195,7 @@ function BrowseIdeas() {
                     {selectedSortCriterionLabel}
                     <ChevronDown className="group-data-open:rotate-180" />
                   </div>
-                </DropdownMenuTrigger>
+                </DropdownMenuTriggerStyled>
                 <DropdownMenuContent
                   size={isMobile ? 'medium' : 'large'}
                   className="bg-white"

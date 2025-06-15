@@ -86,7 +86,7 @@ const requests = {
     axios.patch<T>(url, body).then(responseBody),
   delete: <T>(url: string, body?: {}) =>
     axios.delete<T>(url, { data: body }).then(responseBody),
-  postForm: (url: string, data: FormData) =>
+  postForm: <T>(url: string, data: FormData) =>
     axios
       .post<T>(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },

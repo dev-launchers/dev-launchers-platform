@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
-import { typographyStyles } from '../components/atoms/Typography/Styled.Typography';
+import { typographyStyles } from '../components/atoms/TypographyOld/Styled.Typography';
 
 const GlobalStyle = createGlobalStyle`
     ${normalize}
