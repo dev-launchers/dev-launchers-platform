@@ -143,12 +143,19 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <Headline>Submit an idea</Headline>
+        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+          Submit an idea
+        </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
-        <atoms.Typography type="h4">
+        <atoms.Typography
+          variant="primary"
+          size="xl3"
+          textAlign="center"
+          as="h4"
+        >
           Have an idea for a software project but need developers to build it?
           <br />
           Bring your idea to us - we will work with you to spin up a project to
