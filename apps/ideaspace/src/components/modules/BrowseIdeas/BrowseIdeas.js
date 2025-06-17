@@ -34,7 +34,7 @@ function BrowseIdeas() {
   const sortingConfigs = [
     {
       value: 'default',
-      label: 'Default',
+      label: 'All Ideas',
       isAscending: false,
     },
     {
