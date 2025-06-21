@@ -153,7 +153,8 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
           <atoms.Button
             type="secondary"
             size="medium"
-            mode="dark"
+            mode="light"
+            color="nebula"
             onClick={handleClose}
           >
             Cancel
@@ -163,7 +164,8 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
           <atoms.Button
             type="primary"
             size="medium"
-            mode="dark"
+            mode="light"
+            color="nebula"
             disabled={isSubmitting || isSending}
             onClick={handleSave}
           >
