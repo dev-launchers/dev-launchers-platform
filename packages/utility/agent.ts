@@ -87,9 +87,9 @@ const requests = {
     axios.patch<T>(url, body).then(responseBody),
   delete: <T>(url: string, body?: {}) =>
     axios.delete<T>(url, { data: body }).then(responseBody),
-  postForm: (url: string, data: FormData) =>
+  postForm: <T>(url: string, data: FormData) =>
     axios
-      .post(url, data, {
+      .post<T>(url, data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then(responseBody),
@@ -190,6 +190,15 @@ const Talcommuser = {
   }) => requests.post('/dl-tal-communities', body),
 };
 
+const GoogledriveFile = {
+  post: async (data: FormData) => {
+    return await requests.postForm<FormData>(`/googledrive/`, data);
+  },
+  delete: async (id: string) => {
+    return await requests.delete('/googledrive/' + id);
+  },
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -203,6 +212,7 @@ const agent = {
   Profiles,
   requests,
   Talcommuser,
+  GoogledriveFile,
 };
 
 export default agent;

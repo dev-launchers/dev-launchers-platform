@@ -1,28 +1,12 @@
 import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-type ProfileDropdownProps = {
-  userData: {
-    id: number;
-    name: string;
-    username: string;
-    email: string;
-    bio: string;
-    profilePictureUrl: string;
-    socialMediaLinks: never[];
-    discord: {
-      id: number;
-      avatar: string;
-      username: string;
-      discriminator: string;
-    };
-    interests: never[];
-  };
-};
+
 // Centralized styles
 const styles = {
   // Navigation styles
@@ -112,7 +96,12 @@ const projectItems = [
   },
 ];
 
-const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
+interface UserData {
+  name: string;
+  profilePictureUrl: string;
+}
+
+const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
@@ -137,7 +126,7 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
 
   return (
     <div className={styles.dropdownContainer} ref={dropdownRef}>
-      <div className="text-white mr-6">
+      <div className="mr-6 text-white">
         <NotificationPopover />
       </div>
       <button
@@ -173,7 +162,7 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
                 <span>Profile</span>
               </p>
             </Link>
-            <Link href="ideaspace/dashboard">
+            <Link href="/ideaspace/dashboard">
               <p className={styles.profileMenuItem}>
                 <Lightbulb className={styles.icon} />
                 <span>Idea Dashboard</span>
@@ -193,13 +182,22 @@ const ProfileDropdown = ({ userData }: ProfileDropdownProps) => {
   );
 };
 
-const DropdownMenu = ({ trigger, items = projectItems }) => {
+const DropdownMenu = ({
+  trigger,
+  items = projectItems,
+}: {
+  trigger: React.ReactNode;
+  items: typeof projectItems;
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -245,13 +243,27 @@ const DropdownMenu = ({ trigger, items = projectItems }) => {
   );
 };
 
-const MobileDropdown = ({ title, items }) => {
+interface DropdownItem {
+  label: string;
+  href: string;
+}
+
+const MobileDropdown = ({
+  title,
+  items,
+}: {
+  title: string;
+  items: DropdownItem[];
+}) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const dropdownRef = React.useRef(null);
+  const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -278,7 +290,7 @@ const MobileDropdown = ({ title, items }) => {
       </button>
 
       <div className={`mt-2 space-y-2 pl-4 ${isOpen ? 'block' : 'hidden'}`}>
-        {items.map((item, index) => (
+        {items.map((item: MobileNavigationDropdownItem, index: number) => (
           <Link key={index} href={item.href}>
             <p className={styles.mobileMenuItem}>{item.label}</p>
           </Link>

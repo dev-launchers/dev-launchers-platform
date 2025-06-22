@@ -2,6 +2,7 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
+import { MoreHorizontal, Trash } from 'lucide-react';
 import {
   StyledCard,
   TopView,
@@ -22,6 +23,12 @@ import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
 import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from '@devlaunchers/components/src/components/Popover/index';
+import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 
 export const IdeaCard = ({
   ideaImage,
@@ -38,7 +45,7 @@ export const IdeaCard = ({
   const { userData, isLoading, isAuthenticated } = useUserDataContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
-
+  const [shouldShowDeleteDialog, setShouldShowDeleteDialog] = useState(false);
   const isOwner =
     userData &&
     ideaData &&
@@ -126,9 +133,17 @@ export const IdeaCard = ({
         onclick={handleUpvoteClick}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     ) : (
@@ -137,9 +152,17 @@ export const IdeaCard = ({
         disabled={true}
         selected={upvoted}
         text={
-          upvoted
-            ? 'Upvoted | ' + count.toString()
-            : 'Upvote | ' + count.toString()
+          upvoted ? (
+            <>
+              <span className="hidden sm:inline">Upvoted |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          ) : (
+            <>
+              <span className="hidden sm:inline">Upvote |</span>
+              <span className="sm:hidden">|</span> {count.toString()}
+            </>
+          )
         }
       />
     );
@@ -167,6 +190,15 @@ export const IdeaCard = ({
     }, 4000);
   };
 
+  //== Delete Idea
+  const handleDeleteIdea = () => {
+    // set sessionStorage to use in the dashboard page
+    sessionStorage.setItem('showDeleteAlertSuccess', 'true');
+    setShouldShowDeleteDialog(false);
+    window.onbeforeunload = null; // Clear the beforeunload event
+    window.location.href = '/ideaspace/dashboard';
+  };
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -176,53 +208,92 @@ export const IdeaCard = ({
   }, [isModalOpen]);
 
   return (
-    <StyledCard>
-      <TopView>
-        <LeftView>
-          {ideaImage ? <img src={ideaImage} /> : <StyledDiv></StyledDiv>}
-        </LeftView>
-        <RightView>
-          <IdeaName>{ideaData.ideaName}</IdeaName>
-          <IdeaTagLine>{ideaData.ideaTagLine}</IdeaTagLine>
-        </RightView>
-      </TopView>
+    <>
+      <div>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-2">
+              <div
+                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
+                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
+              >
+                {ideaData.ideaName}
+              </div>
+              <div
+                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
+                style={{ lineHeight: '28px' }}
+              >
+                {ideaData.tagline}
+              </div>
+            </div>
+            <div className="flex flex-row justify-between">
+              <div>{upvoteButton}</div>
+              <div>
+                {isOwner && (
+                  <div className="flex flex-row gap-2">
+                    <button
+                      className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      Edit Idea
+                    </button>
+                    <EditComponent
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      // initialIdea={fullIdea}
+                      initialIdea={ideaData}
+                      onEditSuccess={handleEditSuccess}
+                    />
 
-      <BottomView>
-        {/* <Button>
-          <BookmarkBorderOutlinedIcon />
-          <StyledText>FOLLOW</StyledText>
-        </Button> */}
-        {upvoteButton}
-        {/* <Button onClick={handleUpvoteClick}>
-          <StarBorderOutlinedIcon />
-          <StyledText>UPVOTE</StyledText>
-        </Button> */}
-        {/* <Button>
-          <ShareOutlinedIcon />
-          <StyledText>SHARE</StyledText>
-        </Button> */}
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <button className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3">
+                          <MoreHorizontal />
+                        </button>
+                      </PopoverTrigger>
+                      <PopoverContent
+                        hasCloseBtn={false}
+                        side="bottom"
+                        align="end"
+                        className="rounded-md w-[224px] h-[60px] p-0"
+                      >
+                        <button
+                          className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
+                          onClick={() => setShouldShowDeleteDialog(true)}
+                        >
+                          <Trash size={18} className="text-[#692323]" />
+                          Delete Idea
+                        </button>
+                      </PopoverContent>
+                    </Popover>
 
-        {isOwner && (
-          <>
-            <button
-              className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Edit Idea
-            </button>
-            <EditComponent
-              open={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              // initialIdea={fullIdea}
-              initialIdea={ideaData}
-              onEditSuccess={handleEditSuccess}
+                    {shouldShowDeleteDialog && (
+                      <DeleteConfirmationDialogBox
+                        card={fullIdea}
+                        onClose={setShouldShowDeleteDialog}
+                        onDelete={handleDeleteIdea}
+                      />
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="w-full h-[256px] rounded-[20px] overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              src="https://placehold.co/680x304"
+              alt="Idea Image"
             />
-          </>
+          </div>
+        </div>
+        {showEditSuccess && (
+          <EditSuccessAlert
+            onClose={() => setShowEditSuccess(false)}
+            message={['', 'Your changes have been saved!']}
+          />
         )}
-      </BottomView>
-      {showEditSuccess && (
-        <EditSuccessAlert onClose={() => setShowEditSuccess(false)} />
-      )}
-    </StyledCard>
+      </div>
+    </>
   );
 };

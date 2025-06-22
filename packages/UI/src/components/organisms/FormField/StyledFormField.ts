@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { paddingStyles } from '../../atoms/Padding';
 import { radiusStyles } from '../../atoms/Radius/StyledRadius';
-import { typographyStyles } from '../../atoms/Typography';
+import { typographyStyles } from '../../atoms/TypographyOld';
 import type { InputProps } from '.';
 
 export const Label = styled.label`

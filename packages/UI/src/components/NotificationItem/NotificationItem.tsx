@@ -1,7 +1,7 @@
+import type { NotificationEvent, NotificationUser } from '@devlaunchers/models';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { type WritableDeep } from 'type-fest';
 import Avatar from '../atoms/Avatar/Avatar';
-import { NotificationEvent, NotificationUser } from '@devlaunchers/models';
 
 const compoundSlots = [
   {
@@ -26,11 +26,11 @@ const compoundSlots = [
 const notificationStyles = tv({
   slots: {
     wrapper:
-      'flex items-center gap-4 p-4 border-b border-gray-800 transition-colors duration-200',
+      'flex items-center gap-4 border-b border-gray-800 p-4 transition-colors duration-200',
     avatarContainer: 'flex-shrink-0',
-    detailsContainer: 'flex flex-grow items-start gap-2 min-w-0',
-    contentContainer: 'flex flex-col gap-1 min-w-0',
-    headerStyle: 'flex items-center gap-1 flex-wrap',
+    detailsContainer: 'flex min-w-0 flex-grow items-start gap-2',
+    contentContainer: 'flex min-w-0 flex-col gap-1',
+    headerStyle: 'flex flex-wrap items-center gap-1',
     usernameStyle: 'text-white',
     actionStyle: 'text-gray-300',
     targetStyle: 'text-white',
@@ -57,7 +57,7 @@ interface NotificationProps extends VariantProps<typeof notificationStyles> {
   targetLink: string;
   timeStamp: string;
   action: NotificationEvent['data']['attributes']['action'];
-  avatar: string;
+  avatar: { src: string; alt: string };
   className?: string;
 }
 
@@ -110,8 +110,8 @@ function NotificationItem({
       >
         <div className={styles.avatarContainer()}>
           <Avatar
-            src={avatar}
-            alt={`${name}'s avatar`}
+            src={avatar.src}
+            alt={avatar.alt}
             className="h-10 w-10 rounded-full text-black"
           />
         </div>

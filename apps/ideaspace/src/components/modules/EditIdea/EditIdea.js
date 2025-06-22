@@ -1,3 +1,4 @@
+import React, { useImperativeHandle, forwardRef, useRef } from 'react';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
@@ -12,9 +13,9 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-function EditIdea({ initialIdea, onEditSuccess }) {
+const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
   let { userData, isAuthenticated } = useUserDataContext();
-
+  const formikRef = useRef();
   const router = useRouter();
   const { ideaId } = router.query;
   const [sending, setSending] = useState(false);
@@ -26,6 +27,15 @@ function EditIdea({ initialIdea, onEditSuccess }) {
     ['alternative primary', 'CANCEL', 'LEAVE']
   );
   const [urrl, setUrrl] = useState('');
+
+  const requiredFields = [
+    'ideaName',
+    'description',
+    'experience',
+    'targetAudience',
+    'features',
+    'involveLevel',
+  ];
 
   const [UpdateSucceed, confirmSucceed] = useConfirm(
     ['Idea updated successfully', '', ''],
@@ -78,6 +88,9 @@ function EditIdea({ initialIdea, onEditSuccess }) {
   };
 
   useEffect(() => {
+    localStorage.removeItem('ideaFormData');
+    localStorage.removeItem('involveLevel');
+
     async function fetchIdea() {
       if (!initialIdea && ideaId) {
         const idea = cleanData(
@@ -106,6 +119,9 @@ function EditIdea({ initialIdea, onEditSuccess }) {
     ideaName: Yup.string().trim().required('Idea Name is Required.'),
     description: Yup.string().trim().required('Idea Description is Required.'),
     experience: Yup.string().trim().required('Experience is Required.'),
+    targetAudience: Yup.string()
+      .trim()
+      .required('Target Audience is Required.'),
     features: Yup.string().trim().required('Idea Feature is Required.'),
     involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
@@ -182,25 +198,55 @@ function EditIdea({ initialIdea, onEditSuccess }) {
       window.history.back(-1);
     }
   };
+  useImperativeHandle(ref, () => ({
+    submitForm: () => {
+      if (formikRef.current) {
+        // Touch all required fields before submission
+        requiredFields.forEach((field) =>
+          formikRef.current.setFieldTouched(field, true, false)
+        );
+
+        // Validate and trigger scrollToError if needed
+        return formikRef.current.validateForm().then((errors) => {
+          if (Object.keys(errors).length > 0) {
+            // Use the same scrollToError logic as in the non-edit mode
+            const firstError = Object.keys(errors)[0];
+            if (firstError) {
+              const errorElement = document.querySelector(
+                `[data-field="${firstError}"]`
+              );
+              if (errorElement) {
+                setTimeout(() => {
+                  errorElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                  });
+                }, 100);
+              }
+            }
+            return Promise.reject(errors);
+          }
+          return formikRef.current.submitForm();
+        });
+      }
+      return Promise.reject('Formik instance not available');
+    },
+    touchAllFields: () => {
+      if (formikRef.current) {
+        requiredFields.forEach((field) =>
+          formikRef.current.setFieldTouched(field, true, false)
+        );
+        formikRef.current.validateForm();
+      }
+    },
+    isSending: () => sending,
+  }));
 
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
     return (
       <>
-        {/* <HeadWapper>
-          <Headline>Dev Ideas</Headline>
-          <StyledRanbow>
-            <atoms.Layer hasRainbowBottom />
-          </StyledRanbow>
-          <BackButton buttonType="confirm" clickHandler={backHandler} />
-          <atoms.Typography type="h4">
-            Have an idea for a development project?
-            <br />
-            Share your idea with us!
-          </atoms.Typography>
-        </HeadWapper> */}
-
         {!isAuthenticated ? (
           <SignInSection
             label="Please sign in to edit your idea!"
@@ -224,12 +270,14 @@ function EditIdea({ initialIdea, onEditSuccess }) {
               sending={sending}
               clickHandler={backHandler}
               editMode={true}
+              hideFormButtons={true}
+              formikRef={formikRef}
             />
           </>
         )}
       </>
     );
   }
-}
+});
 
 export default EditIdea;

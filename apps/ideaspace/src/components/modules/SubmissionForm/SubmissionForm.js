@@ -39,7 +39,7 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
-    involveLevel: '',
+    //involveLevel: '',
     status: '',
   };
 
@@ -70,9 +70,9 @@ function SubmissionForm() {
     tagline: Yup.string()
       .trim()
       .max(80, 'Tagline must be at most 80 characters'),
-    involveLevel: Yup.string()
-      .nullable()
-      .required('Please select your level of involvement'),
+    // involveLevel: Yup.string()
+    //   .nullable()
+    //   .required('Please select your level of involvement'),
   });
 
   const submitHandler = async (values) => {
@@ -86,7 +86,7 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    values['involveLevel'] = values['involveLevel'].trim();
+    //    values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
 
@@ -172,6 +172,7 @@ function SubmissionForm() {
             SignupSchema={SignupSchema}
             submitHandler={submitHandler}
             unsavedHandler={setunsavedChanges}
+            editMode={false}
             formButton="submit"
             sending={sending}
           />

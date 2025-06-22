@@ -1,9 +1,9 @@
+import type { DefaultTheme } from 'styled-components';
 import styled, { css } from 'styled-components';
-import type { ThemeType } from 'styles/theme';
 import { shadowStyles } from '../Shadow';
 import type { LayersProps } from '.';
 
-function addRainbowToLayer(theme: ThemeType, hasRainbow?: boolean) {
+function addRainbowToLayer(theme: DefaultTheme, hasRainbow?: boolean) {
   return hasRainbow
     ? `linear-gradient(
     to right,

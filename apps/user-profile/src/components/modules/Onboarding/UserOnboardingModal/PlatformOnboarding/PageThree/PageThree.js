@@ -52,10 +52,12 @@ export default function PageThree() {
     <div className="flex flex-col gap-20">
       <div className="flex flex-col text-center">
         <div>
-          <Typography type="p">ABOUT YOU</Typography>
-          <Typography type="h3">What Role Best Describes You?</Typography>
+          <Typography variant="secondary">ABOUT YOU</Typography>
+          <Typography variant="primary">
+            What Role Best Describes You?
+          </Typography>
         </div>
-        <Typography className="m-0" type="p">
+        <Typography className="m-0" variant="secondary">
           We'll use this to recommend open source projects for you to work on.
         </Typography>
       </div>
