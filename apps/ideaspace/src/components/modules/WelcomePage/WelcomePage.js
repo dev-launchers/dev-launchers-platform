@@ -40,12 +40,24 @@ function WelcomePage() {
   return (
     <>
       <HeadWapper>
-        <Headline>IdeaSpace (Beta)</Headline>
+        <atoms.Typography
+          variant="primary"
+          size="xl7"
+          as="h2"
+          textAlign="center"
+        >
+          IdeaSpace (Beta)
+        </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
 
-        <atoms.Typography variant="primary" type="h4" className="text-center">
+        <atoms.Typography
+          variant="primary"
+          size="xl2"
+          as="h4"
+          textAlign="center"
+        >
           WELCOME TO THE IDEA PLATFORM!
           <Subheader>
             Have an idea for a development project? Want to help develop an
