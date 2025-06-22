@@ -1,16 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-
 import { atoms } from '@devlaunchers/components/src/components';
-
-import handWithLightbulbImage from '../../../images/submit-image.png';
-import helpButtonImage from '../../../images/help-image.png';
-import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
-// import lightbulbIcon from '../../../images/lightbulb.svg';
-// import heartIcon from '../../../images/heart-handshake.svg';
-import IdeaGeneratorButton from './IdeaGeneratorButton';
-IdeaspaceNavCard;
 
 import {
   HeadWapper,
