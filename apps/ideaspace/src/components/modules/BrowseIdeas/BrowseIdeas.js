@@ -25,7 +25,7 @@ import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
   const [selectedSortCriterionLabel, setSelectedSortCriterionLabel] =
-    React.useState('Default');
+    React.useState('All Ideas');
   const [cards, setCards] = React.useState([]);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -34,7 +34,7 @@ function BrowseIdeas() {
   const sortingConfigs = [
     {
       value: 'default',
-      label: 'Default',
+      label: 'All Ideas',
       isAscending: false,
     },
     {

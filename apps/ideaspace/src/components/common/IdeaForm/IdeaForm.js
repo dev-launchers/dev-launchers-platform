@@ -497,7 +497,7 @@ const IdeaForm = ({
                 </FieldWrapper>
 
                 {/* Involvement Level - Required */}
-                <GroupWrapper data-field="involveLevel">
+                {/* <GroupWrapper data-field="involveLevel">
                   <GroupLabel>
                     What level of involvement would you like to have after this
                     submission?
@@ -593,7 +593,7 @@ const IdeaForm = ({
                   {touched.involveLevel && errors.involveLevel && (
                     <ErrorText>{errors.involveLevel}</ErrorText>
                   )}
-                </GroupWrapper>
+                </GroupWrapper> */}
 
                 {!editMode && (
                   <atoms.Typography type="p">
@@ -641,7 +641,7 @@ const IdeaForm = ({
                             'experience',
                             'targetAudience',
                             'features',
-                            'involveLevel',
+                            //                            'involveLevel',
                           ];
                           fields.forEach((field) =>
                             setFieldTouched(field, true)
