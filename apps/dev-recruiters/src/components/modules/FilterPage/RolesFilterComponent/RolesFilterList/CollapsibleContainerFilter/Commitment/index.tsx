@@ -6,7 +6,7 @@ import {
   CommitmentTitle,
   TimeCommitment,
 } from './styles';
-import StyledCheckbox from './checkBox';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox';
 import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 
 function Commitment() {
@@ -34,24 +34,24 @@ function Commitment() {
         <CommitmentTitle>TIME COMMITMENT:</CommitmentTitle>
         <CommitmentTimeContainer>
           <TimeCommitment>
-            <StyledCheckbox
-              isChecked={checkBoxLow === 0}
+            <Checkbox
+              checked={checkBoxLow === 0}
               onChange={() => handleCheckboxChange(0, 4)}
             />
             <CommitmentText>Low (0-4 hrs/wk)</CommitmentText>
           </TimeCommitment>
 
           <TimeCommitment>
-            <StyledCheckbox
-              isChecked={checkBoxMed === 5}
+            <Checkbox
+              checked={checkBoxLow === 5}
               onChange={() => handleCheckboxChange(5, 9)}
             />
             <CommitmentText>Med (5-9 hrs/wk)</CommitmentText>
           </TimeCommitment>
 
           <TimeCommitment>
-            <StyledCheckbox
-              isChecked={checkBoxHigh === 10}
+            <Checkbox
+              checked={checkBoxLow === 10}
               onChange={() => handleCheckboxChange(10, 20)}
             />
             <CommitmentText>High (10-20 hrs/wk)</CommitmentText>
