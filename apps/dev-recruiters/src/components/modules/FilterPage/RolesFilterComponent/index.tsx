@@ -17,7 +17,7 @@ export default function FilterComponent({
     filteredProjects,
     projectsLoaded,
     opportunitiesLoaded,
-    fetchOpportunnities,
+    fetchOpportunities,
     fetchProjects,
   } = useProjectRole();
 
