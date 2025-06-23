@@ -2952,6 +2952,7 @@ __metadata:
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-next: ^12.2.3
     eslint-config-prettier: ^8.5.0
+    formik: 2.4.6
     husky: ^8.0.1
     next: ^12.1.6
     phosphor-react: ^1.4.1
@@ -22003,7 +22004,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"formik@npm:^2.2.9":
+"formik@npm:2.4.6, formik@npm:^2.2.9":
   version: 2.4.6
   resolution: "formik@npm:2.4.6"
   dependencies:
