@@ -8,6 +8,7 @@ import {
   Save,
   Notification,
   DlTalCommUser,
+  TalCommUser,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -199,6 +200,13 @@ const GoogledriveFile = {
   },
 };
 
+const DlTalcommuser = {
+  get: () => requests.get<TalCommUser>('/dl-tal-communities'),
+  post: (body: {
+    data: { name: string; emailID: string; skills: string; roles: string };
+  }) => requests.post('/dl-tal-communities', body),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -213,6 +221,7 @@ const agent = {
   requests,
   Talcommuser,
   GoogledriveFile,
+  DlTalcommuser,
 };
 
 export default agent;

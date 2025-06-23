@@ -9,6 +9,7 @@ export type { Idea } from './idea';
 export type { Like } from './like';
 export type { Save } from './save';
 export type { DlTalCommUser } from './dltalcommuser';
+export type { TalCommUser } from './talcommuser';
 export type {
   Notification,
   NotificationEvent,
