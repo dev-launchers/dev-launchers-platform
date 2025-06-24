@@ -85,7 +85,8 @@
   },
   "resolutions": {
     "@types/react": "17.0.14",
-    "@types/react-dom": "17.0.14"
+    "@types/react-dom": "17.0.14",
+    "styled-components": "5.3.11"
   },
   "release": {
     "branches": [
