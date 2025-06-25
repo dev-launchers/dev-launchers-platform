@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeadWapper, Headline } from '../../common/CommonStyles';
-import { atoms } from '@devlaunchers/components/src/components';
+import { HeadWapper } from '../../common/CommonStyles';
+import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 import { StyledRainbow } from './StyledTermsConditionPage';
 import TermsConditionLayout from './TermsConditionLayout';
 import BackButton from '../../common/BackButton/BackButton';
@@ -9,25 +9,27 @@ function TermsConditionPage() {
   return (
     <>
       <HeadWapper>
-        <Headline>IdeaSpace</Headline>
+        <Typography as="h1" variant="primary" size="xl5" textWeight="bold">
+          IdeaSpace
+        </Typography>
         <div className="hidden sm:block">
           <BackButton
             buttonType="confirm"
             clickHandler={() => window.close()}
           />
         </div>
-        <atoms.Typography type="h4">
+        <Typography as="h2" variant="primary" size="xl4" textWeight="bold">
           Idea Submission Terms & Conditions
-        </atoms.Typography>
+        </Typography>
 
         <StyledRainbow>
-          <atoms.Layer hasRainbowBottom />
+          <div className="h-1 w-full bg-gradient-to-r from-[#FF0000] via-[#00FF00] to-[#0000FF]" />
         </StyledRainbow>
 
         <div className="HeadingSub flex flex-col gap-3">
-          <atoms.Typography variant="secondary" size="body_base">
+          <Typography variant="secondary" size="body_base">
             Last updated: April 26, 2023
-          </atoms.Typography>
+          </Typography>
         </div>
       </HeadWapper>
       <TermsConditionLayout />

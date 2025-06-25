@@ -15,31 +15,43 @@ import {
   TabsList,
   TabsTrigger,
 } from '@devlaunchers/components/components/molecules/Tab/Tab';
+import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
 import { useSheetsContext } from '../context/SheetsContext';
 
 const Card = ({ href, imageSrc, title, description }) => (
   <a
     href={href}
-    className="group flex flex-col h-full overflow-hidden rounded-lg bg-gray-800 border border-gray-700 transition-all duration-300 hover:border-purple-500 hover:shadow-lg hover:shadow-purple-500/20 hover:-translate-y-1"
+    className="group flex flex-col h-full overflow-hidden rounded-lg bg-gradient-to-br from-gray-900 to-gray-800 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/25 hover:-translate-y-2"
   >
-    <div className="aspect-video w-full overflow-hidden">
+    <div className="aspect-video w-full overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900">
       <img
         src={imageSrc || '/api/placeholder/400/320'}
         alt={title}
-        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
       />
     </div>
     <div className="flex flex-col flex-grow p-6">
-      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
+      <Typography
+        as="h3"
+        variant="primary"
+        size="xl3"
+        textWeight="semibold"
+        className="mb-3 group-hover:text-purple-400 transition-colors duration-300 text-white"
+      >
         {title}
-      </h3>
-      <p className="text-gray-400 text-sm flex-grow">
+      </Typography>
+      <Typography
+        as="p"
+        variant="secondary"
+        size="body_base"
+        className="text-gray-300 flex-grow leading-relaxed"
+      >
         {description || 'No description available.'}
-      </p>
-      <div className="flex items-center mt-4 text-purple-400 text-sm font-medium">
+      </Typography>
+      <div className="flex items-center mt-6 text-purple-400 text-sm font-medium group-hover:text-purple-300 transition-colors duration-300">
         Learn More
         <svg
-          className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
+          className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-2"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -55,6 +67,43 @@ const Card = ({ href, imageSrc, title, description }) => (
     </div>
   </a>
 );
+
+const ResourceCard = ({ href, title, description, color = 'orange' }) => {
+  const colorClasses = {
+    orange: 'bg-orange-900 border-orange-500 border-4 text-orange-200',
+    teal: 'bg-teal-900 border-teal-500 border-4 text-teal-200',
+    yellow: 'bg-yellow-900 border-yellow-500 border-4 text-yellow-200',
+    blue: 'bg-blue-900 border-blue-500 border-4 text-blue-200',
+    purple: 'bg-purple-900 border-purple-500 border-4 text-purple-200',
+  };
+
+  return (
+    <a
+      href={href}
+      className={`group block p-8 rounded-lg ${colorClasses[color]} transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
+    >
+      <Typography
+        as="h3"
+        variant="primary"
+        size="xl3"
+        textWeight="semibold"
+        textAlign="left"
+        className="text-white mb-3"
+      >
+        {title}
+      </Typography>
+      <Typography
+        as="p"
+        variant="secondary"
+        size="body_base"
+        textAlign="left"
+        className="pt-2 leading-relaxed"
+      >
+        {description}
+      </Typography>
+    </a>
+  );
+};
 
 const PaginatedGrid = ({ items, itemsPerPage = 4 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -163,334 +212,347 @@ export default function Resources() {
       <main className="flex flex-col justify-center items-center mx-auto max-w-full min-h-screen bg-black text-white py-16">
         <section className="max-w-5xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
+            <Typography
+              as="h1"
+              variant="primary"
+              size="xl6"
+              textWeight="bold"
+              textAlign="center"
+              className="max-w-4xl pb-6 text-white"
+            >
               Resources for Growth
-            </h1>
-            <p className="text-lg md:text-xl text-center max-w-4xl  text-gray-500 pb-4 font-normal">
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-4xl pb-4 text-gray-300"
+            >
               Embark on a path to expanding your technological prowess. Whether
               you are just starting or looking to refine specific skills, our
               curated resources are here to guide you every step of the way.
               Dive into a comprehensive collection of tools, tutorials, and
               hands-on projects designed to enhance your understanding and
               practical knowledge.
-            </p>
+            </Typography>
           </div>
         </section>
 
-        <section className=" flex flex-col flex-wrap max-w-5xl  pt-4 pb-10 px-4 md:px-8">
-          <div className="flex flex-col flex-wrap justify-center items-center py-4">
-            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
+        <section className="flex flex-col flex-wrap max-w-5xl pt-4 pb-16 px-4 md:px-8">
+          <div className="flex flex-col flex-wrap justify-center items-center py-">
+            <Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-full pb-8 text-white"
+            >
               Resources by Category
-            </h2>
-            <p className="text-lg lg:text-xl text-center max-w-3xl py-8 px-8 sm:py-4 text-gray-500  font-normal">
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl py-8 px-8 sm:py-4 text-gray-300"
+            >
               Explore a diverse array of resources organized by category to find
               exactly what you need to progress. From coding tools and design
               software to advanced tutorials, our categories are designed to
               cater to learners at all levels.
-            </p>
+            </Typography>
           </div>
-          <div className="flex flex-col justify-center items-center py-4">
+          <div className="flex flex-col justify-center items-center py-16">
             <Tabs defaultValue="dev" className="w-full">
-              <TabsList className="flex justify-around py-8 px-4 gap-8 bg-gray-900">
+              <TabsList className="flex justify-around py-8 px-4 gap-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg">
                 <TabsTrigger
-                  className="text-xl focus:bg-purple-500"
+                  className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="dev"
                 >
-                  Development
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    className="text-white"
+                  >
+                    Development
+                  </Typography>
                 </TabsTrigger>
                 <TabsTrigger
-                  className="text-xl focus:bg-purple-500"
+                  className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="design"
                 >
-                  Design
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    className="text-white"
+                  >
+                    Design
+                  </Typography>
                 </TabsTrigger>
                 <TabsTrigger
-                  className="text-xl focus:bg-purple-500"
+                  className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="research"
                 >
-                  Research
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    className="text-white"
+                  >
+                    Research
+                  </Typography>
                 </TabsTrigger>
-                <TabsTrigger className="text-xl focus:bg-purple-500" value="pm">
-                  Project Management
+                <TabsTrigger
+                  className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
+                  value="pm"
+                >
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    className="text-white"
+                  >
+                    Project Management
+                  </Typography>
                 </TabsTrigger>
               </TabsList>
+              <div className="border-b border-gray-700 mt-2"></div>
               <TabsContent value="dev">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
+                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    textAlign="left"
+                    className="pb-6 text-white mb-6"
+                  >
                     Development
-                  </h3>
-                  <ul className="text-base text-left text-gray-500 max-w-4xl p-0 font-normal">
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://docs.devlaunchers.org/dl-docs/development/development-at-dev-launchers"
-                      >
-                        Dev Launchers Development Docs
-                      </a>
-                      <p>
-                        Comprehensive resource for development practices and
-                        guidelines at Dev Launchers.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://github.com/dev-launchers/dev-launchers-platform"
-                      >
-                        Dev Launchers Github Repository
-                      </a>
-                      <p>
-                        Central repository for all code and development projects
-                        managed by Dev Launchers.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://code.visualstudio.com"
-                      >
-                        VS Code
-                      </a>
-                      <p>
-                        A lightweight but powerful source code editor that runs
-                        on your desktop and is available for Windows, macOS, and
-                        Linux.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://tailwindcss.com/docs/installation"
-                      >
-                        Tailwind CSS Docs
-                      </a>
-                      <p>
-                        Official documentation for installing and using Tailwind
-                        CSS, a utility-first CSS framework.
-                      </p>
-                    </li>
-                  </ul>
+                  </Typography>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <ResourceCard
+                      href="https://docs.devlaunchers.org/dl-docs/development/development-at-dev-launchers"
+                      title="Dev Launchers Development Docs"
+                      description="Comprehensive resource for development practices and guidelines at Dev Launchers."
+                      color="orange"
+                    />
+                    <ResourceCard
+                      href="https://github.com/dev-launchers/dev-launchers-platform"
+                      title="Dev Launchers Github Repository"
+                      description="Central repository for all code and development projects managed by Dev Launchers."
+                      color="teal"
+                    />
+                    <ResourceCard
+                      href="https://code.visualstudio.com"
+                      title="VS Code"
+                      description="A lightweight but powerful source code editor that runs on your desktop and is available for Windows, macOS, and Linux."
+                      color="yellow"
+                    />
+                    <ResourceCard
+                      href="https://tailwindcss.com/docs/installation"
+                      title="Tailwind CSS Docs"
+                      description="Official documentation for installing and using Tailwind CSS, a utility-first CSS framework."
+                      color="blue"
+                    />
+                  </div>
                 </div>
               </TabsContent>
               <TabsContent value="design">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
+                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    textAlign="left"
+                    className="pb-6 text-white mb-6"
+                  >
                     Design
-                  </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://docs.devlaunchers.org/dl-docs/design/design-at-dev-launchers"
-                      >
-                        Dev Launchers Design Docs
-                      </a>
-                      <p>
-                        A guide to the design principles and practices adopted
-                        by Dev Launchers for creating engaging user interfaces
-                        and experiences.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.figma.com"
-                      >
-                        Figma
-                      </a>
-                      <p>
-                        A web-based interface design tool that allows real-time
-                        collaboration among teams for building interactive and
-                        professional designs.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://atomicdesign.bradfrost.com"
-                      >
-                        Atomic Design by Brad Frost
-                      </a>
-                      <p>
-                        A methodology for creating design systems composed of
-                        atoms, molecules, and organisms to build robust user
-                        interfaces.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11483-2356&t=IiSxzdTKtxwEua46-1"
-                      >
-                        Dev Launchers Universal Design System
-                      </a>
-                      <p>
-                        This resource showcases the Universal Design System
-                        utilized by Dev Launchers, featuring standardized UI
-                        components and design tokens.
-                      </p>
-                    </li>
-                  </ul>
+                  </Typography>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <ResourceCard
+                      href="https://docs.devlaunchers.org/dl-docs/design/design-at-dev-launchers"
+                      title="Dev Launchers Design Docs"
+                      description="A guide to the design principles and practices adopted by Dev Launchers for creating engaging user interfaces and experiences."
+                      color="purple"
+                    />
+                    <ResourceCard
+                      href="https://www.figma.com"
+                      title="Figma"
+                      description="A web-based interface design tool that allows real-time collaboration among teams for building interactive and professional designs."
+                      color="orange"
+                    />
+                    <ResourceCard
+                      href="https://atomicdesign.bradfrost.com"
+                      title="Atomic Design by Brad Frost"
+                      description="A methodology for creating design systems composed of atoms, molecules, and organisms to build robust user interfaces."
+                      color="teal"
+                    />
+                    <ResourceCard
+                      href="https://www.figma.com/design/EwzuhhvTulvFRMvhTD5VAh/DL-Universal-Design-System?node-id=11483-2356&t=IiSxzdTKtxwEua46-1"
+                      title="Dev Launchers Universal Design System"
+                      description="This resource showcases the Universal Design System utilized by Dev Launchers, featuring standardized UI components and design tokens."
+                      color="yellow"
+                    />
+                  </div>
                 </div>
               </TabsContent>
               <TabsContent value="research">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
+                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    textAlign="left"
+                    className="pb-6 text-white  mb-6"
+                  >
                     Research
-                  </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://docs.devlaunchers.org/dl-docs/research/research-at-dev-launchers"
-                      >
-                        Dev Launchers Research Docs
-                      </a>
-                      <p>
-                        Essential reading for understanding the research
-                        processes and methodologies utilized by Dev Launchers.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.nngroup.com/topic/research-methods/"
-                      >
-                        Nielsen Norman Group Research Methods
-                      </a>
-                      <p>
-                        An essential collection of user research methodologies
-                        and best practices offered by the Nielsen Norman Group,
-                        a leader in the UX field.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.userinterviews.com/ux-research-field-guide-chapter/user-interviews"
-                      >
-                        The UX Research Field Guide
-                      </a>{' '}
-                      <p>
-                        A comprehensive guide to doing UX research by User
-                        Interviews
-                      </p>
-                    </li>
-                    <li class="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.hotjar.com"
-                      >
-                        Hotjar
-                      </a>
-                      <p>
-                        Hotjar offers tools to visualize user behavior on your
-                        site through heatmaps, session recordings, and surveys,
-                        enabling deeper insights into user interactions and
-                        experiences.
-                      </p>
-                    </li>
-                  </ul>
+                  </Typography>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <ResourceCard
+                      href="https://docs.devlaunchers.org/dl-docs/research/research-at-dev-launchers"
+                      title="Dev Launchers Research Docs"
+                      description="Essential reading for understanding the research processes and methodologies utilized by Dev Launchers."
+                      color="blue"
+                    />
+                    <ResourceCard
+                      href="https://www.nngroup.com/topic/research-methods/"
+                      title="Nielsen Norman Group Research Methods"
+                      description="An essential collection of user research methodologies and best practices offered by the Nielsen Norman Group, a leader in the UX field."
+                      color="orange"
+                    />
+                    <ResourceCard
+                      href="https://www.userinterviews.com/ux-research-field-guide-chapter/user-interviews"
+                      title="The UX Research Field Guide"
+                      description="A comprehensive guide to doing UX research by User Interviews"
+                      color="teal"
+                    />
+                    <ResourceCard
+                      href="https://www.hotjar.com"
+                      title="Hotjar"
+                      description="Hotjar offers tools to visualize user behavior on your site through heatmaps, session recordings, and surveys, enabling deeper insights into user interactions and experiences."
+                      color="yellow"
+                    />
+                  </div>
                 </div>
               </TabsContent>
               <TabsContent value="pm">
-                <div className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg">
-                  <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-4 text-white">
+                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
+                  <Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semibold"
+                    textAlign="left"
+                    className="pb-6 text-white  mb-6"
+                  >
                     Project Management
-                  </h3>
-                  <ul className="text-base text-left text-gray-500 p-0 max-w-4xl font-normal">
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://docs.devlaunchers.org/dl-docs/product-management/product-management-at-dev-launchers"
-                      >
-                        Dev Launchers Project Management Docs
-                      </a>
-                      <p>
-                        A resource for project managers at Dev Launchers,
-                        detailing workflows, strategies, and tools for effective
-                        project oversight and completion.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects"
-                      >
-                        Github Projects
-                      </a>{' '}
-                      <p>
-                        Learn about Github Projects; an adaptable, flexible tool
-                        for planning and tracking work on GitHub.
-                      </p>
-                    </li>
-                    <li className="pb-2">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.atlassian.com/work-management/project-management/"
-                      >
-                        Project Management Guide by Atlassian
-                      </a>{' '}
-                      <p>
-                        An extensive guide to project management from basics to
-                        strategy breakdowns by Atlassian
-                      </p>
-                    </li>
-                    <li className="pb-2 ">
-                      <a
-                        className="text-white hover:text-purple-300 font-semibold underline underline-offset-4"
-                        href="https://www.pmi.org/insights"
-                      >
-                        Project Management Templates and Insights
-                      </a>{' '}
-                      <p>
-                        A curated selection of industry-vetted Project
-                        Management Institute templates, guides, and more to help
-                        you grow and maximize project success
-                      </p>
-                    </li>
-                  </ul>
+                  </Typography>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <ResourceCard
+                      href="https://docs.devlaunchers.org/dl-docs/product-management/product-management-at-dev-launchers"
+                      title="Dev Launchers Project Management Docs"
+                      description="A resource for project managers at Dev Launchers, detailing workflows, strategies, and tools for effective project oversight and completion."
+                      color="purple"
+                    />
+                    <ResourceCard
+                      href="https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects"
+                      title="Github Projects"
+                      description="Learn about Github Projects; an adaptable, flexible tool for planning and tracking work on GitHub."
+                      color="orange"
+                    />
+                    <ResourceCard
+                      href="https://www.atlassian.com/work-management/project-management/"
+                      title="Project Management Guide by Atlassian"
+                      description="An extensive guide to project management from basics to strategy breakdowns by Atlassian"
+                      color="teal"
+                    />
+                    <ResourceCard
+                      href="https://www.pmi.org/insights"
+                      title="Project Management Templates and Insights"
+                      description="A curated selection of industry-vetted Project Management Institute templates, guides, and more to help you grow and maximize project success"
+                      color="yellow"
+                    />
+                  </div>
                 </div>
               </TabsContent>
             </Tabs>
           </div>
         </section>
 
-        <section className="flex flex-col flex-wrap max-w-full md:max-w-5xl  px-4">
-          <div className="flex flex-col flex-wrap justify-center items-center py-4">
-            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
+        <section className="flex flex-col flex-wrap max-w-full md:max-w-5xl pt-4 pb-16 px-4">
+          <div className="flex flex-col flex-wrap justify-center items-center py-16">
+            <Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-full pb-8 text-white"
+            >
               Learning and Games
-            </h2>
-            <p className="text-lg lg:text-xl text-center max-w-3xl px-8 py-8  text-gray-500  font-normal">
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl px-8 py-8 text-gray-300"
+            >
               Learn Code and Design using these games to build conceptual
               learning to prepare for creating software projects and
               applications
-            </p>
+            </Typography>
           </div>
-          <div class="flex flex-col max-w-full justify-center items-center py-4">
+          <div className="flex flex-col max-w-full justify-center items-center py-4">
             <Tabs defaultValue={'Code'} className="w-full">
-              <TabsList className="flex flex-wrap justify-around py-8 px-4 gap-8 bg-gray-900">
+              <TabsList className="flex flex-wrap justify-around py-8 px-4 gap-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg">
                 {Object.keys(learnPageData).map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="text-lg bg-background"
+                    className="bg-background focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   >
-                    {category}
+                    <Typography
+                      as="h4"
+                      variant="primary"
+                      size="xl2"
+                      textWeight="semibold"
+                      className="text-white"
+                    >
+                      {category}
+                    </Typography>
                   </TabsTrigger>
                 ))}
               </TabsList>
+              <div className="border-b border-gray-700 mt-2"></div>
               {Object.entries(learnPageData).map(([category, sections]) => (
                 <TabsContent key={category} value={category}>
                   {Object.entries(sections).map(
                     ([sectionTitle, categories]) => (
                       <div
                         key={sectionTitle}
-                        className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg"
+                        className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl"
                       >
-                        <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                        <Typography
+                          as="h3"
+                          variant="primary"
+                          size="xl3"
+                          textWeight="semibold"
+                          textAlign="left"
+                          className="pb-6 text-white mb-6"
+                        >
                           {sectionTitle}
-                        </h3>
+                        </Typography>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
                             <div key={categoryTitle} className="pt-8">
@@ -507,40 +569,69 @@ export default function Resources() {
           </div>
         </section>
 
-        <section className="flex flex-col flex-wrap w-5xl max-w-full md:max-w-5xl py-10 px-4">
-          <div className="flex flex-col flex-wrap justify-center items-center pt-16 pb-8">
-            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center  ">
+        <section className="flex flex-col flex-wrap w-5xl max-w-full md:max-w-5xl pt-4 pb-16 px-4">
+          <div className="flex flex-col flex-wrap justify-center items-center py-4">
+            <Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-full pb-8 text-white"
+            >
               Create with Templates
-            </h2>
-            <p className="text-lg lg:text-xl text-center max-w-3xl px-8 py-8 text-gray-500  font-normal">
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl px-8 py-8 text-gray-300"
+            >
               Ready to test your skills? These templates are great ways to get
               started and reinforce your learning
-            </p>
+            </Typography>
           </div>
-          <div class="flex flex-col max-w-full justify-center items-center py-4">
+          <div className="flex flex-col max-w-full justify-center items-center py-4">
             <Tabs defaultValue={'Templates'} className="px-10 w-full">
-              <TabsList className="flex flex-row justify-center py-8 px-4  gap-8 bg-gray-900">
+              <TabsList className="flex flex-row justify-center py-8 px-4 gap-8 bg-gradient-to-r from-gray-900 to-gray-800 rounded-lg">
                 {Object.keys(createPageData).map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className=" text-xl focus:bg-purple-600"
+                    className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   >
-                    {category}
+                    <Typography
+                      as="h4"
+                      variant="primary"
+                      size="xl2"
+                      textWeight="semibold"
+                      className="text-white"
+                    >
+                      {category}
+                    </Typography>
                   </TabsTrigger>
                 ))}
               </TabsList>
+              <div className="border-b border-gray-700 mt-2"></div>
               {Object.entries(createPageData).map(([category, sections]) => (
                 <TabsContent key={category} value={category}>
                   {Object.entries(sections).map(
                     ([sectionTitle, categories]) => (
                       <div
                         key={sectionTitle}
-                        className="bg-gray-900 border-gray-800 border-4 p-8 items-center rounded-lg"
+                        className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl"
                       >
-                        <h3 className="text-3xl font-bold text-left leading-relaxed tracking-wide pb-0 text-white">
+                        <Typography
+                          as="h3"
+                          variant="primary"
+                          size="xl3"
+                          textWeight="semibold"
+                          textAlign="left"
+                          className="pb-6 text-white mb-6"
+                        >
                           {sectionTitle}
-                        </h3>
+                        </Typography>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
                             <div key={categoryTitle} className="pt-8">
@@ -557,18 +648,31 @@ export default function Resources() {
           </div>
         </section>
 
-        <section className=" flex flex-col flex-wrap max-w-5xl px-4  py-10">
+        <section className="flex flex-col flex-wrap max-w-5xl pt-4 pb-16 px-4">
           <div className="flex flex-col justify-center items-center py-10">
-            <h2 className="text-4xl lg:text-6xl max-w-full leading-tight font-bold text-center ">
+            <Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-full pb-6 text-white"
+            >
               Create and Collaborate
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-xl py-4 px-8 text-gray-500  font-normal">
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-xl py-4 px-8 text-gray-300"
+            >
               Join us in real cross-functional teams to apply your skills to
               real world applications
-            </p>
-            <div className="flex pt-4">
+            </Typography>
+            <div className="flex pt-6">
               <a
-                className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
+                className="bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium capitalize py-4 px-8 rounded-xl transition-all duration-300 hover:from-purple-500 hover:to-purple-600 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1"
                 href="/join"
               >
                 Join Today

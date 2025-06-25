@@ -2,6 +2,7 @@ import React from 'react';
 import TermsConditionContent from './TermsConditionContent';
 import TermsTable from './TermsTable';
 import BackButton from '../../common/BackButton/BackButton';
+import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 
 const TermsConditionLayout = () => {
   return (
@@ -9,111 +10,148 @@ const TermsConditionLayout = () => {
       <div className="max-w-8xl px-[20px] sm:px-[24px] md:px-[32px] lg:px-[48px] py-10">
         {/* <BackButton buttonType="confirm"/> */}
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2 className="text-[32px] font-light leading-[48px]">
+          <Typography as="h2" variant="primary" size="xl4" textWeight="light">
             {TermsConditionContent.introduction.heading}
-          </h2>
+          </Typography>
           <div>
             {TermsConditionContent.introduction.paragraphs.map(
               (para, index) => (
-                <p key={index} className="text-[16px] leading-[24px]  ">
+                <Typography
+                  key={index}
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                >
                   {para}
-                </p>
+                </Typography>
               )
             )}
           </div>
         </div>
 
         <div className="flex flex-col gap-[6px] mb-8">
-          <h2 className="text-[20px] leading-[28px] font-light">
+          <Typography as="h3" variant="primary" size="xl2" textWeight="light">
             {TermsConditionContent.definitions.heading}
-          </h2>
+          </Typography>
           <ul className="ml-3 list-disc pl-5">
             {TermsConditionContent.definitions.paragraphs.map((para, index) => (
-              <li key={index} className="text-[16px] leading-[24px]">
-                {para.map((part, i) =>
-                  part.bold ? (
-                    <span className="font-medium" key={i}>
-                      {part.text}
-                    </span>
-                  ) : (
-                    <span key={i}>{part.text}</span>
-                  )
-                )}
+              <li key={index}>
+                <Typography as="span" variant="secondary" size="body_base">
+                  {para.map((part, i) =>
+                    part.bold ? (
+                      <span className="font-medium" key={i}>
+                        {part.text}
+                      </span>
+                    ) : (
+                      <span key={i}>{part.text}</span>
+                    )
+                  )}
+                </Typography>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="flex flex-col gap-[6px] mb-8">
-          <h2 className="text-[20px] leading=[28px] font-light">Summary</h2>
-          <p className="text-[16px] leading=[24px] font-normal">
+          <Typography as="h3" variant="primary" size="xl2" textWeight="light">
+            Summary
+          </Typography>
+          <Typography as="p" variant="secondary" size="body_base">
             You understand and agree to be bound to the following terms and
             conditions when you submit your idea, use and collaborate in Dev
             Launchers website.
-          </p>
+          </Typography>
         </div>
 
-        <TermsTable></TermsTable>
+        <TermsTable />
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="age-eligibility"
-            className="text-[32px] leading-[48px] font-light"
           >
             {TermsConditionContent.ageEligibility.heading}
-          </h2>
+          </Typography>
           <div className="flex flex-col">
             {TermsConditionContent.ageEligibility.paragraphs.map(
               (para, index) => (
-                <p key={index} className="text-[16px] leading-[24px]">
+                <Typography
+                  key={index}
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                >
                   {para}
-                </p>
+                </Typography>
               )
             )}
           </div>
         </div>
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="non-confidentiality"
-            className="text-[32px] leading-[48px] font-light"
           >
             {TermsConditionContent.nonCondidentiality.heading}
-          </h2>
+          </Typography>
           <div className="flex flex-col">
             {TermsConditionContent.nonCondidentiality.paragraphs.map(
               (para, index) => (
-                <p key={index} className="text-[16px] leading-[24px]">
+                <Typography
+                  key={index}
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                >
                   {para}
-                </p>
+                </Typography>
               )
             )}
           </div>
         </div>
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="user-generated"
-            className="text-[32px] leading-[48px] font-light"
           >
             {TermsConditionContent.userGenerated.heading}
-          </h2>
+          </Typography>
 
           <div className="flex flex-col gap-[10px]">
             {Object.entries(TermsConditionContent.userGenerated).map(
               ([key, section], index) =>
                 key !== 'heading' && (
                   <div key={index} className={key}>
-                    <div className="text-[20px] leading-[28px] font-light mb-[6px]">
+                    <Typography
+                      as="h3"
+                      variant="primary"
+                      size="xl2"
+                      textWeight="light"
+                      className="mb-[6px]"
+                    >
                       {section.heading}
-                    </div>
+                    </Typography>
                     <ul className="ml-3 list-disc pl-5">
                       {section.pointers.map((pointer, i) => (
-                        <li
-                          key={i}
-                          className="text-[16px] leading-[24px] font-normal"
-                        >
-                          {pointer}
+                        <li key={i}>
+                          <Typography
+                            as="span"
+                            variant="secondary"
+                            size="body_base"
+                          >
+                            {pointer}
+                          </Typography>
                         </li>
                       ))}
                     </ul>
@@ -124,68 +162,86 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="i-property-rights"
-            className="text-[32px] leading-[48px] font-light"
           >
             {TermsConditionContent.intellectualPropertyRights.heading}
-          </h2>
+          </Typography>
           <div className="flex flex-col">
             {TermsConditionContent.intellectualPropertyRights.paragraphs.map(
               (para, index) => (
-                <p
+                <Typography
                   key={index}
-                  className="text-[16px] leading-[24px] font-normal"
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
                 >
                   {para}
-                </p>
+                </Typography>
               )
             )}
           </div>
         </div>
 
         <div className="flex flex-col mb-8">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="idea-evaluation"
-            className="text-[32px] leading-[48px] font-light mb-[10px]"
+            className="mb-[10px]"
           >
             {TermsConditionContent.ideaEvaluation.heading}
-          </h2>
+          </Typography>
           <ul className="mb-[10px]">
             {TermsConditionContent.ideaEvaluation.paragraphs.map(
               (para, index) => (
-                <li
-                  key={index}
-                  className="ml-8 list-disc text-[16px] leading-[24px] font-normal"
-                >
-                  {para}
+                <li key={index} className="ml-8 list-disc">
+                  <Typography as="span" variant="secondary" size="body_base">
+                    {para}
+                  </Typography>
                 </li>
               )
             )}
           </ul>
           <div className="selectionProcess mb-[10px]">
-            <div className="text-[20px] leading-[28px] font-light mb-[6px]">
+            <Typography
+              as="h3"
+              variant="primary"
+              size="xl2"
+              textWeight="light"
+              className="mb-[6px]"
+            >
               Selection Process:
-            </div>
-            <div className="text-[16px] leading-[24px] font-normal">
+            </Typography>
+            <Typography as="p" variant="secondary" size="body_base">
               {TermsConditionContent.ideaEvaluation.selectionProcess}
-            </div>
+            </Typography>
           </div>
 
           <div className="Examples">
-            <div className="text-[20px] leading-[28px] font-light mb-[6px]">
-              {' '}
+            <Typography
+              as="h3"
+              variant="primary"
+              size="xl2"
+              textWeight="light"
+              className="mb-[6px]"
+            >
               Examples of Ideas and suggestions that Dev Launchers will not be
               considered are:
-            </div>
+            </Typography>
             <ul className="ml-3 list-disc pl-5">
               {TermsConditionContent.ideaEvaluation.subPointers.map(
                 (pointer, index) => (
-                  <li
-                    key={index}
-                    className="text-[16px] leading-[24px] font-normal"
-                  >
-                    {pointer}
+                  <li key={index}>
+                    <Typography as="span" variant="secondary" size="body_base">
+                      {pointer}
+                    </Typography>
                   </li>
                 )
               )}
@@ -194,34 +250,50 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2 id="consulting" className="text-[32px] leading-[48px] font-light">
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
+            id="consulting"
+          >
             {TermsConditionContent.consulting.heading}
-          </h2>
+          </Typography>
           {TermsConditionContent.consulting.paragraphs.map((para, index) => (
-            <p key={index} className="text-[16px] leading-[24px] font-normal">
+            <Typography key={index} as="p" variant="secondary" size="body_base">
               {para}
-            </p>
+            </Typography>
           ))}
         </div>
 
         <div className="flex flex-col gap-[10px] mb-8">
-          <h2 id="indemnity" className="text-[32px] leading-[48px] font-light">
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
+            id="indemnity"
+          >
             {TermsConditionContent.indemnity.heading}
-          </h2>
+          </Typography>
           <div>
             {TermsConditionContent.indemnity.paragraphs.map((para, index) => (
-              <p key={index} className="text-[16px] leading-[24px] font-normal">
+              <Typography
+                key={index}
+                as="p"
+                variant="secondary"
+                size="body_base"
+              >
                 {para}
-              </p>
+              </Typography>
             ))}
             <ul className="ml-3 list-disc pl-5">
               {TermsConditionContent.indemnity.subPointers.map(
                 (pointer, index) => (
-                  <li
-                    key={index}
-                    className="text-[16px] leading-[24px] font-normal"
-                  >
-                    {pointer}
+                  <li key={index}>
+                    <Typography as="span" variant="secondary" size="body_base">
+                      {pointer}
+                    </Typography>
                   </li>
                 )
               )}
@@ -230,21 +302,26 @@ const TermsConditionLayout = () => {
         </div>
 
         <div className="flex flex-col gap-[10px] mb-[140px]">
-          <h2
+          <Typography
+            as="h2"
+            variant="primary"
+            size="xl4"
+            textWeight="light"
             id="changeToTerms"
-            className="text-[32px] leading-[48px] font-light"
           >
             {TermsConditionContent.changeToTerms.heading}
-          </h2>
+          </Typography>
           <div className="flex flex-col gap-1">
             {TermsConditionContent.changeToTerms.paragraphs.map(
               (para, index) => (
-                <p
+                <Typography
                   key={index}
-                  className="text-[16px] leading-[24px] font-normal"
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
                 >
                   {para}
-                </p>
+                </Typography>
               )
             )}
           </div>

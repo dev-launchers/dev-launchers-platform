@@ -3,12 +3,30 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
+import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
 
 const HeroSection = () => (
   <Section className={styles.section.container}>
     <div className={styles.section.headerHero}>
-      <h1 className={styles.section.headingHero}>{sections.hero.title}</h1>
-      <p className={styles.section.subHeading}>{sections.hero.description}</p>
+      <Typography
+        as="h1"
+        variant="primary"
+        size="xl6"
+        textWeight="bold"
+        textAlign="center"
+        className={styles.section.headingHero}
+      >
+        {sections.hero.title}
+      </Typography>
+      <Typography
+        as="p"
+        variant="secondary"
+        size="body_lg"
+        textAlign="center"
+        className={styles.section.subHeading}
+      >
+        {sections.hero.description}
+      </Typography>
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="#opportunities">
@@ -18,7 +36,15 @@ const HeroSection = () => (
       </a>
     </div>
     <div className={styles.section.partnerContainer}>
-      <p className={styles.section.label}>{sections.hero.label}</p>
+      <Typography
+        as="p"
+        variant="secondary"
+        size="body_base"
+        textAlign="center"
+        className={styles.section.label}
+      >
+        {sections.hero.label}
+      </Typography>
       <div className={styles.section.partnerLogos}>
         <img
           alt="Google Logo"
