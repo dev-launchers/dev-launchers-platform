@@ -121,7 +121,8 @@ function Footer({
   const backButtonElement = () => {
     return (
       <Button
-        buttonType="alternative"
+        type="secondary"
+        color="neptune"
         buttonSize="xl"
         onClick={backOnClickHandler}
         disabled={isLoading || disableNextButton}
@@ -139,7 +140,8 @@ function Footer({
 
     return (
       <Button
-        buttonType="primary"
+        type="primary"
+        color="neptune"
         buttonSize="xl"
         onClick={nextOnClickHandler}
         disabled={isLoading}
@@ -147,7 +149,7 @@ function Footer({
         <div className="flex gap-3 items-center">
           {isLoading ? <Loader borderColorClass="border-white" /> : label}
           {buttonConfig?.next?.hideIcons && isLoading ? null : (
-            <Chevron point="right" colorClass="fill-white" />
+            <Chevron point="right" colorClass="fill-[#1C1C1C]" />
           )}
         </div>
       </Button>
@@ -159,7 +161,7 @@ function Footer({
     return (
       <Button
         type="submit"
-        buttonType="secondary"
+        color="neptune"
         buttonSize="xl"
         onClick={submitOnClickHandler}
         disabled={isLoading}

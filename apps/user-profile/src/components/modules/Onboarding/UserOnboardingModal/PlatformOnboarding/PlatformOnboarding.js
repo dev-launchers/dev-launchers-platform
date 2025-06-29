@@ -146,7 +146,7 @@ export default function PlatformOnboarding() {
     },
     buttons: {
       submit: {
-        label: 'Finish',
+        label: 'End',
         hideIcons: true,
         onClick: submitOnboardingData,
       },
