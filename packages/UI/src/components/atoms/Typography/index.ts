@@ -1,3 +1,5 @@
+export { default } from './Typography';
+
 // Typography interface
 
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {

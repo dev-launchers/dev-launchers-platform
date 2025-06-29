@@ -1,16 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-
 import { atoms } from '@devlaunchers/components/src/components';
-
-import handWithLightbulbImage from '../../../images/submit-image.png';
-import helpButtonImage from '../../../images/help-image.png';
-import bulletinBoardPostItImage from '../../../images/bulletin-board-postit.png';
 import rocketImage from '../../../images/logo-monogram.png';
-// import lightbulbIcon from '../../../images/lightbulb.svg';
-// import heartIcon from '../../../images/heart-handshake.svg';
-import IdeaGeneratorButton from './IdeaGeneratorButton';
-IdeaspaceNavCard;
 
 import {
   HeadWapper,
@@ -40,12 +31,24 @@ function WelcomePage() {
   return (
     <>
       <HeadWapper>
-        <Headline>IdeaSpace (Beta)</Headline>
+        <atoms.Typography
+          variant="primary"
+          size="xl7"
+          as="h2"
+          textAlign="center"
+        >
+          IdeaSpace (Beta)
+        </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
 
-        <atoms.Typography type="h4" textAlign="center">
+        <atoms.Typography
+          variant="primary"
+          size="xl2"
+          as="h4"
+          textAlign="center"
+        >
           WELCOME TO THE IDEA PLATFORM!
           <Subheader>
             Have an idea for a development project? Want to help develop an
