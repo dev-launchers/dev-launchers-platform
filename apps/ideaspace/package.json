@@ -21,7 +21,6 @@
     "axios-mock-adapter": "^1.21.2",
     "constate": "^3.3.2",
     "eslint": "8.21.0",
-    "formik": "2.4.6",
     "next": "^12.1.6",
     "phosphor-react": "^1.4.1",
     "prop-types": "^15.7.2",
