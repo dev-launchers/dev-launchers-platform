@@ -55,7 +55,7 @@ const nextConfig = {
     ],
     disableStaticImages: true,
   },
-  // webpack5: true, next 12 later versions use webpack 5 by default.
+  webpack5: true,
   reactStrictMode: true, // It helps you avoid legacy code, and deprecated APIs.
   eslint: {
     // Warning: Dangerously allow production builds to successfully complete even if
