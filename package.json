@@ -54,11 +54,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
-    "cross-env": "7.0.3",
-    "lucide-react": "0.482.0",
-    "react": "19.0.0",
-    "react-ga": "3.3.1",
-    "react-toastify": "^8.0.0"
+    "cross-env": "7.0.3"
   },
   "devDependencies": {
     "@changesets/changelog-github": "0.4.6",
@@ -85,8 +81,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.14",
-    "@types/react-dom": "17.0.14",
-    "styled-components": "5.3.11"
+    "@types/react-dom": "17.0.14"
   },
   "release": {
     "branches": [
