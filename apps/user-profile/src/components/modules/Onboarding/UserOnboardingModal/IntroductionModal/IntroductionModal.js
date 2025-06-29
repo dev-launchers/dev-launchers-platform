@@ -26,7 +26,9 @@ export default function IntroductionModal() {
     >
       <div className="flex flex-col gap-10 h-full py-12 px-16">
         <div>
-          <Typography variant="primary">Welcome to Dev Launchers</Typography>
+          <Typography textweight="light" textalign="center" type="h3">
+            Welcome to Dev Launchers
+          </Typography>
           <RainbowBar height="6px" />
         </div>
         <div className="flex flex-col gap-3">
