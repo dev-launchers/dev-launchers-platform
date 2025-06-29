@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, Wrap } from './StyledTalcommunityPage';
+import { Wrapper } from './StyledTalcommunityPage';
 import BoxContainer from '../../common/BoxContainer';
 
 import { HeaderTalPage } from './HeaderTalPage';

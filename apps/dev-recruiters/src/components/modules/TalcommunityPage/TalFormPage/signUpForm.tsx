@@ -1,13 +1,14 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { agent } from '@devlaunchers/utility';
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Field, Form, Formik, FormikHelpers, useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
 import { Wrapper } from '../StyledTalcommunityPage';
+import { DlTalCommUser } from '@devlaunchers/models/dltalcommuser';
 
 interface Props {
   handleCloseModal: () => void;
@@ -104,7 +105,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                 strokeLinejoin="round"
                 d="M6 18L18 6M6 6l12 12"
               />
-
               <Form>
                 <atoms.Box flexDirection="column" margin="auto">
                   <atoms.Box
@@ -119,9 +119,11 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       placeholder="John Smith"
                       id="name"
                       name="name"
+                      value={values.name}
                       required
                       touched={touched['name']}
                       error={errors.name}
+                      onChange={handleChange}
                     />
                     <Field
                       as={organisms.FormField}
@@ -141,6 +143,7 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       required
                       id="skills"
                       name="skills"
+                      value={values.skills}
                       error={errors.skills}
                       touched={touched.skills}
                     />
@@ -151,6 +154,7 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       required
                       id="roles"
                       name="roles"
+                      value={values.roles}
                       error={errors.roles}
                       touched={touched.roles}
                     />
@@ -185,13 +189,14 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     </atoms.Box>
                   </atoms.Box>
                 </atoms.Box>
-                <FormErrorScroller focusAfterScroll />
                 <ConfirmationModal
                   showModal={showConfirmationModal}
                   handleOpenModal={handleOpenConfirmationModal}
                   handleCloseModal={handleCloseModal}
                 />
               </Form>
+              {/* Move FormErrorScroller inside Formik's rendering context */}
+              {/* <FormErrorScroller focusAfterScroll /> */}
             </atoms.Box>
           )}
         </Formik>

@@ -29,7 +29,8 @@
     "**/*.ts",
     "**/*.tsx",
     "src/components/common/Header/index.js",
-    "src/pages/_app.jsx"
+    "src/pages/_app.jsx",
+    "src/pages/recruit.tsx"
   ],
   "exclude": ["node_modules"]
 }
