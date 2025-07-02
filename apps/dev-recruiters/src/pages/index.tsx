@@ -1,7 +1,4 @@
 import Head from 'next/head';
-import SignUpForm from '../components/modules/FormPage/signUpForm';
-import BoxContainer from '../components/common/BoxContainer';
-import { Wrapper } from '@components/modules/OpportunitiesAggregator/StyledOpportunitiesAggregator';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import NewJoinPageComponent from '../components/modules/NewJoinPageComponent';

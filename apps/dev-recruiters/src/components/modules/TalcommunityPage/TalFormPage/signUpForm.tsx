@@ -175,15 +175,9 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     />
 
                     <atoms.Box maxWidth="50%">
-                      <atoms.Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        buttonSize="medium"
-                        buttonType="primary"
-                        className="w-full"
-                      >
+                      <button type="submit" disabled={isSubmitting}>
                         SUBMIT
-                      </atoms.Button>
+                      </button>
                     </atoms.Box>
                   </atoms.Box>
                 </atoms.Box>
