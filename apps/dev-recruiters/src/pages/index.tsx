@@ -1,18 +1,17 @@
-import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import NewJoinPageComponent from '../components/modules/NewJoinPageComponent';
+import { GetStaticProps } from 'next';
 import { Project } from '@devlaunchers/models/project';
 import { Opportunity } from '@devlaunchers/models/opportunity';
 import agent from '@devlaunchers/utility/agent';
 import { useRouter } from 'next/router';
 import { OpportunitiesProvider } from '../contexts/SelectRoleContext';
 
-const getData = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
   let projects: Project[] = [];
   let opportunities: Opportunity[] = [];
-
   try {
     const result = await agent.Projects.list(
       new URLSearchParams({
@@ -20,7 +19,6 @@ const getData = async () => {
         populate: 'opportunities',
       })
     );
-
     projects = result?.filter(
       (p: Project) => p.attributes.opportunities.data.length > 0
     );
@@ -46,11 +44,15 @@ const getData = async () => {
       return project;
     });
   } catch (error) {
+    console.error('in src/[ages/index/tsx/getStaticProps');
     console.error('An error occurred while fetching Projects', error);
   }
   return {
-    projects,
-    opportunities,
+    props: {
+      projects,
+      opportunities,
+    },
+    revalidate: 10,
   };
 };
 interface Props {
@@ -58,19 +60,7 @@ interface Props {
   opportunities: Opportunity[];
 }
 
-const NewJoinPage = () => {
-  const [projectData, setProjectData] = useState<Project[]>([]);
-  const [opportunityData, setOppurtunityData] = useState<Opportunity[]>([]);
-
-  const getDataAsync = async () => {
-    const { projects, opportunities } = await getData();
-    setProjectData(projects);
-    setOppurtunityData(opportunities);
-  };
-  useEffect(() => {
-    getDataAsync();
-  }, []);
-
+const NewJoinPage = ({ projects, opportunities }: Props) => {
   const router = useRouter();
   const { format } = router.query;
 
@@ -119,8 +109,8 @@ const NewJoinPage = () => {
       <ThemeProvider theme={theme}>
         <OpportunitiesProvider>
           <NewJoinPageComponent
-            projects={projectData}
-            opportunities={opportunityData}
+            projects={projects}
+            opportunities={opportunities}
           />
         </OpportunitiesProvider>
       </ThemeProvider>

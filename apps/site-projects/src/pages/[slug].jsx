@@ -16,8 +16,6 @@ export const getStaticPaths = async () => {
   };
 };
 
-debugger;
-
 export const getStaticProps = async (context) => {
   const { slug } = context.params;
   const project = await agent.Projects.get(slug, {

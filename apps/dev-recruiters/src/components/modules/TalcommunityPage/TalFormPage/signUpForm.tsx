@@ -1,14 +1,12 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
-import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { agent } from '@devlaunchers/utility';
-import { Field, Form, Formik, FormikHelpers, useFormik } from 'formik';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
 import { Wrapper } from '../StyledTalcommunityPage';
-import { DlTalCommUser } from '@devlaunchers/models/dltalcommuser';
 
 interface Props {
   handleCloseModal: () => void;
