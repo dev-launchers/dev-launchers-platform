@@ -1,4 +1,5 @@
 import { atoms, organisms } from '@devlaunchers/components/src/components';
+import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
 import { agent } from '@devlaunchers/utility';
 import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useState } from 'react';
@@ -103,6 +104,7 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                 strokeLinejoin="round"
                 d="M6 18L18 6M6 6l12 12"
               />
+
               <Form>
                 <atoms.Box flexDirection="column" margin="auto">
                   <atoms.Box
@@ -117,11 +119,9 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       placeholder="John Smith"
                       id="name"
                       name="name"
-                      value={values.name}
                       required
                       touched={touched['name']}
                       error={errors.name}
-                      onChange={handleChange}
                     />
                     <Field
                       as={organisms.FormField}
@@ -141,7 +141,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       required
                       id="skills"
                       name="skills"
-                      value={values.skills}
                       error={errors.skills}
                       touched={touched.skills}
                     />
@@ -152,7 +151,6 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                       required
                       id="roles"
                       name="roles"
-                      value={values.roles}
                       error={errors.roles}
                       touched={touched.roles}
                     />
@@ -177,26 +175,19 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     />
 
                     <atoms.Box maxWidth="50%">
-                      <atoms.Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        buttonSize="medium"
-                        buttonType="primary"
-                        className="w-full"
-                      >
+                      <button type="submit" disabled={isSubmitting}>
                         SUBMIT
-                      </atoms.Button>
+                      </button>
                     </atoms.Box>
                   </atoms.Box>
                 </atoms.Box>
+                <FormErrorScroller focusAfterScroll />
                 <ConfirmationModal
                   showModal={showConfirmationModal}
                   handleOpenModal={handleOpenConfirmationModal}
                   handleCloseModal={handleCloseModal}
                 />
               </Form>
-              {/* Move FormErrorScroller inside Formik's rendering context */}
-              {/* <FormErrorScroller focusAfterScroll /> */}
             </atoms.Box>
           )}
         </Formik>
