@@ -1,15 +1,10 @@
 import { useState } from 'react';
-import {
-  UserComment,
-  UserImageOne,
-  CommentBox,
-  SubmitButton,
-} from './StyledComments.js';
+import { UserComment, UserImageOne } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
-import SignInButton from '../../../common/SignInButton/SignInButton';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../../utils/StrapiHelper.js';
 import SendButton from '../../../../images/send_button_default.svg';
+import SignInSection from '../../../common/SignInSection/SignInSection';
 
 function CommentForm(props) {
   const { userData, isAuthenticated } = useUserDataContext();
@@ -113,15 +108,14 @@ function CommentForm(props) {
           </UserComment>
         </form>
       ) : (
-        <div style={{ margin: '2rem', marginTop: '4rem' }}>
-          Sign in to leave a comment!{' '}
-          <SignInButton
-            redirectUrl={
-              `${process.env.NEXT_PUBLIC_FRONT_END_URL}/ideaspace/workshop/` +
-              selectedCard.id
-            }
-          />
-        </div>
+        <SignInSection
+          label="Please sign in to leave a comment!"
+          redirectURL={
+            process.env.NEXT_PUBLIC_FRONT_END_URL +
+            '/ideaspace/workshop/' +
+            selectedCard.id
+          }
+        />
       )}
     </div>
   );

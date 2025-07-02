@@ -166,12 +166,14 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     <atoms.Checkbox
                       label="I am 18 years old or older."
                       disabled={false}
+                      checked={ageCheckbox}
                       onChange={handleSetAgeCheckbox}
                       required
                     />
                     <atoms.Checkbox
                       label="I have read and agreed to the terms and conditions"
                       disabled={false}
+                      checked={termsCheckbox}
                       onChange={handleSetTermsCheckbox}
                       required
                     />
