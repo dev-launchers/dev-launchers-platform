@@ -21,14 +21,14 @@ axios.defaults.withCredentials = true;
  * Configure the request headers with Authorization Header using the authentication token
  */
 
-axios.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token'); // Retrieve the token from localStorage
-  console.log(token);
-  if (token && config.headers) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// axios.interceptors.request.use((config) => {
+//   const token = localStorage.getItem('token'); // Retrieve the token from localStorage
+//   console.log(token);
+//   if (token && config.headers) {
+//     config.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return config;
+// });
 
 axios.interceptors.response.use(
   async (response) => {
