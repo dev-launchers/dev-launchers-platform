@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { Date, RichText, Elements } from "prismic-reactjs";
+import { Date, RichText, Elements } from 'prismic-reactjs';
 
-import PageBody from "../../common/PageBody";
+import PageBody from '../../common/PageBody';
 
 import {
   IntroArea,
@@ -17,7 +17,7 @@ import {
   PageParagraph,
   PageImage,
   PageLink,
-} from "./StyledDynamicPage";
+} from './StyledDynamicPage';
 
 /* Event snippet for Discord Outbound click conversion page
 In your html page, add the snippet and call gtagReportConversion when someone clicks on the chosen link or button. */
@@ -33,11 +33,11 @@ function gtagReportConversion(conversionId, url) {
   }
 
   const callback = () => {
-    if (typeof url !== "undefined") {
+    if (typeof url !== 'undefined') {
       window.location = url;
     }
   };
-  gtag("event", "conversion", {
+  gtag('event', 'conversion', {
     // 'send_to': 'AW-599284852/8hqbCLaChesBEPS44Z0C',
     send_to: conversionId,
     event_callback: callback,
@@ -92,7 +92,7 @@ const htmlSerializer = (type, element, content, children, key) => {
     case Elements.heading6:
       props = {};
       return React.createElement(
-        "h6",
+        'h6',
         propsWithUniqueKey(props, key),
         children
       );
@@ -101,7 +101,7 @@ const htmlSerializer = (type, element, content, children, key) => {
     case Elements.paragraph:
       // CUSTOM LOGIC
       // Check if this might be an iframe....
-      if (element.text.indexOf("<iframe") === 0) {
+      if (element.text.indexOf('<iframe') === 0) {
         props = {
           dangerouslySetInnerHTML: { __html: element.text },
         };
@@ -119,7 +119,7 @@ const htmlSerializer = (type, element, content, children, key) => {
     case Elements.image:
       props = {
         src: element.url,
-        alt: element.alt || "",
+        alt: element.alt || '',
       };
       if (element.linkTo) {
         props.onClick = () => {
@@ -127,14 +127,14 @@ const htmlSerializer = (type, element, content, children, key) => {
           const destination = element.linkTo.url;
           gtagReportConversion(conversionId, destination);
         };
-        props.style = { cursor: "pointer" };
+        props.style = { cursor: 'pointer' };
       }
       return <PageImage {...propsWithUniqueKey(props, key)} />;
 
     // Add a class to hyperlinks
     case Elements.hyperlink:
       targetAttr = element.data.target ? { target: element.data.target } : {};
-      relAttr = element.data.target ? { rel: "noopener" } : {};
+      relAttr = element.data.target ? { rel: 'noopener' } : {};
       props = {
         href: element.data.url, // || linkResolver(element.data)
         ...targetAttr,
@@ -155,8 +155,8 @@ export default function DynamicPage(props) {
   React.useEffect(() => {
     // Google AdSense
     window.dataLayer = window.dataLayer || [];
-    gtag("js", new Date());
-    gtag("config", "AW-599284852");
+    gtag('js', new Date());
+    gtag('config', 'AW-599284852');
   }, []);
 
   const { pageId } = props;
@@ -168,7 +168,7 @@ export default function DynamicPage(props) {
     // We're using Prisimic as our CDN!
     // First, we need to grab our master ref so we can query our data
     // Yes, it requires 2 queries to actually get data :(
-    fetch("https://dev-launchers-site.cdn.prismic.io/api")
+    fetch('https://dev-launchers-site.cdn.prismic.io/api')
       .then((response) => response.json())
       .then((json) => {
         setPrismicRef(json.refs[0].ref);
@@ -222,14 +222,14 @@ export default function DynamicPage(props) {
                               page.data.intro_image_hyperlink.url;
                             gtagReportConversion(conversionId, destination);
                           }
-                        : ""
+                        : ''
                     }
                     style={{
-                      backgroundImage: `url("${page.data.intro_image.url})`,
+                      backgroundImage: `url("${page.data.intro_image.url}")`,
 
                       cursor: page.data.intro_image_hyperlink.url
-                        ? "pointer"
-                        : "default",
+                        ? 'pointer'
+                        : 'default',
                     }}
                   >
                     {/* }

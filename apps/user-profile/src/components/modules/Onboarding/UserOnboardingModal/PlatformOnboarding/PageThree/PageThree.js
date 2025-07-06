@@ -53,7 +53,7 @@ export default function PageThree() {
       <div className="flex flex-col text-center">
         <div>
           <Typography variant="secondary">ABOUT YOU</Typography>
-          <Typography variant="primary">
+          <Typography textweight="light" textalign="center" type="h3">
             What Role Best Describes You?
           </Typography>
         </div>

@@ -186,6 +186,8 @@ export default function UserLandingPage() {
     router.push('/');
   };
 
+  const profileImg =
+    uploadedProfilePicture || userData?.profile?.profilePictureUrl;
   return (
     <div className="flex flex-col justify-center gap-8 bg-white">
       <div className="flex h-40 bg-grayscale-100 flex-shrink-0 items-center justify-center">
@@ -201,38 +203,39 @@ export default function UserLandingPage() {
             A completed profile will help us match you with opportunities
           </p>
           <div>
-            {uploadedProfilePicture || userData?.profile?.profilePictureUrl ? (
-              <img
-                src={
-                  uploadedProfilePicture || userData?.profile?.profilePictureUrl
-                }
-                className="h-30 w-30"
-              />
+            {profileImg ? (
+              <>
+                <label id="file-upload" className="cursor-pointer">
+                  <img src={profileImg} className="h-[120px] w-[120px]" />
+                  <div className="relative float-right bottom-5">
+                    <img src={CameraIcon} className="Camera Icon" />
+                    <input
+                      id="file-upload"
+                      type="file"
+                      accept="image/png, image/jpeg"
+                      onChange={handleFileChange}
+                      style={{ display: 'none' }}
+                    />
+                  </div>
+                </label>
+              </>
             ) : (
-              <UploadProfilePicture width={120} height={120} />
-            )}
-            <div className="relative right-[-10] bottom-5">
-              <label id="file-upload" className="cursor-pointer">
-                <img src={CameraIcon} className="Camera Icon" />
-              </label>
-              <input
-                id="file-upload"
-                type="file"
-                accept="image/png, image/jpeg"
+              <UploadProfilePicture
+                width={120}
+                height={120}
                 onChange={handleFileChange}
-                style={{ display: 'none' }}
               />
-            </div>
+            )}
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="flex flex-row">
+          <div className="flex flex-row mb-4">
             <p className="text-sm font-bold text-red-500">*</p>
             <p className="text-sm font-normal text-black">
               Indicates a required field
             </p>
           </div>
-          <div name="myForm">
+          <div name="myForm" className="mb-4">
             {/* <div className="flex flex-row">
               <label
                 class="text-grayscale-900 text-base font-bold"
@@ -301,7 +304,7 @@ export default function UserLandingPage() {
               </p>
             </div>
             <input
-              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center"
+              class="flex border border-black rounded-lg w-full py-3 px-3 text-grayscale-500 text-sm font-light justify-center items-center mt-2"
               id="lastName"
               type="text"
               placeholder="Doe"
@@ -328,7 +331,7 @@ export default function UserLandingPage() {
               onChange="onRoleChange()"
             ></input> */}
           </div>
-          <div className="flex flex-col margin gap-32">
+          <div className="flex flex-col margin gap-32 mt-4">
             <div className="flex flex-row">
               <div className="flex items-center">
                 <input
@@ -338,7 +341,7 @@ export default function UserLandingPage() {
                   value=""
                   className="w-6 h-6 text-purple-700 accent-purple-700 bg-white border-purple-700 rounded"
                 ></input>
-                <label id="agree-checkbox" className="text-sm text-black">
+                <label id="agree-checkbox" className="text-sm text-black px-2">
                   I have read and agree to the{' '}
                   <a href="https://staging.devlaunchers.org/page/terms-and-conditions">
                     Terms and Conditions
@@ -347,7 +350,7 @@ export default function UserLandingPage() {
               </div>
               <p className="text-base text-red-500"> *</p>
             </div>
-            <div className="flex pb-16 gap-134 h-full">
+            <div className="flex pb-16 gap-134 h-full justify-between">
               <Button
                 buttonType="alternative"
                 buttonSize="xl"

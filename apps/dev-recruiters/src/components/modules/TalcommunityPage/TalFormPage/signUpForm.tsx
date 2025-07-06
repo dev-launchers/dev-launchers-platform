@@ -162,26 +162,22 @@ export default function TalCommForm({ handleCloseModal }: Props) {
                     <atoms.Checkbox
                       label="I am 18 years old or older."
                       disabled={false}
+                      checked={ageCheckbox}
                       onChange={handleSetAgeCheckbox}
                       required
                     />
                     <atoms.Checkbox
                       label="I have read and agreed to the terms and conditions"
                       disabled={false}
+                      checked={termsCheckbox}
                       onChange={handleSetTermsCheckbox}
                       required
                     />
 
                     <atoms.Box maxWidth="50%">
-                      <atoms.Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        buttonSize="medium"
-                        buttonType="primary"
-                        className="w-full"
-                      >
+                      <button type="submit" disabled={isSubmitting}>
                         SUBMIT
-                      </atoms.Button>
+                      </button>
                     </atoms.Box>
                   </atoms.Box>
                 </atoms.Box>

@@ -7,6 +7,15 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oswald:wght@200..700&display=swap"
+            rel="stylesheet"
+          />
           <link
             href="https://fonts.googleapis.com/css2?family=Abel&family=Holtwood+One+SC&family=Roboto&family=Alfa+Slab+One&family=Vollkorn&family=Nunito+Sans&display=swap"
             rel="stylesheet"

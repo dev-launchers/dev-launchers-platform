@@ -48,6 +48,17 @@ const h4 = `
     }
 `;
 
+const h5 = `
+    font-family: 'Nunito Sans';
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.0rem;
+    @media only screen and (max-width: 62.5rem) {
+        font-size: 1.5rem;
+        line-height: 2.0625rem;
+    }
+`;
+
 const subtitle = `
     font-family: 'Nunito Sans';
     font-size: 1rem;
@@ -152,6 +163,7 @@ export const typographyStyles = {
   h2,
   h3,
   h4,
+  h5,
   subtitle,
   pLarge,
   p,
