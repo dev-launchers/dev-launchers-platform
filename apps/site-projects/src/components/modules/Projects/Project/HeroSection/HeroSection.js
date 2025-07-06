@@ -44,7 +44,7 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
         }}
       >
         <Image
-          src={heroImageConfig.url}
+          src={heroImageConfig?.url}
           layout="fill"
           alt="project's image"
           objectFit="cover"
