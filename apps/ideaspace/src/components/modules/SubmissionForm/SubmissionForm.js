@@ -39,7 +39,7 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
-    involveLevel: '',
+    //involveLevel: '',
     status: '',
   };
 
@@ -70,9 +70,9 @@ function SubmissionForm() {
     tagline: Yup.string()
       .trim()
       .max(80, 'Tagline must be at most 80 characters'),
-    involveLevel: Yup.string()
-      .nullable()
-      .required('Please select your level of involvement'),
+    // involveLevel: Yup.string()
+    //   .nullable()
+    //   .required('Please select your level of involvement'),
   });
 
   const submitHandler = async (values) => {
@@ -86,7 +86,7 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    values['involveLevel'] = values['involveLevel'].trim();
+    //    values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
 
@@ -143,12 +143,19 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <Headline>Submit an idea</Headline>
+        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+          Submit an idea
+        </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
-        <atoms.Typography type="h4">
+        <atoms.Typography
+          variant="primary"
+          size="xl3"
+          textAlign="center"
+          as="h4"
+        >
           Have an idea for a software project but need developers to build it?
           <br />
           Bring your idea to us - we will work with you to spin up a project to

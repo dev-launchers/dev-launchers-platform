@@ -42,16 +42,17 @@ const ProductCardLong = ({
             }}
           >
             <Typography
-              type="h1"
+              as="h1"
               css={{
                 color: theme.colors.GREYSCALE_WHITE,
                 margin: 0,
               }}
+              variant="primary"
             >
               {title}
             </Typography>
             <Typography
-              type="subtitle"
+              variant="secondary"
               css={{ color: theme.colors.GREYSCALE_WHITE }}
             >
               {subtitle}

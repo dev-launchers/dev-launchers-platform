@@ -1,38 +1,37 @@
-const withPlugins = require("next-compose-plugins");
-const imagesPlugin = require("next-optimized-images");
-
+const withPlugins = require('next-compose-plugins');
+const imagesPlugin = require('next-optimized-images');
 
 /**
  * @type {import('next').NextConfig}
-* */
+ * */
 const nextConfig = {
-  basePath: "/projects",
-  
+  basePath: '/projects',
+
   async rewrites() {
     return [
       {
-        source: "/:path*",
+        source: '/:path*',
         destination: `/:path*`,
       },
       {
-        source: "/",
-        destination: "https://devlaunchers.org/",
-        basePath: false
+        source: '/',
+        destination: 'https://devlaunchers.org/',
+        basePath: false,
       },
       {
-        source: "/create",
-        destination: "https://devlaunchers.org/create",
-        basePath: false
+        source: '/create',
+        destination: 'https://devlaunchers.org/create',
+        basePath: false,
       },
       {
-        source: "/learn",
+        source: '/learn',
         destination: `https://devlaunchers.org/learn`,
-        basePath: false
+        basePath: false,
       },
       {
-        source: "/support-us",
+        source: '/support-us',
         destination: `https://devlaunchers.org/support-us`,
-        basePath: false
+        basePath: false,
       },
     ];
   },
@@ -44,8 +43,13 @@ const nextConfig = {
       https://github.com/twopluszero/next-images/issues/73
     */
     domains: [
-      "images.prismic.io",
-      "devlaunchersproduction.blob.core.windows.net",
+      'images.prismic.io',
+      'devlaunchersproduction.blob.core.windows.net',
+      'devlaunchersstaging.blob.core.windows.net',
+      'lh3.googleusercontent.com',
+      'localhost',
+      'apiv4-staging.devlaunchers.org',
+      'apiv4.devlaunchers.org',
     ],
     disableStaticImages: true,
   },
@@ -59,3 +63,9 @@ const nextConfig = {
   },
 };
 module.exports = withPlugins([[imagesPlugin], nextConfig]);
+
+// REMOVE Unsupported Properties:
+// webpack5: true, // No longer needed
+// target: "server", // Deprecated
+// configOrigin: "default", // Not valid
+// webpackDevMiddleware: (config) => config, // Remove this unless you need it
