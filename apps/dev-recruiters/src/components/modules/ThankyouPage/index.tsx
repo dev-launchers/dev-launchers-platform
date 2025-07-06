@@ -27,10 +27,12 @@ export function ThankyouPage() {
             We will email you when a volunteer role that matches your skillsets
             and/or interests opens up!
           </SubHeaderContainer>
-          <BoxContainer paddingVertical={80} paddingHorizontal={520}>
-            <BtnSignUp as="a" type="submit" onClick={routeChange}>
-              VIEW CURRENT OPEN ROLES
-            </BtnSignUp>
+          <BoxContainer paddingVertical={80} paddingHorizontal={24}>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <BtnSignUp as="a" type="submit" onClick={routeChange}>
+                VIEW CURRENT OPEN ROLES
+              </BtnSignUp>
+            </div>
           </BoxContainer>
         </BoxContainer>
       </Wrapper>

@@ -19,24 +19,27 @@ import CameraIcon from './../Icons/SVG/FilledCamera';
  */
 function UploadProfilePicture({ src, alt, className, onChange }) {
   return (
-    <div>
-      {/* Display the current profile picture */}
+    <label
+      htmlFor="file-upload"
+      className="relative inline-block cursor-pointer"
+    >
+      {/* Profile Picture */}
       <ProfilePicture src={src} alt={alt} className={className} />
 
-      {/* Label that acts as a trigger for the file input */}
-      <label htmlFor="file-upload" className="cursor-pointer">
-        <CameraIcon /> {/* Camera icon to indicate upload action */}
-      </label>
+      {/* Camera icon - absolutely positioned */}
+      <span className="absolute bottom-1 right-1 h-[30px] w-[30px]">
+        <CameraIcon />
+      </span>
 
-      {/* Hidden file input for uploading a new profile picture */}
+      {/* Hidden file input */}
       <input
         id="file-upload"
-        type="file" // Input type for file upload
-        accept="image/png, image/jpeg" // Restrict accepted file types to PNG and JPEG
-        onChange={onChange} // Trigger the onChange callback when a file is selected
-        style={{ display: 'none' }} // Hide the file input element
+        type="file"
+        accept="image/png, image/jpeg"
+        onChange={onChange}
+        style={{ display: 'none' }}
       />
-    </div>
+    </label>
   );
 }
 

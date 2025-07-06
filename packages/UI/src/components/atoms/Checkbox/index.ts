@@ -5,7 +5,8 @@ type Theme = 'brand' | 'grey' | 'error';
 type Size = 'base' | 'small';
 
 export interface CheckboxProps {
-  disabled: boolean;
+  id?: string;
+  disabled?: boolean;
   label?: string;
   onChange?: (e: ChangeEvent, label: string) => void;
   required?: boolean;

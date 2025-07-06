@@ -46,8 +46,9 @@ const nextConfig = {
     */
     domains: [
       'images.prismic.io',
-      'devlaunchersproduction.blob.core.windows.net',,
-      'lh3.googleusercontent.com'
+      'devlaunchersproduction.blob.core.windows.net',
+      'apiv4.devlaunchers.org',
+      'lh3.googleusercontent.com',
     ],
     disableStaticImages: true,
   },

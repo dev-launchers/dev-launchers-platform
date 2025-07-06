@@ -11,7 +11,9 @@ export default function PageTwo() {
     <div className="flex flex-col gap-16 justify-center">
       <div className="flex flex-col text-center">
         <Typography variant="secondary">ABOUT US</Typography>
-        <Typography variant="primary">What is DevLaunchers?</Typography>
+        <Typography textweight="light" textalign="center" type="h3">
+          What is DevLaunchers?
+        </Typography>
       </div>
       <div className="flex justify-center">
         <div className="flex flex-col gap-6 max-w-[560px]">

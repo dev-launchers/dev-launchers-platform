@@ -25,7 +25,7 @@ import { HeadWapper, Headline } from '../../common/CommonStyles';
 
 function BrowseIdeas() {
   const [selectedSortCriterionLabel, setSelectedSortCriterionLabel] =
-    React.useState('Default');
+    React.useState('All Ideas');
   const [cards, setCards] = React.useState([]);
   const [sourceCards, setSourceCards] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -34,7 +34,7 @@ function BrowseIdeas() {
   const sortingConfigs = [
     {
       value: 'default',
-      label: 'Default',
+      label: 'All Ideas',
       isAscending: false,
     },
     {
@@ -166,17 +166,23 @@ function BrowseIdeas() {
   return (
     <>
       <HeadWapper>
-        <Headline>Browse Ideas</Headline>
+        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+          Browse Ideas
+        </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton backRoute={'/ideaspace'} />
-        <atoms.Typography type="h4">
+        <atoms.Typography textAlign="center" variant="primary" size="xl3">
           Want to help develop an idea?
-          <br />
-          <atoms.Typography type="p" style={{ fontSize: '1.3rem' }}>
-            Check out these ideas submitted by other Dev Launchers!
-          </atoms.Typography>
+        </atoms.Typography>
+        <atoms.Typography
+          textAlign="center"
+          variant="secondary"
+          as="p"
+          size="body_xl"
+        >
+          Check out these ideas submitted by other Dev Launchers!
         </atoms.Typography>
       </HeadWapper>
 

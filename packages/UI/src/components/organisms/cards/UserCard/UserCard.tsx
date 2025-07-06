@@ -44,10 +44,10 @@ export default function UserCard({
               css={{ borderRadius: '50%' }}
             />
 
-            <Typography type="h3" css={{ marginTop: '1rem' }}>
+            <Typography variant="primary" as="h3" css={{ marginTop: '1rem' }}>
               {userInfo.name}
             </Typography>
-            <Typography type="subtitle" css={{ marginTop: '.5rem' }}>
+            <Typography variant="secondary" css={{ marginTop: '.5rem' }}>
               {userInfo.bio}
             </Typography>
           </Box>
@@ -58,8 +58,10 @@ export default function UserCard({
             alignItems="center"
           >
             <Box flexDirection="column" alignItems="center">
-              <Typography type="h3">{userInfo.name}</Typography>
-              <Typography type="subtitle" css={{ marginTop: '.5rem' }}>
+              <Typography variant="primary" as="h3">
+                {userInfo.name}
+              </Typography>
+              <Typography variant="secondary" css={{ marginTop: '.5rem' }}>
                 {userInfo.bio}
               </Typography>
             </Box>
@@ -82,10 +84,10 @@ export default function UserCard({
             >
               <Discord width={'22px'} height={'16px'} />
               <Box flexDirection="column">
-                <Typography type="label">DISCORD</Typography>
+                <Typography variant="secondary">DISCORD</Typography>
                 <Typography
                   variant="secondary"
-                  size="sm"
+                  size="body_sm"
                   css={{ marginTop: '.5rem' }}
                 >
                   {userInfo?.discord?.username}#
@@ -105,10 +107,10 @@ export default function UserCard({
             >
               <Mail width={'22px'} height={'16px'} />
               <Box flexDirection="column">
-                <Typography type="label">Email</Typography>
+                <Typography variant="secondary">Email</Typography>
                 <Typography
                   variant="secondary"
-                  size="sm"
+                  size="body_sm"
                   css={{ marginTop: '.5rem' }}
                 >
                   {userInfo.email}
