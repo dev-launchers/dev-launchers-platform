@@ -204,7 +204,7 @@ const DlTalcommuser = {
   get: () => requests.get<TalCommUser>('/dl-tal-communities'),
   post: (body: {
     data: { name: string; emailID: string; skills: string; roles: string };
-  }) => requests.post('/dl-tal-communities', body),
+  }) => requests.post('/dl-tal-communities', body.data),
 };
 
 const agent = {
