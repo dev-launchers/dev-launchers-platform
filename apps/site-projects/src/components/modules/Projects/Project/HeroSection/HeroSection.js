@@ -1,12 +1,12 @@
-import React from "react";
-import { withTheme } from "styled-components";
+import React from 'react';
+import { withTheme } from 'styled-components';
 // import Link from "next/link";
+import { atoms } from '@devlaunchers/components/components';
 
-import Image from "next/image";
-// import Button from "../../../../common/Button";
+import Image from 'next/image';
 // import Tag from "../../../../common/Tag";
 // import SignUpButton from "../SignUpButton";
-import { Wrapper } from "./StyledHeroSection";
+import { Wrapper } from './StyledHeroSection';
 
 // import { env } from "../../../../../utils/EnvironmentVariables";
 
@@ -26,25 +26,30 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
 </svg>`;
 
   const toBase64 = (str) =>
-    typeof window === "undefined"
-      ? Buffer.from(str).toString("base64")
+    typeof window === 'undefined'
+      ? Buffer.from(str).toString('base64')
       : window.btoa(str);
-  const heroImageConfig = heroImage?.data?.attributes?.formats?.large || heroImage?.data?.attributes;
-  const imageUrl = process.env.NEXT_PUBLIC_NAME == "DEVELOPMENT" ? process.env.NEXT_PUBLIC_API_BASE_URL + heroImageConfig.url : heroImageConfig?.url
+  const heroImageConfig =
+    heroImage?.data?.attributes?.formats?.large || heroImage?.data?.attributes;
+
   return (
     <Wrapper>
-      <h2>{projectName}</h2>
-      <span>{projectCatchPhrase}</span>
+      <atoms.Typography variant="primary" size="xl2" textAlign="center">
+        {projectName}
+      </atoms.Typography>
+      <atoms.Typography textAlign="center" variant="secondary">
+        {projectCatchPhrase}
+      </atoms.Typography>
       <div
         style={{
-          position: "relative",
-          width: "100%",
-          height: "25rem",
-          marginTop: "2rem",
+          position: 'relative',
+          width: '100%',
+          height: '25rem',
+          marginTop: '2rem',
         }}
       >
         <Image
-          src={imageUrl}
+          src={heroImageConfig?.url}
           // height={heroImageConfig.height}
           // width={heroImageConfig.width}
           layout="fill"

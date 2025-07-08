@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTheme, withTheme } from 'styled-components';
-import { Typography } from '@devlaunchers/components/components/atoms/Typography';
+import { atoms } from '@devlaunchers/components/components';
 import Section from '../Section';
 import { Wrapper, ButtonsContainer, Button } from './StyledVision';
 
@@ -15,14 +15,14 @@ const Vision = ({ scrollMethods, vision }) => {
       Title="Vision"
       Content={
         <Wrapper>
-          <Typography
+          <atoms.Typography
             as="p"
             variant="secondary"
             size="body_xl"
             style={{ marginBottom: '2rem' }}
           >
             {vision}
-          </Typography>
+          </atoms.Typography>
           <ButtonsContainer>
             <Button
               style={{ cursor: 'pointer' }}

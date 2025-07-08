@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import { Typography } from '@devlaunchers/components/components/atoms/Typography';
+import { atoms } from '@devlaunchers/components/components';
 import {
   FlexSection,
   ImageHolder,
@@ -11,14 +11,14 @@ const DescriptionContent = ({ data }) => {
   const { description, images } = data;
   return (
     <>
-      <Typography
+      <atoms.Typography
         as="div"
         variant="secondary"
         size="body_lg"
         style={{ paddingBottom: '1.5625rem' }}
       >
         <ReactMarkdown>{description}</ReactMarkdown>
-      </Typography>
+      </atoms.Typography>
       {!!images[0]?.image?.data?.length && (
         <Strip>
           <Conatiner>
