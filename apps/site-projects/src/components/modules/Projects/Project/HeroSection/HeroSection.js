@@ -50,8 +50,6 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
       >
         <Image
           src={heroImageConfig?.url}
-          // height={heroImageConfig.height}
-          // width={heroImageConfig.width}
           layout="fill"
           alt="project's image"
           objectFit="cover"
