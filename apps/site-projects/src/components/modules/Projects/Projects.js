@@ -5,7 +5,7 @@ import { useState } from 'react';
 import Card from '../../common/Card';
 import SearchBar from './Project/SearchBar';
 import { Layout, ProjectContainer } from './StyledProjects';
-import { Typography } from '@devlaunchers/components/components/atoms/Typography';
+import { atoms } from '@devlaunchers/components/components';
 
 const Projects = ({ projects }) => {
   const [searchValue, setSearchValue] = useState('');
@@ -48,13 +48,18 @@ const Projects = ({ projects }) => {
           alignItems: 'center',
         }}
       >
-        <Typography as="h1" variant="primary" size="xl5" textWeight="bold">
+        <atoms.Typography
+          as="h1"
+          variant="primary"
+          size="xl5"
+          textWeight="bold"
+        >
           Our Projects - Explore and Collaborate!
-        </Typography>
+        </atoms.Typography>
         <SearchBar onChange={searchProject} />
       </div>
 
-      <Typography
+      <atoms.Typography
         as="p"
         variant="secondary"
         size="body_lg"
@@ -64,7 +69,7 @@ const Projects = ({ projects }) => {
         resources, tools, and support designed to help you succeed in building
         projects in the Dev Launchers ecosystem.{' '}
         <Link href="/join">Find a place you fit!</Link>
-      </Typography>
+      </atoms.Typography>
       <Layout>
         {items.map((project, i) => {
           const imageUrl =
@@ -94,7 +99,7 @@ const Projects = ({ projects }) => {
                         href={`${router?.asPath}/${project.attributes.slug}`}
                         passHref
                       >
-                        <Typography
+                        <atoms.Typography
                           as="a"
                           variant="secondary"
                           size="body_base"
@@ -102,10 +107,10 @@ const Projects = ({ projects }) => {
                           textCase="uppercase"
                         >
                           LEARN MORE
-                        </Typography>
+                        </atoms.Typography>
                       </Link>
                       <Link href="support-us" passHref>
-                        <Typography
+                        <atoms.Typography
                           as="a"
                           variant="secondary"
                           size="body_base"
@@ -113,7 +118,7 @@ const Projects = ({ projects }) => {
                           textCase="uppercase"
                         >
                           DONATE
-                        </Typography>
+                        </atoms.Typography>
                       </Link>
                     </>
                   ),
