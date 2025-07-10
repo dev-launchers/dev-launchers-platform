@@ -77,7 +77,7 @@ function DashboardPage() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <atoms.Typography type="h4">
+        <atoms.Typography textAlign="center" type="h4">
           Everything about your ideas in one place.
         </atoms.Typography>
       </HeadWapper>
