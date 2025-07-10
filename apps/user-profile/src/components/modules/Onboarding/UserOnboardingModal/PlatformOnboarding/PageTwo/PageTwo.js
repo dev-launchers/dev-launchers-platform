@@ -10,8 +10,10 @@ export default function PageTwo() {
   return (
     <div className="flex flex-col gap-16 justify-center">
       <div className="flex flex-col text-center">
-        <Typography variant="secondary">ABOUT US</Typography>
-        <Typography textweight="light" textalign="center" type="h3">
+        <Typography textAlign="center" variant="secondary">
+          ABOUT US
+        </Typography>
+        <Typography textweight="light" textAlign="center" type="h3">
           What is DevLaunchers?
         </Typography>
       </div>
