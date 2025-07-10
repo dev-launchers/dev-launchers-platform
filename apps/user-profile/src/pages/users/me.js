@@ -46,7 +46,7 @@ export default function UserProfilePage() {
    */
   const openUserOnboardingModal = () => {
     return (
-      hasCompletedOnboarding && (
+      !hasCompletedOnboarding && (
         <OnboardingDataProvider>
           {' '}
           <UserOnboardingModal />{' '}
