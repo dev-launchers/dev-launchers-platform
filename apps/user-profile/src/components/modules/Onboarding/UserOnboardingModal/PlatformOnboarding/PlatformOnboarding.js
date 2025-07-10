@@ -1,10 +1,12 @@
 import axios from 'axios';
 import Stepper from '../Stepper';
+// TODO: give these pages more descriptive names
 import PageTwo from './PageTwo/PageTwo';
 import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive/PageFive';
 import PageSix from './PageSix/PageSix';
+import PageSeven from './PageSeven/PageSeven';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 /**
@@ -135,8 +137,20 @@ export default function PlatformOnboarding() {
     },
   };
 
-  const congratulationStep = {
+  const skillStep = {
     component: <PageSix />,
+    header: {
+      barSize: 's',
+      hideNumber: true,
+    },
+    buttons: {
+      next: { label: 'Next' },
+      back: { label: 'Back' },
+    },
+  };
+
+  const congratulationStep = {
+    component: <PageSeven />,
     header: {
       name: 'Done',
       number: 4,

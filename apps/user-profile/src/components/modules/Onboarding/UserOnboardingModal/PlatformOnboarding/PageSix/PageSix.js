@@ -1,34 +1,109 @@
+import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
 import { Typography } from '@devlaunchers/components/components/atoms';
-import LogoMonogram from './../../../../../../images/logo-monogram.png';
-import {
-  PageSixContainer,
-  Header,
-  AnimationContainer,
-  RocketAnamation,
-  CongratulationsShadow,
-  CongratulationsImg,
-  CircleAnamation,
-} from './StyledPageSix';
+import { onboardingActions } from '../../../../../../state/actions';
+import { useState } from 'react';
 
-export default function PageSix() {
+/**
+ * PageFive Component
+ *
+ * This component allows users to select their interests during the onboarding process.
+ * The selected interests are stored in local state and updated in the onboarding context.
+ *
+ * @return {JSX.Element} The rendered PageFive component.
+ */
+export default function PageFive() {
+  // Access onboarding data and dispatch function from context
+  const { onboardingData, dispatch } = useOnboardingDataContext();
+
+  // Local state to manage the list of user interests
+  const [interestList, setInterestList] = useState(
+    onboardingData.user.interest
+  );
+
+  /**
+   * Handles toggling the selection of an interest.
+   *
+   * @param {Object} selectedInterest - The interest to toggle.
+   * @return {Function} A function to handle the click event.
+   */
+  function onSelectedInterest(selectedInterest) {
+    return () => {
+      if (hasId(selectedInterest.id)) {
+        const updatedInterests = updateInterestList(selectedInterest.id);
+        setInterestList(updatedInterests); // Update local state
+        dispatch({
+          type: onboardingActions.SET_USERS_INTEREST,
+          data: updatedInterests, // Update context with the new interest list
+        });
+      }
+    };
+  }
+
+  /**
+   * Checks if a given interest ID exists in the list.
+   *
+   * @param {String|Number} idToLookFor - The ID to search for.
+   * @return {Boolean} True if the ID is found, false otherwise.
+   */
+  function hasId(idToLookFor) {
+    let idFound = false;
+    interestList.forEach((interest) => {
+      if (interest.id == idToLookFor) {
+        idFound = true;
+      }
+    });
+    return idFound;
+  }
+
+  /**
+   * Toggles the `selected` property for a given interest ID.
+   *
+   * @param {String|Number} idToUpdate - The ID of the interest to update.
+   * @return {Array} The updated interest list.
+   */
+  function updateInterestList(idToUpdate) {
+    // Create a deep copy of the interest list
+    const newList = JSON.parse(JSON.stringify(interestList));
+    newList.forEach((interest) => {
+      if (interest.id == idToUpdate) {
+        interest.selected = !interest.selected; // Toggle selection
+      }
+    });
+    return newList;
+  }
+
   return (
-    <PageSixContainer>
-      <Header>
-        <Typography type="h2">Congratulations!</Typography>
-        <Typography className="modal-subtitle" type="pLarge">
-          Thank you for taking the time to complete onboarding. Next, view the
-          ongoing projects and if you find one that you like, contact the
-          project lead.
+    <div className="flex flex-col gap-11">
+      {/* Header section */}
+      <div className="flex flex-col text-center">
+        <div>
+          <Typography type="p">ABOUT YOU</Typography>
+          <Typography type="h3">Select Your Interests Below</Typography>
+        </div>
+        <Typography className="m-0" type="p">
+          We’ll use this to help you find projects that match your needs
         </Typography>
-      </Header>
-      <AnimationContainer>
-        <RocketAnamation>
-          <CongratulationsImg src={LogoMonogram} alt="" />
-        </RocketAnamation>
-        <CircleAnamation>
-          <CongratulationsShadow>&nbsp;</CongratulationsShadow>
-        </CircleAnamation>
-      </AnimationContainer>
-    </PageSixContainer>
+      </div>
+
+      {/* Interest selection grid */}
+      <div className="flex justify-center">
+        <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
+          {interestList.map((interest) => (
+            <div
+              key={interest.id} // Ensure a unique key for each interest
+              className={`py-3 px-8 rounded-3xl cursor-pointer font-nunito-sans text-base border-2 border-neptune-700 
+              ${
+                interest.selected
+                  ? 'bg-neptune-700 text-white' // Selected state styling
+                  : 'bg-white text-neptune-700' // Unselected state styling
+              }`}
+              onClick={onSelectedInterest(interest)} // Handle selection toggle
+            >
+              {interest.name} {/* Display the interest name */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
