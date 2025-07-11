@@ -16,6 +16,7 @@ import {
   TabsTrigger,
 } from '@devlaunchers/components/components/molecules/Tab/Tab';
 import { useSheetsContext } from '../context/SheetsContext';
+import { atoms } from '@devlaunchers/components/components';
 
 const Card = ({ href, imageSrc, title, description }) => (
   <a
@@ -567,12 +568,12 @@ export default function Resources() {
               real world applications
             </p>
             <div className="flex pt-4">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
               >
                 Join Today
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
