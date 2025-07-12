@@ -3,6 +3,7 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
+import { atoms } from '@devlaunchers/components/components';
 
 const DonateSection = () => {
   return (
@@ -15,9 +16,9 @@ const DonateSection = () => {
       </div>
       <div className={styles.section.buttonContainer}>
         <a href="/support-us">
-          <button className={styles.section.button}>
+          <atoms.Button className={styles.section.button}>
             {sections.donate.buttonText}
-          </button>
+          </atoms.Button>
         </a>
       </div>
     </Section>

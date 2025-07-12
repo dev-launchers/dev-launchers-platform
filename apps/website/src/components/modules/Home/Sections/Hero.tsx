@@ -3,6 +3,7 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
+import { atoms } from '@devlaunchers/components/components';
 
 const HeroSection = () => (
   <Section className={styles.section.container}>
@@ -12,9 +13,9 @@ const HeroSection = () => (
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="#opportunities">
-        <button className={styles.section.button}>
+        <atoms.Button className={styles.section.button}>
           {sections.hero.buttonText}
-        </button>
+        </atoms.Button>
       </a>
     </div>
     <div className={styles.section.partnerContainer}>

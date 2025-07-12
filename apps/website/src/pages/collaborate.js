@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
+import { atoms } from '@devlaunchers/components/components';
 
 export default function Collaborate() {
   return (
@@ -80,12 +81,12 @@ export default function Collaborate() {
               Dev Launchers opens doors to opportunities and collaborations.
             </p>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/users/me"
               >
                 Build your Profile
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
@@ -101,12 +102,12 @@ export default function Collaborate() {
               most dynamic industries.
             </p>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/resources"
               >
                 Explore Resources
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
@@ -121,12 +122,12 @@ export default function Collaborate() {
               see it take shape!
             </p>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/ideaspace"
               >
                 Explore Ideas
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
@@ -143,12 +144,12 @@ export default function Collaborate() {
               seasoned mentors and prepare for a career in technology.
             </p>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
               >
                 Explore Opportunities
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>

@@ -7,6 +7,8 @@ import SupportUsOverlay from './SupportUsOverlay';
 import studentPhoto from '../../../images/support-us/bw-girl-profile.png?webp';
 import { Wrapper } from './StyledSupportUs';
 
+import { atoms } from '@devlaunchers/components/components';
+
 export default function SupportUs() {
   return (
     <div className=" bg-black text-white">
@@ -35,12 +37,12 @@ export default function SupportUs() {
             happen. Any amount helps!
           </p>
           <div className="flex justify-center pt-8">
-            <a
+            <atoms.Button
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E6TSNXLFG3UTY&source=url"
             >
               Donate with PayPal
-            </a>
+            </atoms.Button>
           </div>
         </div>
       </section>
@@ -63,18 +65,18 @@ export default function SupportUs() {
             is crucial in building a more inclusive and diverse tech community.
           </p>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
-            <a
+            <atoms.Button
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
-            </a>
-            <a
+            </atoms.Button>
+            <atoms.Button
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/VLP2YHDsSXmLTqQ8A"
             >
               Apply for Partnership
-            </a>
+            </atoms.Button>
           </div>
         </div>
       </section>
@@ -97,18 +99,18 @@ export default function SupportUs() {
             and every challenge a chance to advance together.
           </p>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
-            <a
+            <atoms.Button
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
-            </a>
-            <a
+            </atoms.Button>
+            <atoms.Button
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/SrKn5wWAYUNGYmec9"
             >
               Apply to Mentor
-            </a>
+            </atoms.Button>
           </div>
         </div>
       </section>

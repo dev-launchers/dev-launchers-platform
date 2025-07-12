@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { Donate } from '../../../website/src/components/modules/Home/Sections';
 import Head from 'next/head';
+import { atoms } from '@devlaunchers/components/components';
 
 export default function About() {
   return (
@@ -210,18 +211,18 @@ export default function About() {
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
-            <a
+            <atoms.Button
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
-            </a>
-            <a
+            </atoms.Button>
+            <atoms.Button
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/VLP2YHDsSXmLTqQ8A"
             >
               Apply for Partnership
-            </a>
+            </atoms.Button>
           </div>
         </section>
         <section className="max-w-7xl bg-black py-24 px-4 md:px-8">
