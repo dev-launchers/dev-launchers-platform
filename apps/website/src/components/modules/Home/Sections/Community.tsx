@@ -3,6 +3,7 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
+import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
 
 const stats = [
   {
@@ -16,21 +17,49 @@ const stats = [
 const CommunitySection = () => (
   <Section className={styles.section.container}>
     <div className={styles.section.header}>
-      <h2 className={styles.section.heading}>{sections.community.title}</h2>
-      <p className={styles.section.subHeading}>
+      <Typography
+        as="h2"
+        variant="primary"
+        size="xl4"
+        textWeight="semibold"
+        textAlign="center"
+        className={styles.section.heading}
+      >
+        {sections.community.title}
+      </Typography>
+      <Typography
+        as="p"
+        variant="secondary"
+        size="body_lg"
+        textAlign="center"
+        className={styles.section.subHeading}
+      >
         {sections.community.description}
-      </p>
+      </Typography>
     </div>
     <div className={styles.section.communityCardContainer}>
       {stats.map((stat, index) => (
         <div key={index} className={styles.section.communityCard}>
           <div className={styles.section.communityMetrics}>
-            <span className={styles.section.communityNumber}>
+            <Typography
+              as="span"
+              variant="primary"
+              size="xl5"
+              textWeight="bold"
+              textAlign="center"
+              className={styles.section.communityNumber}
+            >
               {stat.number}
-            </span>
-            <p className={styles.section.communityCardDescription}>
+            </Typography>
+            <Typography
+              as="p"
+              variant="secondary"
+              size="body_base"
+              textAlign="center"
+              className={styles.section.communityCardDescription}
+            >
               {stat.description}
-            </p>
+            </Typography>
           </div>
         </div>
       ))}

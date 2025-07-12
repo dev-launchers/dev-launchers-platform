@@ -1,9 +1,9 @@
 import React from 'react';
 import { withTheme } from 'styled-components';
 // import Link from "next/link";
+import { atoms } from '@devlaunchers/components/components';
 
 import Image from 'next/image';
-// import Button from "../../../../common/Button";
 // import Tag from "../../../../common/Tag";
 // import SignUpButton from "../SignUpButton";
 import { Wrapper } from './StyledHeroSection';
@@ -31,10 +31,15 @@ const HeroSection = ({ projectName, projectCatchPhrase, heroImage }) => {
       : window.btoa(str);
   const heroImageConfig =
     heroImage?.data?.attributes?.formats?.large || heroImage?.data?.attributes;
+
   return (
     <Wrapper>
-      <h2>{projectName}</h2>
-      <span>{projectCatchPhrase}</span>
+      <atoms.Typography variant="primary" size="xl2" textAlign="center">
+        {projectName}
+      </atoms.Typography>
+      <atoms.Typography textAlign="center" variant="secondary">
+        {projectCatchPhrase}
+      </atoms.Typography>
       <div
         style={{
           position: 'relative',

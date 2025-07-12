@@ -6,6 +6,7 @@ import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
+import { Typography } from '../../../components/atoms';
 
 // Centralized styles
 const styles = {

@@ -3,6 +3,7 @@ import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
 import CardImagePair from './CardImagePair';
+import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
 
 const features = [
   {
@@ -59,10 +60,25 @@ const Features = () => {
   return (
     <Section className={styles.section.withBackground02}>
       <div className={styles.section.header}>
-        <h2 className={styles.section.heading}>{sections.features.title}</h2>
-        <p className={styles.section.subHeading}>
+        <Typography
+          as="h2"
+          variant="primary"
+          size="xl4"
+          textWeight="semibold"
+          textAlign="center"
+          className={styles.section.heading}
+        >
+          {sections.features.title}
+        </Typography>
+        <Typography
+          as="p"
+          variant="secondary"
+          size="body_lg"
+          textAlign="center"
+          className={styles.section.subHeading}
+        >
           {sections.features.description}
-        </p>
+        </Typography>
       </div>
       <div className={styles.section.cardsContainer}>
         {features.map((item, index) => (
