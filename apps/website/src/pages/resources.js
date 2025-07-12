@@ -15,8 +15,8 @@ import {
   TabsList,
   TabsTrigger,
 } from '@devlaunchers/components/components/molecules/Tab/Tab';
-import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
 import { useSheetsContext } from '../context/SheetsContext';
+import { atoms } from '@devlaunchers/components/components';
 
 const Card = ({ href, imageSrc, title, description }) => (
   <a
@@ -31,7 +31,7 @@ const Card = ({ href, imageSrc, title, description }) => (
       />
     </div>
     <div className="flex flex-col flex-grow p-6">
-      <Typography
+      <atoms.Typography
         as="h3"
         variant="primary"
         size="xl3"
@@ -39,15 +39,15 @@ const Card = ({ href, imageSrc, title, description }) => (
         className="mb-3 group-hover:text-purple-400 transition-colors duration-300 text-white"
       >
         {title}
-      </Typography>
-      <Typography
+      </atoms.Typography>
+      <atoms.Typography
         as="p"
         variant="secondary"
         size="body_base"
         className="text-gray-300 flex-grow leading-relaxed"
       >
         {description || 'No description available.'}
-      </Typography>
+      </atoms.Typography>
       <div className="flex items-center mt-6 text-purple-400 text-sm font-medium group-hover:text-purple-300 transition-colors duration-300">
         Learn More
         <svg
@@ -82,7 +82,7 @@ const ResourceCard = ({ href, title, description, color = 'orange' }) => {
       href={href}
       className={`group block p-8 rounded-lg ${colorClasses[color]} transition-all duration-300 hover:shadow-lg hover:-translate-y-1`}
     >
-      <Typography
+      <atoms.Typography
         as="h3"
         variant="primary"
         size="xl3"
@@ -91,8 +91,8 @@ const ResourceCard = ({ href, title, description, color = 'orange' }) => {
         className="text-white mb-3"
       >
         {title}
-      </Typography>
-      <Typography
+      </atoms.Typography>
+      <atoms.Typography
         as="p"
         variant="secondary"
         size="body_base"
@@ -100,7 +100,7 @@ const ResourceCard = ({ href, title, description, color = 'orange' }) => {
         className="pt-2 leading-relaxed"
       >
         {description}
-      </Typography>
+      </atoms.Typography>
     </a>
   );
 };
@@ -212,7 +212,7 @@ export default function Resources() {
       <main className="flex flex-col justify-center items-center mx-auto max-w-full min-h-screen bg-black text-white py-16">
         <section className="max-w-5xl py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h1"
               variant="primary"
               size="xl6"
@@ -221,8 +221,8 @@ export default function Resources() {
               className="max-w-4xl pb-6 text-white"
             >
               Resources for Growth
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -235,13 +235,13 @@ export default function Resources() {
               Dive into a comprehensive collection of tools, tutorials, and
               hands-on projects designed to enhance your understanding and
               practical knowledge.
-            </Typography>
+            </atoms.Typography>
           </div>
         </section>
 
         <section className="flex flex-col flex-wrap max-w-5xl pt-4 pb-16 px-4 md:px-8">
           <div className="flex flex-col flex-wrap justify-center items-center py-">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -250,8 +250,8 @@ export default function Resources() {
               className="max-w-full pb-8 text-white"
             >
               Resources by Category
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -262,7 +262,7 @@ export default function Resources() {
               exactly what you need to progress. From coding tools and design
               software to advanced tutorials, our categories are designed to
               cater to learners at all levels.
-            </Typography>
+            </atoms.Typography>
           </div>
           <div className="flex flex-col justify-center items-center py-16">
             <Tabs defaultValue="dev" className="w-full">
@@ -271,7 +271,7 @@ export default function Resources() {
                   className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="dev"
                 >
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -279,13 +279,13 @@ export default function Resources() {
                     className="text-white"
                   >
                     Development
-                  </Typography>
+                  </atoms.Typography>
                 </TabsTrigger>
                 <TabsTrigger
                   className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="design"
                 >
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -293,13 +293,13 @@ export default function Resources() {
                     className="text-white"
                   >
                     Design
-                  </Typography>
+                  </atoms.Typography>
                 </TabsTrigger>
                 <TabsTrigger
                   className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="research"
                 >
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -307,13 +307,13 @@ export default function Resources() {
                     className="text-white"
                   >
                     Research
-                  </Typography>
+                  </atoms.Typography>
                 </TabsTrigger>
                 <TabsTrigger
                   className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   value="pm"
                 >
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -321,13 +321,13 @@ export default function Resources() {
                     className="text-white"
                   >
                     Project Management
-                  </Typography>
+                  </atoms.Typography>
                 </TabsTrigger>
               </TabsList>
               <div className="border-b border-gray-700 mt-2"></div>
               <TabsContent value="dev">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -336,7 +336,7 @@ export default function Resources() {
                     className="pb-6 text-white mb-6"
                   >
                     Development
-                  </Typography>
+                  </atoms.Typography>
                   <div className="grid gap-6 md:grid-cols-2">
                     <ResourceCard
                       href="https://docs.devlaunchers.org/dl-docs/development/development-at-dev-launchers"
@@ -367,7 +367,7 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="design">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -376,7 +376,7 @@ export default function Resources() {
                     className="pb-6 text-white mb-6"
                   >
                     Design
-                  </Typography>
+                  </atoms.Typography>
                   <div className="grid gap-6 md:grid-cols-2">
                     <ResourceCard
                       href="https://docs.devlaunchers.org/dl-docs/design/design-at-dev-launchers"
@@ -407,7 +407,7 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="research">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -416,7 +416,7 @@ export default function Resources() {
                     className="pb-6 text-white  mb-6"
                   >
                     Research
-                  </Typography>
+                  </atoms.Typography>
                   <div className="grid gap-6 md:grid-cols-2">
                     <ResourceCard
                       href="https://docs.devlaunchers.org/dl-docs/research/research-at-dev-launchers"
@@ -447,7 +447,7 @@ export default function Resources() {
               </TabsContent>
               <TabsContent value="pm">
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl">
-                  <Typography
+                  <atoms.Typography
                     as="h3"
                     variant="primary"
                     size="xl3"
@@ -456,7 +456,7 @@ export default function Resources() {
                     className="pb-6 text-white  mb-6"
                   >
                     Project Management
-                  </Typography>
+                  </atoms.Typography>
                   <div className="grid gap-6 md:grid-cols-2">
                     <ResourceCard
                       href="https://docs.devlaunchers.org/dl-docs/product-management/product-management-at-dev-launchers"
@@ -491,7 +491,7 @@ export default function Resources() {
 
         <section className="flex flex-col flex-wrap max-w-full md:max-w-5xl pt-4 pb-16 px-4">
           <div className="flex flex-col flex-wrap justify-center items-center py-16">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -500,8 +500,8 @@ export default function Resources() {
               className="max-w-full pb-8 text-white"
             >
               Learning and Games
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -511,7 +511,7 @@ export default function Resources() {
               Learn Code and Design using these games to build conceptual
               learning to prepare for creating software projects and
               applications
-            </Typography>
+            </atoms.Typography>
           </div>
           <div className="flex flex-col max-w-full justify-center items-center py-4">
             <Tabs defaultValue={'Code'} className="w-full">
@@ -522,7 +522,7 @@ export default function Resources() {
                     value={category}
                     className="bg-background focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   >
-                    <Typography
+                    <atoms.Typography
                       as="h4"
                       variant="primary"
                       size="xl2"
@@ -530,7 +530,7 @@ export default function Resources() {
                       className="text-white"
                     >
                       {category}
-                    </Typography>
+                    </atoms.Typography>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -543,7 +543,7 @@ export default function Resources() {
                         key={sectionTitle}
                         className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl"
                       >
-                        <Typography
+                        <atoms.Typography
                           as="h3"
                           variant="primary"
                           size="xl3"
@@ -552,7 +552,7 @@ export default function Resources() {
                           className="pb-6 text-white mb-6"
                         >
                           {sectionTitle}
-                        </Typography>
+                        </atoms.Typography>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
                             <div key={categoryTitle} className="pt-8">
@@ -571,7 +571,7 @@ export default function Resources() {
 
         <section className="flex flex-col flex-wrap w-5xl max-w-full md:max-w-5xl pt-4 pb-16 px-4">
           <div className="flex flex-col flex-wrap justify-center items-center py-4">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -580,8 +580,8 @@ export default function Resources() {
               className="max-w-full pb-8 text-white"
             >
               Create with Templates
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -590,7 +590,7 @@ export default function Resources() {
             >
               Ready to test your skills? These templates are great ways to get
               started and reinforce your learning
-            </Typography>
+            </atoms.Typography>
           </div>
           <div className="flex flex-col max-w-full justify-center items-center py-4">
             <Tabs defaultValue={'Templates'} className="px-10 w-full">
@@ -601,7 +601,7 @@ export default function Resources() {
                     value={category}
                     className="focus:bg-purple-600 focus:text-white hover:bg-purple-500/20 transition-all duration-300"
                   >
-                    <Typography
+                    <atoms.Typography
                       as="h4"
                       variant="primary"
                       size="xl2"
@@ -609,7 +609,7 @@ export default function Resources() {
                       className="text-white"
                     >
                       {category}
-                    </Typography>
+                    </atoms.Typography>
                   </TabsTrigger>
                 ))}
               </TabsList>
@@ -622,7 +622,7 @@ export default function Resources() {
                         key={sectionTitle}
                         className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 items-center rounded-lg shadow-xl"
                       >
-                        <Typography
+                        <atoms.Typography
                           as="h3"
                           variant="primary"
                           size="xl3"
@@ -631,7 +631,7 @@ export default function Resources() {
                           className="pb-6 text-white mb-6"
                         >
                           {sectionTitle}
-                        </Typography>
+                        </atoms.Typography>
                         {Object.entries(categories).map(
                           ([categoryTitle, items]) => (
                             <div key={categoryTitle} className="pt-8">
@@ -650,7 +650,7 @@ export default function Resources() {
 
         <section className="flex flex-col flex-wrap max-w-5xl pt-4 pb-16 px-4">
           <div className="flex flex-col justify-center items-center py-10">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -659,8 +659,8 @@ export default function Resources() {
               className="max-w-full pb-6 text-white"
             >
               Create and Collaborate
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -669,14 +669,11 @@ export default function Resources() {
             >
               Join us in real cross-functional teams to apply your skills to
               real world applications
-            </Typography>
+            </atoms.Typography>
             <div className="flex pt-6">
-              <a
-                className="bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium capitalize py-4 px-8 rounded-xl transition-all duration-300 hover:from-purple-500 hover:to-purple-600 hover:shadow-lg hover:shadow-purple-500/25 hover:-translate-y-1"
-                href="/join"
-              >
+              <atoms.Button className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4">
                 Join Today
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>

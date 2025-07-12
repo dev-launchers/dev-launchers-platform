@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
-import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
+import { atoms } from '@devlaunchers/components/components';
 
 export default function Collaborate() {
   return (
@@ -11,7 +11,7 @@ export default function Collaborate() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-full bg-black py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h1"
               variant="primary"
               size="xl6"
@@ -20,8 +20,8 @@ export default function Collaborate() {
               className="max-w-4xl pb-4 text-white"
             >
               Collaborate with Us
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -31,12 +31,12 @@ export default function Collaborate() {
               Collaborate with us to build real-world projects and gain
               invaluable experience. Whether you're a beginner or a seasoned
               professional your journey starts here!
-            </Typography>
+            </atoms.Typography>
           </div>
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -45,8 +45,8 @@ export default function Collaborate() {
               className="max-w-7xl pb-8"
             >
               Choose Your Journey
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -60,10 +60,10 @@ export default function Collaborate() {
               tailored membership levels. We have a place for you whether you
               want to grow independently in our Orbit, transition between levels
               as a Traveler, or empower our core initiatives.
-            </Typography>
+            </atoms.Typography>
             <div className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3">
               <div className="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-                <Typography
+                <atoms.Typography
                   as="h3"
                   variant="primary"
                   size="xl3"
@@ -72,8 +72,8 @@ export default function Collaborate() {
                   className="text-white"
                 >
                   Orbit
-                </Typography>
-                <Typography
+                </atoms.Typography>
+                <atoms.Typography
                   as="p"
                   variant="secondary"
                   size="body_base"
@@ -82,10 +82,10 @@ export default function Collaborate() {
                 >
                   Engage with our community at your own pace, access resources,
                   and join our network.
-                </Typography>
+                </atoms.Typography>
               </div>
               <div className="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-                <Typography
+                <atoms.Typography
                   as="h3"
                   variant="primary"
                   size="xl3"
@@ -94,8 +94,8 @@ export default function Collaborate() {
                   className="text-white"
                 >
                   Traveler
-                </Typography>
-                <Typography
+                </atoms.Typography>
+                <atoms.Typography
                   as="p"
                   variant="secondary"
                   size="body_base"
@@ -104,10 +104,10 @@ export default function Collaborate() {
                 >
                   Dive deeper with flexible project participation and special
                   events that suit your schedule.
-                </Typography>
+                </atoms.Typography>
               </div>
               <div className="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-                <Typography
+                <atoms.Typography
                   as="h3"
                   variant="primary"
                   size="xl3"
@@ -116,8 +116,8 @@ export default function Collaborate() {
                   className="text-white"
                 >
                   Core
-                </Typography>
-                <Typography
+                </atoms.Typography>
+                <atoms.Typography
                   as="p"
                   variant="secondary"
                   size="body_base"
@@ -128,7 +128,7 @@ export default function Collaborate() {
                   team member or leader on impactful software projects. This
                   path accelerates your growth through hands-on,
                   cross-functional team experiences.
-                </Typography>
+                </atoms.Typography>
               </div>
             </div>
           </div>
@@ -136,7 +136,7 @@ export default function Collaborate() {
 
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -145,8 +145,8 @@ export default function Collaborate() {
               className="max-w-7xl pb-8"
             >
               Create your Profile
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -157,20 +157,20 @@ export default function Collaborate() {
               our vibrant community. Engage with other members, share your
               journey, and find partners for your next project. Networking at
               Dev Launchers opens doors to opportunities and collaborations.
-            </Typography>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/users/me"
               >
                 Build your Profile
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -179,8 +179,8 @@ export default function Collaborate() {
               className="max-w-7xl pb-8"
             >
               Learn with Resources
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -191,20 +191,20 @@ export default function Collaborate() {
               tools to enhance your skillset. From beginner to advanced levels,
               our learning materials are designed to support your growth in the
               most dynamic industries.
-            </Typography>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/resources"
               >
                 Explore Resources
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -213,8 +213,8 @@ export default function Collaborate() {
               className="max-w-7xl pb-8"
             >
               Dream with IdeaSpace
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -224,20 +224,20 @@ export default function Collaborate() {
               Members brainstorm, propose, and workshop on software project
               ideas. Got a groundbreaking idea? Bring it to our community and
               see it take shape!
-            </Typography>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/ideaspace"
               >
                 Explore Ideas
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <Typography
+            <atoms.Typography
               as="h2"
               variant="primary"
               size="xl4"
@@ -246,8 +246,8 @@ export default function Collaborate() {
               className="max-w-7xl pb-8"
             >
               Join with Dev Recruit
-            </Typography>
-            <Typography
+            </atoms.Typography>
+            <atoms.Typography
               as="p"
               variant="secondary"
               size="body_lg"
@@ -259,14 +259,14 @@ export default function Collaborate() {
               designed to hone your skills through intensive and collaborative
               project work. Gain hands-on experience under the guidance of our
               seasoned mentors and prepare for a career in technology.
-            </Typography>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
               >
                 Explore Opportunities
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>

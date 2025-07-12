@@ -3,13 +3,13 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
-import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
+import { atoms } from '@devlaunchers/components/components';
 
 const DonateSection = () => {
   return (
     <Section className="">
       <div className={styles.section.header}>
-        <Typography
+        <atoms.Typography
           as="h1"
           variant="primary"
           size="xl6"
@@ -18,8 +18,8 @@ const DonateSection = () => {
           className="max-w-7xl pb-10"
         >
           {sections.donate.title}
-        </Typography>
-        <Typography
+        </atoms.Typography>
+        <atoms.Typography
           as="p"
           variant="secondary"
           size="body_lg"
@@ -27,13 +27,13 @@ const DonateSection = () => {
           className={styles.section.subHeading}
         >
           {sections.donate.description}
-        </Typography>
+        </atoms.Typography>
       </div>
       <div className={styles.section.buttonContainer}>
         <a href="/support-us">
-          <button className={styles.section.button}>
+          <atoms.Button className={styles.section.button}>
             {sections.donate.buttonText}
-          </button>
+          </atoms.Button>
         </a>
       </div>
     </Section>

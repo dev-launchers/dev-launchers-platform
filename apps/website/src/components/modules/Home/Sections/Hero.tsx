@@ -3,12 +3,12 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
-import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
+import { atoms } from '@devlaunchers/components/components';
 
 const HeroSection = () => (
   <Section className={styles.section.container}>
     <div className={styles.section.headerHero}>
-      <Typography
+      <atoms.Typography
         as="h1"
         variant="primary"
         size="xl6"
@@ -17,8 +17,8 @@ const HeroSection = () => (
         className={styles.section.headingHero}
       >
         {sections.hero.title}
-      </Typography>
-      <Typography
+      </atoms.Typography>
+      <atoms.Typography
         as="p"
         variant="secondary"
         size="body_lg"
@@ -26,17 +26,17 @@ const HeroSection = () => (
         className={styles.section.subHeading}
       >
         {sections.hero.description}
-      </Typography>
+      </atoms.Typography>
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="#opportunities">
-        <button className={styles.section.button}>
+        <atoms.Button className={styles.section.button}>
           {sections.hero.buttonText}
-        </button>
+        </atoms.Button>
       </a>
     </div>
     <div className={styles.section.partnerContainer}>
-      <Typography
+      <atoms.Typography
         as="p"
         variant="secondary"
         size="body_base"
@@ -44,7 +44,7 @@ const HeroSection = () => (
         className={styles.section.label}
       >
         {sections.hero.label}
-      </Typography>
+      </atoms.Typography>
       <div className={styles.section.partnerLogos}>
         <img
           alt="Google Logo"
