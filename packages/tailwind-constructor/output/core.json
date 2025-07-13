@@ -4114,6 +4114,16 @@
     "path": ["grayscale", "600"]
   },
   {
+    "value": "#4949490d",
+    "type": "color",
+    "filePath": "tokens/core.json",
+    "isSource": true,
+    "original": { "value": "#4949490d", "type": "color" },
+    "name": "grayscale-o-5-600",
+    "attributes": { "category": "grayscale", "type": "600", "item": "o-5" },
+    "path": ["grayscale", "o-5", "600"]
+  },
+  {
     "value": "#303030",
     "type": "color",
     "filePath": "tokens/core.json",
@@ -4122,6 +4132,16 @@
     "name": "grayscale-700",
     "attributes": { "category": "grayscale", "type": "700" },
     "path": ["grayscale", "700"]
+  },
+  {
+    "value": "#292929",
+    "type": "color",
+    "filePath": "tokens/core.json",
+    "isSource": true,
+    "original": { "value": "#292929", "type": "color" },
+    "name": "grayscale-750",
+    "attributes": { "category": "grayscale", "type": "750" },
+    "path": ["grayscale", "750"]
   },
   {
     "value": "#1c1c1c",
@@ -4842,6 +4862,21 @@
     "name": "brand-alt-nebula-800",
     "attributes": { "category": "brand-alt", "type": "nebula", "item": "800" },
     "path": ["brand-alt", "nebula", "800"]
+  },
+  {
+    "value": "#3f1f5f99",
+    "type": "color",
+    "filePath": "tokens/core.json",
+    "isSource": true,
+    "original": { "value": "#3f1f5f99", "type": "color" },
+    "name": "brand-alt-nebula-o-60-800",
+    "attributes": {
+      "category": "brand-alt",
+      "type": "nebula",
+      "item": "o-60",
+      "subitem": "800"
+    },
+    "path": ["brand-alt", "nebula", "o-60", "800"]
   },
   {
     "value": "#301848",

@@ -247,7 +247,9 @@
   --grayscale-400: #979797;
   --grayscale-500: #676767;
   --grayscale-600: #494949;
+  --grayscale-o-5-600: #4949490d;
   --grayscale-700: #303030;
+  --grayscale-750: #292929;
   --grayscale-800: #1c1c1c;
   --grayscale-900: #000000;
   --uranus-50: #f2f9fbff;
@@ -319,6 +321,7 @@
   --brand-alt-nebula-600: #69349dff;
   --brand-alt-nebula-700: #52287aff;
   --brand-alt-nebula-800: #3f1f5fff;
+  --brand-alt-nebula-o-60-800: #3f1f5f99;
   --brand-alt-nebula-900: #301848ff;
   --brand-alt-nebula-o-25-900: #30184840;
   --alert-error-o-50-50: #f9ecec80;
