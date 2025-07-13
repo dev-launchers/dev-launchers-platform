@@ -4094,6 +4094,16 @@
     "path": ["grayscale", "400"]
   },
   {
+    "value": "#9797970d",
+    "type": "color",
+    "filePath": "tokens/core.json",
+    "isSource": true,
+    "original": { "value": "#9797970d", "type": "color" },
+    "name": "grayscale-o-5-400",
+    "attributes": { "category": "grayscale", "type": "400", "item": "o-5" },
+    "path": ["grayscale", "o-5", "400"]
+  },
+  {
     "value": "#676767",
     "type": "color",
     "filePath": "tokens/core.json",

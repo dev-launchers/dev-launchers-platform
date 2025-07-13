@@ -331,24 +331,24 @@ export const darkColorConfig = {
   },
   tertiary: {
     base: {
-      pure: 'bg-black-o-0 border-transparent outline-0 text-gray-400',
-      uranus: 'bg-uranus-o-5-800 border-transparent outline-0 text-uranus-500',
+      pure: 'bg-grayscale-o-5-400 border-transparent outline-0 text-gray-400',
+      uranus: 'bg-uranus-o-25-800 border-transparent outline-0 text-uranus-500',
       jupiter:
-        'bg-jupiter-o-5-700 border-transparent outline-0 text-jupiter-500',
+        'bg-jupiter-o-25-700 border-transparent outline-0 text-jupiter-500',
       neptune:
-        'bg-neptune-o-5-700 border-transparent outline-0 text-neptune-500',
+        'bg-neptune-o-25-700 border-transparent outline-0 text-neptune-500',
       saturn: 'bg-saturn-o-5-800 border-transparent outline-0 text-saturn-500',
       cosmic:
         'bg-brand-alt-cosmic-o-5-700 border-transparent outline-0 text-brand-alt-cosmic-500',
       nebula:
         'brand-alt-nebula-o-25-900 outline-0 border-transparent text-brand-alt-nebula-500',
-      info: 'bg-alert-notification-o-5-900 border-transparent outline-0 text-alert-notification-o-100-500',
+      info: 'bg-alert-notification-o-25-900 border-transparent outline-0 text-alert-notification-o-100-500',
       warning:
-        'bg-alert-warning-o-5-1000 border-transparent outline-0 text-alert-warning-o-100-200',
+        'bg-alert-warning-o-25-1000 border-transparent outline-0 text-alert-warning-o-100-200',
       success:
-        'bg-alert-success-o-5-1000 border-transparent outline-0 text-alert-success-o-100-500',
+        'bg-alert-success-o-25-1000 border-transparent outline-0 text-alert-success-o-100-500',
       error:
-        'bg-alert-error-o-5-900 border-transparent outline-0 text-alert-error-o-100-500',
+        'bg-alert-error-o-40-900 border-transparent outline-0 text-alert-error-o-100-500',
     },
     hover: {
       pure: 'hover:bg-gray-700',
