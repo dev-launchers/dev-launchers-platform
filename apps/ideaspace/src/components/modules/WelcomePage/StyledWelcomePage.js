@@ -1,57 +1,114 @@
 import styled from 'styled-components';
 
+export const MainContainer = styled.div`
+  display: flex;
+  width: 74rem;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 1440px) {
+    width: 100%;
+    padding: 0 6rem 8rem 6rem;
+  }
+  @media (max-width: 744px) {
+    width: 100%;
+    padding: 0 8rem 9.125rem 8rem;
+  }
+  @media (max-width: 430px) {
+    width: 100%;
+    padding: 0 1.25rem 8.25rem 1.25rem;
+  }
+
+  .main-title {
+    color: var(--content-grey-pure, #fff) !important;
+    font-family: var(--text-family-primary, Oswald) !important;
+    font-weight: 400 !important;
+    line-height: 125% !important;
+    align-items: center;
+    max-width: 100%;
+    line-height: 125% !important;
+    letter-spacing: 0.135rem !important;
+    font-size: 3.375rem;
+
+    @media (max-width: 1440px) {
+      font-size: ar(--text-size-7xl, 3.375px);
+    }
+
+    @media (max-width: 830px) {
+      font-size: var(--text-size-5xl, 2.5rem);
+    }
+
+    @media (max-width: 430px) {
+      font-size: var(--text-size-5xl, 2.5rem);
+    }
+  }
+
+  .main-subtitle {
+    color: var(--content-grey-brand, #f0edee) !important;
+    font-family: var(--text-family-secondary, 'Nunito Sans') !important;
+    font-size: var(--text-size-xl, 1.25rem) !important;
+    font-weight: 400 !important;
+    line-height: 1.75rem !important;
+    align-items: center;
+    max-width: 80%;
+
+    @media (max-width: 1192px) {
+      font-size: 1.1rem !important;
+      max-width: 90%;
+    }
+
+    @media (max-width: 810px) {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+      max-width: 95%;
+    }
+
+    @media (max-width: 529px) {
+      font-size: 0.9rem !important;
+      max-width: 100%;
+    }
+  }
+`;
+
 export const NavButtonArea = styled.div`
   display: flex;
   flex-direction: row;
-  justify-items: center
-  margin-left: 66px;
-  margin-right: 66px;
+  justify-items: center;
+  width: 100%;
+  background-color: black;
 
-  @media (max-width: 1536px){
-    margin-left: 48px;
-    margin-right: 48px;
+  @media (max-width: 810px) {
+    flex-direction: column;
+    align-items: center;
   }
-  @media (max-width: 1280px){
-    margin-left: 32px;
-    margin-right: 32px;
-  }
-  @media (max-width: 1024px){
-    margin-left: 24px;
-    margin-right: 24px;
-  }
-  @media (max-width: 768px){
-    margin-left: 24px;
-    margin-right: 24px;
-  }
-  @media (max-width: 640px){
-    margin-left: 22px;
-    margin-right: 22px;
-  }
-
 `;
 
 export const ButtonArea = styled.aside`
   display: flex;
-  flex-direction: row;
-  column-gap: 32px;
-  margin-bottom: 10vh;
+  align-items: flex-start;
+  gap: 2rem;
+  align-self: stretch;
+  width: 100%;
+  background-color: black;
+
   @media (orientation: portrait) {
     min-height: 60vh;
   }
 
-  @media (max-width: 768px) {
-    row-gap: 24px;
-    flex-direction: column;
+  @media (max-width: 1192px) {
+    gap: 1.5rem;
   }
-  @media (max-width: 1280px) {
-    column-gap: 24px;
-  }
-`;
 
-export const Subheader = styled.div`
-  font-family: 'Nunito Sans';
-  color: #474747;
-  margin: 0.5rem auto;
+  @media (max-width: 810px) {
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @media (max-width: 529px) {
+    gap: 1rem;
+  }
 `;
 
 export const RocketImage = styled.img`
@@ -62,32 +119,25 @@ export const RocketImage = styled.img`
 `;
 
 export const HeadWapper = styled.div`
-  padding: 4.5rem 1rem 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 1.25rem;
 
-  @media (max-width: 1712px) {
-    padding: 3rem 1rem 2rem 1rem;
+  @media (max-width: 1440px) {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+  @media (max-width: 744px) {
+    width: 100%;
+    margin-bottom: 5rem;
   }
 
-  @media (max-width: 529px) {
-    padding: 5rem 1rem 1rem 1rem;
+  @media (max-width: 430px) {
+    width: 100%;
+    margin-bottom: 4.5rem;
   }
-`;
-
-export const Headline = styled.div`
-  font-family: 'Abel';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 4rem;
-  line-height: 68px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #1c1c1c;
-`;
-
-export const StyledRanbow = styled.div`
-  margin: 1.3rem auto 1rem auto;
-  max-width: 28rem;
-  height: 5px;
 `;
 
 export const LightbulbIcon = () => (
@@ -155,3 +205,23 @@ export const ArrowRightIcon = () => (
     </g>
   </svg>
 );
+
+export const BetaButton = styled.div`
+  margin-top: 4rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  padding: var(--padding-sm, 4px) var(--btn-space-p-x, 18px);
+  justify-content: center;
+  align-items: center;
+  gap: var(--button-default-space-gap, 4px);
+  border-radius: var(--rounded-lg, 24px);
+  border: var(--border-width-none, 0px) solid
+    var(--border-brand-neptune, #6196b7);
+  background: linear-gradient(
+      0deg,
+      var(--effect-overlay-neptune-muted, rgba(24, 52, 69, 0.25)) 0%,
+      var(--effect-overlay-neptune-muted, rgba(24, 52, 69, 0.25)) 100%
+    ),
+    var(--surface-grey-brand, #1c1c1c);
+  color: #6196b7;
+`;
