@@ -8,8 +8,25 @@ import { atoms } from '@devlaunchers/components/components';
 const HeroSection = () => (
   <Section className={styles.section.container}>
     <div className={styles.section.headerHero}>
-      <h1 className={styles.section.headingHero}>{sections.hero.title}</h1>
-      <p className={styles.section.subHeading}>{sections.hero.description}</p>
+      <atoms.Typography
+        as="h1"
+        variant="primary"
+        size="xl6"
+        textWeight="bold"
+        textAlign="center"
+        className={styles.section.headingHero}
+      >
+        {sections.hero.title}
+      </atoms.Typography>
+      <atoms.Typography
+        as="p"
+        variant="secondary"
+        size="body_lg"
+        textAlign="center"
+        className={styles.section.subHeading}
+      >
+        {sections.hero.description}
+      </atoms.Typography>
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="#opportunities">
@@ -19,7 +36,15 @@ const HeroSection = () => (
       </a>
     </div>
     <div className={styles.section.partnerContainer}>
-      <p className={styles.section.label}>{sections.hero.label}</p>
+      <atoms.Typography
+        as="p"
+        variant="secondary"
+        size="body_base"
+        textAlign="center"
+        className={styles.section.label}
+      >
+        {sections.hero.label}
+      </atoms.Typography>
       <div className={styles.section.partnerLogos}>
         <img
           alt="Google Logo"

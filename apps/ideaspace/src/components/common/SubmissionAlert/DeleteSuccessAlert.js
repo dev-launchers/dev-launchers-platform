@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 
 const AlertWrapper = styled.div`
   position: fixed;
@@ -31,15 +32,6 @@ const AlertContent = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-`;
-
-const AlertMessage = styled.h4`
-  color: #206124;
-  margin: 0;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
 `;
 
 const CloseButton = styled.button`
@@ -81,9 +73,14 @@ const DeleteSuccessAlert = ({ onClose }) => {
             fill="#226626"
           />
         </svg>
-        <AlertMessage>
+        <Typography
+          as="h4"
+          variant="secondary"
+          size="body_sm"
+          style={{ color: '#206124', margin: 0 }}
+        >
           <b>Idea deleted: </b>Your idea has been successfully deleted
-        </AlertMessage>
+        </Typography>
       </AlertContent>
       <CloseButton onClick={onClose}>
         <svg

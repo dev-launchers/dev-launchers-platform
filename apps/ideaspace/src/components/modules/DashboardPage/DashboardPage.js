@@ -8,6 +8,7 @@ import Stats from './Stats/Stats';
 import Ideas from './Ideas/Ideas';
 import { cleanDataList, cleanData } from '../../../utils/StrapiHelper';
 import DeleteSuccessAlert from '../../common/SubmissionAlert/DeleteSuccessAlert';
+import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 
 import {
   HeadWapper,
