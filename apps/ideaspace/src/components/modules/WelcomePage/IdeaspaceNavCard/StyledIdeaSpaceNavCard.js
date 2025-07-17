@@ -5,8 +5,6 @@ export const CardBackground = styled.div`
   border-radius: 20px;
   overflow: initial;
   flex-direction: column;
-  height: 25rem;
-  max-width: 36rem;
   flex-direction: column;
   justify-content: space-between;
   // color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
@@ -18,6 +16,24 @@ export const CardBackground = styled.div`
   font-family: 'Abel';
   // background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_BLACK};
   font-color: 'white';
+
+  @media (max-width: 430px) {
+    height: 464px;
+    min-width: 357px;
+    max-width: 700px;
+  }
+
+  @media (min-width: 744px) {
+    height: 358px;
+    min-width: 357px;
+    max-width: 700px;
+  }
+
+  @media (min-width: 1440px) {
+    height: 358px;
+    min-width: 357px;
+    max-width: 800px;
+  }
 `;
 
 export const TypographyH = styled.div`
@@ -44,6 +60,15 @@ export const TypographyH = styled.div`
   font-weight: 700;
   line-height: var(--font-line-height-headings-h1, 48px); /* 150% */
   letter-spacing: var(--font-letter-spacing-headings-h1, 1.6px);
+
+  @media (max-width: 480px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  @media (max-width: 360px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 `;
 
 export const TypographyB = styled.div`
