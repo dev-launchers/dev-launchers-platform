@@ -4,14 +4,14 @@ import { onboardingActions } from '../../../../../../state/actions';
 import { useState } from 'react';
 
 /**
- * PageFive Component
+ * PageSix Component
  *
- * This component allows users to select their interests during the onboarding process.
- * The selected interests are stored in local state and updated in the onboarding context.
+ * This component allows users to select their skills during the onboarding process.
+ * The selected skills are stored in local state and updated in the onboarding context.
  *
- * @return {JSX.Element} The rendered PageFive component.
+ * @return {JSX.Element} The rendered PageSix component.
  */
-export default function PageFive() {
+export default function PageSix() {
   // Access onboarding data and dispatch function from context
   const { onboardingData, dispatch } = useOnboardingDataContext();
 

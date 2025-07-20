@@ -1,12 +1,12 @@
 import axios from 'axios';
 import Stepper from '../Stepper';
 // TODO: give these pages more descriptive names
-import PageTwo from './PageTwo/PageTwo';
-import PageThree from './PageThree/PageThree';
-import PageFour from './PageFour/PageFour';
-import PageFive from './PageFive/PageFive';
-import PageSix from './PageSix/PageSix';
-import PageSeven from './PageSeven/PageSeven';
+import PageTwo from './PageTwo/PageTwo'; // PageTwo -> IntroPage
+import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
+import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
+import PageFive from './PageFive/PageFive'; // PageFive -> InterestsPage
+import PageSix from './PageSix/PageSix'; // PageSix -> SkillsPage
+import PageSeven from './PageSeven/PageSeven'; // PageSeven -> CongratsPage
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 /**
@@ -173,6 +173,7 @@ export default function PlatformOnboarding() {
     aboutYouStep,
     roleStep,
     interestStep,
+    skillStep,
     congratulationStep,
   ];
 
