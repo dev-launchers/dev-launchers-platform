@@ -23,7 +23,6 @@ const FormErrorScroller = ({
     const selector = `[name="${keys[0]}"]`;
     const errorElement = document.querySelector(selector) as HTMLInputElement;
 
-    console.log(errorElement);
     if (errorElement) {
       errorElement.scrollIntoView({
         behavior: 'smooth',

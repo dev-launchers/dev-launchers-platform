@@ -3,21 +3,37 @@ import React from 'react';
 import { Section } from './Section';
 import { styles } from '../styles';
 import { sections } from './sections';
+import { atoms } from '@devlaunchers/components/components';
 
 const DonateSection = () => {
   return (
     <Section className="">
       <div className={styles.section.header}>
-        <h2 className={styles.section.heading}>{sections.donate.title}</h2>
-        <p className={styles.section.subHeading}>
+        <atoms.Typography
+          as="h1"
+          variant="primary"
+          size="xl6"
+          textWeight="bold"
+          textAlign="center"
+          className="max-w-7xl pb-10"
+        >
+          {sections.donate.title}
+        </atoms.Typography>
+        <atoms.Typography
+          as="p"
+          variant="secondary"
+          size="body_lg"
+          textAlign="center"
+          className={styles.section.subHeading}
+        >
           {sections.donate.description}
-        </p>
+        </atoms.Typography>
       </div>
       <div className={styles.section.buttonContainer}>
         <a href="/support-us">
-          <button className={styles.section.button}>
+          <atoms.Button className={styles.section.button}>
             {sections.donate.buttonText}
-          </button>
+          </atoms.Button>
         </a>
       </div>
     </Section>

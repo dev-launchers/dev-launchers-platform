@@ -47,10 +47,14 @@ export default function PageFive() {
     <div className="flex flex-col gap-11">
       <div className="flex flex-col text-center">
         <div>
-          <Typography variant="secondary">ABOUT YOU</Typography>
-          <Typography variant="primary">Select Your Interests Below</Typography>
+          <Typography textAlign="center" variant="secondary">
+            ABOUT YOU
+          </Typography>
+          <Typography textweight="light" textAlign="center" type="h3">
+            Select Your Interests Below
+          </Typography>
         </div>
-        <Typography className="m-0" variant="secondary">
+        <Typography textAlign="center" className="m-0" variant="secondary">
           We’ll use this to help you find projects that match your needs
         </Typography>
       </div>

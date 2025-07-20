@@ -46,7 +46,7 @@ function FilledChevron({
         viewBox="0 0 8 14"
         transform={`rotate(${angle})`}
         className={className}
-        fill="none"
+        fill={colorClass ?? 'fill-grayscale-600'}
         xmlns="http://www.w3.org/2000/svg"
       >
         <path

@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import Checkbox from '../Checkbox/CheckBox';
+import React, { useState } from 'react';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox';
 import { List, ListItem } from './StyledCheckboxList';
 
 interface Props {

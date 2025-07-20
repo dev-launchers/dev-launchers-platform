@@ -8,13 +8,19 @@ const Typography: React.FC<React.PropsWithChildren<TypographyProps>> = ({
 }) => {
   let tag: Extract<
     TypographyProps['type'],
-    'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'label'
+    'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'label'
   >;
   if (type === 'subtitle') {
     tag = 'p';
   } else if (type === 'labelSmall' || type === 'label') {
     tag = 'label';
-  } else if (type === 'h1' || type === 'h2' || type === 'h3' || type === 'h4') {
+  } else if (
+    type === 'h1' ||
+    type === 'h2' ||
+    type === 'h3' ||
+    type === 'h4' ||
+    type === 'h5'
+  ) {
     tag = type;
   } else if (type === 'p' || type === 'pLarge' || type === 'pSmall') {
     tag = 'p';

@@ -15,39 +15,49 @@ const IdeaspaceNavCard = ({
   cardDescription,
   cardCTA,
   cardIconCTA,
+  cardBorderColor,
 }) => {
   const backgroundClass =
-    cardBackgroundColor === 'rgba(255, 215, 180, 1)'
-      ? 'bg-[#FFD7B4]'
-      : cardBackgroundColor === 'rgba(216, 236, 243, 1)'
-      ? 'bg-[#D8ECF3]'
+    cardBackgroundColor === 'rgba(63, 31, 95, 0.40)'
+      ? 'bg-[rgba(63,31,95,0.4)]'
+      : cardBackgroundColor === 'rgba(31, 42, 95, 0.40)'
+      ? 'bg-[rgba(31,42,95,0.4)]'
       : '';
+
+  const hoverClass =
+    cardBackgroundColor === 'rgba(63, 31, 95, 0.40)'
+      ? 'hover:bg-[rgba(63,31,95,0.6)]'
+      : cardBackgroundColor === 'rgba(31, 42, 95, 0.40)'
+      ? 'hover:bg-[rgba(31,42,95,0.6)]'
+      : '';
+
+  const borderColor = cardBorderColor || '#3F1F5F';
   return (
     <>
       <div
-        className={`group flex flex-col rounded-[20px] p-[32px] border-[#3F1F5F] active:border-[#52287A] border-[4px] hover:bg-[rgba(48,24,72,1)] text-[#3F1F5F] transition-colors duration-300 ease-in-out ${backgroundClass}`}
-        style={{ color: 'rgba(63, 31, 95, 1)' }}
+        className={`group flex flex-col rounded-[20px] p-[32px] border-[4px] text-[#3F1F5F] transition-colors duration-300 ease-in-out ${backgroundClass} ${hoverClass}`}
+        style={{ color: 'rgba(63, 31, 95, 1)', borderColor: borderColor }}
       >
         <div>
           <div className="2xl:h-[350px] xl:h-[294px] lg:h-[294px] md:h-[346px] sm:h-[342px] h-[326px]">
             <div className="mb-[18px] transition-colors duration-300">
-              {cardIcon}
+              <div style={{ fontWeight: 700, color: 'white' }}>{cardIcon}</div>
             </div>
-            <TypographyH className="mb-[6px] group-hover:text-white">
+            <TypographyH
+              className="mb-[6px]"
+              style={{ fontWeight: 700, color: 'white' }}
+            >
               {cardTitle}
             </TypographyH>
-            <TypographyB className="group-hover:text-white">
+            <TypographyB style={{ fontWeight: 400, color: 'white' }}>
               {cardDescription}
             </TypographyB>
           </div>
           <div className="flex flex-row gap-1">
-            <TypographyB
-              className="group-hover:text-white"
-              style={{ fontWeight: '700' }}
-            >
+            <TypographyB style={{ fontWeight: 700, color: 'white' }}>
               {cardCTA}
             </TypographyB>
-            {cardIconCTA}
+            <div style={{ fontWeight: 700, color: 'white' }}>{cardIconCTA}</div>
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
+import { atoms } from '@devlaunchers/components/components';
 
 export default function Collaborate() {
   return (
@@ -10,22 +11,48 @@ export default function Collaborate() {
       <main className="flex flex-col justify-center items-center mx-auto min-h-screen bg-black text-white py-16">
         <section className="max-w-full bg-black py-32 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h1 className="font-bold max-w-4xl text-5xl lg:text-7xl leading-tight text-center align-center border-none border-0 m-0 pt-0 pb-4 text-white">
+            <atoms.Typography
+              as="h1"
+              variant="primary"
+              size="xl6"
+              textWeight="bold"
+              textAlign="center"
+              className="max-w-4xl pb-4 text-white"
+            >
               Collaborate with Us
-            </h1>
-            <p className="text-lg md:text-xl text-center max-w-3xl  text-gray-500  font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl text-gray-500"
+            >
               Collaborate with us to build real-world projects and gain
               invaluable experience. Whether you're a beginner or a seasoned
               professional your journey starts here!
-            </p>
+            </atoms.Typography>
           </div>
         </section>
         <section className="max-w-7xl py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
+            <atoms.Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-7xl pb-8"
+            >
               Choose Your Journey
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-4xl py-8 text-gray-500 font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-4xl pb-8 text-gray-500"
+            >
               Our community is diverse, and so are the ways you can join us. We
               understand that everyone has different goals and availability,
               which is why we offer a variety of membership pathways to support
@@ -33,36 +60,75 @@ export default function Collaborate() {
               tailored membership levels. We have a place for you whether you
               want to grow independently in our Orbit, transition between levels
               as a Traveler, or empower our core initiatives.
-            </p>
+            </atoms.Typography>
             <div className="grid pt-8 gap-4 sm:grid-cols-2 md:grid-cols-3">
               <div className="bg-orange-900 border-orange-500 border-4 p-6 rounded-lg">
-                <h3 className="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+                <atoms.Typography
+                  as="h3"
+                  variant="primary"
+                  size="xl3"
+                  textWeight="semibold"
+                  textAlign="left"
+                  className="text-white"
+                >
                   Orbit
-                </h3>
-                <p className="text-sm md:text-base pt-4 text-left text-orange-200 font-normal">
+                </atoms.Typography>
+                <atoms.Typography
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                  textAlign="left"
+                  className="pt-4 text-orange-200"
+                >
                   Engage with our community at your own pace, access resources,
                   and join our network.
-                </p>
+                </atoms.Typography>
               </div>
               <div className="bg-teal-900 border-teal-500 border-4 p-6 rounded-lg">
-                <h3 className="text-2xl sm:text-3xl font-bold text-left leading-relaxed tracking-wide text-white">
+                <atoms.Typography
+                  as="h3"
+                  variant="primary"
+                  size="xl3"
+                  textWeight="semibold"
+                  textAlign="left"
+                  className="text-white"
+                >
                   Traveler
-                </h3>
-                <p className="text-sm md:text-base pt-4 text-left text-teal-200 font-normal">
+                </atoms.Typography>
+                <atoms.Typography
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                  textAlign="left"
+                  className="pt-4 text-teal-200"
+                >
                   Dive deeper with flexible project participation and special
                   events that suit your schedule.
-                </p>
+                </atoms.Typography>
               </div>
               <div className="bg-yellow-900 border-yellow-500 border-4 p-6 rounded-lg">
-                <h3 className="text-2xl sm:text-3xl  font-bold text-left leading-relaxed tracking-wide text-white">
+                <atoms.Typography
+                  as="h3"
+                  variant="primary"
+                  size="xl3"
+                  textWeight="semibold"
+                  textAlign="left"
+                  className="text-white"
+                >
                   Core
-                </h3>
-                <p className="text-sm md:text-base pt-4 text-left text-yellow-200 font-normal">
+                </atoms.Typography>
+                <atoms.Typography
+                  as="p"
+                  variant="secondary"
+                  size="body_base"
+                  textAlign="left"
+                  className="pt-4 text-yellow-200"
+                >
                   Take a central role in our projects, working regularly as a
                   team member or leader on impactful software projects. This
                   path accelerates your growth through hands-on,
                   cross-functional team experiences.
-                </p>
+                </atoms.Typography>
               </div>
             </div>
           </div>
@@ -70,85 +136,137 @@ export default function Collaborate() {
 
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
+            <atoms.Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-7xl pb-8"
+            >
               Create your Profile
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-3xl py-8  text-gray-500  font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl pb-8 text-gray-500"
+            >
               Create your profile and connect with like-minded individuals in
               our vibrant community. Engage with other members, share your
               journey, and find partners for your next project. Networking at
               Dev Launchers opens doors to opportunities and collaborations.
-            </p>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/users/me"
               >
                 Build your Profile
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
+            <atoms.Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-7xl pb-8"
+            >
               Learn with Resources
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-3xl py-8 text-gray-500  font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl pb-8 text-gray-500"
+            >
               Utilize our comprehensive library of resources, templates, and
               tools to enhance your skillset. From beginner to advanced levels,
               our learning materials are designed to support your growth in the
               most dynamic industries.
-            </p>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/resources"
               >
                 Explore Resources
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
+            <atoms.Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-7xl pb-8"
+            >
               Dream with IdeaSpace
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-3xl py-8 text-gray-500  font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl pb-8 text-gray-500"
+            >
               Members brainstorm, propose, and workshop on software project
               ideas. Got a groundbreaking idea? Bring it to our community and
               see it take shape!
-            </p>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/ideaspace"
               >
                 Explore Ideas
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>
         <section className="max-w-full py-24 px-4 md:px-8">
           <div className="flex flex-col justify-center items-center">
-            <h2 className="text-4xl lg:text-6xl leading-tight font-bold text-center max-w-7xl ">
+            <atoms.Typography
+              as="h2"
+              variant="primary"
+              size="xl4"
+              textWeight="semibold"
+              textAlign="center"
+              className="max-w-7xl pb-8"
+            >
               Join with Dev Recruit
-            </h2>
-            <p className="text-base md:text-lg text-center max-w-3xl py-8 text-gray-500  font-normal">
+            </atoms.Typography>
+            <atoms.Typography
+              as="p"
+              variant="secondary"
+              size="body_lg"
+              textAlign="center"
+              className="max-w-3xl pb-8 text-gray-500"
+            >
               Looking to dive deeper into tech and gain practical experience?
               Explore our Dev Recruit platform for available opportunities
               designed to hone your skills through intensive and collaborative
               project work. Gain hands-on experience under the guidance of our
               seasoned mentors and prepare for a career in technology.
-            </p>
+            </atoms.Typography>
             <div className="flex pt-8">
-              <a
+              <atoms.Button
                 className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
                 href="/join"
               >
                 Explore Opportunities
-              </a>
+              </atoms.Button>
             </div>
           </div>
         </section>

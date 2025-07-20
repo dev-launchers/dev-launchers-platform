@@ -11,9 +11,9 @@ export const getProjectsSlugs = async () => {
   const result = await agent.Projects.list(
     new URLSearchParams('populate=*&publicationState=live')
   );
-  //const res = await fetch(
+  // const res = await fetch(
   //  `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_publicationState=live`
-  //);
+  // );
   let projects = result?.filter(
     (p) => p.attributes.opportunities?.data?.length > 0
   );
@@ -39,6 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     params.slug as string,
     new URLSearchParams(`populate=*&publicationState=live`)
   );
+
   let opportunities = await agent.Opportunities.list(
     new URLSearchParams(
       `populate=*&filters[projects][slug][$eq]=${params.slug}`
@@ -68,10 +69,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   //project.commitmentLevel = `${minCommitment} - ${maxCommitment}`;
 
   opportunities = opportunities?.map((opportunity) => opportunity.attributes);
+
+  // Remove or transform non-serializable values
+  if (project?.config?.adapter) {
+    delete project.config.adapter; // Remove the function
+  }
+
+  // Ensure that the project object does not contain any non-serializable values
+  const serializableProject = JSON.parse(JSON.stringify(project));
+
   return project !== undefined
     ? {
         props: {
-          project: project,
+          project: serializableProject,
           opportunites: opportunities,
           maxCommitment,
           minCommitment,

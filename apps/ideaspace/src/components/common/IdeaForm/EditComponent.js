@@ -164,12 +164,10 @@ const EditComponent = ({
 
         <div className={footerClasses}>
           <atoms.Button
-            //buttonSize="standard"
-            //buttonType="alternative"
-            //type="button"
             type="secondary"
             size="medium"
             mode="light"
+            color="nebula"
             onClick={handleClose}
           >
             Cancel
@@ -177,12 +175,10 @@ const EditComponent = ({
           {/* Add an explicit spacer */}
           <div style={{ width: '12px' }}></div>
           <atoms.Button
-            // buttonSize="standard"
-            // buttonType="primary"
-            // type="submit"
             type="primary"
             size="medium"
             mode="light"
+            color="nebula"
             disabled={isSubmitting || isSending}
             onClick={handleSave}
           >
