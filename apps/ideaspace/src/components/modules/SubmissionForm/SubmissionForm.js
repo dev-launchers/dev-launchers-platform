@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
@@ -18,12 +18,14 @@ function SubmissionForm() {
   const router = useRouter();
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
+  const [urrl, setUrrl] = useState('');
+  const isProgrammaticNavigation = useRef(false);
+
   const [Dialog, confirmLeave] = useConfirm(
     ['You have unsaved changes', '', ''],
     'Are you sure you want to discard the changes and leave',
     ['alternative primary', 'CANCEL', 'LEAVE']
   );
-  const [urrl, setUrrl] = useState('');
 
   const [CreateFailure, confirmFailure] = useConfirm(
     ['Unable to register your idea.', '', ''],
@@ -94,6 +96,7 @@ function SubmissionForm() {
       const data = cleanData(await agent.Ideas.post(values));
 
       if (data.ideaName) {
+        isProgrammaticNavigation.current = true;
         setunsavedChanges(false);
         router.push(`workshop/${data.id}`);
       } else {
@@ -123,6 +126,11 @@ function SubmissionForm() {
     // For changing route.
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
+        if (isProgrammaticNavigation.current) {
+          isProgrammaticNavigation.current = false;
+          return;
+        }
+
         handleDialog(url);
         router.events.emit('routeChangeError');
         throw 'Abort route change. Please ignore this error.';

@@ -45,7 +45,7 @@ const Alert = ({
           </>
         );
       } else {
-        return 'Your changes have been saved!';
+        return <strong>Your changes have been saved!</strong>;
       }
     } else {
       if (variant === 'submit') {
