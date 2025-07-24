@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { darkColorConfig, lightColorConfig, focusStyles } from './colors';
 import { ColorType, PropsType } from './types';
 
@@ -108,7 +109,7 @@ export default function Button(props: PropsType) {
       ? (safeAlertType as ColorType)
       : safeColor;
 
-  const btnClasses = [
+  const btnClasses = twMerge(
     STYLES.base,
     STYLES.getColorClasses(safeType, effectiveColor, 'base', safeMode),
     STYLES.getColorClasses(safeType, effectiveColor, 'hover', safeMode),
@@ -119,8 +120,8 @@ export default function Button(props: PropsType) {
       : '',
     STYLES.size[safeSize],
     STYLES.iconPosition[safeIconPosition],
-    className || '',
-  ].join(' ');
+    className || ''
+  );
 
   const Component = as === 'a' ? 'a' : 'button';
 
