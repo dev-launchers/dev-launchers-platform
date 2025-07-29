@@ -31,7 +31,7 @@ const DonateSection = () => {
       </div>
       <div className={styles.section.buttonContainer}>
         <a href="/support-us">
-          <atoms.Button mode="dark" type="primary" color="nebula">
+          <atoms.Button type="primary" color="nebula">
             {sections.donate.buttonText}
           </atoms.Button>
         </a>

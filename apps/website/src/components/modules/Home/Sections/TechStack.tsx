@@ -71,7 +71,7 @@ const TechStackSection = () => (
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="https://github.com/dev-launchers/dev-launchers-platform">
-        <atoms.Button mode="dark" type="primary" color="nebula">
+        <atoms.Button type="primary" color="nebula">
           {sections.build.buttonText}
         </atoms.Button>
       </a>

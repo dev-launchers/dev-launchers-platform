@@ -30,7 +30,7 @@ const HeroSection = () => (
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="#opportunities">
-        <atoms.Button mode="dark" type="primary" color="nebula">
+        <atoms.Button type="primary" color="nebula">
           {sections.hero.buttonText}
         </atoms.Button>
       </a>
