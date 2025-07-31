@@ -95,7 +95,6 @@ function SubmissionForm() {
     try {
       const response = await agent.Ideas.post(values);
       if (response.error) {
-        console.log('heree');
         throw new Error('Unable to register');
       } else {
         const data = cleanData(response);
