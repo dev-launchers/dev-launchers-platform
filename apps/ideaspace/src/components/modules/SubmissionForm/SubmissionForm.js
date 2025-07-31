@@ -93,14 +93,15 @@ function SubmissionForm() {
     setSending(true);
 
     try {
-      const data = cleanData(await agent.Ideas.post(values));
-
-      if (data.ideaName) {
+      const response = await agent.Ideas.post(values);
+      if (response.error) {
+        console.log('heree');
+        throw new Error('Unable to register');
+      } else {
+        const data = cleanData(response);
         isProgrammaticNavigation.current = true;
         setunsavedChanges(false);
         router.push(`workshop/${data.id}`);
-      } else {
-        throw new Error('Unable to register your idea.');
       }
     } catch (error) {
       setSending(false);
