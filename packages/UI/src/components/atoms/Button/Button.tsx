@@ -90,7 +90,6 @@ export default function Button(props: PropsType) {
     isAlert,
     alertType,
     icon,
-    className,
   } = mergedProps;
 
   const safeType = validateField(type, VALID_OPTIONS.types);
@@ -119,7 +118,6 @@ export default function Button(props: PropsType) {
       : '',
     STYLES.size[safeSize],
     STYLES.iconPosition[safeIconPosition],
-    className || '',
   ].join(' ');
 
   const Component = as === 'a' ? 'a' : 'button';
