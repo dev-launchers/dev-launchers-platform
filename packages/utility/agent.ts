@@ -60,6 +60,7 @@ axios.interceptors.response.use(
         default:
           console.error(`agents.ts ${error}`);
       }
+      return data;
     }
     return Promise.reject(error.response);
   }
@@ -74,7 +75,7 @@ function createFormData(item: any) {
 }
 
 const responseBody = (response: AxiosResponse) =>
-  response.data.data ? response.data.data : response.data;
+  response?.data?.data ? response.data.data : response;
 
 const errorBody = (error: AxiosError) => (error ? error : null);
 

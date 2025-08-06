@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import styled from 'styled-components';
-import { Typography } from '@devlaunchers/components/components/atoms/Typography';
+//import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 
 const AlertWrapper = styled.div`
   position: fixed;
@@ -86,7 +86,7 @@ const SuccessAlert = ({ onClose }) => {
             fill="#226626"
           />
         </svg>
-        <Typography
+        <atoms.Typography
           as="h4"
           variant="secondary"
           size="body_sm"
@@ -94,7 +94,7 @@ const SuccessAlert = ({ onClose }) => {
         >
           Your idea was successfully posted! You'll be redirected to the Idea
           Workshopping Page in <strong>{countdown}</strong> seconds.
-        </Typography>
+        </atoms.Typography>
       </AlertContent>
       <CloseButton onClick={onClose}>
         <svg
