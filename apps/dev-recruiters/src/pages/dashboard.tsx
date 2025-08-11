@@ -22,27 +22,25 @@ interface UserData {
   projects?: Project[];
 }
 
-interface Opportunity {
-  readonly id: number;
-  title: string;
-  level: string;
-  roleCategory: string;
-}
-
 const Dashboard: React.FC = () => {
-  const { userData, isAuthenticated } = useUserDataContext();
+  const { userData, isAuthenticated, isLoading } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
   const [activeRoles, setActiveRoles] = useState<Opportunity>([]);
   const [archivedRoles, setArchivedRoles] = useState<Opportunity>([]);
   const router = useRouter();
 
   console.log(userData);
+  console.log(isLoading);
   // roleCategory is the department.
 
   // restrict /dashboard page for project leaders only.
   //some(...).some(...) — checks if any project has a team where the current user (userData.id) is a leader.
 
   useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project: any) =>
         project.team?.leaders?.some((leader: any) => leader.id === userData.id)
@@ -151,7 +149,11 @@ const Dashboard: React.FC = () => {
           <div className="bg-[#30184840] pt-10 px-6 pb-10 rounded-lg w-full lg:w-1/2">
             <h2 className="text-lg font-semibold mb-4">Role Actions</h2>
             <div className="space-y-4">
-              <Button>
+              <Button
+                onClick={() => {
+                  router.push('/dev-recruiters/create-role');
+                }}
+              >
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
               </Button>
