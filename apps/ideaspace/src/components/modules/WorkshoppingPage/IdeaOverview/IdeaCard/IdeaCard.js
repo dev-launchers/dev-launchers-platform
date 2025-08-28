@@ -22,7 +22,7 @@ import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
 import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
-import EditSuccessAlert from '../../../../../components/common/SubmissionAlert/EditSuccessAlert';
+import Alert from '../../../../../components/common/SubmissionAlert/Alert';
 import {
   Popover,
   PopoverTrigger,
@@ -46,6 +46,7 @@ export const IdeaCard = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showEditSuccess, setShowEditSuccess] = useState(false);
   const [shouldShowDeleteDialog, setShouldShowDeleteDialog] = useState(false);
+  const [showEditError, setShowEditError] = useState(false);
   const isOwner =
     userData &&
     ideaData &&
@@ -185,9 +186,12 @@ export const IdeaCard = ({
     }
     setIsModalOpen(false);
     setShowEditSuccess(true);
-    setTimeout(() => {
-      setShowEditSuccess(false);
-    }, 4000);
+  };
+
+  const handleEditError = (error) => {
+    console.error('Edit failed:', error);
+    setIsModalOpen(false);
+    setShowEditError(true);
   };
 
   //== Delete Idea
@@ -243,6 +247,7 @@ export const IdeaCard = ({
                       // initialIdea={fullIdea}
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
+                      onEditError={handleEditError}
                     />
 
                     <Popover>
@@ -288,9 +293,17 @@ export const IdeaCard = ({
           </div>
         </div>
         {showEditSuccess && (
-          <EditSuccessAlert
+          <Alert
+            type="success"
+            variant="edit"
             onClose={() => setShowEditSuccess(false)}
-            message={['', 'Your changes have been saved!']}
+          />
+        )}
+        {showEditError && (
+          <Alert
+            type="error"
+            variant="edit"
+            onClose={() => setShowEditError(false)}
           />
         )}
       </div>

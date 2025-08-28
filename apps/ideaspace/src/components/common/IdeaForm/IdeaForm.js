@@ -26,7 +26,7 @@ import {
   SuccessText,
 } from '../../modules/SubmissionForm/StyledSubmissionForm';
 
-import SuccessAlert from '../SubmissionAlert/SuccessAlert.js';
+import Alert from '../SubmissionAlert/Alert.js';
 
 const compareValuesToInitial = (values, initialValues) => {
   const name = Object.keys(values);
@@ -85,6 +85,8 @@ const IdeaForm = ({
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [errorMessageVisible, setErrorMessageVisible] = useState(false);
+  const [alertVariant, setAlertVariant] = useState('submit'); // 'submit' or 'edit'
 
   const [isChecked, setIsChecked] = React.useState(false);
 
@@ -110,12 +112,22 @@ const IdeaForm = ({
     };
   }, []);
 
-  const handleSubmit = (values, actions) => {
-    submitHandler(values, actions);
-    if (!editMode) {
-      setSuccessMessageVisible(true);
-      actions.resetForm({ values: initialValues });
-      clearLocalStorage();
+  const handleSubmit = async (values, actions) => {
+    try {
+      await submitHandler(values, actions);
+      if (!editMode) {
+        setSuccessMessageVisible(true);
+        setAlertVariant('submit');
+        actions.resetForm({ values: initialValues });
+        clearLocalStorage();
+      } else {
+        setSuccessMessageVisible(true);
+        setAlertVariant('edit');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setErrorMessageVisible(true);
+      setAlertVariant(editMode ? 'edit' : 'submit');
     }
   };
 
@@ -659,7 +671,11 @@ const IdeaForm = ({
                             );
                             return; // Preventing form submission if T&C is not checked
                           }
-                          submitForm();
+                          try {
+                            await submitForm();
+                          } catch (error) {
+                            console.error('Submission failed:', error);
+                          }
                         }}
                       />
                     ) : (
@@ -689,8 +705,21 @@ const IdeaForm = ({
                   initialValues={initialValues}
                 />
               </atoms.Box>
-              {!editMode && successMessageVisible && (
-                <SuccessAlert onClose={() => setSuccessMessageVisible(false)} />
+              {successMessageVisible && (
+                <Alert
+                  type="success"
+                  variant={alertVariant}
+                  countdown={alertVariant === 'submit' ? 5 : null}
+                  onClose={() => setSuccessMessageVisible(false)}
+                />
+              )}
+
+              {errorMessageVisible && (
+                <Alert
+                  type="error"
+                  variant={alertVariant}
+                  onClose={() => setErrorMessageVisible(false)}
+                />
               )}
             </Form>
           )}

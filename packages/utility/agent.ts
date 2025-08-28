@@ -60,6 +60,7 @@ axios.interceptors.response.use(
         default:
           console.error(`agents.ts ${error}`);
       }
+      return data;
     }
     return Promise.reject(error.response);
   }
@@ -74,7 +75,7 @@ function createFormData(item: any) {
 }
 
 const responseBody = (response: AxiosResponse) =>
-  response.data.data ? response.data.data : response.data;
+  response?.data?.data ? response.data.data : response;
 
 const errorBody = (error: AxiosError) => (error ? error : null);
 
@@ -204,7 +205,7 @@ const DlTalcommuser = {
   get: () => requests.get<TalCommUser>('/dl-tal-communities'),
   post: (body: {
     data: { name: string; emailID: string; skills: string; roles: string };
-  }) => requests.post('/dl-tal-communities', body),
+  }) => requests.post('/dl-tal-communities', body.data),
 };
 
 const agent = {

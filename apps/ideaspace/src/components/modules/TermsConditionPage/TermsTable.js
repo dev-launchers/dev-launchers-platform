@@ -1,247 +1,415 @@
 import React from 'react';
+import { atoms } from '@devlaunchers/components/components';
 
 const TermsTable = () => {
   return (
     <>
-      <div class="relative overflow-x-auto shadow-md rounded-xl mb-8">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 hidden sm:table">
-          <thead class=" text-gray-700 uppercase bg-[#F0EDEE]">
+      <div className="relative overflow-x-auto shadow-md rounded-xl mb-8">
+        <table className="w-full text-sm text-left rtl:text-right text-gray-500 hidden sm:table">
+          <thead className="text-gray-700 uppercase bg-[#F0EDEE]">
             <tr>
-              <th scope="col" class="px-6 py-3 font-extrabold ">
-                Section
+              <th scope="col" className="px-6 py-3">
+                <atoms.Typography
+                  as="span"
+                  variant="primary"
+                  size="body_base"
+                  textWeight="bold"
+                >
+                  Section
+                </atoms.Typography>
               </th>
-              <th scope="col" class="px-6 py-3 font-extrabold">
-                What can you find there?
+              <th scope="col" className="px-6 py-3">
+                <atoms.Typography
+                  as="span"
+                  variant="primary"
+                  size="body_base"
+                  textWeight="bold"
+                >
+                  What can you find there?
+                </atoms.Typography>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b">
-              <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#age-eligibility" className="text-[#3A7CA5] underline">
-                  Age Eligibility
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Age Eligibility
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                How old do you have to be to use our platform?
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  How old do you have to be to use our platform?
+                </atoms.Typography>
               </td>
             </tr>
-            <tr class="bg-white border-b ">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#non-confidentiality"
                   className="text-[#3A7CA5] underline"
                 >
-                  Non-confidentiality
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Non-confidentiality
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                This section warns you about not submitting confidential
-                information.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  This section warns you about not submitting confidential
+                  information.
+                </atoms.Typography>
               </td>
             </tr>
-            <tr class="bg-white">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#user-generated" className="text-[#3A7CA5] underline">
-                  User-Generated Content
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    User-Generated Content
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                You own the content you submit on Dev Launchers. However, you
-                have some responsibilities regarding it, and we reserve some
-                rights about it.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  You own the content you submit on Dev Launchers. However, you
+                  have some responsibilities regarding it, and we reserve some
+                  rights about it.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#i-property-rights"
                   className="text-[#3A7CA5] underline"
                 >
-                  Intellectual Property Rights
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Intellectual Property Rights
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                Talks about your understanding that you must seek appropriate
-                legal protection for your IP Rights.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  Talks about your understanding that you must seek appropriate
+                  legal protection for your IP Rights.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#idea-evaluation" className="text-[#3A7CA5] underline">
-                  Idea evaluation and approval
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Idea evaluation and approval
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                Talks about how Dev launchers IdeaSpace reviews, evaluates and
-                selects ideas and what we aren’t obligated to provide to idea
-                owners.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  Talks about how Dev launchers IdeaSpace reviews, evaluates and
+                  selects ideas and what we aren't obligated to provide to idea
+                  owners.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#indemnity" className="text-[#3A7CA5] underline">
-                  Indemnity
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Indemnity
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                You will defend (at our request), indemnify and hold harmless us
-                from and against any claim by a third party related to your use
-                of the terms and conditions or your violation of any law or
-                rights of any third party, or © 
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  You will defend (at our request), indemnify and hold harmless
+                  us from and against any claim by a third party related to your
+                  use of the terms and conditions or your violation of any law
+                  or rights of any third party, or ©
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#changeToTerms" className="text-[#3A7CA5] underline">
-                  Changes to Terms
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Changes to Terms
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                We may modify this agreement, but we will use reasonable efforts
-                to notify you of the changes.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  We may modify this agreement, but we will use reasonable
+                  efforts to notify you of the changes.
+                </atoms.Typography>
               </td>
             </tr>
           </tbody>
         </table>
 
-        <table class="w-full text-sm text-gray-500 rounded-xl  text-left rtl:text-righ sm:hidden">
-          <thead class="text-gray-700 uppercase bg-[#F0EDEE]">
+        <table className="w-full text-sm text-gray-500 rounded-xl text-left rtl:text-righ sm:hidden">
+          <thead className="text-gray-700 uppercase bg-[#F0EDEE]">
             <tr>
-              <th scope="col" class="px-6 py-3 font-extrabold">
-                Section
+              <th scope="col" className="px-6 py-3">
+                <atoms.Typography
+                  as="span"
+                  variant="primary"
+                  size="body_base"
+                  textWeight="bold"
+                >
+                  Section
+                </atoms.Typography>
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b flex flex-col">
-              <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#age-eligibility" className="text-[#3A7CA5] underline">
-                  Age Eligibility
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Age Eligibility
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                How old do you have to be to use our platform?
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  How old do you have to be to use our platform?
+                </atoms.Typography>
               </td>
             </tr>
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#non-confidentiality"
                   className="text-[#3A7CA5] underline"
                 >
-                  Non-confidentiality
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Non-confidentiality
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                This section warns you about not submitting confidential
-                information.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  This section warns you about not submitting confidential
+                  information.
+                </atoms.Typography>
               </td>
             </tr>
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#user-generated" className="text-[#3A7CA5] underline">
-                  User-Generated Content
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    User-Generated Content
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                You own the content you submit on Dev Launchers. However, you
-                have some responsibilities regarding it, and we reserve some
-                rights about it.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  You own the content you submit on Dev Launchers. However, you
+                  have some responsibilities regarding it, and we reserve some
+                  rights about it.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#i-property-rights"
                   className="text-[#3A7CA5] underline"
                 >
-                  Intellectual Property Rights
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Intellectual Property Rights
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                Talks about your understanding that you must seek appropriate
-                legal protection for your IP Rights.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  Talks about your understanding that you must seek appropriate
+                  legal protection for your IP Rights.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#idea-evaluation" className="text-[#3A7CA5] underline">
-                  Idea evaluation and approval
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Idea evaluation and approval
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                Talks about how Dev launchers IdeaSpace reviews, evaluates and
-                selects ideas and what we aren’t obligated to provide to idea
-                owners.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  Talks about how Dev launchers IdeaSpace reviews, evaluates and
+                  selects ideas and what we aren't obligated to provide to idea
+                  owners.
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#indemnity" className="text-[#3A7CA5] underline">
-                  Indemnity
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Indemnity
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                You will defend (at our request), indemnify and hold harmless us
-                from and against any claim by a third party related to your use
-                of the terms and conditions or your violation of any law or
-                rights of any third party, or © 
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  You will defend (at our request), indemnify and hold harmless
+                  us from and against any claim by a third party related to your
+                  use of the terms and conditions or your violation of any law
+                  or rights of any third party, or ©
+                </atoms.Typography>
               </td>
             </tr>
 
-            <tr class="bg-white border-b flex flex-col">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-              >
+            <tr className="bg-white border-b flex flex-col">
+              <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a href="#changeToTerms" className="text-[#3A7CA5] underline">
-                  Changes to Terms
+                  <atoms.Typography
+                    as="span"
+                    variant="primary"
+                    size="body_base"
+                    textWeight="medium"
+                  >
+                    Changes to Terms
+                  </atoms.Typography>
                 </a>
               </th>
-              <td class="px-6 py-4 text-gray-800">
-                We may modify this agreement, but we will use reasonable efforts
-                to notify you of the changes.
+              <td className="px-6 py-4">
+                <atoms.Typography
+                  as="span"
+                  variant="secondary"
+                  size="body_base"
+                >
+                  We may modify this agreement, but we will use reasonable
+                  efforts to notify you of the changes.
+                </atoms.Typography>
               </td>
             </tr>
           </tbody>

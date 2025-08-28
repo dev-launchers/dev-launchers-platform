@@ -1,16 +1,16 @@
-export const darkColorConfig = {
+export const lightColorConfig = {
   primary: {
     base: {
-      pure: 'bg-gray-800 border-gray-900 text-white',
+      pure: 'bg-grayscale-750 border-gray-900 text-white',
       uranus: 'bg-uranus-600 border-uranus-800 text-white',
-      jupiter: 'bg-jupiter-600 border-jupiter-800 text-white',
+      jupiter: 'bg-jupiter-500 border-jupiter-800 text-white',
       neptune: 'bg-neptune-600 border-neptune-800 text-white',
       saturn: 'bg-saturn-600 border-saturn-800 text-white',
       cosmic: 'bg-brand-alt-cosmic-700 border-brand-alt-cosmic-900 text-white',
       nebula: 'bg-brand-alt-nebula-800 border-brand-alt-nebula-900 text-white',
       info: 'bg-alert-notification-o-100-700 border-alert-notification-o-100-900 text-white',
       warning:
-        'bg-alert-warning-o-100-600 border-alert-warning-o-100-800 text-white',
+        'bg-alert-warning-o-100-800 border-alert-warning-o-100-1000 text-white',
       success:
         'bg-alert-success-o-100-600 border-alert-success-o-100-800 text-white',
       error: 'bg-alert-error-o-100-600 border-alert-error-o-100-800 text-white',
@@ -66,22 +66,22 @@ export const darkColorConfig = {
   },
   secondary: {
     base: {
-      pure: 'bg-gray-100 border-gray-800 text-gray-800',
-      uranus: 'bg-uranus-50 border-uranus-600 text-uranus-600',
-      jupiter: 'bg-jupiter-50 border-jupiter-600 text-jupiter-600',
-      neptune: 'bg-neptune-50 border-neptune-600 text-neptune-600',
-      saturn: 'bg-saturn-50 border-saturn-600 text-saturn-600',
+      pure: 'bg-grayscale-200 border-gray-800 text-gray-800',
+      uranus: 'bg-uranus-100 border-uranus-600 text-uranus-600',
+      jupiter: 'bg-jupiter-100 border-jupiter-600 text-jupiter-600',
+      neptune: 'bg-neptune-100 border-neptune-600 text-neptune-600',
+      saturn: 'bg-saturn-100 border-saturn-600 text-saturn-600',
       cosmic:
-        'bg-brand-alt-cosmic-50 border-brand-alt-cosmic-700 text-brand-alt-cosmic-700',
+        'bg-brand-alt-cosmic-100 border-brand-alt-cosmic-700 text-brand-alt-cosmic-700',
       nebula:
-        'bg-brand-alt-nebula-50 border-brand-alt-nebula-800 text-brand-alt-nebula-800',
-      info: 'bg-alert-notification-o-100-50 border-alert-notification-o-100-700 text-alert-notification-o-100-700',
+        'bg-brand-alt-nebula-100 border-brand-alt-nebula-900 text-brand-alt-nebula-800',
+      info: 'bg-alert-notification-o-100-100 border-alert-notification-o-100-700 text-alert-notification-o-100-700',
       warning:
-        'bg-alert-warning-o-100-50 border-alert-warning-o-100-600 text-alert-warning-o-100-600',
+        'bg-alert-warning-o-100-100 border-alert-warning-o-100-1000 text-alert-warning-o-100-600',
       success:
-        'bg-alert-success-o-100-50 border-alert-success-o-100-600 text-alert-success-o-100-600',
+        'bg-alert-success-o-100-100 border-alert-success-o-100-600 text-alert-success-o-100-600',
       error:
-        'bg-alert-error-o-100-50 border-alert-error-o-100-600 text-alert-error-o-100-600',
+        'bg-alert-error-o-100-100 border-alert-error-o-100-600 text-alert-error-o-100-600',
     },
     hover: {
       pure: 'hover:bg-gray-200',
@@ -134,22 +134,22 @@ export const darkColorConfig = {
   },
   tertiary: {
     base: {
-      pure: 'bg-gray-100 border-transparent outline-0 text-gray-800',
-      uranus: 'bg-uranus-50 border-transparent outline-0 text-uranus-600',
-      jupiter: 'bg-jupiter-50 border-transparent outline-0 text-jupiter-600',
-      neptune: 'bg-neptune-50 border-transparent outline-0 text-neptune-600',
-      saturn: 'bg-saturn-50 border-transparent outline-0 text-saturn-600',
+      pure: 'bg-grayscale-o-5-600 border-transparent outline-0 text-gray-800',
+      uranus: 'bg-uranus-100 border-transparent outline-0 text-uranus-600',
+      jupiter: 'bg-jupiter-100 border-transparent outline-0 text-jupiter-600',
+      neptune: 'bg-neptune-100 border-transparent outline-0 text-neptune-600',
+      saturn: 'bg-saturn-100 border-transparent outline-0 text-saturn-600',
       cosmic:
-        'bg-brand-alt-cosmic-50 border-transparent outline-0 text-brand-alt-cosmic-700',
+        'bg-brand-alt-cosmic-100 border-transparent outline-0 text-brand-alt-cosmic-700',
       nebula:
-        'bg-brand-alt-nebula-50 border-transparent outline-0 text-brand-alt-nebula-800',
-      info: 'bg-alert-notification-o-100-50 border-transparent outline-0 text-alert-notification-o-100-700',
+        'bg-brand-alt-nebula-100 border-transparent outline-0 text-brand-alt-nebula-800',
+      info: 'bg-alert-notification-o-100-100 border-transparent outline-0 text-alert-notification-o-100-700',
       warning:
-        'bg-alert-warning-o-100-50 border-transparent outline-0 text-alert-warning-o-100-600',
+        'bg-alert-warning-o-100-100 border-transparent outline-0 text-alert-warning-o-100-600',
       success:
-        'bg-alert-success-o-100-50 border-transparent outline-0 text-alert-success-o-100-600',
+        'bg-alert-success-o-100-100 border-transparent outline-0 text-alert-success-o-100-600',
       error:
-        'bg-alert-error-o-100-50 border-transparent outline-0 text-alert-error-o-100-600',
+        'bg-alert-error-o-100-100 border-transparent outline-0 text-alert-error-o-100-600',
     },
     hover: {
       pure: 'hover:bg-gray-200',
@@ -195,22 +195,22 @@ export const darkColorConfig = {
   },
 };
 
-export const lightColorConfig = {
+export const darkColorConfig = {
   primary: {
     base: {
       pure: 'bg-white border-gray-200 text-gray-800',
-      uranus: 'bg-uranus-400 border-uranus-600 text-white',
-      jupiter: 'bg-jupiter-400 border-jupiter-600 text-white',
-      neptune: 'bg-neptune-400 border-neptune-600 text-white',
-      saturn: 'bg-saturn-400 border-saturn-600 text-white',
+      uranus: 'bg-uranus-800 border-uranus-600 text-white',
+      jupiter: 'bg-jupiter-700 border-jupiter-400 text-white',
+      neptune: 'bg-neptune-700 border-neptune-600 text-white',
+      saturn: 'bg-saturn-700 border-saturn-600 text-white',
       cosmic: 'bg-brand-alt-cosmic-500 border-brand-alt-cosmic-700 text-white',
-      nebula: 'bg-brand-alt-nebula-500 border-brand-alt-nebula-700 text-white',
-      info: 'bg-alert-notification-o-100-500 border-alert-notification-o-100-700 text-white',
+      nebula: 'bg-brand-alt-nebula-800 border-brand-alt-nebula-300 text-white',
+      info: 'bg-alert-notification-o-100-900 border-alert-notification-o-100-700 text-white',
       warning:
-        'bg-alert-warning-o-100-500 border-alert-warning-o-100-700 text-white',
+        'bg-alert-warning-o-100-1000 border-alert-warning-o-100-600 text-white',
       success:
-        'bg-alert-success-o-100-500 border-alert-success-o-100-700 text-white',
-      error: 'bg-alert-error-o-100-500 border-alert-error-o-100-700 text-white',
+        'bg-alert-success-o-100-900 border-alert-success-o-100-700 text-white',
+      error: 'bg-alert-error-o-100-800 border-alert-error-o-100-700 text-white',
     },
     hover: {
       pure: 'hover:bg-gray-100',
@@ -263,19 +263,22 @@ export const lightColorConfig = {
   },
   secondary: {
     base: {
-      pure: 'bg-white border-gray-400 text-gray-600',
-      uranus: 'bg-white border-uranus-400 text-uranus-500',
-      jupiter: 'bg-white border-jupiter-400 text-jupiter-500',
-      neptune: 'bg-white border-neptune-400 text-neptune-500',
-      saturn: 'bg-white border-saturn-400 text-saturn-500',
-      cosmic: 'bg-white border-brand-alt-cosmic-400 text-brand-alt-cosmic-500',
-      nebula: 'bg-white border-brand-alt-nebula-400 text-brand-alt-nebula-500',
-      info: 'bg-white border-alert-notification-o-100-400 text-alert-notification-o-100-500',
+      pure: 'bg-black-o-25 border-gray-400 text-gray-400',
+      uranus: 'bg-uranus-o-25-800 border-uranus-400 text-uranus-500',
+      jupiter: 'bg-jupiter-o-25-700 border-jupiter-400 text-jupiter-500',
+      neptune: 'bg-neptune-o-25-700 border-neptune-400 text-neptune-500',
+      saturn: 'bg-saturn-o-25-800 border-saturn-400 text-saturn-500',
+      cosmic:
+        'bg-brand-alt-cosmic-o-25-700 border-brand-alt-cosmic-400 text-brand-alt-cosmic-500',
+      nebula:
+        'brand-alt-nebula-o-60-800 border-brand-alt-nebula-300 text-brand-alt-nebula-200',
+      info: 'bg-alert-notification-o-25-900 border-alert-notification-o-100-400 text-alert-notification-o-100-500',
       warning:
-        'bg-white border-alert-warning-o-100-400 text-alert-warning-o-100-500',
+        'bg-alert-warning-o-25-1000 border-alert-warning-o-100-600 text-alert-warning-o-100-200',
       success:
-        'bg-white border-alert-success-o-100-400 text-alert-success-o-100-500',
-      error: 'bg-white border-alert-error-o-100-400 text-alert-error-o-100-500',
+        'bg-alert-success-o-25-1000 border-alert-success-o-100-400 text-alert-success-o-100-500',
+      error:
+        'bg-alert-error-o-40-900 border-alert-error-o-100-400 text-alert-error-o-100-500',
     },
     hover: {
       pure: 'hover:bg-gray-50',
@@ -328,25 +331,27 @@ export const lightColorConfig = {
   },
   tertiary: {
     base: {
-      pure: 'bg-gray-50 border-transparent outline-0 text-gray-600',
-      uranus: 'bg-uranus-50 border-transparent outline-0 text-uranus-500',
-      jupiter: 'bg-jupiter-50 border-transparent outline-0 text-jupiter-500',
-      neptune: 'bg-neptune-50 border-transparent outline-0 text-neptune-500',
-      saturn: 'bg-saturn-50 border-transparent outline-0 text-saturn-500',
+      pure: 'bg-grayscale-o-5-400 border-transparent outline-0 text-gray-400',
+      uranus: 'bg-uranus-o-25-800 border-transparent outline-0 text-uranus-500',
+      jupiter:
+        'bg-jupiter-o-25-700 border-transparent outline-0 text-jupiter-500',
+      neptune:
+        'bg-neptune-o-25-700 border-transparent outline-0 text-neptune-500',
+      saturn: 'bg-saturn-o-5-800 border-transparent outline-0 text-saturn-500',
       cosmic:
-        'bg-brand-alt-cosmic-50 border-transparent outline-0 text-brand-alt-cosmic-500',
+        'bg-brand-alt-cosmic-o-5-700 border-transparent outline-0 text-brand-alt-cosmic-500',
       nebula:
-        'bg-brand-alt-nebula-50 border-transparent outline-0 text-brand-alt-nebula-500',
-      info: 'bg-alert-notification-o-100-50 border-transparent outline-0 text-alert-notification-o-100-500',
+        'brand-alt-nebula-o-25-900 outline-0 border-transparent text-brand-alt-nebula-500',
+      info: 'bg-alert-notification-o-25-900 border-transparent outline-0 text-alert-notification-o-100-500',
       warning:
-        'bg-alert-warning-o-100-50 border-transparent outline-0 text-alert-warning-o-100-500',
+        'bg-alert-warning-o-25-1000 border-transparent outline-0 text-alert-warning-o-100-200',
       success:
-        'bg-alert-success-o-100-50 border-transparent outline-0 text-alert-success-o-100-500',
+        'bg-alert-success-o-25-1000 border-transparent outline-0 text-alert-success-o-100-500',
       error:
-        'bg-alert-error-o-100-50 border-transparent outline-0 text-alert-error-o-100-500',
+        'bg-alert-error-o-40-900 border-transparent outline-0 text-alert-error-o-100-500',
     },
     hover: {
-      pure: 'hover:bg-gray-100',
+      pure: 'hover:bg-gray-700',
       uranus: 'hover:bg-uranus-100',
       jupiter: 'hover:bg-jupiter-100',
       neptune: 'hover:bg-neptune-100',

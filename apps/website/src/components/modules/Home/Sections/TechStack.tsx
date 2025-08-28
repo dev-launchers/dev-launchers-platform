@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './Section';
-
+import { atoms } from '@devlaunchers/components/components';
 import { sections } from './sections';
 import {
   Github,
@@ -71,9 +71,9 @@ const TechStackSection = () => (
     </div>
     <div className={styles.section.buttonContainer}>
       <a href="https://github.com/dev-launchers/dev-launchers-platform">
-        <button className={styles.section.button}>
+        <atoms.Button type="primary" color="nebula">
           {sections.build.buttonText}
-        </button>
+        </atoms.Button>
       </a>
     </div>
 
