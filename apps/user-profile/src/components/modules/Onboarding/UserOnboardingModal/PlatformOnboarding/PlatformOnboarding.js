@@ -3,7 +3,7 @@ import Stepper from '../Stepper';
 // TODO: give these pages more descriptive names
 import IntroPage from './IntroPage/IntroPage'; // PageTwo -> IntroPage
 import AboutYouPage from './AboutYouPage/AboutYouPage'; // PageThree -> AboutYouPage
-import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
+import RolePage from './RolePage/RolePage'; // PageFour -> RolePage
 import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
 import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
 import CongratsPage from './CongratsPage/CongratsPage'; // PageSeven -> CongratsPage
@@ -114,7 +114,7 @@ export default function PlatformOnboarding() {
   };
 
   const roleStep = {
-    component: <PageFour />,
+    component: <RolePage />,
     header: {
       barSize: 's',
       hideNumber: true, // Hide the step number

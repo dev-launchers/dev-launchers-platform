@@ -1,22 +1,22 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
-import { useOnboardingDataContext } from './../../../../../../context/OnboardingDataContext';
-import { onboardingActions } from './../../../../../../state/actions';
-import RadioCards from './../../../../../common/RadioCards';
+import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
+import { onboardingActions } from '../../../../../../state/actions';
+import RadioCards from '../../../../../common/RadioCards';
 
 import juniorExpIconImg from './../../../../../../images/icons/onboarding/card/outlined-junior-exp.svg';
 import midExpIconImg from './../../../../../../images/icons/onboarding/card/outlined-mid-exp.svg';
 import seniorExpIconImg from './../../../../../../images/icons/onboarding/card/outlined-senior-exp.svg';
 
 /**
- * PageThree Component
+ * RolePage (formerly PageThree) Component
  *
  * This component represents a step in the onboarding process where users select their
  * level of experience (Junior, Mid-Level, Senior). It uses `RadioCards` to present the
  * options and updates the onboarding context when a selection is made.
  *
- * @return {JSX.Element} The rendered PageThree component.
+ * @return {JSX.Element} The rendered RolePage component.
  */
-export default function PageFour() {
+export default function RolePage() {
   // Access the onboarding context to retrieve user data and dispatch actions
   const {
     onboardingData: { user },
