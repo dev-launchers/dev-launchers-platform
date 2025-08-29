@@ -1,17 +1,17 @@
-import { useOnboardingDataContext } from './../../../../../../context/OnboardingDataContext';
+import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
 import { Typography } from '@devlaunchers/components/components/atoms';
-import { onboardingActions } from './../../../../../../state/actions';
+import { onboardingActions } from '../../../../../../state/actions';
 import { useState } from 'react';
 
 /**
- * PageFive Component
+ * InterestsPage (formerly PageFive) Component
  *
  * This component allows users to select their interests during the onboarding process.
  * The selected interests are stored in local state and updated in the onboarding context.
  *
- * @return {JSX.Element} The rendered PageFive component.
+ * @return {JSX.Element} The rendered InterestsPage component.
  */
-export default function PageFive() {
+export default function InterestsPage() {
   // Access onboarding data and dispatch function from context
   const { onboardingData, dispatch } = useOnboardingDataContext();
 

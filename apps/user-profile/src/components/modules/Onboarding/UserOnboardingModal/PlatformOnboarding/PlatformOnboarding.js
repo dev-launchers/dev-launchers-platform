@@ -4,7 +4,7 @@ import Stepper from '../Stepper';
 import PageTwo from './PageTwo/PageTwo'; // PageTwo -> IntroPage
 import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
 import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
-import PageFive from './PageFive/PageFive'; // PageFive -> InterestsPage
+import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
 import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
 import PageSeven from './PageSeven/PageSeven'; // PageSeven -> CongratsPage
 // import IntroPage from './IntroPage/IntroPage';
@@ -132,7 +132,7 @@ export default function PlatformOnboarding() {
   };
 
   const interestStep = {
-    component: <PageFive />,
+    component: <InterestsPage />,
     header: {
       barSize: 's',
       hideNumber: true,
