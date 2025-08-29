@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Stepper from '../Stepper';
 // TODO: give these pages more descriptive names
-import PageTwo from './PageTwo/PageTwo'; // PageTwo -> IntroPage
+import IntroPage from './IntroPage/IntroPage'; // PageTwo -> IntroPage
 import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
 import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
 import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
@@ -89,7 +89,7 @@ export default function PlatformOnboarding() {
   };
 
   const introductionStep = {
-    component: <PageTwo />, // Render PageTwo for this step
+    component: <IntroPage />, // Render PageTwo for this step
     header: {
       name: 'DevLaunchers',
       number: 2,

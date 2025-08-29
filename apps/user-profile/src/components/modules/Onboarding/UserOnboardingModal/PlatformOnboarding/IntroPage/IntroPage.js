@@ -7,15 +7,15 @@ import { m } from 'framer-motion'; // For animations
 import Image from 'next/image'; // For optimized image rendering
 
 /**
- * PageTwo Component
+ * IntroPage (formerly PageTwo) Component
  *
  * This is the second page of the onboarding process, introducing users to
  * DevLaunchers' mission and benefits. It displays three key features with
  * animated transitions.
  *
- * @return {JSX.Element} The rendered PageTwo component.
+ * @return {JSX.Element} The rendered IntroPage component.
  */
-export default function PageTwo() {
+export default function IntroPage() {
   return (
     <div className="flex flex-col gap-16 justify-center">
       {/* Page header section */}
