@@ -5,14 +5,14 @@ import PageTwo from './PageTwo/PageTwo'; // PageTwo -> IntroPage
 import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
 import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
 import PageFive from './PageFive/PageFive'; // PageFive -> InterestsPage
-import PageSix from './PageSix/PageSix'; // PageSix -> SkillsPage
+import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
 import PageSeven from './PageSeven/PageSeven'; // PageSeven -> CongratsPage
-import IntroPage from './IntroPage/IntroPage';
-import AboutYouPage from './AboutYouPage/AboutYouPage';
-import RolePage from './RolePage/RolePage';
-import InterestsPage from './InterestsPage/InterestsPage';
-import SkillsPage from './SkillsPage/SkillsPage';
-import CongratsPage from './CongratsPage/CongratsPage';
+// import IntroPage from './IntroPage/IntroPage';
+// import AboutYouPage from './AboutYouPage/AboutYouPage';
+// import RolePage from './RolePage/RolePage';
+// import InterestsPage from './InterestsPage/InterestsPage';
+// import SkillsPage from './SkillsPage/SkillsPage';
+// import CongratsPage from './CongratsPage/CongratsPage';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 /**
@@ -144,7 +144,7 @@ export default function PlatformOnboarding() {
   };
 
   const skillStep = {
-    component: <PageSix />,
+    component: <SkillsPage />,
     header: {
       barSize: 's',
       hideNumber: true,
