@@ -1,23 +1,23 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
 
-import { useOnboardingDataContext } from './../../../../../../context/OnboardingDataContext';
-import { onboardingActions } from './../../../../../../state/actions';
-import RadioCards from './../../../../../common/RadioCards';
+import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
+import { onboardingActions } from '../../../../../../state/actions';
+import RadioCards from '../../../../../common/RadioCards';
 
 import developerIconImg from './../../../../../../images/icons/onboarding/card/outlined-developer.svg';
 import uxIconImg from './../../../../../../images/icons/onboarding/card/outlined-other.svg';
 import otherIconImg from './../../../../../../images/icons/onboarding/card/outlined-ux-ui.svg';
 
 /**
- * PageThree Component
+ * AboutYouPage (formerly PageThree) Component
  *
  * This component represents the third step in the onboarding process, where users
  * select their role. It utilizes the `RadioCards` component to display role options
  * and updates the onboarding state with the selected role.
  *
- * @return {JSX.Element} The rendered PageThree component.
+ * @return {JSX.Element} The rendered AboutYouPage component.
  */
-export default function PageThree() {
+export default function AboutYouPage() {
   // Extract user data and dispatch function from the onboarding context
   const {
     onboardingData: { user },

@@ -2,7 +2,7 @@ import axios from 'axios';
 import Stepper from '../Stepper';
 // TODO: give these pages more descriptive names
 import IntroPage from './IntroPage/IntroPage'; // PageTwo -> IntroPage
-import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
+import AboutYouPage from './AboutYouPage/AboutYouPage'; // PageThree -> AboutYouPage
 import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
 import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
 import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
@@ -101,7 +101,7 @@ export default function PlatformOnboarding() {
   };
 
   const aboutYouStep = {
-    component: <PageThree />,
+    component: <AboutYouPage />,
     header: {
       name: 'About you',
       number: 3,
