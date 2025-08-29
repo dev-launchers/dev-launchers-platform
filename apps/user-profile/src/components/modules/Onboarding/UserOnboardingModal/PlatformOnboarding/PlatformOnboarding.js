@@ -6,13 +6,7 @@ import PageThree from './PageThree/PageThree'; // PageThree -> AboutYouPage
 import PageFour from './PageFour/PageFour'; // PageFour -> RolePage
 import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
 import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
-import PageSeven from './PageSeven/PageSeven'; // PageSeven -> CongratsPage
-// import IntroPage from './IntroPage/IntroPage';
-// import AboutYouPage from './AboutYouPage/AboutYouPage';
-// import RolePage from './RolePage/RolePage';
-// import InterestsPage from './InterestsPage/InterestsPage';
-// import SkillsPage from './SkillsPage/SkillsPage';
-// import CongratsPage from './CongratsPage/CongratsPage';
+import CongratsPage from './CongratsPage/CongratsPage'; // PageSeven -> CongratsPage
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 /**
@@ -156,7 +150,7 @@ export default function PlatformOnboarding() {
   };
 
   const congratulationStep = {
-    component: <PageSeven />,
+    component: <CongratsPage />,
     header: {
       name: 'Done',
       number: 4,

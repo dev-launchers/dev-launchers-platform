@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { m } from 'framer-motion';
 
-export const PageSixContainer = styled.div`
+export const CongratsPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

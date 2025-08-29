@@ -1,18 +1,18 @@
 import { Typography } from '@devlaunchers/components/components/atoms';
 import LogoMonogram from './../../../../../../images/logo-monogram.png';
 import {
-  PageSixContainer,
+  CongratsPageContainer,
   Header,
   AnimationContainer,
   RocketAnamation,
   CongratulationsShadow,
   CongratulationsImg,
   CircleAnamation,
-} from './StyledPageSeven';
+} from './StyledCongratsPage';
 
-export default function PageSeven() {
+export default function CongratsPage() {
   return (
-    <PageSixContainer>
+    <CongratsPageContainer>
       <Header>
         <Typography type="h2">Congratulations!</Typography>
         <Typography className="modal-subtitle" type="pLarge">
@@ -29,6 +29,6 @@ export default function PageSeven() {
           <CongratulationsShadow>&nbsp;</CongratulationsShadow>
         </CircleAnamation>
       </AnimationContainer>
-    </PageSixContainer>
+    </CongratsPageContainer>
   );
 }
