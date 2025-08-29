@@ -1,12 +1,11 @@
 import axios from 'axios';
 import Stepper from '../Stepper';
-// TODO: give these pages more descriptive names
-import IntroPage from './IntroPage/IntroPage'; // PageTwo -> IntroPage
-import AboutYouPage from './AboutYouPage/AboutYouPage'; // PageThree -> AboutYouPage
-import RolePage from './RolePage/RolePage'; // PageFour -> RolePage
-import InterestsPage from './InterestsPage/InterestsPage'; // PageFive -> InterestsPage
-import SkillsPage from './SkillsPage/SkillsPage'; // PageSix -> SkillsPage
-import CongratsPage from './CongratsPage/CongratsPage'; // PageSeven -> CongratsPage
+import IntroPage from './IntroPage/IntroPage';
+import AboutYouPage from './AboutYouPage/AboutYouPage';
+import RolePage from './RolePage/RolePage';
+import InterestsPage from './InterestsPage/InterestsPage';
+import SkillsPage from './SkillsPage/SkillsPage';
+import CongratsPage from './CongratsPage/CongratsPage';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 /**
