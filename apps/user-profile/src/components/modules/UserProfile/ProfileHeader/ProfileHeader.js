@@ -29,6 +29,10 @@ function ProfileHeader() {
     ? new Date(createdAt).toLocaleString('en-US', options)
     : null;
 
+  const handleEditClick = () => {
+    console.log('Edit button clicked');
+  };
+
   return (
     <div className="flex flex-col max-h-96 w-full shadow-lg bg-white">
       <div className="h-full overflow-hidden max-h-36 w-full">
@@ -55,6 +59,7 @@ function ProfileHeader() {
 
         {/* right side in TODO */}
         <div className="flex flex-col text-right">
+          <EditButton onEdit={handleEditClick} />
           {/* <EditButton /> */}
           {/* 
           <SocialLinks />
