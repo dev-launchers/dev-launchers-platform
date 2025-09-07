@@ -49,6 +49,32 @@ export const UseOnboardingData = ({ children }) => {
       });
   }, []); // Empty dependency array ensures this effect runs only once on mount
 
+  /**
+   * Fetches the list of skills from the API on component mount and updates the onboarding state.
+   */
+  useEffect(() => {
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/skills`, {
+      withCredentials: true, // Include credentials in the request
+    })
+      .then(({ data: response }) => {
+        const skillList = response?.data?.map((skill) => ({
+          id: skill.id,
+          name: skill.attributes.interest,
+          selected: false, // Initialize all skills as unselected
+        }));
+
+        // Update the onboarding state with the fetched skills
+        dispatch({
+          type: onboardingActions.SET_USERS_SKILL,
+          data: skillList,
+        });
+      })
+      .catch(() => {
+        // TODO: Handle errors appropriately, such as showing a notification or retrying
+        console.error('Failed to fetch skills.');
+      });
+  }, []); // Empty dependency array ensures this effect runs only once on mount
+
   return { onboardingData, dispatch }; // Provide state and dispatch
 };
 

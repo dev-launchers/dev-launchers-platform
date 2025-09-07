@@ -15,10 +15,8 @@ export default function SkillsPage() {
   // Access onboarding data and dispatch function from context
   const { onboardingData, dispatch } = useOnboardingDataContext();
 
-  // Local state to manage the list of user interests
-  const [interestList, setInterestList] = useState(
-    onboardingData.user.interest
-  );
+  // Local state to manage the list of user skills
+  const [skillList, setSkillList] = useState(onboardingData.user.interest);
 
   /**
    * Handles toggling the selection of an interest.
@@ -86,7 +84,7 @@ export default function SkillsPage() {
       </div>
 
       {/* Interest selection grid */}
-      <div className="flex justify-center">
+      {/* <div className="flex justify-center">
         <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
           {interestList.map((interest) => (
             <div
@@ -99,11 +97,11 @@ export default function SkillsPage() {
               }`}
               onClick={onSelectedInterest(interest)} // Handle selection toggle
             >
-              {interest.name} {/* Display the interest name */}
+              {interest.name} // Display the interest name
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
