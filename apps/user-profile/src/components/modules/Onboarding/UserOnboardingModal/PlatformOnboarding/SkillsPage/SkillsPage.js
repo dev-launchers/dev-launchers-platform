@@ -78,10 +78,10 @@ export default function SkillsPage() {
       <div className="flex flex-col text-center">
         <div>
           <Typography type="p">ABOUT YOU</Typography>
-          <Typography type="h3">Select Your Interests Below</Typography>
+          <Typography type="h3">Select Your Skills Below</Typography>
         </div>
         <Typography className="m-0" type="p">
-          We’ll use this to help you find projects that match your needs
+          Select up to 5 skills that you want to showcase on your profile
         </Typography>
       </div>
 
