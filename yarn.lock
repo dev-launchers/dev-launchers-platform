@@ -3073,7 +3073,7 @@ __metadata:
   resolution: "@devlaunchers/tailwind@workspace:packages/tailwind-constructor"
   dependencies:
     autoprefixer: 10.4.14
-    postcss: 8.4.27
+    postcss: 8.5.3
     postcss-cli: ^9.0.1
     postcss-import: ^14.0.2
     style-dictionary: ^3.0.2
@@ -30248,7 +30248,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.1, nanoid@npm:^3.3.11, nanoid@npm:^3.3.4, nanoid@npm:^3.3.6":
+"nanoid@npm:^3.3.1, nanoid@npm:^3.3.11, nanoid@npm:^3.3.4, nanoid@npm:^3.3.8":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
   bin:
@@ -34362,14 +34362,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.27":
-  version: 8.4.27
-  resolution: "postcss@npm:8.4.27"
+"postcss@npm:8.5.3":
+  version: 8.5.3
+  resolution: "postcss@npm:8.5.3"
   dependencies:
-    nanoid: ^3.3.6
-    picocolors: ^1.0.0
-    source-map-js: ^1.0.2
-  checksum: 1cdd0c298849df6cd65f7e646a3ba36870a37b65f55fd59d1a165539c263e9b4872a402bf4ed1ca1bc31f58b68b2835545e33ea1a23b161a1f8aa6d5ded81e78
+    nanoid: ^3.3.8
+    picocolors: ^1.1.1
+    source-map-js: ^1.2.1
+  checksum: da574620eb84ff60e65e1d8fc6bd5ad87a19101a23d0aba113c653434161543918229a0f673d89efb3b6d4906287eb04b957310dbcf4cbebacad9d1312711461
   languageName: node
   linkType: hard
 
