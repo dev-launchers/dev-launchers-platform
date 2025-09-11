@@ -2671,7 +2671,7 @@ __metadata:
     "@types/styled-components": 5.1.25
     articles: ^0.2.2
     autosave: ^1.0.3
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
     eslint: ^8.21.0
@@ -2751,7 +2751,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.32.0
     "@typescript-eslint/parser": 5.32.0
     axe-playwright: 1.1.11
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-loader: 8.2.5
     babel-plugin-styled-components: 2.0.7
     camelcase: 7.0.0
@@ -2821,7 +2821,7 @@ __metadata:
     "@types/styled-components": ^5.1.25
     "@typescript-eslint/eslint-plugin": ^5.32.0
     "@typescript-eslint/parser": ^5.32.0
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-loader: ^8.2.5
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
@@ -2929,7 +2929,7 @@ __metadata:
     "@types/react": ^17.0.0
     "@typescript-eslint/eslint-plugin": ^5.32.0
     "@typescript-eslint/parser": ^5.32.0
-    axios: ^0.30.0
+    axios: ^1.12.0
     eslint: 8.21.0
     eslint-config-airbnb: 19.0.4
     eslint-config-airbnb-typescript: ^17.0.0
@@ -3027,7 +3027,7 @@ __metadata:
     "@types/react-burger-menu": 2.8.3
     "@typescript-eslint/eslint-plugin": ^5.32.0
     "@typescript-eslint/parser": ^5.32.0
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-loader: ^8.2.5
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
@@ -3097,7 +3097,7 @@ __metadata:
     "@types/styled-components": 5.1.25
     articles: ^0.2.2
     autosave: ^1.0.3
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
     eslint: ^8.21.0
@@ -3145,7 +3145,7 @@ __metadata:
   dependencies:
     "@devlaunchers/eslint-config-bases": "workspace:^"
     "@devlaunchers/models": "workspace:^"
-    axios: ^0.30.0
+    axios: ^1.12.0
     eslint: 8.21.0
   languageName: unknown
   linkType: soft
@@ -3165,7 +3165,7 @@ __metadata:
     "@types/styled-components": 5.1.25
     articles: ^0.2.2
     autosave: ^1.0.3
-    axios: ^0.30.0
+    axios: ^1.12.0
     babel-plugin-styled-components: ^2.0.7
     constate: ^3.3.2
     eslint: ^8.21.0
@@ -14033,14 +14033,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.30.0":
-  version: 0.30.0
-  resolution: "axios@npm:0.30.0"
+"axios@npm:^1.12.0":
+  version: 1.12.0
+  resolution: "axios@npm:1.12.0"
   dependencies:
-    follow-redirects: ^1.15.4
-    form-data: ^4.0.0
+    follow-redirects: ^1.15.6
+    form-data: ^4.0.4
     proxy-from-env: ^1.1.0
-  checksum: 5179e93f4d8a4f8fc6fce3d46b4087aff60d1f2aeb36fad289e506dfd327c3436aafe1a91b371f47ffc2ef1b0a3f7ea278a24f6b1af88216d691b1e6c262b32f
+  checksum: f2a109efea16711907ae86acc46434d52da28e889bf1d2fc2b66844e82c9908f6d96d988ad9043b37d4146abc182e67d61abd87367152bbbc1cd73afa3c5de71
   languageName: node
   linkType: hard
 
@@ -21723,13 +21723,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.15.4":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.0":
   version: 1.15.9
   resolution: "follow-redirects@npm:1.15.9"
   peerDependenciesMeta:
     debug:
       optional: true
   checksum: 859e2bacc7a54506f2bf9aacb10d165df78c8c1b0ceb8023f966621b233717dab56e8d08baadc3ad3b9db58af290413d585c999694b7c146aaf2616340c3d2a6
+  languageName: node
+  linkType: hard
+
+"follow-redirects@npm:^1.15.6":
+  version: 1.15.11
+  resolution: "follow-redirects@npm:1.15.11"
+  peerDependenciesMeta:
+    debug:
+      optional: true
+  checksum: 20bf55e9504f59e6cc3743ba27edb2ebf41edea1baab34799408f2c050f73f0c612728db21c691276296d2795ea8a812dc532a98e8793619fcab91abe06d017f
   languageName: node
   linkType: hard
 
@@ -21861,6 +21871,19 @@ __metadata:
     hasown: ^2.0.2
     mime-types: ^2.1.12
   checksum: b8e2568c0853ce167b2b9c9c4b81fe563f9ade647178baf6b6381cf8a11e3c01dd2b78a63ba367e6f5eab59afab8284a9438bb5ae768133f9d9fce6567fbc26a
+  languageName: node
+  linkType: hard
+
+"form-data@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "form-data@npm:4.0.4"
+  dependencies:
+    asynckit: ^0.4.0
+    combined-stream: ^1.0.8
+    es-set-tostringtag: ^2.1.0
+    hasown: ^2.0.2
+    mime-types: ^2.1.12
+  checksum: 9b7788836df9fa5a6999e0c02515b001946b2a868cfe53f026c69e2c537a2ff9fbfb8e9d2b678744628f3dc7a2d6e14e4e45dfaf68aa6239727f0bdb8ce0abf2
   languageName: node
   linkType: hard
 
