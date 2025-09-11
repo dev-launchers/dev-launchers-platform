@@ -166,6 +166,17 @@ export default function Photo() {
                 Upload Photo
               </div>
             </div>
+            <Button
+              onClick={async () => {
+                await handleUpload();
+                setShowDropdown(false);
+              }}
+              buttonType="primary"
+              buttonSize="standard"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Saving...' : 'Save'}
+            </Button>
           </div>
           <div className="self-stretch flex-col justify-start items-start gap-2 inline-flex">
             <div className="text-center text-black text-base font-normal font-['Nunito Sans'] capitalize leading-normal tracking-wide">
@@ -272,6 +283,7 @@ export default function Photo() {
                 alt="Profile"
               />
             </div>
+
             <div className="flex flex-col justify-start items-start gap-20">
               <div className="flex justify-start items-start gap-4">
                 <button

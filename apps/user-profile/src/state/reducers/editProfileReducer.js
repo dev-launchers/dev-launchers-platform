@@ -9,6 +9,7 @@ const editProfileInitialState = {
     showDetails: false,
     showSkills: false,
     showInterests: false,
+    showProfileHeader: false,
   },
   changes: {
     photoChanged: false,
