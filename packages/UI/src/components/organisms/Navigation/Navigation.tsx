@@ -321,9 +321,46 @@ const Navigation = () => {
       </div>
 
       <div className={styles.desktopNav}>
-        <Link href="/about">
-          <p className={styles.navItem}>About Us</p>
-        </Link>
+        <DropdownMenu
+          trigger="About Us"
+          items={[
+            {
+              title: 'About US',
+              description: 'Our story & mission.',
+              href: '/about',
+            },
+            {
+              title: 'Our Mentors and Instructor Team',
+              description:
+                'Our mentors lead instruction by guiding members through real projects and assignments aligned to their Product Team and Department.',
+              href: '/our-mentors-and-instructor-team',
+            },
+            {
+              title: 'How We Work',
+              description:
+                'Remote, mentor-led, product teams shipping real features in 4-week sprints—here’s our playbook.',
+              href: '/how-we-work',
+            },
+            {
+              title: 'Our Projects',
+              description:
+                'We believe in learning by doing—inside a collaborative, supportive community. Explore the live products our members are building.',
+              href: '/our-projects',
+            },
+            {
+              title: 'Admission & Tuition',
+              description:
+                'Who can join, how placement works, time expectations.',
+              href: '/admissions',
+            },
+            {
+              title: 'Curriculum',
+              description:
+                'Learn through collaboration—mentor-led sessions, async work, and real projects with feedback tailored to your goals.',
+              href: '/curriculum',
+            },
+          ]}
+        />
         <DropdownMenu
           trigger="Collaborate"
           items={[
