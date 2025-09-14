@@ -25,8 +25,8 @@ interface UserData {
 const Dashboard: React.FC = () => {
   const { userData, isAuthenticated, isLoading } = useUserDataContext();
   const [teamNames, setTeamNames] = useState<string[]>([]);
-  const [activeRoles, setActiveRoles] = useState<Opportunity>([]);
-  const [archivedRoles, setArchivedRoles] = useState<Opportunity>([]);
+  const [activeRoles, setActiveRoles] = useState<Opportunity[]>([]);
+  const [archivedRoles, setArchivedRoles] = useState<Opportunity[]>([]);
   const router = useRouter();
 
   console.log(userData);
@@ -197,8 +197,8 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {activeRoles.map((position, index) => (
               <ActiveRole
-                key={position.id || index}
-                role={position.title || 'Unknown Role'}
+                key={String(position.id ?? index)}
+                role={position.attributes.title || 'Unknown Role'}
                 department={
                   teamNames.length > 0
                     ? `Your Team: ${teamNames.join(', ')}`
@@ -209,13 +209,11 @@ const Dashboard: React.FC = () => {
                 onView={() => console.log('View:', position)}
               />
             ))}
-            {activeRoles &&
-              activeRoles.filter((result) => result.source === 'opportunities')
-                .length === 0 && (
-                <div className="col-span-full">
-                  <p>No active roles available.</p>
-                </div>
-              )}
+            {activeRoles && archivedRoles.length === 0 && (
+              <div className="col-span-full">
+                <p>No active roles available.</p>
+              </div>
+            )}
           </div>
 
           {activeRoles.length === 0 && (
@@ -232,25 +230,31 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {archivedRoles.map((position, index) => (
               <ArchivedRole
-                key={position.id || index}
-                role={position.title || 'Unknown Role'}
+                key={String(position.id ?? index)}
+                role={position.attributes.title || 'Unknown Role'}
                 department={
                   teamNames.length > 0
                     ? `Your Team: ${teamNames.join(', ')}`
                     : 'Unknown Department'
                 }
-                date={position.postedDate || 'N/A'}
+                date={
+                  typeof position.attributes.published_at === 'string'
+                    ? position.attributes.published_at
+                    : position.attributes.published_at
+                    ? position.attributes.published_at.toISOString()
+                    : 'N/A'
+                }
                 onView={() => console.log('View Archived:', position)}
+                onRepost={function (value: string): void {
+                  throw new Error('Function not implemented.');
+                }}
               />
             ))}
-            {archivedRoles &&
-              archivedRoles.filter(
-                (result) => result.source === 'opportunities'
-              ).length === 0 && (
-                <div className="col-span-full">
-                  <p>No archived roles available.</p>
-                </div>
-              )}
+            {archivedRoles && archivedRoles.length === 0 && (
+              <div className="col-span-full">
+                <p>No archived roles available.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

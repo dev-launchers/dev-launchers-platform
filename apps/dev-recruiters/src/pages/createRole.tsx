@@ -19,16 +19,25 @@ const NewRoleSubmission = () => {
     whyJoin: '',
   });
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (
+    field: keyof typeof formData,
+    value: string | string[]
+  ) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleCheckboxChange = (field, value, checked) => {
+  const handleCheckboxChange = (
+    field: keyof typeof formData,
+    value: string,
+    checked: boolean
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [field]: checked
-        ? [...prev[field], value]
-        : prev[field].filter((item) => item !== value),
+        ? [...(Array.isArray(prev[field]) ? prev[field] : []), value]
+        : Array.isArray(prev[field])
+        ? prev[field].filter((item) => item !== value)
+        : [],
     }));
   };
 
