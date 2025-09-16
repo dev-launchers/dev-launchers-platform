@@ -65,7 +65,7 @@ export default function About() {
               allowed us to expand our mission beyond geographical boundaries
               and age restrictions, creating a truly inclusive space for anyone
               interested in technology. Today, Dev Launchers operates with 6
-              dedicated teams and over 50 active members across the globe, from
+              dedicated teams and over 30 active members across the globe, from
               the United States to Australia, united by our mission to
               democratize access to technology careers and launch our members to
               the next level in their careers through experience and community.
