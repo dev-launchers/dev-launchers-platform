@@ -1,4 +1,4 @@
-import Page from '@devlaunchers/website/src/pages/cirriculum';
+import Page from '@devlaunchers/website/src/pages/curriculum';
 import App from '@devlaunchers/website/src/pages/_app';
 //export { getStaticProps } from '@devlaunchers/website/src/pages/index';
 
