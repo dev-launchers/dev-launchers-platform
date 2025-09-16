@@ -390,7 +390,6 @@ const Navigation = () => {
             },
           ]}
         />
-        <DropdownMenu trigger="Our Projects" items={projectItems} />
 
         <Link href="/resources">
           <p className={styles.navItem}>Resources</p>

@@ -159,7 +159,7 @@ const teamMembers = {
     name: 'Francis Aniebogu',
     title: 'Product Manager; User Profile & Community Development',
     image:
-      'https://docs.devlaunchers.org/dl-docs/~gitbook/image?url=https%3A%2F%2F2977404816-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FeXJoJnQUFdJ4YZ9kGUck%252Fuploads%252FjyNOpKcrassH3TCcXhcM%252Ffrancis-profile.jpg%3Falt%3Dmedia%26token%3Dc290ab0e-33a8-4f8e-b93f-ca1e8884330b&width=300&dpr=2&quality=100&sign=59338707&sv=2',
+      'https://docs.devlaunchers.org/dl-docs/~gitbook/image?url=https%3A%2F%2F2977404816-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FeXJoJnQUFdJ4YZ9kGUck%252Fuploads%252FIqk5uhocmr5nR2ENK8Jp%252FIMG_5001%2520%281%29.jpg%3Falt%3Dmedia%26token%3Df4f06968-c8bd-42f7-ab78-92bb0de4e442&width=300&dpr=2&quality=100&sign=d8ebcc77&sv=2',
     shortBio:
       'Francis leads the User Profile & Community team, driving the roadmap for member profiles and engagement tools. He mentors designers and developers through discovery → delivery, sets clear acceptance criteria, and uses lightweight KPIs to track onboarding, engagement, and feature adoption. With an M.S. in Engineering Management focused on data engineering, he bridges technical depth with product strategy for SaaS/community platforms',
     fullBio:
