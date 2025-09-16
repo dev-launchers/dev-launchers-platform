@@ -185,7 +185,7 @@ const teamMembers = {
     contact: 'francis.a@devlaunchers.com',
   },
 
-  'thomas-narendra': {
+  'thejas-narendra': {
     name: 'Thejas Narendra',
     title: 'Product Manager; Dev Recruit',
     image:
@@ -248,7 +248,7 @@ export default function TeamMembers() {
       {Object.entries(teamMembers).map(([key, member]) => (
         <section key={key} className="max-w-4xl py-8 px-4 md:px-8">
           {/* Member Image */}
-          <div className="flex justify-start pb-8">
+          <div className="flex justify-start pb-8" id={key}>
             <Image
               src={member.image}
               alt={member.name}
