@@ -80,11 +80,16 @@ const IdeaForm = ({
   editMode,
   hideFormButtons = false,
   formikRef = null,
+  checkIdeaNameAvailability,
+  submissionError = '',
+  onSubmissionErrorClear = () => {},
 }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [ideaNameError, setIdeaNameError] = useState('');
+  const [isCheckingName, setIsCheckingName] = useState(false);
 
   const [isChecked, setIsChecked] = React.useState(false);
 
@@ -92,12 +97,25 @@ const IdeaForm = ({
     setIsChecked(checked);
   };
 
+  // Specifically checking for eorror in 'ideaname' field
   const isFieldCompleted = (value, error, fieldName) => {
+    if (fieldName === 'ideaName') {
+      return (
+        value &&
+        !error &&
+        focusedField !== fieldName &&
+        !ideaNameError &&
+        !submissionError
+      );
+    }
     return value && !error && focusedField !== fieldName;
   };
 
   const handleFocus = (fieldName) => {
     setFocusedField(fieldName);
+    if (fieldName === 'ideaName' && submissionError) {
+      onSubmissionErrorClear();
+    }
   };
 
   const savedData = loadFromLocalStorage();
@@ -112,10 +130,29 @@ const IdeaForm = ({
 
   const handleSubmit = (values, actions) => {
     submitHandler(values, actions);
-    if (!editMode) {
-      setSuccessMessageVisible(true);
-      actions.resetForm({ values: initialValues });
-      clearLocalStorage();
+  };
+
+  const handleIdeaNameChange = async (value, setFieldValue) => {
+    setFieldValue('ideaName', value.slice(0, 80));
+    setIdeaNameError('');
+    if (submissionError) {
+      onSubmissionErrorClear();
+    }
+
+    if (value.trim() && !editMode && checkIdeaNameAvailability) {
+      setIsCheckingName(true);
+      try {
+        const isAvailable = await checkIdeaNameAvailability(value.trim());
+        if (!isAvailable) {
+          setIdeaNameError(
+            'This idea name is already in use. Please try something else.'
+          );
+        }
+      } catch (error) {
+        console.error('Error checking idea name availability:', error);
+      } finally {
+        setIsCheckingName(false);
+      }
     }
   };
 
@@ -135,11 +172,21 @@ const IdeaForm = ({
       );
     } else {
       if (isRequired) {
+        if (fieldName === 'ideaName' && submissionError) {
+          return <ErrorText>{submissionError}</ErrorText>;
+        }
+        if (fieldName === 'ideaName' && ideaNameError) {
+          return <ErrorText>{ideaNameError}</ErrorText>;
+        }
         if (error && touched) {
           return <ErrorText>{error}</ErrorText>;
         }
       }
-      if (value && !error) {
+      if (
+        value &&
+        !error &&
+        !(fieldName === 'ideaName' && (ideaNameError || submissionError))
+      ) {
         return <SuccessText>Completed!</SuccessText>;
       }
     }
@@ -215,7 +262,11 @@ const IdeaForm = ({
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
                   <TextAreaWrapper
-                    hasError={touched.ideaName && errors.ideaName}
+                    hasError={
+                      (touched.ideaName && errors.ideaName) ||
+                      ideaNameError ||
+                      submissionError
+                    }
                     isCompleted={isFieldCompleted(
                       values.ideaName,
                       errors.ideaName,
@@ -228,15 +279,29 @@ const IdeaForm = ({
                       placeholder="Title your idea"
                       value={values.ideaName || ''}
                       onChange={(e) =>
-                        setFieldValue('ideaName', e.target.value.slice(0, 80))
+                        handleIdeaNameChange(e.target.value, setFieldValue)
                       }
                       maxLength={80}
-                      onFocus={() => setFocusedField('ideaName')}
+                      onFocus={() => handleFocus('ideaName')}
                       onBlur={(e) => {
                         handleBlur(e);
                         setFocusedField(null);
                       }}
                     />
+                    {isCheckingName && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          right: '10px',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                          fontSize: '12px',
+                          color: '#666',
+                        }}
+                      >
+                        Checking...
+                      </div>
+                    )}
                   </TextAreaWrapper>
                   {renderFieldMessage(
                     'ideaName',
@@ -652,6 +717,34 @@ const IdeaForm = ({
                             scrollToError(validationErrors);
                             return;
                           }
+
+                          // Check for idea name availability error
+                          if (ideaNameError) {
+                            const ideaNameElement = document.querySelector(
+                              '[data-field="ideaName"]'
+                            );
+                            if (ideaNameElement) {
+                              ideaNameElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                              });
+                            }
+                            return;
+                          }
+
+                          if (submissionError) {
+                            const ideaNameElement = document.querySelector(
+                              '[data-field="ideaName"]'
+                            );
+                            if (ideaNameElement) {
+                              ideaNameElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                              });
+                            }
+                            return;
+                          }
+
                           //  Updated T&C checkbox validation
                           if (!isChecked) {
                             alert(

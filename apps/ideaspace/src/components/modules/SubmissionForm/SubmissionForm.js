@@ -25,11 +25,7 @@ function SubmissionForm() {
   );
   const [urrl, setUrrl] = useState('');
 
-  const [CreateFailure, confirmFailure] = useConfirm(
-    ['Unable to register your idea.', '', ''],
-    'Please try again.',
-    ['primary', 'close']
-  );
+  const [submissionError, setSubmissionError] = useState('');
 
   const initialValues = {
     ideaName: '',
@@ -75,6 +71,39 @@ function SubmissionForm() {
     //   .required('Please select your level of involvement'),
   });
 
+  const scrollToIdeaNameField = () => {
+    setTimeout(() => {
+      const ideaNameElement = document.querySelector('[data-field="ideaName"]');
+      if (ideaNameElement) {
+        ideaNameElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center',
+        });
+      }
+    }, 100);
+  };
+
+  const checkIdeaNameAvailability = async (ideaName) => {
+    try {
+      const response = await agent.Ideas.checkAvailability(ideaName);
+
+      return response.available !== false;
+    } catch (error) {
+      console.error('Error checking idea name availability:', error);
+
+      try {
+        const allIdeas = await agent.Ideas.getAll();
+        const existingNames = allIdeas.map((idea) =>
+          idea.ideaName?.toLowerCase().trim()
+        );
+        return !existingNames.includes(ideaName.toLowerCase().trim());
+      } catch (fallbackError) {
+        console.error('Error with fallback check:', fallbackError);
+        return true;
+      }
+    }
+  };
+
   const submitHandler = async (values) => {
     values['author'] = userData.id;
     values['ideaOwner'] = userData.id;
@@ -89,20 +118,52 @@ function SubmissionForm() {
     //    values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
+    setSubmissionError('');
 
     try {
+      const isAvailable = await checkIdeaNameAvailability(values.ideaName);
+      if (!isAvailable) {
+        setSending(false);
+        setSubmissionError(
+          'This idea name is already in use. Please try something else.'
+        );
+        scrollToIdeaNameField();
+        return;
+      }
+
       const data = cleanData(await agent.Ideas.post(values));
 
       if (data.ideaName) {
         setunsavedChanges(false);
         router.push(`workshop/${data.id}`);
       } else {
-        alert('Unable to register your idea.');
+        setSending(false);
+        setSubmissionError(
+          'This idea name is already in use. Please try something else.'
+        );
+        scrollToIdeaNameField();
       }
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      confirmFailure();
+
+      if (
+        error.response &&
+        error.response.data &&
+        (error.response.data.message || '')
+          .toLowerCase()
+          .includes('already exists')
+      ) {
+        setSubmissionError(
+          'This idea name is already in use. Please try something else.'
+        );
+        scrollToIdeaNameField();
+      } else {
+        setSubmissionError(
+          'This idea name is already in use. Please try something else.'
+        );
+        scrollToIdeaNameField();
+      }
     }
   };
 
@@ -113,14 +174,12 @@ function SubmissionForm() {
   };
 
   useEffect(() => {
-    // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
 
-    // For changing route.
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         handleDialog(url);
@@ -173,7 +232,6 @@ function SubmissionForm() {
       ) : (
         <>
           <Dialog />
-          <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
@@ -182,6 +240,9 @@ function SubmissionForm() {
             editMode={false}
             formButton="submit"
             sending={sending}
+            checkIdeaNameAvailability={checkIdeaNameAvailability}
+            submissionError={submissionError}
+            onSubmissionErrorClear={() => setSubmissionError('')}
           />
         </>
       )}
