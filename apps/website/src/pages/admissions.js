@@ -166,7 +166,7 @@ export default function Admissions() {
               size="xl6"
               textAlign="center"
               textWeight="semi-bold"
-              className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text "
+              className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               Admissions & Tuition
             </atoms.Typography>
