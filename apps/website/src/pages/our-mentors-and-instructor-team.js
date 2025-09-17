@@ -225,10 +225,9 @@ export default function TeamMembers() {
             as="h1"
             variant="primary"
             size="xl6"
-            textWeight="bold"
+            textWeight="semi-bold"
             textAlign="center"
-            className="max-w-4xl pb-4 text-white"
-          >
+            className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Our Mentors & Instructor Team
           </atoms.Typography>
           <atoms.Typography
