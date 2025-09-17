@@ -18,14 +18,14 @@ const Section = ({ children, className = '', variant = 'default' }) => {
 };
 
 const SectionHeader = ({ title, subtitle, className = '' }) => (
-  <div className={`mb-12 ${className}`}>
+  <div className={`mb-10 ${className}`}>
     <atoms.Typography
       as="h2"
       variant="primary"
       size="xl5"
       textAlign="left"
       textWeight="semi-bold"
-      className="mb-8"
+      className="mb-4"
     >
       {title}
     </atoms.Typography>
@@ -39,7 +39,7 @@ const SectionHeader = ({ title, subtitle, className = '' }) => (
 
 const Card = ({ children, className = '', hover = true }) => (
   <div
-    className={`bg-black backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 ${
+    className={`bg-black backdrop-blur-sm border border-gray-700/50 rounded-xl px-6 py-8 ${
       hover ? 'transition-all duration-300 hover:border-blue-500/50 hover:bg-gray-800/70' : ''
     } ${className}`}
   >
@@ -86,9 +86,9 @@ const ProcessStep = ({ number, title, description }) => (
 
 const HighlightBox = ({ children, variant = 'info' }) => {
   const variants = {
-    info: 'bg-blue-500/10 border-blue-500/30 text-blue-200',
-    warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200',
-    success: 'bg-green-500/10 border-green-500/30 text-green-200',
+    info: 'bg-blue-500/10 border-blue-500/30 text-blue-200 mt-8',
+    warning: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-200 mt-8',
+    success: 'bg-green-500/10 border-green-500/30 text-green-200 mt-8',
   };
   return <div className={`p-6 border rounded-xl ${variants[variant]}`}>{children}</div>;
 };
@@ -179,7 +179,7 @@ export default function Admissions() {
         {/* At a Glance */}
         <Section>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <SectionHeader title="At a Glance" />
             {atAGlanceItems.map((item) => (
               <InfoCard key={item.title} {...item} />
@@ -190,8 +190,8 @@ export default function Admissions() {
         {/* Who Can Apply */}
         <Section variant="card">
           <SectionHeader title="Who Can Apply" />
-          <div className="text-center">
-            <atoms.Typography as="p" variant="secondary" size="body_lg" className="text-gray-300 mb-6">
+          <div className="text-center gap-6">
+            <atoms.Typography as="p" variant="secondary" size="body_lg" className="text-gray-300">
               We welcome learners worldwide who are interested in design, technology, and creative collaboration — from beginners and career changers to experienced professionals seeking real, project-based growth.
             </atoms.Typography>
             <HighlightBox variant="warning">
@@ -209,7 +209,7 @@ export default function Admissions() {
             {startingOptions.map((option) => (
               <Card key={option.title}>
                 <div className="text-3xl mb-4">{option.icon}</div>
-                <atoms.Typography as="h3" variant="primary" size="xl3" textWeight="bold" className="text-white mb-4">
+                <atoms.Typography as="h3" variant="primary" size="xl3" textWeight="semi-bold" className="text-white mb-4">
                   {option.title}
                 </atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_lg" className="mb-4 text-gray-400">
@@ -231,10 +231,10 @@ export default function Admissions() {
         {/* Admissions & Placement */}
         <Section variant="card">
           <SectionHeader title="Admissions (Rolling) & Placement" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
             {admissionsProcess.map((item) => (
               <Card key={item.label}>
-                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-blue-400 mb-2">
+                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className=" text-purple-400 mb-2">
                   {item.label}
                 </atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_sm" className="text-gray-400">
@@ -245,7 +245,7 @@ export default function Admissions() {
           </div>
 
           <Card hover={false} className="mb-2">
-            <atoms.Typography as="h3" variant="primary" size="xl4" textWeight="bold" className="text-white mb-4">
+            <atoms.Typography as="h3" variant="primary" size="xl4" textWeight="semi-bold" className="text-white mb-4">
               What happens after you apply
             </atoms.Typography>
             <div className="flex flex-col gap-4">
@@ -263,7 +263,7 @@ export default function Admissions() {
             {requirements.map((req) => (
               <Card key={req.title}>
                 <div className="text-2xl mb-3">{req.icon}</div>
-                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-white mb-3">
+                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className="text-white mb-3">
                   {req.title}
                 </atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400">
@@ -290,7 +290,7 @@ export default function Admissions() {
                     {index + 1}
                   </div>
                   <div>
-                    <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-white mb-2">
+                    <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className="text-white mb-2">
                       {criteria.title}
                     </atoms.Typography>
                     <atoms.Typography as="p" variant="secondary" size="body_sm" className="text-gray-400">
@@ -301,14 +301,15 @@ export default function Admissions() {
               </Card>
             ))}
           </div>
-           {/* Simple meta */}
+          
+          {/* Cohort Metric Cards*/}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <Card hover={false} className="mb-2">
-              <atoms.Typography as="p" variant="primary" size="xl3" textWeight="bold" className="text-blue-400">10–50</atoms.Typography>
+              <atoms.Typography as="p" variant="primary" size="xl3" textWeight="semi-bold" className="text-blue-400">10–50</atoms.Typography>
               <atoms.Typography as="p" variant="secondary" size="body_sm" className="text-gray-400">Typical cohort size</atoms.Typography>
             </Card>
             <Card hover={false} className="mb-2">
-              <atoms.Typography as="p" variant="primary" size="xl3" textWeight="bold" className="text-purple-400">34</atoms.Typography>
+              <atoms.Typography as="p" variant="primary" size="xl3" textWeight="semi-bold" className="text-purple-400">34</atoms.Typography>
               <atoms.Typography as="p" variant="secondary" size="body_sm" className="text-gray-400">Current Q3</atoms.Typography>
             </Card>
           </div>
@@ -318,7 +319,7 @@ export default function Admissions() {
         <Section variant="card">
           <SectionHeader title="Tuition & Fees" />
           <Card hover={false} className="text-center mb-4">
-            <atoms.Typography as="p" variant="primary" size="xl5" textWeight="bold" className="text-green-400 mb-2">
+            <atoms.Typography as="p" variant="primary" size="xl5" textWeight="semi-bold" className="text-green-400 mb-2">
               $0 Tuition
             </atoms.Typography>
             <atoms.Typography as="p" variant="secondary" size="body_lg" className="text-gray-400 mb-6">
@@ -326,14 +327,13 @@ export default function Admissions() {
             </atoms.Typography>
 
           </Card>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               <Card hover={false} className="text-center">
-                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-white mb-2">Funding</atoms.Typography>
+                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className="text-white mb-2">Funding</atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400">Donations, grants, and volunteer time.</atoms.Typography>
               </Card>
               <Card hover={false} className="text-center">
-                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-white mb-2">Use</atoms.Typography>
+                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className="text-white mb-2">Use</atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400">Educational and portfolio — non‑commercial.</atoms.Typography>
               </Card>
             </div>
@@ -347,7 +347,7 @@ export default function Admissions() {
             {includedItems.map((item) => (
               <Card key={item.title}>
                 <div className="text-2xl mb-3">{item.icon}</div>
-                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="bold" className="text-white mb-2">
+                <atoms.Typography as="h4" variant="primary" size="xl2" textWeight="semi-bold" className="text-white mb-2">
                   {item.title}
                 </atoms.Typography>
                 <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400">
@@ -366,7 +366,7 @@ export default function Admissions() {
               <Card key={step.title}>
                 <ProcessStep number={index + 1} title={step.title} description={step.description} />
                 {index === 1 && (
-                  <div className="mt-4 px-8 flex flex-wrap gap-3">
+                  <div className="pt-6 px-8 flex flex-wrap gap-6">
                     <atoms.Button     mode="dark" type="secondary"iconPosition="undefined" as="a" href="https://devlaunchers.org/join/second ">
                       Join Talent Network
                     </atoms.Button>
@@ -379,7 +379,7 @@ export default function Admissions() {
               </Card>
             ))}
           </div>
-          <div className="py-6 text-center">
+          <div className="mt-6 py-6 text-center">
             <atoms.Typography as="p" variant="secondary" size="body_md" className="text-grey-400">
               Questions? Contact us at <a href="mailto:contact@devlaunchers.com" className="underline text-purple-400">contact@devlaunchers.com</a>
             </atoms.Typography>
