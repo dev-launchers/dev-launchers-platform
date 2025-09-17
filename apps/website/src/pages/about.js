@@ -16,9 +16,9 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
-              className="max-w-4xl pb-4 text-white"
+              className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               Our Mission
             </atoms.Typography>
@@ -42,7 +42,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-4"
             >
@@ -78,7 +78,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-10"
             >
@@ -92,7 +92,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -117,7 +117,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -141,7 +141,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -165,7 +165,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -193,7 +193,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-10"
             >
@@ -223,7 +223,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -247,7 +247,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -271,7 +271,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -296,7 +296,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -320,7 +320,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -344,7 +344,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -371,7 +371,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-10"
             >
@@ -416,7 +416,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-10"
             >
@@ -430,7 +430,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -457,7 +457,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -485,7 +485,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -519,7 +519,7 @@ export default function About() {
               as="h1"
               variant="primary"
               size="xl6"
-              textWeight="bold"
+              textWeight="semi-bold"
               textAlign="center"
               className="max-w-7xl pb-10"
             >
@@ -545,7 +545,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -567,7 +567,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -589,7 +589,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -611,7 +611,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -633,7 +633,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >
@@ -655,7 +655,7 @@ export default function About() {
                 as="h3"
                 variant="primary"
                 size="xl3"
-                textWeight="semibold"
+                textWeight="semi-bold"
                 textAlign="left"
                 className="text-white"
               >

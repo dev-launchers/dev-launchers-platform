@@ -10,7 +10,7 @@ const Icon = ({ children, className = "" }) => (
 );
 
 const Card = ({ children, className = "" }) => (
-  <div className={`bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 ${className}`}>
+  <div className={`bg-black backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 ${className}`}>
     {children}
   </div>
 );
@@ -51,21 +51,16 @@ export default function HowWeWork() {
       <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
         {/* Hero Section */}
         <section className="relative py-32 px-4 md:px-8 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
-          <div className="relative max-w-7xl mx-auto">
+          <div className="absolute inset-0 bg-black"></div>
+          <div className="relative max-w-5xl mx-auto">
             <div className="flex flex-col justify-center items-center text-center">
-              <div className="mb-8">
-                <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-300 text-sm font-medium">
-                  🚀 Remote-First Learning Community
-                </div>
-              </div>
               <atoms.Typography
                 as="h1"
                 variant="primary"
                 size="xl6"
-                textWeight="bold"
+                textWeight="semi-bold"
                 textAlign="center"
-                className="max-w-4xl pb-6 text-white bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent"
+              className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
               >
                 How We Work
               </atoms.Typography>
@@ -74,7 +69,7 @@ export default function HowWeWork() {
                 variant="secondary"
                 size="body_lg"
                 textAlign="center"
-                className="max-w-3xl text-gray-300 leading-relaxed"
+                className="max-w-4xl text-gray-400 leading-relaxed"
               >
                 Dev Launchers is a remote, mentor-led community where you learn by
                 shipping. We organize around product teams, run 4-week sprints,
@@ -88,13 +83,13 @@ export default function HowWeWork() {
 
         {/* Org Structure & Process */}
         <section className="py-24 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <atoms.Typography
                 as="h2"
                 variant="primary"
-                size="xl4"
-                textWeight="semibold"
+                size="xl5"
+                textWeight="semi-bold"
                 textAlign="center"
                 className="mb-4"
               >
@@ -105,9 +100,18 @@ export default function HowWeWork() {
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card>
-                <div className="flex items-center mb-4">
+                <div className="flex items-center mb-6">
                   <Icon>🏗️</Icon>
-                  <h3 className="text-xl font-semibold text-white ml-4">Organizational Structure</h3>
+                  <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl2"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4"
+                  >
+                    Organizational Structure
+                  </atoms.Typography>
                 </div>
                 <div className="space-y-3 text-gray-300">
                   <div className="flex items-center">
@@ -132,7 +136,16 @@ export default function HowWeWork() {
               <Card>
                 <div className="flex items-center mb-4">
                   <Icon>⚡</Icon>
-                  <h3 className="text-xl font-semibold text-white ml-4">How We Operate</h3>
+                  <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl2"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4"
+                  >
+                    How We Operate
+                  </atoms.Typography>
                 </div>
                 <div className="space-y-3 text-gray-300">
                   <div className="flex items-center">
@@ -159,7 +172,16 @@ export default function HowWeWork() {
               <Card>
                 <div className="flex items-center mb-4">
                   <Icon>✅</Icon>
-                  <h3 className="text-lg font-semibold text-white ml-3">Definition of Done</h3>
+                  <atoms.Typography
+                    as="h3"
+                    variant="secondary"
+                    size="body_lg"
+                    textWeight="bold"
+                    textAlign="center"
+                    className="px-4"
+                  >
+                    Definition of Done
+                  </atoms.Typography>
                 </div>
                 <p className="text-gray-300 text-sm">Clear acceptance criteria, accessibility checks, code/design review, and brief documentation.</p>
               </Card>
@@ -167,7 +189,16 @@ export default function HowWeWork() {
               <Card>
                 <div className="flex items-center mb-4">
                   <Icon>🤝</Icon>
-                  <h3 className="text-lg font-semibold text-white ml-3">Design ↔ Dev Handshake</h3>
+                  <atoms.Typography
+                    as="h3"
+                    variant="secondary"
+                    size="body_lg"
+                    textWeight="bold"
+                    textAlign="center"
+                    className="px-4"
+                  >
+                    Design ↔ Dev Handshake
+                  </atoms.Typography>
                 </div>
                 <p className="text-gray-300 text-sm">Design provides components and tokens in Figma. Dev implements with React/TypeScript and documents in Storybook.</p>
               </Card>
@@ -175,22 +206,32 @@ export default function HowWeWork() {
               <Card>
                 <div className="flex items-center mb-4">
                   <Icon>🔬</Icon>
-                  <h3 className="text-lg font-semibold text-white ml-3">Research Integration</h3>
+                  <atoms.Typography
+                    as="h3"
+                    variant="secondary"
+                    size="body_lg"
+                    textWeight="bold"
+                    textAlign="center"
+                    className="px-4"
+                  >
+                    Research Integration
+                  </atoms.Typography>
                 </div>
                 <p className="text-gray-300 text-sm">Research produces actionable readouts that become backlog items for product development.</p>
               </Card>
             </div>
           </div>
         </section>
+        
         {/* Sprint Rhythm */}
         <section className="py-24 px-4 md:px-8 bg-gray-900/30">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <atoms.Typography
                 as="h2"
                 variant="primary"
-                size="xl4"
-                textWeight="semibold"
+                size="xl5"
+                textWeight="semi-bold"
                 textAlign="center"
                 className="mb-4"
               >
@@ -250,13 +291,13 @@ export default function HowWeWork() {
         </section>
         {/* Tech Stack */}
         <section className="py-24 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <atoms.Typography
                 as="h2"
                 variant="primary"
-                size="xl4"
-                textWeight="semibold"
+                size="xl5"
+                textWeight="semi-bold"
                 textAlign="center"
                 className="mb-4"
               >
@@ -322,15 +363,16 @@ export default function HowWeWork() {
             </div>
           </div>
         </section>
+        
         {/* Comprehensive Curriculum Section */}
         <section className="py-24 px-4 md:px-8 bg-gray-900/30">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <atoms.Typography
                 as="h2"
                 variant="primary"
-                size="xl4"
-                textWeight="semibold"
+                size="xl5"
+                textWeight="semi-bold"
                 textAlign="center"
                 className="mb-4"
               >
@@ -345,7 +387,16 @@ export default function HowWeWork() {
 
             {/* Learning Pathways */}
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">Learning Pathways</h3>
+              <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4 mb-8"
+              >
+                Learning Pathways
+              </atoms.Typography>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Card className="text-center">
                   <div className="flex justify-center mb-4">
@@ -411,7 +462,16 @@ export default function HowWeWork() {
 
             {/* Learning Stages */}
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">Learning Stages</h3>
+              <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4 mb-8"
+              >
+                Learning Stages
+              </atoms.Typography>
               <div className="grid md:grid-cols-3 gap-8">
                 <Card>
                   <div className="flex items-center mb-4">
@@ -465,7 +525,16 @@ export default function HowWeWork() {
 
             {/* Learning Methods */}
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-white text-center mb-12">How Learning Happens</h3>
+              <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4 mb-8"
+              >
+                How Learning Happens
+              </atoms.Typography>
               <div className="grid md:grid-cols-2 gap-8">
                 <Card>
                   <div className="flex items-center mb-4">
@@ -503,8 +572,17 @@ export default function HowWeWork() {
 
             {/* Assessment & Progress */}
             <div className="text-center">
-              <Card className="max-w-4xl mx-auto">
-                <h3 className="text-2xl font-bold text-white mb-6">Assessment & Progress Tracking</h3>
+              <Card className=" mx-auto">
+                <atoms.Typography
+                    as="h3"
+                    variant="primary"
+                    size="xl3"
+                    textWeight="semi-bold"
+                    textAlign="center"
+                    className="px-4 py-4 mb-8"
+              >
+                Assessment & Progress Tracking
+              </atoms.Typography>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl mx-auto mb-4">
@@ -528,10 +606,10 @@ export default function HowWeWork() {
                     <p className="text-gray-300 text-sm">Regular feedback from mentors and peers through code reviews and critiques.</p>
                   </div>
                 </div>
-                <div className="mt-8">
-                  <Link href="/curriculum" className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-                    View Full Curriculum Details →
-                  </Link>
+                <div className="my-8 flex mx-auto align-center justify-center">
+                  <atoms.Typography as="p" variant="secondary" size="body_md" className="text-grey-400">
+                    <a href="https://devlaunchers.org/curriculum" className="underline text-purple-400">View Full Curriculum Details →</a>
+                  </atoms.Typography>
                 </div>
               </Card>
             </div>
@@ -539,13 +617,13 @@ export default function HowWeWork() {
         </section>
         {/* What to Expect When You Join */}
         <section className="py-24 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
               <atoms.Typography
                 as="h2"
                 variant="primary"
-                size="xl4"
-                textWeight="semibold"
+                size="xl5"
+                textWeight="semi-bold"
                 textAlign="center"
                 className="mb-4"
               >
@@ -602,20 +680,21 @@ export default function HowWeWork() {
 
             {/* Call to Action */}
             <div className="mt-16 text-center">
-              <Card className="max-w-4xl mx-auto bg-gradient-to-r from-blue-900/50 to-purple-900/50 border-blue-500/30">
-                <h3 className="text-2xl font-bold text-white mb-4">Ready to Start Your Journey?</h3>
-                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                  Join a community of learners building real products while developing industry-relevant skills. 
-                  Our mentor-led approach ensures you get the guidance and experience needed to advance your career.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/join" className="inline-flex items-center px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300">
-                    Apply Now →
-                  </Link>
-                  <Link href="/curriculum" className="inline-flex items-center px-8 py-3 border border-gray-600 text-white font-semibold rounded-lg hover:border-gray-500 hover:bg-gray-800/50 transition-all duration-300">
-                    View Curriculum
-                  </Link>
-                </div>
+              <Card className=" mx-auto gap-4 justify-center align-center">
+                <atoms.Typography as="h2" variant="secondary" size="xl3" className="text-white py-4" textWeight="semi-bold">
+                  Ready to Start Your Journey?
+                </atoms.Typography>
+                <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400 max-w-xl">
+                  Join a community of learners building real products while developing industry-relevant skills. Our mentor-led approach ensures you get the guidance and experience needed to advance your career.
+                </atoms.Typography>
+                <div className="py-6  mx-auto flex flex-wrap gap-3">
+                    <atoms.Button     mode="dark" type="secondary"iconPosition="undefined" as="a" href="https://devlaunchers.org/join/second ">
+                      Join Talent Network
+                    </atoms.Button>
+                    <atoms.Button     mode="dark" type="Primary" iconPosition="undefined" as="a" href=" https://devlaunchers.org/join">
+                      Open Roles
+                    </atoms.Button>
+                  </div>
               </Card>
             </div>
           </div>
