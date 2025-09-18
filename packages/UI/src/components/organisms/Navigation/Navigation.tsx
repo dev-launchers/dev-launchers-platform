@@ -40,7 +40,7 @@ const styles = {
   // Mobile menu styles
   mobileMenu:
     'fixed inset-y-0 right-0 z-50 w-64 transform bg-[#1C1C1C] p-6 shadow-lg transition-transform duration-300 ease-in-out lg:hidden',
-  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white',
+  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white cursor-pointer',
 
   // Profile styles
   profileContainer: 'flex items-center gap-2 text-white',
@@ -450,9 +450,20 @@ const Navigation = () => {
           </button>
         </div>
         <div className="mt-8 flex flex-col gap-4">
-          <Link href="/about">
-            <p className={styles.mobileMenuItem}>About Us</p>
-          </Link>
+          <MobileDropdown
+            title="About Us"
+            items={[
+              { label: 'About Us', href: '/about' },
+              {
+                label: 'Our Mentors and Instructor Team',
+                href: '/our-mentors-and-instructor-team',
+              },
+              { label: 'How We Work', href: '/how-we-work' },
+              { label: 'Our Projects', href: '/our-projects' },
+              { label: 'Admission & Tuition', href: '/admissions' },
+              { label: 'Curriculum', href: '/curriculum' },
+            ]}
+          />
           <MobileDropdown
             title="Collaborate"
             items={[
@@ -460,17 +471,6 @@ const Navigation = () => {
               { label: 'Join Team', href: '/join' },
               { label: 'Dream with IdeaSpace', href: '/ideaspace' },
               { label: 'Partner with Us', href: '/support-us#partner' },
-            ]}
-          />
-          <MobileDropdown
-            title="Our Projects"
-            items={[
-              { label: 'Dev Recruit', href: '/projects/dev-recruit' },
-              { label: 'IdeaSpace', href: '/projects/DL-IdeaSpace' },
-              { label: 'Universal Design', href: '/projects/universal-design' },
-              { label: 'Platform', href: '/projects/platform' },
-              { label: 'User Profile', href: '/projects/user-profile' },
-              { label: 'AI Ally', href: '/projects/ai-ally' },
             ]}
           />
           <Link href="/resources">
