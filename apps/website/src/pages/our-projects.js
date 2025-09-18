@@ -263,12 +263,12 @@ export default function OurProjects() {
               className="max-w-3xl pb-8 text-gray-500"
             >
               <span className="font-bold">Mentor: </span>
-              <Link
+              <a
                 href="/our-mentors-and-instructor-team#alina-ulybina"
-                className="text-blue-600 underline"
+                className="underline text-blue-600"
               >
                 Alina Ulybina — Product Owner &amp; Lead Designer
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
@@ -341,12 +341,12 @@ export default function OurProjects() {
               className="max-w-3xl pb-8 text-gray-500"
             >
               <span className="font-bold">Mentor: </span>
-              <Link
+              <a
                 href="/our-mentors-and-instructor-team#thejas-narendra"
-                className="text-blue-600 underline"
+                className="underline text-blue-600"
               >
                 Thejas Narendra — Product Manager
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
@@ -416,15 +416,15 @@ export default function OurProjects() {
               variant="secondary"
               size="body_lg"
               textAlign="center"
-              className="max-w-3xl pb-8 text-gray-500"
+              //className="max-w-3xl pb-8 text-gray-500"
             >
               <span className="font-bold">Mentor: </span>
-              <Link
+              <a
                 href="/our-mentors-and-instructor-team#anna-isaacks"
-                className="text-blue-600 underline"
+                className="underline text-blue-600"
               >
                 Anna Isaacks — Director of Design & UDS Product Owner
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
@@ -495,28 +495,28 @@ export default function OurProjects() {
               <div className="max-w-4xl text-gray-500 pb-8">
                 <ul className="list-disc pl-6">
                   <li>
-                    <Link
+                    <a
                       href="/our-mentors-and-instructor-team#anna-isaacks"
                       className="text-blue-600 underline"
                     >
                       Design Systems: Anna Isaacks
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link
+                    <a
                       href="/our-mentors-and-instructor-team#dave-bradham"
                       className="text-blue-600 underline"
                     >
                       Development: Dave Bradham
-                    </Link>
+                    </a>
                   </li>
                   <li>
-                    <Link
+                    <a
                       href="/our-mentors-and-instructor-team#rijul-saxena"
                       className="text-blue-600 underline"
                     >
                       Research: Rijul Saxena
-                    </Link>
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -588,12 +588,12 @@ export default function OurProjects() {
               className="max-w-3xl pb-8 text-gray-500"
             >
               <span className="font-bold">Mentor: </span>
-              <Link
+              <a
                 href="/our-mentors-and-instructor-team#francis-anigbogu"
                 className="text-blue-600 underline"
               >
                 Francis Anigbogu — Product Manager
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
@@ -649,9 +649,9 @@ export default function OurProjects() {
               <span className="font-bold">
                 → See role outcomes and weekly rhythm on{' '}
               </span>
-              <Link href="/curriculum" className="text-blue-600 underline">
+              <a href="/curriculum" className="text-blue-600 underline">
                 Curriculum
-              </Link>
+              </a>
             </atoms.Typography>
 
             <atoms.Typography
@@ -662,12 +662,12 @@ export default function OurProjects() {
               className="max-w-3xl pb-8 text-gray-500"
             >
               <span className="font-bold">Mentor: </span>
-              <Link
+              <a
                 href="/our-mentors-and-instructor-team#francis-anigbogu"
                 className="text-blue-600 underline"
               >
                 Francis Anigbogu — Product Manager
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
@@ -713,9 +713,9 @@ export default function OurProjects() {
               <span className="font-bold">
                 → See role outcomes and weekly rhythm on{' '}
               </span>
-              <Link href="/curriculum" className="text-blue-600 underline">
+              <a href="/curriculum" className="text-blue-600 underline">
                 Curriculum
-              </Link>
+              </a>
             </atoms.Typography>
           </div>
         </section>
