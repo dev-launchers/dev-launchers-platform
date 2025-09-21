@@ -35,7 +35,6 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
-    //involveLevel: '',
     status: '',
   };
 
@@ -66,9 +65,6 @@ function SubmissionForm() {
     tagline: Yup.string()
       .trim()
       .max(80, 'Tagline must be at most 80 characters'),
-    // involveLevel: Yup.string()
-    //   .nullable()
-    //   .required('Please select your level of involvement'),
   });
 
   const scrollToIdeaNameField = () => {
@@ -115,7 +111,6 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
-    //    values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
     setSubmissionError('');
