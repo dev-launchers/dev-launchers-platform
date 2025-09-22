@@ -18,6 +18,9 @@ export default function SkillsPage() {
   // Local state to manage the list of user skills
   const [skillList, setSkillList] = useState(onboardingData.user.interest);
 
+  // checks if dropdown is open
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   /**
    * Handles toggling the selection of an interest.
    *
@@ -70,6 +73,39 @@ export default function SkillsPage() {
     return newList;
   }
 
+  // thanks to David Jaja: https://www.freecodecamp.org/news/build-a-dynamic-dropdown-component/
+
+  const Dropdown = (skillList, setIsDropdownOpen, isDropdownOpen) => {
+    const toggleDropdown = () => {
+      setIsDropdownOpen(true);
+    };
+
+    return (
+      <div>
+        <button className="px-4 w-full py-2 flex items-center justify-between rounded border border-[#828FA340] hover:border-primary cursor-pointer relative">
+          <span className="block">
+            <FiChevronDown color="#635FC7" size={24} />
+          </span>
+          {/* Conditionally render the dropdown menu */}
+          {isDropdownOpen && (
+            <div className="absolute bottom-full translate-x-9  left-full translate-y-full rounded bg-[#20212c] w-max">
+              <ul className="flex flex-col p-2">
+                {skillList.map((skill) => (
+                  <li
+                    key={skill.id}
+                    className={`flex items-center gap-2 p-4 hover:bg-[#2b2c37] rounded transition-all duration-200 `}
+                  >
+                    <span>{skill.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </button>
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col gap-11">
       {/* Header section */}
@@ -81,6 +117,16 @@ export default function SkillsPage() {
         <Typography className="m-0" type="p">
           Select up to 5 skills that you want to showcase on your profile
         </Typography>
+      </div>
+
+      <div className="flex justify-center">
+        <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
+          <Dropdown
+            skillList={skillList}
+            isDropdownOpen={isDropdownOpen}
+            setIsDropdownOpen={setIsDropdownOpen}
+          />
+        </div>
       </div>
 
       {/* Interest selection grid */}
