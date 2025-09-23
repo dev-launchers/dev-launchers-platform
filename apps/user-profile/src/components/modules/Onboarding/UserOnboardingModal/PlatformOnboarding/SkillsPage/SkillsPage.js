@@ -132,6 +132,11 @@ export default function SkillsPage() {
   }
 
   function ChosenList({ chosenSkillList, setChosenSkillList }) {
+    function handleRemove(id) {
+      setChosenSkillList((chosenSkillList) =>
+        chosenSkillList.filter((skill) => skill.id !== id)
+      );
+    }
     return (
       <div className="mt-4 p-2 shadow-sm bg-[#828fa318] rounded">
         {/* <h2 className="px-2 my-3 font-bold">Assigned list:</h2> */}
@@ -140,6 +145,7 @@ export default function SkillsPage() {
             <div
               key={skill.id}
               className="flex items-center gap-1 w-[47.5%] p-2 hover:bg-[#20212c] rounded transition-all duration-200"
+              onClick={() => handleRemove(skill.id)}
             >
               <span>{index + 1}.</span>
               <span>{skill.name}</span>
