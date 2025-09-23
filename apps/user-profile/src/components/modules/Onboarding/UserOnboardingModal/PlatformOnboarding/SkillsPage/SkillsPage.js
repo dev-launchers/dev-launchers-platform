@@ -131,6 +131,28 @@ export default function SkillsPage() {
     });
   }
 
+  function ChosenList({ chosenSkillList, setChosenSkillList }) {
+    return (
+      <div className="mt-4 p-2 shadow-sm bg-[#828fa318] rounded">
+        {/* <h2 className="px-2 my-3 font-bold">Assigned list:</h2> */}
+        <div className="flex flex-wrap gap-4">
+          {chosenSkillList?.map((skill, index) => (
+            <div
+              key={skill.id}
+              className="flex items-center gap-1 w-[47.5%] p-2 hover:bg-[#20212c] rounded transition-all duration-200"
+            >
+              <span>{index + 1}.</span>
+              <span>{skill.name}</span>
+              <span className="ml-auto cursor-pointer p-1 hover:bg-[#2b2c37] rounded-full">
+                <FaXmark />
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-11">
       {/* Header section */}
@@ -150,6 +172,10 @@ export default function SkillsPage() {
             skillList={skillList}
             isDropdownOpen={isDropdownOpen}
             setIsDropdownOpen={setIsDropdownOpen}
+            chosenSkillList={chosenSkillList}
+            setChosenSkillList={setChosenSkillList}
+          />
+          <ChosenList
             chosenSkillList={chosenSkillList}
             setChosenSkillList={setChosenSkillList}
           />
