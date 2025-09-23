@@ -21,6 +21,9 @@ export default function SkillsPage() {
   // checks if dropdown is open
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  // manages the skills that the user has selected
+  const [chosenSkillList, setChosenSkillList] = useState([]);
+
   /**
    * Handles toggling the selection of an interest.
    *
@@ -75,7 +78,13 @@ export default function SkillsPage() {
 
   // thanks to David Jaja: https://www.freecodecamp.org/news/build-a-dynamic-dropdown-component/
 
-  const Dropdown = (skillList, setIsDropdownOpen, isDropdownOpen) => {
+  const Dropdown = (
+    skillList,
+    setIsDropdownOpen,
+    isDropdownOpen,
+    chosenSkillList,
+    setChosenSkillList
+  ) => {
     const toggleDropdown = () => {
       setIsDropdownOpen(true);
     };
@@ -93,8 +102,10 @@ export default function SkillsPage() {
                 {skillList.map((skill) => (
                   <li
                     key={skill.id}
-                    className={`flex items-center gap-2 p-4 hover:bg-[#2b2c37] rounded transition-all duration-200 `}
+                    className={`flex items-center gap-2 p-4 hover:bg-[#2b2c37] rounded transition-all duration-200`}
+                    onClick={() => handleChoose(skill)}
                   >
+                    {chosenSkillList.includes(skill) && <FiCheck />}
                     <span>{skill.name}</span>
                   </li>
                 ))}
@@ -105,6 +116,20 @@ export default function SkillsPage() {
       </div>
     );
   };
+
+  function handleChoose(skill) {
+    setChosenSkillList((prevList) => {
+      // Check if the skill already exists in the list
+      if (prevList.includes(skill)) {
+        // If skill exists, remove it from the list
+        const updatedList = prevList.filter((item) => item !== skill);
+        return updatedList;
+      } else {
+        // If skill doesn't exist, add it to the list
+        return [...prevList, skill];
+      }
+    });
+  }
 
   return (
     <div className="flex flex-col gap-11">
@@ -125,6 +150,8 @@ export default function SkillsPage() {
             skillList={skillList}
             isDropdownOpen={isDropdownOpen}
             setIsDropdownOpen={setIsDropdownOpen}
+            chosenSkillList={chosenSkillList}
+            setChosenSkillList={setChosenSkillList}
           />
         </div>
       </div>
