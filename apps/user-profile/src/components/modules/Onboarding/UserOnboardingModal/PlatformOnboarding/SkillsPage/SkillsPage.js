@@ -1,7 +1,7 @@
 import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import { onboardingActions } from '../../../../../../state/actions';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /**
  * SkillsPage (formerly PageSix) Component
@@ -23,6 +23,9 @@ export default function SkillsPage() {
 
   // manages the skills that the user has selected
   const [chosenSkillList, setChosenSkillList] = useState([]);
+
+  // select an element using a hook; the purpose is to allow the user to close the dropdown by clicking outside of it
+  const dropdownContainerRef = useRef(null);
 
   /**
    * Handles toggling the selection of an interest.
@@ -88,6 +91,10 @@ export default function SkillsPage() {
     const toggleDropdown = () => {
       setIsDropdownOpen(true);
     };
+
+    useClickOutside(dropdownContainerRef, () => {
+      setIsDropdownOpen(false);
+    });
 
     return (
       <div>
@@ -159,6 +166,28 @@ export default function SkillsPage() {
     );
   }
 
+  const useClickOutside = (ref, handler) => {
+    // console.log(handler, ref);
+    useEffect(() => {
+      const listener = (event) => {
+        // Do nothing if clicking ref's element or descendent elements
+        if (!ref.current || ref.current.contains(event.target)) {
+          return;
+        }
+
+        handler(event);
+      };
+
+      document.addEventListener('mousedown', listener);
+      document.addEventListener('touchstart', listener);
+
+      return () => {
+        document.removeEventListener('mousedown', listener);
+        document.removeEventListener('touchstart', listener);
+      };
+    }, [ref, handler]);
+  };
+
   return (
     <div className="flex flex-col gap-11">
       {/* Header section */}
@@ -173,7 +202,10 @@ export default function SkillsPage() {
       </div>
 
       <div className="flex justify-center">
-        <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
+        <div
+          className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto"
+          ref={dropdownContainerRef}
+        >
           <Dropdown
             skillList={skillList}
             isDropdownOpen={isDropdownOpen}
