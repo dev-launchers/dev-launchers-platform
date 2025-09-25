@@ -671,7 +671,7 @@ export default function Resources() {
               real world applications
             </atoms.Typography>
             <div className="flex pt-6">
-              <atoms.Button className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4">
+              <atoms.Button type="primary" color="nebula">
                 Join Today
               </atoms.Button>
             </div>

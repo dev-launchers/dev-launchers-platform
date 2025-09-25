@@ -40,7 +40,7 @@ const styles = {
   // Mobile menu styles
   mobileMenu:
     'fixed inset-y-0 right-0 z-50 w-64 transform bg-[#1C1C1C] p-6 shadow-lg transition-transform duration-300 ease-in-out lg:hidden',
-  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white',
+  mobileMenuItem: 'block py-0 text-gray-300 hover:text-white cursor-pointer',
 
   // Profile styles
   profileContainer: 'flex items-center gap-2 text-white',
@@ -321,9 +321,46 @@ const Navigation = () => {
       </div>
 
       <div className={styles.desktopNav}>
-        <Link href="/about">
-          <p className={styles.navItem}>About Us</p>
-        </Link>
+        <DropdownMenu
+          trigger="About Us"
+          items={[
+            {
+              title: 'About US',
+              description: 'Our story & mission.',
+              href: '/about',
+            },
+            {
+              title: 'Our Mentors and Instructor Team',
+              description:
+                'Our mentors lead instruction by guiding members through real projects and assignments aligned to their Product Team and Department.',
+              href: '/our-mentors-and-instructor-team',
+            },
+            {
+              title: 'How We Work',
+              description:
+                'Remote, mentor-led, product teams shipping real features in 4-week sprints—here’s our playbook.',
+              href: '/how-we-work',
+            },
+            {
+              title: 'Our Projects',
+              description:
+                'We believe in learning by doing—inside a collaborative, supportive community. Explore the live products our members are building.',
+              href: '/our-projects',
+            },
+            {
+              title: 'Admission & Tuition',
+              description:
+                'Who can join, how placement works, time expectations.',
+              href: '/admissions',
+            },
+            {
+              title: 'Curriculum',
+              description:
+                'Learn through collaboration—mentor-led sessions, async work, and real projects with feedback tailored to your goals.',
+              href: '/curriculum',
+            },
+          ]}
+        />
         <DropdownMenu
           trigger="Collaborate"
           items={[
@@ -353,7 +390,6 @@ const Navigation = () => {
             },
           ]}
         />
-        <DropdownMenu trigger="Our Projects" items={projectItems} />
 
         <Link href="/resources">
           <p className={styles.navItem}>Resources</p>
@@ -414,9 +450,20 @@ const Navigation = () => {
           </button>
         </div>
         <div className="mt-8 flex flex-col gap-4">
-          <Link href="/about">
-            <p className={styles.mobileMenuItem}>About Us</p>
-          </Link>
+          <MobileDropdown
+            title="About Us"
+            items={[
+              { label: 'About Us', href: '/about' },
+              {
+                label: 'Our Mentors and Instructor Team',
+                href: '/our-mentors-and-instructor-team',
+              },
+              { label: 'How We Work', href: '/how-we-work' },
+              { label: 'Our Projects', href: '/our-projects' },
+              { label: 'Admission & Tuition', href: '/admissions' },
+              { label: 'Curriculum', href: '/curriculum' },
+            ]}
+          />
           <MobileDropdown
             title="Collaborate"
             items={[
@@ -424,17 +471,6 @@ const Navigation = () => {
               { label: 'Join Team', href: '/join' },
               { label: 'Dream with IdeaSpace', href: '/ideaspace' },
               { label: 'Partner with Us', href: '/support-us#partner' },
-            ]}
-          />
-          <MobileDropdown
-            title="Our Projects"
-            items={[
-              { label: 'Dev Recruit', href: '/projects/dev-recruit' },
-              { label: 'IdeaSpace', href: '/projects/DL-IdeaSpace' },
-              { label: 'Universal Design', href: '/projects/universal-design' },
-              { label: 'Platform', href: '/projects/platform' },
-              { label: 'User Profile', href: '/projects/user-profile' },
-              { label: 'AI Ally', href: '/projects/ai-ally' },
             ]}
           />
           <Link href="/resources">

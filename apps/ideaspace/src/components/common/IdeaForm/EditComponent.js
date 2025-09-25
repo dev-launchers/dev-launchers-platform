@@ -3,7 +3,13 @@ import EditIdea from '../../../../src/components/modules/EditIdea/EditIdea';
 import { atoms } from '@devlaunchers/components/src/components';
 import { X } from 'lucide-react';
 
-const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
+const EditComponent = ({
+  open,
+  onClose,
+  initialIdea,
+  onEditSuccess,
+  onEditError,
+}) => {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
   const editIdeaRef = useRef(null);
@@ -119,6 +125,12 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
     handleClose();
   };
 
+  const handleEditError = (error) => {
+    if (onEditError) {
+      onEditError(error);
+    }
+  };
+
   const isSending = editIdeaRef.current?.isSending() || false;
   return (
     <div onClick={handleClose} className={overlayClasses}>
@@ -145,6 +157,7 @@ const EditComponent = ({ open, onClose, initialIdea, onEditSuccess }) => {
               ref={editIdeaRef}
               initialIdea={initialIdea}
               onEditSuccess={handleEditSuccess}
+              onEditError={handleEditError}
             />
           )}
         </div>
