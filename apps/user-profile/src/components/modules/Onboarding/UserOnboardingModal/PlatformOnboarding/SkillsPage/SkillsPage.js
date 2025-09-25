@@ -1,7 +1,8 @@
 import { useOnboardingDataContext } from '../../../../../../context/OnboardingDataContext';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import { onboardingActions } from '../../../../../../state/actions';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowDown, Check, X } from 'lucide-react';
 
 /**
  * SkillsPage (formerly PageSix) Component
@@ -100,7 +101,7 @@ export default function SkillsPage() {
       <div>
         <button className="px-4 w-full py-2 flex items-center justify-between rounded border border-black hover:border-primary cursor-pointer relative">
           <span className="block">
-            <FiChevronDown color="#000000" size={24} />
+            <ArrowDown />
           </span>
           {/* Conditionally render the dropdown menu */}
           {isDropdownOpen && (
@@ -112,7 +113,7 @@ export default function SkillsPage() {
                     className={`flex items-center gap-2 p-4 hover:bg-brand-alt-cosmic-100 rounded transition-all duration-200`}
                     onClick={() => handleChoose(skill)}
                   >
-                    {chosenSkillList.includes(skill) && <FiCheck />}
+                    {chosenSkillList.includes(skill) && <Check />}
                     <span>{skill.name}</span>
                   </li>
                 ))}
@@ -157,7 +158,7 @@ export default function SkillsPage() {
               <span>{index + 1}.</span>
               <span>{skill.name}</span>
               <span className="ml-auto cursor-pointer p-1 hover:bg-brand-alt-cosmic-100 rounded-full">
-                <FaXmark />
+                <X />
               </span>
             </div>
           ))}
