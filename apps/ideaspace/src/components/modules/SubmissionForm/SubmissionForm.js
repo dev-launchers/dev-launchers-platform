@@ -231,7 +231,7 @@ function SubmissionForm() {
         />
       ) : (
         <>
-          <Dialog />
+          {/*<Dialog />*/}
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
