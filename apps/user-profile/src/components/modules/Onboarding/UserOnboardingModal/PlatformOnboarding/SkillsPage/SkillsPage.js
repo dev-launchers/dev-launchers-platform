@@ -98,18 +98,18 @@ export default function SkillsPage() {
 
     return (
       <div>
-        <button className="px-4 w-full py-2 flex items-center justify-between rounded border border-[#828FA340] hover:border-primary cursor-pointer relative">
+        <button className="px-4 w-full py-2 flex items-center justify-between rounded border border-black hover:border-primary cursor-pointer relative">
           <span className="block">
-            <FiChevronDown color="#635FC7" size={24} />
+            <FiChevronDown color="#000000" size={24} />
           </span>
           {/* Conditionally render the dropdown menu */}
           {isDropdownOpen && (
-            <div className="absolute bottom-full translate-x-9  left-full translate-y-full rounded bg-[#20212c] w-max">
+            <div className="absolute bottom-full translate-x-9  left-full translate-y-full rounded bg-white w-max">
               <ul className="flex flex-col p-2">
                 {skillList.map((skill) => (
                   <li
                     key={skill.id}
-                    className={`flex items-center gap-2 p-4 hover:bg-[#2b2c37] rounded transition-all duration-200`}
+                    className={`flex items-center gap-2 p-4 hover:bg-brand-alt-cosmic-100 rounded transition-all duration-200`}
                     onClick={() => handleChoose(skill)}
                   >
                     {chosenSkillList.includes(skill) && <FiCheck />}
@@ -145,18 +145,18 @@ export default function SkillsPage() {
       );
     }
     return (
-      <div className="mt-4 p-2 shadow-sm bg-[#828fa318] rounded">
+      <div className="mt-4 p-2 shadow-sm bg-white rounded">
         {/* <h2 className="px-2 my-3 font-bold">Assigned list:</h2> */}
         <div className="flex flex-wrap gap-4">
           {chosenSkillList?.map((skill, index) => (
             <div
               key={skill.id}
-              className="flex items-center gap-1 w-[47.5%] p-2 hover:bg-[#20212c] rounded transition-all duration-200"
+              className="flex items-center gap-1 w-[47.5%] p-2 hover:bg-brand-alt-cosmic-100 rounded transition-all duration-200"
               onClick={() => handleRemove(skill.id)}
             >
               <span>{index + 1}.</span>
               <span>{skill.name}</span>
-              <span className="ml-auto cursor-pointer p-1 hover:bg-[#2b2c37] rounded-full">
+              <span className="ml-auto cursor-pointer p-1 hover:bg-brand-alt-cosmic-100 rounded-full">
                 <FaXmark />
               </span>
             </div>
