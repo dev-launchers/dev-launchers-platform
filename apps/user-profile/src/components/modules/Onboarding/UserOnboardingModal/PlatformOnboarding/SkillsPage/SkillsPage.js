@@ -98,8 +98,12 @@ export default function SkillsPage() {
     });
 
     return (
-      <div>
-        <button className="px-4 w-full py-2 flex items-center justify-between rounded border border-black hover:border-primary cursor-pointer relative">
+      <div className="w-full">
+        <button
+          className="px-4 w-full py-2 flex items-center justify-between rounded border border-black bg-white hover:border-primary cursor-pointer relative"
+          onClick={toggleDropdown}
+        >
+          <p>Select from the menu</p>
           <span className="block">
             <ArrowDown />
           </span>
@@ -204,7 +208,7 @@ export default function SkillsPage() {
 
       <div className="flex justify-center">
         <div
-          className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto"
+          className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] w-3/5 max-w-[650px] overflow-auto"
           ref={dropdownContainerRef}
         >
           <Dropdown
