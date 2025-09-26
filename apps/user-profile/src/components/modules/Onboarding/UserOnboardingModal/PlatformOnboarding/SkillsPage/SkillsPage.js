@@ -29,34 +29,34 @@ export default function SkillsPage() {
   const dropdownContainerRef = useRef(null);
 
   /**
-   * Handles toggling the selection of an interest.
+   * Handles toggling the selection of a skill.
    *
-   * @param {Object} selectedInterest - The interest to toggle.
+   * @param {Object} selectedSkill - The skill to toggle.
    * @return {Function} A function to handle the click event.
    */
-  function onSelectedInterest(selectedInterest) {
+  function onSelectedSkill(selectedSkill) {
     return () => {
-      if (hasId(selectedInterest.id)) {
-        const updatedInterests = updateInterestList(selectedInterest.id);
-        setInterestList(updatedInterests); // Update local state
+      if (hasId(selectedSkill.id)) {
+        const updatedSkills = updateSkillList(selectedSkill.id);
+        setSkillList(updatedSkills); // Update local state
         dispatch({
           type: onboardingActions.SET_USERS_INTEREST,
-          data: updatedInterests, // Update context with the new interest list
+          data: updatedSkills, // Update context with the new skill list
         });
       }
     };
   }
 
   /**
-   * Checks if a given interest ID exists in the list.
+   * Checks if a given skill ID exists in the list.
    *
    * @param {String|Number} idToLookFor - The ID to search for.
    * @return {Boolean} True if the ID is found, false otherwise.
    */
   function hasId(idToLookFor) {
     let idFound = false;
-    interestList.forEach((interest) => {
-      if (interest.id == idToLookFor) {
+    skillList.forEach((skill) => {
+      if (skill.id == idToLookFor) {
         idFound = true;
       }
     });
@@ -64,17 +64,17 @@ export default function SkillsPage() {
   }
 
   /**
-   * Toggles the `selected` property for a given interest ID.
+   * Toggles the `selected` property for a given skill ID.
    *
-   * @param {String|Number} idToUpdate - The ID of the interest to update.
-   * @return {Array} The updated interest list.
+   * @param {String|Number} idToUpdate - The ID of the skill to update.
+   * @return {Array} The updated skill list.
    */
-  function updateInterestList(idToUpdate) {
-    // Create a deep copy of the interest list
-    const newList = JSON.parse(JSON.stringify(interestList));
-    newList.forEach((interest) => {
-      if (interest.id == idToUpdate) {
-        interest.selected = !interest.selected; // Toggle selection
+  function updateSkillList(idToUpdate) {
+    // Create a deep copy of the skill list
+    const newList = JSON.parse(JSON.stringify(skillList));
+    newList.forEach((skill) => {
+      if (skill.id == idToUpdate) {
+        skill.selected = !skill.selected; // Toggle selection
       }
     });
     return newList;
