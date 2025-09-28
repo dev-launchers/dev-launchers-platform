@@ -12,7 +12,6 @@ import {
   IdeaName,
   IdeaTagLine,
   BottomView,
-  Button,
   StyledText,
 } from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
@@ -29,6 +28,7 @@ import {
   PopoverContent,
 } from '@devlaunchers/components/src/components/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
+import { ImageBanner } from './ImageBanner';
 
 export const IdeaCard = ({
   ideaImage,
@@ -52,6 +52,7 @@ export const IdeaCard = ({
     ideaData &&
     ideaData.ideaOwner &&
     Number(userData.id) === Number(ideaData.ideaOwner.id);
+  const [bannerImage, setBannerImage] = useState(null);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -284,13 +285,7 @@ export const IdeaCard = ({
               </div>
             </div>
           </div>
-          <div className="w-full h-[256px] rounded-[20px] overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src="https://placehold.co/680x304"
-              alt="Idea Image"
-            />
-          </div>
+          <ImageBanner bannerImage={bannerImage} />
         </div>
         {showEditSuccess && (
           <Alert
