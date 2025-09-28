@@ -200,18 +200,27 @@ const OpportunityForm = () => {
   };
 
   const submitForm = async () => {
+    // Basic validation
+    if (
+      !formData.title ||
+      !formData.roleType ||
+      !formData.roleCategory ||
+      !formData.experienceLevel ||
+      !formData.roleDescription ||
+      formData.roleResponsibilities.length === 0 ||
+      !formData.whyJoin ||
+      formData.projects.length === 0
+    ) {
+      setSubmitError('Please fill out all required fields.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError(null);
 
     // Try to parse a numeric hours-per-week value out of the timeCommitment string.
     // If parsing fails, omit the field.
     const commitmentHoursPerWeek = Number(formData.commitmentHoursPerWeek);
-
-    const projectsPayload = {
-      data: formData.projects.map((proj) =>
-        typeof proj === 'string' ? { title: proj } : proj
-      ),
-    };
 
     const payload = {
       data: {

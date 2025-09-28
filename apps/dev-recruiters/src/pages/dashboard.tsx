@@ -46,6 +46,8 @@ const Dashboard: React.FC = () => {
       // if (!isLeader) {
       //   router.replace('/');
       // }
+    } else {
+      router.replace('/');
     }
   }, [isAuthenticated, userData]);
 
