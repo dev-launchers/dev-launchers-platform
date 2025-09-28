@@ -16,14 +16,15 @@ import { Icons } from '@devlaunchers/components/src/assets';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { Trash, Search } from 'lucide-react';
 
-export const ImageModal = ({ handleSelectImage }) => {
+export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
   const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
   const [keyword, setKeyword] = useState('a');
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [open, setOpen] = useState(isOpen);
   const handleClose = () => {
-    setShowImageModal(false);
+    setOpen(false);
+    onClose();
   };
   const getImages = async () => {
     setError(null);
@@ -42,24 +43,31 @@ export const ImageModal = ({ handleSelectImage }) => {
     setImages(data.data);
   };
   const handleSelectImageEvent = (image) => {
-    setSelectedImage(image);
     handleSelectImage(image);
   };
+  const handleBtnClick = () => {
+    setOpen(true);
+    getImages();
+  };
+  useEffect(() => {
+    if (isOpen) {
+      getImages();
+      setOpen(true);
+    }
+  }, [isOpen]);
   return (
     <div id="image-modal-container">
-      <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            mode="light"
-            type="secondary"
-            size="medium"
-            onClick={() => {
-              getImages();
-            }}
-          >
-            Select Image
-          </Button>
-        </DialogTrigger>
+      {!isOpen && (
+        <Button
+          mode="light"
+          type="secondary"
+          size="medium"
+          onClick={handleBtnClick}
+        >
+          Select Image
+        </Button>
+      )}
+      <Dialog open={open} onOpenChange={handleClose}>
         <DialogPortal>
           <DialogOverlay />
           <DialogContent hasCloseBtn={false} className="justify-start">
@@ -123,7 +131,7 @@ export const ImageModal = ({ handleSelectImage }) => {
                 {images && (
                   <div className="grid gap-2 grid-cols-3 overflow-y-auto max-h-[420px]">
                     {images.map((image) => (
-                      <div className="">
+                      <div key={image.original_url}>
                         <div
                           className="w-full h-[103px] cursor-pointer"
                           onClick={() => {

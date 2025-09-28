@@ -1,12 +1,24 @@
 // create image banner component
 import React from 'react';
 import { ImageModal } from './ImageModal';
+import { Wand2, Edit2, Trash2 } from 'lucide-react';
 
 export const ImageBanner = ({ bannerImage = null }) => {
   const [bgImage, setBgImage] = React.useState(bannerImage);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isEditImageModalOpen, setIsEditImageModalOpen] = React.useState(false);
   const handleSelectImage = (image) => {
     setBgImage(image);
     console.log(bgImage);
+  };
+  const handleDeleteImage = () => {
+    setBgImage(null);
+    // todo: delete image from database
+  };
+  const handleEditImage = () => {
+    console.log('edit image');
+    //== open image modal
+    setIsEditImageModalOpen(true);
   };
   return (
     <div className="w-full h-[304px] rounded-[16px] bg-[#494949]/5 flex flex-col items-center justify-center gap-2">
@@ -15,10 +27,38 @@ export const ImageBanner = ({ bannerImage = null }) => {
           className="w-full h-full rounded-[16px] relative group cursor-pointer bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${bgImage.original_url})` }}
         >
-          {/* Hover overlay with SVG */}
-          <div className="absolute inset-0 bg-black/50 rounded-[16px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <div></div>
+          {/* Hover overlay with menu on top right*/}
+          <div
+            className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col gap-2"
+            onMouseEnter={() => setIsMenuOpen(true)}
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
+            <div className="bg-white rounded-md shadow-lg p-2">
+              <button className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors">
+                <Wand2 size={16} />
+              </button>
+            </div>
+            {isMenuOpen && (
+              <div className="bg-white rounded-md shadow-lg p-2 flex flex-col gap-2">
+                <button className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors">
+                  <Edit2 size={16} onClick={() => handleEditImage()} />
+                </button>
+                <button
+                  className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors"
+                  onClick={() => handleDeleteImage()}
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            )}
           </div>
+          {isEditImageModalOpen && (
+            <ImageModal
+              handleSelectImage={handleSelectImage}
+              onClose={() => setIsEditImageModalOpen(false)}
+              isOpen={true}
+            />
+          )}
         </div>
       ) : (
         <>
@@ -39,8 +79,12 @@ export const ImageBanner = ({ bannerImage = null }) => {
           </svg>
           <p className="pt-4 pb-6 text-center font-normal text-[#494949] line-height-[125%]">
             Select an image to represent your Idea
-          </p>{' '}
-          <ImageModal handleSelectImage={handleSelectImage} />
+          </p>
+          <ImageModal
+            handleSelectImage={handleSelectImage}
+            onClose={() => void 0}
+            isOpen={false}
+          />
         </>
       )}
     </div>
