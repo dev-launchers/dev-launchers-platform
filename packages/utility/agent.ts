@@ -142,6 +142,9 @@ const Opportunities = {
       `opportunities/${oppId}`,
       new URLSearchParams('_publicationState=live&populate=projects')
     ),
+  post: (body: {}) => requests.post<Opportunity>('/opportunities/', body),
+  put: (id: string, body: {}) =>
+    requests.put<Opportunity>(`/opportunities/${id}`, body),
 };
 
 const Ideas = {
