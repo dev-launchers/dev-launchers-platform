@@ -48,6 +48,7 @@ const nextConfig = {
       'images.prismic.io',
       'devlaunchersproduction.blob.core.windows.net',
       'lh3.googleusercontent.com',
+      'docs.devlaunchers.org',
     ],
     disableStaticImages: true,
   },
