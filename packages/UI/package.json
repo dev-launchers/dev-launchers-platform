@@ -14,7 +14,7 @@
     "@radix-ui/react-progress": "1.0.3",
     "@radix-ui/react-switch": "1.0.3",
     "@radix-ui/react-tabs": "1.0.4",
-    "axios": "^0.30.0",
+    "axios": "^0.30.2",
     "babel-loader": "8.2.5",
     "class-variance-authority": "0.7.1",
     "clsx": "2.0.0",
