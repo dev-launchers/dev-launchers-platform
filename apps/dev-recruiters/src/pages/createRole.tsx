@@ -7,7 +7,7 @@ import { Opportunity, Project } from '@devlaunchers/models/opportunity';
 import { Skill } from '@devlaunchers/models/skill';
 import { SkillLevel } from '@devlaunchers/models';
 import { Project as NestedProject } from '@devlaunchers/models/project';
-import { connect } from 'formik';
+import { FormField } from '@devlaunchers/components/src/components/organisms';
 
 const EXPERIENCE_LEVELS = ['Beginner', 'Intermediate', 'Advanced'];
 const ROLE_RESPONSIBILITIES = [
@@ -284,7 +284,7 @@ const OpportunityForm = () => {
                 className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-400"
                 value={
                   formData.startDate
-                    ? formData.startDate.toISOString().split('T')[0]
+                    ? new Date(formData.startDate).toISOString().split('T')[0]
                     : ''
                 }
                 onChange={(e) =>
@@ -307,6 +307,17 @@ const OpportunityForm = () => {
               onChange={(e) => handleInputChange('title', e.target.value)}
             />
           </div>
+
+          {/* <FormField
+            width="100%"
+            required
+            label="Title"
+            name="title"
+            id="title"
+            placeholder="e.g. Product Manager (AI Technology)"
+            value={formData.title}
+            onChange={(e) => handleInputChange('title', e.target.value)}
+          /> */}
 
           <div>
             <label className="block text-white text-sm mb-2">Role Type *</label>
@@ -347,21 +358,25 @@ const OpportunityForm = () => {
               ))}
             </div>
           </div>
-
-          <div className="flex items-center space-x-2">
-            <input
-              type="number"
-              placeholder="e.g. 5"
-              value={formData.commitmentHoursPerWeek ?? ''}
-              onChange={(e) =>
-                handleInputChange(
-                  'commitmentHoursPerWeek',
-                  e.target.value ? Number(e.target.value) : undefined
-                )
-              }
-              className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-400"
-            />
-            <span className="text-white">hours/week</span>
+          <div>
+            <label className="block text-white text-sm mb-2">
+              Commitment Hours/Week *
+            </label>
+            <div className="flex items-center space-x-2">
+              <input
+                type="number"
+                placeholder="e.g. 5"
+                value={formData.commitmentHoursPerWeek ?? ''}
+                onChange={(e) =>
+                  handleInputChange(
+                    'commitmentHoursPerWeek',
+                    e.target.value ? Number(e.target.value) : undefined
+                  )
+                }
+                className="w-full bg-gray-800 border border-gray-600 rounded px-3 py-2 text-white placeholder-gray-400"
+              />
+              <span className="text-white">hours/week</span>
+            </div>
           </div>
         </div>
       ),
@@ -483,7 +498,7 @@ const OpportunityForm = () => {
                           return { ...prev, roleResponsibilities: updated };
                         })
                       }
-                      className="flex-1 bg-gray-700 border border-gray-600 rounded px-2 py-1 text-black text-sm"
+                      className="flex-1 bg-white border border-gray-600 rounded px-2 py-1 text-black text-sm"
                     />
                     <button
                       type="button"

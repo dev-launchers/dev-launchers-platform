@@ -42,10 +42,6 @@ const Dashboard: React.FC = () => {
       const isLeader = userData.projects?.some((project: any) =>
         project.team?.leaders?.some((leader: any) => leader.id === userData.id)
       );
-
-      // if (!isLeader) {
-      //   router.replace('/');
-      // }
     } else {
       router.replace('/');
     }
@@ -238,7 +234,7 @@ const Dashboard: React.FC = () => {
                 </div>
               </div>
             ))}
-            {activeRoles && archivedRoles.length === 0 && (
+            {activeRoles && activeRoles.length === 0 && (
               <div className="col-span-full">
                 <p>No active roles available.</p>
               </div>
@@ -275,9 +271,7 @@ const Dashboard: React.FC = () => {
                       : 'N/A'
                   }
                   onView={() => console.log('View Archived:', position)}
-                  onRepost={function (value: string): void {
-                    throw new Error('Function not implemented.');
-                  }}
+                  onRepost={() => handleRepost(position)}
                 />
                 <div className="mt-3 flex gap-2">
                   <Button onClick={() => handleEdit(position)}>

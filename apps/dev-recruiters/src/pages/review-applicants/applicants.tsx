@@ -21,9 +21,11 @@ const ReviewApplicantsByRole: React.FC = () => {
     return userProjects.flatMap((project: any) => {
       const positions = project.openPositions || [];
       return positions.map((pos: any) => ({
+        // Find a suitable way to get role title, if it's in attributes use that, else fallback to title
         title: pos?.attributes?.title ?? pos?.title ?? '',
-        projectId: String(project.id ?? project?.id ?? ''),
-        projectTitle: project.title ?? '',
+        projectId: String(project.id ?? ''),
+        // Get the title of the project for reference
+        projectTitle: project?.title ?? '',
       }));
     });
   }, [userProjects]);
