@@ -84,18 +84,14 @@ export default function SkillsPage() {
 
   const Dropdown = (
     skillList,
-    setIsDropdownOpen,
     isDropdownOpen,
+    setIsDropdownOpen,
     chosenSkillList,
     setChosenSkillList
   ) => {
     const toggleDropdown = () => {
       setIsDropdownOpen(true);
     };
-
-    useClickOutside(dropdownContainerRef, () => {
-      setIsDropdownOpen(false);
-    });
 
     return (
       <div className="w-full">
@@ -107,9 +103,8 @@ export default function SkillsPage() {
           <span className="block">
             <ArrowDown />
           </span>
-          {/* Conditionally render the dropdown menu */}
           {isDropdownOpen && (
-            <div className="absolute bottom-full translate-x-9  left-full translate-y-full rounded bg-white w-max">
+            <div className="absolute bottom-full translate-x-9 left-full translate-y-full rounded bg-white w-max">
               <ul className="flex flex-col p-2">
                 {skillList.map((skill) => (
                   <li
@@ -117,8 +112,8 @@ export default function SkillsPage() {
                     className={`flex items-center gap-2 p-4 hover:bg-brand-alt-cosmic-100 rounded transition-all duration-200`}
                     onClick={() => handleChoose(skill)}
                   >
-                    {chosenSkillList.includes(skill) && <Check />}
-                    <span>{skill.name}</span>
+                    {skill.selected && <Check />}
+                    <span>{skill.interest}</span>
                   </li>
                 ))}
               </ul>
@@ -159,8 +154,7 @@ export default function SkillsPage() {
               className="flex items-center gap-1 w-[47.5%] p-2 hover:bg-brand-alt-cosmic-100 rounded transition-all duration-200"
               onClick={() => handleRemove(skill.id)}
             >
-              <span>{index + 1}.</span>
-              <span>{skill.name}</span>
+              <span>{skill.interest}</span>
               <span className="ml-auto cursor-pointer p-1 hover:bg-brand-alt-cosmic-100 rounded-full">
                 <X />
               </span>
@@ -192,6 +186,10 @@ export default function SkillsPage() {
       };
     }, [ref, handler]);
   };
+
+  useClickOutside(dropdownContainerRef, () => {
+    setIsDropdownOpen(false);
+  });
 
   return (
     <div className="flex flex-col gap-11">
