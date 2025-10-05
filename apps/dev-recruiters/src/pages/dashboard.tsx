@@ -214,9 +214,7 @@ const Dashboard: React.FC = () => {
                   key={String(position.id ?? index)}
                   role={position.attributes.title || 'Unknown Role'}
                   department={
-                    teamNames.length > 0
-                      ? `Your Team: ${teamNames.join(', ')}`
-                      : 'Unknown Department'
+                    position.attributes.roleCategory || 'Unknown Department'
                   }
                   date={new Date().toLocaleDateString()}
                   onEdit={() => console.log('Edit:', position)}
@@ -263,13 +261,7 @@ const Dashboard: React.FC = () => {
                       ? `Your Team: ${teamNames.join(', ')}`
                       : 'Unknown Department'
                   }
-                  date={
-                    typeof position.attributes.published_at === 'string'
-                      ? position.attributes.published_at
-                      : position.attributes.published_at
-                      ? position.attributes.published_at.toISOString()
-                      : 'N/A'
-                  }
+                  date={position.attributes.published_at.toLocaleDateString()}
                   onView={() => console.log('View Archived:', position)}
                   onRepost={() => handleRepost(position)}
                 />

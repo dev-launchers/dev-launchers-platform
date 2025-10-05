@@ -22,7 +22,7 @@ const ReviewApplicantsByRole: React.FC = () => {
       const positions = project.openPositions || [];
       return positions.map((pos: any) => ({
         // Find a suitable way to get role title, if it's in attributes use that, else fallback to title
-        title: pos?.attributes?.title ?? pos?.title ?? '',
+        title: pos.attributes.title ?? pos.title ?? '',
         projectId: String(project.id ?? ''),
         // Get the title of the project for reference
         projectTitle: project?.title ?? '',
@@ -116,7 +116,9 @@ const ReviewApplicantsByRole: React.FC = () => {
             <p className="text-gray-400">No applicants found for your roles.</p>
           )}
 
+          {/* Convert Map entries to array for iteration */}
           {!loading &&
+            // Converts the groupedByRole Map into an array of [role, apps (applicants)] tuples
             Array.from(groupedByRole.entries()).map(([role, apps]) => (
               <section key={role} className="mb-6">
                 <h3 className="text-lg font-semibold mb-3">{role}</h3>
