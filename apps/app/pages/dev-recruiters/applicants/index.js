@@ -1,4 +1,4 @@
-import Page from '@devlaunchers/dev-recruiters/src/pages/dashboard';
+import Page from '@devlaunchers/dev-recruiters/src/pages/review-applicants/applicants';
 import App from '@devlaunchers/dev-recruiters/src/pages/_app';
 
 import 'slick-carousel/slick/slick-theme.css';
