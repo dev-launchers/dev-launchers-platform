@@ -5,7 +5,8 @@ import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import PageHeader from '@devlaunchers/components/src/components/molecules/PageHeader';
 import agent from '@devlaunchers/utility/agent';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
-import { NewApplicant } from '@devlaunchers/models';
+import { NewApplicant, Opportunity } from '@devlaunchers/models';
+import ShowApplicants from './show-applicants';
 
 const ReviewApplicantsByRole: React.FC = () => {
   const router = useRouter();
@@ -19,12 +20,10 @@ const ReviewApplicantsByRole: React.FC = () => {
 
   const userRoles = useMemo(() => {
     return userProjects.flatMap((project: any) => {
-      const positions = project.openPositions || [];
+      const positions: Opportunity[] = project.opportunities?.data || [];
       return positions.map((pos: any) => ({
-        // Find a suitable way to get role title, if it's in attributes use that, else fallback to title
-        title: pos.attributes.title ?? pos.title ?? '',
+        title: pos.attributes?.title ?? '',
         projectId: String(project.id ?? ''),
-        // Get the title of the project for reference
         projectTitle: project?.title ?? '',
       }));
     });
@@ -117,63 +116,7 @@ const ReviewApplicantsByRole: React.FC = () => {
           )}
 
           {/* Convert Map entries to array for iteration */}
-          {!loading &&
-            // Converts the groupedByRole Map into an array of [role, apps (applicants)] tuples
-            Array.from(groupedByRole.entries()).map(([role, apps]) => (
-              <section key={role} className="mb-6">
-                <h3 className="text-lg font-semibold mb-3">{role}</h3>
-                <div className="space-y-3">
-                  {apps.map((app) => (
-                    <div
-                      key={app.id ?? `${app.email}-${app.name}`}
-                      className="bg-gray-900 border border-gray-700 rounded p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-3"
-                    >
-                      <div>
-                        <div className="text-sm text-gray-300">
-                          <strong className="text-white">{app.name}</strong> —{' '}
-                          <span className="italic">{app.email}</span>
-                        </div>
-                        <div className="text-xs text-gray-400 mt-1">
-                          Skills:{' '}
-                          {app.skills && app.skills.length > 0
-                            ? app.skills.map((s) => s.skill).join(', ')
-                            : 'N/A'}
-                        </div>
-                        <div className="text-xs text-gray-400 mt-1">
-                          Commitment: {app.commitment ?? 'N/A'} hrs/wk · Level:{' '}
-                          {app.level ?? 'N/A'} · Experience:{' '}
-                          {app.yearsOfExperience ?? 'N/A'} yrs
-                        </div>
-                      </div>
-
-                      <div className="flex gap-2">
-                        <Button
-                          onClick={() =>
-                            router.push(
-                              `/dev-recruiters/review-applicants/${
-                                app.id ?? ''
-                              }`
-                            )
-                          }
-                        >
-                          View
-                        </Button>
-                        <Button
-                          onClick={() =>
-                            console.log(
-                              'Accept toggle for',
-                              app.id ?? app.email
-                            )
-                          }
-                        >
-                          {app.accepted ? 'Accepted' : 'Accept'}
-                        </Button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            ))}
+          <ShowApplicants groupedByRole={groupedByRole} loading={loading} />
         </div>
       </div>
     </div>
