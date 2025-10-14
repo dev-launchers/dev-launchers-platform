@@ -15,9 +15,9 @@ function Details() {
       </Typography>
 
       {/* Form Fields */}
-      <div className="flex flex-col gap-6 w-[70%]">
+      <div className="flex flex-col gap-3 w-[70%]">
         {/* First Name */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-1">
           <Typography
             variant="secondary"
             size="body_sm"
