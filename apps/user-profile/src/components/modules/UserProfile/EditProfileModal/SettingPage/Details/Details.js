@@ -22,8 +22,9 @@ function Details() {
             variant="secondary"
             size="body_sm"
             className="text-grayscale-700"
+            textWeight="bold"
           >
-            <span className="font-bold">First Name</span>
+            First Name
             <span className="text-error-500 ml-1">*</span>
           </Typography>
 
@@ -41,8 +42,9 @@ function Details() {
             variant="secondary"
             size="body_sm"
             className="text-grayscale-700"
+            textWeight="bold"
           >
-            <span className="font-bold">Last Name</span>
+            Last Name
             <span className="text-error-500 ml-1">*</span>
           </Typography>
 
