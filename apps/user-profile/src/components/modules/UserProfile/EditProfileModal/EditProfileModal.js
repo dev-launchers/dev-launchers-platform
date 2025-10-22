@@ -16,7 +16,7 @@ function EditProfileModal() {
     <Modal maxHeight="720px" width="1000px" showHeader={true} onClose={onClose}>
       <div className="flex">
         <SideBar></SideBar>
-        <SettingPage></SettingPage>
+        <SettingPage onClose={onClose}></SettingPage>
       </div>
     </Modal>
   ) : null;
