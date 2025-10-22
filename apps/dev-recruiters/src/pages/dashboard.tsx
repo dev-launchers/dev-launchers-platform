@@ -1,25 +1,31 @@
 import { useState, useEffect } from 'react';
-import { PlusCircle, Edit, Archive } from 'lucide-react';
+import { PlusCircle, Archive } from 'lucide-react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import PageHeader from '@devlaunchers/components/src/components/molecules/PageHeader';
 import ActiveRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ActiveRole';
 import ArchivedRole from '@devlaunchers/components/src/components/organisms/cards/RolesCard/ArchivedRole';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 import SearchBar from '../components/common/SearchBar/searchbar';
-import { Opportunity } from '@devlaunchers/models/opportunity';
 import { useRouter } from 'next/router';
+import { Expectation, Project, Skill, SkillLevel } from '@devlaunchers/models';
 
-interface Project {
-  readonly id: number;
-  title?: string;
-  openPositions?: unknown;
-  opportunities?: Opportunity[];
-}
-
-interface UserData {
-  readonly id: number;
-  name?: string;
-  projects?: Project[];
+export interface Opportunity {
+  id: string;
+  title: string;
+  skills: Skill[];
+  level: SkillLevel;
+  interests: string[];
+  commitmentHoursPerWeek: number;
+  description: string;
+  expectations: Expectation[];
+  isHidden: boolean;
+  publishedAt: Date;
+  created_at: Date;
+  projectId: string;
+  projectTitle: string;
+  projects: { data: Project[] };
+  roleType: string;
+  roleCategory: string;
 }
 
 const Dashboard: React.FC = () => {
@@ -65,12 +71,18 @@ const Dashboard: React.FC = () => {
       );
       setTeamNames(formattedTeamNames);
 
-      const allPositions = userProjects.flatMap(
-        (project) => project.openPositions || []
+      const allPositions = userProjects.flatMap((project) =>
+        (project.opportunities || []).map((pos) => ({
+          ...pos,
+          projectId: project.id,
+          projectTitle: project.title,
+        }))
       );
 
-      setActiveRoles(allPositions.filter((pos) => pos.active));
-      setArchivedRoles(allPositions.filter((pos) => !pos.active));
+      console.log('AllPositions are', allPositions);
+
+      setActiveRoles(allPositions.filter((pos) => !pos.isHidden));
+      setArchivedRoles(allPositions.filter((pos) => pos.isHidden));
     } else {
       setTeamNames([]);
       setActiveRoles([]);
@@ -101,9 +113,15 @@ const Dashboard: React.FC = () => {
       return;
     }
 
-    const allPositions = projects.flatMap(
-      (project) => project.openPositions || []
+    const allPositions = projects.flatMap((project) =>
+      (project.openPositions || []).map((pos) => ({
+        ...pos,
+        projectId: project.id,
+        projectTitle: project.title,
+      }))
     );
+
+    console.log(allPositions);
 
     const filterFn = (pos: any) => {
       const title = pos.title?.toLowerCase() || '';
@@ -119,9 +137,11 @@ const Dashboard: React.FC = () => {
       return matchesSearchTerm && matchesExperienceLevel;
     };
 
-    setActiveRoles(allPositions.filter((pos) => pos.active && filterFn(pos)));
+    setActiveRoles(
+      allPositions.filter((pos) => !pos.isHidden && filterFn(pos))
+    );
     setArchivedRoles(
-      allPositions.filter((pos) => !pos.active && filterFn(pos))
+      allPositions.filter((pos) => pos.isHidden && filterFn(pos))
     );
   }
 
@@ -130,15 +150,22 @@ const Dashboard: React.FC = () => {
     router.push(`/dev-recruiters/create-role?edit=${position.id}`);
   };
 
-  const handleReviewApplicants = (position: any) => {
-    // navigate to review-applicants page with role id param
-    router.push(`/dev-recruiters/applicants?role=${position.id}`);
+  const handleReviewApplicants = (position: Opportunity) => {
+    if (position && position !== null && position !== undefined) {
+      console.log('Position', position);
+      // navigate to review-applicants page with role id param
+      router.push(
+        `/dev-recruiters/applicants?role=${position.title}&projectId=${position.projectId}&projectName=${position.projectTitle}`
+      );
+    } else {
+      router.push(`/dev-recruiters/applicants`);
+    }
   };
 
   const handleArchive = (position: any) => {
     // move from activeRoles -> archivedRoles (local state only)
     setActiveRoles((prev) => prev.filter((p) => p.id !== position.id));
-    setArchivedRoles((prev) => [{ ...position, active: false }, ...prev]);
+    setArchivedRoles((prev) => [{ ...position, isHidden: true }, ...prev]);
     // TODO: call backend API to persist archive change
     console.log('Archived role', position.id);
   };
@@ -146,7 +173,7 @@ const Dashboard: React.FC = () => {
   const handleRepost = (position: any) => {
     // move from archivedRoles -> activeRoles (local state only)
     setArchivedRoles((prev) => prev.filter((p) => p.id !== position.id));
-    setActiveRoles((prev) => [{ ...position, active: true }, ...prev]);
+    setActiveRoles((prev) => [{ ...position, isHidden: false }, ...prev]);
     // TODO: call backend API to persist repost change
     console.log('Reposted role', position.id);
   };
@@ -178,6 +205,14 @@ const Dashboard: React.FC = () => {
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
               </Button>
+              <Button
+                onClick={() => {
+                  router.push('/dev-recruiters/create-role?archive=true');
+                }}
+              >
+                <Archive className="w-4 h-4 mr-2" />
+                Archive Role
+              </Button>
             </div>
           </div>
 
@@ -186,7 +221,9 @@ const Dashboard: React.FC = () => {
             <div className="space-y-4">
               <Button>By Team</Button>
               <Button>By Department</Button>
-              <Button onClick={handleReviewApplicants}>By Role</Button>
+              <Button onClick={() => handleReviewApplicants(null)}>
+                By Role
+              </Button>
             </div>
           </div>
         </div>
@@ -212,24 +249,16 @@ const Dashboard: React.FC = () => {
               <div className="flex flex-col" key={String(position.id ?? index)}>
                 <ActiveRole
                   key={String(position.id ?? index)}
-                  role={position.attributes.title || 'Unknown Role'}
-                  department={
-                    position.attributes.roleCategory || 'Unknown Department'
+                  role={position.title || 'Unknown Role'}
+                  department={position.roleCategory || 'Unknown Department'}
+                  date={
+                    position.publishedAt
+                      ? new Date(position.publishedAt).toLocaleDateString()
+                      : 'Unknown Date'
                   }
-                  date={new Date().toLocaleDateString()}
-                  onEdit={() => console.log('Edit:', position)}
-                  onView={() => console.log('View:', position)}
+                  onEdit={() => handleEdit(position)}
+                  onView={() => handleReviewApplicants(position)}
                 />
-                <div className="mt-3 flex gap-2">
-                  <Button onClick={() => handleEdit(position)}>
-                    <Edit className="w-4 h-4 mr-2" />
-                    Edit
-                  </Button>
-                  <Button onClick={() => handleArchive(position)}>
-                    <Archive className="w-4 h-4 mr-2" />
-                    Archive
-                  </Button>
-                </div>
               </div>
             ))}
             {activeRoles && activeRoles.length === 0 && (
@@ -255,26 +284,20 @@ const Dashboard: React.FC = () => {
               <div className="flex flex-col" key={String(position.id ?? index)}>
                 <ArchivedRole
                   key={String(position.id ?? index)}
-                  role={position.attributes.title || 'Unknown Role'}
+                  role={position.title || 'Unknown Role'}
                   department={
                     teamNames.length > 0
                       ? `Your Team: ${teamNames.join(', ')}`
                       : 'Unknown Department'
                   }
-                  date={position.attributes.published_at.toLocaleDateString()}
-                  onView={() => console.log('View Archived:', position)}
+                  date={
+                    position.publishedAt
+                      ? new Date(position.publishedAt).toLocaleDateString()
+                      : 'Unknown Date'
+                  }
+                  onView={() => handleReviewApplicants(position)}
                   onRepost={() => handleRepost(position)}
                 />
-                <div className="mt-3 flex gap-2">
-                  <Button onClick={() => handleEdit(position)}>
-                    <Edit className="w-4 h-4 mr-2" />
-                    Edit
-                  </Button>
-                  <Button onClick={() => handleRepost(position)}>
-                    <PlusCircle className="w-4 h-4 mr-2" />
-                    Repost
-                  </Button>
-                </div>
               </div>
             ))}
             {archivedRoles && archivedRoles.length === 0 && (

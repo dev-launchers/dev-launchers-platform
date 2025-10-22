@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronLeft, Calendar } from 'lucide-react';
-import { Button } from '@devlaunchers/components/src/components/atoms';
+import { Button, Radio } from '@devlaunchers/components/src/components/atoms';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
 import { Opportunity, Project } from '@devlaunchers/models/opportunity';
@@ -323,17 +323,19 @@ const OpportunityForm = () => {
             <label className="block text-white text-sm mb-2">Role Type *</label>
             <div className="bg-gray-800 border border-gray-600 rounded p-3 space-y-2">
               {ROLE_TYPES.map((type) => (
-                <label key={type} className="flex items-center space-x-2">
-                  <input
-                    type="radio"
-                    name="roleType"
-                    value={type}
-                    checked={formData.roleType === type}
-                    onChange={() => handleInputChange('roleType', type)}
-                    className="mt-1"
-                  />
-                  <span className="text-white text-sm">{type}</span>
-                </label>
+                <div>
+                  <label key={type} className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="roleType"
+                      value={type}
+                      checked={formData.roleType === type}
+                      onChange={() => handleInputChange('roleType', type)}
+                      className="mt-1"
+                    />
+                    <span className="text-white text-sm">{type}</span>
+                  </label>
+                </div>
               ))}
             </div>
           </div>
@@ -500,8 +502,7 @@ const OpportunityForm = () => {
                       }
                       className="flex-1 bg-white border border-gray-600 rounded px-2 py-1 text-black text-sm"
                     />
-                    <button
-                      type="button"
+                    <Button
                       onClick={() =>
                         setFormData((prev) => ({
                           ...prev,
@@ -514,15 +515,14 @@ const OpportunityForm = () => {
                       className="text-red-400 text-sm"
                     >
                       Remove
-                    </button>
+                    </Button>
                   </div>
                 ))}
 
               {/* Add new custom responsibility */}
               {formData.roleResponsibilities.length <
                 MAXIMUM_RESPONSIBILITIES && (
-                <button
-                  type="button"
+                <Button
                   onClick={() =>
                     setFormData((prev) => ({
                       ...prev,
@@ -532,7 +532,7 @@ const OpportunityForm = () => {
                   className="mt-2 text-purple-500 text-sm hover:underline"
                 >
                   + Add Responsibility
-                </button>
+                </Button>
               )}
 
               <p className="text-gray-400 text-xs mt-1">
@@ -592,7 +592,7 @@ const OpportunityForm = () => {
 
         {/* Navigation Buttons */}
         <div className="flex justify-between mt-12">
-          <button
+          <Button
             className={`px-6 py-2 border border-gray-600 rounded text-sm ${
               currentStep === 0
                 ? 'opacity-50 cursor-not-allowed'
@@ -602,9 +602,9 @@ const OpportunityForm = () => {
             disabled={currentStep === 0}
           >
             Previous Step
-          </button>
+          </Button>
 
-          <button
+          <Button
             className="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded text-sm"
             onClick={() => {
               if (currentStep < steps.length - 1) {
@@ -623,7 +623,7 @@ const OpportunityForm = () => {
               : isEditing
               ? 'Update Role'
               : 'Submit Form'}
-          </button>
+          </Button>
         </div>
 
         {submitError && (

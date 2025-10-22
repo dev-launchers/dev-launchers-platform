@@ -21,7 +21,7 @@ export default function ActiveRole(props: props) {
       <h3 className="mb-2 text-base sm:text-lg font-semibold">{props.role}</h3>
       <p className="mb-1 text-sm">{props.department}</p>
       <p className="text-xs">Posted: {props.date}</p>
-      <div className="mt-5 flex flex-row justify-start gap-3 overflow-hidden">
+      <div className="mt-5 flex flex-col sm:flex-row justify-start gap-3 overflow-hidden">
         <Button onClick={() => props.onEdit?.(props.key)}>
           <Edit className="mr-1 h-4 w-4 sm:h-auto sm:w-auto" />
           <span className="text-xs sm:text-xs">Edit</span>
