@@ -17,7 +17,7 @@ const styles = {
 
   // Logo styles
   logoContainer: 'flex items-center gap-4',
-  logoLink: 'flex items-center gap-3',
+  logoLink: 'flex items-center gap-3 cursor-pointer',
   logoImage: 'h-8 w-8',
   logoText: 'text-white font-semibold hidden md:block',
 
