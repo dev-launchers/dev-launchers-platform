@@ -27,7 +27,11 @@ function SubmissionForm() {
     ['alternative primary', 'CANCEL', 'LEAVE']
   );
 
-  const [submissionError, setSubmissionError] = useState('');
+  const [CreateFailure, confirmFailure] = useConfirm(
+    ['Unable to register your idea.', '', ''],
+    'Please try again.',
+    ['primary', 'close']
+  );
 
   const initialValues = {
     ideaName: '',
@@ -37,6 +41,7 @@ function SubmissionForm() {
     features: '',
     experience: '',
     extraInfo: '',
+    //involveLevel: '',
     status: '',
   };
 
@@ -67,42 +72,12 @@ function SubmissionForm() {
     tagline: Yup.string()
       .trim()
       .max(80, 'Tagline must be at most 80 characters'),
+    // involveLevel: Yup.string()
+    //   .nullable()
+    //   .required('Please select your level of involvement'),
   });
 
-  const scrollToIdeaNameField = () => {
-    setTimeout(() => {
-      const ideaNameElement = document.querySelector('[data-field="ideaName"]');
-      if (ideaNameElement) {
-        ideaNameElement.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center',
-        });
-      }
-    }, 100);
-  };
-
-  const checkIdeaNameAvailability = async (ideaName) => {
-    try {
-      const response = await agent.Ideas.checkAvailability(ideaName);
-
-      return response.available !== false;
-    } catch (error) {
-      console.error('Error checking idea name availability:', error);
-
-      try {
-        const allIdeas = await agent.Ideas.getAll();
-        const existingNames = allIdeas.map((idea) =>
-          idea.ideaName?.toLowerCase().trim()
-        );
-        return !existingNames.includes(ideaName.toLowerCase().trim());
-      } catch (fallbackError) {
-        console.error('Error with fallback check:', fallbackError);
-        return true;
-      }
-    }
-  };
-
-  const submitHandler = async (values) => {
+  const submitHandler = async (values, actions) => {
     values['author'] = userData.id;
     values['ideaOwner'] = userData.id;
     values['status'] = 'workshopping';
@@ -113,54 +88,49 @@ function SubmissionForm() {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
+    //    values['involveLevel'] = values['involveLevel'].trim();
 
     setSending(true);
-    setSubmissionError('');
 
     try {
-      const isAvailable = await checkIdeaNameAvailability(values.ideaName);
-      if (!isAvailable) {
-        setSending(false);
-        setSubmissionError(
-          'This idea name is already in use. Please try something else.'
-        );
-        scrollToIdeaNameField();
-        return false;
-      }
+      const response = await agent.Ideas.post(values);
+      if (response.error) {
+        if (response.error.message.includes('This attribute must be unique')) {
+          actions.setFieldError(
+            'ideaName',
+            'This idea name is already in use. Please try something else'
+          );
+          actions.setFieldTouched('ideaName', true, false);
+          setSending(false);
 
-      const data = cleanData(await agent.Ideas.post(values));
-
-      if (data.ideaName) {
-        setunsavedChanges(false);
-        isProgrammaticNavigation.current = true;
-        router.push(`workshop/${data.id}`);
+          // Scroll to the field
+          setTimeout(() => {
+            const ideaNameElement = document.querySelector(
+              '[data-field="ideaName"]'
+            );
+            if (ideaNameElement) {
+              ideaNameElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              });
+            }
+          }, 100);
+          // Throwing specific error type so IdeaForm knows not to show success message
+          const duplicateError = new Error('Duplicate idea name');
+          duplicateError.isDuplicateError = true;
+          throw duplicateError;
+        }
+        throw new Error('Unable to register');
       } else {
-        setSending(false);
-        setSubmissionError(
-          'This idea name is already in use. Please try something else.'
-        );
-        scrollToIdeaNameField();
+        const data = cleanData(response);
+        isProgrammaticNavigation.current = true;
+        setunsavedChanges(false);
+        router.push(`workshop/${data.id}`);
       }
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      if (
-        error.response &&
-        error.response.data &&
-        (error.response.data.message || '')
-          .toLowerCase()
-          .includes('already exists')
-      ) {
-        setSubmissionError(
-          'This idea name is already in use. Please try something else.'
-        );
-        scrollToIdeaNameField();
-      } else {
-        setSubmissionError(
-          'This idea name is already in use. Please try something else.'
-        );
-        scrollToIdeaNameField();
-      }
+      throw error;
     }
   };
 
@@ -171,12 +141,14 @@ function SubmissionForm() {
   };
 
   useEffect(() => {
+    // For reloading.
     window.onbeforeunload = () => {
       if (unsavedChanges) {
         return 'You have unsaved changes. Do you really want to leave?';
       }
     };
 
+    // For changing route.
     if (unsavedChanges && urrl == '') {
       const routeChangeStart = (url) => {
         if (isProgrammaticNavigation.current) {
@@ -233,7 +205,8 @@ function SubmissionForm() {
         />
       ) : (
         <>
-          {/*<Dialog />*/}
+          <Dialog />
+          <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
@@ -242,9 +215,6 @@ function SubmissionForm() {
             editMode={false}
             formButton="submit"
             sending={sending}
-            checkIdeaNameAvailability={checkIdeaNameAvailability}
-            submissionError={submissionError}
-            onSubmissionErrorClear={() => setSubmissionError('')}
           />
         </>
       )}
