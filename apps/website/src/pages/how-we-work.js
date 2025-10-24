@@ -3,23 +3,25 @@ import { atoms } from '@devlaunchers/components/components';
 import Link from 'next/link';
 
 // Icon components for visual enhancement
-const Icon = ({ children, className = "" }) => (
-  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl ${className}`}>
+const Icon = ({ children, className = '' }) => (
+  <div
+    className={`w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl ${className}`}
+  >
     {children}
   </div>
 );
 
-const Card = ({ children, className = "" }) => (
-  <div className={`bg-black backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 ${className}`}>
+const Card = ({ children, className = '' }) => (
+  <div
+    className={`bg-black backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 ${className}`}
+  >
     {children}
   </div>
 );
 
-const FeatureCard = ({ icon, title, description, className = "" }) => (
+const FeatureCard = ({ icon, title, description, className = '' }) => (
   <Card className={`text-center ${className}`}>
-    <div className="flex justify-center mb-4">
-      {icon}
-    </div>
+    <div className="flex justify-center mb-4">{icon}</div>
     <h3 className="text-xl font-semibold text-white mb-3">{title}</h3>
     <p className="text-gray-400 leading-relaxed">{description}</p>
   </Card>
@@ -60,7 +62,7 @@ export default function HowWeWork() {
                 size="xl6"
                 textWeight="semi-bold"
                 textAlign="center"
-              className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+                className="mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
               >
                 How We Work
               </atoms.Typography>
@@ -71,11 +73,11 @@ export default function HowWeWork() {
                 textAlign="center"
                 className="max-w-4xl text-gray-400 leading-relaxed"
               >
-                Dev Launchers is a remote, mentor-led community where you learn by
-                shipping. We organize around product teams, run 4-week sprints,
-                and use the same tools you'll see in modern software orgs—not a
-                classroom. Sessions run in Central Time (CT) with global
-                participation.
+                Dev Launchers is a remote, mentor-led community where you learn
+                by shipping. We organize around product teams, run 4-week
+                sprints, and use the same tools you'll see in modern software
+                orgs—not a classroom. Sessions run in Central Time (CT) with
+                global participation.
               </atoms.Typography>
             </div>
           </div>
@@ -97,7 +99,7 @@ export default function HowWeWork() {
               </atoms.Typography>
               <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
             </div>
-            
+
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card>
                 <div className="flex items-center mb-6">
@@ -116,15 +118,22 @@ export default function HowWeWork() {
                 <div className="space-y-3 text-gray-300">
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
-                    <span>Board of Directors → Leadership (President, VP, Directors)</span>
+                    <span>
+                      Board of Directors → Leadership (President, VP, Directors)
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-purple-500 rounded-full mr-3"></div>
-                    <span>Departments (Design, Development, Research, Product)</span>
+                    <span>
+                      Departments (Design, Development, Research, Product)
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                    <span>Product Teams (IdeaSpace, Dev Recruit, Universal Design, AI Ally, User Profile)</span>
+                    <span>
+                      Product Teams (IdeaSpace, Dev Recruit, Universal Design,
+                      AI Ally, User Profile)
+                    </span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
@@ -162,7 +171,9 @@ export default function HowWeWork() {
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mr-3"></div>
-                    <span>Work tracked in GitHub with project-based learning</span>
+                    <span>
+                      Work tracked in GitHub with project-based learning
+                    </span>
                   </div>
                 </div>
               </Card>
@@ -183,7 +194,10 @@ export default function HowWeWork() {
                     Definition of Done
                   </atoms.Typography>
                 </div>
-                <p className="text-gray-300 text-sm">Clear acceptance criteria, accessibility checks, code/design review, and brief documentation.</p>
+                <p className="text-gray-300 text-sm">
+                  Clear acceptance criteria, accessibility checks, code/design
+                  review, and brief documentation.
+                </p>
               </Card>
 
               <Card>
@@ -200,7 +214,10 @@ export default function HowWeWork() {
                     Design ↔ Dev Handshake
                   </atoms.Typography>
                 </div>
-                <p className="text-gray-300 text-sm">Design provides components and tokens in Figma. Dev implements with React/TypeScript and documents in Storybook.</p>
+                <p className="text-gray-300 text-sm">
+                  Design provides components and tokens in Figma. Dev implements
+                  with React/TypeScript and documents in Storybook.
+                </p>
               </Card>
 
               <Card>
@@ -217,12 +234,15 @@ export default function HowWeWork() {
                     Research Integration
                   </atoms.Typography>
                 </div>
-                <p className="text-gray-300 text-sm">Research produces actionable readouts that become backlog items for product development.</p>
+                <p className="text-gray-300 text-sm">
+                  Research produces actionable readouts that become backlog
+                  items for product development.
+                </p>
               </Card>
             </div>
           </div>
         </section>
-        
+
         {/* Sprint Rhythm */}
         <section className="py-24 px-4 md:px-8 bg-gray-900/30">
           <div className="max-w-5xl mx-auto">
@@ -278,12 +298,19 @@ export default function HowWeWork() {
               <Card className="max-w-2xl mx-auto">
                 <div className="flex items-center justify-center mb-4">
                   <Icon>⏰</Icon>
-                  <h3 className="text-xl font-semibold text-white ml-4">Time Commitment</h3>
+                  <h3 className="text-xl font-semibold text-white ml-4">
+                    Time Commitment
+                  </h3>
                 </div>
                 <p className="text-gray-300">
-                  <span className="text-blue-400 font-semibold">~5–10 hours/week</span> total
+                  <span className="text-blue-400 font-semibold">
+                    ~5–10 hours/week
+                  </span>{' '}
+                  total
                   <br />
-                  <span className="text-sm text-gray-400">2 hours live sessions + 3–8 hours async work</span>
+                  <span className="text-sm text-gray-400">
+                    2 hours live sessions + 3–8 hours async work
+                  </span>
                 </p>
               </Card>
             </div>
@@ -312,49 +339,49 @@ export default function HowWeWork() {
                 title="Figma & FigJam"
                 description="Source of truth for product design and collaboration. We use variables/tokens, components, and library governance to keep UI consistent. Dev Mode and comments make handoff concrete."
               />
-              
+
               <FeatureCard
                 icon={<Icon>🐙</Icon>}
                 title="GitHub"
                 description="Where work happens. Issues carry acceptance criteria, estimation, and status on project boards. Pull requests drive review quality; Actions handles basic CI."
               />
-              
+
               <FeatureCard
                 icon={<Icon>⚛️</Icon>}
                 title="React"
                 description="Primary UI framework for fast, reusable components. We prioritize accessibility (ARIA, focus management) and performance (sensible rendering, code-splitting)."
               />
-              
+
               <FeatureCard
                 icon={<Icon>📘</Icon>}
                 title="TypeScript"
                 description="Static typing that clarifies data contracts between product requirements, designs, and code—improving safety, readability, and collaboration."
               />
-              
+
               <FeatureCard
                 icon={<Icon>📚</Icon>}
                 title="Storybook"
                 description="A living catalog of components and patterns. Designers and developers verify states, accessibility, and usage here. We document props, examples, and guardrails for reuse."
               />
-              
+
               <FeatureCard
                 icon={<Icon>📖</Icon>}
                 title="GitBook"
                 description="Public docs and curriculum. Onboarding guides, playbooks, and design-system usage live here so knowledge isn't trapped in chat threads."
               />
-              
+
               <FeatureCard
                 icon={<Icon>🎥</Icon>}
                 title="tl;dv"
                 description="Lightweight recording and highlight tool for workshops and demos. We capture key moments, tag follow-ups, and share snippets with members in other time zones."
               />
-              
+
               <FeatureCard
                 icon={<Icon>💬</Icon>}
                 title="Discord"
                 description="Day-to-day HQ. Channels mirror product teams and departments; standups, checkpoints, and quick design/dev questions happen here."
               />
-              
+
               <FeatureCard
                 icon={<Icon>🗄️</Icon>}
                 title="Strapi"
@@ -363,7 +390,7 @@ export default function HowWeWork() {
             </div>
           </div>
         </section>
-        
+
         {/* Comprehensive Curriculum Section */}
         <section className="py-24 px-4 md:px-8 bg-gray-900/30">
           <div className="max-w-5xl mx-auto">
@@ -380,20 +407,22 @@ export default function HowWeWork() {
               </atoms.Typography>
               <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mb-6"></div>
               <p className="text-gray-300 max-w-3xl mx-auto text-lg">
-                Our curriculum is project-driven and mentor-guided. You'll set SMART goals at onboarding, 
-                then work through role-based assignments aligned to your team's stage and your learning objectives.
+                Our curriculum is project-driven and mentor-guided. You'll set
+                SMART goals at onboarding, then work through role-based
+                assignments aligned to your team's stage and your learning
+                objectives.
               </p>
             </div>
 
             {/* Learning Pathways */}
             <div className="mb-16">
               <atoms.Typography
-                    as="h3"
-                    variant="primary"
-                    size="xl3"
-                    textWeight="semi-bold"
-                    textAlign="center"
-                    className="px-4 mb-8"
+                as="h3"
+                variant="primary"
+                size="xl3"
+                textWeight="semi-bold"
+                textAlign="center"
+                className="px-4 mb-8"
               >
                 Learning Pathways
               </atoms.Typography>
@@ -402,7 +431,9 @@ export default function HowWeWork() {
                   <div className="flex justify-center mb-4">
                     <Icon>🎨</Icon>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3">Design Track</h4>
+                  <h4 className="text-xl font-semibold text-white mb-3">
+                    Design Track
+                  </h4>
                   <ul className="text-gray-300 text-sm space-y-2 text-left">
                     <li>• User Research & Personas</li>
                     <li>• Wireframing & Prototyping</li>
@@ -417,7 +448,9 @@ export default function HowWeWork() {
                   <div className="flex justify-center mb-4">
                     <Icon>💻</Icon>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3">Development Track</h4>
+                  <h4 className="text-xl font-semibold text-white mb-3">
+                    Development Track
+                  </h4>
                   <ul className="text-gray-300 text-sm space-y-2 text-left">
                     <li>• React & TypeScript</li>
                     <li>• Component Architecture</li>
@@ -432,7 +465,9 @@ export default function HowWeWork() {
                   <div className="flex justify-center mb-4">
                     <Icon>🔬</Icon>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3">Research Track</h4>
+                  <h4 className="text-xl font-semibold text-white mb-3">
+                    Research Track
+                  </h4>
                   <ul className="text-gray-300 text-sm space-y-2 text-left">
                     <li>• User Interview Techniques</li>
                     <li>• Data Analysis & Insights</li>
@@ -447,7 +482,9 @@ export default function HowWeWork() {
                   <div className="flex justify-center mb-4">
                     <Icon>📊</Icon>
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-3">Product Track</h4>
+                  <h4 className="text-xl font-semibold text-white mb-3">
+                    Product Track
+                  </h4>
                   <ul className="text-gray-300 text-sm space-y-2 text-left">
                     <li>• Product Strategy & Vision</li>
                     <li>• User Story Writing</li>
@@ -463,12 +500,12 @@ export default function HowWeWork() {
             {/* Learning Stages */}
             <div className="mb-16">
               <atoms.Typography
-                    as="h3"
-                    variant="primary"
-                    size="xl3"
-                    textWeight="semi-bold"
-                    textAlign="center"
-                    className="px-4 mb-8"
+                as="h3"
+                variant="primary"
+                size="xl3"
+                textWeight="semi-bold"
+                textAlign="center"
+                className="px-4 mb-8"
               >
                 Learning Stages
               </atoms.Typography>
@@ -478,9 +515,14 @@ export default function HowWeWork() {
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white font-bold mr-4">
                       1
                     </div>
-                    <h4 className="text-xl font-semibold text-white">Discovery Phase</h4>
+                    <h4 className="text-xl font-semibold text-white">
+                      Discovery Phase
+                    </h4>
                   </div>
-                  <p className="text-gray-300 mb-4">Understanding user needs, market research, and defining product requirements.</p>
+                  <p className="text-gray-300 mb-4">
+                    Understanding user needs, market research, and defining
+                    product requirements.
+                  </p>
                   <ul className="text-gray-400 text-sm space-y-1">
                     <li>• User interviews and surveys</li>
                     <li>• Competitive analysis</li>
@@ -494,9 +536,14 @@ export default function HowWeWork() {
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold mr-4">
                       2
                     </div>
-                    <h4 className="text-xl font-semibold text-white">Iteration Phase</h4>
+                    <h4 className="text-xl font-semibold text-white">
+                      Iteration Phase
+                    </h4>
                   </div>
-                  <p className="text-gray-300 mb-4">Building, testing, and refining features based on user feedback and data.</p>
+                  <p className="text-gray-300 mb-4">
+                    Building, testing, and refining features based on user
+                    feedback and data.
+                  </p>
                   <ul className="text-gray-400 text-sm space-y-1">
                     <li>• Rapid prototyping</li>
                     <li>• User testing sessions</li>
@@ -510,9 +557,14 @@ export default function HowWeWork() {
                     <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-bold mr-4">
                       3
                     </div>
-                    <h4 className="text-xl font-semibold text-white">Finalization Phase</h4>
+                    <h4 className="text-xl font-semibold text-white">
+                      Finalization Phase
+                    </h4>
                   </div>
-                  <p className="text-gray-300 mb-4">Polishing, optimizing, and preparing for launch with comprehensive testing.</p>
+                  <p className="text-gray-300 mb-4">
+                    Polishing, optimizing, and preparing for launch with
+                    comprehensive testing.
+                  </p>
                   <ul className="text-gray-400 text-sm space-y-1">
                     <li>• Performance optimization</li>
                     <li>• Accessibility compliance</li>
@@ -526,12 +578,12 @@ export default function HowWeWork() {
             {/* Learning Methods */}
             <div className="mb-16">
               <atoms.Typography
-                    as="h3"
-                    variant="primary"
-                    size="xl3"
-                    textWeight="semi-bold"
-                    textAlign="center"
-                    className="px-4 mb-8"
+                as="h3"
+                variant="primary"
+                size="xl3"
+                textWeight="semi-bold"
+                textAlign="center"
+                className="px-4 mb-8"
               >
                 How Learning Happens
               </atoms.Typography>
@@ -539,10 +591,13 @@ export default function HowWeWork() {
                 <Card>
                   <div className="flex items-center mb-4">
                     <Icon>👥</Icon>
-                    <h4 className="text-xl font-semibold text-white ml-4">Mentor-Led Learning</h4>
+                    <h4 className="text-xl font-semibold text-white ml-4">
+                      Mentor-Led Learning
+                    </h4>
                   </div>
                   <p className="text-gray-300 mb-4">
-                    Experienced industry professionals guide your learning journey through:
+                    Experienced industry professionals guide your learning
+                    journey through:
                   </p>
                   <ul className="text-gray-400 space-y-2">
                     <li>• Weekly 1-on-1 mentorship sessions</li>
@@ -555,7 +610,9 @@ export default function HowWeWork() {
                 <Card>
                   <div className="flex items-center mb-4">
                     <Icon>🚀</Icon>
-                    <h4 className="text-xl font-semibold text-white ml-4">Project-Based Learning</h4>
+                    <h4 className="text-xl font-semibold text-white ml-4">
+                      Project-Based Learning
+                    </h4>
                   </div>
                   <p className="text-gray-300 mb-4">
                     Learn by building real products that solve actual problems:
@@ -574,41 +631,66 @@ export default function HowWeWork() {
             <div className="text-center">
               <Card className=" mx-auto">
                 <atoms.Typography
-                    as="h3"
-                    variant="primary"
-                    size="xl3"
-                    textWeight="semi-bold"
-                    textAlign="center"
-                    className="px-4 py-4 mb-8"
-              >
-                Assessment & Progress Tracking
-              </atoms.Typography>
+                  as="h3"
+                  variant="primary"
+                  size="xl3"
+                  textWeight="semi-bold"
+                  textAlign="center"
+                  className="px-4 py-4 mb-8"
+                >
+                  Assessment & Progress Tracking
+                </atoms.Typography>
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl mx-auto mb-4">
                       📈
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2">SMART Goals</h4>
-                    <p className="text-gray-300 text-sm">Set specific, measurable goals at onboarding and track progress quarterly.</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">
+                      SMART Goals
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      Set specific, measurable goals at onboarding and track
+                      progress quarterly.
+                    </p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center text-white text-2xl mx-auto mb-4">
                       🎯
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Portfolio Artifacts</h4>
-                    <p className="text-gray-300 text-sm">Build a portfolio of real work including designs, code, and research.</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">
+                      Portfolio Artifacts
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      Build a portfolio of real work including designs, code,
+                      and research.
+                    </p>
                   </div>
                   <div className="text-center">
                     <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl mx-auto mb-4">
                       🏆
                     </div>
-                    <h4 className="text-lg font-semibold text-white mb-2">Peer Reviews</h4>
-                    <p className="text-gray-300 text-sm">Regular feedback from mentors and peers through code reviews and critiques.</p>
+                    <h4 className="text-lg font-semibold text-white mb-2">
+                      Peer Reviews
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      Regular feedback from mentors and peers through code
+                      reviews and critiques.
+                    </p>
                   </div>
                 </div>
                 <div className="my-8 flex mx-auto align-center justify-center">
-                  <atoms.Typography as="p" variant="secondary" size="body_md" className="text-grey-400">
-                    <a href="https://devlaunchers.org/curriculum" className="underline text-purple-400">View Full Curriculum Details →</a>
+                  <atoms.Typography
+                    as="p"
+                    variant="secondary"
+                    size="body_md"
+                    className="text-grey-400"
+                  >
+                    <a
+                      href="https://devlaunchers.org/curriculum"
+                      className="underline text-purple-400"
+                    >
+                      View Full Curriculum Details →
+                    </a>
                   </atoms.Typography>
                 </div>
               </Card>
@@ -637,10 +719,13 @@ export default function HowWeWork() {
                 <div className="flex justify-center mb-4">
                   <Icon>🎯</Icon>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Onboarding & Placement</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  Onboarding & Placement
+                </h3>
                 <p className="text-gray-300 text-sm">
-                  We place you on a product team based on your goals, skills, and team capacity. 
-                  You'll be matched with a mentor who aligns with your learning objectives.
+                  We place you on a product team based on your goals, skills,
+                  and team capacity. You'll be matched with a mentor who aligns
+                  with your learning objectives.
                 </p>
               </Card>
 
@@ -648,10 +733,13 @@ export default function HowWeWork() {
                 <div className="flex justify-center mb-4">
                   <Icon>🚀</Icon>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">First Issue</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  First Issue
+                </h3>
                 <p className="text-gray-300 text-sm">
-                  Start with a well-scoped task to learn our workflow and tools. 
-                  This helps you understand our processes while contributing meaningfully.
+                  Start with a well-scoped task to learn our workflow and tools.
+                  This helps you understand our processes while contributing
+                  meaningfully.
                 </p>
               </Card>
 
@@ -659,10 +747,13 @@ export default function HowWeWork() {
                 <div className="flex justify-center mb-4">
                   <Icon>💬</Icon>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Regular Feedback</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  Regular Feedback
+                </h3>
                 <p className="text-gray-300 text-sm">
-                  Mentors review your work during sprints; quarterly check-ins track 
-                  progress against your SMART goals and career development.
+                  Mentors review your work during sprints; quarterly check-ins
+                  track progress against your SMART goals and career
+                  development.
                 </p>
               </Card>
 
@@ -670,10 +761,13 @@ export default function HowWeWork() {
                 <div className="flex justify-center mb-4">
                   <Icon>📁</Icon>
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-3">Portfolio Artifacts</h3>
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  Portfolio Artifacts
+                </h3>
                 <p className="text-gray-300 text-sm">
-                  Build real designs, PRs, research readouts, and component stories 
-                  that showcase collaboration and impact for your professional portfolio.
+                  Build real designs, PRs, research readouts, and component
+                  stories that showcase collaboration and impact for your
+                  professional portfolio.
                 </p>
               </Card>
             </div>
@@ -681,20 +775,46 @@ export default function HowWeWork() {
             {/* Call to Action */}
             <div className="mt-16 text-center">
               <Card className=" mx-auto gap-4 justify-center align-center">
-                <atoms.Typography as="h2" variant="secondary" size="xl3" className="text-white py-4" textWeight="semi-bold">
+                <atoms.Typography
+                  as="h2"
+                  variant="secondary"
+                  size="xl3"
+                  className="text-white py-4"
+                  textWeight="semi-bold"
+                >
                   Ready to Start Your Journey?
                 </atoms.Typography>
-                <atoms.Typography as="p" variant="secondary" size="body_md" className="text-gray-400 max-w-xl">
-                  Join a community of learners building real products while developing industry-relevant skills. Our mentor-led approach ensures you get the guidance and experience needed to advance your career.
+                <atoms.Typography
+                  as="p"
+                  variant="secondary"
+                  size="body_md"
+                  className="text-gray-400 max-w-xl"
+                >
+                  Join a community of learners building real products while
+                  developing industry-relevant skills. Our mentor-led approach
+                  ensures you get the guidance and experience needed to advance
+                  your career.
                 </atoms.Typography>
                 <div className="py-6  mx-auto flex flex-wrap gap-3">
-                    <atoms.Button     mode="dark" type="secondary"iconPosition="undefined" as="a" href="https://devlaunchers.org/join/second ">
-                      Join Talent Network
-                    </atoms.Button>
-                    <atoms.Button     mode="dark" type="Primary" iconPosition="undefined" as="a" href=" https://devlaunchers.org/join">
-                      Open Roles
-                    </atoms.Button>
-                  </div>
+                  <atoms.Button
+                    mode="dark"
+                    type="secondary"
+                    iconPosition="undefined"
+                    as="a"
+                    href="https://devlaunchers.org/join/second "
+                  >
+                    Join Talent Network
+                  </atoms.Button>
+                  <atoms.Button
+                    mode="dark"
+                    type="Primary"
+                    iconPosition="undefined"
+                    as="a"
+                    href=" https://devlaunchers.org/join"
+                  >
+                    Open Roles
+                  </atoms.Button>
+                </div>
               </Card>
             </div>
           </div>
