@@ -1,12 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import PageBody from '../../common/PageBody';
-import SupportUsOverlay from './SupportUsOverlay';
 import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
-
-import studentPhoto from '../../../images/support-us/bw-girl-profile.png?webp';
-import { Wrapper } from './StyledSupportUs';
 
 import { atoms } from '@devlaunchers/components/components';
 
