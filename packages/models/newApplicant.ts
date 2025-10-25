@@ -18,6 +18,7 @@ export interface NewApplicant {
   accepted: boolean;
   zip: number;
   role: string;
+  publishedAt?: string;
   id?: string;
   project: { id: string; slug: string };
   level: keyof typeof SkillLevel;
