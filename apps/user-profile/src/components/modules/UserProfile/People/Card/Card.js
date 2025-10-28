@@ -14,18 +14,14 @@ function Card() {
       </div>
 
       {/* Text Info */}
-      <div className="flex flex-col gap-1 justify-center">
-        <Typography
-          variant="primary"
-          size="xl4"
-          className="font-bold text-gray-900 leading-tight"
-        >
+      <div className="flex flex-col  justify-center">
+        <Typography as="h4" variant="primary" size="xl3" textWeight="bold">
           John James
         </Typography>
-        <Typography variant="secondary" size="xl" className="text-gray-600">
+        <Typography as="span" variant="secondary" size="xl" textWeight="light">
           Product Lead
         </Typography>
-        <Typography as="p" size="body_sm" className="text-gray-500">
+        <Typography as="p" size="body_sm" textWeight="light">
           People Space
         </Typography>
       </div>
