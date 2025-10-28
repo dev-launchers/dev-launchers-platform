@@ -10,7 +10,7 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import { editProfileDataContext } from '../../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../../state/actions';
 
-function SettingPage() {
+function SettingPage({ onClose }) {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
 
   const { userData, setUserData } = useUserDataContext();
@@ -31,6 +31,10 @@ function SettingPage() {
     } else {
       return null;
     }
+  };
+
+  const onCancel = () => {
+    onClose();
   };
 
   const onSave = () => {
@@ -67,21 +71,32 @@ function SettingPage() {
     <div className="flex flex-col w-full h-[652px]">
       <div className="w-full px-16 py-7 h-full">{showSetting()}</div>
       {editProfileState.showModalFooter ? (
-        <div className="flex py-4 pr-14 w-full justify-end items-center gap-6 h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC]">
-          <Button
-            buttonType="primary"
-            buttonSize="standard"
-            onClick={onSave}
-            disabled={disableSave}
-          >
-            {editProfileState.saveInProgress ? (
-              <p className="flex items-center gap-3">
-                <span>Saving</span> <Loader borderColorClass="border-white" />{' '}
-              </p>
-            ) : (
-              'Save'
-            )}
-          </Button>
+        <div className="flex py-4 pr-14 gap-10 w-full justify-end items-center h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC]">
+          <div>
+            <Button
+              buttonType="secondary"
+              buttonSize="standard"
+              onClick={onCancel}
+            >
+              Cancel
+            </Button>
+          </div>
+          <div>
+            <Button
+              buttonType="primary"
+              buttonSize="standard"
+              onClick={onSave}
+              disabled={disableSave}
+            >
+              {editProfileState.saveInProgress ? (
+                <p className="flex items-center gap-3">
+                  <span>Saving</span> <Loader borderColorClass="border-white" />{' '}
+                </p>
+              ) : (
+                'Save'
+              )}
+            </Button>
+          </div>
         </div>
       ) : null}
     </div>
