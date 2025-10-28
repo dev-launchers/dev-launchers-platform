@@ -17,17 +17,15 @@ function Card() {
       <div className="flex flex-col gap-1 justify-center">
         <Typography
           variant="primary"
-          className="text-5xl  font-bold text-gray-900 leading-tight"
+          size="xl4"
+          className="font-bold text-gray-900 leading-tight"
         >
           John James
         </Typography>
-        <Typography
-          variant="secondary"
-          className="text-sm font-medium text-gray-600"
-        >
+        <Typography variant="secondary" size="xl" className="text-gray-600">
           Product Lead
         </Typography>
-        <Typography as="p" className="text-sm text-gray-500">
+        <Typography as="p" size="body_sm" className="text-gray-500">
           People Space
         </Typography>
       </div>
