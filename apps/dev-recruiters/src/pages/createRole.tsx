@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronLeft, Calendar } from 'lucide-react';
-import { Button, Radio } from '@devlaunchers/components/src/components/atoms';
+import { ChevronLeft } from 'lucide-react';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 import { useRouter } from 'next/router';
 import agent from '@devlaunchers/utility/agent';
-import { Opportunity, Project } from '@devlaunchers/models/opportunity';
+import { Project } from '@devlaunchers/models/opportunity';
 import { Skill } from '@devlaunchers/models/skill';
 import { SkillLevel } from '@devlaunchers/models';
 import { Project as NestedProject } from '@devlaunchers/models/project';
 import { FormField } from '@devlaunchers/components/src/components/organisms';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
 
 const EXPERIENCE_LEVELS = ['Beginner', 'Intermediate', 'Advanced'];
 const ROLE_RESPONSIBILITIES = [
@@ -73,6 +74,21 @@ const OpportunityForm = () => {
   const [existingProjects, setExistingProjects] = useState<ProjectHolder[]>([]);
   const [formData, setFormData] =
     useState<OpportunityFormState>(initialFormState);
+  const { userData, isLoading, isAuthenticated } = useUserDataContext();
+
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    if (isAuthenticated && userData) {
+      const isLeader = userData.projects?.some((project: any) =>
+        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+      );
+    } else {
+      router.replace('/');
+    }
+  }, [isAuthenticated, userData, isLoading]);
 
   // If there's an "edit" query param, load that opportunity for editing
   useEffect(() => {
@@ -244,19 +260,15 @@ const OpportunityForm = () => {
       },
     };
 
-    console.log('Payload:', payload);
-
     try {
       if (isEditing && editingId) {
         // update existing opportunity
         payload.data['updateDate'] = new Date().toISOString();
         const res = await agent.Opportunities.put(editingId, payload.data);
-        console.log('Opportunity updated:', res);
       } else {
         payload.data['postedDate'] = new Date().toISOString();
         // create new opportunity
         const res = await agent.Opportunities.post(payload.data);
-        console.log('Opportunity created:', res);
       }
 
       router.push('/dev-recruiters/dashboard');

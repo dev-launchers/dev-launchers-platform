@@ -8,18 +8,44 @@ import { useUserDataContext } from '@devlaunchers/components/src/context/UserDat
 import { NewApplicant, Opportunity } from '@devlaunchers/models';
 import ShowApplicants from './show-applicants';
 
+interface UserRoleType {
+  title: string;
+  projectId: string;
+  projectTitle: string;
+}
+
 const ReviewApplicantsByRole: React.FC = () => {
   const router = useRouter();
-  const { userData, isLoading: userDataLoading } = useUserDataContext();
+  const {
+    userData,
+    isLoading: userDataLoading,
+    isAuthenticated,
+  } = useUserDataContext();
   const [loading, setLoading] = useState(false);
   const [applicants, setApplicants] = useState<NewApplicant[]>([]);
   const [error, setError] = useState<string | null>(null);
   const { role, projectId, projectName } = router.query;
 
-  // derive user's projects and roles
-  const userProjects = userData?.projects || [];
+  useEffect(() => {
+    if (userDataLoading) {
+      return;
+    }
 
-  const userRoles = useMemo(() => {
+    if (isAuthenticated && userData) {
+      const isLeader = userData.projects?.some((project: any) =>
+        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+      );
+    } else {
+      router.replace('/');
+    }
+  }, [isAuthenticated, userData, userDataLoading]);
+
+  const userProjects = useMemo(
+    () => userData?.projects || [],
+    [userData?.projects]
+  );
+
+  const userRoles: UserRoleType[] = useMemo(() => {
     // Case 1: role passed in URL
     if (role) {
       return [
@@ -42,69 +68,82 @@ const ReviewApplicantsByRole: React.FC = () => {
     });
   }, [userProjects, role]);
 
+  const getApplicantsByRolesOrProjects = async (userRoles: UserRoleType[]) => {
+    const params = new URLSearchParams();
+
+    if (userRoles.length === 0) {
+      return [];
+    }
+
+    // Create OR groups for each role+project combination
+    userRoles.forEach((userRole, index) => {
+      params.append(
+        `filters[$or][${index}][$and][0][role][$eqi]`,
+        userRole.title.trim().toLowerCase()
+      );
+      params.append(
+        `filters[$or][${index}][$and][1][project][id][$eq]`,
+        userRole.projectId
+      );
+    });
+
+    params.append('populate', 'project');
+
+    return await agent.Applicant.get(params.toString());
+  };
+
   useEffect(() => {
     let mounted = true;
-    setLoading(true);
-    setError(null);
 
     (async () => {
+      if (mounted) {
+        setLoading(true);
+        setError(null);
+      }
+
       try {
-        console.log('Fetching applicants');
-        const res = await agent.Applicant.get();
+        const res = await getApplicantsByRolesOrProjects(userRoles);
+
+        if (!mounted) return;
+
         const list = res.map((a) => ({
           id: a.id,
           ...a.attributes,
         }));
-        if (!mounted) return;
+
         setApplicants(list || []);
       } catch (err) {
         console.error('Failed to load applicants', err);
+
         if (!mounted) return;
+
         setError('Failed to load applicants.');
       } finally {
-        if (!mounted) return;
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     })();
 
     return () => {
       mounted = false;
     };
-  }, []);
-
-  // filter applicants to those matching the user's roles/projects
-  const applicantsForMyRoles = useMemo(() => {
-    if (!userRoles.length) return [];
-
-    const roleTitles = new Set(userRoles.map((r) => r.title));
-    const projectIds = new Set(userRoles.map((r) => String(r.projectId)));
-
-    console.log('roleTitles', roleTitles);
-
-    return applicants.filter((a) => {
-      const applicantRole = (a.role || '').trim();
-      const applicantProjectId = String(a.project?.id ?? '');
-      // match either by role title or by project id (covers different shapes)
-      return (
-        roleTitles.has(applicantRole) || projectIds.has(applicantProjectId)
-      );
-    });
-  }, [applicants, userRoles]);
+  }, [userRoles]);
 
   // group applicants by role
   const groupedByRole = useMemo(() => {
     const map = new Map<string, NewApplicant[]>();
-    applicantsForMyRoles.forEach((app) => {
+    applicants.forEach((app) => {
       const key = app.role || app.project?.slug || 'Unspecified';
       const arr = map.get(key) || [];
       arr.push(app);
       map.set(key, arr);
     });
     return map;
-  }, [applicantsForMyRoles]);
+  }, [applicants]);
 
   // Combined loading state: wait for both applicants AND user data
-  const isLoadingAll = loading || userDataLoading;
+  const isLoadingAll = (loading || userDataLoading) && groupedByRole.size === 0;
 
   return (
     <div className="min-h-screen bg-black text-white p-6">
@@ -136,7 +175,6 @@ const ReviewApplicantsByRole: React.FC = () => {
             <p className="text-gray-400">No applicants found for your roles.</p>
           )}
 
-          {/* Convert Map entries to array for iteration */}
           <ShowApplicants groupedByRole={groupedByRole} loading={loading} />
         </div>
       </div>

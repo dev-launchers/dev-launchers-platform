@@ -104,7 +104,10 @@ const requests = {
 };
 
 const Applicant = {
-  get: () => requests.get<NewApplicant[]>('applicants'),
+  get: (filter?: string) => {
+    const url = filter ? `applicants?${filter}` : 'applicants';
+    return requests.get<NewApplicant[]>(url);
+  },
   post: (data: NewApplicant) => requests.post<NewApplicant>('applicants', data),
 };
 

@@ -9,7 +9,7 @@ import SearchBar from '../components/common/SearchBar/searchbar';
 import { useRouter } from 'next/router';
 import { Expectation, Project, Skill, SkillLevel } from '@devlaunchers/models';
 
-export interface Opportunity {
+interface Opportunity {
   id: string;
   title: string;
   skills: Skill[];
@@ -51,7 +51,7 @@ const Dashboard: React.FC = () => {
     } else {
       router.replace('/');
     }
-  }, [isAuthenticated, userData]);
+  }, [isAuthenticated, userData, isLoading]);
 
   useEffect(() => {
     if (isAuthenticated && userData) {
@@ -79,8 +79,6 @@ const Dashboard: React.FC = () => {
         }))
       );
 
-      console.log('AllPositions are', allPositions);
-
       setActiveRoles(allPositions.filter((pos) => !pos.isHidden));
       setArchivedRoles(allPositions.filter((pos) => pos.isHidden));
     } else {
@@ -107,7 +105,6 @@ const Dashboard: React.FC = () => {
       formattedExperienceLevel =
         parsed.experienceLevel?.trim().toLowerCase() || '';
     } catch (error) {
-      console.error('Invalid searchTerm JSON:', error);
       setActiveRoles([]);
       setArchivedRoles([]);
       return;
@@ -120,8 +117,6 @@ const Dashboard: React.FC = () => {
         projectTitle: project.title,
       }))
     );
-
-    console.log(allPositions);
 
     const filterFn = (pos: any) => {
       const title = pos.title?.toLowerCase() || '';
@@ -152,7 +147,6 @@ const Dashboard: React.FC = () => {
 
   const handleReviewApplicants = (position: Opportunity) => {
     if (position && position !== null && position !== undefined) {
-      console.log('Position', position);
       // navigate to review-applicants page with role id param
       router.push(
         `/dev-recruiters/applicants?role=${position.title}&projectId=${position.projectId}&projectName=${position.projectTitle}`
@@ -167,7 +161,6 @@ const Dashboard: React.FC = () => {
     setActiveRoles((prev) => prev.filter((p) => p.id !== position.id));
     setArchivedRoles((prev) => [{ ...position, isHidden: true }, ...prev]);
     // TODO: call backend API to persist archive change
-    console.log('Archived role', position.id);
   };
 
   const handleRepost = (position: any) => {
@@ -175,7 +168,6 @@ const Dashboard: React.FC = () => {
     setArchivedRoles((prev) => prev.filter((p) => p.id !== position.id));
     setActiveRoles((prev) => [{ ...position, isHidden: false }, ...prev]);
     // TODO: call backend API to persist repost change
-    console.log('Reposted role', position.id);
   };
 
   return (
@@ -205,11 +197,7 @@ const Dashboard: React.FC = () => {
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
               </Button>
-              <Button
-                onClick={() => {
-                  router.push('/dev-recruiters/create-role?archive=true');
-                }}
-              >
+              <Button>
                 <Archive className="w-4 h-4 mr-2" />
                 Archive Role
               </Button>
@@ -261,7 +249,7 @@ const Dashboard: React.FC = () => {
                 />
               </div>
             ))}
-            {activeRoles && activeRoles.length === 0 && (
+            {activeRoles.length === 0 && (
               <div className="col-span-full">
                 <p>No active roles available.</p>
               </div>
