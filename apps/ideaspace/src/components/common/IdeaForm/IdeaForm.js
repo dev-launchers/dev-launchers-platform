@@ -126,6 +126,9 @@ const IdeaForm = ({
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      if (error.isDuplicateError) {
+        return;
+      }
       setErrorMessageVisible(true);
       setAlertVariant(editMode ? 'edit' : 'submit');
     }

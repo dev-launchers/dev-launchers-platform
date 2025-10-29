@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 import styled from 'styled-components';
-//import { Typography } from '@devlaunchers/components/components/atoms/Typography';
 
 const AlertWrapper = styled.div`
   position: fixed;
