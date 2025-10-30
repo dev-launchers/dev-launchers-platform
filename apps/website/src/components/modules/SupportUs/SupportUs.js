@@ -1,12 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 
-import PageBody from '../../common/PageBody';
-import SupportUsOverlay from './SupportUsOverlay';
 import Typography from '@devlaunchers/components/components/atoms/Typography/Typography';
-
-import studentPhoto from '../../../images/support-us/bw-girl-profile.png?webp';
-import { Wrapper } from './StyledSupportUs';
 
 import { atoms } from '@devlaunchers/components/components';
 
@@ -65,6 +60,7 @@ export default function SupportUs() {
           </Typography>
           <div className="flex justify-center pt-8">
             <atoms.Button
+              as="a"
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E6TSNXLFG3UTY&source=url"
             >
@@ -104,12 +100,14 @@ export default function SupportUs() {
           </Typography>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
             <atoms.Button
+              as="a"
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
             </atoms.Button>
             <atoms.Button
+              as="a"
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-purple-900 hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/VLP2YHDsSXmLTqQ8A"
             >
@@ -151,12 +149,14 @@ export default function SupportUs() {
           </Typography>
           <div className="flex flex-wrap justify-center gap-8 pt-8">
             <atoms.Button
+              as="a"
               className="bg-black border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:bg-purple-500 hover:text-black hover:font-semibold hover:border-purple-300 hover:border-4"
               href="mailto:contact@devlaunchers.com"
             >
               Contact Us
             </atoms.Button>
             <atoms.Button
+              as="a"
               className="bg-purple-900 border-2 border-purple-400 text-base text-white font-normal capitalize py-3 px-6 rounded-xl transition-all duration-200 hover:text-black hover:font-semibold  hover:bg-purple-500 hover:border-purple-300 hover:border-4"
               href="https://forms.gle/SrKn5wWAYUNGYmec9"
             >
