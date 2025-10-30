@@ -21,7 +21,7 @@ export default function ArchivedRole(props: props) {
       <h3 className="mb-3 text-lg font-semibold">{props.role}</h3>
       <p className="mb-2 text-sm">{props.department}</p>
       <p className="text-xs">Archived: {props.date}</p>
-      <div className="mt-5 flex flex-row justify-start gap-3 overflow-hidden">
+      <div className="mt-5 flex flex-col sm:flex-row justify-start gap-3 overflow-hidden">
         <Button onClick={props.onRepost}>
           <RotateCw className="mr-1 h-4 w-4 sm:h-auto sm:w-auto" />
           <span className="text-xs sm:text-xs">Repost</span>
