@@ -104,7 +104,10 @@ const requests = {
 };
 
 const Applicant = {
-  get: () => requests.get<NewApplicant[]>('applicants'),
+  get: (filter?: string) => {
+    const url = filter ? `applicants?${filter}` : 'applicants';
+    return requests.get<NewApplicant[]>(url);
+  },
   post: (data: NewApplicant) => requests.post<NewApplicant>('applicants', data),
 };
 
@@ -143,6 +146,9 @@ const Opportunities = {
       `opportunities/${oppId}`,
       new URLSearchParams('_publicationState=live&populate=projects')
     ),
+  post: (body: {}) => requests.post<Opportunity>('/opportunities/', body),
+  put: (id: string, body: {}) =>
+    requests.put<Opportunity>(`/opportunities/${id}`, body),
 };
 
 const Ideas = {
