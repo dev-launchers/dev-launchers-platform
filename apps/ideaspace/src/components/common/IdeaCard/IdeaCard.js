@@ -119,7 +119,10 @@ function IdeaCard({ cards, cardType }) {
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
         <div>
-          <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
+          <IdeaCardImg
+            cardId={cards.id}
+            ideaImage={cards.ideaImage?.data?.attributes?.original_url}
+          />
 
           <atoms.Box
             flexDirection="row"

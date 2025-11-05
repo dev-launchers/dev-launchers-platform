@@ -1,20 +1,15 @@
 import {
   Dialog,
   DialogPortal,
-  DialogOverlay,
-  DialogClose,
-  DialogTrigger,
   DialogContent,
   DialogHeader,
-  DialogFooter,
   DialogTitle,
-  DialogDescription,
 } from '@devlaunchers/components/src/components/Dialog';
 import { useState, useEffect } from 'react';
-import { atoms } from '@devlaunchers/components/src/components';
-import { Icons } from '@devlaunchers/components/src/assets';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { Trash, Search } from 'lucide-react';
+import { agent } from '@devlaunchers/utility';
+import Image from 'next/image';
 
 export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
   const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
@@ -28,27 +23,21 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
   };
   const getImages = async () => {
     setError(null);
-    const response = await fetch(
-      `http://localhost:1337/api/images/keyword/${keyword}?start=1&limit=24`
+    const images = await agent.Images.get(
+      keyword || 'a',
+      new URLSearchParams({ start: '1', limit: '24' })
     );
-    const data = await response.json();
-    if (!data.success) {
-      setError(data.message);
-      return;
-    }
-    if (data.count === 0) {
+
+    if (images.length === 0) {
       setError('No images found');
       return;
     }
-    setImages(data.data);
+    setImages(images);
   };
   const handleSelectImageEvent = (image) => {
     handleSelectImage(image);
   };
-  const handleBtnClick = () => {
-    setOpen(true);
-    getImages();
-  };
+
   useEffect(() => {
     if (isOpen) {
       getImages();
@@ -56,21 +45,22 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
     }
   }, [isOpen]);
   return (
-    <div id="image-modal-container">
-      {!isOpen && (
-        <Button
-          mode="light"
-          type="secondary"
-          size="medium"
-          onClick={handleBtnClick}
-        >
-          Select Image
-        </Button>
-      )}
-      <Dialog open={open} onOpenChange={handleClose}>
+    <>
+      {/** The DialogContent component automatically includes a DialogOverlay with the default bg-Light-Overlay class, and there's no way to customize it through props.
+          This is a global style to override the background color of the dialog overlay */}
+      <style jsx global>{`
+        .bg-Light-Overlay {
+          background-color: transparent !important;
+        }
+      `}</style>
+      <Dialog open={open} onOpenChange={handleClose} id="image-modal">
         <DialogPortal>
-          <DialogOverlay />
-          <DialogContent hasCloseBtn={false} className="justify-start">
+          <DialogContent
+            hasCloseBtn={false}
+            className="w-full max-w-4xl p-5 sm:w-[512px] sm:p-4 sm:left-8 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0
+            drop-shadow-md
+            "
+          >
             <DialogHeader className="w-full flex items-center gap-2">
               <div className="flex items-center justify-start gap-2">
                 <img
@@ -96,7 +86,7 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
                 </Button>
               </div>
             </DialogHeader>
-            <div className="flex items-center justify-center flex-col gap-2 w-[512px]">
+            <div className="flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto px-4">
               <div className="flex items-center justify-center gap-0 w-full rounded-lg border border-grayscale-750 p-1">
                 <Search className="w-6 h-6" />
                 <input
@@ -129,7 +119,7 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
               <div className="flex items-center justify-center gap-2 w-full pt-3">
                 {error && <p className="text-red-700 font-medium">{error}</p>}
                 {images && (
-                  <div className="grid gap-2 grid-cols-3 overflow-y-auto max-h-[420px]">
+                  <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 overflow-y-auto max-h-[420px] w-full">
                     {images.map((image) => (
                       <div key={image.original_url}>
                         <div
@@ -138,9 +128,12 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
                             handleSelectImageEvent(image);
                           }}
                         >
-                          <img
+                          <Image
+                            width={141}
+                            height={103}
                             src={image.original_url}
                             alt={image.name}
+                            id={image.id}
                             className="rounded-lg w-full h-full"
                           />
                         </div>
@@ -161,6 +154,6 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
           </DialogContent>
         </DialogPortal>
       </Dialog>
-    </div>
+    </>
   );
 };

@@ -40,7 +40,7 @@ export const useFetchIdea = (ideaId, setComments) => {
           await agent.Ideas.getIdea(
             ideaId,
             new URLSearchParams(
-              `populate[ideaOwner][populate]&populate[author][populate]&populate[comments][populate][user][populate]=profile`
+              `populate[ideaOwner][populate]&populate[ideaImage][populate]&populate[author][populate]&populate[comments][populate][user][populate]=profile`
             )
           )
         );
@@ -67,6 +67,10 @@ export const useFetchIdea = (ideaId, setComments) => {
         if (ideaOwner !== undefined) {
           data.ideaOwner = cleanData(ideaOwner);
         }
+        const ideaImage = data?.ideaImage?.data
+          ? cleanData(data?.ideaImage?.data)
+          : null;
+        data.ideaImage = ideaImage;
 
         setLoading(false);
 

@@ -9,6 +9,7 @@ import {
   Notification,
   DlTalCommUser,
   TalCommUser,
+  Image,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -208,6 +209,14 @@ const DlTalcommuser = {
   }) => requests.post('/dl-tal-communities', body.data),
 };
 
+const Images = {
+  get: (keyword: string, params?: URLSearchParams) =>
+    requests.get<Image[]>(
+      `/images/keyword/${keyword}`,
+      new URLSearchParams(params)
+    ),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -223,6 +232,7 @@ const agent = {
   Talcommuser,
   GoogledriveFile,
   DlTalcommuser,
+  Images,
 };
 
 export default agent;

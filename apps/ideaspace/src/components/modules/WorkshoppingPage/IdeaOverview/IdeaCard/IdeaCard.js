@@ -52,7 +52,7 @@ export const IdeaCard = ({
     ideaData &&
     ideaData.ideaOwner &&
     Number(userData.id) === Number(ideaData.ideaOwner.id);
-  const [bannerImage, setBannerImage] = useState(null);
+  const [bannerImage] = useState(ideaImage || null);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -204,6 +204,21 @@ export const IdeaCard = ({
     window.location.href = '/ideaspace/dashboard';
   };
 
+  //== Update Idea Image
+  const handleUpdateIdeaImage = async (imageId) => {
+    const payload = {
+      data: {
+        ...ideaData,
+        ideaImage: imageId,
+      },
+    };
+    const response = await agent.Ideas.put(ideaId, payload);
+    if (!response.ok) {
+      console.error('Failed to update idea image:', response.error);
+      setShowEditError(true);
+    }
+  };
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -285,7 +300,11 @@ export const IdeaCard = ({
               </div>
             </div>
           </div>
-          <ImageBanner bannerImage={bannerImage} />
+          <ImageBanner
+            bannerImage={bannerImage}
+            updateIdeaImage={handleUpdateIdeaImage}
+            ideaId={ideaId}
+          />
         </div>
         {showEditSuccess && (
           <Alert
