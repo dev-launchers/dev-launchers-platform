@@ -7,18 +7,23 @@ import { ImgButton } from './StyledIdeaCard';
 const IdeaCardImg = ({ cardId, ideaImage }) => {
   return (
     <Link href={`/ideaspace/workshop/${cardId}`}>
-      <ImgButton style={{ backgroundColor: '#FFFFFF', width: '100%' }}>
+      <ImgButton
+        style={{
+          backgroundColor: '#FFFFFF',
+          height: '176px',
+          position: 'relative',
+          margin: '0rem 0rem 1rem',
+        }}
+      >
         <Image
           alt="idea_image"
           src={
             ideaImage ||
-            `https://picsum.photos/seed/${cardId}/350/270?random=${cardId}`
+            `https://picsum.photos/seed/${cardId}/402/176?random=${cardId}`
           }
-          width={353}
-          height={176}
+          layout="fill"
           style={{
             borderRadius: '0.875rem',
-            // objectFit: "fit", // not working with height 100%, need investigation
             backgroundColor: 'rgba(0, 0, 0, 0.05)',
           }}
         />

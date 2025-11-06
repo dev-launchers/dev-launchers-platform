@@ -1,5 +1,5 @@
 // create image banner component
-import React from 'react';
+import React, { useState } from 'react';
 import { ImageModal } from './ImageModal';
 import { Wand2, Edit2, Trash2 } from 'lucide-react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
@@ -10,21 +10,22 @@ export const ImageBanner = ({
   updateIdeaImage,
   ideaId,
 }) => {
-  const [bgImage, setBgImage] = React.useState(bannerImage);
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [isImageModalOpen, setIsImageModalOpen] = React.useState(false);
+  const [bgImage, setBgImage] = useState(bannerImage);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const handleSelectImage = (image) => {
     setBgImage(image);
   };
   const handleDeleteImage = async () => {
     setBgImage(null);
-    const response = await agent.Ideas.put(ideaId, {
-      data: {
-        ideaImage: null,
-      },
-    });
-    if (!response.ok) {
-      console.error('Failed to delete idea image:', response.error);
+    try {
+      await agent.Ideas.put(ideaId, {
+        data: {
+          ideaImage: null,
+        },
+      });
+    } catch (error) {
+      console.error('Failed to delete idea image:', error);
     }
   };
   const handleEditClick = () => {
@@ -34,6 +35,16 @@ export const ImageBanner = ({
     setIsImageModalOpen(false);
     updateIdeaImage(bgImage.id);
   };
+
+  const IconButton = ({ icon: Icon, onClick, ...props }) => (
+    <button
+      className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors"
+      onClick={onClick}
+      {...props}
+    >
+      <Icon size={16} />
+    </button>
+  );
   return (
     <>
       <div className="w-full h-[304px] rounded-[16px] bg-[#494949]/5 flex flex-col items-center justify-center gap-2">
@@ -49,21 +60,12 @@ export const ImageBanner = ({
               onMouseLeave={() => setIsMenuOpen(false)}
             >
               <div className="bg-white rounded-md shadow-lg p-2">
-                <button className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors">
-                  <Wand2 size={16} />
-                </button>
+                <IconButton icon={Wand2} />
               </div>
               {isMenuOpen && (
                 <div className="bg-white rounded-md shadow-lg p-2 flex flex-col gap-2">
-                  <button className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors">
-                    <Edit2 size={16} onClick={handleEditClick} />
-                  </button>
-                  <button
-                    className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors"
-                    onClick={handleDeleteImage}
-                  >
-                    <Trash2 size={16} />
-                  </button>
+                  <IconButton icon={Edit2} onClick={handleEditClick} />
+                  <IconButton icon={Trash2} onClick={handleDeleteImage} />
                 </div>
               )}
             </div>

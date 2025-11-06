@@ -212,9 +212,10 @@ export const IdeaCard = ({
         ideaImage: imageId,
       },
     };
-    const response = await agent.Ideas.put(ideaId, payload);
-    if (!response.ok) {
-      console.error('Failed to update idea image:', response.error);
+    try {
+      const response = await agent.Ideas.put(ideaId, payload);
+    } catch (error) {
+      console.error('Failed to update idea image:', error);
       setShowEditError(true);
     }
   };
