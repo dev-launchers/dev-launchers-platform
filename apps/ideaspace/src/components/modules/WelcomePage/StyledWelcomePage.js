@@ -6,17 +6,14 @@ export const MainContainer = styled.div`
   margin: 0 auto;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
-  @media (max-width: 1440px) {
-    width: 100%;
-    padding: 0 6rem 8rem 6rem;
-  }
+  padding: 0 6rem 8rem 6rem;
+
   @media (max-width: 744px) {
-    width: 100%;
     padding: 0 8rem 9.125rem 8rem;
   }
   @media (max-width: 430px) {
-    width: 100%;
     padding: 0 1.25rem 8.25rem 1.25rem;
   }
 
@@ -125,14 +122,8 @@ export const HeadWapper = styled.div`
   align-self: stretch;
   gap: 1.25rem;
 
-  @media (max-width: 1440px) {
-    width: 100%;
-    margin-bottom: 5rem;
-  }
-  @media (max-width: 744px) {
-    width: 100%;
-    margin-bottom: 5rem;
-  }
+  width: 100%;
+  margin-bottom: 5rem;
 
   @media (max-width: 430px) {
     width: 100%;
