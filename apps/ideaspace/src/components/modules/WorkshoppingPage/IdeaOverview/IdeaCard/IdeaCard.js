@@ -206,6 +206,10 @@ export const IdeaCard = ({
 
   //== Update Idea Image
   const handleUpdateIdeaImage = async (imageId) => {
+    // if the image id is the same as the current image id, don't update
+    if (imageId === ideaImage?.id) {
+      return;
+    }
     const payload = {
       data: {
         ...ideaData,

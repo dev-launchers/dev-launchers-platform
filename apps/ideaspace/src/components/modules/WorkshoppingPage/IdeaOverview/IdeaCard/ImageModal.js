@@ -10,13 +10,20 @@ import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { Trash, Search } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import Image from 'next/image';
+import PexelsLogo from '../../../../../../public/assets/images/pexels-logo.png';
 
-export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
-  const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
+export const ImageModal = ({
+  handleSelectImage,
+  handleDeleteImage,
+  onClose,
+  isOpen = false,
+}) => {
   const [images, setImages] = useState([]);
   const [error, setError] = useState(null);
   const [keyword, setKeyword] = useState('a');
   const [open, setOpen] = useState(isOpen);
+  const [isRemoveDisabled, setIsRemoveDisabled] = useState(true);
+
   const handleClose = () => {
     setOpen(false);
     onClose();
@@ -36,8 +43,12 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
   };
   const handleSelectImageEvent = (image) => {
     handleSelectImage(image);
+    setIsRemoveDisabled(false);
   };
-
+  const handleRemoveImage = () => {
+    handleDeleteImage();
+    setIsRemoveDisabled(true);
+  };
   useEffect(() => {
     if (isOpen) {
       getImages();
@@ -57,22 +68,25 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
         <DialogPortal>
           <DialogContent
             hasCloseBtn={false}
-            className="w-full max-w-4xl p-5 sm:w-[512px] sm:p-4 sm:left-8 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0
-            drop-shadow-md
+            className="w-full max-w-4xl p-5 sm:w-[512px] 
+            sm:p-4 sm:left-8 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0
+            rounded-3xl border border-grayscale-200
+            shadow-[0_4px_6px_3px_rgba(51,51,51,0.10)]
             "
           >
             <DialogHeader className="w-full flex items-center gap-2">
               <div className="flex items-center justify-start gap-2">
-                <img
-                  src={
-                    'https://help.pexels.com/system/photos/41382335545241/image__1_.png'
-                  }
-                  alt="pexels logo"
-                  className="w-6 h-6"
-                />
-                <DialogTitle className="text-md font-normal">
+                <div className="bg-black w-16 h-8 relative rounded-lg flex items-center justify-center">
+                  <Image
+                    width={42}
+                    height={21}
+                    src={PexelsLogo}
+                    alt="pexels logo"
+                  />
+                </div>
+                {/* <DialogTitle className="text-md font-normal">
                   Pexels
-                </DialogTitle>
+                </DialogTitle> */}
               </div>
               <div className="flex items-center justify-end gap-2 w-full">
                 <Button
@@ -81,12 +95,15 @@ export const ImageModal = ({ handleSelectImage, onClose, isOpen = false }) => {
                   icon={<Trash className="w-6 h-6" />}
                   mode={isRemoveDisabled ? 'dark' : 'light'}
                   disabled={isRemoveDisabled}
+                  onClick={() => {
+                    handleRemoveImage();
+                  }}
                 >
                   Remove
                 </Button>
               </div>
             </DialogHeader>
-            <div className="flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto px-4">
+            <div className="flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-0 w-full rounded-lg border border-grayscale-750 p-1">
                 <Search className="w-6 h-6" />
                 <input

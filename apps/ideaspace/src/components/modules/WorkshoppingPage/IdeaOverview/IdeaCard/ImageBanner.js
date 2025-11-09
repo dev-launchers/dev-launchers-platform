@@ -18,14 +18,16 @@ export const ImageBanner = ({
   };
   const handleDeleteImage = async () => {
     setBgImage(null);
-    try {
-      await agent.Ideas.put(ideaId, {
-        data: {
-          ideaImage: null,
-        },
-      });
-    } catch (error) {
-      console.error('Failed to delete idea image:', error);
+    if (bannerImage) {
+      try {
+        await agent.Ideas.put(ideaId, {
+          data: {
+            ideaImage: null,
+          },
+        });
+      } catch (error) {
+        console.error('Failed to delete idea image:', error);
+      }
     }
   };
   const handleEditClick = () => {
@@ -33,7 +35,9 @@ export const ImageBanner = ({
   };
   const handleCloseImageModal = async () => {
     setIsImageModalOpen(false);
-    updateIdeaImage(bgImage.id);
+    if (bgImage) {
+      updateIdeaImage(bgImage.id);
+    }
   };
 
   const IconButton = ({ icon: Icon, onClick, ...props }) => (
@@ -104,6 +108,7 @@ export const ImageBanner = ({
       {isImageModalOpen && (
         <ImageModal
           handleSelectImage={handleSelectImage}
+          handleDeleteImage={handleDeleteImage}
           onClose={handleCloseImageModal}
           isOpen={true}
         />
