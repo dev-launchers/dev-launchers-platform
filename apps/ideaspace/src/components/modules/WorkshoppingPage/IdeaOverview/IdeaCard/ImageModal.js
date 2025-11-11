@@ -138,7 +138,7 @@ export const ImageModal = ({
                 {images && (
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 overflow-y-auto max-h-[420px] w-full">
                     {images.map((image) => (
-                      <div key={image.original_url}>
+                      <div key={image.id}>
                         <div
                           className="w-full h-[103px] cursor-pointer"
                           onClick={() => {
@@ -148,7 +148,7 @@ export const ImageModal = ({
                           <Image
                             width={141}
                             height={103}
-                            src={image.original_url}
+                            src={image.small_url}
                             alt={image.name}
                             id={image.id}
                             className="rounded-lg w-full h-full"

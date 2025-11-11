@@ -121,7 +121,7 @@ function IdeaCard({ cards, cardType }) {
         <div>
           <IdeaCardImg
             cardId={cards.id}
-            ideaImage={cards.ideaImage?.data?.attributes?.original_url}
+            ideaImage={cards.ideaImage?.data?.attributes?.medium_url}
           />
 
           <atoms.Box
