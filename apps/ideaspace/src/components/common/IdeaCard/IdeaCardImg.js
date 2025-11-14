@@ -2,32 +2,20 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { ImgButton } from './StyledIdeaCard';
-
 const IdeaCardImg = ({ cardId, ideaImage }) => {
   return (
     <Link href={`/ideaspace/workshop/${cardId}`}>
-      <ImgButton
-        style={{
-          backgroundColor: '#FFFFFF',
-          height: '176px',
-          position: 'relative',
-          margin: '0rem 0rem 1rem',
-        }}
-      >
+      <div className="w-full h-[228px] bg-[#FFFFFF] relative">
         <Image
           alt="idea_image"
-          src={
-            ideaImage ||
-            `https://picsum.photos/seed/${cardId}/402/176?random=${cardId}`
-          }
+          src={ideaImage}
           layout="fill"
           style={{
-            borderRadius: '0.875rem',
+            borderRadius: '1rem 1rem 0rem 0rem',
             backgroundColor: 'rgba(0, 0, 0, 0.05)',
           }}
         />
-      </ImgButton>
+      </div>
     </Link>
   );
 };

@@ -46,7 +46,6 @@ const nextConfig = {
       'localhost',
       'apiv4-staging.devlaunchers.org',
       //== idea space images domains
-      'picsum.photos',
       'images.pexels.com',
     ],
     disableStaticImages: true,
