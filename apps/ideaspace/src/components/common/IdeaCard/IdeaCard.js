@@ -10,7 +10,8 @@ import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
-import { ActivityDetails, AuthorProfilePicture } from './StyledIdeaCard';
+import { AuthorProfilePicture } from './StyledIdeaCard';
+import { ImagePreviewSVG } from '../SVG/ImagePreview';
 
 function IdeaCard({ cards, cardType }) {
   const [tagContent, setTagContent] = useState(cards.status);
@@ -103,7 +104,6 @@ function IdeaCard({ cards, cardType }) {
     <Link href={{ pathname: urlPath }}>
       <atoms.Box
         flexDirection="column"
-        padding="0.5rem 0.5rem 1.5rem 0.5rem"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           borderRadius: '1.25rem',
@@ -111,6 +111,7 @@ function IdeaCard({ cards, cardType }) {
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
             : 'none',
+          height: '440px',
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -119,13 +120,26 @@ function IdeaCard({ cards, cardType }) {
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
         <div>
-          <IdeaCardImg cardId={cards.id} cardImg={cards.imgSrc} />
+          {cards.ideaImage && cards.ideaImage?.data?.attributes?.medium_url ? (
+            <IdeaCardImg
+              key={cards.id}
+              cardId={cards.id}
+              ideaImage={cards.ideaImage?.data?.attributes?.medium_url}
+            />
+          ) : (
+            <div
+              key={cards.id}
+              className="w-full h-[228px] bg-[#F6F6F6] rounded-t-2xl flex items-center justify-center mb-4"
+            >
+              <ImagePreviewSVG />
+            </div>
+          )}
 
           <atoms.Box
             flexDirection="row"
             alignItems="flex-start"
             padding="0rem 0.75rem"
-            margin=" 0 0 0.5rem 0"
+            margin="1rem 0 0.875rem 0"
           >
             <AuthorProfilePicture
               alt={`image of author ${cards.author?.data?.attributes.username}`}
@@ -160,7 +174,7 @@ function IdeaCard({ cards, cardType }) {
                 lineHeight: '1.5rem',
                 fontFamily: 'Helvetica',
                 fontWeight: '700',
-                margin: '0rem 0rem 0.375rem',
+                margin: '0rem 0rem 0.875rem',
                 display: '-webkit-box',
                 WebkitLineClamp: 1,
                 WebkitBoxOrient: 'vertical',
@@ -197,7 +211,7 @@ function IdeaCard({ cards, cardType }) {
             >
               {cards.description}
             </atoms.Typography>
-            <ActivityDetails>
+            <div className="flex flex-row  justify-between w-full mt-9">
               <atoms.Typography
                 type="p"
                 style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
@@ -210,7 +224,7 @@ function IdeaCard({ cards, cardType }) {
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>
-            </ActivityDetails>
+            </div>
           </atoms.Box>
         </div>
 
