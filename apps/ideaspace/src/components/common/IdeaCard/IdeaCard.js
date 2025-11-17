@@ -120,7 +120,7 @@ function IdeaCard({ cards, cardType }) {
         <IdeaCardTag status={tagContent} />
       </atoms.Box> */}
         <div>
-          {cards.ideaImage && cards.ideaImage?.data?.attributes?.medium_url ? (
+          {cards.ideaImage?.data?.attributes?.medium_url ? (
             <IdeaCardImg
               key={cards.id}
               cardId={cards.id}

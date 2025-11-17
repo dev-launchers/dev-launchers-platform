@@ -29,6 +29,7 @@ import {
 } from '@devlaunchers/components/src/components/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
+import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
 
 export const IdeaCard = ({
   ideaImage,
@@ -305,11 +306,24 @@ export const IdeaCard = ({
               </div>
             </div>
           </div>
-          <ImageBanner
-            bannerImage={bannerImage}
-            updateIdeaImage={handleUpdateIdeaImage}
-            ideaId={ideaId}
-          />
+          {isOwner ? (
+            <ImageBanner
+              bannerImage={bannerImage}
+              updateIdeaImage={handleUpdateIdeaImage}
+              ideaId={ideaId}
+            />
+          ) : (
+            <div
+              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat ${
+                !bannerImage ? 'bg-[#F6F6F6]' : ''
+              }`}
+              {...(bannerImage && {
+                style: { backgroundImage: `url(${bannerImage.original_url})` },
+              })}
+            >
+              {!bannerImage && <ImagePreviewSVG />}
+            </div>
+          )}
         </div>
         {showEditSuccess && (
           <Alert
