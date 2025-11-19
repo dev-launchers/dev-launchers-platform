@@ -81,7 +81,7 @@ const responseBody = (response: AxiosResponse) =>
 const errorBody = (error: AxiosError) => (error ? error : null);
 
 const requests = {
-  get: <T>(url: string, params?: URLSearchParams) =>
+  get: <T>(url: string, params?: any) =>
     axios.get<T>(url, { params }).then(responseBody).catch(errorBody),
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
@@ -158,6 +158,9 @@ const Ideas = {
     requests.get<Idea>(`/idea-cards/${id}`, params),
   post: (body: {}) => requests.post<Idea>('/idea-cards/', body),
   put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body),
+  findByName: (name: string) => {
+    return requests.get('idea-cards?filters[ideaName][$eqi]='+name);
+  },
 };
 
 const User = {

@@ -27,6 +27,7 @@ import {
 } from '../../modules/SubmissionForm/StyledSubmissionForm';
 
 import Alert from '../SubmissionAlert/Alert.js';
+import {agent} from "@devlaunchers/utility";
 
 const compareValuesToInitial = (values, initialValues) => {
   const name = Object.keys(values);
@@ -89,6 +90,8 @@ const IdeaForm = ({
   const [alertVariant, setAlertVariant] = useState('submit'); // 'submit' or 'edit'
 
   const [isChecked, setIsChecked] = React.useState(false);
+
+  const [nameTaken, setNameTaken] = useState(false);
 
   const handleCheckboxChange = (checked) => {
     setIsChecked(checked);
@@ -179,6 +182,21 @@ const IdeaForm = ({
     }
   };
 
+  const checkIdeaName = async (name) => {
+    if (!name || name.trim().length === 0) {
+      setNameTaken(false);
+      return;
+    }
+
+    try {
+      const res = await agent.Ideas.findByName(name);
+      setNameTaken(res.length > 0);
+    } catch (err) {
+      console.error("Error checking idea name", err);
+      setNameTaken(false);
+    }
+  };
+
   return (
     <atoms.Box
       margin="0rem"
@@ -229,36 +247,53 @@ const IdeaForm = ({
                     Idea name
                     <RequiredAsterisk>*</RequiredAsterisk>
                   </FieldLabel>
+
                   <TextAreaWrapper
-                    hasError={touched.ideaName && errors.ideaName}
-                    isCompleted={isFieldCompleted(
-                      values.ideaName,
-                      errors.ideaName,
-                      'ideaName'
-                    )}
-                    isFocused={focusedField === 'ideaName'}
+                    hasError={nameTaken || (touched.ideaName && errors.ideaName)}
+                    isCompleted={
+                      !nameTaken &&
+                      values.ideaName.trim().length > 0 &&
+                      !errors.ideaName
+                    }
+                    isFocused={
+                      !(
+                        !nameTaken &&
+                        values.ideaName.trim().length > 0 &&
+                        !errors.ideaName
+                      ) && focusedField === 'ideaName'
+                    }
                   >
                     <StyledInput
                       name="ideaName"
                       placeholder="Title your idea"
                       value={values.ideaName || ''}
-                      onChange={(e) =>
-                        setFieldValue('ideaName', e.target.value.slice(0, 80))
-                      }
+                      onChange={(e) => {
+                        const text = e.target.value.slice(0, 80);
+                        setFieldValue('ideaName', text);
+                      }}
+                      onKeyUp={() => {
+                        if (nameTaken) setNameTaken(false);
+                      }}
                       maxLength={80}
                       onFocus={() => setFocusedField('ideaName')}
-                      onBlur={(e) => {
+                      onBlur={async (e) => {
                         handleBlur(e);
+                        await checkIdeaName(values.ideaName);
                         setFocusedField(null);
                       }}
                     />
                   </TextAreaWrapper>
-                  {renderFieldMessage(
-                    'ideaName',
-                    values.ideaName,
-                    touched.ideaName,
-                    errors.ideaName,
-                    80
+                  {!nameTaken &&
+                    values.ideaName.trim().length > 0 &&
+                    !errors.ideaName && (
+                      <SuccessText>Completed!</SuccessText>
+                    )
+                  }
+                  
+                  {nameTaken && (
+                    <ErrorText>
+                      This idea name is already in use. Please try something else.
+                    </ErrorText>
                   )}
                 </FieldWrapper>
 
