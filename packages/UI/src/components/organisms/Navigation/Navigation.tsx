@@ -125,7 +125,7 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
       const isLeader = user.projects?.some((project: any) =>
         project.team?.leaders?.some((leader: any) => leader.id === user.id)
       );
-      setIsLeader(!isLeader);
+      setIsLeader(isLeader);
     } else {
       setIsLeader(false);
     }
