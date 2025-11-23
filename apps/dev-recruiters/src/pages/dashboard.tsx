@@ -9,7 +9,7 @@ import SearchBar from '../components/common/SearchBar/searchbar';
 import { useRouter } from 'next/router';
 import { Expectation, Project, Skill, SkillLevel } from '@devlaunchers/models';
 
-interface Opportunity {
+export interface Opportunity {
   id: string;
   title: string;
   skills: Skill[];
@@ -34,6 +34,7 @@ const Dashboard: React.FC = () => {
   const [activeRoles, setActiveRoles] = useState<Opportunity[]>([]);
   const [archivedRoles, setArchivedRoles] = useState<Opportunity[]>([]);
   const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   // roleCategory is the department.
 
   // restrict /dashboard page for project leaders only.
@@ -145,6 +146,12 @@ const Dashboard: React.FC = () => {
     router.push(`/dev-recruiters/create-role?edit=${position.id}`);
   };
 
+  const onUpdateComplete = () => {
+    setIsModalOpen(false);
+    // Refresh the dashboard data after archiving/unarchiving
+    router.replace(router.asPath);
+  };
+
   const handleReviewApplicants = (position: Opportunity) => {
     if (position && position !== null && position !== undefined) {
       // navigate to review-applicants page with role id param
@@ -156,11 +163,8 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  const handleArchive = (position: any) => {
-    // move from activeRoles -> archivedRoles (local state only)
-    setActiveRoles((prev) => prev.filter((p) => p.id !== position.id));
-    setArchivedRoles((prev) => [{ ...position, isHidden: true }, ...prev]);
-    // TODO: call backend API to persist archive change
+  const handleArchive = () => {
+    setIsModalOpen(true);
   };
 
   const handleRepost = (position: any) => {
@@ -197,7 +201,7 @@ const Dashboard: React.FC = () => {
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
               </Button>
-              <Button>
+              <Button onClick={() => handleArchive()}>
                 <Archive className="w-4 h-4 mr-2" />
                 Archive Role
               </Button>

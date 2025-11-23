@@ -16,6 +16,7 @@ export const DEFAULT_USER = {
     username: '',
     discriminator: '',
   },
+  projects: [],
   interests: [],
 };
 

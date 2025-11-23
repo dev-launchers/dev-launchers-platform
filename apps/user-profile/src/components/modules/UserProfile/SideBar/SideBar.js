@@ -4,6 +4,7 @@ import { sidebarActions } from './../../../../state/actions';
 import ProfileImage from '../../../common/ProfileImage';
 
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
+import { useState, useEffect } from 'react';
 import UserInfo from './UserInfo';
 import {
   OutlinedOverview,
@@ -11,15 +12,19 @@ import {
   OutlinedProfiles,
   OutlinedIdeas,
   OutlinedOpportunities,
+  OutlinedNote,
 } from './../../../common/Icons';
 
 import OutlinedCat from './../../../common/CatIcon/OutlinedCat';
+import { useRouter } from 'next/router';
 
 function SideBar() {
-  const { userData } = useUserDataContext();
+  const { userData, isAuthenticated, isLoading } = useUserDataContext();
   const { sidebarState, sidebarDispatch } = useSidebarDataContext();
+  const [isLeader, setIsLeader] = useState(false);
 
   const { pages } = sidebarState;
+  const router = useRouter();
 
   const styling = {
     li: 'flex py-3 pl-6 items-center gap-3 rounded-3xl',
@@ -57,8 +62,26 @@ function SideBar() {
 
   styling.chatbot = getActiveStyling(pages.showChatbot);
 
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    if (isAuthenticated && userData) {
+      const isLeader = userData.projects?.some((project) =>
+        project.team?.leaders?.some((leader) => leader.id === userData.id)
+      );
+      setIsLeader(!isLeader);
+    } else {
+      setIsLeader(false);
+    }
+  }, [isAuthenticated, userData, isLoading]);
+
   const onOverviewClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_OVERVIEW_SETTING });
+  };
+  const onDashboardClick = () => {
+    router.push('/dev-recruiters/dashboard');
   };
   const onProjectsClick = () => {
     sidebarDispatch({ type: sidebarActions.SHOW_PROJECTS_SETTING });
@@ -97,6 +120,17 @@ function SideBar() {
             OVERVIEW
           </Typography>
         </li>
+        {isLeader && (
+          <li className={styling.overview.li} onClick={onDashboardClick}>
+            <OutlinedNote colorClass={styling.overview.iconColor} />
+            <Typography
+              variant="secondary"
+              className={styling.overview.typography}
+            >
+              DASHBOARD
+            </Typography>
+          </li>
+        )}
         {/* <li className={styling.projects.li} onClick={onProjectsClick}>
           <OutlinedProjects colorClass={styling.projects.iconColor} />
           <Typography type="p" className={styling.projects.typography}>
