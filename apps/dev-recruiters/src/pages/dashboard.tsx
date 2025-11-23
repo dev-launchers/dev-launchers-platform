@@ -34,7 +34,6 @@ const Dashboard: React.FC = () => {
   const [activeRoles, setActiveRoles] = useState<Opportunity[]>([]);
   const [archivedRoles, setArchivedRoles] = useState<Opportunity[]>([]);
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState(false);
   // roleCategory is the department.
 
   // restrict /dashboard page for project leaders only.
@@ -146,12 +145,6 @@ const Dashboard: React.FC = () => {
     router.push(`/dev-recruiters/create-role?edit=${position.id}`);
   };
 
-  const onUpdateComplete = () => {
-    setIsModalOpen(false);
-    // Refresh the dashboard data after archiving/unarchiving
-    router.replace(router.asPath);
-  };
-
   const handleReviewApplicants = (position: Opportunity) => {
     if (position && position !== null && position !== undefined) {
       // navigate to review-applicants page with role id param
@@ -164,7 +157,7 @@ const Dashboard: React.FC = () => {
   };
 
   const handleArchive = () => {
-    setIsModalOpen(true);
+    // will be implemented in the future
   };
 
   const handleRepost = (position: any) => {
