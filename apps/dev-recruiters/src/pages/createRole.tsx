@@ -85,6 +85,10 @@ const OpportunityForm = () => {
       const isLeader = userData.projects?.some((project: any) =>
         project.team?.leaders?.some((leader: any) => leader.id === userData.id)
       );
+
+      if (!isLeader) {
+        router.replace('/');
+      }
     } else {
       router.replace('/');
     }
