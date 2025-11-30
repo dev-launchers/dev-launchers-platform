@@ -33,7 +33,9 @@ const ReviewApplicantsByRole: React.FC = () => {
 
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project: any) =>
-        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+        project.team?.leaders?.some(
+          (l: any) => l.leader?.email === userData.email
+        )
       );
     } else {
       router.replace('/');
@@ -50,9 +52,11 @@ const ReviewApplicantsByRole: React.FC = () => {
     if (role) {
       return [
         {
-          title: role,
-          projectId: projectId || '',
-          projectTitle: projectName || '',
+          title: Array.isArray(role) ? role[0] : role,
+          projectId: Array.isArray(projectId) ? projectId[0] : projectId || '',
+          projectTitle: Array.isArray(projectName)
+            ? projectName[0]
+            : projectName || '',
         },
       ];
     }
@@ -66,7 +70,7 @@ const ReviewApplicantsByRole: React.FC = () => {
         projectTitle: project.title ?? '',
       }));
     });
-  }, [userProjects, role]);
+  }, [userProjects, role, projectId, projectName]);
 
   const getApplicantsByRolesOrProjects = async (userRoles: UserRoleType[]) => {
     const params = new URLSearchParams();

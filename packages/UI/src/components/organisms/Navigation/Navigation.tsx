@@ -1,3 +1,4 @@
+import { agent } from '@devlaunchers/utility';
 import {
   ChevronDown,
   Menu,
@@ -14,7 +15,6 @@ import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-import { Typography } from '../../../components/atoms';
 
 // Centralized styles
 const styles = {
@@ -122,9 +122,13 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
     }
 
     if (isAuthenticated && user) {
+      console.log('projects', user.projects);
+
       const isLeader = user.projects?.some((project: any) =>
-        project.team?.leaders?.some((leader: any) => leader.id === user.id)
+        project.team?.leaders?.some((l: any) => l.leader?.email === user.email)
       );
+
+      console.log('isLeader', isLeader);
       setIsLeader(isLeader);
     } else {
       setIsLeader(false);

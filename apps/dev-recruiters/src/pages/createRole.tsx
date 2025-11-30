@@ -83,7 +83,9 @@ const OpportunityForm = () => {
 
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project: any) =>
-        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+        project.team?.leaders?.some(
+          (l: any) => l.leader?.email === userData.email
+        )
       );
 
       if (!isLeader) {

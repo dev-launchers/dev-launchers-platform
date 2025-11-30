@@ -69,7 +69,7 @@ function SideBar() {
 
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project) =>
-        project.team?.leaders?.some((leader) => leader.id === userData.id)
+        project.team?.leaders?.some((l) => l.leader?.email === userData.email)
       );
       setIsLeader(isLeader);
     } else {
