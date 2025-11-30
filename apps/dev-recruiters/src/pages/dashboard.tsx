@@ -9,7 +9,7 @@ import SearchBar from '../components/common/SearchBar/searchbar';
 import { useRouter } from 'next/router';
 import { Expectation, Project, Skill, SkillLevel } from '@devlaunchers/models';
 
-interface Opportunity {
+export interface Opportunity {
   id: string;
   title: string;
   skills: Skill[];
@@ -46,7 +46,9 @@ const Dashboard: React.FC = () => {
 
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project: any) =>
-        project.team?.leaders?.some((leader: any) => leader.id === userData.id)
+        project.team?.leaders?.some(
+          (l: any) => l.leader?.email === userData.email
+        )
       );
     } else {
       router.replace('/');
@@ -156,11 +158,8 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  const handleArchive = (position: any) => {
-    // move from activeRoles -> archivedRoles (local state only)
-    setActiveRoles((prev) => prev.filter((p) => p.id !== position.id));
-    setArchivedRoles((prev) => [{ ...position, isHidden: true }, ...prev]);
-    // TODO: call backend API to persist archive change
+  const handleArchive = () => {
+    // will be implemented in the future
   };
 
   const handleRepost = (position: any) => {
@@ -197,7 +196,7 @@ const Dashboard: React.FC = () => {
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
               </Button>
-              <Button>
+              <Button onClick={() => handleArchive()}>
                 <Archive className="w-4 h-4 mr-2" />
                 Archive Role
               </Button>

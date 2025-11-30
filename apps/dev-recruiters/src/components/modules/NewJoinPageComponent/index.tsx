@@ -40,9 +40,7 @@ const NewJoinPageComponent: React.FunctionComponent<Props> = ({
 
       <BoxContainer paddingVertical={75}>
         <SelectRoleContainer>
-          <SelectRoleText>
-            Select the role that you're interested in:
-          </SelectRoleText>
+          <SelectRoleText>Find your perfect role:</SelectRoleText>
         </SelectRoleContainer>
       </BoxContainer>
 
