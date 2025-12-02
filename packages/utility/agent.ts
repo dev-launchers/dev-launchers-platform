@@ -9,6 +9,7 @@ import {
   Notification,
   DlTalCommUser,
   TalCommUser,
+  Image,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -80,7 +81,7 @@ const responseBody = (response: AxiosResponse) =>
 const errorBody = (error: AxiosError) => (error ? error : null);
 
 const requests = {
-  get: <T>(url: string, params?: URLSearchParams) =>
+  get: <T>(url: string, params?: any) =>
     axios.get<T>(url, { params }).then(responseBody).catch(errorBody),
   post: <T>(url: string, body: {}) =>
     axios.post<T>(url, { data: body }).then(responseBody),
@@ -104,7 +105,10 @@ const requests = {
 };
 
 const Applicant = {
-  get: () => requests.get<NewApplicant[]>('applicants'),
+  get: (filter?: string) => {
+    const url = filter ? `applicants?${filter}` : 'applicants';
+    return requests.get<NewApplicant[]>(url);
+  },
   post: (data: NewApplicant) => requests.post<NewApplicant>('applicants', data),
 };
 
@@ -143,6 +147,9 @@ const Opportunities = {
       `opportunities/${oppId}`,
       new URLSearchParams('_publicationState=live&populate=projects')
     ),
+  post: (body: {}) => requests.post<Opportunity>('/opportunities/', body),
+  put: (id: string, body: {}) =>
+    requests.put<Opportunity>(`/opportunities/${id}`, body),
 };
 
 const Ideas = {
@@ -151,6 +158,9 @@ const Ideas = {
     requests.get<Idea>(`/idea-cards/${id}`, params),
   post: (body: {}) => requests.post<Idea>('/idea-cards/', body),
   put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body),
+  findByName: (name: string) => {
+    return requests.get('idea-cards?filters[ideaName][$eqi]='+name);
+  },
 };
 
 const User = {
@@ -208,6 +218,14 @@ const DlTalcommuser = {
   }) => requests.post('/dl-tal-communities', body.data),
 };
 
+const Images = {
+  get: (keyword: string, params?: URLSearchParams) =>
+    requests.get<Image[]>(
+      `/images/keyword/${keyword}`,
+      new URLSearchParams(params)
+    ),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -223,6 +241,7 @@ const agent = {
   Talcommuser,
   GoogledriveFile,
   DlTalcommuser,
+  Images,
 };
 
 export default agent;

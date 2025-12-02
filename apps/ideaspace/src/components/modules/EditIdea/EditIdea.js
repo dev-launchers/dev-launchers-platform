@@ -126,7 +126,7 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     involveLevel: Yup.string().required('Level of involvement is Required.'),
   });
 
-  const submitHandler = async (values) => {
+  const submitHandler = async (values, actions) => {
     values['ideaName'] = values['ideaName'].trim();
     values['tagline'] = values['tagline'].trim();
     values['description'] = values['description'].trim();
@@ -134,15 +134,50 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     values['features'] = values['features'].trim();
     values['experience'] = values['experience'].trim();
     values['extraInfo'] = values['extraInfo'].trim();
+
     // Setting a default or valid status value if it's empty
     if (!values['status'] || values['status'].trim() === '') {
       values['status'] = 'workshopping';
     }
+
     setSending(true);
 
     try {
       const payload = { data: values };
-      const data = cleanData(await agent.Ideas.put(ideaId, payload));
+      const response = await agent.Ideas.put(ideaId, payload);
+
+      // Check for error response
+      if (response.error) {
+        if (response.error.message.includes('This attribute must be unique')) {
+          actions.setFieldError(
+            'ideaName',
+            'This idea name is already in use. Please try something else'
+          );
+          actions.setFieldTouched('ideaName', true, false);
+          setSending(false);
+
+          // Scroll to the field
+          setTimeout(() => {
+            const ideaNameElement = document.querySelector(
+              '[data-field="ideaName"]'
+            );
+            if (ideaNameElement) {
+              ideaNameElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              });
+            }
+          }, 100);
+
+          // Throwing specific error type so IdeaForm knows not to show error alert
+          const duplicateError = new Error('Duplicate idea name');
+          duplicateError.isDuplicateError = true;
+          throw duplicateError;
+        }
+        throw new Error('Unable to update idea');
+      }
+
+      const data = cleanData(response);
 
       if (data.ideaName) {
         setunsavedChanges(false);
@@ -154,7 +189,14 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
     } catch (error) {
       setSending(false);
       setunsavedChanges(true);
-      confirmFailure();
+
+      // Only show the failure dialog if it's not a duplicate error
+      if (!error.isDuplicateError) {
+        confirmFailure();
+      }
+
+      // Re-throw the error so IdeaForm can handle it properly
+      throw error;
     }
   };
 

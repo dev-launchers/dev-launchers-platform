@@ -2,17 +2,6 @@ import styled from 'styled-components';
 import { atoms } from '@devlaunchers/components/src/components';
 import Avatar from '@devlaunchers/components/src/components/atoms/Avatar/Avatar';
 
-export const IdeaCardButton = styled((props) => (
-  <atoms.Button buttonSize="standard" buttonType="alternative" {...props} />
-))`
-  margin: 0rem 1.25rem 0rem;
-`;
-
-export const ImgButton = styled.button`
-  padding: 0rem 0rem 1rem;
-  width: 100%;
-`;
-
 export const StatuBox = styled.div`
   display: flex;
   flex-direction: row;
@@ -36,13 +25,6 @@ export const StatuBox = styled.div`
   flex: none;
   order: 0;
   flex-grow: 0;
-`;
-
-export const ActivityDetails = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 2rem;
 `;
 
 export const AuthorProfilePicture = styled(Avatar)`
