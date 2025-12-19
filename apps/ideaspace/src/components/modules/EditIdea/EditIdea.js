@@ -292,9 +292,7 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
         {!isAuthenticated ? (
           <SignInSection
             label="Please sign in to edit your idea!"
-            redirectURL={
-              process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/dashboard'
-            }
+            redirectURL={process.env.NEXT_PUBLIC_FRONT_END_URL + '/users/me'}
           />
         ) : (
           <>

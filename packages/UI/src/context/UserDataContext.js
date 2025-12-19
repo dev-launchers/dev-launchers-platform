@@ -49,6 +49,7 @@ function useUserDataHook() {
       'populate[projects][populate][newMeetingTimes][populate]=*',
       'populate[projects][populate][images][populate]=*',
       'populate[projects][populate][opportunities][populate]=*',
+      'populate[idea_cards][filters][status][$ne]=deleted',
       'populate[idea_cards][populate]=*',
       'populate[ownedCards][populate]=*',
     ].join('&');

@@ -202,7 +202,7 @@ export const IdeaCard = ({
     sessionStorage.setItem('showDeleteAlertSuccess', 'true');
     setShouldShowDeleteDialog(false);
     window.onbeforeunload = null; // Clear the beforeunload event
-    window.location.href = '/ideaspace/dashboard';
+    window.location.href = '/users/me';
   };
 
   //== Update Idea Image

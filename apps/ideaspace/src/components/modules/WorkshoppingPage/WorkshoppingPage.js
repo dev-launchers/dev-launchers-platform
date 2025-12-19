@@ -51,7 +51,7 @@ export default function WorkshoppingPage(props) {
   // if the idea is deleted, redirect to dashboard
   React.useEffect(async () => {
     if (data?.status === 'deleted') {
-      window.location.href = '/ideaspace/dashboard';
+      window.location.href = '/users/me';
     }
   }, [data]);
 
