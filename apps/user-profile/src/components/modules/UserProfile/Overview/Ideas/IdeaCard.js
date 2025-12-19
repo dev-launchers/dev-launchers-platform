@@ -80,6 +80,14 @@ function IdeaCard({ idea }) {
             textWeight="bold"
             variant="secondary"
             className="m-0"
+            style={{
+              display: '-webkit-box',
+              WebkitLineClamp: 1,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              wordBreak: 'break-all',
+            }}
           >
             {idea.ideaName}
           </atoms.Typography>
