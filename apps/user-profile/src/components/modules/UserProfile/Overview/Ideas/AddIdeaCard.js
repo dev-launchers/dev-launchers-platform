@@ -12,7 +12,7 @@ function AddIdeaCard() {
           'var(--btn-surface-brand-tertiary, rgba(212, 194, 229, 0.25))',
       }}
       onClick={() => {
-        router.push('/ideaspace/submit');
+        router.push('/ideaspace/submit?ref=user-profile');
       }}
     >
       <Plus size={18} />

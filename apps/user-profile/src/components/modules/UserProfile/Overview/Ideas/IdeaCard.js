@@ -6,7 +6,10 @@ import { ImagePreviewSVG } from './ImagePreview';
 import { MessageCircle, ArrowBigUpDash } from 'lucide-react';
 
 function IdeaCard({ idea }) {
-  const urlPath = `/ideaspace/workshop/${idea.id}`;
+  const urlPath = {
+    pathname: '/ideaspace/workshop/[ideaId]',
+    query: { ideaId: idea.id, ref: 'user-profile' },
+  };
   const [isHovered, setIsHovered] = useState(false);
   const daysAgo = () => {
     const update = new Date(idea.updatedAt);
@@ -33,7 +36,7 @@ function IdeaCard({ idea }) {
     }
   };
   return (
-    <Link href={{ pathname: urlPath }}>
+    <Link href={urlPath}>
       <atoms.Box
         flexDirection="column"
         style={{

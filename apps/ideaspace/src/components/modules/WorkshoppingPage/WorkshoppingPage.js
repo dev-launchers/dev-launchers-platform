@@ -26,12 +26,24 @@ import { useFetchIdea } from './useFetchIdea';
 
 export default function WorkshoppingPage(props) {
   const router = useRouter();
+  const [referrer, setReferrer] = React.useState(null);
+  const returnBackUrl =
+    referrer === 'user-profile' ? '/users/me' : '/ideaspace/browse';
 
+  // Capture ref once, then strip it from the URL to keep things clean.
   React.useEffect(() => {
-    if (!router.isReady) {
-      return;
+    if (!router.isReady) return;
+
+    if (router.query.ref && !referrer) {
+      setReferrer(router.query.ref);
     }
-  }, [router.isReady]);
+
+    if (router.query.ref) {
+      router.replace(`/ideaspace/workshop/${router.query.ideaId}`, undefined, {
+        shallow: true,
+      });
+    }
+  }, [router.isReady, router.query.ref, router.query.ideaId, referrer, router]);
 
   const [comments, setComments] = useState([]);
 
@@ -79,7 +91,7 @@ export default function WorkshoppingPage(props) {
             <div className="flex gap-4 items-center">
               <div
                 className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
-                onClick={() => router.push('/ideaspace/browse')}
+                onClick={() => router.push(returnBackUrl)}
               >
                 <ChevronLeft />
               </div>
