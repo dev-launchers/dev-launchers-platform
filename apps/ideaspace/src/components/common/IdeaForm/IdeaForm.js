@@ -27,7 +27,7 @@ import {
 } from '../../modules/SubmissionForm/StyledSubmissionForm';
 
 import Alert from '../SubmissionAlert/Alert.js';
-import {agent} from "@devlaunchers/utility";
+import { agent } from '@devlaunchers/utility';
 
 const compareValuesToInitial = (values, initialValues) => {
   const name = Object.keys(values);
@@ -192,7 +192,7 @@ const IdeaForm = ({
       const res = await agent.Ideas.findByName(name);
       setNameTaken(res.length > 0);
     } catch (err) {
-      console.error("Error checking idea name", err);
+      console.error('Error checking idea name', err);
       setNameTaken(false);
     }
   };
@@ -249,7 +249,9 @@ const IdeaForm = ({
                   </FieldLabel>
 
                   <TextAreaWrapper
-                    hasError={nameTaken || (touched.ideaName && errors.ideaName)}
+                    hasError={
+                      nameTaken || (touched.ideaName && errors.ideaName)
+                    }
                     isCompleted={
                       !nameTaken &&
                       values.ideaName.trim().length > 0 &&
@@ -285,14 +287,12 @@ const IdeaForm = ({
                   </TextAreaWrapper>
                   {!nameTaken &&
                     values.ideaName.trim().length > 0 &&
-                    !errors.ideaName && (
-                      <SuccessText>Completed!</SuccessText>
-                    )
-                  }
-                  
+                    !errors.ideaName && <SuccessText>Completed!</SuccessText>}
+
                   {nameTaken && (
                     <ErrorText>
-                      This idea name is already in use. Please try something else.
+                      This idea name is already in use. Please try something
+                      else.
                     </ErrorText>
                   )}
                 </FieldWrapper>
