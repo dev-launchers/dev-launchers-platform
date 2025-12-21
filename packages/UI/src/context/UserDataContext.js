@@ -57,6 +57,7 @@ function useUserDataHook() {
       'populate[projects][populate][opportunities][populate]=*',
       'populate[idea_cards][populate]=*',
       'populate[ownedCards][populate]=*',
+      'populate[interests]=*',
     ].join('&');
 
     axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?${populateParams}`, {
