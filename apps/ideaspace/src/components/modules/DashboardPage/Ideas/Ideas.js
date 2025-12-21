@@ -1,10 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../../common/IdeaCard/IdeaCard';
 import submitImage from '../../../../images/submitButton.svg';
-
-import { IdeaCardWrapper, SubmitButton } from './StyledIdeas';
 
 const Ideas = ({ totalCard }) => {
   return (
@@ -19,21 +18,25 @@ const Ideas = ({ totalCard }) => {
         </atoms.Typography>
       </atoms.Box>
 
-      <IdeaCardWrapper>
+      <div className="flex flex-wrap  mt-6 gap-5 md:gap-8 xl:gap-16">
         {totalCard.map((item) => {
           return <IdeaCard cards={item} key={item.id} cardType="mine" />;
         })}
 
         <Link href="/ideaspace/submit">
-          <SubmitButton style={{ cursor: 'pointer' }}>
-            <img
+          <button
+            type="button"
+            className="flex items-center cursor-pointer w-[22.5rem] h-[22.5rem] relative"
+          >
+            <Image
               alt="submit_image"
               src={submitImage}
-              style={{ width: '100%' }}
+              layout="fill"
+              objectFit="cover"
             />
-          </SubmitButton>
+          </button>
         </Link>
-      </IdeaCardWrapper>
+      </div>
     </atoms.Box>
   );
 };

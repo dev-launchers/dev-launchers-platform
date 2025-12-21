@@ -12,7 +12,6 @@ import {
   IdeaName,
   IdeaTagLine,
   BottomView,
-  Button,
   StyledText,
 } from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
@@ -29,6 +28,8 @@ import {
   PopoverContent,
 } from '@devlaunchers/components/src/components/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
+import { ImageBanner } from './ImageBanner';
+import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
 
 export const IdeaCard = ({
   ideaImage,
@@ -52,6 +53,7 @@ export const IdeaCard = ({
     ideaData &&
     ideaData.ideaOwner &&
     Number(userData.id) === Number(ideaData.ideaOwner.id);
+  const [bannerImage] = useState(ideaImage || null);
 
   useEffect(() => {
     if (!isLoading) loadDataOnlyOnce(); // query database
@@ -203,6 +205,26 @@ export const IdeaCard = ({
     window.location.href = '/ideaspace/dashboard';
   };
 
+  //== Update Idea Image
+  const handleUpdateIdeaImage = async (imageId) => {
+    // if the image id is the same as the current image id, don't update
+    if (imageId === ideaImage?.id) {
+      return;
+    }
+    const payload = {
+      data: {
+        ...ideaData,
+        ideaImage: imageId,
+      },
+    };
+    try {
+      const response = await agent.Ideas.put(ideaId, payload);
+    } catch (error) {
+      console.error('Failed to update idea image:', error);
+      setShowEditError(true);
+    }
+  };
+
   useEffect(() => {
     if (isModalOpen) {
       document.body.style.overflow = 'hidden';
@@ -284,13 +306,24 @@ export const IdeaCard = ({
               </div>
             </div>
           </div>
-          <div className="w-full h-[256px] rounded-[20px] overflow-hidden">
-            <img
-              className="w-full h-full object-cover"
-              src="https://placehold.co/680x304"
-              alt="Idea Image"
+          {isOwner ? (
+            <ImageBanner
+              bannerImage={bannerImage}
+              updateIdeaImage={handleUpdateIdeaImage}
+              ideaId={ideaId}
             />
-          </div>
+          ) : (
+            <div
+              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat ${
+                !bannerImage ? 'bg-[#F6F6F6]' : ''
+              }`}
+              {...(bannerImage && {
+                style: { backgroundImage: `url(${bannerImage.original_url})` },
+              })}
+            >
+              {!bannerImage && <ImagePreviewSVG />}
+            </div>
+          )}
         </div>
         {showEditSuccess && (
           <Alert

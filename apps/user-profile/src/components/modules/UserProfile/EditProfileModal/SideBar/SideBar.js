@@ -124,18 +124,27 @@ function SideBar() {
             BIO
           </Typography>
         </li>
-        {/* <li className={styling.details.li} onClick={onDetailsClick}>
+        <li className={styling.details.li} onClick={onDetailsClick}>
           <OutlinedNote colorClass={styling.details.iconColor} />
-          <Typography type="p" className={styling.details.typography}> DETAILS </Typography>
+          <Typography type="p" className={styling.details.typography}>
+            {' '}
+            DETAILS{' '}
+          </Typography>
         </li>
-        <li className={styling.skills.li} onClick={onSkillsClick} >
+        <li className={styling.skills.li} onClick={onSkillsClick}>
           <OutlinedWrench colorClass={styling.skills.iconColor} />
-          <Typography type="p" className={styling.skills.typography} > SKILLS </Typography>
+          <Typography type="p" className={styling.skills.typography}>
+            {' '}
+            SKILLS{' '}
+          </Typography>
         </li>
-        <li className={styling.interests.li} onClick={onInterestsClick} >
+        <li className={styling.interests.li} onClick={onInterestsClick}>
           <OutlinedShapes colorClass={styling.interests.iconColor} />
-          <Typography type="p" className={styling.interests.typography} > INTERESTS </Typography>
-        </li> */}
+          <Typography type="p" className={styling.interests.typography}>
+            {' '}
+            INTERESTS{' '}
+          </Typography>
+        </li>
       </ul>
     </div>
   );

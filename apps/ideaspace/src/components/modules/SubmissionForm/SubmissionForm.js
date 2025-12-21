@@ -77,7 +77,7 @@ function SubmissionForm() {
     //   .required('Please select your level of involvement'),
   });
 
-  const submitHandler = async (values) => {
+  const submitHandler = async (values, actions) => {
     values['author'] = userData.id;
     values['ideaOwner'] = userData.id;
     values['status'] = 'workshopping';
@@ -95,6 +95,31 @@ function SubmissionForm() {
     try {
       const response = await agent.Ideas.post(values);
       if (response.error) {
+        if (response.error.message.includes('This attribute must be unique')) {
+          actions.setFieldError(
+            'ideaName',
+            'This idea name is already in use. Please try something else'
+          );
+          actions.setFieldTouched('ideaName', true, false);
+          setSending(false);
+
+          // Scroll to the field
+          setTimeout(() => {
+            const ideaNameElement = document.querySelector(
+              '[data-field="ideaName"]'
+            );
+            if (ideaNameElement) {
+              ideaNameElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              });
+            }
+          }, 100);
+          // Throwing specific error type so IdeaForm knows not to show success message
+          const duplicateError = new Error('Duplicate idea name');
+          duplicateError.isDuplicateError = true;
+          throw duplicateError;
+        }
         throw new Error('Unable to register');
       } else {
         const data = cleanData(response);

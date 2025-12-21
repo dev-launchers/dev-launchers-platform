@@ -15,3 +15,4 @@ export type {
   NotificationEvent,
   NotificationUser,
 } from './notification';
+export type { Image } from './image';

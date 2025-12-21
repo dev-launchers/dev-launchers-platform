@@ -1,12 +1,20 @@
-import { ChevronDown, Menu, X, User, LogOut, Lightbulb } from 'lucide-react';
+import { agent } from '@devlaunchers/utility';
+import {
+  ChevronDown,
+  Menu,
+  X,
+  User,
+  LogOut,
+  Lightbulb,
+  Users,
+} from 'lucide-react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
-import { Typography } from '../../../components/atoms';
 
 // Centralized styles
 const styles = {
@@ -17,7 +25,7 @@ const styles = {
 
   // Logo styles
   logoContainer: 'flex items-center gap-4',
-  logoLink: 'flex items-center gap-3',
+  logoLink: 'flex items-center gap-3 cursor-pointer',
   logoImage: 'h-8 w-8',
   logoText: 'text-white font-semibold hidden md:block',
 
@@ -104,9 +112,30 @@ interface UserData {
 
 const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isLeader, setIsLeader] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const { userData: user, isAuthenticated, isLoading } = useUserDataContext();
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (isLoading) {
+      return;
+    }
+
+    if (isAuthenticated && user) {
+      console.log('projects', user.projects);
+
+      const isLeader = user.projects?.some((project: any) =>
+        project.team?.leaders?.some((l: any) => l.leader?.email === user.email)
+      );
+
+      console.log('isLeader', isLeader);
+      setIsLeader(isLeader);
+    } else {
+      setIsLeader(false);
+    }
+  }, [isAuthenticated, user, isLoading]);
+
+  useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
@@ -163,6 +192,14 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
                 <span className="cursor-pointer">Profile</span>
               </p>
             </Link>
+            {isLeader && (
+              <Link href="/dev-recruiters/dashboard">
+                <p className={styles.profileMenuItem}>
+                  <Users className={styles.icon} />
+                  <span className="cursor-pointer">Dev-Recruit Dashboard</span>
+                </p>
+              </Link>
+            )}
             <Link href="/ideaspace/dashboard">
               <p className={styles.profileMenuItem}>
                 <Lightbulb className={styles.icon} />

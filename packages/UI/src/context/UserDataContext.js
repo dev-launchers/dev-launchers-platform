@@ -11,6 +11,13 @@ export const DEFAULT_USER = {
   bio: '',
   profilePictureUrl: '',
   socialMediaLinks: [],
+  discord: {
+    id: 0,
+    avatar: '',
+    username: '',
+    discriminator: '',
+  },
+  projects: [],
   interests: [],
 };
 
@@ -34,7 +41,25 @@ function useUserDataHook() {
 
     setIsLoading(true);
 
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?populate=deep`, {
+    const populateParams = [
+      'populate[profile][populate][user][populate]=*',
+      'populate[profile][populate][profilePicture][populate]=*',
+      'populate[projects][populate][heroImage][populate]=*',
+      'populate[projects][populate][openPositions][populate]=*',
+      'populate[projects][populate][team][populate][leaders][populate]=*',
+      'populate[projects][populate][user][populate]=*',
+      'populate[projects][populate][interests][populate]=*',
+      'populate[projects][populate][board][populate]=*',
+      'populate[projects][populate][SubProjects][populate]=*',
+      'populate[projects][populate][parentProject][populate]=*',
+      'populate[projects][populate][newMeetingTimes][populate]=*',
+      'populate[projects][populate][images][populate]=*',
+      'populate[projects][populate][opportunities][populate]=*',
+      'populate[idea_cards][populate]=*',
+      'populate[ownedCards][populate]=*',
+    ].join('&');
+
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?${populateParams}`, {
       withCredentials: true,
     })
       .then(({ data: currentUser }) => {

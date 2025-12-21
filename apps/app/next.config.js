@@ -45,6 +45,8 @@ const nextConfig = {
       'lh3.googleusercontent.com',
       'localhost',
       'apiv4-staging.devlaunchers.org',
+      //== idea space images domains
+      'images.pexels.com',
     ],
     disableStaticImages: true,
     unoptimized: false,
