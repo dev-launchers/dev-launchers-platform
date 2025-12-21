@@ -258,10 +258,10 @@ export default function SignUpForm({
             level: values.level.toLowerCase(),
             portfolioLink: filesUploaded['webViewLink'],
             portfolioFileId: filesUploaded['id'],
-            skills: values.skills
+            interests: values.skills
               .toString()
               .split(',')
-              .map((skill) => ({ skill: skill })),
+              .map((skill) => ({ interest: skill, category: 'skill' })),
             role: position.attributes.title as string,
             project: { id: projectId, slug: projectSlug }, //router.query.slug as string },
           })
