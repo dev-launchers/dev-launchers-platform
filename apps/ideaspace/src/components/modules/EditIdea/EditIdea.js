@@ -13,7 +13,7 @@ import * as Yup from 'yup';
 
 import { HeadWapper, Headline, StyledRanbow } from './StyledEditIdea';
 
-const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
+const EditIdea = forwardRef(({ initialIdea, onEditSuccess, onUnsavedChanges, onCanSave }, ref) => {
   let { userData, isAuthenticated } = useUserDataContext();
   const formikRef = useRef();
   const router = useRouter();
@@ -307,7 +307,13 @@ const EditIdea = forwardRef(({ initialIdea, onEditSuccess }, ref) => {
               initialValues={card}
               SignupSchema={SignupSchema}
               submitHandler={submitHandler}
-              unsavedHandler={setunsavedChanges}
+              unsavedHandler={(hasChanges) => {
+                setunsavedChanges(hasChanges);
+                if (onUnsavedChanges) {
+                  onUnsavedChanges(hasChanges);
+                }
+              }}
+              canSaveHandler={onCanSave}
               formButton="save"
               sending={sending}
               clickHandler={backHandler}
