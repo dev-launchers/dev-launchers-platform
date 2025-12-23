@@ -83,7 +83,7 @@ const IdeaSettingsCard = ({ card }) => {
           setArchiveButtonText(`ARCHIVE`);
           setDisabling(true);
           if (await confirmArchiveSuccess()) {
-            router.push(`/ideaspace/dashboard`);
+            router.push(`/users/me`);
           } else {
             router.push(`/ideaspace/browse`);
           }

@@ -200,12 +200,6 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
                 </p>
               </Link>
             )}
-            <Link href="/ideaspace/dashboard">
-              <p className={styles.profileMenuItem}>
-                <Lightbulb className={styles.icon} />
-                <span className="cursor-pointer">Idea Dashboard</span>
-              </p>
-            </Link>
             <button
               onClick={Logout}
               className={`w-full ${styles.profileMenuItem}`}
@@ -550,12 +544,6 @@ const Navigation = () => {
                 <p className={styles.profileMenuItem}>
                   <User className={styles.icon} />
                   <span>Profile</span>
-                </p>
-              </Link>
-              <Link href="/ideaspace/dashboard">
-                <p className={styles.profileMenuItem}>
-                  <Lightbulb className={styles.icon} />
-                  <span>Idea Dashboard</span>
                 </p>
               </Link>
               <button

@@ -16,6 +16,25 @@ function SubmissionForm() {
   let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
+  const [referrer, setReferrer] = useState(null);
+  const returnBackUrl =
+    referrer === 'user-profile' ? '/users/me' : '/ideaspace';
+
+  // Capture ref once, then strip it from the URL to keep things clean.
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (router.query.ref && !referrer) {
+      setReferrer(router.query.ref);
+    }
+
+    if (router.query.ref) {
+      router.replace(`/ideaspace/submit`, undefined, {
+        shallow: true,
+      });
+    }
+  }, [router.isReady, router.query.ref, referrer, router]);
+
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [urrl, setUrrl] = useState('');
@@ -182,7 +201,7 @@ function SubmissionForm() {
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
+        <BackButton buttonType="confirm" backRoute={returnBackUrl} />
         <atoms.Typography
           variant="primary"
           size="xl3"
