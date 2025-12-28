@@ -1,10 +1,9 @@
 import Card from './../../../../common/Card';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import BubbleList from './../../../../common/BubbleList';
-import { editProfileActions } from './../../../../../state/actions';
 import { editProfileDataContext } from '../../../../../context/EditProfileDataContext';
 
-function Interests({ interestList }) {
+function Interests({ interestList, title, action }) {
   const { editProfileDispatch } = editProfileDataContext();
   // filters interestList (removes empty/null values),
   // and transforms array of objects [{},{}] to array of strings ['a','b']
@@ -15,16 +14,16 @@ function Interests({ interestList }) {
 
   //This Function will be called when  the Edit button is clicked
   const onEdit = () => {
-    editProfileDispatch({ type: editProfileActions.SHOW_INTERESTS_SETTING });
+    editProfileDispatch({ type: action });
   };
 
   return (
-    <Card title="Interests" onEdit={onEdit}>
+    <Card title={title} onEdit={onEdit}>
       {filteredInterestList?.length > 0 ? (
         <BubbleList list={filteredInterestList} />
       ) : (
         <Typography className="text-grayscale-500" variant="secondary">
-          No interests selected...
+          No {title.toLowerCase()} selected...
         </Typography>
       )}
     </Card>
