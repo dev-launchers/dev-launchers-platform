@@ -1,116 +1,130 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  max-width: 350px;
-  border-radius: 10px;
-  margin-left: 4.5rem;
-  margin-top: 2rem;
+  width: 100%;
+  background: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
 
-  &:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 5px;
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    background-image: linear-gradient(
-      to right,
-      #ff7f0e 25%,
-      #ffab00 25% 50%,
-      #81c3d7 50% 75%,
-      #3a7ca5 75% 100%
-    );
+  &:hover {
+    background: #222222;
+    border-color: #6b46c1;
   }
-`;
-
-export const Button = styled.button<{ color?: string }>`
-  font-family: ${(props) => props.theme?.fonts?.normal};
-  background-color: ${(props) =>
-    props.color
-      ? props.theme.colors[props.color]
-      : props.theme?.colors?.OuterSpace};
-  color: ${(props) => props.theme?.colors?.White};
-  border-radius: 1.8rem;
-  padding: 10px 20px;
-  white-space: nowrap;
-  margin: 0 3px;
-  border: none;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 0.9rem;
-  line-height: 11px;
-  text-align: center;
 `;
 
 export const CardContent = styled.div`
-  width: 100%;
-  background-color: white;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  padding: 30px 30px 30px 30px;
+  display: flex;
+  padding: 2rem;
+  gap: 2rem;
+  align-items: flex-start;
+`;
+
+export const IconContainer = styled.div`
+  width: 80px;
+  height: 80px;
+  background: #2a2a2a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+export const RoleIcon = styled.img`
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) invert(1);
+`;
+
+export const ContentSection = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 `;
 
 export const Title = styled.h2`
-  font-weight: 300;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
 `;
 
-export const TimeCommitment = styled.h4`
-  font-weight: 300;
-  font-size: 16px;
+export const Subtitle = styled.p`
+  font-size: 0.875rem;
+  color: #9ca3af;
+  margin: 0;
 `;
-export const Time = styled.p`
-  font-size: 14px;
-  font-weight: 200;
+
+export const MetadataContainer = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0;
+`;
+
+export const MetadataItem = styled.span`
+  font-size: 0.875rem;
+  color: #d1d5db;
+`;
+
+export const RoleCountBadge = styled.span`
+  font-size: 0.875rem;
+  color: #9ca3af;
 `;
 
 export const AboutDescription = styled.p`
-  font-size: 14px;
-  line-height: 1.5;
-  font-weight: 200;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b0b0b0;
+  margin: 0.75rem 0 0 0;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
 `;
 
-export const Divider = styled.div`
-  width: 50%;
-  margin: 8px 0px;
-  height: 1.5px;
-  background-color: #5a5a5a;
-`;
-
-export const TimeContainer = styled.div`
-  margin-top: 10px;
+export const ButtonsContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  gap: 0.75rem;
+  margin-top: 1rem;
 `;
 
-export const AboutContainer = styled.div`
-  margin: 40px 20px;
-`;
+export const Button = styled.button<{ variant?: 'primary' | 'secondary' }>`
+  background-color: ${(props) =>
+    props.variant === 'primary' ? 'transparent' : '#7c3aed'};
+  color: #ffffff;
+  border: ${(props) =>
+    props.variant === 'primary' ? '1px solid #4b5563' : 'none'};
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 
-export const ButtonsContainer = styled.button`
-  background-color: #000;
-  border-radius: 10px;
-  padding: 10px 20px;
-  display: flex;
-  border: 1px solid #000;
-  justify-content: center;
-  align-items: center;
-  font-size: 12px;
-  margin-top: 10px;
-  margin-left: auto;
-
-  text-decoration: none;
-  color: white;
   &:hover {
-    text-decoration: none;
-    cursor: pointer;
-    color: ${({ theme }) => theme?.colors?.Argent};
+    background-color: ${(props) =>
+      props.variant === 'primary' ? '#1f2937' : '#6d28d9'};
   }
 `;
+
+export const modalStyle = {
+  content: {
+    position: 'absolute',
+    width: '70%',
+    height: '98%',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 1001,
+    padding: '24px 32px 32px 32px',
+    borderRadius: '16px',
+  },
+  // set background color to black
+  overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,1)' },
+};

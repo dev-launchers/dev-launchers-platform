@@ -1,154 +1,74 @@
 import { Opportunity } from '@devlaunchers/models';
 import { useState } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
-import {
-  BulletList,
-  BulletListItem,
-  CloseIcon,
-  ColorBox,
-  ExpectationsListItem,
-  ModalDescriptionSection,
-  ModalProjectSection,
-  ModalSkillRequiredSection,
-  TagsList,
-  TagsListItem,
-  TagsSection,
-} from '../../../../../DetailedPage/PositionCard/StyledPositionCard';
 import Modal from '../../../../../DetailedPage/PositionPopupModal';
-import {
-  RowContainerTop,
-  RowContainerBottom,
-} from '../../../../../DetailedPage/styledProjectDetails';
 import SignUpForm from '../../../../../FormPage/signUpForm';
 import LoginPage from '../../../../../LoginPage/loginPage';
+import { Icons } from '@devlaunchers/components/src/assets';
 import {
-  ApplyButton,
+  RoleDetailsModalWrapper,
+  CloseColorBoxContainer,
+  ColorBox,
+  CloseButton,
+  ModalTopSection,
+  ModalHeader,
+  BadgesContainer,
+  Badge,
+  MetadataGrid,
+  MetadataItem,
+  ModalDescriptionSection,
+  ModalSkillRequiredSection,
+  TagsSection,
+  TagsList,
+  TagsListItem,
+  ModalBottomSection,
+  ContentGrid,
+  ContentSection,
+  BulletList,
+  BulletListItem,
   ButtonsSection,
   SaveForLaterButton,
-  CloseButton,
+  ApplyButton,
+  RelatedPositionsSection,
+  RelatedPositionsGrid,
+  RelatedPositionCard,
+  RelatedCardIcon,
+  RelatedCardTitle,
+  RelatedCardSubtitle,
+  RelatedCardMeta,
+  RelatedCardDescription,
+  RelatedCardButtons,
+  RelatedCardButton,
 } from './StyledRoleModal';
-import { RoleDetailsModalWrapper } from './StyledRoleModal';
-import { CloseColorBoxContainer } from './StyledRoleModal';
-import { Icons } from '@devlaunchers/components/src/assets';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   projectSlug: string;
   projectId: string;
   position: Opportunity;
+  suggestedRoles?: Opportunity[];
   handleCloseModal?: () => void;
-  isAuthenticated?: boolean;
 }
 
 function RoleDetailsModal({
   position,
+  suggestedRoles,
   handleCloseModal,
   projectId,
   projectSlug,
 }: Props) {
-  console.log(projectId);
-  console.log(projectSlug);
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const { isAuthenticated } = useUserDataContext();
 
-  return (
-    <RoleDetailsModalWrapper>
-      <CloseColorBoxContainer>
-        <ColorBox />
-        <CloseButton>
-          <Icons.Close height={32} width={32} onClick={handleCloseModal} />
-        </CloseButton>
-      </CloseColorBoxContainer>
-      <ModalTopSection
-        position={position}
-        projectId={projectId}
-        projectSlug={projectSlug}
-      />
-      <ModalBottomSection
-        position={position}
-        projectId={projectId}
-        projectSlug={projectSlug}
-        handleCloseModal={handleCloseModal}
-      />
-    </RoleDetailsModalWrapper>
-  );
-}
-
-function ModalTopSection({ position }: Props) {
-  /***destructuring propertid from position.attributes */
   const {
     title,
     commitmentHoursPerWeek,
     level,
     description,
-    interests: { data },
+    roleCategory,
+    interests: { data: skillsData },
   } = position.attributes;
-  return (
-    <RowContainerTop>
-      <ModalProjectSection>
-        <div className="title">
-          <h2>{title}</h2>
-          <p>Product Platform</p>
-        </div>
-        <div className="commitment">
-          <h5>TIME COMMITMENT</h5>
-          <p>{commitmentHoursPerWeek} hrs per week</p>
-        </div>
-        <div className="level">
-          <h5>
-            Level
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-circle-help"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <path d="M12 17h.01" />
-            </svg>
-          </h5>
-          <p> {level}</p>
-        </div>
-      </ModalProjectSection>
-      <ModalDescriptionSection Mobile={false}>
-        <h5>About the Role</h5>
-        <p>{description}</p>
-      </ModalDescriptionSection>
-      <ModalSkillRequiredSection>
-        <div className="require_skill">
-          <h5 className="skills">Skills Required</h5>
-          <TagsSection>
-            <TagsList>
-              {data?.map((skill, index) => {
-                const { interest } = skill?.attributes;
-                return (
-                  <TagsListItem color="Dark" key={index}>
-                    {interest}
-                  </TagsListItem>
-                );
-              })}
-            </TagsList>
-          </TagsSection>
-        </div>
-      </ModalSkillRequiredSection>
-    </RowContainerTop>
-  );
-}
-
-function ModalBottomSection({
-  position,
-  projectId,
-  projectSlug,
-
-  handleCloseModal,
-}: Props) {
-  const [showApplyModal, setShowApplyModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const { isAuthenticated } = useUserDataContext();
 
   const handleOpenApplyModal = () => {
     setShowApplyModal(true);
@@ -158,7 +78,6 @@ function ModalBottomSection({
     setShowApplyModal(false);
   };
 
-  /***Handle open and close Login */
   const handleOpenLoginModal = () => {
     setShowLoginModal(true);
   };
@@ -173,7 +92,7 @@ function ModalBottomSection({
       backgroundColor: 'rgba(0, 0, 0, 1)',
       width: '70%',
       height: '80%',
-      border: '1px solid  rgba(0, 0, 0, 1)',
+      border: '1px solid rgba(0, 0, 0, 1)',
       top: '50%',
       left: '50%',
       right: 'auto',
@@ -184,50 +103,163 @@ function ModalBottomSection({
     },
     overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,1)' },
   };
+
   return (
-    <div>
-      <RowContainerBottom>
-        <ModalProjectSection>
-          <div className="responsibilty">
+    <RoleDetailsModalWrapper>
+      {/* Header with Close Button */}
+      <CloseColorBoxContainer>
+        <ColorBox />
+        <Button onClick={handleCloseModal}>
+          <Icons.Close height={24} width={24} />
+        </Button>
+      </CloseColorBoxContainer>
+
+      {/* Top Section */}
+      <ModalTopSection>
+        <ModalHeader>
+          <h2>{title}</h2>
+          <p>Platform Team | {roleCategory}</p>
+        </ModalHeader>
+
+        <BadgesContainer>
+          <Badge>{level}</Badge>
+          <Badge>{commitmentHoursPerWeek} Hours Per Week</Badge>
+          <Badge>2 Roles Open</Badge>
+        </BadgesContainer>
+
+        <ModalDescriptionSection as={'div'}>
+          <h5>About the Role</h5>
+          <p>{description}</p>
+        </ModalDescriptionSection>
+
+        <ModalSkillRequiredSection>
+          <h5>Skills Required</h5>
+          <TagsSection>
+            <TagsList>
+              {skillsData?.map((skill, index) => {
+                const { interest } = skill?.attributes;
+                return (
+                  <TagsListItem key={index} as={'div'}>
+                    {interest}
+                  </TagsListItem>
+                );
+              })}
+            </TagsList>
+          </TagsSection>
+        </ModalSkillRequiredSection>
+      </ModalTopSection>
+
+      {/* Bottom Section */}
+      <ModalBottomSection>
+        <ContentGrid>
+          <ContentSection>
             <h5>Responsibilities</h5>
             <BulletList>
-              <BulletListItem>Mentor and manage a team</BulletListItem>
               <BulletListItem>
-                Collaborate with people around the world
+                Launch and lead engineering initiatives
               </BulletListItem>
-              <BulletListItem>Deliver high quality software</BulletListItem>
+              <BulletListItem>
+                Create new front-end components and refactor/maintain existing
+                front-end and back-end code where applicable
+              </BulletListItem>
+              <BulletListItem>
+                Submit pull requests via GitHub, for review after testing
+              </BulletListItem>
+              <BulletListItem>
+                Implement visual designs created by the UX/UI team
+              </BulletListItem>
             </BulletList>
-          </div>
-        </ModalProjectSection>
-        <ModalProjectSection>
-          <div className="why">
+          </ContentSection>
+
+          <ContentSection>
             <h5>Why Should You Join?</h5>
             <BulletList>
-              <BulletListItem>Mentor and manage a team</BulletListItem>
               <BulletListItem>
-                Collaborate with people around the world
+                Develop your professional skills, build and strengthen your
+                GitHub portfolio
               </BulletListItem>
-              <BulletListItem>Deliver high quality software</BulletListItem>
+              <BulletListItem>
+                Collaborate with experienced designers, developers, and product
+                leads
+              </BulletListItem>
+              <BulletListItem>
+                Learn and apply modern front-end tools like TypeScript and React
+              </BulletListItem>
+              <BulletListItem>
+                Gain mentorship and feedback through weekly team meetings and
+                code reviews
+              </BulletListItem>
+              <BulletListItem>
+                Help build inclusive, mission-driven tech with a global impact
+              </BulletListItem>
             </BulletList>
-          </div>
-        </ModalProjectSection>
-      </RowContainerBottom>
+          </ContentSection>
+        </ContentGrid>
 
-      <div>
+        {/* Buttons */}
         {isAuthenticated ? (
-          <ButtonsSection Mobile={false} onClick={handleOpenApplyModal}>
-            <SaveForLaterButton color="DarkElectricBlue">
+          <ButtonsSection as={'div'}>
+            <Button>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+              >
+                <path
+                  d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
               Save For Later
-            </SaveForLaterButton>
-            <ApplyButton color="DarkElectricBlue">Apply</ApplyButton>
+            </Button>
+            <Button onClick={handleOpenApplyModal}>Apply</Button>
           </ButtonsSection>
         ) : (
-          <ButtonsSection Mobile={false} onClick={handleOpenLoginModal}>
-            <ApplyButton>Sign In To Apply</ApplyButton>
+          <ButtonsSection as={'div'}>
+            <Button onClick={handleOpenLoginModal}>Sign In To Apply</Button>
           </ButtonsSection>
         )}
-      </div>
+      </ModalBottomSection>
 
+      {/* Related Positions */}
+      {suggestedRoles && suggestedRoles.length > 0 && (
+        <RelatedPositionsSection>
+          <h3>Related Positions</h3>
+          <RelatedPositionsGrid>
+            {suggestedRoles.slice(0, 3).map((role, index) => (
+              <RelatedPositionCard key={index} as={'div'}>
+                <RelatedCardIcon>
+                  <img src="/path/to/rocket-icon.svg" alt="Role icon" />
+                </RelatedCardIcon>
+                <RelatedCardTitle>{role?.attributes?.title}</RelatedCardTitle>
+                <RelatedCardSubtitle>
+                  Platform Team | {role?.attributes?.roleCategory}
+                </RelatedCardSubtitle>
+                <RelatedCardMeta>
+                  <span>{role?.attributes?.level}</span>
+                  <span>
+                    {role?.attributes?.commitmentHoursPerWeek} Hours Per Week
+                  </span>
+                  <span>1 Roles Open</span>
+                </RelatedCardMeta>
+                <RelatedCardDescription>
+                  {role?.attributes?.description}
+                </RelatedCardDescription>
+                <RelatedCardButtons>
+                  <Button>Role Details</Button>
+                  <Button>Apply</Button>
+                </RelatedCardButtons>
+              </RelatedPositionCard>
+            ))}
+          </RelatedPositionsGrid>
+        </RelatedPositionsSection>
+      )}
+
+      {/* Modals */}
       <Modal
         modalIsOpen={showApplyModal}
         handleOpenModal={handleOpenApplyModal}
@@ -247,7 +279,7 @@ function ModalBottomSection({
         customModalStyles={customStyles}
         modalContent={<LoginPage closeModal={handleCloseLoginModal} />}
       />
-    </div>
+    </RoleDetailsModalWrapper>
   );
 }
 
