@@ -169,30 +169,6 @@ export const SectionContent = styled.p`
   margin: 0;
 `;
 
-export const BulletList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
-export const BulletListItem = styled.li`
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #d1d5db;
-  padding-left: 24px;
-  position: relative;
-  margin-bottom: 12px;
-
-  &:before {
-    content: '•';
-    position: absolute;
-    left: 0;
-    color: #7c3aed;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-`;
-
 export const TwoColumnGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;

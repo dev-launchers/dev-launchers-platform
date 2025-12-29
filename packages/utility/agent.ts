@@ -137,7 +137,7 @@ const Opportunities = {
     requests.get(
       `opportunities/${slug}`,
       new URLSearchParams(
-        '_publicationState=live&populate=projects&populate=interests'
+        '_publicationState=live&populate[projects]=*&populate[interests]=*&populate[expectations]=*'
       )
     ),
   getById: (
@@ -159,7 +159,7 @@ const Ideas = {
   post: (body: {}) => requests.post<Idea>('/idea-cards/', body),
   put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body),
   findByName: (name: string) => {
-    return requests.get('idea-cards?filters[ideaName][$eqi]='+name);
+    return requests.get('idea-cards?filters[ideaName][$eqi]=' + name);
   },
 };
 
