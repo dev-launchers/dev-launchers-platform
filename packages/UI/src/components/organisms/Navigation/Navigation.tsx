@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
@@ -115,6 +116,20 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isLeader, setIsLeader] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
   const { userData: user, isAuthenticated, isLoading } = useUserDataContext();
+  const router = useRouter();
+
+  // Close when route OR hash changes (same behavior as other dropdowns)
+  React.useEffect(() => {
+    const close = () => setIsOpen(false);
+
+    router.events.on('routeChangeStart', close);
+    router.events.on('hashChangeStart', close);
+
+    return () => {
+      router.events.off('routeChangeStart', close);
+      router.events.off('hashChangeStart', close);
+    };
+  }, [router]);
 
   useEffect(() => {
     if (isLoading) {
@@ -229,6 +244,20 @@ const DropdownMenu = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Close when route OR hash changes
+  React.useEffect(() => {
+    const close = () => setIsOpen(false);
+
+    router.events.on('routeChangeStart', close);
+    router.events.on('hashChangeStart', close);
+
+    return () => {
+      router.events.off('routeChangeStart', close);
+      router.events.off('hashChangeStart', close);
+    };
+  }, [router]);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -295,6 +324,19 @@ const MobileDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const close = () => setIsOpen(false);
+
+    router.events.on('routeChangeStart', close);
+    router.events.on('hashChangeStart', close);
+
+    return () => {
+      router.events.off('routeChangeStart', close);
+      router.events.off('hashChangeStart', close);
+    };
+  }, [router]);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
