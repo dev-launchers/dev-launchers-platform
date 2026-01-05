@@ -143,6 +143,21 @@ const RolePage = () => {
     );
   }
 
+  const getProjectData = (role: Opportunity | null) => {
+    // In the rare case that the role doesn't have project data, return a default
+    if (!role || !role.attributes?.projects?.data[0]) {
+      console.log('No project data found for role:', role);
+      return { projectId: '37', projectSlug: 'dev-recruiters' };
+    }
+
+    const projectData = role?.attributes?.projects?.data[0];
+    return {
+      projectId: projectData?.id,
+      // @ts-ignore
+      projectSlug: projectData?.attributes?.slug,
+    };
+  };
+
   const {
     title,
     commitmentHoursPerWeek,
@@ -153,8 +168,7 @@ const RolePage = () => {
     interests: { data: skillsData },
   } = role.attributes;
 
-  const projectId = role?.id;
-  const projectSlug = role?.attributes?.title;
+  const { projectId, projectSlug } = getProjectData(role);
   const expectationList = role?.attributes?.expectations || [];
   return (
     <PageWrapper>

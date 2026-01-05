@@ -8,6 +8,7 @@ import { useUserDataContext } from '@devlaunchers/components/src/context/UserDat
 import SearchBar from '../components/common/SearchBar/searchbar';
 import { useRouter } from 'next/router';
 import { Expectation, Project, Skill, SkillLevel } from '@devlaunchers/models';
+import agent from '@devlaunchers/utility/agent';
 
 export interface Opportunity {
   id: string;
@@ -33,6 +34,7 @@ const Dashboard: React.FC = () => {
   const [teamNames, setTeamNames] = useState<string[]>([]);
   const [activeRoles, setActiveRoles] = useState<Opportunity[]>([]);
   const [archivedRoles, setArchivedRoles] = useState<Opportunity[]>([]);
+  const [loading, setLoading] = useState<string | null>(null);
   const router = useRouter();
   // roleCategory is the department.
 
@@ -151,22 +153,50 @@ const Dashboard: React.FC = () => {
     if (position && position !== null && position !== undefined) {
       // navigate to review-applicants page with role id param
       router.push(
-        `/dev-recruiters/applicants?role=${position.title}&projectId=${position.projectId}&projectName=${position.projectTitle}`
+        `/dev-recruiters/applicants?role=${position.title}&projectId=${position.projectId}&opportunityId=${position.id}`
       );
     } else {
       router.push(`/dev-recruiters/applicants`);
     }
   };
 
-  const handleArchive = () => {
-    // will be implemented in the future
+  const handleArchive = async (id: string) => {
+    setLoading(id); // Disable button for this role
+    const archivedPosition = activeRoles.find((p) => p.id === id);
+    setActiveRoles((prev) => prev.filter((p) => p.id !== id));
+
+    if (archivedPosition) {
+      setArchivedRoles((prev) => [
+        ...prev,
+        { ...archivedPosition, isHidden: true },
+      ]);
+    }
+
+    try {
+      await agent.Opportunities.put(id, { isHidden: true });
+    } catch (error) {
+      console.error('Failed to archive role:', error);
+      setActiveRoles((prev) => [...prev, archivedPosition]);
+      setArchivedRoles((prev) => prev.filter((p) => p.id !== id));
+    } finally {
+      setLoading(null);
+    }
   };
 
-  const handleRepost = (position: any) => {
-    // move from archivedRoles -> activeRoles (local state only)
+  const handleRepost = async (position: any) => {
+    setLoading(position.id);
     setArchivedRoles((prev) => prev.filter((p) => p.id !== position.id));
     setActiveRoles((prev) => [{ ...position, isHidden: false }, ...prev]);
-    // TODO: call backend API to persist repost change
+
+    try {
+      await agent.Opportunities.put(position.id, { isHidden: false });
+    } catch (error) {
+      console.error('Failed to repost role:', error);
+      setArchivedRoles((prev) => [...prev, { ...position, isHidden: true }]);
+      setActiveRoles((prev) => prev.filter((p) => p.id !== position.id));
+    } finally {
+      setLoading(null);
+    }
   };
 
   return (
@@ -195,10 +225,6 @@ const Dashboard: React.FC = () => {
               >
                 <PlusCircle className="w-4 h-4 mr-2" />
                 Post New Role
-              </Button>
-              <Button onClick={() => handleArchive()}>
-                <Archive className="w-4 h-4 mr-2" />
-                Archive Role
               </Button>
             </div>
           </div>
@@ -245,6 +271,8 @@ const Dashboard: React.FC = () => {
                   }
                   onEdit={() => handleEdit(position)}
                   onView={() => handleReviewApplicants(position)}
+                  onArchive={() => handleArchive(position.id)}
+                  isLoading={loading === position.id}
                 />
               </div>
             ))}
@@ -284,6 +312,7 @@ const Dashboard: React.FC = () => {
                   }
                   onView={() => handleReviewApplicants(position)}
                   onRepost={() => handleRepost(position)}
+                  isLoading={loading === position.id}
                 />
               </div>
             ))}

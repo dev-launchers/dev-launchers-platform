@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { NewApplicant } from '@devlaunchers/models';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search } from 'lucide-react';
 import TableHeader from './table/tableHeader';
 import ApplicantRow from './table/applicantRow';
 import SortDropdown from './table/sortDropDown';
+import ApplicantDetailModal from './applicationDetailModal';
 
 interface ShowApplicantsProps {
   groupedByRole: Map<string, NewApplicant[]>;
@@ -37,6 +38,8 @@ const ShowApplicants: React.FC<ShowApplicantsProps> = ({
   const [sortConfig, setSortConfig] = useState<
     Map<string, { field: SortField; direction: SortDirection }>
   >(new Map());
+  const [selectedApplicant, setSelectedApplicant] =
+    useState<NewApplicant | null>(null);
 
   const handleSearch = (role: string, term: string) => {
     setSearchTerms(new Map(searchTerms.set(role, term)));
@@ -133,6 +136,11 @@ const ShowApplicants: React.FC<ShowApplicantsProps> = ({
 
   return (
     <div className="space-y-6">
+      <ApplicantDetailModal
+        isOpen={!!selectedApplicant}
+        applicant={selectedApplicant}
+        onClose={() => setSelectedApplicant(null)}
+      />
       {!loading &&
         Array.from(groupedByRole.entries()).map(([role, apps]) => {
           const searchTerm = searchTerms.get(role) || '';
@@ -197,6 +205,7 @@ const ShowApplicants: React.FC<ShowApplicantsProps> = ({
                             applicant={app}
                             isSelected={roleSelections.has(appId)}
                             onSelect={() => handleSelectApplicant(role, appId)}
+                            onViewDetails={() => setSelectedApplicant(app)}
                           />
                         );
                       })

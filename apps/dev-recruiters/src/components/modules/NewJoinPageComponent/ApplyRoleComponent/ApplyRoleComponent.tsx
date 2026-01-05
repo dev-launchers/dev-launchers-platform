@@ -128,6 +128,7 @@ const ApplyRoleComponent = ({
               role: position.attributes.title as string,
               project: { id: projectId, slug: projectSlug },
               availability: availableDays,
+              opportunity: position.id,
             })
               .then((res) => {
                 setSubmitting(false);
