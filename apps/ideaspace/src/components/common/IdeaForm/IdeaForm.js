@@ -27,15 +27,43 @@ import {
 } from '../../modules/SubmissionForm/StyledSubmissionForm';
 
 import Alert from '../SubmissionAlert/Alert.js';
-import {agent} from "@devlaunchers/utility";
+import { agent } from '@devlaunchers/utility';
+
+const CASE_INSENSITIVE_FIELDS = ['ideaName'];
 
 const compareValuesToInitial = (values, initialValues) => {
-  const name = Object.keys(values);
-  for (let i = 0; i < name.length; i++) {
-    if (values[name[i]] !== initialValues[name[i]]) {
-      return true;
+  const keys = Object.keys(values);
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const valueItem = values[key];
+    const initialItem = initialValues[key];
+
+    if (valueItem === null && initialItem === null) continue;
+    if (valueItem === undefined && initialItem === undefined) continue;
+    if (valueItem === null || initialItem === null) return true;
+    if (valueItem === undefined || initialItem === undefined) return true;
+
+    if (typeof valueItem === 'object' && typeof initialItem === 'object') {
+      if (JSON.stringify(valueItem) !== JSON.stringify(initialItem)) {
+        return true;
+      }
+    }
+    else if (
+      CASE_INSENSITIVE_FIELDS.includes(key) &&
+      typeof valueItem === 'string' &&
+      typeof initialItem === 'string'
+    ) {
+      if (valueItem.trim().toLowerCase() !== initialItem.trim().toLowerCase()) {
+        return true;
+      }
+    } else {
+      if (valueItem !== initialItem) {
+        return true;
+      }
     }
   }
+
   return false;
 };
 
@@ -53,35 +81,41 @@ const clearLocalStorage = () => {
   localStorage.removeItem('involveLevel');
 };
 
-const AutoSubmitToken = ({ setDisabling, unsavedHandler, initialValues }) => {
+const AutoSubmitToken = ({ setDisabling, unsavedHandler, initialValues, editMode }) => {
   const { values } = useFormikContext();
   const [previousValues, setPreviousValues] = useState(values);
   React.useEffect(() => {
-    autoSaveLocalStorage(values);
-    if (compareValuesToInitial(values, initialValues)) {
+    // Only save to localStorage if NOT in edit mode
+    if (!editMode) {
+      autoSaveLocalStorage(values);
+    }
+
+    const hasChanges = compareValuesToInitial(values, initialValues);
+
+    if (hasChanges) {
       unsavedHandler(true);
       setDisabling(false);
-    } else if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
+    } else {
       unsavedHandler(false);
       setDisabling(true);
-      setPreviousValues(values);
     }
-  }, [values, previousValues, initialValues, setDisabling, unsavedHandler]);
+  }, [values, initialValues, setDisabling, unsavedHandler, editMode]);
   return null;
 };
 
 const IdeaForm = ({
-  initialValues,
-  SignupSchema,
-  submitHandler,
-  unsavedHandler,
-  formButton,
-  sending,
-  clickHandler,
-  editMode,
-  hideFormButtons = false,
-  formikRef = null,
-}) => {
+                    initialValues,
+                    SignupSchema,
+                    submitHandler,
+                    unsavedHandler,
+                    canSaveHandler,
+                    formButton,
+                    sending,
+                    clickHandler,
+                    editMode,
+                    hideFormButtons = false,
+                    formikRef = null,
+                  }) => {
   const [focusedField, setFocusedField] = useState(null);
   const [disabling, setDisabling] = React.useState(true);
   const { isMobile } = useResponsive();
@@ -105,8 +139,8 @@ const IdeaForm = ({
     setFocusedField(fieldName);
   };
 
-  const savedData = loadFromLocalStorage();
-  const newInitialValues = { ...initialValues, ...savedData };
+  const savedData = editMode ? null : loadFromLocalStorage();
+  const newInitialValues = savedData ? { ...initialValues, ...savedData } : initialValues;
 
   React.useEffect(() => {
     localStorage.removeItem('ideaFormData');
@@ -192,7 +226,7 @@ const IdeaForm = ({
       const res = await agent.Ideas.findByName(name);
       setNameTaken(res.length > 0);
     } catch (err) {
-      console.error("Error checking idea name", err);
+      console.error('Error checking idea name', err);
       setNameTaken(false);
     }
   };
@@ -215,24 +249,48 @@ const IdeaForm = ({
           innerRef={formikRef}
         >
           {({
-            values,
-            setFieldValue,
-            errors,
-            touched,
-            handleBlur,
-            submitForm,
-            isValid,
-            setFieldTouched,
-            validateForm,
-            handleChange,
-            handleSubmit,
-            isSubmitting,
-          }) => (
+              values,
+              setFieldValue,
+              errors,
+              touched,
+              handleBlur,
+              submitForm,
+              isValid,
+              setFieldTouched,
+              validateForm,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+            }) => {
+
+            const requiredFieldsFilled =
+              values.ideaName?.trim() &&
+              values.description?.trim() &&
+              values.experience?.trim() &&
+              values.targetAudience?.trim() &&
+              values.features?.trim();
+
+            const canSubmit =
+              Boolean(requiredFieldsFilled) && isValid && !nameTaken;
+
+            const canSave = canSubmit && !disabling;
+
+            React.useEffect(() => {
+              if (canSaveHandler && editMode) {
+                canSaveHandler(canSave);
+              }
+            }, [canSave, canSaveHandler, editMode]);
+
+            const canPostIdea = canSubmit && isChecked;
+
+            return (
+
             <Form>
               <AutoSubmitToken
                 setDisabling={setDisabling}
                 unsavedHandler={unsavedHandler}
                 initialValues={initialValues}
+                editMode={editMode}
               />
               {/* {!editMode && (
                 <atoms.Typography type="h4">
@@ -249,7 +307,9 @@ const IdeaForm = ({
                   </FieldLabel>
 
                   <TextAreaWrapper
-                    hasError={nameTaken || (touched.ideaName && errors.ideaName)}
+                    hasError={
+                      nameTaken || (touched.ideaName && errors.ideaName)
+                    }
                     isCompleted={
                       !nameTaken &&
                       values.ideaName.trim().length > 0 &&
@@ -285,14 +345,12 @@ const IdeaForm = ({
                   </TextAreaWrapper>
                   {!nameTaken &&
                     values.ideaName.trim().length > 0 &&
-                    !errors.ideaName && (
-                      <SuccessText>Completed!</SuccessText>
-                    )
-                  }
-                  
+                    !errors.ideaName && <SuccessText>Completed!</SuccessText>}
+
                   {nameTaken && (
                     <ErrorText>
-                      This idea name is already in use. Please try something else.
+                      This idea name is already in use. Please try something
+                      else.
                     </ErrorText>
                   )}
                 </FieldWrapper>
@@ -682,6 +740,10 @@ const IdeaForm = ({
                     {formButton == 'submit' ? (
                       <SubmissionButton
                         sending={sending}
+                        style={{
+                          opacity: canPostIdea ? 1 : 0.5,
+                          cursor: canPostIdea ? 'pointer' : 'not-allowed',
+                        }}
                         onClick={async (e) => {
                           e.preventDefault();
 
@@ -691,24 +753,34 @@ const IdeaForm = ({
                             'experience',
                             'targetAudience',
                             'features',
-                            //                            'involveLevel',
                           ];
                           fields.forEach((field) =>
                             setFieldTouched(field, true)
                           );
 
                           const validationErrors = await validateForm();
+
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
+
+                          // Block submit but still scroll
                           if (Object.keys(validationErrors).length > 0) {
                             scrollToError(validationErrors);
                             return;
                           }
-                          //  Updated T&C checkbox validation
-                          if (!isChecked) {
-                            alert(
-                              'You must accept the Terms & Conditions to submit the form.'
-                            );
-                            return; // Preventing form submission if T&C is not checked
+
+                          // Block if can't post idea (T&C or otherwise)
+                          if (!canPostIdea) {
+                            if (!isChecked) {
+                              alert(
+                                'You must accept the Terms & Conditions to submit the form.'
+                              );
+                            }
+                            return;
                           }
+
                           try {
                             await submitForm();
                           } catch (error) {
@@ -721,13 +793,43 @@ const IdeaForm = ({
                         clickHandlerButton={clickHandler}
                         sending={sending}
                         disabling={disabling}
+                        style={{
+                          opacity: canSave ? 1 : 0.5,
+                          cursor: canSave ? 'pointer' : 'not-allowed',
+                        }}
                         onClick={async (e) => {
                           e.preventDefault();
+                          const fields = [
+                            'ideaName',
+                            'description',
+                            'experience',
+                            'targetAudience',
+                            'features',
+                          ];
+
+                          // Mark required fields as touched
+                          fields.forEach((field) =>
+                            setFieldTouched(field, true)
+                          );
+
+                          const validationErrors = await validateForm();
+
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
+
+                          if (Object.keys(validationErrors).length > 0) {
+                            scrollToError(validationErrors);
+                            return;
+                          }
+
+                          if (!canSave) {
+                            return;
+                          }
+
                           try {
                             await submitForm();
-                            if (Object.keys(errors).length > 0) {
-                              scrollToError(errors);
-                            }
                           } catch (error) {
                             console.error('Form submission error:', error);
                           }
@@ -741,6 +843,7 @@ const IdeaForm = ({
                   setDisabling={setDisabling}
                   unsavedHandler={unsavedHandler}
                   initialValues={initialValues}
+                  editMode={editMode}
                 />
               </atoms.Box>
               {successMessageVisible && (
@@ -760,7 +863,7 @@ const IdeaForm = ({
                 />
               )}
             </Form>
-          )}
+          )}}
         </Formik>
       </atoms.Box>
     </atoms.Box>
