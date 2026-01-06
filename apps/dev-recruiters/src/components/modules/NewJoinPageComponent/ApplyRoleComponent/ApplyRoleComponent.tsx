@@ -33,8 +33,7 @@ const ApplyRoleComponent = ({
   const [filesUploaded, setFilesUploaded] = useState<any>({});
   const [selectedFiles, setSelectedFiles] = useState<any>([]);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [showUploadModal, setShowUploadModal] = useState(false);
-  const [deleteError, setDeleteError] = useState('');
+  const [, setDeleteError] = useState('');
   const [uploadError, setUploadError] = useState('');
   const [timeCommitment, setTimeCommitment] = useState('');
   const [experienceLevel, setExperienceLevel] = useState('Intermediate');
@@ -69,7 +68,6 @@ const ApplyRoleComponent = ({
     const handleFiles = (uploadedFiles) => {
       console.log('Uploaded files:', uploadedFiles);
       setFilesUploaded(uploadedFiles);
-      setShowUploadModal(false);
     };
 
     return (
@@ -97,19 +95,6 @@ const ApplyRoleComponent = ({
     setSelectedFiles([]);
     setFilesUploaded({});
     setUploadError('');
-    setShowUploadModal(true);
-  };
-
-  const handleUploadCloseModal = () => {
-    setShowUploadModal(false);
-  };
-  const handleOkCloseModal = async () => {
-    setShowUploadModal(false);
-  };
-  const handleCancelCloseModal = () => {
-    setSelectedFiles([]);
-    setFilesUploaded([]);
-    setShowUploadModal(false);
   };
 
   const handleRemoveFile = () => {
@@ -623,8 +608,6 @@ const ApplyRoleComponent = ({
                       Upload File
                     </atoms.Button>
                     <UploadModal
-                      modalIsOpen={showUploadModal}
-                      closeModal={handleUploadCloseModal}
                       handleOpenModal={handleUploadOpenModal}
                       modalContent={<UploadDetailsModal />}
                     />
