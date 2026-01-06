@@ -46,7 +46,7 @@ export default function RolesFilterList({
       <CollapsibleContainerFilter
         openPositions={openPositions}
         onRoleSelection={handleRoleSelection}
-        selectRoleLabel={searchQuery}
+        searchQuery={searchQuery}
       />
 
       {/* Roles Display Section */}

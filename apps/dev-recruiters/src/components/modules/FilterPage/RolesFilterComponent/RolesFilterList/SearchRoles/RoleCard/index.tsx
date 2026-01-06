@@ -1,9 +1,6 @@
 'use client';
 import { useState } from 'react';
 
-import Modal from '../../../../../DetailedPage/PositionPopupModal';
-import RoleDetailsModal from '../RoleModal/RoleDetailsModal';
-
 import LogoMonogram from '../../../../../../../images/logo-monogram.png';
 
 import {
@@ -15,8 +12,6 @@ import {
   IconContainer,
   MetadataContainer,
   MetadataItem,
-  modalStyle,
-  RoleCountBadge,
   RoleIcon,
   Subtitle,
   Title,
@@ -27,22 +22,21 @@ import { useRouter } from 'next/router';
 
 interface Props {
   role: Opportunity;
-  key22: number;
   opportunities: Opportunity[];
 }
 
-const RoleCard = ({ role, key22, opportunities }: Props) => {
+const RoleCard = ({ role, opportunities }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
-  const handleOpenModal = (apply: boolean) => {
+  const handleOpenModal = (shouldApply: boolean) => {
     sessionStorage.setItem(
       `role_${role.id}`,
       JSON.stringify({
         role: role,
       })
     );
-    sessionStorage.setItem(`role_${role.id}_apply`, apply.toString());
+    sessionStorage.setItem(`role_${role.id}_apply`, shouldApply.toString());
     router.push(`/join/role?id=${role.id}`);
     // setShowModal(true);
   };
@@ -79,21 +73,6 @@ const RoleCard = ({ role, key22, opportunities }: Props) => {
           </ButtonsContainer>
         </ContentSection>
       </CardContent>
-
-      {/* <Modal
-        modalIsOpen={showModal}
-        closeModal={handleCloseModal}
-        handleOpenModal={handleOpenModal}
-        style = {modalStyle}
-        modalContent={
-          <RoleDetailsModal
-            position={role}
-            projectId={role?.attributes?.projects?.data[key22]?.id}
-            projectSlug={role?.attributes?.projects?.data[key22]?.attributes?.slug}
-            handleCloseModal={handleCloseModal}
-          />
-        }
-      /> */}
     </CardContainer>
   );
 };

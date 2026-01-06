@@ -176,8 +176,10 @@ const Dashboard: React.FC = () => {
       await agent.Opportunities.put(id, { isHidden: true });
     } catch (error) {
       console.error('Failed to archive role:', error);
-      setActiveRoles((prev) => [...prev, archivedPosition]);
-      setArchivedRoles((prev) => prev.filter((p) => p.id !== id));
+      if (archivedPosition) {
+        setActiveRoles((prev) => [...prev, archivedPosition]);
+        setArchivedRoles((prev) => prev.filter((p) => p.id !== id));
+      }
     } finally {
       setLoading(null);
     }

@@ -46,7 +46,7 @@ const RolePage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [role, setRole] = useState<Opportunity | null>(null);
-  const [suggestedRoles, setSuggestedRoles] = useState<Opportunity[]>([]);
+  const [suggestedRoles] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(false);
   const [isApplyMode, setIsApplyMode] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -54,7 +54,6 @@ const RolePage = () => {
   const { isAuthenticated } = useUserDataContext();
 
   useEffect(() => {
-    console.log(id);
     if (!id) return;
     setLoading(true);
 

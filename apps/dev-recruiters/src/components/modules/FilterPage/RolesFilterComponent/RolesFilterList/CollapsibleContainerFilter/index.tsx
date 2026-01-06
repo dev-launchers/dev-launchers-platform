@@ -11,7 +11,7 @@ interface CollapsibleContainerProps {
     roleCategory: string,
     activeFilters: string[]
   ) => void;
-  selectRoleLabel: string;
+  searchQuery: string;
 }
 
 const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
@@ -46,9 +46,6 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 
   const removeFilter = (filter: string) => {
     setActiveFilters(activeFilters.filter((f) => f !== filter));
-
-    console.log(activeFilters);
-    console.log(filter);
 
     // Parse the filter to get the key and value
     const [key, _] = filter.split('=');

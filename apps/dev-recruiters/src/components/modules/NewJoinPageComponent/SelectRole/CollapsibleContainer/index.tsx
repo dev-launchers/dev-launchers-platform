@@ -119,10 +119,10 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
     {
       icon: SourceCode,
       title: 'HR & Recruiting',
-      count: openPositions['VoulunteerCordinator']?.length || 0,
+      count: openPositions['VolunteerCoordinator']?.length || 0,
       description:
         'Help us grow a mission-driven team by finding and supporting the best talent.',
-      roleName: 'VoulunteerCordinator',
+      roleName: 'VolunteerCoordinator',
       category: 'Operations',
     },
     {

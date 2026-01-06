@@ -21,27 +21,6 @@ function SearchRole({
   const [selectedRoles, setSelectedRoles] = useState<Opportunity[]>([]);
   const { commitmentRange } = useOpportunitiesContext();
 
-  // useEffect(() => {
-  //   if (!selectedRoleLabel) {
-  //     const roleJsonString = localStorage.getItem('selectedRole');
-  //     const selectedRole = JSON.parse(roleJsonString);
-  //     const selectedCategory = localStorage.getItem('roleCategory');
-  //     setSelectedRoles(selectedRole);
-  //     handleSuggestedRole(selectedCategory);
-  //   } else if (commitmentRange !== null) {
-  //     const filteredRoles = selectedRoleLabel.filter(
-  //       (role) =>
-  //         role?.attributes?.commitmentHoursPerWeek >= commitmentRange.min &&
-  //         role?.attributes?.commitmentHoursPerWeek <= commitmentRange.max
-  //     );
-  //     setSelectedRoles(filteredRoles);
-  //     handleSuggestedRole(selectedRoleCategory);
-  //   } else {
-  //     setSelectedRoles(selectedRoleLabel);
-  //     handleSuggestedRole(selectedRoleCategory);
-  //   }
-  // }, [selectedRoleLabel, commitmentRange]);
-
   useEffect(() => {
     let filteredRoles = opportunities || [];
 
@@ -115,7 +94,6 @@ function SearchRole({
               return (
                 <RoleCard
                   key={index}
-                  key22={index}
                   role={role}
                   opportunities={opportunities}
                 ></RoleCard>

@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { Opportunity } from '@devlaunchers/models';
-import { NewApplicant } from '@devlaunchers/models/newApplicant';
 import { agent } from '@devlaunchers/utility';
 import { Formik, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import FormErrorScroller from '@devlaunchers/components/src/utils/formErrorScroller';
+import UploadModal from '../../FormPage/uploadModal';
+import { atoms } from '@devlaunchers/components/src/components';
+import { ModalUploadSection } from '../../FormPage/styledSignupForm';
+import DragAndDrop from '../Drag and Drop/draganddrop';
 
 interface Props {
   position: Opportunity;
@@ -12,6 +15,12 @@ interface Props {
   projectSlug: string;
   onCancel: () => void;
   onSuccess: () => void;
+}
+
+interface UploadProps {
+  handleUploadCloseModal?: () => void;
+  handleOkCloseModal?: () => void;
+  handleCancelCloseModal?: () => void;
 }
 
 const ApplyRoleComponent = ({
@@ -26,9 +35,11 @@ const ApplyRoleComponent = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [deleteError, setDeleteError] = useState('');
+  const [uploadError, setUploadError] = useState('');
   const [timeCommitment, setTimeCommitment] = useState('');
   const [experienceLevel, setExperienceLevel] = useState('Intermediate');
   const [availableDays, setAvailableDays] = useState<string[]>([]);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const SignupSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -54,6 +65,53 @@ const ApplyRoleComponent = ({
       .oneOf([true], 'You must agree to terms'),
   });
 
+  function UploadDetailsModal() {
+    const handleFiles = (uploadedFiles) => {
+      console.log('Uploaded files:', uploadedFiles);
+      setFilesUploaded(uploadedFiles);
+      setShowUploadModal(false);
+    };
+
+    return (
+      <>
+        <ModalUploadSection>
+          <DragAndDrop
+            filesUploaded={filesUploaded}
+            onFilesUploaded={handleFiles}
+          />
+        </ModalUploadSection>
+        <atoms.Box gap="30px">
+          <atoms.Typography
+            variant="secondary"
+            size="body_sm"
+            css={{ color: 'red' }}
+          >
+            {uploadError}
+          </atoms.Typography>
+        </atoms.Box>
+      </>
+    );
+  }
+
+  const handleUploadOpenModal = () => {
+    setSelectedFiles([]);
+    setFilesUploaded({});
+    setUploadError('');
+    setShowUploadModal(true);
+  };
+
+  const handleUploadCloseModal = () => {
+    setShowUploadModal(false);
+  };
+  const handleOkCloseModal = async () => {
+    setShowUploadModal(false);
+  };
+  const handleCancelCloseModal = () => {
+    setSelectedFiles([]);
+    setFilesUploaded([]);
+    setShowUploadModal(false);
+  };
+
   const handleRemoveFile = () => {
     setIsDeleting(true);
     const newArr = [...selectedFiles];
@@ -72,10 +130,12 @@ const ApplyRoleComponent = ({
         .catch((error) => {
           setDeleteError('Error deleting file');
           setIsDeleting(false);
+          window.alert('Error deleting file. Please try again.');
         });
     } catch (error) {
       setDeleteError('Error deleting file');
       setIsDeleting(false);
+      window.alert('Error deleting file. Please try again.');
     }
   };
 
@@ -88,6 +148,19 @@ const ApplyRoleComponent = ({
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white py-8 px-4">
       <div className="max-w-2xl mx-auto">
+        {/* Error Alert */}
+        {submitError && (
+          <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+            <p className="text-red-400 text-sm">{submitError}</p>
+            <button
+              onClick={() => setSubmitError(null)}
+              className="text-red-400 text-xs mt-2 hover:text-red-300"
+            >
+              Dismiss
+            </button>
+          </div>
+        )}
+
         <Formik
           initialValues={{
             discordUsername: '',
@@ -116,6 +189,7 @@ const ApplyRoleComponent = ({
           }}
           onSubmit={(values: any, { setSubmitting }: FormikHelpers<any>) => {
             setSubmitting(true);
+            setSubmitError(null);
             agent.Applicant.post({
               ...values,
               level: experienceLevel.toLowerCase(),
@@ -136,6 +210,9 @@ const ApplyRoleComponent = ({
               })
               .catch((error) => {
                 setSubmitting(false);
+                setSubmitError(
+                  'Failed to submit application. Please try again.'
+                );
               });
           }}
           validationSchema={SignupSchema}
@@ -376,7 +453,9 @@ const ApplyRoleComponent = ({
                       <span className="text-red-500">*</span>
                     </label>
                     <p className="text-gray-400 text-xs mb-2">
-                      We're not super strict
+                      {position.attributes.commitmentHoursPerWeek != null
+                        ? `This role requires a commitment of at least ${position.attributes.commitmentHoursPerWeek} hours per week.`
+                        : 'We are not super strict about hours, but please be realistic.'}
                     </p>
                     <input
                       type="text"
@@ -532,32 +611,38 @@ const ApplyRoleComponent = ({
 
                   <div>
                     <label className="block text-sm mb-2">
-                      Upload Recent CV/X
+                      Upload your resume
                     </label>
                     <p className="text-gray-400 text-xs mb-2">
-                      Upload your most recent CV or DOC or PNG or JPEG, even if
-                      it's not fully up-to-date
+                      Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed
                     </p>
-                    <button
-                      type="button"
-                      onClick={() => setShowUploadModal(true)}
+                    <atoms.Button
+                      onClick={() => handleUploadOpenModal()}
                       className="text-sm text-blue-500 hover:text-blue-400"
                     >
                       Upload File
-                    </button>
+                    </atoms.Button>
+                    <UploadModal
+                      modalIsOpen={showUploadModal}
+                      closeModal={handleUploadCloseModal}
+                      handleOpenModal={handleUploadOpenModal}
+                      modalContent={<UploadDetailsModal />}
+                    />
                     {filesUploaded['id'] && (
-                      <div className="mt-2 flex items-center gap-2">
-                        <span className="text-sm text-gray-300">
-                          {filesUploaded['name']}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={handleRemoveFile}
-                          disabled={isDeleting}
-                          className="text-xs text-red-500 hover:text-red-400 disabled:opacity-50"
-                        >
-                          {isDeleting ? 'Removing...' : 'Remove'}
-                        </button>
+                      <div className="mt-4 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm text-green-400 font-medium">
+                            ✓ {filesUploaded['name']}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={handleRemoveFile}
+                            disabled={isDeleting}
+                            className="text-xs text-red-500 hover:text-red-400 disabled:opacity-50 font-medium"
+                          >
+                            {isDeleting ? 'Removing...' : 'Remove'}
+                          </button>
+                        </div>
                       </div>
                     )}
                   </div>

@@ -9,13 +9,10 @@ import {
   RoleDetailsModalWrapper,
   CloseColorBoxContainer,
   ColorBox,
-  CloseButton,
   ModalTopSection,
   ModalHeader,
   BadgesContainer,
   Badge,
-  MetadataGrid,
-  MetadataItem,
   ModalDescriptionSection,
   ModalSkillRequiredSection,
   TagsSection,
@@ -27,8 +24,6 @@ import {
   BulletList,
   BulletListItem,
   ButtonsSection,
-  SaveForLaterButton,
-  ApplyButton,
   RelatedPositionsSection,
   RelatedPositionsGrid,
   RelatedPositionCard,
@@ -38,7 +33,6 @@ import {
   RelatedCardMeta,
   RelatedCardDescription,
   RelatedCardButtons,
-  RelatedCardButton,
 } from './StyledRoleModal';
 import { Button } from '@devlaunchers/components/src/components/atoms';
 
@@ -233,7 +227,7 @@ function RoleDetailsModal({
             {suggestedRoles.slice(0, 3).map((role, index) => (
               <RelatedPositionCard key={index} as={'div'}>
                 <RelatedCardIcon>
-                  <img src="/path/to/rocket-icon.svg" alt="Role icon" />
+                  <Icons.Bell />
                 </RelatedCardIcon>
                 <RelatedCardTitle>{role?.attributes?.title}</RelatedCardTitle>
                 <RelatedCardSubtitle>
