@@ -39,6 +39,7 @@ function IdeaCard({ idea }) {
     <Link href={urlPath}>
       <atoms.Box
         flexDirection="column"
+        className="w-full md:w-[295px] lg:w-[calc(50%-8px)] xl:w-[295px] h-[218px]"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           borderRadius: '1rem',
@@ -46,8 +47,6 @@ function IdeaCard({ idea }) {
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
             : 'none',
-          height: '218px',
-          width: '295px',
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
