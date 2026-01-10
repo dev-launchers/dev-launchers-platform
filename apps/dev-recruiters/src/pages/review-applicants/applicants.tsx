@@ -11,7 +11,7 @@ import ShowApplicants from './show-applicants';
 interface UserRoleType {
   title: string;
   projectId: string;
-  projectTitle: string;
+  opportunityId: string;
 }
 
 const ReviewApplicantsByRole: React.FC = () => {
@@ -24,7 +24,7 @@ const ReviewApplicantsByRole: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [applicants, setApplicants] = useState<NewApplicant[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const { role, projectId, projectName } = router.query;
+  const { role, projectId, opportunityId } = router.query;
 
   useEffect(() => {
     if (userDataLoading) {
@@ -54,9 +54,9 @@ const ReviewApplicantsByRole: React.FC = () => {
         {
           title: Array.isArray(role) ? role[0] : role,
           projectId: Array.isArray(projectId) ? projectId[0] : projectId || '',
-          projectTitle: Array.isArray(projectName)
-            ? projectName[0]
-            : projectName || '',
+          opportunityId: Array.isArray(opportunityId)
+            ? opportunityId[0]
+            : opportunityId || '',
         },
       ];
     }
@@ -67,33 +67,52 @@ const ReviewApplicantsByRole: React.FC = () => {
       return positions.map((pos: any) => ({
         title: pos.title ?? '',
         projectId: String(project.id ?? ''),
-        projectTitle: project.title ?? '',
+        opportunityId: String(pos.id ?? ''),
       }));
     });
-  }, [userProjects, role, projectId, projectName]);
+  }, [userProjects, role, projectId, opportunityId]);
 
   const getApplicantsByRolesOrProjects = async (userRoles: UserRoleType[]) => {
-    const params = new URLSearchParams();
-
     if (userRoles.length === 0) {
       return [];
     }
 
-    // Create OR groups for each role+project combination
+    const params = new URLSearchParams();
+    params.append('populate', 'project');
+    params.append('populate', 'opportunity');
+
+    // Try new filter: opportunity ID
     userRoles.forEach((userRole, index) => {
       params.append(
+        `filters[$or][${index}][opportunity][id][$eq]`,
+        userRole.opportunityId
+      );
+    });
+
+    const result = await agent.Applicant.get(params.toString());
+
+    // If we got results with opportunity filter, return them
+    if (result && result.length > 0) {
+      return result;
+    }
+
+    // Fallback: use old filter (role + project)
+    const fallbackParams = new URLSearchParams();
+    fallbackParams.append('populate', 'project');
+    fallbackParams.append('populate', 'opportunity');
+
+    userRoles.forEach((userRole, index) => {
+      fallbackParams.append(
         `filters[$or][${index}][$and][0][role][$eqi]`,
         userRole.title.trim().toLowerCase()
       );
-      params.append(
+      fallbackParams.append(
         `filters[$or][${index}][$and][1][project][id][$eq]`,
         userRole.projectId
       );
     });
 
-    params.append('populate', 'project');
-
-    return await agent.Applicant.get(params.toString());
+    return await agent.Applicant.get(fallbackParams.toString());
   };
 
   useEffect(() => {

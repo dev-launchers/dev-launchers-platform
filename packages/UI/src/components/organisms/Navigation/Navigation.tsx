@@ -122,13 +122,10 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
     }
 
     if (isAuthenticated && user) {
-      console.log('projects', user.projects);
-
       const isLeader = user.projects?.some((project: any) =>
         project.team?.leaders?.some((l: any) => l.leader?.email === user.email)
       );
 
-      console.log('isLeader', isLeader);
       setIsLeader(isLeader);
     } else {
       setIsLeader(false);
