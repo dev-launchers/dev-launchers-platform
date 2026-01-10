@@ -20,29 +20,29 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 }) => {
   const [roleActive, setRoleActive] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [roleTitle, setRoleTitle] = useState('');
+  const [roleCategory, setRoleCategory] = useState('');
   const [experienceLevel, setExperienceLevel] = useState('');
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   useEffect(() => {
     const roleCategory = sessionStorage.getItem('roleCategory');
     setRoleActive(roleCategory);
-    setRoleTitle(roleCategory);
+    setRoleCategory(roleCategory);
   }, []);
 
-  const handleSearch = () => {
+  const handleSearchWithFilters = () => {
     localStorage.setItem('searchQuery', searchQuery);
 
-    onRoleSelection(searchQuery, roleTitle, activeFilters);
+    onRoleSelection(searchQuery, roleCategory, activeFilters);
   };
 
   useEffect(() => {
     const filters: string[] = [];
-    if (roleTitle) filters.push(`roleTitle=${roleTitle}`);
+    if (roleCategory) filters.push(`roleTitle=${roleCategory}`);
     if (experienceLevel) filters.push(`experienceLevel=${experienceLevel}`);
     setActiveFilters(filters);
-    onRoleSelection(searchQuery, roleTitle, filters);
-  }, [roleTitle, experienceLevel]);
+    onRoleSelection(searchQuery, roleCategory, filters);
+  }, [roleCategory, experienceLevel]);
 
   const removeFilter = (filter: string) => {
     setActiveFilters(activeFilters.filter((f) => f !== filter));
@@ -51,7 +51,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
     const [key, _] = filter.split('=');
 
     if (key === 'roleTitle') {
-      setRoleTitle('');
+      setRoleCategory('');
     }
     if (key === 'experienceLevel') {
       setExperienceLevel('');
@@ -81,7 +81,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  handleSearch();
+                  handleSearchWithFilters();
                 }
               }}
               className="w-full bg-gray-900 text-white border border-gray-700 rounded-lg px-4 py-3 pl-10 focus:outline-none focus:border-purple-600"
@@ -103,9 +103,9 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
 
           {/* Role Title Dropdown */}
           <select
-            value={roleTitle}
+            value={roleCategory}
             onChange={(e) => {
-              setRoleTitle(e.target.value);
+              setRoleCategory(e.target.value);
             }}
             className="bg-gray-900 text-white border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-purple-600 cursor-pointer"
           >
