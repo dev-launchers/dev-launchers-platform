@@ -31,7 +31,7 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
   }, []);
 
   const handleSearchWithFilters = () => {
-    localStorage.setItem('searchQuery', searchQuery);
+    localStorage.setItem('dev-recruit_searchQuery', searchQuery);
 
     onRoleSelection(searchQuery, roleCategory, activeFilters);
   };
