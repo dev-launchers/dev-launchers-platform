@@ -106,6 +106,21 @@ const projectItems = [
   },
 ];
 
+// Helper function to close dropdown on route change
+function useCloseOnRouteChange(onClose: () => void) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', onClose);
+    router.events.on('hashChangeStart', onClose);
+
+    return () => {
+      router.events.off('routeChangeStart', onClose);
+      router.events.off('hashChangeStart', onClose);
+    };
+  }, [router.events, onClose]);
+}
+
 interface UserData {
   name: string;
   profilePictureUrl: string;
@@ -116,20 +131,10 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isLeader, setIsLeader] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
   const { userData: user, isAuthenticated, isLoading } = useUserDataContext();
-  const router = useRouter();
 
-  // Close when route OR hash changes (same behavior as other dropdowns)
-  React.useEffect(() => {
-    const close = () => setIsOpen(false);
-
-    router.events.on('routeChangeStart', close);
-    router.events.on('hashChangeStart', close);
-
-    return () => {
-      router.events.off('routeChangeStart', close);
-      router.events.off('hashChangeStart', close);
-    };
-  }, [router]);
+  // Close when route OR hash changes
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   useEffect(() => {
     if (isLoading) {
@@ -244,20 +249,10 @@ const DropdownMenu = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
   // Close when route OR hash changes
-  React.useEffect(() => {
-    const close = () => setIsOpen(false);
-
-    router.events.on('routeChangeStart', close);
-    router.events.on('hashChangeStart', close);
-
-    return () => {
-      router.events.off('routeChangeStart', close);
-      router.events.off('hashChangeStart', close);
-    };
-  }, [router]);
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -324,19 +319,10 @@ const MobileDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
-  const router = useRouter();
 
-  React.useEffect(() => {
-    const close = () => setIsOpen(false);
-
-    router.events.on('routeChangeStart', close);
-    router.events.on('hashChangeStart', close);
-
-    return () => {
-      router.events.off('routeChangeStart', close);
-      router.events.off('hashChangeStart', close);
-    };
-  }, [router]);
+  // Close when route OR hash changes
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
