@@ -1,7 +1,8 @@
 import constate from 'constate'; // State Context Object Creator
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 
+//  Default user = NOT authenticated
 export const DEFAULT_USER = {
   id: 0,
   name: '',
@@ -20,21 +21,26 @@ export const DEFAULT_USER = {
   interests: [],
 };
 
-// Built from this article: https://www.sitepoint.com/replace-redux-react-hooks-context-api/
-
-// Step 1: Create a custom hook that contains your state and actions
+// Custom hook that manages user state
 function useUserDataHook() {
-  const [userData, _] = useState(DEFAULT_USER);
-  const [isAuthenticated, setIsAuthenticated] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState(DEFAULT_USER);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const setUserData = useCallback((data) => _(() => data), []);
-  useEffect(() => {
-    setIsAuthenticated(userData && userData.id > 0);
-  }, [userData.id > 0]);
+  const isAuthenticated = userData.id > 0;
 
+  // function to update user data
+  const updateUserData = useCallback((data) => {
+    setUserData(data);
+  }, []);
+
+  //  Fetch user ONLY if not authenticated
   useEffect(() => {
+    // If already authenticated → do nothing return
+    if (isAuthenticated) return;
+
+    setIsLoading(true);
+
     const populateParams = [
       'populate[profile][populate][user][populate]=*',
       'populate[profile][populate][profilePicture][populate]=*',
@@ -52,51 +58,57 @@ function useUserDataHook() {
       'populate[idea_cards][filters][status][$ne]=deleted',
       'populate[idea_cards][populate]=*',
       'populate[ownedCards][populate]=*',
+      'populate[interests]=*',
     ].join('&');
-    axios
-      .get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?${populateParams}`, {
-        withCredentials: true,
-      })
+
+    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?${populateParams}`, {
+      withCredentials: true,
+    })
       .then(({ data: currentUser }) => {
         console.log('Fetching...');
-        setUserData({
+        updateUserData({
           id: currentUser.id,
-          name: currentUser.profile?.displayName,
-          username: currentUser.username,
-          email: currentUser.email,
-          bio: currentUser.profile?.bio,
-          profilePictureUrl: currentUser.profile?.profilePictureUrl,
-          socialMediaLinks: currentUser.profile?.socialMediaLinks,
-          interests: currentUser.interests,
-          projects: currentUser.projects,
-          idea_cards: currentUser.idea_cards,
-          profile: currentUser.profile,
-          ownedCards: currentUser.ownedCards,
+          name: currentUser.profile?.displayName ?? '',
+          username: currentUser.username ?? '',
+          email: currentUser.email ?? '',
+          bio: currentUser.profile?.bio ?? '',
+          profilePictureUrl: currentUser.profile?.profilePictureUrl ?? '',
+          socialMediaLinks: currentUser.profile?.socialMediaLinks ?? [],
+          interests: currentUser.interests ?? [],
+          projects: currentUser.projects ?? [],
+          idea_cards: currentUser.idea_cards ?? [],
+          profile: currentUser.profile ?? null,
+          ownedCards: currentUser.ownedCards ?? [],
         });
-        setIsLoading(false);
       })
       .catch((e) => {
-        console.error('failed to fetch', e);
-        setIsAuthenticated(false);
-        setIsLoading(false);
+        console.error('User fetch failed', e);
         setError(e);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-  }, []);
+  }, [isAuthenticated, updateUserData]);
 
-  return {
-    useUserDataContext: {
+  // Memoize context value - Prevents unnecessary re-renders
+  const value = useMemo(
+    () => ({
       userData,
-      setUserData,
+      updateUserData,
       isAuthenticated,
       isLoading,
       error,
-    },
-  };
+    }),
+    [userData, isAuthenticated, isLoading, error, updateUserData]
+  );
+
+  return { useUserDataContext: value };
 }
 
-// Step 2: Declare your context state object to share the state with other components
+//  Create Provider + Hook
 const [UserDataProvider, useUserDataContext] = constate(
   useUserDataHook,
-  (value) => value.useUserDataContext
+  (v) => v.useUserDataContext
 );
+
 export { UserDataProvider, useUserDataContext };
