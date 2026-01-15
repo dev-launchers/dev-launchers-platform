@@ -1,7 +1,14 @@
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 
-const EditionButton = ({ clickHandlerButton, sending, onClick, style, className, disabling, }) => {
+const EditionButton = ({
+  clickHandlerButton,
+  sending,
+  onClick,
+  style,
+  className,
+  disabling,
+}) => {
   const goBack = () => {
     clickHandlerButton('back');
   };
@@ -24,7 +31,7 @@ const EditionButton = ({ clickHandlerButton, sending, onClick, style, className,
           mode="light"
           color="nebula"
           onClick={onClick}
-          disabled={disabling || sending} 
+          disabled={disabling || sending}
         >
           {sending === true ? 'Wait' : 'Save edits'}
         </atoms.Button>

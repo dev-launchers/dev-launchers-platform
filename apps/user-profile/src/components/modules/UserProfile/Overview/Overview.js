@@ -3,6 +3,8 @@ import ProfileHeader from './../ProfileHeader';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Bio from './Bio';
 import Interests from './Interests';
+import Ideas from './Ideas';
+import IdeaCTABanner from './Ideas/IdeaCTABanner';
 import { editProfileActions } from './../../../../state/actions';
 
 function Overview() {
@@ -31,6 +33,8 @@ function Overview() {
           title="Interests"
           action={editProfileActions.SHOW_INTERESTS_SETTING}
         />
+        <Ideas ideasList={userData?.idea_cards || []} />
+        <IdeaCTABanner />
       </div>
     </>
   );
