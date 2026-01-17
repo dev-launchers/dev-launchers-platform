@@ -4,21 +4,17 @@ import { useState } from 'react';
 import LogoMonogram from '../../../../../../../images/logo-monogram.png';
 
 import {
-  AboutDescription,
   ButtonsContainer,
   CardContainer,
   CardContent,
   ContentSection,
   IconContainer,
-  MetadataContainer,
-  MetadataItem,
   RoleIcon,
-  Subtitle,
-  Title,
 } from './styledRoleCard';
 import { Button } from '@devlaunchers/components/src/components/atoms';
 import { Opportunity } from '@devlaunchers/models';
 import { useRouter } from 'next/router';
+import { Typography } from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   role: Opportunity;
@@ -41,10 +37,6 @@ const RoleCard = ({ role, opportunities }: Props) => {
     // setShowModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <CardContainer>
       <CardContent>
@@ -53,19 +45,23 @@ const RoleCard = ({ role, opportunities }: Props) => {
         </IconContainer>
 
         <ContentSection>
-          <Title>{role?.attributes?.title}</Title>
-          <Subtitle>
+          <Typography as="h3" size="xl2" textWeight="bold">
+            {role?.attributes?.title}
+          </Typography>
+          <Typography as="p">
             {role?.attributes?.roleCategory} Team | {role?.attributes?.roleType}
-          </Subtitle>
+          </Typography>
 
-          <MetadataContainer>
-            <MetadataItem>{role?.attributes?.level}</MetadataItem>
-            <MetadataItem>
+          <div className="flex gap-6 my-2">
+            <Typography as="p">{role?.attributes?.level}</Typography>
+            <Typography as="p">
               {role?.attributes?.commitmentHoursPerWeek} Hours Per Week
-            </MetadataItem>
-          </MetadataContainer>
+            </Typography>
+          </div>
 
-          <AboutDescription>{role?.attributes?.description}</AboutDescription>
+          <div className="line-clamp-2">
+            <Typography as="p">{role?.attributes?.description}</Typography>
+          </div>
 
           <ButtonsContainer>
             <Button onClick={() => handleOpenModal(false)}>Role Details</Button>

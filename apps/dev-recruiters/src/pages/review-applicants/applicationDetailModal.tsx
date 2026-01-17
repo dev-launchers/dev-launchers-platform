@@ -1,7 +1,7 @@
 import React from 'react';
-import { X } from 'lucide-react';
 import { NewApplicant } from '@devlaunchers/models';
 import Modal from '../../components/modules/DetailedPage/PositionPopupModal';
+import { Typography } from '@devlaunchers/components/src/components/atoms';
 
 const customStyles = {
   content: {
@@ -43,55 +43,75 @@ export default function ApplicantDetailModal({
       modalContent={
         <div className="relative bg-gray-900 text-white p-8 rounded-lg max-w-2xl">
           {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-1 hover:bg-gray-800 rounded"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          {/* Header */}
-          <div className="mb-6">
-            <h2 className="text-2xl font-bold mb-1">{applicant.name}</h2>
-            <p className="text-gray-400">{applicant.email}</p>
+          <div className="flex flex-col-reverse justify-between items-start mb-6">
+            <div>
+              <Typography as="h2" size="xl2" textWeight="bold">
+                {applicant.name}
+              </Typography>
+              <Typography as="p" size="body_lg">
+                {applicant.email}
+              </Typography>
+            </div>
           </div>
 
           {/* Details Grid */}
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
-              <p className="text-gray-400 text-sm">Role</p>
-              <p className="text-lg font-semibold">{applicant.role}</p>
+              <Typography as="p" className="text-gray-400 text-sm">
+                Role
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
+                {applicant.role}
+              </Typography>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Level</p>
-              <p className="text-lg font-semibold">{applicant.level}</p>
+              <Typography as="p" className="text-gray-400 text-sm">
+                Level
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
+                {applicant.level}
+              </Typography>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Years of Experience</p>
-              <p className="text-lg font-semibold">
+              <Typography as="p" className="text-gray-400 text-sm">
+                Years of Experience
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
                 {applicant.yearsOfExperience ?? 'N/A'}
-              </p>
+              </Typography>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Commitment (hrs/week)</p>
-              <p className="text-lg font-semibold">{applicant.commitment}</p>
+              <Typography as="p" className="text-gray-400 text-sm">
+                Commitment (hrs/week)
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
+                {applicant.commitment}
+              </Typography>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">Age</p>
-              <p className="text-lg font-semibold">{applicant.age}</p>
+              <Typography as="p" className="text-gray-400 text-sm">
+                Age
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
+                {applicant.age}
+              </Typography>
             </div>
             <div>
-              <p className="text-gray-400 text-sm">18+</p>
-              <p className="text-lg font-semibold">
+              <Typography as="p" className="text-gray-400 text-sm">
+                18+
+              </Typography>
+              <Typography as="p" className="text-lg font-semibold">
                 {applicant.isAgeOver18 ? 'Yes' : 'No'}
-              </p>
+              </Typography>
             </div>
           </div>
 
           {/* Skills */}
           {applicant.skills && (
             <div className="mb-6">
-              <p className="text-gray-400 text-sm mb-2">Skills</p>
+              <Typography as="p" className="text-gray-400 text-sm mb-2">
+                Skills
+              </Typography>
               <div className="flex flex-wrap gap-2">
                 {applicant.skills.map((s, idx) => (
                   <span
@@ -107,28 +127,42 @@ export default function ApplicantDetailModal({
 
           {/* Experience */}
           <div className="mb-6">
-            <p className="text-gray-400 text-sm mb-2">Experience</p>
-            <p className="text-gray-200">{applicant.experience}</p>
+            <Typography as="p" className="text-gray-400 text-sm mb-2">
+              Experience
+            </Typography>
+            <Typography as="p" className="text-gray-200">
+              {applicant.experience}
+            </Typography>
           </div>
 
           {/* Reason */}
           <div className="mb-6">
-            <p className="text-gray-400 text-sm mb-2">Why Join</p>
-            <p className="text-gray-200">{applicant.reason}</p>
+            <Typography as="p" className="text-gray-400 text-sm mb-2">
+              Why Join
+            </Typography>
+            <Typography as="p" className="text-gray-200">
+              {applicant.reason}
+            </Typography>
           </div>
 
           {/* Extra Info */}
           {applicant.extraInfo && (
             <div className="mb-6">
-              <p className="text-gray-400 text-sm mb-2">Additional Info</p>
-              <p className="text-gray-200">{applicant.extraInfo}</p>
+              <Typography as="p" className="text-gray-400 text-sm mb-2">
+                Additional Info
+              </Typography>
+              <Typography as="p" className="text-gray-200">
+                {applicant.extraInfo}
+              </Typography>
             </div>
           )}
 
           {/* Portfolio Link */}
           {applicant.portfolioLink && (
             <div className="mb-6">
-              <p className="text-gray-400 text-sm mb-2">Portfolio</p>
+              <Typography as="p" className="text-gray-400 text-sm mb-2">
+                Portfolio
+              </Typography>
               <a
                 href={applicant.portfolioLink}
                 target="_blank"
@@ -143,8 +177,12 @@ export default function ApplicantDetailModal({
           {/* Discord */}
           {applicant.discordUsername && (
             <div>
-              <p className="text-gray-400 text-sm mb-2">Discord</p>
-              <p className="text-gray-200">{applicant.discordUsername}</p>
+              <Typography as="p" className="text-gray-400 text-sm mb-2">
+                Discord
+              </Typography>
+              <Typography as="p" className="text-gray-200">
+                {applicant.discordUsername}
+              </Typography>
             </div>
           )}
         </div>

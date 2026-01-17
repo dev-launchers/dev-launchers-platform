@@ -8,6 +8,10 @@ import UploadModal from '../../FormPage/uploadModal';
 import { atoms } from '@devlaunchers/components/src/components';
 import { ModalUploadSection } from '../../FormPage/styledSignupForm';
 import DragAndDrop from '../Drag and Drop/draganddrop';
+import {
+  Button,
+  Typography,
+} from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   position: Opportunity;
@@ -137,12 +141,12 @@ const ApplyRoleComponent = ({
         {submitError && (
           <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
             <p className="text-red-400 text-sm">{submitError}</p>
-            <button
+            <Button
               onClick={() => setSubmitError(null)}
               className="text-red-400 text-xs mt-2 hover:text-red-300"
             >
               Dismiss
-            </button>
+            </Button>
           </div>
         )}
 
@@ -205,8 +209,7 @@ const ApplyRoleComponent = ({
           {(formik) => (
             <div className="space-y-8">
               {/* Back Button */}
-              <button
-                type="button"
+              <Button
                 onClick={onCancel}
                 className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
               >
@@ -225,14 +228,18 @@ const ApplyRoleComponent = ({
                   />
                 </svg>
                 Back to Role Details
-              </button>
+              </Button>
 
               {/* About You Section */}
               <section>
-                <h2 className="text-2xl font-bold mb-2">About You</h2>
-                <p className="text-gray-400 text-sm mb-6">
-                  Let's get to know — We can't wait to collaborate!
-                </p>
+                <div className="mb-6">
+                  <Typography className="text-2xl" textWeight="bold">
+                    About You
+                  </Typography>
+                  <Typography className="text-gray-400">
+                    Let's get to know — We can't wait to collaborate!
+                  </Typography>
+                </div>
 
                 <div className="space-y-4">
                   <div>
@@ -617,14 +624,13 @@ const ApplyRoleComponent = ({
                           <span className="text-sm text-green-400 font-medium">
                             ✓ {filesUploaded['name']}
                           </span>
-                          <button
-                            type="button"
+                          <Button
                             onClick={handleRemoveFile}
                             disabled={isDeleting}
                             className="text-xs text-red-500 hover:text-red-400 disabled:opacity-50 font-medium"
                           >
                             {isDeleting ? 'Removing...' : 'Remove'}
-                          </button>
+                          </Button>
                         </div>
                       </div>
                     )}
@@ -768,15 +774,13 @@ const ApplyRoleComponent = ({
 
               {/* Action Buttons */}
               <div className="flex gap-4 pt-4">
-                <button
-                  type="button"
+                <Button
                   onClick={onCancel}
                   className="flex-1 bg-transparent border border-gray-700 hover:border-gray-600 text-white font-medium py-3 rounded-lg transition-colors"
                 >
                   Cancel
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
                   onClick={(e) => {
                     e.preventDefault();
                     formik.handleSubmit();
@@ -785,7 +789,7 @@ const ApplyRoleComponent = ({
                   className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {formik.isSubmitting ? 'Submitting...' : 'Submit Application'}
-                </button>
+                </Button>
               </div>
 
               <FormErrorScroller focusAfterScroll />

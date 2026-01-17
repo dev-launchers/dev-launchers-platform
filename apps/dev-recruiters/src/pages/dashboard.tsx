@@ -46,14 +46,20 @@ const Dashboard: React.FC = () => {
       return;
     }
 
+    console.log('Checking authentication and user data...');
+    console.log('isAuthenticated:', isAuthenticated);
+    console.log('userData:', userData);
+
     if (isAuthenticated && userData) {
       const isLeader = userData.projects?.some((project: any) =>
         project.team?.leaders?.some(
           (l: any) => l.leader?.email === userData.email
         )
       );
-    } else {
-      router.replace('/');
+
+      if (!isLeader) {
+        router.replace('/');
+      }
     }
   }, [isAuthenticated, userData, isLoading]);
 

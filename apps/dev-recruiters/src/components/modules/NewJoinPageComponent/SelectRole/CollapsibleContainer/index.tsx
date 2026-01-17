@@ -7,16 +7,8 @@ import DeveloperMode from '../../../../../images/icons/Developer-mode.png';
 import FloorPlan from '../../../../../images/icons/Floor-Plan.png';
 import PopularMan from '../../../../../images/icons/Popular-Man.png';
 import SourceCode from '../../../../../images/icons/Source-Code.png';
-import {
-  RoleCardCount,
-  RoleCardDescription,
-  RoleCardLink,
-  RoleCardTitle,
-  RoleGrid,
-  RoleGrid2,
-  SectionSubtitle,
-  SectionTitle,
-} from './styles';
+import { RoleGrid, RoleGrid2 } from './styles';
+import { Typography } from '@devlaunchers/components/src/components/atoms';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -42,17 +34,31 @@ const RoleCategoryCard: React.FC<RoleCategoryCardProps> = ({
   return (
     <div
       onClick={onClick}
-      className="bg-gray-900 rounded-xl p-8 cursor-pointer transition-all duration-300 border border-gray-800 hover:bg-gray-800 hover:border-purple-600 hover:-translate-y-1"
+      className="bg-gray-900 text-white rounded-xl p-8 cursor-pointer transition-all duration-300 border border-gray-800 hover:bg-gray-800 hover:border-purple-600 hover:-translate-y-1"
     >
       <img
         src={icon}
         alt={title}
         className="w-12 h-12 mb-8 brightness-0 invert"
       />
-      <RoleCardTitle>{title}</RoleCardTitle>
-      <RoleCardCount>{count} roles open</RoleCardCount>
-      <RoleCardDescription>{description}</RoleCardDescription>
-      <RoleCardLink>Find available roles →</RoleCardLink>
+
+      <Typography as="h1" size="body_lg" textWeight="bold">
+        {title}
+      </Typography>
+
+      <div>
+        <Typography as="p">{count} role(s) open</Typography>
+        <Typography as="p">{description}</Typography>
+      </div>
+
+      <div className="mt-6">
+        <Typography
+          as="p"
+          className="text-blue-400 hover:text-blue-300 underline"
+        >
+          Find available roles →
+        </Typography>
+      </div>
     </div>
   );
 };
@@ -149,13 +155,15 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
 
   return (
     <div className="w-full max-w-7xl mx-auto px-5 py-10">
-      <div className="pb-10">
-        <SectionTitle>Explore our roles</SectionTitle>
-        <SectionSubtitle>
+      <div className="pb-10 text-white">
+        <Typography as="h2" size="xl2" textWeight="bold">
+          Explore our roles
+        </Typography>
+        <Typography as="p">
           Whether you're a developer, designer, strategist, or storyteller,
           there's a place for you at Dev Launchers. Explore our role categories
           to find where your skills, passions, and potential can thrive.
-        </SectionSubtitle>
+        </Typography>
       </div>
 
       <RoleGrid>

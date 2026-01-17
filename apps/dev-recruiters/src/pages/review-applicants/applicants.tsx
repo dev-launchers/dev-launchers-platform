@@ -37,8 +37,10 @@ const ReviewApplicantsByRole: React.FC = () => {
           (l: any) => l.leader?.email === userData.email
         )
       );
-    } else {
-      router.replace('/');
+
+      if (!isLeader) {
+        router.replace('/');
+      }
     }
   }, [isAuthenticated, userData, userDataLoading]);
 

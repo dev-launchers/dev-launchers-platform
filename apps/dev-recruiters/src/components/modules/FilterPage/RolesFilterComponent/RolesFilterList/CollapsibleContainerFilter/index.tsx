@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { SectionHeading } from './styles';
 import Commitment from './Commitment';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 interface CollapsibleContainerProps {
   openPositions: {
@@ -147,12 +148,12 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
                 className="bg-purple-900 text-purple-200 px-4 py-2 rounded-full text-sm flex items-center gap-2"
               >
                 {cleanFilter(filter)}
-                <button
+                <Button
                   onClick={() => removeFilter(filter)}
                   className="hover:text-white"
                 >
                   ×
-                </button>
+                </Button>
               </div>
             ))}
           </div>

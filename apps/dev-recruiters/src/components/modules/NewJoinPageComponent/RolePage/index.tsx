@@ -7,16 +7,12 @@ import {
   PageWrapper,
   HeroSection,
   HeroContent,
-  HeroTitle,
-  HeroSubtitle,
   BadgesContainer,
-  Badge,
   ActionButtonsTop,
   SaveButton,
   ContentWrapper,
   MainContent,
   SidebarCard,
-  SidebarTitle,
   SidebarContent,
   SkillTag,
   SkillsGrid,
@@ -39,7 +35,10 @@ import {
 import LoginPage from '../../LoginPage/loginPage';
 import Modal from '../../DetailedPage/PositionPopupModal/Modal';
 
-import { Button } from '@devlaunchers/components/src/components/atoms';
+import {
+  Button,
+  Typography,
+} from '@devlaunchers/components/src/components/atoms';
 import ApplyRoleComponent from '../ApplyRoleComponent/ApplyRoleComponent';
 
 const RolePage = () => {
@@ -174,11 +173,20 @@ const RolePage = () => {
       {/* Hero Section - Always visible */}
       <HeroSection>
         <HeroContent>
-          <HeroTitle>{title}</HeroTitle>
-          <HeroSubtitle>Platform Team | {roleCategory}</HeroSubtitle>
+          <Typography as="h1" className="text-white" size="xl3">
+            {title}
+          </Typography>
+          <Typography
+            as="h2"
+            className="text-gray-400"
+          >{`Platform Team | ${roleCategory}`}</Typography>
           <BadgesContainer>
-            <Badge>{level}</Badge>
-            <Badge>{commitmentHoursPerWeek} Hours Per Week</Badge>
+            <Typography as="span" className="text-white">
+              {level}
+            </Typography>
+            <Typography as="span" className="text-white">
+              {commitmentHoursPerWeek} Hours Per Week
+            </Typography>
           </BadgesContainer>
 
           {/* Only show action buttons when not in apply mode */}
@@ -228,32 +236,54 @@ const RolePage = () => {
               {/* About the Role */}
               <TwoColumnGrid>
                 <SidebarCard>
-                  <SidebarTitle>Skills Required</SidebarTitle>
+                  <Typography as="h3" className="text-gray-200">
+                    Skills Required
+                  </Typography>
                   <SidebarContent>
                     <SkillsGrid>
                       {skillsData?.map((skill, index) => {
                         const { interest } = skill?.attributes;
                         return (
-                          <SkillTag key={index} as={'span'}>
+                          <Typography
+                            key={index}
+                            as="span"
+                            className="bg-gray-800 text-gray-200 px-3 py-1 rounded text-sm"
+                          >
                             {interest}
-                          </SkillTag>
+                          </Typography>
                         );
                       })}
                     </SkillsGrid>
                   </SidebarContent>
                 </SidebarCard>
                 <ContentSection>
-                  <SectionTitle>About the Role</SectionTitle>
-                  <SectionContent>{description}</SectionContent>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About the Role
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    {description}
+                  </Typography>
                 </ContentSection>
               </TwoColumnGrid>
 
               {/* Responsibilities & Why Join */}
               <TwoColumnGrid>
                 <ContentSection>
-                  <SectionTitle>Responsibilities</SectionTitle>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    Responsibilities
+                  </Typography>
                   {expectationList.length === 0 ? (
-                    <p>No specific responsibilities listed.</p>
+                    <Typography as="p" className="text-gray-400">
+                      No specific responsibilities listed.
+                    </Typography>
                   ) : (
                     <ul className="list-none">
                       {expectationList.map((item) => (
@@ -268,44 +298,59 @@ const RolePage = () => {
                   )}
                 </ContentSection>
                 <ContentSection>
-                  <SectionTitle>Why Should You Join?</SectionTitle>
-                  <SectionContent>{whyJoin}</SectionContent>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    Why Should You Join?
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    {whyJoin}
+                  </Typography>
                 </ContentSection>
               </TwoColumnGrid>
 
               {/* About the Team */}
               <TwoColumnGrid>
                 <ContentSection>
-                  <SectionTitle>About the Team</SectionTitle>
-                  <SectionContent>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About the Team
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
                     The Platform Team builds and maintains shared components,
                     internal tools, and core systems that power the Dev
                     Launchers ecosystem. We focus on scalable, reusable
                     solutions that support other project teams and enable them
                     to work efficiently.
-                  </SectionContent>
+                  </Typography>
                   <a
                     href="#"
-                    style={{
-                      color: '#7c3aed',
-                      fontSize: '0.875rem',
-                      marginTop: '8px',
-                      display: 'inline-block',
-                    }}
+                    className="text-purple-600 text-sm mt-2 inline-block"
                   >
                     Learn about the Platform Team →
                   </a>
                 </ContentSection>
                 {/* About Dev Launchers */}
                 <ContentSection>
-                  <SectionTitle>About Dev Launchers</SectionTitle>
-                  <SectionContent>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About Dev Launchers
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
                     Dev Launchers is a 501(c)(3) nonprofit creating real-world
                     tech opportunities for learners of all backgrounds. Through
                     hands-on projects and a supportive community, we help
                     volunteers gain professional experience, grow their skills,
                     and launch meaningful careers in tech.
-                  </SectionContent>
+                  </Typography>
                 </ContentSection>
               </TwoColumnGrid>
             </MainContent>

@@ -43,6 +43,7 @@ export const ContentSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  color: #ffffff;
 `;
 
 export const Title = styled.h2`

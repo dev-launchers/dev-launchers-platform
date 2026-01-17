@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import RoleCard from './RoleCard';
 
-import { EmptyRolesContainer, OpenRolesText } from './styles';
+import { OpenRolesText } from './styles';
 import { RolesContainer } from './styles';
 import { useOpportunitiesContext } from '../../../../../../contexts/SelectRoleContext';
 import { Opportunity, SkillLevel } from '@devlaunchers/models';
+import { Typography } from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   searchQuery: any;
@@ -83,11 +84,11 @@ function SearchRole({
       <>
         <OpenRolesText>Open roles ({selectedRoles?.length || 0})</OpenRolesText>
         {selectedRoles?.length === 0 ? (
-          <>
-            <EmptyRolesContainer>
+          <div className="text-white justify-center items-center flex flex-col mt-20">
+            <Typography as="p">
               Oops, there are currently no matching roles.
-            </EmptyRolesContainer>
-          </>
+            </Typography>
+          </div>
         ) : (
           <RolesContainer>
             {selectedRoles?.map((role, index) => {
