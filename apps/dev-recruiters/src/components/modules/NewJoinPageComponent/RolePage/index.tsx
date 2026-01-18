@@ -1,0 +1,461 @@
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { Opportunity } from '@devlaunchers/models';
+import { agent } from '@devlaunchers/utility';
+import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext';
+import {
+  PageWrapper,
+  HeroSection,
+  HeroContent,
+  BadgesContainer,
+  ActionButtonsTop,
+  SaveButton,
+  ContentWrapper,
+  MainContent,
+  SidebarCard,
+  SidebarContent,
+  SkillsGrid,
+  ContentSection,
+  TwoColumnGrid,
+  RelatedSection,
+  RelatedGrid,
+  RelatedCard,
+  RelatedCardIcon,
+  RelatedCardMeta,
+  RelatedCardButtons,
+  customStyles,
+} from './styles';
+import LoginPage from '../../LoginPage/loginPage';
+import Modal from '../../DetailedPage/PositionPopupModal/Modal';
+
+import {
+  Button,
+  Typography,
+} from '@devlaunchers/components/src/components/atoms';
+import ApplyRoleComponent from '../ApplyRoleComponent/ApplyRoleComponent';
+
+const RolePage = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const [role, setRole] = useState<Opportunity | null>(null);
+  const [suggestedRoles] = useState<Opportunity[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [isApplyMode, setIsApplyMode] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const { isAuthenticated } = useUserDataContext();
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!id) return;
+    setLoading(true);
+
+    const loadRoleData = async () => {
+      try {
+        setError(null);
+        // Try to get from sessionStorage first
+        const cachedData = sessionStorage.getItem(`role_${id}`);
+        if (cachedData) {
+          const parsed = JSON.parse(cachedData);
+          // Check if the cached role ID matches
+          if (parsed.role && parsed.role.id === id) {
+            setRole(parsed.role);
+            return;
+          }
+        }
+
+        // Fallback: fetch from API
+        const fetchedRole = await agent.Opportunities.get(id as string);
+        setRole(fetchedRole);
+      } catch (error) {
+        setError('Error loading role');
+        setRole(null);
+        console.error('Error loading role:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadRoleData();
+
+    const applyModeRequested = sessionStorage.getItem(`role_${id}_apply`);
+    if (applyModeRequested && applyModeRequested === 'true') {
+      setIsApplyMode(true);
+      sessionStorage.removeItem(`role_${id}_apply`);
+    }
+  }, [id]);
+
+  const handleOpenApplyMode = () => {
+    setIsApplyMode(true);
+  };
+
+  const handleCloseApplyMode = () => {
+    setIsApplyMode(false);
+  };
+
+  const handleApplicationSuccess = () => {
+    setIsApplyMode(false);
+    setShowSuccessModal(true);
+  };
+
+  const openNewRolePage = (id: string) => router.push(`/join/role?id=${id}`);
+
+  const handleOpenLoginModal = () => {
+    setShowLoginModal(true);
+  };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+  };
+
+  const handleRelatedRoleClick = (relatedRole: Opportunity) => {
+    // Store the new role in sessionStorage
+    sessionStorage.setItem(
+      `role_${relatedRole.id}`,
+      JSON.stringify({
+        role: relatedRole,
+        suggestedRoleIds: suggestedRoles.map((r) => r.id),
+      })
+    );
+    router.push(`/join/roles/${relatedRole.id}`);
+  };
+
+  if (loading) {
+    return (
+      <PageWrapper>
+        <div style={{ color: 'white', textAlign: 'center', padding: '4rem' }}>
+          Loading...
+        </div>
+      </PageWrapper>
+    );
+  }
+
+  if (!role) {
+    return (
+      <PageWrapper>
+        <div style={{ color: 'white', textAlign: 'center', padding: '4rem' }}>
+          Role not found
+          {error && <p>{error}</p>}
+        </div>
+      </PageWrapper>
+    );
+  }
+
+  const getProjectData = (role: Opportunity | null) => {
+    // In the rare case that the role doesn't have project data, return a default
+    if (!role || !role.attributes?.projects?.data[0]) {
+      console.log('No project data found for role:', role);
+      return { projectId: '37', projectSlug: 'dev-recruiters' };
+    }
+
+    const projectData = role?.attributes?.projects?.data[0];
+    return {
+      projectId: projectData?.id,
+      // @ts-ignore
+      projectSlug: projectData?.attributes?.slug,
+    };
+  };
+
+  const {
+    title,
+    commitmentHoursPerWeek,
+    level,
+    description,
+    roleCategory,
+    whyJoin,
+    interests: { data: skillsData },
+  } = role.attributes;
+
+  const { projectId, projectSlug } = getProjectData(role);
+  const expectationList = role?.attributes?.expectations || [];
+  return (
+    <PageWrapper>
+      {/* Hero Section - Always visible */}
+      <HeroSection>
+        <HeroContent>
+          <Typography as="h1" className="text-white" size="xl3">
+            {title}
+          </Typography>
+          <Typography
+            as="h2"
+            className="text-gray-400"
+          >{`Platform Team | ${roleCategory}`}</Typography>
+          <BadgesContainer>
+            <Typography as="span" className="text-white">
+              {level}
+            </Typography>
+            <Typography as="span" className="text-white">
+              {commitmentHoursPerWeek} Hours Per Week
+            </Typography>
+          </BadgesContainer>
+
+          {/* Only show action buttons when not in apply mode */}
+          {!isApplyMode && (
+            <ActionButtonsTop>
+              <SaveButton>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path
+                    d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                Save For Later
+              </SaveButton>
+              {isAuthenticated ? (
+                <Button onClick={handleOpenApplyMode}>Apply</Button>
+              ) : (
+                <Button onClick={handleOpenLoginModal}>Sign In To Apply</Button>
+              )}
+            </ActionButtonsTop>
+          )}
+        </HeroContent>
+      </HeroSection>
+
+      {/* Conditional rendering: Apply form OR Role details */}
+      {isApplyMode ? (
+        <ApplyRoleComponent
+          position={role}
+          projectId={projectId}
+          projectSlug={projectSlug}
+          onCancel={handleCloseApplyMode}
+          onSuccess={handleApplicationSuccess}
+        />
+      ) : (
+        <>
+          {/* Main Content */}
+          <ContentWrapper>
+            <MainContent>
+              {/* About the Role */}
+              <TwoColumnGrid>
+                <SidebarCard>
+                  <Typography as="h3" className="text-gray-200">
+                    Skills Required
+                  </Typography>
+                  <SidebarContent>
+                    <SkillsGrid>
+                      {skillsData?.map((skill, index) => {
+                        const { interest } = skill?.attributes;
+                        return (
+                          <Typography
+                            key={index}
+                            as="span"
+                            className="bg-gray-800 text-gray-200 px-3 py-1 rounded text-sm"
+                          >
+                            {interest}
+                          </Typography>
+                        );
+                      })}
+                    </SkillsGrid>
+                  </SidebarContent>
+                </SidebarCard>
+                <ContentSection>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About the Role
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    {description}
+                  </Typography>
+                </ContentSection>
+              </TwoColumnGrid>
+
+              {/* Responsibilities & Why Join */}
+              <TwoColumnGrid>
+                <ContentSection>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    Responsibilities
+                  </Typography>
+                  {expectationList.length === 0 ? (
+                    <Typography as="p" className="text-gray-400">
+                      No specific responsibilities listed.
+                    </Typography>
+                  ) : (
+                    <ul className="list-none">
+                      {expectationList.map((item) => (
+                        <li
+                          key={item.id}
+                          className="relative text-gray-300 text-sm mb-3 before:absolute before:left-0 before:text-purple-600 before:text-lg before:font-bold"
+                        >
+                          {item.expectation}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </ContentSection>
+                <ContentSection>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    Why Should You Join?
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    {whyJoin}
+                  </Typography>
+                </ContentSection>
+              </TwoColumnGrid>
+
+              {/* About the Team */}
+              <TwoColumnGrid>
+                <ContentSection>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About the Team
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    The Platform Team builds and maintains shared components,
+                    internal tools, and core systems that power the Dev
+                    Launchers ecosystem. We focus on scalable, reusable
+                    solutions that support other project teams and enable them
+                    to work efficiently.
+                  </Typography>
+                  <a
+                    href="#"
+                    className="text-purple-600 text-sm mt-2 inline-block"
+                  >
+                    Learn about the Platform Team →
+                  </a>
+                </ContentSection>
+                {/* About Dev Launchers */}
+                <ContentSection>
+                  <Typography
+                    as="h3"
+                    className="text-gray-200 mb-2"
+                    textWeight="bold"
+                  >
+                    About Dev Launchers
+                  </Typography>
+                  <Typography as="p" className="text-gray-400">
+                    Dev Launchers is a 501(c)(3) nonprofit creating real-world
+                    tech opportunities for learners of all backgrounds. Through
+                    hands-on projects and a supportive community, we help
+                    volunteers gain professional experience, grow their skills,
+                    and launch meaningful careers in tech.
+                  </Typography>
+                </ContentSection>
+              </TwoColumnGrid>
+            </MainContent>
+          </ContentWrapper>
+
+          {/* Related Positions */}
+          {suggestedRoles && suggestedRoles.length > 0 && (
+            <RelatedSection>
+              <Typography as="h3" className="text-white" textWeight="bold">
+                Related Positions
+              </Typography>
+              <RelatedGrid>
+                {suggestedRoles.slice(0, 3).map((suggestedRole, index) => (
+                  <RelatedCard
+                    key={index}
+                    as={'div'}
+                    onClick={() => handleRelatedRoleClick(suggestedRole)}
+                  >
+                    <RelatedCardIcon>
+                      <svg
+                        width="36"
+                        height="36"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                      >
+                        <path
+                          d="M12 2L2 7l10 5 10-5-10-5z"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                        <path
+                          d="M2 17l10 5 10-5M2 12l10 5 10-5"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </RelatedCardIcon>
+                    <Typography
+                      as="h4"
+                      className="text-white"
+                      textWeight="bold"
+                    >
+                      {suggestedRole?.attributes?.title}
+                    </Typography>
+                    <Typography as="p" className="text-gray-400">
+                      Platform Team | {suggestedRole?.attributes?.roleCategory}
+                    </Typography>
+                    <RelatedCardMeta>
+                      <Typography as="span" className="text-white">
+                        {suggestedRole?.attributes?.level}
+                      </Typography>
+                      <Typography as="span" className="text-white">
+                        {suggestedRole?.attributes?.commitmentHoursPerWeek}{' '}
+                        Hours Per Week
+                      </Typography>
+                    </RelatedCardMeta>
+                    <Typography as="p" className="text-gray-400">
+                      {suggestedRole?.attributes?.description}
+                    </Typography>
+                    <RelatedCardButtons>
+                      <Button onClick={() => openNewRolePage(suggestedRole.id)}>
+                        Role Details
+                      </Button>
+                    </RelatedCardButtons>
+                  </RelatedCard>
+                ))}
+              </RelatedGrid>
+            </RelatedSection>
+          )}
+        </>
+      )}
+
+      {/* Modals */}
+      <Modal
+        modalIsOpen={showLoginModal}
+        handleOpenModal={handleOpenLoginModal}
+        customModalStyles={customStyles}
+        modalContent={<LoginPage closeModal={handleCloseLoginModal} />}
+      />
+
+      <Modal
+        modalIsOpen={showSuccessModal}
+        handleOpenModal={() => setShowSuccessModal(true)}
+        closeModal={() => setShowSuccessModal(false)}
+        customModalStyles={customStyles}
+        modalContent={
+          <div className="p-8 text-center text-white">
+            <h2 className="text-xl mb-4">Application Submitted!</h2>
+
+            <p className="text-gray-400 mb-8">
+              Thank you for applying. We'll review your application and get back
+              to you soon.
+            </p>
+
+            <div className="flex justify-center">
+              <Button onClick={() => setShowSuccessModal(false)}>Close</Button>
+            </div>
+          </div>
+        }
+      />
+    </PageWrapper>
+  );
+};
+
+export default RolePage;

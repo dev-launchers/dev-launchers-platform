@@ -3,7 +3,7 @@ import StarySky from '../../../images/Searchresults/starysky.jpg';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+  background-color: ${({ theme }) => theme?.colors?.Black};
 `;
 
 export const Footer = styled.div`

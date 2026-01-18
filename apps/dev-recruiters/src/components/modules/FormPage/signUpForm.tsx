@@ -444,7 +444,7 @@ export default function SignUpForm({
                     Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed
                   </p>
 
-                  <UploadButton onClick={handleUploadOpenModal}>
+                  <UploadButton as="button" onClick={handleUploadOpenModal}>
                     Upload Files
                   </UploadButton>
                   <PortFolioLink name="testField" />

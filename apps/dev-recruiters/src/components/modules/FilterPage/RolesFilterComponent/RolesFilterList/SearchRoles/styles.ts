@@ -9,7 +9,9 @@ export const OpenRolesText = styled.div`
 export const RolesContainer = styled.div`
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 0.25rem;
 `;
 
