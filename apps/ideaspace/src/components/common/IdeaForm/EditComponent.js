@@ -17,7 +17,6 @@ const EditComponent = ({
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [canSaveForm, setCanSaveForm] = useState(false);
 
-
   // Add a key state to force re-render of EditIdea component
   const [componentKey, setComponentKey] = React.useState(Date.now());
 
@@ -179,11 +178,14 @@ const EditComponent = ({
             Cancel
           </atoms.Button>
           {/* Add an explicit spacer */}
-          <div style={{width: '12px'}}></div>
+          <div style={{ width: '12px' }}></div>
           <div
             style={{
-              opacity: (!canSaveForm || isSubmitting || isSending) ? 0.5 : 1,
-              cursor: (!canSaveForm || isSubmitting || isSending) ? 'not-allowed' : 'pointer',
+              opacity: !canSaveForm || isSubmitting || isSending ? 0.5 : 1,
+              cursor:
+                !canSaveForm || isSubmitting || isSending
+                  ? 'not-allowed'
+                  : 'pointer',
             }}
           >
             <atoms.Button

@@ -9,6 +9,7 @@ import {
   Users,
 } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
@@ -105,6 +106,21 @@ const projectItems = [
   },
 ];
 
+// Helper function to close dropdown on route change
+function useCloseOnRouteChange(onClose: () => void) {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on('routeChangeStart', onClose);
+    router.events.on('hashChangeStart', onClose);
+
+    return () => {
+      router.events.off('routeChangeStart', onClose);
+      router.events.off('hashChangeStart', onClose);
+    };
+  }, [router.events, onClose]);
+}
+
 interface UserData {
   name: string;
   profilePictureUrl: string;
@@ -115,6 +131,10 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isLeader, setIsLeader] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
   const { userData: user, isAuthenticated, isLoading } = useUserDataContext();
+
+  // Close when route OR hash changes
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   useEffect(() => {
     if (isLoading) {
@@ -197,12 +217,6 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
                 </p>
               </Link>
             )}
-            <Link href="/ideaspace/dashboard">
-              <p className={styles.profileMenuItem}>
-                <Lightbulb className={styles.icon} />
-                <span className="cursor-pointer">Idea Dashboard</span>
-              </p>
-            </Link>
             <button
               onClick={Logout}
               className={`w-full ${styles.profileMenuItem}`}
@@ -226,6 +240,10 @@ const DropdownMenu = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  // Close when route OR hash changes
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -292,6 +310,10 @@ const MobileDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
+
+  // Close when route OR hash changes
+  const close = React.useCallback(() => setIsOpen(false), []);
+  useCloseOnRouteChange(close);
 
   React.useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -547,12 +569,6 @@ const Navigation = () => {
                 <p className={styles.profileMenuItem}>
                   <User className={styles.icon} />
                   <span>Profile</span>
-                </p>
-              </Link>
-              <Link href="/ideaspace/dashboard">
-                <p className={styles.profileMenuItem}>
-                  <Lightbulb className={styles.icon} />
-                  <span>Idea Dashboard</span>
                 </p>
               </Link>
               <button
