@@ -1,9 +1,9 @@
-import { ApplyButton } from '../../FilterPage/RolesFilterComponent/RolesFilterList/SearchRoles/RoleModal/StyledRoleModal';
 import { GradientLine } from '../../FormPage/styledSignupForm';
 import Modal from '../PositionPopupModal/Modal';
 import {
   ConfirmationModalSection,
   confirmationModalStyles,
+  ApplyButton,
 } from './StyledConfirmationModal';
 
 interface Props {
@@ -32,7 +32,11 @@ const ConfirmationModal = ({
             through the email address you have provided.
           </p>
 
-          <ApplyButton color="DarkElectricBlue" onClick={handleCloseModal}>
+          <ApplyButton
+            as="a"
+            color="DarkElectricBlue"
+            onClick={handleCloseModal}
+          >
             Return to search results
           </ApplyButton>
         </ConfirmationModalSection>

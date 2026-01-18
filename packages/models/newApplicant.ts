@@ -24,4 +24,5 @@ export interface NewApplicant {
   level: keyof typeof SkillLevel;
   isAgeOver18: boolean;
   isTermsAgreed: boolean;
+  opportunity: string | number;
 }

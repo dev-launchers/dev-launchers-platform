@@ -91,8 +91,6 @@ const OpportunityForm = () => {
       if (!isLeader) {
         router.replace('/');
       }
-    } else {
-      router.replace('/');
     }
   }, [isAuthenticated, userData, isLoading]);
 
