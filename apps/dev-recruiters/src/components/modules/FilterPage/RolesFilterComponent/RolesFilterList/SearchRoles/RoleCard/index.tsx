@@ -22,7 +22,6 @@ interface Props {
 }
 
 const RoleCard = ({ role, opportunities }: Props) => {
-  const [showModal, setShowModal] = useState(false);
   const router = useRouter();
 
   const handleOpenModal = (shouldApply: boolean) => {
@@ -34,7 +33,6 @@ const RoleCard = ({ role, opportunities }: Props) => {
     );
     sessionStorage.setItem(`role_${role.id}_apply`, shouldApply.toString());
     router.push(`/join/role?id=${role.id}`);
-    // setShowModal(true);
   };
 
   return (

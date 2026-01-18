@@ -13,12 +13,7 @@ interface Props {
   activeFilters: string[];
   selectedRoleCategory?: String;
 }
-function SearchRole({
-  searchQuery,
-  opportunities,
-  activeFilters,
-  selectedRoleCategory,
-}: Props) {
+function SearchRole({ searchQuery, opportunities, activeFilters }: Props) {
   const [selectedRoles, setSelectedRoles] = useState<Opportunity[]>([]);
   const { commitmentRange } = useOpportunitiesContext();
 

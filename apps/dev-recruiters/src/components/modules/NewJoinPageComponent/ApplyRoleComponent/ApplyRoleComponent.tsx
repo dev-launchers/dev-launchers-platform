@@ -21,12 +21,6 @@ interface Props {
   onSuccess: () => void;
 }
 
-interface UploadProps {
-  handleUploadCloseModal?: () => void;
-  handleOkCloseModal?: () => void;
-  handleCancelCloseModal?: () => void;
-}
-
 const ApplyRoleComponent = ({
   position,
   projectId,

@@ -14,21 +14,14 @@ import {
   MainContent,
   SidebarCard,
   SidebarContent,
-  SkillTag,
   SkillsGrid,
   ContentSection,
-  SectionTitle,
-  SectionContent,
   TwoColumnGrid,
   RelatedSection,
-  RelatedTitle,
   RelatedGrid,
   RelatedCard,
   RelatedCardIcon,
-  RelatedCardTitle,
-  RelatedCardSubtitle,
   RelatedCardMeta,
-  RelatedCardDescription,
   RelatedCardButtons,
   customStyles,
 } from './styles';
@@ -51,6 +44,7 @@ const RolePage = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const { isAuthenticated } = useUserDataContext();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -58,6 +52,7 @@ const RolePage = () => {
 
     const loadRoleData = async () => {
       try {
+        setError(null);
         // Try to get from sessionStorage first
         const cachedData = sessionStorage.getItem(`role_${id}`);
         if (cachedData) {
@@ -73,6 +68,8 @@ const RolePage = () => {
         const fetchedRole = await agent.Opportunities.get(id as string);
         setRole(fetchedRole);
       } catch (error) {
+        setError('Error loading role');
+        setRole(null);
         console.error('Error loading role:', error);
       } finally {
         setLoading(false);
@@ -81,8 +78,8 @@ const RolePage = () => {
 
     loadRoleData();
 
-    const apply = sessionStorage.getItem(`role_${id}_apply`);
-    if (apply && apply === 'true') {
+    const applyModeRequested = sessionStorage.getItem(`role_${id}_apply`);
+    if (applyModeRequested && applyModeRequested === 'true') {
       setIsApplyMode(true);
       sessionStorage.removeItem(`role_${id}_apply`);
     }
@@ -100,6 +97,8 @@ const RolePage = () => {
     setIsApplyMode(false);
     setShowSuccessModal(true);
   };
+
+  const openNewRolePage = (id: string) => router.push(`/join/role?id=${id}`);
 
   const handleOpenLoginModal = () => {
     setShowLoginModal(true);
@@ -136,6 +135,7 @@ const RolePage = () => {
       <PageWrapper>
         <div style={{ color: 'white', textAlign: 'center', padding: '4rem' }}>
           Role not found
+          {error && <p>{error}</p>}
         </div>
       </PageWrapper>
     );
@@ -359,7 +359,9 @@ const RolePage = () => {
           {/* Related Positions */}
           {suggestedRoles && suggestedRoles.length > 0 && (
             <RelatedSection>
-              <RelatedTitle>Related Positions</RelatedTitle>
+              <Typography as="h3" className="text-white" textWeight="bold">
+                Related Positions
+              </Typography>
               <RelatedGrid>
                 {suggestedRoles.slice(0, 3).map((suggestedRole, index) => (
                   <RelatedCard
@@ -389,26 +391,32 @@ const RolePage = () => {
                         />
                       </svg>
                     </RelatedCardIcon>
-                    <RelatedCardTitle>
+                    <Typography
+                      as="h4"
+                      className="text-white"
+                      textWeight="bold"
+                    >
                       {suggestedRole?.attributes?.title}
-                    </RelatedCardTitle>
-                    <RelatedCardSubtitle>
+                    </Typography>
+                    <Typography as="p" className="text-gray-400">
                       Platform Team | {suggestedRole?.attributes?.roleCategory}
-                    </RelatedCardSubtitle>
+                    </Typography>
                     <RelatedCardMeta>
-                      <span>{suggestedRole?.attributes?.level}</span>
-                      <span>
+                      <Typography as="span" className="text-white">
+                        {suggestedRole?.attributes?.level}
+                      </Typography>
+                      <Typography as="span" className="text-white">
                         {suggestedRole?.attributes?.commitmentHoursPerWeek}{' '}
                         Hours Per Week
-                      </span>
-                      <span>1 Roles Open</span>
+                      </Typography>
                     </RelatedCardMeta>
-                    <RelatedCardDescription>
+                    <Typography as="p" className="text-gray-400">
                       {suggestedRole?.attributes?.description}
-                    </RelatedCardDescription>
+                    </Typography>
                     <RelatedCardButtons>
-                      <Button>Role Details</Button>
-                      <Button onClick={handleOpenApplyMode}>Apply</Button>
+                      <Button onClick={() => openNewRolePage(suggestedRole.id)}>
+                        Role Details
+                      </Button>
                     </RelatedCardButtons>
                   </RelatedCard>
                 ))}
