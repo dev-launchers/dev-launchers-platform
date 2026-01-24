@@ -187,9 +187,11 @@ const IdeaForm = ({
   ) => {
     if (focusedField === fieldName) {
       return (
+        <atoms.Typography size="body_base">
         <CharacterCounter isLimit={value?.length === maxLength}>
           {value?.length || 0}/{maxLength} characters
         </CharacterCounter>
+        </atoms.Typography>
       );
     } else {
       if (isRequired) {
@@ -306,7 +308,9 @@ const IdeaForm = ({
                   {/* Idea Name Field */}
                   <FieldWrapper data-field="ideaName">
                     <FieldLabel>
-                      Idea name
+                      <atoms.Typography textWeight="normal">
+                        Idea name
+                      </atoms.Typography>
                       <RequiredAsterisk>*</RequiredAsterisk>
                     </FieldLabel>
 
@@ -362,8 +366,10 @@ const IdeaForm = ({
                   {/* Description Field */}
                   <FieldWrapper data-field="description">
                     <FieldLabel>
+                      <atoms.Typography textWeight="normal">
                       Describe your idea:
                       <RequiredAsterisk>*</RequiredAsterisk>
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.description && errors.description}
@@ -404,9 +410,11 @@ const IdeaForm = ({
                   {/* Experience Field */}
                   <FieldWrapper data-field="experience">
                     <FieldLabel>
-                      Do you have any relevant experience that you'd like to
-                      utilize?
-                      <RequiredAsterisk>*</RequiredAsterisk>
+                      <atoms.Typography textWeight="normal">
+                        Do you have any relevant experience that you'd like to
+                        utilize?
+                        <RequiredAsterisk>*</RequiredAsterisk>
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.experience && errors.experience}
@@ -447,8 +455,10 @@ const IdeaForm = ({
                   {/* Target Audience Field */}
                   <FieldWrapper data-field="targetAudience">
                     <FieldLabel>
+                      <atoms.Typography textWeight="normal">
                       Describe your expected users:
                       <RequiredAsterisk>*</RequiredAsterisk>
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.targetAudience && errors.targetAudience}
@@ -487,8 +497,10 @@ const IdeaForm = ({
                   {/* Features Field - Required */}
                   <FieldWrapper data-field="features">
                     <FieldLabel>
+                      <atoms.Typography textWeight="normal">
                       What features would your product have?
                       <RequiredAsterisk>*</RequiredAsterisk>
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.features && errors.features}
@@ -527,11 +539,15 @@ const IdeaForm = ({
                   {/* Extra Info Field - Optional */}
                   <FieldWrapper>
                     <FieldLabel>
-                      Anything else you would like to share to support your
-                      idea?{' '}
-                      <span style={{ color: '#666666', fontWeight: '300' }}>
+                      <atoms.Typography textWeight="normal">
+                      Anything else you would like to share to support your idea?{' '}
+                      </atoms.Typography>
+                      <atoms.Typography
+                        as="span"
+                        style={{color: '#666666', fontWeight: 300}}
+                      >
                         (Optional)
-                      </span>
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.extraInfo && errors.extraInfo}
@@ -571,8 +587,10 @@ const IdeaForm = ({
                   {/* Tagline Field - Optional */}
                   <FieldWrapper>
                     <FieldLabel>
+                      <atoms.Typography textWeight="normal">
                       What's a catchy tagline for your idea that sums up your
                       value and purpose? (Optional)
+                      </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
                       hasError={touched.tagline && errors.tagline}
@@ -709,7 +727,7 @@ const IdeaForm = ({
                 </GroupWrapper> */}
 
                   {!editMode && (
-                    <atoms.Typography type="p">
+                    <atoms.Typography as="p">
                       After submitting your idea, it will be posted in the
                       Workshopping area to begin collaboration with other Dev
                       Launchers.
@@ -730,17 +748,21 @@ const IdeaForm = ({
                       <atoms.Typography type="p">
                         &nbsp;I have read and agree to the{' '}
                         <Link href="/ideaspace/terms" passHref>
-                          <a
+                          <atoms.Typography
+                            as="a"
+                            target="_blank"
                             style={{
                               color: 'blue',
                               textDecoration: 'underline',
                             }}
-                            target="_blank"
                           >
                             Idea Submission Terms & Conditions
-                          </a>
+                          </atoms.Typography>
                         </Link>
-                        .<span style={{ color: 'red' }}>&nbsp;*</span>
+                        .
+                        <atoms.Typography as="span" style={{color: 'red'}}>
+                          &nbsp;*
+                        </atoms.Typography>
                       </atoms.Typography>
                     </atoms.Box>
                   )}

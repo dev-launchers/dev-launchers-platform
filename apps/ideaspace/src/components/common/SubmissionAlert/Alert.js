@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { atoms } from '@devlaunchers/components/src/components';
 
 const Alert = ({
   type = 'success',
@@ -38,27 +39,24 @@ const Alert = ({
     if (type === 'success') {
       if (variant === 'submit') {
         return (
-          <>
-            <strong>Your idea was successfully posted!</strong> You'll be
+          <atoms.Typography as="strong">
+            Your idea was successfully posted! You&apos;ll be
             redirected to the Idea Workshopping Page in{' '}
-            <strong>{currentCountdown}</strong> seconds.
-          </>
+            <atoms.Typography as="strong">{currentCountdown}</atoms.Typography>
+            seconds.
+          </atoms.Typography>
         );
       } else {
-        return <strong>Your changes have been saved!</strong>;
+        return <atoms.Typography as="strong">Your changes have been saved!</atoms.Typography>;
       }
     } else {
       if (variant === 'submit') {
         return (
-          <>
-            <strong>Failed to post your idea.</strong> Please try again later.
-          </>
+          <atoms.Typography as="strong"> Failed to post your idea. Please try again later.</atoms.Typography>
         );
       } else {
         return (
-          <>
-            <strong>Failed to save changes.</strong> Please try again later.
-          </>
+            <atoms.Typography as="strong">Failed to save changes. Please try again later.</atoms.Typography>
         );
       }
     }
@@ -144,13 +142,14 @@ const Alert = ({
 
       <div className="flex items-center gap-2 flex-1">
         {getIcon()}
-        <h4
+        <atoms.Typography
+          as="h4"
           className={`m-0 text-left text-sm font-normal leading-5 font-['Nunito_Sans']
           ${type === 'success' ? 'text-[#206124]' : 'text-[#721c24]'}
         `}
         >
           {getMessage()}
-        </h4>
+        </atoms.Typography>
       </div>
 
       <button

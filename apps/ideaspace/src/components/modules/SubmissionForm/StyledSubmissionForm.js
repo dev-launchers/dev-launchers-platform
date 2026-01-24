@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { atoms } from '@devlaunchers/components/src/components'
 export const StyledRanbow = styled.div`
   margin: 1.3rem auto 0 auto;
   max-width: 24.8rem;
@@ -36,14 +37,11 @@ export const FieldLabel = styled.label`
   align-items: center;
   gap: 2px;
   color: #1c1c1c;
-  font: 400 16px/24px 'Nunito Sans', sans-serif;
-  text-transform: none;
   margin-bottom: 8px;
 `;
 
 export const RequiredAsterisk = styled.span`
   color: #ae3a3a;
-  font-size: 16px;
 `;
 
 export const StyledTextArea = styled.textarea`
@@ -78,7 +76,6 @@ export const StyledTextArea = styled.textarea`
 export const CharacterCounter = styled.div`
   text-align: right;
   color: #7339ac;
-  font: 400 14px/20px 'Nunito Sans', sans-serif;
   padding: 4px 16px;
   margin-top: 4px;
   color: ${({ isLimit }) => (isLimit ? '#ae3a3a' : '#7339ac')};

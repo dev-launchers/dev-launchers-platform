@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyledSaveIdea = styled.div`
-    font-weight: 400;
     display: flex;
     flex-direction: row;
     justify-content: center;

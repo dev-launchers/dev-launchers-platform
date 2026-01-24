@@ -8,6 +8,7 @@ import {
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useState } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
+import { atoms } from '@devlaunchers/components/src/components';
 
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
@@ -116,7 +117,7 @@ function SingleCommentComponent(props) {
           />
           <div className="textContent">
             <SingleCommentContent>
-              <h3>{props.author}</h3>
+              <atoms.Typography as="h3">{props.author}</atoms.Typography>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
                 <div className="px-[6px] py-[2px] bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-xl justify-center items-center">
                   <div className="text-[#494949] text-xs font-normal ">
@@ -130,7 +131,7 @@ function SingleCommentComponent(props) {
             </SingleCommentContent>
             <SingleCommentContent>
               {/* date of creation here, i.e. "2 days ago" */}
-              <h5>{timeSince(new Date(props.createdAt))}</h5>
+              <atoms.Typography as="h5" >{timeSince(new Date(props.createdAt))}</atoms.Typography>
             </SingleCommentContent>
           </div>
         </SingleComment>
@@ -138,7 +139,7 @@ function SingleCommentComponent(props) {
           <div className="textContent">
             <SingleCommentContent>
               <div source={props.children}>
-                <p className="text-left">{props.children}</p>
+                <atoms.Typography as="p" className="text-left">{props.children}</atoms.Typography>
               </div>
             </SingleCommentContent>
           </div>

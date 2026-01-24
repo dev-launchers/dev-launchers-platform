@@ -30,6 +30,7 @@ import {
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
 import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const IdeaCard = ({
   ideaImage,
@@ -239,23 +240,27 @@ export const IdeaCard = ({
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-7">
             <div className="flex flex-col gap-2">
-              <div
-                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
-                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
+              <atoms.Typography
+                as="h1"
+                textWeight="bold"
+                leading="tight"
+                textAlign="left"
+                size="xl4"
               >
                 {ideaData.ideaName}
-              </div>
-              <div
-                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
-                style={{ lineHeight: '28px' }}
+              </atoms.Typography>
+              <atoms.Typography
+                as="p"
+                size="body_base"
+                leading="normal"
               >
                 {ideaData.tagline}
-              </div>
+              </atoms.Typography>
             </div>
             <div className="flex flex-row justify-between">
               <div>{upvoteButton}</div>
               <div>
-                {isOwner && (
+              {isOwner && (
                   <div className="flex flex-row gap-2">
                     <button
                       className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
