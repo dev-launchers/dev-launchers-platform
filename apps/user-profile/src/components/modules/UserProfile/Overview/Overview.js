@@ -10,11 +10,6 @@ import { editProfileActions } from './../../../../state/actions';
 function Overview() {
   const { userData } = useUserDataContext();
 
-  // const allInterestsAndSkills = userData.interests;
-  // const interests = allInterestsAndSkills.filter(
-  //   (x) => x.category == 'Interest'
-  // );
-
   const interests = userData?.interests || [];
   const skills = userData?.skills || [];
   return (

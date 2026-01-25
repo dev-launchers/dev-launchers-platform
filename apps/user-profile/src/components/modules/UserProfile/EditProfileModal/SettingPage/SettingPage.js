@@ -95,7 +95,6 @@ function SettingPage({ onClose }) {
                 ? editProfileState.skills
                 : prev.skills,
             }));
-            console.log('Praju setUserData skills:', editProfileState.skills);
           })
           .catch((error) => {
             editProfileDispatch({

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
-import { Typography } from '@devlaunchers/components/components/atoms';
+import { Button, Typography } from '@devlaunchers/components/components/atoms';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../../context/EditProfileDataContext';
 import { editProfileActions } from '../../../../../../state/actions';
@@ -95,7 +95,7 @@ export default function Interests() {
       <div className="flex justify-center">
         <div className="flex flex-wrap justify-center gap-x-5 gap-y-4 max-h-[308px] max-w-[650px] overflow-auto">
           {interestList.map((interest) => (
-            <button
+            <Button
               key={interest.id}
               type="button"
               className={`py-3 px-8 rounded-3xl border-2 border-neptune-700 font-nunito-sans text-base
@@ -107,7 +107,7 @@ export default function Interests() {
               onClick={() => toggle(interest.id)}
             >
               {interest.interest ?? interest.name}
-            </button>
+            </Button>
           ))}
         </div>
       </div>
