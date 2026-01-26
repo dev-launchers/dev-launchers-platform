@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import './IdeasBetaFeedbackModal.css';
 import messageIcon from './message-square.svg';
 import modalImage from './modal-img.png';
+import { atoms } from '@devlaunchers/components/src/components';
 
 const formLink =
   'https://docs.google.com/forms/d/e/1FAIpQLSdkipdKLxq4dGQf3dX5Sdfb_XNoPhhGsNxPXNcNNSMzhIrYxg/viewform';
@@ -61,7 +62,8 @@ const IdeasBetaFeedbackModal = () => {
       >
         <div className="title">
           What do you think of{' '}
-          <strong style={{ color: '#ff7f0e' }}>IdeaSpace Beta</strong>?
+          <atoms.Typography as="strong" style={{ color: '#ff7f0e' }} size="xl1" textWeight="bold">IdeaSpace Beta</atoms.Typography>
+          ?
         </div>
         <small>Take a quick survey to help us improve</small>
         <button className="close-button" onClick={closeModal}>

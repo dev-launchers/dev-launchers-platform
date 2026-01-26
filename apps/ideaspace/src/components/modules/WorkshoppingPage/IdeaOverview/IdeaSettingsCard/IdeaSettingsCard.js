@@ -159,7 +159,11 @@ const IdeaSettingsCard = ({ card }) => {
       }}
     >
       <atoms.Box>
-        <h3>Idea settings</h3>
+        <atoms.Typography
+          as="h3"
+        >
+          Idea settings
+        </atoms.Typography>
       </atoms.Box>
 
       <IdeaSettingsContent

@@ -27,10 +27,10 @@ const IdeaSettingsContent = ({
     return (
         <atoms.Box justifyContent="space-between" alignItems="center">
             <atoms.Box justifyContent="space-between" flexDirection="column" alignItems="flex-start">
-                <atoms.Typography type='pLarge' style={{fontWeight:"700"}} >
+                <atoms.Typography as='pLarge' style={{fontWeight:"700"}} >
                     {settingLabel}
                 </atoms.Typography>
-                <atoms.Typography type='p' textAlign='left'>
+                <atoms.Typography as='p' textAlign='left'>
                     {settingText}
                 </atoms.Typography>
             </atoms.Box>

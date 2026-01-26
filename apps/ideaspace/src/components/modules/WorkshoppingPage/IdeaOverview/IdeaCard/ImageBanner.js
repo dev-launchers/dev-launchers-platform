@@ -4,6 +4,7 @@ import { ImageModal } from './ImageModal';
 import { Wand2, Edit2, Trash2 } from 'lucide-react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { agent } from '@devlaunchers/utility';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const ImageBanner = ({
   bannerImage = null,
@@ -91,9 +92,9 @@ export const ImageBanner = ({
                 strokeLinejoin="round"
               />
             </svg>
-            <p className="pt-4 pb-6 text-center font-normal text-[#494949] line-height-[125%]">
+            <atoms.Typography as="p" className="pt-4 pb-6 text-center font-normal text-[#494949] line-height-[125%]">
               Select an image to represent your Idea
-            </p>
+            </atoms.Typography>
             <Button
               mode="light"
               type="secondary"

@@ -5,6 +5,7 @@ import React from 'react';
 import Modal from '../../../common/Modal';
 
 import { ModalWrapper } from './StyledIdeaGeneratorButton';
+import { atoms } from '@devlaunchers/components/src/components';
 
 const banana = require('@banana-dev/banana-dev');
 
@@ -89,12 +90,16 @@ export default function IdeaGeneratorButton(props) {
     // openModal();
 
       setModalContent(
-      <ModalWrapper>
-        <span style={{ fontSize: '1.25em' }}>This feature is currently offline</span>
-        <div style={{height:"2rem"}}></div>
-        <span style={{ fontSize: '.75em' }}>We apologize for the inconvenience, please check back soon!</span>
-      </ModalWrapper>
-    );
+        <ModalWrapper>
+          <atoms.Typography as="p" style={{fontSize: '1.25em'}}>
+            This feature is currently offline
+          </atoms.Typography>
+          <div style={{height: "2rem"}}></div>
+          <atoms.Typography as="p" style={{fontSize: '0.75em'}}>
+            We apologize for the inconvenience, please check back soon!
+          </atoms.Typography>
+        </ModalWrapper>
+      );
     openModal();
   };
 

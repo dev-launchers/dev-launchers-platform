@@ -11,6 +11,7 @@ import { Trash, Search } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import Image from 'next/image';
 import PexelsLogo from '../../../../../../public/assets/images/pexels-logo.png';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const ImageModal = ({
   handleSelectImage,
@@ -134,7 +135,7 @@ export const ImageModal = ({
                 </div>
               </div>
               <div className="flex items-center justify-center gap-2 w-full pt-3">
-                {error && <p className="text-red-700 font-medium">{error}</p>}
+                {error && (<atoms.Typography as="p" className="text-red-700 font-medium">{error}</atoms.Typography>)}
                 {images && (
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 overflow-y-auto max-h-[420px] w-full">
                     {images.map((image) => (
