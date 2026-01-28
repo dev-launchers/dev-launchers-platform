@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@devlaunchers/components/components/Carousel/Carousel';
+} from '@devlaunchers/components/components/molecules/Carousel/Carousel';
 
 const testimonials = [
   {

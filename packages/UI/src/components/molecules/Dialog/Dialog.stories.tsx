@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '../atoms/Button';
-import { Checkbox } from './../Checkbox';
+import Button from '../../atoms/Button';
+import { Checkbox } from '../../atoms/DropdownCheckbox';
 import {
   Dialog,
   DialogClose,

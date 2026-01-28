@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@devlaunchers/components/src/components/Dialog';
+} from '@devlaunchers/components/src/components/molecules/Dialog';
 import { useState, useEffect } from 'react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { Trash, Search } from 'lucide-react';
@@ -135,7 +135,11 @@ export const ImageModal = ({
                 </div>
               </div>
               <div className="flex items-center justify-center gap-2 w-full pt-3">
-                {error && (<atoms.Typography as="p" className="text-red-700 font-medium">{error}</atoms.Typography>)}
+                {error && (
+                  <atoms.Typography as="p" className="text-red-700 font-medium">
+                    {error}
+                  </atoms.Typography>
+                )}
                 {images && (
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 overflow-y-auto max-h-[420px] w-full">
                     {images.map((image) => (

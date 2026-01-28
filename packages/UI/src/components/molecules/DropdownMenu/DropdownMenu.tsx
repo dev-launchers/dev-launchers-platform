@@ -4,8 +4,8 @@ import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { Circle } from 'lucide-react';
 import * as React from 'react';
 import { tv } from 'tailwind-variants';
-import { cn } from '../../utils/classesMerger';
-import { Checkbox } from '../Checkbox';
+import { cn } from '../../../utils/classesMerger';
+import { Checkbox } from '../../atoms/DropdownCheckbox';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -95,11 +95,7 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     {...props}
   >
     <span className="absolute left-10 flex h-6 w-6 items-center justify-center gap-2">
-      <Checkbox
-        className="h-6 w-6"
-        checked={checked}
-        // onClick={onCheckedChange }
-      />
+      <Checkbox className="h-6 w-6" checked={checked} />
       {children}
     </span>
   </DropdownMenuPrimitive.CheckboxItem>

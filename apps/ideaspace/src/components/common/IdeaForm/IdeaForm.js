@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
-import { atoms, organisms } from '@devlaunchers/components/src/components';
+import { atoms } from '@devlaunchers/components/src/components';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
-import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
-import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox/Checkbox';
 import Link from 'next/link';
 import {
   TextAreaWrapper,
@@ -188,9 +187,9 @@ const IdeaForm = ({
     if (focusedField === fieldName) {
       return (
         <atoms.Typography size="body_base">
-        <CharacterCounter isLimit={value?.length === maxLength}>
-          {value?.length || 0}/{maxLength} characters
-        </CharacterCounter>
+          <CharacterCounter isLimit={value?.length === maxLength}>
+            {value?.length || 0}/{maxLength} characters
+          </CharacterCounter>
         </atoms.Typography>
       );
     } else {
@@ -367,8 +366,8 @@ const IdeaForm = ({
                   <FieldWrapper data-field="description">
                     <FieldLabel>
                       <atoms.Typography textWeight="normal">
-                      Describe your idea:
-                      <RequiredAsterisk>*</RequiredAsterisk>
+                        Describe your idea:
+                        <RequiredAsterisk>*</RequiredAsterisk>
                       </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
@@ -456,8 +455,8 @@ const IdeaForm = ({
                   <FieldWrapper data-field="targetAudience">
                     <FieldLabel>
                       <atoms.Typography textWeight="normal">
-                      Describe your expected users:
-                      <RequiredAsterisk>*</RequiredAsterisk>
+                        Describe your expected users:
+                        <RequiredAsterisk>*</RequiredAsterisk>
                       </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
@@ -498,8 +497,8 @@ const IdeaForm = ({
                   <FieldWrapper data-field="features">
                     <FieldLabel>
                       <atoms.Typography textWeight="normal">
-                      What features would your product have?
-                      <RequiredAsterisk>*</RequiredAsterisk>
+                        What features would your product have?
+                        <RequiredAsterisk>*</RequiredAsterisk>
                       </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
@@ -540,11 +539,12 @@ const IdeaForm = ({
                   <FieldWrapper>
                     <FieldLabel>
                       <atoms.Typography textWeight="normal">
-                      Anything else you would like to share to support your idea?{' '}
+                        Anything else you would like to share to support your
+                        idea?{' '}
                       </atoms.Typography>
                       <atoms.Typography
                         as="span"
-                        style={{color: '#666666', fontWeight: 300}}
+                        style={{ color: '#666666', fontWeight: 300 }}
                       >
                         (Optional)
                       </atoms.Typography>
@@ -588,8 +588,8 @@ const IdeaForm = ({
                   <FieldWrapper>
                     <FieldLabel>
                       <atoms.Typography textWeight="normal">
-                      What's a catchy tagline for your idea that sums up your
-                      value and purpose? (Optional)
+                        What's a catchy tagline for your idea that sums up your
+                        value and purpose? (Optional)
                       </atoms.Typography>
                     </FieldLabel>
                     <TextAreaWrapper
@@ -742,7 +742,7 @@ const IdeaForm = ({
                         name="termsAndConditions"
                         required
                         checked={isChecked}
-                        onCheckedChange={handleCheckboxChange}
+                        onChange={handleCheckboxChange}
                       />
 
                       <atoms.Typography type="p">
@@ -760,7 +760,7 @@ const IdeaForm = ({
                           </atoms.Typography>
                         </Link>
                         .
-                        <atoms.Typography as="span" style={{color: 'red'}}>
+                        <atoms.Typography as="span" style={{ color: 'red' }}>
                           &nbsp;*
                         </atoms.Typography>
                       </atoms.Typography>

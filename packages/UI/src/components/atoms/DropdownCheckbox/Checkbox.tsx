@@ -1,7 +1,7 @@
 import * as RadixCheckbox from '@radix-ui/react-checkbox';
 import * as React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import CheckmarkImg from './../../assets/icons/Checkmark';
+import CheckmarkImg from '../../../assets/icons/Checkmark';
 
 export type CheckboxProps = VariantProps<typeof checkboxStyles> &
   Omit<
