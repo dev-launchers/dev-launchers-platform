@@ -3,9 +3,11 @@ import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
-import { DropdownMenu } from '@devlaunchers/components/src/components/DropdownMenu';
-import { DropdownMenuContent } from '@devlaunchers/components/components/DropdownMenu';
-import { DropdownMenuRadioGroup } from '@devlaunchers/components/components/DropdownMenu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+} from '@devlaunchers/components/src/components/molecules/DropdownMenu';
 import {
   DropdownMenuRadioItemStyled,
   DropdownMenuTriggerStyled,

@@ -3,7 +3,7 @@ import { radiusStyles } from '@devlaunchers/components/src/components/atoms';
 import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
-} from '@devlaunchers/components/components/DropdownMenu';
+} from '@devlaunchers/components/src/components/molecules/DropdownMenu';
 
 export const PageWrapper = styled.section`
   background-color: #ffffff;

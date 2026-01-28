@@ -2,7 +2,7 @@ import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-men
 import type { Meta, StoryObj } from '@storybook/react';
 import { ChevronDown } from 'lucide-react';
 import { FormEvent, useState } from 'react';
-import { Button } from '../atoms';
+import { Button } from '../../atoms';
 
 import {
   DropdownMenu,
