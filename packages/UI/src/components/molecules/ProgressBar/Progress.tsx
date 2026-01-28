@@ -1,9 +1,9 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress';
 import * as React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { cn } from '../../utils/classesMerger';
-import Clock from './../../assets/icons/Clock';
-import Done from './../../assets/icons/Done';
+import { cn } from '../../../utils/classesMerger';
+import Clock from '../../../assets/icons/Clock';
+import Done from '../../../assets/icons/Done';
 
 const styles = {
   startColor: 'bg-brand-alt-cosmic-500',
