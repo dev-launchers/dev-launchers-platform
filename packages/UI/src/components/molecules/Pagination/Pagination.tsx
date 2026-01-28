@@ -9,7 +9,7 @@ import * as React from 'react';
 
 import type { VariantProps } from 'tailwind-variants';
 import { tv } from 'tailwind-variants';
-import { cn } from '../../utils/classesMerger';
+import { cn } from '../../../utils/classesMerger';
 
 /**
  * Pagination with page navigation, next and previous links.
