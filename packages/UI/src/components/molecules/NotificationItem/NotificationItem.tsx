@@ -1,7 +1,7 @@
 import type { NotificationEvent, NotificationUser } from '@devlaunchers/models';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { type WritableDeep } from 'type-fest';
-import Avatar from '../atoms/Avatar/Avatar';
+import Avatar from '../../atoms/Avatar/Avatar';
 
 const compoundSlots = [
   {

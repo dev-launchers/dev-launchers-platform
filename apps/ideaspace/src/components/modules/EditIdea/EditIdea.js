@@ -6,7 +6,6 @@ import { atoms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../utils/StrapiHelper';
 import SignInSection from '../../common/SignInSection/SignInSection';
-import BackButton from '../../common/BackButton/BackButton';
 import IdeaForm from '../../common/IdeaForm/IdeaForm';
 import useConfirm from '../../common/DialogBox/DialogBox';
 import * as Yup from 'yup';
