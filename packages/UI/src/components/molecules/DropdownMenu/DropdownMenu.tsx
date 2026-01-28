@@ -5,7 +5,7 @@ import { Circle } from 'lucide-react';
 import * as React from 'react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../../utils/classesMerger';
-import Checkbox from '../../atoms/Checkbox';
+import { Checkbox } from '..//Checkbox';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 

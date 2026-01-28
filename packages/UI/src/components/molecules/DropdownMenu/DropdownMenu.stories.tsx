@@ -93,11 +93,11 @@ type Checked = DropdownMenuCheckboxItemProps['checked'];
 
 export const CheckboxDropdown: Story = {
   render: function CheckBoxRender() {
-    const [showStatusBar, setShowStatusBar] = useState<Checked>(false);
-    const [showStatusBar2, setShowStatusBar2] = useState<Checked>(false);
-    const [showStatusBar3, setShowStatusBar3] = useState<Checked>(false);
-    const [showStatusBar4, setShowStatusBar4] = useState<Checked>(false);
-    const [showStatusBar5, setShowStatusBar5] = useState<Checked>(false);
+    const [showStatusBar, setShowStatusBar] = useState(false);
+    const [showStatusBar2, setShowStatusBar2] = useState(false);
+    const [showStatusBar3, setShowStatusBar3] = useState(false);
+    const [showStatusBar4, setShowStatusBar4] = useState(false);
+    const [showStatusBar5, setShowStatusBar5] = useState(false);
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild size="medium">

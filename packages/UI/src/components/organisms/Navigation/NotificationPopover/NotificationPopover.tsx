@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Popover, PopoverContent, PopoverTrigger } from '../../../Popover';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '../../../atoms/Popover';
 import { Bell, Settings } from 'lucide-react';
 import NotificationItem from '../../../NotificationItem/NotificationItem';
 import { agent } from '@devlaunchers/utility';

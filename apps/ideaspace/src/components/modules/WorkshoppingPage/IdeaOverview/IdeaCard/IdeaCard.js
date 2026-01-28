@@ -1,32 +1,16 @@
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { MoreHorizontal, Trash } from 'lucide-react';
-import {
-  StyledCard,
-  TopView,
-  LeftView,
-  RightView,
-  StyledDiv,
-  IdeaName,
-  IdeaTagLine,
-  BottomView,
-  StyledText,
-} from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
 import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
-import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import Alert from '../../../../../components/common/SubmissionAlert/Alert';
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from '@devlaunchers/components/src/components/Popover/index';
+} from '@devlaunchers/components/src/components/atoms/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
 import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
@@ -249,18 +233,14 @@ export const IdeaCard = ({
               >
                 {ideaData.ideaName}
               </atoms.Typography>
-              <atoms.Typography
-                as="p"
-                size="body_base"
-                leading="normal"
-              >
+              <atoms.Typography as="p" size="body_base" leading="normal">
                 {ideaData.tagline}
               </atoms.Typography>
             </div>
             <div className="flex flex-row justify-between">
               <div>{upvoteButton}</div>
               <div>
-              {isOwner && (
+                {isOwner && (
                   <div className="flex flex-row gap-2">
                     <button
                       className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
