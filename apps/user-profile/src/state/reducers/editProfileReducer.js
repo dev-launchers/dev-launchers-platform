@@ -20,7 +20,8 @@ const editProfileInitialState = {
   },
   photo: null,
   bio: null,
-  skills: null,
+  skills: [],
+  interests: [],
   saveInProgress: false,
 };
 
@@ -36,6 +37,39 @@ const editProfileReducer = (state, action) => {
         bio: action.payload.newBio,
       };
     }
+    case editProfileActions.SET_INTERESTS: {
+      return {
+        ...state,
+        interests: action.payload, // selected interests array
+      };
+    }
+
+    case editProfileActions.MARK_INTERESTS_CHANGED: {
+      return {
+        ...state,
+        changes: {
+          ...state.changes,
+          interestsChanged: true,
+        },
+      };
+    }
+
+    case editProfileActions.SET_SKILLS: {
+      return {
+        ...state,
+        skills: action.payload,
+      };
+    }
+
+    case editProfileActions.MARK_SKILLS_CHANGED: {
+      return {
+        ...state,
+        changes: {
+          ...state.changes,
+          skillsChanged: true,
+        },
+      };
+    }
     case editProfileActions.SAVE_CHANGES: {
       return {
         ...state,
@@ -48,6 +82,7 @@ const editProfileReducer = (state, action) => {
         changes: {
           ...state.changes,
           bioChanged: false,
+          interestsChanged: false,
         },
         saveInProgress: false,
       };

@@ -26,6 +26,12 @@ const HIDE_INTERESTS_SETTING = 'Hide interests settings.';
 const SHOW_PROFILE_HEADER_SETTING = 'Show profile header settings.';
 const HIDE_PROFILE_HEADER_SETTING = 'Hide profile header settings.';
 
+const SET_INTERESTS = 'Set interests.';
+const MARK_INTERESTS_CHANGED = 'Mark interest changed.';
+
+const SET_SKILLS = 'Set skills.';
+const MARK_SKILLS_CHANGED = 'Mark skills changed.';
+
 export {
   UPDATE_BIO,
   SAVE_CHANGES,
@@ -45,4 +51,8 @@ export {
   HIDE_INTERESTS_SETTING,
   SHOW_PROFILE_HEADER_SETTING,
   HIDE_PROFILE_HEADER_SETTING,
+  SET_INTERESTS,
+  MARK_INTERESTS_CHANGED,
+  SET_SKILLS,
+  MARK_SKILLS_CHANGED,
 };

@@ -19,6 +19,7 @@ export const DEFAULT_USER = {
   },
   projects: [],
   interests: [],
+  skills: [],
 };
 
 // Custom hook that manages user state
@@ -58,7 +59,8 @@ function useUserDataHook() {
       'populate[idea_cards][filters][status][$ne]=deleted',
       'populate[idea_cards][populate]=*',
       'populate[ownedCards][populate]=*',
-      'populate[interests]=*',
+      'populate[interests][populate]=*',
+      'populate[skills][populate]=*',
     ].join('&');
 
     axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/users/me?${populateParams}`, {
@@ -75,6 +77,7 @@ function useUserDataHook() {
           profilePictureUrl: currentUser.profile?.profilePictureUrl ?? '',
           socialMediaLinks: currentUser.profile?.socialMediaLinks ?? [],
           interests: currentUser.interests ?? [],
+          skills: currentUser.skills ?? [],
           projects: currentUser.projects ?? [],
           idea_cards: currentUser.idea_cards ?? [],
           profile: currentUser.profile ?? null,

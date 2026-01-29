@@ -10,12 +10,8 @@ import { editProfileActions } from './../../../../state/actions';
 function Overview() {
   const { userData } = useUserDataContext();
 
-  const allInterestsAndSkills = userData.interests;
-  const interests = allInterestsAndSkills.filter(
-    (x) => x.category == 'Interest'
-  );
-  const skills = allInterestsAndSkills.filter((x) => x.category == 'Skill');
-
+  const interests = userData?.interests || [];
+  const skills = userData?.skills || [];
   return (
     <>
       <div className="flex flex-col gap-9">
