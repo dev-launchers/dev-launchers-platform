@@ -8,6 +8,7 @@ import {
   TypographyB,
 } from './StyledIdeaSpaceNavCard';
 import { atoms } from '@devlaunchers/components/src/components'
+import {color} from "@devlaunchers/components/src/styles/styles";
 
 const IdeaspaceNavCard = ({
   cardIcon,
@@ -47,17 +48,30 @@ const IdeaspaceNavCard = ({
               </atoms.Typography>
             </div>
             <atoms.Typography
-              size="xl4"
-              textWeight="bold"
-              className="mb-[6px]"
-              style={{color: 'white'}}
+              as="p"
+              leading="normal"
+              size="xl3"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="semibold"
+              variant="secondary"
+              style={{ color: "white", marginBottom: "16px" }}
             >
               {cardTitle}
             </atoms.Typography>
             <atoms.Typography
               as="p"
-              textWeight="normal"
-              style={{color: 'white'}}
+              leading="normal"
+              size="body_lg"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="light"
+              variant="secondary"
+              style={{ color: 'white' }}
             >
               {cardDescription}
             </atoms.Typography>
