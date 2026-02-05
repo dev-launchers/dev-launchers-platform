@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { atoms } from '@devlaunchers/components/src/components'
 export const StyledRanbow = styled.div`
-  margin: 1.3rem auto 0 auto;
+  margin: 1.3rem auto 1rem auto;
   max-width: 24.8rem;
   height: 5px;
 `;

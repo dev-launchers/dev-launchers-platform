@@ -168,20 +168,15 @@ function IdeaCard({ cards, cardType }) {
             padding="0rem 0.75rem"
           >
             <atoms.Typography
-              type="h4"
-              style={{
-                fontSize: '18px',
-                lineHeight: '1.5rem',
-                fontFamily: 'Helvetica',
-                fontWeight: '700',
-                margin: '0rem 0rem 0.875rem',
-                display: '-webkit-box',
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-all',
-              }}
+              as="h6"
+              leading="normal"
+              size="body_xl"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="semibold"
+              variant="secondary"
             >
               {cards.ideaName}
             </atoms.Typography>
@@ -197,30 +192,28 @@ function IdeaCard({ cards, cardType }) {
             <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} /> */}
 
             <atoms.Typography
-              type="p"
-              style={{
-                fontSize: '0.875rem',
-                height: '43px',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-word',
-              }}
+              as="p"
+              leading="normal"
+              size="micro_xs"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="light"
+              variant="secondary"
             >
               {cards.description}
             </atoms.Typography>
             <div className="flex flex-row  justify-between w-full mt-9">
               <atoms.Typography
                 type="p"
-                style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
+                style={{ fontSize: '0.75rem', color: '#494949', weight: '300', marginTop: '25px' }}
               >
                 {daysAgo()} ago
               </atoms.Typography>
               <atoms.Typography
                 type="p"
-                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300' }}
+                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300', marginTop: '25px' }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>

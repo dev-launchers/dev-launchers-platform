@@ -195,7 +195,17 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+        <atoms.Typography
+          as="h4"
+          leading="tight"
+          size="xl4"
+          textAlign="center"
+          textCase="capitalize"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="normal"
+          variant="primary"
+        >
           Submit an idea
         </atoms.Typography>
         <StyledRanbow>
@@ -203,13 +213,18 @@ function SubmissionForm() {
         </StyledRanbow>
         <BackButton buttonType="confirm" backRoute={returnBackUrl} />
         <atoms.Typography
-          variant="primary"
-          size="xl3"
+          variant="secondary"
+          as="p"
+          leading="normal"
+          size="body_xl"
           textAlign="center"
-          as="h4"
+          textCase="normal"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="light"
         >
           Have an idea for a software project but need developers to build it?
-          <br />
+          <br/>
           Bring your idea to us - we will work with you to spin up a project to
           bring it to life!
         </atoms.Typography>
@@ -224,8 +239,8 @@ function SubmissionForm() {
         />
       ) : (
         <>
-          <Dialog />
-          <CreateFailure />
+          <Dialog/>
+          <CreateFailure/>
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}
