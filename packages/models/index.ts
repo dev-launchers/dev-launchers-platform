@@ -16,3 +16,4 @@ export type {
   NotificationUser,
 } from './notification';
 export type { Image } from './image';
+export type { Interest } from './interest';

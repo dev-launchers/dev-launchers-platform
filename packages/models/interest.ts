@@ -1,4 +1,4 @@
-export interface Skill {
+export interface Interest {
   id: number;
   attributes: {
     interest: string;
@@ -6,7 +6,7 @@ export interface Skill {
     createdAt: string;
     publishedAt: string | null;
     updatedAt: string;
-    projects: {
+    projects?: {
       data: Array<{
         id: number;
         attributes?: Record<string, any>;
