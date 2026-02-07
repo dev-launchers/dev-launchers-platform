@@ -105,6 +105,7 @@ function SingleCommentComponent(props) {
       setLiked(true);
     }
   }
+  const count = 2;
 
   return (
     <>
@@ -112,14 +113,17 @@ function SingleCommentComponent(props) {
         <SingleComment style={{ marginBottom: '12px' }}>
           <UserImage
             alt="user_image"
-            src={props.user.profile.profilePictureUrl}
+            src={props.user.profile?.profilePictureUrl}
           />
           <div className="textContent">
             <SingleCommentContent>
               <h3>{props.author}</h3>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
                 <div className="px-[6px] py-[2px] bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-xl justify-center items-center">
-                  <div className="text-[#494949] text-xs font-normal ">
+                  <div
+                    className="text-xs font-normal"
+                    style={{ color: 'var(--content-04, #DAD8D9)' }}
+                  >
                     Idea Owner
                   </div>
                 </div>
@@ -130,25 +134,31 @@ function SingleCommentComponent(props) {
             </SingleCommentContent>
             <SingleCommentContent>
               {/* date of creation here, i.e. "2 days ago" */}
-              <h5>{timeSince(new Date(props.createdAt))}</h5>
+              <h5 style={{ color: 'var(--content-03, #B9B9B9)' }}>
+                {timeSince(new Date(props.createdAt))}
+              </h5>
             </SingleCommentContent>
           </div>
         </SingleComment>
         <SingleComment>
           <div className="textContent">
             <SingleCommentContent>
-              <div source={props.children}>
-                <p className="text-left">{props.children}</p>
+              <div source={props.children} className="mb-4">
+                <p className="text-left mb-2 text-[var(--content-04, #DAD8D9)]">
+                  {props.children}
+                </p>
+
+                <LikeButton text="Like | " count={count} />
               </div>
             </SingleCommentContent>
           </div>
         </SingleComment>
       </div>
-      <div>
+      {/* <div>
         {!props.isLast && (
           <hr style={{ marginBottom: '20px', marginTop: '20px' }} />
         )}
-      </div>
+      </div> */}
     </>
   );
 }

@@ -78,12 +78,15 @@ export default function WorkshoppingPage(props) {
           >
             <div className="flex gap-4 items-center">
               <div
-                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
+                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] text-white border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
                 onClick={() => router.push('/ideaspace/browse')}
               >
                 <ChevronLeft />
               </div>
-              <div className=" text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+              <div
+                style={{ color: 'var(--content-04, #DAD8D9)' }}
+                className="text-left  text-base font-normal font-['Nunito Sans'] leading-relaxed"
+              >
                 Idea Workshopping
               </div>
             </div>
@@ -98,7 +101,7 @@ export default function WorkshoppingPage(props) {
               <IdeaOverview selectedCard={data} />
               <div className="h-[0px] border border-[#dad8d9] mb-10"></div>
               <Comments>
-                <div className="text-black text-lg font-bold font-['Nunito Sans'] leading-tight">
+                <div className="text-white text-lg font-bold font-['Nunito Sans'] leading-tight">
                   Comment Feed: {comments.length}
                 </div>
                 <Form>

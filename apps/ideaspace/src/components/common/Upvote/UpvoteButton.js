@@ -15,7 +15,7 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
       viewBox="0 0 24 24"
       fill="none"
     >
-      <path d="M9 19H15H9Z" fill="#69349D" />
+      <path d="M9 19H15H9Z" fill="color: var(--content-04, #BD9CDE)" />
       <path d="M9 15V12H5L12 5L19 12L15 12V15L9 15Z" fill="#69349D" />
       <path
         d="M9 19H15M9 15V12H5L12 5L19 12L15 12V15L9 15Z"
@@ -35,7 +35,7 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
     >
       <path
         d="M9 19H15M9 15V12H5L12 5L19 12L15 12V15L9 15Z"
-        stroke="#303030"
+        stroke="var(--content-04, #BD9CDE)"
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -60,18 +60,18 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
       onMouseDown={() => setFocused(true)}
       style={{
         cursor: 'pointer',
-
+        color: 'var(--content-04, #BD9CDE)',
         display: 'inline-flex',
         padding: 'var(--25, 10px) 16px',
         justifyContent: 'center',
         alignItems: 'center',
         gap: 'var(--25, 10px)',
 
-        color: disabled
-          ? 'var(--grayscale-400, #979797)'
-          : selected
-          ? 'var(--brand-alt-nebula-600, #69349D)'
-          : 'var(--grayscale-700, #303030)',
+        // color: disabled
+        //   ? 'var(--grayscale-400, #979797)'
+        //   : selected
+        //   ? 'var(--brand-alt-nebula-600, #69349D)'
+        //   : 'var(--grayscale-700, #303030)',
         textAlign: 'center',
 
         /* button */
@@ -84,16 +84,25 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
         textTransform: 'capitalize',
 
         background: focused
-          ? '#EBE6F1'
+          ? 'var(--interactive-surface, #1F0F2E)'
           : hovered
-          ? 'var(--brand-alt-nebula-50, #F1EBF7)'
+          ? 'var(--interactive-surface, #1F0F2E)'
           : '',
         border: disabled
-          ? 'var(--button-border-width, 4px) solid var(--border-btn-interactive-gray, #979797)'
+          ? 'var(--priority-border-width, 1.5px) solid var(--interactive-border, #7339AC)'
           : focused
-          ? 'var(--button-border-width, 4px) solid var(--border-btn-interactive-gray, #B9B9B9)'
+          ? 'var(--priority-border-width, 1.5px) solid var(--interactive-border, #A681CA)'
+          : hovered
+          ? 'var(--priority-border-width, 1.5px) solid var(--interactive-border, #996FC3)'
           : 'var(--button-border-width, 4px) solid transparent',
         borderRadius: '8px',
+
+        boxShadow: hovered
+          ? '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #3F1F5F) inset, 0 0 0 var(--priority-ring-border-spread, 0) var(--priority-ring-surface, #301848) inset'
+          : focused
+          ? '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #000) inset, 0 0 0 var(--priority-ring-border-spread, 6px) var(--priority-ring-surface, #69349D) inset'
+          : 'none',
+        // : '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #69349D) inset, 0 0 0 var(--priority-ring-border-spread, 6px) var(--priority-ring-surface, #3F1F5F) inset',
 
         pointerEvents: disabled ? 'none' : 'pointer',
       }}

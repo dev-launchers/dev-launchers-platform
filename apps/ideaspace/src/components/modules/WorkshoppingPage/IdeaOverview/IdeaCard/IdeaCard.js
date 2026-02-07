@@ -13,6 +13,7 @@ import {
   IdeaTagLine,
   BottomView,
   StyledText,
+  Button,
 } from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
 import { useState, useEffect } from 'react';
@@ -30,6 +31,8 @@ import {
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
 import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
+import { colors } from '@mui/material';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const IdeaCard = ({
   ideaImage,
@@ -241,13 +244,20 @@ export const IdeaCard = ({
             <div className="flex flex-col gap-2">
               <div
                 className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
-                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
+                style={{
+                  lineHeight: '110%',
+                  color: 'var(--content-00, #FFF)',
+                  fontFamily: 'Helvetica',
+                }}
               >
                 {ideaData.ideaName}
               </div>
               <div
                 className="text-[16px] font-[400] sm:text-lg sm:font-normal"
-                style={{ lineHeight: '28px' }}
+                style={{
+                  lineHeight: '28px',
+                  color: 'var(--content-04, #DAD8D9)',
+                }}
               >
                 {ideaData.tagline}
               </div>
@@ -258,7 +268,8 @@ export const IdeaCard = ({
                 {isOwner && (
                   <div className="flex flex-row gap-2">
                     <button
-                      className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+                      className="h-12 bg-[#494949]/5 border-2 border-[#B9B9B9] rounded-md px-[18px] text-lg"
+                      style={{ color: 'var(--priority-content, #DAD8D9)' }}
                       onClick={() => setIsModalOpen(true)}
                     >
                       Edit Idea
@@ -274,7 +285,13 @@ export const IdeaCard = ({
 
                     <Popover>
                       <PopoverTrigger asChild>
-                        <button className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3">
+                        <button
+                          className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3 "
+                          style={{
+                            color: 'var(--priority-content, #DAD8D9)',
+                            border: '2px solid var(--border-01, #B9B9B9)',
+                          }}
+                        >
                           <MoreHorizontal />
                         </button>
                       </PopoverTrigger>
@@ -282,15 +299,30 @@ export const IdeaCard = ({
                         hasCloseBtn={false}
                         side="bottom"
                         align="end"
-                        className="rounded-md w-[224px] h-[60px] p-0"
+                        className="border-0 bg-transparent m-0 p-2"
+                        // className="rounded-md w-[224px] h-[60px] p-0"
                       >
-                        <button
-                          className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
+                        {/* <button
+                          color="error"
+                          className="flex flex-row gap-2 items-center justify-start h-full w-full pl-6"
+                          style={{
+                            color: 'var(--priority-content, #EBC4C4)',
+                            backgroundColor: 'var(--priority-surface, #1F0A0A)',
+                          }}
                           onClick={() => setShouldShowDeleteDialog(true)}
+                        > */}
+                        {/* </button> */}
+                        <atoms.Button
+                          size="medium"
+                          type="primary"
+                          mode="dark"
+                          color="error"
+                          onClick={() => setShouldShowDeleteDialog(true)}
+                          className="text-[#EBC4C4]"
                         >
-                          <Trash size={18} className="text-[#692323]" />
+                          <Trash size={18} className="text-[#EBC4C4]" />
                           Delete Idea
-                        </button>
+                        </atoms.Button>
                       </PopoverContent>
                     </Popover>
 
@@ -314,8 +346,8 @@ export const IdeaCard = ({
             />
           ) : (
             <div
-              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat ${
-                !bannerImage ? 'bg-[#F6F6F6]' : ''
+              style={{ backgroundColor: '#292929' }}
+              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat 
               }`}
               {...(bannerImage && {
                 style: { backgroundImage: `url(${bannerImage.original_url})` },

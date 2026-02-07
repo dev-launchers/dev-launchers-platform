@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: var(--static-effect-overlay-brand-nebula-muted, rgba(white));
+  // background: var(--static-effect-overlay-brand-nebula-muted, rgba(white));
+  background-color: #000;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

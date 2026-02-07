@@ -81,10 +81,10 @@ const EditComponent = ({
   `;
 
   const headerClasses =
-    'w-full flex justify-between items-center px-[20px] pt-[16px] pb-[14px] bg-white flex-shrink-0';
-  const contentClasses = 'flex-1 overflow-y-auto px-[24px] py-[20px]';
+    'w-full flex justify-between items-center px-[20px] pt-[16px] pb-[14px] bg-black text-white flex-shrink-0';
+  const contentClasses = 'flex-1 overflow-y-auto px-[24px] py-[20px] bg-black';
   const footerClasses =
-    'w-full flex justify-end items-center px-[24px] py-[20px] bg-white flex-shrink-0';
+    'w-full flex justify-end items-center px-[24px] py-[20px] bg-black flex-shrink-0';
 
   const cancelButtonClasses =
     'flex px-[18px] py-[12px] justify-center items-center gap-[4px] cursor-pointer bg-white border-0 rounded-[4px] text-base';
@@ -138,7 +138,12 @@ const EditComponent = ({
         onClick={(e) => e.stopPropagation()}
         className={isMobileDrawer ? mobileDialogClasses : desktopDialogClasses}
         style={
-          isMobileDrawer ? { height: `${windowHeight - topMargin}px` } : {}
+          isMobileDrawer
+            ? {
+                height: `${windowHeight - topMargin}px`,
+                backgroundColor: '#00000',
+              }
+            : {}
         }
       >
         <div className={headerClasses}>

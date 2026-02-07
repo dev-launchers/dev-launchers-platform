@@ -32,13 +32,12 @@ export const SingleComment = styled.div`
 export const SingleCommentContent = styled.div`
   width: 100%;
   min-width: 430px;
-  background-color: white;
+  background: var(--surface-00, #000);
   color: black;
   border-radius: 25px;
   // padding: 1px;
   display: flex;
   margin: 0;
-
   @media (orientation: portrait) {
     min-width: auto;
   }
@@ -49,8 +48,8 @@ export const SingleCommentContent = styled.div`
     // color: var(--grey-scale-off-black, #1c1c1c);
     // font-feature-settings: 'clig' off, 'liga' off;
 
-    color: var(--Grey-Scale-off-black, #1c1c1c);
-
+    // color: var(--Grey-Scale-off-black, #1c1c1c);
+    color: white;
     /* body/sm */
     font-family: var(--font-family-secondary, 'Nunito Sans');
     font-size: var(--font-size-body-sm, 14px);
@@ -78,8 +77,8 @@ export const SingleCommentContent = styled.div`
 
   p {
     margin-left: 52px;
-
-    color: var(--Grey-Scale-off-black, #1c1c1c);
+    // color: var(--Grey-Scale-off-black, #1c1c1c);
+    color: var(--content-04, #dad8d9);
     font-family: 'Nunito Sans';
     font-size: 14px;
     font-style: normal;
@@ -180,7 +179,7 @@ export const Form = styled.div`
 
 export const UserComment = styled.div`
   width: 100%;
-  background-color: white;
+  background-color: var(--surface-00, #000);
   margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 20px;
@@ -194,6 +193,7 @@ export const UserImageOne = styled.img`
   border-radius: 50%;
   margin-top: 7.5px;
   align-self: flex-start;
+  background-color: grey;
 `;
 
 export const CommentBox = styled.textarea`

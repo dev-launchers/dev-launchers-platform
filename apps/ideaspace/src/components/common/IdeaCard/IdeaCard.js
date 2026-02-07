@@ -105,12 +105,19 @@ function IdeaCard({ cards, cardType }) {
       <atoms.Box
         flexDirection="column"
         style={{
-          border: '0.125rem solid rgba(71, 71, 71, 0.10)',
-          borderRadius: '1.25rem',
+          // border: '0.125rem solid rgba(71, 71, 71, 0.10)',
+          border:
+            'var(--global-05-px-0031-rem, 0.5px) solid var(--base-03, #1C1C1C)',
+          // borderRadius: '1.25rem',
+          borderRadius: 'var(--global-12-px-075-rem, 12px)',
           cursor: 'pointer',
-          boxShadow: isHovered
-            ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
-            : 'none',
+          // boxShadow: isHovered
+          //   ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
+          //   : 'none',
+          backgroundColor: isHovered
+            ? 'var(--surface-02, #141414)'
+            : 'var(--surface-01, #000)',
+
           height: '440px',
         }}
         onMouseEnter={() => setIsHovered(true)}
@@ -129,7 +136,8 @@ function IdeaCard({ cards, cardType }) {
           ) : (
             <div
               key={cards.id}
-              className="w-full h-[228px] bg-[#F6F6F6] rounded-t-2xl flex items-center justify-center mb-4"
+              className="w-full h-[228px] rounded-t-2xl flex items-center justify-center mb-4"
+              style={{ backgroundColor: 'var(--base-03, #292929)' }}
             >
               <ImagePreviewSVG />
             </div>
@@ -137,9 +145,11 @@ function IdeaCard({ cards, cardType }) {
 
           <atoms.Box
             flexDirection="row"
-            alignItems="flex-start"
+            display="flex"
+            alignItems="center"
             padding="0rem 0.75rem"
             margin="1rem 0 0.875rem 0"
+            gap="6px"
           >
             <AuthorProfilePicture
               alt={`image of author ${cards.author?.data?.attributes.username}`}
@@ -151,8 +161,8 @@ function IdeaCard({ cards, cardType }) {
             <atoms.Typography
               type="p"
               style={{
-                fontSize: '0.75rem',
-                color: '#494949',
+                fontSize: 'var(--text-size-sm, 14px)',
+                color: 'var(--content-02, #979797)',
                 weight: '400',
                 padding: '0rem 0.375rem',
               }}
@@ -181,6 +191,7 @@ function IdeaCard({ cards, cardType }) {
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 wordBreak: 'break-all',
+                color: 'var(--content-00, #FFF)',
               }}
             >
               {cards.ideaName}
@@ -200,6 +211,8 @@ function IdeaCard({ cards, cardType }) {
               type="p"
               style={{
                 fontSize: '0.875rem',
+                // color: '#676767',
+                color: 'var(--content-04, #DAD8D9)',
                 height: '43px',
                 display: '-webkit-box',
                 WebkitLineClamp: 2,
@@ -214,13 +227,21 @@ function IdeaCard({ cards, cardType }) {
             <div className="flex flex-row  justify-between w-full mt-9">
               <atoms.Typography
                 type="p"
-                style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--content-04, #DAD8D9)',
+                  weight: '300',
+                }}
               >
                 {daysAgo()} ago
               </atoms.Typography>
               <atoms.Typography
                 type="p"
-                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300' }}
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--content-04, #DAD8D9)',
+                  weight: '300',
+                }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes
               </atoms.Typography>

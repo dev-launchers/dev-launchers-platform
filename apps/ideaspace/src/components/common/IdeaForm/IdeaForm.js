@@ -201,7 +201,8 @@ const IdeaForm = ({
     <atoms.Box
       margin="0rem"
       style={{
-        backgroundColor: 'rgba(244, 240, 249, 1)',
+        // backgroundColor: 'rgba(244, 240, 249, 1)',
+        backgroundColor: '#141414',
         padding: '20px 0',
       }}
     >
@@ -466,7 +467,12 @@ const IdeaForm = ({
                 <FieldWrapper>
                   <FieldLabel>
                     Anything else you would like to share to support your idea?{' '}
-                    <span style={{ color: '#666666', fontWeight: '300' }}>
+                    <span
+                      style={{
+                        color: 'var(--content-04, #DAD8D9)',
+                        fontWeight: '300',
+                      }}
+                    >
                       (Optional)
                     </span>
                   </FieldLabel>
@@ -646,7 +652,10 @@ const IdeaForm = ({
                 </GroupWrapper> */}
 
                 {!editMode && (
-                  <atoms.Typography type="p">
+                  <atoms.Typography
+                    type="p"
+                    style={{ color: 'var(--content-04, #DAD8D9)' }}
+                  >
                     After submitting your idea, it will be posted in the
                     Workshopping area to begin collaboration with other Dev
                     Launchers.
@@ -662,11 +671,17 @@ const IdeaForm = ({
                       onCheckedChange={handleCheckboxChange}
                     />
 
-                    <atoms.Typography type="p">
+                    <atoms.Typography
+                      type="p"
+                      style={{ color: 'var(--content-04, #DAD8D9)' }}
+                    >
                       &nbsp;I have read and agree to the{' '}
                       <Link href="/ideaspace/terms" passHref>
                         <a
-                          style={{ color: 'blue', textDecoration: 'underline' }}
+                          style={{
+                            color: 'var(--priority-content, #A4ADD9)',
+                            textDecoration: 'underline',
+                          }}
                           target="_blank"
                         >
                           Idea Submission Terms & Conditions

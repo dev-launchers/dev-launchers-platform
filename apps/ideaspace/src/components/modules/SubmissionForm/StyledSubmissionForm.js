@@ -35,14 +35,14 @@ export const FieldLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 2px;
-  color: #1c1c1c;
   font: 400 16px/24px 'Nunito Sans', sans-serif;
   text-transform: none;
   margin-bottom: 8px;
+  color: var(--content-04, #dad8d9);
 `;
 
 export const RequiredAsterisk = styled.span`
-  color: #ae3a3a;
+  color: var(--static-content-text-alert-error, #ae3a3a);
   font-size: 16px;
 `;
 
@@ -52,7 +52,8 @@ export const StyledTextArea = styled.textarea`
   padding: 24px;
   border: none;
   outline: none;
-  color: #000;
+  color: #fff;
+  background-color: #000;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -65,7 +66,8 @@ export const StyledTextArea = styled.textarea`
   margin: 0;
 
   &::placeholder {
-    color: var(--static-content-text-grey-muted, #494949);
+    // color: var(--static-content-text-grey-muted, #494949);
+    color: var(--content-01, #676767);
     font-family: 'Nunito Sans';
     font-size: 16px;
     font-style: normal;
@@ -90,7 +92,8 @@ export const StyledInput = styled.input`
   padding: 24px;
   border: none;
   outline: none;
-  color: #000;
+  color: #fff;
+  background-color: #000000;
   font-family: 'Nunito Sans', sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -100,7 +103,7 @@ export const StyledInput = styled.input`
   border-radius: 24px;
 
   &::placeholder {
-    color: var(--static-content-text-grey-muted, #494949);
+    color: var(--static-content-text-grey-muted, #676767);
     font-family: 'Nunito Sans';
     font-size: 16px;
     font-style: normal;

@@ -5,7 +5,7 @@ import Image from 'next/image';
 const IdeaCardImg = ({ cardId, ideaImage }) => {
   return (
     <Link href={`/ideaspace/workshop/${cardId}`}>
-      <div className="w-full h-[228px] bg-[#FFFFFF] relative">
+      <div className="w-full h-[228px] relative">
         <Image
           alt="idea_image"
           src={ideaImage}
