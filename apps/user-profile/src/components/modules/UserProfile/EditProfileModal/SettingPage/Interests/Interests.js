@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
-import axios from 'axios';
 import { Button, Typography } from '@devlaunchers/components/components/atoms';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../../context/EditProfileDataContext';
 import { editProfileActions } from '../../../../../../state/actions';
+import { agent } from '@devlaunchers/utility';
 
 export default function Interests() {
   const { userData } = useUserDataContext();
@@ -20,17 +20,11 @@ export default function Interests() {
   useEffect(() => {
     setLoading(true);
 
-    axios(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/interests?filters[category][$eq]=Interest&populate=*`,
-      {
-        withCredentials: true,
-      }
-    )
-      .then(({ data }) => {
-        console.log('Interests data', data);
-        const list = Array.isArray(data?.data)
-          ? data.data.map((x) => ({ id: x.id, ...x.attributes }))
-          : data;
+    agent.Interests.get()
+      .then((items) => {
+        const list = Array.isArray(items)
+          ? items?.map((x) => ({ id: x.id, ...x.attributes }))
+          : [];
 
         setAllInterests(list ?? []);
       })

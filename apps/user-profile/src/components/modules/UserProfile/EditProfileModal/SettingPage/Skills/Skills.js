@@ -1,24 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { atoms } from '@devlaunchers/components/src/components';
 import { editProfileDataContext } from '../../../../../../context/EditProfileDataContext';
 import { editProfileActions } from '../../../../../../state/actions';
+import { agent } from '@devlaunchers/utility';
+
 function Skills() {
   const { editProfileDispatch } = editProfileDataContext();
   const [allSkills, setAllSkills] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // fetch ALL skills
   useEffect(() => {
     setLoading(true);
-    axios(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/interests?filters[category][$eq]=Skill&populate=*`,
-      {
-        withCredentials: true,
-      }
-    )
-      .then(({ data }) => {
-        const skills = Array.isArray(data?.data)
-          ? data.data.map((x) => ({
+
+    agent.Skills.get()
+      .then((items) => {
+        const skills = Array.isArray(items)
+          ? items?.map((x) => ({
               id: x.id,
               ...x.attributes,
               selected: false,

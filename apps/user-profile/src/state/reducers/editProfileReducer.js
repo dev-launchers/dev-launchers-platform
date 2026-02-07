@@ -83,6 +83,7 @@ const editProfileReducer = (state, action) => {
           ...state.changes,
           bioChanged: false,
           interestsChanged: false,
+          skillsChanged: false,
         },
         saveInProgress: false,
       };
