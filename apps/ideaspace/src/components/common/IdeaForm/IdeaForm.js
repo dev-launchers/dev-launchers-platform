@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 
 import { Field, Form, Formik, FormikHelpers, useFormikContext } from 'formik';
-import { atoms, organisms } from '@devlaunchers/components/src/components';
+import { atoms } from '@devlaunchers/components/src/components';
 import popoverSvg from '../../../images/popover.svg';
 import SubmissionButton from './SubmissionButton';
 import EditionButton from './EditionButton';
-import Dropdown from '@devlaunchers/components/components/organisms/Dropdown';
 import useResponsive from '@devlaunchers/components/src/hooks/useResponsive';
-import Checkbox from '@devlaunchers/components/src/components/Checkbox/Checkbox';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox/Checkbox';
 import Link from 'next/link';
 import {
   TextAreaWrapper,
@@ -29,13 +28,40 @@ import {
 import Alert from '../SubmissionAlert/Alert.js';
 import { agent } from '@devlaunchers/utility';
 
+const CASE_INSENSITIVE_FIELDS = ['ideaName'];
+
 const compareValuesToInitial = (values, initialValues) => {
-  const name = Object.keys(values);
-  for (let i = 0; i < name.length; i++) {
-    if (values[name[i]] !== initialValues[name[i]]) {
-      return true;
+  const keys = Object.keys(values);
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const valueItem = values[key];
+    const initialItem = initialValues[key];
+
+    if (valueItem === null && initialItem === null) continue;
+    if (valueItem === undefined && initialItem === undefined) continue;
+    if (valueItem === null || initialItem === null) return true;
+    if (valueItem === undefined || initialItem === undefined) return true;
+
+    if (typeof valueItem === 'object' && typeof initialItem === 'object') {
+      if (JSON.stringify(valueItem) !== JSON.stringify(initialItem)) {
+        return true;
+      }
+    } else if (
+      CASE_INSENSITIVE_FIELDS.includes(key) &&
+      typeof valueItem === 'string' &&
+      typeof initialItem === 'string'
+    ) {
+      if (valueItem.trim().toLowerCase() !== initialItem.trim().toLowerCase()) {
+        return true;
+      }
+    } else {
+      if (valueItem !== initialItem) {
+        return true;
+      }
     }
   }
+
   return false;
 };
 
@@ -53,20 +79,30 @@ const clearLocalStorage = () => {
   localStorage.removeItem('involveLevel');
 };
 
-const AutoSubmitToken = ({ setDisabling, unsavedHandler, initialValues }) => {
+const AutoSubmitToken = ({
+  setDisabling,
+  unsavedHandler,
+  initialValues,
+  editMode,
+}) => {
   const { values } = useFormikContext();
   const [previousValues, setPreviousValues] = useState(values);
   React.useEffect(() => {
-    autoSaveLocalStorage(values);
-    if (compareValuesToInitial(values, initialValues)) {
+    // Only save to localStorage if NOT in edit mode
+    if (!editMode) {
+      autoSaveLocalStorage(values);
+    }
+
+    const hasChanges = compareValuesToInitial(values, initialValues);
+
+    if (hasChanges) {
       unsavedHandler(true);
       setDisabling(false);
-    } else if (JSON.stringify(values) !== JSON.stringify(previousValues)) {
+    } else {
       unsavedHandler(false);
       setDisabling(true);
-      setPreviousValues(values);
     }
-  }, [values, previousValues, initialValues, setDisabling, unsavedHandler]);
+  }, [values, initialValues, setDisabling, unsavedHandler, editMode]);
   return null;
 };
 
@@ -75,6 +111,7 @@ const IdeaForm = ({
   SignupSchema,
   submitHandler,
   unsavedHandler,
+  canSaveHandler,
   formButton,
   sending,
   clickHandler,
@@ -105,8 +142,10 @@ const IdeaForm = ({
     setFocusedField(fieldName);
   };
 
-  const savedData = loadFromLocalStorage();
-  const newInitialValues = { ...initialValues, ...savedData };
+  const savedData = editMode ? null : loadFromLocalStorage();
+  const newInitialValues = savedData
+    ? { ...initialValues, ...savedData }
+    : initialValues;
 
   React.useEffect(() => {
     localStorage.removeItem('ideaFormData');
@@ -147,9 +186,11 @@ const IdeaForm = ({
   ) => {
     if (focusedField === fieldName) {
       return (
-        <CharacterCounter isLimit={value?.length === maxLength}>
-          {value?.length || 0}/{maxLength} characters
-        </CharacterCounter>
+        <atoms.Typography size="body_base">
+          <CharacterCounter isLimit={value?.length === maxLength}>
+            {value?.length || 0}/{maxLength} characters
+          </CharacterCounter>
+        </atoms.Typography>
       );
     } else {
       if (isRequired) {
@@ -228,81 +269,108 @@ const IdeaForm = ({
             handleChange,
             handleSubmit,
             isSubmitting,
-          }) => (
-            <Form>
-              <AutoSubmitToken
-                setDisabling={setDisabling}
-                unsavedHandler={unsavedHandler}
-                initialValues={initialValues}
-              />
-              {/* {!editMode && (
+          }) => {
+            const requiredFieldsFilled =
+              values.ideaName?.trim() &&
+              values.description?.trim() &&
+              values.experience?.trim() &&
+              values.targetAudience?.trim() &&
+              values.features?.trim();
+
+            const canSubmit =
+              Boolean(requiredFieldsFilled) && isValid && !nameTaken;
+
+            const canSave = canSubmit && !disabling;
+
+            React.useEffect(() => {
+              if (canSaveHandler && editMode) {
+                canSaveHandler(canSave);
+              }
+            }, [canSave, canSaveHandler, editMode]);
+
+            const canPostIdea = canSubmit && isChecked;
+
+            return (
+              <Form>
+                <AutoSubmitToken
+                  setDisabling={setDisabling}
+                  unsavedHandler={unsavedHandler}
+                  initialValues={initialValues}
+                  editMode={editMode}
+                />
+                {/* {!editMode && (
                 <atoms.Typography type="h4">
                   Idea Info
                   <hr style={{ margin: '1rem auto 2rem' }} />
                 </atoms.Typography>
               )} */}
-              <atoms.Box flexDirection="column" gap="2rem">
-                {/* Idea Name Field */}
-                <FieldWrapper data-field="ideaName">
-                  <FieldLabel>
-                    Idea name
-                    <RequiredAsterisk>*</RequiredAsterisk>
-                  </FieldLabel>
+                <atoms.Box flexDirection="column" gap="2rem">
+                  {/* Idea Name Field */}
+                  <FieldWrapper data-field="ideaName">
+                    <FieldLabel>
+                      <atoms.Typography textWeight="normal">
+                        Idea name
+                      </atoms.Typography>
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </FieldLabel>
 
-                  <TextAreaWrapper
-                    hasError={
-                      nameTaken || (touched.ideaName && errors.ideaName)
-                    }
-                    isCompleted={
-                      !nameTaken &&
-                      values.ideaName.trim().length > 0 &&
-                      !errors.ideaName
-                    }
-                    isFocused={
-                      !(
+                    <TextAreaWrapper
+                      hasError={
+                        nameTaken || (touched.ideaName && errors.ideaName)
+                      }
+                      isCompleted={
                         !nameTaken &&
                         values.ideaName.trim().length > 0 &&
                         !errors.ideaName
-                      ) && focusedField === 'ideaName'
-                    }
-                  >
-                    <StyledInput
-                      name="ideaName"
-                      placeholder="Title your idea"
-                      value={values.ideaName || ''}
-                      onChange={(e) => {
-                        const text = e.target.value.slice(0, 80);
-                        setFieldValue('ideaName', text);
-                      }}
-                      onKeyUp={() => {
-                        if (nameTaken) setNameTaken(false);
-                      }}
-                      maxLength={80}
-                      onFocus={() => setFocusedField('ideaName')}
-                      onBlur={async (e) => {
-                        handleBlur(e);
-                        await checkIdeaName(values.ideaName);
-                        setFocusedField(null);
-                      }}
-                    />
-                  </TextAreaWrapper>
-                  {!nameTaken &&
-                    values.ideaName.trim().length > 0 &&
-                    !errors.ideaName && <SuccessText>Completed!</SuccessText>}
+                      }
+                      isFocused={
+                        !(
+                          !nameTaken &&
+                          values.ideaName.trim().length > 0 &&
+                          !errors.ideaName
+                        ) && focusedField === 'ideaName'
+                      }
+                    >
+                      <StyledInput
+                        name="ideaName"
+                        placeholder="Title your idea"
+                        value={values.ideaName || ''}
+                        onChange={(e) => {
+                          const text = e.target.value.slice(0, 80);
+                          setFieldValue('ideaName', text);
+                        }}
+                        onKeyUp={() => {
+                          if (nameTaken) setNameTaken(false);
+                        }}
+                        maxLength={80}
+                        onFocus={() => setFocusedField('ideaName')}
+                        onBlur={async (e) => {
+                          handleBlur(e);
+                          await checkIdeaName(values.ideaName);
+                          setFocusedField(null);
+                        }}
+                      />
+                    </TextAreaWrapper>
+                    {!nameTaken &&
+                      values.ideaName.trim().length > 0 &&
+                      !errors.ideaName && <SuccessText>Completed!</SuccessText>}
 
-                  {nameTaken && (
-                    <ErrorText>
-                      This idea name is already in use. Please try something
-                      else.
-                    </ErrorText>
-                  )}
-                </FieldWrapper>
+                    {nameTaken && (
+                      <ErrorText>
+                        This idea name is already in use. Please try something
+                        else.
+                      </ErrorText>
+                    )}
+                  </FieldWrapper>
+                </atoms.Box>
 
                 {/* Description Field */}
                 <FieldWrapper data-field="description">
                   <FieldLabel>
-                    Describe your idea:
-                    <RequiredAsterisk>*</RequiredAsterisk>
+                    <atoms.Typography textWeight="normal">
+                      Describe your idea:
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.description && errors.description}
@@ -343,9 +411,11 @@ const IdeaForm = ({
                 {/* Experience Field */}
                 <FieldWrapper data-field="experience">
                   <FieldLabel>
-                    Do you have any relevant experience that you'd like to
-                    utilize?
-                    <RequiredAsterisk>*</RequiredAsterisk>
+                    <atoms.Typography textWeight="normal">
+                      Do you have any relevant experience that you'd like to
+                      utilize?
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.experience && errors.experience}
@@ -386,8 +456,10 @@ const IdeaForm = ({
                 {/* Target Audience Field */}
                 <FieldWrapper data-field="targetAudience">
                   <FieldLabel>
-                    Describe your expected users:
-                    <RequiredAsterisk>*</RequiredAsterisk>
+                    <atoms.Typography textWeight="normal">
+                      Describe your expected users:
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.targetAudience && errors.targetAudience}
@@ -426,8 +498,10 @@ const IdeaForm = ({
                 {/* Features Field - Required */}
                 <FieldWrapper data-field="features">
                   <FieldLabel>
-                    What features would your product have?
-                    <RequiredAsterisk>*</RequiredAsterisk>
+                    <atoms.Typography textWeight="normal">
+                      What features would your product have?
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.features && errors.features}
@@ -466,15 +540,19 @@ const IdeaForm = ({
                 {/* Extra Info Field - Optional */}
                 <FieldWrapper>
                   <FieldLabel>
-                    Anything else you would like to share to support your idea?{' '}
-                    <span
+                    <atoms.Typography textWeight="normal">
+                      Anything else you would like to share to support your
+                      idea?{' '}
+                    </atoms.Typography>
+                    <atoms.Typography
+                      as="span"
                       style={{
                         color: 'var(--content-04, #DAD8D9)',
-                        fontWeight: '300',
+                        fontWeight: 300,
                       }}
                     >
                       (Optional)
-                    </span>
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.extraInfo && errors.extraInfo}
@@ -514,8 +592,10 @@ const IdeaForm = ({
                 {/* Tagline Field - Optional */}
                 <FieldWrapper>
                   <FieldLabel>
-                    What's a catchy tagline for your idea that sums up your
-                    value and purpose? (Optional)
+                    <atoms.Typography textWeight="normal">
+                      What's a catchy tagline for your idea that sums up your
+                      value and purpose? (Optional)
+                    </atoms.Typography>
                   </FieldLabel>
                   <TextAreaWrapper
                     hasError={touched.tagline && errors.tagline}
@@ -692,11 +772,46 @@ const IdeaForm = ({
                   </atoms.Box>
                 )}
 
+                {!editMode && (
+                  <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
+                    <Checkbox
+                      name="termsAndConditions"
+                      required
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
+
+                    <atoms.Typography type="p">
+                      &nbsp;I have read and agree to the{' '}
+                      <Link href="/ideaspace/terms" passHref>
+                        <atoms.Typography
+                          as="a"
+                          target="_blank"
+                          style={{
+                            color: 'blue',
+                            textDecoration: 'underline',
+                          }}
+                        >
+                          Idea Submission Terms & Conditions
+                        </atoms.Typography>
+                      </Link>
+                      .
+                      <atoms.Typography as="span" style={{ color: 'red' }}>
+                        &nbsp;*
+                      </atoms.Typography>
+                    </atoms.Typography>
+                  </atoms.Box>
+                )}
+
                 {!hideFormButtons && (
                   <atoms.Box justifyContent="flex-end" gap="1rem">
                     {formButton == 'submit' ? (
                       <SubmissionButton
                         sending={sending}
+                        style={{
+                          opacity: canPostIdea ? 1 : 0.5,
+                          cursor: canPostIdea ? 'pointer' : 'not-allowed',
+                        }}
                         onClick={async (e) => {
                           e.preventDefault();
 
@@ -706,24 +821,34 @@ const IdeaForm = ({
                             'experience',
                             'targetAudience',
                             'features',
-                            //                            'involveLevel',
                           ];
                           fields.forEach((field) =>
                             setFieldTouched(field, true)
                           );
 
                           const validationErrors = await validateForm();
+
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
+
+                          // Block submit but still scroll
                           if (Object.keys(validationErrors).length > 0) {
                             scrollToError(validationErrors);
                             return;
                           }
-                          //  Updated T&C checkbox validation
-                          if (!isChecked) {
-                            alert(
-                              'You must accept the Terms & Conditions to submit the form.'
-                            );
-                            return; // Preventing form submission if T&C is not checked
+
+                          // Block if can't post idea (T&C or otherwise)
+                          if (!canPostIdea) {
+                            if (!isChecked) {
+                              alert(
+                                'You must accept the Terms & Conditions to submit the form.'
+                              );
+                            }
+                            return;
                           }
+
                           try {
                             await submitForm();
                           } catch (error) {
@@ -736,13 +861,43 @@ const IdeaForm = ({
                         clickHandlerButton={clickHandler}
                         sending={sending}
                         disabling={disabling}
+                        style={{
+                          opacity: canSave ? 1 : 0.5,
+                          cursor: canSave ? 'pointer' : 'not-allowed',
+                        }}
                         onClick={async (e) => {
                           e.preventDefault();
+                          const fields = [
+                            'ideaName',
+                            'description',
+                            'experience',
+                            'targetAudience',
+                            'features',
+                          ];
+
+                          // Mark required fields as touched
+                          fields.forEach((field) =>
+                            setFieldTouched(field, true)
+                          );
+
+                          const validationErrors = await validateForm();
+
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
+
+                          if (Object.keys(validationErrors).length > 0) {
+                            scrollToError(validationErrors);
+                            return;
+                          }
+
+                          if (!canSave) {
+                            return;
+                          }
+
                           try {
                             await submitForm();
-                            if (Object.keys(errors).length > 0) {
-                              scrollToError(errors);
-                            }
                           } catch (error) {
                             console.error('Form submission error:', error);
                           }
@@ -756,26 +911,28 @@ const IdeaForm = ({
                   setDisabling={setDisabling}
                   unsavedHandler={unsavedHandler}
                   initialValues={initialValues}
+                  editMode={editMode}
                 />
-              </atoms.Box>
-              {successMessageVisible && (
-                <Alert
-                  type="success"
-                  variant={alertVariant}
-                  countdown={alertVariant === 'submit' ? 5 : null}
-                  onClose={() => setSuccessMessageVisible(false)}
-                />
-              )}
 
-              {errorMessageVisible && (
-                <Alert
-                  type="error"
-                  variant={alertVariant}
-                  onClose={() => setErrorMessageVisible(false)}
-                />
-              )}
-            </Form>
-          )}
+                {successMessageVisible && (
+                  <Alert
+                    type="success"
+                    variant={alertVariant}
+                    countdown={alertVariant === 'submit' ? 5 : null}
+                    onClose={() => setSuccessMessageVisible(false)}
+                  />
+                )}
+
+                {errorMessageVisible && (
+                  <Alert
+                    type="error"
+                    variant={alertVariant}
+                    onClose={() => setErrorMessageVisible(false)}
+                  />
+                )}
+              </Form>
+            );
+          }}
         </Formik>
       </atoms.Box>
     </atoms.Box>

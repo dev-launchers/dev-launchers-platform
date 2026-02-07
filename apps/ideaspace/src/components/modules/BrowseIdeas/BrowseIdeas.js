@@ -3,9 +3,11 @@ import CircularIndeterminateLoader from '../Loader/CircularIndeterminateLoader';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCard from '../../common/IdeaCard/IdeaCard';
 import BackButton from '../../common/BackButton/BackButton';
-import { DropdownMenu } from '@devlaunchers/components/src/components/DropdownMenu';
-import { DropdownMenuContent } from '@devlaunchers/components/components/DropdownMenu';
-import { DropdownMenuRadioGroup } from '@devlaunchers/components/components/DropdownMenu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+} from '@devlaunchers/components/src/components/molecules/DropdownMenu';
 import {
   DropdownMenuRadioItemStyled,
   DropdownMenuTriggerStyled,
@@ -166,21 +168,46 @@ function BrowseIdeas() {
   return (
     <>
       <HeadWapper>
-        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+        <atoms.Typography
+          as="h4"
+          leading="tight"
+          size="xl4"
+          textAlign="center"
+          textCase="capitalize"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="normal"
+          variant="primary"
+        >
           Browse Ideas
         </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
         <BackButton backRoute={'/ideaspace'} />
-        <atoms.Typography textAlign="center" variant="primary" size="xl3">
+        <atoms.Typography
+          variant="secondary"
+          as="p"
+          leading="normal"
+          size="body_xl"
+          textAlign="center"
+          textCase="normal"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="light"
+        >
           Want to help develop an idea?
         </atoms.Typography>
         <atoms.Typography
-          textAlign="center"
           variant="secondary"
           as="p"
+          leading="normal"
           size="body_xl"
+          textAlign="center"
+          textCase="normal"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="light"
         >
           Check out these ideas submitted by other Dev Launchers!
         </atoms.Typography>

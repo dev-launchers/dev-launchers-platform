@@ -137,7 +137,7 @@ const Opportunities = {
     requests.get(
       `opportunities/${slug}`,
       new URLSearchParams(
-        '_publicationState=live&populate=projects&populate=interests'
+        '_publicationState=live&populate[projects]=*&populate[interests]=*&populate[expectations]=*'
       )
     ),
   getById: (

@@ -6,6 +6,7 @@ interface props {
   role: string;
   department: string;
   date: string;
+  isLoading: boolean;
   onRepost: (value: string) => void;
   onView: (value: string) => void;
 }
@@ -22,7 +23,7 @@ export default function ArchivedRole(props: props) {
       <p className="mb-2 text-sm">{props.department}</p>
       <p className="text-xs">Archived: {props.date}</p>
       <div className="mt-5 flex flex-col sm:flex-row justify-start gap-3 overflow-hidden">
-        <Button onClick={props.onRepost}>
+        <Button onClick={props.onRepost} disabled={props.isLoading}>
           <RotateCw className="mr-1 h-4 w-4 sm:h-auto sm:w-auto" />
           <span className="text-xs sm:text-xs">Repost</span>
         </Button>

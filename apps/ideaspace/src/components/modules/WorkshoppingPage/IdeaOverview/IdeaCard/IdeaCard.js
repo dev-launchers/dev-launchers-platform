@@ -1,37 +1,19 @@
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { MoreHorizontal, Trash } from 'lucide-react';
-import {
-  StyledCard,
-  TopView,
-  LeftView,
-  RightView,
-  StyledDiv,
-  IdeaName,
-  IdeaTagLine,
-  BottomView,
-  StyledText,
-  Button,
-} from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
 import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
-import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import Alert from '../../../../../components/common/SubmissionAlert/Alert';
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from '@devlaunchers/components/src/components/Popover/index';
+} from '@devlaunchers/components/src/components/atoms/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
 import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
-import { colors } from '@mui/material';
 import { atoms } from '@devlaunchers/components/src/components';
 
 export const IdeaCard = ({
@@ -205,7 +187,7 @@ export const IdeaCard = ({
     sessionStorage.setItem('showDeleteAlertSuccess', 'true');
     setShouldShowDeleteDialog(false);
     window.onbeforeunload = null; // Clear the beforeunload event
-    window.location.href = '/ideaspace/dashboard';
+    window.location.href = '/users/me';
   };
 
   //== Update Idea Image
@@ -242,25 +224,24 @@ export const IdeaCard = ({
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-7">
             <div className="flex flex-col gap-2">
-              <div
-                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
-                style={{
-                  lineHeight: '110%',
-                  color: 'var(--content-00, #FFF)',
-                  fontFamily: 'Helvetica',
-                }}
+              <atoms.Typography
+                as="h1"
+                textWeight="bold"
+                leading="tight"
+                textAlign="left"
+                size="xl4"
+                style={{ color: 'var(--content-00, #FFF)' }}
               >
                 {ideaData.ideaName}
-              </div>
-              <div
-                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
-                style={{
-                  lineHeight: '28px',
-                  color: 'var(--content-04, #DAD8D9)',
-                }}
+              </atoms.Typography>
+              <atoms.Typography
+                as="p"
+                size="body_base"
+                leading="normal"
+                style={{ color: 'var(--content-04, #DAD8D9)' }}
               >
                 {ideaData.tagline}
-              </div>
+              </atoms.Typography>
             </div>
             <div className="flex flex-row justify-between">
               <div>{upvoteButton}</div>

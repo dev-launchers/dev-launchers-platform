@@ -1,84 +1,71 @@
 'use client';
 import { useState } from 'react';
 
-import Modal from '../../../../../DetailedPage/PositionPopupModal';
-import RoleDetailsModal from '../RoleModal/RoleDetailsModal';
+import LogoMonogram from '../../../../../../../images/logo-monogram.png';
 
 import {
-  AboutContainer,
-  AboutDescription,
   ButtonsContainer,
   CardContainer,
   CardContent,
-  Divider,
-  Time,
-  TimeCommitment,
-  TimeContainer,
-  Title,
+  ContentSection,
+  IconContainer,
+  RoleIcon,
 } from './styledRoleCard';
-import { agent } from '@devlaunchers/utility';
-import { result } from 'lodash';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 import { Opportunity } from '@devlaunchers/models';
+import { useRouter } from 'next/router';
+import { Typography } from '@devlaunchers/components/src/components/atoms';
 
-let oppProject = {
-  projectId: 'projectId',
-  projectSlug: 'projectSlug',
-};
 interface Props {
-  role: any;
-  key22: number;
-  opportunities?: Opportunity[];
+  role: Opportunity;
+  opportunities: Opportunity[];
 }
 
-interface OptionsType {
-  name: string;
-  path?: string;
-  domain?: string;
-}
-//User Login Token
+const RoleCard = ({ role, opportunities }: Props) => {
+  const router = useRouter();
 
-const RoleCard = ({ role, key22, opportunities }: Props) => {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
+  const handleOpenModal = (shouldApply: boolean) => {
+    sessionStorage.setItem(
+      `role_${role.id}`,
+      JSON.stringify({
+        role: role,
+      })
+    );
+    sessionStorage.setItem(`role_${role.id}_apply`, shouldApply.toString());
+    router.push(`/join/role?id=${role.id}`);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
   return (
     <CardContainer>
       <CardContent>
-        <Title>{role?.attributes?.title}</Title>
-        <Time style={{ fontSize: '1rem' }}>PRODUCT PLATFORM</Time>
-        <Divider />
-        <TimeContainer>
-          <TimeCommitment>TIME COMMITMENT</TimeCommitment>
-          <Time>{role?.attributes?.commitmentHoursPerWeek} hrs per week</Time>
-        </TimeContainer>
-        <AboutContainer>
-          <TimeCommitment>ABOUT THE ROLE</TimeCommitment>
-          <AboutDescription>{role?.attributes?.description}</AboutDescription>
-        </AboutContainer>
-        <ButtonsContainer onClick={handleOpenModal}>
-          More Details
-        </ButtonsContainer>
-        <Modal
-          modalIsOpen={showModal}
-          closeModal={handleCloseModal}
-          handleOpenModal={handleOpenModal}
-          modalContent={
-            <RoleDetailsModal
-              position={role}
-              projectId={role?.attributes?.projects?.data[key22]?.id}
-              projectSlug={
-                role?.attributes?.projects?.data[key22]?.attributes?.slug
-              }
-              handleCloseModal={handleCloseModal}
-            />
-          }
-        />
+        <IconContainer>
+          <RoleIcon as="img" src={LogoMonogram} alt="Role icon" />
+        </IconContainer>
+
+        <ContentSection>
+          <Typography as="h3" size="xl2" textWeight="bold">
+            {role?.attributes?.title}
+          </Typography>
+          <Typography as="p">
+            {role?.attributes?.roleCategory} Team | {role?.attributes?.roleType}
+          </Typography>
+
+          <div className="flex gap-6 my-2">
+            <Typography as="p">{role?.attributes?.level}</Typography>
+            <Typography as="p">
+              {role?.attributes?.commitmentHoursPerWeek} Hours Per Week
+            </Typography>
+          </div>
+
+          <div className="line-clamp-2">
+            <Typography as="p">{role?.attributes?.description}</Typography>
+          </div>
+
+          <ButtonsContainer>
+            <Button onClick={() => handleOpenModal(false)}>Role Details</Button>
+            <Button onClick={() => handleOpenModal(true)}>Apply</Button>
+          </ButtonsContainer>
+        </ContentSection>
       </CardContent>
     </CardContainer>
   );

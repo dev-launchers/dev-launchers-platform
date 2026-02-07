@@ -3,7 +3,7 @@ import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+  background-color: ${({ theme }) => theme?.colors?.Black};
 `;
 
 export const Wrapjoin = styled.div`
@@ -70,12 +70,14 @@ export const SelectRoleContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
-  text-align: center;
+  text-align: left;
 `;
 
 export const SelectRoleText = styled.div`
   font-size: 40px;
   font-family: 'Abel', sans-serif;
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+  text-align: left;
 `;
 
 export const AreaImage = styled.div`

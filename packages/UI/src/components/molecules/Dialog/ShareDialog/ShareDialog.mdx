@@ -1,0 +1,26 @@
+import { Meta, Stories, Description, Primary } from '@storybook/blocks';
+
+import * as ShareDialogStories from './ShareDialog.stories.tsx';
+
+# Share Dialog
+
+<Meta of={ShareDialogStories} />
+
+<Description of={ShareDialogStories.default} />
+
+<Primary />
+
+```jsx
+import { ShareDialog } from '@devlaunchers/components/src/components/ShareDialog';
+
+export default () => (
+  <ShareDialog
+    header="Share this Idea"
+    url="https://devlaunchers/shareme.org"
+    quote="Share my Idea"
+    hashtag="#posistion #share"
+  />
+);
+```
+
+<Stories />

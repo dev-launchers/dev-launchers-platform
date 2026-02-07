@@ -178,21 +178,16 @@ function IdeaCard({ cards, cardType }) {
             padding="0rem 0.75rem"
           >
             <atoms.Typography
-              type="h4"
-              style={{
-                fontSize: '18px',
-                lineHeight: '1.5rem',
-                fontFamily: 'Helvetica',
-                fontWeight: '700',
-                margin: '0rem 0rem 0.875rem',
-                display: '-webkit-box',
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-all',
-                color: 'var(--content-00, #FFF)',
-              }}
+              as="h6"
+              leading="normal"
+              size="body_xl"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="semibold"
+              variant="secondary"
+              style={{ color: 'var(--content-00, #FFF)' }}
             >
               {cards.ideaName}
             </atoms.Typography>
@@ -208,19 +203,16 @@ function IdeaCard({ cards, cardType }) {
             <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} /> */}
 
             <atoms.Typography
-              type="p"
-              style={{
-                fontSize: '0.875rem',
-                // color: '#676767',
-                color: 'var(--content-04, #DAD8D9)',
-                height: '43px',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-word',
-              }}
+              as="p"
+              leading="normal"
+              size="micro_xs"
+              textAlign="left"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="light"
+              variant="secondary"
+              style={{ color: 'var(--content-04, #DAD8D9)' }}
             >
               {cards.description}
             </atoms.Typography>
@@ -231,6 +223,7 @@ function IdeaCard({ cards, cardType }) {
                   fontSize: '0.75rem',
                   color: 'var(--content-04, #DAD8D9)',
                   weight: '300',
+                  marginTop: '25px',
                 }}
               >
                 {daysAgo()} ago
@@ -241,6 +234,7 @@ function IdeaCard({ cards, cardType }) {
                   fontSize: '0.75rem',
                   color: 'var(--content-04, #DAD8D9)',
                   weight: '300',
+                  marginTop: '25px',
                 }}
               >
                 {cards.comments?.length} comments ∙ {votes} upvotes

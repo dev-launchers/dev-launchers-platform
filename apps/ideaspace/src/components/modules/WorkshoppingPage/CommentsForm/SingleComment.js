@@ -8,6 +8,7 @@ import {
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useState } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
+import { atoms } from '@devlaunchers/components/src/components';
 
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
@@ -117,7 +118,7 @@ function SingleCommentComponent(props) {
           />
           <div className="textContent">
             <SingleCommentContent>
-              <h3>{props.author}</h3>
+              <atoms.Typography as="h3">{props.author}</atoms.Typography>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
                 <div className="px-[6px] py-[2px] bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-xl justify-center items-center">
                   <div
@@ -134,21 +135,25 @@ function SingleCommentComponent(props) {
             </SingleCommentContent>
             <SingleCommentContent>
               {/* date of creation here, i.e. "2 days ago" */}
-              <h5 style={{ color: 'var(--content-03, #B9B9B9)' }}>
+              <atoms.Typography
+                as="h5"
+                style={{ color: 'var(--content-03, #B9B9B9)' }}
+              >
                 {timeSince(new Date(props.createdAt))}
-              </h5>
+              </atoms.Typography>
             </SingleCommentContent>
           </div>
         </SingleComment>
         <SingleComment>
           <div className="textContent">
             <SingleCommentContent>
-              <div source={props.children} className="mb-4">
-                <p className="text-left mb-2 text-[var(--content-04, #DAD8D9)]">
+              <div source={props.children}>
+                <atoms.Typography
+                  as="p"
+                  className="text-left mb-2 text-[var(--content-04, #DAD8D9)]"
+                >
                   {props.children}
-                </p>
-
-                <LikeButton text="Like | " count={count} />
+                </atoms.Typography>
               </div>
             </SingleCommentContent>
           </div>

@@ -1,45 +1,42 @@
 import styled from 'styled-components';
 
-export const CommitmentMain = styled.div`
+const CommitmentMain = styled.div`
   width: 100%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
-`;
-
-export const CommitmentTimeContainer = styled.div`
-  width: 80%;
-  height: 70%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 20px;
+  gap: 12px;
 `;
 
-export const CommitmentTitle = styled.div`
-  width: 90%;
-  height: 10%;
-  display: flex;
-  font-family: 'Nunito Sans', sans-serif;
-`;
-
-export const CommitmentText = styled.div`
+const CommitmentTitle = styled.span`
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
   font-size: 14px;
-  display: flex;
-  align-items: center;
+  font-weight: 500;
   font-family: 'Nunito Sans', sans-serif;
 `;
 
-export const TimeCommitment = styled.div`
+const CommitmentTimeContainer = styled.div`
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 16px;
 `;
 
-export const IconImage = styled.img`
-  margin: 2%;
-  width: 10%;
+const TimeCommitment = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
 `;
+
+const CommitmentText = styled.span`
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+  font-size: 14px;
+  font-family: 'Nunito Sans', sans-serif;
+`;
+
+export {
+  CommitmentMain,
+  CommitmentTitle,
+  CommitmentTimeContainer,
+  TimeCommitment,
+  CommitmentText,
+};

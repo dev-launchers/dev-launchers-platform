@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { atoms } from '@devlaunchers/components/src/components';
 import Avatar from '@devlaunchers/components/src/components/atoms/Avatar/Avatar';
 
 export const StatuBox = styled.div`
