@@ -12,6 +12,7 @@ export default function Interests() {
   const [allInterests, setAllInterests] = useState([]);
   const [interestList, setInterestList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isModified, setIsModified] = useState(false);
 
   // selected interests from logged-in user
   const selectedFromUser = useMemo(() => userData?.interests ?? [], [userData]);
@@ -32,10 +33,11 @@ export default function Interests() {
       .finally(() => setLoading(false));
   }, []);
 
-  // merge ALL + selected
+  // merge ALL + selected (initialize local state only)
   useEffect(() => {
     if (!allInterests.length) return;
-    const selectedIds = new Set(selectedFromUser.map((x) => x.id));
+
+    const selectedIds = new Set((selectedFromUser ?? []).map((x) => x.id));
 
     const merged = allInterests.map((x) => ({
       ...x,
@@ -43,30 +45,31 @@ export default function Interests() {
     }));
 
     setInterestList(merged);
+    setIsModified(false);
+  }, [allInterests, selectedFromUser]);
+
+  // sync local state → global state
+  useEffect(() => {
+    if (!interestList.length) return;
+
+    const selected = interestList.filter((i) => i.selected);
 
     editProfileDispatch({
       type: editProfileActions.SET_INTERESTS,
-      payload: merged.filter((i) => i.selected),
+      payload: selected,
     });
-  }, [allInterests, selectedFromUser, editProfileDispatch]);
 
-  const toggle = (id) => {
-    setInterestList((prev) => {
-      const next = prev.map((i) =>
-        i.id === id ? { ...i, selected: !i.selected } : i
-      );
-
-      const selected = next.filter((i) => i.selected);
-
-      editProfileDispatch({
-        type: editProfileActions.SET_INTERESTS,
-        payload: selected,
-      });
-
+    if (isModified) {
       editProfileDispatch({ type: editProfileActions.MARK_INTERESTS_CHANGED });
+    }
+  }, [interestList, isModified, editProfileDispatch]);
 
-      return next;
-    });
+  // only local update
+  const toggle = (id) => {
+    setIsModified(true);
+    setInterestList((prev) =>
+      prev.map((i) => (i.id === id ? { ...i, selected: !i.selected } : i))
+    );
   };
 
   if (loading) return <div className="text-center">Loading interests...</div>;

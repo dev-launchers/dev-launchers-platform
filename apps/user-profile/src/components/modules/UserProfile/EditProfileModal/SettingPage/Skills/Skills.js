@@ -8,6 +8,7 @@ function Skills() {
   const { editProfileDispatch } = editProfileDataContext();
   const [allSkills, setAllSkills] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isModified, setIsModified] = useState(false);
 
   // fetch ALL skills
   useEffect(() => {
@@ -29,23 +30,30 @@ function Skills() {
       .finally(() => setLoading(false));
   }, []);
 
-  const toggle = (id) => {
-    setAllSkills((prev) => {
-      const updated = prev.map((s) =>
-        s.id === id ? { ...s, selected: !s.selected } : s
-      );
+  //  sync local state → global state
+  useEffect(() => {
+    if (!allSkills.length) return;
 
-      editProfileDispatch({
-        type: editProfileActions.SET_SKILLS,
-        payload: updated.filter((x) => x.selected),
-      });
+    const selected = allSkills.filter((s) => s.selected);
 
+    editProfileDispatch({
+      type: editProfileActions.SET_SKILLS,
+      payload: selected,
+    });
+
+    if (isModified) {
       editProfileDispatch({
         type: editProfileActions.MARK_SKILLS_CHANGED,
       });
+    }
+  }, [allSkills, isModified, editProfileDispatch]);
 
-      return updated;
-    });
+  // only local update
+  const toggle = (id) => {
+    setIsModified(true);
+    setAllSkills((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, selected: !s.selected } : s))
+    );
   };
 
   if (loading) return <div className="text-center">loading Skills...</div>;
