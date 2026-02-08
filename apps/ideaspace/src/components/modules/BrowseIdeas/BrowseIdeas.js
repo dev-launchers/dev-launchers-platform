@@ -107,7 +107,7 @@ function BrowseIdeas() {
     const ideaCards = cleanDataList(
       await agent.Ideas.get(
         new URLSearchParams(
-          `&populate[ideaOwner][populate]&populate[ideaImage][populate]&populate[comments][populate]&populate[author][populate][profile][populate]&pagination[pageSize]=1000&filters[status][$ne]=deleted`
+          `&populate[ideaImage][populate]&populate[comments][populate]&populate[author][populate][profile][populate]&pagination[pageSize]=1000&filters[status][$ne]=deleted`
         )
       )
     );
