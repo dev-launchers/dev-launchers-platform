@@ -119,8 +119,8 @@ export const ImageBanner = ({
             </svg>
             <atoms.Typography
               as="p"
-              className="pt-4 pb-6 text-center font-normal line-height-[125%]"
               style={{ color: 'var(--content-03, #B9B9B9)' }}
+              className="pt-4 pb-6 text-center font-normal line-height-[125%]"
             >
               Select an image to represent your Idea
             </atoms.Typography>
