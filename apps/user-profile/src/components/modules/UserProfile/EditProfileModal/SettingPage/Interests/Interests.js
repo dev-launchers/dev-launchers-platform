@@ -35,7 +35,6 @@ export default function Interests() {
   // merge ALL + selected
   useEffect(() => {
     if (!allInterests.length) return;
-    console.log('allInterests', allInterests);
     const selectedIds = new Set(selectedFromUser.map((x) => x.id));
 
     const merged = allInterests.map((x) => ({

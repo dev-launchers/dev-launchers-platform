@@ -14,7 +14,7 @@ import axios from 'axios';
 function SettingPage({ onClose }) {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
 
-  const { userData, setUserData } = useUserDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const disableSave =
     !editProfileState.changes.bioChanged &&
@@ -63,11 +63,9 @@ function SettingPage({ onClose }) {
                 (i) => i.id
               );
 
-              await axios.put(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`,
-                { interests: interestIds },
-                { withCredentials: true }
-              );
+              await agent.User.put(userId, {
+                interests: interestIds,
+              });
             }
 
             // Save skills to Strapi user (only if changed)
@@ -75,17 +73,15 @@ function SettingPage({ onClose }) {
               const userId = userData?.id;
               const skillIds = (editProfileState.skills || []).map((s) => s.id);
 
-              await axios.put(
-                `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${userId}`,
-                { skills: skillIds },
-                { withCredentials: true }
-              );
+              await agent.User.put(userId, {
+                skills: skillIds,
+              });
             }
 
             editProfileDispatch({
               type: editProfileActions.SAVE_CHANGES_SUCCESS,
             });
-            setUserData((prev) => ({
+            updateUserData((prev) => ({
               ...prev,
               bio: editProfileState.bio,
               interests: editProfileState.changes.interestsChanged
@@ -95,6 +91,7 @@ function SettingPage({ onClose }) {
                 ? editProfileState.skills
                 : prev.skills,
             }));
+            onClose();
           })
           .catch((error) => {
             editProfileDispatch({

@@ -167,10 +167,10 @@ const Ideas = {
 
 const User = {
   get: () => requests.get<UserType>('users'),
-  put: () => (userId: string | number, body: Partial<UserType> | any) =>
-    requests.patch<UserType>(`/users/${userId}`, body),
+  put: (userId: string | number, body: Partial<UserType> | any) =>
+    requests.put(`/users/${userId}`, body),
   patch: (userId: string | number, body: Partial<UserType> | any) =>
-    requests.patch<UserType>(`/users/${userId}`, body),
+    requests.patch(`/users/${userId}`, body),
 };
 
 const Comments = {
