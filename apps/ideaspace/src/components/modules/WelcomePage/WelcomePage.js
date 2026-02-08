@@ -42,7 +42,7 @@ function WelcomePage() {
               textWeight="bold"
               textStyle="normal"
               size="xl6"
-              style={{ color: "white", marginBottom: "16px" }}
+              style={{ color: 'white', marginBottom: '16px' }}
             >
               {' '}
               Explore & Share <br />
@@ -59,7 +59,7 @@ function WelcomePage() {
               textDecoration="noUnderline"
               textStyle="normal"
               textWeight="light"
-              style={{ color: "white" }}
+              style={{ color: 'white' }}
             >
               Transform your ideas into open-source products with the community.
               Share your vision and collaborate with others to bring it to life.

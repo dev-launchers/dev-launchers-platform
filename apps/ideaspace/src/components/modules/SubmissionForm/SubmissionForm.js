@@ -224,7 +224,7 @@ function SubmissionForm() {
           textWeight="light"
         >
           Have an idea for a software project but need developers to build it?
-          <br/>
+          <br />
           Bring your idea to us - we will work with you to spin up a project to
           bring it to life!
         </atoms.Typography>
@@ -239,8 +239,8 @@ function SubmissionForm() {
         />
       ) : (
         <>
-          <Dialog/>
-          <CreateFailure/>
+          <Dialog />
+          <CreateFailure />
           <IdeaForm
             initialValues={initialValues}
             SignupSchema={SignupSchema}

@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeadWapper = styled.div`
-  background-color: #FFFFFF;
+  background-color: #000000;
   padding: 6rem 1rem 4rem 1rem;
   text-align: center;
+  color: #ffffff;
 
   @media (max-width: 1712px) {
     padding: 3rem 1rem 2rem 1rem;
@@ -22,5 +23,5 @@ export const Headline = styled.div`
   line-height: 68px;
   text-align: center;
   letter-spacing: -0.02em;
-  color: #1C1C1C;
+  color: #1c1c1c;
 `;

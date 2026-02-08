@@ -43,7 +43,7 @@ export const ImageBanner = ({
 
   const IconButton = ({ icon: Icon, onClick, ...props }) => (
     <button
-      className="flex items-center justify-center text-black bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors"
+      className="flex items-center justify-center text-white bg-grayscale-100 rounded-md p-2 w-10 h-10 hover:bg-grayscale-200 transition-colors"
       onClick={onClick}
       {...props}
     >
@@ -52,7 +52,11 @@ export const ImageBanner = ({
   );
   return (
     <>
-      <div className="w-full h-[304px] rounded-[16px] bg-[#494949]/5 flex flex-col items-center justify-center gap-2">
+      <div
+        className={`w-full h-[304px] rounded-[16px] bg-[#494949]/5 flex flex-col items-center justify-center gap-2 border-2 ${
+          !bgImage ? 'border-dashed' : 'border-none'
+        } border-[#DAD8D9]`}
+      >
         {bgImage ? (
           <div
             className="w-full h-full rounded-[16px] relative group cursor-pointer bg-cover bg-center bg-no-repeat"
@@ -64,13 +68,34 @@ export const ImageBanner = ({
               onMouseEnter={() => setIsMenuOpen(true)}
               onMouseLeave={() => setIsMenuOpen(false)}
             >
-              <div className="bg-white rounded-md shadow-lg p-2">
-                <IconButton icon={Wand2} />
+              <div
+                className="bg-white rounded-md shadow-lg p-2"
+                style={{ background: 'var(--surface-04, #292929)' }}
+              >
+                <IconButton
+                  icon={Wand2}
+                  style={{ background: 'var(--priority-surface, #000)' }}
+                />
               </div>
               {isMenuOpen && (
-                <div className="bg-white rounded-md shadow-lg p-2 flex flex-col gap-2">
-                  <IconButton icon={Edit2} onClick={handleEditClick} />
-                  <IconButton icon={Trash2} onClick={handleDeleteImage} />
+                <div
+                  className="bg-white rounded-md shadow-lg p-2 flex flex-col gap-2"
+                  style={{ background: 'var(--surface-04, #292929)' }}
+                >
+                  <IconButton
+                    icon={Edit2}
+                    onClick={handleEditClick}
+                    style={{ background: 'var(--priority-surface, #000)' }}
+                  />
+                  <IconButton
+                    icon={Trash2}
+                    onClick={handleDeleteImage}
+                    style={{
+                      background: 'var(--priority-surface, #1F0A0A)',
+                      border:
+                        'var(--priority-border-width, 2px) solid var(--priority-border, #E29898)',
+                    }}
+                  />
                 </div>
               )}
             </div>
@@ -86,13 +111,17 @@ export const ImageBanner = ({
             >
               <path
                 d="M37 25.4999L30.828 19.3279C30.0779 18.578 29.0607 18.1567 28 18.1567C26.9393 18.1567 25.9221 18.578 25.172 19.3279L7 37.4999M5 1.5H33C35.2091 1.5 37 3.29086 37 5.5V33.5C37 35.7091 35.2091 37.5 33 37.5H5C2.79086 37.5 1 35.7091 1 33.5V5.5C1 3.29086 2.79086 1.5 5 1.5ZM17 13.5C17 15.7091 15.2091 17.5 13 17.5C10.7909 17.5 9 15.7091 9 13.5C9 11.2909 10.7909 9.5 13 9.5C15.2091 9.5 17 11.2909 17 13.5Z"
-                stroke="#494949"
+                stroke="#B9B9B9"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
-            <atoms.Typography as="p" className="pt-4 pb-6 text-center font-normal text-[#494949] line-height-[125%]">
+            <atoms.Typography
+              as="p"
+              style={{ color: 'var(--content-03, #B9B9B9)' }}
+              className="pt-4 pb-6 text-center font-normal line-height-[125%]"
+            >
               Select an image to represent your Idea
             </atoms.Typography>
             <Button

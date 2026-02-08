@@ -106,21 +106,23 @@ function SingleCommentComponent(props) {
       setLiked(true);
     }
   }
-
   return (
     <>
-      <div className="textContent">
+      <div className="textContent mb-12">
         <SingleComment style={{ marginBottom: '12px' }}>
           <UserImage
             alt="user_image"
-            src={props.user.profile.profilePictureUrl}
+            src={props.user.profile?.profilePictureUrl}
           />
           <div className="textContent">
             <SingleCommentContent>
               <atoms.Typography as="h3">{props.author}</atoms.Typography>
               {props.forIdea.ideaOwner?.id == props.user?.id ? (
                 <div className="px-[6px] py-[2px] bg-[linear-gradient(90deg,rgba(144,205,244,0.40)_0%,rgba(212,188,249,0.40)_97.96%)] rounded-xl justify-center items-center">
-                  <div className="text-[#494949] text-xs font-normal ">
+                  <div
+                    className="text-xs font-normal"
+                    style={{ color: 'var(--content-04, #DAD8D9)' }}
+                  >
                     Idea Owner
                   </div>
                 </div>
@@ -131,7 +133,12 @@ function SingleCommentComponent(props) {
             </SingleCommentContent>
             <SingleCommentContent>
               {/* date of creation here, i.e. "2 days ago" */}
-              <atoms.Typography as="h5" >{timeSince(new Date(props.createdAt))}</atoms.Typography>
+              <atoms.Typography
+                as="h5"
+                style={{ color: 'var(--content-03, #B9B9B9)' }}
+              >
+                {timeSince(new Date(props.createdAt))}
+              </atoms.Typography>
             </SingleCommentContent>
           </div>
         </SingleComment>
@@ -139,16 +146,16 @@ function SingleCommentComponent(props) {
           <div className="textContent">
             <SingleCommentContent>
               <div source={props.children}>
-                <atoms.Typography as="p" className="text-left">{props.children}</atoms.Typography>
+                <atoms.Typography
+                  as="p"
+                  className="text-left text-[var(--content-04, #DAD8D9)]"
+                >
+                  {props.children}
+                </atoms.Typography>
               </div>
             </SingleCommentContent>
           </div>
         </SingleComment>
-      </div>
-      <div>
-        {!props.isLast && (
-          <hr style={{ marginBottom: '20px', marginTop: '20px' }} />
-        )}
       </div>
     </>
   );

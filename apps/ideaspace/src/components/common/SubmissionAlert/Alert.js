@@ -40,23 +40,32 @@ const Alert = ({
       if (variant === 'submit') {
         return (
           <atoms.Typography as="strong">
-            Your idea was successfully posted! You&apos;ll be
-            redirected to the Idea Workshopping Page in{' '}
+            Your idea was successfully posted! You&apos;ll be redirected to the
+            Idea Workshopping Page in{' '}
             <atoms.Typography as="strong">{currentCountdown}</atoms.Typography>
             seconds.
           </atoms.Typography>
         );
       } else {
-        return <atoms.Typography as="strong">Your changes have been saved!</atoms.Typography>;
+        return (
+          <atoms.Typography as="strong">
+            Your changes have been saved!
+          </atoms.Typography>
+        );
       }
     } else {
       if (variant === 'submit') {
         return (
-          <atoms.Typography as="strong"> Failed to post your idea. Please try again later.</atoms.Typography>
+          <atoms.Typography as="strong">
+            {' '}
+            Failed to post your idea. Please try again later.
+          </atoms.Typography>
         );
       } else {
         return (
-            <atoms.Typography as="strong">Failed to save changes. Please try again later.</atoms.Typography>
+          <atoms.Typography as="strong">
+            Failed to save changes. Please try again later.
+          </atoms.Typography>
         );
       }
     }

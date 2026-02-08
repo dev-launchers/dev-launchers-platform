@@ -21,11 +21,7 @@ const IdeaContentCard = ({ title, content, sliceLength, fullHeight }) => {
       }}
     >
       <atoms.Box>
-        <atoms.Typography
-          as="h3"
-          >
-          {title}
-        </atoms.Typography>
+        <atoms.Typography as="h3">{title}</atoms.Typography>
       </atoms.Box>
       <atoms.Box flexDirection="column">
         <div className="flex flex-col gap-2">

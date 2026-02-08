@@ -89,17 +89,17 @@ export default function IdeaGeneratorButton(props) {
     // );
     // openModal();
 
-      setModalContent(
-        <ModalWrapper>
-          <atoms.Typography as="p" style={{fontSize: '1.25em'}}>
-            This feature is currently offline
-          </atoms.Typography>
-          <div style={{height: "2rem"}}></div>
-          <atoms.Typography as="p" style={{fontSize: '0.75em'}}>
-            We apologize for the inconvenience, please check back soon!
-          </atoms.Typography>
-        </ModalWrapper>
-      );
+    setModalContent(
+      <ModalWrapper>
+        <atoms.Typography as="p" style={{ fontSize: '1.25em' }}>
+          This feature is currently offline
+        </atoms.Typography>
+        <div style={{ height: '2rem' }}></div>
+        <atoms.Typography as="p" style={{ fontSize: '0.75em' }}>
+          We apologize for the inconvenience, please check back soon!
+        </atoms.Typography>
+      </ModalWrapper>
+    );
     openModal();
   };
 
@@ -111,9 +111,7 @@ export default function IdeaGeneratorButton(props) {
         openModal={openModal}
         closeModal={closeModal}
       ></Modal>
-      <div onClick={openIdeaModal}>
-        {props.children}
-      </div>
+      <div onClick={openIdeaModal}>{props.children}</div>
     </>
   );
 

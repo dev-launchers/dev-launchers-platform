@@ -62,7 +62,14 @@ const IdeasBetaFeedbackModal = () => {
       >
         <div className="title">
           What do you think of{' '}
-          <atoms.Typography as="strong" style={{ color: '#ff7f0e' }} size="xl1" textWeight="bold">IdeaSpace Beta</atoms.Typography>
+          <atoms.Typography
+            as="strong"
+            style={{ color: '#ff7f0e' }}
+            size="xl1"
+            textWeight="bold"
+          >
+            IdeaSpace Beta
+          </atoms.Typography>
           ?
         </div>
         <small>Take a quick survey to help us improve</small>

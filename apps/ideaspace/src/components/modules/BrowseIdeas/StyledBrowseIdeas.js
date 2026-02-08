@@ -6,7 +6,7 @@ import {
 } from '@devlaunchers/components/src/components/molecules/DropdownMenu';
 
 export const PageWrapper = styled.section`
-  background-color: #ffffff;
+  background-color: #000000;
   padding: 0rem 4rem 3.5rem;
 
   @media (max-width: 1440px) {
@@ -37,6 +37,7 @@ export const IdeaCardWrapper = styled.div`
   column-gap: 2rem;
   row-gap: 2rem;
   margin: 1.5rem 0rem;
+  color: #ffffff;
 
   // Default screen: 4 cards per row
   & > div {
@@ -93,6 +94,5 @@ export const DropdownMenuRadioItemStyled = styled(DropdownMenuRadioItem)`
   ${radiusStyles['radius200']};
   &:hover {
     cursor: pointer;
-    box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
   }
 `;
