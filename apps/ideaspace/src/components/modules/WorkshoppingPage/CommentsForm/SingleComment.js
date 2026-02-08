@@ -106,11 +106,9 @@ function SingleCommentComponent(props) {
       setLiked(true);
     }
   }
-  const count = 2;
-
   return (
     <>
-      <div className="textContent">
+      <div className="textContent mb-12">
         <SingleComment style={{ marginBottom: '12px' }}>
           <UserImage
             alt="user_image"
@@ -150,7 +148,7 @@ function SingleCommentComponent(props) {
               <div source={props.children}>
                 <atoms.Typography
                   as="p"
-                  className="text-left mb-2 text-[var(--content-04, #DAD8D9)]"
+                  className="text-left text-[var(--content-04, #DAD8D9)]"
                 >
                   {props.children}
                 </atoms.Typography>
@@ -159,11 +157,6 @@ function SingleCommentComponent(props) {
           </div>
         </SingleComment>
       </div>
-      {/* <div>
-        {!props.isLast && (
-          <hr style={{ marginBottom: '20px', marginTop: '20px' }} />
-        )}
-      </div> */}
     </>
   );
 }

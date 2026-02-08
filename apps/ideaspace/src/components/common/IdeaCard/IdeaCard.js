@@ -105,15 +105,10 @@ function IdeaCard({ cards, cardType }) {
       <atoms.Box
         flexDirection="column"
         style={{
-          // border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           border:
             'var(--global-05-px-0031-rem, 0.5px) solid var(--base-03, #1C1C1C)',
-          // borderRadius: '1.25rem',
           borderRadius: 'var(--global-12-px-075-rem, 12px)',
           cursor: 'pointer',
-          // boxShadow: isHovered
-          //   ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
-          //   : 'none',
           backgroundColor: isHovered
             ? 'var(--surface-02, #141414)'
             : 'var(--surface-01, #000)',
@@ -123,9 +118,6 @@ function IdeaCard({ cards, cardType }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* <atoms.Box>
-        <IdeaCardTag status={tagContent} />
-      </atoms.Box> */}
         <div>
           {cards.ideaImage?.data?.attributes?.medium_url ? (
             <IdeaCardImg

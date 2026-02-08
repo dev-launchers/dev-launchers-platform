@@ -258,7 +258,6 @@ export const IdeaCard = ({
                     <EditComponent
                       open={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
-                      // initialIdea={fullIdea}
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
                       onEditError={handleEditError}
@@ -281,18 +280,7 @@ export const IdeaCard = ({
                         side="bottom"
                         align="end"
                         className="border-0 bg-transparent m-0 p-2"
-                        // className="rounded-md w-[224px] h-[60px] p-0"
                       >
-                        {/* <button
-                          color="error"
-                          className="flex flex-row gap-2 items-center justify-start h-full w-full pl-6"
-                          style={{
-                            color: 'var(--priority-content, #EBC4C4)',
-                            backgroundColor: 'var(--priority-surface, #1F0A0A)',
-                          }}
-                          onClick={() => setShouldShowDeleteDialog(true)}
-                        > */}
-                        {/* </button> */}
                         <atoms.Button
                           size="medium"
                           type="primary"

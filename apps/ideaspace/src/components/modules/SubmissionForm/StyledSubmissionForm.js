@@ -65,7 +65,6 @@ export const StyledTextArea = styled.textarea`
   margin: 0;
 
   &::placeholder {
-    // color: var(--static-content-text-grey-muted, #494949);
     color: var(--content-01, #676767);
     font-family: 'Nunito Sans';
     font-size: 16px;

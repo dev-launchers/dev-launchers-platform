@@ -242,7 +242,6 @@ const IdeaForm = ({
     <atoms.Box
       margin="0rem"
       style={{
-        // backgroundColor: 'rgba(244, 240, 249, 1)',
         backgroundColor: '#141414',
         padding: '20px 0',
       }}
@@ -733,47 +732,25 @@ const IdeaForm = ({
 
                 {!editMode && (
                   <atoms.Typography
-                    type="p"
-                    style={{ color: 'var(--content-04, #DAD8D9)' }}
+                    as="p"
+                    style={{
+                      color: 'var(--content-04, #DAD8D9)',
+                      marginBottom: '16px',
+                    }}
                   >
                     After submitting your idea, it will be posted in the
                     Workshopping area to begin collaboration with other Dev
                     Launchers.
                   </atoms.Typography>
                 )}
-
                 {!editMode && (
-                  <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
-                    <Checkbox
-                      name="termsAndConditions"
-                      required
-                      checked={isChecked}
-                      onCheckedChange={handleCheckboxChange}
-                    />
-
-                    <atoms.Typography
-                      type="p"
-                      style={{ color: 'var(--content-04, #DAD8D9)' }}
-                    >
-                      &nbsp;I have read and agree to the{' '}
-                      <Link href="/ideaspace/terms" passHref>
-                        <a
-                          style={{
-                            color: 'var(--priority-content, #A4ADD9)',
-                            textDecoration: 'underline',
-                          }}
-                          target="_blank"
-                        >
-                          Idea Submission Terms & Conditions
-                        </a>
-                      </Link>
-                      .<span style={{ color: 'red' }}>&nbsp;*</span>
-                    </atoms.Typography>
-                  </atoms.Box>
-                )}
-
-                {!editMode && (
-                  <atoms.Box style={{ fontSize: '1rem', alignItems: 'center' }}>
+                  <atoms.Box
+                    style={{
+                      fontSize: '1rem',
+                      alignItems: 'center',
+                      marginBottom: '16px',
+                    }}
+                  >
                     <Checkbox
                       name="termsAndConditions"
                       required
@@ -781,14 +758,17 @@ const IdeaForm = ({
                       onChange={handleCheckboxChange}
                     />
 
-                    <atoms.Typography type="p">
+                    <atoms.Typography
+                      as="p"
+                      style={{ color: 'var(--content-04, #DAD8D9)' }}
+                    >
                       &nbsp;I have read and agree to the{' '}
                       <Link href="/ideaspace/terms" passHref>
                         <atoms.Typography
                           as="a"
                           target="_blank"
                           style={{
-                            color: 'blue',
+                            color: 'var(--priority-content, #A4ADD9)',
                             textDecoration: 'underline',
                           }}
                         >

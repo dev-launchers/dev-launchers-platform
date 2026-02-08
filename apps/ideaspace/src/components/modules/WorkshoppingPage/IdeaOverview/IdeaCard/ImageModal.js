@@ -86,9 +86,6 @@ export const ImageModal = ({
                     alt="pexels logo"
                   />
                 </div>
-                {/* <DialogTitle className="text-md font-normal">
-                  Pexels
-                </DialogTitle> */}
               </div>
               <div className="flex items-center justify-end gap-2 w-full">
                 <Button
@@ -104,27 +101,6 @@ export const ImageModal = ({
                 >
                   Remove
                 </Button>
-                {/* <button
-                  className="p-2 rounded-lg flex justify-center items-center gap-2 text-lg"
-                  style={{
-                    border: isRemoveDisabled
-                      ? 'var(--priority-border-width, 1.5px) solid var(--priority-border, #C66)'
-                      : 'border: var(--border-width-none, 0) solid var(--priority-border, #C66)',
-                    background: isRemoveDisabled
-                      ? 'var(--surface-04, #292929)'
-                      : 'var(--priority-surface, #000)',
-                    color: 'var(--priority-content, #EBC4C4)',
-                    opacity: isRemoveDisabled
-                      ? 'var(--opacity, 0.4)'
-                      : 'var(--opacity, 1)',
-                  }}
-                  onClick={() => {
-                    handleRemoveImage();
-                  }}
-                >
-                  <Trash className="w-6 h-6" />
-                  Remove
-                </button> */}
               </div>
             </DialogHeader>
             <div className="relative flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">

@@ -108,17 +108,6 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
           background: 'var(--surface-04, #292929)',
         }}
       >
-        {/* <button
-          className="rounded-md px-[18px] py-3"
-          style={{
-            background: 'var(--priority-surface, #000)',
-            color: 'var(--priority-content, #DAD8D9)',
-          }}
-          onClick={handleClose}
-          disabled={isDeleting}
-        >
-          No, Keep It
-        </button> */}
         <atoms.Button
           type="secondary"
           size="small"
@@ -129,27 +118,11 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
         >
           No, Keep It
         </atoms.Button>
-        {/* <button
-          className="bg-[#882D2D] rounded-md px-[18px] py-3 flex items-center justify-center gap-2 text-center text-white"
-          disabled={isDeleting}
-          style={{
-            opacity: isDeleting ? 0.5 : 1,
-          }}
-          onClick={handleConfirm}
-        >
-          {isDeleting ? (
-            <Loader2 size={16} className="animate-spin" />
-          ) : (
-            <Trash size={16} />
-          )}{' '}
-          Yes, Delete
-        </button> */}
         <atoms.Button
           size="small"
           type="primary"
           mode="dark"
           color="error"
-          // onClick={() => setShouldShowDeleteDialog(true)}
           onClick={handleConfirm}
           disabled={isDeleting}
           style={{

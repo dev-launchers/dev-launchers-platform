@@ -66,12 +66,6 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
         justifyContent: 'center',
         alignItems: 'center',
         gap: 'var(--25, 10px)',
-
-        // color: disabled
-        //   ? 'var(--grayscale-400, #979797)'
-        //   : selected
-        //   ? 'var(--brand-alt-nebula-600, #69349D)'
-        //   : 'var(--grayscale-700, #303030)',
         textAlign: 'center',
 
         /* button */
@@ -102,8 +96,6 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
           : focused
           ? '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #000) inset, 0 0 0 var(--priority-ring-border-spread, 6px) var(--priority-ring-surface, #69349D) inset'
           : 'none',
-        // : '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #69349D) inset, 0 0 0 var(--priority-ring-border-spread, 6px) var(--priority-ring-surface, #3F1F5F) inset',
-
         pointerEvents: disabled ? 'none' : 'pointer',
       }}
     >

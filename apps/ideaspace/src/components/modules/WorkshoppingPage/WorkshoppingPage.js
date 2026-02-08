@@ -90,7 +90,7 @@ export default function WorkshoppingPage(props) {
           >
             <div className="flex gap-4 items-center">
               <div
-                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
+                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md text-white cursor-pointer"
                 onClick={() => router.push(returnBackUrl)}
               >
                 <ChevronLeft />

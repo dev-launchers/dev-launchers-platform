@@ -94,6 +94,5 @@ export const DropdownMenuRadioItemStyled = styled(DropdownMenuRadioItem)`
   ${radiusStyles['radius200']};
   &:hover {
     cursor: pointer;
-    // box-shadow: 1px 1px 4px ${({ theme }) => theme.colors.GREYSCALE_GREY};
   }
 `;

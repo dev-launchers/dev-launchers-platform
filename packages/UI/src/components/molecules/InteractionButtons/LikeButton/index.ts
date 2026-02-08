@@ -4,5 +4,4 @@ export interface LikeButtonProps {
   text: string;
   filled?: boolean;
   disabled?: boolean;
-  // count: number;
 }
