@@ -1,49 +1,57 @@
 import React, { useState } from 'react';
-import axios from "axios";
+import axios from 'axios';
 import theme from '@devlaunchers/components/styles/theme';
 import { atoms } from '@devlaunchers/components/src/components';
 
 const IdeaSettingsContent = ({
-    settingLabel,
-    settingText,
-    buttonText,
-    buttonFunction,
-    disabling,
-    buttonColor
+  settingLabel,
+  settingText,
+  buttonText,
+  buttonFunction,
+  disabling,
+  buttonColor,
 }) => {
-    let [over,setOver]=React.useState(false);
-    let [bColor,setBColor]=React.useState(buttonColor);
-    
-    React.useEffect(() => {
-        if (buttonColor != undefined){
-            if (over) {
-                setBColor(theme.colors.ERROR_700);
-            } else {
-                setBColor(buttonColor);
-            }
-        } 
-    }, [over]);
+  let [over, setOver] = React.useState(false);
+  let [bColor, setBColor] = React.useState(buttonColor);
 
-    return (
-        <atoms.Box justifyContent="space-between" alignItems="center">
-            <atoms.Box justifyContent="space-between" flexDirection="column" alignItems="flex-start">
-                <atoms.Typography as='pLarge' style={{fontWeight:"700"}} >
-                    {settingLabel}
-                </atoms.Typography>
-                <atoms.Typography as='p' textAlign='left'>
-                    {settingText}
-                </atoms.Typography>
-            </atoms.Box>
+  React.useEffect(() => {
+    if (buttonColor != undefined) {
+      if (over) {
+        setBColor(theme.colors.ERROR_700);
+      } else {
+        setBColor(buttonColor);
+      }
+    }
+  }, [over]);
 
-            <atoms.Button buttonSize='standard' buttonType="primary" 
-                disabled={disabling} style={{"backgroundColor":bColor}}
-                onClick={buttonFunction} onMouseOver={()=>setOver(true)} onMouseOut={()=>setOver(false)}
-            >
-                {buttonText}
-            </atoms.Button>
-        </atoms.Box>
+  return (
+    <atoms.Box justifyContent="space-between" alignItems="center">
+      <atoms.Box
+        justifyContent="space-between"
+        flexDirection="column"
+        alignItems="flex-start"
+      >
+        <atoms.Typography as="pLarge" style={{ fontWeight: '700' }}>
+          {settingLabel}
+        </atoms.Typography>
+        <atoms.Typography as="p" textAlign="left">
+          {settingText}
+        </atoms.Typography>
+      </atoms.Box>
 
-    );
+      <atoms.Button
+        buttonSize="standard"
+        buttonType="primary"
+        disabled={disabling}
+        style={{ backgroundColor: bColor }}
+        onClick={buttonFunction}
+        onMouseOver={() => setOver(true)}
+        onMouseOut={() => setOver(false)}
+      >
+        {buttonText}
+      </atoms.Button>
+    </atoms.Box>
+  );
 };
 
 export default IdeaSettingsContent;

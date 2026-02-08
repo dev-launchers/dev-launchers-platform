@@ -7,8 +7,8 @@ import {
   TypographyH,
   TypographyB,
 } from './StyledIdeaSpaceNavCard';
-import { atoms } from '@devlaunchers/components/src/components'
-import {color} from "@devlaunchers/components/src/styles/styles";
+import { atoms } from '@devlaunchers/components/src/components';
+import { color } from '@devlaunchers/components/src/styles/styles';
 
 const IdeaspaceNavCard = ({
   cardIcon,
@@ -43,7 +43,11 @@ const IdeaspaceNavCard = ({
         <div>
           <div className="2xl:h-[350px] xl:h-[294px] lg:h-[294px] md:h-[346px] sm:h-[342px] h-[326px]">
             <div className="mb-[18px] transition-colors duration-300">
-              <atoms.Typography as="span" textWeight="bold" style={{color: 'white'}}>
+              <atoms.Typography
+                as="span"
+                textWeight="bold"
+                style={{ color: 'white' }}
+              >
                 {cardIcon}
               </atoms.Typography>
             </div>
@@ -57,7 +61,7 @@ const IdeaspaceNavCard = ({
               textStyle="normal"
               textWeight="semibold"
               variant="secondary"
-              style={{ color: "white", marginBottom: "16px" }}
+              style={{ color: 'white', marginBottom: '16px' }}
             >
               {cardTitle}
             </atoms.Typography>
@@ -77,17 +81,11 @@ const IdeaspaceNavCard = ({
             </atoms.Typography>
           </div>
           <div className="flex flex-row gap-1">
-            <atoms.Typography
-              textWeight="bold"
-              style={{color: 'white'}}
-            >
+            <atoms.Typography textWeight="bold" style={{ color: 'white' }}>
               {cardCTA}
             </atoms.Typography>
 
-            <atoms.Typography
-              textWeight="bold"
-              style={{color: 'white'}}
-            >
+            <atoms.Typography textWeight="bold" style={{ color: 'white' }}>
               {cardIconCTA}
             </atoms.Typography>
           </div>

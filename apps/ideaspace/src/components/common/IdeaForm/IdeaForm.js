@@ -242,7 +242,7 @@ const IdeaForm = ({
     <atoms.Box
       margin="0rem"
       style={{
-        backgroundColor: 'rgba(244, 240, 249, 1)',
+        backgroundColor: '#141414',
         padding: '20px 0',
       }}
     >
@@ -361,274 +361,278 @@ const IdeaForm = ({
                       </ErrorText>
                     )}
                   </FieldWrapper>
+                </atoms.Box>
 
-                  {/* Description Field */}
-                  <FieldWrapper data-field="description">
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        Describe your idea:
-                        <RequiredAsterisk>*</RequiredAsterisk>
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.description && errors.description}
-                      isCompleted={isFieldCompleted(
-                        values.description,
-                        errors.description,
-                        'description'
-                      )}
-                      isFocused={focusedField === 'description'}
-                    >
-                      <StyledTextArea
-                        name="description"
-                        placeholder="Describe your idea, its target audience, and the impact it would have."
-                        value={values.description || ''}
-                        onChange={(e) =>
-                          setFieldValue(
-                            'description',
-                            e.target.value.slice(0, 1000)
-                          )
-                        }
-                        maxLength={1000}
-                        onFocus={() => setFocusedField('description')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'description',
+                {/* Description Field */}
+                <FieldWrapper data-field="description">
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      Describe your idea:
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.description && errors.description}
+                    isCompleted={isFieldCompleted(
                       values.description,
-                      touched.description,
                       errors.description,
-                      1000
+                      'description'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'description'}
+                  >
+                    <StyledTextArea
+                      name="description"
+                      placeholder="Describe your idea, its target audience, and the impact it would have."
+                      value={values.description || ''}
+                      onChange={(e) =>
+                        setFieldValue(
+                          'description',
+                          e.target.value.slice(0, 1000)
+                        )
+                      }
+                      maxLength={1000}
+                      onFocus={() => setFocusedField('description')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'description',
+                    values.description,
+                    touched.description,
+                    errors.description,
+                    1000
+                  )}
+                </FieldWrapper>
 
-                  {/* Experience Field */}
-                  <FieldWrapper data-field="experience">
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        Do you have any relevant experience that you'd like to
-                        utilize?
-                        <RequiredAsterisk>*</RequiredAsterisk>
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.experience && errors.experience}
-                      isCompleted={isFieldCompleted(
-                        values.experience,
-                        errors.experience,
-                        'experience'
-                      )}
-                      isFocused={focusedField === 'experience'}
-                    >
-                      <StyledTextArea
-                        name="experience"
-                        placeholder="If you have any relevant experience in development or design, please share here. It won't be shown publicly."
-                        value={values.experience || ''}
-                        onChange={(e) =>
-                          setFieldValue(
-                            'experience',
-                            e.target.value.slice(0, 1000)
-                          )
-                        }
-                        maxLength={1000}
-                        onFocus={() => setFocusedField('experience')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'experience',
+                {/* Experience Field */}
+                <FieldWrapper data-field="experience">
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      Do you have any relevant experience that you'd like to
+                      utilize?
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.experience && errors.experience}
+                    isCompleted={isFieldCompleted(
                       values.experience,
-                      touched.experience,
                       errors.experience,
-                      1000
+                      'experience'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'experience'}
+                  >
+                    <StyledTextArea
+                      name="experience"
+                      placeholder="If you have any relevant experience in development or design, please share here. It won't be shown publicly."
+                      value={values.experience || ''}
+                      onChange={(e) =>
+                        setFieldValue(
+                          'experience',
+                          e.target.value.slice(0, 1000)
+                        )
+                      }
+                      maxLength={1000}
+                      onFocus={() => setFocusedField('experience')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'experience',
+                    values.experience,
+                    touched.experience,
+                    errors.experience,
+                    1000
+                  )}
+                </FieldWrapper>
 
-                  {/* Target Audience Field */}
-                  <FieldWrapper data-field="targetAudience">
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        Describe your expected users:
-                        <RequiredAsterisk>*</RequiredAsterisk>
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.targetAudience && errors.targetAudience}
-                      isCompleted={isFieldCompleted(
-                        values.targetAudience,
-                        errors.targetAudience,
-                        'targetAudience'
-                      )}
-                      isFocused={focusedField === 'targetAudience'}
-                    >
-                      <StyledTextArea
-                        name="targetAudience"
-                        placeholder="Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc."
-                        value={values.targetAudience || ''}
-                        onChange={(e) => {
-                          const text = e.target.value.slice(0, 1000);
-                          setFieldValue('targetAudience', text);
-                        }}
-                        maxLength={1000}
-                        onFocus={() => setFocusedField('targetAudience')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'targetAudience',
+                {/* Target Audience Field */}
+                <FieldWrapper data-field="targetAudience">
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      Describe your expected users:
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.targetAudience && errors.targetAudience}
+                    isCompleted={isFieldCompleted(
                       values.targetAudience,
-                      touched.targetAudience,
                       errors.targetAudience,
-                      1000
+                      'targetAudience'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'targetAudience'}
+                  >
+                    <StyledTextArea
+                      name="targetAudience"
+                      placeholder="Describe your audience, including their demographic information, technology experience, why they would be interested in your idea, etc."
+                      value={values.targetAudience || ''}
+                      onChange={(e) => {
+                        const text = e.target.value.slice(0, 1000);
+                        setFieldValue('targetAudience', text);
+                      }}
+                      maxLength={1000}
+                      onFocus={() => setFocusedField('targetAudience')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'targetAudience',
+                    values.targetAudience,
+                    touched.targetAudience,
+                    errors.targetAudience,
+                    1000
+                  )}
+                </FieldWrapper>
 
-                  {/* Features Field - Required */}
-                  <FieldWrapper data-field="features">
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        What features would your product have?
-                        <RequiredAsterisk>*</RequiredAsterisk>
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.features && errors.features}
-                      isCompleted={isFieldCompleted(
-                        values.features,
-                        errors.features,
-                        'features'
-                      )}
-                      isFocused={focusedField === 'features'}
-                    >
-                      <StyledTextArea
-                        name="features"
-                        placeholder="A list of possible features your product could have"
-                        value={values.features || ''}
-                        onChange={(e) => {
-                          const text = e.target.value.slice(0, 1000);
-                          setFieldValue('features', text);
-                        }}
-                        maxLength={1000}
-                        onFocus={() => handleFocus('features')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'features',
+                {/* Features Field - Required */}
+                <FieldWrapper data-field="features">
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      What features would your product have?
+                      <RequiredAsterisk>*</RequiredAsterisk>
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.features && errors.features}
+                    isCompleted={isFieldCompleted(
                       values.features,
-                      touched.features,
                       errors.features,
-                      1000
+                      'features'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'features'}
+                  >
+                    <StyledTextArea
+                      name="features"
+                      placeholder="A list of possible features your product could have"
+                      value={values.features || ''}
+                      onChange={(e) => {
+                        const text = e.target.value.slice(0, 1000);
+                        setFieldValue('features', text);
+                      }}
+                      maxLength={1000}
+                      onFocus={() => handleFocus('features')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'features',
+                    values.features,
+                    touched.features,
+                    errors.features,
+                    1000
+                  )}
+                </FieldWrapper>
 
-                  {/* Extra Info Field - Optional */}
-                  <FieldWrapper>
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        Anything else you would like to share to support your
-                        idea?{' '}
-                      </atoms.Typography>
-                      <atoms.Typography
-                        as="span"
-                        style={{ color: '#666666', fontWeight: 300 }}
-                      >
-                        (Optional)
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.extraInfo && errors.extraInfo}
-                      isCompleted={isFieldCompleted(
-                        values.extraInfo,
-                        errors.extraInfo,
-                        'extraInfo'
-                      )}
-                      isFocused={focusedField === 'extraInfo'}
+                {/* Extra Info Field - Optional */}
+                <FieldWrapper>
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      Anything else you would like to share to support your
+                      idea?{' '}
+                    </atoms.Typography>
+                    <atoms.Typography
+                      as="span"
+                      style={{
+                        color: 'var(--content-04, #DAD8D9)',
+                        fontWeight: 300,
+                      }}
                     >
-                      <StyledTextArea
-                        name="extraInfo"
-                        placeholder="Want to share something else not listed above?"
-                        value={values.extraInfo || ''}
-                        onChange={(e) => {
-                          const text = e.target.value.slice(0, 1000);
-                          setFieldValue('extraInfo', text);
-                        }}
-                        maxLength={1000}
-                        onFocus={() => handleFocus('extraInfo')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'extraInfo',
+                      (Optional)
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.extraInfo && errors.extraInfo}
+                    isCompleted={isFieldCompleted(
                       values.extraInfo,
-                      touched.extraInfo,
                       errors.extraInfo,
-                      1000,
-                      false
+                      'extraInfo'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'extraInfo'}
+                  >
+                    <StyledTextArea
+                      name="extraInfo"
+                      placeholder="Want to share something else not listed above?"
+                      value={values.extraInfo || ''}
+                      onChange={(e) => {
+                        const text = e.target.value.slice(0, 1000);
+                        setFieldValue('extraInfo', text);
+                      }}
+                      maxLength={1000}
+                      onFocus={() => handleFocus('extraInfo')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'extraInfo',
+                    values.extraInfo,
+                    touched.extraInfo,
+                    errors.extraInfo,
+                    1000,
+                    false
+                  )}
+                </FieldWrapper>
 
-                  {/* Tagline Field - Optional */}
-                  <FieldWrapper>
-                    <FieldLabel>
-                      <atoms.Typography textWeight="normal">
-                        What's a catchy tagline for your idea that sums up your
-                        value and purpose? (Optional)
-                      </atoms.Typography>
-                    </FieldLabel>
-                    <TextAreaWrapper
-                      hasError={touched.tagline && errors.tagline}
-                      isCompleted={isFieldCompleted(
-                        values.tagline,
-                        errors.tagline,
-                        'tagline'
-                      )}
-                      isFocused={focusedField === 'tagline'}
-                    >
-                      <StyledInput
-                        name="tagline"
-                        placeholder="Your tagline"
-                        value={values.tagline || ''}
-                        onChange={(e) => {
-                          const text = e.target.value.slice(0, 80);
-                          setFieldValue('tagline', text);
-                        }}
-                        maxLength={80}
-                        onFocus={() => handleFocus('tagline')}
-                        onBlur={(e) => {
-                          handleBlur(e);
-                          setFocusedField(null);
-                        }}
-                      />
-                    </TextAreaWrapper>
-                    {renderFieldMessage(
-                      'tagline',
+                {/* Tagline Field - Optional */}
+                <FieldWrapper>
+                  <FieldLabel>
+                    <atoms.Typography textWeight="normal">
+                      What's a catchy tagline for your idea that sums up your
+                      value and purpose? (Optional)
+                    </atoms.Typography>
+                  </FieldLabel>
+                  <TextAreaWrapper
+                    hasError={touched.tagline && errors.tagline}
+                    isCompleted={isFieldCompleted(
                       values.tagline,
-                      touched.tagline,
                       errors.tagline,
-                      80,
-                      false
+                      'tagline'
                     )}
-                  </FieldWrapper>
+                    isFocused={focusedField === 'tagline'}
+                  >
+                    <StyledInput
+                      name="tagline"
+                      placeholder="Your tagline"
+                      value={values.tagline || ''}
+                      onChange={(e) => {
+                        const text = e.target.value.slice(0, 80);
+                        setFieldValue('tagline', text);
+                      }}
+                      maxLength={80}
+                      onFocus={() => handleFocus('tagline')}
+                      onBlur={(e) => {
+                        handleBlur(e);
+                        setFocusedField(null);
+                      }}
+                    />
+                  </TextAreaWrapper>
+                  {renderFieldMessage(
+                    'tagline',
+                    values.tagline,
+                    touched.tagline,
+                    errors.tagline,
+                    80,
+                    false
+                  )}
+                </FieldWrapper>
 
-                  {/* Involvement Level - Required */}
-                  {/* <GroupWrapper data-field="involveLevel">
+                {/* Involvement Level - Required */}
+                {/* <GroupWrapper data-field="involveLevel">
                   <GroupLabel>
                     What level of involvement would you like to have after this
                     submission?
@@ -726,158 +730,170 @@ const IdeaForm = ({
                   )}
                 </GroupWrapper> */}
 
-                  {!editMode && (
-                    <atoms.Typography as="p">
-                      After submitting your idea, it will be posted in the
-                      Workshopping area to begin collaboration with other Dev
-                      Launchers.
-                    </atoms.Typography>
-                  )}
+                {!editMode && (
+                  <atoms.Typography
+                    as="p"
+                    style={{
+                      color: 'var(--content-04, #DAD8D9)',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    After submitting your idea, it will be posted in the
+                    Workshopping area to begin collaboration with other Dev
+                    Launchers.
+                  </atoms.Typography>
+                )}
+                {!editMode && (
+                  <atoms.Box
+                    style={{
+                      fontSize: '1rem',
+                      alignItems: 'center',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <Checkbox
+                      name="termsAndConditions"
+                      required
+                      checked={isChecked}
+                      onChange={handleCheckboxChange}
+                    />
 
-                  {!editMode && (
-                    <atoms.Box
-                      style={{ fontSize: '1rem', alignItems: 'center' }}
+                    <atoms.Typography
+                      as="p"
+                      style={{ color: 'var(--content-04, #DAD8D9)' }}
                     >
-                      <Checkbox
-                        name="termsAndConditions"
-                        required
-                        checked={isChecked}
-                        onChange={handleCheckboxChange}
-                      />
-
-                      <atoms.Typography type="p">
-                        &nbsp;I have read and agree to the{' '}
-                        <Link href="/ideaspace/terms" passHref>
-                          <atoms.Typography
-                            as="a"
-                            target="_blank"
-                            style={{
-                              color: 'blue',
-                              textDecoration: 'underline',
-                            }}
-                          >
-                            Idea Submission Terms & Conditions
-                          </atoms.Typography>
-                        </Link>
-                        .
-                        <atoms.Typography as="span" style={{ color: 'red' }}>
-                          &nbsp;*
+                      &nbsp;I have read and agree to the{' '}
+                      <Link href="/ideaspace/terms" passHref>
+                        <atoms.Typography
+                          as="a"
+                          target="_blank"
+                          style={{
+                            color: 'var(--priority-content, #A4ADD9)',
+                            textDecoration: 'underline',
+                          }}
+                        >
+                          Idea Submission Terms & Conditions
                         </atoms.Typography>
+                      </Link>
+                      .
+                      <atoms.Typography as="span" style={{ color: 'red' }}>
+                        &nbsp;*
                       </atoms.Typography>
-                    </atoms.Box>
-                  )}
+                    </atoms.Typography>
+                  </atoms.Box>
+                )}
 
-                  {!hideFormButtons && (
-                    <atoms.Box justifyContent="flex-end" gap="1rem">
-                      {formButton == 'submit' ? (
-                        <SubmissionButton
-                          sending={sending}
-                          style={{
-                            opacity: canPostIdea ? 1 : 0.5,
-                            cursor: canPostIdea ? 'pointer' : 'not-allowed',
-                          }}
-                          onClick={async (e) => {
-                            e.preventDefault();
+                {!hideFormButtons && (
+                  <atoms.Box justifyContent="flex-end" gap="1rem">
+                    {formButton == 'submit' ? (
+                      <SubmissionButton
+                        sending={sending}
+                        style={{
+                          opacity: canPostIdea ? 1 : 0.5,
+                          cursor: canPostIdea ? 'pointer' : 'not-allowed',
+                        }}
+                        onClick={async (e) => {
+                          e.preventDefault();
 
-                            const fields = [
-                              'ideaName',
-                              'description',
-                              'experience',
-                              'targetAudience',
-                              'features',
-                            ];
-                            fields.forEach((field) =>
-                              setFieldTouched(field, true)
-                            );
+                          const fields = [
+                            'ideaName',
+                            'description',
+                            'experience',
+                            'targetAudience',
+                            'features',
+                          ];
+                          fields.forEach((field) =>
+                            setFieldTouched(field, true)
+                          );
 
-                            const validationErrors = await validateForm();
+                          const validationErrors = await validateForm();
 
-                            if (nameTaken) {
-                              validationErrors.ideaName =
-                                'This idea name is already in use. Please try something else.';
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
+
+                          // Block submit but still scroll
+                          if (Object.keys(validationErrors).length > 0) {
+                            scrollToError(validationErrors);
+                            return;
+                          }
+
+                          // Block if can't post idea (T&C or otherwise)
+                          if (!canPostIdea) {
+                            if (!isChecked) {
+                              alert(
+                                'You must accept the Terms & Conditions to submit the form.'
+                              );
                             }
+                            return;
+                          }
 
-                            // Block submit but still scroll
-                            if (Object.keys(validationErrors).length > 0) {
-                              scrollToError(validationErrors);
-                              return;
-                            }
+                          try {
+                            await submitForm();
+                          } catch (error) {
+                            console.error('Submission failed:', error);
+                          }
+                        }}
+                      />
+                    ) : (
+                      <EditionButton
+                        clickHandlerButton={clickHandler}
+                        sending={sending}
+                        disabling={disabling}
+                        style={{
+                          opacity: canSave ? 1 : 0.5,
+                          cursor: canSave ? 'pointer' : 'not-allowed',
+                        }}
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          const fields = [
+                            'ideaName',
+                            'description',
+                            'experience',
+                            'targetAudience',
+                            'features',
+                          ];
 
-                            // Block if can't post idea (T&C or otherwise)
-                            if (!canPostIdea) {
-                              if (!isChecked) {
-                                alert(
-                                  'You must accept the Terms & Conditions to submit the form.'
-                                );
-                              }
-                              return;
-                            }
+                          // Mark required fields as touched
+                          fields.forEach((field) =>
+                            setFieldTouched(field, true)
+                          );
 
-                            try {
-                              await submitForm();
-                            } catch (error) {
-                              console.error('Submission failed:', error);
-                            }
-                          }}
-                        />
-                      ) : (
-                        <EditionButton
-                          clickHandlerButton={clickHandler}
-                          sending={sending}
-                          disabling={disabling}
-                          style={{
-                            opacity: canSave ? 1 : 0.5,
-                            cursor: canSave ? 'pointer' : 'not-allowed',
-                          }}
-                          onClick={async (e) => {
-                            e.preventDefault();
-                            const fields = [
-                              'ideaName',
-                              'description',
-                              'experience',
-                              'targetAudience',
-                              'features',
-                            ];
+                          const validationErrors = await validateForm();
 
-                            // Mark required fields as touched
-                            fields.forEach((field) =>
-                              setFieldTouched(field, true)
-                            );
+                          if (nameTaken) {
+                            validationErrors.ideaName =
+                              'This idea name is already in use. Please try something else.';
+                          }
 
-                            const validationErrors = await validateForm();
+                          if (Object.keys(validationErrors).length > 0) {
+                            scrollToError(validationErrors);
+                            return;
+                          }
 
-                            if (nameTaken) {
-                              validationErrors.ideaName =
-                                'This idea name is already in use. Please try something else.';
-                            }
+                          if (!canSave) {
+                            return;
+                          }
 
-                            if (Object.keys(validationErrors).length > 0) {
-                              scrollToError(validationErrors);
-                              return;
-                            }
+                          try {
+                            await submitForm();
+                          } catch (error) {
+                            console.error('Form submission error:', error);
+                          }
+                        }}
+                      />
+                    )}
+                  </atoms.Box>
+                )}
 
-                            if (!canSave) {
-                              return;
-                            }
+                <AutoSubmitToken
+                  setDisabling={setDisabling}
+                  unsavedHandler={unsavedHandler}
+                  initialValues={initialValues}
+                  editMode={editMode}
+                />
 
-                            try {
-                              await submitForm();
-                            } catch (error) {
-                              console.error('Form submission error:', error);
-                            }
-                          }}
-                        />
-                      )}
-                    </atoms.Box>
-                  )}
-
-                  <AutoSubmitToken
-                    setDisabling={setDisabling}
-                    unsavedHandler={unsavedHandler}
-                    initialValues={initialValues}
-                    editMode={editMode}
-                  />
-                </atoms.Box>
                 {successMessageVisible && (
                   <Alert
                     type="success"

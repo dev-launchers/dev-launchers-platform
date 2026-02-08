@@ -39,7 +39,9 @@ function DisplayComments(props) {
       {props.comments.length ? (
         commentNodes
       ) : (
-        <div style={{ padding: '2rem' }}>No comments yet!</div>
+        <div style={{ padding: '2rem', color: '#DAD8D9' }}>
+          No comments yet!
+        </div>
       )}
     </div>
   );

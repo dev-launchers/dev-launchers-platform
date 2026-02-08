@@ -215,7 +215,7 @@ function BrowseIdeas() {
 
       <PageWrapper>
         {loading === true ? (
-          <CircularIndeterminateLoader text="Loading..." color="black"/>
+          <CircularIndeterminateLoader text="Loading..." color="black" />
         ) : (
           <div>
             <FilterDiv>

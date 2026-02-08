@@ -76,7 +76,7 @@ function CommentForm(props) {
             >
               <textarea
                 placeholder="What are your thoughts?"
-                className="flex-grow mr-3 resize-none overflow-hidden focus:outline-none w-full max-w-[500px] min-w-[100px]"
+                className="flex-grow mr-3 resize-none overflow-hidden bg-black text-white focus:outline-none w-full max-w-[500px] min-w-[100px]"
                 rows="1"
                 value={textChange}
                 onFocus={() => setIsFocused(true)}
@@ -86,19 +86,26 @@ function CommentForm(props) {
               />
               {textChange.trim().length > 0 && (
                 <button
+                  onFocus={(e) => {
+                    e.currentTarget.style.border =
+                      'var(--btn-ring-space-p-y, 4px) solid var(--btn-border-brand-primary, #301848)';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.border = 'none';
+                  }}
                   type="submit"
-                  className="  rounded-full text-white"
+                  className="rounded-full text-white"
                   style={{
                     position: 'absolute',
                     right: '10px',
                     bottom: '8px',
-                    backgroundColor: '#52287A',
+                    backgroundColor:
+                      'var(--btn-surface-brand-primary, #52287A)',
                     height: '36px',
                     width: '36px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    border: '2px solid #3f1f5f',
                   }}
                 >
                   <i className="fas fa-arrow-up"></i>
