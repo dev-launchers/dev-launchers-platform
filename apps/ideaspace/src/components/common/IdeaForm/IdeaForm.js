@@ -350,15 +350,19 @@ const IdeaForm = ({
                         }}
                       />
                     </TextAreaWrapper>
-                    {!nameTaken &&
-                      values.ideaName.trim().length > 0 &&
-                      !errors.ideaName && <SuccessText>Completed!</SuccessText>}
 
                     {nameTaken && (
                       <ErrorText>
                         This idea name is already in use. Please try something
                         else.
                       </ErrorText>
+                    )}
+                    {!nameTaken && renderFieldMessage(
+                      'ideaName',
+                      values.ideaName,
+                      touched.ideaName,
+                      errors.ideaName,
+                      80
                     )}
                   </FieldWrapper>
                 </atoms.Box>
