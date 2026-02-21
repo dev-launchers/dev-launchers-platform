@@ -31,6 +31,26 @@ export const UseOnboardingData = ({ children }) => {
       .catch(() => {
         // TODO handle errors
       });
+
+    // get all skills categories
+    axios(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/interests?filters[category][$eq]=Skill&populate=*`,
+      {
+        withCredentials: true,
+      }
+    )
+      .then(({ data: response }) => {
+        const skillList = response?.data?.map((skill) => ({
+          id: skill.id,
+          name: skill?.attributes?.interest,
+          selected: false,
+        }));
+        dispatch({
+          type: onboardingActions.SET_USERS_SKIll,
+          data: skillList,
+        });
+      })
+      .catch(() => {});
   }, []);
 
   return { onboardingData, dispatch };
