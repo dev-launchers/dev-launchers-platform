@@ -111,8 +111,8 @@ const teamMembers = {
     focusAreas:
       'Backend architecture & API design • CI/CD pipelines & deployment automation • Infrastructure reliability & monitoring • Troubleshooting & debugging • Cloud infrastructure & environment management',
     degrees: [
-      'M.Sc, Computer Science — University of Bedfordshire',
-      'B.Sc, Computer Engineering — University of Lagos',
+      'M.Sc., Computer Science — University of Bedfordshire',
+      'B.Sc., Computer Engineering — University of Lagos',
     ],
     links: {
       linkedin: 'oriyomibadmus',
