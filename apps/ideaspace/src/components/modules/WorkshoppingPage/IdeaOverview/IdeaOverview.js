@@ -37,9 +37,9 @@ export const IdeaOverview = ({ selectedCard }) => {
         if (!ideaOwnerId) return;
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${ideaOwnerId}?` +
-            new URLSearchParams({
-              'populate[profile]': 'profilePictureUrl',
-            }).toString(),
+          new URLSearchParams({
+            'populate[profile]': 'profilePictureUrl',
+          }).toString(),
           { withCredentials: true }
         );
         setProfilePictureUrl(data.profile?.profilePictureUrl);
@@ -69,7 +69,7 @@ export const IdeaOverview = ({ selectedCard }) => {
 
   return (
     <div className="flex flex-col gap-6 w-full mb-10">
-      <div className=" flex flex-col gap-7 sm:gap-11">
+      <div className="flex flex-col gap-7 sm:gap-11">
         <IdeaOwnerCard
           IdeaOwnerName={ownerDisplayName}
           IdeaOwnerEmail={ownerUserName}
@@ -88,7 +88,7 @@ export const IdeaOverview = ({ selectedCard }) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <div
-            className=" sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             Idea Description

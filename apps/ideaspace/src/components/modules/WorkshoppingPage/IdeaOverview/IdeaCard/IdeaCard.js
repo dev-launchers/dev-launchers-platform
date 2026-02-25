@@ -222,7 +222,7 @@ export const IdeaCard = ({
     <>
       <div>
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <atoms.Typography
                 as="h1"
