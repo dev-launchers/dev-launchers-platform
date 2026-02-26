@@ -16,7 +16,7 @@
     "constate": "^3.3.2",
     "framer-motion": "6.2.4",
     "luxon": "^3.0.1",
-    "next": "^12.2.3",
+    "next": "^16.1.5",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
     "next-transpile-modules": "^9.0.0",
