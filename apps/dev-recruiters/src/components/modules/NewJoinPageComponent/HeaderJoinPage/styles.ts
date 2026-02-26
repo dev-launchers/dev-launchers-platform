@@ -65,7 +65,7 @@ export const HeaderText = styled(BaseText)`
 
 export const SubHeaderText = styled(BaseText)`
   margin-bottom: 4px;
-  color: var(--content-alert-info, #73cec5);
+  color: rgb(240, 237, 238);
   font-family: var(--text-family-secondary, 'Nunito Sans');
   font-size: var(--text-size-xl, 20px);
   font-style: normal;
