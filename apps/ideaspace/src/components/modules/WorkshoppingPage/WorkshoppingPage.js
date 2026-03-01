@@ -26,12 +26,24 @@ import { useFetchIdea } from './useFetchIdea';
 
 export default function WorkshoppingPage(props) {
   const router = useRouter();
+  const [referrer, setReferrer] = React.useState(null);
+  const returnBackUrl =
+    referrer === 'user-profile' ? '/users/me' : '/ideaspace/browse';
 
+  // Capture ref once, then strip it from the URL to keep things clean.
   React.useEffect(() => {
-    if (!router.isReady) {
-      return;
+    if (!router.isReady) return;
+
+    if (router.query.ref && !referrer) {
+      setReferrer(router.query.ref);
     }
-  }, [router.isReady]);
+
+    if (router.query.ref) {
+      router.replace(`/ideaspace/workshop/${router.query.ideaId}`, undefined, {
+        shallow: true,
+      });
+    }
+  }, [router.isReady, router.query.ref, router.query.ideaId, referrer, router]);
 
   const [comments, setComments] = useState([]);
 
@@ -51,7 +63,7 @@ export default function WorkshoppingPage(props) {
   // if the idea is deleted, redirect to dashboard
   React.useEffect(async () => {
     if (data?.status === 'deleted') {
-      window.location.href = '/ideaspace/dashboard';
+      window.location.href = '/users/me';
     }
   }, [data]);
 
@@ -78,12 +90,15 @@ export default function WorkshoppingPage(props) {
           >
             <div className="flex gap-4 items-center">
               <div
-                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md border-[2px] border-[#FFFFFF00] bg-[#4949490D] cursor-pointer"
-                onClick={() => router.push('/ideaspace/browse')}
+                className="px-[18px] py-[12px] flex items-center justify-center gap-1 rounded-md text-white cursor-pointer"
+                onClick={() => router.push(returnBackUrl)}
               >
                 <ChevronLeft />
               </div>
-              <div className=" text-left text-[#494949] text-base font-normal font-['Nunito Sans'] leading-relaxed">
+              <div
+                style={{ color: 'var(--content-04, #DAD8D9)' }}
+                className="text-left  text-base font-normal font-['Nunito Sans'] leading-relaxed"
+              >
                 Idea Workshopping
               </div>
             </div>
@@ -98,7 +113,7 @@ export default function WorkshoppingPage(props) {
               <IdeaOverview selectedCard={data} />
               <div className="h-[0px] border border-[#dad8d9] mb-10"></div>
               <Comments>
-                <div className="text-black text-lg font-bold font-['Nunito Sans'] leading-tight">
+                <div className="text-white text-lg font-bold font-['Nunito Sans'] leading-tight">
                   Comment Feed: {comments.length}
                 </div>
                 <Form>

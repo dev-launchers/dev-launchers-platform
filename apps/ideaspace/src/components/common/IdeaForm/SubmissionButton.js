@@ -1,18 +1,19 @@
 import React from 'react';
 import { atoms } from '@devlaunchers/components/src/components';
 
-const SubmissionButton = ({ sending, onClick }) => {
+const SubmissionButton = ({ sending, onClick, style, className }) => {
   return (
-    <atoms.Button
-      color="nebula"
-      size="standard"
-      type="primary"
-      mode="light"
-      onClick={onClick}
-    >
-      {' '}
-      {sending === true ? 'Wait' : 'Post Idea'}{' '}
-    </atoms.Button>
+    <div style={style} className={className}>
+      <atoms.Button
+        color="nebula"
+        size="standard"
+        type="primary"
+        mode="light"
+        onClick={onClick}
+      >
+        {sending === true ? 'Wait' : 'Post Idea'}
+      </atoms.Button>
+    </div>
   );
 };
 

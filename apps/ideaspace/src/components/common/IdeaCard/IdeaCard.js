@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import IdeaCardImg from './IdeaCardImg';
-import IdeaCardTag from './IdeaCardTag';
-import IdeaCardComment from './IdeaCardComment';
-import IdeaCardUpdated from './IdeaCardUpdated';
 import useConfirm from '../DialogBox/DialogBox';
-import { LikeButton } from '@devlaunchers/components/src/components/molecules';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../utils/StrapiHelper';
@@ -66,7 +62,6 @@ function IdeaCard({ cards, cardType }) {
   };
 
   const loadDataOnlyOnce = async () => {
-    // use get likes from agent
     const params =
       '?populate=deep&filters[objectId][$eq]=' + cards.id.toString();
     const data = cleanDataList(
@@ -105,127 +100,154 @@ function IdeaCard({ cards, cardType }) {
       <atoms.Box
         flexDirection="column"
         style={{
-          border: '0.125rem solid rgba(71, 71, 71, 0.10)',
-          borderRadius: '1.25rem',
+          border:
+            'var(--global-05-px-0031-rem, 0.5px) solid var(--base-03, #1C1C1C)',
+          borderRadius: 'var(--global-12-px-075-rem, 12px)',
           cursor: 'pointer',
-          boxShadow: isHovered
-            ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
-            : 'none',
+          backgroundColor: isHovered
+            ? 'var(--surface-02, #141414)'
+            : 'var(--surface-01, #000)',
           height: '440px',
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* <atoms.Box>
-        <IdeaCardTag status={tagContent} />
-      </atoms.Box> */}
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           {cards.ideaImage?.data?.attributes?.medium_url ? (
             <IdeaCardImg
               key={cards.id}
-              cardId={cards.id}
               ideaImage={cards.ideaImage?.data?.attributes?.medium_url}
             />
           ) : (
             <div
-              key={cards.id}
-              className="w-full h-[228px] bg-[#F6F6F6] rounded-t-2xl flex items-center justify-center mb-4"
+              className="w-full h-[228px] rounded-t-2xl flex items-center justify-center"
+              style={{
+                backgroundColor: 'var(--base-03, #292929)',
+                flexShrink: 0,
+                marginBottom: '1.12rem'
+              }}
             >
               <ImagePreviewSVG />
             </div>
           )}
 
-          <atoms.Box
-            flexDirection="row"
-            alignItems="flex-start"
-            padding="0rem 0.75rem"
-            margin="1rem 0 0.875rem 0"
+          {/* NEW WRAPPER — everything below image */}
+          <div
+            style={{
+              padding: '0 1.25rem 1.25rem 1.25rem',
+              display: 'flex',
+              flexDirection: 'column',
+              flex: 1,
+            }}
           >
-            <AuthorProfilePicture
-              alt={`image of author ${cards.author?.data?.attributes.username}`}
-              src={
-                cards.author?.data?.attributes.profile?.data?.attributes
-                  .profilePictureUrl
-              }
-            />
-            <atoms.Typography
-              type="p"
-              style={{
-                fontSize: '0.75rem',
-                color: '#494949',
-                weight: '400',
-                padding: '0rem 0.375rem',
-              }}
+            {/* AUTHOR ROW */}
+            <atoms.Box
+              flexDirection="row"
+              display="flex"
+              alignItems="center"
+              padding="1rem 0 0.875rem 0"
+              gap="6px"
             >
-              {cards.author?.data?.attributes?.profile?.data?.attributes
-                .displayName ?? cards.author?.data?.attributes?.username}
-            </atoms.Typography>
-          </atoms.Box>
-
-          <atoms.Box
-            flexDirection="column"
-            alignItems="flex-start"
-            padding="0rem 0.75rem"
-          >
-            <atoms.Typography
-              type="h4"
-              style={{
-                fontSize: '18px',
-                lineHeight: '1.5rem',
-                fontFamily: 'Helvetica',
-                fontWeight: '700',
-                margin: '0rem 0rem 0.875rem',
-                display: '-webkit-box',
-                WebkitLineClamp: 1,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-all',
-              }}
-            >
-              {cards.ideaName}
-            </atoms.Typography>
-
-            {/* <atoms.Box alignItems="center">
-              <atoms.Typography
-                type="p"
-                style={{ fontSize: '1rem', textAlign: 'left' }}
+              <AuthorProfilePicture
+                alt={`image of author ${cards.author?.data?.attributes.username}`}
+                src={
+                  cards.author?.data?.attributes.profile?.data?.attributes
+                    .profilePictureUrl
+                }
               />
-              <IdeaCardComment commentLength={cards.comments?.length} />
+              <atoms.Typography
+                type="p"
+                style={{
+                  fontSize: 'var(--text-size-sm, 14px)',
+                  color: 'var(--content-02, #979797)',
+                  weight: '400',
+                }}
+              >
+                {cards.author?.data?.attributes?.profile?.data?.attributes
+                  .displayName ?? cards.author?.data?.attributes?.username}
+              </atoms.Typography>
             </atoms.Box>
-            {votes}
-            <IdeaCardUpdated updatedAt={cards.mostRecentCommentTime} /> */}
 
-            <atoms.Typography
-              type="p"
-              style={{
-                fontSize: '0.875rem',
-                height: '43px',
-                display: '-webkit-box',
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: 'vertical',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                wordBreak: 'break-word',
-              }}
+            {/* TITLE + DESCRIPTION */}
+            <atoms.Box
+              flexDirection="column"
+              alignItems="flex-start"
+              style={{ flex: 1, display: 'flex' }}
             >
-              {cards.description}
-            </atoms.Typography>
-            <div className="flex flex-row  justify-between w-full mt-9">
               <atoms.Typography
-                type="p"
-                style={{ fontSize: '0.75rem', color: '#494949', weight: '300' }}
+                as="h6"
+                leading="normal"
+                size="body_xl"
+                textAlign="left"
+                textCase="normal"
+                textDecoration="noUnderline"
+                textStyle="normal"
+                textWeight="semibold"
+                variant="secondary"
+                style={{
+                  color: 'var(--content-00, #FFF)',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  wordBreak: 'break-word',
+                }}
               >
-                {daysAgo()} ago
+                {cards.ideaName}
               </atoms.Typography>
+
               <atoms.Typography
-                type="p"
-                style={{ fontSize: '0.75rem', color: '#7339AC', weight: '300' }}
+                as="p"
+                leading="normal"
+                size="micro_xs"
+                textAlign="left"
+                textCase="normal"
+                textDecoration="noUnderline"
+                textStyle="normal"
+                textWeight="light"
+                variant="secondary"
+                style={{
+                  color: 'var(--content-04, #DAD8D9)',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
               >
-                {cards.comments?.length} comments ∙ {votes} upvotes
+                {cards.description}
               </atoms.Typography>
-            </div>
-          </atoms.Box>
+
+              {/* FOOTER */}
+              <div
+                className="flex flex-row justify-between w-full"
+                style={{ marginTop: 'auto', paddingTop: '1rem' }}
+              >
+                <atoms.Typography
+                  type="p"
+                  style={{
+                    fontSize: '0.75rem',
+                    color: 'var(--content-04, #DAD8D9)',
+                    weight: '300',
+                  }}
+                >
+                  {daysAgo()} ago
+                </atoms.Typography>
+
+                <atoms.Typography
+                  type="p"
+                  style={{
+                    fontSize: '0.75rem',
+                    color: 'var(--content-04, #DAD8D9)',
+                    weight: '300',
+                  }}
+                >
+                  {cards.comments?.length} comments ∙ {votes} upvotes
+                </atoms.Typography>
+              </div>
+            </atoms.Box>
+          </div>
         </div>
 
         {/* {tagContent == 'archived' ? (

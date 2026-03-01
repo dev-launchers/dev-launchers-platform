@@ -34,21 +34,32 @@ function WelcomePage() {
 
           <HeadWapper>
             <atoms.Typography
+              as="h1"
               variant="primary"
+              leading="tight"
+              textCase="capitalize"
               textAlign="center"
-              className="main-title"
+              textWeight="bold"
+              textStyle="normal"
+              size="xl6"
+              style={{ color: 'white', marginBottom: '16px' }}
             >
-              <b>
-                {' '}
-                Explore & Share <br />
-                Your Ideas with the Community
-              </b>
+              {' '}
+              Explore & Share <br />
+              Your Ideas with the Community
             </atoms.Typography>
 
             <atoms.Typography
-              variant="primary"
+              variant="secondary"
+              as="p"
+              leading="normal"
+              size="body_xl"
               textAlign="center"
-              className="main-subtitle"
+              textCase="normal"
+              textDecoration="noUnderline"
+              textStyle="normal"
+              textWeight="light"
+              style={{ color: 'white' }}
             >
               Transform your ideas into open-source products with the community.
               Share your vision and collaborate with others to bring it to life.

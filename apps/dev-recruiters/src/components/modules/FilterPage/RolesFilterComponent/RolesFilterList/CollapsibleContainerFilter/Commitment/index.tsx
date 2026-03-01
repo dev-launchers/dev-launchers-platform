@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox';
+import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 import {
   CommitmentMain,
   CommitmentText,
@@ -6,14 +8,11 @@ import {
   CommitmentTitle,
   TimeCommitment,
 } from './styles';
-import Checkbox from '@devlaunchers/components/src/components/atoms/Checkbox';
-import { useOpportunitiesContext } from '../../../../../../../contexts/SelectRoleContext';
 
 function Commitment() {
   const [checkBoxLow, setCheckBoxLow] = useState(null);
   const [checkBoxMed, setCheckBoxMed] = useState(null);
   const [checkBoxHigh, setCheckBoxHigh] = useState(null);
-
   const { setCommitmentRange } = useOpportunitiesContext();
 
   const handleCheckboxChange = (min, max) => {
@@ -29,36 +28,32 @@ function Commitment() {
   };
 
   return (
-    <>
-      <CommitmentMain>
-        <CommitmentTitle>TIME COMMITMENT:</CommitmentTitle>
-        <CommitmentTimeContainer>
-          <TimeCommitment>
-            <Checkbox
-              checked={checkBoxLow === 0}
-              onChange={() => handleCheckboxChange(0, 4)}
-            />
-            <CommitmentText>Low (0-4 hrs/wk)</CommitmentText>
-          </TimeCommitment>
-
-          <TimeCommitment>
-            <Checkbox
-              checked={checkBoxLow === 5}
-              onChange={() => handleCheckboxChange(5, 9)}
-            />
-            <CommitmentText>Med (5-9 hrs/wk)</CommitmentText>
-          </TimeCommitment>
-
-          <TimeCommitment>
-            <Checkbox
-              checked={checkBoxLow === 10}
-              onChange={() => handleCheckboxChange(10, 20)}
-            />
-            <CommitmentText>High (10-20 hrs/wk)</CommitmentText>
-          </TimeCommitment>
-        </CommitmentTimeContainer>
-      </CommitmentMain>
-    </>
+    <CommitmentMain>
+      <CommitmentTitle>TIME COMMITMENT:</CommitmentTitle>
+      <CommitmentTimeContainer>
+        <TimeCommitment>
+          <Checkbox
+            checked={checkBoxLow === 0}
+            onChange={() => handleCheckboxChange(0, 4)}
+          />
+          <CommitmentText>Low (0-4 hrs/wk)</CommitmentText>
+        </TimeCommitment>
+        <TimeCommitment>
+          <Checkbox
+            checked={checkBoxLow === 5}
+            onChange={() => handleCheckboxChange(5, 9)}
+          />
+          <CommitmentText>Med (5-9 hrs/wk)</CommitmentText>
+        </TimeCommitment>
+        <TimeCommitment>
+          <Checkbox
+            checked={checkBoxLow === 10}
+            onChange={() => handleCheckboxChange(10, 20)}
+          />
+          <CommitmentText>High (10-20 hrs/wk)</CommitmentText>
+        </TimeCommitment>
+      </CommitmentTimeContainer>
+    </CommitmentMain>
   );
 }
 

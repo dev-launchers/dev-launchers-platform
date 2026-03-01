@@ -51,19 +51,11 @@ export const CommitmentText = styled.div`
   margin-bottom: 10px;
 `;
 
-// export const RoleContainerBody = styled.div`
-//   width: 100%;
-//   display: flex;
-//   gap: 32px;
-//   justify-content: flex-start;
-//   flex-wrap: wrap;
-//   padding: 36px;
-//   margin-bottom: 50px;
-// `;
-
-// export const RoleContainer = styled.div`
-//   width: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   gap: 10px;
-// `;
+export const SectionHeading = styled.h2`
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+  margin-bottom: 1.5rem;
+  font-family: 'Abel', sans-serif;
+`;

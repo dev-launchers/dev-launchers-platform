@@ -10,6 +10,8 @@ import {
   DlTalCommUser,
   TalCommUser,
   Image,
+  Interest,
+  Skill,
 } from '@devlaunchers/models';
 import { Comment } from '@devlaunchers/models/comment';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -137,7 +139,7 @@ const Opportunities = {
     requests.get(
       `opportunities/${slug}`,
       new URLSearchParams(
-        '_publicationState=live&populate=projects&populate=interests'
+        '_publicationState=live&populate[projects]=*&populate[interests]=*&populate[expectations]=*'
       )
     ),
   getById: (
@@ -159,12 +161,16 @@ const Ideas = {
   post: (body: {}) => requests.post<Idea>('/idea-cards/', body),
   put: (id: string, body: {}) => requests.put<Idea>(`/idea-cards/${id}`, body),
   findByName: (name: string) => {
-    return requests.get('idea-cards?filters[ideaName][$eqi]='+name);
+    return requests.get('idea-cards?filters[ideaName][$eqi]=' + name);
   },
 };
 
 const User = {
   get: () => requests.get<UserType>('users'),
+  put: (userId: string | number, body: Partial<UserType> | any) =>
+    requests.put(`/users/${userId}`, body),
+  patch: (userId: string | number, body: Partial<UserType> | any) =>
+    requests.patch(`/users/${userId}`, body),
 };
 
 const Comments = {
@@ -226,6 +232,18 @@ const Images = {
     ),
 };
 
+const Interests = {
+  get: () =>
+    requests.get<Interest[]>(
+      '/interests?filters[category][$eq]=Interest&populate=*'
+    ),
+};
+
+const Skills = {
+  get: () =>
+    requests.get<Skill[]>('/interests?filters[category][$eq]=Skill&populate=*'),
+};
+
 const agent = {
   Opportunities,
   Projects,
@@ -242,6 +260,8 @@ const agent = {
   GoogledriveFile,
   DlTalcommuser,
   Images,
+  Interests,
+  Skills,
 };
 
 export default agent;

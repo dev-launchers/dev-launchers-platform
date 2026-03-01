@@ -16,6 +16,25 @@ function SubmissionForm() {
   let { userData, isAuthenticated } = useUserDataContext();
 
   const router = useRouter();
+  const [referrer, setReferrer] = useState(null);
+  const returnBackUrl =
+    referrer === 'user-profile' ? '/users/me' : '/ideaspace';
+
+  // Capture ref once, then strip it from the URL to keep things clean.
+  useEffect(() => {
+    if (!router.isReady) return;
+
+    if (router.query.ref && !referrer) {
+      setReferrer(router.query.ref);
+    }
+
+    if (router.query.ref) {
+      router.replace(`/ideaspace/submit`, undefined, {
+        shallow: true,
+      });
+    }
+  }, [router.isReady, router.query.ref, referrer, router]);
+
   const [sending, setSending] = useState(false);
   const [unsavedChanges, setunsavedChanges] = useState(false);
   const [urrl, setUrrl] = useState('');
@@ -176,18 +195,33 @@ function SubmissionForm() {
   return (
     <>
       <HeadWapper>
-        <atoms.Typography textAlign="center" variant="primary" size="xl6">
+        <atoms.Typography
+          as="h4"
+          leading="tight"
+          size="xl4"
+          textAlign="center"
+          textCase="capitalize"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="normal"
+          variant="primary"
+        >
           Submit an idea
         </atoms.Typography>
         <StyledRanbow>
           <atoms.Layer hasRainbowBottom />
         </StyledRanbow>
-        <BackButton buttonType="confirm" backRoute={'/ideaspace'} />
+        <BackButton buttonType="confirm" backRoute={returnBackUrl} />
         <atoms.Typography
-          variant="primary"
-          size="xl3"
+          variant="secondary"
+          as="p"
+          leading="normal"
+          size="body_xl"
           textAlign="center"
-          as="h4"
+          textCase="normal"
+          textDecoration="noUnderline"
+          textStyle="normal"
+          textWeight="light"
         >
           Have an idea for a software project but need developers to build it?
           <br />

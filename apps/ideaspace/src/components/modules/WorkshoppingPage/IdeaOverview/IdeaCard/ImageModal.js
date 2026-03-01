@@ -4,13 +4,14 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@devlaunchers/components/src/components/Dialog';
+} from '@devlaunchers/components/src/components/molecules/Dialog';
 import { useState, useEffect } from 'react';
 import Button from '@devlaunchers/components/src/components/atoms/Button/';
 import { Trash, Search } from 'lucide-react';
 import { agent } from '@devlaunchers/utility';
 import Image from 'next/image';
 import PexelsLogo from '../../../../../../public/assets/images/pexels-logo.png';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const ImageModal = ({
   handleSelectImage,
@@ -70,9 +71,10 @@ export const ImageModal = ({
             hasCloseBtn={false}
             className="w-full max-w-4xl p-5 sm:w-[512px] 
             sm:p-4 sm:left-8 sm:top-1/2 sm:-translate-y-1/2 sm:translate-x-0
-            rounded-3xl border border-grayscale-200
+            rounded-3xl
             shadow-[0_4px_6px_3px_rgba(51,51,51,0.10)]
             "
+            style={{ background: 'var(--surface-04, #292929)' }}
           >
             <DialogHeader className="w-full flex items-center gap-2">
               <div className="flex items-center justify-start gap-2">
@@ -84,16 +86,14 @@ export const ImageModal = ({
                     alt="pexels logo"
                   />
                 </div>
-                {/* <DialogTitle className="text-md font-normal">
-                  Pexels
-                </DialogTitle> */}
               </div>
               <div className="flex items-center justify-end gap-2 w-full">
                 <Button
-                  type="tertiary"
+                  type="primary"
                   size="small"
+                  color="error"
                   icon={<Trash className="w-6 h-6" />}
-                  mode={isRemoveDisabled ? 'dark' : 'light'}
+                  mode={isRemoveDisabled ? 'light' : 'dark'}
                   disabled={isRemoveDisabled}
                   onClick={() => {
                     handleRemoveImage();
@@ -103,15 +103,15 @@ export const ImageModal = ({
                 </Button>
               </div>
             </DialogHeader>
-            <div className="flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
+            <div className="relative flex items-center justify-center flex-col gap-2 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-0 w-full rounded-lg border border-grayscale-750 p-1">
-                <Search className="w-6 h-6" />
+                {/* <Search className="w-6 h-6" /> */}
                 <input
                   type="text"
                   id="search-for-images"
                   name="search-for-images"
                   placeholder="Search for an image"
-                  className="w-full h-10 border-none outline-none p-2 placeholder:text-grayscale-750"
+                  className="w-full h-10 border-none outline-none p-2 placeholder:text-grayscale-750 rounded-lg"
                   onChange={(e) => {
                     setKeyword(e.target.value);
                     if (e.target.value.length > 0) {
@@ -121,9 +121,9 @@ export const ImageModal = ({
                     }
                   }}
                 />
-                <div className="w-10 h-10">
+                <div className="w-12 h-8 absolute right-4 bg-black m-2 rounded-lg flex items-center justify-center">
                   <button
-                    className="w-10 h-10 px-2 bg-grayscale-750 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-2 disabled:cursor-not-allowed"
                     disabled={isRemoveDisabled}
                     onClick={() => {
                       getImages();
@@ -134,13 +134,38 @@ export const ImageModal = ({
                 </div>
               </div>
               <div className="flex items-center justify-center gap-2 w-full pt-3">
-                {error && <p className="text-red-700 font-medium">{error}</p>}
+                {error && (
+                  <atoms.Typography as="p" className="text-red-700 font-medium">
+                    {error}
+                  </atoms.Typography>
+                )}
                 {images && (
                   <div className="grid gap-2 grid-cols-2 sm:grid-cols-3 overflow-y-auto max-h-[420px] w-full">
                     {images.map((image) => (
-                      <div key={image.id}>
+                      <div
+                        key={image.id}
+                        className="group"
+                        onMouseEnter={(e) => {
+                          const imgWrapper =
+                            e.currentTarget.querySelector('[data-image]');
+                          const text = e.currentTarget.querySelector('a');
+
+                          if (imgWrapper) imgWrapper.style.opacity = '0.7';
+                          if (text)
+                            text.style.color = 'var(--content-00, #FFF)';
+                        }}
+                        onMouseLeave={(e) => {
+                          const imgWrapper =
+                            e.currentTarget.querySelector('[data-image]');
+                          const text = e.currentTarget.querySelector('a');
+
+                          if (imgWrapper) imgWrapper.style.opacity = '1';
+                          if (text)
+                            text.style.color = 'var(--content-03, #B9B9B9)';
+                        }}
+                      >
                         <div
-                          className="w-full h-[103px] cursor-pointer"
+                          className="relative w-full h-[103px] cursor-pointer"
                           onClick={() => {
                             handleSelectImageEvent(image);
                           }}
@@ -151,11 +176,14 @@ export const ImageModal = ({
                             src={image.small_url}
                             alt={image.name}
                             id={image.id}
+                            data-image
                             className="rounded-lg w-full h-full"
                           />
                         </div>
+
                         <a
-                          className="text-xs font-normal underline text-grayscale-600"
+                          className="text-xs font-normal underline"
+                          style={{ color: 'var(--content-03, #B9B9B9)' }}
                           href={image.photographer_url}
                           target="_blank"
                           rel="noopener noreferrer"

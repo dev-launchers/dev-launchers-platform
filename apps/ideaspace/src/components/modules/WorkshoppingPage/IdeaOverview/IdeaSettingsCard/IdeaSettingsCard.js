@@ -83,7 +83,7 @@ const IdeaSettingsCard = ({ card }) => {
           setArchiveButtonText(`ARCHIVE`);
           setDisabling(true);
           if (await confirmArchiveSuccess()) {
-            router.push(`/ideaspace/dashboard`);
+            router.push(`/users/me`);
           } else {
             router.push(`/ideaspace/browse`);
           }
@@ -159,7 +159,7 @@ const IdeaSettingsCard = ({ card }) => {
       }}
     >
       <atoms.Box>
-        <h3>Idea settings</h3>
+        <atoms.Typography as="h3">Idea settings</atoms.Typography>
       </atoms.Box>
 
       <IdeaSettingsContent
