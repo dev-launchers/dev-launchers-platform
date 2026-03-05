@@ -28,7 +28,7 @@ const JoinUsSection = () => (
       </atoms.Typography>
     </div>
     <div className={styles.section.buttonContainer}>
-      <a href="https://staging.devlaunchers.org/join">
+      <a href={`${process.env.NEXT_PUBLIC_FRONT_END_URL}/join`}>
         <atoms.Button type="primary" color="nebula">
           {sections.join.buttonText}
         </atoms.Button>
