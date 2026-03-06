@@ -31,11 +31,11 @@ export default function UserProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
-    if (isAuthenticated && userData.name === '') {
+    if (isAuthenticated && userData.email === '') {
       router.push('/signup');
     }
     // this will force people on the onbaording page to accept temps of service
-    else if (!isLoading && isAuthenticated && !hasAcceptedTermsOfService) {
+    else if (isAuthenticated && !hasAcceptedTermsOfService) {
       router.push('/onboarding');
     }
   }, [isAuthenticated]);

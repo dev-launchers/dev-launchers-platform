@@ -9,13 +9,17 @@ import agent from '@devlaunchers/utility/agent';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../../state/actions';
+import axios from 'axios';
 
 function SettingPage({ onClose }) {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
 
-  const { userData, setUserData } = useUserDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
-  const disableSave = !editProfileState.changes.bioChanged;
+  const disableSave =
+    !editProfileState.changes.bioChanged &&
+    !editProfileState.changes.interestsChanged &&
+    !editProfileState.changes.skillsChanged;
 
   const showSetting = () => {
     if (editProfileState.pages.showPhoto) {
@@ -42,7 +46,7 @@ function SettingPage({ onClose }) {
     if (profileId) {
       const requestBody = { data: {} };
 
-      // only update values where changs have been made
+      // only update values where changes have been made
       if (editProfileState.changes.bioChanged) {
         requestBody.data.bio = editProfileState.bio;
       }
@@ -51,11 +55,43 @@ function SettingPage({ onClose }) {
       if (!editProfileState.saveInProgress) {
         editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
         agent.Profiles.put(profileId, requestBody)
-          .then(() => {
+          .then(async () => {
+            // Save interests to Strapi user (only if changed)
+            if (editProfileState.changes.interestsChanged) {
+              const userId = userData?.id;
+              const interestIds = (editProfileState.interests || []).map(
+                (i) => i.id
+              );
+
+              await agent.User.put(userId, {
+                interests: interestIds,
+              });
+            }
+
+            // Save skills to Strapi user (only if changed)
+            if (editProfileState.changes.skillsChanged) {
+              const userId = userData?.id;
+              const skillIds = (editProfileState.skills || []).map((s) => s.id);
+
+              await agent.User.put(userId, {
+                skills: skillIds,
+              });
+            }
+
             editProfileDispatch({
               type: editProfileActions.SAVE_CHANGES_SUCCESS,
             });
-            setUserData({ ...userData, bio: editProfileState.bio });
+            updateUserData((prev) => ({
+              ...prev,
+              bio: editProfileState.bio,
+              interests: editProfileState.changes.interestsChanged
+                ? editProfileState.interests
+                : prev.interests,
+              skills: editProfileState.changes.skillsChanged
+                ? editProfileState.skills
+                : prev.skills,
+            }));
+            onClose();
           })
           .catch((error) => {
             editProfileDispatch({

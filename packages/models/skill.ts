@@ -1,11 +1,16 @@
 export interface Skill {
-    id: string;
+  id: number;
+  attributes: {
     interest: string;
-    users_permissions_users: string[];
-    projects: string[];
-    categories: string[];
-    published_at: string;
-    created_by: string;
-    updated_by: string;
+    category: string;
+    createdAt: string;
+    publishedAt: string | null;
+    updatedAt: string;
+    projects: {
+      data: Array<{
+        id: number;
+        attributes?: Record<string, any>;
+      }>;
+    };
+  };
 }
-

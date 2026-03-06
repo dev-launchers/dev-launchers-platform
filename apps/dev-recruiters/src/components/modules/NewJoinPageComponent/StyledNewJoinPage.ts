@@ -3,25 +3,24 @@ import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.SilverSandT20};
+  background-color: ${({ theme }) => theme?.colors?.Black};
 `;
 
 export const Wrapjoin = styled.div`
-  background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.5) 100%
+  width: 100%;
+  background: linear-gradient(
+      92deg,
+      rgba(129, 195, 215, 0.2) 7%,
+      rgba(143, 97, 189, 0.2) 51.5%,
+      rgba(58, 124, 165, 0.2) 75.77%,
+      rgba(57, 76, 172, 0.2) 96.6%
     ),
-    url(${JoinPRight});
+    #000;
   display: flex;
   height: 360px;
   min-height: 240px;
   padding: var(--0, 0px) var(--56, 192px);
-
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: var(--10, 40px);
   align-self: stretch;
 `;
 
@@ -70,12 +69,14 @@ export const SelectRoleContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
-  text-align: center;
+  text-align: left;
 `;
 
 export const SelectRoleText = styled.div`
   font-size: 40px;
   font-family: 'Abel', sans-serif;
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+  text-align: left;
 `;
 
 export const AreaImage = styled.div`

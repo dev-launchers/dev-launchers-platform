@@ -8,7 +8,7 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 import UploadProfilePicture from './../../../common/Images/UploadProfilePicture';
 import Breadcrumb from './../../../../images/Onboarding/breadcrumb-frame.png';
 import Loader from './../../../common/Loader';
-import { DropdownMenu } from './../../../../../../../packages/UI/src/components/DropdownMenu';
+import { DropdownMenu } from '@devlaunchers/components/src/components/molecules/DropdownMenu';
 import countryData from './../../../../content/countryData.json';
 
 const initialFormValue = {

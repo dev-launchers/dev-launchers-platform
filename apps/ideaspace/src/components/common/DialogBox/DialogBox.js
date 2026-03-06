@@ -1,8 +1,10 @@
-import Modal from 'react-modal';
 import { useState } from 'react';
 import {
-  Dialog, DialogActions,
-  DialogContent, DialogContentText, DialogTitle,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import { atoms } from '@devlaunchers/components/src/components';
@@ -12,9 +14,10 @@ import DialogBoxButton from './DialogBoxButton';
 const useConfirm = (title, message, buttonInfo) => {
   const [promise, setPromise] = useState(null);
 
-  const confirm = () => new Promise((resolve, reject) => {
-    setPromise({ resolve });
-  });
+  const confirm = () =>
+    new Promise((resolve, reject) => {
+      setPromise({ resolve });
+    });
 
   const handleClose = () => {
     setPromise(null);
@@ -31,7 +34,6 @@ const useConfirm = (title, message, buttonInfo) => {
   };
 
   const ConfirmationDialog = () => (
-
     <Dialog
       open={promise !== null}
       onClose={handleCancel}
@@ -64,8 +66,15 @@ const useConfirm = (title, message, buttonInfo) => {
           paddingBottom: '0.5rem',
         }}
       >
-        <atoms.Box alignItems='center' style={{columnGap: '0.5rem', color: title[2]}}>
-          {title[1] == '' ? null : (title[1] == 'Success' ? <Icons.Success /> : <Icons.Error />)} 
+        <atoms.Box
+          alignItems="center"
+          style={{ columnGap: '0.5rem', color: title[2] }}
+        >
+          {title[1] == '' ? null : title[1] == 'Success' ? (
+            <Icons.Success />
+          ) : (
+            <Icons.Error />
+          )}
           {title[0]}
         </atoms.Box>
       </DialogTitle>
@@ -86,7 +95,7 @@ const useConfirm = (title, message, buttonInfo) => {
           paddingRight: '1rem',
           backgroundColor: '#F0EDEE',
           height: '3.2rem',
-          fontSize: '0.8rem'
+          fontSize: '0.8rem',
         }}
       >
         <DialogBoxButton
@@ -95,7 +104,6 @@ const useConfirm = (title, message, buttonInfo) => {
           buttonDetail={buttonInfo}
         />
       </DialogActions>
-
     </Dialog>
   );
   return [ConfirmationDialog, confirm];

@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react';
 import constate from 'constate';
 import { onboardingReducer, initialOnboardingState } from './../state/reducers';
 import { onboardingActions } from './../state/actions';
-import axios from 'axios';
+import { agent } from '@devlaunchers/utility';
 
 export const UseOnboardingData = ({ children }) => {
   const [onboardingData, dispatch] = useReducer(
@@ -12,17 +12,14 @@ export const UseOnboardingData = ({ children }) => {
 
   useEffect(() => {
     // get all interests categories
-    axios(`${process.env.NEXT_PUBLIC_STRAPI_URL}/interests`, {
-      withCredentials: true,
-    })
-      .then(({ data: response }) => {
-        const interestList = response?.data?.map((interest) => {
-          return {
-            id: interest.id,
-            name: interest.attributes.interest,
-            selected: false,
-          };
-        });
+    agent.Interests.get()
+      .then((response) => {
+        const interestList = (response ?? []).map((item) => ({
+          id: item.id,
+          name: item.attributes?.interest,
+          selected: false,
+        }));
+
         dispatch({
           type: onboardingActions.SET_USERS_INTEREST,
           data: interestList,
@@ -31,6 +28,22 @@ export const UseOnboardingData = ({ children }) => {
       .catch(() => {
         // TODO handle errors
       });
+
+    // get all skills categories
+    agent.Skills.get()
+      .then((response) => {
+        const skillList = (response ?? []).map((x) => ({
+          id: x.id,
+          name: x.attributes?.interest,
+          selected: false,
+        }));
+
+        dispatch({
+          type: onboardingActions.SET_USERS_SKIll,
+          data: skillList,
+        });
+      })
+      .catch(() => {});
   }, []);
 
   return { onboardingData, dispatch };

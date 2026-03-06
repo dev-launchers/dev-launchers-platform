@@ -10,10 +10,12 @@ const EditComponent = ({
   onEditSuccess,
   onEditError,
 }) => {
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
   const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
   const editIdeaRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [canSaveForm, setCanSaveForm] = useState(false);
 
   // Add a key state to force re-render of EditIdea component
   const [componentKey, setComponentKey] = React.useState(Date.now());
@@ -31,7 +33,8 @@ const EditComponent = ({
   useEffect(() => {
     if (open) {
       setComponentKey(Date.now()); // Generate a new key to force re-render
-
+      setHasUnsavedChanges(false);
+      setCanSaveForm(false);
       // Clear any localStorage cache
       localStorage.removeItem('ideaFormData');
       localStorage.removeItem('involveLevel');
@@ -81,10 +84,10 @@ const EditComponent = ({
   `;
 
   const headerClasses =
-    'w-full flex justify-between items-center px-[20px] pt-[16px] pb-[14px] bg-white flex-shrink-0';
-  const contentClasses = 'flex-1 overflow-y-auto px-[24px] py-[20px]';
+    'w-full flex justify-between items-center px-[20px] pt-[16px] pb-[14px] bg-black text-white flex-shrink-0';
+  const contentClasses = 'flex-1 overflow-y-auto px-[24px] py-[20px] bg-black';
   const footerClasses =
-    'w-full flex justify-end items-center px-[24px] py-[20px] bg-white flex-shrink-0';
+    'w-full flex justify-end items-center px-[24px] py-[20px] bg-black flex-shrink-0';
 
   const cancelButtonClasses =
     'flex px-[18px] py-[12px] justify-center items-center gap-[4px] cursor-pointer bg-white border-0 rounded-[4px] text-base';
@@ -92,7 +95,7 @@ const EditComponent = ({
     'bg-transparent border-0 text-[1.25rem] cursor-pointer';
 
   const handleSave = async () => {
-    if (editIdeaRef.current) {
+    if (editIdeaRef.current && hasUnsavedChanges) {
       setIsSubmitting(true);
       try {
         editIdeaRef.current.touchAllFields();
@@ -138,7 +141,12 @@ const EditComponent = ({
         onClick={(e) => e.stopPropagation()}
         className={isMobileDrawer ? mobileDialogClasses : desktopDialogClasses}
         style={
-          isMobileDrawer ? { height: `${windowHeight - topMargin}px` } : {}
+          isMobileDrawer
+            ? {
+                height: `${windowHeight - topMargin}px`,
+                backgroundColor: '#00000',
+              }
+            : {}
         }
       >
         <div className={headerClasses}>
@@ -158,6 +166,8 @@ const EditComponent = ({
               initialIdea={initialIdea}
               onEditSuccess={handleEditSuccess}
               onEditError={handleEditError}
+              onUnsavedChanges={setHasUnsavedChanges}
+              onCanSave={setCanSaveForm}
             />
           )}
         </div>
@@ -174,16 +184,25 @@ const EditComponent = ({
           </atoms.Button>
           {/* Add an explicit spacer */}
           <div style={{ width: '12px' }}></div>
-          <atoms.Button
-            type="primary"
-            size="medium"
-            mode="light"
-            color="nebula"
-            disabled={isSubmitting || isSending}
-            onClick={handleSave}
+          <div
+            style={{
+              opacity: !canSaveForm || isSubmitting || isSending ? 0.5 : 1,
+              cursor:
+                !canSaveForm || isSubmitting || isSending
+                  ? 'not-allowed'
+                  : 'pointer',
+            }}
           >
-            {isSubmitting || isSending ? 'Wait' : 'Save Changes'}
-          </atoms.Button>
+            <atoms.Button
+              type="primary"
+              size="medium"
+              mode="light"
+              color="nebula"
+              onClick={handleSave}
+            >
+              {isSubmitting || isSending ? 'Wait' : 'Save Changes'}
+            </atoms.Button>
+          </div>
         </div>
       </div>
     </div>

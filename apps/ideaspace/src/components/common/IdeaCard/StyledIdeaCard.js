@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { atoms } from '@devlaunchers/components/src/components';
 import Avatar from '@devlaunchers/components/src/components/atoms/Avatar/Avatar';
 
 export const StatuBox = styled.div`
@@ -28,9 +27,9 @@ export const StatuBox = styled.div`
 `;
 
 export const AuthorProfilePicture = styled(Avatar)`
-  width: 28px;
-  height: 28px;
-  border-radius: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 36px;
 
   //== set child elements to 100% width and height
   & > * {

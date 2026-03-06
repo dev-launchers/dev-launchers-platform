@@ -92,7 +92,8 @@ const SuccessAlert = ({ onClose }) => {
           style={{ color: '#206124', margin: 0 }}
         >
           Your idea was successfully posted! You'll be redirected to the Idea
-          Workshopping Page in <strong>{countdown}</strong> seconds.
+          Workshopping Page in{' '}
+          <atoms.Typography as="strong">{countdown}</atoms.Typography> seconds.
         </atoms.Typography>
       </AlertContent>
       <CloseButton onClick={onClose}>

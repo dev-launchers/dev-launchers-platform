@@ -1,35 +1,20 @@
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import { MoreHorizontal, Trash } from 'lucide-react';
-import {
-  StyledCard,
-  TopView,
-  LeftView,
-  RightView,
-  StyledDiv,
-  IdeaName,
-  IdeaTagLine,
-  BottomView,
-  StyledText,
-} from './StyledIdeaCard';
 import UpvoteButton from '../../../../../components/common/Upvote/UpvoteButton';
 import { useState, useEffect } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { agent } from '@devlaunchers/utility';
 import { cleanDataList } from '../../../../../utils/StrapiHelper';
 import EditComponent from '../../../../../components/common/IdeaForm/EditComponent';
-import EditIdea from '../../../../../components/modules/EditIdea/EditIdea';
 import Alert from '../../../../../components/common/SubmissionAlert/Alert';
 import {
   Popover,
   PopoverTrigger,
   PopoverContent,
-} from '@devlaunchers/components/src/components/Popover/index';
+} from '@devlaunchers/components/src/components/atoms/Popover/index';
 import DeleteConfirmationDialogBox from '../../../../../components/common/DialogBox/DeleteConfirmationDialogBox.js';
 import { ImageBanner } from './ImageBanner';
 import { ImagePreviewSVG } from '../../../../common/SVG/ImagePreview';
+import { atoms } from '@devlaunchers/components/src/components';
 
 export const IdeaCard = ({
   ideaImage,
@@ -202,7 +187,7 @@ export const IdeaCard = ({
     sessionStorage.setItem('showDeleteAlertSuccess', 'true');
     setShouldShowDeleteDialog(false);
     window.onbeforeunload = null; // Clear the beforeunload event
-    window.location.href = '/ideaspace/dashboard';
+    window.location.href = '/users/me';
   };
 
   //== Update Idea Image
@@ -237,20 +222,26 @@ export const IdeaCard = ({
     <>
       <div>
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <div
-                className="text-[24px] sm:text-[40px] font-bold tracking-tighter"
-                style={{ lineHeight: '110%', fontFamily: 'Helvetica' }}
+              <atoms.Typography
+                as="h1"
+                textWeight="bold"
+                leading="tight"
+                textAlign="left"
+                size="xl4"
+                style={{ color: 'var(--content-00, #FFF)' }}
               >
                 {ideaData.ideaName}
-              </div>
-              <div
-                className="text-[16px] font-[400] sm:text-lg sm:font-normal"
-                style={{ lineHeight: '28px' }}
+              </atoms.Typography>
+              <atoms.Typography
+                as="p"
+                size="body_base"
+                leading="normal"
+                style={{ color: 'var(--content-04, #DAD8D9)' }}
               >
                 {ideaData.tagline}
-              </div>
+              </atoms.Typography>
             </div>
             <div className="flex flex-row justify-between">
               <div>{upvoteButton}</div>
@@ -258,7 +249,8 @@ export const IdeaCard = ({
                 {isOwner && (
                   <div className="flex flex-row gap-2">
                     <button
-                      className="h-12 bg-[#494949]/5 rounded-md px-[18px] py-3"
+                      className="h-12 bg-[#494949]/5 border-2 border-[#B9B9B9] rounded-md px-[18px] text-lg"
+                      style={{ color: 'var(--priority-content, #DAD8D9)' }}
                       onClick={() => setIsModalOpen(true)}
                     >
                       Edit Idea
@@ -266,7 +258,6 @@ export const IdeaCard = ({
                     <EditComponent
                       open={isModalOpen}
                       onClose={() => setIsModalOpen(false)}
-                      // initialIdea={fullIdea}
                       initialIdea={ideaData}
                       onEditSuccess={handleEditSuccess}
                       onEditError={handleEditError}
@@ -274,7 +265,13 @@ export const IdeaCard = ({
 
                     <Popover>
                       <PopoverTrigger asChild>
-                        <button className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3">
+                        <button
+                          className="h-12 bg-[#494949]/5 rounded-md px-[18px] p-3 "
+                          style={{
+                            color: 'var(--priority-content, #DAD8D9)',
+                            border: '2px solid var(--border-01, #B9B9B9)',
+                          }}
+                        >
                           <MoreHorizontal />
                         </button>
                       </PopoverTrigger>
@@ -282,15 +279,19 @@ export const IdeaCard = ({
                         hasCloseBtn={false}
                         side="bottom"
                         align="end"
-                        className="rounded-md w-[224px] h-[60px] p-0"
+                        className="border-0 bg-transparent m-0 p-2"
                       >
-                        <button
-                          className="flex flex-row gap-2 items-center justify-start text-[#692323] h-full w-full pl-6"
+                        <atoms.Button
+                          size="medium"
+                          type="primary"
+                          mode="dark"
+                          color="error"
                           onClick={() => setShouldShowDeleteDialog(true)}
+                          className="text-[#EBC4C4]"
                         >
-                          <Trash size={18} className="text-[#692323]" />
+                          <Trash size={18} className="text-[#EBC4C4]" />
                           Delete Idea
-                        </button>
+                        </atoms.Button>
                       </PopoverContent>
                     </Popover>
 
@@ -314,8 +315,8 @@ export const IdeaCard = ({
             />
           ) : (
             <div
-              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat ${
-                !bannerImage ? 'bg-[#F6F6F6]' : ''
+              style={{ backgroundColor: '#292929' }}
+              className={`w-full h-[304px] rounded-2xl flex items-center justify-center bg-cover bg-center bg-no-repeat 
               }`}
               {...(bannerImage && {
                 style: { backgroundImage: `url(${bannerImage.original_url})` },

@@ -15,6 +15,29 @@ export const confirmationModalStyles = {
   overlay: { zIndex: 1000, backgroundColor: 'rgba(0,0,0,.75)' },
 };
 
+export const ApplyButton = styled.a<{ color?: string }>`
+  font-family: ${(props) => props.theme?.fonts?.normal};
+  background-color: #69349d;
+  color: ${(props) => props.theme?.colors?.White};
+  border-radius: 0.4rem;
+  position: relative;
+  bottom: 0;
+  right: 0;
+  padding: 14px 24px;
+  white-space: nowrap;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 11px;
+  text-align: center;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme?.colors?.Argent};
+  }
+`;
+
 export const ConfirmationModalSection = styled.div`
   height: 100%;
   font-family: ${(props) => props.theme?.fonts?.normal};

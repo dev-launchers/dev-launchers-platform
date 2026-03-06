@@ -8,7 +8,7 @@ import {
   PaginationItem,
   PaginationJump,
   PaginationLink,
-} from '@devlaunchers/components/components/Pagination/Pagination';
+} from '@devlaunchers/components/components/molecules/Pagination/Pagination';
 import {
   Tabs,
   TabsContent,

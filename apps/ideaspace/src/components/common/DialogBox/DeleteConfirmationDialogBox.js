@@ -49,6 +49,7 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
         '& .MuiDialog-paper': {
           borderRadius: '1rem',
           width: '25rem',
+          backgroundColor: 'var(--base-04, #292929)',
         },
         fontFamily: 'Nunito Sans',
       }}
@@ -63,6 +64,7 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
           lineHeight: '160%',
           paddingLeft: '20px',
           paddingRight: '20px',
+          color: 'var(--content-00, #FFF)',
         }}
         className="flex items-center justify-between"
       >
@@ -70,10 +72,10 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
         <button
           aria-label="close"
           onClick={handleClose}
-          className="bg-[#ffffff] text-[#494949] hover:text-[#494949]"
+          className="bg-transparent text-[#494949]"
           disabled={isDeleting}
         >
-          <Icons.Close height={24} width={24} />
+          <Icons.Close height={24} width={24} stroke="#fff" />
         </button>
       </DialogTitle>
 
@@ -83,7 +85,7 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
             fontSize: '1rem',
             paddingBottom: '0.5rem',
             fontFamily: 'Nunito Sans',
-            color: '#494949',
+            color: 'var(--content-03, #B9B9B9)',
             lineHeight: '160%',
           }}
         >
@@ -102,23 +104,30 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
           fontSize: '14px',
           padding: '1.25rem',
           marginTop: '24px',
+          borderTop: '1px solid var(--interactive-border, #676767)',
+          background: 'var(--surface-04, #292929)',
         }}
-        className="border-t border-t-[#4747471a]"
       >
-        <button
-          className="bg-[#f0edee] rounded-md px-[18px] py-3"
+        <atoms.Button
+          type="secondary"
+          size="small"
+          mode="light"
+          color="nebula"
           onClick={handleClose}
           disabled={isDeleting}
         >
           No, Keep It
-        </button>
-        <button
-          className="bg-[#882D2D] rounded-md px-[18px] py-3 flex items-center justify-center gap-2 text-center text-white"
+        </atoms.Button>
+        <atoms.Button
+          size="small"
+          type="primary"
+          mode="dark"
+          color="error"
+          onClick={handleConfirm}
           disabled={isDeleting}
           style={{
             opacity: isDeleting ? 0.5 : 1,
           }}
-          onClick={handleConfirm}
         >
           {isDeleting ? (
             <Loader2 size={16} className="animate-spin" />
@@ -126,7 +135,7 @@ const DeleteConfirmationDialogBox = ({ card, onClose, onDelete }) => {
             <Trash size={16} />
           )}{' '}
           Yes, Delete
-        </button>
+        </atoms.Button>
       </DialogActions>
     </Dialog>
   );

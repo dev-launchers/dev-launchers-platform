@@ -92,6 +92,35 @@ const teamMembers = {
     contact: 'dave.b@devlaunchers.com',
   },
 
+  'oriyomi-badmus': {
+    name: 'Oriyomi Badmus',
+    title: 'Lead Engineer, Backend & DevOps',
+    image:
+      'https://docs.devlaunchers.org/dl-docs/~gitbook/image?url=https%3A%2F%2F2977404816-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FeXJoJnQUFdJ4YZ9kGUck%252Fuploads%252FyHbdvTWIEc36NSxM9hio%252Fyomi.png%3Falt%3Dmedia%26token%3D8a20b355-a344-41d8-8da6-b28b5d6e45f1&width=300&dpr=2&quality=100&sign=dc97a546&sv=2',
+    shortBio:
+      'Oriyomi leads backend engineering and infrastructure for Dev Launchers’ open-source projects and serves as a Lead Engineer. He sets technical direction for backend architecture, DevOps practices, and infrastructure management, ensuring uptime, seamless deployments, and robust monitoring across all projects. He mentors developers in logical thinking, troubleshooting, infrastructure design, and CI/CD pipelines, and partners with Product, Design, and Development teams to deliver reliable, scalable solutions. Outside Dev Launchers, he is a DevOps Engineer at SIS.',
+    fullBio:
+      'As Lead Engineer of Backend and DevOps, Oriyomi oversees the reliability and scalability of Dev Launchers’ infrastructure, driving backend architecture decisions, managing deployment pipelines, and establishing monitoring practices across all open-source projects. He develops solutions for both straightforward and complex technical challenges, translating product requirements into performant, maintainable backend systems. He mentors and coaches new joiners in logical problem-solving, troubleshooting methodologies, infrastructure design, and CI/CD best practices, fostering a culture of operational excellence and continuous improvement. By collaborating closely with Product, Design, and Development teams, he ensures that backend capabilities and infrastructure readiness align with delivery timelines and organizational priorities.',
+    teachings: [
+      'Backend architecture, API design, and system logic',
+      'CI/CD pipelines, deployment strategies, and release automation',
+      'Infrastructure management, monitoring, and uptime best practices',
+      'Troubleshooting methodologies and debugging workflows',
+      'Cloud infrastructure fundamentals and environment management',
+    ],
+    focusAreas:
+      'Backend architecture & API design • CI/CD pipelines & deployment automation • Infrastructure reliability & monitoring • Troubleshooting & debugging • Cloud infrastructure & environment management',
+    degrees: [
+      'M.Sc., Computer Science — University of Bedfordshire',
+      'B.Sc., Computer Engineering — University of Lagos',
+    ],
+    links: {
+      linkedin: 'oriyomibadmus',
+      github: 'oriyomibadmus',
+    },
+    contact: 'oriyomibadmus@devlaunchers.com',
+  },
+
   'rijul-saxena': {
     name: 'Rijul Saxena',
     title: 'Research Department Lead',

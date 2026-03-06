@@ -5,6 +5,7 @@ import PageThree from './PageThree/PageThree';
 import PageFour from './PageFour/PageFour';
 import PageFive from './PageFive';
 import PageSix from './PageSix/PageSix';
+import PageSeven from './PageSeven/PageSeven';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
 export default function PlatformOnboarding() {
@@ -17,12 +18,17 @@ export default function PlatformOnboarding() {
       const requestBody = {
         completedOnboarding: true,
         interests: [],
+        skills: [],
         experience: onboardingData?.user?.selectedExperience,
         job: onboardingData?.user?.selectedRole,
       };
 
       onboardingData?.user?.interest?.forEach((interest) => {
         interest?.selected && requestBody?.interests.push({ id: interest?.id });
+      });
+
+      onboardingData?.user?.skill?.forEach((skill) => {
+        skill?.selected && requestBody?.skills.push({ id: skill?.id });
       });
 
       if (userId) {
@@ -137,8 +143,24 @@ export default function PlatformOnboarding() {
     },
   };
 
-  const congratulationStep = {
+  const skillStep = {
     component: <PageSix />,
+    header: {
+      barSize: 's',
+      hideNumber: true,
+    },
+    buttons: {
+      next: {
+        label: 'Next',
+      },
+      back: {
+        label: 'Back',
+      },
+    },
+  };
+
+  const congratulationStep = {
+    component: <PageSeven />,
     header: {
       name: 'Done',
       number: 4,
@@ -162,6 +184,7 @@ export default function PlatformOnboarding() {
     aboutYouStep,
     roleStep,
     interestStep,
+    skillStep,
     congratulationStep,
   ];
 

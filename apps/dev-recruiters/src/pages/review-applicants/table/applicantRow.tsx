@@ -4,19 +4,22 @@ interface ApplicantRowProps {
   applicant: NewApplicant;
   isSelected: boolean;
   onSelect: () => void;
+  onViewDetails: () => void;
 }
 
 const ApplicantRow: React.FC<ApplicantRowProps> = ({
   applicant,
   isSelected,
   onSelect,
+  onViewDetails,
 }) => (
   <tr
     className={`hover:bg-gray-800/50 transition-colors ${
       isSelected ? 'bg-cyan-500/10' : ''
     }`}
+    onClick={onViewDetails}
   >
-    <td className="px-6 py-4 w-12">
+    <td className="px-6 py-4 w-12" onClick={(e) => e.stopPropagation()}>
       <input
         type="checkbox"
         checked={isSelected}

@@ -8,7 +8,7 @@ export interface Opportunity {
     title: string;
     skills: Skill[];
     level: SkillLevel;
-    interests: string[];
+    interests: { data: any[] };
     commitmentHoursPerWeek: number;
     description: string;
     expectations: Expectation[];
@@ -18,6 +18,8 @@ export interface Opportunity {
     projects: { data: Project[] };
     roleType: string;
     roleCategory: string;
+    whyJoin: string;
+    responsibilities: string;
   };
 }
 
