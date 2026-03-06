@@ -15,7 +15,10 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
 
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [isUploading, setIsUploading] = useState(false); // Uploading state
-  const maxSizeInMB = 25;
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const maxSizeInMB = 5;
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
   const [uploadError, setUploadError] = useState('');
@@ -24,7 +27,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
 
   const [dragActive, setDragActive] = useState<boolean>(false);
   const uploadErrorMsg =
-    'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)';
+    'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 5MB)';
   const fileUpload = async (inFiles) => {
     let uploadStatus = true;
     setUploadError(null);
@@ -78,7 +81,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
     }
   };
 
-  const handleFileSelectChange = async (
+  const handleFileSelectChange = async ( 
     event: ChangeEvent<HTMLInputElement>
   ) => {
     let sampleOutput = {
@@ -124,15 +127,52 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
     <AllSection>
       <ChooseFileSection>
         <h3>Drop your files here or select them using the button below</h3>
+
+        <button
+          type='button'
+          onClick={() => fileInputRef.current?.click()}
+          className='
+            px-6 py-2 text-base font-medium rounded-lg
+            bg-white
+            shadow-lg
+            hover:shadow-lg
+            transition-shadow duration-200
+            focus:outline-none
+          '
+        >
+          CHOOSE FILES
+        </button>
+
+
         <input
-          id="fileSelect"
+          // id="fileSelect"
+          ref={fileInputRef}
           type="file"
-          style={{ color: 'transparent' }}
+          hidden
           onChange={(event) => {
             handleFileSelectChange(event);
           }}
           accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
         />
+
+        {/* Display files + Add delete button */}
+        {/* {selectFiles.length > 0 && (
+          <div style={{ marginTop: '10px' }}>
+            <span>{selectFiles[0].name}</span>
+            <button
+              type='button'
+              onClick={() => {
+                setSelectFiles([]);
+                setUploadFiles([]);
+                setUploadError('');
+                if (fileInputRef.current) fileInputRef.current.value = '';
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        )} */}
+
         {isUploading ? (
           'Uploading'
         ) : filesUploaded.id === undefined || filesUploaded.id === null ? (
