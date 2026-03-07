@@ -6,10 +6,11 @@ import {
   IdeaOwnerTag,
 } from './StyledComments.js';
 import { LikeButton } from '@devlaunchers/components/src/components/molecules';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useUserDataContext } from '@devlaunchers/components/src/context/UserDataContext.js';
 import { atoms } from '@devlaunchers/components/src/components';
-
+import { agent } from '@devlaunchers/utility';
+import UpvoteButton from '../../../../components/common/Upvote/UpvoteButton';
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
 function timeSince(date) {
@@ -67,45 +68,50 @@ function SingleCommentComponent(props) {
   const { userData, isAuthenticated } = useUserDataContext();
   const [liked, setLiked] = useState(false);
   const [commentLikes, setCommentLikes] = useState([]);
-  const [state, setState] = useState(false); // to refresh the page when a comment receives a like
 
-  // a function to keep track of the number of likes and when the user clicks the like button for this comment
-  function handleLikeClick(event) {
-    if (liked) {
-      // if there's a like object corresponding to this user and comment, delete it
+  async function fetchLikedAndUpdateState() {
+    const res = await agent.Likes.get(
+      new URLSearchParams(
+        `filters[objectType][$eq]=Comment&filters[objectId][$eq]=${props.id}&populate=users_permissions_user`
+      )
+    );
+    setCommentLikes(res || []);
+    const alreadyLiked = res?.some(
+      (like) =>
+        like.attributes?.users_permissions_user?.data?.id === userData?.id
+    );
+    setLiked(alreadyLiked);
+  }
 
-      // Refresh the page so that the new comment is displayed
-      setState(true);
+  useEffect(() => {
+    if (userData?.id) {
+      fetchLikedAndUpdateState();
+    }
+  }, [props.id, userData?.id]);
 
-      setLiked(false);
-    } else {
-      // create a like object using the Like collection from the strapiv4 repo, storing the user ID, the comment ID, and the "Comment" object type
-      var likeData = {
-        objectId: this.id,
-        objectType: 'Comment',
-        users_permission_user: userData.userId,
-      };
+  async function handleLikeClick() {
+    if (!isAuthenticated) return;
+    try {
+      const existingLike = commentLikes.find(
+        (like) =>
+          like.attributes?.users_permissions_user?.data?.id === userData?.id
+      );
 
-      try {
-        const res = agent.Likes.post(likeData);
-      } catch (error) {
-        console.error(error);
+      if (existingLike) {
+        await agent.Likes.delete(existingLike.id);
+      } else {
+        await agent.Likes.post({
+          objectId: props.id,
+          objectType: 'Comment',
+          users_permissions_user: { connect: [userData.id] },
+        });
       }
-
-      event.preventDefault();
-
-      try {
-        props.setHandleTextChange('');
-      } catch (error) {
-        console.error(error);
-      }
-
-      // Refresh the page so that the new comment is displayed
-      setState(true);
-
-      setLiked(true);
+      await fetchLikedAndUpdateState();
+    } catch (error) {
+      console.error(error);
     }
   }
+
   return (
     <>
       <div className="textContent mb-12">
@@ -151,6 +157,17 @@ function SingleCommentComponent(props) {
                   className="text-left text-[var(--content-04, #DAD8D9)]"
                 >
                   {props.children}
+                  <div style={{ marginTop: '8px' }}>
+                    <UpvoteButton
+                      onclick={handleLikeClick}
+                      show={true}
+                      isLikeButton={true}
+                      selected={liked}
+                      text={`${liked ? 'Liked' : 'Like'} | ${
+                        commentLikes.length
+                      }`}
+                    />
+                  </div>
                 </atoms.Typography>
               </div>
             </SingleCommentContent>

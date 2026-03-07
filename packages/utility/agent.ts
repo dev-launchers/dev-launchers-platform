@@ -182,9 +182,7 @@ const Likes = {
   get: (params?: URLSearchParams) => requests.get<Like[]>('/likes/', params),
   put: (id: string, body: {}) => requests.put<Like>(id, body),
   post: (body: {}) => requests.post<Like>('/likes/', body),
-  delete: (id: number) => {
-    requests.delete<Like>('/likes/' + id.toString());
-  },
+  delete: (id: number) => requests.delete<Like>('/likes/' + id.toString()),
 };
 
 const Notifications = {

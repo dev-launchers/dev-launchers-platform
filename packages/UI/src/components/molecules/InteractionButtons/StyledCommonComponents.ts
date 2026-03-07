@@ -1,28 +1,11 @@
 import styled from 'styled-components';
-import { paddingStyles } from '../../atoms/Padding';
-import { radiusStyles } from '../../atoms/Radius/StyledRadius';
-import { shadowStyles } from '../../atoms/Shadow';
-import { typographyStyles } from '../../atoms/TypographyOld';
 
 export const InteractionButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  color: ${({ theme }) => theme.colors.GREYSCALE_BLACK};
-  border: none;
+  background-color: var(--surface-00, #000);
+  color: var(--interactive-content, #dad8d9);
+  // border: none;
   cursor: pointer;
-  ${shadowStyles['shadow500']};
-  ${paddingStyles['comPad100']};
-  ${radiusStyles['radius200']};
-  ${typographyStyles['button']};
-
-  &:focus {
-    outline: none;
-    filter: none;
-    ${shadowStyles['innerShadow100']};
-    background-color: ${({ theme }) => theme.colors.GREYSCALE_WHITE};
-  }
-  &:disabled {
-    cursor: not-allowed;
-    background-color: ${({ theme }) => theme.colors.GREYSCALE_OFF_WHITE};
-    color: ${({ theme }) => theme.colors.GREYSCALE_CHARCOAL};
-  }
+  font-size: var(--size-button-text, 17px);
+  padding: 12px 16px;
+  // border: 2px solid var(--interactive-content, #DAD8D9);
 `;
