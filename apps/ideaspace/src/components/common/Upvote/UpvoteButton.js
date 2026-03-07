@@ -1,7 +1,15 @@
+import Like from '@devlaunchers/components/src/assets/icons/Like';
 import { useState } from 'react';
 import { Loader } from 'semantic-ui-react';
 
-const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
+const UpvoteButton = ({
+  text,
+  selected,
+  disabled,
+  onclick,
+  show,
+  isLikeButton,
+}) => {
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
 
@@ -41,6 +49,12 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
         stroke-linejoin="round"
       />
     </svg>
+  );
+  const likedIcon = (
+    <Like
+      fill={selected ? 'var(--content-04, #BD9CDE)' : 'none'}
+      stroke="var(--content-04, #BD9CDE)"
+    />
   );
 
   // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
@@ -99,7 +113,7 @@ const UpvoteButton = ({ text, selected, disabled, onclick, show }) => {
         pointerEvents: disabled ? 'none' : 'pointer',
       }}
     >
-      {icon}
+      {isLikeButton ? likedIcon : icon}
       {text}
     </div>
   );
