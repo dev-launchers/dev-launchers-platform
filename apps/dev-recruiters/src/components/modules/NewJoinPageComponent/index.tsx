@@ -5,16 +5,12 @@ import {
   Footer,
   Wrapper,
   Wrapjoin,
-  AreaImage,
   SelectRoleContainer,
   SelectRoleText,
   FooterFirstText,
   FooterSecondText,
 } from './StyledNewJoinPage';
 import BoxContainer from '../../common/BoxContainer';
-import ContainerImage from './ContainerImage/containerImage';
-import JoinPLeft from '../../../images/JoinPage/Join-page-image-left.png';
-import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 
 import RolesComponent, { FilteringComponentProps } from './RolesComponent';
 import { HeaderJoinPage } from './HeaderJoinPage';

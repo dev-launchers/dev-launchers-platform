@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import ConfirmationModal from '../../DetailedPage/Confirmation/ConfirmationModal';
 import { useRouter } from 'next/router';
 import BoxContainer from '../../../common/BoxContainer';
-import { Wrapper } from '../StyledTalcommunityPage';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 
 interface Props {
   handleCloseModal: () => void;
@@ -18,6 +18,7 @@ interface TalCommFormValues {
   emailID: string;
   skills: string;
   roles: string;
+  otherInfo: string;
 }
 
 export default function TalCommForm({ handleCloseModal }: Props) {
@@ -48,154 +49,184 @@ export default function TalCommForm({ handleCloseModal }: Props) {
   };
 
   return (
-    <Wrapper>
-      <BoxContainer>
-        <Formik
-          initialValues={{
-            name: '',
-            emailID: '',
-            roles: '',
-            skills: '',
-          }}
-          onSubmit={(
-            values: TalCommFormValues,
-            { setSubmitting }: FormikHelpers<TalCommFormValues>
-          ) => {
-            setSubmitting(true);
-            console.log('Formik Values at Submit:', values);
+    <BoxContainer>
+      <Formik
+        initialValues={{
+          name: '',
+          emailID: '',
+          roles: '',
+          skills: '',
+          otherInfo: '',
+        }}
+        onSubmit={(
+          values: TalCommFormValues,
+          { setSubmitting }: FormikHelpers<TalCommFormValues>
+        ) => {
+          setSubmitting(true);
+          console.log('Formik Values at Submit:', values);
 
-            console.log('Data being sent to backend:', {
-              data: {
-                name: values.name,
-                emailID: values.emailID,
-                skills: values.skills,
-                roles: values.roles,
-              },
-            });
+          console.log('Data being sent to backend:', {
+            data: {
+              name: values.name,
+              emailID: values.emailID,
+              skills: values.skills,
+              roles: values.roles,
+            },
+          });
 
-            agent.DlTalcommuser.post({
-              data: {
-                name: values.name,
-                emailID: values.emailID,
-                skills: values.skills,
-                roles: values.roles,
-              },
+          agent.DlTalcommuser.post({
+            data: {
+              name: values.name,
+              emailID: values.emailID,
+              skills: values.skills,
+              roles: values.roles,
+            },
+          })
+            .then((res) => {
+              console.log(res);
+              handleOpenConfirmationModal();
+              router.push('/join/oldjoin');
+              setSubmitting(false);
             })
-              .then((res) => {
-                console.log(res);
-                handleOpenConfirmationModal();
-                router.push('/join/oldjoin');
-                setSubmitting(false);
-              })
-              .catch((error) => {
-                setSubmitting(false);
-                console.error(
-                  'Submission Error:',
-                  error.response || error.message || error
-                );
-              });
-          }}
-          validationSchema={SignupSchema}
-        >
-          {({ errors, touched, isSubmitting }) => (
-            <atoms.Box paddingInline="0.5rem" justifyContent="center">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
+            .catch((error) => {
+              setSubmitting(false);
+              console.error('Submission Error:', error);
+            });
+        }}
+        validationSchema={SignupSchema}
+      >
+        {({ errors, touched, isSubmitting }) => (
+          <atoms.Box justifyContent="center" width="100%">
+            <Form>
+              <style>{`.tal-form input { color: #1a1a1a !important; } .tal-form label { margin-left: 0 !important; } @media (max-width: 640px) { .tal-form-inner { padding-left: 1rem; padding-right: 1rem; } }`}</style>
+              <div className="tal-form text-white">
+                <div className="tal-form-inner">
+                  <atoms.Box flexDirection="column">
+                    <atoms.Box
+                      flexDirection="column"
+                      gap="32px"
+                      paddingBlock="3rem"
+                    >
+                      <Field
+                        as={organisms.FormField}
+                        label="Full Name"
+                        placeholder="Jane Smith"
+                        id="name"
+                        name="name"
+                        required
+                        touched={touched['name']}
+                        error={errors.name}
+                      />
+                      <Field
+                        as={organisms.FormField}
+                        label="Your Email"
+                        placeholder="jane_smith@gmail.com"
+                        id="emailID"
+                        name="emailID"
+                        required
+                        touched={touched['emailID']}
+                        error={errors.emailID}
+                      />
 
-              <Form>
-                <atoms.Box flexDirection="column" margin="auto">
-                  <atoms.Box
-                    flexDirection="column"
-                    gap="32px"
-                    paddingBlock="2rem"
-                    maxWidth="fit-content"
-                  >
-                    <Field
-                      as={organisms.FormField}
-                      label="Your Full Name"
-                      placeholder="John Smith"
-                      id="name"
-                      name="name"
-                      required
-                      touched={touched['name']}
-                      error={errors.name}
-                    />
-                    <Field
-                      as={organisms.FormField}
-                      label="Your Email"
-                      placeholder="johnsmith@gmail.com"
-                      id="emailID"
-                      name="emailID"
-                      required
-                      touched={touched['emailID']}
-                      error={errors.emailID}
-                    />
+                      <Field
+                        as={organisms.FormField}
+                        label="What roles are you curious about or excited to explore?"
+                        placeholder="e.g., Developer, Product Designer, UX Researcher"
+                        required
+                        id="roles"
+                        name="roles"
+                        error={errors.roles}
+                        touched={touched.roles}
+                      />
 
-                    <Field
-                      as={organisms.FormField}
-                      label="What skills/expertise do you have?"
-                      placeholder="JavaScript, Python, React, etc.."
-                      required
-                      id="skills"
-                      name="skills"
-                      error={errors.skills}
-                      touched={touched.skills}
-                    />
-                    <Field
-                      as={organisms.FormField}
-                      label="What roles are you interested in?"
-                      placeholder="Frontend Developer, Product Manager, Marketing etc.."
-                      required
-                      id="roles"
-                      name="roles"
-                      error={errors.roles}
-                      touched={touched.roles}
-                    />
+                      <Field
+                        as={organisms.FormField}
+                        label={
+                          <span>
+                            What skills do you have?
+                            <span className="block text-sm font-normal mt-1 opacity-70">
+                              List your current skills, separated by commas
+                              (e.g., Figma, HTML/CSS, Accessibility Testing)
+                            </span>
+                          </span>
+                        }
+                        placeholder="e.g., Figma, HTML/CSS, User Interviews, GitHub, C"
+                        required
+                        id="skills"
+                        name="skills"
+                        error={errors.skills}
+                        touched={touched.skills}
+                      />
 
-                    <atoms.Typography type="p">
-                      We require users to be 18 years old or older. Please
-                      confirm below.
-                    </atoms.Typography>
-                    <atoms.Checkbox
-                      label="I am 18 years old or older."
-                      disabled={false}
-                      checked={ageCheckbox}
-                      onChange={handleSetAgeCheckbox}
-                      required
-                    />
-                    <atoms.Checkbox
-                      label="I have read and agreed to the terms and conditions"
-                      disabled={false}
-                      checked={termsCheckbox}
-                      onChange={handleSetTermsCheckbox}
-                      required
-                    />
+                      <Field
+                        as={organisms.FormField}
+                        label={
+                          <span>
+                            Anything else you would like to share with us?
+                            <span className="block text-sm font-normal mt-1 opacity-70">
+                              Tell us what you're passionate about, what you're
+                              learning, or a fun fact about you.
+                            </span>
+                          </span>
+                        }
+                        placeholder="I would like to be a Dev Launcher because..."
+                        id="otherInfo"
+                        name="otherInfo"
+                      />
 
-                    <atoms.Box maxWidth="50%">
-                      <atoms.Button
-                        size="medium"
-                        type="submit"
-                        disabled={isSubmitting}
-                      >
-                        SUBMIT
-                      </atoms.Button>
+                      <div>
+                        <atoms.Typography as="p">
+                          To join the Dev Launchers community, you must be at
+                          least 18 years old. *
+                        </atoms.Typography>
+                        <atoms.Typography
+                          as="span"
+                          size="body_sm"
+                          className="block mt-1 opacity-70"
+                        >
+                          Please confirm your eligibility and accept our terms.
+                        </atoms.Typography>
+                      </div>
+                      <atoms.Checkbox
+                        label="I confirm I'm 18 years or older."
+                        disabled={false}
+                        checked={ageCheckbox}
+                        onChange={handleSetAgeCheckbox}
+                        theme="brand"
+                        required
+                      />
+                      <atoms.Checkbox
+                        label="I've read and agree to the terms and conditions."
+                        disabled={false}
+                        checked={termsCheckbox}
+                        onChange={handleSetTermsCheckbox}
+                        theme="brand"
+                        required
+                      />
+
+                      <div className="w-fit">
+                        <Button
+                          color="nebula"
+                          size="medium"
+                          disabled={isSubmitting}
+                        >
+                          Join The Community
+                        </Button>
+                      </div>
                     </atoms.Box>
                   </atoms.Box>
-                </atoms.Box>
-                <FormErrorScroller focusAfterScroll />
-                <ConfirmationModal
-                  showModal={showConfirmationModal}
-                  handleOpenModal={handleOpenConfirmationModal}
-                  handleCloseModal={handleCloseModal}
-                />
-              </Form>
-            </atoms.Box>
-          )}
-        </Formik>
-      </BoxContainer>
-    </Wrapper>
+                  <FormErrorScroller focusAfterScroll />
+                  <ConfirmationModal
+                    showModal={showConfirmationModal}
+                    handleOpenModal={handleOpenConfirmationModal}
+                    handleCloseModal={handleCloseModal}
+                  />
+                </div>
+              </div>
+            </Form>
+          </atoms.Box>
+        )}
+      </Formik>
+    </BoxContainer>
   );
 }
