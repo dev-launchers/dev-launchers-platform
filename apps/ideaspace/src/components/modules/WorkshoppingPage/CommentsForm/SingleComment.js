@@ -65,7 +65,7 @@ function timeSince(date) {
 }
 
 function SingleCommentComponent(props) {
-  const { userData, isAuthenticated } = useUserDataContext();
+  const { userData, isAuthenticated, isLoading } = useUserDataContext();
   const [liked, setLiked] = useState(false);
   const [commentLikes, setCommentLikes] = useState([]);
 
@@ -84,9 +84,7 @@ function SingleCommentComponent(props) {
   }
 
   useEffect(() => {
-    if (userData?.id) {
-      fetchLikedAndUpdateState();
-    }
+    fetchLikedAndUpdateState();
   }, [props.id, userData?.id]);
 
   async function handleLikeClick() {
@@ -159,8 +157,9 @@ function SingleCommentComponent(props) {
                   {props.children}
                   <div style={{ marginTop: '8px' }}>
                     <UpvoteButton
+                      disabled={isLoading || !isAuthenticated}
                       onclick={handleLikeClick}
-                      show={true}
+                      show
                       isLikeButton={true}
                       selected={liked}
                       text={`${liked ? 'Liked' : 'Like'} | ${

@@ -15,8 +15,8 @@ const SignInSection = ({ label, redirectURL }) => {
           redirectURL
         }
       >
-        <atoms.Button size="medium" type="primary" color="nebula" mode="light">
-          Sign in
+        <atoms.Button size="small" type="primary" color="nebula" mode="light">
+          Sign&nbsp;in
         </atoms.Button>
       </Link>
     </SignInWrapper>

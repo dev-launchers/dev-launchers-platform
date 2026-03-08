@@ -116,7 +116,7 @@ function CommentForm(props) {
         </form>
       ) : (
         <SignInSection
-          label="Please sign in to leave a comment!"
+          label="Sign in to leave a comment or like."
           redirectURL={
             process.env.NEXT_PUBLIC_FRONT_END_URL +
             '/ideaspace/workshop/' +

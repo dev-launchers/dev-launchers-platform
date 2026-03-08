@@ -1,6 +1,5 @@
 import Like from '@devlaunchers/components/src/assets/icons/Like';
 import { useState } from 'react';
-import { Loader } from 'semantic-ui-react';
 
 const UpvoteButton = ({
   text,
@@ -58,9 +57,9 @@ const UpvoteButton = ({
   );
 
   // call two functions on click: the one passed in via onClick and another to add a border around the button to show that it was clicked
-  function clickFunc() {
-    if (disabled == false) {
-      onclick();
+  function clickFunc(e) {
+    if (!disabled) {
+      onclick(e);
     }
   }
 
@@ -68,8 +67,7 @@ const UpvoteButton = ({
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={onclick}
-      // onClick={clickFunc}
+      onClick={clickFunc}
       onMouseUp={() => setFocused(false)}
       onMouseDown={() => setFocused(true)}
       style={{
@@ -110,7 +108,7 @@ const UpvoteButton = ({
           : focused
           ? '0 0 0 var(--priority-ring-surface-spread, 4px) var(--priority-ring-border, #000) inset, 0 0 0 var(--priority-ring-border-spread, 6px) var(--priority-ring-surface, #69349D) inset'
           : 'none',
-        pointerEvents: disabled ? 'none' : 'pointer',
+        cursor: disabled ? 'not-allowed' : 'pointer',
       }}
     >
       {isLikeButton ? likedIcon : icon}
