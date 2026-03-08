@@ -93,7 +93,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         'Craft inclusive, user-centered designs that bring our ideas to life and make technology accessible to all.',
       roleName: 'UxDesigner',
-      category: 'Product / UX',
+      category: 'Design',
     },
     {
       icon: FloorPlan,
@@ -102,7 +102,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         'Lead cross-functional teams and drive strategic direction as a Product Lead shaping our digital experiences.',
       roleName: 'ProductLead',
-      category: 'Product / UX',
+      category: 'Product',
     },
     {
       icon: CaseStudy,
@@ -111,7 +111,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         "Help uncover insights that guide product decisions and ensure we're solving real human problems.",
       roleName: 'UxResearcher',
-      category: 'Product / UX',
+      category: 'Research',
     },
     {
       icon: PopularMan,
@@ -120,7 +120,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         'Tell compelling stories and grow our community through creative content and strategic outreach.',
       roleName: 'SocialMediaManager',
-      category: 'Operations',
+      category: 'Marketing',
     },
     {
       icon: SourceCode,
@@ -138,7 +138,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         'Use data to uncover patterns, inform decisions, and elevate our impact through insights.',
       roleName: 'InformationArchitect',
-      category: 'Product / UX',
+      category: 'Data Science',
     },
     {
       icon: SourceCode,
@@ -180,7 +180,6 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       </RoleGrid>
 
       <RoleGrid2>
-        <div className="hidden lg:block"></div>
         {roles.slice(6, 8).map((role, index) => (
           <RoleCategoryCard
             key={index + 6}
@@ -191,7 +190,6 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
             onClick={() => handleRoleClick(role.category)}
           />
         ))}
-        <div className="hidden lg:block"></div>
       </RoleGrid2>
     </div>
   );
