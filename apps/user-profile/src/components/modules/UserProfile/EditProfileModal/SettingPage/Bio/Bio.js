@@ -18,13 +18,11 @@ function Bio({ discardChanges }) {
   useEffect(() => {
     if (!discardChanges) return;
 
-    // clear textarea UI
-    setBioValue('');
+    setBioValue(originalBio);
 
-    // clear context value
     editProfileDispatch({
       type: editProfileActions.UPDATE_BIO,
-      payload: { newBio: '', changed: false },
+      payload: { newBio: originalBio, changed: false },
     });
   }, [discardChanges, editProfileDispatch]);
 

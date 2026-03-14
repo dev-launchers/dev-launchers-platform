@@ -8,7 +8,7 @@ const InputField = ({
   placeholder,
   required,
   touched,
-  name,
+  field,
   className,
   value,
 }) => {
@@ -20,7 +20,7 @@ const InputField = ({
       placeholder={placeholder}
       required={required}
       touched={touched}
-      name={name}
+      field={field}
       className={className}
       value={value}
     ></FormField>

@@ -12,11 +12,17 @@ function Details({ discardChanges }) {
   const { userData } = useUserDataContext();
   const { editProfileDispatch } = editProfileDataContext();
 
-  const originalFirstName = userData?.profile?.firstName ?? '';
-  const originalLastName = userData?.profile?.lastName ?? '';
-  const originalInstagram = userData?.profile?.instagram ?? '';
-  const originalGithub = userData?.profile?.github ?? '';
-  const originalLinkedIn = userData?.profile?.linkedin ?? '';
+  const fullName = userData?.name ?? '';
+  const nameParts = fullName.trim().split(/\s+/).filter(Boolean);
+  const originalFirstName = nameParts[0] ?? '';
+  const originalLastName = nameParts.slice(1).join(' ') ?? '';
+
+  const getSocialLink = (platform) =>
+    userData?.socialMediaLinks?.find((l) => l.platform === platform)?.url ?? '';
+
+  const originalInstagram = getSocialLink('instagram');
+  const originalGithub = getSocialLink('github');
+  const originalLinkedIn = getSocialLink('linkedin');
 
   const [firstName, setFirstName] = useState(originalFirstName);
   const [lastName, setLastName] = useState(originalLastName);
@@ -39,27 +45,34 @@ function Details({ discardChanges }) {
     originalLinkedIn,
   ]);
 
-  // discard changes
   useEffect(() => {
     if (!discardChanges) return;
 
-    setFirstName('');
-    setLastName('');
-    setInstagram('');
-    setGithub('');
-    setLinkedin('');
+    setFirstName(originalFirstName);
+    setLastName(originalLastName);
+    setInstagram(originalInstagram);
+    setGithub(originalGithub);
+    setLinkedin(originalLinkedIn);
 
     editProfileDispatch({
       type: editProfileActions.UPDATE_DETAILS,
       payload: {
-        firstName: '',
-        lastName: '',
-        instagram: '',
-        github: '',
-        linkedin: '',
+        firstName: originalFirstName,
+        lastName: originalLastName,
+        instagram: originalInstagram,
+        github: originalGithub,
+        linkedin: originalLinkedIn,
       },
     });
-  }, [discardChanges, editProfileDispatch]);
+  }, [
+    discardChanges,
+    originalFirstName,
+    originalLastName,
+    originalInstagram,
+    originalGithub,
+    originalLinkedIn,
+    editProfileDispatch,
+  ]);
 
   const onFieldChange = (key, setter) => (e) => {
     const value = e.target.value;
@@ -85,14 +98,20 @@ function Details({ discardChanges }) {
       <div className="flex flex-1 min-h-0 gap-10">
         <div className="flex flex-col items-start gap-8 shrink-0">
           <div className="w-28 h-30 rounded-full border-4 border-white shadow overflow-hidden">
-            <ProfileImage imgSrc={userData?.profilePictureUrl} />
+            <ProfileImage imgSrc={userData?.profile?.profilePictureUrl} />
           </div>
 
           <div className="flex gap-4">
-            <button className="w-12 h-12 flex items-center justify-center bg-white border border-grayscale-200 rounded-lg shadow hover:bg-grayscale-50 transition-all">
+            <button
+              className="w-12 h-12 flex items-center justify-center bg-white border border-grayscale-200 rounded-lg shadow hover:bg-grayscale-50 transition-all"
+              type="button"
+            >
               <img src={trashCan} alt="Trash Icon" className="w-6 h-6" />
             </button>
-            <button className="w-12 h-12 flex items-center justify-center bg-white border border-grayscale-200 rounded-lg shadow hover:bg-grayscale-50 transition-all">
+            <button
+              className="w-12 h-12 flex items-center justify-center bg-white border border-grayscale-200 rounded-lg shadow hover:bg-grayscale-50 transition-all"
+              type="button"
+            >
               <img src={pencil} alt="Pencil Icon" className="w-6 h-6" />
             </button>
           </div>

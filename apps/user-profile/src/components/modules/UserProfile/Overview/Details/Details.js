@@ -16,9 +16,7 @@ function Details({ details }) {
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <img src={mapPin} className="h-6 w-6" alt="Location" />
-            <atoms.Typography>
-              {userData?.profile?.displayName ?? ''}
-            </atoms.Typography>
+            <atoms.Typography>{userData?.name ?? ''}</atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">

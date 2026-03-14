@@ -1,40 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { atoms } from '@devlaunchers/components/components';
+import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../../context/EditProfileDataContext';
 import { editProfileActions } from '../../../../../../state/actions';
 import { agent } from '@devlaunchers/utility';
 
 function Skills({ discardChanges }) {
+  const { userData } = useUserDataContext();
   const { editProfileDispatch } = editProfileDataContext();
+
   const [allSkills, setAllSkills] = useState([]);
+  const [skillList, setSkillList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isModified, setIsModified] = useState(false);
 
-  // fetch ALL skills
+  const selectedFromUser = useMemo(() => userData?.skills ?? [], [userData]);
+
   useEffect(() => {
     setLoading(true);
 
     agent.Skills.get()
       .then((items) => {
         const skills = Array.isArray(items)
-          ? items?.map((x) => ({
+          ? items.map((x) => ({
               id: x.id,
               ...x.attributes,
-              selected: false,
             }))
           : [];
-        console.log('skills 5667', skills);
+
         setAllSkills(skills);
       })
       .catch((e) => console.error('Fetch skills failed:', e))
       .finally(() => setLoading(false));
   }, []);
 
-  //  sync local state → global state
   useEffect(() => {
     if (!allSkills.length) return;
 
-    const selected = allSkills.filter((s) => s.selected);
+    const selectedIds = new Set((selectedFromUser ?? []).map((x) => x.id));
+
+    const merged = allSkills.map((x) => ({
+      ...x,
+      selected: selectedIds.has(x.id),
+    }));
+
+    setSkillList(merged);
+
+    if (discardChanges) {
+      setIsModified(false);
+    }
+  }, [allSkills, selectedFromUser, discardChanges]);
+
+  useEffect(() => {
+    if (!skillList.length) return;
+
+    const selected = skillList.filter((s) => s.selected);
 
     editProfileDispatch({
       type: editProfileActions.SET_SKILLS,
@@ -46,18 +66,11 @@ function Skills({ discardChanges }) {
         type: editProfileActions.MARK_SKILLS_CHANGED,
       });
     }
-  }, [allSkills, isModified, editProfileDispatch]);
+  }, [skillList, isModified, editProfileDispatch]);
 
-  useEffect(() => {
-    if (!discardChanges) return;
-    setAllSkills((prev) => prev.map((s) => ({ ...s, selected: false })));
-    setIsModified(false);
-  }, [discardChanges]);
-
-  // only local update
   const toggle = (id) => {
     setIsModified(true);
-    setAllSkills((prev) =>
+    setSkillList((prev) =>
       prev.map((s) => (s.id === id ? { ...s, selected: !s.selected } : s))
     );
   };
@@ -65,7 +78,7 @@ function Skills({ discardChanges }) {
   if (loading) return <div className="text-center">loading Skills...</div>;
 
   return (
-    <div className="flex flex-col items-start gap-8 ">
+    <div className="flex flex-col items-start gap-8">
       <div className="text-left">
         <atoms.Typography as="h3" textWeight="bold">
           Skills
@@ -77,24 +90,24 @@ function Skills({ discardChanges }) {
       </div>
 
       <div className="flex flex-wrap gap-4 w-full">
-        {allSkills.map((skill) => (
+        {skillList.map((skill) => (
           <atoms.Button
             key={skill.id}
             type={skill.selected ? 'secondary' : 'primary'}
             mode="light"
             onClick={() => toggle(skill.id)}
             className={`
-        inline-flex items-center justify-center gap-2
-        px-5 py-2.5
-        rounded-xl border
-        whitespace-nowrap text-lg leading-none
-        transition-all duration-200
-        ${
-          skill.selected
-            ? 'bg-[#D9D9D9] text-black border-[#D9D9D9]'
-            : 'bg-transparent text-white border-white'
-        }
-      `}
+              inline-flex items-center justify-center gap-2
+              px-5 py-2.5
+              rounded-xl border
+              whitespace-nowrap text-lg leading-none
+              transition-all duration-200
+              ${
+                skill.selected
+                  ? 'bg-[#D9D9D9] text-black'
+                  : 'bg-transparent text-white'
+              }
+            `}
           >
             <span>{skill.interest ?? skill.name}</span>
 

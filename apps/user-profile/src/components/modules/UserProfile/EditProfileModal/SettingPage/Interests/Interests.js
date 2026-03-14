@@ -14,42 +14,26 @@ export default function Interests({ discardChanges }) {
   const [loading, setLoading] = useState(false);
   const [isModified, setIsModified] = useState(false);
 
-  // selected interests from logged-in user
   const selectedFromUser = useMemo(() => userData?.interests ?? [], [userData]);
 
-  // fetch ALL interests
   useEffect(() => {
     setLoading(true);
 
     agent.Interests.get()
       .then((items) => {
         const list = Array.isArray(items)
-          ? items?.map((x) => ({ id: x.id, ...x.attributes }))
+          ? items.map((x) => ({ id: x.id, ...x.attributes }))
           : [];
 
-        setAllInterests(list ?? []);
+        setAllInterests(list);
       })
       .catch((e) => console.error('Fetch interests failed:', e))
       .finally(() => setLoading(false));
   }, []);
 
-  // merge ALL + selected (initialize local state only)
   useEffect(() => {
     if (!allInterests.length) return;
 
-    // If discard triggered → clear everything
-    if (discardChanges) {
-      const cleared = allInterests.map((x) => ({
-        ...x,
-        selected: false,
-      }));
-
-      setInterestList(cleared);
-      setIsModified(false);
-      return;
-    }
-
-    // Normal load behavior
     const selectedIds = new Set((selectedFromUser ?? []).map((x) => x.id));
 
     const merged = allInterests.map((x) => ({
@@ -58,9 +42,12 @@ export default function Interests({ discardChanges }) {
     }));
 
     setInterestList(merged);
+
+    if (discardChanges) {
+      setIsModified(false);
+    }
   }, [allInterests, selectedFromUser, discardChanges]);
 
-  // sync local state → global state
   useEffect(() => {
     if (!interestList.length) return;
 
@@ -72,17 +59,12 @@ export default function Interests({ discardChanges }) {
     });
 
     if (isModified) {
-      editProfileDispatch({ type: editProfileActions.MARK_INTERESTS_CHANGED });
+      editProfileDispatch({
+        type: editProfileActions.MARK_INTERESTS_CHANGED,
+      });
     }
   }, [interestList, isModified, editProfileDispatch]);
 
-  useEffect(() => {
-    if (!discardChanges) return;
-    setInterestList((prev) => prev.map((i) => ({ ...i, selected: false })));
-    setIsModified(false);
-  }, [discardChanges]);
-
-  // only local update
   const toggle = (id) => {
     setIsModified(true);
     setInterestList((prev) =>
@@ -93,7 +75,7 @@ export default function Interests({ discardChanges }) {
   if (loading) return <div className="text-center">Loading interests...</div>;
 
   return (
-    <div className="flex flex-col   items-start gap-8">
+    <div className="flex flex-col items-start gap-8">
       <div className="text-left">
         <atoms.Typography as="h3" textWeight="bold">
           Interests
@@ -103,6 +85,7 @@ export default function Interests({ discardChanges }) {
           projects that match your interests
         </atoms.Typography>
       </div>
+
       <div className="flex flex-wrap gap-4 w-full">
         {interestList.map((interest) => (
           <atoms.Button
@@ -111,17 +94,17 @@ export default function Interests({ discardChanges }) {
             mode="light"
             onClick={() => toggle(interest.id)}
             className={`
-        inline-flex items-center justify-center gap-2
-        px-5 py-2.5
-        rounded-xl border
-        whitespace-nowrap text-lg leading-none
-        transition-all duration-200
-        ${
-          interest.selected
-            ? 'bg-[#D9D9D9] text-black '
-            : 'bg-transparent text-white'
-        }
-      `}
+              inline-flex items-center justify-center gap-2
+              px-5 py-2.5
+              rounded-xl border
+              whitespace-nowrap text-lg leading-none
+              transition-all duration-200
+              ${
+                interest.selected
+                  ? 'bg-[#D9D9D9] text-black'
+                  : 'bg-transparent text-white'
+              }
+            `}
           >
             <span>{interest.interest ?? interest.name}</span>
 
