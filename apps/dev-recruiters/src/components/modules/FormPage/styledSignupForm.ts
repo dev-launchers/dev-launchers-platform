@@ -184,13 +184,11 @@ export const GradientLine = styled.div<{ height?: string }>`
 export const ModalUploadSection = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
   font-family: ${(props) => props.theme?.fonts?.normal};
   font-style: normal;
   font-weight: 400;
-  background-color: gray;
-
   & h3 {
     font-family: ${(props) => props.theme?.fonts?.normal};
     font-style: normal;
