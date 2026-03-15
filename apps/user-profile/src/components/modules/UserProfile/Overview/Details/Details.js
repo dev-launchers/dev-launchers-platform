@@ -8,31 +8,34 @@ import { useUserDataContext } from '@devlaunchers/components/context/UserDataCon
 
 function Details({ details }) {
   const { userData } = useUserDataContext();
-  const year = new Date(userData?.profile?.publishedAt).getFullYear();
+  const publishedAt = userData?.profile?.publishedAt;
+  const date = publishedAt ? new Date(publishedAt) : null;
+  const year =
+    date && !Number.isNaN(date.getTime()) ? date.getFullYear() : null;
 
   return (
     <Card title="Details">
       {details ? (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <img src={mapPin} className="h-6 w-6" alt="Location" />
+            <img src={mapPin} className="h-6 w-6" alt="Name icon" />
             <atoms.Typography>{userData?.name ?? ''}</atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={suitCase} className="h-6 w-6" alt="Instagram" />
+            <img src={suitCase} className="h-6 w-6" alt="Member since icon" />
             <atoms.Typography>Member Since {year}</atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={rocketLaunch} className="h-6 w-6" alt="GitHub" />
+            <img src={rocketLaunch} className="h-6 w-6" alt="Experience icon" />
             <atoms.Typography>
               {userData?.profile?.user?.experience}
             </atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={linkIcon} className="h-6 w-6" alt="LinkedIn" />
+            <img src={linkIcon} className="h-6 w-6" alt="Email icon" />
             <atoms.Typography>
               {userData?.profile?.user?.email}
             </atoms.Typography>

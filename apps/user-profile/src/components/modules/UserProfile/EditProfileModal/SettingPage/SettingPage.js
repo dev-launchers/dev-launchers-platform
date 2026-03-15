@@ -146,8 +146,8 @@ function SettingPage({ onClose }) {
         <div className="flex py-4 pr-14 gap-10 w-full justify-end items-center h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC]">
           <div>
             <atoms.Button
-              buttonType="secondary"
-              buttonSize="standard"
+              type="secondary"
+              size="medium"
               color="cosmic"
               onClick={() => SetDiscardChanges((v) => v + 1)}
             >
@@ -156,8 +156,8 @@ function SettingPage({ onClose }) {
           </div>
           <div>
             <atoms.Button
-              buttonType="primary"
-              buttonSize="standard"
+              type="primary"
+              size="medium"
               color="neptune"
               onClick={onSave}
               disabled={disableSave}
