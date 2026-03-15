@@ -102,7 +102,7 @@ const CollapsibleContainer: React.FC<CollapsibleContainerProps> = ({
       description:
         'Lead cross-functional teams and drive strategic direction as a Product Lead shaping our digital experiences.',
       roleName: 'ProductLead',
-      category: 'Product',
+      category: 'Product/UX',
     },
     {
       icon: CaseStudy,
