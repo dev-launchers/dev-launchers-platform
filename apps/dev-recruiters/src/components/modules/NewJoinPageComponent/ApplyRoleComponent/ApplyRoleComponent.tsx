@@ -66,6 +66,8 @@ const ApplyRoleComponent = ({
     const handleFiles = (uploadedFiles) => {
       console.log('Uploaded files:', uploadedFiles);
       setFilesUploaded(uploadedFiles);
+
+      handleUploadCloseModal(); // Close modal after upload file
     };
 
     return (
@@ -100,30 +102,40 @@ const ApplyRoleComponent = ({
 
   const handleUploadCloseModal = () => setIsModalOpen(false);
 
-  const handleRemoveFile = () => {
+  // Fix deletion logic
+  const handleRemoveFile = async () => {
+    if (!filesUploaded?.id || isDeleting) return;
     setIsDeleting(true);
-    const newArr = [...selectedFiles];
+    setDeleteError('');
+
+    // const newArr = [...selectedFiles];
     try {
-      agent.GoogledriveFile.delete(`${filesUploaded['id']}`)
-        .then((responseBody) => {
-          if (responseBody.status === 200) {
-            newArr.splice(filesUploaded[0], 1);
-            setSelectedFiles([]);
-            setSelectedFiles(newArr);
-            setFilesUploaded({});
-            setIsDeleting(false);
-            setDeleteError('');
-          }
-        })
-        .catch((error) => {
-          setDeleteError('Error deleting file');
-          setIsDeleting(false);
-          window.alert('Error deleting file. Please try again.');
-        });
+      const response = await agent.GoogledriveFile.delete(filesUploaded.id);
+        // .then((responseBody) => {
+        //   if (responseBody.status === 200) {
+        //     // newArr.splice(filesUploaded[0], 1);
+        //     // setSelectedFiles([]);
+        //     setSelectedFiles(newArr);
+        //     setFilesUploaded({});
+        //     setIsDeleting(false);
+        //     setDeleteError('');
+        //   }
+        // })
+        setSelectedFiles((prev) => 
+          prev.filter((file) => file.id !== filesUploaded.id)
+        );
+        setFilesUploaded({});
+      // } catch (error) => {
+      //     setDeleteError('Error deleting file');
+      //     setIsDeleting(false);
+      //     window.alert('Error deleting file. Please try again.');
+      //   });
     } catch (error) {
       setDeleteError('Error deleting file');
-      setIsDeleting(false);
+      // setIsDeleting(false);
       window.alert('Error deleting file. Please try again.');
+    } finally {
+      setIsDeleting(false);
     }
   };
 

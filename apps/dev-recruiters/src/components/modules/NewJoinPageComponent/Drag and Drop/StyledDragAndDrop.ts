@@ -1,20 +1,4 @@
 import styled from 'styled-components';
-export const ChooseFiles = styled.input`
-  display: flex;
-  width: 155px;
-  height: 40px;
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-
-  border-radius: 8px;
-  background: #fff;
-
-  /* Shadow/shadow-500 */
-  box-shadow: 0px 10px 18px 10px rgba(127, 126, 127, 0.25);
-`;
 export const AllSection = styled.div`
   display: flex;
   flex-direction: row;
@@ -45,7 +29,7 @@ export const ChooseFileSection = styled.div`
   flex: 1;
   align-item: center;
   justify-content: center;
-  padding: 39px;
+  padding: 42px;
   gap: 20px;
 
   & h3 {

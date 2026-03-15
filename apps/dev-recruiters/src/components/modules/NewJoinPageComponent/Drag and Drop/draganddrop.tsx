@@ -23,77 +23,91 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
   const [uploadError, setUploadError] = useState('');
   const [canButVis, setCanButVis] = useState(true);
-  const portfolioUploadformData = new FormData();
+  // const portfolioUploadformData = new FormData();
 
   const [dragActive, setDragActive] = useState<boolean>(false);
   const uploadErrorMsg =
     'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 5MB)';
-  const fileUpload = async (inFiles) => {
-    let uploadStatus = true;
+  const fileUpload = async (inFiles: File[]) => {
+    // let uploadStatus = true;
     setUploadError(null);
+    if (!inFiles.length) return;
+    const file = inFiles[0];
 
-    if (inFiles.length > 0) setIsUploading(true);
-    else setIsUploading(false);
+    if (!allowedExtensions.test(file.name) || file.size > maxSizeInBytes) {
+      setUploadError(uploadErrorMsg);
+      return;
+    }
+    setIsUploading(true)
 
-    const response = async () => {
-      if (inFiles.length > 0 && !allowedExtensions.exec(inFiles[0].name)) {
-        setUploadError(uploadErrorMsg);
-        setIsUploading(false);
-        uploadStatus = false;
-        return false;
-      }
+    // if (inFiles.length > 0) setIsUploading(true);
+    // else setIsUploading(false);
+
+    // const response = async () => {
+    //   if (inFiles.length > 0 && !allowedExtensions.test(inFiles[0].name)) {
+    //     setUploadError(uploadErrorMsg);
+    //     setIsUploading(false);
+    //     uploadStatus = false;
+    //     return false;
+    //   }
       // Check file size
 
-      if (inFiles.length > 0 && inFiles[0].size > maxSizeInBytes) {
-        setUploadError(uploadErrorMsg);
+    //   if (inFiles.length > 0 && inFiles[0].size > maxSizeInBytes) {
+    //     setUploadError(uploadErrorMsg);
 
-        setIsUploading(false);
-        uploadStatus = false;
-        return false;
-      }
-      return true;
-    };
-    const responseResult = await response();
+    //     setIsUploading(false);
+    //     uploadStatus = false;
+    //     return false;
+    //   }
+    //   return true;
+    // };
+    // const responseResult = await response();
+    const portfolioUploadformData = new FormData();
+    portfolioUploadformData.append('files', file);
+    // if (responseResult === true) {
+    //   portfolioUploadformData.append('files', inFiles[0]);
 
-    if (responseResult === true) {
-      portfolioUploadformData.append('files', inFiles[0]);
+    try {
+        const responseBody = await agent.GoogledriveFile.post(portfolioUploadformData)
+        const fileData = responseBody.data;
+        // Handle response
+        onFilesUploaded(fileData);
+        setUploadFiles(fileData);
+        // setCanButVis(true);
+        setShowUploadModal(false);
+        setSelectFiles([file])
+        // setIsUploading(false);
+        // uploadStatus = false;
+          
+        // if (!uploadStatus) return postResult;
+        // else return 'Not uploaded';
 
-      if (portfolioUploadformData !== undefined) {
-        try {
-          const postResult = await agent.GoogledriveFile.post(
-            portfolioUploadformData
-          ).then((responseBody) => {
-            onFilesUploaded(responseBody);
-            setUploadFiles(responseBody);
-            setCanButVis(true);
-            setShowUploadModal(false);
-            setIsUploading(false);
-            uploadStatus = false;
-          });
-          if (!uploadStatus) return postResult;
-          else return 'Not uploaded';
-        } catch (error) {
-          setUploadError('Error uploading files');
-          setIsUploading(false);
-          return 'Upload failed due to an error';
-        }
-      } else return 'file Empty';
+        // console.log('Uploaded file:', fileData); // Test the result
+    } catch (error) {
+        setUploadError('Error uploading files');
+        // setIsUploading(false);
+        // return 'Upload failed due to an error';
+        // } else return 'file Empty';
+    } finally {
+      setIsUploading(false);
     }
   };
 
   const handleFileSelectChange = async ( 
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    let sampleOutput = {
-      id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
-      name: 'Energy.jpg',
-      mimeType: 'image/jpeg',
-      parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
-      webViewLink:
-        'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
-    };
+    // let sampleOutput = {
+    //   id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
+    //   name: 'Energy.jpg',
+    //   mimeType: 'image/jpeg',
+    //   parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
+    //   webViewLink:
+    //     'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
+    // };
+
+    if (!event.target.files?.length) return; // If the user does not select any file, the operation stops and no action is taken.
     const inputFiles = Array.from(event.target.files);
-    fileUpload(inputFiles);
+    await fileUpload(inputFiles);
   };
 
   function dropHandler(e: any): void {
@@ -105,7 +119,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         e.dataTransfer.files[0],
       ]);
     }
-    fileUpload(e.dataTransfer.files);
+    fileUpload(Array.from(e.dataTransfer.files));
   }
 
   function dragLeaver(e: any): void {
@@ -124,10 +138,12 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
   }
 
   return (
-    <AllSection>
-      <ChooseFileSection>
-        <h3>Drop your files here or select them using the button below</h3>
-
+    <>
+      {!filesUploaded?.id && (
+        <AllSection>
+        <ChooseFileSection>
+        <h3>Drop your files here or select them using the button below</h3>  
+        <div>
         <button
           type='button'
           onClick={() => fileInputRef.current?.click()}
@@ -143,7 +159,6 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
           CHOOSE FILES
         </button>
 
-
         <input
           // id="fileSelect"
           ref={fileInputRef}
@@ -154,26 +169,10 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
           }}
           accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
         />
+        </div>
+      </ChooseFileSection>
 
-        {/* Display files + Add delete button */}
-        {/* {selectFiles.length > 0 && (
-          <div style={{ marginTop: '10px' }}>
-            <span>{selectFiles[0].name}</span>
-            <button
-              type='button'
-              onClick={() => {
-                setSelectFiles([]);
-                setUploadFiles([]);
-                setUploadError('');
-                if (fileInputRef.current) fileInputRef.current.value = '';
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        )} */}
-
-        {isUploading ? (
+        {/* {isUploading ? (
           'Uploading'
         ) : filesUploaded.id === undefined || filesUploaded.id === null ? (
           <atoms.Box gap="30px">
@@ -185,8 +184,8 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
               {uploadError}
             </atoms.Typography>
           </atoms.Box>
-        ) : null}
-      </ChooseFileSection>
+        ) : null} */}
+      {/* </ChooseFileSection> */}
       <div
         id="drop_zone"
         onDragEnter={(e) => dragEnter(e)}
@@ -207,5 +206,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         </AllPageSection>
       </div>
     </AllSection>
+    )}
+  </>
   );
 }
