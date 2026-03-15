@@ -9,6 +9,8 @@ import SocialLinks from './SocialLinks';
 import ThirdPartyLinks from './ThirdPartyLinks';
 import { editProfileDataContext } from '../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../state/actions';
+import { atoms } from '@devlaunchers/components/components';
+import pencil from '../../../../../src/images/icons/pencil.svg';
 
 function ProfileHeader() {
   const { editProfileDispatch } = editProfileDataContext();
@@ -31,9 +33,10 @@ function ProfileHeader() {
 
   const handleEditClick = () => {
     // console.log(handleEditClick);
-    editProfileDispatch({
-      type: editProfileActions.SHOW_PHOTO_SETTING,
-    });
+    // editProfileDispatch({
+    //   type: editProfileActions.SHOW_PHOTO_SETTING,
+    // });
+    editProfileDispatch({ type: editProfileActions.SHOW_DETAILS_SETTING });
   };
 
   return (
@@ -65,8 +68,19 @@ function ProfileHeader() {
         </div>
 
         {/* right side */}
-        <div className="flex flex-col text-right">
-          <EditButton onEdit={handleEditClick} />
+        <div className="flex w-full justify-end items-start pt-6 ">
+          <button
+            type="button"
+            onClick={handleEditClick}
+            className="inline-flex items-center gap-1 whitespace-nowrap  border-2 rounded-lg border-[#cfd8e3] bg-transparent px-3 py-3"
+          >
+            <span>Edit Profile</span>
+            <img
+              src={pencil}
+              alt="Pencil Icon"
+              className="w-5 h-5 shrink-0 object-contain"
+            />
+          </button>
         </div>
       </div>
     </div>

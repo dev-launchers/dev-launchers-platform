@@ -20,6 +20,11 @@ const editProfileInitialState = {
   },
   photo: null,
   bio: null,
+  firstName: '',
+  lastName: '',
+  instagram: '',
+  github: '',
+  linkedin: '',
   skills: [],
   interests: [],
   saveInProgress: false,
@@ -84,6 +89,7 @@ const editProfileReducer = (state, action) => {
           bioChanged: false,
           interestsChanged: false,
           skillsChanged: false,
+          detailsChanged: false,
         },
         saveInProgress: false,
       };
@@ -221,6 +227,16 @@ const editProfileReducer = (state, action) => {
         pages: {
           ...state.pages,
           showInterests: false,
+        },
+      };
+    }
+    case editProfileActions.UPDATE_DETAILS: {
+      return {
+        ...state,
+        ...action.payload,
+        changes: {
+          ...state.changes,
+          detailsChanged: true,
         },
       };
     }

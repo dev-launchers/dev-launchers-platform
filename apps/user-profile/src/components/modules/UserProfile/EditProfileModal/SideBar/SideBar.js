@@ -114,6 +114,14 @@ function SideBar() {
             PHOTO
           </Typography>
         </li> */}
+
+        <li className={styling.details.li} onClick={onDetailsClick}>
+          <OutlinedNote colorClass={styling.details.iconColor} />
+          <Typography type="p" className={styling.details.typography}>
+            {' '}
+            DETAILS{' '}
+          </Typography>
+        </li>
         <li className={styling.bio.li} onClick={onBioClick}>
           <OutlinedPerson colorClass={styling.bio.iconColor} />
           <Typography
@@ -122,13 +130,6 @@ function SideBar() {
             className={styling.bio.typography}
           >
             BIO
-          </Typography>
-        </li>
-        <li className={styling.details.li} onClick={onDetailsClick}>
-          <OutlinedNote colorClass={styling.details.iconColor} />
-          <Typography type="p" className={styling.details.typography}>
-            {' '}
-            DETAILS{' '}
           </Typography>
         </li>
         <li className={styling.skills.li} onClick={onSkillsClick}>
