@@ -1,13 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-import { atoms } from '@devlaunchers/components/src/components';
+import { Button, Box } from '@devlaunchers/components/src/components/atoms';
 import { SignInWrapper } from './StyledSignInSection';
 
-const SignInSection = ({ label, redirectURL }) => {
+const SignInSection = ({ label, redirectURL, headerTitle }) => {
   return (
     <SignInWrapper>
-      <atoms.Box flexDirection="column">{label}</atoms.Box>
-      <br />
+      <Box flexDirection="column">
+        <span className="text-2xl mb-2">{headerTitle}</span>
+        <span className="text-sm md:text-lg mb-4">{label}</span>
+      </Box>
       <Link
         href={
           process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL +
@@ -15,9 +17,9 @@ const SignInSection = ({ label, redirectURL }) => {
           redirectURL
         }
       >
-        <atoms.Button size="small" type="primary" color="nebula" mode="light">
-          Sign&nbsp;in
-        </atoms.Button>
+        <Button size="small" type="primary" color="nebula" mode="light">
+          Sign in
+        </Button>
       </Link>
     </SignInWrapper>
   );

@@ -54,7 +54,7 @@ function CommentForm(props) {
 
   // move to WorkshoppingPage?
   return (
-    <div className="container">
+    <div className="w-full">
       {isAuthenticated ? (
         <form
           onSubmit={handleSubmit}
@@ -94,7 +94,7 @@ function CommentForm(props) {
                     e.currentTarget.style.border = 'none';
                   }}
                   type="submit"
-                  className="rounded-full text-white"
+                  className="rounded-full text-white send-button"
                   style={{
                     position: 'absolute',
                     right: '10px',
@@ -116,7 +116,8 @@ function CommentForm(props) {
         </form>
       ) : (
         <SignInSection
-          label="Sign in to leave a comment or like."
+          label="Sign in or create an account to upvote ideas and join the discussion"
+          headerTitle="Want to join the discussion?"
           redirectURL={
             process.env.NEXT_PUBLIC_FRONT_END_URL +
             '/ideaspace/workshop/' +
