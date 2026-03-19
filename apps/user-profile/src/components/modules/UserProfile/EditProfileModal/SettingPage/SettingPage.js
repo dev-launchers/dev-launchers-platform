@@ -4,34 +4,36 @@ import DetailsSetting from './Details';
 import SkillsSetting from './Skills';
 import InterestsSetting from './Interests';
 import Loader from './../../../../common/Loader';
-import Button from '@devlaunchers/components/components/atoms/Button';
 import agent from '@devlaunchers/utility/agent';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../../state/actions';
-import axios from 'axios';
+import { useState } from 'react';
+import { atoms } from '@devlaunchers/components/components';
 
 function SettingPage({ onClose }) {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
+  const [discardChanges, SetDiscardChanges] = useState(0);
 
   const { userData, updateUserData } = useUserDataContext();
 
   const disableSave =
     !editProfileState.changes.bioChanged &&
     !editProfileState.changes.interestsChanged &&
-    !editProfileState.changes.skillsChanged;
+    !editProfileState.changes.skillsChanged &&
+    !editProfileState.changes.detailsChanged;
 
   const showSetting = () => {
     if (editProfileState.pages.showPhoto) {
       return <PhotoSetting />;
     } else if (editProfileState.pages.showBio) {
-      return <BioSetting />;
+      return <BioSetting discardChanges={discardChanges} />;
     } else if (editProfileState.pages.showDetails) {
-      return <DetailsSetting />;
+      return <DetailsSetting discardChanges={discardChanges} />;
     } else if (editProfileState.pages.showSkills) {
-      return <SkillsSetting />;
+      return <SkillsSetting discardChanges={discardChanges} />;
     } else if (editProfileState.pages.showInterests) {
-      return <InterestsSetting />;
+      return <InterestsSetting discardChanges={discardChanges} />;
     } else {
       return null;
     }
@@ -41,7 +43,7 @@ function SettingPage({ onClose }) {
     onClose();
   };
 
-  const onSave = () => {
+  const onSave = async () => {
     const profileId = userData?.profile?.id;
     if (profileId) {
       const requestBody = { data: {} };
@@ -51,6 +53,24 @@ function SettingPage({ onClose }) {
         requestBody.data.bio = editProfileState.bio;
       }
 
+      // save details to strapi user if changed
+      if (editProfileState.changes.detailsChanged) {
+        const userId = userData?.id;
+
+        const fullName =
+          `${editProfileState.firstName} ${editProfileState.lastName}`.trim();
+
+        const socialMediaLinks = [
+          { platform: 'instagram', url: editProfileState.instagram ?? '' },
+          { platform: 'github', url: editProfileState.github ?? '' },
+          { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
+        ].filter((x) => x.url && x.url.trim() !== '');
+
+        await agent.User.put(userId, {
+          name: fullName,
+          socialMediaLinks,
+        });
+      }
       // stops multiple triggers from happening
       if (!editProfileState.saveInProgress) {
         editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
@@ -84,6 +104,22 @@ function SettingPage({ onClose }) {
             updateUserData((prev) => ({
               ...prev,
               bio: editProfileState.bio,
+              name: editProfileState.changes.detailsChanged
+                ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
+                : prev.name,
+              socialMediaLinks: editProfileState.changes.detailsChanged
+                ? [
+                    {
+                      platform: 'instagram',
+                      url: editProfileState.instagram ?? '',
+                    },
+                    { platform: 'github', url: editProfileState.github ?? '' },
+                    {
+                      platform: 'linkedin',
+                      url: editProfileState.linkedin ?? '',
+                    },
+                  ].filter((x) => x.url && x.url.trim() !== '')
+                : prev.socialMediaLinks,
               interests: editProfileState.changes.interestsChanged
                 ? editProfileState.interests
                 : prev.interests,
@@ -109,18 +145,20 @@ function SettingPage({ onClose }) {
       {editProfileState.showModalFooter ? (
         <div className="flex py-4 pr-14 gap-10 w-full justify-end items-center h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC]">
           <div>
-            <Button
-              buttonType="secondary"
-              buttonSize="standard"
-              onClick={onCancel}
+            <atoms.Button
+              type="secondary"
+              size="medium"
+              color="cosmic"
+              onClick={() => SetDiscardChanges((v) => v + 1)}
             >
-              Cancel
-            </Button>
+              Discard Changes
+            </atoms.Button>
           </div>
           <div>
-            <Button
-              buttonType="primary"
-              buttonSize="standard"
+            <atoms.Button
+              type="primary"
+              size="medium"
+              color="neptune"
               onClick={onSave}
               disabled={disableSave}
             >
@@ -129,9 +167,9 @@ function SettingPage({ onClose }) {
                   <span>Saving</span> <Loader borderColorClass="border-white" />{' '}
                 </p>
               ) : (
-                'Save'
+                'Save Profile'
               )}
-            </Button>
+            </atoms.Button>
           </div>
         </div>
       ) : null}
