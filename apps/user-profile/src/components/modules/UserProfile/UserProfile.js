@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { EditProfileDataProvider } from './../../../context/EditProfileDataContext';
@@ -17,14 +16,21 @@ import EditProfileModal from './EditProfileModal';
  * @param {*} { publicUserData, isPublic }
  * @return {*}
  */
-export default function UserProfile() {
+export default function UserProfile({ publicUserData, isPublic }) {
+  let userData;
+  if (isPublic) {
+    userData = publicUserData;
+  } else {
+    userData = useUserDataContext().userData;
+  }
+
   const { sidebarState } = useSidebarDataContext();
 
   const { pages } = sidebarState;
 
   const showPages = () => {
     if (pages?.showOverview) {
-      return <Overview />;
+      return <Overview userData={userData} />;
     }
     // else if (pages?.showProjects) {
     //   return <UserProjects myProjects={myProjects} />;
@@ -38,15 +44,15 @@ export default function UserProfile() {
     else if (pages?.showChatbot) {
       return <Chatbot />;
     } else {
-      return <Overview />;
+      return <Overview userData={userData} />;
     }
   };
 
+  const sideBar = isPublic ? null : <SideBar />;
+
   return (
     <div className="flex flex-row bg-[#f9f9f9]">
-      <div className="w-72">
-        <SideBar />
-      </div>
+      <div className="w-72">{sideBar}</div>
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
           {showPages()}

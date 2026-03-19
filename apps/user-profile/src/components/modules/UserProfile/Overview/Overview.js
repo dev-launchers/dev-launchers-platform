@@ -1,21 +1,18 @@
 import React from 'react';
 import ProfileHeader from './../ProfileHeader';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import Bio from './Bio';
 import Interests from './Interests';
 import Ideas from './Ideas';
 import IdeaCTABanner from './Ideas/IdeaCTABanner';
 import { editProfileActions } from './../../../../state/actions';
 
-function Overview() {
-  const { userData } = useUserDataContext();
-
+function Overview({ userData }) {
   const interests = userData?.interests || [];
   const skills = userData?.skills || [];
   return (
     <>
       <div className="flex flex-col gap-9">
-        <ProfileHeader />
+        <ProfileHeader userData={userData} />
         <div className="flex gap-9">
           <Bio bio={userData?.bio} />
           <Interests

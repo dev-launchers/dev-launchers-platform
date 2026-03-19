@@ -1,5 +1,4 @@
 import React from 'react';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import profileHeaderBackground from './../../../../images/profile/profile-header-bg.jpg';
 import ProfileImage from './../../../common/ProfileImage';
 import EditButton from './../../../common/EditButton';
@@ -10,9 +9,8 @@ import ThirdPartyLinks from './ThirdPartyLinks';
 import { editProfileDataContext } from '../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../state/actions';
 
-function ProfileHeader() {
+function ProfileHeader({ userData }) {
   const { editProfileDispatch } = editProfileDataContext();
-  const { userData } = useUserDataContext();
 
   const createdAt = userData?.profile?.publishedAt;
   const options = {

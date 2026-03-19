@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import UserProfile from '../../components/modules/UserProfile';
+import { SidebarDataProvider } from './../../context/SidebarDataContext';
 
 export const getStaticPaths = async () => {
   return {
@@ -33,7 +34,9 @@ export const getStaticProps = async (context) => {
 export default function UserProfilePage({ user }) {
   return (
     <div>
-      <UserProfile publicUserData={user} isPublic={true} />
+      <SidebarDataProvider>
+        <UserProfile publicUserData={user} isPublic={true} />
+      </SidebarDataProvider>
     </div>
   );
 }
