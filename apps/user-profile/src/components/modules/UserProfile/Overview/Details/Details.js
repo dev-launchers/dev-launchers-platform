@@ -4,10 +4,8 @@ import mapPin from '../../../../../../src/images/icons/map-pin.svg';
 import linkIcon from '../../../../../../src/images/icons/link.svg';
 import suitCase from '../../../../../../src/images/icons/suit-case.svg';
 import rocketLaunch from '../../../../../../src/images/icons/rocket-launch.svg';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-function Details({ details }) {
-  const { userData } = useUserDataContext();
+function Details({ userData }) {
   const publishedAt = userData?.profile?.publishedAt;
   const date = publishedAt ? new Date(publishedAt) : null;
   const year =
@@ -15,11 +13,13 @@ function Details({ details }) {
 
   return (
     <Card title="Details">
-      {details ? (
+      {userData?.profile ? (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
             <img src={mapPin} className="h-6 w-6" alt="Name icon" />
-            <atoms.Typography>{userData?.name ?? ''}</atoms.Typography>
+            <atoms.Typography>
+              {userData?.profile?.displayName ?? ''}
+            </atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">

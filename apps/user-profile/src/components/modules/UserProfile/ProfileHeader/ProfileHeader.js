@@ -1,5 +1,4 @@
 import React from 'react';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import profileHeaderBackground from './../../../../images/profile/profile-header-bg.jpg';
 import ProfileImage from './../../../common/ProfileImage';
 import EditButton from './../../../common/EditButton';
@@ -12,9 +11,8 @@ import { editProfileActions } from './../../../../state/actions';
 import { atoms } from '@devlaunchers/components/components';
 import pencil from '../../../../../src/images/icons/pencil.svg';
 
-function ProfileHeader() {
+function ProfileHeader({ userData, isOwnProfile }) {
   const { editProfileDispatch } = editProfileDataContext();
-  const { userData } = useUserDataContext();
 
   const createdAt = userData?.profile?.publishedAt;
   const options = {
@@ -55,7 +53,7 @@ function ProfileHeader() {
             <ProfileImage imgSrc={userData?.profilePictureUrl} />
           </div>
           <Headers
-            title={userData?.name}
+            title={userData?.profile?.displayName}
             subtitle={subtitle}
             username={userData?.username}
           />
@@ -68,20 +66,22 @@ function ProfileHeader() {
         </div>
 
         {/* right side */}
-        <div className="flex w-full justify-end items-start pt-6 ">
-          <button
-            type="button"
-            onClick={handleEditClick}
-            className="inline-flex items-center gap-1 whitespace-nowrap  border-2 rounded-lg border-[#cfd8e3] bg-transparent px-3 py-3"
-          >
-            <span>Edit Profile</span>
-            <img
-              src={pencil}
-              alt="Pencil Icon"
-              className="w-5 h-5 shrink-0 object-contain"
-            />
-          </button>
-        </div>
+        {isOwnProfile ? (
+          <div className="flex w-full justify-end items-start pt-6 ">
+            <button
+              type="button"
+              onClick={handleEditClick}
+              className="inline-flex items-center gap-1 whitespace-nowrap  border-2 rounded-lg border-[#cfd8e3] bg-transparent px-3 py-3"
+            >
+              <span>Edit Profile</span>
+              <img
+                src={pencil}
+                alt="Pencil Icon"
+                className="w-5 h-5 shrink-0 object-contain"
+              />
+            </button>
+          </div>
+        ) : null}
       </div>
     </div>
   );
