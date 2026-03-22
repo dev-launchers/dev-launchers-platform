@@ -23,7 +23,6 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
   const [uploadError, setUploadError] = useState('');
   const [canButVis, setCanButVis] = useState(true);
-  // const portfolioUploadformData = new FormData();
 
   const [dragActive, setDragActive] = useState<boolean>(false);
   const uploadErrorMsg =
@@ -40,33 +39,8 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
     }
     setIsUploading(true)
 
-    // if (inFiles.length > 0) setIsUploading(true);
-    // else setIsUploading(false);
-
-    // const response = async () => {
-    //   if (inFiles.length > 0 && !allowedExtensions.test(inFiles[0].name)) {
-    //     setUploadError(uploadErrorMsg);
-    //     setIsUploading(false);
-    //     uploadStatus = false;
-    //     return false;
-    //   }
-      // Check file size
-
-    //   if (inFiles.length > 0 && inFiles[0].size > maxSizeInBytes) {
-    //     setUploadError(uploadErrorMsg);
-
-    //     setIsUploading(false);
-    //     uploadStatus = false;
-    //     return false;
-    //   }
-    //   return true;
-    // };
-    // const responseResult = await response();
     const portfolioUploadformData = new FormData();
     portfolioUploadformData.append('files', file);
-    // if (responseResult === true) {
-    //   portfolioUploadformData.append('files', inFiles[0]);
-
     try {
         const responseBody = await agent.GoogledriveFile.post(portfolioUploadformData)
         const fileData = responseBody.data;
@@ -82,7 +56,6 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         // if (!uploadStatus) return postResult;
         // else return 'Not uploaded';
 
-        // console.log('Uploaded file:', fileData); // Test the result
     } catch (error) {
         setUploadError('Error uploading files');
         // setIsUploading(false);
@@ -171,21 +144,6 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         />
         </div>
       </ChooseFileSection>
-
-        {/* {isUploading ? (
-          'Uploading'
-        ) : filesUploaded.id === undefined || filesUploaded.id === null ? (
-          <atoms.Box gap="30px">
-            <atoms.Typography
-              variant="secondary"
-              size="body_sm"
-              css={{ color: 'red' }}
-            >
-              {uploadError}
-            </atoms.Typography>
-          </atoms.Box>
-        ) : null} */}
-      {/* </ChooseFileSection> */}
       <div
         id="drop_zone"
         onDragEnter={(e) => dragEnter(e)}

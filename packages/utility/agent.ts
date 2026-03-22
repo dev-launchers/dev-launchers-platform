@@ -208,12 +208,14 @@ const Talcommuser = {
   }) => requests.post('/dl-tal-communities', body),
 };
 
+const GOOGLE_DRIVE_API = process.env.NEXT_PUBLIC_GOOGLE_DRIVE_API;
+
 const GoogledriveFile = {
   post: async (data: FormData) => {
-    return await requests.postForm<FormData>(`http://localhost:1337/api/googledrive/`, data); // upload files call to local, not staging
+    return await requests.postForm<FormData>(`${GOOGLE_DRIVE_API}/googledrive/`, data); // upload files call to local, not staging
   },
   delete: async (id: string) => {
-    return await requests.delete('http://localhost:1337/api/googledrive/' + id); // delete files call to local
+    return await requests.delete(`${GOOGLE_DRIVE_API}/googledrive/${id}`); // delete files call to local
   },
 };
 

@@ -66,7 +66,7 @@ const ApplyRoleComponent = ({
     const handleFiles = (uploadedFiles) => {
       console.log('Uploaded files:', uploadedFiles);
       setFilesUploaded(uploadedFiles);
-
+      
       handleUploadCloseModal(); // Close modal after upload file
     };
 
