@@ -16,15 +16,21 @@ function Details({ userData }) {
       {userData?.profile ? (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <img src={mapPin} className="h-6 w-6" alt="Name icon" />
+            <img src={mapPin} className="h-6 w-6" alt="Location" />
             <atoms.Typography>
               {userData?.profile?.displayName ?? ''}
             </atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={suitCase} className="h-6 w-6" alt="Member since icon" />
-            <atoms.Typography>Member Since {year}</atoms.Typography>
+            <img src={suitCase} className="h-6 w-6" alt="Join date" />
+            {year ? (
+              <atoms.Typography>Member Since {year}</atoms.Typography>
+            ) : (
+              <atoms.Typography className="text-grayscale-500">
+                Member since date unavailable
+              </atoms.Typography>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -35,7 +41,7 @@ function Details({ userData }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={linkIcon} className="h-6 w-6" alt="Email icon" />
+            <img src={linkIcon} className="h-6 w-6" alt="Website link" />
             <atoms.Typography>
               {userData?.profile?.user?.email}
             </atoms.Typography>

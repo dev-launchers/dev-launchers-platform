@@ -8,8 +8,10 @@ import IdeaCTABanner from './Ideas/IdeaCTABanner';
 import { editProfileActions } from './../../../../state/actions';
 
 function Overview({ userData, isOwnProfile }) {
-  const interests = userData?.interests || [];
-  const skills = userData?.skills || [];
+  const interests = Array.isArray(userData?.interests)
+    ? userData?.interests
+    : [];
+  const skills = Array.isArray(userData?.skills) ? userData.skills : [];
   return (
     <>
       <div className="flex flex-col gap-9">

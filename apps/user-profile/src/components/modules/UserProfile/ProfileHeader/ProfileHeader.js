@@ -20,11 +20,10 @@ function ProfileHeader({ userData, isOwnProfile }) {
     month: 'long',
   };
 
-  const subtitle =
-    'Junior Java Software Developer Seeking An Entry-Level Position';
-  const location = 'Los Angeles, CA';
-  const role = 'Software developer';
-  const website = 'johndoedev.com';
+  const subtitle = userData?.profile?.user?.experience || 'Developer';
+  const location = userData?.profile?.user?.location || 'Not specified';
+  const role = userData?.profile?.user?.title || 'Professional';
+  const website = userData?.profile?.user?.website || '';
   const memberSinceDate = createdAt
     ? new Date(createdAt).toLocaleString('en-US', options)
     : null;

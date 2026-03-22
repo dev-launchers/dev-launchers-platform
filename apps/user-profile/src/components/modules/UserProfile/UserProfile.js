@@ -17,12 +17,8 @@ import EditProfileModal from './EditProfileModal';
  * @return {*}
  */
 export default function UserProfile({ publicUserData, isPublic }) {
-  let userData;
-  if (isPublic) {
-    userData = publicUserData;
-  } else {
-    userData = useUserDataContext().userData;
-  }
+  const contextData = useUserDataContext();
+  const userData = isPublic ? publicUserData : contextData?.userData;
   const { sidebarState } = useSidebarDataContext();
 
   const { pages } = sidebarState;
