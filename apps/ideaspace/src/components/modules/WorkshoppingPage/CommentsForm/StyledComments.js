@@ -128,7 +128,7 @@ export const Form = styled.div`
     border-radius: 25px;
   }
 
-  button {
+  .send-button {
     display: flex;
     height: 36px;
     width: 36px;
@@ -142,11 +142,11 @@ export const Form = styled.div`
     background: var(--btn-surface-brand-primary, #52287a);
   }
 
-  button:hover {
+  .send-button:hover {
     cursor: pointer;
     border-color: #52287a;
   }
-  button:focus {
+  .send-button:focus {
     border: var(--btn-border-width, 4px) solid
       var(--btn-border-brand-primary, #3f1f5f);
   }
