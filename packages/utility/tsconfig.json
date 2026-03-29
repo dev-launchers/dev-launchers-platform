@@ -3,7 +3,7 @@
         "module": "commonjs",
         "declaration": true,
         "lib": [
-            "es5"
+            "es5", "dom"
         ],
         "noImplicitAny": true,
         "noImplicitThis": true,
