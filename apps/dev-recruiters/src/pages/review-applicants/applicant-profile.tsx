@@ -55,28 +55,45 @@ export default function ApplicantProfilePage() {
 
     (async () => {
       try {
-        // Primary: fetch user profile by Strapi ID
-        const profileRes = await agent.Profiles.get(id as string);
-        if (!mounted) return;
-
-        // Flatten Strapi response if wrapped in attributes
-        const profileData = profileRes?.attributes
-          ? { id: profileRes.id, ...profileRes.attributes }
-          : profileRes;
-        setProfile(profileData);
-
-        // Secondary: fetch all applicant records for this user
-        const applicantRes = await agent.Applicant.get(
-          `filters[user][id][$eq]=${id}&populate=project&populate=opportunity`
+        // Step 1: fetch the applicant by its own ID with user relation populated
+        const rawApplicant = await agent.Applicant.get(
+          `filters[id][$eq]=${id}&populate=project&populate=opportunity&populate[user][fields][0]=id`
         );
         if (!mounted) return;
 
-        if (applicantRes && Array.isArray(applicantRes)) {
-          const list = applicantRes.map((a: any) => ({
-            id: a.id,
-            ...(a.attributes ?? a),
-          }));
-          setApplicants(list);
+        const firstRaw = Array.isArray(rawApplicant) ? rawApplicant[0] : null;
+        const attrs = firstRaw?.attributes ?? firstRaw;
+        // Handle both Strapi v4 (data.id) and flat (id) user shapes
+        const userId: string | undefined =
+          attrs?.user?.data?.id ?? attrs?.user?.id;
+
+        if (userId) {
+          // Step 2: fetch user profile
+          const profileRes = await agent.Profiles.get(String(userId));
+          if (!mounted) return;
+          const profileData = profileRes?.attributes
+            ? { id: profileRes.id, ...profileRes.attributes }
+            : profileRes;
+          setProfile(profileData);
+
+          // Step 3: fetch all applicant records for this user
+          const applicantRes = await agent.Applicant.get(
+            `filters[user][id][$eq]=${userId}&populate=project&populate=opportunity`
+          );
+          if (!mounted) return;
+          if (applicantRes && Array.isArray(applicantRes)) {
+            setApplicants(
+              applicantRes.map((a: any) => ({
+                id: a.id,
+                ...(a.attributes ?? a),
+              }))
+            );
+          }
+        } else if (firstRaw) {
+          // Fallback: user relation unavailable, show just this applicant
+          setApplicants([
+            { id: firstRaw.id, ...(firstRaw.attributes ?? firstRaw) },
+          ]);
         }
       } catch (err) {
         console.error('Failed to load applicant profile', err);
