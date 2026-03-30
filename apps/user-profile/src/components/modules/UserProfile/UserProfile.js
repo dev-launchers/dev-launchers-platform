@@ -7,6 +7,8 @@ import SideBar from './SideBar';
 import Overview from './Overview';
 import Chatbot from './Chatbot';
 import EditProfileModal from './EditProfileModal';
+import { useEffect } from 'react';
+import { set } from 'react-ga';
 
 /**
  * This component has been broken down into two,
@@ -17,12 +19,11 @@ import EditProfileModal from './EditProfileModal';
  * @return {*}
  */
 export default function UserProfile({ publicUserData, isPublic }) {
-  let userData;
-  if (isPublic) {
-    userData = publicUserData;
-  } else {
-    userData = useUserDataContext().userData;
-  }
+  const [userData, setUserData] = useState(publicUserData);
+  const currentUser = useUserDataContext();
+  useEffect(() => {
+    if (!isPublic) setUserData(currentUser.userData);
+  }, []);
 
   const { sidebarState } = useSidebarDataContext();
 
