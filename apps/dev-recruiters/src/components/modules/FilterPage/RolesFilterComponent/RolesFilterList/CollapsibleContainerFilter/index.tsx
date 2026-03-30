@@ -111,9 +111,10 @@ const CollapsibleContainerFilter: React.FC<CollapsibleContainerProps> = ({
             <option value="">Role Title</option>
             <option value="Development">Development</option>
             <option value="Design">Design</option>
-            <option value="Product">Product</option>
+            <option value="Product/UX">Product</option>
             <option value="Research">Research</option>
             <option value="Marketing">Marketing</option>
+            <option value="Data Science">Data Science</option>
             <option value="QA">QA</option>
           </select>
 
