@@ -66,6 +66,8 @@ const ApplyRoleComponent = ({
     const handleFiles = (uploadedFiles) => {
       console.log('Uploaded files:', uploadedFiles);
       setFilesUploaded(uploadedFiles);
+
+      handleUploadCloseModal(); // Close modal after upload file
     };
 
     return (
@@ -89,36 +91,51 @@ const ApplyRoleComponent = ({
     );
   }
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const handleUploadOpenModal = () => {
     setSelectedFiles([]);
     setFilesUploaded({});
     setUploadError('');
+    setIsModalOpen(true);
   };
 
-  const handleRemoveFile = () => {
+  const handleUploadCloseModal = () => setIsModalOpen(false);
+
+  // Fix deletion logic
+  const handleRemoveFile = async () => {
+    if (!filesUploaded?.id || isDeleting) return;
     setIsDeleting(true);
-    const newArr = [...selectedFiles];
+    setDeleteError('');
+
+    // const newArr = [...selectedFiles];
     try {
-      agent.GoogledriveFile.delete(`${filesUploaded['id']}`)
-        .then((responseBody) => {
-          if (responseBody.status === 200) {
-            newArr.splice(filesUploaded[0], 1);
-            setSelectedFiles([]);
-            setSelectedFiles(newArr);
-            setFilesUploaded({});
-            setIsDeleting(false);
-            setDeleteError('');
-          }
-        })
-        .catch((error) => {
-          setDeleteError('Error deleting file');
-          setIsDeleting(false);
-          window.alert('Error deleting file. Please try again.');
-        });
+      const response = await agent.GoogledriveFile.delete(filesUploaded.id);
+      // .then((responseBody) => {
+      //   if (responseBody.status === 200) {
+      //     // newArr.splice(filesUploaded[0], 1);
+      //     // setSelectedFiles([]);
+      //     setSelectedFiles(newArr);
+      //     setFilesUploaded({});
+      //     setIsDeleting(false);
+      //     setDeleteError('');
+      //   }
+      // })
+      setSelectedFiles((prev) =>
+        prev.filter((file) => file.id !== filesUploaded.id)
+      );
+      setFilesUploaded({});
+      // } catch (error) => {
+      //     setDeleteError('Error deleting file');
+      //     setIsDeleting(false);
+      //     window.alert('Error deleting file. Please try again.');
+      //   });
     } catch (error) {
       setDeleteError('Error deleting file');
-      setIsDeleting(false);
+      // setIsDeleting(false);
       window.alert('Error deleting file. Please try again.');
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -597,20 +614,35 @@ const ApplyRoleComponent = ({
 
                   <div>
                     <label className="block text-sm mb-2">
-                      Upload your resume
+                      Please include your portfolio/resume
                     </label>
                     <p className="text-gray-400 text-xs mb-2">
-                      Max file size 25MB, Only .doc, .pdf, .png and .jpg allowed
+                      Max file size 5MB. Only .pdf, .doc, .png and .jpg allowed
                     </p>
-                    <atoms.Button
+                    <Button
                       onClick={() => handleUploadOpenModal()}
                       className="text-sm text-blue-500 hover:text-blue-400"
                     >
                       Upload File
-                    </atoms.Button>
+                    </Button>
                     <UploadModal
-                      handleOpenModal={handleUploadOpenModal}
+                      modalIsOpen={isModalOpen}
+                      handleCloseModal={handleUploadCloseModal}
+                      // handleOpenModal={handleUploadOpenModal}
                       modalContent={<UploadDetailsModal />}
+                      UploadCustomModalStyles={{
+                        content: {
+                          top: '50%',
+                          left: '50%',
+                          right: 'auto',
+                          bottom: 'auto',
+                          transform: 'translate(-50%, -50%)',
+                          background: 'transparent',
+                          border: 'none',
+                          padding: '0',
+                          boxShadow: 'none',
+                        },
+                      }}
                     />
                     {filesUploaded['id'] && (
                       <div className="mt-4 p-3 bg-green-500/10 border border-green-500/30 rounded-lg">

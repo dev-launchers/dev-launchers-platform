@@ -18,19 +18,15 @@ import { useEffect } from 'react';
  * @return {*}
  */
 export default function UserProfile({ publicUserData, isPublic }) {
-  const [userData, setUserData] = useState(publicUserData);
-  const currentUser = useUserDataContext();
-  useEffect(() => {
-    if (!isPublic) setUserData(currentUser.userData);
-  }, []);
-
+  const contextData = useUserDataContext();
+  const userData = isPublic ? publicUserData : contextData?.userData;
   const { sidebarState } = useSidebarDataContext();
 
   const { pages } = sidebarState;
 
   const showPages = () => {
     if (pages?.showOverview) {
-      return <Overview userData={userData} />;
+      return <Overview userData={userData} isOwnProfile={!isPublic} />;
     }
     // else if (pages?.showProjects) {
     //   return <UserProjects myProjects={myProjects} />;
@@ -44,7 +40,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
     else if (pages?.showChatbot) {
       return <Chatbot />;
     } else {
-      return <Overview userData={userData} />;
+      return <Overview userData={userData} isOwnProfile={!isPublic} />;
     }
   };
 
@@ -52,11 +48,16 @@ export default function UserProfile({ publicUserData, isPublic }) {
 
   return (
     <div className="flex flex-row bg-[#f9f9f9]">
-      {sideBar && <div className="w-72">{sideBar}</div>}
+      {!isPublic ? (
+        <div className="w-72">
+          <SideBar />
+        </div>
+      ) : null}
+
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
           {showPages()}
-          <EditProfileModal />
+          {!isPublic ? <EditProfileModal /> : null}
         </EditProfileDataProvider>
       </div>
     </div>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import UserProfile from '../../components/modules/UserProfile';
 import { SidebarDataProvider } from './../../context/SidebarDataContext';
-
 export const getStaticPaths = async () => {
   return {
     paths: [],

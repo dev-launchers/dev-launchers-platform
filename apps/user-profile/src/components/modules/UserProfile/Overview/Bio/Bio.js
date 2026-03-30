@@ -1,7 +1,8 @@
 import Card from './../../../../common/Card';
 import { Typography } from '@devlaunchers/components/components/atoms';
 
-function Bio({ bio }) {
+function Bio({ userData }) {
+  const bio = userData?.profile?.bio;
   return (
     <Card title="Bio">
       <Typography
