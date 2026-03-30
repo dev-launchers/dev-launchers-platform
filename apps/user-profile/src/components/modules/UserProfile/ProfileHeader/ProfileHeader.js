@@ -1,14 +1,10 @@
 import React from 'react';
 import profileHeaderBackground from './../../../../images/profile/profile-header-bg.jpg';
 import ProfileImage from './../../../common/ProfileImage';
-import EditButton from './../../../common/EditButton';
 import Headers from './Headers';
 import MetaInfo from './MetaInfo';
-import SocialLinks from './SocialLinks';
-import ThirdPartyLinks from './ThirdPartyLinks';
 import { editProfileDataContext } from '../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../state/actions';
-import { atoms } from '@devlaunchers/components/components';
 import pencil from '../../../../../src/images/icons/pencil.svg';
 
 function ProfileHeader({ userData, isOwnProfile }) {
