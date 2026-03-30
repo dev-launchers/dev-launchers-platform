@@ -8,7 +8,6 @@ import Overview from './Overview';
 import Chatbot from './Chatbot';
 import EditProfileModal from './EditProfileModal';
 import { useEffect } from 'react';
-import { set } from 'react-ga';
 
 /**
  * This component has been broken down into two,
