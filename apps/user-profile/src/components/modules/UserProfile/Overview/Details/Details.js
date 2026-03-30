@@ -4,10 +4,8 @@ import mapPin from '../../../../../../src/images/icons/map-pin.svg';
 import linkIcon from '../../../../../../src/images/icons/link.svg';
 import suitCase from '../../../../../../src/images/icons/suit-case.svg';
 import rocketLaunch from '../../../../../../src/images/icons/rocket-launch.svg';
-import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-function Details({ details }) {
-  const { userData } = useUserDataContext();
+function Details({ userData }) {
   const publishedAt = userData?.profile?.publishedAt;
   const date = publishedAt ? new Date(publishedAt) : null;
   const year =
@@ -15,16 +13,24 @@ function Details({ details }) {
 
   return (
     <Card title="Details">
-      {details ? (
+      {userData?.profile ? (
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <img src={mapPin} className="h-6 w-6" alt="Name icon" />
-            <atoms.Typography>{userData?.name ?? ''}</atoms.Typography>
+            <img src={mapPin} className="h-6 w-6" alt="Location" />
+            <atoms.Typography>
+              {userData?.profile?.displayName ?? ''}
+            </atoms.Typography>
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={suitCase} className="h-6 w-6" alt="Member since icon" />
-            <atoms.Typography>Member Since {year}</atoms.Typography>
+            <img src={suitCase} className="h-6 w-6" alt="Join date" />
+            {year ? (
+              <atoms.Typography>Member Since {year}</atoms.Typography>
+            ) : (
+              <atoms.Typography className="text-grayscale-500">
+                Member since date unavailable
+              </atoms.Typography>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -35,7 +41,7 @@ function Details({ details }) {
           </div>
 
           <div className="flex items-center gap-3">
-            <img src={linkIcon} className="h-6 w-6" alt="Email icon" />
+            <img src={linkIcon} className="h-6 w-6" alt="Website link" />
             <atoms.Typography>
               {userData?.profile?.user?.email}
             </atoms.Typography>
