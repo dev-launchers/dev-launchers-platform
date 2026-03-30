@@ -53,7 +53,7 @@ export default function UserProfile({ publicUserData, isPublic }) {
 
   return (
     <div className="flex flex-row bg-[#f9f9f9]">
-      <div className="w-72">{sideBar}</div>
+      {sideBar && <div className="w-72">{sideBar}</div>}
       <div className="px-20 pb-20">
         <EditProfileDataProvider>
           {showPages()}
