@@ -208,10 +208,10 @@ const Talcommuser = {
 
 const GoogledriveFile = {
   post: async (data: FormData) => {
-    return await requests.postForm<FormData>(`/googledrive/`, data); // upload files call to local, not staging
+    return await requests.postForm<FormData>(`/googledrive/`, data);
   },
   delete: async (id: string) => {
-    return await requests.delete(`/googledrive/${id}`); // delete files call to local
+    return await requests.delete(`/googledrive/${id}`);
   },
 };
 
