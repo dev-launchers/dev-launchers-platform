@@ -211,7 +211,8 @@ const GoogledriveFile = {
     return await requests.postForm<FormData>(`/googledrive/`, data);
   },
   delete: async (id: string) => {
-    return await requests.delete(`/googledrive/${id}`);
+    const encodedId = encodeURIComponent(id);
+    return await requests.delete(`/googledrive/${encodedId}`);
   },
 };
 
