@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@devlaunchers/components": "workspace:*",
-    "axios": "^0.30.0",
+    "axios": "^1.13.5",
     "constate": "^3.3.2",
     "cookies-next": "4.2.1",
     "formik": "^2.2.9",
