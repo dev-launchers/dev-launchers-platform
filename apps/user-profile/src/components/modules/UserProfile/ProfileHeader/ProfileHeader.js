@@ -2,14 +2,10 @@ import React from 'react';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import profileHeaderBackground from './../../../../images/profile/profile-header-bg.jpg';
 import ProfileImage from './../../../common/ProfileImage';
-import EditButton from './../../../common/EditButton';
 import Headers from './Headers';
 import MetaInfo from './MetaInfo';
-import SocialLinks from './SocialLinks';
-import ThirdPartyLinks from './ThirdPartyLinks';
 import { editProfileDataContext } from '../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../state/actions';
-import { atoms } from '@devlaunchers/components/components';
 import pencil from '../../../../../src/images/icons/pencil.svg';
 
 function ProfileHeader() {
@@ -27,17 +23,19 @@ function ProfileHeader() {
   const location = 'Los Angeles, CA';
   const role = 'Software developer';
   const website = 'johndoedev.com';
+
   const memberSinceDate = createdAt
     ? new Date(createdAt).toLocaleString('en-US', options)
     : null;
 
   const handleEditClick = () => {
-    // console.log(handleEditClick);
-    // editProfileDispatch({
-    //   type: editProfileActions.SHOW_PHOTO_SETTING,
-    // });
     editProfileDispatch({ type: editProfileActions.SHOW_DETAILS_SETTING });
   };
+
+  const profileImageUrl =
+    userData?.profile?.profilePicture?.url ||
+    userData?.profile?.profilePictureUrl ||
+    '';
 
   return (
     <div className="flex flex-col max-h-96 w-full shadow-lg bg-white">
@@ -48,17 +46,19 @@ function ProfileHeader() {
           alt="Profile header background"
         />
       </div>
+
       <div className="relative flex flex-row max-h-60 px-8 pt-6 pb-12 ">
-        {/* left side */}
         <div className="flex flex-col w-full pt-11 gap-6">
           <div className="absolute -top-24">
-            <ProfileImage imgSrc={userData?.profilePictureUrl} />
+            <ProfileImage imgSrc={profileImageUrl} />
           </div>
+
           <Headers
             title={userData?.name}
             subtitle={subtitle}
             username={userData?.username}
           />
+
           <MetaInfo
             location={location}
             role={role}
@@ -67,12 +67,11 @@ function ProfileHeader() {
           />
         </div>
 
-        {/* right side */}
         <div className="flex w-full justify-end items-start pt-6 ">
           <button
             type="button"
             onClick={handleEditClick}
-            className="inline-flex items-center gap-1 whitespace-nowrap  border-2 rounded-lg border-[#cfd8e3] bg-transparent px-3 py-3"
+            className="inline-flex items-center gap-1 whitespace-nowrap border-2 rounded-lg border-[#cfd8e3] bg-transparent px-3 py-3"
           >
             <span>Edit Profile</span>
             <img

@@ -45,97 +45,134 @@ function SettingPage({ onClose }) {
 
   const onSave = async () => {
     const profileId = userData?.profile?.id;
-    if (profileId) {
-      const requestBody = { data: {} };
+    if (!profileId) return;
 
-      // only update values where changes have been made
-      if (editProfileState.changes.bioChanged) {
-        requestBody.data.bio = editProfileState.bio;
-      }
+    const requestBody = { data: {} };
 
-      // save details to strapi user if changed
-      if (editProfileState.changes.detailsChanged) {
-        const userId = userData?.id;
+    // BIO
+    if (editProfileState.changes.bioChanged) {
+      requestBody.data.bio = editProfileState.bio;
+    }
 
-        const fullName =
-          `${editProfileState.firstName} ${editProfileState.lastName}`.trim();
+    //  PROFILE IMAGE
+    if (editProfileState.profilePictureId !== undefined) {
+      requestBody.data.profilePicture =
+        editProfileState.profilePictureId ?? null;
 
-        const socialMediaLinks = [
-          { platform: 'instagram', url: editProfileState.instagram ?? '' },
-          { platform: 'github', url: editProfileState.github ?? '' },
-          { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
-        ].filter((x) => x.url && x.url.trim() !== '');
+      requestBody.data.profilePictureUrl =
+        editProfileState.profilePictureUrl ?? '';
+    }
 
-        await agent.User.put(userId, {
-          name: fullName,
-          socialMediaLinks,
-        });
-      }
-      // stops multiple triggers from happening
-      if (!editProfileState.saveInProgress) {
-        editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
-        agent.Profiles.put(profileId, requestBody)
-          .then(async () => {
-            // Save interests to Strapi user (only if changed)
-            if (editProfileState.changes.interestsChanged) {
-              const userId = userData?.id;
-              const interestIds = (editProfileState.interests || []).map(
-                (i) => i.id
-              );
+    //  DETAILS
+    if (editProfileState.changes.detailsChanged) {
+      const userId = userData?.id;
 
-              await agent.User.put(userId, {
-                interests: interestIds,
-              });
-            }
+      const fullName =
+        `${editProfileState.firstName} ${editProfileState.lastName}`.trim();
 
-            // Save skills to Strapi user (only if changed)
-            if (editProfileState.changes.skillsChanged) {
-              const userId = userData?.id;
-              const skillIds = (editProfileState.skills || []).map((s) => s.id);
+      const socialMediaLinks = [
+        { platform: 'instagram', url: editProfileState.instagram ?? '' },
+        { platform: 'github', url: editProfileState.github ?? '' },
+        { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
+      ].filter((x) => x.url && x.url.trim() !== '');
 
-              await agent.User.put(userId, {
-                skills: skillIds,
-              });
-            }
+      await agent.User.put(userId, {
+        name: fullName,
+        socialMediaLinks,
+      });
+    }
 
-            editProfileDispatch({
-              type: editProfileActions.SAVE_CHANGES_SUCCESS,
+    if (!editProfileState.saveInProgress) {
+      editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
+
+      agent.Profiles.put(profileId, requestBody)
+        .then(async () => {
+          // interests
+          if (editProfileState.changes.interestsChanged) {
+            const userId = userData?.id;
+            const interestIds = (editProfileState.interests || []).map(
+              (i) => i.id
+            );
+
+            await agent.User.put(userId, {
+              interests: interestIds,
             });
-            updateUserData((prev) => ({
-              ...prev,
-              bio: editProfileState.bio,
-              name: editProfileState.changes.detailsChanged
-                ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
-                : prev.name,
-              socialMediaLinks: editProfileState.changes.detailsChanged
-                ? [
-                    {
-                      platform: 'instagram',
-                      url: editProfileState.instagram ?? '',
-                    },
-                    { platform: 'github', url: editProfileState.github ?? '' },
-                    {
-                      platform: 'linkedin',
-                      url: editProfileState.linkedin ?? '',
-                    },
-                  ].filter((x) => x.url && x.url.trim() !== '')
-                : prev.socialMediaLinks,
-              interests: editProfileState.changes.interestsChanged
-                ? editProfileState.interests
-                : prev.interests,
-              skills: editProfileState.changes.skillsChanged
-                ? editProfileState.skills
-                : prev.skills,
-            }));
-            onClose();
-          })
-          .catch((error) => {
-            editProfileDispatch({
-              type: editProfileActions.SAVE_CHANGES_FAILED,
+          }
+
+          // skills
+          if (editProfileState.changes.skillsChanged) {
+            const userId = userData?.id;
+            const skillIds = (editProfileState.skills || []).map((s) => s.id);
+
+            await agent.User.put(userId, {
+              skills: skillIds,
             });
-            console.log('[Profile Update Error] — ', error);
+          }
+
+          // update UI with saved image
+          const cacheBustedImage = editProfileState.profilePictureUrl
+            ? `${editProfileState.profilePictureUrl}${
+                editProfileState.profilePictureUrl.includes('?') ? '&' : '?'
+              }t=${Date.now()}`
+            : '';
+
+          updateUserData((prev) => ({
+            ...prev,
+            bio: editProfileState.bio,
+            name: editProfileState.changes.detailsChanged
+              ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
+              : prev.name,
+
+            socialMediaLinks: editProfileState.changes.detailsChanged
+              ? [
+                  {
+                    platform: 'instagram',
+                    url: editProfileState.instagram ?? '',
+                  },
+                  {
+                    platform: 'github',
+                    url: editProfileState.github ?? '',
+                  },
+                  {
+                    platform: 'linkedin',
+                    url: editProfileState.linkedin ?? '',
+                  },
+                ].filter((x) => x.url && x.url.trim() !== '')
+              : prev.socialMediaLinks,
+
+            interests: editProfileState.changes.interestsChanged
+              ? editProfileState.interests
+              : prev.interests,
+
+            skills: editProfileState.changes.skillsChanged
+              ? editProfileState.skills
+              : prev.skills,
+
+            profile: {
+              ...prev.profile,
+              profilePicture:
+                editProfileState.profilePicture != null
+                  ? {
+                      ...editProfileState.profilePicture,
+                      url: cacheBustedImage,
+                    }
+                  : null,
+              profilePictureUrl: cacheBustedImage,
+            },
+          }));
+
+          editProfileDispatch({
+            type: editProfileActions.SAVE_CHANGES_SUCCESS,
           });
-      }
+
+          onClose();
+        })
+        .catch((error) => {
+          editProfileDispatch({
+            type: editProfileActions.SAVE_CHANGES_FAILED,
+          });
+          console.log('[Profile Update Error] — ', error);
+        });
     }
   };
 
