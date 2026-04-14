@@ -23,7 +23,7 @@ export default function UserOnboardingPage() {
     if (!isLoading && isAuthenticated && userData.name === '') {
       router.push('/signup');
     } else if (!isLoading && isAuthenticated && hasAcceptedTermsOfService) {
-      router.push('/users/me');
+      router.push('/profile/me');
     }
   }, [isAuthenticated]);
 
