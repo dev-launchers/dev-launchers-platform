@@ -12,7 +12,7 @@ import EditProfileModal from './EditProfileModal';
 /**
  * This component has been broken down into two,
  * 1. State management component (UserProfile) – initialising states, getting data from backeend.
- * 2. The view component (UserProfileView) – rendering the UI elements.
+ * 2. The view component (UserProfileView) – rendering the UI elements
  * @export
  * @param {*} { publicUserData, isPublic }
  * @return {*}
@@ -21,7 +21,6 @@ export default function UserProfile() {
   const { sidebarState } = useSidebarDataContext();
 
   const { pages } = sidebarState;
-
   const showPages = () => {
     if (pages?.showOverview) {
       return <Overview />;
