@@ -41,6 +41,26 @@ The release cadence is every 4 weeks. We will create a PR to merge the master br
 
 ---
 
+## Local Development Setup
+
+To run the project locally for testing, configure your environment variables in:
+
+`apps/app/.env.development`
+
+If the file does not exist, create it.
+
+Add the following values:
+
+NEXT_PUBLIC_NAME=DEVELOPMENT\
+NEXT_PUBLIC_API_BASE_URL=http://localhost:1337\
+NEXT_PUBLIC_API_URL=http://localhost:1337/api\
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337/api\
+NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:1337/api/connect/google\
+NEXT_PUBLIC_DISCORD_AUTH_URL=https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify\
+NEXT_PUBLIC_FRONT_END_URL=http://localhost:3000
+
+---
+
 ## Monorepo scripts
 
 Some convenience scripts can be run in any folder of this repo and will call their counterparts defined in packages and apps.
