@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  dev-recruiters:
+    image: node:18-alpine
+    working_dir: /app
+    ports:
+      - "3002:3000"
+    volumes:
+      - ./apps/dev-recruiters:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev"
+    restart: unless-stopped

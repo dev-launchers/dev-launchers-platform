@@ -2810,10 +2810,6 @@ __metadata:
   resolution: "@devlaunchers/dev-recruiters@workspace:apps/dev-recruiters"
   dependencies:
     "@babel/core": ^7.18.9
-    "@devlaunchers/components": "workspace:*"
-    "@devlaunchers/eslint-config-bases": "workspace:^"
-    "@devlaunchers/models": "workspace:^"
-    "@devlaunchers/utility": "workspace:^"
     "@types/lodash": ^4.14.182
     "@types/react": ^17.0.0
     "@types/react-burger-menu": ^2.8.3
@@ -2843,10 +2839,10 @@ __metadata:
     next-optimized-images: ^2.6.2
     polished: ^4.2.2
     prettier: ^2.7.1
-    react: ^17.0.2
+    react: 19.2.5
     react-burger-menu: ^3.0.8
     react-calendly: ^4.0.1
-    react-dom: ^17.0.2
+    react-dom: 19.2.5
     react-form: ^4.0.1
     react-ga: ^3.3.1
     react-hook-form: ^7.34.0
@@ -3139,7 +3135,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@devlaunchers/utility@workspace:*, @devlaunchers/utility@workspace:^, @devlaunchers/utility@workspace:packages/utility":
+"@devlaunchers/utility@workspace:*, @devlaunchers/utility@workspace:packages/utility":
   version: 0.0.0-use.local
   resolution: "@devlaunchers/utility@workspace:packages/utility"
   dependencies:
@@ -35297,6 +35293,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:19.2.5":
+  version: 19.2.5
+  resolution: "react-dom@npm:19.2.5"
+  dependencies:
+    scheduler: ^0.27.0
+  peerDependencies:
+    react: ^19.2.5
+  checksum: a63e892755d14524a2cb76f750ca8d75b8c91473d806f0441035b3ae74ecaa3ab4cecf820cf40e5aa33631de9aecdeeb2e00a302d447f42794d32969070fabec
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
@@ -35859,6 +35866,13 @@ __metadata:
     react: ">=16.6.0"
     react-dom: ">=16.6.0"
   checksum: 75602840106aa9c6545149d6d7ae1502fb7b7abadcce70a6954c4b64a438ff1cd16fc77a0a1e5197cdd72da398f39eb929ea06f9005c45b132ed34e056ebdeb1
+  languageName: node
+  linkType: hard
+
+"react@npm:19.2.5":
+  version: 19.2.5
+  resolution: "react@npm:19.2.5"
+  checksum: 95563d3ceba2b6bf18bc4bb1e515a4fd49645630f8a017eb139fa37425f673ded545a9b6d1039021cc8a545b2a697ccfa03ac37b20c3dfa60c079f67bdabbedb
   languageName: node
   linkType: hard
 
@@ -37238,6 +37252,13 @@ __metadata:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
   checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.27.0":
+  version: 0.27.0
+  resolution: "scheduler@npm:0.27.0"
+  checksum: 92644ead0a9443e20f9d24132fe93675b156209b9eeb35ea245f8a86768d0cc0fcca56f341eeef21d9b6dd8e72d6d5e260eb5a41d34b05cd605dd45a29f572ef
   languageName: node
   linkType: hard
 

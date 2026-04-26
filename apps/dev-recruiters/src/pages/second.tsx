@@ -1,9 +1,6 @@
 import Head from 'next/head';
-import ProductHeader from '../components/modules/DetailedPage/ProductHeader';
 import React, { useState } from 'react';
 import SignUpForm from '../components/modules/TalcommunityPage/TalFormPage/signUpForm';
-import TalcommunityPage from '../components/modules/TalcommunityPage';
-import TalFormPage from '../components/modules/TalcommunityPage/TalFormPage';
 import { HeaderTalPage } from '../components/modules/TalcommunityPage/HeaderTalPage';
 
 const SecondPage = () => {
@@ -12,10 +9,20 @@ const SecondPage = () => {
   const handleCloseModal = (): void => {};
 
   return (
-    <div className="bg-black min-h-screen">
-      <HeaderTalPage />
-      <SignUpForm handleCloseModal={handleCloseModal} />
-    </div>
+    <>
+      {/* Page metadata for talent community signup to improve SEO and consistency */}
+      <Head>
+        <title>Join Talent Community | Dev Launchers</title>
+        <meta
+          name="description"
+          content="Join the Dev Launchers Talent Community to be notified about new volunteer roles that match your skillset."
+        />
+      </Head>
+      <div className="bg-black min-h-screen">
+        <HeaderTalPage />
+        <SignUpForm handleCloseModal={handleCloseModal} />
+      </div>
+    </>
   );
 };
 

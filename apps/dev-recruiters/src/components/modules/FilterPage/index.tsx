@@ -33,7 +33,8 @@ const FilterPageComponent: React.FunctionComponent<Props> = ({
   return (
     <Wrapper>
       <BoxContainer>
-        {/* <HeaderJoinPage /> */}
+      {/* Restore shared join header for consistent page design across Dev Recruit pages */}
+         <HeaderJoinPage /> 
         <SearchResult>Search Results</SearchResult>
       </BoxContainer>
       <BoxContainer paddingVertical={10} paddingHorizontal={20}>

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@devlaunchers/components": "workspace:*",
     "axios": "^0.30.0",
     "constate": "^3.3.2",
     "cookies-next": "4.2.1",
@@ -32,6 +33,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
+    "@devlaunchers/eslint-config-bases": "workspace:^",
+    "@devlaunchers/models": "workspace:^",
+    "@devlaunchers/utility": "workspace:^",
     "@types/lodash": "^4.14.182",
     "@types/react": "^17.0.0",
     "@types/react-burger-menu": "^2.8.3",

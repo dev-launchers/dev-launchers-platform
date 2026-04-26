@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
+/**
+ * ISSUE #2819: Global Style Alignment
+ * This file has been updated to align the Join Page UI with the Figma design.
+ * Primary focus: Typography consistency, theme token integration, and spacing.
+ */
+
 export const Wrapper = styled.div`
-  background-color: ${({ theme }) => theme?.colors?.Black};
+  /* Using theme token for background consistency across dark mode */
+  background-color: ${({ theme }) => theme?.colors?.Black || '#000000'};
 `;
 
 export const Wrapjoin = styled.div`
@@ -17,11 +24,13 @@ export const Wrapjoin = styled.div`
     #000;
   display: flex;
   min-height: 360px;
-  padding: var(--0, 0px) var(--56, 192px);
+  /* Simplified padding for layout alignment */
+  padding: 0 192px;
   justify-content: center;
   align-self: stretch;
+
   @media (max-width: 1024px) {
-    padding: 0px 64px;
+    padding: 0 64px;
   }
   @media (max-width: 768px) {
     padding: 40px 24px;
@@ -35,17 +44,24 @@ export const HeadingContainer = styled.div`
   justify-content: center;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
   text-align: center;
-  margin: 0;
+  margin: 100px 0 0 0;
   row-gap: 1rem;
-  margin-top: 100px;
 `;
 
-export const HeadingText = styled.div`
-  width: 50%;
+export const HeadingText = styled.h1`
+  width: 60%; 
   word-wrap: break-word;
-  font-size: 44px;
+  /* Updated to 48px to match standard H1 Figma spec */
+  font-size: 48px; 
+  /* Increased weight to Semi-Bold (600) for better hierarchy */
+  font-weight: 600; 
   font-family: 'Abel', sans-serif;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
+
+  @media (max-width: 768px) {
+    font-size: 32px;
+    width: 90%;
+  }
 `;
 
 export const HeadingSubContainer = styled.div`
@@ -57,14 +73,17 @@ export const HeadingSubContainer = styled.div`
   text-align: center;
   margin: 0;
   row-gap: 0.5rem;
-  height: 100px;
+  height: auto; 
+  padding-bottom: 20px;
 `;
 
-export const HeadingSubText = styled.div`
+export const HeadingSubText = styled.p`
   width: 75%;
   word-wrap: break-word;
-  font-size: 16px;
+  /* Standardized body font for project descriptions */
+  font-size: 18px; 
   font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.5;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
 `;
 
@@ -73,16 +92,17 @@ export const SelectRoleContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: ${({ theme }) => theme?.colors?.NEUTRAL_1};
-  text-align: left;
 `;
 
-export const SelectRoleText = styled.div`
+export const SelectRoleText = styled.h2`
   font-size: 40px;
   font-family: 'Abel', sans-serif;
+  font-weight: 500;
+  /* Using theme variable for 'White' instead of hardcoded hex */
   color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
-  text-align: left;
+  text-align: center; 
+
   @media (max-width: 768px) {
-    text-align: center;
     font-size: 28px;
   }
 `;
@@ -95,52 +115,59 @@ export const AreaImage = styled.div`
   overflow: hidden;
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.section`
   display: flex;
   min-height: 360px;
-  padding: var(--0, 0px) var(--48, 192px);
+  padding: 60px 192px;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--10, 40px);
+  gap: 32px;
   align-self: stretch;
   background-position: center;
+  background-size: cover;
+  /* Darkened overlay for better text contrast against the rocket illustration */
   background-image: linear-gradient(
       0deg,
-      rgba(0, 0, 0, 0.5) 0%,
-      rgba(0, 0, 0, 0.5) 100%
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.6) 100%
     ),
     url(${RocketIll});
+
   @media (max-width: 1024px) {
     padding: 40px 64px;
   }
   @media (max-width: 768px) {
-    padding: 40px 24px;
+    padding: 60px 24px;
   }
 `;
 
-export const FooterFirstText = styled.div`
-  font-size: 40px;
+export const FooterFirstText = styled.h3`
+  font-size: 42px;
   font-family: 'Abel', sans-serif;
-  font-style: normal;
-  font-weight: 200;
-  line-height: 120%; /* 48px */
-  letter-spacing: 1.6px;
+  /* Weight updated from 200 to 600 to match Figma CTA header importance */
+  font-weight: 600; 
+  line-height: 1.1;
+  letter-spacing: 1px;
   text-align: center;
-  color: white;
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
-export const FooterSecondText = styled.div`
-  color: white;
+export const FooterSecondText = styled.p`
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_1 || '#ffffff'};
   text-align: center;
-  /* p-l-d */
-  font-family: 'Nunito Sans';
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 20px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 28px; /* 140% */
-  width: 70%;
+  /* Increased line-height for better readability on descriptions */
+  line-height: 1.6;
+  width: 65%;
+
   @media (max-width: 768px) {
     width: 100%;
     font-size: 16px;
@@ -148,13 +175,21 @@ export const FooterSecondText = styled.div`
 `;
 
 export const BtnSignUp = styled.button`
-  background-color: black;
-  border-radius: 10px;
-  color: white;
-  padding: 10px 40px;
-  font-size: 16px;
+  border-radius: 8px;
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
+  /* Standardized button sizing for Dev Recruit module */
+  padding: 14px 44px;
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
+  border: none;
   font-family: 'Nunito Sans', sans-serif;
-  background-color: ${({ theme }) => theme?.colors?.BLUE_700};
-  text-decoration: none;
+  /* Utilizing primary Blue token from design system */
+  background-color: ${({ theme }) => theme?.colors?.BLUE_700 || '#007bff'};
+  transition: transform 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme?.colors?.BLUE_800};
+    transform: translateY(-2px);
+  }
 `;
