@@ -364,7 +364,7 @@ const IdeaForm = ({
                     {nameTaken && (
                       <ErrorText>
                         This idea name is already in use. Please try something
-                        else.
+                        else
                       </ErrorText>
                     )}
                     {!nameTaken &&
