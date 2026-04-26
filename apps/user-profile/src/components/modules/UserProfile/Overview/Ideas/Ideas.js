@@ -41,7 +41,7 @@ function Ideas({ ideasList }) {
 
   return (
     <Card title="Ideas">
-      <div className="flex flex-wrap gap-4 justify-start flex-row">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
         {ideasList?.map((idea) => (
           <IdeaCard
             key={idea.id}

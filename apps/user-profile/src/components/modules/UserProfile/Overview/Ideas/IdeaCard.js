@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import { useState } from 'react';
 import { ImagePreviewSVG } from './ImagePreview';
+import IdeaCardImg from '../../../../../../../ideaspace/src/components/common/IdeaCard/IdeaCardImg';
 import { MessageCircle, ArrowBigUpDash } from 'lucide-react';
 
 function IdeaCard({ idea }) {
@@ -36,10 +36,9 @@ function IdeaCard({ idea }) {
     }
   };
   return (
-    <Link href={urlPath}>
+    <Link href={urlPath} className="block w-full">
       <atoms.Box
         flexDirection="column"
-        className="w-full md:w-[295px] lg:w-[calc(50%-8px)] xl:w-[295px] h-[218px]"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           borderRadius: '1rem',
@@ -47,29 +46,28 @@ function IdeaCard({ idea }) {
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
             : 'none',
+          height: '360px',
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="w-full min-h-[120px] relative">
+        <div
+          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
+        >
           {idea.ideaImage?.medium_url ? (
-            <Image
-              alt="idea_image"
-              src={idea.ideaImage.medium_url}
-              layout="fill"
-              objectFit="cover"
-              style={{
-                borderRadius: '1rem 1rem 0rem 0rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
-              }}
-            />
+            <IdeaCardImg key={idea.id} ideaImage={idea.ideaImage?.medium_url} />
           ) : (
-            <div className="w-full h-full bg-[#F6F6F6] rounded-t-2xl flex items-center justify-center">
+            <div
+              className="w-full h-[228px] rounded-t-2xl flex items-center justify-center"
+              style={{
+                backgroundColor: 'var(--base-03, #292929)',
+                flexShrink: 0,
+              }}
+            >
               <ImagePreviewSVG />
             </div>
           )}
         </div>
-
         <atoms.Box
           flexDirection="column"
           alignItems="flex-start"
@@ -94,7 +92,8 @@ function IdeaCard({ idea }) {
             {idea.ideaName}
           </atoms.Typography>
 
-          <div className="flex flex-row  justify-between w-full mt-6">
+          {/* <div className="flex flex-row justify-between w-full mt-6"> */}
+          <div className="flex flex-col lg:flex-row justify-between w-full mt-6">
             <atoms.Typography
               type="p"
               className="flex flex-row gap-2 items-center"
