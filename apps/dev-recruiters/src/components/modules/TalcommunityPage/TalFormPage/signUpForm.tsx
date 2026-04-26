@@ -98,7 +98,33 @@ export default function TalCommForm({ handleCloseModal }: Props) {
         {({ errors, touched, isSubmitting }) => (
           <atoms.Box justifyContent="center" width="100%">
             <Form>
-              <style>{`.tal-form input { color: #1a1a1a !important; } .tal-form label { margin-left: 0 !important; } @media (max-width: 640px) { .tal-form-inner { padding-left: 1rem; padding-right: 1rem; } }`}</style>
+              {/* ISSUE #2819: Enhanced form styling for Figma design alignment */}
+              <style>{`
+                .tal-form input { 
+                  color: #1a1a1a !important; 
+                  background: ${({ theme }) => theme?.colors?.Cultured || '#f8f8f8'} !important;
+                  border: 1px solid ${({ theme }) => theme?.colors?.OuterSpace || '#454d58'} !important;
+                  border-radius: 8px !important;
+                  padding: 12px 16px !important;
+                  font-family: ${({ theme }) => theme?.fonts?.normal || 'Nunito Sans'} !important;
+                } 
+                .tal-form label { 
+                  margin-left: 0 !important; 
+                  color: ${({ theme }) => theme?.colors?.White || '#ffffff'} !important;
+                  font-family: ${({ theme }) => theme?.fonts?.normal || 'Nunito Sans'} !important;
+                  font-weight: 600 !important;
+                  margin-bottom: 8px !important;
+                } 
+                .tal-form .form-field-container {
+                  margin-bottom: 24px !important;
+                }
+                @media (max-width: 640px) { 
+                  .tal-form-inner { 
+                    padding-left: 1rem; 
+                    padding-right: 1rem; 
+                  } 
+                }
+              `}</style>
               <div className="tal-form text-white">
                 <div className="tal-form-inner">
                   <atoms.Box flexDirection="column">

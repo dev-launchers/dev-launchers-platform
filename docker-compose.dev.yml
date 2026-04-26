@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  dev-recruiters:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: deps
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    volumes:
+      - ./apps/dev-recruiters:/workspace/apps/dev-recruiters
+      - ./packages:/workspace/packages
+      - /workspace/apps/dev-recruiters/node_modules
+      - /workspace/node_modules
+    working_dir: /workspace
+    command: yarn workspace @devlaunchers/dev-recruiters dev
+    restart: unless-stopped

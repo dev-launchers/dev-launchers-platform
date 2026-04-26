@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+/**
+ * ISSUE #2819: Global Style Alignment
+ * This file has been updated to align the CollapsibleContainer UI with the Figma design.
+ * Primary focus: Typography consistency, theme token integration, and spacing.
+ */
+
 export const RoleContainerBody = styled.div`
   width: 100%;
   display: flex;
@@ -18,18 +24,22 @@ export const RoleContainer = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  font-family: 'Abel', sans-serif;
+  /* Using theme font family for consistency with Figma design */
+  font-family: ${({ theme }) => theme?.fonts?.headline || 'Abel'}, sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
+  /* Using theme token for consistent white color */
+  color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
   margin-bottom: 16px;
 `;
 
 export const SectionSubtitle = styled.p`
-  font-family: 'Abel', sans-serif;
+  /* Using theme font family for body text consistency */
+  font-family: ${({ theme }) => theme?.fonts?.normal || 'Nunito Sans'}, sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  color: #b0b0b0;
+  /* Using theme token for neutral text color */
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_5 || '#89969f'};
   margin-bottom: 48px;
   max-width: 800px;
 `;
@@ -37,33 +47,37 @@ export const SectionSubtitle = styled.p`
 export const RoleCardTitle = styled.h3`
   font-size: 1.5rem;
   font-weight: 600;
+  /* Using theme token for consistent white color across cards */
   color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
   margin-bottom: 0.5rem;
 `;
 
 export const RoleCardCount = styled.p`
   font-size: 0.875rem;
-  color: ${({ theme }) => theme?.colors?.Gray || '#9ca3af'};
+  /* Using theme token for consistent gray text */
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_5 || '#89969f'};
   margin-bottom: 1rem;
 `;
 
 export const RoleCardDescription = styled.p`
   font-size: 1rem;
   line-height: 1.75;
-  color: ${({ theme }) => theme?.colors?.Gray || '#d1d5db'};
+  /* Using theme token for description text color */
+  color: ${({ theme }) => theme?.colors?.Argent || '#c3c0c0'};
   margin-bottom: 2.5rem;
   min-height: 60px;
 `;
 
 export const RoleCardLink = styled.span`
   font-size: 0.875rem;
-  color: ${({ theme }) => theme?.colors?.ACCENT_1 || '#c4b5fd'};
+  /* Using theme accent color for links to match Figma design */
+  color: ${({ theme }) => theme?.colors?.ACCENT_4 || '#81c3d7'};
   font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
 
   &:hover {
-    color: ${({ theme }) => theme?.colors?.ACCENT_2 || '#ddd6fe'};
+    color: ${({ theme }) => theme?.colors?.ACCENT_3 || '#3a7ca5'};
   }
 `;
 

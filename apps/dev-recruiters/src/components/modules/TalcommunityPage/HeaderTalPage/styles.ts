@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 
+/**
+ * ISSUE #2819: Global Style Alignment
+ * This file has been updated to align the Talent Community Header UI with the Figma design.
+ * Primary focus: Typography consistency, theme token integration, and spacing.
+ */
+
 export const Wrap = styled.div`
   width: 100%;
   background: linear-gradient(
@@ -9,12 +15,13 @@ export const Wrap = styled.div`
       rgba(58, 124, 165, 0.2) 75.77%,
       rgba(57, 76, 172, 0.2) 96.6%
     ),
-    #000;
+    ${({ theme }) => theme?.colors?.Black || '#000'};
   display: flex;
   min-height: 240px;
   padding: 0px 192px;
   justify-content: center;
   align-self: stretch;
+
   @media (max-width: 1024px) {
     padding: 0px 64px;
   }
@@ -28,7 +35,8 @@ export const HeaderContainer = styled.div`
   width: 100%;
   flex-direction: column;
   align-items: center;
-  gap: var(--gap-5xl, 48px);
+  gap: 48px;
+
   @media (max-width: 1024px) {
     padding: 0 64px;
   }
@@ -40,12 +48,13 @@ export const HeaderContainer = styled.div`
 export const SubHeaderContainer = styled.div`
   width: 100%;
   display: flex;
-  max-width: var(--content-min-w, 1280px);
-  padding: var(--padding-5xl, 64px) var(--padding-none, 0);
+  max-width: 1280px;
+  padding: 64px 0;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
   align-self: stretch;
+
   @media (max-width: 768px) {
     align-items: center;
   }
@@ -57,6 +66,7 @@ export const TypeSet = styled.div`
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
+
   @media (max-width: 768px) {
     align-items: center;
   }
@@ -69,13 +79,14 @@ export const BaseText = styled.div`
 
 export const HeaderText = styled(BaseText)`
   margin-bottom: 24px;
-  color: var(--content-grey-pure, #fff);
-  font-family: var(--text-family-primary, Oswald);
-  font-size: var(--text-size-6xl, 55px);
+  color: ${({ theme }) => theme?.colors?.White || '#fff'};
+  font-family: 'Oswald', sans-serif;
+  font-size: 55px;
   font-style: normal;
   font-weight: 400;
-  line-height: 125%; /* 86.5px */
+  line-height: 125%;
   letter-spacing: 2.768px;
+
   @media (max-width: 768px) {
     .desktop-break {
       display: none;
@@ -88,12 +99,13 @@ export const HeaderText = styled(BaseText)`
 
 export const SubHeaderText = styled(BaseText)`
   margin-bottom: 4px;
-  color: rgb(240, 237, 238);
-  font-family: var(--text-family-secondary, 'Nunito Sans');
-  font-size: var(--text-size-xl, 20px);
+  color: ${({ theme }) => theme?.colors?.NEUTRAL_2 || '#f0edee'};
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
-  line-height: 160%; /* 36.864px */
+  line-height: 160%;
+
   @media (max-width: 768px) {
     font-size: 18px;
     text-align: center;
