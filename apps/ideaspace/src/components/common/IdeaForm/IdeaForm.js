@@ -231,7 +231,17 @@ const IdeaForm = ({
 
     try {
       const res = await agent.Ideas.findByName(name);
-      setNameTaken(res.length > 0);
+
+      const normalizedName = name.trim().toLowerCase();
+
+      const activeMatch = res.some((idea) => {
+        const sameName =
+          idea.attributes?.ideaName?.trim().toLowerCase() === normalizedName;
+        const notDeleted = idea.attributes?.status !== 'deleted';
+        return sameName && notDeleted;
+      });
+
+      setNameTaken(activeMatch);
     } catch (err) {
       console.error('Error checking idea name', err);
       setNameTaken(false);
@@ -354,7 +364,7 @@ const IdeaForm = ({
                     {nameTaken && (
                       <ErrorText>
                         This idea name is already in use. Please try something
-                        else.
+                        else
                       </ErrorText>
                     )}
                     {!nameTaken &&
