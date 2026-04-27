@@ -41,23 +41,52 @@ The release cadence is every 4 weeks. We will create a PR to merge the master br
 
 ---
 
+## Local Development Login
+
+To login to Devlauncher in local environment, please follow the steps below:
+
+1. Ensure you are log out for both staging and development Devlauncher website and keep both of these open in browser
+
+2. Change .env.devlopment file to match what it is in master branch as shown below:  
+   `NEXT_PUBLIC_NAME=DEVELOPMENT`
+   `NEXT_PUBLIC_API_BASE_URL=https://apiv4-staging.devlaunchers.org`  
+   `NEXT_PUBLIC_API_URL=https://apiv4-staging.devlaunchers.org/api`  
+   `NEXT_PUBLIC_STRAPI_URL=https://apiv4-staging.devlaunchers.org/api`  
+   `NEXT_PUBLIC_GOOGLE_AUTH_URL=https://apiv4-staging.devlaunchers.org/api/connect/google`  
+   `NEXT_PUBLIC_DISCORD_AUTH_URL=https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify`  
+   `NEXT_PUBLIC_FRONT_END_URL=http://localhost:3000`
+
+3. Login to your profile using staging Devlauncher website
+
+4. Once you are login, you can edit the .env.devlopment file to connect to your local api instead  
+   `NEXT_PUBLIC_NAME=DEVELOPMENT`  
+   `NEXT_PUBLIC_API_BASE_URL=http://localhost:1337`  
+   `NEXT_PUBLIC_API_URL=http://localhost:1337/api`  
+   `NEXT_PUBLIC_STRAPI_URL=http://localhost:1337/api`  
+   `NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:1337/api/connect/google`  
+   `NEXT_PUBLIC_DISCORD_AUTH_URL=https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify`  
+   `NEXT_PUBLIC_FRONT_END_URL=http://localhost:3000`
+
+5. After saving the change, you should be login for the local environment
+
+---
+
 ## Local Development Setup
 
-To run the project locally for testing, configure your environment variables in:
+To connect front end to backend locally for testing, configure your environment variables in:
 
 `apps/app/.env.development`
 
-If the file does not exist, create it.
+The parameter update below is not needed if you completed the steps to login locally. If the file does not exist, create it.
 
 Add the following values:
-
-NEXT_PUBLIC_NAME=DEVELOPMENT\
-NEXT_PUBLIC_API_BASE_URL=http://localhost:1337\
-NEXT_PUBLIC_API_URL=http://localhost:1337/api\
-NEXT_PUBLIC_STRAPI_URL=http://localhost:1337/api\
-NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:1337/api/connect/google\
-NEXT_PUBLIC_DISCORD_AUTH_URL=https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify\
-NEXT_PUBLIC_FRONT_END_URL=http://localhost:3000
+`NEXT_PUBLIC_NAME=DEVELOPMENT`  
+`NEXT_PUBLIC_API_BASE_URL=http://localhost:1337`  
+`NEXT_PUBLIC_API_URL=http://localhost:1337/api`  
+`NEXT_PUBLIC_STRAPI_URL=http://localhost:1337/api`  
+`NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:1337/api/connect/google`  
+`NEXT_PUBLIC_DISCORD_AUTH_URL=https://discord.com/api/oauth2/authorize?client_id=815294711983112194&redirect_uri=https%3A%2F%2Fapi-staging.devlaunchers.org%2Fusers%2Fauth%2Fdiscord%2Fcallback&response_type=code&scope=identify`  
+`NEXT_PUBLIC_FRONT_END_URL=http://localhost:3000 `
 
 ---
 
