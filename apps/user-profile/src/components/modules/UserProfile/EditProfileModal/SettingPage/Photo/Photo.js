@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import agent from '@devlaunchers/utility/agent';
 import { useUserDataContext } from '../../../../../../../../../packages/UI/src/context/UserDataContext';
 import { editProfileDataContext } from '../../../../../../context/EditProfileDataContext';
@@ -9,49 +9,17 @@ import trashCan from '../../../../../../../src/images/icons/trash-can.svg';
 import pencil from '../../../../../../../src/images/icons/pencil.svg';
 import profilePictureImage from '../../../../../../images/profile-picture-upload.png';
 
-export default function Photo({ discardChanges }) {
+// NOTE: This component is not used in the active profile flow.
+
+export default function Photo() {
   const { userData } = useUserDataContext();
   const { editProfileDispatch } = editProfileDataContext();
 
-  const originalProfilePicture = userData?.profile?.profilePicture ?? null;
-  const originalProfilePictureUrl =
-    userData?.profile?.profilePicture?.url ||
-    userData?.profile?.profilePictureUrl ||
-    '';
-
-  const [profilePicture, setProfilePicture] = useState(
-    originalProfilePictureUrl
-  );
   const [selectedFile, setSelectedFile] = useState(null);
   const [showDropdown, setShowDropdown] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setProfilePicture(originalProfilePictureUrl);
-    setSelectedFile(null);
-  }, [originalProfilePictureUrl]);
-
-  useEffect(() => {
-    if (!discardChanges) return;
-
-    setProfilePicture(originalProfilePictureUrl);
-    setSelectedFile(null);
-    setShowDropdown(false);
-
-    editProfileDispatch({
-      type: editProfileActions.UPDATE_DETAILS,
-      payload: {
-        profilePicture: originalProfilePicture,
-        profilePictureId: originalProfilePicture?.id ?? null,
-        profilePictureUrl: originalProfilePictureUrl,
-      },
-    });
-  }, [
-    discardChanges,
-    originalProfilePicture,
-    originalProfilePictureUrl,
-    editProfileDispatch,
-  ]);
+  const profilePictureUrl = userData?.profile?.profilePicture?.url || '';
 
   const handleFileChange = (event) => {
     const file = event.target.files?.[0];
@@ -65,17 +33,13 @@ export default function Photo({ discardChanges }) {
       return;
     }
 
-    if (
-      selectedFile.type !== 'image/png' &&
-      selectedFile.type !== 'image/jpeg' &&
-      selectedFile.type !== 'image/jpg'
-    ) {
+    if (!['image/png', 'image/jpeg', 'image/jpg'].includes(selectedFile.type)) {
       alert('Only PNG/JPEG allowed');
       return;
     }
 
     if (selectedFile.size > 5 * 1024 * 1024) {
-      alert('The file size must be less than 5MB.');
+      alert('File must be less than 5MB');
       return;
     }
 
@@ -97,36 +61,24 @@ export default function Photo({ discardChanges }) {
 
       const uploadedItem = Array.isArray(response)
         ? response[0]
-        : Array.isArray(response?.data)
-        ? response.data[0]
-        : null;
+        : response?.data?.[0] ?? null;
 
       if (!uploadedItem?.id) {
-        throw new Error(
-          `Upload failed: unexpected response ${JSON.stringify(response)}`
-        );
+        throw new Error('Upload failed');
       }
 
       const rawUrl = uploadedItem?.url || uploadedItem?.attributes?.url || '';
 
-      const previewUrl = rawUrl
-        ? `${rawUrl}${rawUrl.includes('?') ? '&' : '?'}t=${Date.now()}`
-        : '';
-
-      // preview only in edit page
-      setProfilePicture(previewUrl);
-      setSelectedFile(null);
-      setShowDropdown(false);
-
-      // store in edit state only
       editProfileDispatch({
-        type: editProfileActions.UPDATE_DETAILS,
+        type: editProfileActions.UPDATE_PHOTO,
         payload: {
           profilePicture: uploadedItem,
           profilePictureId: uploadedItem.id,
           profilePictureUrl: rawUrl,
         },
       });
+      setSelectedFile(null);
+      setShowDropdown(false);
     } catch (error) {
       console.error(error);
       alert(error?.message || 'Upload failed');
@@ -136,11 +88,8 @@ export default function Photo({ discardChanges }) {
   };
 
   const handleRemove = () => {
-    setProfilePicture('');
-    setSelectedFile(null);
-
     editProfileDispatch({
-      type: editProfileActions.UPDATE_DETAILS,
+      type: editProfileActions.UPDATE_PHOTO,
       payload: {
         profilePicture: null,
         profilePictureId: null,
@@ -185,7 +134,7 @@ export default function Photo({ discardChanges }) {
 
           <img
             className="w-40 h-40 rounded-full mx-auto object-cover"
-            src={profilePicture || profilePictureImage}
+            src={profilePictureUrl || profilePictureImage}
             alt="Profile"
           />
 

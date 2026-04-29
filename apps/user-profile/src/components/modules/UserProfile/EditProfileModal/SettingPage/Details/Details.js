@@ -26,13 +26,9 @@ function Details({ discardChanges }) {
   const originalInstagram = getSocialLink('instagram');
   const originalGithub = getSocialLink('github');
   const originalLinkedIn = getSocialLink('linkedin');
-
   const originalProfilePicture = userData?.profile?.profilePicture ?? null;
   const originalProfilePictureUrl =
-    userData?.profile?.profilePicture?.url ||
-    userData?.profile?.profilePictureUrl ||
-    '';
-
+    userData?.profile?.profilePicture?.url || '';
   const [firstName, setFirstName] = useState(originalFirstName);
   const [lastName, setLastName] = useState(originalLastName);
   const [instagram, setInstagram] = useState(originalInstagram);
@@ -178,7 +174,7 @@ function Details({ discardChanges }) {
       setTempProfilePictureUrl(previewImageUrl);
 
       editProfileDispatch({
-        type: editProfileActions.UPDATE_DETAILS,
+        type: editProfileActions.UPDATE_PHOTO,
         payload: {
           profilePicture: uploadedItem,
           profilePictureId: uploadedItem.id,
@@ -198,7 +194,7 @@ function Details({ discardChanges }) {
     setTempProfilePictureUrl('');
 
     editProfileDispatch({
-      type: editProfileActions.UPDATE_DETAILS,
+      type: editProfileActions.UPDATE_PHOTO,
       payload: {
         profilePicture: null,
         profilePictureId: null,
