@@ -230,9 +230,9 @@ const IdeaForm = ({
     }
 
     try {
-      const res = await agent.Ideas.findByName(name);
-
       const normalizedName = name.trim().toLowerCase();
+
+      const res = await agent.Ideas.findByName(normalizedName);
 
       const activeMatch = res.some((idea) => {
         const sameName =
@@ -364,7 +364,7 @@ const IdeaForm = ({
                     {nameTaken && (
                       <ErrorText>
                         This idea name is already in use. Please try something
-                        else
+                        else.
                       </ErrorText>
                     )}
                     {!nameTaken &&
