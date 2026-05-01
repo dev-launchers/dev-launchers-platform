@@ -15,82 +15,72 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
 
   const [showUploadModal, setShowUploadModal] = useState(false);
   const [isUploading, setIsUploading] = useState(false); // Uploading state
-  const maxSizeInMB = 25;
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const maxSizeInMB = 5;
   const maxSizeInBytes = maxSizeInMB * 1024 * 1024;
   const allowedExtensions = /(\.doc|\.pdf|\.jpg|\.jpeg|\.png)$/i;
   const [uploadError, setUploadError] = useState('');
   const [canButVis, setCanButVis] = useState(true);
-  const portfolioUploadformData = new FormData();
 
   const [dragActive, setDragActive] = useState<boolean>(false);
   const uploadErrorMsg =
-    'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 25MB)';
-  const fileUpload = async (inFiles) => {
-    let uploadStatus = true;
+    'The file you have chosen is not a valid file type. Please upload only .doc, .pdf, .jpg, .jpeg, and .png (Max 5MB)';
+  const fileUpload = async (inFiles: File[]) => {
+    // let uploadStatus = true;
     setUploadError(null);
+    if (!inFiles.length) return;
+    const file = inFiles[0];
 
-    if (inFiles.length > 0) setIsUploading(true);
-    else setIsUploading(false);
+    if (!allowedExtensions.test(file.name) || file.size > maxSizeInBytes) {
+      setUploadError(uploadErrorMsg);
+      return;
+    }
+    setIsUploading(true)
 
-    const response = async () => {
-      if (inFiles.length > 0 && !allowedExtensions.exec(inFiles[0].name)) {
-        setUploadError(uploadErrorMsg);
-        setIsUploading(false);
-        uploadStatus = false;
-        return false;
-      }
-      // Check file size
+    const portfolioUploadformData = new FormData();
+    portfolioUploadformData.append('files', file);
+    try {
+        const responseBody = await agent.GoogledriveFile.post(portfolioUploadformData)
+        const fileData = responseBody.data;
+        // Handle response
+        onFilesUploaded(fileData);
+        setUploadFiles(fileData);
+        // setCanButVis(true);
+        setShowUploadModal(false);
+        setSelectFiles([file])
+        // setIsUploading(false);
+        // uploadStatus = false;
+          
+        // if (!uploadStatus) return postResult;
+        // else return 'Not uploaded';
 
-      if (inFiles.length > 0 && inFiles[0].size > maxSizeInBytes) {
-        setUploadError(uploadErrorMsg);
-
-        setIsUploading(false);
-        uploadStatus = false;
-        return false;
-      }
-      return true;
-    };
-    const responseResult = await response();
-
-    if (responseResult === true) {
-      portfolioUploadformData.append('files', inFiles[0]);
-
-      if (portfolioUploadformData !== undefined) {
-        try {
-          const postResult = await agent.GoogledriveFile.post(
-            portfolioUploadformData
-          ).then((responseBody) => {
-            onFilesUploaded(responseBody);
-            setUploadFiles(responseBody);
-            setCanButVis(true);
-            setShowUploadModal(false);
-            setIsUploading(false);
-            uploadStatus = false;
-          });
-          if (!uploadStatus) return postResult;
-          else return 'Not uploaded';
-        } catch (error) {
-          setUploadError('Error uploading files');
-          setIsUploading(false);
-          return 'Upload failed due to an error';
-        }
-      } else return 'file Empty';
+    } catch (error) {
+        setUploadError('Error uploading files');
+        // setIsUploading(false);
+        // return 'Upload failed due to an error';
+        // } else return 'file Empty';
+    } finally {
+      setIsUploading(false);
     }
   };
 
-  const handleFileSelectChange = async (
+  const handleFileSelectChange = async ( 
     event: ChangeEvent<HTMLInputElement>
   ) => {
-    let sampleOutput = {
-      id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
-      name: 'Energy.jpg',
-      mimeType: 'image/jpeg',
-      parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
-      webViewLink:
-        'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
-    };
+    // let sampleOutput = {
+    //   id: '17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa',
+    //   name: 'Energy.jpg',
+    //   mimeType: 'image/jpeg',
+    //   parents: ['1jN1_Crat6nkpakD0BZsE3xKAIkJ26NE2'],
+    //   webViewLink:
+    //     'https://drive.google.com/file/d/17LV9EHZPGehHMvL86RdV1gmuV8VXL9fa/view?usp=drivesdk',
+    // };
+
+    if (!event.target.files?.length) return; // If the user does not select any file, the operation stops and no action is taken.
     const inputFiles = Array.from(event.target.files);
-    fileUpload(inputFiles);
+    await fileUpload(inputFiles);
   };
 
   function dropHandler(e: any): void {
@@ -102,7 +92,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         e.dataTransfer.files[0],
       ]);
     }
-    fileUpload(e.dataTransfer.files);
+    fileUpload(Array.from(e.dataTransfer.files));
   }
 
   function dragLeaver(e: any): void {
@@ -121,31 +111,38 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
   }
 
   return (
-    <AllSection>
-      <ChooseFileSection>
-        <h3>Drop your files here or select them using the button below</h3>
+    <>
+      {!filesUploaded?.id && (
+        <AllSection>
+        <ChooseFileSection>
+        <h3>Drop your files here or select them using the button below</h3>  
+        <div>
+        <button
+          type='button'
+          onClick={() => fileInputRef.current?.click()}
+          className='
+            px-6 py-2 text-base font-medium rounded-lg
+            bg-white
+            shadow-lg
+            hover:shadow-lg
+            transition-shadow duration-200
+            focus:outline-none
+          '
+        >
+          CHOOSE FILES
+        </button>
+
         <input
-          id="fileSelect"
+          // id="fileSelect"
+          ref={fileInputRef}
           type="file"
-          style={{ color: 'transparent' }}
+          hidden
           onChange={(event) => {
             handleFileSelectChange(event);
           }}
           accept=".pdf, .doc,.docx,.jpg,.jpeg,.png, image/*"
         />
-        {isUploading ? (
-          'Uploading'
-        ) : filesUploaded.id === undefined || filesUploaded.id === null ? (
-          <atoms.Box gap="30px">
-            <atoms.Typography
-              variant="secondary"
-              size="body_sm"
-              css={{ color: 'red' }}
-            >
-              {uploadError}
-            </atoms.Typography>
-          </atoms.Box>
-        ) : null}
+        </div>
       </ChooseFileSection>
       <div
         id="drop_zone"
@@ -167,5 +164,7 @@ export default function DragAndDrop({ filesUploaded, onFilesUploaded }) {
         </AllPageSection>
       </div>
     </AllSection>
+    )}
+  </>
   );
 }
