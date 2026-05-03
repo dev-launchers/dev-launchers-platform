@@ -2,8 +2,9 @@ import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import { useState } from 'react';
 import { ImagePreviewSVG } from './ImagePreview';
-import IdeaCardImg from '../../../../../../../ideaspace/src/components/common/IdeaCard/IdeaCardImg';
+// import IdeaCardImg from '../../../../../../../ideaspace/src/components/common/IdeaCard/IdeaCardImg';
 import { MessageCircle, ArrowBigUpDash } from 'lucide-react';
+import Image from 'next/image';
 
 function IdeaCard({ idea }) {
   const urlPath = {
@@ -39,6 +40,7 @@ function IdeaCard({ idea }) {
     <Link href={urlPath} className="block w-full">
       <atoms.Box
         flexDirection="column"
+        className="w-full md:w-[295px] lg:w-[calc(50%-8px)] xl:w-[295px] h-[218px]"
         style={{
           border: '0.125rem solid rgba(71, 71, 71, 0.10)',
           borderRadius: '1rem',
@@ -46,23 +48,23 @@ function IdeaCard({ idea }) {
           boxShadow: isHovered
             ? '0px 3px 9px 0px rgba(212, 194, 229, 0.80)'
             : 'none',
-          height: '360px',
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div
-          style={{ display: 'flex', flexDirection: 'column', height: '100%' }}
-        >
+        <div className="w-full h-[120px] relative">
           {idea.ideaImage?.medium_url ? (
-            <IdeaCardImg key={idea.id} ideaImage={idea.ideaImage?.medium_url} />
+            <Image
+              alt="idea_image"
+              src={idea.ideaImage.medium_url}
+              layout="fill"
+              objectFit="cover"
+              className="rounded-t-2xl"
+            />
           ) : (
             <div
-              className="w-full h-[228px] rounded-t-2xl flex items-center justify-center"
-              style={{
-                backgroundColor: 'var(--base-03, #292929)',
-                flexShrink: 0,
-              }}
+              className="w-full h-full rounded-t-2xl flex items-center justify-center"
+              style={{ backgroundColor: 'var(--base-03, #292929)' }}
             >
               <ImagePreviewSVG />
             </div>
