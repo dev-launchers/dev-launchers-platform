@@ -9,6 +9,7 @@ import pencil from '../../../../../src/images/icons/pencil.svg';
 
 function ProfileHeader({ userData, isOwnProfile }) {
   const { editProfileDispatch } = editProfileDataContext();
+
   const createdAt = userData?.profile?.publishedAt;
   const options = {
     year: 'numeric',

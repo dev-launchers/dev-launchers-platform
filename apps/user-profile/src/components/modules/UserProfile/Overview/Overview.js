@@ -12,7 +12,6 @@ function Overview({ userData, isOwnProfile }) {
     ? userData?.interests
     : [];
   const skills = Array.isArray(userData?.skills) ? userData.skills : [];
-
   return (
     <>
       <div className="flex flex-col gap-9">
@@ -22,8 +21,8 @@ function Overview({ userData, isOwnProfile }) {
           and triggers the internal scroll in Details.
         */}
         <div className="flex flex-row gap-9 h-[500px] items-stretch">
-          <Bio bio={userData?.bio} />
-          <Details userData={userData} />
+          <Bio userData={userData} />
+          {isOwnProfile ? <Details userData={userData} /> : null}
         </div>
 
         <div className="flex flex-row gap-9">
@@ -38,8 +37,8 @@ function Overview({ userData, isOwnProfile }) {
             action={editProfileActions.SHOW_SKILLS_SETTING}
           />
         </div>
-        <Ideas ideasList={userData?.idea_cards || []} />
-        <IdeaCTABanner />
+        {isOwnProfile ? <Ideas ideasList={userData?.idea_cards || []} /> : null}
+        {isOwnProfile ? <IdeaCTABanner /> : null}
       </div>
     </>
   );
