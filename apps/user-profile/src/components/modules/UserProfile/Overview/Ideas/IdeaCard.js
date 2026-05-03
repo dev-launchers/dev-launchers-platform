@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import { useState } from 'react';
 import { ImagePreviewSVG } from './ImagePreview';
-// import IdeaCardImg from '../../../../../../../ideaspace/src/components/common/IdeaCard/IdeaCardImg';
 import { MessageCircle, ArrowBigUpDash } from 'lucide-react';
 import Image from 'next/image';
 
