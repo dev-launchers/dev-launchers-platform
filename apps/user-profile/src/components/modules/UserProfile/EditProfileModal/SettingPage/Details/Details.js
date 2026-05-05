@@ -227,7 +227,7 @@ function Details({ discardChanges }) {
 
       <div className="flex flex-1 min-h-0 gap-10">
         <div className="flex flex-col items-start gap-8 shrink-0">
-          <div className="w-30 h-30 rounded-full border-4 border-white shadow overflow-hidden">
+          <div className="w-32 h-32 rounded-full border-4 border-white shadow overflow-hidden">
             <ProfileImage imgSrc={profileImageUrl} />
           </div>
 
