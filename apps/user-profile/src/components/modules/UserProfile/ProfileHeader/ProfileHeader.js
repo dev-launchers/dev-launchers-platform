@@ -25,12 +25,13 @@ function ProfileHeader({ userData, isOwnProfile }) {
     : null;
 
   const handleEditClick = () => {
-    // console.log(handleEditClick);
-    // editProfileDispatch({
-    //   type: editProfileActions.SHOW_PHOTO_SETTING,
-    // });
     editProfileDispatch({ type: editProfileActions.SHOW_DETAILS_SETTING });
   };
+
+  const profileImageUrl =
+    userData?.profile?.profilePicture?.url ||
+    userData?.profile?.profilePictureUrl ||
+    '';
 
   return (
     <div className="flex flex-col max-h-96 w-full shadow-lg bg-white">
@@ -41,17 +42,19 @@ function ProfileHeader({ userData, isOwnProfile }) {
           alt="Profile header background"
         />
       </div>
+
       <div className="relative flex flex-row max-h-60 px-8 pt-6 pb-12 ">
-        {/* left side */}
         <div className="flex flex-col w-full pt-11 gap-6">
           <div className="absolute -top-24">
-            <ProfileImage imgSrc={userData?.profilePictureUrl} />
+            <ProfileImage imgSrc={profileImageUrl} />
           </div>
+
           <Headers
             title={userData?.profile?.displayName}
             subtitle={subtitle}
             username={userData?.username}
           />
+
           <MetaInfo
             location={location}
             role={role}

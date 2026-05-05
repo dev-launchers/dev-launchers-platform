@@ -13,8 +13,7 @@ import { atoms } from '@devlaunchers/components/components';
 
 function SettingPage({ onClose }) {
   const { editProfileState, editProfileDispatch } = editProfileDataContext();
-  const [discardChanges, SetDiscardChanges] = useState(0);
-
+  const [discardChanges, setDiscardChanges] = useState(0);
   const { userData, updateUserData } = useUserDataContext();
 
   const disableSave =
@@ -24,39 +23,45 @@ function SettingPage({ onClose }) {
     !editProfileState.changes.detailsChanged;
 
   const showSetting = () => {
-    if (editProfileState.pages.showPhoto) {
-      return <PhotoSetting />;
-    } else if (editProfileState.pages.showBio) {
+    if (editProfileState.pages.showPhoto) return <PhotoSetting />;
+    if (editProfileState.pages.showBio)
       return <BioSetting discardChanges={discardChanges} />;
-    } else if (editProfileState.pages.showDetails) {
+    if (editProfileState.pages.showDetails)
       return <DetailsSetting discardChanges={discardChanges} />;
-    } else if (editProfileState.pages.showSkills) {
+    if (editProfileState.pages.showSkills)
       return <SkillsSetting discardChanges={discardChanges} />;
-    } else if (editProfileState.pages.showInterests) {
+    if (editProfileState.pages.showInterests)
       return <InterestsSetting discardChanges={discardChanges} />;
-    } else {
-      return null;
-    }
-  };
-
-  const onCancel = () => {
-    onClose();
+    return null;
   };
 
   const onSave = async () => {
     const profileId = userData?.profile?.id;
-    if (profileId) {
-      const requestBody = { data: {} };
+    const userId = userData?.id;
 
-      // only update values where changes have been made
+    if (!profileId || !userId) return;
+
+    const requestBody = { data: {} };
+
+    try {
+      editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
+
+      // BIO
       if (editProfileState.changes.bioChanged) {
         requestBody.data.bio = editProfileState.bio;
       }
 
-      // save details to strapi user if changed
-      if (editProfileState.changes.detailsChanged) {
-        const userId = userData?.id;
+      // PROFILE IMAGE
+      if (editProfileState.profilePictureId !== undefined) {
+        requestBody.data.profilePicture =
+          editProfileState.profilePictureId ?? null;
 
+        requestBody.data.profilePictureUrl =
+          editProfileState.profilePictureUrl ?? '';
+      }
+
+      // DETAILS
+      if (editProfileState.changes.detailsChanged) {
         const fullName =
           `${editProfileState.firstName} ${editProfileState.lastName}`.trim();
 
@@ -71,108 +76,121 @@ function SettingPage({ onClose }) {
           socialMediaLinks,
         });
       }
-      // stops multiple triggers from happening
-      if (!editProfileState.saveInProgress) {
-        editProfileDispatch({ type: editProfileActions.SAVE_CHANGES });
-        agent.Profiles.put(profileId, requestBody)
-          .then(async () => {
-            // Save interests to Strapi user (only if changed)
-            if (editProfileState.changes.interestsChanged) {
-              const userId = userData?.id;
-              const interestIds = (editProfileState.interests || []).map(
-                (i) => i.id
-              );
 
-              await agent.User.put(userId, {
-                interests: interestIds,
-              });
-            }
+      // PROFILE UPDATE
+      await agent.Profiles.put(profileId, requestBody);
 
-            // Save skills to Strapi user (only if changed)
-            if (editProfileState.changes.skillsChanged) {
-              const userId = userData?.id;
-              const skillIds = (editProfileState.skills || []).map((s) => s.id);
-
-              await agent.User.put(userId, {
-                skills: skillIds,
-              });
-            }
-
-            editProfileDispatch({
-              type: editProfileActions.SAVE_CHANGES_SUCCESS,
-            });
-            updateUserData((prev) => ({
-              ...prev,
-              bio: editProfileState.bio,
-              name: editProfileState.changes.detailsChanged
-                ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
-                : prev.name,
-              socialMediaLinks: editProfileState.changes.detailsChanged
-                ? [
-                    {
-                      platform: 'instagram',
-                      url: editProfileState.instagram ?? '',
-                    },
-                    { platform: 'github', url: editProfileState.github ?? '' },
-                    {
-                      platform: 'linkedin',
-                      url: editProfileState.linkedin ?? '',
-                    },
-                  ].filter((x) => x.url && x.url.trim() !== '')
-                : prev.socialMediaLinks,
-              interests: editProfileState.changes.interestsChanged
-                ? editProfileState.interests
-                : prev.interests,
-              skills: editProfileState.changes.skillsChanged
-                ? editProfileState.skills
-                : prev.skills,
-            }));
-            onClose();
-          })
-          .catch((error) => {
-            editProfileDispatch({
-              type: editProfileActions.SAVE_CHANGES_FAILED,
-            });
-            console.log('[Profile Update Error] — ', error);
-          });
+      // INTERESTS
+      if (editProfileState.changes.interestsChanged) {
+        const interestIds = (editProfileState.interests || []).map((i) => i.id);
+        await agent.User.put(userId, { interests: interestIds });
       }
+
+      // SKILLS
+      if (editProfileState.changes.skillsChanged) {
+        const skillIds = (editProfileState.skills || []).map((s) => s.id);
+        await agent.User.put(userId, { skills: skillIds });
+      }
+
+      const cacheBustedImage = editProfileState.profilePictureUrl
+        ? `${editProfileState.profilePictureUrl}${
+            editProfileState.profilePictureUrl.includes('?') ? '&' : '?'
+          }t=${Date.now()}`
+        : '';
+
+      updateUserData((prev) => ({
+        ...prev,
+
+        bio: editProfileState.changes.bioChanged
+          ? editProfileState.bio
+          : prev.bio,
+
+        name: editProfileState.changes.detailsChanged
+          ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
+          : prev.name,
+
+        socialMediaLinks: editProfileState.changes.detailsChanged
+          ? [
+              { platform: 'instagram', url: editProfileState.instagram ?? '' },
+              { platform: 'github', url: editProfileState.github ?? '' },
+              { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
+            ].filter((x) => x.url && x.url.trim() !== '')
+          : prev.socialMediaLinks,
+
+        interests: editProfileState.changes.interestsChanged
+          ? editProfileState.interests
+          : prev.interests,
+
+        skills: editProfileState.changes.skillsChanged
+          ? editProfileState.skills
+          : prev.skills,
+
+        profile: {
+          ...(prev.profile || {}),
+
+          profilePicture:
+            editProfileState.profilePictureId !== undefined
+              ? editProfileState.profilePicture
+                ? {
+                    ...editProfileState.profilePicture,
+                    url: cacheBustedImage,
+                  }
+                : null
+              : prev.profile?.profilePicture,
+
+          profilePictureUrl:
+            editProfileState.profilePictureId !== undefined
+              ? cacheBustedImage
+              : prev.profile?.profilePictureUrl,
+        },
+      }));
+
+      editProfileDispatch({
+        type: editProfileActions.SAVE_CHANGES_SUCCESS,
+      });
+
+      onClose();
+    } catch (error) {
+      editProfileDispatch({
+        type: editProfileActions.SAVE_CHANGES_FAILED,
+      });
+      console.log('[Profile Update Error]', error);
     }
   };
 
   return (
     <div className="flex flex-col w-full h-[652px]">
       <div className="w-full px-16 py-7 h-full">{showSetting()}</div>
-      {editProfileState.showModalFooter ? (
+
+      {editProfileState.showModalFooter && (
         <div className="flex py-4 pr-14 gap-10 w-full justify-end items-center h-20 border-t-2 border-grayscale-200 bg-[#FCFCFC]">
-          <div>
-            <atoms.Button
-              type="secondary"
-              size="medium"
-              color="cosmic"
-              onClick={() => SetDiscardChanges((v) => v + 1)}
-            >
-              Discard Changes
-            </atoms.Button>
-          </div>
-          <div>
-            <atoms.Button
-              type="primary"
-              size="medium"
-              color="neptune"
-              onClick={onSave}
-              disabled={disableSave}
-            >
-              {editProfileState.saveInProgress ? (
-                <p className="flex items-center gap-3">
-                  <span>Saving</span> <Loader borderColorClass="border-white" />{' '}
-                </p>
-              ) : (
-                'Save Profile'
-              )}
-            </atoms.Button>
-          </div>
+          <atoms.Button
+            type="secondary"
+            size="medium"
+            color="cosmic"
+            onClick={() => setDiscardChanges((v) => v + 1)}
+          >
+            Discard Changes
+          </atoms.Button>
+
+          <atoms.Button
+            type="primary"
+            size="medium"
+            color="neptune"
+            onClick={onSave}
+            disabled={disableSave}
+          >
+            {editProfileState.saveInProgress ? (
+              <p className="flex items-center gap-3">
+                <span>Saving</span>
+                <Loader borderColorClass="border-white" />
+              </p>
+            ) : (
+              'Save Profile'
+            )}
+          </atoms.Button>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

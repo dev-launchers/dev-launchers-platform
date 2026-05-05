@@ -27,6 +27,9 @@ const editProfileInitialState = {
   linkedin: '',
   skills: [],
   interests: [],
+  profilePicture: null,
+  profilePictureId: null,
+  profilePictureUrl: '',
   saveInProgress: false,
 };
 
@@ -233,10 +236,29 @@ const editProfileReducer = (state, action) => {
     case editProfileActions.UPDATE_DETAILS: {
       return {
         ...state,
-        ...action.payload,
+
+        firstName: action.payload.firstName ?? state.firstName,
+        lastName: action.payload.lastName ?? state.lastName,
+        instagram: action.payload.instagram ?? state.instagram,
+        github: action.payload.github ?? state.github,
+        linkedin: action.payload.linkedin ?? state.linkedin,
+
         changes: {
           ...state.changes,
           detailsChanged: true,
+        },
+      };
+    }
+    case editProfileActions.UPDATE_PHOTO: {
+      return {
+        ...state,
+        profilePicture: action.payload.profilePicture,
+        profilePictureId: action.payload.profilePictureId,
+        profilePictureUrl: action.payload.profilePictureUrl,
+
+        changes: {
+          ...state.changes,
+          photoChanged: true,
         },
       };
     }
