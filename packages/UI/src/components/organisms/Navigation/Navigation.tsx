@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
+import prof_default from '../../../assets/images/profile-picture-upload.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
@@ -171,7 +172,7 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <img
-          src={userData?.profilePictureUrl || '/default-avatar.png'}
+          src={userData?.profilePictureUrl || prof_default}
           alt="Profile"
           className={styles.profileImage}
         />
@@ -185,9 +186,12 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
           <div className="px-4 py-2">
             <div className={styles.profileContainer}>
               <img
-                src={userData?.profilePictureUrl || '/default-avatar.png'}
+                src={userData?.profilePictureUrl || prof_default}
                 alt="Profile"
                 className={styles.profileImage}
+                onLoad={(e) => {
+                  console.log('Loaded:', e.currentTarget.src);
+                }}
               />
               <span>{userData?.name}</span>
             </div>
