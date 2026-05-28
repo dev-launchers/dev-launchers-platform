@@ -3,6 +3,7 @@ import { UserComment, UserImageOne } from './StyledComments.js';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 import { agent } from '@devlaunchers/utility';
 import { cleanData } from '../../../../utils/StrapiHelper.js';
+import DefaultPic from '../../../../images/profile-picture-upload.png';
 import SendButton from '../../../../images/send_button_default.svg';
 import SignInSection from '../../../common/SignInSection/SignInSection';
 
@@ -63,7 +64,10 @@ function CommentForm(props) {
           }}
         >
           <UserComment>
-            <UserImageOne alt="user_image" src={userData.profilePictureUrl} />
+            <UserImageOne
+              alt="user_image"
+              src={userData.profilePictureUrl || DefaultPic}
+            />
             <div
               className={`relative flex items-center py-[14px] w-full text-base text-[#494949] border-[#7339AC] border-2 ml-2 ${
                 isFocused ? 'border-[#7339AC]' : 'border-[#DAD8D9]'
