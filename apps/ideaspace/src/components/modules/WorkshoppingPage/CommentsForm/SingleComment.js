@@ -11,6 +11,7 @@ import { useUserDataContext } from '@devlaunchers/components/src/context/UserDat
 import { atoms } from '@devlaunchers/components/src/components';
 import { agent } from '@devlaunchers/utility';
 import UpvoteButton from '../../../../components/common/Upvote/UpvoteButton';
+import DefaultPic from '../../../../images/profile-picture-upload.png';
 // A function to show the date as X hours ago, etc.
 // from: https://stackoverflow.com/a/3177838
 function timeSince(date) {
@@ -116,7 +117,7 @@ function SingleCommentComponent(props) {
         <SingleComment style={{ marginBottom: '12px' }}>
           <UserImage
             alt="user_image"
-            src={props.user.profile?.profilePictureUrl}
+            src={props.user.profile?.profilePictureUrl || DefaultPic}
           />
           <div className="textContent">
             <SingleCommentContent>
