@@ -189,9 +189,6 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
                 src={userData?.profilePictureUrl || prof_default}
                 alt="Profile"
                 className={styles.profileImage}
-                onLoad={(e) => {
-                  console.log('Loaded:', e.currentTarget.src);
-                }}
               />
               <span>{userData?.name}</span>
             </div>
