@@ -20,8 +20,16 @@ const editProfileInitialState = {
   },
   photo: null,
   bio: null,
+  firstName: '',
+  lastName: '',
+  instagram: '',
+  github: '',
+  linkedin: '',
   skills: [],
   interests: [],
+  profilePicture: null,
+  profilePictureId: null,
+  profilePictureUrl: '',
   saveInProgress: false,
 };
 
@@ -84,6 +92,7 @@ const editProfileReducer = (state, action) => {
           bioChanged: false,
           interestsChanged: false,
           skillsChanged: false,
+          detailsChanged: false,
         },
         saveInProgress: false,
       };
@@ -221,6 +230,35 @@ const editProfileReducer = (state, action) => {
         pages: {
           ...state.pages,
           showInterests: false,
+        },
+      };
+    }
+    case editProfileActions.UPDATE_DETAILS: {
+      return {
+        ...state,
+
+        firstName: action.payload.firstName ?? state.firstName,
+        lastName: action.payload.lastName ?? state.lastName,
+        instagram: action.payload.instagram ?? state.instagram,
+        github: action.payload.github ?? state.github,
+        linkedin: action.payload.linkedin ?? state.linkedin,
+
+        changes: {
+          ...state.changes,
+          detailsChanged: true,
+        },
+      };
+    }
+    case editProfileActions.UPDATE_PHOTO: {
+      return {
+        ...state,
+        profilePicture: action.payload.profilePicture,
+        profilePictureId: action.payload.profilePictureId,
+        profilePictureUrl: action.payload.profilePictureUrl,
+
+        changes: {
+          ...state.changes,
+          photoChanged: true,
         },
       };
     }

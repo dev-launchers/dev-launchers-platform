@@ -231,12 +231,14 @@ function SubmissionForm() {
       </HeadWapper>
 
       {!isAuthenticated ? (
-        <SignInSection
-          label="Please sign in to submit your idea!"
-          redirectURL={
-            process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/submit'
-          }
-        />
+        <HeadWapper style={{ textAlign: 'left' }}>
+          <SignInSection
+            label="Please sign in to submit your idea!"
+            redirectURL={
+              process.env.NEXT_PUBLIC_FRONT_END_URL + '/ideaspace/submit'
+            }
+          />
+        </HeadWapper>
       ) : (
         <>
           <Dialog />

@@ -13,7 +13,12 @@ function EditProfileModal() {
   };
 
   return editProfileState.showEditProfileModal ? (
-    <Modal maxHeight="720px" width="1000px" showHeader={true} onClose={onClose}>
+    <Modal
+      maxHeight="720px"
+      width="1000px"
+      showHeader={false}
+      onClose={onClose}
+    >
       <div className="flex">
         <SideBar></SideBar>
         <SettingPage onClose={onClose}></SettingPage>

@@ -4,7 +4,6 @@ import BubbleList from './../../../../common/BubbleList';
 import { editProfileDataContext } from '../../../../../context/EditProfileDataContext';
 
 function Interests({ interestList, title, action }) {
-  const { editProfileDispatch } = editProfileDataContext();
   // filters interestList (removes empty/null values),
   // and transforms array of objects [{},{}] to array of strings ['a','b']
   const filteredInterestList = interestList
@@ -12,13 +11,13 @@ function Interests({ interestList, title, action }) {
 
     .map((interestObj) => interestObj.interest);
 
-  //This Function will be called when  the Edit button is clicked
-  const onEdit = () => {
-    editProfileDispatch({ type: action });
-  };
+  // //This Function will be called when  the Edit button is clicked
+  // const onEdit = () => {
+  //   editProfileDispatch({ type: action });
+  // };
 
   return (
-    <Card title={title} onEdit={onEdit}>
+    <Card title={title}>
       {filteredInterestList?.length > 0 ? (
         <BubbleList list={filteredInterestList} />
       ) : (

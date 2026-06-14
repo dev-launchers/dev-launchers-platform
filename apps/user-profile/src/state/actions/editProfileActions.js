@@ -32,6 +32,10 @@ const MARK_INTERESTS_CHANGED = 'Mark interest changed.';
 const SET_SKILLS = 'Set skills.';
 const MARK_SKILLS_CHANGED = 'Mark skills changed.';
 
+const UPDATE_DETAILS = 'Update user details.';
+
+const UPDATE_PHOTO = 'Update user photo.';
+
 export {
   UPDATE_BIO,
   SAVE_CHANGES,
@@ -55,4 +59,6 @@ export {
   MARK_INTERESTS_CHANGED,
   SET_SKILLS,
   MARK_SKILLS_CHANGED,
+  UPDATE_DETAILS,
+  UPDATE_PHOTO,
 };

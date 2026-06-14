@@ -1,24 +1,42 @@
+import { useEffect, useState } from 'react';
 import { Typography } from '@devlaunchers/components/components/atoms';
 import { editProfileDataContext } from './../../../../../../context/EditProfileDataContext';
 import { editProfileActions } from './../../../../../../state/actions';
 import { useUserDataContext } from '@devlaunchers/components/context/UserDataContext';
 
-function Bio() {
+function Bio({ discardChanges }) {
   const { editProfileDispatch } = editProfileDataContext();
   const { userData } = useUserDataContext();
 
+  const originalBio = userData?.bio ?? '';
+  const [bioValue, setBioValue] = useState(originalBio);
+
+  useEffect(() => {
+    setBioValue(originalBio);
+  }, [originalBio]);
+
+  useEffect(() => {
+    if (!discardChanges) return;
+
+    setBioValue(originalBio);
+
+    editProfileDispatch({
+      type: editProfileActions.UPDATE_BIO,
+      payload: { newBio: originalBio, changed: false },
+    });
+  }, [discardChanges, editProfileDispatch]);
+
   const onInputChange = (event) => {
-    if (userData?.bio !== event.target.value) {
-      editProfileDispatch({
-        type: editProfileActions.UPDATE_BIO,
-        payload: { newBio: event.target.value, changed: true },
-      });
-    } else {
-      editProfileDispatch({
-        type: editProfileActions.UPDATE_BIO,
-        payload: { newBio: event.target.value, changed: false },
-      });
-    }
+    const newValue = event.target.value;
+    setBioValue(newValue);
+
+    editProfileDispatch({
+      type: editProfileActions.UPDATE_BIO,
+      payload: {
+        newBio: newValue,
+        changed: newValue !== originalBio,
+      },
+    });
   };
 
   return (
@@ -26,17 +44,18 @@ function Bio() {
       <Typography variant="primary" className="p-0 m-0">
         Edit your bio
       </Typography>
+
       <div className="flex flex-col gap-2">
         <Typography variant="secondary">
-          <span className="font-extrabold">Bio</span> (optional)
+          <span className="font-extrabold">Bio</span>
         </Typography>
+
         <textarea
-          className="p-6 h-24 border-2 border-grayscale-900 rounded-lg text-base"
+          className="p-6 h-24 border border-gray-300 rounded-lg text-base"
           placeholder="Please enter bio..."
           onChange={onInputChange}
-        >
-          {userData?.bio ?? null}
-        </textarea>
+          value={bioValue}
+        />
       </div>
     </div>
   );

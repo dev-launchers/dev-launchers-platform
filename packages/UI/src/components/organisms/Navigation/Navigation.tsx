@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect } from 'react';
 import type MobileNavigationDropdownItem from 'types/MobileNavigationDropdownItem';
 import logo from '../../../assets/images/logo-monogram.png';
+import prof_default from '../../../assets/images/profile-picture-upload.png';
 import { useUserDataContext } from '../../../context/UserDataContext';
 import Logout from '../../../utils/Logout';
 import NotificationPopover from './NotificationPopover';
@@ -122,7 +123,6 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
   const [isLeader, setIsLeader] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
   const { userData: user, isAuthenticated, isLoading } = useUserDataContext();
-
   // Close when route OR hash changes
   const close = React.useCallback(() => setIsOpen(false), []);
   useCloseOnRouteChange(close);
@@ -172,11 +172,11 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
         onClick={() => setIsOpen(!isOpen)}
       >
         <img
-          src={userData.profilePictureUrl}
+          src={userData?.profilePictureUrl || prof_default}
           alt="Profile"
           className={styles.profileImage}
         />
-        <span>{userData.name}</span>
+        <span>{userData?.name}</span>
         <ChevronDown
           className={`${styles.chevron} ${isOpen ? 'rotate-180' : ''}`}
         />
@@ -186,11 +186,11 @@ const ProfileDropdown = ({ userData }: { userData: UserData }) => {
           <div className="px-4 py-2">
             <div className={styles.profileContainer}>
               <img
-                src={userData.profilePictureUrl}
+                src={userData?.profilePictureUrl || prof_default}
                 alt="Profile"
                 className={styles.profileImage}
               />
-              <span>{userData.name}</span>
+              <span>{userData?.name}</span>
             </div>
           </div>
           <div className="mt-2 border-t border-gray-700">

@@ -10,7 +10,7 @@ export const HeaderContainer = styled.div`
   row-gap: 1rem;
   margin-top: 200px;
   padding-bottom: 5px;
-  color: black;
+  color: white;
   font-size: 44px;
   font-family: Abel;
   font-weight: 400;
@@ -44,7 +44,7 @@ export const SubHeaderContainer = styled.div`
   margin: 0;
   /* row-gap: 0.5rem; */
   height: auto;
-  color: black;
+  color: white;
   font-size: 20px;
   font-family: Nunito Sans;
   font-weight: 400;
@@ -54,6 +54,5 @@ export const SubHeaderContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  background-color: #f0edee !important;
-  /* height: 500px; */
+  background-color: #000 !important;
 `;

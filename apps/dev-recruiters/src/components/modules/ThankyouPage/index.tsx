@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  HeaderContainer,
-  SubHeaderContainer,
-  Wrapper,
-  BtnSignUp,
-} from './styles';
-import BoxContainer from '../../common/BoxContainer';
+import { atoms } from '@devlaunchers/components/src/components';
+import { Button } from '@devlaunchers/components/src/components/atoms';
 import { useRouter } from 'next/router';
 
 export function ThankyouPage() {
@@ -15,27 +10,46 @@ export function ThankyouPage() {
     router.push('/join');
   };
   return (
-    <>
-      <Wrapper>
-        <BoxContainer paddingVertical={16}>
-          <HeaderContainer>Thank you!</HeaderContainer>
-          <SubHeaderContainer>
-            Your application for the Dev Launchers Talent Community has been
-            received.
-          </SubHeaderContainer>
-          <SubHeaderContainer>
-            We will email you when a volunteer role that matches your skillsets
-            and/or interests opens up!
-          </SubHeaderContainer>
-          <BoxContainer paddingVertical={80} paddingHorizontal={24}>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <BtnSignUp as="a" type="submit" onClick={routeChange}>
-                VIEW CURRENT OPEN ROLES
-              </BtnSignUp>
-            </div>
-          </BoxContainer>
-        </BoxContainer>
-      </Wrapper>
-    </>
+    <div
+      style={{
+        backgroundColor: '#000',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '1.5rem',
+        padding: '6rem 8rem',
+        textAlign: 'center',
+      }}
+    >
+      <atoms.Typography
+        as="h1"
+        size="xl6"
+        variant="primary"
+        textWeight="bold"
+        textAlign="center"
+        className="text-white"
+      >
+        Thank you!
+      </atoms.Typography>
+
+      <atoms.Typography
+        as="p"
+        size="body_xl"
+        variant="secondary"
+        textAlign="center"
+        className="text-white"
+      >
+        Your application for the Dev Launchers Talent Community has been
+        received. We will email you when a volunteer role that matches your
+        skillsets and/or interests opens up!
+      </atoms.Typography>
+
+      <div style={{ marginTop: '2rem' }}>
+        <Button color="nebula" size="medium" onClick={routeChange}>
+          VIEW CURRENT OPEN ROLES
+        </Button>
+      </div>
+    </div>
   );
 }

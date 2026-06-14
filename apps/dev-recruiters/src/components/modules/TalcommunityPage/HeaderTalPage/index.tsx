@@ -1,9 +1,10 @@
-import { Wrap } from '../StyledTalcommunityPage';
 import React from 'react';
 import {
+  Wrap,
   HeaderContainer,
-  HeaderText,
   SubHeaderContainer,
+  TypeSet,
+  HeaderText,
   SubHeaderText,
 } from './styles';
 
@@ -11,20 +12,20 @@ export function HeaderTalPage() {
   return (
     <Wrap>
       <HeaderContainer>
-        <HeaderText>Dev Launchers Talent Community</HeaderText>
+        <SubHeaderContainer>
+          <TypeSet>
+            <HeaderText>Dev Launchers Talent Community</HeaderText>
+            <SubHeaderText>
+              At Dev Launchers, volunteers build real projects, grow their
+              skills, expand their portfolios, and connect with like-minded
+              people — all while working on something that matters. Join our
+              Talent Community to get notified about new volunteer roles that
+              match your interests and strengths!
+            </SubHeaderText>
+            <SubHeaderText>Check out our open roles below!</SubHeaderText>
+          </TypeSet>
+        </SubHeaderContainer>
       </HeaderContainer>
-      <SubHeaderContainer>
-        <SubHeaderText>
-          Join our Talent Community to be notified about new volunteer roles
-          that match your skillset!
-        </SubHeaderText>
-        <SubHeaderText>
-          {' '}
-          Volunteers at Dev Launchers get the chance to learn valuable skills,
-          expand their portfolios, mentor talents, and network with like-minded
-          people while building something that matters.
-        </SubHeaderText>
-      </SubHeaderContainer>
     </Wrap>
   );
 }

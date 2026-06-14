@@ -1,9 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { atoms } from '@devlaunchers/components/src/components';
 import { useState } from 'react';
 import { ImagePreviewSVG } from './ImagePreview';
 import { MessageCircle, ArrowBigUpDash } from 'lucide-react';
+import Image from 'next/image';
 
 function IdeaCard({ idea }) {
   const urlPath = {
@@ -36,7 +36,7 @@ function IdeaCard({ idea }) {
     }
   };
   return (
-    <Link href={urlPath}>
+    <Link href={urlPath} className="block w-full">
       <atoms.Box
         flexDirection="column"
         className="w-full md:w-[295px] lg:w-[calc(50%-8px)] xl:w-[295px] h-[218px]"
@@ -51,25 +51,24 @@ function IdeaCard({ idea }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="w-full min-h-[120px] relative">
+        <div className="w-full h-[120px] relative">
           {idea.ideaImage?.medium_url ? (
             <Image
               alt="idea_image"
               src={idea.ideaImage.medium_url}
               layout="fill"
               objectFit="cover"
-              style={{
-                borderRadius: '1rem 1rem 0rem 0rem',
-                backgroundColor: 'rgba(0, 0, 0, 0.05)',
-              }}
+              className="rounded-t-2xl"
             />
           ) : (
-            <div className="w-full h-full bg-[#F6F6F6] rounded-t-2xl flex items-center justify-center">
+            <div
+              className="w-full h-full rounded-t-2xl flex items-center justify-center"
+              style={{ backgroundColor: 'var(--base-03, #292929)' }}
+            >
               <ImagePreviewSVG />
             </div>
           )}
         </div>
-
         <atoms.Box
           flexDirection="column"
           alignItems="flex-start"
@@ -94,7 +93,8 @@ function IdeaCard({ idea }) {
             {idea.ideaName}
           </atoms.Typography>
 
-          <div className="flex flex-row  justify-between w-full mt-6">
+          {/* <div className="flex flex-row justify-between w-full mt-6"> */}
+          <div className="flex flex-col lg:flex-row justify-between w-full mt-6">
             <atoms.Typography
               type="p"
               className="flex flex-row gap-2 items-center"

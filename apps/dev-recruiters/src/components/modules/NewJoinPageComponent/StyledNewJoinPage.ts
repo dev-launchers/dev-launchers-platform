@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import JoinPRight from '../../../images/JoinPage/Join-page-image-right.png';
 import RocketIll from '../../../images/TalcommPage/rocket-illustration.png';
 
 export const Wrapper = styled.div`
@@ -17,11 +16,16 @@ export const Wrapjoin = styled.div`
     ),
     #000;
   display: flex;
-  height: 360px;
-  min-height: 240px;
+  min-height: 360px;
   padding: var(--0, 0px) var(--56, 192px);
   justify-content: center;
   align-self: stretch;
+  @media (max-width: 1024px) {
+    padding: 0px 64px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px 24px;
+  }
 `;
 
 export const HeadingContainer = styled.div`
@@ -77,6 +81,10 @@ export const SelectRoleText = styled.div`
   font-family: 'Abel', sans-serif;
   color: ${({ theme }) => theme?.colors?.White || '#ffffff'};
   text-align: left;
+  @media (max-width: 768px) {
+    text-align: center;
+    font-size: 28px;
+  }
 `;
 
 export const AreaImage = styled.div`
@@ -89,7 +97,6 @@ export const AreaImage = styled.div`
 
 export const Footer = styled.div`
   display: flex;
-  height: 360px;
   min-height: 360px;
   padding: var(--0, 0px) var(--48, 192px);
   width: 100%;
@@ -105,6 +112,12 @@ export const Footer = styled.div`
       rgba(0, 0, 0, 0.5) 100%
     ),
     url(${RocketIll});
+  @media (max-width: 1024px) {
+    padding: 40px 64px;
+  }
+  @media (max-width: 768px) {
+    padding: 40px 24px;
+  }
 `;
 
 export const FooterFirstText = styled.div`
@@ -128,6 +141,10 @@ export const FooterSecondText = styled.div`
   font-weight: 400;
   line-height: 28px; /* 140% */
   width: 70%;
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 16px;
+  }
 `;
 
 export const BtnSignUp = styled.button`
