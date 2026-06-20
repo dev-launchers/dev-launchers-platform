@@ -29,6 +29,10 @@ spec:
         - key: virtual-kubelet.io/provider
           operator: Exists
           effect: PreferNoSchedule
+        - key: 'kubernetes.azure.com/scalesetpriority'
+          operator: 'Equal'
+          value: 'spot'
+          effect: 'NoSchedule'
       containers:
         - name: platform-website
           image: devlaunchers/platform-website:d0d8327-202105311801 # {"$imagepolicy": "platform-website:platform-website"}
