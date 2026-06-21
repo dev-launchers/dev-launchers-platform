@@ -29,10 +29,11 @@ export default function About() {
               textAlign="center"
               className="max-w-3xl text-gray-500"
             >
-              At Dev Launchers, we empower individuals to excel in their tech
-              careers at every stage of their journey. We believe that
-              technology careers should be accessible to everyone, regardless of
-              their background or starting point.
+              Our global and inclusive communities help emerging tech
+              professionals break down experience barriers and gain the skills
+              to launch their careers through collaboration, experimentation,
+              and growth in a supportive environment that mimics a professional
+              tech organization.
             </atoms.Typography>
           </div>
         </section>
