@@ -14,9 +14,7 @@ function TermsConditionPage() {
           variant="primary"
           size="xl5"
           textWeight="bold"
-        >
-          IdeaSpace
-        </atoms.Typography>
+        ></atoms.Typography>
         <div className="hidden sm:block">
           <BackButton
             buttonType="confirm"
@@ -28,16 +26,17 @@ function TermsConditionPage() {
           variant="primary"
           size="xl4"
           textWeight="bold"
+          className="pl-8"
         >
           Idea Submission Terms & Conditions
         </atoms.Typography>
 
-        <StyledRainbow>
-          <div className="h-1 w-full bg-gradient-to-r from-[#FF0000] via-[#00FF00] to-[#0000FF]" />
-        </StyledRainbow>
-
         <div className="HeadingSub flex flex-col gap-3">
-          <atoms.Typography variant="secondary" size="body_base">
+          <atoms.Typography
+            variant="secondary"
+            size="body_base"
+            className="pl-8"
+          >
             Last updated: April 26, 2023
           </atoms.Typography>
         </div>

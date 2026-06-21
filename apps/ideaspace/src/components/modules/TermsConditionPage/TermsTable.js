@@ -6,7 +6,7 @@ const TermsTable = () => {
     <>
       <div className="relative overflow-x-auto shadow-md rounded-xl mb-8">
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 hidden sm:table">
-          <thead className="text-gray-700 uppercase bg-[#F0EDEE]">
+          <thead className="text-white uppercase bg-[#1E2530]">
             <tr>
               <th scope="col" className="px-6 py-3">
                 <atoms.Typography
@@ -31,9 +31,9 @@ const TermsTable = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#age-eligibility" className="text-[#3A7CA5] underline">
+                <a href="#age-eligibility" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -44,21 +44,22 @@ const TermsTable = () => {
                   </atoms.Typography>
                 </a>
               </th>
-              <td className="px-6 py-4">
+              <td className="px-6 py-4 ">
                 <atoms.Typography
                   as="span"
                   variant="secondary"
                   size="body_base"
+                  className="text-sky-400"
                 >
                   How old do you have to be to use our platform?
                 </atoms.Typography>
               </td>
             </tr>
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#non-confidentiality"
-                  className="text-[#3A7CA5] underline"
+                  className="text-sky-400 underline"
                 >
                   <atoms.Typography
                     as="span"
@@ -81,9 +82,9 @@ const TermsTable = () => {
                 </atoms.Typography>
               </td>
             </tr>
-            <tr className="bg-white">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#user-generated" className="text-[#3A7CA5] underline">
+                <a href="#user-generated" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -107,12 +108,9 @@ const TermsTable = () => {
               </td>
             </tr>
 
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a
-                  href="#i-property-rights"
-                  className="text-[#3A7CA5] underline"
-                >
+                <a href="#i-property-rights" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -135,9 +133,9 @@ const TermsTable = () => {
               </td>
             </tr>
 
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#idea-evaluation" className="text-[#3A7CA5] underline">
+                <a href="#idea-evaluation" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -161,9 +159,9 @@ const TermsTable = () => {
               </td>
             </tr>
 
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#indemnity" className="text-[#3A7CA5] underline">
+                <a href="#indemnity" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -188,9 +186,9 @@ const TermsTable = () => {
               </td>
             </tr>
 
-            <tr className="bg-white border-b">
+            <tr className="bg-gray-800 border-b">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#changeToTerms" className="text-[#3A7CA5] underline">
+                <a href="#changeToTerms" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -233,7 +231,7 @@ const TermsTable = () => {
           <tbody>
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#age-eligibility" className="text-[#3A7CA5] underline">
+                <a href="#age-eligibility" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -258,7 +256,7 @@ const TermsTable = () => {
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
                 <a
                   href="#non-confidentiality"
-                  className="text-[#3A7CA5] underline"
+                  className="text-sky-400 underline"
                 >
                   <atoms.Typography
                     as="span"
@@ -283,7 +281,7 @@ const TermsTable = () => {
             </tr>
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#user-generated" className="text-[#3A7CA5] underline">
+                <a href="#user-generated" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -309,10 +307,7 @@ const TermsTable = () => {
 
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a
-                  href="#i-property-rights"
-                  className="text-[#3A7CA5] underline"
-                >
+                <a href="#i-property-rights" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -337,7 +332,7 @@ const TermsTable = () => {
 
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#idea-evaluation" className="text-[#3A7CA5] underline">
+                <a href="#idea-evaluation" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -363,7 +358,7 @@ const TermsTable = () => {
 
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#indemnity" className="text-[#3A7CA5] underline">
+                <a href="#indemnity" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
@@ -390,7 +385,7 @@ const TermsTable = () => {
 
             <tr className="bg-white border-b flex flex-col">
               <th scope="row" className="px-6 py-4 whitespace-nowrap">
-                <a href="#changeToTerms" className="text-[#3A7CA5] underline">
+                <a href="#changeToTerms" className="text-sky-400 underline">
                   <atoms.Typography
                     as="span"
                     variant="primary"
