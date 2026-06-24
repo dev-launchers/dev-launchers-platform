@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@devlaunchers/components/src/styles/global';
 import Head from 'next/head';
-
+import { toast, ToastContainer } from 'react-toastify';
 import IdeasBetaFeedbackModal from '../components/modules/IdeasBetaFeedbackModal';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,6 +33,7 @@ function MyApp(props) {
     <ThemeProvider theme={theme}>
       <Head><meta name="google-site-verification" content="KUjgcCuL0UXshh3A0F02itHW6KizSyra4BIsFE9Iz8I" /></Head>
       <GlobalStyle />
+      <ToastContainer />
       <IdeasBetaFeedbackModal />
       {props.children}
     </ThemeProvider>
