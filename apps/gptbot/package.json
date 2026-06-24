@@ -16,7 +16,7 @@
     "@types/react": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
-    "eslint": "8.21.0",
+    "eslint": "9.26.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-next": "^12.2.3",
