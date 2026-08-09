@@ -90,7 +90,8 @@ function SingleCommentComponent(props) {
   const [DeleteCommentDialog, confirmDelete] = useConfirm(
     ['Delete this comment?', '', ''],
     "This action can't be undone.",
-    ['primary alternative', 'delete', 'cancel']
+    ['primary alternative', 'delete', 'cancel'],
+    { variant: 'dark' }
   );
 
   function handleEditClick() {
