@@ -11,6 +11,9 @@ export const DEFAULT_USER = {
   bio: '',
   profilePictureUrl: '',
   socialMediaLinks: [],
+  firstName: '',
+  lastName: '',
+  displayName: '',
   discord: {
     id: 0,
     avatar: '',
@@ -45,6 +48,7 @@ function useUserDataHook() {
     const populateParams = [
       'populate[profile][populate][user][populate]=*',
       'populate[profile][populate][profilePicture][populate]=*',
+      'populate[profile][populate][socialMediaLinks][populate]=*',
       'populate[projects][populate][heroImage][populate]=*',
       'populate[projects][populate][openPositions][populate]=*',
       'populate[projects][populate][team][populate][leaders][populate]=*',
@@ -70,12 +74,15 @@ function useUserDataHook() {
         console.log('Fetching...');
         updateUserData({
           id: currentUser.id,
-          name: currentUser.profile?.displayName ?? '',
+          name: currentUser.name ?? '',
           username: currentUser.username ?? '',
           email: currentUser.email ?? '',
           bio: currentUser.profile?.bio ?? '',
           profilePictureUrl: currentUser.profile?.profilePictureUrl ?? '',
           socialMediaLinks: currentUser.profile?.socialMediaLinks ?? [],
+          firstName: currentUser.profile?.firstName ?? '',
+          lastName: currentUser.profile?.lastName ?? '',
+          displayName: currentUser.profile?.displayName ?? '',
           interests: currentUser.interests ?? [],
           skills: currentUser.skills ?? [],
           projects: currentUser.projects ?? [],
