@@ -80,6 +80,9 @@ function SingleCommentComponent(props) {
   const [editText, setEditText] = useState(props.children);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [editError, setEditError] = useState(null);
+  const [deleteError, setDeleteError] = useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isOwner =
     isAuthenticated &&
@@ -96,11 +99,14 @@ function SingleCommentComponent(props) {
 
   function handleEditClick() {
     setEditText(props.children);
+    setEditError(null);
     setIsEditing(true);
+    setIsMenuOpen(false);
   }
 
   function handleCancelEdit() {
     setEditText(props.children);
+    setEditError(null);
     setIsEditing(false);
   }
 
@@ -111,12 +117,13 @@ function SingleCommentComponent(props) {
       return;
     }
     setIsSaving(true);
+    setEditError(null);
     try {
       await agent.Comments.put(props.id, { data: { text: trimmed } });
       props.onCommentUpdated?.(props.id, trimmed);
       setIsEditing(false);
     } catch (error) {
-      console.error(error);
+      setEditError('Failed to save your comment. Please try again.');
     } finally {
       setIsSaving(false);
     }
@@ -125,11 +132,12 @@ function SingleCommentComponent(props) {
   async function handleDeleteClick() {
     if (await confirmDelete()) {
       setIsDeleting(true);
+      setDeleteError(null);
       try {
         await agent.Comments.delete(props.id);
         props.onCommentDeleted?.(props.id);
       } catch (error) {
-        console.error(error);
+        setDeleteError('Failed to delete your comment. Please try again.');
         setIsDeleting(false);
       }
     }
@@ -207,7 +215,7 @@ function SingleCommentComponent(props) {
                 {/* get the idea ID from the URL if possible and determine the idea owner (maybe do this in another file) */}
               </div>
               {isOwner && (
-                <Popover>
+                <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                   <PopoverTrigger asChild>
                     <button
                       aria-label="Comment options"
@@ -256,47 +264,70 @@ function SingleCommentComponent(props) {
                 {timeSince(new Date(props.createdAt))}
               </atoms.Typography>
             </SingleCommentContent>
+            {deleteError && (
+              <atoms.Typography as="p" style={{ color: '#EBC4C4' }}>
+                {deleteError}
+              </atoms.Typography>
+            )}
           </div>
         </SingleComment>
         <SingleComment>
-          <div className="textContent">
+          <div className="textContent" style={{ width: '100%' }}>
             <SingleCommentContent>
               {isEditing ? (
-                <div style={{ width: '100%', marginLeft: '52px' }}>
-                  <textarea
-                    className="w-full rounded-lg p-2"
-                    style={{
-                      background: 'var(--surface-02, #1a1a1a)',
-                      color: 'var(--content-04, #DAD8D9)',
-                      border: '1px solid var(--border-01, #B9B9B9)',
-                    }}
-                    rows={3}
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                    disabled={isSaving}
-                  />
-                  <div className="flex gap-2" style={{ marginTop: '8px' }}>
-                    <atoms.Button
-                      size="small"
-                      type="primary"
-                      mode="dark"
-                      color="nebula"
-                      onClick={handleSaveEdit}
+                <div style={{ width: 'calc(100% - 48px)', marginLeft: '48px' }}>
+                  <div style={{ position: 'relative' }}>
+                    <textarea
+                      className="w-full rounded-lg p-2 text-base"
+                      style={{
+                        background: 'var(--surface-02, #1a1a1a)',
+                        color: 'var(--content-04, #DAD8D9)',
+                        border: '1px solid var(--border-01, #B9B9B9)',
+                        paddingBottom: '44px',
+                      }}
+                      rows={3}
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
                       disabled={isSaving}
+                    />
+                    <div
+                      className="flex gap-2"
+                      style={{
+                        position: 'absolute',
+                        bottom: '8px',
+                        right: '8px',
+                      }}
                     >
-                      Save
-                    </atoms.Button>
-                    <atoms.Button
-                      size="small"
-                      type="secondary"
-                      mode="dark"
-                      color="nebula"
-                      onClick={handleCancelEdit}
-                      disabled={isSaving}
-                    >
-                      Cancel
-                    </atoms.Button>
+                      <atoms.Button
+                        size="medium"
+                        type="secondary"
+                        mode="dark"
+                        color="nebula"
+                        onClick={handleCancelEdit}
+                        disabled={isSaving}
+                      >
+                        Cancel
+                      </atoms.Button>
+                      <atoms.Button
+                        size="medium"
+                        type="secondary"
+                        mode="light"
+                        color="nebula"
+                        onClick={handleSaveEdit}
+                        disabled={isSaving}
+                      >
+                        Save
+                      </atoms.Button>
+                    </div>
                   </div>
+                  {editError && (
+                    <atoms.Typography
+                      as="p"
+                      style={{ color: '#EBC4C4', marginTop: '4px' }}
+                    >
+                      {editError}
+                    </atoms.Typography>
+                  )}
                 </div>
               ) : (
                 <div source={props.children}>
