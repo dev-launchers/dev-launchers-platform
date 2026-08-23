@@ -37,9 +37,9 @@ export const IdeaOverview = ({ selectedCard }) => {
         if (!ideaOwnerId) return;
         const { data } = await axios.get(
           `${process.env.NEXT_PUBLIC_STRAPI_URL}/users/${ideaOwnerId}?` +
-          new URLSearchParams({
-            'populate[profile]': 'profilePictureUrl',
-          }).toString(),
+            new URLSearchParams({
+              'populate[profile]': 'profilePictureUrl',
+            }).toString(),
           { withCredentials: true }
         );
         setProfilePictureUrl(data.profile?.profilePictureUrl);
@@ -88,14 +88,14 @@ export const IdeaOverview = ({ selectedCard }) => {
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
           <div
-            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica'] whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             Idea Description
           </div>
 
           <div
-            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left"
+            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             {ideaData.description}
@@ -103,13 +103,13 @@ export const IdeaOverview = ({ selectedCard }) => {
         </div>
         <div className="flex flex-col gap-2">
           <div
-            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica'] whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             Features
           </div>
           <div
-            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left"
+            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             {ideaData.features}
@@ -117,13 +117,13 @@ export const IdeaOverview = ({ selectedCard }) => {
         </div>
         <div className="flex flex-col gap-2">
           <div
-            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica']"
+            className="sm:text-[22.28px] text-[20px] font-bold font-['Helvetica'] whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             Target Audience
           </div>
           <div
-            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left"
+            className="sm:text-[17px] text-[15.5px] font-normal font-['Nunito Sans'] text-left whitespace-pre-line"
             style={{ lineHeight: '160%', color: 'var(--content-04, #DAD8D9)' }}
           >
             {ideaData.targetAudience}
