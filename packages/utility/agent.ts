@@ -174,8 +174,10 @@ const User = {
 };
 
 const Comments = {
-  put: (id: string, body: {}) => requests.put<Comment>(id, body),
+  put: (id: string | number, body: {}) =>
+    requests.put<Comment>(`comments/${id}`, body),
   post: (body: Comment) => requests.post<Comment>('comments', body),
+  delete: (id: string | number) => requests.delete<any>(`comments/${id}`),
 };
 
 const Likes = {
