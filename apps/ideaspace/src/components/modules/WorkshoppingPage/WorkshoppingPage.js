@@ -78,6 +78,18 @@ export default function WorkshoppingPage(props) {
     setComments((prev) => [comment, ...prev]);
   }
 
+  function handleCommentUpdated(commentId, text) {
+    setComments((prev) =>
+      prev.map((comment) =>
+        comment.id === commentId ? { ...comment, text } : comment
+      )
+    );
+  }
+
+  function handleCommentDeleted(commentId) {
+    setComments((prev) => prev.filter((comment) => comment.id !== commentId));
+  }
+
   if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
@@ -123,7 +135,12 @@ export default function WorkshoppingPage(props) {
                     renderNewComment={renderNewComment}
                   />
                 </Form>
-                <DisplayComments selectedCard={data} comments={comments} />
+                <DisplayComments
+                  selectedCard={data}
+                  comments={comments}
+                  onCommentUpdated={handleCommentUpdated}
+                  onCommentDeleted={handleCommentDeleted}
+                />
               </Comments>
             </div>
           </div>
