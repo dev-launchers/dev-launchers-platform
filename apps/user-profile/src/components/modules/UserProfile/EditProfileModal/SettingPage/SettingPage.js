@@ -62,19 +62,19 @@ function SettingPage({ onClose }) {
 
       // DETAILS
       if (editProfileState.changes.detailsChanged) {
-        const fullName =
-          `${editProfileState.firstName} ${editProfileState.lastName}`.trim();
-
+        requestBody.data.firstName = editProfileState.firstName ?? '';
+        requestBody.data.lastName = editProfileState.lastName ?? '';
+        requestBody.data.displayName = editProfileState.displayName ?? '';
         const socialMediaLinks = [
-          { platform: 'instagram', url: editProfileState.instagram ?? '' },
-          { platform: 'github', url: editProfileState.github ?? '' },
-          { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
-        ].filter((x) => x.url && x.url.trim() !== '');
-
-        await agent.User.put(userId, {
-          name: fullName,
-          socialMediaLinks,
-        });
+          editProfileState.instagram,
+          editProfileState.github,
+          editProfileState.linkedin,
+        ]
+          .filter((link) => link && link.trim() !== '')
+          .map((link) => ({
+            socialMediaLink: link,
+          }));
+        requestBody.data.socialMediaLinks = socialMediaLinks;
       }
 
       // PROFILE UPDATE
@@ -97,7 +97,15 @@ function SettingPage({ onClose }) {
             editProfileState.profilePictureUrl.includes('?') ? '&' : '?'
           }t=${Date.now()}`
         : '';
-
+      const updatedSocialMediaLinks = [
+        editProfileState.instagram,
+        editProfileState.github,
+        editProfileState.linkedin,
+      ]
+        .filter((link) => link && link.trim() !== '')
+        .map((link) => ({
+          socialMediaLink: link,
+        }));
       updateUserData((prev) => ({
         ...prev,
 
@@ -105,16 +113,8 @@ function SettingPage({ onClose }) {
           ? editProfileState.bio
           : prev.bio,
 
-        name: editProfileState.changes.detailsChanged
-          ? `${editProfileState.firstName} ${editProfileState.lastName}`.trim()
-          : prev.name,
-
         socialMediaLinks: editProfileState.changes.detailsChanged
-          ? [
-              { platform: 'instagram', url: editProfileState.instagram ?? '' },
-              { platform: 'github', url: editProfileState.github ?? '' },
-              { platform: 'linkedin', url: editProfileState.linkedin ?? '' },
-            ].filter((x) => x.url && x.url.trim() !== '')
+          ? updatedSocialMediaLinks
           : prev.socialMediaLinks,
 
         interests: editProfileState.changes.interestsChanged
@@ -127,6 +127,21 @@ function SettingPage({ onClose }) {
 
         profile: {
           ...(prev.profile || {}),
+          firstName: editProfileState.changes.detailsChanged
+            ? editProfileState.firstName
+            : prev.profile?.firstName,
+
+          lastName: editProfileState.changes.detailsChanged
+            ? editProfileState.lastName
+            : prev.profile?.lastName,
+
+          displayName: editProfileState.changes.detailsChanged
+            ? editProfileState.displayName
+            : prev.profile?.displayName,
+
+          socialMediaLinks: editProfileState.changes.detailsChanged
+            ? updatedSocialMediaLinks
+            : prev.profile?.socialMediaLinks,
 
           profilePicture:
             editProfileState.profilePictureId !== undefined

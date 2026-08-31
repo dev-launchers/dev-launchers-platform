@@ -14,14 +14,29 @@ function Details({ discardChanges }) {
   const { editProfileDispatch } = editProfileDataContext();
   const fileInputRef = useRef(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const originalFirstName = userData?.profile?.firstName ?? '';
+  const originalLastName = userData?.profile?.lastName ?? '';
+  const originalDisplayName = userData?.profile?.displayName ?? '';
+  const socialMediaLinks =
+    userData?.profile?.socialMediaLinks ?? userData?.socialMediaLinks ?? [];
 
-  const fullName = userData?.name ?? '';
-  const nameParts = fullName.trim().split(/\s+/).filter(Boolean);
-  const originalFirstName = nameParts[0] ?? '';
-  const originalLastName = nameParts.slice(1).join(' ') ?? '';
-
-  const getSocialLink = (platform) =>
-    userData?.socialMediaLinks?.find((l) => l.platform === platform)?.url ?? '';
+  const getSocialLink = (platform) => {
+    const links = socialMediaLinks.map((link) => link.socialMediaLink ?? '');
+    if (platform === 'instagram') {
+      return (
+        links.find(
+          (link) => link.includes('instagram') || link.startsWith('@')
+        ) ?? ''
+      );
+    }
+    if (platform === 'github') {
+      return links.find((link) => link.includes('github')) ?? '';
+    }
+    if (platform === 'linkedin') {
+      return links.find((link) => link.includes('linkedin')) ?? '';
+    }
+    return '';
+  };
 
   const originalInstagram = getSocialLink('instagram');
   const originalGithub = getSocialLink('github');
@@ -31,6 +46,7 @@ function Details({ discardChanges }) {
     userData?.profile?.profilePicture?.url || '';
   const [firstName, setFirstName] = useState(originalFirstName);
   const [lastName, setLastName] = useState(originalLastName);
+  const [displayName, setDisplayName] = useState(originalDisplayName);
   const [instagram, setInstagram] = useState(originalInstagram);
   const [github, setGithub] = useState(originalGithub);
   const [linkedIn, setLinkedin] = useState(originalLinkedIn);
@@ -45,6 +61,7 @@ function Details({ discardChanges }) {
   useEffect(() => {
     setFirstName(originalFirstName);
     setLastName(originalLastName);
+    setDisplayName(originalDisplayName);
     setInstagram(originalInstagram);
     setGithub(originalGithub);
     setLinkedin(originalLinkedIn);
@@ -53,6 +70,7 @@ function Details({ discardChanges }) {
   }, [
     originalFirstName,
     originalLastName,
+    originalDisplayName,
     originalInstagram,
     originalGithub,
     originalLinkedIn,
@@ -65,6 +83,7 @@ function Details({ discardChanges }) {
 
     setFirstName(originalFirstName);
     setLastName(originalLastName);
+    setDisplayName(originalDisplayName);
     setInstagram(originalInstagram);
     setGithub(originalGithub);
     setLinkedin(originalLinkedIn);
@@ -76,6 +95,7 @@ function Details({ discardChanges }) {
       payload: {
         firstName: originalFirstName,
         lastName: originalLastName,
+        displayName: originalDisplayName,
         instagram: originalInstagram,
         github: originalGithub,
         linkedin: originalLinkedIn,
@@ -88,6 +108,7 @@ function Details({ discardChanges }) {
     discardChanges,
     originalFirstName,
     originalLastName,
+    originalDisplayName,
     originalInstagram,
     originalGithub,
     originalLinkedIn,
@@ -99,10 +120,18 @@ function Details({ discardChanges }) {
   const onFieldChange = (key, setter) => (e) => {
     const value = e.target.value;
     setter(value);
-
+    const updatedDetails = {
+      firstName,
+      lastName,
+      displayName,
+      instagram,
+      github,
+      linkedin: linkedIn,
+      [key]: value,
+    };
     editProfileDispatch({
       type: editProfileActions.UPDATE_DETAILS,
-      payload: { [key]: value },
+      payload: updatedDetails,
     });
   };
 
@@ -287,7 +316,18 @@ function Details({ discardChanges }) {
                 onChange={onFieldChange('lastName', setLastName)}
               />
             </div>
-
+            <div className="flex flex-col gap-2">
+              <atoms.Typography size="body_sm" textWeight="bold">
+                Display Name
+              </atoms.Typography>
+              <InputField
+                field="DisplayName"
+                placeholder="John Doe"
+                className="w-full"
+                value={displayName}
+                onChange={onFieldChange('displayName', setDisplayName)}
+              />
+            </div>
             <div className="flex flex-col gap-2">
               <atoms.Typography size="body_sm" textWeight="bold">
                 Instagram

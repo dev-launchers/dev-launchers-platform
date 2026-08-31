@@ -22,6 +22,7 @@ const editProfileInitialState = {
   bio: null,
   firstName: '',
   lastName: '',
+  displayName: '',
   instagram: '',
   github: '',
   linkedin: '',
@@ -239,6 +240,7 @@ const editProfileReducer = (state, action) => {
 
         firstName: action.payload.firstName ?? state.firstName,
         lastName: action.payload.lastName ?? state.lastName,
+        displayName: action.payload.displayName ?? state.displayName,
         instagram: action.payload.instagram ?? state.instagram,
         github: action.payload.github ?? state.github,
         linkedin: action.payload.linkedin ?? state.linkedin,
