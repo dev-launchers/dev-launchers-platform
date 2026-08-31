@@ -35,7 +35,7 @@ const People = ({ people }) => {
                   margin: '1rem',
                 }}
                 onClick={() => {
-                  router.push(`/users/${id}`);
+                  router.push(`/profile/${id}`);
                 }}
               >
                 <UserCard

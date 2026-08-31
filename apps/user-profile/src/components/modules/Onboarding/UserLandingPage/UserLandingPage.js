@@ -163,7 +163,7 @@ export default function UserLandingPage() {
             )
             .then(() => {
               router.push({
-                pathname: '/users/me',
+                pathname: '/profile/me',
               });
             })
             .catch((error) => {
