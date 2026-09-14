@@ -39,7 +39,7 @@
     "semantic-release": "^19.0.3",
     "styled-normalize": "^8.0.7",
     "tabletop": "1.6.3",
-    "wrangler": "^3.0.1"
+    "wrangler": "^3.114.17"
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
