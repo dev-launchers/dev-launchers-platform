@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import DisplayComments from './CommentsForm/DisplayComments';
 import CommentForm from './CommentsForm/CommentForm';
 import { IdeaOverview } from './IdeaOverview/IdeaOverview';
+import IdeaUnavailable from './IdeaUnavailable';
 import { atoms } from '@devlaunchers/components/src/components';
 import BackButton from '../../common/BackButton/BackButton';
 import theme from '../../../styles/theme';
@@ -49,7 +50,7 @@ export default function WorkshoppingPage(props) {
 
   const [handleChange, setHandleChange] = useState('');
 
-  const { data, loading, hidden, getError } = useFetchIdea(
+  const { data, loading, hidden, getError, notFound } = useFetchIdea(
     router.query.ideaId,
     setComments
   );
@@ -59,13 +60,6 @@ export default function WorkshoppingPage(props) {
     "You can't workshop on it.",
     ['primary', 'got it', '']
   );
-
-  // if the idea is deleted, redirect to dashboard
-  React.useEffect(async () => {
-    if (data?.status === 'deleted') {
-      window.location.href = '/users/me';
-    }
-  }, [data]);
 
   React.useEffect(async () => {
     if (hidden) {
@@ -90,7 +84,11 @@ export default function WorkshoppingPage(props) {
     setComments((prev) => prev.filter((comment) => comment.id !== commentId));
   }
 
-  if (getError) {
+  if (notFound) {
+    return <IdeaUnavailable variant="notFound" />;
+  } else if (!loading && data?.status === 'deleted') {
+    return <IdeaUnavailable variant="deleted" />;
+  } else if (getError) {
     return <Error statusCode={404} title="page Not Found" />;
   } else {
     return (

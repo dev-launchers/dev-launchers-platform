@@ -8,6 +8,7 @@ export const useFetchIdea = (ideaId, setComments) => {
 
   const [hidden, setHidden] = useState(false);
   const [getError, setGetError] = useState(false);
+  const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({
     ideaName: '',
@@ -44,6 +45,15 @@ export const useFetchIdea = (ideaId, setComments) => {
             )
           )
         );
+
+        // The shared axios client resolves 4xx responses with the error body
+        // instead of rejecting, so a missing idea comes back without an id.
+        if (!data.id) {
+          setNotFound(true);
+          setLoading(false);
+          return;
+        }
+        setNotFound(false);
 
         const commentResponse = data?.comments?.data;
         if (commentResponse !== undefined) {
@@ -95,5 +105,5 @@ export const useFetchIdea = (ideaId, setComments) => {
     }
   }, [sourceData, userData]);
 
-  return { data, loading, hidden, getError };
+  return { data, loading, hidden, getError, notFound };
 };
