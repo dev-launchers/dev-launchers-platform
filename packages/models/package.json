@@ -9,6 +9,6 @@
   },
   "devDependencies": {
     "@devlaunchers/eslint-config-bases": "workspace:^",
-    "eslint": "8.21.0"
+    "eslint": "9.26.0"
   }
 }
