@@ -14,12 +14,9 @@
 #      ignore: all **/node_modules folders and .yarn/cache        #
 ###################################################################
 
-ARG NODE_VERSION=16
-ARG ALPINE_VERSION=3.15
+ARG NODE_VERSION=22
 
-FROM node:14.19.3-bullseye AS deps
-# RUN apk add --no-cache rsync
-RUN apt update && apt install -y rsync
+FROM node:${NODE_VERSION}-bookworm AS deps
 WORKDIR /workspace-install
 
 
@@ -30,22 +27,16 @@ COPY .yarn/ ./.yarn/
 # we use buidkit to prepare all files that are necessary for install
 # and that will be used to invalidate docker cache.
 #
-# Files are copied with rsync:
+# Files are copied with find + cp (already in the image, so no apt install):
 #
 #   - All package.json present in the host (root, apps/*, packages/*)
 #   - All schema.prisma (cause prisma will generate a schema on postinstall)
 #
 RUN --mount=type=bind,target=/docker-context \
-    rsync -amv --delete \
-          --exclude='node_modules' \
-          --exclude='*/node_modules' \
-          --include='package.json' \
-          --include='schema.prisma' \
-          --include='*/' --exclude='*' \
-          /docker-context/ /workspace-install/;
-
-# @see https://www.prisma.io/docs/reference/api-reference/environment-variables-reference#cli-binary-targets
-ENV PRISMA_CLI_BINARY_TARGETS=linux-musl
+    cd /docker-context && \
+    find . -name node_modules -prune -o \
+         -type f \( -name package.json -o -name schema.prisma \) \
+         -exec cp -p --parents -t /workspace-install {} +
 
 #
 # To speed up installations, we override the default yarn cache folder
@@ -73,7 +64,7 @@ RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
 # Stage 2: Build the app                                          #
 ###################################################################
 
-FROM node:14.19.3-bullseye AS builder
+FROM node:${NODE_VERSION}-bookworm AS builder
 ARG NODE_ENV=production
 ENV NEXTJS_IGNORE_ESLINT=1
 ENV NEXTJS_IGNORE_TYPECHECK=0
@@ -103,11 +94,12 @@ RUN --mount=type=cache,target=/root/.yarn3-cache,id=yarn3-cache \
 # Stage 3: Extract a minimal image from the build                 #
 ###################################################################
 
-FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS runner
+# Same Debian/glibc base as the builder, so node_modules copied over stay compatible
+FROM node:${NODE_VERSION}-bookworm-slim AS runner
 
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
+RUN groupadd --system --gid 1001 nodejs && useradd --system --uid 1001 --gid nodejs nextjs
 
 COPY --from=builder /app/apps/app/next.config.js \
                     /app/apps/app/package.json \
