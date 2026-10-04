@@ -19,6 +19,8 @@ function DisplayComments(props) {
         updatedAt={comment.updatedAt}
         forIdea={props.selectedCard}
         isLast={isLast}
+        onCommentUpdated={props.onCommentUpdated}
+        onCommentDeleted={props.onCommentDeleted}
       >
         {comment.text}
       </Comment>
